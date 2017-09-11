@@ -14,22 +14,31 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
     };
 
     $scope.loadDomains = function (count, offset) {
+        let sslInfos, domainsList;
+
         $scope.loading.domains = true;
         if ($location.search().domain) {
             $scope.search.text = $location.search().domain;
         }
 
         $q
-            .all({ domains: Hosting.getTabDomains($stateParams.productId, count, offset, $scope.search.text), sslLinked: Hosting.getAttachDomainSslLinked($stateParams.productId) })
-            .then((data) => {
-
-                if (_.get(data, "domains.list.results", []).length > 0) {
-                    $scope.hasResult = true;
-                }
-
-                data.domains.list.results.forEach((domain) => {
+            .all({
+                domains: Hosting.getTabDomains($stateParams.productId, count, offset, $scope.search.text)
+                    .then((domains) => {
+                        if (_.get(domains, "list.results", []).length > 0) {
+                            $scope.hasResult = true;
+                        }
+                        domainsList = domains;
+                    }),
+                sslLinked: Hosting.getAttachDomainSslLinked($stateParams.productId)
+                    .then((sslLinked) => {
+                        sslInfos = sslLinked;
+                    })
+            })
+            .finally(() => {
+                $scope.domains = _.map(domainsList, (domain) => {
                     domain.rawSsl = domain.ssl;
-                    if (Array.isArray(data.sslLinked) && data.sslLinked.indexOf(domain.name) === -1) {
+                    if (Array.isArray(sslInfos) && sslInfos.indexOf(domain.name) === -1) {
                         domain.ssl = domain.ssl ? 1 : 0;
                     } else {
                         domain.ssl = domain.ssl ? 2 : 1;
@@ -38,10 +47,8 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
                     return domain;
                 });
 
-                $scope.domains = data.domains;
                 $location.search("domain", null);
-            })
-            .finally(() => {
+
                 $scope.loading.domains = false;
                 $scope.loading.init = false;
             });
