@@ -59,15 +59,17 @@ angular
                     serviceInfos: this.Emails.getServiceInfos(this.$stateParams.productId),
                     allDomains: this.Emails.getDomains(),
                     quotas: this.Emails.getQuotas(this.$stateParams.productId),
-                    summary: this.Emails.getSummary(this.$stateParams.productId),
-                    userPreferences: this.ovhUserPref.getValue("WEB_EMAILS")
+                    summary: this.Emails.getSummary(this.$stateParams.productId)
                 })
-                .then(({ webMailUrl, user, serviceInfos, allDomains, quotas, summary, userPreferences }) => {
+                .then(({ webMailUrl, user, serviceInfos, allDomains, quotas, summary }) => {
                     this.webMailUrl = webMailUrl;
                     this.delegationsIsAvailable = [serviceInfos.contactTech, serviceInfos.contactAdmin].includes(user.nichandle);
                     this.domains = allDomains;
                     this.quotas = quotas;
                     this.summary = summary;
+                })
+                .then(() => this.ovhUserPref.getValue("WEB_EMAILS"))
+                .then((userPreferences) => {
                     this.userPreferences = userPreferences;
                 })
                 .finally(() => {
