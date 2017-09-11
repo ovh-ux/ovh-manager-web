@@ -199,8 +199,6 @@ angular.module("App").controller(
             switch (fieldType.toUpperCase()) {
             case "A":
             case "AAAA":
-                this.model.target.value = this.edit.targetToDisplay;
-                break;
             case "TXT":
             case "CNAME":
             case "NS":

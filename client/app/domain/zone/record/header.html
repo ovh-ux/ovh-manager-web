@@ -3,7 +3,9 @@
     <small data-i18n-static="required_fields"></small>
 </p>
 
-<div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.subDomainToDisplay.$dirty && ctrl.zoneRecordForm.subDomainToDisplay.$invalid }">
+<div class="form-group" data-ng-class="{
+    'has-error': ctrl.zoneRecordForm.subDomainToDisplay.$dirty && ctrl.zoneRecordForm.subDomainToDisplay.$invalid,
+    'has-warning': ctrl.existingSubDomain && ctrl.existingSubDomain.length > 0 }">
     <label class="control-label col-md-3"
            for="subDomainToDisplay"
            data-i18n-static="domain_configuration_dns_entry_add_subdomain"
