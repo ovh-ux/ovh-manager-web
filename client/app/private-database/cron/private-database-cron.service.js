@@ -2,10 +2,10 @@ angular.module("services").service(
     "PrivateDatabaseCron",
     class PrivateDatabaseCron {
         /**
- * Constructor
- * @param $http
- * @param $q
- */
+         * Constructor
+         * @param $http
+         * @param $q
+         */
         constructor ($http, $q) {
             this.$http = $http;
             this.$q = $q;
