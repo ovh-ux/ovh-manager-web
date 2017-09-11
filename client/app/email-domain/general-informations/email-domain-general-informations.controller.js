@@ -37,8 +37,8 @@ angular.module("App").controller(
                 .then((domain) => {
                     this.domain = domain;
                 })
-                .catch(() => {
-                    this.Alerter.error(this.$scope.tr("domain_dashboard_loading_error"));
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.dashboard);
                 })
                 .finally(() => {
                     this.loading.domain = false;
@@ -57,7 +57,7 @@ angular.module("App").controller(
                     this.summary = summary;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.dashboard);
                 })
                 .finally(() => {
                     this.loading.quotas = false;
