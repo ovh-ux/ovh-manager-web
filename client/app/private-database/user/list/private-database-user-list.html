@@ -7,8 +7,10 @@
                     <tr>
                         <th scope="col" data-i18n-static="privateDatabase_tabs_user_name"></th>
                         <th scope="col" data-i18n-static="privateDatabase_tabs_creation_date"></th>
-                        <th class="min-width text-center" scope="col">
-                            <button type="button" class="btn btn-icon" title="{{i18n.privateDatabase_tabs_refresh_data}}"
+                        <th scope="col" class="min-width text-center">
+                            <button type="button"
+                                    class="btn btn-icon"
+                                    title="{{i18n.privateDatabase_tabs_refresh_data}}"
                                     data-ng-click="usersListCtrl.getUsers()">
                                 <span class="fa fa-refresh" aria-hidden="true"></span>
                             </button>
@@ -18,42 +20,38 @@
 
                 <tbody data-ng-if="usersListCtrl.loaders.users">
                     <tr>
-                        <td class="loader text-center" colspan="3"></td>
+                        <td colspan="3" class="loader text-center"></td>
                     </tr>
                 </tbody>
 
-                <tbody data-ng-if="!usersListCtrl.loaders.users && !usersListCtrl.usersIds.length">
+                <tbody data-ng-if="!usersListCtrl.loaders.users && usersListCtrl.usersIds.length === 0 && usersListCtrl.currentUsers.add.length > 0">
                     <tr>
-                        <td class="text-center" colspan="3"
-                            data-i18n-static="privateDatabase_tabs_no_user_error"></td>
+                        <td colspan="3" class="text-center" data-i18n-static="privateDatabase_tabs_no_user_error"></td>
                     </tr>
                 </tbody>
 
-                <tbody data-ng-if="!usersListCtrl.loaders.users && !usersListCtrl.usersIds.length && !usersListCtrl.currentUsers.add.length">
+                <tbody data-ng-if="!usersListCtrl.loaders.users && usersListCtrl.usersIds.length === 0 && usersListCtrl.currentUsers.add.length === 0">
                     <tr>
-                        <td class="text-center" colspan="3"
-                            data-i18n-static="privateDatabase_tabs_no_user"></td>
+                        <td colspan="3" class="text-center" data-i18n-static="privateDatabase_tabs_no_user"></td>
                     </tr>
                 </tbody>
 
                 <tbody data-ng-if="!usersListCtrl.loaders.users && (usersListCtrl.usersIds.length > 0 || usersListCtrl.currentUsers.add.length > 0)">
                     <tr data-ng-repeat="user in (usersListCtrl.userDetails | orderBy:'userName') track by $index">
                         <th scope="row" data-ng-bind="user.userName"></th>
-                        <td class="text-center" colspan="2"
-                            data-ng-if="user.waitDelete">
-                            <span class="label label-danger"
-                                  data-i18n-static="privateDatabase_tabs_user_deleting"></span>
+                        <td class="text-center" colspan="2" data-ng-if="user.waitDelete">
+                            <span class="label label-danger" data-i18n-static="privateDatabase_tabs_user_deleting"></span>
                         </td>
-                        <td data-ng-if="!user.waitDelete"
-                            data-ng-bind="user.creationDate | date:mediumDate"></td>
-                        <td class="text-center"
-                            data-ng-if="!user.waitDelete">
-                            <button class="btn btn-icon" type="button" title="{{i18n.privateDatabase_tabs_user_options}}"
-                                 data-linkedpopover="private-database/user/list/popover/private-database-user-list.popover.html"
-                                 data-linkedpopover-placement="left"
-                                 data-linkedpopover-single="true"
-                                 data-linkedpopover-remote="true"
-                                 data-linkedpopover-title="{{i18n.common_actions}}">
+                        <td data-ng-if="!user.waitDelete" data-ng-bind="user.creationDate | date:mediumDate"></td>
+                        <td data-ng-if="!user.waitDelete" class="text-center">
+                            <button class="btn btn-icon"
+                                    type="button"
+                                    title="{{i18n.privateDatabase_tabs_user_options}}"
+                                    data-linkedpopover="private-database/user/list/popover/private-database-user-list.popover.html"
+                                    data-linkedpopover-placement="left"
+                                    data-linkedpopover-single="true"
+                                    data-linkedpopover-remote="true"
+                                    data-linkedpopover-title="{{i18n.common_actions}}">
                                  <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                             </button>
                         </td>
@@ -61,16 +59,14 @@
                     <tr data-ng-repeat="user in usersListCtrl.currentUsers.add track by $index">
                         <th scope="row" data-ng-bind="user"></th>
                         <td colspan="2" class="text-center">
-                            <span class="label label-info"
-                                  data-i18n-static="privateDatabase_tabs_user_adding"></span>
+                            <span class="label label-info" data-i18n-static="privateDatabase_tabs_user_adding"></span>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="clearfix"
-             data-ng-if="usersListCtrl.usersIds">
+        <div class="clearfix" data-ng-if="usersListCtrl.usersIds">
             <div data-pagination-front
                  data-items="usersListCtrl.usersIds"
                  data-paginated-items="usersListCtrl.userDetails"
@@ -83,16 +79,15 @@
                  data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
                  data-item-per-page-placeholder="{{tr('pagination_display')}}"
                  data-on-page-change="usersListCtrl.loaders.users = true"
-                 data-ng-show="!usersListCtrl.loaders.users && (usersListCtrl.userDetails.length > 0 || usersListCtrl.currentUsers.add.length > 0)">
-            </div>
+                 data-ng-show="!usersListCtrl.loaders.users && (usersListCtrl.userDetails.length > 0 || usersListCtrl.currentUsers.add.length > 0)"></div>
         </div>
     </div>
 
     <div class="col-md-3 mt-5 mt-lg-0">
-        <button type="button" class="btn btn-block btn-default"
+        <button type="button"
+                class="btn btn-block btn-default"
                 data-i18n-static="privateDatabase_tabs_add_user"
                 data-ng-click="setAction('user/add/private-database-user-add', {'user':usersListCtrl.usersIds})"
-                data-ng-disabled="database.state !== 'started' || taskState.changeVersion || usersListCtrl.lockAction">
-        </button>
+                data-ng-disabled="database.state !== 'started' || taskState.changeVersion || usersListCtrl.lockAction"></button>
     </div>
 </div>
