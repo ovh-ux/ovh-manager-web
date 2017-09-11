@@ -1,0 +1,38 @@
+<div data-ng-controller="DomainZoneDefaultTTLCtrl as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="updateDefaultTTL"
+         data-wizard-title="i18n.domain_tab_ZONE_default_ttl_button">
+
+        <div data-wizard-step
+             data-wizard-step-valid="!ctrl.loading && ctrl.updateDefaultTtlForm.$valid">
+
+            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+
+            <div data-ng-if="!ctrl.loading">
+                <p data-ng-bind-html="tr('domain_tab_ZONE_default_ttl_heading', ctrl.domain.displayName)"></p>
+
+                <form class="form-horizontal mt-4" name="ctrl.updateDefaultTtlForm">
+                    <div class="form-group" data-ng-class="{ 'has-error': ctrl.updateDefaultTtlForm.ttl.$dirty && ctrl.updateDefaultTtlForm.ttl.$invalid }">
+                        <label class="control-label col-md-3" for="nb-ttl"
+                               data-i18n-static="domain_tab_ZONE_default_ttl_default_value"></label>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" id="nb-ttl" name="ttl" required
+                                   data-ng-min="{{ctrl.autorizedValues.min}}" min="{{ctrl.autorizedValues.min}}"
+                                   data-ng-max="{{ctrl.autorizedValues.max}}" max="{{ctrl.autorizedValues.max}}"
+                                   data-ng-model="ctrl.zoneSOA.ttl"
+                                   data-ng-pattern="/^\d+$/">
+                            <small class="help-block"
+                                   data-ng-bind-html="tr('domain_tab_ZONE_default_ttl_default_value_conditions', [ctrl.autorizedValues.min, ctrl.autorizedValues.max])"
+                                   data-ng-if="ctrl.updateDefaultTtlForm.ttl.$dirty && ctrl.updateDefaultTtlForm.ttl.$invalid"></small>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="alert alert-info mt-5" role="alert"
+                     data-i18n-static="domain_tab_ZONE_default_ttl_info">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

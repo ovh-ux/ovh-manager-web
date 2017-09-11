@@ -1,0 +1,29 @@
+@import '../../../bower_components/ovh-angular-sidebar-menu/less/ovh-angular-sidebar-menu';
+
+@SIDEBAR_MENU_ACTIVE_COLOR: @oui-color-jungle;
+@SIDEBAR_MENU_ACTIONS_MENU_BG: @oui-color-jungle;
+
+button, toggle-class {
+    &.navbar-button .icon-bar {
+      background-image: none;
+    }
+}
+
+#sidebar-menu {
+    .ms-Icon {
+        vertical-align: middle;
+
+        text-rendering: optimizeLegibility;
+        text-rendering: geometricPrecision;
+        font-smooth: always;
+
+        font-smoothing: antialiased;
+        -moz-font-smoothing: antialiased;
+        -webkit-font-smoothing: antialiased;
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+
+    & + div {
+        margin-top: @SIDEBAR_MENU_MOBILE_TOP_NAV_HEIGHT;
+    }
+}

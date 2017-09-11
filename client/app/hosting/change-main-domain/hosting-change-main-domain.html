@@ -1,0 +1,161 @@
+<div data-ng-controller="HostingChangeMainDomainCtrl">
+
+    <div data-wizard
+         data-wizard-bread-crumb
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="orderUpgrade"
+         data-wizard-title="i18n.hosting_dashboard_service_main_domain_change">
+
+        <!-- Step 1: Select a capacity -->
+        <div data-wizard-step
+             data-wizard-step-on-load="getAvailableOffers"
+             data-wizard-step-on-next="checkEmails"
+             data-wizard-step-valid="model.domain">
+
+            <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loading.availableOffer"></div>
+
+            <form class="mt-4" name="orderUpgradeForm"
+                  data-ng-if="!loading.availableOffer">
+
+                <div class="form-group">
+                    <label class="control-label" for="domains"
+                           data-i18n-static="hosting_change_main_domain_domains"></label>
+                    <select class="form-control" id="domains" name="domains"
+                            data-ng-model="model.domain"
+                            data-ng-options="availableOffer for availableOffer in (availableOffers | orderBy:orderByOffer) track by availableOffer">
+                        <option value="" disabled
+                                data-i18n-static="select_option"></option>
+                    </select>
+                </div>
+            </form>
+
+            <div data-wizard-step-help>
+                <h3 data-i18n-static="hosting_change_main_domain_help_main_title"></h3>
+                <h4 data-i18n-static="hosting_change_main_domain_help_title"></h4>
+                <p data-i18n-static="hosting_change_main_domain_help_desc"></p>
+                <h4 data-i18n-static="hosting_change_main_domain_help_keep_email_title"></h4>
+                <p data-i18n-static="hosting_change_main_domain_help_keep_email_desc"></p>
+                <h4 data-i18n-static="hosting_change_main_domain_help_mxplan_title"></h4>
+                <p>
+                    <span data-i18n-static="hosting_change_main_domain_help_mxplan_desc1"></span>
+                    <a data-ng-href="{{ emails.urlGuideMxplan }}" target="_blank" title="{{i18n.hosting_change_main_domain_help_mxplan_desc3}} {{i18n.common_newtab}}"
+                       data-i18n-static="hosting_change_main_domain_help_mxplan_desc2"></a>
+                </p>
+            </div>
+        </div>
+
+        <!-- Step 2: Decision to keep or delete email addresses -->
+        <div data-wizard-step
+             data-wizard-step-valid="validateEmailDecision()">
+
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.emailDecision"></div>
+
+            <p data-i18n-static="hosting_change_main_domain_no_email"
+               data-ng-if="!loading.emailDecision && !emails.data.length"></p>
+
+            <div data-ng-if="!loading.emailDecision && emails.data.length">
+                <p data-i18n-static="hosting_change_main_domain_email_title"></p>
+                <ul>
+                    <li data-ng-repeat="email in (emails.data | limitTo: emailDisplayLimit) track by $index"
+                        data-ng-bind="email"></li>
+                    <li data-ng-bind-html="tr('hosting_change_main_domain_email_list', [emails.data.length - emailDisplayLimit])"
+                        data-ng-if="emails.data && emails.data.length > emailDisplayLimit"></li>
+                </ul>
+                <p data-ng-bind-html="tr('hosting_change_main_domain_email_deletion_warning', [hostingProxy.serviceName])"></p>
+                <p data-i18n-static="hosting_change_main_domain_email_proposal"></p>
+
+                <form class="form-horizontal" name="emailDecision">
+                    <div class="ml-4">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="emailsKeep" checked
+                                       data-ng-model="emails.keep"
+                                       data-ng-value="false">
+                                <span data-ng-bind="tr('hosting_change_main_domain_delete_emails')"></span>
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="emailsKeep"
+                                       data-ng-model="emails.keep"
+                                       data-ng-value="true">
+                                <span data-ng-bind="tr('hosting_change_main_domain_keep_emails')"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-warning my-4" role="alert"
+                         data-i18n-static="hosting_change_main_domain_warning_delete_emails"
+                         data-ng-if="model.domain && emails.hasSome && (model.mxplan === 'delete' || !emails.keep)"></div>
+
+                    <div class="mt-4"
+                         data-ng-if="model.domain && emails.hasSome && emails.keep">
+                        <div class="form-group">
+                            <label class="control-label col-md-3" for="mxplan"
+                                   data-i18n-static="hosting_change_main_domain_mxplan"></label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="mxplan" name="mxplan"
+                                        data-ng-model="model.mxplan"
+                                        data-ng-options="(i18n['hosting_change_main_domain_alt_mx_' + mxplan] || mxplan) for mxplan in mxplanEnum track by mxplan">
+                                    <option value="" disabled
+                                            data-i18n-static="select_option"></option>
+                                </select>
+                            </div>
+                        </div>
+                        <p data-ng-bind-html="tr('hosting_change_main_domain_mx_link', [emails.urlGuideMxplan,'_blank', '<span class=\'icon-share-alt\'></span>'])"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Step 3: Contracts, Resume and validation -->
+        <div data-wizard-step
+             data-wizard-step-on-load="loadContracts"
+             data-wizard-step-on-previous="billingOnPrevious"
+             data-wizard-step-valid="validateOrder()">
+
+            <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loading.validation"></div>
+
+            <div data-ng-if="!loading.validation">
+                <div data-contracts="model.duration.contracts"
+                     data-full-text="false"
+                     data-ng-model="agree.value"></div>
+
+                <p class="mt-5" data-i18n-static="hosting_order_upgrade_resume"></p>
+                <table class="table table-condensed">
+                    <tbody>
+                        <tr data-ng-repeat="detail in model.duration.details">
+                            <th class="font-weight-normal" scope="row">
+                                <span data-ng-bind="detail.description"></span>
+                                <strong data-ng-bind="detail.domain"
+                                        data-ng-if="$index === 0 || $index === 3"></strong>
+                            </th>
+                            <td class="text-nowrap text-right">
+                                <strong data-ng-bind="getResumePrice(detail.totalPrice)"></strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th class="text-right" scope="row"
+                                data-i18n-static="hosting_order_upgrade_price_HT"></th>
+                            <td class="font-weight-bold text-right"
+                                data-ng-bind="model.duration.prices.withoutTax.text"></td>
+                        </tr>
+                        <tr>
+                            <th class="text-right" scope="row"
+                                data-i18n-static="hosting_order_upgrade_price_TTC"></th>
+                            <td class="font-weight-bold text-right"
+                                data-ng-bind="model.duration.prices.withTax.text"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <div class="alert alert-info" role="alert"
+                     data-i18n-static="hosting_order_upgrade_do_order"
+                     data-ng-if="!loading.validation">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

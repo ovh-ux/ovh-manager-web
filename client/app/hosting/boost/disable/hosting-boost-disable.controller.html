@@ -1,0 +1,25 @@
+<div data-ng-controller="HostingBoostOfferDisableCtrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="disableBoost"
+         data-wizard-title="i18n.hosting_tab_BOOST_disable_offer">
+
+        <div data-wizard-step
+             data-wizard-step-valid="isStepValid()">
+
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loaders.disable"></div>
+
+            <div data-ng-if="!loaders.disable">
+                <p data-i18n-static="hosting_tab_BOOST_disable_title"></p>
+                <p data-i18n-static="hosting_tab_BOOST_disable_description"></p>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"
+                               data-ng-model="acceptCGV.value" />
+                        <span data-i18n-static="hosting_tab_BOOST_accept_cgv"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

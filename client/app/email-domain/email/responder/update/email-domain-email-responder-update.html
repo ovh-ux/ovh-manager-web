@@ -1,0 +1,107 @@
+<div data-ng-controller="EmailsUpdateResponderCtrl as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="updateResponder"
+         data-wizard-title="i18n.email_tab_modal_update_responder_title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="ctrl.updateResponderForm.$valid && ctrl.responderDurationCheck()">
+
+            <p class="font-weight-bold" data-ng-bind="tr('email_tab_modal_update_responder_heading', [ctrl.responder.account])"></p>
+            <p data-i18n-static="email_tab_modal_update_responder_info"></p>
+
+            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+
+            <div data-ng-if="!ctrl.loading">
+
+                <p>
+                    <small class="text-danger">*</small>
+                    <small data-i18n-static="required_fields"></small>
+                </p>
+
+                <form class="form-horizontal" name="ctrl.updateResponderForm">
+                    <div class="form-group">
+                        <span class="control-label col-md-4 font-weight-bold" data-i18n-static="email_tab_modal_create_responder_duration"></span>
+                        <div class="col-md-8">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="radio" name="responderDuration" value="temporary"
+                                           data-ng-model="ctrl.model.responderDuration">
+                                    <span data-i18n-static="email_tab_modal_create_responder_temporary"></span>
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="radio" name="responderDuration" value="permanent"
+                                           data-ng-model="ctrl.model.responderDuration">
+                                    <span data-i18n-static="email_tab_modal_create_responder_permanent"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-ng-if="ctrl.model.responderDuration === 'temporary'">
+                        <div class="form-group">
+                            <label class="control-label col-md-4 required" for="date-responder-start"
+                                   data-i18n-static="email_tab_modal_create_responder_start"></label>
+                            <div class="col-md-6">
+                                <a class="input-group"
+                                   data-date-time-picker
+                                   data-dtp-autoclose="true"
+                                   data-dtp-min-view-mode="days"
+                                   data-dtp-model-timezone="local"
+                                   data-dtp-pick-time="true"
+                                   data-dtp-placement="bottom"
+                                   data-dtp-type="date"
+                                   data-ng-change="ctrl.responderDateStartCheck()"
+                                   data-ng-model="ctrl.model.from">
+                                    <input type="text" class="form-control" id="date-responder-start" name="responderDateStart" required>
+                                    <span class="input-group-addon"
+                                          data-uib-tooltip="{{i18n.period_tooltip_from}}"
+                                          data-tooltip-placement="bottom">
+                                        <span class="fa fa-calendar" aria-hidden="true"></span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4 required" for="date-responder-end"
+                                   data-i18n-static="email_tab_modal_create_responder_end"></label>
+                            <div class="col-md-6">
+                                <a class="input-group"
+                                   data-date-time-picker
+                                   data-dtp-autoclose="true"
+                                   data-dtp-min-view-mode="days"
+                                   data-dtp-model-timezone="local"
+                                   data-dtp-pick-time="true"
+                                   data-dtp-placement="bottom"
+                                   data-dtp-type="date"
+                                   data-ng-change="ctrl.responderDateEndCheck()"
+                                   data-ng-model="ctrl.model.to">
+                                    <input type="text" class="form-control" id="date-responder-end" name="responderDateEnd" required>
+                                    <span class="input-group-addon"
+                                          data-uib-tooltip="{{i18n.period_tooltip_to}}"
+                                          data-tooltip-placement="bottom">
+                                        <span class="fa fa-calendar" aria-hidden="true"></span>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4 required" for="txt-responder-content"
+                               data-i18n-static="email_tab_modal_create_responder_message"></label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" id="txt-responder-content" name="responderContent" aria-describedby="responderContentHelp" required
+                                      data-ng-model="ctrl.model.content">
+                            </textarea>
+                            <small class="help-block" id="responderContentHelp"
+                                   data-i18n-static="email_tab_responders_message_warning"></small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div data-ng-controller="EmailsAccountsToCsvCtrl as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="cancelExport"
+         data-wizard-on-finish="exportAccounts"
+         data-wizard-title="i18n.email_tab_modal_export_csv_title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="!ctrl.loading.exportCsv">
+
+            <div class="mt-5 text-center" data-ng-if="ctrl.loading.exportCsv">
+                <div class="loader"></div>
+                <p data-i18n-static="emails_export_csv_doing"></p>
+            </div>
+
+            <div data-ng-if="!ctrl.loading.exportCsv">
+                <p data-i18n-static="emails_export_csv_expl"></p>
+                <p class="font-weight-bold" data-i18n-static="emails_export_csv_confirm"></p>
+            </div>
+        </div>
+    </div>
+</div>

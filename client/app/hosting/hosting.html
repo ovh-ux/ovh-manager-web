@@ -1,0 +1,117 @@
+<div data-ovh-alert="{{alerts.dashboard}}"></div>
+
+<div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loadingHostingInformations && !loadingHostingError"></div>
+
+<div class="page-header" data-ng-if="!loadingHostingInformations && !loadingHostingError">
+    <div class="row">
+        <div class="col-sm-9">
+            <form name="formEditDisplayName" novalidate>
+                <div class="mb-3" data-ng-show="!edit.active">
+                    <div class="d-flex">
+                        <h1 class="d-inline-block mb-0 word-break">
+                            <span data-ng-bind="hosting.displayName"
+                                  data-ng-if="hosting.displayName"></span>
+                            <span data-ng-bind="::hosting.serviceDisplayName"
+                                  data-ng-if="!hosting.displayName"></span>
+
+                        </h1>
+                        <button class="btn btn-icon my-auto ml-2" type="button" title="{{i18n.wizard_modify}}"
+                                data-ng-click="edit.active = !edit.active">
+                            <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                    <span class="font-italic" data-ng-bind="::hosting.serviceName"
+                           data-ng-if="hosting.serviceName !== hosting.displayName"></span>
+                </div>
+                <div class="form-group my-4"
+                     data-ng-class="{'has-error': formEditDisplayName.txtDisplayName.$dirty && formEditDisplayName.$invalid}"
+                     data-ng-show="edit.active">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-lg" name="txtDisplayName" required
+                               data-event-blur="newDisplayName.value = ''"
+                               data-ng-maxlength="250"
+                               data-ng-model="newDisplayName.value">
+                        <div class="input-group-btn">
+                            <button class="btn btn-success btn-lg" type="button" title="{{i18n.common_confirm}}"
+                                    data-ng-click="editDisplayName()"
+                                    data-ng-disabled="formEditDisplayName.$invalid">
+                                <span class="fa fa-check" aria-hidden="true"></span>
+                            </button>
+                            <button class="btn btn-danger btn-lg" type="button" title="{{i18n.common_cancel}}"
+                                    data-ng-click="edit.active = false">
+                                <span class="fa fa-remove" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="help-block"
+                         data-ng-if="formEditDisplayName.txtDisplayName.$dirty"
+                         data-ng-messages="formEditDisplayName.txtDisplayName.$error">
+                        <span data-ng-bind="::i18n.hosting_displayName_length"
+                              data-ng-message="maxlength"></span>
+                        <span data-ng-bind="::i18n.hosting_displayName_required"
+                              data-ng-message="required"></span>
+                    </div>
+                </div>
+                <service-expiration-date
+                        data-ng-if="hosting.serviceName && hosting.serviceInfos"
+                        service-name="hosting.serviceName"
+                        service-type="HOSTING_WEB"
+                        service-infos="hosting.serviceInfos">
+                </service-expiration-date>
+            </form>
+        </div>
+        <div class="col-sm-3 d-flex">
+            <div class="btn-group ml-auto mt-4">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span data-i18n-static="common_actions"></span>
+                    <span class="caret ml-2" aria-hidden="true"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
+                    <li data-ng-if="urlDomainOrder">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <button class="btn btn-link" type="button"
+                                data-i18n-static="hosting_dashboard_add_domain"
+                                data-ng-click="setAction('multisite/order/hosting-multisite-order', {domains: domains})">
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-ng-controller="HostingTabsCtrl"
+     data-ng-if="!loadingHostingInformations && !loadingHostingError && !hosting.isExpired">
+    <ovh-tabs tabs="tabs"
+              selected-tab="selectedTab"
+              change-tab="setSelectedTab"
+              product="hosting"
+              tr="tr"
+              menu="tabMenu"></ovh-tabs>
+    <div class="tab-content">
+
+        <div class="alert alert-info" role="alert"
+             data-ng-if="hosting.offer === 'KIMSUFI_2015'">
+            <button class="close" type="button" data-dismiss="alert">&times;</button>
+            <span data-i18n-static="hosting_dashboard_service_offer_KIMSUFI_2015_support"></span>
+        </div>
+
+        <div class="alert alert-warning" role="alert"
+             data-ng-if="hostingProxy.recommendedOffer">
+            <button class="close" type="button" data-dismiss="alert">&times;</button>
+            <span data-ng-bind-html="tr('hosting_dashboard_service_offer_recommanded', [hostingProxy.recommendedOffer])"></span>
+            <span data-ng-bind-html="tr('hosting_dashboard_service_offer_recommanded_actions', [urls.hosting, '_blank'])"
+                  data-ng-if="urls.hosting"></span>
+        </div>
+
+        <div class="tab-pane active hosting"
+             data-ng-include="selectedTab && 'hosting/' + toKebabCase(selectedTab) + '/' + selectedTab + '.html'"></div>
+    </div>
+</div>
+
+<div id="currentAction" class="modal fade currentAction" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div id="modal-container" class="modal-content" data-ng-include="stepPath"></div>
+        <div id="modal-help" class="help4wizards"></div>
+    </div>
+</div>

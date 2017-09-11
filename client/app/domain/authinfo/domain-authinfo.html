@@ -1,0 +1,24 @@
+<div data-ng-controller="DomainAuthInfoCtrl as ctrl">
+    <div data-wizard
+         data-wizard-confirm-button-text="i18n.domain_close"
+         data-wizard-hide-cancel-button="true"
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="resetAction"
+         data-wizard-title="i18n.domain_dashboard_authinfo_code">
+
+        <div data-wizard-step>
+
+            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+
+            <div data-ng-if="!ctrl.loading.init && ctrl.domain.authinfo">
+                <div class="alert alert-info" role="alert"
+                     data-ng-bind-html="tr('domain_dashboard_show_authinfo_description', [ctrl.domain.displayName])">
+                </div>
+                <p class="text-center mt-5">
+                    <span data-i18n-static="domain_dashboard_authinfo_code"></span> :
+                    <strong data-ng-bind="::ctrl.domain.authinfo"></strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

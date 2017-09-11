@@ -1,0 +1,155 @@
+<div class="container-fluid px-0" data-ng-controller="HostingTabAutomatedEmailsCtrl">
+    <div class="row">
+        <!-- INFORMATIONS_VIEW  -->
+        <div class="col-md-9">
+
+            <h2 data-i18n-static="hosting_tab_AUTOMATED_EMAILS"></h2>
+
+            <p class="mb-4" data-ng-if="guide">
+                <span class="fa fa-life-ring mr-2" aria-hidden="true"></span>
+                <span data-i18n-static="hosting_tab_AUTOMATED_EMAILS_guide_help"></span>
+                <a data-ng-href="{{guide}}" target="_blank" title="{{i18n.hosting_guide_help}} {{::i18n.common_newtab}}">
+                    <span data-i18n-static="hosting_guide_help"></span>
+                    <span class="fa fa-external-link" aria-hidden="true"></span>
+                </a>
+            </p>
+
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loaders.loading"></div>
+
+            <div data-ng-show="!loaders.loading">
+                <div data-ng-show="currentView === 'INFORMATIONS_VIEW' && automatedEmails">
+
+                    <div class="alert alert-info" role="alert"
+                         data-i18n-static="hosting_tab_AUTOMATED_EMAILS_info">
+                    </div>
+
+                    <dl class="dl-horizontal dl-lg mt-5">
+                        <dt data-i18n-static="hosting_tab_AUTOMATED_EMAILS_status"></dt>
+                        <dd>
+                            <span class="label mr-2"
+                                  data-ng-bind="tr('hosting_tab_AUTOMATED_EMAILS_status_' + automatedEmails.state)"
+                                  data-ng-class="{
+                                    'label-success': automatedEmails.state === 'ok' || automatedEmails.state === 'force',
+                                    'label-danger': automatedEmails.state !== 'ok' && automatedEmails.state !== 'force'}">
+                            </span>
+                            <span class="fa fa-spinner fa-spin" data-ng-if="isPurging"></span>
+                        </dd>
+                        <dt data-i18n-static="hosting_tab_AUTOMATED_EMAILS_report_email"></dt>
+                        <dd>
+                            <span data-ng-bind="automatedEmails.email"></span><br>
+                            <button class="btn btn-default btn-xs mt-2" type="button"
+                                    data-i18n-static="hosting_tab_AUTOMATED_EMAILS_report_email_change"
+                                    data-ng-click="setAction('automated-emails/error-report/hosting-automated-emails-error-report', {automatedEmails: automatedEmails})">
+                            </button>
+                        </dd>
+                        <dt data-i18n-static="hosting_tab_AUTOMATED_EMAILS_total_sent"></dt>
+                        <dd data-ng-bind="automatedEmails.sent"></dd>
+                        <dt data-i18n-static="hosting_tab_AUTOMATED_EMAILS_today_sent"></dt>
+                        <dd>
+                            <span data-ng-bind="automatedEmails.sentToday"></span>
+                            <span data-ng-if="automatedEmails.maxPerDay > 0"> / {{automatedEmails.maxPerDay}}</span>
+                        </dd>
+                        <dt data-i18n-static="hosting_tab_AUTOMATED_EMAILS_total_bounce"></dt>
+                        <dd data-ng-bind="automatedEmails.bounce"></dd>
+                    </dl>
+
+                    <h3 class="text-center mt-5" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_volume"></h3>
+
+                    <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loaders.volumes"></div>
+                    <div class="chart-container" style="height: 320px;"
+                         data-ng-if="!loaders.volumes"
+                         data-chartjs="stats.chart">
+                    </div>
+                </div>
+
+                <!-- BOUNCES_VIEW  -->
+                <div data-ng-show="currentView === 'BOUNCES_VIEW'">
+                    <div class="mb-3">
+                        <button class="btn btn-default" type="button"
+                                data-ng-click="currentView = 'INFORMATIONS_VIEW'">
+                            <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
+                            <span data-i18n-static="common_back"></span>
+                        </button>
+                    </div>
+
+                    <div class="mb-3">
+                        <form class="form-inline d-md-flex justify-content-md-end" name="automatedEmailsVolumeLimitForm">
+                            <div class="form-group">
+                                <label class="control-label" for="bouncesLimit"
+                                       data-i18n-static="hosting_tab_AUTOMATED_EMAILS_volume_limit"></label>
+                                <input type="number" class="form-control" id="bouncesLimit" name="bouncesLimit" min="0" max="100"
+                                       data-ng-model="bouncesLimit"
+                                       data-ng-model-options="{debounce: { 'default': 500 }}">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table"
+                               data-ng-class="{'table-hover table-striped': !loaders.bounces && bounces.length}">
+                            <thead>
+                                <tr>
+                                    <th scope="col" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_bounces_date"></th>
+                                    <th scope="col" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_bounces_to"></th>
+                                    <th scope="col" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_bounces_message"></th>
+                                </tr>
+                            </thead>
+
+                            <tbody data-ng-if="loaders.bounces">
+                                <tr>
+                                    <td class="loader text-center" aria-label="{{i18n.common_loading}}" colspan="3"></td>
+                                </tr>
+                            </tbody>
+
+                            <tbody data-ng-if="!loaders.bounces && !bounces.length">
+                                <tr>
+                                    <td class="text-center" colspan="3" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_bounces_empty"></td>
+                                </tr>
+                            </tbody>
+
+                            <tbody data-ng-if="!loaders.bounces && bounces.length > 0">
+                                <tr data-ng-repeat="bounce in bounces track by $index">
+                                    <td data-ng-bind="::bounce.date | date:'medium'"></td>
+                                    <td data-ng-bind="::bounce.to"></td>
+                                    <td>
+                                        <pre data-ng-bind="::bounce.message"></pre>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIONS  -->
+        <div class="col-md-3 mt-5 mt-lg-0">
+            <div data-ng-show="!loaders.loading && currentView === 'INFORMATIONS_VIEW' && automatedEmails">
+                <button class="btn btn-block btn-default" type="button"
+                        data-i18n-static="hosting_tab_AUTOMATED_EMAILS_purge"
+                        data-ng-click="purge()"
+                        data-ng-disabled="loaders.loading || (automatedEmails.state !== 'ko' && automatedEmails.state !== 'spam' && automatedEmails.state !== 'bounce') || isPurging"
+                        data-uib-tooltip="{{i18n.hosting_tab_AUTOMATED_EMAILS_purge_info}}"
+                        data-tooltip-append-to-body="true"
+                        data-tooltip-placement="bottom">
+                </button>
+                <button class="btn btn-block btn-default" type="button"
+                        data-i18n-static="hosting_tab_AUTOMATED_EMAILS_volume_history"
+                        data-ng-click="getBounces(); currentView = 'BOUNCES_VIEW'"
+                        data-ng-disabled="loaders.loading || !thereAreEmailsInError">
+                </button>
+                <button class="btn btn-block btn-default" type="button"
+                        data-i18n-static="hosting_tab_AUTOMATED_EMAILS_block"
+                        data-ng-click="setAction('automated-emails/request/hosting-automated-emails-request', {automatedEmails: automatedEmails, action: 'BLOCK'})"
+                        data-ng-disabled="loaders.loading"
+                        data-ng-if="automatedEmails.state === 'ok' || automatedEmails.state === 'force'">
+                </button>
+                <button class="btn btn-block btn-default" type="button"
+                        data-i18n-static="hosting_tab_AUTOMATED_EMAILS_unblock"
+                        data-ng-click="setAction('automated-emails/request/hosting-automated-emails-request', {automatedEmails: automatedEmails, action: 'UNBLOCK'})"
+                        data-ng-disabled="loaders.loading || isPurging || ((automatedEmails.state === 'spam' || automatedEmails.state === 'bounce') && automatedEmails.sent > 0 && !hasBeenPurge)"
+                        data-ng-if="automatedEmails.state !== 'ok' && automatedEmails.state !== 'force'">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

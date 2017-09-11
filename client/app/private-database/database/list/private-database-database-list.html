@@ -1,0 +1,125 @@
+<div class="row" data-ng-controller="PrivateDatabaseBDDsListCtrl as listCtrl">
+    <div class="col-md-9">
+        <div class="table-responsive">
+            <table class="table"
+                   data-ng-class="{'table-hover table-striped': !listCtrl.loaders.bdd && (listCtrl.bddsIds.length > 0 || listCtrl.currentAddBdds.length > 0)}">
+                <thead>
+                    <tr>
+                        <th scope="col" data-i18n-static="privateDatabase_bdd_name"></th>
+                        <th scope="col" data-i18n-static="privateDatabase_bdd_creationDate"></th>
+                        <th class="text-center" scope="col" data-i18n-static="privateDatabase_bdd_quota"></th>
+                        <th class="text-center" scope="col" data-i18n-static="privateDatabase_bdd_dumps_count"></th>
+                        <th class="text-center" scope="col" data-i18n-static="privateDatabase_tabs_list_extensions_title"
+                            data-ng-if="listCtrl.isPostgreSql"></th>
+                        <th class="min-width text-right" scope="col">
+                            <button class="btn btn-icon" type="button" title="{{i18n.privateDatabase_tabs_refresh_data}}"
+                                    data-ng-click="listCtrl.getBDDS()">
+                                <span class="fa fa-refresh" aria-hidden="true"></span>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody data-ng-if="listCtrl.loaders.bdd">
+                    <tr>
+                        <td class="loader text-center" colspan="6"></td>
+                    </tr>
+                </tbody>
+
+                <tbody data-ng-if="!listCtrl.loaders.bdd && !listCtrl.bddsIds.length">
+                    <tr>
+                        <td class="text-center" colspan="6"
+                            data-i18n-static="privateDatabase_tabs_bdd_no"></td>
+                    </tr>
+                </tbody>
+
+                <tbody data-ng-if="!listCtrl.loaders.bdd && (listCtrl.bddsIds.length > 0 || listCtrl.currentAddBdds.length > 0)">
+                    <tr data-ng-repeat="bdd in (listCtrl.bddsDetails | orderBy:'databaseName':false) track by $index">
+                        <th scope="row" data-ng-bind-html="bdd.databaseName"></th>
+                        <td class="text-center" colspan="{{listCtrl.isPostgreSql ? 5 : 4}}"
+                            data-ng-if="bdd.waitDelete">
+                            <span class="label label-danger"
+                                  data-i18n-static="privateDatabase_tabs_bdd_deleting"></span>
+                        </td>
+                        <td data-ng-bind="bdd.creationDate | date:'mediumDate'"
+                            data-ng-if="!bdd.waitDelete"></td>
+                        <td class="text-center"
+                            data-ng-bind="bdd.quotaUsed.value + tr('unit_size_' + bdd.quotaUsed.unit)"
+                            data-ng-if="!bdd.waitDelete"></td>
+                        <td class="text-center"
+                            data-ng-if="!bdd.waitDelete">
+                            <button class="btn btn-xs" type="button"
+                                    data-ng-bind-html="bdd.dumpsCount"
+                                    data-ng-class="{'btn-success': bdd.dumpsCount > 0, 'btn-danger': !(bdd.dumpsCount > 0)}"
+                                    data-ng-click="goToDumps(bdd)">
+                            </button>
+                            <small class="d-block mt-2"
+                                   data-i18n-static="privateDatabase_dump_in_progress"
+                                   data-ng-if="bdd.waitDump"></small>
+                            <small class="d-block mt-2"
+                                   data-i18n-static="privateDatabase_restore_in_progress"
+                                   data-ng-if="bdd.waitRestore"></small>
+                        </td>
+                        <td class="text-center" data-ng-if="!bdd.waitDelete && listCtrl.isPostgreSql">
+                            <button type="button" class="btn btn-icon"
+                                    data-ng-click="goToExtension(bdd)">
+                                <span class="fa fa-table" aria-hidden="true"></span>
+                                <span class="sr-only" data-i18n-static="privateDatabase_tabs_list_go_extensions"></span>
+                            </button>
+                        </td>
+                        <td class="text-center" data-ng-show="!bdd.waitDelete">
+                            <button class="btn btn-icon" type="button"
+                                    data-ng-if="!bdd.waitDelete && database.state === 'started' && !taskState.changeVersion"
+                                    data-linkedpopover="private-database/database/list/popover/list.html"
+                                    data-linkedpopover-placement="left"
+                                    data-linkedpopover-remote="true"
+                                    data-linkedpopover-single="true"
+                                    data-linkedpopover-title="{{i18n.common_actions}}">
+                                <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-repeat="bdd in listCtrl.currentAddBdds track by $index">
+                        <td data-ng-bind-html="bdd"></td>
+
+                        <td colspan="5" class="text-center">
+                            <span class="label label-info"
+                                  data-i18n-static="privateDatabase_tabs_bdd_adding"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="clearfix"
+             data-ng-if="listCtrl.bddsIds">
+            <div data-pagination-front
+                 data-items="listCtrl.bddsIds"
+                 data-paginated-items="listCtrl.bddsDetails"
+                 data-current-page="currentPage"
+                 data-items-per-page="listCtrl.itemsPerPage"
+                 data-nb-pages="nbPages"
+                 data-transform-item="listCtrl.transformItem(item)"
+                 data-on-page-change="listCtrl.loaders.bdd = true"
+                 data-on-transform-item-done="listCtrl.onTransformItemDone(items)"
+                 data-on-transform-item-get-promise="listCtrl.getPromise(promise)"
+                 data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+                 data-item-per-page-placeholder="{{tr('pagination_display')}}">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mt-5 mt-lg-0">
+        <button class="btn btn-default btn-block" type="button"
+                data-i18n-static="privateDatabase_add_bdd_title"
+                data-ng-click="setAction('database/add/private-database-database-add')"
+                data-ng-disabled="database.state !== 'started' || taskState.changeVersion || lockAction">
+        </button>
+        <button type="button" class="btn btn-default btn-block"
+                data-i18n-static="privateDatabase_dump_bdd_title"
+                data-ng-click="goToArchivesList()"
+                data-ng-disabled="database.state !== 'started' || taskState.changeVersion || lockAction">
+        </button>
+    </div>
+</div>

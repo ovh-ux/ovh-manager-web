@@ -1,0 +1,14 @@
+<div data-ng-controller="HostingDatabaseDeleteCtrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="deleteDatabase"
+         data-wizard-title="i18n.hosting_tab_DATABASES_configuration_delete_title">
+
+        <div data-wizard-step>
+            <p data-ng-bind-html="tr('hosting_tab_DATABASES_configuration_delete_question', [entryToDelete])"></p>
+            <div class="alert alert-warning mt-4" role="alert"
+                 data-i18n-static="hosting_tab_DATABASES_configuration_delete_information">
+            </div>
+        </div>
+    </div>
+</div>

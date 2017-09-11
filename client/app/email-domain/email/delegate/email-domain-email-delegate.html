@@ -1,0 +1,85 @@
+<div data-ng-controller="EmailsDelegateCtrl as ctrl">
+    <div data-wizard
+         data-wizard-confirm-button-text="i18n.wizard_close"
+         data-wizard-hide-cancel-button="true"
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="resetAction"
+         data-wizard-title="i18n.email_tab_popover_delegate_title">
+
+        <div data-wizard-step>
+            
+            <p data-ng-bind-html="tr('email_tab_popover_delegate_info', [currentActionData.accountName])"></p>
+            
+            <p class="mb-5" data-ng-if="ctrl.createNicUrl">
+                <a data-ng-href="{{ctrl.createNicUrl}}" class="btn btn-block btn-default" target="_blank" title="{{::i18n.emails_create_account_new_window}}"
+                   data-i18n-static="emails_create_account"></a>
+            </p>
+
+            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+
+            <table class="table table-condensed" data-ng-if="!ctrl.loading">
+                <thead>
+                    <tr>
+                        <th scope="col" data-i18n-static="email_tab_popover_delegate_tab_header_name"></th>
+                        <th class="min-width text-right" scope="col">
+                            <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_popover_delegate_tab_header_reload}}"
+                                    data-ng-click="ctrl.initDelegate()">
+                                <span class="fa fa-refresh" aria-hidden="true"></span>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr data-ng-if="!ctrl.addDelegateShown">
+                        <td class="text-center">
+                            <button class="btn btn-link" type="button"
+                                    data-ng-click="ctrl.addDelegateShown = true"
+                                    data-i18n-static="email_tab_popover_delegate_tab_content_add"></button>
+                        </td>
+                        <td class="text-center">
+                            <button class="btn btn-icon" type="button"
+                                    data-ng-click="ctrl.addDelegateShown = true">
+                                <span class="fa fa-plus" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-if="ctrl.addDelegateShown">
+                        <td>
+                            <form class="m-0" name="ctrl.addNicForm">
+                                <input type="text" class="form-control" name="nic" placeholder="xxxxxxx-ovh" required
+                                       data-ng-model="ctrl.model.value"
+                                       data-ng-pattern="ctrl.nicPattern">
+                                <small class="text-danger"
+                                       data-i18n-static="email_tab_popover_delegate_format_error"
+                                       data-ng-if="ctrl.addNicForm.nic.$error.pattern"></small>
+                            </form>
+                        </td>
+                        <td class="text-center text-nowrap">
+                            <button class="btn btn-danger" type="button"
+                                    data-ng-click="ctrl.addDelegateShown = false">
+                                <span class="fa fa-times" aria-hidden="true"></span>
+                            </button>
+                            <button class="btn btn-success" type="button"
+                                    data-ng-click="ctrl.addDelegate()"
+                                    data-ng-disabled="ctrl.addNicForm.$invalid">
+                                <span class="fa fa-check" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr data-ng-repeat="delegationAccount in ctrl.delegationAccountList track by $index">
+                        <td data-ng-bind="delegationAccount"></td>
+                        <td class="text-center">
+                            <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_popover_delegate_tab_content_delete}}"
+                                    data-ng-click="ctrl.removeDelegate(delegationAccount)">
+                                <span class="fa fa-trash" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

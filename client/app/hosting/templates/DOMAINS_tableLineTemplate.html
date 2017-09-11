@@ -1,0 +1,28 @@
+<span data-paginated-table-cell data-ng-bind="element.displayName"></span>
+
+<span data-paginated-table-cell data-ng-bind="element.path"></span>
+
+<td class="text-center">
+    <span class="badge" data-ng-class="{'badge-success': element.ownLog === 'ACTIVE', 'badge-important': element.ownLog === 'NONE'}"
+          data-ng-bind="i18n['hosting_tab_DOMAINS_table_cdn_state_' + (element.ownLog ? 'ACTIVE' : 'NONE')] || element.ownLog">
+    </span>
+</td>
+
+<div data-paginated-table-cell class="text-center" data-ng-if="hosting.hasCdn">
+    <span class="badge" data-ng-class="{'badge-success': element.cdn === 'ACTIVE', 'badge-important': element.cdn === 'NONE'}"
+          data-ng-bind="i18n['hosting_tab_DOMAINS_table_cdn_state_' + element.cdn] || element.cdn">
+    </span>
+</div>
+
+<div data-paginated-table-cell class="text-center">
+    <button class="btn btn-icon" type="button" title="{{tr('hosting_tab_DOMAINS_table_popover_modify')}}"
+            data-ng-click="modifyDomain(element)">
+        <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
+    </button>
+</div>
+<div data-paginated-table-cell class="text-center">
+    <button class="btn btn-icon" type="button" title="{{tr('hosting_tab_DOMAINS_table_popover_delete')}}"
+            data-ng-click="detachDomain(element)">
+        <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
+    </button>
+</div>

@@ -1,0 +1,12 @@
+<div data-ng-controller="HostingFtpUserDeleteCtrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="deleteUser"
+         data-wizard-title="i18n.hosting_tab_DATABASES_configuration_user_delete_title">
+
+        <div data-wizard-step>
+            <p class="word-break"
+               data-ng-bind-html="tr('hosting_tab_DATABASES_configuration_user_delete_question', ['<strong>' + entryToDelete + '</strong>'])"></p>
+        </div>
+    </div>
+</div>

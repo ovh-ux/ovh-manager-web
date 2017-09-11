@@ -1,0 +1,252 @@
+angular.module("App").controller(
+    "DomainTabZoneDnsCtrl",
+    class DomainTabZoneDnsCtrl {
+        constructor ($scope, $q, Alerter, Domain, DomainValidator, Hosting, User, Validator) {
+            this.$scope = $scope;
+            this.$q = $q;
+            this.Alerter = Alerter;
+            this.Domain = Domain;
+            this.DomainValidator = DomainValidator;
+            this.Hosting = Hosting;
+            this.User = User;
+            this.Validator = Validator;
+        }
+
+        $onInit () {
+            this.domain = this.$scope.ctrlDomain.domain;
+
+            this.allowModification = false;
+            this.atLeastOneSelected = false;
+            this.editMode = false;
+            this.hasResult = false;
+            this.loading = {
+                adding: false,
+                table: false,
+                zone: true
+            };
+            this.search = {
+                filter: null,
+                value: ""
+            };
+            this.selectedRecords = [];
+            this.useDefaultsDns = true;
+            this.typesToCheck = ["MX", "NS", "SRV", "CNAME"]; // Check if target is relative for this type
+
+            this.$scope.$on("domain.tabs.zonedns.refresh", () => {
+                this.hasResult = false;
+                this.search.filter = null;
+                this.search.value = "";
+                this.selectedRecords = [];
+                this.refreshTable();
+            });
+            this.$scope.loadPaginated = (count, offset) => this.loadPaginated(count, offset);
+
+            this.checkAllowModification(this.domain.name);
+            this.checkAllZoneCanBeDelete(this.domain.name);
+            this.getZoneDns(this.domain.name);
+        }
+
+        // Searching --------------------------------------------------------------
+        emptyFilter () {
+            this.search.filter = null;
+            this.goSearch();
+        }
+
+        emptySearch () {
+            this.search.value = "";
+            this.goSearch();
+        }
+
+        goSearch () {
+            if (!_.isEmpty(this.search.value)) {
+                this.loading.table = true;
+            }
+            this.$scope.$broadcast("paginationServerSide.loadPage", 1);
+        }
+
+        // DNS Data ---------------------------------------------------------------
+        checkAllowModification (domainName) {
+            return this.$q
+                .all({
+                    domainServiceInfo: this.Domain.getServiceInfo(domainName).catch(() => null),
+                    zoneServiceInfo: this.Domain.getZoneServiceInfo(domainName),
+                    user: this.User.getUser()
+                })
+                .then(({ domainServiceInfo, zoneServiceInfo, user }) => {
+                    this.allowModification =
+                        user &&
+                        ((domainServiceInfo && (domainServiceInfo.contactTech === user.nichandle || domainServiceInfo.contactAdmin === user.nichandle)) ||
+                            (zoneServiceInfo && (zoneServiceInfo.contactTech === user.nichandle || zoneServiceInfo.contactAdmin === user.nichandle)));
+                });
+        }
+
+        checkAllZoneCanBeDelete (domainName) {
+            this.canDeleteAllZone = false;
+            return this.Hosting
+                .getHosting(domainName)
+                .then(() => {
+                    this.canDeleteAllZone = false;
+                }) // Hosting exist with this domain name, hide delete all zone button
+                .catch((err) => {
+                    this.canDeleteAllZone = err.status === 404;
+                });
+        }
+
+        static getDomainToDisplay (record) {
+            return `${(record.subDomainToDisplay ? `${record.subDomainToDisplay}.` : "") + record.zoneToDisplay}.`;
+        }
+
+        getZoneDns (domainName) {
+            this.loading.dns = true;
+            return this.$q
+                .all({
+                    defaults: this.Domain.getTabZoneDns(domainName, 0, 0, null, "NS"),
+                    activated: this.Domain.getTabDns(domainName)
+                })
+                .then(({ defaults, activated }) => {
+                    this.defaultsDns = defaults.paginatedZone.records.results.filter((data) => data.subDomain === "" && data.subDomainToDisplay === "").map((value) => value.targetToDisplay.slice(0, -1)).sort();
+
+                    this.activatedDns = activated.dns.filter((dns) => dns.isUsed).map((value) => value.host).sort();
+
+                    if (!_.isEmpty(this.defaultsDns) && !_.isEqual(this.defaultsDns, this.activatedDns)) {
+                        this.useDefaultsDns = false;
+                    }
+                })
+                .finally(() => {
+                    this.loading.dns = false;
+                });
+        }
+
+        loadPaginated (count, offset) {
+            this.loading.table = true;
+
+            return this.Domain
+                .getTabZoneDns(this.domain.name, count, offset, this.search.value || "", this.search.filter)
+                .then((tabZone) => {
+                    this.zone = tabZone;
+                    if (_.get(tabZone, "paginatedZone.records.results", []).length > 0) {
+                        this.hasResult = true;
+                    }
+                    this.dontDisplayActivateZone = false;
+                    this.applySelection();
+                    return this.Domain.getZoneStatus(this.domain.name).catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), err, this.$scope.alerts.dashboard));
+                })
+                .then((data) => {
+                    this.zoneStatusErrors = (data && !data.isDeployed && _.get(data, "errors", [])) || [];
+                    this.zoneStatusWarnings = _.get(data, "warnings", []);
+                })
+                .catch((err) => {
+                    this.dontDisplayActivateZone = true;
+                    if (err.data && /service(\s|\s\w+\s)expired/i.test(err.data.message)) {
+                        // A service expired here, is a temporary status, display the message: "service expired" in the page as general message is very confusing for customers.
+                        // A message like: "no DNS zone" is already displayed at the good place. So, get out.
+                        return;
+                    }
+
+                    // For Domain with no DNS zone.
+                    if (!err.status || err.status !== 404) {
+                        this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), err.data, this.$scope.alerts.dashboard);
+                    } else {
+                        this.dontDisplayActivateZone = false;
+                    }
+                })
+                .finally(() => {
+                    this.loading.table = false;
+                    this.loading.zone = false;
+                });
+        }
+
+        refreshTable () {
+            if (!this.loading.zone) {
+                this.$scope.$broadcast("paginationServerSide.reload");
+            }
+        }
+
+        targetIsRelativeDomain (domain) {
+            return domain.target && _.indexOf(this.typesToCheck, domain.fieldType) !== -1 && /\..*[^\.]$/.test(domain.target);
+        }
+
+        // checboxes --------------------------------------------------------------
+        applySelection () {
+            _.forEach(_.get(this.zone, "paginatedZone.records.results"), (item) => {
+                item.selected = _.indexOf(this.selectedRecords, item.id) !== -1;
+            });
+        }
+
+        globalCheckboxStateChange (state) {
+            if (_.get(this.zone, "paginatedZone.records.results")) {
+                switch (state) {
+                case 0:
+                    this.selectedRecords = [];
+                    this.atLeastOneSelected = false;
+                    break;
+                case 1:
+                    this.selectedRecords = _.map(this.zone.paginatedZone.records.results, "id").filter((result) => !_.some(this.selectedRecords, result.id));
+                    this.atLeastOneSelected = true;
+                    break;
+                case 2:
+                    this.selectedRecords = this.zone.fullRecordsIdsList;
+                    this.atLeastOneSelected = true;
+                    break;
+                default:
+                    break;
+                }
+                this.applySelection();
+            }
+        }
+
+        toggleRecord (record) {
+            this.selectedRecords = _.xor(this.selectedRecords, [record]);
+            this.atLeastOneSelected = this.selectedRecords.length > 0;
+            this.applySelection();
+        }
+
+        // Edit Mode --------------------------------------------------------------
+        activeEditMode () {
+            this.addDnsRecord = {};
+            if (this.search.filter) {
+                this.addDnsRecord.fieldType = this.search.filter;
+            }
+            this.editMode = true;
+        }
+
+        cancelAddRecord () {
+            this.addDnsRecord = {};
+            this.editMode = false;
+        }
+
+        fieldAndTargetCheck (input) {
+            input.$setValidity("target", this.addDnsRecord.targetToDisplay && this.addDnsRecord.fieldType && this.DomainValidator.isValidTarget(this.addDnsRecord.targetToDisplay, this.addDnsRecord.fieldType));
+        }
+
+        subDomainToDisplayCheck (input) {
+            input.$setValidity(
+                "subdomain",
+                this.addDnsRecord.subDomainToDisplay === null || this.addDnsRecord.subDomainToDisplay === "" || this.Validator.isValidSubDomain(this.addDnsRecord.subDomainToDisplay, { canBeginWithUnderscore: true, canBeginWithWildcard: true })
+            );
+        }
+
+        ttlCheck (input) {
+            input.$setValidity("ttl", this.addDnsRecord.ttl === null || this.addDnsRecord.ttl === "" || this.DomainValidator.isValidTtl(this.addDnsRecord.ttl));
+        }
+
+        addRecord () {
+            this.loading.adding = true;
+            return this.Domain
+                .addDnsEntry(this.domain.name, {
+                    fieldType: this.addDnsRecord.fieldType,
+                    subDomainToDisplay: this.addDnsRecord.subDomainToDisplay,
+                    ttl: this.addDnsRecord.ttl,
+                    target: this.DomainValidator.convertTargetToPunycode(this.addDnsRecord.fieldType, this.addDnsRecord.targetToDisplay)
+                })
+                .then(() => {
+                    this.cancelAddRecord();
+                    this.Alerter.success(this.$scope.tr("domain_configuration_dns_entry_add_success"), this.$scope.alerts.dashboard);
+                })
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dns_entry_add_fail"), err, this.$scope.alerts.dashboard))
+                .finally(() => {
+                    this.loading.adding = false;
+                });
+        }
+    }
+);

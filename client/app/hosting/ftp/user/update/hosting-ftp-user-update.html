@@ -1,0 +1,105 @@
+<div data-ng-controller="HostingFtpUserModifyCtrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="modifyUser"
+         data-wizard-title="i18n.hosting_tab_FTP_configuration_user_modify_title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="isStep1Valid()"
+             data-wizard-step-on-load="load">
+
+            <p data-i18n-static="hosting_tab_FTP_configuration_user_modify_step1_question"></p>
+
+            <div class="loader mt-5 text-center" aria-label="{{i18n.common_loading}}" data-ng-if="!model.capabilities"></div>
+
+            <form class="form-horizontal" name="hostingUserModifyForm"
+                  data-ng-if="model.capabilities">
+                <div class="form-group">
+                    <label class="control-label col-md-4" for="hostingUserModifyLogin"
+                           data-i18n-static="hosting_tab_FTP_configuration_user_modify_step1_user"></label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="hostingUserModifyLogin"
+                               data-ng-model="model.user.login" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group" data-ng-class="classes.homeInvalid">
+                    <label class="control-label col-md-4" for="hostingUserModifyHome"
+                           data-i18n-static="hosting_tab_FTP_configuration_user_modify_step1_home_label"></label>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">./</span>
+                            <input type="text" class="form-control" id="hostingUserModifyHome"
+                                   data-ng-disabled="model.user.isPrimaryAccount"
+                                   data-ng-model="model.user.home">
+                        </div>
+                        <small class="help-inline"
+                               data-i18n-static="hosting_common_path_help_inline"
+                               data-ng-if="!isPathValid()"></small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <strong class="control-label col-md-4"
+                            data-i18n-static="hosting_tab_FTP_configuration_user_modify_step1_state_label"></strong>
+                    <div class="checkbox col-md-8">
+                        <label>
+                            <input type="checkbox"
+                                   data-ng-model="model.user.state"
+                                   data-ng-true-value="'off'"
+                                   data-ng-false-value="'rw'" />
+                            <span data-i18n-static="hosting_tab_FTP_configuration_user_modify_step1_state_explanations"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group"
+                     data-ng-if="model.operatingSystem === 'linux'">
+                    <strong class="control-label col-md-4"
+                            data-i18n-static="hosting_tab_FTP_configuration_user_modify_step1_ssh_state_label"></strong>
+                    <div class="col-md-8">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="sshState" value="none"
+                                       data-ng-disabled="model.user.state === 'off'"
+                                       data-ng-model="model.user.sshState">
+                                <span data-i18n-static="hosting_tab_FTP_multiftp_table_ssh_state_none"></span>
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="sshState" value="sftponly"
+                                       data-ng-disabled="model.user.state === 'off'"
+                                       data-ng-model="model.user.sshState">
+                                <span data-i18n-static="hosting_tab_FTP_multiftp_table_ssh_state_sftponly"></span>
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="sshState" value="active"
+                                       data-ng-disabled="model.user.state === 'off'"
+                                       data-ng-model="model.user.sshState">
+                                <span data-i18n-static="hosting_tab_FTP_multiftp_table_ssh_state_active"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+        <div data-wizard-step>
+            <p data-i18n-static="hosting_tab_FTP_configuration_user_modify_step2_question"></p>
+            <dl class="dl-horizontal dl-lg">
+                <dt data-i18n-static="hosting_tab_FTP_configuration_user_modify_step2_user"></dt>
+                <dd data-ng-bind="model.userLogin"></dd>
+
+                <dt data-i18n-static="hosting_tab_FTP_configuration_user_modify_step2_home_label"></dt>
+                <dd data-ng-bind="getSelectedHome()"></dd>
+
+                <dt data-i18n-static="hosting_tab_FTP_configuration_user_modify_step2_state_label"></dt>
+                <dd data-ng-bind="tr('hosting_tab_FTP_configuration_user_modify_state_' + model.user.state)"></dd>
+            </dl>
+        </div>
+    </div>
+</div>

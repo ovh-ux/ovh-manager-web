@@ -1,0 +1,24 @@
+<table class="table pretty" data-ng-class="paginatedTableClass">
+    <thead>
+        <tr>
+            <th data-ng-repeat="title in paginatedTableTitles track by $index" class="fs12" data-ng-bind="title"></th>
+        </tr>
+    </thead>
+    <tbody data-ng-show="getPaginatedTableLoading() || !lineTemplate">
+        <tr>
+            <td colspan="{{paginatedTableTitles.length}}"><div class="loader"></div></td>
+        </tr>
+    </tbody>
+    <tbody data-ng-show="getPaginatedTableStuff().count == 0 && !getPaginatedTableLoading() && lineTemplate">
+        <tr>
+            <td class="fs11" colspan="{{paginatedTableTitles.length}}"><span data-ng-bind="paginatedTableEmptyLabel"></span></td>
+        </tr>
+    </tbody>
+    <tbody data-ng-show="getPaginatedTableStuff().count > 0 && !getPaginatedTableLoading() && lineTemplate">
+        <tr data-ng-repeat="element in getPaginatedTableStuff().list.results" data-ng-class-odd="'odd'" data-ng-class-even="'even'">
+            <td data-ng-repeat="title in paginatedTableTitles track by $index" data-paginated-table-element class="fs11">
+            </td>
+        </tr>
+    </tbody>
+</table>
+

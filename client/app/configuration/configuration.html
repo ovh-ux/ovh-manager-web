@@ -1,0 +1,31 @@
+<div id="main-container" data-ng-controller="UserCtrl">
+    <div class="text-center mt-5 py-5">
+      <h1 class="d-inline">
+        <span data-i18n-static="welcome_to_your_manager_1"></span>
+        <span data-i18n-static="welcome_to_your_manager_2"></span>
+      </h1>
+      <p class="lead" data-ng-bind-html="tr('core_top_guides_header',[ConfigurationCtrl.allGuides])"></p>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row d-md-flex" data-ng-if="!loaders.loading && user.ovhSubsidiary === 'FR'">
+          <div class="col-md-8 col-lg-4 mx-md-auto">
+              <div class="oui-tile" data-ng-repeat="(key, value) in ConfigurationCtrl.guides track by $index">
+                  <h2 class="oui-header__title">{{ tr('core_type_of_guide_' + key) }}</h2>
+                  <ul class="mb-4">
+                      <li class="top-guide-item" data-ng-repeat="guide in value track by $index"
+                          data-ng-class-odd="'odd'" data-ng-class-even="'even'">
+                          <a data-ng-href="{{guide.url}}" target="_blank">
+                              <span data-ng-bind="i18n[guide.title]"></span>
+                          </a>
+                      </li>
+                  </ul>
+                  <a class="btn btn-default" data-ng-href="{{ ConfigurationCtrl.allGuides }}" target="_blank">
+                      <span data-i18n-static="core_all_guides"></span>
+                      <i class="fa fa-external-link" aria-label="{{ tr('core_new_window') }}"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="domains_dashboard_title" qtlid="140599">Masowe operacje na domenach</translation>
+   <translation id="domains_dashboard_loading_error" qtlid="315904">Wystąpił błąd podczas pobierania informacji. Sytuacja taka może wystąpić, jeśli włączona jest blokada reklam.</translation>
+   <translation id="domains_dashboard_search_label" qtlid="296937">Wyszukiwanie domen</translation>
+   <translation id="domains_dashboard_search_placeholder" qtlid="143199">Wyszukiwanie domen...</translation>
+   <translation id="domains_dashboard_selector_all_pages" qtlid="140625">Zaznacz wszystkie strony</translation>
+   <translation id="domains_dashboard_table_titles_name" qtlid="140638">Nazwa domeny</translation>
+   <translation id="domains_dashboard_table_titles_creation" qtlid="26419">Data utworzenia</translation>
+   <translation id="domains_dashboard_table_titles_expiration" qtlid="24523">Data</translation>
+   <translation id="domains_dashboard_table_titles_whois" qtlid="140651">Maskowanie WHOIS</translation>
+   <translation id="domains_dashboard_table_titles_dnssec" qtlid="184529">DNSSEC</translation>
+   <translation id="domains_dashboard_table_empty" qtlid="140664">Brak domen spełniających te kryteria</translation>
+   <translation id="domains_dashboard_table_noresult" qtlid="433680">Brak domen z wykonanymi operacjami</translation>
+   <translation id="domains_dashboard_message_see_more" qtlid="140677">Wyświetl szczegóły błędów</translation>
+   <translation id="domains_dashboard_table_dnssec_status_DISABLE_IN_PROGRESS" qtlid="148487">Trwa dezaktywacja</translation>
+   <translation id="domains_dashboard_table_dnssec_status_ENABLE_IN_PROGRESS" qtlid="148474">Trwa aktywacja</translation>
+   <translation id="domains_dashboard_table_dnssec_status_ENABLED" qtlid="30250">Aktywne</translation>
+   <translation id="domains_dashboard_table_dnssec_status_DISABLED" qtlid="24967">Wyłączony</translation>
+
+   <translation id="domains_dashboard_tooltip_renew_multiples" qtlid="143108">Odnów wybrane domeny</translation>
+   <translation id="domains_dashboard_tooltip_whois_multiples" qtlid="143121">Skonfiguruj WHOIS dla wybranych domen</translation>
+   <translation id="domains_dashboard_tooltip_dnssec_multiples" qtlid="184542">Konfiguruj DNSSEC dla wybranych domen</translation>
+   <translation id="domains_dashboard_tooltip_export_csv" qtlid="231682">Eksportuj domeny w formacie CSV</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_expl" qtlid="273046">Eksport domen może trwać kilka minut (w zależności od liczby posiadanych domen). W trakcie tej operacji możesz korzystać z panelu klienta pozostając w części dla usług www. Pobieranie danych wykonywane jest automatycznie.</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_expl2" qtlid="273453">Informacje o usługach MX plan nie zostaną wyeksportowane.</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_confirm" qtlid="298378">Czy chcesz dokonać eksportu informacji o domenach w formacie CSV?</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_success" qtlid="231734">Eksport domen został zakończony.</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_error" qtlid="231747">Wystąpił błąd podczas eksportu.</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_creation_doing" qtlid="273059">Trwa tworzenie pliku...</translation>
+   <translation id="domains_dashboard_tooltip_renew_single" qtlid="143134">Odnów tą domenę</translation>
+   <translation id="domains_dashboard_tooltip_whois_single" qtlid="143147">Skonfiguruj WHOIS dla tej domeny</translation>
+   <translation id="domains_dashboard_tooltip_dnssec_activate_single" qtlid="184555">Włącz DNSSEC dla tej domeny</translation>
+   <translation id="domains_dashboard_tooltip_dnssec_deactivate_single" qtlid="184568">Wyłącz DNSSEC dla tej domeny</translation>
+   <translation id="domains_dashboard_button_renew" qtlid="118962">Odnów</translation>
+   <translation id="domains_dashboard_button_whois" qtlid="299072">Usługa OWO</translation>
+   <translation id="domains_dashboard_button_dnssec" qtlid="184581">Konfiguruj DNSSEC</translation>
+   <translation id="domains_dashboard_button_export" qtlid="231773">Eksportuj w formacie CSV</translation>
+   <translation id="domains_change_owner" qtlid="267240">Zmień właściciela</translation>
+   <translation id="domains_dashboard_csv_file_created" qtlid="372230">Plik został poprawnie utworzony. Jeśli pobieranie nie rozpoczyna się, możesz <a target="_blank" href="{0}" download>pobrać plik ręcznie</a>.</translation>
+   <translation id="domains_configuration_renew_title" qtlid="140690">Odnów domeny</translation>
+   <translation id="domains_configuration_renew_step1_question" qtlid="140703">W celu odnowienia domen, skorzystaj z interfejsu OVH do odnawiania usług (poza panelem klienta OVH).</translation>
+   <translation id="domains_configuration_renew_step1_unable_to_renew" qtlid="140716">Nie jesteś kontaktem księgowym i nie możesz odnowić niektórych wybranych domen (<span class="italic">{0}</span>).</translation>
+   <translation id="domains_configuration_renew_step1_unable_ignored" qtlid="140729">Te domeny nie będą brane pod uwagę podczas odnawiania usług.</translation>
+   <translation id="domains_configuration_renew_step1_no_selected_domains" qtlid="140742">Nie wybrałeś domen do odnowienia lub nie posiadasz uprawnień do odnowienia domen.</translation>
+   <translation id="domains_configuration_renew_step1_confirmation" qtlid="140755">Kliknij na przycisk "Zamów". Otworzy się nowa strona, na której będziesz mógł odnowić domeny.</translation>
+   <translation id="domains_configuration_renew_step1_information" qtlid="168341">Otworzy się nowa zakładka i zostaniesz automatycznie przekierowany do interfejsu odnowień OVH.</translation>
+   <translation id="domains_configuration_renew_step1_alert" qtlid="140768">Odnowienie usługi może trwać około 2 godziny od momentu zaakceptowania płatności.</translation>
+   <translation id="domains_configuration_whois_title" qtlid="124447">Konfiguracja WHOIS</translation>
+   <translation id="domains_configuration_whois_step1_no_selected_domains" qtlid="140781">Nie wybrałeś domeny do skonfigurowania lub dla wybranych domen nie można zmienić bazy WHOIS.</translation>
+   <translation id="domains_configuration_whois_step1_unable_to_configure" qtlid="140794">Dla niektórych domen baza WHOIS nie może zostać zmodyfikowana (<span class="italic">{0}</span>).</translation>
+   <translation id="domains_configuration_whois_step1_unable_ignored" qtlid="140807">Te domeny nie będą brane pod uwagę podczas wprowadzania zmian. </translation>
+   <translation id="domains_configuration_whois_step1_question" qtlid="140820">Dokonaj wyboru, czy Twoje dane osobowe mają być widoczne czy zamaskowane w bazie WHOIS dla wybranych domen.</translation>
+   <translation id="domains_configuration_whois_step1_display" qtlid="69353">Wyświetl</translation>
+   <translation id="domains_configuration_whois_step1_hide" qtlid="97136">Ukryj</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_desc" qtlid="329499">Gdy rejestrujesz domenę, musisz podać dane osobowe. Są one domyślnie wyświetlane w bazie danych WHOIS, która jest publicznie dostępna. <br/>Funkcja ta pozwala na ukrycie tych danych.</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatis" qtlid="130099">Czym jest baza WHOIS?</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">WHOIS to publiczna baza zawierająca informacje związane z domenami i adresami IP. Baza ta zwiera również informacje na temat kontaktów. </translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">Jakie informacje są widoczne w bazie WHOIS ?</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329512">Publikowane dane to dane właściciela domeny. Zależą one od rozszerzenia domeny. Generalnie są to: <ul><li>Adres</li><li>Numer telefonu i faksu</li><li>Adres e-mail</li></ul><br/>Maskowanie / wyświetlanie danych może być różnie skonfigurowane dla tych 3 typów danych.</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_how" qtlid="130135">W jaki sposób możesz ukryć te informacje?</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_how_desc" qtlid="329525">Jeśli uruchomisz tę usługę, OVH zastąpi Twoje dane danymi ogólnymi. Wszelka korespondencja adresowana do Ciebie będzie przekazywana.<ul><li>Pole z adresem zostanie zastąpione skrytką pocztową OVH. Korespondencja będzie przesyłana na rzeczywisty adres.</li><li>Numer telefonu i faksu zostaną zastąpione numerem OwO.</li><li>Pole email zostanie zastąpione przekierowaniem, które wskazuje na adres email właściciela. Adres ten jest regularnie zmieniany i filtrowany pod względem spamu.</li></ul></translation>
+   <translation id="domains_configuration_whois_field_ADDRESS" qtlid="30430">Adres</translation>
+   <translation id="domains_configuration_whois_field_EMAIL" qtlid="33598">Email</translation>
+   <translation id="domains_configuration_whois_field_PHONE" qtlid="128214">Telefon / Faks</translation>
+   <translation id="domains_configuration_whois_step2_alert" qtlid="128226">Aktualizacja danych w bazie WHOIS zajmuje kilka godzin.</translation>
+   <translation id="domains_configuration_whois_step2_new_configuration" qtlid="128250">Nowa konfiguracja</translation>
+   <translation id="domains_configuration_whois_step2_question" qtlid="128262">Czy chcesz zastosować następujące zmiany dotyczące wyświetlania informacji WHOIS?</translation>
+   <translation id="domains_configuration_whois_step2_status_activated" qtlid="128274">Ukryte</translation>
+   <translation id="domains_configuration_whois_step2_status_desactivated" qtlid="128286">Wyświetlane</translation>
+   <translation id="domains_configuration_whois_step2_status_unchanged" qtlid="140833">Nie zmodyfikowane</translation>
+   <translation id="domains_configuration_whois_success" qtlid="128298">Twoje zlecenie zmiany informacji WHOIS zostało przyjęte.</translation>
+   <translation id="domains_configuration_whois_partial" qtlid="140846">Twoje zlecenie zmiany danych w bazie WHOIS zostało zarejestrowane dla niektórych domen. Dla pozostałych domen wystąpiły błędy.</translation>
+   <translation id="domains_configuration_whois_fail" qtlid="128310">Wystąpił błąd podczas zlecania zmiany informacji WHOIS.</translation>
+
+   <translation id="domains_configuration_dnssec_batch_title" qtlid="184581">Konfiguruj DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_no_selected_domains" qtlid="184594">Nie wybrałeś domeny do skonfigurowania lub nie można zmodyfikować usługi DNSSEC dla wybranych domen.</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_question" qtlid="184607">Wybierz, czy opcja DNSSEC ma zostać włączona czy wyłączona dla wybranych domen.</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_status_true" qtlid="184620">Włącz DNSSEC dla wybranych domen</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_status_false" qtlid="184633">Wyłącz DNSSEC dla wybranych domen</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_question" qtlid="184646">Czy chcesz zastosować następujące zmiany dla wybranych domen?</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_status_true" qtlid="184659">Włącz DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_status_false" qtlid="184672">Wyłącz DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_success" qtlid="184685">Zlecenie zmiany dla DNSSEC zostało przyjęte.</translation>
+   <translation id="domains_configuration_dnssec_batch_partial" qtlid="184698">Zlecenie zmiany dla DNSSEC zostało przyjęte dla niektórych domen. Dla pozostałych domen wystąpiły błędy.</translation>
+   <translation id="domains_configuration_dnssec_batch_fail" qtlid="184711">Wystąpił błąd podczas zlecania zmiany dla DNSSEC.</translation>
+
+   <translation id="domains_configuration_dnssec_batch_title" qtlid="184581">Konfiguruj DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_no_selected_domains" qtlid="184594">Nie wybrałeś domeny do skonfigurowania lub nie można zmodyfikować usługi DNSSEC dla wybranych domen.</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_question" qtlid="184607">Wybierz, czy opcja DNSSEC ma zostać włączona czy wyłączona dla wybranych domen.</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_status_true" qtlid="184620">Włącz DNSSEC dla wybranych domen</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_status_false" qtlid="184633">Wyłącz DNSSEC dla wybranych domen</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_help_title" qtlid="184529">DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_help_content" qtlid="184724">Protokół DNSSEC zabezpiecza wymianę zapytań DNS dzięki mechanizmowi asymetrycznego podpisu kryptograficznego. Odpowiedzi DNS są uwierzytelniane za pomocą pary kluczy: publicznego, który służy do weryfikowania ważności podpisu i prywatnego, który służy do podpisania strefy DNS związanej z domeną.<br/><br/>DNSSEC odrzuca próby hakera, z powodu niepoprawności (lub braku) podpisu przypisanego do strefy DNS.<br/><br/>Aktualnie niewielu dostawców sprawdza poprawność zapytań przypisanych przez DNSSEC. </translation>
+   <translation id="domains_configuration_dnssec_batch_step1_help_more" qtlid="44536">Więcej informacji</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_question" qtlid="184646">Czy chcesz zastosować następujące zmiany dla wybranych domen?</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_status_true" qtlid="184659">Włącz DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_status_false" qtlid="184672">Wyłącz DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_success" qtlid="184685">Zlecenie zmiany dla DNSSEC zostało przyjęte.</translation>
+   <translation id="domains_configuration_dnssec_batch_partial" qtlid="184698">Zlecenie zmiany dla DNSSEC zostało przyjęte dla niektórych domen. Dla pozostałych domen wystąpiły błędy.</translation>
+   <translation id="domains_configuration_dnssec_batch_fail" qtlid="184711">Wystąpił błąd podczas zlecania zmiany dla DNSSEC.</translation>
+
+   <translation id="domains_configuration_dnssec_simple_deactivate_title" qtlid="184672">Wyłącz DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_simple_deactivate_step1_question" qtlid="184750">Czy chcesz wyłączyć DNSSEC dla domeny <span class="italic">{0}</span> ?</translation>
+   <translation id="domains_configuration_dnssec_simple_deactivate_success" qtlid="184685">Zlecenie zmiany dla DNSSEC zostało przyjęte.</translation>
+   <translation id="domains_configuration_dnssec_simple_deactivate_fail" qtlid="184711">Wystąpił błąd podczas zlecania zmiany dla DNSSEC.</translation>
+
+   <translation id="domains_configuration_dnssec_simple_activate_title" qtlid="184659">Włącz DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_simple_activate_step1_question" qtlid="184763">Czy chcesz włączyć DNSSEC dla domeny <span class="italic">{0}</span> ?</translation>
+   <translation id="domains_configuration_dnssec_simple_activate_success" qtlid="184776">Zlecenie zmiany dla DNSSEC zostało zarejestrowane.</translation>
+   <translation id="domains_configuration_dnssec_simple_activate_fail" qtlid="184711">Wystąpił błąd podczas zlecania zmiany dla DNSSEC.</translation>
+
+   <translation id="domains_newdnszone_order_title" qtlid="263181">Dodaj strefę DNS</translation>
+   <translation id="domains_newdnszone_order_step1_title" qtlid="263194">1. Wpisz nazwę domeny</translation>
+   <translation id="domains_newdnszone_order_step1_zonename" qtlid="66428">Domena</translation>
+   <translation id="domains_newdnszone_order_step1_zonename_required" qtlid="263220">Nazwa strefy jest wymagana.</translation>
+   <translation id="domains_newdnszone_order_step1_zonename_invalid" qtlid="344292">Ta strefa DNS nie może zostać utworzona, ponieważ nie spełniasz wszystkich poniższych warunków:</translation>
+   <translation id="domains_newdnszone_order_step1_zonename_pending" qtlid="263884">Sprawdzanie dostępności nazwy strefy...</translation>
+   <translation id="domains_newdnszone_order_step2_title" qtlid="263259">2. Szczegóły</translation>
+   <translation id="domains_newdnszone_order_step2_domain" qtlid="263207">Nazwa strefy DNS</translation>
+   <translation id="domains_newdnszone_order_step2_description" qtlid="9238">Opis</translation>
+   <translation id="domains_newdnszone_order_step2_price" qtlid="83913">Cena</translation>
+   <translation id="domains_newdnszone_order_step2_minimized" qtlid="263897">Aktywować wpisy minimalne?</translation>
+   <translation id="domains_newdnszone_order_step2_minimized_yes" qtlid="34776">Tak</translation>
+   <translation id="domains_newdnszone_order_step2_minimized_no" qtlid="34788">Nie</translation>
+   <translation id="domains_newdnszone_order_step3_title" qtlid="186089">3. Potwierdzanie</translation>
+   <translation id="domains_newdnszone_order_step3_question" qtlid="263272">Kliknij na "Złóż zamówienie", aby zamówić nową strefę DNS.</translation>
+   <translation id="domains_newdnszone_order_step3_contracts_ask" qtlid="161646">Prosimy o przeczytanie i zaakceptowanie poniższych regulaminów i kliknięcie na "Złóż zamówienie":</translation>
+   <translation id="domains_newdnszone_order_step3_contracts_check" qtlid="161139">Przeczytałem i akceptuję regulaminy.</translation>
+   <translation id="domains_newdnszone_order_step3_generate" qtlid="186219">Złóż zamówienie</translation>
+   <translation id="domains_newdnszone_order_step3_generating" qtlid="169511">Generowanie zamówienia ...</translation>
+   <translation id="domains_newdnszone_order_step3_fail" qtlid="216781">Wystąpił błąd podczas składania zamówienia.</translation>
+   <translation id="domains_newdnszone_order_step3_generated" qtlid="169524">Zamówienie zostało wygenerowane.</translation>
+   <translation id="domains_newdnszone_order_step3_clic_here" qtlid="169537">Aby potwierdzić zamówienie, kliknij na przycisk "Zamów".</translation>
+   <translation id="domains_newdnszone_order_step3_bc_information" qtlid="167886">Otworzy się nowe okno i zostaniesz automatycznie przekierowany do interfejsu płatności OVH.</translation>
+   <translation id="domains_newdnszone_order_step3_pay_button" qtlid="130183">Zamów</translation>
+   <translation id="domains_newdnszone_order_subtitle" qtlid="265584">konfiguracja domeny z różnymi usługami.</translation>
+   <translation id="domains_newdnszone_order_example" qtlid="265597">Przykład zastosowania:</translation>
+   <translation id="domains_newdnszone_order_usage" qtlid="265610">Posiadasz domenę u innego operatora i chcesz ja przenieść do OVH. Aby uniknąć przerwy w działaniu usług, przed rozpoczęciem transferu możesz dodać strefę DNS.</translation>
+   <translation id="domains_newdnszone_order_reminder" qtlid="265623">Nie zapomnij o zmianie serwerów DNS, aby wpisy w strefie działały.</translation>
+   <translation id="domains_newdnszone_zone_invalid_title" qtlid="298404">Utworzenie strefy DNS jest możliwe, jeśli spełnisz wszystkie poniższe warunki:</translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_active" qtlid="298417">Domena istnieje i jest aktywna.</translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_soa" qtlid="344188">Wpis SOA domeny powinien zostać poprawnie umieszczony w strefie DNS domeny.</translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_a" qtlid="344201">Brak operacji i zamówień w trakcie w OVH dla tej domeny</translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_zone" qtlid="298456">Ta strefa DNS nie musi być już zarejestrowana w OVH.</translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_guide" qtlid="298469">Zapoznaj się z przewodnikiem.</translation>
+
+   <translation id="domains_action_export_csv_form_service_name_label" qtlid="273072">Domena ASCII</translation>
+   <translation id="domains_action_export_csv_form_service_name_help" qtlid="273085">Dodaj domenę ASCII (Punycode)</translation>
+   <translation id="domains_action_export_csv_form_creation_date_label" qtlid="26419">Data utworzenia</translation>
+   <translation id="domains_action_export_csv_form_creation_date_help" qtlid="273098">Dodaj datę rejestracji domeny</translation>
+   <translation id="domains_action_export_csv_form_expiration_date_label" qtlid="273111">Data wygaśnięcia</translation>
+   <translation id="domains_action_export_csv_form_expiration_date_help" qtlid="273124">Dodaj datę wygaśnięcia domeny</translation>
+   <translation id="domains_action_export_csv_form_service_display_name_label" qtlid="273137">Domena UTF-8</translation>
+   <translation id="domains_action_export_csv_form_service_display_name_help" qtlid="273150">Dodaj domenę UTF-8</translation>
+   <translation id="domains_action_export_csv_form_whois_fields_label" qtlid="273163">Usługa OwO</translation>
+   <translation id="domains_action_export_csv_form_whois_fields_help" qtlid="273176">Dodaj status usługi OwO (whois)</translation>
+   <translation id="domains_action_export_csv_form_dnssec_label" qtlid="184529">DNSSEC</translation>
+   <translation id="domains_action_export_csv_form_dnssec_help" qtlid="273189">Dodaj status bezpiecznej delegacji</translation>
+   <translation id="domains_action_export_csv_form_nic_billing_label" qtlid="273202">Kontakt księgowy</translation>
+   <translation id="domains_action_export_csv_form_nic_billing_help" qtlid="273215">Dodaj kontakt księgowy</translation>
+   <translation id="domains_action_export_csv_form_nic_tech_label" qtlid="273228">Kontakt techniczny</translation>
+   <translation id="domains_action_export_csv_form_nic_tech_help" qtlid="273241">Dodaj kontakt techniczny</translation>
+   <translation id="domains_action_export_csv_form_nic_admin_label" qtlid="273254">Kontakt administracyjny</translation>
+   <translation id="domains_action_export_csv_form_nic_admin_help" qtlid="273267">Dodaj kontakt administracyjny</translation>
+   <translation id="domains_action_export_csv_form_nic_owner_label" qtlid="273280">Właściciel</translation>
+   <translation id="domains_action_export_csv_form_nic_owner_help" qtlid="273293">Dodaj nazwisko/nazwę właściciela</translation>
+   <translation id="domains_action_export_csv_form_dns_label" qtlid="32086">DNS</translation>
+   <translation id="domains_action_export_csv_form_dns_help" qtlid="273306">Dodaj listę serwerów domeny</translation>
+</translations>

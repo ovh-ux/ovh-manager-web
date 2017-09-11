@@ -1,0 +1,17 @@
+<div data-ng-controller="DomainRenewCtrl">
+    <div data-wizard
+         data-wizard-confirm-button-text="i18n.wizard_order"
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="displayBC"
+         data-wizard-title="i18n.domain_configuration_renew_title">
+
+        <div data-wizard-step>
+            <p class="mb-2" data-ng-bind-html="tr('domain_configuration_renew_step1_question', [ctrl.domainToRenew.displayName])"></p>
+            <p class="mb-2" data-i18n-static="domain_configuration_renew_step1_confirmation"></p>
+            <p class="mb-2" data-i18n-static="domain_configuration_renew_step1_information"></p>
+            <div class="alert alert-info" role="alert"
+                 data-i18n-static="domain_configuration_renew_step1_alert">
+           </div>
+        </div>
+    </div>
+</div>

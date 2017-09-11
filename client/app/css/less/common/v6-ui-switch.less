@@ -1,0 +1,172 @@
+.v6us-switch {
+    position: relative;
+    display: inline-block;
+    box-sizing: content-box;
+    overflow: visible;
+    width: 56px;
+    height: 22px;
+    padding: 0;
+    margin: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: .2s ease-out all;
+    top: -1px;
+    background-color: @oui-color-silver;
+    border: none;
+    padding: 2px;
+
+    .oui-icon {
+        font-size: 1.2rem;
+        color: #fff;
+    }
+
+    &.wide {
+        width:80px;
+    }
+
+    small {
+        background: #fff;
+        border-radius: 5px;
+        width: 20px;
+        height: 17px;
+        position: absolute;
+        top: 4px;
+        left: 5px;
+        transition: .2s ease-out all;
+        -webkit-transition: .2s ease-out all;
+        box-shadow: none;
+    }
+
+    &.checked {
+        background-color: @btn-primary-bg;
+
+        small {
+            left: 35px;
+        }
+
+        .v6us-off {
+            display:none;
+        }
+
+        .v6us-on {
+            display:block;
+        }
+
+        .v6us-pending {
+            display:none;
+        }
+
+        .v6us-partial {
+            display:none;
+        }
+
+        &.pending {
+            .v6us-on {
+                display:none;
+            }
+
+            .v6us-pending {
+                display:block;
+                left: 7px;
+            }
+        }
+
+        &.wide {
+            small {
+                left:52px;
+            }
+        }
+    }
+
+    &.partial {
+        background-color: @brand-warning;
+
+        small {
+            left: 35px;
+        }
+
+        .v6us-off {
+            display:none;
+        }
+
+        .v6us-on {
+            display:none;
+        }
+
+        .v6us-partial {
+            display:block;
+        }
+
+        .v6us-pending {
+            display:none;
+        }
+
+        &.pending {
+            .v6us-partial {
+                display:none;
+            }
+        }
+    }
+
+    &.pending {
+        .v6us-off {
+            display:none;
+        }
+
+        .v6us-pending {
+            display:block;
+        }
+    }
+
+    .v6us-switch-text {
+        font-size:13px;
+    }
+
+    .v6us-on {
+        display:none;
+        z-index: 0;
+        color:#fff;
+        position: absolute;
+        left: 10px;
+        top: -2px;
+        font-size: 19px;
+    }
+
+    .v6us-off {
+        display:block;
+        position: absolute;
+        right: 10px;
+        z-index: 0;
+        font-size: 19px;
+        top: -2px;
+        color: #fff;
+    }
+
+    .v6us-partial {
+        display:none;
+        z-index: 0;
+        color:#fff;
+        position: absolute;
+        left: 9px;
+        top: 1px;
+        font-size: 16px;
+    }
+
+    .v6us-pending {
+        display:none;
+        z-index: 0;
+        color:#fff;
+        position: absolute;
+        left: 55%;
+        top: 0;
+        font-size: 16px;
+    }
+
+    &.disabled,
+    &[disabled] {
+        opacity: .30;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+}

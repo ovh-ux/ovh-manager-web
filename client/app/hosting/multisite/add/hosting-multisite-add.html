@@ -1,0 +1,186 @@
+<div data-ng-controller="HostingDomainAttachCtrl">
+    <div data-wizard
+         data-wizard-bread-crumb
+         data-wizard-hide-previous-button="previousButtonHidden()"
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="submit"
+         data-wizard-title="i18n.hosting_tab_DOMAINS_configuration_add_title">
+
+        <div data-wizard-step
+             data-wizard-step-on-load="loadHosting"
+             data-wizard-step-valid="isStep1Valid()">
+
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="!model.hosting || !model.options"></div>
+
+            <div class="alert alert-danger mt-5" role="alert"
+                 data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_no_db_left"
+                 data-ng-if="model.hosting && model.options && model.domainsCount >= model.capabilities.attachedDomains">
+            </div>
+
+            <div data-ng-if="model.hosting && model.options && model.domainsCount < model.capabilities.attachedDomains">
+                <p data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step1_title', model.hosting.serviceDisplayName)"></p>
+
+                <div class="ml-4">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="hostingDomainAttachMode" value="{{model.mode.OVH}}"
+                                   data-ng-model="selected.mode">
+                            <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_ovh"></span>
+                        </label>
+                        <div class="row mt-3" data-ng-show="selected.mode === model.mode.OVH">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="{{i18n.hosting_tab_DOMAINS_configuration_add_step1_ovh_search_placeholder}}"
+                                           data-ng-change="selected.baseDomain = null"
+                                           data-ng-model="selected.search">
+                                    <div class="input-group-btn"
+                                         data-ng-if="selected.search">
+                                        <button class="btn btn-default" type="button"
+                                                data-ng-click="selected.search = ''">
+                                            <span class="fa fa-times" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <span class="input-group-addon"
+                                          data-ng-if="!selected.search">
+                                        <span class="fa fa-search" aria-hidden="true"></span>
+                                    </span>
+                                </div>
+                                <ul class="list-unstyled selectList w-100">
+                                    <li data-ng-repeat="domain in (model.options.availableDomains | filter:selected.search | orderBy:'formattedName') track by $index"
+                                        data-ng-bind="domain.displayName"
+                                        data-ng-class="{'lineSelected': selected.baseDomain.name === domain.name}"
+                                        data-ng-click="selected.baseDomain = domain">
+                                    </li>
+                                    <li data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_ovh_search_no_result_found"
+                                        data-ng-show="(model.options.availableDomains | filter:selected.search).length === 0">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="hostingDomainAttachMode" value="{{model.mode.EXTERNAL}}"
+                                   data-ng-model="selected.mode">
+                            <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_external"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-on-load="loadStep2"
+             data-wizard-step-valid="model.step2Valid && !domainsAlreadyExists() && !domainIsNotValid() && isPathValid() && (selected.mode === model.mode.EXTERNAL || ((selected.ownLog === 'ACTIVE' && selected.ownLogDomain) || (!selected.ownLog || selected.ownLog === 'NONE')))">
+
+            <div class="mt-5 loader text-center" data-ng-if="model.domains == null"></div>
+
+            <div data-ng-include="getStep2View()"
+                 data-ng-show="model.domains != null"></div>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-on-load="loadStep3"
+             data-wizard-step-valid="!loading">
+
+            <p class="mb-4" data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_summary"></p>
+
+            <dl class="dl-horizontal">
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_domain_name"></dt>
+                <dd data-ng-bind="getSelectedDomainToDisplay()"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_domain_name"
+                    data-ng-if="needWwwDomain()" ></dt>
+                <dd data-ng-bind="getSelectedDomainToDisplay(true)"
+                    data-ng-if="needWwwDomain()"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_home"></dt>
+                <dd data-ng-bind="selected.pathFinal"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_countriesIp"
+                    data-ng-if="selected.mode === model.mode.OVH && selected.countryIp" ></dt>
+                <dd data-ng-bind="tr('country_' + selected.countryIp.country) + ' - ' + selected.countryIp.ip"
+                    data-ng-if="selected.mode === model.mode.OVH  && selected.countryIp"></dd>
+
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_ipv6"
+                    data-ng-if="selected.mode === model.mode.OVH"></dt>
+                <dd data-ng-bind="tr('hosting_tab_DOMAINS_configuration_add_step3_ipv6_' + selected.ipv6Needed)"
+                    data-ng-if="selected.mode === model.mode.OVH"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step2_cdn"
+                    data-ng-if="selected.mode === model.mode.OVH"></dt>
+                <dd data-ng-bind="tr('hosting_tab_DOMAINS_table_cdn_state_'+ selected.activeCDN)"
+                    data-ng-if="selected.mode === model.mode.OVH"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step2_ssl"
+                    data-ng-if="selected.mode === model.mode.OVH"></dt>
+                <dd data-ng-bind="tr('hosting_tab_DOMAINS_table_ssl_state_'+ selected.ssl)"
+                    data-ng-if="selected.mode === model.mode.OVH"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_firewall"
+                    data-ng-if="selected.mode === model.mode.OVH"></dt>
+                <dd data-ng-bind="tr('hosting_tab_DOMAINS_configuration_add_step3_firewall_' + selected.firewall)"
+                    data-ng-if="selected.mode === model.mode.OVH"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_ownlog"
+                    data-ng-if="selected.mode === model.mode.OVH"></dt>
+                <dd data-ng-bind="(selected.ownLog === 'ACTIVE' ? (tr('hosting_tab_DOMAINS_configuration_add_step3_ownlog_enabled') + ' (' + selected.ownLogDomain.name + ')') : tr('hosting_tab_DOMAINS_configuration_add_step3_ownlog_disabled'))"
+                    data-ng-if="selected.mode === model.mode.OVH"></dd>
+            </dl>
+
+            <div class="row" data-ng-if="selected.mode === model.mode.OVH">
+                <div class="checkbox col-md-11 col-md-offset-1">
+                    <label>
+                        <input type="checkbox"
+                               data-ng-model="selected.autoconfigure">
+                        <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_mode_OVH_autoconfigure"></span>
+                        <sup class="tooltip-help"
+                             data-uib-tooltip="{{tr('hosting_tab_DOMAINS_configuration_add_step3_mode_OVH_autoconfigure_text')}}">&#63;</sup>
+                    </label>
+                </div>
+            </div>
+
+            <div class="loader mt-3 text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loadingConflicts || loading"></div>
+
+            <div class="row mb-4" data-ng-if="!loadingConflicts">
+                <div class="col-md-11 col-md-offset-1 text-danger" data-ng-if="hasConflicts()">
+                    <span class="fa fa-remove mr-2" aria-hidden="true"></span>
+                    <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_compatibility_nok"></span>
+                    <ul>
+                        <li data-ng-repeat="conflict in model.conflicts track by $index"
+                            data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step3_compatibility_warning', [(conflict.subDomain ? (conflict.subDomain + '.') : '') + conflict.zone, conflict.fieldType])">
+                        </li>
+                    </ul>
+                    <div class="alert alert-info" role="alert"
+                         data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_compatibility_important"
+                         data-ng-if="selected.autoconfigure">
+                    </div>
+                </div>
+                <div class="col-md-11 col-md-offset-1 text-success" data-ng-if="!hasConflicts() && selected.autoconfigure">
+                    <span class="fa fa-check mr-2" aria-hidden="true"></span>
+                    <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_compatibility_ok"></span>
+                </div>
+            </div>
+
+            <div data-ng-if="selected.mode === model.mode.EXTERNAL || (selected.mode === model.mode.OVH && !selected.autoconfigure)">
+                <p class="font-weight-bold"
+                   data-ng-bind="tr('hosting_tab_DOMAINS_configuration_add_step2_mode_' + selected.mode + '_information')"></p>
+                <ul>
+                    <li data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step3_insert_token_field', ['TXT', getTokenDomain(), model.token])"
+                        data-ng-if="model.token"></li>
+                    <li data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step3_common_action', ['A', getSelectedDomainToDisplay(), getHostingIp(hosting, selected.activeCDN, false)])"></li>
+                    <li data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step3_common_action', ['A', getSelectedDomainToDisplay(true), getHostingIp(hosting, selected.activeCDN, false)])"
+                        data-ng-if="needWwwDomain()"></li>
+                    <li data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step3_common_action', ['AAAA', getSelectedDomainToDisplay(), getHostingIp(hosting, selected.activeCDN, true)])"
+                        data-ng-if="selected.ipv6Needed"></li>
+                    <li data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step3_common_action', ['AAAA', getSelectedDomainToDisplay(true), getHostingIp(hosting, selected.activeCDN, true)])"
+                        data-ng-if="selected.ipv6Needed && needWwwDomain()"></li>
+                </ul>
+
+                <div class="alert alert-warning" role="alert"
+                     data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_EXTERNAL_attention"></div>
+            </div>
+        </div>
+    </div>
+</div>

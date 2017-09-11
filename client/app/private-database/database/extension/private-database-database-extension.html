@@ -1,0 +1,88 @@
+<div data-ng-controller="PrivateDatabaseBDDsExtensionCtrl as extensionCtrl">
+
+    <div class="d-flex mb-3">
+        <button class="btn btn-default my-auto" type="button"
+                data-ng-click="goToList()">
+            <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
+            <span data-i18n-static="common_back"></span>
+        </button>
+        <h2 class="d-inline ml-4 mb-0"
+            data-ng-bind-html="tr('privateDatabase_tabs_list_extensions_info', '<strong>' + extensionCtrl.bdd.databaseName + '</strong>')"></h2>
+    </div>
+
+    <table class="table"
+           data-ng-class="{'table-hover table-striped': !extensionCtrl.loaders.extensions && extensionCtrl.extensions.length > 0}">
+        <thead>
+            <tr>
+                <th scope="col" data-i18n-static="privateDatabase_tabs_list_extensions_extension">Extension</th>
+                <th scope="col" data-i18n-static="privateDatabase_tabs_list_extensions_description">Description</th>
+                <th scope="col" class="text-center" data-i18n-static="privateDatabase_tabs_list_extensions_status">Status</th>
+                <th scope="col" class="min-width text-right">
+                    <button class="btn btn-icon" type="button" title="{{i18n.privateDatabase_tabs_list_extensions_reload_info}}"
+                            data-ng-click="extensionCtrl.getExtensions()">
+                        <span class="fa fa-refresh" aria-hidden="true"></span>
+                    </button>
+                </th>
+            </tr>
+        </thead>
+
+        <tbody data-ng-if="extensionCtrl.loaders.extensions">
+            <tr>
+                <td class="loader text-center" colspan="4"></td>
+            </tr>
+        </tbody>
+
+        <tbody data-ng-if="!extensionCtrl.loaders.extensions && !extensionCtrl.extensions.length">
+            <tr>
+                <td class="text-center" colspan="4"
+                    data-i18n-static="privateDatabase_tabs_list_extensions_no_extensions"></td>
+            </tr>
+        </tbody>
+
+        <tbody data-ng-if="!extensionCtrl.loaders.extensions && extensionCtrl.extensions.length > 0">
+            <tr data-ng-repeat="extension in extensionCtrl.extensionDetails track by $index">
+                <th scope="row" data-ng-bind="extension.extensionName"></th>
+                <td data-ng-bind="extension.description"></td>
+                <td class="text-center">
+                    <span class="label" data-ng-class="{
+                        'label-success': extension.status === 'enabled',
+                        'label-danger' : extension.status === 'disabled',
+                        'label-info': extension.status === 'enabling' || extension.status === 'disabling'
+                    }"
+                          data-ng-bind="extension.status">
+                    </span>
+                </td>
+                <td class="text-right">
+                    <button class="btn btn-icon text-success" type="button" title="{{i18n.privateDatabase_tabs_list_extensions_enable_info}}"
+                            data-ng-click="extensionCtrl.enableExtension(extension)"
+                            data-ng-disabled="extensionCtrl.constructor.isStatusChanging(extension)"
+                            data-ng-if="extension.status === 'disabled' || extension.status === 'enabling'">
+                        <span class="fa fa-check" aria-hidden="true"></span>
+                    </button>
+                    <button class="btn btn-icon text-danger" type="button" title="{{i18n.privateDatabase_tabs_list_extensions_disable_info}}"
+                            data-ng-click="extensionCtrl.disableExtension(extension)"
+                            data-ng-disabled="extensionCtrl.constructor.isStatusChanging(extension)"
+                            data-ng-if="extension.status === 'enabled' || extension.status === 'disabling'">
+                        <span class="fa fa-times" aria-hidden="true"></span>
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="clearfix"
+         data-ng-if="extensionCtrl.extensions">
+        <div data-pagination-front
+             data-items="extensionCtrl.extensions"
+             data-paginated-items="extensionCtrl.extensionDetails"
+             data-transform-item="extensionCtrl.transformItem(item)"
+             data-on-transform-item-done="extensionCtrl.onTransformItemDone(items)"
+             data-current-page="currentPage"
+             data-items-per-page="listCtrl.itemsPerPage"
+             data-nb-pages="nbPages"
+             data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+             data-item-per-page-placeholder="{{tr('pagination_display')}}"
+             data-on-page-change="extensionCtrl.loaders.extensions = true">
+        </div>
+    </div>
+</div>

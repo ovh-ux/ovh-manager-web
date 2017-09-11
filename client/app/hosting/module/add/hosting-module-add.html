@@ -1,0 +1,363 @@
+<div data-ng-controller="HostingModuleCreateCtrl">
+    <div data-wizard
+         data-wizard-bread-crumb="advancedMode.value"
+         data-wizard-next-button-text="advancedMode.value?tr('common_next'):'installer'"
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="createModule"
+         data-wizard-title="i18n.hosting_configuration_tab_modules_module_add">
+
+        <div data-wizard-step
+             data-wizard-step-on-load="loadModuleTemplates"
+             data-wizard-step-on-next="onNextStep"
+             data-wizard-step-valid="model.templateSelected">
+
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="!model.moduleTemplates"></div>
+
+            <div data-ng-if="model.moduleTemplates && model.moduleTemplates.length > 0">
+                <p data-i18n-static="hosting_configuration_tab_modules_create_step1_question"
+                   data-ng-if="model.domains.length > 1"></p>
+                <p data-ng-bind="tr('hosting_configuration_tab_modules_create_step1_question_domain', model.domain)"
+                   data-ng-if="model.domains.length === 1"></p>
+
+                <span data-i18n-static="hosting_configuration_tab_modules_create_step1_module_type"></span>
+                <ul class="d-flex flex-wrap list-unstyled">
+                    <li class="w-25"
+                        data-ng-repeat="template in model.moduleTemplates track by $index"
+                        data-ng-if="model.moduleTemplates[$index].name">
+                        <button class="module-thumbnail" type="button"
+                                data-ng-class="{'selected': model.moduleTemplates[$index] === model.templateSelected}"
+                                data-ng-click="model.templateSelected = model.moduleTemplates[$index]">
+                            <img class="mw-100" alt="{{tr('hosting_configuration_tab_modules_create_step1_module_type_select')}} {{model.moduleTemplates[$index].name}} {{model.moduleTemplates[$index].version}}"
+                                 data-ng-src="assets/images/logos/{{model.moduleTemplates[$index].name}}.png"/>
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="form-group mt-4"
+                     data-ng-if="model.templateSelected && model.domains.length > 1 && !advancedMode.value">
+                    <label class="control-label" for="module-domain"
+                           data-i18n-static="hosting_configuration_tab_modules_create_step1_module_domain"></label>
+                    <select class="form-control" id="module-domain" required
+                            data-ng-model="model.domain"
+                            data-ng-options="domain for domain in model.domains track by domain">
+                    </select>
+                    <p class="help-block"
+                       data-ng-bind-html="tr('hosting_configuration_tab_modules_create_step1_module_default_path', [defaultInstallationPath])"></p>
+                </div>
+
+                <div class="mt-4"
+                     data-ng-if="model.templateSelected">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" data-ng-model="advancedMode.value">
+                            <span data-i18n-static="hosting_configuration_tab_modules_create_step1_module_advanced_mode"></span>
+                        </label>
+                    </div>
+                    <div class="font-italic">
+                        <span data-i18n-static="hosting_configuration_tab_modules_create_step1_module_advancedMode_info"></span>
+                        <ul>
+                            <li data-ng-repeat="i in [1,2,3] track by $index"
+                                data-ng-bind="i18n['hosting_configuration_tab_modules_create_step1_module_advancedMode_info_option' + i]">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-on-load="loadDatabases"
+             data-wizard-step-valid="isStep2Valid()">
+
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.databases"></div>
+
+            <div data-ng-if="!loading.databases">
+
+                <div class="alert alert-warning" role="alert"
+                     data-ng-if="!model.databases || model.databases.length <= 0">
+                    <div>
+                        <span data-i18n-static="hosting_configuration_tab_modules_create_step2_no_db_intro"></span>
+                        <ul>
+                            <li>
+                                <button class="btn btn-link p-0" type="button"
+                                        data-i18n-static="hosting_configuration_tab_modules_create_step2_no_db_go_to_create_db"
+                                        data-ng-click="setAction('database/add/hosting-database-add')"></button>
+                            </li>
+                            <li data-i18n-static="hosting_configuration_tab_modules_create_step2_no_db_use_db_perso"></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group mt-4">
+                    <label class="control-label" for="select-hosted-database"
+                           data-i18n-static="hosting_configuration_tab_modules_create_step2_db_select"></label>
+                    <select class="form-control" id="select-hosted-database"
+                            data-ng-change="selectDatabase(db)"
+                            data-ng-model="model.databaseHostedSelected">
+                        <option data-ng-repeat="db in model.databases track by db"
+                                data-ng-bind="::db"></option>
+                        <option data-i18n-static="hosting_configuration_tab_modules_create_step2_db_custom"
+                                data-ng-selected="!model.databases || model.databases.length <= 0"></option>
+                    </select>
+                </div>
+
+                <p class="mt-4" data-i18n-static="hosting_configuration_tab_modules_create_step2_db_info"></p>
+                <small class="d-block mb-2" data-ng-bind-html="tr('required_fields')"></small>
+                <form class="form-horizontal mt-4" name="formModuleDB">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 required" for="db-server"
+                               data-i18n-static="hosting_configuration_tab_modules_create_step2_db_server"></label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="db-server" required
+                                   data-ng-disabled="model.databaseHostedSelected"
+                                   data-ng-model="model.databaseSelected.server">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4 required" for="db-name"
+                               data-i18n-static="hosting_configuration_tab_modules_create_step2_db_name"></label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="db-name" required
+                                   data-ng-disabled="model.databaseHostedSelected"
+                                   data-ng-model="model.databaseSelected.name">
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-ng-class="{'has-error': !portValid}">
+                        <label class="control-label col-md-4 required" for="db-port"
+                               data-i18n-static="hosting_configuration_tab_modules_create_step2_db_port"></label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="db-port" required
+                                   data-ng-disabled="model.databaseHostedSelected"
+                                   data-ng-model="model.databaseSelected.port">
+                            <small class="help-block"
+                                   data-i18n-static="hosting_configuration_tab_modules_create_step2_db_port_error"
+                                   data-ng-if="!portValid"></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-ng-if="databasesType.length > 1">
+                        <label class="control-label col-md-4 required" for="db-type"
+                               data-i18n-static="hosting_configuration_tab_modules_create_step2_db_type"></label>
+                        <div class="col-md-6">
+                            <select class="form-control" id="db-type" required
+                                    data-ng-disabled="model.databaseHostedSelected"
+                                    data-ng-model="model.databaseSelected.type"
+                                    data-ng-options="type as type for type in databasesType track by type">
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4 required" for="db-user"
+                               data-i18n-static="hosting_configuration_tab_modules_create_step2_db_user"></label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="db-user" required
+                                   data-ng-disabled="model.databaseHostedSelected"
+                                   data-ng-model="model.databaseSelected.user">
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-ng-class="{'has-error': formModuleDB.dbPasswd.$dirty && formModuleDB.dbPasswd.$invalid,
+                                                            'has-success': formModuleDB.dbPasswd.$dirty && formModuleDB.dbPasswd.$valid}">
+                        <label class="control-label col-md-4 required" for="dbPasswd"
+                               data-i18n-static="hosting_configuration_tab_modules_create_step2_db_passwd"></label>
+                        <div class="col-md-6">
+                            <input type="password" autocomplete="off" class="form-control" id="dbPasswd" name="dbPasswd" required
+                                   data-ng-minlength="8"
+                                   data-ng-maxlength="model.databaseSelected.name ? 12 : 31"
+                                   data-ng-model="model.databaseSelected.password"
+                                   data-ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/">
+                            <small class="help-block" data-ng-if="!formModuleDB.dbPasswd.$valid"
+                                   data-ng-bind-html="tr('hosting_common_password_conditions', [8, model.databaseSelected.name ? 12 : 31])"></small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div data-wizard-step-help>
+                <h3 data-i18n-static="hosting_configuration_tab_modules_db_help_title"></h3>
+
+                <h4 data-i18n-static="hosting_configuration_tab_modules_db_help_addr_title"></h4>
+                <p data-i18n-static="hosting_configuration_tab_modules_db_help_addr_desc"></p>
+
+                <h4 data-i18n-static="hosting_configuration_tab_modules_db_help_name_title"></h4>
+                <p data-i18n-static="hosting_configuration_tab_modules_db_help_name_desc"></p>
+
+                <h4 data-i18n-static="hosting_configuration_tab_modules_db_help_port_title"></h4>
+                <p data-i18n-static="hosting_configuration_tab_modules_db_help_port_desc"></p>
+
+                <h4 data-i18n-static="hosting_configuration_tab_modules_db_help_type_title"></h4>
+                <p data-i18n-static="hosting_configuration_tab_modules_db_help_type_desc"></p>
+
+                <h4 data-i18n-static="hosting_configuration_tab_modules_db_help_username_title"></h4>
+                <p data-i18n-static="hosting_configuration_tab_modules_db_help_username_desc"></p>
+
+                <h4 data-i18n-static="hosting_configuration_tab_modules_db_help_passwd_title"></h4>
+                <p data-i18n-static="hosting_configuration_tab_modules_db_help_passwd_desc"></p>
+            </div>
+
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-valid="isStep3Valid()">
+
+            <strong data-i18n-static="hosting_configuration_tab_modules_create_step3_intro"></strong>
+            <p data-i18n-static="hosting_configuration_tab_modules_create_step3_infos_title"></p>
+
+            <form class="form-horizontal" name="formModule">
+                <div class="form-group" data-ng-class="{'has-error': !adminNameValid}">
+                    <label class="control-label col-md-4 required" for="module-admin-name"
+                           data-ng-bind="model.templateSelected.adminNameType === 'email' ?
+                            i18n['hosting_configuration_tab_modules_create_step3_infos_admin_mail'] : i18n['hosting_configuration_tab_modules_create_step3_infos_admin_name']">
+                    </label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="module-admin-name" name="module-admin-name" required
+                               data-ng-attr-placeholder="{{model.templateSelected.adminNameType === 'email' && 'me@example.com' || ''}}"
+                               data-ng-model="model.adminName">
+
+                        <!-- adminNameType email -->
+                        <div class="help-block"
+                             data-ng-if="model.templateSelected.adminNameType === 'email' && !adminNameValid">
+                            <small class="d-block"
+                                   data-i18n-static="hosting_configuration_tab_modules_create_step3_infos_email_admin_error"></small>
+                            <small class="d-block"
+                                   data-i18n-static="hosting_configuration_tab_modules_create_step2_db_admin_error"></small>
+                        </div>
+                        <small class="help-block"
+                               data-i18n-static="hosting_configuration_tab_modules_create_step3_info_admin_error"
+                               data-ng-if="model.templateSelected.adminNameType === 'string' && !adminNameValid"></small>
+                    </div>
+                </div>
+
+                <div class="form-group" data-ng-class="{'has-error': !adminPassValid}">
+                    <label class="control-label col-md-4 required" for="module-admin-password"
+                           data-i18n-static="hosting_configuration_tab_modules_create_step3_infos_admin_password"></label>
+                    <div class="col-md-6">
+                        <input type="password" autocomplete="off" class="form-control" id="module-admin-password" aria-describedby="adminPasswordDesc" required
+                               data-ng-model="model.adminPassword">
+                        <small class="help-block"
+                               data-i18n-static="hosting_configuration_tab_modules_create_step2_db_passwd_error"
+                               data-ng-if="!adminPassValid"></small>
+                    </div>
+                </div>
+
+                <div class="form-group" data-ng-class="{'has-error': !adminPassValid || !adminPassMatchValid}">
+                    <label class="control-label col-md-4 required" for="module-admin-password-confirm"
+                           data-i18n-static="hosting_configuration_tab_modules_create_step3_infos_admin_password_confirm"></label>
+                    <div class="col-md-6">
+                        <input type="password" autocomplete="off" class="form-control" id="module-admin-password-confirm" required
+                               data-ng-model="model.adminPasswordConfirm">
+                        <small class="help-block"
+                               data-i18n-static="hosting_configuration_tab_modules_create_step2_db_passwd_error"
+                               data-ng-if="!adminPassValid"></small>
+                        <small class="help-block"
+                               data-i18n-static="hosting_configuration_tab_modules_create_step3_infos_admin_password_error"
+                               data-ng-if="!adminPassMatchValid"></small>
+                    </div>
+                </div>
+
+                <div class="row font-italic"
+                     data-ng-show="!adminPassValid">
+                    <small class="col-md-8 col-md-offset-4" id="adminPasswordDesc"
+                           data-ng-bind-html="tr('hosting_common_password_conditions', [model.minPasswdLength, model.maxPasswdLength])"></small>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4 required" for="search-domain"
+                           data-i18n-static="hosting_configuration_tab_modules_create_step3_infos_domain"></label>
+                    <div class="col-md-6">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="search-domain" placeholder="{{i18n.hosting_tab_DOMAINS_configuration_add_step1_ovh_search_placeholder}}"
+                                   data-ng-change="model.domain = null"
+                                   data-ng-model="model.searchDomain">
+                            <div class="input-group-btn" data-ng-if="search">
+                                <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
+                                        data-ng-click="search = ''">
+                                    <span class="fa fa-times" aria-hidden="true"></span>
+                                </button>
+                            </div>
+                            <span class="input-group-addon"
+                                  data-ng-if="!search">
+                                <span class="fa fa-search" aria-hidden="true"></span>
+                            </span>
+                        </div>
+
+                        <ul class="list-unstyled selectList w-100">
+                            <li data-ng-repeat="domain in (model.domains | filter:model.searchDomain) track by $index"
+                                data-ng-bind="domain"
+                                data-ng-click="model.domain = domain"
+                                data-ng-class="{'lineSelected': model.domain == domain}">
+                            </li>
+                            <li data-ng-show="(model.domains | filter:model.searchDomain).length === 0"
+                                data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_ovh_search_no_result_found"></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4 required" for="module-lang"
+                           data-i18n-static="hosting_configuration_tab_modules_create_step3_infos_lang"></label>
+                    <div class="col-md-6">
+                        <select class="form-control" id="module-lang" required
+                                data-ng-model="model.language"
+                                data-ng-options="lang as tr('language_' + lang.toLowerCase()) for lang in model.templateSelected.language track by lang">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group" data-ng-class="{'has-error': !pathValid}">
+                    <label class="control-label col-md-4" for="hostingUserCreateHome"
+                           data-i18n-static="hosting_configuration_tab_modules_create_step3_infos_path"></label>
+                    <div class="px-5">
+                        <div class="input-group w-100">
+                            <span class="input-group-addon"
+                                  data-ng-bind="rootPathPrefix + pathPrefix"></span>
+                            <input type="text" class="form-control w-100" id="hostingUserCreateHome" required
+                                   data-ng-model="model.path">
+                        </div>
+                        <small class="help-block"
+                               data-i18n-static="hosting_common_path_help_inline"
+                               data-ng-if="!pathValid"></small>
+                    </div>
+                </div>
+            </form>
+
+            <div data-wizard-step-help>
+                <h3 data-i18n-static="hosting_configuration_tab_modules_create_step3_help_title"></h3>
+
+                <h4 data-i18n-static="hosting_configuration_tab_modules_create_step3_help_admin_name_title"></h4>
+                <p data-i18n-static="hosting_configuration_tab_modules_create_step3_help_admin_name_desc"></p>
+
+                <h4 data-i18n-static="hosting_configuration_tab_modules_create_step3_help_domain_title"></h4>
+                <p data-i18n="hosting_configuration_tab_modules_create_step3_help_domain_desc"></p>
+
+                <h4 data-i18n-static="hosting_configuration_tab_modules_create_step3_help_path_title"></h4>
+                <p data-i18n-static="hosting_configuration_tab_modules_create_step3_help_path_desc"></p>
+            </div>
+        </div>
+
+        <div data-wizard-step>
+            <span data-i18n-static="hosting_configuration_tab_modules_create_step4_intro"></span>
+            <ul>
+                <li>
+                    <span data-i18n-static="hosting_configuration_tab_modules_create_step4_module"></span> : <strong data-ng-bind="model.templateSelected.name"></strong>
+                </li>
+                <li>
+                    <span data-i18n-static="hosting_configuration_tab_modules_create_step4_version"></span> : <strong data-ng-bind="model.templateSelected.version"></strong>
+                </li>
+                <li>
+                    <span data-i18n-static="hosting_configuration_tab_modules_create_step4_domain"></span> : <strong data-ng-bind="model.domain"></strong>
+                </li>
+                <li>
+                    <span data-i18n-static="hosting_configuration_tab_modules_create_step4_path"></span> : <strong>{{pathPrefix}}{{model.path}}</strong>
+                </li>
+                <li>
+                    <span data-i18n-static="hosting_configuration_tab_modules_create_step4_db"></span> : <strong data-ng-bind="model.databaseSelected.name"></strong>
+                </li>
+            </ul>
+            <p data-i18n-static="hosting_configuration_tab_modules_create_step4_infos_title"></p>
+        </div>
+    </div>
+</div>

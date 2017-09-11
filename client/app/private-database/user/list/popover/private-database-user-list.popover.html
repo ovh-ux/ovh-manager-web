@@ -1,0 +1,17 @@
+<div class="popover-menu">
+    <button class="btn btn-link" type="button"
+            data-ng-bind="user.waitChangePassword ? tr('privateDatabase_action_changepassword_doing') : tr('privateDatabase_action_changepassword')"
+            data-ng-click="setAction('user/update/password/user/private-database-user-update-password-user', {user : user, database: database})"
+            data-ng-disabled="database.state !== 'started' || taskState.changeVersion || lockAction || user.waitChangePassword">
+    </button>
+    <button class="btn btn-link" type="button"
+            data-i18n-static="privateDatabase_action_grants"
+            data-ng-click="goToGrants(user)"
+            data-ng-disabled="database.state !== 'started' || taskState.changeVersion || lockAction">
+    </button>
+    <button class="btn btn-link" type="button"
+            data-i18n-static="privateDatabase_action_delete_user"
+            data-ng-click="setAction('user/delete/private-database-user-delete', user)"
+            data-ng-disabled="database.state !== 'started' || taskState.changeVersion || lockAction">
+    </button>
+</div>

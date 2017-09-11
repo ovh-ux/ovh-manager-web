@@ -1,0 +1,20 @@
+<div data-ng-controller="HostingAutomatedEmailsRequestCtrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="request"
+         data-wizard-title="title[action]">
+
+        <div data-wizard-step>
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loaders.loading"></div>
+
+            <div data-ng-if="!loaders.loading" data-ng-switch="action">
+                <p data-ng-switch-when="BLOCK" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_block_question"></p>
+                <p data-ng-switch-when="UNBLOCK" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_unblock_question"></p>
+                <div class="alert alert-warning" role="alert"
+                     data-i18n-static="hosting_tab_AUTOMATED_EMAILS_purge_question"
+                     data-ng-switch-when="PURGE">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

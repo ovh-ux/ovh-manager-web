@@ -1,0 +1,153 @@
+<div data-ng-controller="App.Controllers.EnableWebHostingOrderController as ctrl">
+
+    <div data-wizard
+         data-wizard-bread-crumb
+         data-wizard-hide-previous-button="ctrl.previousButtonHidden()"
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="orderHosting"
+         data-wizard-title="i18n.domain_configuration_enable_web_hosting">
+
+        <!-- Step 1: Offers -->
+        <div data-wizard-step
+             data-wizard-step-on-next="checkModuleForNextStep"
+             data-wizard-step-valid="!ctrl.loading.init && ctrl.model.offer">
+
+            <div class="loader text-center" data-ng-if="ctrl.loading.init"></div>
+
+            <div data-ng-if="!ctrl.loading.init">
+                <div class="mt-4"
+                     data-ng-if="ctrl.model.offer !== ctrl.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE">
+                    <p data-i18n-static="domain_configuration_web_hosting_choose_module"></p>
+                    <ul class="d-flex flex-wrap list-unstyled">
+                        <li class="w-25"
+                            data-ng-repeat="template in ctrl.model.moduleTemplates track by $index"
+                            data-ng-if="template.name">
+                            <button class="module-thumbnail" type="button" title="{{tr('hosting_configuration_tab_modules_create_step1_module_type_select')}} {{template.name}} {{template.version}}"
+                               data-ng-class="{ 'selected': template === ctrl.model.templateSelected }"
+                               data-ng-click="ctrl.selectModule(template)">
+                                <img class="delete" src="assets/images/icn/state-cancel.png" alt="{{i18n.wizard_delete}}"
+                                     data-ng-show="template === ctrl.model.templateSelected"/>
+                                <img class="mw-100" data-ng-src="assets/images/logos/{{template.name}}.png" alt=""/>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="mt-5" data-i18n-static="domain_configuration_web_hosting_choose_offer"></p>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th scope="col" data-i18n-static="domain_configuration_web_hosting_offer_header"></th>
+                            <th scope="col" data-i18n-static="domain_configuration_web_hosting_price_header"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="offer in ctrl.offers | orderBy:orderByOfferPrice track by $index">
+                            <td>
+                                <input type="radio" id="offer-{{offer.offer}}" name="hostingOffer" value="{{ offer.offer }}"
+                                       data-ng-disabled="offer.offer === ctrl.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE && ctrl.model.templateSelected"
+                                       data-ng-model="ctrl.model.offer">
+                            </td>
+                            <td id="label-{{ offer.offer }}">
+                                <label class="d-block" for="offer-{{offer.offer}}">
+                                    <span data-ng-bind="tr('domain_configuration_web_hosting_offer_' + offer.offer)"></span>
+                                    <span data-ng-show="ctrl.displayRecommendedLabel(offer.offer)"
+                                          data-ng-bind="tr('domain_configuration_web_hosting_offer_recommended')"></span>
+                                </label>
+                            </td>
+                            <td data-ng-bind-html="offer.orderInfos.prices | price:ovhSubsidiary:'yearly'"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="alert alert-info" role="alert"
+                     data-i18n-static="domain_configuration_web_hosting_offer_START_explain"
+                     data-ng-if="ctrl.model.offer === ctrl.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE">
+                </div>
+                <p data-ng-bind-html="tr('domain_configuration_web_hosting_choose_offer_explain', [ctrl.hostingUrl])"></p>
+            </div>
+        </div>
+
+        <!-- Step 2: DNS RESET -->
+        <div data-wizard-step
+             data-wizard-step-on-load="initDnsZone"
+             data-wizard-step-valid="ctrl.dnsZones.length && ctrl.model.dnsZone">
+
+            <div class="loader text-center" data-ng-if="ctrl.dnsZones.length === 0"></div>
+
+            <div data-ng-if="ctrl.dnsZones.length > 0">
+
+                <p data-i18n-static="domain_configuration_web_hosting_dns_reset"></p>
+
+                <form class="ml-4">
+                    <div class="radio" data-ng-repeat="dnsZone in ctrl.dnsZones track by $index">
+                        <label>
+                            <input type="radio" name="dnsZone.key"
+                                   data-ng-model="ctrl.model.dnsZone"
+                                   data-ng-value="dnsZone.key">
+                            <span data-ng-bind="tr(dnsZone.title, ctrl.domain.displayName)"></span>
+                        </label>
+                        <div class="alert alert-info mb-5 ml-4 mt-3" role="alert"
+                             data-ng-bind="tr(dnsZone.helpMsg)"
+                             data-ng-if="ctrl.model.dnsZone === dnsZone.key"></div>
+                    </div>
+                </form>
+
+                <div class="alert alert-warning mt-5" role="alert"
+                     data-i18n-static="domain_configuration_web_hosting_dns_reset_explain"
+                     data-ng-if="ctrl.model.dnsZone === 'RESET_ALL'">
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Contracts -->
+        <div data-wizard-step
+             data-wizard-step-on-load="loadContracts"
+             data-wizard-step-on-previous="checkModuleForPreviousStep"
+             data-wizard-step-valid="ctrl.model.contracts">
+
+            <p data-i18n-static="domain_order_start10M_contract_accept"></p>
+
+            <div data-contracts="ctrl.getSelectedOfferOrderInfos().contracts"
+                 data-full-text="false"
+                 data-ng-model="ctrl.model.contracts">
+            </div>
+        </div>
+
+        <!-- Step 4: Resume and validation -->
+        <div data-wizard-step
+             data-wizard-step-valid="!ctrl.loading.order">
+
+            <div class="loader text-center" data-ng-if="ctrl.loading.order"></div>
+
+            <div class="mt-5" data-ng-if="!ctrl.loading.order">
+                <table class="table table-condensed">
+                    <tbody>
+                        <tr data-ng-repeat="detail in ctrl.getSelectedOfferOrderInfos().details track by $index">
+                            <th class="font-weight-normal" scope="row" data-ng-bind="detail.description"></th>
+                            <td class="font-weight-bold text-nowrap text-right" data-ng-bind="ctrl.getResumePrice(detail.totalPrice)"></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th class="text-right" scope="row" data-i18n-static="domain_order_hosting_price_HT"></th>
+                            <td class="font-weight-bold text-right" data-ng-bind="ctrl.getSelectedOfferOrderInfos().prices.withoutTax.text"></td>
+                        </tr>
+                        <tr>
+                            <th class="text-right" scope="row" data-i18n-static="domain_order_hosting_price_TTC"></th>
+                            <td class="font-weight-bold text-right" data-ng-bind="ctrl.getSelectedOfferOrderInfos().prices.withTax.text"></td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <div class="alert alert-warning" role="alert"
+                     data-i18n-static="domain_order_hosting_mx_explain"
+                     data-ng-if="ctrl.model.dnsZone === 'RESET_ALL' && !ctrl.model.templateSelected">
+                </div>
+
+                <p data-i18n-static="domain_order_hosting_finish_explain"></p>
+            </div>
+        </div>
+    </div>
+</div>

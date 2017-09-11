@@ -1,0 +1,76 @@
+<div data-ng-controller="HostingDatabaseOrderCtrl">
+    <div data-wizard
+         data-wizard-bread-crumb
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="orderDatabase"
+         data-wizard-title="i18n.hosting_tab_DATABASES_configuration_order_title">
+
+        <div data-wizard-step
+             data-wizard-step-on-load="loadOrder"
+             data-wizard-step-valid="isStepValid(1)">
+
+            <div class="loader mt-5 text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.init || loading.model"></div>
+
+            <div data-ng-if="!loading.init">
+                <div class="alert alert-danger mt-5" role="alert"
+                     data-i18n-static="hosting_tab_DATABASES_configuration_order_not_available"
+                     data-ng-if="!isOrderable">
+                </div>
+
+                <form name="extraSqlPersoOfferForm">
+                    <div class="form-group" data-ng-if="isOrderable && !loading.model">
+                        <label class="control-label" for="selectDbOffer"
+                               data-i18n-static="hosting_tab_DATABASES_configuration_order_select_pack_offer"></label>
+                        <select class="form-control" id="selectDbOffer"
+                                data-ng-model="model.offer"
+                                data-ng-options="offer as (tr('hosting_tab_DATABASES_configuration_order_' + offer)) for offer in availableOffers track by offer">
+                        </select>
+                        <div class="alert alert-info mt-5" role="alert"
+                             data-i18n-static="hosting_tab_DATABASES_configuration_order_info">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-on-load="getDuration"
+             data-wizard-step-valid="isStepValid(2)">
+
+            <div class="loader mt-5 text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.duration"></div>
+
+            <div data-ng-if="!loading.duration">
+                <form name="extraSqlPersoFormDuration">
+                    <p data-i18n-static="hosting_tab_DATABASES_configuration_order_choose_duration"></p>
+
+                    <div class="radio ml-3" data-ng-repeat="duration in durations track by $index">
+                        <label>
+                            <input type="radio" name="selectedDuration" value="{{duration}}"
+                                   data-ng-disabled="(loading.duration && !model.duration) || durations.length === 1"
+                                   data-ng-model="model.duration">
+                            <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:
+                            <span data-ng-bind-html="details[duration].prices | price:user.ovhSubsidiary"></span>
+                            <span class="fa fa-spinner fa-spin" aria-hidden="true"
+                                  data-ng-if="!details[duration]"></span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-valid="isStepValid(3)">
+            <form>
+                <div data-contracts="details[model.duration].contracts"
+                     data-full-text="false"
+                     data-ng-model="model.contract"></div>
+             </form>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-valid="!loading.order">
+            <p data-i18n-static="hosting_tab_DATABASES_configuration_order_validation"></p>
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.order"></div>
+        </div>
+    </div>
+</div>

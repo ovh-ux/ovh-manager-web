@@ -1,0 +1,32 @@
+<div data-ovh-alert="{{alerts.dashboard}}"></div>
+
+<div data-ng-if="ctrlEmailDomain.loading.domainsInfos">
+    <div class="clearfix"></div>
+    <div class="loader mt-5 text-center"></div>
+</div>
+
+<div data-ng-if="!ctrlEmailDomain.loading.domainsInfos">
+    <div class="page-header">
+        <h1 class="word-break" data-ng-bind="domain.domain"></h1>
+    </div>
+
+    <div data-ng-controller="EmailDomainTabsCtrl as ctrlEmailDomainTabs">
+        <ovh-tabs tabs="ctrlEmailDomainTabs.tabs"
+                  selected-tab="ctrlEmailDomainTabs.selectedTab"
+                  product="email"
+                  change-tab="ctrlEmailDomainTabs.setSelectedTab"
+                  tr="tr"
+                  menu="ctrlEmailDomainTabs.tabMenu"></ovh-tabs>
+        <div class="tab-content">
+            <div class="tab-pane active"
+                 data-ng-include="ctrlEmailDomainTabs.selectedTab && 'email-domain/' + ctrlEmailDomainTabs.constructor.toKebabCase(ctrlEmailDomainTabs.selectedTab) + '/email-domain-' + ctrlEmailDomainTabs.constructor.toKebabCase(ctrlEmailDomainTabs.selectedTab) + '.html'"></div>
+        </div>
+    </div>
+</div>
+
+<div id="currentAction" class="modal fade currentAction" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div id="modal-container" class="modal-content" data-ng-include="ctrlEmailDomain.stepPath"></div>
+        <div id="modal-help" class="help4wizards"></div>
+    </div>
+</div>

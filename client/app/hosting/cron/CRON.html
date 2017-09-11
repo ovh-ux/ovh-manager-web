@@ -1,0 +1,164 @@
+<div class="container-fluid px-0" data-ng-controller="HostingTabCronsCtrl">
+    <div class="row">
+        <div class="col-md-9">
+            <div class="alert alert-info" role="alert"
+                 data-ng-if="!displayTabs.cron">
+                <div>
+                    <span data-i18n-static="hosting_change_offer_for_service"></span>
+                    <div class="mt-4">
+                        <button class="btn btn-info" type="button"
+                                data-i18n-static="hosting_dashboard_service_change_offer"
+                                data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)"></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-info" role="alert"
+                 data-ng-if="displayTabs.cron && hosting.offer === 'START_10_M'">
+                <div>
+                    <span data-i18n-static="hosting_change_offer_for_service_start10m"></span>
+                    <div class="mt-4">
+                        <button class="btn btn-info" type="button"
+                                data-i18n-static="hosting_dashboard_service_change_offer"
+                                data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div data-ng-if="displayTabs.cron && hosting.offer !== 'START_10_M'">
+                <h2 data-i18n-static="hosting_tab_menu_crons"></h2>
+
+                <div class="mb-4" data-ng-if="guide">
+                    <span class="fa fa-life-ring mr-2" aria-hidden="true"></span>
+                    <span data-i18n-static="hosting_tab_CRON_guide_help"></span>
+                    <a data-ng-href="{{guide}}" target="_blank" title="{{hosting_guide_help}} {{i18n.common_newtab}}">
+                        <span data-i18n-static="hosting_guide_help"></span>
+                        <span class="fa fa-external-link" aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.init"></div>
+
+                <div class="alert alert-info" role="alert"
+                     data-i18n-static="hosting_tab_CRON_table_empty"
+                     data-ng-if="!loading.init && !hasResult">
+                </div>
+
+                <div data-ng-if="!loading.init && hasResult">
+                    <div class="mb-3">
+                        <form class="form-inline d-md-flex justify-content-md-end" name="searchCronForm">
+                            <div class="form-group">
+                                <label class="sr-only" for="searchCron"
+                                       data-ng-i18n-static="common_search"></label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="searchCron" name="searchCron" placeholder="{{::i18n.hosting_tab_DOMAINS_search_placeholder}}"
+                                           data-ng-model="search.text"
+                                           data-ng-model-options='{ debounce: 800 }'>
+                                    <div class="input-group-btn" data-ng-if="search.text">
+                                        <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
+                                                data-ng-click="search.text = ''">
+                                            <span class="fa fa-times" aria-hidden="true"></span>
+                                        </button>
+                                    </div>
+                                    <span class="input-group-addon"
+                                          data-ng-if="!search.text">
+                                    <span class="fa fa-search" aria-hidden="true"></span>
+                                </span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table"
+                               data-ng-class="{'table-hover table-striped': !loading.cron && crons.ids.length}">
+                            <thead>
+                                <tr>
+                                    <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_command"></th>
+                                    <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_description"></th>
+                                    <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_frequency"></th>
+                                    <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_language"></th>
+                                    <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_status"></th>
+                                    <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_email"></th>
+                                    <th class="min-width text-right" scope="col">
+                                        <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
+                                                data-ng-click="loadCrons()">
+                                            <span class="fa fa-refresh" aria-hidden="true"></span>
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <tbody data-ng-if="loading.cron">
+                                <tr>
+                                    <td class="loader text-center" colspan="7" aria-label="{{i18n.common_loading}}"></td>
+                                </tr>
+                            </tbody>
+
+                            <tbody data-ng-if="!loading.cron && !crons.ids.length">
+                                <tr>
+                                    <td class="text-center" colspan="7" data-i18n-static="hosting_tab_CRON_table_empty"></td>
+                                </tr>
+                            </tbody>
+
+                            <tbody data-ng-if="!loading.cron && crons.ids.length > 0">
+                                <tr data-ng-repeat="cron in crons.details track by $index">
+                                    <th class="word-break" scope="row" data-ng-bind="cron.command"></th>
+                                    <td class="word-break" data-ng-bind="cron.description"></td>
+                                    <td class="text-nowrap" data-ng-bind="cron.frequency"></td>
+                                    <td data-ng-bind="tr('hosting_tab_CRON_table_language_' + trEnum(cron.language))"></td>
+                                    <td>
+                                        <span class="label"
+                                              data-ng-bind="tr('hosting_tab_CRON_table_status_' + trEnum(cron.status))"
+                                              data-ng-class="{
+                                                  'label-success': cron.status === 'enabled',
+                                                  'label-danger': cron.status === 'disabled',
+                                                  'label-warning': cron.status === 'suspended'
+                                              }"></span>
+                                    </td>
+                                    <td class="text-nowrap" data-ng-bind="cron.email"></td>
+                                    <td class="text-nowrap">
+                                        <button class="btn btn-icon" type="button" title="{{tr('hosting_tab_CRON_table_popover_modify') }}"
+                                                data-ng-click="modifyCron(cron)">
+                                            <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
+                                        </button>
+                                        <button class="btn btn-icon" type="button" title="{{tr('hosting_tab_CRON_table_popover_delete') }}"
+                                                data-ng-click="deleteCron(cron)">
+                                            <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="clearfix"
+                     data-ng-if="crons.ids">
+                    <div data-pagination-front
+                         data-items="crons.ids"
+                         data-paginated-items="crons.details"
+                         data-current-page="currentPage"
+                         data-nb-pages="nbPages"
+                         data-refresh="loadCrons"
+                         data-items-per-page="itemsPerPage"
+                         data-transform-item="transformItem(item)"
+                         data-on-transform-item-done="onTransformItemDone(items)"
+                         data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+                         data-item-per-page-placeholder="{{tr('pagination_display')}}"
+                         data-on-page-change="loading.cron = true"
+                         data-ng-show="!loading.init && hasResult">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-5 mt-lg-0" data-ng-if="displayTabs.cron && hosting.offer !== 'START_10_M'">
+            <button class="btn btn-block btn-default" type="button"
+                    data-ng-click="setAction('cron/add-or-edit/hosting-cron-add-or-edit',{})">
+                <span data-i18n-static="hosting_tab_CRON_configuration_create_title_button"></span>
+            </button>
+        </div>
+    </div>
+</div>

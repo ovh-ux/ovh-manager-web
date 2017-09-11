@@ -1,0 +1,43 @@
+<div data-ng-controller="HostingRemoveDomainCtrl">
+	<div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="submit"
+         data-wizard-title="i18n.hosting_tab_DOMAINS_configuration_remove_title">
+
+        <div data-wizard-step
+             data-wizard-step-on-load="loadHosting"
+             data-wizard-step-valid="model.domains != null">
+
+            <p data-i18n-static="hosting_tab_DOMAINS_configuration_remove_step1_title"></p>
+
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="!model.domains"></div>
+
+            <div data-ng-if="model.domains">
+	            <dl class="dl-horizontal">
+	                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_remove_step1_domain_name"></dt>
+	                <dd data-ng-bind="selected.domain.displayName"></dd>
+	                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_remove_step1_home"></dt>
+	                <dd data-ng-bind="selected.domain.path"></dd>
+	            </dl>
+
+                <div class="mt-4 ml-4">
+                    <div class="checkbox" data-ng-show="domainsWwwExists()">
+                        <label>
+                            <input type="checkbox" data-ng-model="selected.wwwNeeded">
+                            <span data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_remove_step1_www', ['www.' + selected.domain.displayName])"></span>
+                        </label>
+                    </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" data-ng-model="selected.autoconfigure">
+                            <span data-i18n-static="hosting_tab_DOMAINS_configuration_remove_step1_autoconfigure"></span>
+                            <sup class="tooltip-help"
+                                 data-uib-tooltip="{{tr('hosting_tab_DOMAINS_configuration_remove_step1_autoconfigure_text')}}">&#63;</sup>
+                        </label>
+                    </div>
+                </div>
+		    </div>
+        </div>
+    </div>
+</div>

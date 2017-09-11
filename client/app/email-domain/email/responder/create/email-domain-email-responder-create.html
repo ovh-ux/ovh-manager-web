@@ -1,0 +1,209 @@
+<div data-ng-controller="EmailsCreateResponderCtrl as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="createResponder"
+         data-wizard-title="i18n.email_tab_modal_create_responder_title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="ctrl.createResponderForm.$valid && ctrl.responderDurationCheck()">
+
+            <p class="font-weight-bold" data-i18n-static="email_tab_modal_create_responder_heading"></p>
+            <p data-i18n-static="email_tab_modal_create_responder_info"></p>
+
+            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+
+            <div data-ng-if="!ctrl.loading">
+
+                <p>
+                    <small class="text-danger">*</small>
+                    <small data-i18n-static="required_fields"></small>
+                </p>
+
+                <form class="form-horizontal" name="ctrl.createResponderForm">
+                    <div class="form-group" data-ng-if="!ctrl.isDelegated">
+                        <span class="control-label col-md-4 font-weight-bold" data-i18n-static="email_tab_modal_create_responder_type"></span>
+                        <div class="col-md-8">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="radio" name="responderType" value="typeAttached"
+                                           data-ng-model="ctrl.model.responderType">
+                                    <span data-i18n-static="email_tab_modal_create_responder_type_attached"></span>
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="radio" name="responderType" value="typeFree"
+                                           data-ng-model="ctrl.model.responderType">
+                                    <span data-i18n-static="email_tab_modal_create_responder_type_free"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-ng-if="ctrl.model.responderType === 'typeAttached'">
+                        <label class="control-label col-md-4 required" for="select-account"
+                               data-i18n-static="email_tab_modal_create_responder_account"></label>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <select class="form-control" id="select-account" name="responderAccount" required
+                                        data-ng-model="ctrl.model.account"
+                                        data-ng-options="account for account in ctrl.accountsNotUsed track by account">
+                                </select>
+                                <span class="input-group-addon text-truncate" style="font-size:90%;max-width:22rem"
+                                      data-ng-bind="'@' + ctrl.domain"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-ng-class="{
+                            'has-error': ctrl.createResponderForm.responderAccount.$dirty && ctrl.createResponderForm.responderAccount.$invalid,
+                            'has-success': ctrl.createResponderForm.responderAccount.$dirty && ctrl.createResponderForm.responderAccount.$valid
+                        }"
+                         data-ng-if="ctrl.model.responderType === 'typeFree'">
+                        <label class="control-label col-md-4 required" for="txt-account"
+                               data-i18n-static="email_tab_modal_create_responder_name"></label>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="txt-account" name="responderAccount" required
+                                       data-ng-change="ctrl.responderAccountCheck(ctrl.createResponderForm.responderAccount)"
+                                       data-ng-maxlength="ctrl.constants.nameMaxLength"
+                                       data-ng-minlength="ctrl.constants.nameMinLength"
+                                       data-ng-model="ctrl.model.account"
+                                       data-ng-pattern="ctrl.constants.nameRegexPattern">
+                                <span class="input-group-addon text-truncate" style="font-size:90%;max-width:22rem"
+                                      data-ng-bind="'@' + ctrl.domain"></span>
+                            </div>
+                            <small class="help-block"
+                                   data-i18n-static="email_tab_modal_create_account_exists"
+                                   data-ng-if="ctrl.createResponderForm.responderAccount.$dirty && ctrl.createResponderForm.responderAccount.$error.account"></small>
+                            <small class="help-block"
+                                   data-i18n-static="email_tab_modal_create_responder_exists"
+                                   data-ng-if="ctrl.createResponderForm.responderAccount.$dirty && ctrl.createResponderForm.responderAccount.$error.responder"></small>
+                            <small class="help-block"
+                                   data-ng-bind-html="tr('emails_common_account_name_conditions', [ctrl.constants.nameMinLength, ctrl.constants.nameMaxLength])"
+                                   data-ng-if="ctrl.createResponderForm.responderAccount.$dirty &&
+                                        (ctrl.createResponderForm.responderAccount.$error.minlength || ctrl.createResponderForm.responderAccount.$error.maxlength || ctrl.createResponderForm.responderAccount.$error.pattern)"></small>
+                            <small class="help-block"
+                                   data-i18n-static="email_tab_modal_redirection_create_email_error"
+                                   data-ng-if="ctrl.createResponderForm.responderAccount.$dirty && ctrl.createResponderForm.responderAccount.$error.email &&
+                                        !ctrl.createResponderForm.responderAccount.$error.minlength && !ctrl.createResponderForm.responderAccount.$error.maxlength && !ctrl.createResponderForm.responderAccount.$error.pattern"></small>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="control-label col-md-4 font-weight-bold" data-i18n-static="email_tab_modal_create_responder_duration"></span>
+                        <div class="col-md-4">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="radio" name="responderDuration" value="temporary"
+                                           data-ng-model="ctrl.model.responderDuration">
+                                    <span data-i18n-static="email_tab_modal_create_responder_temporary"></span>
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                 <label>
+                                    <input type="radio" name="responderDuration" value="permanent"
+                                           data-ng-change="ctrl.resetResponderDuration()"
+                                           data-ng-model="ctrl.model.responderDuration">
+                                     <span data-i18n-static="email_tab_modal_create_responder_permanent"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-ng-if="ctrl.model.responderDuration === 'temporary'">
+                        <div class="form-group">
+                            <label class="control-label col-md-4 required" for="date-responder-start"
+                                   data-i18n-static="email_tab_modal_create_responder_start"></label>
+                            <div class="col-md-6">
+                                <a class="input-group"
+                                   data-date-time-picker
+                                   data-dtp-autoclose="true"
+                                   data-dtp-min-view-mode="days"
+                                   data-dtp-model-timezone="local"
+                                   data-dtp-pick-time="true"
+                                   data-dtp-placement="bottom"
+                                   data-dtp-type="date"
+                                   data-ng-change="ctrl.responderDateStartCheck()"
+                                   data-ng-model="ctrl.model.responderDateStart">
+                                    <input type="text" class="form-control" id="date-responder-start" name="responderDateStart" required>
+                                    <div class="input-group-addon"
+                                          data-uib-tooltip="{{i18n.period_tooltip_from}}"
+                                          data-tooltip-placement="bottom">
+                                        <span class="fa fa-calendar" aria-hidden="true"></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-md-4 required" for="date-responder-end"
+                                   data-i18n-static="email_tab_modal_create_responder_end"></label>
+                            <div class="col-md-6">
+                                <a class="input-group"
+                                   data-date-time-picker
+                                   data-dtp-autoclose="true"
+                                   data-dtp-min-view-mode="days"
+                                   data-dtp-model-timezone="local"
+                                   data-dtp-pick-time="true"
+                                   data-dtp-placement="bottom"
+                                   data-dtp-type="date"
+                                   data-ng-change="ctrl.responderDateEndCheck()"
+                                   data-ng-model="ctrl.model.responderDateEnd">
+                                    <input type="text" class="form-control" id="date-responder-end" name="responderDateEnd" required>
+                                    <div class="input-group-addon"
+                                          data-uib-tooltip="{{i18n.period_tooltip_to}}"
+                                          data-tooltip-placement="bottom">
+                                        <span class="fa fa-calendar" aria-hidden="true"></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="checkbox col-md-offset-4 pl-4">
+                            <label>
+                                <input type="checkbox" name="responderKeepCopy"
+                                       data-ng-model="ctrl.model.responderKeepCopy">
+                                <span data-i18n-static="email_tab_modal_create_responder_delete_message" data-ng-if="ctrl.model.responderType !== 'typeFree'"></span>
+                                <span data-i18n-static="email_tab_modal_create_responder_copy" data-ng-if="ctrl.model.responderType === 'typeFree'"></span>
+                            </label>
+                            <div class="alert alert-warning mr-4 mt-3" role="alert"
+                                 data-ng-if="!ctrl.model.responderKeepCopy">
+                                <small data-i18n-static="email_tab_modal_create_responder_copy_warning"></small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-ng-if="ctrl.model.responderKeepCopy && ctrl.model.responderType === 'typeFree'">
+                        <label class="control-label col-md-4 required" for="txt-responder-copy-to"
+                               data-i18n-static="email_tab_modal_create_responder_copy_to"></label>
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <select class="form-control" id="txt-responder-copy-to" name="responderCopyTo" required
+                                        data-ng-model="ctrl.model.responderCopyTo"
+                                        data-ng-options="account for account in ctrl.accounts track by account">
+                                </select>
+                                <span class="input-group-addon text-truncate" style="font-size:90%;max-width:22rem"
+                                      data-ng-bind="'@' + ctrl.domain"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4 required" for="txt-responder-content"
+                               data-i18n-static="email_tab_modal_create_responder_message"></label>
+                        <div class="col-md-8">
+                            <textarea class="form-control" id="txt-responder-content" name="responderContent" aria-describedby="responderContentHelp" required
+                                      data-ng-model="ctrl.model.responderContent">
+                            </textarea>
+                            <small class="help-block" id="responderContentHelp"
+                                   data-i18n-static="email_tab_responders_message_warning"></small>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

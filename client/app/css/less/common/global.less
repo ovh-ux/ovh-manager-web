@@ -1,0 +1,130 @@
+html, body {
+  margin  : 0;
+  padding : 0;
+  height  : 100%;
+}
+
+body {
+  overflow-x       : hidden;
+}
+
+select:focus,
+input:focus,
+.wizard-container:focus {
+    outline: none;
+    -moz-outline: none;
+}
+
+select, textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input{
+  margin-bottom: 0;
+}
+
+code {
+    color: @grey7;
+}
+
+.pricing {
+    font-weight: bold;
+    color: @grey7;
+}
+
+.debt-account-banner {
+  .module-billing-container,
+  .module-useraccount-container {
+    margin-top: -33px;
+  }
+}
+
+//
+// MAIN CONTAINER
+// --------------------------------------------------
+
+.alert-account {
+  margin-top: @NAVBAR_HEIGHT;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #B94A48;
+  background-color: #F2DEDE;
+  border-bottom: 1px solid #EED3D7;
+  margin: 0;
+
+  p {
+    margin: 0;
+  }
+}
+
+.warning-account {
+  position: absolute;
+  top: 28px;
+  left: 261px;
+  right: 0;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #C09853;
+  background-color: #FCF8E3;
+  border-bottom: 1px solid #FBEED5;
+  p {
+    margin: 0;
+  }
+}
+
+.alert.me-alerts {
+  display: block;
+  position: relative;
+  margin: 4px 0 0 0;
+  padding: 4px 15px;
+  border-radius: 0;
+  z-index: 1;
+  font-size: 12px;
+
+  ul {
+      padding-left: 18px;
+      margin: 0;
+  }
+  .close {
+    display: none;
+  }
+}
+
+
+.module-billing-sections-container,
+.module-useraccount-sections-container {
+  padding-top : 50px !important;
+}
+// ---
+
+.full-height {
+    height: 100%;
+}
+
+.col-container, .row-container {
+    display: flex;
+    overflow: hidden;
+}
+
+.col-container {
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+
+    .col-item {
+        display: flex;
+        height: 100%;
+        position: relative;
+    }
+}

@@ -1,0 +1,62 @@
+<div data-ng-controller="PrivateDatabaseAddWhitelistCtrl as addCtrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="addWhitelist"
+         data-wizard-title="i18n.privateDatabase_modale_whitelist_add_title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="addCtrl.isWhitelistValid()">
+
+            <form class="form-horizontal" name="addWhitelistForm">
+                <p>
+                    <small class="text-danger">*</small>
+                    <small data-i18n-static="required_fields"></small>
+                </p>
+
+                <div class="form-group" data-ng-class="{'has-error': addWhitelistForm.inputIp.$dirty && !addCtrl.isIpValid(addCtrl.model.ip)}">
+                    <label class="control-label col-md-4 required" for="inputIp"
+                           data-i18n-static="privateDatabase_modale_whitelist_add_ip"></label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="inputIp" name="inputIp" required
+                               data-ng-model="addCtrl.model.ip"
+                               data-uib-tooltip="{{i18n.privateDatabase_modale_whitelist_add_ip_tooltip}}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4" for="inputName"
+                           data-i18n-static="privateDatabase_modale_whitelist_add_name"></label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="inputName"
+                               data-ng-model="addCtrl.model.name">
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label class="control-label col-md-4"
+                           data-i18n-static="privateDatabase_modale_whitelist_add_restriction_info"></label>
+                    <div class="col-md-8">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"
+                                       data-ng-model="addCtrl.model.service">
+                                <span class="mr-2" data-i18n-static="privateDatabase_modale_whitelist_add_service"></span>
+                                <span class="fa fa-question-circle" aria-hidden="true"
+                                      data-uib-tooltip="{{i18n.privateDatabase_modale_whitelist_add_service_title}}"></span>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"
+                                       data-ng-model="addCtrl.model.sftp">
+                                <span class="mr-2" data-i18n-static="privateDatabase_modale_whitelist_add_sftp"></span>
+                                <span class="fa fa-question-circle" aria-hidden="true"
+                                      data-uib-tooltip="{{i18n.privateDatabase_modale_whitelist_add_sftp_title}}"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div data-ng-controller="EmailsDeleteFilterCtrl as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="deleteFilter"
+         data-wizard-title="i18n.email_tab_modal_delete_filter_title">
+
+        <div data-wizard-step>
+            <p data-ng-bind="tr('email_tab_modal_delete_filter_heading', [ctrl.filter.name])"></p>
+            <p class="font-weight-bold" data-i18n-static="emails_common_continue_question"></p>
+        </div>
+    </div>
+</div>

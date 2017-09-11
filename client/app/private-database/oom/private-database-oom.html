@@ -1,0 +1,69 @@
+<div data-ng-controller="PrivateDatabaseOomCtrl as oomCtrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="orderMoreRam"
+         data-wizard-title="i18n.privateDatabase_modale_oom_title"
+         data-wizard-title-icon="'icon-add-database'">
+
+        <div data-wizard-step>
+
+            <p data-ng-bind-html="tr('privateDatabase_modale_oom_info', [oomCtrl.NB_DAY_OOM, oomCtrl.NB_MAX_OOM])"></p>
+
+            <table class="mt-3 table table-hover pretty">
+                <thead>
+                    <tr>
+                        <th scope="col" data-i18n-static="privateDatabase_modale_oom_tab_event_date"></th>
+                        <th scope="col" data-i18n-static="privateDatabase_modale_oom_tab_size_reached"></th>
+                        <th scope="col" data-i18n-static="privateDatabase_modale_oom_tab_uptime"></th>
+                    </tr>
+                </thead>
+
+                <!-- LOADING -->
+                <tbody data-ng-show="oomCtrl.isLoading()">
+                    <tr>
+                        <td class="loader center" colspan="3"></td>
+                    </tr>
+                </tbody>
+
+                <!-- EMPTY -->
+                <tbody data-ng-show="oomCtrl.oomList.length === 0">
+                    <tr>
+                        <td class="text-center" colspan="3" data-i18n-static="privateDatabase_modale_oom_no_oom"></td>
+                    </tr>
+                </tbody>
+
+                <!-- DATA -->
+                <tbody>
+                    <tr data-ng-if="oomCtrl.oomList.length > 0" data-ng-repeat="oom in oomList | orderBy:'-date' track by $index">
+                        <th scope="row" class="">{{oom.date | date:"medium" }}</th>
+                        <td class="text-center">{{oom.sizeReached.value + i18n['unit_size_' + oom.sizeReached.symbol]}}</td>
+                        <td class="text-center">
+                            <span data-ng-if="oom.uptime !== -1">
+                                {{oom.uptime}}
+                            </span>
+                            <span data-ng-if="oom.uptime === -1">
+                                -
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="clearfix table table-pretty"
+                 data-pagination-front
+                 data-items="oomCtrl.oomList"
+                 data-paginated-items="oomList"
+                 data-current-page="currentPage"
+                 data-items-per-page="itemsPerPage"
+                 data-nb-pages="nbPages"
+                 data-transform-item="oomCtrl.transformItem(item)"
+                 data-on-transform-item-done="oomCtrl.onTransformItemDone(items)"
+                 data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+                 data-item-per-page-placeholder="{{tr('pagination_display')}}"></div>
+
+            <div class="mt-3" data-ng-if="oomCtrl.database.oom.realList.length >= oomCtrl.database.oom.nbOomError">
+                <span data-ng-bind-html="tr('privateDatabase_modale_oom_info_order', [oomCtrl.displayType[oomCtrl.database.offer].value])"></span>
+            </div>
+        </div>
+    </div>
+</div>

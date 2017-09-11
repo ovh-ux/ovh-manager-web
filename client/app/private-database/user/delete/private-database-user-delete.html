@@ -1,0 +1,11 @@
+<div data-ng-controller="PrivateDatabaseDeleteUserCtrl as deleteUserCtrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="deleteUser"
+         data-wizard-title="i18n.privateDatabase_delete_user_title">
+
+        <div data-wizard-step>
+            <p data-ng-bind-html="tr('privateDatabase_delete_user_confirm', ['<strong>' + deleteUserCtrl.userToDelete.userName + '</strong>'])"></p>
+        </div>
+    </div>
+</div>

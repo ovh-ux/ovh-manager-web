@@ -1,0 +1,78 @@
+<div data-ng-controller="PrivateDatabaseUsersGrantsCtrl as usersGrantsCtrls">
+
+    <div class="mb-3 d-flex">
+        <button class="btn btn-default my-auto" type="button"
+                data-ng-click="goToList()">
+            <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
+            <span data-i18n-static="common_back"></span>
+        </button>
+        <h2 class="d-inline ml-4 mb-0"
+            data-ng-bind-html="tr('privateDatabase_tabs_user_grant_change') + ' ' + user.userName"></h2>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table"
+               data-ng-class="{'table-hover table-striped': !usersGrantsCtrls.loaders.userGrants && usersGrantsCtrls.nbGrants}">
+            <thead>
+                <tr>
+                    <th scope="col" data-i18n-static="privateDatabase_database"></th>
+                    <th class="text-center" scope="col" data-ng-repeat="grant in usersGrantsCtrls.grants track by $index">
+                        <span data-ng-bind-html="tr('privateDatabase_tabs_user_grant_' + grant)"></span>
+                        <span class="fa fa-info-circle ml-1" aria-hidden="true"
+                              data-uib-tooltip="{{tr('privateDatabase_tabs_user_grant_' + grant + '_tooltip')}}"
+                              data-tooltip-append-to-body="true"></span>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody data-ng-if="usersGrantsCtrls.loaders.userGrants">
+                <tr>
+                    <td class="loader text-center" colspan="5"></td>
+                </tr>
+            </tbody>
+
+            <tbody data-ng-if="!usersGrantsCtrls.loaders.userGrants && !usersGrantsCtrls.nbGrants">
+                <tr>
+                    <td class="text-center" colspan="5"
+                        data-i18n-static="privateDatabase_no_db">
+                    </td>
+                </tr>
+            </tbody>
+
+            <tbody data-ng-if="!usersGrantsCtrls.loaders.userGrants && usersGrantsCtrls.nbGrants">
+                <tr data-ng-repeat="user in usersGrantsCtrls.userGrantsDetails track by $index">
+                    <th scope="row" data-ng-bind="user.dataBase"></th>
+                    <td class="text-center" colspan="4"
+                        data-ng-if="usersGrantsCtrls.isDoingGrant[user.dataBase]">
+                        <span class="label label-info"
+                              data-i18n-static="privateDatabase_tabs_user_grant_updating"></span>
+                    </td>
+                    <td class="text-center"
+                        data-ng-if="!usersGrantsCtrls.isDoingGrant[user.dataBase]"
+                        data-ng-repeat="grant in usersGrantsCtrls.grants track by $index">
+                        <label class="mb-0">
+                            <input type="radio"
+                                   data-ng-change="usersGrantsCtrls.setGrant(user.dataBase, grant)"
+                                   data-ng-disabled="database.state != 'started' || taskState.changeVersion || usersGrantsCtrls.loaders.setGrant"
+                                   data-ng-model="user.value"
+                                   data-ng-value="grant">
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="clearfix"
+         data-ng-if="usersGrantsCtrls.userGrants">
+        <div data-pagination-front
+             data-items="usersGrantsCtrls.userGrants"
+             data-paginated-items="usersGrantsCtrls.userGrantsDetails"
+             data-current-page="currentPage"
+             data-nb-pages="nbPages"
+             data-items-per-page="itemsPerPage"
+             data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+             data-item-per-page-placeholder="{{tr('pagination_display')}}">
+        </div>
+    </div>
+</div>

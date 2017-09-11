@@ -1,0 +1,92 @@
+<div class="container-fluid px-0" data-ng-controller="HostingFreedomTabCtrl as ctrlHostingFreedomTab">
+    <h2 data-i18n-static="hosting_tab_FREEDOM"></h2>
+
+    <!-- FREEDOM TABLE -->
+    <div class="mb-3">
+        <form class="form-inline d-md-flex justify-content-md-end" name="searchFreedomForm">
+            <div class="form-group">
+                <label class="control-label" for="filter-status"
+                       data-i18n-static="hosting_tab_FREEDOM_status_filter"></label>
+                <select class="form-control mr-2" id="filter-status"
+                        data-ng-model="ctrlHostingFreedomTab.filter.status"
+                        data-ng-options="status as tr('hosting_tab_FREEDOM_status_' + status) for status in ctrlHostingFreedomTab.statusEnum track by status">
+                    <option value="" data-i18n-static="hosting_common_no_filter"></option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table"
+               data-ng-class="{'table-hover table-striped': !ctrlHostingFreedomTab.loaders.freedoms && ctrlHostingFreedomTab.freedoms.length > 0}">
+            <thead>
+                <tr>
+                    <th scope="col" data-i18n-static="hosting_tab_FREEDOM_table_header_domain"></th>
+                    <th scope="col" data-i18n-static="hosting_tab_FREEDOM_table_header_type"></th>
+                    <th class="text-center" scope="col" data-i18n-static="hosting_tab_FREEDOM_table_header_status"></th>
+                    <th class="min-width text-right" scope="col">
+                        <button class="btn btn-icon" title="{{::i18n.emails_tab_table_header_refresh}}"
+                                data-ng-click="ctrlHostingFreedomTab.refreshTableFreedoms(true)">
+                            <span class="fa fa-refresh" aria-hidden="true"></span>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+
+            <!--loader-->
+            <tbody data-ng-if="ctrlHostingFreedomTab.loaders.freedoms">
+                <tr>
+                    <td class="loader text-center" colspan="4" aria-label="{{i18n.common_loading}}"></td>
+                </tr>
+            </tbody>
+
+            <!-- no freedom -->
+            <tbody data-ng-if="!ctrlHostingFreedomTab.loaders.freedoms && !ctrlHostingFreedomTab.freedoms.length">
+                <tr>
+                    <td class="text-center" colspan="4" data-i18n-static="hosting_tab_FREEDOM_table_empty"></td>
+                </tr>
+            </tbody>
+
+            <!-- freedoms -->
+            <tbody data-ng-if="!ctrlHostingFreedomTab.loaders.freedoms && ctrlHostingFreedomTab.freedoms.length > 0">
+                <tr data-ng-repeat="freedom in ctrlHostingFreedomTab.freedoms track by freedom.domain">
+                    <th scope="row" data-ng-bind="::freedom.domain"></th>
+                    <td data-ng-bind="::freedom.type"></td>
+                    <td class="text-center">
+                        <span class="label" data-ng-class="{'label-success': freedom.status === 'ok',
+                                                            'label-danger': freedom.status === 'blockedByCustomer' || freedom.status === 'blockedBySystem',
+                                                            'label-info': freedom.status === 'preset'}"
+                              data-ng-bind="::tr('hosting_tab_FREEDOM_status_' + freedom.status)"></span>
+                    </td>
+                    <td class="text-nowrap">
+                        <a class="btn btn-icon" title="{{::freedom.domain}} : {{i18n.common_configure}}"
+                           data-ng-href="{{'#/configuration/domain/'+freedom.domain}}"
+                           data-ng-click="ctrlHostingFreedomTab.setSelectedProduct(freedom.domain)">
+                            <span class="fa fa-external-link-square" aria-hidden="true"></span>
+                        </a>
+                        <button class="btn btn-icon" type="button" title="{{::freedom.domain}} : {{i18n.common_delete}}"
+                                data-ng-click="setAction('freedom/delete/hosting-freedom-delete', freedom)">
+                            <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="clearfix"
+         data-ng-if="ctrlHostingFreedomTab.freedomIds">
+        <div data-pagination-front
+             data-items="ctrlHostingFreedomTab.freedomIds"
+             data-paginated-items="ctrlHostingFreedomTab.freedoms"
+             data-current-page="currentPage"
+             data-nb-pages="nbPages"
+             data-items-per-page="itemsPerPage"
+             data-transform-item="ctrlHostingFreedomTab.transformItem(item)"
+             data-on-transform-item-done="ctrlHostingFreedomTab.onTransformItemDone(items)"
+             data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+             data-item-per-page-placeholder="{{tr('pagination_display')}}"
+             data-ng-show="!loaders.freedoms && ctrlHostingFreedomTab.freedoms.length > 0">
+        </div>
+    </div>
+</div>

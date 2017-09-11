@@ -1,0 +1,63 @@
+<div class="container-fluid px-0" data-ng-controller="HostingTabTasksCtrl">
+
+    <div class="alert alert-warning" role="alert"
+         data-ng-if="!tableLoading && tasksList && tasksList.list.messages.length > 0">
+        <div>
+            <strong data-i18n-static="hosting_tab_TASKS_warning"></strong>
+            <span data-i18n-static="hosting_tab_TASKS_partial"></span>
+        </div>
+    </div>
+
+    <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="tableLoading"></div>
+
+    <div class="alert alert-info" role="alert"
+         data-i18n-static="hosting_tab_TASKS_table_empty"
+         data-ng-if="!tableLoading && !tasksList.list.results.length">
+    </div>
+
+    <div class="table-responsive" data-ng-if="!tableLoading && tasksList.list.results.length > 0">
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th scope="col" data-i18n-static="hosting_tab_TASKS_table_function"></th>
+                    <th scope="col" data-i18n-static="hosting_tab_TASKS_table_state"></th>
+                    <th scope="col" data-i18n-static="hosting_tab_TASKS_table_start_date"></th>
+                    <th scope="col" data-i18n-static="hosting_tab_TASKS_table_finish_date"></th>
+                    <th class="min-width text-right" scope="col">
+                        <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
+                                data-ng-click="refreshTable()">
+                            <span class="fa fa-refresh" aria-hidden="true"></span>
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="element in tasksList.list.results track by $index">
+                    <th scope="row"
+                        data-ng-bind-html="i18n['hosting_tab_TASKS_function_'+ element.function] || i18n['hosting_tab_TASKS_function_'+ element.function.replace('/','_')] || element.function.replace('_',' ')"></th>
+                    <td>
+                        <span class="label"
+                              data-ng-class="{
+                                 'label-info': element.status !== 'ERROR' && element.status !== 'CANCELLED' && element.status !== 'DONE',
+                                 'label-danger': element.status === 'ERROR',
+                                 'label-default': element.status === 'CANCELED',
+                                 'label-success': element.status === 'DONE'}"
+                              data-ng-bind="tr('hosting_tab_TASKS_status_' +  element.status)">
+                        </span>
+                    </td>
+                    <td data-ng-bind="element.startDate|date:'short'"></td>
+                    <td colspan="2" data-ng-bind="element.doneDate|date:'short'"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="clearfix"
+         data-ng-show="!tableLoading && tasksList.list.results.length > 0"
+         data-pagination-server-side="tasksTable"
+         data-pagination-server-side-function="loadPaginated"
+         data-pagination-server-side-paginated-stuff="tasksList"
+         data-pagination-server-side-table-loading="tableLoading">
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div data-ng-controller="controllers.Domain.Dns.Lock as ctrl">
+    <div data-wizard
+         data-wizard-hide-cancel-button="loading"
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="updateDomainLock"
+         data-wizard-title="i18n.domain_tab_DNS_lock_title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="!ctrl.loading">
+
+            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+
+            <p data-i18n-static="domain_tab_DNS_lock_confirm"
+               data-ng-if="!ctrl.loading"></p>
+        </div>
+    </div>
+</div>

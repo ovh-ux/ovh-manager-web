@@ -1,0 +1,51 @@
+<div data-ng-controller="DomainsToCsvCtrl as ctrlDomainsToCsv">
+    <div data-wizard
+         data-wizard-confirm-button-text="i18n.wizard_close"
+         data-wizard-hide-previous-button="true"
+         data-wizard-next-button-text="i18n.wizard_export"
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="resetAction"
+         data-wizard-title="i18n.domains_dashboard_tooltip_export_csv">
+
+        <div data-wizard-step>
+            <p data-i18n-static="domains_dashboard_tooltip_export_csv_expl"></p>
+            <p data-i18n-static="domains_dashboard_tooltip_export_csv_expl2"></p>
+
+            <form name="csvExportAllDomains">
+                <div class="checkbox" data-ng-repeat="opt in ctrlDomainsToCsv.csvExportOptions track by $index">
+                    <label>
+                        <input type="checkbox" aria-describedby="help-{{$index}}"
+                               data-ng-disabled="opt.mustBeDisabled"
+                               data-ng-model="opt.checked">
+                        <span data-i18n-static="domains_action_export_csv_form_{{opt.label}}_label"></span>
+                        <span class="help-block" id="help-{{$index}}"
+                              data-i18n-static="domains_action_export_csv_form_{{opt.label}}_help"></span>
+                    </label>
+                </div>
+            </form>
+
+            <p class="text-right" data-i18n-static="domains_dashboard_tooltip_export_csv_confirm"></p>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-on-load="exportAccounts"
+             data-wizard-step-valid="!ctrlDomainsToCsv.exportStatus.doing">
+
+            <div data-ng-if="ctrlDomainsToCsv.exportStatus.doing">
+                <p data-i18n-static="domains_dashboard_tooltip_export_csv_creation_doing"></p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ctrlDomainsToCsv.exportStatus.done / ctrlDomainsToCsv.exportStatus.total * 100}}"
+                         data-ng-style="{'width': (ctrlDomainsToCsv.exportStatus.done / ctrlDomainsToCsv.exportStatus.total * 100) + '%'}">
+                        <span class="sr-only" data-ng-bind="(ctrlDomainsToCsv.exportStatus.done / ctrlDomainsToCsv.exportStatus.total * 100) + '%'"></span>
+                    </div>
+                </div>
+            </div>
+
+            <p data-ng-bind-html="tr('domains_dashboard_csv_file_created', [ctrlDomainsToCsv.exportResults.data])"
+               data-ng-if="ctrlDomainsToCsv.exportResults.success"></p>
+
+            <p data-ng-bind="tr('domains_dashboard_tooltip_export_csv_error')"
+               data-ng-if="ctrlDomainsToCsv.exportResults.error"></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div data-ng-controller="MailingListsDeleteSubscriberCtrl as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="deleteSubscribers"
+         data-wizard-title="i18n.mailing_list_tab_subscribers_delete">
+
+        <div data-wizard-step>
+            <p data-ng-bind-html="tr('mailing_list_tab_subscribers_heading', [ctrl.subscribers.length, ctrl.mailingList.name])"
+               data-ng-if="ctrl.subscribers.length > 1"></p>
+            <p data-ng-bind-html="tr('mailing_list_tab_modal_delete_subscriber_heading', [ctrl.subscribers[0], ctrl.mailingList.name])"
+               data-ng-if="ctrl.subscribers.length === 1"></p>
+
+            <p data-i18n-static="mailing_list_common_continue_question"></p>
+            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+        </div>
+    </div>
+</div>

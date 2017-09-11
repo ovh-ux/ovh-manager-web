@@ -1,0 +1,95 @@
+<div data-ng-controller="DomainsOwoCtrl as ctrlDomainsOwo">
+    <div data-wizard
+         data-wizard-bread-crumb
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="updateOwo"
+         data-wizard-title="i18n.domains_configuration_whois_title + ' (' + ctrlDomainsOwo.selectedDomainsNames.length + ')'">
+
+        <div data-wizard-step
+             data-wizard-step-on-load="loadOwoFields"
+             data-wizard-step-valid="ctrlDomainsOwo.selectedDomainsNames.length > 0">
+
+            <p data-ng-if="!ctrlDomainsOwo.selectedDomainsNames || ctrlDomainsOwo.selectedDomainsNames.length === 0"
+               data-i18n-static="domains_configuration_whois_step1_no_selected_domains"></p>
+
+            <div data-ng-if="ctrlDomainsOwo.selectedDomainsNames && ctrlDomainsOwo.selectedDomainsNames.length > 0">
+                <p class="text-intro"
+                   data-ng-bind-html="tr('domains_configuration_whois_step1_question', [domainToChangeOwo.displayName])"></p>
+
+                <div class="loader text-center" data-ng-if="!ctrlDomainsOwo.fields || ctrlDomainsOwo.fields.length === 0"></div>
+
+                <table class="table table-hover mt-4" data-ng-if="ctrlDomainsOwo.fields && ctrlDomainsOwo.fields.length > 0">
+                    <thead>
+                        <tr>
+                            <th class="w-50"></th>
+                            <th class="text-center w-25" id="displayHeader" scope="col"
+                                data-i18n-static="domains_configuration_whois_step1_display"></th>
+                            <th class="text-center w-25" id="hideHeader" scope="col"
+                                data-i18n-static="domains_configuration_whois_step1_hide"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="field in ctrlDomainsOwo.fields track by $index">
+                            <th id="field-{{$index}}" scope="row"
+                                data-ng-bind="tr('domains_configuration_whois_field_' + field)"></th>
+                            <td class="text-center">
+                                <label>
+                                    <input type="radio" name="{{field}}" value="desactivated" aria-labelledby="displayHeader field-{{$index}}"
+                                           data-ng-click="ctrlDomainsOwo.desactivateOwoFieldStatus(field)"
+                                           data-ng-model="ctrlDomainsOwo.fieldsModel[field]">
+                                </label>
+                            </td>
+                            <td class="text-center">
+                                <label>
+                                    <input type="radio" name="{{field}}" value="activated" aria-labelledby="hideHeader field-{{$index}}"
+                                           data-ng-click="ctrlDomainsOwo.activateOwoFieldStatus(field)"
+                                           data-ng-model="ctrlDomainsOwo.fieldsModel[field]">
+                                </label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div data-wizard-step-help>
+                <span class="title" data-i18n-static="domains_configuration_whois_step1_helpwizard_title"></span>
+                <p data-ng-bind-html="i18n.domains_configuration_whois_step1_helpwizard_desc"></p>
+                <strong data-i18n-static="domains_configuration_whois_step1_helpwizard_whatis"></strong>
+                <p data-i18n-static="domains_configuration_whois_step1_helpwizard_whatis_desc"></p>
+                <strong data-i18n-static="domains_configuration_whois_step1_helpwizard_whatinfo"></strong>
+                <p data-ng-bind-html="i18n.domains_configuration_whois_step1_helpwizard_whatinfo_desc"></p>
+                <strong data-i18n-static="domains_configuration_whois_step1_helpwizard_how"></strong>
+                <p data-ng-bind-html="i18n.domains_configuration_whois_step1_helpwizard_how_desc"></p>
+            </div>
+        </div>
+
+        <div data-wizard-step>
+            <p class="text-intro"
+               data-i18n-static="domains_configuration_whois_step2_question"></p>
+            <table class="table mb-5 mt-4">
+                <thead>
+                    <tr>
+                        <th class="w-75"></th>
+                        <th class="center w-25" scope="col"
+                            data-i18n-static="domains_configuration_whois_step2_new_configuration"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="field in ctrlDomainsOwo.fields track by $index">
+                        <th scope="row"
+                            data-ng-bind="tr('domains_configuration_whois_field_' + field)"></th>
+                        <td class="text-center"
+                            data-ng-if="ctrlDomainsOwo.fieldsModel[field]"
+                            data-ng-bind="tr('domains_configuration_whois_step2_status_' + ctrlDomainsOwo.fieldsModel[field])"></td>
+                        <td class="text-center"
+                            data-ng-if="!ctrlDomainsOwo.fieldsModel[field]"
+                            data-i18n-static="domains_configuration_whois_step2_status_unchanged"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="alert alert-info" role="alert"
+                 data-i18n-static="domains_configuration_whois_step2_alert">
+            </div>
+        </div>
+    </div>
+</div>

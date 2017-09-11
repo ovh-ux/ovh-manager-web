@@ -1,0 +1,23 @@
+<div data-ng-controller="PrivateDatabaseRestoreArchiveBDDCtrl">
+    <div data-wizard
+         data-wizard-confirm-button-text="confirmBtnTitle()"
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="confirmBtnAction"
+         data-wizard-title="i18n.privateDatabase_tabs_dumps_restore_dump">
+
+         <div data-wizard-step>
+
+            <div class="loader text-center" data-ng-if="step === 0"></div>
+
+             <div data-ng-if="step === 1">
+                <p data-ng-bind-html="tr('privateDatabase_restore_bdd_impossible')"></p>
+                <p data-ng-bind-html="tr('privateDatabase_restore_bdd_application')"></p>
+            </div>
+
+             <div data-ng-if="step === 2">
+                <p data-ng-bind-html="tr('privateDatabase_restore_bdd_confirm', [dump.creationDate, bddName])"></p>
+                <p><strong class="text-warning" data-ng-bind-html="tr('privateDatabase_restore_bdd_warning', [dump.creationDate, bddName])"></strong></p>
+            </div>
+         </div>
+    </div>
+</div>

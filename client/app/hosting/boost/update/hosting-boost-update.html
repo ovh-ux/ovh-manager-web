@@ -1,0 +1,44 @@
+<div data-ng-controller="HostingBoostOfferUpdateCtrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="updateBoost"
+         data-wizard-title="i18n.hosting_tab_BOOST_update_offer">
+
+        <div data-wizard-step
+             data-wizard-step-valid="isStepValid()">
+
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loaders.request"></div>
+
+            <div data-ng-if="!loaders.request">
+                <p data-i18n-static="hosting_tab_BOOST_update_title"></p>
+                <p class="text-danger"
+                   data-ng-bind="tr('hosting_tab_BOOST_boost_enabled', [product.boostOffer])"
+                   data-ng-if="models.product.boostOffer !== null">
+                </p>
+
+                <form class="form-horizontal" name="formUpdateBoost">
+                    <div class="form-group">
+                        <label class="control-label col-md-4" for="select-offer"
+                               data-18n-static="hosting_tab_BOOST_update_select_offer"></label>
+                        <div class="col-md-6">
+                            <select class="form-control" id="select-offer"
+                                    data-ng-model="models.boostOffer"
+                                    data-ng-options="offer as tr('hosting_dashboard_service_offer_' + offer.offer)  + ' - ' + offer.price.text for offer in (product.availableBoostOffer | orderBy:'offer') track by offer">
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
+                <p data-i18n-static="hosting_tab_BOOST_request_description"></p>
+
+                <div class="checkbox mt-5">
+                    <label>
+                        <input type="checkbox"
+                               data-ng-model="acceptCGV.value">
+                        <span data-i18n-static="hosting_tab_BOOST_accept_cgv"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

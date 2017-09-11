@@ -1,0 +1,42 @@
+<div data-ng-controller="HostingBoostOfferRequestCtrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="requestBoost"
+         data-wizard-title="i18n.hosting_tab_BOOST">
+
+        <div data-wizard-step
+             data-wizard-step-valid="isStepValid()">
+
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loaders.request"></div>
+
+            <div data-ng-if="!loaders.request">
+                <p data-i18n-static="hosting_tab_BOOST_request_title"></p>
+                <form class="form-horizontal" name="formCtreateAccount">
+                    <div class="form-group">
+                        <label class="control-label col-md-4" for="select-account-size"
+                               data-i18n-static="hosting_tab_BOOST_request_offer"></label>
+                        <div class="col-md-6">
+                            <select class="form-control" id="select-account-size"
+                                    data-ng-model="models.boostOffer"
+                                    data-ng-options="offer as tr('hosting_dashboard_service_offer_' + offer.offer)  + ' - ' + offer.price.text for offer in (product.availableBoostOffer | orderBy:'offer') track by offer">
+                            </select>
+                        </div>
+                    </div>
+                </form>
+
+                <p data-i18n-static="hosting_tab_BOOST_request_description"></p>
+                <p data-i18n-static="hosting_tab_BOOST_request_description_billing"></p>
+                <p data-i18n-static="hosting_tab_BOOST_request_description_payment_mean"></p>
+                <p data-i18n-static="hosting_tab_BOOST_request_description_renew"></p>
+
+                <div class="checkbox mt-5">
+                    <label>
+                        <input type="checkbox"
+                               data-ng-model="acceptCGV.value">
+                        <span data-i18n-static="hosting_tab_BOOST_accept_cgv"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

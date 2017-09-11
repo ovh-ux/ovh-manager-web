@@ -1,0 +1,67 @@
+<div data-ng-controller="EmailsHelpCtrl as ctrl">
+    <div data-wizard
+         data-wizard-confirm-button-text="tr('wizard_close')"
+         data-wizard-hide-cancel-button="true"
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="configureHelp"
+         data-wizard-title="i18n.email_tab_modal_help_title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="!ctrl.loading">
+
+            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+
+            <div data-ng-if="!ctrl.loading">
+                <p data-i18n-static="email_tab_modal_help_explanation"></p>
+
+                <div class="row mt-4">
+                    <div class="col-md-3 mb-2">
+                        <button type="button" class="btn btn-block btn-default text-wrap"
+                                data-ng-click="setAction('email-domain/email/account/create/email-domain-email-account-create')"
+                                data-ng-if="ctrl.canCreate.account">
+                            <span data-i18n-static="email_tab_button_emails_create_account"></span>
+                        </button>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <button type="button" class="btn btn-block btn-default text-wrap"
+                                data-ng-click="setAction('email-domain/email/redirection/create/email-domain-email-redirection-create')"
+                                data-ng-if="ctrl.canCreate.redirection">
+                            <span data-i18n-static="email_tab_button_emails_create_redirection"></span>
+                        </button>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <button type="button" class="btn btn-block btn-default text-wrap"
+                                data-ng-click="setAction('email-domain/mailing-list/create/email-domain-mailing-list-create')"
+                                data-ng-if="ctrl.canCreate.mailingList">
+                            <span data-i18n-static="email_tab_modal_help_create_mailing_list"></span>
+                        </button>
+                    </div>
+                    <div class="col-md-3 mb-2">
+                        <button type="button" class="btn btn-block btn-default text-wrap"
+                                data-ng-click="setAction('email-domain/email/responder/create/email-domain-email-responder-create', {accounts: ctrl.emails})"
+                                data-ng-if="ctrl.canCreate.responder">
+                            <span data-i18n-static="email_tab_modal_create_responder_title"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <form class="mt-5" name="ctrl.configureHelpForm">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="hideEmailsHelpOne"
+                                   data-ng-model="ctrl.hideEmailsHelp.one">
+                            <span data-i18n-static="email_tab_modal_help_explanation_checkbox_this"></span>
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="hideEmailsHelpAll"
+                                   data-ng-model="ctrl.hideEmailsHelp.all">
+                            <span data-i18n-static="email_tab_modal_help_explanation_checkbox_all"></span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

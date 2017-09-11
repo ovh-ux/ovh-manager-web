@@ -1,0 +1,202 @@
+<div data-ng-controller="HostingDomainModifyCtrl">
+    <div data-wizard
+         data-wizard-bread-crumb
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="submit"
+         data-wizard-title="i18n.hosting_tab_DOMAINS_configuration_modify_title">
+
+        <div data-wizard-step
+             data-wizard-step-on-load="loadStep1"
+             data-wizard-step-valid="isPathValid() && ((selected.domain.ownLog === 'ACTIVE' && selected.ownLogDomain) || selected.domain.ownLog === 'NONE')">
+
+            <p data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step1_question"></p>
+
+            <div class="loader mt-5 text-center" aria-label="{{i18n.common_loading}}" data-ng-if="model.domains == null"></div>
+
+            <form class="form-horizontal" data-ng-show="model.domains != null">
+                <div class="form-group">
+                    <div class="clearfix">
+                        <label class="control-label col-md-4" for="domainAttacheModeExternalFormSelectedDomain"
+                               data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step1_domain_name"></label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="domainAttacheModeExternalFormSelectedDomain" disabled
+                                   data-ng-model="selected.domain.displayName">
+                        </div>
+                    </div>
+
+                    <div class="checkbox col-md-8 col-md-offset-4"
+                         data-ng-if="selected.domain.displayName !== selected.domainWww && domainsAlreadyExists()">
+                        <label>
+                            <input type="checkbox"
+                                   data-ng-model="selected.domainWwwNeeded">
+                            <span data-ng-bind="tr('hosting_tab_DOMAINS_configuration_modify_step1_domain_name_www_question', [getSelectedDomainToDisplay(true)])"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" data-ng-class="{'has-error': !isPathValid()}">
+                    <label class="control-label col-md-4" for="domainAttacheModeExternalFormSelectedPath"
+                           data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step1_home"></label>
+                    <div class="col-md-8">
+                        <div class="input-group">
+                            <span class="input-group-addon">./</span>
+                            <input type="text" class="form-control" id="domainAttacheModeExternalFormSelectedPath"
+                                   data-ng-model="selected.domain.path">
+                        </div>
+                        <small class="help-block"
+                               data-i18n-static="hosting_common_path_help_inline"
+                               data-ng-if="!isPathValid()"></small>
+                    </div>
+                </div>
+
+
+                <fieldset class="form-group">
+                    <strong class="control-label col-md-4"
+                            data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step1_options_choose"></strong>
+
+                    <div class="col-md-8">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="selectedOptionsIpv6"
+                                       data-ng-model="selected.domain.ipV6Enabled">
+                                <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ipv6"></span>
+                                <span class="fa fa-info-circle ml-2"
+                                      data-uib-tooltip="{{i18n.hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ipv6_help}}"></span>
+                            </label>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="selectedOptionsSSL"
+                                       data-ng-model="selected.domain.ssl">
+                                <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl"></span>
+                                <span class="fa fa-info-circle ml-2"
+                                      data-uib-tooltip="{{::i18n.hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl_help}}"></span>
+                            </label>
+                        </div>
+
+                        <div class="checkbox" data-ng-if="hosting.hasCdn">
+                            <label>
+                                <input type="checkbox" name="selectedOptionsCdn"
+                                       data-ng-disabled="selectedOptions.ipLocation"
+                                       data-ng-model="selected.domain.cdn"
+                                       data-ng-false-value="'NONE'"
+                                       data-ng-true-value="'ACTIVE'">
+                                <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_cdn"></span>
+                                <span class="fa fa-info-circle ml-2"
+                                      data-uib-tooltip="{{i18n.hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_cdn_help}}"></span>
+                            </label>
+                        </div>
+
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="selectedOptionsLocation"
+                                       data-ng-disabled="selected.domain.cdn === 'ACTIVE'"
+                                       data-ng-model="selectedOptions.ipLocation">
+                                <span id="domainAttacheModeOvhFormCountriesIp"
+                                      data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_countriesIp"></span>
+                                <span class="fa fa-info-circle ml-2"
+                                      data-uib-tooltip="{{i18n.hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_country_ip_help}}"></span>
+                            </label>
+                        </div>
+
+                        <select class="form-control mt-3" name="domainAttacheModeOvhFormCountriesIp" aria-labelledby="domainAttacheModeOvhFormCountriesIp"
+                                data-ng-if="selectedOptions.ipLocation"
+                                data-ng-model="selected.domain.ipLocation"
+                                data-ng-options="countryIp as countryIp.ip group by (i18n['country_' + countryIp.country] || countryIp.country) for countryIp in hostingProxy.countriesIp | orderBy:[(i18n['country_' + countryIp.country])] track by countryIp.ip">
+                            <option value="" data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_countriesIp_none"></option>
+                        </select>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4" for="domainAttacheModeOvhFormSelectedFirewall">
+                        <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_firewall"></span>
+                        <span class="fa fa-info-circle ml-2"
+                              data-uib-tooltip="{{::i18n.hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_firewall_help}}"></span>
+                    </label>
+                    <div class="checkbox col-md-8">
+                        <label>
+                            <input type="checkbox" id="domainAttacheModeOvhFormSelectedFirewall"
+                                   data-ng-model="selected.domain.firewall"
+                                   data-ng-false-value="'NONE'"
+                                   data-ng-true-value="'ACTIVE'">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4" for="domainAttacheModeOvhFormSelectedOwnlog">
+                        <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ownlog"></span>
+                        <span class="fa fa-info-circle ml-2"
+                              data-uib-tooltip="{{i18n.hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ownlog_help}}"></span>
+                    </label>
+                    <div class="checkbox col-md-8">
+                        <label>
+                            <input type="checkbox" id="domainAttacheModeOvhFormSelectedOwnlog"
+                                   data-ng-model="selected.domain.ownLog"
+                                   data-ng-false-value="'NONE'"
+                                   data-ng-true-value="'ACTIVE'">
+                        </label>
+
+                        <ul class="list-unstyled selectList w-100" data-ng-if="selected.mode === model.mode.OVH && selected.domain.ownLog === 'ACTIVE'">
+                            <li data-ng-repeat="domain in (availableDomains | filter:selected.search | orderBy:'formattedName') track by $index"
+                                data-ng-bind="domain.displayName"
+                                data-ng-click="selected.ownLogDomain = domain"
+                                data-ng-class="{'lineSelected': selected.ownLogDomain.name === domain.name}">
+                            </li>
+                            <li data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_ovh_search_no_result_found"
+                                data-ng-if="(model.options.availableDomains | filter:selected.search).length === 0"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-on-load="loadStep2">
+
+            <p class="mb-4" data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step2_summary"></p>
+
+            <dl class="dl-horizontal">
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step2_domain_name"></dt>
+                <dd data-ng-bind="getSelectedDomainToDisplay()"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step2_domain_name"
+                    data-ng-if="needWwwDomain()"></dt>
+                <dd data-ng-bind="getSelectedDomainToDisplay(true)"
+                    data-ng-if="needWwwDomain()" ></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step2_home"></dt>
+                <dd data-ng-bind="selected.pathFinal"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step2_cdn"
+                    data-ng-if="hosting.hasCdn"></dt>
+                <dd data-ng-bind="tr('hosting_tab_DOMAINS_configuration_modify_step2_cdn_stats_'+selected.domain.cdn)"
+                    data-ng-if="hosting.hasCdn"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step2_ssl"></dt>
+                <dd data-ng-bind="tr('hosting_tab_DOMAINS_table_ssl_state_'+ selected.domain.ssl)"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_ipv6"
+                    data-ng-if="selected.domain.ipV6Enabled"></dt>
+                <dd data-ng-bind="tr('hosting_tab_DOMAINS_configuration_add_step3_ipv6_'+selected.domain.ipV6Enabled)"
+                    data-ng-if="selected.domain.ipV6Enabled"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_firewall"></dt>
+                <dd data-ng-bind="tr('hosting_tab_DOMAINS_configuration_add_step3_firewall_' + selected.domain.firewall)"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_countriesIp"
+                    data-ng-if="selected.domain.ipLocation"></dt>
+                <dd data-ng-bind="tr('country_' + selected.domain.ipLocation.country) + ' - ' + selected.domain.ipLocation.ip"
+                    data-ng-if="selected.domain.ipLocation"></dd>
+
+                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_ownlog"
+                    data-ng-if="selected.mode === model.mode.OVH"></dt>
+                <dd data-ng-bind="(selected.domain.ownLog === 'ACTIVE' ? (tr('hosting_tab_DOMAINS_configuration_add_step3_ownlog_enabled')) : tr('hosting_tab_DOMAINS_configuration_add_step3_ownlog_disabled'))"
+                    data-ng-if="selected.mode === model.mode.OVH"></dd>
+            </dl>
+        </div>
+    </div>
+</div>

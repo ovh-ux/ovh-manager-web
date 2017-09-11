@@ -1,0 +1,324 @@
+<div class="container-fluid px-0" data-ng-controller="DomainTabZoneDnsCtrl as ctrlDomainTabZoneDns">
+
+    <div data-ovh-alert="domain_tab_zonedns"></div>
+
+    <div class="loader text-center" data-ng-if="ctrlDomainTabZoneDns.loading.zone"></div>
+
+    <div data-ng-show="!ctrlDomainTabZoneDns.loading.zone">
+        <div class="row" data-ng-if="!ctrlDomainTabZoneDns.zone">
+            <div class="col-md-9">
+                <div class="alert alert-info" role="alert"
+                     data-i18n-static="domain_tab_ZONE_no_zone"
+                     data-ng-if="!ctrlDomainTabZoneDns.dontDisplayActivateZone">
+                </div>
+                <div class="alert alert-info" role="alert"
+                     data-i18n-static="domain_tab_ZONE_delete_doing"
+                     data-ng-if="ctrlDomainTabZoneDns.dontDisplayActivateZone">
+                </div>
+            </div>
+            <div class="col-md-3 text-right">
+                <button class="btn btn-block btn-default" type="button"
+                        data-ng-disabled="ctrlDomainTabZoneDns.dontDisplayActivateZone"
+                        data-ng-click="setAction('zone/activate/domain-zone-activate', ctrlDomainTabZoneDns.domain)">
+                    <span data-i18n-static="domain_tab_ZONE_no_zone_activate_btn"></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="row" data-ng-show="ctrlDomainTabZoneDns.zone">
+            <div class="col-md-9">
+                <div class="alert alert-warning" role="alert"
+                     data-ng-if="!ctrlDomainTabZoneDns.useDefaultsDns">
+                    <div>
+                        <strong class="d-block" data-i18n-static="domain_tab_ZONE_no_defaut_dns_used"></strong>
+                        <ul>
+                            <li data-ng-repeat="activeDns in ctrlDomainTabZoneDns.activatedDns track by $index" data-ng-bind="activeDns"></li>
+                        </ul>
+                        <strong class="d-block" data-i18n-static="domain_tab_ZONE_set_defaut_dns"></strong>
+                        <ul>
+                            <li data-ng-repeat="defaultDns in ctrlDomainTabZoneDns.defaultsDns track by $index" data-ng-bind="defaultDns"></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning" role="alert"
+                     data-ng-if="ctrlDomainTabZoneDns.zoneStatusWarnings.length">
+                    <div>
+                        <p data-ng-bind-html="i18n.domain_tab_ZONE_status_warning"></p>
+                        <ol>
+                            <li data-ng-repeat="err in ctrlDomainTabZoneDns.zoneStatusWarnings track by $index" data-ng-bind="err"></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="alert alert-danger" role="alert"
+                     data-ng-if="ctrlDomainTabZoneDns.zoneStatusErrors.length">
+                    <div>
+                        <p data-ng-bind-html="i18n.domain_tab_ZONE_status_error"></p>
+                        <ol>
+                            <li data-ng-repeat="err in ctrlDomainTabZoneDns.zoneStatusErrors track by $index" data-ng-bind="err"></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <p class="font-weight-bold" data-i18n-static="domain_tab_ZONE_title"></p>
+                <p data-i18n-static="domain_tab_ZONE_info"></p>
+
+                <div class="alert alert-info mt-5" role="alert"
+                     data-i18n-static="domain_tab_ZONE_empty_zone"
+                     data-ng-if="!ctrlDomainTabZoneDns.loading.table && !ctrlDomainTabZoneDns.hasResult">
+                </div>
+
+                <div class="loader text-center" data-ng-if="ctrlDomainTabZoneDns.loading.table && !ctrlDomainTabZoneDns.hasResult"></div>
+
+                <div data-ng-if="ctrlDomainTabZoneDns.hasResult">
+                    <div class="row mt-5">
+                        <div class="col-md-3 mb-3">
+                            <button class="btn btn-danger" type="button"
+                                    data-i18n-static="common_delete"
+                                    data-ng-click="setAction('zone/record/delete/domain-zone-record-delete', ctrlDomainTabZoneDns.selectedRecords)"
+                                    data-ng-if="ctrlDomainTabZoneDns.atLeastOneSelected && ctrlDomainTabZoneDns.allowModification">
+                            </button>
+                        </div>
+                        <div class="col-md-9 mb-3">
+                            <form class="form-inline d-md-flex justify-content-md-end" name="searchDomainForm">
+                                <div class="form-group mr-md-2">
+                                    <label class="sr-only" for="domainFilter"
+                                           data-ng-bind="i18n.table_filter + ' ' + i18n.domain_tab_ZONE_table_filter"></label>
+                                    <div class="input-group">
+                                        <div class="input-group-btn" data-ng-if="ctrlDomainTabZoneDns.search.filter">
+                                            <button class="btn btn-default" type="button"
+                                                    data-ng-click="ctrlDomainTabZoneDns.emptyFilter()">
+                                                <span class="fa fa-times" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                        <span class="input-group-addon" data-ng-if="!ctrlDomainTabZoneDns.search.filter">
+                                            <span class="fa fa-filter" aria-hidden="true"></span>
+                                        </span>
+                                        <select class="form-control" id="domainFilter"
+                                                data-ng-change="ctrlDomainTabZoneDns.goSearch()"
+                                                data-ng-model="ctrlDomainTabZoneDns.search.filter"
+                                                data-ng-options="zoneEntryType for zoneEntryType in ctrlDomainTabZoneDns.zone.fieldsTypes track by zoneEntryType">
+                                            <option value="" data-i18n-static="domain_tab_ZONE_type_all"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="searchDomain"
+                                           data-ng-bind="i18n.common_search + ' ' + i18n.domain_tab_ZONE_table_search"></label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="searchDomain" name="searchDomain" placeholder="{{::i18n.domain_tab_ZONE_search_placeholder}}"
+                                               data-ng-change="ctrlDomainTabZoneDns.goSearch()"
+                                               data-ng-disabled="ctrlDomainTabZoneDns.loading.table"
+                                               data-ng-model="ctrlDomainTabZoneDns.search.value"
+                                               data-ng-model-options='{ debounce: 800 }'>
+                                        <div class="input-group-btn" data-ng-if="ctrlDomainTabZoneDns.search.value">
+                                            <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
+                                                    data-ng-click="ctrlDomainTabZoneDns.emptySearch()"
+                                                    data-ng-disabled="ctrlDomainTabZoneDns.loading.table">
+                                                <span class="fa fa-times" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                        <span class="input-group-addon"
+                                              data-ng-if="!ctrlDomainTabZoneDns.search.value">
+                                            <span class="fa fa-search" aria-hidden="true"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table"
+                               data-ng-class="{'table-hover table-striped': !ctrlDomainTabZoneDns.loading.table && ctrlDomainTabZoneDns.zone.paginatedZone.records.results.length}">
+                            <thead>
+                                <tr>
+                                    <th class="min-width text-center" scope="col">
+                                        <label class="m-0">
+                                            <input type="checkbox" class="m-0" name="selectAll" title="{{::i18n.domains_dashboard_selector_all_pages}}"
+                                                   data-tri-state-checkbox
+                                                   data-tsc-ids-all="ctrlDomainTabZoneDns.zone.fullRecordsIdsList"
+                                                   data-tsc-ids-selected="ctrlDomainTabZoneDns.selectedRecords"
+                                                   data-tsc-on-click="ctrlDomainTabZoneDns.globalCheckboxStateChange(state)">
+                                        </label>
+                                    </th>
+                                    <th scope="col" data-i18n-static="domain_tab_ZONE_table_headers_field"></th>
+                                    <th class="text-center" scope="col">TTL</th>
+                                    <th class="text-center" scope="col" data-i18n-static="domain_tab_ZONE_table_headers_type"></th>
+                                    <th scope="col" data-i18n-static="domain_tab_ZONE_table_headers_target"></th>
+                                    <th class="min-width text-right" scope="col">
+                                        <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
+                                                data-ng-click="ctrlDomainTabZoneDns.refreshTable()">
+                                            <span class="fa fa-refresh" aria-hidden="true"></span>
+                                        </button>
+                                    </th>
+                                </tr>
+                            </thead>
+
+                            <!-- Loading -->
+                            <tbody data-ng-if="ctrlDomainTabZoneDns.loading.table">
+                                <tr>
+                                    <td class="loader text-center" colspan="6"></td>
+                                </tr>
+                            </tbody>
+
+                            <tbody data-ng-form
+                                   data-name="ctrlDomainTabZoneDns.addDnsRecordForm"
+                                   data-ng-if="!ctrlDomainTabZoneDns.loading.table && ctrlDomainTabZoneDns.allowModification">
+                                <tr data-ng-show="!ctrlDomainTabZoneDns.editMode">
+                                    <td class="align-middle font-italic text-center" colspan="5"
+                                        data-i18n-static="domain_tab_ZONE_new_inline_zone"></td>
+                                    <td class="text-right">
+                                        <button class="btn btn-default btn-sm" type="button" title="{{i18n.table_add_entry}}"
+                                                data-ng-click="ctrlDomainTabZoneDns.activeEditMode()">
+                                            <span class="fa fa-plus" aria-hidden="true"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="selected" data-ng-if="ctrlDomainTabZoneDns.editMode">
+                                    <td></td>
+                                    <td class="form-group" data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay.$invalid }">
+                                        <div class="input-group">
+                                            <input type="text" name="subDomainToDisplay" class="form-control"
+                                                   data-ng-change="ctrlDomainTabZoneDns.subDomainToDisplayCheck(ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay)"
+                                                   data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
+                                                   data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.subDomainToDisplay"
+                                                   data-ng-required="ctrlDomainTabZoneDns.addDnsRecord.fieldType === 'NS'">
+                                            <span class="input-group-addon" data-ng-bind-template=".{{ctrlDomainTabZoneDns.domain.displayName}}."></span>
+                                        </div>
+                                    </td>
+                                    <td class="form-group" data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.ttl.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.ttl.$invalid }">
+                                        <input type="text" class="form-control" name="ttl"
+                                               data-ng-change="ctrlDomainTabZoneDns.ttlCheck(ctrlDomainTabZoneDns.addDnsRecordForm.ttl)"
+                                               data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
+                                               data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.ttl"
+                                               data-ng-pattern="/^\d+$/">
+                                    </td>
+                                    <td class="form-group" data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.fieldType.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.fieldType.$invalid }">
+                                        <select class="form-control" name="fieldType" required
+                                                data-ng-change="ctrlDomainTabZoneDns.fieldAndTargetCheck(ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay)"
+                                                data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
+                                                data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.fieldType"
+                                                data-ng-options="fieldType for fieldType in ctrlDomainTabZoneDns.zone.fieldsTypes track by fieldType">
+                                        </select>
+                                    </td>
+                                    <td class="form-group" data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay.$invalid }">
+                                        <input type="text" class="form-control" name="targetToDisplay"
+                                               data-ng-change="ctrlDomainTabZoneDns.fieldAndTargetCheck(ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay)"
+                                               data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
+                                               data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.targetToDisplay">
+                                    </td>
+                                    <td class="text-right text-nowrap">
+                                        <button class="btn btn-success" type="button" title="{{i18n.table_validate_entry}}"
+                                                data-ng-click="ctrlDomainTabZoneDns.addRecord()"
+                                                data-ng-disabled="!ctrlDomainTabZoneDns.addDnsRecordForm.$valid"
+                                                data-ng-show="!ctrlDomainTabZoneDns.loading.adding">
+                                            <span class="fa fa-check" aria-hidden="true"></span>
+                                        </button>
+                                        <button class="btn btn-danger" type="button" title="{{i18n.table_cancel_entry}}"
+                                                data-ng-click="ctrlDomainTabZoneDns.cancelAddRecord()"
+                                                data-ng-disabled="ctrlDomainTabZoneDns.loading.adding">
+                                            <span class="fa fa-remove" aria-hidden="true"></span>
+                                        </button>
+                                        <span class="fa fa-spinner fa-spin" aria-hidden="true"
+                                              data-ng-show="ctrlDomainTabZoneDns.loading.adding"></span>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                            <!-- Empty table -->
+                            <tbody data-ng-if="!ctrlDomainTabZoneDns.loading.table && !ctrlDomainTabZoneDns.zone.paginatedZone.records.results.length">
+                                <tr>
+                                    <td class="text-center" colspan="6" data-i18n-static="table_search_noresult"></td>
+                                </tr>
+                            </tbody>
+
+                            <!-- Datas -->
+                            <tbody data-ng-if="!ctrlDomainTabZoneDns.loading.table && ctrlDomainTabZoneDns.zone.paginatedZone.records.results.length > 0">
+                                <tr data-ng-repeat="record in ctrlDomainTabZoneDns.zone.paginatedZone.records.results track by $index"
+                                    data-ng-class="{'info': record.selected}">
+                                    <td class="text-center">
+                                        <input type="checkbox" class="m-0" name="domainsListResults[]" id="record-{{$index}}"
+                                               data-ng-change="ctrlDomainTabZoneDns.toggleRecord(record.id)"
+                                               data-ng-model="record.selected">
+                                    </td>
+                                    <td class="word-break">
+                                        <label class="d-block font-weight-normal m-0" for="record-{{$index}}"
+                                               data-ng-bind="ctrlDomainTabZoneDns.constructor.getDomainToDisplay(record)"></label>
+                                    </td>
+                                    <td class="text-center" data-ng-bind="record.ttl"></td>
+                                    <td class="text-center" data-ng-bind="record.fieldType"></td>
+                                    <td class="word-break" data-ng-class="{'w-50': record.fieldType === 'DKIM'}">
+                                        <span data-ng-bind="record.targetToDisplay"></span>
+                                        <span class="fa fa-exclamation-triangle text-warning ml-2" aria-hidden="true"
+                                              data-ng-if="ctrlDomainTabZoneDns.targetIsRelativeDomain(record)"
+                                              data-tooltip-placement="bottom"
+                                              data-uib-tooltip="{{i18n.domain_configuration_dns_entry_relative_warning_title}}&nbsp;&laquo;&nbsp;{{record.targetToDisplay}}.{{record.zoneToDisplay}}&nbsp;&raquo;&nbsp;">
+                                        </span>
+                                    </td>
+                                    <td class="text-center text-nowrap">
+                                        <div data-ng-if="!(record.fieldType === 'NS' && !record.subDomain) && ctrlDomainTabZoneDns.allowModification">
+                                            <button class="btn btn-icon" title="{{record.subDomainToDisplay}}.{{record.zoneToDisplay}}.&nbsp;{{::i18n.table_modify_entry}}"
+                                                    data-ng-click="setAction('zone/record/edit/domain-zone-record-edit', { domain: ctrlDomainTabZoneDns.domain, fieldTypes: this.zone.fieldsTypes, edit: record })">
+                                                <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
+                                            </button>
+                                            <button class="btn btn-icon" type="button" title="{{record.subDomainToDisplay}}.{{record.zoneToDisplay}}.&nbsp;{{::i18n.table_delete_entry}}"
+                                                    data-ng-click="setAction('zone/record/delete/domain-zone-record-delete', record)">
+                                                <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="clearfix"
+                     data-ng-show="ctrlDomainTabZoneDns.hasResult"
+                     data-pagination-server-side
+                     data-pagination-server-side-function="loadPaginated"
+                     data-pagination-server-side-paginated-stuff="ctrlDomainTabZoneDns.zone.paginatedZone"
+                     data-pagination-server-side-table-loading="ctrlDomainTabZoneDns.loading.table">
+                </div>
+            </div>
+
+            <div class="col-md-3 mt-5 mt-lg-0">
+                <div class="mb-5">
+                    <button class="btn btn-block btn-default" type="button"
+                            data-i18n-static="domain_configuration_dns_entry_add_title_button"
+                            data-ng-click="setAction('zone/record/add/domain-zone-record-add', { domain: ctrlDomainTabZoneDns.domain, fieldTypes: ctrlDomainTabZoneDns.zone.fieldsTypes })"
+                            data-ng-if="ctrlDomainTabZoneDns.allowModification">
+                    </button>
+                    <button class="btn btn-block btn-default" type="button"
+                            data-i18n-static="domain_configuration_zonedns_reset_title_button"
+                            data-ng-click="setAction('zone/reset/domain-zone-reset', ctrlDomainTabZoneDns.domain)"
+                            data-ng-if="ctrlDomainTabZoneDns.allowModification">
+                    </button>
+                    <button class="btn btn-block btn-default" type="button"
+                            data-i18n-static="domain_tab_ZONE_default_ttl_button"
+                            data-ng-click="setAction('zone/default-ttl/domain-zone-default-ttl', ctrlDomainTabZoneDns.domain)"
+                            data-ng-disabled="!ctrlDomainTabZoneDns.loading.table && !ctrlDomainTabZoneDns.zone.paginatedZone.records.results.length"
+                            data-ng-if="ctrlDomainTabZoneDns.allowModification">
+                    </button>
+                    <button class="btn btn-block btn-default" type="button"
+                            data-i18n-static="domain_tab_ZONE_default_import_button"
+                            data-ng-click="setAction('zone/import-text/domain-zone-import-text', ctrlDomainTabZoneDns.domain)">
+                    </button>
+                    <button class="btn btn-block btn-default" type="button"
+                            data-i18n-static="domain_tab_ZONE_default_delete_all"
+                            data-ng-click="setAction('zone/delete-all/domain-zone-delete-all', ctrlDomainTabZoneDns.domain)"
+                            data-ng-if="ctrlDomainTabZoneDns.canDeleteAllZone">
+                    </button>
+                </div>
+
+                <div data-guides
+                     data-guides-list="'zone'"
+                     data-guides-title="tr('guide_domain_subtitle')"
+                     data-tr="tr">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+<div ui-view>
+    <div data-ovh-alert="{{alerts.dashboard}}"></div>
+
+    <div data-ng-if="ctrlDomain.loading.domainInfos">
+        <div class="clearfix"></div>
+        <div class="loader mt-5 text-center"></div>
+    </div>
+
+    <div data-ng-if="!ctrlDomain.loading.domainInfos && ctrlDomain.domain">
+        <div class="page-header">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="mb-2">
+                      <span data-ng-if="ctrlDomain.isAllDom">AllDom</span>
+                      <h1 class="word-break mb-0" data-ng-bind="ctrlDomain.domain.displayName"></h1>
+                    </div>
+                    <service-expiration-date data-ng-if="!ctrlDomain.isAllDom && ctrlDomain.domain.name && ctrlDomain.domainInfos"
+                                             service-name="ctrlDomain.domain.name"
+                                             service-type="DOMAIN"
+                                             service-infos="ctrlDomain.domainInfos">
+                    </service-expiration-date>
+                    <service-expiration-date data-ng-if="ctrlDomain.isAllDom && ctrlDomain.allDom && ctrlDomain.allDomInfos"
+                                             service-name="ctrlDomain.allDom"
+                                             service-type="ALL_DOM"
+                                             service-infos="ctrlDomain.allDomInfos">
+                    </service-expiration-date>
+                </div>
+                <div class="col-sm-3 d-flex">
+                    <div class="btn-group ml-auto mt-4">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span data-i18n-static="common_actions"></span>
+                            <span class="caret ml-2" aria-hidden="true"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
+                            <li data-ng-if="ctrlDomain.alldomURL">
+                                <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
+                                <a data-ng-href="{{ctrlDomain.alldomURL}}" target="_blank" title="{{i18n.domain_configuration_order_alldom}} ({{i18n.common_newtab}})"
+                                   data-i18n-static="domain_configuration_order_alldom">
+                                </a>
+                            </li>
+                            <li data-ng-if="ctrlDomain.canOrderHosting && ctrlDomain.isAdmin">
+                                <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
+                                <button type="button" class="btn btn-link"
+                                        data-i18n-static="domain_configuration_enable_web_hosting"
+                                        data-ng-click="setAction('webhosting-enable/domain-enable-web-hosting', ctrlDomain.domain)">
+                                </button>
+                            </li>
+                            <li class="dropdown-divider" data-ng-if="ctrlDomain.hostings.length">
+                              <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
+                              <a data-ng-href="{{'#/website/configuration?domain=' + ctrlDomain.domain.name}}"
+                                 data-at-internet-click="{ name: 'website_configuration' }"
+                                 data-i18n-static="domain_configuration_create_site">
+                              </a>
+                            </li>
+                            <li>
+                                <button type="button" class="btn btn-link"
+                                   data-i18n-static="domain_configuration_add_subdomain"
+                                   data-ng-click="setAction('subdomain/add/domain-subdomain-add', { domain: ctrlDomain.domain })">
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid px-5" data-ng-if="ctrlDomain.domain.isExpired">
+            <div class="alert alert-warning mt-5" role="alert">
+                <div data-ng-bind-html="tr('common_service_expired', ['<strong>' + ctrlDomain.domain.displayName + '</strong>'])"></div>
+            </div>
+        </div>
+
+        <div data-ng-controller="DomainTabsCtrl as ctrlDomainTabs" data-ng-if="!ctrlDomain.domain.isExpired">
+            <ovh-tabs tabs="ctrlDomainTabs.tabs"
+                      selected-tab="ctrlDomainTabs.selectedTab"
+                      change-tab="ctrlDomainTabs.setSelectedTab"
+                      product="domain"
+                      menu="ctrlDomainTabs.tabMenu"
+                      tr="tr"></ovh-tabs>
+            <div class="tab-content">
+                <div class="tab-pane active domain"
+                     data-ng-include="ctrlDomainTabs.selectedTab && 'domain/' + ctrlDomainTabs.constructor.toKebabCase(ctrlDomainTabs.selectedTab) + '/' + ctrlDomainTabs.selectedTab + '.html'"></div>
+            </div>
+        </div>
+
+        <div id="currentAction" class="modal fade currentAction" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div id="modal-container" class="modal-content" data-ng-include="ctrlDomain.stepPath"></div>
+                <div id="modal-help" class="help4wizards"></div>
+            </div>
+        </div>
+    </div>
+</div>

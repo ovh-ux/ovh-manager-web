@@ -1,0 +1,79 @@
+<div data-ng-controller="EmailsCreateRedirectionCtrl as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="createRedirection"
+         data-wizard-title="i18n.email_tab_modal_create_redirection_title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="ctrl.createRedirectionForm.$valid">
+
+            <p class="font-weight-bold" data-ng-bind="tr('email_tab_modal_create_redirection_heading', [ctrl.domain])"></p>
+            <p data-i18n-static="email_tab_modal_create_redirection_info"></p>
+
+            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+
+            <div data-ng-if="!ctrl.loading">
+
+                <p>
+                    <small class="text-danger">*</small>
+                    <small data-i18n-static="required_fields"></small>
+                </p>
+
+                <form name="ctrl.createRedirectionForm">
+                    <div class="form-group" data-ng-class="{
+                            'has-error':   (ctrl.createRedirectionForm.redirectionFrom.$dirty && ctrl.createRedirectionForm.redirectionFrom.$invalid) ||
+                                           (ctrl.createRedirectionForm.redirectionSubdomainFrom.$dirty && (ctrl.createRedirectionForm.redirectionSubdomainFrom.$invalid || !ctrl.createRedirectionForm.redirectionFrom.$dirty)),
+                            'has-success': (ctrl.createRedirectionForm.redirectionFrom.$dirty && ctrl.createRedirectionForm.redirectionFrom.$valid && ctrl.createRedirectionForm.redirectionSubdomainFrom.$valid)
+                        }">
+                        <label class="control-label required" for="txt-redirection-from"
+                               data-i18n-static="email_tab_modal_redirection_create_from"></label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="redirectionFrom" id="txt-redirection-from" required
+                                   data-ng-maxlength="ctrl.constants.nameMaxLength"
+                                   data-ng-minlength="ctrl.constants.nameMinLength"
+                                   data-ng-model="ctrl.model.redirectionFrom"
+                                   data-ng-pattern="ctrl.constants.nameRegexPattern">
+                            <span class="input-group-addon">@</span>
+                            <input type="text" class="form-control" name="redirectionSubdomainFrom" id="txt-redirection-subdomain-from" placeholder="{{::i18n.email_tab_modal_redirection_create_subdomain_optional}}"
+                                   data-ng-model="ctrl.model.redirectionSubdomainFrom"
+                                   data-ng-pattern="ctrl.constants.nameRegexPattern">
+                            <span class="input-group-addon text-truncate" style="font-size:90%;max-width:22rem"
+                                  data-ng-bind="(ctrl.createRedirectionForm.redirectionSubdomainFrom.$viewValue && '.') + ctrl.domain"></span>
+                        </div>
+                        <small class="help-block"
+                               data-ng-bind-html="tr('emails_common_account_name_conditions', [ctrl.constants.nameMinLength, ctrl.constants.nameMaxLength])"
+                               data-ng-if="(ctrl.createRedirectionForm.redirectionFrom.$dirty || ctrl.createRedirectionForm.redirectionSubdomainFrom.$dirty) && ctrl.createRedirectionForm.redirectionFrom.$invalid"></small>
+                        <small class="help-block"
+                               data-ng-bind-html="tr('emails_common_sub_domain_conditions')"
+                               data-ng-if="ctrl.createRedirectionForm.redirectionFrom.$valid && ctrl.createRedirectionForm.redirectionSubdomainFrom.$dirty && ctrl.createRedirectionForm.redirectionSubdomainFrom.$invalid"></small>
+                    </div>
+
+                    <div class="form-group" data-ng-class="{
+                            'has-error': ctrl.createRedirectionForm.redirectionTo.$dirty && ctrl.createRedirectionForm.redirectionTo.$invalid,
+                            'has-success': ctrl.createRedirectionForm.redirectionTo.$dirty && ctrl.createRedirectionForm.redirectionTo.$valid
+                        }">
+                        <label class="control-label required" for="txt-redirection-to"
+                               data-i18n-static="email_tab_modal_redirection_create_to"></label>
+                        <input type="email" class="form-control" name="redirectionTo" id="txt-redirection-to" required
+                               data-ng-change="ctrl.redirectionToCheck(ctrl.createRedirectionForm.redirectionTo)"
+                               data-ng-model="ctrl.model.redirectionTo">
+                        <small class="help-block"
+                               data-i18n-static="email_tab_modal_redirection_create_email_error"
+                               data-ng-if="ctrl.createRedirectionForm.redirectionTo.$dirty && ctrl.createRedirectionForm.redirectionTo.$invalid"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label required" for="select-copy-mode"
+                               data-i18n-static="email_tab_modal_redirection_create_keep_copy_title"></label>
+                        <select class="form-control" name="redirectionKeepCopy" id="select-copy-mode" required
+                                data-ng-model="ctrl.model.redirectionKeepCopy"
+                                data-ng-options="value as (i18n['email_tab_modal_redirection_create_copy_' + value] || value) for value in ctrl.copyChoices track by value">
+                            <option value="" disabled
+                                    data-i18n-static="email_tab_modal_redirection_create_copy_select"></option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

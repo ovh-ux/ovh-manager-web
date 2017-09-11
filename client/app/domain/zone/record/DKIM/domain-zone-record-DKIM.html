@@ -1,0 +1,169 @@
+<form class="form-horizontal" name="ctrl.zoneRecordForm">
+
+    <div data-ng-include="'domain/zone/record/header.html'"></div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3" for="v"
+               data-i18n-static="domain_configuration_dns_entry_add_version"></label>
+        <div class="checkbox col-md-9">
+            <label>
+                <input type="checkbox" id="v" name="v"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.v.DKIM1">
+                DKIM1
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.g.$dirty && ctrl.zoneRecordForm.g.$invalid }">
+        <label class="control-label col-md-3" for="g"
+               data-i18n-static="domain_configuration_dns_entry_add_granularity"></label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" id="g" name="g" maxlength="255"
+                   data-ng-change="ctrl.setTargetValue('DKIM')"
+                   data-ng-maxlength="255"
+                   data-ng-model="ctrl.model.target.g"
+                   data-ng-pattern="ctrl.DomainValidator.regex.DKIM_g">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3"
+               data-i18n-static="domain_configuration_dns_entry_add_algorithm_hash"></label>
+        <div class="col-md-9">
+            <label class="checkbox-inline">
+                <input type="checkbox" name="h"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.h.sha1">
+                SHA-1
+            </label>
+            <label class="checkbox-inline ml-4">
+                <input type="checkbox" name="h"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.h.sha256">
+                SHA-256
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3" for="k"
+               data-i18n-static="domain_configuration_dns_entry_add_algorithm_key"></label>
+        <div class="checkbox col-md-9">
+            <label>
+                <input type="checkbox" id="k" name="k"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.k.rsa">
+                RSA
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.n.$dirty && ctrl.zoneRecordForm.n.$invalid }">
+        <label class="control-label col-md-3" for="n"
+               data-i18n-static="domain_configuration_dns_entry_add_notes"></label>
+        <div class="col-md-9">
+            <input type="text" class="form-control" id="n" name="n" maxlength="255"
+                   data-ng-change="ctrl.setTargetValue('DKIM')"
+                   data-ng-maxlength="255"
+                   data-ng-model="ctrl.model.target.n"
+                   data-ng-pattern="ctrl.DomainValidator.regex.DKIM_n">
+        </div>
+    </div>
+
+    <div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.p.$dirty && ctrl.zoneRecordForm.p.$invalid && !ctrl.model.target.pRevoke }">
+        <label class="control-label col-md-3 required" for="p"
+               data-i18n-static="domain_configuration_dns_entry_add_publickey"></label>
+        <div class="col-md-9">
+            <textarea class="form-control" id="p" name="p" maxlength="4096"
+                      data-ng-change="ctrl.setTargetValue('DKIM')"
+                      data-ng-disabled="ctrl.model.target.pRevoke"
+                      data-ng-maxlength="4096"
+                      data-ng-minlength="32"
+                      data-ng-model="ctrl.model.target.p"
+                      data-ng-pattern="ctrl.DomainValidator.regex.DKIM_p"
+                      data-ng-required="!ctrl.model.target.pRevoke"
+                      data-ng-trim="false"></textarea>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="pRevoke"
+                           data-ng-change="ctrl.setTargetValue('DKIM')"
+                           data-ng-click="ctrl.model.target.p = ''"
+                           data-ng-model="ctrl.model.target.pRevoke">
+                    <span data-i18n-static="domain_configuration_dns_entry_add_publickey_revoke"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3"
+               data-i18n-static="domain_configuration_dns_entry_add_servicetypes"></label>
+        <div class="col-md-9">
+            <label class="radio-inline">
+                <input type="radio" name="s" value="*"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.s">
+                <span data-i18n-static="domain_configuration_dns_entry_add_servicetypes_all"></span>
+            </label>
+            <label class="radio-inline ml-4">
+                <input type="radio" name="s" value="email"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.s">
+                <span data-i18n-static="domain_configuration_dns_entry_add_servicetypes_email"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3"
+               data-i18n-static="domain_configuration_dns_entry_add_t_y"></label>
+        <div class="col-md-9">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="t_y"
+                           data-ng-change="ctrl.setTargetValue('DKIM')"
+                           data-ng-model="ctrl.model.target.t.y"
+                           data-ng-value="false">
+                    <span data-i18n-static="domain_configuration_dns_entry_add_t_y_no"></span>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="t_y"
+                           data-ng-change="ctrl.setTargetValue('DKIM')"
+                           data-ng-model="ctrl.model.target.t.y"
+                           data-ng-value="true">
+                    <span data-i18n-static="domain_configuration_dns_entry_add_t_y_yes"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3"
+               data-i18n-static="domain_configuration_dns_entry_add_t_s"></label>
+        <div class="col-md-9">
+            <div class="radio">
+                <label>
+                    <input type="radio" name="t_s"
+                           data-ng-change="ctrl.setTargetValue('DKIM')"
+                           data-ng-model="ctrl.model.target.t.s"
+                           data-ng-value="true">
+                    <span data-i18n-static="domain_configuration_dns_entry_add_t_s_yes"></span>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="t_s"
+                           data-ng-change="ctrl.setTargetValue('DKIM')"
+                           data-ng-model="ctrl.model.target.t.s"
+                           data-ng-value="false">
+                    <span data-i18n-static="domain_configuration_dns_entry_add_t_s_no"></span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div data-ng-include="'domain/zone/record/bottom.html'"></div>
+</form>

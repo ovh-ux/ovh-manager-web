@@ -1,0 +1,211 @@
+<div class="row">
+    <div class="col-md-9">
+
+        <div class="alert alert-info" role="alert"
+             data-ng-if="hosting.offer === 'START_10_M'">
+            <div>
+                <p data-i18n-static="hosting_dashboard_service_change_offer_explanation"></p>
+                <ul>
+                    <li data-i18n-static="hosting_dashboard_service_change_offer_explanation_ftp"></li>
+                    <li data-i18n-static="hosting_dashboard_service_change_offer_explanation_mail"></li>
+                    <li data-i18n-static="hosting_dashboard_service_change_offer_explanation_db"></li>
+                </ul>
+                <div class="mt-4">
+                    <button class="btn btn-info" type="button"
+                            data-i18n-static="hosting_dashboard_service_change_offer_now"
+                            data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info" role="alert"
+             data-ng-if="!displayTabs.databases">
+            <div>
+                <p data-i18n-static="hosting_change_offer_for_service"></p>
+                <div class="mt-4">
+                    <button class="btn btn-info" type="button"
+                            data-i18n-static="hosting_dashboard_service_change_offer"
+                            data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div data-ng-if="displayTabs.databases">
+
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.init"></div>
+
+            <div class="alert alert-info" role="alert"
+                 data-i18n-static="hosting_tab_DATABASES_table_empty"
+                 data-ng-if="!loading.init && !hasResult">
+            </div>
+
+            <div data-ng-if="!loading.init && hasResult">
+                <div class="mb-3">
+                    <form class="form-inline d-md-flex justify-content-md-end" name="searchDatabaseForm">
+                        <div class="form-group">
+                            <label class="sr-only" for="searchDatabase"
+                                   data-ng-i18n-static="common_search"></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchDatabase" name="searchDatabase" placeholder="{{::i18n.hosting_tab_DOMAINS_search_placeholder}}"
+                                       data-ng-model="search.text"
+                                       data-ng-model-options='{ debounce: 800 }'>
+                                <div class="input-group-btn" data-ng-if="search.text">
+                                    <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
+                                            data-ng-click="search.text = ''">
+                                        <span class="fa fa-times" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                                <span class="input-group-addon"
+                                      data-ng-if="!search.text">
+                                    <span class="fa fa-search" aria-hidden="true"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table"
+                           data-ng-class="{'table-hover table-striped': !loading.databases && databases.details.length}">
+                        <thead>
+                            <tr>
+                                <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_name"></th>
+                                <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_database_name"></th>
+                                <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_server_address"></th>
+                                <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_size"></th>
+                                <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_server"></th>
+                                <th class="text-center" scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_state"></th>
+                                <th class="text-center" scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_backup"></th>
+                                <th class="min-width text-right" scope="col">
+                                    <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
+                                            data-ng-click="reload()">
+                                        <span class="fa fa-refresh" aria-hidden="true"></span>
+                                    </button>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody data-ng-if="loading.databases">
+                            <tr>
+                                <td class="loader text-center" colspan="8" aria-label="{{i18n.common_loading}}"></td>
+                            </tr>
+                        </tbody>
+
+                        <tbody data-ng-if="!loading.databases && !databases.details.length">
+                            <tr>
+                                <td class="text-center" colspan="8" data-i18n-static="table_search_noresult"></td>
+                            </tr>
+                        </tbody>
+
+                        <tbody data-ng-if="!loading.databases">
+                            <tr data-ng-repeat="element in databases.details track by $index">
+                                <th scope="row" data-ng-bind="element.user"></th>
+                                <td data-ng-bind="element.user"></td>
+                                <td data-ng-bind="element.name"
+                                    data-uib-tooltip="{{element.server}}"
+                                    data-tooltip-append-to-body="true">
+                                </td>
+                                <td>
+                                    <div data-ng-if="!element.quotaCalculating">
+                                        <div class="progress m-0" style="min-width:140px">
+                                            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{element.quotaPercent}}"
+                                                 data-ng-class="{
+                                                'progress-bar-success': element.quotaStatus === quotaStatusEnum.OK,
+                                                'progress-bar-warning': element.quotaStatus === quotaStatusEnum.WARNING,
+                                                'progress-bar-danger': element.quotaStatus === quotaStatusEnum.DANGER,
+                                                'progress-bar-disabled': element.quotaStatus === quotaStatusEnum.FULL
+                                            }"
+                                                 data-ng-style="{'width': element.quotaPercentCappedAsText}">
+                                            </div>
+                                            <span class="progress-bar-label" data-ng-bind="element.quotaUsed.asText"></span>
+                                        </div>
+                                    </div>
+                                    <div data-ng-if="element.quotaCalculating">
+                                        <span class="fa fa-refresh fa-spin mr-2" aria-hidden="true"></span>
+                                        <span data-i18n-static="hosting_tab_DATABASES_configuration_check_quota_calculating"></span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span data-ng-bind="element.type"></span>
+                                    <span data-ng-bind="'v' + formatVersion(element.version)"
+                                          data-ng-if="element.version"></span>
+                                </td>
+                                <td class="text-center"
+                                    data-ng-bind="element.state"></td>
+                                <td class="text-center">
+                                    <span class="label"
+                                          data-ng-class="{'label-success': element.dumpsCount > 0, 'label-default': element.dumpsCount <= 0}"
+                                          data-ng-bind="element.dumpsCount">
+                                    </span>
+                                    <button class="btn btn-icon" type="button" title="{{element.user}} {{::i18n.hosting_tab_DATABASES_table_popover_dump_edit}}"
+                                            data-ng-click="restoreDump(element)"
+                                            data-ng-if="element.dumpsCount > 0">
+                                        <span class="fa fa-edit" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                                <td class="text-center">
+                                    <button class="btn btn-icon" type="button" title="{{element.user}} {{::i18n.table_manage_entry}}"
+                                            data-linkedpopover="hosting/popover/database.html"
+                                            data-linkedpopover-placement="left"
+                                            data-linkedpopover-single="true"
+                                            data-linkedpopover-remote="true"
+                                            data-linkedpopover-title="{{i18n.common_actions}}">
+                                        <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="clearfix"
+                 data-ng-if="databases.ids">
+                <div data-pagination-front
+                     data-items="databases.ids"
+                     data-paginated-items="databases.details"
+                     data-current-page="currentPage"
+                     data-nb-pages="nbPages"
+                     data-items-per-page="itemsPerPage"
+                     data-transform-item="transformItem(item)"
+                     data-on-transform-item-done="onTransformItemDone(items)"
+                     data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+                     data-item-per-page-placeholder="{{tr('pagination_display')}}"
+                     data-on-page-change="loading.databases = true"
+                     data-ng-show="!loading.init && hasResult">
+                </div>
+            </div>
+        </div>
+
+        <div class="my-5">
+            <h2 data-i18n-static="hosting_tab_DATABASES_configuration_quota_info_lead"></h2>
+            <p data-i18n-static="hosting_tab_DATABASES_configuration_quota_info_calculation_period"></p>
+            <p>
+                <span class="mr-2" data-i18n-static="hosting_tab_DATABASES_configuration_quota_info_manual_calculation"></span>
+                <span class="fa fa-refresh" title="{{i18n.refresh}}"></span>
+            </p>
+            <div class="alert alert-warning" role="alert"
+                 data-i18n-static="hosting_tab_DATABASES_configuration_quota_warning_message">
+            </div>
+            <p data-i18n-static="hosting_tab_DATABASES_configuration_quota_warning_resolution"></p>
+        </div>
+    </div>
+
+    <div class="col-md-3 mt-5 mt-lg-0"
+         data-ng-if="displayTabs.databases">
+        <button class="btn btn-block btn-default" type="button"
+                data-i18n-static="hosting_tab_DATABASES_configuration_create_title_button"
+                data-ng-click="setAction('database/add/hosting-database-add')"
+                data-ng-disabled="!canCreateDatabase"
+                data-uib-tooltip="{{::i18n.hosting_tab_DATABASES_configuration_create_step1_no_db_left}}"
+                data-tooltip-append-to-body="true"
+                data-tooltip-enable="!canCreateDatabase">
+        </button>
+        <a class="btn btn-block btn-default"
+           data-i18n-static="hosting_tab_DATABASES_configuration_order_title_button"
+           data-ui-sref="app.sql-order({orderType: 'private', currentHosting: hosting.serviceName})">
+        </a>
+    </div>
+</div>

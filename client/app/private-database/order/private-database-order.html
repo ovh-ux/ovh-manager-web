@@ -1,0 +1,178 @@
+<div data-ng-controller="PrivateDatabaseOrderCtrl as orderCtrl" data-ng-init="orderCtrl.init()">
+    <div class="page-header">
+        <h1 data-i18n-static="privateDatabase_order_title"></h1>
+    </div>
+
+    <div class="container-fluid px-5">
+        <div role="alert" data-ovh-alert="{{alerts.order}}"></div>
+
+        <div class="loader mt-5 text-center" data-ng-if="orderCtrl.loading.init"></div>
+
+        <div class="row" data-ng-if="!orderCtrl.loading.init && orderCtrl.list.versions.length">
+            <div class="col-md-9">
+                <form class="form-horizontal" name="privateDatabaseOrderForm">
+
+                    <!-- step 1 -->
+                    <h2 class="my-5" data-i18n-static="privateDatabase_order_step1_title"></h2>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4 required" for="orderVersion"
+                               data-i18n-static="privateDatabase_order_step1_version"></label>
+                        <div class="col-md-8 col-lg-6">
+                            <select class="form-control" name="orderVersion" id="orderVersion" required
+                                    data-ng-change="orderCtrl.getDurations()"
+                                    data-ng-model="orderCtrl.selectedOrder.config.version"
+                                    data-ng-options="version as i18n['privateDatabase_dashboard_version_' + version.replace('.', '')] || version for version in orderCtrl.list.versions track by version">
+                                <option value="" disabled
+                                        data-i18n-static="select_option"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4 required" for="orderRam"
+                               data-i18n-static="privateDatabase_order_step1_ram"></label>
+                        <div class="col-md-8 col-lg-6">
+                            <select class="form-control" name="orderRam" id="orderRam" required
+                                    data-ng-change="orderCtrl.getDurations()"
+                                    data-ng-model="orderCtrl.selectedOrder.config.ramSize"
+                                    data-ng-options="ramSize + tr('unit_size_MB') for ramSize in (orderCtrl.list.ramSize | orderBy: sortRam) track by ramSize">
+                                <option value="" disabled
+                                        data-i18n-static="select_option"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-ng-if="orderCtrl.hostings && orderCtrl.hostings.length > 0">
+                        <label class="control-label col-md-4 required" for="orderHosting">
+                            <span data-i18n-static="privateDatabase_order_step1_hosting"></span>
+                            <span class="fa fa-info-circle" aria-hidden="true"
+                                  data-uib-tooltip="{{i18n.privateDatabase_order_step1_hosting_info}}"
+                                  data-tooltip-append-to-body="true"></span>
+                        </label>
+
+                        <div class="col-md-8 col-lg-6">
+                            <select class="form-control" name="orderHosting" id="orderHosting" required
+                                    data-ng-change="orderCtrl.getDurations();orderCtrl.onHostingChanged()"
+                                    data-ng-model="orderCtrl.selectedHosting.value">
+                                <option value="" disabled
+                                        data-i18n-static="select_option"></option>
+                                <option ng-repeat="hosting in (orderCtrl.hostings | orderBy) track by $index"
+                                        data-ng-bind="hosting"
+                                        data-ng-value="hosting"></option>
+                                <option value="other"
+                                        data-i18n-static="common_other"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group" data-ng-if="!orderCtrl.hostings || orderCtrl.hostings.length === 0 || orderCtrl.selectedHosting.value === 'other'">
+                        <label class="control-label col-md-4 required" for="orderDatacenter"
+                               data-i18n-static="privateDatabase_order_step1_datacenter"></label>
+                        <div class="col-md-8 col-lg-6">
+                            <select class="form-control" name="orderDatacenter" id="orderDatacenter"
+                                    data-ng-change="orderCtrl.getDurations()"
+                                    data-ng-disabled="orderCtrl.datacenterSelected != null"
+                                    data-ng-model="orderCtrl.selectedOrder.config.datacenter"
+                                    data-ng-options="tr('privateDatabase_order_datacenter_' + datacenter) for datacenter in (orderCtrl.list.datacenters | orderBy) track by datacenter">
+                                <option value="" disabled
+                                        data-i18n-static="select_option"></option>
+                            </select>
+                            <div class="alert alert-warning mt-4" role="alert"
+                                 data-i18n-static="privateDatabase_order_step1_no_hosting_warning">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- step 2-->
+                    <div class="mt-5" data-ng-if="orderCtrl.selectedOrder.config.version && orderCtrl.selectedOrder.config.ramSize && orderCtrl.selectedOrder.config.datacenter">
+                        <h2 data-i18n-static="privateDatabase_order_step2_title"></h2>
+
+                        <div role="alert"
+                             data-ovh-alert="{{alerts.durations}}"
+                             data-ovh-alert-hide-remove-button></div>
+
+                        <div class="text-center" data-ng-if="orderCtrl.loading.durations">
+                            <div class="loader" aria-hidden="true"></div>
+                            <span data-i18n-static="license_loading"></span>
+                        </div>
+
+                        <fieldset data-ng-if="!orderCtrl.loading.durations">
+                            <legend class="border-0"
+                                    data-i18n-static="privateDatabase_order_sql_period_sub_title"></legend>
+
+                            <div class="radio mb-4 ml-5" data-ng-repeat="duration in orderCtrl.durations.available track by $index">
+                                <label>
+                                    <input type="radio" name="durationRadio[$index]"
+                                           data-ng-click="orderCtrl.selectedOrder.contractsValidated = false"
+                                           data-ng-disabled="orderCtrl.loading.prices || orderCtrl.durations.available.length === 1"
+                                           data-ng-model="orderCtrl.selectedOrder.duration"
+                                           data-ng-value="duration">
+                                    <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:
+                                    <span data-ng-bind-html="orderCtrl.durations.details[duration].prices | price:ovhSubsidiary"></span>
+                                    <span class="fa fa-spinner fa-spin" aria-hidden="true" data-ng-if="!orderCtrl.durations.details[duration]"></span>
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <!-- Step 3: Contracts and validation -->
+                    <div class="my-5" data-ng-if="orderCtrl.selectedOrder.duration">
+                        <h2 data-i18n-static="privateDatabase_order_step3_title"></h2>
+
+                        <div data-ng-if="!orderCtrl.order.url">
+                            <p data-i18n-static="privateDatabase_order_step3_question"
+                               data-ng-if="orderCtrl.durations.details[selectedOrder.duration].contracts.length === 0"></p>
+
+                            <div data-ng-if="orderCtrl.durations.details[orderCtrl.selectedOrder.duration].contracts.length > 0">
+                                <p data-i18n-static="privateDatabase_order_step3_contracts_ask"></p>
+                                <ul>
+                                    <li data-ng-repeat="contract in orderCtrl.durations.details[orderCtrl.selectedOrder.duration].contracts track by $index">
+                                        <a data-ng-href="{{contract.url}}" target="_blank" title="{{contract.name}} ({{i18n.core_new_window}})">
+                                            <span data-ng-bind="contract.name"></span> (PDF)
+                                            <span class="fa fa-external-link" aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="contractsValidated" required
+                                               data-ng-model="orderCtrl.selectedOrder.contractsValidated">
+                                        <strong data-i18n-static="privateDatabase_order_step3_contracts_check"></strong>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="mt-5">
+                                <button class="btn btn-primary btn-lg" type="button"
+                                        data-ng-click="orderCtrl.generateBc()"
+                                        data-ng-disabled="(orderCtrl.durations.details[orderCtrl.selectedOrder.duration].contracts.length != 0 && !orderCtrl.selectedOrder.contractsValidated) || orderCtrl.loading.bc">
+                                    <span data-i18n-static="privateDatabase_order_step3_generate"
+                                          data-ng-if="!orderCtrl.loading.bc"></span>
+                                    <span data-ng-if="orderCtrl.loading.bc">
+                                        <span data-i18n-static="privateDatabase_order_step3_generating"></span>
+                                        <span class="fa fa-spinner fa-spin ml-4" aria-hidden="true"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div data-ng-if="orderCtrl.order.url">
+                            <p>
+                                <strong data-i18n-static="privateDatabase_order_step3_generated"></strong><br>
+                                <span data-i18n-static="privateDatabase_order_step3_clic_here"></span><br>
+                                <span data-i18n-static="privateDatabase_order_step3_bc_information"></span>
+                            </p>
+                            <div class="mt-5">
+                                <button class="btn btn-primary btn-lg" type="button"
+                                        data-i18n-static="privateDatabase_order_step3_pay_button"
+                                        data-ng-click="orderCtrl.openBc()">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

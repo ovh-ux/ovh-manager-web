@@ -1,0 +1,20 @@
+<div data-ng-controller="DomainZoneDeleteAllCtrl as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="deleteAllZone"
+         data-wizard-title="i18n.domain_tab_ZONE_default_delete_all">
+
+        <div data-wizard-step
+             data-wizard-step-valid="!ctrl.loading">
+
+            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+
+            <div data-ng-if="!ctrl.loading">
+                <p data-i18n-static="domain_configuration_zonedns_delete_all_question"></p>
+                <div class="alert alert-warning mt-5" role="alert"
+                     data-i18n-static="domain_configuration_zonedns_delete_all_warning">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

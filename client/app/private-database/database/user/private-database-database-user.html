@@ -1,0 +1,130 @@
+<div data-ng-controller="PrivateDatabaseUserDatabaseCtrl as privateDatabaseUserDatabaseCtrl">
+
+    <div class="d-flex mb-3">
+        <button class="btn btn-default my-auto"
+                data-ng-click="goToList()">
+            <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
+            <span data-i18n-static="common_back"></span>
+        </button>
+        <h2 class="d-inline-block ml-3 mb-0">
+            <span data-i18n-static="privateDatabase_tabs_users_database_name"></span>
+            <strong data-ng-bind="bdd.databaseName"></strong>
+        </h2>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table"
+               data-ng-class="{'table-hover table-striped': !privateDatabaseUserDatabaseCtrl.loading.init && privateDatabaseUserDatabaseCtrl.users.length > 0}">
+            <thead>
+                <tr>
+                    <th data-i18n-static="privateDatabase_tabs_users_database_username"></th>
+                    <th class="text-center">
+                        <span data-i18n-static="privateDatabase_tabs_users_database_grant_admin"></span>
+                        <span class="fa fa-info-circle" aria-hidden="true"
+                              data-uib-tooltip="{{tr('privateDatabase_tabs_user_grant_admin_tooltip')}}"
+                              data-tooltip-append-to-body="true">
+                        </span>
+                    </th>
+                    <th class="text-center">
+                        <span data-i18n-static="privateDatabase_tabs_users_database_grant_rw"></span>
+                        <span class="fa fa-info-circle" aria-hidden="true"
+                              data-uib-tooltip="{{tr('privateDatabase_tabs_user_grant_rw_tooltip')}}"
+                              data-tooltip-append-to-body="true">
+                        </span>
+                    </th>
+                    <th class="text-center">
+                        <span data-i18n-static="privateDatabase_tabs_users_database_grant_ro"></span>
+                        <span class="fa fa-info-circle" aria-hidden="true"
+                              data-uib-tooltip="{{tr('privateDatabase_tabs_user_grant_ro_tooltip')}}"
+                              data-tooltip-append-to-body="true">
+                        </span>
+                    </th>
+                    <th class="text-center">
+                        <span data-i18n-static="privateDatabase_tabs_users_database_grant_none"></span>
+                        <span class="fa fa-info-circle" aria-hidden="true"
+                              data-uib-tooltip="{{tr('privateDatabase_tabs_user_grant_none_tooltip')}}"
+                              data-tooltip-append-to-body="true">
+                        </span>
+                    </th>
+                </tr>
+            </thead>
+
+            <tbody data-ng-if="privateDatabaseUserDatabaseCtrl.loading.init">
+                <tr>
+                    <td class="loader text-center" colspan="5"></td>
+                </tr>
+            </tbody>
+
+            <tbody data-ng-if="!privateDatabaseUserDatabaseCtrl.loading.init && !privateDatabaseUserDatabaseCtrl.users.length">
+                <tr>
+                    <td class="text-center" colspan="5"
+                        data-i18n-static="privateDatabase_tabs_users_database_no_users"></td>
+                </tr>
+            </tbody>
+
+            <tbody data-ng-if="!privateDatabaseUserDatabaseCtrl.loading.init && privateDatabaseUserDatabaseCtrl.users.length > 0">
+                <tr data-ng-repeat="user in privateDatabaseUserDatabaseCtrl.usersDetails track by $index">
+                    <th scope="row" data-ng-bind="user.userName"></th>
+                    <td class="text-center" colspan="4"
+                        data-ng-if="privateDatabaseUserDatabaseCtrl.pendingGrant[user.userName]">
+                        <span class="label label-info"
+                              data-i18n-static="privateDatabase_tabs_user_grant_updating"></span>
+                    </td>
+                    <td class="text-center"
+                        data-ng-if="!privateDatabaseUserDatabaseCtrl.pendingGrant[user.userName]">
+                        <label class="m-0">
+                            <input type="radio" value="admin"
+                                   data-ng-change="privateDatabaseUserDatabaseCtrl.setGrant(bdd, user, 'admin')"
+                                   data-ng-disabled="database.state != 'started' || taskState.changeVersion || loaders.setGrant"
+                                   data-ng-model="user.grantType">
+                        </label>
+                    </td>
+                    <td class="text-center"
+                        data-ng-if="!privateDatabaseUserDatabaseCtrl.pendingGrant[user.userName]">
+                        <label class="m-0">
+                            <input type="radio" value="rw"
+                                   data-ng-change="privateDatabaseUserDatabaseCtrl.setGrant(bdd, user, 'rw')"
+                                   data-ng-disabled="database.state !== 'started' || taskState.changeVersion || loaders.setGrant"
+                                   data-ng-model="user.grantType">
+                        </label>
+                    </td>
+                    <td class="text-center"
+                        data-ng-if="!privateDatabaseUserDatabaseCtrl.pendingGrant[user.userName]">
+                        <label class="m-0">
+                            <input type="radio" value="ro"
+                                   data-ng-change="privateDatabaseUserDatabaseCtrl.setGrant(bdd, user, 'ro')"
+                                   data-ng-disabled="database.state !== 'started' || taskState.changeVersion || loaders.setGrant"
+                                   data-ng-model="user.grantType">
+                        </label>
+                    </td>
+                    <td class="text-center"
+                        data-ng-if="!privateDatabaseUserDatabaseCtrl.pendingGrant[user.userName]">
+                        <label class="m-0">
+                            <input type="radio" value="none"
+                                   data-ng-change="privateDatabaseUserDatabaseCtrl.setGrant(bdd, user, 'none');"
+                                   data-ng-disabled="database.state !=='started' || taskState.changeVersion || loaders.setGrant"
+                                   data-ng-model="user.grantType">
+                        </label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="clearfix"
+         data-ng-if="privateDatabaseUserDatabaseCtrl.users">
+        <div data-pagination-front
+             data-items="privateDatabaseUserDatabaseCtrl.users"
+             data-paginated-items="privateDatabaseUserDatabaseCtrl.usersDetails"
+             data-current-page="currentPage"
+             data-nb-pages="nbPages"
+             data-items-per-page="itemsPerPage"
+             data-transform-item="privateDatabaseUserDatabaseCtrl.transformItem(item)"
+             data-on-page-change="privateDatabaseUserDatabaseCtrl.loading.init = true"
+             data-on-transform-item-done="privateDatabaseUserDatabaseCtrl.onTransformItemDone(items)"
+             data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+             data-item-per-page-placeholder="{{tr('pagination_display')}}"
+             data-ng-show="!privateDatabaseUserDatabaseCtrl.loading.init && privateDatabaseUserDatabaseCtrl.usersDetails.length > 0">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+<div data-ng-controller="HostingStatisticsCtrl">
+    <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="!model.constants"></div>
+    <div data-ng-if="model.constants">
+        <div class="oui-box">
+            <div class="form-inline d-md-flex align-items-md-center justify-content-md-between">
+                <div class="form-group">
+                    <label class="control-label" for="hostingStatisticsType">
+                        <span data-i18n-static="hosting_tab_STATISTICS_type"></span>&nbsp;:&nbsp;
+                    </label>
+                    <select class="form-control" name="type" id="hostingStatisticsType"
+                            data-ng-change="getStatistics()"
+                            data-ng-model="selected.type"
+                            data-ng-options="tr('hosting_tab_STATISTICS_type_' + option) for option in model.constants.types track by option">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <div data-ng-if="selected.typeIsDb()">
+                        <label class="control-label" for="hostingStatisticsDb">
+                            <span data-i18n-static="hosting_tab_STATISTICS_db"></span>&nbsp;:&nbsp;
+                        </label>
+                        <select class="form-control" name="db" id="hostingStatisticsDb"
+                                data-ng-change="getStatistics()"
+                                data-ng-model="selected.db"
+                                data-ng-options="db for db in model.db track by db">
+                        </select>
+                    </div>
+                    <div class="checkbox mb-5 mb-md-0" data-ng-if="!selected.typeIsDb()">
+                        <label class="pt-2 pl-0">
+                            <strong data-i18n-static="hosting_tab_STATISTICS_type_IN_HTTP_MEAN_RESPONSE_TIME"></strong>&nbsp;:&nbsp;
+                            <input type="checkbox" class="mt-1 ml-0" id="hostingStatisticsResponseTime"
+                                   data-ng-change="getStatistics()"
+                                   data-ng-model="selected.httpMeanResponseTime">
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="hostingStatisticsPeriod">
+                        <span data-i18n-static="hosting_tab_STATISTICS_period"></span>&nbsp;:&nbsp;
+                    </label>
+                    <select class="form-control" name="period" id="hostingStatisticsPeriod"
+                            data-ng-change="getStatistics()"
+                            data-ng-model="selected.period"
+                            data-ng-options="tr('hosting_tab_STATISTICS_period_' + option) for option in model.constants.periods track by option">
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-5 text-center" data-ng-if="selected.type == 'IN_HTTP_HITS'">
+            <span class="mr-4" data-i18n-static="hosting_tab_STATISTICS_aggregate"></span>
+            <label class="radio-inline"
+                   data-ng-repeat="option in model.constants.aggregateModes track by option">
+                <input type="radio" name="aggregationModel" value="{{option}}"
+                       data-ng-change="getStatistics()"
+                       data-ng-model="selected.aggregateMode">
+                    <span data-ng-bind="tr('hosting_tab_STATISTICS_aggregate_' + option)"></span>
+           </label>
+        </div>
+
+        <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="!model.datas"></div>
+
+        <div class="chart-container" style="height: 320px;"
+             data-ng-if="selected.haveDataToDisplay"
+             data-chartjs="stats.chart"></div>
+
+        <div class="alert alert-info my-5" role="alert"
+             data-i18n-static="hosting_tab_STATISTICS_none"
+             data-ng-if="model.datas && !selected.haveDataToDisplay">
+        </div>
+    </div>
+</div>

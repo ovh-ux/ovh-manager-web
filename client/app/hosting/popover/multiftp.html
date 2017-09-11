@@ -1,0 +1,15 @@
+<div class="popover-menu">
+    <button class="btn btn-link d-block" type="button"
+            data-i18n-static="hosting_tab_FTP_multiftp_table_popover_modify"
+            data-ng-click="modifyUser(element)">
+    </button>
+    <button class="btn btn-link d-block" type="button"
+            data-i18n-static="hosting_tab_FTP_multiftp_table_popover_update_password"
+            data-ng-click="updateUserPassword(element)">
+    </button>
+    <button class="btn btn-link d-block" type="button"
+            data-i18n-static="hosting_tab_FTP_multiftp_table_popover_delete"
+            data-ng-click="deleteUser(element)"
+            data-ng-disabled="element.login == ftpInformations.primaryLogin">
+    </button>
+</div>

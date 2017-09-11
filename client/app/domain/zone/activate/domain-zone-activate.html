@@ -1,0 +1,31 @@
+<div data-ng-controller="DomainZoneActivateCtrl as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="activateZone"
+         data-wizard-title="i18n.domain_tab_ZONE_no_zone_activate_btn">
+
+        <div data-wizard-step
+             data-wizard-step-valid="!ctrl.loading">
+
+            <p data-i18n-static="domain_tab_ZONE_no_zone_activate_question"></p>
+            <form class="form-horizontal ml-4 mt-4">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="activationZone.minimized"
+                               data-ng-model="ctrl.activationZone.minimized"
+                               data-ng-value="true">
+                        <span data-i18n-static="domain_tab_ZONE_no_zone_activate_minimized_yes"></span>
+                    </label>
+                </div>
+                <div class="radio">
+                    <label class="radio">
+                        <input type="radio" name="activationZone.minimized"
+                               data-ng-model="ctrl.activationZone.minimized"
+                               data-ng-value="false">
+                        <span data-i18n-static="domain_tab_ZONE_no_zone_activate_minimized_no"></span>
+                    </label>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

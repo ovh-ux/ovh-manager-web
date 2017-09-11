@@ -1,0 +1,24 @@
+<div class="clearfix">
+    <p data-i18n-static="hosting_tab_CRON_step2_title"></p>
+
+    <div class="row" data-ng-init="mode.active = 'simple'">
+        <div class="col-md-6">
+            <button class="btn btn-block btn-default btn-lg" data-ng-class="{'active': mode.active === 'simple'}"
+                    data-i18n-static="hosting_tab_CRON_simple_mode"
+                    data-ng-click="switchToSimpleMode()"></button>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-block btn-default btn-lg" data-ng-class="{'active': mode.active === 'expert'}"
+                    data-i18n-static="hosting_tab_CRON_expert_mode"
+                    data-ng-click="switchToExpertMode()"></button>
+        </div>
+    </div>
+
+    <!-- MODE SIMPLE -->
+    <div data-ng-show="mode.active === 'simple'"
+         data-ng-include="'components/cron/cronSimple.html'"></div>
+
+    <!-- MODE EXPERT -->
+    <div data-ng-show="mode.active === 'expert'"
+         data-ng-include="'components/cron/cronExpert.html'"></div>
+</div>

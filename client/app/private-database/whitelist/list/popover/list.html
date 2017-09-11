@@ -1,0 +1,12 @@
+<div class="popover-menu">
+    <button class="btn btn-link" type="button"
+            data-i18n-static="privateDatabase_tabs_whitelist_list_popover_edit"
+            data-ng-click="listCtrl.editWhitelist(whitelist)"
+            data-ng-disabled="whitelist.status !== 'created'">
+    </button>
+    <button class="btn btn-link" type="button"
+            data-i18n-static="privateDatabase_tabs_whitelist_list_popover_delete"
+            data-ng-click="listCtrl.deleteWhitelist(whitelist)"
+            data-ng-disabled="whitelist.status !== 'created'">
+    </button>
+</div>

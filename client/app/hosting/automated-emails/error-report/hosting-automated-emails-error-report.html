@@ -1,0 +1,31 @@
+<div data-ng-controller="HostingAutomatedEmailsErrReportsCtrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="submit"
+         data-wizard-title="i18n.hosting_tab_AUTOMATED_EMAILS_err_reports_title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="formErrReportsEmail.$valid">
+
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loaders.loading"></div>
+
+            <div data-ng-if="!loaders.loading">
+                <p data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_info"></p>
+                <form class="form-horizontal mt-4" name="$parent.formErrReportsEmail">
+                    <div class="form-group" data-ng-class="{'has-error': formErrReportsEmail.errReportsEmail.$dirty && formErrReportsEmail.errReportsEmail.$invalid}">
+                        <label class="control-label col-md-4 required" for="errReportsEmail"
+                               data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_email"></label>
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" name="errReportsEmail" id="errReportsEmail" required
+                                   data-ng-model="automatedEmails.email">
+                            <div class="help-block" ng-messages="formErrReportsEmail.errReportsEmail.$error">
+                                <small data-ng-message="required" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_email_required"></small>
+                                <small data-ng-message="email" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_email_invalid"></small>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,171 @@
+<div class="container-fluid px-0" data-ng-controller="controllers.Domain.Redirection as ctrlDomainRedirect">
+    <div data-ovh-alert="domain_tab_redirection"></div>
+
+    <p data-i18n-static="domain_tab_REDIRECTION_title"></p>
+
+    <div class="loader text-center" data-ng-if="ctrlDomainRedirect.loading.init"></div>
+
+    <div class="alert alert-info"
+         role="alert"
+         data-i18n-static="domain_tab_ZONE_empty_zone"
+         data-ng-if="!ctrlDomainRedirect.hasZoneDns"></div>
+
+    <div class="row" data-ng-show="ctrlDomainRedirect.hasZoneDns && !ctrlDomainRedirect.loading.init">
+        <div class="col-md-9">
+            <div class="alert alert-info mt-5"
+                 role="alert"
+                 data-i18n-static="domain_tab_ZONE_empty_zone"
+                 data-ng-if="!ctrlDomainRedirect.hasResult"></div>
+
+            <div data-ng-if="ctrlDomainRedirect.hasResult">
+                <div class="mb-3 mt-5">
+                    <form class="form-inline d-md-flex justify-content-md-end" name="searchSubDomainForm">
+                        <div class="form-group mr-md-2">
+                            <label class="sr-only"
+                                    for="subDomainFilter"
+                                    data-ng-bind="::i18n.table_filter"></label>
+                            <select class="form-control"
+                                    id="subDomainFilter"
+                                    data-ng-change="ctrlDomainRedirect.goSearch()"
+                                    data-ng-model="ctrlDomainRedirect.search.filter"
+                                    data-ng-options="type as tr('domain_tab_REDIRECTION_type_' + type) for type in ctrlDomainRedirect.redirectionList.recordTypes track by type">
+                                <option value=""
+                                        selected
+                                        data-i18n-static="domain_tab_ZONE_type_all"></option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="sr-only"
+                                    for="subDomainSearch"
+                                    data-ng-bind="::i18n.common_search"></label>
+                            <div class="input-group">
+                                <input type="text"
+                                        class="form-control"
+                                        id="subDomainSearch"
+                                        name="subDomainSearch"
+                                        placeholder="{{::i18n.domain_tab_REDIRECTION_search_placeholder}}"
+                                        data-ng-change="ctrlDomainRedirect.goSearch()"
+                                        data-ng-disabled="ctrlDomainRedirect.loading.search"
+                                        data-ng-model="ctrlDomainRedirect.search.value"
+                                        data-ng-model-options="{ debounce: 800 }">
+                                <div class="input-group-btn" data-ng-if="ctrlDomainRedirect.search.value">
+                                    <button class="btn btn-default"
+                                            type="button"
+                                            aria-label="{{i18n.common_cancel}}"
+                                            data-ng-click="ctrlDomainRedirect.emptySearch()"
+                                            data-ng-disabled="ctrlDomainRedirect.loading.search">
+                                        <span class="fa fa-times" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                                <span class="input-group-addon" data-ng-if="!ctrlDomainRedirect.search.value">
+                                    <span class="fa fa-search" aria-hidden="true"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table" data-ng-class="{ 'table-hover table-striped': !ctrlDomainRedirect.loading.search && ctrlDomainRedirect.redirectionList.list.results.length }">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="min-width"></th>
+                                <th scope="col" data-i18n-static="domain_tab_REDIRECTION_table_headers_field"></th>
+                                <th scope="col" data-i18n-static="domain_tab_REDIRECTION_table_headers_type"></th>
+                                <th scope="col" data-i18n-static="domain_tab_REDIRECTION_table_headers_target"></th>
+                                <th scope="col" class="min-width text-right">
+                                    <button class="btn btn-icon"
+                                            type="button"
+                                            title="{{i18n.refresh}}"
+                                            data-ng-click="ctrlDomainRedirect.reloadRedirectTable()">
+                                        <span class="fa fa-refresh" aria-hidden="true"></span>
+                                    </button>
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <!-- Loading -->
+                        <tbody data-ng-if="ctrlDomainRedirect.loading.search">
+                            <tr>
+                                <td class="loader text-center" colspan="5"></td>
+                            </tr>
+                        </tbody>
+
+                        <!-- Empty table -->
+                        <tbody data-ng-if="!ctrlDomainRedirect.loading.search && !ctrlDomainRedirect.redirectionList.list.results.length">
+                            <tr>
+                                <td class="text-center" colspan="5" data-i18n-static="table_search_noresult"></td>
+                            </tr>
+                        </tbody>
+
+                        <!-- Data -->
+                        <tbody data-ng-if="!ctrlDomainRedirect.loading.search && ctrlDomainRedirect.redirectionList.list.results.length">
+                            <tr data-ng-repeat="redirection in ctrlDomainRedirect.redirectionList.list.results track by $index">
+                                <td class="text-center">
+                                    <abbr title="{{i18n.domain_tab_REDIRECTION_type_visible}}" data-ng-if="redirection.fieldDisplayType === 'visible'">
+                                        <span class="oui-icon oui-icon-eye oui-icon_small" aria-hidden="true"></span>
+                                    </abbr>
+
+                                    <abbr title="{{i18n.domain_tab_REDIRECTION_type_visiblePermanent}}" data-ng-if="redirection.fieldDisplayType === 'visiblePermanent'">
+                                        <span class="oui-icon oui-icon-eye oui-icon_small" aria-hidden="true"></span>
+                                    </abbr>
+
+                                    <abbr title="{{i18n.domain_tab_REDIRECTION_type_invisible}}" data-ng-if="redirection.fieldDisplayType !== 'visible' && redirection.fieldDisplayType !== 'visiblePermanent'">
+                                        <span class="oui-icon oui-icon-eye-blocked oui-icon_small" aria-hidden="true"></span>
+                                    </abbr>
+                                </td>
+                                <td data-ng-bind="ctrlDomainRedirect.constructor.getDomain(redirection)"></td>
+                                <td data-ng-bind="tr('domain_tab_REDIRECTION_type_' + redirection.fieldDisplayType)"></td>
+                                <td class="word-break" data-ng-bind="redirection.targetDisplayName"></td>
+                                <td class="text-center text-nowrap">
+                                    <button class="btn btn-icon"
+                                            type="button"
+                                            title="{{ctrlDomainRedirect.constructor.getDomain(redirection)}} {{i18n.table_modify_entry}}"
+                                            data-ng-click="setAction('redirection/edit/domain-redirection-edit', { redirection: redirection, displayName: ctrlDomainRedirect.constructor.getDomain(redirection) })">
+                                        <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
+                                    </button>
+                                    <button class="btn btn-icon"
+                                            type="button"
+                                            title="{{ctrlDomainRedirect.constructor.getDomain(redirection)}} {{i18n.table_delete_entry}}"
+                                            data-ng-click="setAction('redirection/delete/domain-redirection-delete', { redirection: redirection, displayName: ctrlDomainRedirect.constructor.getDomain(redirection) })">
+                                        <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="clearfix"
+                 data-ng-show="ctrlDomainRedirect.hasResult"
+                 data-pagination-server-side="redirectionTable"
+                 data-pagination-server-side-function="loadRedirection"
+                 data-pagination-server-side-paginated-stuff="ctrlDomainRedirect.redirectionList"
+                 data-pagination-server-side-table-loading="ctrlDomainRedirect.loading.search"></div>
+
+        </div>
+
+        <div class="col-md-3 mt-5 mt-lg-0">
+            <div class="mb-5">
+                <button class="btn btn-block btn-default" type="button"
+                        data-i18n-static="domain_tab_REDIRECTION_add_button"
+                        data-ng-click="setAction('redirection/add/domain-redirection-add', ctrlDomainRedirect.domain)"
+                        data-uib-tooltip="{{::i18n.domain_tab_REDIRECTION_add_info}}"
+                        data-tooltip-append-to-body="true">
+                </button>
+                <button class="btn btn-block btn-default" type="button"
+                        data-i18n-static="domain_tab_REDIRECTION_csv_button"
+                        data-export-csv="ctrlDomainRedirect.getDatasToExport();"
+                        data-export-csv-separator=";"
+                        data-ng-disabled="ctrlDomainRedirect.loading.exportCSV">
+                </button>
+            </div>
+
+            <div data-guides
+                 data-guides-list="'redirection'"
+                 data-guides-title="tr('guide_domain_subtitle')"
+                 data-tr="tr"></div>
+        </div>
+    </div>
+</div>

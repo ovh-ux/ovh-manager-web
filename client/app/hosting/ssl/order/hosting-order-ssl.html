@@ -1,0 +1,99 @@
+<div data-ng-controller="HostingOrderSslCtrl">
+    <div data-wizard
+         data-wizard-bread-crumb
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="makeOrder"
+         data-wizard-title="i18n.hosting_dashboard_service_order_ssl">
+
+        <div data-wizard-step
+             data-wizard-step-valid="sslType != null"
+             data-wizard-step-on-next="createCertif">
+
+            <p data-i18n-static="hosting_dashboard_ssl_order_choose_type"></p>
+
+            <form name="hostingOrderSslForm">
+                <fieldset class="ml-4">
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sslType" value="letsencrypt"
+                                   data-ng-disabled="!validDomain"
+                                   data-ng-model="sslType.value">
+                            <span data-i18n-static="hosting_dashboard_ssl_order_free"></span>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sslType" value="payable"
+                                   data-ng-model="sslType.value">
+                            <span data-i18n-static="hosting_dashboard_ssl_order_payable"></span>
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input type="radio" name="sslType" value="import"
+                                   data-ng-model="sslType.value">
+                            <span data-i18n-static="hosting_dashboard_ssl_order_import"></span>
+                        </label>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="alert alert-warning mt-4" role="alert"
+                 data-i18n-static="hosting_ssl_regenerate_info_warning">
+            </div>
+            <div class="alert alert-info" role="alert"
+                 data-ng-bind-html="tr('hosting_ssl_limit_characters_info_warning', [maxDomainLength])">
+            </div>
+        </div>
+
+
+        <div data-wizard-step
+             data-wizard-step-on-load="checkMultisitesSSL"
+             data-wizard-step-on-next="generateCertif"
+             data-wizard-step-valid="isStepValid(1)">
+
+            <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}"
+                 data-ng-if="loading.init || loading.duration || loading.generateCertif"></div>
+
+            <!-- FREE CERTIFICATE -->
+            <div data-ng-if="!(loading.init || loading.duration || loading.generateCertif)">
+                <div data-ng-if="sslType.value === 'import'">
+                    <p data-i18n-static="hosting_dashboard_ssl_order_choose_mode"></p>
+                    <form name="hostingOrderSslImportForm">
+                        <div class="form-group">
+                            <label class="control-label" for="manualModeCertif"
+                                   data-i18n-static="hosting_dashboard_ssl_order_manual_mode_certif"></label>
+                            <textarea class="form-control" id="manualModeCertif" rows="7"
+                                      data-ng-model="manualMode.certif">
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="manualModeKey"
+                                   data-i18n-static="hosting_dashboard_ssl_order_manual_mode_key"></label>
+                            <textarea class="form-control" id="manualModeKey" rows="7"
+                                      data-ng-model="manualMode.key">
+                            </textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="manualModeChain"
+                                   data-i18n-static="hosting_dashboard_ssl_order_manual_mode_chain"></label>
+                            <textarea class="form-control" id="manualModeChain" rows="7"
+                                      data-ng-model="manualMode.chain">
+                            </textarea>
+                        </div>
+                    </form>
+                </div>
+                <!--@todo : translate -->
+                <p data-ng-if="sslType.value === 'payable'">Pour poursuivre l'achat de votre certificat SSL, vous allez être redirigé vers notre processus de commande.</p>
+            </div>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-valid="!loading.order">
+            <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}"
+                 data-ng-if="loading.order"></div>
+            <p data-i18n-static="hosting_dashboard_ssl_order_validation"
+               data-ng-if="!loading.order"></p>
+        </div>
+    </div>
+</div>

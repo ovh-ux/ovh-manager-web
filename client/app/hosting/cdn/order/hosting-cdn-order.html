@@ -1,0 +1,72 @@
+<div data-ng-controller="HostingOrderCdnCtrl">
+    <div data-wizard
+         data-wizard-bread-crumb
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="makeOrder"
+         data-wizard-title="i18n.hosting_dashboard_service_order_cdn">
+
+        <div data-wizard-step
+             data-wizard-step-on-load="loadOrder"
+             data-wizard-step-valid="isStepValid(1)">
+
+            <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loading.init"></div>
+
+            <div data-ng-if="!loading.init">
+                <div class="alert alert-danger mt-5" role="alert"
+                     data-i18n-static="hosting_dashboard_cdn_order_not_available"
+                     data-ng-if="!isOrderable">
+                </div>
+
+                <div class="form-group" data-ng-if="isOrderable && !loading.model">
+                    <label class="control-label" for="cdnOffer"
+                           data-i18n-static="hosting_dashboard_cdn_order_select_pack_offer"></label>
+                    <select class="form-control" id="cdnOffer"
+                            data-ng-model="model.offer"
+                            data-ng-options="offer as (i18n['hosting_dashboard_cdn_order_' + offer] || offer) for offer in availableOffers track by offer">
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-valid="isStepValid(2)"
+             data-wizard-step-on-load="getDuration">
+
+            <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loading.duration"></div>
+
+            <div data-ng-if="!loading.duration">
+                <p data-i18n-static="hosting_dashboard_cdn_order_choose_duration"></p>
+                <form class="ml-4">
+                    <div class="radio" data-ng-repeat="duration in durations track by $index">
+                        <label>
+                            <input type="radio" name="duration"
+                                   data-ng-disabled="(loading.duration && !model.duration) || durations.length == 1"
+                                   data-ng-model="model.duration"
+                                   data-ng-value="duration">
+                            <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:&nbsp;
+                            <span data-ng-bind-html="details[duration].prices | price:user.ovhSubsidiary"></span>
+                            <span class="fa fa-spinner fa-spin" aria-hidden="true"
+                                  data-ng-hide="details[duration]"></span>
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-valid="isStepValid(3)">
+             <form>
+                 <div data-contracts="details[model.duration].contracts"
+                      data-full-text="false"
+                      data-ng-model="model.contract"></div>
+             </form>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-valid="!loading.order">
+
+            <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loading.order"></div>
+            <p data-i18n-static="hosting_dashboard_cdn_order_validation" data-ng-if="!loading.order"></p>
+        </div>
+    </div>
+</div>

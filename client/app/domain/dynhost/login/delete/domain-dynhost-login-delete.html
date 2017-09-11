@@ -1,0 +1,16 @@
+<div data-ng-controller="DomainDynHostLoginDeleteCtrl as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="deleteLogin"
+         data-wizard-title="i18n.domain_tab_DYNHOSTLOGIN_delete_title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="!ctrl.loading">
+
+            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+
+            <p data-ng-bind-html="tr('domain_tab_DYNHOSTLOGIN_delete_confirm', [ctrl.login])"
+               data-ng-if="!ctrl.loading"></p>
+        </div>
+    </div>
+</div>

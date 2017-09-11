@@ -1,0 +1,118 @@
+<div class="page-header mb-5">
+    <h1 data-i18n-static="mxPlan_order_title"></h1>
+</div>
+
+<div data-ovh-alert="{{alerts.order}}"></div>
+
+<div class="loader text-center" data-ng-if="ctrlMXPlanOrder.loading.init"></div>
+
+<div class="container-fluid px-5" data-ng-if="!ctrlMXPlanOrder.loading.init">
+    <div class="alert alert-info" role="alert"
+         data-i18n-static="mxPlan_order_error_no_domain"
+         data-ng-if="ctrlMXPlanOrder.list.domains.length === 0">
+    </div>
+
+    <form name="orderMxPlanForm">
+
+        <!-- step 1 -->
+        <h2 data-i18n-static="mxPlan_order_step1_title"></h2>
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-3 control-label" for="select-order-domain"
+                       data-i18n-static="mxPlan_order_step1_domain"></label>
+                <div class="col-md-6">
+                    <select class="form-control" id="select-order-domain" name="orderDomain"
+                            data-ng-change="ctrlMXPlanOrder.fetchOffers()"
+                            data-ng-model="ctrlMXPlanOrder.selectedOrder.config.domain"
+                            data-ng-options="domain for domain in (ctrlMXPlanOrder.list.domains | orderBy) track by domain">
+                        <option value="" disabled data-i18n-static="select_option"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- step 2-->
+        <div class="loader text-center mt-5" data-ng-if="ctrlMXPlanOrder.loading.offers"></div>
+
+        <div class="mt-5"
+             data-ng-if="!ctrlMXPlanOrder.loading.offers && ctrlMXPlanOrder.selectedOrder.config.domain.length && ctrlMXPlanOrder.list.offers.length">
+            <h2 data-i18n-static="mxPlan_order_step2_title"></h2>
+
+            <div data-ovh-alert="{{alerts.durations}}" data-ovh-alert-hide-remove-button></div>
+
+            <div class="form-group">
+                <div class="radio ml-5" data-ng-repeat="offer in (ctrlMXPlanOrder.list.offers | orderBy: 'prices.withTax.value') track by $index">
+                    <label>
+                        <input type="radio" name="offers"
+                               data-ng-change="ctrlMXPlanOrder.selectOffer()"
+                               data-ng-disabled="ctrlMXPlanOrder.loading.prices || ctrlMXPlanOrder.durations.available.length === 1"
+                               data-ng-model="ctrlMXPlanOrder.selectedOrder.offer"
+                               data-ng-value="offer">
+                        <span data-ng-bind-html="'MX ' + offer.offer + ' : ' + (offer.prices | price:ovhSubsidiary)"></span>
+                    </label>
+                </div>
+                <p>
+                    <span data-ng-bind-html="tr('mxPlan_order_step2_product_description', [ctrlMXPlanOrder.urls.mxPlanProductDescription, '_blank', '<span class=\'fa fa-share\'></span>'])"
+                          data-ng-if="ctrlMXPlanOrder.urls.mxPlanProductDescription"></span><br />
+                    <span data-i18n-static="mxPlan_order_step2_duration"></span>
+                </p>
+            </div>
+        </div>
+
+        <!-- Step 3: Contracts and validation -->
+        <div class="mt-5"
+             data-ng-if="!ctrlMXPlanOrder.loading.offers && ctrlMXPlanOrder.selectedOrder.offer">
+            <h2 data-i18n-static="mxPlan_order_step3_title"></h2>
+
+            <div data-ng-if="!ctrlMXPlanOrder.order.url">
+
+                <p class="font-weight-bold text-primary"
+                   data-i18n-static="mxPlan_order_step3_question"
+                   data-ng-if="ctrlMXPlanOrder.selectedOrder.offer.contracts.length === 0"></p>
+
+                <div data-ng-if="ctrlMXPlanOrder.selectedOrder.offer.contracts.length > 0">
+                    <p class="font-weight-bold text-primary"
+                       data-i18n-static="mxPlan_order_step3_contracts_ask"></p>
+                    <ul>
+                        <li data-ng-repeat="contract in ctrlMXPlanOrder.selectedOrder.offer.contracts track by $index">
+                            <a data-ng-href="{{contract.url}}" target="_blank"
+                               data-ng-bind="contract.url"></a>
+                        </li>
+                    </ul>
+                    <label class="checkbox ml-2">
+                        <input type="checkbox" data-ng-model="ctrlMXPlanOrder.selectedOrder.contractsValidated">
+                        <span data-i18n-static="mxPlan_order_step3_contracts_check"></span>
+                    </label>
+                </div>
+
+                <div data-ng-if="ctrlMXPlanOrder.loading.bc">
+                    <span data-i18n-static="mxPlan_order_step3_generating"></span>
+                    <span class="fa fa-spinner fa-spin" aria-hidden="true"></span>
+                </div>
+                <div class="my-5 text-center">
+                    <button class="btn btn-primary btn-lg" type="button"
+                            data-ng-click="ctrlMXPlanOrder.generateBc()"
+                            data-ng-disabled="ctrlMXPlanOrder.selectedOrder.offer.contracts.length !== 0 && !ctrlMXPlanOrder.selectedOrder.contractsValidated"
+                            data-ng-if="!ctrlMXPlanOrder.loading.bc">
+                        <span data-i18n-static="mxPlan_order_step3_generate"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div data-ng-if="ctrlMXPlanOrder.order.url">
+                <p>
+                    <strong class="text-primary" data-i18n-static="mxPlan_order_step3_generated"></strong><br>
+                    <span data-i18n-static="mxPlan_order_step3_clic_here"></span><br>
+                    <span data-i18n-static="mxPlan_order_step3_bc_information"></span>
+                </p>
+                <div class="my-5 text-center">
+                    <button class="btn btn-primary btn-lg" type="button"
+                            data-ng-click="ctrlMXPlanOrder.openBc()">
+                        <span data-i18n-static="mxPlan_order_step3_pay_button"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

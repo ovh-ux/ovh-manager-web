@@ -1,0 +1,50 @@
+<div data-ng-controller="DomainsDnssecBatchCtrl as ctrlDomainsDnssecBatch">
+    <div data-wizard
+         data-wizard-bread-crumb
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="updateDnssec"
+         data-wizard-title="i18n.domains_configuration_dnssec_batch_title + ' (' + ctrlDomainsDnssecBatch.selected.domainsNames.length + ')'">
+
+        <div data-wizard-step
+             data-wizard-step-valid="ctrlDomainsDnssecBatch.selected.domainsNames.length > 0 && ctrlDomainsDnssecBatch.selected.state !== null">
+
+            <p data-i18n-static="domains_configuration_dnssec_batch_step1_no_selected_domains"
+               data-ng-if="!ctrlDomainsDnssecBatch.selected.domainsNames"></p>
+
+            <p data-i18n-static="domains_configuration_dnssec_batch_step1_question"></p>
+            <form class="ml-2" name="DomainsDnssecBatchForm" data-ng-if="ctrlDomainsDnssecBatch.selected.domainsNames">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="domainsDnssecBatchStateEnabled"
+                               data-ng-model="ctrlDomainsDnssecBatch.selected.state"
+                               data-ng-value="true">
+                        <span data-i18n-static="domains_configuration_dnssec_batch_step1_status_true"></span>
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="domainsDnssecBatchStateDisabled"
+                               data-ng-model="ctrlDomainsDnssecBatch.selected.state"
+                               data-ng-value="false">
+                        <span data-i18n-static="domains_configuration_dnssec_batch_step1_status_false"></span>
+                    </label>
+                </div>
+            </form>
+
+            <div data-wizard-step-help>
+                <span class="title" data-i18n-static="domains_configuration_dnssec_batch_step1_help_title"></span>
+                <p data-ng-bind-html="tr('domains_configuration_dnssec_batch_step1_help_content')"></p>
+                <p>
+                    <a data-ng-href="{{ctrlDomainsDnssecBatch.dnssec_service_url}}" target="_blank"
+                       data-i18n-static="domains_configuration_dnssec_batch_step1_help_more"></a>
+                </p>
+            </div>
+        </div>
+
+        <div data-wizard-step>
+            <p class="text-intro"
+               data-i18n-static="domains_configuration_dnssec_batch_step2_question"></p>
+            <p data-ng-bind="tr('domains_configuration_dnssec_batch_step2_status_' + ctrlDomainsDnssecBatch.selected.state)"></p>
+        </div>
+    </div>
+</div>

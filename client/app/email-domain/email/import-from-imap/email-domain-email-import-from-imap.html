@@ -1,0 +1,61 @@
+<div data-ng-controller="EmailsImportFromImapCtrl as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="importFromImap"
+         data-wizard-title="i18n.email_tab_modal_import_from_imap_title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="ctrl.importFromImapForm.$valid">
+
+            <p class="font-weight-bold" data-i18n-static="email_tab_modal_import_from_imap_heading"></p>
+            <p data-i18n-static="email_tab_modal_import_from_imap_account_info"></p>
+
+            <form class="form-horizontal" name="ctrl.importFromImapForm">
+                <div class="form-group">
+                    <label class="control-label col-md-4 required" for="txt-server-address"
+                           data-i18n-static="email_tab_modal_import_from_imap_server_addr"></label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="txt-server-address" name="serverAddress" required
+                               data-ng-model="ctrl.model.serverAddress">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4 required" for="txt-account-name"
+                           data-i18n-static="email_tab_modal_create_account_account_name"></label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="txt-account-name" name="accountName" required
+                               data-ng-model="ctrl.model.accountName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4 required" for="txt-account-password"
+                           data-i18n-static="email_tab_modal_create_account_account_password"></label>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control" id="txt-account-password" name="accountPassword" required
+                               data-ng-model="ctrl.model.accountPassword">
+                    </div>
+                </div>
+                <div class="checkbox col-md-offset-4 pl-lg-3">
+                    <label>
+                        <input type="checkbox" id="chk-use-ssl" name="useSsl"
+                               data-ng-model="ctrl.model.useSSL">
+                        <span data-i18n-static="email_tab_modal_import_from_imap_use_ssh"></span>
+                    </label>
+                </div>
+                <hr />
+                <p class="mb-4">
+                    <span data-i18n-static="email_tab_modal_import_from_imap_account_password"></span>
+                    <strong class="font-italic" data-ng-bind="ctrl.account.email"></strong>
+                </p>
+                <div class="form-group">
+                    <label class="control-label col-md-4 required" for="txt-account-password-ovh"
+                           data-i18n-static="email_tab_modal_create_account_account_password"></label>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control" id="txt-account-password-ovh" name="accountPasswordOvh" required
+                               data-ng-model="ctrl.model.accountPasswordOVH">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

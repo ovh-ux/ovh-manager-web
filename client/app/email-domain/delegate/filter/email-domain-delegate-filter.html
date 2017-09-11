@@ -1,0 +1,98 @@
+<div class="row" data-ng-controller="EmailDelegateFilterCtrl as ctrlEmailDelegateFilter">
+    <div class="col-md-9">
+        <div class="d-flex mb-3">
+            <button class="btn btn-default my-auto" type="button"
+                    data-ng-click="ctrlEmailDelegate.resetInitialView()">
+                <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
+                <span data-i18n-static="email_tab_button_emails_filters_back"></span>
+            </button>
+            <h2 class="d-inline-block ml-3 mb-0">
+                <span data-i18n-static="email_tab_filters_management_heading"></span>
+                <strong data-ng-bind="ctrlEmailDelegateFilter.currentAccount.email"></strong>
+            </h2>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table"
+                   data-ng-class="{'table-hover table-striped': !ctrlEmailDelegateFilter.loading.filters && ctrlEmailDelegateFilter.filtersDetails.length}">
+                <thead>
+                    <tr>
+                        <th scope="col" data-i18n-static="email_tab_table_header_filter_name"></th>
+                        <th class="text-center" scope="col" data-i18n-static="email_tab_table_header_filter_priority"></th>
+                        <th class="text-center" scope="col" data-i18n-static="emails_common_status"></th>
+                        <th class="min-width text-right" scope="col">
+                            <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_header_refresh}}"
+                                    data-ng-click="ctrlEmailDelegateFilter.refreshTableFilters()">
+                                <span class="fa fa-refresh" aria-hidden="true"></span>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+
+                <!--loader-->
+                <tbody data-ng-if="ctrlEmailDelegateFilter.loading.filters">
+                    <tr>
+                        <td class="loader text-center" colspan="4"></td>
+                    </tr>
+                </tbody>
+
+                <!-- no filters -->
+                <tbody data-ng-if="!ctrlEmailDelegateFilter.loading.filters && !ctrlEmailDelegateFilter.filters.length">
+                    <tr>
+                        <td class="text-center" colspan="4" data-i18n-static="email_tab_table_filters_empty"></td>
+                    </tr>
+                </tbody>
+
+                <!--filters-->
+                <tbody data-ng-if="!ctrlEmailDelegateFilter.loading.filters && ctrlEmailDelegateFilter.filters.length > 0">
+                    <tr data-ng-repeat="filter in (ctrlEmailDelegateFilter.filtersDetails | orderBy:'name') track by $index">
+                        <td data-ng-bind="::filter.name"></td>
+                        <td class="text-center" data-ng-bind="::filter.priority"></td>
+                        <td class="text-center">
+                            <span class="label" data-ng-class="{'label-success': filter.active, 'label-danger': !filter.active}"
+                                  data-ng-bind="::tr('email_tab_filters_status_' + filter.active)"></span>
+                        </td>
+                        <td>
+                            <button class="btn btn-icon" type="button"
+                                    data-linkedpopover="email-domain/delegate/filter/email-domain-delegate-filter.popover.html"
+                                    data-linkedpopover-placement="left"
+                                    data-linkedpopover-remote="true"
+                                    data-linkedpopover-single="true"
+                                    data-linkedpopover-title="{{i18n.common_actions}}">
+                                <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="clearfix"
+             data-ng-if="ctrlEmailDelegateFilter.filters">
+            <div data-pagination-front
+                 data-items="ctrlEmailDelegateFilter.filters"
+                 data-paginated-items="ctrlEmailDelegateFilter.filtersDetails"
+                 data-current-page="currentPageFilters"
+                 data-nb-pages="nbPages"
+                 data-items-per-page="itemsPerPage"
+                 data-transform-item="ctrlEmailDelegateFilter.transformItem(item)"
+                 data-on-transform-item-done="ctrlEmailDelegateFilter.loading.filters = false"
+                 data-page-placeholder="{{tr('pagination_page', [currentPageFilters, nbPages])}}"
+                 data-item-per-page-placeholder="{{tr('pagination_display')}}"
+                 data-ng-show="!ctrlEmailDelegateFilter.loading.filters && ctrlEmailDelegateFilter.filtersDetails.length > 0">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mt-5 mt-lg-0">
+        <button class="btn btn-block btn-default" type="button"
+                data-ng-click="setAction('email-domain/email/filter/create/email-domain-email-filter-create', {
+                    account: ctrlEmailDelegateFilter.currentAccount,
+                    accounts: ctrlEmailDelegateFilter.accounts,
+                    filterNames: ctrlEmailDelegateFilter.filters,
+                    delegate: true
+                })">
+            <span data-i18n-static="email_tab_button_emails_create_filter"></span>
+        </button>
+    </div>
+</div>
