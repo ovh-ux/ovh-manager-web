@@ -327,7 +327,6 @@ angular.module("services").service(
                 data: {
                     transferLockStatus: newLockState.toLowerCase()
                 },
-                cache: this.cache.domainCache,
                 broadcast: "domain.dashboard.refresh"
             });
         }
@@ -640,8 +639,7 @@ angular.module("services").service(
          */
         orderOption (serviceName, option, duration) {
             return this.OvhHttp.post(`/order/domain/zone/${serviceName}/${option}/${duration}`, {
-                rootPath: "apiv6",
-                cache: this.cache.domainCache
+                rootPath: "apiv6"
             });
         }
 
