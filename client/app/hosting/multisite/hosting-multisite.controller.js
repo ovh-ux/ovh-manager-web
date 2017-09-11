@@ -14,7 +14,8 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
     };
 
     $scope.loadDomains = function (count, offset) {
-        let sslInfos, domainsList;
+        let sslInfos;
+        let domainsList;
 
         $scope.loading.domains = true;
         if ($location.search().domain) {
@@ -36,7 +37,7 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
                     })
             })
             .finally(() => {
-                $scope.domains = _.map(domainsList, (domain) => {
+                 _.forEach(domainsList.list.results, (domain) => {
                     domain.rawSsl = domain.ssl;
                     if (Array.isArray(sslInfos) && sslInfos.indexOf(domain.name) === -1) {
                         domain.ssl = domain.ssl ? 1 : 0;
@@ -46,6 +47,8 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
 
                     return domain;
                 });
+
+                $scope.domains = domainsList;
 
                 $location.search("domain", null);
 
