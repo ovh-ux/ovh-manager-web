@@ -22,38 +22,37 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
             $scope.search.text = $location.search().domain;
         }
 
-        $q
-            .all({
-                domains: Hosting.getTabDomains($stateParams.productId, count, offset, $scope.search.text)
-                    .then((domains) => {
-                        if (_.get(domains, "list.results", []).length > 0) {
-                            $scope.hasResult = true;
-                        }
-                        domainsList = domains;
-                    }),
-                sslLinked: Hosting.getAttachDomainSslLinked($stateParams.productId)
+        Hosting.getTabDomains($stateParams.productId, count, offset, $scope.search.text)
+            .then((domains) => {
+                if (_.get(domains, "list.results", []).length > 0) {
+                    $scope.hasResult = true;
+                }
+                domainsList = domains;
+            })
+            .finally(() => {
+                Hosting.getAttachDomainSslLinked($stateParams.productId)
                     .then((sslLinked) => {
                         sslInfos = sslLinked;
                     })
-            })
-            .finally(() => {
-                 _.forEach(domainsList.list.results, (domain) => {
-                    domain.rawSsl = domain.ssl;
-                    if (Array.isArray(sslInfos) && sslInfos.indexOf(domain.name) === -1) {
-                        domain.ssl = domain.ssl ? 1 : 0;
-                    } else {
-                        domain.ssl = domain.ssl ? 2 : 1;
-                    }
+                    .finally(() => {
+                        _.forEach(_.get(domainsList, "list.results", []), (domain) => {
+                            domain.rawSsl = domain.ssl;
+                            if (Array.isArray(sslInfos) && sslInfos.indexOf(domain.name) === -1) {
+                                domain.ssl = domain.ssl ? 1 : 0;
+                            } else {
+                                domain.ssl = domain.ssl ? 2 : 1;
+                            }
 
-                    return domain;
-                });
+                            return domain;
+                        });
 
-                $scope.domains = domainsList;
+                        $scope.domains = domainsList;
 
-                $location.search("domain", null);
+                        $location.search("domain", null);
 
-                $scope.loading.domains = false;
-                $scope.loading.init = false;
+                        $scope.loading.domains = false;
+                        $scope.loading.init = false;
+                    });
             });
 
         $scope.excludeAttachedDomains = [$scope.hosting.cluster.replace(/^ftp/, $scope.hosting.primaryLogin)];
