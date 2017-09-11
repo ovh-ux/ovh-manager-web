@@ -2,6 +2,8 @@
     <div class="col-md-9">
         <p data-i18n-static="domain_tab_DYNHOST_title"></p>
 
+        <div class="loader text-center" data-ng-if="ctrlDomainDynHost.loading.dynHosts && !ctrlDomainDynHost.hasResult"></div>
+
         <div class="alert alert-info mt-5" role="alert"
              data-i18n-static="domain_tab_DYNHOST_table_dynhosts_empty"
              data-ng-if="!ctrlDomainDynHost.loading.dynHosts && !ctrlDomainDynHost.hasResult">
