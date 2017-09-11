@@ -25,7 +25,7 @@ angular.module("services").service(
         /**
          * Create a new IP whitelist
          * @param  {string} serviceName
-         * @param  { {ip: ipBlock, name: string, service: boolean, sftp: boolean} }
+         * @param  {{ip: ipBlock, name: string, service: boolean, sftp: boolean}} model
          */
         createWhitelist (serviceName, model) {
             return this.$http

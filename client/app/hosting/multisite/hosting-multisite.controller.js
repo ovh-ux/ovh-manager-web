@@ -14,7 +14,8 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
     };
 
     $scope.loadDomains = function (count, offset) {
-        let sslInfos, domainsList;
+        let sslInfos,
+            domainsList;
 
         $scope.loading.domains = true;
         if ($location.search().domain) {
