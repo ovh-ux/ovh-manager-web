@@ -101,7 +101,7 @@ angular
                 .getDynHosts(this.product.name, subDomain)
                 .then((data) => {
                     this.dynHosts = data;
-                    if (!_.isEmpty(this.dynHosts.length)) {
+                    if (!_.isEmpty(this.dynHosts)) {
                         this.hasResult = true;
                     }
                 })

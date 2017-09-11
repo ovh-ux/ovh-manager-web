@@ -4,7 +4,7 @@
 
         <div class="alert alert-info mt-5" role="alert"
              data-i18n-static="domain_tab_DYNHOST_table_dynhosts_empty"
-             data-ng-if="!ctrlDomainDynHost.hasResult">
+             data-ng-if="!ctrlDomainDynHost.loading.dynHosts && !ctrlDomainDynHost.hasResult">
         </div>
 
         <div data-ng-if="ctrlDomainDynHost.hasResult">
