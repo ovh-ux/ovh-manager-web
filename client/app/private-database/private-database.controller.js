@@ -38,7 +38,6 @@ angular
             };
 
             this.$scope.database = null;
-            this.$scope.guides = [];
 
             this.userService.getUrlOf("changeOwner")
                 .then((link) => {
@@ -143,6 +142,7 @@ angular
                 .then((database) => {
                     this.$scope.database = database;
                     this.$scope.database.version = database.version.replace(".", "");
+                    this.$scope.guides = [];
 
                     this.userService.getUrlOf("guides")
                         .then((guides) => {
