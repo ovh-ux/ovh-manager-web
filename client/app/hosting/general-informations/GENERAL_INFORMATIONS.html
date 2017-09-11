@@ -366,14 +366,14 @@
                     <ul>
                         <li>
                             <strong data-i18n-static="hosting_dashboard_service_home_ftp"></strong>
-                            <a data-ng-href="ftp://{{ftpUrl}}" class="d-block word-break" target="_blank" title="{{i18n.hosting_dashboard_service_home_ftp_newtab}}">
+                            <a data-ng-href="{{ftpUrl}}" class="d-block word-break" target="_blank" title="{{i18n.hosting_dashboard_service_home_ftp_newtab}}">
                                 <span data-ng-bind="ftpUrl"></span>
                                 <span class="fa fa-external-link" aria-hidden="true"></span>
                             </a>
                         </li>
                         <li>
                             <strong data-i18n-static="hosting_dashboard_service_home_http"></strong>
-                            <a data-ng-href="http://{{httpUrl}}:{{http.port}}/" class="d-block word-break" target="_blank" title="{{i18n.hosting_dashboard_service_home_http_newtab}}">
+                            <a data-ng-href="{{httpUrl}}" class="d-block word-break" target="_blank" title="{{i18n.hosting_dashboard_service_home_http_newtab}}">
                                 <span data-ng-bind="httpUrl"></span>
                                 <span class="fa fa-external-link" aria-hidden="true"></span>
                             </a>

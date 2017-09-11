@@ -57,25 +57,25 @@
                                 <th scope="row" data-ng-bind="::element.login"></th>
                                 <td data-ng-bind="::element.home"></td>
                                 <td>
-                                    <div class="text-nowrap" data-ng-show="!edit">
+                                    <div class="text-nowrap" data-ng-show="!edit.active">
                                         *****************
                                         <button class="btn btn-icon" type="button" title="{{::i18n.hosting_tab_FTP_configuration_user_create_step2_password_password}} : {{::i18n.wizard_modify}}"
-                                                data-ng-click="edit = true">
+                                                data-ng-click="edit.active = true">
                                             <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
                                         </button>
                                     </div>
-                                    <div class="form-group" data-ng-show="edit">
+                                    <div class="form-group" data-ng-show="edit.active">
                                         <div class="input-group">
                                             <input type="password" autocomplete="off" class="form-control"
                                                    data-ng-model="password.value">
                                             <div class="input-group-btn">
                                                 <button class="btn btn-success" type="button" title="{{::i18n.hosting_tab_FTP_configuration_user_create_step2_password_password}} : {{i18n.wizard_confirm}}"
-                                                        data-ng-click="changePassword();edit = false"
+                                                        data-ng-click="changePassword();edit.active = false"
                                                         data-ng-disabled="!isPasswordValid()">
                                                     <span class="fa fa-check" aria-hidden="true"></span>
                                                 </button>
                                                 <button class="btn btn-danger" type="button" title="{{::i18n.hosting_tab_FTP_configuration_user_create_step2_password_password}} : {{i18n.wizard_cancel}}"
-                                                        data-ng-click="password = null;edit = false">
+                                                        data-ng-click="password = null;edit.active = false">
                                                     <span class="fa fa-times" aria-hidden="true"></span>
                                                 </button>
                                             </div>
@@ -85,7 +85,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="checkbox" data-ng-class="{'my-0': !edit}" data-ng-if="allowUpdateState">
+                                    <div class="checkbox" data-ng-class="{'my-0': !edit.active}" data-ng-if="allowUpdateState">
                                         <label>
                                             <input type="checkbox"
                                                    data-ng-change="updatePrimaryLoginState(element, prevSshState)"
@@ -103,7 +103,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="checkbox" data-ng-class="{'my-0': !edit}" data-ng-if="allowUpdateState">
+                                    <div class="checkbox" data-ng-class="{'my-0': !edit.active}" data-ng-if="allowUpdateState">
                                         <label>
                                             <input type="checkbox"
                                                    data-ng-change="updatePrimaryLoginState(element, prevState)"
