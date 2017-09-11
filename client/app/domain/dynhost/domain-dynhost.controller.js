@@ -14,13 +14,13 @@ angular
             this.currentView = "dynHostView";
             this.currentViewData = null;
 
-            this.domainHasZone = false;
+            this.product = this.$scope.ctrlDomain.domain;
+            this.domainHasZone = this.$scope.ctrlDomain.hasZoneDns;
             this.hasResult = false;
             this.loading = {
                 init: false,
                 dynHosts: false
             };
-            this.product = null;
             this.search = { subDomain: "" };
 
             this.$scope.$on("hosting.tabs.dynHosts.refresh", () => {
@@ -36,15 +36,9 @@ angular
             this.loading.init = true;
             this.zones = [];
 
-            return this.$q
-                .all({
-                    zones: this.Domain.getZones(),
-                    product: this.Products.getSelectedProduct()
-                })
-                .then(({ zones, product }) => {
+            return this.Domain.getZones()
+                .then((zones) => {
                     this.zones = zones;
-                    this.product = product;
-                    this.domainHasZone = _.includes(zones, product.name);
 
                     if (this.domainHasZone) {
                         this.refreshTableDynHosts();
@@ -101,7 +95,7 @@ angular
                 .getDynHosts(this.product.name, subDomain)
                 .then((data) => {
                     this.dynHosts = data;
-                    if (!_.isEmpty(this.dynHosts.length)) {
+                    if (!_.isEmpty(this.dynHosts)) {
                         this.hasResult = true;
                     }
                 })
