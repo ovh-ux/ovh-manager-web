@@ -9,6 +9,9 @@ angular.module("App").controller("HostingTabFTPCtrl", ($scope, $stateParams, Hos
     $scope.search = {
         text: null
     };
+    $scope.edit = {
+        active: false
+    };
     $scope.loading = {
         ftp: false,
         init: true
