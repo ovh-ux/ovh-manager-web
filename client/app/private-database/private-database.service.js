@@ -163,8 +163,7 @@ angular.module("services").service(
                     password,
                     userName
                 })
-                .then(
-                (response) => {
+                .then((response) => {
                     // poll adding
                     this.polluserset(serviceName, {
                         taskId: response.data.id,
@@ -174,9 +173,7 @@ angular.module("services").service(
 
                     // return task id
                     return response.data.id;
-                },
-                (err) => this.$q.reject(err)
-            );
+                }, (err) => this.$q.reject(err));
         }
 
         polluserset (serviceName, opts) {

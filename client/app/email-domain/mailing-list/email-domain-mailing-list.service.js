@@ -77,7 +77,11 @@ angular.module("services").service(
         updateMailingList (serviceName, name, data) {
             return this.$q
                 .all({
-                    mailingList: this.OvhHttp.put(`/email/domain/${serviceName}/mailingList/${name}`, { rootPath: "apiv6", data: data.infos, broadcast: "hosting.tabs.mailingLists.refresh" }),
+                    mailingList: this.OvhHttp.put(`/email/domain/${serviceName}/mailingList/${name}`, {
+                        rootPath: "apiv6",
+                        data: data.infos,
+                        broadcast: "hosting.tabs.mailingLists.refresh"
+                    }),
                     options: this.changeOptions(serviceName, name, { options: data.options })
                 })
                 .then(({ options }) => {
