@@ -125,7 +125,7 @@ angular
                 this.$scope.taskState.changeRootPassword = false;
             });
 
-            this.getDetails();
+            this.getDetails(true);
 
             this.getTasksToPoll();
         }
@@ -196,19 +196,20 @@ angular
         }
 
         editDisplayName () {
-            this.newDisplayName.value = this.$scope.database.displayName;
+            this.newDisplayName.value = this.$scope.database.displayName || this.$scope.database.serviceName;
             this.editMode = true;
         }
 
         saveDisplayName () {
+            const displayName = this.newDisplayName.value || this.$scope.database.serviceName;
             this.privateDatabaseService.updatePrivateDatabase(this.productId, {
                 body: {
-                    displayName: this.newDisplayName.value
+                    displayName
                 }
             })
                 .then(() => {
-                    this.$scope.database.displayName = this.newDisplayName.value;
-                    this.$rootScope.$broadcast("change.displayName", [this.$scope.database.serviceName, this.newDisplayName.value]);
+                    this.$scope.database.displayName = displayName;
+                    this.$rootScope.$broadcast("change.displayName", [this.$scope.database.serviceName, displayName]);
                 })
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");

@@ -16,7 +16,7 @@
 
                         </h1>
                         <button class="btn btn-icon my-auto ml-2" type="button" title="{{i18n.wizard_modify}}"
-                                data-ng-click="edit.active = !edit.active">
+                                data-ng-click="editDisplayName()">
                             <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
                         </button>
                     </div>
@@ -27,18 +27,18 @@
                      data-ng-class="{'has-error': formEditDisplayName.txtDisplayName.$dirty && formEditDisplayName.$invalid}"
                      data-ng-show="edit.active">
                     <div class="input-group">
-                        <input type="text" class="form-control input-lg" name="txtDisplayName" required
+                        <input type="text" class="form-control input-lg" name="txtDisplayName"
                                data-event-blur="newDisplayName.value = ''"
                                data-ng-maxlength="250"
                                data-ng-model="newDisplayName.value">
                         <div class="input-group-btn">
                             <button class="btn btn-success btn-lg" type="button" title="{{i18n.common_confirm}}"
-                                    data-ng-click="editDisplayName()"
-                                    data-ng-disabled="formEditDisplayName.$invalid">
+                                    data-ng-click="saveDisplayName()"
+                                    data-ng-disabled="!formEditDisplayName.txtDisplayName.$dirty || formEditDisplayName.$invalid">
                                 <span class="fa fa-check" aria-hidden="true"></span>
                             </button>
                             <button class="btn btn-danger btn-lg" type="button" title="{{i18n.common_cancel}}"
-                                    data-ng-click="edit.active = false">
+                                    data-ng-click="resetDisplayName()">
                                 <span class="fa fa-remove" aria-hidden="true"></span>
                             </button>
                         </div>
@@ -48,8 +48,6 @@
                          data-ng-messages="formEditDisplayName.txtDisplayName.$error">
                         <span data-ng-bind="::i18n.hosting_displayName_length"
                               data-ng-message="maxlength"></span>
-                        <span data-ng-bind="::i18n.hosting_displayName_required"
-                              data-ng-message="required"></span>
                     </div>
                 </div>
                 <service-expiration-date
