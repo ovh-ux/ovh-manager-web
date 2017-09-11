@@ -112,11 +112,15 @@ angular.module("services").service(
         }
 
         getSubscribers (serviceName, opts) {
+            let params = null;
+            if (opts.email) {
+                params = {
+                    email: opts.email
+                };
+            }
             return this.OvhHttp.get(`/email/domain/${serviceName}/mailingList/${opts.name}/subscriber`, {
                 rootPath: "apiv6",
-                params: {
-                    email: opts.email
-                },
+                params,
                 cache: this.cache.subscribers,
                 clearAllCache: opts.forceRefresh
             });
@@ -173,11 +177,15 @@ angular.module("services").service(
         }
 
         getModerators (serviceName, opts) {
+            let params = null;
+            if (opts.email) {
+                params = {
+                    email: opts.email
+                };
+            }
             return this.OvhHttp.get(`/email/domain/${serviceName}/mailingList/${opts.name}/moderator`, {
                 rootPath: "apiv6",
-                params: {
-                    email: opts.email
-                },
+                params,
                 cache: this.cache.moderators,
                 clearAllCache: opts.forceRefresh
             });

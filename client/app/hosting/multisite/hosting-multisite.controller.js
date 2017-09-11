@@ -37,7 +37,7 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
                     })
             })
             .finally(() => {
-                 _.forEach(domainsList.list.results, (domain) => {
+                _.forEach(domainsList.list.results, (domain) => {
                     domain.rawSsl = domain.ssl;
                     if (Array.isArray(sslInfos) && sslInfos.indexOf(domain.name) === -1) {
                         domain.ssl = domain.ssl ? 1 : 0;
