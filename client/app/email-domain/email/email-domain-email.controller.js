@@ -63,7 +63,7 @@ angular
                 })
                 .then(({ webMailUrl, user, serviceInfos, allDomains, quotas, summary }) => {
                     this.webMailUrl = webMailUrl;
-                    this.delegationsIsAvailable = [serviceInfos.contactTech, serviceInfos.contactAdmin].includes(user.nichandle);
+                    this.delegationsIsAvailable = _.includes([serviceInfos.contactTech, serviceInfos.contactAdmin], user.nichandle);
                     this.domains = allDomains;
                     this.quotas = quotas;
                     this.summary = summary;
@@ -138,7 +138,7 @@ angular
         //---------------------------------------------
 
         canAddAccount () {
-            return this.emails != null && (!this.emails.includes("postmaster") || this.emails.length < this.quotas.account + 1);
+            return this.emails != null && (!_.includes(this.emails, "postmaster") || this.emails.length < this.quotas.account + 1);
         }
 
         refreshTableAccounts (forceRefresh) {
