@@ -116,23 +116,19 @@
                             <label class="control-label col-md-4 required" for="date-responder-start"
                                    data-i18n-static="email_tab_modal_create_responder_start"></label>
                             <div class="col-md-6">
-                                <a class="input-group"
-                                   data-date-time-picker
-                                   data-dtp-autoclose="true"
-                                   data-dtp-min-view-mode="days"
-                                   data-dtp-model-timezone="local"
-                                   data-dtp-pick-time="true"
-                                   data-dtp-placement="bottom"
-                                   data-dtp-type="date"
-                                   data-ng-change="ctrl.responderDateStartCheck()"
-                                   data-ng-model="ctrl.model.responderDateStart">
-                                    <input type="text" class="form-control" id="date-responder-start" name="responderDateStart" required>
-                                    <div class="input-group-addon"
-                                          data-uib-tooltip="{{i18n.period_tooltip_from}}"
-                                          data-tooltip-placement="bottom">
+                                <div class="input-group"
+                                     data-moment-picker="ctrl.model.responderDateStart"
+                                     data-change="ctrl.responderDateStartCheck()"
+                                     data-format="YYYY-MM-DD HH:mm"
+                                     data-locale="{{translator.locale}}"
+                                     data-start-view="month">
+                                    <input type="text" class="form-control" id="date-responder-start" name="responderDateStart" required
+                                           data-ng-model="ctrl.model.responderDateStart"
+                                           data-ng-model-options="{ updateOn: 'blur' }">
+                                    <div class="input-group-addon">
                                         <span class="fa fa-calendar" aria-hidden="true"></span>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
 
@@ -140,23 +136,19 @@
                             <label class="control-label col-md-4 required" for="date-responder-end"
                                    data-i18n-static="email_tab_modal_create_responder_end"></label>
                             <div class="col-md-6">
-                                <a class="input-group"
-                                   data-date-time-picker
-                                   data-dtp-autoclose="true"
-                                   data-dtp-min-view-mode="days"
-                                   data-dtp-model-timezone="local"
-                                   data-dtp-pick-time="true"
-                                   data-dtp-placement="bottom"
-                                   data-dtp-type="date"
-                                   data-ng-change="ctrl.responderDateEndCheck()"
-                                   data-ng-model="ctrl.model.responderDateEnd">
-                                    <input type="text" class="form-control" id="date-responder-end" name="responderDateEnd" required>
-                                    <div class="input-group-addon"
-                                          data-uib-tooltip="{{i18n.period_tooltip_to}}"
-                                          data-tooltip-placement="bottom">
+                                <div class="input-group"
+                                     data-moment-picker="ctrl.model.responderDateEnd"
+                                     data-change="ctrl.responderDateEndCheck()"
+                                     data-format="YYYY-MM-DD HH:mm"
+                                     data-locale="{{translator.locale}}"
+                                     data-start-view="month">
+                                    <input type="text" class="form-control" id="date-responder-end" name="responderDateEnd" required
+                                           data-ng-model="ctrl.model.responderDateEnd"
+                                           data-ng-model-options="{ updateOn: 'blur' }">
+                                    <div class="input-group-addon">
                                         <span class="fa fa-calendar" aria-hidden="true"></span>
                                     </div>
-                                </a>
+                                </div>
                             </div>
                         </div>
                     </div>

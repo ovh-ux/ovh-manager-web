@@ -567,7 +567,8 @@ module.exports = function (grunt) {
                             "ovh-api-services",
                             "ovh-angular-toaster",
                             "ovh-common-style",
-                            "ngCkeditor"
+                            "ngCkeditor",
+                            "moment-picker"
                         ];
                         _.forEach(assets[target].modules, (module) => {
                             if (regExp.test(module)) {
@@ -687,7 +688,8 @@ module.exports = function (grunt) {
                             "ovh-api-services",
                             "ovh-angular-toaster",
                             "ovh-common-style",
-                            "ngCkeditor"
+                            "ngCkeditor",
+                            "moment-picker"
                         ];
 
                         _.forEach(assets[target].modules, (module) => {

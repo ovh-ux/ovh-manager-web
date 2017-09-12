@@ -100,8 +100,8 @@ angular.module("App").controller(
                 content: this.model.responderContent,
                 copy: !!this.model.responderKeepCopy,
                 copyTo: this.model.responderType === "typeFree" && this.model.responderKeepCopy && this.model.responderCopyTo ? this.model.responderCopyTo : "",
-                from: this.model.responderDateStart || undefined,
-                to: this.model.responderDateEnd || undefined
+                from: (this.model.responderDateStart && moment(this.model.responderDateStart)) || undefined,
+                to: (this.model.responderDateEnd && moment(this.model.responderDateEnd)) || undefined
             };
 
             let promise;
