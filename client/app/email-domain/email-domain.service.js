@@ -737,7 +737,7 @@ angular.module("services").service(
             return this.OvhHttp.get("/email/domain/delegatedAccount", {
                 rootPath: "apiv6",
                 params: {
-                    accountName,
+                    accountName: accountName || undefined,
                     domain
                 }
             });
