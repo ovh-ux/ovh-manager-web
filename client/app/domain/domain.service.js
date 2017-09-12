@@ -586,7 +586,6 @@ angular.module("services").service(
             return this.OvhHttp.delete(`/sws/domain/zone/${window.encodeURIComponent(serviceName)}/records`, {
                 rootPath: "2api",
                 data: { records: entryId },
-                clearCache: this.cache.domainCache,
                 broadcast: "domain.tabs.zonedns.refresh"
             });
         }
@@ -679,12 +678,10 @@ angular.module("services").service(
          * @param {string} redirectionId
          * @param {boolean} cacheRefresh
          */
-        deleteRedirection (serviceName, redirectionId, cacheRefresh = true) {
+        deleteRedirection (serviceName, redirectionId) {
             return this.OvhHttp
                 .delete(`/domain/zone/${serviceName}/redirection/${redirectionId}`, {
-                    rootPath: "apiv6",
-                    cache: this.cache.domainRedirectionCache,
-                    clearAllCache: cacheRefresh
+                    rootPath: "apiv6"
                 })
                 .then(() => this.refreshZoneState(serviceName));
         }
