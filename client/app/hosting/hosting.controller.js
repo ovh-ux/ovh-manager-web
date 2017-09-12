@@ -270,15 +270,12 @@ angular
                         Alerter.alertFromSWS($scope.tr("hosting_dashboard_loading_error"), null, $scope.alerts.dashboard);
                     }
                 )
-                .then(
-                    (screenshot) => {
-                        $scope.screenshot = screenshot;
-                        $scope.loadingScreenshot = false;
-                    },
-                    () => {
-                        $scope.loadingScreenshot = false;
-                    }
-                );
+                .then((screenshot) => {
+                    $scope.screenshot = screenshot;
+                })
+                .finally(() => {
+                    $scope.loadingScreenshot = false;
+                });
 
             User.getUrlOf("domainOrder").then(
                 (link) => {
@@ -291,20 +288,29 @@ angular
         };
 
         $scope.editDisplayName = () => {
+            $scope.newDisplayName.value = $scope.hosting.displayName || $scope.hosting.serviceName;
+            $scope.edit.active = true;
+        };
+
+        $scope.saveDisplayName = () => {
+            const displayName = $scope.newDisplayName.value || $scope.hosting.serviceName;
             Hosting.updateHosting($stateParams.productId, {
                 body: {
-                    displayName: $scope.newDisplayName.value
+                    displayName
                 }
-            }).then(
-                () => {
-                    $rootScope.$broadcast("change.displayName", [$scope.hosting.serviceName, $scope.newDisplayName.value]);
-                    $timeout(() => ($scope.hosting.displayName = $scope.newDisplayName.value), 0);
-                }).catch((err) => {
-                    _.set(err, "type", err.type || "ERROR");
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_loading_error"), err, $scope.alerts.dashboard);
-                }).finally(() => {
-                    $scope.edit.active = false;
-                });
+            }).then(() => {
+                $rootScope.$broadcast("change.displayName", [$scope.hosting.serviceName, displayName]);
+                $timeout(() => ($scope.hosting.displayName = displayName), 0);
+            }).catch((err) => {
+                _.set(err, "type", err.type || "ERROR");
+                Alerter.alertFromSWS($scope.tr("hosting_dashboard_loading_error"), err, $scope.alerts.dashboard);
+            }).finally(() => {
+                $scope.edit.active = false;
+            });
+        };
+
+        $scope.resetDisplayName = () => {
+            $scope.edit.active = false;
         };
 
         $scope.getStateBadgeClass = () => {
