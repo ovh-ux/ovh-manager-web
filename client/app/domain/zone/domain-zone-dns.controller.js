@@ -97,22 +97,33 @@ angular.module("App").controller(
         }
 
         getZoneDns (domainName) {
+            let defaults;
+            let activated;
+
             this.loading.dns = true;
             return this.$q
-                .all({
-                    defaults: this.Domain.getTabZoneDns(domainName, 0, 0, null, "NS"),
-                    activated: this.Domain.getTabDns(domainName)
-                })
-                .then(({ defaults, activated }) => {
-                    this.defaultsDns = defaults.paginatedZone.records.results.filter((data) => data.subDomain === "" && data.subDomainToDisplay === "").map((value) => value.targetToDisplay.slice(0, -1)).sort();
+                .allSettled([
+                    this.Domain.getTabZoneDns(domainName, 0, 0, null, "NS"),
+                    this.Domain.getTabDns(domainName)
+                ])
+                .then((results) => {
+                    defaults = results[0];
+                    activated = results[1];
+                }, (err) => {
+                    if (err[0].code !== 404 || err[1].code) { // LEGIT 404
+                        throw err;
+                    }
 
-                    this.activatedDns = activated.dns.filter((dns) => dns.isUsed).map((value) => value.host).sort();
+                    activated = err[1];
+                })
+                .finally(() => {
+                    this.defaultsDns = _.get(defaults, "paginatedZone.records.results").filter((data) => data.subDomain === "" && data.subDomainToDisplay === "").map((value) => value.targetToDisplay.slice(0, -1)).sort();
+                    this.activatedDns = _.get(activated, "dns").filter((dns) => dns.isUsed).map((value) => value.host).sort();
 
                     if (!_.isEmpty(this.defaultsDns) && !_.isEqual(this.defaultsDns, this.activatedDns)) {
                         this.useDefaultsDns = false;
                     }
-                })
-                .finally(() => {
+
                     this.loading.dns = false;
                 });
         }
