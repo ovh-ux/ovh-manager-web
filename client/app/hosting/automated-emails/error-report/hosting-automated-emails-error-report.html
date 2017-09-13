@@ -1,26 +1,32 @@
-<div data-ng-controller="HostingAutomatedEmailsErrReportsCtrl">
+<div data-ng-controller="HostingAutomatedEmailsErrReportsCtrl as ctrl">
     <div data-wizard
          data-wizard-on-cancel="resetAction"
-         data-wizard-on-finish="submit"
+         data-wizard-on-finish="submitting"
          data-wizard-title="i18n.hosting_tab_AUTOMATED_EMAILS_err_reports_title">
 
         <div data-wizard-step
-             data-wizard-step-valid="formErrReportsEmail.$valid">
+             data-wizard-step-valid="ctrl.formErrReportsEmail.$valid">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loaders.loading"></div>
+            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="ctrl.isLoading"></div>
 
-            <div data-ng-if="!loaders.loading">
+            <div data-ng-if="!ctrl.isLoading">
                 <p data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_info"></p>
-                <form class="form-horizontal mt-4" name="$parent.formErrReportsEmail">
-                    <div class="form-group" data-ng-class="{'has-error': formErrReportsEmail.errReportsEmail.$dirty && formErrReportsEmail.errReportsEmail.$invalid}">
-                        <label class="control-label col-md-4 required" for="errReportsEmail"
+
+                <form class="form-horizontal" name="ctrl.formErrReportsEmail">
+                    <div class="form-group" data-ng-class="{'has-error': ctrl.formErrReportsEmail.errReportsEmail.$dirty && ctrl.formErrReportsEmail.errReportsEmail.$invalid}">
+                        <label class="control-label col-md-4 required"
+                               for="errReportsEmail"
                                data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_email"></label>
                         <div class="col-md-6">
-                            <input type="email" class="form-control" name="errReportsEmail" id="errReportsEmail" required
-                                   data-ng-model="automatedEmails.email">
-                            <div class="help-block" ng-messages="formErrReportsEmail.errReportsEmail.$error">
-                                <small data-ng-message="required" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_email_required"></small>
-                                <small data-ng-message="email" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_email_invalid"></small>
+                            <input type="email"
+                                   class="form-control"
+                                   name="errReportsEmail"
+                                   id="errReportsEmail"
+                                   required
+                                   data-ng-model="ctrl.automatedEmails.email">
+                            <div class="help-block" data-ng-messages="ctrl.formErrReportsEmail.errReportsEmail.$error">
+                                <small data-ng-message="ctrl.required" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_email_required"></small>
+                                <small data-ng-message="ctrl.email" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_email_invalid"></small>
                             </div>
                         </div>
                     </div>
