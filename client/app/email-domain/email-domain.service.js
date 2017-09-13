@@ -733,7 +733,7 @@ angular.module("services").service(
          * @param {string|null} domain
          * @param {string|null} accountName
          */
-        getDelegatedEmails (domain = undefined, accountName = undefined) {
+        getDelegatedEmails (domain, accountName) {
             return this.OvhHttp.get("/email/domain/delegatedAccount", {
                 rootPath: "apiv6",
                 params: {
