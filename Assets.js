@@ -126,7 +126,7 @@ module.exports = {
             "client/bower_components/jquery.cookie/jquery.cookie.js",
             "client/bower_components/bootstrap/dist/js/bootstrap.min.js",
             "client/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js",
-            "client/bower_components/angular-moment-picker/dist/angular-moment-picker.min.js",
+            "client/bower_components/moment-picker/dist/angular-moment-picker.min.js",
             "client/bower_components/raphael/raphael-min.js",
             "client/bower_components/justgage/justgage.js",
             "client/bower_components/ovh-utils-angular/bin/ovh-utils-angular.min.js",
@@ -187,7 +187,7 @@ module.exports = {
             "client/bower_components/ovh-common-style/dist/ovh-common-style.min.js"
         ],
         css : [
-            "client/bower_components/angular-moment-picker/dist/angular-moment-picker.min.css",
+            "client/bower_components/moment-picker/dist/angular-moment-picker.min.css",
             "client/bower_components/ovh-utils-angular/bin/template/contracts/contracts.css",
             "client/bower_components/ovh-utils-angular/bin/template/tooltipBox/*.css",
             "client/bower_components/ovh-utils-angular/bin/template/contracts/*.css",
