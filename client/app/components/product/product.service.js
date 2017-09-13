@@ -49,7 +49,7 @@ angular.module("services").service("Products", [
                                         }
                                     }),
                                     AllDom.getAllDoms(true),
-                                    Emails.getDelegatedEmails(null, null)
+                                    Emails.getDelegatedEmails()
                                 ])
                                 .then((data) => {
                                     const result = data[0];
