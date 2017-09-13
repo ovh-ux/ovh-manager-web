@@ -94,8 +94,9 @@
                                         <span data-ng-bind="::domain.expiration|date:'mediumDate'"></span>
                                         <button type="button" class="btn btn-icon"
                                                 data-ng-disabled="!domain.canOrder"
+                                                data-ng-click="setActionIfAuthorized(domain.canOrder, 'renew/domains-renew', domain)"
                                                 data-uib-tooltip="{{::i18n.domains_dashboard_tooltip_renew_single}}"
-                                                data-ng-click="setActionIfAuthorized(domain.canOrder, 'renew/domains-renew', domain)" >
+                                                data-tooltip-append-to-body="true">
                                             <span class="fa fa-refresh" aria-hidden="true"></span>
                                         </button>
                                     </td>
@@ -107,7 +108,8 @@
                                         <button class="btn btn-icon" type="button"
                                                 data-ng-click="setActionIfAuthorized(domain.whoisActivable, 'owo/domains-owo', domain)"
                                                 data-ng-disabled="!domain.whoisActivable"
-                                                data-uib-tooltip="{{::i18n.domains_dashboard_tooltip_whois_single}}">
+                                                data-uib-tooltip="{{::i18n.domains_dashboard_tooltip_whois_single}}"
+                                                data-tooltip-append-to-body="true">
                                             <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                                         </button>
                                     </td>
@@ -120,14 +122,16 @@
                                                 data-ng-click="setActionIfAuthorized(domain.dnssecSupported && domain.dnssecStatus !== null, 'dnssec/simple/activate/domains-dnssec-simple-activate', domain)"
                                                 data-ng-disabled="!domain.dnssecSupported"
                                                 data-ng-if="domain.dnssecSupported && domain.dnssecStatus === 'DISABLED'"
-                                                data-uib-tooltip="{{::i18n.domains_dashboard_tooltip_dnssec_activate_single}}">
+                                                data-uib-tooltip="{{::i18n.domains_dashboard_tooltip_dnssec_activate_single}}"
+                                                data-tooltip-append-to-body="true">
                                             <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                                         </button>
                                         <button class="btn btn-icon" type="button"
                                                 data-ng-click="setActionIfAuthorized(domain.dnssecSupported && domain.dnssecStatus !== null, 'dnssec/simple/deactivate/domains-dnssec-simple-deactivate', domain)"
                                                 data-ng-disabled="!domain.dnssecSupported"
                                                 data-ng-if="domain.dnssecSupported && domain.dnssecStatus === 'ENABLED'"
-                                                data-uib-tooltip="{{::i18n.domains_dashboard_tooltip_dnssec_deactivate_single}}">
+                                                data-uib-tooltip="{{::i18n.domains_dashboard_tooltip_dnssec_deactivate_single}}"
+                                                data-tooltip-append-to-body="true">
                                             <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                                         </button>
                                     </td>
