@@ -103,6 +103,8 @@ module.exports = {
             "client/bower_components/lodash/lodash.min.js",
             "client/bower_components/moment/min/moment-with-locales.min.js",
             "client/bower_components/jquery/dist/jquery.min.js",
+            "client/bower_components/jquery/dist/jquery.min.js",
+            "client/bower_components/babel-browser-polyfill/polyfill.js",
 
             "client/bower_components/jquery.ui/ui/core.js",
             "client/bower_components/jquery.ui/ui/widget.js",
