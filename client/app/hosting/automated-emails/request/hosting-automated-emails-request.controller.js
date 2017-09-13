@@ -1,37 +1,43 @@
-/* global angular*/
-angular.module("App").controller("HostingAutomatedEmailsRequestCtrl", ($scope, $stateParams, HostingAutomatedEmails, Alerter) => {
-    "use strict";
+angular
+    .module("App")
+    .controller("HostingAutomatedEmailsRequestCtrl", class HostingAutomatedEmailsRequestCtrl {
+        constructor ($scope, $stateParams, HostingAutomatedEmails, Alerter, translator) {
+            this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.HostingAutomatedEmails = HostingAutomatedEmails;
+            this.Alerter = Alerter;
+            this.translator = translator;
+        }
 
-    $scope.automatedEmails = angular.copy($scope.currentActionData.automatedEmails);
-    $scope.action = $scope.currentActionData.action;
-    $scope.title = {
-        BLOCK: $scope.tr("hosting_tab_AUTOMATED_EMAILS_block_title"),
-        UNBLOCK: $scope.tr("hosting_tab_AUTOMATED_EMAILS_unblock_title"),
-        PURGE: $scope.tr("hosting_tab_AUTOMATED_EMAILS_purge_title")
-    };
+        $onInit () {
+            this.automatedEmails = angular.copy(this.$scope.currentActionData.automatedEmails);
+            this.action = this.$scope.currentActionData.action;
+            this.titles = {
+                BLOCK: this.translator.tr("hosting_tab_AUTOMATED_EMAILS_block_title"),
+                UNBLOCK: this.translator.tr("hosting_tab_AUTOMATED_EMAILS_unblock_title"),
+                PURGE: this.translator.tr("hosting_tab_AUTOMATED_EMAILS_purge_title")
+            };
 
-    $scope.loaders = {
-        loading: false
-    };
+            this.isLoading = false;
 
-    //---------------------------------------------
-    // REQUEST
-    //---------------------------------------------
-    $scope.request = function () {
-        $scope.loaders.loading = true;
+            this.$scope.submitting = () => this.submitting();
+            this.$scope.title = this.titles[this.action];
+        }
 
-        HostingAutomatedEmails.postRequest($stateParams.productId, $scope.action)
-            .then(
-                () => {
-                    Alerter.success($scope.tr("hosting_tab_AUTOMATED_EMAILS_request_success"), $scope.alerts.dashboard);
-                },
-                (err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_AUTOMATED_EMAILS_request_error"), err, $scope.alerts.dashboard);
-                }
-            )
-            .finally(() => {
-                $scope.loaders.loading = false;
-                $scope.resetAction();
-            });
-    };
-});
+        submitting () {
+            this.isLoading = true;
+
+            return this.HostingAutomatedEmails
+                .postRequest(this.$stateParams.productId, this.action)
+                .then(() => {
+                    this.Alerter.success(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_request_success"), this.alerts.dashboard);
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_request_error"), err, this.alerts.dashboard);
+                })
+                .finally(() => {
+                    this.isLoading = false;
+                    this.$scope.resetAction();
+                });
+        }
+    });
