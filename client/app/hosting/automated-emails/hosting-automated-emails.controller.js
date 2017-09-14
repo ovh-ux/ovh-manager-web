@@ -62,6 +62,7 @@ angular
 
                     this.automatedEmails = data;
                     this.retrievingVolumes();
+                    this.retrievingBounces();
                 })
                 .catch((err) => {
                     this.Alerter.alertFromSWS(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_error"), err, this.$scope.alerts.dashboard);
@@ -116,14 +117,14 @@ angular
             return this.HostingAutomatedEmails
                 .retrievingBounces(this.$stateParams.productId, this.limits.bounces)
                 .then((data) => {
-                    this.thereAreEmailsInError = false;
+                    this.thereAreEmailsInError = !_.isEmpty(data.data);
                     this.bounces = data.data;
                 })
                 .catch((err) => {
                     if (err.status !== 404) {
                         this.Alerter.alertFromSWS(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_error"), err.data, this.$scope.alerts.dashboard);
                     } else {
-                        this.thereAreEmailsInError = true;
+                        this.thereAreEmailsInError = false;
                     }
                 })
                 .finally(() => {
@@ -132,6 +133,7 @@ angular
         }
 
         changeViewToBounces () {
+            this.retrievingBounces();
             this.currentView = "BOUNCES_VIEW";
         }
 
