@@ -16,9 +16,9 @@
                 <p class="text-intro"
                    data-ng-bind-html="tr('domains_configuration_whois_step1_question', [domainToChangeOwo.displayName])"></p>
 
-                <div class="loader text-center" data-ng-if="!ctrlDomainsOwo.fields || ctrlDomainsOwo.fields.length === 0"></div>
+                <div class="loader text-center" data-ng-if="ctrlDomainsOwo.loading"></div>
 
-                <table class="table table-hover mt-4" data-ng-if="ctrlDomainsOwo.fields && ctrlDomainsOwo.fields.length > 0">
+                <table class="table table-hover mt-4" data-ng-if="!ctrlDomainsOwo.loading">
                     <thead>
                         <tr>
                             <th class="w-50"></th>

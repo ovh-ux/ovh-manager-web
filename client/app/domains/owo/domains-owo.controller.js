@@ -23,6 +23,7 @@ angular.module("App").controller(
             };
             this.fields = null;
             this.fieldsModel = {};
+            this.loading = true;
             this.selectedDomainsNames = [];
 
             if (this.$scope.currentActionData) {
@@ -32,10 +33,28 @@ angular.module("App").controller(
             }
 
             this.$scope.loadOwoFields = () => {
-                this.fields = this.DomainsOwo.getOwoFields().then((data) => (this.fields = data)).catch((err) => {
-                    this.$scope.resetAction();
-                    this.Alerter.alertFromSWS(this.$scope.tr("domains_configuration_whois_fail"), err, this.$scope.alerts.dashboard);
-                });
+                this.DomainsOwo.getOwoFields()
+                    .then((data) => {
+                        this.fields = data;
+
+                        if (this.selectedDomainsNames.length === 1) {
+                            this.DomainsOwo.getOwoFieldsSelection(this.selectedDomainsNames[0])
+                                .then((selection) => {
+                                    _.forEach(this.fields, (field) => {
+                                        this.fieldsModel[field] = _.indexOf(selection, field.toLowerCase()) !== -1 ? "activated" : "desactivated";
+                                    });
+                                })
+                                .finally(() => {
+                                    this.loading = false;
+                                });
+                        } else {
+                            this.loading = false;
+                        }
+                    })
+                    .catch((err) => {
+                        this.Alerter.alertFromSWS(this.$scope.tr("domains_configuration_whois_fail"), err, this.$scope.alerts.dashboard);
+                        this.$scope.resetAction();
+                    });
             };
 
             this.$scope.updateOwo = () => {
