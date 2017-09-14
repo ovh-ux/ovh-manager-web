@@ -100,18 +100,30 @@
         <label class="control-label col-md-3"
                data-i18n-static="domain_configuration_dns_entry_add_servicetypes"></label>
         <div class="col-md-9">
-            <label class="radio-inline">
-                <input type="radio" name="s" value="*"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.s">
-                <span data-i18n-static="domain_configuration_dns_entry_add_servicetypes_all"></span>
-            </label>
-            <label class="radio-inline ml-4">
-                <input type="radio" name="s" value="email"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.s">
-                <span data-i18n-static="domain_configuration_dns_entry_add_servicetypes_email"></span>
-            </label>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="s" value="*"
+                           data-ng-change="ctrl.setTargetValue('DKIM')"
+                           data-ng-model="ctrl.model.target.s">
+                    <span data-i18n-static="domain_configuration_dns_entry_add_servicetypes_all"></span>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="s" value="email"
+                           data-ng-change="ctrl.setTargetValue('DKIM')"
+                           data-ng-model="ctrl.model.target.s">
+                    <span data-i18n-static="domain_configuration_dns_entry_add_servicetypes_email"></span>
+                </label>
+            </div>
+            <div class="radio">
+                <label>
+                    <input type="radio" name="s" value=""
+                           data-ng-change="ctrl.setTargetValue('DKIM')"
+                           data-ng-model="ctrl.model.target.s">
+                    <span data-i18n-static="domain_configuration_dns_entry_add_servicetypes_none"></span>
+                </label>
+            </div>
         </div>
     </div>
 
