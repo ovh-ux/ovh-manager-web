@@ -71,17 +71,18 @@ angular
                 value: grant
             };
 
-            if (base.virgin) {
+            if (user.database.virgin) {
                 grantObj.virgin = true;
             }
 
             this.privateDatabaseService.setUserGrant(this.productId, base.databaseName, user.userName, grantObj)
                 .then(() => {
                     this.pendingGrant[user.userName] = true;
-                    this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_doing"), this.alerts);
                     this.privateDatabaseService.restartPoll(this.productId, ["grant/create", "grant/update"]);
+                    this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_doing"), this.alerts);
                 })
                 .catch((err) => {
+                    _.set(err, "type", err.type || "ERROR");
                     this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_tabs_users_grant_error"), err, this.alerts);
                 });
         }
