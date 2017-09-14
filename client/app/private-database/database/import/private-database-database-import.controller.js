@@ -111,6 +111,9 @@ angular
 
         resetDocumentSelection () {
             this.model.document.id = null;
+            this.model.uploadFileName = null;
+            this.file.data = "";
+            this.atLeastOneFileHasBeenSend = false;
         }
 
         fileAsBeenSelected () {

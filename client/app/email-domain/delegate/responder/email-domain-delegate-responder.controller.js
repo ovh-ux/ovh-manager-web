@@ -38,7 +38,7 @@ angular.module("App").controller(
             this.accounts = [];
 
             return this.Emails
-                .getDelegatedEmails(null, this.$stateParams.productId)
+                .getDelegatedEmails(this.$stateParams.productId)
                 .then((data) => {
                     this.accounts = _.map(data, (email) => email.split("@")[0]);
                     this.emailsList = data.sort();

@@ -38,7 +38,7 @@ angular.module("App").controller(
 
             let emailsPromise;
             if (delegated) {
-                emailsPromise = this.Emails.getDelegatedEmails(null, this.$stateParams.productId);
+                emailsPromise = this.Emails.getDelegatedEmails(this.$stateParams.productId);
             } else {
                 emailsPromise = this.Emails.getEmails(this.$stateParams.productId, {});
             }

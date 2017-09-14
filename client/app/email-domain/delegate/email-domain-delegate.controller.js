@@ -90,7 +90,7 @@ angular.module("App").controller(
             this.emails = null;
 
             this.Emails
-                .getDelegatedEmails(`%${this.search.accounts || ""}%`, this.$stateParams.productId)
+                .getDelegatedEmails(this.$stateParams.productId, `%${this.search.accounts || ""}%`)
                 .then((data) => (this.emails = data.sort()))
                 .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.dashboard))
                 .finally(() => {

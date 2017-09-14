@@ -150,7 +150,11 @@ module.exports = function (grunt) {
         // ES6 SUPPORT
         babel: {
             options: {
-                presets: ["es2015"]
+                presets: [["env", {
+                    targets: {
+                        browsers: ["last 2 versions", "ie 11"]
+                    }
+                }]]
             },
             modules: {
                 files: filesJsModules
@@ -567,7 +571,8 @@ module.exports = function (grunt) {
                             "ovh-api-services",
                             "ovh-angular-toaster",
                             "ovh-common-style",
-                            "ngCkeditor"
+                            "ngCkeditor",
+                            "moment-picker"
                         ];
                         _.forEach(assets[target].modules, (module) => {
                             if (regExp.test(module)) {
@@ -687,7 +692,8 @@ module.exports = function (grunt) {
                             "ovh-api-services",
                             "ovh-angular-toaster",
                             "ovh-common-style",
-                            "ngCkeditor"
+                            "ngCkeditor",
+                            "moment-picker"
                         ];
 
                         _.forEach(assets[target].modules, (module) => {

@@ -94,7 +94,7 @@ angular.module("services").service("User", [
         this.getCreditCard = (id) => $http.get(`apiv6/me/paymentMean/creditCard/${id}`).then((response) => response.data);
 
         this.uploadFile = (filename, file, tags) => {
-            if (filename == null || filename === "" || _.isEmpty(file, "name")) {
+            if (filename == null || filename === "" || _.isEmpty(file.name)) {
                 throw new Error("File doesn't have a name");
             }
 

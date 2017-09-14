@@ -101,6 +101,7 @@ module.exports = {
                 support_contact: "http://www.ovh.cz/podpora/",
                 guides: {
                     home   : "http://prirucky.ovh.cz/",
+                    all: "https://docs.ovh.com/cz/cs/",
                     hostingPhpConfiguration: "https://www.ovh.cz/g1999.hosting_how_to_configure_php_from_your_customer_account",
                     emailsCreation: "https://www.ovh.cz/g1343.qssq",
                     wordpress: "https://codex.wordpress.org/Getting_Started_with_WordPress",
@@ -161,6 +162,7 @@ module.exports = {
                 support_contact: "http://www.ovh.de/support/",
                 guides: {
                     home   : "http://hilfe.ovh.de/",
+                    all: "https://docs.ovh.com/de/de/",
                     emailsConfiguration: "https://www.ovh.de/g1474.allgemeine-informationen-ovh-webhosting-mails",
                     autoRenew: "https://www.ovh.de/g1271.renew",
                     emailsCreation: "https://www.ovh.de/g1343.qssq",
@@ -283,6 +285,7 @@ module.exports = {
                 support_contact: "http://www.ovh.es/soporte/",
                 guides: {
                     home   : "http://guias.ovh.es/",
+                    all: "https://docs.ovh.com/es/es/web/",
                     emailsConfiguration: "https://www.ovh.es/g1474.correo-alojamiento-compartido-ovh",
                     emailsCreation: "https://www.ovh.es/g1343.qssq",
                     hostingPhpConfiguration: "https://www.ovh.es/g1999.alojamiento_compartido_configurar_la_versión_de_PHP_desde_el_área_de_cliente",
@@ -417,6 +420,7 @@ module.exports = {
                 support_contact: "http://www.ovh-hosting.fi/tuki/",
                 guides: {
                     home   : "http://ohjeet.ovh-hosting.fi/",
+                    all: "https://docs.ovh.com/fi/fi/",
                     emailsConfiguration: "https://www.ovh-hosting.fi/g1474.yleista-ovh-webhotellit-sahkopostit",
                     emailsCreation: "https://www.ovh-hosting.fi/g1343.qssq",
                     hostingPrivateDatabase: "https://www.ovh-hosting.fi/g2023.kaikki_mita_tarvitsee_tietaa_sql_private_-palvelusta",
@@ -793,6 +797,7 @@ module.exports = {
                 support_contact: "http://www.ovh.co.uk/support/",
                 guides: {
                     home   : "http://help.ovh.co.uk/",
+                    all: "https://docs.ovh.com/gb/en/",
                     emailsConfiguration: "https://www.ovh.co.uk/g1474.ovh-mails-general-use",
                     autoRenew: "https://www.ovh.co.uk/g1271.renew",
                     emailsCreation: "https://www.ovh.co.uk/g1343.qssq",
@@ -902,7 +907,7 @@ module.exports = {
                 support_contact: "http://www.ovh.it/supporto/",
                 guides: {
                     home: "http://guida.ovh.it/",
-
+                    all: "https://docs.ovh.com/it/it/",
                     emailsConfiguration: "https://www.ovh.it/g1474.info-email-condivise-ovh",
                     emailsCreation: "https://www.ovh.it/g1343.qssq",
 
@@ -1070,6 +1075,7 @@ module.exports = {
                 support_contact: "http://www.ovh.lt/pagalba/",
                 guides: {
                     home   : "http://gidai.ovh.lt/",
+                    all: "https://docs.ovh.com/lt/lt/",
                     autoRenew: "https://www.ovh.lt/g1271.renew",
                     emailsCreation: "https://www.ovh.lt/g1343.qssq",
                     emailsCreateMailingListGuide: "https://www.ovh.lt/g1596.mail_mutualise_guide_dutilisation_mailing-list",
@@ -1237,6 +1243,7 @@ module.exports = {
                 support_contact: "http://www.ovh.nl/support/",
                 guides: {
                     home   : "http://gids.ovh.nl/",
+                    all: "https://docs.ovh.com/nl/nl/",
                     emailsConfiguration: "https://www.ovh.nl/g1474.algemene-informatie-ovh-webhosting-emails",
                     emailsCreation: "https://www.ovh.nl/g1343.qssq",
                     wordpress: "https://codex.wordpress.org/Getting_Started_with_WordPress",
@@ -1335,6 +1342,7 @@ module.exports = {
                 support_contact: "https://www.ovh.pl/pomoc/",
                 guides: {
                     home   : "https://www.ovh.pl/community/knowledge/",
+                    all: "https://docs.ovh.com/pl/pl/",
                     emailsConfiguration: "https://www.ovh.pl/g1474.emaile-na-hostingu-www-ovh",
                     autoRenew: "https://www.ovh.pl/g1271.renew",
                     emailsCreation: "https://www.ovh.pl/g1343.qssq",
@@ -1498,6 +1506,7 @@ module.exports = {
                 support_contact: "https://www.ovh.pt/suporte/",
                 guides: {
                     home   : "http://guias.ovh.pt/",
+                    all: "https://docs.ovh.com/pt/pt/",
                     emailsConfiguration: "https://www.ovh.pt/g1474.generalidades-mails-partilhados-ovh",
                     autoRenew: "https://www.ovh.pt/g1271.renew",
                     emailsCreation: "https://www.ovh.pt/g1343.qssq",
