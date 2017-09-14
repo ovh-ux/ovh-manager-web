@@ -8,9 +8,9 @@
 
 ### Requirements
 
-* You must have a sane installation of ``nodejs`` (with ``npm``)
-* You must have a sane installation of ``bower`` (``npm install -g bower``)
-* You must have a sane installation of ``grunt`` (``npm install -g grunt-cli``)
+* You must have `nodejs` with `npm` installed.
+* You must have `bower` installed (`npm install -g bower`)
+* You must have `grunt` installed (`npm install -g grunt-cli`)
 
 ### Install dependencies
 
