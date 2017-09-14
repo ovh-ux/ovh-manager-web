@@ -13,7 +13,7 @@ angular.module("App").controller(
         }
 
         $onInit () {
-            this.orderType = this.$stateParams.productId;
+            this.orderType = this.$stateParams.orderType;
             this.currentHosting = this.$stateParams.currentHosting;
 
             this.selectectedHosting = null;
@@ -48,6 +48,12 @@ angular.module("App").controller(
         }
 
         getAvailableOrderCapacities () {
+
+            const typeConverter = {
+                dbaas: "public",
+                "private": "classic"
+            };
+
             this.loading.init = true;
 
             return this.privateDatabaseService
@@ -56,7 +62,7 @@ angular.module("App").controller(
                     const dbaasName = _.get(models, "hosting.PrivateDatabase.OfferEnum").enum[1];
                     const sqlName = _.get(models, "hosting.PrivateDatabase.OfferEnum").enum[0];
 
-                    this.model.type = this.orderType || sqlName;
+                    this.model.type = typeConverter[this.orderType] || sqlName;
 
                     return this.$q
                         .all({

@@ -18,7 +18,7 @@
                                           <strong class="d-block" data-i18n-static="privateDatabase_dashboard_version"></strong>
                                           <span data-ng-bind="::i18n['privateDatabase_dashboard_version_' + stateCtrl.database.version] || stateCtrl.database.version"></span>
                                       </div>
-                                      <button type="button" class="btn btn-default my-auto ml-auto" title="{{::i18n.privateDatabase_change_version}}"
+                                      <button type="button" class="btn btn-default my-auto ml-auto text-wrap" title="{{::i18n.privateDatabase_change_version}}"
                                               data-ng-disabled="taskState.lockAction"
                                               data-ng-click="setAction('database/version/update/private-database-database-version-update', stateCtrl.database)">
                                           <span data-i18n-static="privateDatabase_change_version"></span>
@@ -34,7 +34,7 @@
                                                 <i class="fa fa-info-circle" aria-hidden="true"></i>
                                             </button>
                                         </div>
-                                        <button type="button" class="btn btn-default ml-auto my-auto" title="{{::i18n.privateDatabase_change_ram_title}}"
+                                        <button type="button" class="btn btn-default ml-auto my-auto text-wrap" title="{{::i18n.privateDatabase_change_ram_title}}"
                                                 data-ng-disabled="taskState.lockAction"
                                                 data-ng-click="setAction('database/ram/update/private-database-database-ram-update', stateCtrl.database)">
                                             <span data-i18n-static="privateDatabase_change_ram_title"></span>
@@ -90,7 +90,7 @@
                                     <ul data-ng-if="stateCtrl.displayMore.value">
                                         <li data-ng-repeat="hostingLinked in stateCtrl.hostingsLinked track by $index"
                                             data-ng-class="{'animated fadeInDown fast-fade-in-down': stateCtrl.displayMore.value}">
-                                            <button class="btn btn-link no-padding-left" type="button"
+                                            <button class="btn btn-link p-0" type="button"
                                                     data-ng-click="stateCtrl.goToHosting(hostingLinked.name)"
                                                     data-ng-disabled="!stateCtrl.hostingsLinked.isAdmin"
                                                     data-ng-bind="hostingLinked.name">
@@ -188,7 +188,7 @@
                                             <span data-ng-show="!taskState.changeFtpPassword">********</span>
                                         </div>
                                         <div class="ml-auto my-auto">
-                                            <button class="btn btn-default ml-auto my-auto" type="button" title="{{::i18n.privateDatabase_change_rootPassword}}"
+                                            <button class="btn btn-default ml-auto my-auto text-wrap" type="button" title="{{::i18n.privateDatabase_change_rootPassword}}"
                                                     data-ng-show="!taskState.changeFtpPassword"
                                                     data-ng-disabled="taskState.lockAction"
                                                     data-ng-click="stateCtrl.changeFtpPassword()">
@@ -208,7 +208,7 @@
                                         <span data-ng-show="!taskState.changeRootPassword">********</span>
                                       </div>
                                       <div class="ml-auto my-auto">
-                                        <button class="btn btn-default" type="button" title="{{::i18n.privateDatabase_change_rootPassword}}"
+                                        <button class="btn btn-default text-wrap" type="button" title="{{::i18n.privateDatabase_change_rootPassword}}"
                                                 data-ng-show="!taskState.changeRootPassword"
                                                 data-ng-disabled="taskState.lockAction"
                                                 data-ng-click="stateCtrl.changeRootPassword()">
