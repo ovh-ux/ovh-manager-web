@@ -16,7 +16,7 @@
                  data-i18n-static="domain_tab_DNS_warning_only_one_dns"
                  data-ng-if="ctrlDomainDns.dns.activeDns === 1 && !ctrlDomainDns.dns.table.isPartial"></div>
 
-            <div class="alert alert-warning"
+            <div class="alert alert-info"
                  role="alert"
                  data-ng-if="!ctrlDomainDns.domain.managedByOvh && ctrlDomainDns.allowModification">
                 <div data-ng-bind-html="tr('domain_tab_DNS_unlock_warning_manuel_check', [ctrlDomainDns.urls.zoneCheck, i18n.domain_tab_DNS_unlock_warning_manuel_check_tool + ' (' + i18n.core_new_window + ')'])"></div>
