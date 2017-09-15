@@ -38,7 +38,7 @@
                         <dt data-i18n-static="hosting_tab_AUTOMATED_EMAILS_report_email"></dt>
                         <dd>
                             <span data-ng-bind="ctrl.automatedEmails.email"></span>
-                            <button class="btn btn-default btn-xs mt-2" type="button"
+                            <button class="btn btn-default btn-xs" type="button"
                                     data-i18n-static="hosting_tab_AUTOMATED_EMAILS_report_email_change"
                                     data-ng-click="setAction('automated-emails/error-report/hosting-automated-emails-error-report', {automatedEmails: ctrl.automatedEmails})">
                             </button>
@@ -150,8 +150,8 @@
                 <button class="btn btn-block btn-default"
                         type="button"
                         data-i18n-static="hosting_tab_AUTOMATED_EMAILS_volume_history"
-                        data-ng-click="ctrl.retrievingBounces(); ctrl.changeViewToBounces()"
-                        data-ng-disabled="ctrl.loaders.loading || !ctrl.thereAreEmailsInError">
+                        data-ng-click="ctrl.changeViewToBounces()"
+                        data-ng-disabled="ctrl.loaders.bounces || !ctrl.thereAreEmailsInError">
                 </button>
                 <button class="btn btn-block btn-default"
                         type="button"
