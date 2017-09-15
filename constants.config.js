@@ -558,7 +558,7 @@ module.exports = {
                 bulkChangeOwner: "https://www.ovh-hosting.fi/order/domain/#/legacy/domain/trade/list",
                 oldInterface: "https://www.ovh-hosting.fi/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh-hosting.fi/sahkopostit/hosted-exchange/",
-                emailproOrder: "https://www.ovh-hosting.fi/sahkopostit/pro/",
+                emailproOrder: "https://www.ovh-hosting.fi/sahkopostit/email-pro/",
                 office365Order: "https://www.ovh-hosting.fi/office-365/",
                 renewAlign : "https://www.ovh-hosting.fi/cgi-bin/order/renew.cgi?alignDate=1&csid=0",
                 start10mMarket: "https://www.ovh-hosting.fi/verkkotunnukset/start10m_webhotelli_tuote.xml"
@@ -1233,7 +1233,7 @@ module.exports = {
                 bulkChangeOwner: "https://www.ovh.lt/order/domain/#/legacy/domain/trade/list",
                 oldInterface: "https://www.ovh.lt/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh.lt/El_pastas/hosted-exchange/",
-                emailproOrder: "https://www.ovh.lt/El_pastas/pro/",
+                emailproOrder: "https://www.ovh.lt/El_pastas/email-pro/",
                 office365Order: "https://www.ovh.lt/office-365/",
                 renewAlign : "https://www.ovh.lt/cgi-bin/order/renew.cgi?alignDate=1&csid=0",
                 start10mMarket: "https://www.ovh.lt/domenai/nemokamas_talpinimas_start10m.xml"
@@ -1496,7 +1496,7 @@ module.exports = {
                 bulkChangeOwner: "https://www.ovh.pl/order/domain/#/legacy/domain/trade/list",
                 oldInterface: "https://www.ovh.pl/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh.pl/emaile/hosted-exchange/",
-                emailproOrder: "https://www.ovh.pl/emaile/pro/",
+                emailproOrder: "https://www.ovh.pl/emaile/email-pro/",
                 office365Order: "https://www.ovh.pl/office-365/",
                 renewAlign : "https://www.ovh.pl/cgi-bin/order/renew.cgi?alignDate=1&csid=0",
                 start10mMarket: "https://www.ovh.pl/domeny/oferta_serwer_start10m.xml"
