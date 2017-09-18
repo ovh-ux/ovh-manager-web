@@ -18,7 +18,7 @@
                         <div class="col-md-6">
                             <select class="form-control" id="select-account-size"
                                     data-ng-model="models.boostOffer"
-                                    data-ng-options="offer as tr('hosting_dashboard_service_offer_' + offer.offer)  + ' - ' + offer.price.text for offer in (product.availableBoostOffer | orderBy:'offer') track by offer">
+                                    data-ng-options="offer as tr('hosting_dashboard_service_offer_' + offer.offer)  + ' - ' + offer.price.text for offer in (product.availableBoostOffer | orderBy:'offer') track by offer.offer">
                             </select>
                         </div>
                     </div>

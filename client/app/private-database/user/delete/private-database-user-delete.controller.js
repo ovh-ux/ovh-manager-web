@@ -17,8 +17,8 @@ angular.module("App").controller(
 
                 this.privateDatabaseService
                     .deleteUser(this.productId, this.userToDelete.userName)
-                    .then(() => this.alerter.success(this.$scope.tr("privateDatabase_delete_user_success"), "privateDataBase.alerts.user"))
-                    .catch(() => this.alerter.error(this.$scope.tr("privateDatabase_delete_user_fail"), "privateDataBase.alerts.user"));
+                    .then(() => this.alerter.success(this.$scope.tr("privateDatabase_delete_user_success"), this.$scope.alerts.users))
+                    .catch(() => this.alerter.error(this.$scope.tr("privateDatabase_delete_user_fail"), this.$scope.alerts.users));
             };
         }
     }

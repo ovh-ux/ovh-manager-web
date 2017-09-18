@@ -66,6 +66,7 @@ angular.module("App").controller(
             this.model.target = {};
             if (this.model.fieldType.toLowerCase() === "dkim") {
                 this.model.target.t = { y: false, s: true };
+                this.model.target.s = "";
             }
             this.setTargetValue(this.model.fieldType);
         }

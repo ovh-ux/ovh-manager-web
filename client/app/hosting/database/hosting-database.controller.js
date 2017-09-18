@@ -189,6 +189,7 @@ angular.module("App").controller("HostingTabDatabasesCtrl", function ($scope, $s
 
     $scope.transformItem = (id) => $q.all([HostingDatabase.getDatabase($stateParams.productId, id), HostingDatabase.getDumpIds($stateParams.productId, id)]).then((data) => {
         data[0].quotaUsed.asText = getQuotaUsageString(data[0].quotaUsed, data[0].quotaSize);
+        data[0].quotaUsedCappedAsText = `${Math.round(data[0].quotaUsed.value * 100) / 100} ${$scope.tr(`unit_size_${data[0].quotaUsed.unit}`)}`;
         data[0].quotaPercentCappedAsText = `${Math.min(100, Math.round(data[0].quotaPercent))}%`; // Quotapercent ???
         data[0].quotaStatus = getQuotaStatus(data[0].quotaPercent);
         data[0].dumpsCount = data[1].length;

@@ -1,13 +1,14 @@
 angular.module("App").controller(
     "PrivateDatabaseOrderCtrl",
     class PrivateDatabaseOrderCtrl {
-        constructor (Alerter, $location, Hosting, PrivateDatabase, $q, $scope) {
+        constructor (Alerter, $location, Hosting, PrivateDatabase, $q, $scope, User) {
             this.alerter = Alerter;
             this.$location = $location;
             this.hostingService = Hosting;
             this.privateDatabaseService = PrivateDatabase;
             this.$q = $q;
             this.$scope = $scope;
+            this.User = User;
         }
 
         $onInit () {
@@ -68,6 +69,10 @@ angular.module("App").controller(
                 }
                 return "";
             };
+
+            this.User.getUser().then((user) => {
+                this.user = user;
+            });
 
             this.init();
         }

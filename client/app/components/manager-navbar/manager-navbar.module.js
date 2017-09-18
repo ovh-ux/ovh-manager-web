@@ -75,7 +75,7 @@ angular.module("App").run((LANGUAGES, managerNavbar, User, constants, translator
                         url: "#/billing/autoRenew"
                     }, {
                         label: translator.tr("global_orders"),
-                        url: "#/orders"
+                        url: "#/billing/orders"
                     }, {
                         label: translator.tr("global_logout"),
                         click: () => {
