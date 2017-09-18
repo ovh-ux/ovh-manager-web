@@ -123,7 +123,7 @@
                                             <span class="progress-bar-label" data-ng-bind="element.quotaUsed.asText"></span>
                                         </div>
                                     </div>
-                                    <span data-ng-bind="element.quotaUsed.value + ' ' + element.quotaUsed.unit" data-ng-if="element.server === 'local'"></span>
+                                    <span data-ng-bind="element.quotaUsedCappedAsText" data-ng-if="element.server === 'local'"></span>
                                     <div data-ng-if="element.quotaCalculating">
                                         <span class="fa fa-refresh fa-spin mr-2" aria-hidden="true"></span>
                                         <span data-i18n-static="hosting_tab_DATABASES_configuration_check_quota_calculating"></span>
