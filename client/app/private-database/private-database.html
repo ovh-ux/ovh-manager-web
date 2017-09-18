@@ -1,5 +1,5 @@
 <div data-ng-controller="PrivateDatabaseCtrl as ctrl">
-        <div data-ovh-alert="{{alerts.dashboard}}"></div>
+    <div data-ovh-alert="{{alerts.dashboard}}"></div>
 
     <div class="loader mt-5 text-center" data-ng-if="ctrl.loaders.details"></div>
 
@@ -117,8 +117,6 @@
              data-works-details="ctrl.works"
              data-tr="tr">
         </div>
-
-        <div data-ovh-alert="{{alerts.dashboard}}"></div>
 
         <div data-ng-show="!(!taskState.changeVersion && database.state !== 'started') && !taskState.changeVersion">
             <p data-ng-if="!taskState.changeVersion && database && database.state !== 'started'" data-i18n-static="privateDatabase_dashboard_information"></p>
