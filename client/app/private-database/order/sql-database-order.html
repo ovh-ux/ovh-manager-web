@@ -155,7 +155,7 @@
                                            data-ng-model="sqlOrderCtrl.model.duration"
                                            data-ng-value="duration.duration">
                                     <span data-ng-bind="duration.duration | duration:'longDate'"></span>&nbsp;:
-                                    <span data-ng-bind-html="duration.details.prices | price:ovhSubsidiary"></span>
+                                    <span data-ng-bind-html="duration.details.prices | price:sqlOrderCtrl.user.ovhSubsidiary"></span>
                                     <span class="fa fa-spinner fa-spin ml-2" data-ng-if="!duration.details.prices"></span>
                                 </label>
                             </div>

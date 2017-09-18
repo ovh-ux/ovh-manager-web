@@ -109,7 +109,7 @@
                                            data-ng-model="orderCtrl.selectedOrder.duration"
                                            data-ng-value="duration">
                                     <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:
-                                    <span data-ng-bind-html="orderCtrl.durations.details[duration].prices | price:ovhSubsidiary"></span>
+                                    <span data-ng-bind-html="orderCtrl.durations.details[duration].prices | price:orderCtrl.user.ovhSubsidiary"></span>
                                     <span class="fa fa-spinner fa-spin" aria-hidden="true" data-ng-if="!orderCtrl.durations.details[duration]"></span>
                                 </label>
                             </div>
