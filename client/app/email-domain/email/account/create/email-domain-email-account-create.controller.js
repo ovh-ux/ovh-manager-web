@@ -83,18 +83,18 @@ angular.module("App").controller(
             this.User.getUrlOf("guides").then((guides) => {
                 this.allGuides = _.get(guides, "emailsConfiguration");
 
-                this.createGuide("MAC", "", _.get(guides, "emailsConfigurationAuto"), "../assets/images/logos/iOS9.png");
-                this.createGuide("MAC", "El capitan", _.get(guides, "emailsConfigurationMacElCapitain"), "../assets/images/logos/iOS9.png");
-                this.createGuide("MAC", "Mavericks / Yosemite", _.get(guides, "emailsConfigurationMacMavericksAndYosemite"), "../assets/images/logos/iOS9.png");
-                this.createGuide("MAC", "Mountain Lion", _.get(guides, "emailsConfigurationMacMountainLion"), "../assets/images/logos/iOS9.png");
-                this.createGuide("OUTLOOK", "2016", _.get(guides, "emailsConfigurationOutlook2016"), "../assets/images/logos/outlook2013.png");
-                this.createGuide("OUTLOOK", "2013", _.get(guides, "emailsConfigurationOutlook2013"), "../assets/images/logos/outlook2013.png");
-                this.createGuide("OUTLOOK", "2010", _.get(guides, "emailsConfigurationOutlook2010"), "../assets/images/logos/outlook2013.png");
-                this.createGuide("OUTLOOK", "2007", _.get(guides, "emailsConfigurationOutlook2007"), "../assets/images/logos/outlook2013.png");
-                this.createGuide("IPHONE", "", _.get(guides, "emailsConfigurationAuto"), "../assets/images/logos/iOS9.png");
-                this.createGuide("IPHONE", "9.1", _.get(guides, "emailsConfigurationIos9"), "../assets/images/logos/iOS9.png");
-                this.createGuide("ANDROID", "6", _.get(guides, "emailsConfigurationAndroid6"), "../assets/images/logos/android.jpg");
-                this.createGuide("OTHER", "ALL", _.get(guides, "emailsConfiguration"), "../assets/images/logos/OVH-logo.png");
+                this.createGuide("MAC", "", _.get(guides, "emailsConfigurationAuto"), "assets/images/logos/iOS9.png");
+                this.createGuide("MAC", "El capitan", _.get(guides, "emailsConfigurationMacElCapitain"), "assets/images/logos/iOS9.png");
+                this.createGuide("MAC", "Mavericks / Yosemite", _.get(guides, "emailsConfigurationMacMavericksAndYosemite"), "assets/images/logos/iOS9.png");
+                this.createGuide("MAC", "Mountain Lion", _.get(guides, "emailsConfigurationMacMountainLion"), "assets/images/logos/iOS9.png");
+                this.createGuide("OUTLOOK", "2016", _.get(guides, "emailsConfigurationOutlook2016"), "assets/images/logos/outlook2013.png");
+                this.createGuide("OUTLOOK", "2013", _.get(guides, "emailsConfigurationOutlook2013"), "assets/images/logos/outlook2013.png");
+                this.createGuide("OUTLOOK", "2010", _.get(guides, "emailsConfigurationOutlook2010"), "assets/images/logos/outlook2013.png");
+                this.createGuide("OUTLOOK", "2007", _.get(guides, "emailsConfigurationOutlook2007"), "assets/images/logos/outlook2013.png");
+                this.createGuide("IPHONE", "", _.get(guides, "emailsConfigurationAuto"), "assets/images/logos/iOS9.png");
+                this.createGuide("IPHONE", "9.1", _.get(guides, "emailsConfigurationIos9"), "assets/images/logos/iOS9.png");
+                this.createGuide("ANDROID", "6", _.get(guides, "emailsConfigurationAndroid6"), "assets/images/logos/android.jpg");
+                this.createGuide("OTHER", "ALL", _.get(guides, "emailsConfiguration"), "assets/images/logos/OVH-logo.png");
 
                 this.setGuideByName(this.currentGuideName);
             });
