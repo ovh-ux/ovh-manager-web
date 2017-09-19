@@ -45,7 +45,7 @@ angular.module("App").controller("HostingOrderCdnCtrl", ($scope, $q, $window, Ho
         });
     };
 
-    $scope.isPerfOffer = () => Hosting.isPerfOffer((hosting || $scope.hostingProxy).offer);
+    $scope.isPerfOffer = () => Hosting.constructor.isPerfOffer((hosting || $scope.hostingProxy).offer);
 
     $scope.getDuration = () => {
         const queue = [];
