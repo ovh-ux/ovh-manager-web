@@ -7,37 +7,53 @@
 
         <!-- Step 1 -->
         <div data-wizard-step
-            data-wizard-step-on-load="getDestinationServices"
+            data-wizard-step-on-load="getServiceTypes"
             data-wizard-step-valid="ctrl.migrateDestinationForm.$valid && ctrl.migrate.destinationEmail">
 
-            <div data-ng-if="!ctrl.loading || ctrl.migrationServiceTypes">
+            <div data-ng-if="!ctrl.loading || ctrl.availableServices">
                 <form class="form-horizontal" name="ctrl.migrateDestinationForm" novalidate>
 
-                    <p data-i18n-static="email_tab_modal_migrate_select_platform_text"></p>
+                    <!-- No Service -->
+                    <div data-ng-if="!ctrl.availableServices.length">
+                        <p data-i18n-static="email_tab_modal_migrate_no_email_service"></p>
+                        <p><a href="https://www.ovh.com/emails/" target="_blank" class="btn btn-primary" data-i18n-static="email_tab_modal_migrate_order_email_service"></a></p>
+                    </div>
+                    <!-- /No Service -->
 
-                    <p>
-                        <small class="text-danger">*</small>
-                        <small data-i18n-static="required_fields"></small>
-                    </p>
+                    <!-- Has Services -->
+                    <div data-ng-if="ctrl.availableServices.length">
+                        <p data-i18n-static="email_tab_modal_migrate_select_platform_text"></p>
+                        <p>
+                            <small class="text-danger">*</small>
+                            <small data-i18n-static="required_fields"></small>
+                        </p>
 
-                    <!-- Service Type -->
-                    <div class="form-group">
-                        <label class="control-label col-md-4 required" for="migrateServiceType" data-i18n-static="email_tab_modal_migrate_service_type_label"></label>
-                        <div class="col-md-8">
-                            <div class="radio-inline" data-ng-repeat="serviceType in ctrl.migrationServiceTypes">
-                                <label>
-                                    <input id="migrateServiceType{{$index}}" type="radio" name="serviceType"
-                                        data-ng-change="ctrl.getDestinationServicesFromType(ctrl.migrate.serviceType)"
-                                        data-ng-model="ctrl.migrate.serviceType"
-                                        data-ng-value="serviceType"> {{::serviceType}}
-                                </label>
+                        <!-- Service Type -->
+                        <div class="form-group">
+                            <label class="control-label col-md-4 required" for="migrateServiceType" data-i18n-static="email_tab_modal_migrate_service_type_label"></label>
+                            <div class="col-md-8">
+
+                                <!-- One Service -->
+                                <p class="form-control-static"
+                                    data-ng-if="ctrl.availableServices.length === 1"
+                                    data-ng-bind="ctrl.migrate.serviceType"></p>
+                                <!-- /One Service -->
+
+                                <!-- Multiple Services -->
+                                <div class="radio-inline"
+                                    data-ng-if="ctrl.availableServices.length > 1"
+                                    data-ng-repeat="serviceType in ctrl.availableServices">
+                                    <label>
+                                        <input id="migrateServiceType{{$index}}" type="radio" name="serviceType"
+                                            data-ng-model="ctrl.migrate.serviceType"
+                                            data-ng-value="serviceType"> {{::serviceType}}
+                                    </label>
+                                </div>
+                                <!-- Multiple Services -->
+
                             </div>
                         </div>
-                    </div>
-                    <!-- /Service Type -->
-
-                    <!-- Has service -->
-                    <div data-ng-if="ctrl.destinationServices && ctrl.destinationServices.length">
+                        <!-- /Service Type -->
 
                         <!-- Destination Service -->
                         <div class="form-group">
@@ -46,7 +62,7 @@
                                 <select class="form-control" id="migrateDestinationServices" required
                                     data-ng-change="ctrl.getDestinationEmails(ctrl.migrate.destinationService)"
                                     data-ng-model="ctrl.migrate.destinationService"
-                                    data-ng-options="service for service in ctrl.destinationServices track by service"></select>
+                                    data-ng-options="service for service in ctrl.destinationServices[ctrl.migrate.serviceType] track by service"></select>
                                 <small class="help-block" data-i18n-static="email_tab_modal_migrate_destination_service_help"></small>
                             </div>
                         </div>
@@ -88,14 +104,7 @@
                         <!-- /Destination Email -->
 
                     </div>
-                    <!-- /Has service -->
-
-                    <!-- No service -->
-                    <div data-ng-if="ctrl.destinationServices && !ctrl.destinationServices.length">
-                        <p data-i18n-static="email_tab_modal_migrate_no_email_service"></p>
-                        <p><a href="https://www.ovh.com/emails/" target="_blank" class="btn btn-primary" data-i18n-static="email_tab_modal_migrate_order_email_service"></a></p>
-                    </div>
-                    <!-- /No service -->
+                    <!-- /Has Services -->
 
                 </form>
             </div>
@@ -120,23 +129,18 @@
 
             <div data-ng-if="!ctrl.loading">
                 <p data-i18n-static="email_tab_modal_migrate_confirmation_heading"></p>
-                <p class="font-weight-bold" data-i18n-static="emails_common_continue_question"></p>
+                <p data-i18n-static="email_tab_modal_migrate_confirmation_delay"></p>
 
-                <p>
-                    <small class="text-danger">*</small>
-                    <small data-i18n-static="required_fields"></small>
-                </p>
-
-                <form class="form-horizontal" name="ctrl.migratePasswordForm" novalidate>
+                <div class="form-horizontal">
 
                     <!-- Migration Data -->
-                    <div class="form-group">
+                    <div class="form-group mb-0">
                         <label class="control-label col-md-4" data-i18n-static="email_tab_modal_migrate_account_email_label"></label>
                         <div class="col-md-8">
                             <p class="form-control-static" data-ng-bind="ctrl.email.email"></p>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-0">
                         <label class="control-label col-md-4" data-i18n-static="email_tab_modal_migrate_service_type_label"></label>
                         <div class="col-md-8">
                             <p class="form-control-static" data-ng-bind="ctrl.migrate.serviceType"></p>
@@ -148,13 +152,35 @@
                             <p class="form-control-static" data-ng-bind="ctrl.migrate.destinationService"></p>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-4" data-i18n-static="email_tab_modal_migrate_destination_email_label"></label>
-                        <div class="col-md-8">
-                            <p class="form-control-static" data-ng-bind="ctrl.migrate.destinationEmail"></p>
-                        </div>
-                    </div>
                     <!-- /Migration Data -->
+
+                </div>
+
+                <!-- Guides Text -->
+                <p ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'" data-i18n-static="email_tab_modal_migrate_configuration_guides_emailpro"></p>
+                <p ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'" data-i18n-static="email_tab_modal_migrate_configuration_guides_exchange"></p>
+                <p>
+                    <a class="btn btn-default btn-sm" href="https://docs.ovh.com/fr/fr/web/" target="_blank"
+                        data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></a>
+                </p>
+                <!-- /Guides Text -->
+
+                <!-- Not Supported Alert -->
+                <div class="alert alert-warning" role="alert">
+                    <p data-ng-bind-html="tr('email_tab_modal_migrate_alert_not_supported')"></p>
+                </div>
+                <!-- /Not Supported Alert -->
+
+                <!-- Aknowledge Text -->
+                <p><strong data-i18n-static="email_tab_modal_migrate_aknowledge"></strong></p>
+                <p data-i18n-static="email_tab_modal_migrate_password_text"></p>
+                <!-- /Aknowledge Text -->
+
+                <form class="form-horizontal" name="ctrl.migratePasswordForm" novalidate>
+                    <p>
+                        <small class="text-danger">*</small>
+                        <small data-i18n-static="required_fields"></small>
+                    </p>
 
                     <!-- Password -->
                     <div class="form-group" data-ng-class="{
@@ -194,24 +220,6 @@
                     <!-- Confirm Password -->
 
                 </form>
-
-                <div class="alert alert-info mt-5" role="alert" id="emailsChangePasswordHelp">
-                    <p data-ng-bind-html="tr('emails_common_password_conditions', [ctrl.constants.passwordMinLength, ctrl.constants.passwordMaxLength])"></p>
-                </div>
-
-                <p data-i18n-static="email_tab_modal_migrate_configuration_guides"></p>
-                <p>
-                    <a class="btn btn-default btn-sm" href="https://www.ovh.com/support/" target="_blank"
-                        data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></a>
-                </p>
-                <p><strong data-i18n-static="email_tab_modal_migrate_aknowledge"></strong></p>
-
-                <!-- Not Supported Alert -->
-                <div class="alert alert-warning" role="alert">
-                    <p data-ng-bind-html="tr('email_tab_modal_migrate_alert_not_supported')"></p>
-                </div>
-                <!-- /Not Supported Alert -->
-
             </div>
 
             <!-- Loader -->

@@ -25,51 +25,70 @@ angular.module("App").controller(
             };
 
             // For the wizard step-on-load and on-finish
-            this.$scope.getDestinationServices = () => this.getDestinationServices();
+            this.$scope.getServiceTypes = () => this.getServiceTypes();
             this.$scope.checkMigrationData = () => this.checkMigrationData();
             this.$scope.migrateAccount = () => this.migrateAccount();
         }
 
-        // Get Service type and Destination service
-        getDestinationServices () {
+        // Request Service types
+        getServiceTypes () {
             this.loading = true;
             this.destinationServices = null;
+            this.migrate.destinationService = null;
 
             // First, get the models for the service types
             this.Emails.getModels()
                 .then((data) => {
                     this.models = data.models;
-                    this.migrationServiceTypes = this.models["email.domain.MigrationServiceType"].enum;
-
-                    // Auto select the first type of service
-                    if (this.migrationServiceTypes && this.migrationServiceTypes.length > 0) {
-                        this.migrate.serviceType = this.migrationServiceTypes[0];
-                    }
-
-                    // Then, get available services for the migration
-                    this.getDestinationServicesFromType(this.migrate.serviceType)
-                        .then(() => (this.loading = false));
+                    this.getDestinationServices(this.models["email.domain.MigrationServiceType"].enum);
                 });
         }
 
-        // Update services list on type selection change
+        // Get destination services from all service types
+        getDestinationServices (serviceTypes) {
+            const promises = [];
+            angular.forEach(serviceTypes, (service) => {
+                promises.push(this.getDestinationServicesFromType(service));
+            });
+
+            this.$q.allSettled(promises)
+                .then((data) => {
+                    this.destinationServices = {};
+                    this.availableServices = [];
+
+                    // Merge destinationServices with serviceTypes, and get available services
+                    angular.forEach(serviceTypes, (service, index) => {
+                        this.destinationServices[service] = data[index];
+
+                        if (this.destinationServices[service].length) {
+                            this.availableServices.push(service);
+                        }
+                    });
+                })
+                .finally(() => {
+                    // Auto select the first type of service if available service for migration
+                    if (this.availableServices.length) {
+                        this.migrate.serviceType = this.availableServices[0];
+                    }
+
+                    this.loading = false;
+                });
+        }
+
+        // Request services list from service type
         getDestinationServicesFromType (type) {
-            this.loading = true;
-
-            // Reset for ngChange
-            this.destinationServices = null;
-            this.migrate.destinationService = null;
-
             return this.Emails.getDestinationServices(this.email.domain, this.email.accountName, type)
-
-                // .then((data) => (this.destinationServices = data))
-                .then((data) => (this.destinationServices = type !== "EMAIL PRO" ? data : []))
-                .catch((err) => this.handleError(err))
-                .finally(() => (this.loading = false));
+                .catch((err) => this.handleError(err));
         }
 
         // Get Destination email (@configure.me)
         getDestinationEmails (destinationService) {
+            // Check for destination service
+            if (angular.isUndefined(destinationService)) {
+                this.loading = false;
+                return;
+            }
+
             this.loading = true;
 
             // Reset for ngChange
@@ -90,7 +109,7 @@ angular.module("App").controller(
                     }
                 })
                 .catch((err) => this.handleError(err))
-                .finally(() => (this.loading = false));
+                .finally(() => { this.loading = false; });
         }
 
         // Check if it's possible to migrate
@@ -98,21 +117,16 @@ angular.module("App").controller(
             this.loading = true;
 
             this.Emails.checkMigrate(this.email.domain, this.email.accountName, this.migrate.destinationService, this.migrate.destinationEmail)
-                .then(() => (this.loading = false))
+                .then(() => { this.loading = false; })
                 .catch((err) => this.handleError(err));
         }
 
         // Post request for migration
         migrateAccount () {
-            this.loading = true;
-
             this.Emails.migrateAccountToDestinationAccount(this.email.domain, this.email.accountName, this.migrate.destinationService, this.migrate.destinationEmail, this.migrate.password)
                 .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success"), this.$scope.alerts.dashboard))
                 .catch((err) => this.handleError(err))
-                .finally(() => {
-                    this.loading = false;
-                    this.$scope.resetAction();
-                });
+                .finally(() => this.$scope.resetAction());
         }
 
         // Check from email-domain-email-account-change-password.controller.js
