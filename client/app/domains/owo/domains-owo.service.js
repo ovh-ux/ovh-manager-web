@@ -27,6 +27,22 @@ angular.module("services").service(
         }
 
         /**
+         *
+         * @param {string} serviceName
+         * @param {string|null} field
+         */
+        getOwoFieldsSelection (serviceName, field) {
+            return this.OvhHttp
+                .get(`/domain/${serviceName}/owo`, {
+                    rootPath: "apiv6",
+                    params: {
+                        field
+                    }
+                })
+                .then((fields) => fields);
+        }
+
+        /**
          * Update the owo fields
          * @param activated
          * @param desactivated

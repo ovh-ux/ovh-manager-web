@@ -6,15 +6,15 @@ angular.module("App").controller("HostingDatabaseCheckQuotaCtrl", ($scope, $stat
 
     $scope.checkQuota = function () {
         $scope.resetAction();
-        HostingDatabase.requestDatabaseQuotaCheck($stateParams.productId, $scope.entryToCheck).then(
-            (data) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_check_quota_success", [$scope.entryToCheck]), data, $scope.alerts.dashboard);
+        HostingDatabase.requestDatabaseQuotaCheck($stateParams.productId, $scope.entryToCheck)
+            .then((data) => {
+                Alerter.success($scope.tr("hosting_tab_DATABASES_configuration_check_quota_success", [$scope.entryToCheck]), $scope.alerts.dashboard);
                 completionDeferred.resolve(data);
-            },
-            (err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_check_quota_fail"), err.data, $scope.alerts.dashboard);
+            })
+            .catch((err) => {
+                _.set(err, "type", err.type || "ERROR");
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_check_quota_fail"), _.get(err, "data", err), $scope.alerts.dashboard);
                 completionDeferred.reject(err);
-            }
-        );
+            });
     };
 });

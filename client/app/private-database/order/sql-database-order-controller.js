@@ -1,7 +1,7 @@
 angular.module("App").controller(
     "SqlDatabaseOrderCtrl",
     class SqlDatabaseOrderCtrl {
-        constructor (Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, $q, $scope, $stateParams, $timeout) {
+        constructor (Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, $q, $scope, $stateParams, $timeout, User) {
             this.hostingService = Hosting;
             this.hostingDatabaseService = HostingDatabase;
             this.hostingOptionOrderService = HostingOptionOrder;
@@ -10,6 +10,7 @@ angular.module("App").controller(
             this.$scope = $scope;
             this.$stateParams = $stateParams;
             this.$timeout = $timeout;
+            this.User = User;
         }
 
         $onInit () {
@@ -45,6 +46,10 @@ angular.module("App").controller(
             };
 
             this.getAvailableOrderCapacities();
+
+            this.User.getUser().then((user) => {
+                this.user = user;
+            });
         }
 
         getAvailableOrderCapacities () {
