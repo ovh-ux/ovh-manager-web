@@ -28,7 +28,7 @@ angular.module("App").controller("HostingOrderSslCtrl", ($scope, $q, $window, $s
     $scope.validDomain = true;
 
     const init = () => {
-        if (!Validator.isValidLetsEncryptDomain("www.", $stateParams.productId)) {
+        if (!Validator.isLetsEncryptDomainNameValid("www.", $stateParams.productId)) {
             $scope.sslType.value = "payable";
             $scope.validDomain = false;
         }

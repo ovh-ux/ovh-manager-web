@@ -39,7 +39,7 @@ angular.module("App").controller(
         }
 
         subDomainCheck (input) {
-            input.$setValidity("subdomain", this.login.subDomain === null || this.login.subDomain === "" || this.login.subDomain === "*" || this.Validator.isValidSubDomain(this.login.subDomain));
+            input.$setValidity("subdomain", this.login.subDomain === null || this.login.subDomain === "" || this.login.subDomain === "*" || this.Validator.isSubDomainNameValid(this.login.subDomain));
         }
 
         updateLogin () {

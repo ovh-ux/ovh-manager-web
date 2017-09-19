@@ -254,7 +254,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
 
     $scope.domainIsNotValid = function () {
         if ($scope.selected.ssl) {
-            return $scope.getSelectedDomain() ? !Validator.isValidDomain($scope.getSelectedDomain(), { canBeginWithWildcard: true }) : false;
+            return $scope.getSelectedDomain() ? !Validator.isDomainNameValid($scope.getSelectedDomain(), { canBeginWithWildcard: true }) : false;
         }
         return false;
     };

@@ -36,7 +36,7 @@ angular.module("App").controller(
         }
 
         subDomainCheck (input) {
-            input.$setValidity("subdomain", this.dynHostLogin.subDomain === "*" || this.Validator.isValidSubDomain(this.dynHostLogin.subDomain));
+            input.$setValidity("subdomain", this.dynHostLogin.subDomain === "*" || this.Validator.isSubDomainNameValid(this.dynHostLogin.subDomain));
         }
 
         addLogin () {

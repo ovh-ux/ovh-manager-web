@@ -107,12 +107,12 @@ angular.module("controllers").controller(
 
         hostCheck (input) {
             const value = input.$viewValue;
-            input.$setValidity("domain", value === "" || this.Validator.isValidDomain(value));
+            input.$setValidity("domain", value === "" || this.Validator.isDomainNameValid(value));
         }
 
         ipCheck (input) {
             const value = input.$viewValue;
-            input.$setValidity("ip", value === "" || this.Validator.isValidIpv4(value) || this.Validator.isValidIpv6(value));
+            input.$setValidity("ip", value === "" || this.Validator.isIPValid(value));
         }
 
         saveDns () {
