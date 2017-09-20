@@ -109,16 +109,18 @@ angular.module("App").controller(
                 .then((results) => {
                     defaults = results[0];
                     activated = results[1];
-                }, (err) => {
-                    if (err[0].code !== 404 || err[1].code) { // LEGIT 404
-                        throw err;
-                    }
-
+                })
+                .catch((err) => {
                     activated = err[1];
                 })
                 .finally(() => {
-                    this.defaultsDns = _.get(defaults, "paginatedZone.records.results").filter((data) => data.subDomain === "" && data.subDomainToDisplay === "").map((value) => value.targetToDisplay.slice(0, -1)).sort();
-                    this.activatedDns = _.get(activated, "dns").filter((dns) => dns.isUsed).map((value) => value.host).sort();
+                    if (defaults != null) {
+                        this.defaultsDns = _.get(defaults, "paginatedZone.records.results").filter((data) => data.subDomain === "" && data.subDomainToDisplay === "").map((value) => value.targetToDisplay.slice(0, -1)).sort();
+                    }
+
+                    if (activated != null) {
+                        this.activatedDns = _.get(activated, "dns").filter((dns) => dns.isUsed).map((value) => value.host).sort();
+                    }
 
                     if (!_.isEmpty(this.defaultsDns) && !_.isEqual(this.defaultsDns, this.activatedDns)) {
                         this.useDefaultsDns = false;
@@ -148,15 +150,15 @@ angular.module("App").controller(
                 })
                 .catch((err) => {
                     this.dontDisplayActivateZone = true;
-                    if (err.data && /service(\s|\s\w+\s)expired/i.test(err.data.message)) {
+                    if (/service(\s|\s\w+\s)expired/i.test(err)) {
                         // A service expired here, is a temporary status, display the message: "service expired" in the page as general message is very confusing for customers.
                         // A message like: "no DNS zone" is already displayed at the good place. So, get out.
                         return;
                     }
 
                     // For Domain with no DNS zone.
-                    if (!err.status || err.status !== 404) {
-                        this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), err.data, this.$scope.alerts.dashboard);
+                    if (/404/.test(err)) {
+                        this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), err, this.$scope.alerts.dashboard);
                     } else {
                         this.dontDisplayActivateZone = false;
                     }
