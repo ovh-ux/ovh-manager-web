@@ -46,7 +46,8 @@
                                     <label>
                                         <input id="migrateServiceType{{$index}}" type="radio" name="serviceType"
                                             data-ng-model="ctrl.migrate.serviceType"
-                                            data-ng-value="serviceType"> {{::serviceType}}
+                                            data-ng-value="serviceType">
+                                        <span data-ng-bind="::serviceType"></span>
                                     </label>
                                 </div>
                                 <!-- Multiple Services -->
@@ -95,8 +96,8 @@
                                 </div>
 
                                 <p data-ng-bind-html="tr('email_tab_modal_migrate_no_available_email', ctrl.migrate.destinationService)"></p>
-                                <p ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'"><a href="/#/configuration/email_pro/{{::ctrl.migrate.destinationService}}?tab=ACCOUNT" target="_blank" class="btn btn-primary" data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></a></p>
-                                <p ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'"><a href="/#/configuration/exchange_hosted/{{::ctrl.migrate.destinationService}}/{{::ctrl.migrate.destinationService}}?tab=ACCOUNT" target="_blank" class="btn btn-primary" data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></a></p>
+                                <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'"><a href="/#/configuration/email_pro/{{::ctrl.migrate.destinationService}}?tab=ACCOUNT" target="_blank" class="btn btn-primary" data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></a></p>
+                                <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'"><a href="/#/configuration/exchange_hosted/{{::ctrl.migrate.destinationService}}/{{::ctrl.migrate.destinationService}}?tab=ACCOUNT" target="_blank" class="btn btn-primary" data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></a></p>
                             </div>
                             <!-- /No available email address -->
 
@@ -110,13 +111,7 @@
             </div>
 
             <!-- Loader -->
-            <div class="text-center" data-ng-if="ctrl.loading">
-                <div class="oui-loader oui-loader_s d-inline-block">
-                    <div class="oui-loader__container">
-                        <div class="oui-loader__image"></div>
-                    </div>
-                </div>
-            </div>
+            <div class="text-center loader" data-ng-if="ctrl.loading"></div>
             <!-- /Loader -->
 
         </div>
@@ -157,8 +152,8 @@
                 </div>
 
                 <!-- Guides Text -->
-                <p ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'" data-i18n-static="email_tab_modal_migrate_configuration_guides_emailpro"></p>
-                <p ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'" data-i18n-static="email_tab_modal_migrate_configuration_guides_exchange"></p>
+                <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'" data-i18n-static="email_tab_modal_migrate_configuration_guides_emailpro"></p>
+                <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'" data-i18n-static="email_tab_modal_migrate_configuration_guides_exchange"></p>
                 <p>
                     <a class="btn btn-default btn-sm" href="https://docs.ovh.com/fr/fr/web/" target="_blank"
                         data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></a>
@@ -172,7 +167,7 @@
                 <!-- /Not Supported Alert -->
 
                 <!-- Aknowledge Text -->
-                <p><strong data-i18n-static="email_tab_modal_migrate_aknowledge"></strong></p>
+                <p class="font-weight-bold" data-i18n-static="email_tab_modal_migrate_aknowledge"></p>
                 <p data-i18n-static="email_tab_modal_migrate_password_text"></p>
                 <!-- /Aknowledge Text -->
 
@@ -223,15 +218,8 @@
             </div>
 
             <!-- Loader -->
-            <div class="text-center" data-ng-if="ctrl.loading">
-                <div class="oui-loader oui-loader_s d-inline-block">
-                    <div class="oui-loader__container">
-                        <div class="oui-loader__image"></div>
-                    </div>
-                </div>
-            </div>
+            <div class="text-center loader" data-ng-if="ctrl.loading"></div>
             <!-- /Loader -->
-
 
         </div>
         <!-- /Step 2 -->

@@ -1050,6 +1050,7 @@ angular.module("services").service(
          * Obtain a list of available services
          * @param {string} domain
          * @param {string} accountName
+         * @param {string} type
          */
         getDestinationServices (domain, accountName, type) {
             return this.OvhHttp.get(`/email/domain/${domain}/account/${accountName}/migrate`, {
