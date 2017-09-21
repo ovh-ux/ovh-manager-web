@@ -3,7 +3,7 @@
         data-wizard-bread-crumb
         data-wizard-on-cancel="resetAction"
         data-wizard-on-finish="migrateAccount"
-        data-wizard-title="i18n.email_tab_modal_migrate_title">
+        data-wizard-title="ctrl.wizardTitle">
 
         <!-- Step 1 -->
         <div data-wizard-step
@@ -16,7 +16,12 @@
                     <!-- No Service -->
                     <div data-ng-if="!ctrl.availableServices.length">
                         <p data-i18n-static="email_tab_modal_migrate_no_email_service"></p>
-                        <p><a href="https://www.ovh.com/emails/" target="_blank" class="btn btn-primary" data-i18n-static="email_tab_modal_migrate_order_email_service"></a></p>
+                        <p>
+                            <a href="https://www.ovh.com/emails/" target="_blank" class="btn btn-primary">
+                                <span data-i18n-static="email_tab_modal_migrate_order_email_service"></span>
+                                <span class="fa fa-external-link"></span>
+                            </a>
+                        </p>
                     </div>
                     <!-- /No Service -->
 
@@ -46,6 +51,7 @@
                                     <label>
                                         <input id="migrateServiceType{{$index}}" type="radio" name="serviceType"
                                             data-ng-model="ctrl.migrate.serviceType"
+                                            data-ng-change="ctrl.setWizardTitle(ctrl.migrate.serviceType)"
                                             data-ng-value="serviceType">
                                         <span data-ng-bind="::serviceType"></span>
                                     </label>
@@ -96,8 +102,8 @@
                                 </div>
 
                                 <p data-ng-bind-html="tr('email_tab_modal_migrate_no_available_email', ctrl.migrate.destinationService)"></p>
-                                <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'"><a href="/#/configuration/email_pro/{{::ctrl.migrate.destinationService}}?tab=ACCOUNT" target="_blank" class="btn btn-primary" data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></a></p>
-                                <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'"><a href="/#/configuration/exchange_hosted/{{::ctrl.migrate.destinationService}}/{{::ctrl.migrate.destinationService}}?tab=ACCOUNT" target="_blank" class="btn btn-primary" data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></a></p>
+                                <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'"><a href="/#/configuration/email_pro/{{::ctrl.migrate.destinationService}}?tab=ACCOUNT" class="btn btn-primary" data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></a></p>
+                                <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'"><a href="/#/configuration/exchange_hosted/{{::ctrl.migrate.destinationService}}/{{::ctrl.migrate.destinationService}}?tab=ACCOUNT" class="btn btn-primary" data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></a></p>
                             </div>
                             <!-- /No available email address -->
 
@@ -155,8 +161,10 @@
                 <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'" data-i18n-static="email_tab_modal_migrate_configuration_guides_emailpro"></p>
                 <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'" data-i18n-static="email_tab_modal_migrate_configuration_guides_exchange"></p>
                 <p>
-                    <a class="btn btn-default btn-sm" href="https://docs.ovh.com/fr/fr/web/" target="_blank"
-                        data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></a>
+                    <a class="btn btn-default btn-sm" href="https://docs.ovh.com/fr/fr/web/" target="_blank">
+                        <span data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></span>
+                        <span class="fa fa-external-link"></span>
+                    </a>
                 </p>
                 <!-- /Guides Text -->
 

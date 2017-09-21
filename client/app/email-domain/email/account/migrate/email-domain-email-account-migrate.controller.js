@@ -16,6 +16,7 @@ angular.module("App").controller(
         }
 
         $onInit () {
+            this.setWizardTitle();
             this.email = this.$scope.currentActionData;
             this.loading = true;
             this.migrate = {};
@@ -66,13 +67,28 @@ angular.module("App").controller(
                     });
                 })
                 .finally(() => {
-                    // Auto select the first type of service if available service for migration
-                    if (this.availableServices.length) {
+                    // Auto select the first type of service if only one available service for migration
+                    if (this.availableServices.length === 1) {
                         this.migrate.serviceType = this.availableServices[0];
+                        this.setWizardTitle(this.migrate.serviceType);
                     }
 
                     this.loading = false;
                 });
+        }
+
+        // Set the wizard title according to the service type selected
+        setWizardTitle (serviceType) {
+            switch (serviceType) {
+            case "EMAIL PRO":
+                this.wizardTitle = this.$scope.i18n.email_tab_modal_migrate_title_emailpro;
+                break;
+            case "HOSTED EXCHANGE":
+                this.wizardTitle = this.$scope.i18n.email_tab_modal_migrate_title_exchange;
+                break;
+            default:
+                this.wizardTitle = this.$scope.i18n.email_tab_modal_migrate_title;
+            }
         }
 
         // Request services list from service type
