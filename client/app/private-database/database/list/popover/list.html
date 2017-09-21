@@ -19,11 +19,11 @@
             data-ng-click="setAction('database/delete/private-database-database-delete', bdd)"
             data-ng-disabled="bdd.waitDump || bdd.waitRestore">
     </button>
-    <button type="button" class="btn btn-link"
+    <button class="btn btn-link" type="button"
             data-i18n-static="privateDatabase_action_list_dumps"
             data-ng-click="goToDumps(bdd)">
     </button>
-    <button type="button" class="btn btn-link"
+    <button class="btn btn-link" type="button"
             data-ng-if="database.infrastructure === 'legacy'"
             data-ng-click="addCron({'databaseName': bdd.databaseName})"
             data-i18n-static="privateDatabase_action_scheduleDumpBDD">

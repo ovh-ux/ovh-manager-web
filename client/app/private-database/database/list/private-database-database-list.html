@@ -61,7 +61,7 @@
                                    data-ng-if="bdd.waitRestore"></small>
                         </td>
                         <td class="text-center" data-ng-if="!bdd.waitDelete && listCtrl.isPostgreSql">
-                            <button type="button" class="btn btn-icon"
+                            <button class="btn btn-icon" type="button"
                                     data-ng-click="goToExtension(bdd)">
                                 <span class="fa fa-table" aria-hidden="true"></span>
                                 <span class="sr-only" data-i18n-static="privateDatabase_tabs_list_go_extensions"></span>
@@ -116,7 +116,7 @@
                 data-ng-click="setAction('database/add/private-database-database-add')"
                 data-ng-disabled="database.state !== 'started' || taskState.changeVersion || lockAction">
         </button>
-        <button type="button" class="btn btn-default btn-block"
+        <button class="btn btn-default btn-block" type="button"
                 data-i18n-static="privateDatabase_dump_bdd_title"
                 data-ng-click="goToArchivesList()"
                 data-ng-disabled="database.state !== 'started' || taskState.changeVersion || lockAction">
