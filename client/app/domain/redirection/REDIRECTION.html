@@ -49,9 +49,7 @@
                                         data-ng-model="ctrlDomainRedirect.search.value"
                                         data-ng-model-options="{ debounce: 800 }">
                                 <div class="input-group-btn" data-ng-if="ctrlDomainRedirect.search.value">
-                                    <button class="btn btn-default"
-                                            type="button"
-                                            aria-label="{{i18n.common_cancel}}"
+                                    <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
                                             data-ng-click="ctrlDomainRedirect.emptySearch()"
                                             data-ng-disabled="ctrlDomainRedirect.loading.search">
                                         <span class="fa fa-times" aria-hidden="true"></span>
@@ -74,9 +72,7 @@
                                 <th scope="col" data-i18n-static="domain_tab_REDIRECTION_table_headers_type"></th>
                                 <th scope="col" data-i18n-static="domain_tab_REDIRECTION_table_headers_target"></th>
                                 <th scope="col" class="min-width text-right">
-                                    <button class="btn btn-icon"
-                                            type="button"
-                                            title="{{i18n.refresh}}"
+                                    <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
                                             data-ng-click="ctrlDomainRedirect.reloadRedirectTable()">
                                         <span class="fa fa-refresh" aria-hidden="true"></span>
                                     </button>
@@ -118,15 +114,11 @@
                                 <td data-ng-bind="tr('domain_tab_REDIRECTION_type_' + redirection.fieldDisplayType)"></td>
                                 <td class="word-break" data-ng-bind="redirection.targetDisplayName"></td>
                                 <td class="text-center text-nowrap">
-                                    <button class="btn btn-icon"
-                                            type="button"
-                                            title="{{ctrlDomainRedirect.constructor.getDomain(redirection)}} {{i18n.table_modify_entry}}"
+                                    <button class="btn btn-icon" type="button" title="{{ctrlDomainRedirect.constructor.getDomain(redirection)}} {{i18n.table_modify_entry}}"
                                             data-ng-click="setAction('redirection/edit/domain-redirection-edit', { redirection: redirection, displayName: ctrlDomainRedirect.constructor.getDomain(redirection) })">
                                         <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
                                     </button>
-                                    <button class="btn btn-icon"
-                                            type="button"
-                                            title="{{ctrlDomainRedirect.constructor.getDomain(redirection)}} {{i18n.table_delete_entry}}"
+                                    <button class="btn btn-icon" type="button" title="{{ctrlDomainRedirect.constructor.getDomain(redirection)}} {{i18n.table_delete_entry}}"
                                             data-ng-click="setAction('redirection/delete/domain-redirection-delete', { redirection: redirection, displayName: ctrlDomainRedirect.constructor.getDomain(redirection) })">
                                         <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
                                     </button>
