@@ -4,25 +4,21 @@
             <div class="alert alert-info" role="alert"
                  data-ng-if="!displayTabs.cron">
                 <div>
-                    <span data-i18n-static="hosting_change_offer_for_service"></span>
-                    <div class="mt-4">
-                        <button class="btn btn-info" type="button"
-                                data-i18n-static="hosting_dashboard_service_change_offer"
-                                data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)"></button>
-                    </div>
+                    <p class="mb-3" data-i18n-static="hosting_change_offer_for_service"></p>
+                    <button class="btn btn-info" type="button"
+                            data-i18n-static="hosting_dashboard_service_change_offer"
+                            data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)"></button>
                 </div>
             </div>
 
             <div class="alert alert-info" role="alert"
                  data-ng-if="displayTabs.cron && hosting.offer === 'START_10_M'">
                 <div>
-                    <span data-i18n-static="hosting_change_offer_for_service_start10m"></span>
-                    <div class="mt-4">
-                        <button class="btn btn-info" type="button"
-                                data-i18n-static="hosting_dashboard_service_change_offer"
-                                data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
-                        </button>
-                    </div>
+                    <p class="mb-3" data-i18n-static="hosting_change_offer_for_service_start10m"></p>
+                    <button class="btn btn-info" type="button"
+                            data-i18n-static="hosting_dashboard_service_change_offer"
+                            data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
+                    </button>
                 </div>
             </div>
 
@@ -156,8 +152,8 @@
 
         <div class="col-md-3 mt-5 mt-lg-0" data-ng-if="displayTabs.cron && hosting.offer !== 'START_10_M'">
             <button class="btn btn-block btn-default" type="button"
+                    data-i18n-static="hosting_tab_CRON_configuration_create_title_button"
                     data-ng-click="setAction('cron/add-or-edit/hosting-cron-add-or-edit',{})">
-                <span data-i18n-static="hosting_tab_CRON_configuration_create_title_button"></span>
             </button>
         </div>
     </div>

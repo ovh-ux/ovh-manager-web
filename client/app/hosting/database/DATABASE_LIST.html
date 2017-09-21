@@ -5,30 +5,26 @@
              data-ng-if="hosting.offer === 'START_10_M'">
             <div>
                 <p data-i18n-static="hosting_dashboard_service_change_offer_explanation"></p>
-                <ul>
+                <ul class="mb-3">
                     <li data-i18n-static="hosting_dashboard_service_change_offer_explanation_ftp"></li>
                     <li data-i18n-static="hosting_dashboard_service_change_offer_explanation_mail"></li>
                     <li data-i18n-static="hosting_dashboard_service_change_offer_explanation_db"></li>
                 </ul>
-                <div class="mt-4">
-                    <button class="btn btn-info" type="button"
-                            data-i18n-static="hosting_dashboard_service_change_offer_now"
-                            data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
-                    </button>
-                </div>
+                <button class="btn btn-info" type="button"
+                        data-i18n-static="hosting_dashboard_service_change_offer_now"
+                        data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
+                </button>
             </div>
         </div>
 
         <div class="alert alert-info" role="alert"
              data-ng-if="!displayTabs.databases">
             <div>
-                <p data-i18n-static="hosting_change_offer_for_service"></p>
-                <div class="mt-4">
-                    <button class="btn btn-info" type="button"
-                            data-i18n-static="hosting_dashboard_service_change_offer"
-                            data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)">
-                    </button>
-                </div>
+                <p class="mb-3" data-i18n-static="hosting_change_offer_for_service"></p>
+                <button class="btn btn-info" type="button"
+                        data-i18n-static="hosting_dashboard_service_change_offer"
+                        data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)">
+                </button>
             </div>
         </div>
 

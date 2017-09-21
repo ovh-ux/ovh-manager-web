@@ -158,7 +158,7 @@
                                                           aria-hidden="true"></span>
                                                 </span>
                                             </div>
-                                            <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
+                                            <button class="btn btn-default ml-auto mb-auto text-wrap" type="button"
                                                     data-i18n-static="hosting_global_php_version_edit"
                                                     data-ng-click="setAction('ovhconfig/hosting-ovhconfig', hosting)"
                                                     data-ng-if="!ovhConfig.taskPending">
@@ -179,38 +179,29 @@
                                                     <span class="fa fa-spinner fa-spin" aria-hidden="true"></span>
                                                 </span>
                                             </div>
-                                            <div class="ml-auto my-auto" style="position: relative"
+                                            <div class="ml-auto mb-auto" style="position: relative"
                                                  data-ng-if="ctrl.canOrderSSL() || ctrl.canRegenerateSSL() || ctrl.canDeleteSSL()">
-                                                <button type="button"
-                                                        class="btn btn-default dropdown-toggle"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false">
+                                                <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
+                                                        data-toggle="dropdown">
                                                     <span data-i18n-static="common_actions"></span>
-                                                    <span class="caret ml-2" aria-hidden="true"></span>
+                                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                                                 </button>
-                                                <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
+                                                <ul class="dropdown-menu dropdown-menu-right">
                                                     <li data-ng-if="ctrl.canOrderSSL()">
                                                         <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
-                                                        <button class="btn btn-link"
-                                                                type="button"
-                                                                name="orderSsl"
+                                                        <button class="btn btn-link" type="button" name="orderSsl"
                                                                 data-i18n-static="hosting_dashboard_service_order_ssl"
                                                                 data-ng-click="setAction('ssl/order/hosting-order-ssl')"></button>
                                                     </li>
                                                     <li data-ng-if="ctrl.canRegenerateSSL()">
                                                         <i class="fa fa-refresh" aria-hidden="true"></i>
-                                                        <button class="btn btn-link"
-                                                                type="button"
-                                                                name="regenerateSsl"
+                                                        <button class="btn btn-link" type="button" name="regenerateSsl"
                                                                 data-i18n-static="hosting_ssl_regenerate_title_button"
                                                                 data-ng-click="setAction('ssl/regenerate/hosting-ssl-regenerate')"></button>
                                                     </li>
                                                     <li data-ng-if="ctrl.canDeleteSSL()">
                                                         <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                                        <button class="btn btn-link"
-                                                                type="button"
-                                                                name="deleteSsl"
+                                                        <button class="btn btn-link" type="button" name="deleteSsl"
                                                                 data-i18n-static="hosting_dashboard_service_order_ssl_delete"
                                                                 data-ng-click="setAction('ssl/delete/hosting-ssl-delete', ssl)"></button>
                                                     </li>
@@ -233,12 +224,12 @@
                                                       data-i18n-static="hosting_dashboard_service_flush_cdn_doing"
                                                       data-ng-if="flushCdnState === 'doing'"></span>
                                             </div>
-                                            <div class="ml-auto my-auto" style="position: relative"
+                                            <div class="ml-auto mb-auto" style="position: relative"
                                                  data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M' || hosting.hasCdn && flushCdnState === 'ok' || hosting.hasCdn">
-                                                <button class="btn btn-default dropdown-toggle" type="button" aria-haspopup="true" aria-expanded="false"
+                                                <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
                                                         data-toggle="dropdown">
                                                     <span data-i18n-static="common_actions"></span>
-                                                    <span class="caret ml-2" aria-hidden="true"></span>
+                                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
                                                     <li data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M'">
@@ -284,16 +275,13 @@
                                                          data-pbec-max-elements="hosting.sqlPriveInfo.nbDataBaseInclude"
                                                          data-pbec-upper-limit="cloudWebUnlimitedQuantity"></div>
                                                 </div>
-                                                <button class="btn btn-default mt-3" type="button"
-                                                        title="{{::i18n.hosting_dashboard_service_privatesql_more}}"
+                                                <button class="oui-button oui-button_dropdown mb-0 mt-3" type="button" title="{{::i18n.hosting_dashboard_service_privatesql_more}}"
                                                         data-ng-click="displayMore.value = !displayMore.value"
                                                         data-ng-if="privateDatabasesLinked && privateDatabasesLinked.length">
                                                     <span class="mr-3"
                                                           data-i18n-static="hosting_dashboard_service_privatesql_more"></span>
-                                                    <span class="fa fa-chevron-right" aria-hidden="true"
-                                                          data-ng-if="!displayMore.value"></span>
-                                                    <span class="fa fa-chevron-down" aria-hidden="true"
-                                                          data-ng-if="displayMore.value"></span>
+                                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"
+                                                          data-ng-class="{'oui-icon-chevron-down': !displayMore.value, 'oui-icon-chevron-up': displayMore.value}"></span>
                                                 </button>
                                                 <ul class="list-unstyled mt-2" data-ng-if="displayMore.value">
                                                     <li data-ng-repeat="privateDb in privateDatabasesLinked track by $index"
@@ -308,11 +296,11 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div class="my-auto ml-auto" style="position: relative;">
-                                                <button type="button" class="btn btn-default dropdown-toggle"
-                                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <div class="mb-auto ml-auto" style="position: relative;">
+                                                <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
+                                                        data-toggle="dropdown">
                                                     <span data-i18n-static="common_actions"></span>
-                                                    <span class="caret ml-2" aria-hidden="true"></span>
+                                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
                                                     <li data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0 && hosting.sqlPriveInfo.nbDataBaseActive < hosting.sqlPriveInfo.nbDataBaseInclude">

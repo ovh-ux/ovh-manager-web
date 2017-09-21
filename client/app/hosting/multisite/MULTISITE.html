@@ -133,11 +133,11 @@
                  data-pagination-server-side-table-loading="loading.domains">
             </div>
 
-            <div class="my-4" data-ng-if="!loading.init">
-                <button class="btn btn-default"
+            <div class="my-5" data-ng-if="!loading.init">
+                <button class="oui-button oui-button_dropdown mb-0"
                         data-ng-click="showOvhControl = !showOvhControl">
                     <span data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol"></span>
-                    <span class="fa ml-4" aria-hidden="true" data-ng-class="{'fa-chevron-down': !showOvhControl, 'fa-chevron-up': showOvhControl}"></span>
+                    <span class="oui-icon" aria-hidden="true" data-ng-class="{'oui-icon-chevron-down': !showOvhControl, 'oui-icon-chevron-up': showOvhControl}"></span>
                 </button>
                 <div class="animated fadeIn mt-4" data-ng-show="showOvhControl">
                     <p data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol_info"></p>

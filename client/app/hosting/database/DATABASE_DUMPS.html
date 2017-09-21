@@ -1,12 +1,10 @@
 <div class="row" data-ng-controller="DatabaseDumpsCtrl as ctrlDumps">
     <div class="col-md-12">
-        <div class="mb-3">
-            <button class="btn btn-default" type="button"
-                    data-ng-click="goToList()">
-                <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-                <span data-i18n-static="common_back"></span>
-            </button>
-        </div>
+        <button class="oui-button oui-button_secondary oui-button_icon-left" type="button"
+                data-ng-click="goToList()">
+            <span class="oui-icon oui-icon_circle oui-icon-chevron-left" aria-hidden="true"></span>
+            <span data-i18n-static="common_back"></span>
+        </button>
 
         <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="ctrlDumps.dumpsLoading"></div>
 

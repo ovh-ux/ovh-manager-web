@@ -2,11 +2,13 @@
 
     <div class="alert alert-info" role="alert"
          data-ng-if="hosting && ctrlMailingLists.quotas.mailingList <= 0">
-        <p class="mb-3" data-i18n-static="mailing_list_tab_table_no_quota"></p>
-        <button class="btn btn-info" type="button"
-                data-i18n-static="hosting_dashboard_service_change_offer"
-                data-ng-click="setAction('hosting/offer/upgrade/hosting-offer-upgrade', hosting)">
-        </button>
+        <div>
+            <p class="mb-3" data-i18n-static="mailing_list_tab_table_no_quota"></p>
+            <button class="btn btn-info" type="button"
+                    data-i18n-static="hosting_dashboard_service_change_offer"
+                    data-ng-click="setAction('hosting/offer/upgrade/hosting-offer-upgrade', hosting)">
+            </button>
+        </div>
     </div>
 
     <div class="alert alert-warning" role="alert"

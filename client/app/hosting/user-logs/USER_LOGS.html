@@ -58,7 +58,7 @@
                                 <th scope="col" data-i18n-static="hosting_tab_USER_LOGS_table_header_description"></th>
                                 <th scope="col" data-i18n-static="hosting_tab_USER_LOGS_table_header_creationDate"></th>
                                 <th class="min-width text-right" scope="col">
-                                    <button class="btn btn-icon" title="{{::i18n.emails_tab_table_header_refresh}}"
+                                    <button class="btn btn-icon" type="button" title="{{::i18n.emails_tab_table_header_refresh}}"
                                             data-ng-click="refreshTableUserLogs()">
                                         <span class="fa fa-refresh" aria-hidden="true"></span>
                                     </button>
@@ -81,7 +81,7 @@
                                     data-ng-bind="userLogsEntry.description"></td>
                                 <td data-ng-bind="userLogsEntry.creationDate | date:'medium'"></td>
                                 <td class="text-center">
-                                    <button class="btn btn-icon"
+                                    <button class="btn btn-icon" type="button"
                                             data-linkedpopover="hosting/popover/user_logs.html"
                                             data-linkedpopover-placement="left"
                                             data-linkedpopover-single="true"

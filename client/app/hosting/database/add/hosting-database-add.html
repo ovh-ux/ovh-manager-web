@@ -54,7 +54,7 @@
                 <ul class="list-unstyled mt-2" data-ng-if="hosting.sqlPriveInfo.nbDataBaseActive >= hosting.sqlPriveInfo.nbDataBaseInclude">
                     <!-- MUTU PERSO -->
                     <li data-ng-if="isPerso()">
-                        <button class="btn btn-link text-left p-0" type="button" style="white-space: normal"
+                        <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-i18n-static="hosting_tab_DATABASES_configuration_create_upgrade_perso"
                                 data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)">
                         </button>
@@ -62,7 +62,7 @@
 
                     <!-- MUTU PRO -->
                     <li data-ng-if="isPro()">
-                        <button class="btn btn-link text-left p-0" type="button" style="white-space: normal"
+                        <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-i18n-static="hosting_tab_DATABASES_configuration_create_upgrade_pro"
                                 data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)">
                         </button>
@@ -70,7 +70,7 @@
 
                     <!-- OTHER MUTU -->
                     <li data-ng-if="!isPerf() && !isStart()">
-                        <button class="btn btn-link text-left p-0" type="button" style="white-space: normal"
+                        <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-i18n-static="hosting_tab_DATABASES_configuration_create_order_db"
                                 data-ng-click="setAction('database/order/hosting-database-order')">
                         </button>
@@ -78,7 +78,7 @@
 
                     <!-- ALL WITHOUT PERF -->
                     <li data-ng-if="!isPerf()">
-                        <button class="btn btn-link text-left p-0" type="button" style="white-space: normal"
+                        <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-i18n-static="hosting_tab_DATABASES_configuration_create_order_db_server"
                                 data-ng-click="buyPrivateDb() && !isStart()">
                         </button>
@@ -94,7 +94,7 @@
                     </li>
 
                     <li data-ng-if="isStart()">
-                        <button class="btn btn-link text-left p-0" type="button" style="white-space: normal"
+                        <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-i18n-static="hosting_tab_DATABASES_configuration_create_upgrade_start"
                                 data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)">
                         </button>

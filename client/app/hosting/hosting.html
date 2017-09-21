@@ -60,9 +60,10 @@
         </div>
         <div class="col-sm-3 d-flex">
             <div class="btn-group ml-auto mt-4">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="oui-button oui-button_dropdown mb-0" aria-haspopup="true" aria-expanded="false"
+                    data-toggle="dropdown">
                     <span data-i18n-static="common_actions"></span>
-                    <span class="caret ml-2" aria-hidden="true"></span>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
                     <li data-ng-if="urlDomainOrder">
@@ -90,13 +91,13 @@
 
         <div class="alert alert-info" role="alert"
              data-ng-if="hosting.offer === 'KIMSUFI_2015'">
-            <button class="close" type="button" data-dismiss="alert">&times;</button>
+            <button class="close" type="button" data-dismiss="alert"></button>
             <span data-i18n-static="hosting_dashboard_service_offer_KIMSUFI_2015_support"></span>
         </div>
 
         <div class="alert alert-info" role="alert"
              data-ng-if="hostingProxy.recommendedOffer">
-            <button class="close" type="button" data-dismiss="alert">&times;</button>
+            <button class="close" type="button" data-dismiss="alert"></button>
             <span data-ng-bind-html="tr('hosting_dashboard_service_offer_recommanded', [hostingProxy.recommendedOffer])"></span>
             <span data-ng-bind-html="tr('hosting_dashboard_service_offer_recommanded_actions', [urls.hosting, '_blank'])"
                   data-ng-if="urls.hosting"></span>
