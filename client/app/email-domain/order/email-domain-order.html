@@ -92,10 +92,10 @@
                 </div>
                 <div class="my-5 text-center">
                     <button class="btn btn-primary btn-lg" type="button"
+                            data-i18n-static="mxPlan_order_step3_generate"
                             data-ng-click="ctrlMXPlanOrder.generateBc()"
                             data-ng-disabled="ctrlMXPlanOrder.selectedOrder.offer.contracts.length !== 0 && !ctrlMXPlanOrder.selectedOrder.contractsValidated"
                             data-ng-if="!ctrlMXPlanOrder.loading.bc">
-                        <span data-i18n-static="mxPlan_order_step3_generate"></span>
                     </button>
                 </div>
             </div>
@@ -108,8 +108,8 @@
                 </p>
                 <div class="my-5 text-center">
                     <button class="btn btn-primary btn-lg" type="button"
+                            data-i18n-static="mxPlan_order_step3_pay_button"
                             data-ng-click="ctrlMXPlanOrder.openBc()">
-                        <span data-i18n-static="mxPlan_order_step3_pay_button"></span>
                     </button>
                 </div>
             </div>

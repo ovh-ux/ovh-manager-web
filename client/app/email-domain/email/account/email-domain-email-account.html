@@ -20,9 +20,7 @@
                                data-ng-model="ctrlEmailDomainEmail.search.accounts"
                                data-ng-model-options="{ debounce: 800 }">
                         <div class="input-group-btn" data-ng-if="ctrlEmailDomainEmail.search.accounts != null">
-                            <button class="btn btn-default"
-                                    type="button"
-                                    aria-label="{{i18n.common_cancel}}"
+                            <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
                                     data-ng-click="ctrlEmailDomainEmail.emptySearch()"
                                     data-ng-disabled="ctrlEmailDomainEmail.loading.accounts">
                                 <span class="fa fa-times" aria-hidden="true"></span>
@@ -46,9 +44,7 @@
                             <th scope="col" class="text-center" data-i18n-static="email_tab_table_header_account_bloqued"></th>
                             <th scope="col" class="min-width text-center" data-i18n-static="email_tab_table_header_filters"></th>
                             <th scope="col" class="min-width text-right">
-                                <button class="btn btn-icon"
-                                        type="button"
-                                        title="{{::i18n.email_tab_table_header_refresh}}"
+                                <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_header_refresh}}"
                                         data-ng-click="ctrlEmailDomainEmail.refreshTableAccounts(true)">
                                     <span class="fa fa-refresh" aria-hidden="true"></span>
                                 </button>
@@ -94,8 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-2 p-0 text-center">
-                                    <button class="btn btn-icon"
-                                            type="button"
+                                    <button class="btn btn-icon" type="button"
                                             data-ng-click="setAction('email-domain/email/account/usage/email-domain-email-account-usage', email)">
                                         <span class="fa fa-refresh" aria-hidden="true"></span>
                                     </button>
@@ -103,9 +98,7 @@
                             </td>
                             <td class="text-center" data-ng-bind="email.date | date:'mediumDate'"></td>
                             <td class="text-center">
-                                <button class="btn btn-danger btn-xs"
-                                        type="button"
-                                        title="{{::i18n.email_tab_table_emails_unlock}}"
+                                <button class="btn btn-danger btn-xs" type="button" title="{{::i18n.email_tab_table_emails_unlock}}"
                                         data-i18n-static="email_tab_table_emails_block_true"
                                         data-ng-click="setAction('email-domain/email/account/unlock/email-domain-email-account-unlock', email)"
                                         data-ng-if="email.isBlocked">
@@ -115,16 +108,13 @@
                                       data-ng-if="!email.isBlocked"></span>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-icon"
-                                        type="button"
-                                        title="{{::i18n.email_tab_filters_management_heading}}"
+                                <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_filters_management_heading}}"
                                         data-ng-click="ctrlEmailDomainEmail.selectSubView('filtersView', email)">
                                     <span class="fa fa-filter" aria-hidden="true"></span>
                                 </button>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-icon"
-                                        type="button"
+                                <button class="btn btn-icon" type="button"
                                         data-linkedpopover="email-domain/email-domain.popover.html"
                                         data-linkedpopover-placement="left"
                                         data-linkedpopover-remote="true"
@@ -158,51 +148,43 @@
 
     <div class="col-md-3 mt-5 mt-lg-0">
         <div class="mb-5">
-            <button class="btn btn-block btn-default text-wrap"
-                    type="button"
-                    title="{{i18n.email_tab_acl}}"
+            <button class="btn btn-block btn-default text-wrap" type="button" title="{{i18n.email_tab_acl}}"
                     data-i18n-static="email_tab_acl_manage"
                     data-ng-click="ctrlEmailDomainEmail.selectSubView('aclsView')"
                     data-ng-if="ctrlEmailDomainEmail.delegationsIsAvailable"></button>
-            <button class="btn btn-block btn-default text-wrap"
-                    type="button"
+            <button class="btn btn-block btn-default text-wrap" type="button"
                     data-ng-click="setAction('email-domain/email/account/create/email-domain-email-account-create')"
                     data-ng-disabled="!ctrlEmailDomainEmail.canAddAccount()"
                     data-ng-if="ctrlEmailDomainEmail.quotas.account > 0">
                 <span data-uib-tooltip="{{::i18n.email_tab_table_emails_quota_excedeed}}"
                       data-tooltip-append-to-body="true"
                       data-ng-if="!ctrlEmailDomainEmail.canAddAccount()">
-                    <span class="icon-new-message" aria-hidden="true"></span>
                     <span data-i18n-static="email_tab_button_emails_create_account"></span>
                 </span>
-                <span data-ng-if="ctrlEmailDomainEmail.canAddAccount()">
-                    <span class="icon-new-message" aria-hidden="true"></span>
-                    <span data-i18n-static="email_tab_button_emails_create_account"></span>
+                <span data-i18n-static="email_tab_button_emails_create_account"
+                      data-ng-if="ctrlEmailDomainEmail.canAddAccount()">
                 </span>
             </button>
-            <button class="btn btn-block btn-default text-wrap"
-                    type="button"
+            <button class="btn btn-block btn-default text-wrap" type="button"
+                    data-i18n-static="email_tab_redirections_management_title"
                     data-ng-click="ctrlEmailDomainEmail.selectSubView('redirectionsView')"
                     data-ng-if="ctrlEmailDomainEmail.summary.redirection < ctrlEmailDomainEmail.quotas.redirection + ctrlEmailDomainEmail.quotas.alias">
-                <span class="icon-migrate" aria-hidden="true"></span>
-                <span data-i18n-static="email_tab_redirections_management_title"></span>
             </button>
-            <button class="btn btn-block btn-default text-wrap"
-                    type="button"
+            <button class="btn btn-block btn-default text-wrap" type="button"
+                    data-i18n-static="email_tab_responders_management_heading"
                     data-ng-click="ctrlEmailDomainEmail.selectSubView('respondersView')"
                     data-ng-if="ctrlEmailDomainEmail.quotas.account > 0">
-                <span data-i18n-static="email_tab_responders_management_heading"></span>
             </button>
-            <button class="btn btn-block btn-default text-wrap"
-                    type="button"
+            <button class="btn btn-block btn-default text-wrap" type="button"
                     data-i18n-static="email_tab_access_webmail"
                     data-ng-click="ctrlEmailDomainEmail.openWebMailTab()"
-                    data-ng-if="ctrlEmailDomainEmail.quotas.account > 0"></button>
-            <button class="btn btn-block btn-default text-wrap"
-                    type="button"
+                    data-ng-if="ctrlEmailDomainEmail.quotas.account > 0">
+            </button>
+            <button class="btn btn-block btn-default text-wrap" type="button"
                     data-i18n-static="email_tab_export_accounts_csv_title"
                     data-ng-click="setAction('email-domain/email/account/export-csv/email-domain-email-account-export-csv')"
-                    data-ng-disabled="ctrlEmailDomainEmail.emails.length === 0"></button>
+                    data-ng-disabled="ctrlEmailDomainEmail.emails.length === 0">
+            </button>
         </div>
 
         <div class="mb-5"

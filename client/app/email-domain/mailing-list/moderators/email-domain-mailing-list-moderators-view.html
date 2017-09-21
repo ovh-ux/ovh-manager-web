@@ -1,20 +1,19 @@
 <div class="container-fluid px-0" data-ng-controller="MailingListsModeratorsCtrl as ctrlModerators">
     <div class="row">
         <div class="col-md-9">
-            <div class="d-flex mb-3">
-                <button class="btn btn-default my-auto" type="button"
-                        data-ng-click="ctrlTabView.setCurrentView('mailingListsView')">
-                    <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-                    <span data-i18n-static="mailing_list_common_back"></span>
-                </button>
-                <h2 class="d-inline-block ml-3 mb-0">
-                    <span data-ng-bind-html="trpl('mailing_list_tab_moderators_management_title', ctrlModerators.moderators.ids.length, [
-                        ctrlModerators.mailingList.name,
-                        !ctrlModerators.loading.moderators ? ctrlModerators.moderators.ids.length : ''])"></span>
-                    <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                          data-ng-if="ctrlModerators.loading.moderators"></span>
-                </h2>
-            </div>
+            <button class="oui-button oui-button_secondary oui-button_icon-left" type="button"
+                    data-ng-click="ctrlTabView.setCurrentView('mailingListsView')">
+                <span class="oui-icon oui-icon_circle oui-icon-chevron-left" aria-hidden="true"></span>
+                <span data-i18n-static="common_back"></span>
+            </button>
+            <h2>
+                <span data-ng-bind-html="trpl('mailing_list_tab_moderators_management_title', ctrlModerators.moderators.ids.length, [
+                    ctrlModerators.mailingList.name,
+                    !ctrlModerators.loading.moderators ? ctrlModerators.moderators.ids.length : ''
+                ])"></span>
+                <span class="fa fa-spinner fa-spin" aria-hidden="true"
+                      data-ng-if="ctrlModerators.loading.moderators"></span>
+            </h2>
 
             <div class="mb-3 mt-5">
                 <form class="form-inline d-md-flex justify-content-md-end" name="searchModeratorsForm">

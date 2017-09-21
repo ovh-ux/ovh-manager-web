@@ -84,11 +84,10 @@
                             </button>
                         </td>
                         <td class="text-center">
-                            <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_emails_unlock}}"
+                            <button class="btn btn-danger btn-xs" type="button" title="{{::i18n.email_tab_table_emails_unlock}}"
+                                    data-i18n-static="email_tab_table_emails_block_true"
                                     data-ng-click="setAction('email-domain/email/account/unlock/email-domain-email-account-unlock', email)"
                                     data-ng-if="email.isBlocked">
-                                <span class="label label-danger"
-                                      data-i18n-static="email_tab_table_emails_block_true"></span>
                             </button>
                             <span class="label label-success"
                                   data-i18n-static="email_tab_table_emails_block_false"
@@ -135,14 +134,14 @@
 
     <div class="col-md-3 mt-5 mt-lg-0">
         <button class="btn btn-block btn-default" type="button"
+                data-i18n-static="email_tab_responders_management_heading"
                 data-ng-click="ctrlEmailDelegate.selectSubView('respondersView', ctrlEmailDelegate.emails)"
                 data-ng-disabled="ctrlEmailDelegate.loading.search">
-            <span data-i18n-static="email_tab_responders_management_heading"></span>
         </button>
         <button class="btn btn-block btn-default" type="button"
+                data-i18n-static="email_tab_export_accounts_csv_title"
                 data-ng-click="setAction('email-domain/email/account/export-csv/email-domain-email-account-export-csv', {delegate: true})"
                 data-ng-disabled="ctrlEmailDelegate.loading.search">
-            <span data-i18n-static="email_tab_export_accounts_csv_title"></span>
         </button>
     </div>
 </div>

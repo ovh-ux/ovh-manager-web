@@ -7,9 +7,9 @@
          data-wizard-title="i18n.email_tab_popover_delegate_title">
 
         <div data-wizard-step>
-            
+
             <p data-ng-bind-html="tr('email_tab_popover_delegate_info', [currentActionData.accountName])"></p>
-            
+
             <p class="mb-5" data-ng-if="ctrl.createNicUrl">
                 <a data-ng-href="{{ctrl.createNicUrl}}" class="btn btn-block btn-default" target="_blank" title="{{::i18n.emails_create_account_new_window}}"
                    data-i18n-static="emails_create_account"></a>
@@ -34,8 +34,8 @@
                     <tr data-ng-if="!ctrl.addDelegateShown">
                         <td class="text-center">
                             <button class="btn btn-link" type="button"
-                                    data-ng-click="ctrl.addDelegateShown = true"
-                                    data-i18n-static="email_tab_popover_delegate_tab_content_add"></button>
+                                    data-i18n-static="email_tab_popover_delegate_tab_content_add"
+                                    data-ng-click="ctrl.addDelegateShown = true"></button>
                         </td>
                         <td class="text-center">
                             <button class="btn btn-icon" type="button"

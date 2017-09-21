@@ -1,19 +1,16 @@
 <div class="container-fluid px-0" data-ng-controller="MailingListsSubscribersCtrl as ctrlSubscribers">
     <div class="row">
         <div class="col-md-9">
-            <div class="d-flex mb-3">
-                <button class="btn btn-default my-auto" type="button"
-                        data-ng-click="ctrlTabView.setCurrentView('mailingListsView')">
-                    <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-                    <span data-i18n-static="mailing_list_common_back"></span>
-                </button>
-                <h2 class="d-inline-block ml-3 mb-0"
-                    data-ng-bind-html="trpl('mailing_list_tab_subscribers_management_title', ctrlSubscribers.subscribers.ids.length, [
-                        ctrlSubscribers.mailingList.name,
-                        ctrlSubscribers.subscribers.ids.length,
-                        ctrlSubscribers.mailingList.limits.subscribers
-                    ])"></h2>
-            </div>
+            <button class="oui-button oui-button_secondary oui-button_icon-left" type="button"
+                    data-ng-click="ctrlTabView.setCurrentView('mailingListsView')">
+                <span class="oui-icon oui-icon_circle oui-icon-chevron-left" aria-hidden="true"></span>
+                <span data-i18n-static="common_back"></span>
+            </button>
+            <h2 data-ng-bind-html="trpl('mailing_list_tab_subscribers_management_title', ctrlSubscribers.subscribers.ids.length, [
+                ctrlSubscribers.mailingList.name,
+                ctrlSubscribers.subscribers.ids.length,
+                ctrlSubscribers.mailingList.limits.subscribers
+            ])"></h2>
 
             <div class="mb-3 mt-5">
                 <form class="form-inline d-md-flex justify-content-md-end" name="searchSubscribersForm">

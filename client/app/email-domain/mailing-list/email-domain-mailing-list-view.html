@@ -1,11 +1,11 @@
 <div class="container-fluid px-0" data-ng-controller="MailingListsTabModulesCtrl as ctrlMailingLists">
 
-    <div class="text-center" data-ng-if="hosting && ctrlMailingLists.quotas.mailingList <= 0">
-        <span data-i18n-static="mailing_list_tab_table_no_quota"></span>
-        <button class="btn btn-link" type="button"
+    <div class="alert alert-info" role="alert"
+         data-ng-if="hosting && ctrlMailingLists.quotas.mailingList <= 0">
+        <p class="mb-3" data-i18n-static="mailing_list_tab_table_no_quota"></p>
+        <button class="btn btn-info" type="button"
+                data-i18n-static="hosting_dashboard_service_change_offer"
                 data-ng-click="setAction('hosting/offer/upgrade/hosting-offer-upgrade', hosting)">
-            <span class="fa fa-shopping-cart" aria-hidden="true"></span>
-            <span data-i18n-static="hosting_dashboard_service_change_offer"></span>
         </button>
     </div>
 
@@ -146,7 +146,7 @@
 
         <div class="col-md-3 mt-5 mt-lg-0">
             <div class="mb-5" data-ng-if="!ctrlMailingLists.loading.mailingLists && ctrlMailingLists.mailingLists.length < ctrlMailingLists.quotas.mailingList">
-                <button type="button" class="btn btn-block btn-default"
+                <button class="btn btn-block btn-default" type="button"
                         data-i18n-static="mailing_list_tab_button_mailing_list_create_list"
                         data-ng-click="setAction('email-domain/mailing-list/create/email-domain-mailing-list-create', ctrlMailingLists.mailingLists)">
                 </button>

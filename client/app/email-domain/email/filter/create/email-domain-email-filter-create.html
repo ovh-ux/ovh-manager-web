@@ -93,16 +93,10 @@
                                             data-i18n-static="email_tab_modal_filter_create_header"></option>
                                 </select>
                                 <div class="input-group w-100" data-ng-if="rule.headerSelect === 'other'">
-                                    <input type="text"
-                                           class="form-control"
-                                           id="filter-create-header-{{$index}}"
-                                           placeholder="{{::i18n.email_tab_modal_filter_create_header}}"
-                                           required
-                                           maxlength="50"
+                                    <input type="text" class="form-control" id="filter-create-header-{{$index}}" maxlength="50" placeholder="{{::i18n.email_tab_modal_filter_create_header}}" required
                                            data-ng-model="rule.header">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-danger"
-                                                type="button"
+                                        <button class="btn btn-danger" type="button"
                                                 data-ng-click="rule.headerSelect = ''">
                                             <span class="fa fa-times" aria-hidden="true"></span>
                                         </button>
@@ -137,12 +131,11 @@
                             </div>
 
                             <div class="form-group col-md-1 mt-2 px-0 text-nowrap">
-                                <button class="btn btn-icon"
-                                        type="button"
+                                <button class="btn btn-icon" type="button"
                                         data-ng-click="ctrl.addRule(rule)">
                                     <span class="fa fa-plus" aria-hidden="true"></span>
                                 </button>
-                                <button class="btn btn-icon"
+                                <button class="btn btn-icon" type="button"
                                         data-ng-click="ctrl.removeRule(rule)"
                                         data-ng-if="ctrl.model.rules.length > 1">
                                     <span class="fa fa-minus" aria-hidden="true"></span>

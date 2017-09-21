@@ -1,15 +1,12 @@
 <div data-ng-controller="EmailDomainEmailAclCtrl as ctrlEmailDomainEmailAcl">
     <div class="row">
         <div class="col-md-9">
-            <div class="d-flex mb-3">
-                <button class="btn btn-default my-auto" type="button"
-                        data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
-                    <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-                    <span data-i18n-static="email_tab_button_emails_filters_back"></span>
-                </button>
-                <h2 class="d-inline-block ml-3 mb-0"
-                    data-i18n-static="email_tab_acl_heading"></h2>
-            </div>
+            <button class="oui-button oui-button_secondary oui-button_icon-left" type="button"
+                    data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
+                <span class="oui-icon oui-icon_circle oui-icon-chevron-left" aria-hidden="true"></span>
+                <span data-i18n-static="common_back"></span>
+            </button>
+            <h2 data-i18n-static="email_tab_acl_heading"></h2>
 
             <p data-i18n-static="email_tab_acl_info"></p>
 

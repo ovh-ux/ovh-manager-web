@@ -1,17 +1,14 @@
 <div class="row" data-ng-controller="EmailDomainEmailFilterCtrl as ctrlEmailDomainEmailFilter">
     <div class="col-md-9">
-        <div class="d-flex mb-3">
-            <button class="btn btn-default my-auto"
-                    type="button"
-                    data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
-                <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-                <span data-i18n-static="email_tab_button_emails_filters_back"></span>
-            </button>
-            <h2 class="d-inline ml-4 mb-0">
-                <span data-i18n-static="email_tab_filters_management_heading"></span>
-                <strong data-ng-bind="ctrlEmailDomainEmailFilter.currentAccount.accountName"></strong>
-            </h2>
-        </div>
+        <button class="oui-button oui-button_secondary oui-button_icon-left" type="button"
+                data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
+            <span class="oui-icon oui-icon_circle oui-icon-chevron-left" aria-hidden="true"></span>
+            <span data-i18n-static="common_back"></span>
+        </button>
+        <h2>
+            <span data-i18n-static="email_tab_filters_management_heading"></span>
+            <strong data-ng-bind="ctrlEmailDomainEmailFilter.currentAccount.accountName"></strong>
+        </h2>
 
         <div class="loader text-center" data-ng-if="ctrlEmailDomainEmailFilter.loading.filters"></div>
 
@@ -29,9 +26,7 @@
                         <th scope="col" class="text-center" data-i18n-static="email_tab_table_header_filter_priority"></th>
                         <th scope="col" class="text-center" data-i18n-static="emails_common_status"></th>
                         <th scope="col" class="min-width text-right">
-                            <button class="btn btn-icon"
-                                    type="button"
-                                    title="{{::i18n.email_tab_table_header_refresh}}"
+                            <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_header_refresh}}"
                                     data-ng-click="ctrlEmailDomainEmailFilter.refreshTableFilters()">
                                 <span class="fa fa-refresh" aria-hidden="true"></span>
                             </button>
@@ -50,8 +45,7 @@
                                   data-ng-bind="tr('email_tab_filters_status_' + filter.active)"></span>
                         </td>
                         <td class="text-center">
-                            <button class="btn btn-icon"
-                                    type="button"
+                            <button class="btn btn-icon" type="button"
                                     data-linkedpopover="email-domain/email/filter/email-domain-email-filter.popover.html"
                                     data-linkedpopover-placement="left"
                                     data-linkedpopover-remote="true"
@@ -82,14 +76,13 @@
 
     <div class="col-md-3 mt-5 mt-lg-0">
         <div class="mb-5">
-            <button class="btn btn-block btn-default"
-                    type="button"
+            <button class="btn btn-block btn-default" type="button"
+                    data-i18n-static="email_tab_button_emails_create_filter"
                     data-ng-click="setAction('email-domain/email/filter/create/email-domain-email-filter-create', {
                         account: ctrlEmailDomainEmailFilter.currentAccount,
                         accounts: ctrlEmailDomainEmail.emails,
                         filterNames: ctrlEmailDomainEmailFilter.filters
                     })">
-                <span data-i18n-static="email_tab_button_emails_create_filter"></span>
             </button>
         </div>
         <div class="mb-5"
