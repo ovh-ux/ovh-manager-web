@@ -570,7 +570,6 @@ module.exports = function (grunt) {
                             "ovh-angular-otrs",
                             "ovh-api-services",
                             "ovh-angular-toaster",
-                            "ovh-common-style",
                             "ngCkeditor",
                             "moment-picker",
                             "oui"
@@ -692,7 +691,6 @@ module.exports = function (grunt) {
                             "ovh-angular-otrs",
                             "ovh-api-services",
                             "ovh-angular-toaster",
-                            "ovh-common-style",
                             "ngCkeditor",
                             "moment-picker",
                             "oui"
