@@ -1045,5 +1045,70 @@ angular.module("services").service(
                 broadcast: "hosting.tabs.delegate.responders.refresh"
             });
         }
+
+        /**
+         * Obtain a list of available services
+         * @param {string} domain
+         * @param {string} accountName
+         * @param {string} type
+         */
+        getDestinationServices (domain, accountName, type) {
+            return this.OvhHttp.get(`/email/domain/${domain}/account/${accountName}/migrate`, {
+                rootPath: "apiv6",
+                params: { type }
+            });
+        }
+
+        /**
+         * Get migration service details
+         * @param {string} domain
+         * @param {string} accountName
+         * @param {string} destinationServiceName
+         */
+        getDestinationService (domain, accountName, destinationServiceName) {
+            return this.OvhHttp.get(`/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}`, {
+                rootPath: "apiv6"
+            });
+        }
+
+        /**
+         * Obtain a list of email address available for migration
+         * @param {string} domain
+         * @param {string} accountName
+         * @param {string} destinationServiceName
+         */
+        getDestinationEmailAddresses (domain, accountName, destinationServiceName) {
+            return this.OvhHttp.get(`/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress`, {
+                rootPath: "apiv6"
+            });
+        }
+
+        /**
+         * Check if it's possible to migrate
+         * @param {string} domain
+         * @param {string} accountName
+         * @param {string} destinationServiceName
+         * @param {string} destinationEmailAddress
+         */
+        checkMigrate (domain, accountName, destinationServiceName, destinationEmailAddress) {
+            return this.OvhHttp.get(`/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress/${destinationEmailAddress}/checkMigrate`, {
+                rootPath: "apiv6"
+            });
+        }
+
+        /**
+         * Check if it's possible to migrate
+         * @param {string} domain
+         * @param {string} accountName
+         * @param {string} destinationServiceName
+         * @param {string} destinationEmailAddress
+         * @param {password} password
+         */
+        migrateAccountToDestinationAccount (domain, accountName, destinationServiceName, destinationEmailAddress, password) {
+            return this.OvhHttp.post(`/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress/${destinationEmailAddress}/migrate`, {
+                rootPath: "apiv6",
+                data: { password }
+            });
+        }
     }
 );
