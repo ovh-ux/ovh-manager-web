@@ -24,6 +24,8 @@ angular.module("App").controller(
             this.currentGuides = [];
             this.currentTypeOfGuide = null;
 
+            this.$scope.onBannerClick = () => this.onBannerClick();
+
             this.unSelectProduct();
             this.selectTypeOfGuide("domainHosting");
         }

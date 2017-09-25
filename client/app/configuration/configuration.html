@@ -38,7 +38,7 @@
                    target="_blank"
                    data-ng-attr-title="{{ user.ovhSubsidiary === 'FR' ? 'OVH Summit 2017: Je participe !' : 'OVH Summit 2017: Register for free' }}"
                    rel="noopener"
-                   data-ng-click="onBannerClick">
+                   data-ng-click="onBannerClick()">
                     <img class="img-responsive"
                          data-ng-src="{{ 'assets/images/summit/2017-banner-' + (user.ovhSubsidiary === 'FR' ? 'fr' : 'en') + '.png' }}"
                          alt="OVH Summit 2017" />
