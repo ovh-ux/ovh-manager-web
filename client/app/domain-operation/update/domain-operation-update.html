@@ -28,15 +28,17 @@
                                            data-ng-bind="arg.keyTranslation || arg.description">
                                     </label>
                                     <div class="col-md-7">
-                                        <input type="text" class="form-control" name="arg-{{$index}}" id="arg-{{$index}}"
+                                        <input type="text" class="oui-input" name="arg-{{$index}}" id="arg-{{$index}}"
                                                data-ng-if="!arg.acceptedValues"
                                                data-ng-model="arg.value"
                                                data-ng-required>
-                                        <select class="form-control" name="arg-{{$index}}" id="arg-{{$index}}"
-                                                data-ng-if="arg.acceptedValues && arg.acceptedValues.length > 1"
-                                                data-ng-model="arg.value"
-                                                data-ng-options="operation for operation in arg.acceptedValues track by operation">
-                                        </select>
+                                        <div class="oui-select mb-0" data-ng-if="arg.acceptedValues && arg.acceptedValues.length > 1">
+                                            <select class="oui-select__input" name="arg-{{$index}}" id="arg-{{$index}}"
+                                                    data-ng-model="arg.value"
+                                                    data-ng-options="operation for operation in arg.acceptedValues track by operation">
+                                            </select>
+                                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -96,7 +98,7 @@
                                             <button class="btn btn-icon" type="button"
                                                     data-ng-click="ctrl.viewMode[arg.key] = false"
                                                     data-uib-tooltip="{{tr('domains_operations_update_document_edit')}}">
-                                                <span class="fa fa-pencil" aria-hidden="true"></span>
+                                                <span class="oui-icon oui-icon-pen_line" aria-hidden="true"></span>
                                             </button>
                                         </div>
                                     </div>
