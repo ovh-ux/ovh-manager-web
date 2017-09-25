@@ -156,7 +156,7 @@ angular
 
             atInternetUiRouterPluginProvider.setTrackStateChange(constants.prodMode && window.location.port.length <= 3);
 
-            atInternetUiRouterPluginProvider.addStateNameFilter((routeName) => routeName ? routeName.replace(/\//g, "::") : null);
+            atInternetUiRouterPluginProvider.addStateNameFilter((routeName) => routeName ? routeName.replace(/\./g, "::") : "");
         }
     ])
     .config([
@@ -175,7 +175,7 @@ angular
             /*
             * ALL DOM
             */
-            $stateProvider.state("app.alldom", {
+            $stateProvider.state("web.alldom", {
                 url: "/configuration/all_dom/:allDom/:productId",
                 templateUrl: "domain/domain.html",
                 controller: "DomainCtrl",

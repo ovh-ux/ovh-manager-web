@@ -9,7 +9,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
             category: "domain",
             icon: "ovh-font ovh-font-domain",
             allowSubItems: true,
-            loadOnState: "app.domain",
+            loadOnState: "web.domain",
             allowSearch: true
         });
 
@@ -24,20 +24,20 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
             menuOptions.push({
                 title: translator.tr("navigation_left_order_dnszone"),
                 icon: "ovh-font ovh-font-domain",
-                state: "app.dns-zone-new"
+                state: "web.dns-zone-new"
             });
 
             SidebarMenu.addMenuItems([{
                 title: translator.tr("navigation_left_all_domains"),
                 category: "domain",
                 icon: "ovh-font ovh-font-network",
-                state: "app.domain.all",
+                state: "web.domain.all",
                 isActive: true
             }, {
                 title: translator.tr("navigation_left_all_domains_operations"),
                 category: "domain",
                 icon: "ovh-font ovh-font-config",
-                state: "app.domain.operation"
+                state: "web.domain.operation"
             }], domainItem);
 
             _.forEach(products.domains, (domain) => {
@@ -47,7 +47,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                         category: "domain",
                         icon: "ovh-font ovh-font-domain",
                         allowSubItems: true,
-                        loadOnState: "app.domain.alldom",
+                        loadOnState: "web.domain.alldom",
                         loadOnStateParams: {
                             allDom: domain.displayName
                         }
@@ -58,7 +58,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                             title: subDomain.displayName,
                             category: "domain",
                             icon: "ovh-font ovh-font-domain",
-                            state: "app.domain.alldom",
+                            state: "web.domain.alldom",
                             stateParams: {
                                 allDom: domain.displayName,
                                 productId: subDomain.name
@@ -70,7 +70,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                         title: domain.displayName,
                         category: "domain",
                         icon: "ovh-font ovh-font-domain",
-                        state: domain.type === "ZONE" ? "app.domain.dns-zone" : "app.domain.product",
+                        state: domain.type === "ZONE" ? "web.domain.dns-zone" : "web.domain.product",
                         stateParams: {
                             productId: domain.name
                         }
@@ -86,7 +86,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
             category: "hosting",
             icon: "ovh-font ovh-font-hosting",
             allowSubItems: true,
-            loadOnState: "app.hosting",
+            loadOnState: "web.hosting",
             allowSearch: true
         });
 
@@ -101,7 +101,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                 title: elt.displayName || elt.name,
                 category: "hosting",
                 icon: "ovh-font ovh-font-server",
-                state: "app.hosting",
+                state: "web.hosting",
                 stateParams: {
                     productId: elt.name
                 }
@@ -115,14 +115,14 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
             category: "database",
             icon: "ovh-font ovh-font-database",
             allowSubItems: true,
-            loadOnState: "app.private-database",
+            loadOnState: "web.private-database",
             allowSearch: true
         });
 
         menuOptions.push({
             title: translator.tr("navigation_left_order_private_database"),
             icon: "ovh-font ovh-font-database",
-            state: "app.sql-order"
+            state: "web.sql-order"
         });
 
         const databases = _(products.hostings)
@@ -136,7 +136,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                 title: elt.displayName || elt.name,
                 category: "private_database",
                 icon: "ovh-font ovh-font-database",
-                state: "app.private-database",
+                state: "web.private-database",
                 stateParams: {
                     productId: elt.name
                 }
@@ -150,7 +150,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
             category: "emailPro",
             icon: "ovh-font ovh-font-mail",
             allowSubItems: true,
-            loadOnState: "app.email-pro",
+            loadOnState: "web.email-pro",
             allowSearch: true
         });
 
@@ -169,7 +169,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                     title: elt.displayName || elt.name,
                     category: "emailPro",
                     icon: "ovh-font ovh-font-mail",
-                    state: "app.email-pro",
+                    state: "web.email-pro",
                     stateParams: {
                         productId: elt.name
                     }
@@ -184,14 +184,14 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
             category: "email",
             icon: "ovh-font ovh-font-mail",
             allowSubItems: true,
-            loadOnState: "app.email",
+            loadOnState: "web.email",
             allowSearch: true
         });
 
         menuOptions.push({
             title: translator.tr("navigation_left_order_mxplan"),
             icon: "ovh-font ovh-font-mail",
-            state: "app.mx-plan"
+            state: "web.mx-plan"
         });
 
         const emailItems = _.sortBy(products.emails, (elt) => angular.lowercase(elt.displayName || elt.name));
@@ -201,7 +201,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                 title: elt.displayName || elt.name,
                 category: "email",
                 icon: "ovh-font ovh-font-mail",
-                state: elt.type === "EMAIL_DELEGATE" ? "app.email.delegate" : "app.email.domain",
+                state: elt.type === "EMAIL_DELEGATE" ? "web.email.delegate" : "web.email.domain",
                 stateParams: {
                     productId: elt.name
                 }
@@ -216,7 +216,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
             category: "microsoft",
             icon: "ms-Icon ms-Icon--WindowsLogo",
             allowSubItems: true,
-            loadOnState: "app.microsoft",
+            loadOnState: "web.microsoft",
             allowSearch: true
         });
 
@@ -224,7 +224,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
             menuOptions.push({
                 title: translator.tr("navigation_left_order_exchange"),
                 icon: "ms-Icon ms-Icon--ExchangeLogo",
-                state: "app.microsoft.exchange.order"
+                state: "web.microsoft.exchange.order"
             });
 
             menuOptions.push({
@@ -243,7 +243,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
             menuOptions.push({
                 title: translator.tr("navigation_left_sharepoint_order"),
                 icon: "ms-Icon ms-Icon--SharepointLogo",
-                state: "app.microsoft.sharepoint.order"
+                state: "web.microsoft.sharepoint.order"
             });
         }).finally(() => {
             // Exchange
@@ -252,7 +252,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                 category: "microsoft",
                 icon: "ms-Icon ms-Icon--ExchangeLogo",
                 allowSubItems: true,
-                loadOnState: "app.microsoft.exchange"
+                loadOnState: "web.microsoft.exchange"
             }, microsoftItem);
 
             _.forEach(_.sortBy(products.exchanges, (elt) => angular.lowercase(elt.displayName || elt.name)), (elt) => {
@@ -260,7 +260,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                     title: elt.displayName || elt.name,
                     category: "microsoft",
                     icon: "ms-Icon ms-Icon--ExchangeLogo",
-                    state: elt.type === "EXCHANGE_PROVIDER" ? "app.microsoft.exchange.provider" : elt.type === "EXCHANGE_DEDICATED" ? "app.microsoft.exchange.dedicated" : "app.microsoft.exchange.hosted",
+                    state: elt.type === "EXCHANGE_PROVIDER" ? "web.microsoft.exchange.provider" : elt.type === "EXCHANGE_DEDICATED" ? "web.microsoft.exchange.dedicated" : "web.microsoft.exchange.hosted",
                     stateParams: {
                         organization: elt.organization,
                         productId: elt.name
@@ -275,7 +275,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                 category: "microsoft",
                 icon: "ms-Icon ms-Icon--OfficeLogo",
                 allowSubItems: true,
-                loadOnState: "app.microsoft.office"
+                loadOnState: "web.microsoft.office"
             }, microsoftItem);
 
             _.forEach(_.sortBy(products.licenseOffice, (elt) => angular.lowercase(elt.displayName || elt.name)), (elt) => {
@@ -283,7 +283,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                     title: elt.displayName || elt.name,
                     category: "microsoft",
                     icon: "ms-Icon ms-Icon--OfficeLogo",
-                    state: "app.microsoft.office.product",
+                    state: "web.microsoft.office.product",
                     stateParams: {
                         serviceName: elt.name
                     }
@@ -297,7 +297,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                 category: "microsoft",
                 icon: "ms-Icon ms-Icon--SharepointLogo",
                 allowSubItems: true,
-                loadOnState: "app.microsoft.sharepoint"
+                loadOnState: "web.microsoft.sharepoint"
             }, microsoftItem);
 
             _.forEach(_.sortBy(products.sharepoints, (elt) => angular.lowercase(elt.displayName || elt.name)), (elt) => {
@@ -305,7 +305,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                     title: elt.displayName || elt.name,
                     category: "microsoft",
                     icon: "ms-Icon ms-Icon--SharepointLogo",
-                    state: "app.microsoft.sharepoint.product",
+                    state: "web.microsoft.sharepoint.product",
                     stateParams: {
                         exchangeId: elt.exchangeId,
                         productId: elt.name

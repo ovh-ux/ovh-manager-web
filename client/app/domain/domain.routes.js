@@ -1,12 +1,12 @@
 angular.module("App").config(($stateProvider) => {
     "use strict";
 
-    $stateProvider.state("app.domain", {
+    $stateProvider.state("web.domain", {
         "abstract": true,
         template: "<div ui-view></div>"
     });
 
-    $stateProvider.state("app.domain.product", {
+    $stateProvider.state("web.domain.product", {
         url: "/configuration/domain/:productId?tab",
         templateUrl: "domain/domain.html",
         controller: "DomainCtrl",
@@ -33,7 +33,7 @@ angular.module("App").config(($stateProvider) => {
         }
     });
 
-    $stateProvider.state("app.domain.alldom", {
+    $stateProvider.state("web.domain.alldom", {
         url: "/configuration/all_dom/:allDom/:productId?tab",
         templateUrl: "domain/domain.html",
         controller: "DomainCtrl",

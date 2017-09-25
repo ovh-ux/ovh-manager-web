@@ -1,7 +1,7 @@
 angular.module("App").config(($stateProvider) => {
     "use strict";
 
-    $stateProvider.state("app.domain.all", {
+    $stateProvider.state("web.domain.all", {
         url: "/configuration/domains",
         templateUrl: "domains/domains.html",
         controller: "DomainsCtrl",

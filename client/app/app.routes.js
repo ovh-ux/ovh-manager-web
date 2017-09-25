@@ -1,7 +1,7 @@
 angular.module("App").config(($stateProvider) => {
     "use strict";
 
-    $stateProvider.state("app", {
+    $stateProvider.state("web", {
         "abstract": true,
         url: "",
         controller: "AppCtrl",
@@ -9,7 +9,7 @@ angular.module("App").config(($stateProvider) => {
         templateUrl: "app.html"
     });
 
-    $stateProvider.state("app.microsoft", {
+    $stateProvider.state("web.microsoft", {
         "abstract": true,
         template: "<div ui-view></div>"
     });

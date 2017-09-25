@@ -1,7 +1,7 @@
 angular.module("App").config(($stateProvider) => {
     "use strict";
 
-    $stateProvider.state("app.configuration", {
+    $stateProvider.state("web.configuration", {
         url: "/configuration",
         templateUrl: "configuration/configuration.html",
         controller: "ConfigurationCtrl",

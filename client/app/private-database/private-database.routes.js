@@ -1,7 +1,7 @@
 angular.module("App").config(($stateProvider) => {
     "use strict";
 
-    $stateProvider.state("app.private-database", {
+    $stateProvider.state("web.private-database", {
         url: "/configuration/private_database/:productId?tab",
         templateUrl: "private-database/private-database.html",
         controller: "PrivateDatabaseCtrl",
@@ -22,7 +22,7 @@ angular.module("App").config(($stateProvider) => {
         }
     });
 
-    $stateProvider.state("app.private-database-order", {
+    $stateProvider.state("web.private-database-order", {
         url: "/configuration/private_database",
         templateUrl: "private-database/order/private-database-order.html",
         controller: "PrivateDatabaseOrderCtrl",
@@ -42,7 +42,7 @@ angular.module("App").config(($stateProvider) => {
         }
     });
 
-    $stateProvider.state("app.sql-order", {
+    $stateProvider.state("web.sql-order", {
         url: "/configuration/sql_order?orderType&currentHosting",
         params: {
             currentHosting: { value: null, squash: true },
