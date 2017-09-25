@@ -35,10 +35,10 @@ angular.module("App").controller(
                                 ERROR: this.$scope.tr("domains_configuration_dnssec_batch_fail")
                             },
                             data,
-                            this.$scope.alerts.dashboard
+                            this.$scope.alerts.content
                         )
                     )
-                    .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_configuration_dnssec_batch_fail"), err, this.$scope.alerts.dashboard));
+                    .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_configuration_dnssec_batch_fail"), err, this.$scope.alerts.content));
             };
         }
     }
