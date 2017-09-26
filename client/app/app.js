@@ -148,25 +148,11 @@ angular
         (atInternetProvider, atInternetUiRouterPluginProvider, constants) => {
             "use strict";
 
-            console.log("atInternetProvider", atInternetProvider);
-            console.log("constants.prodMode", constants.prodMode);
-            console.log("window.location.port.length", window.location.port.length);
+            atInternetProvider.setEnabled(constants.prodMode && window.location.port.length <= 3);
+            atInternetProvider.setDebug(!constants.prodMode);
 
-            // atInternetProvider.setEnabled(constants.prodMode && window.location.port.length <= 3);
-            // atInternetProvider.setDebug(!constants.prodMode);
-            atInternetProvider.setEnabled(true);
-            atInternetProvider.setDebug(true);
-
-            console.log("atInternetUiRouterPluginProvider", atInternetUiRouterPluginProvider);
-            console.log("atInternetUiRouterPluginProvider.setTrackStateChange", constants.prodMode && window.location.port.length <= 3);
-
-            // atInternetUiRouterPluginProvider.setTrackStateChange(constants.prodMode && window.location.port.length <= 3);
-            atInternetUiRouterPluginProvider.setTrackStateChange(true);
-            atInternetUiRouterPluginProvider.addStateNameFilter((routeName) => {
-                console.log("atInternetUiRouterPluginProvider.addStateNameFilter", routeName);
-                console.log("routeName.replace", routeName.replace(/\./g, "::"));
-                return routeName ? routeName.replace(/\./g, "::") : "";
-            });
+            atInternetUiRouterPluginProvider.setTrackStateChange(constants.prodMode && window.location.port.length <= 3);
+            atInternetUiRouterPluginProvider.addStateNameFilter((routeName) => routeName ? routeName.replace(/\./g, "::") : "");
         }
     ])
     .constant("TRACKING", {
@@ -181,11 +167,9 @@ angular
             const delegateTrackPage = $delegate.trackPage;
             let isDefaultConfigurationSet = false;
             let trackPageRequestArgumentStack = [];
-            console.log("$provide.decorator atInternet");
 
             // Decorate trackPage to stack requests until At-internet default configuration is set
             $delegate.trackPage = (...args) => {
-                console.log("$delegate.trackPage", args);
                 if (isDefaultConfigurationSet) {
                     delegateTrackPage.apply($delegate, args);
                 } else {
@@ -197,13 +181,10 @@ angular
             User.getUser()
                 .then((result) => {
                     const settings = angular.copy(TRACKING.config);
-                    console.log("User.getUser", result);
-                    console.log("identifiedVisitor", $delegate.isTagAvailable(), result.nichandle);
 
                     // Set identifiedVisitor ID
                     if ($delegate.isTagAvailable() && result.nichandle) {
                         const atinternetTag = $delegate.getTag();
-                        console.log("atinternetTag", atinternetTag, $delegate);
 
                         atinternetTag.page.set();
                         atinternetTag.identifiedVisitor.set({ id: result.nichandle });
@@ -211,22 +192,19 @@ angular
                     }
 
                     // Set countryCode
-                    console.log("settings.countryCode", result.billingCountry);
                     settings.countryCode = result.billingCountry;
                     $delegate.setDefaults(settings);
 
                     isDefaultConfigurationSet = true;
 
                     _.forEach(trackPageRequestArgumentStack, (trackPageArguments) => {
-                        console.log("trackPageRequestArgumentStack", trackPageArguments);
                         delegateTrackPage.apply($delegate, trackPageArguments);
                     });
                 })
-                .catch((err) => {
+                .catch(() => {
                     // Reset trackPage
                     $delegate.trackPage = () => false;
                     trackPageRequestArgumentStack = [];
-                    console.log("catch", err);
 
                     $delegate.setEnabled(false);
                 });
