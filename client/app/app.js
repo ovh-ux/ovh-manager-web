@@ -148,11 +148,25 @@ angular
         (atInternetProvider, atInternetUiRouterPluginProvider, constants) => {
             "use strict";
 
-            atInternetProvider.setEnabled(constants.prodMode && window.location.port.length <= 3);
-            atInternetProvider.setDebug(!constants.prodMode);
+            console.log("atInternetProvider", atInternetProvider);
+            console.log("constants.prodMode", constants.prodMode);
+            console.log("window.location.port.length", window.location.port.length);
 
-            atInternetUiRouterPluginProvider.setTrackStateChange(constants.prodMode && window.location.port.length <= 3);
-            atInternetUiRouterPluginProvider.addStateNameFilter((routeName) => routeName ? routeName.replace(/\./g, "::") : "");
+            // atInternetProvider.setEnabled(constants.prodMode && window.location.port.length <= 3);
+            // atInternetProvider.setDebug(!constants.prodMode);
+            atInternetProvider.setEnabled(true);
+            atInternetProvider.setDebug(true);
+
+            console.log("atInternetUiRouterPluginProvider", atInternetUiRouterPluginProvider);
+            console.log("atInternetUiRouterPluginProvider.setTrackStateChange", constants.prodMode && window.location.port.length <= 3);
+
+            // atInternetUiRouterPluginProvider.setTrackStateChange(constants.prodMode && window.location.port.length <= 3);
+            atInternetUiRouterPluginProvider.setTrackStateChange(true);
+            atInternetUiRouterPluginProvider.addStateNameFilter((routeName) => {
+                console.log("atInternetUiRouterPluginProvider.addStateNameFilter", routeName);
+                console.log("routeName.replace", routeName.replace(/\./g, "::"));
+                return routeName ? routeName.replace(/\./g, "::") : "";
+            });
         }
     ])
     .constant("TRACKING", {
