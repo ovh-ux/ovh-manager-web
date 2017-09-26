@@ -1,5 +1,7 @@
 <div class="row" data-ng-controller="PrivateDatabaseUsersListCtrl as usersListCtrl">
     <div class="col-md-9">
+        <div data-ovh-alert="privateDataBase.alerts.user"></div>
+
         <div class="table-responsive">
             <table class="table"
                    data-ng-class="{'table-hover table-striped': !usersListCtrl.loaders.users && (usersListCtrl.usersIds.length || usersListCtrl.currentUsers.add.length)}">

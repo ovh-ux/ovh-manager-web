@@ -1,7 +1,9 @@
 <div data-ng-controller="PrivateDatabaseArchiveListCtrl as archiveListCtrl">
-    <button class="oui-button oui-button_secondary oui-button_icon-left" type="button"
+    <div data-ovh-alert="privateDataBase.alerts.bdd"></div>
+
+    <button class="oui-button oui-button_link oui-button_icon-left" type="button"
             data-ng-click="goToList()">
-        <span class="oui-icon oui-icon_circle oui-icon-chevron-left" aria-hidden="true"></span>
+        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
         <span data-i18n-static="common_back"></span>
     </button>
     <h2 data-ng-bind-html="tr('privateDatabase_tabs_dumps_archive_change', [nbDayToDelete])"></h2>

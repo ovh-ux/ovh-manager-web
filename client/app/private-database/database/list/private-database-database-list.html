@@ -1,5 +1,7 @@
 <div class="row" data-ng-controller="PrivateDatabaseBDDsListCtrl as listCtrl">
     <div class="col-md-9">
+        <div data-ovh-alert="privateDataBase.alerts.bdd"></div>
+
         <div class="table-responsive">
             <table class="table"
                    data-ng-class="{'table-hover table-striped': !listCtrl.loaders.bdd && (listCtrl.bddsIds.length > 0 || listCtrl.currentAddBdds.length > 0)}">

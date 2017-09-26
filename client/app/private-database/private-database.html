@@ -1,7 +1,9 @@
 <div data-ng-controller="PrivateDatabaseCtrl as ctrl">
     <div data-ovh-alert="{{alerts.dashboard}}"></div>
 
-    <div class="loader mt-5 text-center" data-ng-if="ctrl.loaders.details"></div>
+    <div class="mt-5 text-center" data-ng-if="ctrl.loaders.details">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
 
     <div class="page-header" data-ng-show="!ctrl.loaders.details">
         <div class="row">
@@ -25,31 +27,26 @@
                     </button>
                 </div>
 
-                <form name="formEditDisplayName" novalidate
+                <form class="my-4" name="formEditDisplayName" novalidate
                       data-ng-show="ctrl.editMode"
                       data-ng-submit="ctrl.saveDisplayName()">
-                    <div class="form-group my-4">
-                        <div class="input-group">
-                            <input type="text" class="form-control input-lg" name="txtDisplayName"
-                                   id="privatedatabase-group-name"
-                                   data-event-blur="ctrl.newDisplayName.value = ''"
-                                   data-ng-maxlength="250"
-                                   data-ng-model="ctrl.newDisplayName.value">
-                            <div class="input-group-btn">
-                                <button class="btn btn-success btn-lg" type="submit"
-                                        data-ng-disabled="formEditDisplayName.$invalid">
-                                    <span class="fa fa-check" aria-hidden="true"></span>
-                                    <span class="sr-only"
-                                          data-i18n-static="privateDatabase_dashboard_name_validate"></span>
-                                </button>
-                                <button class="btn btn-danger btn-lg" type="button"
-                                        data-ng-click="ctrl.editMode = false">
-                                    <span class="fa fa-remove" aria-hidden="true"></span>
-                                    <span class="sr-only"
-                                          data-i18n-static="privateDatabase_dashboard_name_cancel"></span>
-                                </button>
-                            </div>
-                        </div>
+                    <div class="oui-input-group">
+                        <input type="text" class="oui-input" name="txtDisplayName" id="privatedatabase-group-name"
+                               data-event-blur="ctrl.newDisplayName.value = ''"
+                               data-ng-maxlength="250"
+                               data-ng-model="ctrl.newDisplayName.value">
+                        <button class="oui-button" type="submit"
+                                data-ng-disabled="formEditDisplayName.$invalid">
+                            <span class="fa fa-check" aria-hidden="true"></span>
+                            <span class="sr-only"
+                                  data-i18n-static="privateDatabase_dashboard_name_validate"></span>
+                        </button>
+                        <button class="oui-button" type="button"
+                                data-ng-click="ctrl.editMode = false">
+                            <span class="fa fa-remove" aria-hidden="true"></span>
+                            <span class="sr-only"
+                                  data-i18n-static="privateDatabase_dashboard_name_cancel"></span>
+                        </button>
                     </div>
                 </form>
 
@@ -110,10 +107,8 @@
                         </li>
                     </ul>
                 </div>
-
             </div>
         </div>
-
     </div>
 
     <div data-ng-if="!ctrl.loaders.details">
@@ -135,7 +130,10 @@
         </div>
 
         <div data-ng-controller="PrivateDatabaseTabsCtrl">
-            <ovh-tabs tabs="tabs" selected-tab="selectedTab" product="privateDatabase" change-tab="setSelectedTab"
+            <ovh-tabs tabs="tabs"
+                      selected-tab="selectedTab"
+                      product="privateDatabase"
+                      change-tab="setSelectedTab"
                       tr="tr"></ovh-tabs>
             <div class="tab-content">
                 <div class="tab-pane active"
