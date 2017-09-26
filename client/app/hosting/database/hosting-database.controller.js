@@ -112,10 +112,10 @@ angular.module("App").controller("HostingTabDatabasesCtrl", function ($scope, $s
             .then(() => {
                 HostingDatabase.restoreBDDBackup($stateParams.productId, database.name, backupType, sendEmail).then(
                     () => {
-                        Alerter.success($scope.tr("database_tabs_dumps_restore_in_start"), "dataBase.alerts.bdd");
+                        Alerter.success($scope.tr("database_tabs_dumps_restore_in_start"), this.$scope.alerts.dashboard);
                     },
                     (err) => {
-                        Alerter.alertFromSWS($scope.tr("database_tabs_dumps_restore_fail"), err, "dataBase.alerts.bdd");
+                        Alerter.alertFromSWS($scope.tr("database_tabs_dumps_restore_fail"), err, this.$scope.alerts.dashboard);
                     }
                 );
             })
