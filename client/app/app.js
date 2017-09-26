@@ -167,9 +167,11 @@ angular
             const delegateTrackPage = $delegate.trackPage;
             let isDefaultConfigurationSet = false;
             let trackPageRequestArgumentStack = [];
+            console.log("$provide.decorator atInternet");
 
             // Decorate trackPage to stack requests until At-internet default configuration is set
             $delegate.trackPage = (...args) => {
+                console.log("$delegate.trackPage", args);
                 if (isDefaultConfigurationSet) {
                     delegateTrackPage.apply($delegate, args);
                 } else {
@@ -181,10 +183,13 @@ angular
             User.getUser()
                 .then((result) => {
                     const settings = angular.copy(TRACKING.config);
+                    console.log("User.getUser", result);
+                    console.log("identifiedVisitor", $delegate.isTagAvailable(), result.nichandle);
 
                     // Set identifiedVisitor ID
                     if ($delegate.isTagAvailable() && result.nichandle) {
                         const atinternetTag = $delegate.getTag();
+                        console.log("atinternetTag", atinternetTag, $delegate);
 
                         atinternetTag.page.set();
                         atinternetTag.identifiedVisitor.set({ id: result.nichandle });
@@ -192,19 +197,22 @@ angular
                     }
 
                     // Set countryCode
+                    console.log("settings.countryCode", result.billingCountry);
                     settings.countryCode = result.billingCountry;
                     $delegate.setDefaults(settings);
 
                     isDefaultConfigurationSet = true;
 
                     _.forEach(trackPageRequestArgumentStack, (trackPageArguments) => {
+                        console.log("trackPageRequestArgumentStack", trackPageArguments);
                         delegateTrackPage.apply($delegate, trackPageArguments);
                     });
                 })
-                .catch(() => {
+                .catch((err) => {
                     // Reset trackPage
                     $delegate.trackPage = () => false;
                     trackPageRequestArgumentStack = [];
+                    console.log("catch", err);
 
                     $delegate.setEnabled(false);
                 });
