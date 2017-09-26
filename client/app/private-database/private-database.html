@@ -12,19 +12,20 @@
                       data-i18n-static="privateDatabase_order_sql_type_premium_label"></span>
                 <span data-ng-if="database.offer === 'public'"
                       data-i18n-static="privateDatabase_order_sql_type_dbaas_label"></span>
-
-                <div class="d-inline-block" data-ng-if="database.serviceName !== database.displayName">
-                    - <span class="font-italic" data-ng-bind="::database.serviceName"></span>
-                </div>
-                <div class="d-flex" data-ng-show="!ctrl.editMode">
-                    <h1 class="d-inline-block mb-0"
-                        data-ng-bind="database.displayName || database.serviceName || dbName"></h1>
-                    <button class="btn btn-icon my-auto ml-2" type="button"
-                            data-ng-click="ctrl.editDisplayName()"
-                            data-ng-show="database">
-                        <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
-                        <span class="sr-only" data-i18n-static="privateDatabase_configuration_edit_btn"></span>
-                    </button>
+                <div class="mb-3" data-ng-show="!ctrl.editMode">
+                    <div class="d-flex">
+                        <h1 class="d-inline-block mb-0"
+                            data-ng-bind="database.displayName || database.serviceName || dbName"></h1>
+                        <button class="btn btn-icon my-auto ml-2" type="button"
+                                data-ng-click="ctrl.editDisplayName()"
+                                data-ng-show="database">
+                            <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
+                            <span class="sr-only" data-i18n-static="privateDatabase_configuration_edit_btn"></span>
+                        </button>
+                    </div>
+                    <span class="font-italic"
+                          data-ng-bind="::database.serviceName"
+                          data-ng-if="database.serviceName !== database.displayName"></span>
                 </div>
 
                 <form class="my-4" name="formEditDisplayName" novalidate
@@ -54,15 +55,6 @@
                      data-ng-if="ctrl.editMode && formEditDisplayName.txtDisplayName.$dirty && formEditDisplayName.$invalid"
                      data-ng-messages="formEditDisplayName.txtDisplayName.$error">
                     <div data-ng-message="maxlength" data-ng-bind="::i18n.privateDatabase_displayName_length"></div>
-                </div>
-
-                <div class="label"
-                     data-ng-if="database.state"
-                     data-ng-class="{
-                        'label-danger': database.state == 'detached',
-                        'label-warning' : database.state == 'restartPending' || database.state == 'stopPending' || database.state == 'stopped',
-                        'label-success' : database.state == 'startPending' || database.state == 'started' }"
-                     data-ng-bind="tr('privateDatabase_dashboard_' + database.state)">
                 </div>
 
                 <div class="mt-4" data-ng-if="database.serviceName && database.serviceInfos">

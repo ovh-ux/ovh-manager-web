@@ -9,6 +9,20 @@
                                 data-i18n-static="privateDatabase_dashboard_general_informations"></h3>
                             <div class="oui-tile__body">
                                 <ul class="list-unstyled">
+                                    <li class="oui-tile__item"
+                                        data-ng-if="stateCtrl.database.state">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_dashboard_state"></strong>
+                                            <div class="label"
+                                                 data-ng-class="{
+                                                    'label-danger': stateCtrl.database.state == 'detached',
+                                                    'label-warning' : stateCtrl.database.state == 'restartPending' || stateCtrl.database.state == 'stopPending' || database.state == 'stopped',
+                                                    'label-success' : stateCtrl.database.state == 'startPending' || stateCtrl.database.state == 'started' }"
+                                                 data-ng-bind="tr('privateDatabase_dashboard_' + stateCtrl.database.state)">
+                                            </div>
+                                        </div>
+                                    </li>
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
                                             <strong class="d-block"
@@ -86,14 +100,11 @@
                                                     <strong class="d-block"
                                                             data-i18n-static="privateDatabase_expiration_date"
                                                             data-ng-if="!isRenew()"></strong>
-                                                    <span
-                                                        data-ng-bind="::stateCtrl.database.serviceInfos.expiration | date:'mediumDate'"></span>
+                                                    <span data-ng-bind="::stateCtrl.database.serviceInfos.expiration | date:'mediumDate'"></span>
                                                 </div>
-                                                <a class="btn btn-default ml-auto my-auto"
-                                                   title="{{::i18n.button_renew}}"
-                                                   data-ng-href="#/billing/autoRenew?selectedType=HOSTING_PRIVATE_DATABASE&searchText={{stateCtrl.database.serviceName}}">
-                                                    <span class="fa fa-refresh" aria-hidden="true"></span>
-                                                    <span data-i18n-static="button_renew"></span>
+                                                <a class="btn btn-default ml-auto my-auto" title="{{::i18n.button_renew}}"
+                                                   data-ng-href="#/billing/autoRenew?selectedType=HOSTING_PRIVATE_DATABASE&searchText={{stateCtrl.database.serviceName}}"
+                                                   data-i18n-static="button_renew">
                                                 </a>
                                             </div>
                                         </div>
