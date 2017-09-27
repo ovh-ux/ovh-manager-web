@@ -85,7 +85,7 @@ angular.module("App").controller(
         loadTab (count, offset, needUsers) {
             this.Hosting.getTabFTP(this.$stateParams.productId, count, offset, needUsers, this.search.value)
                 .then((ftpInformations) => {
-                    if (!_.isEmpty(ftpInformations.list.results)) {
+                    if (ftpInformations != null && !_.isEmpty(ftpInformations.list.results)) {
                         const firstUserCredentials = ftpInformations.list.results[0].serviceManagementCredentials;
                         this.hasResult = true;
                         this.firstUser = {

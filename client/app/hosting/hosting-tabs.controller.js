@@ -8,13 +8,12 @@ angular.module("App").controller(
             this.$stateParams = $stateParams;
             this.HostingFreedom = HostingFreedom;
             this.HostingIndy = HostingIndy;
-
-            $scope.displayTabs = { cron: true, databases: true, modules: true };
         }
 
         $onInit () {
             this.defaultTab = "GENERAL_INFORMATIONS";
             this.tabs = ["GENERAL_INFORMATIONS", "MULTISITE", "MODULE", "FTP", "DATABASE", "TASK"];
+            this.$scope.displayTabs = { cron: true, databases: true, modules: true };
 
             this.tabMenu = {
                 title: this.$scope.tr("navigation_more"),

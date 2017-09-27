@@ -9,10 +9,7 @@ angular.module("services").service(
          * @param $rootScope
          */
         constructor (Hosting, OvhHttp, Poller, $rootScope) {
-            this.Hosting = Hosting;
-            this.OvhHttp = OvhHttp;
-            this.Poller = Poller;
-            this.$rootScope = $rootScope;
+            Object.assign(this, Hosting, OvhHttp, Poller, $rootScope);
         }
 
         /**
@@ -126,7 +123,7 @@ angular.module("services").service(
                 namespace: opts.namespace
             }).then((pollObject, task) => {
                 this.$rootScope.$broadcast(`${opts.namespace}.done`, pollObject, task);
-            }, (err) => {
+            }).catch((err) => {
                 this.$rootScope.$broadcast(`${opts.namespace}.error`, err);
             });
         }

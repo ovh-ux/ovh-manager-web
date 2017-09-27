@@ -9,8 +9,9 @@
         .module("services")
         .service("Hosting", class Hosting {
 
-            constructor ($q, $rootScope, $stateParams, constants, OvhHttp, Poll, Products) {
+            constructor ($q, $http, $rootScope, $stateParams, constants, OvhHttp, Poll, Products) {
                 this.$q = $q;
+                this.$http = $http;
                 this.$rootScope = $rootScope;
                 this.$stateParams = $stateParams;
                 this.constants = constants;
@@ -96,7 +97,7 @@
             /**
              * Is password valid
              * @param {string} password
-             * @param {{min: *, max: *}|null} customConditions
+             * @param {{min: number, max: number}|null} customConditions
              * @returns {boolean}
              */
             static isPasswordValid (password, customConditions = undefined) {
@@ -111,7 +112,7 @@
              * @returns {boolean}
              */
             static isPathValid (path) {
-                return /^[a-zA-Z0-9-._\/]*$/.test(path) && !/\.\./.test(path);
+                return /^[\w\-.\/]*$/.test(path) && !/\.\./.test(path);
             }
 
             /**
@@ -183,7 +184,7 @@
                 return this.OvhHttp.get(`/hosting/web/${serviceName}`, {
                     rootPath: "apiv6"
                 }).then((data) => data).catch((http) => {
-                    if (catchOpt && _.isArray(catchOpt) && _.indexOf(catchOpt, http.status) !== -1) {
+                    if (_.isArray(catchOpt) && _.indexOf(catchOpt, http.status) !== -1) {
                         return null;
                     }
                     return this.$q.reject(http);
@@ -457,7 +458,9 @@
                 return this.$q.all(_.map(taskIds, (taskId) => this.Poll.poll(`apiv6/hosting/web/${serviceName}/tasks/${taskId}`, null, {
                     namespace: "hosting.database.sqlPrive",
                     interval: 30000
-                }).then((resp) => resp, (err) => err)));
+                })
+                    .then((resp) => resp)
+                    .catch((err) => err)));
             }
 
             killPollFlushCdn () {
@@ -616,18 +619,16 @@
             getAttachDomainSslLinked (serviceName) {
                 const defered = this.$q.defer();
 
-                this.OvhHttp.get(`/hosting/web/${serviceName}/ssl/domains`, {
-                    rootPath: "apiv6",
-                    returnSuccessKey: ""
-                }).then((resp) => {
-                    defered.resolve(resp.data);
-                }).catch((err) => {
-                    if (err.status === 404) {
-                        defered.resolve([]);
-                    } else {
-                        defered.reject(err.data);
-                    }
-                });
+                this.$http.get(`/hosting/web/${serviceName}/ssl/domains`)
+                    .then((resp) => {
+                        defered.resolve(resp.data);
+                    }).catch((err) => {
+                        if (err.status === 404) {
+                            defered.resolve([]);
+                        } else {
+                            defered.reject(err.data);
+                        }
+                    });
 
                 return defered.promise;
             }
