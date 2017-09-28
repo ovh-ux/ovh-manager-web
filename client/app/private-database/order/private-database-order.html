@@ -4,7 +4,7 @@
     </div>
 
     <div class="container-fluid px-5">
-        <div role="alert" data-ovh-alert="{{alerts.order}}"></div>
+        <div data-ovh-alert="{{alerts.order}}"></div>
 
         <div class="mt-5 text-center" data-ng-if="orderCtrl.loading.init">
             <oui-loader size="l" inline="true"></oui-loader>
@@ -159,7 +159,7 @@
                             </div>
 
                             <div class="mt-5">
-                                <button class="btn btn-primary" type="button"
+                                <button class="btn btn-primary oui-button_large-height" type="button"
                                         data-ng-click="orderCtrl.generateBc()"
                                         data-ng-disabled="(orderCtrl.durations.details[orderCtrl.selectedOrder.duration].contracts.length != 0 && !orderCtrl.selectedOrder.contractsValidated) || orderCtrl.loading.bc">
                                     <span data-i18n-static="privateDatabase_order_step3_generate"
@@ -184,7 +184,7 @@
                                 <span data-i18n-static="privateDatabase_order_step3_bc_information"></span>
                             </p>
                             <div class="mt-5">
-                                <button class="btn btn-primary" type="button"
+                                <button class="btn btn-primary oui-button_large-height" type="button"
                                         data-i18n-static="privateDatabase_order_step3_pay_button"
                                         data-ng-click="orderCtrl.openBc()">
                                 </button>

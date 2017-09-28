@@ -8,7 +8,7 @@
     </div>
 
     <div class="container-fluid px-5">
-        <div role="alert" data-ovh-alert="{{alerts.order}}"></div>
+        <div data-ovh-alert="{{alerts.order}}"></div>
 
         <div class="mt-5 text-center" data-ng-if="sqlOrderCtrl.loading.init">
             <oui-loader size="l" inline="true"></oui-loader>
@@ -211,30 +211,26 @@
                             <span data-ng-if="sqlOrderCtrl.loading.window"
                                   data-i18n-static="privateDatabase_order_bc_created_redirection_info"></span>
 
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-4 mt-4">
-                                    <button class="oui-button oui-button_primary" type="button"
-                                            data-i18n-static="privateDatabase_order_show_bc_button_label"
-                                            data-ng-click="sqlOrderCtrl.openBc()">
-                                    </button>
-                                </div>
+                            <div>
+                                <button class="oui-button oui-button_primary oui-button_large-height" type="button"
+                                        data-i18n-static="privateDatabase_order_show_bc_button_label"
+                                        data-ng-click="sqlOrderCtrl.openBc()">
+                                </button>
                             </div>
                         </div>
 
-                        <div class="row" data-ng-if="!sqlOrderCtrl.order.url">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button class="oui-button oui-button_primary" type="button"
-                                        data-ng-click="sqlOrderCtrl.generateBc()"
-                                        data-ng-disabled="!sqlOrderCtrl.canOrder() || !sqlOrderCtrl['canOrder' + sqlOrderCtrl.getData(sqlOrderCtrl.model.type).key]()">
-                                    <span class="oui-loader oui-loader_inline oui-loader_s"
-                                          data-ng-if="sqlOrderCtrl.loading.bc">
-                                        <span class="oui-loader__container">
-                                            <span class="oui-loader__image"></span>
-                                        </span>
+                        <div data-ng-if="!sqlOrderCtrl.order.url">
+                            <button class="oui-button oui-button_primary oui-button_large-height" type="button"
+                                    data-ng-click="sqlOrderCtrl.generateBc()"
+                                    data-ng-disabled="!sqlOrderCtrl.canOrder() || !sqlOrderCtrl['canOrder' + sqlOrderCtrl.getData(sqlOrderCtrl.model.type).key]()">
+                                <span class="oui-loader oui-loader_inline oui-loader_s"
+                                      data-ng-if="sqlOrderCtrl.loading.bc">
+                                    <span class="oui-loader__container">
+                                        <span class="oui-loader__image"></span>
                                     </span>
-                                    <span data-i18n-static="privateDatabase_order_sql_button_label"></span>
-                                </button>
-                            </div>
+                                </span>
+                                <span data-i18n-static="privateDatabase_order_sql_button_label"></span>
+                            </button>
                         </div>
                     </div>
                 </form>
