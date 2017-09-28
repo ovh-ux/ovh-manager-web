@@ -23,8 +23,9 @@ angular
             };
             this.search = { subDomain: "" };
 
+            _.set(this.$scope.alerts, "domainDynhost", "domain_tab_dynhost_alert");
+
             this.$scope.$on("hosting.tabs.dynHosts.refresh", () => {
-                this.loading.init = true;
                 this.hasResult = false;
                 this.refreshTableDynHosts();
             });
@@ -45,19 +46,19 @@ angular
                     }
                 })
                 .catch((err) => {
-                    this.displayError(err, "domain_tab_DYNHOST_error");
+                    this.displayError(err, "domain_tab_DYNHOST_error", this.$scope.alerts.dashboard);
                 })
                 .finally(() => {
                     this.loading.init = false;
                 });
         }
 
-        displayError (err, trKey) {
+        displayError (err, trKey, alert) {
             if (err.status === 460 && err.data && /service(\s|\s\w+\s)expired/i.test(err.data.message)) {
                 // If the service is really expired, the customers have already received several messages
                 return;
             }
-            this.Alerter.alertFromSWS(this.$scope.tr(trKey), err.data || err, this.$scope.alerts.dashboard);
+            this.Alerter.alertFromSWS(this.$scope.tr(trKey), _.get(err, "data", err), alert);
         }
 
         //---------------------------------------------
@@ -99,7 +100,7 @@ angular
                         this.hasResult = true;
                     }
                 })
-                .catch((err) => this.displayError(err, "domain_tab_DYNHOST_error"))
+                .catch((err) => this.displayError(err, "domain_tab_DYNHOST_error", this.$scope.alerts.domainDynhost))
                 .finally(() => {
                     if (_.isEmpty(this.dynHosts)) {
                         this.loading.dynHosts = false;

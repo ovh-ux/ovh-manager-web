@@ -412,15 +412,15 @@ angular.module("controllers").controller(
                     });
 
                     if (nbError === tab.length) {
-                        this.Alerter.error(this.$scope.tr("domain_tab_REDIRECTION_add_error"), this.$scope.alerts.dashboard);
+                        this.Alerter.error(this.$scope.tr("domain_tab_REDIRECTION_add_error"), this.$scope.alerts.domainRedirection);
                     } else if (nbError !== 0) {
-                        this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_add_partial"), "PARTIAL", this.$scope.alerts.dashboard);
+                        this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_add_partial"), "PARTIAL", this.$scope.alerts.domainRedirection);
                     } else {
-                        this.Alerter.success(this.$scope.tr("domain_tab_REDIRECTION_add_success"), this.$scope.alerts.dashboard);
+                        this.Alerter.success(this.$scope.tr("domain_tab_REDIRECTION_add_success"), this.$scope.alerts.domainRedirection);
                     }
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_delete_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_delete_error"), err, this.$scope.alerts.domainRedirection);
                 })
                 .finally(() => {
                     this.loading.add = false;

@@ -19,8 +19,8 @@ angular.module("App").controller(
             this.loading = true;
             return this.Domain
                 .activateZone(this.domain.name, this.activationZone.minimized)
-                .then(() => this.Alerter.success(this.$scope.tr("domain_tab_ZONE_no_zone_activate_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_ZONE_no_zone_activate_error"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("domain_tab_ZONE_no_zone_activate_success"), this.$scope.alerts.domainZone))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_ZONE_no_zone_activate_error"), err, this.$scope.alerts.domainZone))
                 .finally(() => {
                     this.loading = false;
                     this.$scope.resetAction();

@@ -1,49 +1,46 @@
 <div class="container-fluid px-0" data-ng-controller="controllers.Domain.Redirection as ctrlDomainRedirect">
     <div data-ovh-alert="domain_tab_redirection"></div>
 
-    <p data-i18n-static="domain_tab_REDIRECTION_title"></p>
+    <div class="text-center" data-ng-if="ctrlDomainRedirect.loading.init">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
 
-    <div class="loader text-center" data-ng-if="ctrlDomainRedirect.loading.init"></div>
-
-    <div class="alert alert-info"
-         role="alert"
+    <div class="alert alert-info" role="alert"
          data-i18n-static="domain_tab_ZONE_empty_zone"
          data-ng-if="!ctrlDomainRedirect.hasZoneDns"></div>
 
     <div class="row" data-ng-show="ctrlDomainRedirect.hasZoneDns && !ctrlDomainRedirect.loading.init">
         <div class="col-md-9">
-            <div class="alert alert-info mt-5"
-                 role="alert"
+            <div data-ovh-alert="{{alerts.domainRedirection}}"></div>
+
+            <p data-i18n-static="domain_tab_REDIRECTION_title"></p>
+
+            <div class="alert alert-info" role="alert"
                  data-i18n-static="domain_tab_ZONE_empty_zone"
                  data-ng-if="!ctrlDomainRedirect.hasResult"></div>
 
             <div data-ng-if="ctrlDomainRedirect.hasResult">
                 <div class="mb-3 mt-5">
                     <form class="form-inline d-md-flex justify-content-md-end" name="searchSubDomainForm">
-                        <div class="form-group mr-md-2">
+                        <div class="oui-select oui-select_inline mr-md-2">
                             <label class="sr-only"
                                     for="subDomainFilter"
                                     data-ng-bind="::i18n.table_filter"></label>
-                            <select class="form-control"
-                                    id="subDomainFilter"
+                            <select class="oui-select__input" id="subDomainFilter"
                                     data-ng-change="ctrlDomainRedirect.goSearch()"
                                     data-ng-model="ctrlDomainRedirect.search.filter"
                                     data-ng-options="type as tr('domain_tab_REDIRECTION_type_' + type) for type in ctrlDomainRedirect.redirectionList.recordTypes track by type">
-                                <option value=""
-                                        selected
+                                <option value="" selected
                                         data-i18n-static="domain_tab_ZONE_type_all"></option>
                             </select>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
                         <div class="form-group">
                             <label class="sr-only"
                                     for="subDomainSearch"
                                     data-ng-bind="::i18n.common_search"></label>
                             <div class="input-group">
-                                <input type="text"
-                                        class="form-control"
-                                        id="subDomainSearch"
-                                        name="subDomainSearch"
-                                        placeholder="{{::i18n.domain_tab_REDIRECTION_search_placeholder}}"
+                                <input type="text" class="form-control" id="subDomainSearch" name="subDomainSearch" placeholder="{{::i18n.domain_tab_REDIRECTION_search_placeholder}}"
                                         data-ng-change="ctrlDomainRedirect.goSearch()"
                                         data-ng-disabled="ctrlDomainRedirect.loading.search"
                                         data-ng-model="ctrlDomainRedirect.search.value"
@@ -113,14 +110,14 @@
                                 <td data-ng-bind="ctrlDomainRedirect.constructor.getDomain(redirection)"></td>
                                 <td data-ng-bind="tr('domain_tab_REDIRECTION_type_' + redirection.fieldDisplayType)"></td>
                                 <td class="word-break" data-ng-bind="redirection.targetDisplayName"></td>
-                                <td class="text-center text-nowrap">
-                                    <button class="btn btn-icon" type="button" title="{{ctrlDomainRedirect.constructor.getDomain(redirection)}} {{i18n.table_modify_entry}}"
-                                            data-ng-click="setAction('redirection/edit/domain-redirection-edit', { redirection: redirection, displayName: ctrlDomainRedirect.constructor.getDomain(redirection) })">
-                                        <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
-                                    </button>
-                                    <button class="btn btn-icon" type="button" title="{{ctrlDomainRedirect.constructor.getDomain(redirection)}} {{i18n.table_delete_entry}}"
-                                            data-ng-click="setAction('redirection/delete/domain-redirection-delete', { redirection: redirection, displayName: ctrlDomainRedirect.constructor.getDomain(redirection) })">
-                                        <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
+                                <td class="text-right">
+                                    <button class="btn btn-icon" type="button"
+                                            data-linkedpopover="domain/redirection/domain-redirection.popover.html"
+                                            data-linkedpopover-placement="left"
+                                            data-linkedpopover-remote="true"
+                                            data-linkedpopover-single="true"
+                                            data-linkedpopover-title="{{i18n.common_actions}}">
+                                        <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                                     </button>
                                 </td>
                             </tr>

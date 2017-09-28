@@ -3,7 +3,9 @@
 
     <div data-ng-if="ctrlDomain.loading.domainInfos">
         <div class="clearfix"></div>
-        <div class="loader mt-5 text-center"></div>
+        <div class="mt-5 text-center">
+            <oui-loader size="l" inline="true"></oui-loader>
+        </div>
     </div>
 
     <div data-ng-if="!ctrlDomain.loading.domainInfos && ctrlDomain.domain">

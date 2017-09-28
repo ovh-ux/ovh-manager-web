@@ -25,6 +25,8 @@ angular.module("controllers").controller(
             this.loading = false;
             this.product = null;
 
+            _.set(this.$scope.alerts, "domainDnssec", "domain_tab_dnssec_alert");
+
             this.$scope.$on("domain.tabs.dnssec.save", () => this.saveModifications());
 
             this.loadDnssec();
@@ -108,8 +110,8 @@ angular.module("controllers").controller(
             this.loading = true;
             return this.Domain
                 .saveDnssecList(this.product.name, { keys: this.dnssecList })
-                .then(() => this.Alerter.success(this.$scope.tr("domain_tab_DNSSEC_action_add_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_DNSSEC_action_add_error"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("domain_tab_DNSSEC_action_add_success"), this.$scope.alerts.domainDnssec))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_DNSSEC_action_add_error"), err, this.$scope.alerts.domainDnssec))
                 .finally(() => this.loadDnssec());
         }
     }

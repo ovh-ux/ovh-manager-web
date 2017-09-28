@@ -19,8 +19,8 @@ angular.module("controllers").controller(
             this.loading = true;
             return this.Domain
                 .deleteGlueRecord(this.$stateParams.productId, this.glueRecord.host)
-                .then(() => this.Alerter.success(this.$scope.tr("domain_tab_GLUE_delete_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_GLUE_delete_error"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("domain_tab_GLUE_delete_success"), this.$scope.alerts.domainGlue))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_GLUE_delete_error"), err, this.$scope.alerts.domainGlue))
                 .finally(() => {
                     this.loading = false;
                     this.$scope.resetAction();

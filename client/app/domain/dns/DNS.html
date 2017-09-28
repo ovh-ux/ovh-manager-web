@@ -1,23 +1,22 @@
 <div class="container-fluid px-0" data-ng-controller="controllers.Domain.Dns as ctrlDomainDns">
-    <div class="loader text-center" data-ng-if="ctrlDomainDns.loading.all"></div>
+    <div class="text-center" data-ng-if="ctrlDomainDns.loading.all">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
 
-    <div class="row" data-ng-if="!ctrlDomainDns.loading.all && ctrlDomainDns.dns.table">
+    <div class="row" data-ng-show="!ctrlDomainDns.loading.all && ctrlDomainDns.dns.table">
         <div class="col-md-9">
 
-            <div data-ovh-alert="domain_tab_dns_alert"></div>
+            <div data-ovh-alert="{{alerts.domainDns}}"></div>
 
-            <div class="alert alert-danger"
-                 role="alert"
+            <div class="alert alert-danger" role="alert"
                  data-i18n-static="domain_tab_DNS_error"
                  data-ng-if="ctrlDomainDns.dns.table.isPartial"></div>
 
-            <div class="alert alert-warning"
-                 role="alert"
+            <div class="alert alert-warning" role="alert"
                  data-i18n-static="domain_tab_DNS_warning_only_one_dns"
                  data-ng-if="ctrlDomainDns.dns.activeDns === 1 && !ctrlDomainDns.dns.table.isPartial"></div>
 
-            <div class="alert alert-info"
-                 role="alert"
+            <div class="alert alert-info" role="alert"
                  data-ng-if="!ctrlDomainDns.domain.managedByOvh && ctrlDomainDns.allowModification">
                 <div data-ng-bind-html="tr('domain_tab_DNS_unlock_warning_manuel_check', [ctrlDomainDns.urls.zoneCheck, i18n.domain_tab_DNS_unlock_warning_manuel_check_tool + ' (' + i18n.core_new_window + ')'])"></div>
             </div>
@@ -58,14 +57,9 @@
                                          data-ng-form
                                          data-ng-if="ctrlDomainDns.editMode"
                                          data-name="editedDnsHostForm">
-                                        <label class="sr-only"
-                                               for="editedDnsHost-{{$index}}"
+                                        <label class="sr-only" for="editedDnsHost-{{$index}}"
                                                data-i18n-static="domain_tab_DNS_ip"></label>
-                                        <input type="text"
-                                               class="form-control input-sm"
-                                               name="editedDnsHost"
-                                               id="editedDnsHost-{{$index}}"
-                                               aria-labelledby="dnsNameHeader"
+                                        <input type="text" class="form-control input-sm" id="editedDnsHost-{{$index}}" name="editedDnsHost" aria-labelledby="dnsNameHeader"
                                                data-ng-change="ctrlDomainDns.hostCheck(editedDnsHostForm.editedDnsHost)"
                                                data-ng-model="dnsItem.editedHost"
                                                data-ng-value="dnsItem.host">
@@ -80,10 +74,7 @@
                                         <label class="sr-only"
                                                for="editedDnsIp-{{$index}}"
                                                data-i18n-static="domain_tab_DNS_name"></label>
-                                        <input type="text"
-                                               class="form-control input-sm"
-                                               name="editedDnsIp"
-                                               id="editedDnsIp-{{$index}}"
+                                        <input type="text" class="form-control input-sm" id="editedDnsIp-{{$index}}" name="editedDnsIp"
                                                aria-labelledby="dnsIpHeader"
                                                data-ng-change="ctrlDomainDns.ipCheck(editedDnsIpForm.editedDnsIp)"
                                                data-ng-model="dnsItem.editedIp"

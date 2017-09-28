@@ -6,14 +6,18 @@
         <label class="control-label col-md-3 required" for="algorithm"
                data-i18n-static="domain_configuration_dns_entry_add_algorithm"></label>
         <div class="col-md-6">
-            <select class="form-control" id="algorithm" name="algorithm" required
-                    data-ng-change="ctrl.setTargetValue('SSHFP')"
-                    data-ng-model="ctrl.model.target.algorithm">
+            <div class="oui-select mb-0">
+                <select class="oui-select__input" id="algorithm" name="algorithm" required
+                        data-ng-change="ctrl.setTargetValue('SSHFP')"
+                        data-ng-model="ctrl.model.target.algorithm">
+                    <option value="" disabled data-i18n-static="select_placeholder"></option>
                     <option value="1">(1) RSA</option>
                     <option value="2">(2) DSA</option>
                     <option value="3">(3) ECDSA</option>
                     <option value="4">(4) ED25519</option>
-            </select>
+                </select>
+                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+            </div>
         </div>
     </div>
 
@@ -21,12 +25,16 @@
         <label class="control-label col-md-3 required" for="fptype"
                data-i18n-static="domain_configuration_dns_entry_add_fptype"></label>
         <div class="col-md-6">
-            <select class="form-control" id="fptype" name="fptype" required
-                    data-ng-change="ctrl.setTargetValue('SSHFP')"
-                    data-ng-model="ctrl.model.target.fptype">
+            <div class="oui-select mb-0">
+                <select class="oui-select__input" id="fptype" name="fptype" required
+                        data-ng-change="ctrl.setTargetValue('SSHFP')"
+                        data-ng-model="ctrl.model.target.fptype">
+                    <option value="" disabled data-i18n-static="select_placeholder"></option>
                     <option value="1">(1) SHA-1</option>
                     <option value="2">(2) SHA-256</option>
-            </select>
+                </select>
+                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+            </div>
         </div>
     </div>
 

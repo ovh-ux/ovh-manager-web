@@ -1,12 +1,14 @@
 <div class="container-fluid px-0" data-ng-controller="DomainTabZoneDnsCtrl as ctrlDomainTabZoneDns">
 
-    <div data-ovh-alert="domain_tab_zonedns"></div>
-
-    <div class="loader text-center" data-ng-if="ctrlDomainTabZoneDns.loading.zone"></div>
+    <div class="text-center" data-ng-if="ctrlDomainTabZoneDns.loading.zone">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
 
     <div data-ng-show="!ctrlDomainTabZoneDns.loading.zone">
         <div class="row" data-ng-if="!ctrlDomainTabZoneDns.zone">
             <div class="col-md-9">
+                <div data-ovh-alert="{{alerts.domainZone}}"></div>
+
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="domain_tab_ZONE_no_zone"
                      data-ng-if="ctrlDomainTabZoneDns.dontDisplayActivateZone">
@@ -27,6 +29,8 @@
 
         <div class="row" data-ng-show="ctrlDomainTabZoneDns.zone">
             <div class="col-md-9">
+                <div data-ovh-alert="{{alerts.domainZone}}"></div>
+
                 <div class="alert alert-warning" role="alert"
                      data-ng-if="!ctrlDomainTabZoneDns.useDefaultsDns">
                     <div>
@@ -95,12 +99,15 @@
                                         <span class="input-group-addon" data-ng-if="!ctrlDomainTabZoneDns.search.filter">
                                             <span class="fa fa-filter" aria-hidden="true"></span>
                                         </span>
-                                        <select class="form-control" id="domainFilter"
-                                                data-ng-change="ctrlDomainTabZoneDns.goSearch()"
-                                                data-ng-model="ctrlDomainTabZoneDns.search.filter"
-                                                data-ng-options="zoneEntryType for zoneEntryType in ctrlDomainTabZoneDns.zone.fieldsTypes track by zoneEntryType">
-                                            <option value="" data-i18n-static="domain_tab_ZONE_type_all"></option>
-                                        </select>
+                                        <div class="oui-select oui-select_inline mb-0">
+                                            <select class="oui-select__input" id="domainFilter"
+                                                    data-ng-change="ctrlDomainTabZoneDns.goSearch()"
+                                                    data-ng-model="ctrlDomainTabZoneDns.search.filter"
+                                                    data-ng-options="zoneEntryType for zoneEntryType in ctrlDomainTabZoneDns.zone.fieldsTypes track by zoneEntryType">
+                                                <option value="" data-i18n-static="domain_tab_ZONE_type_all"></option>
+                                            </select>
+                                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -170,7 +177,7 @@
                                     <td class="align-middle font-italic text-center" colspan="5"
                                         data-i18n-static="domain_tab_ZONE_new_inline_zone"></td>
                                     <td class="text-right">
-                                        <button class="btn btn-default btn-sm" type="button" title="{{i18n.table_add_entry}}"
+                                        <button class="btn btn-default" type="button" title="{{i18n.table_add_entry}}"
                                                 data-ng-click="ctrlDomainTabZoneDns.activeEditMode()">
                                             <span class="fa fa-plus" aria-hidden="true"></span>
                                         </button>
@@ -195,13 +202,16 @@
                                                data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.ttl"
                                                data-ng-pattern="/^\d+$/">
                                     </td>
-                                    <td class="form-group" data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.fieldType.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.fieldType.$invalid }">
-                                        <select class="form-control" name="fieldType" required
-                                                data-ng-change="ctrlDomainTabZoneDns.fieldAndTargetCheck(ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay)"
-                                                data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
-                                                data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.fieldType"
-                                                data-ng-options="fieldType for fieldType in ctrlDomainTabZoneDns.zone.fieldsTypes track by fieldType">
-                                        </select>
+                                    <td>
+                                        <label class="oui-select oui-select_inline mb-0">
+                                            <select class="oui-select__input" name="fieldType" id="fieldType" required
+                                                    data-ng-change="ctrlDomainTabZoneDns.fieldAndTargetCheck(ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay)"
+                                                    data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
+                                                    data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.fieldType"
+                                                    data-ng-options="fieldType for fieldType in ctrlDomainTabZoneDns.zone.fieldsTypes track by fieldType">
+                                            </select>
+                                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                                        </label>
                                     </td>
                                     <td class="form-group" data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay.$invalid }">
                                         <input type="text" class="form-control" name="targetToDisplay"
@@ -209,7 +219,7 @@
                                                data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
                                                data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.targetToDisplay">
                                     </td>
-                                    <td class="text-right text-nowrap">
+                                    <td class="text-nowrap">
                                         <button class="btn btn-success" type="button" title="{{i18n.table_validate_entry}}"
                                                 data-ng-click="ctrlDomainTabZoneDns.addRecord()"
                                                 data-ng-disabled="!ctrlDomainTabZoneDns.addDnsRecordForm.$valid"
@@ -257,17 +267,16 @@
                                               data-uib-tooltip="{{i18n.domain_configuration_dns_entry_relative_warning_title}}&nbsp;&laquo;&nbsp;{{record.targetToDisplay}}.{{record.zoneToDisplay}}&nbsp;&raquo;&nbsp;">
                                         </span>
                                     </td>
-                                    <td class="text-center text-nowrap">
-                                        <div data-ng-if="!(record.fieldType === 'NS' && !record.subDomain) && ctrlDomainTabZoneDns.allowModification">
-                                            <button class="btn btn-icon" title="{{record.subDomainToDisplay}}.{{record.zoneToDisplay}}.&nbsp;{{::i18n.table_modify_entry}}"
-                                                    data-ng-click="setAction('zone/record/edit/domain-zone-record-edit', { domain: ctrlDomainTabZoneDns.domain, fieldTypes: this.zone.fieldsTypes, edit: record })">
-                                                <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
-                                            </button>
-                                            <button class="btn btn-icon" type="button" title="{{record.subDomainToDisplay}}.{{record.zoneToDisplay}}.&nbsp;{{::i18n.table_delete_entry}}"
-                                                    data-ng-click="setAction('zone/record/delete/domain-zone-record-delete', record)">
-                                                <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
-                                            </button>
-                                        </div>
+                                    <td class="text-right">
+                                        <button class="btn btn-icon" type="button"
+                                                data-ng-if="!(record.fieldType === 'NS' && !record.subDomain) && ctrlDomainTabZoneDns.allowModification"
+                                                data-linkedpopover="domain/zone/domain-zone-dns.popover.html"
+                                                data-linkedpopover-placement="left"
+                                                data-linkedpopover-remote="true"
+                                                data-linkedpopover-single="true"
+                                                data-linkedpopover-title="{{i18n.common_actions}}">
+                                            <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>
