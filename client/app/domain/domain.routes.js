@@ -12,7 +12,6 @@ angular.module("App").config(($stateProvider) => {
         controller: "DomainCtrl",
         controllerAs: "ctrlDomain",
         reloadOnSearch: false,
-        piwikActionName: "Domain configuration",
         params: {
             tab: null
         },
@@ -39,7 +38,6 @@ angular.module("App").config(($stateProvider) => {
         controller: "DomainCtrl",
         controllerAs: "ctrlDomain",
         reloadOnSearch: false,
-        piwikActionName: "Domain configuration",
         params: {
             tab: null
         },
