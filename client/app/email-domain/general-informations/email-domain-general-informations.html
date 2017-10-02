@@ -1,6 +1,7 @@
 <div class="container-fluid px-0" data-ng-controller="EmailTabGeneralInformationsCtrl as ctrlTabGeneralInformations">
     <div class="row">
         <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.emailDomain}}"></div>
             <div class="row d-md-flex">
                 <div class="col-sm-6">
                     <div class="oui-tile mb-5 h-100">
@@ -11,20 +12,19 @@
                                     <div class="oui-tile__definition">
                                         <strong class="d-block"
                                                 data-i18n-static="email_tab_domain_status"></strong>
-                                        <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                              data-ng-if="ctrlTabGeneralInformations.loading.domain"></span>
+                                        <oui-loader size="s" data-ng-if="ctrlTabGeneralInformations.loading.domain"></oui-loader>
                                         <span class="label"
                                               data-ng-class="{'label-success': ctrlTabGeneralInformations.domain.status === 'ok', 'label-error': ctrlTabGeneralInformations.domain.status !== 'ok'}"
                                               data-ng-bind="tr('email_tab_domain_status_' + ctrlTabGeneralInformations.domain.status)"
-                                              data-ng-if="!ctrlTabGeneralInformations.loading.domain"></span>
+                                              data-ng-if="!ctrlTabGeneralInformations.loading.domain && ctrlTabGeneralInformations.domain.status"></span>
+                                        <span data-ng-if="!ctrlTabGeneralInformations.loading.domain && !ctrlTabGeneralInformations.domain.status">-</span>
                                     </div>
                                 </li>
                                 <li class="oui-tile__item">
                                     <div class="oui-tile__definition">
                                         <strong class="d-block"
                                                 data-i18n-static="email_tab_domain_offer"></strong>
-                                        <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                              data-ng-if="ctrlTabGeneralInformations.loading.domain"></span>
+                                        <oui-loader size="s" data-ng-if="ctrlTabGeneralInformations.loading.domain"></oui-loader>
                                         <span data-ng-bind="ctrlTabGeneralInformations.domain.offer || '-'"
                                               data-ng-if="!ctrlTabGeneralInformations.loading.domain"></span>
                                     </div>
@@ -33,8 +33,7 @@
                                     <div class="oui-tile__definition">
                                         <strong class="d-block"
                                                 data-i18n-static="email_tab_domain_filer"></strong>
-                                        <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                              data-ng-if="ctrlTabGeneralInformations.loading.domain"></span>
+                                        <oui-loader size="s" data-ng-if="ctrlTabGeneralInformations.loading.domain"></oui-loader>
                                         <span data-ng-bind="ctrlTabGeneralInformations.domain.filerz || '-'"
                                               data-ng-if="!ctrlTabGeneralInformations.loading.domain"></span>
                                     </div>
@@ -45,8 +44,7 @@
                                             <div>
                                                 <strong class="d-block"
                                                         data-i18n-static="email_tab_domain_dns_filter"></strong>
-                                                <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                                      data-ng-if="ctrlTabGeneralInformations.loading.domain"></span>
+                                                <oui-loader size="s" data-ng-if="ctrlTabGeneralInformations.loading.domain"></oui-loader>
                                                 <span data-ng-bind="tr('email_tab_domain_dns_filter_' + (ctrlTabGeneralInformations.dnsFilter || 'NO_FILTERING'))"
                                                       data-ng-if="!ctrlTabGeneralInformations.loading.domain"></span>
                                             </div>
@@ -62,8 +60,7 @@
                                     <div class="oui-tile__definition">
                                         <strong class="d-block"
                                                 data-i18n-static="email_tab_domain_dns_mx_records"></strong>
-                                        <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                              data-ng-if="ctrlTabGeneralInformations.loading.domain"></span>
+                                        <oui-loader size="s" data-ng-if="ctrlTabGeneralInformations.loading.domain"></oui-loader>
                                         <ul data-ng-if="!ctrlTabGeneralInformations.loading.domain && ctrlTabGeneralInformations.mxRecords.length > 0">
                                             <li data-ng-repeat="mxRecord in ctrlTabGeneralInformations.mxRecords track by $index"
                                                 data-ng-bind="mxRecord">
@@ -90,8 +87,7 @@
                                                   data-uib-tooltip="{{i18n.email_tab_accounts_quota_info}}"
                                                   data-tooltip-placement="right"></span>
                                         </strong>
-                                        <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                              data-ng-if="ctrlTabGeneralInformations.loading.quotas"></span>
+                                        <oui-loader size="s" data-ng-if="ctrlTabGeneralInformations.loading.quotas"></oui-loader>
                                         <span data-ng-bind="ctrlTabGeneralInformations.summary.account + ' / ' + (ctrlTabGeneralInformations.quotas.account || '0')"
                                               data-ng-if="!ctrlTabGeneralInformations.loading.quotas"></span>
                                     </div>
@@ -100,8 +96,7 @@
                                     <div class="oui-tile__definition">
                                         <strong class="d-block"
                                                 data-i18n-static="email_tab_responders_quota"></strong>
-                                        <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                              data-ng-if="ctrlTabGeneralInformations.loading.quotas"></span>
+                                        <oui-loader size="s" data-ng-if="ctrlTabGeneralInformations.loading.quotas"></oui-loader>
                                         <span data-ng-bind="ctrlTabGeneralInformations.summary.responder + ' / ' + (ctrlTabGeneralInformations.quotas.responder || '0')"
                                               data-ng-if="!ctrlTabGeneralInformations.loading.quotas"></span>
                                     </div>
@@ -110,8 +105,7 @@
                                     <div class="oui-tile__definition">
                                         <strong class="d-block"
                                                 data-i18n-static="email_tab_redirections_quota"></strong>
-                                        <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                              data-ng-if="ctrlTabGeneralInformations.loading.quotas"></span>
+                                        <oui-loader size="s" data-ng-if="ctrlTabGeneralInformations.loading.quotas"></oui-loader>
                                         <span data-ng-bind="ctrlTabGeneralInformations.summary.redirection + ' / ' + ((ctrlTabGeneralInformations.quotas.redirection + ctrlTabGeneralInformations.quotas.alias) || '0')"
                                               data-ng-if="!ctrlTabGeneralInformations.loading.quotas"></span>
                                     </div>

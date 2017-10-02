@@ -1,5 +1,7 @@
 <div class="row" data-ng-controller="EmailDelegateFilterCtrl as ctrlEmailDelegateFilter">
     <div class="col-md-9">
+        <div data-ovh-alert="{{alerts.emailDomainFilters}}"></div>
+
         <button class="oui-button oui-button_link oui-button_icon-left" type="button"
                 data-ng-click="ctrlEmailDelegate.resetInitialView()">
             <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
@@ -7,7 +9,8 @@
         </button>
         <h2>
             <span data-i18n-static="email_tab_filters_management_heading"></span>
-            <strong data-ng-bind="ctrlEmailDelegateFilter.currentAccount.email"></strong>
+            <strong class="word-break"
+                    data-ng-bind="ctrlEmailDelegateFilter.currentAccount.email"></strong>
         </h2>
 
         <div class="table-responsive">

@@ -7,10 +7,15 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.importFromImapForm.$valid">
 
-            <p class="font-weight-bold" data-i18n-static="email_tab_modal_import_from_imap_heading"></p>
-            <p data-i18n-static="email_tab_modal_import_from_imap_account_info"></p>
+            <p data-i18n-static="email_tab_modal_import_from_imap_heading"></p>
+            <p class="font-weight-bold" data-i18n-static="email_tab_modal_import_from_imap_account_info"></p>
 
             <form class="form-horizontal" name="ctrl.importFromImapForm">
+                <p>
+                    <small class="text-danger">*</small>
+                    <small data-i18n-static="required_fields"></small>
+                </p>
+
                 <div class="form-group">
                     <label class="control-label col-md-4 required" for="txt-server-address"
                            data-i18n-static="email_tab_modal_import_from_imap_server_addr"></label>
@@ -35,12 +40,20 @@
                                data-ng-model="ctrl.model.accountPassword">
                     </div>
                 </div>
-                <div class="checkbox col-md-offset-4 pl-lg-3">
-                    <label>
-                        <input type="checkbox" id="chk-use-ssl" name="useSsl"
+                <div class="col-md-offset-4 pl-lg-3">
+                    <div class="oui-checkbox">
+                        <input type="checkbox" class="oui-checkbox__input" id="chk-use-ssl" name="useSsl"
                                data-ng-model="ctrl.model.useSSL">
-                        <span data-i18n-static="email_tab_modal_import_from_imap_use_ssh"></span>
-                    </label>
+                        <label class="oui-checkbox__label-container" for="chk-use-ssl">
+                            <span class="oui-checkbox__label"
+                                  data-i18n-static="email_tab_modal_import_from_imap_use_ssh"></span>
+                            <span class="oui-checkbox__icon">
+                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                            </span>
+                        </label>
+                    </div>
                 </div>
                 <hr />
                 <p class="mb-4">

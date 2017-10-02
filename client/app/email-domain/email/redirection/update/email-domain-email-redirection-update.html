@@ -10,15 +10,17 @@
             <p class="font-weight-bold" data-18n-static="email_tab_modal_update_redirection_heading"></p>
             <p data-i18n-static="email_tab_modal_create_redirection_info"></p>
 
-            <p>
-                <small class="text-danger">*</small>
-                <small data-i18n-static="required_fields"></small>
-            </p>
-
             <form class="form-horizontal" name="ctrl.updateRedirectionForm">
+                <p>
+                    <small class="text-danger">*</small>
+                    <small data-i18n-static="required_fields"></small>
+                </p>
+
                 <div class="row mb-4">
-                    <div class="col-md-4 font-weight-bold text-lg-right" data-i18n-static="email_tab_modal_redirection_create_from"></div>
-                    <div class="col-md-8" data-ng-bind="ctrl.model.from"></div>
+                    <div class="col-md-4 oui-label text-lg-right"
+                         data-i18n-static="email_tab_modal_redirection_create_from"></div>
+                    <div class="col-md-8"
+                         data-ng-bind="ctrl.model.from"></div>
                 </div>
 
                 <div class="form-group" data-ng-class="{

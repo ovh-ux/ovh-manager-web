@@ -1,5 +1,7 @@
 <div class="row" data-ng-controller="EmailDomainEmailRedirectionCtrl as ctrlEmailDomainEmailRedirection">
     <div class="col-md-9">
+        <div data-ovh-alert="{{alerts.emailDomainRedirects}}"></div>
+
         <button class="oui-button oui-button_link oui-button_icon-left" type="button"
                 data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
             <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
@@ -7,63 +9,64 @@
         </button>
         <h2 data-i18n-static="email_tab_redirections_management_title"></h2>
 
-        <dl class="dl-horizontal dl-lg" data-ng-if="ctrlEmailDomainEmail.quotas.redirection > 0">
-            <dt data-i18n-static="email_tab_redirections_quota"></dt>
-            <dd class="text-nowrap">
-                <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                      data-ng-if="ctrlEmailDomainEmailRedirection.loading.redirections"></span>
-                <span data-ng-bind="ctrlEmailDomainEmailRedirection.redirections.length + ' / ' + (ctrlEmailDomainEmail.quotas.redirection || '0')"
-                      data-ng-if="!ctrlEmailDomainEmailRedirection.loading.redirections"></span>
-            </dd>
-        </dl>
-
-        <div class="loader text-center" data-ng-if="ctrlEmailDomainEmailRedirection.loading.redirections"></div>
-
-        <div class="alert alert-info mt-4" role="alert"
-             data-i18n-static="email_tab_table_redirections_empty"
-             data-ng-if="!ctrlEmailDomainEmailRedirection.loading.redirections && !ctrlEmailDomainEmailRedirection.redirections.length">
+        <div class="text-center" data-ng-if="ctrlEmailDomainEmailRedirection.loading.redirections">
+            <oui-loader size="l" inline="true"></oui-loader>
         </div>
 
-        <div class="table-responsive" data-ng-if="!ctrlEmailDomainEmailRedirection.loading.redirections && ctrlEmailDomainEmailRedirection.redirections.length > 0">
-            <table class="table"
-                   data-ng-class="{'table-hover table-striped': !ctrlEmailDomainEmailRedirection.loading.pager}">
-                <thead>
-                    <tr>
-                        <th class="w-50" scope="col" data-i18n-static="emails_common_from"></th>
-                        <th scope="col" data-i18n-static="emails_common_to"></th>
-                        <th class="min-width text-right" scope="col">
-                            <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_header_refresh}}"
-                                    data-ng-click="ctrlEmailDomainEmailRedirection.refreshTableRedirections()">
-                                <span class="fa fa-refresh" aria-hidden="true"></span>
-                            </button>
-                        </th>
-                    </tr>
-                </thead>
+        <div data-ng-if="!ctrlEmailDomainEmailRedirection.loading.redirections">
+            <dl class="dl-horizontal dl-lg" data-ng-if="ctrlEmailDomainEmail.quotas.redirection > 0">
+                <dt data-i18n-static="email_tab_redirections_quota"></dt>
+                <dd class="text-nowrap"
+                    data-ng-bind="ctrlEmailDomainEmailRedirection.redirections.length + ' / ' + (ctrlEmailDomainEmail.quotas.redirection || '0')">
+                </dd>
+            </dl>
 
-                <tbody data-ng-if="ctrlEmailDomainEmailRedirection.loading.pager">
-                    <tr>
-                        <td class="loader text-center" colspan="3"></td>
-                    </tr>
-                </tbody>
+            <div class="alert alert-info mt-4" role="alert"
+                 data-i18n-static="email_tab_table_redirections_empty"
+                 data-ng-if="!ctrlEmailDomainEmailRedirection.redirections.length">
+            </div>
 
-                <!--redirections-->
-                <tbody>
-                    <tr data-ng-repeat="redirection in ctrlEmailDomainEmailRedirection.redirectionsDetails track by $index">
-                        <td data-ng-bind="redirection.from"></td>
-                        <td class="word-break" data-ng-bind="redirection.to"></td>
-                        <td class="text-center">
-                            <button class="btn btn-icon" type="button"
-                                    data-linkedpopover="email-domain/email/redirection/email-domain-email-redirection.popover.html"
-                                    data-linkedpopover-placement="left"
-                                    data-linkedpopover-remote="true"
-                                    data-linkedpopover-single="true"
-                                    data-linkedpopover-title="{{i18n.common_actions}}">
-                                <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive" data-ng-if="ctrlEmailDomainEmailRedirection.redirections.length > 0">
+                <table class="table"
+                       data-ng-class="{'table-hover table-striped': !ctrlEmailDomainEmailRedirection.loading.pager}">
+                    <thead>
+                        <tr>
+                            <th class="w-50" scope="col" data-i18n-static="emails_common_from"></th>
+                            <th scope="col" data-i18n-static="emails_common_to"></th>
+                            <th class="min-width text-right" scope="col">
+                                <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_header_refresh}}"
+                                        data-ng-click="ctrlEmailDomainEmailRedirection.refreshTableRedirections()">
+                                    <span class="fa fa-refresh" aria-hidden="true"></span>
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody data-ng-if="ctrlEmailDomainEmailRedirection.loading.pager">
+                        <tr>
+                            <td class="loader text-center" colspan="3"></td>
+                        </tr>
+                    </tbody>
+
+                    <!--redirections-->
+                    <tbody>
+                        <tr data-ng-repeat="redirection in ctrlEmailDomainEmailRedirection.redirectionsDetails track by $index">
+                            <td data-ng-bind="redirection.from"></td>
+                            <td class="word-break" data-ng-bind="redirection.to"></td>
+                            <td class="text-center">
+                                <button class="btn btn-icon" type="button"
+                                        data-linkedpopover="email-domain/email/redirection/email-domain-email-redirection.popover.html"
+                                        data-linkedpopover-placement="left"
+                                        data-linkedpopover-remote="true"
+                                        data-linkedpopover-single="true"
+                                        data-linkedpopover-title="{{i18n.common_actions}}">
+                                    <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="clearfix"
@@ -98,8 +101,7 @@
                     data-ng-disabled="ctrlEmailDomainEmailRedirection.loading.exportCSV || !ctrlEmailDomainEmailRedirection.redirections.length">
             </button>
         </div>
-        <div class="mb-5"
-             data-guides
+        <div data-guides
              data-guides-title="tr('guide_subtitle')"
              data-guides-list="'emailsRedirection'"
              data-tr="tr">

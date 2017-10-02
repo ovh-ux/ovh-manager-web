@@ -31,6 +31,8 @@ angular
             this.works = {};
             this.statusWorksDone = ["closed", "finished"];
 
+            _.set(this.$scope.alerts, "emailDomainAccounts", "domain_alert_email_accounts");
+
             this.User
                 .getUrlOf("guides")
                 .then((guides) => {
@@ -175,7 +177,7 @@ angular
                     }
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.emailDomainAccounts);
                 })
                 .finally(() => {
                     if (_.isEmpty(this.emails)) {

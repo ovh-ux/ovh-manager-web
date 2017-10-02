@@ -1,5 +1,7 @@
 <div class="row">
     <div class="col-md-9">
+        <div data-ovh-alert="{{alerts.emailDomainAccounts}}"></div>
+
         <div class="mb-3">
             <form class="form-inline d-md-flex justify-content-md-end" name="searchEmailDelegateForm">
                 <div class="form-group">
@@ -55,7 +57,8 @@
                 <!-- no accounts -->
                 <tbody data-ng-if="!ctrlEmailDelegate.loading.accounts && !ctrlEmailDelegate.emails.length">
                     <tr>
-                        <td class="text-center" colspan="6" data-i18n-static="email_tab_table_emails_empty"></td>
+                        <td class="text-center" colspan="6"
+                            data-i18n-static="email_tab_table_emails_empty"></td>
                     </tr>
                 </tbody>
 

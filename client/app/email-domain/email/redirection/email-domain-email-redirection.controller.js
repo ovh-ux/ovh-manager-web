@@ -25,6 +25,8 @@ angular.module("App").controller(
             };
             this.redirectionsDetails = [];
 
+            _.set(this.$scope.alerts, "emailDomainRedirects", "domain_alert_email_redirects");
+
             this.$scope.$on("hosting.tabs.emails.redirections.refresh", () => this.refreshTableRedirections());
 
             this.refreshTableRedirections();
@@ -48,7 +50,7 @@ angular.module("App").controller(
             return this.Emails
                 .getRedirections(this.$stateParams.productId)
                 .then((data) => (this.redirections = data))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_redirections_error"), err, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_redirections_error"), err, this.$scope.alerts.emailDomainRedirects))
                 .finally(() => {
                     if (_.isEmpty(this.redirections)) {
                         this.loading.redirections = false;

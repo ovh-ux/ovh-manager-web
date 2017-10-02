@@ -34,8 +34,8 @@ angular.module("App").controller(
                         to: this.model.to
                     }
                 })
-                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_update_redirection_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_update_redirection_error"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_update_redirection_success"), this.$scope.alerts.emailDomainRedirects))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_update_redirection_error"), err, this.$scope.alerts.emailDomainRedirects))
                 .finally(() => this.$scope.resetAction());
         }
     }

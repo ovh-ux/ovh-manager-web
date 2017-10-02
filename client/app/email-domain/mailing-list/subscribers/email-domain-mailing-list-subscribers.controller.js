@@ -31,6 +31,8 @@ angular.module("App").controller(
             };
             this.search = { subscribers: "" };
 
+            _.set(this.$scope.alerts, "emailDomainMailingListSubscribers", "domain_alert_email_mailing_list_subscribers");
+
             this.$scope.$on("hosting.tabs.mailingLists.subscribers.refresh", () => this.refreshTableSubscribers());
             this.$scope.$on("mailingLists.subscribers.poll.start", (pollObject, task) => {
                 if (task.account === this.mailingList.name) {
@@ -47,7 +49,7 @@ angular.module("App").controller(
                         this.runPolling().then((hasPolling) => {
                             if (!hasPolling) {
                                 this.subscribers.updating = false;
-                                this.Alerter.resetMessage(this.$scope.alerts.dashboard);
+                                this.Alerter.resetMessage(this.$scope.alerts.emailDomainMailingListSubscribers);
                                 this.refreshTableSubscribers(true);
                             }
                         });
@@ -55,7 +57,7 @@ angular.module("App").controller(
                 }
             });
             this.$scope.$on("mailingLists.subscribers.sendListByEmail.poll.done", () => {
-                this.Alerter.success(this.$scope.tr("mailing_list_tab_modal_sendListByEmail_sent_success"), this.$scope.alerts.dashboard);
+                this.Alerter.success(this.$scope.tr("mailing_list_tab_modal_sendListByEmail_sent_success"), this.$scope.alerts.emailDomainMailingListSubscribers);
             });
             this.$scope.$on("$destroy", () => {
                 this.MailingLists.killAllPolling({ namespace: "mailingLists.subscribers.poll" });
@@ -129,7 +131,7 @@ angular.module("App").controller(
                     forceRefresh
                 })
                 .then((data) => (this.subscribers.ids = this.$filter("orderBy")(data)))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.emailDomainMailingListSubscribers))
                 .finally(() => {
                     if (_.isEmpty(this.subscribers.ids)) {
                         this.loading.subscribers = false;
@@ -174,7 +176,7 @@ angular.module("App").controller(
                 fileName: `export_${this.mailingList.name}_${moment().format("YYYY-MM-DD_HH:mm:ss")}.csv`,
                 datas: `${this.$scope.tr("mailing_list_tab_table_header_subscriber_email")}\n${this.subscribers.ids.join("\n")}`
             });
-            this.Alerter.success(this.$scope.tr("mailing_list_tab_export_csv_success", [data]), this.$scope.alerts.dashboard);
+            this.Alerter.success(this.$scope.tr("mailing_list_tab_export_csv_success", [data]), this.$scope.alerts.emailDomainMailingListSubscribers);
         }
     }
 );

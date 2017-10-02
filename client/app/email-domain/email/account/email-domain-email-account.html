@@ -1,7 +1,8 @@
 <div class="row">
     <div class="col-md-9">
-        <div class="alert alert-warning"
-             role="alert"
+        <div data-ovh-alert="{{alerts.emailDomainAccounts}}"></div>
+
+        <div class="alert alert-warning" role="alert"
              data-i18n-static="email_tab_table_emails_quota_excedeed"
              data-ng-if="!ctrlEmailDomainEmail.loading.emails && ctrlEmailDomainEmail.quotas.account <= 0"></div>
 
@@ -10,11 +11,7 @@
                 <div class="form-group">
                     <label class="sr-only" for="searchEmailAccount"></label>
                     <div class="input-group">
-                        <input type="text"
-                               class="form-control"
-                               id="searchEmailAccount"
-                               name="searchEmailAccount"
-                               placeholder="{{::i18n.navigation_left_search}}"
+                        <input type="text" class="form-control" id="searchEmailAccount" name="searchEmailAccount" placeholder="{{::i18n.navigation_left_search}}"
                                data-ng-change="ctrlEmailDomainEmail.goSearch()"
                                data-ng-disabled="ctrlEmailDomainEmail.loading.accounts"
                                data-ng-model="ctrlEmailDomainEmail.search.accounts"
@@ -62,7 +59,8 @@
                     <!-- no accounts -->
                     <tbody data-ng-if="!ctrlEmailDomainEmail.loading.accounts && ctrlEmailDomainEmail.quotas.account > 0 && ctrlEmailDomainEmail.emails.length === 0">
                         <tr>
-                            <td class="text-center" colspan="7" data-i18n-static="email_tab_table_emails_empty"></td>
+                            <td class="text-center" colspan="7"
+                                data-i18n-static="email_tab_table_emails_empty"></td>
                         </tr>
                     </tbody>
 
@@ -74,11 +72,7 @@
                             <td>
                                 <div class="col-xs-10 p-0">
                                     <div class="progress m-0">
-                                        <div class="progress-bar"
-                                             role="progressbar"
-                                             aria-valuemin="0"
-                                             aria-valuemax="100"
-                                             aria-valuenow="{{email.percentUse}}"
+                                        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{email.percentUse}}"
                                              data-ng-class="{
                                                 'progress-bar-success': email.percentUse < 51,
                                                 'progress-bar-warning': email.percentUse > 50 && email.percentUse < 81,
@@ -191,6 +185,7 @@
              data-guides
              data-guides-title="tr('guide_subtitle')"
              data-guides-list="'emailsAccounts'"
-             data-tr="tr"></div>
+             data-tr="tr">
+        </div>
     </div>
 </div>

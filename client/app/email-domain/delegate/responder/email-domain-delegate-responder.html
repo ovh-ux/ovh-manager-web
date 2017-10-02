@@ -1,5 +1,7 @@
 <div class="row" data-ng-controller="EmailDelegateResponderCtrl as ctrlEmailDelegateResponder">
     <div class="col-md-9">
+        <div data-ovh-alert="{{alerts.emailDomainResponders}}"></div>
+
         <button class="oui-button oui-button_link oui-button_icon-left" type="button"
                 data-ng-click="ctrlEmailDelegate.resetInitialView()">
             <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
@@ -51,7 +53,9 @@
                         <td class="text-center" colspan="2"
                             data-ng-if="!responder.to && !responder.from">permanent</td>
                         <td class="text-center">
-                            <span class="label" data-ng-class="{'label-success': !ctrlEmailDelegateResponder.constructor.isExpired(responder), 'label-danger': ctrlEmailDelegateResponder.constructor.isExpired(responder)}"
+                            <span class="label" data-ng-class="{
+                                    'label-success': !ctrlEmailDelegateResponder.constructor.isExpired(responder),
+                                    'label-danger': ctrlEmailDelegateResponder.constructor.isExpired(responder)}"
                                   data-ng-bind="tr('email_tab_responders_status_expired_' + ctrlEmailDelegateResponder.constructor.isExpired(responder))"></span>
                         </td>
                         <td data-ng-bind="::responder.copyTo"></td>
