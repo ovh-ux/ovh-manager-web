@@ -18,6 +18,6 @@ angular
         }
 
         canDeleteSSL () {
-            return this.$scope.hosting != null && this.$scope.hosting.hasHostedSsl && this.alreadyHasSSL();
+            return this.$scope.hosting != null && (this.$scope.hosting.hasHostedSsl || this.alreadyHasSSL());
         }
     });
