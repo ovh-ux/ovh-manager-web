@@ -81,7 +81,7 @@
         <% if (prodMode) { %>
             <!--<script type="text/javascript">window.console={error:function(){},log:function(){},debug:function(){},warn:function(){},dir:function(){},info:function(){},assert:function(){}};</script>-->
             <script type="text/javascript">
-                var CKEDITOR_BASEPATH = '../bower_components/ckeditor/';
+                var CKEDITOR_BASEPATH = (window.location.pathname !== "/" ? window.location.pathname.split("/").splice(0, window.location.pathname.split("/").length - 1).join("/") : "") + '/bower_components/ckeditor/';
             </script>
             <script type="text/javascript" src="<%= basepath %>js/app/bin/common.min.js"></script>
             <script type="text/javascript" src="<%= basepath %>js/app/bin/app.min.js"></script>
