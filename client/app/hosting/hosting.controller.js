@@ -25,7 +25,8 @@ angular
         };
 
         $scope.alerts = {
-            dashboard: "hosting.alerts.dashboard"
+            dashboard: "hosting.alerts.dashboard",
+            general: "hosting.alerts.general"
         };
 
         $scope.urlDomainOrder = null;
@@ -155,121 +156,110 @@ angular
             $scope.loadSsl();
 
             Hosting.getSelected($stateParams.productId, true)
-                .then(
+                .then((hosting) => {
+                    $scope.hosting = hosting;
+                    $scope.hosting.displayName = hosting.displayName || hosting.serviceDisplayName;
 
-                    // success
-                    (hosting) => {
-                        $scope.hosting = hosting;
+                    $scope.isAdminPvtDb = false;
 
-                        $scope.isAdminPvtDb = false;
-
-                        Hosting.getServiceInfos($stateParams.productId)
-                            .then((serviceInfos) => {
-                                $scope.hosting.serviceInfos = serviceInfos;
-                            })
-                            .catch((err) => {
-                                $scope.hosting.serviceInfos = {};
-                                Alerter.error(err);
-                            });
-
-                        Hosting.getHosting($stateParams.productId)
-                            .then((hostingProxy) => {
-                                $scope.hostingProxy = hostingProxy;
-
-                                $scope.ftp = hostingProxy.serviceManagementAccess.ftp;
-                                $scope.ftpUrl = `ftp://${hostingProxy.serviceManagementAccess.ftp.url}:${hostingProxy.serviceManagementAccess.ftp.port}/`;
-                                $scope.http = hostingProxy.serviceManagementAccess.http;
-                                $scope.httpUrl = `http://${hostingProxy.serviceManagementAccess.http.url}:${hostingProxy.serviceManagementAccess.http.port}/`;
-                                $scope.ssh = hostingProxy.serviceManagementAccess.ssh;
-                                $scope.sshUrl = `ssh://${hostingProxy.serviceManagementAccess.ssh.url}:${hostingProxy.serviceManagementAccess.ssh.port}/`;
-
-                                if ($scope.hostingProxy && $scope.hostingProxy.cluster && parseInt($scope.hostingProxy.cluster.split("cluster")[1], 10) >= 20) { // FOR GRAVELINE
-                                    $scope.urchin = URI.expand(constants.urchin_gra, {
-                                        serviceName: hosting.serviceName,
-                                        cluster: hostingProxy.cluster
-                                    }).toString();
-                                } else {
-                                    $scope.urchin = URI.expand(constants.urchin, {
-                                        serviceName: hosting.serviceName,
-                                        cluster: hostingProxy.cluster
-                                    }).toString();
-                                }
-
-                            })
-                            .finally(() => ($scope.loadingHostingInformations = false));
-
-                        User.getUrlOf("guides").then((guides) => {
-                            if (guides) {
-                                // GLOBAL ALERT TO UPGRADE APACHE
-                                if (_.indexOf(hosting.updates, "APACHE24") >= 0) {
-                                    Alerter.alertFromSWS($scope.tr("hosting_global_php_version_pending_update_apache", [guides.works.apache, "http://travaux.ovh.net/?do=details&id=25601"]), null, $scope.alerts.dashboard);
-                                }
-
-                                switch ($scope.hosting.serviceState) {
-                                case "BLOQUED":
-                                    if (guides.hostingHackState) {
-                                        $scope.guideHostingState = guides.hostingHackState;
-                                    }
-                                    break;
-                                case "MAINTENANCE":
-                                    if (guides.hostingDisabledState) {
-                                        $scope.guideHostingState = guides.hostingDisabledState;
-                                    }
-                                    break;
-                                default:
-                                    break;
-                                }
-                            }
+                    Hosting.getServiceInfos($stateParams.productId)
+                        .then((serviceInfos) => {
+                            $scope.hosting.serviceInfos = serviceInfos;
+                        })
+                        .catch((err) => {
+                            $scope.hosting.serviceInfos = {};
+                            Alerter.error(err);
                         });
 
-                        User.getUrlOfEndsWithSubsidiary("hosting").then((url) => ($scope.urls.hosting = url));
+                    Hosting.getHosting($stateParams.productId)
+                        .then((hostingProxy) => {
+                            $scope.hostingProxy = hostingProxy;
 
-                        Hosting.getPrivateDatabasesLinked($stateParams.productId)
-                            .then((databasesId) =>
-                                $q.all(
-                                    _.map(databasesId, (dbName) =>
-                                        $scope.isAdminPrivateDb(dbName).then((isAdmin) => ({
-                                            name: dbName,
-                                            isAdmin
-                                        }))
-                                    )
-                                )
-                            )
-                            .then((databases) => ($scope.privateDatabasesLinked = databases))
-                            .catch((err) => Alerter.error(err));
+                            $scope.ftp = hostingProxy.serviceManagementAccess.ftp;
+                            $scope.ftpUrl = `ftp://${hostingProxy.serviceManagementAccess.ftp.url}:${hostingProxy.serviceManagementAccess.ftp.port}/`;
+                            $scope.http = hostingProxy.serviceManagementAccess.http;
+                            $scope.httpUrl = `http://${hostingProxy.serviceManagementAccess.http.url}:${hostingProxy.serviceManagementAccess.http.port}/`;
+                            $scope.ssh = hostingProxy.serviceManagementAccess.ssh;
+                            $scope.sshUrl = `ssh://${hostingProxy.serviceManagementAccess.ssh.url}:${hostingProxy.serviceManagementAccess.ssh.port}/`;
 
-                        $scope.hosting.displayName = !$scope.hosting.displayName ? $scope.hosting.serviceDisplayName : $scope.hosting.displayName;
+                            if ($scope.hostingProxy && $scope.hostingProxy.cluster && parseInt($scope.hostingProxy.cluster.split("cluster")[1], 10) >= 20) { // FOR GRAVELINE
+                                $scope.urchin = URI.expand(constants.urchin_gra, {
+                                    serviceName: hosting.serviceName,
+                                    cluster: hostingProxy.cluster
+                                }).toString();
+                            } else {
+                                $scope.urchin = URI.expand(constants.urchin, {
+                                    serviceName: hosting.serviceName,
+                                    cluster: hostingProxy.cluster
+                                }).toString();
+                            }
 
-                        if (hosting.isExpired) {
-                            Alerter.alertFromSWS($scope.tr("common_service_expired", [hosting.serviceDisplayName]), null, $scope.alerts.dashboard);
-                        } else if (hosting.messages.length > 0) {
-                            Alerter.alertFromSWS($scope.tr("hosting_dashboard_loading_error"), hosting, $scope.alerts.dashboard);
-                            if (!hosting.name) {
-                                $scope.loadingHostingError = true;
+                        })
+                        .finally(() => ($scope.loadingHostingInformations = false));
+
+                    User.getUrlOf("guides").then((guides) => {
+                        if (guides) {
+                            // GLOBAL ALERT TO UPGRADE APACHE
+                            if (_.indexOf(hosting.updates, "APACHE24") >= 0) {
+                                Alerter.alertFromSWS($scope.tr("hosting_global_php_version_pending_update_apache", [guides.works.apache, "http://travaux.ovh.net/?do=details&id=25601"]), null, $scope.alerts.general);
+                            }
+
+                            switch ($scope.hosting.serviceState) {
+                            case "BLOQUED":
+                                if (guides.hostingHackState) {
+                                    $scope.guideHostingState = guides.hostingHackState;
+                                }
+                                break;
+                            case "MAINTENANCE":
+                                if (guides.hostingDisabledState) {
+                                    $scope.guideHostingState = guides.hostingDisabledState;
+                                }
+                                break;
+                            default:
+                                break;
                             }
                         }
+                    });
 
-                        // error 409 and 403 have no matter, they juste saying: "the job is pending"
-                        // and other ?  I think is a kind of sub treat as "best effort"
-                        // Anyway, the ovhConfig must be loaded
-                        HostingOvhConfig.ovhConfigRefresh($stateParams.productId).finally(loadOvhConfig);
+                    User.getUrlOfEndsWithSubsidiary("hosting").then((url) => ($scope.urls.hosting = url));
 
-                        if (!hosting.isExpired) {
-                            checkFlushCdnState();
-                            checkSqlPriveState();
-                            $scope.getOfferPrivateSQLInfo();
-                            return Screenshot.getScreenshot(hosting.serviceName);
+                    Hosting.getPrivateDatabasesLinked($stateParams.productId)
+                        .then((databasesId) =>
+                            $q.all(
+                                _.map(databasesId, (dbName) =>
+                                    $scope.isAdminPrivateDb(dbName).then((isAdmin) => ({
+                                        name: dbName,
+                                        isAdmin
+                                    }))
+                                )
+                            )
+                        )
+                        .then((databases) => ($scope.privateDatabasesLinked = databases))
+                        .catch((err) => Alerter.error(err));
+
+                    if (hosting.messages.length > 0) {
+                        Alerter.alertFromSWS($scope.tr("hosting_dashboard_loading_error"), hosting, $scope.alerts.dashboard);
+                        if (!hosting.name) {
+                            $scope.loadingHostingError = true;
                         }
-                        return null;
-                    },
-
-                    // error
-                    () => {
-                        $scope.loadingHostingInformations = false;
-                        $scope.loadingHostingError = true;
-                        Alerter.alertFromSWS($scope.tr("hosting_dashboard_loading_error"), null, $scope.alerts.dashboard);
                     }
-                )
+
+                    // error 409 and 403 have no matter, they juste saying: "the job is pending"
+                    // and other ?  I think is a kind of sub treat as "best effort"
+                    // Anyway, the ovhConfig must be loaded
+                    HostingOvhConfig.ovhConfigRefresh($stateParams.productId).finally(loadOvhConfig);
+
+                    if (!hosting.isExpired) {
+                        checkFlushCdnState();
+                        checkSqlPriveState();
+                        $scope.getOfferPrivateSQLInfo();
+                        return Screenshot.getScreenshot(hosting.serviceName);
+                    }
+                    return null;
+                }, () => {
+                    $scope.loadingHostingInformations = false;
+                    $scope.loadingHostingError = true;
+                })
                 .then((screenshot) => {
                     $scope.screenshot = screenshot;
                 })

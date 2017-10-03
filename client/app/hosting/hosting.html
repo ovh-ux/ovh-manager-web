@@ -1,6 +1,8 @@
 <div data-ovh-alert="{{alerts.dashboard}}"></div>
 
-<div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loadingHostingInformations && !loadingHostingError"></div>
+<div class="text-center" data-ng-if="loadingHostingInformations && !loadingHostingError">
+    <oui-loader size="l" inline="true"></oui-loader>
+</div>
 
 <div class="page-header" data-ng-if="!loadingHostingInformations && !loadingHostingError">
     <div class="row">
@@ -79,6 +81,12 @@
     </div>
 </div>
 
+<div class="p-5" data-ng-if="!loadingHostingInformations && hosting.isExpired">
+    <div class="alert alert-warning" role="alert"
+         data-ng-bind="tr('common_service_expired', [hosting.serviceDisplayName])">
+    </div>
+</div>
+
 <div data-ng-controller="HostingTabsCtrl as ctrlHostingTabs"
      data-ng-if="!loadingHostingInformations && !loadingHostingError && !hosting.isExpired">
     <ovh-tabs tabs="ctrlHostingTabs.tabs"
@@ -88,6 +96,8 @@
               menu="ctrlHostingTabs.tabMenu"
               tr="tr"></ovh-tabs>
     <div class="tab-content">
+
+        <div data-ovh-alert="{{alerts.general}}"></div>
 
         <div class="alert alert-info" role="alert"
              data-ng-if="hosting.offer === 'KIMSUFI_2015'">
@@ -110,7 +120,8 @@
 
 <div id="currentAction" class="modal fade currentAction" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <div id="modal-container" class="modal-content" data-ng-include="stepPath"></div>
+        <div id="modal-container" class="modal-content"
+             data-ng-include="stepPath"></div>
         <div id="modal-help" class="help4wizards"></div>
     </div>
 </div>
