@@ -1,5 +1,6 @@
 <div class="row">
     <div class="col-md-9">
+        <div data-ovh-alert="{{alerts.databases}}"></div>
 
         <div class="alert alert-info" role="alert"
              data-ng-if="hosting.offer === 'START_10_M'">
@@ -30,7 +31,9 @@
 
         <div data-ng-if="displayTabs.databases">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.init"></div>
+            <div class="text-center" data-ng-if="loading.init">
+                <oui-loader size="l" inline="true"></oui-loader>
+            </div>
 
             <div class="alert alert-info" role="alert"
                  data-i18n-static="hosting_tab_DATABASES_table_empty"
@@ -76,7 +79,8 @@
                                 <th class="text-center" scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_backup"></th>
                                 <th class="min-width text-right" scope="col">
                                     <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
-                                            data-ng-click="reload()">
+                                            data-ng-click="reload()"
+                                            data-ng-disabled="loading.databases">
                                         <span class="fa fa-refresh" aria-hidden="true"></span>
                                     </button>
                                 </th>
@@ -85,13 +89,16 @@
 
                         <tbody data-ng-if="loading.databases">
                             <tr>
-                                <td class="loader text-center" colspan="8" aria-label="{{i18n.common_loading}}"></td>
+                                <td class="text-center" colspan="8">
+                                    <oui-loader inline="true"></oui-loader>
+                                </td>
                             </tr>
                         </tbody>
 
                         <tbody data-ng-if="!loading.databases && !databases.details.length">
                             <tr>
-                                <td class="text-center" colspan="8" data-i18n-static="table_search_noresult"></td>
+                                <td class="text-center" colspan="8"
+                                    data-i18n-static="table_search_noresult"></td>
                             </tr>
                         </tbody>
 
@@ -121,7 +128,7 @@
                                     </div>
                                     <span data-ng-bind="element.quotaUsedCappedAsText" data-ng-if="element.server === 'local'"></span>
                                     <div data-ng-if="element.quotaCalculating">
-                                        <span class="fa fa-refresh fa-spin mr-2" aria-hidden="true"></span>
+                                        <oui-loader size="s" inline="true"></oui-loader>
                                         <span data-i18n-static="hosting_tab_DATABASES_configuration_check_quota_calculating"></span>
                                     </div>
                                 </td>

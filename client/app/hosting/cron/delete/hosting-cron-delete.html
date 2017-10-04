@@ -1,4 +1,4 @@
-<div data-ng-controller="HostingCronDeleteCtrl">
+<div data-ng-controller="HostingCronDeleteCtrl as ctrl">
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="deleteCron"
@@ -9,19 +9,19 @@
 
             <dl class="dl-horizontal dl-lg">
                 <dt data-i18n-static="hosting_tab_CRON_label_command"></dt>
-                <dd data-ng-bind="entryToDelete.command"></dd>
+                <dd data-ng-bind="ctrl.entryToDelete.command"></dd>
 
                 <dt data-i18n-static="hosting_tab_CRON_label_language"></dt>
-                <dd data-ng-bind="i18n['hosting_tab_CRON_table_language_' + entryToDelete.language] || entryToDelete.language"></dd>
+                <dd data-ng-bind="i18n['hosting_tab_CRON_table_language_' + ctrl.entryToDelete.language] || ctrl.entryToDelete.language"></dd>
 
                 <dt data-i18n-static="hosting_tab_CRON_table_header_frequency"></dt>
-                <dd data-ng-bind="entryToDelete.frequency"></dd>
+                <dd data-ng-bind="ctrl.entryToDelete.frequency"></dd>
 
                 <dt data-i18n-static="hosting_tab_CRON_label_email"></dt>
-                <dd data-ng-bind="entryToDelete.email"></dd>
+                <dd data-ng-bind="ctrl.entryToDelete.email"></dd>
 
                 <dt data-i18n-static="hosting_tab_CRON_label_description"></dt>
-                <dd data-ng-bind="entryToDelete.description || '/'"></dd>
+                <dd data-ng-bind="ctrl.entryToDelete.description || '/'"></dd>
             </dl>
         </div>
     </div>

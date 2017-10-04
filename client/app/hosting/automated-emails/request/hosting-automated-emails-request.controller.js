@@ -30,10 +30,10 @@ angular
             return this.HostingAutomatedEmails
                 .postRequest(this.$stateParams.productId, this.action)
                 .then(() => {
-                    this.Alerter.success(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_request_success"), this.alerts.dashboard);
+                    this.Alerter.success(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_request_success"), this.$scope.alerts.automatedEmails);
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_request_error"), err, this.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_request_error"), err, this.$scope.alerts.automatedEmails);
                 })
                 .finally(() => {
                     this.isLoading = false;

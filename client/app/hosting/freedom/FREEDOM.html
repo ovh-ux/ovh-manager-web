@@ -1,17 +1,22 @@
 <div class="container-fluid px-0" data-ng-controller="HostingFreedomTabCtrl as ctrlHostingFreedomTab">
+    <div data-ovh-alert="{{alerts.freedoms}}"></div>
+
     <h2 data-i18n-static="hosting_tab_FREEDOM"></h2>
 
     <!-- FREEDOM TABLE -->
     <div class="mb-3">
         <form class="form-inline d-md-flex justify-content-md-end" name="searchFreedomForm">
             <div class="form-group">
-                <label class="control-label" for="filter-status"
+                <label for="filter-status"
                        data-i18n-static="hosting_tab_FREEDOM_status_filter"></label>
-                <select class="form-control mr-2" id="filter-status"
-                        data-ng-model="ctrlHostingFreedomTab.filter.status"
-                        data-ng-options="status as tr('hosting_tab_FREEDOM_status_' + status) for status in ctrlHostingFreedomTab.statusEnum track by status">
-                    <option value="" data-i18n-static="hosting_common_no_filter"></option>
-                </select>
+                <div class="oui-select oui-select_inline mb-0">
+                    <select class="oui-select__input" id="filter-status"
+                            data-ng-model="ctrlHostingFreedomTab.filter.status"
+                            data-ng-options="status as tr('hosting_tab_FREEDOM_status_' + status) for status in ctrlHostingFreedomTab.statusEnum track by status">
+                        <option value="" data-i18n-static="hosting_common_no_filter"></option>
+                    </select>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                </div>
             </div>
         </form>
     </div>
@@ -36,14 +41,17 @@
             <!--loader-->
             <tbody data-ng-if="ctrlHostingFreedomTab.loaders.freedoms">
                 <tr>
-                    <td class="loader text-center" colspan="4" aria-label="{{i18n.common_loading}}"></td>
+                    <td class="text-center" colspan="4">
+                        <oui-loader inline="true"></oui-loader>
+                    </td>
                 </tr>
             </tbody>
 
             <!-- no freedom -->
             <tbody data-ng-if="!ctrlHostingFreedomTab.loaders.freedoms && !ctrlHostingFreedomTab.freedoms.length">
                 <tr>
-                    <td class="text-center" colspan="4" data-i18n-static="hosting_tab_FREEDOM_table_empty"></td>
+                    <td class="text-center" colspan="4"
+                        data-i18n-static="hosting_tab_FREEDOM_table_empty"></td>
                 </tr>
             </tbody>
 
@@ -53,9 +61,11 @@
                     <th scope="row" data-ng-bind="::freedom.domain"></th>
                     <td data-ng-bind="::freedom.type"></td>
                     <td class="text-center">
-                        <span class="label" data-ng-class="{'label-success': freedom.status === 'ok',
-                                                            'label-danger': freedom.status === 'blockedByCustomer' || freedom.status === 'blockedBySystem',
-                                                            'label-info': freedom.status === 'preset'}"
+                        <span class="label"
+                              data-ng-class="{
+                                'label-success': freedom.status === 'ok',
+                                'label-danger': freedom.status === 'blockedByCustomer' || freedom.status === 'blockedBySystem',
+                                'label-info': freedom.status === 'preset'}"
                               data-ng-bind="::tr('hosting_tab_FREEDOM_status_' + freedom.status)"></span>
                     </td>
                     <td class="text-nowrap">

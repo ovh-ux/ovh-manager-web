@@ -1,9 +1,19 @@
 <div class="container-fluid px-0" data-ng-controller="GeneralInformationsCtrl as ctrl">
 
-    <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="!hosting"></div>
+    <div class="loader text-center" data-ng-if="!hosting"></div>
 
     <div class="row" data-ng-show="hosting">
         <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.dashboard}}"></div>
+
+            <div class="alert alert-info" role="alert"
+                 data-ng-if="hosting.offer === 'KIMSUFI_2015'">
+                <button class="close" type="button" data-dismiss="alert"></button>
+                <span data-i18n-static="hosting_dashboard_service_offer_KIMSUFI_2015_support"></span>
+            </div>
+
+
+
             <div class="row d-md-flex" data-ng-if="!hosting.isExpired">
                 <div class="col-sm-6">
                     <div class="oui-tile mb-5 h-100">
@@ -268,13 +278,14 @@
                                             <div>
                                                 <strong class="d-block"
                                                         data-i18n-static="hosting_dashboard_service_privatesql"></strong>
-                                                <div class="clearfix"
-                                                     data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0">
+                                                <div data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0">
+                                                    test
                                                     <div data-progress-bar-element-counter
                                                          data-pbec-nb-elements="hosting.sqlPriveInfo.nbDataBaseActive"
                                                          data-pbec-max-elements="hosting.sqlPriveInfo.nbDataBaseInclude"
                                                          data-pbec-upper-limit="cloudWebUnlimitedQuantity"></div>
                                                 </div>
+                                                <span data-ng-if="!hosting.sqlPriveInfo.nbDataBaseInclude">0</span>
                                                 <button class="oui-button oui-button_dropdown mb-0 mt-3" type="button" title="{{::i18n.hosting_dashboard_service_privatesql_more}}"
                                                         data-ng-click="displayMore.value = !displayMore.value"
                                                         data-ng-if="privateDatabasesLinked && privateDatabasesLinked.length">

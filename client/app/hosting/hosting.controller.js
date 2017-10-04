@@ -25,8 +25,8 @@ angular
         };
 
         $scope.alerts = {
-            dashboard: "hosting.alerts.dashboard",
-            general: "hosting.alerts.general"
+            page: "hosting.alerts.page",
+            tabs: "hosting.alerts.tabs"
         };
 
         $scope.urlDomainOrder = null;
@@ -201,7 +201,7 @@ angular
                         if (guides) {
                             // GLOBAL ALERT TO UPGRADE APACHE
                             if (_.indexOf(hosting.updates, "APACHE24") >= 0) {
-                                Alerter.alertFromSWS($scope.tr("hosting_global_php_version_pending_update_apache", [guides.works.apache, "http://travaux.ovh.net/?do=details&id=25601"]), null, $scope.alerts.general);
+                                Alerter.alertFromSWS($scope.tr("hosting_global_php_version_pending_update_apache", [guides.works.apache, "http://travaux.ovh.net/?do=details&id=25601"]), null, $scope.alerts.tabs);
                             }
 
                             switch ($scope.hosting.serviceState) {

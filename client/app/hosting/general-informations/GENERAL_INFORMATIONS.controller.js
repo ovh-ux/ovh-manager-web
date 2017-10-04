@@ -3,6 +3,7 @@ angular
     .controller("GeneralInformationsCtrl", class GeneralInformationsCtrl {
         constructor ($scope) {
             this.$scope = $scope;
+            _.set(this.$scope.alerts, "dashboard", "hosting.alerts.dashboard");
         }
 
         canOrderSSL () {

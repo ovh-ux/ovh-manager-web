@@ -11,11 +11,13 @@ angular.module("App").controller("HostingFreedomTabCtrl", function ($rootScope, 
         freedoms: false
     };
 
+    _.set($scope.alerts, "freedoms", "hosting.alerts.freedoms");
+
     const init = () => {
         HostingFreedom.getModels().then((model) => {
             self.statusEnum = model.models["hosting.web.freedom.StatusEnum"].enum;
         }).catch((err) => {
-            Alerter.alertFromSWS($scope.tr("hosting_tab_FREEDOM_error"), err, $scope.alerts.dashboard);
+            Alerter.alertFromSWS($scope.tr("hosting_tab_FREEDOM_error"), err, $scope.alerts.freedoms);
         });
     };
 
@@ -37,7 +39,7 @@ angular.module("App").controller("HostingFreedomTabCtrl", function ($rootScope, 
         }).then((ids) => {
             self.freedomIds = ids;
         }).catch((err) => {
-            Alerter.alertFromSWS($scope.tr("hosting_tab_FREEDOM_error"), err, $scope.alerts.dashboard);
+            Alerter.alertFromSWS($scope.tr("hosting_tab_FREEDOM_error"), err, $scope.alerts.freedoms);
         }).finally(() => {
             if (_.isEmpty(self.freedomIds)) {
                 self.loaders.freedoms = false;

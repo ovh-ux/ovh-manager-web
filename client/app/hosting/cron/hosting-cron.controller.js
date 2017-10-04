@@ -14,6 +14,8 @@ angular.module("App").controller("HostingTabCronsCtrl", ($scope, Hosting, $timeo
         init: true
     };
 
+    _.set($scope.alerts, "crons", "hosting.alerts.crons");
+
     User.getUrlOf("guides").then((guides) => {
         if (guides && guides.hostingCron) {
             $scope.guide = guides.hostingCron;
@@ -33,7 +35,7 @@ angular.module("App").controller("HostingTabCronsCtrl", ($scope, Hosting, $timeo
                 $scope.crons.ids = ids;
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_CRON_configuration_error"), _.get(err, "data", err), $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_CRON_configuration_error"), _.get(err, "data", err), $scope.alerts.crons);
             })
             .finally(() => {
                 if (_.isEmpty($scope.crons.ids)) {

@@ -1,6 +1,8 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabCronsCtrl">
     <div class="row">
         <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.crons}}"></div>
+
             <div class="alert alert-info" role="alert"
                  data-ng-if="!displayTabs.cron">
                 <div>
@@ -34,7 +36,9 @@
                     </a>
                 </div>
 
-                <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.init"></div>
+                <div class="text-center" data-ng-if="loading.init">
+                    <oui-loader size="l" inline="true"></oui-loader>
+                </div>
 
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="hosting_tab_CRON_table_empty"
@@ -79,7 +83,8 @@
                                     <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_email"></th>
                                     <th class="min-width text-right" scope="col">
                                         <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
-                                                data-ng-click="loadCrons()">
+                                                data-ng-click="loadCrons()"
+                                                data-ng-disabled="loading.cron">
                                             <span class="fa fa-refresh" aria-hidden="true"></span>
                                         </button>
                                     </th>
@@ -88,7 +93,7 @@
 
                             <tbody data-ng-if="loading.cron">
                                 <tr>
-                                    <td class="loader text-center" colspan="7" aria-label="{{i18n.common_loading}}"></td>
+                                    <td class="loader text-center" colspan="7"></td>
                                 </tr>
                             </tbody>
 
