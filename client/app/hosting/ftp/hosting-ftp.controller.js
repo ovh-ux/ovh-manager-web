@@ -29,6 +29,8 @@ angular.module("App").controller(
                 value: null
             };
 
+            _.set($scope.alerts, "ftp", "hosting.alerts.ftp");
+
             this.$scope.loadFtpInformations = (count, offset) => this.loadFtpInformations(count, offset);
 
             this.$scope.$on(this.Hosting.events.tabFtpRefresh, () => {
