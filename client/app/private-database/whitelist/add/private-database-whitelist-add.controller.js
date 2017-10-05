@@ -28,11 +28,13 @@ angular.module("App").controller(
                     })
                     .catch((err) => {
                         const msg = _.get(err, "data.message");
+                        let translationId = "privateDatabase_modale_whitelist_add_fail";
+
                         if (_.includes(msg, "This whitelist ip already exists")) {
-                            this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_add_fail_already_exists"), "privateDataBase.alerts.whitelist");
-                        } else {
-                            this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_add_fail"), "privateDataBase.alerts.whitelist");
+                            translationId = "privateDatabase_modale_whitelist_add_fail_already_exists";
                         }
+
+                        this.alerter.error(this.$scope.tr(translationId), "privateDataBase.alerts.whitelist");
                     })
                     .finally(() => this.$scope.resetAction());
             };
