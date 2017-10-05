@@ -16,7 +16,7 @@ angular.module("App").controller("HostingCronCreateCtrl", ($scope, $stateParams,
     $scope.crontabObject = CronValidator.makeCrontabObject();
 
     $scope.isPathValid = function () {
-        return Hosting.isPathValid($scope.selected.command);
+        return Hosting.constructor.isPathValid($scope.selected.command);
     };
 
     $scope.isValid = function (step) {

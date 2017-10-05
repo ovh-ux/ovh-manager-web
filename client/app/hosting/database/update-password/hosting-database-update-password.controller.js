@@ -14,14 +14,14 @@ angular.module("App").controller("HostingDatabaseChangePasswordCtrl", ($scope, $
         return $scope.password.value && $scope.password.confirmation && $scope.password.value !== $scope.password.confirmation;
     };
 
-    $scope.condition = Hosting.getPasswordConditions($scope.customPasswordConditions);
+    $scope.condition = Hosting.constructor.getPasswordConditions($scope.customPasswordConditions);
 
     $scope.isPasswordValid = function () {
-        return $scope.password.value && $scope.password.confirmation && $scope.password.value === $scope.password.confirmation && Hosting.isPasswordValid($scope.password.value, $scope.customPasswordConditions);
+        return $scope.password.value && $scope.password.confirmation && $scope.password.value === $scope.password.confirmation && Hosting.constructor.isPasswordValid($scope.password.value, $scope.customPasswordConditions);
     };
 
     $scope.isPasswordInvalid = function () {
-        return !Hosting.isPasswordValid(_.get($scope.password, "value"), $scope.customPasswordConditions);
+        return !Hosting.constructor.isPasswordValid(_.get($scope.password, "value"), $scope.customPasswordConditions);
     };
 
     $scope.isPasswordConfirmationInvalid = function () {
