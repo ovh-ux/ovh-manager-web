@@ -27,14 +27,7 @@ angular.module("App").controller(
                         this.alerter.success(this.$scope.tr("privateDatabase_modale_whitelist_add_success"), "privateDataBase.alerts.whitelist");
                     })
                     .catch((err) => {
-                        const msg = _.get(err, "data.message");
-                        let translationId = "privateDatabase_modale_whitelist_add_fail";
-
-                        if (_.includes(msg, "This whitelist ip already exists")) {
-                            translationId = "privateDatabase_modale_whitelist_add_fail_already_exists";
-                        }
-
-                        this.alerter.error(this.$scope.tr(translationId), "privateDataBase.alerts.whitelist");
+                        this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_modale_whitelist_add_fail"), err.data, "privateDataBase.alerts.whitelist");
                     })
                     .finally(() => this.$scope.resetAction());
             };
