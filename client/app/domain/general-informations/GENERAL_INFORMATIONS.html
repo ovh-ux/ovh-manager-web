@@ -65,7 +65,7 @@
                                           </span>
                                           <div>
                                               <span data-ng-bind="tr('domain_dashboard_dns_management_anycast_' + ctrlTabGeneralInformations.domain.hasDnsAnycast)"></span>
-                                              <span data-ng-if="domain.hasDnsAnycast === null">
+                                              <span data-ng-if="ctrlTabGeneralInformations.domain.hasDnsAnycast === null">
                                                   (<span data-i18n-static="domain_configuration_dnsanycast_how_to_activate_1"></span>
                                                   <button class="btn btn-link p-0" type="button"
                                                           data-i18n-static="domain_configuration_dnsanycast_how_to_activate_2"
@@ -76,7 +76,8 @@
                                       </div>
                                       <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
                                               data-i18n-static="domain_configuration_dnsanycast_title_button"
-                                              data-ng-click="setAction('anycast/domain-dns-anycast')">
+                                              data-ng-click="setAction('anycast/domain-dns-anycast')"
+                                              data-ng-if="ctrlTabGeneralInformations.domain.hasDnsAnycast === false">
                                       </button>
                                   </div>
                               </li>
@@ -94,7 +95,7 @@
                                               <span class="fa fa-spinner fa-spin" aria-hidden="true"
                                                     data-ng-if="ctrlTabGeneralInformations.loading.hosting"></span>
                                               <div data-ng-if="!ctrlTabGeneralInformations.loading.hosting">
-                                                  <span class="label" data-ng-class="{ 'label-default': !ctrlTabGeneralInformations.hasStart10mOffer, 'label-success': ctrlTabGeneralInformations.hasStart10mOffer }"
+                                                  <span class="label" data-ng-class="{ 'label-danger': !ctrlTabGeneralInformations.hasStart10mOffer, 'label-success': ctrlTabGeneralInformations.hasStart10mOffer }"
                                                         data-ng-bind="tr(ctrlTabGeneralInformations.hasStart10mOffer ? 'common_activated' : 'common_desactivated')"
                                                         data-ng-if="!(ctrlDomain.canOrderHosting && ctrlDomain.isAdmin && !ctrlTabGeneralInformations.hasStart10mOffer)"></span>
                                                   <a target="_blank" title="{{i18n.common_newtab}}"
