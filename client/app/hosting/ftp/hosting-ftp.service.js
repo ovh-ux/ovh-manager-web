@@ -9,7 +9,10 @@ angular.module("services").service(
          * @param $rootScope
          */
         constructor (Hosting, OvhHttp, Poller, $rootScope) {
-            Object.assign(this, Hosting, OvhHttp, Poller, $rootScope);
+            this.Hosting = Hosting;
+            this.OvhHttp = OvhHttp;
+            this.Poller = Poller;
+            this.$rootScope = $rootScope;
         }
 
         /**

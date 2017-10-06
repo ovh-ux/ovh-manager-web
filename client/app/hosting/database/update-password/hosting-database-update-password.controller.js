@@ -10,6 +10,7 @@ angular.module("App").controller(
         }
 
         $onInit () {
+            this.condition = this.Hosting.constructor.getPasswordConditions(this.customPasswordConditions);
             this.customPasswordConditions = {
                 max: 12
             };
@@ -19,8 +20,6 @@ angular.module("App").controller(
                 confirmation: null
             };
 
-            this.condition = this.Hosting.getPasswordConditions(this.customPasswordConditions);
-
             this.$scope.updatePassword = () => this.updatePassword();
         }
 
@@ -29,11 +28,11 @@ angular.module("App").controller(
         }
 
         isPasswordValid () {
-            return this.password.value && this.password.confirmation && this.password.value === this.password.confirmation && this.Hosting.isPasswordValid(this.password.value, this.customPasswordConditions);
+            return this.password.value && this.password.confirmation && this.password.value === this.password.confirmation && this.Hosting.constructor.isPasswordValid(this.password.value, this.customPasswordConditions);
         }
 
         isPasswordInvalid () {
-            return !this.Hosting.isPasswordValid(_.get(this.password, "value"), this.customPasswordConditions);
+            return !this.Hosting.constructor.isPasswordValid(_.get(this.password, "value"), this.customPasswordConditions);
         }
 
         isPasswordConfirmationInvalid () {

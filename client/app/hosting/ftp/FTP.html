@@ -4,7 +4,7 @@
         <oui-loader size="l" inline="true"></oui-loader>
     </div>
 
-    <div class="row" data-ng-if="!ctrlHostingTabFTP.loading.init">
+    <div class="row" data-ng-show="!ctrlHostingTabFTP.loading.init">
 
         <!-- Doesnt have multiftp option -->
         <div class="col-md-9">
@@ -184,8 +184,7 @@
                             data-ng-bind="ctrlHostingTabFTP.ftpInformations.primaryLogin"></dd>
 
                         <dt data-ng-if="!ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
-                            <label for="primaryUserEnabled"
-                                   class="font-weight-bold"
+                            <label class="font-weight-bold" for="primaryUserEnabled"
                                    data-i18n-static="hosting_tab_FTP_dashboard_login_enabled"></label>
                         </dt>
                         <dd class="mb-3" data-ng-if="!ctrlHostingTabFTP.ftpInformations.hasMultiFtp">

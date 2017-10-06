@@ -12,8 +12,6 @@
                 <span data-i18n-static="hosting_dashboard_service_offer_KIMSUFI_2015_support"></span>
             </div>
 
-
-
             <div class="row d-md-flex" data-ng-if="!hosting.isExpired">
                 <div class="col-sm-6">
                     <div class="oui-tile mb-5 h-100">
@@ -156,10 +154,8 @@
                                                       data-uib-tooltip="{{tr('hosting_dashboard_php_support_'+ phpVersionSupport.support)}}"
                                                       data-tooltip-placement="bottom">
                                                 </span>
-                                                <span class="ml-2"
-                                                      data-ng-if="ovhConfig.taskPending"
-                                                      data-uib-tooltip="{{ovhConfig.taskPending}}">
-                                                    <span class="fa fa-spinner fa-spin" aria-hidden="true"></span>
+                                                <span class="ml-2" data-ng-if="ovhConfig.taskPending">
+                                                    <oui-loader size="s" inline="true"></oui-loader>
                                                 </span>
                                                 <span class="help-inside ml-2"
                                                       data-ng-if="ovhConfig.taskPendingError"
@@ -183,10 +179,10 @@
                                                 <strong class="d-block"
                                                         data-i18n-static="hosting_dashboard_service_ssl"></strong>
                                                 <span data-ng-bind="hosting.hasHostedSsl || ssl ? i18n.common_yes : i18n.common_no"></span>
-                                                <span class="help-inside ml-2"
+                                                <span class="ml-2"
                                                       data-ng-if="ssl && ssl.status === 'creating' || ssl.status === 'deleting' || ssl.status === 'regenerating'"
                                                       data-uib-tooltip="{{tr('hosting_dashboard_service_ssl_' + ssl.status)}}">
-                                                    <span class="fa fa-spinner fa-spin" aria-hidden="true"></span>
+                                                    <oui-loader size="s" inline="true"></oui-loader>
                                                 </span>
                                             </div>
                                             <div class="ml-auto mb-auto" style="position: relative"
@@ -228,8 +224,8 @@
                                                         data-i18n-static="hosting_dashboard_service_cdn"></strong>
                                                 <span class="mr-2"
                                                       data-ng-bind="hosting.hasCdn ? i18n.common_yes : i18n.common_no"></span>
-                                                <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                                      data-ng-if="flushCdnState === 'check'"></span>
+                                                <oui-loader size="s" inline="true"
+                                                            data-ng-if="flushCdnState === 'check'"></oui-loader>
                                                 <span class="label label-info"
                                                       data-i18n-static="hosting_dashboard_service_flush_cdn_doing"
                                                       data-ng-if="flushCdnState === 'doing'"></span>
@@ -367,10 +363,9 @@
                 <div class="text-center"
                      data-ng-class="{'mb-5': screenshot}"
                      data-ng-if="!hosting.isExpired">
-                    <div class="loader" aria-label="{{i18n.common_loading}}" data-ng-if="loadingScreenshot"></div>
-                    <a data-ng-href="http://{{hosting.serviceName}}"
-                       class="oui-box oui-box_light d-block p-0 text-truncate" target="_blank"
-                       title="{{hosting.serviceName}} ({{i18n.common_newtab}})"
+                    <oui-loader inline="true" data-ng-if="loadingScreenshot"></oui-loader>
+                    <a class="oui-box oui-box_light d-block p-0 text-truncate" target="_blank" title="{{hosting.serviceName}} ({{i18n.common_newtab}})"
+                       data-ng-href="http://{{hosting.serviceName}}"
                        data-ng-if="!loadingScreenshot && screenshot">
                         <img class="h-100 mw-100" data-ng-src="data:image/png;base64,{{screenshot}}" width="600"
                              alt="{{hosting.serviceName}}"

@@ -145,7 +145,7 @@
              * @param {string} serviceName
              * @param {boolean} forceRefresh
              */
-            getSelected (serviceName, forceRefresh) {
+            getSelected (serviceName, forceRefresh = false) {
                 return this.OvhHttp.get(`/sws/hosting/web/${serviceName}`, {
                     rootPath: "2api",
                     cache: hostingCache,

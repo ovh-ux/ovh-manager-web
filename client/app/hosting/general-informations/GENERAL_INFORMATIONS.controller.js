@@ -3,6 +3,9 @@ angular
     .controller("GeneralInformationsCtrl", class GeneralInformationsCtrl {
         constructor ($scope) {
             this.$scope = $scope;
+        }
+
+        $onInit () {
             _.set(this.$scope.alerts, "dashboard", "hosting.alerts.dashboard");
         }
 

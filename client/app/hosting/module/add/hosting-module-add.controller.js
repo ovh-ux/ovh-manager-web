@@ -67,12 +67,12 @@ angular.module("App").controller("HostingModuleCreateCtrl", ($scope, $q, $stateP
             $scope.resetAction();
 
             HostingModule.createModule(
+                $stateParams.productId,
                 {
                     moduleId: $scope.model.templateSelected.id,
                     domain: $scope.model.domain,
                     path: [$scope.pathPrefix, $scope.model.path].join("")
-                },
-                $stateParams.productId
+                }
             ).then(
                 () => {
                     Alerter.success($scope.tr("hosting_configuration_tab_modules_create_success"), $scope.alerts.dashboard);
@@ -294,7 +294,7 @@ angular.module("App").controller("HostingModuleCreateCtrl", ($scope, $q, $stateP
             ],
             language: $scope.model.language
         };
-        HostingModule.createModule(data, $stateParams.productId).then(
+        HostingModule.createModule($stateParams.productId, data).then(
             () => {
                 Alerter.success($scope.tr("hosting_configuration_tab_modules_create_success"), $scope.alerts.dashboard);
             },
