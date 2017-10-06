@@ -113,17 +113,23 @@
                                 </td>
                                 <td>
                                     <div data-ng-if="element.server !== 'local' && !element.quotaCalculating">
-                                        <div class="progress m-0" style="min-width:140px">
-                                            <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{element.quotaPercent}}"
+                                        <div class="oui-progress m-0" style="min-width:200px"
+                                             data-ng-class="{
+                                                'oui-progress_success': element.quotaStatus === quotaStatusEnum.OK,
+                                                'oui-progress_warning': element.quotaStatus === quotaStatusEnum.WARNING,
+                                                'oui-progress_error': element.quotaStatus === quotaStatusEnum.DANGER,
+                                                'oui-progress_info': element.quotaStatus === quotaStatusEnum.FULL
+                                            }">
+                                            <div class="oui-progress__bar oui-progress__bar_text-left" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{element.quotaPercent}}"
                                                  data-ng-class="{
-                                                'progress-bar-success': element.quotaStatus === quotaStatusEnum.OK,
-                                                'progress-bar-warning': element.quotaStatus === quotaStatusEnum.WARNING,
-                                                'progress-bar-danger': element.quotaStatus === quotaStatusEnum.DANGER,
-                                                'progress-bar-disabled': element.quotaStatus === quotaStatusEnum.FULL
-                                            }"
+                                                    'oui-progress__bar_success': element.quotaStatus === quotaStatusEnum.OK,
+                                                    'oui-progress__bar_warning': element.quotaStatus === quotaStatusEnum.WARNING,
+                                                    'oui-progress__bar_error': element.quotaStatus === quotaStatusEnum.DANGER,
+                                                    'oui-progress__bar_info': element.quotaStatus === quotaStatusEnum.FULL
+                                                }"
                                                  data-ng-style="{'width': element.quotaPercentCappedAsText}">
+                                                <span class="oui-progress__label" data-ng-bind="element.quotaUsed.asText"></span>
                                             </div>
-                                            <span class="progress-bar-label" data-ng-bind="element.quotaUsed.asText"></span>
                                         </div>
                                     </div>
                                     <span data-ng-bind="element.quotaUsedCappedAsText" data-ng-if="element.server === 'local'"></span>

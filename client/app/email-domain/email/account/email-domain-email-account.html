@@ -36,7 +36,7 @@
                         <tr>
                             <th scope="col" data-i18n-static="email_tab_table_header_account_name"></th>
                             <th scope="col" data-i18n-static="email_tab_table_header_account_description"></th>
-                            <th scope="col" class="text-center" style="min-width:140px" data-i18n-static="email_tab_table_header_account_size"></th>
+                            <th scope="col" class="text-center" style="min-width:200px" data-i18n-static="email_tab_table_header_account_size"></th>
                             <th scope="col" class="text-center" data-i18n-static="email_tab_table_header_account_date"></th>
                             <th scope="col" class="text-center" data-i18n-static="email_tab_table_header_account_bloqued"></th>
                             <th scope="col" class="min-width text-center" data-i18n-static="email_tab_table_header_filters"></th>
@@ -71,16 +71,22 @@
                             <td data-ng-bind="email.description"></td>
                             <td>
                                 <div class="col-xs-10 p-0">
-                                    <div class="progress m-0">
-                                        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{email.percentUse}}"
+                                    <div class="oui-progress m-0"
+                                         data-ng-class="{
+                                            'oui-progress_success': email.percentUse < 51,
+                                            'oui-progress_warning': email.percentUse > 50 && email.percentUse < 81,
+                                            'oui-progress_error': email.percentUse > 80
+                                        }">
+                                        <div class="oui-progress__bar oui-progress__bar_text-left" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{email.percentUse}}"
                                              data-ng-class="{
-                                                'progress-bar-success': email.percentUse < 51,
-                                                'progress-bar-warning': email.percentUse > 50 && email.percentUse < 81,
-                                                'progress-bar-danger': email.percentUse > 80
+                                                'oui-progress__bar_success': email.percentUse < 51,
+                                                'oui-progress__bar_warning': email.percentUse > 50 && email.percentUse < 81,
+                                                'oui-progress__bar_error': email.percentUse > 80
                                              }"
                                              data-ng-style="{'width': email.percentUse + '%'}">
+                                            <span class="oui-progress__label"
+                                                  data-ng-bind="(email.quota | humanReadableSize: {base: 10}) + ' / ' + (email.size | humanReadableSize: {base: 10})"></span>
                                         </div>
-                                        <span class="progress-bar-label" data-ng-bind="(email.quota | humanReadableSize: {base: 10}) + ' / ' + (email.size | humanReadableSize: {base: 10})"></span>
                                     </div>
                                 </div>
                                 <div class="col-xs-2 p-0 text-center">

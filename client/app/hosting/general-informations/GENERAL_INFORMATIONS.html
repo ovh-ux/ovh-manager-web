@@ -377,18 +377,22 @@
                      data-ng-if="!hosting.isExpired"
                      data-ng-show="hosting.quotaPercent != null && hosting.quotaPercent >= 0">
                     <strong data-ng-bind-html="i18n.hosting_dashboard_disk_usage"></strong>
-                    <div class="progress mt-2">
-                        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                             aria-valuenow="{{hosting.quotaPercent}}"
+                    <div class="oui-progress mt-2"
+                         data-ng-class="{
+                            'oui-progress_success': hosting.quotaPercent < 51,
+                            'oui-progress_warning': hosting.quotaPercent > 50 && hosting.quotaPercent < 81,
+                            'oui-progress_error': hosting.quotaPercent > 80
+                        }">
+                        <div class="oui-progress__bar oui-progress__bar_text-left" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{hosting.quotaPercent}}"
                              data-ng-class="{
-                                'progress-bar-success': hosting.quotaPercent < 51,
-                                'progress-bar-warning': hosting.quotaPercent > 50 && hosting.quotaPercent < 81,
-                                'progress-bar-danger': hosting.quotaPercent > 80
+                                'oui-progress__bar_success': hosting.quotaPercent < 51,
+                                'oui-progress__bar_warning': hosting.quotaPercent > 50 && hosting.quotaPercent < 81,
+                                'oui-progress__bar_error': hosting.quotaPercent > 80
                             }"
                              data-ng-style="{'width': hosting.quotaPercent + '%'}">
+                            <span class="oui-progress__label"
+                                  data-ng-bind="convertBytesSize(hosting.quotaUsed.value, hosting.quotaUsed.unit, 2) + ' / ' + convertBytesSize(hosting.quotaSize.value, hosting.quotaSize.unit)"></span>
                         </div>
-                        <span class="progress-bar-label"
-                              data-ng-bind="convertBytesSize(hosting.quotaUsed.value, hosting.quotaUsed.unit, 2) + ' / ' + convertBytesSize(hosting.quotaSize.value, hosting.quotaSize.unit)"></span>
                     </div>
                 </div>
 
@@ -396,18 +400,22 @@
                      data-ng-if="!hosting.isExpired"
                      data-ng-show="hosting.trafficQuotaPercent != null && hosting.trafficQuotaPercent >= 0">
                     <strong data-ng-bind-html="i18n.hosting_dashboard_trafic_usage"></strong>
-                    <div class="progress mt-2">
-                        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100"
-                             aria-valuenow="{{hosting.quotaPercent}}"
+                    <div class="oui-progress mt-2"
+                         data-ng-class="{
+                            'oui-progress_success': hosting.trafficQuotaPercent < 51,
+                            'oui-progress_warning': hosting.trafficQuotaPercent > 50 && hosting.trafficQuotaPercent < 81,
+                            'oui-progress_error': hosting.trafficQuotaPercent > 80
+                        }">
+                        <div class="oui-progress__bar oui-progress__bar_text-left" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{hosting.quotaPercent}}"
                              data-ng-class="{
-                                'progress-bar-success': hosting.trafficQuotaPercent < 51,
-                                'progress-bar-warning': hosting.trafficQuotaPercent > 50 && hosting.trafficQuotaPercent < 81,
-                                'progress-bar-danger': hosting.trafficQuotaPercent > 80
+                                'oui-progress__bar_success': hosting.trafficQuotaPercent < 51,
+                                'oui-progress__bar_warning': hosting.trafficQuotaPercent > 50 && hosting.trafficQuotaPercent < 81,
+                                'oui-progress__bar_error': hosting.trafficQuotaPercent > 80
                             }"
                              data-ng-style="{'width': hosting.trafficQuotaPercent + '%'}">
+                            <span class="oui-progress__label"
+                                  data-ng-bind="(hosting.trafficQuotaUsed.value + ' ' + tr('unit_size_'+ hosting.trafficQuotaUsed.unit)) + ' / ' + (hosting.trafficQuotaSize.value + ' ' + tr('unit_size_'+ hosting.trafficQuotaSize.unit))"></span>
                         </div>
-                        <span class="progress-bar-label"
-                              data-ng-bind="(hosting.trafficQuotaUsed.value + ' ' + tr('unit_size_'+ hosting.trafficQuotaUsed.unit)) + ' / ' + (hosting.trafficQuotaSize.value + ' ' + tr('unit_size_'+ hosting.trafficQuotaSize.unit))"></span>
                     </div>
 
                     <button class="btn btn-block btn-default" type="button"
