@@ -109,11 +109,11 @@ angular.module("App").controller(
         }
 
         checkPassword () {
-            return this.model.user.password.value && this.Hosting.isPasswordValid(this.model.user.password.value);
+            return this.model.user.password.value && this.Hosting.constructor.isPasswordValid(this.model.user.password.value);
         }
 
         checkPasswordConfirm () {
-            return this.model.user.password.confirm && this.Hosting.isPasswordValid(this.model.user.password.confirm) && this.model.user.password.confirm === this.model.user.password.value;
+            return this.model.user.password.confirm && this.Hosting.constructor.isPasswordValid(this.model.user.password.confirm) && this.model.user.password.confirm === this.model.user.password.value;
         }
 
         getGrantLabel (grant) {

@@ -187,11 +187,11 @@ angular.module("App").controller("HostingModuleCreateCtrl", ($scope, $q, $stateP
     }
 
     function isPathValid () {
-        return Hosting.isPathValid($scope.model.path);
+        return Hosting.constructor.isPathValid($scope.model.path);
     }
 
     function isPasswordValid () {
-        return Hosting.isPasswordValid($scope.model.adminPassword);
+        return Hosting.constructor.isPasswordValid($scope.model.adminPassword);
     }
 
     function modulePasswordMatch () {
