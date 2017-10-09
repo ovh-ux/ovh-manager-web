@@ -134,7 +134,7 @@ angular.module("App").controller(
                     this.allowedAccountSize = domain.allowedAccountSize;
 
                     if (quotas.account === emails.length && emails.indexOf("postmaster") === -1) {
-                        this.model.accountName = "postmaster";
+                        this.account.accountName = "postmaster";
                         this.validation.postmaster = true;
                     }
                 })
