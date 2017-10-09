@@ -67,10 +67,8 @@ angular.module("App").controller("HostingUpgradeOfferCtrl", ($scope, Alerter, Ho
         $scope.loading.durations = true;
 
         Hosting.getUpgradePrices(
-            {
-                offer: $scope.model.capacity
-            },
-            $scope.hosting ? $scope.hosting.serviceName : $stateParams.productId
+            $scope.hosting ? $scope.hosting.serviceName : $stateParams.productId,
+            $scope.model.capacity
         ).then(
             (durations) => {
                 $scope.loading.durations = false;
@@ -119,7 +117,7 @@ angular.module("App").controller("HostingUpgradeOfferCtrl", ($scope, Alerter, Ho
 
         $scope.resetAction();
 
-        Hosting.orderUpgrade($scope.model.capacity, $scope.model.duration.duration, $scope.hosting ? $scope.hosting.serviceName : $stateParams.productId).then(
+        Hosting.orderUpgrade($scope.hosting ? $scope.hosting.serviceName : $stateParams.productId, $scope.model.capacity, $scope.model.duration.duration).then(
             (order) => {
                 $scope.loading.validation = false;
                 Alerter.success($scope.tr("hosting_order_upgrade_success", [order.url, order.orderId]), $scope.hosting ? "website.configuration" : "hosting.alerts.dashboard");

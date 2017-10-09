@@ -78,14 +78,14 @@
     </div>
 </div>
 
-<div data-ng-controller="HostingTabsCtrl"
+<div data-ng-controller="HostingTabsCtrl as ctrlHostingTabs"
      data-ng-if="!loadingHostingInformations && !loadingHostingError && !hosting.isExpired">
-    <ovh-tabs tabs="tabs"
-              selected-tab="selectedTab"
-              change-tab="setSelectedTab"
+    <ovh-tabs tabs="ctrlHostingTabs.tabs"
+              selected-tab="ctrlHostingTabs.selectedTab"
+              change-tab="ctrlHostingTabs.setSelectedTab"
               product="hosting"
-              tr="tr"
-              menu="tabMenu"></ovh-tabs>
+              menu="ctrlHostingTabs.tabMenu"
+              tr="tr"></ovh-tabs>
     <div class="tab-content">
 
         <div class="alert alert-info" role="alert"
@@ -94,7 +94,7 @@
             <span data-i18n-static="hosting_dashboard_service_offer_KIMSUFI_2015_support"></span>
         </div>
 
-        <div class="alert alert-warning" role="alert"
+        <div class="alert alert-info" role="alert"
              data-ng-if="hostingProxy.recommendedOffer">
             <button class="close" type="button" data-dismiss="alert">&times;</button>
             <span data-ng-bind-html="tr('hosting_dashboard_service_offer_recommanded', [hostingProxy.recommendedOffer])"></span>
@@ -103,7 +103,7 @@
         </div>
 
         <div class="tab-pane active hosting"
-             data-ng-include="selectedTab && 'hosting/' + toKebabCase(selectedTab) + '/' + selectedTab + '.html'"></div>
+             data-ng-include="ctrlHostingTabs.selectedTab && 'hosting/' + ctrlHostingTabs.constructor.toKebabCase(ctrlHostingTabs.selectedTab) + '/' + ctrlHostingTabs.selectedTab + '.html'"></div>
     </div>
 </div>
 

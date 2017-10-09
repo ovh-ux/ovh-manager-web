@@ -14,7 +14,7 @@ angular.module("App").controller("HostingDatabaseCreateCtrl", ($scope, $location
             $scope.model.selected.password.value &&
             $scope.model.selected.password.confirmation &&
             $scope.model.selected.password.value === $scope.model.selected.password.confirmation &&
-            Hosting.isPasswordValid($scope.model.selected.password.value, $scope.customPasswordConditions)
+            Hosting.constructor.isPasswordValid($scope.model.selected.password.value, $scope.customPasswordConditions)
         );
     };
 
@@ -89,14 +89,14 @@ angular.module("App").controller("HostingDatabaseCreateCtrl", ($scope, $location
         return $scope.model.selected.password.value && $scope.model.selected.password.confirmation && $scope.model.selected.password.value !== $scope.model.selected.password.confirmation;
     };
 
-    $scope.condition = Hosting.getPasswordConditions($scope.customPasswordConditions);
+    $scope.condition = Hosting.constructor.getPasswordConditions($scope.customPasswordConditions);
 
     $scope.isPasswordInvalid = function () {
-        return !Hosting.isPasswordValid(_.get($scope.model, "selected.password.value"), $scope.customPasswordConditions);
+        return !Hosting.constructor.isPasswordValid(_.get($scope.model, "selected.password.value"), $scope.customPasswordConditions);
     };
 
     $scope.isPasswordConfirmationInvalid = function () {
-        return Hosting.isPasswordValid(_.get($scope.model, "selected.password.confirmation"), $scope.customPasswordConditions) && !$scope.shouldDisplayDifferentPasswordMessage() ? "" : "has-error";
+        return Hosting.constructor.isPasswordValid(_.get($scope.model, "selected.password.confirmation"), $scope.customPasswordConditions) && !$scope.shouldDisplayDifferentPasswordMessage() ? "" : "has-error";
     };
 
     $scope.isUserValid = function () {

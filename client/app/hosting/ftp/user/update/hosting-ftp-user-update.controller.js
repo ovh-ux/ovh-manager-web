@@ -28,7 +28,7 @@ angular.module("App").controller("HostingFtpUserModifyCtrl", ($scope, $statePara
     };
 
     $scope.isPathValid = function () {
-        return Hosting.isPathValid($scope.model.user.home);
+        return Hosting.constructor.isPathValid($scope.model.user.home);
     };
 
     $scope.isStep1Valid = function () {
