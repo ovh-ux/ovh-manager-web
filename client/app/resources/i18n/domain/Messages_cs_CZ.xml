@@ -84,7 +84,7 @@
    <translation id="domain_dashboard_web_hosting_associated" qtlid="296557">Propojené webhostingy</translation>
    <translation id="domain_configuration_web_hosting_associated_explain" qtlid="296570">Přístup ke konfiguraci webhostingů propojených s Vaší doménou</translation>
    <translation id="domain_configuration_web_hosting_fail" qtlid="296583">Při získávání propojených webhostingů došlo k chybě</translation>
-   <translation id="domain_dashboard_web_hosting_associated_upsell" qtlid="434992">Aucun hébergement associé</translation>
+   <translation id="domain_dashboard_web_hosting_associated_upsell" qtlid="434992">Není připojen žádný webhosting</translation>
    <translation id="domain_dashboard_web_hosting_more_infos" qtlid="238557">Více informací</translation>
 
    <translation id="domain_configuration_action_disable" qtlid="90973">Deaktivovat</translation>
@@ -206,7 +206,7 @@
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Při odebírání glue záznamu došlo k chybě.</translation>
    <translation id="domain_tab_GLUE_add_warning_done" qtlid="288964">Poznámka: Po schválení musíte přidat A záznam asociovaný s IP {0} do DNS zóny.</translation>
 
-   <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Sub-doména</translation>
+   <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdoména</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">DNS zóna</translation>
    <translation id="domain_tab_ZONE_named" qtlid="225101">DNS zóna {0}</translation>
    <translation id="domain_tab_ZONE_search_placeholder" qtlid="213427">Vyhledávání domény...</translation>
@@ -270,9 +270,9 @@
    <translation id="domain_configuration_renew_step1_alert" qtlid="168354">Berte prosím na vědomí, že po schválení objednávky je potřeba vyčkat zhruba 2 hodiny, nežli se změna projeví v Zákaznickém prostoru Web.</translation>
    <translation id="domain_configuration_protection_desactivate_title_button" qtlid="210137">Deaktivovat ochranu</translation>
    <translation id="domain_configuration_protection_desactivate_title" qtlid="124423">Deaktivovat ochranu domény</translation>
-   <translation id="domain_configuration_protection_desactivate_step1_question" qtlid="435005">Souhaitez-vous réellement désactiver la protection pour votre domaine {0} ?</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_question" qtlid="435005">Opravdu chcete deaktivovat ochranu domény {0} ?</translation>
    <translation id="domain_configuration_protection_desactivate_step1_info" qtlid="290524">Pokud je ochrana deaktivována, budete moci získat AUTH/INFO kód, umožňující převod domény kliknutím na patřičné tlačítko.</translation>
-   <translation id="domain_configuration_protection_desactivate_step1_dnssec" qtlid="435018">Votre domaine utilise le DNSSEC, vérifiez que votre nouveau prestataire puisse correctement le gérer. Dans le cas contraire, désactivez l'option avant de transférer votre domaine.</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_dnssec" qtlid="435018">Na své doméně máte aktivní DNSSEC. Ujistěte se prosím, že Váš nový poskytovatel tuto funkci podporuje. V opačném případě DNSSEC před převodem domény deaktivujte.</translation>
    <translation id="domain_configuration_protection_auth_info_registry" qtlid="344149">Pro převod domény k OVH musíte kontaktovat svého registrátora a získat tzv. "auth-info" kód. Můžete použít tento odkaz: <a href="{0}" target="_blank">{0}</a></translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_title" qtlid="129667">Ochrana domény</translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_desc" qtlid="129679">Aktivace doménové ochrany Vám umožní ochránit doménu před krádeží tím, že se zamítnou všechny žádosti o její převod.</translation>
@@ -286,7 +286,7 @@
    <translation id="domain_configuration_protection_desactivate_fail" qtlid="127552">Při požadavku na deaktivaci ochrany domény došlo k chybě</translation>
    <translation id="domain_configuration_protection_activate_title_button" qtlid="210150">Povolit ochranu</translation>
    <translation id="domain_configuration_protection_activate_title" qtlid="124435">Aktivovat ochranu domény</translation>
-   <translation id="domain_configuration_protection_activate_step1_question" qtlid="435031">Souhaitez-vous réellement activer la protection pour votre domaine {0} ?</translation>
+   <translation id="domain_configuration_protection_activate_step1_question" qtlid="435031">Opravdu chcete aktivovat ochranu domény {0}?</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_title" qtlid="129667">Ochrana domény</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_desc" qtlid="129679">Aktivace doménové ochrany Vám umožní ochránit doménu před krádeží tím, že se zamítnou všechny žádosti o její převod.</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_question1" qtlid="129691">Co je krádež domény?</translation>
@@ -299,7 +299,7 @@
    <translation id="domain_configuration_protection_activate_fail" qtlid="127588">Při požadavku na ochranu domény došlo k chybě.</translation>
    <translation id="domain_configuration_whois_title_button" qtlid="124447">Nastavit WHOIS</translation>
    <translation id="domain_configuration_whois_title" qtlid="124447">Nastavit WHOIS</translation>
-   <translation id="domain_configuration_whois_step1_question" qtlid="435044">Veuillez choisir si vos informations personnelles doivent être affichées ou masquées dans le registre WHOIS pour le domaine {0}</translation>
+   <translation id="domain_configuration_whois_step1_question" qtlid="435044">Vyberte prosím, zda mají být Vaše osobní údaje pro doménu {0} v registru WHOIS veřejné, či skryté.</translation>
    <translation id="domain_configuration_whois_step1_display" qtlid="69353">Zobrazit</translation>
    <translation id="domain_configuration_whois_step1_hide" qtlid="97136">Skrýt</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
@@ -344,25 +344,25 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_tab_REDIRECTION_edit_web_option_title" qtlid="16469">Titul</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_keyword" qtlid="213531">Klíčová slova</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_description" qtlid="9238">Popis</translation>
-   <translation id="domain_tab_REDIRECTION_edit_title" qtlid="435057">Édition de la redirection</translation>
-   <translation id="domain_tab_REDIRECTION_edit_confirm" qtlid="435070">Édition de la redirection du sous domaine <strong>{0}</strong> vers <strong>{1}</strong> :</translation>
+   <translation id="domain_tab_REDIRECTION_edit_title" qtlid="435057">Úprava přesměrování</translation>
+   <translation id="domain_tab_REDIRECTION_edit_confirm" qtlid="435070">Úprava přesměrování subdomény <strong>{0}</strong> na<strong>{1}</strong>:</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_label" qtlid="213570">Webová adresa</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ip_label" qtlid="26191">Adresa IP</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ipv4_label" qtlid="79314">Adresa IPv4</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ipv6_label" qtlid="79326">Adresa IPv6</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_cname_label" qtlid="296609">Cílová doména</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_ipv4_error" qtlid="435083">Cette adresse IP n'est pas une IPv4 valide.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_ipv6_error" qtlid="435096">Cette adresse IP n'est pas une IPv6 valide.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_error" qtlid="435109">Ce domaine n'est pas valide.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv4_error" qtlid="435083">Neplatná adresa IPv4.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv6_error" qtlid="435096">Neplatná adresa IPv6.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_error" qtlid="435109">Neplatná doména.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_error" qtlid="213635">Neplatná adresa.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_error_length" qtlid="213648">Tato adresa je příliš dlouhá.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_length" qtlid="213661">Nedostupné možnosti. Redukujte délku e-mailu pro jeho odblokování.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_info" qtlid="435122">Un domaine peut contenir des points. Il ne doit pas contenir d'entête (<strong>"http://"</strong> ou <strong>"https://"</strong>). Il ne doit pas contenir de slash (<strong>"/"</strong>) qui ferait référence à un dossier ou à une page. Il ne doit pas non plus contenir de numero de port désigné par un <strong>":"</strong> (comme ":123").</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_info" qtlid="435122">Doména může obsahovat tečky, nesmí však obsahovat hlavičky (<strong>"http://"</strong> či <strong>"https://"</strong>), lomítka (<strong>"/"</strong>) odkazující na složky či stránky a čísla portů uvozená dvojtečkou (jako například <strong>":123"</strong>).</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain" qtlid="16589">Přidat doménu</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain_example" qtlid="435135">Valeur finale : <strong>{0}</strong></translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain_example" qtlid="435135">Finální hodnota: <strong>{0}</strong></translation>
    <translation id="domain_tab_REDIRECTION_edit_success" qtlid="213687">Přesměrování Vaší domény {0} bylo změněno.</translation>
    <translation id="domain_tab_REDIRECTION_edit_fail" qtlid="213700">Při změně přesměrování domény {0} došlo k chybě</translation>
-   <translation id="domain_tab_REDIRECTION_edit_unknown_field_type" qtlid="435148">Ce type de redirection est inconnu : {0}</translation>
+   <translation id="domain_tab_REDIRECTION_edit_unknown_field_type" qtlid="435148">Tento typ přesměrování je neznámý: {0}</translation>
 
 
    <translation id="domain_tab_REDIRECTION_add_button" qtlid="213713">Přidat přesměrování</translation>
@@ -589,7 +589,8 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_dns_entry_add_publickey_revoke" qtlid="192396">Zrušit veřejný klíč</translation>
    <translation id="domain_configuration_dns_entry_add_servicetypes" qtlid="192409">Typy služeb</translation>
    <translation id="domain_configuration_dns_entry_add_servicetypes_all" qtlid="69173">Vše</translation>
-   <translation id="domain_configuration_dns_entry_add_servicetypes_email" qtlid="192422">e-mail</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_email" qtlid="436944">E-mail</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_none" qtlid="30646">Ne</translation>
    <translation id="domain_configuration_dns_entry_add_t_y" qtlid="192435">Testovací režim</translation>
    <translation id="domain_configuration_dns_entry_add_t_y_no" qtlid="24967">Neaktivní</translation>
    <translation id="domain_configuration_dns_entry_add_t_y_yes" qtlid="30250">Aktivní</translation>
@@ -611,11 +612,11 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_dns_entry_add_tlsa_selector" qtlid="291669">Selektor</translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_matching_type" qtlid="291682">Typ relace</translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_certificate_data" qtlid="291695">Data certifikátu</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_p" qtlid="435161">Règle pour le domaine</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_pct" qtlid="435174">Pourcentage des messages filtrés</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_rua" qtlid="435187">URI de création de rapports globaux</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_sp" qtlid="435200">Règle pour les sous-domaines</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Mode d'alignement pour SPF</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_p" qtlid="435161">Pravidlo pro doménu</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_pct" qtlid="435174">Procento filtrovaných správ</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_rua" qtlid="435187">URI pro vytváření globálních reportů</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_sp" qtlid="435200">Pravidlo pro subdomény</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Režim vyrovnání pro SPF</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_r" qtlid="435226">Relaxed</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_s" qtlid="435239">Strict</translation>
 
@@ -730,7 +731,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_tab_DYNHOSTLOGIN_table_header_login" qtlid="46792">Identifikátor</translation>
    <translation id="domain_tab_DYNHOSTLOGIN_table_search" qtlid="226475">Vyhledat login</translation>
    <translation id="domain_tab_DYNHOSTLOGIN_table_header_zone" qtlid="26335">Zóna</translation>
-   <translation id="domain_tab_DYNHOSTLOGIN_table_header_subDomain" qtlid="47476">Sub-doména</translation>
+   <translation id="domain_tab_DYNHOSTLOGIN_table_header_subDomain" qtlid="47476">Subdoména</translation>
    <translation id="domain_tab_DYNHOSTLOGIN_table_empty" qtlid="226488">S Vaším Dynhost není spjat žádný přístupový identifikátor.</translation>
    <translation id="domain_tab_DYNHOSTLOGIN_delete_title" qtlid="226501">Vymazat Dynhost přístupový identifikátor</translation>
    <translation id="domain_tab_DYNHOSTLOGIN_delete_confirm" qtlid="329434">Opravdu chcete odstranit přístupový identifikátor <strong>{0}</strong>?</translation>
@@ -790,14 +791,14 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_web_hosting_dns_reset" qtlid="244703">Jaké změny si přejete provést na Vašem DNS?</translation>
    <translation id="domain_configuration_web_hosting_dns_reset_explain" qtlid="233378">Pozor: pravidla pro přesměrování e-mailů budou vymazána.</translation>
    <translation id="domain_configuration_web_hosting_dns_NO_CHANGE" qtlid="72461">Žádné změny</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_NO_CHANGE" qtlid="435252">Malgré la mise en place de votre nouvel hébergement, votre nom de domaine continuera de pointer sur les entrées actuelles, vous devrez de votre côté effectuer les modifications dans votre zone DNS lorsque votre nouveau site sera prêt. Il s'agit d'un choix idéal si vous ne souhaitez pas couper un site déjà en production.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_NO_CHANGE" qtlid="435252">Po vytvoření nového webhostingu bude Vaše doména i nadále směrovat na stávající záznamy. Jakmile budou Vaše stránky připraveny, změnu nastavení DNS provedete manuálně. Tento postup je výhodný zejména tehdy, pokud na dané doméně již webové stránky provozujete.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ALL" qtlid="244716">A a MX záznam pro {0}</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ALL" qtlid="435265">Cette solution vous permettra de faire pointer automatiquement votre nom de domaine vers votre nouvel hébergement et vers vos nouveaux services e-mail. Cette solution est idéale si il n'y a aucun site en production sur votre nom de domaine.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ALL" qtlid="435265">Toto řešení provede automatické přesměrování domény na nový webhosting a e-mailové služby. Tento postup se nabízí zejména tehdy, pokud s danou doménou nejsou asociovány žádné webové stránky.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ONLY_A" qtlid="244729">A záznam pro {0}</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_A" qtlid="435278">Si vous disposez d'adresses e-mail sur votre nom de domaine mais d'aucun site internet, vous pouvez choisir de ne modifier que l'enregistrement A. De cette manière, votre nom de domaine pointera sur votre nouvel hébergement et vos adresses e-mails continueront de fonctionner sur votre service actuel.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_A" qtlid="435278">Pokud na své doméně máte pouze e-mailové služby, nemusíte měnit nic jiného, než A záznam. Tímto způsobem dosáhnete toho, že Vaše doména bude směrovat na Váš nový webhosting, zatímco e-mailové adresy budou i nadále fungovat na dosavadní službě.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ONLY_MX" qtlid="290641">MX záznamy {0}</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_MX" qtlid="435291">Cette option vous permettra d'utiliser uniquement les adresses e-mail de votre hébergement sans modifier le pointage relatif à votre site web. Votre nom de domaine continuera de pointer sur votre site actuel, mais les adresses e-mail utiliseront désormais les serveurs d'OVH.</translation>
-   <translation id="domain_configuration_web_hosting_dns_info" qtlid="435304">Si votre domaine n'utilise pas les serveurs DNS d'OVH, ces modifications n'auront aucun effet sur votre nom de domaine. Vous pourrez dans ce cas modifier les serveurs DNS de votre domaine afin qu'il puisse utiliser les paramètres de pointage relatif à votre nouveau service.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_MX" qtlid="435291">Díky tomuto řešení budete moci využívat pouze e-mailové služby svého webhostingu, aniž byste museli měnit nastavení záznamů pro webové stránky. Vaše doména tak bude i nadále směrovat na Vaše dosavadní webové stránky, zatímco e-maily poběží na serverech OVH.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info" qtlid="435304">Pokud Vaše doména nepoužívá DNS servery OVH, nebudou mít tyto úpravy žádný efekt. V takovém případě můžete upravit nastavení DNS serverů Vaší domény tak, aby mohla přijímat požadavky pro přesměrování na Vaši novou službu.</translation>
 
    <translation id="domain_update_owner_title" qtlid="267123">Aktualizace vlastníka</translation>
    <translation id="domain_configuration_update_owner" qtlid="271478">Aktualizovat informace o vlastníkovi</translation>
@@ -816,7 +817,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_update_owner_legalform_other" qtlid="19963">Jiné</translation>
 
    <translation id="domain_update_owner_email" qtlid="33598">E-mail</translation>
-   <translation id="domain_update_owner_lastname" qtlid="3818">Jméno</translation>
+   <translation id="domain_update_owner_lastname" qtlid="3818">Příjmení</translation>
    <translation id="domain_update_owner_firstname" qtlid="23323">Jméno</translation>
    <translation id="domain_update_owner_title" qtlid="157642">Můj účet</translation>
    <translation id="domain_update_owner_edit" qtlid="269851">Změna informací aktuálního vlastníka</translation>
@@ -876,7 +877,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_dashboard_type_alldom_french" qtlid="270709">Balíček FR</translation>
    <translation id="domain_dashboard_type_alldom_international" qtlid="270722">Balíček international</translation>
    <translation id="domain_attached_domain_select_title" qtlid="277624">Moje webhostingy</translation>
-   <translation id="domain_attached_domain_select_intro" qtlid="435317">Le domaine {0} est attaché à plusieurs hébergements.</translation>
+   <translation id="domain_attached_domain_select_intro" qtlid="435317">K doméně {0} je připojeno několik webhostingů.</translation>
    <translation id="domain_attached_domain_select_action" qtlid="277650">Vyberte webhosting:</translation>
 
    <translation id="domain_tab_dns_management_step1_title" qtlid="367709">Informace o Vašich DNS serverech</translation>

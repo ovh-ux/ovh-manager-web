@@ -84,7 +84,7 @@
    <translation id="domain_dashboard_web_hosting_associated" qtlid="296557">Liitetyt webhotellit</translation>
    <translation id="domain_configuration_web_hosting_associated_explain" qtlid="296570">Mene verkkotunnukseesi liitettyjen webhotellien konfiguraatioon</translation>
    <translation id="domain_configuration_web_hosting_fail" qtlid="296583">Tapahtui virhe liitettyjen webhotellien haussa</translation>
-   <translation id="domain_dashboard_web_hosting_associated_upsell" qtlid="434992">Aucun hébergement associé</translation>
+   <translation id="domain_dashboard_web_hosting_associated_upsell" qtlid="434992">Ei liitettyjä webhotelleja</translation>
    <translation id="domain_dashboard_web_hosting_more_infos" qtlid="238557">Lisätietoja</translation>
 
    <translation id="domain_configuration_action_disable" qtlid="90973">Poista käytöstä</translation>
@@ -268,9 +268,9 @@
    <translation id="domain_configuration_renew_step1_alert" qtlid="168354">Ota huomioon että viive maksamisesta tietojen päivittymiseen Web-hallintapaneeliin, on noin kaksi tuntia.</translation>
    <translation id="domain_configuration_protection_desactivate_title_button" qtlid="210137">Suojauksen poisto</translation>
    <translation id="domain_configuration_protection_desactivate_title" qtlid="124423">Ota verkkotunnuksen suojaus pois käytöstä</translation>
-   <translation id="domain_configuration_protection_desactivate_step1_question" qtlid="435005">Souhaitez-vous réellement désactiver la protection pour votre domaine {0} ?</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_question" qtlid="435005">Haluatko varmasti kytkeä verkkotunnuksesi {0} suojauksen pois päältä?</translation>
    <translation id="domain_configuration_protection_desactivate_step1_info" qtlid="290524">Kun suojaus poistetaan pääset käyttämään AUTH/INFO -koodia, jolla voit siirtää verkkotunnuksen painamalla sopivaa painiketta. </translation>
-   <translation id="domain_configuration_protection_desactivate_step1_dnssec" qtlid="435018">Votre domaine utilise le DNSSEC, vérifiez que votre nouveau prestataire puisse correctement le gérer. Dans le cas contraire, désactivez l'option avant de transférer votre domaine.</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_dnssec" qtlid="435018">Verkkotunnuksesi käyttää DNSSEC-palvelua. Tarkista, että uusi palveluntarjoajasi voi hallinnoida sitä oikein. Jos näin ei ole, kytke lisäpalvelu pois päältä ennen verkkotunnuksen siirtoa. </translation>
    <translation id="domain_configuration_protection_auth_info_registry" qtlid="344149">Jotta verkkotunnuksen siirtäminen onnistuu pois OVH:lta, on otettava yhteyttä rekisterinpitäjään siirtoavaimen (auth-info code) hankkimiseksi. Tämä onnistuu linkistä: <a href="{0}" target="_blank">{0}</a></translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_title" qtlid="129667">Verkkotunnuksen suojelu</translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_desc" qtlid="129679">Verkkotunnussuojelun (Domain Protect) aktivointi mahdollistaa verkkotunnusvarkauksia vastaan suojautumisen estämällä kaikki verkkotunnusta koskevat siirtopyynnöt.</translation>
@@ -284,7 +284,7 @@
    <translation id="domain_configuration_protection_desactivate_fail" qtlid="127552">Tapahtui virhe pyydettäessä verkkotunnuksen suojauksen poistoa</translation>
    <translation id="domain_configuration_protection_activate_title_button" qtlid="210150">Suojauksen aktivointi</translation>
    <translation id="domain_configuration_protection_activate_title" qtlid="124435">Ota käyttöön verkkotunnuksen suojaus</translation>
-   <translation id="domain_configuration_protection_activate_step1_question" qtlid="435031">Souhaitez-vous réellement activer la protection pour votre domaine {0} ?</translation>
+   <translation id="domain_configuration_protection_activate_step1_question" qtlid="435031">Haluatko varmasti aktivoida verkkotunnuksesi {0} suojauksen?</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_title" qtlid="129667">Verkkotunnuksen suojelu</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_desc" qtlid="129679">Verkkotunnussuojelun (Domain Protect) aktivointi mahdollistaa verkkotunnusvarkauksia vastaan suojautumisen estämällä kaikki verkkotunnusta koskevat siirtopyynnöt.</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_question1" qtlid="129691">Mitä tarkoittaa verkkotunnusvarkaus?</translation>
@@ -297,7 +297,7 @@
    <translation id="domain_configuration_protection_activate_fail" qtlid="127588">Tapahtui virhe pyydettäessä verkkotunnussuojausta</translation>
    <translation id="domain_configuration_whois_title_button" qtlid="124447">Määrittele WHOIS</translation>
    <translation id="domain_configuration_whois_title" qtlid="124447">Määrittele WHOIS</translation>
-   <translation id="domain_configuration_whois_step1_question" qtlid="435044">Veuillez choisir si vos informations personnelles doivent être affichées ou masquées dans le registre WHOIS pour le domaine {0}</translation>
+   <translation id="domain_configuration_whois_step1_question" qtlid="435044">Valitse näytetäänkö vai piilotetaanko henkilötietosi WHOIS-rekisterissä koskien verkkotunnusta {0}</translation>
    <translation id="domain_configuration_whois_step1_display" qtlid="69353">Näytä</translation>
    <translation id="domain_configuration_whois_step1_hide" qtlid="97136">Piilota</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
@@ -341,25 +341,25 @@
    <translation id="domain_tab_REDIRECTION_edit_web_option_title" qtlid="16469">Otsikko</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_keyword" qtlid="213531">Avainsanat</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_description" qtlid="9238">Kuvaus</translation>
-   <translation id="domain_tab_REDIRECTION_edit_title" qtlid="435057">Édition de la redirection</translation>
-   <translation id="domain_tab_REDIRECTION_edit_confirm" qtlid="435070">Édition de la redirection du sous domaine <strong>{0}</strong> vers <strong>{1}</strong> :</translation>
+   <translation id="domain_tab_REDIRECTION_edit_title" qtlid="435057">Uudelleenohjauksen muokkaaminen</translation>
+   <translation id="domain_tab_REDIRECTION_edit_confirm" qtlid="435070">Aliverkkotunnuksen <strong>{0}</strong> uudelleenohjauksen muokkaus kohti <strong>{1}</strong>:</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_label" qtlid="213570">Verkko-osoite</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ip_label" qtlid="26191">IP-osoite</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ipv4_label" qtlid="79314">IPv4-soite</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ipv6_label" qtlid="79326">IPv6-osoite</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_cname_label" qtlid="296609">Kohdeverkkotunnus</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_ipv4_error" qtlid="435083">Cette adresse IP n'est pas une IPv4 valide.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_ipv6_error" qtlid="435096">Cette adresse IP n'est pas une IPv6 valide.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_error" qtlid="435109">Ce domaine n'est pas valide.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv4_error" qtlid="435083">Tämä IP-osoite ei ole kelvollinen IPv4-osoite.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv6_error" qtlid="435096">Tämä IP-osoite ei ole kelvollinen IPv6-osoite.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_error" qtlid="435109">Tämä verkkotunnus ei ole kelvollinen.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_error" qtlid="213635">Tämä osoite ei kelpaa.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_error_length" qtlid="213648">Osoite on liian pitkä.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_length" qtlid="213661">Lisäoptioita ei ole. Lyhennä osoitetta lisäoptioiden saamiseksi.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_info" qtlid="435122">Un domaine peut contenir des points. Il ne doit pas contenir d'entête (<strong>"http://"</strong> ou <strong>"https://"</strong>). Il ne doit pas contenir de slash (<strong>"/"</strong>) qui ferait référence à un dossier ou à une page. Il ne doit pas non plus contenir de numero de port désigné par un <strong>":"</strong> (comme ":123").</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_info" qtlid="435122">Verkkotunnus voi sisältää pisteitä. Se ei voi sisältää etuliitettä (<strong>"http://"</strong> tai <strong>"https://"</strong>). Se ei voi sisältää kauttaviivaa  (<strong>"/"</strong>), mikä viittaisi kansioon tai sivuun. Siinä ei voi myöskään olla portin numeroa, jonka merkkinä on  <strong>":"</strong> (kuten ":123").</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain" qtlid="16589">Lisää verkkotunnus</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain_example" qtlid="435135">Valeur finale : <strong>{0}</strong></translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain_example" qtlid="435135">Lopullinen arvo: <strong>{0}</strong></translation>
    <translation id="domain_tab_REDIRECTION_edit_success" qtlid="213687">Verkkotunnuksesi {0} uudelleenohjausta on muokattu</translation>
    <translation id="domain_tab_REDIRECTION_edit_fail" qtlid="213700">Tapahtui virhe muokattaessa verkkotunnuksen {0} uudelleenohjausta</translation>
-   <translation id="domain_tab_REDIRECTION_edit_unknown_field_type" qtlid="435148">Ce type de redirection est inconnu : {0}</translation>
+   <translation id="domain_tab_REDIRECTION_edit_unknown_field_type" qtlid="435148">Tämä uudelleenohjaus on tuntematonta tyyppiä: {0}</translation>
 
 
    <translation id="domain_tab_REDIRECTION_add_button" qtlid="213713">Lisää ohjaus</translation>
@@ -586,7 +586,8 @@
    <translation id="domain_configuration_dns_entry_add_publickey_revoke" qtlid="192396">Kumoa julkinen avain</translation>
    <translation id="domain_configuration_dns_entry_add_servicetypes" qtlid="192409">Palvelun tyyppi</translation>
    <translation id="domain_configuration_dns_entry_add_servicetypes_all" qtlid="69173">Kaikki</translation>
-   <translation id="domain_configuration_dns_entry_add_servicetypes_email" qtlid="192422">sähköposti</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_email" qtlid="436944">Sähköposti</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_none" qtlid="30646">Ei ole</translation>
    <translation id="domain_configuration_dns_entry_add_t_y" qtlid="192435">Testitila</translation>
    <translation id="domain_configuration_dns_entry_add_t_y_no" qtlid="24967">Deaktivoitu</translation>
    <translation id="domain_configuration_dns_entry_add_t_y_yes" qtlid="30250">Aktivoitu</translation>
@@ -608,11 +609,11 @@
    <translation id="domain_configuration_dns_entry_add_tlsa_selector" qtlid="291669">Valitsin</translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_matching_type" qtlid="291682">Yhteydenpidon tapa</translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_certificate_data" qtlid="291695">Sertifikaatin tiedot</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_p" qtlid="435161">Règle pour le domaine</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_pct" qtlid="435174">Pourcentage des messages filtrés</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_rua" qtlid="435187">URI de création de rapports globaux</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_sp" qtlid="435200">Règle pour les sous-domaines</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Mode d'alignement pour SPF</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_p" qtlid="435161">Verkkotunnuksen säännöt</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_pct" qtlid="435174">Suodatettujen viestien prosenttiosuus</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_rua" qtlid="435187">Yhdistelmäraporttien raportointi URI </translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_sp" qtlid="435200">Sääntö aliverkkotunnuksille</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Tasauksen tyyppi SPF:lle</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_r" qtlid="435226">Relaxed</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_s" qtlid="435239">Strict</translation>
 
@@ -787,14 +788,15 @@
    <translation id="domain_configuration_web_hosting_dns_reset" qtlid="244703">Mitä muutoksia haluat tehdä DNS-alueeseen?</translation>
    <translation id="domain_configuration_web_hosting_dns_reset_explain" qtlid="233378">Huomioitavaa: kaikki sähköpostin uudelleenohjaussäännöt poistetaan.</translation>
    <translation id="domain_configuration_web_hosting_dns_NO_CHANGE" qtlid="72461">Ei muutosta</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_NO_CHANGE" qtlid="435252">Malgré la mise en place de votre nouvel hébergement, votre nom de domaine continuera de pointer sur les entrées actuelles, vous devrez de votre côté effectuer les modifications dans votre zone DNS lorsque votre nouveau site sera prêt. Il s'agit d'un choix idéal si vous ne souhaitez pas couper un site déjà en production.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_NO_CHANGE" qtlid="435252">Webhotellisi perustamisesta huolimatta verkkotunnuksesi osoittaa edelleen nykyisiin tietueisiin. Sinun on tehtävä itse muutokset DNS-alueella, kun uusi sivusi on valmis. Tämä on ihanteellinen valinta, jos et halua katkaista jo tuotannossa olevaa sivua.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ALL" qtlid="244716">{0}:n A- ja MX-tietueet</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ALL" qtlid="435265">Cette solution vous permettra de faire pointer automatiquement votre nom de domaine vers votre nouvel hébergement et vers vos nouveaux services e-mail. Cette solution est idéale si il n'y a aucun site en production sur votre nom de domaine.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ALL" qtlid="435265">Tämän ratkaisun avulla verkkotunnuksesi voidaan saada osoittamaan automaattisesti kohti uutta webhotelliasi ja uusia sähköpostipalvelujasi. Ihanteellinen ratkaisu tilanteessa, jossa verkkotunnuksellasi ei ole yhtään sivua tuotannossa.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ONLY_A" qtlid="244729">{0}:n A-tietue</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_A" qtlid="435278">Si vous disposez d'adresses e-mail sur votre nom de domaine mais d'aucun site internet, vous pouvez choisir de ne modifier que l'enregistrement A. De cette manière, votre nom de domaine pointera sur votre nouvel hébergement et vos adresses e-mails continueront de fonctionner sur votre service actuel.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_A" qtlid="435278">Jos verkkotunnuksellasi on sähköpostiosoitteita muttei yhtään verkkosivua, voit valita vain rekisteröinnin muokkauksen. Tällä tavoin verkkotunnuksesi osoittaa uuteen webhotelliin ja sähköpostiosoitteet toimivat edelleen nykyisessä palvelussasi.  &#13;
+</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ONLY_MX" qtlid="290641">MX {0} -rekisteröinnit</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_MX" qtlid="435291">Cette option vous permettra d'utiliser uniquement les adresses e-mail de votre hébergement sans modifier le pointage relatif à votre site web. Votre nom de domaine continuera de pointer sur votre site actuel, mais les adresses e-mail utiliseront désormais les serveurs d'OVH.</translation>
-   <translation id="domain_configuration_web_hosting_dns_info" qtlid="435304">Si votre domaine n'utilise pas les serveurs DNS d'OVH, ces modifications n'auront aucun effet sur votre nom de domaine. Vous pourrez dans ce cas modifier les serveurs DNS de votre domaine afin qu'il puisse utiliser les paramètres de pointage relatif à votre nouveau service.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_MX" qtlid="435291">Tämän lisäpalvelun avulla voit käyttää ainoastaan webhotellisi sähköpostiosoitteita verkkosivusi osoitusta muokkaamatta. Verkkotunnuksesi osoittaa edelleen nykyiselle sivullesi, mutta sähköpostiosoitteet käyttävät tästä eteenpäin OVH:n palvelimia.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info" qtlid="435304">Jos verkkotunnuksesi ei käytä OVH:n nimipalvelimia, ei näillä muutoksilla ole vaikutusta verkkotunnukseesi. Voit siinä tapauksessa muokata verkkotunnuksesi nimipalvelimia, jotta se voi käyttää uuden palvelusi osoitusasetuksia. </translation>
 
    <translation id="domain_update_owner_title" qtlid="267123">Päivitä omistaja</translation>
    <translation id="domain_configuration_update_owner" qtlid="271478">Päivitä omistajatiedot</translation>
@@ -873,7 +875,7 @@
    <translation id="domain_dashboard_type_alldom_french" qtlid="270709">FR-paketti</translation>
    <translation id="domain_dashboard_type_alldom_international" qtlid="270722">International-paketti</translation>
    <translation id="domain_attached_domain_select_title" qtlid="277624">Omat webhotellit</translation>
-   <translation id="domain_attached_domain_select_intro" qtlid="435317">Le domaine {0} est attaché à plusieurs hébergements.</translation>
+   <translation id="domain_attached_domain_select_intro" qtlid="435317">Verkkotunnus {0} on liitetty useaan webhotelliin.</translation>
    <translation id="domain_attached_domain_select_action" qtlid="277650">Valitse webhotelli, johon haluat kirjautua:</translation>
 
    <translation id="domain_tab_dns_management_step1_title" qtlid="367709">Nimipalvelimen tiedot</translation>
