@@ -10,10 +10,10 @@ angular.module("App").controller("HostingDatabaseRestoreCtrl", ($scope, $statePa
         HostingDatabase.restoreBDD($stateParams.productId, $scope.bdd.name, $scope.dump)
             .then(
                 () => {
-                    Alerter.success($scope.tr("database_tabs_dumps_restore_in_start"), "dataBase.alerts.bdd");
+                    Alerter.success($scope.tr("database_tabs_dumps_restore_in_start"), $scope.alerts.dashboard);
                 },
                 (err) => {
-                    Alerter.alertFromSWS($scope.tr("database_tabs_dumps_restore_fail"), err, "dataBase.alerts.bdd");
+                    Alerter.alertFromSWS($scope.tr("database_tabs_dumps_restore_fail"), err, $scope.alerts.dashboard);
                 }
             )
             .finally(() => {
