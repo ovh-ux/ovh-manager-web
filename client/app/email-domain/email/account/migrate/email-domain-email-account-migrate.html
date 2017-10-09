@@ -124,55 +124,64 @@
         <!-- /Step 1 -->
 
         <!-- Step 2 -->
+        <div data-wizard-step>
+            <p data-i18n-static="email_tab_modal_migrate_confirmation_delay"></p>
+
+            <div class="form-horizontal">
+
+                <!-- Migration Data -->
+                <div class="form-group mb-0">
+                    <label class="control-label col-md-4" data-i18n-static="email_tab_modal_migrate_account_email_label"></label>
+                    <div class="col-md-8">
+                        <p class="form-control-static" data-ng-bind="ctrl.email.email"></p>
+                    </div>
+                </div>
+                <div class="form-group mb-0">
+                    <label class="control-label col-md-4" data-i18n-static="email_tab_modal_migrate_service_type_label"></label>
+                    <div class="col-md-8">
+                        <p class="form-control-static" data-ng-bind="ctrl.migrate.serviceType"></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-4" data-i18n-static="email_tab_modal_migrate_destination_service_label"></label>
+                    <div class="col-md-8">
+                        <p class="form-control-static" data-ng-bind="ctrl.migrate.destinationService"></p>
+                    </div>
+                </div>
+                <!-- /Migration Data -->
+
+            </div>
+
+            <!-- Guides Text -->
+            <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'" data-i18n-static="email_tab_modal_migrate_configuration_guides_emailpro"></p>
+            <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'" data-i18n-static="email_tab_modal_migrate_configuration_guides_exchange"></p>
+            <p>
+                <a class="btn btn-default btn-sm" href="https://docs.ovh.com/fr/fr/web/" target="_blank">
+                    <span data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></span>
+                    <span class="fa fa-external-link"></span>
+                </a>
+            </p>
+            <!-- /Guides Text -->
+
+            <!-- Not Supported Alert -->
+            <div class="alert alert-warning" role="alert">
+                <p data-ng-bind-html="tr('email_tab_modal_migrate_alert_not_supported')"></p>
+            </div>
+            <!-- /Not Supported Alert -->
+        </div>
+        <!-- /Step 2 -->
+
+        <!-- Step 3 -->
         <div data-wizard-step
             data-wizard-step-on-load="checkMigrationData"
             data-wizard-step-valid="ctrl.migratePasswordForm.$valid && ctrl.isPasswordMatches()">
 
             <div data-ng-if="!ctrl.loading">
                 <p data-i18n-static="email_tab_modal_migrate_confirmation_heading"></p>
-                <p data-i18n-static="email_tab_modal_migrate_confirmation_delay"></p>
-
-                <div class="form-horizontal">
-
-                    <!-- Migration Data -->
-                    <div class="form-group mb-0">
-                        <label class="control-label col-md-4" data-i18n-static="email_tab_modal_migrate_account_email_label"></label>
-                        <div class="col-md-8">
-                            <p class="form-control-static" data-ng-bind="ctrl.email.email"></p>
-                        </div>
-                    </div>
-                    <div class="form-group mb-0">
-                        <label class="control-label col-md-4" data-i18n-static="email_tab_modal_migrate_service_type_label"></label>
-                        <div class="col-md-8">
-                            <p class="form-control-static" data-ng-bind="ctrl.migrate.serviceType"></p>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label col-md-4" data-i18n-static="email_tab_modal_migrate_destination_service_label"></label>
-                        <div class="col-md-8">
-                            <p class="form-control-static" data-ng-bind="ctrl.migrate.destinationService"></p>
-                        </div>
-                    </div>
-                    <!-- /Migration Data -->
-
-                </div>
-
-                <!-- Guides Text -->
-                <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'" data-i18n-static="email_tab_modal_migrate_configuration_guides_emailpro"></p>
-                <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'" data-i18n-static="email_tab_modal_migrate_configuration_guides_exchange"></p>
-                <p>
-                    <a class="btn btn-default btn-sm" href="https://docs.ovh.com/fr/fr/web/" target="_blank">
-                        <span data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></span>
-                        <span class="fa fa-external-link"></span>
-                    </a>
-                </p>
-                <!-- /Guides Text -->
-
-                <!-- Not Supported Alert -->
-                <div class="alert alert-warning" role="alert">
-                    <p data-ng-bind-html="tr('email_tab_modal_migrate_alert_not_supported')"></p>
-                </div>
-                <!-- /Not Supported Alert -->
+                <ul>
+                    <li data-i18n-static="email_tab_modal_migrate_confirmation_access_webmail"></li>
+                    <li data-i18n-static="email_tab_modal_migrate_confirmation_cancel_process"></li>
+                </ul>
 
                 <!-- Aknowledge Text -->
                 <p class="font-weight-bold" data-i18n-static="email_tab_modal_migrate_aknowledge"></p>
@@ -223,6 +232,13 @@
                     <!-- Confirm Password -->
 
                 </form>
+
+                <!-- Don't Change Password Alert -->
+                <div class="alert alert-warning" role="alert">
+                    <p data-ng-bind-html="tr('email_tab_modal_migrate_alert_dont_change_password')"></p>
+                </div>
+                <!-- /Don't Change Password Alert -->
+
             </div>
 
             <!-- Loader -->
@@ -230,7 +246,7 @@
             <!-- /Loader -->
 
         </div>
-        <!-- /Step 2 -->
+        <!-- /Step 3 -->
 
     </div>
 </div>
