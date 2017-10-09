@@ -6,7 +6,6 @@ angular.module("App").config(($stateProvider) => {
         templateUrl: "configuration/configuration.html",
         controller: "ConfigurationCtrl",
         controllerAs: "ConfigurationCtrl",
-        piwikActionName: "Configuration",
         resolve: {
             navigationInformations: [
                 "Navigator",
