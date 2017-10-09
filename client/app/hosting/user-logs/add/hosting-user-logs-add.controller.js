@@ -28,7 +28,7 @@ angular.module("App").controller("HostingUserLogsCreateCtrl", ($scope, $statePar
 
     $scope.isPasswordValid = function () {
         return (
-            $scope.model.selected.password.value && $scope.model.selected.password.confirmation && $scope.model.selected.password.value === $scope.model.selected.password.confirmation && Hosting.isPasswordValid($scope.model.selected.password.value)
+            $scope.model.selected.password.value && $scope.model.selected.password.confirmation && $scope.model.selected.password.value === $scope.model.selected.password.confirmation && Hosting.constructor.isPasswordValid($scope.model.selected.password.value)
         );
     };
 
@@ -36,10 +36,10 @@ angular.module("App").controller("HostingUserLogsCreateCtrl", ($scope, $statePar
         return $scope.model.selected.password.value && $scope.model.selected.password.confirmation && $scope.model.selected.password.value !== $scope.model.selected.password.confirmation;
     };
 
-    $scope.condition = Hosting.getPasswordConditions();
+    $scope.condition = Hosting.constructor.getPasswordConditions();
 
     $scope.isPasswordInvalid = function () {
-        return !Hosting.isPasswordValid(_.get($scope.model, "selected.password.value", ""));
+        return !Hosting.constructor.isPasswordValid(_.get($scope.model, "selected.password.value", ""));
     };
 
     $scope.isPasswordConfirmationInvalid = function () {

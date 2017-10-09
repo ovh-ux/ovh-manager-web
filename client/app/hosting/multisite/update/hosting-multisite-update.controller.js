@@ -46,7 +46,7 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
     };
 
     $scope.isPathValid = function () {
-        return Hosting.isPathValid($scope.selected.domain.path);
+        return Hosting.constructor.isPathValid($scope.selected.domain.path);
     };
 
     function isCountryIp (countryIps, recordIdsData) {

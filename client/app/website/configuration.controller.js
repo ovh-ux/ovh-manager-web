@@ -33,7 +33,7 @@
                 .finally(() => (self.loading.init = false));
         }
 
-        self.isPasswordValid = Hosting.isPasswordValid;
+        self.isPasswordValid = Hosting.constructor.isPasswordValid;
 
         self.loadHosting = (serviceName) => {
             self.loading.capabilities = true;
@@ -48,7 +48,7 @@
                     self.hostingInfos = response.info;
 
                     self.canBeCreated = databaseCapabilites || privateDatabaseCapabilities;
-                    self.canBeCreated = self.canBeCreated && Hosting.getRemainingQuota(self.hostingInfos.quotaSize, self.hostingInfos.quotaUsed) >= 219;
+                    self.canBeCreated = self.canBeCreated && Hosting.constructor.getRemainingQuota(self.hostingInfos.quotaSize, self.hostingInfos.quotaUsed) >= 219;
                 })
                 .catch((err) => {
                     Alerter.alertFromSWS($scope.tr("website_hosting_capabilities_error"), err, self.alerts);

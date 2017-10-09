@@ -9,11 +9,11 @@ angular.module("App").controller("HostingUserLogsUpdatePasswordCtrl", ($scope, $
 
     $scope.shouldDisplayDifferentPasswordMessage = () => $scope.password.value && $scope.password.confirmation && $scope.password.value !== $scope.password.confirmation;
 
-    $scope.condition = Hosting.getPasswordConditions();
+    $scope.condition = Hosting.constructor.getPasswordConditions();
 
-    $scope.isPasswordValid = () => $scope.password.value && $scope.password.confirmation && $scope.password.value === $scope.password.confirmation && Hosting.isPasswordValid($scope.password.value);
+    $scope.isPasswordValid = () => $scope.password.value && $scope.password.confirmation && $scope.password.value === $scope.password.confirmation && Hosting.constructor.isPasswordValid($scope.password.value);
 
-    $scope.isPasswordInvalid = () => !Hosting.isPasswordValid(_.get($scope.password, "value", ""));
+    $scope.isPasswordInvalid = () => !Hosting.constructor.isPasswordValid(_.get($scope.password, "value", ""));
 
     $scope.isPasswordConfirmationInvalid = () => $scope.password.value !== $scope.password.confirmation;
 
