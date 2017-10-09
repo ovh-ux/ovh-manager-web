@@ -78,6 +78,8 @@
    <translation id="hosting_dashboard_service_offer__90_PLAN" qtlid="196036">90plan</translation>
    <translation id="hosting_dashboard_service_offer_ASPFREE" qtlid="196049">aspfree</translation>
    <translation id="hosting_dashboard_service_offer_BUSINESS" qtlid="314110">business 2010</translation>
+   <translation id="hosting_dashboard_service_offer_CLOUDWEBX_1" qtlid="437178">Cloud Web</translation>
+   <translation id="hosting_dashboard_service_offer_CLOUDWEBBETAX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_DEMO_1_G" qtlid="196075">demo1g</translation>
    <translation id="hosting_dashboard_service_offer_DEPRO_2012" qtlid="196088">depro2012</translation>
    <translation id="hosting_dashboard_service_offer_DEPROL_2012" qtlid="196101">deprol2012</translation>
@@ -351,6 +353,7 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type" qtlid="196959">Select the type of database:</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PERSO" qtlid="196972">Personal SQL {0} {1}: {2} remaining</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PRO" qtlid="196985">Professional SQL {0} {1}: {2} remaining</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_EXTRA_SQL_PERSO" qtlid="196998">Extra Personal SQL {0} {1} : {2}  remaining</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_PRIVATE_SQL" qtlid="261734">Private SQL {0} {1} : {2} remaining</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step2_password_question" qtlid="197011">Select the database username and the associated password</translation>
@@ -367,6 +370,7 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PERSO" qtlid="197128">Personal SQL {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PRO" qtlid="197141">Professional SQL {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_EXTRA_SQL_PERSO" qtlid="197154">Extra Personal SQL {0} {1}</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_fail" qtlid="197167">An error occurred when requesting to create the database.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_success" qtlid="197180">The database will be created.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_upgrade_perso" qtlid="272734">With "Personal" hosting you get a single database, you can change to performance or professional hosting which allow up to 4 databases</translation>
@@ -429,7 +433,7 @@
    <translation id="database_tabs_dumps_restore_dump_with_creation_date" qtlid="370044">Restore the {0} backup </translation>
    <translation id="database_tabs_dumps_delete_dump" qtlid="370057">Delete the {0} backup </translation>
    <translation id="database_tabs_dumps_dump_in_progress" qtlid="304420">Backing up...</translation>
-   <translation id="database_restore_bdd_confirm" qtlid="272290">Do you want to restore <strong>{0}</strong> the backup for the <strong>{1}</strong> database?</translation>
+   <translation id="database_restore_bdd_confirm" qtlid="272290">Do you want to restore the <strong>{0}</strong> backup for the <strong>{1}</strong> database?</translation>
    <translation id="database_restore_bdd_confirm_daily" qtlid="287254">Would you like to restore <strong>yesterday's</strong> database backup? </translation>
    <translation id="database_restore_bdd_confirm_weekly" qtlid="287267">Would you like to restore the <strong>one week</strong> old database backup?</translation>
    <translation id="database_restore_bdd_get_last_error" qtlid="287280">There was an error getting the last backup:</translation>
@@ -572,7 +576,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl" qtlid="84921">SSL</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl_help" qtlid="315826">Enable SSL so that your website can be accessed in https</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol" qtlid="288899">Configuration of ovhcontrol token </translation>
-   <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_info" qtlid="273427">Value to enter in the domain name provider's TXT field in order to add the domain to your hosting package.  </translation>
+   <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_info">Valeur à renseigner dans un champ TXT chez le fournisseur possédant le nom de domaine afin de l'ajouter à votre hébergement. Cette action est requise afin de s'assurer que le domaine est bien sous votre contrôle, et éviter le phishing.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_subdomain" qtlid="288912">Sub-domain to use </translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_domain" qtlid="288925">External domain </translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_ttl" qtlid="121747">TTL</translation>
@@ -884,7 +888,7 @@
 
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_question" qtlid="199000">Select the user password</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_password" qtlid="2270">Password</translation>
-   <translation id="hosting_tab_FTP_configuration_user_create_step2_password_confirmation" qtlid="9983">Confirmation</translation>
+   <translation id="hosting_tab_FTP_configuration_user_create_step2_password_confirmation">Confirmation du mot de passe</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_error" qtlid="197076">The passwords entered are not identicaal.</translation>
 
    <translation id="hosting_tab_FTP_configuration_user_create_step3_question" qtlid="199013">Do you really want to create the following FTP user?</translation>
