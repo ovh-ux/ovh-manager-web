@@ -1,7 +1,7 @@
 angular.module("App").config(($stateProvider) => {
     "use strict";
 
-    $stateProvider.state("web.website", {
+    $stateProvider.state("app.website", {
         url: "/website/configuration",
         templateUrl: "website/configuration.html",
         controller: "WebSiteConfigurationCtrl",
@@ -24,7 +24,7 @@ angular.module("App").config(($stateProvider) => {
         }
     });
 
-    $stateProvider.state("web.website-success", {
+    $stateProvider.state("app.website-success", {
         url: "/website/configuration/:domain/:hosting/success/:type",
         templateUrl: "website/success/success.html",
         controller: "WebSiteSuccessCtrl",

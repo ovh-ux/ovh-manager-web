@@ -1,7 +1,7 @@
 angular.module("App").config(($stateProvider) => {
     "use strict";
 
-    $stateProvider.state("web.hosting", {
+    $stateProvider.state("app.hosting", {
         url: "/configuration/hosting/:productId?tab",
         templateUrl: "hosting/hosting.html",
         controller: "HostingCtrl",

@@ -1,13 +1,13 @@
 angular.module("App").config(($stateProvider) => {
     "use strict";
 
-    $stateProvider.state("web.email", {
+    $stateProvider.state("app.email", {
         url: "/configuration/email-",
         "abstract": true,
         template: "<div ui-view></div>"
     });
 
-    $stateProvider.state("web.email.domain", {
+    $stateProvider.state("app.email.domain", {
         url: "domain/:productId?tab",
         templateUrl: "email-domain/email-domain.html",
         controller: "EmailDomainCtrl",
@@ -30,7 +30,7 @@ angular.module("App").config(($stateProvider) => {
         }
     });
 
-    $stateProvider.state("web.email.delegate", {
+    $stateProvider.state("app.email.delegate", {
         url: "delegate/:productId?tab",
         templateUrl: "email-domain/delegate/email-domain-delegate.html",
         controller: "EmailDelegateCtrl",
@@ -53,7 +53,7 @@ angular.module("App").config(($stateProvider) => {
         }
     });
 
-    $stateProvider.state("web.mx-plan", {
+    $stateProvider.state("app.mx-plan", {
         url: "/configuration/mx_plan",
         templateUrl: "email-domain/order/email-domain-order.html",
         controller: "MXPlanOrderCtrl",

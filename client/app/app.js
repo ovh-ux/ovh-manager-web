@@ -152,7 +152,7 @@ angular
             atInternetProvider.setDebug(!constants.prodMode);
 
             atInternetUiRouterPluginProvider.setTrackStateChange(constants.prodMode && window.location.port.length <= 3);
-            atInternetUiRouterPluginProvider.addStateNameFilter((routeName) => routeName ? routeName.replace(/\./g, "::") : "");
+            atInternetUiRouterPluginProvider.addStateNameFilter((routeName) => routeName ? routeName.replace(/^app/, "web").replace(/\./g, "::") : "");
         }
     ])
     .constant("TRACKING", {
@@ -228,7 +228,7 @@ angular
             /*
             * ALL DOM
             */
-            $stateProvider.state("web.alldom", {
+            $stateProvider.state("app.alldom", {
                 url: "/configuration/all_dom/:allDom/:productId",
                 templateUrl: "domain/domain.html",
                 controller: "DomainCtrl",
