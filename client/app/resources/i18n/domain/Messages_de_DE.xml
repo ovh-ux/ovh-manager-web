@@ -84,7 +84,7 @@
    <translation id="domain_dashboard_web_hosting_associated" qtlid="296557">Zugewiesene Hostings</translation>
    <translation id="domain_configuration_web_hosting_associated_explain" qtlid="296570">Zugang zur Konfiguration der Ihrem Domainnamen zugewiesenen Hostings</translation>
    <translation id="domain_configuration_web_hosting_fail" qtlid="296583">Beim Abruf der zugewiesenen Hostings ist ein Fehler aufgetreten</translation>
-   <translation id="domain_dashboard_web_hosting_associated_upsell" qtlid="434992">Aucun hébergement associé</translation>
+   <translation id="domain_dashboard_web_hosting_associated_upsell" qtlid="434992">Kein zugehöriges Hosting</translation>
    <translation id="domain_dashboard_web_hosting_more_infos" qtlid="238557">Mehr Informationen</translation>
 
    <translation id="domain_configuration_action_disable" qtlid="90973">Deaktivieren</translation>
@@ -248,7 +248,7 @@
    <translation id="domain_configuration_order_alldom" qtlid="288990">Ein AllDom Paket bestellen </translation>
    <translation id="domain_configuration_add_subdomain_subdomain" qtlid="265327">Subdomain</translation>
    <translation id="domain_configuration_add_subdomain_tip" qtlid="265340">Wenn Sie dieses Feld leer lassen, gilt die Konfiguration für den Domainnamen selbst</translation>
-   <translation id="domain_configuration_add_subdomain_error" qtlid="213765">Diese Subdomain ist nicht gültig.</translation>
+   <translation id="domain_configuration_add_subdomain_error" qtlid="213765">Diese Subdomain ist ungültig.</translation>
    <translation id="domain_configuration_add_subdomain_iwant" qtlid="265353">Ich möchte:</translation>
    <translation id="domain_configuration_add_subdomain_redir" qtlid="265366">Eine Weiterleitung einrichten</translation>
    <translation id="domain_configuration_add_subdomain_redir_sample" qtlid="265379">Beispiel: test.meintest.com leitet weiter auf test.meintest.de</translation>
@@ -268,9 +268,9 @@
    <translation id="domain_configuration_renew_step1_alert" qtlid="168354">Bitte beachten Sie, dass es nach dem Eingang Ihrer Zahlung etwa 2 Stunden dauert, bis die Verlängerung in Ihrem Web Kundencenter angezeigt wird.</translation>
    <translation id="domain_configuration_protection_desactivate_title_button" qtlid="210137">Den Schutz deaktivieren</translation>
    <translation id="domain_configuration_protection_desactivate_title" qtlid="124423">Schutz der Domain deaktivieren</translation>
-   <translation id="domain_configuration_protection_desactivate_step1_question" qtlid="435005">Souhaitez-vous réellement désactiver la protection pour votre domaine {0} ?</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_question" qtlid="435005">Sind Sie sicher, dass Sie den Schutz für Ihre Domain {0} deaktivieren möchten?</translation>
    <translation id="domain_configuration_protection_desactivate_step1_info" qtlid="290524">Wenn der Schutz deaktiviert ist, haben Sie Zugriff auf den AUTH/INFO Code und können die Domain durch einfachen Klick auf den entsprechenden Button transferieren. </translation>
-   <translation id="domain_configuration_protection_desactivate_step1_dnssec" qtlid="435018">Votre domaine utilise le DNSSEC, vérifiez que votre nouveau prestataire puisse correctement le gérer. Dans le cas contraire, désactivez l'option avant de transférer votre domaine.</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_dnssec" qtlid="435018">Ihre Domain verwendet DNSSEC. Bitte stellen Sie sicher, dass Ihr neuer Dienstleister das Protokoll korrekt verwalten kann. Ist das nicht der Fall, müssen Sie diese Option vor dem Transfer deaktivieren.</translation>
    <translation id="domain_configuration_protection_auth_info_registry" qtlid="344149">Um eine Domain zu transferieren, benötigen Sie den auth-info Code. Nutzen Sie folgenden Link: <a href="{0}" target="_blank">{0}</a> </translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_title" qtlid="129667">Schutz der Domain</translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_desc" qtlid="129679">Wenn Sie den Schutz der Domain aktivieren sind Sie vor Domaindiebstahl geschützt, da dadurch jeglicher Transfer verboten wird.</translation>
@@ -284,7 +284,7 @@
    <translation id="domain_configuration_protection_desactivate_fail" qtlid="127552">Bei der Anfrage zur Deaktivierung des Schutzes der Domain ist ein Fehler aufgetreten</translation>
    <translation id="domain_configuration_protection_activate_title_button" qtlid="210150">Den Schutz aktivieren</translation>
    <translation id="domain_configuration_protection_activate_title" qtlid="124435">Schutz der Domain aktivieren</translation>
-   <translation id="domain_configuration_protection_activate_step1_question" qtlid="435031">Souhaitez-vous réellement activer la protection pour votre domaine {0} ?</translation>
+   <translation id="domain_configuration_protection_activate_step1_question" qtlid="435031">Sind Sie sicher, dass Sie den Schutz für Ihre Domain {0} aktivieren möchten?</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_title" qtlid="129667">Schutz der Domain</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_desc" qtlid="129679">Wenn Sie den Schutz der Domain aktivieren sind Sie vor Domaindiebstahl geschützt, da dadurch jeglicher Transfer verboten wird.</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_question1" qtlid="129691">Was ist Domaindiebstahl?</translation>
@@ -297,7 +297,7 @@
    <translation id="domain_configuration_protection_activate_fail" qtlid="127588">Bei der Anfrage zur Aktivierung des Schutzes der Domain ist ein Fehler aufgetreten</translation>
    <translation id="domain_configuration_whois_title_button" qtlid="124447">WHOIS konfigurieren</translation>
    <translation id="domain_configuration_whois_title" qtlid="124447">WHOIS konfigurieren</translation>
-   <translation id="domain_configuration_whois_step1_question" qtlid="435044">Veuillez choisir si vos informations personnelles doivent être affichées ou masquées dans le registre WHOIS pour le domaine {0}</translation>
+   <translation id="domain_configuration_whois_step1_question" qtlid="435044">Bitte legen Sie fest, ob Ihre persönlichen Informationen im Whois Registry für die Domain {0} angezeigt oder verborgen werden sollen</translation>
    <translation id="domain_configuration_whois_step1_display" qtlid="69353">Anzeigen</translation>
    <translation id="domain_configuration_whois_step1_hide" qtlid="97136">Verbergen</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
@@ -341,25 +341,25 @@
    <translation id="domain_tab_REDIRECTION_edit_web_option_title" qtlid="16469">Titel</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_keyword" qtlid="213531">Keywords</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_description" qtlid="9238">Beschreibung</translation>
-   <translation id="domain_tab_REDIRECTION_edit_title" qtlid="435057">Édition de la redirection</translation>
-   <translation id="domain_tab_REDIRECTION_edit_confirm" qtlid="435070">Édition de la redirection du sous domaine <strong>{0}</strong> vers <strong>{1}</strong> :</translation>
+   <translation id="domain_tab_REDIRECTION_edit_title" qtlid="435057">Änderung der Weiterleitung</translation>
+   <translation id="domain_tab_REDIRECTION_edit_confirm" qtlid="435070">Änderung der Weiterleitung der Subdomain <strong>{0}</strong> auf <strong>{1}</strong>:</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_label" qtlid="213570">Web-Adresse</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ip_label" qtlid="26191">IP-Adresse</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ipv4_label" qtlid="79314">IPv4 Adresse</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ipv6_label" qtlid="79326">IPv6 Adresse</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_cname_label" qtlid="296609">Zieldomain</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_ipv4_error" qtlid="435083">Cette adresse IP n'est pas une IPv4 valide.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_ipv6_error" qtlid="435096">Cette adresse IP n'est pas une IPv6 valide.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_error" qtlid="435109">Ce domaine n'est pas valide.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_web_target_error" qtlid="213635">Diese Adresse ist nicht gültig.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv4_error" qtlid="435083">Diese IP ist keine gültige IPv4-Adresse.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv6_error" qtlid="435096">Diese IP ist keine gültige IPv6-Adresse.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_error" qtlid="435109">Die Domain ist ungültig.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_web_target_error" qtlid="213635">Diese Adresse ist ungültig.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_error_length" qtlid="213648">Die Adresse ist zu lang.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_length" qtlid="213661">Optionen nicht verfügbar. Verkürzen Sie die Adresse, um diese freizuschalten.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_info" qtlid="435122">Un domaine peut contenir des points. Il ne doit pas contenir d'entête (<strong>"http://"</strong> ou <strong>"https://"</strong>). Il ne doit pas contenir de slash (<strong>"/"</strong>) qui ferait référence à un dossier ou à une page. Il ne doit pas non plus contenir de numero de port désigné par un <strong>":"</strong> (comme ":123").</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_info" qtlid="435122">Ein Domainname darf Punkte enthalten. Er darf kein (<strong>"http://"</strong> oder <strong>"https://"</strong>) enthalten. Er darf keinen Schrägstrich (<strong>"/"</strong>) enthalten,  da dieser auf einen Ordner oder eine Seite verweisen würde. Er darf auch keine durch <strong>":"</strong> gekennzeichnete Port-Nummer enthalten (z. B. ":123").</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain" qtlid="16589">Die Domain hinzufügen</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain_example" qtlid="435135">Valeur finale : <strong>{0}</strong></translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain_example" qtlid="435135">Endwert: <strong>{0}</strong></translation>
    <translation id="domain_tab_REDIRECTION_edit_success" qtlid="213687">Die Änderung der Weiterleitung der Domain {0} wurde erfolgreich durchgeführt</translation>
    <translation id="domain_tab_REDIRECTION_edit_fail" qtlid="213700">Bei der Änderung der Weiterleitung der Domain {0} ist ein Fehler aufgetreten</translation>
-   <translation id="domain_tab_REDIRECTION_edit_unknown_field_type" qtlid="435148">Ce type de redirection est inconnu : {0}</translation>
+   <translation id="domain_tab_REDIRECTION_edit_unknown_field_type" qtlid="435148">Der Typ der Weiterleitung ist unbekannt: {0}</translation>
 
 
    <translation id="domain_tab_REDIRECTION_add_button" qtlid="213713">Eine Weiterleitung hinzufügen</translation>
@@ -368,7 +368,7 @@
 
    <translation id="domain_tab_REDIRECTION_add_step1" qtlid="213752">Was möchten Sie weiterleiten? Tragen Sie die gewünschte Subdomain ein oder lassen Sie das Feld leer, um die Domain weiterzuleiten:</translation>
    <translation id="domain_tab_REDIRECTION_add_step1_label" qtlid="296622">Name der Subdomain</translation>
-   <translation id="domain_tab_REDIRECTION_add_step1_subdomain_error" qtlid="213765">Diese Subdomain ist nicht gültig.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step1_subdomain_error" qtlid="213765">Diese Subdomain ist ungültig.</translation>
    <translation id="domain_tab_REDIRECTION_add_step1_www" qtlid="213778">Ebenfalls weiterleiten:</translation>
 
    <translation id="domain_tab_REDIRECTION_add_step2" qtlid="329135">Auf welche Art von Ziel möchten Sie <b>{0}</b> {1} umleiten? </translation>
@@ -392,10 +392,10 @@
 
    <translation id="domain_tab_REDIRECTION_add_step4_server_ip" qtlid="214012">Geben Sie die Ziel-IP dieser Weiterleitung an:</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_server_ip_label" qtlid="26191">IP-Adresse</translation>
-   <translation id="domain_tab_REDIRECTION_add_step4_server_ip_error" qtlid="214025">Diese IP-Adresse ist nicht gültig.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_server_ip_error" qtlid="214025">Diese IP-Adresse ist ungültig.</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_server_cname" qtlid="214038">Geben Sie die Ziel-Domain dieser Weiterleitung an:</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_server_cname_label" qtlid="213583">Zieldomain </translation>
-   <translation id="domain_tab_REDIRECTION_add_step4_server_cname_error" qtlid="213622">Diese Domain ist nicht gültig.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_server_cname_error" qtlid="213622">Diese Domain ist ungültig.</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_server_cname_info" qtlid="329278">Ein Domainname darf Punkte enthalten. Er darf kein <b>"http://"</b> oder <b>"https://"</b> enthalten. Erdarf keinen Slash (<b>"/"</b>) enthalten, da dieser auf einen Ordner oder eine Seite verweisen würde. Er darf auch keine durch <b>":"</b> gekennzeichnete Port-Nummer enthalten (z. B. ":123"). </translation>
 
    <translation id="domain_tab_REDIRECTION_add_step4_web_target" qtlid="214051">Geben Sie die Ziel-Adresse dieser Weiterleitung an:</translation>
@@ -408,7 +408,7 @@
    <translation id="domain_tab_REDIRECTION_add_step4_web_too_much_caractere" qtlid="182501">Zu viele Zeichen</translation>
 
 
-   <translation id="domain_tab_REDIRECTION_add_step4_web_target_error" qtlid="213635">Diese Adresse ist nicht gültig.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_target_error" qtlid="213635">Diese Adresse ist ungültig.</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_target_error_length" qtlid="213648">Die Adresse ist zu lang.</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web" qtlid="214064">Diese Weiterleitung wird folgenden Typs sein:</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_example" qtlid="290668">https://www.beispiel.com:1234 </translation>
@@ -586,7 +586,8 @@
    <translation id="domain_configuration_dns_entry_add_publickey_revoke" qtlid="192396">Den Public Key widerrufen</translation>
    <translation id="domain_configuration_dns_entry_add_servicetypes" qtlid="192409">Dienstleistungstypen</translation>
    <translation id="domain_configuration_dns_entry_add_servicetypes_all" qtlid="69173">Alle</translation>
-   <translation id="domain_configuration_dns_entry_add_servicetypes_email" qtlid="192422">E-Mail</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_email" qtlid="436944">E-Mail</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_none" qtlid="30646">Keiner</translation>
    <translation id="domain_configuration_dns_entry_add_t_y" qtlid="192435">Testmodus</translation>
    <translation id="domain_configuration_dns_entry_add_t_y_no" qtlid="24967">Deaktiviert</translation>
    <translation id="domain_configuration_dns_entry_add_t_y_yes" qtlid="30250">Aktiviert</translation>
@@ -608,11 +609,11 @@
    <translation id="domain_configuration_dns_entry_add_tlsa_selector" qtlid="291669">Selektor </translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_matching_type" qtlid="291682">Art der Entsprechung </translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_certificate_data" qtlid="291695">Daten des Zertifikats </translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_p" qtlid="435161">Règle pour le domaine</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_pct" qtlid="435174">Pourcentage des messages filtrés</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_rua" qtlid="435187">URI de création de rapports globaux</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_sp" qtlid="435200">Règle pour les sous-domaines</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Mode d'alignement pour SPF</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_p" qtlid="435161">Regel für die Domain</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_pct" qtlid="435174">Prozent der gefilterten Nachrichten</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_rua" qtlid="435187">URI für die Erstellung globaler Berichte</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_sp" qtlid="435200">Regel für die Subdomains</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Alignment-Modus für SPF</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_r" qtlid="435226">Relaxed</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_s" qtlid="435239">Strict</translation>
 
@@ -787,14 +788,14 @@
    <translation id="domain_configuration_web_hosting_dns_reset" qtlid="244703">Welche Änderung(en) möchten Sie an Ihrer DNS Zone durchführen?</translation>
    <translation id="domain_configuration_web_hosting_dns_reset_explain" qtlid="233378">Achtung: wenn Sie Mail-Weiterleitungen erstellt haben, werden diese gelöscht.</translation>
    <translation id="domain_configuration_web_hosting_dns_NO_CHANGE" qtlid="72461">Keine Änderungen</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_NO_CHANGE" qtlid="435252">Malgré la mise en place de votre nouvel hébergement, votre nom de domaine continuera de pointer sur les entrées actuelles, vous devrez de votre côté effectuer les modifications dans votre zone DNS lorsque votre nouveau site sera prêt. Il s'agit d'un choix idéal si vous ne souhaitez pas couper un site déjà en production.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_NO_CHANGE" qtlid="435252">Obwohl Ihr neues Webhosting eingerichtet ist, wird Ihr Domainname weiterhin auf die aktuellen Einträge verweisen. Wenn Ihre neue Website fertig ist, müssen Sie die Änderungen in Ihrer DNS Zone selbst vornehmen. So wird der Betrieb einer bereits online gestellten Website nicht unterbrochen.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ALL" qtlid="244716">Die A und MX Einträge von {0}</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ALL" qtlid="435265">Cette solution vous permettra de faire pointer automatiquement votre nom de domaine vers votre nouvel hébergement et vers vos nouveaux services e-mail. Cette solution est idéale si il n'y a aucun site en production sur votre nom de domaine.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ALL" qtlid="435265">Mit dieser Lösung können Sie Ihren Domainnamen automatisch auf Ihr neues Webhosting und Ihre neuen E-Mail-Dienstleistungen verweisen lassen. Diese Option ist ideal, wenn Ihre Domain mit keiner bereits online gestellten Website verbunden ist.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ONLY_A" qtlid="244729">Der A Eintrag von {0}</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_A" qtlid="435278">Si vous disposez d'adresses e-mail sur votre nom de domaine mais d'aucun site internet, vous pouvez choisir de ne modifier que l'enregistrement A. De cette manière, votre nom de domaine pointera sur votre nouvel hébergement et vos adresses e-mails continueront de fonctionner sur votre service actuel.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_A" qtlid="435278">Wenn Sie für Ihren Domainnamen nur E-Mail-Adressen und keine Website besitzen, können Sie, wenn Sie möchten, nur den A Eintrag bearbeiten. So verweist Ihre Domain auf Ihr neues Hosting und die E-Mail-Adressen Ihrer aktuellen Dienstleistung werden wie gewohnt funktionieren.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ONLY_MX" qtlid="290641">MX-Einträge von {0} </translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_MX" qtlid="435291">Cette option vous permettra d'utiliser uniquement les adresses e-mail de votre hébergement sans modifier le pointage relatif à votre site web. Votre nom de domaine continuera de pointer sur votre site actuel, mais les adresses e-mail utiliseront désormais les serveurs d'OVH.</translation>
-   <translation id="domain_configuration_web_hosting_dns_info" qtlid="435304">Si votre domaine n'utilise pas les serveurs DNS d'OVH, ces modifications n'auront aucun effet sur votre nom de domaine. Vous pourrez dans ce cas modifier les serveurs DNS de votre domaine afin qu'il puisse utiliser les paramètres de pointage relatif à votre nouveau service.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_MX" qtlid="435291">Diese Option erlaubt es Ihnen, nur die E-Mail-Adressen Ihres Hostings zu verwenden, ohne den zugehörigen Verweis Ihrer Website zu ändern. So zeigt Ihr Domainname weiterhin auf Ihre aktuelle Website, während die E-Mail-Adressen die OVH Server verwenden.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info" qtlid="435304">Wenn Ihre Domain keine DNS-Server von OVH verwendet, werden diese Änderungen keine Auswirkungen auf Ihren Domainnamen haben. In diesem Fall können Sie die Verweise auf den DNS-Servern Ihrer Domain ändern, damit sie auf Ihre neue Dienstleistung zeigen.</translation>
 
    <translation id="domain_update_owner_title" qtlid="267123">Update des Inhabers</translation>
    <translation id="domain_configuration_update_owner" qtlid="271478">Die Angaben des Inhabers aktualisieren</translation>
@@ -858,7 +859,7 @@
    <translation id="domain_tab_menu_hosting_modules" qtlid="287658">Ein Hosting-Modul bestellen</translation>
    <translation id="domain_tab_menu_hosting_install_button" qtlid="43558">Bestellen</translation>
    <translation id="domain_tab_menu_hosting_intro" qtlid="287671">Hosting-Modul {0} - 12 Monate</translation>
-   <translation id="domain_tab_menu_hosting_ht_label" qtlid="166183">{0}&#160;inkl. MwSt.</translation>
+   <translation id="domain_tab_menu_hosting_ht_label" qtlid="166183">{0}&#160;ex. MwSt.</translation>
    <translation id="domain_tab_menu_hosting_ttc_label" qtlid="166196">{0}&#160;inkl. MwSt.</translation>
    <translation id="domain_tab_menu_hosting_error_order" qtlid="287684">Fehler bei der Bestellung eines Hosting-Moduls</translation>
 
@@ -873,7 +874,7 @@
    <translation id="domain_dashboard_type_alldom_french" qtlid="270709">FR Paket</translation>
    <translation id="domain_dashboard_type_alldom_international" qtlid="270722">Internationales Paket</translation>
    <translation id="domain_attached_domain_select_title" qtlid="277624">Meine Hostings</translation>
-   <translation id="domain_attached_domain_select_intro" qtlid="435317">Le domaine {0} est attaché à plusieurs hébergements.</translation>
+   <translation id="domain_attached_domain_select_intro" qtlid="435317">Die Domain {0} ist mit mehreren Hostings verbunden.</translation>
    <translation id="domain_attached_domain_select_action" qtlid="277650">Wählen Sie das Hosting aus, auf das Sie zugreifen möchten:</translation>
 
    <translation id="domain_tab_dns_management_step1_title" qtlid="367709">Informationen zu Ihren DNS Servern </translation>

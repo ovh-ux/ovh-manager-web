@@ -129,7 +129,7 @@
 
    <translation id="privateDatabase_add_user_title" qtlid="7150">Een gebruiker toevoegen</translation>
    <translation id="privateDatabase_add_user_password" qtlid="2270">Wachtwoord</translation>
-   <translation id="privateDatabase_add_user_password_confirm" qtlid="9983">Bevestiging</translation>
+   <translation id="privateDatabase_add_user_password_confirm">Confirmation du mot de passe</translation>
    <translation id="privateDatabase_action_changepassword_doing" qtlid="215897">Wijziging van het wachtwoord wordt uitgevoerd</translation>
    <translation id="privateDatabase_add_user_name" qtlid="56045">Gebruikersnaam</translation>
    <translation id="privateDatabase_add_user_error_password_required" qtlid="215910">Het wachtwoord is verplicht</translation>
@@ -153,7 +153,7 @@
    <translation id="privateDatabase_order_datacenter_gra1" qtlid="264192">Gravelines</translation>
    <translation id="privateDatabase_order_step1_hosting" qtlid="323366">Te gebruiken hostig packs</translation>
 
-   <translation id="privateDatabase_order_step1_hosting_warning" qtlid="434278">Le SQL Privé est compatible uniquement avec les hébergements présents dans le même datacentre, comme celui sélectionné. Si vous désirez utiliser un autre hébergement de votre compte, ou un hébergement sur un autre compte et que vous ne savez pas dans quel datacentre il se trouve, vous pouvez récupérer cette information dans l'onglet "informations générales" de cet hébergement.</translation>
+   <translation id="privateDatabase_order_step1_hosting_warning" qtlid="434278">Private SQL is alleen compatibel met webhostingpakketten die in hetzelfde datacenter zijn gevestigd, zoals degene die is geselecteerd. Als u een ander webhostingpakket in uw account of een ander webhostingpakket wilt gebruiken en u niet weet welk datacenter het is gevestigd, kunt u deze informatie vinden in het tabblad 'Algemene informatie' van dit hostingpakket.</translation>
 
    <translation id="privateDatabase_order_step1_hosting_info" qtlid="323392">Private SQL moet worden geïnstalleerd in hetzelfde datacenter als het hosting pack. </translation>
 
@@ -252,7 +252,7 @@
 
    <translation id="privateDatabase_bdd_name" qtlid="3818">Naam</translation>
    <translation id="privateDatabase_bdd_dumps_count" qtlid="304407">Backups</translation>
-   <translation id="privateDatabase_bdd_dumps_none" qtlid="434291">Aucune sauvegarde de vos bases de données supprimées ces 30 derniers jours</translation>
+   <translation id="privateDatabase_bdd_dumps_none" qtlid="434291">Er zijn geen backups van uw databases verwijderd gedurende de afgelopen 30 dagen</translation>
    <translation id="privateDatabase_bdd_creationDate" qtlid="26419">Aanmaakdatum</translation>
    <translation id="privateDatabase_bdd_quota" qtlid="76758">Gebruikte geheugenruimte</translation>
    <translation id="privateDatabase_action_scheduleDumpBDD" qtlid="263051">Plan uw back-ups</translation>
@@ -366,14 +366,14 @@
    <translation id="privateDatabase_order_RAM_price_HT" qtlid="146177">Totale prijs excl. btw:</translation>
    <translation id="privateDatabase_order_RAM_price_TTC" qtlid="146190">Totale prijs incl. btw:</translation>
    <translation id="privateDatabase_expiration_date" qtlid="33010">Vervaldatum</translation>
-   <translation id="privateDatabase_renew_date" qtlid="168172">Verlenging</translation>
+   <translation id="privateDatabase_renew_date">Renouvellement automatique</translation>
    <translation id="privateDatabase_gui" qtlid="103642">Gebruikersinterface</translation>
    <translation id="privateDatabase_tabs_bdd_no" qtlid="220746">Geen databases</translation>
 
    <translation id="privateDatabase_tab_TASK" qtlid="136217">Recente taken</translation>
    <translation id="privateDatabase_tabs_tasks_name" qtlid="85509">Functie</translation>
    <translation id="privateDatabase_tabs_tasks_startDate" qtlid="159176">Startdatum</translation>
-   <translation id="privateDatabase_tabs_tasks_lastUpdate" qtlid="434304">Dernière mise à jour</translation>
+   <translation id="privateDatabase_tabs_tasks_lastUpdate" qtlid="434304">Laatste update</translation>
    <translation id="privateDatabase_tabs_tasks_doneDate" qtlid="299910">Einddatum</translation>
    <translation id="privateDatabase_tabs_tasks_null" qtlid="159163">Geen recente taken</translation>
 
@@ -542,9 +542,44 @@
    <translation id="privateDatabase_modale_whitelist_update_sftp_title" qtlid="405136">Dit IP-adres/mask toegang verlenen tot de SFTP</translation>
    <translation id="privateDatabase_modale_whitelist_update_restriction_info" qtlid="405149">Beperkingen aanbrengen op: </translation>
 
-
 <!-- LOGS -->
    <translation id="privateDatabase_tabs_logs_list_title" qtlid="413375">Mijn database logs</translation>
    <translation id="privateDatabase_tabs_logs_list_no_logs" qtlid="413388">Er is momenteel geen log </translation>
+
+<!-- OOM -->
+   <translation id="privateDatabase_no_oom">Aucun dépassement mémoire à signaler.</translation>
+   <translation id="privateDatabase_warning_oom">{0} dépassements mémoire ont eu lieu récemment.</translation>
+   <translation id="privateDatabase_modale_oom_title" qtlid="436957">RAM-capaciteit overschreden</translation>
+   <translation id="privateDatabase_modale_oom_confirm_button">Commander plus de RAM</translation>
+   <translation id="privateDatabase_modale_oom_close_button">Fermer</translation>
+   <translation id="privateDatabase_modale_oom_info">Dépassements de la mémoire vive survenus ces {0} derniers jours.<br />Seuls les {1} derniers dépassements sont disponibles.</translation>
+   <translation id="privateDatabase_modale_oom_tab_event_date" qtlid="24523">Datum</translation>
+   <translation id="privateDatabase_modale_oom_tab_size_reached" qtlid="436983">Bereikte capaciteit</translation>
+   <translation id="privateDatabase_modale_oom_tab_uptime" qtlid="436996">Tijd sinds laatst overschreden</translation>
+   <translation id="privateDatabase_modale_oom_no_oom" qtlid="437009">Geen overschrijding van RAM-capaciteit.</translation>
+   <translation id="privateDatabase_modale_oom_info_order" qtlid="437022">We raden u aan om de RAM-capaciteit van uw {0} te verhogen om deze problemen op te lossen.</translation>
+
+<!-- EXTENSIONS -->
+<!-- LIST -->
+   <translation id="privateDatabase_tabs_list_extensions_title" qtlid="341927">Extensies</translation>
+   <translation id="privateDatabase_tabs_list_extensions_extension" qtlid="94231">Extensie</translation>
+   <translation id="privateDatabase_tabs_list_extensions_description" qtlid="9238">Beschrijving</translation>
+   <translation id="privateDatabase_tabs_list_extensions_status" qtlid="26443">Status</translation>
+
+<!-- INFOS -->
+   <translation id="privateDatabase_tabs_list_go_extensions" qtlid="437035">Extensies bekijken</translation>
+   <translation id="privateDatabase_tabs_list_extensions_info" qtlid="437048">Extensies van databases {0}</translation>
+   <translation id="privateDatabase_tabs_list_extensions_no_extensions" qtlid="437061">Geen extensie beschikbaar</translation>
+   <translation id="privateDatabase_tabs_list_extensions_enable_info" qtlid="437074">Extensie activeren</translation>
+   <translation id="privateDatabase_tabs_list_extensions_disable_info" qtlid="437087">Extensie deactiveren</translation>
+   <translation id="privateDatabase_tabs_list_extensions_reload_info" qtlid="437100">Extensies reloaden</translation>
+
+<!-- ALERTS -->
+   <translation id="privateDatabase_tabs_list_extensions_retrieve_infos" qtlid="437113">Er is een fout opgetreden tijdens het dataherstel.</translation>
+   <translation id="privateDatabase_tabs_list_extensions_enable_success" qtlid="437126">De extensie is geactiveerd.</translation>
+   <translation id="privateDatabase_tabs_list_extensions_enable_error" qtlid="437139">Er is een fout opgetreden tijdens het instellen van de extensie. </translation>
+   <translation id="privateDatabase_tabs_list_extensions_disable_success" qtlid="437152">De extensie is gedeactiveerd. </translation>
+   <translation id="privateDatabase_tabs_list_extensions_disable_error" qtlid="437165">Er is een fout opgetreden tijdens het deactiveren van de extensie. </translation>
+
 
 </translations>

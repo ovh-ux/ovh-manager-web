@@ -84,7 +84,7 @@
    <translation id="domain_dashboard_web_hosting_associated" qtlid="296557">Toegewezen hosting plannen</translation>
    <translation id="domain_configuration_web_hosting_associated_explain" qtlid="296570">Toegang tot de configuratie voor hosting plannen toegewezen aan mijn domeinnaam</translation>
    <translation id="domain_configuration_web_hosting_fail" qtlid="296583">Er is een fout opgetreden tijdens het ophalen vn toegewezen web hosting plannen</translation>
-   <translation id="domain_dashboard_web_hosting_associated_upsell" qtlid="434992">Aucun hébergement associé</translation>
+   <translation id="domain_dashboard_web_hosting_associated_upsell" qtlid="434992">Geen bijbehorende hosting</translation>
    <translation id="domain_dashboard_web_hosting_more_infos" qtlid="238557">Meer informatie</translation>
 
    <translation id="domain_configuration_action_disable" qtlid="90973">Deactiveren</translation>
@@ -268,9 +268,9 @@
    <translation id="domain_configuration_renew_step1_alert" qtlid="168354">Hou er rekening mee, dat het tot ongeveer 2 uur na de aanvaarding van uw betaling kan duren, voordat de verlenging is opgenomen in uw Web Control Panel.</translation>
    <translation id="domain_configuration_protection_desactivate_title_button" qtlid="210137">De Protectie deactiveren</translation>
    <translation id="domain_configuration_protection_desactivate_title" qtlid="124423">De domeinprotectie deactiveren </translation>
-   <translation id="domain_configuration_protection_desactivate_step1_question" qtlid="435005">Souhaitez-vous réellement désactiver la protection pour votre domaine {0} ?</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_question" qtlid="435005">Weet u zeker dat u de beveiliging van uw {0} domein wilt uitschakelen?</translation>
    <translation id="domain_configuration_protection_desactivate_step1_info" qtlid="290524">Als de beveiliging is uitgeschakeld heeft u toegang tot de AUTH/INFO-code en kan het domein worden overgedragen door simpelweg op de bijbehorende juiste knop te klikken.</translation>
-   <translation id="domain_configuration_protection_desactivate_step1_dnssec" qtlid="435018">Votre domaine utilise le DNSSEC, vérifiez que votre nouveau prestataire puisse correctement le gérer. Dans le cas contraire, désactivez l'option avant de transférer votre domaine.</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_dnssec" qtlid="435018">Uw domein gebruikt DNSSEC. Zorg ervoor dat uw nieuwe serviceprovider het logboek correct kan beheren. Als dit niet het geval is, moet u deze optie voor de overdracht uitschakelen.</translation>
    <translation id="domain_configuration_protection_auth_info_registry" qtlid="344149">Om uw domein over te dragen uit OVH moet u contact opnemen met het Register om zo de auth-info code te verkrijgen. U kunt dit aanvragen via de link: <a href="{0}" target="_blank">{0}</a></translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_title" qtlid="129667">Domeinprotectie</translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_desc" qtlid="129679">Als u domeinprotectie inschakelt, dan bent u tegen domeindiefstal beschermd omdat iedere transfer daarmee geblokkeerd wordt.</translation>
@@ -284,7 +284,7 @@
    <translation id="domain_configuration_protection_desactivate_fail" qtlid="127552">Er is een fout opgetreden bij het verzoek om de domeinprotectie uit te schakelen </translation>
    <translation id="domain_configuration_protection_activate_title_button" qtlid="210150">De Protectie activeren</translation>
    <translation id="domain_configuration_protection_activate_title" qtlid="124435">Activeren van de domeinprotectie</translation>
-   <translation id="domain_configuration_protection_activate_step1_question" qtlid="435031">Souhaitez-vous réellement activer la protection pour votre domaine {0} ?</translation>
+   <translation id="domain_configuration_protection_activate_step1_question" qtlid="435031">Weet u zeker dat u de beveiliging voor uw {0} domein wilt inschakelen?</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_title" qtlid="129667">Domeinprotectie</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_desc" qtlid="129679">Als u domeinprotectie inschakelt, dan bent u tegen domeindiefstal beschermd omdat iedere transfer daarmee geblokkeerd wordt.</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_question1" qtlid="129691">Wat is domeindiefstal?</translation>
@@ -297,7 +297,7 @@
    <translation id="domain_configuration_protection_activate_fail" qtlid="127588">Er is een fout opgetreden bij het aanvragen van de domeinprotectie</translation>
    <translation id="domain_configuration_whois_title_button" qtlid="124447">De WHOIS configureren</translation>
    <translation id="domain_configuration_whois_title" qtlid="124447">De WHOIS configureren</translation>
-   <translation id="domain_configuration_whois_step1_question" qtlid="435044">Veuillez choisir si vos informations personnelles doivent être affichées ou masquées dans le registre WHOIS pour le domaine {0}</translation>
+   <translation id="domain_configuration_whois_step1_question" qtlid="435044">Gelieve te specificeren of uw persoonlijke gegevens in het Whois-register voor het {0} domein moeten worden weergegeven of verborgen</translation>
    <translation id="domain_configuration_whois_step1_display" qtlid="69353">Weergeven</translation>
    <translation id="domain_configuration_whois_step1_hide" qtlid="97136">Verbergen</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
@@ -341,25 +341,25 @@
    <translation id="domain_tab_REDIRECTION_edit_web_option_title" qtlid="16469">Titel</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_keyword" qtlid="213531">Zoekwoorden</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_description" qtlid="9238">Beschrijving</translation>
-   <translation id="domain_tab_REDIRECTION_edit_title" qtlid="435057">Édition de la redirection</translation>
-   <translation id="domain_tab_REDIRECTION_edit_confirm" qtlid="435070">Édition de la redirection du sous domaine <strong>{0}</strong> vers <strong>{1}</strong> :</translation>
+   <translation id="domain_tab_REDIRECTION_edit_title" qtlid="435057">Wijzig het doorsturen</translation>
+   <translation id="domain_tab_REDIRECTION_edit_confirm" qtlid="435070">De omleiding van uw <strong>{0}</strong> domein wijzigen naar <strong>{1}</strong>:</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_label" qtlid="213570">Webadres</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ip_label" qtlid="26191">IP-adres</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ipv4_label" qtlid="79314">IPv4 adres</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ipv6_label" qtlid="79326">IPv6 adres</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_cname_label" qtlid="296609">Bestemming domein</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_ipv4_error" qtlid="435083">Cette adresse IP n'est pas une IPv4 valide.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_ipv6_error" qtlid="435096">Cette adresse IP n'est pas une IPv6 valide.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_error" qtlid="435109">Ce domaine n'est pas valide.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv4_error" qtlid="435083">Dit IP-adres is geen geldig IPv4-adres. </translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv6_error" qtlid="435096">Dit IP-adres is geen geldig IPv6-adres. </translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_error" qtlid="435109">Dit domein is niet geldig.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_error" qtlid="213635">Dit adres is niet geldig.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_error_length" qtlid="213648">Het adres is te lang.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_length" qtlid="213661">Opties onbeschikbaar. Verkort de lengte van het adres om deze vrij te geven.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_info" qtlid="435122">Un domaine peut contenir des points. Il ne doit pas contenir d'entête (<strong>"http://"</strong> ou <strong>"https://"</strong>). Il ne doit pas contenir de slash (<strong>"/"</strong>) qui ferait référence à un dossier ou à une page. Il ne doit pas non plus contenir de numero de port désigné par un <strong>":"</strong> (comme ":123").</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_info" qtlid="435122">Een domein kan punten bevatten. Het kan geen (<strong>"http://"</strong> of <strong>"https://"</strong>) bevatten. Het kan heen schuine streep (slash)(<strong>"/"</strong>) omdat deze zou wijzen op een map of pagina. Het mag ook geen poortnummer bevatten die wordt geïdentificeerd door <strong>":"</strong> (zoals ":123").</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain" qtlid="16589">Het domein toevoegen</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain_example" qtlid="435135">Valeur finale : <strong>{0}</strong></translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain_example" qtlid="435135">Totaalwaarde: <strong>{0}</strong></translation>
    <translation id="domain_tab_REDIRECTION_edit_success" qtlid="213687">Het wijzigen van de redirection van domein {0} is uitgevoerd</translation>
    <translation id="domain_tab_REDIRECTION_edit_fail" qtlid="213700">Er is een fout opgetreden bij het wijzigen van de redirection van het domein {0}</translation>
-   <translation id="domain_tab_REDIRECTION_edit_unknown_field_type" qtlid="435148">Ce type de redirection est inconnu : {0}</translation>
+   <translation id="domain_tab_REDIRECTION_edit_unknown_field_type" qtlid="435148">Dit type omleiding is onbekend: {0}</translation>
 
 
    <translation id="domain_tab_REDIRECTION_add_button" qtlid="213713">Een redirection toevoegen</translation>
@@ -586,7 +586,8 @@
    <translation id="domain_configuration_dns_entry_add_publickey_revoke" qtlid="192396">Intrekken van de public key</translation>
    <translation id="domain_configuration_dns_entry_add_servicetypes" qtlid="192409">Dienst types </translation>
    <translation id="domain_configuration_dns_entry_add_servicetypes_all" qtlid="69173">Alle</translation>
-   <translation id="domain_configuration_dns_entry_add_servicetypes_email" qtlid="192422">e-mail</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_email" qtlid="436944">E-mail</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_none" qtlid="30646">Geen</translation>
    <translation id="domain_configuration_dns_entry_add_t_y" qtlid="192435">Test modus</translation>
    <translation id="domain_configuration_dns_entry_add_t_y_no" qtlid="24967">Gedeactiveerd</translation>
    <translation id="domain_configuration_dns_entry_add_t_y_yes" qtlid="30250">Geactiveerd</translation>
@@ -608,11 +609,11 @@
    <translation id="domain_configuration_dns_entry_add_tlsa_selector" qtlid="291669">Selector</translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_matching_type" qtlid="291682">Soort correspondentie</translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_certificate_data" qtlid="291695">Certificaat data</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_p" qtlid="435161">Règle pour le domaine</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_pct" qtlid="435174">Pourcentage des messages filtrés</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_rua" qtlid="435187">URI de création de rapports globaux</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_sp" qtlid="435200">Règle pour les sous-domaines</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Mode d'alignement pour SPF</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_p" qtlid="435161">Regel voor het domein</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_pct" qtlid="435174">Percentage gefilterde berichten</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_rua" qtlid="435187">Globale rapportage URI's</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_sp" qtlid="435200">Regel voor de subdomeinen</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Alignment modus voor SPF</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_r" qtlid="435226">Relaxed</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_s" qtlid="435239">Strict</translation>
 
@@ -787,14 +788,14 @@
    <translation id="domain_configuration_web_hosting_dns_reset" qtlid="244703">Welke wijziging(en) wilt u in uw DNS-zone aanbrengen?</translation>
    <translation id="domain_configuration_web_hosting_dns_reset_explain" qtlid="233378">Let op, e-mail redirection regels zullen worden verwijderd.</translation>
    <translation id="domain_configuration_web_hosting_dns_NO_CHANGE" qtlid="72461">Geen wijzigingen</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_NO_CHANGE" qtlid="435252">Malgré la mise en place de votre nouvel hébergement, votre nom de domaine continuera de pointer sur les entrées actuelles, vous devrez de votre côté effectuer les modifications dans votre zone DNS lorsque votre nouveau site sera prêt. Il s'agit d'un choix idéal si vous ne souhaitez pas couper un site déjà en production.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_NO_CHANGE" qtlid="435252">Hoewel uw nieuwe webhosting is opgericht, zal uw domeinnaam nog steeds de huidige vermeldingen verwijzen. Wanneer uw site klaar is, moet u zelf de wijzigingen in uw DNS-zone aanbrengen. Zo wordt er geen website-ontwikkeling onderbroken.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ALL" qtlid="244716">DNS records A en MX van {0}</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ALL" qtlid="435265">Cette solution vous permettra de faire pointer automatiquement votre nom de domaine vers votre nouvel hébergement et vers vos nouveaux services e-mail. Cette solution est idéale si il n'y a aucun site en production sur votre nom de domaine.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ALL" qtlid="435265">Met deze oplossing kunt u uw domeinnaam automatisch laten verwijzen naar uw nieuwe webhosting en nieuwe e-maildiensten. Deze instelling is ideaal als er momenteel geen website voor uw domein wordt ontwikkeld.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ONLY_A" qtlid="244729">DNS record A van {0}</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_A" qtlid="435278">Si vous disposez d'adresses e-mail sur votre nom de domaine mais d'aucun site internet, vous pouvez choisir de ne modifier que l'enregistrement A. De cette manière, votre nom de domaine pointera sur votre nouvel hébergement et vos adresses e-mails continueront de fonctionner sur votre service actuel.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_A" qtlid="435278">Als u alleen e-mailadressen hebt en geen website voor uw domeinnaam dan kunt u alleen de A-invoer bewerken als u dat wilt. Zo wijst uw domein naar op uw nieuwe hosting en de e-mailadressen van uw huidige service zullen als gewoon functioneren.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ONLY_MX" qtlid="290641">{0} MX bestanden </translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_MX" qtlid="435291">Cette option vous permettra d'utiliser uniquement les adresses e-mail de votre hébergement sans modifier le pointage relatif à votre site web. Votre nom de domaine continuera de pointer sur votre site actuel, mais les adresses e-mail utiliseront désormais les serveurs d'OVH.</translation>
-   <translation id="domain_configuration_web_hosting_dns_info" qtlid="435304">Si votre domaine n'utilise pas les serveurs DNS d'OVH, ces modifications n'auront aucun effet sur votre nom de domaine. Vous pourrez dans ce cas modifier les serveurs DNS de votre domaine afin qu'il puisse utiliser les paramètres de pointage relatif à votre nouveau service.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_MX" qtlid="435291">Met deze optie kunt u alleen de e-mailadressen van uw hosting gebruiken zonder de bijbehorende link van uw website te wijzigen. Bijvoorbeeld, uw domeinnaam wijst nog steeds op uw huidige website, terwijl de e-mailadressen de OVH-servers gebruiken.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info" qtlid="435304">Als uw domein geen OVH DNS-servers gebruikt dan hebben deze wijzigingen geen invloed op uw domeinnaam. In dit geval kunt u de DNS-servers van uw domein wijzigen om de referentie-instellingen voor uw nieuwe dienst te gebruiken.</translation>
 
    <translation id="domain_update_owner_title" qtlid="267123">Update van de eigenaar</translation>
    <translation id="domain_configuration_update_owner" qtlid="271478">Informatie over de eigenaar updaten</translation>
@@ -873,7 +874,7 @@
    <translation id="domain_dashboard_type_alldom_french" qtlid="270709">FR pack </translation>
    <translation id="domain_dashboard_type_alldom_international" qtlid="270722">Internationaal pack</translation>
    <translation id="domain_attached_domain_select_title" qtlid="277624">Mijn hosting accounts</translation>
-   <translation id="domain_attached_domain_select_intro" qtlid="435317">Le domaine {0} est attaché à plusieurs hébergements.</translation>
+   <translation id="domain_attached_domain_select_intro" qtlid="435317">Het {0} domein is met meerdere hostings verbonden.  </translation>
    <translation id="domain_attached_domain_select_action" qtlid="277650">Selecteer aub de hostingdienst waar u toegang tot wilt verkrijgen: </translation>
 
    <translation id="domain_tab_dns_management_step1_title" qtlid="367709">Details van uw DNS servers</translation>

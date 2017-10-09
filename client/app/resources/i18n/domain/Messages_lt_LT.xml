@@ -84,7 +84,7 @@
    <translation id="domain_dashboard_web_hosting_associated" qtlid="296557">Susieti talpinimo planai</translation>
    <translation id="domain_configuration_web_hosting_associated_explain" qtlid="296570">Prieiga prie svetainių talpinimo planų, susietų su jūsų domenu, konfigūravimo</translation>
    <translation id="domain_configuration_web_hosting_fail" qtlid="296583">Įvyko klaida atkuriant susietų talpinimo planų duomenis</translation>
-   <translation id="domain_dashboard_web_hosting_associated_upsell" qtlid="434992">Aucun hébergement associé</translation>
+   <translation id="domain_dashboard_web_hosting_associated_upsell" qtlid="434992">Nepriskirtas joks svetainių talpinimo planas</translation>
    <translation id="domain_dashboard_web_hosting_more_infos" qtlid="238557">Daugiau informacijos </translation>
 
    <translation id="domain_configuration_action_disable" qtlid="90973">Išjungti</translation>
@@ -268,9 +268,9 @@
    <translation id="domain_configuration_renew_step1_alert" qtlid="168354">Atkreipkite dėmesį, kad prireiks iki 2 valandų nuo apmokėjimo patvirtinimo, kad atnaujinimas būtų matomas kliento sąsajoje.</translation>
    <translation id="domain_configuration_protection_desactivate_title_button" qtlid="210137">Išjungti apsaugą</translation>
    <translation id="domain_configuration_protection_desactivate_title" qtlid="124423">Išjungti domeno apsaugą</translation>
-   <translation id="domain_configuration_protection_desactivate_step1_question" qtlid="435005">Souhaitez-vous réellement désactiver la protection pour votre domaine {0} ?</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_question" qtlid="435005">Ar tikrai norite išjungti apsaugą savo domenui {0}?</translation>
    <translation id="domain_configuration_protection_desactivate_step1_info" qtlid="290524">Išjungus apsaugą jūs turėsite prieigą prie AUTH/INFO kodo, leidžiančio perkelti domeną mygtuko paspaudimu.</translation>
-   <translation id="domain_configuration_protection_desactivate_step1_dnssec" qtlid="435018">Votre domaine utilise le DNSSEC, vérifiez que votre nouveau prestataire puisse correctement le gérer. Dans le cas contraire, désactivez l'option avant de transférer votre domaine.</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_dnssec" qtlid="435018">Jūsų domene naudojama DNSSEC apsauga, įsitikinkite, kad jūsų naujas paslaugų teikėjas tinkamai ją palaiko. Jei DNSSEC apsauga nepalaikoma, prašome išjungti šią parinktį prieš perkeliant domeną.</translation>
    <translation id="domain_configuration_protection_auth_info_registry" qtlid="344149">Norėdami perkelti domeną iš OVH, jūs turite susiekti su Registry ir gauti autentifikacijos (auth-info) kodą. Šiam tikslui spauskite nuorodą: <a href="{0}" target="_blank">{0}</a></translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_title" qtlid="129667">Domeno apsauga</translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_desc" qtlid="129679">Aktyvuokite domeno apsaugą ir apsisaugokite nuo domeno vagystės uždrausdami perkėlimą. </translation>
@@ -284,7 +284,7 @@
    <translation id="domain_configuration_protection_desactivate_fail" qtlid="127552">Įvyko klaida teikiant užklausą išjungti domeno apsaugą</translation>
    <translation id="domain_configuration_protection_activate_title_button" qtlid="210150">Įjungti apsaugą</translation>
    <translation id="domain_configuration_protection_activate_title" qtlid="124435">Įjungti domeno apsaugą</translation>
-   <translation id="domain_configuration_protection_activate_step1_question" qtlid="435031">Souhaitez-vous réellement activer la protection pour votre domaine {0} ?</translation>
+   <translation id="domain_configuration_protection_activate_step1_question" qtlid="435031">Ar tikrai norite įjungti apsaugą domenui {0}?</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_title" qtlid="129667">Domeno apsauga</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_desc" qtlid="129679">Aktyvuokite domeno apsaugą ir apsisaugokite nuo domeno vagystės uždrausdami perkėlimą. </translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_question1" qtlid="129691">Kas yra domeno vagystė?</translation>
@@ -297,7 +297,7 @@
    <translation id="domain_configuration_protection_activate_fail" qtlid="127588">Įvyko klaida teikiant domeno apsaugos užklausą</translation>
    <translation id="domain_configuration_whois_title_button" qtlid="124447">Konfigūruoti WHOIS</translation>
    <translation id="domain_configuration_whois_title" qtlid="124447">Konfigūruoti WHOIS</translation>
-   <translation id="domain_configuration_whois_step1_question" qtlid="435044">Veuillez choisir si vos informations personnelles doivent être affichées ou masquées dans le registre WHOIS pour le domaine {0}</translation>
+   <translation id="domain_configuration_whois_step1_question" qtlid="435044">Prašome pasirinkti, ar jūsų asmeninė informacija turi būti rodoma ar paslėpta WHOIS duomenų bazėje domenui {0}</translation>
    <translation id="domain_configuration_whois_step1_display" qtlid="69353">Rodyti</translation>
    <translation id="domain_configuration_whois_step1_hide" qtlid="97136">Slėpti</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
@@ -341,25 +341,25 @@
    <translation id="domain_tab_REDIRECTION_edit_web_option_title" qtlid="16469">Pavadinimas</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_keyword" qtlid="213531">Raktiniai žodžiai</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_description" qtlid="9238">Apibūdinimas</translation>
-   <translation id="domain_tab_REDIRECTION_edit_title" qtlid="435057">Édition de la redirection</translation>
-   <translation id="domain_tab_REDIRECTION_edit_confirm" qtlid="435070">Édition de la redirection du sous domaine <strong>{0}</strong> vers <strong>{1}</strong> :</translation>
+   <translation id="domain_tab_REDIRECTION_edit_title" qtlid="435057">Nukreipimo keitimas</translation>
+   <translation id="domain_tab_REDIRECTION_edit_confirm" qtlid="435070">Subdomeno <strong>{0}</strong> nukreipimo į <strong>{1}</strong> keitimas:</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_label" qtlid="213570">Web adresas</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ip_label" qtlid="26191">IP adresas</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ipv4_label" qtlid="79314">IPv4 adresas</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_ipv6_label" qtlid="79326">IPv6 adresas</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_cname_label" qtlid="296609">Paskirties domenas</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_ipv4_error" qtlid="435083">Cette adresse IP n'est pas une IPv4 valide.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_ipv6_error" qtlid="435096">Cette adresse IP n'est pas une IPv6 valide.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_error" qtlid="435109">Ce domaine n'est pas valide.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv4_error" qtlid="435083">Šis IP adresas nėra galiojantis IPv4 adresas.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv6_error" qtlid="435096">Šis IP adresas nėra galiojantis IPv6 adresas.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_error" qtlid="435109">Šis domenas negalioja.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_error" qtlid="213635">Nurodytas klaidingas adresas.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_target_error_length" qtlid="213648">Adresas per ilgas.</translation>
    <translation id="domain_tab_REDIRECTION_edit_web_option_length" qtlid="213661">Parinktis negalima. Norėdami atblokuoti sumažinkite ilgį.</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_info" qtlid="435122">Un domaine peut contenir des points. Il ne doit pas contenir d'entête (<strong>"http://"</strong> ou <strong>"https://"</strong>). Il ne doit pas contenir de slash (<strong>"/"</strong>) qui ferait référence à un dossier ou à une page. Il ne doit pas non plus contenir de numero de port désigné par un <strong>":"</strong> (comme ":123").</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_info" qtlid="435122">Domeno pavadinime gali būti taškai, tačiau neturi būti antraštės (<strong>http://</strong> ar <strong>https://</strong>), pasvirojo brūkšnio (<strong>/</strong>), nukreipiančio į katalogą ar puslapį, taip pat neturi būti prievado, žymimo <strong>:</strong> (pvz., :123).</translation>
    <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain" qtlid="16589">Pridėti domeną</translation>
-   <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain_example" qtlid="435135">Valeur finale : <strong>{0}</strong></translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain_example" qtlid="435135">Galutinė vertė: <strong>{0}</strong></translation>
    <translation id="domain_tab_REDIRECTION_edit_success" qtlid="213687">Domeno {0} nukreipimo keitimas užregistruotas</translation>
    <translation id="domain_tab_REDIRECTION_edit_fail" qtlid="213700">Keičiant domeno {0} nukreipimą įvyko klaida</translation>
-   <translation id="domain_tab_REDIRECTION_edit_unknown_field_type" qtlid="435148">Ce type de redirection est inconnu : {0}</translation>
+   <translation id="domain_tab_REDIRECTION_edit_unknown_field_type" qtlid="435148">Šis nukreipimo tipas nežinomas: {0}</translation>
 
 
    <translation id="domain_tab_REDIRECTION_add_button" qtlid="213713">Pridėti nukreipimą</translation>
@@ -586,7 +586,8 @@
    <translation id="domain_configuration_dns_entry_add_publickey_revoke" qtlid="192396">Pašalinti viešąjį raktą</translation>
    <translation id="domain_configuration_dns_entry_add_servicetypes" qtlid="192409">Paslaugos tipas</translation>
    <translation id="domain_configuration_dns_entry_add_servicetypes_all" qtlid="69173">Visi</translation>
-   <translation id="domain_configuration_dns_entry_add_servicetypes_email" qtlid="192422">El. paštas</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_email" qtlid="436944">El. paštas</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_none" qtlid="30646">Nėra</translation>
    <translation id="domain_configuration_dns_entry_add_t_y" qtlid="192435">Testavimo režimas</translation>
    <translation id="domain_configuration_dns_entry_add_t_y_no" qtlid="24967">Išjungta</translation>
    <translation id="domain_configuration_dns_entry_add_t_y_yes" qtlid="30250">Įjungta</translation>
@@ -608,11 +609,11 @@
    <translation id="domain_configuration_dns_entry_add_tlsa_selector" qtlid="291669">Atranka</translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_matching_type" qtlid="291682">Korespondencijos tipas</translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_certificate_data" qtlid="291695">Sertifikato duomenys</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_p" qtlid="435161">Règle pour le domaine</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_pct" qtlid="435174">Pourcentage des messages filtrés</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_rua" qtlid="435187">URI de création de rapports globaux</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_sp" qtlid="435200">Règle pour les sous-domaines</translation>
-   <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Mode d'alignement pour SPF</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_p" qtlid="435161">Taisyklė domenui</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_pct" qtlid="435174">Filtruoti pranešimai, %</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_rua" qtlid="435187">Globalių ataskaitų kūrimo identifikatorius (URI)</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_sp" qtlid="435200">Taisyklė subdomenams</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Išlyginamoji aplinka SPF</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_r" qtlid="435226">Relaxed</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_s" qtlid="435239">Strict</translation>
 
@@ -787,14 +788,14 @@
    <translation id="domain_configuration_web_hosting_dns_reset" qtlid="244703">Kokius DNS keitimus norite atlikti?</translation>
    <translation id="domain_configuration_web_hosting_dns_reset_explain" qtlid="233378">Dėmesio, jeigu naudosite el. pašto nukreipimus, dabartinė konfigūracija bus ištrinta.</translation>
    <translation id="domain_configuration_web_hosting_dns_NO_CHANGE" qtlid="72461">Nėra keitimų</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_NO_CHANGE" qtlid="435252">Malgré la mise en place de votre nouvel hébergement, votre nom de domaine continuera de pointer sur les entrées actuelles, vous devrez de votre côté effectuer les modifications dans votre zone DNS lorsque votre nouveau site sera prêt. Il s'agit d'un choix idéal si vous ne souhaitez pas couper un site déjà en production.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_NO_CHANGE" qtlid="435252">Nepaisant to, ar jūsų naujas svetainių talpinimo planas įdiegtas, jūsų domenas ir toliau nukreips į esamus įrašus. Jums tereikia atlikti DNS zonos keitimus, kai nauja svetainė bus paruošta. Tai idealus pasirinkimas, jei nenorite nutraukti kuriamos svetainės veikimą.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ALL" qtlid="244716">{0} A ir MX tipo įrašai </translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ALL" qtlid="435265">Cette solution vous permettra de faire pointer automatiquement votre nom de domaine vers votre nouvel hébergement et vers vos nouveaux services e-mail. Cette solution est idéale si il n'y a aucun site en production sur votre nom de domaine.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ALL" qtlid="435265">Šis sprendimas įgalins automatinį jūsų domeno nukreipimą į naują svetainių talpinimo planą ir naujas el. pašto paslaugas. Šis sprendimas idealiai tinka, jei jūsų domenui nekuriama jokia svetainė.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ONLY_A" qtlid="244729">{0} A tipo įrašas</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_A" qtlid="435278">Si vous disposez d'adresses e-mail sur votre nom de domaine mais d'aucun site internet, vous pouvez choisir de ne modifier que l'enregistrement A. De cette manière, votre nom de domaine pointera sur votre nouvel hébergement et vos adresses e-mails continueront de fonctionner sur votre service actuel.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_A" qtlid="435278">Jei turite el. pašto dėžutes, susietas su domenu, tačiau neturite jokios interneto svetainės, jūs galite pakeisti tik A įrašą. Taip jūsų domenas nukreips į naują svetainių talpinimo planą, o jūsų el. pašto adresai ir toliau veiks jūsų paslaugoje.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ONLY_MX" qtlid="290641">{0} MX įrašai</translation>
-   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_MX" qtlid="435291">Cette option vous permettra d'utiliser uniquement les adresses e-mail de votre hébergement sans modifier le pointage relatif à votre site web. Votre nom de domaine continuera de pointer sur votre site actuel, mais les adresses e-mail utiliseront désormais les serveurs d'OVH.</translation>
-   <translation id="domain_configuration_web_hosting_dns_info" qtlid="435304">Si votre domaine n'utilise pas les serveurs DNS d'OVH, ces modifications n'auront aucun effet sur votre nom de domaine. Vous pourrez dans ce cas modifier les serveurs DNS de votre domaine afin qu'il puisse utiliser les paramètres de pointage relatif à votre nouveau service.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_MX" qtlid="435291">Ši parinktis leidžia naudoti tik svetainių talpinimo plano el. pašto adresus, nekeičiant nukreipimo, susieto su jūsų svetainių talpinimo planu. Jūsų domenas ir toliau nukreips į jūsų svetainę, tačiau el. pašto adresai naudos OVH serverius.</translation>
+   <translation id="domain_configuration_web_hosting_dns_info" qtlid="435304">Jeigu jūsų domenas nenaudoja OVH DNS serverius, šie keitimai neturės jokio poveikio jūsų domenui. Šiuo atveju, jūs galėsite pakeisti domeno DNS serverius ir įgalinti naujos paslaugos nustatymų naudojimą.</translation>
 
    <translation id="domain_update_owner_title" qtlid="267123">Savininko duomenų atnaujinimas</translation>
    <translation id="domain_configuration_update_owner" qtlid="271478">Atnaujinti savininko informaciją</translation>
@@ -873,7 +874,7 @@
    <translation id="domain_dashboard_type_alldom_french" qtlid="270709"></translation>
    <translation id="domain_dashboard_type_alldom_international" qtlid="270722"></translation>
    <translation id="domain_attached_domain_select_title" qtlid="277624">Mano talpinimo planai</translation>
-   <translation id="domain_attached_domain_select_intro" qtlid="435317">Le domaine {0} est attaché à plusieurs hébergements.</translation>
+   <translation id="domain_attached_domain_select_intro" qtlid="435317">Domenas {0} susietas su keliais svetainių talpinimo planais.</translation>
    <translation id="domain_attached_domain_select_action" qtlid="277650">Pasirinkite talpinimo planą:</translation>
 
    <translation id="domain_tab_dns_management_step1_title" qtlid="367709">Informacija apie DNS serverius</translation>

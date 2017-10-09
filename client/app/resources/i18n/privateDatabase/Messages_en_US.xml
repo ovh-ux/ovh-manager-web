@@ -133,7 +133,7 @@
 
    <translation id="privateDatabase_add_user_title" qtlid="7150">Add user</translation>
    <translation id="privateDatabase_add_user_password" qtlid="2270">Password</translation>
-   <translation id="privateDatabase_add_user_password_confirm" qtlid="9983">Confirmation</translation>
+   <translation id="privateDatabase_add_user_password_confirm">Confirmation du mot de passe</translation>
    <translation id="privateDatabase_action_changepassword_doing" qtlid="215897">Password is being changed</translation>
    <translation id="privateDatabase_add_user_name" qtlid="56045">Username</translation>
    <translation id="privateDatabase_add_user_error_password_required" qtlid="215910">The password is mandatory</translation>
@@ -300,7 +300,7 @@
 
    <translation id="privateDatabase_restore_bdd_application" qtlid="404707">First recreate this in the database management tab. </translation>
    <translation id="privateDatabase_restore_bdd_close" qtlid="4670">Close</translation>
-   <translation id="privateDatabase_restore_bdd_confirm" qtlid="272290">Do you want to restore <strong>{0}</strong> the backup for the <strong>{1}</strong> database?</translation>
+   <translation id="privateDatabase_restore_bdd_confirm" qtlid="272290">Do you want to restore the <strong>{0}</strong> backup for the <strong>{1}</strong> database?</translation>
    <translation id="privateDatabase_restore_bdd_continue" qtlid="4070">Continue</translation>
    <translation id="privateDatabase_restore_bdd_error" qtlid="404720">There was an error when loading. </translation>
    <translation id="privateDatabase_restore_bdd_fail" qtlid="413362">An error occurred during the backup restore. This error may have occurred because the database does not exist, or because no users have the required rights.</translation>
@@ -370,7 +370,7 @@
    <translation id="privateDatabase_order_RAM_price_HT" qtlid="146177">Total price excl. taxes:</translation>
    <translation id="privateDatabase_order_RAM_price_TTC" qtlid="146190">Total price incl. taxes:</translation>
    <translation id="privateDatabase_expiration_date" qtlid="33010">Expiry date</translation>
-   <translation id="privateDatabase_renew_date" qtlid="168172">Renewal</translation>
+   <translation id="privateDatabase_renew_date">Renouvellement automatique</translation>
    <translation id="privateDatabase_gui" qtlid="103642">User interface</translation>
    <translation id="privateDatabase_tabs_bdd_no" qtlid="220746">No databases</translation>
 
@@ -546,9 +546,44 @@
    <translation id="privateDatabase_modale_whitelist_update_sftp_title" qtlid="405136">Allow this IP address/mask to access the SFTP</translation>
    <translation id="privateDatabase_modale_whitelist_update_restriction_info" qtlid="405149">Apply restrictions to: </translation>
 
-
 <!-- LOGS -->
    <translation id="privateDatabase_tabs_logs_list_title" qtlid="413375">My database logs</translation>
    <translation id="privateDatabase_tabs_logs_list_no_logs" qtlid="413388">No log for the moment</translation>
+
+<!-- OOM -->
+   <translation id="privateDatabase_no_oom">Aucun dépassement mémoire à signaler.</translation>
+   <translation id="privateDatabase_warning_oom">{0} dépassements mémoire ont eu lieu récemment.</translation>
+   <translation id="privateDatabase_modale_oom_title" qtlid="436957">Dépassements de la mémoire vive</translation>
+   <translation id="privateDatabase_modale_oom_confirm_button">Commander plus de RAM</translation>
+   <translation id="privateDatabase_modale_oom_close_button">Fermer</translation>
+   <translation id="privateDatabase_modale_oom_info">Dépassements de la mémoire vive survenus ces {0} derniers jours.<br />Seuls les {1} derniers dépassements sont disponibles.</translation>
+   <translation id="privateDatabase_modale_oom_tab_event_date" qtlid="24523">Date</translation>
+   <translation id="privateDatabase_modale_oom_tab_size_reached" qtlid="436983">Taille atteinte</translation>
+   <translation id="privateDatabase_modale_oom_tab_uptime" qtlid="436996">Temps depuis le dernier dépassement</translation>
+   <translation id="privateDatabase_modale_oom_no_oom" qtlid="437009">Pas de dépassement de la mémoire vive.</translation>
+   <translation id="privateDatabase_modale_oom_info_order" qtlid="437022">Nous vous conseillons d'augmenter la RAM de votre {0} pour pallier à ces problèmes.</translation>
+
+<!-- EXTENSIONS -->
+<!-- LIST -->
+   <translation id="privateDatabase_tabs_list_extensions_title" qtlid="341927">Extensions</translation>
+   <translation id="privateDatabase_tabs_list_extensions_extension" qtlid="94231">Extension</translation>
+   <translation id="privateDatabase_tabs_list_extensions_description" qtlid="9238">Description</translation>
+   <translation id="privateDatabase_tabs_list_extensions_status" qtlid="26443">Status</translation>
+
+<!-- INFOS -->
+   <translation id="privateDatabase_tabs_list_go_extensions" qtlid="437035">Voir les extensions</translation>
+   <translation id="privateDatabase_tabs_list_extensions_info" qtlid="437048">Extensions de la base de données {0}</translation>
+   <translation id="privateDatabase_tabs_list_extensions_no_extensions" qtlid="437061">Pas d'extension disponible</translation>
+   <translation id="privateDatabase_tabs_list_extensions_enable_info" qtlid="437074">Activer l'extension</translation>
+   <translation id="privateDatabase_tabs_list_extensions_disable_info" qtlid="437087">Désactiver l'extension</translation>
+   <translation id="privateDatabase_tabs_list_extensions_reload_info" qtlid="437100">Recharger les extensions</translation>
+
+<!-- ALERTS -->
+   <translation id="privateDatabase_tabs_list_extensions_retrieve_infos" qtlid="437113">Une erreur est survenue lors de la récupération des données.</translation>
+   <translation id="privateDatabase_tabs_list_extensions_enable_success" qtlid="437126">Extension correctement activée.</translation>
+   <translation id="privateDatabase_tabs_list_extensions_enable_error" qtlid="437139">Une erreur est survenue lors de l'action de l'extension.</translation>
+   <translation id="privateDatabase_tabs_list_extensions_disable_success" qtlid="437152">Extension correctement désactivée.</translation>
+   <translation id="privateDatabase_tabs_list_extensions_disable_error" qtlid="437165">Une erreur est survenue lors de la désactivation de l'extension.</translation>
+
 
 </translations>

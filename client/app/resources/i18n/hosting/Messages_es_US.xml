@@ -78,6 +78,8 @@
    <translation id="hosting_dashboard_service_offer__90_PLAN" qtlid="196036">90plan</translation>
    <translation id="hosting_dashboard_service_offer_ASPFREE" qtlid="196049">aspfree</translation>
    <translation id="hosting_dashboard_service_offer_BUSINESS" qtlid="314110">business 2010</translation>
+   <translation id="hosting_dashboard_service_offer_CLOUDWEBX_1" qtlid="437178">Cloud Web</translation>
+   <translation id="hosting_dashboard_service_offer_CLOUDWEBBETAX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_DEMO_1_G" qtlid="196075">demo1g</translation>
    <translation id="hosting_dashboard_service_offer_DEPRO_2012" qtlid="196088">depro2012</translation>
    <translation id="hosting_dashboard_service_offer_DEPROL_2012" qtlid="196101">deprol2012</translation>
@@ -351,6 +353,7 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type" qtlid="196959">Seleccione el tipo de base de datos:</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PERSO" qtlid="196972">SQL Personal {0} {1}: {2} restante(s)</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PRO" qtlid="196985">SQL Profesional {0} {1}: {2} restante(s)</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_EXTRA_SQL_PERSO" qtlid="196998">SQL Personal {0} {1}: {2} restante(s)</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_PRIVATE_SQL" qtlid="261734">SQL Privado {0} {1}: {2} restante(s)</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step2_password_question" qtlid="197011">Indique el nombre del usuario de la base de datos y la contraseña.</translation>
@@ -367,6 +370,7 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PERSO" qtlid="197128">SQL Personal {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PRO" qtlid="197141">SQL Profesional {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_EXTRA_SQL_PERSO" qtlid="197154">Extra SQL Personal {0} {1}</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_fail" qtlid="197167">Se ha producido un error al solicitar la creación de la base de datos.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_success" qtlid="197180">La base de datos va a crearse.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_upgrade_perso" qtlid="272734">La oferta Personal solo permite crear una base de datos. Si desea más de una, puede pasarse a la oferta Profesional o a la Performance, que permiten la creación de hasta 4 bases de datos</translation>
@@ -572,7 +576,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl" qtlid="84921">SSL</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl_help" qtlid="315826">Active la opción SSL para disfrutar de acceso por HTTPS al sitio web.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol" qtlid="288899">Configuración del código de verificación ovhcontrol</translation>
-   <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_info" qtlid="273427">Valor a introducir en un campo TXT en el proveedor que posea el nombre de dominio para poder añadirlo a su alojamiento. </translation>
+   <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_info">Valeur à renseigner dans un champ TXT chez le fournisseur possédant le nom de domaine afin de l'ajouter à votre hébergement. Cette action est requise afin de s'assurer que le domaine est bien sous votre contrôle, et éviter le phishing.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_subdomain" qtlid="288912">Subdominio a utilizar</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_domain" qtlid="288925">Dominio externo</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_ttl" qtlid="121747">TTL</translation>
@@ -592,7 +596,7 @@
    <translation id="hosting_tab_TASKS_status_CANCELLED" qtlid="164623">Cancelada</translation>
    <translation id="hosting_tab_TASKS_status_DOING" qtlid="26383">En cours</translation>
    <translation id="hosting_tab_TASKS_status_DONE" qtlid="26395">Terminée</translation>
-   <translation id="hosting_tab_TASKS_status_ERROR" qtlid="45508">En erreur</translation>
+   <translation id="hosting_tab_TASKS_status_ERROR" qtlid="45508">En error</translation>
    <translation id="hosting_tab_TASKS_status_TODO" qtlid="197947">Planificada</translation>
    <translation id="hosting_tab_TASKS_status_INIT" qtlid="197960">Iniciada</translation>
 
@@ -884,7 +888,7 @@
 
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_question" qtlid="199000">Seleccione la contraseña del usuario</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_password" qtlid="2270">Mot de passe</translation>
-   <translation id="hosting_tab_FTP_configuration_user_create_step2_password_confirmation" qtlid="9983">Confirmation</translation>
+   <translation id="hosting_tab_FTP_configuration_user_create_step2_password_confirmation">Confirmation du mot de passe</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_error" qtlid="197076">Las contraseñas introducidas no son idénticas.</translation>
 
    <translation id="hosting_tab_FTP_configuration_user_create_step3_question" qtlid="199013">¿Seguro que desea crear el siguiente usuario FTP?</translation>
@@ -1374,6 +1378,6 @@
    <translation id="hosting_change_main_domain_warning_delete_emails" qtlid="286565">Atención: Al eliminar el servicio de correo existente, se eliminarán todas las direcciones de correo creadas con su nombre de dominio. </translation>
 
    <translation id="hosting_dashboard_general_informations" qtlid="27115">Informations générales</translation>
-   <translation id="hosting_dashboard_configuration" qtlid="4406">Configuration</translation>
+   <translation id="hosting_dashboard_configuration" qtlid="4406">Configuración</translation>
    <translation id="hosting_dashboard_access" qtlid="82449">Accès</translation>
 </translations>
