@@ -21,8 +21,6 @@ angular.module("App").controller("HostingBoostTabCtrl", ($scope, $stateParams, H
     $scope.nbPages = 1;
     $scope.isLoading = false;
 
-    $scope.isPerfOffer = Hosting.isPerfOffer;
-
     //---------------------------------------------
     // INIT
     //---------------------------------------------
