@@ -26,8 +26,8 @@ angular.module("App").controller(
                     .then(() => {
                         this.alerter.success(this.$scope.tr("privateDatabase_modale_whitelist_add_success"), "privateDataBase.alerts.whitelist");
                     })
-                    .catch(() => {
-                        this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_add_fail"), "privateDataBase.alerts.whitelist");
+                    .catch((err) => {
+                        this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_modale_whitelist_add_fail"), err.data, "privateDataBase.alerts.whitelist");
                     })
                     .finally(() => this.$scope.resetAction());
             };

@@ -7,11 +7,11 @@ angular.module("App").controller("HostingFtpUserUpdatePasswordCtrl", ($scope, $s
         confirmation: null
     };
 
-    $scope.condition = Hosting.getPasswordConditions();
+    $scope.condition = Hosting.constructor.getPasswordConditions();
 
-    $scope.isPasswordValid = () => $scope.password.value && $scope.password.confirmation && $scope.password.value === $scope.password.confirmation && Hosting.isPasswordValid($scope.password.value);
+    $scope.isPasswordValid = () => $scope.password.value && $scope.password.confirmation && $scope.password.value === $scope.password.confirmation && Hosting.constructor.isPasswordValid($scope.password.value);
 
-    $scope.getPasswordInvalidClass = () => !Hosting.isPasswordValid(_.get($scope.password, "value"));
+    $scope.getPasswordInvalidClass = () => !Hosting.constructor.isPasswordValid(_.get($scope.password, "value"));
 
     $scope.getPasswordConfirmationInvalidClass = () => $scope.password.value !== $scope.password.confirmation;
 

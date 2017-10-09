@@ -6,7 +6,6 @@ angular.module("App").config(($stateProvider) => {
         templateUrl: "dns-zone/dns-zone.html",
         controller: "DnsZoneCtrl",
         controllerAs: "ctrlDomain",
-        piwikActionName: "Standalone zone configuration",
         reloadOnSearch: false,
         params: {
             tab: null
@@ -33,7 +32,6 @@ angular.module("App").config(($stateProvider) => {
         templateUrl: "dns-zone/new/dns-zone-new.html",
         controller: "newDnsZoneCtrl",
         controllerAs: "ctrlNewDnsZone",
-        piwikActionName: "New DNS Zone",
         resolve: {
             navigationInformations: [
                 "Navigator",
