@@ -36,7 +36,7 @@
         <h2 class="mt-5" data-i18n-static="privateDatabase_metrics_time_title"></h2>
 
         <div class="chart-container" style="height: 320px;"
-             data-ng-if="metricsCtrl.chart.time.data.datasets.length"
+             data-ng-if="metricsCtrl.chart.time.data.datasets.length && !metricsCtrl.isWrongVersion"
              data-chartjs="metricsCtrl.chart.time">
         </div>
 

@@ -11,7 +11,7 @@ angular.module("App").controller("HostingDatabaseDumpDeleteCtrl", function ($sco
     $scope.deleteDatabaseDump = function () {
         $scope.resetAction();
         HostingDatabase.deleteDatabaseDump($stateParams.productId, $scope.database.name, $scope.dump).catch((err) => {
-            Alerter.alertFromSWS($scope.tr("database_tabs_dumps_delete_fail"), err, "dataBase.alerts.bdd");
+            Alerter.alertFromSWS($scope.tr("database_tabs_dumps_delete_fail"), err, $scope.alerts.dashboard);
         });
     };
 

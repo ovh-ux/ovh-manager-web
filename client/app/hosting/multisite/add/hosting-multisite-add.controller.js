@@ -69,7 +69,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
     };
 
     $scope.isPathValid = function () {
-        return Hosting.isPathValid($scope.selected.path);
+        return Hosting.constructor.isPathValid($scope.selected.path);
     };
 
     $scope.getTokenDomain = function () {

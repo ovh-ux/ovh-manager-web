@@ -1,187 +1,191 @@
-angular.module("App").controller("HostingTabFTPCtrl", ($scope, $stateParams, Hosting, HostingUser, Alerter) => {
-    "use strict";
+angular.module("App").controller(
+    "HostingTabFTPCtrl",
+    class HostingTabFTPCtrl {
 
-    $scope.ftpInformations = null;
-    $scope.primaryUserEnabled = null;
-    $scope.allowUpdateState = true;
-    $scope.displayRestoreFtp = true;
-    $scope.hasResult = false;
-    $scope.search = {
-        text: null
-    };
-    $scope.edit = {
-        active: false
-    };
-    $scope.loading = {
-        ftp: false,
-        init: true
-    };
-
-    function loadTab (count, offset, needUsers) {
-        Hosting.getTabFTP($stateParams.productId, count, offset, needUsers, $scope.search.text)
-            .then((ftpInformations) => {
-                if (!_.isEmpty(ftpInformations.list.results)) {
-                    const firstUserCredentials = ftpInformations.list.results[0].serviceManagementCredentials;
-                    $scope.hasResult = true;
-                    $scope.firstUser = {
-                        ftp: firstUserCredentials.ftp,
-                        ftpUrl: `ftp://${firstUserCredentials.ftp.user}@${firstUserCredentials.ftp.url}:${firstUserCredentials.ftp.port}/`,
-                        ssh: firstUserCredentials.ssh,
-                        sshUrl: `ssh://${firstUserCredentials.ssh.user}@${firstUserCredentials.ssh.url}:${firstUserCredentials.ssh.port}/`
-                    };
-                }
-
-                for (const user of ftpInformations.list.results) {
-                    user.ftp = user.serviceManagementCredentials.ftp;
-                    user.ftpUrl = `ftp://${user.serviceManagementCredentials.ftp.user}@${user.serviceManagementCredentials.ftp.url}:${user.serviceManagementCredentials.ftp.port}/`;
-                    user.ssh = user.serviceManagementCredentials.ssh;
-                    user.sshUrl = `ssh://${user.serviceManagementCredentials.ssh.user}@${user.serviceManagementCredentials.ssh.url}:${user.serviceManagementCredentials.ssh.port}/`;
-                }
-
-                $scope.primaryUserEnabled = ftpInformations.list.results.length && ftpInformations.list.results[0].isPrimaryAccount ? ftpInformations.list.results[0].state === "RW" : null;
-                $scope.ftpInformations = ftpInformations;
-            }).finally(() => {
-                $scope.loading.init = false;
-                $scope.loading.ftp = false;
-            });
-
-        Hosting.getSelected($stateParams.productId).then((hosting) => {
-            // backup snapshots are made at least one day after service creation, so hide backup option in the meantime
-            if (moment(hosting.creation).isAfter(moment().subtract(1, "days"))) {
-                $scope.displayRestoreFtp = false;
-            }
-        });
-    }
-
-    function startPolling () {
-        HostingUser.getTasks($stateParams.productId, {
-            params: { "function": "user/update" }
-        }).then((tasks) => {
-            HostingUser.pollState($stateParams.productId, {
-                id: tasks[0],
-                successSates: ["done", "cancelled"],
-                namespace: "hosting.web.ftp.user.poll"
-            });
-        });
-
-        HostingUser.getTasks($stateParams.productId, {
-            params: { "function": "web/restoreSnapshot" }
-        }).then((tasks) => {
-            if (tasks.length > 0) {
-                $scope.disableRestoreFtp = true;
-            }
-        });
-    }
-
-    $scope.loadFtpInformations = (count, offset) => {
-        $scope.loading.ftp = true;
-        loadTab(count, offset, true);
-    };
-
-    $scope.openFtpExplorer = () => {
-        window.open($scope.ftpInformations.ftpExplorer, "_blank");
-    };
-
-    $scope.$on(Hosting.events.tabFtpRefresh, () => {
-        $scope.loading.init = true;
-        $scope.hasResult = false;
-        $scope.$broadcast("paginationServerSide.reload");
-    });
-
-    $scope.$on(Hosting.events.tasksChanged, () => {
-        $scope.disableRestoreFtp = true;
-    });
-
-    $scope.refreshTable = () => {
-        $scope.$broadcast("paginationServerSide.reload");
-    };
-
-    $scope.deleteUser = (user) => {
-        if (user.login !== $scope.ftpInformations.primaryLogin) {
-            $scope.setAction("ftp/user/delete/hosting-ftp-user-delete", user.login);
+        constructor ($scope, $stateParams, Alerter, Hosting, HostingUser) {
+            this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.Hosting = Hosting;
+            this.HostingUser = HostingUser;
         }
-    };
 
-    $scope.modifyUser = (user) => {
-        $scope.setAction("ftp/user/update/hosting-ftp-user-update", { user: _.omit(user, "ssh", "ftp", "ftpUrl", "sshUrl"), ftpInformations: $scope.ftpInformations });
-    };
+        $onInit () {
+            this.allowUpdateState = true;
+            this.displayFtpExplorer = true;
+            this.disableRestoreFtp = false;
+            this.displayRestoreFtp = true;
+            this.editMode = false;
+            this.ftpInformations = null;
+            this.hasResult = false;
+            this.loading = {
+                ftp: false,
+                init: true
+            };
+            this.password = {
+                value: null
+            };
+            this.search = {
+                value: null
+            };
 
-    $scope.updateUserPassword = (user) => {
-        $scope.setAction("ftp/password-update/hosting-ftp-password-update", user.login);
-    };
+            this.$scope.loadFtpInformations = (count, offset) => this.loadFtpInformations(count, offset);
 
-    $scope.updatePrimaryLoginState = (element, prev) => {
-        const user = angular.copy(element);
-        delete user.isPrimaryAccount;
+            this.$scope.$on(this.Hosting.events.tabFtpRefresh, () => {
+                this.loading.init = true;
+                this.hasResult = false;
+                this.$scope.$broadcast("paginationServerSide.reload");
+            });
+            this.$scope.$on(this.Hosting.events.tasksChanged, () => { this.disableRestoreFtp = true; });
+            this.$scope.$on("hosting.web.ftp.user.poll.start", () => { this.allowUpdateState = false; });
+            this.$scope.$on("hosting.web.ftp.user.poll.done", () => {
+                this.allowUpdateState = true;
+                this.Alerter.resetMessage(this.$scope.alerts.dashboard);
+            });
+            this.$scope.$on("$destroy", () => {
+                this.HostingUser.killAllPolling({ namespace: "hosting.web.ftp.user.poll" });
+            });
 
-        HostingUser.updateUser($stateParams.productId, { login: user.login, data: _.omit(user, "ssh", "ftp", "ftpUrl", "sshUrl") }).then(
-            () => {
-                Alerter.success($scope.tr("hosting_tab_FTP_configuration_user_modify_success"), $scope.alerts.dashboard);
-                startPolling();
-            },
-            (err) => {
-                const idx = _.indexOf($scope.ftpInformations.list.result, element);
-                $scope.ftpInformations.list.result[idx] = _.assign(element, prev);
-                Alerter.alertFromSWS($scope.tr("hosting_tab_FTP_configuration_user_modify_fail"), err, $scope.alerts.dashboard);
+            this.condition = this.Hosting.constructor.getPasswordConditions();
+
+            this.Hosting.getSelected(this.$stateParams.productId)
+                .then((hosting) => {
+                    // backup snapshots are made at least one day after service creation, so hide backup option in the meantime
+                    if (moment(hosting.creation).isAfter(moment().subtract(1, "days"))) {
+                        this.displayRestoreFtp = false;
+                    }
+                    return this.Hosting.getOfferCapabilities(_.camelCase(hosting.offer).toLowerCase());
+                })
+                .then((capabilities) => {
+                    this.displayFtpExplorer = _.get(capabilities, "filesBrowser", false);
+                });
+
+            this.loadTab(10, 0, false);
+            this.startPolling();
+        }
+
+        resetSearch () {
+            this.search.value = "";
+            this.goSearch();
+        }
+
+        goSearch () {
+            if (!_.isEmpty(this.search.value)) {
+                this.loading.search = true;
             }
-        );
-    };
 
-    $scope.$on("hosting.web.ftp.user.poll.start", () => {
-        $scope.allowUpdateState = false;
-    });
+            this.$scope.$broadcast("paginationServerSide.loadPage", 1);
+        }
 
-    $scope.$on("hosting.web.ftp.user.poll.done", () => {
-        $scope.allowUpdateState = true;
-        Alerter.resetMessage($scope.alerts.dashboard);
-    });
+        loadFtpInformations (count, offset) {
+            this.loading.ftp = true;
+            this.loadTab(count, offset, true);
+        }
 
-    loadTab(10, 0, false);
+        loadTab (count, offset, needUsers) {
+            this.Hosting.getTabFTP(this.$stateParams.productId, count, offset, needUsers, this.search.value)
+                .then((ftpInformations) => {
+                    if (ftpInformations != null && !_.isEmpty(ftpInformations.list.results)) {
+                        const firstUserCredentials = ftpInformations.list.results[0].serviceManagementCredentials;
+                        this.hasResult = true;
+                        this.firstUser = {
+                            ftp: firstUserCredentials.ftp,
+                            ftpUrl: `ftp://${firstUserCredentials.ftp.user}@${firstUserCredentials.ftp.url}:${firstUserCredentials.ftp.port}/`,
+                            ssh: firstUserCredentials.ssh,
+                            sshUrl: `ssh://${firstUserCredentials.ssh.user}@${firstUserCredentials.ssh.url}:${firstUserCredentials.ssh.port}/`
+                        };
+                    }
 
-    function reloadCurrentPage () {
-        if (!$scope.loading.ftp) {
-            $scope.$broadcast("paginationServerSide.reload");
+                    for (const user of ftpInformations.list.results) {
+                        user.ftp = user.serviceManagementCredentials.ftp;
+                        user.ftpUrl = `ftp://${user.serviceManagementCredentials.ftp.user}@${user.serviceManagementCredentials.ftp.url}:${user.serviceManagementCredentials.ftp.port}/`;
+                        user.ssh = user.serviceManagementCredentials.ssh;
+                        user.sshUrl = `ssh://${user.serviceManagementCredentials.ssh.user}@${user.serviceManagementCredentials.ssh.url}:${user.serviceManagementCredentials.ssh.port}/`;
+                    }
+
+                    this.primaryUserEnabled = ftpInformations.list.results.length && ftpInformations.list.results[0].isPrimaryAccount ? ftpInformations.list.results[0].state === "RW" : null;
+                    this.ftpInformations = ftpInformations;
+                }).finally(() => {
+                    this.loading.init = false;
+                    this.loading.ftp = false;
+                });
+        }
+
+        refreshTable () {
+            if (!this.loading.ftp) {
+                this.$scope.$broadcast("paginationServerSide.reload");
+            }
+        }
+
+        changePassword () {
+            this.HostingUser.changePassword(this.$stateParams.productId, this.ftpInformations.primaryLogin, this.password.value)
+                .then(() => {
+                    this.Alerter.success(this.$scope.tr("hosting_tab_FTP_configuration_change_password_success"), this.$scope.alerts.dashboard);
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_change_password_fail", [this.ftpInformations.primaryLogin]), _.get(err, "data", err), this.$scope.alerts.dashboard);
+                })
+                .finally(() => {
+                    this.password.value = null;
+                    this.editMode = false;
+                });
+        }
+
+        resetPassword () {
+            this.password.value = null;
+            this.editMode = false;
+        }
+
+        modifyUser (user) {
+            this.$scope.setAction("ftp/user/update/hosting-ftp-user-update", {
+                user: _.omit(user, "ssh", "ftp", "ftpUrl", "sshUrl"),
+                ftpInformations: this.ftpInformations
+            });
+        }
+
+        isPasswordValid () {
+            return this.Hosting.constructor.isPasswordValid(this.password.value);
+        }
+
+        openFtpExplorer () {
+            window.open(this.ftpInformations.ftpExplorer, "_blank");
+        }
+
+        updatePrimaryLoginState (element, prev) {
+            const user = angular.copy(element);
+            delete user.isPrimaryAccount;
+
+            this.HostingUser.updateUser(this.$stateParams.productId, {
+                login: user.login,
+                data: _.omit(user, "ssh", "ftp", "ftpUrl", "sshUrl")
+            }).then(() => {
+                this.Alerter.success(this.$scope.tr("hosting_tab_FTP_configuration_user_modify_success"), this.$scope.alerts.dashboard);
+                this.startPolling();
+            }).catch((err) => {
+                const idx = _.indexOf(this.ftpInformations.list.result, element);
+                this.ftpInformations.list.result[idx] = _.assign(element, prev);
+                this.Alerter.alertFromSWS($scope.tr("hosting_tab_FTP_configuration_user_modify_fail"), err, this.$scope.alerts.dashboard);
+            });
+        }
+
+        startPolling () {
+            this.HostingUser.getTasks(this.$stateParams.productId, {
+                params: { "function": "user/update" }
+            }).then((tasks) => {
+                this.HostingUser.pollState(this.$stateParams.productId, {
+                    id: tasks[0],
+                    successSates: ["done", "cancelled"],
+                    namespace: "hosting.web.ftp.user.poll"
+                });
+            });
+
+            this.HostingUser.getTasks(this.$stateParams.productId, {
+                params: { "function": "web/restoreSnapshot" }
+            }).then((tasks) => {
+                if (tasks.length > 0) {
+                    this.disableRestoreFtp = true;
+                }
+            });
         }
     }
-
-    $scope.$watch(
-        "search.text",
-        (newValue) => {
-            if ($scope.search.text !== null) {
-                if ($scope.search.text === "") {
-                    reloadCurrentPage();
-                } else if ($scope.search.text === newValue) {
-                    reloadCurrentPage();
-                }
-            }
-        },
-        true
-    );
-
-    $scope.password = { value: null };
-    $scope.condition = Hosting.getPasswordConditions();
-    $scope.changePassword = () => {
-        HostingUser.changePassword($stateParams.productId, $scope.ftpInformations.primaryLogin, $scope.password.value)
-            .then(
-                () => {
-                    Alerter.success($scope.tr("hosting_tab_FTP_configuration_change_password_success"), $scope.alerts.dashboard);
-                },
-                (err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_FTP_configuration_change_password_fail", [$scope.login]), err.data, $scope.alerts.dashboard);
-                }
-            )
-            .finally(() => {
-                $scope.password.value = null;
-            });
-    };
-
-    $scope.isPasswordValid = () => Hosting.isPasswordValid($scope.password.value);
-
-    $scope.$on("$destroy", () => {
-        HostingUser.killAllPolling({
-            namespace: "hosting.web.ftp.user.poll"
-        });
-    });
-
-    startPolling();
-});
+);
