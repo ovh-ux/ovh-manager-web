@@ -174,14 +174,16 @@ angular.module("App").controller(
                 .post(this.domain.name, this.model.offer, this.model.dnsZone, this.model.duration, this.model.templateSelected ? this.model.templateSelected.name.toUpperCase() : null)
                 .then((order) => {
                     if (this.getSelectedOfferOrderInfos().prices.withTax.value === 0) {
-                        return this.User.payWithRegisteredPaymentMean({
+                        this.User.payWithRegisteredPaymentMean({
                             orderId: order.orderId,
                             paymentMean: "fidelityAccount"
                         });
                     }
+
                     this.Alerter.success(this.$scope.tr("domain_order_hosting_finish_success", [order.url]), this.$scope.alerts.dashboard);
                     window.open(order.url, "_blank");
                     return true;
+
                 })
                 .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_order_hosting_finish_error"), _.get(err, "data", err), this.$scope.alerts.dashboard))
                 .finally(() => this.$scope.resetAction());
