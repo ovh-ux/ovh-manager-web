@@ -17,7 +17,7 @@
                     <div data-ng-if="!ctrl.availableServices.length">
                         <p data-i18n-static="email_tab_modal_migrate_no_email_service"></p>
                         <p>
-                            <a href="https://www.ovh.com/emails/" target="_blank" class="btn btn-primary">
+                            <a href="{{::ctrl.emailsOrder}}" target="_blank" class="btn btn-primary">
                                 <span data-i18n-static="email_tab_modal_migrate_order_email_service"></span>
                                 <span class="fa fa-external-link"></span>
                             </a>
@@ -156,7 +156,7 @@
             <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'" data-i18n-static="email_tab_modal_migrate_configuration_guides_emailpro"></p>
             <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'" data-i18n-static="email_tab_modal_migrate_configuration_guides_exchange"></p>
             <p>
-                <a class="btn btn-default btn-sm" href="https://docs.ovh.com/fr/fr/web/" target="_blank">
+                <a class="btn btn-default btn-sm" href="{{::ctrl.allGuides}}" target="_blank">
                     <span data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></span>
                     <span class="fa fa-external-link"></span>
                 </a>
