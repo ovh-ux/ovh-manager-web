@@ -130,7 +130,7 @@
 
    <translation id="privateDatabase_add_user_title" qtlid="7150">Lisää käyttäjä</translation>
    <translation id="privateDatabase_add_user_password" qtlid="2270">Salasana</translation>
-   <translation id="privateDatabase_add_user_password_confirm" qtlid="9983">Vahvista</translation>
+   <translation id="privateDatabase_add_user_password_confirm">Confirmation du mot de passe</translation>
    <translation id="privateDatabase_action_changepassword_doing" qtlid="215897">Salasanaa muutetaan</translation>
    <translation id="privateDatabase_add_user_name" qtlid="56045">Käyttäjätunnus</translation>
    <translation id="privateDatabase_add_user_error_password_required" qtlid="215910">Salasana on pakollinen</translation>
@@ -367,7 +367,7 @@
    <translation id="privateDatabase_order_RAM_price_HT" qtlid="146177">Kokonaishinta (ALV 0 %):</translation>
    <translation id="privateDatabase_order_RAM_price_TTC" qtlid="146190">Kokonaishinta (sis. ALV):</translation>
    <translation id="privateDatabase_expiration_date" qtlid="33010">Umpeutumispäivä</translation>
-   <translation id="privateDatabase_renew_date" qtlid="168172">Uusinta</translation>
+   <translation id="privateDatabase_renew_date">Renouvellement automatique</translation>
    <translation id="privateDatabase_gui" qtlid="103642">Käyttöliittymä</translation>
    <translation id="privateDatabase_tabs_bdd_no" qtlid="220746">Ei yhtään tietokantaa.</translation>
 
@@ -543,9 +543,44 @@
    <translation id="privateDatabase_modale_whitelist_update_sftp_title" qtlid="405136">Anna tälle IP-osoitteelle/maskille lupa yhdistää SFTP:lle</translation>
    <translation id="privateDatabase_modale_whitelist_update_restriction_info" qtlid="405149">Sovella rajoitusta seuraavissa:</translation>
 
-
 <!-- LOGS -->
    <translation id="privateDatabase_tabs_logs_list_title" qtlid="413375">Tietokannan lokitiedot</translation>
    <translation id="privateDatabase_tabs_logs_list_no_logs" qtlid="413388">Ei lokitietoja tällä hetkellä</translation>
+
+<!-- OOM -->
+   <translation id="privateDatabase_no_oom">Aucun dépassement mémoire à signaler.</translation>
+   <translation id="privateDatabase_warning_oom">{0} dépassements mémoire ont eu lieu récemment.</translation>
+   <translation id="privateDatabase_modale_oom_title" qtlid="436957">Keskusmuistin ylitykset</translation>
+   <translation id="privateDatabase_modale_oom_confirm_button">Commander plus de RAM</translation>
+   <translation id="privateDatabase_modale_oom_close_button">Fermer</translation>
+   <translation id="privateDatabase_modale_oom_info">Dépassements de la mémoire vive survenus ces {0} derniers jours.<br />Seuls les {1} derniers dépassements sont disponibles.</translation>
+   <translation id="privateDatabase_modale_oom_tab_event_date" qtlid="24523">Päivämäärä</translation>
+   <translation id="privateDatabase_modale_oom_tab_size_reached" qtlid="436983">Saavutettu koko</translation>
+   <translation id="privateDatabase_modale_oom_tab_uptime" qtlid="436996">Aika edellisestä ylityksestä</translation>
+   <translation id="privateDatabase_modale_oom_no_oom" qtlid="437009">Ei keskusmuistin ylityksiä</translation>
+   <translation id="privateDatabase_modale_oom_info_order" qtlid="437022">Suosittelemme kasvattamaan tuotteesi {0} RAM-resursseja näiden ongelmien ratkaisemiseksi.</translation>
+
+<!-- EXTENSIONS -->
+<!-- LIST -->
+   <translation id="privateDatabase_tabs_list_extensions_title" qtlid="341927">Laajennukset</translation>
+   <translation id="privateDatabase_tabs_list_extensions_extension" qtlid="94231">Pääte</translation>
+   <translation id="privateDatabase_tabs_list_extensions_description" qtlid="9238">Kuvaus</translation>
+   <translation id="privateDatabase_tabs_list_extensions_status" qtlid="26443">Tila</translation>
+
+<!-- INFOS -->
+   <translation id="privateDatabase_tabs_list_go_extensions" qtlid="437035">Katso laajennukset</translation>
+   <translation id="privateDatabase_tabs_list_extensions_info" qtlid="437048">Tietokannan {0} laajennukset</translation>
+   <translation id="privateDatabase_tabs_list_extensions_no_extensions" qtlid="437061">Ei laajennuksia käytettävissä</translation>
+   <translation id="privateDatabase_tabs_list_extensions_enable_info" qtlid="437074">Ota laajennus käyttöön</translation>
+   <translation id="privateDatabase_tabs_list_extensions_disable_info" qtlid="437087">Poista laajennus käytöstä</translation>
+   <translation id="privateDatabase_tabs_list_extensions_reload_info" qtlid="437100">Lataa uudelleen laajennus</translation>
+
+<!-- ALERTS -->
+   <translation id="privateDatabase_tabs_list_extensions_retrieve_infos" qtlid="437113">Tietojen haussa tapahtui virhe.</translation>
+   <translation id="privateDatabase_tabs_list_extensions_enable_success" qtlid="437126">Laajennuksen käyttöönotto onnistui. </translation>
+   <translation id="privateDatabase_tabs_list_extensions_enable_error" qtlid="437139">Tapahtui virhe laajennuksen käyttöönotossa. </translation>
+   <translation id="privateDatabase_tabs_list_extensions_disable_success" qtlid="437152">Laajennus poistettiin käytöstä.</translation>
+   <translation id="privateDatabase_tabs_list_extensions_disable_error" qtlid="437165">Tapahtui virhe laajennuksen käytöstä poistamisessa.</translation>
+
 
 </translations>

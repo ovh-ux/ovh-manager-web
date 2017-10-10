@@ -49,19 +49,27 @@
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
                                             <div class="d-flex w-100">
-                                                <div>
+                                                <div class="w-50">
                                                     <strong class="d-block"
                                                             data-i18n-static="privateDatabase_dashboard_ram"></strong>
-                                                    <span data-ng-bind="::stateCtrl.database.ram.value + i18n['unit_size_' + stateCtrl.database.ram.unit]"></span>
-                                                    <button class="btn btn-icon" type="button"
+                                                    <button class="btn btn-xs d-block" type="button" title="{{::i18n.privateDatabase_modale_oom_title}}"
+                                                            data-ng-bind="::stateCtrl.database.ram.value + i18n['unit_size_' + stateCtrl.database.ram.unit]"
+                                                            data-ng-class="stateCtrl.database.oom.realList.length >= stateCtrl.database.oom.nbOomError ? 'btn-danger' : (stateCtrl.database.oom.realList.length > 0 ? 'btn-warning' : 'btn-success')"
                                                             data-ng-click="stateCtrl.goToOom()">
-                                                        <span class="fa fa-info-circle" aria-hidden="true"></span>
+                                                    </button>
+                                                    <button class="btn btn-icon btn-xs d-block text-wrap text-left" type="button" title="{{::i18n.privateDatabase_modale_oom_title}}"
+                                                            data-ng-class="stateCtrl.database.oom.realList.length >= stateCtrl.database.oom.nbOomError ? 'text-danger' : (stateCtrl.database.oom.realList.length > 0 ? 'text-warning' : '')"
+                                                            data-ng-click="stateCtrl.goToOom()">
+                                                        <span data-ng-if="stateCtrl.database.oom.realList.length > 0" class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                                                        <span data-ng-if="stateCtrl.database.oom.realList.length === 0" class="fa fa-check-circle" aria-hidden="true"></span>
+                                                        <span data-ng-if="stateCtrl.database.oom.realList.length > 0" data-ng-bind-html="tr('privateDatabase_warning_oom', [stateCtrl.database.oom.realList.length])"></span>
+                                                        <span data-ng-if="stateCtrl.database.oom.realList.length === 0" data-ng-bind-html="tr('privateDatabase_no_oom')"></span>
                                                     </button>
                                                 </div>
-                                                <button class="btn btn-default ml-auto my-auto text-wrap" type="button" title="{{::i18n.privateDatabase_change_ram_title}}"
+                                                <button type="button" class="btn btn-default ml-auto my-auto text-wrap" title="{{::i18n.privateDatabase_change_ram_title}}"
                                                         data-i18n-static="privateDatabase_change_ram_title"
-                                                        data-ng-click="setAction('database/ram/update/private-database-database-ram-update', stateCtrl.database)"
-                                                        data-ng-disabled="taskState.lockAction">
+                                                        data-ng-disabled="taskState.lockAction"
+                                                        data-ng-click="setAction('database/ram/update/private-database-database-ram-update', stateCtrl.database)">
                                                 </button>
                                             </div>
                                         </div>

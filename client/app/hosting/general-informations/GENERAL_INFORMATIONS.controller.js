@@ -22,6 +22,8 @@ angular
         }
 
         canDeleteSSL () {
-            return this.$scope.hosting != null && this.$scope.hosting.hasHostedSsl && this.alreadyHasSSL();
+            // hasHostedSsl is true only for legacy SSL offers
+            // the new system is through the ssl API
+            return _.get(this, "$scope.hosting.hasHostedSsl") || this.alreadyHasSSL();
         }
     });

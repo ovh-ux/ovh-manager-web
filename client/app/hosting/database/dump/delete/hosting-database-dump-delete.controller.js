@@ -19,7 +19,7 @@ angular.module("App").controller(
         }
 
         deleteDatabaseDump () {
-            this.HostingDatabase.deleteDatabaseDump(this.$stateParams.productId, this.database.name, this.dump)
+            return this.HostingDatabase.deleteDatabaseDump(this.$stateParams.productId, this.database.name, this.dump)
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
                     this.Alerter.alertFromSWS(this.$scope.tr("database_tabs_dumps_delete_fail"), err, this.$scope.alerts.dumps);
