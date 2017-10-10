@@ -180,11 +180,9 @@ angular.module("App").controller(
                         });
                     }
                     this.Alerter.success(this.$scope.tr("domain_order_hosting_finish_success", [order.url]), this.$scope.alerts.dashboard);
-                    this.$scope.resetAction();
                     window.open(order.url, "_blank");
                     return true;
                 })
-                .then(() => this.Alerter.success(this.$scope.tr("domain_order_hosting_validate_finish_success"), this.$scope.alerts.dashboard))
                 .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_order_hosting_finish_error"), _.get(err, "data", err), this.$scope.alerts.dashboard))
                 .finally(() => this.$scope.resetAction());
         }
