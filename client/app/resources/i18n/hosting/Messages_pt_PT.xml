@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translations>
-   <translation id="hosting_change_offer_for_service" qtlid="225367">Este serviço não está acessível para esta oferta.</translation>
+   <translation id="hosting_change_offer_for_service" qtlid="225367">Este serviço não está disponível para esta oferta.</translation>
    <translation id="hosting_change_offer_for_service_start10m" qtlid="327224">Este serviço não está disponível na oferta Start10M.</translation>
    <translation id="hosting_common_password_conditions" qtlid="195789">Atenção, a palavra-passe deve respeitar as seguintes condições: <br/>- Mínimo de {0} caracteres<br/>- Maáximo {1} caracteres<br/>- Pelo menos uma letra maiúscula<br/>- Pelo menos uma letra minúscula<br/>- Pelo menos um número<br/>- Deve ser composta unicamente por números e letras</translation>
    <translation id="hosting_common_path_help_inline" qtlid="263025">Os caracteres aceites para as diretorias são as letras, números e os caracteres -_./ Além disso, não é possível aceder à diretoria "parent" utilizando ..</translation>
@@ -78,6 +78,8 @@
    <translation id="hosting_dashboard_service_offer__90_PLAN" qtlid="196036">90plan</translation>
    <translation id="hosting_dashboard_service_offer_ASPFREE" qtlid="196049">aspfree</translation>
    <translation id="hosting_dashboard_service_offer_BUSINESS" qtlid="314110">business 2010</translation>
+   <translation id="hosting_dashboard_service_offer_CLOUDWEBX_1" qtlid="437178">Cloud Web</translation>
+   <translation id="hosting_dashboard_service_offer_CLOUDWEBBETAX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_DEMO_1_G" qtlid="196075">demo1g</translation>
    <translation id="hosting_dashboard_service_offer_DEPRO_2012" qtlid="196088">depro2012</translation>
    <translation id="hosting_dashboard_service_offer_DEPROL_2012" qtlid="196101">deprol2012</translation>
@@ -351,6 +353,7 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type" qtlid="196959">Selecione o tipo de base de dados:</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PERSO" qtlid="196972">SQL Perso {0} {1} : {2} restante(s)</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PRO" qtlid="196985">SQL Pro {0} {1} : {2} restante(s)</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_EXTRA_SQL_PERSO" qtlid="196998">Extra SQL Perso {0} {1} : {2} restante(s)</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_PRIVATE_SQL" qtlid="261734">SQL Privado {0} {1}: {2} restante(s)</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step2_password_question" qtlid="197011">Escolha o nome de utilizador da base de dados e a palavra-passe associada</translation>
@@ -367,6 +370,7 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PERSO" qtlid="197128">SQL Perso {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PRO" qtlid="197141">SQL Pro {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_EXTRA_SQL_PERSO" qtlid="197154">Extra SQL Perso {0} {1}</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_fail" qtlid="197167">Ocorreu um erro durante o pedido de criação de base de dados.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_success" qtlid="197180">A base de dados vai ser criada.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_upgrade_perso" qtlid="272734">A oferta "Perso" permite-lhe beneficiar de uma só base de dados, e poderá trocar de oferta para uma Pro ou Performance que permitem a criação de até 4 bases de dados.</translation>
@@ -412,7 +416,7 @@
    <translation id="hosting_tab_DATABASES_configuration_update_password_fail" qtlid="197388">Ocorreu um erro durante o pedido de eliminação da base de dados {0}.</translation>
    <translation id="hosting_tab_DATABASES_configuration_update_password_success" qtlid="197401">A palavra-passe irá ser modificada.</translation>
    <translation id="database_tabs_dumps_restore_dump" qtlid="263415">Restaurar o backup</translation>
-   <translation id="database_tabs_dumps_restore_in_start" qtlid="263428">O restauro do backup foi tomado em conta.</translation>
+   <translation id="database_tabs_dumps_restore_in_start" qtlid="263428">O restauro do backup está a ser processada.</translation>
    <translation id="database_tabs_dumps_restore_in_progress" qtlid="275013">O restauro do backup está em curso...</translation>
    <translation id="database_tabs_dumps_restore_success" qtlid="263441">O restauro do backup foi corretamente efetuado.</translation>
    <translation id="database_tabs_dumps_restore_fail" qtlid="263454">Ocorreu um erro aquando do restauro do backup:</translation>
@@ -572,7 +576,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl" qtlid="84921">SSL</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl_help" qtlid="315826">Ativar a opção SSL para beneficiar do acesso ao seu website via https</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol" qtlid="288899">Configuração do token ovhcontrol</translation>
-   <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_info" qtlid="273427">Valor a introduzir num campo do tipo TXT no fornecedor que gere o serviço DNS do seu nome de domínio.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_info">Valeur à renseigner dans un champ TXT chez le fournisseur possédant le nom de domaine afin de l'ajouter à votre hébergement. Cette action est requise afin de s'assurer que le domaine est bien sous votre contrôle, et éviter le phishing.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_subdomain" qtlid="288912">Subdomínio a utilizar</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_domain" qtlid="288925">Domínio externo</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_ttl" qtlid="121747">TTL</translation>
@@ -884,8 +888,8 @@ Queria tentar mais tarde.</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_webDavRights_none" qtlid="30646">Nenhum</translation>
 
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_question" qtlid="199000">Escolha a palavra-passe do utilizador</translation>
-   <translation id="hosting_tab_FTP_configuration_user_create_step2_password_password" qtlid="2270">Password</translation>
-   <translation id="hosting_tab_FTP_configuration_user_create_step2_password_confirmation" qtlid="9983">Confirmação</translation>
+   <translation id="hosting_tab_FTP_configuration_user_create_step2_password_password" qtlid="2270">Palavra-passe</translation>
+   <translation id="hosting_tab_FTP_configuration_user_create_step2_password_confirmation">Confirmation du mot de passe</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_error" qtlid="197076">As palavras-passe introduzidas não são idênticas.</translation>
 
    <translation id="hosting_tab_FTP_configuration_user_create_step3_question" qtlid="199013">Deseja realmente criar o utilizador FTP seguinte?</translation>
@@ -1251,7 +1255,7 @@ Será fatura no próximo mês relativamente ao BOOST extra utilizado este mês (
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step1_desc_label" qtlid="9238">Descrição </translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step1_user_condition" qtlid="268406">Entre {0} e {1} caracteres alfanuméricos</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step2_password_question" qtlid="199000">Escolha a palavra-passe do utilizador</translation>
-   <translation id="hosting_tab_USER_LOGS_configuration_user_create_step2_password_password" qtlid="2270">Password</translation>
+   <translation id="hosting_tab_USER_LOGS_configuration_user_create_step2_password_password" qtlid="2270">Palavra-passe</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step2_password_confirmation" qtlid="9983">Confirmação</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step2_password_error" qtlid="197076">As palavras-passe introduzidas não são idênticas.</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step3_question" qtlid="268419">Deseja realmente criar o seguinte utilizador?</translation>
