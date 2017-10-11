@@ -1,11 +1,19 @@
 .otrs-popup {
+    height: 75% !important;
+    padding-top: 30px;
+    right: 30px;
+
     #headerPopup {
-        position: relative !important;
-        top: 0 !important;
+        position: absolute;
+        top: 0;
     }
 
-    #contentPopup {
-        height: auto !important;
+    #contentPopup { padding: 0 20px 20px 20px; }
+
+    .ovh-form-flat::after {
+        content: "";
+        display: block;
+        clear: both;
     }
 }
 
