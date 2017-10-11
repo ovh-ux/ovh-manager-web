@@ -181,14 +181,14 @@
              * @param {array|null} catchOpt
              */
             getHosting (serviceName, catchOpt) {
-                return this.OvhHttp.get(`/hosting/web/${serviceName}`, {
-                    rootPath: "apiv6"
-                }).then((data) => data).catch((http) => {
-                    if (_.isArray(catchOpt) && _.indexOf(catchOpt, http.status) !== -1) {
-                        return null;
-                    }
-                    return this.$q.reject(http);
-                });
+                return this.$http.get(`/hosting/web/${serviceName}`)
+                    .then((response) => response.data)
+                    .catch((http) => {
+                        if (_.isArray(catchOpt) && _.indexOf(catchOpt, http.status) !== -1) {
+                            return null;
+                        }
+                        return this.$q.reject(http);
+                    });
             }
 
             /**
