@@ -99,10 +99,12 @@
             </div>
 
             <div data-ng-if="importBddCtrl.selected.action === importBddCtrl.model.actions.IMPORT_FROM_EXISTING">
-                <div class="loader text-center" data-ng-if="importBddCtrl.loading.documents"></div>
+                <div class="text-center" data-ng-if="importBddCtrl.loading.documents">
+                    <oui-loader inline="true"></oui-loader>
+                </div>
 
                 <div class="form-group" data-ng-if="!importBddCtrl.loading.documents">
-                    <label for="ddlDocuments"
+                    <label class="oui-label" for="ddlDocuments"
                            data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_choose_file"></label>
                     <div class="oui-select">
                         <select class="oui-select__input" id="ddlDocuments"
