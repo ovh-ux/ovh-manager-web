@@ -60,8 +60,6 @@ angular.module("App").controller(
                 }
             };
 
-            _.set(this.$scope.alerts, "domainState", "domain_tab_state_alert");
-
             _.forEach(["transfertLock.get.done", "dnssec.get.done", "domain.refreshData.done", "domain.protection.lock.error", "domain.protection.unlock.error", "domain.dnssec.lock.unlock.error"], (event) => {
                 this.$scope.$on(event, () => {
                     this.domain = this.$scope.ctrlDomain.domain;
@@ -112,14 +110,14 @@ angular.module("App").controller(
                                 isIncluded: ~domains.indexOf(domain)
                             }));
                         })
-                        .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_GLUE_table_error"), err, this.$scope.alerts.dashboard))
+                        .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_GLUE_table_error"), err, this.$scope.alerts.page))
                         .finally(() => {
                             this.loading.allDom = false;
                         });
                 })
                 .catch((err) => {
                     this.loading.allDom = false;
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_GLUE_table_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_GLUE_table_error"), err, this.$scope.alerts.page);
                 });
         }
 
@@ -176,7 +174,7 @@ angular.module("App").controller(
                         this.hostingAssociated = _.map(response, (item) => ({ name: item, url: `#/configuration/hosting/${item}` }));
                     }
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_web_hosting_fail"), err, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_web_hosting_fail"), err, this.$scope.alerts.page))
                 .finally(() => {
                     this.loading.associatedHosting = false;
                 });
@@ -246,18 +244,18 @@ angular.module("App").controller(
                             }
                         });
                         if (hasHttpErr409) {
-                            this.Alerter.error(this.$scope.tr("domain_configuration_whois_contracts"), this.$scope.alerts.domainState);
+                            this.Alerter.error(this.$scope.tr("domain_configuration_whois_contracts"), this.$scope.alerts.main);
                         } else {
-                            this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_whois_fail"), { message }, this.$scope.alerts.domainState);
+                            this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_whois_fail"), { message }, this.$scope.alerts.main);
                         }
                     }
                 })
                 .catch((err) => {
                     this.vm.owo[field].uiSwitch.checked = !this.vm.owo[field].uiSwitch.checked;
                     if (err.data.code === 409) {
-                        this.Alerter.error(this.$scope.tr("domain_configuration_whois_contracts"), this.$scope.alerts.domainState);
+                        this.Alerter.error(this.$scope.tr("domain_configuration_whois_contracts"), this.$scope.alerts.main);
                     } else {
-                        this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_whois_fail"), err, this.$scope.alerts.domainState);
+                        this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_whois_fail"), err, this.$scope.alerts.main);
                     }
                 })
                 .finally(() => this.$scope.ctrlDomain.reloadDomain(true));

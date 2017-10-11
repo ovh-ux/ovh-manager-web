@@ -30,8 +30,6 @@ angular.module("App").controller(
                 mailingLists: ""
             };
 
-            _.set(this.$scope.alerts, "emailDomainMailingListView", "domain_alert_email_mailing_list_view");
-
             this.$scope.$on("hosting.tabs.mailingLists.refresh", () => this.refreshTableMailingLists(true));
             this.$scope.$on("mailingLists.update.poll.done", () => this.refreshTableMailingLists(true));
             this.$scope.$on("$destroy", () => {

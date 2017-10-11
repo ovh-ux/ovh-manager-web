@@ -1,8 +1,8 @@
+<div data-ovh-alert="{{ alerts.page }}"></div>
+
 <div class="text-center" data-ng-if="ctrlDomain.loading.domainsInfos">
     <oui-loader size="l" inline="true"></oui-loader>
 </div>
-
-<div data-ovh-alert="{{ alerts.dashboard }}"></div>
 
 <div data-ng-if="!ctrlDomain.loading.domainsInfos && ctrlDomain.domain">
     <div class="page-header">

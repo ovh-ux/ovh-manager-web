@@ -8,7 +8,9 @@
 
         <div data-wizard-step>
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading.init && ctrl.domain.authinfo">
                 <div class="alert alert-info" role="alert"

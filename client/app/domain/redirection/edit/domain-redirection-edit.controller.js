@@ -64,7 +64,7 @@ angular.module("controllers").controller(
                 break;
             default: {
                 const errorMessage = this.$scope.tr(this.unknownFieldDisplayTypeErrorMessageId, this.redirection.fieldDisplayType);
-                this.alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_edit_fail", this.displayName), errorMessage, this.$scope.alerts.domainRedirection);
+                this.alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_edit_fail", this.displayName), errorMessage, this.$scope.alerts.main);
                 this.$scope.resetAction();
             }
             }
@@ -109,11 +109,10 @@ angular.module("controllers").controller(
                 case "CNAME":
                     message = "domain_tab_REDIRECTION_edit_server_cname_error";
                     break;
-                default: {
+                default:
                     const errorMessage = this.$scope.tr(this.unknownFieldDisplayTypeErrorMessageId, this.redirection.fieldDisplayType);
-                    this.alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_edit_fail", this.displayName), errorMessage, this.$scope.alerts.domainRedirection);
+                    this.alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_edit_fail", this.displayName), errorMessage, this.$scope.alerts.main);
                     this.$scope.resetAction();
-                }
                 }
             }
 
@@ -155,7 +154,7 @@ angular.module("controllers").controller(
                 }
                 default: {
                     const errorMessage = this.$scope.tr(this.unknownFieldDisplayTypeErrorMessageId, this.redirection.fieldDisplayType);
-                    this.alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_edit_fail", this.displayName), errorMessage, this.$scope.alerts.domainRedirection);
+                    this.alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_edit_fail", this.displayName), errorMessage, this.$scope.alerts.main);
                     this.$scope.resetAction();
                 }
                 }
@@ -213,8 +212,8 @@ angular.module("controllers").controller(
             }
 
             this.service[method](this.redirection.id, data)
-                .then(() => this.alerter.success(this.$scope.tr("domain_tab_REDIRECTION_edit_success", this.displayName), this.$scope.alerts.domainRedirection))
-                .catch((err) => this.alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_edit_fail", this.displayName), err, this.$scope.alerts.domainRedirection))
+                .then(() => this.alerter.success(this.$scope.tr("domain_tab_REDIRECTION_edit_success", this.displayName), this.$scope.alerts.main))
+                .catch((err) => this.alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_edit_fail", this.displayName), err, this.$scope.alerts.main))
                 .finally(() => {
                     this.isLoading = false;
                     this.$scope.resetAction();

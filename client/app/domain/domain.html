@@ -1,5 +1,5 @@
 <div ui-view>
-    <div data-ovh-alert="{{alerts.dashboard}}"></div>
+    <div data-ovh-alert="{{alerts.page}}"></div>
 
     <div data-ng-if="ctrlDomain.loading.domainInfos">
         <div class="clearfix"></div>
@@ -14,7 +14,8 @@
                 <div class="col-sm-9">
                     <div class="mb-2">
                       <span data-ng-if="ctrlDomain.isAllDom">AllDom</span>
-                      <h1 class="word-break mb-0" data-ng-bind="ctrlDomain.domain.displayName"></h1>
+                      <h1 class="word-break mb-0"
+                          data-ng-bind="ctrlDomain.domain.displayName"></h1>
                     </div>
                     <service-expiration-date data-ng-if="!ctrlDomain.isAllDom && ctrlDomain.domain.name && ctrlDomain.domainInfos"
                                              service-name="ctrlDomain.domain.name"
@@ -81,6 +82,8 @@
                       menu="ctrlDomainTabs.tabMenu"
                       tr="tr"></ovh-tabs>
             <div class="tab-content">
+                <div data-ovh-alert="{{alerts.tabs}}"></div>
+
                 <div class="tab-pane active domain"
                      data-ng-include="ctrlDomainTabs.selectedTab && 'domain/' + ctrlDomainTabs.constructor.toKebabCase(ctrlDomainTabs.selectedTab) + '/' + ctrlDomainTabs.selectedTab + '.html'"></div>
             </div>

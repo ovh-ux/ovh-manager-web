@@ -25,8 +25,6 @@ angular.module("controllers").controller(
             this.loading = false;
             this.product = null;
 
-            _.set(this.$scope.alerts, "domainDnssec", "domain_tab_dnssec_alert");
-
             this.$scope.$on("domain.tabs.dnssec.save", () => this.saveModifications());
 
             this.loadDnssec();
@@ -64,7 +62,7 @@ angular.module("controllers").controller(
                     this.keyAlgorithmEnum = _.map(models.models["dnssec.KeyAlgorithmEnum"].enum, (algorithm) => +algorithm);
                     this.keyFlagEnum = _.map(models.models["dnssec.KeyFlagEnum"].enum, (flag) => +flag);
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_DNSSEC_loading_error"), _.get(err, "data", err), this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_DNSSEC_loading_error"), _.get(err, "data", err), this.$scope.alerts.page))
                 .finally(() => {
                     this.dnssecListSave = _.slice(this.dnssecList);
                     this.loading = false;
@@ -110,8 +108,8 @@ angular.module("controllers").controller(
             this.loading = true;
             return this.Domain
                 .saveDnssecList(this.product.name, { keys: this.dnssecList })
-                .then(() => this.Alerter.success(this.$scope.tr("domain_tab_DNSSEC_action_add_success"), this.$scope.alerts.domainDnssec))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_DNSSEC_action_add_error"), err, this.$scope.alerts.domainDnssec))
+                .then(() => this.Alerter.success(this.$scope.tr("domain_tab_DNSSEC_action_add_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_DNSSEC_action_add_error"), err, this.$scope.alerts.main))
                 .finally(() => this.loadDnssec());
         }
     }

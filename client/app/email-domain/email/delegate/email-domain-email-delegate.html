@@ -16,7 +16,9 @@
                    data-ng-href="{{ctrl.createNicUrl}}"></a>
             </p>
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <table class="table table-condensed" data-ng-if="!ctrl.loading">
                 <thead>

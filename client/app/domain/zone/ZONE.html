@@ -7,7 +7,7 @@
     <div data-ng-show="!ctrlDomainTabZoneDns.loading.zone">
         <div class="row" data-ng-if="!ctrlDomainTabZoneDns.zone">
             <div class="col-md-9">
-                <div data-ovh-alert="{{alerts.domainZone}}"></div>
+                <div data-ovh-alert="{{alerts.main}}"></div>
 
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="domain_tab_ZONE_no_zone"
@@ -29,7 +29,7 @@
 
         <div class="row" data-ng-show="ctrlDomainTabZoneDns.zone">
             <div class="col-md-9">
-                <div data-ovh-alert="{{alerts.domainZone}}"></div>
+                <div data-ovh-alert="{{alerts.main}}"></div>
 
                 <div class="alert alert-warning" role="alert"
                      data-ng-if="!ctrlDomainTabZoneDns.useDefaultsDns">

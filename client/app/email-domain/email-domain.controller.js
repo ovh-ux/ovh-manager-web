@@ -24,7 +24,10 @@ angular.module("App").controller(
             };
             this.stepPath = "";
 
-            this.$scope.alerts = { dashboard: "domain_alert_dashboard" };
+            this.$scope.alerts = {
+                page: "domain_alert_page",
+                main: "domain_alert_main"
+            };
             this.$scope.currentAction = null;
             this.$scope.currentActionData = null;
             this.$scope.domain = {};

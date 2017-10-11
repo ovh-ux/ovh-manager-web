@@ -60,7 +60,7 @@ angular.module("App").controller(
                     })
                     .catch(() => {
                         this.loading.domainsError = true;
-                        this.Alerter.error(this.$scope.tr("domains_dashboard_loading_error"), this.$scope.alerts.dashboard);
+                        this.Alerter.error(this.$scope.tr("domains_dashboard_loading_error"), this.$scope.alerts.page);
                     })
                     .finally(() => {
                         this.loading.init = false;

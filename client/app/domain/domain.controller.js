@@ -24,7 +24,11 @@ angular.module("App").controller(
             };
             this.stepPath = "";
 
-            this.$scope.alerts = { dashboard: "domain_alert_dashboard" };
+            this.$scope.alerts = {
+                page: "domain_alert_page",
+                tabs: "domain_alert_tabs",
+                main: "domain_alert_main"
+            };
             this.$scope.currentAction = null;
             this.$scope.currentActionData = null;
 
@@ -107,7 +111,7 @@ angular.module("App").controller(
                             messages = domain.messages;
                         }
                         if (messages.length > 0) {
-                            this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), { state: "ERROR", messages }, this.$scope.alerts.dashboard);
+                            this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), { state: "ERROR", messages }, this.$scope.alerts.page);
                         }
                     }
 
@@ -147,7 +151,7 @@ angular.module("App").controller(
                         })
                     ]);
                 })
-                .catch(() => this.Alerter.error(this.$scope.tr("domain_dashboard_loading_error"), this.$scope.alerts.dashboard))
+                .catch(() => this.Alerter.error(this.$scope.tr("domain_dashboard_loading_error"), this.$scope.alerts.page))
                 .finally(() => {
                     this.loading.domainInfos = false;
                     this.$scope.$broadcast("domain.refreshData.done");
@@ -157,7 +161,7 @@ angular.module("App").controller(
         reloadDomain (transparentReload) {
             if (!transparentReload) {
                 this.loading.domainInfos = true;
-                this.Alerter.resetMessage(this.$scope.alerts.dashboard);
+                this.Alerter.resetMessage(this.$scope.alerts.page);
             }
 
             return this.loadDomain();

@@ -40,7 +40,7 @@ angular.module("App").controller(
                             ERROR: this.$scope.tr("mailing_list_tab_modal_moderators_delete_error")
                         },
                         tasks,
-                        this.$scope.alerts.emailDomainMailingListModerators
+                        this.$scope.alerts.main
                     );
 
                     this.MailingLists.pollState(this.$stateParams.productId, {
@@ -54,7 +54,7 @@ angular.module("App").controller(
                     this.Alerter.alertFromSWS(
                         this.$scope.tr(this.moderators.length === 1 ? "mailing_list_tab_modal_moderator_delete_error" : "mailing_list_tab_modal_moderators_delete_error"),
                         err,
-                        this.$scope.alerts.emailDomainMailingListModerators
+                        this.$scope.alerts.main
                     );
                 })
                 .finally(() => {

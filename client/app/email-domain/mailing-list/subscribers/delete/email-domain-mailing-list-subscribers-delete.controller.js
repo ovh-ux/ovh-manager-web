@@ -47,7 +47,7 @@ angular.module("App").controller(
                             ERROR: this.$scope.tr("mailing_list_tab_modal_subscribers_delete_error")
                         },
                         tasks,
-                        this.$scope.alerts.emailDomainMailingListSubscribers
+                        this.$scope.alerts.main
                     );
 
                     this.MailingLists.pollState(this.$stateParams.productId, {
@@ -60,7 +60,7 @@ angular.module("App").controller(
                     this.Alerter.alertFromSWS(
                         this.$scope.tr(subscribersToDelete.length === 1 ? "mailing_list_tab_modal_subscriber_delete_error" : "mailing_list_tab_modal_subscribers_delete_error"),
                         err,
-                        this.$scope.alerts.emailDomainMailingListSubscribers
+                        this.$scope.alerts.main
                     );
                 })
                 .finally(() => {

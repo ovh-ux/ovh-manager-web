@@ -4,7 +4,9 @@
 
 <div data-ovh-alert="{{alerts.order}}"></div>
 
-<div class="loader text-center" data-ng-if="ctrlMXPlanOrder.loading.init"></div>
+<div class="text-center" data-ng-if="ctrlMXPlanOrder.loading.init">
+    <oui-loader inline="true"></oui-loader>
+</div>
 
 <div class="container-fluid px-5" data-ng-if="!ctrlMXPlanOrder.loading.init">
     <div class="alert alert-info" role="alert"
@@ -33,13 +35,16 @@
         </div>
 
         <!-- step 2-->
-        <div class="loader text-center mt-5" data-ng-if="ctrlMXPlanOrder.loading.offers"></div>
+        <div class="text-center mt-5" data-ng-if="ctrlMXPlanOrder.loading.offers">
+            <oui-loader inline="true"></oui-loader>
+        </div>
 
         <div class="mt-5"
              data-ng-if="!ctrlMXPlanOrder.loading.offers && ctrlMXPlanOrder.selectedOrder.config.domain.length && ctrlMXPlanOrder.list.offers.length">
             <h2 data-i18n-static="mxPlan_order_step2_title"></h2>
 
-            <div data-ovh-alert="{{alerts.durations}}" data-ovh-alert-hide-remove-button></div>
+            <div data-ovh-alert="{{alerts.durations}}"
+                 data-ovh-alert-hide-remove-button></div>
 
             <div class="oui-radio"
                  data-ng-repeat="offer in (ctrlMXPlanOrder.list.offers | orderBy: 'prices.withTax.value') track by $index">

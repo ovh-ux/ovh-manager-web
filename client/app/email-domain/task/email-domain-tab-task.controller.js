@@ -17,7 +17,6 @@ angular.module("App").controller(
 
         $onInit () {
             this.loading = false;
-            _.set(this.$scope.alerts, "emailDomainTasks", "domain_alert_email_tasks");
             this.refreshTasks();
         }
 
@@ -35,7 +34,7 @@ angular.module("App").controller(
                         });
                     });
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_tasks_error"), _.get(err, "data", err), this.$scope.alerts.emailDomainTasks))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_tasks_error"), _.get(err, "data", err), this.$scope.alerts.main))
                 .finally(() => {
                     if (_.isEmpty(this.taskIds)) {
                         this.loading = false;

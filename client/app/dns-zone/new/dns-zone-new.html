@@ -1,5 +1,3 @@
-<div data-ovh-alert="{{ctrlNewDnsZone.alerts.order}}"></div>
-
 <div class="page-header mb-5">
     <h1>
         <span data-i18n-static="domains_newdnszone_order_title"></span>
@@ -10,6 +8,8 @@
 <div class="container-fluid px-5">
     <div class="row">
         <div class="col-md-9">
+            <div data-ovh-alert="{{ctrlNewDnsZone.alerts.main}}"></div>
+
             <p data-i18n-static="domains_newdnszone_order_example"></p>
             <p class="font-italic"
                data-i18n-static="domains_newdnszone_order_usage"></p>
@@ -19,41 +19,39 @@
 
             <!-- step 1 -->
             <h2 class="mt-5" data-i18n-static="domains_newdnszone_order_step1_title"></h2>
-            <form class="form-horizontal" name="newDnsZoneForm">
+            <form name="newDnsZoneForm">
                 <div class="form-group" data-ng-class="{
                     'has-error': newDnsZoneForm.zoneName.$dirty && newDnsZoneForm.zoneName.$invalid,
                     'has-success': newDnsZoneForm.zoneName.$dirty && newDnsZoneForm.zoneName.$valid
                 }">
-                    <label class="col-sm-3 control-label" for="zoneNameOrder"
+                    <label class="control-label" for="zoneNameOrder"
                            data-i18n-static="domains_newdnszone_order_step1_zonename"></label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" name="zoneName" id="zoneNameOrder" required
-                               data-ng-change="ctrlNewDnsZone.clean()"
-                               data-ng-minlength="4"
-                               data-ng-model="ctrlNewDnsZone.zoneNameOrder.zoneName"
-                               data-ng-model-options="{ debounce: 300 }"
-                               data-zone-name-validator>
-                        <div class="help-block" data-ng-if="newDnsZoneForm.zoneName.$dirty">
-                            <p data-i18n-static="domains_newdnszone_order_step1_zonename_pending"
-                               data-ng-if="newDnsZoneForm.zoneName.$pending"></p>
-                            <div data-ng-if="newDnsZoneForm.zoneName.$error">
-                                <p data-i18n-static="domains_newdnszone_order_step1_zonename_required"
-                                   data-ng-if="newDnsZoneForm.zoneName.$error.required"></p>
-                                <div data-ng-if="newDnsZoneForm.zoneName.$error.zoneName">
-                                    <p data-i18n-static="domains_newdnszone_order_step1_zonename_invalid"></p>
-                                    <ul>
-                                        <li data-i18n-static="domains_newdnszone_zone_invalid_domain_active"></li>
-                                        <li data-i18n-static="domains_newdnszone_zone_invalid_domain_soa"></li>
-                                        <li data-i18n-static="domains_newdnszone_zone_invalid_domain_a"></li>
-                                        <li data-i18n-static="domains_newdnszone_zone_invalid_domain_zone"></li>
-                                        <li data-ng-if="ctrlNewDnsZone.guideForExternal">
-                                            <a data-ng-href="{{ctrlNewDnsZone.guideForExternal}}" target="_blank">
-                                                <span data-i18n-static="domains_newdnszone_zone_invalid_domain_guide"></span>
-                                                <span class="fa fa-external-link" aria-hidden="true"></span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                    <input type="text" class="form-control" name="zoneName" id="zoneNameOrder" required
+                           data-ng-change="ctrlNewDnsZone.clean()"
+                           data-ng-minlength="4"
+                           data-ng-model="ctrlNewDnsZone.zoneNameOrder.zoneName"
+                           data-ng-model-options="{ debounce: 300 }"
+                           data-zone-name-validator>
+                    <div class="help-block" data-ng-if="newDnsZoneForm.zoneName.$dirty">
+                        <p data-i18n-static="domains_newdnszone_order_step1_zonename_pending"
+                           data-ng-if="newDnsZoneForm.zoneName.$pending"></p>
+                        <div data-ng-if="newDnsZoneForm.zoneName.$error">
+                            <p data-i18n-static="domains_newdnszone_order_step1_zonename_required"
+                               data-ng-if="newDnsZoneForm.zoneName.$error.required"></p>
+                            <div data-ng-if="newDnsZoneForm.zoneName.$error.zoneName">
+                                <p data-i18n-static="domains_newdnszone_order_step1_zonename_invalid"></p>
+                                <ul>
+                                    <li data-i18n-static="domains_newdnszone_zone_invalid_domain_active"></li>
+                                    <li data-i18n-static="domains_newdnszone_zone_invalid_domain_soa"></li>
+                                    <li data-i18n-static="domains_newdnszone_zone_invalid_domain_a"></li>
+                                    <li data-i18n-static="domains_newdnszone_zone_invalid_domain_zone"></li>
+                                    <li data-ng-if="ctrlNewDnsZone.guideForExternal">
+                                        <a data-ng-href="{{ctrlNewDnsZone.guideForExternal}}" target="_blank">
+                                            <span data-i18n-static="domains_newdnszone_zone_invalid_domain_guide"></span>
+                                            <span class="fa fa-external-link" aria-hidden="true"></span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

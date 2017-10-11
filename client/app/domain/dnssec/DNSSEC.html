@@ -11,7 +11,7 @@
 
     <div class="row" data-ng-if="!ctrlDomainDnssec.loading && ctrlDomainDnssec.product.dnssecSupported">
         <div class="col-md-9">
-            <div data-ovh-alert="{{alerts.domainDnssec}}"></div>
+            <div data-ovh-alert="{{alerts.main}}"></div>
             <div class="alert alert-warning" role="alert"
                  data-i18n-static="domain_tab_DNSSEC_notModifiable"
                  data-ng-if="!ctrlDomainDnssec.isModifiable() && !ctrlDomainDnssec.hasActiveTask">

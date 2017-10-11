@@ -57,7 +57,7 @@ angular.module("App").controller(
                     this.accountsNotUsed = _.filter(this.accounts, (account) => _.indexOf(this.responders, account) === -1);
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_responders_error"), err, this.$scope.alerts.emailDomainResponders);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_responders_error"), err, this.$scope.alerts.main);
                     this.$scope.resetAction();
                 })
                 .finally(() => (this.loading = false));
@@ -116,8 +116,8 @@ angular.module("App").controller(
             }
 
             return promise
-                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_create_responder_success"), this.$scope.alerts.emailDomainResponders))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_create_responder_error"), err, this.$scope.alerts.emailDomainResponders))
+                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_create_responder_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_create_responder_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     this.loading = false;
                     this.$scope.resetAction();

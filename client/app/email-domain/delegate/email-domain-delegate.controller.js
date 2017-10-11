@@ -33,8 +33,8 @@ angular.module("App").controller(
             this.stepPath = "";
 
             this.$scope.alerts = {
-                emailDomainAccounts: "domain_alert_email_accounts",
-                dashboard: "domain_alert_dashboard"
+                page: "domain_alert_page",
+                main: "domain_alert_main"
             };
             this.$scope.currentAction = null;
             this.$scope.currentActionData = null;
@@ -95,7 +95,7 @@ angular.module("App").controller(
             this.Emails
                 .getDelegatedEmails(this.$stateParams.productId, `%${this.search.accounts || ""}%`)
                 .then((data) => (this.emails = data.sort()))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.emailDomainAccounts))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     if (_.isEmpty(this.emails)) {
                         this.loading.accounts = false;
@@ -140,7 +140,7 @@ angular.module("App").controller(
                         }
                     })
                 )
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_update_usage_error"), err, this.$scope.alerts.emailDomainAccounts))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_update_usage_error"), err, this.$scope.alerts.main))
                 .finally(() => (this.loading.usage = false));
         }
     }

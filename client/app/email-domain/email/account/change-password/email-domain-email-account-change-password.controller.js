@@ -54,8 +54,8 @@ angular.module("App").controller(
             }
 
             passwordPromise
-                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_change_account_password_success"), this.$scope.alerts.emailDomainAccounts))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_change_account_password_error"), err, this.$scope.alerts.emailDomainAccounts))
+                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_change_account_password_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_change_account_password_error"), err, this.$scope.alerts.main))
                 .finally(() => this.$scope.resetAction());
         }
     }

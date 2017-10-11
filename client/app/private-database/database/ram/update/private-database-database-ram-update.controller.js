@@ -122,8 +122,8 @@ angular
                     this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_order_ram_finish_success"));
                     window.open(order.url, "_blank");
                 })
-                .catch((data) => {
-                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_order_RAM_finish_error"), data.data);
+                .catch((err) => {
+                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_order_RAM_finish_error"), _.get(err, "data", err));
                 })
                 .finally(() => {
                     this.loading.validation = false;

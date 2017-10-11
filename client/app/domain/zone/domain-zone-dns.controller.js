@@ -32,8 +32,6 @@ angular.module("App").controller(
             this.useDefaultsDns = true;
             this.typesToCheck = ["MX", "NS", "SRV", "CNAME"]; // Check if target is relative for this type
 
-            _.set(this.$scope.alerts, "domainZone", "domain_tab_zonedns");
-
             this.$scope.$on("domain.tabs.zonedns.refresh", () => {
                 this.hasResult = false;
                 this.search.filter = null;
@@ -142,7 +140,7 @@ angular.module("App").controller(
                     }
                     this.dontDisplayActivateZone = false;
                     this.applySelection();
-                    return this.Domain.getZoneStatus(this.domain.name).catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), err, this.$scope.alerts.domainZone));
+                    return this.Domain.getZoneStatus(this.domain.name).catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), err, this.$scope.alerts.main));
                 })
                 .then((data) => {
                     this.zoneStatusErrors = (data && !data.isDeployed && _.get(data, "errors", [])) || [];
@@ -158,7 +156,7 @@ angular.module("App").controller(
 
                     // For Domain with no DNS zone.
                     if (!err.code || err.code !== 404) {
-                        this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), _.get(err, "data", err), this.$scope.alerts.domainZone);
+                        this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), _.get(err, "data", err), this.$scope.alerts.main);
                     } else {
                         this.dontDisplayActivateZone = false;
                     }
@@ -254,9 +252,9 @@ angular.module("App").controller(
                 })
                 .then(() => {
                     this.cancelAddRecord();
-                    this.Alerter.success(this.$scope.tr("domain_configuration_dns_entry_add_success"), this.$scope.alerts.domainZone);
+                    this.Alerter.success(this.$scope.tr("domain_configuration_dns_entry_add_success"), this.$scope.alerts.main);
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dns_entry_add_fail"), err, this.$scope.alerts.domainZone))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dns_entry_add_fail"), err, this.$scope.alerts.main))
                 .finally(() => {
                     this.loading.adding = false;
                 });

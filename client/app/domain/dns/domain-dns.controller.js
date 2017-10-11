@@ -32,8 +32,6 @@ angular.module("controllers").controller(
                 zoneCheck: this.constants.urls.TOOLS.ZONE_CHECK
             };
 
-            _.set(this.$scope.alerts, "domainDns", "domain_tab_dns_alert");
-
             this.$scope.$on("Domain.Dns.Reload", () => this.init());
             this.$scope.loadTable = () => this.loadTable();
 
@@ -129,10 +127,10 @@ angular.module("controllers").controller(
                         this.domain.managedByOvh = false;
                         return this.Domain.updateDnsNameServerList(this.$stateParams.productId, dns);
                     })
-                    .then(() => this.Alerter.success(this.$scope.i18n.domain_tab_DNS_update_success, this.$scope.alerts.domainDns))
+                    .then(() => this.Alerter.success(this.$scope.i18n.domain_tab_DNS_update_success, this.$scope.alerts.main))
                     .catch((err) => {
                         _.set(err, "type", err.type || "ERROR");
-                        this.Alerter.alertFromSWS(this.$scope.i18n.domain_tab_DNS_update_error, err, this.$scope.alerts.domainDns);
+                        this.Alerter.alertFromSWS(this.$scope.i18n.domain_tab_DNS_update_error, err, this.$scope.alerts.main);
                     })
                     .finally(() => {
                         this.editMode = false;

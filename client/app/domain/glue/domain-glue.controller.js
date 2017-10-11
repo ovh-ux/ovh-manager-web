@@ -12,20 +12,18 @@ angular.module("App").controller(
             this.loading = false;
             this.glueDetails = [];
 
-            _.set(this.$scope.alerts, "domainGlue", "domain_tab_glue_alert");
-
             this.$scope.$on("domain.tabs.glue.refresh", () => this.refreshTableGlues());
             this.$scope.$on("domain.DomainHostCreate.done", () => {
                 this.refreshTableGlues();
-                this.Alerter.resetMessage(this.$scope.alerts.dashboard);
+                this.Alerter.resetMessage(this.$scope.alerts.page);
             });
             this.$scope.$on("domain.DomainHostDelete.done", () => {
                 this.refreshTableGlues();
-                this.Alerter.resetMessage(this.$scope.alerts.dashboard);
+                this.Alerter.resetMessage(this.$scope.alerts.page);
             });
             this.$scope.$on("domain.DomainHostUpdate.done", () => {
                 this.refreshTableGlues();
-                this.Alerter.resetMessage(this.$scope.alerts.dashboard);
+                this.Alerter.resetMessage(this.$scope.alerts.page);
             });
             this.$scope.$on("$destroy", () => {
                 this.Domain.killPollDomainHostCreate();
@@ -48,7 +46,7 @@ angular.module("App").controller(
                 })
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_GLUE_table_error"), err, this.$scope.alerts.domainGlue);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_GLUE_table_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     if (_.isEmpty(this.glueHosts)) {

@@ -19,10 +19,6 @@ angular.module("App").controller(
             };
             this.currentDellUser = null;
 
-            this.alerts = {
-                users: "privateDataBase.alerts.user"
-            };
-
             this.loaders = {
                 users: false
             };
@@ -67,7 +63,7 @@ angular.module("App").controller(
                     this.usersIds = users;
                 })
                 .catch((err) => {
-                    this.alerter.error(err.message, this.alerts.users);
+                    this.alerter.error(_.get(err, "message", err), this.$scope.alerts.main);
                 })
                 .finally(() => {
                     if (_.isEmpty(this.usersIds)) {
@@ -104,7 +100,7 @@ angular.module("App").controller(
 
         onUserCreateerror (evt, opts) {
             this.currentUsers.add = _.remove(this.currentUsers.add, (userName) => userName !== opts.userName);
-            this.alerter.error(this.$scope.tr("privateDatabase_add_user_fail"), this.alerts.users);
+            this.alerter.error(this.$scope.tr("privateDatabase_add_user_fail"), this.$scope.alerts.main);
         }
 
         /** EndCreateUserJobs*/
@@ -145,7 +141,7 @@ angular.module("App").controller(
                 if (~idx) {
                     delete this.userDetails[idx].waiteDelete;
 
-                    this.alerter.error(this.$scope.tr("privateDatabase_delete_user_fail"), this.alerts.users);
+                    this.alerter.error(this.$scope.tr("privateDatabase_delete_user_fail"), this.$scope.alerts.main);
 
                     if (unregister) {
                         unregister();
@@ -191,7 +187,7 @@ angular.module("App").controller(
                 if (~idx) {
                     delete this.userDetails[idx].waitChangePassword;
 
-                    this.alerter.success(this.$scope.tr("privateDatabase_change_userPassword_done"), this.alerts.users);
+                    this.alerter.success(this.$scope.tr("privateDatabase_change_userPassword_done"), this.$scope.alerts.main);
 
                     if (unregister) {
                         unregister();
@@ -214,7 +210,7 @@ angular.module("App").controller(
                 if (~idx) {
                     delete this.userDetails[idx].waitChangePassword;
 
-                    this.alerter.error(this.$scope.tr("privateDatabase_change_userPassword_fail"), this.alerts.users);
+                    this.alerter.error(this.$scope.tr("privateDatabase_change_userPassword_fail"), this.$scope.alerts.main);
 
                     if (unregister) {
                         unregister();

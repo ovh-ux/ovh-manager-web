@@ -21,8 +21,6 @@ angular.module("App").controller(
                 filters: false
             };
 
-            _.set(this.$scope.alerts, "emailDomainFilters", "domain_alert_email_accounts");
-
             this.$scope.$on("hosting.tabs.emails.filters.refresh", () => this.refreshTableFilters());
 
             this.refreshTableFilters();
@@ -35,7 +33,7 @@ angular.module("App").controller(
             return this.Emails
                 .getFilters(this.$stateParams.productId, this.currentAccount.accountName)
                 .then((data) => (this.filters = data.sort()))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_filters_error"), err, this.$scope.alerts.emailDomainFilters))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_filters_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     if (_.isEmpty(this.filters)) {
                         this.loading.filters = false;

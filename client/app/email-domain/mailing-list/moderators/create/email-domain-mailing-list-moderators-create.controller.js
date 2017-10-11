@@ -47,7 +47,7 @@ angular.module("App").controller(
                             ERROR: this.$scope.tr("mailing_list_tab_modal_create_moderators_error")
                         },
                         tasks,
-                        this.$scope.alerts.emailDomainMailingListModerators
+                        this.$scope.alerts.main
                     );
 
                     this.MailingLists.pollState(this.$stateParams.productId, {
@@ -61,7 +61,7 @@ angular.module("App").controller(
                     this.Alerter.alertFromSWS(
                         this.$scope.tr(moderatorsToAdd.length === 1 ? "mailing_list_tab_modal_create_moderator_error" : "mailing_list_tab_modal_create_moderators_error"),
                         err,
-                        this.$scope.alerts.emailDomainMailingListModerators
+                        this.$scope.alerts.main
                     );
                 })
                 .finally(() => {

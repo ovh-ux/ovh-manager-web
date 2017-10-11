@@ -9,7 +9,9 @@
         <div data-wizard-step
              data-wizard-step-valid="versionCtrl.model.choice.length">
 
-            <div class="loader text-center" data-ng-if="versionCtrl.loading.init"></div>
+            <div class="text-center" data-ng-if="versionCtrl.loading.init">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div class="alert alert-warning" role="alert"
                  data-i18n-static="privateDatabase_change_version_null"

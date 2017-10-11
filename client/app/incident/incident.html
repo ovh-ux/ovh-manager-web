@@ -4,7 +4,9 @@
          data-wizard-on-finish="resetAction"
          data-wizard-title="i18n.common_incident_tracking">
         <div data-wizard-step>
-            <div class="loader text-center" data-ng-if="!IncidentCtrl.informations.tasks"></div>
+            <div class="text-center" data-ng-if="!IncidentCtrl.informations.tasks">
+                <oui-loader inline="true"></oui-loader>
+            </div>
             <div data-ng-if="IncidentCtrl.informations.tasks">
                 <div class="mb-4"
                      data-ng-repeat="informations in IncidentCtrl.informations.tasks track by $index">

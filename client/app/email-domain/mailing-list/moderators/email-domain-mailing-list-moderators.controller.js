@@ -29,8 +29,6 @@ angular.module("App").controller(
             };
             this.search = { moderators: "" };
 
-            _.set(this.$scope.alerts, "emailDomainMailingListModerators", "domain_alert_email_mailing_list_moderators");
-
             this.$scope.$on("hosting.tabs.mailingLists.moderators.refresh", () => this.refreshTableModerators());
             this.$scope.$on("mailingLists.moderators.poll.start", (pollObject, task) => {
                 if (task.account === this.mailingList.name) {
@@ -47,7 +45,7 @@ angular.module("App").controller(
                         this.runPolling().then((hasPolling) => {
                             if (!hasPolling) {
                                 this.moderators.updating = false;
-                                this.Alerter.resetMessage(this.$scope.alerts.emailDomainMailingListModerators);
+                                this.Alerter.resetMessage(this.$scope.alerts.main);
                                 this.refreshTableModerators(true);
                             }
                         });
@@ -126,7 +124,7 @@ angular.module("App").controller(
                 .then((data) => {
                     this.moderators.ids = this.$filter("orderBy")(data);
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.emailDomainMailingListModerators))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     if (_.isEmpty(this.moderators.ids)) {
                         this.loading.moderators = false;

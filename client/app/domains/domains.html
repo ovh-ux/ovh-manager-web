@@ -1,4 +1,4 @@
-<div data-ovh-alert="{{alerts.dashboard}}"></div>
+<div data-ovh-alert="{{alerts.page}}"></div>
 
 <div data-ng-if="!ctrlDomains.loading.domainsError">
 
@@ -9,11 +9,11 @@
     <div class="container-fluid px-5">
         <div class="row mt-5">
             <div class="col-md-9">
+                <div data-ovh-alert="{{alerts.main}}"></div>
+
                 <div class="text-center" data-ng-if="ctrlDomains.loading.init">
                     <oui-loader size="l" inline="true"></oui-loader>
                 </div>
-
-                <div data-ovh-alert="{{alerts.content}}"></div>
 
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="domains_dashboard_table_noresult"

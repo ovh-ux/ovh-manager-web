@@ -27,10 +27,10 @@ angular.module("App").controller(
                                 ERROR: this.$scope.tr("domains_configuration_dnssec_simple_activate_fail")
                             },
                             data,
-                            this.$scope.alerts.content
+                            this.$scope.alerts.main
                         )
                     )
-                    .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_configuration_dnssec_simple_activate_fail"), err, this.$scope.alerts.content));
+                    .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_configuration_dnssec_simple_activate_fail"), err, this.$scope.alerts.main));
             };
         }
     }

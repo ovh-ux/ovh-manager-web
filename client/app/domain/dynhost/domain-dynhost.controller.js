@@ -23,8 +23,6 @@ angular
             };
             this.search = { subDomain: "" };
 
-            _.set(this.$scope.alerts, "domainDynhost", "domain_tab_dynhost_alert");
-
             this.$scope.$on("hosting.tabs.dynHosts.refresh", () => {
                 this.hasResult = false;
                 this.refreshTableDynHosts();
@@ -46,7 +44,7 @@ angular
                     }
                 })
                 .catch((err) => {
-                    this.displayError(err, "domain_tab_DYNHOST_error", this.$scope.alerts.dashboard);
+                    this.displayError(err, "domain_tab_DYNHOST_error", this.$scope.alerts.page);
                 })
                 .finally(() => {
                     this.loading.init = false;
@@ -100,7 +98,7 @@ angular
                         this.hasResult = true;
                     }
                 })
-                .catch((err) => this.displayError(err, "domain_tab_DYNHOST_error", this.$scope.alerts.domainDynhost))
+                .catch((err) => this.displayError(err, "domain_tab_DYNHOST_error", this.$scope.alerts.main))
                 .finally(() => {
                     if (_.isEmpty(this.dynHosts)) {
                         this.loading.dynHosts = false;

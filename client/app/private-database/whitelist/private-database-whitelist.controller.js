@@ -98,7 +98,7 @@ angular.module("App").controller(
 
         onWhitelistCreateerror (evt, opts) {
             this.updatingWhitelist = _.remove(this.updatingWhitelist, (whitelistIp) => whitelistIp !== opts.whitelistIp);
-            this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_add_fail"), this.$scope.alerts.whitelist);
+            this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_add_fail"), this.$scope.alerts.main);
         }
 
         onWhitelistDeletestart (evt, opts) {
@@ -137,7 +137,7 @@ angular.module("App").controller(
                 if (el) {
                     delete el.waiteDelete;
 
-                    this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_delete_fail"), this.$scope.alerts.whitelist);
+                    this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_delete_fail"), this.$scope.alerts.main);
 
                     if (unregister) {
                         unregister();

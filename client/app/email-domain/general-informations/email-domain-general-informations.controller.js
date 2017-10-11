@@ -23,8 +23,6 @@ angular.module("App").controller(
                 quotas: false
             };
 
-            _.set(this.$scope.alerts, "emailDomain", "domain_alert_email");
-
             this.$scope.$on("domain.dashboard.refresh", () => this.loadDomain());
 
             this.loadDomain();
@@ -45,7 +43,7 @@ angular.module("App").controller(
                     this.mxRecords = mxRecords;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.emailDomain);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loading.domain = false;
@@ -65,7 +63,7 @@ angular.module("App").controller(
                     this.summary = summary;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.page);
                 })
                 .finally(() => {
                     this.loading.quotas = false;
