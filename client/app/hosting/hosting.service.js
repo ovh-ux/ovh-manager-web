@@ -182,7 +182,7 @@
              */
             getHosting (serviceName, catchOpt) {
                 return this.$http.get(`/hosting/web/${serviceName}`)
-                    .then((data) => data)
+                    .then((response) => response.data)
                     .catch((http) => {
                         if (_.isArray(catchOpt) && _.indexOf(catchOpt, http.status) !== -1) {
                             return null;
