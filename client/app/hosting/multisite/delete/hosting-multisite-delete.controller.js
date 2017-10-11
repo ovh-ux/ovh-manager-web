@@ -31,7 +31,7 @@ angular.module("App").controller(
                 })
                 .catch((err) => {
                     this.$scope.resetAction();
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DOMAINS_configuration_remove_step1_loading_error"), _.get(err, "data", err), this.$scope.alerts.multisite);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DOMAINS_configuration_remove_step1_loading_error"), _.get(err, "data", err), this.$scope.alerts.main);
                 });
         }
 
@@ -43,11 +43,11 @@ angular.module("App").controller(
             this.$scope.resetAction();
             return this.HostingDomain.removeDomain(this.$stateParams.productId, this.selected.domain.name, this.selected.wwwNeeded, this.selected.autoconfigure)
                 .then((data) => {
-                    this.Alerter.alertFromSWSBatchResult(this.resultMessages, data, this.$scope.alerts.multisite);
+                    this.Alerter.alertFromSWSBatchResult(this.resultMessages, data, this.$scope.alerts.main);
                     this.selected.domain.isUpdating = true;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DOMAINS_configuration_remove_failure"), _.get(err, "data", err), this.$scope.alerts.multisite);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DOMAINS_configuration_remove_failure"), _.get(err, "data", err), this.$scope.alerts.main);
                 });
         }
     }

@@ -23,7 +23,7 @@ angular.module("App").controller("HostingDatabasePrivateActiveCtrl", ($scope, $r
                     $scope.choice.version = $scope.datas.versions.length === 1 ? $scope.datas.versions[0] : null;
                 })
                 .catch((err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_database_versions_error", [$scope.entryToDelete]), _.get(err, "data", err), $scope.alerts.databases);
+                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_database_versions_error", [$scope.entryToDelete]), _.get(err, "data", err), $scope.alerts.main);
                 })
                 .finally(() => {
                     $scope.loaders.versions = false;
@@ -37,10 +37,10 @@ angular.module("App").controller("HostingDatabasePrivateActiveCtrl", ($scope, $r
             HostingDatabase.activeDatabasePrivate($stateParams.productId, $scope.choice.ram.quota.value, $scope.choice.version)
                 .then(() => {
                     $rootScope.$broadcast("hosting.database.sqlPrive");
-                    Alerter.success($scope.tr("hosting_dashboard_database_active_success"), $scope.alerts.databases);
+                    Alerter.success($scope.tr("hosting_dashboard_database_active_success"), $scope.alerts.main);
                 })
                 .catch((err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_database_active_error", [$scope.entryToDelete]), _.get(err, "data", err), $scope.alerts.databases);
+                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_database_active_error", [$scope.entryToDelete]), _.get(err, "data", err), $scope.alerts.main);
                 })
                 .finally(() => {
                     $scope.resetAction();

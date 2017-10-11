@@ -1,4 +1,4 @@
-<div data-ng-controller="HostingUpgradeOfferCtrl">
+<div data-ng-controller="HostingUpgradeOfferCtrl as ctrl">
     <div data-wizard
          data-wizard-bread-crumb
          data-wizard-on-cancel="resetAction"
@@ -7,50 +7,53 @@
 
         <!-- Step 1: Select a capacity -->
         <div data-wizard-step
-             data-wizard-step-on-load="getAvailableOffers"
-             data-wizard-step-valid="model.capacity && downgradeAgree.value">
+             data-wizard-step-valid="ctrl.model.capacity && (ctrl.model.capacity !== 'KS' || (ctrl.model.capacity === 'KS' && ctrl.downgradeAgree))">
 
-            <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loading.availableOffer"></div>
+            <div class="text-center" data-ng-if="ctrl.loading.availableOffer">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
-            <div data-ng-if="!loading.availableOffer">
+            <div data-ng-if="!ctrl.loading.availableOffer">
                 <form name="orderUpgradeForm">
-                    <div class="form-group mt-4" data-ng-if="availableOffers.length">
-                        <label class="control-label"
-                               for="hostingOffer"
-                               data-i18n-static="hostin_order_select_offer"></label>
-                        <select class="form-control"
-                                name="capacity"
-                                id="hostingOffer"
-                                data-ng-change="onOfferChange()"
-                                data-ng-model="model.capacity"
-                                data-ng-options="(i18n['hosting_dashboard_service_offer_' + availableOffer] || availableOffer) for availableOffer in availableOffers | orderBy:orderByOffer">
-                            <option value=""
-                                    data-ng-disabled="true"
-                                    data-i18n-static="select_option"></option>
-                        </select>
-                    </div>
-
-                    <div class="alert alert-warning mt-5"
-                         role="alert"
+                    <div class="alert alert-warning" role="alert"
                          data-i18n-static="hosting_order_upgrade_no_offer"
-                         data-ng-if="!availableOffers.length">
+                         data-ng-if="!ctrl.availableOffers.length">
                     </div>
 
-                    <div data-ng-if="model.capacity && model.capacity === 'KS'">
+                    <div data-ng-if="ctrl.availableOffers.length > 0">
+                        <label class="oui-label" for="hostingOffer"
+                               data-i18n-static="hostin_order_select_offer"></label>
+                        <div class="oui-select">
+                            <select class="oui-select__input" id="hostingOffer" name="capacity"
+                                    data-ng-model="ctrl.model.capacity"
+                                    data-ng-options="(i18n['hosting_dashboard_service_offer_' + availableOffer] || availableOffer) for availableOffer in ctrl.availableOffers | orderBy:ctrl.orderByOffer()">
+                                <option value="" disabled
+                                        data-i18n-static="select_placeholder"></option>
+                            </select>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                        </div>
+                    </div>
+
+                    <div data-ng-if="ctrl.model.capacity && ctrl.model.capacity === 'KS'">
                         <p data-i18n-static="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015"></p>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" data-ng-model="downgradeAgree.value" />
-                                <span data-i18n-static="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree"></span>
+                        <div class="oui-checkbox">
+                            <input type="checkbox" class="oui-checkbox__input" id="downgradeAgree"
+                                   data-ng-model="ctrl.downgradeAgree">
+                            <label class="oui-checkbox__label-container" for="downgradeAgree">
+                                <span class="oui-checkbox__label"
+                                      data-i18n-static="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree"></span>
+                                <span class="oui-checkbox__icon">
+                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                </span>
                             </label>
                         </div>
                     </div>
                 </form>
 
-                <div class="alert alert-info mt-5"
-                     role="alert"
-                     data-i18n-static="hosting_order_upgrade_select_noduration"
-                     data-ng-if="!loading.durations || durations.available">
+                <div class="alert alert-info mt-5" role="alert"
+                     data-i18n-static="hosting_order_upgrade_select_noduration">
                 </div>
             </div>
         </div>
@@ -58,27 +61,27 @@
         <!-- Step 2: Durations -->
         <div data-wizard-step
              data-wizard-step-on-load="getDurations"
-             data-wizard-step-valid="model.duration && durations.available">
+             data-wizard-step-valid="ctrl.model.duration && ctrl.durations.available">
 
             <p data-i18n-static="hosting_order_upgrade_select_duration"
-               data-ng-if="durations.available"></p>
+               data-ng-if="ctrl.durations.available"></p>
 
-            <div class="text-center" data-ng-if="loading.durations">
-                <div class="loader" aria-hidden="true"></div>
-                <span data-i18n-static="hosting_order_upgrade_loading_order"></span>
+            <div class="text-center" data-ng-if="ctrl.loading.durations">
+                <oui-loader inline="true"></oui-loader>
+                <div data-i18n-static="hosting_order_upgrade_loading_order"></div>
             </div>
 
-            <form class="ml-4" name="orderUpgradeForm" data-ng-if="!loading.durations">
-                <div class="radio"
-                     data-ng-repeat="duration in (durations.available | orderBy: 'duration': false) track by $index">
-                    <label>
-                        <input type="radio"
-                               name="upgradeDuration"
-                               data-ng-bind=""
-                               data-ng-model="model.duration"
-                               data-ng-value="duration">
-                        <span data-ng-bind="duration.duration | duration: 'longDate'"></span>&nbsp;:
-                        <span data-ng-bind-html="duration.prices | price: ovhSubsidiary"></span>
+            <form name="orderUpgradeForm" data-ng-if="!ctrl.loading.durations">
+                <div class="oui-radio"
+                     data-ng-repeat="duration in (ctrl.durations.available | orderBy: 'duration': false) track by $index">
+                    <input type="radio" class="oui-radio__input" id="upgradeDuration" name="upgradeDuration"
+                           data-ng-model="ctrl.model.duration"
+                           data-ng-value="duration">
+                    <label class="oui-radio__label-container" for="upgradeDuration">
+                        <span class="oui-radio__label">
+                            <span data-ng-bind="duration.duration | duration: 'longDate'"></span>&nbsp;:
+                            <span data-ng-bind-html="duration.prices | price: ctrl.ovhSubsidiary"></span>
+                        </span>
                     </label>
                 </div>
             </form>
@@ -87,11 +90,11 @@
         <!-- Step 3: Contracts -->
         <div data-wizard-step
              data-wizard-step-on-load="loadContracts"
-             data-wizard-step-valid="agree.value">
+             data-wizard-step-valid="ctrl.agree">
 
-            <div data-contracts="model.duration.contracts"
+            <div data-contracts="ctrl.model.duration.contracts"
                  data-full-text="false"
-                 data-ng-model="agree.value">
+                 data-ng-model="ctrl.agree">
             </div>
         </div>
 
@@ -99,20 +102,22 @@
         <!-- Step 4: Resume and validation -->
         <div data-wizard-step
              data-wizard-step-on-previous="backToContracts"
-             data-wizard-step-valid="!loading.validation">
+             data-wizard-step-valid="!ctrl.loading.validation">
 
-            <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loading.validation"></div>
+            <div class="text-center" data-ng-if="ctrl.loading.validation">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
-            <div data-ng-if="!loading.validation">
+            <div data-ng-if="!ctrl.loading.validation">
                 <p data-i18n-static="hosting_order_upgrade_resume"></p>
 
                 <table class="table table-condensed">
                     <tbody>
-                        <tr data-ng-repeat="detail in model.duration.details track by $index">
+                        <tr data-ng-repeat="detail in ctrl.model.duration.details track by $index">
                             <th class="font-weight-normal" scope="row"
                                 data-ng-bind="detail.description"></th>
                             <td class="text-nowrap text-right">
-                                <strong data-ng-bind="getResumePrice(detail.totalPrice)"></strong>
+                                <strong data-ng-bind="ctrl.getResumePrice(detail.totalPrice)"></strong>
                             </td>
                         </tr>
                     </tbody>
@@ -122,14 +127,14 @@
                                 scope="row"
                                 data-i18n-static="hosting_order_upgrade_price_HT"></th>
                             <td class="font-weight-bold text-right"
-                                data-ng-bind="model.duration.prices.withoutTax.text"></td>
+                                data-ng-bind="ctrl.model.duration.prices.withoutTax.text"></td>
                         </tr>
                         <tr>
                             <th scope="row"
                                 class="text-right"
                                 data-i18n-static="hosting_order_upgrade_price_TTC"></th>
                             <td class="font-weight-bold text-right"
-                                data-ng-bind="model.duration.prices.withTax.text"></td>
+                                data-ng-bind="ctrl.model.duration.prices.withTax.text"></td>
                         </tr>
                     </tfoot>
                 </table>

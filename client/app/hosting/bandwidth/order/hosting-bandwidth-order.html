@@ -9,7 +9,9 @@
              data-wizard-step-on-load="loadOrder"
              data-wizard-step-valid="isStepValid(1)">
 
-            <div class="loader text-center" data-ng-if="loading.init"></div>
+            <div class="text-center" data-ng-if="loading.init">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div class="alert alert-danger" role="alert"
                  data-i18n-static="hosting_dashboard_cdn_order_not_available"
@@ -17,7 +19,7 @@
             </div>
 
             <div data-ng-if="!loading.init && isOrderable && !loading.model">
-                <label for="selectTraffic"
+                <label class="oui-label" for="selectTraffic"
                        data-i18n-static="hosting_dashboard_bandwidth_order_traffic"></label>
                 <div class="oui-select">
                     <select class="oui-select__input" id="selectTraffic" required
@@ -35,7 +37,9 @@
              data-wizard-step-valid="isStepValid(2)"
              data-wizard-step-on-load="getDuration">
 
-            <div class="loader text-center" data-ng-if="loading.duration"></div>
+            <div class="text-center" data-ng-if="loading.duration">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!loading.duration">
                 <p data-i18n-static="hosting_dashboard_cdn_order_choose_duration"></p>
@@ -68,7 +72,9 @@
 
         <div data-wizard-step
              data-wizard-step-valid="!loading.order">
-            <div class="loader text-center" data-ng-if="loading.order"></div>
+            <div class="text-center" data-ng-if="loading.order">
+                <oui-loader inline="true"></oui-loader>
+            </div>
             <p data-i18n-static="hosting_dashboard_cdn_order_validation"
                data-ng-if="!loading.order"></p>
         </div>

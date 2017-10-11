@@ -31,7 +31,7 @@ angular.module("App").controller(
                     this.model.capabilities = capabilities;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_user_modify_step1_loading_error"), _.get(err, "data", err), this.$scope.alerts.ftp);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_user_modify_step1_loading_error"), _.get(err, "data", err), this.$scope.alerts.main);
                 });
         }
 
@@ -68,10 +68,10 @@ angular.module("App").controller(
 
             return this.HostingUser.updateUser(this.$stateParams.productId, { login: this.model.userLogin, data: user })
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_tab_FTP_configuration_user_modify_success"), this.$scope.alerts.ftp);
+                    this.Alerter.success(this.$scope.tr("hosting_tab_FTP_configuration_user_modify_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_user_modify_fail"), err, this.$scope.alerts.ftp);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_user_modify_fail"), err, this.$scope.alerts.main);
                 });
         }
     }

@@ -16,8 +16,6 @@ angular.module("App").controller(
             };
             this.loading = false;
 
-            _.set(this.$scope.alerts, "freedoms", "hosting.alerts.freedoms");
-
             this.$scope.$on("hosting.web.freedom.delete", () => {
                 this.refreshTableFreedoms(true);
             });
@@ -26,7 +24,7 @@ angular.module("App").controller(
                 .then((model) => {
                     this.statusEnum = model.models["hosting.web.freedom.StatusEnum"].enum;
                 }).catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FREEDOM_error"), err, this.$scope.alerts.freedoms);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FREEDOM_error"), err, this.$scope.alerts.main);
                 });
         }
 
@@ -50,7 +48,7 @@ angular.module("App").controller(
                 .then((ids) => {
                     this.freedomIds = ids;
                 }).catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FREEDOM_error"), err, this.$scope.alerts.freedoms);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FREEDOM_error"), err, this.$scope.alerts.main);
                 }).finally(() => {
                     if (_.isEmpty(this.freedomIds)) {
                         this.loading = false;

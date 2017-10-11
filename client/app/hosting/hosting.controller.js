@@ -25,8 +25,9 @@ angular
         };
 
         $scope.alerts = {
-            page: "hosting.alerts.page",
-            tabs: "hosting.alerts.tabs"
+            page: "app.alerts.page",
+            tabs: "app.alerts.tabs",
+            main: "app.alerts.main"
         };
 
         $scope.urlDomainOrder = null;
@@ -148,7 +149,7 @@ angular
                 .then(() => PrivateDatabase.getServiceInfos(privateDb))
                 .then((privateDbInfo) => _.some([privateDbInfo.contactBilling, privateDbInfo.contactTech, privateDbInfo.contactAdmin], (contactName) => $scope.userInfos.nichandle === contactName))
                 .catch((err) => {
-                    Alerter.alertFromSWS($scope.tr("common_serviceinfos_error", [privateDb]), err, $scope.alerts.dashboard);
+                    Alerter.alertFromSWS($scope.tr("common_serviceinfos_error", [privateDb]), err, $scope.alerts.main);
                     return false;
                 });
 
@@ -238,7 +239,7 @@ angular
                         .catch((err) => Alerter.error(err));
 
                     if (hosting.messages.length > 0) {
-                        Alerter.alertFromSWS($scope.tr("hosting_dashboard_loading_error"), hosting, $scope.alerts.dashboard);
+                        Alerter.alertFromSWS($scope.tr("hosting_dashboard_loading_error"), hosting, $scope.alerts.main);
                         if (!hosting.name) {
                             $scope.loadingHostingError = true;
                         }
@@ -293,7 +294,7 @@ angular
                 $timeout(() => ($scope.hosting.displayName = displayName), 0);
             }).catch((err) => {
                 _.set(err, "type", err.type || "ERROR");
-                Alerter.alertFromSWS($scope.tr("hosting_dashboard_loading_error"), err, $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_dashboard_loading_error"), err, $scope.alerts.main);
             }).finally(() => {
                 $scope.edit.active = false;
             });
@@ -326,7 +327,7 @@ angular
                     Hosting.pollFlushCdn($stateParams.productId, taskIds).then(() => {
                         $rootScope.$broadcast(Hosting.events.tasksChanged);
                         $scope.flushCdnState = "ok";
-                        Alerter.success($scope.tr("hosting_dashboard_cdn_flush_done_success"), $scope.alerts.dashboard);
+                        Alerter.success($scope.tr("hosting_dashboard_cdn_flush_done_success"), $scope.alerts.main);
                     });
                 } else {
                     $scope.flushCdnState = "ok";
@@ -411,30 +412,30 @@ angular
         //---------------------------------------------
         // Add domain
         $scope.$on("hostingDomain.attachDomain.start", () => {
-            Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_add_success_progress"), $scope.alerts.dashboard);
+            Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_add_success_progress"), $scope.alerts.main);
         });
 
         $scope.$on("hostingDomain.attachDomain.done", () => {
-            Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_add_success_finish"), $scope.alerts.dashboard);
+            Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_add_success_finish"), $scope.alerts.main);
         });
 
         $scope.$on("hostingDomain.attachDomain.error", (event, err) => {
-            Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_failure"), err.data, $scope.alerts.dashboard);
+            Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_failure"), _.get(err, "data", err), $scope.alerts.main);
         });
 
         // Modify domain
         $scope.$on("hostingDomain.modifyDomain.start", () => {
-            Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_modify_success_progress"), $scope.alerts.dashboard);
+            Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_modify_success_progress"), $scope.alerts.main);
         });
 
         $scope.$on("hostingDomain.modifyDomain.done", () => {
             $scope.$broadcast("paginationServerSide.reload");
-            Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_modify_success_finish"), $scope.alerts.dashboard);
+            Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_modify_success_finish"), $scope.alerts.main);
         });
 
         $scope.$on("hostingDomain.modifyDomain.error", (err) => {
             $scope.$broadcast("paginationServerSide.reload");
-            Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_modify_failure"), err.data, $scope.alerts.dashboard);
+            Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_modify_failure"), _.get(err, "data", err), $scope.alerts.main);
         });
 
         function startPolling () {

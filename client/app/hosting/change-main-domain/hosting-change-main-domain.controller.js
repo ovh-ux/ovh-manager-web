@@ -120,7 +120,7 @@ angular.module("App").controller("HostingChangeMainDomainCtrl", ($scope, $rootSc
                     mxplan
                 })
                     .then((data) => _.assign({ duration }, data))
-                    .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.dashboard))
+                    .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.main))
                     .finally(() => ($scope.loading.validation = false)));
 
                 $q.all(priceAndContractPromises)
@@ -128,12 +128,12 @@ angular.module("App").controller("HostingChangeMainDomainCtrl", ($scope, $rootSc
                         $scope.durations = data;
                         $scope.model.duration = $scope.durations[0];
                     })
-                    .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.dashboard))
+                    .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.main))
                     .finally(() => ($scope.loading.durations = false));
             })
             .catch((err) => {
                 _.set(err, "type", err.type || "ERROR");
-                Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.main);
                 $scope.resetAction();
             });
     };
@@ -157,8 +157,8 @@ angular.module("App").controller("HostingChangeMainDomainCtrl", ($scope, $rootSc
                 domain: $scope.model.domain,
                 mxplan
             })
-            .then((order) => Alerter.success($scope.tr("hosting_order_upgrade_success", [order.url, order.orderId]), $scope.alerts.dashboard))
-            .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.dashboard))
+            .then((order) => Alerter.success($scope.tr("hosting_order_upgrade_success", [order.url, order.orderId]), $scope.alerts.main))
+            .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.main))
             .finally(() => {
                 $scope.resetAction();
                 $scope.loading.validation = false;

@@ -69,10 +69,10 @@ angular.module("App").controller("HostingCronCreateCtrl", ($scope, $stateParams,
         if (actionData.cron) {
             HostingCron.editCron($stateParams.productId, actionData.cron.id, $scope.model)
                 .then(() => {
-                    Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_edit_success"), { idTask: 42, state: "OK" }, $scope.alerts.crons);
+                    Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_edit_success"), { idTask: 42, state: "OK" }, $scope.alerts.main);
                 })
                 .catch((err) => {
-                    Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_edit_error", [actionData.cron.id]), _.get(err, "data", err), $scope.alerts.crons);
+                    Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_edit_error", [actionData.cron.id]), _.get(err, "data", err), $scope.alerts.main);
                 })
                 .finally(() => {
                     $scope.resetAction();
@@ -80,10 +80,10 @@ angular.module("App").controller("HostingCronCreateCtrl", ($scope, $stateParams,
         } else {
             HostingCron.createCron($stateParams.productId, $scope.model)
                 .then(() => {
-                    Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_save_success"), { idTask: 42, state: "OK" }, $scope.alerts.crons);
+                    Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_save_success"), { idTask: 42, state: "OK" }, $scope.alerts.main);
                 })
                 .catch((err) => {
-                    Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_save_error"), _.get(err, "data", err), $scope.alerts.crons);
+                    Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_save_error"), _.get(err, "data", err), $scope.alerts.main);
                 })
                 .finally(() => {
                     $scope.resetAction();
@@ -127,7 +127,7 @@ angular.module("App").controller("HostingCronCreateCtrl", ($scope, $stateParams,
                 $scope.statusEnum = models.models["hosting.web.cron.StatusEnum"].enum;
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_CRON_error"), _.get(err, "data", err), $scope.alerts.crons);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_CRON_error"), _.get(err, "data", err), $scope.alerts.main);
                 $scope.resetAction();
             })
             .finally(() => {
@@ -139,7 +139,7 @@ angular.module("App").controller("HostingCronCreateCtrl", ($scope, $stateParams,
                 $scope.languageEnum = languages.reverse();
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_CRON_error"), err, $scope.alerts.crons);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_CRON_error"), err, $scope.alerts.main);
                 $scope.resetAction();
             });
     };

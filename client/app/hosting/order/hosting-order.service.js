@@ -1,57 +1,62 @@
-angular.module("App").service("HostingOrder", function (Api, constants) {
-    "use strict";
+angular.module("services").service(
+    "HostingOrder",
+    class HostingOrder {
+        /**
+         * Constructor
+         * @param Api
+         * @param constants
+         */
+        constructor (Api, constants) {
+            this.Api = Api;
+            this.constants = constants;
+            this.proxyPass = `${constants.swsProxyRootPath}order/hosting/web`;
+        }
 
-    const proxyPass = `${constants.swsProxyRootPath}order/hosting/web`;
+        getDurations (domain, offer, dnsZone) {
+            return this.Api.get(`${this.proxyPass}/new`, {
+                params: {
+                    dnsZone,
+                    domain,
+                    offer
+                }
+            });
+        }
 
-    this.getDurations = function (domain, offer, dnsZone) {
-        return Api.get(`${proxyPass}/new`, {
-            params: {
-                dnsZone,
+        get (domain, offer, dnsZone, duration, module) {
+            const parameters = {
                 domain,
                 offer
+            };
+            if (dnsZone) {
+                parameters.dnsZone = dnsZone;
             }
-        });
-    };
+            if (module) {
+                parameters.module = module;
+            }
+            return this.Api.get(`${this.proxyPass}/new/${duration}`, {
+                params: parameters
+            });
+        }
 
-    this.get = function (domain, offer, dnsZone, duration, module) {
-        const parameters = {
-            domain,
-            offer
-        };
-        if (dnsZone) {
-            parameters.dnsZone = dnsZone;
+        post (domain, offer, dnsZone, duration, module) {
+            const parameters = {
+                domain,
+                offer
+            };
+            if (dnsZone) {
+                parameters.dnsZone = dnsZone;
+            }
+            if (module) {
+                parameters.module = module;
+            }
+            return this.Api.post(`${this.proxyPass}/new/${duration}`, {
+                data: parameters
+            });
         }
-        if (module) {
-            parameters.module = module;
-        }
-        return Api.get(`${proxyPass}/new/{duration}`, {
-            urlParams: {
-                duration
-            },
-            params: parameters
-        });
-    };
 
-    this.post = function (domain, offer, dnsZone, duration, module) {
-        const parameters = {
-            domain,
-            offer
-        };
-        if (dnsZone) {
-            parameters.dnsZone = dnsZone;
+        getModels () {
+            return this.Api.get(`${this.constants.swsProxyRootPath}order.json`)
+                .then((data) => data.models);
         }
-        if (module) {
-            parameters.module = module;
-        }
-        return Api.post(`${proxyPass}/new/{duration}`, {
-            urlParams: {
-                duration
-            },
-            data: parameters
-        });
-    };
-
-    this.getModels = function () {
-        return Api.get(`${constants.swsProxyRootPath}order.json`).then((data) => data.models);
-    };
-});
+    }
+);

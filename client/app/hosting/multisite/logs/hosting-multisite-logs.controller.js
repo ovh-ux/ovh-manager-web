@@ -36,7 +36,7 @@ angular.module("App").controller(
                         }
                     })
                     .catch(() => {
-                        this.Alerter.error(this.$scope.tr("hosting_tab_DOMAINS_multisite_logs_generation_error"), this.$scope.alerts.multisite);
+                        this.Alerter.error(this.$scope.tr("hosting_tab_DOMAINS_multisite_logs_generation_error"), this.$scope.alerts.main);
                     })
                     .finally(() => {
                         domain.logsLoading = false;

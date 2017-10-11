@@ -27,7 +27,7 @@ angular.module("App").controller("HostingOrderBandwidthCtrl", ($scope, $q, $wind
                 $scope.trafficEnum = _.sortBy(models.models["hosting.web.BandwidthOfferEnum"].enum, (d) => parseInt(d, 10));
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_dashboard_bandwidth_order_error"), err, $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_dashboard_bandwidth_order_error"), err, $scope.alerts.main);
                 $scope.resetAction();
             })
             .finally(() => {
@@ -61,7 +61,7 @@ angular.module("App").controller("HostingOrderBandwidthCtrl", ($scope, $q, $wind
                 $scope.loading.duration = false;
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_dashboard_bandwidth_order_error"), err, $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_dashboard_bandwidth_order_error"), err, $scope.alerts.main);
                 $scope.resetAction();
             });
     };
@@ -83,11 +83,11 @@ angular.module("App").controller("HostingOrderBandwidthCtrl", ($scope, $q, $wind
         $scope.loading.order = true;
         HostingBandwidthOrder.order($stateParams.productId, { traffic: $scope.model.offer, duration: $scope.model.duration })
             .then((order) => {
-                Alerter.success($scope.tr("hosting_dashboard_cdn_order_success", [order.url]), $scope.alerts.dashboard);
+                Alerter.success($scope.tr("hosting_dashboard_cdn_order_success", [order.url]), $scope.alerts.main);
                 $window.open(order.url, "_blank");
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_dashboard_bandwidth_order_error"), _.get(err, "data", err), $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_dashboard_bandwidth_order_error"), _.get(err, "data", err), $scope.alerts.main);
             })
             .finally(() => {
                 $scope.resetAction();

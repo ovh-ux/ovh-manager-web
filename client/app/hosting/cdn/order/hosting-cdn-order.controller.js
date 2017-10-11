@@ -71,7 +71,7 @@ angular.module("App").controller("HostingOrderCdnCtrl", ($scope, $q, $window, Ho
                 $scope.loading.duration = false;
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_dashboard_cdn_order_error"), _.get(err, "data", err), $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_dashboard_cdn_order_error"), _.get(err, "data", err), $scope.alerts.main);
                 $scope.resetAction();
             });
     };
@@ -93,11 +93,11 @@ angular.module("App").controller("HostingOrderCdnCtrl", ($scope, $q, $window, Ho
         $scope.loading.order = true;
         HostingOptionOrder.makeOrder("cdn", $scope.model.duration, { offer: $scope.model.offer })
             .then((order) => {
-                Alerter.success($scope.tr("hosting_dashboard_cdn_order_success", [order.url]), $scope.alerts.dashboard);
+                Alerter.success($scope.tr("hosting_dashboard_cdn_order_success", [order.url]), $scope.alerts.main);
                 $window.open(order.url, "_blank");
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_dashboard_cdn_order_error"), _.get(err, "data", err), $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_dashboard_cdn_order_error"), _.get(err, "data", err), $scope.alerts.main);
             })
             .finally(() => {
                 $scope.resetAction();

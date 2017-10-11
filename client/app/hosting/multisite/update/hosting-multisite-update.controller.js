@@ -84,7 +84,7 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
             })
             .catch((err) => {
                 $scope.resetAction();
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.multisite);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
             }
         );
 
@@ -116,12 +116,12 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
                             })
                             .catch((err) => {
                                 $scope.resetAction();
-                                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.multisite);
+                                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
                             });
                     })
                     .catch((err) => {
                         $scope.resetAction();
-                        Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.multisite);
+                        Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
                     }
                     )
                     .then(() => {
@@ -132,7 +132,7 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
             })
             .catch((err) => {
                 $scope.resetAction();
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.multisite);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
             })
             .finally(() => {
                 if ($scope.selected.ssl) {
@@ -146,7 +146,7 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
             })
             .catch((err) => {
                 $scope.resetAction();
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.multisite);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
             });
     };
 
@@ -212,11 +212,11 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
             $stateParams.productId
         )
             .then((data) => {
-                Alerter.alertFromSWSBatchResult(resultMessages, data, $scope.alerts.tabs);
+                Alerter.alertFromSWSBatchResult(resultMessages, data, $scope.alerts.main);
             })
             .catch((err) => {
                 _.set(err, "type", err.type || "ERROR");
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_modify_failure"), _.get(err, "data", err), $scope.alerts.multisite);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_modify_failure"), _.get(err, "data", err), $scope.alerts.main);
             });
     };
 });

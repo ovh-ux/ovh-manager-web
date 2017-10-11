@@ -17,10 +17,10 @@ angular.module("App").controller("HostingBoostOfferDisableCtrl", ($scope, Hostin
 
         HostingBoost.disableBoost({ serviceName: $scope.product.serviceName })
             .then(() => {
-                Alerter.success($scope.tr("hosting_tab_BOOST_disable_started"), $scope.alerts.boosts);
+                Alerter.success($scope.tr("hosting_tab_BOOST_disable_started"), $scope.alerts.main);
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_disable_error"), _.get(err, "data", err), $scope.alerts.boosts);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_disable_error"), _.get(err, "data", err), $scope.alerts.main);
             })
             .finally(() => {
                 $scope.loaders.disable = false;

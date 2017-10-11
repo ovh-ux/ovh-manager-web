@@ -110,7 +110,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
                 })
                 .catch((err) => {
                     $scope.resetAction();
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.tabs);
+                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
                 });
 
             futureHosting = Hosting.getHosting($scope.currentActionData.hosting)
@@ -120,7 +120,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
                 })
                 .catch((err) => {
                     $scope.resetAction();
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.tabs);
+                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
                 });
         } else {
             futuresOptions = HostingDomain.getAddDomainOptions().then(
@@ -129,7 +129,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
                 })
                 .catch((err) => {
                     $scope.resetAction();
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.tabs);
+                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
                 });
 
             futureHosting = Hosting.getSelected($stateParams.productId).then(
@@ -138,7 +138,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
                 })
                 .catch((err) => {
                     $scope.resetAction();
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.tabs);
+                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
                 });
         }
 
@@ -173,7 +173,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
             })
             .catch((err) => {
                 $scope.resetAction();
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), err, $scope.alerts.tabs);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), err, $scope.alerts.main);
             });
     };
 
@@ -208,10 +208,10 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
             $scope.selected.hosting || $stateParams.productId
         )
             .then((data) => {
-                Alerter.alertFromSWSBatchResult(resultMessages, data, $scope.alerts.tabs);
+                Alerter.alertFromSWSBatchResult(resultMessages, data, $scope.alerts.main);
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_failure"), { message: _.get(err, "data", err), type: "ERROR" }, $scope.alerts.tabs);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_failure"), { message: _.get(err, "data", err), type: "ERROR" }, $scope.alerts.main);
             })
             .finally(() => {
                 $scope.loading = false;
@@ -234,7 +234,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
             })
             .catch((err) => {
                 $scope.resetAction();
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.tabs);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
             }
         );
     };
@@ -282,7 +282,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
                 })
                 .catch((err) => {
                     $scope.resetAction();
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.tabs);
+                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
                 })
                 .finally(() => {
                     $scope.loadingConflicts = false;

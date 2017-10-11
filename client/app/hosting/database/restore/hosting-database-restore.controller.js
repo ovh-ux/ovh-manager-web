@@ -20,10 +20,10 @@ angular.module("App").controller(
             this.loading = true;
             return this.HostingDatabase.restoreBDD(this.$stateParams.productId, this.bdd.name, this.dump)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("database_tabs_dumps_restore_in_start"), this.$scope.alerts.dumps);
+                    this.Alerter.success(this.$scope.tr("database_tabs_dumps_restore_in_start"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("database_tabs_dumps_restore_fail"), err, this.$scope.alerts.dumps);
+                    this.Alerter.alertFromSWS(this.$scope.tr("database_tabs_dumps_restore_fail"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loading = false;

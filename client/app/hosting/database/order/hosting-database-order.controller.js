@@ -81,7 +81,7 @@ angular.module("App").controller("HostingDatabaseOrderCtrl", ($scope, $q, $windo
         HostingOptionOrder.makeOrder("extraSqlPerso", $scope.model.duration, { offer: $scope.model.offer })
             .then((order) => {
                 $scope.resetAction();
-                Alerter.success($scope.tr("hosting_tab_DATABASES_configuration_order_success", [order.url, order.orderId]), $scope.alerts.databases);
+                Alerter.success($scope.tr("hosting_tab_DATABASES_configuration_order_success", [order.url, order.orderId]), $scope.alerts.main);
                 $window.open(order.url, "_blank");
             });
     };

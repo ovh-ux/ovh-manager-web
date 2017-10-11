@@ -15,8 +15,6 @@ angular.module("App").controller(
             this.dumpsLoading = false;
             this.statusToWatch = ["start", "doing", "done", "error"];
 
-            _.set(this.$scope.alerts, "dumps", "hosting.alerts.dumps");
-
             _.forEach(this.statusToWatch, (state) => {
                 this.$scope.$on(`database.dump.restore.poll.${state}`, this[`onDataBaseDumpRestore${state}`].bind(this));
                 this.$scope.$on(`database.dump.delete.poll.${state}`, this[`onDataBaseDumpDelete${state}`].bind(this));
@@ -32,7 +30,7 @@ angular.module("App").controller(
             return this.hostingDatabase
                 .getDumpIds(this.$stateParams.productId, this.$scope.bdd.name)
                 .then((dumpIds) => (this.dumpsIds = dumpIds))
-                .catch((err) => this.alerter.alertFromSWS(this.$scope.tr("hosting_tab_databases_get_error"), err, this.$scope.alerts.dumps))
+                .catch((err) => this.alerter.alertFromSWS(this.$scope.tr("hosting_tab_databases_get_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     if (_.isEmpty(this.dumpsIds)) {
                         this.dumpsLoading = false;
@@ -75,16 +73,16 @@ angular.module("App").controller(
                 }
             });
 
-            this.alerter.success(this.$scope.tr("database_tabs_dumps_delete_start"), this.$scope.alerts.general.databases);
+            this.alerter.success(this.$scope.tr("database_tabs_dumps_delete_start"), this.$scope.alerts.main);
         }
 
         onDataBaseDumpDeletedoing () {
-            this.alerter.success(this.$scope.tr("database_tabs_dumps_delete_in_progress"), this.$scope.alerts.general.databases);
+            this.alerter.success(this.$scope.tr("database_tabs_dumps_delete_in_progress"), this.$scope.alerts.main);
         }
 
         onDataBaseDumpDeletedone () {
             this.loadDumps();
-            this.alerter.success(this.$scope.tr("database_tabs_dumps_delete_success"), this.$scope.alerts.general.databases);
+            this.alerter.success(this.$scope.tr("database_tabs_dumps_delete_success"), this.$scope.alerts.main);
         }
 
         onDataBaseDumpDeleteerror (dump) {
@@ -92,7 +90,7 @@ angular.module("App").controller(
                 this.findItemIndex(dump.id).then((idx) => {
                     if (~idx) {
                         delete this.dumpsDetails[idx].waitDelete;
-                        this.alerter.error(this.$scope.tr("database_tabs_dumps_delete_fail"), this.$scope.alerts.general.databases);
+                        this.alerter.error(this.$scope.tr("database_tabs_dumps_delete_fail"), this.$scope.alerts.main);
                     }
                 });
             }
@@ -103,12 +101,12 @@ angular.module("App").controller(
 
             this.findItemIndex(dump.id).then((idx) => {
                 this.dumpsDetails[idx].waitRestore = true;
-                this.alerter.success(this.$scope.tr("database_tabs_dumps_restore_start"), this.$scope.alerts.general.databases);
+                this.alerter.success(this.$scope.tr("database_tabs_dumps_restore_start"), this.$scope.alerts.main);
             });
         }
 
         onDataBaseDumpRestoredoing () {
-            this.alerter.success(this.$scope.tr("database_tabs_dumps_restore_in_progress"), this.$scope.alerts.general.databases);
+            this.alerter.success(this.$scope.tr("database_tabs_dumps_restore_in_progress"), this.$scope.alerts.main);
         }
 
         onDataBaseDumpRestoredone () {
@@ -117,7 +115,7 @@ angular.module("App").controller(
             this.dumpsDetails.forEach((dump) => {
                 delete dump.waitRestore;
             });
-            this.alerter.success(this.$scope.tr("database_tabs_dumps_restore_success"), this.$scope.alerts.general.databases);
+            this.alerter.success(this.$scope.tr("database_tabs_dumps_restore_success"), this.$scope.alerts.main);
         }
 
         onDataBaseDumpRestoreerror (dump) {
@@ -126,7 +124,7 @@ angular.module("App").controller(
             if (dump && dump.id) {
                 this.findItemIndex(dump.id).then((idx) => {
                     this.dumpsDetails[idx].waitRestore = null;
-                    this.alerter.error(this.$scope.tr("database_tabs_dumps_restore_fail"), this.$scope.alerts.general.databases);
+                    this.alerter.error(this.$scope.tr("database_tabs_dumps_restore_fail"), this.$scope.alerts.main);
                 });
             }
         }

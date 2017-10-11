@@ -17,10 +17,10 @@ angular.module("App").controller(
             this.$scope.resetAction();
             return this.HostingModule.changePassword(this.$stateParams.productId, this.moduleToUpdate.id)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_configuration_tab_modules_update_success"), this.$scope.alerts.modules);
+                    this.Alerter.success(this.$scope.tr("hosting_configuration_tab_modules_update_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_configuration_tab_modules_update_fail", [this.moduleToUpdate]), _.get(err, "data", err), this.$scope.alerts.modules);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_configuration_tab_modules_update_fail", [this.moduleToUpdate]), _.get(err, "data", err), this.$scope.alerts.main);
                     this.$scope.resetActions();
                 });
         }

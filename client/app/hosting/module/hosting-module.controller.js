@@ -16,8 +16,6 @@ angular.module("App").controller(
             };
             this.loading = true;
 
-            _.set(this.$scope.alerts, "modules", "hosting.alerts.modules");
-
             this.$scope.$on("hosting.tabs.modules.refresh", () => {
                 this.loadTab(true);
             });
@@ -27,7 +25,7 @@ angular.module("App").controller(
                     this.serviceState = hosting.serviceState;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_configuration_tab_modules_create_step1_loading_error"), _.get(err, "data", err), this.$scope.alerts.modules);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_configuration_tab_modules_create_step1_loading_error"), _.get(err, "data", err), this.$scope.alerts.main);
                 });
 
             this.User.getUrlOf("guides")
@@ -49,7 +47,7 @@ angular.module("App").controller(
                     this.modules.ids = data;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_configuration_tab_modules_create_step1_loading_error"), err, this.$scope.alerts.modules);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_configuration_tab_modules_create_step1_loading_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     if (_.isEmpty(this.modules.ids)) {

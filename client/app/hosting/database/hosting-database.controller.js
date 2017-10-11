@@ -25,9 +25,6 @@ angular.module("App").controller("HostingTabDatabasesCtrl", function ($scope, $s
         init: true
     };
 
-    _.set($scope.alerts, "databases", "hosting.alerts.databases");
-    _.set($scope.alerts, "general.databases", "hosting.alerts.general.databases");
-
     $scope.canCreateDatabase = $scope.hosting.databaseMax - $scope.hosting.databaseCount > 0;
 
     $scope.backupType = {
@@ -115,10 +112,10 @@ angular.module("App").controller("HostingTabDatabasesCtrl", function ($scope, $s
             .then(() => {
                 HostingDatabase.restoreBDDBackup($stateParams.productId, database.name, backupType, sendEmail)
                     .then(() => {
-                        Alerter.success($scope.tr("database_tabs_dumps_restore_in_start"), $scope.alerts.databases);
+                        Alerter.success($scope.tr("database_tabs_dumps_restore_in_start"), $scope.alerts.main);
                     })
                     .catch((err) => {
-                        Alerter.alertFromSWS($scope.tr("database_tabs_dumps_restore_fail"), err, $scope.alerts.databases);
+                        Alerter.alertFromSWS($scope.tr("database_tabs_dumps_restore_fail"), err, $scope.alerts.main);
                     });
             })
             .then(() => {
@@ -173,7 +170,7 @@ angular.module("App").controller("HostingTabDatabasesCtrl", function ($scope, $s
                 $scope.databases.ids = ids;
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_databases_get_error"), err, $scope.alerts.databases);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_databases_get_error"), err, $scope.alerts.main);
             })
             .finally(() => {
                 if (_.isEmpty($scope.databases.ids)) {

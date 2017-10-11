@@ -5,10 +5,6 @@ angular
             this.$scope = $scope;
         }
 
-        $onInit () {
-            _.set(this.$scope.alerts, "dashboard", "hosting.alerts.dashboard");
-        }
-
         canOrderSSL () {
             return !this.$scope.hosting.hasHostedSsl && this.$scope.ssl == null;
         }

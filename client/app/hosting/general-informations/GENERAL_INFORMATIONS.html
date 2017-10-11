@@ -1,10 +1,12 @@
 <div class="container-fluid px-0" data-ng-controller="GeneralInformationsCtrl as ctrl">
 
-    <div class="loader text-center" data-ng-if="!hosting"></div>
+    <div class="text-center" data-ng-if="!hosting">
+        <oui-loader inline="true"></oui-loader>
+    </div>
 
     <div class="row" data-ng-show="hosting">
         <div class="col-md-9">
-            <div data-ovh-alert="{{alerts.dashboard}}"></div>
+            <div data-ovh-alert="{{alerts.main}}"></div>
 
             <div class="alert alert-info" role="alert"
                  data-ng-if="hosting.offer === 'KIMSUFI_2015'">
@@ -275,7 +277,6 @@
                                                 <strong class="d-block"
                                                         data-i18n-static="hosting_dashboard_service_privatesql"></strong>
                                                 <div data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0">
-                                                    test
                                                     <div data-progress-bar-element-counter
                                                          data-pbec-nb-elements="hosting.sqlPriveInfo.nbDataBaseActive"
                                                          data-pbec-max-elements="hosting.sqlPriveInfo.nbDataBaseInclude"

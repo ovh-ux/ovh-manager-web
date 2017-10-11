@@ -18,10 +18,10 @@ angular.module("App").controller(
             this.$scope.resetAction();
             return this.HostingFreedom.deleteFreedom(this.$stateParams.productId, this.freedom.domain)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_dashboard_service_delete_freedom_success", [this.freedom.domain]), this.$scope.alerts.freedoms);
+                    this.Alerter.success(this.$scope.tr("hosting_dashboard_service_delete_freedom_success", [this.freedom.domain]), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FREEDOM_error"), err, this.$scope.alerts.freedoms);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FREEDOM_error"), err, this.$scope.alerts.main);
                 });
         }
     }

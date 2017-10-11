@@ -70,7 +70,7 @@ angular.module("App").controller("HostingDatabaseCreateCtrl", ($scope, $location
                 $scope.model.selected.type = "MYSQL";
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), _.get(err, "data", err), $scope.alerts.databases);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), _.get(err, "data", err), $scope.alerts.main);
             });
     };
 
@@ -122,10 +122,10 @@ angular.module("App").controller("HostingDatabaseCreateCtrl", ($scope, $location
             $scope.model.selected.version
         )
             .then(() => {
-                Alerter.set("alert-success", $scope.tr("hosting_tab_DATABASES_configuration_create_success"), null, $scope.alerts.databases);
+                Alerter.success($scope.tr("hosting_tab_DATABASES_configuration_create_success"), $scope.alerts.main);
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_fail"), _.get(err, "data", err), $scope.alerts.databases);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_fail"), _.get(err, "data", err), $scope.alerts.main);
             });
     };
 

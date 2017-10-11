@@ -15,11 +15,11 @@ angular.module("App")
         deleteDatabase () {
             this.HostingDatabase.deleteDatabase(this.$stateParams.productId, this.entryToDelete)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_tab_DATABASES_configuration_delete_success"), this.$scope.alerts.databases);
+                    this.Alerter.success(this.$scope.tr("hosting_tab_DATABASES_configuration_delete_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_configuration_delete_fail", [this.entryToDelete]), _.get(err, "data", err), this.$scope.alerts.databases);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_configuration_delete_fail", [this.entryToDelete]), _.get(err, "data", err), this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.$scope.resetAction();

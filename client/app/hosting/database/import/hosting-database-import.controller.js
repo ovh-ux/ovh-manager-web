@@ -59,7 +59,7 @@ angular.module("App").controller(
                         this.model.documents = onlyImportScripts;
                     })
                     .catch((err) => {
-                        this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_table_popover_import_step1_load_documents_error"), _.get(err, "data", err), this.$scope.alerts.databases);
+                        this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_table_popover_import_step1_load_documents_error"), _.get(err, "data", err), this.$scope.alerts.main);
                     });
             }
         }
@@ -107,10 +107,10 @@ angular.module("App").controller(
 
             return this.HostingDatabase.importDatabase(this.$stateParams.productId, this.model.database, this.model.document.id, this.model.flushDatabase, this.model.sendEmail)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_tab_DATABASES_table_popover_import_step3_succes"), this.$scope.alerts.databases);
+                    this.Alerter.success(this.$scope.tr("hosting_tab_DATABASES_table_popover_import_step3_succes"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_table_popover_import_step3_fail"), _.get(err, "data", err), this.$scope.alerts.databases);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_table_popover_import_step3_fail"), _.get(err, "data", err), this.$scope.alerts.main);
                 });
         }
     }

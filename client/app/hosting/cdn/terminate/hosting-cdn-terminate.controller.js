@@ -14,10 +14,10 @@ angular.module("App")
         terminateCdn () {
             this.Hosting.terminateCdn(this.$stateParams.productId)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_dashboard_service_terminate_cdn_success"), this.$scope.alerts.dashboard);
+                    this.Alerter.success(this.$scope.tr("hosting_dashboard_service_terminate_cdn_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_service_terminate_cdn_error"), _.get(err, "data", err), this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_service_terminate_cdn_error"), _.get(err, "data", err), this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.$scope.resetAction();

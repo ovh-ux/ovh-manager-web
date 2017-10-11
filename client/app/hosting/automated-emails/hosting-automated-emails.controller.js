@@ -36,8 +36,6 @@ angular
             this.hasBeenPurge = false;
             this.poll = null;
 
-            _.set(this.$scope.alerts, "automatedEmails", "hosting.alerts.automated_emails");
-
             this.$scope.$on("hosting.automatedEmails.request.changed", () => {
                 this.retrievingAutomatedEmails();
             });
@@ -53,7 +51,7 @@ angular
 
         retrievingAutomatedEmails () {
             this.loaders.loading = true;
-            this.Alerter.resetMessage(this.$scope.alerts.automatedEmails);
+            this.Alerter.resetMessage(this.$scope.alerts.main);
 
             return this.HostingAutomatedEmails
                 .getAutomatedEmails(this.$stateParams.productId)
@@ -68,7 +66,7 @@ angular
                 })
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
-                    this.Alerter.alertFromSWS(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_error"), err, this.$scope.alerts.automatedEmails);
+                    this.Alerter.alertFromSWS(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loaders.loading = false;
@@ -101,7 +99,7 @@ angular
                 })
                 .catch((err) => {
                     if (err.status !== 404) {
-                        this.Alerter.alertFromSWS(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_error"), err.data, this.$scope.alerts.automatedEmails);
+                        this.Alerter.alertFromSWS(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_error"), _.get(err, "data", err), this.$scope.alerts.main);
                     }
                 })
                 .finally(() => {
@@ -125,7 +123,7 @@ angular
                 })
                 .catch((err) => {
                     if (err.status !== 404) {
-                        this.Alerter.alertFromSWS(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_error"), err.data, this.$scope.alerts.automatedEmails);
+                        this.Alerter.alertFromSWS(this.translator.tr("hosting_tab_AUTOMATED_EMAILS_error"), _.get(err, "data", err), this.$scope.alerts.main);
                     } else {
                         this.thereAreEmailsInError = false;
                     }

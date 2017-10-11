@@ -5,7 +5,9 @@
          data-wizard-title="title">
 
         <div data-wizard-step>
-            <div class="loader text-center" data-ng-if="ctrl.isLoading"></div>
+            <div class="text-center" data-ng-if="ctrl.isLoading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.isLoading" data-ng-switch="ctrl.action">
                 <p data-ng-switch-when="BLOCK"

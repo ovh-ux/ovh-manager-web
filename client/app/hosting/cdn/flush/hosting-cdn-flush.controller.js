@@ -16,11 +16,11 @@ angular.module("App")
         flushCdn () {
             this.Hosting.flushCdn(this.$stateParams.productId)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_dashboard_cdn_flush_success"), this.$scope.alerts.dashboard);
+                    this.Alerter.success(this.$scope.tr("hosting_dashboard_cdn_flush_success"), this.$scope.alerts.main);
                     this.$rootScope.$broadcast("hosting.cdn.flush.refresh");
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_cdn_flush_error"), _.get(err, "data", err), this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_cdn_flush_error"), _.get(err, "data", err), this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.$scope.resetAction();

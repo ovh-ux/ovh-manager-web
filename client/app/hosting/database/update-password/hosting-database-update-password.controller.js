@@ -43,11 +43,11 @@ angular.module("App").controller(
             this.$scope.resetAction();
             return this.HostingDatabase.changePassword(this.$stateParams.productId, this.databaseName, this.password.value)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_tab_DATABASES_configuration_update_password_success"), this.$scope.alerts.databases);
+                    this.Alerter.success(this.$scope.tr("hosting_tab_DATABASES_configuration_update_password_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_configuration_update_password_fail", [this.databaseName]), _.get(err, "data", err), this.$scope.alerts.databases);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_configuration_update_password_fail", [this.databaseName]), _.get(err, "data", err), this.$scope.alerts.main);
                 }
             );
         }

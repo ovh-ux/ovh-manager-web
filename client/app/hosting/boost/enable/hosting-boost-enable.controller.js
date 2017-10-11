@@ -18,10 +18,10 @@ angular.module("App").controller("HostingBoostOfferRequestCtrl", ($scope, Hostin
 
         HostingBoost.requestBoost({ serviceName: $scope.product.serviceName, offer: $scope.models.boostOffer.offer })
             .then(() => {
-                Alerter.success($scope.tr("hosting_tab_BOOST_request_activation"), $scope.alerts.boosts);
+                Alerter.success($scope.tr("hosting_tab_BOOST_request_activation"), $scope.alerts.main);
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_request_error"), _.get(err, "data", err), $scope.alerts.boosts);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_request_error"), _.get(err, "data", err), $scope.alerts.main);
             })
             .finally(() => {
                 $scope.loaders.request = false;

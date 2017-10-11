@@ -35,7 +35,7 @@ angular.module("App").controller(
                         });
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_restore_snapshot_error"), err, this.$scope.alerts.ftp);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_restore_snapshot_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loading = false;
@@ -50,11 +50,11 @@ angular.module("App").controller(
             this.loading = true;
             return this.HostingFtp.restoreSnapshot(this.$stateParams.productId, { backup: this.model.snapshotInstance })
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_tab_FTP_configuration_restore_snapshot_success"), this.$scope.alerts.ftp);
+                    this.Alerter.success(this.$scope.tr("hosting_tab_FTP_configuration_restore_snapshot_success"), this.$scope.alerts.main);
                     this.$rootScope.$broadcast("hosting.tabs.tasks.refresh");
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_restore_snapshot_error"), _.get(err, "data", err), this.$scope.alerts.ftp);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_restore_snapshot_error"), _.get(err, "data", err), this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loading = false;

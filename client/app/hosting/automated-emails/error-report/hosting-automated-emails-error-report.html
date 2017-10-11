@@ -7,7 +7,9 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.formErrReportsEmail.$valid">
 
-            <div class="loader text-center" data-ng-if="ctrl.isLoading"></div>
+            <div class="text-center" data-ng-if="ctrl.isLoading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.isLoading">
                 <p data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_info"></p>

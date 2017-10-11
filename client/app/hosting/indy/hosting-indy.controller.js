@@ -14,8 +14,6 @@ angular.module("App").controller(
                 login: ""
             };
             this.loading = false;
-
-            _.set(this.$scope.alerts, "indys", "hosting.alerts.indys");
         }
 
         goSearch () {
@@ -45,7 +43,7 @@ angular.module("App").controller(
                 .then((ids) => {
                     this.indyIds = ids;
                 }).catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_INDY_error"), err, this.$scope.alerts.indys);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_INDY_error"), err, this.$scope.alerts.main);
                 }).finally(() => {
                     if (_.isEmpty(this.indyIds)) {
                         this.loading = false;
