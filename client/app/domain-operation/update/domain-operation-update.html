@@ -12,7 +12,9 @@
                 <em data-ng-bind="::ctrl.operation.comment"></em>
             </p>
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
 

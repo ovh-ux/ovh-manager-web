@@ -364,7 +364,9 @@
              data-wizard-step-on-previous="initCheckVariable"
              data-wizard-step-valid="(!ctrl.loading.check && !ctrl.loading.add && !ctrl.errors.containAllError && !ctrl.errors.containOneError) || ((ctrl.errors.conflict || ctrl.errors.containAllError || ctrl.errors.containOneError) && ctrl.overwrite)">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading.check"></div>
+            <div class="text-center" data-ng-if="ctrl.loading.check">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <p class="text-center"
                data-i18n-static="domain_tab_REDIRECTION_add_step5_check_validity"

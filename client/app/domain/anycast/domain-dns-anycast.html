@@ -9,7 +9,9 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
                 <p data-ng-bind-html="i18n.domain_configuration_dnsanycast_step1_explanation"></p>

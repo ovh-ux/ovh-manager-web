@@ -24,7 +24,9 @@
                 <p data-ng-bind="tr('hosting_tab_BOOST_boost_enabled', [models.product.boostOffer])"
                    data-ng-if="models.product.boostOffer !== null"></p>
 
-                <div class="loader text-center" data-ng-if="loaders.boostHistory"></div>
+                <div class="text-center" data-ng-if="loaders.boostHistory">
+                    <oui-loader inline="true"></oui-loader>
+                </div>
 
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="hosting_tab_BOOST_history_table_boost_history_empty"

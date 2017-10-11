@@ -12,7 +12,9 @@
              data-wizard-step-on-next="checkModuleForNextStep"
              data-wizard-step-valid="!ctrl.loading.init && ctrl.model.offer">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading.init"></div>
+            <div class="text-center" data-ng-if="ctrl.loading.init">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading.init">
                 <div class="mt-4"
@@ -78,7 +80,9 @@
              data-wizard-step-on-load="initDnsZone"
              data-wizard-step-valid="ctrl.dnsZones.length && ctrl.model.dnsZone">
 
-            <div class="loader text-center" data-ng-if="ctrl.dnsZones.length === 0"></div>
+            <div class="text-center" data-ng-if="ctrl.dnsZones.length === 0">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="ctrl.dnsZones.length > 0">
 
@@ -124,7 +128,9 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading.order">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading.order"></div>
+            <div class="text-center" data-ng-if="ctrl.loading.order">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div class="mt-5" data-ng-if="!ctrl.loading.order">
                 <table class="table table-condensed">

@@ -9,7 +9,9 @@
              data-wizard-step-on-load="load"
              data-wizard-step-valid="isStep1Valid()">
 
-            <div class="loader text-center" data-ng-if="!model.capabilities"></div>
+            <div class="text-center" data-ng-if="!model.capabilities">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <form name="hostingCreateDatabaseForm"
                   data-ng-if="model.capabilities && model.capabilities.availableDatabases.length > 0">

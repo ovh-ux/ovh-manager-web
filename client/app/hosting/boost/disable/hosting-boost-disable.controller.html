@@ -7,7 +7,9 @@
         <div data-wizard-step
              data-wizard-step-valid="isStepValid()">
 
-            <div class="loader text-center" data-ng-if="loaders.disable"></div>
+            <div class="text-center" data-ng-if="loaders.disable">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!loaders.disable">
                 <p data-i18n-static="hosting_tab_BOOST_disable_title"></p>

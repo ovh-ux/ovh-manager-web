@@ -8,7 +8,9 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading && ctrl.selection.length > 0 && ctrl.errors.length === 0">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
                 <p data-ng-bind-html="tr('mailing_list_tab_delete_subscribers_title', ctrl.mailingList.name)"></p>

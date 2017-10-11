@@ -20,19 +20,19 @@
 
                 <tbody data-ng-if="usersListCtrl.loaders.users">
                     <tr>
-                        <td colspan="3" class="loader text-center"></td>
+                        <td class="loader text-center" colspan="3"></td>
                     </tr>
                 </tbody>
 
                 <tbody data-ng-if="!usersListCtrl.loaders.users && usersListCtrl.usersIds.length === 0 && usersListCtrl.currentUsers.add.length > 0">
                     <tr>
-                        <td colspan="3" class="text-center" data-i18n-static="privateDatabase_tabs_no_user_error"></td>
+                        <td class="text-center" colspan="3" data-i18n-static="privateDatabase_tabs_no_user_error"></td>
                     </tr>
                 </tbody>
 
                 <tbody data-ng-if="!usersListCtrl.loaders.users && usersListCtrl.usersIds.length === 0 && usersListCtrl.currentUsers.add.length === 0">
                     <tr>
-                        <td colspan="3" class="text-center" data-i18n-static="privateDatabase_tabs_no_user"></td>
+                        <td class="text-center" colspan="3" data-i18n-static="privateDatabase_tabs_no_user"></td>
                     </tr>
                 </tbody>
 

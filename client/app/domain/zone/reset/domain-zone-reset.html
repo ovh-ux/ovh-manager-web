@@ -39,7 +39,9 @@
 
             <p data-i18n-static="domain_configuration_zonedns_reset_title"></p>
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <form name="ctrl.resetZoneForm" data-ng-if="!ctrl.loading">
                 <div class="row">

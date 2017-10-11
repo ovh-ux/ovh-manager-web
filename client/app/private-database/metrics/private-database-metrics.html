@@ -1,6 +1,8 @@
 <div class="container-fluid px-0" data-ng-controller="PrivateDatabaseMetricsCtrl as metricsCtrl">
 
-    <div class="loader text-center" data-ng-if="metricsCtrl.loaders.metrics"></div>
+    <div class="text-center" data-ng-if="metricsCtrl.loaders.metrics">
+        <oui-loader inline="true"></oui-loader>
+    </div>
 
     <div data-ng-if="!metricsCtrl.loaders.metrics">
         <!-- MEMORY USAGE -->

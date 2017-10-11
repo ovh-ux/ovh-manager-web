@@ -43,7 +43,9 @@
              data-wizard-step-on-load="getDuration"
              data-wizard-step-valid="isStepValid(2)">
 
-            <div class="loader text-center" data-ng-if="loading.duration"></div>
+            <div class="text-center" data-ng-if="loading.duration">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <form name="extraSqlPersoFormDuration"
                   data-ng-if="!loading.duration">

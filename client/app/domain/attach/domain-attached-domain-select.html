@@ -5,7 +5,9 @@
          data-wizard-title="i18n.domain_attached_domain_select_title">
 
         <div data-wizard-step>
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
                 <p data-ng-bind-html="tr('domain_attached_domain_select_intro', [ctrl.domainName])"></p>

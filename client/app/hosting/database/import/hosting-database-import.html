@@ -35,7 +35,9 @@
              data-wizard-step-valid="ctrl.isStep2Ok()">
 
             <div data-ng-if="ctrl.selected.action === ctrl.model.actions.IMPORT_FROM_NEW">
-                <div class="loader text-center" data-ng-if="ctrl.isSendingFile"></div>
+                <div class="text-center" data-ng-if="ctrl.isSendingFile">
+                    <oui-loader inline="true"></oui-loader>
+                </div>
 
                 <form name="ctrl.formFileUpload" novalidate
                       data-ng-show="!ctrl.isSendingFile"
@@ -90,7 +92,9 @@
 
 
             <div data-ng-if="ctrl.selected.action === ctrl.model.actions.IMPORT_FROM_EXISTING">
-                <div class="loader text-center" data-ng-if="!ctrl.model.documents"></div>
+                <div class="text-center" data-ng-if="!ctrl.model.documents">
+                    <oui-loader inline="true"></oui-loader>
+                </div>
 
                 <form data-ng-if="ctrl.model.documents">
                     <label class="control-label" for="ddlDocuments"

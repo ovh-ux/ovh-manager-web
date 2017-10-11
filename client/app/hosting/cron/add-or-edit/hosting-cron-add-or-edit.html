@@ -9,7 +9,9 @@
              data-wizard-step-on-load="init"
              data-wizard-step-valid="isValid(1)">
 
-            <div class="loader text-center" data-ng-if="loading.init"></div>
+            <div class="text-center" data-ng-if="loading.init">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <form class="form-horizontal" name="addCronForm" data-ng-if="!loading.init">
                 <p>
@@ -123,7 +125,9 @@
              data-wizard-step-valid="!loading.validation"
              data-wizard-step-on-load="generateCron">
 
-            <div class="loader text-center" data-ng-if="loading.validation"></div>
+            <div class="text-center" data-ng-if="loading.validation">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!loading.validation">
                 <p data-i18n-static="hosting_tab_CRON_step3_title"></p>
