@@ -8,12 +8,14 @@
         top: 0;
     }
 
-    #contentPopup { padding: 0 20px 20px 20px; }
+    #contentPopup {
+        padding: 0 20px 20px;
 
-    .ovh-form-flat::after {
-        content: "";
-        display: block;
-        clear: both;
+        &::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
     }
 }
 
