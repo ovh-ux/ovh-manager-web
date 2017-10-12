@@ -784,6 +784,7 @@ module.exports = {
                 changeOwner: "https://www.ovh.com/cgi-bin/fr/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.com/fr/order/domain/#/legacy/domain/trade/list",
                 oldInterface: "https://www.ovh.com/managerv3/home.pl",
+                emailsOrder: "https://www.ovh.com/emails/",
                 exchangeOrder: "https://www.ovh.com/fr/emails/hosted-exchange/",
                 emailproOrder: "https://www.ovh.com/fr/emails/email-pro/",
                 office365Order: "https://www.ovh.com/fr/office-365/",

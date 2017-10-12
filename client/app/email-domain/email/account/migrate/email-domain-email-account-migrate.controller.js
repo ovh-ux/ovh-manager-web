@@ -8,11 +8,12 @@ angular.module("App").controller(
          * @param Alerter
          * @param Emails
          */
-        constructor ($scope, $q, Alerter, Emails) {
+        constructor ($scope, $q, Alerter, Emails, constants) {
             this.$scope = $scope;
             this.$q = $q;
             this.Alerter = Alerter;
             this.Emails = Emails;
+            this.urls = constants.urls;
         }
 
         $onInit () {
@@ -29,6 +30,10 @@ angular.module("App").controller(
             this.$scope.getServiceTypes = () => this.getServiceTypes();
             this.$scope.checkMigrationData = () => this.checkMigrationData();
             this.$scope.migrateAccount = () => this.migrateAccount();
+
+            // URLs constants
+            this.allGuides = _.get(this.urls, "FR.guides.all");
+            this.emailsOrder = _.get(this.urls, "FR.emailsOrder");
         }
 
         // Request Service types
