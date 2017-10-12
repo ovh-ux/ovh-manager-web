@@ -34,7 +34,7 @@ angular.module("App").controller(
         }
 
         isIpValid (ip) {
-            return this.validator.isValidIpv4Block(ip) || this.validator.isValidIpv4(ip);
+            return this.validator.isIPv4Valid(ip, { includeCIDR: true });
         }
 
         isWhitelistValid () {

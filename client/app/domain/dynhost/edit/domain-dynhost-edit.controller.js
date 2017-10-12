@@ -18,11 +18,11 @@ angular.module("App").controller(
         }
 
         ipTargetCheck (input) {
-            input.$setValidity("iptarget", this.Validator.isValidIpv4(this.dynHost.ip));
+            input.$setValidity("iptarget", this.Validator.isIPv4Valid(this.dynHost.ip));
         }
 
         subDomainCheck (input) {
-            input.$setValidity("subdomain", this.dynHost.subDomain === null || this.dynHost.subDomain === "" || this.Validator.isValidSubDomain(this.dynHost.subDomain));
+            input.$setValidity("subdomain", this.dynHost.subDomain === null || this.dynHost.subDomain === "" || this.Validator.isSubDomainNameValid(this.dynHost.subDomain));
         }
 
         updateDynHost () {

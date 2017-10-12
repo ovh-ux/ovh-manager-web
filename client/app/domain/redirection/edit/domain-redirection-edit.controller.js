@@ -138,19 +138,19 @@ angular.module("controllers").controller(
             if (_.isEmpty(this.redirectionTarget)) {
                 this.errors.redirectionTarget = true;
             } else if (this.redirection.isOrt) {
-                this.errors.redirectionTarget = !this.validator.isValidURL(this.redirectionTarget);
+                this.errors.redirectionTarget = !this.validator.isURLValid(this.redirectionTarget);
                 this.errors.targetLength = !this.isTargetValid();
             } else {
                 switch (this.redirection.fieldDisplayType) {
                 case "A":
-                    this.errors.redirectionTarget = !this.validator.isValidIpv4(this.redirectionTarget);
+                    this.errors.redirectionTarget = !this.validator.isIPv4Valid(this.redirectionTarget);
                     break;
                 case "AAAA":
-                    this.errors.redirectionTarget = !this.validator.isValidIpv6(this.redirectionTarget);
+                    this.errors.redirectionTarget = !this.validator.isIPv6Valid(this.redirectionTarget);
                     break;
                 case "CNAME": {
                     const domainName = this.getCompleteTarget();
-                    this.errors.redirectionTarget = !this.validator.isValidDomain(domainName);
+                    this.errors.redirectionTarget = !this.validator.isDomainNameValid(domainName);
                     break;
                 }
                 default: {

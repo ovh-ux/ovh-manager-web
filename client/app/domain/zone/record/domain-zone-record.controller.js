@@ -123,16 +123,16 @@ angular.module("App").controller(
             let isValid;
 
             if (this.DomainValidator.regex.SRV_target.test(value)) {
-                isValid = this.Validator.isValidDomain(value.match(this.DomainValidator.regex.SRV_target)[1]);
+                isValid = this.Validator.isDomainNameValid(value.match(this.DomainValidator.regex.SRV_target)[1]);
             } else {
-                isValid = this.Validator.isValidSubDomain(value);
+                isValid = this.Validator.isSubDomainNameValid(value);
             }
             input.$setValidity("target", isValid);
         }
 
         checkSubDomainToDisplay (input) {
             const value = angular.copy(this.model.subDomainToDisplay);
-            input.$setValidity("subdomain", value === null || value === "" || this.Validator.isValidSubDomain(value, { canBeginWithUnderscore: true, canBeginWithWildcard: true }));
+            input.$setValidity("subdomain", value === null || value === "" || this.Validator.isSubDomainNameValid(value, { canBeginWithUnderscore: true, canBeginWithWildcard: true }));
 
             // Test already existing subDomain field
             if (!this.loading.checkSubDomain) {
