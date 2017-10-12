@@ -73,7 +73,9 @@
                      data-ng-if="!ctrlDomainTabZoneDns.loading.table && !ctrlDomainTabZoneDns.hasResult">
                 </div>
 
-                <div class="loader text-center" data-ng-if="ctrlDomainTabZoneDns.loading.table && !ctrlDomainTabZoneDns.hasResult"></div>
+                <div class="text-center" data-ng-if="ctrlDomainTabZoneDns.loading.table && !ctrlDomainTabZoneDns.hasResult">
+                    <oui-loader inline="true"></oui-loader>
+                </div>
 
                 <div data-ng-if="ctrlDomainTabZoneDns.hasResult">
                     <div class="row mt-5">

@@ -305,8 +305,8 @@
         <div class="col-md-3 mt-md-5 mt-lg-0">
             <div class="d-flex flex-column-reverse flex-lg-column">
                 <div class="mb-5 text-center" data-ng-if="!ctrlTabGeneralInformations.domain.isExpired">
-                    <div class="loader" aria-label="{{i18n.common_loading}}"
-                         data-ng-if="ctrlTabGeneralInformations.loading.screenshot"></div>
+                    <oui-loader inline="true"
+                                data-ng-if="ctrlTabGeneralInformations.loading.screenshot"></oui-loader>
                     <a data-ng-href="http://{{ctrlTabGeneralInformations.domain.name}}"
                        class="oui-box oui-box_light d-block p-0 text-truncate" target="_blank"
                        title="{{ctrlTabGeneralInformations.domain.name}} ({{i18n.common_newtab}})"

@@ -125,42 +125,33 @@
         <div data-wizard-step>
             <p data-i18n-static="email_tab_modal_migrate_confirmation_delay"></p>
 
-            <div class="form-horizontal">
+            <!-- Migration Data -->
+            <dl class="dl-horizontal dl-lg">
+                <dt data-i18n-static="email_tab_modal_migrate_account_email_label"></dt>
+                <dd data-ng-bind="ctrl.email.email"></dd>
 
-                <!-- Migration Data -->
-                <div class="form-group mb-0">
-                    <label class="control-label col-md-4" data-i18n-static="email_tab_modal_migrate_account_email_label"></label>
-                    <div class="col-md-8">
-                        <p class="form-control-static" data-ng-bind="ctrl.email.email"></p>
-                    </div>
-                </div>
-                <div class="form-group mb-0">
-                    <label class="control-label col-md-4" data-i18n-static="email_tab_modal_migrate_service_type_label"></label>
-                    <div class="col-md-8">
-                        <p class="form-control-static" data-ng-bind="ctrl.migrate.serviceType"></p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-4" data-i18n-static="email_tab_modal_migrate_destination_service_label"></label>
-                    <div class="col-md-8">
-                        <p class="form-control-static" data-ng-bind="ctrl.migrate.destinationService"></p>
-                    </div>
-                </div>
-            </div>
+                <dt data-i18n-static="email_tab_modal_migrate_service_type_label"></dt>
+                <dd data-ng-bind="ctrl.migrate.serviceType"></dd>
+
+                <dt data-i18n-static="email_tab_modal_migrate_destination_service_label"></dt>
+                <dd data-ng-bind="ctrl.migrate.destinationService"></dd>
+            </dl>
 
             <!-- Guides Text -->
-            <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'" data-i18n-static="email_tab_modal_migrate_configuration_guides_emailpro"></p>
-            <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'" data-i18n-static="email_tab_modal_migrate_configuration_guides_exchange"></p>
+            <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'"
+               data-i18n-static="email_tab_modal_migrate_configuration_guides_emailpro"></p>
+            <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'"
+               data-i18n-static="email_tab_modal_migrate_configuration_guides_exchange"></p>
             <p>
-                <a class="btn btn-default btn-sm" href="{{::ctrl.allGuides}}" target="_blank">
+                <a href="{{::ctrl.allGuides}}" class="btn btn-default btn-sm" target="_blank">
                     <span data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></span>
                     <span class="fa fa-external-link"></span>
                 </a>
             </p>
 
             <!-- Not Supported Alert -->
-            <div class="alert alert-warning" role="alert">
-                <p data-ng-bind-html="tr('email_tab_modal_migrate_alert_not_supported')"></p>
+            <div class="alert alert-warning" role="alert"
+                 data-ng-bind-html="tr('email_tab_modal_migrate_alert_not_supported')">
             </div>
         </div>
 
