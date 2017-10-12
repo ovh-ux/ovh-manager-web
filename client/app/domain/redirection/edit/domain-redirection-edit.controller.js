@@ -109,10 +109,11 @@ angular.module("controllers").controller(
                 case "CNAME":
                     message = "domain_tab_REDIRECTION_edit_server_cname_error";
                     break;
-                default:
+                default: {
                     const errorMessage = this.$scope.tr(this.unknownFieldDisplayTypeErrorMessageId, this.redirection.fieldDisplayType);
                     this.alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_edit_fail", this.displayName), errorMessage, this.$scope.alerts.main);
                     this.$scope.resetAction();
+                }
                 }
             }
 
