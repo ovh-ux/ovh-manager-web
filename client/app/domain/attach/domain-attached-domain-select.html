@@ -9,7 +9,7 @@
                 <oui-loader inline="true"></oui-loader>
             </div>
 
-            <div data-ng-if="!ctrl.loading">
+            <form name="attachedDomainForm" data-ng-if="!ctrl.loading">
                 <p data-ng-bind-html="tr('domain_attached_domain_select_intro', [ctrl.domainName])"></p>
                 <label class="oui-label" for="attachedDomains"
                        data-i18n-static="domain_attached_domain_select_action"></label>
@@ -20,7 +20,7 @@
                     </select>
                     <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
