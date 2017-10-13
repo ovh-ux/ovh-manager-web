@@ -1,8 +1,8 @@
 <div data-ng-controller="PrivateDatabaseCtrl as ctrl">
     <div data-ovh-alert="{{alerts.page}}"></div>
 
-    <div class="mt-5 text-center" data-ng-if="ctrl.loaders.details">
-        <oui-loader size="l" inline="true"></oui-loader>
+    <div class="text-center" data-ng-if="ctrl.loaders.details">
+        <oui-loader inline="true"></oui-loader>
     </div>
 
     <div class="page-header" data-ng-show="!ctrl.loaders.details">
