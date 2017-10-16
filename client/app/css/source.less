@@ -2,6 +2,7 @@
 
 @bs-path: "./node_modules/bootstrap";
 @oui-path: "./node_modules/ovh-ui-kit";
+
 @import "node_modules/ovh-ui-kit-bs/src/ovh-ui-kit-bs";
 
 @import "bower_components/ovh-angular-manager-navbar/less/ovh-angular-manager-navbar";
@@ -35,7 +36,6 @@
 @import "common/selectList";
 @import "common/serviceIcon";
 @import "common/switch";
-@import "common/tabs";
 @import "common/v6-ui-switch";
 @import "common/wizard";
 
@@ -50,7 +50,6 @@
 
 @import "../components/pagination-front/pagination-front";
 @import "../components/incrementNumber/incrementNumber";
-@import "../components/tabs/tabs";
 @import "../components/guides/guides";
 @import "../components/manager-preload/manager-preload";
 @import "../components/sidebar-menu/sidebar-menu";
@@ -62,7 +61,8 @@
 
 @import "./ovh-ui-kit/icon";
 
-@ovh-font-path:'../bower_components/ovh-manager-webfont/dist/fonts';
+@ovh-font-path: "../bower_components/ovh-manager-webfont/dist/fonts";
+@ovh-universe-color: @oui-color-jungle;
 
 #manager-navbar {
     min-height: auto;
