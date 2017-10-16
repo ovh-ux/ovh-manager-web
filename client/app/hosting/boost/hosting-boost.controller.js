@@ -26,7 +26,7 @@ angular.module("App").controller("HostingBoostTabCtrl", ($scope, $stateParams, H
     //---------------------------------------------
     $scope.init = function () {
         $scope.loaders.product = true;
-        Alerter.resetMessage($scope.alerts.dashboard);
+        Alerter.resetMessage($scope.alerts.main);
         Hosting.getSelected($stateParams.productId, true)
             .then((product) => {
                 $scope.models.product = product;
@@ -46,7 +46,7 @@ angular.module("App").controller("HostingBoostTabCtrl", ($scope, $stateParams, H
                 });
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_error"), err, $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_error"), err, $scope.alerts.main);
             })
             .finally(() => {
                 $scope.loaders.product = false;
@@ -58,36 +58,36 @@ angular.module("App").controller("HostingBoostTabCtrl", ($scope, $stateParams, H
     //---------------------------------------------
     $scope.$on("hosting.boost.request.start", () => {
         $scope.isLoading = true;
-        Alerter.success($scope.tr("hosting_tab_BOOST_request_activation"), $scope.alerts.dashboard);
+        Alerter.success($scope.tr("hosting_tab_BOOST_request_activation"), $scope.alerts.main);
     });
 
     $scope.$on("hosting.boost.request.done", () => {
         $scope.init();
         $scope.isLoading = false;
-        Alerter.success($scope.tr("hosting_tab_BOOST_request_success"), $scope.alerts.dashboard);
+        Alerter.success($scope.tr("hosting_tab_BOOST_request_success"), $scope.alerts.main);
     });
 
     $scope.$on("hosting.boost.request.error", (err) => {
-        Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_error"), err.data, $scope.alerts.dashboard);
+        Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_error"), _.get(err, "data", err), $scope.alerts.main);
     });
 
     $scope.$on("hosting.boost.disable.start", () => {
         $scope.isLoading = true;
-        Alerter.success($scope.tr("hosting_tab_BOOST_disable_started"), $scope.alerts.dashboard);
+        Alerter.success($scope.tr("hosting_tab_BOOST_disable_started"), $scope.alerts.main);
     });
 
     $scope.$on("hosting.boost.disable.done", () => {
         $scope.init();
         $scope.isLoading = false;
-        Alerter.success($scope.tr("hosting_tab_BOOST_disable_success"), $scope.alerts.dashboard);
+        Alerter.success($scope.tr("hosting_tab_BOOST_disable_success"), $scope.alerts.main);
     });
 
     $scope.$on("hosting.boost.disable.error", (err) => {
-        Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_disable_error"), err.data, $scope.alerts.dashboard);
+        Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_disable_error"), _.get(err, "data", err), $scope.alerts.main);
     });
 
     $scope.$on("hosting.boost.error", (err) => {
-        Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_error"), err.data, $scope.alerts.dashboard);
+        Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_error"), _.get(err, "data", err), $scope.alerts.main);
     });
 
     $scope.$on("$destroy", () => {
@@ -106,7 +106,7 @@ angular.module("App").controller("HostingBoostTabCtrl", ($scope, $stateParams, H
                 $scope.boostHistory.ids = data.sort((d1, d2) => new Date(d2) - new Date(d1));
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_error"), err, $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_error"), err, $scope.alerts.main);
             })
             .finally(() => {
                 if (_.isEmpty($scope.boostHistory.ids)) {

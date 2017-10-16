@@ -1,19 +1,30 @@
-angular.module("App").controller("HostingDatabaseDumpDeleteCtrl", function ($scope, $filter, $stateParams, HostingDatabase, Alerter) {
-    "use strict";
+angular.module("App").controller(
+    "HostingDatabaseDumpDeleteCtrl",
+    class HostingDatabaseDumpDeleteCtrl {
+        constructor ($scope, $filter, $stateParams, HostingDatabase, Alerter) {
+            this.$scope = $scope;
+            this.$filter = $filter;
+            this.$stateParams = $stateParams;
+            this.HostingDatabase = HostingDatabase;
+            this.Alerter = Alerter;
+        }
 
-    $scope.database = angular.copy($scope.currentActionData.database);
-    $scope.dump = angular.copy($scope.currentActionData.dump);
+        $onInit () {
+            this.database = angular.copy(this.$scope.currentActionData.database);
+            this.dump = angular.copy(this.$scope.currentActionData.dump);
 
-    this.init = function () {
-        $scope.fitleredCreationDate = $filter("date")($scope.dump.creationDate, "medium");
-    };
+            this.fitleredCreationDate = this.$filter("date")(this.dump.creationDate, "medium");
 
-    $scope.deleteDatabaseDump = function () {
-        $scope.resetAction();
-        HostingDatabase.deleteDatabaseDump($stateParams.productId, $scope.database.name, $scope.dump).catch((err) => {
-            Alerter.alertFromSWS($scope.tr("database_tabs_dumps_delete_fail"), err, $scope.alerts.dashboard);
-        });
-    };
+            this.$scope.deleteDatabaseDump = () => this.deleteDatabaseDump();
+        }
 
-    this.init();
-});
+        deleteDatabaseDump () {
+            return this.HostingDatabase.deleteDatabaseDump(this.$stateParams.productId, this.database.name, this.dump)
+                .catch((err) => {
+                    _.set(err, "type", err.type || "ERROR");
+                    this.Alerter.alertFromSWS(this.$scope.tr("database_tabs_dumps_delete_fail"), err, this.$scope.alerts.main);
+                })
+                .finally(() => this.$scope.resetAction());
+        }
+    }
+);

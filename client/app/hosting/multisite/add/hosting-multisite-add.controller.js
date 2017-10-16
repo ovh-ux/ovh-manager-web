@@ -104,46 +104,42 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
             $scope.selected.baseDomain = $scope.currentActionData.domain;
             $scope.model.domains = [];
 
-            futuresOptions = HostingDomain.getAddDomainOptions($scope.currentActionData.hosting).then(
-                (options) => {
+            futuresOptions = HostingDomain.getAddDomainOptions($scope.currentActionData.hosting)
+                .then((options) => {
                     $scope.model.options = options;
-                },
-                (error) => {
+                })
+                .catch((err) => {
                     $scope.resetAction();
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), error.data, $scope.alerts.dashboard);
-                }
-            );
+                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+                });
 
-            futureHosting = Hosting.getHosting($scope.currentActionData.hosting).then(
-                (hosting) => {
+            futureHosting = Hosting.getHosting($scope.currentActionData.hosting)
+                .then((hosting) => {
                     $scope.model.hosting = hosting;
                     $scope.hosting = hosting;
-                },
-                (error) => {
+                })
+                .catch((err) => {
                     $scope.resetAction();
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), error.data, $scope.alerts.dashboard);
-                }
-            );
+                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+                });
         } else {
             futuresOptions = HostingDomain.getAddDomainOptions().then(
                 (options) => {
                     $scope.model.options = options;
-                },
-                (error) => {
+                })
+                .catch((err) => {
                     $scope.resetAction();
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), error.data, $scope.alerts.dashboard);
-                }
-            );
+                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+                });
 
             futureHosting = Hosting.getSelected($stateParams.productId).then(
                 (hosting) => {
                     $scope.model.hosting = hosting;
-                },
-                (error) => {
+                })
+                .catch((err) => {
                     $scope.resetAction();
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), error.data, $scope.alerts.dashboard);
-                }
-            );
+                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+                });
         }
 
         $q
@@ -175,9 +171,9 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
                     });
                 }
             })
-            .catch((error) => {
+            .catch((err) => {
                 $scope.resetAction();
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), error, $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), err, $scope.alerts.main);
             });
     };
 
@@ -211,14 +207,12 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
             $scope.selected.ssl,
             $scope.selected.hosting || $stateParams.productId
         )
-            .then(
-                (data) => {
-                    Alerter.alertFromSWSBatchResult(resultMessages, data, $scope.alerts.dashboard);
-                },
-                (failure) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_failure"), { message: failure.data, type: "ERROR" }, $scope.alerts.dashboard);
-                }
-            )
+            .then((data) => {
+                Alerter.alertFromSWSBatchResult(resultMessages, data, $scope.alerts.main);
+            })
+            .catch((err) => {
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_failure"), { message: _.get(err, "data", err), type: "ERROR" }, $scope.alerts.main);
+            })
             .finally(() => {
                 $scope.loading = false;
             });
@@ -232,15 +226,15 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
 
     $scope.loadStep2 = function () {
         const tokenNeeded = $scope.selected.mode === $scope.model.mode.EXTERNAL;
-        HostingDomain.getExistingDomains($scope.selected.hosting || $stateParams.productId, tokenNeeded).then(
-            (data) => {
+        HostingDomain.getExistingDomains($scope.selected.hosting || $stateParams.productId, tokenNeeded)
+            .then((data) => {
                 $scope.model.domains = data.existingDomains;
                 $scope.model.token = data.token;
                 $scope.model.tokenSubdomain = data.tokenSubdomain;
-            },
-            (failure) => {
+            })
+            .catch((err) => {
                 $scope.resetAction();
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), failure.data, $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
             }
         );
     };
@@ -281,17 +275,15 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
         if ($scope.selected.mode === $scope.model.mode.OVH) {
             $scope.loadingConflicts = true;
             HostingDomain.getExistingConfiguration($stateParams.productId, $scope.selected.baseDomain.name, $scope.selected.domain, $scope.needWwwDomain())
-                .then(
-                    (data) => {
-                        if (data.length > 0) {
-                            $scope.model.conflicts = data;
-                        }
-                    },
-                    (failure) => {
-                        $scope.resetAction();
-                        Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), failure.data, $scope.alerts.dashboard);
+                .then((data) => {
+                    if (data.length > 0) {
+                        $scope.model.conflicts = data;
                     }
-                )
+                })
+                .catch((err) => {
+                    $scope.resetAction();
+                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+                })
                 .finally(() => {
                     $scope.loadingConflicts = false;
                 });

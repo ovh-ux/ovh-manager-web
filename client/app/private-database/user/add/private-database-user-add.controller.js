@@ -1,17 +1,15 @@
 angular.module("App").controller(
     "PrivateDatabaseAddUserCtrl",
     class PrivateDatabaseAddUserCtrl {
-        constructor (Alerter, PrivateDatabase, $scope, $stateParams) {
-            this.alerter = Alerter;
-            this.privateDatabaseService = PrivateDatabase;
+        constructor ($scope, $stateParams, Alerter, PrivateDatabase) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.PrivateDatabase = PrivateDatabase;
         }
 
         $onInit () {
             this.users = this.$scope.currentActionData.user;
-            this.productId = this.$stateParams.productId;
-
             this.model = {
                 password: {
                     value: "",
@@ -37,18 +35,7 @@ angular.module("App").controller(
             };
 
             this.$scope.hasError = (label) => label.$invalid && label.$dirty;
-
-            this.$scope.addUser = () => {
-                this.$scope.resetAction();
-                this.privateDatabaseService
-                    .addUser(this.productId, this.model.password.value, this.model.user.value)
-                    .then(() => {
-                        this.alerter.success(this.$scope.tr("privateDatabase_add_user_success"), this.$scope.alerts.users);
-                    })
-                    .catch(() => {
-                        this.alerter.error(this.$scope.tr("privateDatabase_add_user_fail"), this.$scope.alerts.users);
-                    });
-            };
+            this.$scope.addUser = () => this.addUser();
         }
 
         isPasswordValid () {
@@ -67,11 +54,16 @@ angular.module("App").controller(
             return _.indexOf(this.users, this.model.user.value) !== -1;
         }
 
-        getClassLabel (label, errorValue) {
-            if (label && label.$dirty) {
-                return label.$invalid || errorValue || this.nameAlreadyExist() ? "has-error" : "has-success";
-            }
-            return "";
+        addUser () {
+            this.$scope.resetAction();
+            return this.PrivateDatabase
+                .addUser(this.$stateParams.productId, this.model.password.value, this.model.user.value)
+                .then(() => {
+                    this.Alerter.success(this.$scope.tr("privateDatabase_add_user_success"), this.$scope.alerts.main);
+                })
+                .catch(() => {
+                    this.Alerter.error(this.$scope.tr("privateDatabase_add_user_fail"), this.$scope.alerts.main);
+                });
         }
     }
 );

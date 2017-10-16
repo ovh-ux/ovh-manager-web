@@ -73,7 +73,7 @@ angular.module("App").controller(
                     this.nicOperationEnum = models.models["domain.NicOperationFunctionEnum"].enum;
                     this.operationStatusEnum = models.models["domain.OperationStatusEnum"].enum;
                 })
-                .catch((err) => this.Alerter.alertFromSWS("", err, this.$scope.alerts.dashboard));
+                .catch((err) => this.Alerter.alertFromSWS("", err, this.$scope.alerts.main));
         }
 
         resetSearch () {
@@ -94,7 +94,7 @@ angular.module("App").controller(
                 .then((operationIds) => (this.operationIds = operationIds))
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
-                    this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     if (_.isEmpty(this.operationIds)) {

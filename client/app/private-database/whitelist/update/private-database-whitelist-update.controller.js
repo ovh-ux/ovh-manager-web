@@ -26,8 +26,8 @@ angular.module("App").controller(
             this.$scope.updateWhitelist = () => {
                 this.whitelistService
                     .updateWhitelist(this.productId, this.whitelistId, this.model)
-                    .then(() => this.alerter.success(this.$scope.tr("privateDatabase_modale_whitelist_update_success"), "privateDataBase.alerts.whitelist"))
-                    .catch(() => this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_update_fail"), "privateDataBase.alerts.whitelist"))
+                    .then(() => this.alerter.success(this.$scope.tr("privateDatabase_modale_whitelist_update_success"), this.$scope.alerts.main))
+                    .catch(() => this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_update_fail"), this.$scope.alerts.main))
                     .finally(() => this.$scope.resetAction());
             };
         }

@@ -145,7 +145,7 @@ angular.module("App").controller(
         // Post request for migration
         migrateAccount () {
             this.Emails.migrateAccountToDestinationAccount(this.email.domain, this.email.accountName, this.migrate.destinationService, this.migrate.destinationEmail, this.migrate.password)
-                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success"), this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success"), this.$scope.alerts.main))
                 .catch((err) => this.handleError(err))
                 .finally(() => this.$scope.resetAction());
         }
@@ -165,7 +165,7 @@ angular.module("App").controller(
 
         // Handle services errors
         handleError (err) {
-            this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_migrate_error"), _.get(err, "data", err), this.$scope.alerts.dashboard);
+            this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_migrate_error"), _.get(err, "data", err), this.$scope.alerts.main);
             this.$scope.resetAction();
         }
 

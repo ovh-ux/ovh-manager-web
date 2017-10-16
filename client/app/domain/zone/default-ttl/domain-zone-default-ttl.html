@@ -7,10 +7,12 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading && ctrl.updateDefaultTtlForm.$valid">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
-                <p data-ng-bind-html="tr('domain_tab_ZONE_default_ttl_heading', ctrl.domain.displayName)"></p>
+                <p data-ng-bind-html="tr('domain_tab_ZONE_default_ttl_heading', '<strong>' + ctrl.domain.displayName + '</strong>')"></p>
 
                 <form class="form-horizontal mt-4" name="ctrl.updateDefaultTtlForm">
                     <div class="form-group" data-ng-class="{ 'has-error': ctrl.updateDefaultTtlForm.ttl.$dirty && ctrl.updateDefaultTtlForm.ttl.$invalid }">

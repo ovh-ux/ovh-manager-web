@@ -38,9 +38,9 @@ angular
 
                     this.loading.init = false;
                 })
-                .catch((data) => {
+                .catch((err) => {
                     this.$scope.resetAction();
-                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_change_version_step1_fail", [this.$scope.entryToDelete]), data.data, this.$scope.alerts.dashboard);
+                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_change_version_step1_fail", [this.$scope.entryToDelete]), _.get(err, "data", err), this.$scope.alerts.main);
                 });
         }
 
@@ -50,10 +50,10 @@ angular
             this.privateDatabaseService.changeVersion(this.productId, this.model.choice)
                 .then((task) => {
                     this.$scope.pollAction(task);
-                    this.alerter.success(this.$scope.tr("privateDatabase_change_version_success"), this.$scope.alerts.dashboard);
+                    this.alerter.success(this.$scope.tr("privateDatabase_change_version_success"), this.$scope.alerts.main);
                 })
-                .catch((data) => {
-                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_change_version_fail"), data.data, this.$scope.alerts.dashboard);
+                .catch((err) => {
+                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_change_version_fail"), _.get(err, "data", err), this.$scope.alerts.main);
                 });
         }
 });

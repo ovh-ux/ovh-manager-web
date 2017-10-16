@@ -13,10 +13,11 @@
                data-i18n-static="domains_configuration_whois_step1_no_selected_domains"></p>
 
             <div data-ng-if="ctrlDomainsOwo.selectedDomainsNames && ctrlDomainsOwo.selectedDomainsNames.length > 0">
-                <p class="text-intro"
-                   data-ng-bind-html="tr('domains_configuration_whois_step1_question', [domainToChangeOwo.displayName])"></p>
+                <p data-ng-bind-html="tr('domains_configuration_whois_step1_question', [domainToChangeOwo.displayName])"></p>
 
-                <div class="loader text-center" data-ng-if="ctrlDomainsOwo.loading"></div>
+                <div class="text-center" data-ng-if="ctrlDomainsOwo.loading">
+                    <oui-loader inline="true"></oui-loader>
+                </div>
 
                 <table class="table table-hover mt-4" data-ng-if="!ctrlDomainsOwo.loading">
                     <thead>
@@ -52,25 +53,24 @@
             </div>
 
             <div data-wizard-step-help>
-                <span class="title" data-i18n-static="domains_configuration_whois_step1_helpwizard_title"></span>
+                <h3 data-i18n-static="domains_configuration_whois_step1_helpwizard_title"></h3>
                 <p data-ng-bind-html="i18n.domains_configuration_whois_step1_helpwizard_desc"></p>
-                <strong data-i18n-static="domains_configuration_whois_step1_helpwizard_whatis"></strong>
+                <h4 data-i18n-static="domains_configuration_whois_step1_helpwizard_whatis"></h4>
                 <p data-i18n-static="domains_configuration_whois_step1_helpwizard_whatis_desc"></p>
-                <strong data-i18n-static="domains_configuration_whois_step1_helpwizard_whatinfo"></strong>
+                <h4 data-i18n-static="domains_configuration_whois_step1_helpwizard_whatinfo"></h4>
                 <p data-ng-bind-html="i18n.domains_configuration_whois_step1_helpwizard_whatinfo_desc"></p>
-                <strong data-i18n-static="domains_configuration_whois_step1_helpwizard_how"></strong>
+                <h4 data-i18n-static="domains_configuration_whois_step1_helpwizard_how"></h4>
                 <p data-ng-bind-html="i18n.domains_configuration_whois_step1_helpwizard_how_desc"></p>
             </div>
         </div>
 
         <div data-wizard-step>
-            <p class="text-intro"
-               data-i18n-static="domains_configuration_whois_step2_question"></p>
+            <p data-i18n-static="domains_configuration_whois_step2_question"></p>
             <table class="table mb-5 mt-4">
                 <thead>
                     <tr>
                         <th class="w-75"></th>
-                        <th class="center w-25" scope="col"
+                        <th class="text-center w-25" scope="col"
                             data-i18n-static="domains_configuration_whois_step2_new_configuration"></th>
                     </tr>
                 </thead>

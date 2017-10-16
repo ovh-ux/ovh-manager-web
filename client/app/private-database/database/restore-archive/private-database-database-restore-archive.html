@@ -7,7 +7,9 @@
 
          <div data-wizard-step>
 
-            <div class="loader text-center" data-ng-if="step === 0"></div>
+            <div class="text-center" data-ng-if="step === 0">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
              <div data-ng-if="step === 1">
                 <p data-ng-bind-html="tr('privateDatabase_restore_bdd_impossible')"></p>

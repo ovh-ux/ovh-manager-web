@@ -7,7 +7,9 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
                 <p data-ng-bind-html="tr('domain_tab_REDIRECTION_delete_confirm', [ctrl.entryToDeleteName, ctrl.entryToDelete.targetDisplayName])"
@@ -16,11 +18,17 @@
                    data-ng-if="ctrl.isSubDomain"></p>
             </div>
 
-            <div class="checkbox mt-4" data-ng-if="ctrl.wwwDomainToDelete.data">
-                <label>
-                    <input type="checkbox" name="removeWWW"
-                           data-ng-model="ctrl.wwwDomainToDelete.removeWWW" >
-                    <span data-ng-bind-html="tr('domain_tab_REDIRECTION_delete_www_confirm', [ctrl.constructor.getDomainName(ctrl.wwwDomainToDelete.data), ctrl.wwwDomainToDelete.data.targetDisplayName])"></span>
+            <div class="oui-checkbox mt-4" data-ng-if="ctrl.wwwDomainToDelete.data">
+                <input type="checkbox" class="oui-checkbox__input" id="removeWWW" name="removeWWW"
+                       data-ng-model="ctrl.wwwDomainToDelete.removeWWW" >
+                <label class="oui-checkbox__label-container" for="removeWWW">
+                    <span class="oui-checkbox__label"
+                          data-ng-bind-html="tr('domain_tab_REDIRECTION_delete_www_confirm', [ctrl.constructor.getDomainName(ctrl.wwwDomainToDelete.data), ctrl.wwwDomainToDelete.data.targetDisplayName])"></span>
+                    <span class="oui-checkbox__icon">
+                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                    </span>
                 </label>
             </div>
         </div>

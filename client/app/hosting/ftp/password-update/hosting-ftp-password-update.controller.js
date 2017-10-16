@@ -1,29 +1,46 @@
-angular.module("App").controller("HostingFtpUserUpdatePasswordCtrl", ($scope, $stateParams, Hosting, HostingUser, Alerter) => {
-    "use strict";
+angular.module("App").controller(
+    "HostingFtpUserUpdatePasswordCtrl",
+    class HostingFtpUserUpdatePasswordCtrl {
+        constructor ($scope, $stateParams, Alerter, Hosting, HostingUser) {
+            this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.Hosting = Hosting;
+            this.HostingUser = HostingUser;
+        }
 
-    $scope.login = $scope.currentActionData;
-    $scope.password = {
-        value: null,
-        confirmation: null
-    };
+        $onInit () {
+            this.condition = this.Hosting.constructor.getPasswordConditions();
+            this.login = this.$scope.currentActionData;
+            this.password = {
+                value: null,
+                confirmation: null
+            };
 
-    $scope.condition = Hosting.constructor.getPasswordConditions();
+            this.$scope.updatePassword = () => this.updatePassword();
+        }
 
-    $scope.isPasswordValid = () => $scope.password.value && $scope.password.confirmation && $scope.password.value === $scope.password.confirmation && Hosting.constructor.isPasswordValid($scope.password.value);
+        isPasswordValid () {
+            return this.password.value && this.password.confirmation && this.password.value === this.password.confirmation && this.Hosting.constructor.isPasswordValid(this.password.value);
+        }
 
-    $scope.getPasswordInvalidClass = () => !Hosting.constructor.isPasswordValid(_.get($scope.password, "value"));
+        isPasswordInvalid () {
+            return !this.Hosting.constructor.isPasswordValid(_.get(this.password, "value"));
+        }
 
-    $scope.getPasswordConfirmationInvalidClass = () => $scope.password.value !== $scope.password.confirmation;
+        isPasswordConfirmationInvalid () {
+            return this.password.value !== this.password.confirmation;
+        }
 
-    $scope.updatePassword = function () {
-        $scope.resetAction();
-        HostingUser.changePassword($stateParams.productId, $scope.login, $scope.password.value).then(
-            () => {
-                Alerter.success($scope.tr("hosting_tab_FTP_configuration_change_password_success"), $scope.alerts.dashboard);
-            },
-            (data) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_FTP_configuration_change_password_fail", [$scope.login]), data.data, $scope.alerts.dashboard);
-            }
-        );
-    };
-});
+        updatePassword () {
+            this.$scope.resetAction();
+            return this.HostingUser.changePassword(this.$stateParams.productId, this.login, this.password.value)
+                .then(() => {
+                    this.Alerter.success(this.$scope.tr("hosting_tab_FTP_configuration_change_password_success"), this.$scope.alerts.main);
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_change_password_fail", [this.login]), _.get(err, "data", err), this.$scope.alerts.main);
+                });
+        }
+    }
+);

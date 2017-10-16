@@ -27,7 +27,7 @@ angular.module("App").controller(
                     email: this.email
                 })
                 .then((task) => {
-                    this.Alerter.success(this.$scope.tr("mailing_list_tab_modal_sendListByEmail_success", this.email), this.$scope.alerts.dashboard);
+                    this.Alerter.success(this.$scope.tr("mailing_list_tab_modal_sendListByEmail_success", this.email), this.$scope.alerts.main);
 
                     // no return here
                     this.MailingLists.pollState(this.$stateParams.productId, {
@@ -36,7 +36,7 @@ angular.module("App").controller(
                         namespace: "mailingLists.subscribers.sendListByEmail.poll"
                     });
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_sendListByEmail_error"), _.get(err, "data", err), this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_sendListByEmail_error"), _.get(err, "data", err), this.$scope.alerts.main))
                 .finally(() => {
                     this.loading = false;
                     this.$scope.resetAction();

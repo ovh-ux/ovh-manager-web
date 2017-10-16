@@ -89,7 +89,7 @@ angular.module("App").controller("HostingTabDatabasesCtrl", function ($scope, $s
 
     $scope.deleteDatabase = (database) => $scope.setAction("database/delete/hosting-database-delete", database.name);
 
-    $scope.createDump = (database) => $scope.setAction("database/dump/hosting-database-dump", database.name);
+    $scope.createDump = (database) => $scope.setAction("database/dump/add/hosting-database-dump-add", database.name);
 
     $scope.importFromFile = (database) => $scope.setAction("database/import/hosting-database-import", database.name);
 
@@ -97,7 +97,7 @@ angular.module("App").controller("HostingTabDatabasesCtrl", function ($scope, $s
 
     $scope.restoreDump = (database) => {
         $scope.bdd = database;
-        $scope.bddTemplate = "hosting/database/DATABASE_DUMPS.html";
+        $scope.bddTemplate = "hosting/database/dump/DUMPS.html";
     };
 
     $scope.restoreDatabaseBackup = (database, backupType, sendEmail) => {
@@ -110,14 +110,13 @@ angular.module("App").controller("HostingTabDatabasesCtrl", function ($scope, $s
 
         deferred.promise
             .then(() => {
-                HostingDatabase.restoreBDDBackup($stateParams.productId, database.name, backupType, sendEmail).then(
-                    () => {
-                        Alerter.success($scope.tr("database_tabs_dumps_restore_in_start"), this.$scope.alerts.dashboard);
-                    },
-                    (err) => {
-                        Alerter.alertFromSWS($scope.tr("database_tabs_dumps_restore_fail"), err, this.$scope.alerts.dashboard);
-                    }
-                );
+                HostingDatabase.restoreBDDBackup($stateParams.productId, database.name, backupType, sendEmail)
+                    .then(() => {
+                        Alerter.success($scope.tr("database_tabs_dumps_restore_in_start"), $scope.alerts.main);
+                    })
+                    .catch((err) => {
+                        Alerter.alertFromSWS($scope.tr("database_tabs_dumps_restore_fail"), err, $scope.alerts.main);
+                    });
             })
             .then(() => {
                 reloadCurrentPage();
@@ -171,7 +170,7 @@ angular.module("App").controller("HostingTabDatabasesCtrl", function ($scope, $s
                 $scope.databases.ids = ids;
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_databases_get_error"), err, "hosting_tab_databases_alert");
+                Alerter.alertFromSWS($scope.tr("hosting_tab_databases_get_error"), err, $scope.alerts.main);
             })
             .finally(() => {
                 if (_.isEmpty($scope.databases.ids)) {

@@ -12,20 +12,21 @@
              data-wizard-step-on-next="checkEmails"
              data-wizard-step-valid="model.domain">
 
-            <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loading.availableOffer"></div>
+            <div class="text-center" data-ng-if="loading.availableOffer">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
-            <form class="mt-4" name="orderUpgradeForm"
-                  data-ng-if="!loading.availableOffer">
-
-                <div class="form-group">
-                    <label class="control-label" for="domains"
-                           data-i18n-static="hosting_change_main_domain_domains"></label>
-                    <select class="form-control" id="domains" name="domains"
+            <form name="orderUpgradeForm" data-ng-if="!loading.availableOffer">
+                <label class="oui-label" for="domains"
+                       data-i18n-static="hosting_change_main_domain_domains"></label>
+                <div class="oui-select">
+                    <select class="oui-select__input" id="domains" name="domains"
                             data-ng-model="model.domain"
                             data-ng-options="availableOffer for availableOffer in (availableOffers | orderBy:orderByOffer) track by availableOffer">
                         <option value="" disabled
-                                data-i18n-static="select_option"></option>
+                                data-i18n-static="select_placeholder"></option>
                     </select>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                 </div>
             </form>
 
@@ -48,7 +49,9 @@
         <div data-wizard-step
              data-wizard-step-valid="validateEmailDecision()">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.emailDecision"></div>
+            <div class="text-center" data-ng-if="loading.emailDecision">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <p data-i18n-static="hosting_change_main_domain_no_email"
                data-ng-if="!loading.emailDecision && !emails.data.length"></p>
@@ -65,41 +68,43 @@
                 <p data-i18n-static="hosting_change_main_domain_email_proposal"></p>
 
                 <form class="form-horizontal" name="emailDecision">
-                    <div class="ml-4">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emailsKeep" checked
-                                       data-ng-model="emails.keep"
-                                       data-ng-value="false">
-                                <span data-ng-bind="tr('hosting_change_main_domain_delete_emails')"></span>
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="emailsKeep"
-                                       data-ng-model="emails.keep"
-                                       data-ng-value="true">
-                                <span data-ng-bind="tr('hosting_change_main_domain_keep_emails')"></span>
-                            </label>
-                        </div>
+                    <div class="oui-radio">
+                        <input type="radio" class="oui-radio__input" id="emailsKeep-no" name="emailsKeep" checked
+                               data-ng-model="emails.keep"
+                               data-ng-value="false">
+                        <label class="oui-radio__label-container" for="emailsKeep-no">
+                            <span class="oui-radio__label"
+                                  data-ng-bind="tr('hosting_change_main_domain_delete_emails')"></span>
+                        </label>
+                    </div>
+                    <div class="oui-radio">
+                        <input type="radio" class="oui-radio__input" id="emailsKeep-yes" name="emailsKeep"
+                               data-ng-model="emails.keep"
+                               data-ng-value="true">
+                        <label class="oui-radio__label-container" for="emailsKeep-yes">
+                            <span class="oui-radio__label"
+                                  data-ng-bind="tr('hosting_change_main_domain_keep_emails')"></span>
+                        </label>
                     </div>
 
-                    <div class="alert alert-warning my-4" role="alert"
+                    <div class="alert alert-warning" role="alert"
                          data-i18n-static="hosting_change_main_domain_warning_delete_emails"
                          data-ng-if="model.domain && emails.hasSome && (model.mxplan === 'delete' || !emails.keep)"></div>
 
-                    <div class="mt-4"
-                         data-ng-if="model.domain && emails.hasSome && emails.keep">
+                    <div data-ng-if="model.domain && emails.hasSome && emails.keep">
                         <div class="form-group">
                             <label class="control-label col-md-3" for="mxplan"
                                    data-i18n-static="hosting_change_main_domain_mxplan"></label>
                             <div class="col-md-6">
-                                <select class="form-control" id="mxplan" name="mxplan"
-                                        data-ng-model="model.mxplan"
-                                        data-ng-options="(i18n['hosting_change_main_domain_alt_mx_' + mxplan] || mxplan) for mxplan in mxplanEnum track by mxplan">
-                                    <option value="" disabled
-                                            data-i18n-static="select_option"></option>
-                                </select>
+                                <div class="oui-select">
+                                    <select class="oui-select__input" id="mxplan" name="mxplan"
+                                            data-ng-model="model.mxplan"
+                                            data-ng-options="(i18n['hosting_change_main_domain_alt_mx_' + mxplan] || mxplan) for mxplan in mxplanEnum track by mxplan">
+                                        <option value="" disabled
+                                                data-i18n-static="select_placeholder"></option>
+                                    </select>
+                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                                </div>
                             </div>
                         </div>
                         <p data-ng-bind-html="tr('hosting_change_main_domain_mx_link', [emails.urlGuideMxplan,'_blank', '<span class=\'icon-share-alt\'></span>'])"></p>
@@ -114,17 +119,21 @@
              data-wizard-step-on-previous="billingOnPrevious"
              data-wizard-step-valid="validateOrder()">
 
-            <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loading.validation"></div>
+            <div class="text-center" data-ng-if="loading.validation">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!loading.validation">
                 <div data-contracts="model.duration.contracts"
                      data-full-text="false"
                      data-ng-model="agree.value"></div>
 
-                <p class="mt-5" data-i18n-static="hosting_order_upgrade_resume"></p>
+                <p class="mt-5"
+                   data-i18n-static="hosting_order_upgrade_resume"></p>
+
                 <table class="table table-condensed">
                     <tbody>
-                        <tr data-ng-repeat="detail in model.duration.details">
+                        <tr data-ng-repeat="detail in model.duration.details track by $index">
                             <th class="font-weight-normal" scope="row">
                                 <span data-ng-bind="detail.description"></span>
                                 <strong data-ng-bind="detail.domain"

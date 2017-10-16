@@ -1,34 +1,38 @@
-angular.module("App").controller("HostingDomainAttachOrOrderCtrl", [
-    "$scope",
-    "$rootScope",
-    "$window",
+angular.module("App").controller(
+    "HostingDomainAttachOrOrderCtrl",
+    class HostingDomainAttachOrOrderCtrl {
+        constructor ($scope, $rootScope, $window) {
+            this.$scope = $scope;
+            this.$rootScope = $rootScope;
+            this.$window = $window;
+        }
 
-    function ($scope, $rootScope, $window) {
-        "use strict";
+        $onInit () {
+            this.model = {
+                actions: {
+                    ORDER: "ORDER",
+                    ATTACH: "ATTACH"
+                }
+            };
+            this.selected = {
+                action: null
+            };
 
-        $scope.model = {
-            actions: {
-                ORDER: "ORDER",
-                ATTACH: "ATTACH"
-            }
-        };
+            this.$scope.orderDomain = () => this.orderDomain();
+        }
 
-        $scope.selected = {
-            action: null
-        };
-
-        $scope.submit = () => {
-            switch ($scope.selected.action) {
-            case $scope.model.actions.ORDER:
-                $window.open($scope.urlDomainOrder);
-                $scope.resetAction();
+        orderDomain () {
+            switch (this.selected.action) {
+            case this.model.actions.ORDER:
+                this.$window.open(this.$scope.urlDomainOrder);
+                this.$scope.resetAction();
                 break;
-            case $scope.model.actions.ATTACH:
-                $scope.setAction("multisite/add/hosting-multisite-add", { domains: $scope.domains });
+            case this.model.actions.ATTACH:
+                this.$scope.setAction("multisite/add/hosting-multisite-add", { domains: this.$scope.domains });
                 break;
             default:
                 break;
             }
-        };
+        }
     }
-]);
+);

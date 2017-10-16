@@ -1,18 +1,28 @@
-angular.module("App").controller("HostingModuleChangePasswordCtrl", ($scope, $stateParams, HostingModule, Alerter) => {
-    "use strict";
+angular.module("App").controller(
+    "HostingModuleChangePasswordCtrl",
+    class HostingModuleChangePasswordCtrl {
+        constructor ($scope, $stateParams, Alerter, HostingModule) {
+            this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.HostingModule = HostingModule;
+        }
 
-    $scope.moduleToUpdate = $scope.currentActionData;
+        $onInit () {
+            this.moduleToUpdate = this.$scope.currentActionData;
+            this.$scope.updatePasswordModule = () => this.updatePasswordModule();
+        }
 
-    $scope.updatePasswordModule = function () {
-        $scope.resetAction();
-        HostingModule.changePassword($stateParams.productId, $scope.moduleToUpdate.id).then(
-            () => {
-                Alerter.success($scope.tr("hosting_configuration_tab_modules_update_success"), $scope.alerts.dashboard);
-            },
-            (data) => {
-                Alerter.alertFromSWS($scope.tr("hosting_configuration_tab_modules_update_fail", [$scope.entryToDelete]), data.data, $scope.alerts.dashboard);
-                $scope.resetActions();
-            }
-        );
-    };
-});
+        updatePasswordModule () {
+            this.$scope.resetAction();
+            return this.HostingModule.changePassword(this.$stateParams.productId, this.moduleToUpdate.id)
+                .then(() => {
+                    this.Alerter.success(this.$scope.tr("hosting_configuration_tab_modules_update_success"), this.$scope.alerts.main);
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_configuration_tab_modules_update_fail", [this.moduleToUpdate]), _.get(err, "data", err), this.$scope.alerts.main);
+                    this.$scope.resetActions();
+                });
+        }
+    }
+);

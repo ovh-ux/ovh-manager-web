@@ -1,26 +1,29 @@
-<div id="main-container" data-ng-controller="UserCtrl">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-12 col-md-10">
-                <div class="text-center mt-5 py-5">
-                    <h1 class="d-inline">
+<div class="container-fluid" id="main-container" data-ng-controller="UserCtrl">
+    <div class="row">
+        <div class="col-xs-12 col-md-10">
+            <div class="text-center mt-5 py-5">
+                <h1 class="d-inline">
                     <span data-i18n-static="welcome_to_your_manager_1"></span>
                     <span data-i18n-static="welcome_to_your_manager_2"></span>
-                    </h1>
-                    <p class="lead" data-ng-bind-html="tr('core_top_guides_header',[ConfigurationCtrl.allGuides])"></p>
-                </div>
+                </h1>
+                <p class="lead"
+                   data-ng-bind-html="tr('core_top_guides_header',[ConfigurationCtrl.allGuides])"></p>
+            </div>
 
-                <div class="container-fluid">
-                    <div class="row d-md-flex" data-ng-if="!loaders.loading && user.ovhSubsidiary === 'FR'">
-                        <div class="col-md-8 col-lg-5 mx-md-auto">
-                            <div class="oui-tile" data-ng-repeat="(key, value) in ConfigurationCtrl.guides track by $index">
-                                <h2 class="oui-header__title">{{ tr('core_type_of_guide_' + key) }}</h2>
-                                <ul class="mb-4">
-                                    <li class="top-guide-item" data-ng-repeat="guide in value track by $index">
-                                        <a data-ng-href="{{guide.url}}"
-                                           target="_blank"
-                                           data-ng-bind="i18n[guide.title]">
-                                        </a>
+            <div class="container-fluid">
+                <div class="row d-md-flex" data-ng-if="!loaders.loading && user.ovhSubsidiary === 'FR'">
+                    <div class="col-md-10 col-lg-8 mx-md-auto">
+                        <div class="oui-tile" data-ng-repeat="(key, value) in ConfigurationCtrl.guides track by $index">
+                            <h2 class="oui-tile__title">{{ tr('core_type_of_guide_' + key) }}</h2>
+                            <div class="oui-tile__body px-5">
+                                <ul class="list-unstyled mb-4">
+                                    <li class="oui-tile__item" data-ng-repeat="guide in value track by $index">
+                                        <div class="oui-tile__definition">
+                                            <a target="_blank"
+                                               data-ng-bind="i18n[guide.title]"
+                                               data-ng-href="{{guide.url}}">
+                                            </a>
+                                        </div>
                                     </li>
                                 </ul>
                                 <a class="btn btn-default" data-ng-href="{{ ConfigurationCtrl.allGuides }}" target="_blank">
@@ -32,18 +35,16 @@
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="hidden-sm col-md-2 mt-5 py-5">
-                <a data-ng-href="{{ user.ovhSubsidiary === 'FR' ? 'https://summit.ovh.com/fr/#xtor=CS4-32-[web-banner]' : 'https://summit.ovh.com/en/#xtor=CS4-32-[web-banner]' }}"
-                   target="_blank"
-                   data-ng-attr-title="{{ user.ovhSubsidiary === 'FR' ? 'OVH Summit 2017: Je participe !' : 'OVH Summit 2017: Register for free' }}"
-                   rel="noopener"
-                   data-ng-click="onBannerClick()">
-                    <img class="img-responsive"
-                         data-ng-src="{{ 'assets/images/summit/2017-banner-' + (user.ovhSubsidiary === 'FR' ? 'fr' : 'en') + '.png' }}"
-                         alt="OVH Summit 2017" />
-                </a>
-            </div>
+        <div class="hidden-sm col-md-2 mt-5 py-5">
+            <a target="_blank" rel="noopener"
+               data-ng-click="onBannerClick()"
+               data-ng-href="{{ user.ovhSubsidiary === 'FR' ? 'https://summit.ovh.com/fr/#xtor=CS4-32-[web-banner]' : 'https://summit.ovh.com/en/#xtor=CS4-32-[web-banner]' }}"
+               data-ng-attr-title="{{ user.ovhSubsidiary === 'FR' ? 'OVH Summit 2017: Je participe !' : 'OVH Summit 2017: Register for free' }}">
+                <img class="img-responsive" alt="OVH Summit 2017"
+                     data-ng-src="{{ 'assets/images/summit/2017-banner-' + (user.ovhSubsidiary === 'FR' ? 'fr' : 'en') + '.png' }}">
+            </a>
         </div>
     </div>
 </div>

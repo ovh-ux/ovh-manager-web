@@ -1,24 +1,34 @@
-angular.module("App").controller("HostingDatabaseRestoreCtrl", ($scope, $stateParams, Alerter, HostingDatabase) => {
-    "use strict";
+angular.module("App").controller(
+    "HostingDatabaseRestoreCtrl",
+    class HostingDatabaseRestoreCtrl {
+        constructor ($scope, $stateParams, Alerter, HostingDatabase) {
+            this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.HostingDatabase = HostingDatabase;
+        }
 
-    $scope.bdd = angular.copy($scope.currentActionData.bdd);
-    $scope.dump = angular.copy($scope.currentActionData.dump);
-    $scope.loading = false;
+        $onInit () {
+            this.bdd = angular.copy(this.$scope.currentActionData.bdd);
+            this.dump = angular.copy(this.$scope.currentActionData.dump);
+            this.loading = false;
 
-    $scope.restoreBDD = function () {
-        $scope.loading = true;
-        HostingDatabase.restoreBDD($stateParams.productId, $scope.bdd.name, $scope.dump)
-            .then(
-                () => {
-                    Alerter.success($scope.tr("database_tabs_dumps_restore_in_start"), $scope.alerts.dashboard);
-                },
-                (err) => {
-                    Alerter.alertFromSWS($scope.tr("database_tabs_dumps_restore_fail"), err, $scope.alerts.dashboard);
-                }
-            )
-            .finally(() => {
-                $scope.loading = false;
-                $scope.resetAction();
-            });
-    };
-});
+            this.$scope.restoreBDD = () => this.restoreBDD();
+        }
+
+        restoreBDD () {
+            this.loading = true;
+            return this.HostingDatabase.restoreBDD(this.$stateParams.productId, this.bdd.name, this.dump)
+                .then(() => {
+                    this.Alerter.success(this.$scope.tr("database_tabs_dumps_restore_in_start"), this.$scope.alerts.main);
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("database_tabs_dumps_restore_fail"), err, this.$scope.alerts.main);
+                })
+                .finally(() => {
+                    this.loading = false;
+                    this.$scope.resetAction();
+                });
+        }
+    }
+);

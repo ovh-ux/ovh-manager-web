@@ -102,7 +102,7 @@
                             traduction = err.data.split(":")[0] === "402" ? "website_creation_error_quotas" : "website_creation_error";
                         }
 
-                        Alerter.alertFromSWS($scope.tr(traduction), { message: err.data ? err.data : err.message, type: "ERROR" }, self.alerts);
+                        Alerter.alertFromSWS($scope.tr(traduction), { message: _.get(err, "data", err.message), type: "ERROR" }, self.alerts);
                     }
                 )
                 .finally(() => {
@@ -123,7 +123,7 @@
 
         $scope.$on("hostingDomain.modifyDomain.error", (err) => {
             if (!errorLoad) {
-                Alerter.alertFromSWS($scope.tr("website_creation_error"), err.data, self.alerts);
+                Alerter.alertFromSWS($scope.tr("website_creation_error"), _.get(err, "data", err), self.alerts);
             }
         });
 

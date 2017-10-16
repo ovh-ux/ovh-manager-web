@@ -1,31 +1,46 @@
-angular.module("App").service("HostingIndy", function (constants, OvhHttp) {
-    "use strict";
-
+{
     const cache = {
         indys: "UNIVERS_WEB_INDYS",
         indy: "UNIVERS_WEB_INDY"
     };
 
-    this.getIndys = function (serviceName, opts = {}) {
-        return OvhHttp.get("/hosting/web/{serviceName}/indy", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            params: opts.params,
-            cache: cache.indys,
-            clearAllCache: opts.forceRefresh
-        });
-    };
+    angular
+        .module("services")
+        .service("HostingIndy", class HostingIndy {
 
-    this.getIndy = function (serviceName, opts) {
-        return OvhHttp.get("/hosting/web/{serviceName}/indy/{login}", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                login: opts.login
-            },
-            cache: cache.indy
-        });
-    };
-});
+            /**
+             * Constructor
+             * @param OvhHttp
+             */
+            constructor (OvhHttp) {
+                this.OvhHttp = OvhHttp;
+            }
+
+            /**
+             * Get Indys
+             * @param {string} serviceName
+             * @param {object} opts
+             */
+            getIndys (serviceName, opts = {}) {
+                return this.OvhHttp.get(`/hosting/web/${serviceName}/indy`, {
+                    rootPath: "apiv6",
+                    params: opts.params,
+                    cache: cache.indys,
+                    clearAllCache: opts.forceRefresh
+                });
+            }
+
+            /**
+             * Get Indy
+             * @param {string} serviceName
+             * @param {object} opts
+             */
+            getIndy (serviceName, opts) {
+                return this.OvhHttp.get(`/hosting/web/${serviceName}/indy/${opts.login}`, {
+                    rootPath: "apiv6",
+                    cache: cache.indy
+                });
+            }
+        }
+    );
+}

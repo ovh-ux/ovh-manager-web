@@ -19,11 +19,15 @@ angular.module("App").controller(
 
         $onInit () {
             this.loading = {
-                domainsInfos: true
+                init: true,
+                domainsInfos: false
             };
             this.stepPath = "";
 
-            this.$scope.alerts = { dashboard: "domain_alert_dashboard" };
+            this.$scope.alerts = {
+                page: "domain_alert_page",
+                main: "domain_alert_main"
+            };
             this.$scope.currentAction = null;
             this.$scope.currentActionData = null;
             this.$scope.domain = {};
@@ -50,8 +54,6 @@ angular.module("App").controller(
                 }
             };
 
-            this.$scope.$on("domain.dashboard.refresh", () => this.loadDomain());
-
             this.loadDomain();
         }
 
@@ -67,7 +69,10 @@ angular.module("App").controller(
                     }
                 })
                 .catch(() => this.Alerter.error(this.$scope.tr("domain_dashboard_loading_error")))
-                .finally(() => (this.loading.domainsInfos = false));
+                .finally(() => {
+                    this.loading.init = false;
+                    this.loading.domainsInfos = false;
+                });
         }
     }
 );

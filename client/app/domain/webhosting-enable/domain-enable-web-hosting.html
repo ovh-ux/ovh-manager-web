@@ -12,7 +12,9 @@
              data-wizard-step-on-next="checkModuleForNextStep"
              data-wizard-step-valid="!ctrl.loading.init && ctrl.model.offer">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading.init"></div>
+            <div class="text-center" data-ng-if="ctrl.loading.init">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading.init">
                 <div class="mt-4"
@@ -45,9 +47,13 @@
                     <tbody>
                         <tr data-ng-repeat="offer in ctrl.offers | orderBy:orderByOfferPrice track by $index">
                             <td>
-                                <input type="radio" id="offer-{{offer.offer}}" name="hostingOffer" value="{{ offer.offer }}"
-                                       data-ng-disabled="offer.offer === ctrl.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE && ctrl.model.templateSelected"
-                                       data-ng-model="ctrl.model.offer">
+                                <div class="oui-radio m-0">
+                                    <input type="radio" class="oui-radio__input" id="offer-{{offer.offer}}" name="hostingOffer"
+                                           data-ng-disabled="offer.offer === ctrl.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE && ctrl.model.templateSelected"
+                                           data-ng-model="ctrl.model.offer"
+                                           data-ng-value="offer.offer">
+                                    <span class="oui-radio__label-container"></span>
+                                </div>
                             </td>
                             <td id="label-{{ offer.offer }}">
                                 <label class="d-block" for="offer-{{offer.offer}}">
@@ -74,19 +80,22 @@
              data-wizard-step-on-load="initDnsZone"
              data-wizard-step-valid="ctrl.dnsZones.length && ctrl.model.dnsZone">
 
-            <div class="loader text-center" data-ng-if="ctrl.dnsZones.length === 0"></div>
+            <div class="text-center" data-ng-if="ctrl.dnsZones.length === 0">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="ctrl.dnsZones.length > 0">
 
                 <p data-i18n-static="domain_configuration_web_hosting_dns_reset"></p>
 
                 <form class="ml-4">
-                    <div class="radio" data-ng-repeat="dnsZone in ctrl.dnsZones track by $index">
-                        <label>
-                            <input type="radio" name="dnsZone.key"
-                                   data-ng-model="ctrl.model.dnsZone"
-                                   data-ng-value="dnsZone.key">
-                            <span data-ng-bind="tr(dnsZone.title, ctrl.domain.displayName)"></span>
+                    <div class="oui-radio" data-ng-repeat="dnsZone in ctrl.dnsZones track by $index">
+                        <input type="radio" class="oui-radio__input" id="dnsZoneKey-{{$index}}" name="dnsZone.key"
+                               data-ng-model="ctrl.model.dnsZone"
+                               data-ng-value="dnsZone.key">
+                        <label class="oui-radio__label-container" for="dnsZoneKey-{{$index}}">
+                            <span class="oui-radio__label"
+                                  data-ng-bind="tr(dnsZone.title, ctrl.domain.displayName)"></span>
                         </label>
                         <div class="alert alert-info mb-5 ml-4 mt-3" role="alert"
                              data-ng-bind="tr(dnsZone.helpMsg)"
@@ -119,7 +128,9 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading.order">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading.order"></div>
+            <div class="text-center" data-ng-if="ctrl.loading.order">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div class="mt-5" data-ng-if="!ctrl.loading.order">
                 <table class="table table-condensed">

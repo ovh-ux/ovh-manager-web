@@ -1,112 +1,101 @@
-angular.module("App").controller("HostingTabUserLogsCtrl", ($scope, $stateParams, Hosting, Alerter, $filter, constants, User) => {
-    "use strict";
-
-    $scope.loaders = {
-        userLogs: false,
-        pager: false
-    };
-    $scope.userLogsToken = null;
-    $scope.itemsPerPage = 10;
-    $scope.nbPages = 1;
-
-    //---------------------------------------------
-    // INIT
-    //---------------------------------------------
-    $scope.init = () => {
-        $scope.userLogs = {
-            details: []
-        };
-        $scope.refreshTableUserLogs();
-
-        Hosting.getUserLogsToken($stateParams.productId, {
-            params: {
-                remoteCheck: true,
-                ttl: 3600
-            }
-        }).then((token) => {
-            $scope.userLogsToken = token;
-        });
-
-        User.getUrlOf("guides").then((guides) => {
-            if (guides && guides.hostingStatsLogs) {
-                $scope.guide = guides.hostingStatsLogs;
-            }
-        });
-
-        if (parseInt($scope.hostingProxy.cluster.split("cluster")[1], 10) >= 20) {
-            // FOR GRAVELINE
-            $scope.urlUrchin = URI.expand(constants.urchin_gra, {
-                serviceName: $scope.hosting.serviceName,
-                cluster: $scope.hostingProxy.cluster
-            }).toString();
-
-            $scope.urlLogs = URI.expand(constants.stats_logs_gra, {
-                serviceName: $scope.hosting.serviceName,
-                cluster: $scope.hostingProxy.cluster
-            }).toString();
-        } else {
-            $scope.urlUrchin = URI.expand(constants.urchin, {
-                serviceName: $scope.hosting.serviceName,
-                cluster: $scope.hostingProxy.cluster
-            }).toString();
-
-            $scope.urlLogs = URI.expand(constants.stats_logs, {
-                serviceName: $scope.hosting.serviceName,
-                cluster: $scope.hostingProxy.cluster
-            }).toString();
+angular.module("App").controller(
+    "HostingTabUserLogsCtrl",
+    class HostingTabUserLogsCtrl {
+        constructor ($scope, $filter, $stateParams, Alerter, constants, Hosting, User) {
+            this.$scope = $scope;
+            this.$filter = $filter;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.constants = constants;
+            this.Hosting = Hosting;
+            this.User = User;
         }
-    };
 
-    //---------------------------------------------
-    // USER LOGS
-    //---------------------------------------------
-    $scope.refreshTableUserLogs = () => {
-        $scope.loaders.userLogs = true;
-        $scope.userLogs.ids = null;
+        $onInit () {
+            this.hosting = this.$scope.hosting;
+            this.loaders = {
+                pager: false,
+                userLogs: false
+            };
+            this.userLogs = {
+                details: []
+            };
+            this.userLogsToken = null;
 
-        Hosting.getUserLogs($stateParams.productId)
-            .then((data) => {
-                $scope.userLogs.ids = $filter("orderBy")(data);
-            })
-            .catch((err) => {
-                Alerter.alertFromSWS(err);
-            })
-            .finally(() => {
-                if (_.isEmpty($scope.userLogs.ids)) {
-                    $scope.loaders.userLogs = false;
-                    $scope.loaders.pager = false;
-                }
+            this.$scope.itemsPerPage = 10;
+            this.$scope.nbPages = 1;
+
+            this.$scope.$on("hosting.userLogs.refresh", () => {
+                this.refreshTableUserLogs();
             });
-    };
 
-    $scope.$on("hosting.userLogs.refresh", () => {
-        $scope.refreshTableUserLogs();
-    });
+            this.Hosting.getUserLogsToken(this.$stateParams.productId, {
+                params: {
+                    remoteCheck: true,
+                    ttl: 3600
+                }
+            }).then((token) => {
+                this.userLogsToken = token;
+            });
 
-    /*
-     * if you want transform item must return transformated item
-     * item is the current item to transform
-     */
-    $scope.transformItem = (item) => Hosting.getUserLogsEntry($stateParams.productId, item).catch(() => ({ login: item }));
+            this.User.getUrlOf("guides")
+                .then((guides) => {
+                    this.guide = _.get(guides, "hostingStatsLogs");
+                });
 
-    /*
-     * call when all item of current page are transformed
-     * tasksDetails contains transformated item
-     */
-    $scope.onTransformItemDone = () => {
-        $scope.loaders.userLogs = false;
-        $scope.loaders.pager = false;
-    };
+            if (parseInt(this.$scope.hostingProxy.cluster.split("cluster")[1], 10) >= 20) {
+                // FOR GRAVELINE
+                this.urlUrchin = URI.expand(this.constants.urchin_gra, {
+                    serviceName: this.$stateParams.productId,
+                    cluster: this.$scope.hostingProxy.cluster
+                }).toString();
 
-    $scope.deleteUser = (user) => {
-        $scope.setAction("user-logs/delete/hosting-user-logs-delete", user.login);
-    };
+                this.urlLogs = URI.expand(this.constants.stats_logs_gra, {
+                    serviceName: this.$stateParams.productId,
+                    cluster: this.$scope.hostingProxy.cluster
+                }).toString();
+            } else {
+                this.urlUrchin = URI.expand(this.constants.urchin, {
+                    serviceName: this.$stateParams.productId,
+                    cluster: this.$scope.hostingProxy.cluster
+                }).toString();
 
-    $scope.modifyUser = (user) => {
-        $scope.setAction("user-logs/update/hosting-user-logs-update", user);
-    };
+                this.urlLogs = URI.expand(this.constants.stats_logs, {
+                    serviceName: this.$stateParams.productId,
+                    cluster: this.$scope.hostingProxy.cluster
+                }).toString();
+            }
 
-    $scope.updateUserPassword = (user) => {
-        $scope.setAction("user-logs/password-update/hosting-user-logs-update-password", user.login);
-    };
-});
+            this.refreshTableUserLogs();
+        }
+
+        refreshTableUserLogs () {
+            this.loaders.userLogs = true;
+            this.userLogs.ids = null;
+
+            return this.Hosting.getUserLogs(this.$stateParams.productId)
+                .then((data) => {
+                    this.userLogs.ids = this.$filter("orderBy")(data);
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(err);
+                })
+                .finally(() => {
+                    if (_.isEmpty(this.userLogs.ids)) {
+                        this.loaders.userLogs = false;
+                        this.loaders.pager = false;
+                    }
+                });
+        }
+
+        transformItem (item) {
+            return this.Hosting.getUserLogsEntry(this.$stateParams.productId, item)
+                .catch(() => ({ login: item }));
+        }
+
+        onTransformItemDone () {
+            this.loaders.userLogs = false;
+            this.loaders.pager = false;
+        }
+    }
+);

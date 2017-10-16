@@ -5,14 +5,13 @@
          data-wizard-confirm-button-text="i18n.privateDatabase_modale_oom_confirm_button"
          data-wizard-cancel-button-text="i18n.privateDatabase_modale_oom_close_button"
          data-wizard-hide-confirm-button="oomCtrl.database.oom.realList.length >= oomCtrl.database.oom.nbOomError"
-         data-wizard-title="i18n.privateDatabase_modale_oom_title"
-         data-wizard-title-icon="'icon-add-database'">
+         data-wizard-title="i18n.privateDatabase_modale_oom_title">
 
         <div data-wizard-step>
 
             <p data-ng-bind-html="tr('privateDatabase_modale_oom_info', [oomCtrl.NB_DAY_OOM, oomCtrl.NB_MAX_OOM])"></p>
 
-            <table class="mt-3 table table-hover pretty">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col" data-i18n-static="privateDatabase_modale_oom_tab_event_date"></th>
@@ -22,37 +21,37 @@
                 </thead>
 
                 <!-- LOADING -->
-                <tbody data-ng-show="oomCtrl.isLoading()">
+                <tbody data-ng-if="oomCtrl.isLoading()">
                     <tr>
                         <td class="loader center" colspan="3"></td>
                     </tr>
                 </tbody>
 
                 <!-- EMPTY -->
-                <tbody data-ng-show="oomCtrl.oomList.length === 0">
+                <tbody data-ng-if="oomCtrl.oomList.length === 0">
                     <tr>
-                        <td class="text-center" colspan="3" data-i18n-static="privateDatabase_modale_oom_no_oom"></td>
+                        <td class="text-center" colspan="3"
+                            data-i18n-static="privateDatabase_modale_oom_no_oom"></td>
                     </tr>
                 </tbody>
 
                 <!-- DATA -->
-                <tbody>
-                    <tr data-ng-if="oomCtrl.oomList.length > 0" data-ng-repeat="oom in oomList | orderBy:'-date' track by $index">
-                        <th scope="row" class="">{{oom.date | date:"medium" }}</th>
-                        <td class="text-center">{{oom.sizeReached.value + i18n['unit_size_' + oom.sizeReached.symbol]}}</td>
+                <tbody data-ng-if="oomCtrl.oomList.length > 0">
+                    <tr data-ng-repeat="oom in oomList | orderBy:'-date' track by $index">
+                        <th scope="row"
+                            data-ng-bind="oom.date | date:'medium'"></th>
+                        <td class="text-center"
+                            data-ng-bind="oom.sizeReached.value + i18n['unit_size_' + oom.sizeReached.symbol]"></td>
                         <td class="text-center">
-                            <span data-ng-if="oom.uptime !== -1">
-                                {{oom.uptime}}
-                            </span>
-                            <span data-ng-if="oom.uptime === -1">
-                                -
-                            </span>
+                            <span data-ng-if="oom.uptime !== -1"
+                                  data-ng-bind="oom.uptime"></span>
+                            <span data-ng-if="oom.uptime === -1">-</span>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
-            <div class="clearfix table table-pretty"
+            <div class="clearfix"
                  data-pagination-front
                  data-items="oomCtrl.oomList"
                  data-paginated-items="oomList"
@@ -64,8 +63,9 @@
                  data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
                  data-item-per-page-placeholder="{{tr('pagination_display')}}"></div>
 
-            <div class="mt-3" data-ng-if="oomCtrl.database.oom.realList.length >= oomCtrl.database.oom.nbOomError">
-                <span data-ng-bind-html="tr('privateDatabase_modale_oom_info_order', [oomCtrl.displayType[oomCtrl.database.offer].value])"></span>
+            <div class="alert alert-info mt-3" role="alert"
+                 data-ng-bind-html="tr('privateDatabase_modale_oom_info_order', [oomCtrl.displayType[oomCtrl.database.offer].value])"
+                 data-ng-if="oomCtrl.database.oom.realList.length >= oomCtrl.database.oom.nbOomError">
             </div>
         </div>
     </div>

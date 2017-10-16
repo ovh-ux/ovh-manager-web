@@ -12,8 +12,8 @@
 
             <p class="mt-2" data-i18n-static="domain_configuration_dns_entry_add_step1_subtitle1"></p>
             <ul class="d-flex flex-wrap flex-column flex-md-row list-unstyled">
-                <li class="mb-3 pr-3" data-ng-repeat="fieldType in ['A', 'AAAA', 'NS', 'CNAME'] track by $index">
-                    <button class="btn btn-block btn-primary" type="button"
+                <li class="pr-3" data-ng-repeat="fieldType in ['A', 'AAAA', 'NS', 'CNAME'] track by $index">
+                    <button class="oui-button oui-button_primary mb-3" type="button"
                             data-ng-bind="fieldType"
                             data-ng-class="{'active': ctrl.model.fieldType === fieldType}"
                             data-ng-click="ctrl.selectFieldType(fieldType)"
@@ -24,9 +24,9 @@
 
             <p class="mt-4" data-i18n-static="domain_configuration_dns_entry_add_step1_subtitle3"></p>
             <ul class="d-flex flex-wrap flex-column flex-md-row list-unstyled">
-                <li class="mb-3 pr-3"
+                <li class="pr-3"
                     data-ng-repeat="fieldType in ['TXT', 'NAPTR', 'SRV', 'LOC', 'SSHFP', 'TLSA'] track by $index">
-                    <button class="btn btn-block btn-primary" type="button"
+                    <button class="oui-button oui-button_primary mb-3" type="button"
                             data-ng-bind="fieldType"
                             data-ng-class="{'active': ctrl.model.fieldType === fieldType}"
                             data-ng-click="ctrl.selectFieldType(fieldType)"
@@ -37,9 +37,9 @@
 
             <p class="mt-4" data-i18n-static="domain_configuration_dns_entry_add_step1_subtitle4"></p>
             <ul class="d-flex flex-wrap flex-column flex-md-row list-unstyled">
-                <li class="mb-3 pr-3"
+                <li class="pr-3"
                     data-ng-repeat="fieldType in ['MX', 'SPF', 'DKIM', 'DMARC'] track by $index">
-                    <button class="btn btn-block btn-primary" type="button"
+                    <button class="oui-button oui-button_primary mb-3" type="button"
                             data-ng-bind="fieldType"
                             data-ng-class="{'active': ctrl.model.fieldType === fieldType}"
                             data-ng-click="ctrl.selectFieldType(fieldType)"

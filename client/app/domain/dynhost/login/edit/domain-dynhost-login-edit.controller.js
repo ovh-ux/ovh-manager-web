@@ -60,8 +60,8 @@ angular.module("App").controller(
 
             return this.$q
                 .all(promises)
-                .then(() => this.Domain.refreshZoneState(this.product.name).then(() => this.Alerter.success(this.$scope.tr("domain_tab_DYNHOSTLOGIN_edit_success"), this.$scope.alerts.dashboard)))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_DYNHOST_error"), _.get(err, "data", err), this.$scope.alerts.dashboard))
+                .then(() => this.Domain.refreshZoneState(this.product.name).then(() => this.Alerter.success(this.$scope.tr("domain_tab_DYNHOSTLOGIN_edit_success"), this.$scope.alerts.main)))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_DYNHOST_error"), _.get(err, "data", err), this.$scope.alerts.main))
                 .finally(() => {
                     this.loading = false;
                     this.$scope.resetAction();

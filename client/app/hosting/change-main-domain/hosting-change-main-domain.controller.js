@@ -29,15 +29,16 @@ angular.module("App").controller("HostingChangeMainDomainCtrl", ($scope, $rootSc
     $scope.emails = { hasSome: false, keep: false, urlGuideMxplan: "", data: null };
 
     $scope.getAvailableOffers = function () {
-        User.getUrlOfEndsWithSubsidiary("MX_PLAN").then((page) => {
-            if (page) {
-                $scope.emails.urlGuideMxplan = page;
-            }
-        });
+        $scope.loading.availableOffer = true;
 
-        Emails.getEmails($stateParams.productId, {
-            domain: $scope.currentActionData.serviceName
-        })
+        User.getUrlOfEndsWithSubsidiary("MX_PLAN")
+            .then((page) => {
+                if (page) {
+                    $scope.emails.urlGuideMxplan = page;
+                }
+            });
+
+        Emails.getEmails($stateParams.productId, {})
             .then((data) => {
                 $scope.emails.data = data;
 
@@ -46,25 +47,22 @@ angular.module("App").controller("HostingChangeMainDomainCtrl", ($scope, $rootSc
                     $scope.model.mxplan = null;
                 }
             })
-            .catch((e) => {
-                Alerter.alertFromSWS($scope.tr("emails_tab_table_accounts_error"), e, $scope.alerts.dashboard);
+            .catch(() => {
+                $scope.emails.data = [];
             });
 
-        $scope.loading.availableOffer = true;
-        $q
-            .all([Domain.getDomains(), Hosting.getHostings(), hostingChangeDomain.getModels()])
-            .then(
-                (data) => {
-                    const domains = data[0];
-                    const hostings = data[1];
-                    const models = data[2];
-                    $scope.availableOffers = _.difference(domains, hostings);
-                    $scope.mxplanEnum = _.filter(models["hosting.web.order.MxPlanEnum"].enum, (mxEnum) => mxEnum !== "delete");
-                },
-                () => {
-                    $scope.availableOffers = [];
-                }
-            )
+
+        $q.all([Domain.getDomains(), Hosting.getHostings(), hostingChangeDomain.getModels()])
+            .then((data) => {
+                const domains = data[0];
+                const hostings = data[1];
+                const models = data[2];
+                $scope.availableOffers = _.difference(domains, hostings);
+                $scope.mxplanEnum = _.filter(models["hosting.web.order.MxPlanEnum"].enum, (mxEnum) => mxEnum !== "delete");
+            })
+            .catch(() => {
+                $scope.availableOffers = [];
+            })
             .finally(() => {
                 $scope.loading.availableOffer = false;
             });
@@ -116,31 +114,26 @@ angular.module("App").controller("HostingChangeMainDomainCtrl", ($scope, $rootSc
                 mxplan
             })
             .then((durations) => {
-                const priceAndContractPromises = _.map(durations, (duration) => {
-                    const priceAndContractPromise = hostingChangeDomain
-                        .get($stateParams.productId, {
-                            duration,
-                            domain: $scope.model.domain,
-                            mxplan
-                        })
-                        .then((data) => _.assign({ duration }, data))
-                        .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, "hosting.alerts.dashboard"))
-                        .finally(() => ($scope.loading.validation = false));
+                const priceAndContractPromises = _.map(durations, (duration) => hostingChangeDomain.get($stateParams.productId, {
+                    duration,
+                    domain: $scope.model.domain,
+                    mxplan
+                })
+                    .then((data) => _.assign({ duration }, data))
+                    .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.main))
+                    .finally(() => ($scope.loading.validation = false)));
 
-                    return priceAndContractPromise;
-                });
-
-                $q
-                    .all(priceAndContractPromises)
+                $q.all(priceAndContractPromises)
                     .then((data) => {
                         $scope.durations = data;
                         $scope.model.duration = $scope.durations[0];
                     })
-                    .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, "hosting.alerts.dashboard"))
+                    .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.main))
                     .finally(() => ($scope.loading.durations = false));
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, "hosting.alerts.dashboard");
+                _.set(err, "type", err.type || "ERROR");
+                Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.main);
                 $scope.resetAction();
             });
     };
@@ -164,8 +157,8 @@ angular.module("App").controller("HostingChangeMainDomainCtrl", ($scope, $rootSc
                 domain: $scope.model.domain,
                 mxplan
             })
-            .then((order) => Alerter.success($scope.tr("hosting_order_upgrade_success", [order.url, order.orderId]), "hosting.alerts.dashboard"))
-            .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, "hosting.alerts.dashboard"))
+            .then((order) => Alerter.success($scope.tr("hosting_order_upgrade_success", [order.url, order.orderId]), $scope.alerts.main))
+            .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.main))
             .finally(() => {
                 $scope.resetAction();
                 $scope.loading.validation = false;

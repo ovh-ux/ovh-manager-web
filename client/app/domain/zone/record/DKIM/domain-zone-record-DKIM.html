@@ -5,13 +5,20 @@
     <div class="form-group">
         <label class="control-label col-md-3" for="v"
                data-i18n-static="domain_configuration_dns_entry_add_version"></label>
-        <div class="checkbox col-md-9">
-            <label>
-                <input type="checkbox" id="v" name="v"
+        <div class="col-md-9 pt-2">
+            <div class="oui-checkbox mb-0">
+                <input type="checkbox" class="oui-checkbox__input" id="v" name="v"
                        data-ng-change="ctrl.setTargetValue('DKIM')"
                        data-ng-model="ctrl.model.target.v.DKIM1">
-                DKIM1
-            </label>
+                <label class="oui-checkbox__label-container" for="v">
+                    <span class="oui-checkbox__label">DKIM1</span>
+                    <span class="oui-checkbox__icon">
+                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                    </span>
+                </label>
+            </div>
         </div>
     </div>
 
@@ -30,32 +37,53 @@
     <div class="form-group">
         <label class="control-label col-md-3"
                data-i18n-static="domain_configuration_dns_entry_add_algorithm_hash"></label>
-        <div class="col-md-9">
-            <label class="checkbox-inline">
-                <input type="checkbox" name="h"
+        <div class="col-md-9 pt-2">
+            <div class="oui-checkbox oui-checkbox_inline mb-0">
+                <input type="checkbox" class="oui-checkbox__input" name="h" id="h-sha1"
                        data-ng-change="ctrl.setTargetValue('DKIM')"
                        data-ng-model="ctrl.model.target.h.sha1">
-                SHA-1
-            </label>
-            <label class="checkbox-inline ml-4">
-                <input type="checkbox" name="h"
+                <label class="oui-checkbox__label-container" for="h-sha1">
+                    <span class="oui-checkbox__label">SHA-1</span>
+                    <span class="oui-checkbox__icon">
+                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                    </span>
+                </label>
+            </div>
+            <div class="oui-checkbox oui-checkbox_inline mb-0">
+                <input type="checkbox" class="oui-checkbox__input" name="h" id="h-sha256"
                        data-ng-change="ctrl.setTargetValue('DKIM')"
                        data-ng-model="ctrl.model.target.h.sha256">
-                SHA-256
-            </label>
+                <label class="oui-checkbox__label-container" for="h-sha256">
+                    <span class="oui-checkbox__label">SHA-256</span>
+                    <span class="oui-checkbox__icon">
+                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                    </span>
+                </label>
+            </div>
         </div>
     </div>
 
     <div class="form-group">
         <label class="control-label col-md-3" for="k"
                data-i18n-static="domain_configuration_dns_entry_add_algorithm_key"></label>
-        <div class="checkbox col-md-9">
-            <label>
-                <input type="checkbox" id="k" name="k"
+        <div class="col-md-9">
+            <div class="oui-checkbox mb-0">
+                <input type="checkbox" class="oui-checkbox__input" id="k" name="k"
                        data-ng-change="ctrl.setTargetValue('DKIM')"
                        data-ng-model="ctrl.model.target.k.rsa">
-                RSA
-            </label>
+                <label class="oui-checkbox__label-container" for="k">
+                    <span class="oui-checkbox__label">RSA</span>
+                    <span class="oui-checkbox__icon">
+                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                    </span>
+                </label>
+            </div>
         </div>
     </div>
 
@@ -84,13 +112,19 @@
                       data-ng-pattern="ctrl.DomainValidator.regex.DKIM_p"
                       data-ng-required="!ctrl.model.target.pRevoke"
                       data-ng-trim="false"></textarea>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="pRevoke"
-                           data-ng-change="ctrl.setTargetValue('DKIM')"
-                           data-ng-click="ctrl.model.target.p = ''"
-                           data-ng-model="ctrl.model.target.pRevoke">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_publickey_revoke"></span>
+            <div class="oui-checkbox mb-0 mt-3">
+                <input type="checkbox" class="oui-checkbox__input" id="pRevoke" name="pRevoke"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-click="ctrl.model.target.p = ''"
+                       data-ng-model="ctrl.model.target.pRevoke">
+                <label class="oui-checkbox__label-container" for="pRevoke">
+                    <span class="oui-checkbox__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_publickey_revoke"></span>
+                    <span class="oui-checkbox__icon">
+                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                    </span>
                 </label>
             </div>
         </div>
@@ -100,28 +134,31 @@
         <label class="control-label col-md-3"
                data-i18n-static="domain_configuration_dns_entry_add_servicetypes"></label>
         <div class="col-md-9">
-            <div class="radio">
-                <label>
-                    <input type="radio" name="s" value="*"
-                           data-ng-change="ctrl.setTargetValue('DKIM')"
-                           data-ng-model="ctrl.model.target.s">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_servicetypes_all"></span>
+            <div class="oui-radio">
+                <input type="radio" class="oui-radio__input" id="s-all" name="s" value="*"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.s">
+                <label class="oui-radio__label-container" for="s-all">
+                    <span class="oui-radio__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_servicetypes_all"></span>
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="s" value="email"
-                           data-ng-change="ctrl.setTargetValue('DKIM')"
-                           data-ng-model="ctrl.model.target.s">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_servicetypes_email"></span>
+            <div class="oui-radio">
+                <input type="radio" class="oui-radio__input" id="s-email" name="s" value="email"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.s">
+                <label class="oui-radio__label-container" for="s-email">
+                    <span class="oui-radio__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_servicetypes_email"></span>
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="s" value=""
-                           data-ng-change="ctrl.setTargetValue('DKIM')"
-                           data-ng-model="ctrl.model.target.s">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_servicetypes_none"></span>
+            <div class="oui-radio">
+                <input type="radio" class="oui-radio__input" id="s-none" name="s" value=""
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.s">
+                <label class="oui-radio__label-container" for="s-none">
+                    <span class="oui-radio__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_servicetypes_none"></span>
                 </label>
             </div>
         </div>
@@ -131,22 +168,24 @@
         <label class="control-label col-md-3"
                data-i18n-static="domain_configuration_dns_entry_add_t_y"></label>
         <div class="col-md-9">
-            <div class="radio">
-                <label>
-                    <input type="radio" name="t_y"
-                           data-ng-change="ctrl.setTargetValue('DKIM')"
-                           data-ng-model="ctrl.model.target.t.y"
-                           data-ng-value="false">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_t_y_no"></span>
+            <div class="oui-radio">
+                <input type="radio" class="oui-radio__input" id="t-y-no" name="t_y"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.t.y"
+                       data-ng-value="false">
+                <label class="oui-radio__label-container" for="t-y-no">
+                    <span class="oui-radio__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_t_y_no"></span>
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="t_y"
-                           data-ng-change="ctrl.setTargetValue('DKIM')"
-                           data-ng-model="ctrl.model.target.t.y"
-                           data-ng-value="true">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_t_y_yes"></span>
+            <div class="oui-radio">
+                <input type="radio" class="oui-radio__input" id="t-y-yes" name="t_y"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.t.y"
+                       data-ng-value="true">
+                <label class="oui-radio__label-container" for="t-y-yes">
+                    <span class="oui-radio__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_t_y_yes"></span>
                 </label>
             </div>
         </div>
@@ -156,22 +195,24 @@
         <label class="control-label col-md-3"
                data-i18n-static="domain_configuration_dns_entry_add_t_s"></label>
         <div class="col-md-9">
-            <div class="radio">
-                <label>
-                    <input type="radio" name="t_s"
-                           data-ng-change="ctrl.setTargetValue('DKIM')"
-                           data-ng-model="ctrl.model.target.t.s"
-                           data-ng-value="true">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_t_s_yes"></span>
+            <div class="oui-radio">
+                <input type="radio" class="oui-radio__input" id="t-s-yes" name="t_s"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.t.s"
+                       data-ng-value="true">
+                <label class="oui-radio__label-container" for="t-s-yes">
+                    <span class="oui-radio__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_t_s_yes"></span>
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="t_s"
-                           data-ng-change="ctrl.setTargetValue('DKIM')"
-                           data-ng-model="ctrl.model.target.t.s"
-                           data-ng-value="false">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_t_s_no"></span>
+            <div class="oui-radio">
+                <input type="radio" class="oui-radio__input" id="t-s-no" name="t_s"
+                       data-ng-change="ctrl.setTargetValue('DKIM')"
+                       data-ng-model="ctrl.model.target.t.s"
+                       data-ng-value="false">
+                <label class="oui-radio__label-container" for="t-s-no">
+                    <span class="oui-radio__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_t_s_no"></span>
                 </label>
             </div>
         </div>

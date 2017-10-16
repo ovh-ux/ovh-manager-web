@@ -32,15 +32,17 @@ angular.module("App").controller(
             this.$scope.loadFtpInformations = (count, offset) => this.loadFtpInformations(count, offset);
 
             this.$scope.$on(this.Hosting.events.tabFtpRefresh, () => {
-                this.loading.init = true;
-                this.hasResult = false;
-                this.$scope.$broadcast("paginationServerSide.reload");
+                if (_.get(this.ftpInformations, "hasMultiFtp", false)) {
+                    this.loading.init = true;
+                    this.hasResult = false;
+                    this.$scope.$broadcast("paginationServerSide.reload");
+                }
             });
             this.$scope.$on(this.Hosting.events.tasksChanged, () => { this.disableRestoreFtp = true; });
             this.$scope.$on("hosting.web.ftp.user.poll.start", () => { this.allowUpdateState = false; });
             this.$scope.$on("hosting.web.ftp.user.poll.done", () => {
                 this.allowUpdateState = true;
-                this.Alerter.resetMessage(this.$scope.alerts.dashboard);
+                this.Alerter.resetMessage(this.$scope.alerts.main);
             });
             this.$scope.$on("$destroy", () => {
                 this.HostingUser.killAllPolling({ namespace: "hosting.web.ftp.user.poll" });
@@ -120,10 +122,10 @@ angular.module("App").controller(
         changePassword () {
             this.HostingUser.changePassword(this.$stateParams.productId, this.ftpInformations.primaryLogin, this.password.value)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_tab_FTP_configuration_change_password_success"), this.$scope.alerts.dashboard);
+                    this.Alerter.success(this.$scope.tr("hosting_tab_FTP_configuration_change_password_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_change_password_fail", [this.ftpInformations.primaryLogin]), _.get(err, "data", err), this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_change_password_fail", [this.ftpInformations.primaryLogin]), _.get(err, "data", err), this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.password.value = null;
@@ -159,12 +161,12 @@ angular.module("App").controller(
                 login: user.login,
                 data: _.omit(user, "ssh", "ftp", "ftpUrl", "sshUrl")
             }).then(() => {
-                this.Alerter.success(this.$scope.tr("hosting_tab_FTP_configuration_user_modify_success"), this.$scope.alerts.dashboard);
+                this.Alerter.success(this.$scope.tr("hosting_tab_FTP_configuration_user_modify_success"), this.$scope.alerts.main);
                 this.startPolling();
             }).catch((err) => {
                 const idx = _.indexOf(this.ftpInformations.list.result, element);
                 this.ftpInformations.list.result[idx] = _.assign(element, prev);
-                this.Alerter.alertFromSWS($scope.tr("hosting_tab_FTP_configuration_user_modify_fail"), err, this.$scope.alerts.dashboard);
+                this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_user_modify_fail"), err, this.$scope.alerts.main);
             });
         }
 

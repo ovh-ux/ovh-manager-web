@@ -21,10 +21,10 @@ angular
         restoreBDD () {
             this.privateDatabaseService.restoreBDD(this.productId, this.bdd.databaseName, this.dump.id)
                 .then(() => {
-                    this.alerter.success(this.$scope.tr("privateDatabase_tabs_dumps_restore_in_progress"), "privateDataBase.alerts.bdd");
+                    this.alerter.success(this.$scope.tr("privateDatabase_tabs_dumps_restore_in_progress"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_tabs_dumps_restore_fail"), err, "privateDataBase.alerts.bdd");
+                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_tabs_dumps_restore_fail"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.$scope.resetAction();

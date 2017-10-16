@@ -7,7 +7,9 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.isUsageRequestValid()">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
                 <p data-i18n-static="email_tab_modal_update_usage_info"></p>

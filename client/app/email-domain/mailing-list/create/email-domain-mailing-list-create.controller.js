@@ -65,7 +65,7 @@ angular.module("App").controller(
                     this.limits = limits;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_error"), err, this.$scope.alerts.main);
                     this.$scope.resetAction();
                 })
                 .finally(() => (this.loading.languages = false));
@@ -121,8 +121,8 @@ angular.module("App").controller(
                         subscribeByModerator: this.model.mlSubscribersModeration
                     }
                 })
-                .then(() => this.Alerter.success(this.$scope.tr("mailing_list_tab_modal_create_list_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_create_list_error"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("mailing_list_tab_modal_create_list_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_create_list_error"), err, this.$scope.alerts.main))
                 .finally(() => this.$scope.resetAction());
         }
     }

@@ -23,26 +23,32 @@ angular.module("App").controller(
                 quotas: false
             };
 
+            this.$scope.$on("domain.dashboard.refresh", () => this.loadDomain());
+
             this.loadDomain();
             this.loadQuotas();
-            this.Emails.getMxRecords(this.$stateParams.productId).then((data) => (this.mxRecords = data));
-            this.Emails.getDnsFilter(this.$stateParams.productId).then((data) => (this.dnsFilter = data));
         }
 
         loadDomain () {
             this.loading.domain = true;
 
-            this.Emails
-                .getDomain(this.$stateParams.productId)
-                .then((domain) => {
+            this.$q.all({
+                domain: this.Emails.getDomain(this.$stateParams.productId),
+                dnsFilter: this.Emails.getDnsFilter(this.$stateParams.productId).catch(() => null),
+                mxRecords: this.Emails.getMxRecords(this.$stateParams.productId).catch(() => null)
+            })
+                .then(({ domain, dnsFilter, mxRecords }) => {
                     this.domain = domain;
+                    this.dnsFilter = dnsFilter;
+                    this.mxRecords = mxRecords;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loading.domain = false;
                 });
+
         }
 
         loadQuotas () {
@@ -57,7 +63,7 @@ angular.module("App").controller(
                     this.summary = summary;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.page);
                 })
                 .finally(() => {
                     this.loading.quotas = false;

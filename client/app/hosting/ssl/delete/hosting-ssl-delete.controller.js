@@ -1,18 +1,29 @@
-angular.module("App").controller("HostingDeleteSslCtrl", ($scope, $stateParams, Hosting, Alerter) => {
-    "use strict";
+angular.module("App").controller(
+    "HostingDeleteSslCtrl",
+    class HostingDeleteSslCtrl {
+        constructor ($scope, $stateParams, Alerter, Hosting) {
+            this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.Hosting = Hosting;
+        }
 
-    $scope.ssl = $scope.currentActionData;
-    $scope.deleteSsl = () => {
-        $scope.resetAction();
+        $onInit () {
+            this.ssl = this.$scope.currentActionData;
 
-        Hosting.deleteSsl($stateParams.productId).then(
-            () => {
-                $scope.loadSsl();
-                Alerter.success($scope.tr("hosting_dashboard_service_delete_ssl_success"), $scope.alerts.dashboard);
-            },
-            (err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_dashboard_service_delete_ssl_error"), err, $scope.alerts.dashboard);
-            }
-        );
-    };
-});
+            this.$scope.deleteSsl = () => this.deleteSsl();
+        }
+
+        deleteSsl () {
+            this.$scope.resetAction();
+            return this.Hosting.deleteSsl(this.$stateParams.productId)
+                .then(() => {
+                    this.$scope.loadSsl();
+                    this.Alerter.success(this.$scope.tr("hosting_dashboard_service_delete_ssl_success"), this.$scope.alerts.main);
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_service_delete_ssl_error"), err, this.$scope.alerts.main);
+                });
+        }
+    }
+);

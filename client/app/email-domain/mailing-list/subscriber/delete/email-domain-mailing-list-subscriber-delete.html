@@ -11,7 +11,9 @@
                data-ng-if="ctrl.subscribers.length === 1"></p>
 
             <p data-i18n-static="mailing_list_common_continue_question"></p>
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
         </div>
     </div>
 </div>

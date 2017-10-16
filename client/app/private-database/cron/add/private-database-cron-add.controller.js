@@ -64,29 +64,27 @@ angular.module("App").controller("PrivateDatabaseCronCreateCtrl", [
 
             // Add or Edit
             if (actionData.cron) {
-                PrivateDatabaseCron.editCron($stateParams.productId, actionData.cron.id, $scope.model).then(
-                    () => {
-                        Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_edit_success"), { idTask: 42, state: "OK" }, $scope.alerts.dashboard);
+                PrivateDatabaseCron.editCron($stateParams.productId, actionData.cron.id, $scope.model)
+                    .then(() => {
+                        Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_edit_success"), { idTask: 42, state: "OK" }, $scope.alerts.main);
                         $scope.resetAction();
                         resetCronTab();
-                    },
-                    (data) => {
-                        Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_edit_error", [actionData.cron.id]), data.data, $scope.alerts.dashboard);
+                    })
+                    .catch((err) => {
+                        Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_edit_error", [actionData.cron.id]), _.get(err, "data", err), $scope.alerts.main);
                         $scope.resetAction();
-                    }
-                );
+                    });
             } else {
-                PrivateDatabaseCron.createCron($stateParams.productId, $scope.model).then(
-                    () => {
-                        Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_save_success"), { idTask: 42, state: "OK" }, $scope.alerts.dashboard);
+                PrivateDatabaseCron.createCron($stateParams.productId, $scope.model)
+                    .then(() => {
+                        Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_save_success"), { idTask: 42, state: "OK" }, $scope.alerts.main);
                         $scope.resetAction();
                         resetCronTab();
-                    },
-                    (data) => {
-                        Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_save_error"), data.data, $scope.alerts.dashboard);
+                    })
+                    .catch((err) => {
+                        Alerter.alertFromSWS(translator.tr("hosting_tab_CRON_save_error"), _.get(err, "data", err), $scope.alerts.main);
                         $scope.resetAction();
-                    }
-                );
+                    });
             }
         };
 
@@ -136,21 +134,20 @@ angular.module("App").controller("PrivateDatabaseCronCreateCtrl", [
                     $scope.databaseNames = databaseNames;
                 },
                 (err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_CRON_configuration_delete_fail"), err.data, $scope.alerts.dashboard);
+                    Alerter.alertFromSWS($scope.tr("hosting_tab_CRON_configuration_delete_fail"), _.get(err, "data", err), $scope.alerts.main);
                     $scope.resetAction();
                 }
             );
 
-            const getModelsPromise = PrivateDatabase.getModels().then(
-                (models) => {
+            const getModelsPromise = PrivateDatabase.getModels()
+                .then((models) => {
                     $scope.statusEnum = models["hosting.PrivateDatabase.Cron.StatusEnum"].enum;
                     $scope.commandEnum = models["hosting.PrivateDatabase.Cron.CommandEnum"].enum;
-                },
-                (err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_CRON_configuration_delete_fail"), err.data, $scope.alerts.dashboard);
+                })
+                .catch((err) => {
+                    Alerter.alertFromSWS($scope.tr("hosting_tab_CRON_configuration_delete_fail"), _.get(err, "data", err), $scope.alerts.main);
                     $scope.resetAction();
-                }
-            );
+                });
 
             $q.all([getBDDSIdPromise, getModelsPromise]).then(() => {
                 initModel();

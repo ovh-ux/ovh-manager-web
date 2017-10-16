@@ -1,4 +1,4 @@
-<div data-ng-controller="HostingMigrateMyOvhOrgCtrl">
+<div data-ng-controller="HostingMigrateMyOvhOrgCtrl as ctrl">
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="migrateMyOvhOrg"
@@ -6,30 +6,34 @@
 
         <!-- Step 1: Select a mutu -->
         <div data-wizard-step
-             data-wizard-step-on-load="getHostings"
-             data-wizard-step-valid="model.destination">
+             data-wizard-step-valid="ctrl.model.destination">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.hostings || loading.validation"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
-            <div class="mt-4" data-ng-if="!loading.hostings && !loading.validation">
+            <div data-ng-if="!ctrl.loading">
                 <form class="form-horizontal" name="migrateMyOvhOrgForm"
-                      data-ng-if="hostings.length">
+                      data-ng-if="ctrl.hostings.length > 0">
                     <div class="form-group">
                         <label class="control-label col-md-4" for="capacity"
                                data-i18n-static="hosting_migrate_my_ovh_org_destination"></label>
                         <div class="col-md-8">
-                            <select class="form-control" id="capacity" name="capacity"
-                                    data-ng-model="model.destination"
-                                    data-ng-options="hosting for hosting in hostings track by hosting">
-                                <option value="" disabled
-                                        data-i18n-static="select_option"></option>
-                            </select>
+                            <div class="oui-select">
+                                <select class="oui-select__input" id="capacity" name="capacity"
+                                        data-ng-model="ctrl.model.destination"
+                                        data-ng-options="hosting for hosting in ctrl.hostings track by hosting">
+                                    <option value="" disabled
+                                            data-i18n-static="select_placeholder"></option>
+                                </select>
+                                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                            </div>
                         </div>
                     </div>
                 </form>
                 <div class="alert alert-danger" role="alert"
                      data-i18n-static="hosting_migrate_my_ovh_org_no_destination"
-                     data-ng-if="!hostings.length">
+                     data-ng-if="!ctrl.hostings.length">
                 </div>
             </div>
         </div>

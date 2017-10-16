@@ -33,7 +33,7 @@ angular.module("App").controller("HostingTabCronsCtrl", ($scope, Hosting, $timeo
                 $scope.crons.ids = ids;
             })
             .catch((err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_CRON_configuration_error"), _.get(err, "data", err), $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_CRON_configuration_error"), _.get(err, "data", err), $scope.alerts.main);
             })
             .finally(() => {
                 if (_.isEmpty($scope.crons.ids)) {
