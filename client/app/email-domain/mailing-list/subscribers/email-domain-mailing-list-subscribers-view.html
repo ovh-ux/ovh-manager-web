@@ -25,7 +25,8 @@
                 <div data-ng-class="{'col-xs-8': ctrlSubscribers.subscribers.selected.length > 0, 'col-xs-12': !ctrlSubscribers.subscribers.selected.length}">
                     <form class="form-inline d-md-flex justify-content-md-end" name="searchSubscribersForm">
                         <div class="form-group">
-                            <label class="sr-only" for="searchSubscribers"></label>
+                            <label class="sr-only" for="searchSubscribers"
+                                   data-i18n-static="common_search"></label>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="searchSubscribers" name="searchSubscribers" placeholder="{{::i18n.navigation_left_search}}"
                                        data-ng-change="ctrlSubscribers.goSearch()"

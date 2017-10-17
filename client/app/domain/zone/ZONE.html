@@ -80,7 +80,7 @@
                 <div data-ng-if="ctrlDomainTabZoneDns.hasResult">
                     <div class="row mt-5">
                         <div class="col-md-3 mb-3">
-                            <button class="btn btn-danger" type="button"
+                            <button class="btn btn-default" type="button"
                                     data-i18n-static="common_delete"
                                     data-ng-click="setAction('zone/record/delete/domain-zone-record-delete', ctrlDomainTabZoneDns.selectedRecords)"
                                     data-ng-if="ctrlDomainTabZoneDns.atLeastOneSelected && ctrlDomainTabZoneDns.allowModification">
@@ -222,13 +222,13 @@
                                                data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.targetToDisplay">
                                     </td>
                                     <td class="text-nowrap">
-                                        <button class="btn btn-success" type="button" title="{{i18n.table_validate_entry}}"
+                                        <button class="oui-button oui-button_primary oui-button_small-width mb-0" type="button" aria-label="{{i18n.table_validate_entry}}"
                                                 data-ng-click="ctrlDomainTabZoneDns.addRecord()"
                                                 data-ng-disabled="!ctrlDomainTabZoneDns.addDnsRecordForm.$valid"
                                                 data-ng-show="!ctrlDomainTabZoneDns.loading.adding">
                                             <span class="fa fa-check" aria-hidden="true"></span>
                                         </button>
-                                        <button class="btn btn-danger" type="button" title="{{i18n.table_cancel_entry}}"
+                                        <button class="oui-button oui-button_secondary oui-button_small-width mb-0" type="button" aria-label="{{i18n.table_cancel_entry}}"
                                                 data-ng-click="ctrlDomainTabZoneDns.cancelAddRecord()"
                                                 data-ng-disabled="ctrlDomainTabZoneDns.loading.adding">
                                             <span class="fa fa-remove" aria-hidden="true"></span>
