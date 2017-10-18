@@ -34,10 +34,6 @@ angular.module("App").controller(
                 }
             });
 
-            this.User.getUser().then(() => {
-                this.$rootScope.managerPreloadHide += " manager-preload-hide";
-            });
-
             this.User.getUserAlerts().then((alerts) => {
                 if (alerts && alerts.length) {
                     const messages = [];

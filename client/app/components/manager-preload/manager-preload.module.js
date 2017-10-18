@@ -1,9 +1,7 @@
-angular.module("App").run(($rootScope, $state) => {
+angular.module("App").run(($rootScope) => {
 
     $rootScope.$on("$stateChangeSuccess", () => {
-        if (!$state.includes("app")) {
-            $rootScope.managerPreloadHide += " manager-preload-hide";
-        }
+        $rootScope.managerPreloadHide += " manager-preload-hide";
     });
 
 });

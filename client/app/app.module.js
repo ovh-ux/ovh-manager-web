@@ -1,5 +1,52 @@
 angular
-    .module("App")
+    .module("App", [
+        "ovh-angular-proxy-request",
+        "ovh-angular-pagination-front",
+        "ovh-utils-angular",
+        "ui.bootstrap",
+        "ngRoute",
+        "ngResource",
+        "ngSanitize",
+        "controllers",
+        "services",
+        "filters",
+        "directives",
+        "ovh-angular-q-allSettled",
+        "ovh-angular-http",
+        "ngMessages",
+        "flash",
+        "ovh-angular-swimming-poll",
+        "vs-repeat",
+        "ovh-angular-export-csv",
+        "ng-at-internet",
+        "atInternetUiRouterPlugin",
+        "ovh-angular-user-pref",
+        "ngFileUpload",
+        "xeditable",
+        "ovh-angular-sso-auth",
+        "ovh-angular-sso-auth-modal-plugin",
+
+        // "ngRaven",
+        "ui.router",
+        "ovh-angular-toggleClass",
+        "ovh-angular-manager-navbar",
+        "ovh-angular-sidebar-menu",
+        "pascalprecht.translate",
+        "ovh-angular-responsive-tabs",
+        "ovh-angular-tail-logs",
+        "ovh-angular-doubleauth-backupcode",
+        "ovh-angular-otrs",
+        "ovh-api-services",
+        "ovh-angular-toaster",
+        "ngCkeditor",
+        "moment-picker",
+        "oui",
+        "Module.microsoft",
+        "Module.emailpro",
+        "Module.exchange",
+        "Module.sharepoint",
+        "Configuration"
+    ])
     .factory("serviceTypeInterceptor", () => {
         "use strict";
         return {
@@ -23,25 +70,26 @@ angular
             }
         };
     })
-    .factory("ravenInterceptor", [
-        "$q",
-        "Raven",
-        ($q, Raven) => {
-            "use strict";
-            return {
-                responseError: (response) => {
-                    if (response.status === 429 || response.status >= 500) {
-                        Raven.captureMessage([response.status, response.config.url, JSON.stringify(response.data)].join(" - "), {
-                            extra: {
-                                "x-ovh-queryid": response.headers("x-ovh-queryid")
-                            }
-                        });
-                    }
-                    return $q.reject(response);
-                }
-            };
-        }
-    ])
+
+    // .factory("ravenInterceptor", [
+    //     "$q",
+    //     "Raven",
+    //     ($q, Raven) => {
+    //         "use strict";
+    //         return {
+    //             responseError: (response) => {
+    //                 if (response.status === 429 || response.status >= 500) {
+    //                     Raven.captureMessage([response.status, response.config.url, JSON.stringify(response.data)].join(" - "), {
+    //                         extra: {
+    //                             "x-ovh-queryid": response.headers("x-ovh-queryid")
+    //                         }
+    //                     });
+    //                 }
+    //                 return $q.reject(response);
+    //             }
+    //         };
+    //     }
+    // ])
     .config([
         "$qProvider",
         function ($qProvider) {
@@ -55,7 +103,8 @@ angular
         ($httpProvider, constants) => {
             "use strict";
             if (constants.prodMode) {
-                $httpProvider.interceptors.push("ravenInterceptor");
+
+                // $httpProvider.interceptors.push("ravenInterceptor");
             }
         }
     ])
@@ -412,7 +461,7 @@ angular
         "translator",
         (translator) => {
             "use strict";
-            translator.load(["core"]);
+            translator.load(["core/translations"]);
         }
     ])
     .run([
@@ -534,5 +583,9 @@ angular
 
             return null;
         });
+    })
+    .run(($translatePartialLoader) => {
+        console.log("coucou");
+        $translatePartialLoader.addPart("resources/i18n/core");
     })
     .constant("UNIVERSE", "WEB");

@@ -6,11 +6,10 @@ module.exports = function (grunt) {
     const Http = require("http");
     const Https = require("https");
     const assets = require("./Assets");
-    const constants = require("./constants.config");
     let mode = grunt.option("mode") || "dev";
 
     const target = grunt.option("target") || "EU";
-    const targetsAvailable = ["EU", "CA"];
+    const targetsAvailable = ["EU"];
 
     const filesJsModules = _.map(
         assets[target].modules,
@@ -29,10 +28,7 @@ module.exports = function (grunt) {
     );
 
     function isProd () {
-        return (
-            grunt.option("mode") === "prod" ||
-            grunt.option("type") !== undefined
-        );
+        return grunt.option("mode") === "prod" || grunt.option("type") !== undefined;
     }
 
     function copyFromEachModules (properties, dest) {
@@ -72,8 +68,6 @@ module.exports = function (grunt) {
 
         // SWS
         swsProxyPath: "apiv6/",
-        aapiPath: isProd() ? "/engine/2api/" : "engine/2api/",
-
         express: {
             options: {
                 port: process.env.PORT || 9000
@@ -94,7 +88,6 @@ module.exports = function (grunt) {
                 url: "https://localhost:<%= express.options.port %>/client/app"
             }
         },
-
         prettier_eslint: {
             dist: {
                 files: assets.src.js,
@@ -104,7 +97,6 @@ module.exports = function (grunt) {
                 filePath: path.resolve("./.eslintrc.js")
             }
         },
-
         // Clean
         clean: {
             files: [
@@ -136,7 +128,6 @@ module.exports = function (grunt) {
             })(),
             prod: ["dist/app"]
         },
-
         // JS Check
         eslint: {
             options: {
@@ -146,33 +137,66 @@ module.exports = function (grunt) {
             },
             target: assets.src.js
         },
-
-        // ES6 SUPPORT
-        babel: {
+        browserify: {
             options: {
-                presets: [["env", {
-                    targets: {
-                        browsers: ["last 2 versions", "ie 11"]
+                watch: false,
+                plugin: ['browserify-hmr'],
+                // uncomment these lines if you want to have source map files for debuging purpose
+                // browserifyOptions: {
+                //     debug: true
+                // }
+                transform: [
+                    ['babelify', { presets: [["env", {
+                      targets: {
+                          browsers: ["last 2 versions", "ie 11"]
+                      }
+                    }]]
                     }
-                }]]
+                    ],
+                    ['stringify', {
+                        appliesTo: { includeExtensions: ['.html'] }
+                    }]
+                ]
+            },
+            dist: {
+                files: [{
+                    expand: true,
+                    cwd: "client",
+                    src: assets.src.js
+                          .concat(["!<%= publicdir %>/js/app/libs/**/*"])
+                          .map((jsPath) => jsPath.replace("client/", "")),
+                    dest: "dist"
+                }]
             },
             modules: {
                 files: filesJsModules
-            },
-            dist: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: "client",
-                        src: assets.src.js
-                            .concat(["!<%= publicdir %>/js/app/libs/**/*"])
-                            .map((jsPath) => jsPath.replace("client/", "")),
-                        dest: "dist"
-                    }
-                ]
             }
         },
-
+        // ES6 SUPPORT
+        // babel: {
+        //     options: {
+        //         presets: [["env", {
+        //             targets: {
+        //                 browsers: ["last 2 versions", "ie 11"]
+        //             }
+        //         }]]
+        //     },
+        //     modules: {
+        //         files: filesJsModules
+        //     },
+        //     dist: {
+        //         files: [
+        //             {
+        //                 expand: true,
+        //                 cwd: "client",
+        //                 src: assets.src.js
+        //                     .concat(["!<%= publicdir %>/js/app/libs/**/*"])
+        //                     .map((jsPath) => jsPath.replace("client/", "")),
+        //                 dest: "dist"
+        //             }
+        //         ]
+        //     }
+        // },
         // Concatenation
         concat: {
             dist: {
@@ -186,7 +210,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-
         // Obfuscate
         uglify: {
             options: {
@@ -254,49 +277,49 @@ module.exports = function (grunt) {
             component_translations: {
                 files: {
                     "<%= distdir %>/components/translations/Messages_cs_CZ.json": [
-                        "<%= bowerdir %>/**/Messages_cs_CZ.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_cs_CZ.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_de_DE.json": [
-                        "<%= bowerdir %>/**/Messages_de_DE.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_de_DE.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_en_CA.json": [
-                        "<%= bowerdir %>/**/Messages_en_CA.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_en_CA.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_en_GB.json": [
-                        "<%= bowerdir %>/**/Messages_en_GB.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_en_GB.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_en_US.json": [
-                        "<%= bowerdir %>/**/Messages_en_US.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_en_US.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_es_ES.json": [
-                        "<%= bowerdir %>/**/Messages_es_ES.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_es_ES.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_es_US.json": [
-                        "<%= bowerdir %>/**/Messages_es_US.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_es_US.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_fi_FI.json": [
-                        "<%= bowerdir %>/**/Messages_fi_FI.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_fi_FI.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_fr_CA.json": [
-                        "<%= bowerdir %>/**/Messages_fr_CA.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_fr_CA.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_fr_FR.json": [
-                        "<%= bowerdir %>/**/Messages_fr_FR.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_fr_FR.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_it_IT.json": [
-                        "<%= bowerdir %>/**/Messages_it_IT.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_it_IT.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_lt_LT.json": [
-                        "<%= bowerdir %>/**/Messages_lt_LT.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_lt_LT.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_nl_NL.json": [
-                        "<%= bowerdir %>/**/Messages_nl_NL.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_nl_NL.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_pl_PL.json": [
-                        "<%= bowerdir %>/**/Messages_pl_PL.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_pl_PL.json"
                     ],
                     "<%= distdir %>/components/translations/Messages_pt_PT.json": [
-                        "<%= bowerdir %>/**/Messages_pt_PT.json"
+                        "<%= bowerdir %>/ovh-*/**/Messages_pt_PT.json"
                     ]
                 }
             }
@@ -465,7 +488,6 @@ module.exports = function (grunt) {
                 files: copyFromEachModules(["src.css"], "client/app")
             }
         },
-
         // ejs to html
         template: {
             dist: {
@@ -492,7 +514,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-
         // Less
         less: {
             development: {
@@ -507,7 +528,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-
         // sass
         sass: {
             options: {
@@ -519,267 +539,9 @@ module.exports = function (grunt) {
                 }
             }
         },
-
-        // Constants
-        ngconstant: {
-            options: {
-                deps: null
-            },
-            devApp: {
-                options: {
-                    name: "App",
-                    deps: (function () {
-                        // IIFE to generate deps for all modules for this target only
-
-                        const regExp = /^ovh\-module\-([0-9a-zA-Z]+)/;
-
-                        const deps = [
-                            "ovh-angular-proxy-request",
-                            "ovh-angular-pagination-front",
-                            "ovh-utils-angular",
-                            "ui.bootstrap",
-                            "ngRoute",
-                            "ngResource",
-                            "ngSanitize",
-                            "controllers",
-                            "services",
-                            "filters",
-                            "directives",
-                            "ovh-angular-q-allSettled",
-                            "ovh-angular-http",
-                            "ngMessages",
-                            "flash",
-                            "ovh-angular-swimming-poll",
-                            "vs-repeat",
-                            "ovh-angular-export-csv",
-                            "ng-at-internet",
-                            "atInternetUiRouterPlugin",
-                            "ovh-angular-user-pref",
-                            "ngFileUpload",
-                            "xeditable",
-                            "ovh-angular-sso-auth",
-                            "ovh-angular-sso-auth-modal-plugin",
-                            "ui.router",
-                            "ovh-angular-toggleClass",
-                            "ovh-angular-manager-navbar",
-                            "ovh-angular-sidebar-menu",
-                            "pascalprecht.translate",
-                            "ovh-angular-responsive-tabs",
-                            "ovh-angular-tail-logs",
-                            "ovh-angular-doubleauth-backupcode",
-                            "ovh-angular-otrs",
-                            "ovh-api-services",
-                            "ovh-angular-toaster",
-                            "ngCkeditor",
-                            "moment-picker",
-                            "oui"
-                        ];
-                        _.forEach(assets[target].modules, (module) => {
-                            if (regExp.test(module)) {
-                                deps.push(`Module.${module.match(regExp)[1] === "office" ? "microsoft" : module.match(regExp)[1]}`);
-                            } else {
-                                grunt.fail.warn(
-                                    `Impossible to parse ${module}`
-                                );
-                            }
-                        });
-                        return deps;
-                    })(),
-                    dest: "<%= builddir %>/js/constants-app.js"
-                },
-                constants: {
-                    constants: {
-                        prodMode: mode === "prod",
-                        availableViewMode: {
-                            views: ["simple", "expert"],
-                            defaultViewMode: "simple"
-                        },
-                        aapiRootPath: "<%= aapiPath %>",
-                        target,
-                        renew: constants[target].RENEW_URL,
-                        loginUrl: constants[target].loginUrl,
-                        urls: constants[target].URLS,
-                        CHATBOT_URL: constants[target].CHATBOT_URL,
-                        BILLING_URL: constants[target].BILLING_URL,
-                        UNIVERS: constants[target].UNIVERS,
-                        UNIVERSES: constants[target].UNIVERSES,
-                        TOP_GUIDES: constants[target].TOP_GUIDES,
-                        swsProxyRootPath: "<%= swsProxyPath %>",
-                        urchin: constants[target].LOGS_URCHIN,
-                        urchin_gra: constants[target].LOGS_URCHIN_GRA,
-                        stats_logs: constants[target].STATS_LOGS,
-                        stats_logs_gra: constants[target].STATS_LOGS_GRA,
-                        aapiHeaderName: "X-Ovh-Session",
-                        changelog_url: constants[target].changelog_url,
-                        flags_options: constants[target].flags_options,
-                        algorithm_options: constants[target].algorithm_options,
-                        MANAGER_URLS: constants[target].MANAGER_URLS,
-                        HOSTING: constants[target].HOSTING,
-                        NO_AUTORENEW_COUNTRIES: constants[target]
-                            .NO_AUTORENEW_COUNTRIES,
-                        DOMAIN: constants[target].DOMAIN,
-                        WEBSITE_URLS: constants[target].website_url,
-                        new_bdd_user_grant_options: constants[target]
-                            .new_bdd_user_grant_options,
-                        OVHGuides: constants[target].OVHGuides
-                    },
-                    LANGUAGES: constants[target].LANGUAGES,
-                    website_url: constants[target].website_url
-                }
-            },
-            devUa: {
-                options: {
-                    name: "ovh-utils-angular",
-                    dest: "<%= builddir %>/js/constants-utils-angular.js"
-                },
-                constants: {
-                    target
-                }
-            },
-            devLogin: {
-                options: {
-                    name: "Login",
-                    dest: "<%= builddir %>/js/constants-login.js"
-                },
-                constants: {
-                    LANGUAGES: constants[target].LANGUAGES,
-                    website_url: constants[target].website_url
-                }
-            },
-
-            /* [MODULE] */
-            distApp: {
-                options: {
-                    name: "App",
-                    deps: (function () {
-                        // IIFE to generate deps for all modules for this target only
-                        const deps = [
-                            "ovh-angular-proxy-request",
-                            "ovh-angular-pagination-front",
-                            "ovh-utils-angular",
-                            "ui.bootstrap",
-                            "ngRoute",
-                            "ngResource",
-                            "ngSanitize",
-                            "controllers",
-                            "services",
-                            "filters",
-                            "directives",
-                            "ovh-angular-q-allSettled",
-                            "ovh-angular-http",
-                            "ngMessages",
-                            "flash",
-                            "ovh-angular-swimming-poll",
-                            "vs-repeat",
-                            "ovh-angular-export-csv",
-                            "ng-at-internet",
-                            "atInternetUiRouterPlugin",
-                            "ovh-angular-user-pref",
-                            "ngFileUpload",
-                            "xeditable",
-                            "ovh-angular-sso-auth",
-                            "ovh-angular-sso-auth-modal-plugin",
-                            "ngRaven",
-                            "ui.router",
-                            "ovh-angular-toggleClass",
-                            "ovh-angular-manager-navbar",
-                            "ovh-angular-sidebar-menu",
-                            "pascalprecht.translate",
-                            "ovh-angular-responsive-tabs",
-                            "ovh-angular-tail-logs",
-                            "ovh-angular-doubleauth-backupcode",
-                            "ovh-angular-otrs",
-                            "ovh-api-services",
-                            "ovh-angular-toaster",
-                            "ngCkeditor",
-                            "moment-picker",
-                            "oui"
-                        ];
-
-                        _.forEach(assets[target].modules, (module) => {
-                            if (
-                                /^ovh\-module\-([0-9a-zA-Z]+)/.test(
-                                    module
-                                )
-                            ) {
-                                const match = module.match(
-                                    /^ovh\-module\-([0-9a-zA-Z]+)/
-                                )[1];
-                                deps.push(
-                                    `Module.${match === "office" ? "microsoft" : match}`
-                                );
-                            } else {
-                                grunt.fail.warn(
-                                    `Impossible to parse ${module}`
-                                );
-                            }
-                        });
-                        return deps;
-                    })(),
-                    dest: "<%= builddir %>/js/constants-app.js"
-                },
-                constants: {
-                    constants: {
-                        prodMode: mode === "prod",
-                        availableViewMode: {
-                            views: ["simple", "expert"],
-                            defaultViewMode: "simple"
-                        },
-                        aapiRootPath: "<%= aapiPath %>",
-                        target,
-                        renew: constants[target].RENEW_URL,
-                        loginUrl: constants[target].loginUrl,
-                        urls: constants[target].URLS,
-                        UNIVERS: constants[target].UNIVERS,
-                        CHATBOT_URL: constants[target].CHATBOT_URL,
-                        UNIVERSES: constants[target].UNIVERSES,
-                        TOP_GUIDES: constants[target].TOP_GUIDES,
-                        swsProxyRootPath: "<%= swsProxyPath %>",
-                        urchin: constants[target].LOGS_URCHIN,
-                        urchin_gra: constants[target].LOGS_URCHIN_GRA,
-                        stats_logs: constants[target].STATS_LOGS,
-                        stats_logs_gra: constants[target].STATS_LOGS_GRA,
-                        aapiHeaderName: "X-Ovh-2api-Session",
-                        changelog_url: constants[target].changelog_url,
-                        flags_options: constants[target].flags_options,
-                        algorithm_options: constants[target].algorithm_options,
-                        MANAGER_URLS: constants[target].MANAGER_URLS,
-                        HOSTING: constants[target].HOSTING,
-                        DOMAIN: constants[target].DOMAIN,
-                        NO_AUTORENEW_COUNTRIES: constants[target].NO_AUTORENEW_COUNTRIES,
-                        WEBSITE_URLS: constants[target].website_url,
-                        new_bdd_user_grant_options: constants[target].new_bdd_user_grant_options,
-                        OVHGuides: constants[target].OVHGuides
-                    },
-                    LANGUAGES: constants[target].LANGUAGES,
-                    website_url: constants[target].website_url
-                }
-            },
-            distUa: {
-                options: {
-                    name: "ovh-utils-angular",
-                    dest: "<%= builddir %>/js/constants-utils-angular.js"
-                },
-                constants: {
-                    target
-                }
-            },
-            distLogin: {
-                options: {
-                    name: "Login",
-                    dest: "<%= builddir %>/js/constants-login.js"
-                },
-                constants: {
-                    LANGUAGES: constants[target].LANGUAGES,
-                    website_url: constants[target].website_url
-                }
-            }
-        },
-
         xml2json: {
             files: assets.resources.i18n
         },
-
         replace: {
             sourcemap: {
                 src: ["<%= builddir %>/js/common.min.js"],
@@ -820,7 +582,6 @@ module.exports = function (grunt) {
                 ]
             }
         },
-
         protractor: {
             options: {
                 configFile: "protractor.conf.js"
@@ -834,7 +595,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-
         // Auto Build
         watch: {
             i18nmodules: {
@@ -888,50 +648,39 @@ module.exports = function (grunt) {
                 },
                 tasks: ["copy:moduleshtml"]
             },
-            ngconstant: {
-                files: ["Gruntfile.js", "constants.config.js"],
-                tasks: [
-                    "ngconstant:devApp",
-                    "ngconstant:distUa",
-                    "ngconstant:distLogin"
-                ],
-                options: {
-                    livereload: true
-                }
-            },
-            js: {
-                files: assets.src.js,
-                tasks: ["babel:dist", "force:eslint"],
-                options: {
-                    spawn: false,
-                    livereload: true
-                }
-            },
-            jsmodules: {
-                files: (function () {
-                    const files = [];
-                    _.forEach(assets[target].modules, (module) => {
-                        const assetsModule = require(`./client/bower_components/${
-                            module
-                            }/Assets.js`);
-                        _.forEach(assetsModule.src.js, (val) => {
-                            files.push(
-                                `./client/bower_components/${
-                                    module
-                                    }/${
-                                    val}`,
-                                `!${val}`
-                            );
-                        });
-                    });
-                    return _.flatten(files);
-                })(),
-                tasks: ["babel:modules", "force:eslint"],
-                options: {
-                    spawn: false,
-                    livereload: true
-                }
-            },
+            // js: {
+            //     files: assets.src.js,
+            //     tasks: ["browserify:dist", "force:eslint"],
+            //     options: {
+            //         spawn: false,
+            //         livereload: true
+            //     }
+            // },
+            // jsmodules: {
+            //     files: (function () {
+            //         const files = [];
+            //         _.forEach(assets[target].modules, (module) => {
+            //             const assetsModule = require(`./client/bower_components/${
+            //                 module
+            //                 }/Assets.js`);
+            //             _.forEach(assetsModule.src.js, (val) => {
+            //                 files.push(
+            //                     `./client/bower_components/${
+            //                         module
+            //                         }/${
+            //                         val}`,
+            //                     `!${val}`
+            //                 );
+            //             });
+            //         });
+            //         return _.flatten(files);
+            //     })(),
+            //     tasks: ["browserify:modules", "force:eslint"],
+            //     options: {
+            //         spawn: false,
+            //         livereload: true
+            //     }
+            // },
             css: {
                 files: (function () {
                     const files = [assets.src.css];
@@ -974,7 +723,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-
         // To release
         bump: {
             options: {
@@ -997,7 +745,6 @@ module.exports = function (grunt) {
             }
         }
     });
-
     // On watch events configure jshint:all to only run on changed file
     grunt.event.on("watch", (action, filepath, watchName) => {
         switch (watchName) {
@@ -1098,72 +845,6 @@ module.exports = function (grunt) {
                 next(e);
             });
     }
-
-    function deepSearchAndFollowLink (thing, result, path) {
-        if (!result) {
-            throw new Error(
-                "deepSearchAndFollowLink(): missing a ref to push url and path to check."
-            );
-        }
-        if (!thing) {
-            return null;
-        }
-        if (!path) {
-            path = "";
-        }
-
-        switch (typeof thing) {
-        case "string":
-            if (/^https?:\/\//.test(thing) && !/\{\w+\}/.test(thing)) {
-                result.push({ path, url: thing, result: null });
-            }
-            break;
-        case "object":
-            _.forEach(thing, (value, key) => {
-                deepSearchAndFollowLink(
-                        value,
-                        result,
-                        [path, ".", key].join("")
-                    );
-            });
-            break;
-        default:
-            /* nothing to do */
-            break;
-        }
-    }
-    grunt.registerTask(
-        "checkUrlsInConstants",
-        "ping all urls found in ./constants.config.js",
-        function () {
-            const constants = require("./constants.config.js");
-            const linksToPing = [];
-            const done = this.async();
-
-            grunt.verbose.writeln("collect all url in constants.");
-            deepSearchAndFollowLink(constants, linksToPing);
-            grunt.log.writeln("%d urls collected.", linksToPing.length);
-
-            grunt.log.writeln("ping of urls, please be patient:");
-            Async.eachLimit(linksToPing, 100, pingUrl, (err) => {
-                let errors;
-                if (err) {
-                    grunt.log.error("Unable to ping all urls", err);
-                    return done(false);
-                }
-
-                errors = _.filter(linksToPing, (p) => !p.result || p.result > 399);
-                grunt.log.writeln(" done.");
-                grunt.log.ok("%d tested urls", linksToPing.length);
-                if (errors && errors.length) {
-                    grunt.log.error("%d urls in error.", errors.length);
-                    return done(false);
-                }
-                done(true);
-            });
-        }
-    );
-
     // Used for delaying livereload until after server has restarted
     grunt.registerTask("wait", function () {
         grunt.log.ok("Waiting for server reload...");
@@ -1175,7 +856,6 @@ module.exports = function (grunt) {
             done();
         }, 1500);
     });
-
     grunt.registerTask("test", (target, option) => {
         if (target === "e2e") {
             // Check if it's a remote test
@@ -1197,34 +877,22 @@ module.exports = function (grunt) {
         return grunt.task.run(["force:eslint"]);
 
     });
-
     grunt.registerTask("default", ["build"]);
-
-    grunt.registerTask("jshintBabel", ["force:eslint", "babel"]);
-
+    grunt.registerTask("jshintBabel", ["force:eslint", "browserify"]);
     grunt.registerTask("buildProd", [
         "clean",
         "force:eslint",
-        "ngconstant:distApp",
-        "ngconstant:distUa",
-        "ngconstant:distLogin",
-        "babel",
+        "browserify",
         "ngAnnotate:dist",
         "copy:modulesjs",
         "copy:moduleshtml",
         "copy:css",
         "copy:assets",
         "copy:resources",
-
-        // "copy:" + target,
         "less",
         "sass",
-
-        // 'concat:dist',
         "concat",
         "replace",
-
-        // "uglify:dist",
         "uglify",
         "cssmin",
         "xml2json",
@@ -1238,13 +906,8 @@ module.exports = function (grunt) {
     grunt.registerTask("buildDev", [
         "clean",
         "force:eslint",
-        "ngconstant:devApp",
-        "ngconstant:distUa",
-        "ngconstant:distLogin",
-        "babel",
+        "browserify",
         "ngAnnotate:dist",
-
-        // 'concat:login',
         "copy:modulesjs",
         "copy:moduleshtml",
         "copy:css",
@@ -1258,27 +921,8 @@ module.exports = function (grunt) {
         "copy:dev",
         "express:dev",
         "wait",
-
-        // "open",
         "watch"
     ]);
-
-    grunt.registerTask("buildDevFast", [
-        "clean",
-        "force:eslint",
-        "ngconstant:dist",
-        "babel",
-        "ngAnnotate:dist",
-        "concat:login",
-        "copy:modulesjs",
-        "copy:moduleshtml",
-        "copy:css",
-        "less",
-        "sass",
-        "template",
-        "copy:dev"
-    ]);
-
     /*
      * --mode=prod
      * --mode=dev

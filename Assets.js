@@ -1,11 +1,12 @@
 var glob = require("glob");
 var _ = require("lodash");
+
 module.exports = {
     src: {
         js: [
-            "client/app/components/**/*.module.js",
+            "client/app/**/*.module.js",
+            "client/app/**/*.constant.js",
             "client/app/components/**/**.js",
-            "client/app/*.module.js",
             "client/app/website/**/**.js",
             "client/app/domains/**/**.js",
             "client/app/domain/**/**.js",
@@ -19,11 +20,7 @@ module.exports = {
             "client/app/double-authentication/**/**.js",
             "client/app/feedback/**/**.js",
             "client/app/configuration/**/**.js",
-            "client/app/labs/**/*.module.js",
-            "client/app/labs/**/**.js",
-            "client/app/app.js",
-            "client/app/app.controller.js",
-            "client/app/app.routes.js"
+            "client/app/*.js"
         ].concat(
             _.flatten(glob.sync("./client/bower_components/ovh-module-*-front/Assets.js").map(function (src) {
                 "use strict";
@@ -31,9 +28,9 @@ module.exports = {
             }))
         ),
         jsES6: [
-            "dist/app/components/**/*.module.js",
-            "dist/app/components/**/**.js",
-            "dist/app/*.module.js",
+            "dist/app/**/*.module.js",
+            "dist/app/**/*.constant.js",
+            "dist/app/components/**/*.js",
             "dist/app/website/**/**.js",
             "dist/app/domains/**/**.js",
             "dist/app/domain/**/**.js",
@@ -52,9 +49,7 @@ module.exports = {
             "dist/app/**/*.app.js",
             "dist/app/**/*.module.js",
             "dist/app/**/*.js",
-            "dist/app/app.js",
-            "dist/app/app.controller.js",
-            "dist/app/app.routes.js"
+            "dist/app/*.js"
         ].concat(
             _.flatten(glob.sync("./client/bower_components/ovh-module-*-front/Assets.js").map(function (src) {
                 "use strict";
