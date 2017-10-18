@@ -28,22 +28,20 @@
                 <div class="form-group my-4"
                      data-ng-class="{'has-error': formEditDisplayName.txtDisplayName.$dirty && formEditDisplayName.$invalid}"
                      data-ng-show="edit.active">
-                    <div class="input-group">
-                        <input type="text" class="form-control input-lg" name="txtDisplayName"
+                    <div class="oui-input-group">
+                        <input type="text" class="oui-input" name="txtDisplayName"
                                data-event-blur="newDisplayName.value = ''"
                                data-ng-maxlength="250"
                                data-ng-model="newDisplayName.value">
-                        <div class="input-group-btn">
-                            <button class="btn btn-success btn-lg" type="button" title="{{i18n.common_confirm}}"
-                                    data-ng-click="saveDisplayName()"
-                                    data-ng-disabled="!formEditDisplayName.txtDisplayName.$dirty || formEditDisplayName.$invalid">
-                                <span class="fa fa-check" aria-hidden="true"></span>
-                            </button>
-                            <button class="btn btn-danger btn-lg" type="button" title="{{i18n.common_cancel}}"
-                                    data-ng-click="resetDisplayName()">
-                                <span class="fa fa-remove" aria-hidden="true"></span>
-                            </button>
-                        </div>
+                        <button class="oui-button oui-button_small-width" type="button" aria-label="{{i18n.common_confirm}}"
+                                data-ng-click="saveDisplayName()"
+                                data-ng-disabled="!formEditDisplayName.txtDisplayName.$dirty || formEditDisplayName.$invalid">
+                            <span class="oui-icon oui-icon-success oui-icon_small" aria-hidden="true"></span>
+                        </button>
+                        <button class="oui-button oui-button_small-width" type="button" aria-label="{{i18n.common_cancel}}"
+                                data-ng-click="resetDisplayName()">
+                            <span class="oui-icon oui-icon-error oui-icon_small" aria-hidden="true"></span>
+                        </button>
                     </div>
                     <div class="help-block"
                          data-ng-if="formEditDisplayName.txtDisplayName.$dirty"

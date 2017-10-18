@@ -136,17 +136,18 @@
                         data-ng-disabled="ctrlDomainDnssec.dnssecList.length >= ctrlDomainDnssec.const.MAX_AMOUNT_DNSSEC || !ctrlDomainDnssec.isModifiable()"
                         data-ng-if="!ctrlDomainDnssec.editMode">
                 </button>
-                <button class="btn btn-block btn-success" type="button"
+                <button class="btn btn-block btn-primary" type="button"
                         data-i18n-static="wizard_confirm"
                         data-ng-click="setAction('dnssec/save/domain-dnssec-save', {})"
                         data-ng-disabled="!ctrlDomainDnssec.addDnssecForm.$dirty || ctrlDomainDnssec.addDnssecForm.$invalid"
                         data-ng-if="ctrlDomainDnssec.editMode">
                 </button>
-                <button class="btn btn-block btn-danger" type="button"
+                <button class="btn btn-block btn-default" type="button"
                         data-i18n-static="domain_tab_DNSSEC_reset"
                         data-ng-click="ctrlDomainDnssec.reset()"
                         data-ng-if="ctrlDomainDnssec.editMode">
                 </button>
+
             </div>
             <div data-guides
                  data-guides-title="tr('guide_domain_subtitle')"

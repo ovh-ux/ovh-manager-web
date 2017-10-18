@@ -126,13 +126,13 @@
                         data-ng-click="ctrlDomainDns.activeEditMode()"
                         data-ng-if="ctrlDomainDns.allowModification && !ctrlDomainDns.editMode">
                 </button>
-                <button class="btn btn-block btn-success" type="button"
+                <button class="btn btn-block btn-primary" type="button"
                         data-i18n-static="domain_tab_DNS_save"
                         data-ng-click="ctrlDomainDns.saveDns()"
                         data-ng-disabled="!ctrlDomainDns.dnsServerNamesForm.$dirty || ctrlDomainDns.dnsServerNamesForm.$invalid || !ctrlDomainDns.atLeastOneDns"
                         data-ng-if="ctrlDomainDns.editMode">
                 </button>
-                <button class="btn btn-block btn-danger" type="button"
+                <button class="btn btn-block btn-default" type="button"
                         data-i18n-static="domain_tab_DNS_cancel"
                         data-ng-click="ctrlDomainDns.cancelDns()"
                         data-ng-if="ctrlDomainDns.editMode">
