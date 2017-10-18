@@ -1,6 +1,6 @@
 <div class="container-fluid" id="main-container" data-ng-controller="UserCtrl">
     <div class="row">
-        <div class="col-xs-12 col-md-10">
+        <div class="col-xs-12 col-md-12">
             <div class="text-center mt-5 py-5">
                 <h1 class="d-inline">
                     <span data-i18n-static="welcome_to_your_manager_1"></span>
@@ -35,16 +35,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="hidden-sm col-md-2 mt-5 py-5">
-            <a target="_blank" rel="noopener"
-               data-ng-click="onBannerClick()"
-               data-ng-href="{{ user.ovhSubsidiary === 'FR' ? 'https://summit.ovh.com/fr/#xtor=CS4-32-[web-banner]' : 'https://summit.ovh.com/en/#xtor=CS4-32-[web-banner]' }}"
-               data-ng-attr-title="{{ user.ovhSubsidiary === 'FR' ? 'OVH Summit 2017: Je participe !' : 'OVH Summit 2017: Register for free' }}">
-                <img class="img-responsive" alt="OVH Summit 2017"
-                     data-ng-src="{{ 'assets/images/summit/2017-banner-' + (user.ovhSubsidiary === 'FR' ? 'fr' : 'en') + '.png' }}">
-            </a>
         </div>
     </div>
 </div>
