@@ -9,9 +9,9 @@
              data-wizard-step-valid="ctrl.model.date">
 
             <p data-ng-bind-html="tr('hosting_tab_DATABASES_configuration_dump_step1_question', ['<strong>' + ctrl.entryToDump + '</strong>'])"></p>
-            <div class="text-center" data-ng-if="!ctrl.model.options">
-                <oui-loader inline="true"></oui-loader>
-            </div>
+
+            <oui-loader data-ng-if="!ctrl.model.options"></oui-loader>
+
             <form data-ng-if="ctrl.model.options">
                 <label class="oui-label" for="dumpDate"
                        data-i18n-static="hosting_tab_DATABASES_configuration_dump_step1_date"></label>

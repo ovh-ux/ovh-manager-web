@@ -1,8 +1,6 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabAutomatedEmailsCtrl as ctrl">
 
-    <div class="text-center" data-ng-if="ctrl.loaders.loading">
-        <oui-loader size="l" inline="true"></oui-loader>
-    </div>
+    <oui-loader size="l" data-ng-if="ctrl.loaders.loading"></oui-loader>
 
     <div class="row" data-ng-show="!ctrl.loaders.loading">
         <!-- INFORMATIONS_VIEW  -->
@@ -61,9 +59,8 @@
                 <div data-ng-if="ctrl.stats.chart != null">
                     <h3 class="text-center mt-5" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_volume"></h3>
 
-                    <div class="text-center" data-ng-if="ctrl.loader.loading">
-                        <oui-loader inline="true"></oui-loader>
-                    </div>
+                    <oui-loader data-ng-if="ctrl.loader.loading"></oui-loader>
+
                     <div class="chart-container" style="height: 320px;"
                          data-ng-if="!ctrl.loading.loading"
                          data-chartjs="ctrl.stats.chart">

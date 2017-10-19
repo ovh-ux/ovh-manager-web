@@ -6,9 +6,7 @@
     <div class="container-fluid px-5">
         <div data-ovh-alert="{{alerts.order}}"></div>
 
-        <div class="mt-5 text-center" data-ng-if="orderCtrl.loading.init">
-            <oui-loader size="l" inline="true"></oui-loader>
-        </div>
+        <oui-loader size="l" data-ng-if="orderCtrl.loading.init"></oui-loader>
 
         <div class="row" data-ng-if="!orderCtrl.loading.init && orderCtrl.list.versions.length">
             <div class="col-md-9">
