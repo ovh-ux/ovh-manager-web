@@ -6,9 +6,7 @@
             <p class="font-weight-bold" data-i18n-static="domain_tab_GLUE_heading"></p>
             <p data-i18n-static="domain_tab_GLUE_info"></p>
 
-            <div class="text-center" data-ng-if="ctrlDomainGlue.loading">
-                <oui-loader size="l" inline="true"></oui-loader>
-            </div>
+            <oui-loader size="l" data-ng-if="ctrlDomainGlue.loading"></oui-loader>
 
             <div class="alert alert-info" role="alert"
                  data-i18n-static="domain_tab_GLUE_empty"

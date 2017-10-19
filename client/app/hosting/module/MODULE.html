@@ -1,8 +1,6 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabModulesController as ctrlHostingTabModules">
 
-    <div class="text-center" data-ng-if="ctrlHostingTabModules.loading">
-        <oui-loader size="l" inline="true"></oui-loader>
-    </div>
+    <oui-loader size="l" data-ng-if="ctrlHostingTabModules.loading"></oui-loader>
 
     <div class="row" data-ng-show="!ctrlHostingTabModules.loading">
         <div class="col-md-9">
