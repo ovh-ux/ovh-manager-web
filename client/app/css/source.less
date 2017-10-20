@@ -23,6 +23,7 @@
 @import "common/datePicker";
 @import "common/distributionIcon";
 @import "common/dropdown";
+@import "common/open-sans";
 @import "common/global";
 @import "common/graphicalTools";
 @import "common/icon";
@@ -64,11 +65,28 @@
 @ovh-font-path: "../bower_components/ovh-manager-webfont/dist/fonts";
 @ovh-universe-color: @oui-color-jungle;
 
+#sidebar-menu {
+    font-family: 'Open Sans', 'Trebuchet MS', Arial, sans-serif;
+}
+
 #manager-navbar {
+    font-family: 'Open Sans', 'Trebuchet MS', Arial, sans-serif;
     min-height: auto;
     position: relative;
     top: inherit;
     left: inherit;
     right: inherit;
     z-index: inherit;
+
+    .dropdown-menu li {
+        &::before {
+            display: none;
+        }
+
+        & > a, & > button {
+            font-size: inherit;
+            margin-left: inherit;
+            white-space: nowrap;
+        }
+    }
 }
