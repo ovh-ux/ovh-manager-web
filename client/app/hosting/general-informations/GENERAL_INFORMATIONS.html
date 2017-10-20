@@ -27,13 +27,13 @@
                                         <span class="label label-danger"
                                               data-i18n-static="hosting_dashboard_service_state_DELETE"
                                               data-ng-if="hosting.serviceInfos.renew.deleteAtExpiration"></span>
-                                        <a data-ng-href="{{guideHostingState}}" class="btn btn-link py-0"
-                                           target="_blank" title="{{::i18n.hosting_state_info_title}}"
-                                           data-ng-if="guideHostingState">
-                                            <span class="fa fa-info-circle mr-2" aria-hidden="true"></span>
-                                            <span
-                                                data-ng-bind="tr('hosting_state_info_' + hosting.serviceState)"></span>
-                                        </a>
+                                        <div class="mt-2" data-ng-if="guideHostingState">
+                                            <a target="_blank" title="{{::i18n.hosting_state_info_title}}"
+                                               data-ng-href="{{guideHostingState}}">
+                                                <span class="fa fa-info-circle mr-2" aria-hidden="true"></span>
+                                                <span data-ng-bind="tr('hosting_state_info_' + hosting.serviceState)"></span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </li>
                                 <li class="oui-tile__item">
