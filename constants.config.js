@@ -1951,8 +1951,7 @@ module.exports = {
             "cloud"     : "https://www.ovh.com/manager/cloud/index.html#/",
             "telecom"   : "https://www.ovhtelecom.fr/manager/index.html#/",
             "sunrise"   : "https://www.ovh.com/manager/sunrise/index.html#/",
-            "partners"  : "https://www.ovh.com/manager/partners",
-            "v3"        : "https://www.ovh.com/managerv3/home.pl"
+            "partners"  : "https://www.ovh.com/manager/partners"
         },
         NO_AUTORENEW_COUNTRIES : [
             "CZ",
