@@ -5,9 +5,8 @@
 <div class="container-fluid mt-5 px-5">
     <div data-ovh-alert="{{webSiteConfigurationCtrl.alerts}}"></div>
 
-    <oui-message type="info">
-        <span data-i18n-static="website_instructions"></span>
-    </oui-message>
+
+    <p data-i18n-static="website_instructions"></p>
 
     <oui-loader size="l" data-ng-if="webSiteConfigurationCtrl.loading.init"></oui-loader>
 
@@ -90,9 +89,7 @@
 
                 <div data-ng-if="!webSiteConfigurationCtrl.loading.capabilities && webSiteConfigurationCtrl.site.config.type !== 'classic' && webSiteConfigurationCtrl.canBeCreated">
 
-                    <div class="alert alert-info" role="alert"
-                         data-i18n-static="website_creation_step4_explanation">
-                    </div>
+                    <p data-i18n-static="website_creation_step4_explanation"></p>
 
                     <div class="form-horizontal">
                         <div class="form-group"

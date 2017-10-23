@@ -62,7 +62,7 @@ angular.module("controllers").controller(
                     this.keyAlgorithmEnum = _.map(models.models["dnssec.KeyAlgorithmEnum"].enum, (algorithm) => +algorithm);
                     this.keyFlagEnum = _.map(models.models["dnssec.KeyFlagEnum"].enum, (flag) => +flag);
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_DNSSEC_loading_error"), _.get(err, "data", err), this.$scope.alerts.page))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_DNSSEC_loading_error"), _.get(err, "data", err), this.$scope.alerts.main))
                 .finally(() => {
                     this.dnssecListSave = _.slice(this.dnssecList);
                     this.loading = false;

@@ -182,9 +182,10 @@
                                 </tr>
                                 <tr class="selected" data-ng-if="ctrlDomainTabZoneDns.editMode">
                                     <td></td>
-                                    <td class="form-group" data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay.$invalid }">
+                                    <td class="form-group"
+                                        data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay.$invalid }">
                                         <div class="input-group">
-                                            <input type="text" name="subDomainToDisplay" class="form-control"
+                                            <input type="text" class="form-control" name="subDomainToDisplay"
                                                    data-ng-change="ctrlDomainTabZoneDns.subDomainToDisplayCheck(ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay)"
                                                    data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
                                                    data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.subDomainToDisplay"
@@ -192,7 +193,8 @@
                                             <span class="input-group-addon" data-ng-bind-template=".{{ctrlDomainTabZoneDns.domain.displayName}}."></span>
                                         </div>
                                     </td>
-                                    <td class="form-group" data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.ttl.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.ttl.$invalid }">
+                                    <td class="form-group"
+                                        data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.ttl.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.ttl.$invalid }">
                                         <input type="text" class="form-control" name="ttl"
                                                data-ng-change="ctrlDomainTabZoneDns.ttlCheck(ctrlDomainTabZoneDns.addDnsRecordForm.ttl)"
                                                data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
@@ -206,11 +208,14 @@
                                                     data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
                                                     data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.fieldType"
                                                     data-ng-options="fieldType for fieldType in ctrlDomainTabZoneDns.zone.fieldsTypes track by fieldType">
+                                                <option value="" disabled
+                                                        data-i18n-static="select_placeholder"></option>
                                             </select>
                                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                                         </label>
                                     </td>
-                                    <td class="form-group" data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay.$invalid }">
+                                    <td class="form-group"
+                                        data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay.$invalid }">
                                         <input type="text" class="form-control" name="targetToDisplay"
                                                data-ng-change="ctrlDomainTabZoneDns.fieldAndTargetCheck(ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay)"
                                                data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"

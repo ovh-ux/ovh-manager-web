@@ -44,7 +44,7 @@ angular
                     }
                 })
                 .catch((err) => {
-                    this.displayError(err, "domain_tab_DYNHOST_error", this.$scope.alerts.page);
+                    this.displayError(err, "domain_tab_DYNHOST_error", this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loading.init = false;
