@@ -76,7 +76,8 @@
 
                         <tbody data-ng-if="!loading.domains && domains.list.results.length > 0">
                             <tr data-ng-repeat="domain in domains.list.results track by $index">
-                                <td data-ng-bind="domain.displayName"></td>
+                                <td class="word-break"
+                                    data-ng-bind="domain.displayName"></td>
                                 <td data-ng-bind="domain.path"></td>
                                 <td class="text-center">
                                     <span class="label"
