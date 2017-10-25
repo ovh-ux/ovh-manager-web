@@ -206,11 +206,8 @@
                                          data-ng-if="stateCtrl.database.infrastructure === 'legacy'">
                                     </div>
 
-                                    <div data-ng-if="stateCtrl.database.infrastructure !== 'legacy'  && stateCtrl.database.offer === 'public'"
+                                    <div data-ng-if="stateCtrl.database.infrastructure !== 'legacy'"
                                          data-ng-bind="::tr('privateDatabase_dashboard_quota', [stateCtrl.database.quotaUsed.value]) + tr('unit_size_' + stateCtrl.database.quotaUsed.unit) + ' / ' + database.quotaSize.value + tr('unit_size_' + database.quotaSize.unit)">
-                                    </div>
-                                    <div data-ng-if="stateCtrl.database.infrastructure !== 'legacy' && stateCtrl.database.offer === 'classic'"
-                                         data-ng-bind="::tr('privateDatabase_dashboard_quota', [stateCtrl.database.quotaUsed.value]) + tr('unit_size_' + stateCtrl.database.quotaUsed.unit)">
                                     </div>
                                 </div>
                             </div>
