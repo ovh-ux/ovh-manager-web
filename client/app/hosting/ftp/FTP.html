@@ -94,7 +94,7 @@
                                     <div class="form-group" data-ng-show="ctrlHostingTabFTP.editMode">
                                         <div class="input-group">
                                             <input type="password" class="form-control" autocomplete="off"
-                                                    data-ng-model="ctrlHostingTabFTP.password.value">
+                                                   data-ng-model="ctrlHostingTabFTP.password.value">
                                             <div class="input-group-btn">
                                                 <button class="btn btn-success" type="button" title="{{::i18n.hosting_tab_FTP_configuration_user_create_step2_password_password}} : {{i18n.wizard_confirm}}"
                                                         data-ng-click="ctrlHostingTabFTP.changePassword()"
@@ -108,17 +108,17 @@
                                             </div>
                                         </div>
                                         <small class="d-block mt-2"
-                                                data-ng-bind-html="tr('hosting_common_password_conditions', [ctrlHostingTabFTP.condition.min, ctrlHostingTabFTP.condition.max])"></small>
+                                               data-ng-bind-html="tr('hosting_common_password_conditions', [ctrlHostingTabFTP.condition.min, ctrlHostingTabFTP.condition.max])"></small>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="oui-checkbox mb-0" data-ng-if="ctrlHostingTabFTP.allowUpdateState">
                                         <input type="checkbox" class="oui-checkbox__input" id="prevSshState-{{$index}}"
-                                                data-ng-change="ctrlHostingTabFTP.updatePrimaryLoginState(element, prevSshState)"
-                                                data-ng-model="element.sshState"
-                                                data-ng-true-value="'sftponly'"
-                                                data-ng-false-value="'none'"
-                                                data-ng-init="prevSshState = { sshState : element.sshState }">
+                                               data-ng-change="ctrlHostingTabFTP.updatePrimaryLoginState(element, prevSshState)"
+                                               data-ng-model="element.sshState"
+                                               data-ng-true-value="'sftponly'"
+                                               data-ng-false-value="'none'"
+                                               data-ng-init="prevSshState = { sshState : element.sshState }">
                                         <label class="oui-checkbox__label-container" for="prevSshState-{{$index}}">
                                             <span class="oui-checkbox__label"
                                                   data-i18n-static="common_activated"
@@ -141,11 +141,11 @@
                                 <td>
                                     <div class="oui-checkbox mb-0" data-ng-if="ctrlHostingTabFTP.allowUpdateState">
                                         <input type="checkbox" class="oui-checkbox__input" id="prevState-{{$index}}"
-                                                data-ng-change="ctrlHostingTabFTP.updatePrimaryLoginState(element, prevState)"
-                                                data-ng-model="element.state"
-                                                data-ng-true-value="'rw'"
-                                                data-ng-false-value="'off'"
-                                                data-ng-init="prevState = { state : element.state }">
+                                               data-ng-change="ctrlHostingTabFTP.updatePrimaryLoginState(element, prevState)"
+                                               data-ng-model="element.state"
+                                               data-ng-true-value="'rw'"
+                                               data-ng-false-value="'off'"
+                                               data-ng-init="prevState = { state : element.state }">
                                         <label class="oui-checkbox__label-container" for="prevState-{{$index}}">
                                             <span class="oui-checkbox__label"
                                                   data-i18n-static="common_activated"
@@ -253,29 +253,27 @@
                 </div>
 
                 <div class="alert alert-info" role="alert"
-                        data-i18n-static="hosting_tab_FTP_multiftp_table_header_empty"
-                        data-ng-if="!ctrlHostingTabFTP.loading.init && !ctrlHostingTabFTP.hasResult">
+                     data-i18n-static="hosting_tab_FTP_multiftp_table_header_empty"
+                     data-ng-if="!ctrlHostingTabFTP.loading.init && !ctrlHostingTabFTP.hasResult">
                 </div>
 
                 <div data-ng-if="!ctrlHostingTabFTP.loading.init && ctrlHostingTabFTP.hasResult">
                     <div class="mb-3">
                         <form class="form-inline d-md-flex justify-content-md-end" name="searchFtpForm">
                             <div class="form-group">
-                                <label class="sr-only" for="searchFtp"
-                                        data-ng-i18n-static="common_search"></label>
+                                <label class="sr-only" for="searchFtp" data-ng-i18n-static="common_search"></label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="searchFtp" name="searchFtp" placeholder="{{::i18n.hosting_tab_DOMAINS_search_placeholder}}"
-                                            data-ng-change="ctrlHostingTabFTP.goSearch()"
-                                            data-ng-model="ctrlHostingTabFTP.search.value"
-                                            data-ng-model-options="{ debounce: 800 }">
+                                           data-ng-change="ctrlHostingTabFTP.goSearch()"
+                                           data-ng-model="ctrlHostingTabFTP.search.value"
+                                           data-ng-model-options="{ debounce: 800 }">
                                     <div class="input-group-btn" data-ng-if="ctrlHostingTabFTP.search.value">
                                         <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
                                                 data-ng-click="ctrlHostingTabFTP.resetSearch()">
                                             <span class="fa fa-times" aria-hidden="true"></span>
                                         </button>
                                     </div>
-                                    <span class="input-group-addon"
-                                            data-ng-if="!ctrlHostingTabFTP.search.value">
+                                    <span class="input-group-addon" data-ng-if="!ctrlHostingTabFTP.search.value">
                                         <span class="fa fa-search" aria-hidden="true"></span>
                                     </span>
                                 </div>
