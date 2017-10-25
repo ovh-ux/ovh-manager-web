@@ -568,21 +568,19 @@ module.exports = {
                 support: "https://www.ovh.com/fr/support/",
                 support_contact: "https://www.ovh.com/fr/support/nous-contacter/",
                 guides: {
-                    home   : "https://docs.ovh.com",
-                    all : "https://docs.ovh.com/fr/fr/web/",
+                    home: "https://docs.ovh.com",
+                    all: "https://docs.ovh.com/fr/fr/web/",
                     hostingCron: "https://www.ovh.com/fr/g1990.mutualise_taches_automatisees_cron",
-                    hostingModule : "https://www.ovh.com/fr/g1402.mutualise_guide_modules_des_hebergements_mutualises",
+                    hostingModule: "https://www.ovh.com/fr/g1402.mutualise_guide_modules_des_hebergements_mutualises",
                     hostingScriptEmail: "https://www.ovh.com/fr/g1974.mutualise_suivi_des_emails_automatises",
                     hostingStatsLogs: "https://www.ovh.com/fr/g1344.mutualise_consulter_les_statistiques_et_les_logs_de_mon_site",
                     hostingPhpConfiguration: "https://docs.ovh.com/fr/fr/web/hosting/mutualise-configurer-la-version-de-php-depuis-votre-espace-client/",
-                    hostingPrivateDatabase : "https://www.ovh.com/fr/g2023.tout_sur_le_sql_prive",
-
-                    hostingPrivateDatabaseDBaaS : {
-                        beginner : "https://docs.ovh.com/fr/fr/cloud/clouddb/debuter-avec-clouddb/",
-                        db : "https://docs.ovh.com/fr/fr/cloud/clouddb/demarrez-avec-mysql-et-mariadb/",
-                        beginPostgre : "https://docs.ovh.com/fr/fr/cloud/clouddb/demarrez-avec-postgresql/"
+                    hostingPrivateDatabase: "https://www.ovh.com/fr/g2023.tout_sur_le_sql_prive",
+                    hostingPrivateDatabaseDBaaS: {
+                        beginner: "https://docs.ovh.com/fr/fr/cloud/clouddb/debuter-avec-clouddb/",
+                        db: "https://docs.ovh.com/fr/fr/cloud/clouddb/demarrez-avec-mysql-et-mariadb/",
+                        beginPostgre: "https://docs.ovh.com/fr/fr/cloud/clouddb/demarrez-avec-postgresql/"
                     },
-
                     emailsConfiguration: "https://docs.ovh.com/fr/fr/web/emails/",
                     emailsConfigurationAuto: "https://mail.ovh.net/auto/",
                     emailsConfigurationMacMountainLion: "https://docs.ovh.com/fr/fr/web/emails/configuration-email-mutu-mail-de-mac/",
@@ -788,7 +786,7 @@ module.exports = {
                 exchangeOrder: "https://www.ovh.com/fr/emails/hosted-exchange/",
                 emailproOrder: "https://www.ovh.com/fr/emails/email-pro/",
                 office365Order: "https://www.ovh.com/fr/office-365/",
-                renewAlign : "https://eu.ovh.com/fr/cgi-bin/order/renew.cgi?alignDate=1",
+                renewAlign: "https://eu.ovh.com/fr/cgi-bin/order/renew.cgi?alignDate=1",
                 alldomOrder: "https://www.ovh.com/fr/order/domain/#/legacy/domain/alldom?domain=",
                 ipShortageWarnUrl: "http://travaux.ovh.net/?do=details&id=18851",
                 start10mMarket: "https://www.ovh.com/fr/domaines/offre_hebergement_start10m.xml"
@@ -797,13 +795,18 @@ module.exports = {
                 support: "http://www.ovh.co.uk/support/",
                 support_contact: "http://www.ovh.co.uk/support/",
                 guides: {
-                    home   : "http://help.ovh.co.uk/",
+                    home: "http://help.ovh.co.uk/",
                     all: "https://docs.ovh.com/gb/en/",
                     emailsConfiguration: "https://www.ovh.co.uk/g1474.ovh-mails-general-use",
                     autoRenew: "https://www.ovh.co.uk/g1271.renew",
                     emailsCreation: "https://www.ovh.co.uk/g1343.qssq",
                     hostingPhpConfiguration: "https://www.ovh.co.uk/g1999.hosting_how_to_configure_php_from_your_customer_account",
                     hostingPrivateDatabase: "https://www.ovh.co.uk/g2023.what_you_need_to_know_about_private_sql",
+                    hostingPrivateDatabaseDBaaS: {
+                        beginner: "https://docs.ovh.com/gb/en/clouddb/getting-started-with-clouddb/",
+                        db: "https://docs.ovh.com/gb/en/clouddb/get-started-with-mysql-and-mariadb/",
+                        beginPostgre: "https://docs.ovh.com/gb/en/clouddb/getting-started-with-postgresql/"
+                    },
                     wordpress: "https://codex.wordpress.org/Getting_Started_with_WordPress",
                     prestashop: "http://doc.prestashop.com/display/PS16/English+documentation",
                     phpAppendices: "http://php.net/manual/en/appendices.php",
