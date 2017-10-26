@@ -11,6 +11,9 @@ module.exports = {
     "extends": "ovh",
     "rules": {
     },
+    "parserOptions": {
+       "sourceType": "module"
+    },
     "globals": {
         "_": true,
         "$": true,

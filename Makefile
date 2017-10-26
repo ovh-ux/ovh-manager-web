@@ -3,7 +3,6 @@ NODE=node
 NPM=npm
 GRUNT=grunt
 GULP=gulp
-BOWER=bower
 GIT=git
 CD=cd
 ECHO=@echo
@@ -21,7 +20,6 @@ CERTIFICATE_CSR_FILE=server/certificate/server.csr
 CERTIFICATE_CRT_FILE=server/certificate/server.crt
 
 #### FOLDERS ####
-BOWER_DIR=client/bower_components
 NODE_DIR=node_modules
 GRUNT_DEP=$(NODE_DIR)/grunt
 DIST_DIR=dist
@@ -35,12 +33,6 @@ DIST_CA_TAR=dist-CA.tar.gz
 
 #### MACRO ####
 NAME=`grep -Po '(?<="name": ")[^"]*' package.json`
-
-#### OTHER ####
-ifneq ($(strip $(bower_registry)),)
-BOWER_PARAM=--config.registry=$(bower_registry)
-endif
-
 
 help:
 	$(ECHO) "_____________________________"

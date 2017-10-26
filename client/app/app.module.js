@@ -585,7 +585,6 @@ angular
         });
     })
     .run(($translatePartialLoader) => {
-        console.log("coucou");
         $translatePartialLoader.addPart("resources/i18n/core");
     })
     .constant("UNIVERSE", "WEB");

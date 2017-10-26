@@ -6,6 +6,7 @@ module.exports = function (grunt) {
     const Http = require("http");
     const Https = require("https");
     const assets = require("./Assets");
+    const distdir = "dist/client/";
     let mode = grunt.option("mode") || "dev";
 
     const target = grunt.option("target") || "EU";
@@ -14,14 +15,14 @@ module.exports = function (grunt) {
     const filesJsModules = _.map(
         assets[target].modules,
         (module) => {
-            const assetsModule = require(`./client/bower_components/${
+            const assetsModule = require(`./node_modules/@bower_components/${
                 module
                 }/Assets.js`);
             return {
                 expand: true,
                 cwd: `<%= bowerdir %>/${module}/src`,
                 src: assetsModule.src.js.map((jsPath) => jsPath.replace("src/", "")),
-                dest: "dist/app"
+                dest: `${distdir}`
             };
         },
         []
@@ -33,7 +34,7 @@ module.exports = function (grunt) {
 
     function copyFromEachModules (properties, dest) {
         return _.map(assets[target].modules, (module) => {
-            const assetsModule = require(`./client/bower_components/${
+            const assetsModule = require(`./node_modules/@bower_components/${
                 module
                 }/Assets.js`);
 
@@ -50,7 +51,7 @@ module.exports = function (grunt) {
         });
     }
 
-    const basepath = grunt.option("base-path") || (isProd() ? "" : "../../");
+    const basepath = "" // grunt.option("base-path") || (isProd() ? "" : "../../");
 
     grunt.loadTasks("tasks");
 
@@ -59,13 +60,11 @@ module.exports = function (grunt) {
     grunt.initConfig({
         // Config
         pkg: grunt.file.readJSON("package.json"),
-        bower: grunt.file.readJSON("bower.json"),
-        bowerdir: "client/bower_components",
+        bowerdir: "node_modules/@bower_components",
         builddir: "tmp",
         publicdir: "client/app",
-        distdir: isProd() ? "dist/client/" : "dist/",
+        distdir,
         componentsdir: "client/app/components",
-
         // SWS
         swsProxyPath: "apiv6/",
         express: {
@@ -85,7 +84,7 @@ module.exports = function (grunt) {
         },
         open: {
             server: {
-                url: "https://localhost:<%= express.options.port %>/client/app"
+                url: "https://localhost:<%= express.options.port %>"
             }
         },
         prettier_eslint: {
@@ -114,7 +113,7 @@ module.exports = function (grunt) {
                 const files = [];
                 _.forEach(targetsAvailable, (tgt) => {
                     _.forEach(assets[tgt].modules, (module) => {
-                        const assetsModule = require(`./client/bower_components/${
+                        const assetsModule = require(`./node_modules/@bower_components/${
                             module
                             }/Assets.js`);
                         files.push(assetsModule.src.js);
@@ -139,12 +138,7 @@ module.exports = function (grunt) {
         },
         browserify: {
             options: {
-                watch: false,
-                plugin: ['browserify-hmr'],
-                // uncomment these lines if you want to have source map files for debuging purpose
-                // browserifyOptions: {
-                //     debug: true
-                // }
+                watch: true,
                 transform: [
                     ['babelify', { presets: [["env", {
                       targets: {
@@ -161,42 +155,34 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: "client",
-                    src: assets.src.js
-                          .concat(["!<%= publicdir %>/js/app/libs/**/*"])
-                          .map((jsPath) => jsPath.replace("client/", "")),
-                    dest: "dist"
+                    cwd: "client/app",
+                    exclude: ["node_modules"],
+                    src: [
+                        "**/*.module.js",
+                        "**/*.constant.js",
+                        "components/**/**.js",
+                        "website/**/**.js",
+                        "domains/**/**.js",
+                        "domain/**/**.js",
+                        "domain-operation/**/**.js",
+                        "double-authentication/**/**.js",
+                        "email-domain/**/*.js",
+                        "hosting/**/**.js",
+                        "incident/**/*.js",
+                        "private-database/**/**.js",
+                        "dns-zone/**/**.js",
+                        "double-authentication/**/**.js",
+                        "feedback/**/**.js",
+                        "configuration/**/**.js",
+                        "*.js"
+                    ],
+                    dest: `${distdir}`
                 }]
             },
             modules: {
                 files: filesJsModules
             }
         },
-        // ES6 SUPPORT
-        // babel: {
-        //     options: {
-        //         presets: [["env", {
-        //             targets: {
-        //                 browsers: ["last 2 versions", "ie 11"]
-        //             }
-        //         }]]
-        //     },
-        //     modules: {
-        //         files: filesJsModules
-        //     },
-        //     dist: {
-        //         files: [
-        //             {
-        //                 expand: true,
-        //                 cwd: "client",
-        //                 src: assets.src.js
-        //                     .concat(["!<%= publicdir %>/js/app/libs/**/*"])
-        //                     .map((jsPath) => jsPath.replace("client/", "")),
-        //                 dest: "dist"
-        //             }
-        //         ]
-        //     }
-        // },
         // Concatenation
         concat: {
             dist: {
@@ -329,33 +315,33 @@ module.exports = function (grunt) {
                 files: [
                     {
                         expand: true,
-                        cwd: "<%= builddir %>",
-                        src: "*.html",
-                        dest: "<%= publicdir %>/"
+                        cwd: "client/app",
+                        src: "**/*.{html,css}",
+                        dest: "<%= distdir %>"
                     },
                     {
                         expand: true,
                         cwd: "<%= bowerdir %>/angular-i18n/",
                         src: "*.js",
-                        dest: "<%= publicdir %>/resources/angular/i18n/"
+                        dest: "<%= distdir %>resources/angular/i18n/"
                     },
                     {
                         expand: true,
                         cwd: "<%= bowerdir %>/ovh-utils-angular/bin/template/",
                         src: ["**/**.html", "**/**.css"],
-                        dest: "<%= componentsdir %>/ovh-utils-angular/"
+                        dest: "<%= distdir %>components/ovh-utils-angular/"
                     },
                     {
                         expand: true,
                         cwd: "./node_modules/ovh-ui-kit-bs/dist/fonts",
                         src: ["**/*"],
-                        dest: "<%= publicdir %>/css/fonts"
+                        dest: "<%= distdir %>css/fonts"
                     },
                     {
                         expand: true,
                         cwd: "./node_modules/ovh-ui-kit-bs/dist/icons",
                         src: ["*"],
-                        dest: "<%= publicdir %>/css/icons"
+                        dest: "<%= distdir %>css/icons"
                     }
                 ]
             },
@@ -377,7 +363,7 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: "./node_modules/ovh-ui-kit-bs/dist/icons",
                         src: ["*"],
-                        dest: "<%= distdir %>/css/icons"
+                        dest: "<%= distdir %>css/icons"
                     },
                     {
                         expand: true,
@@ -492,19 +478,13 @@ module.exports = function (grunt) {
         template: {
             dist: {
                 src: "<%= publicdir %>/index.ejs",
-                dest: "<%= publicdir %>/index.html",
+                dest: "<%= distdir %>/index.html",
                 variables () {
                     return {
                         prodMode: mode === "prod",
                         basepath,
                         commonModuleBasePath: "https://www.ovh.com/manager/dedicated",
                         modules: assets.modules,
-                        constants: grunt.file.expand([
-                            `${grunt.config("builddir")}/js/constants-*.js`,
-                            `!${
-                                grunt.config("builddir")
-                                }/js/constants-login.js`
-                        ]),
                         commonJsFiles: grunt.file.expand(assets.common.js),
                         jsFiles: grunt.file.expand(assets.src.jsES6),
                         commonCss: grunt.file.expand(assets.common.css),
@@ -524,7 +504,7 @@ module.exports = function (grunt) {
                     ]
                 },
                 files: {
-                    "client/app/css/main.css": "client/app/css/source.less"
+                    "<%= distdir %>css/main.css": "client/app/css/source.less"
                 }
             }
         },
@@ -535,7 +515,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    "client/app/css/main-scss.css": "client/app/css/source.scss"
+                    "<%= distdir %>/app/css/main-scss.css": "client/app/css/source.scss"
                 }
             }
         },
@@ -601,12 +581,12 @@ module.exports = function (grunt) {
                 files: (function () {
                     const files = [];
                     _.forEach(assets[target].modules, (module) => {
-                        const assetsModule = require(`./client/bower_components/${
+                        const assetsModule = require(`./node_modules/@bower_components/${
                             module
                             }/Assets.js`);
                         _.forEach(assetsModule.resources.i18n, (val) => {
                             files.push(
-                                `./client/bower_components/${module}/${val}`,
+                                `./node_modules/@bower_components/${module}/${val}`,
                                 `!${val}`
                             );
                         });
@@ -631,10 +611,10 @@ module.exports = function (grunt) {
                 files: (function () {
                     const files = [];
                     _.forEach(assets[target].modules, (module) => {
-                        const assetsModule = require(`./client/bower_components/${module}/Assets.js`);
+                        const assetsModule = require(`./node_modules/@bower_components/${module}/Assets.js`);
                         _.forEach(assetsModule.src.html, (val) => {
                             files.push(
-                                `./client/bower_components/${module}/${val}`,
+                                `./node_modules/@bower_components/${module}/${val}`,
                                 `!${val}`
                             );
                         });
@@ -648,49 +628,16 @@ module.exports = function (grunt) {
                 },
                 tasks: ["copy:moduleshtml"]
             },
-            // js: {
-            //     files: assets.src.js,
-            //     tasks: ["browserify:dist", "force:eslint"],
-            //     options: {
-            //         spawn: false,
-            //         livereload: true
-            //     }
-            // },
-            // jsmodules: {
-            //     files: (function () {
-            //         const files = [];
-            //         _.forEach(assets[target].modules, (module) => {
-            //             const assetsModule = require(`./client/bower_components/${
-            //                 module
-            //                 }/Assets.js`);
-            //             _.forEach(assetsModule.src.js, (val) => {
-            //                 files.push(
-            //                     `./client/bower_components/${
-            //                         module
-            //                         }/${
-            //                         val}`,
-            //                     `!${val}`
-            //                 );
-            //             });
-            //         });
-            //         return _.flatten(files);
-            //     })(),
-            //     tasks: ["browserify:modules", "force:eslint"],
-            //     options: {
-            //         spawn: false,
-            //         livereload: true
-            //     }
-            // },
             css: {
                 files: (function () {
                     const files = [assets.src.css];
                     _.forEach(assets[target].modules, (module) => {
-                        const assetsModule = require(`./client/bower_components/${
+                        const assetsModule = require(`./node_modules/@bower_components/${
                             module
                             }/Assets.js`);
                         _.forEach(assetsModule.src.css, (val) => {
                             files.push(
-                                `./client/bower_components/${
+                                `./node_modules/@bower_components/${
                                     module
                                     }/${
                                     val}`,
@@ -727,8 +674,8 @@ module.exports = function (grunt) {
         bump: {
             options: {
                 pushTo: "origin",
-                files: ["package.json", "bower.json"],
-                updateConfigs: ["pkg", "bower"],
+                files: ["package.json"],
+                updateConfigs: ["pkg"],
                 commitFiles: ["-a"]
             }
         },
@@ -743,6 +690,89 @@ module.exports = function (grunt) {
                     }
                 ]
             }
+        },
+        injector: {
+            options: {},
+            // Inject application script files into index.html (doesn"t include bower)
+            app: {
+                options: {
+                    transform: function (filePath) {
+                        filePath = filePath.replace(`/${distdir}`, "");
+                        return `<script src="${filePath}"></script>`;
+                    },
+                    sort: function (a, b) {
+                        var module = /\.module\.js$/;
+                        var aMod = module.test(a);
+                        var bMod = module.test(b);
+                        // inject *.module.js first
+                        return (aMod === bMod) ? 0 : (aMod ? -1 : 1);
+                    },
+                    starttag: "<!-- injector:app -->",
+                    endtag: "<!-- endinjector -->"
+                },
+                files: {
+                    "<%= distdir %>/index.html": [
+                        "<%= distdir %>/**/!(*.spec|*.mock).js",
+                        "!<%= distdir %>/components/**/!(*.spec|*.mock).js"
+                    ]
+                }
+            },
+            components: {
+                options: {
+                    transform: function (filePath) {
+                        filePath = filePath.replace(`/${distdir}`, "");
+                        return `<script src="${filePath}"></script>`;
+                    },
+                    sort: function (a, b) {
+                        var module = /\.module\.js$/;
+                        var aMod = module.test(a);
+                        var bMod = module.test(b);
+                        // inject *.module.js first
+                        return (aMod === bMod) ? 0 : (aMod ? -1 : 1);
+                    },
+                    starttag: "<!-- injector:components -->",
+                    endtag: "<!-- endinjector -->"
+                },
+                files: {
+                    "<%= distdir %>/index.html": [
+                        "<%= distdir %>/components/**/!(*.spec|*.mock).js"
+                    ]
+                }
+            },
+            // Inject component css into index.html
+            css: {
+                options: {
+                    transform: function (filePath) {
+                        filePath = filePath.replace(`/${distdir}`, "");
+                        return "<link rel=\"stylesheet\" href=\"" + filePath + "\">";
+                    },
+                    starttag: "<!-- injector:css -->",
+                    endtag: "<!-- endinjector -->"
+                },
+                files: {
+                    "<%= distdir %>/index.html": [
+                        "<%= distdir %>/**/*.css"
+                    ]
+                }
+            }
+        },
+        ovhTranslation: {
+          dev: {
+              files: [
+                  {
+                      expand: true,
+                      flatten: false,
+                      cwd: 'client/app',
+                      src: [
+                          '**/*.xml'
+                      ],
+                      dest: `${distdir}`,
+                      filter: 'isFile',
+                      extendFrom: ['en_GB', 'fr_FR'],
+                      lint: true      // [optionnal] set it to false to disable linter
+                  }
+              ]
+          }
         }
     });
     // On watch events configure jshint:all to only run on changed file
@@ -895,9 +925,10 @@ module.exports = function (grunt) {
         "replace",
         "uglify",
         "cssmin",
-        "xml2json",
+        "ovhTranslation",
         "json_merge",
         "template",
+        "injector",
         "copy:dist",
         "htmlmin",
         "clean:prod"
@@ -915,9 +946,10 @@ module.exports = function (grunt) {
         "copy:resources",
         "less",
         "sass",
-        "xml2json",
+        "ovhTranslation",
         "json_merge",
         "template",
+        "injector",
         "copy:dev",
         "express:dev",
         "wait",

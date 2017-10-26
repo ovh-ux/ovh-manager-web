@@ -1,13 +1,6 @@
-import uiRouter from 'angular-ui-router'
-// import ConfigurationCtrl from './configuration.controller'
-import routing from './configuration.routes'
-// import template from './configuration.html'
+import routing from "./configuration.routes";
+import uiRouter from "angular-ui-router";
 
 export default angular
-  .module("Configuration", [uiRouter])
-  .config(routing)
-  // .component('configuration', {
-  //   template,
-  //   controller: ConfigurationCtrl
-  // })
-  // .name
+    .module("Configuration", [uiRouter])
+    .config(routing);
