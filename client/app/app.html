@@ -1,5 +1,5 @@
 <div>
-    <div class="alert alert-warning mb-0 rounded-0"
+    <div class="alert alert-dismissible alert-warning mb-0"
          role="alert"
          data-ng-if="AppCtrl.userImportantAlertsMessages">
         <button type="button" class="close" data-dismiss="alert" aria-label="{{i18n.wizard_close}}"></button>
@@ -9,7 +9,7 @@
             </li>
         </ul>
     </div>
-    <div class="alert alert-warning mb-0 rounded-0"
+    <div class="alert alert-dismissible alert-warning mb-0"
          role="alert"
          data-ng-if="AppCtrl.incidentMessage"
          data-ng-click="AppCtrl.getIncidentInformations()">

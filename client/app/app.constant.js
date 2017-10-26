@@ -33,6 +33,11 @@ angular.module("App").constant("constants", {
                 home: "http://prirucky.ovh.cz/",
                 all: "https://docs.ovh.com/cz/cs/",
                 hostingPhpConfiguration: "https://www.ovh.cz/g1999.hosting_how_to_configure_php_from_your_customer_account",
+                hostingPrivateDatabaseDBaaS: {
+                    beginner: "https://docs.ovh.com/cz/cs/clouddb/zaciname-s-clouddb/",
+                    db: "https://docs.ovh.com/cz/cs/clouddb/zaciname-s-mysql-a-mariadb/",
+                    beginPostgre: "https://docs.ovh.com/cz/cs/clouddb/zaciname-s-postgresql/"
+                },
                 emailsCreation: "https://www.ovh.cz/g1343.qssq",
                 wordpress: "https://codex.wordpress.org/Getting_Started_with_WordPress",
                 prestashop: "http://doc.prestashop.com/display/PS16/English+documentation",
@@ -98,6 +103,11 @@ angular.module("App").constant("constants", {
                 emailsCreation: "https://www.ovh.de/g1343.qssq",
                 hostingPhpConfiguration: "https://www.ovh.de/g1999.webhosting_so_andern_sie_die_php-version_von_ihrem_kundencenter_aus",
                 hostingPrivateDatabase: "https://www.ovh.de/g2023.alles_wissenswerte_zum_sql_private_angebot",
+                hostingPrivateDatabaseDBaaS: {
+                    beginner: "https://docs.ovh.com/de/clouddb/erste-schritte-mit-clouddb/",
+                    db: "https://docs.ovh.com/de/clouddb/erste-schritte-mit-mysql-und-mariadb/",
+                    beginPostgre: "https://docs.ovh.com/de/clouddb/erste-schritte-mit-postgresql/"
+                },
                 wordpress: "https://codex.wordpress.org/de:Erste_Schritte_mit_WordPress",
                 prestashop: "http://doc.prestashop.com/display/PS16/Deutsche+Dokumentation",
                 phpAppendices: "http://php.net/manual/de/appendices.php",
@@ -220,6 +230,11 @@ angular.module("App").constant("constants", {
                 emailsCreation: "https://www.ovh.es/g1343.qssq",
                 hostingPhpConfiguration: "https://www.ovh.es/g1999.alojamiento_compartido_configurar_la_versión_de_PHP_desde_el_área_de_cliente",
                 hostingPrivateDatabase: "https://www.ovh.es/g2023.todo_sobre_el_sql_privado",
+                hostingPrivateDatabaseDBaaS: {
+                    beginner: "https://docs.ovh.com/es/clouddb/empezar-con-clouddb/",
+                    db: "https://docs.ovh.com/es/clouddb/empezar-con-mysql-y-mariadb/",
+                    beginPostgre: "https://docs.ovh.com/es/clouddb/empezar-con-postgresql/"
+                },
                 wordpress: "https://codex.wordpress.org/es:Getting_Started_with_WordPress",
                 prestashop: "http://doc.prestashop.com/pages/viewpage.action?pageId=26148899",
                 siteOnline: "https://www.ovh.es/g1374.web_hosting_publicar_un_sitio_web_en_internet",
@@ -354,6 +369,11 @@ angular.module("App").constant("constants", {
                 emailsConfiguration: "https://www.ovh-hosting.fi/g1474.yleista-ovh-webhotellit-sahkopostit",
                 emailsCreation: "https://www.ovh-hosting.fi/g1343.qssq",
                 hostingPrivateDatabase: "https://www.ovh-hosting.fi/g2023.kaikki_mita_tarvitsee_tietaa_sql_private_-palvelusta",
+                hostingPrivateDatabaseDBaaS: {
+                    beginner: "https://docs.ovh.com/fi/clouddb/clouddb-palvelun-kayton-aloitus/",
+                    db: "https://docs.ovh.com/fi/clouddb/mysql-ja-mariadb-tietokantojen-kayton-aloitus/",
+                    beginPostgre: "https://docs.ovh.com/fi/clouddb/postgresql-tietokantojen-kayton-aloitus/"
+                },
                 dnsForExternalDomain: "https://www.ovh-hosting.fi/g2229.dns-alueen_luominen_ulkopuoliselle_verkkotunnukselle",
                 wordpress: "https://codex.wordpress.org/Getting_Started_with_WordPress",
                 prestashop: "http://doc.prestashop.com/display/PS16/English+documentation",
@@ -734,6 +754,11 @@ angular.module("App").constant("constants", {
                 emailsCreation: "https://www.ovh.co.uk/g1343.qssq",
                 hostingPhpConfiguration: "https://www.ovh.co.uk/g1999.hosting_how_to_configure_php_from_your_customer_account",
                 hostingPrivateDatabase: "https://www.ovh.co.uk/g2023.what_you_need_to_know_about_private_sql",
+                hostingPrivateDatabaseDBaaS: {
+                    beginner: "https://docs.ovh.com/gb/en/clouddb/getting-started-with-clouddb/",
+                    db: "https://docs.ovh.com/gb/en/clouddb/get-started-with-mysql-and-mariadb/",
+                    beginPostgre: "https://docs.ovh.com/gb/en/clouddb/getting-started-with-postgresql/"
+                },
                 wordpress: "https://codex.wordpress.org/Getting_Started_with_WordPress",
                 prestashop: "http://doc.prestashop.com/display/PS16/English+documentation",
                 phpAppendices: "http://php.net/manual/en/appendices.php",
@@ -855,6 +880,11 @@ angular.module("App").constant("constants", {
                 emailsCreateMailingListGuide: "https://www.ovh.it/g1596.mail_mutualise_guide_dutilisation_mailing-list",
                 hostingPhpConfiguration: "https://www.ovh.it/g1999.configura_la_tua_versione_di_php_dal_tuo_Spazio_Cliente_OVH",
                 hostingPrivateDatabase: "https://www.ovh.it/g2023.tutto_sullsql_privato",
+                hostingPrivateDatabaseDBaaS: {
+                    beginner: "https://docs.ovh.com/it/clouddb/come-utilizzare-clouddb/",
+                    db: "https://docs.ovh.com/it/clouddb/come-utilizzare-mysql-e-mariadb/",
+                    beginPostgre: "https://docs.ovh.com/it/clouddb/come-utilizzare-postgresql/"
+                },
                 wordpress: "https://codex.wordpress.org/Getting_Started_with_WordPress",
                 prestashop: "http://doc.prestashop.com/display/PS16/English+documentation",
                 siteOnline: "https://www.ovh.it/g1374.hosting_condiviso_come_mettere_online_il_tuo_sito",
@@ -1012,6 +1042,11 @@ angular.module("App").constant("constants", {
                 emailsCreateMailingListGuide: "https://www.ovh.lt/g1596.mail_mutualise_guide_dutilisation_mailing-list",
                 hostingPhpConfiguration: "https://www.ovh.lt/g1999.PHP-versijos-keitimas-kliento-sasajoje",
                 hostingPrivateDatabase: "https://www.ovh.lt/g2023.viskas_apie_private_sql_paslauga",
+                hostingPrivateDatabaseDBaaS: {
+                    beginner: "https://docs.ovh.com/lt/clouddb/pradzia-su-clouddb/",
+                    db: "https://docs.ovh.com/lt/clouddb/mysql-mariadb-naudojimas/",
+                    beginPostgre: "https://docs.ovh.com/lt/clouddb/postgresql-naudojimas/"
+                },
                 dnsForExternalDomain: "https://www.ovh.lt/g2229.dns_zonos_kurimas_isoriniam_domenui",
                 wordpress: "https://codex.wordpress.org/Getting_Started_with_WordPress",
                 prestashop: "http://doc.prestashop.com/display/PS16/English+documentation",
@@ -1177,6 +1212,11 @@ angular.module("App").constant("constants", {
                 all: "https://docs.ovh.com/nl/nl/",
                 emailsConfiguration: "https://www.ovh.nl/g1474.algemene-informatie-ovh-webhosting-emails",
                 emailsCreation: "https://www.ovh.nl/g1343.qssq",
+                hostingPrivateDatabaseDBaaS: {
+                    beginner: "https://docs.ovh.com/nl/clouddb/aan-de-slag-met-clouddb/",
+                    db: "https://docs.ovh.com/nl/clouddb/aan-de-slag-met-mysql-en-mariadb/",
+                    beginPostgre: "https://docs.ovh.com/nl/clouddb/aan-de-slag-met-postgresql/"
+                },
                 wordpress: "https://codex.wordpress.org/Getting_Started_with_WordPress",
                 prestashop: "http://doc.prestashop.com/display/PS16/English+documentation",
                 phpAppendices: "http://php.net/manual/en/appendices.php",
@@ -1280,6 +1320,11 @@ angular.module("App").constant("constants", {
                 emailsCreateMailingListGuide: "https://www.ovh.pl/g1596.mail_mutualise_guide_dutilisation_mailing-list",
                 hostingPhpConfiguration: "https://www.ovh.pl/g1999.skonfiguruj_wersje_php_w_panelu_klienta",
                 hostingPrivateDatabase: "https://www.ovh.pl/g2023.prywatny_sql",
+                hostingPrivateDatabaseDBaaS: {
+                    beginner: "https://docs.ovh.com/pl/clouddb/pierwsze-kroki-z-clouddb/",
+                    db: "https://docs.ovh.com/pl/clouddb/mysql-i-mariadb/",
+                    beginPostgre: "https://docs.ovh.com/pl/clouddb/pierwsze-kroki-z-postgresql/"
+                },
                 dnsForExternalDomain: "https://www.ovh.pl/g2229.utworzenie_strefy_dns_dla_zewnetrznej_domeny",
                 wordpress: "https://codex.wordpress.org/Getting_Started_with_WordPress",
                 prestashop: "http://doc.prestashop.com/display/PS16/Polska+dokumentacja",
@@ -1444,6 +1489,11 @@ angular.module("App").constant("constants", {
                 emailsCreateMailingListGuide: "https://www.ovh.pt/g1596.mail_mutualise_guide_dutilisation_mailing-list",
                 hostingPhpConfiguration: "https://www.ovh.pt/g1999.partilhado_configurar_a_versao_de_php_a_partir_do_seu_espaco_cliente",
                 hostingPrivateDatabase: "https://www.ovh.pt/g2023.tudo_sobre_sql_privado",
+                hostingPrivateDatabaseDBaaS: {
+                    beginner: "https://docs.ovh.com/pt/clouddb/comecar-com-clouddb/",
+                    db: "https://docs.ovh.com/pt/clouddb/comecar-com-mysql-e-mariadb/",
+                    beginPostgre: "https://docs.ovh.com/pt/clouddb/comecar-com-postgresql/"
+                },
                 dnsForExternalDomain: "https://www.ovh.pt/g2229.criar_uma_zona_dns_para_um_dominio_externo",
                 wordpress: "https://codex.wordpress.org/pt-br:Novo_no_WordPress_-_Por_Onde_Come%C3%A7ar",
                 prestashop: "http://doc.prestashop.com/display/PS16/English+documentation",

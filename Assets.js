@@ -102,7 +102,7 @@ module.exports = {
             "node_modules/@bower_components/angular-cookies/angular-cookies.min.js",
             "node_modules/@bower_components/angular-messages/angular-messages.min.js",
             "node_modules/@bower_components/angular-resource/angular-resource.min.js",
-            "node_modules/@bower_components/ovh-ui-angular/packages/oui-angular/dist/oui-angular.js",
+            "node_modules/@bower_components/ovh-ui-angular/dist/oui-angular.min.js",
             "node_modules/@bower_components/lodash/lodash.min.js",
             "node_modules/@bower_components/jquery.scrollTo/jquery.scrollTo.min.js",
             "node_modules/@bower_components/angular-dynamic-locale/dist/tmhDynamicLocale.js",
