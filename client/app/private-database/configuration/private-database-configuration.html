@@ -52,19 +52,19 @@
 
         <div class="col-md-3 mt-5 mt-lg-0"
              data-ng-if="configurationsCtrl.database.type !== 'postgresql'">
-            <button class="btn btn-default btn-block" type="button"
+            <button class="btn btn-block btn-default" type="button"
                     data-i18n-static="privateDatabase_configuration_edit_btn"
                     data-ng-click="configurationsCtrl.edit.value = true"
                     data-ng-disabled="database.expired || isRebooting"
                     data-ng-if="!configurationsCtrl.edit.value">
             </button>
-            <button class="btn btn-block btn-success" type="button"
+            <button class="btn btn-block btn-primary" type="button"
                     data-i18n-static="privateDatabase_configuration_confirm_btn"
                     data-ng-click="configurationsCtrl.updateConfigurations()"
                     data-ng-disabled="database.expired"
                     data-ng-if="configurationsCtrl.edit.value">
             </button>
-            <button class="btn btn-block btn-danger" type="button"
+            <button class="btn btn-block btn-default" type="button"
                     data-i18n-static="privateDatabase_configuration_cancel_btn"
                     data-ng-click="configurationsCtrl.configurations = configurationsCtrl.baseConfiguration; configurationsCtrl.edit.value = false"
                     data-ng-disabled="database.expired"
