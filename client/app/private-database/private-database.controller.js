@@ -17,6 +17,7 @@ angular
 
         $onInit () {
             this.productId = this.$stateParams.productId;
+            this.isExpired = false;
 
             this.$scope.alerts = {
                 page: "privateDataBase.alerts.page",
@@ -125,7 +126,7 @@ angular
             });
 
             this.getDetails(true).then(() => {
-                if (_.get(this.$scope, "database.serviceInfos.status") !== "expired") {
+                if (!this.isExpired) {
                     this.getTasksToPoll();
                 }
             });
@@ -143,6 +144,7 @@ angular
                 .then((database) => {
                     this.$scope.database = database;
                     this.$scope.database.version = database.version.replace(".", "");
+                    this.isExpired = _.get(database, "serviceInfos.status") === "expired";
                     this.$scope.guides = [];
 
                     this.userService.getUrlOf("guides")
