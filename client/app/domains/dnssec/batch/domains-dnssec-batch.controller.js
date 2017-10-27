@@ -26,7 +26,7 @@ angular.module("App").controller(
             this.$scope.updateDnssec = () => {
                 this.$scope.resetAction();
                 return this.DomainsDnsSec
-                    .updateDnssecState(this.selected.state === "true", this.selected.domainsNames)
+                    .updateDnssecState(this.selected.state, this.selected.domainsNames)
                     .then((data) =>
                         this.Alerter.alertFromSWSBatchResult(
                             {
