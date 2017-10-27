@@ -18,9 +18,9 @@
                                                     data-i18n-static="privateDatabase_dashboard_state"></strong>
                                             <div class="label"
                                                  data-ng-class="{
-                                                    'label-danger': stateCtrl.database.state == 'detached',
-                                                    'label-warning' : stateCtrl.database.state == 'restartPending' || stateCtrl.database.state == 'stopPending' || database.state == 'stopped',
-                                                    'label-success' : stateCtrl.database.state == 'startPending' || stateCtrl.database.state == 'started' }"
+                                                    'label-danger': stateCtrl.database.state === 'detached',
+                                                    'label-warning' : stateCtrl.database.state === 'restartPending' || stateCtrl.database.state === 'stopPending' || database.state === 'stopped',
+                                                    'label-success' : stateCtrl.database.state === 'startPending' || stateCtrl.database.state === 'started' }"
                                                  data-ng-bind="tr('privateDatabase_dashboard_' + stateCtrl.database.state)">
                                             </div>
                                         </div>
@@ -43,7 +43,8 @@
                                                 <button class="btn btn-default my-auto ml-auto text-wrap" type="button" title="{{::i18n.privateDatabase_change_version}}"
                                                         data-i18n-static="privateDatabase_change_version"
                                                         data-ng-click="setAction('database/version/update/private-database-database-version-update', stateCtrl.database)"
-                                                        data-ng-disabled="taskState.lockAction">
+                                                        data-ng-disabled="taskState.lockAction"
+                                                        data-ng-if="!stateCtrl.isExpired">
                                                 </button>
                                             </div>
                                         </div>
@@ -71,7 +72,8 @@
                                                 <button type="button" class="btn btn-default ml-auto my-auto text-wrap" title="{{::i18n.privateDatabase_change_ram_title}}"
                                                         data-i18n-static="privateDatabase_change_ram_title"
                                                         data-ng-disabled="taskState.lockAction"
-                                                        data-ng-click="setAction('database/ram/update/private-database-database-ram-update', stateCtrl.database)">
+                                                        data-ng-click="setAction('database/ram/update/private-database-database-ram-update', stateCtrl.database)"
+                                                        data-ng-if="!stateCtrl.isExpired">
                                                 </button>
                                             </div>
                                         </div>
@@ -274,6 +276,7 @@
                                                             data-i18n-static="privateDatabase_change_rootPassword"
                                                             data-ng-click="stateCtrl.changeFtpPassword()"
                                                             data-ng-disabled="taskState.lockAction"
+                                                            data-ng-if="!stateCtrl.isExpired"
                                                             data-ng-show="!taskState.changeFtpPassword">
                                                     </button>
                                                     <span class="ml-auto my-auto"

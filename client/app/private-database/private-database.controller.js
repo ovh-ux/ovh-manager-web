@@ -124,9 +124,11 @@ angular
                 this.$scope.taskState.changeRootPassword = false;
             });
 
-            this.getDetails(true);
-
-            this.getTasksToPoll();
+            this.getDetails(true).then(() => {
+                if (_.get(this.$scope, "database.serviceInfos.status") !== "expired") {
+                    this.getTasksToPoll();
+                }
+            });
         }
 
         $onDestroy () {
@@ -137,7 +139,7 @@ angular
             this.loaders.details = true;
             this.$scope.database = null;
 
-            this.privateDatabaseService.getSelected(this.productId, forceRefresh)
+            return this.privateDatabaseService.getSelected(this.productId, forceRefresh)
                 .then((database) => {
                     this.$scope.database = database;
                     this.$scope.database.version = database.version.replace(".", "");
