@@ -96,12 +96,12 @@ angular.module("App").controller(
                         };
                     }
 
-                    for (const user of ftpInformations.list.results) {
+                    _.forEach(ftpInformations.list.results, (user) => {
                         user.ftp = user.serviceManagementCredentials.ftp;
                         user.ftpUrl = `ftp://${user.serviceManagementCredentials.ftp.user}@${user.serviceManagementCredentials.ftp.url}:${user.serviceManagementCredentials.ftp.port}/`;
                         user.ssh = user.serviceManagementCredentials.ssh;
                         user.sshUrl = `ssh://${user.serviceManagementCredentials.ssh.user}@${user.serviceManagementCredentials.ssh.url}:${user.serviceManagementCredentials.ssh.port}/`;
-                    }
+                    });
 
                     this.primaryUserEnabled = ftpInformations.list.results.length && ftpInformations.list.results[0].isPrimaryAccount ? ftpInformations.list.results[0].state === "RW" : null;
                     this.ftpInformations = ftpInformations;
@@ -164,7 +164,7 @@ angular.module("App").controller(
             }).catch((err) => {
                 const idx = _.indexOf(this.ftpInformations.list.result, element);
                 this.ftpInformations.list.result[idx] = _.assign(element, prev);
-                this.Alerter.alertFromSWS($scope.tr("hosting_tab_FTP_configuration_user_modify_fail"), err, this.$scope.alerts.dashboard);
+                this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_user_modify_fail"), err, this.$scope.alerts.dashboard);
             });
         }
 

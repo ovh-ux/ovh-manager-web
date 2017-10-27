@@ -26,11 +26,11 @@ angular.module("App").controller("HostingUserLogsCreateCtrl", ($scope, $statePar
         return $scope.isUserValid();
     };
 
-    $scope.isPasswordValid = function () {
-        return (
-            $scope.model.selected.password.value && $scope.model.selected.password.confirmation && $scope.model.selected.password.value === $scope.model.selected.password.confirmation && Hosting.constructor.isPasswordValid($scope.model.selected.password.value)
-        );
-    };
+    $scope.isPasswordValid = () =>
+        $scope.model.selected.password.value &&
+        $scope.model.selected.password.confirmation &&
+        $scope.model.selected.password.value === $scope.model.selected.password.confirmation &&
+        Hosting.constructor.isPasswordValid($scope.model.selected.password.value);
 
     $scope.shouldDisplayDifferentPasswordMessage = function () {
         return $scope.model.selected.password.value && $scope.model.selected.password.confirmation && $scope.model.selected.password.value !== $scope.model.selected.password.confirmation;

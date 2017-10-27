@@ -39,7 +39,10 @@ angular.module("App").controller("HostingFtpUserCreateCtrl", ($scope, $statePara
     $scope.isPathValid = () => Hosting.constructor.isPathValid($scope.model.selected.home);
 
     $scope.isPasswordValid = () =>
-        $scope.model.selected.password.value && $scope.model.selected.password.confirmation && $scope.model.selected.password.value === $scope.model.selected.password.confirmation && Hosting.constructor.isPasswordValid($scope.model.selected.password.value);
+        $scope.model.selected.password.value &&
+        $scope.model.selected.password.confirmation &&
+        $scope.model.selected.password.value === $scope.model.selected.password.confirmation &&
+        Hosting.constructor.isPasswordValid($scope.model.selected.password.value);
 
     $scope.condition = Hosting.constructor.getPasswordConditions();
 
