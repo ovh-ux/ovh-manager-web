@@ -11,6 +11,8 @@ angular.module("App").controller(
         }
 
         $onInit () {
+            moment.locale(this.$scope.selectedLanguage.value.split("_")[0]);
+
             this.productId = this.$stateParams.productId;
 
             this.NB_DAY_OOM = 7;
@@ -35,6 +37,7 @@ angular.module("App").controller(
             this.oomList = [];
 
             this.$scope.orderMoreRam = () => this.orderMoreRam();
+
 
             this.getOom();
         }
