@@ -64,7 +64,6 @@
                                     </th>
                                     <th scope="col" data-i18n-static="domains_dashboard_table_titles_name"></th>
                                     <th scope="col" data-i18n-static="domains_dashboard_table_titles_creation"></th>
-                                    <th scope="col" data-i18n-static="domains_dashboard_table_titles_expiration"></th>
                                     <th scope="col" class="text-center" data-i18n-static="domains_dashboard_table_titles_whois"></th>
                                     <th scope="col" class="text-center" data-i18n-static="domains_dashboard_table_titles_dnssec"></th>
                                     <th scope="col" class="min-width"></th>
@@ -72,12 +71,12 @@
                             </thead>
                             <tbody data-ng-if="ctrlDomains.loading.domainsInfos || ctrlDomains.loading.domainsSearch">
                                 <tr>
-                                    <td class="loader text-center" colspan="7"></td>
+                                    <td class="loader text-center" colspan="6"></td>
                                 </tr>
                             </tbody>
                             <tbody data-ng-if="!ctrlDomains.loading.domainsInfos && !ctrlDomains.loading.domainsSearch && domains.count === 0">
                                 <tr>
-                                    <td class="text-center" colspan="7"
+                                    <td class="text-center" colspan="6"
                                         data-i18n-static="domains_dashboard_table_empty"></td>
                                 </tr>
                             </tbody>
@@ -94,9 +93,6 @@
                                            data-ng-href="{{'#/configuration/domain/' + domain.name}}"></a>
                                     </td>
                                     <td data-ng-bind="domain.creation|date:'mediumDate'"></td>
-                                    <td class="text-nowrap"
-                                        data-ng-bind="::domain.expiration|date:'mediumDate'">
-                                    </td>
                                     <td class="text-center">
                                         <span data-ng-if="domain.whoisFields.length > 0"
                                               data-i18n-static="common_activated"></span>
