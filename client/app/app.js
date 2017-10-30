@@ -413,6 +413,14 @@ angular
         (translator) => {
             "use strict";
             translator.load(["core"]);
+
+            const selectedLanguage = translator.getSelectedAvailableLanguage();
+            const selectedLanguageValue = _(selectedLanguage).get("value", null);
+
+            if (_(moment).isObject() && _(selectedLanguageValue).isString()) {
+                const locale = selectedLanguageValue.replace(/_/, "-");
+                moment.locale(locale);
+            }
         }
     ])
     .run([
