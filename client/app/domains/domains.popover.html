@@ -1,0 +1,24 @@
+<div class="popover-menu">
+    <button class="btn btn-link" type="button"
+            data-i18n-static="domains_dashboard_tooltip_renew_single"
+            data-ng-disabled="!domain.canOrder"
+            data-ng-click="setActionIfAuthorized(domain.canOrder, 'renew/domains-renew', domain)">
+    </button>
+    <button class="btn btn-link" type="button"
+            data-i18n-static="domains_dashboard_tooltip_whois_single"
+            data-ng-click="setActionIfAuthorized(domain.whoisActivable, 'owo/domains-owo', domain)"
+            data-ng-disabled="!domain.whoisActivable">
+    </button>
+    <button class="btn btn-link" type="button"
+            data-i18n-static="domains_dashboard_tooltip_dnssec_activate_single"
+            data-ng-click="setActionIfAuthorized(domain.dnssecSupported && domain.dnssecStatus !== null, 'dnssec/simple/activate/domains-dnssec-simple-activate', domain)"
+            data-ng-disabled="!domain.dnssecSupported"
+            data-ng-if="domain.dnssecSupported && domain.dnssecStatus === 'DISABLED'">
+    </button>
+    <button class="btn btn-link" type="button"
+            data-i18n-static="domains_dashboard_tooltip_dnssec_deactivate_single"
+            data-ng-click="setActionIfAuthorized(domain.dnssecSupported && domain.dnssecStatus !== null, 'dnssec/simple/deactivate/domains-dnssec-simple-deactivate', domain)"
+            data-ng-disabled="!domain.dnssecSupported"
+            data-ng-if="domain.dnssecSupported && domain.dnssecStatus === 'ENABLED'">
+    </button>
+</div>

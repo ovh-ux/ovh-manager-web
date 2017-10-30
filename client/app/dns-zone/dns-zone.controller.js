@@ -29,7 +29,7 @@ angular.module("App").controller(
             };
             this.stepPath = "";
 
-            this.$scope.alerts = { dashboard: "domain_alert_dashboard" };
+            this.$scope.alerts = { page: "domain_alert_page" };
             this.$scope.currentAction = null;
             this.$scope.currentActionData = null;
             this.$scope.currentSection = this.currentSection;
@@ -73,13 +73,14 @@ angular.module("App").controller(
 
                     this.domain = product;
 
-                    return this.Domain.getZoneByZoneName(this.domain.name).then((zoneInfos) => {
-                        this.domain.displayName = this.domain.name;
-                        this.domain.nameServers = zoneInfos.nameServers;
-                        return this.domain;
-                    });
+                    return this.Domain.getZoneByZoneName(this.domain.name)
+                        .then((zoneInfos) => {
+                            this.domain.displayName = this.domain.name;
+                            this.domain.nameServers = zoneInfos.nameServers;
+                            return this.domain;
+                        });
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), err, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_loading_error"), err, this.$scope.alerts.page))
                 .finally(() => {
                     this.loading.domainsInfos = false;
                 });

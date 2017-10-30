@@ -22,10 +22,10 @@ angular
 
             this.privateDatabaseService.deleteBDD(this.productId, this.bddToDelete.databaseName)
                 .then(() => {
-                    this.alerter.success(this.$scope.tr("privateDatabase_delete_bdd_success"), "privateDataBase.alerts.bdd");
+                    this.alerter.success(this.$scope.tr("privateDatabase_delete_bdd_success"), this.$scope.alerts.main);
                 })
                 .catch(() => {
-                    this.alerter.error(this.$scope.tr("privateDatabase_delete_bdd_fail"), "privateDataBase.alerts.bdd");
+                    this.alerter.error(this.$scope.tr("privateDatabase_delete_bdd_fail"), this.$scope.alerts.main);
                 });
         }
 });

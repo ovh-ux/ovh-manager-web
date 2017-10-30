@@ -79,8 +79,8 @@ angular
                         });
                         this.model.documents = onlyImportScripts;
                     })
-                    .catch((data) => {
-                        this.alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_table_popover_import_step1_load_documents_error"), data.data, this.$scope.alerts.bdd);
+                    .catch((err) => {
+                        this.alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_table_popover_import_step1_load_documents_error"), _.get(err, "data", err), this.$scope.alerts.main);
                     })
                     .finally(() => {
                         this.loading.documents = false;
@@ -93,10 +93,10 @@ angular
 
             this.privateDatabaseService.importDatabase(this.productId, this.model.database, this.model.document.id, this.model.flushDatabase, this.model.sendEmail)
                 .then(() => {
-                    this.alerter.success(this.$scope.tr("hosting_tab_DATABASES_table_popover_import_step3_succes"), this.$scope.alerts.bdd);
+                    this.alerter.success(this.$scope.tr("hosting_tab_DATABASES_table_popover_import_step3_succes"), this.$scope.alerts.main);
                 })
-                .catch((data) => {
-                    this.alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_table_popover_import_step3_fail"), data.data, this.$scope.alerts.bdd);
+                .catch((err) => {
+                    this.alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_table_popover_import_step3_fail"), _.get(err, "data", err), this.$scope.alerts.main);
                 }
             );
         }

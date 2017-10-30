@@ -37,7 +37,7 @@ angular.module("App").controller(
             return this.Emails
                 .getDelegationList(this.$stateParams.productId, this.currentAccount)
                 .then((list) => (this.delegationAccountList = list))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_error"), _.get(err, "data", err), this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_error"), _.get(err, "data", err), this.$scope.alerts.main))
                 .finally(() => (this.loading = false));
         }
 
@@ -50,7 +50,7 @@ angular.module("App").controller(
                     this.model.value = "";
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_error"), _.get(err, "data", err), this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_error"), _.get(err, "data", err), this.$scope.alerts.main);
                     this.$scope.resetAction();
                 })
                 .finally(() => {
@@ -65,7 +65,7 @@ angular.module("App").controller(
                 .removeDelegation(this.$stateParams.productId, this.currentAccount, delegationAccount)
                 .then(() => _.remove(this.delegationAccountList, (name) => name === delegationAccount))
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_error"), _.get(err, "data", err), this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_error"), _.get(err, "data", err), this.$scope.alerts.main);
                     this.$scope.resetAction();
                 })
                 .finally(() => (this.loading = false));

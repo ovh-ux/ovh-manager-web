@@ -71,10 +71,10 @@ angular.module("App").controller(
                                     fileName: `export_emails_${moment().format("YYYY-MM-DD_HH:mm:ss")}.csv`,
                                     separator: ";"
                                 });
-                                this.Alerter.success(this.$scope.tr("email_tab_modal_accounts_export_csv_success", [data]), this.$scope.alerts.dashboard);
+                                this.Alerter.success(this.$scope.tr("email_tab_modal_accounts_export_csv_success", [data]), this.$scope.alerts.main);
                             }
                         })
-                        .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_accounts_export_csv_error"), err, this.$scope.alerts.dashboard))
+                        .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_accounts_export_csv_error"), err, this.$scope.alerts.main))
                         .finally(() => {
                             this.loading.exportCsv = false;
                             this.$scope.resetAction();

@@ -1,68 +1,67 @@
-angular.module("App").controller("HostingFreedomTabCtrl", function ($rootScope, $scope, $location, $stateParams, HostingFreedom, Alerter) {
-    "use strict";
-
-    const self = this;
-
-    self.filter = {
-        status: null
-    };
-
-    self.loaders = {
-        freedoms: false
-    };
-
-    const init = () => {
-        HostingFreedom.getModels().then((model) => {
-            self.statusEnum = model.models["hosting.web.freedom.StatusEnum"].enum;
-        }).catch((err) => {
-            Alerter.alertFromSWS($scope.tr("hosting_tab_FREEDOM_error"), err, $scope.alerts.dashboard);
-        });
-    };
-
-    //---------------------------------------------
-    // FREEDOMS
-    //---------------------------------------------
-    self.refreshTableFreedoms = (forceRefresh = false) => {
-        self.loaders.freedoms = true;
-        self.freedomIds = null;
-
-        let params = {};
-        if (self.filter.status) {
-            params = { status: self.filter.status };
+angular.module("App").controller(
+    "HostingFreedomTabCtrl",
+    class HostingFreedomTabCtrl {
+        constructor ($scope, $rootScope, $location, $stateParams, Alerter, HostingFreedom) {
+            this.$scope = $scope;
+            this.$rootScope = $rootScope;
+            this.$location = $location;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.HostingFreedom = HostingFreedom;
         }
 
-        HostingFreedom.getFreedoms($stateParams.productId, {
-            params,
-            forceRefresh
-        }).then((ids) => {
-            self.freedomIds = ids;
-        }).catch((err) => {
-            Alerter.alertFromSWS($scope.tr("hosting_tab_FREEDOM_error"), err, $scope.alerts.dashboard);
-        }).finally(() => {
-            if (_.isEmpty(self.freedomIds)) {
-                self.loaders.freedoms = false;
+        $onInit () {
+            this.filter = {
+                status: null
+            };
+            this.loading = false;
+
+            this.$scope.$on("hosting.web.freedom.delete", () => {
+                this.refreshTableFreedoms(true);
+            });
+
+            this.HostingFreedom.getModels()
+                .then((model) => {
+                    this.statusEnum = model.models["hosting.web.freedom.StatusEnum"].enum;
+                }).catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FREEDOM_error"), err, this.$scope.alerts.main);
+                });
+        }
+
+        setSelectedProduct (domain) {
+            this.$rootScope.$broadcast("leftNavigation.selectProduct.fromName", {
+                name: domain,
+                type: "DOMAIN"
+            });
+        }
+
+        refreshTableFreedoms (forceRefresh = false) {
+            this.loading = true;
+            this.freedomIds = null;
+
+            let params = {};
+            if (this.filter.status) {
+                params = { status: this.filter.status };
             }
-        });
-    };
 
-    self.transformItem = (item) => HostingFreedom.getFreedom($stateParams.productId, { domain: item });
+            this.HostingFreedom.getFreedoms(this.$stateParams.productId, { params, forceRefresh })
+                .then((ids) => {
+                    this.freedomIds = ids;
+                }).catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FREEDOM_error"), err, this.$scope.alerts.main);
+                }).finally(() => {
+                    if (_.isEmpty(this.freedomIds)) {
+                        this.loading = false;
+                    }
+                });
+        }
 
-    self.onTransformItemDone = () => {
-        self.loaders.freedoms = false;
-    };
+        transformItem (item) {
+            return this.HostingFreedom.getFreedom(this.$stateParams.productId, { domain: item });
+        }
 
-    $scope.$watch(() => self.filter.status, () => {
-        self.refreshTableFreedoms();
-    });
-
-    self.setSelectedProduct = (domain) => {
-        $rootScope.$broadcast("leftNavigation.selectProduct.fromName", {
-            name: domain,
-            type: "DOMAIN"
-        });
-    };
-
-    $rootScope.$on("hosting.web.freedom.delete", () => self.refreshTableFreedoms(true));
-
-    init();
-});
+        onTransformItemDone () {
+            this.loading = false;
+        }
+    }
+);

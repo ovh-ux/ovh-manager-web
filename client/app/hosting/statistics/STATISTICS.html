@@ -1,63 +1,89 @@
 <div data-ng-controller="HostingStatisticsCtrl">
-    <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="!model.constants"></div>
+    <div class="text-center" data-ng-if="!model.constants">
+        <oui-loader inline="true"></oui-loader>
+    </div>
+
     <div data-ng-if="model.constants">
         <div class="oui-box">
-            <div class="form-inline d-md-flex align-items-md-center justify-content-md-between">
-                <div class="form-group">
-                    <label class="control-label" for="hostingStatisticsType">
-                        <span data-i18n-static="hosting_tab_STATISTICS_type"></span>&nbsp;:&nbsp;
+            <div class="d-md-flex align-items-md-center justify-content-md-between">
+                <div>
+                    <label class="oui-label d-inline-block align-middle mr-2" for="hostingStatisticsType">
+                        <span data-i18n-static="hosting_tab_STATISTICS_type"></span>&nbsp;:
                     </label>
-                    <select class="form-control" name="type" id="hostingStatisticsType"
-                            data-ng-change="getStatistics()"
-                            data-ng-model="selected.type"
-                            data-ng-options="tr('hosting_tab_STATISTICS_type_' + option) for option in model.constants.types track by option">
-                    </select>
+                    <div class="oui-select mb-0 oui-select_inline align-middle">
+                        <select class="oui-select__input" id="hostingStatisticsType" name="type"
+                                data-ng-change="getStatistics()"
+                                data-ng-model="selected.type"
+                                data-ng-options="tr('hosting_tab_STATISTICS_type_' + option) for option in model.constants.types track by option">
+                        </select>
+                        <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <div data-ng-if="selected.typeIsDb()">
-                        <label class="control-label" for="hostingStatisticsDb">
-                            <span data-i18n-static="hosting_tab_STATISTICS_db"></span>&nbsp;:&nbsp;
-                        </label>
-                        <select class="form-control" name="db" id="hostingStatisticsDb"
+                <div data-ng-if="selected.typeIsDb()">
+                    <label class="oui-label d-inline-block align-middle mr-2" for="hostingStatisticsDb">
+                        <span data-i18n-static="hosting_tab_STATISTICS_db"></span>&nbsp;:
+                    </label>
+                    <div class="oui-select mb-0 oui-select_inline align-middle">
+                        <select class="oui-select__input" id="hostingStatisticsDb" name="db"
                                 data-ng-change="getStatistics()"
                                 data-ng-model="selected.db"
                                 data-ng-options="db for db in model.db track by db">
                         </select>
+                        <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                     </div>
-                    <div class="checkbox mb-5 mb-md-0" data-ng-if="!selected.typeIsDb()">
-                        <label class="pt-2 pl-0">
-                            <strong data-i18n-static="hosting_tab_STATISTICS_type_IN_HTTP_MEAN_RESPONSE_TIME"></strong>&nbsp;:&nbsp;
-                            <input type="checkbox" class="mt-1 ml-0" id="hostingStatisticsResponseTime"
-                                   data-ng-change="getStatistics()"
-                                   data-ng-model="selected.httpMeanResponseTime">
+                </div>
+                <div data-ng-if="!selected.typeIsDb()">
+                    <label class="oui-label d-inline-block align-middle mr-2" for="hostingStatisticsResponseTime">
+                          <span data-i18n-static="hosting_tab_STATISTICS_type_IN_HTTP_MEAN_RESPONSE_TIME"></span>&nbsp;:
+                    </label>
+                    <div class="oui-checkbox mb-0 oui-checkbox_inline align-middle">
+                        <input type="checkbox" class="oui-checkbox__input" id="hostingStatisticsResponseTime"
+                               data-ng-change="getStatistics()"
+                               data-ng-model="selected.httpMeanResponseTime">
+                        <label class="oui-checkbox__label-container" for="hostingStatisticsResponseTime">
+                            <span class="oui-checkbox__icon">
+                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                            </span>
                         </label>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label" for="hostingStatisticsPeriod">
-                        <span data-i18n-static="hosting_tab_STATISTICS_period"></span>&nbsp;:&nbsp;
+                <div>
+                    <label class="oui-label d-inline-block align-middle mr-2" for="hostingStatisticsPeriod">
+                        <span data-i18n-static="hosting_tab_STATISTICS_period"></span>&nbsp;:
                     </label>
-                    <select class="form-control" name="period" id="hostingStatisticsPeriod"
-                            data-ng-change="getStatistics()"
-                            data-ng-model="selected.period"
-                            data-ng-options="tr('hosting_tab_STATISTICS_period_' + option) for option in model.constants.periods track by option">
-                    </select>
+                    <div class="oui-select mb-0 oui-select_inline align-middle">
+                        <select class="oui-select__input" id="hostingStatisticsPeriod" name="period"
+                                data-ng-change="getStatistics()"
+                                data-ng-model="selected.period"
+                                data-ng-options="tr('hosting_tab_STATISTICS_period_' + option) for option in model.constants.periods track by option">
+                        </select>
+                        <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="my-5 text-center" data-ng-if="selected.type == 'IN_HTTP_HITS'">
-            <span class="mr-4" data-i18n-static="hosting_tab_STATISTICS_aggregate"></span>
-            <label class="radio-inline"
-                   data-ng-repeat="option in model.constants.aggregateModes track by option">
-                <input type="radio" name="aggregationModel" value="{{option}}"
+        <div class="my-5 text-center" data-ng-if="selected.type === 'IN_HTTP_HITS'">
+            <span class="oui-label d-inline-block mr-2"
+                  data-i18n-static="hosting_tab_STATISTICS_aggregate"></span>
+            <div class="oui-radio oui-radio_inline"
+                 data-ng-repeat="option in model.constants.aggregateModes track by option">
+                <input type="radio" class="oui-radio__input" id="aggregateModes-{{$index}}" name="aggregationModel"
                        data-ng-change="getStatistics()"
-                       data-ng-model="selected.aggregateMode">
-                    <span data-ng-bind="tr('hosting_tab_STATISTICS_aggregate_' + option)"></span>
-           </label>
+                       data-ng-model="selected.aggregateMode"
+                       data-ng-value="option">
+                <label class="oui-radio__label-container" for="aggregateModes-{{$index}}">
+                    <span class="oui-radio__label"
+                          data-ng-bind="tr('hosting_tab_STATISTICS_aggregate_' + option)"></span>
+                </label>
+            </div>
         </div>
 
-        <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="!model.datas"></div>
+        <div class="text-center mt-5" data-ng-if="!model.datas">
+            <oui-loader size="l" inline="true"></oui-loader>
+        </div>
 
         <div class="chart-container" style="height: 320px;"
              data-ng-if="selected.haveDataToDisplay"

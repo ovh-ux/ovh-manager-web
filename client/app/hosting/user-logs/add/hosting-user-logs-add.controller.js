@@ -1,60 +1,68 @@
-angular.module("App").controller("HostingUserLogsCreateCtrl", ($scope, $stateParams, Alerter, Hosting) => {
-    "use strict";
-
-    $scope.model = {
-        maxUserLength: 200,
-        minUserLength: 1,
-        selected: {
-            login: null,
-            description: "",
-            password: {
-                value: null,
-                confirmation: null
-            }
+angular.module("App").controller(
+    "HostingUserLogsCreateCtrl",
+    class HostingUserLogsCreateCtrl {
+        constructor ($scope, $stateParams, Alerter, Hosting) {
+            this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.Hosting = Hosting;
         }
-    };
 
-    $scope.classes = {
-        descInvalid: ""
-    };
+        $onInit () {
+            this.condition = this.Hosting.constructor.getPasswordConditions();
+            this.model = {
+                maxUserLength: 200,
+                minUserLength: 1,
+                selected: {
+                    login: null,
+                    description: "",
+                    password: {
+                        value: null,
+                        confirmation: null
+                    }
+                }
+            };
 
-    $scope.isUserValid = function () {
-        return $scope.model.selected.login && $scope.model.selected.login.length >= $scope.model.minUserLength && $scope.model.selected.login.length <= $scope.model.maxUserLength && $scope.model.selected.login.match(/^[a-z-]+$/);
-    };
+            this.$scope.createUser = () => this.createUser();
+        }
 
-    $scope.isStep1Valid = function () {
-        return $scope.isUserValid();
-    };
+        isPasswordInvalid () {
+            return !this.Hosting.constructor.isPasswordValid(_.get(this.model, "selected.password.value", ""));
+        }
 
-    $scope.isPasswordValid = function () {
-        return (
-            $scope.model.selected.password.value && $scope.model.selected.password.confirmation && $scope.model.selected.password.value === $scope.model.selected.password.confirmation && Hosting.constructor.isPasswordValid($scope.model.selected.password.value)
-        );
-    };
+        isPasswordConfirmationInvalid () {
+            return this.model.selected.password.value !== this.model.selected.password.confirmation;
+        }
 
-    $scope.shouldDisplayDifferentPasswordMessage = function () {
-        return $scope.model.selected.password.value && $scope.model.selected.password.confirmation && $scope.model.selected.password.value !== $scope.model.selected.password.confirmation;
-    };
+        isPasswordValid () {
+            return this.model.selected.password.value &&
+                this.model.selected.password.confirmation &&
+                this.model.selected.password.value === this.model.selected.password.confirmation &&
+                this.Hosting.constructor.isPasswordValid(this.model.selected.password.value);
+        }
 
-    $scope.condition = Hosting.constructor.getPasswordConditions();
+        isUserValid () {
+            return this.model.selected.login &&
+                this.model.selected.login.length >= this.model.minUserLength &&
+                this.model.selected.login.length <= this.model.maxUserLength &&
+                this.model.selected.login.match(/^[a-z-]+$/);
+        }
 
-    $scope.isPasswordInvalid = function () {
-        return !Hosting.constructor.isPasswordValid(_.get($scope.model, "selected.password.value", ""));
-    };
+        shouldDisplayDifferentPasswordMessage () {
+            return this.model.selected.password.value &&
+                this.model.selected.password.confirmation &&
+                this.model.selected.password.value !== this.model.selected.password.confirmation;
+        }
 
-    $scope.isPasswordConfirmationInvalid = function () {
-        return $scope.model.selected.password.value !== $scope.model.selected.password.confirmation;
-    };
-
-    $scope.createUser = function () {
-        $scope.resetAction();
-        Hosting.userLogsCreate($stateParams.productId, $scope.model.selected.description, $scope.model.selected.login, $scope.model.selected.password.value).then(
-            () => {
-                Alerter.success($scope.tr("hosting_tab_USER_LOGS_configuration_user_create_success"), $scope.alerts.dashboard);
-            },
-            (data) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_USER_LOGS_configuration_user_create_fail"), data.data, $scope.alerts.dashboard);
-            }
-        );
-    };
-});
+        createUser () {
+            this.$scope.resetAction();
+            return this.Hosting.userLogsCreate(this.$stateParams.productId, this.model.selected.description, this.model.selected.login, this.model.selected.password.value)
+                .then(() => {
+                    this.Alerter.success(this.$scope.tr("hosting_tab_USER_LOGS_configuration_user_create_success"), this.$scope.alerts.main);
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_USER_LOGS_configuration_user_create_fail"), _.get(err, "data", err), this.$scope.alerts.main);
+                });
+        }
+    }
+);

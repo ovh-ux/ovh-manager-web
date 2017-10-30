@@ -14,7 +14,7 @@
                     <small class="text-danger">*</small>
                     <small data-i18n-static="required_fields"></small>
                 </p>
-                       
+
                 <!-- //Suffixe -->
                 <div class="form-group" data-ng-class="{
                     'has-error': ctrl.addDynHostLoginForm.loginSuffix.$dirty && ctrl.addDynHostLoginForm.loginSuffix.$invalid,
@@ -54,8 +54,7 @@
                     <small class="help-block"
                            data-i18n-static="domain_tab_REDIRECTION_add_step1_subdomain_error"
                            data-ng-if="ctrl.addDynHostLoginForm.subDomain.$dirty && ctrl.addDynHostLoginForm.subDomain.$invalid"></small>
-                    <span class="help-block"
-                          data-ng-bind="tr('domain_tab_DYNHOST_add_login_subDomain_help', ['*'])"></span>
+                    <small data-ng-bind="tr('domain_tab_DYNHOST_add_login_subDomain_help', ['*'])"></small>
                 </div>
 
                 <!-- //Password -->

@@ -18,10 +18,10 @@ angular.module("App").controller(
                 this.whitelistService
                     .deleteWhitelist(this.productId, this.whitelistToDelete.ip)
                     .then(() => {
-                        this.alerter.success(this.$scope.tr("privateDatabase_modale_whitelist_delete_success"), "privateDataBase.alerts.whitelist");
+                        this.alerter.success(this.$scope.tr("privateDatabase_modale_whitelist_delete_success"), this.$scope.alerts.main);
                     })
                     .catch(() => {
-                        this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_delete_fail"), "privateDataBase.alerts.whitelist");
+                        this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_delete_fail"), this.$scope.alerts.main);
                     })
                     .finally(() => this.$scope.resetAction());
             };

@@ -1,12 +1,12 @@
-<div data-ng-controller="HostingModuleDeleteCtrl">
+<div data-ng-controller="HostingModuleDeleteCtrl as ctrl">
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="deleteModule"
          data-wizard-title="i18n.hosting_configuration_tab_modules_delete_title">
 
         <div data-wizard-step>
-            <p data-ng-bind-html="tr('hosting_configuration_tab_modules_delete_question', [moduleToDelete.name])"></p>
-            <div class="alert alert-warning mt-4" role="alert"
+            <p data-ng-bind-html="tr('hosting_configuration_tab_modules_delete_question', ['<strong>' + ctrl.moduleToDelete.template.name + '</strong>'])"></p>
+            <div class="alert alert-warning" role="alert"
                  data-i18n-static="hosting_configuration_tab_modules_delete_information">
             </div>
         </div>

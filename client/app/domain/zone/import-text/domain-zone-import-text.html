@@ -8,7 +8,9 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.zoneDnsTextForm.$valid">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
                 <form class="mt-4" name="ctrl.zoneDnsTextForm">
@@ -29,7 +31,9 @@
 
         <div data-wizard-step>
             <p data-i18n-static="domain_configuration_dns_importtext_confirm"></p>
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
         </div>
     </div>
 </div>

@@ -97,37 +97,37 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
     //---------------------------------------------
     // Add domain
     $scope.$on("hostingDomain.attachDomain.start", () => {
-        Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_add_success_progress"), $scope.alerts.dashboard);
+        Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_add_success_progress"), $scope.alerts.main);
     });
 
     $scope.$on("hostingDomain.attachDomain.done", () => {
         $scope.$broadcast("paginationServerSide.reload");
-        Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_add_success_finish"), $scope.alerts.dashboard);
+        Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_add_success_finish"), $scope.alerts.main);
     });
 
     $scope.$on("hostingDomain.attachDomain.error", (event, err) => {
         $scope.$broadcast("paginationServerSide.reload");
-        Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_failure"), err.data, $scope.alerts.dashboard);
+        Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_failure"), _.get(err, "data", err), $scope.alerts.main);
     });
 
     // Modify domain
     $scope.$on("hostingDomain.modifyDomain.start", () => {
-        Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_modify_success_progress"), $scope.alerts.dashboard);
+        Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_modify_success_progress"), $scope.alerts.main);
     });
 
     $scope.$on("hostingDomain.modifyDomain.done", () => {
         $scope.$broadcast("paginationServerSide.reload");
-        Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_modify_success_finish"), $scope.alerts.dashboard);
+        Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_modify_success_finish"), $scope.alerts.main);
     });
 
     $scope.$on("hostingDomain.modifyDomain.error", (err) => {
         $scope.$broadcast("paginationServerSide.reload");
-        Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_modify_failure"), err.data, $scope.alerts.dashboard);
+        Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_modify_failure"), _.get(err, "data", err), $scope.alerts.main);
     });
 
     // Remove domain
     $scope.$on("hostingDomain.detachDomain.start", () => {
-        Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_remove_success_progress"), $scope.alerts.dashboard);
+        Alerter.success($scope.tr("hosting_tab_DOMAINS_configuration_remove_success_progress"), $scope.alerts.main);
     });
 
     $scope.$on("hostingDomain.detachDomain.done", () => {
@@ -136,7 +136,7 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
 
     $scope.$on("hostingDomain.detachDomain.error", (event, err) => {
         $scope.$broadcast("paginationServerSide.reload");
-        Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_remove_failure"), err.data, $scope.alerts.dashboard);
+        Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_remove_failure"), _.get(err, "data", err), $scope.alerts.main);
     });
 
     function startPolling () {

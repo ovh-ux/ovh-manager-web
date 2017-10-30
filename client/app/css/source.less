@@ -1,8 +1,10 @@
 @import "node_modules/ovh-ui-kit/packages/oui-color/_constants";
 
+@bs-path: "./node_modules/bootstrap";
+@oui-path: "./node_modules/ovh-ui-kit";
+
 @import "node_modules/ovh-ui-kit-bs/src/ovh-ui-kit-bs";
 
-@import "bower_components/ovh-common-style/less/helpers";
 @import "bower_components/ovh-angular-manager-navbar/less/ovh-angular-manager-navbar";
 @import "bower_components/ovh-angular-actions-menu/less/ovh-angular-actions-menu";
 @import "bower_components/ovh-angular-otrs/dist/ovh-angular-otrs";
@@ -34,7 +36,6 @@
 @import "common/selectList";
 @import "common/serviceIcon";
 @import "common/switch";
-@import "common/tabs";
 @import "common/v6-ui-switch";
 @import "common/wizard";
 
@@ -49,12 +50,10 @@
 
 @import "../components/pagination-front/pagination-front";
 @import "../components/incrementNumber/incrementNumber";
-@import "../components/tabs/tabs";
 @import "../components/guides/guides";
 @import "../components/manager-preload/manager-preload";
 @import "../components/sidebar-menu/sidebar-menu";
 @import "../components/ovh-angular-otrs/ovh-angular-otrs";
-@import "../components/actions-menu/actions-menu";
 
 @import "./bootstrap/_popover";
 @import "./bootstrap/_table";
@@ -62,9 +61,8 @@
 
 @import "./ovh-ui-kit/icon";
 
-@bs-path: "node_modules/bootstrap";
-@oui-path: "node_modules/ovh-ui-kit";
-@ovh-font-path:'../bower_components/ovh-manager-webfont/dist/fonts';
+@ovh-font-path: "../bower_components/ovh-manager-webfont/dist/fonts";
+@ovh-universe-color: @oui-color-jungle;
 
 #manager-navbar {
     min-height: auto;
@@ -73,13 +71,4 @@
     left: inherit;
     right: inherit;
     z-index: inherit;
-}
-
-.page-header {
-  margin: 0;
-  padding-top: 3rem;
-  padding-left: @grid-gutter-width;
-  padding-right: @grid-gutter-width;
-  background-color: @oui-color-concrete;
-  border-bottom: 0;
 }

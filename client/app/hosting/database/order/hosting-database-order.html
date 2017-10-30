@@ -9,25 +9,31 @@
              data-wizard-step-on-load="loadOrder"
              data-wizard-step-valid="isStepValid(1)">
 
-            <div class="loader mt-5 text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.init || loading.model"></div>
+            <div class="text-center" data-ng-if="loading.init || loading.model">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!loading.init">
-                <div class="alert alert-danger mt-5" role="alert"
+                <div class="alert alert-danger" role="alert"
                      data-i18n-static="hosting_tab_DATABASES_configuration_order_not_available"
                      data-ng-if="!isOrderable">
                 </div>
 
-                <form name="extraSqlPersoOfferForm">
-                    <div class="form-group" data-ng-if="isOrderable && !loading.model">
-                        <label class="control-label" for="selectDbOffer"
-                               data-i18n-static="hosting_tab_DATABASES_configuration_order_select_pack_offer"></label>
-                        <select class="form-control" id="selectDbOffer"
+                <form name="extraSqlPersoOfferForm"
+                      data-ng-if="isOrderable && !loading.model">
+                    <label class="oui-label" for="selectDbOffer"
+                           data-i18n-static="hosting_tab_DATABASES_configuration_order_select_pack_offer"></label>
+                    <div class="oui-select">
+                        <select class="oui-select__input" id="selectDbOffer"
                                 data-ng-model="model.offer"
                                 data-ng-options="offer as (tr('hosting_tab_DATABASES_configuration_order_' + offer)) for offer in availableOffers track by offer">
+                            <option value="" disabled
+                                    data-i18n-static="select_placeholder"></option>
                         </select>
-                        <div class="alert alert-info mt-5" role="alert"
-                             data-i18n-static="hosting_tab_DATABASES_configuration_order_info">
-                        </div>
+                        <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                    </div>
+                    <div class="alert alert-info" role="alert"
+                         data-i18n-static="hosting_tab_DATABASES_configuration_order_info">
                     </div>
                 </form>
             </div>
@@ -37,25 +43,28 @@
              data-wizard-step-on-load="getDuration"
              data-wizard-step-valid="isStepValid(2)">
 
-            <div class="loader mt-5 text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.duration"></div>
+            <div class="text-center" data-ng-if="loading.duration">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
-            <div data-ng-if="!loading.duration">
-                <form name="extraSqlPersoFormDuration">
-                    <p data-i18n-static="hosting_tab_DATABASES_configuration_order_choose_duration"></p>
+            <form name="extraSqlPersoFormDuration"
+                  data-ng-if="!loading.duration">
+                <p data-i18n-static="hosting_tab_DATABASES_configuration_order_choose_duration"></p>
 
-                    <div class="radio ml-3" data-ng-repeat="duration in durations track by $index">
-                        <label>
-                            <input type="radio" name="selectedDuration" value="{{duration}}"
-                                   data-ng-disabled="(loading.duration && !model.duration) || durations.length === 1"
-                                   data-ng-model="model.duration">
+                <div class="oui-radio" data-ng-repeat="duration in durations track by $index">
+                    <input type="radio" class="oui-radio__input" id="selectedDuration-{{$index}}" name="selectedDuration" value="{{duration}}"
+                           data-ng-disabled="(loading.duration && !model.duration) || durations.length === 1"
+                           data-ng-model="model.duration">
+                    <label class="oui-radio__label-container" for="selectedDuration-{{$index}}">
+                        <span class="oui-radio__label">
                             <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:
                             <span data-ng-bind-html="details[duration].prices | price:user.ovhSubsidiary"></span>
-                            <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                  data-ng-if="!details[duration]"></span>
-                        </label>
-                    </div>
-                </form>
-            </div>
+                            <oui-loader size="s" inline="true"
+                                        data-ng-if="!details[duration]"></oui-loader>
+                        </span>
+                    </label>
+                </div>
+            </form>
         </div>
 
         <div data-wizard-step
@@ -70,7 +79,9 @@
         <div data-wizard-step
              data-wizard-step-valid="!loading.order">
             <p data-i18n-static="hosting_tab_DATABASES_configuration_order_validation"></p>
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.order"></div>
+            <div class="text-center" data-ng-if="loading.order">
+                <oui-loader inline="true"></oui-loader>
+            </div>
         </div>
     </div>
 </div>

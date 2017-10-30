@@ -9,21 +9,27 @@
              data-wizard-step-on-load="loadOrder"
              data-wizard-step-valid="isStepValid(1)">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.init"></div>
+            <div class="text-center" data-ng-if="loading.init">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div class="alert alert-danger" role="alert"
                  data-i18n-static="hosting_dashboard_cdn_order_not_available"
                  data-ng-if="!loading.init && !isOrderable">
             </div>
 
-            <div class="form-group"
-                 data-ng-if="!loading.init && isOrderable && !loading.model">
-                <label class="control-label" for="selectTraffic"
+            <div data-ng-if="!loading.init && isOrderable && !loading.model">
+                <label class="oui-label" for="selectTraffic"
                        data-i18n-static="hosting_dashboard_bandwidth_order_traffic"></label>
-                <select class="form-control" id="selectTraffic"
-                        data-ng-model="model.offer"
-                        data-ng-options="offer as offer + ' ' + tr('unit_size_GB') for offer in trafficEnum track by offer">
-                </select>
+                <div class="oui-select">
+                    <select class="oui-select__input" id="selectTraffic" required
+                            data-ng-model="model.offer"
+                            data-ng-options="offer as offer + ' ' + tr('unit_size_GB') for offer in trafficEnum track by offer">
+                        <option value="" disabled
+                                data-i18n-static="select_placeholder"></option>
+                    </select>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                </div>
             </div>
         </div>
 
@@ -31,19 +37,24 @@
              data-wizard-step-valid="isStepValid(2)"
              data-wizard-step-on-load="getDuration">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.duration"></div>
+            <div class="text-center" data-ng-if="loading.duration">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!loading.duration">
                 <p data-i18n-static="hosting_dashboard_cdn_order_choose_duration"></p>
-                <form>
-                    <div class="radio" data-ng-repeat="duration in durations track by $index">
-                        <label>
-                            <input type="radio" value="{{duration}}"
-                                   data-ng-disabled="(loading.duration && !model.duration) || durations.length === 1"
-                                   data-ng-model="model.duration">
-                            <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:
-                            <span data-ng-bind-html="details[duration].prices | price:user.ovhSubsidiary"></span>
-                            <span class="fa fa-spinner fa-spin ml-2" data-ng-if="!details[duration]"></span>
+                <form name="hostingOrderBandwidthDurations">
+                    <div class="oui-radio" data-ng-repeat="duration in durations track by $index">
+                        <input type="radio" class="oui-radio__input" id="duration-{{$index}}" name="duration" value="{{duration}}"
+                               data-ng-disabled="(loading.duration && !model.duration) || durations.length === 1"
+                               data-ng-model="model.duration">
+                        <label class="oui-radio__label-container" for="duration-{{$index}}">
+                            <span class="oui-radio__label">
+                                <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:
+                                <span data-ng-bind-html="details[duration].prices | price:user.ovhSubsidiary"></span>
+                                <oui-loader size="s" inline="true"
+                                            data-ng-if="!details[duration]"></oui-loader>
+                            </span>
                         </label>
                     </div>
                 </form>
@@ -52,7 +63,6 @@
 
         <div data-wizard-step
              data-wizard-step-valid="isStepValid(3)">
-
              <form>
                  <div data-contracts="details[model.duration].contracts"
                       data-ng-model="model.contract"
@@ -62,8 +72,9 @@
 
         <div data-wizard-step
              data-wizard-step-valid="!loading.order">
-
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.order"></div>
+            <div class="text-center" data-ng-if="loading.order">
+                <oui-loader inline="true"></oui-loader>
+            </div>
             <p data-i18n-static="hosting_dashboard_cdn_order_validation"
                data-ng-if="!loading.order"></p>
         </div>

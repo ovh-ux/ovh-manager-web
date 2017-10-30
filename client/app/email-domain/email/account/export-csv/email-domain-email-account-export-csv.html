@@ -7,9 +7,10 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading.exportCsv">
 
-            <div class="mt-5 text-center" data-ng-if="ctrl.loading.exportCsv">
-                <div class="loader"></div>
-                <p data-i18n-static="emails_export_csv_doing"></p>
+            <div class="text-center" data-ng-if="ctrl.loading.exportCsv">
+                <oui-loader inline="true"></oui-loader>
+                <span class="d-block"
+                      data-i18n-static="emails_export_csv_doing"></span>
             </div>
 
             <div data-ng-if="!ctrl.loading.exportCsv">

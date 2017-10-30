@@ -12,20 +12,18 @@
             <div data-ng-if="!ctrl.loading">
                 <p data-ng-bind-html="tr('domain_dashboard_add_uk_tags_title', ctrl.domain.name)"></p>
 
-                <form class="form-horizontal mt-5" name="ctrl.ukTransferForm">
+                <form name="ctrl.ukTransferForm">
                     <div class="form-group" data-ng-class="{ 'has-error': ctrl.ukTransferForm.ukTag.$dirty && ctrl.ukTransferForm.ukTag.$invalid }">
-                        <label class="col-md-4 control-label required" for="ukTag"
+                        <label class="control-label required" for="ukTag"
                                data-i18n-static="domain_dashboard_add_uk_tags_label"></label>
-                        <div class="col-md-8">
-                            <input type="text" class="form-control" id="ukTag" name="ukTag" required
-                                   data-ng-maxlength="50"
-                                   data-ng-model="ctrl.ukTag"
-                                   data-ng-pattern="/^[a-zA-Z0-9\-]+$/">
-                            <div class="help-block"
-                                 data-ng-messages="ctrl.ukTransferForm.ukTag.$error">
-                                 <small data-ng-message="maxlength" data-i18n-static="domain_dashboard_add_uk_tags_maxlength_error"></small>
-                                 <small data-ng-message="pattern" data-i18n-static="domain_dashboard_add_uk_tags_pattern_error"></small>
-                            </div>
+                        <input type="text" class="form-control" id="ukTag" name="ukTag" required
+                               data-ng-maxlength="50"
+                               data-ng-model="ctrl.ukTag"
+                               data-ng-pattern="/^[a-zA-Z0-9\-]+$/">
+                        <div class="help-block"
+                             data-ng-messages="ctrl.ukTransferForm.ukTag.$error">
+                             <span data-ng-message="maxlength" data-i18n-static="domain_dashboard_add_uk_tags_maxlength_error"></span>
+                             <span data-ng-message="pattern" data-i18n-static="domain_dashboard_add_uk_tags_pattern_error"></span>
                         </div>
                     </div>
                 </form>

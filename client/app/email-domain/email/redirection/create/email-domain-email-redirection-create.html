@@ -10,16 +10,17 @@
             <p class="font-weight-bold" data-ng-bind="tr('email_tab_modal_create_redirection_heading', [ctrl.domain])"></p>
             <p data-i18n-static="email_tab_modal_create_redirection_info"></p>
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
-
-                <p>
-                    <small class="text-danger">*</small>
-                    <small data-i18n-static="required_fields"></small>
-                </p>
-
                 <form name="ctrl.createRedirectionForm">
+                    <p>
+                        <small class="text-danger">*</small>
+                        <small data-i18n-static="required_fields"></small>
+                    </p>
+
                     <div class="form-group" data-ng-class="{
                             'has-error':   (ctrl.createRedirectionForm.redirectionFrom.$dirty && ctrl.createRedirectionForm.redirectionFrom.$invalid) ||
                                            (ctrl.createRedirectionForm.redirectionSubdomainFrom.$dirty && (ctrl.createRedirectionForm.redirectionSubdomainFrom.$invalid || !ctrl.createRedirectionForm.redirectionFrom.$dirty)),
@@ -65,12 +66,15 @@
                     <div class="form-group">
                         <label class="control-label required" for="select-copy-mode"
                                data-i18n-static="email_tab_modal_redirection_create_keep_copy_title"></label>
-                        <select class="form-control" name="redirectionKeepCopy" id="select-copy-mode" required
-                                data-ng-model="ctrl.model.redirectionKeepCopy"
-                                data-ng-options="value as (i18n['email_tab_modal_redirection_create_copy_' + value] || value) for value in ctrl.copyChoices track by value">
-                            <option value="" disabled
-                                    data-i18n-static="email_tab_modal_redirection_create_copy_select"></option>
-                        </select>
+                        <div class="oui-select">
+                            <select class="oui-select__input" id="select-copy-mode" name="redirectionKeepCopy" required
+                                    data-ng-model="ctrl.model.redirectionKeepCopy"
+                                    data-ng-options="value as (i18n['email_tab_modal_redirection_create_copy_' + value] || value) for value in ctrl.copyChoices track by value">
+                                <option value="" disabled
+                                        data-i18n-static="email_tab_modal_redirection_create_copy_select"></option>
+                            </select>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                        </div>
                     </div>
                 </form>
             </div>

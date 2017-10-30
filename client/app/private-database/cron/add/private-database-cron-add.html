@@ -3,15 +3,15 @@
          data-wizard-bread-crumb="true"
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="saveCron"
-         data-wizard-title="title"
-         data-wizard-title-icon="'icon-add-cron'"
-         class="platforms">
+         data-wizard-title="title">
 
         <div data-wizard-step
              data-wizard-step-on-load="init"
              data-wizard-step-valid="isValid(1)">
 
-            <div class="loader text-center" data-ng-if="loading.init"></div>
+            <div class="text-center" data-ng-if="loading.init">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <form class="form-horizontal" data-ng-if="!loading.init">
                 <div class="form-group">
@@ -95,7 +95,9 @@
              data-wizard-step-on-load="generateCron"
              data-wizard-step-valid="!loading.validation">
 
-            <div class="loader text-center" data-ng-if="loading.validation"></div>
+            <div class="text-center" data-ng-if="loading.validation">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!loading.validation">
                 <p data-i18n-static="hosting_tab_CRON_step3_title"></p>

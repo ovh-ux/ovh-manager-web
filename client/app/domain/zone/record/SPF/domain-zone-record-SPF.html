@@ -13,60 +13,78 @@
     <fieldset class="mt-4">
         <span data-ng-bind="tr('domain_configuration_dns_entry_add_spf_a_title', ctrl.domain.displayName)"></span>
         <div class="col-md-9 col-md-offset-3">
-            <label class="radio-inline">
-                <input type="radio" name="aSender"
+            <div class="oui-radio oui-radio_inline">
+                <input type="radio" class="oui-radio__input" id="aSender-yes" name="aSender"
                        data-ng-change="ctrl.setTargetValue('SPF')"
                        data-ng-model="ctrl.model.target.aSender"
                        data-ng-value="true">
-                <span data-i18n-static="common_yes"></span>
-            </label>
-            <label class="radio-inline ml-4">
-                <input type="radio" name="aSender"
+                <label class="oui-radio__label-container" for="aSender-yes">
+                    <span class="oui-radio__label"
+                          data-i18n-static="common_yes"></span>
+                </label>
+            </div>
+            <div class="oui-radio oui-radio_inline ml-4">
+                <input type="radio" class="oui-radio__input" id="aSender-no" name="aSender"
                        data-ng-change="ctrl.setTargetValue('SPF')"
                        data-ng-model="ctrl.model.target.aSender"
                        data-ng-value="false">
-                <span data-i18n-static="common_no"></span>
-            </label>
+                <label class="oui-radio__label-container" for="aSender-no">
+                    <span class="oui-radio__label"
+                          data-i18n-static="common_no"></span>
+                </label>
+            </div>
         </div>
     </fieldset>
 
     <fieldset class="mt-4">
         <span data-ng-bind="tr('domain_configuration_dns_entry_add_spf_mx_title', ctrl.domain.displayName)"></span>
         <div class="col-md-9 col-md-offset-3">
-            <label class="radio-inline">
-                <input type="radio" name="mxSender"
+            <div class="oui-radio oui-radio_inline">
+                <input type="radio" class="oui-radio__input" id="mxSender-yes" name="mxSender"
                        data-ng-change="ctrl.setTargetValue('SPF')"
                        data-ng-model="ctrl.model.target.mxSender"
                        data-ng-value="true">
-                <span data-i18n-static="common_yes"></span>
-            </label>
-            <label class="radio-inline ml-4">
-                <input type="radio" name="mxSender"
+                <label class="oui-radio__label-container" for="mxSender-yes">
+                    <span class="oui-radio__label"
+                          data-i18n-static="common_yes"></span>
+                </label>
+            </div>
+            <div class="oui-radio oui-radio_inline ml-4">
+                <input type="radio" class="oui-radio__input" id="mxSender-no" name="mxSender"
                        data-ng-change="ctrl.setTargetValue('SPF')"
                        data-ng-model="ctrl.model.target.mxSender"
                        data-ng-value="false">
-                <span data-i18n-static="common_no"></span>
-            </label>
+                <label class="oui-radio__label-container" for="mxSender-no">
+                    <span class="oui-radio__label"
+                          data-i18n-static="common_no"></span>
+                </label>
+            </div>
         </div>
     </fieldset>
 
     <fieldset class="mt-4">
         <span data-ng-bind="tr('domain_configuration_dns_entry_add_spf_ptr_title', ctrl.domain.displayName)"></span>
         <div class="col-md-9 col-md-offset-3">
-            <label class="radio-inline">
-                <input type="radio" name="ptrSender"
+            <div class="oui-radio oui-radio_inline">
+                <input type="radio" class="oui-radio__input" id="ptrSender-yes" name="ptrSender"
                        data-ng-change="ctrl.setTargetValue('SPF')"
                        data-ng-model="ctrl.model.target.ptrSender"
                        data-ng-value="true">
-                <span data-i18n-static="common_yes"></span>
-            </label>
-            <label class="radio-inline ml-4">
-                <input type="radio" name="ptrSender"
+                <label class="oui-radio__label-container" for="ptrSender-yes">
+                    <span class="oui-radio__label"
+                          data-i18n-static="common_yes"></span>
+                </label>
+            </div>
+            <div class="oui-radio oui-radio_inline ml-4">
+                <input type="radio" class="oui-radio__input" id="ptrSender-no" name="ptrSender"
                        data-ng-change="ctrl.setTargetValue('SPF')"
                        data-ng-model="ctrl.model.target.ptrSender"
                        data-ng-value="false">
-                <span data-i18n-static="common_no"></span>
-            </label>
+                <label class="oui-radio__label-container" for="ptrSender-no">
+                    <span class="oui-radio__label"
+                          data-i18n-static="common_no"></span>
+                </label>
+            </div>
         </div>
     </fieldset>
 
@@ -130,28 +148,31 @@
     <fieldset class="mt-4">
         <span data-ng-bind="tr('domain_configuration_dns_entry_add_spf_all_title', ctrl.domain.displayName)"></span>
         <div class="col-md-9 col-md-offset-3">
-            <div class="radio">
-                <label>
-                    <input type="radio" name="all" value="-all"
-                           data-ng-change="ctrl.setTargetValue('SPF')"
-                           data-ng-model="ctrl.model.target.all">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_spf_all_title_yes"></span>
+            <div class="oui-radio">
+                <input type="radio" class="oui-radio__input" id="all-sure" name="all" value="-all"
+                       data-ng-change="ctrl.setTargetValue('SPF')"
+                       data-ng-model="ctrl.model.target.all">
+                <label class="oui-radio__label-container" for="all-sure">
+                    <span class="oui-radio__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_spf_all_title_yes"></span>
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="all" value="~all"
-                           data-ng-change="ctrl.setTargetValue('SPF')"
-                           data-ng-model="ctrl.model.target.all">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_spf_all_title_safe"></span>
+            <div class="oui-radio">
+                <input type="radio" class="oui-radio__input" id="all-safe" name="all" value="~all"
+                       data-ng-change="ctrl.setTargetValue('SPF')"
+                       data-ng-model="ctrl.model.target.all">
+                <label class="oui-radio__label-container" for="all-safe">
+                    <span class="oui-radio__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_spf_all_title_safe"></span>
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="all" value="?all"
-                           data-ng-change="ctrl.setTargetValue('SPF')"
-                           data-ng-model="ctrl.model.target.all">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_spf_all_title_no"></span>
+            <div class="oui-radio">
+                <input type="radio" class="oui-radio__input" id="all-no" name="all" value="?all"
+                       data-ng-change="ctrl.setTargetValue('SPF')"
+                       data-ng-model="ctrl.model.target.all">
+                <label class="oui-radio__label-container" for="all-no">
+                    <span class="oui-radio__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_spf_all_title_no"></span>
                 </label>
             </div>
         </div>

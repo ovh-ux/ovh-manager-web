@@ -1,41 +1,56 @@
-<div data-ng-controller="HostingRemoveDomainCtrl">
+<div data-ng-controller="HostingRemoveDomainCtrl as ctrl">
 	<div data-wizard
          data-wizard-on-cancel="resetAction"
-         data-wizard-on-finish="submit"
+         data-wizard-on-finish="deleteMultiSite"
          data-wizard-title="i18n.hosting_tab_DOMAINS_configuration_remove_title">
 
         <div data-wizard-step
-             data-wizard-step-on-load="loadHosting"
-             data-wizard-step-valid="model.domains != null">
+             data-wizard-step-valid="ctrl.model.domains != null">
 
             <p data-i18n-static="hosting_tab_DOMAINS_configuration_remove_step1_title"></p>
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="!model.domains"></div>
+            <div class="text-center" data-ng-if="!ctrl.model.domains">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
-            <div data-ng-if="model.domains">
-	            <dl class="dl-horizontal">
+            <div data-ng-if="ctrl.model.domains">
+	            <dl class="dl-horizontal dl-lg">
 	                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_remove_step1_domain_name"></dt>
-	                <dd data-ng-bind="selected.domain.displayName"></dd>
+	                <dd data-ng-bind="ctrl.selected.domain.displayName"></dd>
 	                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_remove_step1_home"></dt>
-	                <dd data-ng-bind="selected.domain.path"></dd>
+	                <dd data-ng-bind="ctrl.selected.domain.path"></dd>
 	            </dl>
 
-                <div class="mt-4 ml-4">
-                    <div class="checkbox" data-ng-show="domainsWwwExists()">
-                        <label>
-                            <input type="checkbox" data-ng-model="selected.wwwNeeded">
-                            <span data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_remove_step1_www', ['www.' + selected.domain.displayName])"></span>
-                        </label>
-                    </div>
+                <div class="oui-checkbox" data-ng-show="ctrl.domainsWwwExists()">
+                    <input type="checkbox" class="oui-checkbox__input" id="wwwNeeded"
+                           data-ng-model="ctrl.selected.wwwNeeded">
+                    <label class="oui-checkbox__label-container" for="wwwNeeded">
+                        <span class="oui-checkbox__label"
+                              data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_remove_step1_www', ['www.' + ctrl.selected.domain.displayName])"></span>
+                        <span class="oui-checkbox__icon">
+                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                        </span>
+                    </label>
+                </div>
 
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" data-ng-model="selected.autoconfigure">
-                            <span data-i18n-static="hosting_tab_DOMAINS_configuration_remove_step1_autoconfigure"></span>
-                            <sup class="tooltip-help"
-                                 data-uib-tooltip="{{tr('hosting_tab_DOMAINS_configuration_remove_step1_autoconfigure_text')}}">&#63;</sup>
-                        </label>
-                    </div>
+                <div class="oui-checkbox oui-checkbox_thumbnail">
+                    <input type="checkbox" class="oui-checkbox__input" id="autoConfigure"
+                           data-ng-model="ctrl.selected.autoconfigure">
+                    <label class="oui-checkbox__label-container" for="autoConfigure">
+                        <span class="oui-checkbox__label"
+                              data-i18n-static="hosting_tab_DOMAINS_configuration_remove_step1_autoconfigure">
+                        </span>
+                        <span class="oui-checkbox__description"
+                              data-i18n-static="hosting_tab_DOMAINS_configuration_remove_step1_autoconfigure_text">
+                        </span>
+                        <span class="oui-checkbox__icon">
+                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                        </span>
+                    </label>
                 </div>
 		    </div>
         </div>

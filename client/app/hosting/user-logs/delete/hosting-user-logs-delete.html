@@ -1,4 +1,4 @@
-<div data-ng-controller="HostingUserLogsDeleteCtrl">
+<div data-ng-controller="HostingUserLogsDeleteCtrl as ctrl">
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="deleteUser"
@@ -6,7 +6,7 @@
 
         <div data-wizard-step>
             <p class="word-break"
-               data-ng-bind-html="tr('hosting_tab_USER_LOGS_configuration_user_delete_question', ['<strong>' + entryToDelete + '</strong>'])"></p>
+               data-ng-bind-html="tr('hosting_tab_USER_LOGS_configuration_user_delete_question', ['<strong>' + ctrl.entryToDelete + '</strong>'])"></p>
         </div>
     </div>
 </div>

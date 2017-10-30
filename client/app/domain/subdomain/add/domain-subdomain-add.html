@@ -33,30 +33,33 @@
 
                 <fieldset>
                     <legend data-i18n-static="domain_configuration_add_subdomain_iwant"></legend>
-                    <div class="ml-4">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="action" value="redirection" required
-                                       data-ng-model="ctrl.model.action">
-                                <span data-i18n-static="domain_configuration_add_subdomain_redir"></span>
-                                <small class="d-block" data-i18n-static="domain_configuration_add_subdomain_redir_sample"></small>
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="action" value="addRecord" required
-                                       data-ng-model="ctrl.model.action">
-                                <span data-i18n-static="domain_configuration_add_subdomain_add_record"></span>
-                                <small class="d-block" data-i18n-static="domain_configuration_add_subdomain_add_record_sample"></small>
-                            </label>
-                        </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" name="action" value="addToMutu" required
-                                       data-ng-model="ctrl.model.action">
-                                <span data-i18n-static="domain_configuration_add_subdomain_add_dom"></span>
-                            </label>
-                        </div>
+                    <div class="oui-radio">
+                        <input type="radio" class="oui-radio__input" name="action" id="choiceRedirection" value="redirection" required
+                               data-ng-model="ctrl.model.action">
+                        <label class="oui-radio__label-container" for="choiceRedirection">
+                            <span class="oui-radio__label"
+                                  data-i18n-static="domain_configuration_add_subdomain_redir"></span>
+                            <span class="oui-radio__description"
+                                  data-i18n-static="domain_configuration_add_subdomain_redir_sample"></span>
+                        </label>
+                    </div>
+                    <div class="oui-radio">
+                        <input type="radio" class="oui-radio__input" name="action" id="choiceAddRecord" value="addRecord" required
+                               data-ng-model="ctrl.model.action">
+                        <label class="oui-radio__label-container" for="choiceAddRecord">
+                            <span class="oui-radio__label"
+                                  data-i18n-static="domain_configuration_add_subdomain_add_record"></span>
+                            <span class="oui-radio__description"
+                                  data-i18n-static="domain_configuration_add_subdomain_add_record_sample"></span>
+                        </label>
+                    </div>
+                    <div class="oui-radio">
+                        <input type="radio" class="oui-radio__input" name="action" id="choiceAddToMutu" value="addToMutu" required
+                               data-ng-model="ctrl.model.action">
+                        <label class="oui-radio__label-container" for="choiceAddToMutu">
+                            <span class="oui-radio__label"
+                                  data-i18n-static="domain_configuration_add_subdomain_add_dom"></span>
+                        </label>
                     </div>
                 </fieldset>
             </form>

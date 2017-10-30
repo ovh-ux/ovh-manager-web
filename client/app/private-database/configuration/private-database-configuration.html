@@ -1,9 +1,12 @@
 <div class="container-fluid px-0" data-ng-controller="PrivateDatabaseConfigurationsCtrl as configurationsCtrl">
 
-    <div class="loader text-center" data-ng-if="configurationsCtrl.loading"></div>
+    <div class="mt-5 text-center" data-ng-if="configurationsCtrl.loading">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
 
     <div class="row" data-ng-if="!configurationsCtrl.loading">
         <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.main}}"></div>
 
             <div class="alert alert-info" role="alert"
                  data-i18n-static="privateDatabase_configurations_general_postgresql_soon"
@@ -35,12 +38,13 @@
                                 <span data-ng-bind="configuration.value"></span>
                                 <span data-i18n-static="{{'unit_configuration_' + configuration.unit}}" data-ng-if="configuration.unit"></span>
                             </span>
-                            <div class="inline-block" data-ng-if="configurationsCtrl.edit.value">
-                                <select class="form-control" name="{{configuration.key}}"
+                            <div class="oui-select oui-select_inline" data-ng-if="configurationsCtrl.edit.value">
+                                <select class="oui-select__input" name="{{configuration.key}}"
                                         data-ng-attr-id="{{configuration.key + 'Field'}}"
-                                        data-ng-options="conf for conf in configuration.availableValues"
-                                        data-ng-model="configuration.value">
+                                        data-ng-model="configuration.value"
+                                        data-ng-options="conf for conf in configuration.availableValues">
                                 </select>
+                                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                             </div>
                         </div>
                     </div>

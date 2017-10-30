@@ -23,15 +23,13 @@ angular.module("App").controller("HostingOrderBandwidthCtrl", ($scope, $q, $wind
     $scope.loadOrder = function () {
         $scope.loading.init = true;
         HostingBandwidthOrder.getModels()
-            .then(
-                (models) => {
-                    $scope.trafficEnum = _.sortBy(models.models["hosting.web.BandwidthOfferEnum"].enum, (d) => parseInt(d, 10));
-                },
-                (err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_bandwidth_order_error"), err, "hosting.alerts.dashboard");
-                    $scope.resetAction();
-                }
-            )
+            .then((models) => {
+                $scope.trafficEnum = _.sortBy(models.models["hosting.web.BandwidthOfferEnum"].enum, (d) => parseInt(d, 10));
+            })
+            .catch((err) => {
+                Alerter.alertFromSWS($scope.tr("hosting_dashboard_bandwidth_order_error"), err, $scope.alerts.main);
+                $scope.resetAction();
+            })
             .finally(() => {
                 $scope.loading.init = false;
             });
@@ -40,8 +38,8 @@ angular.module("App").controller("HostingOrderBandwidthCtrl", ($scope, $q, $wind
     $scope.getDuration = function () {
         const queue = [];
         $scope.loading.duration = true;
-        HostingBandwidthOrder.getDurations($stateParams.productId, { traffic: $scope.model.offer }).then(
-            (durations) => {
+        HostingBandwidthOrder.getDurations($stateParams.productId, { traffic: $scope.model.offer })
+            .then((durations) => {
                 $scope.durations = durations;
                 if ($scope.durations.length === 1) {
                     $scope.model.duration = $scope.durations[0];
@@ -61,12 +59,11 @@ angular.module("App").controller("HostingOrderBandwidthCtrl", ($scope, $q, $wind
                     $scope.loading.details = false;
                 });
                 $scope.loading.duration = false;
-            },
-            (err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_dashboard_bandwidth_order_error"), err, "hosting.alerts.dashboard");
+            })
+            .catch((err) => {
+                Alerter.alertFromSWS($scope.tr("hosting_dashboard_bandwidth_order_error"), err, $scope.alerts.main);
                 $scope.resetAction();
-            }
-        );
+            });
     };
 
     $scope.isStepValid = function (step) {
@@ -84,19 +81,14 @@ angular.module("App").controller("HostingOrderBandwidthCtrl", ($scope, $q, $wind
 
     $scope.makeOrder = function () {
         $scope.loading.order = true;
-        HostingBandwidthOrder.order($stateParams.productId, {
-            traffic: $scope.model.offer,
-            duration: $scope.model.duration
-        })
-            .then(
-                (order) => {
-                    Alerter.success($scope.tr("hosting_dashboard_cdn_order_success", [order.url]), "hosting.alerts.dashboard");
-                    $window.open(order.url, "_blank");
-                },
-                (data) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_bandwidth_order_error"), data.data, "hosting.alerts.dashboard");
-                }
-            )
+        HostingBandwidthOrder.order($stateParams.productId, { traffic: $scope.model.offer, duration: $scope.model.duration })
+            .then((order) => {
+                Alerter.success($scope.tr("hosting_dashboard_cdn_order_success", [order.url]), $scope.alerts.main);
+                $window.open(order.url, "_blank");
+            })
+            .catch((err) => {
+                Alerter.alertFromSWS($scope.tr("hosting_dashboard_bandwidth_order_error"), _.get(err, "data", err), $scope.alerts.main);
+            })
             .finally(() => {
                 $scope.resetAction();
             });

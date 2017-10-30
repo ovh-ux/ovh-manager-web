@@ -1,58 +1,53 @@
-angular.module("App").controller("HostingMigrateMyOvhOrgCtrl", ($scope, $stateParams, Alerter, Hosting) => {
-    "use strict";
+angular.module("App").controller(
+    "HostingMigrateMyOvhOrgCtrl",
+    class HostingMigrateMyOvhOrgCtrl {
+        constructor ($scope, $stateParams, Alerter, Hosting) {
+            this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.Hosting = Hosting;
+        }
 
-    $scope.model = {
-        destination: null
-    };
+        $onInit () {
+            this.hosting = this.$scope.currentActionData;
+            this.hostings = [];
+            this.loading = true;
+            this.model = {
+                destination: null
+            };
 
-    $scope.hostings = [];
+            this.$scope.migrateMyOvhOrg = () => this.migrateMyOvhOrg();
 
-    $scope.loading = {
-        hostings: null,
-        validation: null
-    };
-
-    /*= =============================
-     =            STEP 1           =
-     ==============================*/
-    $scope.hosting = $scope.currentActionData;
-
-    $scope.getHostings = function () {
-        $scope.loading.hostings = true;
-
-        Hosting.getHostings($scope.hosting ? $scope.hosting.serviceName : null)
-            .then(
-                (hostings) => {
-                    $scope.hostings = hostings;
+            this.Hosting.getHostings(_.get(this.hosting, "serviceName"))
+                .then((hostings) => {
+                    this.hostings = hostings;
 
                     // We delete the current product
-                    const index = $scope.hostings.indexOf($stateParams.productId);
-                    $scope.hostings.splice(index, 1);
-                },
-                () => {
-                    $scope.hostings = [];
-                }
-            )
-            .finally(() => {
-                $scope.loading.hostings = false;
-            });
-    };
+                    const index = _.indexOf(this.hostings, this.$stateParams.productId);
+                    this.hostings.splice(index, 1);
+                })
+                .catch(() => {
+                    this.hostings = [];
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+        }
 
-    $scope.migrateMyOvhOrg = function () {
-        $scope.loading.validation = true;
-        $scope.resetAction();
+        migrateMyOvhOrg () {
+            this.loading = true;
+            this.$scope.resetAction();
 
-        Hosting.migrateMyOvhOrg($stateParams.productId, $scope.model.destination)
-            .then(
-                () => {
-                    Alerter.success($scope.tr("hosting_migrate_my_ovh_org_success"), "hosting.alerts.dashboard");
-                },
-                (err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_migrate_my_ovh_org_error"), err, "hosting.alerts.dashboard");
-                }
-            )
-            .finally(() => {
-                $scope.loading.validation = false;
-            });
-    };
-});
+            return this.Hosting.migrateMyOvhOrg(this.$stateParams.productId, this.model.destination)
+                .then(() => {
+                    this.Alerter.success(this.$scope.tr("hosting_migrate_my_ovh_org_success"), this.$scope.alerts.tabs);
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_migrate_my_ovh_org_error"), err, this.$scope.alerts.tabs);
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+        }
+    }
+);

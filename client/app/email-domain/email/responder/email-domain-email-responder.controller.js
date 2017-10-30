@@ -40,7 +40,7 @@ angular.module("App").controller(
             return this.Emails
                 .getResponders(this.$stateParams.productId)
                 .then((data) => (this.responders = data.sort()))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_responders_error"), err, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_responders_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     if (_.isEmpty(this.responders)) {
                         this.loading.responders = false;

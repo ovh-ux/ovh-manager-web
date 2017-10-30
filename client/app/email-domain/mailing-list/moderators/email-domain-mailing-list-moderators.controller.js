@@ -45,7 +45,7 @@ angular.module("App").controller(
                         this.runPolling().then((hasPolling) => {
                             if (!hasPolling) {
                                 this.moderators.updating = false;
-                                this.Alerter.resetMessage(this.$scope.alerts.dashboard);
+                                this.Alerter.resetMessage(this.$scope.alerts.main);
                                 this.refreshTableModerators(true);
                             }
                         });
@@ -124,7 +124,7 @@ angular.module("App").controller(
                 .then((data) => {
                     this.moderators.ids = this.$filter("orderBy")(data);
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     if (_.isEmpty(this.moderators.ids)) {
                         this.loading.moderators = false;

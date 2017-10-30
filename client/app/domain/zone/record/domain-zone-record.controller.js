@@ -530,10 +530,10 @@ angular.module("App").controller(
                     target: this.model.target.value
                 })
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("domain_configuration_dns_entry_add_success"), this.$scope.alerts.dashboard);
+                    this.Alerter.success(this.$scope.tr("domain_configuration_dns_entry_add_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dns_entry_add_fail"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dns_entry_add_fail"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.$scope.resetAction();
@@ -551,11 +551,11 @@ angular.module("App").controller(
                     target: this.model.target.value
                 })
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("domain_configuration_dns_entry_modify_success"), this.$scope.alerts.dashboard);
+                    this.Alerter.success(this.$scope.tr("domain_configuration_dns_entry_modify_success"), this.$scope.alerts.main);
                     this.$rootScope.$broadcast("domain.tabs.zonedns.refresh");
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dns_entry_modify_fail"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dns_entry_modify_fail"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.$scope.resetAction();

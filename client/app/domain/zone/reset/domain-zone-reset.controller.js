@@ -74,7 +74,7 @@ angular.module("App").controller(
                     }
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_zonedns_reset_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_zonedns_reset_error"), err, this.$scope.alerts.main);
                     this.$scope.resetAction();
                 })
                 .finally(() => {
@@ -102,8 +102,8 @@ angular.module("App").controller(
                     const dnsRecords = this.getDnsRecords(data);
                     return this.Domain.resetZone(this.domain.name, this.zoneReset.minimized, dnsRecords.length ? dnsRecords : null);
                 })
-                .then(() => this.Alerter.success(this.$scope.tr("domain_configuration_zonedns_reset_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_zonedns_reset_error"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("domain_configuration_zonedns_reset_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_zonedns_reset_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     this.loading = false;
                     this.$scope.resetAction();

@@ -19,9 +19,8 @@ angular
             this.productId = this.$stateParams.productId;
 
             this.$scope.alerts = {
-                dashboard: "privateDataBase.alerts.dashboard",
-                users: "privateDataBase.alerts.user",
-                bdd: "privateDataBase.alerts.bdd"
+                page: "privateDataBase.alerts.page",
+                main: "privateDataBase.alerts.main"
             };
 
             this.works = {};
@@ -188,7 +187,7 @@ angular
                     }
                 })
                 .catch(() => {
-                    this.alerter.error("Not FOUND", null, this.$scope.alerts.dashboard);
+                    this.alerter.error("Not FOUND", null, this.$scope.alerts.page);
                 })
                 .finally(() => {
                     this.loaders.details = false;
@@ -213,7 +212,7 @@ angular
                 })
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
-                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_dashboard_loading_error"), err, this.$scope.alerts.dashboard);
+                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_dashboard_loading_error"), err, this.$scope.alerts.page);
                 })
                 .finally(() => {
                     this.editMode = false;
@@ -240,11 +239,11 @@ angular
                     }
 
                     this.$rootScope.$broadcast("privateDatabase.global.actions.done", opt);
-                    this.alerter.success(this.$scope.tr(`privateDatabase_global_actions_success_${task.function}`), this.$scope.alerts.dashboard);
+                    this.alerter.success(this.$scope.tr(`privateDatabase_global_actions_success_${task.function}`), this.$scope.alerts.main);
                 })
                 .catch(() => {
                     this.$rootScope.$broadcast("privateDatabase.global.actions.error", opt);
-                    this.alerter.error(this.$scope.tr(`privateDatabase_global_actions_fail_${task.function}`), this.$scope.alerts.dashboard);
+                    this.alerter.error(this.$scope.tr(`privateDatabase_global_actions_fail_${task.function}`), this.$scope.alerts.main);
                 });
         }
 });

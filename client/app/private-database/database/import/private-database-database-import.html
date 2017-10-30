@@ -11,20 +11,22 @@
             <form name="formFileUploadStep0">
                 <p data-i18n-static="wizard_action_question"></p>
 
-                <div class="radio ml-3">
-                    <label>
-                        <input type="radio" id="hostingDatabaseImportNewFile" name="hostingDatabaseImportMode"
-                               data-ng-model="importBddCtrl.selected.action"
-                               data-ng-value="importBddCtrl.model.actions.IMPORT_FROM_NEW">
-                        <span data-i18n-static="hosting_tab_DATABASES_table_popover_import_step0_new_file_mode"></span>
+                <div class="oui-radio">
+                    <input type="radio" class="oui-radio__input" id="hostingDatabaseImportNewFile" name="hostingDatabaseImportMode"
+                           data-ng-model="importBddCtrl.selected.action"
+                           data-ng-value="importBddCtrl.model.actions.IMPORT_FROM_NEW">
+                    <label class="oui-radio__label-container" for="hostingDatabaseImportNewFile">
+                        <span class="oui-radio__label"
+                              data-i18n-static="hosting_tab_DATABASES_table_popover_import_step0_new_file_mode"></span>
                     </label>
                 </div>
-                <div class="radio ml-3">
-                    <label>
-                        <input type="radio" id="hostingDatabaseImportExistingFile" name="hostingDatabaseImportMode"
-                               data-ng-model="importBddCtrl.selected.action"
-                               data-ng-value="importBddCtrl.model.actions.IMPORT_FROM_EXISTING">
-                        <span data-i18n-static="hosting_tab_DATABASES_table_popover_import_step0_existing_file_mode"></span>
+                <div class="oui-radio">
+                    <input type="radio" class="oui-radio__input" id="hostingDatabaseImportExistingFile" name="hostingDatabaseImportMode"
+                           data-ng-model="importBddCtrl.selected.action"
+                           data-ng-value="importBddCtrl.model.actions.IMPORT_FROM_EXISTING">
+                    <label class="oui-radio__label-container" for="hostingDatabaseImportExistingFile">
+                        <span class="oui-radio__label"
+                              data-i18n-static="hosting_tab_DATABASES_table_popover_import_step0_existing_file_mode"></span>
                     </label>
                 </div>
             </form>
@@ -82,7 +84,7 @@
                                        data-ng-repeat="(type, isError) in formFileUpload.file.$error track by $index">
                                 </small>
                                 <div class="mt-3">
-                                    <button class="btn btn-primary" type="submit"
+                                    <button class="oui-button oui-button_primary" type="submit"
                                             data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_upload"
                                             data-ng-disabled="!importBddCtrl.fileAsBeenSelected()">
                                     </button>
@@ -97,15 +99,20 @@
             </div>
 
             <div data-ng-if="importBddCtrl.selected.action === importBddCtrl.model.actions.IMPORT_FROM_EXISTING">
-                <div class="loader text-center" data-ng-if="importBddCtrl.loading.documents"></div>
+                <div class="text-center" data-ng-if="importBddCtrl.loading.documents">
+                    <oui-loader inline="true"></oui-loader>
+                </div>
 
                 <div class="form-group" data-ng-if="!importBddCtrl.loading.documents">
-                    <label class="control-label" for="ddlDocuments"
+                    <label class="oui-label" for="ddlDocuments"
                            data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_choose_file"></label>
-                    <select class="form-control" id="ddlDocuments"
-                            data-ng-model="importBddCtrl.model.document"
-                            data-ng-options="document.name for document in importBddCtrl.model.documents | orderBy: 'name' track by document.id">
-                    </select>
+                    <div class="oui-select">
+                        <select class="oui-select__input" id="ddlDocuments"
+                                data-ng-model="importBddCtrl.model.document"
+                                data-ng-options="document.name for document in importBddCtrl.model.documents | orderBy: 'name' track by document.id">
+                        </select>
+                        <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -114,16 +121,30 @@
             <form name="formFileUploadStep2" novalidate>
                 <p data-i18n-static="hosting_tab_DATABASES_table_popover_import_step2_title"></p>
 
-                <div class="checkbox">
-                    <label class="list-inline control-label large" for="flush_option">
-                        <input class="control no-space-final" type="checkbox" id="flush_option" data-ng-model="importBddCtrl.model.flushDatabase"/>
-                        <span data-i18n-static="hosting_tab_DATABASES_table_popover_import_step2_flush_database"></span>
+                <div class="oui-checkbox">
+                    <input type="checkbox" class="oui-checkbox__input" id="flush_option"
+                           data-ng-model="importBddCtrl.model.flushDatabase">
+                    <label class="oui-checkbox__label-container" for="flush_option">
+                        <span class="oui-checkbox__label"
+                              data-i18n-static="hosting_tab_DATABASES_table_popover_import_step2_flush_database"></span>
+                        <span class="oui-checkbox__icon">
+                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                        </span>
                     </label>
                 </div>
-                <div class="checkbox">
-                    <label class="list-inline control-label large"></label>
-                        <input class="control no-space-final" type="checkbox" data-ng-model="importBddCtrl.model.sendEmail" />
-                        <span data-i18n-static="hosting_tab_DATABASES_table_popover_import_step2_send_email"></span>
+                <div class="oui-checkbox">
+                    <input type="checkbox" class="oui-checkbox__input" id="send_email"
+                           data-ng-model="importBddCtrl.model.sendEmail">
+                    <label class="oui-checkbox__label-container" for="send_email">
+                        <span class="oui-checkbox__label"
+                              data-i18n-static="hosting_tab_DATABASES_table_popover_import_step2_send_email"></span>
+                        <span class="oui-checkbox__icon">
+                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                        </span>
                     </label>
                 </div>
             </form>

@@ -1,17 +1,40 @@
 angular
     .module("App")
-    .controller("PrivateDatabaseTabLogsCtrl", class PrivateDatabaseTabLogsCtrl {
+    .controller("PrivateDatabaseLogsCtrl", class PrivateDatabaseLogsCtrl {
 
-        constructor ($scope) {
+        constructor ($scope, $stateParams, OvhTailLogs, PrivateDatabaseLogsService) {
             this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.OvhTailLogs = OvhTailLogs;
+            this.privateDatabaseLogsService = PrivateDatabaseLogsService;
         }
 
         $onInit () {
-            this.$scope.goToList = () => {
-                this.$scope.logs = null;
-                this.$scope.logsView = "private-database/logs/list/private-database-logs-list.html";
-            };
+            this.productId = this.$stateParams.productId;
 
-            this.$scope.goToList();
+            this.logger = new this.OvhTailLogs({
+                source: () => this.privateDatabaseLogsService.getLogs(this.productId)
+                    .then((logs) => logs.url),
+                delay: 2000
+            });
+
+            this.startLog();
         }
-});
+
+        $onDestroy () {
+            this.logger.stop();
+        }
+
+        stopLog () {
+            this.logger.stop();
+        }
+
+        startLog () {
+            this.logger.log();
+        }
+
+        getLogs () {
+            this.logger = this.logger.logs;
+            return this.logger;
+        }
+    });

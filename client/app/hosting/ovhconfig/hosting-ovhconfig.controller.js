@@ -12,7 +12,8 @@ angular.module("App").controller("HostingEditOvhConfig", ($scope, $stateParams, 
         unavailablePhpVersion: false,
         needFirstChoice: true,
         inRollbackProcess: true,
-        configFlavour: null
+        configFlavour: null,
+        process: null
     };
     $scope.apiStruct = null;
     $scope.ovhHistoricalConfigs = null;
@@ -24,29 +25,33 @@ angular.module("App").controller("HostingEditOvhConfig", ($scope, $stateParams, 
 
         $scope.loading.init = true;
 
-        User.getUrlOf("guides").then((guides) => {
-            $scope.phpAppendicesGuide = guides.phpAppendices;
-            $scope.hostingPhpGuide = guides.hostingPhpConfiguration;
-        });
+        User.getUrlOf("guides")
+            .then((guides) => {
+                $scope.phpAppendicesGuide = guides.phpAppendices;
+                $scope.hostingPhpGuide = guides.hostingPhpConfiguration;
+            });
 
         queue.push(
-            Hosting.getModels().then((struct) => {
-                $scope.apiStruct = {
-                    models: struct.models
-                };
-            })
+            Hosting.getModels()
+                .then((struct) => {
+                    $scope.apiStruct = {
+                        models: struct.models
+                    };
+                })
         );
 
         queue.push(
-            HostingOvhConfig.getHistoric($stateParams.productId).then((ovhHistoricalConfigs) => {
-                $scope.ovhHistoricalConfigs = ovhHistoricalConfigs;
-            })
+            HostingOvhConfig.getHistoric($stateParams.productId)
+                .then((ovhHistoricalConfigs) => {
+                    $scope.ovhHistoricalConfigs = ovhHistoricalConfigs;
+                })
         );
 
         queue.push(
-            HostingOvhConfig.get($stateParams.productId).then((conf) => {
-                currentConfig = conf;
-            })
+            HostingOvhConfig.get($stateParams.productId)
+                .then((conf) => {
+                    currentConfig = conf;
+                })
         );
 
         $q.all(queue).finally(() => {
@@ -151,15 +156,15 @@ angular.module("App").controller("HostingEditOvhConfig", ($scope, $stateParams, 
         }
     };
 
-    $scope.setRollbackProcess = function () {
-        $scope.toggle.inRollbackProcess = true;
-        $scope.toggle.needFirstChoice = false;
-        $scope.checkCohesion();
-    };
-
-    $scope.setUpdateProcess = function () {
-        $scope.flavourChanged(currentConfig);
-        $scope.toggle.inRollbackProcess = false;
-        $scope.toggle.needFirstChoice = false;
+    $scope.setProcess = function () {
+        if ($scope.toggle.process === "rollback") {
+            $scope.toggle.inRollbackProcess = true;
+            $scope.toggle.needFirstChoice = false;
+            $scope.checkCohesion();
+        } else {
+            $scope.flavourChanged(currentConfig);
+            $scope.toggle.inRollbackProcess = false;
+            $scope.toggle.needFirstChoice = false;
+        }
     };
 });

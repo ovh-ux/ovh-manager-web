@@ -9,12 +9,14 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
                 <p data-ng-bind-html="i18n.domain_configuration_dnsanycast_step1_explanation"></p>
                 <p>
-                    <span data-ng-bind-html="tr('domain_configuration_dnsanycast_step1_explanation2', [ctrl.optionDetails.withoutTax])"></span>
+                    <span data-ng-bind-html="tr('domain_configuration_dnsanycast_step1_explanation2', ['<strong>' + ctrl.optionDetails.withoutTax + '</strong>'])"></span>
                     <span data-i18n-static="domain_configuration_dnsanycast_step1_explanation3"></span>
                 </p>
                 <p data-ng-bind="i18n.domain_configuration_dnsanycast_step1_question"></p>
@@ -25,24 +27,31 @@
              data-wizard-step-valid="ctrl.contractsValidated">
 
             <p data-ng-bind-html="tr('domain_configuration_dnsanycast_step2_question', [ctrl.domainName])"></p>
-            <dl class="dl-horizontal">
+            <dl class="dl-horizontal dl-lg">
                 <dt data-i18n-static="domain_configuration_dnsanycast_step2_totalHT"></dt>
                 <dd data-ng-bind="ctrl.optionDetails.withoutTax"></dd>
                 <dt data-i18n-static="domain_configuration_dnsanycast_step2_totalTTC"></dt>
                 <dd data-ng-bind="ctrl.optionDetails.withTax"></dd>
             </dl>
             <p class="mb-3" data-i18n-static="domain_configuration_dnsanycast_step2_id"></p>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox" name="contractsValidated"
-                           data-ng-model="ctrl.contractsValidated">
-                    <span data-i18n-static="domain_configuration_dnsanycast_step2_contracts"></span>
-                    <span data-ng-repeat="contract in ctrl.optionDetails.contracts track by $index">
-                        <span data-i18n-static="domain_configuration_dnsanycast_step2_contracts_and"
-                              data-ng-if="!$last"></span>
-                        <span data-i18n-static="domain_configuration_dnsanycast_step2_contracts_of"></span>
-                        <a data-ng-href="{{contract.url}}" target="_blank" title="{{contract.name}} ({{i18n.common_newtab}})"
-                           data-ng-bind="contract.name"></a><span data-ng-if="!$last">, </span><span data-ng-if="$last">.</span>
+            <div class="oui-checkbox">
+                <input type="checkbox" class="oui-checkbox__input" name="contractsValidated" id="contractsValidated"
+                       data-ng-model="ctrl.contractsValidated">
+                <label class="oui-checkbox__label-container" for="contractsValidated">
+                    <span class="oui-checkbox__label">
+                        <span data-i18n-static="domain_configuration_dnsanycast_step2_contracts"></span>
+                        <span data-ng-repeat="contract in ctrl.optionDetails.contracts track by $index">
+                            <span data-i18n-static="domain_configuration_dnsanycast_step2_contracts_and"
+                                  data-ng-if="!$last"></span>
+                            <span data-i18n-static="domain_configuration_dnsanycast_step2_contracts_of"></span>
+                            <a data-ng-href="{{contract.url}}" target="_blank" title="{{contract.name}} ({{i18n.common_newtab}})"
+                               data-ng-bind="contract.name"></a><span data-ng-if="!$last">, </span><span data-ng-if="$last">.</span>
+                        </span>
+                    </span>
+                    <span class="oui-checkbox__icon">
+                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
                     </span>
                 </label>
             </div>
@@ -53,12 +62,13 @@
              data-wizard-step-valid="ctrl.url">
 
             <div class="text-center" data-ng-if="ctrl.loading">
-                <div class="loader"></div>
+                <oui-loader inline="true"></oui-loader>
                 <p data-i18n-static="domain_configuration_dnsanycast_step3_generation_bc"></p>
             </div>
 
             <div data-ng-if="!ctrl.loading && ctrl.url">
-                <p data-i18n-static="domain_configuration_dnsanycast_step3_bc"></p>
+                <p class="text-success"
+                   data-i18n-static="domain_configuration_dnsanycast_step3_bc"></p>
                 <p>
                     <strong data-i18n-static="domain_configuration_dnsanycast_step3_continue"></strong>
                     <span data-i18n-static="domain_configuration_dnsanycast_step3_explication1"></span>

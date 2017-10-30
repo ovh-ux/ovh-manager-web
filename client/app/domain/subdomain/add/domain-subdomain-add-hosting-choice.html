@@ -9,7 +9,9 @@
              data-wizard-step-on-previous="ctrl.goBack"
              data-wizard-step-valid="ctrl.selected.hosting">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading && ctrl.hostings">
                 <p data-ng-bind-html="tr('domain_configuration_add_subdomain_hosting_choice', [currentActionData.subdomain, currentActionData.domain.displayName])"></p>

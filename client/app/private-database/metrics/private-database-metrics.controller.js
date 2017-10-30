@@ -10,10 +10,6 @@ angular.module("App").controller(
         }
 
         $onInit () {
-            this.$scope.alerts = {
-                metrics: "privateDataBase.alerts.metrics"
-            };
-
             this.timeRange = ["DAY", "WEEK", "MONTH"];
             this.timeRangeSelected = this.timeRange[0];
 
@@ -104,7 +100,7 @@ angular.module("App").controller(
                     }
                 })
                 .catch((err) => {
-                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_metrics_loading_error"), err, this.$scope.alerts.metrics);
+                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_metrics_loading_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loaders.metrics = false;

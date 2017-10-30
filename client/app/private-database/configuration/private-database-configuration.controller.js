@@ -13,7 +13,6 @@ angular.module("App").controller(
             this.productId = this.$stateParams.productId;
 
             this.database = this.$scope.database;
-            this.$scope.alerts = "privateDataBase.alerts.configurations";
             this.loading = false;
             this.isRebooting = false;
             this.edit = {

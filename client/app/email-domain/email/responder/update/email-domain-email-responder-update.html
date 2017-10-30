@@ -7,34 +7,38 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.updateResponderForm.$valid && ctrl.responderDurationCheck()">
 
-            <p class="font-weight-bold" data-ng-bind="tr('email_tab_modal_update_responder_heading', [ctrl.responder.account])"></p>
-            <p data-i18n-static="email_tab_modal_update_responder_info"></p>
+            <p data-ng-bind="tr('email_tab_modal_update_responder_heading', [ctrl.responder.account])"></p>
+            <p class="font-weight-bold" data-i18n-static="email_tab_modal_update_responder_info"></p>
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
-
-                <p>
-                    <small class="text-danger">*</small>
-                    <small data-i18n-static="required_fields"></small>
-                </p>
-
                 <form class="form-horizontal" name="ctrl.updateResponderForm">
+                    <p>
+                        <small class="text-danger">*</small>
+                        <small data-i18n-static="required_fields"></small>
+                    </p>
+
                     <div class="form-group">
-                        <span class="control-label col-md-4 font-weight-bold" data-i18n-static="email_tab_modal_create_responder_duration"></span>
+                        <span class="col-md-4 control-label text-lg-right oui-label"
+                              data-i18n-static="email_tab_modal_create_responder_duration"></span>
                         <div class="col-md-8">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="radio" name="responderDuration" value="temporary"
-                                           data-ng-model="ctrl.model.responderDuration">
-                                    <span data-i18n-static="email_tab_modal_create_responder_temporary"></span>
+                            <div class="oui-radio">
+                                <input type="radio" class="oui-radio__input" id="responderDuration-temporary" name="responderDuration" value="temporary"
+                                       data-ng-model="ctrl.model.responderDuration">
+                                <label class="oui-radio__label-container" for="responderDuration-temporary">
+                                    <span class="oui-radio__label"
+                                          data-i18n-static="email_tab_modal_create_responder_temporary"></span>
                                 </label>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="radio" name="responderDuration" value="permanent"
-                                           data-ng-model="ctrl.model.responderDuration">
-                                    <span data-i18n-static="email_tab_modal_create_responder_permanent"></span>
+                            <div class="oui-radio">
+                                <input type="radio" class="oui-radio__input" id="responderDuration-permanent" name="responderDuration" value="permanent"
+                                       data-ng-model="ctrl.model.responderDuration">
+                                <label class="oui-radio__label-container" for="responderDuration-permanent">
+                                    <span class="oui-radio__label"
+                                          data-i18n-static="email_tab_modal_create_responder_permanent"></span>
                                 </label>
                             </div>
                         </div>

@@ -63,7 +63,7 @@ angular.module("App").controller(
                 .then((quotas) => {
                     this.quotas = quotas;
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.main))
                 .finally(() => (this.loading.quotas = false));
         }
 
@@ -77,7 +77,7 @@ angular.module("App").controller(
                     forceRefresh
                 })
                 .then((data) => (this.mailingLists = this.$filter("orderBy")(data)))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     if (_.isEmpty(this.mailingLists)) {
                         this.loading.mailingLists = false;

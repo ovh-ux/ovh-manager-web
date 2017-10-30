@@ -7,20 +7,20 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.customDnsForm.$valid || ctrl.selectedFilter !== 'CUSTOM'">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
-                <p data-ng-bind="tr('email_tab_popover_dns_filter_edit_info')"></p>
-
                 <form name="ctrl.customDnsForm">
-                    <div class="form-group">
-                        <label class="control-label sr-only" for="dnsFilter"></label>
-                        <div class="controls text-center">
-                            <select class="form-control" name="dnsFilter" id="dnsFilter"
-                                    data-ng-model="ctrl.selectedFilter"
-                                    data-ng-options="dnsFilter as tr('email_tab_domain_dns_filter_' + dnsFilter) for dnsFilter in ctrl.dnsFilterEnum track by dnsFilter">
-                            </select>
-                        </div>
+                    <label class="oui-label" for="dnsFilter"
+                           data-i18n-static="email_tab_popover_dns_filter_edit_info"></label>
+                    <div class="oui-select">
+                        <select class="oui-select__input" name="dnsFilter" id="dnsFilter"
+                                data-ng-model="ctrl.selectedFilter"
+                                data-ng-options="dnsFilter as tr('email_tab_domain_dns_filter_' + dnsFilter) for dnsFilter in ctrl.dnsFilterEnum track by dnsFilter">
+                        </select>
+                        <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                     </div>
                 </form>
 

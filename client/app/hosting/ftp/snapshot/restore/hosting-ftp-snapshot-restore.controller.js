@@ -1,66 +1,65 @@
-angular.module("App").controller("HostingFtpRestoreSnapshotCtrl", ($scope, $stateParams, HostingFtp, Alerter, Hosting, $rootScope) => {
-    "use strict";
-    $scope.model = {};
-    $scope.loaders = {
-        loading: false
-    };
+angular.module("App").controller(
+    "HostingFtpRestoreSnapshotCtrl",
+    class HostingFtpRestoreSnapshotCtrl {
+        constructor ($scope, $rootScope, $stateParams, Alerter, Hosting, HostingFtp) {
+            this.$scope = $scope;
+            this.$rootScope = $rootScope;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.Hosting = Hosting;
+            this.HostingFtp = HostingFtp;
+        }
 
-    //------------------------
-    // Step 1
-    //------------------------
-    $scope.initStep1 = function () {
-        $scope.loaders.loading = true;
-        HostingFtp.getModels()
-            .then(
-                (data) => {
-                    $scope.instances = data.models["hosting.web.backup.TypeEnum"].enum;
-                    $scope.model.snapshotInstance = $scope.instances[0];
+        $onInit () {
+            this.model = {};
+            this.loading = true;
 
-                    Hosting.getSelected($stateParams.productId).then((hosting) => {
-                        // remove backup snapshots that are not yet available
-                        if (moment(hosting.creation).isAfter(moment().subtract(2, "weeks"))) {
-                            _.pull($scope.instances, "weekly.2");
-                        } else if (moment(hosting.creation).isAfter(moment().subtract(1, "weeks"))) {
-                            _.pull($scope.instances, "weekly.1");
-                        } else if (moment(hosting.creation).isAfter(moment().subtract(3, "days"))) {
-                            _.pull($scope.instances, "daily.3");
-                        } else if (moment(hosting.creation).isAfter(moment().subtract(2, "days"))) {
-                            _.pull($scope.instances, "daily.2");
-                        }
-                    });
-                },
-                (ret) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_FTP_configuration_restore_snapshot_error"), ret, $scope.alerts.dashboard);
-                }
-            )
-            .finally(() => {
-                $scope.loaders.loading = false;
-            });
-    };
+            this.$scope.restoreSnapshot = () => this.restoreSnapshot();
 
-    $scope.isStep1Valid = function () {
-        return $scope.instances && $scope.model.snapshotInstance && $scope.instances.indexOf($scope.model.snapshotInstance) !== -1;
-    };
+            this.HostingFtp.getModels()
+                .then((data) => {
+                    this.instances = data.models["hosting.web.backup.TypeEnum"].enum;
+                    this.model.snapshotInstance = this.instances[0];
 
-    //------------------------
-    // Restore snapshot
-    //------------------------
-    $scope.restoreSnapshot = function () {
-        $scope.loaders.loading = true;
+                    this.Hosting.getSelected(this.$stateParams.productId)
+                        .then((hosting) => { // remove backup snapshots that are not yet available
+                            if (moment(hosting.creation).isAfter(moment().subtract(2, "weeks"))) {
+                                _.pull(this.instances, "weekly.2");
+                            } else if (moment(hosting.creation).isAfter(moment().subtract(1, "weeks"))) {
+                                _.pull(this.instances, "weekly.1");
+                            } else if (moment(hosting.creation).isAfter(moment().subtract(3, "days"))) {
+                                _.pull(this.instances, "daily.3");
+                            } else if (moment(hosting.creation).isAfter(moment().subtract(2, "days"))) {
+                                _.pull(this.instances, "daily.2");
+                            }
+                        });
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_restore_snapshot_error"), err, this.$scope.alerts.main);
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+        }
 
-        HostingFtp.restoreSnapshot($stateParams.productId, { backup: $scope.model.snapshotInstance })
-            .then(
-                () => {
-                    Alerter.success($scope.tr("hosting_tab_FTP_configuration_restore_snapshot_success"), $scope.alerts.dashboard);
-                    $rootScope.$broadcast("hosting.tabs.tasks.refresh");
-                },
-                (ret) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_FTP_configuration_restore_snapshot_error"), ret.data, $scope.alerts.dashboard);
-                }
-            )
-            .finally(() => {
-                $scope.loaders.loading = false;
-                $scope.resetAction();
-            });
-    };
-});
+        isStep1Valid () {
+            return this.instances && this.model.snapshotInstance && _.indexOf(this.instances, this.model.snapshotInstance) !== -1;
+        }
+
+        restoreSnapshot () {
+            this.loading = true;
+            return this.HostingFtp.restoreSnapshot(this.$stateParams.productId, { backup: this.model.snapshotInstance })
+                .then(() => {
+                    this.Alerter.success(this.$scope.tr("hosting_tab_FTP_configuration_restore_snapshot_success"), this.$scope.alerts.main);
+                    this.$rootScope.$broadcast("hosting.tabs.tasks.refresh");
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_FTP_configuration_restore_snapshot_error"), _.get(err, "data", err), this.$scope.alerts.main);
+                })
+                .finally(() => {
+                    this.loading = false;
+                    this.$scope.resetAction();
+                });
+        }
+    }
+);

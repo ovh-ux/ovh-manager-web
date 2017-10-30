@@ -67,10 +67,10 @@ angular.module("App").controller(
                             task.function = "changeRootPassword";
                         }
                         this.$scope.pollAction(task);
-                        this.alerter.success(this.$scope.tr(`privateDatabase_change_${this.prefix}Password_success`), this.$scope.alerts.users);
+                        this.alerter.success(this.$scope.tr(`privateDatabase_change_${this.prefix}Password_success`), this.$scope.alerts.main);
                     })
-                    .catch((data) => {
-                        this.alerter.alertFromSWS(this.$scope.tr(`privateDatabase_change_${this.prefix}Password_fail`), data.data, this.$scope.alerts.users);
+                    .catch((err) => {
+                        this.alerter.alertFromSWS(this.$scope.tr(`privateDatabase_change_${this.prefix}Password_fail`), _.get(err, "data", err), this.$scope.alerts.main);
                     });
             };
 

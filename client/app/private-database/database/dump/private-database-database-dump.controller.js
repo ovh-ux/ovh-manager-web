@@ -18,10 +18,6 @@ angular
             this.statusToWatch = ["start", "done", "error"];
             this.dumpIdRestoring = "";
 
-            this.alerts = {
-                bdd: "privateDataBase.alerts.bdd"
-            };
-
             this.$scope.itemsPerPage = 10;
 
             this.loaders = {
@@ -53,7 +49,7 @@ angular
                     this.dumpsIds = dumpsIds;
                 })
                 .catch(() => {
-                    this.alerter.error(this.$scope.tr("privateDatabase_tabs_dumps_fail_retrieve_dumps"), this.alerts.bdd);
+                    this.alerter.error(this.$scope.tr("privateDatabase_tabs_dumps_fail_retrieve_dumps"), this.$scope.alerts.main);
                 })
                 .finally(() => {
                     if (_.isEmpty(this.dumpsIds)) {
@@ -95,14 +91,14 @@ angular
             if (this.database.databaseName === opts.databaseName) {
                 delete this.database.waitDump;
                 this.getDumps();
-                this.alerter.success(this.$scope.tr("privateDatabase_dump_bdd_success"), this.alerts.bdd);
+                this.alerter.success(this.$scope.tr("privateDatabase_dump_bdd_success"), this.$scope.alerts.main);
             }
         }
 
         onDataBaseDumperror (opts) {
             if (this.database.databaseName === opts.databaseName) {
                 delete this.database.waitDump;
-                this.alerter.error(this.$scope.tr("privateDatabase_dump_bdd_fail"), this.alerts.bdd);
+                this.alerter.error(this.$scope.tr("privateDatabase_dump_bdd_fail"), this.$scope.alerts.main);
             }
         }
 
@@ -123,7 +119,7 @@ angular
             this.$scope.dumpsDetails.forEach((dump) => {
                 delete dump.waitRestore;
             });
-            this.alerter.success(this.$scope.tr("privateDatabase_tabs_dumps_restore_success"), this.alerts.bdd);
+            this.alerter.success(this.$scope.tr("privateDatabase_tabs_dumps_restore_success"), this.$scope.alerts.main);
         }
 
         onDataBaseRestoreerror (opts) {
@@ -133,7 +129,7 @@ angular
             this.findItemIndex(opts.dumpId)
                 .then((idx) => {
                     delete this.$scope.dumpsDetails[idx].waitRestore;
-                    this.alerter.error(this.$scope.tr("privateDatabase_tabs_dumps_restore_fail"), this.alerts.bdd);
+                    this.alerter.error(this.$scope.tr("privateDatabase_tabs_dumps_restore_fail"), this.$scope.alerts.main);
                 });
         }
 

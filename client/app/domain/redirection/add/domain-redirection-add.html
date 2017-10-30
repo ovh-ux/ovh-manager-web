@@ -28,13 +28,20 @@
                            data-ng-if="ctrl.addRedirectStep1Form.subDomain.$dirty && ctrl.addRedirectStep1Form.subDomain.$invalid"></small>
                 </div>
 
-                <div class="checkbox ml-4">
-                    <label data-ng-style="{ 'opacity': (ctrl.newRedirection.disableWww && '0.5' || '1') }">
-                        <input type="checkbox" id="checkboxWww" name="checkboxWww"
-                               data-ng-disabled="ctrl.newRedirection.disableWww"
-                               data-ng-model="ctrl.newRedirection.addwww">
-                        <span data-i18n-static="domain_tab_REDIRECTION_add_step1_www"></span>
-                        <strong data-ng-bind="ctrl.getDomainNameOf(ctrl.newRedirection.subdomainWww)"></strong>
+                <div class="oui-checkbox">
+                    <input type="checkbox" class="oui-checkbox__input" id="checkboxWww" name="checkboxWww"
+                           data-ng-disabled="ctrl.newRedirection.disableWww"
+                           data-ng-model="ctrl.newRedirection.addwww">
+                    <label class="oui-checkbox__label-container" for="checkboxWww">
+                        <span class="oui-checkbox__label">
+                            <span data-i18n-static="domain_tab_REDIRECTION_add_step1_www"></span>
+                            <strong data-ng-bind="ctrl.getDomainNameOf(ctrl.newRedirection.subdomainWww)"></strong>
+                        </span>
+                        <span class="oui-checkbox__icon">
+                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                        </span>
                     </label>
                 </div>
             </form>
@@ -48,26 +55,30 @@
 
             <form class="ml-4" name="ctrl.addRedirectStep2Form">
                 <!-- to web address -->
-                <div class="radio">
-                    <label>
-                        <input type="radio" id="choiceTargetRedirectionWeb" name="choiceStep2" required
-                               data-ng-change="ctrl.setTargetRedirection()"
-                               data-ng-model="ctrl.newRedirection.step2"
-                               data-ng-value="ctrl.choice.web">
-                        <span data-i18n-static="domain_tab_REDIRECTION_add_step2_web"></span>
-                        <small class="d-block" data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step2_web_help"></small>
+                <div class="oui-radio">
+                    <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionWeb" name="choiceStep2" required
+                           data-ng-change="ctrl.setTargetRedirection()"
+                           data-ng-model="ctrl.newRedirection.step2"
+                           data-ng-value="ctrl.choice.web">
+                    <label class="oui-radio__label-container" for="choiceTargetRedirectionWeb">
+                        <span class="oui-radio__label"
+                              data-i18n-static="domain_tab_REDIRECTION_add_step2_web"></span>
+                        <span class="oui-radio__description"
+                              data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step2_web_help"></span>
                     </label>
                 </div>
 
                 <!-- to domain or ip -->
-                <div class="radio">
-                    <label>
-                        <input type="radio" id="choiceTargetRedirectionServer" name="choiceStep2" required
-                               data-ng-change="ctrl.setTargetRedirection()"
-                               data-ng-model="ctrl.newRedirection.step2"
-                               data-ng-value="ctrl.choice.server">
-                        <span data-i18n-static="domain_tab_REDIRECTION_add_step2_server"></span>
-                        <small class="d-block" data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step2_server_help"></small>
+                <div class="oui-radio">
+                    <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionServer" name="choiceStep2" required
+                           data-ng-change="ctrl.setTargetRedirection()"
+                           data-ng-model="ctrl.newRedirection.step2"
+                           data-ng-value="ctrl.choice.server">
+                    <label class="oui-radio__label-container" for="choiceTargetRedirectionServer">
+                        <span class="oui-radio__label"
+                              data-i18n-static="domain_tab_REDIRECTION_add_step2_server"></span>
+                        <span class="oui-radio__description"
+                              data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step2_server_help"></span>
                     </label>
                 </div>
             </form>
@@ -83,26 +94,30 @@
 
                 <form class="ml-4" name="ctrl.addRedirectStep3Form">
                     <!-- visible -->
-                    <div class="radio">
-                        <label>
-                            <input type="radio" id="choiceTargetRedirectionWebVisible" name="choiceStep3" required
-                                   data-ng-change="ctrl.setTypeVisibility()"
-                                   data-ng-model="ctrl.newRedirection.step3"
-                                   data-ng-value="ctrl.choice.visible">
-                            <span data-i18n-static="domain_tab_REDIRECTION_add_step3_web_visible"></span>
-                            <small class="d-block" data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web_visible_help', ctrl.getSmallDomainNameOf())"></small>
+                    <div class="oui-radio">
+                        <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionWebVisible" name="choiceStep3" required
+                               data-ng-change="ctrl.setTypeVisibility()"
+                               data-ng-model="ctrl.newRedirection.step3"
+                               data-ng-value="ctrl.choice.visible">
+                        <label class="oui-radio__label-container" for="choiceTargetRedirectionWebVisible">
+                            <span class="oui-radio__label"
+                                  data-i18n-static="domain_tab_REDIRECTION_add_step3_web_visible"></span>
+                            <span class="oui-radio__description"
+                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web_visible_help', ctrl.getSmallDomainNameOf())"></span>
                         </label>
                     </div>
 
                     <!-- invisible -->
-                    <div class="radio">
-                        <label>
-                            <input type="radio" id="choiceTargetRedirectionWebInvisible" name="choiceStep3" required
-                                   data-ng-change="ctrl.setTypeVisibility()"
-                                   data-ng-model="ctrl.newRedirection.step3"
-                                   data-ng-value="ctrl.choice.invisible">
-                            <span data-i18n-static="domain_tab_REDIRECTION_add_step3_web_invisible"></span>
-                            <small class="d-block" data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web_invisible_help', ctrl.getSmallDomainNameOf())"></small>
+                    <div class="oui-radio">
+                        <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionWebInvisible" name="choiceStep3" required
+                               data-ng-change="ctrl.setTypeVisibility()"
+                               data-ng-model="ctrl.newRedirection.step3"
+                               data-ng-value="ctrl.choice.invisible">
+                        <label class="oui-radio__label-container" for="choiceTargetRedirectionWebInvisible">
+                            <span class="oui-radio__label"
+                                  data-i18n-static="domain_tab_REDIRECTION_add_step3_web_invisible"></span>
+                            <span class="oui-radio__description"
+                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web_invisible_help', ctrl.getSmallDomainNameOf())"></span>
                         </label>
                     </div>
                 </form>
@@ -114,26 +129,30 @@
 
                 <form class="ml-4" name="ctrl.addRedirectStep3Form">
                     <!-- IP -->
-                    <div class="radio">
-                        <label>
-                            <input type="radio" id="choiceTargetRedirectionServerIp" name="choiceStep3" required
-                                   data-ng-change="ctrl.setTypeRedirection()"
-                                   data-ng-model="ctrl.newRedirection.step3"
-                                   data-ng-value="ctrl.choice.ip">
-                            <span data-i18n-static="domain_tab_REDIRECTION_add_step3_server_ip"></span>
-                            <small class="d-block" data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_ip_help', ctrl.getSmallDomainNameOf())"></small>
+                    <div class="oui-radio">
+                        <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionServerIp" name="choiceStep3" required
+                               data-ng-change="ctrl.setTypeRedirection()"
+                               data-ng-model="ctrl.newRedirection.step3"
+                               data-ng-value="ctrl.choice.ip">
+                        <label class="oui-radio__label-container" for="choiceTargetRedirectionServerIp">
+                            <span class="oui-radio__label"
+                                  data-i18n-static="domain_tab_REDIRECTION_add_step3_server_ip"></span>
+                            <span class="oui-radio__description"
+                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_ip_help', ctrl.getSmallDomainNameOf())"></span>
                         </label>
                     </div>
 
                     <!-- CNAME -->
-                    <div class="radio">
-                        <label>
-                            <input type="radio" id="choiceTargetRedirectionServerCname" name="choiceStep3" required
-                                   data-ng-change="ctrl.setTypeRedirection()"
-                                   data-ng-model="ctrl.newRedirection.step3"
-                                   data-ng-value="ctrl.choice.cname">
-                            <span data-i18n-static="domain_tab_REDIRECTION_add_step3_server_cname"></span>
-                            <small class="d-block" data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_cname_help', ctrl.getSmallDomainNameOf())"></small>
+                    <div class="oui-radio">
+                        <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionServerCname" name="choiceStep3" required
+                               data-ng-change="ctrl.setTypeRedirection()"
+                               data-ng-model="ctrl.newRedirection.step3"
+                               data-ng-value="ctrl.choice.cname">
+                        <label class="oui-radio__label-container" for="choiceTargetRedirectionServerCname">
+                            <span class="oui-radio__label"
+                                  data-i18n-static="domain_tab_REDIRECTION_add_step3_server_cname"></span>
+                            <span class="oui-radio__description"
+                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_cname_help', ctrl.getSmallDomainNameOf())"></span>
                         </label>
                     </div>
                 </form>
@@ -148,6 +167,11 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.step4Validator()">
 
+            <p>
+                <small class="text-danger">*</small>
+                <small data-i18n-static="required_fields"></small>
+            </p>
+
             <form class="form-horizontal" name="ctrl.addRedirectStep4Form">
 
                 <!-- to web address -->
@@ -156,36 +180,42 @@
 
                     <div class="ml-4" data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.visible">
                         <!-- to web address with visible (301) -->
-                        <div class="radio">
-                            <label>
-                                <input type="radio" id="choiceTargetRedirectionWebVisible301" name="choiceStep4" required
-                                       data-ng-model="ctrl.newRedirection.step4"
-                                       data-ng-value="ctrl.choice.r301">
-                                <span data-i18n-static="domain_tab_REDIRECTION_add_step4_web_visible_301"></span>
-                                <small class="d-block" data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_301_help', [ctrl.getSmallDomainNameOf(), ''])"></small>
+                        <div class="oui-radio">
+                            <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionWebVisible301" name="choiceStep4" required
+                                   data-ng-model="ctrl.newRedirection.step4"
+                                   data-ng-value="ctrl.choice.r301">
+                            <label class="oui-radio__label-container" for="choiceTargetRedirectionWebVisible301">
+                                <span class="oui-radio__label"
+                                      data-i18n-static="domain_tab_REDIRECTION_add_step4_web_visible_301"></span>
+                                <span class="oui-radio__description"
+                                      data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_301_help', [ctrl.getSmallDomainNameOf(), ''])"></span>
                             </label>
                         </div>
 
                         <!-- to web address with visible (302) -->
-                        <div class="radio">
-                            <label>
-                                <input type="radio" id="choiceTargetRedirectionWebVisible302" name="choiceStep4" required
-                                       data-ng-model="ctrl.newRedirection.step4"
-                                       data-ng-value="ctrl.choice.r302">
-                                <span data-i18n-static="domain_tab_REDIRECTION_add_step4_web_visible_302"></span>
-                                <small class="d-block" data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_302_help', ctrl.getSmallDomainNameOf())"></small>
+                        <div class="oui-radio">
+                            <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionWebVisible302" name="choiceStep4" required
+                                   data-ng-model="ctrl.newRedirection.step4"
+                                   data-ng-value="ctrl.choice.r302">
+                            <label class="oui-radio__label-container" for="choiceTargetRedirectionWebVisible302">
+                                <span class="oui-radio__label"
+                                      data-i18n-static="domain_tab_REDIRECTION_add_step4_web_visible_302"></span>
+                                <span class="oui-radio__description"
+                                      data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_302_help', ctrl.getSmallDomainNameOf())"></span>
                             </label>
                         </div>
                     </div>
 
                     <!-- to web address with invisible (iframe) -->
-                    <div class="radio" data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.invisible">
-                        <label>
-                            <input type="radio" id="choiceTargetRedirectionWebVisibleIframe" name="choiceStep4" required
-                                   data-ng-model="ctrl.newRedirection.step4"
-                                   data-ng-value="ctrl.choice.iframe">
-                            <span data-i18n-static="domain_tab_REDIRECTION_add_step4_web_invisible_iframe"></span>
-                            <small class="d-block" data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help', ctrl.getSmallDomainNameOf())"></small>
+                    <div class="oui-radio" data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.invisible">
+                        <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionWebVisibleIframe" name="choiceStep4" required
+                               data-ng-model="ctrl.newRedirection.step4"
+                               data-ng-value="ctrl.choice.iframe">
+                        <label class="oui-radio__label-container" for="choiceTargetRedirectionWebVisibleIframe">
+                            <span class="oui-radio__label"
+                                  data-i18n-static="domain_tab_REDIRECTION_add_step4_web_invisible_iframe"></span>
+                            <span class="oui-radio__description"
+                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help', ctrl.getSmallDomainNameOf())"></span>
                         </label>
                     </div>
 
@@ -207,7 +237,7 @@
                                 <small class="help-block"
                                        data-i18n-static="domain_tab_REDIRECTION_add_step4_web_target_error"
                                        data-ng-if="ctrl.errors.webTarget"></small>
-                                <small class="text-danger error-label"
+                                <small class="text-danger"
                                        data-i18n-static="domain_tab_REDIRECTION_add_step4_web_too_much_caractere"
                                        data-ng-if="ctrl.errors.webTargetLength"></small>
                             </div>
@@ -301,27 +331,30 @@
                                        data-ng-bind="ctrl.errorLabel"
                                        data-ng-if="ctrl.errors.domainCname && ctrl.errorLabel"></small>
 
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" id="includeCNAME"
-                                               data-ng-model="ctrl.shouldIncludeDomain"
-                                               data-ng-change="ctrl.redirectionTargetChange()">
-                                        <span data-i18n-static="domain_tab_REDIRECTION_edit_server_cname_include_domain"></span>
+                                <div class="oui-checkbox mt-3">
+                                    <input type="checkbox" class="oui-checkbox__input" id="includeCNAME"
+                                           data-ng-model="ctrl.shouldIncludeDomain"
+                                           data-ng-change="ctrl.redirectionTargetChange()">
+                                    <label class="oui-checkbox__label-container" for="includeCNAME">
+                                        <span class="oui-checkbox__label"
+                                              data-i18n-static="domain_tab_REDIRECTION_edit_server_cname_include_domain"></span>
+                                        <span class="oui-checkbox__icon">
+                                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                        </span>
                                     </label>
                                 </div>
                             </div>
                         </div>
 
                         <p data-ng-bind-html="tr('domain_tab_REDIRECTION_edit_server_cname_include_domain_example', [ctrl.getCompleteTarget()])"></p>
-                        <p data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step4_server_cname_info"></p>
+                        <div class="alert alert-info" role="alert"
+                             data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step4_server_cname_info">
+                        </div>
                     </div>
                 </div>
             </form>
-
-            <p class="text-right">
-                <span class="required-pattern">*</span>
-                <small data-i18n-static="required"></small>
-            </p>
         </div>
 
 
@@ -331,7 +364,9 @@
              data-wizard-step-on-previous="initCheckVariable"
              data-wizard-step-valid="(!ctrl.loading.check && !ctrl.loading.add && !ctrl.errors.containAllError && !ctrl.errors.containOneError) || ((ctrl.errors.conflict || ctrl.errors.containAllError || ctrl.errors.containOneError) && ctrl.overwrite)">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading.check"></div>
+            <div class="text-center" data-ng-if="ctrl.loading.check">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <p class="text-center"
                data-i18n-static="domain_tab_REDIRECTION_add_step5_check_validity"
@@ -476,19 +511,24 @@
                 </div>
             </div>
 
-            <div class="alert alert-warning checkbox mt-5" role="alert"
+            <div class="oui-checkbox oui-checkbox_thumbnail oui-checkbox_warning" role="alert"
                  data-ng-show="(ctrl.errors.conflict || ctrl.errors.containAllError || ctrl.errors.containOneError) && !ctrl.loading.add && !ctrl.loading.check">
-                <label>
-                    <input type="checkbox"
-                           data-ng-model="ctrl.overwrite">
-                    <span data-i18n-static="domain_tab_REDIRECTION_add_step5_overwrite"></span>
+                <input type="checkbox" class="oui-checkbox__input" id="overwrite"
+                       data-ng-model="ctrl.overwrite">
+                <label class="oui-checkbox__label-container" for="overwrite">
+                    <span class="oui-checkbox__label"
+                          data-i18n-static="domain_tab_REDIRECTION_add_step5_overwrite"></span>
+                    <span class="oui-checkbox__icon">
+                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                    </span>
                 </label>
             </div>
 
-            <div data-ng-if="ctrl.loading.add">
-                <div class="loader text-center"></div>
-                <p class="text-center"
-                   data-i18n-static="domain_tab_REDIRECTION_add_step5_add_record"></p>
+            <div class="text-center" data-ng-if="ctrl.loading.add">
+                <oui-loader inline="true"></oui-loader>
+                <div data-i18n-static="domain_tab_REDIRECTION_add_step5_add_record"></div>
             </div>
         </div>
     </div>

@@ -1,31 +1,49 @@
-angular.module("App").controller("HostingUserLogsUpdatePasswordCtrl", ($scope, $stateParams, Hosting, Alerter) => {
-    "use strict";
+angular.module("App").controller(
+    "HostingUserLogsUpdatePasswordCtrl",
+    class HostingUserLogsUpdatePasswordCtrl {
+        constructor ($scope, $stateParams, Alerter, Hosting) {
+            this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.Hosting = Hosting;
+        }
 
-    $scope.login = $scope.currentActionData;
-    $scope.password = {
-        value: null,
-        confirmation: null
-    };
+        $onInit () {
+            this.condition = this.Hosting.constructor.getPasswordConditions();
+            this.login = this.$scope.currentActionData;
+            this.password = {
+                value: null,
+                confirmation: null
+            };
 
-    $scope.shouldDisplayDifferentPasswordMessage = () => $scope.password.value && $scope.password.confirmation && $scope.password.value !== $scope.password.confirmation;
+            this.$scope.updatePassword = () => this.updatePassword();
+        }
 
-    $scope.condition = Hosting.constructor.getPasswordConditions();
+        isPasswordInvalid () {
+            return !this.Hosting.constructor.isPasswordValid(_.get(this.password, "value", ""));
+        }
 
-    $scope.isPasswordValid = () => $scope.password.value && $scope.password.confirmation && $scope.password.value === $scope.password.confirmation && Hosting.constructor.isPasswordValid($scope.password.value);
+        isPasswordConfirmationInvalid () {
+            return this.password.value !== this.password.confirmation;
+        }
 
-    $scope.isPasswordInvalid = () => !Hosting.constructor.isPasswordValid(_.get($scope.password, "value", ""));
+        isPasswordValid () {
+            return this.password.value && this.password.confirmation && this.password.value === this.password.confirmation && this.Hosting.constructor.isPasswordValid(this.password.value);
+        }
 
-    $scope.isPasswordConfirmationInvalid = () => $scope.password.value !== $scope.password.confirmation;
+        shouldDisplayDifferentPasswordMessage () {
+            return this.password.value && this.password.confirmation && this.password.value !== this.password.confirmation;
+        }
 
-    $scope.updatePassword = () => {
-        $scope.resetAction();
-        Hosting.userLogsChangePassword($stateParams.productId, $scope.login, $scope.password.value).then(
-            () => {
-                Alerter.success($scope.tr("hosting_tab_USER_LOGS_configuration_change_password_success"), $scope.alerts.dashboard);
-            },
-            (err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_USER_LOGS_configuration_change_password_fail", [$scope.login]), err.data, $scope.alerts.dashboard);
-            }
-        );
-    };
-});
+        updatePassword () {
+            this.$scope.resetAction();
+            return this.Hosting.userLogsChangePassword(this.$stateParams.productId, this.login, this.password.value)
+                .then(() => {
+                    this.Alerter.success(this.$scope.tr("hosting_tab_USER_LOGS_configuration_change_password_success"), this.$scope.alerts.main);
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_USER_LOGS_configuration_change_password_fail", [this.login]), _.get(err, "data", err), this.$scope.alerts.main);
+                });
+        }
+    }
+);
