@@ -6194,9 +6194,15 @@ ovh-protractor-jasmine2-logs-reporter@0.0.1:
   dependencies:
     q "^1.4.1"
 
-"ovh-ui-kit-bs@git+https://github.com/ovh-ux/ovh-ui-kit-bs.git#v0.4.4":
-  version "0.4.4"
-  resolved "git+https://github.com/ovh-ux/ovh-ui-kit-bs.git#b35a167626ebc1fbfdb03a821600a134c4c417ee"
+ovh-ui-angular@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/ovh-ui-angular/-/ovh-ui-angular-1.1.1.tgz#652ae5fa9d7f109c83c0eddf292d1e4305159b40"
+  dependencies:
+    ovh-ui-kit "https://github.com/ovh-ux/ovh-ui-kit.git"
+
+"ovh-ui-kit-bs@git+https://github.com/ovh-ux/ovh-ui-kit-bs.git#v0.4.5":
+  version "0.4.5"
+  resolved "git+https://github.com/ovh-ux/ovh-ui-kit-bs.git#6d76208edc1b3c3c0088a67b1e88e1e7893bd742"
   dependencies:
     less-plugin-remcalc "^0.0.1"
 
@@ -6204,6 +6210,12 @@ ovh-protractor-jasmine2-logs-reporter@0.0.1:
   version "1.0.0-alpha.19"
   uid "2f8be2a38c0bf15edff15e4d8f9961e88545a6a6"
   resolved "git+https://github.com/ovh-ux/ovh-ui-kit#2f8be2a38c0bf15edff15e4d8f9961e88545a6a6"
+  dependencies:
+    less-plugin-remcalc "^0.0.1"
+
+"ovh-ui-kit@git+https://github.com/ovh-ux/ovh-ui-kit.git":
+  version "1.0.0-alpha.20"
+  resolved "git+https://github.com/ovh-ux/ovh-ui-kit.git#4dec1a2a5a1fb63f17e8e42c3299ad5b2e38a1f4"
   dependencies:
     less-plugin-remcalc "^0.0.1"
 

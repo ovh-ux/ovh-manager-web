@@ -15,12 +15,12 @@ module.exports = function (grunt) {
     const filesJsModules = _.map(
         assets[target].modules,
         (module) => {
-            const assetsModule = require(`./node_modules/@bower_components/${
+            const assetsModule = require(`./node_modules/${
                 module
                 }/Assets.js`);
             return {
                 expand: true,
-                cwd: `<%= bowerdir %>/${module}/src`,
+                cwd: `./node_modules/${module}/src`,
                 src: assetsModule.src.js.map((jsPath) => jsPath.replace("src/", "")),
                 dest: `${distdir}`
             };
@@ -34,13 +34,13 @@ module.exports = function (grunt) {
 
     function copyFromEachModules (properties, dest) {
         return _.map(assets[target].modules, (module) => {
-            const assetsModule = require(`./node_modules/@bower_components/${
+            const assetsModule = require(`./node_modules/${
                 module
                 }/Assets.js`);
 
             return {
                 expand: true,
-                cwd: `<%= bowerdir %>/${module}/src`,
+                cwd: `./node_modules/${module}/src`,
                 src: _(properties)
                     .map((property) => _.get(assetsModule, property))
                     .flatten()
@@ -113,7 +113,7 @@ module.exports = function (grunt) {
                 const files = [];
                 _.forEach(targetsAvailable, (tgt) => {
                     _.forEach(assets[tgt].modules, (module) => {
-                        const assetsModule = require(`./node_modules/@bower_components/${
+                        const assetsModule = require(`./node_modules/${
                             module
                             }/Assets.js`);
                         files.push(assetsModule.src.js);
@@ -581,12 +581,12 @@ module.exports = function (grunt) {
                 files: (function () {
                     const files = [];
                     _.forEach(assets[target].modules, (module) => {
-                        const assetsModule = require(`./node_modules/@bower_components/${
+                        const assetsModule = require(`./node_modules/${
                             module
                             }/Assets.js`);
                         _.forEach(assetsModule.resources.i18n, (val) => {
                             files.push(
-                                `./node_modules/@bower_components/${module}/${val}`,
+                                `./node_modules/${module}/${val}`,
                                 `!${val}`
                             );
                         });
@@ -611,10 +611,10 @@ module.exports = function (grunt) {
                 files: (function () {
                     const files = [];
                     _.forEach(assets[target].modules, (module) => {
-                        const assetsModule = require(`./node_modules/@bower_components/${module}/Assets.js`);
+                        const assetsModule = require(`./node_modules/${module}/Assets.js`);
                         _.forEach(assetsModule.src.html, (val) => {
                             files.push(
-                                `./node_modules/@bower_components/${module}/${val}`,
+                                `./node_modules/${module}/${val}`,
                                 `!${val}`
                             );
                         });
@@ -632,12 +632,12 @@ module.exports = function (grunt) {
                 files: (function () {
                     const files = [assets.src.css];
                     _.forEach(assets[target].modules, (module) => {
-                        const assetsModule = require(`./node_modules/@bower_components/${
+                        const assetsModule = require(`./node_modules/${
                             module
                             }/Assets.js`);
                         _.forEach(assetsModule.src.css, (val) => {
                             files.push(
-                                `./node_modules/@bower_components/${
+                                `./node_modules/${
                                     module
                                     }/${
                                     val}`,
