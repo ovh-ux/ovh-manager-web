@@ -14,7 +14,7 @@ angular.module("App").controller("HostingDatabaseCreateCtrl", ($scope, $location
             $scope.model.selected.password.value &&
             $scope.model.selected.password.confirmation &&
             $scope.model.selected.password.value === $scope.model.selected.password.confirmation &&
-            Hosting.isPasswordValid($scope.model.selected.password.value, $scope.customPasswordConditions)
+            Hosting.constructor.isPasswordValid($scope.model.selected.password.value, $scope.customPasswordConditions)
         );
     };
 
@@ -56,25 +56,22 @@ angular.module("App").controller("HostingDatabaseCreateCtrl", ($scope, $location
     };
 
     $scope.load = function () {
-        $q
-            .all({
-                capabilities: HostingDatabase.getCreationCapabilities($stateParams.productId),
-                availableDatabasesType: HostingDatabase.getDatabaseAvailableType($stateParams.productId)
-            })
-            .then(
-                (resp) => {
-                    $scope.model.capabilities = resp.capabilities;
-                    $scope.model.maxUserLength = MAX_USER_LENGTH - resp.capabilities.primaryLogin.length;
-                    if (resp.capabilities.availableDatabases.length === 1) {
-                        $scope.model.selected.capabilitie = resp.capabilities.availableDatabases[0];
-                    }
-                    $scope.availableDatabasesType = resp.availableDatabasesType;
-                    $scope.model.selected.type = "MYSQL";
-                },
-                (data) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), data.data, $scope.alerts.dashboard);
+        $q.all({
+            capabilities: HostingDatabase.getCreationCapabilities($stateParams.productId),
+            availableDatabasesType: HostingDatabase.getDatabaseAvailableType($stateParams.productId)
+        })
+            .then((resp) => {
+                $scope.model.capabilities = resp.capabilities;
+                $scope.model.maxUserLength = MAX_USER_LENGTH - resp.capabilities.primaryLogin.length;
+                if (resp.capabilities.availableDatabases.length === 1) {
+                    $scope.model.selected.capabilitie = resp.capabilities.availableDatabases[0];
                 }
-            );
+                $scope.availableDatabasesType = resp.availableDatabasesType;
+                $scope.model.selected.type = "MYSQL";
+            })
+            .catch((err) => {
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+            });
     };
 
     $scope.isStep1Valid = function () {
@@ -89,14 +86,14 @@ angular.module("App").controller("HostingDatabaseCreateCtrl", ($scope, $location
         return $scope.model.selected.password.value && $scope.model.selected.password.confirmation && $scope.model.selected.password.value !== $scope.model.selected.password.confirmation;
     };
 
-    $scope.condition = Hosting.getPasswordConditions($scope.customPasswordConditions);
+    $scope.condition = Hosting.constructor.getPasswordConditions($scope.customPasswordConditions);
 
     $scope.isPasswordInvalid = function () {
-        return !Hosting.isPasswordValid(_.get($scope.model, "selected.password.value"), $scope.customPasswordConditions);
+        return !Hosting.constructor.isPasswordValid(_.get($scope.model, "selected.password.value"), $scope.customPasswordConditions);
     };
 
     $scope.isPasswordConfirmationInvalid = function () {
-        return Hosting.isPasswordValid(_.get($scope.model, "selected.password.confirmation"), $scope.customPasswordConditions) && !$scope.shouldDisplayDifferentPasswordMessage() ? "" : "has-error";
+        return Hosting.constructor.isPasswordValid(_.get($scope.model, "selected.password.confirmation"), $scope.customPasswordConditions) && !$scope.shouldDisplayDifferentPasswordMessage() ? "" : "has-error";
     };
 
     $scope.isUserValid = function () {
@@ -123,14 +120,13 @@ angular.module("App").controller("HostingDatabaseCreateCtrl", ($scope, $location
             convertEnumToString($scope.model.selected.type),
             $scope.model.capabilities.primaryLogin + ($scope.model.selected.user === null ? "" : $scope.model.selected.user),
             $scope.model.selected.version
-        ).then(
-            () => {
-                Alerter.set("alert-success", $scope.tr("hosting_tab_DATABASES_configuration_create_success"), null, $scope.alerts.dashboard);
-            },
-            (data) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_fail"), data.data, $scope.alerts.dashboard);
-            }
-        );
+        )
+            .then(() => {
+                Alerter.success($scope.tr("hosting_tab_DATABASES_configuration_create_success"), $scope.alerts.main);
+            })
+            .catch((err) => {
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_fail"), _.get(err, "data", err), $scope.alerts.main);
+            });
     };
 
     $scope.isPerf = function () {

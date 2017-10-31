@@ -1,6 +1,8 @@
-<div data-ovh-alert="{{alerts.dashboard}}"></div>
+<div data-ovh-alert="{{alerts.page}}"></div>
 
-<div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loadingHostingInformations && !loadingHostingError"></div>
+<div class="text-center" data-ng-if="loadingHostingInformations && !loadingHostingError">
+    <oui-loader size="l" inline="true"></oui-loader>
+</div>
 
 <div class="page-header" data-ng-if="!loadingHostingInformations && !loadingHostingError">
     <div class="row">
@@ -60,9 +62,10 @@
         </div>
         <div class="col-sm-3 d-flex">
             <div class="btn-group ml-auto mt-4">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="oui-button oui-button_dropdown mb-0" aria-haspopup="true" aria-expanded="false"
+                    data-toggle="dropdown">
                     <span data-i18n-static="common_actions"></span>
-                    <span class="caret ml-2" aria-hidden="true"></span>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
                     <li data-ng-if="urlDomainOrder">
@@ -78,38 +81,40 @@
     </div>
 </div>
 
-<div data-ng-controller="HostingTabsCtrl"
+<div class="p-5" data-ng-if="!loadingHostingInformations && hosting.isExpired">
+    <div class="alert alert-warning" role="alert"
+         data-ng-bind="tr('common_service_expired', [hosting.serviceDisplayName])">
+    </div>
+</div>
+
+<div data-ng-controller="HostingTabsCtrl as ctrlHostingTabs"
      data-ng-if="!loadingHostingInformations && !loadingHostingError && !hosting.isExpired">
-    <ovh-tabs tabs="tabs"
-              selected-tab="selectedTab"
-              change-tab="setSelectedTab"
+    <ovh-tabs tabs="ctrlHostingTabs.tabs"
+              selected-tab="ctrlHostingTabs.selectedTab"
+              change-tab="ctrlHostingTabs.setSelectedTab"
               product="hosting"
-              tr="tr"
-              menu="tabMenu"></ovh-tabs>
+              menu="ctrlHostingTabs.tabMenu"
+              tr="tr"></ovh-tabs>
     <div class="tab-content">
+        <div data-ovh-alert="{{alerts.tabs}}"></div>
 
-        <div class="alert alert-info" role="alert"
-             data-ng-if="hosting.offer === 'KIMSUFI_2015'">
-            <button class="close" type="button" data-dismiss="alert">&times;</button>
-            <span data-i18n-static="hosting_dashboard_service_offer_KIMSUFI_2015_support"></span>
-        </div>
-
-        <div class="alert alert-warning" role="alert"
+        <div class="alert alert-dismissible alert-info" role="alert"
              data-ng-if="hostingProxy.recommendedOffer">
-            <button class="close" type="button" data-dismiss="alert">&times;</button>
+            <button class="close" type="button" data-dismiss="alert"></button>
             <span data-ng-bind-html="tr('hosting_dashboard_service_offer_recommanded', [hostingProxy.recommendedOffer])"></span>
             <span data-ng-bind-html="tr('hosting_dashboard_service_offer_recommanded_actions', [urls.hosting, '_blank'])"
                   data-ng-if="urls.hosting"></span>
         </div>
 
         <div class="tab-pane active hosting"
-             data-ng-include="selectedTab && 'hosting/' + toKebabCase(selectedTab) + '/' + selectedTab + '.html'"></div>
+             data-ng-include="ctrlHostingTabs.selectedTab && 'hosting/' + ctrlHostingTabs.constructor.toKebabCase(ctrlHostingTabs.selectedTab) + '/' + ctrlHostingTabs.selectedTab + '.html'"></div>
     </div>
 </div>
 
 <div id="currentAction" class="modal fade currentAction" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <div id="modal-container" class="modal-content" data-ng-include="stepPath"></div>
+        <div id="modal-container" class="modal-content"
+             data-ng-include="stepPath"></div>
         <div id="modal-help" class="help4wizards"></div>
     </div>
 </div>

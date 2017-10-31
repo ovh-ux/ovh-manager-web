@@ -33,7 +33,7 @@ angular.module("App").controller(
             return this.Emails
                 .getDelegatedFilters(this.currentAccount.email)
                 .then((data) => (this.filters = data.sort()))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_filters_error"), err, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_filters_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     if (_.isEmpty(this.filters)) {
                         this.loading.filters = false;

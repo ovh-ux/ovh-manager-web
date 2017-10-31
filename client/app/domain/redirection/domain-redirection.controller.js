@@ -71,7 +71,7 @@ angular.module("controllers").controller(
                     }
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_load_fail"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_load_fail"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loading.init = false;
@@ -144,7 +144,7 @@ angular.module("controllers").controller(
                     return datasToReturn;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_load_fail"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_load_fail"), err, this.$scope.alerts.main);
                     return [];
                 })
                 .finally(() => {

@@ -86,7 +86,8 @@ angular.module("App").controller(
                     }
                     return this.PrivateDatabase.addBdd(this.productId, this.model.database.value);
                 })
-                .then(() => this.Alerter.success(this.$scope.tr("privateDatabase_add_bdd_success"), "privateDataBase.alerts.bdd"), () => this.Alerter.error(this.$scope.tr("privateDatabase_add_bdd_fail"), "privateDataBase.alerts.bdd"));
+                .then(() => this.Alerter.success(this.$scope.tr("privateDatabase_add_bdd_success"), this.$scope.alerts.main),
+                      () => this.Alerter.error(this.$scope.tr("privateDatabase_add_bdd_fail"), this.$scope.alerts.main));
         }
 
         isBddValid () {
@@ -109,11 +110,11 @@ angular.module("App").controller(
         }
 
         checkPassword () {
-            return this.model.user.password.value && this.Hosting.isPasswordValid(this.model.user.password.value);
+            return this.model.user.password.value && this.Hosting.constructor.isPasswordValid(this.model.user.password.value);
         }
 
         checkPasswordConfirm () {
-            return this.model.user.password.confirm && this.Hosting.isPasswordValid(this.model.user.password.confirm) && this.model.user.password.confirm === this.model.user.password.value;
+            return this.model.user.password.confirm && this.Hosting.constructor.isPasswordValid(this.model.user.password.confirm) && this.model.user.password.confirm === this.model.user.password.value;
         }
 
         getGrantLabel (grant) {

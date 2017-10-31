@@ -1,12 +1,11 @@
-<div data-ng-controller="HostingRestoreDatabaseConfirmCtrl">
+<div data-ng-controller="HostingRestoreDatabaseConfirmCtrl as ctrl">
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="restoreDatabaseBackup"
          data-wizard-title="i18n.database_tabs_dumps_restore_dump">
 
-        <div data-wizard-step
-             data-wizard-step-valid="!loading">
-            <p data-ng-bind-html="tr(backupType === 'daily.1' ? 'database_restore_bdd_confirm_daily' : 'database_restore_bdd_confirm_weekly', [bdd.name])"></p>
+        <div data-wizard-step>
+            <p data-ng-bind-html="tr(backupType === 'daily.1' ? 'database_restore_bdd_confirm_daily' : 'database_restore_bdd_confirm_weekly', [ctrl.bdd.name])"></p>
         </div>
     </div>
 </div>

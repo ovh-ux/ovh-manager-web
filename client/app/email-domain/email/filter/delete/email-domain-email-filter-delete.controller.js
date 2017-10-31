@@ -30,8 +30,8 @@ angular.module("App").controller(
             }
 
             return filterPromise
-                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_delete_filter_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_delete_filter_error"), _.get(err, "data", err), this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_delete_filter_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_delete_filter_error"), _.get(err, "data", err), this.$scope.alerts.main))
                 .finally(() => this.$scope.resetAction());
         }
     }

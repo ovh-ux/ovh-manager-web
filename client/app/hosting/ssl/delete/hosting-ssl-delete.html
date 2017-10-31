@@ -5,10 +5,10 @@
          data-wizard-title="i18n.hosting_dashboard_service_delete_ssl_title">
 
         <div data-wizard-step>
-            <p>
-                <span data-i18n-static="hosting_dashboard_service_delete_ssl_warning" data-ng-if="ssl.provider === 'LETSENCRYPT'"></span>
-                <span data-i18n-static="hosting_dashboard_service_delete_ssl_warning_payable" data-ng-if="ssl.provider !== 'LETSENCRYPT'"></span>
-            </p>
+            <p data-i18n-static="hosting_dashboard_service_delete_ssl_warning"
+               data-ng-if="ssl.provider === 'LETSENCRYPT'"></p>
+            <p data-i18n-static="hosting_dashboard_service_delete_ssl_warning_payable"
+               data-ng-if="ssl.provider !== 'LETSENCRYPT'"></p>
         </div>
     </div>
 </div>

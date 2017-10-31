@@ -23,8 +23,8 @@ angular.module("App").controller(
         deleteRedirection () {
             return this.Emails
                 .deleteRedirection(this.$stateParams.productId, this.redirection.id)
-                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_delete_redirection_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_delete_redirection_error"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_delete_redirection_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_delete_redirection_error"), err, this.$scope.alerts.main))
                 .finally(() => this.$scope.resetAction());
         }
     }

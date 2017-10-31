@@ -175,7 +175,7 @@ angular
                     }
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     if (_.isEmpty(this.emails)) {

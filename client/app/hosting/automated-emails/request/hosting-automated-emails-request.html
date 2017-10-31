@@ -5,15 +5,19 @@
          data-wizard-title="title">
 
         <div data-wizard-step>
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="ctrl.isLoading"></div>
+            <div class="text-center" data-ng-if="ctrl.isLoading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.isLoading" data-ng-switch="ctrl.action">
-                <p data-ng-switch-when="BLOCK"   data-i18n-static="hosting_tab_AUTOMATED_EMAILS_block_question"></p>
-                <p data-ng-switch-when="UNBLOCK" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_unblock_question"></p>
-                <p data-ng-switch-when="PURGE"   data-i18n-static="hosting_tab_AUTOMATED_EMAILS_purge_question"
-                   class="alert alert-warning"
-                   role="alert">
-                </p>
+                <p data-ng-switch-when="BLOCK"
+                   data-i18n-static="hosting_tab_AUTOMATED_EMAILS_block_question"></p>
+                <p data-ng-switch-when="UNBLOCK"
+                   data-i18n-static="hosting_tab_AUTOMATED_EMAILS_unblock_question"></p>
+                <div class="alert alert-warning" role="alert"
+                     data-ng-switch-when="PURGE"
+                     data-i18n-static="hosting_tab_AUTOMATED_EMAILS_purge_question">
+                </div>
             </div>
         </div>
     </div>

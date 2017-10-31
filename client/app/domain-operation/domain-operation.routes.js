@@ -6,7 +6,6 @@ angular.module("App").config(($stateProvider) => {
         templateUrl: "domain-operation/domain-operation.html",
         controller: "DomainOperationCtrl",
         controllerAs: "ctrlOperations",
-        piwikActionName: "Domains operations",
         resolve: {
             navigationInformations: [
                 "Navigator",
@@ -28,7 +27,6 @@ angular.module("App").config(($stateProvider) => {
         templateUrl: "domain-operation/progress/domain-operation-progress.html",
         controller: "DomainOperationProgressCtrl",
         controllerAs: "ctrlDomainOperationProgress",
-        piwikActionName: "Domain transfert Progression",
         resolve: {
             navigationInformations: [
                 "Navigator",

@@ -12,14 +12,20 @@
             <p data-i18n-static="domains_dashboard_tooltip_export_csv_expl2"></p>
 
             <form name="csvExportAllDomains">
-                <div class="checkbox" data-ng-repeat="opt in ctrlDomainsToCsv.csvExportOptions track by $index">
-                    <label>
-                        <input type="checkbox" aria-describedby="help-{{$index}}"
-                               data-ng-disabled="opt.mustBeDisabled"
-                               data-ng-model="opt.checked">
-                        <span data-i18n-static="domains_action_export_csv_form_{{opt.label}}_label"></span>
-                        <span class="help-block" id="help-{{$index}}"
+                <div class="oui-checkbox" data-ng-repeat="opt in ctrlDomainsToCsv.csvExportOptions track by $index">
+                    <input type="checkbox" class="oui-checkbox__input" id="opt-{{$index}}" aria-describedby="help-{{$index}}"
+                           data-ng-disabled="opt.mustBeDisabled"
+                           data-ng-model="opt.checked">
+                    <label class="oui-checkbox__label-container" for="opt-{{$index}}">
+                        <span class="oui-checkbox__label"
+                              data-i18n-static="domains_action_export_csv_form_{{opt.label}}_label"></span>
+                        <span class="oui-checkbox__description" id="help-{{$index}}"
                               data-i18n-static="domains_action_export_csv_form_{{opt.label}}_help"></span>
+                        <span class="oui-checkbox__icon">
+                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                        </span>
                     </label>
                 </div>
             </form>
@@ -33,10 +39,12 @@
 
             <div data-ng-if="ctrlDomainsToCsv.exportStatus.doing">
                 <p data-i18n-static="domains_dashboard_tooltip_export_csv_creation_doing"></p>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ctrlDomainsToCsv.exportStatus.done / ctrlDomainsToCsv.exportStatus.total * 100}}"
+                <div class="oui-progress oui-progress_info">
+                    <div class="oui-progress__bar oui-progress__bar_info" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ctrlDomainsToCsv.exportStatus.done / ctrlDomainsToCsv.exportStatus.total * 100}}"
                          data-ng-style="{'width': (ctrlDomainsToCsv.exportStatus.done / ctrlDomainsToCsv.exportStatus.total * 100) + '%'}">
-                        <span class="sr-only" data-ng-bind="(ctrlDomainsToCsv.exportStatus.done / ctrlDomainsToCsv.exportStatus.total * 100) + '%'"></span>
+                        <span class="oui-progress__label"
+                              data-ng-show="ctrlDomainsToCsv.exportStatus.done > 5"
+                              data-ng-bind="((ctrlDomainsToCsv.exportStatus.done / ctrlDomainsToCsv.exportStatus.total * 100) | number : 0) + '%'"></span>
                     </div>
                 </div>
             </div>

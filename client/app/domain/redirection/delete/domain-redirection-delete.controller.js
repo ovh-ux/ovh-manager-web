@@ -42,8 +42,8 @@ angular.module("controllers").controller(
 
             return this.$q
                 .all(deletePromises)
-                .then(() => this.Alerter.success(this.$scope.tr("domain_tab_REDIRECTION_delete_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_delete_fail"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("domain_tab_REDIRECTION_delete_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_REDIRECTION_delete_fail"), err, this.$scope.alerts.main))
                 .finally(() => {
                     this.loading = false;
                     this.$scope.resetAction();

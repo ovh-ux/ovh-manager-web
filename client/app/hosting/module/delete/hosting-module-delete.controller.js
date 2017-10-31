@@ -1,17 +1,27 @@
-angular.module("App").controller("HostingModuleDeleteCtrl", ($scope, $stateParams, HostingModule, Alerter) => {
-    "use strict";
+angular.module("App").controller(
+    "HostingModuleDeleteCtrl",
+    class HostingModuleDeleteCtrl {
+        constructor ($scope, $stateParams, Alerter, HostingModule) {
+            this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.HostingModule = HostingModule;
+        }
 
-    $scope.moduleToDelete = $scope.currentActionData;
+        $onInit () {
+            this.moduleToDelete = this.$scope.currentActionData;
+            this.$scope.deleteModule = () => this.deleteModule();
+        }
 
-    $scope.deleteModule = function () {
-        $scope.resetAction();
-        HostingModule.deleteModule($stateParams.productId, $scope.moduleToDelete.id).then(
-            () => {
-                Alerter.success($scope.tr("hosting_configuration_tab_modules_delete_success"), $scope.alerts.dashboard);
-            },
-            (err) => {
-                Alerter.alertFromSWS($scope.tr("hosting_configuration_tab_modules_delete_fail", [$scope.entryToDelete]), err, $scope.alerts.dashboard);
-            }
-        );
-    };
-});
+        deleteModule () {
+            this.$scope.resetAction();
+            return this.HostingModule.deleteModule(this.$stateParams.productId, this.moduleToDelete.id)
+                .then(() => {
+                    this.Alerter.success(this.$scope.tr("hosting_configuration_tab_modules_delete_success"), this.$scope.alerts.main);
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_configuration_tab_modules_delete_fail", [this.moduleToDelete]), err, this.$scope.alerts.main);
+                });
+        }
+    }
+);

@@ -5,7 +5,7 @@
    <translation id="email_dashboard_quotas" qtlid="297202">Quotas</translation>
    <translation id="email_tab_EMAIL" qtlid="218029">Emails</translation>
    <translation id="email_tab_MAILING_LIST" qtlid="50182">Mailing-lists</translation>
-   <translation id="email_tab_TASK" qtlid="344097">Tarefas em curso</translation>
+   <translation id="email_tab_TASK" qtlid="344097">Operações em curso</translation>
    <translation id="email_tab_menu_resiliate" qtlid="370174">Eliminar/Restituir o meu plano MX</translation>
    <translation id="emails_common_from" qtlid="69077">De</translation>
    <translation id="emails_common_to" qtlid="175972">Para</translation>
@@ -51,7 +51,7 @@
    <translation id="email_tab_table_header_refresh" qtlid="218081">Recarregar a tabela</translation>
    <translation id="email_tab_table_filters_empty" qtlid="85281">Nenhum filtro</translation>
    <translation id="email_tab_button_emails_create_filter" qtlid="85329">Adicionar um filtro</translation>
-   <translation id="email_tab_button_emails_filters_back" qtlid="4118">Regresso</translation>
+   <translation id="email_tab_button_emails_filters_back" qtlid="4118">Voltar atrás</translation>
    <translation id="email_tab_filters_status_true" qtlid="65490">activo</translation>
    <translation id="email_tab_filters_status_false" qtlid="65694">inactivo</translation>
    <translation id="email_tab_table_filters_error" qtlid="218159">Ocorreu um erro aquando da recuperação dos filtros:</translation>
@@ -88,6 +88,7 @@
    <translation id="email_tab_popover_change_password_account" qtlid="80394">Alterar a password</translation>
    <translation id="email_tab_popover_delete_account" qtlid="150294">Eliminar a conta</translation>
    <translation id="email_tab_popover_delegate" qtlid="369732">Gestão da delegação</translation>
+   <translation id="email_tab_popover_migrate" qtlid="436619">Migrar a conta</translation>
    <translation id="email_tab_modal_change_password_title" qtlid="218367">Modificar a password da conta</translation>
    <translation id="email_tab_modal_change_password_heading" qtlid="218380">Está no ponto de modificar a password da sua conta</translation>
    <translation id="email_tab_modal_change_account_password_success" qtlid="218393">A sua password está em curso de modificação.&#13;
@@ -320,6 +321,34 @@ A operação será efetiva dentro de 5 a 10 minutos.</translation>
    <translation id="email_tab_modal_update_redirection_success" qtlid="269825">O reencaminhamento foi modificado com sucesso.&#13;
 A operação terminará dentro de alguns minutos.</translation>
    <translation id="email_tab_modal_update_redirection_error" qtlid="269838">Ocorreu um erro aquando da modificação de um reencaminhamento:</translation>
+
+   <translation id="email_tab_modal_migrate_title" qtlid="436619">Migrar a conta</translation>
+   <translation id="email_tab_modal_migrate_title_emailpro" qtlid="436632">Migrar para E-mail Pro</translation>
+   <translation id="email_tab_modal_migrate_title_exchange" qtlid="436645">Migrar para Hosted Exchange</translation>
+   <translation id="email_tab_modal_migrate_select_platform_text" qtlid="436658">Na lista, selecione o novo serviço para o seu endereço de e-mail.</translation>
+   <translation id="email_tab_modal_migrate_account_email_label" qtlid="436671">E-mail original:</translation>
+   <translation id="email_tab_modal_migrate_service_type_label" qtlid="436684">Nova Oferta:</translation>
+   <translation id="email_tab_modal_migrate_destination_service_label" qtlid="436697">Novo Serviço:</translation>
+   <translation id="email_tab_modal_migrate_destination_service_help" qtlid="436710">Atenção, só pode migrar uma conta de cada vez.</translation>
+   <translation id="email_tab_modal_migrate_password_text" qtlid="436723">Por favor, introduza a palavra-passe do e-mail original para validar a migração:</translation>
+   <translation id="email_tab_modal_migrate_order_new_emails_button" qtlid="139169">Encomendar contas</translation>
+   <translation id="email_tab_modal_migrate_available_email_selected" qtlid="436736">A migração do e-mail será efetuada na conta <strong>{0}</strong>.</translation>
+   <translation id="email_tab_modal_migrate_remaining_available_emails" qtlid="436749">Após a migração, existem <strong>{0}</strong> conta(s) livre(s).</translation>
+   <translation id="email_tab_modal_migrate_no_remaining_available_emails" qtlid="436762">Após a migração, não existe qualquer conta livre</translation>
+   <translation id="email_tab_modal_migrate_no_available_email" qtlid="436775">O serviço <strong>{0}</strong> não tem mais contas disponíveis. Selecione outro serviço da lista ou subscreva um nova conta.</translation>
+   <translation id="email_tab_modal_migrate_order_email_service" qtlid="436788">Subscrever uma solução de e-mail</translation>
+   <translation id="email_tab_modal_migrate_no_email_service" qtlid="436801">Não tem uma solução de e-mail compatível com a migração.</translation>
+   <translation id="email_tab_modal_migrate_confirmation_heading" qtlid="436814">Está presta a iniciar a migração do seu endereço de e-mail. Uma vez iniciado o processo, já não será possível aceder à caixa de correio antiga.</translation>
+   <translation id="email_tab_modal_migrate_confirmation_delay" qtlid="436827">A migração do conteúdo pode demorar várias horas, dependendo da dimensão da caixa de correio. Terminada a a operação, a caixa de correio original será eliminada num prazo de 15 dias.</translation>
+   <translation id="email_tab_modal_migrate_configuration_guides_exchange" qtlid="436840">Terminada a operação, será necessário reconfigurar o seu cliente de correio, ou aceder ao webmail Exchange através da secção «Informação Geral» na Área de Cliente.</translation>
+   <translation id="email_tab_modal_migrate_configuration_guides_emailpro" qtlid="436853">Terminada a operação, será necessário reconfigurar o seu cliente de correio, ou aceder ao webmail E-mail Pro através da secção «Informações Gerais» na Área de Cliente.</translation>
+   <translation id="email_tab_modal_migrate_configuration_guides_button" qtlid="436866">Clique aqui para aceder aos nossos guias de utilização</translation>
+   <translation id="email_tab_modal_migrate_aknowledge" qtlid="436879">Confirmar a operação implica tomar conhecimento e aceitar a informação relacionada com a migração da conta de e-mail selecionada.</translation>
+   <translation id="email_tab_modal_migrate_alert_not_supported" qtlid="436892">Atenção, estes elementos não serão incluídos na migração:  <br />- filtros ; <br />- respostas automáticas; <br />- mailing lists ; <br />- vos contactos Roundcube.&#13;
+</translation>
+   <translation id="email_tab_modal_migrate_alert_configure_me" qtlid="436905">É necessário dispor de um conta de e-mail não configurada(@configureme.me) para realizar a operação</translation>
+   <translation id="email_tab_modal_migrate_success" qtlid="436918">A sua conta de e-mail está em processo de migração. A operação estará concluída daqui a 5 ou 10 minutos.</translation>
+   <translation id="email_tab_modal_migrate_error" qtlid="436931">Ocorreu um erro durante a migração da conta:</translation>
 
    <translation id="email_tab_TASK_table_empty" qtlid="144058">Não possui trabalhos</translation>
    <translation id="email_tab_TASK_table_function" qtlid="61872">Tarefa</translation>

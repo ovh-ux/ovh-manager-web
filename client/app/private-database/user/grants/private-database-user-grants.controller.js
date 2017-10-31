@@ -65,7 +65,7 @@ angular.module("App").controller(
                     return userGrants;
                 })
                 .catch((err) => {
-                    this.alerter.error(err.message, this.$scope.alerts.users);
+                    this.alerter.error(err.message, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loaders.userGrants = false;
@@ -80,10 +80,10 @@ angular.module("App").controller(
             return this.privateDatabaseService
                 .setUserGrant(this.productId, base, this.$scope.user.userName, this.userGrants[base])
                 .then(() => {
-                    this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_doing"), this.$scope.alerts.users);
+                    this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_doing"), this.$scope.alerts.main);
                 })
                 .catch(() => {
-                    this.alerter.error(this.$scope.tr("privateDatabase_tabs_users_grant_error"), this.$scope.alerts.users);
+                    this.alerter.error(this.$scope.tr("privateDatabase_tabs_users_grant_error"), this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loaders.setGrant = false;
@@ -126,7 +126,7 @@ angular.module("App").controller(
 
                 this.userGrants[opts.databaseName].value = opts.grants[opts.databaseName].value;
 
-                this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_success"), this.$scope.alerts.users);
+                this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_success"), this.$scope.alerts.main);
 
                 this.getUserGrants();
 
@@ -148,7 +148,7 @@ angular.module("App").controller(
             const todo = () => {
                 this.isDoingGrant[opts.databaseName] = false;
 
-                this.alerter.error(this.$scope.tr("privateDatabase_tabs_users_grant_error"), this.$scope.alerts.users);
+                this.alerter.error(this.$scope.tr("privateDatabase_tabs_users_grant_error"), this.$scope.alerts.main);
 
                 if (unregister) {
                     unregister();

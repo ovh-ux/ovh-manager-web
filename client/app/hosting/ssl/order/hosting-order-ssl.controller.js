@@ -1,142 +1,147 @@
-angular.module("App").controller("HostingOrderSslCtrl", ($scope, $q, $window, $stateParams, HostingOptionOrder, Hosting, Alerter, User, HostingDomain, Validator) => {
-    "use strict";
-
-    $scope.manualMode = {
-        certif: "",
-        key: "",
-        chain: ""
-    };
-    $scope.model = {
-        duration: null,
-        contract: null
-    };
-    $scope.loading = {
-        init: false,
-        duration: false,
-        details: false,
-        order: false,
-        generateCertif: false
-    };
-    $scope.sslType = {
-        value: "letsencrypt"
-    };
-
-    $scope.details = {};
-    $scope.durations = [];
-    $scope.isOrderable = false;
-    $scope.maxDomainLength = Validator.MAX_DOMAIN_LENGTH;
-    $scope.validDomain = true;
-
-    const init = () => {
-        if (!Validator.isValidLetsEncryptDomain("www.", $stateParams.productId)) {
-            $scope.sslType.value = "payable";
-            $scope.validDomain = false;
+angular.module("App").controller(
+    "HostingOrderSslCtrl",
+    class HostingOrderSslCtrl {
+        constructor ($scope, $stateParams, $window, Alerter, Hosting, HostingDomain, HostingOptionOrder, User, Validator) {
+            this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.$window = $window;
+            this.Alerter = Alerter;
+            this.Hosting = Hosting;
+            this.HostingDomain = HostingDomain;
+            this.HostingOptionOrder = HostingOptionOrder;
+            this.User = User;
+            this.Validator = Validator;
         }
-    };
 
-    init();
+        $onInit () {
+            this.loading = {
+                init: false,
+                duration: false,
+                details: false,
+                order: false,
+                generateCertif: false
+            };
+            this.manualMode = {
+                certificate: "",
+                key: "",
+                chain: ""
+            };
+            this.model = {
+                duration: null,
+                contract: null
+            };
+            this.sslType = "letsencrypt";
 
-    $scope.checkMultisitesSSL = function () {
-        if ($scope.sslType.value === "payable") {
-            $scope.loading.init = true;
+            this.details = {};
+            this.durations = [];
+            this.isOrderable = false;
+            this.validDomain = true;
 
-            HostingDomain.getAttachedDomain($stateParams.productId, $stateParams.productId)
-                .then((attachedDomain) => {
-                    let rtn;
-                    if (!attachedDomain.ssl) {
-                        rtn = HostingDomain.updateAttachedDomain($stateParams.productId, $stateParams.productId, {
-                            ssl: true
-                        });
-                    }
-                    return rtn;
-                })
-                .catch((err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_ssl_order_error"), err, "hosting.alerts.dashboard");
-                    $scope.resetAction();
-                })
-                .finally(() => {
-                    $scope.loading.init = false;
-                });
+            this.$scope.makeOrder = () => this.makeOrder();
+            this.$scope.checkMultisitesSSL = () => this.checkMultisitesSSL();
+            this.$scope.createCertif = () => this.createCertif();
+            this.$scope.generateCertif = () => this.generateCertif();
+
+            if (!this.Validator.isValidLetsEncryptDomain("www.", this.$stateParams.productId)) {
+                this.sslType = "payable";
+                this.validDomain = false;
+            }
         }
-    };
 
-    $scope.isStepValid = (step) => {
-        switch (step) {
-        case 1:
-            if ($scope.sslType.value === "payable") {
+        checkMultisitesSSL () {
+            if (this.sslType === "payable") {
+                this.loading.init = true;
+
+                this.HostingDomain.getAttachedDomain(this.$stateParams.productId, this.$stateParams.productId)
+                    .then((attachedDomain) => {
+                        let rtn;
+                        if (!attachedDomain.ssl) {
+                            rtn = this.HostingDomain.updateAttachedDomain(this.$stateParams.productId, this.$stateParams.productId, {
+                                ssl: true
+                            });
+                        }
+                        return rtn;
+                    })
+                    .catch((err) => {
+                        this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_ssl_order_error"), err, this.$scope.alerts.main);
+                        this.$scope.resetAction();
+                    })
+                    .finally(() => {
+                        this.loading.init = false;
+                    });
+            }
+        }
+
+        createCertif () {
+            if (this.sslType === "letsencrypt" || (this.sslType === "import" && this.manualMode.certificate !== "" && this.manualMode.key !== "")) {
+                this.loading.generateCertif = true;
+
+                let data = {
+                    certificate: null,
+                    key: null,
+                    chain: null
+                };
+
+                if (this.sslType === "import") {
+                    data = _.pick(this.manualMode, "certificate", "chain", "key");
+                }
+
+                this.Hosting.createSsl(this.$stateParams.productId, data.certificate, data.key, data.chain)
+                    .then(() => this.Alerter.success(this.$scope.tr("hosting_dashboard_ssl_generate_success"), this.$scope.alerts.main))
+                    .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_ssl_order_error"), err, this.$scope.alerts.main))
+                    .finally(() => {
+                        this.$scope.loadSsl();
+                        this.$scope.resetAction();
+                    });
+            }
+        }
+
+        isStepOneValid () {
+            if (this.sslType === "payable") {
                 return true;
             }
-            if ($scope.sslType.value === "letsencrypt") {
-                return !$scope.loading.generateCertif;
+            if (this.sslType === "letsencrypt") {
+                return !this.loading.generateCertif;
             }
-            if ($scope.sslType.value === "import") {
-                return $scope.manualMode.certif !== "" && $scope.manualMode.key !== "";
+            if (this.sslType === "import") {
+                return this.manualMode.certificate !== "" && this.manualMode.key !== "";
             }
-            return !$scope.loading.init && !$scope.loading.duration && !$scope.loading.details && $scope.isOrderable && $scope.model.duration;
-        default:
-            return null;
+            return !this.loading.init && !this.loading.duration && !this.loading.details && this.isOrderable && this.model.duration;
         }
-    };
 
-    $scope.createCertif = () => {
-        if ($scope.sslType.value === "letsencrypt" || ($scope.sslType.value === "import" && $scope.manualMode.certif !== "" && $scope.manualMode.key !== "")) {
-            $scope.loading.generateCertif = true;
+        generateCertif () {
+            let rtn;
+            if (this.sslType === "payable") {
+                this.loading.generateCertif = true;
+                rtn = this.User.getUrlOfEndsWithSubsidiary("domain_order_options_service")
+                    .then((_url) => {
+                        const url = _url.replace("{domain}", this.$stateParams.productId);
 
-            let data = {
-                certificate: null,
-                key: null,
-                chain: null
-            };
-
-            if ($scope.sslType.value === "import") {
-                data = _.pick($scope, "manualMode.certif", "manualMode.chain", "manualMode.key");
+                        this.Alerter.success(this.$scope.tr("hosting_dashboard_ssl_redirect_to_order", [url]), this.$scope.alerts.main);
+                        this.$scope.resetAction();
+                        this.$window.open(url, "_blank");
+                    })
+                    .catch((err) => {
+                        this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_ssl_redirect_to_order"), err, this.$scope.alerts.main);
+                    });
             }
-
-            Hosting.createSsl($stateParams.productId, data.certificate, data.key, data.chain)
-                .then(() => Alerter.success($scope.tr("hosting_dashboard_ssl_generate_success"), "hosting.alerts.dashboard"))
-                .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_dashboard_ssl_order_error"), err, "hosting.alerts.dashboard"))
-                .finally(() => {
-                    $scope.loadSsl();
-                    $scope.resetAction();
-                });
+            this.createCertif();
+            return rtn;
         }
-    };
 
-    $scope.generateCertif = () => {
-        let rtn;
-        if ($scope.sslType.value === "payable") {
-            $scope.loading.generateCertif = true;
-            rtn = User.getUrlOfEndsWithSubsidiary("domain_order_options_service")
-                .then((_url) => {
-                    const url = _url.replace("{domain}", $stateParams.productId);
-
-                    Alerter.success($scope.tr("hosting_dashboard_ssl_redirect_to_order", [url]), "hosting.alerts.dashboard");
-                    $scope.resetAction();
-
-                    window.open(url, "_blank");
+        makeOrder () {
+            this.loading.order = true;
+            return this.HostingOptionOrder.makeOrder("ssl", this.model.duration)
+                .then((order) => {
+                    this.Alerter.success(this.$scope.tr("hosting_dashboard_ssl_order_success", [order.url, order.orderId]), this.$scope.alerts.main);
+                    this.$window.open(order.url, "_blank");
                 })
                 .catch((err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_ssl_redirect_to_order"), err, "hosting.alerts.dashboard");
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_ssl_order_error"), _.get(err, "data", err), this.$scope.alerts.main);
+                })
+                .finally(() => {
+                    this.$scope.resetAction();
                 });
         }
-        $scope.createCertif();
-        return rtn;
-    };
-
-    $scope.makeOrder = function () {
-        $scope.loading.order = true;
-        HostingOptionOrder.makeOrder("ssl", $scope.model.duration)
-            .then(
-                (order) => {
-                    Alerter.success($scope.tr("hosting_dashboard_ssl_order_success", [order.url, order.orderId]), "hosting.alerts.dashboard");
-                    $window.open(order.url, "_blank");
-                },
-                (data) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_ssl_order_error"), data.data, "hosting.alerts.dashboard");
-                }
-            )
-            .finally(() => {
-                $scope.resetAction();
-            });
-    };
-});
+    }
+);

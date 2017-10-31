@@ -23,8 +23,8 @@ angular.module("App").controller(
         deleteAccount () {
             this.Emails
                 .deleteAccount(this.$stateParams.productId, this.currentAccount.accountName)
-                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_delete_account_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_delete_account_error"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_delete_account_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_delete_account_error"), err, this.$scope.alerts.main))
                 .finally(() => this.$scope.resetAction());
         }
     }

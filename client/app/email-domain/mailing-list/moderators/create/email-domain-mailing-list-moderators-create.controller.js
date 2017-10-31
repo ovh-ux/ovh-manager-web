@@ -47,7 +47,7 @@ angular.module("App").controller(
                             ERROR: this.$scope.tr("mailing_list_tab_modal_create_moderators_error")
                         },
                         tasks,
-                        this.$scope.alerts.dashboard
+                        this.$scope.alerts.main
                     );
 
                     this.MailingLists.pollState(this.$stateParams.productId, {
@@ -57,7 +57,13 @@ angular.module("App").controller(
                         namespace: "mailingLists.moderators.poll"
                     });
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr(moderatorsToAdd.length === 1 ? "mailing_list_tab_modal_create_moderator_error" : "mailing_list_tab_modal_create_moderators_error"), err, this.$scope.alerts.dashboard))
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(
+                        this.$scope.tr(moderatorsToAdd.length === 1 ? "mailing_list_tab_modal_create_moderator_error" : "mailing_list_tab_modal_create_moderators_error"),
+                        err,
+                        this.$scope.alerts.main
+                    );
+                })
                 .finally(() => {
                     this.loading = false;
                     this.$scope.resetAction();

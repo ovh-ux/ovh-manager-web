@@ -24,10 +24,10 @@ angular.module("App").controller(
                 this.whitelistService
                     .createWhitelist(this.productId, this.model)
                     .then(() => {
-                        this.alerter.success(this.$scope.tr("privateDatabase_modale_whitelist_add_success"), "privateDataBase.alerts.whitelist");
+                        this.alerter.success(this.$scope.tr("privateDatabase_modale_whitelist_add_success"), this.$scope.alerts.main);
                     })
-                    .catch(() => {
-                        this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_add_fail"), "privateDataBase.alerts.whitelist");
+                    .catch((err) => {
+                        this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_modale_whitelist_add_fail"), _.get(err, "data", err), this.$scope.alerts.main);
                     })
                     .finally(() => this.$scope.resetAction());
             };

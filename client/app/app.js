@@ -150,15 +150,68 @@ angular
 
             atInternetProvider.setEnabled(constants.prodMode && window.location.port.length <= 3);
             atInternetProvider.setDebug(!constants.prodMode);
-            atInternetProvider.setDefaults({
-                level2: "2"
-            });
 
             atInternetUiRouterPluginProvider.setTrackStateChange(constants.prodMode && window.location.port.length <= 3);
-
-            atInternetUiRouterPluginProvider.addStateNameFilter((routeName) => routeName ? routeName.replace(/\//g, "::") : null);
+            atInternetUiRouterPluginProvider.addStateNameFilter((routeName) => routeName ? routeName.replace(/^app/, "web").replace(/\./g, "::") : "");
         }
     ])
+    .constant("TRACKING", {
+        config: {
+            level2: "2"
+        }
+    })
+    .config(["$provide", function ($provide) {
+        "use strict";
+
+        $provide.decorator("atInternet", ($delegate, User, TRACKING) => {
+            const delegateTrackPage = $delegate.trackPage;
+            let isDefaultConfigurationSet = false;
+            let trackPageRequestArgumentStack = [];
+
+            // Decorate trackPage to stack requests until At-internet default configuration is set
+            $delegate.trackPage = (...args) => {
+                if (isDefaultConfigurationSet) {
+                    delegateTrackPage.apply($delegate, args);
+                } else {
+                    trackPageRequestArgumentStack.push(args);
+                }
+            };
+
+            // Get country from User
+            User.getUser()
+                .then((result) => {
+                    const settings = angular.copy(TRACKING.config);
+
+                    // Set identifiedVisitor ID
+                    if ($delegate.isTagAvailable() && result.nichandle) {
+                        const atinternetTag = $delegate.getTag();
+
+                        atinternetTag.page.set();
+                        atinternetTag.identifiedVisitor.set({ id: result.nichandle });
+                        atinternetTag.dispatch();
+                    }
+
+                    // Set countryCode
+                    settings.countryCode = result.billingCountry;
+                    $delegate.setDefaults(settings);
+
+                    isDefaultConfigurationSet = true;
+
+                    _.forEach(trackPageRequestArgumentStack, (trackPageArguments) => {
+                        delegateTrackPage.apply($delegate, trackPageArguments);
+                    });
+                })
+                .catch(() => {
+                    // Reset trackPage
+                    $delegate.trackPage = () => false;
+                    trackPageRequestArgumentStack = [];
+
+                    $delegate.setEnabled(false);
+                });
+
+            return $delegate;
+        });
+    }])
     .config([
         "$locationProvider",
         function ($locationProvider) {

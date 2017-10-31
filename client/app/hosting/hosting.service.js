@@ -1,575 +1,647 @@
-angular.module("services").service("Hosting", function (Products, $http, $q, constants, $rootScope, $stateParams, Poll, OvhHttp) {
-    "use strict";
-
+{
     const hostingCache = "UNIVERS_WEB_HOSTING";
     const passwordConditions = {
         min: 8,
         max: 30
     };
 
-    this.events = {
-        dashboardRefresh: "hosting.dashboard.refresh",
-        tabCronsRefresh: "hosting.tabs.crons.refresh",
-        tabDomainsRefresh: "hosting.tabs.domains.refresh",
-        tabDatabasesRefresh: "hosting.tabs.databases.refresh",
-        tasksChanged: "hosting.tabs.tasks.refresh",
-        tabFtpRefresh: "hosting.tabs.ftp.refresh"
-    };
+    angular
+        .module("services")
+        .service("Hosting", class Hosting {
 
-    /* -------------------------BROADCAST-------------------------*/
+            constructor ($q, $http, $rootScope, $stateParams, constants, OvhHttp, Poll, Products) {
+                this.$q = $q;
+                this.$http = $http;
+                this.$rootScope = $rootScope;
+                this.$stateParams = $stateParams;
+                this.constants = constants;
+                this.OvhHttp = OvhHttp;
+                this.Poll = Poll;
+                this.Products = Products;
 
-    this.resetDatabases = function () {
-        $rootScope.$broadcast(this.events.tabDatabasesRefresh);
-    };
-
-    this.resetUsers = function () {
-        $rootScope.$broadcast(this.events.tabFtpRefresh);
-    };
-
-    this.resetDomains = function () {
-        $rootScope.$broadcast(this.events.tabDomainsRefresh);
-    };
-
-    this.resetCrons = function () {
-        $rootScope.$broadcast(this.events.tabCronsRefresh);
-    };
-
-    /* -------------------------MODELS-------------------------*/
-
-    this.getModels = function () {
-        return OvhHttp.get("/hosting/web.json", {
-            rootPath: "apiv6",
-            cache: "HOSTING_WEB_MODELS"
-        });
-    };
-
-    /* -------------------------TOOLS-------------------------*/
-
-    this.getPasswordConditions = function (customConditions) {
-        const min = _.get(customConditions, "min", passwordConditions.min);
-        const max = _.get(customConditions, "max", passwordConditions.max);
-        return {
-            min,
-            max
-        };
-    };
-
-    this.isPerfOffer = (offer) => /^perf.+$/.test(offer);
-
-    this.cloudWebUnlimitedQuantity = 100000;
-
-    this.isPasswordValid = function (password, customConditions) {
-        const min = _.get(customConditions, "min", passwordConditions.min);
-        const max = _.get(customConditions, "max", passwordConditions.max);
-        return !!(password && password.length >= min && password.length <= max && password.match(/.*[0-9].*/) && password.match(/.*[a-z].*/) && password.match(/.*[A-Z].*/) && password.match(/^[a-zA-Z0-9]+$/));
-    };
-
-    this.isPathValid = function (path) {
-        return /^[a-zA-Z0-9-._\/]*$/.test(path) && !/\.\./.test(path);
-    };
-
-    this.getRemainingQuota = (quotaSize, quotaUsed) => {
-        switch (quotaUsed.unit) {
-        case "MB":
-            if (quotaSize.unit === "MB") {
-                return quotaSize.value - quotaUsed.value;
+                this.cloudWebUnlimitedQuantity = 100000;
+                this.events = {
+                    dashboardRefresh: "hosting.dashboard.refresh",
+                    tabCronsRefresh: "hosting.tabs.crons.refresh",
+                    tabDomainsRefresh: "hosting.tabs.domains.refresh",
+                    tabDatabasesRefresh: "hosting.tabs.databases.refresh",
+                    tasksChanged: "hosting.tabs.tasks.refresh",
+                    tabFtpRefresh: "hosting.tabs.ftp.refresh"
+                };
             }
-            return (quotaSize.value * 1000) - quotaUsed.value;
-        case "GB":
-            if (quotaSize.unit === "MB") {
-                return quotaSize.value - (quotaUsed.value * 1000);
+
+            /* -------------------------BROADCAST-------------------------*/
+
+            /**
+             * Broadcast reset databases event
+             */
+            resetDatabases () {
+                this.$rootScope.$broadcast(this.events.tabDatabasesRefresh);
             }
-            return (quotaUsed.value * 1000) - (quotaSize.value * 1000);
-        default:
-            return quotaSize.value - quotaUsed.value;
-        }
-    };
 
-    /* -------------------------HOSTING/WEB-------------------------*/
+            /**
+             * Broadcast reset users event
+             */
+            resetUsers () {
+                this.$rootScope.$broadcast(this.events.tabFtpRefresh);
+            }
 
-    this.getSelected = function (serviceName, forceRefresh) {
-        return OvhHttp.get("/sws/hosting/web/{serviceName}", {
-            rootPath: "2api",
-            urlParams: {
-                serviceName
-            },
-            clearCache: forceRefresh,
-            cache: hostingCache
-        }).then((hosting) => {
-            if (hosting.offer === "START_10_M") {
-                return OvhHttp.get("/domain/{serviceName}/serviceInfos", {
+            /**
+             * Broadcast reset domains event
+             */
+            resetDomains () {
+                this.$rootScope.$broadcast(this.events.tabDomainsRefresh);
+            }
+
+            /**
+             * Broadcast reset cron event
+             */
+            resetCrons () {
+                this.$rootScope.$broadcast(this.events.tabCronsRefresh);
+            }
+
+            /* -------------------------MODELS-------------------------*/
+
+            /**
+             * Get models
+             */
+            getModels () {
+                return this.OvhHttp.get("/hosting/web.json", {
                     rootPath: "apiv6",
-                    urlParams: {
-                        serviceName
-                    },
-                    clearCache: forceRefresh,
-                    cache: hostingCache
-                })
-                    .then((data) => {
-                        hosting.expiration = data.expiration;
-                        return hosting;
-                    })
-                    .catch(() => hosting);
+                    cache: "HOSTING_WEB_MODELS"
+                });
             }
-            return hosting;
-        });
-    };
 
-    this.getHostings = function () {
-        return OvhHttp.get("/hosting/web", {
-            rootPath: "apiv6"
-        });
-    };
+            /* -------------------------TOOLS-------------------------*/
 
-    this.getHosting = function (domainName, catchOpt) {
-        return $http.get(["apiv6/hosting/web", domainName].join("/")).then(
-            (data) => data ? data.data : null,
-            (http) => {
-                if (catchOpt && angular.isArray(catchOpt) && catchOpt.indexOf(http.status) !== -1) {
-                    return null;
+            /**
+             * Get password conditions object
+             * @param {{min: *, max: *}|null} customConditions
+             * @returns {{min: *, max: *}}
+             */
+            static getPasswordConditions (customConditions = undefined) {
+                const min = _.get(customConditions, "min", passwordConditions.min);
+                const max = _.get(customConditions, "max", passwordConditions.max);
+                return { min, max };
+            }
+
+            /**
+             * Is hosting performance offer
+             * @param {string} offer
+             * @returns {boolean}
+             */
+            static isPerfOffer (offer) {
+                return /^perf.+$/.test(offer);
+            }
+
+            /**
+             * Is password valid
+             * @param {string} password
+             * @param {{min: number, max: number}|null} customConditions
+             * @returns {boolean}
+             */
+            static isPasswordValid (password, customConditions = undefined) {
+                const min = _.get(customConditions, "min", passwordConditions.min);
+                const max = _.get(customConditions, "max", passwordConditions.max);
+                return !!(password && password.length >= min && password.length <= max && password.match(/.*[0-9].*/) && password.match(/.*[a-z].*/) && password.match(/.*[A-Z].*/) && password.match(/^[a-zA-Z0-9]+$/));
+            }
+
+            /**
+             * Is path valid
+             * @param {string} path
+             * @returns {boolean}
+             */
+            static isPathValid (path) {
+                return /^[\w\-.\/]*$/.test(path) && !/\.\./.test(path);
+            }
+
+            /**
+             * Get remaining quotas
+             * @param {object} quotaSize
+             * @param {object} quotaUsed
+             * @returns {number}
+             */
+            static getRemainingQuota (quotaSize, quotaUsed) {
+                switch (quotaUsed.unit) {
+                case "MB":
+                    if (quotaSize.unit === "MB") {
+                        return quotaSize.value - quotaUsed.value;
+                    }
+                    return (quotaSize.value * 1000) - quotaUsed.value;
+                case "GB":
+                    if (quotaSize.unit === "MB") {
+                        return quotaSize.value - (quotaUsed.value * 1000);
+                    }
+                    return (quotaUsed.value * 1000) - (quotaSize.value * 1000);
+                default:
+                    return quotaSize.value - quotaUsed.value;
                 }
-                return $q.reject(http);
             }
-        );
-    };
 
-    this.updateHosting = function (serviceName, opts) {
-        return OvhHttp.put("/hosting/web/{serviceName}", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            clearAllCache: true,
-            broadcast: this.events.dashboardRefresh,
-            data: opts.body
-        });
-    };
+            /* -------------------------HOSTING/WEB-------------------------*/
 
-    /*
-     * Get content of domains tab
-     */
-    this.getTabDomains = function (serviceName, count, offset, search) {
-        return OvhHttp.get("/sws/hosting/web/{serviceName}/domains", {
-            rootPath: "2api",
-            urlParams: {
-                serviceName
-            },
-            params: {
-                count,
-                offset,
-                search
+            /**
+             * Get selected hosting service
+             * @param {string} serviceName
+             * @param {boolean} forceRefresh
+             */
+            getSelected (serviceName, forceRefresh = false) {
+                return this.OvhHttp.get(`/sws/hosting/web/${serviceName}`, {
+                    rootPath: "2api",
+                    cache: hostingCache,
+                    clearCache: forceRefresh
+                }).then((hosting) => {
+                    if (hosting.offer === "START_10_M") {
+                        return this.OvhHttp.get(`/domain/${serviceName}/serviceInfos`, {
+                            rootPath: "apiv6",
+                            cache: hostingCache,
+                            clearCache: forceRefresh
+                        }).then((data) => {
+                            hosting.expiration = data.expiration;
+                            return hosting;
+                        }).catch(() => hosting);
+                    }
+
+                    return hosting;
+                });
             }
-        });
-    };
 
-    /*
-     * Get content of databases tab
-     */
-    this.getTabDatabases = function (serviceName, count, offset, search) {
-        return OvhHttp.get("/sws/hosting/web/{serviceName}/databases", {
-            rootPath: "2api",
-            urlParams: {
-                serviceName
-            },
-            params: {
-                count,
-                offset,
-                search
+            /**
+             * Get hosting services list
+             */
+            getHostings () {
+                return this.OvhHttp.get("/hosting/web", {
+                    rootPath: "apiv6"
+                });
             }
-        });
-    };
 
-    /*
-     * Get content of ftp tab
-     */
-    this.getTabFTP = function (serviceName, count, offset, needUsers, search) {
-        return OvhHttp.get("/sws/hosting/web/{serviceName}/ftp", {
-            rootPath: "2api",
-            urlParams: {
-                serviceName
-            },
-            params: {
-                count,
-                offset,
-                needUsers,
-                search
+            /**
+             * Get specific hosting service
+             * @param {string} serviceName
+             * @param {array|null} catchOpt
+             */
+            getHosting (serviceName, catchOpt) {
+                return this.$http.get(`/hosting/web/${serviceName}`)
+                    .then((response) => response.data)
+                    .catch((http) => {
+                        if (_.isArray(catchOpt) && _.indexOf(catchOpt, http.status) !== -1) {
+                            return null;
+                        }
+                        return this.$q.reject(http);
+                    });
             }
-        });
-    };
 
-    /*
-     * Get tasks list
-     */
-    this.getTasksList = function (serviceName, count, offset) {
-        return OvhHttp.get("/sws/hosting/web/{serviceName}/tasks", {
-            rootPath: "2api",
-            urlParams: {
-                serviceName
-            },
-            params: {
-                count,
-                offset
+            /**
+             * Update hosting service
+             * @param {string} serviceName
+             * @param {object} opts
+             */
+            updateHosting (serviceName, opts) {
+                return this.OvhHttp.put(`/hosting/web/${serviceName}`, {
+                    rootPath: "apiv6",
+                    broadcast: this.events.dashboardRefresh,
+                    clearAllCache: true,
+                    data: opts.body
+                });
             }
-        });
-    };
 
-    this.flushCdn = function (serviceName) {
-        return OvhHttp.post("/hosting/web/{serviceName}/request", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            data: {
-                action: "FLUSH_CACHE"
+            /**
+             * Get hosting service info
+             * @param {string} serviceName
+             */
+            getServiceInfos (serviceName) {
+                return this.OvhHttp.get(`/hosting/web/${serviceName}/serviceInfos`, {
+                    rootPath: "apiv6"
+                });
             }
-        });
-    };
 
-    this.terminateCdn = function (serviceName) {
-        return OvhHttp.post("/hosting/web/{serviceName}/cdn/terminate", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
+            /**
+             * Get content of domains tab
+             * @param {string} serviceName
+             * @param {integer} count
+             * @param {integer} offset
+             * @param {string|null} search
+             */
+            getTabDomains (serviceName, count, offset, search) {
+                return this.OvhHttp.get(`/sws/hosting/web/${serviceName}/domains`, {
+                    rootPath: "2api",
+                    params: {
+                        count,
+                        offset,
+                        search
+                    }
+                });
             }
-        });
-    };
 
-    this.getAvailableOffer = function (serviceName) {
-        return OvhHttp.get("/hosting/web/availableOffer", {
-            rootPath: "apiv6",
-            params: {
-                domain: serviceName
+            /**
+             * Get content of databases tab
+             * @param {string} serviceName
+             * @param {integer} count
+             * @param {integer} offset
+             * @param {string|null} search
+             */
+            getTabDatabases (serviceName, count, offset, search) {
+                return this.OvhHttp.get(`/sws/hosting/web/${serviceName}/databases`, {
+                    rootPath: "2api",
+                    params: {
+                        count,
+                        offset,
+                        search
+                    }
+                });
             }
-        });
-    };
 
-    this.migrateMyOvhOrg = function (serviceName, destination) {
-        return OvhHttp.post("/hosting/web/{serviceName}/migrateMyOvhOrg", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            data: {
-                destinationServiceName: destination
+            /**
+             * Get content of ftp tab
+             * @param {string} serviceName
+             * @param {integer} count
+             * @param {integer} offset
+             * @param {boolean} needUsers
+             * @param {string|null} search
+             */
+            getTabFTP (serviceName, count, offset, needUsers, search) {
+                return this.OvhHttp.get(`/sws/hosting/web/${serviceName}/ftp`, {
+                    rootPath: "2api",
+                    params: {
+                        count,
+                        offset,
+                        needUsers,
+                        search
+                    }
+                });
             }
-        });
-    };
 
-    /*
-     * Get users account that have access to webserver logs
-     */
-    this.getUserLogs = function (serviceName) {
-        return OvhHttp.get("/hosting/web/{serviceName}/userLogs", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
+            /**
+             * Get tasks list
+             * @param {string} serviceName
+             * @param {integer} count
+             * @param {integer} offset
+             */
+            getTasksList (serviceName, count, offset) {
+                return this.OvhHttp.get(`/sws/hosting/web/${serviceName}/tasks`, {
+                    rootPath: "2api",
+                    params: {
+                        count,
+                        offset
+                    }
+                });
             }
-        });
-    };
 
-    this.getUserLogsEntry = function (serviceName, login) {
-        return OvhHttp.get("/hosting/web/{serviceName}/userLogs/{login}", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                login
+            /**
+             * Flush Cdn
+             * @param {string} serviceName
+             */
+            flushCdn (serviceName) {
+                return this.OvhHttp.post(`/hosting/web/${serviceName}/request`, {
+                    rootPath: "apiv6",
+                    data: {
+                        action: "FLUSH_CACHE"
+                    }
+                });
             }
-        });
-    };
 
-    /*
-     * Delete a user
-     */
-    this.deleteUserLogs = function (serviceName, login) {
-        return OvhHttp.delete("/hosting/web/{serviceName}/userLogs/{login}", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                login
-            },
-            broadcast: "hosting.userLogs.refresh"
-        });
-    };
-
-    /*
-     * Change password of a user
-     */
-    this.userLogsChangePassword = function (serviceName, login, newPassword) {
-        return OvhHttp.post("/hosting/web/{serviceName}/userLogs/{login}/changePassword", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                login
-            },
-            data: {
-                password: newPassword
+            /**
+             * Terminate Cdn
+             * @param {string} serviceName
+             */
+            terminateCdn (serviceName) {
+                return this.OvhHttp.post(`/hosting/web/${serviceName}/cdn/terminate`, {
+                    rootPath: "apiv6"
+                });
             }
-        });
-    };
 
-    /*
-     * Create a user
-     */
-    this.userLogsCreate = function (serviceName, description, login, password) {
-        return OvhHttp.post("/hosting/web/{serviceName}/userLogs", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            data: {
-                description,
-                login,
-                password
-            },
-            broadcast: "hosting.userLogs.refresh"
-        });
-    };
+            /**
+             * Get available offers
+             * @param {string} domain
+             */
+            getAvailableOffer (domain) {
+                return this.OvhHttp.get("/hosting/web/availableOffer", {
+                    rootPath: "apiv6",
+                    params: {
+                        domain
+                    }
+                });
+            }
 
-    /*
-     *
-     */
-    this.modifyUserLogs = function (serviceName, login, description) {
-        return OvhHttp.put("/hosting/web/{serviceName}/userLogs/{login}", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                login
-            },
-            data: {
-                description
-            },
-            broadcast: "hosting.userLogs.refresh"
-        });
-    };
+            /**
+             * Get offer capabilities
+             * @param {string} offer
+             */
+            getOfferCapabilities (offer) {
+                return this.OvhHttp.get("/hosting/web/offerCapabilities", {
+                    rootPath: "apiv6",
+                    params: {
+                        offer
+                    }
+                });
+            }
 
-    this.getUserLogsToken = function (serviceName, opts) {
-        return OvhHttp.get("/hosting/web/{serviceName}/userLogsToken", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            params: opts.params
-        });
-    };
+            /**
+             * MyOvhOrg migration
+             * @param {string} serviceName
+             * @param {string} destinationServiceName
+             */
+            migrateMyOvhOrg (serviceName, destinationServiceName) {
+                return this.OvhHttp.post(`/hosting/web/${serviceName}/migrateMyOvhOrg`, {
+                    rootPath: "apiv6",
+                    data: {
+                        destinationServiceName
+                    }
+                });
+            }
 
-    /* -------------------------POLLING-------------------------*/
+            /**
+             * Get list of user accounts that have access to webserver logs
+             * @param {string} serviceName
+             */
+            getUserLogs (serviceName) {
+                return this.OvhHttp.get(`/hosting/web/${serviceName}/userLogs`, {
+                    rootPath: "apiv6"
+                });
+            }
 
-    this.pollFlushCdn = function (serviceName, taskIds) {
-        const pollingTable = [];
+            /**
+             * Get user account
+             * @param {string} serviceName
+             * @param {string} login
+             */
+            getUserLogsEntry (serviceName, login) {
+                return this.OvhHttp.get(`/hosting/web/${serviceName}/userLogs/${login}`, {
+                    rootPath: "apiv6"
+                });
+            }
 
-        angular.forEach(taskIds, (taskId) => {
-            pollingTable.push(
-                Poll.poll(["apiv6/hosting/web", serviceName, "tasks", taskId].join("/"), null, {
+            /**
+             * Get user token
+             * @param {string} serviceName
+             * @param {object} opts
+             */
+            getUserLogsToken (serviceName, opts) {
+                return this.OvhHttp.get(`/hosting/web/${serviceName}/userLogsToken`, {
+                    rootPath: "apiv6",
+                    params: opts.params
+                });
+            }
+
+            /**
+             * Delete a user
+             * @param {string} serviceName
+             * @param {string} login
+             */
+            deleteUserLogs (serviceName, login) {
+                return this.OvhHttp.delete(`/hosting/web/${serviceName}/userLogs/${login}`, {
+                    rootPath: "apiv6",
+                    broadcast: "hosting.userLogs.refresh"
+                });
+            }
+
+            /**
+             * Change password of a user
+             * @param {string} serviceName
+             * @param {string} login
+             * @param {string} newPassword
+             */
+            userLogsChangePassword (serviceName, login, newPassword) {
+                return this.OvhHttp.post(`/hosting/web/${serviceName}/userLogs/${login}/changePassword`, {
+                    rootPath: "apiv6",
+                    data: {
+                        password: newPassword
+                    }
+                });
+            }
+
+            /**
+             * Create a user
+             * @param {string} serviceName
+             * @param {string} description
+             * @param {string} login
+             * @param {string} password
+             */
+            userLogsCreate (serviceName, description, login, password) {
+                return this.OvhHttp.post(`/hosting/web/${serviceName}/userLogs`, {
+                    rootPath: "apiv6",
+                    data: {
+                        description,
+                        login,
+                        password
+                    },
+                    broadcast: "hosting.userLogs.refresh"
+                });
+            }
+
+            /**
+             * Update a user
+             * @param {string} serviceName
+             * @param {string} login
+             * @param {string} description
+             */
+            modifyUserLogs (serviceName, login, description) {
+                return this.OvhHttp.put(`/hosting/web/${serviceName}/userLogs/${login}`, {
+                    rootPath: "apiv6",
+                    data: {
+                        description
+                    },
+                    broadcast: "hosting.userLogs.refresh"
+                });
+            }
+
+            /* -------------------------POLLING-------------------------*/
+
+            pollFlushCdn (serviceName, taskIds) {
+                return this.$q.all(_.map(taskIds, (taskId) => this.Poll.poll(`apiv6/hosting/web/${serviceName}/tasks/${taskId}`, null, {
                     namespace: "hosting.cdn.flush.refresh",
                     interval: 30000
-                }).then((resp) => resp, (err) => err)
-            );
-        });
+                }).then((resp) => resp, (err) => err)));
+            }
 
-        return $q.all(pollingTable);
-    };
-
-    this.pollSqlPrive = function (serviceName, taskIds) {
-        const pollingTable = [];
-
-        angular.forEach(taskIds, (taskId) => {
-            pollingTable.push(
-                Poll.poll(["apiv6/hosting/web", serviceName, "tasks", taskId].join("/"), null, {
+            pollSqlPrive (serviceName, taskIds) {
+                return this.$q.all(_.map(taskIds, (taskId) => this.Poll.poll(`apiv6/hosting/web/${serviceName}/tasks/${taskId}`, null, {
                     namespace: "hosting.database.sqlPrive",
                     interval: 30000
-                }).then((resp) => resp, (err) => err)
-            );
-        });
-
-        return $q.all(pollingTable);
-    };
-
-    this.killPollFlushCdn = function () {
-        Poll.kill({ namespace: "hosting.cdn.flush.refresh" });
-    };
-
-    this.pollDatabaseQuotaTask = function (serviceName, taskId) {
-        return Poll.poll(["apiv6/hosting/web", serviceName, "tasks", taskId].join("/"));
-    };
-
-    this.killPollSqlPrive = function () {
-        Poll.kill({ namespace: "hosting.database.sqlPrive" });
-    };
-
-    this.checkTaskUnique = function (serviceName, fct) {
-        const r = [];
-        let tasks = [];
-
-        angular.forEach(["init", "doing", "todo"], (status) => {
-            r.push(
-                $http
-                    .get(["apiv6/hosting/web", serviceName, "tasks"].join("/"), {
-                        params: {
-                            "function": fct,
-                            status
-                        }
-                    })
-                    .then((response) => {
-                        if (response.data && response.data.length) {
-                            tasks = _.union(tasks, response.data);
-                        }
-                    })
-            );
-        });
-
-        return $q.all(r).then(() => tasks);
-    };
-
-    /* -------------------------ORDER/HOSTING/WEB-------------------------*/
-
-    function listAvailableUpgradeDurations (opts, serviceName) {
-        return OvhHttp.get("/order/hosting/web/{serviceName}/upgrade", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            params: {
-                offer: opts.offer
+                })
+                    .then((resp) => resp)
+                    .catch((err) => err)));
             }
-        });
-    }
 
-    this.getUpgradePrices = function (opts, serviceName) {
-        return listAvailableUpgradeDurations(opts, serviceName).then((durations) => {
-            const requests = [];
-            const durationsTab = [];
-            const defer = $q.defer();
+            killPollFlushCdn () {
+                this.Poll.kill({ namespace: "hosting.cdn.flush.refresh" });
+            }
 
-            defer.notify(durations);
+            pollDatabaseQuotaTask (serviceName, taskId) {
+                return this.Poll.poll(`apiv6/hosting/web/${serviceName}/tasks/${taskId}`);
+            }
 
-            angular.forEach(durations, (duration) => {
-                requests.push(
-                    OvhHttp.get("/order/hosting/web/{serviceName}/upgrade/{duration}", {
+            killPollSqlPrive () {
+                this.Poll.kill({ namespace: "hosting.database.sqlPrive" });
+            }
+
+            /**
+             * Check task unique
+             * @param {string} serviceName
+             * @param {string} fct
+             */
+            checkTaskUnique (serviceName, fct) {
+                let tasks = [];
+                const r = _.map(["init", "doing", "todo"], (status) => this.OvhHttp.get(`/hosting/web/${serviceName}/tasks`, {
+                    rootPath: "apiv6",
+                    params: {
+                        "function": fct,
+                        status
+                    }
+                }).then((response) => {
+                    if (_.isArray(response.data) && !_.isEmpty(response.data)) {
+                        tasks = _.union(tasks, response.data);
+                    }
+                }));
+
+                return this.$q.all(r).then(() => tasks);
+            }
+
+            /* -------------------------ORDER/HOSTING/WEB-------------------------*/
+
+            /**
+             * Get upgrade offer prices
+             * @param {string} serviceName
+             * @param {string} offer
+             */
+            getUpgradePrices (serviceName, offer) {
+                return this.OvhHttp.get(`/order/hosting/web/${serviceName}/upgrade`, {
+                    rootPath: "apiv6",
+                    params: {
+                        offer
+                    }
+                }).then((durations) => {
+                    const durationsTab = [];
+                    const defer = this.$q.defer();
+                    defer.notify(durations);
+
+                    const requests = _.map(durations, (duration) => this.OvhHttp.get(`/order/hosting/web/${serviceName}/upgrade/${duration}`, {
                         rootPath: "apiv6",
-                        urlParams: {
-                            serviceName,
-                            duration
-                        },
                         params: {
-                            offer: opts.offer
+                            offer
                         }
                     }).then((durationDetails) => {
                         const details = angular.copy(durationDetails);
                         details.duration = duration;
                         durationsTab.push(details);
                         defer.notify(durationsTab);
-                    })
-                );
-            });
+                    }));
 
-            $q.all(requests).then(
-                () => {
-                    defer.resolve(durationsTab);
-                },
-                () => {
-                    defer.resolve(durationsTab);
-                }
-            );
+                    this.$q.all(requests)
+                        .then(() => {
+                            defer.resolve(durationsTab);
+                        }, () => {
+                            defer.resolve(durationsTab);
+                        });
 
-            return defer.promise;
-        });
-    };
-
-    this.orderUpgrade = function (offer, duration, serviceName) {
-        return OvhHttp.post("/order/hosting/web/{serviceName}/upgrade/{duration}", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                duration
-            },
-            data: {
-                offer
+                    return defer.promise;
+                });
             }
-        });
-    };
 
-    this.terminate = function (serviceName) {
-        return OvhHttp.post("/hosting/web/{serviceName}/terminate", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            data: {}
-        });
-    };
-
-    this.getSslState = (serviceName) =>
-        OvhHttp.get("/hosting/web/{serviceName}/ssl", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
+            /**
+             * Order upgraded offer
+             * @param {string} serviceName
+             * @param {string} offer
+             * @param {string} duration
+             */
+            orderUpgrade (serviceName, offer, duration) {
+                return this.OvhHttp.post(`/order/hosting/web/${serviceName}/upgrade/${duration}`, {
+                    rootPath: "apiv6",
+                    data: {
+                        offer
+                    }
+                });
             }
-        });
 
-    this.createSsl = (serviceName, certificate, key, chain) =>
-        OvhHttp.post("/hosting/web/{serviceName}/ssl", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            data: {
-                certificate,
-                key,
-                chain
+            /**
+             * Terminate hosting service
+             * @param {string} serviceName
+             */
+            terminate (serviceName) {
+                return this.OvhHttp.post(`/hosting/web/${serviceName}/terminate`, {
+                    rootPath: "apiv6",
+                    data: {}
+                });
             }
-        });
 
-    this.deleteSsl = (serviceName) =>
-        OvhHttp.delete("/hosting/web/{serviceName}/ssl", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
+            /**
+             * Get SSL State
+             * @param {string} serviceName
+             */
+            getSslState (serviceName) {
+                return this.OvhHttp.get(`/hosting/web/${serviceName}/ssl`, {
+                    rootPath: "apiv6"
+                });
             }
-        });
 
-    this.getAttachDomainSslLinked = (serviceName) => {
-        const defered = $q.defer();
-
-        OvhHttp.get("/hosting/web/{serviceName}/ssl/domains", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            returnSuccessKey: ""
-        })
-            .then((resp) => defered.resolve(resp.data))
-            .catch((err) => {
-                if (err.status === 404) {
-                    defered.resolve([]);
-                } else {
-                    defered.reject(err.data);
-                }
-            });
-
-        return defered.promise;
-    };
-
-    this.regeneratingSSL = (serviceName) =>
-        OvhHttp.post("/hosting/web/{serviceName}/ssl/regenerate", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
+            /**
+             * Create SSL certificate
+             * @param {string} serviceName
+             * @param {string} certificate
+             * @param {string} key
+             * @param {string} chain
+             */
+            createSsl (serviceName, certificate, key, chain) {
+                return this.OvhHttp.post(`/hosting/web/${serviceName}/ssl`, {
+                    rootPath: "apiv6",
+                    data: {
+                        certificate,
+                        key,
+                        chain
+                    }
+                });
             }
-        });
 
-    this.getServiceInfos = (serviceName) =>
-        OvhHttp.get("/hosting/web/{serviceName}/serviceInfos", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
+            /**
+             * Regenerate SSL certificate
+             * @param {string} serviceName
+             */
+            regeneratingSSL (serviceName) {
+                return this.OvhHttp.post(`/hosting/web/${serviceName}/ssl/regenerate`, {
+                    rootPath: "apiv6"
+                });
             }
-        });
 
-    this.getPrivateDatabasesLinked = (serviceName) =>
-        OvhHttp.get("/hosting/web/{serviceName}/privateDatabases", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
+            /**
+             * Delete SSL certificate
+             * @param {string} serviceName
+             */
+            deleteSsl (serviceName) {
+                return this.OvhHttp.delete(`/hosting/web/${serviceName}/ssl`, {
+                    rootPath: "apiv6"
+                });
             }
-        });
-});
+
+            /**
+             * Get attached domain linked by SSL certificate
+             * @param {string} serviceName
+             */
+            getAttachDomainSslLinked (serviceName) {
+                const defered = this.$q.defer();
+
+                this.$http.get(`/hosting/web/${serviceName}/ssl/domains`)
+                    .then((resp) => {
+                        defered.resolve(resp.data);
+                    }).catch((err) => {
+                        if (err.status === 404) {
+                            defered.resolve([]);
+                        } else {
+                            defered.reject(err.data);
+                        }
+                    });
+
+                return defered.promise;
+            }
+
+            /**
+             * Get linked private databases
+             * @param {string} serviceName
+             */
+            getPrivateDatabasesLinked (serviceName) {
+                return this.OvhHttp.get(`/hosting/web/${serviceName}/privateDatabases`, {
+                    rootPath: "apiv6"
+                });
+            }
+        }
+    );
+}

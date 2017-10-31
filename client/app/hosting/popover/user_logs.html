@@ -1,14 +1,14 @@
 <div class="popover-menu">
-    <button class="btn btn-link d-block" type="button"
+    <button class="btn btn-link" type="button"
             data-i18n-static="hosting_tab_USER_LOGS_table_popover_modify"
-            data-ng-click="modifyUser(userLogsEntry)">
+            data-ng-click="setAction('user-logs/update/hosting-user-logs-update', userLogsEntry)">
     </button>
-    <button class="btn btn-link d-block" type="button"
+    <button class="btn btn-link" type="button"
             data-i18n-static="hosting_tab_USER_LOGS_table_popover_update_password"
-            data-ng-click="updateUserPassword(userLogsEntry)">
+            data-ng-click="setAction('user-logs/password-update/hosting-user-logs-update-password', userLogsEntry.login)">
     </button>
-    <button class="btn btn-link d-block" type="button"
+    <button class="btn btn-link" type="button"
             data-i18n-static="hosting_tab_USER_LOGS_table_popover_delete"
-            data-ng-click="deleteUser(userLogsEntry)">
+            data-ng-click="setAction('user-logs/delete/hosting-user-logs-delete', userLogsEntry.login)">
     </button>
 </div>

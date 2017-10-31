@@ -1,17 +1,19 @@
-<div data-ovh-alert="{{alerts.dashboard}}"></div>
-
 <div class="page-header">
     <h1 data-i18n-static="domains_operations_progress_title"></h1>
 </div>
 
 <div class="container-fluid px-5">
-
-    <a class="btn btn-default my-5" data-ng-href="#/configuration/domains_operations">
-        <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
+    <a class="oui-button oui-button_link oui-button_icon-left my-5"
+       data-ng-href="#/configuration/domains_operations">
+        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
         <span data-i18n-static="common_back"></span>
     </a>
 
-    <div class="loader text-center" data-ng-if="ctrlDomainOperationProgress.loading"></div>
+    <div data-ovh-alert="{{alerts.main}}"></div>
+
+    <div class="text-center" data-ng-if="ctrlDomainOperationProgress.loading">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
 
     <div data-ng-if="!ctrlDomainOperationProgress.loading">
         <header class="mb-5" data-ng-if="ctrlDomainOperationProgress.domain">

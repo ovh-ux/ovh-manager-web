@@ -33,7 +33,7 @@
                 .finally(() => (self.loading.init = false));
         }
 
-        self.isPasswordValid = Hosting.isPasswordValid;
+        self.isPasswordValid = Hosting.constructor.isPasswordValid;
 
         self.loadHosting = (serviceName) => {
             self.loading.capabilities = true;
@@ -48,7 +48,7 @@
                     self.hostingInfos = response.info;
 
                     self.canBeCreated = databaseCapabilites || privateDatabaseCapabilities;
-                    self.canBeCreated = self.canBeCreated && Hosting.getRemainingQuota(self.hostingInfos.quotaSize, self.hostingInfos.quotaUsed) >= 219;
+                    self.canBeCreated = self.canBeCreated && Hosting.constructor.getRemainingQuota(self.hostingInfos.quotaSize, self.hostingInfos.quotaUsed) >= 219;
                 })
                 .catch((err) => {
                     Alerter.alertFromSWS($scope.tr("website_hosting_capabilities_error"), err, self.alerts);
@@ -102,7 +102,7 @@
                             traduction = err.data.split(":")[0] === "402" ? "website_creation_error_quotas" : "website_creation_error";
                         }
 
-                        Alerter.alertFromSWS($scope.tr(traduction), { message: err.data ? err.data : err.message, type: "ERROR" }, self.alerts);
+                        Alerter.alertFromSWS($scope.tr(traduction), { message: _.get(err, "data", err.message), type: "ERROR" }, self.alerts);
                     }
                 )
                 .finally(() => {
@@ -123,7 +123,7 @@
 
         $scope.$on("hostingDomain.modifyDomain.error", (err) => {
             if (!errorLoad) {
-                Alerter.alertFromSWS($scope.tr("website_creation_error"), err.data, self.alerts);
+                Alerter.alertFromSWS($scope.tr("website_creation_error"), _.get(err, "data", err), self.alerts);
             }
         });
 

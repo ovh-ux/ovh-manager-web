@@ -52,7 +52,7 @@ angular.module("App").controller("DomainOperationProgressCtrl", class DomainOper
                     this.timeleft = moment().isBefore(this.progress.expectedDoneDate) ? moment().to(this.progress.expectedDoneDate, true) : null;
                 }
             })
-            .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_error"), err, this.$scope.alerts.dashboard))
+            .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_error"), err, this.$scope.alerts.main))
             .finally(() => {
                 this.loading = false;
             });

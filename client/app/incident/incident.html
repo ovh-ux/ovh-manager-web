@@ -4,8 +4,8 @@
          data-wizard-on-finish="resetAction"
          data-wizard-title="i18n.common_incident_tracking">
         <div data-wizard-step>
-            <div class="loader"
-                 data-ng-if="!IncidentCtrl.informations.tasks">
+            <div class="text-center" data-ng-if="!IncidentCtrl.informations.tasks">
+                <oui-loader inline="true"></oui-loader>
             </div>
             <div data-ng-if="IncidentCtrl.informations.tasks">
                 <div class="mb-4"
@@ -14,9 +14,13 @@
                     <div class="p-2 incident-task">
                         <div data-ng-if="informations.comments">
                             <div class="mb-4" data-ng-repeat="comment in informations.comments track by $index">
-                                <strong class="d-block mb-2 text-danger"><span data-i18n-static="common_new_update"></span> (<span>{{ (comment.date_added * 1000) | date:'medium'}}</span>)</strong>
-                                <div class="task" data-ng-bind-html="comment.comment_text"></div>
-                                <hr />
+                                <p class="font-weight-bold mb-2 text-danger">
+                                    <span data-i18n-static="common_new_update"></span>
+                                    (<span data-ng-bind="(comment.date_added * 1000) | date:'medium'"></span>)
+                                </p>
+                                <div class="task"
+                                     data-ng-bind-html="comment.comment_text"></div>
+                                <hr>
                             </div>
                         </div>
                         <div class="task"

@@ -7,16 +7,24 @@
         <div data-wizard-step
              data-wizard-step-valid="isStepValid()">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loaders.disable"></div>
+            <div class="text-center" data-ng-if="loaders.disable">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!loaders.disable">
                 <p data-i18n-static="hosting_tab_BOOST_disable_title"></p>
                 <p data-i18n-static="hosting_tab_BOOST_disable_description"></p>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"
-                               data-ng-model="acceptCGV.value" />
-                        <span data-i18n-static="hosting_tab_BOOST_accept_cgv"></span>
+                <div class="oui-checkbox">
+                    <input type="checkbox" class="oui-checkbox__input" id="acceptCGV"
+                           data-ng-model="acceptCGV.value">
+                    <label class="oui-checkbox__label-container" for="acceptCGV">
+                        <span class="oui-checkbox__label"
+                              data-i18n-static="hosting_tab_BOOST_accept_cgv"></span>
+                        <span class="oui-checkbox__icon">
+                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                        </span>
                     </label>
                 </div>
             </div>

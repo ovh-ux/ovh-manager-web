@@ -21,10 +21,10 @@ angular
             this.privateDatabaseService.stopDatabase(this.$stateParams.productId)
                 .then((task) => {
                     this.$scope.pollAction(task);
-                    this.alerter.success(this.$scope.tr("privateDatabase_stop_success"), this.$scope.alerts.dashboard);
+                    this.alerter.success(this.$scope.tr("privateDatabase_stop_success"), this.$scope.alerts.main);
                 })
-                .catch((data) => {
-                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_stop_fail"), data.data, this.$scope.alerts.dashboard);
+                .catch((err) => {
+                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_stop_fail"), _.get(err, "data", err), this.$scope.alerts.main);
                 });
         }
 });

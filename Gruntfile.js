@@ -570,9 +570,9 @@ module.exports = function (grunt) {
                             "ovh-angular-otrs",
                             "ovh-api-services",
                             "ovh-angular-toaster",
-                            "ovh-common-style",
                             "ngCkeditor",
-                            "moment-picker"
+                            "moment-picker",
+                            "oui"
                         ];
                         _.forEach(assets[target].modules, (module) => {
                             if (regExp.test(module)) {
@@ -691,9 +691,9 @@ module.exports = function (grunt) {
                             "ovh-angular-otrs",
                             "ovh-api-services",
                             "ovh-angular-toaster",
-                            "ovh-common-style",
                             "ngCkeditor",
-                            "moment-picker"
+                            "moment-picker",
+                            "oui"
                         ];
 
                         _.forEach(assets[target].modules, (module) => {
@@ -746,11 +746,9 @@ module.exports = function (grunt) {
                         MANAGER_URLS: constants[target].MANAGER_URLS,
                         HOSTING: constants[target].HOSTING,
                         DOMAIN: constants[target].DOMAIN,
-                        NO_AUTORENEW_COUNTRIES: constants[target]
-                            .NO_AUTORENEW_COUNTRIES,
+                        NO_AUTORENEW_COUNTRIES: constants[target].NO_AUTORENEW_COUNTRIES,
                         WEBSITE_URLS: constants[target].website_url,
-                        new_bdd_user_grant_options: constants[target]
-                            .new_bdd_user_grant_options,
+                        new_bdd_user_grant_options: constants[target].new_bdd_user_grant_options,
                         OVHGuides: constants[target].OVHGuides
                     },
                     LANGUAGES: constants[target].LANGUAGES,

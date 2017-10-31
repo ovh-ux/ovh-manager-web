@@ -52,7 +52,7 @@ angular.module("App").controller(
                     this.hostingUrl = this.constants.urls.hosting[user.ovhSubsidiary] || this.constants.urls.hosting.FR;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), err, this.$scope.alerts.page);
                     this.$scope.resetAction();
                 })
                 .finally(() => {
@@ -174,18 +174,18 @@ angular.module("App").controller(
                 .post(this.domain.name, this.model.offer, this.model.dnsZone, this.model.duration, this.model.templateSelected ? this.model.templateSelected.name.toUpperCase() : null)
                 .then((order) => {
                     if (this.getSelectedOfferOrderInfos().prices.withTax.value === 0) {
-                        return this.User.payWithRegisteredPaymentMean({
+                        this.User.payWithRegisteredPaymentMean({
                             orderId: order.orderId,
                             paymentMean: "fidelityAccount"
                         });
                     }
-                    this.Alerter.success(this.$scope.tr("domain_order_hosting_finish_success", [order.url]), this.$scope.alerts.dashboard);
-                    this.$scope.resetAction();
+
+                    this.Alerter.success(this.$scope.tr("domain_order_hosting_finish_success", [order.url]), this.$scope.alerts.page);
                     window.open(order.url, "_blank");
                     return true;
+
                 })
-                .then(() => this.Alerter.success(this.$scope.tr("domain_order_hosting_validate_finish_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_order_hosting_finish_error"), _.get(err, "data", err), this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_order_hosting_finish_error"), _.get(err, "data", err), this.$scope.alerts.page))
                 .finally(() => this.$scope.resetAction());
         }
     }

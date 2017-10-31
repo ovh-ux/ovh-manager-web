@@ -9,7 +9,9 @@
              data-wizard-step-on-load="init"
              data-wizard-step-valid="isValid(1)">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.init"></div>
+            <div class="text-center" data-ng-if="loading.init">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <form class="form-horizontal" name="addCronForm" data-ng-if="!loading.init">
                 <p>
@@ -17,14 +19,15 @@
                     <small data-i18n-static="required_fields"></small>
                 </p>
 
-                <div class="form-group" data-ng-class="{'has-error': !isPathValid() || getSelectedCommand().length > 100}">
+                <div class="form-group"
+                     data-ng-class="{'has-error': !isPathValid() || getSelectedCommand().length > 100}">
                     <label class="control-label col-md-4 required" for="cronCommand"
                            data-i18n-static="hosting_tab_CRON_label_command"></label>
                     <div class="col-md-6">
                         <div class="input-group">
                             <span class="input-group-addon">./</span>
                             <input type="text" class="form-control" id="cronCommand" name="cronCommand" placeholder="{{::i18n.hosting_tab_CRON_command_placeholder}}" required
-                                 data-ng-model="selected.command">
+                                   data-ng-model="selected.command">
                         </div>
                         <small class="help-block"
                                data-i18n-static="hosting_common_path_help_inline"
@@ -38,42 +41,58 @@
                 <div class="form-group">
                     <label class="control-label col-md-4 required" for="cronlanguage"
                            data-i18n-static="hosting_tab_CRON_label_language"></label>
-                    <div class="col-md-6">
-                        <select class="form-control w-50" id="cronlanguage" required
-                                data-ng-model="model.language"
-                                data-ng-options="language as i18n['hosting_tab_CRON_table_language_'+ trEnum(language)] || language for language in languageEnum track by language" >
-                            <option value="" disabled
-                                    data-i18n-static="global_select"></option>
-                        </select>
+                    <div class="col-md-8">
+                        <div class="oui-select oui-select_inline mb-0">
+                            <select class="oui-select__input" id="cronlanguage" required
+                                    data-ng-model="model.language"
+                                    data-ng-options="language as i18n['hosting_tab_CRON_table_language_'+ trEnum(language)] || language for language in languageEnum track by language" >
+                                <option value="" disabled
+                                        data-i18n-static="select_placeholder"></option>
+                            </select>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-4" for="cronstatus"
+                    <label class="control-label col-md-4" for="cronStatus"
                            data-i18n-static="hosting_tab_CRON_label_activate"></label>
-                    <div class="checkbox col-md-8">
-                        <input type="checkbox" class="ml-0" id="cronstatus"
-                               data-ng-model="model.status"
-                               data-ng-false-value="'disabled'"
-                               data-ng-true-value="'enabled'">
+                    <div class="col-md-8">
+                        <div class="oui-checkbox oui-checkbox_inline mb-0 mt-2">
+                            <input type="checkbox" class="oui-checkbox__input" id="cronStatus" name="cronStatus"
+                                   data-ng-model="model.status"
+                                   data-ng-false-value="'disabled'"
+                                   data-ng-true-value="'enabled'">
+                            <label class="oui-checkbox__label-container" for="cronStatus">
+                                <span class="oui-checkbox__icon">
+                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                </span>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-group" data-ng-class="{'has-error': model.emailSelect === 'other' && addCronForm.email.$dirty && addCronForm.email.$invalid}">
+                <div class="form-group"
+                     data-ng-class="{'has-error': model.emailSelect === 'other' && addCronForm.email.$dirty && addCronForm.email.$invalid}">
                     <label class="control-label col-md-4 required" for="cronEmail">
                         <span id="emailLabel" data-i18n-static="hosting_tab_CRON_label_email"></span>
                         <span class="fa fa-info-circle" aria-hidden="true"
                               data-uib-tooltip="{{::i18n.hosting_tab_CRON_label_email_info}}"
                               data-tooltip-append-to-body="true"></span>
                     </label>
-                    <div class="col-md-6">
-                        <select class="form-control w-50" id="cronEmail" required
-                                data-ng-model="model.emailSelect">
-                            <option value="no" data-i18n-static="common_no"></option>
-                            <option value="nic-admin" data-ng-bind="::i18n['hosting_tab_CRON_email_nic-admin']"></option>
-                            <option value="nic-tech" data-ng-bind="::i18n['hosting_tab_CRON_email_nic-tech']"></option>
-                            <option value="other" data-i18n-static="hosting_tab_CRON_email_other"></option>
-                        </select>
+                    <div class="col-md-8">
+                        <div class="oui-select oui-select_inline mb-0">
+                            <select class="oui-select__input" id="cronEmail" required
+                                    data-ng-model="model.emailSelect">
+                                <option value="no" data-i18n-static="common_no"></option>
+                                <option value="nic-admin" data-ng-bind="::i18n['hosting_tab_CRON_email_nic-admin']"></option>
+                                <option value="nic-tech" data-ng-bind="::i18n['hosting_tab_CRON_email_nic-tech']"></option>
+                                <option value="other" data-i18n-static="hosting_tab_CRON_email_other"></option>
+                            </select>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                        </div>
                         <div class="mt-3" data-ng-show="model.emailSelect === 'other'">
                             <input type="email" class="form-control" name="email" aria-labelledby="emailLabel" placeholder="{{::i18n.hosting_tab_CRON_email_other_specify}}"
                                    data-ng-model="model.email"
@@ -106,7 +125,9 @@
              data-wizard-step-valid="!loading.validation"
              data-wizard-step-on-load="generateCron">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.validation"></div>
+            <div class="text-center" data-ng-if="loading.validation">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!loading.validation">
                 <p data-i18n-static="hosting_tab_CRON_step3_title"></p>

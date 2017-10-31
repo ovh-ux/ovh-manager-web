@@ -22,10 +22,10 @@ angular.module("controllers").controller(
                 .updateDnssecState(newState, [this.domain.name])
                 .then((data) => {
                     if (data.state !== "OK") {
-                        this.Alerter.alertFromSWS(this.$scope.tr(`domain_configuration_dnssec_error_${newState}`), data, this.$scope.alerts.dashboard);
+                        this.Alerter.alertFromSWS(this.$scope.tr(`domain_configuration_dnssec_error_${newState}`), data, this.$scope.alerts.main);
                     }
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr(`domain_configuration_dnssec_error_${newState}`), _.get(err, "data", err), this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr(`domain_configuration_dnssec_error_${newState}`), _.get(err, "data", err), this.$scope.alerts.main))
                 .finally(() => {
                     this.$scope.$emit("domain.dashboard.refresh");
                     this.$scope.resetAction();

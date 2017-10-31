@@ -50,7 +50,7 @@ angular.module("App").controller(
                         this.hasResult = true;
                     }
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_DYNHOSTLOGIN_table_empty"), err.data || err, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_DYNHOSTLOGIN_table_empty"), err.data || err, this.$scope.alerts.main))
                 .finally(() => {
                     this.loading.init = false;
                     if (_.isEmpty(this.dynHostsLogin)) {

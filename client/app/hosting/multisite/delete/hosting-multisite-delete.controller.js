@@ -1,50 +1,54 @@
-angular.module("App").controller("HostingRemoveDomainCtrl", ($scope, $stateParams, HostingDomain, Alerter) => {
-    "use strict";
-
-    $scope.selected = {
-        autoconfigure: true,
-        domain: $scope.currentActionData,
-        wwwNeeded: false
-    };
-    $scope.model = {
-        domains: null
-    };
-
-    $scope.loadHosting = function () {
-        HostingDomain.getExistingDomains($stateParams.productId, false).then(
-            (data) => {
-                $scope.model.domains = data.existingDomains;
-            },
-            (failure) => {
-                $scope.resetAction();
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_remove_step1_loading_error"), failure.data, $scope.alerts.dashboard);
-            }
-        );
-    };
-
-    const resultMessages = {
-        OK: $scope.tr("hosting_tab_DOMAINS_configuration_remove_!success"),
-        PARTIAL: $scope.tr("hosting_tab_DOMAINS_configuration_remove_partial"),
-        ERROR: $scope.tr("hosting_tab_DOMAINS_configuration_remove_failure")
-    };
-
-    $scope.submit = function () {
-        $scope.resetAction();
-        HostingDomain.removeDomain($stateParams.productId, $scope.selected.domain.name, $scope.selected.wwwNeeded, $scope.selected.autoconfigure).then(
-            (data) => {
-                Alerter.alertFromSWSBatchResult(resultMessages, data, $scope.alerts.dashboard);
-                $scope.selected.domain.isUpdating = true;
-            },
-            (failure) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_remove_failure"), failure.data, $scope.alerts.dashboard);
-            }
-        );
-    };
-
-    $scope.domainsWwwExists = function () {
-        if ($scope.model.domains && $scope.model.domains.indexOf(`www.${$scope.selected.domain.name}`) !== -1) {
-            return true;
+angular.module("App").controller(
+    "HostingRemoveDomainCtrl",
+    class HostingRemoveDomainCtrl {
+        constructor ($scope, $stateParams, Alerter, HostingDomain) {
+            this.$scope = $scope;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.HostingDomain = HostingDomain;
         }
-        return false;
-    };
-});
+
+        $onInit () {
+            this.model = {
+                domains: null
+            };
+            this.selected = {
+                autoconfigure: true,
+                domain: this.$scope.currentActionData,
+                wwwNeeded: false
+            };
+            this.resultMessages = {
+                OK: this.$scope.tr("hosting_tab_DOMAINS_configuration_remove_!success"),
+                PARTIAL: this.$scope.tr("hosting_tab_DOMAINS_configuration_remove_partial"),
+                ERROR: this.$scope.tr("hosting_tab_DOMAINS_configuration_remove_failure")
+            };
+
+            this.$scope.deleteMultiSite = () => this.deleteMultiSite();
+
+            this.HostingDomain.getExistingDomains(this.$stateParams.productId, false)
+                .then((data) => {
+                    this.model.domains = _.get(data, "existingDomains");
+                })
+                .catch((err) => {
+                    this.$scope.resetAction();
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DOMAINS_configuration_remove_step1_loading_error"), _.get(err, "data", err), this.$scope.alerts.main);
+                });
+        }
+
+        domainsWwwExists () {
+            return this.model.domains && _.indexOf(this.model.domains, `www.${this.selected.domain.name}`) !== -1;
+        }
+
+        deleteMultiSite () {
+            this.$scope.resetAction();
+            return this.HostingDomain.removeDomain(this.$stateParams.productId, this.selected.domain.name, this.selected.wwwNeeded, this.selected.autoconfigure)
+                .then((data) => {
+                    this.Alerter.alertFromSWSBatchResult(this.resultMessages, data, this.$scope.alerts.main);
+                    this.selected.domain.isUpdating = true;
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DOMAINS_configuration_remove_failure"), _.get(err, "data", err), this.$scope.alerts.main);
+                });
+        }
+    }
+);

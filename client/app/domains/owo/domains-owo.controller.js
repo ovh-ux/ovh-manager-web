@@ -52,7 +52,7 @@ angular.module("App").controller(
                         }
                     })
                     .catch((err) => {
-                        this.Alerter.alertFromSWS(this.$scope.tr("domains_configuration_whois_fail"), err, this.$scope.alerts.dashboard);
+                        this.Alerter.alertFromSWS(this.$scope.tr("domains_configuration_whois_fail"), err, this.$scope.alerts.main);
                         this.$scope.resetAction();
                     });
             };
@@ -61,8 +61,8 @@ angular.module("App").controller(
                 this.$scope.resetAction();
                 this.DomainsOwo
                     .updateOwoFields(this.activated, this.desactivated, this.selectedDomainsNames)
-                    .then((data) => this.Alerter.alertFromSWSBatchResult(this.domainsOwoMessages, data, this.$scope.alerts.dashboard))
-                    .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_configuration_whois_fail"), err, this.$scope.alerts.dashboard));
+                    .then((data) => this.Alerter.alertFromSWSBatchResult(this.domainsOwoMessages, data, this.$scope.alerts.main))
+                    .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_configuration_whois_fail"), err, this.$scope.alerts.main));
             };
         }
 

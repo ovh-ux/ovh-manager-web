@@ -12,7 +12,6 @@ angular.module("App").config(($stateProvider) => {
         templateUrl: "email-domain/email-domain.html",
         controller: "EmailDomainCtrl",
         controllerAs: "ctrlEmailDomain",
-        piwikActionName: "Emails configuration",
         reloadOnSearch: false,
         resolve: {
             currentSection: () => "email_domain",
@@ -27,7 +26,7 @@ angular.module("App").config(($stateProvider) => {
                     });
                 }
             ],
-            translator: ["translator", (translator) => translator.load(["email", "mailing_list"]).then(() => translator)]
+            translator: ["translator", (translator) => translator.load(["email", "hosting", "mailing_list"]).then(() => translator)]
         }
     });
 
@@ -36,7 +35,6 @@ angular.module("App").config(($stateProvider) => {
         templateUrl: "email-domain/delegate/email-domain-delegate.html",
         controller: "EmailDelegateCtrl",
         controllerAs: "ctrlEmailDelegate",
-        piwikActionName: "Emails delegate configuration",
         reloadOnSearch: false,
         resolve: {
             currentSection: () => "email_delegate",

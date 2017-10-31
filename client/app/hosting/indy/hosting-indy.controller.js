@@ -1,56 +1,62 @@
-angular.module("App").controller("HostingIndyTabCtrl", function ($scope, $location, $stateParams, HostingIndy, Alerter) {
-    "use strict";
-
-    const self = this;
-
-    self.filter = {
-        login: ""
-    };
-
-    self.loaders = {
-        indys: false
-    };
-
-    //---------------------------------------------
-    // INDYS
-    //---------------------------------------------
-    self.refreshTableIndys = function (forceRefresh = false) {
-        self.loaders.indys = true;
-        self.indyIds = null;
-
-        let params = {};
-        if (self.filter.login) {
-            params = { login: ["%", self.filter.login, "%"].join("") };
+angular.module("App").controller(
+    "HostingIndyTabCtrl",
+    class HostingIndyTabCtrl {
+        constructor ($scope, $location, $stateParams, Alerter, HostingIndy) {
+            this.$scope = $scope;
+            this.$location = $location;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.HostingIndy = HostingIndy;
         }
 
-        HostingIndy.getIndys($stateParams.productId, {
-            params,
-            forceRefresh
-        }).then((ids) => {
-            self.indyIds = ids;
-        }).catch((err) => {
-            Alerter.alertFromSWS($scope.tr("hosting_tab_INDY_error"), err, $scope.alerts.dashboard);
-        }).finally(() => {
-            if (_.isEmpty(self.indyIds)) {
-                self.loaders.indys = false;
+        $onInit () {
+            this.filter = {
+                login: ""
+            };
+            this.loading = false;
+        }
+
+        goSearch () {
+            this.refreshTableIndys();
+        }
+
+        resetSearch () {
+            this.filter.login = "";
+            this.refreshTableIndys();
+        }
+
+        selectAttachedDomain (domain) {
+            this.$location.search("domain", domain);
+            this.$scope.setSelectedTab("DOMAINS");
+        }
+
+        refreshTableIndys (forceRefresh = false) {
+            this.loading = true;
+            this.indyIds = null;
+
+            let params = {};
+            if (this.filter.login) {
+                params = { login: `%${this.filter.login}%` };
             }
-        });
-    };
 
-    self.transformItem = function (item) {
-        return HostingIndy.getIndy($stateParams.productId, { login: item });
-    };
+            this.HostingIndy.getIndys(this.$stateParams.productId, { params, forceRefresh })
+                .then((ids) => {
+                    this.indyIds = ids;
+                }).catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_INDY_error"), err, this.$scope.alerts.main);
+                }).finally(() => {
+                    if (_.isEmpty(this.indyIds)) {
+                        this.loading = false;
+                    }
+                });
+        }
 
-    self.onTransformItemDone = function () {
-        self.loaders.indys = false;
-    };
+        transformItem (item) {
+            return this.HostingIndy.getIndy(this.$stateParams.productId, { login: item });
+        }
 
-    self.selectAttachedDomain = function (domain) {
-        $location.search("domain", domain);
-        $scope.setSelectedTab("DOMAINS");
-    };
-
-    $scope.$watch(() => self.filter.login, () => {
-        self.refreshTableIndys();
-    });
-});
+        onTransformItemDone () {
+            this.loading = false;
+        }
+    }
+);
