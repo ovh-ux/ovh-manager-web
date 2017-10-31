@@ -12,10 +12,7 @@
             <strong data-ng-bind="ctrlEmailDomainEmailFilter.currentAccount.accountName"></strong>
         </h2>
 
-        <div class="text-center"
-             data-ng-if="ctrlEmailDomainEmailFilter.loading.filters">
-            <oui-loader size="l" inline="true"></oui-loader>
-        </div>
+        <oui-loader size="l" data-ng-if="ctrlEmailDomainEmailFilter.loading.filters"></oui-loader>
 
         <div data-ng-if="!ctrlEmailDomainEmailFilter.loading.filters">
             <div class="alert alert-info" role="alert"
@@ -24,7 +21,7 @@
             </div>
 
             <div class="table-responsive" data-ng-if="ctrlEmailDomainEmailFilter.filters.length > 0">
-                <table class="table table-hover table-striped">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col" data-i18n-static="email_tab_table_header_filter_name"></th>

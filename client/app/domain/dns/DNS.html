@@ -17,13 +17,13 @@
                  data-ng-if="ctrlDomainDns.dns.activeDns === 1 && !ctrlDomainDns.dns.table.isPartial"></div>
 
             <div class="alert alert-info" role="alert"
-                 data-ng-if="!ctrlDomainDns.domain.managedByOvh && ctrlDomainDns.allowModification">
-                <div data-ng-bind-html="tr('domain_tab_DNS_unlock_warning_manuel_check', [ctrlDomainDns.urls.zoneCheck, i18n.domain_tab_DNS_unlock_warning_manuel_check_tool + ' (' + i18n.core_new_window + ')'])"></div>
+                 data-ng-bind-html="tr('domain_tab_DNS_unlock_warning_manuel_check', [ctrlDomainDns.urls.zoneCheck, i18n.domain_tab_DNS_unlock_warning_manuel_check_tool + ' (' + i18n.core_new_window + ')'])"
+                 data-ng-if="ctrlDomainDns.allowModification">
             </div>
 
             <form name="ctrlDomainDns.dnsServerNamesForm" data-ng-if="ctrlDomainDns.dns.table.dns.length">
                 <div class="table-responsive">
-                    <table class="table" data-ng-class="{ 'table-hover table-striped': !ctrlDomainDns.loading.table && ctrlDomainDns.dns.table.dns.length }">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">
@@ -117,22 +117,23 @@
                         data-ng-if="ctrlDomainDns.domain.hasDnsAnycast === false && ctrlDomainDns.allowModification && !ctrlDomainDns.editMode">
                 </button>
                 <button class="btn btn-block btn-default" type="button"
-                        data-i18n-static="domain_tab_DNS_lock_button"
-                        data-ng-click="setAction('dns/lock/domain-dns-lock', false)"
-                        data-ng-if="!ctrlDomainDns.domain.managedByOvh && ctrlDomainDns.allowModification && !ctrlDomainDns.editMode">
-                </button>
-                <button class="btn btn-block btn-default" type="button"
                         data-i18n-static="domain_configuration_dns_config"
                         data-ng-click="ctrlDomainDns.activeEditMode()"
                         data-ng-if="ctrlDomainDns.allowModification && !ctrlDomainDns.editMode">
                 </button>
-                <button class="btn btn-block btn-success" type="button"
+                <button class="btn btn-block btn-default" type="button"
+                        data-i18n-static="domain_tab_DNS_lock_button"
+                        data-ng-click="setAction('dns/lock/domain-dns-lock', false)"
+                        data-ng-disabled="ctrlDomainDns.domain.managedByOvh"
+                        data-ng-if="ctrlDomainDns.allowModification && !ctrlDomainDns.editMode">
+                </button>
+                <button class="btn btn-block btn-primary" type="button"
                         data-i18n-static="domain_tab_DNS_save"
                         data-ng-click="ctrlDomainDns.saveDns()"
                         data-ng-disabled="!ctrlDomainDns.dnsServerNamesForm.$dirty || ctrlDomainDns.dnsServerNamesForm.$invalid || !ctrlDomainDns.atLeastOneDns"
                         data-ng-if="ctrlDomainDns.editMode">
                 </button>
-                <button class="btn btn-block btn-danger" type="button"
+                <button class="btn btn-block btn-default" type="button"
                         data-i18n-static="domain_tab_DNS_cancel"
                         data-ng-click="ctrlDomainDns.cancelDns()"
                         data-ng-if="ctrlDomainDns.editMode">

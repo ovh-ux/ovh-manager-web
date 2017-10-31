@@ -6,9 +6,7 @@
     <div class="container-fluid px-5">
         <div data-ovh-alert="{{alerts.order}}"></div>
 
-        <div class="mt-5 text-center" data-ng-if="orderCtrl.loading.init">
-            <oui-loader size="l" inline="true"></oui-loader>
-        </div>
+        <oui-loader size="l" data-ng-if="orderCtrl.loading.init"></oui-loader>
 
         <div class="row" data-ng-if="!orderCtrl.loading.init && orderCtrl.list.versions.length">
             <div class="col-md-9">
@@ -165,8 +163,7 @@
                                     <span data-i18n-static="privateDatabase_order_step3_generate"
                                           data-ng-if="!orderCtrl.loading.bc"></span>
                                     <span data-ng-if="orderCtrl.loading.bc">
-                                        <span class="oui-loader oui-loader_inline oui-loader_s"
-                                              data-ng-if="orderCtrl.loading.bc">
+                                        <span class="oui-loader oui-loader_inline oui-loader_s">
                                             <span class="oui-loader__container">
                                                 <span class="oui-loader__image"></span>
                                             </span>

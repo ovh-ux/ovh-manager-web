@@ -36,9 +36,7 @@
                     </a>
                 </div>
 
-                <div class="text-center" data-ng-if="loading.init">
-                    <oui-loader size="l" inline="true"></oui-loader>
-                </div>
+                <oui-loader size="l" data-ng-if="loading.init"></oui-loader>
 
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="hosting_tab_CRON_table_empty"
@@ -71,8 +69,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table"
-                               data-ng-class="{'table-hover table-striped': !loading.cron && crons.ids.length}">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_command"></th>

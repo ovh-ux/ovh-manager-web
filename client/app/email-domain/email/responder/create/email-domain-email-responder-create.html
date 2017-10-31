@@ -10,9 +10,7 @@
             <p data-i18n-static="email_tab_modal_create_responder_heading"></p>
             <p class="font-weight-bold" data-i18n-static="email_tab_modal_create_responder_info"></p>
 
-            <div class="text-center" data-ng-if="ctrl.loading">
-                <oui-loader inline="true"></oui-loader>
-            </div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
             <div data-ng-if="!ctrl.loading">
                 <form class="form-horizontal" name="ctrl.createResponderForm">

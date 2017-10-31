@@ -13,8 +13,7 @@
             <p data-i18n-static="email_tab_acl_info"></p>
 
             <div class="table-responsive">
-                <table class="table"
-                       data-ng-class="{'table-hover table-striped': !ctrlEmailDomainEmailAcl.loading.acls && ctrlEmailDomainEmailAcl.aclsDetails.length}">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col" data-i18n-static="email_tab_table_header_nic"></th>
@@ -56,12 +55,12 @@
                                 </form>
                             </td>
                             <td class="text-nowrap">
-                                <button class="btn btn-success" type="button"
+                                <button class="oui-button oui-button_primary oui-button_small-width mb-0" type="button"
                                         data-ng-click="ctrlEmailDomainEmailAcl.addAcl()"
                                         data-ng-disabled="!ctrlEmailDomainEmailAcl.addAclItem.value">
                                     <span class="fa fa-check" aria-hidden="true"></span>
                                 </button>
-                                <button class="btn btn-danger" type="button"
+                                <button class="oui-button oui-button_secondary oui-button_small-width mb-0" type="button"
                                         data-ng-click="ctrlEmailDomainEmailAcl.addingAcl = false">
                                     <span class="fa fa-times" aria-hidden="true"></span>
                                 </button>
