@@ -21,7 +21,6 @@ angular
 
         function setGeneralMenuItems (currentUser) {
             const generalMenuItems = buildGeneralMenuItems(currentUser);
-
             managerNavbar.setInternalLinks(generalMenuItems);
         }
 
