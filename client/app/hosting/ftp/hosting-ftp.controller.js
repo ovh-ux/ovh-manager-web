@@ -98,12 +98,12 @@ angular.module("App").controller(
                         };
                     }
 
-                    for (const user of ftpInformations.list.results) {
+                    _.forEach(ftpInformations.list.results, (user) => {
                         user.ftp = user.serviceManagementCredentials.ftp;
                         user.ftpUrl = `ftp://${user.serviceManagementCredentials.ftp.user}@${user.serviceManagementCredentials.ftp.url}:${user.serviceManagementCredentials.ftp.port}/`;
                         user.ssh = user.serviceManagementCredentials.ssh;
                         user.sshUrl = `ssh://${user.serviceManagementCredentials.ssh.user}@${user.serviceManagementCredentials.ssh.url}:${user.serviceManagementCredentials.ssh.port}/`;
-                    }
+                    });
 
                     this.primaryUserEnabled = ftpInformations.list.results.length && ftpInformations.list.results[0].isPrimaryAccount ? ftpInformations.list.results[0].state === "RW" : null;
                     this.ftpInformations = ftpInformations;
