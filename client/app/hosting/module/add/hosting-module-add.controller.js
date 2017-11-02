@@ -232,7 +232,7 @@ angular.module("App").controller("HostingModuleCreateCtrl", ($scope, $q, $stateP
 
     $scope.$watch("model.domain", () => {
         if (!$scope.model.domain) {
-            return void 0;
+            return null;
         }
 
         if ($scope.model.domain === $scope.userClusterDomain) {
