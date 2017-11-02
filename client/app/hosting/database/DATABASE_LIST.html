@@ -39,9 +39,16 @@
         <p data-i18n-static="hosting_tab_DATABASES_configuration_quota_warning_message"></p>
         <p data-i18n-static="hosting_tab_DATABASES_configuration_quota_warning_resolution"></p>
 
-        <div class="alert alert-info" role="alert"
-             data-i18n-static="hosting_tab_DATABASES_table_empty"
-             data-ng-if="!hasResult">
+        <div data-ng-if="!hasResult">
+            <button class="oui-button oui-button_secondary" type="button"
+                    data-i18n-static="hosting_tab_DATABASES_configuration_create_title_button"
+                    data-ng-click="setAction('database/add/hosting-database-add')"
+                    data-ng-disabled="!canCreateDatabase">
+            </button>
+
+            <div class="alert alert-info" role="alert"
+                 data-i18n-static="hosting_tab_DATABASES_table_empty">
+            </div>
         </div>
 
         <div class="mt-5"
