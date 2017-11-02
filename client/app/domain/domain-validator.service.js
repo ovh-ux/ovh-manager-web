@@ -431,7 +431,9 @@ angular.module("services").service(
                             // Test "a", "mx", "ptr", "ip4", "ip6", "include", "exists", "redirect", "exp" fields
                         const fieldTypes = ["A", "MX", "PTR", "IP4", "IP6", "INCLUDE", "EXISTS", "REDIRECT", "EXP"];
 
-                        for (const currentFieldType of fieldTypes) {
+                        for (let j = 0; j < fieldTypes.length; j++) {
+                            const currentFieldType = fieldTypes[j];
+
                             if (!found && this.regex.SPF_sender[currentFieldType].test(splitted[i])) {
                                 found = true;
 
