@@ -232,7 +232,7 @@ angular.module("App").controller("HostingModuleCreateCtrl", ($scope, $q, $stateP
 
     $scope.$watch("model.domain", () => {
         if (!$scope.model.domain) {
-            return;
+            return void 0;
         }
 
         if ($scope.model.domain === $scope.userClusterDomain) {
@@ -253,8 +253,6 @@ angular.module("App").controller("HostingModuleCreateCtrl", ($scope, $q, $stateP
                 .catch((err) => {
                     Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), _.get(err, "data", err), $scope.alerts.main);
                     $scope.loading.domains = false;
-                })
-                .finally(() => {
                     $scope.resetAction();
                 });
         }
