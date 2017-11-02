@@ -8,8 +8,7 @@
     </button>
     <h2 data-ng-bind-html="tr('privateDatabase_tabs_list_extensions_info', '<strong>' + extensionCtrl.bdd.databaseName + '</strong>')"></h2>
 
-    <table class="table"
-           data-ng-class="{'table-hover table-striped': !extensionCtrl.loaders.extensions && extensionCtrl.extensions.length > 0}">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th scope="col" data-i18n-static="privateDatabase_tabs_list_extensions_extension">Extension</th>

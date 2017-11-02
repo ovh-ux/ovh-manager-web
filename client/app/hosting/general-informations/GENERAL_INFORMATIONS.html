@@ -1,8 +1,6 @@
 <div class="container-fluid px-0" data-ng-controller="GeneralInformationsCtrl as ctrl">
 
-    <div class="text-center" data-ng-if="!hosting">
-        <oui-loader inline="true"></oui-loader>
-    </div>
+    <oui-loader data-ng-if="!hosting"></oui-loader>
 
     <div class="row" data-ng-show="hosting">
         <div class="col-md-9">
@@ -29,19 +27,19 @@
                                         <span class="label label-danger"
                                               data-i18n-static="hosting_dashboard_service_state_DELETE"
                                               data-ng-if="hosting.serviceInfos.renew.deleteAtExpiration"></span>
-                                        <a data-ng-href="{{guideHostingState}}" class="btn btn-link py-0"
-                                           target="_blank" title="{{::i18n.hosting_state_info_title}}"
-                                           data-ng-if="guideHostingState">
-                                            <span class="fa fa-info-circle mr-2" aria-hidden="true"></span>
-                                            <span
-                                                data-ng-bind="tr('hosting_state_info_' + hosting.serviceState)"></span>
-                                        </a>
+                                        <div class="mt-2" data-ng-if="guideHostingState">
+                                            <a target="_blank" title="{{::i18n.hosting_state_info_title}}"
+                                               data-ng-href="{{guideHostingState}}">
+                                                <span class="fa fa-info-circle mr-2" aria-hidden="true"></span>
+                                                <span data-ng-bind="tr('hosting_state_info_' + hosting.serviceState)"></span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </li>
                                 <li class="oui-tile__item">
                                     <div class="oui-tile__definition">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6">
                                                 <strong class="d-block"
                                                         data-i18n-static="common_ipv4"></strong>
                                                 <span data-ng-bind="hosting.hostingIp"
@@ -49,7 +47,7 @@
                                                 <span data-i18n-static="hosting_ipv4_coming_soon"
                                                       data-ng-if="hosting.hostingIp == null"></span>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-lg-6">
                                                 <strong class="d-block" data-i18n-static="common_ipv6"></strong>
                                                 <span class="word-break"
                                                       data-ng-bind="hosting.hostingIpv6"
@@ -226,8 +224,7 @@
                                                         data-i18n-static="hosting_dashboard_service_cdn"></strong>
                                                 <span class="mr-2"
                                                       data-ng-bind="hosting.hasCdn ? i18n.common_yes : i18n.common_no"></span>
-                                                <oui-loader size="s" inline="true"
-                                                            data-ng-if="flushCdnState === 'check'"></oui-loader>
+                                                <oui-loader size="s" inline="true" data-ng-if="flushCdnState === 'check'"></oui-loader>
                                                 <span class="label label-info"
                                                       data-i18n-static="hosting_dashboard_service_flush_cdn_doing"
                                                       data-ng-if="flushCdnState === 'doing'"></span>

@@ -15,15 +15,15 @@ angular.module("App").controller(
             this.$scope.$on("domain.tabs.glue.refresh", () => this.refreshTableGlues());
             this.$scope.$on("domain.DomainHostCreate.done", () => {
                 this.refreshTableGlues();
-                this.Alerter.resetMessage(this.$scope.alerts.page);
+                this.Alerter.resetMessage(this.$scope.alerts.main);
             });
             this.$scope.$on("domain.DomainHostDelete.done", () => {
                 this.refreshTableGlues();
-                this.Alerter.resetMessage(this.$scope.alerts.page);
+                this.Alerter.resetMessage(this.$scope.alerts.main);
             });
             this.$scope.$on("domain.DomainHostUpdate.done", () => {
                 this.refreshTableGlues();
-                this.Alerter.resetMessage(this.$scope.alerts.page);
+                this.Alerter.resetMessage(this.$scope.alerts.main);
             });
             this.$scope.$on("$destroy", () => {
                 this.Domain.killPollDomainHostCreate();

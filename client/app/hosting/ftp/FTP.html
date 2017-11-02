@@ -49,7 +49,7 @@
 
                 <div class="table-responsive"
                      data-ng-if="!ctrlHostingTabFTP.loading.ftp && ctrlHostingTabFTP.ftpInformations.list.results.length > 0">
-                    <table class="table table-hover table-striped">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_login"></th>
@@ -241,8 +241,7 @@
 
                     <!-- Have multiftp option -->
                     <div class="table-responsive">
-                        <table class="table"
-                               data-ng-class="{'table-hover table-striped': !ctrlHostingTabFTP.loading.ftp && ctrlHostingTabFTP.ftpInformations.list.results.length}">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_login"></th>

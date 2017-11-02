@@ -1,6 +1,6 @@
 angular
     .module("App")
-    .run((LANGUAGES, managerNavbar, User, constants, translator, ssoAuthentication, OtrsPopupService) => {
+    .run((constants, LANGUAGES, managerNavbar, OtrsPopupService, ssoAuthentication, translator, User) => {
         return User.getUser()
             .then((currentUser) => {
                 setMenuItemssToOtherUniverses(currentUser);
@@ -10,11 +10,13 @@ angular
         function setMenuItemssToOtherUniverses (currentUser) {
             const universeMenuItems = Object.keys(constants.MANAGER_URLS)
                 .map((universeName) => ({
+                    icon: universeName === "labs" ? "fa fa-flask fs24" : null,
+                    label: universeName === "labs" ? null : translator.tr(`universe_univers-${universeName}_name`),
+                    title: translator.tr(`universe_univers-${universeName}_name`),
                     universe: universeName,
-                    label: translator.tr(`universe_univers-${universeName}_name`),
                     url: constants.MANAGER_URLS[universeName]
                 }))
-                .filter((universeMenuItem) => universeMenuItem.universe === "partners" ? currentUser.ovhSubsidiary === "FR" : true);
+                .filter((universeMenuItem) => universeMenuItem.universe === "partners" || universeMenuItem.universe === "labs" ? currentUser.ovhSubsidiary === "FR" : true);
 
             managerNavbar.setExternalLinks(universeMenuItems);
         }

@@ -9,8 +9,7 @@
     <h2 data-ng-bind="i18n.privateDatabase_tabs_dumps_change + ' ' + dumpCtrl.database.databaseName"></h2>
 
     <div class="table-responsive">
-        <table class="table"
-               data-ng-class="{'table-hover table-striped': !dumpCtrl.loaders.dumps && dumpCtrl.dumpsIds.length}">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col" data-i18n-static="privateDatabase_tabs_dumps_creation_date"></th>
@@ -41,7 +40,7 @@
                     <td>
                         <span class="mr-3" data-ng-bind="::dump.creationDate | date:'medium'"></span>
                         <span class="label label-info" data-ng-if="dump.waitRestore">
-                            <span class="fa fa-spinner fa-spin mr-2" aria-hidden="true"></span>
+                            <oui-loader size="s" inline="true"></oui-loader>
                             <span data-i18n-static="privateDatabase_restore_in_progress"></span>
                         </span>
                     </td>

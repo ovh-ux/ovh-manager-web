@@ -40,8 +40,7 @@
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table"
-                           data-ng-class="{'table-hover table-striped': !loading.domains && domains.list.results.length}">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col" data-i18n-static="hosting_tab_DOMAINS_table_header_domain"></th>
@@ -77,7 +76,8 @@
 
                         <tbody data-ng-if="!loading.domains && domains.list.results.length > 0">
                             <tr data-ng-repeat="domain in domains.list.results track by $index">
-                                <td data-ng-bind="domain.displayName"></td>
+                                <td class="word-break"
+                                    data-ng-bind="domain.displayName"></td>
                                 <td data-ng-bind="domain.path"></td>
                                 <td class="text-center">
                                     <span class="label"

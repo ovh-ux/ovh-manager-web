@@ -8,9 +8,7 @@
 
             <p data-i18n-static="email_tab_modal_filter_edit_info"></p>
 
-            <div class="text-center" data-ng-if="ctrl.loading">
-                <oui-loader inline="true"></oui-loader>
-            </div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
             <div data-ng-if="!ctrl.loading">
 
@@ -78,7 +76,7 @@
                                     <input type="text" class="form-control" id="filter-edit-header-{{$index}}" maxlength="50" placeholder="{{::i18n.email_tab_modal_filter_create_header}}" required
                                            data-ng-model="rule.header">
                                     <div class="input-group-btn">
-                                        <button class="btn btn-danger" type="button"
+                                        <button class="btn btn-default" type="button"
                                                 data-ng-click="rule.headerSelect = ''">
                                             <span class="fa fa-times" aria-hidden="true"></span>
                                         </button>

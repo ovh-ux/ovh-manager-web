@@ -39,8 +39,8 @@ angular.module("App").controller(
             this.$scope.domains = null;
             this.$scope.selectedDomains = [];
             this.$scope.alerts = {
-                dashboard: "alerts.domains.dashboard",
-                content: "alerts.domains.content"
+                page: "alerts.domains.page",
+                main: "alerts.domains.main"
             };
             this.$scope.currentAction = null;
             this.$scope.currentActionData = null;

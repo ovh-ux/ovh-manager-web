@@ -10,9 +10,9 @@
          data-ng-if="!ctrlEmailsTabTasksCtrl.loading && !ctrlEmailsTabTasksCtrl.tasks.length">
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-hover table-striped"
-               data-ng-if="!ctrlEmailsTabTasksCtrl.loading && ctrlEmailsTabTasksCtrl.tasks.length > 0">
+    <div class="table-responsive"
+         data-ng-if="!ctrlEmailsTabTasksCtrl.loading && ctrlEmailsTabTasksCtrl.tasks.length > 0">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col" data-i18n-static="email_tab_TASK_table_function"></th>

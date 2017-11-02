@@ -9,9 +9,7 @@
 
             <p data-i18n-static="hosting_tab_FTP_configuration_restore_password_step1_question"></p>
 
-            <div class="text-center" data-ng-if="ctrl.loading">
-                <oui-loader inline="true"></oui-loader>
-            </div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
             <form class="form-horizontal" name="hostingRestoreSnapshotForm"
                   data-ng-if="!ctrl.loading">

@@ -16,7 +16,7 @@
 
             <div class="row mb-3 mt-5">
                 <div class="col-xs-4" data-ng-if="ctrlSubscribers.subscribers.selected.length > 0">
-                    <button class="btn btn-danger" type="button"
+                    <button class="btn btn-default" type="button"
                             data-i18n-static="common_delete"
                             data-ng-click="setAction('email-domain/mailing-list/subscriber/delete/email-domain-mailing-list-subscriber-delete', { mailingList: ctrlSubscribers.mailingList, subscribers: ctrlSubscribers.subscribers.selected })"
                             data-ng-disabled="ctrlSubscribers.subscribers.updating">
@@ -25,7 +25,8 @@
                 <div data-ng-class="{'col-xs-8': ctrlSubscribers.subscribers.selected.length > 0, 'col-xs-12': !ctrlSubscribers.subscribers.selected.length}">
                     <form class="form-inline d-md-flex justify-content-md-end" name="searchSubscribersForm">
                         <div class="form-group">
-                            <label class="sr-only" for="searchSubscribers"></label>
+                            <label class="sr-only" for="searchSubscribers"
+                                   data-i18n-static="common_search"></label>
                             <div class="input-group">
                                 <input type="text" class="form-control" id="searchSubscribers" name="searchSubscribers" placeholder="{{::i18n.navigation_left_search}}"
                                        data-ng-change="ctrlSubscribers.goSearch()"
@@ -50,8 +51,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table"
-                       data-ng-class="{'table-hover table-striped': !ctrlSubscribers.loading.subscribers && !ctrlSubscribers.loading.pager && !ctrlSubscribers.subscribers.updating && ctrlSubscribers.subscribers.ids.length}">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th class="min-width text-center" scope="col">

@@ -13,40 +13,26 @@
 @import "utils/variables";
 @import "utils/function";
 @import "utils/elements";
-@import "utils/utilities";
 
 @import "common/animation";
 @import "common/autocomplete";
 @import "common/button";
-@import "common/buttonToggle";
 @import "common/countryIcon";
 @import "common/datePicker";
 @import "common/distributionIcon";
-@import "common/dropdown";
 @import "common/global";
 @import "common/graphicalTools";
 @import "common/icon";
 @import "common/incident";
-@import "common/informationBlock";
-@import "common/loader";
-@import "common/orderResume";
+@import "common/linkedPopover";
 @import "common/progress";
-@import "common/progressBarWithText";
-@import "common/progressBarExtraStyles";
 @import "common/selectList";
-@import "common/serviceIcon";
 @import "common/switch";
 @import "common/v6-ui-switch";
 @import "common/wizard";
 
-@import "module/domain/domains";
 @import "module/emails/emails";
-@import "module/hosting/database";
-@import "module/hosting/hosting";
-@import "module/mailing_list/mailing_list";
 @import "module/modules/modules";
-@import "module/private_database/private_database";
-@import "module/website/website";
 
 @import "../components/pagination-front/pagination-front";
 @import "../components/incrementNumber/incrementNumber";
@@ -54,10 +40,6 @@
 @import "../components/manager-preload/manager-preload";
 @import "../components/sidebar-menu/sidebar-menu";
 @import "../components/ovh-angular-otrs/ovh-angular-otrs";
-
-@import "./bootstrap/_popover";
-@import "./bootstrap/_table";
-@import "./bootstrap/_utilities";
 
 @import "./ovh-ui-kit/icon";
 
@@ -67,8 +49,16 @@
 #manager-navbar {
     min-height: auto;
     position: relative;
-    top: inherit;
-    left: inherit;
-    right: inherit;
-    z-index: inherit;
+
+    .dropdown-menu li {
+        &::before {
+            display: none;
+        }
+
+        & > a, & > button {
+            font-size: inherit;
+            margin-left: inherit;
+            white-space: nowrap;
+        }
+    }
 }
