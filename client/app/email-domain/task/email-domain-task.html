@@ -1,15 +1,18 @@
 <div class="container-fluid px-0" data-ng-controller="EmailsTabTasksCtrl as ctrlEmailsTabTasksCtrl">
 
-    <div class="loader text-center" data-ng-if="ctrlEmailsTabTasksCtrl.loading"></div>
+    <div class="text-center" data-ng-if="ctrlEmailsTabTasksCtrl.loading">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
 
-    <div class="alert alert-info mt-4" role="alert"
+    <div data-ovh-alert="{{alerts.main}}"></div>
+    <div class="alert alert-info" role="alert"
          data-i18n-static="email_tab_TASK_table_empty"
          data-ng-if="!ctrlEmailsTabTasksCtrl.loading && !ctrlEmailsTabTasksCtrl.tasks.length">
     </div>
 
-    <div class="table-responsive">
-        <table class="table table-hover table-striped"
-               data-ng-if="!ctrlEmailsTabTasksCtrl.loading && ctrlEmailsTabTasksCtrl.tasks.length > 0">
+    <div class="table-responsive"
+         data-ng-if="!ctrlEmailsTabTasksCtrl.loading && ctrlEmailsTabTasksCtrl.tasks.length > 0">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col" data-i18n-static="email_tab_TASK_table_function"></th>

@@ -1,6 +1,8 @@
 <div class="container-fluid px-0" data-ng-controller="PrivateDatabaseMetricsCtrl as metricsCtrl">
 
-    <div class="loader text-center" data-ng-if="metricsCtrl.loaders.metrics"></div>
+    <oui-loader size="l" data-ng-if="metricsCtrl.loaders.metrics"></oui-loader>
+
+    <div data-ovh-alert="{{alerts.main}}"></div>
 
     <div data-ng-if="!metricsCtrl.loaders.metrics">
         <!-- MEMORY USAGE -->
@@ -17,7 +19,8 @@
         </div>
 
         <!-- ACTIVE CONNECTIONS -->
-        <h2 class="mt-5" data-i18n-static="privateDatabase_metrics_connections_title"></h2>
+        <h2 class="mt-5"
+            data-i18n-static="privateDatabase_metrics_connections_title"></h2>
 
         <div class="chart-container" style="height: 320px;"
              data-ng-if="metricsCtrl.chart.connections.data.datasets.length"
@@ -33,7 +36,8 @@
         </div>
 
         <!-- QUERY TIME -->
-        <h2 class="mt-5" data-i18n-static="privateDatabase_metrics_time_title"></h2>
+        <h2 class="mt-5"
+            data-i18n-static="privateDatabase_metrics_time_title"></h2>
 
         <div class="chart-container" style="height: 320px;"
              data-ng-if="metricsCtrl.chart.time.data.datasets.length && !metricsCtrl.isWrongVersion"

@@ -1,17 +1,14 @@
 <div data-ng-controller="PrivateDatabaseBDDsExtensionCtrl as extensionCtrl">
+    <div data-ovh-alert="{{alerts.main}}"></div>
 
-    <div class="d-flex mb-3">
-        <button class="btn btn-default my-auto" type="button"
-                data-ng-click="goToList()">
-            <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-            <span data-i18n-static="common_back"></span>
-        </button>
-        <h2 class="d-inline ml-4 mb-0"
-            data-ng-bind-html="tr('privateDatabase_tabs_list_extensions_info', '<strong>' + extensionCtrl.bdd.databaseName + '</strong>')"></h2>
-    </div>
+    <button class="oui-button oui-button_link oui-button_icon-left" type="button"
+            data-ng-click="goToList()">
+        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+        <span data-i18n-static="common_back"></span>
+    </button>
+    <h2 data-ng-bind-html="tr('privateDatabase_tabs_list_extensions_info', '<strong>' + extensionCtrl.bdd.databaseName + '</strong>')"></h2>
 
-    <table class="table"
-           data-ng-class="{'table-hover table-striped': !extensionCtrl.loaders.extensions && extensionCtrl.extensions.length > 0}">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th scope="col" data-i18n-static="privateDatabase_tabs_list_extensions_extension">Extension</th>

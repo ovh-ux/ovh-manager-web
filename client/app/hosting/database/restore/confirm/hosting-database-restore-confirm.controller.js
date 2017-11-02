@@ -1,12 +1,20 @@
-angular.module("App").controller("HostingRestoreDatabaseConfirmCtrl", ($scope) => {
-    "use strict";
+angular.module("App").controller(
+    "HostingRestoreDatabaseConfirmCtrl",
+    class HostingRestoreDatabaseConfirmCtrl {
+        constructor ($scope) {
+            this.$scope = $scope;
+        }
 
-    const completionDeferred = $scope.currentActionData.deferred;
-    $scope.backupType = angular.copy($scope.currentActionData.backupType);
-    $scope.bdd = angular.copy($scope.currentActionData.bdd);
+        $onInit () {
+            this.backupType = angular.copy(this.$scope.currentActionData.backupType);
+            this.bdd = angular.copy(this.$scope.currentActionData.bdd);
 
-    $scope.restoreDatabaseBackup = function () {
-        $scope.resetAction();
-        completionDeferred.resolve();
-    };
-});
+            this.$scope.restoreDatabaseBackup = () => this.restoreDatabaseBackup();
+        }
+
+        restoreDatabaseBackup () {
+            this.$scope.currentActionData.deferred.resolve();
+            this.$scope.resetAction();
+        }
+    }
+);

@@ -17,7 +17,7 @@ angular.module("App").controller(
 
         $onInit () {
             this.alerts = {
-                order: "newdnszone.alerts.order"
+                main: "newdnszone.alerts.main"
             };
             this.loading = {
                 bc: false
@@ -38,7 +38,10 @@ angular.module("App").controller(
             this.newDnsZone
                 .orderZoneName(this.zoneNameOrder.zoneName, this.zoneNameOrder.minimized)
                 .then((details) => (this.order = details))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_newdnszone_order_step3_fail"), err, this.alerts.order))
+                .catch((err) => {
+                    _.set(err, "type", err.type || "ERROR");
+                    this.Alerter.alertFromSWS(this.$scope.tr("domains_newdnszone_order_step3_fail"), err, this.alerts.main);
+                })
                 .finally(() => (this.loading.bc = false));
         }
 

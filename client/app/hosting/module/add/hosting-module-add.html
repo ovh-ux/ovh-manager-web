@@ -11,7 +11,7 @@
              data-wizard-step-on-next="onNextStep"
              data-wizard-step-valid="model.templateSelected">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="!model.moduleTemplates"></div>
+            <oui-loader data-ng-if="!model.moduleTemplates"></oui-loader>
 
             <div data-ng-if="model.moduleTemplates && model.moduleTemplates.length > 0">
                 <p data-i18n-static="hosting_configuration_tab_modules_create_step1_question"
@@ -33,33 +33,43 @@
                     </li>
                 </ul>
 
-                <div class="form-group mt-4"
-                     data-ng-if="model.templateSelected && model.domains.length > 1 && !advancedMode.value">
-                    <label class="control-label" for="module-domain"
+                <div data-ng-if="model.templateSelected && model.domains.length > 1 && !advancedMode.value">
+                    <label class="oui-label" for="module-domain"
                            data-i18n-static="hosting_configuration_tab_modules_create_step1_module_domain"></label>
-                    <select class="form-control" id="module-domain" required
-                            data-ng-model="model.domain"
-                            data-ng-options="domain for domain in model.domains track by domain">
-                    </select>
+                    <div class="oui-select mb-0">
+                        <select class="oui-select__input" id="module-domain" required
+                                data-ng-model="model.domain"
+                                data-ng-options="domain for domain in model.domains track by domain">
+                        </select>
+                        <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                    </div>
                     <p class="help-block"
                        data-ng-bind-html="tr('hosting_configuration_tab_modules_create_step1_module_default_path', [defaultInstallationPath])"></p>
                 </div>
 
-                <div class="mt-4"
-                     data-ng-if="model.templateSelected">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" data-ng-model="advancedMode.value">
-                            <span data-i18n-static="hosting_configuration_tab_modules_create_step1_module_advanced_mode"></span>
+                <div class="mt-5" data-ng-if="model.templateSelected">
+                    <div class="oui-checkbox">
+                        <input type="checkbox" class="oui-checkbox__input" id="advancedMode" name="advancedMode"
+                               data-ng-model="advancedMode.value">
+                        <label class="oui-checkbox__label-container" for="advancedMode">
+                            <span class="oui-checkbox__label"
+                                  data-i18n-static="hosting_configuration_tab_modules_create_step1_module_advanced_mode"></span>
+                            <span class="oui-checkbox__icon">
+                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                            </span>
                         </label>
                     </div>
-                    <div class="font-italic">
-                        <span data-i18n-static="hosting_configuration_tab_modules_create_step1_module_advancedMode_info"></span>
-                        <ul>
-                            <li data-ng-repeat="i in [1,2,3] track by $index"
-                                data-ng-bind="i18n['hosting_configuration_tab_modules_create_step1_module_advancedMode_info_option' + i]">
-                            </li>
-                        </ul>
+                    <div class="alert alert-info" role="alert">
+                        <div>
+                            <p data-i18n-static="hosting_configuration_tab_modules_create_step1_module_advancedMode_info"></p>
+                            <ul>
+                                <li data-ng-repeat="i in [1,2,3] track by $index"
+                                    data-ng-bind="i18n['hosting_configuration_tab_modules_create_step1_module_advancedMode_info_option' + i]">
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,14 +79,14 @@
              data-wizard-step-on-load="loadDatabases"
              data-wizard-step-valid="isStep2Valid()">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.databases"></div>
+            <oui-loader data-ng-if="loading.databases"></oui-loader>
 
             <div data-ng-if="!loading.databases">
 
                 <div class="alert alert-warning" role="alert"
                      data-ng-if="!model.databases || model.databases.length <= 0">
                     <div>
-                        <span data-i18n-static="hosting_configuration_tab_modules_create_step2_no_db_intro"></span>
+                        <p data-i18n-static="hosting_configuration_tab_modules_create_step2_no_db_intro"></p>
                         <ul>
                             <li>
                                 <button class="btn btn-link p-0" type="button"
@@ -88,10 +98,10 @@
                     </div>
                 </div>
 
-                <div class="form-group mt-4">
-                    <label class="control-label" for="select-hosted-database"
-                           data-i18n-static="hosting_configuration_tab_modules_create_step2_db_select"></label>
-                    <select class="form-control" id="select-hosted-database"
+                <label class="oui-label" for="select-hosted-database"
+                       data-i18n-static="hosting_configuration_tab_modules_create_step2_db_select"></label>
+                <div class="oui-select">
+                    <select class="oui-select__input" id="select-hosted-database"
                             data-ng-change="selectDatabase(db)"
                             data-ng-model="model.databaseHostedSelected">
                         <option data-ng-repeat="db in model.databases track by db"
@@ -99,11 +109,17 @@
                         <option data-i18n-static="hosting_configuration_tab_modules_create_step2_db_custom"
                                 data-ng-selected="!model.databases || model.databases.length <= 0"></option>
                     </select>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                 </div>
 
-                <p class="mt-4" data-i18n-static="hosting_configuration_tab_modules_create_step2_db_info"></p>
-                <small class="d-block mb-2" data-ng-bind-html="tr('required_fields')"></small>
+                <p data-i18n-static="hosting_configuration_tab_modules_create_step2_db_info"></p>
+
                 <form class="form-horizontal mt-4" name="formModuleDB">
+                    <p>
+                        <small class="text-danger">*</small>
+                        <small data-i18n-static="required_fields"></small>
+                    </p>
+
                     <div class="form-group">
                         <label class="control-label col-md-4 required" for="db-server"
                                data-i18n-static="hosting_configuration_tab_modules_create_step2_db_server"></label>
@@ -141,11 +157,14 @@
                         <label class="control-label col-md-4 required" for="db-type"
                                data-i18n-static="hosting_configuration_tab_modules_create_step2_db_type"></label>
                         <div class="col-md-6">
-                            <select class="form-control" id="db-type" required
-                                    data-ng-disabled="model.databaseHostedSelected"
-                                    data-ng-model="model.databaseSelected.type"
-                                    data-ng-options="type as type for type in databasesType track by type">
-                            </select>
+                            <div class="oui-select mb-0">
+                                <select class="oui-select__input" id="db-type" required
+                                        data-ng-disabled="model.databaseHostedSelected"
+                                        data-ng-model="model.databaseSelected.type"
+                                        data-ng-options="type as type for type in databasesType track by type">
+                                </select>
+                                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                            </div>
                         </div>
                     </div>
 
@@ -207,6 +226,11 @@
             <p data-i18n-static="hosting_configuration_tab_modules_create_step3_infos_title"></p>
 
             <form class="form-horizontal" name="formModule">
+                <p>
+                    <small class="text-danger">*</small>
+                    <small data-i18n-static="required_fields"></small>
+                </p>
+
                 <div class="form-group" data-ng-class="{'has-error': !adminNameValid}">
                     <label class="control-label col-md-4 required" for="module-admin-name"
                            data-ng-bind="model.templateSelected.adminNameType === 'email' ?
@@ -300,21 +324,26 @@
                     <label class="control-label col-md-4 required" for="module-lang"
                            data-i18n-static="hosting_configuration_tab_modules_create_step3_infos_lang"></label>
                     <div class="col-md-6">
-                        <select class="form-control" id="module-lang" required
-                                data-ng-model="model.language"
-                                data-ng-options="lang as tr('language_' + lang.toLowerCase()) for lang in model.templateSelected.language track by lang">
-                        </select>
+                        <div class="oui-select mb-0">
+                            <select class="oui-select__input" id="module-lang" required
+                                    data-ng-model="model.language"
+                                    data-ng-options="lang as tr('language_' + lang.toLowerCase()) for lang in model.templateSelected.language track by lang">
+                                <option value="" disabled
+                                        data-i18n-static="select_placeholder"></option>
+                            </select>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group" data-ng-class="{'has-error': !pathValid}">
                     <label class="control-label col-md-4" for="hostingUserCreateHome"
                            data-i18n-static="hosting_configuration_tab_modules_create_step3_infos_path"></label>
-                    <div class="px-5">
+                    <div class="col-md-8">
                         <div class="input-group w-100">
                             <span class="input-group-addon"
                                   data-ng-bind="rootPathPrefix + pathPrefix"></span>
-                            <input type="text" class="form-control w-100" id="hostingUserCreateHome" required
+                            <input type="text" class="form-control" id="hostingUserCreateHome" required
                                    data-ng-model="model.path">
                         </div>
                         <small class="help-block"
@@ -339,24 +368,19 @@
         </div>
 
         <div data-wizard-step>
-            <span data-i18n-static="hosting_configuration_tab_modules_create_step4_intro"></span>
-            <ul>
-                <li>
-                    <span data-i18n-static="hosting_configuration_tab_modules_create_step4_module"></span> : <strong data-ng-bind="model.templateSelected.name"></strong>
-                </li>
-                <li>
-                    <span data-i18n-static="hosting_configuration_tab_modules_create_step4_version"></span> : <strong data-ng-bind="model.templateSelected.version"></strong>
-                </li>
-                <li>
-                    <span data-i18n-static="hosting_configuration_tab_modules_create_step4_domain"></span> : <strong data-ng-bind="model.domain"></strong>
-                </li>
-                <li>
-                    <span data-i18n-static="hosting_configuration_tab_modules_create_step4_path"></span> : <strong>{{pathPrefix}}{{model.path}}</strong>
-                </li>
-                <li>
-                    <span data-i18n-static="hosting_configuration_tab_modules_create_step4_db"></span> : <strong data-ng-bind="model.databaseSelected.name"></strong>
-                </li>
-            </ul>
+            <p data-i18n-static="hosting_configuration_tab_modules_create_step4_intro"></p>
+            <dl class="dl-horizontal dl-lg">
+                <dt data-i18n-static="hosting_configuration_tab_modules_create_step4_module"></dt>
+                <dd data-ng-bind="model.templateSelected.name"></dd>
+                <dt data-i18n-static="hosting_configuration_tab_modules_create_step4_version"></dt>
+                <dd data-ng-bind="model.templateSelected.version"></dd>
+                <dt data-i18n-static="hosting_configuration_tab_modules_create_step4_domain"></dt>
+                <dd data-ng-bind="model.domain"></dd>
+                <dt data-i18n-static="hosting_configuration_tab_modules_create_step4_path"></dt>
+                <dd data-ng-bind="pathPrefix + model.path"></dd>
+                <dt data-i18n-static="hosting_configuration_tab_modules_create_step4_db"></dt>
+                <dd data-ng-bind="model.databaseSelected.name"></dd>
+            </dl>
             <p data-i18n-static="hosting_configuration_tab_modules_create_step4_infos_title"></p>
         </div>
     </div>

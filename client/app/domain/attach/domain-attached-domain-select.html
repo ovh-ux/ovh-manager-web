@@ -5,19 +5,22 @@
          data-wizard-title="i18n.domain_attached_domain_select_title">
 
         <div data-wizard-step>
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
-            <div data-ng-if="!ctrl.loading">
+            <form name="attachedDomainForm" data-ng-if="!ctrl.loading">
                 <p data-ng-bind-html="tr('domain_attached_domain_select_intro', [ctrl.domainName])"></p>
-                <div class="form-group">
-                    <label for="attachedDomains"
-                           data-i18n-static="domain_attached_domain_select_action"></label>
-                    <select class="form-control" id="attachedDomains" name="attachedDomains"
+                <label class="oui-label" for="attachedDomains"
+                       data-i18n-static="domain_attached_domain_select_action"></label>
+                <div class="oui-select">
+                    <select class="oui-select__input" id="attachedDomains" name="attachedDomains"
                             data-ng-model="ctrl.selectedAttachedDomain"
                             data-ng-options="attachedDomain as attachedDomain for attachedDomain in ctrl.attachedDomains track by attachedDomain">
                     </select>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

@@ -1,20 +1,20 @@
 <div class="row" data-ng-controller="EmailDelegateFilterCtrl as ctrlEmailDelegateFilter">
     <div class="col-md-9">
-        <div class="d-flex mb-3">
-            <button class="btn btn-default my-auto" type="button"
-                    data-ng-click="ctrlEmailDelegate.resetInitialView()">
-                <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-                <span data-i18n-static="email_tab_button_emails_filters_back"></span>
-            </button>
-            <h2 class="d-inline-block ml-3 mb-0">
-                <span data-i18n-static="email_tab_filters_management_heading"></span>
-                <strong data-ng-bind="ctrlEmailDelegateFilter.currentAccount.email"></strong>
-            </h2>
-        </div>
+        <div data-ovh-alert="{{alerts.main}}"></div>
+
+        <button class="oui-button oui-button_link oui-button_icon-left" type="button"
+                data-ng-click="ctrlEmailDelegate.resetInitialView()">
+            <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+            <span data-i18n-static="common_back"></span>
+        </button>
+        <h2>
+            <span data-i18n-static="email_tab_filters_management_heading"></span>
+            <strong class="word-break"
+                    data-ng-bind="ctrlEmailDelegateFilter.currentAccount.email"></strong>
+        </h2>
 
         <div class="table-responsive">
-            <table class="table"
-                   data-ng-class="{'table-hover table-striped': !ctrlEmailDelegateFilter.loading.filters && ctrlEmailDelegateFilter.filtersDetails.length}">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col" data-i18n-static="email_tab_table_header_filter_name"></th>
@@ -86,13 +86,13 @@
 
     <div class="col-md-3 mt-5 mt-lg-0">
         <button class="btn btn-block btn-default" type="button"
+                data-i18n-static="email_tab_button_emails_create_filter"
                 data-ng-click="setAction('email-domain/email/filter/create/email-domain-email-filter-create', {
                     account: ctrlEmailDelegateFilter.currentAccount,
                     accounts: ctrlEmailDelegateFilter.accounts,
                     filterNames: ctrlEmailDelegateFilter.filters,
                     delegate: true
                 })">
-            <span data-i18n-static="email_tab_button_emails_create_filter"></span>
         </button>
     </div>
 </div>

@@ -1,25 +1,24 @@
 angular.module("App").controller(
     "PrivateDatabaseDeleteUserCtrl",
     class PrivateDatabaseDeleteUserCtrl {
-        constructor (Alerter, PrivateDatabase, $scope, $stateParams) {
-            this.alerter = Alerter;
-            this.privateDatabaseService = PrivateDatabase;
+        constructor ($scope, $stateParams, Alerter, PrivateDatabase) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.PrivateDatabase = PrivateDatabase;
         }
 
         $onInit () {
             this.userToDelete = this.$scope.currentActionData;
-            this.productId = this.$stateParams.productId;
+            this.$scope.deleteUser = () => this.deleteUser();
+        }
 
-            this.$scope.deleteUser = () => {
-                this.$scope.resetAction();
-
-                this.privateDatabaseService
-                    .deleteUser(this.productId, this.userToDelete.userName)
-                    .then(() => this.alerter.success(this.$scope.tr("privateDatabase_delete_user_success"), this.$scope.alerts.users))
-                    .catch(() => this.alerter.error(this.$scope.tr("privateDatabase_delete_user_fail"), this.$scope.alerts.users));
-            };
+        deleteUser () {
+            this.$scope.resetAction();
+            return this.PrivateDatabase
+                .deleteUser(this.$stateParams.productId, this.userToDelete.userName)
+                .then(() => this.Alerter.success(this.$scope.tr("privateDatabase_delete_user_success"), this.$scope.alerts.main))
+                .catch(() => this.Alerter.error(this.$scope.tr("privateDatabase_delete_user_fail"), this.$scope.alerts.main));
         }
     }
 );

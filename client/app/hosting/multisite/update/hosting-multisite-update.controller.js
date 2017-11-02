@@ -78,83 +78,76 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
             $scope.selected.domainWww = ["www", $scope.selected.domain.displayName].join(".");
         }
 
-        HostingDomain.getExistingDomains(false, $stateParams.productId).then(
-            (data) => {
+        HostingDomain.getExistingDomains(false, $stateParams.productId)
+            .then((data) => {
                 $scope.model.domains = data.existingDomains;
-            },
-            (failure) => {
+            })
+            .catch((err) => {
                 $scope.resetAction();
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), failure.data, $scope.alerts.dashboard);
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
             }
         );
 
-        $q
-            .all({
-                user: User.getUser(),
-                recordIds: Domain.getRecordsIds($stateParams.productId, {
-                    fieldType: "A",
-                    subDomain: subDomainName
-                })
+        $q.all({
+            user: User.getUser(),
+            recordIds: Domain.getRecordsIds($stateParams.productId, {
+                fieldType: "A",
+                subDomain: subDomainName
             })
-            .then(
-                (response) => {
-                    const recordsPromises = _.map(response.recordIds, (recordId) => Domain.getRecord($stateParams.productId, recordId));
-                    $scope.userInfos = response.user;
+        })
+            .then((response) => {
+                const recordsPromises = _.map(response.recordIds, (recordId) => Domain.getRecord($stateParams.productId, recordId));
+                $scope.userInfos = response.user;
 
-                    $q
-                        .all(recordsPromises)
-                        .then(
-                            (recordIdsData) => {
-                                $scope.selected.domain.ipLocation = null;
-                                isCountryIp($scope.hosting.countriesIp, recordIdsData);
+                $q.all(recordsPromises)
+                    .then((recordIdsData) => {
+                        $scope.selected.domain.ipLocation = null;
+                        isCountryIp($scope.hosting.countriesIp, recordIdsData);
 
-                                // Check IPv6
-                                HostingDomain.getIPv6Configuration($scope.hosting.serviceName, $scope.selected.domain.name.replace(`.${$scope.hosting.serviceName}`, "")).then(
-                                    (records) => {
-                                        $scope.selected.domain.ipV6Enabled = _.some(records, (record) => $scope.hosting.clusterIpv6 === record.target);
+                        // Check IPv6
+                        HostingDomain.getIPv6Configuration($scope.hosting.serviceName, $scope.selected.domain.name.replace(`.${$scope.hosting.serviceName}`, ""))
+                            .then((records) => {
+                                $scope.selected.domain.ipV6Enabled = _.some(records, (record) => $scope.hosting.clusterIpv6 === record.target);
 
-                                        if ($scope.selected.domain.ipV6Enabled) {
-                                            $scope.selected.domain.ipLocation = "";
-                                            $scope.selected.domain.ipV6Enabled = true;
-                                        }
-                                    },
-                                    (failure) => {
-                                        $scope.resetAction();
-                                        Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), failure.data, $scope.alerts.dashboard);
-                                    }
-                                );
-                            },
-                            (failure) => {
+                                if ($scope.selected.domain.ipV6Enabled) {
+                                    $scope.selected.domain.ipLocation = "";
+                                    $scope.selected.domain.ipV6Enabled = true;
+                                }
+                            })
+                            .catch((err) => {
                                 $scope.resetAction();
-                                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), failure.data, $scope.alerts.dashboard);
-                            }
-                        )
-                        .then(() => {
-                            if ($scope.hosting.hasCdn && $scope.selected.domain.cdn !== "NONE") {
-                                $scope.selected.domain.cdn = "ACTIVE";
-                            }
-                        });
-                },
-                (failure) => {
-                    $scope.resetAction();
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), failure.data, $scope.alerts.dashboard);
-                }
-            )
+                                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+                            });
+                    })
+                    .catch((err) => {
+                        $scope.resetAction();
+                        Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+                    }
+                    )
+                    .then(() => {
+                        if ($scope.hosting.hasCdn && $scope.selected.domain.cdn !== "NONE") {
+                            $scope.selected.domain.cdn = "ACTIVE";
+                        }
+                    });
+            })
+            .catch((err) => {
+                $scope.resetAction();
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+            })
             .finally(() => {
                 if ($scope.selected.ssl) {
                     $scope.selected.domain.ssl = true;
                 }
             });
 
-        HostingDomain.getAddDomainOptions($stateParams.productId).then(
-            (options) => {
+        HostingDomain.getAddDomainOptions($stateParams.productId)
+            .then((options) => {
                 $scope.availableDomains = options.availableDomains;
-            },
-            (error) => {
+            })
+            .catch((err) => {
                 $scope.resetAction();
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), error.data, $scope.alerts.dashboard);
-            }
-        );
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+            });
     };
 
     $scope.getSelectedDomain = function (wwwNeeded) {
@@ -211,20 +204,19 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
             $scope.selected.pathFinal,
             $scope.selected.domainWwwNeeded,
             $scope.selected.domain.ipV6Enabled,
-            true,
             $scope.selected.domain.cdn,
             $scope.selected.domain.ipLocation,
             $scope.selected.domain.firewall,
             $scope.selected.domain.ownLog === "ACTIVE" ? $scope.selected.ownLogDomain.name : null,
             !!$scope.selected.domain.ssl, // mandatory because it could be 0, 1, 2 or true/false
             $stateParams.productId
-        ).then(
-            (data) => {
-                Alerter.alertFromSWSBatchResult(resultMessages, data, $scope.alerts.dashboard);
-            },
-            (failure) => {
-                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_modify_failure"), failure.data, $scope.alerts.dashboard);
-            }
-        );
+        )
+            .then((data) => {
+                Alerter.alertFromSWSBatchResult(resultMessages, data, $scope.alerts.main);
+            })
+            .catch((err) => {
+                _.set(err, "type", err.type || "ERROR");
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_modify_failure"), _.get(err, "data", err), $scope.alerts.main);
+            });
     };
 });

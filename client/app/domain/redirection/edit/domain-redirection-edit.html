@@ -7,7 +7,7 @@
         <div data-wizard-step
              data-wizard-step-valid="editContainsNoError()">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
             <div data-ng-if="!ctrl.loading">
                 <p class="mb-2"
@@ -97,18 +97,26 @@
                                    data-ng-bind="ctrl.errorLabel"
                                    data-ng-if="ctrl.inputContainErrors()"></small>
 
-                            <div class="checkbox" data-ng-if="ctrl.redirection.fieldDisplayType === 'CNAME'">
-                                <label>
-                                    <input type="checkbox" id="includeCNAME" name="includeCNAME"
-                                           data-ng-change="ctrl.redirectionTargetChange()"
-                                           data-ng-model="ctrl.shouldIncludeDomain">
-                                    <span data-i18n-static="domain_tab_REDIRECTION_edit_server_cname_include_domain"></span>
+                            <div class="oui-checkbox mt-3" data-ng-if="ctrl.redirection.fieldDisplayType === 'CNAME'">
+                                <input type="checkbox" class="oui-checkbox__input" id="includeCNAME" name="includeCNAME"
+                                       data-ng-change="ctrl.redirectionTargetChange()"
+                                       data-ng-model="ctrl.shouldIncludeDomain">
+                                <label class="oui-checkbox__label-container" for="includeCNAME">
+                                    <span class="oui-checkbox__label"
+                                          data-i18n-static="domain_tab_REDIRECTION_edit_server_cname_include_domain"></span>
+                                    <span class="oui-checkbox__icon">
+                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                    </span>
                                 </label>
                             </div>
                         </div>
                     </div>
                     <p data-ng-bind-html="tr('domain_tab_REDIRECTION_edit_server_cname_include_domain_example', ctrl.getCompleteTarget())"></p>
-                    <p data-ng-bind-html="tr('domain_tab_REDIRECTION_edit_server_cname_info')"></p>
+                    <div class="alert alert-info" role="alert"
+                         data-ng-bind-html="tr('domain_tab_REDIRECTION_edit_server_cname_info')">
+                    </div>
                 </form>
             </div>
         </div>

@@ -17,11 +17,11 @@ angular
 
         $onInit () {
             this.productId = this.$stateParams.productId;
+            this.isExpired = false;
 
             this.$scope.alerts = {
-                dashboard: "privateDataBase.alerts.dashboard",
-                users: "privateDataBase.alerts.user",
-                bdd: "privateDataBase.alerts.bdd"
+                page: "privateDataBase.alerts.page",
+                main: "privateDataBase.alerts.main"
             };
 
             this.works = {};
@@ -125,9 +125,11 @@ angular
                 this.$scope.taskState.changeRootPassword = false;
             });
 
-            this.getDetails(true);
-
-            this.getTasksToPoll();
+            this.getDetails(true).then(() => {
+                if (!this.isExpired) {
+                    this.getTasksToPoll();
+                }
+            });
         }
 
         $onDestroy () {
@@ -138,10 +140,11 @@ angular
             this.loaders.details = true;
             this.$scope.database = null;
 
-            this.privateDatabaseService.getSelected(this.productId, forceRefresh)
+            return this.privateDatabaseService.getSelected(this.productId, forceRefresh)
                 .then((database) => {
                     this.$scope.database = database;
                     this.$scope.database.version = database.version.replace(".", "");
+                    this.isExpired = _.get(database, "serviceInfos.status") === "expired";
                     this.$scope.guides = [];
 
                     this.userService.getUrlOf("guides")
@@ -188,7 +191,7 @@ angular
                     }
                 })
                 .catch(() => {
-                    this.alerter.error("Not FOUND", null, this.$scope.alerts.dashboard);
+                    this.alerter.error("Not FOUND", null, this.$scope.alerts.page);
                 })
                 .finally(() => {
                     this.loaders.details = false;
@@ -213,7 +216,7 @@ angular
                 })
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
-                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_dashboard_loading_error"), err, this.$scope.alerts.dashboard);
+                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_dashboard_loading_error"), err, this.$scope.alerts.page);
                 })
                 .finally(() => {
                     this.editMode = false;
@@ -240,11 +243,11 @@ angular
                     }
 
                     this.$rootScope.$broadcast("privateDatabase.global.actions.done", opt);
-                    this.alerter.success(this.$scope.tr(`privateDatabase_global_actions_success_${task.function}`), this.$scope.alerts.dashboard);
+                    this.alerter.success(this.$scope.tr(`privateDatabase_global_actions_success_${task.function}`), this.$scope.alerts.main);
                 })
                 .catch(() => {
                     this.$rootScope.$broadcast("privateDatabase.global.actions.error", opt);
-                    this.alerter.error(this.$scope.tr(`privateDatabase_global_actions_fail_${task.function}`), this.$scope.alerts.dashboard);
+                    this.alerter.error(this.$scope.tr(`privateDatabase_global_actions_fail_${task.function}`), this.$scope.alerts.main);
                 });
         }
 });

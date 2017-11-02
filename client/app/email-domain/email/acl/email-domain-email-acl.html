@@ -1,21 +1,19 @@
 <div data-ng-controller="EmailDomainEmailAclCtrl as ctrlEmailDomainEmailAcl">
     <div class="row">
         <div class="col-md-9">
-            <div class="d-flex mb-3">
-                <button class="btn btn-default my-auto" type="button"
-                        data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
-                    <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-                    <span data-i18n-static="email_tab_button_emails_filters_back"></span>
-                </button>
-                <h2 class="d-inline-block ml-3 mb-0"
-                    data-i18n-static="email_tab_acl_heading"></h2>
-            </div>
+            <div data-ovh-alert="{{alerts.main}}"></div>
+
+            <button class="oui-button oui-button_link oui-button_icon-left" type="button"
+                    data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
+                <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+                <span data-i18n-static="common_back"></span>
+            </button>
+            <h2 data-i18n-static="email_tab_acl_heading"></h2>
 
             <p data-i18n-static="email_tab_acl_info"></p>
 
             <div class="table-responsive">
-                <table class="table"
-                       data-ng-class="{'table-hover table-striped': !ctrlEmailDomainEmailAcl.loading.acls && ctrlEmailDomainEmailAcl.aclsDetails.length}">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col" data-i18n-static="email_tab_table_header_nic"></th>
@@ -38,9 +36,9 @@
                     <tbody data-ng-if="!ctrlEmailDomainEmailAcl.loading.acls">
                         <!-- add acl  -->
                         <tr data-ng-if="!ctrlEmailDomainEmailAcl.addingAcl">
-                            <td class="text-center" data-i18n-static="email_tab_button_emails_add_acls"></td>
+                            <td class="align-middle text-center" data-i18n-static="email_tab_button_emails_add_acls"></td>
                             <td class="text-center">
-                                <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_button_emails_add_acls}}"
+                                <button class="btn btn-default" type="button" title="{{::i18n.email_tab_button_emails_add_acls}}"
                                         data-ng-click="ctrlEmailDomainEmailAcl.addingAcl = true">
                                     <span class="fa fa-plus" aria-hidden="true"></span>
                                 </button>
@@ -57,12 +55,12 @@
                                 </form>
                             </td>
                             <td class="text-nowrap">
-                                <button class="btn btn-success" type="button"
+                                <button class="oui-button oui-button_primary oui-button_small-width mb-0" type="button"
                                         data-ng-click="ctrlEmailDomainEmailAcl.addAcl()"
                                         data-ng-disabled="!ctrlEmailDomainEmailAcl.addAclItem.value">
                                     <span class="fa fa-check" aria-hidden="true"></span>
                                 </button>
-                                <button class="btn btn-danger" type="button"
+                                <button class="oui-button oui-button_secondary oui-button_small-width mb-0" type="button"
                                         data-ng-click="ctrlEmailDomainEmailAcl.addingAcl = false">
                                     <span class="fa fa-times" aria-hidden="true"></span>
                                 </button>
@@ -77,7 +75,7 @@
                         <!-- acls -->
                         <tr data-ng-repeat="acl in (ctrlEmailDomainEmailAcl.aclsDetails | orderBy:'accountId') track by $index" data-ng-if="ctrlEmailDomainEmailAcl.acls.length > 0">
                             <td data-ng-bind="::acl.accountId"></td>
-                            <td class="text-center">
+                            <td class="text-right">
                                 <button class="btn btn-icon" type="button"
                                         data-ng-click="setAction('email-domain/email/acl/delete/email-domain-email-acl-delete', acl)">
                                     <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
@@ -106,9 +104,10 @@
         </div>
 
         <div class="col-md-3 mt-5 mt-lg-0">
-            <a data-ng-href="{{ctrlEmailDomainEmailAcl.createNicUrl.value}}" class="btn btn-block btn-default" target="_blank" title="{{::i18n.emails_create_account_new_window}}"
+            <a class="btn btn-block btn-default" target="_blank" title="{{::i18n.emails_create_account_new_window}}"
+               data-i18n-static="emails_create_account"
+               data-ng-href="{{ctrlEmailDomainEmailAcl.createNicUrl.value}}"
                data-ng-if="ctrlEmailDomainEmailAcl.createNicUrl">
-                <span data-i18n-static="emails_create_account"></span>
             </a>
         </div>
     </div>

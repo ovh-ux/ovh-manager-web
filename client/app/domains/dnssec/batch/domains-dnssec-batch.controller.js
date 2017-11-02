@@ -26,7 +26,7 @@ angular.module("App").controller(
             this.$scope.updateDnssec = () => {
                 this.$scope.resetAction();
                 return this.DomainsDnsSec
-                    .updateDnssecState(this.selected.state === "true", this.selected.domainsNames)
+                    .updateDnssecState(this.selected.state, this.selected.domainsNames)
                     .then((data) =>
                         this.Alerter.alertFromSWSBatchResult(
                             {
@@ -35,10 +35,10 @@ angular.module("App").controller(
                                 ERROR: this.$scope.tr("domains_configuration_dnssec_batch_fail")
                             },
                             data,
-                            this.$scope.alerts.dashboard
+                            this.$scope.alerts.main
                         )
                     )
-                    .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_configuration_dnssec_batch_fail"), err, this.$scope.alerts.dashboard));
+                    .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_configuration_dnssec_batch_fail"), err, this.$scope.alerts.main));
             };
         }
     }

@@ -1,266 +1,312 @@
 <div class="container-fluid px-0" data-ng-controller="DomainTabGeneralInformationsCtrl as ctrlTabGeneralInformations">
     <div class="row">
         <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.main}}"></div>
             <div class="row d-md-flex">
                 <div class="col-sm-6">
-                      <div class="oui-tile h-100">
-                          <h3 class="oui-header__title" data-i18n-static="domain_dashboard_general_informations"></h3>
-                          <ul>
-                              <!-- OFFER -->
-                              <li data-ng-if="!ctrlTabGeneralInformations.isAllDom">
-                                  <strong data-i18n-static="domain_dashboard_offer"></strong>
-                                  <span class="text-capitalize" data-ng-bind="ctrlTabGeneralInformations.domain.offer"></span>
-                              </li>
-                              <!-- OFFER ALLDOM -->
-                              <li data-ng-if="ctrlTabGeneralInformations.isAllDom && ctrlTabGeneralInformations.allDom">
-                                  <strong data-ng-bind="::tr('domain_dashboard_type_alldom_' + ctrlTabGeneralInformations.constructor.parseType(ctrlTabGeneralInformations.allDom.type))"></strong>
-                                  <ul class="list-unstyled">
-                                      <li data-ng-repeat="allDomDomain in ctrlTabGeneralInformations.allDomDomains track by $index"
-                                          data-ng-bind="allDomDomain.name"
-                                          data-ng-class="{ 'disabled': !allDomDomain.isIncluded }"></li>
-                                  </ul>
-                              </li>
-                              <!-- DNS -->
-                              <li>
-                                  <strong class="d-inline-block mr-2" data-i18n-static="domain_dashboard_dns_management"></strong>
-                                  <span data-uib-tooltip="{{::i18n.domain_dashboard_tooltip_dns}}"
-                                        data-uib-tooltip-append-to-body="true"
-                                        data-uib-tooltip-placement="top">
-                                      <span class="fa fa-info-circle" aria-hidden="true"></span>
-                                  </span>
-                                  <div>
-                                      <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                            data-ng-if="ctrlTabGeneralInformations.loading.dnsStatus"></span>
-                                      <div data-ng-if="!ctrlTabGeneralInformations.loading.dnsStatus">
-                                          <button class="btn btn-success btn-xs" type="button"
-                                                  data-i18n-static="domain_dashboard_dns_management_dnsHostedOK"
-                                                  data-ng-click="ctrlTabGeneralInformations.goToDnsManagement()"
-                                                  data-ng-if="ctrlTabGeneralInformations.dnsStatus.isOk && ctrlTabGeneralInformations.dnsStatus.isHosted">
-                                          </button>
-                                          <button class="btn btn-info btn-xs" type="button"
-                                                  data-i18n-static="domain_dashboard_dns_management_dnsExternalOK"
-                                                  data-ng-click="ctrlTabGeneralInformations.goToDnsManagement()"
-                                                  data-ng-if="ctrlTabGeneralInformations.dnsStatus.isOk && !ctrlTabGeneralInformations.dnsStatus.isHosted">
-                                          </button>
-                                          <button class="btn btn-danger btn-xs" type="button"
-                                                  data-i18n-static="domain_dashboard_dns_management_dnsKO"
-                                                  data-ng-click="ctrlTabGeneralInformations.goToDnsManagement()"
-                                                  data-ng-if="!ctrlTabGeneralInformations.dnsStatus.isOk">
-                                          </button>
-                                          <small class="ml-3" data-ng-if="ctrlTabGeneralInformations.dnsStatus.refreshAlert">
-                                              <span class="fa fa-hourglass-half" aria-hidden="true"></span>
-                                              <span data-i18n-static="domain_dashboard_dns_refresh"></span>
-                                          </small>
-                                      </div>
-                                  </div>
-                              </li>
-                              <!-- DNS ANYCAST -->
-                              <li>
-                                  <div class="d-flex w-100">
-                                      <div>
-                                          <strong class="d-inline-block mr-2" data-i18n-static="domain_dashboard_dns_anycast"></strong>
-                                          <span data-uib-tooltip="{{i18n.domain_dashboard_dns_anycast_info}}"
-                                                data-uib-tooltip-append-to-body="true">
+                    <div class="oui-tile mb-5 h-100">
+                        <h3 class="oui-tile__title" data-i18n-static="domain_dashboard_general_informations"></h3>
+                        <div class="oui-tile__body">
+                            <ul class="list-unstyled">
+                                <!-- OFFER -->
+                                <li class="oui-tile__item" data-ng-if="!ctrlTabGeneralInformations.isAllDom">
+                                    <div class="oui-tile__definition">
+                                        <strong data-i18n-static="domain_dashboard_offer"></strong>
+                                        <div class="text-capitalize"
+                                             data-ng-bind="ctrlTabGeneralInformations.domain.offer"></div>
+                                    </div>
+                                </li>
+                                <!-- OFFER ALLDOM -->
+                                <li class="oui-tile__item"
+                                    data-ng-if="ctrlTabGeneralInformations.isAllDom && ctrlTabGeneralInformations.allDom">
+                                    <div class="oui-tile__definition">
+                                        <strong
+                                            data-ng-bind="::tr('domain_dashboard_type_alldom_' + ctrlTabGeneralInformations.constructor.parseType(ctrlTabGeneralInformations.allDom.type))"></strong>
+                                        <ul class="list-unstyled">
+                                            <li data-ng-repeat="allDomDomain in ctrlTabGeneralInformations.allDomDomains track by $index"
+                                                data-ng-bind="allDomDomain.name"
+                                                data-ng-class="{ 'disabled': !allDomDomain.isIncluded }"></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <!-- DNS -->
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <strong class="d-inline-block mr-2"
+                                                data-i18n-static="domain_dashboard_dns_management"></strong>
+                                        <span data-uib-tooltip="{{::i18n.domain_dashboard_tooltip_dns}}"
+                                              data-uib-tooltip-append-to-body="true"
+                                              data-uib-tooltip-placement="top">
                                               <span class="fa fa-info-circle" aria-hidden="true"></span>
                                           </span>
-                                          <div>
-                                              <span data-ng-bind="tr('domain_dashboard_dns_management_anycast_' + ctrlTabGeneralInformations.domain.hasDnsAnycast)"></span>
-                                              <span data-ng-if="ctrlTabGeneralInformations.domain.hasDnsAnycast === null">
-                                                  (<span data-i18n-static="domain_configuration_dnsanycast_how_to_activate_1"></span>
-                                                  <button class="btn btn-link p-0" type="button"
-                                                          data-i18n-static="domain_configuration_dnsanycast_how_to_activate_2"
-                                                          data-ng-click="setAction('zone/activate/domain-zone-activate', ctrlTabGeneralInformations.domain)">
-                                                  </button>)
-                                              </span>
-                                          </div>
-                                      </div>
-                                      <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
-                                              data-i18n-static="domain_configuration_dnsanycast_title_button"
-                                              data-ng-click="setAction('anycast/domain-dns-anycast')"
-                                              data-ng-if="ctrlTabGeneralInformations.domain.hasDnsAnycast === false">
-                                      </button>
-                                  </div>
-                              </li>
+                                        <div>
+                                            <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.dnsStatus"></oui-loader>
+                                            <div data-ng-if="!ctrlTabGeneralInformations.loading.dnsStatus">
+                                                <button class="btn btn-success btn-xs" type="button"
+                                                        data-i18n-static="domain_dashboard_dns_management_dnsHostedOK"
+                                                        data-ng-click="ctrlTabGeneralInformations.goToDnsManagement()"
+                                                        data-ng-if="ctrlTabGeneralInformations.dnsStatus.isOk && ctrlTabGeneralInformations.dnsStatus.isHosted">
+                                                </button>
+                                                <button class="btn btn-info btn-xs" type="button"
+                                                        data-i18n-static="domain_dashboard_dns_management_dnsExternalOK"
+                                                        data-ng-click="ctrlTabGeneralInformations.goToDnsManagement()"
+                                                        data-ng-if="ctrlTabGeneralInformations.dnsStatus.isOk && !ctrlTabGeneralInformations.dnsStatus.isHosted">
+                                                </button>
+                                                <button class="btn btn-danger btn-xs" type="button"
+                                                        data-i18n-static="domain_dashboard_dns_management_dnsKO"
+                                                        data-ng-click="ctrlTabGeneralInformations.goToDnsManagement()"
+                                                        data-ng-if="!ctrlTabGeneralInformations.dnsStatus.isOk">
+                                                </button>
+                                                <small class="ml-3"
+                                                       data-ng-if="ctrlTabGeneralInformations.dnsStatus.refreshAlert">
+                                                    <span class="fa fa-hourglass-half" aria-hidden="true"></span>
+                                                    <span data-i18n-static="domain_dashboard_dns_refresh"></span>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <!-- DNS ANYCAST -->
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <div class="d-flex w-100">
+                                            <div>
+                                                <strong class="d-inline-block mr-2"
+                                                        data-i18n-static="domain_dashboard_dns_anycast"></strong>
+                                                <span data-uib-tooltip="{{i18n.domain_dashboard_dns_anycast_info}}"
+                                                      data-uib-tooltip-append-to-body="true">
+                                                      <span class="fa fa-info-circle" aria-hidden="true"></span>
+                                                  </span>
+                                                <div>
+                                                    <span data-ng-bind="tr('domain_dashboard_dns_management_anycast_' + ctrlTabGeneralInformations.domain.hasDnsAnycast)"></span>
+                                                    <span data-ng-if="ctrlTabGeneralInformations.domain.hasDnsAnycast === null">
+                                                          (<span
+                                                        data-i18n-static="domain_configuration_dnsanycast_how_to_activate_1"></span>
+                                                          <button class="btn btn-link p-0" type="button"
+                                                                  data-i18n-static="domain_configuration_dnsanycast_how_to_activate_2"
+                                                                  data-ng-click="setAction('zone/activate/domain-zone-activate', ctrlTabGeneralInformations.domain)">
+                                                          </button>)
+                                                      </span>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
+                                                    data-i18n-static="domain_configuration_dnsanycast_title_button"
+                                                    data-ng-click="setAction('anycast/domain-dns-anycast')"
+                                                    data-ng-if="ctrlTabGeneralInformations.domain.hasDnsAnycast === false">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
 
-                              <!-- Free Hosting & email -->
-                              <li>
-                                  <div class="d-flex">
-                                      <div class="w-50">
-                                          <strong class="d-inline-block mr-2" data-i18n-static="domain_dashboard_enable_web_hosting"></strong>
-                                          <span class="fa fa-info-circle" aria-hidden="true"
-                                                data-uib-tooltip="{{::i18n.domain_configuration_web_hosting_offer_START_explain}}"
-                                                data-uib-tooltip-append-to-body="true"
-                                                data-uib-tooltip-placement="top"></span>
-                                          <div>
-                                              <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                                    data-ng-if="ctrlTabGeneralInformations.loading.hosting"></span>
-                                              <div data-ng-if="!ctrlTabGeneralInformations.loading.hosting">
-                                                  <span class="label" data-ng-class="{ 'label-danger': !ctrlTabGeneralInformations.hasStart10mOffer, 'label-success': ctrlTabGeneralInformations.hasStart10mOffer }"
-                                                        data-ng-bind="tr(ctrlTabGeneralInformations.hasStart10mOffer ? 'common_activated' : 'common_desactivated')"
-                                                        data-ng-if="!(ctrlDomain.canOrderHosting && ctrlDomain.isAdmin && !ctrlTabGeneralInformations.hasStart10mOffer)"></span>
-                                                  <a target="_blank" title="{{i18n.common_newtab}}"
-                                                     data-ng-href="{{ctrlTabGeneralInformations.start10MarketUrl}}"
-                                                     data-ng-if="ctrlDomain.canOrderHosting && ctrlDomain.isAdmin && !ctrlTabGeneralInformations.hasStart10mOffer">
-                                                      <span data-i18n-static="domain_dashboard_web_hosting_more_infos"></span>
-                                                      <span class="fa fa-external-link" aria-hidden="true"></span>
-                                                  </a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
-                                              data-i18n-static="domain_configuration_action_enable"
-                                              data-ng-if="ctrlDomain.canOrderHosting && ctrlDomain.isAdmin && !ctrlTabGeneralInformations.hasStart10mOffer"
-                                              data-ng-click="ctrlTabGeneralInformations.showWebHostingOrderWithStartOffer()">
-                                      </button>
-                                  </div>
-                              </li>
+                                <!-- Free Hosting & email -->
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <div class="d-flex">
+                                            <div class="w-75">
+                                                <strong class="d-inline-block mr-2"
+                                                        data-i18n-static="domain_dashboard_enable_web_hosting"></strong>
+                                                <span class="fa fa-info-circle" aria-hidden="true"
+                                                      data-uib-tooltip="{{::i18n.domain_configuration_web_hosting_offer_START_explain}}"
+                                                      data-uib-tooltip-append-to-body="true"
+                                                      data-uib-tooltip-placement="top"></span>
+                                                <div>
+                                                    <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.hosting"></oui-loader>
+                                                    <div data-ng-if="!ctrlTabGeneralInformations.loading.hosting">
+                                                          <span class="label"
+                                                                data-ng-class="{ 'label-danger': !ctrlTabGeneralInformations.hasStart10mOffer, 'label-success': ctrlTabGeneralInformations.hasStart10mOffer }"
+                                                                data-ng-bind="tr(ctrlTabGeneralInformations.hasStart10mOffer ? 'common_activated' : 'common_desactivated')"
+                                                                data-ng-if="!(ctrlDomain.canOrderHosting && ctrlDomain.isAdmin && !ctrlTabGeneralInformations.hasStart10mOffer)"></span>
+                                                        <a target="_blank" title="{{i18n.common_newtab}}"
+                                                           data-ng-href="{{ctrlTabGeneralInformations.start10MarketUrl}}"
+                                                           data-ng-if="ctrlDomain.canOrderHosting && ctrlDomain.isAdmin && !ctrlTabGeneralInformations.hasStart10mOffer">
+                                                            <span data-i18n-static="domain_dashboard_web_hosting_more_infos"></span>
+                                                            <span class="fa fa-external-link" aria-hidden="true"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
+                                                    data-i18n-static="domain_configuration_action_enable"
+                                                    data-ng-if="ctrlDomain.canOrderHosting && ctrlDomain.isAdmin && !ctrlTabGeneralInformations.hasStart10mOffer"
+                                                    data-ng-click="ctrlTabGeneralInformations.showWebHostingOrderWithStartOffer()">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
 
-                              <!-- Hosting -->
-                              <li>
-                                  <div class="d-flex">
-                                      <div>
-                                          <strong class="d-inline-block mr-2" data-i18n-static="domain_dashboard_web_hosting_associated"></strong>
-                                          <span class="fa fa-info-circle" aria-hidden="true"
-                                                data-uib-tooltip="{{::i18n.domain_configuration_web_hosting_associated_explain}}"
-                                                data-uib-tooltip-append-to-body="true"
-                                                data-uib-tooltip-placement="top"></span>
-                                          <div>
-                                              <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                                    data-ng-if="ctrlTabGeneralInformations.loading.associatedHosting"></span>
-                                              <ul class="list-unstyled"
-                                                  data-ng-if="!ctrlTabGeneralInformations.loading.associatedHosting && ctrlTabGeneralInformations.hasHostingAssociate">
-                                                  <li data-ng-repeat="hosting in ctrlTabGeneralInformations.hostingAssociated track by $index">
-                                                      <a data-ng-bind="hosting.name" data-ng-href="{{hosting.url}}"></a>
-                                                  </li>
-                                              </ul>
-                                              <span data-i18n-static="domain_dashboard_web_hosting_associated_upsell"
-                                                    data-ng-if="!ctrlTabGeneralInformations.loading.associatedHosting && !ctrlTabGeneralInformations.hasHostingAssociate"></span>
-                                          </div>
-                                      </div>
-                                      <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
-                                              data-i18n-static="domain_configuration_enable_web_hosting"
-                                              data-ng-click="setAction('webhosting-enable/domain-enable-web-hosting', ctrlTabGeneralInformations.domain)"
-                                              data-ng-if="!ctrlTabGeneralInformations.loading.associatedHosting && !ctrlTabGeneralInformations.hasHostingAssociate && ctrlDomain.canOrderHosting && ctrlDomain.isAdmin">
-                                      </button>
-                                  </div>
-                              </li>
-                          </ul>
-                      </div>
+                                <!-- Hosting -->
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <div class="d-flex">
+                                            <div>
+                                                <strong class="d-inline-block mr-2"
+                                                        data-i18n-static="domain_dashboard_web_hosting_associated"></strong>
+                                                <span class="fa fa-info-circle" aria-hidden="true"
+                                                      data-uib-tooltip="{{::i18n.domain_configuration_web_hosting_associated_explain}}"
+                                                      data-uib-tooltip-append-to-body="true"
+                                                      data-uib-tooltip-placement="top"></span>
+                                                <div>
+                                                    <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.associatedHosting"></oui-loader>
+                                                    <ul class="list-unstyled"
+                                                        data-ng-if="!ctrlTabGeneralInformations.loading.associatedHosting && ctrlTabGeneralInformations.hasHostingAssociate">
+                                                        <li data-ng-repeat="hosting in ctrlTabGeneralInformations.hostingAssociated track by $index">
+                                                            <a data-ng-bind="hosting.name"
+                                                               data-ng-href="{{hosting.url}}"></a>
+                                                        </li>
+                                                    </ul>
+                                                    <span
+                                                        data-i18n-static="domain_dashboard_web_hosting_associated_upsell"
+                                                        data-ng-if="!ctrlTabGeneralInformations.loading.associatedHosting && !ctrlTabGeneralInformations.hasHostingAssociate"></span>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
+                                                    data-i18n-static="domain_configuration_enable_web_hosting"
+                                                    data-ng-click="setAction('webhosting-enable/domain-enable-web-hosting', ctrlTabGeneralInformations.domain)"
+                                                    data-ng-if="!ctrlTabGeneralInformations.loading.associatedHosting && !ctrlTabGeneralInformations.hasHostingAssociate && ctrlDomain.canOrderHosting && ctrlDomain.isAdmin">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-              <div class="col-sm-6">
-                  <div class="oui-tile h-100">
-                      <h3 class="oui-header__title" data-i18n-static="domain_dashboard_security"></h3>
-                      <ul>
-                         <!-- PROTECTION  -->
-                          <li>
-                              <div data-ng-class="{'alert alert-warning': ctrlTabGeneralInformations.domainUnlockRegistry}">
-                                  <strong class="d-inline-block mr-2" data-i18n-static="domain_dashboard_protection_transfert"></strong>
-                                  <span data-uib-tooltip="{{::i18n.domain_dashboard_tooltip_protection}}"
-                                        data-uib-tooltip-append-to-body="true"
-                                        data-uib-tooltip-placement="top">
-                                      <span class="fa fa-info-circle" aria-hidden="true"></span>
-                                  </span>
-                                  <div>
-                                      <span class="align-middle mt-2"
-                                            data-v6-ui-switch
-                                            data-ng-change="ctrlTabGeneralInformations.switchTheStateOfProtection()"
-                                            data-ng-model="ctrlTabGeneralInformations.vm.protection.uiSwitch"
-                                            data-uib-tooltip="{{(ctrlTabGeneralInformations.domain.protection === 'unlocking' ||
-                                              ctrlTabGeneralInformations.domain.protection === 'locking' ||
-                                              ctrlTabGeneralInformations.domain.protection === 'unavailable') ? i18n['domain_dashboard_protection_' + ctrlTabGeneralInformations.domain.protection] : ''}}"
-                                            data-uib-tooltip-append-to-body="true"></span>
-                                      <button class="btn btn-link ml-3 p-0" type="button"
-                                              data-i18n-static="domain_dashboard_show_authinfo"
-                                              data-ng-click="setAction('authinfo/domain-authinfo', ctrlTabGeneralInformations.domain)"
-                                              data-ng-if="!ctrlTabGeneralInformations.domain.isExpired && ctrlTabGeneralInformations.domain.protection === 'unlocked'"
-                                              data-uib-tooltip="{{::i18n.domain_dashboard_show_authinfo_title}}">
-                                      </button>
-                                      <button class="btn btn-link ml-3 p-0" type="button"
-                                              data-i18n-static="domain_dashboard_add_uk_tags"
-                                              data-ng-click="setAction('uk-transfert-tag/domain-uk-transfert-tag', ctrlTabGeneralInformations.domain)"
-                                              data-ng-if="ctrlTabGeneralInformations.isUK">
-                                      </button>
-                                  </div>
-                                  <small class="d-block mt-4" role="alert"
-                                         data-ng-if="ctrlTabGeneralInformations.domainUnlockRegistry">
-                                      <span class="fa fa-exclamation-triangle mr-2" aria-hidden="true"></span>
-                                      <em data-ng-bind-html="tr('domain_configuration_protection_auth_info_registry', [ctrlTabGeneralInformations.domainUnlockRegistry])"></em>
-                                  </small>
-                              </div>
-                          </li>
+                <div class="col-sm-6">
+                    <div class="oui-tile mb-5 h-100">
+                        <h3 class="oui-tile__title" data-i18n-static="domain_dashboard_security"></h3>
+                        <div class="oui-tile__body">
+                            <ul class="list-unstyled">
+                                <!-- PROTECTION  -->
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <div
+                                            data-ng-class="{'alert alert-warning': ctrlTabGeneralInformations.domainUnlockRegistry}">
+                                            <strong class="d-inline-block mr-2"
+                                                    data-i18n-static="domain_dashboard_protection_transfert"></strong>
+                                            <span data-uib-tooltip="{{::i18n.domain_dashboard_tooltip_protection}}"
+                                                  data-uib-tooltip-append-to-body="true"
+                                                  data-uib-tooltip-placement="top">
+                                              <span class="fa fa-info-circle" aria-hidden="true"></span>
+                                          </span>
+                                            <div>
+                                              <span class="align-middle mt-2"
+                                                    data-v6-ui-switch
+                                                    data-ng-change="ctrlTabGeneralInformations.switchTheStateOfProtection()"
+                                                    data-ng-model="ctrlTabGeneralInformations.vm.protection.uiSwitch"
+                                                    data-uib-tooltip="{{(ctrlTabGeneralInformations.domain.protection === 'unlocking' ||
+                                                      ctrlTabGeneralInformations.domain.protection === 'locking' ||
+                                                      ctrlTabGeneralInformations.domain.protection === 'unavailable') ? i18n['domain_dashboard_protection_' + ctrlTabGeneralInformations.domain.protection] : ''}}"
+                                                    data-uib-tooltip-append-to-body="true"></span>
+                                                <button class="btn btn-link ml-3 p-0" type="button"
+                                                        data-i18n-static="domain_dashboard_show_authinfo"
+                                                        data-ng-click="setAction('authinfo/domain-authinfo', ctrlTabGeneralInformations.domain)"
+                                                        data-ng-if="!ctrlTabGeneralInformations.domain.isExpired && ctrlTabGeneralInformations.domain.protection === 'unlocked'"
+                                                        data-uib-tooltip="{{::i18n.domain_dashboard_show_authinfo_title}}">
+                                                </button>
+                                                <button class="btn btn-link ml-3 p-0" type="button"
+                                                        data-i18n-static="domain_dashboard_add_uk_tags"
+                                                        data-ng-click="setAction('uk-transfert-tag/domain-uk-transfert-tag', ctrlTabGeneralInformations.domain)"
+                                                        data-ng-if="ctrlTabGeneralInformations.isUK">
+                                                </button>
+                                            </div>
+                                            <small class="d-block mt-4" role="alert"
+                                                   data-ng-if="ctrlTabGeneralInformations.domainUnlockRegistry">
+                                                <span class="fa fa-exclamation-triangle mr-2" aria-hidden="true"></span>
+                                                <em data-ng-bind-html="tr('domain_configuration_protection_auth_info_registry', [ctrlTabGeneralInformations.domainUnlockRegistry])"></em>
+                                            </small>
+                                        </div>
+                                    </div>
+                                </li>
 
-                          <!-- DNSSEC -->
-                          <li>
-                              <strong class="d-inline-block mr-2" data-i18n-static="domain_dashboard_dnssec"></strong>
-                              <span data-uib-tooltip="{{::i18n.domain_dashboard_tooltip_dnssec}}"
-                                    data-uib-tooltip-append-to-body="true"
-                                    data-uib-tooltip-placement="top">
-                                  <span class="fa fa-info-circle" aria-hidden="true"></span>
-                              </span>
-                              <div>
-                                  <span class="align-middle mt-2"
-                                        data-v6-ui-switch
-                                        data-ng-change="setAction('dns/sec/domain-dns-sec', ctrlTabGeneralInformations.domain)"
-                                        data-ng-disabled="!ctrlTabGeneralInformations.domain.zoneDnssecSupported"
-                                        data-ng-model="ctrlTabGeneralInformations.vm.dnssec.uiSwitch"
-                                        data-uib-tooltip="{{(ctrlTabGeneralInformations.domain.dnssecStatus === 'ENABLE_IN_PROGRESS' ||
-                                          ctrlTabGeneralInformations.domain.dnssecStatus === 'DISABLE_IN_PROGRESS') ? i18n['domain_configuration_dnssec_' + ctrlTabGeneralInformations.domain.dnssecStatus] : ''}}"
-                                        data-uib-tooltip-append-to-body="true">
-                                  </span>
-                              </div>
-                          </li>
-                          <li data-ng-if="!ctrlTabGeneralInformations.isOwoSupported()">
-                              <strong data-i18n-static="domain_dashboard_owo"></strong>
-                              <span data-i18n-static="domain_dashboard_owo_not_supported"></span>
-                          </li>
-                          <!-- OWO  -->
-                          <li data-ng-if="ctrlTabGeneralInformations.isOwoSupported()">
-                              <strong class="d-inline-block" data-i18n-static="domain_dashboard_owo"></strong>
-                              <span class="fa fa-info-circle" aria-hidden="true"
-                                    data-uib-tooltip="{{::i18n.domain_dashboard_tooltip_whois}}"
-                                    data-uib-tooltip-append-to-body="true"
-                                    data-uib-tooltip-placement="top"></span>
-                              <div  class="d-block mt-2"
-                                    data-v6-ui-switch
-                                    data-ng-change="ctrlTabGeneralInformations.owoStateHaveChange('all')"
-                                    data-ng-if="ctrlTabGeneralInformations.isOwoSupported()"
-                                    data-ng-model="ctrlTabGeneralInformations.vm.owo.general.uiSwitch"
-                                    data-uib-tooltip="{{ctrlTabGeneralInformations.domain.whoisActivable ? '' : i18n.domain_dashboard_whois_not_activable}}"
-                                    data-uib-tooltip-append-to-body="true">
-                              </div>
-                          </li>
-                          <li data-ng-if="ctrlTabGeneralInformations.isOwoSupported()">
-                              <strong data-i18n-static="domain_dashboard_owo_hide_address"></strong>
-                              <div class="mt-2"
-                                    data-v6-ui-switch
-                                    data-ng-change="ctrlTabGeneralInformations.owoStateHaveChange('address')"
-                                    data-ng-model="ctrlTabGeneralInformations.vm.owo.address.uiSwitch"></div>
-                          </li>
-                          <li data-ng-if="ctrlTabGeneralInformations.isOwoSupported()">
-                              <strong data-i18n-static="domain_dashboard_owo_hide_email"></strong>
-                              <div class="mt-2"
-                                    data-v6-ui-switch
-                                    data-ng-change="ctrlTabGeneralInformations.owoStateHaveChange('email')"
-                                    data-ng-model="ctrlTabGeneralInformations.vm.owo.email.uiSwitch"></div>
-                          </li>
-                          <li data-ng-if="ctrlTabGeneralInformations.isOwoSupported()">
-                              <strong data-i18n-static="domain_dashboard_owo_hide_phone"></strong>
-                              <div class="mt-2"
-                                    data-v6-ui-switch
-                                    data-ng-change="ctrlTabGeneralInformations.owoStateHaveChange('phone')"
-                                    data-ng-model="ctrlTabGeneralInformations.vm.owo.phone.uiSwitch"></div>
-                          </li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
+                                <!-- DNSSEC -->
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <strong class="d-inline-block mr-2"
+                                                data-i18n-static="domain_dashboard_dnssec"></strong>
+                                        <span data-uib-tooltip="{{::i18n.domain_dashboard_tooltip_dnssec}}"
+                                              data-uib-tooltip-append-to-body="true"
+                                              data-uib-tooltip-placement="top">
+                                          <span class="fa fa-info-circle" aria-hidden="true"></span>
+                                      </span>
+                                        <div>
+                                          <span class="align-middle mt-2"
+                                                data-v6-ui-switch
+                                                data-ng-change="setAction('dns/sec/domain-dns-sec', ctrlTabGeneralInformations.domain)"
+                                                data-ng-disabled="!ctrlTabGeneralInformations.domain.zoneDnssecSupported"
+                                                data-ng-model="ctrlTabGeneralInformations.vm.dnssec.uiSwitch"
+                                                data-uib-tooltip="{{(ctrlTabGeneralInformations.domain.dnssecStatus === 'ENABLE_IN_PROGRESS' ||
+                                                  ctrlTabGeneralInformations.domain.dnssecStatus === 'DISABLE_IN_PROGRESS') ? i18n['domain_configuration_dnssec_' + ctrlTabGeneralInformations.domain.dnssecStatus] : ''}}"
+                                                data-uib-tooltip-append-to-body="true">
+                                          </span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="oui-tile__item" data-ng-if="!ctrlTabGeneralInformations.isOwoSupported()">
+                                    <div class="oui-tile__definition">
+                                        <strong data-i18n-static="domain_dashboard_owo"></strong>
+                                        <div data-i18n-static="domain_dashboard_owo_not_supported"></div>
+                                    </div>
+                                </li>
+                                <!-- OWO  -->
+                                <li class="oui-tile__item" data-ng-if="ctrlTabGeneralInformations.isOwoSupported()">
+                                    <div class="oui-tile__definition">
+                                        <strong class="d-inline-block" data-i18n-static="domain_dashboard_owo"></strong>
+                                        <span class="fa fa-info-circle" aria-hidden="true"
+                                              data-uib-tooltip="{{::i18n.domain_dashboard_tooltip_whois}}"
+                                              data-uib-tooltip-append-to-body="true"
+                                              data-uib-tooltip-placement="top"></span>
+                                        <div class="d-block mt-2"
+                                             data-v6-ui-switch
+                                             data-ng-change="ctrlTabGeneralInformations.owoStateHaveChange('all')"
+                                             data-ng-if="ctrlTabGeneralInformations.isOwoSupported()"
+                                             data-ng-model="ctrlTabGeneralInformations.vm.owo.general.uiSwitch"
+                                             data-uib-tooltip="{{ctrlTabGeneralInformations.domain.whoisActivable ? '' : i18n.domain_dashboard_whois_not_activable}}"
+                                             data-uib-tooltip-append-to-body="true">
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="oui-tile__item" data-ng-if="ctrlTabGeneralInformations.isOwoSupported()">
+                                    <div class="oui-tile__definition">
+                                        <strong data-i18n-static="domain_dashboard_owo_hide_address"></strong>
+                                        <div class="d-block mt-2"
+                                             data-v6-ui-switch
+                                             data-ng-change="ctrlTabGeneralInformations.owoStateHaveChange('address')"
+                                             data-ng-model="ctrlTabGeneralInformations.vm.owo.address.uiSwitch"></div>
+                                    </div>
+                                </li>
+                                <li class="oui-tile__item" data-ng-if="ctrlTabGeneralInformations.isOwoSupported()">
+                                    <div class="oui-tile__definition">
+                                        <strong data-i18n-static="domain_dashboard_owo_hide_email"></strong>
+                                        <div class="d-block mt-2"
+                                             data-v6-ui-switch
+                                             data-ng-change="ctrlTabGeneralInformations.owoStateHaveChange('email')"
+                                             data-ng-model="ctrlTabGeneralInformations.vm.owo.email.uiSwitch"></div>
+                                    </div>
+                                </li>
+                                <li class="oui-tile__item" data-ng-if="ctrlTabGeneralInformations.isOwoSupported()">
+                                    <div class="oui-tile__definition">
+                                        <strong data-i18n-static="domain_dashboard_owo_hide_phone"></strong>
+                                        <div class="d-block mt-2"
+                                             data-v6-ui-switch
+                                             data-ng-change="ctrlTabGeneralInformations.owoStateHaveChange('phone')"
+                                             data-ng-model="ctrlTabGeneralInformations.vm.owo.phone.uiSwitch"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="col-md-3 mt-md-5 mt-lg-0">
             <div class="d-flex flex-column-reverse flex-lg-column">
                 <div class="mb-5 text-center" data-ng-if="!ctrlTabGeneralInformations.domain.isExpired">
-                    <div class="loader" aria-label="{{i18n.common_loading}}" data-ng-if="ctrlTabGeneralInformations.loading.screenshot"></div>
-                    <a data-ng-href="http://{{ctrlTabGeneralInformations.domain.name}}" class="oui-box oui-box_light d-block p-0 text-truncate" target="_blank" title="{{ctrlTabGeneralInformations.domain.name}} ({{i18n.common_newtab}})"
+                    <oui-loader inline="true"
+                                data-ng-if="ctrlTabGeneralInformations.loading.screenshot"></oui-loader>
+                    <a data-ng-href="http://{{ctrlTabGeneralInformations.domain.name}}"
+                       class="oui-box oui-box_light d-block p-0 text-truncate" target="_blank"
+                       title="{{ctrlTabGeneralInformations.domain.name}} ({{i18n.common_newtab}})"
                        data-ng-if="!ctrlTabGeneralInformations.loading.screenshot && ctrlTabGeneralInformations.screenshot">
                         <img class="h-100 mw-100" width="600" alt="{{ctrlTabGeneralInformations.domain.name}}"
                              data-ng-src="data:image/png;base64,{{ctrlTabGeneralInformations.screenshot}}">

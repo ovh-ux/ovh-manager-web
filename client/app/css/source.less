@@ -1,8 +1,10 @@
 @import "node_modules/ovh-ui-kit/packages/oui-color/_constants";
 
+@bs-path: "./node_modules/bootstrap";
+@oui-path: "./node_modules/ovh-ui-kit";
+
 @import "node_modules/ovh-ui-kit-bs/src/ovh-ui-kit-bs";
 
-@import "bower_components/ovh-common-style/less/helpers";
 @import "bower_components/ovh-angular-manager-navbar/less/ovh-angular-manager-navbar";
 @import "bower_components/ovh-angular-actions-menu/less/ovh-angular-actions-menu";
 @import "bower_components/ovh-angular-otrs/dist/ovh-angular-otrs";
@@ -11,75 +13,52 @@
 @import "utils/variables";
 @import "utils/function";
 @import "utils/elements";
-@import "utils/utilities";
 
 @import "common/animation";
 @import "common/autocomplete";
 @import "common/button";
-@import "common/buttonToggle";
 @import "common/countryIcon";
 @import "common/datePicker";
 @import "common/distributionIcon";
-@import "common/dropdown";
 @import "common/global";
 @import "common/graphicalTools";
 @import "common/icon";
 @import "common/incident";
-@import "common/informationBlock";
-@import "common/loader";
-@import "common/orderResume";
+@import "common/linkedPopover";
 @import "common/progress";
-@import "common/progressBarWithText";
-@import "common/progressBarExtraStyles";
 @import "common/selectList";
-@import "common/serviceIcon";
 @import "common/switch";
-@import "common/tabs";
 @import "common/v6-ui-switch";
 @import "common/wizard";
 
-@import "module/domain/domains";
 @import "module/emails/emails";
-@import "module/hosting/database";
-@import "module/hosting/hosting";
-@import "module/mailing_list/mailing_list";
 @import "module/modules/modules";
-@import "module/private_database/private_database";
-@import "module/website/website";
 
 @import "../components/pagination-front/pagination-front";
 @import "../components/incrementNumber/incrementNumber";
-@import "../components/tabs/tabs";
 @import "../components/guides/guides";
 @import "../components/manager-preload/manager-preload";
 @import "../components/sidebar-menu/sidebar-menu";
 @import "../components/ovh-angular-otrs/ovh-angular-otrs";
-@import "../components/actions-menu/actions-menu";
-
-@import "./bootstrap/_popover";
-@import "./bootstrap/_table";
-@import "./bootstrap/_utilities";
 
 @import "./ovh-ui-kit/icon";
 
-@bs-path: "node_modules/bootstrap";
-@oui-path: "node_modules/ovh-ui-kit";
-@ovh-font-path:'../bower_components/ovh-manager-webfont/dist/fonts';
+@ovh-font-path: "../bower_components/ovh-manager-webfont/dist/fonts";
+@ovh-universe-color: @oui-color-jungle;
 
 #manager-navbar {
     min-height: auto;
     position: relative;
-    top: inherit;
-    left: inherit;
-    right: inherit;
-    z-index: inherit;
-}
 
-.page-header {
-  margin: 0;
-  padding-top: 3rem;
-  padding-left: @grid-gutter-width;
-  padding-right: @grid-gutter-width;
-  background-color: @oui-color-concrete;
-  border-bottom: 0;
+    .dropdown-menu li {
+        &::before {
+            display: none;
+        }
+
+        & > a, & > button {
+            font-size: inherit;
+            margin-left: inherit;
+            white-space: nowrap;
+        }
+    }
 }

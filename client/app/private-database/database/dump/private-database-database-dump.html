@@ -1,18 +1,15 @@
 <div data-ng-controller="PrivateDatabaseBDDsDumpsCtrl as dumpCtrl">
+    <div data-ovh-alert="{{alerts.main}}"></div>
 
-    <div class="d-flex mb-3">
-        <button class="btn btn-default my-auto" type="button"
-                data-ng-click="goToList()">
-            <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-            <span data-i18n-static="common_back"></span>
-        </button>
-        <h2 class="d-inline ml-4 mb-0"
-            data-ng-bind="i18n.privateDatabase_tabs_dumps_change + ' ' + dumpCtrl.database.databaseName"></h2>
-    </div>
+    <button class="oui-button oui-button_link oui-button_icon-left" type="button"
+            data-ng-click="goToList()">
+        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+        <span data-i18n-static="common_back"></span>
+    </button>
+    <h2 data-ng-bind="i18n.privateDatabase_tabs_dumps_change + ' ' + dumpCtrl.database.databaseName"></h2>
 
     <div class="table-responsive">
-        <table class="table"
-               data-ng-class="{'table-hover table-striped': !dumpCtrl.loaders.dumps && dumpCtrl.dumpsIds.length}">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col" data-i18n-static="privateDatabase_tabs_dumps_creation_date"></th>
@@ -43,7 +40,7 @@
                     <td>
                         <span class="mr-3" data-ng-bind="::dump.creationDate | date:'medium'"></span>
                         <span class="label label-info" data-ng-if="dump.waitRestore">
-                            <span class="fa fa-spinner fa-spin mr-2" aria-hidden="true"></span>
+                            <oui-loader size="s" inline="true"></oui-loader>
                             <span data-i18n-static="privateDatabase_restore_in_progress"></span>
                         </span>
                     </td>

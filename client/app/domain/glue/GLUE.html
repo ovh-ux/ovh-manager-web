@@ -1,12 +1,12 @@
 <div class="container-fluid px-0" data-ng-controller="controllers.Domain.Glue as ctrlDomainGlue">
     <div class="row">
         <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.main}}"></div>
+
             <p class="font-weight-bold" data-i18n-static="domain_tab_GLUE_heading"></p>
             <p data-i18n-static="domain_tab_GLUE_info"></p>
 
-            <div class="mt-4" data-ovh-alert="domain_tab_glue_alert"></div>
-
-            <div class="loader text-center" data-ng-if="ctrlDomainGlue.loading"></div>
+            <oui-loader size="l" data-ng-if="ctrlDomainGlue.loading"></oui-loader>
 
             <div class="alert alert-info" role="alert"
                  data-i18n-static="domain_tab_GLUE_empty"
@@ -14,7 +14,7 @@
             </div>
 
             <div class="table-responsive" data-ng-if="!ctrlDomainGlue.loading && ctrlDomainGlue.glueHosts.length > 0">
-                <table class="table table-hover table-striped">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col" data-i18n-static="domain_tab_GLUE_host"></th>
@@ -32,14 +32,14 @@
                         <tr data-ng-repeat="glue in ctrlDomainGlue.glueDetails track by $index">
                             <th scope="row" data-ng-bind="glue.host"></th>
                             <td data-ng-bind="glue.ips"></td>
-                            <td class="text-center text-nowrap">
-                                <button class="btn btn-icon" type="button" title="{{i18n.wizard_modify}}"
-                                        data-ng-click="setAction('glue/add/domain-glue-add-or-edit', { editedGlueRecord: glue, domain: ctrlDomainGlue.domain })">
-                                    <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
-                                </button>
-                                <button class="btn btn-icon" type="button" title="{{i18n.wizard_delete}}"
-                                        data-ng-click="setAction('glue/delete/domain-glue-delete', glue)">
-                                    <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
+                            <td class="text-right">
+                                <button class="btn btn-icon" type="button"
+                                        data-linkedpopover="domain/glue/domain-glue.popover.html"
+                                        data-linkedpopover-placement="left"
+                                        data-linkedpopover-remote="true"
+                                        data-linkedpopover-single="true"
+                                        data-linkedpopover-title="{{i18n.common_actions}}">
+                                    <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                                 </button>
                             </td>
                         </tr>

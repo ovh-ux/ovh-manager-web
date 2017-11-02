@@ -17,10 +17,6 @@ angular
 
             const statusToWatch = ["start", "done", "error"];
 
-            this.alerts = {
-                extension: "privateDataBase.alerts.bdd"
-            };
-
             this.loaders = {
                 extensions: false
             };
@@ -126,13 +122,13 @@ angular
 
         onExtensionEnabledone () {
             this.getExtensions();
-            this.alerter.success(this.$scope.tr("privateDatabase_tabs_list_extensions_enable_success"), this.alerts.extension);
+            this.alerter.success(this.$scope.tr("privateDatabase_tabs_list_extensions_enable_success"), this.$scope.alerts.main);
         }
 
         onExtensionEnableerror (opts) {
             this.findItemIndex(opts.extensionName).then((idx) => {
                 if (~idx) {
-                    this.alerter.error(this.$scope.tr("privateDatabase_tabs_list_extensions_enable_error"), this.alerts.extension);
+                    this.alerter.error(this.$scope.tr("privateDatabase_tabs_list_extensions_enable_error"), this.$scope.alerts.main);
                 }
             });
         }
@@ -148,13 +144,13 @@ angular
 
         onExtensionDisabledone () {
             this.getExtensions();
-            this.alerter.success(this.$scope.tr("privateDatabase_tabs_list_extensions_disable_success"), this.alerts.extension);
+            this.alerter.success(this.$scope.tr("privateDatabase_tabs_list_extensions_disable_success"), this.$scope.alerts.main);
         }
 
         onExtensionDisableerror (opts) {
             this.findItemIndex(opts.extensionName).then((idx) => {
                 if (~idx) {
-                    this.alerter.error(this.$scope.tr("privateDatabase_tabs_list_extensions_disable_error"), this.alerts.extension);
+                    this.alerter.error(this.$scope.tr("privateDatabase_tabs_list_extensions_disable_error"), this.$scope.alerts.main);
                 }
             });
         }

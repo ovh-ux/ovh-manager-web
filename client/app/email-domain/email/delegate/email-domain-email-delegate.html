@@ -7,15 +7,20 @@
          data-wizard-title="i18n.email_tab_popover_delegate_title">
 
         <div data-wizard-step>
-            
+
             <p data-ng-bind-html="tr('email_tab_popover_delegate_info', [currentActionData.accountName])"></p>
-            
-            <p class="mb-5" data-ng-if="ctrl.createNicUrl">
-                <a data-ng-href="{{ctrl.createNicUrl}}" class="btn btn-block btn-default" target="_blank" title="{{::i18n.emails_create_account_new_window}}"
-                   data-i18n-static="emails_create_account"></a>
+
+            <p data-ng-if="ctrl.createNicUrl">
+                <a target="_blank" title="{{::i18n.emails_create_account_new_window}}"
+                   data-ng-href="{{ctrl.createNicUrl}}">
+                    <span data-i18n-static="emails_create_account"></span>
+                    <span class="fa fa-external-link" aria-hidden="true"></span>
+                </a>
             </p>
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <table class="table table-condensed" data-ng-if="!ctrl.loading">
                 <thead>
@@ -34,11 +39,12 @@
                     <tr data-ng-if="!ctrl.addDelegateShown">
                         <td class="text-center">
                             <button class="btn btn-link" type="button"
-                                    data-ng-click="ctrl.addDelegateShown = true"
-                                    data-i18n-static="email_tab_popover_delegate_tab_content_add"></button>
+                                    data-i18n-static="email_tab_popover_delegate_tab_content_add"
+                                    data-ng-click="ctrl.addDelegateShown = true">
+                            </button>
                         </td>
                         <td class="text-center">
-                            <button class="btn btn-icon" type="button"
+                            <button class="oui-button oui-button_secondary oui-button_small-width mb-0" type="button"
                                     data-ng-click="ctrl.addDelegateShown = true">
                                 <span class="fa fa-plus" aria-hidden="true"></span>
                             </button>
@@ -57,21 +63,21 @@
                             </form>
                         </td>
                         <td class="text-center text-nowrap">
-                            <button class="btn btn-danger" type="button"
-                                    data-ng-click="ctrl.addDelegateShown = false">
-                                <span class="fa fa-times" aria-hidden="true"></span>
-                            </button>
-                            <button class="btn btn-success" type="button"
+                            <button class="oui-button oui-button_primary oui-button_small-width mb-0" type="button"
                                     data-ng-click="ctrl.addDelegate()"
                                     data-ng-disabled="ctrl.addNicForm.$invalid">
                                 <span class="fa fa-check" aria-hidden="true"></span>
+                            </button>
+                            <button class="oui-button oui-button_secondary oui-button_small-width mb-0" type="button"
+                                    data-ng-click="ctrl.addDelegateShown = false">
+                                <span class="fa fa-times" aria-hidden="true"></span>
                             </button>
                         </td>
                     </tr>
 
                     <tr data-ng-repeat="delegationAccount in ctrl.delegationAccountList track by $index">
                         <td data-ng-bind="delegationAccount"></td>
-                        <td class="text-center">
+                        <td class="text-right">
                             <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_popover_delegate_tab_content_delete}}"
                                     data-ng-click="ctrl.removeDelegate(delegationAccount)">
                                 <span class="fa fa-trash" aria-hidden="true"></span>

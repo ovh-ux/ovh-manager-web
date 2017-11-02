@@ -9,55 +9,59 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
             <div data-ng-if="!ctrl.loading">
                 <p data-i18n-static="email_tab_modal_help_explanation"></p>
 
-                <div class="row mt-4">
-                    <div class="col-md-3 mb-2">
-                        <button type="button" class="btn btn-block btn-default text-wrap"
-                                data-ng-click="setAction('email-domain/email/account/create/email-domain-email-account-create')"
-                                data-ng-if="ctrl.canCreate.account">
-                            <span data-i18n-static="email_tab_button_emails_create_account"></span>
-                        </button>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <button type="button" class="btn btn-block btn-default text-wrap"
-                                data-ng-click="setAction('email-domain/email/redirection/create/email-domain-email-redirection-create')"
-                                data-ng-if="ctrl.canCreate.redirection">
-                            <span data-i18n-static="email_tab_button_emails_create_redirection"></span>
-                        </button>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <button type="button" class="btn btn-block btn-default text-wrap"
-                                data-ng-click="setAction('email-domain/mailing-list/create/email-domain-mailing-list-create')"
-                                data-ng-if="ctrl.canCreate.mailingList">
-                            <span data-i18n-static="email_tab_modal_help_create_mailing_list"></span>
-                        </button>
-                    </div>
-                    <div class="col-md-3 mb-2">
-                        <button type="button" class="btn btn-block btn-default text-wrap"
-                                data-ng-click="setAction('email-domain/email/responder/create/email-domain-email-responder-create', {accounts: ctrl.emails})"
-                                data-ng-if="ctrl.canCreate.responder">
-                            <span data-i18n-static="email_tab_modal_create_responder_title"></span>
-                        </button>
-                    </div>
+                <div class="d-flex">
+                    <button type="button" class="btn btn-default text-wrap mx-2"
+                            data-i18n-static="email_tab_button_emails_create_account"
+                            data-ng-click="setAction('email-domain/email/account/create/email-domain-email-account-create')"
+                            data-ng-if="ctrl.canCreate.account">
+                    </button>
+                    <button type="button" class="btn btn-default text-wrap mx-2"
+                            data-i18n-static="email_tab_button_emails_create_redirection"
+                            data-ng-click="setAction('email-domain/email/redirection/create/email-domain-email-redirection-create')"
+                            data-ng-if="ctrl.canCreate.redirection">
+                    </button>
+                    <button type="button" class="btn btn-default text-wrap mx-2"
+                            data-i18n-static="email_tab_modal_help_create_mailing_list"
+                            data-ng-click="setAction('email-domain/mailing-list/create/email-domain-mailing-list-create')"
+                            data-ng-if="ctrl.canCreate.mailingList">
+                    </button>
+                    <button type="button" class="btn btn-default text-wrap mx-2"
+                            data-i18n-static="email_tab_modal_create_responder_title"
+                            data-ng-click="setAction('email-domain/email/responder/create/email-domain-email-responder-create', {accounts: ctrl.emails})"
+                            data-ng-if="ctrl.canCreate.responder">
+                    </button>
                 </div>
 
                 <form class="mt-5" name="ctrl.configureHelpForm">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="hideEmailsHelpOne"
-                                   data-ng-model="ctrl.hideEmailsHelp.one">
-                            <span data-i18n-static="email_tab_modal_help_explanation_checkbox_this"></span>
+                    <div class="oui-checkbox">
+                        <input type="checkbox" class="oui-checkbox__input" id="hideEmailsHelpOne" name="hideEmailsHelpOne"
+                               data-ng-model="ctrl.hideEmailsHelp.one">
+                        <label class="oui-checkbox__label-container" for="hideEmailsHelpOne">
+                            <span class="oui-checkbox__label"
+                                  data-i18n-static="email_tab_modal_help_explanation_checkbox_this"></span>
+                            <span class="oui-checkbox__icon">
+                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                            </span>
                         </label>
                     </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="hideEmailsHelpAll"
-                                   data-ng-model="ctrl.hideEmailsHelp.all">
-                            <span data-i18n-static="email_tab_modal_help_explanation_checkbox_all"></span>
+                    <div class="oui-checkbox">
+                        <input type="checkbox" class="oui-checkbox__input" id="hideEmailsHelpAll" name="hideEmailsHelpAll"
+                               data-ng-model="ctrl.hideEmailsHelp.all">
+                        <label class="oui-checkbox__label-container" for="hideEmailsHelpAll">
+                            <span class="oui-checkbox__label"
+                                  data-i18n-static="email_tab_modal_help_explanation_checkbox_all"></span>
+                            <span class="oui-checkbox__icon">
+                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                            </span>
                         </label>
                     </div>
                 </form>

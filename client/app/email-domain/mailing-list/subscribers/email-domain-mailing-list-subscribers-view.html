@@ -1,49 +1,57 @@
 <div class="container-fluid px-0" data-ng-controller="MailingListsSubscribersCtrl as ctrlSubscribers">
     <div class="row">
         <div class="col-md-9">
-            <div class="d-flex mb-3">
-                <button class="btn btn-default my-auto" type="button"
-                        data-ng-click="ctrlTabView.setCurrentView('mailingListsView')">
-                    <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-                    <span data-i18n-static="mailing_list_common_back"></span>
-                </button>
-                <h2 class="d-inline-block ml-3 mb-0"
-                    data-ng-bind-html="trpl('mailing_list_tab_subscribers_management_title', ctrlSubscribers.subscribers.ids.length, [
-                        ctrlSubscribers.mailingList.name,
-                        ctrlSubscribers.subscribers.ids.length,
-                        ctrlSubscribers.mailingList.limits.subscribers
-                    ])"></h2>
-            </div>
+            <div data-ovh-alert="{{alerts.main}}"></div>
 
-            <div class="mb-3 mt-5">
-                <form class="form-inline d-md-flex justify-content-md-end" name="searchSubscribersForm">
-                    <div class="form-group">
-                        <label class="sr-only" for="searchSubscribers"></label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="searchSubscribers" name="searchSubscribers" placeholder="{{::i18n.navigation_left_search}}"
-                                   data-ng-change="ctrlSubscribers.goSearch()"
-                                   data-ng-disabled="ctrlSubscribers.loading.subscribers"
-                                   data-ng-model="ctrlSubscribers.search.subscribers"
-                                   data-ng-model-options='{ debounce: 800 }'>
-                            <div class="input-group-btn" data-ng-if="ctrlSubscribers.search.subscribers">
-                                <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
-                                        data-ng-click="ctrlSubscribers.emptySearch()"
-                                        data-ng-disabled="ctrlSubscribers.loading.subscribers">
-                                    <span class="fa fa-times" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                            <span class="input-group-addon"
-                                  data-ng-if="!ctrlSubscribers.search.subscribers">
+            <button class="oui-button oui-button_link oui-button_icon-left" type="button"
+                    data-ng-click="ctrlTabView.setCurrentView('mailingListsView')">
+                <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+                <span data-i18n-static="common_back"></span>
+            </button>
+            <h2 data-ng-bind-html="trpl('mailing_list_tab_subscribers_management_title', ctrlSubscribers.subscribers.ids.length, [
+                ctrlSubscribers.mailingList.name,
+                ctrlSubscribers.subscribers.ids.length,
+                ctrlSubscribers.mailingList.limits.subscribers
+            ])"></h2>
+
+            <div class="row mb-3 mt-5">
+                <div class="col-xs-4" data-ng-if="ctrlSubscribers.subscribers.selected.length > 0">
+                    <button class="btn btn-default" type="button"
+                            data-i18n-static="common_delete"
+                            data-ng-click="setAction('email-domain/mailing-list/subscriber/delete/email-domain-mailing-list-subscriber-delete', { mailingList: ctrlSubscribers.mailingList, subscribers: ctrlSubscribers.subscribers.selected })"
+                            data-ng-disabled="ctrlSubscribers.subscribers.updating">
+                    </button>
+                </div>
+                <div data-ng-class="{'col-xs-8': ctrlSubscribers.subscribers.selected.length > 0, 'col-xs-12': !ctrlSubscribers.subscribers.selected.length}">
+                    <form class="form-inline d-md-flex justify-content-md-end" name="searchSubscribersForm">
+                        <div class="form-group">
+                            <label class="sr-only" for="searchSubscribers"
+                                   data-i18n-static="common_search"></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchSubscribers" name="searchSubscribers" placeholder="{{::i18n.navigation_left_search}}"
+                                       data-ng-change="ctrlSubscribers.goSearch()"
+                                       data-ng-disabled="ctrlSubscribers.loading.subscribers"
+                                       data-ng-model="ctrlSubscribers.search.subscribers"
+                                       data-ng-model-options='{ debounce: 800 }'>
+                                <div class="input-group-btn" data-ng-if="ctrlSubscribers.search.subscribers">
+                                    <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
+                                            data-ng-click="ctrlSubscribers.emptySearch()"
+                                            data-ng-disabled="ctrlSubscribers.loading.subscribers">
+                                        <span class="fa fa-times" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                                <span class="input-group-addon"
+                                      data-ng-if="!ctrlSubscribers.search.subscribers">
                                 <span class="fa fa-search" aria-hidden="true"></span>
                             </span>
+                            </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
 
             <div class="table-responsive">
-                <table class="table"
-                       data-ng-class="{'table-hover table-striped': !ctrlSubscribers.loading.subscribers && !ctrlSubscribers.loading.pager && !ctrlSubscribers.subscribers.updating && ctrlSubscribers.subscribers.ids.length}">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th class="min-width text-center" scope="col">
@@ -75,8 +83,9 @@
                     <tbody data-ng-if="!ctrlSubscribers.loading.subscribers && ctrlSubscribers.subscribers.updating">
                         <tr>
                             <td colspan="3" class="text-center">
-                                <div class="loader"></div>
-                                <span data-i18n-static="mailing_list_tab_table_subscribers_updating"></span>
+                                <oui-loader inline="true"></oui-loader>
+                                <span class="d-block"
+                                      data-i18n-static="mailing_list_tab_table_subscribers_updating"></span>
                             </td>
                         </tr>
                     </tbody>
@@ -148,12 +157,6 @@
                     data-i18n-static="mailing_list_tab_suscribers_csv_export"
                     data-ng-click="ctrlSubscribers.exportSubscribersToCSV()"
                     data-ng-disabled="ctrlSubscribers.loading.subscribers || !ctrlSubscribers.subscribers.ids.length">
-            </button>
-            <button class="btn btn-block btn-danger" type="button"
-                    data-i18n-static="common_delete"
-                    data-ng-click="setAction('email-domain/mailing-list/subscriber/delete/email-domain-mailing-list-subscriber-delete', { mailingList: ctrlSubscribers.mailingList, subscribers: ctrlSubscribers.subscribers.selected })"
-                    data-ng-disabled="ctrlSubscribers.subscribers.updating"
-                    data-ng-if="ctrlSubscribers.subscribers.selected.length > 0">
             </button>
         </div>
     </div>

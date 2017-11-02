@@ -26,8 +26,8 @@ angular.module("App").controller(
             this.domain = this.$stateParams.productId;
             this.loading = false;
             this.model = {
-                account: "",
-                responderCopyTo: "",
+                account: null,
+                responderCopyTo: null,
                 responderDateEnd: "",
                 responderDateStart: "",
                 responderDuration: "temporary",
@@ -57,7 +57,7 @@ angular.module("App").controller(
                     this.accountsNotUsed = _.filter(this.accounts, (account) => _.indexOf(this.responders, account) === -1);
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_responders_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_responders_error"), err, this.$scope.alerts.main);
                     this.$scope.resetAction();
                 })
                 .finally(() => (this.loading = false));
@@ -69,7 +69,7 @@ angular.module("App").controller(
         }
 
         responderAccountCheck (input) {
-            input.$setValidity("email", validator.isEmail(`${this.model.account}@${this.domain}`));
+            input.$setValidity("email", this.model.account && validator.isEmail(`${this.model.account}@${this.domain}`));
             input.$setValidity("responder", _.indexOf(this.responders, this.model.account) === -1);
             input.$setValidity("account", _.indexOf(this.accounts, this.model.account) === -1);
         }
@@ -77,7 +77,10 @@ angular.module("App").controller(
         responderDurationCheck () {
             return (
                 this.model.responderDuration === "permanent" ||
-                (!!this.model.responderDateStart && !!this.model.responderDateEnd && moment(this.model.responderDateEnd).isAfter(this.model.responderDateStart) && moment(this.model.responderDateEnd).isAfter(new Date()))
+                (!!this.model.responderDateStart && !!this.model.responderDateEnd &&
+                    moment(this.model.responderDateEnd).isAfter(this.model.responderDateStart) &&
+                    moment(this.model.responderDateEnd).isAfter(new Date())
+                )
             );
         }
 
@@ -113,8 +116,8 @@ angular.module("App").controller(
             }
 
             return promise
-                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_create_responder_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_create_responder_error"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_create_responder_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_create_responder_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     this.loading = false;
                     this.$scope.resetAction();

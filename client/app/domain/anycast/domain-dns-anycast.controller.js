@@ -27,7 +27,7 @@ angular.module("App").controller(
                     this.optionDetails = data;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dnsanycast_fail"), _.get(err, "data", err), this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dnsanycast_fail"), _.get(err, "data", err), this.$scope.alerts.main);
                     this.$scope.resetAction();
                 })
                 .finally(() => {
@@ -45,7 +45,7 @@ angular.module("App").controller(
                     this.url = order.url;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dnsanycast_fail"), _.get(err, "data", err), this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dnsanycast_fail"), _.get(err, "data", err), this.$scope.alerts.main);
                     this.$scope.resetAction();
                 })
                 .finally(() => {
@@ -55,7 +55,7 @@ angular.module("App").controller(
 
         displayBC () {
             this.$scope.resetAction();
-            this.Alerter.success(this.$scope.tr("domain_order_dns_anycast_success", [this.url]), this.$scope.alerts.dashboard);
+            this.Alerter.success(this.$scope.tr("domain_order_dns_anycast_success", [this.url]), this.$scope.alerts.main);
             window.open(this.url, "_blank");
         }
     }

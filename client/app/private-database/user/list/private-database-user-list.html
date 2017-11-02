@@ -1,16 +1,15 @@
 <div class="row" data-ng-controller="PrivateDatabaseUsersListCtrl as usersListCtrl">
     <div class="col-md-9">
+        <div data-ovh-alert="{{alerts.main}}"></div>
+
         <div class="table-responsive">
-            <table class="table"
-                   data-ng-class="{'table-hover table-striped': !usersListCtrl.loaders.users && (usersListCtrl.usersIds.length || usersListCtrl.currentUsers.add.length)}">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col" data-i18n-static="privateDatabase_tabs_user_name"></th>
                         <th scope="col" data-i18n-static="privateDatabase_tabs_creation_date"></th>
                         <th scope="col" class="min-width text-center">
-                            <button type="button"
-                                    class="btn btn-icon"
-                                    title="{{i18n.privateDatabase_tabs_refresh_data}}"
+                            <button class="btn btn-icon" type="button" title="{{i18n.privateDatabase_tabs_refresh_data}}"
                                     data-ng-click="usersListCtrl.getUsers()">
                                 <span class="fa fa-refresh" aria-hidden="true"></span>
                             </button>
@@ -20,19 +19,19 @@
 
                 <tbody data-ng-if="usersListCtrl.loaders.users">
                     <tr>
-                        <td colspan="3" class="loader text-center"></td>
+                        <td class="loader text-center" colspan="3"></td>
                     </tr>
                 </tbody>
 
                 <tbody data-ng-if="!usersListCtrl.loaders.users && usersListCtrl.usersIds.length === 0 && usersListCtrl.currentUsers.add.length > 0">
                     <tr>
-                        <td colspan="3" class="text-center" data-i18n-static="privateDatabase_tabs_no_user_error"></td>
+                        <td class="text-center" colspan="3" data-i18n-static="privateDatabase_tabs_no_user_error"></td>
                     </tr>
                 </tbody>
 
                 <tbody data-ng-if="!usersListCtrl.loaders.users && usersListCtrl.usersIds.length === 0 && usersListCtrl.currentUsers.add.length === 0">
                     <tr>
-                        <td colspan="3" class="text-center" data-i18n-static="privateDatabase_tabs_no_user"></td>
+                        <td class="text-center" colspan="3" data-i18n-static="privateDatabase_tabs_no_user"></td>
                     </tr>
                 </tbody>
 
@@ -44,9 +43,7 @@
                         </td>
                         <td data-ng-if="!user.waitDelete" data-ng-bind="user.creationDate | date:mediumDate"></td>
                         <td data-ng-if="!user.waitDelete" class="text-center">
-                            <button class="btn btn-icon"
-                                    type="button"
-                                    title="{{i18n.privateDatabase_tabs_user_options}}"
+                            <button class="btn btn-icon" type="button" title="{{i18n.privateDatabase_tabs_user_options}}"
                                     data-linkedpopover="private-database/user/list/popover/private-database-user-list.popover.html"
                                     data-linkedpopover-placement="left"
                                     data-linkedpopover-single="true"
@@ -84,8 +81,7 @@
     </div>
 
     <div class="col-md-3 mt-5 mt-lg-0">
-        <button type="button"
-                class="btn btn-block btn-default"
+        <button class="btn btn-block btn-default" type="button"
                 data-i18n-static="privateDatabase_tabs_add_user"
                 data-ng-click="setAction('user/add/private-database-user-add', {'user':usersListCtrl.usersIds})"
                 data-ng-disabled="database.state !== 'started' || taskState.changeVersion || usersListCtrl.lockAction"></button>

@@ -37,7 +37,7 @@ angular.module("App").controller(
                     this.loading = false;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_acls_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_acls_error"), err, this.$scope.alerts.main);
                     this.$scope.resetAction();
                 });
         }
@@ -46,8 +46,8 @@ angular.module("App").controller(
             this.loading = true;
             this.Emails
                 .setDnsFilter(this.$stateParams.productId, { mxFilter: this.selectedFilter, customTarget: this.customFilter.value })
-                .then(() => this.Alerter.success(this.$scope.tr("emails_dns_filter_edit_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_edit_filter_error"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("emails_dns_filter_edit_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_edit_filter_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     this.loading = false;
                     this.$scope.resetAction();

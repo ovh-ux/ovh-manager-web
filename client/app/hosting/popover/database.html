@@ -1,35 +1,35 @@
 <div class="popover-menu">
-    <button class="btn btn-link d-block" type="button"
+    <button class="btn btn-link" type="button"
             data-i18n-static="hosting_tab_DATABASES_table_popover_update_password"
             data-ng-click="updatePassword(element)">
     </button>
-    <button class="btn btn-link d-block" type="button"
+    <button class="btn btn-link" type="button"
             data-i18n-static="hosting_tab_DATABASES_table_popover_dump"
             data-ng-click="createDump(element)">
     </button>
-    <button class="btn btn-link d-block" type="button"
+    <button class="btn btn-link" type="button"
             data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore"
             data-ng-click="restoreDump(element)">
     </button>
     <div data-ng-if="element.type === 'MYSQL'">
-        <button class="btn btn-link d-block" type="button"
+        <button class="btn btn-link" type="button"
                 data-i18n-static="hosting_tab_DATABASES_table_popover_import"
                 data-ng-click="importFromFile(element)">
         </button>
-        <button class="btn btn-link d-block" type="button"
+        <button class="btn btn-link" type="button"
                 data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore_yesterday"
                 data-ng-click="restoreYesterdayBackup(element)">
         </button>
-        <button class="btn btn-link d-block" type="button"
+        <button class="btn btn-link" type="button"
                 data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore_one_week"
                 data-ng-click="restoreLastWeekBackup(element)">
         </button>
-        <button class="btn btn-link d-block" type="button"
+        <button class="btn btn-link" type="button"
                 data-i18n-static="hosting_tab_DATABASES_table_popover_check_quota"
                 data-ng-click="checkQuota(element)">
         </button>
     </div>
-    <button class="btn btn-link d-block" type="button"
+    <button class="btn btn-link" type="button"
             data-i18n-static="hosting_tab_DATABASES_table_popover_delete"
             data-ng-click="deleteDatabase(element)">
     </button>

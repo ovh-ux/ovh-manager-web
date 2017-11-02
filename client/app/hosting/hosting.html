@@ -1,6 +1,6 @@
-<div data-ovh-alert="{{alerts.dashboard}}"></div>
+<div data-ovh-alert="{{alerts.page}}"></div>
 
-<div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loadingHostingInformations && !loadingHostingError"></div>
+<oui-loader size="l" data-ng-if="loadingHostingInformations && !loadingHostingError"></oui-loader>
 
 <div class="page-header" data-ng-if="!loadingHostingInformations && !loadingHostingError">
     <div class="row">
@@ -26,22 +26,20 @@
                 <div class="form-group my-4"
                      data-ng-class="{'has-error': formEditDisplayName.txtDisplayName.$dirty && formEditDisplayName.$invalid}"
                      data-ng-show="edit.active">
-                    <div class="input-group">
-                        <input type="text" class="form-control input-lg" name="txtDisplayName"
+                    <div class="oui-input-group">
+                        <input type="text" class="oui-input" name="txtDisplayName"
                                data-event-blur="newDisplayName.value = ''"
                                data-ng-maxlength="250"
                                data-ng-model="newDisplayName.value">
-                        <div class="input-group-btn">
-                            <button class="btn btn-success btn-lg" type="button" title="{{i18n.common_confirm}}"
-                                    data-ng-click="saveDisplayName()"
-                                    data-ng-disabled="!formEditDisplayName.txtDisplayName.$dirty || formEditDisplayName.$invalid">
-                                <span class="fa fa-check" aria-hidden="true"></span>
-                            </button>
-                            <button class="btn btn-danger btn-lg" type="button" title="{{i18n.common_cancel}}"
-                                    data-ng-click="resetDisplayName()">
-                                <span class="fa fa-remove" aria-hidden="true"></span>
-                            </button>
-                        </div>
+                        <button class="oui-button oui-button_small-width" type="button" aria-label="{{i18n.common_confirm}}"
+                                data-ng-click="saveDisplayName()"
+                                data-ng-disabled="!formEditDisplayName.txtDisplayName.$dirty || formEditDisplayName.$invalid">
+                            <span class="oui-icon oui-icon-success oui-icon_small" aria-hidden="true"></span>
+                        </button>
+                        <button class="oui-button oui-button_small-width" type="button" aria-label="{{i18n.common_cancel}}"
+                                data-ng-click="resetDisplayName()">
+                            <span class="oui-icon oui-icon-error oui-icon_small" aria-hidden="true"></span>
+                        </button>
                     </div>
                     <div class="help-block"
                          data-ng-if="formEditDisplayName.txtDisplayName.$dirty"
@@ -60,9 +58,10 @@
         </div>
         <div class="col-sm-3 d-flex">
             <div class="btn-group ml-auto mt-4">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="oui-button oui-button_dropdown mb-0" aria-haspopup="true" aria-expanded="false"
+                    data-toggle="dropdown">
                     <span data-i18n-static="common_actions"></span>
-                    <span class="caret ml-2" aria-hidden="true"></span>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
                     <li data-ng-if="urlDomainOrder">
@@ -78,6 +77,12 @@
     </div>
 </div>
 
+<div class="p-5" data-ng-if="!loadingHostingInformations && hosting.isExpired">
+    <div class="alert alert-warning" role="alert"
+         data-ng-bind="tr('common_service_expired', [hosting.serviceDisplayName])">
+    </div>
+</div>
+
 <div data-ng-controller="HostingTabsCtrl as ctrlHostingTabs"
      data-ng-if="!loadingHostingInformations && !loadingHostingError && !hosting.isExpired">
     <ovh-tabs tabs="ctrlHostingTabs.tabs"
@@ -87,16 +92,11 @@
               menu="ctrlHostingTabs.tabMenu"
               tr="tr"></ovh-tabs>
     <div class="tab-content">
+        <div data-ovh-alert="{{alerts.tabs}}"></div>
 
-        <div class="alert alert-info" role="alert"
-             data-ng-if="hosting.offer === 'KIMSUFI_2015'">
-            <button class="close" type="button" data-dismiss="alert">&times;</button>
-            <span data-i18n-static="hosting_dashboard_service_offer_KIMSUFI_2015_support"></span>
-        </div>
-
-        <div class="alert alert-info" role="alert"
+        <div class="alert alert-dismissible alert-info" role="alert"
              data-ng-if="hostingProxy.recommendedOffer">
-            <button class="close" type="button" data-dismiss="alert">&times;</button>
+            <button class="close" type="button" data-dismiss="alert"></button>
             <span data-ng-bind-html="tr('hosting_dashboard_service_offer_recommanded', [hostingProxy.recommendedOffer])"></span>
             <span data-ng-bind-html="tr('hosting_dashboard_service_offer_recommanded_actions', [urls.hosting, '_blank'])"
                   data-ng-if="urls.hosting"></span>
@@ -109,7 +109,8 @@
 
 <div id="currentAction" class="modal fade currentAction" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <div id="modal-container" class="modal-content" data-ng-include="stepPath"></div>
+        <div id="modal-container" class="modal-content"
+             data-ng-include="stepPath"></div>
         <div id="modal-help" class="help4wizards"></div>
     </div>
 </div>

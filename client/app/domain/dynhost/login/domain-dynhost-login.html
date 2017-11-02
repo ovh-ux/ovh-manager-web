@@ -1,17 +1,20 @@
 <div class="row" data-ng-controller="DomainDynHostLoginCtrl as ctrlDomainDynHostLogin">
     <div class="col-md-9">
+        <div data-ovh-alert="{{alerts.main}}"></div>
 
-        <div class="loader text-center" data-ng-if="ctrlDomainDynHostLogin.loading.init"></div>
+        <div class="text-center" data-ng-if="ctrlDomainDynHostLogin.loading.init">
+            <oui-loader size="l" inline="true"></oui-loader>
+        </div>
 
         <div data-ng-if="!ctrlDomainDynHostLogin.loading.init && !ctrlDomainDynHostLogin.hasResult">
             <div>
-                <button class="btn btn-default" type="button"
+                <button class="oui-button oui-button_link oui-button_icon-left" type="button"
                         data-ng-click="ctrlDomainDynHost.resetInitialView()">
-                    <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
+                    <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
                     <span data-i18n-static="common_back"></span>
                 </button>
             </div>
-            <div class="alert alert-info mt-5" role="alert"
+            <div class="alert alert-info" role="alert"
                  data-i18n-static="domain_tab_DYNHOSTLOGIN_table_empty">
             </div>
         </div>
@@ -19,9 +22,9 @@
         <div data-ng-if="ctrlDomainDynHostLogin.hasResult">
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <button class="btn btn-default" type="button"
+                    <button class="oui-button oui-button_link oui-button_icon-left mb-0" type="button"
                             data-ng-click="ctrlDomainDynHost.resetInitialView()">
-                        <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
+                        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
                         <span data-i18n-static="common_back"></span>
                     </button>
                 </div>
@@ -53,8 +56,7 @@
             </div>
 
             <div class="table-responsive">
-                <table class="table"
-                       data-ng-class="{ 'table-hover table-striped': !ctrlDomainDynHostLogin.loading.login && ctrlDomainDynHostLogin.dynHostsLogin.length }">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col" data-i18n-static="domain_tab_DYNHOSTLOGIN_table_header_login"></th>
@@ -89,14 +91,14 @@
                             <th scope="row" data-ng-bind="login.login"></th>
                             <td data-ng-bind="login.zone"></td>
                             <td data-ng-bind="login.subDomain"></td>
-                            <td class="text-center text-nowrap">
-                                <button class="btn btn-icon" type="button" title="{{i18n.wizard_modify}}"
-                                        data-ng-click="setAction('dynhost/login/edit/domain-dynhost-login-edit', {login: login, product: ctrlDomainDynHostLogin.product})">
-                                    <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
-                                </button>
-                                <button class="btn btn-icon" type="button" title="{{i18n.wizard_delete}}"
-                                        data-ng-click="setAction('dynhost/login/delete/domain-dynhost-login-delete', {login: login.login, zoneName: ctrlDomainDynHostLogin.product.name})">
-                                    <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
+                            <td class="text-right">
+                                <button class="btn btn-icon" type="button"
+                                        data-linkedpopover="domain/dynhost/login/domain-dynhost-login.popover.html"
+                                        data-linkedpopover-placement="left"
+                                        data-linkedpopover-remote="true"
+                                        data-linkedpopover-single="true"
+                                        data-linkedpopover-title="{{i18n.common_actions}}">
+                                    <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                                 </button>
                             </td>
                         </tr>

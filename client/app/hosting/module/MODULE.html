@@ -1,68 +1,64 @@
-<div class="container-fluid px-0" data-ng-controller="HostingTabModulesController">
+<div class="container-fluid px-0" data-ng-controller="HostingTabModulesController as ctrlHostingTabModules">
 
-    <div class="alert alert-warning" role="alert"
-         data-i18n-static="hosting_configuration_tab_modules_status_maintenance"
-         data-ng-if="serviceState === 'MAINTENANCE'">
-    </div>
+    <oui-loader size="l" data-ng-if="ctrlHostingTabModules.loading"></oui-loader>
 
-    <div class="alert alert-danger" role="alert"
-         data-i18n-static="hosting_configuration_tab_modules_status_bloqued"
-         data-ng-if="serviceState === 'BLOQUED'">
-    </div>
+    <div class="row" data-ng-show="!ctrlHostingTabModules.loading">
+        <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.main}}"></div>
 
-    <div class="alert alert-info" role="alert"
-         data-ng-if="hosting.offer === 'START_10_M'">
-        <div>
-            <span data-i18n-static="hosting_change_offer_for_service_start10m"></span>
-            <div class="mt-4">
-                <button class="btn btn-info" type="button"
-                        data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
-                    <span data-i18n-static="hosting_dashboard_service_change_offer"></span>
-                </button>
+            <div class="alert alert-warning" role="alert"
+                 data-i18n-static="hosting_configuration_tab_modules_status_maintenance"
+                 data-ng-if="ctrlHostingTabModules.serviceState === 'MAINTENANCE'">
             </div>
-        </div>
-    </div>
 
-    <div class="row" data-ng-if="serviceState === 'ACTIVE' && hosting.offer !== 'START_10_M'">
-        <div class="col-md-9"
-             data-ng-if="!displayTabs.modules">
-            <div class="alert alert-info" role="alert">
+            <div class="alert alert-danger" role="alert"
+                 data-i18n-static="hosting_configuration_tab_modules_status_bloqued"
+                 data-ng-if="ctrlHostingTabModules.serviceState === 'BLOQUED'">
+            </div>
+
+            <div class="alert alert-info" role="alert"
+                 data-ng-if="hosting.offer === 'START_10_M'">
                 <div>
-                    <span data-i18n-static="hosting_change_offer_for_service"></span>
-                    <div class="mt-4">
+                    <p data-i18n-static="hosting_change_offer_for_service_start10m"></p>
+                    <button class="btn btn-info" type="button"
+                            data-i18n-static="hosting_dashboard_service_change_offer"
+                            data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
+                    </button>
+                </div>
+            </div>
+
+            <div data-ng-if="ctrlHostingTabModules.serviceState === 'ACTIVE' && hosting.offer !== 'START_10_M'">
+
+                <div class="alert alert-info" role="alert"
+                     data-ng-if="!displayTabs.modules">
+                    <div>
+                        <p data-i18n-static="hosting_change_offer_for_service"></p>
                         <button class="btn btn-info" type="button"
+                                data-i18n-static="hosting_dashboard_service_change_offer"
                                 data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
-                            <span data-i18n-static="hosting_dashboard_service_change_offer"></span>
                         </button>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="col-md-9"
-             data-ng-if="displayTabs.modules">
+                <div data-ng-if="displayTabs.modules">
 
-            <div data-ng-if="guide">
-                <span class="fa fa-life-ring mr-2" aria-hidden="true"></span>
-                <span data-i18n-static="hosting_tab_MODULES_guide_help"></span>
-                <a data-ng-href="{{guide}}" target="_blank" title="{{hosting_guide_help}} ({{i18n.common_newtab}})">
-                    <span data-i18n-static="hosting_guide_help"></span>
-                    <span class="fa fa-external-link" aria-hidden="true"></span>
-                </a>
-            </div>
+                    <p data-ng-if="ctrlHostingTabModules.guide">
+                        <span class="fa fa-life-ring mr-2" aria-hidden="true"></span>
+                        <span data-i18n-static="hosting_tab_MODULES_guide_help"></span>
+                        <a data-ng-href="{{ctrlHostingTabModules.guide}}" target="_blank" title="{{i18n.hosting_guide_help}} ({{i18n.common_newtab}})">
+                            <span data-i18n-static="hosting_guide_help"></span>
+                            <span class="fa fa-external-link" aria-hidden="true"></span>
+                        </a>
+                    </p>
 
-            <div class="loader text-center mt-5" aria-label="{{i18n.common_loading}}" data-ng-if="loading.table"></div>
+                    <div class="alert alert-info" role="alert"
+                         data-i18n-static="hosting_configuration_tab_modules_table_empty"
+                         data-ng-if="!ctrlHostingTabModules.modules.details.length">
+                    </div>
 
-            <div class="mt-4" data-ng-show="!loading.table">
-
-                <div class="alert alert-info" role="alert"
-                     data-i18n-static="hosting_configuration_tab_modules_table_empty"
-                     data-ng-if="!modules.details.length">
-                </div>
-
-                <div class="table-responsive" data-ng-if="modules.details.length > 0">
-                    <table class="table table-hover table-striped">
-                        <thead>
+                    <div class="table-responsive" data-ng-if="ctrlHostingTabModules.modules.details.length > 0">
+                        <table class="table table-hover">
+                            <thead>
                             <tr>
                                 <th scope="row" data-i18n-static="hosting_configuration_tab_modules_module_name"></th>
                                 <th scope="row" data-i18n-static="hosting_configuration_tab_modules_module_path"></th>
@@ -70,9 +66,9 @@
                                 <th scope="row" data-i18n-static="hosting_configuration_tab_modules_module_login"></th>
                                 <th class="min-width" scope="row"></th>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <tr data-ng-repeat="module in modules.details track by $index">
+                            </thead>
+                            <tbody>
+                            <tr data-ng-repeat="module in ctrlHostingTabModules.modules.details track by $index">
                                 <th scope="row">
                                     <div class="d-flex justify-content-between">
                                         <a data-ng-href="http://{{module.targetUrl}}" target="_blank" title="{{i18n.hosting_configuration_tab_modules_module_access}} {{module.template.name}} {{i18n.hosting_common_target_new_window}}"
@@ -89,7 +85,6 @@
                                 <td data-ng-bind="::module.adminName"></td>
                                 <td class="text-center">
                                     <button class="btn btn-icon" type="button" title="{{::module.template.name}} {{i18n.hosting_configuration_tab_modules_module_config}}"
-                                            data-paginated-table-cell=""
                                             data-linkedpopover="hosting/popover/module.html"
                                             data-linkedpopover-placement="left"
                                             data-linkedpopover-single="true"
@@ -99,23 +94,24 @@
                                     </button>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
-                </div>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <div class="clearfix"
-                     data-ng-if="modules.ids">
-                    <div data-pagination-front
-                         data-items="modules.ids"
-                         data-paginated-items="modules.details"
-                         data-current-page="currentPage"
-                         data-nb-pages="nbPages"
-                         data-items-per-page="itemsPerPage"
-                         data-transform-item="transformItem(item)"
-                         data-on-transform-item-done="onTransformItemDone(items)"
-                         data-page-placeholder="{{tr('pagination_page', [currentPageBoostHistory, nbPages])}}"
-                         data-item-per-page-placeholder="{{tr('pagination_display')}}"
-                         data-ng-show="!loading.table && modules.details.length > 0">
+                    <div class="clearfix"
+                         data-ng-if="ctrlHostingTabModules.modules.ids">
+                        <div data-pagination-front
+                             data-items="ctrlHostingTabModules.modules.ids"
+                             data-paginated-items="ctrlHostingTabModules.modules.details"
+                             data-current-page="currentPage"
+                             data-nb-pages="nbPages"
+                             data-items-per-page="itemsPerPage"
+                             data-transform-item="ctrlHostingTabModules.transformItem(item)"
+                             data-on-transform-item-done="ctrlHostingTabModules.onTransformItemDone(items)"
+                             data-page-placeholder="{{tr('pagination_page', [currentPageBoostHistory, nbPages])}}"
+                             data-item-per-page-placeholder="{{tr('pagination_display')}}"
+                             data-ng-show="!ctrlHostingTabModules.loading && ctrlHostingTabModules.modules.details.length > 0">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -125,7 +121,7 @@
             <button type="button" class="btn btn-block btn-default"
                     data-i18n-static="hosting_configuration_tab_modules_module_add"
                     data-ng-click="setAction('module/add/hosting-module-add')"
-                    data-ng-if="displayTabs.modules">
+                    data-ng-if="ctrlHostingTabModules.serviceState === 'ACTIVE' && hosting.offer !== 'START_10_M' && displayTabs.modules">
             </button>
         </div>
     </div>

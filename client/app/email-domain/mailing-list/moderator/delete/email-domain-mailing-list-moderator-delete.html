@@ -9,9 +9,9 @@
                data-ng-if="ctrl.moderators.length > 1"></p>
             <p data-ng-bind-html="tr('mailing_list_tab_modal_delete_moderator_heading', [ctrl.moderators[0], ctrl.mailingList.name])"
                data-ng-if="ctrl.moderators.length === 1"></p>
-            
+
             <p data-i18n-static="mailing_list_common_continue_question"></p>
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
         </div>
     </div>
 </div>

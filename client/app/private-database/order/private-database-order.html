@@ -4,55 +4,56 @@
     </div>
 
     <div class="container-fluid px-5">
-        <div role="alert" data-ovh-alert="{{alerts.order}}"></div>
+        <div data-ovh-alert="{{alerts.order}}"></div>
 
-        <div class="loader mt-5 text-center" data-ng-if="orderCtrl.loading.init"></div>
+        <oui-loader size="l" data-ng-if="orderCtrl.loading.init"></oui-loader>
 
         <div class="row" data-ng-if="!orderCtrl.loading.init && orderCtrl.list.versions.length">
             <div class="col-md-9">
-                <form class="form-horizontal" name="privateDatabaseOrderForm">
+                <form name="privateDatabaseOrderForm">
+                    <p class="mt-5">
+                        <small class="text-danger">*</small>
+                        <small data-i18n-static="required_fields"></small>
+                    </p>
 
                     <!-- step 1 -->
-                    <h2 class="my-5" data-i18n-static="privateDatabase_order_step1_title"></h2>
+                    <h2 data-i18n-static="privateDatabase_order_step1_title"></h2>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-4 required" for="orderVersion"
-                               data-i18n-static="privateDatabase_order_step1_version"></label>
-                        <div class="col-md-8 col-lg-6">
-                            <select class="form-control" name="orderVersion" id="orderVersion" required
-                                    data-ng-change="orderCtrl.getDurations()"
-                                    data-ng-model="orderCtrl.selectedOrder.config.version"
-                                    data-ng-options="version as i18n['privateDatabase_dashboard_version_' + version.replace('.', '')] || version for version in orderCtrl.list.versions track by version">
-                                <option value="" disabled
-                                        data-i18n-static="select_option"></option>
-                            </select>
-                        </div>
+                    <label class="required" for="orderVersion"
+                           data-i18n-static="privateDatabase_order_step1_version"></label>
+                    <div class="oui-select oui-select_inline">
+                        <select class="oui-select__input" name="orderVersion" id="orderVersion" required
+                                data-ng-change="orderCtrl.getDurations()"
+                                data-ng-model="orderCtrl.selectedOrder.config.version"
+                                data-ng-options="version as i18n['privateDatabase_dashboard_version_' + version.replace('.', '')] || version for version in orderCtrl.list.versions track by version">
+                            <option value="" disabled
+                                    data-i18n-static="select_option"></option>
+                        </select>
+                        <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                     </div>
 
-                    <div class="form-group">
-                        <label class="control-label col-md-4 required" for="orderRam"
-                               data-i18n-static="privateDatabase_order_step1_ram"></label>
-                        <div class="col-md-8 col-lg-6">
-                            <select class="form-control" name="orderRam" id="orderRam" required
-                                    data-ng-change="orderCtrl.getDurations()"
-                                    data-ng-model="orderCtrl.selectedOrder.config.ramSize"
-                                    data-ng-options="ramSize + tr('unit_size_MB') for ramSize in (orderCtrl.list.ramSize | orderBy: sortRam) track by ramSize">
-                                <option value="" disabled
-                                        data-i18n-static="select_option"></option>
-                            </select>
-                        </div>
+                    <label class="required" for="orderRam"
+                           data-i18n-static="privateDatabase_order_step1_ram"></label>
+                    <div class="oui-select oui-select_inline">
+                        <select class="oui-select__input" name="orderRam" id="orderRam" required
+                                data-ng-change="orderCtrl.getDurations()"
+                                data-ng-model="orderCtrl.selectedOrder.config.ramSize"
+                                data-ng-options="ramSize + tr('unit_size_MB') for ramSize in (orderCtrl.list.ramSize | orderBy: sortRam) track by ramSize">
+                            <option value="" disabled
+                                    data-i18n-static="select_option"></option>
+                        </select>
+                        <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                     </div>
 
-                    <div class="form-group" data-ng-if="orderCtrl.hostings && orderCtrl.hostings.length > 0">
-                        <label class="control-label col-md-4 required" for="orderHosting">
+                    <div data-ng-if="orderCtrl.hostings && orderCtrl.hostings.length > 0">
+                        <label class="required" for="orderHosting">
                             <span data-i18n-static="privateDatabase_order_step1_hosting"></span>
                             <span class="fa fa-info-circle" aria-hidden="true"
                                   data-uib-tooltip="{{i18n.privateDatabase_order_step1_hosting_info}}"
                                   data-tooltip-append-to-body="true"></span>
                         </label>
-
-                        <div class="col-md-8 col-lg-6">
-                            <select class="form-control" name="orderHosting" id="orderHosting" required
+                        <div class="oui-select oui-select_inline">
+                            <select class="oui-select__input" name="orderHosting" id="orderHosting" required
                                     data-ng-change="orderCtrl.getDurations();orderCtrl.onHostingChanged()"
                                     data-ng-model="orderCtrl.selectedHosting.value">
                                 <option value="" disabled
@@ -63,14 +64,15 @@
                                 <option value="other"
                                         data-i18n-static="common_other"></option>
                             </select>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
                     </div>
 
-                    <div class="form-group" data-ng-if="!orderCtrl.hostings || orderCtrl.hostings.length === 0 || orderCtrl.selectedHosting.value === 'other'">
-                        <label class="control-label col-md-4 required" for="orderDatacenter"
+                    <div data-ng-if="!orderCtrl.hostings || orderCtrl.hostings.length === 0 || orderCtrl.selectedHosting.value === 'other'">
+                        <label class="required" for="orderDatacenter"
                                data-i18n-static="privateDatabase_order_step1_datacenter"></label>
-                        <div class="col-md-8 col-lg-6">
-                            <select class="form-control" name="orderDatacenter" id="orderDatacenter"
+                        <div class="oui-select oui-select_inline">
+                            <select class="oui-select__input" name="orderDatacenter" id="orderDatacenter"
                                     data-ng-change="orderCtrl.getDurations()"
                                     data-ng-disabled="orderCtrl.datacenterSelected != null"
                                     data-ng-model="orderCtrl.selectedOrder.config.datacenter"
@@ -78,9 +80,10 @@
                                 <option value="" disabled
                                         data-i18n-static="select_option"></option>
                             </select>
-                            <div class="alert alert-warning mt-4" role="alert"
-                                 data-i18n-static="privateDatabase_order_step1_no_hosting_warning">
-                            </div>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                        </div>
+                        <div class="alert alert-warning" role="alert"
+                             data-i18n-static="privateDatabase_order_step1_no_hosting_warning">
                         </div>
                     </div>
 
@@ -93,7 +96,7 @@
                              data-ovh-alert-hide-remove-button></div>
 
                         <div class="text-center" data-ng-if="orderCtrl.loading.durations">
-                            <div class="loader" aria-hidden="true"></div>
+                            <oui-loader inline="true"></oui-loader>
                             <span data-i18n-static="license_loading"></span>
                         </div>
 
@@ -101,16 +104,20 @@
                             <legend class="border-0"
                                     data-i18n-static="privateDatabase_order_sql_period_sub_title"></legend>
 
-                            <div class="radio mb-4 ml-5" data-ng-repeat="duration in orderCtrl.durations.available track by $index">
-                                <label>
-                                    <input type="radio" name="durationRadio[$index]"
-                                           data-ng-click="orderCtrl.selectedOrder.contractsValidated = false"
-                                           data-ng-disabled="orderCtrl.loading.prices || orderCtrl.durations.available.length === 1"
-                                           data-ng-model="orderCtrl.selectedOrder.duration"
-                                           data-ng-value="duration">
-                                    <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:
-                                    <span data-ng-bind-html="orderCtrl.durations.details[duration].prices | price:orderCtrl.user.ovhSubsidiary"></span>
-                                    <span class="fa fa-spinner fa-spin" aria-hidden="true" data-ng-if="!orderCtrl.durations.details[duration]"></span>
+                            <div class="oui-radio"
+                                 data-ng-repeat="duration in orderCtrl.durations.available track by $index">
+                                <input type="radio" class="oui-radio__input" name="durationRadio[$index]" id="durationRadio-{{$index}}"
+                                       data-ng-click="orderCtrl.selectedOrder.contractsValidated = false"
+                                       data-ng-disabled="orderCtrl.loading.prices || orderCtrl.durations.available.length === 1"
+                                       data-ng-model="orderCtrl.selectedOrder.duration"
+                                       data-ng-value="duration">
+                                <label class="oui-radio__label-container" for="durationRadio-{{$index}}">
+                                    <span class="oui-radio__label">
+                                        <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:
+                                        <span data-ng-bind-html="orderCtrl.durations.details[duration].prices | price:orderCtrl.user.ovhSubsidiary"></span>
+                                        <oui-loader size="s" inline="true"
+                                                    data-ng-if="!orderCtrl.durations.details[duration]"></oui-loader>
+                                    </span>
                                 </label>
                             </div>
                         </fieldset>
@@ -134,24 +141,34 @@
                                         </a>
                                     </li>
                                 </ul>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="contractsValidated" required
-                                               data-ng-model="orderCtrl.selectedOrder.contractsValidated">
-                                        <strong data-i18n-static="privateDatabase_order_step3_contracts_check"></strong>
+                                <div class="oui-checkbox">
+                                    <input type="checkbox" class="oui-checkbox__input" name="contractsValidated" id="contractsValidated" required
+                                           data-ng-model="orderCtrl.selectedOrder.contractsValidated">
+                                    <label class="oui-checkbox__label-container" for="contractsValidated">
+                                        <span class="oui-checkbox__label"
+                                              data-i18n-static="privateDatabase_order_step3_contracts_check"></span>
+                                        <span class="oui-checkbox__icon">
+                                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                        </span>
                                     </label>
                                 </div>
                             </div>
 
                             <div class="mt-5">
-                                <button class="btn btn-primary btn-lg" type="button"
+                                <button class="btn btn-primary oui-button_large-height" type="button"
                                         data-ng-click="orderCtrl.generateBc()"
                                         data-ng-disabled="(orderCtrl.durations.details[orderCtrl.selectedOrder.duration].contracts.length != 0 && !orderCtrl.selectedOrder.contractsValidated) || orderCtrl.loading.bc">
                                     <span data-i18n-static="privateDatabase_order_step3_generate"
                                           data-ng-if="!orderCtrl.loading.bc"></span>
                                     <span data-ng-if="orderCtrl.loading.bc">
+                                        <span class="oui-loader oui-loader_inline oui-loader_s">
+                                            <span class="oui-loader__container">
+                                                <span class="oui-loader__image"></span>
+                                            </span>
+                                        </span>
                                         <span data-i18n-static="privateDatabase_order_step3_generating"></span>
-                                        <span class="fa fa-spinner fa-spin ml-4" aria-hidden="true"></span>
                                     </span>
                                 </button>
                             </div>
@@ -159,12 +176,12 @@
 
                         <div data-ng-if="orderCtrl.order.url">
                             <p>
-                                <strong data-i18n-static="privateDatabase_order_step3_generated"></strong><br>
+                                <strong class="text-success" data-i18n-static="privateDatabase_order_step3_generated"></strong><br>
                                 <span data-i18n-static="privateDatabase_order_step3_clic_here"></span><br>
                                 <span data-i18n-static="privateDatabase_order_step3_bc_information"></span>
                             </p>
                             <div class="mt-5">
-                                <button class="btn btn-primary btn-lg" type="button"
+                                <button class="btn btn-primary oui-button_large-height" type="button"
                                         data-i18n-static="privateDatabase_order_step3_pay_button"
                                         data-ng-click="orderCtrl.openBc()">
                                 </button>

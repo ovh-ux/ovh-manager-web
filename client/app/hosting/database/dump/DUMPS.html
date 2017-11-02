@@ -1,22 +1,22 @@
-<div class="row" data-ng-controller="DatabaseDumpsCtrl as ctrlDumps">
-    <div class="col-md-12">
-        <div class="mb-3">
-            <button class="btn btn-default" type="button"
-                    data-ng-click="goToList()">
-                <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-                <span data-i18n-static="common_back"></span>
-            </button>
-        </div>
+<div data-ng-controller="DatabaseDumpsCtrl as ctrlDumps">
+    <div data-ovh-alert="{{alerts.main}}"></div>
 
-        <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="ctrlDumps.dumpsLoading"></div>
+    <button class="oui-button oui-button_link oui-button_icon-left" type="button"
+            data-ng-click="goToList()">
+        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+        <span data-i18n-static="common_back"></span>
+    </button>
 
+    <oui-loader size="l" data-ng-if="ctrlDumps.dumpsLoading"></oui-loader>
+
+    <div data-ng-if="!ctrlDumps.dumpsLoading">
         <div class="alert alert-info" role="alert"
              data-i18n-static="database_tabs_dumps_no_dumps"
-             data-ng-if="!ctrlDumps.dumpsLoading && !ctrlDumps.dumpsIds.length">
+             data-ng-if="!ctrlDumps.dumpsIds.length">
         </div>
 
-        <div class="table-responsive" data-ng-if="!ctrlDumps.dumpsLoading && (ctrlDumps.dumpsIds.length > 0 || bdd.waitDump)">
-            <table class="table table-hover table-striped">
+        <div class="table-responsive" data-ng-if="ctrlDumps.dumpsIds.length > 0 || bdd.waitDump">
+            <table class="table table-hover">
                 <caption>
                     <span data-i18n-static="database_tabs_dumps_change"></span>
                     <strong data-ng-bind="bdd.name"></strong>
@@ -40,7 +40,9 @@
                         <td data-ng-bind="dump.snapshotDate | date:'mediumDate'"></td>
                         <td>
                             <span data-ng-bind="::dump.creationDate | date:'medium'"></span>
-                            <span class="fa fa-spinner fa-spin mx-2" data-ng-if="dump.waitRestore || dump.waitDelete"></span>
+                            <span class="ml-2" data-ng-if="dump.waitRestore || dump.waitDelete">
+                                <oui-loader size="s" inline="true"></oui-loader>
+                            </span>
                             <span data-i18n-static="database_restore_in_progress" data-ng-if="dump.waitRestore"></span>
                             <span data-i18n-static="common_delete_in_progress" data-ng-if="dump.waitDelete"></span>
                         </td>
@@ -68,28 +70,29 @@
                     </tr>
                     <tr data-ng-if="bdd.waitDump">
                         <td class="text-center" colspan="4">
-                            <span class="label label-info" data-i18n-static="database_tabs_dumps_dump_in_progress"></span>
+                            <span class="label label-info"
+                                  data-i18n-static="database_tabs_dumps_dump_in_progress"></span>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
+    </div>
 
-        <div class="clearfix"
-             data-ng-if="ctrlDumps.dumpsIds">
-            <div data-pagination-front
-                 data-items="ctrlDumps.dumpsIds"
-                 data-paginated-items="ctrlDumps.dumpsDetails"
-                 data-current-page="currentPage"
-                 data-items-per-page="itemsPerPage"
-                 data-nb-pages="nbPages"
-                 data-transform-item="ctrlDumps.transformItem(item)"
-                 data-on-transform-item-done="ctrlDumps.onTransformItemDone(items)"
-                 data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-                 data-item-per-page-placeholder="{{tr('pagination_display')}}"
-                 data-on-page-change="ctrlDumps.dumpsLoading = true"
-                 data-ng-show="!ctrlDumps.dumpsLoading && ctrlDumps.dumpsDetails.length > 0">
-            </div>
+    <div class="clearfix"
+         data-ng-if="ctrlDumps.dumpsIds">
+        <div data-pagination-front
+             data-items="ctrlDumps.dumpsIds"
+             data-paginated-items="ctrlDumps.dumpsDetails"
+             data-current-page="currentPage"
+             data-items-per-page="itemsPerPage"
+             data-nb-pages="nbPages"
+             data-transform-item="ctrlDumps.transformItem(item)"
+             data-on-transform-item-done="ctrlDumps.onTransformItemDone(items)"
+             data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+             data-item-per-page-placeholder="{{tr('pagination_display')}}"
+             data-on-page-change="ctrlDumps.dumpsLoading = true"
+             data-ng-show="!ctrlDumps.dumpsLoading && ctrlDumps.dumpsDetails.length > 0">
         </div>
     </div>
 </div>

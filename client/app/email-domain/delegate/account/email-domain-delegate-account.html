@@ -1,5 +1,7 @@
 <div class="row">
     <div class="col-md-9">
+        <div data-ovh-alert="{{alerts.main}}"></div>
+
         <div class="mb-3">
             <form class="form-inline d-md-flex justify-content-md-end" name="searchEmailDelegateForm">
                 <div class="form-group">
@@ -27,13 +29,12 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table"
-                   data-ng-class="{'table-hover table-striped': !ctrlEmailDelegate.loading.accounts && ctrlEmailDelegate.emailsDetails.length}">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col" data-i18n-static="email_tab_table_header_account_name"></th>
                         <th scope="col" data-i18n-static="email_tab_table_header_account_description"></th>
-                        <th class="text-center" scope="col" style="min-width:140px" data-i18n-static="email_tab_table_header_account_size"></th>
+                        <th class="text-center" scope="col" style="min-width:200px" data-i18n-static="email_tab_table_header_account_size"></th>
                         <th class="text-center" scope="col" data-i18n-static="email_tab_table_header_account_bloqued"></th>
                         <th class="min-width text-center" scope="col" data-i18n-static="email_tab_table_header_filters"></th>
                         <th class="min-width text-right" scope="col">
@@ -55,7 +56,8 @@
                 <!-- no accounts -->
                 <tbody data-ng-if="!ctrlEmailDelegate.loading.accounts && !ctrlEmailDelegate.emails.length">
                     <tr>
-                        <td class="text-center" colspan="6" data-i18n-static="email_tab_table_emails_empty"></td>
+                        <td class="text-center" colspan="6"
+                            data-i18n-static="email_tab_table_emails_empty"></td>
                     </tr>
                 </tbody>
 
@@ -66,16 +68,22 @@
                         <td data-ng-bind="email.description"></td>
                         <td>
                             <div class="col-xs-11 p-0">
-                                <div class="progress m-0">
-                                    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{email.percentUse}}"
+                                <div class="oui-progress m-0"
+                                     data-ng-class="{
+                                            'oui-progress_success': email.percentUse < 51,
+                                            'oui-progress_warning': email.percentUse > 50 && email.percentUse < 81,
+                                            'oui-progress_error': email.percentUse > 80
+                                        }">
+                                    <div class="oui-progress__bar oui-progress__bar_text-left" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{email.percentUse}}"
                                          data-ng-class="{
-                                            'progress-bar-success': email.percentUse < 51,
-                                            'progress-bar-warning': email.percentUse > 50 && email.percentUse < 81,
-                                            'progress-bar-danger': email.percentUse > 80
+                                            'oui-progress__bar_success': email.percentUse < 51,
+                                            'oui-progress__bar_warning': email.percentUse > 50 && email.percentUse < 81,
+                                            'oui-progress__bar_error': email.percentUse > 80
                                         }"
                                          data-ng-style="{'width': email.percentUse + '%'}">
+                                        <span class="oui-progress__label"
+                                              data-ng-bind="(email.quota | humanReadableSize: {base: 10}) + ' / ' + (email.size | humanReadableSize: {base: 10})"></span>
                                     </div>
-                                    <span class="progress-bar-label" data-ng-bind="(email.quota | humanReadableSize: {base: 10}) + ' / ' + (email.size | humanReadableSize: {base: 10})"></span>
                                 </div>
                             </div>
                             <button class="btn btn-icon col-xs-1" type="button"
@@ -84,11 +92,10 @@
                             </button>
                         </td>
                         <td class="text-center">
-                            <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_emails_unlock}}"
+                            <button class="btn btn-danger btn-xs" type="button" title="{{::i18n.email_tab_table_emails_unlock}}"
+                                    data-i18n-static="email_tab_table_emails_block_true"
                                     data-ng-click="setAction('email-domain/email/account/unlock/email-domain-email-account-unlock', email)"
                                     data-ng-if="email.isBlocked">
-                                <span class="label label-danger"
-                                      data-i18n-static="email_tab_table_emails_block_true"></span>
                             </button>
                             <span class="label label-success"
                                   data-i18n-static="email_tab_table_emails_block_false"
@@ -135,14 +142,14 @@
 
     <div class="col-md-3 mt-5 mt-lg-0">
         <button class="btn btn-block btn-default" type="button"
+                data-i18n-static="email_tab_responders_management_heading"
                 data-ng-click="ctrlEmailDelegate.selectSubView('respondersView', ctrlEmailDelegate.emails)"
                 data-ng-disabled="ctrlEmailDelegate.loading.search">
-            <span data-i18n-static="email_tab_responders_management_heading"></span>
         </button>
         <button class="btn btn-block btn-default" type="button"
+                data-i18n-static="email_tab_export_accounts_csv_title"
                 data-ng-click="setAction('email-domain/email/account/export-csv/email-domain-email-account-export-csv', {delegate: true})"
                 data-ng-disabled="ctrlEmailDelegate.loading.search">
-            <span data-i18n-static="email_tab_export_accounts_csv_title"></span>
         </button>
     </div>
 </div>

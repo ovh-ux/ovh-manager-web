@@ -52,7 +52,7 @@ angular.module("App").controller(
                     this.hostingUrl = this.constants.urls.hosting[user.ovhSubsidiary] || this.constants.urls.hosting.FR;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), err, this.$scope.alerts.main);
                     this.$scope.resetAction();
                 })
                 .finally(() => {
@@ -180,12 +180,12 @@ angular.module("App").controller(
                         });
                     }
 
-                    this.Alerter.success(this.$scope.tr("domain_order_hosting_finish_success", [order.url]), this.$scope.alerts.dashboard);
+                    this.Alerter.success(this.$scope.tr("domain_order_hosting_finish_success", [order.url]), this.$scope.alerts.main);
                     window.open(order.url, "_blank");
                     return true;
 
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_order_hosting_finish_error"), _.get(err, "data", err), this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_order_hosting_finish_error"), _.get(err, "data", err), this.$scope.alerts.main))
                 .finally(() => this.$scope.resetAction());
         }
     }

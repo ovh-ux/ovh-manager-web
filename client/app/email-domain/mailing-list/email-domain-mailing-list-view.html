@@ -1,12 +1,18 @@
 <div class="container-fluid px-0" data-ng-controller="MailingListsTabModulesCtrl as ctrlMailingLists">
 
-    <div class="text-center" data-ng-if="hosting && ctrlMailingLists.quotas.mailingList <= 0">
-        <span data-i18n-static="mailing_list_tab_table_no_quota"></span>
-        <button class="btn btn-link" type="button"
-                data-ng-click="setAction('hosting/offer/upgrade/hosting-offer-upgrade', hosting)">
-            <span class="fa fa-shopping-cart" aria-hidden="true"></span>
-            <span data-i18n-static="hosting_dashboard_service_change_offer"></span>
-        </button>
+    <div class="text-center" data-ng-if="ctrlMailingLists.loading.quotas">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
+
+    <div class="alert alert-info" role="alert"
+         data-ng-if="hosting && ctrlMailingLists.quotas.mailingList <= 0">
+        <div>
+            <p class="mb-3" data-i18n-static="mailing_list_tab_table_no_quota"></p>
+            <button class="btn btn-info" type="button"
+                    data-i18n-static="hosting_dashboard_service_change_offer"
+                    data-ng-click="setAction('hosting/offer/upgrade/hosting-offer-upgrade', hosting)">
+            </button>
+        </div>
     </div>
 
     <div class="alert alert-warning" role="alert"
@@ -16,21 +22,22 @@
 
     <div class="row" data-ng-if="ctrlMailingLists.quotas.mailingList > 0">
         <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.main}}"></div>
             <div class="alert alert-warning" role="alert"
                  data-ng-bind="trpl('mailing_list_tab_table_quota_excedeed', ctrlMailingLists.quotas.mailingList, [ctrlMailingLists.mailingLists.length, ctrlMailingLists.quotas.mailingList])"
                  data-ng-if="ctrlMailingLists.mailingLists.length >= ctrlMailingLists.quotas.mailingList">
             </div>
-            <dl class="dl-horizontal" data-ng-if="ctrlMailingLists.quotas.mailingList > 0">
+            <dl class="dl-horizontal dl-lg" data-ng-if="ctrlMailingLists.quotas.mailingList > 0">
                 <dt data-i18n-static="mailing_list_tab_quotas"></dt>
                 <dd class="text-nowrap">
-                    <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                          data-ng-if="ctrlMailingLists.loading.quotas || ctrlMailingLists.loading.mailingLists"></span>
+                    <oui-loader size="s" inline="true"
+                                data-ng-if="ctrlMailingLists.loading.mailingLists"></oui-loader>
                     <span data-ng-bind="ctrlMailingLists.mailingLists.length + ' / ' + ctrlMailingLists.quotas.mailingList"
-                          data-ng-if="!ctrlMailingLists.loading.quotas && !ctrlMailingLists.loading.mailingLists"></span>
+                          data-ng-if="!ctrlMailingLists.loading.mailingLists"></span>
                 </dd>
             </dl>
 
-            <div class="mb-3 mt-5">
+            <div class="mb-3">
                 <form class="form-inline d-md-flex justify-content-md-end" name="searchMailingListForm">
                     <div class="form-group">
                         <label class="sr-only" for="searchMailingList"></label>
@@ -146,7 +153,7 @@
 
         <div class="col-md-3 mt-5 mt-lg-0">
             <div class="mb-5" data-ng-if="!ctrlMailingLists.loading.mailingLists && ctrlMailingLists.mailingLists.length < ctrlMailingLists.quotas.mailingList">
-                <button type="button" class="btn btn-block btn-default"
+                <button class="btn btn-block btn-default" type="button"
                         data-i18n-static="mailing_list_tab_button_mailing_list_create_list"
                         data-ng-click="setAction('email-domain/mailing-list/create/email-domain-mailing-list-create', ctrlMailingLists.mailingLists)">
                 </button>

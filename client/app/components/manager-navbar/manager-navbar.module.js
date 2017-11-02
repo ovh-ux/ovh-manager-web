@@ -4,10 +4,12 @@ angular.module("App").run((LANGUAGES, managerNavbar, User, constants, translator
         const universes = Object.keys(constants.MANAGER_URLS)
                                 .map((k) => ({
                                     universe: k,
-                                    label: translator.tr(`universe_univers-${k}_name`),
+                                    icon: k === "labs" ? "fa fa-flask fs24" : null,
+                                    title: translator.tr(`universe_univers-${k}_name`),
+                                    label: k === "labs" ? null : translator.tr(`universe_univers-${k}_name`),
                                     url: constants.MANAGER_URLS[k]
                                 }))
-                                .filter((u) => u.universe === "partners" ? user.ovhSubsidiary === "FR" : true);
+                                .filter((u) => u.universe === "partners" || u.universe === "labs" ? user.ovhSubsidiary === "FR" : true);
 
         managerNavbar.setExternalLinks(universes);
 

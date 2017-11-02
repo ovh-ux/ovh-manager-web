@@ -17,7 +17,7 @@ angular.module("App").controller(
                     this.domain.authinfo = authinfo;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_show_authinfo_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domain_dashboard_show_authinfo_error"), err, this.$scope.alerts.main);
                     this.$scope.resetAction();
                 })
                 .finally(() => {

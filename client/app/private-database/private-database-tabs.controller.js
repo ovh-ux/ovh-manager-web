@@ -14,23 +14,27 @@ angular.module("App").controller(
             this.defaultTab = "STATE";
             this.$scope.tabs = ["STATE", "USER", "DATABASE", "WHITELIST", "CRON", "METRICS", "LOGS", "CONFIGURATION", "TASK"];
 
+            if (_.get(this.$scope, "database.serviceInfos.status") === "expired") {
+                this.$scope.tabs = ["STATE"];
+            }
+
             if (this.$scope.isDockerDatabase()) {
-                this.$scope.tabs = _.difference(this.$scope.tabs, ["CRON"]);
+                _.pull(this.$scope.tabs, "CRON");
             }
 
             if (this.$scope.isLegacyDatabase()) {
-                this.$scope.tabs = _.difference(this.$scope.tabs, ["CONFIGURATION", "METRICS"]);
+                _.pull(this.$scope.tabs, "CONFIGURATION", "METRICS");
             }
 
             this.$scope.isConfigSet()
                 .then((res) => {
                     if (!res) {
-                        this.$scope.tabs = _.difference(this.$scope.tabs, ["CONFIGURATION"]);
+                        _.pull(this.$scope.tabs, "CONFIGURATION");
                     }
                 });
 
             if (!this.$scope.isDBaaS()) {
-                this.$scope.tabs = _.difference(this.$scope.tabs, ["WHITELIST"]);
+                _.pull(this.$scope.tabs, "WHITELIST");
             }
 
             this.$scope.setSelectedTab = (tab) => {

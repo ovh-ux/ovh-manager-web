@@ -1,6 +1,6 @@
 <div data-ng-controller="EmailsUnlockAccountCtrl as ctrl">
     <div data-wizard
-     data-wizard-on-cancel="resetAction"
+         data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="changePasswordAccount"
          data-wizard-title="i18n.email_tab_modal_unlock_account_title">
 
@@ -9,7 +9,7 @@
 
             <p data-ng-bind-html="tr('email_tab_modal_unlock_account_heading', [ctrl.currentAccount.accountName])"></p>
             <p data-i18n-static="email_tab_modal_unlock_account_infos"></p>
-            <p data-i18n-static="emails_common_continue_question"></p>
+            <p class="font-weight-bold" data-i18n-static="emails_common_continue_question"></p>
 
             <form class="form-horizontal" name="ctrl.unlockAccountForm">
                 <div class="form-group" data-ng-class="{
@@ -19,11 +19,11 @@
                     <label class="control-label col-md-4 required" for="txt-account-password"
                            data-i18n-static="email_tab_modal_create_account_account_password"></label>
                     <div class="col-md-6">
-                        <input type="password" autocomplete="off" class="form-control" id="txt-account-password" name="accountPassword" aria-describedby="emailsUnlockPasswordHelp" required
-                           data-ng-change="ctrl.accountPasswordCheck(ctrl.unlockAccountForm.accountPassword)"
-                           data-ng-maxlength="ctrl.constants.passwordMaxLength"
-                           data-ng-minlength="ctrl.constants.passwordMinLength"
-                           data-ng-model="ctrl.model.password">
+                        <input type="password" class="form-control" id="txt-account-password" name="accountPassword" aria-describedby="emailsUnlockPasswordHelp" autocomplete="off" required
+                               data-ng-change="ctrl.accountPasswordCheck(ctrl.unlockAccountForm.accountPassword)"
+                               data-ng-maxlength="ctrl.constants.passwordMaxLength"
+                               data-ng-minlength="ctrl.constants.passwordMinLength"
+                               data-ng-model="ctrl.model.password">
                         <small class="help-block"
                                data-i18n-static="email_tab_modal_create_account_account_password_error"
                                data-ng-if="ctrl.unlockAccountForm.accountPassword.$dirty && ctrl.unlockAccountForm.accountPassword.$invalid"></small>
@@ -37,7 +37,7 @@
                     <label class="control-label col-md-4 required" for="txt-account-password-confirm"
                            data-i18n-static="email_tab_modal_create_account_account_password_confirm"></label>
                     <div class="col-md-6">
-                        <input type="password" autocomplete="off" class="form-control" id="txt-account-password-confirm" name="accountPasswordConfirm" required
+                        <input type="password" class="form-control" id="txt-account-password-confirm" name="accountPasswordConfirm" autocomplete="off" required
                                data-ng-model="ctrl.validation.password">
                         <small class="help-block"
                                data-i18n-static="email_tab_modal_create_account_account_password_match_error"
@@ -45,8 +45,8 @@
                     </div>
                 </div>
             </form>
-            <div class="alert alert-info mt-5" role="alert" id="emailsUnlockPasswordHelp">
-                <small data-ng-bind-html="tr('emails_common_password_conditions', [ctrl.constants.passwordMinLength, ctrl.constants.passwordMaxLength])"></small>
+            <div class="alert alert-info" role="alert" id="emailsUnlockPasswordHelp"
+                 data-ng-bind-html="tr('emails_common_password_conditions', [ctrl.constants.passwordMinLength, ctrl.constants.passwordMaxLength])">
             </div>
         </div>
     </div>

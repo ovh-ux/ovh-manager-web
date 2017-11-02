@@ -16,11 +16,16 @@
         <label class="control-label col-md-5 required" for="p"
                data-i18n-static="domain_configuration_dns_entry_add_dmarc_p"></label>
         <div class="col-md-4">
-            <select class="form-control" id="p" name="p" required
-                    data-ng-change="ctrl.setTargetValue('DMARC')"
-                    data-ng-model="ctrl.model.target.p"
-                    data-ng-options="option for option in ['none', 'quarantine', 'reject'] track by option">
-            </select>
+            <div class="oui-select">
+                <select class="oui-select__input" id="p" name="p" required
+                        data-ng-change="ctrl.setTargetValue('DMARC')"
+                        data-ng-model="ctrl.model.target.p"
+                        data-ng-options="option for option in ['none', 'quarantine', 'reject'] track by option">
+                    <option value="" disabled
+                            data-i18n-static="select_placeholder"></option>
+                </select>
+                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+            </div>
         </div>
     </div>
 
@@ -50,12 +55,16 @@
         <label class="control-label col-md-5" for="sp"
                data-i18n-static="domain_configuration_dns_entry_add_dmarc_sp"></label>
         <div class="col-md-4">
-            <select class="form-control" id="sp" name="sp"
-                    data-ng-change="ctrl.setTargetValue('DMARC')"
-                    data-ng-model="ctrl.model.target.sp"
-                    data-ng-options="option for option in ['none', 'quarantine', 'reject'] track by option">
-                <option value="" selected></option>
-            </select>
+            <div class="oui-select">
+                <select class="oui-select__input" id="sp" name="sp"
+                        data-ng-change="ctrl.setTargetValue('DMARC')"
+                        data-ng-model="ctrl.model.target.sp"
+                        data-ng-options="option for option in ['none', 'quarantine', 'reject'] track by option">
+                    <option value="" disabled
+                            data-i18n-static="select_placeholder"></option>
+                </select>
+                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+            </div>
         </div>
     </div>
 
@@ -63,20 +72,22 @@
         <label class="control-label col-md-5"
                data-i18n-static="domain_configuration_dns_entry_add_dmarc_aspf"></label>
         <div class="col-md-7">
-            <div class="radio">
-                <label>
-                    <input type="radio" name="aspf" value="r"
-                           data-ng-change="ctrl.setTargetValue('DMARC')"
-                           data-ng-model="ctrl.model.target.aspf">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_dmarc_aspf_r"></span>
+            <div class="oui-radio">
+                <input type="radio" class="oui-radio__input" id="aspf-r" name="aspf" value="r"
+                       data-ng-change="ctrl.setTargetValue('DMARC')"
+                       data-ng-model="ctrl.model.target.aspf">
+                <label class="oui-radio__label-container" for="aspf-r">
+                    <span class="oui-radio__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_dmarc_aspf_r"></span>
                 </label>
             </div>
-            <div class="radio">
-                <label>
-                    <input type="radio" name="aspf" value="s"
-                           data-ng-change="ctrl.setTargetValue('DMARC')"
-                           data-ng-model="ctrl.model.target.aspf">
-                    <span data-i18n-static="domain_configuration_dns_entry_add_dmarc_aspf_s"></span>
+            <div class="oui-radio">
+                <input type="radio" class="oui-radio__input" id="aspf-s" name="aspf" value="s"
+                       data-ng-change="ctrl.setTargetValue('DMARC')"
+                       data-ng-model="ctrl.model.target.aspf">
+                <label class="oui-radio__label-container" for="aspf-s">
+                    <span class="oui-radio__label"
+                          data-i18n-static="domain_configuration_dns_entry_add_dmarc_aspf_s"></span>
                 </label>
             </div>
         </div>

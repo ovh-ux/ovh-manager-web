@@ -91,12 +91,12 @@ angular.module("App").controller(
                             this.loading = false;
                         })
                         .catch((err) => {
-                            this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_error"), err, this.$scope.alerts.dashboard);
+                            this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_error"), err, this.$scope.alerts.main);
                             this.$scope.resetAction();
                         });
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_error"), err, this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_error"), err, this.$scope.alerts.main);
                     this.$scope.resetAction();
                 });
         }
@@ -140,24 +140,24 @@ angular.module("App").controller(
                     case "relaunch":
                         return this.domainOperationService
                             .relaunchOperation(this.operation.id)
-                            .then(() => this.Alerter.success(this.$scope.tr("domain_tab_OPERATION_update_relaunch_success"), this.$scope.alerts.dashboard))
-                            .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_relaunch_error"), err, this.$scope.alerts.dashboard));
+                            .then(() => this.Alerter.success(this.$scope.tr("domain_tab_OPERATION_update_relaunch_success"), this.$scope.alerts.main))
+                            .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_relaunch_error"), err, this.$scope.alerts.main));
                     case "cancel":
                         return this.domainOperationService
                             .cancelOperation(this.operation.id)
-                            .then(() => this.Alerter.success(this.$scope.tr("domains_operations_cancel_success"), this.$scope.alerts.dashboard))
-                            .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_cancel_error"), err, this.$scope.alerts.dashboard));
+                            .then(() => this.Alerter.success(this.$scope.tr("domains_operations_cancel_success"), this.$scope.alerts.main))
+                            .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_cancel_error"), err, this.$scope.alerts.main));
                     case "accelerate":
                         return this.domainOperationService
                             .accelerateOperation(this.operation.id)
-                            .then(() => this.Alerter.success(this.$scope.tr("domains_operations_accelerate_success"), this.$scope.alerts.dashboard))
-                            .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_accelerate_error"), err, this.$scope.alerts.dashboard));
+                            .then(() => this.Alerter.success(this.$scope.tr("domains_operations_accelerate_success"), this.$scope.alerts.main))
+                            .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domains_operations_accelerate_error"), err, this.$scope.alerts.main));
                     default:
-                        this.Alerter.success(this.$scope.tr("domain_tab_OPERATION_update_success"), this.$scope.alerts.dashboard);
+                        this.Alerter.success(this.$scope.tr("domain_tab_OPERATION_update_success"), this.$scope.alerts.main);
                         return null;
                     }
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_OPERATION_update_error"), err, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_OPERATION_update_error"), err, this.$scope.alerts.main))
                 .finally(() => this.$scope.resetAction());
         }
 }

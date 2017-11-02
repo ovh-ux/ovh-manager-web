@@ -1,81 +1,87 @@
 <div class="container-fluid px-0" data-ng-controller="HostingBoostTabCtrl" data-ng-init="init()">
-
-    <h2 data-i18n-static="hosting_tab_BOOST"></h2>
-
-    <div class="alert alert-info" role="alert"
-         data-ng-if="!loaders.product && models.product && models.product.availableBoostOffer.length <= 0">
-        <div>
-            <p data-i18n-static="hosting_tab_BOOST_supported_performance"></p>
-            <p>
-                <span class="mr-2" data-i18n-static="hosting_tab_BOOST_supported_performance_migrate"></span>
-                <button class="btn btn-info align-middle" type="button"
-                        data-i18n-static="hosting_dashboard_service_change_offer"
-                        data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
-                </button>
-            </p>
-        </div>
-    </div>
-
-    <div class="row" data-ng-if="!loaders.product && models.product && models.product.availableBoostOffer.length > 0">
+    <div class="row">
         <div class="col-md-9">
-            <p data-ng-bind="tr('hosting_tab_BOOST_boost_enabled', [models.product.boostOffer])"
-               data-ng-if="models.product.boostOffer !== null"></p>
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loaders.boostHistory"></div>
+            <div data-ovh-alert="{{alerts.main}}"></div>
+
+            <h2 data-i18n-static="hosting_tab_BOOST"></h2>
 
             <div class="alert alert-info" role="alert"
-                 data-i18n-static="hosting_tab_BOOST_history_table_boost_history_empty"
-                 data-ng-if="!loaders.boostHistory && boostHistory.ids.length <= 0">
+                 data-ng-if="!loaders.product && models.product && !models.product.availableBoostOffer.length">
+                <div>
+                    <p data-i18n-static="hosting_tab_BOOST_supported_performance"></p>
+                    <p>
+                        <span class="mr-2" data-i18n-static="hosting_tab_BOOST_supported_performance_migrate"></span>
+                        <button class="btn btn-info align-middle" type="button"
+                                data-i18n-static="hosting_dashboard_service_change_offer"
+                                data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
+                        </button>
+                    </p>
+                </div>
             </div>
 
-            <!-- BOOST HISTORY TABLE -->
-            <div class="table-responsive" data-ng-if="!loaders.boostHistory && boostHistory.ids.length > 0">
-                <table class="table table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col" data-i18n-static="hosting_tab_BOOST_history_table_header_id"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_BOOST_history_table_header_offer"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_BOOST_history_table_header_boost_offer"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_BOOST_history_table_header_date"></th>
-                            <th class="min-width text-right" scope="col">
-                                <button class="btn btn-icon" type="button" title="{{i18n.emails_tab_table_header_refresh}}"
-                                        data-ng-click="refreshTableBoostHistory()">
-                                    <span class="fa fa-refresh" aria-hidden="true"></span>
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-ng-repeat="historyEntry in (boostHistory.details | orderBy:'date':true) track by $index">
-                            <th scope="row" data-ng-bind="::historyEntry.accountId"></th>
-                            <td data-ng-bind="::historyEntry.offer"></td>
-                            <td data-ng-class="{center: historyEntry.boostOffer === null}">
-                                <span data-ng-bind="::historyEntry.boostOffer"
-                                      data-ng-if="historyEntry.boostOffer !== null"></span>
-                                <span class="label label-danger"
-                                      data-i18n-static="hosting_tab_BOOST_history_table_boost_history_disabled"
-                                      data-ng-if="historyEntry.boostOffer === null"></span>
-                            </td>
-                            <td colspan="2" data-ng-bind="::historyEntry.date | date:'medium'"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <div data-ng-if="!loaders.product && models.product && models.product.availableBoostOffer.length > 0">
+                <p data-ng-bind="tr('hosting_tab_BOOST_boost_enabled', [models.product.boostOffer])"
+                   data-ng-if="models.product.boostOffer !== null"></p>
 
-            <div class="clearfix"
-                 data-ng-if="boostHistory.ids">
-                <div data-pagination-front
-                     data-items="boostHistory.ids"
-                     data-paginated-items="boostHistory.details"
-                     data-current-page="currentPageBoostHistory"
-                     data-nb-pages="nbPages"
-                     data-items-per-page="itemsPerPage"
-                     data-transform-item="transformItem(item)"
-                     data-on-transform-item-done="onTransformItemDone(items)"
-                     data-page-placeholder="{{tr('pagination_page', [currentPageBoostHistory, nbPages])}}"
-                     data-item-per-page-placeholder="{{tr('pagination_display')}}"
-                     data-on-page-change="loaders.boostHistory = true"
-                     data-ng-show="!loaders.boostHistory && boostHistory.details.length > 0">
+                <div class="text-center" data-ng-if="loaders.boostHistory">
+                    <oui-loader inline="true"></oui-loader>
+                </div>
+
+                <div class="alert alert-info" role="alert"
+                     data-i18n-static="hosting_tab_BOOST_history_table_boost_history_empty"
+                     data-ng-if="!loaders.boostHistory && boostHistory.ids.length <= 0">
+                </div>
+
+                <!-- BOOST HISTORY TABLE -->
+                <div class="table-responsive" data-ng-if="!loaders.boostHistory && boostHistory.ids.length > 0">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col" data-i18n-static="hosting_tab_BOOST_history_table_header_id"></th>
+                                <th scope="col" data-i18n-static="hosting_tab_BOOST_history_table_header_offer"></th>
+                                <th scope="col" data-i18n-static="hosting_tab_BOOST_history_table_header_boost_offer"></th>
+                                <th scope="col" data-i18n-static="hosting_tab_BOOST_history_table_header_date"></th>
+                                <th class="min-width text-right" scope="col">
+                                    <button class="btn btn-icon" type="button" title="{{i18n.emails_tab_table_header_refresh}}"
+                                            data-ng-click="refreshTableBoostHistory()">
+                                        <span class="fa fa-refresh" aria-hidden="true"></span>
+                                    </button>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ng-repeat="historyEntry in (boostHistory.details | orderBy:'date':true) track by $index">
+                                <th scope="row" data-ng-bind="::historyEntry.accountId"></th>
+                                <td data-ng-bind="::historyEntry.offer"></td>
+                                <td data-ng-class="{center: historyEntry.boostOffer === null}">
+                                    <span data-ng-bind="::historyEntry.boostOffer"
+                                          data-ng-if="historyEntry.boostOffer !== null"></span>
+                                    <span class="label label-danger"
+                                          data-i18n-static="hosting_tab_BOOST_history_table_boost_history_disabled"
+                                          data-ng-if="historyEntry.boostOffer === null"></span>
+                                </td>
+                                <td colspan="2" data-ng-bind="::historyEntry.date | date:'medium'"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="clearfix"
+                     data-ng-if="boostHistory.ids">
+                    <div data-pagination-front
+                         data-items="boostHistory.ids"
+                         data-paginated-items="boostHistory.details"
+                         data-current-page="currentPageBoostHistory"
+                         data-nb-pages="nbPages"
+                         data-items-per-page="itemsPerPage"
+                         data-transform-item="transformItem(item)"
+                         data-on-transform-item-done="onTransformItemDone(items)"
+                         data-page-placeholder="{{tr('pagination_page', [currentPageBoostHistory, nbPages])}}"
+                         data-item-per-page-placeholder="{{tr('pagination_display')}}"
+                         data-on-page-change="loaders.boostHistory = true"
+                         data-ng-show="!loaders.boostHistory && boostHistory.details.length > 0">
+                    </div>
                 </div>
             </div>
         </div>
@@ -96,7 +102,7 @@
             <button class="btn btn-block btn-default" type="button"
                     data-i18n-static="hosting_tab_BOOST"
                     data-ng-click="setAction('boost/enable/hosting-boost-enable', {product: models.product})"
-                    data-ng-disabled="isLoading"
+                    data-ng-disabled="isLoading || !models.product.availableBoostOffer.length"
                     data-ng-if="models.product.boostOffer === null">
             </button>
         </div>

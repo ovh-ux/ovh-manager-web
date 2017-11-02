@@ -1,5 +1,8 @@
 <div class="container-fluid px-0" data-ng-controller="HostingIndyTabCtrl as ctrlHostingIndyTab">
+    <div data-ovh-alert="{{alerts.main}}"></div>
+
     <h2 data-i18n-static="hosting_tab_INDY"></h2>
+
     <div class="mb-3">
         <form class="form-inline d-md-flex justify-content-md-end" name="searchIndyForm">
             <div class="form-group">
@@ -7,11 +10,12 @@
                        data-ng-i18n-static="common_search"></label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="searchIndy" name="searchIndy" placeholder="{{::i18n.hosting_tab_DOMAINS_search_placeholder}}"
+                           data-ng-change="ctrlHostingIndyTab.goSearch()"
                            data-ng-model="ctrlHostingIndyTab.filter.login"
                            data-ng-model-options='{ debounce: 800 }'>
                     <div class="input-group-btn" data-ng-if="ctrlHostingIndyTab.filter.login">
                         <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
-                                data-ng-click="ctrlHostingIndyTab.filter.login = ''">
+                                data-ng-click="ctrlHostingIndyTab.resetSearch()">
                             <span class="fa fa-times" aria-hidden="true"></span>
                         </button>
                     </div>
@@ -26,17 +30,17 @@
 
     <!-- INDY TABLE -->
     <div class="table-responsive">
-        <table class="table"
-               data-ng-class="{'table-hover table-striped': !ctrlHostingIndyTab.loaders.indys && ctrlHostingIndyTab.indys.length > 0}">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col" data-i18n-static="hosting_tab_INDY_table_header_login"></th>
                     <th scope="col" data-i18n-static="hosting_tab_INDY_table_header_home"></th>
                     <th class="text-center" scope="col" data-i18n-static="hosting_tab_INDY_table_header_state"></th>
                     <th scope="col" data-i18n-static="hosting_tab_INDY_table_header_domains"></th>
-                    <th scope="col" class="min-width text-right">
+                    <th class="min-width text-right" scope="col">
                         <button class="btn btn-icon" type="button" title="{{::i18n.emails_tab_table_header_refresh}}"
-                                data-ng-click="ctrlHostingIndyTab.refreshTableIndys(true)">
+                                data-ng-click="ctrlHostingIndyTab.refreshTableIndys(true)"
+                                data-ng-disabled="ctrlHostingIndyTab.loading">
                             <span class="fa fa-refresh" aria-hidden="true"></span>
                         </button>
                     </th>
@@ -44,27 +48,32 @@
             </thead>
 
             <!--loader-->
-            <tbody data-ng-if="ctrlHostingIndyTab.loaders.indys">
+            <tbody data-ng-if="ctrlHostingIndyTab.loading">
                 <tr>
-                    <td class="loader text-center" colspan="5" aria-label="{{i18n.common_loading}}"></td>
+                    <td class="text-center" colspan="5">
+                        <oui-loader inline="true"></oui-loader>
+                    </td>
                 </tr>
             </tbody>
 
             <!-- no indy -->
-            <tbody data-ng-if="!ctrlHostingIndyTab.loaders.indys && !ctrlHostingIndyTab.indys.length">
+            <tbody data-ng-if="!ctrlHostingIndyTab.loading && !ctrlHostingIndyTab.indys.length">
                 <tr>
-                    <td class="text-center" colspan="5" data-i18n-static="hosting_tab_INDY_table_empty"></td>
+                    <td class="text-center" colspan="5"
+                        data-i18n-static="hosting_tab_INDY_table_empty"></td>
                 </tr>
             </tbody>
 
             <!-- indys -->
-            <tbody data-ng-if="!ctrlHostingIndyTab.loaders.indys && ctrlHostingIndyTab.indys.length > 0">
+            <tbody data-ng-if="!ctrlHostingIndyTab.loading && ctrlHostingIndyTab.indys.length > 0">
                 <tr data-ng-repeat="indy in ctrlHostingIndyTab.indys track by $index">
                     <th scope="row" data-ng-bind="::indy.login"></th>
                     <td data-ng-bind="::indy.home"></td>
                     <td class="text-center">
-                        <span class="label" data-ng-class="{'label-danger': indy.state === 'off', 'label-success': indy.state === 'rw'}"
-                              data-ng-bind="::tr('hosting_tab_INDY_state_'+indy.state)"></span>
+                        <span class="label" data-ng-class="{
+                                'label-danger': indy.state === 'off',
+                                'label-success': indy.state === 'rw'}"
+                              data-ng-bind="::tr('hosting_tab_INDY_state_' + indy.state)"></span>
                     </td>
                     <td colspan="2">
                         <ul class="list-unstyled">
@@ -93,7 +102,7 @@
              data-on-transform-item-done="ctrlHostingIndyTab.onTransformItemDone(items)"
              data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
              data-item-per-page-placeholder="{{tr('pagination_display')}}"
-             data-ng-show="!ctrlHostingIndyTab.loaders.indys && ctrlHostingIndyTab.indys.length > 0">
+             data-ng-show="!ctrlHostingIndyTab.loading && ctrlHostingIndyTab.indys.length > 0">
         </div>
     </div>
 </div>

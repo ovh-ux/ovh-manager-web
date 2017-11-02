@@ -33,7 +33,6 @@ angular.module("controllers").controller(
             };
 
             this.$scope.$on("Domain.Dns.Reload", () => this.init());
-            this.$scope.alerts.domainDns = "domain_tab_dns_alert";
             this.$scope.loadTable = () => this.loadTable();
 
             this.$q
@@ -128,10 +127,10 @@ angular.module("controllers").controller(
                         this.domain.managedByOvh = false;
                         return this.Domain.updateDnsNameServerList(this.$stateParams.productId, dns);
                     })
-                    .then(() => this.Alerter.success(this.$scope.i18n.domain_tab_DNS_update_success, this.$scope.alerts.dashboard))
+                    .then(() => this.Alerter.success(this.$scope.i18n.domain_tab_DNS_update_success, this.$scope.alerts.main))
                     .catch((err) => {
                         _.set(err, "type", err.type || "ERROR");
-                        this.Alerter.alertFromSWS(this.$scope.i18n.domain_tab_DNS_update_error, err, this.$scope.alerts.dashboard);
+                        this.Alerter.alertFromSWS(this.$scope.i18n.domain_tab_DNS_update_error, err, this.$scope.alerts.main);
                     })
                     .finally(() => {
                         this.editMode = false;

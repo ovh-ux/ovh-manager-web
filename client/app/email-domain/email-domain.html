@@ -1,13 +1,11 @@
-<div data-ovh-alert="{{alerts.dashboard}}"></div>
+<div data-ovh-alert="{{alerts.page}}"></div>
 
-<div data-ng-if="ctrlEmailDomain.loading.domainsInfos">
-    <div class="clearfix"></div>
-    <div class="loader mt-5 text-center"></div>
-</div>
+<oui-loader size="l" data-ng-if="ctrlEmailDomain.loading.init"></oui-loader>
 
-<div data-ng-if="!ctrlEmailDomain.loading.domainsInfos">
+<div data-ng-if="!ctrlEmailDomain.loading.init">
     <div class="page-header">
-        <h1 class="word-break" data-ng-bind="domain.domain"></h1>
+        <h1 class="word-break"
+            data-ng-bind="domain.domain"></h1>
     </div>
 
     <div data-ng-controller="EmailDomainTabsCtrl as ctrlEmailDomainTabs">
@@ -24,9 +22,9 @@
     </div>
 </div>
 
-<div id="currentAction" class="modal fade currentAction" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade currentAction" id="currentAction" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <div id="modal-container" class="modal-content" data-ng-include="ctrlEmailDomain.stepPath"></div>
-        <div id="modal-help" class="help4wizards"></div>
+        <div class="modal-content" id="modal-container" data-ng-include="ctrlEmailDomain.stepPath"></div>
+        <div class="help4wizards" id="modal-help"></div>
     </div>
 </div>

@@ -43,7 +43,7 @@ angular.module("App").controller(
                     this.accounts = _.map(data, (email) => email.split("@")[0]);
                     this.emailsList = data.sort();
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     if (_.isEmpty(this.emailsList)) {
                         this.loading.responders = false;

@@ -1,244 +1,333 @@
 <div class="container-fluid px-0" data-ng-controller="PrivateDatabaseStateCtrl as stateCtrl">
     <div class="row">
         <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.main}}"></div>
+
             <div data-ng-if="stateCtrl.database">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="oui-tile">
-                            <h3 class="oui-header__title" data-i18n-static="privateDatabase_dashboard_general_informations"></h3>
-                            <ul>
-                                <li>
-                                  <strong data-i18n-static="privateDatabase_dashboard_type"></strong>
-                                  <span data-ng-bind="::i18n['privateDatabase_dashboard_type_' + stateCtrl.database.type]"></span>
-                                </li>
-
-                                <li>
-                                  <div class="d-flex w-100">
-                                      <div>
-                                          <strong class="d-block" data-i18n-static="privateDatabase_dashboard_version"></strong>
-                                          <span data-ng-bind="::i18n['privateDatabase_dashboard_version_' + stateCtrl.database.version] || stateCtrl.database.version"></span>
-                                      </div>
-                                      <button type="button" class="btn btn-default my-auto ml-auto text-wrap" title="{{::i18n.privateDatabase_change_version}}"
-                                              data-ng-disabled="taskState.lockAction"
-                                              data-ng-click="setAction('database/version/update/private-database-database-version-update', stateCtrl.database)">
-                                          <span data-i18n-static="privateDatabase_change_version"></span>
-                                      </button>
-                                  </div>
-                                </li>
-                                <li>
-                                    <div class="d-flex w-100">
-                                        <div class="w-50">
-                                            <strong data-i18n-static="privateDatabase_dashboard_ram"></strong>
-                                            <button class="btn btn-xs d-block" type="button" title="{{::i18n.privateDatabase_modale_oom_title}}"
-                                                    data-ng-class="stateCtrl.database.oom.realList.length >= stateCtrl.database.oom.nbOomError ? 'btn-danger' : (stateCtrl.database.oom.realList.length > 0 ? 'btn-warning' : 'btn-success')"
-                                                    data-ng-click="stateCtrl.goToOom()">
-                                                <span data-ng-bind="::stateCtrl.database.ram.value + i18n['unit_size_' + stateCtrl.database.ram.unit]"></span>
-                                            </button>
-                                            <button class="btn btn-icon btn-xs d-block text-wrap text-left" type="button" title="{{::i18n.privateDatabase_modale_oom_title}}"
-                                                    data-ng-class="stateCtrl.database.oom.realList.length >= stateCtrl.database.oom.nbOomError ? 'text-danger' : (stateCtrl.database.oom.realList.length > 0 ? 'text-warning' : '')"
-                                                    data-ng-click="stateCtrl.goToOom()">
-                                                <span data-ng-if="stateCtrl.database.oom.realList.length > 0" class="fa fa-exclamation-triangle" aria-hidden="true"></span>
-                                                <span data-ng-if="stateCtrl.database.oom.realList.length === 0" class="fa fa-check-circle" aria-hidden="true"></span>
-                                                <span data-ng-if="stateCtrl.database.oom.realList.length > 0" data-ng-bind-html="tr('privateDatabase_warning_oom', [stateCtrl.database.oom.realList.length])"></span>
-                                                <span data-ng-if="stateCtrl.database.oom.realList.length === 0" data-ng-bind-html="tr('privateDatabase_no_oom')"></span>
-                                            </button>
+                        <div class="oui-tile mb-5">
+                            <h3 class="oui-tile__title"
+                                data-i18n-static="privateDatabase_dashboard_general_informations"></h3>
+                            <div class="oui-tile__body">
+                                <ul class="list-unstyled">
+                                    <li class="oui-tile__item"
+                                        data-ng-if="stateCtrl.database.state">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_dashboard_state"></strong>
+                                            <div class="label"
+                                                 data-ng-class="{
+                                                    'label-danger': stateCtrl.database.state === 'detached',
+                                                    'label-warning' : stateCtrl.database.state === 'restartPending' || stateCtrl.database.state === 'stopPending' || database.state === 'stopped',
+                                                    'label-success' : stateCtrl.database.state === 'startPending' || stateCtrl.database.state === 'started' }"
+                                                 data-ng-bind="tr('privateDatabase_dashboard_' + stateCtrl.database.state)">
+                                            </div>
                                         </div>
-                                        <button type="button" class="btn btn-default ml-auto my-auto text-wrap" title="{{::i18n.privateDatabase_change_ram_title}}"
-                                                data-ng-disabled="taskState.lockAction"
-                                                data-ng-click="setAction('database/ram/update/private-database-database-ram-update', stateCtrl.database)">
-                                            <span data-i18n-static="privateDatabase_change_ram_title"></span>
-                                        </button>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong data-i18n-static="privateDatabase_dashboard_infrastructure"></strong>
-                                    <span data-ng-bind="::i18n['privateDatabase_dashboard_infrastructure_' + stateCtrl.database.infrastructure]"></span>
-                                </li>
-                                <li>
-                                    <strong data-i18n-static="privateDatabase_dashboard_datacenter"></strong>
-                                    <span data-ng-bind="::i18n['privateDatabase_dashboard_datacenter_' + stateCtrl.database.datacenter] || stateCtrl.database.datacenter"></span>
-                                </li>
-                                <li>
-                                    <strong data-i18n-static="privateDatabase_dashboard_host"></strong>
-                                    <span data-ng-bind="stateCtrl.database.server"></span>
-                                </li>
-                                <li>
-                                    <div data-ng-if="isRenew()">
-                                        <strong data-i18n-static="privateDatabase_renew_date"></strong>
-                                        <span data-ng-bind="::stateCtrl.database.serviceInfos.expiration | date:'MMMM yyyy'"></span>
-                                    </div>
-                                    <div class="d-flex w-100" data-ng-if="!isRenew()">
-                                        <div>
-                                            <strong data-i18n-static="privateDatabase_expiration_date" data-ng-if="!isRenew()"></strong>
-                                            <span data-ng-bind="::stateCtrl.database.serviceInfos.expiration | date:'mediumDate'"></span>
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_dashboard_type"></strong>
+                                            <span data-ng-bind="::i18n['privateDatabase_dashboard_type_' + stateCtrl.database.type]"></span>
                                         </div>
-                                        <a class="btn btn-default ml-auto my-auto" title="{{::i18n.button_renew}}"
-                                           data-ng-href="#/billing/autoRenew?selectedType=HOSTING_PRIVATE_DATABASE&searchText={{stateCtrl.database.serviceName}}">
-                                            <span class="icon-refresh" aria-hidden="true"></span>
-                                            <span data-i18n-static="button_renew"></span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li data-ng-if="stateCtrl.database.offer === 'classic'">
-                                    <strong data-i18n-static="privateDatabase_dashboard_service_hosting_linked"></strong>
-                                    <span data-ng-if="stateCtrl.hostingsLinked && stateCtrl.hostingsLinked.length === 0"
-                                          data-i18n-static="privateDatabase_dashboard_service_hosting_linked_none"></span>
-                                    <button class="btn btn-link no-padding" type="button"
-                                            data-ng-if="stateCtrl.hostingsLinked && stateCtrl.hostingsLinked.length === 1"
-                                            data-ng-click="stateCtrl.goToHosting(stateCtrl.hostingsLinked[0].name)"
-                                            data-ng-disabled="!stateCtrl.hostingsLinked[0].isAdmin"
-                                            data-ng-bind="stateCtrl.hostingsLinked[0].name">
-                                    </button>
-                                    <button class="btn btn-link btn-icon" type="button" title="{{::i18n.privateDatabase_dashboard_service_hosting_more}}"
-                                            data-ng-if="stateCtrl.hostingsLinked && stateCtrl.hostingsLinked.length > 1"
-                                            data-ng-click="stateCtrl.displayMore.value = !stateCtrl.displayMore.value">
-                                        <span class="fa fa-plus-square-o black" data-ng-if="!stateCtrl.displayMore.value" aria-hidden="true"></span>
-                                        <span class="fa fa-minus-square-o black" data-ng-if="stateCtrl.displayMore.value" aria-hidden="true"></span>
-                                        <span class="ml-3" data-i18n-static="privateDatabase_dashboard_service_hosting_more"></span>
-                                    </button>
-                                    <ul data-ng-if="stateCtrl.displayMore.value">
-                                        <li data-ng-repeat="hostingLinked in stateCtrl.hostingsLinked track by $index"
-                                            data-ng-class="{'animated fadeInDown fast-fade-in-down': stateCtrl.displayMore.value}">
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <div class="d-flex w-100">
+                                                <div>
+                                                    <strong class="d-block"
+                                                            data-i18n-static="privateDatabase_dashboard_version"></strong>
+                                                    <span data-ng-bind="::i18n['privateDatabase_dashboard_version_' + stateCtrl.database.version] || stateCtrl.database.version"></span>
+                                                </div>
+                                                <button class="btn btn-default my-auto ml-auto text-wrap" type="button" title="{{::i18n.privateDatabase_change_version}}"
+                                                        data-i18n-static="privateDatabase_change_version"
+                                                        data-ng-click="setAction('database/version/update/private-database-database-version-update', stateCtrl.database)"
+                                                        data-ng-disabled="taskState.lockAction"
+                                                        data-ng-if="!stateCtrl.isExpired">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <div class="d-flex w-100">
+                                                <div class="w-50">
+                                                    <strong class="d-block"
+                                                            data-i18n-static="privateDatabase_dashboard_ram"></strong>
+                                                    <button class="btn btn-xs d-block" type="button" title="{{::i18n.privateDatabase_modale_oom_title}}"
+                                                            data-ng-bind="::stateCtrl.database.ram.value + i18n['unit_size_' + stateCtrl.database.ram.unit]"
+                                                            data-ng-class="stateCtrl.database.oom.realList.length >= stateCtrl.database.oom.nbOomError ? 'btn-danger' : (stateCtrl.database.oom.realList.length > 0 ? 'btn-warning' : 'btn-success')"
+                                                            data-ng-click="stateCtrl.goToOom()">
+                                                    </button>
+                                                    <button class="btn btn-icon btn-xs d-block text-wrap text-left" type="button" title="{{::i18n.privateDatabase_modale_oom_title}}"
+                                                            data-ng-class="stateCtrl.database.oom.realList.length >= stateCtrl.database.oom.nbOomError ? 'text-danger' : (stateCtrl.database.oom.realList.length > 0 ? 'text-warning' : '')"
+                                                            data-ng-click="stateCtrl.goToOom()">
+                                                        <span data-ng-if="stateCtrl.database.oom.realList.length > 0" class="fa fa-exclamation-triangle" aria-hidden="true"></span>
+                                                        <span data-ng-if="stateCtrl.database.oom.realList.length === 0" class="fa fa-check-circle" aria-hidden="true"></span>
+                                                        <span data-ng-if="stateCtrl.database.oom.realList.length > 0" data-ng-bind-html="tr('privateDatabase_warning_oom', [stateCtrl.database.oom.realList.length])"></span>
+                                                        <span data-ng-if="stateCtrl.database.oom.realList.length === 0" data-ng-bind-html="tr('privateDatabase_no_oom')"></span>
+                                                    </button>
+                                                </div>
+                                                <button type="button" class="btn btn-default ml-auto my-auto text-wrap" title="{{::i18n.privateDatabase_change_ram_title}}"
+                                                        data-i18n-static="privateDatabase_change_ram_title"
+                                                        data-ng-disabled="taskState.lockAction"
+                                                        data-ng-click="setAction('database/ram/update/private-database-database-ram-update', stateCtrl.database)"
+                                                        data-ng-if="!stateCtrl.isExpired">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_dashboard_infrastructure"></strong>
+                                            <span data-ng-bind="::i18n['privateDatabase_dashboard_infrastructure_' + stateCtrl.database.infrastructure]"></span>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_dashboard_datacenter"></strong>
+                                            <span data-ng-bind="::i18n['privateDatabase_dashboard_datacenter_' + stateCtrl.database.datacenter] || stateCtrl.database.datacenter"></span>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_dashboard_host"></strong>
+                                            <span data-ng-bind="stateCtrl.database.server"></span>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <div data-ng-if="isRenew()">
+                                                <strong class="d-block"
+                                                        data-i18n-static="privateDatabase_renew_date"></strong>
+                                                <span
+                                                    data-ng-bind="::stateCtrl.database.serviceInfos.expiration | date:'MMMM yyyy'"></span>
+                                            </div>
+                                            <div class="d-flex w-100" data-ng-if="!isRenew()">
+                                                <div>
+                                                    <strong class="d-block"
+                                                            data-i18n-static="privateDatabase_expiration_date"
+                                                            data-ng-if="!isRenew()"></strong>
+                                                    <span data-ng-bind="::stateCtrl.database.serviceInfos.expiration | date:'mediumDate'"></span>
+                                                </div>
+                                                <a class="btn btn-default ml-auto my-auto" title="{{::i18n.button_renew}}"
+                                                   data-ng-href="#/billing/autoRenew?selectedType=HOSTING_PRIVATE_DATABASE&searchText={{stateCtrl.database.serviceName}}"
+                                                   data-i18n-static="button_renew">
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item" data-ng-if="stateCtrl.database.offer === 'classic'">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_dashboard_service_hosting_linked"></strong>
+                                            <span data-ng-if="stateCtrl.hostingsLinked && stateCtrl.hostingsLinked.length === 0"
+                                                  data-i18n-static="privateDatabase_dashboard_service_hosting_linked_none"></span>
                                             <button class="btn btn-link p-0" type="button"
-                                                    data-ng-click="stateCtrl.goToHosting(hostingLinked.name)"
-                                                    data-ng-disabled="!stateCtrl.hostingsLinked.isAdmin"
-                                                    data-ng-bind="hostingLinked.name">
+                                                    data-ng-if="stateCtrl.hostingsLinked && stateCtrl.hostingsLinked.length === 1"
+                                                    data-ng-bind="stateCtrl.hostingsLinked[0].name"
+                                                    data-ng-click="stateCtrl.goToHosting(stateCtrl.hostingsLinked[0].name)"
+                                                    data-ng-disabled="!stateCtrl.hostingsLinked[0].isAdmin">
                                             </button>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
+                                            <button class="btn btn-icon" type="button" title="{{::i18n.privateDatabase_dashboard_service_hosting_more}}"
+                                                    data-ng-if="stateCtrl.hostingsLinked && stateCtrl.hostingsLinked.length > 1"
+                                                    data-ng-click="stateCtrl.displayMore.value = !stateCtrl.displayMore.value">
+                                                <span class="fa fa-plus-square-o"
+                                                      data-ng-if="!stateCtrl.displayMore.value"
+                                                      aria-hidden="true"></span>
+                                                <span class="fa fa-minus-square-o"
+                                                      data-ng-if="stateCtrl.displayMore.value"
+                                                      aria-hidden="true"></span>
+                                                <span class="ml-3"
+                                                      data-i18n-static="privateDatabase_dashboard_service_hosting_more"></span>
+                                            </button>
+                                            <ul data-ng-if="stateCtrl.displayMore.value">
+                                                <li data-ng-repeat="hostingLinked in stateCtrl.hostingsLinked track by $index"
+                                                    data-ng-class="{'animated fadeInDown fast-fade-in-down': stateCtrl.displayMore.value}">
+                                                    <button class="btn btn-link p-0" type="button"
+                                                            data-ng-click="stateCtrl.goToHosting(hostingLinked.name)"
+                                                            data-ng-disabled="!stateCtrl.hostingsLinked.isAdmin"
+                                                            data-ng-bind="hostingLinked.name">
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="oui-tile" data-ng-if="stateCtrl.database.offer === 'classic'">
-                            <h3 class="oui-header__title" data-i18n-static="privateDatabase_dashboard_admin_informations"></h3>
-                            <ul>
-                                <li>
-                                    <strong data-i18n-static="privateDatabase_gui"></strong>
-                                    <a data-ng-href="{{stateCtrl.database.guiURL}}" target="_blank"
-                                           data-ng-bind="::stateCtrl.database.guiURL"></a>
-                                </li>
-                                <li>
-                                    <strong data-i18n-static="privateDatabase_tab_USERS"></strong>
-                                    <button class="btn btn-link p-0" type="button"
-                                            data-ng-click="setSelectedTab('USER')">
-                                        <span data-i18n-static="privateDatabase_dashboard_admin_informations_users"></span>
-                                        <span class="fa fa-external-link" aria-hidden="true"></span>
-                                    </button>
-                                </li>
-                            </ul>
+                        <div class="oui-tile mb-5" data-ng-if="stateCtrl.database.offer === 'classic'">
+                            <h3 class="oui-tile__title"
+                                data-i18n-static="privateDatabase_dashboard_admin_informations"></h3>
+                            <div class="oui-tile__body">
+                                <ul class="list-unstyled">
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block" data-i18n-static="privateDatabase_gui"></strong>
+                                            <a data-ng-href="{{stateCtrl.database.guiURL}}" target="_blank"
+                                               data-ng-bind="::stateCtrl.database.guiURL"></a>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_tab_USERS"></strong>
+                                            <button class="btn btn-link p-0" type="button"
+                                                    data-i18n-static="privateDatabase_dashboard_admin_informations_users"
+                                                    data-ng-click="setSelectedTab('USER')">
+                                            </button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
                     <div class="col-md-6">
-                        <div class="oui-tile">
+                        <div class="oui-tile mb-5">
                             <!-- quota -->
-                            <h3 class="oui-header__title"
-                                data-i18n-static="privateDatabase_dashboard_disk_usage"></h3>
+                            <h3 class="oui-tile__title" data-i18n-static="privateDatabase_dashboard_disk_usage"></h3>
+                            <div class="oui-tile__body">
+                                <div class="oui-tile__definition">
+                                    <div id="diskUsed" style="width: 190px; height: 140px; margin-top: -30px;"
+                                         data-gauge-chart
+                                         data-chartdata="stateCtrl.database.quotaPercent.value"
+                                         data-disk-unit="i18n['unit_size_' + stateCtrl.database.quotaSize.unit]"
+                                         data-chart-min="0"
+                                         data-chart-max="stateCtrl.database.quotaSize.value"
+                                         data-limit-warning="70"
+                                         data-limit-alert="85"
+                                         data-color-ok="#81BB28"
+                                         data-color-warning="#ECAC02"
+                                         data-color-alert="#E03937"
+                                         data-shadow-opacity="0.2"
+                                         data-ng-if="stateCtrl.database.infrastructure === 'legacy'">
+                                    </div>
 
-                            <div id="diskUsed" style="width: 190px; height: 140px; margin-top: -30px;"
-                                 data-gauge-chart
-                                 data-chartdata="stateCtrl.database.quotaPercent.value"
-                                 data-disk-unit="i18n['unit_size_' + stateCtrl.database.quotaSize.unit]"
-                                 data-chart-min="0"
-                                 data-chart-max="stateCtrl.database.quotaSize.value"
-                                 data-limit-warning="70"
-                                 data-limit-alert="85"
-                                 data-color-ok="#81BB28"
-                                 data-color-warning="#ECAC02"
-                                 data-color-alert="#E03937"
-                                 data-shadow-opacity="0.2"
-                                 data-ng-if="stateCtrl.database.infrastructure === 'legacy'">
-                            </div>
-
-                            <div data-ng-if="stateCtrl.database.infrastructure !== 'legacy'  && stateCtrl.database.offer === 'public'"
-                                 data-ng-bind="::tr('privateDatabase_dashboard_quota', [stateCtrl.database.quotaUsed.value]) + tr('unit_size_' + stateCtrl.database.quotaUsed.unit) + ' / ' + database.quotaSize.value + tr('unit_size_' + database.quotaSize.unit)">
-                            </div>
-                            <div data-ng-if="stateCtrl.database.infrastructure !== 'legacy' && stateCtrl.database.offer === 'classic'"
-                                 data-ng-bind="::tr('privateDatabase_dashboard_quota', [stateCtrl.database.quotaUsed.value]) + tr('unit_size_' + stateCtrl.database.quotaUsed.unit)">
+                                    <div data-ng-if="stateCtrl.database.infrastructure !== 'legacy'"
+                                         data-ng-bind="::tr('privateDatabase_dashboard_quota', [stateCtrl.database.quotaUsed.value]) + tr('unit_size_' + stateCtrl.database.quotaUsed.unit) + ' / ' + database.quotaSize.value + tr('unit_size_' + database.quotaSize.unit)">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="oui-tile">
-                            <h3 class="oui-header__title" data-i18n-static="privateDatabase_dashboard_sql_informations"></h3>
-                            <ul>
-                                <li>
-                                    <strong data-i18n-static="privateDatabase_dashboard_hostname"></strong>
-                                    <span data-ng-if="stateCtrl.database.infrastructure === 'docker'"
-                                        data-ng-bind="::stateCtrl.database.hostname"></span>
-                                    <span data-ng-if="stateCtrl.database.infrastructure === 'legacy'"
-                                        data-ng-bind="::stateCtrl.database.ip"></span>
-                                </li>
-                                <li>
-                                    <strong data-i18n-static="privateDatabase_dashboard_port"></strong>
-                                    <span data-ng-bind="::stateCtrl.database.port"></span>
-                                </li>
-                                <li>
-                                    <strong data-i18n-static="privateDatabase_tab_USERS"></strong>
-                                    <button class="btn btn-link p-0" type="button" data-ng-click="setSelectedTab('USER')">
-                                        <span data-i18n-static="privateDatabase_dashboard_admin_informations_users"></span>
-                                        <span class="fa fa-external-link"></span>
-                                    </button>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="oui-tile">
-                            <h3 class="oui-header__title"
-                                data-ng-bind="i18n['privateDatabase_dashboard_ftp_informations_' + stateCtrl.database.infrastructure]"></h3>
-                            <ul>
-                                <li>
-                                    <strong data-i18n-static="privateDatabase_dashboard_ftp_username"></strong>
-                                    <span data-ng-if="stateCtrl.database.infrastructure === 'legacy'"
-                                        data-ng-bind="::stateCtrl.database.serviceName"></span>
-                                    <span data-ng-if="stateCtrl.database.infrastructure === 'docker'">admin</span>
-                                </li>
-                                <li>
-                                    <div class="d-flex w-100">
-                                        <div>
-                                            <strong data-ng-bind="i18n['privateDatabase_password_' + stateCtrl.database.infrastructure]"></strong>
-                                            <span data-ng-show="!taskState.changeFtpPassword">********</span>
+                        <div class="oui-tile mb-5">
+                            <h3 class="oui-tile__title"
+                                data-i18n-static="privateDatabase_dashboard_sql_informations"></h3>
+                            <div class="oui-tile__body">
+                                <ul class="list-unstyled">
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_dashboard_hostname"></strong>
+                                            <span data-ng-if="stateCtrl.database.infrastructure === 'docker'"
+                                                  data-ng-bind="::stateCtrl.database.hostname"></span>
+                                            <span data-ng-if="stateCtrl.database.infrastructure === 'legacy'"
+                                                  data-ng-bind="::stateCtrl.database.ip"></span>
                                         </div>
-                                        <div class="ml-auto my-auto">
-                                            <button class="btn btn-default ml-auto my-auto text-wrap" type="button" title="{{::i18n.privateDatabase_change_rootPassword}}"
-                                                    data-ng-show="!taskState.changeFtpPassword"
-                                                    data-ng-disabled="taskState.lockAction"
-                                                    data-ng-click="stateCtrl.changeFtpPassword()">
-                                                <span data-i18n-static="privateDatabase_change_rootPassword"></span>
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_dashboard_port"></strong>
+                                            <span data-ng-bind="::stateCtrl.database.port"></span>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_tab_USERS"></strong>
+                                            <button class="btn btn-link p-0" type="button"
+                                                    data-i18n-static="privateDatabase_dashboard_admin_informations_users"
+                                                    data-ng-click="setSelectedTab('USER')">
                                             </button>
-                                            <span class="ml-auto my-auto" data-ng-show="taskState.changeFtpPassword">
-                                                <span class="fa fa-spinner fa-spin" aria-hidden="true"></span>
-                                                <span data-i18n-static="privateDatabase_action_changepassword_doing"></span>
-                                            </span>
                                         </div>
-                                    </div>
-                                </li>
-                                <li data-ng-if="stateCtrl.database.infrastructure === 'legacy'">
-                                    <div class="d-flex w-100">
-                                      <div>
-                                        <strong data-i18n-static="privateDatabase_password_docker"></strong>
-                                        <span data-ng-show="!taskState.changeRootPassword">********</span>
-                                      </div>
-                                      <div class="ml-auto my-auto">
-                                        <button class="btn btn-default text-wrap" type="button" title="{{::i18n.privateDatabase_change_rootPassword}}"
-                                                data-ng-show="!taskState.changeRootPassword"
-                                                data-ng-disabled="taskState.lockAction"
-                                                data-ng-click="stateCtrl.changeRootPassword()">
-                                            <span data-i18n-static="privateDatabase_change_rootPassword"></span>
-                                        </button>
-                                        <span data-ng-show="taskState.changeRootPassword">
-                                            <span class="fa fa-spinner fa-spin" aria-hidden="true"></span>
-                                            <span data-i18n-static="privateDatabase_action_changepassword_doing"></span>
-                                        </span>
-                                      </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <strong data-i18n-static="privateDatabase_dashboard_hostname"></strong>
-                                    <span data-ng-bind="::stateCtrl.database.hostnameFtp"></span>
-                                </li>
-                                <li>
-                                    <strong data-i18n-static="privateDatabase_dashboard_port"></strong>
-                                    <span data-ng-bind="::stateCtrl.database.portFtp"></span>
-                                </li>
-                            </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="oui-tile mb-5">
+                            <h3 class="oui-tile__title"
+                                data-ng-bind="i18n['privateDatabase_dashboard_ftp_informations_' + stateCtrl.database.infrastructure]"></h3>
+                            <div class="oui-tile__body">
+                                <ul class="list-unstyled">
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_dashboard_ftp_username"></strong>
+                                            <span data-ng-if="stateCtrl.database.infrastructure === 'legacy'"
+                                                  data-ng-bind="::stateCtrl.database.serviceName"></span>
+                                            <span data-ng-if="stateCtrl.database.infrastructure === 'docker'">admin</span>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <div class="d-flex w-100">
+                                                <div>
+                                                    <strong class="d-block"
+                                                            data-ng-bind="i18n['privateDatabase_password_' + stateCtrl.database.infrastructure]"></strong>
+                                                    <span data-ng-show="!taskState.changeFtpPassword">********</span>
+                                                </div>
+                                                <div class="ml-auto my-auto">
+                                                    <button class="btn btn-default ml-auto my-auto text-wrap" type="button" title="{{::i18n.privateDatabase_change_rootPassword}}"
+                                                            data-i18n-static="privateDatabase_change_rootPassword"
+                                                            data-ng-click="stateCtrl.changeFtpPassword()"
+                                                            data-ng-disabled="taskState.lockAction"
+                                                            data-ng-if="!stateCtrl.isExpired"
+                                                            data-ng-show="!taskState.changeFtpPassword">
+                                                    </button>
+                                                    <span class="ml-auto my-auto"
+                                                          data-ng-show="taskState.changeFtpPassword">
+                                                        <oui-loader size="s" inline="true"></oui-loader>
+                                                        <span data-i18n-static="privateDatabase_action_changepassword_doing"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item"
+                                        data-ng-if="stateCtrl.database.infrastructure === 'legacy'">
+                                        <div class="oui-tile__definition">
+                                            <div class="d-flex w-100">
+                                                <div>
+                                                    <strong class="d-block"
+                                                            data-i18n-static="privateDatabase_password_docker"></strong>
+                                                    <span data-ng-show="!taskState.changeRootPassword">********</span>
+                                                </div>
+                                                <div class="ml-auto my-auto">
+                                                    <button class="btn btn-default text-wrap" type="button" title="{{::i18n.privateDatabase_change_rootPassword}}"
+                                                            data-i18n-static="privateDatabase_change_rootPassword"
+                                                            data-ng-click="stateCtrl.changeRootPassword()"
+                                                            data-ng-disabled="taskState.lockAction"
+                                                            data-ng-show="!taskState.changeRootPassword">
+                                                    </button>
+                                                    <span data-ng-show="taskState.changeRootPassword">
+                                                        <oui-loader size="s" inline="true"></oui-loader>
+                                                        <span data-i18n-static="privateDatabase_action_changepassword_doing"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_dashboard_hostname"></strong>
+                                            <span data-ng-bind="::stateCtrl.database.hostnameFtp"></span>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item">
+                                        <div class="oui-tile__definition">
+                                            <strong class="d-block"
+                                                    data-i18n-static="privateDatabase_dashboard_port"></strong>
+                                            <span data-ng-bind="::stateCtrl.database.portFtp"></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -247,12 +336,16 @@
 
         <div class="col-md-3" data-ng-if="guides">
             <div class="oui-tile mb-5">
-                <h3 class="oui-header__title" data-i18n-static="guide_add_subtitle"></h3>
-                <div>
+                <h3 class="oui-tile__title" data-i18n-static="guide_add_subtitle"></h3>
+                <div class="oui-tile__body">
                     <ul class="list-unstyled">
-                        <li data-ng-repeat="guide in guides track by $index">
-                            <a data-ng-href="{{guide.url}}" target="_blank"
-                               data-ng-bind="tr(guide.title)"></a>
+                        <li class="oui-tile__item oui-tile__item_button"
+                            data-ng-repeat="guide in guides track by $index">
+                            <a class="oui-tile__button oui-button oui-button_link oui-button_full-width d-flex" target="_blank"
+                               data-ng-href="{{guide.url}}">
+                                <span data-ng-bind="tr(guide.title)"></span>
+                                <span class="fa fa-external-link my-auto ml-auto" aria-hidden="true"></span>
+                            </a>
                         </li>
                     </ul>
                 </div>

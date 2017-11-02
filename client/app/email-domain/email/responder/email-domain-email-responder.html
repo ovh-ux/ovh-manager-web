@@ -1,93 +1,92 @@
 <div class="row" data-ng-controller="EmailDomainEmailResponderCtrl as ctrlEmailDomainEmailResponder">
     <div class="col-md-9">
-        <div class="d-flex mb-3">
-            <button class="btn btn-default my-auto" type="button"
-                    data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
-                <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-                <span data-i18n-static="email_tab_button_emails_filters_back"></span>
-            </button>
-            <h2 class="d-inline-block ml-3 mb-0"
-                data-i18n-static="email_tab_responders_management_heading"></h2>
+        <div data-ovh-alert="{{alerts.main}}"></div>
+
+        <button class="oui-button oui-button_link oui-button_icon-left" type="button"
+                data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
+            <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+            <span data-i18n-static="common_back"></span>
+        </button>
+        <h2 data-i18n-static="email_tab_responders_management_heading"></h2>
+
+        <div class="text-center" data-ng-if="ctrlEmailDomainEmailResponder.loading.responders">
+            <oui-loader size="l" inline="true"></oui-loader>
         </div>
 
-        <dl class="dl-horizontal dl-lg" data-ng-if="ctrlEmailDomainEmail.quotas.responder > 0">
-            <dt data-i18n-static="email_tab_responders_quota"></dt>
-            <dd class="text-nowrap">
-                <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                      data-ng-if="ctrlEmailDomainEmailResponder.loading.responders"></span>
-                <span data-ng-bind="ctrlEmailDomainEmailResponder.responders.length + ' / ' + (ctrlEmailDomainEmail.quotas.responder || '0')"
-                      data-ng-if="!ctrlEmailDomainEmailResponder.loading.responders"></span>
-            </dd>
-        </dl>
+        <div data-ng-if="!ctrlEmailDomainEmailResponder.loading.responders">
+            <dl class="dl-horizontal dl-lg" data-ng-if="ctrlEmailDomainEmail.quotas.responder > 0">
+                <dt data-i18n-static="email_tab_responders_quota"></dt>
+                <dd class="text-nowrap"
+                    data-ng-bind="ctrlEmailDomainEmailResponder.responders.length + ' / ' + (ctrlEmailDomainEmail.quotas.responder || '0')">
+                </dd>
+            </dl>
 
-        <div class="loader text-center" data-ng-if="ctrlEmailDomainEmailResponder.loading.responders"></div>
+            <div class="alert alert-danger" role="alert"
+                 data-ng-bind="tr('email_tab_table_emails_responder_quota_excedeed', [ctrlEmailDomainEmailResponder.responders.length, ctrlEmailDomainEmail.quotas.responder])"
+                 data-ng-if="ctrlEmailDomainEmailResponder.responders.length >= ctrlEmailDomainEmail.quotas.responder">
+            </div>
 
-        <div class="alert alert-danger" role="alert"
-             data-ng-bind="tr('email_tab_table_emails_responder_quota_excedeed', [ctrlEmailDomainEmailResponder.responders.length, ctrlEmailDomainEmail.quotas.responder])"
-             data-ng-if="ctrlEmailDomainEmailResponder.responders.length >= ctrlEmailDomainEmail.quotas.responder">
-        </div>
+            <div class="alert alert-info" role="alert"
+                 data-i18n-static="email_tab_table_responders_empty"
+                 data-ng-if="!ctrlEmailDomainEmailResponder.responders.length">
+            </div>
 
-        <div class="alert alert-info mt-4" role="alert"
-             data-i18n-static="email_tab_table_responders_empty"
-             data-ng-if="!ctrlEmailDomainEmailResponder.loading.responders && !ctrlEmailDomainEmailResponder.responders.length">
-        </div>
+            <div class="table-responsive"
+                 data-ng-if="ctrlEmailDomainEmailResponder.responders.length > 0">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" data-i18n-static="email_tab_responders_name"></th>
+                            <th scope="col" data-i18n-static="emails_common_date_from"></th>
+                            <th scope="col" data-i18n-static="emails_common_date_to"></th>
+                            <th class="min-width text-center" scope="col" data-i18n-static="emails_common_status"></th>
+                            <th scope="col" data-i18n-static="emails_common_copy_to"></th>
+                            <th class="min-width text-right" scope="col">
+                                <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_header_refresh}}"
+                                        data-ng-click="ctrlEmailDomainEmailResponder.refreshTableResponders()">
+                                    <span class="fa fa-refresh" aria-hidden="true"></span>
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
 
-        <div class="table-responsive"
-             data-ng-if="!ctrlEmailDomainEmailResponder.loading.responders && ctrlEmailDomainEmailResponder.responders.length > 0">
-            <table class="table"
-                   data-ng-class="{'table-hover table-striped': !ctrlEmailDomainEmailResponder.loading.pager}">
-                <thead>
-                    <tr>
-                        <th scope="col" data-i18n-static="email_tab_responders_name"></th>
-                        <th scope="col" data-i18n-static="emails_common_date_from"></th>
-                        <th scope="col" data-i18n-static="emails_common_date_to"></th>
-                        <th class="min-width text-center" scope="col" data-i18n-static="emails_common_status"></th>
-                        <th scope="col" data-i18n-static="emails_common_copy_to"></th>
-                        <th class="min-width text-right" scope="col">
-                            <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_header_refresh}}"
-                                    data-ng-click="ctrlEmailDomainEmailResponder.refreshTableResponders()">
-                                <span class="fa fa-refresh" aria-hidden="true"></span>
-                            </button>
-                        </th>
-                    </tr>
-                </thead>
+                    <tbody data-ng-if="ctrlEmailDomainEmailResponder.loading.pager">
+                        <tr>
+                            <td class="loader text-center" colspan="6"></td>
+                        </tr>
+                    </tbody>
 
-                <tbody data-ng-if="ctrlEmailDomainEmailResponder.loading.pager">
-                    <tr>
-                        <td class="loader text-center" colspan="6"></td>
-                    </tr>
-                </tbody>
-
-                <tbody>
-                    <tr data-ng-repeat="responder in ctrlEmailDomainEmailResponder.respondersDetails track by $index">
-                        <td data-ng-bind="::responder.account"></td>
-                        <td data-ng-bind="::responder.from | date:'medium'" data-ng-if="responder.from"></td>
-                        <td data-ng-if="responder.from && !responder.to"></td>
-                        <td data-ng-if="!responder.from && responder.to"></td>
-                        <td data-ng-bind="::responder.to | date:'medium'" data-ng-if="responder.to"></td>
-                        <td class="text-center" colspan="2"
-                            data-ng-if="!responder.to && !responder.from">permanent</td>
-                        <td class="text-center">
-                            <span class="label" data-ng-class="{
-                                'label-success': !ctrlEmailDomainEmailResponder.constructor.isExpired(responder),
-                                'label-danger': ctrlEmailDomainEmailResponder.constructor.isExpired(responder)
-                                }"
-                                  data-ng-bind="tr('email_tab_responders_status_expired_' + ctrlEmailDomainEmailResponder.constructor.isExpired(responder))"></span>
-                        </td>
-                        <td data-ng-bind="::responder.copyTo"></td>
-                        <td class="text-center">
-                            <button class="btn btn-icon" type="button"
-                                    data-linkedpopover="email-domain/email/responder/email-domain-email-responder.popover.html"
-                                    data-linkedpopover-placement="left"
-                                    data-linkedpopover-remote="true"
-                                    data-linkedpopover-single="true"
-                                    data-linkedpopover-title="{{i18n.common_actions}}">
-                                <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                    <tbody>
+                        <tr data-ng-repeat="responder in ctrlEmailDomainEmailResponder.respondersDetails track by $index">
+                            <td data-ng-bind="::responder.account"></td>
+                            <td data-ng-bind="::responder.from | date:'medium'" data-ng-if="responder.from"></td>
+                            <td data-ng-if="responder.from && !responder.to"></td>
+                            <td data-ng-if="!responder.from && responder.to"></td>
+                            <td data-ng-bind="::responder.to | date:'medium'" data-ng-if="responder.to"></td>
+                            <td class="text-center" colspan="2"
+                                data-ng-if="!responder.to && !responder.from">permanent</td>
+                            <td class="text-center">
+                                <span class="label" data-ng-class="{
+                                    'label-success': !ctrlEmailDomainEmailResponder.constructor.isExpired(responder),
+                                    'label-danger': ctrlEmailDomainEmailResponder.constructor.isExpired(responder)
+                                    }"
+                                      data-ng-bind="tr('email_tab_responders_status_expired_' + ctrlEmailDomainEmailResponder.constructor.isExpired(responder))"></span>
+                            </td>
+                            <td data-ng-bind="::responder.copyTo"></td>
+                            <td class="text-center">
+                                <button class="btn btn-icon" type="button"
+                                        data-linkedpopover="email-domain/email/responder/email-domain-email-responder.popover.html"
+                                        data-linkedpopover-placement="left"
+                                        data-linkedpopover-remote="true"
+                                        data-linkedpopover-single="true"
+                                        data-linkedpopover-title="{{i18n.common_actions}}">
+                                    <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <div class="clearfix"
@@ -118,8 +117,7 @@
                     data-ng-if="ctrlEmailDomainEmailResponder.responders.length < ctrlEmailDomainEmail.quotas.responder">
             </button>
         </div>
-        <div class="mb-5"
-             data-guides
+        <div data-guides
              data-guides-title="tr('guide_subtitle')"
              data-guides-list="'emailsResponder'"
              data-tr="tr">

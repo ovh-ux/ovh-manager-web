@@ -8,7 +8,7 @@
 
         <div data-wizard-step>
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
             <div data-ng-if="!ctrl.loading">
                 <p data-ng-if="ctrl.dnsStatus.isOk && ctrl.dnsStatus.isHosted"

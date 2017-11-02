@@ -1,28 +1,26 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabCronsCtrl">
     <div class="row">
         <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.main}}"></div>
+
             <div class="alert alert-info" role="alert"
                  data-ng-if="!displayTabs.cron">
                 <div>
-                    <span data-i18n-static="hosting_change_offer_for_service"></span>
-                    <div class="mt-4">
-                        <button class="btn btn-info" type="button"
-                                data-i18n-static="hosting_dashboard_service_change_offer"
-                                data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)"></button>
-                    </div>
+                    <p class="mb-3" data-i18n-static="hosting_change_offer_for_service"></p>
+                    <button class="btn btn-info" type="button"
+                            data-i18n-static="hosting_dashboard_service_change_offer"
+                            data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)"></button>
                 </div>
             </div>
 
             <div class="alert alert-info" role="alert"
                  data-ng-if="displayTabs.cron && hosting.offer === 'START_10_M'">
                 <div>
-                    <span data-i18n-static="hosting_change_offer_for_service_start10m"></span>
-                    <div class="mt-4">
-                        <button class="btn btn-info" type="button"
-                                data-i18n-static="hosting_dashboard_service_change_offer"
-                                data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
-                        </button>
-                    </div>
+                    <p class="mb-3" data-i18n-static="hosting_change_offer_for_service_start10m"></p>
+                    <button class="btn btn-info" type="button"
+                            data-i18n-static="hosting_dashboard_service_change_offer"
+                            data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
+                    </button>
                 </div>
             </div>
 
@@ -38,7 +36,7 @@
                     </a>
                 </div>
 
-                <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.init"></div>
+                <oui-loader size="l" data-ng-if="loading.init"></oui-loader>
 
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="hosting_tab_CRON_table_empty"
@@ -71,8 +69,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table"
-                               data-ng-class="{'table-hover table-striped': !loading.cron && crons.ids.length}">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_command"></th>
@@ -83,7 +80,8 @@
                                     <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_email"></th>
                                     <th class="min-width text-right" scope="col">
                                         <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
-                                                data-ng-click="loadCrons()">
+                                                data-ng-click="loadCrons()"
+                                                data-ng-disabled="loading.cron">
                                             <span class="fa fa-refresh" aria-hidden="true"></span>
                                         </button>
                                     </th>
@@ -92,7 +90,7 @@
 
                             <tbody data-ng-if="loading.cron">
                                 <tr>
-                                    <td class="loader text-center" colspan="7" aria-label="{{i18n.common_loading}}"></td>
+                                    <td class="loader text-center" colspan="7"></td>
                                 </tr>
                             </tbody>
 
@@ -156,8 +154,8 @@
 
         <div class="col-md-3 mt-5 mt-lg-0" data-ng-if="displayTabs.cron && hosting.offer !== 'START_10_M'">
             <button class="btn btn-block btn-default" type="button"
+                    data-i18n-static="hosting_tab_CRON_configuration_create_title_button"
                     data-ng-click="setAction('cron/add-or-edit/hosting-cron-add-or-edit',{})">
-                <span data-i18n-static="hosting_tab_CRON_configuration_create_title_button"></span>
             </button>
         </div>
     </div>

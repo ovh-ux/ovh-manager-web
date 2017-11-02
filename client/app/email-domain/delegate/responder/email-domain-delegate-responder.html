@@ -1,18 +1,16 @@
 <div class="row" data-ng-controller="EmailDelegateResponderCtrl as ctrlEmailDelegateResponder">
     <div class="col-md-9">
-        <div class="d-flex mb-3">
-            <button class="btn btn-default my-auto" type="button"
-                    data-ng-click="ctrlEmailDelegate.resetInitialView()">
-                <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-                <span data-i18n-static="email_tab_button_emails_filters_back"></span>
-            </button>
-            <h2 class="d-inline-block ml-3 mb-0"
-                data-i18n-static="email_tab_responders_management_heading"></h2>
-        </div>
+        <div data-ovh-alert="{{alerts.main}}"></div>
+
+        <button class="oui-button oui-button_link oui-button_icon-left" type="button"
+                data-ng-click="ctrlEmailDelegate.resetInitialView()">
+            <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+            <span data-i18n-static="common_back"></span>
+        </button>
+        <h2 data-i18n-static="email_tab_responders_management_heading"></h2>
 
         <div class="table-responsive">
-            <table class="table"
-                   data-ng-class="{'table-hover table-striped': !ctrlEmailDelegateResponder.loading.responders && ctrlEmailDelegateResponder.responders.length}">
+            <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col" data-i18n-static="email_tab_responders_name"></th>
@@ -54,7 +52,9 @@
                         <td class="text-center" colspan="2"
                             data-ng-if="!responder.to && !responder.from">permanent</td>
                         <td class="text-center">
-                            <span class="label" data-ng-class="{'label-success': !ctrlEmailDelegateResponder.constructor.isExpired(responder), 'label-danger': ctrlEmailDelegateResponder.constructor.isExpired(responder)}"
+                            <span class="label" data-ng-class="{
+                                    'label-success': !ctrlEmailDelegateResponder.constructor.isExpired(responder),
+                                    'label-danger': ctrlEmailDelegateResponder.constructor.isExpired(responder)}"
                                   data-ng-bind="tr('email_tab_responders_status_expired_' + ctrlEmailDelegateResponder.constructor.isExpired(responder))"></span>
                         </td>
                         <td data-ng-bind="::responder.copyTo"></td>
@@ -93,12 +93,12 @@
     <div class="col-md-3 mt-5 mt-lg-0">
         <div class="mb-5">
             <button class="btn btn-block btn-default" type="button"
+                    data-i18n-static="email_tab_modal_create_responder_title"
                     data-ng-click="setAction('email-domain/email/responder/create/email-domain-email-responder-create', {
                         accounts: ctrlEmailDelegateResponder.accounts,
                         delegate: true
                     })"
                     data-ng-if="!ctrlEmailDelegateResponder.loading.responders && ctrlEmailDelegateResponder.responders.length < ctrlEmailDelegateResponder.accounts.length">
-                <span data-i18n-static="email_tab_modal_create_responder_title"></span>
             </button>
         </div>
         <div data-guides

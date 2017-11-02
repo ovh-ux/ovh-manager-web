@@ -1,4 +1,4 @@
-<div data-ng-controller="HostingUserLogsModifyCtrl">
+<div data-ng-controller="HostingUserLogsModifyCtrl as ctrl">
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="modifyUser"
@@ -7,23 +7,15 @@
         <div data-wizard-step>
             <p data-i18n-static="hosting_tab_USER_LOGS_configuration_user_modify_step1_question"></p>
 
-            <form class="form-horizontal" name="hostingUserModifyForm">
-                <div class="form-group">
-                    <label class="control-label col-md-4" for="hostingUserModifyLogin"
-                           data-i18n-static="hosting_tab_USER_LOGS_configuration_user_modify_step1_user"></label>
-			        <div class="col-md-6">
-                        <input type="text" class="form-control" id="hostingUserModifyLogin" readonly
-                               data-ng-model="model.user.login">
-			        </div>
-		        </div>
-		        <div class="form-group">
-                    <label class="control-label col-md-4" for="hostingUserModifyDesc"
-                           data-i18n-static="hosting_tab_USER_LOGS_configuration_user_modify_step1_desc_label"></label>
-                    <div class="col-md-6">
-                        <textarea class="form-control" id="hostingUserModifyDesc" rows="5"
-                                  data-ng-model="model.user.description"></textarea>
-                    </div>
-                </div>
+            <form name="hostingUserModifyForm">
+                <label class="oui-label" for="hostingUserModifyLogin"
+                       data-i18n-static="hosting_tab_USER_LOGS_configuration_user_modify_step1_user"></label>
+                <input type="text" class="oui-input" id="hostingUserModifyLogin" readonly
+                       data-ng-model="ctrl.model.user.login">
+                <label class="oui-label" for="hostingUserModifyDesc"
+                       data-i18n-static="hosting_tab_USER_LOGS_configuration_user_modify_step1_desc_label"></label>
+                <textarea class="oui-textarea" id="hostingUserModifyDesc" rows="5"
+                          data-ng-model="ctrl.model.user.description"></textarea>
             </form>
         </div>
 
@@ -31,10 +23,10 @@
             <p data-i18n-static="hosting_tab_USER_LOGS_configuration_user_modify_step2_question"></p>
             <dl class="dl-horizontal dl-lg">
                 <dt data-i18n-static="hosting_tab_USER_LOGS_configuration_user_modify_step2_user"></dt>
-                <dd data-ng-bind="model.user.login"></dd>
+                <dd data-ng-bind="ctrl.model.user.login"></dd>
 
                 <dt data-i18n-static="hosting_tab_USER_LOGS_configuration_user_modify_step2_desc_label"></dt>
-                <dd data-ng-bind="model.user.description"></dd>
+                <dd data-ng-bind="ctrl.model.user.description"></dd>
             </dl>
         </div>
     </div>

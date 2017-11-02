@@ -7,42 +7,43 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.updateAccountForm.$valid">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
             <div data-ng-if="!ctrl.loading">
                 <p class="font-weight-bold"
                    data-ng-bind="tr('email_tab_modal_update_account_title', [ctrl.currentAccount.name])"></p>
                 <p data-i18n-static="email_tab_modal_update_account_heading"></p>
 
-                <form class="form-horizontal" name="ctrl.updateAccountForm">
+                <form name="ctrl.updateAccountForm">
                     <div class="form-group" data-ng-class="{'has-error': ctrl.updateAccountForm.accountDescription.$dirty && ctrl.updateAccountForm.accountDescription.$invalid}">
-                        <label class="control-label col-md-3" for="txt-account-description"
+                        <label class="control-label" for="txt-account-description"
                                data-i18n-static="email_tab_modal_create_account_account_description"></label>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control" maxlength="{{ctrl.constants.descMaxLength}}" name="accountDescription" id="txt-account-description"
-                                   data-ng-change="ctrl.accountDescriptionCheck(ctrl.updateAccountForm.accountDescription)"
-                                   data-ng-maxlength="ctrl.constants.descMaxLength"
-                                   data-ng-model="ctrl.account.description"
-                                   data-ng-pattern="ctrl.constants.descRegexPattern">
-                            <small class="help-block"
-                                   data-ng-bind-html="tr('emails_common_account_description_conditions', [ctrl.constants.descMaxLength])"
-                                   data-ng-if="ctrl.updateAccountForm.accountDescription.$dirty && ctrl.updateAccountForm.accountDescription.$invalid"></small>
-                        </div>
+                        <input type="text" class="form-control" id="txt-account-description" maxlength="{{ctrl.constants.descMaxLength}}" name="accountDescription"
+                               data-ng-change="ctrl.accountDescriptionCheck(ctrl.updateAccountForm.accountDescription)"
+                               data-ng-maxlength="ctrl.constants.descMaxLength"
+                               data-ng-model="ctrl.account.description"
+                               data-ng-pattern="ctrl.constants.descRegexPattern">
+                        <small class="help-block"
+                               data-ng-bind-html="tr('emails_common_account_description_conditions', [ctrl.constants.descMaxLength])"
+                               data-ng-if="ctrl.updateAccountForm.accountDescription.$dirty && ctrl.updateAccountForm.accountDescription.$invalid"></small>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-3" for="select-account-size"
+                        <label class="control-label" for="select-account-size"
                                data-i18n-static="email_tab_modal_create_account_account_size"></label>
-                        <div class="col-md-6">
-                            <select class="form-control" name="accountSize" id="select-account-size"
+                        <div class="oui-select">
+                            <select class="oui-select__input" id="select-account-size" name="accountSize"
                                     data-ng-model="ctrl.account.size"
                                     data-ng-options="(size | humanReadableSize: {base: 10}) for size in ctrl.accountSize track by size">
+                                <option value="" disabled
+                                        data-i18n-static="select_placeholder"></option>
                             </select>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
                     </div>
                 </form>
 
-                <div class="alert alert-info mt-5" data-ng-if="ctrl.exchangeOrderUrl || ctrl.guideMigrate">
+                <div class="alert alert-info" data-ng-if="ctrl.exchangeOrderUrl || ctrl.guideMigrate">
                     <div>
                         <p data-ng-bind-html="tr('emails_common_account_over_quota', [ctrl.exchangeOrderUrl])"
                            data-ng-if="ctrl.exchangeOrderUrl"></p>

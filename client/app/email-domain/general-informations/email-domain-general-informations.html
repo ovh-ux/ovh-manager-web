@@ -1,119 +1,124 @@
 <div class="container-fluid px-0" data-ng-controller="EmailTabGeneralInformationsCtrl as ctrlTabGeneralInformations">
     <div class="row">
         <div class="col-md-9">
-            <div class="row d-md-flex mb-5">
+            <div data-ovh-alert="{{alerts.main}}"></div>
+            <div class="row d-md-flex">
                 <div class="col-sm-6">
-                    <div class="oui-tile h-100">
-                        <h3 class="oui-header__title" data-i18n-static="email_dashboard_general_informations"></h3>
-                        <ul>
-                            <li>
-                                <strong data-i18n-static="email_tab_domain_status"></strong>
-                                <div class="mt-2">
-                                    <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                          data-ng-if="ctrlTabGeneralInformations.loading.domain"></span>
-                                    <span class="label" data-ng-class="{'label-success': ctrlTabGeneralInformations.domain.status === 'ok', 'label-error': ctrlTabGeneralInformations.domain.status !== 'ok'}"
-                                          data-ng-bind="tr('email_tab_domain_status_' + ctrlTabGeneralInformations.domain.status)"
-                                          data-ng-if="!ctrlTabGeneralInformations.loading.domain"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <strong data-i18n-static="email_tab_domain_offer"></strong>
-                                <div class="mt-2">
-                                    <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                          data-ng-if="ctrlTabGeneralInformations.loading.domain"></span>
-                                    <span data-ng-bind="ctrlTabGeneralInformations.domain.offer || '-'"
-                                          data-ng-if="!ctrlTabGeneralInformations.loading.domain"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <strong data-i18n-static="email_tab_domain_filer"></strong>
-                                <div class="mt-2">
-                                    <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                          data-ng-if="ctrlTabGeneralInformations.loading.domain"></span>
-                                    <span data-ng-bind="ctrlTabGeneralInformations.domain.filerz || '-'"
-                                          data-ng-if="!ctrlTabGeneralInformations.loading.domain"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="d-flex w-100">
-                                    <div>
-                                        <strong data-i18n-static="email_tab_domain_dns_filter"></strong>
-                                        <div class="mt-2">
-                                            <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                                  data-ng-if="ctrlTabGeneralInformations.loading.domain"></span>
-                                            <span data-ng-bind="tr('email_tab_domain_dns_filter_' + (ctrlTabGeneralInformations.dnsFilter || 'NO_FILTERING'))"
-                                                  data-ng-if="!ctrlTabGeneralInformations.loading.domain"></span>
+                    <div class="oui-tile mb-5 h-100">
+                        <h3 class="oui-tile__title" data-i18n-static="email_dashboard_general_informations"></h3>
+                        <div class="oui-tile__body">
+                            <ul class="list-unstyled">
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <strong class="d-block"
+                                                data-i18n-static="email_tab_domain_status"></strong>
+                                        <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.domain"></oui-loader>
+                                        <span class="label"
+                                              data-ng-class="{'label-success': ctrlTabGeneralInformations.domain.status === 'ok', 'label-error': ctrlTabGeneralInformations.domain.status !== 'ok'}"
+                                              data-ng-bind="tr('email_tab_domain_status_' + ctrlTabGeneralInformations.domain.status)"
+                                              data-ng-if="!ctrlTabGeneralInformations.loading.domain && ctrlTabGeneralInformations.domain.status"></span>
+                                        <span data-ng-if="!ctrlTabGeneralInformations.loading.domain && !ctrlTabGeneralInformations.domain.status">-</span>
+                                    </div>
+                                </li>
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <strong class="d-block"
+                                                data-i18n-static="email_tab_domain_offer"></strong>
+                                        <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.domain"></oui-loader>
+                                        <span data-ng-bind="ctrlTabGeneralInformations.domain.offer || '-'"
+                                              data-ng-if="!ctrlTabGeneralInformations.loading.domain"></span>
+                                    </div>
+                                </li>
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <strong class="d-block"
+                                                data-i18n-static="email_tab_domain_filer"></strong>
+                                        <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.domain"></oui-loader>
+                                        <span data-ng-bind="ctrlTabGeneralInformations.domain.filerz || '-'"
+                                              data-ng-if="!ctrlTabGeneralInformations.loading.domain"></span>
+                                    </div>
+                                </li>
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <div class="d-flex w-100">
+                                            <div>
+                                                <strong class="d-block"
+                                                        data-i18n-static="email_tab_domain_dns_filter"></strong>
+                                                <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.domain"></oui-loader>
+                                                <span data-ng-bind="tr('email_tab_domain_dns_filter_' + (ctrlTabGeneralInformations.dnsFilter || 'NO_FILTERING'))"
+                                                      data-ng-if="!ctrlTabGeneralInformations.loading.domain"></span>
+                                            </div>
+                                            <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
+                                                    data-i18n-static="email_tab_domain_dns_filter_edit"
+                                                    data-ng-click="setAction('email-domain/email/filter/edit-dns/email-domain-email-filter-edit-dns', ctrlTabGeneralInformations.dnsFilter)"
+                                                    data-ng-if="!ctrlTabGeneralInformations.loading.domain">
+                                            </button>
                                         </div>
                                     </div>
-                                    <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
-                                            data-i18n-static="email_tab_domain_dns_filter_edit"
-                                            data-ng-click="setAction('email-domain/email/filter/edit-dns/email-domain-email-filter-edit-dns', ctrlTabGeneralInformations.dnsFilter)"
-                                            data-ng-if="!ctrlTabGeneralInformations.loading.domain">
-                                    </button>
-                                </div>
-                            </li>
-                            <li>
-                                <strong data-i18n-static="email_tab_domain_dns_mx_records"></strong>
-                                <div class="mt-2">
-                                    <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                          data-ng-if="ctrlTabGeneralInformations.loading.domain"></span>
-                                    <ul data-ng-if="!ctrlTabGeneralInformations.loading.domain && ctrlTabGeneralInformations.mxRecords.length > 0">
-                                        <li data-ng-repeat="mxRecord in ctrlTabGeneralInformations.mxRecords track by $index"
-                                            data-ng-bind="mxRecord">
-                                        </li>
-                                    </ul>
-                                    <span data-ng-if="!ctrlTabGeneralInformations.loading.domain && !ctrlTabGeneralInformations.mxRecords.length">-</span>
-                                </div>
-                            </li>
-                        </ul>
+                                </li>
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <strong class="d-block"
+                                                data-i18n-static="email_tab_domain_dns_mx_records"></strong>
+                                        <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.domain"></oui-loader>
+                                        <ul data-ng-if="!ctrlTabGeneralInformations.loading.domain && ctrlTabGeneralInformations.mxRecords.length > 0">
+                                            <li data-ng-repeat="mxRecord in ctrlTabGeneralInformations.mxRecords track by $index"
+                                                data-ng-bind="mxRecord">
+                                            </li>
+                                        </ul>
+                                        <span data-ng-if="!ctrlTabGeneralInformations.loading.domain && !ctrlTabGeneralInformations.mxRecords.length">-</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <div class="oui-tile h-100">
-                        <h3 class="oui-header__title" data-i18n-static="email_dashboard_quotas"></h3>
-                        <ul>
-                            <li>
-                                <strong>
-                                    <span data-i18n-static="email_tab_accounts_quota"></span>
-                                    <span class="fa fa-info-circle" aria-hidden="true"
-                                          data-ng-if="ctrlTabGeneralInformations.domain.offer !== 'redirect'"
-                                          data-uib-tooltip="{{i18n.email_tab_accounts_quota_info}}"
-                                          data-tooltip-placement="right"></span>
-                                </strong>
-                                <div class="mt-2">
-                                    <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                          data-ng-if="ctrlTabGeneralInformations.loading.quotas"></span>
-                                    <span data-ng-bind="ctrlTabGeneralInformations.summary.account + ' / ' + (ctrlTabGeneralInformations.quotas.account || '0')"
-                                          data-ng-if="!ctrlTabGeneralInformations.loading.quotas"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <strong data-i18n-static="email_tab_responders_quota"></strong>
-                                <div class="mt-2">
-                                    <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                          data-ng-if="ctrlTabGeneralInformations.loading.quotas"></span>
-                                    <span data-ng-bind="ctrlTabGeneralInformations.summary.responder + ' / ' + (ctrlTabGeneralInformations.quotas.responder || '0')"
-                                          data-ng-if="!ctrlTabGeneralInformations.loading.quotas"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <strong data-i18n-static="email_tab_redirections_quota"></strong>
-                                <div class="mt-2">
-                                    <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                          data-ng-if="ctrlTabGeneralInformations.loading.quotas"></span>
-                                    <span data-ng-bind="ctrlTabGeneralInformations.summary.redirection + ' / ' + ((ctrlTabGeneralInformations.quotas.redirection + ctrlTabGeneralInformations.quotas.alias) || '0')"
-                                          data-ng-if="!ctrlTabGeneralInformations.loading.quotas"></span>
-                                </div>
-                            </li>
-                        </ul>
+                    <div class="oui-tile mb-5 h-100">
+                        <h3 class="oui-tile__title" data-i18n-static="email_dashboard_quotas"></h3>
+                        <div class="oui-tile__body">
+                            <ul class="list-unstyled">
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <strong class="d-block">
+                                            <span data-i18n-static="email_tab_accounts_quota"></span>
+                                            <span class="fa fa-info-circle" aria-hidden="true"
+                                                  data-ng-if="ctrlTabGeneralInformations.domain.offer !== 'redirect'"
+                                                  data-uib-tooltip="{{i18n.email_tab_accounts_quota_info}}"
+                                                  data-tooltip-placement="right"></span>
+                                        </strong>
+                                        <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.quotas"></oui-loader>
+                                        <span data-ng-bind="ctrlTabGeneralInformations.summary.account + ' / ' + (ctrlTabGeneralInformations.quotas.account || '0')"
+                                              data-ng-if="!ctrlTabGeneralInformations.loading.quotas"></span>
+                                    </div>
+                                </li>
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <strong class="d-block"
+                                                data-i18n-static="email_tab_responders_quota"></strong>
+                                        <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.quotas"></oui-loader>
+                                        <span data-ng-bind="ctrlTabGeneralInformations.summary.responder + ' / ' + (ctrlTabGeneralInformations.quotas.responder || '0')"
+                                              data-ng-if="!ctrlTabGeneralInformations.loading.quotas"></span>
+                                    </div>
+                                </li>
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <strong class="d-block"
+                                                data-i18n-static="email_tab_redirections_quota"></strong>
+                                        <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.quotas"></oui-loader>
+                                        <span data-ng-bind="ctrlTabGeneralInformations.summary.redirection + ' / ' + ((ctrlTabGeneralInformations.quotas.redirection + ctrlTabGeneralInformations.quotas.alias) || '0')"
+                                              data-ng-if="!ctrlTabGeneralInformations.loading.quotas"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3 mt-5 mt-lg-0">
-            <div class="mb-5"
-                 data-guides
+        <div class="col-md-3 mt-md-5 mt-lg-0">
+            <div data-guides
                  data-guides-title="tr('guide_subtitle')"
                  data-guides-list="'emailsInfos'"
                  data-tr="tr">

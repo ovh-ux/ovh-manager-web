@@ -1,49 +1,54 @@
 <div data-ng-controller="PrivateDatabaseCtrl as ctrl">
-    <div data-ovh-alert="{{alerts.dashboard}}"></div>
+    <div data-ovh-alert="{{alerts.page}}"></div>
 
-    <div class="loader mt-5 text-center" data-ng-if="ctrl.loaders.details"></div>
+    <div class="text-center" data-ng-if="ctrl.loaders.details">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
 
     <div class="page-header" data-ng-show="!ctrl.loaders.details">
         <div class="row">
             <div class="col-md-9">
-                <span data-ng-if="database.offer === 'classic'" data-i18n-static="privateDatabase_order_sql_type_premium_label"></span>
-                <span data-ng-if="database.offer === 'public'" data-i18n-static="privateDatabase_order_sql_type_dbaas_label"></span>
-
-                <div class="d-inline-block" data-ng-if="database.serviceName !== database.displayName">
-                  - <span class="font-italic" data-ng-bind="::database.serviceName"></span>
+                <span data-ng-if="database.offer === 'classic'"
+                      data-i18n-static="privateDatabase_order_sql_type_premium_label"></span>
+                <span data-ng-if="database.offer === 'public'"
+                      data-i18n-static="privateDatabase_order_sql_type_dbaas_label"></span>
+                <div class="mb-3" data-ng-show="!ctrl.editMode">
+                    <div class="d-flex">
+                        <h1 class="d-inline-block mb-0"
+                            data-ng-bind="database.displayName || database.serviceName || dbName"></h1>
+                        <button class="btn btn-icon my-auto ml-2" type="button"
+                                data-ng-click="ctrl.editDisplayName()"
+                                data-ng-show="database"
+                                data-ng-if="!ctrl.isExpired">
+                            <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
+                            <span class="sr-only" data-i18n-static="privateDatabase_configuration_edit_btn"></span>
+                        </button>
+                    </div>
+                    <span class="font-italic"
+                          data-ng-bind="::database.serviceName"
+                          data-ng-if="database.serviceName !== database.displayName"></span>
                 </div>
-                <div class="d-flex" data-ng-show="!ctrl.editMode">
-                    <h1 class="d-inline-block mb-0" data-ng-bind="database.displayName || database.serviceName || dbName"></h1>
-                    <button class="btn btn-icon my-auto ml-2" type="button"
-                            data-ng-show="database"
-                            data-ng-click="ctrl.editDisplayName()">
-                        <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
-                        <span class="sr-only" data-i18n-static="privateDatabase_configuration_edit_btn"></span>
-                    </button>
-                </div>
 
-                <form name="formEditDisplayName" novalidate
+                <form class="my-4" name="formEditDisplayName" novalidate
                       data-ng-show="ctrl.editMode"
                       data-ng-submit="ctrl.saveDisplayName()">
-                    <div class="form-group my-4">
-                        <div class="input-group">
-                            <input type="text" class="form-control input-lg" name="txtDisplayName" id="privatedatabase-group-name"
-                                   data-event-blur="ctrl.newDisplayName.value = ''"
-                                   data-ng-maxlength="250"
-                                   data-ng-model="ctrl.newDisplayName.value">
-                            <div class="input-group-btn">
-                                <button class="btn btn-success btn-lg" type="submit"
-                                        data-ng-disabled="formEditDisplayName.$invalid">
-                                    <span class="fa fa-check" aria-hidden="true"></span>
-                                    <span class="sr-only" data-i18n-static="privateDatabase_dashboard_name_validate"></span>
-                                </button>
-                                <button class="btn btn-danger btn-lg" type="button"
-                                        data-ng-click="ctrl.editMode = false">
-                                    <span class="fa fa-remove" aria-hidden="true"></span>
-                                    <span class="sr-only" data-i18n-static="privateDatabase_dashboard_name_cancel"></span>
-                                </button>
-                            </div>
-                        </div>
+                    <div class="oui-input-group">
+                        <input type="text" class="oui-input" name="txtDisplayName" id="privatedatabase-group-name"
+                               data-event-blur="ctrl.newDisplayName.value = ''"
+                               data-ng-maxlength="250"
+                               data-ng-model="ctrl.newDisplayName.value">
+                        <button class="oui-button" type="submit"
+                                data-ng-disabled="formEditDisplayName.$invalid">
+                            <span class="fa fa-check" aria-hidden="true"></span>
+                            <span class="sr-only"
+                                  data-i18n-static="privateDatabase_dashboard_name_validate"></span>
+                        </button>
+                        <button class="oui-button" type="button"
+                                data-ng-click="ctrl.editMode = false">
+                            <span class="fa fa-remove" aria-hidden="true"></span>
+                            <span class="sr-only"
+                                  data-i18n-static="privateDatabase_dashboard_name_cancel"></span>
+                        </button>
                     </div>
                 </form>
 
@@ -53,60 +58,51 @@
                     <div data-ng-message="maxlength" data-ng-bind="::i18n.privateDatabase_displayName_length"></div>
                 </div>
 
-                <div class="label"
-                     data-ng-if="database.state"
-                     data-ng-class="{
-                        'label-danger': database.state == 'detached',
-                        'label-warning' : database.state == 'restartPending' || database.state == 'stopPending' || database.state == 'stopped',
-                        'label-success' : database.state == 'startPending' || database.state == 'started' }"
-                     data-ng-bind="tr('privateDatabase_dashboard_' + database.state)">
-                </div>
-
                 <div class="mt-4" data-ng-if="database.serviceName && database.serviceInfos">
                     <service-expiration-date
-                            service-name="database.serviceName"
-                            service-type="HOSTING_PRIVATE_DATABASE"
-                            service-infos="database.serviceInfos">
+                        service-name="database.serviceName"
+                        service-type="HOSTING_PRIVATE_DATABASE"
+                        service-infos="database.serviceInfos">
                     </service-expiration-date>
                 </div>
             </div>
 
             <div class="col-md-3 d-flex">
-              <div class="btn-group ml-auto mt-4">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <span data-i18n-static="common_actions"></span>
-                      <span class="caret ml-2" aria-hidden="true"></span>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
-                      <li>
-                          <i class="oui-icon oui-icon-power_line" aria-hidden="true"></i>
-                          <button class="btn btn-link" type="button" title="{{i18n.privateDatabase_restart}}"
-                                  data-ng-disabled="taskState.lockAction"
-                                  data-ng-click="setAction('database/restart/private-database-database-restart')"
-                                  data-i18n-static="privateDatabase_restart">
-                          </button>
-                      </li>
-                      <li class="dropdown-divider">
-                          <i class="oui-icon oui-icon-user_line" aria-hidden="true"></i>
-                          <a class="btn btn-link" title="{{::i18n.core_change_owner}} ({{::i18n.core_new_window}})" target="_blank"
-                             data-ng-href="{{::changeOwnerUrl}}"
-                             data-i18n-static="core_change_owner">
-                          </a>
-                      </li>
-                      <li>
-                          <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
-                          <a class="btn btn-link"
-                             data-ng-hide="database.isExpired"
-                             data-ng-href="{{ '#/useraccount/contacts?tab=SERVICES&serviceName=' + database.serviceName }}"
-                             data-i18n-static="contacts_management">
-                          </a>
-                      </li>
-                  </ul>
-              </div>
-
+                <div class="btn-group ml-auto mt-4">
+                    <button type="button" class="oui-button oui-button_dropdown mb-0" aria-expanded="false" aria-haspopup="true"
+                            data-toggle="dropdown">
+                        <span data-i18n-static="common_actions"></span>
+                        <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li data-ng-if="!ctrl.isExpired">
+                            <i class="oui-icon oui-icon-power_line" aria-hidden="true"></i>
+                            <button class="btn btn-link" type="button" title="{{i18n.privateDatabase_restart}}"
+                                    data-i18n-static="privateDatabase_restart"
+                                    data-ng-click="setAction('database/restart/private-database-database-restart')"
+                                    data-ng-disabled="taskState.lockAction">
+                            </button>
+                        </li>
+                        <li class="dropdown-divider"
+                            data-ng-if="!ctrl.isExpired">
+                            <i class="oui-icon oui-icon-user_line" aria-hidden="true"></i>
+                            <a class="btn btn-link" title="{{::i18n.core_change_owner}} ({{::i18n.core_new_window}})" target="_blank"
+                               data-ng-href="{{::changeOwnerUrl}}"
+                               data-i18n-static="core_change_owner">
+                            </a>
+                        </li>
+                        <li>
+                            <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
+                            <a class="btn btn-link"
+                               data-ng-href="{{ '#/useraccount/contacts?tab=SERVICES&serviceName=' + database.serviceName }}"
+                               data-i18n-static="contacts_management"
+                               data-ng-hide="database.isExpired">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-
     </div>
 
     <div data-ng-if="!ctrl.loaders.details">
@@ -119,15 +115,23 @@
         </div>
 
         <div data-ng-show="!(!taskState.changeVersion && database.state !== 'started') && !taskState.changeVersion">
-            <p data-ng-if="!taskState.changeVersion && database && database.state !== 'started'" data-i18n-static="privateDatabase_dashboard_information"></p>
-            <p class="text-danger" data-ng-if="taskState.changeVersion && database" data-i18n-static="privateDatabase_dashboard_changeversion_information"></p>
-            <p data-ng-if="!taskState.changeVersion && !database" data-i18n-static="privateDatabase_dashboard_not_administrator_information"></p>
+            <p data-ng-if="!taskState.changeVersion && database && database.state !== 'started'"
+               data-i18n-static="privateDatabase_dashboard_information"></p>
+            <p class="text-danger" data-ng-if="taskState.changeVersion && database"
+               data-i18n-static="privateDatabase_dashboard_changeversion_information"></p>
+            <p data-ng-if="!taskState.changeVersion && !database"
+               data-i18n-static="privateDatabase_dashboard_not_administrator_information"></p>
         </div>
 
         <div data-ng-controller="PrivateDatabaseTabsCtrl">
-            <ovh-tabs tabs="tabs" selected-tab="selectedTab" product="privateDatabase" change-tab="setSelectedTab" tr="tr"></ovh-tabs>
+            <ovh-tabs tabs="tabs"
+                      selected-tab="selectedTab"
+                      product="privateDatabase"
+                      change-tab="setSelectedTab"
+                      tr="tr"></ovh-tabs>
             <div class="tab-content">
-                <div class="tab-pane active" data-ng-include="!server.isExpired && 'private-database/' + toKebabCase(selectedTab) + '/private-database-' + selectedTab.toLowerCase() + '.html' || ''"></div>
+                <div class="tab-pane active"
+                     data-ng-include="!server.isExpired && 'private-database/' + toKebabCase(selectedTab) + '/private-database-' + selectedTab.toLowerCase() + '.html' || ''"></div>
             </div>
         </div>
     </div>

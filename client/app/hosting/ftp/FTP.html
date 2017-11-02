@@ -1,11 +1,15 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabFTPCtrl as ctrlHostingTabFTP">
 
-    <div class="loader mt-5 text-center" aria-label="{{i18n.common_loading}}" data-ng-if="ctrlHostingTabFTP.loading.init"></div>
+    <div class="text-center" data-ng-if="ctrlHostingTabFTP.loading.init">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
 
-    <div class="row" data-ng-if="!ctrlHostingTabFTP.loading.init">
+    <div class="row" data-ng-show="!ctrlHostingTabFTP.loading.init">
 
         <!-- Doesnt have multiftp option -->
         <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.main}}"></div>
+
             <p data-i18n-static="hosting_tab_FTP_dashboard_information"></p>
 
             <!-- PERSO  -->
@@ -20,29 +24,32 @@
                     </dd>
 
                     <dt data-i18n-static="hosting_tab_FTP_dashboard_homez"></dt>
-                    <dd class="mb-3" data-ng-bind="'/home/' + ctrlHostingTabFTP.ftpInformations.primaryLogin"></dd>
+                    <dd class="mb-3"
+                        data-ng-bind="'/home/' + ctrlHostingTabFTP.ftpInformations.primaryLogin"></dd>
                 </dl>
+
+                <div class="text-center" data-ng-if="ctrlHostingTabFTP.loading.ftp">
+                    <oui-loader inline="true"></oui-loader>
+                </div>
 
                 <div class="alert alert-info" role="alert">
                     <div>
-                        <span data-i18n-static="hosting_tab_FTP_configuration_offer_upgrade"></span>
-                        <div class="mt-4">
-                            <button class="btn btn-info" type="button"
-                                    data-i18n-static="hosting_dashboard_service_change_offer"
-                                    data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')"></button>
-                        </div>
+                        <p data-i18n-static="hosting_tab_FTP_configuration_offer_upgrade"></p>
+                        <button class="btn btn-info" type="button"
+                                data-i18n-static="hosting_dashboard_service_change_offer"
+                                data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
+                        </button>
                     </div>
                 </div>
-
-                <div class="loader mt-5 text-center" aria-label="{{i18n.common_loading}}" data-ng-if="ctrlHostingTabFTP.loading.ftp"></div>
 
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="hosting_tab_FTP_multiftp_table_header_empty"
                      data-ng-if="!ctrlHostingTabFTP.loading.ftp && !ctrlHostingTabFTP.ftpInformations.list.results.length">
                 </div>
 
-                <div class="table-responsive mt-5" data-ng-if="!ctrlHostingTabFTP.loading.ftp && ctrlHostingTabFTP.ftpInformations.list.results.length > 0">
-                    <table class="table table-hover table-striped">
+                <div class="table-responsive"
+                     data-ng-if="!ctrlHostingTabFTP.loading.ftp && ctrlHostingTabFTP.ftpInformations.list.results.length > 0">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_login"></th>
@@ -54,7 +61,8 @@
                         </thead>
                         <tbody>
                             <tr data-ng-repeat="element in ctrlHostingTabFTP.ftpInformations.list.results track by $index">
-                                <th scope="row" data-ng-bind="::element.login"></th>
+                                <th scope="row"
+                                    data-ng-bind="::element.login"></th>
                                 <td data-ng-bind="::element.home"></td>
                                 <td>
                                     <div class="text-nowrap" data-ng-show="!ctrlHostingTabFTP.editMode">
@@ -85,38 +93,56 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="checkbox" data-ng-class="{'my-0': !ctrlHostingTabFTP.editMode}" data-ng-if="ctrlHostingTabFTP.allowUpdateState">
-                                        <label>
-                                            <input type="checkbox"
-                                                   data-ng-change="ctrlHostingTabFTP.updatePrimaryLoginState(element, prevSshState)"
-                                                   data-ng-model="element.sshState"
-                                                   data-ng-true-value="'sftponly'"
-                                                   data-ng-false-value="'none'"
-                                                   data-ng-init="prevSshState = { sshState : element.sshState }">
-                                            <span data-ng-if="element.sshState === 'sftponly'" data-i18n-static="common_activated"></span>
-                                            <span data-ng-if="element.sshState === 'none'" data-i18n-static="common_desactivated"></span>
+                                    <div class="oui-checkbox mb-0" data-ng-if="ctrlHostingTabFTP.allowUpdateState">
+                                        <input type="checkbox" class="oui-checkbox__input" id="prevSshState-{{$index}}"
+                                               data-ng-change="ctrlHostingTabFTP.updatePrimaryLoginState(element, prevSshState)"
+                                               data-ng-model="element.sshState"
+                                               data-ng-true-value="'sftponly'"
+                                               data-ng-false-value="'none'"
+                                               data-ng-init="prevSshState = { sshState : element.sshState }">
+                                        <label class="oui-checkbox__label-container" for="prevSshState-{{$index}}">
+                                            <span class="oui-checkbox__label"
+                                                  data-i18n-static="common_activated"
+                                                  data-ng-if="element.sshState === 'sftponly'"></span>
+                                            <span class="oui-checkbox__label"
+                                                  data-i18n-static="common_desactivated"
+                                                  data-ng-if="element.sshState === 'none'"></span>
+                                            <span class="oui-checkbox__icon">
+                                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                            </span>
                                         </label>
                                     </div>
                                     <div data-ng-if="!ctrlHostingTabFTP.allowUpdateState">
-                                        <span class="fa fa-spinner fa-spin mr-2" aria-hidden="true"></span>
+                                        <oui-loader size="s" inline="true"></oui-loader>
                                         <span data-i18n-static="hosting_tab_FTP_update"></span>
                                     </div>
                                 </td>
                                 <td>
-                                    <div class="checkbox" data-ng-class="{'my-0': !ctrlHostingTabFTP.editMode}" data-ng-if="ctrlHostingTabFTP.allowUpdateState">
-                                        <label>
-                                            <input type="checkbox"
-                                                   data-ng-change="ctrlHostingTabFTP.updatePrimaryLoginState(element, prevState)"
-                                                   data-ng-model="element.state"
-                                                   data-ng-true-value="'rw'"
-                                                   data-ng-false-value="'off'"
-                                                   data-ng-init="prevState = { state : element.state }">
-                                            <span data-ng-if="element.state === 'rw'" data-i18n-static="common_activated"></span>
-                                            <span data-ng-if="element.state === 'off'" data-i18n-static="common_desactivated"></span>
+                                    <div class="oui-checkbox mb-0" data-ng-if="ctrlHostingTabFTP.allowUpdateState">
+                                        <input type="checkbox" class="oui-checkbox__input" id="prevState-{{$index}}"
+                                               data-ng-change="ctrlHostingTabFTP.updatePrimaryLoginState(element, prevState)"
+                                               data-ng-model="element.state"
+                                               data-ng-true-value="'rw'"
+                                               data-ng-false-value="'off'"
+                                               data-ng-init="prevState = { state : element.state }">
+                                        <label class="oui-checkbox__label-container" for="prevState-{{$index}}">
+                                            <span class="oui-checkbox__label"
+                                                  data-i18n-static="common_activated"
+                                                  data-ng-if="element.state === 'rw'"></span>
+                                            <span class="oui-checkbox__label"
+                                                  data-i18n-static="common_desactivated"
+                                                  data-ng-if="element.state === 'off'"></span>
+                                            <span class="oui-checkbox__icon">
+                                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                            </span>
                                         </label>
                                     </div>
                                     <div data-ng-if="!ctrlHostingTabFTP.allowUpdateState">
-                                        <div class="fa fa-spinner fa-spin mr-2" aria-hidden="true"></div>
+                                        <oui-loader size="s" inline="true"></oui-loader>
                                         <span data-i18n-static="hosting_tab_FTP_update"></span>
                                     </div>
                                 </td>
@@ -139,7 +165,8 @@
                         </dd>
 
                         <dt data-i18n-static="hosting_tab_FTP_dashboard_clusterip"></dt>
-                        <dd class="mb-3" data-ng-bind="ctrlHostingTabFTP.ftpInformations.hostingIp"></dd>
+                        <dd class="mb-3"
+                            data-ng-bind="ctrlHostingTabFTP.ftpInformations.hostingIp"></dd>
 
                         <dt data-i18n-static="hosting_dashboard_service_home_ssh"></dt>
                         <dd class="mb-3">
@@ -153,16 +180,15 @@
                 <div class="col-md-6">
                     <dl>
                         <dt data-i18n-static="hosting_tab_FTP_dashboard_login"></dt>
-                        <dd class="mb-3" data-ng-bind="ctrlHostingTabFTP.ftpInformations.primaryLogin"></dd>
+                        <dd class="mb-3"
+                            data-ng-bind="ctrlHostingTabFTP.ftpInformations.primaryLogin"></dd>
 
                         <dt data-ng-if="!ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
-                            <label for="primaryUserEnabled"
-                                   class="font-weight-bold"
+                            <label class="font-weight-bold" for="primaryUserEnabled"
                                    data-i18n-static="hosting_tab_FTP_dashboard_login_enabled"></label>
                         </dt>
                         <dd class="mb-3" data-ng-if="!ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
-                            <input class="align-middle"
-                                   id="primaryUserEnabled"
+                            <input class="align-middle" id="primaryUserEnabled"
                                    data-checkbox-switch3
                                    data-ng-model="ctrlHostingTabFTP.primaryUserEnabled"
                                    data-cb-switch-on-change="updatePrimaryLoginState(state)"
@@ -178,7 +204,9 @@
 
             <div data-ng-if="ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
 
-                <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="ctrlHostingTabFTP.loading.init"></div>
+                <div class="text-center" data-ng-if="ctrlHostingTabFTP.loading.init">
+                    <oui-loader inline="true"></oui-loader>
+                </div>
 
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="hosting_tab_FTP_multiftp_table_header_empty"
@@ -213,8 +241,7 @@
 
                     <!-- Have multiftp option -->
                     <div class="table-responsive">
-                        <table class="table"
-                               data-ng-class="{'table-hover table-striped': !ctrlHostingTabFTP.loading.ftp && ctrlHostingTabFTP.ftpInformations.list.results.length}">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_login"></th>
@@ -232,13 +259,14 @@
 
                             <tbody data-ng-if="ctrlHostingTabFTP.loading.ftp">
                                 <tr>
-                                    <td class="loader text-center" colspan="5" aria-label="{{i18n.common_loading}}"></td>
+                                    <td class="loader text-center" colspan="5"></td>
                                 </tr>
                             </tbody>
 
                             <tbody data-ng-if="!ctrlHostingTabFTP.loading.ftp && !ctrlHostingTabFTP.ftpInformations.list.results.length">
                                 <tr>
-                                    <td class="text-center" colspan="5" data-i18n-static="table_search_noresult"></td>
+                                    <td class="text-center" colspan="5"
+                                        data-i18n-static="table_search_noresult"></td>
                                 </tr>
                             </tbody>
 

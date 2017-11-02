@@ -100,7 +100,6 @@ module.exports = {
     },
     common: {
         js: [
-            "client/bower_components/lodash/lodash.min.js",
             "client/bower_components/moment/min/moment-with-locales.min.js",
             "client/bower_components/jquery/dist/jquery.min.js",
 
@@ -118,6 +117,8 @@ module.exports = {
             "client/bower_components/angular-cookies/angular-cookies.min.js",
             "client/bower_components/angular-messages/angular-messages.min.js",
             "client/bower_components/angular-resource/angular-resource.min.js",
+            "client/bower_components/ovh-ui-angular/dist/oui-angular.min.js",
+            "client/bower_components/lodash/lodash.min.js",
             "client/bower_components/jquery.scrollTo/jquery.scrollTo.min.js",
             "client/bower_components/angular-dynamic-locale/dist/tmhDynamicLocale.js",
             "client/bower_components/angular-flash-alert/dist/angular-flash.min.js",

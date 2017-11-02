@@ -1,4 +1,116 @@
-<div class="container-fluid px-0" data-ng-controller="PrivateDatabaseWhitelistCtrl">
-    <div data-ovh-alert="privateDataBase.alerts.whitelist"></div>
-    <div data-ng-include="whitelistView"></div>
+<div class="container-fluid px-0" data-ng-controller="PrivateDatabaseWhitelistCtrl as listCtrl">
+    <div class="row">
+        <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.main}}"></div>
+
+            <div class="alert alert-warning" role="alert"
+                 data-i18n-static="privateDatabase_tabs_whitelist_list_no_whitelist_info"
+                 data-ng-if="listCtrl.isWhitelistEmpty()">
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col" data-i18n-static="privateDatabase_tabs_whitelist_list_ip_network" title="{{i18n.privateDatabase_tabs_whitelist_list_ip_network_description}}"></th>
+                            <th scope="col" data-i18n-static="privateDatabase_tabs_whitelist_list_service" title="{{i18n.privateDatabase_tabs_whitelist_list_service_description}}"></th>
+                            <th scope="col" data-i18n-static="privateDatabase_tabs_whitelist_list_sftp" title="{{i18n.privateDatabase_tabs_whitelist_list_sftp_description}}"></th>
+                            <th scope="col" data-i18n-static="privateDatabase_tabs_whitelist_list_status" title="{{i18n.privateDatabase_tabs_whitelist_list_status_description}}"></th>
+                            <th class="min-width text-right" scope="col">
+                                <button class="btn btn-icon" type="button" title="{{i18n.privateDatabase_tabs_whitelist_list_reload_description}}"
+                                        data-ng-click="listCtrl.getList()">
+                                    <span class="fa fa-refresh" aria-hidden="true"></span>
+                                </button>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody data-ng-if="listCtrl.isLoading()">
+                        <tr>
+                            <td class="loader text-center" colspan="5"></td>
+                        </tr>
+                    </tbody>
+
+                    <tbody data-ng-if="listCtrl.isWhitelistEmpty()">
+                        <tr>
+                            <td class="text-center" colspan="5"
+                                data-i18n-static="privateDatabase_tabs_whitelist_list_no_whitelist"></td>
+                        </tr>
+                    </tbody>
+
+                    <tbody data-ng-if="listCtrl.whitelistIds.length > 0 || listCtrl.updatingWhitelist.length > 0">
+                        <tr data-ng-repeat="whitelist in listCtrl.whitelistsDetail track by $index">
+                            <th scope="row" data-ng-bind="whitelist.ip"></th>
+
+                            <td data-ng-if="whitelist.status === 'created' && !whitelist.waitDelete">
+                                <span class="label label-success"
+                                      data-ng-bind-html="tr('privateDatabase_tabs_whitelist_list_service_' + whitelist.service)"
+                                      data-ng-if="whitelist.service"></span>
+                            </td>
+                            <td data-ng-if="whitelist.status === 'created' && !whitelist.waitDelete">
+                                <span class="label label-success"
+                                      data-ng-bind-html="tr('privateDatabase_tabs_whitelist_list_sftp_' + whitelist.sftp)"
+                                      data-ng-if="whitelist.sftp"></span>
+                            </td>
+                            <td data-ng-bind="whitelist.name"
+                                data-ng-if="whitelist.status === 'created' && !whitelist.waitDelete"></td>
+                            <td class="text-center"
+                                data-ng-if="whitelist.status === 'created' && !whitelist.waitDelete">
+                                <button class="btn btn-icon" type="button" title="{{i18n.privateDatabase_tabs_whitelist_list_popover_description}}"
+                                        data-linkedpopover="private-database/whitelist/private-database-whitelist.popover.html"
+                                        data-linkedpopover-placement="left"
+                                        data-linkedpopover-single="true"
+                                        data-linkedpopover-remote="true"
+                                        data-linkedpopover-title="{{i18n.common_actions}}">
+                                    <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
+                                </button>
+                            </td>
+
+                            <!-- STATUS -->
+                            <td class="text-center" colspan="4"
+                                data-ng-if="whitelist.status !== 'created' || whitelist.waitDelete">
+                                <span class="label"
+                                      data-ng-bind-html="tr('privateDatabase_tabs_whitelist_list_status_' +  whitelist.status)"
+                                      data-ng-class="{
+                                        'label-success': whitelist.status === 'creating',
+                                        'label-info': whitelist.status === 'updating',
+                                        'label-danger': whitelist.waitDelete || whitelist.status === 'deleting'
+                                    }"></span>
+                            </td>
+                        </tr>
+
+                        <tr data-ng-repeat="whitelistIp in listCtrl.updatingWhitelist track by $index">
+                            <th scope="row" data-ng-bind="whitelistIp"></th>
+                            <td class="text-center" colspan="4">
+                                <span class="label label-info" data-i18n-static="privateDatabase_tabs_user_adding"></span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="clearfix"
+                 data-ng-if="listCtrl.whitelistIds">
+                <div data-pagination-front
+                     data-items="listCtrl.whitelistIds"
+                     data-paginated-items="listCtrl.whitelistsDetail"
+                     data-current-page="currentPage"
+                     data-items-per-page="itemsPerPage"
+                     data-nb-pages="nbPages"
+                     data-transform-item="listCtrl.transformItem(item)"
+                     data-on-transform-item-done="listCtrl.onTransformItemDone(items)"
+                     data-on-page-change="listCtrl.loader = true"
+                     data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+                     data-item-per-page-placeholder="{{tr('pagination_display')}}">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mt-5 mt-lg-0">
+            <button class="btn btn-block btn-default" type="button"
+                    data-i18n-static="privateDatabase_tabs_whitelist_list_add_whitelist"
+                    data-ng-click="listCtrl.createWhitelist()">
+            </button>
+        </div>
+    </div>
 </div>

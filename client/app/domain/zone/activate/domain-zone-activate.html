@@ -8,21 +8,23 @@
              data-wizard-step-valid="!ctrl.loading">
 
             <p data-i18n-static="domain_tab_ZONE_no_zone_activate_question"></p>
-            <form class="form-horizontal ml-4 mt-4">
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="activationZone.minimized"
-                               data-ng-model="ctrl.activationZone.minimized"
-                               data-ng-value="true">
-                        <span data-i18n-static="domain_tab_ZONE_no_zone_activate_minimized_yes"></span>
+            <form class="mt-4">
+                <div class="oui-radio">
+                    <input type="radio" class="oui-radio__input" name="activationZone.minimized" id="activationZoneMinimized-yes"
+                           data-ng-model="ctrl.activationZone.minimized"
+                           data-ng-value="true">
+                    <label class="oui-radio__label-container" for="activationZoneMinimized-yes">
+                        <span class="oui-radio__label"
+                              data-i18n-static="domain_tab_ZONE_no_zone_activate_minimized_yes"></span>
                     </label>
                 </div>
-                <div class="radio">
-                    <label class="radio">
-                        <input type="radio" name="activationZone.minimized"
-                               data-ng-model="ctrl.activationZone.minimized"
-                               data-ng-value="false">
-                        <span data-i18n-static="domain_tab_ZONE_no_zone_activate_minimized_no"></span>
+                <div class="oui-radio">
+                    <input type="radio" class="oui-radio__input" name="activationZone.minimized" id="activationZoneMinimized-no"
+                           data-ng-model="ctrl.activationZone.minimized"
+                           data-ng-value="false">
+                    <label class="oui-radio__label-container" for="activationZoneMinimized-no">
+                        <span class="oui-radio__label"
+                              data-i18n-static="domain_tab_ZONE_no_zone_activate_minimized_no"></span>
                     </label>
                 </div>
             </form>

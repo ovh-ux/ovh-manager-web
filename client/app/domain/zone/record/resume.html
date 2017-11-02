@@ -1,9 +1,9 @@
-<div class="loader text-center" data-ng-if="ctrl.loading.resume"></div>
+<oui-loader data-ng-if="ctrl.loading.resume"></oui-loader>
 
 <div data-ng-if="!ctrl.loading.resume">
     <p data-i18n-static="domain_configuration_dns_entry_add_step3_info"></p>
 
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal dl-lg">
         <dt data-i18n-static="domain_configuration_dns_entry_add_type"></dt>
         <dd data-ng-bind="ctrl.model.fieldType"></dd>
 

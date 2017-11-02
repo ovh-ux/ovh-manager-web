@@ -1,8 +1,12 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabDomainsCtrl">
-    <div class="row">
-        <div class="col-md-9">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loading.init"></div>
+    <div class="text-center" data-ng-if="loading.init">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
+
+    <div class="row" data-ng-show="!loading.init">
+        <div class="col-md-9">
+            <div data-ovh-alert="{{alerts.main}}"></div>
 
             <div class="alert alert-info" role="alert"
                  data-i18n-static="hosting_tab_DOMAINS_table_empty"
@@ -28,16 +32,15 @@
                                 </div>
                                 <span class="input-group-addon"
                                       data-ng-if="!search.text">
-                                    <span class="fa fa-search" aria-hidden="true"></span>
-                                </span>
+                                <span class="fa fa-search" aria-hidden="true"></span>
+                            </span>
                             </div>
                         </div>
                     </form>
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table"
-                           data-ng-class="{'table-hover table-striped': !loading.domains && domains.list.results.length}">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col" data-i18n-static="hosting_tab_DOMAINS_table_header_domain"></th>
@@ -48,7 +51,8 @@
                                 <th class="text-center" scope="col" data-i18n-static="hosting_tab_DOMAINS_table_header_ssl"></th>
                                 <th class="min-width text-right">
                                     <button class="btn btn-icon" type="button" title="{{tr('hosting_tab_DOMAINS_table_popover_refresh') }}"
-                                            data-ng-click="loadDomains()">
+                                            data-ng-click="loadDomains()"
+                                            data-ng-disabled="loading.domains">
                                         <span class="fa fa-refresh" aria-hidden="true"></span>
                                     </button>
                                 </th>
@@ -57,46 +61,46 @@
 
                         <tbody data-ng-if="loading.domains">
                             <tr>
-                                <td class="loader text-center" colspan="{{hosting.hasCdn ? 7 : 6}}" aria-label="{{i18n.common_loading}}"></td>
+                                <td class="text-center" colspan="{{hosting.hasCdn ? 7 : 6}}">
+                                    <oui-loader inline="true"></oui-loader>
+                                </td>
                             </tr>
                         </tbody>
 
                         <tbody data-ng-if="!loading.domains && domains.list.results.length <= 0">
                             <tr>
-                                <td class="text-center" colspan="{{hosting.hasCdn ? 7 : 6}}" data-i18n-static="table_search_noresult"></td>
+                                <td class="text-center" colspan="{{hosting.hasCdn ? 7 : 6}}"
+                                    data-i18n-static="table_search_noresult"></td>
                             </tr>
                         </tbody>
 
                         <tbody data-ng-if="!loading.domains && domains.list.results.length > 0">
                             <tr data-ng-repeat="domain in domains.list.results track by $index">
-                                <td data-ng-bind="domain.displayName"></td>
+                                <td class="word-break"
+                                    data-ng-bind="domain.displayName"></td>
                                 <td data-ng-bind="domain.path"></td>
                                 <td class="text-center">
                                     <span class="label"
                                           data-ng-bind="i18n['hosting_tab_DOMAINS_table_cdn_state_' + (domain.ownLog ? 'ACTIVE' : 'NONE')] || domain.ownLog"
-                                          data-ng-class="{'label-success': domain.ownLog, 'label-danger': domain.ownLog === 'NONE' || !domain.ownLog}">
+                                          data-ng-class="{
+                                            'label-success': domain.ownLog,
+                                            'label-danger': domain.ownLog === 'NONE' || !domain.ownLog}">
                                     </span>
-                                    <button class="btn btn-icon popover-trigger popover-redirect" type="button"
-                                            data-ng-if="!!domain.ownLog"
-                                            data-linkedpopover="hosting/multisite/logs/hosting-multisite-logs.html"
-                                            data-linkedpopover-placement="bottom"
-                                            data-linkedpopover-single="true"
-                                            data-linkedpopover-remote="true"
-                                            data-linkedpopover-title="{{i18n.common_actions}}"
-                                            data-domain-index="{{$index}}">
-                                        <span class="fa fa-share" aria-hidden="true"></span>
-                                    </button>
                                 </td>
                                 <td class="text-center">
                                     <span class="label"
                                           data-ng-bind="i18n['hosting_tab_DOMAINS_table_firewall_state_' + domain.firewall] || domain.firewall"
-                                          data-ng-class="{'label-success': domain.firewall === 'ACTIVE', 'label-danger': domain.firewall === 'NONE'}">
+                                          data-ng-class="{
+                                            'label-success': domain.firewall === 'ACTIVE',
+                                            'label-danger': domain.firewall === 'NONE'}">
                                     </span>
                                 </td>
                                 <td class="text-center" data-ng-if="hosting.hasCdn">
                                     <span class="label"
                                           data-ng-bind="i18n['hosting_tab_DOMAINS_table_cdn_state_' + domain.cdn] || domain.cdn"
-                                          data-ng-class="{'label-success': domain.cdn === 'ACTIVE', 'label-danger': domain.cdn === 'NONE'}">
+                                          data-ng-class="{
+                                            'label-success': domain.cdn === 'ACTIVE',
+                                            'label-danger': domain.cdn === 'NONE'}">
                                     </span>
                                 </td>
                                 <td class="text-center">
@@ -107,17 +111,15 @@
                                           data-tooltip-append-to-body="true">
                                     </span>
                                 </td>
-                                <td class="text-center text-nowrap">
-                                    <button type="button" class="btn btn-icon" title="{{:: i18n.hosting_tab_DOMAINS_table_popover_modify}}"
-                                            data-ng-click="modifyDomain(domain)"
-                                            data-ng-disabled="domain.isUpdating"
-                                            data-ng-if="excludeAttachedDomains.indexOf(domain.displayName) === -1">
-                                        <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-icon" title="{{:: i18n.hosting_tab_DOMAINS_table_popover_delete}}"
-                                            data-ng-click="detachDomain(domain)"
-                                            data-ng-if="excludeAttachedDomains.indexOf(domain.displayName) === -1">
-                                        <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
+                                <td class="text-center">
+                                    <button class="btn btn-icon" type="button"
+                                            data-linkedpopover="hosting/popover/multisite.html"
+                                            data-linkedpopover-placement="left"
+                                            data-linkedpopover-single="true"
+                                            data-linkedpopover-remote="true"
+                                            data-linkedpopover-title="{{i18n.common_actions}}"
+                                            data-domain-index="{{$index}}">
+                                        <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                                     </button>
                                 </td>
                             </tr>
@@ -126,40 +128,40 @@
                 </div>
             </div>
 
-            <div data-ng-show="!loading.init && hasResult"
+            <div data-ng-show="hasResult"
                  data-pagination-server-side
                  data-pagination-server-side-function="loadDomains"
                  data-pagination-server-side-paginated-stuff="domains"
                  data-pagination-server-side-table-loading="loading.domains">
             </div>
 
-            <div class="my-4" data-ng-if="!loading.init">
-                <button class="btn btn-default"
+            <div class="my-5">
+                <button class="oui-button oui-button_dropdown mb-0"
                         data-ng-click="showOvhControl = !showOvhControl">
                     <span data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol"></span>
-                    <span class="fa ml-4" aria-hidden="true" data-ng-class="{'fa-chevron-down': !showOvhControl, 'fa-chevron-up': showOvhControl}"></span>
+                    <span class="oui-icon" aria-hidden="true" data-ng-class="{'oui-icon-chevron-down': !showOvhControl, 'oui-icon-chevron-up': showOvhControl}"></span>
                 </button>
                 <div class="animated fadeIn mt-4" data-ng-show="showOvhControl">
                     <p data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol_info"></p>
 
                     <table class="table table-condensed">
                         <thead>
-                        <tr>
-                            <th scope="col" data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol_table_subdomain"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol_table_domain"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol_table_ttl"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol_table_type"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol_table_target"></th>
-                        </tr>
+                            <tr>
+                                <th scope="col" data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol_table_subdomain"></th>
+                                <th scope="col" data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol_table_domain"></th>
+                                <th scope="col" data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol_table_ttl"></th>
+                                <th scope="col" data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol_table_type"></th>
+                                <th scope="col" data-i18n-static="hosting_tab_DOMAINS_configuration_ovhcontrol_table_target"></th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>ovhcontrol</td>
-                            <td>example.com</td>
-                            <td>0</td>
-                            <td>TXT</td>
-                            <td data-ng-bind="hosting.token"></td>
-                        </tr>
+                            <tr>
+                                <td>ovhcontrol</td>
+                                <td>example.com</td>
+                                <td>0</td>
+                                <td>TXT</td>
+                                <td data-ng-bind="hosting.token"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

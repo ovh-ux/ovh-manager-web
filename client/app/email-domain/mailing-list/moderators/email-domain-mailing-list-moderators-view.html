@@ -1,50 +1,59 @@
 <div class="container-fluid px-0" data-ng-controller="MailingListsModeratorsCtrl as ctrlModerators">
     <div class="row">
         <div class="col-md-9">
-            <div class="d-flex mb-3">
-                <button class="btn btn-default my-auto" type="button"
-                        data-ng-click="ctrlTabView.setCurrentView('mailingListsView')">
-                    <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-                    <span data-i18n-static="mailing_list_common_back"></span>
-                </button>
-                <h2 class="d-inline-block ml-3 mb-0">
-                    <span data-ng-bind-html="trpl('mailing_list_tab_moderators_management_title', ctrlModerators.moderators.ids.length, [
-                        ctrlModerators.mailingList.name,
-                        !ctrlModerators.loading.moderators ? ctrlModerators.moderators.ids.length : ''])"></span>
-                    <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                          data-ng-if="ctrlModerators.loading.moderators"></span>
-                </h2>
-            </div>
+            <div data-ovh-alert="{{alerts.main}}"></div>
 
-            <div class="mb-3 mt-5">
-                <form class="form-inline d-md-flex justify-content-md-end" name="searchModeratorsForm">
-                    <div class="form-group">
-                        <label class="sr-only" for="searchModerators"></label>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="searchModerators" name="searchModerators" placeholder="{{::i18n.navigation_left_search}}"
-                                   data-ng-change="ctrlModerators.goSearch()"
-                                   data-ng-disabled="ctrlModerators.loading.moderators"
-                                   data-ng-model="ctrlModerators.search.moderators"
-                                   data-ng-model-options='{ debounce: 800 }'>
-                            <div class="input-group-btn" data-ng-if="ctrlModerators.search.moderators">
-                                <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
-                                        data-ng-click="ctrlModerators.emptySearch()"
-                                        data-ng-disabled="ctrlModerators.loading.moderators">
-                                    <span class="fa fa-times" aria-hidden="true"></span>
-                                </button>
+            <button class="oui-button oui-button_link oui-button_icon-left" type="button"
+                    data-ng-click="ctrlTabView.setCurrentView('mailingListsView')">
+                <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+                <span data-i18n-static="common_back"></span>
+            </button>
+            <h2>
+                <span data-ng-bind-html="trpl('mailing_list_tab_moderators_management_title', ctrlModerators.moderators.ids.length, [
+                    ctrlModerators.mailingList.name,
+                    !ctrlModerators.loading.moderators ? ctrlModerators.moderators.ids.length : ''
+                ])"></span>
+                <oui-loader inline="true" data-ng-if="ctrlModerators.loading.moderators"></oui-loader>
+            </h2>
+
+            <div class="row mb-3 mt-5">
+                <div class="col-xs-4" data-ng-if="ctrlModerators.moderators.selected.length > 0">
+                    <button class="btn btn-default" type="button"
+                            data-i18n-static="common_delete"
+                            data-ng-click="setAction('email-domain/mailing-list/moderator/delete/email-domain-mailing-list-moderator-delete', { mailingList: ctrlModerators.mailingList, moderators: ctrlModerators.moderators.selected })"
+                            data-ng-disabled="ctrlModerators.moderators.updating">
+                    </button>
+                </div>
+                <div data-ng-class="{'col-xs-8': ctrlModerators.moderators.selected.length > 0, 'col-xs-12': !ctrlModerators.moderators.selected.length}">
+                    <form class="form-inline d-md-flex justify-content-md-end" name="searchModeratorsForm">
+                        <div class="form-group">
+                            <label class="sr-only" for="searchModerators"
+                                   data-i18n-static="common_search"></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchModerators" name="searchModerators" placeholder="{{::i18n.navigation_left_search}}"
+                                       data-ng-change="ctrlModerators.goSearch()"
+                                       data-ng-disabled="ctrlModerators.loading.moderators"
+                                       data-ng-model="ctrlModerators.search.moderators"
+                                       data-ng-model-options='{ debounce: 800 }'>
+                                <div class="input-group-btn" data-ng-if="ctrlModerators.search.moderators">
+                                    <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
+                                            data-ng-click="ctrlModerators.emptySearch()"
+                                            data-ng-disabled="ctrlModerators.loading.moderators">
+                                        <span class="fa fa-times" aria-hidden="true"></span>
+                                    </button>
+                                </div>
+                                <span class="input-group-addon"
+                                      data-ng-if="!ctrlModerators.search.moderators">
+                                    <span class="fa fa-search" aria-hidden="true"></span>
+                                </span>
                             </div>
-                            <span class="input-group-addon"
-                                  data-ng-if="!ctrlModerators.search.moderators">
-                                <span class="fa fa-search" aria-hidden="true"></span>
-                            </span>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
 
             <div class="table-responsive">
-                <table class="table"
-                       data-ng-class="{'table-hover table-striped': !ctrlModerators.loading.moderators && !ctrlModerators.loading.pager && !ctrlModerators.moderators.updating && ctrlModerators.moderators.ids.length}">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th class="min-width text-center" scope="col">
@@ -126,12 +135,6 @@
         </div>
 
         <div class="col-md-3 mt-5 mt-lg-0">
-            <button class="btn btn-block btn-danger" type="button"
-                    data-i18n-static="common_delete"
-                    data-ng-click="setAction('email-domain/mailing-list/moderator/delete/email-domain-mailing-list-moderator-delete', { mailingList: ctrlModerators.mailingList, moderators: ctrlModerators.moderators.selected })"
-                    data-ng-disabled="ctrlModerators.moderators.updating"
-                    data-ng-if="ctrlModerators.moderators.selected.length > 0">
-            </button>
             <button class="btn btn-block btn-default" type="button"
                     data-i18n-static="mailing_list_tab_create_moderators"
                     data-ng-click="setAction('email-domain/mailing-list/moderators/create/email-domain-mailing-list-moderators-create', { mailingList: ctrlModerators.mailingList, moderators: ctrlModerators.moderators.ids })"

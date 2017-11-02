@@ -1,8 +1,8 @@
 <div class="container-fluid px-0" data-ng-controller="PrivateDatabaseTasksCtrl as taskCtrl">
+    <div data-ovh-alert="{{alerts.main}}"></div>
 
     <div class="table-responsive">
-        <table class="table"
-               data-ng-class="{'table-hover table-striped': !taskCtrl.loaders.tasks && taskCtrl.tasksIds.length}">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col" data-i18n-static="privateDatabase_tabs_tasks_name"></th>

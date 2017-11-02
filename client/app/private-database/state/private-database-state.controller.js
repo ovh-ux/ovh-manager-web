@@ -19,6 +19,7 @@ angular
             this.productId = this.$stateParams.productId;
 
             this.database = this.$scope.database;
+            this.isExpired = _.get(this.database, "serviceInfos.status") === "expired";
             this.displayMore = {
                 value: false
             };
@@ -30,8 +31,10 @@ angular
                 nbOomError: 4
             };
 
-            this.getHostingsLinked();
-            this.getOomList();
+            if (!this.isExpired) {
+                this.getHostingsLinked();
+                this.getOomList();
+            }
         }
 
         getOomList () {

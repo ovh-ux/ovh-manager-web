@@ -1,10 +1,10 @@
-<div data-ovh-alert="{{alerts.dashboard}}"></div>
-
 <div class="page-header mb-5">
     <h1 data-i18n-static="domains_operations_dashboard_title"></h1>
 </div>
 
 <div class="container-fluid px-5">
+    <div data-ovh-alert="{{alerts.main}}"></div>
+
     <p data-i18n-static="domains_operations_dashboard_info"></p>
 
     <div class="mb-3">
@@ -34,31 +34,36 @@
             <div class="form-group mr-md-5">
                 <label class="control-label mr-2" for="filters-operation"
                        data-i18n-static="domains_operations_filters_operation"></label>
-                <select class="form-control" id="filters-operation"
-                        data-ng-change="ctrlOperations.getOperationIds()"
-                        data-ng-disabled="ctrlOperations.loading.filters"
-                        data-ng-model="ctrlOperations.filters.nicOperation"
-                        data-ng-options="operation as (i18n['domains_operations_nicOperation_' + operation] || operation) for operation in (ctrlOperations.nicOperationEnum | orderBy:'operation') track by operation">
-                    <option data-i18n-static="domains_operations_no_filters"></option>
-                </select>
+                <div class="oui-select d-md-inline-block align-middle m-0">
+                    <select class="oui-select__input" id="filters-operation"
+                            data-ng-change="ctrlOperations.getOperationIds()"
+                            data-ng-disabled="ctrlOperations.loading.filters"
+                            data-ng-model="ctrlOperations.filters.nicOperation"
+                            data-ng-options="operation as (i18n['domains_operations_nicOperation_' + operation] || operation) for operation in (ctrlOperations.nicOperationEnum | orderBy:'operation') track by operation">
+                        <option data-i18n-static="domains_operations_no_filters"></option>
+                    </select>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                </div>
             </div>
             <div class="form-group">
                 <label class="control-label mr-2" for="filters-status"
                        data-i18n-static="domains_operations_filters_status"></label>
-                <select class="form-control" id="filters-status"
-                        data-ng-change="ctrlOperations.getOperationIds()"
-                        data-ng-disabled="ctrlOperations.loading.filters"
-                        data-ng-model="ctrlOperations.filters.operationStatus"
-                        data-ng-options="status as (i18n['domains_operations_statusOperation_' + status] || status) for status in (ctrlOperations.operationStatusEnum | orderBy:'status') track by status">
-                    <option data-i18n-static="domains_operations_no_filters"></option>
-                </select>
+                <div class="oui-select d-md-inline-block align-middle m-0">
+                    <select class="oui-select__input" id="filters-status"
+                            data-ng-change="ctrlOperations.getOperationIds()"
+                            data-ng-disabled="ctrlOperations.loading.filters"
+                            data-ng-model="ctrlOperations.filters.operationStatus"
+                            data-ng-options="status as (i18n['domains_operations_statusOperation_' + status] || status) for status in (ctrlOperations.operationStatusEnum | orderBy:'status') track by status">
+                        <option data-i18n-static="domains_operations_no_filters"></option>
+                    </select>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                </div>
             </div>
         </form>
     </div>
 
     <div class="table-responsive">
-        <table class="table"
-               data-ng-class="{ 'table-hover table-striped': !ctrlOperations.loading.init && ctrlOperations.operations.length }">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col" data-i18n-static="domains_operations_table_header_domain"></th>
@@ -68,7 +73,7 @@
                     <th scope="col" data-i18n-static="domains_operations_table_header_lastUpdate"></th>
                     <th scope="col" data-i18n-static="domains_operations_table_header_doneDate"></th>
                     <th scope="col" data-i18n-static="domains_operations_table_header_status"></th>
-                    <th class="min-width text-center" scope="col">
+                    <th class="min-width text-right" scope="col">
                         <button class="btn btn-icon" type="button" title="{{i18n.oprtation_tab_table_header_refresh}}"
                                 data-ng-click="ctrlOperations.getOperationIds()">
                             <span class="fa fa-refresh" aria-hidden="true"></span>
@@ -80,7 +85,7 @@
             <!--loader-->
             <tbody data-ng-if="ctrlOperations.loading.init">
                 <tr>
-                    <td colspan="8" class="loader text-center"></td>
+                    <td class="loader text-center" colspan="8"></td>
                 </tr>
             </tbody>
 

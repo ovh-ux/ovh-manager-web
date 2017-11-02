@@ -12,7 +12,9 @@
                 <em data-ng-bind="::ctrl.operation.comment"></em>
             </p>
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
 
@@ -28,15 +30,17 @@
                                            data-ng-bind="arg.keyTranslation || arg.description">
                                     </label>
                                     <div class="col-md-7">
-                                        <input type="text" class="form-control" name="arg-{{$index}}" id="arg-{{$index}}"
+                                        <input type="text" class="oui-input" name="arg-{{$index}}" id="arg-{{$index}}"
                                                data-ng-if="!arg.acceptedValues"
                                                data-ng-model="arg.value"
                                                data-ng-required>
-                                        <select class="form-control" name="arg-{{$index}}" id="arg-{{$index}}"
-                                                data-ng-if="arg.acceptedValues && arg.acceptedValues.length > 1"
-                                                data-ng-model="arg.value"
-                                                data-ng-options="operation for operation in arg.acceptedValues track by operation">
-                                        </select>
+                                        <div class="oui-select mb-0" data-ng-if="arg.acceptedValues && arg.acceptedValues.length > 1">
+                                            <select class="oui-select__input" name="arg-{{$index}}" id="arg-{{$index}}"
+                                                    data-ng-model="arg.value"
+                                                    data-ng-options="operation for operation in arg.acceptedValues track by operation">
+                                            </select>
+                                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -96,7 +100,7 @@
                                             <button class="btn btn-icon" type="button"
                                                     data-ng-click="ctrl.viewMode[arg.key] = false"
                                                     data-uib-tooltip="{{tr('domains_operations_update_document_edit')}}">
-                                                <span class="fa fa-pencil" aria-hidden="true"></span>
+                                                <span class="oui-icon oui-icon-pen_line" aria-hidden="true"></span>
                                             </button>
                                         </div>
                                     </div>
@@ -142,28 +146,28 @@
                     </div>
 
                     <div class="col-md-offset-4" data-ng-if="ctrl.canContinue">
-                        <div class="radio">
-                            <label>
-                                <input type="radio" id="chk-cancel" name="operationCheckbox" value="cancel"
-                                       data-ng-disabled="!ctrl.operation.canCancel"
-                                       data-ng-model="ctrl.todoOperation">
-                                <span data-i18n-static="domains_operations_cancel_title"></span>
+                        <div class="oui-radio">
+                            <input type="radio" class="oui-radio__input" id="chk-cancel" name="operationCheckbox" value="cancel"
+                                   data-ng-disabled="!ctrl.operation.canCancel"
+                                   data-ng-model="ctrl.todoOperation">
+                            <label class="oui-radio__label-container" for="chk-cancel">
+                                <span class="oui-radio__label" data-i18n-static="domains_operations_cancel_title"></span>
                             </label>
                         </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" id="chk-relaunch" name="operationCheckbox" value="relaunch"
-                                       data-ng-disabled="!ctrl.operation.canRelaunch"
-                                       data-ng-model="ctrl.todoOperation">
-                                <span data-i18n-static="domains_operations_relaunch_title"></span>
+                        <div class="oui-radio">
+                            <input type="radio" class="oui-radio__input" id="chk-relaunch" name="operationCheckbox" value="relaunch"
+                                   data-ng-disabled="!ctrl.operation.canRelaunch"
+                                   data-ng-model="ctrl.todoOperation">
+                            <label class="oui-radio__label-container" for="chk-relaunch">
+                                <span class="oui-radio__label" data-i18n-static="domains_operations_relaunch_title"></span>
                             </label>
                         </div>
-                        <div class="radio">
-                            <label>
-                                <input type="radio" id="chk-accelerate" name="operationCheckbox" value="accelerate"
-                                       data-ng-disabled="!ctrl.operation.canAccelerate"
-                                       data-ng-model="ctrl.todoOperation">
-                                <span data-i18n-static="domains_operations_accelerate_title"></span>
+                        <div class="oui-radio">
+                            <input type="radio" class="oui-radio__input" id="chk-accelerate" name="operationCheckbox" value="accelerate"
+                                   data-ng-disabled="!ctrl.operation.canAccelerate"
+                                   data-ng-model="ctrl.todoOperation">
+                            <label class="oui-radio__label-container" for="chk-accelerate">
+                                <span class="oui-radio__label" data-i18n-static="domains_operations_accelerate_title"></span>
                             </label>
                         </div>
                         <div class="alert alert-warning mt-4" role="alert"

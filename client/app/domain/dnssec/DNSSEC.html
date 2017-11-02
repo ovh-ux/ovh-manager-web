@@ -1,6 +1,8 @@
 <div class="container-fluid px-0" data-ng-controller="DomainDnssecTabCtrl as ctrlDomainDnssec">
 
-    <div class="loader text-center" data-ng-if="ctrlDomainDnssec.loading"></div>
+    <div class="text-center" data-ng-if="ctrlDomainDnssec.loading">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
 
     <div class="alert alert-warning" role="alert"
          data-ng-if="!ctrlDomainDnssec.loading && !ctrlDomainDnssec.product.dnssecSupported">
@@ -9,7 +11,7 @@
 
     <div class="row" data-ng-if="!ctrlDomainDnssec.loading && ctrlDomainDnssec.product.dnssecSupported">
         <div class="col-md-9">
-            <div data-ovh-alert="domain_tab_dnssec"></div>
+            <div data-ovh-alert="{{alerts.main}}"></div>
             <div class="alert alert-warning" role="alert"
                  data-i18n-static="domain_tab_DNSSEC_notModifiable"
                  data-ng-if="!ctrlDomainDnssec.isModifiable() && !ctrlDomainDnssec.hasActiveTask">
@@ -22,14 +24,13 @@
                  data-i18n-static="domain_tab_DNSSEC_list_modified"
                  data-ng-if="ctrlDomainDnssec.editMode">
             </div>
-
             <div class="alert alert-info" role="alert"
                  data-i18n-static="domain_tab_DNSSEC_table_empty"
                  data-ng-if="!ctrlDomainDnssec.dnssecList.length && !ctrlDomainDnssec.editMode">
             </div>
 
             <div class="table-responsive" data-ng-if="ctrlDomainDnssec.dnssecList.length || ctrlDomainDnssec.editMode">
-                <table class="table table-hover table-striped">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col" data-i18n-static="domain_tab_DNSSEC_tag"></th>
@@ -61,7 +62,7 @@
                             <td class="align-middle font-italic text-center" colspan="4"
                                 data-i18n-static="domain_tab_DNSSEC_new_inline_zone"></td>
                             <td class="text-center">
-                                <button class="btn btn-default btn-sm" type="button" title="{{i18n.table_add_entry}}"
+                                <button class="btn btn-default" type="button" title="{{i18n.table_add_entry}}"
                                         data-ng-click="ctrlDomainDnssec.addRecord()">
                                     <span class="fa fa-plus" aria-hidden="true"></span>
                                 </button>
@@ -135,17 +136,18 @@
                         data-ng-disabled="ctrlDomainDnssec.dnssecList.length >= ctrlDomainDnssec.const.MAX_AMOUNT_DNSSEC || !ctrlDomainDnssec.isModifiable()"
                         data-ng-if="!ctrlDomainDnssec.editMode">
                 </button>
-                <button class="btn btn-block btn-success" type="button"
+                <button class="btn btn-block btn-primary" type="button"
                         data-i18n-static="wizard_confirm"
                         data-ng-click="setAction('dnssec/save/domain-dnssec-save', {})"
                         data-ng-disabled="!ctrlDomainDnssec.addDnssecForm.$dirty || ctrlDomainDnssec.addDnssecForm.$invalid"
                         data-ng-if="ctrlDomainDnssec.editMode">
                 </button>
-                <button class="btn btn-block btn-danger" type="button"
+                <button class="btn btn-block btn-default" type="button"
                         data-i18n-static="domain_tab_DNSSEC_reset"
                         data-ng-click="ctrlDomainDnssec.reset()"
                         data-ng-if="ctrlDomainDnssec.editMode">
                 </button>
+
             </div>
             <div data-guides
                  data-guides-title="tr('guide_domain_subtitle')"

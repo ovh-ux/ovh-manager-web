@@ -51,8 +51,8 @@ angular.module("App").controller("HostingOrderCdnCtrl", ($scope, $q, $window, Ho
         const queue = [];
         $scope.loading.duration = true;
 
-        HostingOptionOrder.getOrderDurations("cdn", { offer: $scope.model.offer }).then(
-            (durations) => {
+        HostingOptionOrder.getOrderDurations("cdn", { offer: $scope.model.offer })
+            .then((durations) => {
                 $scope.durations = durations;
                 if ($scope.durations.length === 1) {
                     $scope.model.duration = $scope.durations[0];
@@ -69,12 +69,11 @@ angular.module("App").controller("HostingOrderCdnCtrl", ($scope, $q, $window, Ho
                     $scope.loading.details = false;
                 });
                 $scope.loading.duration = false;
-            },
-            (data) => {
-                Alerter.alertFromSWS($scope.tr("hosting_dashboard_cdn_order_error"), data.data, "hosting.alerts.dashboard");
+            })
+            .catch((err) => {
+                Alerter.alertFromSWS($scope.tr("hosting_dashboard_cdn_order_error"), _.get(err, "data", err), $scope.alerts.main);
                 $scope.resetAction();
-            }
-        );
+            });
     };
 
     $scope.isStepValid = (step) => {
@@ -93,15 +92,13 @@ angular.module("App").controller("HostingOrderCdnCtrl", ($scope, $q, $window, Ho
     $scope.makeOrder = () => {
         $scope.loading.order = true;
         HostingOptionOrder.makeOrder("cdn", $scope.model.duration, { offer: $scope.model.offer })
-            .then(
-                (order) => {
-                    Alerter.success($scope.tr("hosting_dashboard_cdn_order_success", [order.url]), "hosting.alerts.dashboard");
-                    $window.open(order.url, "_blank");
-                },
-                (data) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_cdn_order_error"), data.data, "hosting.alerts.dashboard");
-                }
-            )
+            .then((order) => {
+                Alerter.success($scope.tr("hosting_dashboard_cdn_order_success", [order.url]), $scope.alerts.main);
+                $window.open(order.url, "_blank");
+            })
+            .catch((err) => {
+                Alerter.alertFromSWS($scope.tr("hosting_dashboard_cdn_order_error"), _.get(err, "data", err), $scope.alerts.main);
+            })
             .finally(() => {
                 $scope.resetAction();
             });

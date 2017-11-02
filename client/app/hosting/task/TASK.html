@@ -1,22 +1,24 @@
-<div class="container-fluid px-0" data-ng-controller="HostingTabTasksCtrl">
+<div class="container-fluid px-0" data-ng-controller="HostingTabTasksCtrl as ctrl">
+
+    <div class="text-center" data-ng-if="ctrl.loading">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
 
     <div class="alert alert-warning" role="alert"
-         data-ng-if="!tableLoading && tasksList && tasksList.list.messages.length > 0">
+         data-ng-if="!ctrl.loading && ctrl.tasksList && ctrl.tasksList.list.messages.length > 0">
         <div>
             <strong data-i18n-static="hosting_tab_TASKS_warning"></strong>
             <span data-i18n-static="hosting_tab_TASKS_partial"></span>
         </div>
     </div>
 
-    <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="tableLoading"></div>
-
     <div class="alert alert-info" role="alert"
          data-i18n-static="hosting_tab_TASKS_table_empty"
-         data-ng-if="!tableLoading && !tasksList.list.results.length">
+         data-ng-if="!ctrl.loading && !ctrl.tasksList.list.results.length">
     </div>
 
-    <div class="table-responsive" data-ng-if="!tableLoading && tasksList.list.results.length > 0">
-        <table class="table table-hover table-striped">
+    <div class="table-responsive" data-ng-if="!ctrl.loading && ctrl.tasksList.list.results.length > 0">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col" data-i18n-static="hosting_tab_TASKS_table_function"></th>
@@ -25,14 +27,14 @@
                     <th scope="col" data-i18n-static="hosting_tab_TASKS_table_finish_date"></th>
                     <th class="min-width text-right" scope="col">
                         <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
-                                data-ng-click="refreshTable()">
+                                data-ng-click="ctrl.refreshTable()">
                             <span class="fa fa-refresh" aria-hidden="true"></span>
                         </button>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                <tr data-ng-repeat="element in tasksList.list.results track by $index">
+                <tr data-ng-repeat="element in ctrl.tasksList.list.results track by $index">
                     <th scope="row"
                         data-ng-bind-html="i18n['hosting_tab_TASKS_function_'+ element.function] || i18n['hosting_tab_TASKS_function_'+ element.function.replace('/','_')] || element.function.replace('_',' ')"></th>
                     <td>
@@ -54,10 +56,10 @@
 
 
     <div class="clearfix"
-         data-ng-show="!tableLoading && tasksList.list.results.length > 0"
+         data-ng-show="!ctrl.loading && ctrl.tasksList.list.results.length > 0"
          data-pagination-server-side="tasksTable"
-         data-pagination-server-side-function="loadPaginated"
-         data-pagination-server-side-paginated-stuff="tasksList"
-         data-pagination-server-side-table-loading="tableLoading">
+         data-pagination-server-side-function="ctrl.loadPaginated"
+         data-pagination-server-side-paginated-stuff="ctrl.tasksList"
+         data-pagination-server-side-table-loading="ctrl.loading">
     </div>
 </div>

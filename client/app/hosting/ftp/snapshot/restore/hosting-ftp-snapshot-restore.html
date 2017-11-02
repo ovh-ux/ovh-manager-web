@@ -1,34 +1,36 @@
-<div data-ng-controller="HostingFtpRestoreSnapshotCtrl">
+<div data-ng-controller="HostingFtpRestoreSnapshotCtrl as ctrl">
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="restoreSnapshot"
          data-wizard-title="i18n.hosting_tab_FTP_configuration_restore_snapshot_title">
 
         <div data-wizard-step="data-wizard-step"
-             data-wizard-step-on-load="initStep1"
-             data-wizard-step-valid="isStep1Valid()">
+             data-wizard-step-valid="ctrl.isStep1Valid()">
 
             <p data-i18n-static="hosting_tab_FTP_configuration_restore_password_step1_question"></p>
 
-            <div class="loader mt-5 text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loaders.loading"></div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
-            <form class="form-horizontal mt-4" name="hostingRestoreSnapshotForm"
-                  data-ng-if="!loaders.loading">
+            <form class="form-horizontal" name="hostingRestoreSnapshotForm"
+                  data-ng-if="!ctrl.loading">
                 <div class="form-group">
                     <label class="control-label col-md-4" for="select-snapshot-instance"
                            data-i18n-static="hosting_tab_FTP_configuration_restore_snapshot_step1_snapshot_instance"></label>
                     <div class="col-md-6">
-                        <select class="form-control" id="select-snapshot-instance"
-                                data-ng-model="model.snapshotInstance"
-                                data-ng-options="instance as tr('hosting_tab_FTP_configuration_restore_snapshot_step1_instance_' + instance.replace('.','_')) for instance in instances track by instance">
-                        </select>
+                        <div class="oui-select">
+                            <select class="oui-select__input" id="select-snapshot-instance"
+                                    data-ng-model="ctrl.model.snapshotInstance"
+                                    data-ng-options="instance as tr('hosting_tab_FTP_configuration_restore_snapshot_step1_instance_' + instance.replace('.','_')) for instance in ctrl.instances track by instance">
+                            </select>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                        </div>
                     </div>
                 </div>
             </form>
         </div>
 
         <div data-wizard-step="data-wizard-step">
-            <div class="alert alert-warning mt-3" role="alert"
+            <div class="alert alert-warning" role="alert"
                  data-i18n-static="hosting_tab_FTP_configuration_restore_snapshot_step2_alert">
             </div>
             <p data-i18n-static="hosting_tab_FTP_configuration_restore_snapshot_step2_alert_question"></p>

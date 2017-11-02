@@ -1,10 +1,7 @@
 <div ui-view>
-    <div data-ovh-alert="{{alerts.dashboard}}"></div>
+    <div data-ovh-alert="{{alerts.page}}"></div>
 
-    <div data-ng-if="ctrlDomain.loading.domainInfos">
-        <div class="clearfix"></div>
-        <div class="loader mt-5 text-center"></div>
-    </div>
+    <oui-loader size="l" data-ng-if="ctrlDomain.loading.domainInfos"></oui-loader>
 
     <div data-ng-if="!ctrlDomain.loading.domainInfos && ctrlDomain.domain">
         <div class="page-header">
@@ -12,7 +9,8 @@
                 <div class="col-sm-9">
                     <div class="mb-2">
                       <span data-ng-if="ctrlDomain.isAllDom">AllDom</span>
-                      <h1 class="word-break mb-0" data-ng-bind="ctrlDomain.domain.displayName"></h1>
+                      <h1 class="word-break mb-0"
+                          data-ng-bind="ctrlDomain.domain.displayName"></h1>
                     </div>
                     <service-expiration-date data-ng-if="!ctrlDomain.isAllDom && ctrlDomain.domain.name && ctrlDomain.domainInfos"
                                              service-name="ctrlDomain.domain.name"
@@ -27,11 +25,12 @@
                 </div>
                 <div class="col-sm-3 d-flex">
                     <div class="btn-group ml-auto mt-4">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
+                                data-toggle="dropdown">
                             <span data-i18n-static="common_actions"></span>
-                            <span class="caret ml-2" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </button>
-                        <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
+                        <ul class="dropdown-menu dropdown-menu-right">
                             <li data-ng-if="ctrlDomain.alldomURL">
                                 <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
                                 <a data-ng-href="{{ctrlDomain.alldomURL}}" target="_blank" title="{{i18n.domain_configuration_order_alldom}} ({{i18n.common_newtab}})"
@@ -40,7 +39,7 @@
                             </li>
                             <li data-ng-if="ctrlDomain.canOrderHosting && ctrlDomain.isAdmin">
                                 <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
-                                <button type="button" class="btn btn-link"
+                                <button class="btn btn-link" type="button"
                                         data-i18n-static="domain_configuration_enable_web_hosting"
                                         data-ng-click="setAction('webhosting-enable/domain-enable-web-hosting', ctrlDomain.domain)">
                                 </button>
@@ -53,7 +52,7 @@
                               </a>
                             </li>
                             <li>
-                                <button type="button" class="btn btn-link"
+                                <button class="btn btn-link" type="button"
                                    data-i18n-static="domain_configuration_add_subdomain"
                                    data-ng-click="setAction('subdomain/add/domain-subdomain-add', { domain: ctrlDomain.domain })">
                                 </button>
@@ -78,6 +77,8 @@
                       menu="ctrlDomainTabs.tabMenu"
                       tr="tr"></ovh-tabs>
             <div class="tab-content">
+                <div data-ovh-alert="{{alerts.tabs}}"></div>
+
                 <div class="tab-pane active domain"
                      data-ng-include="ctrlDomainTabs.selectedTab && 'domain/' + ctrlDomainTabs.constructor.toKebabCase(ctrlDomainTabs.selectedTab) + '/' + ctrlDomainTabs.selectedTab + '.html'"></div>
             </div>

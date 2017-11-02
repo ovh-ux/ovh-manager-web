@@ -5,84 +5,83 @@
 <div class="container-fluid mt-5 px-5">
     <div data-ovh-alert="{{webSiteConfigurationCtrl.alerts}}"></div>
 
-    <div class="alert alert-info mt-5" role="alert" data-i18n-static="website_instructions"></div>
 
-    <div class="loader text-center" data-ng-if="webSiteConfigurationCtrl.loading.init"></div>
+    <p data-i18n-static="website_instructions"></p>
 
-    <div  data-ng-if="!webSiteConfigurationCtrl.loading.init && webSiteConfigurationCtrl.hostings.length">
+    <oui-loader size="l" data-ng-if="webSiteConfigurationCtrl.loading.init"></oui-loader>
+
+    <div data-ng-if="!webSiteConfigurationCtrl.loading.init && webSiteConfigurationCtrl.hostings.length">
         <form name="websiteCreationForm">
             <!-- step 1 -->
             <div class="clearfix mt-5">
                 <h2 data-i18n-static="website_creation_step1_title"></h2>
 
-                <div class="form-group ml-5">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" id="radioTypeClassic" name="radioType" value="classic"
-                                   data-ng-model="webSiteConfigurationCtrl.site.config.type"
-                                   data-at-internet-click="{ name: 'website_configuration_type_classic' }">
-                            <strong data-i18n-static="website_creation_type_classic"></strong>
-                            <em class="ml-3" data-i18n-static="website_creation_type_classic_explanation"></em>
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" id="radioTypeBlog" name="radioType" value="blog"
-                                   data-ng-model="webSiteConfigurationCtrl.site.config.type"
-                                   data-at-internet-click="{ name: 'website_configuration_type_blog' }">
-                            <strong data-i18n-static="website_creation_type_blog"></strong>
-                            <em class="ml-3" data-i18n-static="website_creation_type_blog_explanation"></em>
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" id="radioTypeShop" name="radioType" value="shop"
-                                   data-ng-model="webSiteConfigurationCtrl.site.config.type"
-                                   data-at-internet-click="{ name: 'website_configuration_type_shop' }">
-                            <strong data-i18n-static="website_creation_type_shop"></strong>
-                            <em class="ml-3" data-i18n-static="website_creation_type_shop_explanation"></em>
-                        </label>
-                    </div>
+                <div class="oui-radio">
+                    <input type="radio" class="oui-radio__input" id="radioTypeClassic" name="radioType" value="classic"
+                           data-ng-model="webSiteConfigurationCtrl.site.config.type"
+                           data-at-internet-click="{ name: 'website_configuration_type_classic' }">
+                    <label class="oui-radio__label-container" for="radioTypeClassic">
+                        <span class="oui-radio__label" data-i18n-static="website_creation_type_classic"></span>
+                        <span class="oui-radio__description" data-i18n-static="website_creation_type_classic_explanation"></span>
+                    </label>
+                </div>
+                <div class="oui-radio">
+                    <input type="radio" class="oui-radio__input" id="radioTypeBlog" name="radioType" value="blog"
+                           data-ng-model="webSiteConfigurationCtrl.site.config.type"
+                           data-at-internet-click="{ name: 'website_configuration_type_blog' }">
+                    <label class="oui-radio__label-container" for="radioTypeBlog">
+                        <span class="oui-radio__label" data-i18n-static="website_creation_type_blog"></span>
+                        <span class="oui-radio__description" data-i18n-static="website_creation_type_blog_explanation"></span>
+                    </label>
+                </div>
+                <div class="oui-radio">
+                    <input type="radio" class="oui-radio__input" id="radioTypeShop" name="radioType" value="shop"
+                           data-ng-model="webSiteConfigurationCtrl.site.config.type"
+                           data-at-internet-click="{ name: 'website_configuration_type_shop' }">
+                    <label class="oui-radio__label-container" for="radioTypeShop">
+                        <span class="oui-radio__label" data-i18n-static="website_creation_type_shop"></span>
+                        <span class="oui-radio__description" data-i18n-static="website_creation_type_shop_explanation"></span>
+                    </label>
                 </div>
             </div>
 
             <!-- step 2 -->
-            <div class="clearfix form-horizontal mt-5">
+            <div class="mt-5">
                 <h2 data-i18n-static="website_creation_step2_title"></h2>
 
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="domainSelect"
-                           data-i18n-static="website_creation_step2_domain"></label>
-                    <div class="col-md-6">
-                        <select class="form-control" id="domainSelect" name="domainSelect"
-                                data-ng-model="webSiteConfigurationCtrl.site.config.domain"
-                                data-ng-options="domain for domain in webSiteConfigurationCtrl.domains track by domain">
-                            <option value="" disabled data-i18n-static="select_option"></option>
-                        </select>
-                    </div>
+                <label class="required" for="domainSelect"
+                       data-i18n-static="website_creation_step2_domain"></label>
+                <div class="oui-select oui-select_inline">
+                    <select class="oui-select__input" id="domainSelect" name="domainSelect" required
+                            data-ng-model="webSiteConfigurationCtrl.site.config.domain"
+                            data-ng-options="domain for domain in webSiteConfigurationCtrl.domains track by domain">
+                        <option value="" disabled
+                                data-i18n-static="select_option"></option>
+                    </select>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                 </div>
             </div>
 
             <!-- step 3 -->
-            <div class="clearfix form-horizontal mt-5" data-ng-if="webSiteConfigurationCtrl.site.config.domain">
+            <div class="mt-5"
+                 data-ng-if="webSiteConfigurationCtrl.site.config.domain">
                 <h2 data-i18n-static="website_creation_step3_title"></h2>
 
-                <div class="form-group">
-                    <label class="col-md-3 control-label" for="hostingSelect"
-                           data-i18n-static="website_creation_step3_hosting"></label>
-                    <div class="col-md-6">
-                        <select class="form-control" id="hostingSelect" name="hostingSelect"
-                                data-ng-change="webSiteConfigurationCtrl.loadHosting(webSiteConfigurationCtrl.site.config.hosting)"
-                                data-ng-model="webSiteConfigurationCtrl.site.config.hosting"
-                                data-ng-options="hosting for hosting in webSiteConfigurationCtrl.hostings track by hosting">
-                            <option value="" disabled data-i18n-static="select_option"></option>
-                        </select>
-                    </div>
+                <label class="required" for="hostingSelect"
+                       data-i18n-static="website_creation_step3_hosting"></label>
+                <div class="oui-select oui-select_inline">
+                    <select class="oui-select__input" id="hostingSelect" name="hostingSelect"
+                            data-ng-change="webSiteConfigurationCtrl.loadHosting(webSiteConfigurationCtrl.site.config.hosting)"
+                            data-ng-model="webSiteConfigurationCtrl.site.config.hosting"
+                            data-ng-options="hosting for hosting in webSiteConfigurationCtrl.hostings track by hosting">
+                        <option value="" disabled data-i18n-static="select_option"></option>
+                    </select>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                 </div>
             </div>
 
             <!-- Step 4: Configuration -->
-            <div class="clearfix mt-5"
+            <div class="mt-5"
                  data-ng-if="webSiteConfigurationCtrl.site.config.domain && webSiteConfigurationCtrl.site.config.hosting && webSiteConfigurationCtrl.site.config.type && !webSiteConfigurationCtrl.error">
                 <h2 data-i18n-static="website_creation_step4_title"></h2>
 
@@ -90,9 +89,7 @@
 
                 <div data-ng-if="!webSiteConfigurationCtrl.loading.capabilities && webSiteConfigurationCtrl.site.config.type !== 'classic' && webSiteConfigurationCtrl.canBeCreated">
 
-                    <div class="alert alert-info" role="alert">
-                        <em data-i18n-static="website_creation_step4_explanation"></em>
-                    </div>
+                    <p data-i18n-static="website_creation_step4_explanation"></p>
 
                     <div class="form-horizontal">
                         <div class="form-group"
@@ -165,7 +162,7 @@
             </div>
 
             <!-- Step 5: Resume -->
-            <div class="clearfix mt-5"
+            <div class="mt-5"
                  data-ng-if="!webSiteConfigurationCtrl.loading.capabilities && webSiteConfigurationCtrl.checkConfiguration()">
                 <h2 data-i18n-static="website_creation_step5_title"></h2>
 
@@ -195,12 +192,12 @@
                          data-ng-if="webSiteConfigurationCtrl.site.config.type === 'classic'">
                     </div>
 
-                    <div class="my-5 text-center">
-                        <button class="btn btn-primary btn-lg" type="button"
+                    <div class="my-5">
+                        <button class="oui-button oui-button_primary" type="button"
+                                data-i18n-static="website_creation_step5_confirm"
                                 data-ng-click="webSiteConfigurationCtrl.createWebSite()"
                                 data-ng-disabled="websiteCreationForm.$invalid || webSiteConfigurationCtrl.checkWebsiteConfiguration()"
                                 data-at-internet-click="{ name: 'website_configuration_finish' }">
-                            <span data-i18n-static="website_creation_step5_confirm"></span>
                         </button>
                     </div>
                 </div>

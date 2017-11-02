@@ -43,12 +43,16 @@
         <label class="control-label col-md-4 required" for="latitude"
                data-i18n-static="domain_configuration_dns_entry_add_lat"></label>
         <div class="col-md-4">
-            <select class="form-control" name="latitude" id="latitude" required
-                    data-ng-change="ctrl.setTargetValue('LOC')"
-                    data-ng-model="ctrl.model.target.latitude">
-                <option value="N" data-i18n-static="domain_configuration_dns_entry_add_lat_N"></option>
-                <option value="S" data-i18n-static="domain_configuration_dns_entry_add_lat_S"></option>
-            </select>
+            <div class="oui-select mb-0">
+                <select class="oui-select__input" name="latitude" id="latitude" required
+                        data-ng-change="ctrl.setTargetValue('LOC')"
+                        data-ng-model="ctrl.model.target.latitude">
+                    <option value="" disabled data-i18n-static="select_placeholder"></option>
+                    <option value="N" data-i18n-static="domain_configuration_dns_entry_add_lat_N"></option>
+                    <option value="S" data-i18n-static="domain_configuration_dns_entry_add_lat_S"></option>
+                </select>
+                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+            </div>
         </div>
     </div>
 
@@ -93,12 +97,16 @@
         <label class="control-label col-md-4 required" for="longitude"
                data-i18n-static="domain_configuration_dns_entry_add_long"></label>
         <div class="col-md-4">
-            <select class="form-control" name="longitude" id="longitude" required
-                    data-ng-change="ctrl.setTargetValue('LOC')"
-                    data-ng-model="ctrl.model.target.longitude">
-                <option value="E" data-i18n-static="domain_configuration_dns_entry_add_long_E"></option>
-                <option value="W" data-i18n-static="domain_configuration_dns_entry_add_long_W"></option>
-            </select>
+            <div class="oui-select mb-0">
+                <select class="oui-select__input" name="longitude" id="longitude" required
+                        data-ng-change="ctrl.setTargetValue('LOC')"
+                        data-ng-model="ctrl.model.target.longitude">
+                    <option value="" disabled data-i18n-static="select_placeholder"></option>
+                    <option value="E" data-i18n-static="domain_configuration_dns_entry_add_long_E"></option>
+                    <option value="W" data-i18n-static="domain_configuration_dns_entry_add_long_W"></option>
+                </select>
+                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+            </div>
         </div>
     </div>
 

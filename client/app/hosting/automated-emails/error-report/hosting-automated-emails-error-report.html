@@ -7,22 +7,20 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.formErrReportsEmail.$valid">
 
-            <div class="loader text-center" aria-label="{{i18n.common_loading}}" data-ng-if="ctrl.isLoading"></div>
+            <div class="text-center" data-ng-if="ctrl.isLoading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.isLoading">
                 <p data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_info"></p>
 
                 <form class="form-horizontal" name="ctrl.formErrReportsEmail">
-                    <div class="form-group" data-ng-class="{'has-error': ctrl.formErrReportsEmail.errReportsEmail.$dirty && ctrl.formErrReportsEmail.errReportsEmail.$invalid}">
-                        <label class="control-label col-md-4 required"
-                               for="errReportsEmail"
+                    <div class="form-group"
+                         data-ng-class="{'has-error': ctrl.formErrReportsEmail.errReportsEmail.$dirty && ctrl.formErrReportsEmail.errReportsEmail.$invalid}">
+                        <label class="control-label col-md-4 required" for="errReportsEmail"
                                data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_email"></label>
                         <div class="col-md-6">
-                            <input type="email"
-                                   class="form-control"
-                                   name="errReportsEmail"
-                                   id="errReportsEmail"
-                                   required
+                            <input type="email" class="form-control" name="errReportsEmail" id="errReportsEmail" required
                                    data-ng-model="ctrl.automatedEmails.email">
                             <div class="help-block" data-ng-messages="ctrl.formErrReportsEmail.errReportsEmail.$error">
                                 <small data-ng-message="ctrl.required" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_err_reports_email_required"></small>

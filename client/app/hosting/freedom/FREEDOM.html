@@ -1,24 +1,30 @@
 <div class="container-fluid px-0" data-ng-controller="HostingFreedomTabCtrl as ctrlHostingFreedomTab">
+    <div data-ovh-alert="{{alerts.main}}"></div>
+
     <h2 data-i18n-static="hosting_tab_FREEDOM"></h2>
 
     <!-- FREEDOM TABLE -->
     <div class="mb-3">
         <form class="form-inline d-md-flex justify-content-md-end" name="searchFreedomForm">
             <div class="form-group">
-                <label class="control-label" for="filter-status"
+                <label class="oui-label" for="filter-status"
                        data-i18n-static="hosting_tab_FREEDOM_status_filter"></label>
-                <select class="form-control mr-2" id="filter-status"
-                        data-ng-model="ctrlHostingFreedomTab.filter.status"
-                        data-ng-options="status as tr('hosting_tab_FREEDOM_status_' + status) for status in ctrlHostingFreedomTab.statusEnum track by status">
-                    <option value="" data-i18n-static="hosting_common_no_filter"></option>
-                </select>
+                <div class="oui-select oui-select_inline mb-0">
+                    <select class="oui-select__input" id="filter-status"
+                            data-ng-change="ctrlHostingFreedomTab.refreshTableFreedoms()"
+                            data-ng-model="ctrlHostingFreedomTab.filter.status"
+                            data-ng-options="status as tr('hosting_tab_FREEDOM_status_' + status) for status in ctrlHostingFreedomTab.statusEnum track by status">
+                        <option value=""
+                                data-i18n-static="hosting_common_no_filter"></option>
+                    </select>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                </div>
             </div>
         </form>
     </div>
 
     <div class="table-responsive">
-        <table class="table"
-               data-ng-class="{'table-hover table-striped': !ctrlHostingFreedomTab.loaders.freedoms && ctrlHostingFreedomTab.freedoms.length > 0}">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col" data-i18n-static="hosting_tab_FREEDOM_table_header_domain"></th>
@@ -26,7 +32,8 @@
                     <th class="text-center" scope="col" data-i18n-static="hosting_tab_FREEDOM_table_header_status"></th>
                     <th class="min-width text-right" scope="col">
                         <button class="btn btn-icon" title="{{::i18n.emails_tab_table_header_refresh}}"
-                                data-ng-click="ctrlHostingFreedomTab.refreshTableFreedoms(true)">
+                                data-ng-click="ctrlHostingFreedomTab.refreshTableFreedoms(true)"
+                                data-ng-disabled="ctrlHostingFreedomTab.loading">
                             <span class="fa fa-refresh" aria-hidden="true"></span>
                         </button>
                     </th>
@@ -34,28 +41,31 @@
             </thead>
 
             <!--loader-->
-            <tbody data-ng-if="ctrlHostingFreedomTab.loaders.freedoms">
+            <tbody data-ng-if="ctrlHostingFreedomTab.loading">
                 <tr>
-                    <td class="loader text-center" colspan="4" aria-label="{{i18n.common_loading}}"></td>
+                    <td class="loader text-center" colspan="4"></td>
                 </tr>
             </tbody>
 
             <!-- no freedom -->
-            <tbody data-ng-if="!ctrlHostingFreedomTab.loaders.freedoms && !ctrlHostingFreedomTab.freedoms.length">
+            <tbody data-ng-if="!ctrlHostingFreedomTab.loading && !ctrlHostingFreedomTab.freedoms.length">
                 <tr>
-                    <td class="text-center" colspan="4" data-i18n-static="hosting_tab_FREEDOM_table_empty"></td>
+                    <td class="text-center" colspan="4"
+                        data-i18n-static="hosting_tab_FREEDOM_table_empty"></td>
                 </tr>
             </tbody>
 
             <!-- freedoms -->
-            <tbody data-ng-if="!ctrlHostingFreedomTab.loaders.freedoms && ctrlHostingFreedomTab.freedoms.length > 0">
+            <tbody data-ng-if="!ctrlHostingFreedomTab.loading && ctrlHostingFreedomTab.freedoms.length > 0">
                 <tr data-ng-repeat="freedom in ctrlHostingFreedomTab.freedoms track by freedom.domain">
                     <th scope="row" data-ng-bind="::freedom.domain"></th>
                     <td data-ng-bind="::freedom.type"></td>
                     <td class="text-center">
-                        <span class="label" data-ng-class="{'label-success': freedom.status === 'ok',
-                                                            'label-danger': freedom.status === 'blockedByCustomer' || freedom.status === 'blockedBySystem',
-                                                            'label-info': freedom.status === 'preset'}"
+                        <span class="label"
+                              data-ng-class="{
+                                'label-success': freedom.status === 'ok',
+                                'label-danger': freedom.status === 'blockedByCustomer' || freedom.status === 'blockedBySystem',
+                                'label-info': freedom.status === 'preset'}"
                               data-ng-bind="::tr('hosting_tab_FREEDOM_status_' + freedom.status)"></span>
                     </td>
                     <td class="text-nowrap">
@@ -86,7 +96,7 @@
              data-on-transform-item-done="ctrlHostingFreedomTab.onTransformItemDone(items)"
              data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
              data-item-per-page-placeholder="{{tr('pagination_display')}}"
-             data-ng-show="!loaders.freedoms && ctrlHostingFreedomTab.freedoms.length > 0">
+             data-ng-show="!ctrlHostingFreedomTab.loading && ctrlHostingFreedomTab.freedoms.length > 0">
         </div>
     </div>
 </div>

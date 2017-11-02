@@ -26,7 +26,6 @@ angular
             ];
 
             this.pendingGrant = {};
-            this.alerts = "privateDataBase.alerts.bdd";
 
             this.getUsers();
 
@@ -79,27 +78,27 @@ angular
                 .then(() => {
                     this.pendingGrant[user.userName] = true;
                     this.privateDatabaseService.restartPoll(this.productId, ["grant/create", "grant/update"]);
-                    this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_doing"), this.alerts);
+                    this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_doing"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
-                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_tabs_users_grant_error"), err, this.alerts);
+                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_tabs_users_grant_error"), err, this.$scope.alerts.main);
                 });
         }
 
         onUserGrantStart () {
-            this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_doing"), this.alerts);
+            this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_doing"), this.$scope.alerts.main);
         }
 
         onUserGrantError (event, task) {
             this.pendingGrant[task.userName] = false;
-            this.alerter.error(this.$scope.tr("privateDatabase_tabs_users_grant_error"), this.alerts);
+            this.alerter.error(this.$scope.tr("privateDatabase_tabs_users_grant_error"), this.$scope.alerts.main);
         }
 
         onUserGrantDone (event, task) {
             this.pendingGrant[task.userName] = false;
             this.refresh();
-            this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_success"), this.alerts);
+            this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_success"), this.$scope.alerts.main);
         }
 
         refresh () {

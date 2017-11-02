@@ -143,7 +143,7 @@ angular.module("directives").directive("v6UiSwitch", () => {
             html += '<span class="v6us-switch-text">';
             html += '<span class="v6us-on"><span class="oui-icon oui-icon-success"></span></span>';
             html += '<span class="v6us-off"><span class="oui-icon oui-icon-error"></span></span>';
-            html += '<span class="v6us-partial"><span class="fa fa-minus-square-o"></span></span>';
+            html += '<span class="v6us-partial"><span class="oui-icon oui-icon-remove"></span></span>';
             html += '<span class="v6us-pending"><span class="fa fa-circle-o-notch fa-spin"></span></span>';
             html += "</button>";
 

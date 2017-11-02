@@ -24,11 +24,11 @@ angular.module("App").controller(
                 .changeLockState(this.domain.name, "locked")
                 .then((data) => {
                     this.$rootScope.$broadcast("domain.protection.lock.done", data);
-                    this.Alerter.success(this.$scope.tr("domain_configuration_protection_activate_success"), this.$scope.alerts.dashboard);
+                    this.Alerter.success(this.$scope.tr("domain_configuration_protection_activate_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
                     this.$rootScope.$broadcast("domain.protection.lock.error", err);
-                    this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_protection_activate_fail"), _.get(err, "data", err), this.$scope.alerts.dashboard);
+                    this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_protection_activate_fail"), _.get(err, "data", err), this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.$scope.resetAction();

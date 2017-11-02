@@ -7,7 +7,9 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading && ctrl.sendListForm.$valid">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
                 <p data-ng-bind-html="tr('mailing_list_tab_send_list_by_email', ctrl.mailingList.name)"></p>

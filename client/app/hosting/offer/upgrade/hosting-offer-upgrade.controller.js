@@ -1,132 +1,116 @@
-angular.module("App").controller("HostingUpgradeOfferCtrl", ($scope, Alerter, Hosting, User, $rootScope, $stateParams) => {
-    "use strict";
-
-    $scope.model = {
-        capacity: null,
-        duration: null
-    };
-
-    $scope.downgradeAgree = {
-        value: true
-    };
-
-    $scope.availableOffers = [];
-
-    $scope.loading = {
-        durations: null,
-        availableOffer: true
-    };
-
-    $scope.durations = null;
-
-    $scope.agree = {
-        value: false
-    };
-
-    $scope.orderByOffer = function (offer) {
-        return $scope.i18n[`hosting_dashboard_service_offer_${offer}`] || offer;
-    };
-
-    User.getUser().then((user) => {
-        $scope.ovhSubsidiary = user.ovhSubsidiary;
-    });
-
-    /*= =============================
-     =            STEP 1           =
-     ==============================*/
-    $scope.hosting = $scope.currentActionData;
-
-    $scope.getAvailableOffers = function () {
-        $scope.loading.availableOffer = true;
-
-        Hosting.getAvailableOffer($scope.hosting ? $scope.hosting.serviceName : $stateParams.productId).then(
-            (availableOffer) => {
-                $scope.availableOffers = availableOffer;
-                $scope.loading.availableOffer = false;
-            },
-            () => {
-                $scope.loading.availableOffer = false;
-                $scope.availableOffers = [];
-            }
-        );
-    };
-
-    $scope.onOfferChange = function () {
-        $scope.downgradeAgree.value = true;
-    };
-
-    /*= =============================
-     =            STEP 2            =
-     ==============================*/
-    $scope.getDurations = function getDurations () {
-        $scope.durations = {
-            available: [],
-            details: {}
-        };
-
-        $scope.loading.durations = true;
-
-        Hosting.getUpgradePrices(
-            $scope.hosting ? $scope.hosting.serviceName : $stateParams.productId,
-            $scope.model.capacity
-        ).then(
-            (durations) => {
-                $scope.loading.durations = false;
-                $scope.durations.available = durations;
-
-                if (durations.length === 1) {
-                    $scope.model.duration = $scope.durations.available[0];
-                }
-            },
-            (err) => {
-                $scope.resetAction();
-                Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.hosting ? "website.configuration" : "hosting.alerts.dashboard");
-            },
-            (duration) => {
-                $scope.durations.available = duration;
-            }
-        );
-    };
-
-    /*= =============================
-     =            STEP 3            =
-     ==============================*/
-    $scope.loadContracts = function () {
-        $scope.agree.value = false;
-        if (!$scope.model.duration.contracts || !$scope.model.duration.contracts.length) {
-            $rootScope.$broadcast("wizard-goToStep", 4);
+angular.module("App").controller(
+    "HostingUpgradeOfferCtrl",
+    class HostingUpgradeOfferCtrl {
+        constructor ($scope, $rootScope, $stateParams, Alerter, Hosting, User) {
+            this.$scope = $scope;
+            this.$rootScope = $rootScope;
+            this.$stateParams = $stateParams;
+            this.Alerter = Alerter;
+            this.Hosting = Hosting;
+            this.User = User;
         }
-    };
 
-    $scope.backToContracts = function () {
-        if (!$scope.model.duration.contracts || !$scope.model.duration.contracts.length) {
-            $rootScope.$broadcast("wizard-goToStep", 3);
+        $onInit () {
+            this.hosting = this.$scope.currentActionData;
+
+            this.availableOffers = [];
+            this.downgradeAgree = false;
+            this.durations = null;
+            this.loading = {
+                availableOffer: true,
+                durations: false
+            };
+            this.model = {
+                capacity: null,
+                duration: null
+            };
+
+            this.$scope.orderUpgrade = () => this.orderUpgrade();
+            this.$scope.getDurations = () => this.getDurations();
+            this.$scope.loadContracts = () => this.loadContracts();
+            this.$scope.backToContracts = () => this.backToContracts();
+
+            this.User.getUser()
+                .then((user) => {
+                    this.ovhSubsidiary = user.ovhSubsidiary;
+                });
+
+            this.Hosting.getAvailableOffer(_.get(this.hosting, "serviceName", this.$stateParams.productId))
+                .then((availableOffer) => {
+                    this.availableOffers = availableOffer;
+                })
+                .catch(() => {
+                    this.availableOffers = [];
+                })
+                .finally(() => {
+                    this.loading.availableOffer = false;
+                });
         }
-    };
 
-    /*= =============================
-     =            STEP 4            =
-     ==============================*/
+        /* Step 1 */
+        orderByOffer (offer) {
+            return this.$scope.i18n[`hosting_dashboard_service_offer_${offer}`] || offer;
+        }
 
-    $scope.getResumePrice = function (price) {
-        return price.value === 0 ? $scope.tr("price_free") : $scope.tr("price_ht_label", [price.text]);
-    };
+        /* Step 2 */
+        getDurations () {
+            this.durations = {
+                available: [],
+                details: {}
+            };
+            this.loading.durations = true;
 
-    $scope.orderUpgrade = function () {
-        $scope.loading.validation = true;
+            return this.Hosting.getUpgradePrices(_.get(this.hosting, "serviceName", this.$stateParams.productId), this.model.capacity)
+                .then((durations) => {
+                    this.durations.available = durations;
+                    if (durations.length === 1) {
+                        this.model.duration = this.durations.available[0];
+                    }
+                }, (err) => {
+                    this.$scope.resetAction();
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_order_upgrade_error"), err, this.$scope.alerts.main);
+                }, (durations) => {
+                    this.durations.available = durations;
+                })
+                .finally(() => {
+                    this.loading.durations = false;
+                });
+        }
 
-        $scope.resetAction();
-
-        Hosting.orderUpgrade($scope.hosting ? $scope.hosting.serviceName : $stateParams.productId, $scope.model.capacity, $scope.model.duration.duration).then(
-            (order) => {
-                $scope.loading.validation = false;
-                Alerter.success($scope.tr("hosting_order_upgrade_success", [order.url, order.orderId]), $scope.hosting ? "website.configuration" : "hosting.alerts.dashboard");
-                window.open(order.url, "_blank");
-            },
-            (err) => {
-                $scope.loading.validation = false;
-                Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.hosting ? "website.configuration" : "hosting.alerts.dashboard");
+        /* Step 3 */
+        loadContracts () {
+            this.agree = false;
+            if (!this.model.duration.contracts || !this.model.duration.contracts.length) {
+                this.$rootScope.$broadcast("wizard-goToStep", 4);
             }
-        );
-    };
-});
+        }
+
+        /* Step 4 */
+        backToContracts () {
+            if (!this.model.duration.contracts || !this.model.duration.contracts.length) {
+                this.$rootScope.$broadcast("wizard-goToStep", 3);
+            }
+        }
+
+        getResumePrice (price) {
+            return price.value === 0 ? this.$scope.tr("price_free") : this.$scope.tr("price_ht_label", [price.text]);
+        }
+
+        orderUpgrade () {
+            this.loading.validation = true;
+
+            return this.Hosting.orderUpgrade(_.get(this.hosting, "serviceName", this.$stateParams.productId), this.model.capacity, this.model.duration.duration)
+                .then((order) => {
+                    this.Alerter.success(this.$scope.tr("hosting_order_upgrade_success", [order.url, order.orderId]), this.$scope.alerts.main);
+                    window.open(order.url, "_blank");
+                })
+                .catch((err) => {
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_order_upgrade_error"), err, this.$scope.alerts.main);
+                })
+                .finally(() => {
+                    this.loading.validation = false;
+                    this.$scope.resetAction();
+                });
+        }
+    }
+);

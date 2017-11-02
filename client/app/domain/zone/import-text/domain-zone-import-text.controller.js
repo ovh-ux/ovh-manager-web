@@ -32,8 +32,8 @@ angular.module("App").controller(
             this.loading = true;
             return this.Domain
                 .importDnsText(this.domain.name, { zoneFile: this.model.zoneDnsText })
-                .then(() => this.Alerter.success(this.$scope.tr("domain_configuration_dns_importtext_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dns_importtext_error"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("domain_configuration_dns_importtext_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dns_importtext_error"), err, this.$scope.alerts.main))
                 .finally(() => {
                     this.loading = false;
                     this.$scope.resetAction();

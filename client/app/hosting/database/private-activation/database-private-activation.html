@@ -9,7 +9,9 @@
 
             <p data-i18n-static="hosting_dashboard_database_active_info"></p>
 
-            <div class="loader mt-5 text-center" aria-label="{{i18n.common_loading}}" data-ng-if="loaders.versions"></div>
+            <div class="text-center" data-ng-if="loaders.versions">
+                <oui-loader inline="true"></oui-loader>
+            </div>
 
             <div data-ng-if="!loaders.versions">
                 <form class="form-horizontal">
@@ -17,20 +19,30 @@
                         <label class="control-label col-md-3" for="databaseRam"
                                data-i18n-static="hosting_dashboard_database_active_ram"></label>
                         <div class="col-md-6">
-                            <select class="form-control" name="databaseRam" id="databaseRam"
-                                    data-ng-model="choice.ram"
-                                    data-ng-options="(ram.quota.value + ' ' + ram.quota.unit) for ram in hosting.offerCapabilities.privateDatabases">
-                            </select>
+                            <div class="oui-select">
+                                <select class="oui-select__input" id="databaseRam" name="databaseRam"
+                                        data-ng-model="choice.ram"
+                                        data-ng-options="(ram.quota.value + ' ' + ram.quota.unit) for ram in hosting.offerCapabilities.privateDatabases">
+                                    <option value="" disabled
+                                            data-i18n-static="select_placeholder"></option>
+                                </select>
+                                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="control-label col-md-3" for="databaseVersion"
                                data-i18n-static="hosting_dashboard_database_active_version"></label>
                         <div class="col-md-6">
-                            <select class="form-control" name="databaseVersion" id="databaseVersion"
-                                    data-ng-model="choice.version"
-                                    data-ng-options="version for (key, version) in datas.versions track by version">
-                            </select>
+                            <div class="oui-select">
+                                <select class="oui-select__input" id="databaseVersion" name="databaseVersion"
+                                        data-ng-model="choice.version"
+                                        data-ng-options="version for (key, version) in datas.versions track by version">
+                                    <option value="" disabled
+                                            data-i18n-static="select_placeholder"></option>
+                                </select>
+                                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                            </div>
                         </div>
                     </div>
                 </form>

@@ -8,21 +8,23 @@
              data-wizard-step-valid="!ctrl.loading">
 
             <p data-i18n-static="domain_configuration_zonedns_reset_question"></p>
-            <form class="form-horizontal ml-4">
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="zoneReset.minimized"
-                               data-ng-model="ctrl.zoneReset.minimized"
-                               data-ng-value="true">
-                        <span data-i18n-static="domain_configuration_zonedns_reset_minimized_yes"></span>
+            <form class="ml-4">
+                <div class="oui-radio">
+                    <input type="radio" class="oui-radio__input" id="zoneResetMinimized-yes" name="zoneReset.minimized"
+                           data-ng-model="ctrl.zoneReset.minimized"
+                           data-ng-value="true">
+                    <label class="oui-radio__label-container" for="zoneResetMinimized-yes">
+                        <span class="oui-radio__label"
+                              data-i18n-static="domain_configuration_zonedns_reset_minimized_yes"></span>
                     </label>
                 </div>
-                <div class="radio">
-                    <label>
-                        <input type="radio" name="zoneReset.minimized"
-                               data-ng-model="ctrl.zoneReset.minimized"
-                               data-ng-value="false">
-                        <span data-i18n-static="domain_configuration_zonedns_reset_minimized_no"></span>
+                <div class="oui-radio">
+                    <input type="radio" class="oui-radio__input" id="zoneResetMinimized-no" name="zoneReset.minimized"
+                           data-ng-model="ctrl.zoneReset.minimized"
+                           data-ng-value="false">
+                    <label class="oui-radio__label-container" for="zoneResetMinimized-no">
+                        <span class="oui-radio__label"
+                              data-i18n-static="domain_configuration_zonedns_reset_minimized_no"></span>
                     </label>
                 </div>
             </form>
@@ -37,34 +39,36 @@
 
             <p data-i18n-static="domain_configuration_zonedns_reset_title"></p>
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
             <form name="ctrl.resetZoneForm" data-ng-if="!ctrl.loading">
                 <div class="row">
                     <strong class="col-md-4" data-i18n-static="domain_configuration_zonedns_reset_type_A_title"></strong>
                     <div class="col-md-8">
-                        <div class="form-group" data-ng-class="{ 'has-error': ctrl.resetZoneForm.aOptsCustom.$dirty && ctrl.resetZoneForm.aOptsCustom.$invalid }">
-                            <label class="control-label" for="aOptsType"
-                                   data-i18n-static="domain_configuration_zonedns_reset_type_label"></label>
-                            <select class="form-control w-75" id="aOptsType" name="aOptsType" required
+                        <label class="oui-label" for="aOptsType"
+                               data-i18n-static="domain_configuration_zonedns_reset_type_label"></label>
+                        <div class="oui-select w-75">
+                            <select class="oui-select__input" id="aOptsType" name="aOptsType" required
                                     data-ng-change="ctrl.resetAForm()"
                                     data-ng-model="ctrl.aOpts.type"
                                     data-ng-options="type as tr('domain_configuration_zonedns_reset_type_' + type) for type in ctrl.aOpts.enum track by type">
                                 <option value="" disabled
                                         data-i18n-static="select_placeholder"></option>
                             </select>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
-                        <div class="form-group" data-ng-show="ctrl.aOpts.type === 'HOSTING_WEB'">
-                            <label class="control-label" for="aOptsHosting"
+                        <div data-ng-show="ctrl.aOpts.type === 'HOSTING_WEB'">
+                            <label class="oui-label" for="aOptsHosting"
                                    data-i18n-static="domain_configuration_zonedns_reset_type_HOSTING_WEB"></label>
-                            <div class="controls">
-                                <select class="form-control w-75" id="aOptsHosting" name="aOptsHosting"
+                            <div class="oui-select w-75">
+                                <select class="oui-select__input" id="aOptsHosting" name="aOptsHosting"
                                         data-ng-model="ctrl.aOpts.hosting"
                                         data-ng-options="hosting as hosting for hosting in ctrl.hostingList track by hosting"
                                         data-ng-required="ctrl.aOpts.type === 'HOSTING_WEB'">
                                     <option value="" disabled
                                             data-i18n-static="domain_configuration_zonedns_reset_type_HOSTING_WEB_placeholder"></option>
                                 </select>
+                                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                             </div>
                         </div>
                         <div class="form-group" data-ng-class="{ 'has-error': ctrl.resetZoneForm.aOptsCustom.$dirty && ctrl.resetZoneForm.aOptsCustom.$invalid }"
@@ -82,16 +86,17 @@
                 <div class="mt-4 row">
                     <strong class="col-md-4" data-i18n-static="domain_configuration_zonedns_reset_type_MX_title"></strong>
                     <div class="col-md-8">
-                        <div class="form-group" data-ng-class="{ 'has-error': ctrl.resetZoneForm.mxOptsType.$dirty && ctrl.resetZoneForm.mxOptsType.$invalid }">
-                            <label class="control-label" for="mxOptsType"
-                                   data-i18n-static="domain_configuration_zonedns_reset_type_label"></label>
-                            <select class="form-control w-75" id="mxOptsType" name="mxOptsType" required
+                        <label class="oui-label" for="mxOptsType"
+                               data-i18n-static="domain_configuration_zonedns_reset_type_label"></label>
+                        <div class="oui-select w-75">
+                            <select class="oui-select__input" id="mxOptsType" name="mxOptsType" required
                                     data-ng-change="ctrl.resetMxForm()"
                                     data-ng-model="ctrl.mxOpts.type"
                                     data-ng-options="type as tr('domain_configuration_zonedns_reset_type_' + type) for type in ctrl.mxOpts.enum track by type">
                                 <option value="" disabled
                                         data-i18n-static="select_placeholder"></option>
                             </select>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
                         <div class="form-group" data-ng-show="ctrl.mxOpts.type === 'CUSTOM'">
                             <label class="control-label" for="mxOptsCustom0" id="mxOptsCustomLabel"

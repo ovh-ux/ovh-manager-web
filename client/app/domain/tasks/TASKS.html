@@ -1,75 +1,71 @@
 <div class="container-fluid px-0" data-ng-controller="controllers.Domain.Tasks as ctrlDomainTasks">
-        <div class="loader text-center" data-ng-if="ctrlDomainTasks.loading"></div>
-    
-        <div data-ng-if="!ctrlDomainTasks.loading">
-            <div class="alert alert-info"
-                 role="alert"
-                 data-i18n-static="domain_tab_TASKS_no_tasks"
-                 data-ng-if="!ctrlDomainTasks.tasksDetails.length"></div>
-    
-            <div class="table-responsive" data-ng-if="ctrlDomainTasks.tasksDetails.length">
-                <table class="table table-hover table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col" data-i18n-static="domain_tab_TASKS_function"></th>
-                            <th scope="col" data-i18n-static="domain_tab_TASKS_todoDate"></th>
-                            <th scope="col" data-i18n-static="domain_tab_TASKS_comment"></th>
-                            <th scope="col" class="text-center" data-i18n-static="domain_tab_TASKS_state"></th>
-                            <th scope="col" class="min-width">
-                                <button class="btn btn-icon"
-                                        type="button"
-                                        title="{{i18n.refresh}}"
-                                        data-ng-click="ctrlDomainTasks.getTasks()">
-                                    <span class="fa fa-refresh" aria-hidden="true"></span>
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr data-ng-repeat="task in ctrlDomainTasks.tasksDetails track by task.id">
-                            <td data-ng-bind="::task.function"></td>
-                            <td data-ng-bind="::task.todoDate | date:'mediumDate'"></td>
-                            <td data-ng-bind="::task.comment || '-'"></td>
-                            <td class="text-center">
-                                <span class="label"
-                                      data-ng-class="{
-                                        'label-info': task.status === 'TODO' || task.status === 'DOING',
-                                        'label-danger': task.status === 'ERROR',
-                                        'label-default': task.status === 'CANCELLED',
-                                        'label-success': task.status === 'DONE'
-                                      }"
-                                      data-ng-bind="tr('domain_tab_TASKS_status_' +  task.status)">
-                                </span>
-                            </td>
-                            <td>
-                                <button class="btn btn-icon"
-                                        type="button"
-                                        title="{{i18n.wizard_modify}}"
-                                        data-ng-if="task.canCancel || task.canRelauch || task.canAccelerate"
-                                        data-ng-click="setAction('../domain-operation/update/domain-operation-update', task)">
-                                    <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    
-        <div class="clearfix" data-ng-if="ctrlDomainTasks.tasks">
-            <div data-pagination-front
-                 data-items="ctrlDomainTasks.tasks"
-                 data-paginated-items="ctrlDomainTasks.tasksDetails"
-                 data-current-page="currentPage"
-                 data-nb-pages="nbPages"
-                 data-items-per-page="itemsPerPage"
-                 data-transform-item="ctrlDomainTasks.transformItem(item)"
-                 data-on-transform-item-get-promise="getPromise(promise)"
-                 data-on-transform-item-notify="ctrlDomainTasks.onTransformItemNotify(item)"
-                 data-on-transform-item-done="ctrlDomainTasks.onTransformItemDone(items)"
-                 data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-                 data-item-per-page-placeholder="{{tr('pagination_display')}}"
-                 data-ng-show="!ctrlDomainTasks.loading && ctrlDomainTasks.tasksDetails.length > 0"></div>
+    <div class="text-center" data-ng-if="ctrlDomainTasks.loading">
+        <oui-loader size="l" inline="true"></oui-loader>
+    </div>
+
+    <div data-ng-if="!ctrlDomainTasks.loading">
+        <div class="alert alert-info" role="alert"
+             data-i18n-static="domain_tab_TASKS_no_tasks"
+             data-ng-if="!ctrlDomainTasks.tasksDetails.length"></div>
+
+        <div class="table-responsive" data-ng-if="ctrlDomainTasks.tasksDetails.length">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" data-i18n-static="domain_tab_TASKS_function"></th>
+                        <th scope="col" data-i18n-static="domain_tab_TASKS_todoDate"></th>
+                        <th scope="col" data-i18n-static="domain_tab_TASKS_comment"></th>
+                        <th scope="col" class="text-center" data-i18n-static="domain_tab_TASKS_state"></th>
+                        <th scope="col" class="min-width">
+                            <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
+                                    data-ng-click="ctrlDomainTasks.getTasks()">
+                                <span class="fa fa-refresh" aria-hidden="true"></span>
+                            </button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="task in ctrlDomainTasks.tasksDetails track by task.id">
+                        <td data-ng-bind="::task.function"></td>
+                        <td data-ng-bind="::task.todoDate | date:'mediumDate'"></td>
+                        <td data-ng-bind="::task.comment || '-'"></td>
+                        <td class="text-center">
+                            <span class="label"
+                                  data-ng-class="{
+                                    'label-info': task.status === 'TODO' || task.status === 'DOING',
+                                    'label-danger': task.status === 'ERROR',
+                                    'label-default': task.status === 'CANCELLED',
+                                    'label-success': task.status === 'DONE'
+                                  }"
+                                  data-ng-bind="tr('domain_tab_TASKS_status_' +  task.status)">
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-icon" type="button" title="{{i18n.wizard_modify}}"
+                                    data-ng-if="task.canCancel || task.canRelauch || task.canAccelerate"
+                                    data-ng-click="setAction('../domain-operation/update/domain-operation-update', task)">
+                                <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    
+
+    <div class="clearfix" data-ng-if="ctrlDomainTasks.tasks">
+        <div data-pagination-front
+             data-items="ctrlDomainTasks.tasks"
+             data-paginated-items="ctrlDomainTasks.tasksDetails"
+             data-current-page="currentPage"
+             data-nb-pages="nbPages"
+             data-items-per-page="itemsPerPage"
+             data-transform-item="ctrlDomainTasks.transformItem(item)"
+             data-on-transform-item-get-promise="getPromise(promise)"
+             data-on-transform-item-notify="ctrlDomainTasks.onTransformItemNotify(item)"
+             data-on-transform-item-done="ctrlDomainTasks.onTransformItemDone(items)"
+             data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+             data-item-per-page-placeholder="{{tr('pagination_display')}}"
+             data-ng-show="!ctrlDomainTasks.loading && ctrlDomainTasks.tasksDetails.length > 0"></div>
+    </div>
+</div>

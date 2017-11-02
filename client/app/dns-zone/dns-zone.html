@@ -1,6 +1,6 @@
-<div class="loader text-center" data-ng-if="ctrlDomain.loading.domainsInfos"></div>
+<div data-ovh-alert="{{ alerts.page }}"></div>
 
-<div data-ovh-alert="{{ alerts.dashboard }}"></div>
+<oui-loader size="l" data-ng-if="ctrlDomain.loading.domainsInfos"></oui-loader>
 
 <div data-ng-if="!ctrlDomain.loading.domainsInfos && ctrlDomain.domain">
     <div class="page-header">

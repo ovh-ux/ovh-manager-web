@@ -116,8 +116,8 @@ angular.module("App").controller(
 
             this.Emails
                 .createAccount(this.$stateParams.productId, this.account)
-                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_create_account_success"), this.$scope.alerts.dashboard))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_create_account_error"), err, this.$scope.alerts.dashboard))
+                .then(() => this.Alerter.success(this.$scope.tr("email_tab_modal_create_account_success"), this.$scope.alerts.main))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_create_account_error"), err, this.$scope.alerts.main))
                 .finally(() => this.$scope.resetAction());
         }
 
@@ -138,7 +138,7 @@ angular.module("App").controller(
                         this.validation.postmaster = true;
                     }
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_error"), err.data, this.$scope.alerts.dashboard))
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_error"), err.data, this.$scope.alerts.main))
                 .finally(() => (this.loading.accountSize = false));
         }
 

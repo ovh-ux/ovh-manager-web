@@ -7,34 +7,36 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.createResponderForm.$valid && ctrl.responderDurationCheck()">
 
-            <p class="font-weight-bold" data-i18n-static="email_tab_modal_create_responder_heading"></p>
-            <p data-i18n-static="email_tab_modal_create_responder_info"></p>
+            <p data-i18n-static="email_tab_modal_create_responder_heading"></p>
+            <p class="font-weight-bold" data-i18n-static="email_tab_modal_create_responder_info"></p>
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
             <div data-ng-if="!ctrl.loading">
-
-                <p>
-                    <small class="text-danger">*</small>
-                    <small data-i18n-static="required_fields"></small>
-                </p>
-
                 <form class="form-horizontal" name="ctrl.createResponderForm">
+                    <p>
+                        <small class="text-danger">*</small>
+                        <small data-i18n-static="required_fields"></small>
+                    </p>
+
                     <div class="form-group" data-ng-if="!ctrl.isDelegated">
-                        <span class="control-label col-md-4 font-weight-bold" data-i18n-static="email_tab_modal_create_responder_type"></span>
+                        <span class="col-md-4 control-label text-lg-right oui-label"
+                              data-i18n-static="email_tab_modal_create_responder_type"></span>
                         <div class="col-md-8">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="radio" name="responderType" value="typeAttached"
-                                           data-ng-model="ctrl.model.responderType">
-                                    <span data-i18n-static="email_tab_modal_create_responder_type_attached"></span>
+                            <div class="oui-radio">
+                                <input type="radio" class="oui-radio__input" id="responderType-attached" name="responderType" value="typeAttached"
+                                       data-ng-model="ctrl.model.responderType">
+                                <label class="oui-radio__label-container" for="responderType-attached">
+                                    <span class="oui-radio__label"
+                                          data-i18n-static="email_tab_modal_create_responder_type_attached"></span>
                                 </label>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="radio" name="responderType" value="typeFree"
-                                           data-ng-model="ctrl.model.responderType">
-                                    <span data-i18n-static="email_tab_modal_create_responder_type_free"></span>
+                            <div class="oui-radio">
+                                <input type="radio" class="oui-radio__input" id="responderType-free" name="responderType" value="typeFree"
+                                       data-ng-model="ctrl.model.responderType">
+                                <label class="oui-radio__label-container" for="responderType-free">
+                                    <span class="oui-radio__label"
+                                          data-i18n-static="email_tab_modal_create_responder_type_free"></span>
                                 </label>
                             </div>
                         </div>
@@ -45,10 +47,15 @@
                                data-i18n-static="email_tab_modal_create_responder_account"></label>
                         <div class="col-md-8">
                             <div class="input-group">
-                                <select class="form-control" id="select-account" name="responderAccount" required
-                                        data-ng-model="ctrl.model.account"
-                                        data-ng-options="account for account in ctrl.accountsNotUsed track by account">
-                                </select>
+                                <div class="oui-select mb-0">
+                                    <select class="oui-select__input" id="select-account" name="responderAccount" required
+                                            data-ng-model="ctrl.model.account"
+                                            data-ng-options="account for account in ctrl.accountsNotUsed track by account">
+                                        <option value="" disabled
+                                                data-i18n-static="select_placeholder"></option>
+                                    </select>
+                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                                </div>
                                 <span class="input-group-addon text-truncate" style="font-size:90%;max-width:22rem"
                                       data-ng-bind="'@' + ctrl.domain"></span>
                             </div>
@@ -91,21 +98,24 @@
                     </div>
 
                     <div class="form-group">
-                        <span class="control-label col-md-4 font-weight-bold" data-i18n-static="email_tab_modal_create_responder_duration"></span>
+                        <span class="col-md-4 control-label text-lg-right oui-label"
+                              data-i18n-static="email_tab_modal_create_responder_duration"></span>
                         <div class="col-md-4">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="radio" name="responderDuration" value="temporary"
-                                           data-ng-model="ctrl.model.responderDuration">
-                                    <span data-i18n-static="email_tab_modal_create_responder_temporary"></span>
+                            <div class="oui-radio">
+                                <input type="radio" class="oui-radio__input" id="responderDuration-temporary" name="responderDuration" value="temporary"
+                                       data-ng-model="ctrl.model.responderDuration">
+                                <label class="oui-radio__label-container" for="responderDuration-temporary">
+                                    <span class="oui-radio__label"
+                                          data-i18n-static="email_tab_modal_create_responder_temporary"></span>
                                 </label>
                             </div>
-                            <div class="checkbox">
-                                 <label>
-                                    <input type="radio" name="responderDuration" value="permanent"
-                                           data-ng-change="ctrl.resetResponderDuration()"
-                                           data-ng-model="ctrl.model.responderDuration">
-                                     <span data-i18n-static="email_tab_modal_create_responder_permanent"></span>
+                            <div class="oui-radio">
+                                <input type="radio" class="oui-radio__input" id="responderDuration-permanent" name="responderDuration" value="permanent"
+                                       data-ng-change="ctrl.resetResponderDuration()"
+                                       data-ng-model="ctrl.model.responderDuration">
+                                 <label class="oui-radio__label-container" for="responderDuration-permanent">
+                                     <span class="oui-radio__label"
+                                           data-i18n-static="email_tab_modal_create_responder_permanent"></span>
                                 </label>
                             </div>
                         </div>
@@ -154,16 +164,27 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="checkbox col-md-offset-4 pl-4">
-                            <label>
-                                <input type="checkbox" name="responderKeepCopy"
+                        <div class="col-md-8 col-md-offset-4">
+                            <div class="oui-checkbox">
+                                <input type="checkbox" class="oui-checkbox__input" id="responderKeepCopy" name="responderKeepCopy"
                                        data-ng-model="ctrl.model.responderKeepCopy">
-                                <span data-i18n-static="email_tab_modal_create_responder_delete_message" data-ng-if="ctrl.model.responderType !== 'typeFree'"></span>
-                                <span data-i18n-static="email_tab_modal_create_responder_copy" data-ng-if="ctrl.model.responderType === 'typeFree'"></span>
-                            </label>
-                            <div class="alert alert-warning mr-4 mt-3" role="alert"
+                                <label class="oui-checkbox__label-container" for="responderKeepCopy">
+                                    <span class="oui-checkbox__label">
+                                        <span data-i18n-static="email_tab_modal_create_responder_delete_message"
+                                              data-ng-if="ctrl.model.responderType !== 'typeFree'"></span>
+                                        <span data-i18n-static="email_tab_modal_create_responder_copy"
+                                              data-ng-if="ctrl.model.responderType === 'typeFree'"></span>
+                                    </span>
+                                    <span class="oui-checkbox__icon">
+                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="alert alert-warning" role="alert"
+                                 data-i18n-static="email_tab_modal_create_responder_copy_warning"
                                  data-ng-if="!ctrl.model.responderKeepCopy">
-                                <small data-i18n-static="email_tab_modal_create_responder_copy_warning"></small>
                             </div>
                         </div>
                     </div>
@@ -173,10 +194,15 @@
                                data-i18n-static="email_tab_modal_create_responder_copy_to"></label>
                         <div class="col-md-8">
                             <div class="input-group">
-                                <select class="form-control" id="txt-responder-copy-to" name="responderCopyTo" required
-                                        data-ng-model="ctrl.model.responderCopyTo"
-                                        data-ng-options="account for account in ctrl.accounts track by account">
-                                </select>
+                                <div class="oui-select mb-0">
+                                    <select class="oui-select__input" id="txt-responder-copy-to" name="responderCopyTo" required
+                                            data-ng-model="ctrl.model.responderCopyTo"
+                                            data-ng-options="account for account in ctrl.accounts track by account">
+                                        <option value="" disabled
+                                                data-i18n-static="select_placeholder"></option>
+                                    </select>
+                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                                </div>
                                 <span class="input-group-addon text-truncate" style="font-size:90%;max-width:22rem"
                                       data-ng-bind="'@' + ctrl.domain"></span>
                             </div>

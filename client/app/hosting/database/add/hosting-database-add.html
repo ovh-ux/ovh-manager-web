@@ -9,42 +9,48 @@
              data-wizard-step-on-load="load"
              data-wizard-step-valid="isStep1Valid()">
 
-            <div class="loader mt-5 text-center" aria-label="{{i18n.common_loading}}" data-ng-if="!model.capabilities"></div>
+            <oui-loader data-ng-if="!model.capabilities"></oui-loader>
 
-            <form name="hostingCreateDatabaseForm" data-ng-if="model.capabilities && model.capabilities.availableDatabases.length > 0">
+            <form name="hostingCreateDatabaseForm"
+                  data-ng-if="model.capabilities && model.capabilities.availableDatabases.length > 0">
                 <p data-i18n-static="hosting_tab_DATABASES_configuration_create_step1_question"></p>
 
-                <fieldset class="mb-3">
-                    <legend data-i18n-static="hosting_tab_DATABASES_configuration_create_step1_select_sgbd"></legend>
-                    <div class="radio" data-ng-repeat="type in availableDatabasesType track by $index">
-                        <label>
-                            <input type="radio" name="{{type}}" id="{{type}}" value="{{type}}"
-                                   data-ng-model="model.selected.type">
-                            <span data-ng-bind="tr('hosting_tab_DATABASES_configuration_create_sgbd_' + type)"></span>
+                <fieldset>
+                    <legend class="oui-label border-0"
+                            data-i18n-static="hosting_tab_DATABASES_configuration_create_step1_select_sgbd"></legend>
+                    <div class="oui-radio" data-ng-repeat="type in availableDatabasesType track by $index">
+                        <input type="radio" class="oui-radio__input" id="{{type}}" name="{{type}}" value="{{type}}"
+                               data-ng-model="model.selected.type">
+                        <label class="oui-radio__label-container" for="{{type}}">
+                            <span class="oui-radio__label"
+                                  data-ng-bind="tr('hosting_tab_DATABASES_configuration_create_sgbd_' + type)"></span>
                         </label>
                     </div>
                 </fieldset>
 
-                <fieldset class="mb-3" data-ng-if="model.selected.type && model.capabilities.bdVersions">
-                    <legend data-i18n-static="hosting_tab_DATABASES_configuration_create_step1_select_version"></legend>
-                    <div class="radio" data-ng-repeat="version in model.capabilities.bdVersions track by $index">
-                        <label>
-                            <input type="radio" name="{{version}}" id="{{version}}" value="{{version}}"
-                                   data-ng-model="model.selected.version">
-                            <span data-ng-bind="version"></span>
+                <fieldset data-ng-if="model.selected.type && model.capabilities.bdVersions">
+                    <legend class="oui-label border-0"
+                            data-i18n-static="hosting_tab_DATABASES_configuration_create_step1_select_version"></legend>
+                    <div class="oui-radio" data-ng-repeat="version in model.capabilities.bdVersions track by $index">
+                        <input type="radio" class="oui-radio__input" id="{{version}}" name="{{version}}" value="{{version}}"
+                               data-ng-model="model.selected.version">
+                        <label class="oui-radio__label-container" for="{{version}}">
+                            <span class="oui-radio__label"
+                                  data-ng-bind="version"></span>
                         </label>
                     </div>
                 </fieldset>
 
-                <div class="form-group">
-                    <label class="control-label" for="databaseType"
-                           data-i18n-static="hosting_tab_DATABASES_configuration_create_step1_select_type"></label>
-                    <select class="form-control" id="databaseType"
+                <label class="oui-label" for="databaseType"
+                       data-i18n-static="hosting_tab_DATABASES_configuration_create_step1_select_type"></label>
+                <div class="oui-select">
+                    <select class="oui-select__input" id="databaseType"
                             data-ng-model="model.selected.capabilitie">
                         <option data-ng-repeat="capabilitie in model.capabilities.availableDatabases track by $index"
                                 data-ng-bind="tr('hosting_tab_DATABASES_configuration_create_step1_select_type_' + capabilitie.type, [capabilitie.quota.value, capabilitie.quota.unit, capabilitie.available])"
                                 data-ng-value="capabilitie"></option>
                     </select>
+                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                 </div>
             </form>
 
@@ -54,7 +60,7 @@
                 <ul class="list-unstyled mt-2" data-ng-if="hosting.sqlPriveInfo.nbDataBaseActive >= hosting.sqlPriveInfo.nbDataBaseInclude">
                     <!-- MUTU PERSO -->
                     <li data-ng-if="isPerso()">
-                        <button class="btn btn-link text-left p-0" type="button" style="white-space: normal"
+                        <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-i18n-static="hosting_tab_DATABASES_configuration_create_upgrade_perso"
                                 data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)">
                         </button>
@@ -62,7 +68,7 @@
 
                     <!-- MUTU PRO -->
                     <li data-ng-if="isPro()">
-                        <button class="btn btn-link text-left p-0" type="button" style="white-space: normal"
+                        <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-i18n-static="hosting_tab_DATABASES_configuration_create_upgrade_pro"
                                 data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)">
                         </button>
@@ -70,7 +76,7 @@
 
                     <!-- OTHER MUTU -->
                     <li data-ng-if="!isPerf() && !isStart()">
-                        <button class="btn btn-link text-left p-0" type="button" style="white-space: normal"
+                        <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-i18n-static="hosting_tab_DATABASES_configuration_create_order_db"
                                 data-ng-click="setAction('database/order/hosting-database-order')">
                         </button>
@@ -78,7 +84,7 @@
 
                     <!-- ALL WITHOUT PERF -->
                     <li data-ng-if="!isPerf()">
-                        <button class="btn btn-link text-left p-0" type="button" style="white-space: normal"
+                        <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-i18n-static="hosting_tab_DATABASES_configuration_create_order_db_server"
                                 data-ng-click="buyPrivateDb() && !isStart()">
                         </button>
@@ -94,7 +100,7 @@
                     </li>
 
                     <li data-ng-if="isStart()">
-                        <button class="btn btn-link text-left p-0" type="button" style="white-space: normal"
+                        <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-i18n-static="hosting_tab_DATABASES_configuration_create_upgrade_start"
                                 data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)">
                         </button>

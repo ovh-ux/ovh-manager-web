@@ -1,4 +1,4 @@
-<div data-ovh-alert="{{alerts.dashboard}}"></div>
+<div data-ovh-alert="{{alerts.page}}"></div>
 
 <div data-ng-if="!ctrlDomains.loading.domainsError">
 
@@ -9,7 +9,9 @@
     <div class="container-fluid px-5">
         <div class="row mt-5">
             <div class="col-md-9">
-                <div class="loader text-center" data-ng-if="ctrlDomains.loading.init"></div>
+                <div data-ovh-alert="{{alerts.main}}"></div>
+
+                <oui-loader size="l" data-ng-if="ctrlDomains.loading.init"></oui-loader>
 
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="domains_dashboard_table_noresult"
@@ -17,8 +19,8 @@
                 </div>
 
                 <div data-ng-if="!ctrlDomains.loading.init && ctrlDomains.hasResult">
-                    <div class="mb-3">
-                        <form class="form-inline d-md-flex justify-content-md-end" name="searchDomainForm">
+                    <div class="mb-3 text-right">
+                        <form class="form-inline" name="searchDomainForm">
                             <div class="form-group">
                                 <label class="sr-only" for="searchDomain"
                                        data-i18n-static="domains_dashboard_search_label"></label>
@@ -45,8 +47,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table"
-                               data-ng-class="{ 'table-hover table-striped': !ctrlDomains.loading.domainsInfos && !ctrlDomains.loading.domainsSearch && domains.list.results.length }">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th class="min-width" scope="col">
@@ -60,9 +61,9 @@
                                     </th>
                                     <th scope="col" data-i18n-static="domains_dashboard_table_titles_name"></th>
                                     <th scope="col" data-i18n-static="domains_dashboard_table_titles_creation"></th>
-                                    <th scope="col" data-i18n-static="domains_dashboard_table_titles_expiration"></th>
-                                    <th scope="col" data-i18n-static="domains_dashboard_table_titles_whois"></th>
-                                    <th scope="col" data-i18n-static="domains_dashboard_table_titles_dnssec"></th>
+                                    <th scope="col" class="text-center" data-i18n-static="domains_dashboard_table_titles_whois"></th>
+                                    <th scope="col" class="text-center" data-i18n-static="domains_dashboard_table_titles_dnssec"></th>
+                                    <th scope="col" class="min-width"></th>
                                 </tr>
                             </thead>
                             <tbody data-ng-if="ctrlDomains.loading.domainsInfos || ctrlDomains.loading.domainsSearch">
@@ -70,17 +71,16 @@
                                     <td class="loader text-center" colspan="6"></td>
                                 </tr>
                             </tbody>
-                            <tbody data-ng-if="domains.count === 0 && !ctrlDomains.loading.domainsInfos && !ctrlDomains.loading.domainsSearch">
+                            <tbody data-ng-if="!ctrlDomains.loading.domainsInfos && !ctrlDomains.loading.domainsSearch && domains.count === 0">
                                 <tr>
                                     <td class="text-center" colspan="6"
                                         data-i18n-static="domains_dashboard_table_empty"></td>
                                 </tr>
                             </tbody>
-                            <tbody data-ng-if="domains.count > 0 && !ctrlDomains.loading.domainsInfos && !ctrlDomains.loading.domainsSearch">
+                            <tbody data-ng-if="!ctrlDomains.loading.domainsInfos && !ctrlDomains.loading.domainsSearch && domains.count > 0">
                                 <tr data-ng-repeat="domain in domains.list.results track by $index"
                                     data-ng-class="{'info': selectedDomains.indexOf(domain.name) !== -1}">
                                     <td>
-                                        <label class="sr-only" for="selectDomain-{{$index}}"></label>
                                         <input type="checkbox" name="domainsListResults[]" id="selectDomain-{{$index}}"
                                                data-ng-change="ctrlDomains.toggleDomain(domain.name)"
                                                data-ng-model="domain.selected">
@@ -90,48 +90,26 @@
                                            data-ng-href="{{'#/configuration/domain/' + domain.name}}"></a>
                                     </td>
                                     <td data-ng-bind="domain.creation|date:'mediumDate'"></td>
-                                    <td class="text-nowrap">
-                                        <span data-ng-bind="::domain.expiration|date:'mediumDate'"></span>
-                                        <button type="button" class="btn btn-icon"
-                                                data-ng-disabled="!domain.canOrder"
-                                                data-ng-click="setActionIfAuthorized(domain.canOrder, 'renew/domains-renew', domain)"
-                                                data-uib-tooltip="{{::i18n.domains_dashboard_tooltip_renew_single}}"
-                                                data-tooltip-append-to-body="true">
-                                            <span class="fa fa-refresh" aria-hidden="true"></span>
-                                        </button>
-                                    </td>
-                                    <td class="text-nowrap">
+                                    <td class="text-center">
                                         <span data-ng-if="domain.whoisFields.length > 0"
                                               data-i18n-static="common_activated"></span>
                                         <span data-ng-if="domain.whoisFields.length === 0"
                                               data-i18n-static="common_desactivated"></span>
-                                        <button class="btn btn-icon" type="button"
-                                                data-ng-click="setActionIfAuthorized(domain.whoisActivable, 'owo/domains-owo', domain)"
-                                                data-ng-disabled="!domain.whoisActivable"
-                                                data-uib-tooltip="{{::i18n.domains_dashboard_tooltip_whois_single}}"
-                                                data-tooltip-append-to-body="true">
-                                            <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                                        </button>
                                     </td>
-                                    <td class="text-nowrap">
+                                    <td class="text-center">
                                         <span data-ng-if="domain.dnssecSupported && domain.dnssecStatus !== null"
                                               data-ng-bind="::i18n['domains_dashboard_table_dnssec_status_' + domain.dnssecStatus]"></span>
                                         <span data-ng-if="!domain.dnssecSupported"
                                               data-i18n-static="common_not_supported"></span>
-                                        <button class="btn btn-icon" type="button"
-                                                data-ng-click="setActionIfAuthorized(domain.dnssecSupported && domain.dnssecStatus !== null, 'dnssec/simple/activate/domains-dnssec-simple-activate', domain)"
-                                                data-ng-disabled="!domain.dnssecSupported"
-                                                data-ng-if="domain.dnssecSupported && domain.dnssecStatus === 'DISABLED'"
-                                                data-uib-tooltip="{{::i18n.domains_dashboard_tooltip_dnssec_activate_single}}"
-                                                data-tooltip-append-to-body="true">
-                                            <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                                        </button>
-                                        <button class="btn btn-icon" type="button"
-                                                data-ng-click="setActionIfAuthorized(domain.dnssecSupported && domain.dnssecStatus !== null, 'dnssec/simple/deactivate/domains-dnssec-simple-deactivate', domain)"
-                                                data-ng-disabled="!domain.dnssecSupported"
-                                                data-ng-if="domain.dnssecSupported && domain.dnssecStatus === 'ENABLED'"
-                                                data-uib-tooltip="{{::i18n.domains_dashboard_tooltip_dnssec_deactivate_single}}"
-                                                data-tooltip-append-to-body="true">
+                                    </td>
+                                    <td class="text-right">
+                                        <button class="btn btn-icon" type="button" title="{{tr('common_actions')}}"
+                                                data-linkedpopover="domains/domains.popover.html"
+                                                data-linkedpopover-placement="left"
+                                                data-linkedpopover-remote="true"
+                                                data-linkedpopover-single="true"
+                                                data-linkedpopover-title="{{i18n.common_actions}}"
+                                                data-ng-disabled="!domain.canOrder && !domain.whoisActivable && !domain.dnssecSupported">
                                             <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                                         </button>
                                     </td>

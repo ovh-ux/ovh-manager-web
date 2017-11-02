@@ -1,18 +1,16 @@
-<div data-ng-controller="PrivateDatabaseUsersGrantsCtrl as usersGrantsCtrls">
+<div data-ovh-alert="{{alerts.main}}"></div>
 
-    <div class="mb-3 d-flex">
-        <button class="btn btn-default my-auto" type="button"
-                data-ng-click="goToList()">
-            <span class="fa fa-chevron-left mr-2" aria-hidden="true"></span>
-            <span data-i18n-static="common_back"></span>
-        </button>
-        <h2 class="d-inline ml-4 mb-0"
-            data-ng-bind-html="tr('privateDatabase_tabs_user_grant_change') + ' ' + user.userName"></h2>
-    </div>
+<div data-ng-controller="PrivateDatabaseUsersGrantsCtrl as usersGrantsCtrls">
+    <button class="oui-button oui-button_link oui-button_icon-left" type="button"
+            data-ng-click="goToList()">
+        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+        <span data-i18n-static="common_back"></span>
+    </button>
+
+    <h2 data-ng-bind-html="tr('privateDatabase_tabs_user_grant_change') + ' ' + user.userName"></h2>
 
     <div class="table-responsive">
-        <table class="table"
-               data-ng-class="{'table-hover table-striped': !usersGrantsCtrls.loaders.userGrants && usersGrantsCtrls.nbGrants}">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col" data-i18n-static="privateDatabase_database"></th>

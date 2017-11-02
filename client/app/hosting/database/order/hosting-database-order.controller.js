@@ -27,11 +27,12 @@ angular.module("App").controller("HostingDatabaseOrderCtrl", ($scope, $q, $windo
                     $scope.isOrderable = true;
                 }
                 $scope.loading.model = true;
-                HostingOptionOrder.getOrderEnums("hosting.web.database.SqlPersoOfferEnum").then((models) => {
-                    $scope.availableOffers = models;
-                }).finally(() => {
-                    $scope.loading.model = false;
-                });
+                HostingOptionOrder.getOrderEnums("hosting.web.database.SqlPersoOfferEnum")
+                    .then((models) => {
+                        $scope.availableOffers = models;
+                    }).finally(() => {
+                        $scope.loading.model = false;
+                    });
             })
             .finally(() => {
                 $scope.loading.init = false;
@@ -41,24 +42,25 @@ angular.module("App").controller("HostingDatabaseOrderCtrl", ($scope, $q, $windo
     $scope.getDuration = function () {
         const queue = [];
         $scope.loading.duration = true;
-        HostingOptionOrder.getOrderDurations("extraSqlPerso", { offer: $scope.model.offer }).then((durations) => {
-            $scope.durations = durations;
-            if ($scope.durations.length === 1) {
-                $scope.model.duration = $scope.durations[0];
-            }
-            $scope.loading.details = true;
-            angular.forEach($scope.durations, (duration) => {
-                queue.push(
-                    HostingOptionOrder.getOrderDetailsForDuration("extraSqlPerso", duration, { offer: $scope.model.offer }).then((details) => {
-                        $scope.details[duration] = details;
-                    })
-                );
+        HostingOptionOrder.getOrderDurations("extraSqlPerso", { offer: $scope.model.offer })
+            .then((durations) => {
+                $scope.durations = durations;
+                if ($scope.durations.length === 1) {
+                    $scope.model.duration = $scope.durations[0];
+                }
+                $scope.loading.details = true;
+                _.forEach($scope.durations, (duration) => {
+                    queue.push(
+                        HostingOptionOrder.getOrderDetailsForDuration("extraSqlPerso", duration, { offer: $scope.model.offer }).then((details) => {
+                            $scope.details[duration] = details;
+                        })
+                    );
+                });
+                $q.all(queue).then(() => {
+                    $scope.loading.details = false;
+                });
+                $scope.loading.duration = false;
             });
-            $q.all(queue).then(() => {
-                $scope.loading.details = false;
-            });
-            $scope.loading.duration = false;
-        });
     };
 
     $scope.isStepValid = function (step) {
@@ -76,10 +78,11 @@ angular.module("App").controller("HostingDatabaseOrderCtrl", ($scope, $q, $windo
 
     $scope.orderDatabase = function () {
         $scope.loading.order = true;
-        HostingOptionOrder.makeOrder("extraSqlPerso", $scope.model.duration, { offer: $scope.model.offer }).then((order) => {
-            $scope.resetAction();
-            Alerter.success($scope.tr("hosting_tab_DATABASES_configuration_order_success", [order.url, order.orderId]), "hosting.alerts.dashboard");
-            $window.open(order.url, "_blank");
-        });
+        HostingOptionOrder.makeOrder("extraSqlPerso", $scope.model.duration, { offer: $scope.model.offer })
+            .then((order) => {
+                $scope.resetAction();
+                Alerter.success($scope.tr("hosting_tab_DATABASES_configuration_order_success", [order.url, order.orderId]), $scope.alerts.main);
+                $window.open(order.url, "_blank");
+            });
     };
 });
