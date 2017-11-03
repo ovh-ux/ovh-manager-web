@@ -119,10 +119,9 @@ angular.module("services").service(
                             return database;
                         });
                 })
-                .then((db) => {
-                    // reformat capabilities array as an object for easy access
-                    db.capabilities = _.mapKeys(db.capabilities, (c) => c.object);
-                    return db;
+                .then((database) => {
+                    database.capabilities = _.mapKeys(database.capabilities, (capability) => capability.object);
+                    return database;
                 })
                 .catch((err) => this.$q.reject(err.data));
         }
