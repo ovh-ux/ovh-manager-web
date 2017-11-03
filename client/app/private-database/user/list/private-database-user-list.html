@@ -83,6 +83,7 @@
 
     <div class="col-md-3 mt-5 mt-lg-0">
         <button class="btn btn-block btn-default" type="button"
+                data-ng-if="database.capabilities.user.create"
                 data-i18n-static="privateDatabase_tabs_add_user"
                 data-ng-click="setAction('user/add/private-database-user-add', {'user':usersListCtrl.usersIds})"
                 data-ng-disabled="database.state !== 'started' || taskState.changeVersion || usersListCtrl.lockAction"></button>

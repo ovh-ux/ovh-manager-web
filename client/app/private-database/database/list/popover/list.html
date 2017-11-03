@@ -1,5 +1,6 @@
 <div class="popover-menu">
     <button class="btn btn-link" type="button"
+            data-ng-if="database.capabilities.dump.create"
             data-i18n-static="privateDatabase_action_dump_now"
             data-ng-click="listCtrl.dumpBDD(bdd)"
             data-ng-disabled="bdd.waitDump || bdd.waitRestore">
@@ -15,6 +16,7 @@
             data-ng-disabled="bdd.waitDump || bdd.waitRestore">
     </button>
     <button class="btn btn-link" type="button"
+            data-ng-if="database.capabilities.database.delete"
             data-i18n-static="privateDatabase_action_deleteBDD"
             data-ng-click="setAction('database/delete/private-database-database-delete', bdd)"
             data-ng-disabled="bdd.waitDump || bdd.waitRestore">
