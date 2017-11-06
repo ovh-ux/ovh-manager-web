@@ -935,7 +935,45 @@ angular.module("services").service(
         }
 
         killPollRestore () {
-            this.Poll.kill({ namespace: "privateDatabase.database.resore" });
+            this.Poll.kill({ namespace: "privateDatabase.database.restore" });
+        }
+
+        deleteDumpBDD (serviceName, databaseName, dumpId) {
+            return this.$http
+                .delete(`${this.swsProxypassPath}/${serviceName}/database/${databaseName}/dump/${dumpId}`)
+                .then((response) => {
+                    this.pollDatabaseDumpDelete(serviceName, {
+                        taskId: response.data.id,
+                        taskFunction: response.data.function.replace("privateDatabase/", ""),
+                        databaseName
+                    });
+                    return response.data.id;
+                })
+                .catch((err) => this.$q.reject(err.data));
+        }
+
+        pollDatabaseDumpDelete (serviceName, opts) {
+            const namespace = `privateDatabase.${opts.taskFunction.replace(/\//g, ".")}`;
+            const options = angular.copy(opts);
+            options.namespace = namespace;
+
+            return this.poll(serviceName, {
+                taskId: opts.taskId,
+                databaseName: opts.databaseName,
+                namespace
+            }).then(() => {
+                this.databaseDumpDeleteSuccess(options);
+            }).catch(() => {
+                this.databaseDumpDeleteError(options);
+            });
+        }
+
+        databaseDumpDeleteSuccess (opts) {
+            this.$rootScope.$broadcast(`${opts.namespace}.done`, opts);
+        }
+
+        databaseDumpDeleteError (opts) {
+            this.$rootScope.$broadcast(`${opts.namespace}.error`, opts);
         }
 
         getConfigurationDetails (serviceName) {
