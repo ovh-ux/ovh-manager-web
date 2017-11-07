@@ -38,8 +38,6 @@ angular.module("App").controller(
 
             this.$scope.createResponder = () => this.createResponder();
 
-            moment.locale(this.$scope.selectedLanguage.value.split("_")[0]);
-
             if (this.isDelegated) {
                 this.accountsNotUsed = this.accounts;
             } else {

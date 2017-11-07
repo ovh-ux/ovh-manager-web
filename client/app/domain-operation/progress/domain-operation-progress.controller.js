@@ -18,9 +18,6 @@ angular.module("App").controller("DomainOperationProgressCtrl", class DomainOper
             { name: "finalizationOfTheTransfer", active: false, position: 84 }
         ];
 
-
-        moment.locale(this.$scope.selectedLanguage.value.split("_")[0]);
-
         this.getProgress();
     }
 
