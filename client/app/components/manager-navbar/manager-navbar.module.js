@@ -10,7 +10,7 @@ angular
         function setMenuItemssToOtherUniverses (currentUser) {
             const universeMenuItems = Object.keys(constants.MANAGER_URLS)
                 .map((universeName) => ({
-                    icon: universeName === "labs" ? "fa fa-flask fs24" : null,
+                    icon: universeName === "labs" ? "fa fa-flask" : null,
                     label: universeName === "labs" ? null : translator.tr(`universe_univers-${universeName}_name`),
                     title: translator.tr(`universe_univers-${universeName}_name`),
                     universe: universeName,
