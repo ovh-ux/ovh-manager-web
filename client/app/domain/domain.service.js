@@ -1313,6 +1313,10 @@ angular.module("services").service(
             });
         }
 
+        /**
+         * Get DNS Anycast status
+         * @param {string} serviceName
+         */
         getDnsAnycast (serviceName) {
             return this.OvhHttp
                 .get(`/domain/zone/${serviceName}`, { rootPath: "apiv6" })
