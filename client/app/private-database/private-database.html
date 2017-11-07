@@ -8,10 +8,10 @@
     <div class="page-header" data-ng-show="!ctrl.loaders.details">
         <div class="row">
             <div class="col-md-9">
-                <span data-ng-if="database.offer === 'classic'"
-                      data-i18n-static="privateDatabase_order_sql_type_premium_label"></span>
-                <span data-ng-if="database.offer === 'public'"
-                      data-i18n-static="privateDatabase_order_sql_type_dbaas_label"></span>
+                <strong data-ng-if="database.offer === 'classic'"
+                        data-i18n-static="privateDatabase_order_sql_type_premium_label"></strong>
+                <strong data-ng-if="database.offer === 'public'"
+                        data-i18n-static="privateDatabase_order_sql_type_dbaas_label"></strong>
                 <div class="mb-3" data-ng-show="!ctrl.editMode">
                     <div class="d-flex">
                         <h1 class="d-inline-block mb-0"
