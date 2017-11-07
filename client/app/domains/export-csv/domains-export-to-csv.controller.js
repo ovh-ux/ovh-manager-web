@@ -37,6 +37,7 @@ angular.module("App").controller(
                 { label: "expiration_date", modelKey: "expiration", checked: true },
                 { label: "whois_fields", modelKey: "owo", checked: false, target: "owo", transform: (value, translations) => _.size(value) ? translations.enabled : translations.disabled },
                 { label: "dnssec", modelKey: "dnssec", checked: false, target: "dnssec", transform: (value, translations) => value && value.status ? translations[value.status] : "" },
+                { label: "dnsanycast", modelKey: "dnsanycast", checked: false, target: "dnsanycast", transform: (value, translations) => value && value.status ? translations[value.status] : "" },
                 { label: "nic_billing", modelKey: "contactBilling", checked: true },
                 { label: "nic_tech", modelKey: "contactTech", checked: true },
                 { label: "nic_admin", modelKey: "contactAdmin", checked: true },
@@ -82,10 +83,10 @@ angular.module("App").controller(
                             total: zones.length,
                             datas: [header],
                             translations: {
-                                disabled: this.$scope.tr("domains_dashboard_table_dnssec_status_DISABLED"),
-                                enabled: this.$scope.tr("domains_dashboard_table_dnssec_status_ENABLED"),
-                                enable_in_progress: this.$scope.tr("domains_dashboard_table_dnssec_status_ENABLE_IN_PROGRESS"),
-                                disable_in_progress: this.$scope.tr("domains_dashboard_table_dnssec_status_DISABLE_IN_PROGRESS")
+                                disabled: this.$scope.tr("common_desactivated"),
+                                enabled: this.$scope.tr("common_activated"),
+                                enableInProgress: this.$scope.tr("domains_dashboard_table_dnssec_status_ENABLE_IN_PROGRESS"),
+                                disableInProgress: this.$scope.tr("domains_dashboard_table_dnssec_status_DISABLE_IN_PROGRESS")
                             },
                             choices,
                             requestsNeeded

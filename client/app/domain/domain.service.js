@@ -1313,6 +1313,18 @@ angular.module("services").service(
             });
         }
 
+        getDnsAnycast (serviceName) {
+            return this.OvhHttp
+                .get(`/domain/zone/${serviceName}`, { rootPath: "apiv6" })
+                .then((response) => {
+                    if (response.hasDnsAnycast != null) {
+                        return { status: (response.hasDnsAnycast && "enabled") || "disabled" };
+                    }
+                    return null;
+                })
+                .catch((err) => this.$q.reject(err));
+        }
+
         /**
          * Get Owner
          * @param {string} serviceName
@@ -1370,7 +1382,13 @@ angular.module("services").service(
             }
 
             if (_.indexOf(options, "dns") !== -1) {
-                queue.push(this.getAllNameServer(serviceName));
+                queue.push(this.getAllNameServer(serviceName).catch(catchErrorAndGoOn));
+            } else {
+                queue.push(null);
+            }
+
+            if (_.indexOf(options, "dnsanycast") !== -1) {
+                queue.push(this.getDnsAnycast(serviceName).catch(catchErrorAndGoOn));
             } else {
                 queue.push(null);
             }
@@ -1383,6 +1401,7 @@ angular.module("services").service(
                     data.owo = results[2];
                     data.owner = results[3];
                     data.dns = results[4];
+                    data.dnsanycast = results[5];
 
                     if (!_.isEmpty(data.domain) && _.isString(data.domain)) {
                         data.displayName = punycode.toUnicode(data.domain);
