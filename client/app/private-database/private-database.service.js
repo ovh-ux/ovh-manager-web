@@ -962,18 +962,10 @@ angular.module("services").service(
                 databaseName: opts.databaseName,
                 namespace
             }).then(() => {
-                this.databaseDumpDeleteSuccess(options);
+                this.$rootScope.$broadcast(`${opts.namespace}.done`, opts);
             }).catch(() => {
-                this.databaseDumpDeleteError(options);
+                this.$rootScope.$broadcast(`${opts.namespace}.error`, opts);
             });
-        }
-
-        databaseDumpDeleteSuccess (opts) {
-            this.$rootScope.$broadcast(`${opts.namespace}.done`, opts);
-        }
-
-        databaseDumpDeleteError (opts) {
-            this.$rootScope.$broadcast(`${opts.namespace}.error`, opts);
         }
 
         getConfigurationDetails (serviceName) {
