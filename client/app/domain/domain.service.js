@@ -1245,7 +1245,7 @@ angular.module("services").service(
         // --------------------- DNSSec ----------------------
 
         /**
-     * Get DNSSec by id
+         * Get DNSSec by id
          * @param {string} serviceName
          * @param {string} id
          */
@@ -1321,12 +1321,11 @@ angular.module("services").service(
             return this.OvhHttp
                 .get(`/domain/zone/${serviceName}`, { rootPath: "apiv6" })
                 .then((response) => {
-                    if (response.hasDnsAnycast != null) {
-                        return { status: (response.hasDnsAnycast && "enabled") || "disabled" };
+                    if (_.isBoolean(response.hasDnsAnycast)) {
+                        return { status: response.hasDnsAnycast ? "enabled" : "disabled" };
                     }
                     return null;
-                })
-                .catch((err) => this.$q.reject(err));
+                });
         }
 
         /**
