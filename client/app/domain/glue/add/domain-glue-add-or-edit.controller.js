@@ -10,7 +10,6 @@ angular.module("controllers").controller(
 
         $onInit () {
             this.domain = angular.copy(this.$scope.currentActionData.domain);
-            this.domain.glueRecordIpv6Supported = true;
             this.editedGlueRecord = _.get(this.$scope.currentActionData, "editedGlueRecord", null);
             this.editMode = !!this.editedGlueRecord;
 
