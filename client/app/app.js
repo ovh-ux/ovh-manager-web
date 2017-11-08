@@ -186,7 +186,7 @@ angular
                     if ($delegate.isTagAvailable() && result.nichandle) {
                         const atinternetTag = $delegate.getTag();
 
-                        atinternetTag.page.set();
+                        // atinternetTag.page.set();
                         atinternetTag.identifiedVisitor.set({ id: result.nichandle });
                         atinternetTag.dispatch();
                     }
