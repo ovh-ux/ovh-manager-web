@@ -50,53 +50,35 @@ angular.module("App").controller(
                 .then((data) => {
                     if (_.isArray(data)) {
 
-                        // memory
-                        this.chart.memory = new this.ChartjsFactory(angular.copy(this.constant.PRIVATE_DATABASE_METRICS.chart));
-                        this.chart.memory.setAxisOptions("yAxes", {
-                            type: "linear"
-                        });
-                        this.chart.memory.addSerie(
-                            this.$scope.tr(`privateDatabase_metrics_memory_graph_${data[0].metric.replace(/\./g, "_")}`),
-                            this.constructor.getChartSeries(data[0]),
-                            {
-                                dataset: {
-                                    fill: true,
-                                    borderWidth: 1
-                                }
-                            }
-                        );
+                        const graphs = {
+                            memory: _.get(data, ["0"]),
+                            connections: _.get(data, ["1"]),
+                            time: _.get(data, ["2"])
+                        };
 
-                        // connections
-                        this.chart.connections = new this.ChartjsFactory(angular.copy(this.constant.PRIVATE_DATABASE_METRICS.chart));
-                        this.chart.connections.setAxisOptions("yAxes", {
-                            type: "linear"
-                        });
-                        this.chart.connections.addSerie(
-                            this.$scope.tr(`privateDatabase_metrics_connections_graph_${data[1].metric.replace(/\./g, "_")}`),
-                            this.constructor.getChartSeries(data[1]),
-                            {
-                                dataset: {
-                                    fill: true,
-                                    borderWidth: 1
-                                }
-                            }
-                        );
+                        _.each(_.pairs(graphs), (graph) => {
+                            const key = graph[0];
+                            const value = graph[1];
 
-                        // time
-                        this.chart.time = new this.ChartjsFactory(angular.copy(this.constant.PRIVATE_DATABASE_METRICS.chart));
-                        this.chart.time.setAxisOptions("yAxes", {
-                            type: "linear"
-                        });
-                        this.chart.time.addSerie(
-                            this.$scope.tr(`privateDatabase_metrics_time_graph_${data[2].metric.replace(/\./g, "_")}`),
-                            this.constructor.getChartSeries(data[2]),
-                            {
-                                dataset: {
-                                    fill: true,
-                                    borderWidth: 1
-                                }
+                            if (!value) {
+                                return;
                             }
-                        );
+
+                            this.chart[key] = new this.ChartjsFactory(angular.copy(this.constant.PRIVATE_DATABASE_METRICS.chart));
+                            this.chart[key].setAxisOptions("yAxes", {
+                                type: "linear"
+                            });
+                            this.chart[key].addSerie(
+                                this.$scope.tr(`privateDatabase_metrics_${key}_graph_${value.metric.replace(/\./g, "_")}`),
+                                this.constructor.getChartSeries(value),
+                                {
+                                    dataset: {
+                                        fill: true,
+                                        borderWidth: 1
+                                    }
+                                }
+                            );
+                        });
                     }
                 })
                 .catch((err) => {
