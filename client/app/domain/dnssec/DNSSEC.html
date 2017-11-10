@@ -79,7 +79,8 @@
                                        data-ng-max="ctrlDomainDnssec.const.TAG_MAX"
                                        data-ng-model="myDnssec.tag"
                                        data-uib-tooltip="{{::i18n.domain_tab_DNSSEC_tooltip_tag}}"
-                                       data-tooltip-placement="bottom">
+                                       data-tooltip-placement="bottom"
+                                       data-tooltip-append-to-body="true">
                             </td>
                             <td class="form-group"
                                 data-ng-class="{'has-error': ctrlDomainDnssec.addDnssecForm.flags_{{$index}}.$dirty && ctrlDomainDnssec.addDnssecForm.flags_{{$index}}.$invalid}">
@@ -90,7 +91,8 @@
                                         data-ng-model="myDnssec.flags"
                                         data-ng-options="flag as ctrlDomainDnssec.constructor.getLabel(flag, ctrlDomainDnssec.const.FLAGS_OPTIONS) for flag in ctrlDomainDnssec.keyFlagEnum track by flag"
                                         data-uib-tooltip="{{::i18n.domain_tab_DNSSEC_tooltip_flags}}"
-                                        data-tooltip-placement="bottom">
+                                        data-tooltip-placement="bottom"
+                                        data-tooltip-append-to-body="true">
                                 </select>
                             </td>
                             <td class="form-group"
@@ -102,7 +104,8 @@
                                         data-ng-model="myDnssec.algorithm"
                                         data-ng-options="algorithm as ctrlDomainDnssec.constructor.getLabel(algorithm, ctrlDomainDnssec.const.ALGORITHM_OPTIONS) for algorithm in ctrlDomainDnssec.keyAlgorithmEnum track by algorithm"
                                         data-uib-tooltip="{{::i18n.domain_tab_DNSSEC_tooltip_algorithm}}"
-                                        data-tooltip-placement="bottom">
+                                        data-tooltip-placement="bottom"
+                                        data-tooltip-append-to-body="true">
                                 </select>
                             </td>
                             <td class="form-group"
@@ -114,7 +117,8 @@
                                           data-ng-model="myDnssec.publicKey"
                                           data-ng-pattern="ctrlDomainDnssec.const.PUBLIC_KEY_REGEX"
                                           data-uib-tooltip="{{::i18n.domain_tab_DNSSEC_tooltip_publickey}}"
-                                          data-tooltip-placement="bottom">
+                                          data-tooltip-placement="bottom"
+                                          data-tooltip-append-to-body="true">
                                 </textarea>
                             </td>
                             <td class="align-middle text-center">
