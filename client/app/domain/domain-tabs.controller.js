@@ -58,7 +58,7 @@ angular.module("App").controller(
             };
 
             if (!this.$scope.ctrlDomain.hasZoneDns) {
-                _.pullAt(this.tabs, [4]);
+                this.tabs = _.filter(this.tabs, (tab) => tab !== "DYNHOST");
             }
 
             this.setSelectedTab = this.setSelectedTab.bind(this);
