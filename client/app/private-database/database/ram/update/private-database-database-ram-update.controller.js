@@ -119,7 +119,7 @@ angular
 
             this.privateDatabaseService.orderRam(this.productId, this.model.capacity, this.model.duration.duration)
                 .then((order) => {
-                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_order_ram_finish_success"));
+                    this.alerter.success(this.$scope.tr("privateDatabase_order_RAM_finish_success", [order.url]), this.$scope.alerts.main);
                     window.open(order.url, "_blank");
                 })
                 .catch((err) => {
