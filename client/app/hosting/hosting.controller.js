@@ -195,32 +195,39 @@ angular
                                 }).toString();
                             }
 
+                            $scope.loadingHostingInformations = false;
+
+                            return User.getUrlOf("guides");
                         })
-                        .finally(() => ($scope.loadingHostingInformations = false));
-
-                    User.getUrlOf("guides").then((guides) => {
-                        if (guides) {
-                            // GLOBAL ALERT TO UPGRADE APACHE
-                            if (_.indexOf(hosting.updates, "APACHE24") >= 0) {
-                                Alerter.alertFromSWS($scope.tr("hosting_global_php_version_pending_update_apache", [guides.works.apache, "http://travaux.ovh.net/?do=details&id=25601"]), null, $scope.alerts.tabs);
-                            }
-
-                            switch ($scope.hosting.serviceState) {
-                            case "BLOQUED":
-                                if (guides.hostingHackState) {
-                                    $scope.guideHostingState = guides.hostingHackState;
+                        .then((guides) => {
+                            if (guides) {
+                                // GLOBAL ALERT TO UPGRADE APACHE
+                                if (_.indexOf(hosting.updates, "APACHE24") >= 0) {
+                                    $timeout(() => {
+                                        Alerter.alertFromSWS($scope.tr("hosting_global_php_version_pending_update_apache", [guides.works.apache, "http://travaux.ovh.net/?do=details&id=25601"]), null, $scope.alerts.tabs);
+                                    }, 100);
                                 }
-                                break;
-                            case "MAINTENANCE":
-                                if (guides.hostingDisabledState) {
-                                    $scope.guideHostingState = guides.hostingDisabledState;
+
+                                switch ($scope.hosting.serviceState) {
+                                case "BLOQUED":
+                                    if (guides.hostingHackState) {
+                                        $scope.guideHostingState = guides.hostingHackState;
+                                    }
+                                    break;
+                                case "MAINTENANCE":
+                                    if (guides.hostingDisabledState) {
+                                        $scope.guideHostingState = guides.hostingDisabledState;
+                                    }
+                                    break;
+                                default:
+                                    break;
                                 }
-                                break;
-                            default:
-                                break;
                             }
-                        }
-                    });
+                        })
+                        .finally(() => {
+                            $scope.loadingHostingInformations = false;
+                        });
+
 
                     User.getUrlOfEndsWithSubsidiary("hosting").then((url) => ($scope.urls.hosting = url));
 
@@ -239,7 +246,7 @@ angular
                         .catch((err) => Alerter.error(err));
 
                     if (hosting.messages.length > 0) {
-                        Alerter.alertFromSWS($scope.tr("hosting_dashboard_loading_error"), hosting, $scope.alerts.main);
+                        Alerter.error($scope.tr("hosting_dashboard_loading_error"), $scope.alerts.page);
                         if (!hosting.name) {
                             $scope.loadingHostingError = true;
                         }

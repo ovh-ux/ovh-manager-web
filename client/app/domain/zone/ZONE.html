@@ -1,8 +1,6 @@
 <div class="container-fluid px-0" data-ng-controller="DomainTabZoneDnsCtrl as ctrlDomainTabZoneDns">
 
-    <div class="text-center" data-ng-if="ctrlDomainTabZoneDns.loading.zone">
-        <oui-loader size="l" inline="true"></oui-loader>
-    </div>
+    <oui-loader size="l" data-ng-if="ctrlDomainTabZoneDns.loading.zone"></oui-loader>
 
     <div data-ng-show="!ctrlDomainTabZoneDns.loading.zone">
         <div class="row" data-ng-if="!ctrlDomainTabZoneDns.zone">
@@ -11,17 +9,17 @@
 
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="domain_tab_ZONE_no_zone"
-                     data-ng-if="ctrlDomainTabZoneDns.dontDisplayActivateZone">
+                     data-ng-if="ctrlDomainTabZoneDns.displayActivateZone">
                 </div>
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="domain_tab_ZONE_delete_doing"
-                     data-ng-if="!ctrlDomainTabZoneDns.dontDisplayActivateZone">
+                     data-ng-if="ctrlDomainTabZoneDns.displayActivateZone === false">
                 </div>
             </div>
             <div class="col-md-3 text-right">
                 <button class="btn btn-block btn-default" type="button"
                         data-i18n-static="domain_tab_ZONE_no_zone_activate_btn"
-                        data-ng-disabled="!ctrlDomainTabZoneDns.dontDisplayActivateZone"
+                        data-ng-disabled="!ctrlDomainTabZoneDns.displayActivateZone"
                         data-ng-click="setAction('zone/activate/domain-zone-activate', ctrlDomainTabZoneDns.domain)">
                 </button>
             </div>
@@ -73,14 +71,12 @@
                      data-ng-if="!ctrlDomainTabZoneDns.loading.table && !ctrlDomainTabZoneDns.hasResult">
                 </div>
 
-                <div class="text-center" data-ng-if="ctrlDomainTabZoneDns.loading.table && !ctrlDomainTabZoneDns.hasResult">
-                    <oui-loader inline="true"></oui-loader>
-                </div>
+                <oui-loader data-ng-if="ctrlDomainTabZoneDns.loading.table && !ctrlDomainTabZoneDns.hasResult"></oui-loader>
 
                 <div data-ng-if="ctrlDomainTabZoneDns.hasResult">
                     <div class="row mt-5">
                         <div class="col-md-3 mb-3">
-                            <button class="btn btn-danger" type="button"
+                            <button class="btn btn-default" type="button"
                                     data-i18n-static="common_delete"
                                     data-ng-click="setAction('zone/record/delete/domain-zone-record-delete', ctrlDomainTabZoneDns.selectedRecords)"
                                     data-ng-if="ctrlDomainTabZoneDns.atLeastOneSelected && ctrlDomainTabZoneDns.allowModification">
@@ -139,8 +135,7 @@
                     </div>
 
                     <div class="table-responsive">
-                        <table class="table"
-                               data-ng-class="{'table-hover table-striped': !ctrlDomainTabZoneDns.loading.table && ctrlDomainTabZoneDns.zone.paginatedZone.records.results.length}">
+                        <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th class="min-width text-center" scope="col">
@@ -187,9 +182,10 @@
                                 </tr>
                                 <tr class="selected" data-ng-if="ctrlDomainTabZoneDns.editMode">
                                     <td></td>
-                                    <td class="form-group" data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay.$invalid }">
+                                    <td class="form-group"
+                                        data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay.$invalid }">
                                         <div class="input-group">
-                                            <input type="text" name="subDomainToDisplay" class="form-control"
+                                            <input type="text" class="form-control" name="subDomainToDisplay"
                                                    data-ng-change="ctrlDomainTabZoneDns.subDomainToDisplayCheck(ctrlDomainTabZoneDns.addDnsRecordForm.subDomainToDisplay)"
                                                    data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
                                                    data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.subDomainToDisplay"
@@ -197,7 +193,8 @@
                                             <span class="input-group-addon" data-ng-bind-template=".{{ctrlDomainTabZoneDns.domain.displayName}}."></span>
                                         </div>
                                     </td>
-                                    <td class="form-group" data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.ttl.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.ttl.$invalid }">
+                                    <td class="form-group"
+                                        data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.ttl.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.ttl.$invalid }">
                                         <input type="text" class="form-control" name="ttl"
                                                data-ng-change="ctrlDomainTabZoneDns.ttlCheck(ctrlDomainTabZoneDns.addDnsRecordForm.ttl)"
                                                data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
@@ -211,30 +208,33 @@
                                                     data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
                                                     data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.fieldType"
                                                     data-ng-options="fieldType for fieldType in ctrlDomainTabZoneDns.zone.fieldsTypes track by fieldType">
+                                                <option value="" disabled
+                                                        data-i18n-static="select_placeholder"></option>
                                             </select>
                                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                                         </label>
                                     </td>
-                                    <td class="form-group" data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay.$invalid }">
+                                    <td class="form-group"
+                                        data-ng-class="{ 'has-error': ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay.$dirty && ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay.$invalid }">
                                         <input type="text" class="form-control" name="targetToDisplay"
                                                data-ng-change="ctrlDomainTabZoneDns.fieldAndTargetCheck(ctrlDomainTabZoneDns.addDnsRecordForm.targetToDisplay)"
                                                data-ng-disabled="ctrlDomainTabZoneDns.loading.adding"
                                                data-ng-model="ctrlDomainTabZoneDns.addDnsRecord.targetToDisplay">
                                     </td>
                                     <td class="text-nowrap">
-                                        <button class="btn btn-success" type="button" title="{{i18n.table_validate_entry}}"
+                                        <button class="oui-button oui-button_primary oui-button_small-width mb-0" type="button" aria-label="{{i18n.table_validate_entry}}"
                                                 data-ng-click="ctrlDomainTabZoneDns.addRecord()"
                                                 data-ng-disabled="!ctrlDomainTabZoneDns.addDnsRecordForm.$valid"
                                                 data-ng-show="!ctrlDomainTabZoneDns.loading.adding">
                                             <span class="fa fa-check" aria-hidden="true"></span>
                                         </button>
-                                        <button class="btn btn-danger" type="button" title="{{i18n.table_cancel_entry}}"
+                                        <button class="oui-button oui-button_secondary oui-button_small-width mb-0" type="button" aria-label="{{i18n.table_cancel_entry}}"
                                                 data-ng-click="ctrlDomainTabZoneDns.cancelAddRecord()"
                                                 data-ng-disabled="ctrlDomainTabZoneDns.loading.adding">
                                             <span class="fa fa-remove" aria-hidden="true"></span>
                                         </button>
-                                        <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                              data-ng-show="ctrlDomainTabZoneDns.loading.adding"></span>
+                                        <oui-loader size="s" inline="true"
+                                                    data-ng-show="ctrlDomainTabZoneDns.loading.adding"></oui-loader>
                                     </td>
                                 </tr>
                             </tbody>
@@ -320,7 +320,8 @@
                     <button class="btn btn-block btn-default" type="button"
                             data-i18n-static="domain_tab_ZONE_default_delete_all"
                             data-ng-click="setAction('zone/delete-all/domain-zone-delete-all', ctrlDomainTabZoneDns.domain)"
-                            data-ng-if="ctrlDomainTabZoneDns.canDeleteAllZone">
+                            data-ng-disabled="!ctrlDomainTabZoneDns.canDeleteAllZone"
+                            data-ng-if="ctrlDomainTabZoneDns.allowModification">
                     </button>
                 </div>
 

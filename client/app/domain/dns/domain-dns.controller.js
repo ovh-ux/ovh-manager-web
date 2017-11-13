@@ -22,6 +22,7 @@ angular.module("controllers").controller(
                 table: null,
                 activeDns: null
             };
+            this.isDnssecEnable = false;
             this.editMode = false;
             this.loading = {
                 add: false,
@@ -53,6 +54,7 @@ angular.module("controllers").controller(
                 .getSelected(this.$stateParams.productId)
                 .then((domain) => {
                     this.domain = domain;
+                    this.isDnssecEnable = domain.dnssecStatus === "ENABLED";
                     this.loadTable();
                 })
                 .catch(() => {

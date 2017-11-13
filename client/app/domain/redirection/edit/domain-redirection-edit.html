@@ -7,9 +7,7 @@
         <div data-wizard-step
              data-wizard-step-valid="editContainsNoError()">
 
-            <div class="text-center" data-ng-if="ctrl.loading">
-                <oui-loader inline="true"></oui-loader>
-            </div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
             <div data-ng-if="!ctrl.loading">
                 <p class="mb-2"

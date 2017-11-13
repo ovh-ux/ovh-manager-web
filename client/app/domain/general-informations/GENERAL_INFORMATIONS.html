@@ -40,8 +40,7 @@
                                               <span class="fa fa-info-circle" aria-hidden="true"></span>
                                           </span>
                                         <div>
-                                              <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                                    data-ng-if="ctrlTabGeneralInformations.loading.dnsStatus"></span>
+                                            <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.dnsStatus"></oui-loader>
                                             <div data-ng-if="!ctrlTabGeneralInformations.loading.dnsStatus">
                                                 <button class="btn btn-success btn-xs" type="button"
                                                         data-i18n-static="domain_dashboard_dns_management_dnsHostedOK"
@@ -103,7 +102,7 @@
                                 <li class="oui-tile__item">
                                     <div class="oui-tile__definition">
                                         <div class="d-flex">
-                                            <div class="w-50">
+                                            <div class="w-75">
                                                 <strong class="d-inline-block mr-2"
                                                         data-i18n-static="domain_dashboard_enable_web_hosting"></strong>
                                                 <span class="fa fa-info-circle" aria-hidden="true"
@@ -111,8 +110,7 @@
                                                       data-uib-tooltip-append-to-body="true"
                                                       data-uib-tooltip-placement="top"></span>
                                                 <div>
-                                                      <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                                            data-ng-if="ctrlTabGeneralInformations.loading.hosting"></span>
+                                                    <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.hosting"></oui-loader>
                                                     <div data-ng-if="!ctrlTabGeneralInformations.loading.hosting">
                                                           <span class="label"
                                                                 data-ng-class="{ 'label-danger': !ctrlTabGeneralInformations.hasStart10mOffer, 'label-success': ctrlTabGeneralInformations.hasStart10mOffer }"
@@ -148,8 +146,7 @@
                                                       data-uib-tooltip-append-to-body="true"
                                                       data-uib-tooltip-placement="top"></span>
                                                 <div>
-                                                      <span class="fa fa-spinner fa-spin" aria-hidden="true"
-                                                            data-ng-if="ctrlTabGeneralInformations.loading.associatedHosting"></span>
+                                                    <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.associatedHosting"></oui-loader>
                                                     <ul class="list-unstyled"
                                                         data-ng-if="!ctrlTabGeneralInformations.loading.associatedHosting && ctrlTabGeneralInformations.hasHostingAssociate">
                                                         <li data-ng-repeat="hosting in ctrlTabGeneralInformations.hostingAssociated track by $index">

@@ -9,9 +9,7 @@
 
             <p class="font-weight-bold" data-ng-bind="tr('mailing_list_tab_modal_update_list_title', ctrl.mailingList.name)"></p>
 
-            <div class="text-center" data-ng-if="ctrl.loading">
-                <oui-loader inline="true"></oui-loader>
-            </div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
             <div data-ng-show="!ctrl.loading">
                 <p data-i18n-static="mailing_list_tab_modal_update_list_heading"></p>

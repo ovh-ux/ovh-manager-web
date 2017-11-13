@@ -11,9 +11,7 @@
              data-wizard-step-on-next="onNextStep"
              data-wizard-step-valid="model.templateSelected">
 
-            <div class="text-center" data-ng-if="!model.moduleTemplates">
-                <oui-loader inline="true"></oui-loader>
-            </div>
+            <oui-loader data-ng-if="!model.moduleTemplates"></oui-loader>
 
             <div data-ng-if="model.moduleTemplates && model.moduleTemplates.length > 0">
                 <p data-i18n-static="hosting_configuration_tab_modules_create_step1_question"
@@ -81,9 +79,7 @@
              data-wizard-step-on-load="loadDatabases"
              data-wizard-step-valid="isStep2Valid()">
 
-            <div class="text-center" data-ng-if="loading.databases">
-                <oui-loader inline="true"></oui-loader>
-            </div>
+            <oui-loader data-ng-if="loading.databases"></oui-loader>
 
             <div data-ng-if="!loading.databases">
 

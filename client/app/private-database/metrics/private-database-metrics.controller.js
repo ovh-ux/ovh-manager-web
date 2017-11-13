@@ -82,7 +82,8 @@ angular.module("App").controller(
                     }
                 })
                 .catch((err) => {
-                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_metrics_loading_error"), err, this.$scope.alerts.main);
+                    _.set(err, "type", err.type || "ERROR");
+                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_dashboard_loading_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loaders.metrics = false;

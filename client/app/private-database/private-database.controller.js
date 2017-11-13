@@ -17,6 +17,7 @@ angular
 
         $onInit () {
             this.productId = this.$stateParams.productId;
+            this.isExpired = false;
 
             this.$scope.alerts = {
                 page: "privateDataBase.alerts.page",
@@ -124,9 +125,11 @@ angular
                 this.$scope.taskState.changeRootPassword = false;
             });
 
-            this.getDetails(true);
-
-            this.getTasksToPoll();
+            this.getDetails(true).then(() => {
+                if (!this.isExpired) {
+                    this.getTasksToPoll();
+                }
+            });
         }
 
         $onDestroy () {
@@ -137,10 +140,11 @@ angular
             this.loaders.details = true;
             this.$scope.database = null;
 
-            this.privateDatabaseService.getSelected(this.productId, forceRefresh)
+            return this.privateDatabaseService.getSelected(this.productId, forceRefresh)
                 .then((database) => {
                     this.$scope.database = database;
                     this.$scope.database.version = database.version.replace(".", "");
+                    this.isExpired = _.get(database, "serviceInfos.status") === "expired";
                     this.$scope.guides = [];
 
                     this.userService.getUrlOf("guides")

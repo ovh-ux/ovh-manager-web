@@ -26,8 +26,6 @@ angular.module("App").controller(
             };
 
             this.$scope.updateResponder = () => this.updateResponder();
-
-            moment.locale(this.$scope.selectedLanguage.value.split("_")[0]);
         }
 
         responderDurationCheck () {

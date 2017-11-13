@@ -11,9 +11,7 @@
                data-ng-if="ctrl.moderators.length === 1"></p>
 
             <p data-i18n-static="mailing_list_common_continue_question"></p>
-            <div class="text-center" data-ng-if="ctrl.loading">
-                <oui-loader inline="true"></oui-loader>
-            </div>
+            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
         </div>
     </div>
 </div>
