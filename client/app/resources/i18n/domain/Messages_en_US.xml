@@ -128,6 +128,7 @@
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Error while requesting the DNS server reset.</translation>
    <translation id="domain_tab_DNS_update_success" qtlid="284841">DNS modification has been processed. Propagation to other DNSs wil take a few hours </translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">An error occurred on modifying DNS. </translation>
+   <translation id="domain_tab_DNS_lock_button_title">Réinitialiser les serveurs DNS : non disponible en cas d'activation de DNSSEC</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Apply configuration </translation>
    <translation id="domain_tab_DNS_reset" qtlid="284880">Reset configuration </translation>
    <translation id="domain_tab_DNS_cancel" qtlid="172280">Cancel modifications</translation>
@@ -226,7 +227,7 @@
    <translation id="domain_tab_ZONE_title" qtlid="265636">Here you can see the configuration of various domain name records. </translation>
    <translation id="domain_tab_ZONE_info" qtlid="265649">You can also configure these records to connect your domain to your different services (button "Add an entry").</translation>
 
-   <translation id="domain_tab_ZONE_status_error" qtlid="328875">Our systems have detected errors while checking your zone. <Strong>The latest amendments were therefore not taken into account</strong>. To remedy this, please correct the following problems:</translation>
+   <translation id="domain_tab_ZONE_status_error" qtlid="328875">Our systems have detected errors while checking your zone. <strong>The latest amendments were therefore not taken into account</strong>. To remedy this, please correct the following problems:</translation>
    <translation id="domain_tab_ZONE_status_warning" qtlid="254804">Your zone has been assigned. However the following anomalies have been found:</translation>
    <translation id="domain_tab_ZONE_empty_zone" qtlid="129111">There is no entry in your DNS zone.</translation>
    <translation id="domain_tab_ZONE_new_inline_zone" qtlid="192058">You can add an entry by clicking on the button opposite.</translation>
@@ -419,7 +420,7 @@
    <translation id="domain_tab_REDIRECTION_add_step4_web_visible_301_help" qtlid="329317">Search engines will replace the indexed content of <b>{0}</b> with that of the <b>{1}</b> target server.</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_visible_301_help_warning" qtlid="214142">Please note: it is not possible to create a 301 redirection from this interface. You must implement this directly on the server by following the tutorial:</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_invisible_iframe" qtlid="214155">Temporary (iframe):</translation>
-   <translation id="domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help" qtlid="329330">Search engines will not read this page. <B>{0}</b> will therefore not be ranked.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help" qtlid="329330">Search engines will not read this page. <b>{0}</b> will therefore not be ranked.</translation>
 
    <translation id="domain_tab_REDIRECTION_add_step5_check_validity" qtlid="214168">Checking redirection consistency... </translation>
    <translation id="domain_tab_REDIRECTION_add_step5_add_record" qtlid="214181">Adding redirections...</translation>
@@ -853,7 +854,7 @@
    <translation id="domain_update_owner_required" qtlid="237096">This field is mandatory</translation>
    <translation id="domain_update_owner_to_long" qtlid="267266">This field is too long</translation>
    <translation id="domain_update_owner_email_pattern" qtlid="41026">Invalid email</translation>
-   <translation id="domain_update_owner_error_get" qtlid="267279">Error when retrieving contact information</translation>
+   <translation id="domain_update_owner_error_get" qtlid="267279">An error occurred while retrieving contact information</translation>
    <translation id="domain_update_owner_domains_error_get" qtlid="269929">Error when retrieving contact domains</translation>
    <translation id="domain_update_owner_domains_linked" qtlid="269942">The following domains will be affected if no restriction blocks the process</translation>
 
