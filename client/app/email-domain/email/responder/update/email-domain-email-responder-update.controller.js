@@ -34,15 +34,11 @@ angular.module("App").controller(
         }
 
         responderDateStartCheck () {
-            if (!!this.model.to && moment(this.model.from).isAfter(this.model.to)) {
-                this.model.from = this.model.to;
-            }
+            return !!this.model.from && (!this.model.to || moment(this.model.from).isBefore(this.model.to));
         }
 
         responderDateEndCheck () {
-            if (!!this.model.from && moment(this.model.from).isAfter(this.model.to)) {
-                this.model.to = this.model.from;
-            }
+            return !!this.model.to && (!this.model.from || moment(this.model.to).isAfter(this.model.from)) && moment(this.model.to).isAfter(new Date());
         }
 
         updateResponder () {
