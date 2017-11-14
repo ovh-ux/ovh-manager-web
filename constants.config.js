@@ -729,8 +729,8 @@ module.exports = {
                         {
                             title: "guide_emails_general_title",
                             list: [
-                                { url: "https://www.ovh.com/fr/g1474.mutualise_generalite_mail_mutualise_ovh", title: "guide_emails_emails_configuration" },
-                                { url: "https://www.ovh.com/fr/g2003.mail_mutualise_generalites_sur_les_serveurs_mx", title: "guide_emails_emails_mx_servers" }
+                                { url: "https://docs.ovh.com/fr/emails/generalites-sur-les-emails-mutualises/", title: "guide_emails_emails_configuration" },
+                                { url: "https://docs.ovh.com/fr/emails/generalites-sur-les-serveurs-mx-mutualises/", title: "guide_emails_emails_mx_servers" }
                             ]
                         }
                     ],
@@ -738,25 +738,24 @@ module.exports = {
                         {
                             title: "guide_emails_configuration_title",
                             description: "",
-                            list: [{ url: "https://www.ovh.com/fr/g1286.mail_mutualise_guide_configuration_outlook_2013", title: "guide_emails_emails_configuration_outlook" },
-                                    { url: "https://docs.ovh.com/fr/fr/web/emails/mail-mutualise-guide-configuration-iphone-ios-91", title: "guide_emails_emails_configuration_ios" },
-                                    { url: "https://www.ovh.com/fr/g1302.webmail_guide_utilisation_roundcube", title: "guide_emails_emails_roundcube" },
-                                    { url: "https://www.ovh.com/fr/g2012.mail_mutualise_guide_de_configuration_mx_avec_zone_dns_ovh", title: "guide_emails_emails_configuration_mx_zone_dns" },
-                                    { url: "https://www.ovh.com/fr/g2011.mail_mutualise_guide_de_configuration_mx_avec_zone_dns_non_ovh", title: "guide_emails_emails_configuration_mx_zone_dns_non_ovh" }
+                            list: [{ url: "https://docs.ovh.com/fr/emails/mail-mutualise-guide-configuration-outlook-2013/", title: "guide_emails_emails_configuration_outlook" },
+                                    { url: "https://docs.ovh.com/fr/emails/mail-mutualise-guide-configuration-iphone-ios-91/", title: "guide_emails_emails_configuration_ios" },
+                                    { url: "https://docs.ovh.com/fr/emails/utilisation-roundcube/", title: "guide_emails_emails_roundcube" },
+                                    { url: "https://docs.ovh.com/fr/emails/mail-mutualise-guide-de-configuration-mx-avec-zone-dns-ovh/", title: "guide_emails_emails_configuration_mx_zone_dns" },
+                                    { url: "https://docs.ovh.com/fr/emails/mail-mutualise-guide-de-configuration-mx-avec-zone-dns-non-ovh/", title: "guide_emails_emails_configuration_mx_zone_dns_non_ovh" }
                             ]
                         }, {
                             title: "guide_emails_how_to_title",
                             list: [
-                                { url: "https://www.ovh.com/fr/g1343.creation-adresse-e-mail", title: "guide_emails_emails_creation" },
-                                { url: "https://www.ovh.com/fr/g1365.mail_mutualise_guide_recuperation_des_entetes_e-mails", title: "guide_emails_emails_headers" },
-                                { url: "https://www.ovh.com/fr/g1913.mutualise_changer_doffre_e-mails", title: "guide_emails_emails_change_offer" },
-                                { url: "https://www.ovh.com/fr/g1933.mutualise_comment_deleguer_la_gestion_de_vos_emails_a_un_autre_identifiant_ovh", title: "guide_emails_emails_delegation" },
-                                { url: "https://www.ovh.com/fr/g2028.mutualise_le_champ_spf", title: "guide_emails_emails_spf" },
-                                { url: "https://www.ovh.com/fr/g2080.diagnostiquer_mon_adresse_e-mail", title: "guide_emails_emails_diagnosis" },
-                                { url: "https://www.ovh.com/fr/g2086.time_machine_-_recuperer_un_mail_supprime", title: "guide_emails_emails_recovery" },
-                                { url: "https://www.ovh.com/fr/g2089.basculer_une_adresse_e-mail_ovh_mutualisee_vers_exchange", title: "guide_emails_emails_migrate_to_exchange" },
-                                { url: "https://www.ovh.com/fr/g2117.utilisation_avancee_des_e-mails_ovh", title: "guide_emails_emails_advanced" },
-                                { url: "https://www.ovh.com/fr/g2272.les_codes_de_reponse_dun_serveur_smtp", title: "guide_emails_emails_smtp_response_code" }
+                                { url: "https://docs.ovh.com/fr/emails/creation-dune-adresse-e-mail/", title: "guide_emails_emails_creation" },
+                                { url: "https://docs.ovh.com/fr/emails/recuperation-des-entetes-e-mails/", title: "guide_emails_emails_headers" },
+                                { url: "https://docs.ovh.com/fr/emails/deleguer-gestion-emails-autre-identifiant/", title: "guide_emails_emails_delegation" },
+                                { url: "https://docs.ovh.com/fr/emails/le-champ-spf/", title: "guide_emails_emails_spf" },
+                                { url: "https://docs.ovh.com/fr/emails/diagnostiquer-mon-adresse-e-mail/", title: "guide_emails_emails_diagnosis" },
+                                { url: "https://docs.ovh.com/fr/emails/time-machine-recuperer-un-mail-supprime/", title: "guide_emails_emails_recovery" },
+                                { url: "https://docs.ovh.com/fr/microsoft-collaborative-solutions/migration-adresse-e-mail-mutualisee-vers-exchange/", title: "guide_emails_emails_migrate_to_exchange" },
+                                { url: "https://docs.ovh.com/fr/emails/utilisation-avancee-des-e-mails/", title: "guide_emails_emails_advanced" },
+                                { url: "https://docs.ovh.com/fr/emails/codes-de-reponse-serveur-smtp/", title: "guide_emails_emails_smtp_response_code" }
                             ]
                         }
                     ],
