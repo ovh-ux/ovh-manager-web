@@ -379,11 +379,19 @@ angular
         "travel.pl",
         "turystyka.pl"
     ])
+    .run(["constants", "$location", (constants, $location) => {
+        if (/\/(useraccount)|(billing)\/(.)+$/.test(window.location.href)) {
+            const url = $location.url().substring(1);
+            window.location = `${constants.MANAGER_URLS.dedicated}${url}`;
+        }
+    }])
     .run([
         "ssoAuthentication",
         (authentication) => {
             "use strict";
-            authentication.login();
+            if (!/\/(useraccount)|(billing)\/(.)+$/.test(window.location.href)) {
+                authentication.login();
+            }
         }
     ])
     .run([
