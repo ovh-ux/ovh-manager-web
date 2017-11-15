@@ -120,7 +120,7 @@
                 </div>
             </form>
 
-            <form class="form-horizontal" name="privateDatabaseAddAuthorizedIpForm" ng-if="!addBddCtrl.hasAuthorizedIp">
+            <form class="form-horizontal" name="privateDatabaseAddAuthorizedIpForm" ng-if="isDBaaS() && !addBddCtrl.hasAuthorizedIp">
                 <!-- ADD AUTHORIZED IP -->
 
                 <div class="oui-checkbox d-inline-block">
