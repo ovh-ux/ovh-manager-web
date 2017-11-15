@@ -35,12 +35,12 @@
                                         <strong class="d-inline-block mr-2"
                                                 data-i18n-static="domain_dashboard_dns_management"></strong>
                                         <span data-uib-tooltip="{{::i18n.domain_dashboard_tooltip_dns}}"
-                                              data-uib-tooltip-append-to-body="true"
-                                              data-uib-tooltip-placement="top">
+                                              data-uib-tooltip-append-to-body="true">
                                               <span class="fa fa-info-circle" aria-hidden="true"></span>
                                           </span>
                                         <div>
-                                            <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.dnsStatus"></oui-loader>
+                                            <oui-loader size="s" inline="true"
+                                                        data-ng-if="ctrlTabGeneralInformations.loading.dnsStatus"></oui-loader>
                                             <div data-ng-if="!ctrlTabGeneralInformations.loading.dnsStatus">
                                                 <button class="btn btn-success btn-xs" type="button"
                                                         data-i18n-static="domain_dashboard_dns_management_dnsHostedOK"
@@ -58,7 +58,8 @@
                                                         data-ng-if="!ctrlTabGeneralInformations.dnsStatus.isOk">
                                                 </button>
                                                 <small class="ml-3"
-                                                       data-ng-if="ctrlTabGeneralInformations.dnsStatus.refreshAlert">
+                                                       data-ng-if="ctrlTabGeneralInformations.dnsStatus.refreshAlert"
+                                                       data-uib-tooltip="{{::i18n.domain_dashboard_tooltip_dns_updating}}">
                                                     <span class="fa fa-hourglass-half" aria-hidden="true"></span>
                                                     <span data-i18n-static="domain_dashboard_dns_refresh"></span>
                                                 </small>
@@ -78,8 +79,8 @@
                                                       <span class="fa fa-info-circle" aria-hidden="true"></span>
                                                   </span>
                                                 <div>
-                                                    <span data-ng-bind="tr('domain_dashboard_dns_management_anycast_' + ctrlTabGeneralInformations.domain.hasDnsAnycast)"></span>
-                                                    <span data-ng-if="ctrlTabGeneralInformations.domain.hasDnsAnycast === null">
+                                                    <span data-ng-bind="tr('domain_dashboard_dns_management_anycast_' + (ctrlTabGeneralInformations.domain.hasDnsAnycast == null ? 'null' : ctrlTabGeneralInformations.domain.hasDnsAnycast.toString()))"></span>
+                                                    <span data-ng-if="ctrlTabGeneralInformations.domain.hasDnsAnycast == null">
                                                           (<span
                                                         data-i18n-static="domain_configuration_dnsanycast_how_to_activate_1"></span>
                                                           <button class="btn btn-link p-0" type="button"
