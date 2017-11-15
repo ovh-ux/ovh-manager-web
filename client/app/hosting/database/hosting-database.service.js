@@ -1,436 +1,423 @@
-angular.module("services").service("HostingDatabase", function ($q, $rootScope, Hosting, OvhHttp, Poller, JavaEnum) {
-    "use strict";
-    const self = this;
-
-    /*
-     * Delete a database
-     */
-    this.deleteDatabase = function (serviceName, dbToDelete) {
-        return OvhHttp.delete("/hosting/web/{serviceName}/database/{name}", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                name: dbToDelete
-            }
-        }).then((response) => {
-            Hosting.resetDatabases();
-            return response;
-        });
-    };
-
-    /*
-     * get database list
-     */
-    this.databaseList = function (serviceName) {
-        return OvhHttp.get("/hosting/web/{serviceName}/database", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            }
-        });
-    };
-
-    /*
-     * get database type availability
-     */
-    this.getDatabaseAvailableType = (serviceName) =>
-        OvhHttp.get("/hosting/web/{serviceName}/databaseAvailableType", {
-            urlParams: {
-                serviceName
-            },
-            rootPath: "apiv6"
-        }).then((availableTypes) => availableTypes.map((type) => type.toUpperCase()));
-
-    /*
-     * get database ids
-     */
-    this.getDatabaseIds = function (serviceName, search) {
-        return OvhHttp.get("/hosting/web/{serviceName}/database", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            params: {
-                name: ["%", search, "%"].join("")
-            }
-        });
-    };
-
-    /*
-     * get database detail
-     */
-    this.getDatabase = function (serviceName, name) {
-        return OvhHttp.get("/hosting/web/{serviceName}/database/{name}", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                name
-            }
-        }).then((database) => {
-            ["type", "state", "mode"].forEach((elt) => {
-                database[elt] = database[elt].toUpperCase();
-            });
-            database.version = `_${_.snakeCase(database.version)}`;
-            database.quotaPercent = database.quotaUsed.value / database.quotaSize.value * 100;
-
-            return database;
-        });
-    };
-
-    /*
-     * get dumps ids
-     */
-    this.getDumpIds = function (serviceName, name) {
-        return OvhHttp.get("/hosting/web/{serviceName}/database/{name}/dump ", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                name
-            }
-        });
-    };
-
-    /*
-     * get dump details
-     */
-    this.getDump = function (serviceName, name, id) {
-        return OvhHttp.get("/hosting/web/{serviceName}/database/{name}/dump/{id}", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                name,
-                id
-            }
-        });
-    };
-
-    /*
-     * restore database dump
-     */
-    this.restoreBDD = function (serviceName, databaseName, dump) {
-        return OvhHttp.post("/hosting/web/{serviceName}/database/{name}/dump/{id}/restore", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                name: databaseName,
-                id: dump.id
-            }
-        }).then((task) => {
-            self.pollTasks(serviceName, {
-                namespace: "database.dump.restore.poll",
-                task,
-                dump,
-                successSates: ["canceled", "done"],
-                errorsSates: ["error"]
-            });
-        });
-    };
-
-    /*
-     * restore database from a dynamic backup
-     */
-    this.restoreBDDBackup = function (serviceName, databaseName, backupType, sendEmail) {
-        return OvhHttp.post("/hosting/web/{serviceName}/database/{name}/restore", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                name: databaseName
-            },
-            data: {
-                date: backupType,
-                sendEmail
-            }
-        });
-    };
-
-    /*
-     * get database stats
-     */
-    this.databaseStatistics = function (serviceName, dbId, period, type, aggregation) {
-        return OvhHttp.get("/sws/hosting/web/{serviceName}/databases/{database}/statistics", {
-            rootPath: "2api",
-            urlParams: {
-                serviceName,
-                database: dbId
-            },
-            params: {
-                period,
-                type,
-                aggregation
-            }
-        });
-    };
-
-    /*
-     * Update password for database
-     */
-    this.changePassword = function (serviceName, database, password) {
-        return OvhHttp.post("/hosting/web/{serviceName}/database/{name}/changePassword", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                name: database
-            },
-            data: { password }
-        });
-    };
-
-    /*
-     * Ask a dump for a database
-     */
-    this.dumpDatabase = function (serviceName, db, date, sendEmail) {
-        return OvhHttp.post("/hosting/web/{serviceName}/database/{name}/dump", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                name: db
-            },
-            data: {
-                date: date.toLowerCase().replace("_", "."),
-                sendEmail
-            }
-        });
-    };
-
-    /*
-     * Delete a database dump
-     */
-    this.deleteDatabaseDump = function (serviceName, databaseName, dump) {
-        return OvhHttp.delete("/hosting/web/{serviceName}/database/{databaseName}/dump/{id}", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                databaseName,
-                id: dump.id
-            }
-        }).then((task) => {
-            self.pollTasks(serviceName, {
-                namespace: "database.dump.delete.poll",
-                task,
-                dump,
-                successSates: ["canceled", "done"],
-                errorsSates: ["error"]
-            });
-        });
-    };
-
-    /*
-     * Import a database from a file updloaded in /me/document/
-     */
-    this.importDatabase = function (serviceName, db, documentId, flushDatabase, sendEmail) {
-        return OvhHttp.post("/hosting/web/{serviceName}/database/{database}/import", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                database: db
-            },
-            data: {
-                documentId,
-                flushDatabase,
-                sendEmail
-            }
-        });
-    };
-
-    /*
-     * Get dump options
-     */
-    this.dumpDatabaseOptions = function () {
-        return Hosting.getModels().then((models) => ({
-            dumpDates: models.models["hosting.web.database.dump.DateEnum"].enum.map((model) => JavaEnum.tr(model))
-        }));
-    };
-
-    /*
-     * get database capabilities for creation
-     */
-    this.getCreationCapabilities = function (serviceName) {
-        return $q
-            .all({
-                hosting: OvhHttp.get("/hosting/web/{serviceName}", {
-                    rootPath: "apiv6",
-                    urlParams: {
-                        serviceName
-                    }
-                }),
-                capabilities: OvhHttp.get("/hosting/web/{serviceName}/databaseCreationCapabilities", {
-                    rootPath: "apiv6",
-                    urlParams: {
-                        serviceName
-                    }
-                }),
-                models: Hosting.getModels()
-            })
-            .then(({ hosting, capabilities, models }) => ({
-                availableDatabases: capabilities.map((capa) => ({
-                    type: JavaEnum.tr(capa.type),
-                    quota: capa.quota,
-                    extraSqlQuota: capa.type === "extraSqlPerso" ? `_${capa.quota.value}` : null,
-                    available: capa.available
-                })),
-                databaseTypes: models.models["hosting.web.database.DatabaseTypeEnum"].enum.map((m) => JavaEnum.tr(m)),
-                primaryLogin: hosting.primaryLogin
-            }));
-    };
-
-    /*
-     * get database capabilities for creation
-     */
-    this.getAvailableVersion = function (serviceName, type) {
-        return OvhHttp.get("/hosting/web/{serviceName}/databaseAvailableVersion", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            params: { type }
-        });
-    };
-
-    /*
-     * Create a database
-     */
-    this.createDatabase = function (serviceName, capabilitie, password, quota, type, user, version) {
-        return OvhHttp.post("/hosting/web/{serviceName}/database", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            data: {
-                capabilitie,
-                password,
-                quota,
-                type,
-                user,
-                version
-            }
-        }).then(() => {
-            Hosting.resetDatabases();
-        });
-    };
-
-    this.activeDatabasePrivate = function (serviceName, ram, version) {
-        return OvhHttp.post("/hosting/web/{serviceName}/activatePrivateDatabase", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            data: {
-                ram,
-                version
-            }
-        });
-    };
-
-    this.getPrivateDatabaseCapabilities = function (serviceName) {
-        return OvhHttp.get("/hosting/web/{serviceName}/privateDatabaseCreationCapabilities", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            }
-        });
-    };
-
-    this.getDatabasesCapabilities = (serviceName) =>
-        $q.all({
-            database: OvhHttp.get(`/hosting/web/${serviceName}/privateDatabaseCreationCapabilities`, {
-                rootPath: "apiv6"
-            }),
-            privateDatabase: OvhHttp.get(`/hosting/web/${serviceName}/databaseCreationCapabilities`, {
-                rootPath: "apiv6"
-            })
-        });
-
-    /**
-     * Request a new quota check on a database
-     */
-    this.requestDatabaseQuotaCheck = function (serviceName, database) {
-        return OvhHttp.post("/hosting/web/{serviceName}/database/{database}/request", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName,
-                database
-            },
-            data: {
-                action: "CHECK_QUOTA"
-            }
-        });
-    };
-
-    /**
-     *  Get tasks
-     */
-
-    this.getTaskIds = function (serviceName, status, func) {
-        return OvhHttp.get("/hosting/web/{serviceName}/tasks", {
-            rootPath: "apiv6",
-            urlParams: {
-                serviceName
-            },
-            params: {
-                "function": func,
-                status
-            }
-        });
-    };
-
-    /**
-     *  Get tasks
-     */
-    this.getTasks = function (serviceName, status, func) {
-        return self.getTaskIds(serviceName, status, func).then((tasksId) => {
-            const promises = tasksId.map((id) =>
-                OvhHttp.get("/hosting/web/{serviceName}/tasks/{id}", {
-                    rootPath: "apiv6",
-                    urlsParams: {
-                        serviceName,
-                        id
-                    }
-                })
-            );
-
-            return $q.all(promises);
-        });
-    };
-
-    /**
-     * Polling tasks
-     */
-
-    self.pollTasks = function (serviceName, opts) {
-        if (!opts.dump || !opts.task) {
-            return $rootScope.$broadcast(`${opts.namespace}.error`, "");
+angular
+    .module("services")
+    .service("HostingDatabase", class HostingDatabase {
+        constructor ($q, $rootScope, Hosting, JavaEnum, OvhHttp, Poller) {
+            this.$q = $q;
+            this.$rootScope = $rootScope;
+            this.Hosting = Hosting;
+            this.JavaEnum = JavaEnum;
+            this.OvhHttp = OvhHttp;
+            this.Poller = Poller;
         }
 
-        if (!Array.isArray(opts.successSates)) {
-            opts.successSates = [opts.successSates];
+        /**
+         * Delete a database
+         * @param {string} serviceName
+         * @param {string} name
+         */
+        deleteDatabase (serviceName, name) {
+            return this.OvhHttp.delete(`/hosting/web/${serviceName}/database/${name}`, {
+                rootPath: "apiv6"
+            }).then((response) => {
+                this.Hosting.resetDatabases();
+                return response;
+            });
         }
 
-        const url = ["apiv6/hosting/web", serviceName, "tasks", opts.task.id].join("/");
+        /**
+         * Get database list
+         * @param {string} serviceName
+         */
+        databaseList (serviceName) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/database`, {
+                rootPath: "apiv6"
+            });
+        }
 
-        $rootScope.$broadcast(`${opts.namespace}.start`, opts.task, opts.dump);
-        return Poller.poll(url, null, {
-            namespace: opts.namespace,
-            interval: 5000,
-            successRule: {
-                state (task) {
-                    return opts.successSates.indexOf(task.state) !== -1;
+        /**
+         * Get database type availability
+         * @param {string} serviceName
+         */
+        getDatabaseAvailableType (serviceName) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/databaseAvailableType`, {
+                rootPath: "apiv6"
+            }).then((availableTypes) => availableTypes.map((type) => type.toUpperCase()));
+        }
+
+        /**
+         * Get database ids
+         * @param {string} serviceName
+         * @param {string} search
+         */
+        getDatabaseIds (serviceName, search) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/database`, {
+                rootPath: "apiv6",
+                params: {
+                    name: `%${search || ""}%`
                 }
-            },
-            errorRule: {
-                state (task) {
-                    return opts.errorsSates.indexOf(task.state) !== -1;
+            });
+        }
+
+        /**
+         * Get database detail
+         * @param {string} serviceName
+         * @param {string} name
+         */
+        getDatabase (serviceName, name) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/database/${name}`, {
+                rootPath: "apiv6"
+            }).then((database) => {
+                _.forEach(["type", "state", "mode"], (elt) => {
+                    database[elt] = database[elt].toUpperCase();
+                });
+                database.version = `_${_.snakeCase(database.version)}`;
+                database.quotaPercent = database.quotaUsed.value / database.quotaSize.value * 100;
+
+                return database;
+            });
+        }
+
+        /**
+         * Get dumps ids
+         * @param {string} serviceName
+         * @param {string} name
+         */
+        getDumpIds (serviceName, name) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/database/${name}/dump`, {
+                rootPath: "apiv6"
+            });
+        }
+
+        /**
+         * Get dump details
+         * @param {string} serviceName
+         * @param {string} name
+         * @param {string} dump
+         */
+        getDump (serviceName, name, dump) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/database/${name}/dump/${dump}`, {
+                rootPath: "apiv6"
+            });
+        }
+
+        /**
+         * Restore database dump
+         * @param {string} serviceName
+         * @param {string} name
+         * @param {object} dump
+         */
+        restoreBDD (serviceName, name, dump) {
+            return this.OvhHttp.post(`/hosting/web/${serviceName}/database/${name}/dump/${dump.id}/restore`, {
+                rootPath: "apiv6"
+            }).then((task) => {
+                this.pollTasks(serviceName, {
+                    namespace: "database.dump.restore.poll",
+                    task,
+                    dump,
+                    successSates: ["canceled", "done"],
+                    errorsSates: ["error"]
+                });
+            });
+        }
+
+        /**
+         * Restore database from a dynamic backup
+         * @param {string} serviceName
+         * @param {string} name
+         * @param {string} backupType
+         * @param {boolean} sendEmail
+         */
+        restoreBDDBackup (serviceName, name, backupType, sendEmail) {
+            return this.OvhHttp.post(`/hosting/web/${serviceName}/database/${name}/restore`, {
+                rootPath: "apiv6",
+                data: {
+                    date: backupType,
+                    sendEmail
+                },
+                broadcast: "hosting.databases.backup.restore"
+            });
+        }
+
+        /**
+         * Get database stats
+         * @param {string} serviceName
+         * @param {string} name
+         * @param period
+         * @param type
+         * @param aggregation
+         */
+        databaseStatistics (serviceName, name, period, type, aggregation) {
+            return this.OvhHttp.get(`/sws/hosting/web/${serviceName}/databases/${name}/statistics`, {
+                rootPath: "2api",
+                params: {
+                    period,
+                    type,
+                    aggregation
                 }
+            });
+        }
+
+        /**
+         * Update password for database
+         * @param {string} serviceName
+         * @param {string} name
+         * @param {string} password
+         */
+        changePassword (serviceName, name, password) {
+            return this.OvhHttp.post(`/hosting/web/${serviceName}/database/${name}/changePassword`, {
+                rootPath: "apiv6",
+                data: {
+                    password
+                }
+            });
+        }
+
+        /**
+         * Ask a dump for a database
+         * @param {string} serviceName
+         * @param {string} name
+         * @param {string} date
+         * @param {boolean} sendEmail
+         */
+        dumpDatabase (serviceName, name, date, sendEmail) {
+            return this.OvhHttp.post(`/hosting/web/${serviceName}/database/${name}/dump`, {
+                rootPath: "apiv6",
+                data: {
+                    date: date.toLowerCase().replace("_", "."),
+                    sendEmail
+                }
+            });
+        }
+
+        /**
+         * Delete a database dump
+         * @param {string} serviceName
+         * @param {string} name
+         * @param {object} dump
+         */
+        deleteDatabaseDump (serviceName, name, dump) {
+            return this.OvhHttp.delete(`/hosting/web/${serviceName}/database/${name}/dump/${dump.id}`, {
+                rootPath: "apiv6"
+            }).then((task) => {
+                this.pollTasks(serviceName, {
+                    namespace: "database.dump.delete.poll",
+                    task,
+                    dump,
+                    successSates: ["canceled", "done"],
+                    errorsSates: ["error"]
+                });
+            });
+        }
+
+        /**
+         * Import a database from a file updloaded in /me/document/
+         * @param {string} serviceName
+         * @param {string} name
+         * @param {string} documentId
+         * @param {boolean} flushDatabase
+         * @param {boolean} sendEmail
+         */
+        importDatabase (serviceName, name, documentId, flushDatabase, sendEmail) {
+            return this.OvhHttp.post(`/hosting/web/${serviceName}/database/${name}/import`, {
+                rootPath: "apiv6",
+                data: {
+                    documentId,
+                    flushDatabase,
+                    sendEmail
+                }
+            });
+        }
+
+        /**
+         * Get dump options
+         */
+        dumpDatabaseOptions () {
+            return this.Hosting.getModels()
+                .then((models) => ({
+                    dumpDates: models.models["hosting.web.database.dump.DateEnum"].enum.map((model) => this.JavaEnum.tr(model))
+                }));
+        }
+
+        /**
+         * Get database capabilities for creation
+         * @param {string} serviceName
+         */
+        getCreationCapabilities (serviceName) {
+            return this.$q.all({
+                hosting: this.OvhHttp.get(`/hosting/web/${serviceName}`, { rootPath: "apiv6" }),
+                capabilities: this.OvhHttp.get(`/hosting/web/${serviceName}/databaseCreationCapabilities`, { rootPath: "apiv6" }),
+                models: this.Hosting.getModels()
+            })
+                .then(({ hosting, capabilities, models }) => ({
+                    availableDatabases: capabilities.map((capa) => ({
+                        type: this.JavaEnum.tr(capa.type),
+                        quota: capa.quota,
+                        extraSqlQuota: capa.type === "extraSqlPerso" ? `_${capa.quota.value}` : null,
+                        available: capa.available
+                    })),
+                    databaseTypes: models.models["hosting.web.database.DatabaseTypeEnum"].enum.map((m) => this.JavaEnum.tr(m)),
+                    primaryLogin: hosting.primaryLogin
+                }));
+        }
+
+        /**
+         * Get database capabilities for creation
+         * @param {string} serviceName
+         * @param type
+         */
+        getAvailableVersion (serviceName, type) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/databaseAvailableVersion`, {
+                rootPath: "apiv6",
+                params: {
+                    type
+                }
+            });
+        }
+
+        /**
+         * Create a database
+         * @param {string} serviceName
+         * @param capabilitie
+         * @param {string} password
+         * @param quota
+         * @param {string} type
+         * @param {string} user
+         * @param {string} version
+         */
+        createDatabase (serviceName, capabilitie, password, quota, type, user, version) {
+            return this.OvhHttp.post(`/hosting/web/${serviceName}/database`, {
+                rootPath: "apiv6",
+                data: {
+                    capabilitie,
+                    password,
+                    quota,
+                    type,
+                    user,
+                    version
+                }
+            }).then(() => {
+                this.Hosting.resetDatabases();
+            });
+        }
+
+        /**
+         * Activate private database
+         * @param {string} serviceName
+         * @param {number} ram
+         * @param {string} version
+         */
+        activeDatabasePrivate (serviceName, ram, version) {
+            return this.OvhHttp.post(`/hosting/web/${serviceName}/activatePrivateDatabase`, {
+                rootPath: "apiv6",
+                data: {
+                    ram,
+                    version
+                }
+            });
+        }
+
+        /**
+         * Get private database capabilities
+         * @param {string} serviceName
+         */
+        getPrivateDatabaseCapabilities (serviceName) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/privateDatabaseCreationCapabilities`, {
+                rootPath: "apiv6"
+            });
+        }
+
+        /**
+         * Get database capabilities
+         * @param {string} serviceName
+         */
+        getDatabasesCapabilities (serviceName) {
+            return this.$q.all({
+                database: this.OvhHttp.get(`/hosting/web/${serviceName}/privateDatabaseCreationCapabilities`, { rootPath: "apiv6" }),
+                privateDatabase: this.OvhHttp.get(`/hosting/web/${serviceName}/databaseCreationCapabilities`, { rootPath: "apiv6" })
+            });
+        }
+
+        /**
+         * Request check quota database
+         * @param {string} serviceName
+         * @param {string} name
+         */
+        requestDatabaseQuotaCheck (serviceName, name) {
+            return this.OvhHttp.post(`/hosting/web/${serviceName}/database/${name}/request`, {
+                rootPath: "apiv6",
+                data: {
+                    action: "CHECK_QUOTA"
+                }
+            });
+        }
+
+        /**
+         * Get tasks list
+         * @param {string} serviceName
+         * @param status
+         * @param func
+         */
+        getTaskIds (serviceName, status, func) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/tasks`, {
+                rootPath: "apiv6",
+                params: {
+                    "function": func,
+                    status
+                }
+            });
+        }
+
+        /**
+         * Get tasks list with details
+         * @param {string} serviceName
+         * @param status
+         * @param func
+         */
+        getTasks (serviceName, status, func) {
+            return this.getTaskIds(serviceName, status, func)
+                .then((tasksId) => {
+                    const promises = tasksId.map((id) => this.OvhHttp.get(`/hosting/web/${serviceName}/tasks/${id}`, { rootPath: "apiv6" }));
+                    return this.$q.all(promises);
+                });
+        }
+
+        /**
+         * Polling tasks
+         * @param {string} serviceName
+         * @param {object} opts
+         * @returns {boolean}
+         */
+        pollTasks (serviceName, opts) {
+            if (!opts.dump || !opts.task) {
+                return this.$rootScope.$broadcast(`${opts.namespace}.error`, "");
             }
-        }).then(
-            (pollObject, task) => {
-                $rootScope.$broadcast(`${opts.namespace}.done`, pollObject, task, opts.dump);
-            },
-            (err) => {
-                $rootScope.$broadcast(`${opts.namespace}.error`, err);
-            },
-            (task) => {
-                $rootScope.$broadcast(`${opts.namespace}.doing`, task);
+
+            if (!Array.isArray(opts.successSates)) {
+                opts.successSates = [opts.successSates];
             }
-        );
-    };
-});
+
+            const url = `apiv6/hosting/web/${serviceName}/tasks/${opts.task.id}`;
+            this.$rootScope.$broadcast(`${opts.namespace}.start`, opts.task, opts.dump);
+
+            return this.Poller.poll(url, null, {
+                namespace: opts.namespace,
+                interval: 5000,
+                successRule: {
+                    state (task) {
+                        return opts.successSates.indexOf(task.state) !== -1;
+                    }
+                },
+                errorRule: {
+                    state (task) {
+                        return opts.errorsSates.indexOf(task.state) !== -1;
+                    }
+                }
+            }).then((pollObject, task) => {
+                this.$rootScope.$broadcast(`${opts.namespace}.done`, pollObject, task, opts.dump);
+            }, (err) => {
+                this.$rootScope.$broadcast(`${opts.namespace}.error`, err);
+            }, (task) => {
+                this.$rootScope.$broadcast(`${opts.namespace}.doing`, task);
+            });
+        }
+    });
