@@ -27,7 +27,7 @@ angular.module("App").controller(
         validPassword (password, confirmation) {
             const validPassword = this.Hosting.constructor.isPasswordValid(_.get(this.password, "value"));
             const validConfirmation = this.password.value && this.password.value === this.password.confirmation;
-            password.$setValidity("confirm", validPassword);
+            password.$setValidity("password", validPassword);
             confirmation.$setValidity("confirm", validConfirmation);
         }
 
