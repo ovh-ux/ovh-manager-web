@@ -10,10 +10,7 @@ angular.module("App").controller(
         }
 
         $onInit () {
-            this.condition = this.Hosting.constructor.getPasswordConditions(this.customPasswordConditions);
-            this.customPasswordConditions = {
-                max: 12
-            };
+            this.condition = this.Hosting.constructor.getPasswordConditions();
             this.databaseName = this.$scope.currentActionData;
             this.password = {
                 value: null,
@@ -27,16 +24,11 @@ angular.module("App").controller(
             return this.password.value && this.password.confirmation && this.password.value !== this.password.confirmation;
         }
 
-        isPasswordValid () {
-            return this.password.value && this.password.confirmation && this.password.value === this.password.confirmation && this.Hosting.constructor.isPasswordValid(this.password.value, this.customPasswordConditions);
-        }
-
-        isPasswordInvalid () {
-            return !this.Hosting.constructor.isPasswordValid(_.get(this.password, "value"), this.customPasswordConditions);
-        }
-
-        isPasswordConfirmationInvalid () {
-            return this.password.value !== this.password.confirmation;
+        validPassword (password, confirmation) {
+            const validPassword = this.Hosting.constructor.isPasswordValid(_.get(this.password, "value"));
+            const validConfirmation = this.password.value && this.password.value === this.password.confirmation;
+            password.$setValidity("confirm", validPassword);
+            confirmation.$setValidity("confirm", validConfirmation);
         }
 
         updatePassword () {
