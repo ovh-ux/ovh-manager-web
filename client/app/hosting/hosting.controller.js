@@ -80,7 +80,7 @@ angular
 
                             queue = _.map(tasks, (task) =>
                                 HostingTask.poll($stateParams.productId, task).catch(() => {
-                                    _.set($scope.ovhConfig, "taskPendingError", $scope.i18n.hosting_global_php_version_pending_task_error_common);
+                                    _.set($scope.ovhConfig, "taskPendingError", false);
                                 })
                             );
 
