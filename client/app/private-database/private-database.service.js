@@ -117,8 +117,11 @@ angular.module("services").service(
                         .then((_response) => {
                             database.serviceInfos = _response.data;
                             return database;
-                        })
-                        .catch((err) => this.$q.reject(err.data));
+                        });
+                })
+                .then((database) => {
+                    database.capabilities = _.mapKeys(database.capabilities, (capability) => capability.object);
+                    return database;
                 })
                 .catch((err) => this.$q.reject(err.data));
         }

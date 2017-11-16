@@ -2,7 +2,8 @@
     <button class="btn btn-link" type="button"
             data-i18n-static="privateDatabase_action_dump_now"
             data-ng-click="listCtrl.dumpBDD(bdd)"
-            data-ng-disabled="bdd.waitDump || bdd.waitRestore">
+            data-ng-disabled="!database.capabilities.dump.create || bdd.waitDump || bdd.waitRestore"
+            title="{{!database.capabilities.dump.create ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_action_dump_now}}">
     </button>
     <button class="btn btn-link" type="button"
             data-i18n-static="privateDatabase_action_import_from_file"
@@ -17,7 +18,8 @@
     <button class="btn btn-link" type="button"
             data-i18n-static="privateDatabase_action_deleteBDD"
             data-ng-click="setAction('database/delete/private-database-database-delete', bdd)"
-            data-ng-disabled="bdd.waitDump || bdd.waitRestore">
+            data-ng-disabled="!database.capabilities.database.delete || bdd.waitDump || bdd.waitRestore"
+            title="{{!database.capabilities.database.delete ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_action_deleteBDD}}">
     </button>
     <button class="btn btn-link" type="button"
             data-i18n-static="privateDatabase_action_list_dumps"
