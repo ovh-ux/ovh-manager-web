@@ -60,18 +60,10 @@ angular
 
         function loadOvhConfig () {
             HostingOvhConfig.get($stateParams.productId).then((ovhConfig) => {
-                let errorBkUp;
-
-                if ($scope.ovhConfig && $scope.ovhConfig.taskPendingError) {
-                    errorBkUp = $scope.ovhConfig.taskPendingError;
-                } else {
-                    errorBkUp = false;
-                }
-
-                $scope.ovhConfig = ovhConfig;
-                $scope.ovhConfig.taskPendingError = errorBkUp;
-                $scope.ovhConfig.taskPending = false;
-
+                $scope.ovhConfig = _.merge(ovhConfig, {
+                    taskPending: _.get($scope.ovhConfig, "taskPending", false),
+                    taskPendingError: _.get($scope.ovhConfig, "taskPendingError", false)
+                });
                 $scope.phpVersionSupport = _.find($scope.hosting.phpVersions, (version) => {
                     if (!~version.version.indexOf(".")) {
                         version.version = `${version.version}.0`;
@@ -79,44 +71,42 @@ angular
                     return version.version === $scope.ovhConfig.engineVersion;
                 });
 
-                HostingTask.getPending($stateParams.productId).then((tasks) => {
-                    let queue;
-                    if (tasks && tasks.length > 0) {
-                        if ($scope.ovhConfig) {
-                            $scope.ovhConfig.taskPending = $scope.i18n[`hosting_global_php_version_pending_task_${tasks[0].function.replace(/ovhConfig\//, "")}`];
-
-                            if (!$scope.ovhConfig.taskPending) {
-                                $scope.ovhConfig.taskPending = $scope.i18n.hosting_global_php_version_pending_task_common;
-                            }
-                        }
-
-                        queue = _.map(tasks, (task) =>
-                            HostingTask.poll($stateParams.productId, task).catch(() => {
-                                $scope.ovhConfig.taskPendingError = $scope.i18n.hosting_global_php_version_pending_task_error_common;
-                            })
-                        );
-
-                        $q.all(queue).then(() => {
-                            loadOvhConfig();
-                        });
-                    } else if ($scope.ovhConfig) {
-                        $scope.ovhConfig.taskPending = false;
-                    }
-                });
-
-                HostingTask.getError($stateParams.productId).then((tasks) => {
-                    if ($scope.ovhConfig) {
+                HostingTask.getPending($stateParams.productId)
+                    .then((tasks) => {
+                        let queue;
                         if (tasks && tasks.length > 0) {
-                            $scope.ovhConfig.taskPendingError = $scope.i18n[`hosting_global_php_version_pending_task_error_${tasks[0].function.replace(/ovhConfig\//, "")}`];
+                            const taskPendingMessage = $scope.i18n[`hosting_global_php_version_pending_task_${tasks[0].function.replace(/ovhConfig\//, "")}`];
+                            _.set($scope.ovhConfig, "taskPending", taskPendingMessage || $scope.i18n.hosting_global_php_version_pending_task_common);
 
-                            if (!$scope.ovhConfig.taskPendingError) {
-                                $scope.ovhConfig.taskPendingError = $scope.i18n.hosting_global_php_version_pending_task_error_common;
-                            }
+                            queue = _.map(tasks, (task) =>
+                                HostingTask.poll($stateParams.productId, task).catch(() => {
+                                    _.set($scope.ovhConfig, "taskPendingError", $scope.i18n.hosting_global_php_version_pending_task_error_common);
+                                })
+                            );
+
+                            $q.all(queue).then(() => {
+                                loadOvhConfig();
+                            });
                         } else {
-                            $scope.ovhConfig.taskPendingError = false;
+                            _.set($scope.ovhConfig, "taskPending", false);
                         }
-                    }
-                });
+                    }).catch(() => {
+                        _.set($scope.ovhConfig, "taskPending", false);
+                    });
+
+                HostingTask.getError($stateParams.productId)
+                    .then((tasks) => {
+                        if ($scope.ovhConfig) {
+                            if (tasks && tasks.length > 0) {
+                                const taskErrorMessage = $scope.i18n[`hosting_global_php_version_pending_task_error_${tasks[0].function.replace(/ovhConfig\//, "")}`];
+                                _.set($scope.ovhConfig, "taskPendingError", taskErrorMessage || $scope.i18n.hosting_global_php_version_pending_task_error_common);
+                            } else {
+                                _.set($scope.ovhConfig, "taskPendingError", false);
+                            }
+                        }
+                    }).catch(() => {
+                        _.set($scope.ovhConfig, "taskPendingError", false);
+                    });
             });
         }
 
