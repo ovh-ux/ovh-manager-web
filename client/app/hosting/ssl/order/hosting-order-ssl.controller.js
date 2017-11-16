@@ -63,7 +63,7 @@ angular.module("App").controller(
                         return rtn;
                     })
                     .catch((err) => {
-                        this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_ssl_order_error"), err, this.$scope.alerts.main);
+                        this._handleSslError(err);
                         this.$scope.resetAction();
                     })
                     .finally(() => {
@@ -88,12 +88,20 @@ angular.module("App").controller(
 
                 this.Hosting.createSsl(this.$stateParams.productId, data.certificate, data.key, data.chain)
                     .then(() => this.Alerter.success(this.$scope.tr("hosting_dashboard_ssl_generate_success"), this.$scope.alerts.main))
-                    .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_ssl_order_error"), err, this.$scope.alerts.main))
+                    .catch((err) => this._handleSslError(err))
                     .finally(() => {
                         this.$scope.loadSsl();
                         this.$scope.resetAction();
                     });
             }
+        }
+
+        _handleSslError (err) {
+            let message = this.$scope.tr("hosting_dashboard_ssl_order_error");
+            if (err.message === "No attached domain with ssl enabled or no attached domain that redirect on hosting IPs, please use hosting IPs in your domain zone") {
+                message += ` ${this.$scope.tr("hosting_dashboard_ssl_order_error_no_attached_domain", this.$scope.hosting.hostingIp)}`;
+            }
+            this.Alerter.alertFromSWS(message, err, this.$scope.alerts.main);
         }
 
         isStepOneValid () {
