@@ -79,15 +79,16 @@
                                                       <span class="fa fa-info-circle" aria-hidden="true"></span>
                                                   </span>
                                                 <div>
-                                                    <span data-ng-bind="tr('domain_dashboard_dns_management_anycast_' + (ctrlTabGeneralInformations.domain.hasDnsAnycast == null ? 'null' : ctrlTabGeneralInformations.domain.hasDnsAnycast.toString()))"></span>
+                                                    <span data-ng-bind="tr('domain_dashboard_dns_management_anycast_' + ctrlTabGeneralInformations.domain.hasDnsAnycast.toString())"
+                                                          data-ng-if="ctrlTabGeneralInformations.domain.hasDnsAnycast != null"></span>
                                                     <span data-ng-if="ctrlTabGeneralInformations.domain.hasDnsAnycast == null">
-                                                          (<span
-                                                        data-i18n-static="domain_configuration_dnsanycast_how_to_activate_1"></span>
-                                                          <button class="btn btn-link p-0" type="button"
-                                                                  data-i18n-static="domain_configuration_dnsanycast_how_to_activate_2"
-                                                                  data-ng-click="setAction('zone/activate/domain-zone-activate', ctrlTabGeneralInformations.domain)">
-                                                          </button>)
-                                                      </span>
+                                                        <span data-i18n-static="domain_dashboard_dns_management_anycast_null"></span>
+                                                        (<span data-i18n-static="domain_configuration_dnsanycast_how_to_activate_1"></span>
+                                                        <button class="btn btn-link p-0" type="button"
+                                                                data-i18n-static="domain_configuration_dnsanycast_how_to_activate_2"
+                                                                data-ng-click="setAction('zone/activate/domain-zone-activate', ctrlTabGeneralInformations.domain)">
+                                                        </button>)
+                                                    </span>
                                                 </div>
                                             </div>
                                             <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
