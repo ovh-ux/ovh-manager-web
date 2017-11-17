@@ -236,6 +236,25 @@
                                             <span data-ng-bind="::stateCtrl.database.port"></span>
                                         </div>
                                     </li>
+                                    <li class="oui-tile__item" ng-if="stateCtrl.database.tlsCa">
+                                        <div class="oui-tile__definition">
+                                            <div class="d-flex w-100">
+                                                <div>
+                                                    <strong class="d-block"
+                                                            data-i18n-static="privateDatabase_dashboard_certificate"></strong>
+                                                    <span data-ng-bind="::stateCtrl.database.certificateType"></span>
+                                                </div>
+                                                <div class="ml-auto my-auto">
+                                                    <button class="btn btn-default my-auto ml-auto text-wrap" type="button" title="{{::i18n.privateDatabase_see_certificate}}"
+                                                            data-i18n-static="privateDatabase_dashboard_see_certificate"
+                                                            data-ng-click="setAction('database/certificate/private-database-database-certificate', stateCtrl.database)"
+                                                            data-ng-disabled="taskState.lockAction"
+                                                            data-ng-if="!stateCtrl.isExpired">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
                                             <strong class="d-block"

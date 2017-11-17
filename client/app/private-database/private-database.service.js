@@ -123,6 +123,12 @@ angular.module("services").service(
                     database.capabilities = _.mapKeys(database.capabilities, (capability) => capability.object);
                     return database;
                 })
+                .then((database) => {
+                    // we don't have any other certificate types right now
+                    // and the API doesn't have this field
+                    database.certificateType = "TLS";
+                    return database;
+                })
                 .catch((err) => this.$q.reject(err.data));
         }
 
