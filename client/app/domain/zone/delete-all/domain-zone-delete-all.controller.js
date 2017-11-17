@@ -20,12 +20,12 @@ angular.module("App").controller(
         checkAllZoneCanBeDelete (name) {
             this.loading = true;
             return this.hostingService
-                .getHosting(name, null)
+                .getHosting(name)
                 .then(() => {
                     this.canDeleteAllZone = false;
                 })
                 .catch((err) => {
-                    this.canDeleteAllZone = err.status === 404;
+                    this.canDeleteAllZone = _.get(err, "status") === 404;
                 })
                 .finally(() => {
                     this.loading = false;
