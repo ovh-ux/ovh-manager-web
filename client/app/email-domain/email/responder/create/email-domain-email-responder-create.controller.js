@@ -66,10 +66,33 @@ angular.module("App").controller(
             this.model.responderDateEnd = "";
         }
 
+        resetResponderAccount () {
+            this.model.account = null;
+        }
+
         responderAccountCheck (input) {
-            input.$setValidity("email", this.model.account && validator.isEmail(`${this.model.account}@${this.domain}`));
+            input.$setValidity("email", _.isString(this.model.account) && validator.isEmail(`${this.model.account}@${this.domain}`));
             input.$setValidity("responder", _.indexOf(this.responders, this.model.account) === -1);
             input.$setValidity("account", _.indexOf(this.accounts, this.model.account) === -1);
+        }
+
+        responderDatesCheck (start, end) {
+            this.responderDateStartCheck(start);
+            this.responderDateEndCheck(end);
+        }
+
+        responderDateStartCheck (input) {
+            if (!input.$dirty && !_.isEmpty(this.model.responderDateStart)) {
+                input.$setDirty();
+            }
+            input.$setValidity("date", !!this.model.responderDateStart && (!this.model.responderDateEnd || moment(this.model.responderDateStart).isBefore(this.model.responderDateEnd)));
+        }
+
+        responderDateEndCheck (input) {
+            if (!input.$dirty && !_.isEmpty(this.model.responderDateEnd)) {
+                input.$setDirty();
+            }
+            input.$setValidity("date", !!this.model.responderDateEnd && (!this.model.responderDateStart || moment(this.model.responderDateEnd).isAfter(this.model.responderDateStart)) && moment(this.model.responderDateEnd).isAfter(new Date()));
         }
 
         responderDurationCheck () {
@@ -80,18 +103,6 @@ angular.module("App").controller(
                     moment(this.model.responderDateEnd).isAfter(new Date())
                 )
             );
-        }
-
-        responderDateStartCheck () {
-            if (!!this.model.responderDateEnd && moment(this.model.responderDateStart).isAfter(this.model.responderDateEnd)) {
-                this.model.responderDateStart = this.model.responderDateEnd;
-            }
-        }
-
-        responderDateEndCheck () {
-            if (!!this.model.responderDateStart && moment(this.model.responderDateStart).isAfter(this.model.responderDateEnd)) {
-                this.model.responderDateEnd = this.model.responderDateStart;
-            }
         }
 
         createResponder () {
