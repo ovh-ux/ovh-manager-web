@@ -763,7 +763,7 @@ module.exports = {
                         {
                             title: "guide_emails_filter_subscope",
                             list: [
-                                { url: "https://www.ovh.com/fr/g1973.mail_mutualise_guide_configuration_des_filtres_e-mail_sur_lespace_client", title: "guide_emails_emails_filters" }
+                                { url: "https://docs.ovh.com/fr/emails/mail-mutualise-guide-configuration-des-filtres-e-mail-sur-lespace-client/", title: "guide_emails_emails_filters" }
                             ]
                         }
                     ],
@@ -771,7 +771,7 @@ module.exports = {
                         {
                             title: "guide_redirection_subscope",
                             list: [
-                                { url: "https://www.ovh.com/fr/g2001.mail_mutualise_guide_des_redirections_emails", title: "guide_emails_redirection_create" }
+                                { url: "https://docs.ovh.com/fr/emails/guide-des-redirections-emails/", title: "guide_emails_redirection_create" }
                             ]
                         }
                     ],
@@ -779,7 +779,7 @@ module.exports = {
                         {
                             title: "guide_emails_responder_subscope",
                             list: [
-                                { url: "https://www.ovh.com/fr/g2052.guide_de_mise_en_place_dun_repondeur", title: "guide_emails_responder" }
+                                { url: "https://docs.ovh.com/fr/emails/mise-en-place-repondeur-mail/", title: "guide_emails_responder" }
                             ]
                         }
                     ],
@@ -787,7 +787,7 @@ module.exports = {
                         {
                             title: "guide_mailing_list_title",
                             list: [
-                                { url: "https://www.ovh.com/fr/g1596.mail_mutualise_guide_dutilisation_mailing-list", title: "guide_emails_mailing_list" }
+                                { url: "https://docs.ovh.com/fr/emails/guide-dutilisation-mailing-list/", title: "guide_emails_mailing_list" }
                             ]
                         }
                     ]
