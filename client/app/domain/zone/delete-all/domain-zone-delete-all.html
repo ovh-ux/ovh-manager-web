@@ -5,14 +5,21 @@
          data-wizard-title="i18n.domain_tab_ZONE_default_delete_all">
 
         <div data-wizard-step
-             data-wizard-step-valid="!ctrl.loading">
+             data-wizard-step-valid="!ctrl.loading && ctrl.canDeleteAllZone">
 
             <oui-loader data-ng-if="ctrl.loading"></oui-loader>
 
             <div data-ng-if="!ctrl.loading">
-                <p data-i18n-static="domain_configuration_zonedns_delete_all_question"></p>
-                <div class="alert alert-warning mt-5" role="alert"
-                     data-i18n-static="domain_configuration_zonedns_delete_all_warning">
+
+                <div class="alert alert-warning" role="alert"
+                     data-i18n-static="domain_configuration_zonedns_delete_all_blocked"
+                     data-ng-if="!ctrl.canDeleteAllZone"></div>
+
+                <div data-ng-if="ctrl.canDeleteAllZone">
+                    <p data-i18n-static="domain_configuration_zonedns_delete_all_question"></p>
+                    <div class="alert alert-warning mt-5" role="alert"
+                         data-i18n-static="domain_configuration_zonedns_delete_all_warning">
+                    </div>
                 </div>
             </div>
         </div>
