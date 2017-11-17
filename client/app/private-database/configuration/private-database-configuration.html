@@ -25,10 +25,9 @@
                                data-ng-attr-for="{{configurationsCtrl.edit.value && (configuration.key + 'Field') || null}}">
                             <span class="mr-2" data-ng-bind="configuration.key"></span>
                             <span class="fa fa-info-circle"
-                                  data-simplepopover="{{configuration.description}}"
-                                  data-simplepopover-placement="right"
-                                  data-simplepopover-single="true"
-                                  data-simplepopover-title="{{configuration.key}}"></span> :
+                                  data-uib-tooltip="{{configuration.description}}"
+                                  data-tooltip-append-to-body="true">
+                            </span> :
                         </label>
                         <div class="col-md-8">
                             <span class="d-block form-control-static"
