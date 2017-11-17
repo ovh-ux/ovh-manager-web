@@ -63,6 +63,7 @@
                                     <th scope="col" data-i18n-static="domains_dashboard_table_titles_creation"></th>
                                     <th scope="col" class="text-center" data-i18n-static="domains_dashboard_table_titles_whois"></th>
                                     <th scope="col" class="text-center" data-i18n-static="domains_dashboard_table_titles_dnssec"></th>
+                                    <th scope="col" class="text-center" data-i18n-static="domains_dashboard_table_titles_dnsanycast"></th>
                                     <th scope="col" class="min-width"></th>
                                 </tr>
                             </thead>
@@ -91,16 +92,32 @@
                                     </td>
                                     <td data-ng-bind="domain.creation|date:'mediumDate'"></td>
                                     <td class="text-center">
-                                        <span data-ng-if="domain.whoisFields.length > 0"
-                                              data-i18n-static="common_activated"></span>
-                                        <span data-ng-if="domain.whoisFields.length === 0"
-                                              data-i18n-static="common_desactivated"></span>
+                                        <span class="label label-success"
+                                              data-i18n-static="common_activated"
+                                              data-ng-if="domain.whoisFields.length > 0"></span>
+                                        <span class="label label-danger"
+                                              data-i18n-static="common_desactivated"
+                                              data-ng-if="domain.whoisFields.length === 0"></span>
                                     </td>
                                     <td class="text-center">
-                                        <span data-ng-if="domain.dnssecSupported && domain.dnssecStatus !== null"
-                                              data-ng-bind="::i18n['domains_dashboard_table_dnssec_status_' + domain.dnssecStatus]"></span>
-                                        <span data-ng-if="!domain.dnssecSupported"
-                                              data-i18n-static="common_not_supported"></span>
+                                        <span class="label"
+                                              data-ng-bind="::i18n['domains_dashboard_table_dnssec_status_' + domain.dnssecStatus]"
+                                              data-ng-class="{'label-success': domain.dnssecStatus === 'ENABLED', 'label-danger': domain.dnssecStatus === 'DISABLED', 'label-info': domain.dnssecStatus !== 'ENABLED' && domain.dnssecStatus !== 'DISABLED'}"
+                                              data-ng-if="domain.dnssecSupported && domain.dnssecStatus !== null"></span>
+                                        <span class="label label-warning"
+                                              data-i18n-static="common_not_supported"
+                                              data-ng-if="!domain.dnssecSupported"></span>
+                                    </td>
+                                    <td class="text-center">
+                                        <span class="label label-success"
+                                              data-i18n-static="common_activated"
+                                              data-ng-if="domain.hasDnsAnycast"></span>
+                                        <span class="label label-danger"
+                                              data-i18n-static="common_desactivated"
+                                              data-ng-if="domain.hasDnsAnycast === false"></span>
+                                        <span class="label label-warning"
+                                              data-i18n-static="common_not_available"
+                                              data-ng-if="domain.hasDnsAnycast == null"></span>
                                     </td>
                                     <td class="text-right">
                                         <button class="btn btn-icon" type="button" title="{{tr('common_actions')}}"
