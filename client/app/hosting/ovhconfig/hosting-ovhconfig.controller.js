@@ -1,170 +1,172 @@
-angular.module("App").controller("HostingEditOvhConfig", ($scope, $stateParams, HostingOvhConfig, $q, Hosting, User) => {
-    "use strict";
+angular
+    .module("App")
+    .controller("HostingEditOvhConfig", class HostingEditOvhConfig {
+        constructor ($scope, $q, $stateParams, Alerter, Hosting, HostingOvhConfig, User) {
+            this.$scope = $scope;
+            this.$q = $q;
+            this.$stateParams = $stateParams;
+            this.alerter = Alerter;
+            this.hostingService = Hosting;
+            this.hostingOvhConfigService = HostingOvhConfig;
+            this.User = User;
+        }
 
-    let currentConfig;
+        $onInit () {
+            this.errorMsg = null;
+            this.loading = false;
+            this.model = {};
+            this.toggle = {
+                areInitializationErrors: false,
+                areOldConfigsExist: false,
+                isConfigCanBeSaved: false,
+                isConfigIsEdited: false,
+                isErrorNotDefined: false,
+                isPhpVersionAvailable: false,
+                isRollbackProcess: false,
+                process: null
+            };
+            this.selectedConfig = null;
 
-    $scope.model = {};
-    $scope.loading = {
-        init: false
-    };
-    $scope.toggle = {
-        configCanBeSaved: false,
-        unavailablePhpVersion: false,
-        needFirstChoice: true,
-        inRollbackProcess: true,
-        configFlavour: null,
-        process: null
-    };
-    $scope.apiStruct = null;
-    $scope.ovhHistoricalConfigs = null;
-    $scope.error = null;
-    $scope.currentFlavourIsEdited = false;
+            this.$scope.setProcess = () => this.setProcess();
+            this.$scope.saveConfig = () => this.saveConfig();
 
-    $scope.initWizard = function () {
-        const queue = [];
+            this.initWizard();
+        }
 
-        $scope.loading.init = true;
-
-        User.getUrlOf("guides")
-            .then((guides) => {
-                $scope.phpAppendicesGuide = guides.phpAppendices;
-                $scope.hostingPhpGuide = guides.hostingPhpConfiguration;
-            });
-
-        queue.push(
-            Hosting.getModels()
-                .then((struct) => {
-                    $scope.apiStruct = {
-                        models: struct.models
-                    };
-                })
-        );
-
-        queue.push(
-            HostingOvhConfig.getHistoric($stateParams.productId)
-                .then((ovhHistoricalConfigs) => {
-                    $scope.ovhHistoricalConfigs = ovhHistoricalConfigs;
-                })
-        );
-
-        queue.push(
-            HostingOvhConfig.get($stateParams.productId)
-                .then((conf) => {
-                    currentConfig = conf;
-                })
-        );
-
-        $q.all(queue).finally(() => {
-            $scope.loading.init = false;
-            if ($scope.ovhHistoricalConfigs && $scope.ovhHistoricalConfigs.length > 0) {
-                $scope.toggle.needFirstChoice = true;
-                $scope.toggle.configFlavour = $scope.ovhHistoricalConfigs[0];
-                $scope.flavourChanged();
-            } else {
-                $scope.setUpdateProcess();
+        static parseLabel (label) {
+            if (_.isString(label) && !_.isEmpty(label)) {
+                return label.replace(".", "_");
             }
-        });
-    };
-
-    $scope.checkCohesion = function () {
-        if ($scope.toggle.needFirstChoice) {
-            return;
+            return "null";
         }
 
-        if ($scope.toggle.inRollbackProcess) {
-            $scope.toggle.configCanBeSaved = true;
-        } else if ($scope.apiStruct.models["hosting.web.ovhConfig.AvailableEngineVersionEnum"].enum.indexOf($scope.model.engineVersion) !== -1) {
-            $scope.toggle.unavailablePhpVersion = false;
-            $scope.toggle.configCanBeSaved = true;
-        } else {
-            $scope.toggle.unavailablePhpVersion = true;
-            $scope.toggle.configCanBeSaved = false;
+        initWizard () {
+            const queue = [];
+            this.loading = true;
+
+            this.User.getUrlOf("guides")
+                .then((guides) => {
+                    this.phpAppendicesGuide = guides.phpAppendices;
+                    this.hostingPhpGuide = guides.hostingPhpConfiguration;
+                });
+
+            queue.push(
+                this.hostingService.getModels()
+                    .then((apiStruct) => {
+                        this.apiStruct = {
+                            models: apiStruct.models
+                        };
+                    })
+            );
+
+            queue.push(
+                this.hostingOvhConfigService.getHistoric(this.$stateParams.productId)
+                    .then((configs) => {
+                        this.oldConfigs = configs;
+                    })
+            );
+
+            queue.push(
+                this.hostingOvhConfigService.getCurrent(this.$stateParams.productId)
+                    .then((conf) => {
+                        this.currentConfig = conf;
+                    })
+            );
+
+            return this.$q
+                .all(queue)
+                .catch(() => {
+                    this.toggle.areInitializationErrors = true;
+                })
+                .finally(() => {
+                    this.loading = false;
+                    if (_.isArray(this.oldConfigs) && !_.isEmpty(this.oldConfigs)) {
+                        this.toggle.areOldConfigsExist = true;
+                    } else {
+                        this.toggle.areOldConfigsExist = false;
+                        this.toggle.isRollbackProcess = false;
+                        this.toggle.process = "update";
+                    }
+                });
         }
-    };
 
-    $scope.flavourChanged = function (ovhConfig = $scope.toggle.configFlavour) {
-        clearsDisplayedError();
-
-        $scope.currentFlavourIsEdited = false;
-        $scope.model.engineName = ovhConfig.engineName;
-        $scope.model.engineVersion = ovhConfig.engineVersion;
-        $scope.model.environment = ovhConfig.environment;
-        $scope.model.httpFirewall = ovhConfig.httpFirewall;
-        $scope.model.container = ovhConfig.container || "stable"; // default value
-
-        $scope.checkCohesion();
-    };
-
-    $scope.flavourUpdated = function () {
-        clearsDisplayedError();
-
-        $scope.currentFlavourIsEdited = true;
-        $scope.checkCohesion();
-    };
-
-    $scope.parseLabel = function (label) {
-        return label.replace(".", "_");
-    };
-
-    function clearsDisplayedError () {
-        $scope.toggle.error = null;
-        $scope.toggle.notDefinedError = false;
-    }
-
-    function displayError (err) {
-        clearsDisplayedError();
-
-        if (err && err.message) {
-            $scope.toggle.error = err.message;
-            $scope.toggle.notDefinedError = false;
-        } else {
-            $scope.toggle.error = null;
-            $scope.toggle.notDefinedError = true;
+        setProcess () {
+            if (this.toggle.process === "rollback") {
+                this.toggle.isRollbackProcess = true;
+                this.selectedConfig = this.oldConfigs[0];
+            } else {
+                this.selectedConfig = this.currentConfig;
+            }
+            this.changeToConfig(this.selectedConfig);
         }
-    }
 
-    function changeConfig (model) {
-        return HostingOvhConfig.changeConfiguration($stateParams.productId, model);
-    }
-
-    function rollbackConfig (currentId, idToRollback) {
-        return HostingOvhConfig.rollbackConfig($stateParams.productId, currentId, idToRollback);
-    }
-
-    function closeWizardOnSuccess () {
-        $scope.$emit(HostingOvhConfig.events.ovhConfigNeedRefresh);
-        $scope.resetAction();
-    }
-
-    $scope.saveConfig = function () {
-        let model;
-
-        $scope.toggle.configCanBeSaved = true;
-
-        if ($scope.currentFlavourIsEdited) {
-            model = angular.copy($scope.model);
-            model.id = currentConfig.id;
-            changeConfig(model).then(closeWizardOnSuccess, (err) => {
-                $scope.checkCohesion();
-                displayError(err);
-            });
-        } else {
-            rollbackConfig(currentConfig.id, $scope.toggle.configFlavour.id).then(closeWizardOnSuccess, (err) => {
-                $scope.checkCohesion();
-                displayError(err);
-            });
+        changeToConfig (ovhConfig) {
+            this.clearDisplayedError();
+            this.toggle.isConfigIsEdited = false;
+            _.set(this.model, "engineName", ovhConfig.engineName);
+            _.set(this.model, "engineVersion", ovhConfig.engineVersion);
+            _.set(this.model, "environment", ovhConfig.environment);
+            _.set(this.model, "httpFirewall", ovhConfig.httpFirewall);
+            _.set(this.model, "container", ovhConfig.container || "stable");
+            this.checkCohesion();
         }
-    };
 
-    $scope.setProcess = function () {
-        if ($scope.toggle.process === "rollback") {
-            $scope.toggle.inRollbackProcess = true;
-            $scope.toggle.needFirstChoice = false;
-            $scope.checkCohesion();
-        } else {
-            $scope.flavourChanged(currentConfig);
-            $scope.toggle.inRollbackProcess = false;
-            $scope.toggle.needFirstChoice = false;
+        updateConfig () {
+            this.changeToConfig(this.selectedConfig);
         }
-    };
-});
+
+        updateSelectedConfig () {
+            this.clearDisplayedError();
+            this.toggle.isConfigIsEdited = true;
+            this.checkCohesion();
+        }
+
+        checkCohesion () {
+            if (this.toggle.isRollbackProcess) {
+                this.toggle.isConfigCanBeSaved = true;
+            } else if (_.indexOf(this.apiStruct.models["hosting.web.ovhConfig.AvailableEngineVersionEnum"].enum, this.model.engineVersion) !== -1) {
+                this.toggle.isPhpVersionAvailable = true;
+                this.toggle.isConfigCanBeSaved = this.toggle.isConfigIsEdited;
+            } else {
+                this.toggle.isPhpVersionAvailable = false;
+                this.toggle.isConfigCanBeSaved = false;
+            }
+        }
+
+        saveConfig () {
+            if (this.toggle.isConfigIsEdited) {
+                const model = angular.copy(this.model);
+                model.id = this.currentConfig.id;
+                return this.hostingOvhConfigService.changeConfiguration(this.$stateParams.productId, model)
+                    .then(() => {
+                        this.alerter.success(this.$scope.tr("hosting_action_config_edit_success"), this.$scope.alerts.main);
+                        this.$scope.$emit(this.hostingOvhConfigService.events.ovhConfigNeedRefresh);
+                        this.$scope.resetAction();
+                    })
+                    .catch((err) => {
+                        this.displayError(err);
+                    });
+            }
+            return this.hostingOvhConfigService.rollbackConfig(this.$stateParams.productId, this.currentConfig.id, this.selectedConfig.id)
+                .then(() => {
+                    this.alerter.success(this.$scope.tr("hosting_action_config_rollback_success"), this.$scope.alerts.main);
+                    this.$scope.$emit(this.hostingOvhConfigService.events.ovhConfigNeedRefresh);
+                    this.$scope.resetAction();
+                })
+                .catch((err) => {
+                    this.displayError(err);
+                });
+        }
+
+        clearDisplayedError () {
+            this.errorMsg = null;
+            this.toggle.isErrorNotDefined = false;
+        }
+
+        displayError (err) {
+            this.clearDisplayedError();
+            this.checkCohesion();
+            this.errorMsg = _.get(err, "message");
+            this.toggle.isErrorNotDefined = !this.errorMsg;
+        }
+    });
