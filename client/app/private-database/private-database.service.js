@@ -126,7 +126,7 @@ angular.module("services").service(
                 .then((database) => {
                     // we don't have any other certificate types right now
                     // and the API doesn't have this field
-                    database.certificateType = "TLS";
+                    database.certificateType = "TLS CA";
                     return database;
                 })
                 .catch((err) => this.$q.reject(err.data));
