@@ -10,7 +10,6 @@ angular.module("controllers").controller(
 
         $onInit () {
             this.domain = angular.copy(this.$scope.currentActionData.domain);
-            this.domain.glueRecordIpv6Supported = true;
             this.editedGlueRecord = _.get(this.$scope.currentActionData, "editedGlueRecord", null);
             this.editMode = !!this.editedGlueRecord;
 
@@ -44,7 +43,7 @@ angular.module("controllers").controller(
             if (!this.domain.glueRecordMultiIpSupported && model.ips.length > 1) {
                 valid = false;
             } else {
-                valid = !_.isEmpty(model.ips) && _.every(model.ips, (ip) => this.Validator.isValidIpv4(ip) || (this.domain.glueRecordIpv6Supported && this.Validator.isValidIpv6(ip)));
+                valid = !_.isEmpty(model.ips) && _.every(model.ips, (ip) => this.Validator.isValidIpv4(ip) || (_.get(this.domain, "glueRecordIpv6Supported", false) && this.Validator.isValidIpv6(ip)));
             }
 
             input.$setValidity("ips", valid);

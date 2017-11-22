@@ -33,16 +33,23 @@ angular.module("App").controller(
                 (!!this.model.from && !!this.model.to && moment(this.model.to).isAfter(this.model.from) && moment(this.model.to).isAfter(new Date()));
         }
 
-        responderDateStartCheck () {
-            if (!!this.model.to && moment(this.model.from).isAfter(this.model.to)) {
-                this.model.from = this.model.to;
-            }
+        responderDatesCheck (start, end) {
+            this.responderDateStartCheck(start);
+            this.responderDateEndCheck(end);
         }
 
-        responderDateEndCheck () {
-            if (!!this.model.from && moment(this.model.from).isAfter(this.model.to)) {
-                this.model.to = this.model.from;
+        responderDateStartCheck (input) {
+            if (!input.$dirty && !_.isEmpty(this.model.from)) {
+                input.$setDirty();
             }
+            input.$setValidity("date", !!this.model.from && (!this.model.to || moment(this.model.from).isBefore(this.model.to)));
+        }
+
+        responderDateEndCheck (input) {
+            if (!input.$dirty && !_.isEmpty(this.model.to)) {
+                input.$setDirty();
+            }
+            input.$setValidity("date", !!this.model.to && (!this.model.from || moment(this.model.to).isAfter(this.model.from)) && moment(this.model.to).isAfter(new Date()));
         }
 
         updateResponder () {
