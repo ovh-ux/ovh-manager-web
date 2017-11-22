@@ -28,6 +28,7 @@ angular
 
             _.forEach(this.statusToWatch, (state) => {
                 this.$scope.$on(`privateDatabase.database.dump.${state}`, this[`onDataBaseDump${state}`].bind(this));
+                this.$scope.$on(`privateDatabase.database.dump.delete.${state}`, this[`onDataBaseDumpDelete${state}`].bind(this));
                 this.$scope.$on(`privateDatabase.database.restore.${state}`, this[`onDataBaseRestore${state}`].bind(this));
             });
 
@@ -99,6 +100,25 @@ angular
             if (this.database.databaseName === opts.databaseName) {
                 delete this.database.waitDump;
                 this.alerter.error(this.$scope.tr("privateDatabase_dump_bdd_fail"), this.$scope.alerts.main);
+            }
+        }
+
+        onDataBaseDumpDeletestart (evt, opts) {
+            if (this.database.databaseName === opts.databaseName) {
+                this.alerter.success(this.$scope.tr("privateDatabase_tabs_dumps_delete_start"), this.$scope.alerts.main);
+            }
+        }
+
+        onDataBaseDumpDeletedone (evt, opts) {
+            if (this.database.databaseName === opts.databaseName) {
+                this.getDumps();
+                this.alerter.success(this.$scope.tr("privateDatabase_tabs_dumps_delete_done"), this.$scope.alerts.main);
+            }
+        }
+
+        onDataBaseDumpDeleteerror (evt, opts) {
+            if (this.database.databaseName === opts.databaseName) {
+                this.alerter.error(this.$scope.tr("privateDatabase_tabs_dumps_delete_error"), this.$scope.alerts.main);
             }
         }
 

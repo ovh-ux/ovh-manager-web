@@ -17,6 +17,8 @@
    <translation id="privateDatabase_dashboard_version_postgresql_95" qtlid="354197">PostgreSQL 9.5</translation>
    <translation id="privateDatabase_dashboard_version_postgresql_96" qtlid="360970">PostgreSQL 9.6</translation>
    <translation id="privateDatabase_dashboard_version_postgresql_10" qtlid="444443">PostgreSQL 10</translation>
+   <translation id="privateDatabase_dashboard_version_mongodb_34">MongoDB 3.4</translation>
+   <translation id="privateDatabase_dashboard_version_redis_32">Redis 3.2</translation>
    <translation id="privateDatabase_dashboard_nb_cpu" qtlid="215637">Nombre de cpu</translation>
    <translation id="privateDatabase_dashboard_ip" qtlid="25615">IP</translation>
    <translation id="privateDatabase_dashboard_detached" qtlid="136100">Suspendu</translation>
@@ -51,10 +53,10 @@
    <translation id="privateDatabase_dashboard_service_hosting_linked" qtlid="444456">Hébergement web lié</translation>
    <translation id="privateDatabase_dashboard_service_hosting_linked_none" qtlid="30646">Aucun</translation>
 
-   <translation id="privateDatabase_dashboard_ftp_informations_legacy" qtlid="74045">Connexion FTP</translation>
-   <translation id="privateDatabase_dashboard_ftp_informations_docker" qtlid="265470">Connexion SFTP</translation>
+   <translation id="privateDatabase_dashboard_connections_title">Informations de connexion</translation>
+   <translation id="privateDatabase_dashboard_ftp_informations_legacy">FTP</translation>
+   <translation id="privateDatabase_dashboard_ftp_informations_docker">SFTP</translation>
    <translation id="privateDatabase_dashboard_ftp_username" qtlid="56045">Nom d'utilisateur</translation>
-   <translation id="privateDatabase_dashboard_connexion_informations">Informations de connexion</translation>
    <translation id="privateDatabase_dashboard_admin_informations" qtlid="264001">Administration de la base de données</translation>
    <translation id="privateDatabase_dashboard_admin_informations_users" qtlid="264014">Reportez-vous à l'onglet utilisateurs et droits</translation>
 
@@ -327,6 +329,12 @@
    <translation id="privateDatabase_tabs_dumps_restore_in_progress" qtlid="263428">La restauration de la sauvegarde a été prise en compte.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_success" qtlid="263441">La restauration de la sauvegarde a bien été effectuée.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_fail" qtlid="263454">Une erreur est survenue lors de la restauration de la sauvegarde :</translation>
+   <translation id="privateDatabase_tabs_dumps_delete">Supprimer la sauvegarde</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_title">Supprimer une sauvegarde</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_confirm">Souhaitez-vous supprimer la sauvegarde du <strong>{0}</strong> de la base de données <strong>{1}</strong> ?</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_start">La demande de suppression de la sauvegarde de base de données a été prise en compte.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_done">La suppression de la sauvegarde de base de données a été effectuée.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_error">Une erreur est survenue lors de la suppression de la sauvegarde de base de données.</translation>
 
    <translation id="privateDatabase_tabs_users_database_error" qtlid="135294">Une erreur est survenue lors du chargement des informations.</translation>
    <translation id="privateDatabase_tabs_users_database_username" qtlid="7450">Utilisateur</translation>
