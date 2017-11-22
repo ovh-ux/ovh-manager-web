@@ -2,12 +2,13 @@ angular
     .module("App")
     .controller("PrivateDatabaseStateCtrl", class PrivateDatabaseStateCtrl {
 
-        constructor ($q, $rootScope, $scope, $stateParams, Alerter, Hosting, Navigator, OomService, PrivateDatabase, User) {
+        constructor ($q, $rootScope, $scope, $stateParams, Alerter, ConverterService, Hosting, Navigator, OomService, PrivateDatabase, User) {
             this.$q = $q;
             this.$rootScope = $rootScope;
             this.$scope = $scope;
             this.$stateParams = $stateParams;
             this.alerter = Alerter;
+            this.converterService = ConverterService;
             this.hostingService = Hosting;
             this.navigatorService = Navigator;
             this.oomService = OomService;
@@ -35,6 +36,13 @@ angular
                 this.getHostingsLinked();
                 this.getOomList();
             }
+        }
+
+        convertBytesSize (nb, unit, decimalWanted = 0) {
+            const res = filesize(this.converterService.convertToOctet(nb, unit), { output: "object", round: decimalWanted, base: -1 });
+            const resUnit = this.$scope.tr(`unit_size_${res.symbol}`);
+
+            return `${res.value} ${resUnit}`;
         }
 
         getOomList () {

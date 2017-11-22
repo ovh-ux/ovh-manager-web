@@ -12,10 +12,8 @@
             <p data-i18n-static="domain_tab_GLUE_add_step1"></p>
 
             <form name="ctrl.glueAddOrEditForm">
-                <div class="form-group" data-ng-class="{
-                    'has-error': ctrl.glueAddOrEditForm.host.$dirty && ctrl.glueAddOrEditForm.host.$invalid,
-                    'has-success': ctrl.glueAddOrEditForm.host.$dirty && ctrl.glueAddOrEditForm.host.$valid
-                }">
+                <div class="form-group"
+                     data-ng-class="{'has-error': ctrl.glueAddOrEditForm.host.$dirty && ctrl.glueAddOrEditForm.host.$invalid}">
                     <label class="control-label required" for="host"
                            data-i18n-static="domain_tab_GLUE_add_host"></label>
                     <div class="input-group">
@@ -27,10 +25,8 @@
                     </div>
                 </div>
 
-                <div class="form-group" data-ng-class="{
-                    'has-error': ctrl.glueAddOrEditForm.ips.$dirty && ctrl.glueAddOrEditForm.ips.$invalid,
-                    'has-success': ctrl.glueAddOrEditForm.ips.$dirty && ctrl.glueAddOrEditForm.ips.$valid
-                }">
+                <div class="form-group"
+                     data-ng-class="{'has-error': ctrl.glueAddOrEditForm.ips.$dirty && ctrl.glueAddOrEditForm.ips.$invalid}">
                     <label class="control-label required" for="ips"
                            data-i18n-static="domain_tab_GLUE_add_ip"></label>
                     <input type="text" class="form-control" id="ips" name="ips" required
@@ -60,12 +56,13 @@
             <div data-ng-if="!ctrl.loading">
                 <p data-ng-bind-html="tr(ctrl.editedGlueRecord ? 'domain_tab_GLUE_modify_ip_confirm' : 'domain_tab_GLUE_add_ip_confirm', [ctrl.getModelFormatted().host])"></p>
                 <ul>
-                    <li data-ng-repeat="ip in ctrl.getModelFormatted().ips track by $index" data-ng-bind="ip"></li>
+                    <li data-ng-repeat="ip in ctrl.getModelFormatted().ips track by $index"
+                        data-ng-bind="ip"></li>
                 </ul>
             </div>
 
             <div class="alert alert-warning" role="alert"
-                 data-ng-bind="tr('domain_tab_GLUE_add_warning_done', [ctrl.getModelFormatted().ips[0]])">
+                 data-ng-bind-html="tr('domain_tab_GLUE_add_warning_done')">
             </div>
 
             <oui-loader data-ng-if="ctrl.loading"></oui-loader>

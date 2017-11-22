@@ -105,10 +105,15 @@ angular.module("App").controller("HostingModuleCreateCtrl", ($scope, $q, $stateP
         HostingModule.getDatabases($stateParams.productId)
             .then((databases) => {
                 $scope.model.databases = databases;
-                $scope.loading.databases = false;
+                if (_.isArray(databases) && !_.isEmpty(databases)) {
+                    $scope.model.databaseHostedSelected = databases[0];
+                    $scope.selectDatabase();
+                }
             })
             .catch((err) => {
                 Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+            })
+            .finally(() => {
                 $scope.loading.databases = false;
             });
     };
@@ -118,6 +123,8 @@ angular.module("App").controller("HostingModuleCreateCtrl", ($scope, $q, $stateP
             $scope.model.databaseSelected = { type: "mysql" };
             return;
         }
+
+        $scope.loading.databaseInfos = true;
         HostingModule.getDatabase($stateParams.productId, $scope.model.databaseHostedSelected)
             .then((database) => {
                 $scope.model.databaseSelected = {
@@ -130,7 +137,10 @@ angular.module("App").controller("HostingModuleCreateCtrl", ($scope, $q, $stateP
             })
             .catch((err) => {
                 Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), _.get(err, "data", err), $scope.alerts.main);
-                $scope.resetActions();
+                $scope.resetAction();
+            })
+            .finally(() => {
+                $scope.loading.databaseInfos = false;
             });
     };
 
@@ -239,23 +249,25 @@ angular.module("App").controller("HostingModuleCreateCtrl", ($scope, $q, $stateP
             $scope.rootPathPrefix = "";
             $scope.pathPrefix = "www/";
             $scope.defaultInstallationPath = $scope.pathPrefix;
-        } else {
-            HostingModule.getAttachedDomainPath($stateParams.productId, $scope.model.domain)
-                .then((domain) => {
-                    $scope.loading.domains = false;
-                    $scope.pathPrefix = /\/$/.test(domain.path) ? domain.path : `${domain.path}/`;
-
-                    if (/^[\/.]/.test($scope.pathPrefix)) {
-                        $scope.rootPathPrefix = "";
-                    }
-                    $scope.defaultInstallationPath = [$scope.rootPathPrefix, $scope.pathPrefix, $scope.model.path].join("");
-                })
-                .catch((err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), _.get(err, "data", err), $scope.alerts.main);
-                    $scope.loading.domains = false;
-                    $scope.resetAction();
-                });
+            return null;
         }
+
+        return HostingModule.getAttachedDomainPath($stateParams.productId, $scope.model.domain)
+            .then((domain) => {
+                $scope.loading.domains = false;
+                $scope.pathPrefix = /\/$/.test(domain.path) ? domain.path : `${domain.path}/`;
+
+                if (/^[\/.]/.test($scope.pathPrefix)) {
+                    $scope.rootPathPrefix = "";
+                }
+                $scope.defaultInstallationPath = [$scope.rootPathPrefix, $scope.pathPrefix, $scope.model.path].join("");
+            })
+            .catch((err) => {
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_step1_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+                $scope.loading.domains = false;
+                $scope.resetAction();
+            });
+
     });
 
     $scope.isStep3Valid = function () {

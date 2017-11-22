@@ -189,35 +189,10 @@
 
                     <div class="col-md-6">
                         <div class="oui-tile mb-5">
-                            <!-- quota -->
-                            <h3 class="oui-tile__title" data-i18n-static="privateDatabase_dashboard_disk_usage"></h3>
-                            <div class="oui-tile__body">
-                                <div class="oui-tile__definition">
-                                    <div id="diskUsed" style="width: 190px; height: 140px; margin-top: -30px;"
-                                         data-gauge-chart
-                                         data-chartdata="stateCtrl.database.quotaPercent.value"
-                                         data-disk-unit="i18n['unit_size_' + stateCtrl.database.quotaSize.unit]"
-                                         data-chart-min="0"
-                                         data-chart-max="stateCtrl.database.quotaSize.value"
-                                         data-limit-warning="70"
-                                         data-limit-alert="85"
-                                         data-color-ok="#81BB28"
-                                         data-color-warning="#ECAC02"
-                                         data-color-alert="#E03937"
-                                         data-shadow-opacity="0.2"
-                                         data-ng-if="stateCtrl.database.infrastructure === 'legacy'">
-                                    </div>
-
-                                    <div data-ng-if="stateCtrl.database.infrastructure !== 'legacy'"
-                                         data-ng-bind="::tr('privateDatabase_dashboard_quota', [stateCtrl.database.quotaUsed.value]) + tr('unit_size_' + stateCtrl.database.quotaUsed.unit) + ' / ' + database.quotaSize.value + tr('unit_size_' + database.quotaSize.unit)">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="oui-tile mb-5">
                             <h3 class="oui-tile__title"
-                                data-i18n-static="privateDatabase_dashboard_sql_informations"></h3>
+                                data-i18n-static="privateDatabase_dashboard_connections_title"></h3>
                             <div class="oui-tile__body">
+                                <h4 class="oui-tile__definition">SQL</h4>
                                 <ul class="list-unstyled">
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
@@ -248,11 +223,9 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="oui-tile mb-5">
-                            <h3 class="oui-tile__title"
-                                data-ng-bind="i18n['privateDatabase_dashboard_ftp_informations_' + stateCtrl.database.infrastructure]"></h3>
                             <div class="oui-tile__body">
+                                <h4 class="oui-tile__definition"
+                                    data-ng-bind="i18n['privateDatabase_dashboard_ftp_informations_' + stateCtrl.database.infrastructure]"></h4>
                                 <ul class="list-unstyled">
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
@@ -334,14 +307,35 @@
             </div>
         </div>
 
-        <div class="col-md-3" data-ng-if="guides">
-            <div class="oui-tile mb-5">
+        <div class="col-md-3">
+            <div class="mb-5">
+                <!-- quota -->
+                <strong data-i18n-static="privateDatabase_dashboard_disk_usage"></strong>
+                <div class="oui-progress"
+                     data-ng-class="{
+                        'oui-progress_success': stateCtrl.database.quotaPercent.value < 51,
+                        'oui-progress_warning': stateCtrl.database.quotaPercent.value > 50 && stateCtrl.database.quotaPercent.value < 81,
+                        'oui-progress_error': stateCtrl.database.quotaPercent.value > 80
+                    }">
+                    <div class="oui-progress__bar oui-progress__bar_text-left" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{stateCtrl.database.quotaPercent.value}}"
+                         data-ng-class="{
+                            'oui-progress__bar_success': stateCtrl.database.quotaPercent.value < 51,
+                            'oui-progress__bar_warning': stateCtrl.database.quotaPercent.value > 50 && stateCtrl.database.quotaPercent.value < 81,
+                            'oui-progress__bar_error': stateCtrl.database.quotaPercent.value > 80
+                        }"
+                         data-ng-style="{'width': stateCtrl.database.quotaPercent.value + '%'}">
+                        <span class="oui-progress__label"
+                              data-ng-bind="::stateCtrl.convertBytesSize(stateCtrl.database.quotaUsed.value, stateCtrl.database.quotaUsed.unit, 2) + ' / ' + stateCtrl.convertBytesSize(stateCtrl.database.quotaSize.value, stateCtrl.database.quotaSize.unit)"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="oui-tile mb-5" data-ng-if="guides">
                 <h3 class="oui-tile__title" data-i18n-static="guide_add_subtitle"></h3>
                 <div class="oui-tile__body">
                     <ul class="list-unstyled">
                         <li class="oui-tile__item oui-tile__item_button"
                             data-ng-repeat="guide in guides track by $index">
-                            <a class="oui-tile__button oui-button oui-button_link oui-button_full-width d-flex" target="_blank"
+                            <a class="oui-tile__button oui-button oui-button_link oui-button_full-width d-flex text-wrap" target="_blank"
                                data-ng-href="{{guide.url}}">
                                 <span data-ng-bind="tr(guide.title)"></span>
                                 <span class="fa fa-external-link my-auto ml-auto" aria-hidden="true"></span>
