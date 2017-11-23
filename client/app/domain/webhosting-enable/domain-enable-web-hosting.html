@@ -46,21 +46,20 @@
                     </thead>
                     <tbody>
                         <tr data-ng-repeat="offer in ctrl.offers | orderBy:orderByOfferPrice track by $index">
-                            <td>
+                            <td colspan="2">
                                 <div class="oui-radio m-0">
                                     <input type="radio" class="oui-radio__input" id="offer-{{offer.offer}}" name="hostingOffer"
                                            data-ng-disabled="offer.offer === ctrl.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE && ctrl.model.templateSelected"
                                            data-ng-model="ctrl.model.offer"
                                            data-ng-value="offer.offer">
-                                    <span class="oui-radio__label-container"></span>
+                                    <label class="oui-radio__label-container" for="offer-{{offer.offer}}">
+                                        <span class="oui-radio__label">
+                                            <span data-ng-bind="tr('domain_configuration_web_hosting_offer_' + offer.offer)"></span>
+                                            <span data-ng-show="ctrl.displayRecommendedLabel(offer.offer)"
+                                                  data-ng-bind="tr('domain_configuration_web_hosting_offer_recommended')"></span>
+                                        </span>
+                                    </label>
                                 </div>
-                            </td>
-                            <td id="label-{{ offer.offer }}">
-                                <label class="d-block" for="offer-{{offer.offer}}">
-                                    <span data-ng-bind="tr('domain_configuration_web_hosting_offer_' + offer.offer)"></span>
-                                    <span data-ng-show="ctrl.displayRecommendedLabel(offer.offer)"
-                                          data-ng-bind="tr('domain_configuration_web_hosting_offer_recommended')"></span>
-                                </label>
                             </td>
                             <td data-ng-bind-html="offer.orderInfos.prices | price:ovhSubsidiary:'yearly'"></td>
                         </tr>
