@@ -35,9 +35,7 @@
              data-wizard-step-valid="ctrl.isStep2Ok()">
 
             <div data-ng-if="ctrl.selected.action === ctrl.model.actions.IMPORT_FROM_NEW">
-                <div class="text-center" data-ng-if="ctrl.isSendingFile">
-                    <oui-loader inline="true"></oui-loader>
-                </div>
+                <oui-loader data-ng-if="ctrl.isSendingFile"></oui-loader>
 
                 <form name="ctrl.formFileUpload" novalidate
                       data-ng-show="!ctrl.isSendingFile"
@@ -51,8 +49,7 @@
                                   data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name"></span>
                             <span class="fa fa-info-circle" aria-hidden="true"
                                   data-uib-tooltip="{{::i18n.hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_info}}"
-                                  data-tooltip-append-to-body="true"
-                                  data-tooltip-placement="right"></span>
+                                  data-tooltip-append-to-body="true"></span>
                         </label>
                         <input type="text" class="form-control" id="uploadFileName" name="uploadFileName"
                                data-ng-model="ctrl.model.uploadFileName">
@@ -67,7 +64,7 @@
                         'has-success': ctrl.formFileUpload.file.$dirty && ctrl.formFileUpload.file.$valid}">
 
                         <label class="control-label" for="uploadFileFile"
-                               data-ng-bind="tr('hosting_tab_DATABASES_table_popover_import_step1_upload_file_file', [i18n.hosting_tab_DATABASES_table_popover_import_step1_upload_file_format])">
+                               data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file">
                         </label>
                         <input type="file" id="uploadFileFile" name="file" accept="application/gzip"
                                data-bind-file="ctrl.file.data"
@@ -92,12 +89,10 @@
 
 
             <div data-ng-if="ctrl.selected.action === ctrl.model.actions.IMPORT_FROM_EXISTING">
-                <div class="text-center" data-ng-if="!ctrl.model.documents">
-                    <oui-loader inline="true"></oui-loader>
-                </div>
+                <oui-loader data-ng-if="!ctrl.model.documents"></oui-loader>
 
                 <form data-ng-if="ctrl.model.documents">
-                    <label class="control-label" for="ddlDocuments"
+                    <label class="oui-label" for="ddlDocuments"
                            data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_choose_file"></label>
                     <div class="oui-select oui-select_inline">
                         <select class="oui-select__input" id="ddlDocuments"
