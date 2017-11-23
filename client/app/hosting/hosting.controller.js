@@ -84,9 +84,10 @@ angular
                                 })
                             );
 
-                            $q.all(queue).then(() => {
-                                loadOvhConfig();
-                            });
+                            $q.all(queue).then(_.debounce(loadOvhConfig, 15000, {
+                                leading: true,
+                                trailing: false
+                            }));
                         } else {
                             _.set($scope.ovhConfig, "taskPending", false);
                         }
