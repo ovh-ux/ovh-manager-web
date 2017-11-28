@@ -1,29 +1,34 @@
 angular.module("App").controller(
     "PrivateDatabaseAddBddCtrl",
     class PrivateDatabaseAddBddCtrl {
-        constructor ($scope, $q, $stateParams, Alerter, PrivateDatabase, Hosting) {
+        constructor ($scope, $q, $stateParams, Alerter, PrivateDatabase, Hosting, WhitelistService, Validator) {
             this.$scope = $scope;
             this.$q = $q;
             this.$stateParams = $stateParams;
             this.Alerter = Alerter;
             this.PrivateDatabase = PrivateDatabase;
             this.Hosting = Hosting;
-
-            this.bdd = {
-                value: null,
-                addUser: false,
-                addUserLogin: "",
-                addUserGrant: "",
-                addUserPassword: "",
-                addUserPasswordConfirm: ""
-            };
+            this.whitelistService = WhitelistService;
+            this.validator = Validator;
         }
 
         $onInit () {
             this.productId = this.$stateParams.productId;
 
+            if (this.$scope.isDBaaS()) {
+                this.checkAuthorizedIp()
+                    .then((hasAuthorizedIp) => {
+                        // if there are no ip configured,
+                        // we check the box to suggest the user to add an ip
+                        this.model.addIp = !hasAuthorizedIp;
+
+                        this.hasAuthorizedIp = hasAuthorizedIp;
+                    });
+            }
+
             this.model = {
                 addUser: false,
+                addIp: false,
                 database: {
                     value: "",
                     condition: {
@@ -58,6 +63,9 @@ angular.module("App").controller(
                             }
                         }
                     }
+                },
+                ip: {
+                    value: ""
                 }
             };
 
@@ -66,8 +74,13 @@ angular.module("App").controller(
             });
 
             this.$scope.addBdd = () => this.addBdd();
-
             this.$scope.isBddValid = () => this.isBddValid();
+        }
+
+        checkAuthorizedIp () {
+            return this.whitelistService
+                .getWhitelistIds(this.productId)
+                .then((result) => !_.isEmpty(result));
         }
 
         addBdd () {
@@ -85,6 +98,16 @@ angular.module("App").controller(
                         });
                     }
                     return this.PrivateDatabase.addBdd(this.productId, this.model.database.value);
+                })
+                .then(() => {
+                    if (this.model.addIp) {
+                        return this.whitelistService.createWhitelist(this.productId, {
+                            ip: this.model.ip.value,
+                            name: this.$scope.tr("privateDatabase_add_authorized_ip_description"),
+                            service: true,
+                            sftp: false
+                        });
+                    }
                 })
                 .then(() => this.Alerter.success(this.$scope.tr("privateDatabase_add_bdd_success"), this.$scope.alerts.main),
                       () => this.Alerter.error(this.$scope.tr("privateDatabase_add_bdd_fail"), this.$scope.alerts.main));
@@ -119,6 +142,10 @@ angular.module("App").controller(
 
         getGrantLabel (grant) {
             return grant ? this.$scope.tr(`privateDatabase_add_bdd_new_user_grant_${grant}`) : "";
+        }
+
+        isIpValid (ip) {
+            return this.validator.isValidIpv4Block(ip) || this.validator.isValidIpv4(ip);
         }
     }
 );
