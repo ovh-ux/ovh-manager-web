@@ -175,7 +175,7 @@
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
                                             <strong class="d-block"
-                                                    data-i18n-static="privateDatabase_tab_USERS"></strong>
+                                                    data-i18n-static="privateDatabase_tab_USER"></strong>
                                             <button class="btn btn-link p-0" type="button"
                                                     data-i18n-static="privateDatabase_dashboard_admin_informations_users"
                                                     data-ng-click="setSelectedTab('USER')">
@@ -214,11 +214,35 @@
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
                                             <strong class="d-block"
-                                                    data-i18n-static="privateDatabase_tab_USERS"></strong>
+                                                    data-i18n-static="privateDatabase_tab_USER"></strong>
                                             <button class="btn btn-link p-0" type="button"
                                                     data-i18n-static="privateDatabase_dashboard_admin_informations_users"
                                                     data-ng-click="setSelectedTab('USER')">
                                             </button>
+                                        </div>
+                                    </li>
+                                    <li class="oui-tile__item" ng-if="stateCtrl.database.tlsCa">
+                                        <div class="oui-tile__definition">
+                                            <div class="d-flex w-100">
+                                                <div>
+                                                    <div class="d-block">
+                                                        <strong
+                                                            data-i18n-static="privateDatabase_dashboard_certificate"></strong>
+                                                        <span class="fa fa-info-circle"
+                                                              aria-hidden="true"
+                                                              data-uib-tooltip="{{tr('privateDatabase_dashboard_certificate_tooltip')}}"
+                                                              data-tooltip-append-to-body="true"
+                                                              data-tooltip-placement="top"></span>
+                                                    </div>
+                                                    <span data-ng-bind="::stateCtrl.database.certificateType"></span>
+                                                </div>
+                                                <div class="ml-auto my-auto">
+                                                    <button class="btn btn-default my-auto ml-auto text-wrap" type="button" title="{{::i18n.privateDatabase_see_certificate}}"
+                                                            data-i18n-static="privateDatabase_dashboard_see_certificate"
+                                                            data-ng-click="setAction('database/certificate/private-database-database-certificate', stateCtrl.database)">
+                                                    </button>
+                                                </div>
+                                            </div>
                                         </div>
                                     </li>
                                 </ul>
