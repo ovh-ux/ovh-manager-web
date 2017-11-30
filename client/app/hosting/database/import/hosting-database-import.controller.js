@@ -11,9 +11,7 @@ angular.module("App").controller(
         }
 
         $onInit () {
-            this.file = {
-                data: null
-            };
+            this.file = null;
             this.importScriptTag = {
                 key: "WEB_HOSTING_DATABASE_IMPORT_SCRIPT",
                 value: "true"
@@ -67,19 +65,21 @@ angular.module("App").controller(
         resetDocumentSelection () {
             const elt = angular.element("input[type='file'][name='file']")[0];
             angular.element(elt).val(null);
+            this.formFileUpload.$setPristine();
 
             _.set(this.model, "document", null);
             _.set(this.model, "uploadFileName", null);
-            _.set(this.file, "data", null);
+            this.file = null;
             this.atLeastOneFileHasBeenSend = false;
         }
 
-        setFileName () {
-            this.model.uploadFileName = _.get(this.file, "data.meta.name");
-        }
+        onFileChange (input) {
+            const filename = _.get(_.head(this.file), "name", "");
+            const ext = _.last(filename.split("."));
+            const validFormat = filename === ext || /gz|sql|txt/i.test(ext);
 
-        fileAsBeenSelected () {
-            return _.get(this.file, "data") != null && !_.isEmpty(this.model.uploadFileName);
+            this.model.uploadFileName = filename;
+            input.$setValidity("format", validFormat);
         }
 
         isStep2Ok () {
@@ -88,7 +88,7 @@ angular.module("App").controller(
 
         submit () {
             const tags = [{ key: "WEB_HOSTING_DATABASE_IMPORT_SCRIPT", value: "true" }];
-            const file = this.file.data.meta;
+            const file = _.head(this.file);
             const filename = this.model.uploadFileName;
             this.isSendingFile = true;
 
