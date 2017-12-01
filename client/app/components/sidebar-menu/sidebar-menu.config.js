@@ -188,12 +188,6 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
             allowSearch: true
         });
 
-        menuOptions.push({
-            title: translator.tr("navigation_left_order_mxplan"),
-            icon: "ovh-font ovh-font-mail",
-            state: "app.mx-plan"
-        });
-
         const emailItems = _.sortBy(products.emails, (elt) => angular.lowercase(elt.displayName || elt.name));
 
         _.forEach(emailItems, (elt) => {

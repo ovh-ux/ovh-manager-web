@@ -52,25 +52,4 @@ angular.module("App").config(($stateProvider) => {
             translator: ["translator", (translator) => translator.load(["email"]).then(() => translator)]
         }
     });
-
-    $stateProvider.state("app.mx-plan", {
-        url: "/configuration/mx_plan",
-        templateUrl: "email-domain/order/email-domain-order.html",
-        controller: "MXPlanOrderCtrl",
-        controllerAs: "ctrlMXPlanOrder",
-        resolve: {
-            navigationInformations: [
-                "Navigator",
-                "$rootScope",
-                (Navigator, $rootScope) => {
-                    $rootScope.currentSectionInformation = "mxPlan";
-                    return Navigator.setNavigationInformation({
-                        leftMenuVisible: true,
-                        configurationSelected: true
-                    });
-                }
-            ],
-            translator: ["translator", (translator) => translator.load(["mxPlan"]).then(() => translator)]
-        }
-    });
 });
