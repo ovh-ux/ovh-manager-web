@@ -35,20 +35,6 @@ angular
                 value: null
             };
 
-            // Ugly code mode ON
-            const broadcaster = (e) => {
-                const openedPopover = angular.element(".popover")[0];
-                if (openedPopover && openedPopover.contains(e.target) && /button|a/i.test(e.target.tagName)) {
-                    openedPopover.remove();
-                }
-            };
-            angular.element("body").bind("click", broadcaster);
-            this.$scope.$on("$destroy", () => {
-                angular.element("body").unbind("click", broadcaster);
-            });
-
-            // Ugly code mode OFF
-
             this.$scope.goToList = () => this.goToList();
             this.$scope.$on("hosting.databases.backup.restore", () => this.reloadCurrentPage());
             this.$scope.$on(this.hostingService.events.tabDatabasesRefresh, () => {
