@@ -33,14 +33,14 @@
             data-i18n-static="hosting_tab_DATABASES_table_popover_delete"
             data-ng-click="setAction('database/delete/hosting-database-delete', element.name)">
     </button>
-    <a class="btn btn-link d-inline-block" target="_blank" title="{{ i18n.hosting_tab_DATABASES_table_popover_new_window }}"
+    <a class="btn btn-link d-inline-block text-left" target="_blank" title="{{ i18n.hosting_tab_DATABASES_table_popover_new_window }}"
        data-i18n-static="hosting_tab_DATABASES_table_popover_phppgadmin"
        data-ng-href="http://phppgadmin.ovh.net/"
-       data-ng-if="element.type == 'POSTGRESQL'">
+       data-ng-if="element.type === 'POSTGRESQL'">
     </a>
-    <a class="btn btn-link d-inline-block" target="_blank" title="{{ i18n.hosting_tab_DATABASES_table_popover_new_window }}"
+    <a class="btn btn-link d-inline-block text-left" target="_blank" title="{{ i18n.hosting_tab_DATABASES_table_popover_new_window }}"
        data-i18n-static="hosting_tab_DATABASES_table_popover_phpmyadmin"
        data-ng-href="{{ ctrlTabDatabases.getPhpMyAdminUrl(element) }}"
-       data-ng-if="element.type == 'MYSQL'">
+       data-ng-if="element.type === 'MYSQL'">
    </a>
 </div>

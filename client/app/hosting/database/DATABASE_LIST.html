@@ -199,11 +199,11 @@
                             </td>
                             <td class="text-center">
                                 <button class="btn btn-icon" type="button" title="{{element.user}} {{::i18n.table_manage_entry}}"
-                                        data-linkedpopover="hosting/popover/database.html"
-                                        data-linkedpopover-placement="left"
-                                        data-linkedpopover-single="true"
-                                        data-linkedpopover-remote="true"
-                                        data-linkedpopover-title="{{i18n.common_actions}}">
+                                        data-uib-popover-template="'hosting/popover/database.html'"
+                                        data-popover-append-to-body="true"
+                                        data-popover-placement="left-bottom"
+                                        data-popover-title="{{i18n.common_actions}}"
+                                        data-popover-trigger="outsideClick">
                                     <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                                 </button>
                             </td>
