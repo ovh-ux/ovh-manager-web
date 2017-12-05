@@ -66,9 +66,8 @@
                         <label class="control-label" for="uploadFileFile"
                                data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file"></label>
                         <input type="file" name="file" id="uploadFileFile" required
-                               data-file-change
-                               data-ng-model="importBddCtrl.file"
-                               data-ng-change="importBddCtrl.onFileChange(importBddCtrl.formFileUpload.file)">
+                               data-file-change="importBddCtrl.onFileChange(importBddCtrl.formFileUpload.file)"
+                               data-ng-model="importBddCtrl.file">
                         <small class="help-block"
                                data-ng-repeat="(type, isError) in importBddCtrl.formFileUpload.file.$error track by $index"
                                data-ng-bind="i18n['hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_' + type + '_error'] || error"
