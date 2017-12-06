@@ -198,14 +198,85 @@
                                 </button>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-icon" type="button" title="{{element.user}} {{::i18n.table_manage_entry}}"
-                                        data-linkedpopover="hosting/popover/database.html"
-                                        data-linkedpopover-placement="left"
-                                        data-linkedpopover-single="true"
-                                        data-linkedpopover-remote="true"
-                                        data-linkedpopover-title="{{i18n.common_actions}}">
-                                    <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                                </button>
+                                <div class="btn-group dropdown"
+                                     data-uib-dropdown
+                                     data-dropdown-append-to-body>
+                                    <button class="btn btn-icon" type="button" title="{{element.user}} {{::i18n.table_manage_entry}}" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"
+                                            data-uib-dropdown-toggle>
+                                        <span class="ovh-font ovh-font-dots" aria-hidden="true"></span>
+                                        <span class="sr-only" data-i18n-static="common_actions"></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-right m-0 p-0" role="menu"
+                                        data-uib-dropdown-menu>
+                                        <li role="menuitem">
+                                            <button class="btn btn-link" type="button"
+                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_update_password"
+                                                    data-ng-click="setAction('database/update-password/hosting-database-update-password', element.name)">
+                                            </button>
+                                        </li>
+                                        <li role="menuitem">
+                                            <button class="btn btn-link" type="button"
+                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_dump"
+                                                    data-ng-click="setAction('database/dump/add/hosting-database-dump-add', element.name)">
+                                            </button>
+                                        </li>
+                                        <li role="menuitem">
+                                            <button class="btn btn-link" type="button"
+                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore"
+                                                    data-ng-click="ctrlTabDatabases.restoreDump(element)">
+                                            </button>
+                                        </li>
+                                        <li role="menuitem"
+                                            data-ng-if="element.type === 'MYSQL'">
+                                            <button class="btn btn-link" type="button"
+                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_import"
+                                                    data-ng-click="setAction('database/import/hosting-database-import', element.name)">
+                                            </button>
+                                        </li>
+                                        <li role="menuitem"
+                                            data-ng-if="element.type === 'MYSQL'">
+                                            <button class="btn btn-link" type="button"
+                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore_yesterday"
+                                                    data-ng-click="setAction('database/restore/confirm/hosting-database-restore-confirm', { bdd: element, backupType: ctrlTabDatabases.backupType.DAILY })">
+                                            </button>
+                                        </li>
+                                        <li role="menuitem"
+                                            data-ng-if="element.type === 'MYSQL'">
+                                            <button class="btn btn-link" type="button"
+                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore_one_week"
+                                                    data-ng-click="setAction('database/restore/confirm/hosting-database-restore-confirm', { bdd: element, backupType: ctrlTabDatabases.backupType.WEEKLY })">
+                                            </button>
+                                        </li>
+                                        <li role="menuitem"
+                                            data-ng-if="element.type === 'MYSQL'">
+                                            <button class="btn btn-link" type="button"
+                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_check_quota"
+                                                    data-ng-click="ctrlTabDatabases.checkQuota(element)">
+                                            </button>
+                                        </li>
+                                        <li role="menuitem"
+                                            data-ng-if="element.type === 'MYSQL'">
+                                            <button class="btn btn-link" type="button"
+                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_delete"
+                                                    data-ng-click="setAction('database/delete/hosting-database-delete', element.name)">
+                                            </button>
+                                        </li>
+                                        <li role="menuitem"
+                                            data-ng-if="element.type === 'POSTGRESQL'">
+                                            <a class="btn btn-link d-inline-block text-left" target="_blank" title="{{ i18n.hosting_tab_DATABASES_table_popover_new_window }}"
+                                               data-i18n-static="hosting_tab_DATABASES_table_popover_phppgadmin"
+                                               data-ng-href="http://phppgadmin.ovh.net/">
+                                            </a>
+                                        </li>
+                                        <li role="menuitem"
+                                            data-ng-if="element.type === 'MYSQL'">
+                                            <a class="btn btn-link d-inline-block text-left" target="_blank" title="{{ i18n.hosting_tab_DATABASES_table_popover_new_window }}"
+                                               data-i18n-static="hosting_tab_DATABASES_table_popover_phpmyadmin"
+                                               data-ng-href="{{ ctrlTabDatabases.getPhpMyAdminUrl(element) }}">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
