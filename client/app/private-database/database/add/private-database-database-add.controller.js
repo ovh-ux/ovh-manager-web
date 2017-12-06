@@ -108,6 +108,7 @@ angular.module("App").controller(
                             sftp: false
                         });
                     }
+                    return null;
                 })
                 .then(() => this.Alerter.success(this.$scope.tr("privateDatabase_add_bdd_success"), this.$scope.alerts.main),
                       () => this.Alerter.error(this.$scope.tr("privateDatabase_add_bdd_fail"), this.$scope.alerts.main));
