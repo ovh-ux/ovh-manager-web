@@ -10,7 +10,7 @@ angular.module("App").controller(
         $onInit () {
             this.productId = this.$stateParams.productId;
 
-            this.$scope.taskDetails = [];
+            this.taskDetails = [];
             this.loaders = {
                 tasks: false
             };
@@ -37,10 +37,8 @@ angular.module("App").controller(
             return this.privateDatabaseService.getTaskDetails(this.productId, id);
         }
 
-        getPromise (promise) {
-            promise.finally(() => {
-                this.loaders.tasks = false;
-            });
+        onTransformItemsDone () {
+            this.loaders.tasks = false;
         }
     }
 );
