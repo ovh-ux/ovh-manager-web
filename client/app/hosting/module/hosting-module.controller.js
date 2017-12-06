@@ -50,9 +50,7 @@ angular.module("App").controller(
                     this.Alerter.alertFromSWS(this.$scope.tr("hosting_configuration_tab_modules_create_step1_loading_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
-                    if (_.isEmpty(this.modules.ids)) {
-                        this.loading = false;
-                    }
+                    this.loading = false;
                 });
         }
 
