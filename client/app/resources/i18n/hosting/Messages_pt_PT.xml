@@ -131,9 +131,7 @@
    <translation id="hosting_dashboard_service_offer_PERFORMANCE_4" qtlid="216937">Performance 4</translation>
    <translation id="hosting_dashboard_service_offer_KIMSUFI_2015" qtlid="271569">Kimsufi 2015</translation>
    <translation id="hosting_dashboard_service_offer_KS" qtlid="271569">Kimsufi 2015</translation>
-   <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015" qtlid="271582">Deseja passar para uma oferta Kimsufi 2015? &#13;
-O serviço de apoio ao cliente via telefone deixará de estar incluído. O contacto com os nossos serviços&#13;
-deverá ser efetuado através de ticket.</translation>
+   <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015">Vous souhaitez passer sur une offre Kimsufi 2015, l'accès au support n'est plus inclus et vous devrez utiliser notre système de tickets pour contacter l'assistance.</translation>
    <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree" qtlid="271595">Eu reconheço ter tomado conhecimento da oferta kimsufi 2015 e valido o meu pedido de migração</translation>
    <translation id="hosting_dashboard_service_offer_KIMSUFI_2015_support" qtlid="271608">Alojamento web Kimsufi: O suporte efetua-se exclusivamente via um ticket de assistência (menu Assistência)</translation>
    <translation id="hosting_dashboard_service_offer_60_FREE_end" qtlid="372256">A oferta 60free será encerrada no dia 1 de Maio de 2017. Pode migrar o seu domínio ovh.org para um outro alojamento web (Botão migrar o meu domínio ovh.org)</translation>
@@ -263,6 +261,8 @@ deverá ser efetuado através de ticket.</translation>
    <translation id="hosting_tab_CRON_table_language_php7_0" qtlid="264433">PHP 7.0</translation>
    <translation id="hosting_tab_CRON_table_language_PHP_7_1" qtlid="434174">PHP 7.1</translation>
    <translation id="hosting_tab_CRON_table_language_php7_1" qtlid="434174">PHP 7.1</translation>
+   <translation id="hosting_tab_CRON_table_language_PHP_7_2">PHP 7.2</translation>
+   <translation id="hosting_tab_CRON_table_language_php7_2">PHP 7.2</translation>
    <translation id="hosting_tab_CRON_table_popover_delete" qtlid="2414">Eliminar</translation>
    <translation id="hosting_tab_CRON_table_popover_modify" qtlid="37875">Modificar</translation>
    <translation id="hosting_tab_CRON_configuration_error" qtlid="244690">Ocorreu um erro aquando da recuperação dos dados:</translation>
@@ -296,7 +296,7 @@ deverá ser efetuado através de ticket.</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_delete" qtlid="2414">Eliminar</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_modify" qtlid="37875">Modificar</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_refresh" qtlid="158708">Recarregar</translation>
-   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Procura...</translation>
+   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Pesquisa...</translation>
 
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation" qtlid="255976">Geração do URL de download</translation>
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="444417">Une erreur est survenue lors de la génération du lien d'accès aux logs</translation>
@@ -446,11 +446,10 @@ deverá ser efetuado através de ticket.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step0_existing_file_mode" qtlid="288314">Utilizar um ficheiro existente</translation>
 
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_load_documents_error" qtlid="286240">Ocorreu um erro aquando da obtenção dos seus documentos:</translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file" qtlid="286253">Ficheiro {0}:</translation>
+   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file">Fichier (.gz, .sql, .txt) :</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name" qtlid="286266">Nome do ficheiro:</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_info" qtlid="296713">Dê um título ao seu documento para o encontrar mais rapidamente.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_required_error" qtlid="286279">O nome do ficheiro é obrigatório.</translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_format" qtlid="286292">(.gz)</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_format_error" qtlid="286305">O tipo de ficheiro deve ser respeitado.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_required_error" qtlid="286318">O ficheiro é obrigatório.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload" qtlid="52807">Enviar</translation>
@@ -956,7 +955,7 @@ Queria tentar mais tarde.</translation>
    <translation id="hosting_tab_CRON_edit_success" qtlid="199273">A tarefa será modificada com sucesso.</translation>
    <translation id="hosting_tab_CRON_edit_error" qtlid="199286">Ocorreu um erro durante a edição da tarefa {0}.</translation>
    <translation id="hosting_tab_CRON_simple_mode" qtlid="102849">Modo simples</translation>
-   <translation id="hosting_tab_CRON_expert_mode" qtlid="64616">Modo perito </translation>
+   <translation id="hosting_tab_CRON_expert_mode" qtlid="64616">Modo expert</translation>
    <translation id="hosting_tab_CRON_label_description" qtlid="9238">Descrição </translation>
    <translation id="hosting_tab_CRON_label_status" qtlid="33790">Estado</translation>
    <translation id="hosting_tab_CRON_label_activate" qtlid="74958">Activação</translation>
@@ -1197,6 +1196,8 @@ Será fatura no próximo mês relativamente ao BOOST extra utilizado este mês (
    <translation id="hosting_global_php_version_edit" qtlid="267640">Modificar a configuração</translation>
    <translation id="hosting_action_config_edit_init_error" qtlid="267653">Não foi possível carregar todas as informações sobre a sua configuração, queira tentar mais tarde.</translation>
    <translation id="hosting_action_config_edit_warning" qtlid="364716">Nós aconselhamos que verifique previamente com o seu webmaster a compatibilidade do seu website com esta nova versão de PHP.</translation>
+   <translation id="hosting_action_config_edit_success">La modification de configuration de votre hébergement mutualisé a bien été prise en compte.</translation>
+   <translation id="hosting_action_config_rollback_success">La modification vers la configuration ultérieure de votre hébergement mutualisé a bien été prise en compte.</translation>
    <translation id="hosting_action_config_edit_choose_config" qtlid="267666">Escolha histórica</translation>
    <translation id="hosting_action_config_edit_engine_name" qtlid="267679">Motor</translation>
    <translation id="hosting_action_config_edit_engine_name_help" qtlid="267692">PHP-CGI desativado FPM</translation>
