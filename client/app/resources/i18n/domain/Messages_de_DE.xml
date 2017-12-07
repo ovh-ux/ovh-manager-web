@@ -51,6 +51,7 @@
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">DNS Anycast ist eine mächtige Lösung, die eine Beschleunigung des klassischen Betriebs der DNS Server ermöglicht, um weltweit kürzere Antwortzeiten beim ersten Aufruf Ihrer Webseiten zu erzielen</translation>
    <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Öffentlich zugängliche Datenbank, die die für Ihre Domain gemachten persönlichen Angaben enthält.</translation>
    <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Dienst, mit dem Ihr Domainname in eine IP-Adresse übersetzt wird, die den Standort der Daten Ihrer Seite festlegt.</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating">Un délai de propagation de 48h est nécessaire suite à votre dernière modification.</translation>
    <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">Die prioritär für die Auflösung Ihres Domainnamens auf eine IP-Adresse genutzten DNS Server.</translation>
    <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Erlaubt die Weiterleitung der Besucher auf eine bestehende Seite.</translation>
    <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">Bei einem Ausfall der primären DNS Server stellen diese weiterhin die Erreichbarkeit Ihrer Seite sicher.</translation>
@@ -126,7 +127,7 @@
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Möchten Sie die Konfiguration Ihrer DNS Server wirklich zurücksetzen? Wenn Sie fortfahren, wird die aktuelle Konfiguration gelöscht und die standardmäßige Konfiguration wiederhergestellt.</translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">Die Anfrage zur Reinitialisierung der DNS Server wurde erfolgreich durchgeführt.</translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Bei der Anfrage zur Reinitialisierung der DNS Server ist ein Fehler aufgetreten.</translation>
-   <translation id="domain_tab_DNS_update_success" qtlid="284841">Die Änderung der DNS wurde erfolgreich durchgeführt. Es dauert nun noch einige Stunden, bis sich die Änderung im Netz propagiert hat und aktiv ist</translation>
+   <translation id="domain_tab_DNS_update_success">La modification des DNS a bien été prise en compte. Un délai de 48h est nécessaire pour la propagation aux autres DNS.</translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">Bei der Änderung der DNS ist ein Fehler aufgetreten.</translation>
    <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Réinitialiser les serveurs DNS : non disponible en cas d'activation de DNSSEC</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Die Konfiguration anwenden</translation>
@@ -205,7 +206,7 @@
    <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Sind Sie sicher, dass Sie diesen GLUE Eintrag löschen möchten?</translation>
    <translation id="domain_tab_GLUE_delete_success" qtlid="262553">Der GLUE Eintrag wird in wenigen Minuten gelöscht.</translation>
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Bei der Löschung des GLUE Eintrags ist ein Fehler aufgetreten.</translation>
-   <translation id="domain_tab_GLUE_add_warning_done" qtlid="288964">Bitte beachten Sie: Nach der Validierung müssen Sie einen Eintrag des Typs A für die IP {0} in Ihrer DNS Zone hinzufügen, damit Ihr Glue Record funktioniert. </translation>
+   <translation id="domain_tab_GLUE_add_warning_done">Attention, après validation et afin que votre enregistrement GLUE fonctionne, vous devrez modifier votre zone DNS en ajoutant :<ul><li>un champ de type A pour une adresse IPv4,</li><li>un champ de type AAAA pour une adresse IPv6.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdomain</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">DNS Zone</translation>
@@ -663,6 +664,7 @@
    <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">IP-Adresse Ihres Hostings </translation>
 
    <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Möchten Sie die DNS Zone löschen? </translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked">Votre zone DNS ne peut être supprimée car elle est actuellement liée à un hébergement Web.</translation>
    <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Achtung! Mit dieser Aktion werden alle bestehenden DNS Einträge endgültig gelöscht.</translation>
    <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">Die Löschung der DNS Zone wurde gestartet. Im Posteingang des Administrators der DNS Zone finden Sie nun eine Nachricht mit Anweisungen, um den Vorgang abzuschließen.</translation>
    <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">Bei der Löschung Ihrer DNS Zone ist ein Fehler aufgetreten.</translation>
@@ -716,7 +718,7 @@
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Ihre Bestellung wurde erfolgreich validiert. Bitte klicken Sie <a href="#/billing/orders">hier, um den Status Ihrer Bestellung einzusehen</a>. </translation>
 
    <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
-   <translation id="domain_tab_DYNHOST_title" qtlid="270644">Mit DynHOST können Sie Ihre Domain oder Subdomain auf eine dynamische IP-Adresse verweisen lassen, die bei jeder Änderung der Adresse in Ihrer DNS Zone geupdatet wird.</translation>
+   <translation id="domain_tab_DYNHOST_title">DynHOST vous permet de faire pointer un sous-domaine vers une adresse IP dynamique qui sera mise à jour dans votre zone DNS à chaque changement de celle-ci.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Die Domain {0} verfügt nicht über eine DNS Zone.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Es ist ein Fehler aufgetreten:</translation>
    <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>
