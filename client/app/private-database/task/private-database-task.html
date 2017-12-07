@@ -32,12 +32,11 @@
             </tbody>
 
             <tbody data-ng-if="!taskCtrl.loaders.tasks && taskCtrl.tasksIds.length > 0">
-                <tr data-ng-repeat="task in (taskDetails | orderBy:'userName') track by $index">
+                <tr data-ng-repeat="task in (taskCtrl.taskDetails | orderBy:'userName') track by $index">
                     <th scope="row" data-ng-bind="::task.function"></th>
                     <td data-ng-bind="::task.startDate | date:'medium'"></td>
                     <td data-ng-bind="::task.lastUpdate | date:'medium'"></td>
-                    <td data-ng-bind="::task.doneDate | date:'medium'"></td>
-                    <td></td>
+                    <td colspan="2" data-ng-bind="::task.doneDate | date:'medium'"></td>
                 </tr>
             </tbody>
         </table>
@@ -47,13 +46,13 @@
          data-ng-if="taskCtrl.tasksIds">
         <div data-pagination-front
              data-items="taskCtrl.tasksIds"
-             data-paginated-items="taskDetails"
+             data-paginated-items="taskCtrl.taskDetails"
              data-current-page="currentPage"
              data-nb-pages="nbPages"
              data-items-per-page="itemsPerPage"
              data-transform-item="taskCtrl.getTasksDetails(item)"
+             data-on-transform-item-done="taskCtrl.onTransformItemsDone(items)"
              data-on-page-change="taskCtrl.loaders.tasks = true"
-             data-on-transform-item-get-promise="taskCtrl.getPromise(promise)"
              data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
              data-item-per-page-placeholder="{{tr('pagination_display')}}"
              data-ng-show="!taskCtrl.loaders.tasks && taskCtrl.taskDetails.length > 0">

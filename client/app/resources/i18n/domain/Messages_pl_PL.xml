@@ -51,6 +51,7 @@
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">DNS Anycast to usługa pozwalająca na przyspieszenie klasycznego działania serwerów DNS tak, aby strona na całym świecie odpowiadała szybciej podczas pierwszego odwiedzania.</translation>
    <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Ogólnodostępna baza danych zawierająca dane osobowe przypisane do domeny.</translation>
    <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Usługa pozwalająca na przetłumaczenie nazwy domeny na adresy IP (wskazując na przykład umieszczenie danych strony).</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating">Un délai de propagation de 48h est nécessaire suite à votre dernière modification.</translation>
    <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">Serwery DNS używane do wskazania domeny na adres IP.</translation>
    <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Pozwala na przekierowanie internautów na istniejącą stronę.</translation>
    <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">W przypadku awarii serwerów DNS primary, pozwalają na zapewnienie dostępności strony.</translation>
@@ -126,7 +127,7 @@
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Czy chcesz zresetować konfigurację serwerów DNS? Operacja ta zresetuje aktualną konfigurację i spowoduje przełączenie na domyślne serwery OVH.</translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">Przyjęto zlecenie zresetowania serwerów DNS.</translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Wystąpił błąd podczas resetowania serwerów DNS.</translation>
-   <translation id="domain_tab_DNS_update_success" qtlid="284841">Zmiana serwerów DNS została zarejestrowana w naszym systemie. Propagacja trwa od kilku do 24 godzin.</translation>
+   <translation id="domain_tab_DNS_update_success">La modification des DNS a bien été prise en compte. Un délai de 48h est nécessaire pour la propagation aux autres DNS.</translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">Wystąpił błąd podczas zmiany serwerów DNS.</translation>
    <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Réinitialiser les serveurs DNS : non disponible en cas d'activation de DNSSEC</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Zastosuj konfigurację</translation>
@@ -205,7 +206,7 @@
    <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Czy chcesz usunąć ten wpis GLUE?</translation>
    <translation id="domain_tab_GLUE_delete_success" qtlid="262553">Wpis GLUE zostanie usunięty w ciągu kilku minut.</translation>
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Wystąpił błąd podczas usuwania wpisu GLUE.</translation>
-   <translation id="domain_tab_GLUE_add_warning_done" qtlid="288964">Uwaga: Po zatwierdzeniu będziesz musiał dodać pole A przypisane do IP {0} w strefie dns, aby wpis glue działał.</translation>
+   <translation id="domain_tab_GLUE_add_warning_done">Attention, après validation et afin que votre enregistrement GLUE fonctionne, vous devrez modifier votre zone DNS en ajoutant :<ul><li>un champ de type A pour une adresse IPv4,</li><li>un champ de type AAAA pour une adresse IPv6.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdomena</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">Strefa DNS</translation>
@@ -663,6 +664,7 @@
    <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">Adres IP hostingu</translation>
 
    <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Czy chcesz usunąć strefę DNS?</translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked">Votre zone DNS ne peut être supprimée car elle est actuellement liée à un hébergement Web.</translation>
    <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Uwaga! Operacja ta spowoduje definitywne usunięcie wszystkich istniejących wpisów DNS.</translation>
    <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">Rozpoczęliśmy operację usuwania strefy DNS. Prosimy o sprawdzenie skrzynki e-mail kontaktu administracyjnego strefy DNS i postępowanie według podanych instrukcji.</translation>
    <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">Wystąpił problem podczas usuwania strefy DNS.</translation>
@@ -716,7 +718,7 @@
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Twoje zamówienie zostało zaakceptowane. Kliknij <a href="#/billing/orders">tutaj, aby sprawdzić stan realizacji</a>.</translation>
 
    <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
-   <translation id="domain_tab_DYNHOST_title" qtlid="270644">DynHOST pozwala na skierowanie domeny na dynamiczny adres IP, który będzie aktualizowany w strefie DNS po każdej zmianie.</translation>
+   <translation id="domain_tab_DYNHOST_title">DynHOST vous permet de faire pointer un sous-domaine vers une adresse IP dynamique qui sera mise à jour dans votre zone DNS à chaque changement de celle-ci.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Domena {0} nie ma strefy DNS.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Wystąpił błąd:</translation>
    <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>

@@ -14,6 +14,7 @@ angular
         $onInit () {
             this.productId = this.$stateParams.productId;
 
+            this.file = null;
             this.importScriptTag = {
                 key: "WEB_HOSTING_DATABASE_IMPORT_SCRIPT",
                 value: "true"
@@ -37,10 +38,6 @@ angular
                 }
             };
 
-            this.file = {
-                data: ""
-            };
-
             this.selected = {
                 action: null
             };
@@ -51,13 +48,13 @@ angular
         }
 
         submit () {
-            const file = this.file.data.meta;
+            const file = _.head(this.file);
             const filename = this.model.uploadFileName;
             this.isSendingFile = true;
 
             this.userService.uploadFile(filename, file, [this.importScriptTag])
                 .then((id) => {
-                    this.model.document.id = id;
+                    _.set(this.model, "document.id", id);
                     this.atLeastOneFileHasBeenSend = true;
                 })
                 .finally(() => {
@@ -106,23 +103,26 @@ angular
         }
 
         isDocumentsValid () {
-            return this.model.document.id != null;
+            return _.get(this.model, "document.id") != null;
         }
 
         resetDocumentSelection () {
-            this.model.document.id = null;
-            this.model.uploadFileName = null;
-            this.file.data = "";
+            const elt = angular.element("input[type='file'][name='file']")[0];
+            angular.element(elt).val(null);
+            this.formFileUpload.$setPristine();
+
+            _.set(this.model, "document", null);
+            _.set(this.model, "uploadFileName", null);
+            this.file = null;
             this.atLeastOneFileHasBeenSend = false;
         }
 
-        fileAsBeenSelected () {
-            return this.file.data != null && !_.isEmpty(this.model.uploadFileName);
-        }
+        onFileChange (input) {
+            const filename = _.get(_.head(this.file), "name", "");
+            const ext = _.last(filename.split("."));
+            const validFormat = filename === ext || /gz|sql|txt/i.test(ext);
 
-        setFileName () {
-            if (this.file.data.meta != null) {
-                this.model.uploadFileName = this.file.data.meta.name;
-            }
+            this.model.uploadFileName = filename;
+            input.$setValidity("format", validFormat);
         }
 });

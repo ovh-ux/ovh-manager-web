@@ -59,7 +59,7 @@ angular
         });
 
         function loadOvhConfig () {
-            HostingOvhConfig.get($stateParams.productId).then((ovhConfig) => {
+            HostingOvhConfig.getCurrent($stateParams.productId).then((ovhConfig) => {
                 $scope.ovhConfig = _.merge(ovhConfig, {
                     taskPending: _.get($scope.ovhConfig, "taskPending", false),
                     taskPendingError: _.get($scope.ovhConfig, "taskPendingError", false)

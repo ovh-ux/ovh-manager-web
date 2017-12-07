@@ -38,72 +38,58 @@
              data-wizard-step-valid="importBddCtrl.isDocumentsValid()">
 
             <div data-ng-if="importBddCtrl.selected.action === importBddCtrl.model.actions.IMPORT_FROM_NEW">
-                <div class="loader mt-5 text-center" data-ng-if="importBddCtrl.isSendingFile"></div>
+                <oui-loader data-ng-if="importBddCtrl.isSendingFile"></oui-loader>
 
-                <form class="form-horizontal mt-5" name="formFileUpload"
+                <form name="importBddCtrl.formFileUpload" novalidate
+                      data-ng-show="!importBddCtrl.isSendingFile"
                       data-ng-submit="importBddCtrl.submit()">
 
-                    <div data-ng-hide="importBddCtrl.isSendingFile">
-                        <div class="form-group"
-                             data-ng-class="{
-                                'has-error': formFileUpload.uploadFileName.$invalid,
-                                'has-success': formFileUpload.uploadFileName.$dirty && formFileUpload.uploadFileName.$valid
-                            }">
-                            <label class="control-label col-md-4" for="uploadFileName">
-                                <span data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name"></span>
-                                <span class="fa fa-info-circle" aria-hidden="true"
-                                      data-uib-tooltip="{{::i18n.hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_info}}"
-                                      data-tooltip-append-to-body="true"
-                                      data-tooltip-placement="right"></span>
-                            </label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" id="uploadFileName" name="uploadFileName"
-                                       data-ng-model="importBddCtrl.model.uploadFileName">
-                                <small class="help-block"
-                                       data-ng-bind="i18n['hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_' + type + '_error'] || error"
-                                       data-ng-if="formFileUpload.uploadFileName.$error"
-                                       data-ng-repeat="(type, isError) in formFileUpload.uploadFileName.$error track by $index">
-                                </small>
-                            </div>
-                        </div>
+                    <div class="form-group"
+                         data-ng-class="{'has-error': importBddCtrl.formFileUpload.uploadFileName.$dirty && importBddCtrl.formFileUpload.uploadFileName.$invalid}">
+                        <label class="control-label" for="uploadFileName">
+                            <span data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name"></span>
+                            <span class="fa fa-info-circle" aria-hidden="true"
+                                  data-uib-tooltip="{{::i18n.hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_info}}"
+                                  data-tooltip-append-to-body="true"></span>
+                        </label>
+                        <input type="text" class="form-control" id="uploadFileName" name="uploadFileName" required
+                               data-ng-model="importBddCtrl.model.uploadFileName">
+                        <small class="help-block"
+                               data-ng-repeat="(type, isError) in importBddCtrl.formFileUpload.uploadFileName.$error track by $index"
+                               data-ng-bind="i18n['hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_' + type + '_error'] || error"
+                               data-ng-if="importBddCtrl.formFileUpload.uploadFileName.$dirty && importBddCtrl.formFileUpload.uploadFileName.$error">
+                        </small>
+                    </div>
 
-                        <div class="form-group"
-                             data-ng-class="{
-                                'has-error': formFileUpload.file.$invalid,
-                                'has-success': formFileUpload.file.$dirty && formFileUpload.file.$valid
-                            }">
-                            <label class="control-label col-md-4" for="uploadFileFile"
-                                   data-ng-bind="tr('hosting_tab_DATABASES_table_popover_import_step1_upload_file_file', [i18n.hosting_tab_DATABASES_table_popover_import_step1_upload_file_format])"></label>
-                            <div class="col-md-8">
-                                <input type="file" name="file" id="uploadFileFile" accept="application/gzip"
-                                       data-bind-file="importBddCtrl.file.data"
-                                       data-on-file-change="importBddCtrl.setFileName()">
-                                <small class="help-block"
-                                       data-ng-bind="i18n['hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_' + type + '_error'] || error"
-                                       data-ng-if="formFileUpload.file.$invalid"
-                                       data-ng-repeat="(type, isError) in formFileUpload.file.$error track by $index">
-                                </small>
-                                <div class="mt-3">
-                                    <button class="oui-button oui-button_primary" type="submit"
-                                            data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_upload"
-                                            data-ng-disabled="!importBddCtrl.fileAsBeenSelected()">
-                                    </button>
-                                    <p class="text-success mt-3"
-                                       data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_upload_succes"
-                                       data-ng-if="importBddCtrl.atLeastOneFileHasBeenSend"></p>
-                                </div>
-                            </div>
+                    <div class="form-group"
+                         data-ng-class="{'has-error': importBddCtrl.formFileUpload.file.$dirty && importBddCtrl.formFileUpload.file.$invalid}">
+                        <label class="control-label" for="uploadFileFile"
+                               data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file"></label>
+                        <input type="file" name="file" id="uploadFileFile" required
+                               data-file-change="importBddCtrl.onFileChange(importBddCtrl.formFileUpload.file)"
+                               data-ng-model="importBddCtrl.file">
+                        <small class="help-block"
+                               data-ng-repeat="(type, isError) in importBddCtrl.formFileUpload.file.$error track by $index"
+                               data-ng-bind="i18n['hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_' + type + '_error'] || error"
+                               data-ng-if="importBddCtrl.formFileUpload.file.$dirty && importBddCtrl.formFileUpload.file.$invalid">
+                        </small>
+                        <div class="mt-3">
+                            <button class="oui-button oui-button_primary" type="submit"
+                                    data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_upload"
+                                    data-ng-disabled="importBddCtrl.formFileUpload.$invalid">
+                            </button>
+                            <p class="text-success mt-3"
+                               data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_upload_succes"
+                               data-ng-if="importBddCtrl.atLeastOneFileHasBeenSend"></p>
                         </div>
                     </div>
                 </form>
             </div>
 
             <div data-ng-if="importBddCtrl.selected.action === importBddCtrl.model.actions.IMPORT_FROM_EXISTING">
-                <div class="text-center" data-ng-if="importBddCtrl.loading.documents">
-                    <oui-loader inline="true"></oui-loader>
-                </div>
+                <oui-loader data-ng-if="importBddCtrl.loading.documents"></oui-loader>
 
-                <div class="form-group" data-ng-if="!importBddCtrl.loading.documents">
+                <form data-ng-if="!importBddCtrl.loading.documents">
                     <label class="oui-label" for="ddlDocuments"
                            data-i18n-static="hosting_tab_DATABASES_table_popover_import_step1_choose_file"></label>
                     <div class="oui-select">
@@ -113,7 +99,7 @@
                         </select>
                         <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
 
