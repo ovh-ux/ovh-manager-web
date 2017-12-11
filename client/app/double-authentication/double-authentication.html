@@ -3,10 +3,9 @@
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="goToDoubleAuth"
          data-wizard-title="i18n.doubleauth_modal_alert_title">
-
         <div data-wizard-step>
-            <div class="alert alert-warning" role="alert">
-                <div data-ng-bind-html="trpl('doubleauth_modal_alert_message', ctrlDoubleAuthAlert.backupCodeStatus.remaining, [ctrlDoubleAuthAlert.backupCodeStatus.remaining])"></div>
+            <div class="alert alert-warning" role="alert"
+                 data-ng-bind-html="trpl('doubleauth_modal_alert_message', ctrlDoubleAuthAlert.backupCodeStatus.remaining, [ctrlDoubleAuthAlert.backupCodeStatus.remaining])">
             </div>
             <p data-i18n-static="doubleauth_modal_alert_message_regenerate"></p>
         </div>

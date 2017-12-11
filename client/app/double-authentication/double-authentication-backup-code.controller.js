@@ -1,21 +1,19 @@
 angular.module("App").controller(
     "DoubleAuthBackupCodeCtrl",
-    ["$scope", "$timeout", "ovh-doubleauth-backupCode.backupCode", class DoubleAuthBackupCodeCtrl {
+    class DoubleAuthBackupCodeCtrl {
         /**
          * Constructor
          * @param $scope
-         * @param $timeout
-         * @param DoubleAuthBackupCodeService
+         * @param $q
+         * @param OvhHttp
          */
-        constructor ($scope, $timeout, DoubleAuthBackupCodeService) {
+        constructor ($scope, $q, OvhHttp) {
             this.$scope = $scope;
-            this.$timeout = $timeout;
-            this.DoubleAuthBackupCodeService = DoubleAuthBackupCodeService;
-
-            this.init();
+            this.$q = $q;
+            this.OvhHttp = OvhHttp;
         }
 
-        init () {
+        $onInit () {
             this.backupCodeStatus = null;
 
             /**
@@ -28,25 +26,21 @@ angular.module("App").controller(
                 this.$scope.currentActionData = data;
 
                 if (this.$scope.currentActionData) {
-                    this.$scope.stepPath = `double-authentication/${this.$scope.currentAction}.html`;
+                    this.$scope.stepPath = "double-authentication/double-authentication.html";
                     $("#currentActionDoubleAlert").modal({
                         keyboard: false,
                         backdrop: "static"
                     });
                 } else {
+                    this.$scope.stepPath = "";
                     $("#currentActionDoubleAlert").modal("hide");
-                    this.$timeout(() => {
-                        this.$scope.stepPath = "";
-                    }, 300);
                 }
             };
 
             /**
              * Reset Action
              */
-            this.$scope.resetAction = () => {
-                this.$scope.setAction(false);
-            };
+            this.$scope.resetAction = () => this.$scope.setAction(false);
 
             this.$scope.getDoubleAuthBackupCode = () => this.getDoubleAuthBackupCode();
 
@@ -54,15 +48,17 @@ angular.module("App").controller(
         }
 
         /**
-         * Get double authentication backup code
-         */
+        * Get double authentication backup code
+        */
         getDoubleAuthBackupCode () {
-            this.DoubleAuthBackupCodeService.get().then((data) => {
-                this.backupCodeStatus = data.data;
-
-                if (this.backupCodeStatus.status === "enabled" && this.backupCodeStatus.remaining <= 3) {
-                    this.$scope.setAction("double-authentication", this.backupCodeStatus);
+            this.OvhHttp.get("/me/accessRestriction/backupCode", {
+                rootPath: "apiv6",
+                returnKey: ""
+            }).then((sotpAccount) => {
+                this.$scope.backupCodeStatus = sotpAccount;
+                if (this.$scope.backupCodeStatus.status === "enabled" && this.$scope.backupCodeStatus.remaining <= 3) {
+                    this.$scope.setAction("doubleAuthAlert", this.$scope.backupCodeStatus);
                 }
-            });
+            }).catch((err) => this.$q.reject(err));
         }
-}]);
+});
