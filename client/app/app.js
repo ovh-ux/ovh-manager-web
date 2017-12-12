@@ -219,7 +219,7 @@ angular
             $locationProvider.hashPrefix("");
         }
     ])
-    .constant("URLS_REDIRECTED_TO_DEDICATED", [new RegExp("/useraccount/infos"), new RegExp("/billing/history")])
+    .constant("URLS_REDIRECTED_TO_DEDICATED", [new RegExp("/useraccount/.*"), new RegExp("/billing/.*")])
     .config([
         "$stateProvider",
         "$urlRouterProvider",
