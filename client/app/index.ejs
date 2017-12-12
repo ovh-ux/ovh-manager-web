@@ -78,6 +78,16 @@
             </div>
         </div>
 
+        <div data-ng-controller="DoubleAuthBackupCodeCtrl">
+            <div class="modal fade currentAction" id="currentActionDoubleAlert" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" id="modal-container"
+                         data-ng-include="stepPath">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <% if (prodMode) { %>
             <!--<script type="text/javascript">window.console={error:function(){},log:function(){},debug:function(){},warn:function(){},dir:function(){},info:function(){},assert:function(){}};</script>-->
             <script type="text/javascript">
