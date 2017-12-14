@@ -22,6 +22,7 @@ angular.module("App").controller(
             this.loading = {
                 bc: false
             };
+            this.zoneName = "";
             this.zoneNameOrder = {
                 zoneName: null,
                 minimized: false,
@@ -48,6 +49,7 @@ angular.module("App").controller(
         clean () {
             this.zoneNameOrder.contractsValidated = false;
             this.zoneNameOrder.minimized = false;
+            this.zoneName = _.get(this.zoneNameOrder, "zoneName", "").toLowerCase();
             this.order = null;
         }
     }
