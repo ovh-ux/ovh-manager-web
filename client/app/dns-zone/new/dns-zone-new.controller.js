@@ -22,7 +22,7 @@ angular.module("App").controller(
             this.loading = {
                 bc: false
             };
-            this.zoneName = "";
+            this.zoneName = null;
             this.zoneNameOrder = {
                 zoneName: null,
                 minimized: false,
