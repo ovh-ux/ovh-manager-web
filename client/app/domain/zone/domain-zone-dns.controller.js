@@ -42,7 +42,6 @@ angular.module("App").controller(
             this.$scope.loadPaginated = (count, offset) => this.loadPaginated(count, offset);
 
             this.checkAllowModification(this.domain.name);
-            this.checkAllZoneCanBeDelete(this.domain.name);
             this.getZoneDns(this.domain.name);
         }
 
@@ -77,18 +76,6 @@ angular.module("App").controller(
                         user &&
                         ((domainServiceInfo && (domainServiceInfo.contactTech === user.nichandle || domainServiceInfo.contactAdmin === user.nichandle)) ||
                             (zoneServiceInfo && (zoneServiceInfo.contactTech === user.nichandle || zoneServiceInfo.contactAdmin === user.nichandle)));
-                });
-        }
-
-        checkAllZoneCanBeDelete (domainName) {
-            this.canDeleteAllZone = false;
-            return this.Hosting
-                .getHosting(domainName)
-                .then(() => {
-                    this.canDeleteAllZone = false;
-                }) // Hosting exist with this domain name, hide delete all zone button
-                .catch((err) => {
-                    this.canDeleteAllZone = err.status === 404;
                 });
         }
 

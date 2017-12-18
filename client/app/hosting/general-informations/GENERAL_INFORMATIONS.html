@@ -147,24 +147,24 @@
                                                 <span data-ng-bind="ovhConfig.engineVersion"></span>
                                                 <span class="fa fa-exclamation-triangle" aria-hidden="true"
                                                       data-ng-class="{
-                                                    'text-warning': phpVersionSupport.support === 'SECURITY_FIXES',
-                                                    'text-danger': phpVersionSupport.support === 'END_OF_LIFE'
-                                                }"
+                                                        'text-warning': phpVersionSupport.support === 'SECURITY_FIXES',
+                                                        'text-danger': phpVersionSupport.support === 'END_OF_LIFE'
+                                                      }"
                                                       data-ng-if="phpVersionSupport.support && phpVersionSupport.support !== 'SUPPORTED'"
                                                       data-uib-tooltip="{{tr('hosting_dashboard_php_support_'+ phpVersionSupport.support)}}"
                                                       data-tooltip-placement="bottom">
                                                 </span>
-                                                <span class="ml-2" data-ng-if="ovhConfig.taskPending">
+                                                <div class="d-inline ml-2" data-ng-if="ovhConfig.taskPending">
                                                     <oui-loader size="s" inline="true"></oui-loader>
-                                                </span>
+                                                </div>
                                                 <span class="help-inside ml-2"
                                                       data-ng-if="ovhConfig.taskPendingError"
                                                       data-uib-tooltip="{{ovhConfig.taskPendingError}}">
-                                                    <span class="fa fa-times-circle text-danger"
-                                                          aria-hidden="true"></span>
+                                                    <span class="fa fa-times-circle text-danger" aria-hidden="true"></span>
                                                 </span>
                                             </div>
-                                            <button class="btn btn-default ml-auto mb-auto text-wrap" type="button"
+                                            <button class="btn btn-default ml-auto mb-auto text-wrap"
+                                                    type="button"
                                                     data-i18n-static="hosting_global_php_version_edit"
                                                     data-ng-click="setAction('ovhconfig/hosting-ovhconfig', hosting)"
                                                     data-ng-disabled="ovhConfig.taskPending">

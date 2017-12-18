@@ -119,6 +119,41 @@
                     </div>
                 </div>
             </form>
+
+            <form class="form-horizontal" name="privateDatabaseAddAuthorizedIpForm" ng-if="isDBaaS() && !addBddCtrl.hasAuthorizedIp">
+                <!-- ADD AUTHORIZED IP -->
+
+                <div class="oui-checkbox d-inline-block">
+                    <input type="checkbox" class="oui-checkbox__input" name="bddAddIpCheckbox" id="bddAddIpCheckbox"
+                           data-ng-model="addBddCtrl.model.addIp">
+                    <label class="oui-checkbox__label-container" for="bddAddIpCheckbox">
+                        <span class="oui-checkbox__label"
+                              data-i18n-static="privateDatabase_add_authorized_ip"></span>
+                        <span class="oui-checkbox__icon">
+                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="alert alert-warning help-block mt-3" data-ng-if="addBddCtrl.model.addIp" data-i18n-static="privateDatabase_add_authorized_ip_explanation"></div>
+
+                <div class="mt-5" data-ng-if="addBddCtrl.model.addIp">
+                    <div class="form-group" data-ng-class="{'has-error': privateDatabaseAddAuthorizedIpForm.bddAddIp.$dirty && !addBddCtrl.isIpValid(addBddCtrl.model.ip.value)}">
+                        <label class="control-label col-md-4 required" for="bddAddIp"
+                               data-i18n-static="privateDatabase_modale_whitelist_add_ip"></label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="bddAddIp" id="bddAddIp" autocomplete="off" required
+                                   data-ng-model="addBddCtrl.model.ip.value">
+                             <div class="alert alert-info help-block mt-3" id="bddIpHelp" role="alert"
+                                  data-i18n-static="privateDatabase_modale_whitelist_add_ip_tooltip"
+                                  data-ng-class="{'alert-danger': privateDatabaseAddAuthorizedIpForm.bddAddIp.$dirty && !addBddCtrl.isIpValid(addBddCtrl.model.ip.value)}">
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

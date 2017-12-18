@@ -29,8 +29,8 @@
                 </tr>
             </tbody>
 
-            <tbody>
-                <tr data-ng-if="!dumpCtrl.loaders.dumps && !dumpCtrl.dumpsIds.length">
+            <tbody data-ng-if="!dumpCtrl.loaders.dumps">
+                <tr data-ng-if="!dumpCtrl.dumpsIds.length">
                     <td class="text-center" colspan="3"
                         data-i18n-static="privateDatabase_tabs_dumps_no_dumps">
                     </td>
@@ -45,16 +45,14 @@
                         </span>
                     </td>
                     <td data-ng-bind="::dump.deletionDate | date:'medium'"></td>
-                    <td class="text-nowrap">
-                        <button class="btn btn-icon" type="button" title="{{tr('privateDatabase_tabs_dumps_download_dump')}}"
-                                data-ng-click="dumpCtrl.goTo(dump.url, '_blank')"
-                                data-ng-disabled="dumpCtrl.database.waitRestore">
-                            <span class="fa fa-download" aria-hidden="true"></span>
-                        </button>
-                        <button class="btn btn-icon" type="button" title="{{tr('privateDatabase_tabs_dumps_restore_dump')}}"
-                                data-ng-click="setAction('database/restore/private-database-database-restore', {bdd:dumpCtrl.database, dump:dump})"
-                                data-ng-disabled="dumpCtrl.database.waitRestore">
-                            <span class="fa fa-repeat" aria-hidden="true"></span>
+                    <td class="text-right">
+                        <button class="btn btn-icon" type="button"
+                                data-linkedpopover="private-database/database/dump/private-database-database-dump.popover.html"
+                                data-linkedpopover-placement="left"
+                                data-linkedpopover-remote="true"
+                                data-linkedpopover-single="true"
+                                data-linkedpopover-title="{{i18n.common_actions}}">
+                            <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                         </button>
                     </td>
                 </tr>

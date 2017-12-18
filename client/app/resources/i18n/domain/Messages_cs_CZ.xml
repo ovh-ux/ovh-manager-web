@@ -51,6 +51,7 @@
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">DNS Anycast je výkonné řešení, umožňující zrychlit funkce DNS serveru a tím urychlit načítání Vašeho webu.</translation>
    <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Veřejně dostupná databáze obsahující osobní informace vztahující se k Vaší doméně.</translation>
    <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Služba umožňující Vám přeložit doménové jméno na IP adresu (určuje umístění dat Vašich stránek).</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating">Un délai de propagation de 48h est nécessaire suite à votre dernière modification.</translation>
    <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">Primární funkcí DNS serverů je překlad domény na IP adresu.</translation>
    <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Umožňuje přesměrování uživatelů na existující stránku.</translation>
    <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">Pro případ poruchy primárního DNS serveru zaručuje dostupnost Vašich stránek.</translation>
@@ -126,8 +127,9 @@
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Skutečně chcete resetovat konfiguraci DNS serveru? Současná konfigurace se přepíše na výchozí hodnoty, včetně výchozích DNS serverů OVH.</translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">Požadavek na reset DNS serveru byl úspěšně přijat.</translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Při požadavku o reset DNS serveru došlo k chybě.</translation>
-   <translation id="domain_tab_DNS_update_success" qtlid="284841">Úprava DNS byla provedena. Změny se projeví během několik hodin</translation>
+   <translation id="domain_tab_DNS_update_success">La modification des DNS a bien été prise en compte. Un délai de 48h est nécessaire pour la propagation aux autres DNS.</translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">Během úprav DNS došlo k chybě.</translation>
+   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Réinitialiser les serveurs DNS : non disponible en cas d'activation de DNSSEC</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Použít konfiguraci</translation>
    <translation id="domain_tab_DNS_reset" qtlid="284880">Reset konfigurace</translation>
    <translation id="domain_tab_DNS_cancel" qtlid="172280">Zrušit změny</translation>
@@ -141,7 +143,7 @@
    <translation id="domain_tab_DNS_unlock_warning_manuel_check" qtlid="328836">Pro ověření správné funkčnosti Vaší konfigurace můžete použít <a href="{0}" title="{1}" target="_blank">tento nástroj pro verifikaci DNS</a>.</translation>
    <translation id="domain_tab_DNS_unlock_warning_manuel_check_tool" qtlid="293749">Nástroj pro verifikaci DNS</translation>
 
-   <translation id="domain_tab_DNSSEC_action_add_title" qtlid="37875">Změnit</translation>
+   <translation id="domain_tab_DNSSEC_action_add_title" qtlid="37875">Upravit</translation>
    <translation id="domain_tab_DNSSEC_action_save_title" qtlid="264446">Uložit.</translation>
    <translation id="domain_tab_DNSSEC_action_save_confirm_1" qtlid="264459">Aplikace změn potrvá nějakou dobu a mezitím budou všechny další požadavky na změny na této doméně pozastaveny.</translation>
    <translation id="domain_tab_DNSSEC_action_save_confirm_2" qtlid="264472">Opravdu chcete nyní použít změny?</translation>
@@ -183,7 +185,7 @@
    <translation id="domain_tab_GLUE_ip" qtlid="262319">Cíl(e)</translation>
    <translation id="domain_tab_GLUE_host" qtlid="2678">Host</translation>
    <translation id="domain_tab_GLUE_delete" qtlid="2414">Odstranit</translation>
-   <translation id="domain_tab_GLUE_modify" qtlid="37875">Změnit</translation>
+   <translation id="domain_tab_GLUE_modify" qtlid="37875">Upravit</translation>
    <translation id="domain_tab_GLUE_butt_add" qtlid="37923">Přidat</translation>
    <translation id="domain_tab_GLUE_empty" qtlid="262332">V seznamu glue záznamů není žádný záznam.</translation>
    <translation id="domain_tab_GLUE_add_step1" qtlid="262345">Vyplňte následující pole:</translation>
@@ -204,7 +206,7 @@
    <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Opravdu si jste jistí, že chcete odebrat tento glue záznam?</translation>
    <translation id="domain_tab_GLUE_delete_success" qtlid="262553">Glue záznam bude vymazán během několika minut.</translation>
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Při odebírání glue záznamu došlo k chybě.</translation>
-   <translation id="domain_tab_GLUE_add_warning_done" qtlid="288964">Poznámka: Po schválení musíte přidat A záznam asociovaný s IP {0} do DNS zóny.</translation>
+   <translation id="domain_tab_GLUE_add_warning_done">Attention, après validation et afin que votre enregistrement GLUE fonctionne, vous devrez modifier votre zone DNS en ajoutant :<ul><li>un champ de type A pour une adresse IPv4,</li><li>un champ de type AAAA pour une adresse IPv6.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdoména</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">DNS zóna</translation>
@@ -655,8 +657,8 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM" qtlid="50062">Upravitelný</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS" qtlid="366450">E-mailový server OVH</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS_filter" qtlid="50230">Ochrana</translation>
-   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="217132">Zvolte...</translation>
-   <translation id="domain_configuration_zonedns_reset_type_HOSTING_WEB_placeholder" qtlid="217132">Zvolte...</translation>
+   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="217132">Vyberte...</translation>
+   <translation id="domain_configuration_zonedns_reset_type_HOSTING_WEB_placeholder" qtlid="217132">Vyberte...</translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label" qtlid="366463">Zadejte A záznam:</translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label_MX" qtlid="366476">Zadejte MX záznam a specifikujte jeho prioritu:</translation>
    <translation id="domain_configuration_zonedns_reset_type_label" qtlid="366489">Vyberte prosím, kam má Vaše doména směrovat:</translation>
@@ -665,6 +667,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">IP adresa Vašeho webhostingu</translation>
 
    <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Chcete odstranit DNS zónu?</translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked">Votre zone DNS ne peut être supprimée car elle est actuellement liée à un hébergement Web.</translation>
    <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Upozornění! Tímto smažete všechny existující DNS záznamy.</translation>
    <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">Začalo mazání DNS zóny. K dokončení požadavku prosím následujte instrukce v e-mailu, který byl zaslán na adresu správce DNS zóny.</translation>
    <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">Během odstraňování DNS zóny došlo k chybě.</translation>
@@ -718,7 +721,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Vaše objednávka byla úspěšně schválena. Pro více informací o průběhu <a href="#/billing/orders">klikněte sem</a>.</translation>
 
    <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
-   <translation id="domain_tab_DYNHOST_title" qtlid="270644">DynHOST zajišťuje, aby se nasměrování Vaší domény nebo subdomény na dynamickou IP adresu při každé změně aktualizovalo.</translation>
+   <translation id="domain_tab_DYNHOST_title">DynHOST vous permet de faire pointer un sous-domaine vers une adresse IP dynamique qui sera mise à jour dans votre zone DNS à chaque changement de celle-ci.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Doména {0} nemá DNS zónu.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Objevila se chyba:</translation>
    <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>
@@ -807,7 +810,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_create_site" qtlid="288548">Vytvoření webu</translation>
    <translation id="domain_update_owner_cancel" qtlid="37863">Zrušit</translation>
    <translation id="domain_update_owner_ok" qtlid="26047">Schválit</translation>
-   <translation id="domain_update_owner_edit" qtlid="37875">Změnit</translation>
+   <translation id="domain_update_owner_edit" qtlid="37875">Upravit</translation>
 
 
    <translation id="domain_update_owner_legalform" qtlid="33526">Právní forma</translation>

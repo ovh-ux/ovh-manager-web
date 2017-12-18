@@ -7,9 +7,10 @@
    <translation id="domains_dashboard_selector_all_pages" qtlid="140625">Seleccionar todas las páginas</translation>
    <translation id="domains_dashboard_table_titles_name" qtlid="140638">Dominio</translation>
    <translation id="domains_dashboard_table_titles_creation" qtlid="26419">Fecha de creación</translation>
-   <translation id="domains_dashboard_table_titles_expiration" qtlid="24523">Fecha</translation>
+   <translation id="domains_dashboard_table_titles_expiration" qtlid="33010">Fecha de expiración</translation>
    <translation id="domains_dashboard_table_titles_whois" qtlid="140651">Ocultación del WHOIS</translation>
    <translation id="domains_dashboard_table_titles_dnssec" qtlid="184529">DNSSEC</translation>
+   <translation id="domains_dashboard_table_titles_dnsanycast">DNS Anycast</translation>
    <translation id="domains_dashboard_table_empty" qtlid="140664">No hay ningún dominio que se ajuste a sus criterios</translation>
    <translation id="domains_dashboard_table_noresult" qtlid="433680">No tiene ningún dominio en el que realizar acciones</translation>
    <translation id="domains_dashboard_message_see_more" qtlid="140677">Ver el detalle de los errores</translation>
@@ -37,7 +38,7 @@
    <translation id="domains_dashboard_button_dnssec" qtlid="184581">Configurar DNSSEC</translation>
    <translation id="domains_dashboard_button_export" qtlid="231773">Exportar en CSV</translation>
    <translation id="domains_change_owner" qtlid="267240">Cambiar de propietario</translation>
-   <translation id="domains_dashboard_csv_file_created" qtlid="372230">El archivo se ha creado correctamente. Si la descarga no comienza, puede <a target="_blank" href="{0}" download>descargarlo manualmente</a>.</translation>
+   <translation id="domains_dashboard_csv_file_created" qtlid="372230">El archivo se ha creado correctamente. Si la descarga no comienza, puede <a target="_blank" href="{0}">descargarlo manualmente</a>.</translation>
    <translation id="domains_configuration_renew_title" qtlid="140690">Renovar mis dominios</translation>
    <translation id="domains_configuration_renew_step1_question" qtlid="140703">Para renovar sus dominios, debe utilizar la interfaz de renovación OVH (fuera del área de cliente Web).</translation>
    <translation id="domains_configuration_renew_step1_unable_to_renew" qtlid="140716">Debido a que usted no es el contacto de facturación, no puede renovar algunos de los dominios seleccionados (<span class="italic">{0}</span>).</translation>
@@ -159,6 +160,8 @@
    <translation id="domains_action_export_csv_form_whois_fields_help" qtlid="273176">Incluir el estado del servicio OWO (Whois)</translation>
    <translation id="domains_action_export_csv_form_dnssec_label" qtlid="184529">DNSSEC</translation>
    <translation id="domains_action_export_csv_form_dnssec_help" qtlid="273189">Incluir el estado de la delegación segura </translation>
+   <translation id="domains_action_export_csv_form_dnsanycast_label">DNS Anycast</translation>
+   <translation id="domains_action_export_csv_form_dnsanycast_help">Inclure l'état d'activation de la solution DNS Anycast</translation>
    <translation id="domains_action_export_csv_form_nic_billing_label" qtlid="273202">Contacto de facturación </translation>
    <translation id="domains_action_export_csv_form_nic_billing_help" qtlid="273215">Incluir el contacto de facturación </translation>
    <translation id="domains_action_export_csv_form_nic_tech_label" qtlid="273228">Contacto técnico </translation>

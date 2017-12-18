@@ -13,6 +13,7 @@
    <translation id="universe_univers-sunrise_name" qtlid="232401">Sunrise</translation>
 <translation id="universe_univers-portal_name" translate="none">MyOVH</translation>
    <translation id="universe_univers-partners_name" qtlid="383512">Partneři</translation>
+   <translation id="universe_univers-labs_name" qtlid="383707">UX Labs</translation>
    <translation id="universe_labs_chatbot" qtlid="382758">Virtuální asistent OVH</translation>
    <translation id="older_interface" qtlid="135931">Starý zákaznický prostor</translation>
    <translation id="universe_univers-v3_name" qtlid="135931">Starý zákaznický prostor</translation>
@@ -102,7 +103,7 @@
 
    <translation id="wizard_cancel" qtlid="37863">Zrušit</translation>
    <translation id="wizard_confirm" qtlid="26047">Schválit</translation>
-   <translation id="wizard_modify" qtlid="37875">Změnit</translation>
+   <translation id="wizard_modify" qtlid="37875">Upravit</translation>
    <translation id="wizard_delete" qtlid="2414">Odstranit</translation>
    <translation id="wizard_yes" qtlid="34776">Ano</translation>
    <translation id="wizard_no" qtlid="34788">Ne</translation>
@@ -125,7 +126,7 @@
    <translation id="form_add_item" qtlid="402126">Přidat element</translation>
    <translation id="wizard_breadcrumb" qtlid="158682">Krok {0} z {1}</translation>
    <translation id="table_delete_search" qtlid="402139">Vymazat vyhledávání</translation>
-   <translation id="select_placeholder" qtlid="217132">Zvolte...</translation>
+   <translation id="select_placeholder" qtlid="217132">Vyberte...</translation>
    <translation id="pagination_page" qtlid="129123">Strana {0}/{1}</translation>
    <translation id="pagination_go" qtlid="31522">OK</translation>
    <translation id="pagination_display" qtlid="69353">Zobrazit</translation>
@@ -142,6 +143,7 @@
    <translation id="common_activated" qtlid="30250">Aktivní</translation>
    <translation id="common_desactivated" qtlid="24967">Neaktivní</translation>
    <translation id="common_not_supported" qtlid="190771">Není podporován</translation>
+   <translation id="common_not_available">Non disponible</translation>
    <translation id="common_TODO" qtlid="124483">Informace</translation>
    <translation id="common_not_configurated" qtlid="124952">Není nastaven</translation>
    <translation id="common_ipv4" qtlid="101781">IPv4</translation>
@@ -157,7 +159,7 @@
    <translation id="global_logout" qtlid="33658">Odpojení</translation>
    <translation id="global_changelog" qtlid="124964">Changelog</translation>
    <translation id="global_preference" qtlid="144708">Přihlášky k odebírání novinek</translation>
-   <translation id="global_billing" qtlid="32950">Fakturace</translation>
+   <translation id="global_billing" qtlid="32950">Fakturační kontakt</translation>
    <translation id="global_account" qtlid="157642">Můj účet</translation>
    <translation id="global_support" qtlid="39994">Podpora</translation>
    <translation id="global_feedback" qtlid="103558">Zaslat Váš názor</translation>
@@ -187,7 +189,7 @@
    <translation id="global_processing" qtlid="122227">Provádění...</translation>
    <translation id="global_doing" qtlid="210163">Načítání...</translation>
    <translation id="main_menu_products_and_config" qtlid="4406">Konfigurace</translation>
-   <translation id="main_menu_bill_and_renew" qtlid="32950">Fakturace</translation>
+   <translation id="main_menu_bill_and_renew" qtlid="32950">Fakturační kontakt</translation>
    <translation id="main_menu_help_and_support" qtlid="26035">Pomoc</translation>
    <translation id="navigation_left_search" qtlid="122275">Vyhledávání...</translation>
    <translation id="navigation_left_domains" qtlid="32590">Domény</translation>
@@ -301,7 +303,7 @@
    <translation id="country_CD" qtlid="187378">Kongo, Demokratická Republika</translation>
    <translation id="country_CF" qtlid="187391">Středoafrická republika</translation>
    <translation id="country_CG" qtlid="187404">Kongo</translation>
-   <translation id="country_CH" qtlid="40954">Švícarsko</translation>
+   <translation id="country_CH" qtlid="40954">Švýcarsko</translation>
    <translation id="country_CI" qtlid="187417">Pobřeží slonoviny</translation>
    <translation id="country_CK" qtlid="187430">Cookovy ostrovy</translation>
    <translation id="country_CL" qtlid="187443">Chile</translation>
@@ -536,10 +538,10 @@
    <translation id="contacts_management" qtlid="259575">Správa kontaktů</translation>
    <translation id="more_tabs" qtlid="270748">Další záložky</translation>
    <translation id="expired_date" qtlid="382076">Expiruje <strong>{0}</strong></translation>
-   <translation id="expiration_date">À renouveler manuellement le <strong>{0}</strong></translation>
+   <translation id="expiration_date" qtlid="440274">Manuální obnovení služby k datu <strong>{0}</strong></translation>
    <translation id="resiliation_date" qtlid="382089">Zrušení naplánováno na <strong>{0}</strong></translation>
    <translation id="resiliation_cancel_label" qtlid="285350">Zrušit zrušení</translation>
-   <translation id="renew_date">Renouvellement automatique prévu en <strong>{0}</strong></translation>
+   <translation id="renew_date" qtlid="440287">Automatické obnovení služby naplánováno na <strong>{0}</strong></translation>
    <translation id="core_email_voila_title" qtlid="271751">Adresa @voila.fr</translation>
    <translation id="core_email_voila_alert" qtlid="271764">V souladu s oznámením o ukončení služby Voila Mail budou od 12. ledna všechny adresy @voila.fr deaktivovány. Pokud tuto službu používáte, budete muset přejít na jinou.</translation>
    <translation id="core_email_voila_alert2" qtlid="271777">Abychom Vás i nadále mohli informovat o dění v OVH, doporučujeme zadat v sekci "Můj účet" novou e-mailovou adresu.</translation>
@@ -622,7 +624,6 @@
    <translation id="guide_emails_emails_configuration_ios" qtlid="304199">Konfigurace iPhone iOS 9.1</translation>
    <translation id="guide_emails_emails_roundcube" qtlid="304212">Webmail - RoundCube</translation>
    <translation id="guide_emails_emails_headers" qtlid="304225">Získání hlaviček e-mailu</translation>
-   <translation id="guide_emails_emails_change_offer" qtlid="304238">Změna nabídky e-mailů</translation>
    <translation id="guide_emails_emails_delegation" qtlid="304251">Jak delegovat správu Vašich e-mailů na jiného uživatele OVH</translation>
    <translation id="guide_emails_emails_filters" qtlid="304264">Konfigurace e-mailových filtrů ve Vašem Zákaznickém prostoru</translation>
    <translation id="guide_emails_emails_mx_servers" qtlid="304277">Obecně o serverech MX</translation>

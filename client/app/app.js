@@ -219,10 +219,12 @@ angular
             $locationProvider.hashPrefix("");
         }
     ])
+    .constant("URLS_REDIRECTED_TO_DEDICATED", [new RegExp("/useraccount/.*"), new RegExp("/billing/.*")])
     .config([
         "$stateProvider",
         "$urlRouterProvider",
-        ($stateProvider, $urlRouterProvider) => {
+        "URLS_REDIRECTED_TO_DEDICATED",
+        ($stateProvider, $urlRouterProvider, URLS_REDIRECTED_TO_DEDICATED) => {
             "use strict";
 
             /*
@@ -254,15 +256,19 @@ angular
                 }
             });
 
-            $urlRouterProvider.when(/\/(useraccount)|(billing)\/(.)+/, [
-                "$window",
-                "constants",
-                "$location",
-                ($window, constants, $location) => {
-                    const url = $location.url().substring(1);
-                    $window.location = `${constants.MANAGER_URLS.dedicated}${url}`;
-                }
-            ]);
+            _(URLS_REDIRECTED_TO_DEDICATED)
+                .forEach((url) => {
+                    $urlRouterProvider.when(url, [
+                        "$window",
+                        "constants",
+                        "$location",
+                        ($window, constants, $location) => {
+                            const lastPartOfUrl = $location.url().substring(1);
+                            $window.location = `${constants.MANAGER_URLS.dedicated}${lastPartOfUrl}`;
+                        }
+                    ]);
+                })
+                .value();
 
             $urlRouterProvider.otherwise("/configuration");
         }
@@ -380,10 +386,33 @@ angular
         "turystyka.pl"
     ])
     .run([
-        "ssoAuthentication",
-        (authentication) => {
+        "constants",
+        "$location",
+        "URLS_REDIRECTED_TO_DEDICATED",
+        (constants, $location, URLS_REDIRECTED_TO_DEDICATED) => {
             "use strict";
-            authentication.login();
+            _(URLS_REDIRECTED_TO_DEDICATED)
+                .chain()
+                .filter((url) => url.test(window.location.href))
+                .forEach(() => {
+                    const lastPartOfUrl = $location.url().substring(1);
+                    window.location = `${constants.MANAGER_URLS.dedicated}${lastPartOfUrl}`;
+                })
+                .value();
+        }
+    ])
+    .run([
+        "ssoAuthentication",
+        "URLS_REDIRECTED_TO_DEDICATED",
+        (authentication, URLS_REDIRECTED_TO_DEDICATED) => {
+            "use strict";
+            _(URLS_REDIRECTED_TO_DEDICATED)
+                .chain()
+                .filter((url) => !url.test(window.location.href))
+                .forEach(() => {
+                    authentication.login();
+                })
+                .value();
         }
     ])
     .run([
@@ -412,7 +441,7 @@ angular
         "translator",
         (translator) => {
             "use strict";
-            translator.load(["core"]);
+            translator.load(["core", "doubleAuth"]);
 
             const selectedLanguage = translator.getSelectedAvailableLanguage();
             const selectedLanguageValue = _(selectedLanguage).get("value", null);

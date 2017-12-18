@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <translations>
    <translation id="button_renew" qtlid="210124">Verlängern</translation>
+   <translation id="privateDatabase_dashboard_state" qtlid="297124">Status der Dienstleistung</translation>
    <translation id="privateDatabase_dashboard_disk_usage" qtlid="76758">Speichernutzung</translation>
    <translation id="privateDatabase_dashboard_guide_help" qtlid="271556">Benötigen Sie Hilfe für Ihre privaten Datenbanken?</translation>
    <translation id="privateDatabase_dashboard_quota" qtlid="258951">Insgesamt verwendeter Speicherplatz: {0}</translation>
    <translation id="privateDatabase_dashboard_version" qtlid="34210">Version</translation>
+   <translation id="privateDatabase_dashboard_version_mariadb_101" qtlid="444430">MariaDB 10.1</translation>
    <translation id="privateDatabase_dashboard_version_mysql_41" qtlid="215572">MySQL 4.1</translation>
    <translation id="privateDatabase_dashboard_version_mysql_50" qtlid="215585">MySQL 5.0</translation>
    <translation id="privateDatabase_dashboard_version_mysql_51" qtlid="215598">MySQL 5.1</translation>
@@ -14,6 +16,9 @@
    <translation id="privateDatabase_dashboard_version_postgresql_94" qtlid="282718">PostgreSQL 9.4</translation>
    <translation id="privateDatabase_dashboard_version_postgresql_95" qtlid="354197">PostgreSQL 9.5 </translation>
    <translation id="privateDatabase_dashboard_version_postgresql_96" qtlid="360970">PostgreSQL 9.6 </translation>
+   <translation id="privateDatabase_dashboard_version_postgresql_10" qtlid="444443">PostgreSQL 10</translation>
+   <translation id="privateDatabase_dashboard_version_mongodb_34">MongoDB 3.4</translation>
+   <translation id="privateDatabase_dashboard_version_redis_32">Redis 3.2</translation>
    <translation id="privateDatabase_dashboard_nb_cpu" qtlid="215637">Anzahl CPU</translation>
    <translation id="privateDatabase_dashboard_ip" qtlid="25615">IP</translation>
    <translation id="privateDatabase_dashboard_detached" qtlid="136100">Abgelaufen</translation>
@@ -25,6 +30,9 @@
    <translation id="privateDatabase_dashboard_type" qtlid="2642">Typ</translation>
    <translation id="privateDatabase_dashboard_type_mysql" qtlid="196894">MySQL</translation>
    <translation id="privateDatabase_dashboard_type_postgresql" qtlid="196907">PostgreSQL</translation>
+   <translation id="privateDatabase_dashboard_type_redis">Redis</translation>
+   <translation id="privateDatabase_dashboard_type_mongodb" qtlid="444706">MongoDB</translation>
+   <translation id="privateDatabase_dashboard_type_mariadb" qtlid="444719">MariaDB</translation>
    <translation id="privateDatabase_dashboard_ram" qtlid="31354">RAM</translation>
    <translation id="privateDatabase_dashboard_information" qtlid="217574">Der Server ist nicht gestartet, einige Funktionen sind deshalb deaktiviert.</translation>
    <translation id="privateDatabase_dashboard_changeversion_information" qtlid="217587">Der Server wird gerade migriert, einige Funktionen sind deshalb deaktiviert.</translation>
@@ -41,14 +49,17 @@
    <translation id="privateDatabase_dashboard_port_legacy" qtlid="254843">FTP Port</translation>
    <translation id="privateDatabase_dashboard_port_docker" qtlid="262947">SFTP Port</translation>
    <translation id="privateDatabase_dashboard_port" qtlid="9034">Port</translation>
+   <translation id="privateDatabase_dashboard_certificate">Certificat</translation>
+   <translation id="privateDatabase_dashboard_certificate_tooltip">Le certificat n'est pas obligatoire pour réaliser la connexion à votre instance. Celui-ci est par contre nécessaire si vous désirez chiffrer la connexion vers celle-ci.</translation>
+   <translation id="privateDatabase_dashboard_see_certificate">Voir le certificat</translation>
    <translation id="privateDatabase_dashboard_service_hosting_more" qtlid="325924">Die Liste anzeigen</translation>
-   <translation id="privateDatabase_dashboard_service_hosting_linked" qtlid="330500">Assoziierte Webhostings </translation>
+   <translation id="privateDatabase_dashboard_service_hosting_linked" qtlid="444456">Hébergement web lié</translation>
    <translation id="privateDatabase_dashboard_service_hosting_linked_none" qtlid="30646">Keiner</translation>
 
-   <translation id="privateDatabase_dashboard_ftp_informations_legacy" qtlid="74045">FTP Verbindung</translation>
-   <translation id="privateDatabase_dashboard_ftp_informations_docker" qtlid="265470">SFTP Verbindung</translation>
+   <translation id="privateDatabase_dashboard_connections_title">Informations de connexion</translation>
+   <translation id="privateDatabase_dashboard_ftp_informations_legacy">FTP</translation>
+   <translation id="privateDatabase_dashboard_ftp_informations_docker">SFTP</translation>
    <translation id="privateDatabase_dashboard_ftp_username" qtlid="56045">Benutzername</translation>
-   <translation id="privateDatabase_dashboard_sql_informations" qtlid="263988">SQL Verbindung</translation>
    <translation id="privateDatabase_dashboard_admin_informations" qtlid="264001">Administration der Datenbank</translation>
    <translation id="privateDatabase_dashboard_admin_informations_users" qtlid="264014">Sie finden dies im Tab Benutzer und Rechte</translation>
 
@@ -66,6 +77,7 @@
 
    <translation id="privateDatabase_configurations_general_mysql" qtlid="263494">Allgemeine Konfiguration von MySQL</translation>
    <translation id="privateDatabase_configurations_general_mariadb" qtlid="404668">Allgemeine Konfiguration von MariaDB</translation>
+   <translation id="privateDatabase_configurations_general_redis">Configuration générale de Redis</translation>
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Allgemeine Konfiguration von PostgreSQL</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">In Kürze verfügbar für PostgreSQL</translation>
 
@@ -87,6 +99,8 @@
    <translation id="privateDatabase_configuration_event_scheduler" qtlid="370187">Status Event Scheduler</translation>
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Anzahl der Sekunden an Inaktivität nach einer Eingabeaufforderung, bevor der Server die Verbindung unterbricht.</translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Anzahl der Sekunden an Inaktivität während einer externen Verbindung, bevor der Server die Verbindung unterbricht.</translation>
+
+   <translation id="privateDatabase_capability_disabled_explanation">Cette fonctionnalité n'est pas disponible pour ce type de base de données.</translation>
 
    <translation id="privateDatabase_action_changepassword" qtlid="80394">Das Passwort ändern</translation>
    <translation id="privateDatabase_action_grants" qtlid="215715">Verwaltung der Rechte</translation>
@@ -129,7 +143,7 @@
 
    <translation id="privateDatabase_add_user_title" qtlid="7150">Einen Benutzer hinzufügen</translation>
    <translation id="privateDatabase_add_user_password" qtlid="2270">Passwort</translation>
-   <translation id="privateDatabase_add_user_password_confirm">Confirmation du mot de passe</translation>
+   <translation id="privateDatabase_add_user_password_confirm" qtlid="9382">Bestätigung des Passworts</translation>
    <translation id="privateDatabase_action_changepassword_doing" qtlid="215897">Änderung des Passworts wird durchgeführt</translation>
    <translation id="privateDatabase_add_user_name" qtlid="56045">Benutzername</translation>
    <translation id="privateDatabase_add_user_error_password_required" qtlid="215910">Das Passwort ist zwingend erforderlich</translation>
@@ -294,6 +308,10 @@
    <translation id="privateDatabase_add_bdd_new_user_password_confirm" qtlid="300539">Passwort bestätigen</translation>
    <translation id="privateDatabase_add_bdd_new_user_password_tooltip" qtlid="300552">Länge 8 bis 31 Zeichen, mindestens ein Großbuchstabe, ein Kleinbuchstabe und eine Ziffer. Darf ausschließlich aus Buchstaben und Ziffern bestehen.</translation>
 
+   <translation id="privateDatabase_add_authorized_ip">Ajouter une adresse IP autorisée</translation>
+   <translation id="privateDatabase_add_authorized_ip_explanation">Vous n'avez pas encore d'adresse IP autorisée à accéder à vos bases de données. Entrez ici l'adresse IP du serveur auquel vous souhaitez donner accès à vos bases.</translation>
+   <translation id="privateDatabase_add_authorized_ip_description">Accès initial à la base de données</translation>
+
    <translation id="privateDatabase_restore_bdd_application" qtlid="404707">Bitte erstellen Sie diese zunächst erneut im Verwaltungstab Ihrer Datenbanken.</translation>
    <translation id="privateDatabase_restore_bdd_close" qtlid="4670">Schließen</translation>
    <translation id="privateDatabase_restore_bdd_confirm" qtlid="272290">Möchten Sie die Sicherung vom <strong>{0}</strong> auf der Datenbank <strong>{1}</strong> wiederherstellen?</translation>
@@ -318,6 +336,12 @@
    <translation id="privateDatabase_tabs_dumps_restore_in_progress" qtlid="263428">Die Wiederherstellung der Sicherung wird durchgeführt.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_success" qtlid="263441">Die Wiederherstellung der Datenbank wurde erfolgreich durchgeführt.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_fail" qtlid="263454">Bei der Wiederherstellung der Datenbank ist ein Fehler aufgetreten:</translation>
+   <translation id="privateDatabase_tabs_dumps_delete">Supprimer la sauvegarde</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_title">Supprimer une sauvegarde</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_confirm">Souhaitez-vous supprimer la sauvegarde du <strong>{0}</strong> de la base de données <strong>{1}</strong> ?</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_start">La demande de suppression de la sauvegarde de base de données a été prise en compte.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_done">La suppression de la sauvegarde de base de données a été effectuée.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_error">Une erreur est survenue lors de la suppression de la sauvegarde de base de données.</translation>
 
    <translation id="privateDatabase_tabs_users_database_error" qtlid="135294">Beim Laden der Informationen ist ein Fehler aufgetreten.</translation>
    <translation id="privateDatabase_tabs_users_database_username" qtlid="7450">Benutzer</translation>
@@ -361,12 +385,13 @@
    <translation id="privateDatabase_RAM_add_do_order_attention" qtlid="108456">Achtung!</translation>
    <translation id="privateDatabase_RAM_add_do_order_warning" qtlid="304433">Diese Operation erfordert einen Neustart des Servers.</translation>
    <translation id="privateDatabase_RAM_loading_order" qtlid="221162">Angebote werden geladen...</translation>
+   <translation id="privateDatabase_order_RAM_finish_success" qtlid="444732">Votre <a href="{0}" target="_blank">bon de commande</a> a été généré avec succès. La quantité de RAM sera modifiée lorsque vous l'aurez validé.</translation>
    <translation id="privateDatabase_order_RAM_finish_error" qtlid="181227">Bei der Erstellung des Bestellscheins ist ein Fehler aufgetreten.</translation>
    <translation id="privateDatabase_order_RAM_resume" qtlid="177496">Zusammenfassung Ihrer Bestellung</translation>
    <translation id="privateDatabase_order_RAM_price_HT" qtlid="146177">Gesamtpreis ohne MwSt:</translation>
    <translation id="privateDatabase_order_RAM_price_TTC" qtlid="146190">Gesamtpreis inkl. MwSt:</translation>
    <translation id="privateDatabase_expiration_date" qtlid="33010">Ablaufdatum</translation>
-   <translation id="privateDatabase_renew_date">Renouvellement automatique</translation>
+   <translation id="privateDatabase_renew_date" qtlid="98300">Automatische Verlängerung</translation>
    <translation id="privateDatabase_gui" qtlid="103642">Benutzer-Interface</translation>
    <translation id="privateDatabase_tabs_bdd_no" qtlid="220746">Keine Datenbanken</translation>
 
@@ -547,12 +572,12 @@
    <translation id="privateDatabase_tabs_logs_list_no_logs" qtlid="413388">Noch keine Logs vorhanden</translation>
 
 <!-- OOM -->
-   <translation id="privateDatabase_no_oom">Aucun dépassement mémoire à signaler.</translation>
-   <translation id="privateDatabase_warning_oom">{0} dépassements mémoire ont eu lieu récemment.</translation>
+   <translation id="privateDatabase_no_oom" qtlid="440313">Keine Überschreitung der RAM-Kapazität.</translation>
+   <translation id="privateDatabase_warning_oom" qtlid="440326">{0} Überschreitungen der RAM-Kapazität stattgefunden.</translation>
    <translation id="privateDatabase_modale_oom_title" qtlid="436957">Überschreitungen der RAM-Kapazität</translation>
-   <translation id="privateDatabase_modale_oom_confirm_button">Commander plus de RAM</translation>
-   <translation id="privateDatabase_modale_oom_close_button">Fermer</translation>
-   <translation id="privateDatabase_modale_oom_info">Dépassements de la mémoire vive survenus ces {0} derniers jours.<br />Seuls les {1} derniers dépassements sont disponibles.</translation>
+   <translation id="privateDatabase_modale_oom_confirm_button" qtlid="440339">Zusätzlichen RAM bestellen</translation>
+   <translation id="privateDatabase_modale_oom_close_button" qtlid="4670">Schließen</translation>
+   <translation id="privateDatabase_modale_oom_info" qtlid="440352">Überschreitungen der RAM-Kapazität in den letzten {0} Tagen.<br />Nur die letzten {1} Überschreitungen sind verfügbar.</translation>
    <translation id="privateDatabase_modale_oom_tab_event_date" qtlid="24523">Datum</translation>
    <translation id="privateDatabase_modale_oom_tab_size_reached" qtlid="436983">Erreichte Kapazität</translation>
    <translation id="privateDatabase_modale_oom_tab_uptime" qtlid="436996">Zeit seit der letzten Überschreitung</translation>
@@ -562,7 +587,7 @@
 <!-- EXTENSIONS -->
 <!-- LIST -->
    <translation id="privateDatabase_tabs_list_extensions_title" qtlid="341927">Erweiterungen</translation>
-   <translation id="privateDatabase_tabs_list_extensions_extension" qtlid="94231">Dateiendung</translation>
+   <translation id="privateDatabase_tabs_list_extensions_extension" qtlid="94231">Erweiterung</translation>
    <translation id="privateDatabase_tabs_list_extensions_description" qtlid="9238">Beschreibung</translation>
    <translation id="privateDatabase_tabs_list_extensions_status" qtlid="26443">Status</translation>
 

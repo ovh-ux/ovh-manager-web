@@ -1,7 +1,7 @@
 <div data-ng-controller="HostingModuleCreateCtrl">
     <div data-wizard
          data-wizard-bread-crumb="advancedMode.value"
-         data-wizard-next-button-text="advancedMode.value?tr('common_next'):'installer'"
+         data-wizard-next-button-text="tr(advancedMode.value ? 'common_next' : 'common_install')"
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="createModule"
          data-wizard-title="i18n.hosting_configuration_tab_modules_module_add">
@@ -91,7 +91,8 @@
                             <li>
                                 <button class="btn btn-link p-0" type="button"
                                         data-i18n-static="hosting_configuration_tab_modules_create_step2_no_db_go_to_create_db"
-                                        data-ng-click="setAction('database/add/hosting-database-add')"></button>
+                                        data-ng-click="setAction('database/add/hosting-database-add')">
+                                </button>
                             </li>
                             <li data-i18n-static="hosting_configuration_tab_modules_create_step2_no_db_use_db_perso"></li>
                         </ul>
@@ -102,19 +103,22 @@
                        data-i18n-static="hosting_configuration_tab_modules_create_step2_db_select"></label>
                 <div class="oui-select">
                     <select class="oui-select__input" id="select-hosted-database"
-                            data-ng-change="selectDatabase(db)"
+                            data-ng-change="selectDatabase()"
                             data-ng-model="model.databaseHostedSelected">
                         <option data-ng-repeat="db in model.databases track by db"
-                                data-ng-bind="::db"></option>
-                        <option data-i18n-static="hosting_configuration_tab_modules_create_step2_db_custom"
-                                data-ng-selected="!model.databases || model.databases.length <= 0"></option>
+                                data-ng-bind="::db"
+                                data-ng-value="db"></option>
+                        <option value="" data-i18n-static="hosting_configuration_tab_modules_create_step2_db_custom"></option>
                     </select>
                     <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                 </div>
 
                 <p data-i18n-static="hosting_configuration_tab_modules_create_step2_db_info"></p>
 
-                <form class="form-horizontal mt-4" name="formModuleDB">
+                <oui-loader data-ng-if="loading.databaseInfos"></oui-loader>
+
+                <form class="form-horizontal mt-4" name="formModuleDB"
+                      data-ng-if="!loading.databaseInfos">
                     <p>
                         <small class="text-danger">*</small>
                         <small data-i18n-static="required_fields"></small>
@@ -178,8 +182,8 @@
                         </div>
                     </div>
 
-                    <div class="form-group" data-ng-class="{'has-error': formModuleDB.dbPasswd.$dirty && formModuleDB.dbPasswd.$invalid,
-                                                            'has-success': formModuleDB.dbPasswd.$dirty && formModuleDB.dbPasswd.$valid}">
+                    <div class="form-group"
+                         data-ng-class="{'has-error': formModuleDB.dbPasswd.$dirty && formModuleDB.dbPasswd.$invalid}">
                         <label class="control-label col-md-4 required" for="dbPasswd"
                                data-i18n-static="hosting_configuration_tab_modules_create_step2_db_passwd"></label>
                         <div class="col-md-6">

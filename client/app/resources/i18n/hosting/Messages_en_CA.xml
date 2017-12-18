@@ -131,7 +131,7 @@
    <translation id="hosting_dashboard_service_offer_PERFORMANCE_4" qtlid="216937">Performance 4</translation>
    <translation id="hosting_dashboard_service_offer_KIMSUFI_2015" qtlid="271569">Kimsufi 2015</translation>
    <translation id="hosting_dashboard_service_offer_KS" qtlid="271569">Kimsufi 2015</translation>
-   <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015" qtlid="271582">If you switch to a Kimsufi 2015 product, you can no longer use the 1007 service and you will have to contact support through the ticket system.</translation>
+   <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015">Vous souhaitez passer sur une offre Kimsufi 2015, l'accès au support n'est plus inclus et vous devrez utiliser notre système de tickets pour contacter l'assistance.</translation>
    <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree" qtlid="271595">I have read and understood the Kimsufi 2015 terms and confirm that I wish to migrate</translation>
    <translation id="hosting_dashboard_service_offer_KIMSUFI_2015_support" qtlid="271608">Kimsufi web hosting: support is only offered via the ticketing system (Assistance menu)</translation>
    <translation id="hosting_dashboard_service_offer_60_FREE_end" qtlid="372256">The 60free solution will be closed on the 1st of May 2017. You can migrate your ovh.org domain to another web hosting package (Migrate ovh.org domain button)</translation>
@@ -261,6 +261,8 @@
    <translation id="hosting_tab_CRON_table_language_php7_0" qtlid="264433">PHP 7.0</translation>
    <translation id="hosting_tab_CRON_table_language_PHP_7_1" qtlid="434174">PHP 7.1</translation>
    <translation id="hosting_tab_CRON_table_language_php7_1" qtlid="434174">PHP 7.1</translation>
+   <translation id="hosting_tab_CRON_table_language_PHP_7_2">PHP 7.2</translation>
+   <translation id="hosting_tab_CRON_table_language_php7_2">PHP 7.2</translation>
    <translation id="hosting_tab_CRON_table_popover_delete" qtlid="2414">Delete</translation>
    <translation id="hosting_tab_CRON_table_popover_modify" qtlid="37875">Modify</translation>
    <translation id="hosting_tab_CRON_configuration_error" qtlid="244690">An error retrieving the data occurred:</translation>
@@ -297,7 +299,7 @@
    <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Searching...</translation>
 
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation" qtlid="255976">Generating the link</translation>
-   <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="296687">There was an error when creating the link </translation>
+   <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="444417">An error has occurred generating the access link to logs</translation>
    <translation id="hosting_tab_DOMAINS_multisite_logs_link" qtlid="296700">Access the logs </translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_attachDomain_title_button" qtlid="226969">Add a domain or sub-domain</translation>
@@ -444,11 +446,10 @@
    <translation id="hosting_tab_DATABASES_table_popover_import_step0_existing_file_mode" qtlid="288314">Use an existing file </translation>
 
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_load_documents_error" qtlid="286240">An error occurred when retrieving your documents: </translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file" qtlid="286253">File {0}:</translation>
+   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file">Fichier (.gz, .sql, .txt) :</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name" qtlid="286266">Filename:</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_info" qtlid="296713">Give your document a title so that you can find it again more quickly. </translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_required_error" qtlid="286279">The filename is required.</translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_format" qtlid="286292">(.gz)</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_format_error" qtlid="286305">The file type must be respected. </translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_required_error" qtlid="286318">The file is required.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload" qtlid="52807">Send</translation>
@@ -576,7 +577,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl" qtlid="84921">SSL</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl_help" qtlid="315826">Enable SSL so that your website can be accessed in https</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol" qtlid="288899">Configuration of ovhcontrol token </translation>
-   <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_info">Valeur à renseigner dans un champ TXT chez le fournisseur possédant le nom de domaine afin de l'ajouter à votre hébergement. Cette action est requise afin de s'assurer que le domaine est bien sous votre contrôle, et éviter le phishing.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_info" qtlid="440300">This value is to be entered in a TXT field of the provider that the domain name belongs to so you can add it to your hosting service. This action is necessary to ensure that the domain is under your management, and to avoid phishing.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_subdomain" qtlid="288912">Sub-domain to use </translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_domain" qtlid="288925">External domain </translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_ttl" qtlid="121747">TTL</translation>
@@ -770,7 +771,7 @@
    <translation id="hosting_configuration_tab_modules_create_step1_module_type_select" qtlid="211737">Select the module</translation>
    <translation id="hosting_configuration_tab_modules_create_step1_module_advanced_mode" qtlid="267449">Installation in advanced mode</translation>
    <translation id="hosting_configuration_tab_modules_create_step1_module_domain" qtlid="268199">Choose the domain:</translation>
-   <translation id="hosting_configuration_tab_modules_create_step1_module_default_path" qtlid="314188">The default installation directory is <strong>{0}</strong><br> Please select advanced mode to install it in another directory.</translation>
+   <translation id="hosting_configuration_tab_modules_create_step1_module_default_path" qtlid="444693">The default installation directory is <strong>{0}</strong><br> Please select 'Advanced mode' to install it in another directory.</translation>
 
 
    <translation id="hosting_configuration_tab_modules_create_step1_module_advancedMode_info" qtlid="268212">By choosing the advanced mode, you can:</translation>
@@ -888,7 +889,7 @@
 
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_question" qtlid="199000">Select the user password</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_password" qtlid="2270">Password</translation>
-   <translation id="hosting_tab_FTP_configuration_user_create_step2_password_confirmation">Confirmation du mot de passe</translation>
+   <translation id="hosting_tab_FTP_configuration_user_create_step2_password_confirmation" qtlid="9382">Confirm password</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_error" qtlid="197076">The passwords entered are not identicaal.</translation>
 
    <translation id="hosting_tab_FTP_configuration_user_create_step3_question" qtlid="199013">Do you really want to create the following FTP user?</translation>
@@ -1192,6 +1193,8 @@
    <translation id="hosting_global_php_version_edit" qtlid="267640">Modify configuration</translation>
    <translation id="hosting_action_config_edit_init_error" qtlid="267653">Unable to load all of the information regarding your configuration, please try again later. </translation>
    <translation id="hosting_action_config_edit_warning" qtlid="364716">We recommend that you check with your webmaster first to make sure that your website is compatible with this version of PHP. </translation>
+   <translation id="hosting_action_config_edit_success">La modification de configuration de votre hébergement mutualisé a bien été prise en compte.</translation>
+   <translation id="hosting_action_config_rollback_success">La modification vers la configuration ultérieure de votre hébergement mutualisé a bien été prise en compte.</translation>
    <translation id="hosting_action_config_edit_choose_config" qtlid="267666">Previous choices</translation>
    <translation id="hosting_action_config_edit_engine_name" qtlid="267679">Engine</translation>
    <translation id="hosting_action_config_edit_engine_name_help" qtlid="267692">PHP-CGI disable FPM</translation>

@@ -117,8 +117,17 @@ angular.module("services").service(
                         .then((_response) => {
                             database.serviceInfos = _response.data;
                             return database;
-                        })
-                        .catch((err) => this.$q.reject(err.data));
+                        });
+                })
+                .then((database) => {
+                    database.capabilities = _.mapKeys(database.capabilities, (capability) => capability.object);
+                    return database;
+                })
+                .then((database) => {
+                    // we don't have any other certificate types right now
+                    // and the API doesn't have this field
+                    database.certificateType = "TLS CA";
+                    return database;
                 })
                 .catch((err) => this.$q.reject(err.data));
         }
@@ -932,7 +941,37 @@ angular.module("services").service(
         }
 
         killPollRestore () {
-            this.Poll.kill({ namespace: "privateDatabase.database.resore" });
+            this.Poll.kill({ namespace: "privateDatabase.database.restore" });
+        }
+
+        deleteDumpBDD (serviceName, databaseName, dumpId) {
+            return this.$http
+                .delete(`${this.swsProxypassPath}/${serviceName}/database/${databaseName}/dump/${dumpId}`)
+                .then((response) => {
+                    this.pollDatabaseDumpDelete(serviceName, {
+                        taskId: response.data.id,
+                        taskFunction: response.data.function.replace("privateDatabase/", ""),
+                        databaseName
+                    });
+                    return response.data.id;
+                })
+                .catch((err) => this.$q.reject(err.data));
+        }
+
+        pollDatabaseDumpDelete (serviceName, opts) {
+            const namespace = `privateDatabase.${opts.taskFunction.replace(/\//g, ".")}`;
+            const options = angular.copy(opts);
+            options.namespace = namespace;
+
+            return this.poll(serviceName, {
+                taskId: opts.taskId,
+                databaseName: opts.databaseName,
+                namespace
+            }).then(() => {
+                this.$rootScope.$broadcast(`${opts.namespace}.done`, opts);
+            }).catch(() => {
+                this.$rootScope.$broadcast(`${opts.namespace}.error`, opts);
+            });
         }
 
         getConfigurationDetails (serviceName) {

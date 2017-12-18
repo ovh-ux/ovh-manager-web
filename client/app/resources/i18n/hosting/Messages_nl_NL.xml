@@ -131,7 +131,7 @@
    <translation id="hosting_dashboard_service_offer_PERFORMANCE_4" qtlid="216937">Performance 4</translation>
    <translation id="hosting_dashboard_service_offer_KIMSUFI_2015" qtlid="271569">Kimsufi 2015</translation>
    <translation id="hosting_dashboard_service_offer_KS" qtlid="271569">Kimsufi 2015</translation>
-   <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015" qtlid="271582">Als u overschakelt naar een Kimsufi 2015 product dan kunt u niet langer de 1007 dienst gebruiken en zult u support moeten gaan contacteren via het ticketsysteem. </translation>
+   <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015">Vous souhaitez passer sur une offre Kimsufi 2015, l'accès au support n'est plus inclus et vous devrez utiliser notre système de tickets pour contacter l'assistance.</translation>
    <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree" qtlid="271595">Ik heb de Algemene Voorwaarden van Kimsufi 2015 gelezen en bevestig dat ik wil migreren</translation>
    <translation id="hosting_dashboard_service_offer_KIMSUFI_2015_support" qtlid="271608">Kimsufi webhosting: support is enkel mogelijk via het ticketsysteem ('Assistance'-menu)</translation>
    <translation id="hosting_dashboard_service_offer_60_FREE_end" qtlid="372256">De 60free oplossing is gesloten op 1 mei 2017. U kunt uw ovh.org domein migreren naar een ander web hosting pakket (Migreer ovh.org domein knop) </translation>
@@ -261,6 +261,8 @@
    <translation id="hosting_tab_CRON_table_language_php7_0" qtlid="264433">PHP 7.0</translation>
    <translation id="hosting_tab_CRON_table_language_PHP_7_1" qtlid="434174">PHP 7.1</translation>
    <translation id="hosting_tab_CRON_table_language_php7_1" qtlid="434174">PHP 7.1</translation>
+   <translation id="hosting_tab_CRON_table_language_PHP_7_2">PHP 7.2</translation>
+   <translation id="hosting_tab_CRON_table_language_php7_2">PHP 7.2</translation>
    <translation id="hosting_tab_CRON_table_popover_delete" qtlid="2414">Verwijderen</translation>
    <translation id="hosting_tab_CRON_table_popover_modify" qtlid="37875">Wijzigen</translation>
    <translation id="hosting_tab_CRON_configuration_error" qtlid="244690">Er is een fout opgetreden tijdens het ophalen van gegevens:</translation>
@@ -297,7 +299,7 @@
    <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Zoeken...</translation>
 
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation" qtlid="255976">Link wordt aangemaakt</translation>
-   <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="296687">Er is een fout opgetreden tijdens het aanmaken van de link</translation>
+   <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="444417">Une erreur est survenue lors de la génération du lien d'accès aux logs</translation>
    <translation id="hosting_tab_DOMAINS_multisite_logs_link" qtlid="296700">Toegang tot de logs</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_attachDomain_title_button" qtlid="226969">Een domein of subdomein toevoegen</translation>
@@ -444,11 +446,10 @@
    <translation id="hosting_tab_DATABASES_table_popover_import_step0_existing_file_mode" qtlid="288314">Gebruik een bestaand bestand</translation>
 
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_load_documents_error" qtlid="286240">Er is een fout opgetreden tijdens het ophalen van uw documenten:    </translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file" qtlid="286253">Bestand {0}:</translation>
+   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file">Fichier (.gz, .sql, .txt) :</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name" qtlid="286266">Bestandsnaam: </translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_info" qtlid="296713">Geef uw bestand een naam zodat u het voortaan snel kunt terugvinden. </translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_required_error" qtlid="286279">De bestandsnaam is vereist. </translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_format" qtlid="286292">(.gz)</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_format_error" qtlid="286305">Het bestandtype moet worden gerespecteerd. </translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_required_error" qtlid="286318">Het bestand is vereist. </translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload" qtlid="52807">Verzenden</translation>
@@ -576,7 +577,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl" qtlid="84921">SSL</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl_help" qtlid="315826">Activeer SSL zodat uw website in https geopend kan worden</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol" qtlid="288899">Configuratie van de ovhcontrol token</translation>
-   <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_info">Valeur à renseigner dans un champ TXT chez le fournisseur possédant le nom de domaine afin de l'ajouter à votre hébergement. Cette action est requise afin de s'assurer que le domaine est bien sous votre contrôle, et éviter le phishing.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_info" qtlid="440300">De waarde die moet worden opgegeven in het TXT-veld van de provider om toe te voegen aan uw hosting plan. Deze actie is nodig om ervoor te zorgen dat u het domein beheert en phishing kan worden voorkomen.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_subdomain" qtlid="288912">Te gebruiken subdomein</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_domain" qtlid="288925">Extern domein</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_ttl" qtlid="121747">TTL</translation>
@@ -770,7 +771,7 @@
    <translation id="hosting_configuration_tab_modules_create_step1_module_type_select" qtlid="211737">De module selecteren</translation>
    <translation id="hosting_configuration_tab_modules_create_step1_module_advanced_mode" qtlid="267449">Installatie in geavanceerde modus</translation>
    <translation id="hosting_configuration_tab_modules_create_step1_module_domain" qtlid="268199">Kies het domein: </translation>
-   <translation id="hosting_configuration_tab_modules_create_step1_module_default_path" qtlid="314188">De standaard directory is <strong>{0}</strong><br> Selecteer de geavanceerde modus om het te installeren in een andere directory. </translation>
+   <translation id="hosting_configuration_tab_modules_create_step1_module_default_path" qtlid="444693">Le répertoire d'installation par défaut est <strong>{0}</strong><br> Veuillez sélectionner le mode avancé pour l'installer dans un autre répertoire.</translation>
 
 
    <translation id="hosting_configuration_tab_modules_create_step1_module_advancedMode_info" qtlid="268212">Door de geavanceerde modus te kiezen kunt u: </translation>
@@ -888,7 +889,7 @@
 
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_question" qtlid="199000">Kies het wachtwoord van de gebruiker</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_password" qtlid="2270">Wachtwoord</translation>
-   <translation id="hosting_tab_FTP_configuration_user_create_step2_password_confirmation">Confirmation du mot de passe</translation>
+   <translation id="hosting_tab_FTP_configuration_user_create_step2_password_confirmation" qtlid="9382">Bevestig wachtwoord</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_error" qtlid="197076">De ingevoerde wachtwoorden komen niet overeen.</translation>
 
    <translation id="hosting_tab_FTP_configuration_user_create_step3_question" qtlid="199013">Weet u zeker dat u de volgende FTP-gebruiker aan wilt maken?</translation>
@@ -1192,6 +1193,8 @@
    <translation id="hosting_global_php_version_edit" qtlid="267640">Configuratie wijzigen. </translation>
    <translation id="hosting_action_config_edit_init_error" qtlid="267653">Het is momenteel niet mogelijk om alle informatie over uw configuratie te laden, probeert u het later aub opnieuw.</translation>
    <translation id="hosting_action_config_edit_warning" qtlid="364716">Het is aan te raden dat u eerst bij uw webmaster nagaat of uw website compatibel is met deze PHP-versie.  </translation>
+   <translation id="hosting_action_config_edit_success">La modification de configuration de votre hébergement mutualisé a bien été prise en compte.</translation>
+   <translation id="hosting_action_config_rollback_success">La modification vers la configuration ultérieure de votre hébergement mutualisé a bien été prise en compte.</translation>
    <translation id="hosting_action_config_edit_choose_config" qtlid="267666">Vorige keuzes</translation>
    <translation id="hosting_action_config_edit_engine_name" qtlid="267679">Motor</translation>
    <translation id="hosting_action_config_edit_engine_name_help" qtlid="267692">PHP-CGI schakelt FPM uit</translation>

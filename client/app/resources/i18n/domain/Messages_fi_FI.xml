@@ -51,6 +51,7 @@
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">Anycast DNS on tehokas ratkaisu normaalien nimipalvelimien toiminnan nopeuttamiseksi, jotta sivustolle saapuviin kyselyihin vastataan mahdollisimman nopeasti kaikkialla maailmassa ensimmäisellä käyntikerralla.</translation>
    <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Julkinen tietokanta verkkotunnuksiin liittyvistä henkilötiedoista.</translation>
    <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Palvelu muuttaa verkkotunnuksen IP-osoitteeksi (esimerkiksi osoittaa sivuston tietojen sijainnin).</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating">Un délai de propagation de 48h est nécessaire suite à votre dernière modification.</translation>
    <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">Ensisijaisesti käytetyt nimipalvelimet verkkotunnuksen IP-osoitteen selvitystä varten.</translation>
    <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Sen avulla nettisurffailijat edelleenohjataan olemassa olevalle sivulle.</translation>
    <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">Näiden avulla sivusto pysyy saatavilla ensisijaisten nimipalvelimien ollessa toimimattomia. </translation>
@@ -126,8 +127,9 @@
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Haluatko varmasti palauttaa nimipalvelinten konfiguraation? Tämä toiminto palauttaa nykyisen konfiguraation ja johtaa siirtymiseen alkuperäisille OVH:n palvelimille.</translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">Nimipalvelinkonfiguraation nollaus on rekisteröity.</translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Tapahtui virhe nollattaessa nimipalvelinkonfiguraatiota.</translation>
-   <translation id="domain_tab_DNS_update_success" qtlid="284841">Nimipalvelinten muokkaus onnistui. Tiedon leviäminen toisiin nimipalvelimiin kestää joitakin tunteja.</translation>
+   <translation id="domain_tab_DNS_update_success">La modification des DNS a bien été prise en compte. Un délai de 48h est nécessaire pour la propagation aux autres DNS.</translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">Tapahtui virhe nimipalvelinten muokkauksessa.</translation>
+   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Nollaa nimipalvelimet: ei saatavilla DNSSEC-palvelun ollessa aktivoitu</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Aseta konfiguraatio</translation>
    <translation id="domain_tab_DNS_reset" qtlid="284880">Palauta konfiguraatio</translation>
    <translation id="domain_tab_DNS_cancel" qtlid="172280">Peruuta muutokset</translation>
@@ -204,7 +206,7 @@
    <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Oletko varma, että haluat poistaa tämän GLUE-tietueen?</translation>
    <translation id="domain_tab_GLUE_delete_success" qtlid="262553">GLUE-tietue poistetaan hetken kuluttua.</translation>
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">GLUE-tietuetta poistettaessa tapahtui virhe.</translation>
-   <translation id="domain_tab_GLUE_add_warning_done" qtlid="288964">Huomaa, että vahvistuksen jälkeen sinun on lisättävä DNS-alueeseen IP-osoitteeseen {0} liittyvä A-kenttä, jotta Glue toimisi.</translation>
+   <translation id="domain_tab_GLUE_add_warning_done">Attention, après validation et afin que votre enregistrement GLUE fonctionne, vous devrez modifier votre zone DNS en ajoutant :<ul><li>un champ de type A pour une adresse IPv4,</li><li>un champ de type AAAA pour une adresse IPv6.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Aliverkkotunnus</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">DNS-alue</translation>
@@ -662,6 +664,7 @@
    <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">Webhotellisi IP-osoite</translation>
 
    <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Haluatko poistaa DNS-alueen?</translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked">Votre zone DNS ne peut être supprimée car elle est actuellement liée à un hébergement Web.</translation>
    <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Huom ! Tämä poistaa pysyvästi kaikki olemassa olevat DNS-rekisteröinnit.</translation>
    <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">DNS-alueen poistaminen on aloitettu, ole hyvä ja katso DNS-alueen NIC administraatorisi sähköposti ja seuraa ohjeita pyynnön viimeistelemiseksi.</translation>
    <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">Tapahtui virhe DNS-alueen poistossa.</translation>
@@ -670,7 +673,7 @@
    <translation id="domain_configuration_dnsanycast_title" qtlid="135697">Aktivoi Anycast DNS</translation>
    <translation id="domain_configuration_dnsanycast_step1_question" qtlid="135710">Klikkaa ”Jatka”-painiketta aktivoidaksesi Anycast DNS -palvelun</translation>
    <translation id="domain_configuration_dnsanycast_step1_explanation" qtlid="135723">Anycast DNS on palvelu joka kiihdyttää normaalien nimipalvelimien toimintaa tarjoten paremman saavutettavuuden sivustoillesi, on surffailija missä päin maailmaa tahansa. Tämä on kriittistä varsinkin ensimmäistä kertaa sivustolla vierailijoille.</translation>
-   <translation id="domain_configuration_dnsanycast_step1_explanation2" qtlid="329369">Lisävalinta laskutus tapahtuu hintaan <span class="red bold">{0}</span> per 1 vuosi.</translation>
+   <translation id="domain_configuration_dnsanycast_step1_explanation2" qtlid="329369">Lisävalinnan laskutus tapahtuu hintaan {0} per 1 vuosi.</translation>
    <translation id="domain_configuration_dnsanycast_step2_question" qtlid="329382">DNS Anycast -lisävalinnan aktivointi verkkotunnukselle <span class="italic normal">{0}</span></translation>
    <translation id="domain_configuration_dnsanycast_step2_id" qtlid="169472">Vahvistaaksesi pyyntösi, hyväksy käyttäehdot ja klikkaa ”Seuraava"-painiketta.</translation>
    <translation id="domain_configuration_dnsanycast_step2_totalHT" qtlid="169238">Hinta (ALV 0 %)</translation>
@@ -715,7 +718,7 @@
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Tilauksesi on vahvistettu. Klikkaa <a href="#/billing/orders">tästä seurataksesi tilauksen etenemistä</a>.</translation>
 
    <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
-   <translation id="domain_tab_DYNHOST_title" qtlid="270644">DynHOSTilla saa verkkotunnuksen tai aliverkkotunnuksen osoittamaan dynaamiseen IP-osoitteeseen, joka päivittyy DNS-alueessa aina aluetta muutettaessa.</translation>
+   <translation id="domain_tab_DYNHOST_title">DynHOST vous permet de faire pointer un sous-domaine vers une adresse IP dynamique qui sera mise à jour dans votre zone DNS à chaque changement de celle-ci.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Verkkotunnuksella {0} ei ole DNS-aluetta.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Tapahtui virhe:</translation>
    <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>
@@ -854,7 +857,7 @@
    <translation id="domain_update_owner_to_long" qtlid="267266">Tämä kenttä on liian pitkä</translation>
    <translation id="domain_update_owner_email_pattern" qtlid="41026">Epäkelpo sähköpostiosoite</translation>
    <translation id="domain_update_owner_error_get" qtlid="267279">Tapahtui virhe yhteystietojen selvityksen aikana</translation>
-   <translation id="domain_update_owner_domains_error_get" qtlid="269929">Tapahtui virhe verkkotunnuksen yhteystietojen selvityksen aikana</translation>
+   <translation id="domain_update_owner_domains_error_get" qtlid="269929">Tapahtui virhe kontaktin verkkotunnusten selvityksen aikana</translation>
    <translation id="domain_update_owner_domains_linked" qtlid="269942">Tämä operaatio vaikuttaa seuraaviin verkkotunnuksiin, ellei mikään rajoitus estä toimintoa</translation>
 
    <translation id="domain_tab_menu_hosting_modules" qtlid="287658">Tilaa moduuli webhotelliin</translation>

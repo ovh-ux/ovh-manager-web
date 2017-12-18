@@ -1,0 +1,16 @@
+<div class="popover-menu">
+    <button class="btn btn-link" type="button"
+            data-i18n-static="privateDatabase_tabs_dumps_download_dump"
+            data-ng-click="dumpCtrl.goTo(dump.url, '_blank')">
+        <span class="fa fa-download" aria-hidden="true"></span>
+    </button>
+    <button class="btn btn-link" type="button"
+            data-i18n-static="privateDatabase_tabs_dumps_restore_dump"
+            data-ng-click="setAction('database/restore/private-database-database-restore', {bdd:dumpCtrl.database, dump:dump})">
+        <span class="fa fa-repeat" aria-hidden="true"></span>
+    </button>
+    <button class="btn btn-link" type="button"
+            data-i18n-static="privateDatabase_tabs_dumps_delete"
+            data-ng-click="setAction('database/dump/delete/private-database-database-dump-delete', { bdd:dumpCtrl.database, dump:dump })">
+    </button>
+</div>

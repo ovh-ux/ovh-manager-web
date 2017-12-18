@@ -115,7 +115,8 @@
         <button class="btn btn-default btn-block" type="button"
                 data-i18n-static="privateDatabase_add_bdd_title"
                 data-ng-click="setAction('database/add/private-database-database-add')"
-                data-ng-disabled="database.state !== 'started' || taskState.changeVersion || lockAction">
+                data-ng-disabled="!database.capabilities.database.create || database.state !== 'started' || taskState.changeVersion || lockAction"
+                title="{{!database.capabilities.database.create ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_add_bdd_title}}">
         </button>
         <button class="btn btn-default btn-block" type="button"
                 data-i18n-static="privateDatabase_dump_bdd_title"

@@ -51,6 +51,7 @@
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">Anycast DNS is a powerful solution that accelerates the normal operation of DNS servers to provide  better response time during the first hits to your website.</translation>
    <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Publicly accessible database containing personal information related to your domain.</translation>
    <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Service allowing you to translate your domain name to an IP address (e.g. indicating the location data of your site).</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating">Un délai de propagation de 48h est nécessaire suite à votre dernière modification.</translation>
    <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">The DNS servers used primarily to change your domain to an IP address.</translation>
    <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Redirects users to an existing site.</translation>
    <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">If the primary DNSs fail, they ensure that your site remains accessible.</translation>
@@ -126,8 +127,9 @@
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Do you really want to reset the DNS servers' configuration? In doing so you will reset the current configuration and switch back to OVH name servers. </translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">The DNS server reset request has been taken into account. </translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Error while requesting the DNS server reset.</translation>
-   <translation id="domain_tab_DNS_update_success" qtlid="284841">DNS modification has been processed. Propagation to other DNSs wil take a few hours </translation>
+   <translation id="domain_tab_DNS_update_success">La modification des DNS a bien été prise en compte. Un délai de 48h est nécessaire pour la propagation aux autres DNS.</translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">An error occurred on modifying DNS. </translation>
+   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Réinitialiser les serveurs DNS : non disponible en cas d'activation de DNSSEC</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Apply configuration </translation>
    <translation id="domain_tab_DNS_reset" qtlid="284880">Reset configuration </translation>
    <translation id="domain_tab_DNS_cancel" qtlid="172280">Cancel modifications</translation>
@@ -204,7 +206,7 @@
    <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Are you sure you want to remove this GLUE record ?</translation>
    <translation id="domain_tab_GLUE_delete_success" qtlid="262553">GLUE record will be deleted in a few minutes.</translation>
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Error when removing the GLUE record.</translation>
-   <translation id="domain_tab_GLUE_add_warning_done" qtlid="288964">Please note. After validation you have to add an A record associated to the {0} IP in your dns zone so that your GLUE works. </translation>
+   <translation id="domain_tab_GLUE_add_warning_done">Attention, après validation et afin que votre enregistrement GLUE fonctionne, vous devrez modifier votre zone DNS en ajoutant :<ul><li>un champ de type A pour une adresse IPv4,</li><li>un champ de type AAAA pour une adresse IPv6.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Sub-domain</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">DNS zone </translation>
@@ -226,7 +228,7 @@
    <translation id="domain_tab_ZONE_title" qtlid="265636">Here you can see the configuration of various domain name records. </translation>
    <translation id="domain_tab_ZONE_info" qtlid="265649">You can also configure these records to connect your domain to your different services (button "Add an entry").</translation>
 
-   <translation id="domain_tab_ZONE_status_error" qtlid="328875">Our systems have detected errors while checking your zone. <Strong>The latest amendments were therefore not taken into account</strong>. To remedy this, please correct the following problems:</translation>
+   <translation id="domain_tab_ZONE_status_error" qtlid="328875">Our systems have detected errors while checking your zone. <strong>The latest amendments were therefore not taken into account</strong>. To remedy this, please correct the following problems:</translation>
    <translation id="domain_tab_ZONE_status_warning" qtlid="254804">Your zone has been assigned. However the following anomalies have been found:</translation>
    <translation id="domain_tab_ZONE_empty_zone" qtlid="129111">There is no entry in your DNS zone.</translation>
    <translation id="domain_tab_ZONE_new_inline_zone" qtlid="192058">You can add an entry by clicking on the button opposite.</translation>
@@ -419,7 +421,7 @@
    <translation id="domain_tab_REDIRECTION_add_step4_web_visible_301_help" qtlid="329317">Search engines will replace the indexed content of <b>{0}</b> with that of the <b>{1}</b> target server.</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_visible_301_help_warning" qtlid="214142">Please note: it is not possible to create a 301 redirection from this interface. You must implement this directly on the server by following the tutorial:</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_invisible_iframe" qtlid="214155">Temporary (iframe):</translation>
-   <translation id="domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help" qtlid="329330">Search engines will not read this page. <B>{0}</b> will therefore not be ranked.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help" qtlid="329330">Search engines will not read this page. <b>{0}</b> will therefore not be ranked.</translation>
 
    <translation id="domain_tab_REDIRECTION_add_step5_check_validity" qtlid="214168">Checking redirection consistency... </translation>
    <translation id="domain_tab_REDIRECTION_add_step5_add_record" qtlid="214181">Adding redirections...</translation>
@@ -663,6 +665,7 @@
    <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">Webs hosting IP address </translation>
 
    <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Do you want to delete the DNS zone? </translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked">Votre zone DNS ne peut être supprimée car elle est actuellement liée à un hébergement Web.</translation>
    <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Warning! This will permanently delete all the existing DNS records.</translation>
    <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">Deletion of the DNS zone has begun, to complete the request please follow the instructions in the email sent to the DNS zone's administrator account. </translation>
    <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">An error when deleting the DNS zone. </translation>
@@ -716,7 +719,7 @@
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Your order has been confirmed. Click <a href="#/billing/orders">here to track the progress of your order</a>.</translation>
 
    <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
-   <translation id="domain_tab_DYNHOST_title" qtlid="270644">DynHOST allows you to point your domain or sub-domain to a dynamic IP address, which will be updated in your DNS zone each time that it changes. </translation>
+   <translation id="domain_tab_DYNHOST_title">DynHOST vous permet de faire pointer un sous-domaine vers une adresse IP dynamique qui sera mise à jour dans votre zone DNS à chaque changement de celle-ci.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">The {0} domain name does not have a DNS zone.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">There was an error: </translation>
    <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>
@@ -853,7 +856,7 @@
    <translation id="domain_update_owner_required" qtlid="237096">This field is mandatory</translation>
    <translation id="domain_update_owner_to_long" qtlid="267266">This field is too long</translation>
    <translation id="domain_update_owner_email_pattern" qtlid="41026">Invalid email</translation>
-   <translation id="domain_update_owner_error_get" qtlid="267279">Error when retrieving contact information</translation>
+   <translation id="domain_update_owner_error_get" qtlid="267279">An error occurred while retrieving contact information</translation>
    <translation id="domain_update_owner_domains_error_get" qtlid="269929">Error when retrieving contact domains</translation>
    <translation id="domain_update_owner_domains_linked" qtlid="269942">The following domains will be affected if no restriction blocks the process</translation>
 

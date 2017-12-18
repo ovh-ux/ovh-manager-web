@@ -171,7 +171,7 @@ angular.module("App").controller(
         exportSubscribersToCSV () {
             const data = this.exportCsv.exportData({
                 separator: ";",
-                fileName: `export_${this.mailingList.name}_${moment().format("YYYY-MM-DD_HH:mm:ss")}.csv`,
+                fileName: `export_${this.mailingList.name}`,
                 datas: `${this.$scope.tr("mailing_list_tab_table_header_subscriber_email")}\n${this.subscribers.ids.join("\n")}`
             });
             this.Alerter.success(this.$scope.tr("mailing_list_tab_export_csv_success", [data]), this.$scope.alerts.main);
