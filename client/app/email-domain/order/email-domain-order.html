@@ -36,12 +36,14 @@
             </div>
             <div class="col-md-6 col-md-offset-1">
                 <div class="oui-message oui-message_warning" role="alert">
-                    <i class="oui-icon oui-icon-warning_circle oui-icon_bicolor" aria-hidden="true"></i>
+                    <span class="oui-icon oui-icon-warning_circle oui-icon_bicolor" aria-hidden="true"></span>
                     <p class="oui-message__body">
                         <span data-i18n-static="mxPlan_order_step1_expiration_warning"></span>
                         <a href="https://community.ovh.com/t/arret-de-la-commercialisation-du-mx-plan/5578" target="_blank">
-                            <span class="sr-only" data-i18n-static="mxPlan_order_step1_expiration_warning_link"></span>
-                            <i aria-hidden="true" class="fa fa-edit fa-external-link"></i>.
+                            <span aria-hidden="true"
+                                  aria-label="{{:: tr('mxPlan_order_step1_expiration_warning_new_window') }}"
+                                  title="{{:: tr('mxPlan_order_step1_expiration_warning_new_window') }}"
+                                  class="fa fa-edit fa-external-link"></span>.
                         </a>
                     </p>
                 </div>
