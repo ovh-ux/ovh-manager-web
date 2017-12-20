@@ -309,7 +309,15 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
         });
     }
 
-    const productsPromise = Products.getProductsByType().then((products) => $q.all(addDomainItems(products), addHostingItems(products), addDatabaseItems(products), addEmailProItems(products), addEmailItems(products), addMicrosoftItems(products)));
+    const productsPromise = Products.getProductsByType()
+        .then((products) => $q.all(
+            addDomainItems(products),
+            addHostingItems(products),
+            addDatabaseItems(products),
+            addEmailProItems(products),
+            addEmailItems(products),
+            addMicrosoftItems(products)
+        ));
 
     SidebarMenu.setInitializationPromise(productsPromise);
 

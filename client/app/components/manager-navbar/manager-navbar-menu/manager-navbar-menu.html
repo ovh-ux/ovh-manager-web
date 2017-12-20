@@ -1,0 +1,37 @@
+<!-- <div class="oui-navbar-menu oui-navbar-menu_fixed oui-navbar-menu_right"> -->
+    <header class="oui-navbar-menu__header">
+        <oui-back-button class="oui-navbar-menu__back"
+            on-click="$ctrl.toggleMenu($ctrl.menuName, true)">
+        </oui-back-button>
+        <span class="oui-navbar-menu__breadcrumb" ng-bind="::$ctrl.headerBreadcrumb"></span>
+        <h3 class="oui-navbar-menu__title" ng-bind="::$ctrl.headerTitle"></h3>
+    </header>
+    <ul class="oui-navbar-list">
+        <li class="oui-navbar-list__item" ng-repeat="menuLink in $ctrl.menuLinks">
+            <a class="oui-navbar-link"
+                ng-if="::!menuLink.subLinks"
+                ng-click="$ctrl.toggleMenu()"
+                ng-bind="::menuLink.label"
+                ui-sref="{{::$ctrl.getFullSref(menuLink)}}">
+            </a>
+            <button class="oui-navbar-link" type="button"
+                aria-haspopup="true" aria-expanded="{{$ctrl.navbarNav[menuLink.name]}}"
+                ng-if="::!!menuLink.subLinks"
+                ng-click="$ctrl.toggleMenu(menuLink.name, true)"
+                ng-bind="::menuLink.label">
+            </button>
+
+            <!-- Navbar Next Level -->
+            <manager-navbar-menu
+                ng-if="::!!menuLink.subLinks"
+                header-breadcrumb="{{::$ctrl.getChildBreadcrumb()}}"
+                header-title="{{::menuLink.label}}"
+                menu-name="{{::menuLink.name}}"
+                menu-links="::menuLink.subLinks"
+                navbar-nav="$ctrl.navbarNav">
+            </manager-navbar-menu>
+            <!-- Navbar Next Level -->
+
+        </li>
+    </ul>
+<!-- </div> -->
