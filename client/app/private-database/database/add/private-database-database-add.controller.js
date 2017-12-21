@@ -110,8 +110,10 @@ angular.module("App").controller(
                     }
                     return null;
                 })
-                .then(() => this.Alerter.success(this.$scope.tr("privateDatabase_add_bdd_success"), this.$scope.alerts.main),
-                      () => this.Alerter.error(this.$scope.tr("privateDatabase_add_bdd_fail"), this.$scope.alerts.main));
+                .then(() => this.Alerter.success(this.$scope.tr("privateDatabase_add_bdd_success"), this.$scope.alerts.main), (err) => {
+                    _.set(err.data || err, "type", "ERROR");
+                    this.Alerter.alertFromSWS(this.$scope.tr("privateDatabase_add_bdd_fail"), _.get(err, "data", err), this.$scope.alerts.main);
+                });
         }
 
         isBddValid () {
