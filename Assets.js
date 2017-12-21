@@ -185,7 +185,8 @@ module.exports = {
             "client/bower_components/messenger/build/js/messenger.min.js",
             "client/bower_components/ovh-angular-toaster/dist/ovh-angular-toaster.min.js",
             "client/bower_components/ovh-jquery-ui-draggable-ng/dist/ovh-jquery-ui-draggable-ng.min.js",
-            "client/bower_components/ovh-common-style/dist/ovh-common-style.min.js"
+            "client/bower_components/ovh-common-style/dist/ovh-common-style.min.js",
+            "client/bower_components/clipboard/dist/clipboard.min.js"
         ],
         css : [
             "client/bower_components/moment-picker/dist/angular-moment-picker.min.css",

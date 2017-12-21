@@ -441,7 +441,7 @@ angular
         "translator",
         (translator) => {
             "use strict";
-            translator.load(["core"]);
+            translator.load(["core", "doubleAuth"]);
 
             const selectedLanguage = translator.getSelectedAvailableLanguage();
             const selectedLanguageValue = _(selectedLanguage).get("value", null);

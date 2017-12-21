@@ -65,11 +65,11 @@
                 <form name="newDnsZoneDetailsForm">
                     <dl class="dl-horizontal dl-lg">
                         <dt data-i18n-static="domains_newdnszone_order_step2_domain"></dt>
-                        <dd data-ng-bind="data[ctrlNewDnsZone.zoneNameOrder.zoneName].details[0].domain"></dd>
+                        <dd data-ng-bind="data[ctrlNewDnsZone.zoneName].details[0].domain"></dd>
                         <dt data-i18n-static="domains_newdnszone_order_step2_description"></dt>
-                        <dd data-ng-bind="data[ctrlNewDnsZone.zoneNameOrder.zoneName].details[0].description"></dd>
+                        <dd data-ng-bind="data[ctrlNewDnsZone.zoneName].details[0].description"></dd>
                         <dt data-i18n-static="domains_newdnszone_order_step2_price"></dt>
-                        <dd data-ng-bind-html="data[ctrlNewDnsZone.zoneNameOrder.zoneName].prices | price:ovhSubsidiary"></dd>
+                        <dd data-ng-bind-html="data[ctrlNewDnsZone.zoneName].prices | price:ovhSubsidiary"></dd>
                     </dl>
                     <fieldset class="row">
                         <legend class="col-md-3 oui-label text-lg-right border-0"
@@ -103,12 +103,12 @@
                 <h2 class="mt-5" data-i18n-static="domains_newdnszone_order_step3_title"></h2>
                 <div data-ng-if="!ctrlNewDnsZone.order.url">
                     <p data-i18n-static="domains_newdnszone_order_step3_question"
-                       data-ng-if="data[ctrlNewDnsZone.zoneNameOrder.zoneName].contracts.length === 0"></p>
+                       data-ng-if="data[ctrlNewDnsZone.zoneName].contracts.length === 0"></p>
 
-                    <div data-ng-if="data[ctrlNewDnsZone.zoneNameOrder.zoneName].contracts.length > 0">
+                    <div data-ng-if="data[ctrlNewDnsZone.zoneName].contracts.length > 0">
                         <p data-i18n-static="domains_newdnszone_order_step3_contracts_ask"></p>
                         <ul>
-                            <li data-ng-repeat="contract in data[ctrlNewDnsZone.zoneNameOrder.zoneName].contracts track by $index">
+                            <li data-ng-repeat="contract in data[ctrlNewDnsZone.zoneName].contracts track by $index">
                                 <a data-ng-href="{{contract.url}}" target="_blank"
                                    data-ng-bind="contract.name"></a>
                             </li>
@@ -131,7 +131,7 @@
                             <button class="oui-button oui-button_primary oui-button_large-height" type="button"
                                     data-i18n-static="domains_newdnszone_order_step3_generate"
                                     data-ng-click="ctrlNewDnsZone.generateBc()"
-                                    data-ng-disabled="data[ctrlNewDnsZone.zoneNameOrder.zoneName].contracts.length !== 0 && !ctrlNewDnsZone.zoneNameOrder.contractsValidated"
+                                    data-ng-disabled="data[ctrlNewDnsZone.zoneName].contracts.length !== 0 && !ctrlNewDnsZone.zoneNameOrder.contractsValidated"
                                     data-ng-if="!ctrlNewDnsZone.loading.bc">
                             </button>
                             <div class="help-inline"
