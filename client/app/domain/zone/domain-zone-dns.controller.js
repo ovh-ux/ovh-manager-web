@@ -29,7 +29,7 @@ angular.module("App").controller(
                 value: ""
             };
             this.selectedRecords = [];
-            this.useDefaultsDns = true;
+            this.useDefaultsDnsNotification = true;
             this.typesToCheck = ["MX", "NS", "SRV", "CNAME"]; // Check if target is relative for this type
 
             this.$scope.$on("domain.tabs.zonedns.refresh", () => {
@@ -107,8 +107,9 @@ angular.module("App").controller(
                     this.defaultsDns = _.get(defaults, "paginatedZone.records.results", []).filter((data) => data.subDomain === "" && data.subDomainToDisplay === "").map((value) => value.targetToDisplay.slice(0, -1)).sort();
                     this.activatedDns = _.get(activated, "dns", []).filter((dns) => dns.isUsed).map((value) => value.host).sort();
 
-                    if (!_.isEmpty(this.defaultsDns) && !_.isEqual(this.defaultsDns, this.activatedDns)) {
-                        this.useDefaultsDns = false;
+                    // check for active DNS different than default ones
+                    if (!_.isEmpty(this.activatedDns) && !_.isEmpty(_.xor(this.defaultsDns, this.activatedDns))) {
+                        this.useDefaultsDnsNotification = false;
                     }
 
                     this.loading.dns = false;
