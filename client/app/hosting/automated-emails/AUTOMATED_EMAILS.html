@@ -1,6 +1,8 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabAutomatedEmailsCtrl as ctrl">
 
-    <oui-loader size="l" data-ng-if="ctrl.loaders.loading"></oui-loader>
+    <div class="text-center" data-ng-if="ctrl.loaders.loading">
+        <oui-spinner class="d-inline-block" size="l"></oui-spinner>
+    </div>
 
     <div class="row" data-ng-show="!ctrl.loaders.loading">
         <!-- INFORMATIONS_VIEW  -->
@@ -33,8 +35,8 @@
                                 'label-success': ctrl.automatedEmails.state === 'ok' || ctrl.automatedEmails.state === 'force',
                                 'label-danger': ctrl.automatedEmails.state !== 'ok' && ctrl.automatedEmails.state !== 'force'}">
                         </span>
-                        <oui-loader size="s" inline="true"
-                                    data-ng-if="ctrl.isPurging"></oui-loader>
+                        <oui-spinner size="s" class="d-inline-block"
+                                    data-ng-if="ctrl.isPurging"></oui-spinner>
                     </dd>
                     <dt data-i18n-static="hosting_tab_AUTOMATED_EMAILS_report_email"></dt>
                     <dd>
@@ -59,7 +61,7 @@
                 <div data-ng-if="ctrl.stats.chart != null">
                     <h3 class="text-center mt-5" data-i18n-static="hosting_tab_AUTOMATED_EMAILS_volume"></h3>
 
-                    <oui-loader data-ng-if="ctrl.loader.loading"></oui-loader>
+                    <oui-spinner data-ng-if="ctrl.loader.loading"></oui-spinner>
 
                     <div class="chart-container" style="height: 320px;"
                          data-ng-if="!ctrl.loading.loading"

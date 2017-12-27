@@ -39,8 +39,8 @@
                                               <span class="fa fa-info-circle" aria-hidden="true"></span>
                                           </span>
                                         <div>
-                                            <oui-loader size="s" inline="true"
-                                                        data-ng-if="ctrlTabGeneralInformations.loading.dnsStatus"></oui-loader>
+                                            <oui-spinner class="d-inline-block" size="s"
+                                                        data-ng-if="ctrlTabGeneralInformations.loading.dnsStatus"></oui-spinner>
                                             <div data-ng-if="!ctrlTabGeneralInformations.loading.dnsStatus">
                                                 <button class="btn btn-success btn-xs" type="button"
                                                         data-i18n-static="domain_dashboard_dns_management_dnsHostedOK"
@@ -112,7 +112,8 @@
                                                       data-uib-tooltip-append-to-body="true"
                                                       data-uib-tooltip-placement="top"></span>
                                                 <div>
-                                                    <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.hosting"></oui-loader>
+                                                    <oui-spinner class="d-inline-block" size="s"
+                                                        data-ng-if="ctrlTabGeneralInformations.loading.hosting"></oui-spinner>
                                                     <div data-ng-if="!ctrlTabGeneralInformations.loading.hosting">
                                                           <span class="label"
                                                                 data-ng-class="{ 'label-danger': !ctrlTabGeneralInformations.hasStart10mOffer, 'label-success': ctrlTabGeneralInformations.hasStart10mOffer }"
@@ -148,7 +149,8 @@
                                                       data-uib-tooltip-append-to-body="true"
                                                       data-uib-tooltip-placement="top"></span>
                                                 <div>
-                                                    <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.associatedHosting"></oui-loader>
+                                                    <oui-spinner class="d-inline-block" size="s"
+                                                        data-ng-if="ctrlTabGeneralInformations.loading.associatedHosting"></oui-spinner>
                                                     <ul class="list-unstyled"
                                                         data-ng-if="!ctrlTabGeneralInformations.loading.associatedHosting && ctrlTabGeneralInformations.hasHostingAssociate">
                                                         <li data-ng-repeat="hosting in ctrlTabGeneralInformations.hostingAssociated track by $index">
@@ -304,8 +306,8 @@
         <div class="col-md-3 mt-md-5 mt-lg-0">
             <div class="d-flex flex-column-reverse flex-lg-column">
                 <div class="mb-5 text-center" data-ng-if="!ctrlTabGeneralInformations.domain.isExpired">
-                    <oui-loader inline="true"
-                                data-ng-if="ctrlTabGeneralInformations.loading.screenshot"></oui-loader>
+                    <oui-spinner class="d-inline-block"
+                        data-ng-if="ctrlTabGeneralInformations.loading.screenshot"></oui-spinner>
                     <a data-ng-href="http://{{ctrlTabGeneralInformations.domain.name}}"
                        class="oui-box oui-box_light d-block p-0 text-truncate" target="_blank"
                        title="{{ctrlTabGeneralInformations.domain.name}} ({{i18n.common_newtab}})"

@@ -13,7 +13,7 @@
                     ctrlModerators.mailingList.name,
                     !ctrlModerators.loading.moderators ? ctrlModerators.moderators.ids.length : ''
                 ])"></span>
-                <oui-loader inline="true" data-ng-if="ctrlModerators.loading.moderators"></oui-loader>
+                <oui-spinner class="d-inline-block" data-ng-if="ctrlModerators.loading.moderators"></oui-spinner>
             </h2>
 
             <div class="row mb-3 mt-5">

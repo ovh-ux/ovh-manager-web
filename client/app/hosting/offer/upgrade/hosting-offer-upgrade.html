@@ -10,7 +10,7 @@
              data-wizard-step-valid="ctrl.model.capacity && (ctrl.model.capacity !== 'KS' || (ctrl.model.capacity === 'KS' && ctrl.downgradeAgree))">
 
             <div class="text-center" data-ng-if="ctrl.loading.availableOffer">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner class="d-inline-block"></oui-spinner>
             </div>
 
             <div data-ng-if="!ctrl.loading.availableOffer">
@@ -67,7 +67,7 @@
                data-ng-if="ctrl.durations.available"></p>
 
             <div class="text-center" data-ng-if="ctrl.loading.durations">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner class="d-inline-block"></oui-spinner>
                 <div data-i18n-static="hosting_order_upgrade_loading_order"></div>
             </div>
 
@@ -105,7 +105,7 @@
              data-wizard-step-valid="!ctrl.loading.validation">
 
             <div class="text-center" data-ng-if="ctrl.loading.validation">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner class="d-inline-block"></oui-spinner>
             </div>
 
             <div data-ng-if="!ctrl.loading.validation">

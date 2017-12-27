@@ -10,7 +10,7 @@
 
             <p class="font-weight-bold" data-i18n-static="mailing_list_tab_modal_create_list_title"></p>
 
-            <oui-loader data-ng-if="ctrl.loading.languages"></oui-loader>
+            <oui-spinner data-ng-if="ctrl.loading.languages"></oui-spinner>
 
             <div data-ng-if="!ctrl.loading.languages">
                 <p data-i18n-static="mailing_list_tab_modal_create_list_heading"></p>
@@ -192,7 +192,7 @@
         <div data-wizard-step
              data-wizard-step-on-load="summary">
 
-            <oui-loader data-ng-if="ctrl.loading.guides"></oui-loader>
+            <oui-spinner data-ng-if="ctrl.loading.guides"></oui-spinner>
 
             <div data-ng-if="!ctrl.loading.guides">
                 <p data-i18n-static="mailing_list_tab_modal_create_list_validate_title"></p>

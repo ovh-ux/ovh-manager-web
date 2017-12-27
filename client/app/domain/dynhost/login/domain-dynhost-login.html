@@ -3,7 +3,7 @@
         <div data-ovh-alert="{{alerts.main}}"></div>
 
         <div class="text-center" data-ng-if="ctrlDomainDynHostLogin.loading.init">
-            <oui-loader size="l" inline="true"></oui-loader>
+            <oui-spinner class="d-inline-block" size="l"></oui-spinner>
         </div>
 
         <div data-ng-if="!ctrlDomainDynHostLogin.loading.init && !ctrlDomainDynHostLogin.hasResult">

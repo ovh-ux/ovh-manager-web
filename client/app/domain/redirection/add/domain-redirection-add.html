@@ -365,7 +365,7 @@
              data-wizard-step-valid="(!ctrl.loading.check && !ctrl.loading.add && !ctrl.errors.containAllError && !ctrl.errors.containOneError) || ((ctrl.errors.conflict || ctrl.errors.containAllError || ctrl.errors.containOneError) && ctrl.overwrite)">
 
             <div class="text-center" data-ng-if="ctrl.loading.check">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner class="d-inline-block"></oui-spinner>
             </div>
 
             <p class="text-center"
@@ -527,7 +527,7 @@
             </div>
 
             <div class="text-center" data-ng-if="ctrl.loading.add">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner class="d-inline-block"></oui-spinner>
                 <div data-i18n-static="domain_tab_REDIRECTION_add_step5_add_record"></div>
             </div>
         </div>

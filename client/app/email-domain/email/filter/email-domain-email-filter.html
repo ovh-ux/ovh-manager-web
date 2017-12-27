@@ -12,7 +12,7 @@
             <strong data-ng-bind="ctrlEmailDomainEmailFilter.currentAccount.accountName"></strong>
         </h2>
 
-        <oui-loader size="l" data-ng-if="ctrlEmailDomainEmailFilter.loading.filters"></oui-loader>
+        <oui-spinner size="l" data-ng-if="ctrlEmailDomainEmailFilter.loading.filters"></oui-spinner>
 
         <div data-ng-if="!ctrlEmailDomainEmailFilter.loading.filters">
             <div class="alert alert-info" role="alert"
