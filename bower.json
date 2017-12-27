@@ -1,6 +1,6 @@
 {
   "name": "ovh-manager-web",
-  "version": "12.2.0",
+  "version": "12.2.2",
   "description": "OVH Control Panel Web UI",
   "authors": [
     "OVH SAS"
@@ -34,8 +34,8 @@
     "json3": "~3.2.5",
     "lodash": "~3.10.x",
     "ovh-utils-angular": "^12.0.3",
-    "ovh-module-exchange": "^6.0.0",
     "ovh-module-sharepoint": "^4.1.0",
+    "ovh-module-exchange": "^6.0.0",
     "ovh-module-office": "^4.0.0",
     "ovh-module-emailpro": "^4.0.0",
     "ovh-angular-proxy-request": "^0.1.0",
@@ -84,13 +84,14 @@
     "ovh-angular-tail-logs": "^1.1.1",
     "angular-translate-loader-static-files": "^2.15.2",
     "ovh-angular-otrs": "^3.0.1",
-    "ovh-api-services": "^2.0.1",
+    "ovh-api-services": "^2.1.9",
     "ovh-angular-toaster": "^0.8.0",
     "ovh-jquery-ui-draggable-ng": "^0.0.5",
     "angular-resource": "^1.6.6",
     "chart.js": "^2.6.0",
     "chartjs-plugin-zoom": "^0.5.0",
-    "moment-picker": "^0.10.1"
+    "moment-picker": "^0.10.1",
+    "clipboard": "^1.7.1"
   },
   "resolutions": {
     "angular": "~1.6.0",
@@ -109,7 +110,7 @@
     "ovh-angular-proxy-request": "^0.1.0",
     "angular-ui-router": "^0.4.2",
     "animate.css": "~3.5.0",
-    "ovh-api-services": "^2.0.0"
+    "ovh-api-services": "^2.1.9"
   },
   "private": true
 }
