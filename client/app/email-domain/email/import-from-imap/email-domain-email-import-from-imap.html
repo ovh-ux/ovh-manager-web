@@ -41,19 +41,10 @@
                     </div>
                 </div>
                 <div class="col-md-offset-4 pl-lg-3">
-                    <div class="oui-checkbox">
-                        <input type="checkbox" class="oui-checkbox__input" id="chk-use-ssl" name="useSsl"
-                               data-ng-model="ctrl.model.useSSL">
-                        <label class="oui-checkbox__label-container" for="chk-use-ssl">
-                            <span class="oui-checkbox__label"
-                                  data-i18n-static="email_tab_modal_import_from_imap_use_ssh"></span>
-                            <span class="oui-checkbox__icon">
-                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                            </span>
-                        </label>
-                    </div>
+                    <oui-checkbox id="chk-use-ssl" name="useSsl"
+                        model="ctrl.model.useSSL"
+                        text="{{::i18n.email_tab_modal_import_from_imap_use_ssh}}">
+                    </oui-checkbox>
                 </div>
                 <hr />
                 <p class="mb-4">

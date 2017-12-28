@@ -35,19 +35,10 @@
                     <p data-i18n-static="hosting_tab_BOOST_request_description_payment_mean"></p>
                     <p data-i18n-static="hosting_tab_BOOST_request_description_renew"></p>
 
-                    <div class="oui-checkbox">
-                        <input type="checkbox" class="oui-checkbox__input" id="acceptCGV"
-                               data-ng-model="acceptCGV.value">
-                        <label class="oui-checkbox__label-container" for="acceptCGV">
-                            <span class="oui-checkbox__label"
-                                  data-i18n-static="hosting_tab_BOOST_accept_cgv"></span>
-                            <span class="oui-checkbox__icon">
-                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                            </span>
-                        </label>
-                    </div>
+                    <oui-checkbox id="acceptCGV"
+                        model="acceptCGV.value"
+                        text="{{::i18n.hosting_tab_BOOST_accept_cgv}}">
+                    </oui-checkbox>
                 </form>
             </div>
         </div>

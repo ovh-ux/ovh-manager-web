@@ -28,22 +28,11 @@
                            data-ng-if="ctrl.addRedirectStep1Form.subDomain.$dirty && ctrl.addRedirectStep1Form.subDomain.$invalid"></small>
                 </div>
 
-                <div class="oui-checkbox">
-                    <input type="checkbox" class="oui-checkbox__input" id="checkboxWww" name="checkboxWww"
-                           data-ng-disabled="ctrl.newRedirection.disableWww"
-                           data-ng-model="ctrl.newRedirection.addwww">
-                    <label class="oui-checkbox__label-container" for="checkboxWww">
-                        <span class="oui-checkbox__label">
-                            <span data-i18n-static="domain_tab_REDIRECTION_add_step1_www"></span>
-                            <strong data-ng-bind="ctrl.getDomainNameOf(ctrl.newRedirection.subdomainWww)"></strong>
-                        </span>
-                        <span class="oui-checkbox__icon">
-                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                        </span>
-                    </label>
-                </div>
+                <oui-checkbox id="checkboxWww" name="checkboxWww"
+                    disabled="ctrl.newRedirection.disableWww"
+                    model="ctrl.newRedirection.addwww"
+                    text="{{::(i18n.domain_tab_REDIRECTION_add_step1_www + ' ' + ctrl.getDomainNameOf(ctrl.newRedirection.subdomainWww))}}">
+                </oui-checkbox>
             </form>
         </div>
 
@@ -331,20 +320,11 @@
                                        data-ng-bind="ctrl.errorLabel"
                                        data-ng-if="ctrl.errors.domainCname && ctrl.errorLabel"></small>
 
-                                <div class="oui-checkbox mt-3">
-                                    <input type="checkbox" class="oui-checkbox__input" id="includeCNAME"
-                                           data-ng-model="ctrl.shouldIncludeDomain"
-                                           data-ng-change="ctrl.redirectionTargetChange()">
-                                    <label class="oui-checkbox__label-container" for="includeCNAME">
-                                        <span class="oui-checkbox__label"
-                                              data-i18n-static="domain_tab_REDIRECTION_edit_server_cname_include_domain"></span>
-                                        <span class="oui-checkbox__icon">
-                                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                                        </span>
-                                    </label>
-                                </div>
+                                <oui-checkbox class="mt-3" id="includeCNAME"
+                                    model="ctrl.shouldIncludeDomain"
+                                    on-change="ctrl.redirectionTargetChange()"
+                                    text="{{::i18n.domain_tab_REDIRECTION_edit_server_cname_include_domain}}">
+                                </oui-checkbox>
                             </div>
                         </div>
 
@@ -516,12 +496,14 @@
                 <input type="checkbox" class="oui-checkbox__input" id="overwrite"
                        data-ng-model="ctrl.overwrite">
                 <label class="oui-checkbox__label-container" for="overwrite">
-                    <span class="oui-checkbox__label"
-                          data-i18n-static="domain_tab_REDIRECTION_add_step5_overwrite"></span>
-                    <span class="oui-checkbox__icon">
-                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                    <span class="oui-checkbox__label">
+                        <span data-i18n-static="domain_tab_REDIRECTION_add_step5_overwrite"></span>
+                        <span class="oui-checkbox__icon">
+                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                        </span>
                     </span>
                 </label>
             </div>

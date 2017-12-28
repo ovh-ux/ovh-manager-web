@@ -48,19 +48,10 @@
                 </div>
 
                 <div class="mt-5" data-ng-if="model.templateSelected">
-                    <div class="oui-checkbox">
-                        <input type="checkbox" class="oui-checkbox__input" id="advancedMode" name="advancedMode"
-                               data-ng-model="advancedMode.value">
-                        <label class="oui-checkbox__label-container" for="advancedMode">
-                            <span class="oui-checkbox__label"
-                                  data-i18n-static="hosting_configuration_tab_modules_create_step1_module_advanced_mode"></span>
-                            <span class="oui-checkbox__icon">
-                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                            </span>
-                        </label>
-                    </div>
+                    <oui-checkbox id="advancedMode" name="advancedMode"
+                        model="advancedMode.value"
+                        text="{{::i18n.hosting_configuration_tab_modules_create_step1_module_advanced_mode}}">
+                    </oui-checkbox>
                     <div class="alert alert-info" role="alert">
                         <div>
                             <p data-i18n-static="hosting_configuration_tab_modules_create_step1_module_advancedMode_info"></p>

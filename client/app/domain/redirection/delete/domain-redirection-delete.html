@@ -18,19 +18,11 @@
                    data-ng-if="ctrl.isSubDomain"></p>
             </div>
 
-            <div class="oui-checkbox mt-4" data-ng-if="ctrl.wwwDomainToDelete.data">
-                <input type="checkbox" class="oui-checkbox__input" id="removeWWW" name="removeWWW"
-                       data-ng-model="ctrl.wwwDomainToDelete.removeWWW" >
-                <label class="oui-checkbox__label-container" for="removeWWW">
-                    <span class="oui-checkbox__label"
-                          data-ng-bind-html="tr('domain_tab_REDIRECTION_delete_www_confirm', [ctrl.constructor.getDomainName(ctrl.wwwDomainToDelete.data), ctrl.wwwDomainToDelete.data.targetDisplayName])"></span>
-                    <span class="oui-checkbox__icon">
-                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                    </span>
-                </label>
-            </div>
+            <oui-checkbox class="mt-4" id="removeWWW" name="removeWWW"
+                ng-if="ctrl.wwwDomainToDelete.data"
+                model="ctrl.wwwDomainToDelete.removeWWW"
+                text="{{tr('domain_tab_REDIRECTION_delete_www_confirm', [ctrl.constructor.getDomainName(ctrl.wwwDomainToDelete.data), ctrl.wwwDomainToDelete.data.targetDisplayName])}}">
+            </oui-checkbox>
         </div>
     </div>
 </div>

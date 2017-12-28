@@ -107,33 +107,14 @@
         <div data-wizard-step>
             <p data-i18n-static="hosting_tab_DATABASES_table_popover_import_step2_title"></p>
             <form name="ctrl.formFileUploadStep2" novalidate>
-                <div class="oui-checkbox">
-                    <input type="checkbox" class="oui-checkbox__input" id="flushDatabase" name="flushDatabase"
-                           data-ng-model="ctrl.model.flushDatabase">
-                    <label class="oui-checkbox__label-container" for="flushDatabase">
-                        <span class="oui-checkbox__label"
-                              data-i18n-static="hosting_tab_DATABASES_table_popover_import_step2_flush_database"></span>
-                        <span class="oui-checkbox__icon">
-                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                        </span>
-                    </label>
-
-                </div>
-                <div class="oui-checkbox">
-                    <input type="checkbox" class="oui-checkbox__input" id="sendEmail" name="sendEmail"
-                           data-ng-model="ctrl.model.sendEmail">
-                    <label class="oui-checkbox__label-container" for="sendEmail">
-                        <span class="oui-checkbox__label"
-                              data-i18n-static="hosting_tab_DATABASES_table_popover_import_step2_send_email"></span>
-                        <span class="oui-checkbox__icon">
-                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                        </span>
-                    </label>
-                </div>
+                <oui-checkbox id="flushDatabase" name="flushDatabase"
+                    model="ctrl.model.flushDatabase"
+                    text="{{::i18n.hosting_tab_DATABASES_table_popover_import_step2_flush_database}}">
+                </oui-checkbox>
+                <oui-checkbox id="sendEmail" name="sendEmail"
+                    model="ctrl.model.sendEmail"
+                    text="{{::i18n.hosting_tab_DATABASES_table_popover_import_step2_send_email}}">
+                </oui-checkbox>
             </form>
         </div>
     </div>

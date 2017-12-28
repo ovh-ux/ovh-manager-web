@@ -140,8 +140,14 @@
                 <input type="checkbox" class="oui-checkbox__input" id="autoConfigure"
                        data-ng-model="selected.autoconfigure">
                 <label class="oui-checkbox__label-container" for="autoConfigure">
-                    <span class="oui-checkbox__label"
-                          data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_mode_OVH_autoconfigure">
+                    <span class="oui-checkbox__label">
+                        <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_mode_OVH_autoconfigure"></span>
+                        <span class="oui-checkbox__icon">
+                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                        </span>
                     </span>
                     <span class="oui-checkbox__description">
                         <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_mode_OVH_autoconfigure_text"></span>
@@ -154,11 +160,6 @@
                                     [(conflict.subDomain ? (conflict.subDomain + '.') : '') + conflict.zone, conflict.fieldType])">
                             </span>
                         </strong>
-                    </span>
-                    <span class="oui-checkbox__icon">
-                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
                     </span>
                 </label>
             </div>
