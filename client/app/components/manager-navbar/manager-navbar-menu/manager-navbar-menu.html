@@ -3,22 +3,22 @@
         <oui-back-button class="oui-navbar-menu__back"
             on-click="$ctrl.toggleMenu($ctrl.menuName, true)">
         </oui-back-button>
-        <span class="oui-navbar-menu__breadcrumb" ng-bind="::$ctrl.headerBreadcrumb"></span>
-        <h3 class="oui-navbar-menu__title" ng-bind="::$ctrl.headerTitle"></h3>
+        <span class="oui-navbar-menu__breadcrumb" data-ng-bind="::$ctrl.headerBreadcrumb"></span>
+        <h3 class="oui-navbar-menu__title" data-ng-bind="::$ctrl.headerTitle"></h3>
     </header>
     <ul class="oui-navbar-list">
-        <li class="oui-navbar-list__item" ng-repeat="menuLink in $ctrl.menuLinks">
+        <li class="oui-navbar-list__item" data-ng-repeat="menuLink in $ctrl.menuLinks track by $index">
             <a class="oui-navbar-link"
-                ng-if="::!menuLink.subLinks"
-                ng-click="$ctrl.toggleMenu()"
-                ng-bind="::menuLink.label"
-                ui-sref="{{::$ctrl.getFullSref(menuLink)}}">
+                data-ng-if="::!menuLink.subLinks"
+                data-ng-click="$ctrl.toggleMenu()"
+                data-ng-bind="::menuLink.label"
+                data-ui-sref="{{::$ctrl.getFullSref(menuLink)}}">
             </a>
             <button class="oui-navbar-link" type="button"
                 aria-haspopup="true" aria-expanded="{{$ctrl.navbarNav[menuLink.name]}}"
-                ng-if="::!!menuLink.subLinks"
-                ng-click="$ctrl.toggleMenu(menuLink.name, true)"
-                ng-bind="::menuLink.label">
+                data-ng-if="::!!menuLink.subLinks"
+                data-ng-click="$ctrl.toggleMenu(menuLink.name, true)"
+                data-ng-bind="::menuLink.label">
             </button>
 
             <!-- Navbar Next Level -->
