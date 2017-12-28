@@ -44,6 +44,13 @@
                 </div>
 
                 <div class="alert alert-warning" role="alert"
+                        data-ng-if="!ctrlDomainTabZoneDns.activatedDns || ctrlDomainTabZoneDns.activatedDns.length === 0">
+                    <div>
+                        <strong class="d-block" data-i18n-static="domain_tab_ZONE_no_active_dns_detected"></strong>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning" role="alert"
                      data-ng-if="ctrlDomainTabZoneDns.zoneStatusWarnings.length">
                     <div>
                         <p data-ng-bind-html="i18n.domain_tab_ZONE_status_warning"></p>
