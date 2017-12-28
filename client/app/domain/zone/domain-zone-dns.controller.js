@@ -108,7 +108,9 @@ angular.module("App").controller(
                     this.activatedDns = _.get(activated, "dns", []).filter((dns) => dns.isUsed).map((value) => value.host).sort();
 
                     // check for active DNS different than default ones
-                    if (!_.isEmpty(this.activatedDns) && !_.isEmpty(_.xor(this.defaultsDns, this.activatedDns))) {
+                    const hasActiveDNS = !_.isEmpty(this.activatedDns);
+                    const activeAreDifferentThanDefaultDNS = !_.isEmpty(_.xor(this.defaultsDns, this.activatedDns));
+                    if (hasActiveDNS && activeAreDifferentThanDefaultDNS) {
                         this.useDefaultsDnsNotification = false;
                     }
 
