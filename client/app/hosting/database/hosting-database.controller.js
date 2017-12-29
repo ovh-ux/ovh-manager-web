@@ -43,7 +43,7 @@ angular
                 this.reloadCurrentPage();
             });
 
-            this.$scope.$on("hosting.databases.create.error", (err) => {
+            this.$scope.$on(`${this.hostingService.events.tabDatabasesCreation}.error`, (err) => {
                 this.alerter.alertFromSWS(this.$scope.tr("hosting_tab_databases_get_error"), _.get(err, "data", err), this.$scope.alerts.main);
                 this.reloadCurrentPage();
             });
