@@ -1,34 +1,39 @@
 angular.module("App")
-    .controller("managerNavbarCtrl", function ($element, $document, $timeout, constants, translator, ManagerNavbarService) {
-        "use strict";
-
-        this.toggleMenu = (state, isInternalNav) => {
-            this.navbarNav = ManagerNavbarService.toggleMenu(state, isInternalNav);
-        };
-
-        this.$onInit = () => {
+    .controller("managerNavbarCtrl", class ManagerNavbarCtrl {
+        constructor ($element, $document, $timeout, constants, translator, ManagerNavbarService) {
+            this.$element = $element;
+            this.$document = $document;
+            this.$timeout = $timeout;
             this.tr = translator.tr;
             this.currentUniverse = constants.UNIVERS;
+            this.managerNavbarService = ManagerNavbarService;
+        }
 
+        toggleMenu (state, isInternalNav) {
+            // Update navbar navigation
+            this.navbarNav = this.managerNavbarService.toggleMenu(state, isInternalNav);
+        }
+
+        $onInit () {
             // Get navbar navigation and user infos
-            ManagerNavbarService.getNavbar()
+            this.managerNavbarService.getNavbar()
                 .then((navbar) => {
                     this.currentUser = navbar.currentUser;
                     this.navigation = navbar.navigation;
                 });
-        };
+        }
 
-        this.$postLink = () => {
+        $postLink () {
             // Close dropdown menu on document click, only if a menu is open
-            angular.element($document).on("click", () => {
+            angular.element(this.$document).on("click", () => {
                 if (this.navbarNav) {
-                    $timeout(() => this.toggleMenu());
+                    this.$timeout(() => this.toggleMenu());
                 }
             });
 
             // Avoid click propagation on $element
-            angular.element($element).on("click", (e) => {
+            angular.element(this.$element).on("click", (e) => {
                 e.stopPropagation();
             });
-        };
+        }
     });

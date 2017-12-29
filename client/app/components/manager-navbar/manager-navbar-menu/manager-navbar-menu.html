@@ -1,37 +1,35 @@
-<!-- <div class="oui-navbar-menu oui-navbar-menu_fixed oui-navbar-menu_right"> -->
-    <header class="oui-navbar-menu__header">
-        <oui-back-button class="oui-navbar-menu__back"
-            on-click="$ctrl.toggleMenu($ctrl.menuName, true)">
-        </oui-back-button>
-        <span class="oui-navbar-menu__breadcrumb" data-ng-bind="::$ctrl.headerBreadcrumb"></span>
-        <h3 class="oui-navbar-menu__title" data-ng-bind="::$ctrl.headerTitle"></h3>
-    </header>
-    <ul class="oui-navbar-list">
-        <li class="oui-navbar-list__item" data-ng-repeat="menuLink in $ctrl.menuLinks track by $index">
-            <a class="oui-navbar-link"
-                data-ng-if="::!menuLink.subLinks"
-                data-ng-click="$ctrl.toggleMenu()"
-                data-ng-bind="::menuLink.label"
-                data-ui-sref="{{::$ctrl.getFullSref(menuLink)}}">
-            </a>
-            <button class="oui-navbar-link" type="button"
-                aria-haspopup="true" aria-expanded="{{$ctrl.navbarNav[menuLink.name]}}"
-                data-ng-if="::!!menuLink.subLinks"
-                data-ng-click="$ctrl.toggleMenu(menuLink.name, true)"
-                data-ng-bind="::menuLink.label">
-            </button>
+<header class="oui-navbar-menu__header">
+    <oui-back-button class="oui-navbar-menu__back"
+        on-click="$ctrl.toggleMenu($ctrl.menuName, true)">
+    </oui-back-button>
+    <span class="oui-navbar-menu__breadcrumb" data-ng-bind="::$ctrl.headerBreadcrumb"></span>
+    <h3 class="oui-navbar-menu__title" data-ng-bind="::$ctrl.headerTitle"></h3>
+</header>
+<ul class="oui-navbar-list">
+    <li class="oui-navbar-list__item" data-ng-repeat="menuLink in $ctrl.menuLinks track by $index">
+        <a class="oui-navbar-link"
+            data-ng-if="::!menuLink.subLinks"
+            data-ng-click="$ctrl.toggleMenu()"
+            data-ng-bind="::menuLink.label"
+            data-ui-sref="{{::$ctrl.getFullSref(menuLink)}}">
+        </a>
+        <button class="oui-navbar-link" type="button"
+            aria-haspopup="true" aria-expanded="{{$ctrl.navbarNav[menuLink.name]}}"
+            data-ng-if="::!!menuLink.subLinks"
+            data-ng-click="$ctrl.toggleMenu(menuLink.name, true)"
+            data-ng-bind="::menuLink.label">
+        </button>
 
-            <!-- Navbar Next Level -->
-            <manager-navbar-menu
-                ng-if="::!!menuLink.subLinks"
-                header-breadcrumb="{{::$ctrl.getChildBreadcrumb()}}"
-                header-title="{{::menuLink.label}}"
-                menu-name="{{::menuLink.name}}"
-                menu-links="::menuLink.subLinks"
-                navbar-nav="$ctrl.navbarNav">
-            </manager-navbar-menu>
-            <!-- Navbar Next Level -->
+        <!-- Navbar Next Level -->
+        <manager-navbar-menu
+            ng-if="::!!menuLink.subLinks"
+            header-breadcrumb="{{::$ctrl.getChildBreadcrumb()}}"
+            header-title="{{::menuLink.label}}"
+            menu-name="{{::menuLink.name}}"
+            menu-links="::menuLink.subLinks"
+            navbar-nav="$ctrl.navbarNav">
+        </manager-navbar-menu>
+        <!-- Navbar Next Level -->
 
-        </li>
-    </ul>
-<!-- </div> -->
+    </li>
+</ul>

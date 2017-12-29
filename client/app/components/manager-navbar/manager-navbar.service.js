@@ -1,9 +1,19 @@
 angular.module("App")
-    .service("ManagerNavbarService", function ($q, constants, translator, Products, User, LANGUAGES, OtrsPopupService, ssoAuthentication) {
-        "use strict";
+    .service("ManagerNavbarService", class ManagerNavbarService {
+        constructor ($q, constants, translator, Products, User, LANGUAGES, OtrsPopupService, ssoAuthentication) {
+            this.$q = $q;
+            this.constants = constants;
+            this.translator = translator;
+            this.products = Products;
+            this.user = User;
+            this.LANGUAGES = LANGUAGES;
+            this.navbarNav = {};
+            this.otrsPopupService = OtrsPopupService;
+            this.ssoAuthentication = ssoAuthentication;
+        }
 
-        const getLanguageChangingMenuObject = () => {
-            const languageChangingMenuObject = _(LANGUAGES)
+        getLanguageChangingMenuObject () {
+            const languageChangingMenuObject = _(this.LANGUAGES)
                 .filter((language) => _(language).has("name", "value"))
                 .map((language) => ({
                     label: language.name,
@@ -23,40 +33,36 @@ angular.module("App")
                 .value();
 
             return languageChangingMenuObject;
-        };
+        }
 
-        const getCurrentLanguageName = () => {
-            const currentLanguage = _(LANGUAGES).find({ value: translator.getLanguage() });
+        getCurrentLanguageName () {
+            const currentLanguage = _(this.LANGUAGES).find({ value: this.translator.getLanguage() });
             const currentLanguageName = _(currentLanguage).get("name");
 
             return currentLanguageName;
-        };
+        }
 
-        const getProductsMenu = (categoryName, products) => {
-            const productsMenu = [];
+        /* eslint-disable class-methods-use-this */
+        getProductsMenu (categoryName, products) {
+            return _.map(products, (product) => ({
+                label: product.displayName || product.name,
+                title: product.displayName || product.name,
+                state: `app.${categoryName}`,
+                stateParams: {
+                    productId: product.name
+                }
+            }));
+        }
+        /* eslint-disable class-methods-use-this */
 
-            _.forEach(products, (product) =>
-                productsMenu.push({
-                    label: product.displayName || product.name,
-                    title: product.displayName || product.name,
-                    state: `app.${categoryName}`,
-                    stateParams: {
-                        productId: product.name
-                    }
-                })
-            );
-
-            return productsMenu;
-        };
-
-        const getDomainsMenu = (domains) => {
+        getDomainsMenu (domains) {
             const domainsMenu = [{
-                label: translator.tr("navigation_left_all_domains"),
-                title: translator.tr("navigation_left_all_domains"),
+                label: this.translator.tr("navigation_left_all_domains"),
+                title: this.translator.tr("navigation_left_all_domains"),
                 state: "app.domain.all"
             }, {
-                label: translator.tr("navigation_left_all_domains_operations"),
-                title: translator.tr("navigation_left_all_domains_operations"),
+                label: this.translator.tr("navigation_left_all_domains_operations"),
+                title: this.translator.tr("navigation_left_all_domains_operations"),
                 state: "app.domain.operation"
             }];
 
@@ -101,9 +107,9 @@ angular.module("App")
             });
 
             return domainsMenu;
-        };
+        }
 
-        const getMicrosoftMenu = (products) => {
+        getMicrosoftMenu (products) {
             // Exchange products
             const exchangeLinks = [];
             const exchangeProducts = _.sortBy(products.exchanges, (elt) => angular.lowercase(elt.displayName || elt.name));
@@ -157,20 +163,20 @@ angular.module("App")
             // Build Microsoft menu
             return [{
                 name: "microsoft.exchange",
-                label: translator.tr("navigation_left_exchange"),
+                label: this.translator.tr("navigation_left_exchange"),
                 subLinks: exchangeLinks
             }, {
                 name: "microsoft.office",
-                label: translator.tr("navigation_left_office"),
+                label: this.translator.tr("navigation_left_office"),
                 subLinks: officeLinks
             }, {
                 name: "microsoft.sharepoint",
-                label: translator.tr("navigation_left_sharepoint"),
+                label: this.translator.tr("navigation_left_sharepoint"),
                 subLinks: sharepointLinks
             }];
-        };
+        }
 
-        const getUniverseMenu = (products) => {
+        getUniverseMenu (products) {
             const domainProducts = products.domains;
             const emailProProducts = _.sortBy(products.emailPros, (elt) => angular.lowercase(elt.name));
             const emailProducts = _.sortBy(products.emails, (elt) => angular.lowercase(elt.displayName || elt.name));
@@ -189,39 +195,39 @@ angular.module("App")
 
             return [{
                 name: "domain",
-                label: translator.tr("navigation_left_domains"),
-                subLinks: getDomainsMenu(domainProducts)
+                label: this.translator.tr("navigation_left_domains"),
+                subLinks: this.getDomainsMenu(domainProducts)
             }, {
                 name: "hosting",
-                label: translator.tr("navigation_left_hosting"),
-                subLinks: getProductsMenu("hosting", hostingProducts)
+                label: this.translator.tr("navigation_left_hosting"),
+                subLinks: this.getProductsMenu("hosting", hostingProducts)
             }, {
                 name: "private-database",
-                label: translator.tr("navigation_left_database"),
-                subLinks: getProductsMenu("private-database", databaseProducts)
+                label: this.translator.tr("navigation_left_database"),
+                subLinks: this.getProductsMenu("private-database", databaseProducts)
             }, {
                 name: "email-pro",
-                label: translator.tr("navigation_left_emailPro"),
-                subLinks: getProductsMenu("email-pro", emailProProducts)
+                label: this.translator.tr("navigation_left_emailPro"),
+                subLinks: this.getProductsMenu("email-pro", emailProProducts)
             }, {
                 name: "email",
-                label: translator.tr("navigation_left_email"),
-                subLinks: getProductsMenu("email.domain", emailProducts)
+                label: this.translator.tr("navigation_left_email"),
+                subLinks: this.getProductsMenu("email.domain", emailProducts)
             }, {
                 name: "microsoft",
-                label: translator.tr("navigation_left_microsoft"),
-                subLinks: getMicrosoftMenu(products)
+                label: this.translator.tr("navigation_left_microsoft"),
+                subLinks: this.getMicrosoftMenu(products)
             }];
-        };
+        }
 
-        const getAssistanceMenu = (currentUser) => {
-            const currentSubsidiaryURLs = constants.urls[currentUser.ovhSubsidiary];
+        getAssistanceMenu (currentUser) {
+            const currentSubsidiaryURLs = this.constants.urls[currentUser.ovhSubsidiary];
             const assistanceMenu = [];
 
             // Guides (External)
             if (_(currentSubsidiaryURLs).has("guides.home")) {
                 assistanceMenu.push({
-                    label: translator.tr("common_menu_support_all_guides"),
+                    label: this.translator.tr("common_menu_support_all_guides"),
                     url: currentSubsidiaryURLs.guides.home,
                     isExternal: true
                 });
@@ -229,12 +235,12 @@ angular.module("App")
 
             // New ticket
             assistanceMenu.push({
-                label: translator.tr("common_menu_support_new_ticket"),
+                label: this.translator.tr("common_menu_support_new_ticket"),
                 click: (callback) => {
-                    if (!OtrsPopupService.isLoaded()) {
-                        OtrsPopupService.init();
+                    if (!this.otrsPopupService.isLoaded()) {
+                        this.otrsPopupService.init();
                     } else {
-                        OtrsPopupService.toggle();
+                        this.otrsPopupService.toggle();
                     }
 
                     if (typeof callback === "function") {
@@ -245,14 +251,14 @@ angular.module("App")
 
             // Tickets list
             assistanceMenu.push({
-                label: translator.tr("common_menu_support_list_ticket"),
+                label: this.translator.tr("common_menu_support_list_ticket"),
                 url: "#/support"
             });
 
             // Telephony (External)
             if (_(currentSubsidiaryURLs).has("support_contact")) {
                 assistanceMenu.push({
-                    label: translator.tr("common_menu_support_telephony_contact"),
+                    label: this.translator.tr("common_menu_support_telephony_contact"),
                     url: currentSubsidiaryURLs.support_contact,
                     isExternal: true
                 });
@@ -260,15 +266,15 @@ angular.module("App")
 
             return {
                 name: "assistance",
-                label: translator.tr("common_menu_support_assistance"),
+                label: this.translator.tr("common_menu_support_assistance"),
                 iconClass: "icon-assistance",
                 subLinks: assistanceMenu
             };
-        };
+        }
 
-        const getInternalLinks = (currentUser) => {
+        getInternalLinks (currentUser) {
             const internalLinks = [];
-            const currentLanguageName = getCurrentLanguageName();
+            const currentLanguageName = this.getCurrentLanguageName();
             const currentLanguageDetectedCorrectly = _(currentLanguageName).isString();
 
             // Language
@@ -277,12 +283,12 @@ angular.module("App")
                     name: "languages",
                     label: currentLanguageName,
                     iconClass: "icon-languages",
-                    subLinks: getLanguageChangingMenuObject()
+                    subLinks: this.getLanguageChangingMenuObject()
                 });
             }
 
             // Assistance
-            internalLinks.push(getAssistanceMenu(currentUser));
+            internalLinks.push(this.getAssistanceMenu(currentUser));
 
             // User
             internalLinks.push({
@@ -291,31 +297,31 @@ angular.module("App")
                 iconClass: "icon-user",
                 subLinks: [
                     {
-                        label: translator.tr("global_account"),
+                        label: this.translator.tr("global_account"),
                         url: "#/useraccount/infos"
                     }, {
-                        label: translator.tr("global_billing"),
+                        label: this.translator.tr("global_billing"),
                         url: "#/billing/history"
                     }, {
-                        label: translator.tr("global_renew"),
+                        label: this.translator.tr("global_renew"),
                         url: "#/billing/autoRenew"
                     }, {
-                        label: translator.tr("global_orders"),
+                        label: this.translator.tr("global_orders"),
                         url: "#/billing/orders"
                     }, {
-                        label: translator.tr("global_contacts"),
+                        label: this.translator.tr("global_contacts"),
                         url: "#/useraccount/contacts?tab=SERVICES"
                     }, {
-                        label: translator.tr("global_conso"),
+                        label: this.translator.tr("global_conso"),
                         url: "#/billing/consumptionsTelephony"
                     }, {
-                        label: translator.tr("global_list_ticket"),
+                        label: this.translator.tr("global_list_ticket"),
                         url: "#/ticket"
                     }, {
-                        label: translator.tr("global_logout"),
+                        label: this.translator.tr("global_logout"),
                         variantClass: "logout",
                         click: (callback) => {
-                            ssoAuthentication.logout();
+                            this.ssoAuthentication.logout();
 
                             if (typeof callback === "function") {
                                 callback();
@@ -326,43 +332,43 @@ angular.module("App")
             });
 
             return internalLinks;
-        };
+        }
 
         // Get navbar navigation and user infos
-        this.getNavbar = () => {
-            const currentUniverse = constants.UNIVERS;
-            const managerUrls = constants.MANAGER_URLS;
+        getNavbar () {
+            const currentUniverse = this.constants.UNIVERS;
+            const managerUrls = this.constants.MANAGER_URLS;
             const managerNames = Object.keys(managerUrls);
 
-            return $q.all([
-                Products.getProductsByType(),
-                User.getUser()
+            return this.$q.all([
+                this.products.getProductsByType(),
+                this.user.getUser()
             ]).then((result) => {
                 const products = result[0];
                 const currentUser = result[1];
 
                 const navigation = {
                     brand: {
-                        label: translator.tr("universe_univers-portal_name"),
-                        title: translator.tr("universe_univers-portal_name"),
+                        label: this.translator.tr("universe_univers-portal_name"),
+                        title: this.translator.tr("universe_univers-portal_name"),
                         url: managerUrls.portal
                     },
 
                     // Set Internal Links
-                    internalLinks: getInternalLinks(currentUser),
+                    internalLinks: this.getInternalLinks(currentUser),
 
                     // Set Manager Links
                     managerLinks: _.map(managerNames, (managerName) => {
                         const managerLink = {
                             name: managerName,
-                            label: translator.tr(`universe_univers-${managerName}_name`),
-                            title: translator.tr(`universe_univers-${managerName}_name`),
+                            label: this.translator.tr(`universe_univers-${managerName}_name`),
+                            title: this.translator.tr(`universe_univers-${managerName}_name`),
                             url: managerUrls[managerName],
                             isPrimary: ["partners", "v3", "labs"].indexOf(managerName) === -1
                         };
 
                         if (managerName === currentUniverse) {
-                            managerLink.subLinks = getUniverseMenu(products);
+                            managerLink.subLinks = this.getUniverseMenu(products);
                         }
 
                         return managerLink;
@@ -374,25 +380,24 @@ angular.module("App")
                     navigation
                 };
             });
-        };
+        }
 
         // Toggle menu from button click
-        let navbarNav;
-        this.toggleMenu = (state, isInternalNav) => {
+        toggleMenu (state, isInternalNav) {
             if (state) {
-                if (!isInternalNav && (!navbarNav || !navbarNav[state])) {
-                    navbarNav = {};
+                if (!isInternalNav && (!this.navbarNav || !this.navbarNav[state])) {
+                    this.navbarNav = {};
                 }
 
-                if (isInternalNav || !navbarNav[state]) {
-                    navbarNav[state] = !navbarNav[state];
-                } else if (navbarNav[state]) {
-                    navbarNav = null;
+                if (isInternalNav || !this.navbarNav[state]) {
+                    this.navbarNav[state] = !this.navbarNav[state];
+                } else if (this.navbarNav[state]) {
+                    this.navbarNav = null;
                 }
             } else {
-                navbarNav = null;
+                this.navbarNav = null;
             }
 
-            return navbarNav;
-        };
+            return this.navbarNav;
+        }
     });

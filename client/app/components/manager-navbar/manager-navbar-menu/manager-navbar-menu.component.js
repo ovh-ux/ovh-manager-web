@@ -8,6 +8,5 @@ angular.module("App")
             navbarNav: "="
         },
         controller: "managerNavbarMenuCtrl",
-        controllerAs: "$ctrl",
         templateUrl: "components/manager-navbar/manager-navbar-menu/manager-navbar-menu.html"
     });
