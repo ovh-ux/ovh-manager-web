@@ -33,6 +33,7 @@ angular.module("App").controller(
             this.$scope.$on("hosting.tabs.mailingLists.refresh", () => this.refreshTableMailingLists(true));
             this.$scope.$on("mailingLists.update.poll.done", () => this.refreshTableMailingLists(true));
             this.$scope.$on("$destroy", () => {
+                this.Alerter.resetMessage(this.$scope.alerts.tabs);
                 this.MailingLists.killAllPolling({ namespace: "mailingLists.update.poll" });
             });
 
@@ -63,7 +64,10 @@ angular.module("App").controller(
                 .then((quotas) => {
                     this.quotas = quotas;
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.main))
+                .catch((err) => {
+                    _.set(err, "type", err.type || "ERROR");
+                    this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.tabs);
+                })
                 .finally(() => (this.loading.quotas = false));
         }
 
@@ -77,7 +81,10 @@ angular.module("App").controller(
                     forceRefresh
                 })
                 .then((data) => (this.mailingLists = this.$filter("orderBy")(data)))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.main))
+                .catch((err) => {
+                    _.set(err, "type", err.type || "ERROR");
+                    this.Alerter.alertFromSWS(this.$scope.tr("mailing_list_tab_modal_get_lists_error"), err, this.$scope.alerts.main);
+                })
                 .finally(() => {
                     if (_.isEmpty(this.mailingLists)) {
                         this.loading.mailingLists = false;
