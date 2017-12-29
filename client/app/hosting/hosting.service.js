@@ -25,6 +25,7 @@
                     tabCronsRefresh: "hosting.tabs.crons.refresh",
                     tabDomainsRefresh: "hosting.tabs.domains.refresh",
                     tabDatabasesRefresh: "hosting.tabs.databases.refresh",
+                    tabDatabasesCreation: "hosting.tabs.databases.creation",
                     tasksChanged: "hosting.tabs.tasks.refresh",
                     tabFtpRefresh: "hosting.tabs.ftp.refresh"
                 };
