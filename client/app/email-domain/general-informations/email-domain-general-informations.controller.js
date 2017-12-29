@@ -63,7 +63,8 @@ angular.module("App").controller(
                     this.summary = summary;
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.page);
+                    _.set(err, "type", err.type || "ERROR");
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_accounts_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.loading.quotas = false;
