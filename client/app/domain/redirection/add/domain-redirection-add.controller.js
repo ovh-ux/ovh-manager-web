@@ -193,7 +193,8 @@ angular.module("controllers").controller(
             }
         }
 
-        setTargetRedirection () {
+        setTargetRedirection (event) {
+            this.newRedirection.step2 = event.value;
             this.newRedirection.step3 = null;
             this.newRedirection.params.visibilityType = null;
             this.newRedirection.params.typeRedirection = null;

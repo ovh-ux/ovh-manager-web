@@ -43,33 +43,24 @@
             <p data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step2', ctrl.getTitle())"></p>
 
             <form class="ml-4" name="ctrl.addRedirectStep2Form">
-                <!-- to web address -->
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionWeb" name="choiceStep2" required
-                           data-ng-change="ctrl.setTargetRedirection()"
-                           data-ng-model="ctrl.newRedirection.step2"
-                           data-ng-value="ctrl.choice.web">
-                    <label class="oui-radio__label-container" for="choiceTargetRedirectionWeb">
-                        <span class="oui-radio__label"
-                              data-i18n-static="domain_tab_REDIRECTION_add_step2_web"></span>
-                        <span class="oui-radio__description"
-                              data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step2_web_help"></span>
-                    </label>
-                </div>
-
-                <!-- to domain or ip -->
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionServer" name="choiceStep2" required
-                           data-ng-change="ctrl.setTargetRedirection()"
-                           data-ng-model="ctrl.newRedirection.step2"
-                           data-ng-value="ctrl.choice.server">
-                    <label class="oui-radio__label-container" for="choiceTargetRedirectionServer">
-                        <span class="oui-radio__label"
-                              data-i18n-static="domain_tab_REDIRECTION_add_step2_server"></span>
-                        <span class="oui-radio__description"
-                              data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step2_server_help"></span>
-                    </label>
-                </div>
+                <oui-radio-group data-ng-init="ctrl.newRedirection.step2 = ctrl.choice.web"
+                        value="ctrl.newRedirection.step2"
+                        on-change="ctrl.setTargetRedirection($event)">
+                    <!-- to web address -->    
+                    <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step2_web')}}"
+                               value="{{ctrl.choice.web}}">
+                        <oui-radio-description>
+                            <span data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step2_web_help"></span>
+                        </oui-radio-description>
+                    </oui-radio>
+                    <!-- to domain or ip -->
+                    <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step2_server')}}"
+                               value="{{ctrl.choice.server}}" checked>
+                        <oui-radio-description>
+                            <span data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step2_server_help"></span>
+                        </oui-radio-description>
+                    </oui-radio>
+                </oui-radio-group>
             </form>
         </div>
 
