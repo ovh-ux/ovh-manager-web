@@ -170,16 +170,17 @@
                     </div>
 
                     <!-- to web address with invisible (iframe) -->
-                    <div class="oui-radio" data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.invisible">
-                        <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionWebVisibleIframe" name="choiceStep4" required
-                               data-ng-model="ctrl.newRedirection.step4"
-                               data-ng-value="ctrl.choice.iframe">
-                        <label class="oui-radio__label-container" for="choiceTargetRedirectionWebVisibleIframe">
-                            <span class="oui-radio__label"
-                                  data-i18n-static="domain_tab_REDIRECTION_add_step4_web_invisible_iframe"></span>
-                            <span class="oui-radio__description"
-                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help', ctrl.getSmallDomainNameOf())"></span>
-                        </label>
+                    <div data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.invisible">
+                        <oui-radio-group data-ng-init="ctrl.newRedirection.step4 = ctrl.choice.iframe"
+                                value="ctrl.newRedirection.step4"
+                                on-change="ctrl.newRedirection.step4 = $event.value">
+                            <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step4_web_invisible_iframe')}}"
+                                    value="{{ctrl.choice.iframe}}">
+                                <oui-radio-description>
+                                    <span data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help', ctrl.getSmallDomainNameOf())"></span>
+                                </oui-radio-description>
+                            </oui-radio>
+                        </oui-radio-group>
                     </div>
 
                     <!-- address target visible invisible (302 iframe) -->
