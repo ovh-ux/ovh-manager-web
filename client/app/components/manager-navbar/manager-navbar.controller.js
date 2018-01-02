@@ -1,8 +1,10 @@
 angular.module("App")
     .controller("managerNavbarCtrl", class ManagerNavbarCtrl {
-        constructor ($element, $document, $timeout, constants, translator, ManagerNavbarService) {
+        constructor ($element, $document, $location, $anchorScroll, $timeout, constants, translator, ManagerNavbarService) {
             this.$element = $element;
             this.$document = $document;
+            this.$location = $location;
+            this.$anchorScroll = $anchorScroll;
             this.$timeout = $timeout;
             this.tr = translator.tr;
             this.currentUniverse = constants.UNIVERS;
@@ -12,6 +14,17 @@ angular.module("App")
         toggleMenu (state, isInternalNav) {
             // Update navbar navigation
             this.navbarNav = this.managerNavbarService.toggleMenu(state, isInternalNav);
+        }
+
+        scrollToMainContent () {
+            const id = "maincontent";
+
+            // Add hash to url and scroll to anchor
+            this.$location.hash(id);
+            this.$anchorScroll();
+
+            // Set focus to target
+            this.$document.find(`#${id}`)[0].focus();
         }
 
         $onInit () {
