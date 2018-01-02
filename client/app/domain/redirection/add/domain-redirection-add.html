@@ -147,31 +147,26 @@
                     <p data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web')"></p>
 
                     <div class="ml-4" data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.visible">
-                        <!-- to web address with visible (301) -->
-                        <div class="oui-radio">
-                            <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionWebVisible301" name="choiceStep4" required
-                                   data-ng-model="ctrl.newRedirection.step4"
-                                   data-ng-value="ctrl.choice.r301">
-                            <label class="oui-radio__label-container" for="choiceTargetRedirectionWebVisible301">
-                                <span class="oui-radio__label"
-                                      data-i18n-static="domain_tab_REDIRECTION_add_step4_web_visible_301"></span>
-                                <span class="oui-radio__description"
-                                      data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_301_help', [ctrl.getSmallDomainNameOf(), ''])"></span>
-                            </label>
-                        </div>
+                        <oui-radio-group data-ng-init="ctrl.newRedirection.step4 = ctrl.choice.r301"
+                                value="ctrl.newRedirection.step4"
+                                on-change="ctrl.newRedirection.step4 = $event.value">
 
-                        <!-- to web address with visible (302) -->
-                        <div class="oui-radio">
-                            <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionWebVisible302" name="choiceStep4" required
-                                   data-ng-model="ctrl.newRedirection.step4"
-                                   data-ng-value="ctrl.choice.r302">
-                            <label class="oui-radio__label-container" for="choiceTargetRedirectionWebVisible302">
-                                <span class="oui-radio__label"
-                                      data-i18n-static="domain_tab_REDIRECTION_add_step4_web_visible_302"></span>
-                                <span class="oui-radio__description"
-                                      data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_302_help', ctrl.getSmallDomainNameOf())"></span>
-                            </label>
-                        </div>
+                            <!-- to web address with visible (301) -->
+                            <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step3_server_ip')}}"
+                                    value="{{ctrl.choice.r301}}">
+                                <oui-radio-description>
+                                    <span data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_301_help', [ctrl.getSmallDomainNameOf(), ''])"></span>
+                                </oui-radio-description>
+                            </oui-radio>
+
+                            <!-- to web address with visible (302) -->
+                            <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step4_web_visible_302')}}"
+                                    value="{{ctrl.choice.r302}}">
+                                <oui-radio-description>
+                                    <span data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_302_help', ctrl.getSmallDomainNameOf())"></span>
+                                </oui-radio-description>
+                            </oui-radio>
+                        </oui-radio-group>
                     </div>
 
                     <!-- to web address with invisible (iframe) -->
