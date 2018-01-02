@@ -208,7 +208,8 @@ angular.module("controllers").controller(
             }
         }
 
-        setTypeVisibility () {
+        setTypeVisibility (event) {
+            this.newRedirection.step3 = event.value;
             if (this.newRedirection.step3 === this.choice.visible) {
                 this.newRedirection.params.visibilityType = "VISIBLE";
             } else if (this.newRedirection.step3 === this.choice.invisible) {

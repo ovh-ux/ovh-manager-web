@@ -46,6 +46,7 @@
                 <oui-radio-group data-ng-init="ctrl.newRedirection.step2 = ctrl.choice.web"
                         value="ctrl.newRedirection.step2"
                         on-change="ctrl.setTargetRedirection($event)">
+
                     <!-- to web address -->    
                     <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step2_web')}}"
                                value="{{ctrl.choice.web}}">
@@ -53,6 +54,7 @@
                             <span data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step2_web_help"></span>
                         </oui-radio-description>
                     </oui-radio>
+
                     <!-- to domain or ip -->
                     <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step2_server')}}"
                                value="{{ctrl.choice.server}}" checked>
@@ -73,33 +75,26 @@
                 <p data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web', ctrl.getTitle())"></p>
 
                 <form class="ml-4" name="ctrl.addRedirectStep3Form">
-                    <!-- visible -->
-                    <div class="oui-radio">
-                        <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionWebVisible" name="choiceStep3" required
-                               data-ng-change="ctrl.setTypeVisibility()"
-                               data-ng-model="ctrl.newRedirection.step3"
-                               data-ng-value="ctrl.choice.visible">
-                        <label class="oui-radio__label-container" for="choiceTargetRedirectionWebVisible">
-                            <span class="oui-radio__label"
-                                  data-i18n-static="domain_tab_REDIRECTION_add_step3_web_visible"></span>
-                            <span class="oui-radio__description"
-                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web_visible_help', ctrl.getSmallDomainNameOf())"></span>
-                        </label>
-                    </div>
+                    <oui-radio-group data-ng-init="ctrl.newRedirection.step3 = ctrl.choice.visible"
+                            value="ctrl.newRedirection.step3"
+                            on-change="ctrl.setTypeVisibility($event)">
 
-                    <!-- invisible -->
-                    <div class="oui-radio">
-                        <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionWebInvisible" name="choiceStep3" required
-                               data-ng-change="ctrl.setTypeVisibility()"
-                               data-ng-model="ctrl.newRedirection.step3"
-                               data-ng-value="ctrl.choice.invisible">
-                        <label class="oui-radio__label-container" for="choiceTargetRedirectionWebInvisible">
-                            <span class="oui-radio__label"
-                                  data-i18n-static="domain_tab_REDIRECTION_add_step3_web_invisible"></span>
-                            <span class="oui-radio__description"
-                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web_invisible_help', ctrl.getSmallDomainNameOf())"></span>
-                        </label>
-                    </div>
+                        <!-- visible -->    
+                        <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step3_web_visible')}}"
+                                value="{{ctrl.choice.visible}}">
+                            <oui-radio-description>
+                                <span data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web_visible_help', ctrl.getSmallDomainNameOf())"></span>
+                            </oui-radio-description>
+                        </oui-radio>
+
+                        <!-- invisible -->
+                        <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step3_web_invisible')}}"
+                                value="{{ctrl.choice.invisible}}" checked>
+                            <oui-radio-description>
+                                <span data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web_invisible_help', ctrl.getSmallDomainNameOf())"></span>
+                            </oui-radio-description>
+                        </oui-radio>
+                    </oui-radio-group>
                 </form>
             </div>
 
