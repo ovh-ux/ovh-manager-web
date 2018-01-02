@@ -193,15 +193,13 @@ angular.module("controllers").controller(
             }
         }
 
-        setTargetRedirection (event) {
-            this.newRedirection.step2 = event.value;
+        setTargetRedirection () {
             this.newRedirection.step3 = null;
             this.newRedirection.params.visibilityType = null;
             this.newRedirection.params.typeRedirection = null;
         }
 
-        setTypeRedirection (event) {
-            this.newRedirection.step3 = event.value;
+        setTypeRedirection () {
             if (this.newRedirection.step3 === this.choice.cname) {
                 this.newRedirection.params.typeRedirection = this.typeRedirection.cname;
             } else {
@@ -209,8 +207,7 @@ angular.module("controllers").controller(
             }
         }
 
-        setTypeVisibility (event) {
-            this.newRedirection.step3 = event.value;
+        setTypeVisibility () {
             if (this.newRedirection.step3 === this.choice.visible) {
                 this.newRedirection.params.visibilityType = "VISIBLE";
             } else if (this.newRedirection.step3 === this.choice.invisible) {
