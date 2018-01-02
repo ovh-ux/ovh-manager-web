@@ -200,7 +200,8 @@ angular.module("controllers").controller(
             this.newRedirection.params.typeRedirection = null;
         }
 
-        setTypeRedirection () {
+        setTypeRedirection (event) {
+            this.newRedirection.step3 = event.value;
             if (this.newRedirection.step3 === this.choice.cname) {
                 this.newRedirection.params.typeRedirection = this.typeRedirection.cname;
             } else {

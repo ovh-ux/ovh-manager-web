@@ -57,7 +57,7 @@
 
                     <!-- to domain or ip -->
                     <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step2_server')}}"
-                               value="{{ctrl.choice.server}}" checked>
+                               value="{{ctrl.choice.server}}">
                         <oui-radio-description>
                             <span data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step2_server_help"></span>
                         </oui-radio-description>
@@ -89,7 +89,7 @@
 
                         <!-- invisible -->
                         <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step3_web_invisible')}}"
-                                value="{{ctrl.choice.invisible}}" checked>
+                                value="{{ctrl.choice.invisible}}">
                             <oui-radio-description>
                                 <span data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web_invisible_help', ctrl.getSmallDomainNameOf())"></span>
                             </oui-radio-description>
@@ -103,33 +103,26 @@
                 <p data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server', ctrl.getTitle())"></p>
 
                 <form class="ml-4" name="ctrl.addRedirectStep3Form">
-                    <!-- IP -->
-                    <div class="oui-radio">
-                        <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionServerIp" name="choiceStep3" required
-                               data-ng-change="ctrl.setTypeRedirection()"
-                               data-ng-model="ctrl.newRedirection.step3"
-                               data-ng-value="ctrl.choice.ip">
-                        <label class="oui-radio__label-container" for="choiceTargetRedirectionServerIp">
-                            <span class="oui-radio__label"
-                                  data-i18n-static="domain_tab_REDIRECTION_add_step3_server_ip"></span>
-                            <span class="oui-radio__description"
-                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_ip_help', ctrl.getSmallDomainNameOf())"></span>
-                        </label>
-                    </div>
+                    <oui-radio-group data-ng-init="ctrl.newRedirection.step3 = ctrl.choice.ip"
+                            value="ctrl.newRedirection.step3"
+                            on-change="ctrl.setTypeRedirection($event)">
 
-                    <!-- CNAME -->
-                    <div class="oui-radio">
-                        <input type="radio" class="oui-radio__input" id="choiceTargetRedirectionServerCname" name="choiceStep3" required
-                               data-ng-change="ctrl.setTypeRedirection()"
-                               data-ng-model="ctrl.newRedirection.step3"
-                               data-ng-value="ctrl.choice.cname">
-                        <label class="oui-radio__label-container" for="choiceTargetRedirectionServerCname">
-                            <span class="oui-radio__label"
-                                  data-i18n-static="domain_tab_REDIRECTION_add_step3_server_cname"></span>
-                            <span class="oui-radio__description"
-                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_cname_help', ctrl.getSmallDomainNameOf())"></span>
-                        </label>
-                    </div>
+                        <!-- IP -->    
+                        <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step3_server_ip')}}"
+                                value="{{ctrl.choice.ip}}">
+                            <oui-radio-description>
+                                <span data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_ip_help', ctrl.getSmallDomainNameOf())"></span>
+                            </oui-radio-description>
+                        </oui-radio>
+
+                        <!-- CNAME -->
+                        <oui-radio label="{{tr('domain_tab_REDIRECTION_add_step3_server_cname')}}"
+                                value="{{ctrl.choice.cname}}">
+                            <oui-radio-description>
+                                <span data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_cname_help', ctrl.getSmallDomainNameOf())"></span>
+                            </oui-radio-description>
+                        </oui-radio>
+                    </oui-radio-group>
                 </form>
                 <div class="alert alert-warning" role="alert"
                      data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_cname_warning', [ctrl.getSmallDomainNameOf(), ''])"
