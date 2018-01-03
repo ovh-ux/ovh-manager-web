@@ -73,8 +73,6 @@
                data-i18n-static="domain_configuration_dns_entry_add_dmarc_aspf"></label>
         <div class="col-md-7" data-ng-init="ctrl.model.target.aspf = 'r'">
 
-            {{ctrl.model.target.aspf}}
-
             <oui-radio text="{{::tr('domain_configuration_dns_entry_add_dmarc_aspf_r')}}"
                     on-change="ctrl.setTargetValue('DMARC')"
                     model="ctrl.model.target.aspf"
