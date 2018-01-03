@@ -8,25 +8,21 @@
              data-wizard-step-valid="!ctrl.loading">
 
             <p data-i18n-static="domain_configuration_zonedns_reset_question"></p>
-            <form class="ml-4">
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="zoneResetMinimized-yes" name="zoneReset.minimized"
-                           data-ng-model="ctrl.zoneReset.minimized"
-                           data-ng-value="true">
-                    <label class="oui-radio__label-container" for="zoneResetMinimized-yes">
-                        <span class="oui-radio__label"
-                              data-i18n-static="domain_configuration_zonedns_reset_minimized_yes"></span>
-                    </label>
-                </div>
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="zoneResetMinimized-no" name="zoneReset.minimized"
-                           data-ng-model="ctrl.zoneReset.minimized"
-                           data-ng-value="false">
-                    <label class="oui-radio__label-container" for="zoneResetMinimized-no">
-                        <span class="oui-radio__label"
-                              data-i18n-static="domain_configuration_zonedns_reset_minimized_no"></span>
-                    </label>
-                </div>
+            <form class="ml-4" data-ng-init="ctrl.zoneReset.minimized = false">
+
+                <oui-radio text="{{::tr('domain_configuration_zonedns_reset_minimized_yes')}}"
+                        on-change="ctrl.zoneReset.minimized = true"
+                        model="ctrl.zoneReset.minimized"
+                        name="zone-reset"
+                        value="true">                       
+                </oui-radio>
+
+                <oui-radio text="{{::tr('domain_configuration_zonedns_reset_minimized_yes')}}"
+                        on-change="ctrl.zoneReset.minimized = false"
+                        model="ctrl.zoneReset.minimized"
+                        name="zone-reset"
+                        value="false" checked>                       
+                </oui-radio>
             </form>
 
             <div class="alert alert-warning mt-5" role="alert"
