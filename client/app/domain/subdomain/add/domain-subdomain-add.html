@@ -31,36 +31,31 @@
                            data-ng-if="ctrl.addSubDomainForm.subdomain.$dirty && ctrl.addSubDomainForm.subdomain.$invalid"></small>
                 </div>
 
-                <fieldset>
+                <fieldset data-ng-init="ctrl.model.action = 'addToMutu'">
                     <legend data-i18n-static="domain_configuration_add_subdomain_iwant"></legend>
-                    <div class="oui-radio">
-                        <input type="radio" class="oui-radio__input" name="action" id="choiceRedirection" value="redirection" required
-                               data-ng-model="ctrl.model.action">
-                        <label class="oui-radio__label-container" for="choiceRedirection">
-                            <span class="oui-radio__label"
-                                  data-i18n-static="domain_configuration_add_subdomain_redir"></span>
-                            <span class="oui-radio__description"
-                                  data-i18n-static="domain_configuration_add_subdomain_redir_sample"></span>
-                        </label>
-                    </div>
-                    <div class="oui-radio">
-                        <input type="radio" class="oui-radio__input" name="action" id="choiceAddRecord" value="addRecord" required
-                               data-ng-model="ctrl.model.action">
-                        <label class="oui-radio__label-container" for="choiceAddRecord">
-                            <span class="oui-radio__label"
-                                  data-i18n-static="domain_configuration_add_subdomain_add_record"></span>
-                            <span class="oui-radio__description"
-                                  data-i18n-static="domain_configuration_add_subdomain_add_record_sample"></span>
-                        </label>
-                    </div>
-                    <div class="oui-radio">
-                        <input type="radio" class="oui-radio__input" name="action" id="choiceAddToMutu" value="addToMutu" required
-                               data-ng-model="ctrl.model.action">
-                        <label class="oui-radio__label-container" for="choiceAddToMutu">
-                            <span class="oui-radio__label"
-                                  data-i18n-static="domain_configuration_add_subdomain_add_dom"></span>
-                        </label>
-                    </div>
+
+                    <oui-radio text="{{::tr('domain_configuration_add_subdomain_redir')}}"
+                            description="{{::tr('domain_configuration_add_subdomain_redir_sample')}}"
+                            on-change="ctrl.model.action = 'redirection'"
+                            model="ctrl.model.action"
+                            name="add-subdomain"
+                            value="'redirection'">
+                    </oui-radio>
+
+                    <oui-radio text="{{::tr('domain_configuration_add_subdomain_add_record')}}"
+                            description="{{::tr('domain_configuration_add_subdomain_add_record_sample')}}"
+                            on-change="ctrl.model.action = 'addRecord'"
+                            model="ctrl.model.action"
+                            name="add-subdomain"
+                            value="'addRecord'">
+                    </oui-radio>
+
+                    <oui-radio text="{{::tr('domain_configuration_add_subdomain_add_dom')}}"
+                            on-change="ctrl.model.action = 'addToMutu'"
+                            model="ctrl.model.action"
+                            name="add-subdomain"
+                            value="'addToMutu'" checked>
+                    </oui-radio>
                 </fieldset>
             </form>
         </div>
