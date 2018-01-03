@@ -92,88 +92,70 @@
     <div class="form-group">
         <label class="control-label col-md-3"
                data-i18n-static="domain_configuration_dns_entry_add_servicetypes"></label>
-        <div class="col-md-9">
-            <div class="oui-radio">
-                <input type="radio" class="oui-radio__input" id="s-all" name="s" value="*"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.s">
-                <label class="oui-radio__label-container" for="s-all">
-                    <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_servicetypes_all"></span>
-                </label>
-            </div>
-            <div class="oui-radio">
-                <input type="radio" class="oui-radio__input" id="s-email" name="s" value="email"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.s">
-                <label class="oui-radio__label-container" for="s-email">
-                    <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_servicetypes_email"></span>
-                </label>
-            </div>
-            <div class="oui-radio">
-                <input type="radio" class="oui-radio__input" id="s-none" name="s" value=""
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.s">
-                <label class="oui-radio__label-container" for="s-none">
-                    <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_servicetypes_none"></span>
-                </label>
-            </div>
+        <div class="col-md-9" data-ng-init="ctrl.model.target.s = ''">
+
+                <oui-radio text="{{::tr('domain_configuration_dns_entry_add_servicetypes_all')}}"
+                        on-change="ctrl.setTargetValue('DKIM')"
+                        model="ctrl.model.target.s"
+                        name="dkim-type"
+                        value="'*'">
+                </oui-radio>
+
+                <oui-radio text="{{::tr('domain_configuration_dns_entry_add_servicetypes_email')}}"
+                        on-change="ctrl.setTargetValue('DKIM')"
+                        model="ctrl.model.target.s"
+                        name="dkim-type"
+                        value="'email'">
+                </oui-radio>
+
+                <oui-radio text="{{::tr('domain_configuration_dns_entry_add_servicetypes_none')}}"
+                        on-change="ctrl.setTargetValue('DKIM')"
+                        model="ctrl.model.target.s"
+                        name="dkim-type"
+                        value="''" checked>
+                </oui-radio>
         </div>
     </div>
 
     <div class="form-group">
         <label class="control-label col-md-3"
                data-i18n-static="domain_configuration_dns_entry_add_t_y"></label>
-        <div class="col-md-9">
-            <div class="oui-radio">
-                <input type="radio" class="oui-radio__input" id="t-y-no" name="t_y"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.t.y"
-                       data-ng-value="false">
-                <label class="oui-radio__label-container" for="t-y-no">
-                    <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_t_y_no"></span>
-                </label>
-            </div>
-            <div class="oui-radio">
-                <input type="radio" class="oui-radio__input" id="t-y-yes" name="t_y"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.t.y"
-                       data-ng-value="true">
-                <label class="oui-radio__label-container" for="t-y-yes">
-                    <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_t_y_yes"></span>
-                </label>
-            </div>
+        <div class="col-md-9" data-ng-init="ctrl.model.target.t.y = false">
+
+            <oui-radio text="{{::tr('domain_configuration_dns_entry_add_t_y_no')}}"
+                    on-change="ctrl.setTargetValue('DKIM')"
+                    model="ctrl.model.target.t.y"
+                    name="dkim-test-mode"
+                    value="false" checked>
+            </oui-radio>
+
+            <oui-radio text="{{::tr('domain_configuration_dns_entry_add_t_y_yes')}}"
+                    on-change="ctrl.setTargetValue('DKIM')"
+                    model="ctrl.model.target.t.y"
+                    name="dkim-test-mode"
+                    value="true">
+            </oui-radio>
         </div>
     </div>
 
     <div class="form-group">
         <label class="control-label col-md-3"
                data-i18n-static="domain_configuration_dns_entry_add_t_s"></label>
-        <div class="col-md-9">
-            <div class="oui-radio">
-                <input type="radio" class="oui-radio__input" id="t-s-yes" name="t_s"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.t.s"
-                       data-ng-value="true">
-                <label class="oui-radio__label-container" for="t-s-yes">
-                    <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_t_s_yes"></span>
-                </label>
-            </div>
-            <div class="oui-radio">
-                <input type="radio" class="oui-radio__input" id="t-s-no" name="t_s"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.t.s"
-                       data-ng-value="false">
-                <label class="oui-radio__label-container" for="t-s-no">
-                    <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_t_s_no"></span>
-                </label>
-            </div>
+        <div class="col-md-9" data-ng-init="ctrl.model.target.t.s = true">
+
+            <oui-radio text="{{::tr('domain_configuration_dns_entry_add_t_s_yes')}}"
+                    on-change="ctrl.setTargetValue('DKIM')"
+                    model="ctrl.model.target.t.s"
+                    name="dkim-subdomain"
+                    value="true" checked>
+            </oui-radio>
+
+            <oui-radio text="{{::tr('domain_configuration_dns_entry_add_t_s_no')}}"
+                    on-change="ctrl.setTargetValue('DKIM')"
+                    model="ctrl.model.target.t.s"
+                    name="dkim-subdomain"
+                    value="false">
+            </oui-radio>
         </div>
     </div>
 
