@@ -11,25 +11,21 @@
 
             <div data-ng-if="!ctrl.loading">
                 <p data-i18n-static="domain_tab_ZONE_no_zone_activate_question"></p>
-                <form class="mt-4">
-                    <div class="oui-radio">
-                        <input type="radio" class="oui-radio__input" name="activationZone.minimized" id="activationZoneMinimized-yes"
-                               data-ng-model="ctrl.activationZone.minimized"
-                               data-ng-value="true">
-                        <label class="oui-radio__label-container" for="activationZoneMinimized-yes">
-                        <span class="oui-radio__label"
-                              data-i18n-static="domain_tab_ZONE_no_zone_activate_minimized_yes"></span>
-                        </label>
-                    </div>
-                    <div class="oui-radio">
-                        <input type="radio" class="oui-radio__input" name="activationZone.minimized" id="activationZoneMinimized-no"
-                               data-ng-model="ctrl.activationZone.minimized"
-                               data-ng-value="false">
-                        <label class="oui-radio__label-container" for="activationZoneMinimized-no">
-                        <span class="oui-radio__label"
-                              data-i18n-static="domain_tab_ZONE_no_zone_activate_minimized_no"></span>
-                        </label>
-                    </div>
+                <form class="mt-4" data-ng-init="ctrl.activationZone.minimized = false">
+
+                    <oui-radio text="{{::tr('domain_tab_ZONE_no_zone_activate_minimized_yes')}}"
+                            on-change="ctrl.activationZone.minimized = true"
+                            model="ctrl.activationZone.minimized"
+                            name="activate-dns"
+                            value="true">
+                    </oui-radio>
+
+                    <oui-radio text="{{::tr('domain_tab_ZONE_no_zone_activate_minimized_no')}}"
+                            on-change="ctrl.activationZone.minimized = false"
+                            model="ctrl.activationZone.minimized"
+                            name="activate-dns"
+                            value="false">
+                    </oui-radio>
                 </form>
             </div>
         </div>
