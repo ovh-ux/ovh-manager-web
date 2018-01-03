@@ -71,25 +71,23 @@
     <div class="form-group">
         <label class="control-label col-md-5"
                data-i18n-static="domain_configuration_dns_entry_add_dmarc_aspf"></label>
-        <div class="col-md-7">
-            <div class="oui-radio">
-                <input type="radio" class="oui-radio__input" id="aspf-r" name="aspf" value="r"
-                       data-ng-change="ctrl.setTargetValue('DMARC')"
-                       data-ng-model="ctrl.model.target.aspf">
-                <label class="oui-radio__label-container" for="aspf-r">
-                    <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_dmarc_aspf_r"></span>
-                </label>
-            </div>
-            <div class="oui-radio">
-                <input type="radio" class="oui-radio__input" id="aspf-s" name="aspf" value="s"
-                       data-ng-change="ctrl.setTargetValue('DMARC')"
-                       data-ng-model="ctrl.model.target.aspf">
-                <label class="oui-radio__label-container" for="aspf-s">
-                    <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_dmarc_aspf_s"></span>
-                </label>
-            </div>
+        <div class="col-md-7" data-ng-init="ctrl.model.target.aspf = 'r'">
+
+            {{ctrl.model.target.aspf}}
+
+            <oui-radio text="{{::tr('domain_configuration_dns_entry_add_dmarc_aspf_r')}}"
+                    on-change="ctrl.setTargetValue('DMARC')"
+                    model="ctrl.model.target.aspf"
+                    name="dmarc-entry"
+                    value="'r'" checked>
+            </oui-radio>
+
+            <oui-radio text="{{::tr('domain_configuration_dns_entry_add_dmarc_aspf_s')}}"
+                    on-change="ctrl.setTargetValue('DMARC')"
+                    model="ctrl.model.target.aspf"
+                    name="dmarc-entry"
+                    value="'s'">
+            </oui-radio>
         </div>
     </div>
 
