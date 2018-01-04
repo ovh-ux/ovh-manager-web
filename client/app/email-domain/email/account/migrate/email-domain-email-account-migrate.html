@@ -43,17 +43,15 @@
                               data-ng-bind="ctrl.migrate.serviceType"></span>
 
                         <!-- Multiple Services -->
-                        <div class="oui-radio"
-                             data-ng-if="ctrl.availableServices.length > 1"
+                        <div data-ng-if="ctrl.availableServices.length > 1"
                              data-ng-repeat="serviceType in ctrl.availableServices">
-                            <input type="radio" class="oui-radio__input" id="migrateServiceType{{$index}}" name="serviceType"
-                                   data-ng-change="ctrl.setWizardTitle(ctrl.migrate.serviceType)"
-                                   data-ng-model="ctrl.migrate.serviceType"
-                                   data-ng-value="serviceType">
-                            <label class="oui-radio__label-container" for="migrateServiceType{{$index}}">
-                                <span class="oui-radio__label"
-                                      data-ng-bind="::serviceType"></span>
-                            </label>
+
+                            <oui-radio text="{{::serviceType}}"
+                                    on-change="ctrl.migrate.serviceType = serviceType; ctrl.setWizardTitle(ctrl.migrate.serviceType)"
+                                    model="ctrl.migrate.serviceType"
+                                    name="email-migrate"
+                                    value="serviceType">
+                            </oui-radio>     
                         </div>
                     </div>
 
