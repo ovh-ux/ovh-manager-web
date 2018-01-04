@@ -10,31 +10,27 @@
              data-wizard-step-on-next="createCertif">
 
             <form name="hostingOrderSslForm">
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="sslType-free" name="sslType" value="letsencrypt"
-                           data-ng-disabled="!ctrl.validDomain"
-                           data-ng-model="ctrl.sslType">
-                    <label class="oui-radio__label-container" for="sslType-free">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_dashboard_ssl_order_free"></span>
-                    </label>
-                </div>
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="sslType-payable" name="sslType" value="payable"
-                           data-ng-model="ctrl.sslType">
-                    <label class="oui-radio__label-container" for="sslType-payable">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_dashboard_ssl_order_payable"></span>
-                    </label>
-                </div>
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="sslType-import" name="sslType" value="import"
-                           data-ng-model="ctrl.sslType">
-                    <label class="oui-radio__label-container" for="sslType-import">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_dashboard_ssl_order_import"></span>
-                    </label>
-                </div>
+
+                <oui-radio text="{{::tr('hosting_dashboard_ssl_order_free')}}"
+                        disabled="!ctrl.validDomain"
+                        model="ctrl.sslType"
+                        name="hosting-ssl"
+                        value="'letsencrypt'" checked>
+                </oui-radio>
+
+                <oui-radio text="{{::tr('hosting_dashboard_ssl_order_payable')}}"
+                        disabled="!ctrl.validDomain"
+                        model="ctrl.sslType"
+                        name="hosting-ssl"
+                        value="'payable'">
+                </oui-radio>
+
+                <oui-radio text="{{::tr('hosting_dashboard_ssl_order_import')}}"
+                        disabled="!ctrl.validDomain"
+                        model="ctrl.sslType"
+                        name="hosting-ssl"
+                        value="'import'">
+                </oui-radio>
             </form>
 
             <div class="alert alert-warning mt-5" role="alert"
