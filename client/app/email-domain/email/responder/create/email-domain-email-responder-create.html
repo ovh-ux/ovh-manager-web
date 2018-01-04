@@ -23,25 +23,21 @@
                 <div class="form-group" data-ng-if="!ctrl.isDelegated">
                     <span class="col-md-4 control-label text-lg-right oui-label"
                           data-i18n-static="email_tab_modal_create_responder_type"></span>
-                    <div class="col-md-8">
-                        <div class="oui-radio">
-                            <input type="radio" class="oui-radio__input" id="responderType-attached" name="responderType" value="typeAttached"
-                                   data-ng-change="ctrl.resetResponderAccount()"
-                                   data-ng-model="ctrl.model.responderType">
-                            <label class="oui-radio__label-container" for="responderType-attached">
-                                <span class="oui-radio__label"
-                                      data-i18n-static="email_tab_modal_create_responder_type_attached"></span>
-                            </label>
-                        </div>
-                        <div class="oui-radio">
-                            <input type="radio" class="oui-radio__input" id="responderType-free" name="responderType" value="typeFree"
-                                   data-ng-change="ctrl.resetResponderAccount()"
-                                   data-ng-model="ctrl.model.responderType">
-                            <label class="oui-radio__label-container" for="responderType-free">
-                                <span class="oui-radio__label"
-                                      data-i18n-static="email_tab_modal_create_responder_type_free"></span>
-                            </label>
-                        </div>
+                    <div class="col-md-8" data-ng-init="ctrl.model.responderType = 'typeAttached'">
+                          
+                        <oui-radio text="{{::tr('email_tab_modal_create_responder_type_attached')}}"
+                                on-change="ctrl.model.responderType = 'typeAttached'; ctrl.resetResponderAccount()"
+                                model="ctrl.model.responderType"
+                                name="email-responder"
+                                value="'typeAttached'" checked>                       
+                        </oui-radio>
+
+                        <oui-radio text="{{::tr('email_tab_modal_create_responder_type_free')}}"
+                                on-change="ctrl.model.responderType = 'typeFree'; ctrl.resetResponderAccount()"
+                                model="ctrl.model.responderType"
+                                name="email-responder"
+                                value="'typeFree'">                       
+                        </oui-radio>
                     </div>
                 </div>
 
@@ -101,24 +97,21 @@
                 <div class="form-group">
                     <span class="col-md-4 control-label text-lg-right oui-label"
                           data-i18n-static="email_tab_modal_create_responder_duration"></span>
-                    <div class="col-md-4">
-                        <div class="oui-radio">
-                            <input type="radio" class="oui-radio__input" id="responderDuration-temporary" name="responderDuration" value="temporary"
-                                   data-ng-model="ctrl.model.responderDuration">
-                            <label class="oui-radio__label-container" for="responderDuration-temporary">
-                                <span class="oui-radio__label"
-                                      data-i18n-static="email_tab_modal_create_responder_temporary"></span>
-                            </label>
-                        </div>
-                        <div class="oui-radio">
-                            <input type="radio" class="oui-radio__input" id="responderDuration-permanent" name="responderDuration" value="permanent"
-                                   data-ng-change="ctrl.resetResponderDuration()"
-                                   data-ng-model="ctrl.model.responderDuration">
-                             <label class="oui-radio__label-container" for="responderDuration-permanent">
-                                 <span class="oui-radio__label"
-                                       data-i18n-static="email_tab_modal_create_responder_permanent"></span>
-                            </label>
-                        </div>
+                    <div class="col-md-4" data-ng-init="ctrl.model.responderType = 'temporary'">
+
+                        <oui-radio text="{{::tr('email_tab_modal_create_responder_temporary')}}"
+                                on-change="ctrl.model.responderDuration = 'temporary'; ctrl.resetResponderDuration()"
+                                model="ctrl.model.responderDuration"
+                                name="email-responder-duration"
+                                value="'temporary'" checked>                       
+                        </oui-radio>
+
+                        <oui-radio text="{{::tr('email_tab_modal_create_responder_permanent')}}"
+                                on-change="ctrl.model.responderDuration = 'permanent'; ctrl.resetResponderDuration()"
+                                model="ctrl.model.responderDuration"
+                                name="email-responder-duration"
+                                value="'permanent'">                       
+                        </oui-radio>
                     </div>
                 </div>
 
