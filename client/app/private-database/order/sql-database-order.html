@@ -26,19 +26,17 @@
                         <legend class="border-0"
                                 data-i18n-static="privateDatabase_order_sql_type_sub_title"></legend>
 
-                        <div class="oui-radio" data-ng-repeat="item in sqlOrderCtrl.data track by $index">
-                            <input type="radio" class="oui-radio__input" name="sql_type" id="sqlType-{{$index}}" required
-                                   data-ng-change="sqlOrderCtrl.changeType()"
-                                   data-ng-disabled="item.key ==='start' && (!item.hostings || item.hostings.length === 0)"
-                                   data-ng-model="sqlOrderCtrl.model.type"
-                                   data-ng-value="item.offer">
-                            <label class="oui-radio__label-container" for="sqlType-{{$index}}">
-                                <span class="oui-radio__label">
-                                    <span data-ng-bind-html="tr('privateDatabase_order_sql_type_' + item.key + '_label')"></span>
-                                    <span class="fa fa-question-circle"
-                                          data-uib-tooltip-template="'private-database/order/tooltip/sql-database-order-' + item.key + '.html'"></span>
-                                </span>
-                            </label>
+                        <div data-ng-repeat="item in sqlOrderCtrl.data track by $index">
+                            <oui-radio class="oui-input_inline"
+                                    text="{{::tr('privateDatabase_order_sql_type_' + item.key + '_label')}}"
+                                    on-change="sqlOrderCtrl.changeType()"
+                                    model="sqlOrderCtrl.model.type"
+                                    disabled="item.key ==='start' && (!item.hostings || item.hostings.length === 0)"
+                                    name="db-order"
+                                    value="item.offer">                       
+                            </oui-radio>
+                            <span class="fa fa-question-circle"
+                                data-uib-tooltip-template="'private-database/order/tooltip/sql-database-order-' + item.key + '.html'"></span>
                         </div>
                     </fieldset>
 
@@ -151,21 +149,16 @@
                         <fieldset>
                             <legend class="border-0"
                                     data-i18n-static="privateDatabase_order_sql_period_sub_title"></legend>
-                            <div class="oui-radio"
-                                 data-ng-repeat="duration in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).durations track by $index">
-                                <input type="radio" class="oui-radio__input" name="durationRadio[$index]" id="durationRadio-{{$index}}" required
-                                       data-ng-click="contractsValidated = false"
-                                       data-ng-disabled="sqlOrderCtrl.loading.prices || sqlOrderCtrl.durations.length === 1"
-                                       data-ng-model="sqlOrderCtrl.model.duration"
-                                       data-ng-value="duration.duration">
-                                <label class="oui-radio__label-container" for="durationRadio-{{$index}}">
-                                    <span class="oui-radio__label">
-                                        <span data-ng-bind="duration.duration | duration:'longDate'"></span>&nbsp;:
-                                        <span data-ng-bind-html="duration.details.prices | price:sqlOrderCtrl.user.ovhSubsidiary"></span>
-                                        <oui-spinner data-size="s"
-                                                    data-ng-if="!duration.details.prices"></oui-spinner>
-                                    </span>
-                                </label>
+                            
+                            <div data-ng-repeat="duration in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).durations track by $index">
+
+                                <oui-radio text="{{duration.duration | duration:'longDate'}}{{duration.details.prices | price:sqlOrderCtrl.user.ovhSubsidiary}}"
+                                        on-change="contractsValidated = false"
+                                        model="sqlOrderCtrl.model.duration"
+                                        disabled="sqlOrderCtrl.loading.prices || sqlOrderCtrl.durations.length === 1"
+                                        name="db-price"
+                                        value="duration.duration">
+                                </oui-radio>
                             </div>
                         </fieldset>
 
