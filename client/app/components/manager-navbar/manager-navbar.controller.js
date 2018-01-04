@@ -38,15 +38,23 @@ angular.module("App")
 
         $postLink () {
             // Close dropdown menu on document click, only if a menu is open
-            angular.element(this.$document).on("click", () => {
+            this.$document.on("click", () => {
                 if (this.navbarNav) {
                     this.$timeout(() => this.toggleMenu());
                 }
             });
 
             // Avoid click propagation on $element
-            angular.element(this.$element).on("click", (e) => {
+            this.$element.on("click", (e) => {
                 e.stopPropagation();
+            });
+
+            // Support keyboard
+            this.$document.on("keydown", (e) => {
+                // ESC to close menu
+                if (this.navbarNav && e.which === 27) {
+                    this.$timeout(() => this.toggleMenu());
+                }
             });
         }
     });

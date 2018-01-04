@@ -78,29 +78,16 @@ angular.module("App")
                 };
 
                 if (domain.subProducts) {
-                    const subLinks = [{
-                        label: domain.displayName,
-                        title: domain.displayName,
-                        loadOnState: "app.domain.alldom",
-                        loadOnStateParams: {
-                            allDom: domain.displayName
+                    domainItem.subLinks = _.map(domain.subProducts, (subDomain) => ({
+                        name: subDomain.name,
+                        label: subDomain.displayName,
+                        title: subDomain.displayName,
+                        state: "app.domain.alldom",
+                        stateParams: {
+                            allDom: domain.displayName,
+                            productId: subDomain.name
                         }
-                    }];
-
-                    _.forEach(domain.subProducts, (subDomain) =>
-                        subLinks.push({
-                            name: subDomain.name,
-                            label: subDomain.displayName,
-                            title: subDomain.displayName,
-                            state: "app.domain.alldom",
-                            stateParams: {
-                                allDom: domain.displayName,
-                                productId: subDomain.name
-                            }
-                        })
-                    );
-
-                    domainItem.subLinks = subLinks;
+                    }));
                 }
 
                 domainsMenu.push(domainItem);

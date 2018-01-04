@@ -5,7 +5,8 @@ angular.module("App")
             headerBreadcrumb: "@?",
             menuName: "@",
             menuLinks: "<",
-            navbarNav: "="
+            navbarNav: "=",
+            isOpen: "<"
         },
         controller: "managerNavbarMenuCtrl",
         templateUrl: "components/manager-navbar/manager-navbar-menu/manager-navbar-menu.html"

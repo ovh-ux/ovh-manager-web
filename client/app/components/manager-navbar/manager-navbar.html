@@ -12,7 +12,8 @@
     <!-- Toggler -->
     <button class="oui-navbar-toggler" type="button"
         aria-haspopup="true" aria-expanded="{{$ctrl.navbarNav['toggler']}}"
-        data-ng-click="$ctrl.toggleMenu('toggler')">
+        data-ng-click="$ctrl.toggleMenu('toggler')"
+        data-keyboard-navigation="toggler">
         <span class="oui-navbar-toggler__hamburger">
             <span></span>
             <span></span>
@@ -28,23 +29,28 @@
                     data-ng-class="{ 'oui-navbar-link_active': managerLink.name === $ctrl.currentUniverse }"
                     data-ng-click="$ctrl.toggleMenu()"
                     data-ng-href="{{::managerLink.url}}"
-                    data-ng-bind="::managerLink.title">
+                    data-ng-bind="::managerLink.title"
+                    data-keyboard-navigation="toggler"
+                    data-is-last="::$last">
                 </a>
-                <button class="oui-navbar-link" type="button"
+                <button class="oui-navbar-link" id="{{::'manager-navbar__' + managerLink.name + '_toggler'}}" type="button"
                     aria-haspopup="true" aria-expanded="{{$ctrl.navbarNav[managerLink.name]}}"
                     data-ng-if="::!!managerLink.subLinks"
                     data-ng-class="{ 'oui-navbar-link_active': managerLink.name === $ctrl.currentUniverse }"
                     data-ng-click="$ctrl.toggleMenu(managerLink.name, true)"
-                    data-ng-bind="::managerLink.title">
+                    data-ng-bind="::managerLink.title"
+                    data-keyboard-navigation="toggler"
+                    data-is-last="::$last">
                 </button>
 
                 <!-- Navbar Menu -->
                 <manager-navbar-menu
-                    ng-if="::!!managerLink.subLinks"
-                    header-title="{{::managerLink.label}}"
-                    menu-name="{{::managerLink.name}}"
-                    menu-links="::managerLink.subLinks"
-                    navbar-nav="$ctrl.navbarNav">
+                    data-ng-if="::!!managerLink.subLinks"
+                    data-header-title="{{::managerLink.label}}"
+                    data-menu-name="{{::managerLink.name}}"
+                    data-menu-links="::managerLink.subLinks"
+                    data-navbar-nav="$ctrl.navbarNav"
+                    data-is-open="$ctrl.navbarNav[managerLink.name]">
                 </manager-navbar-menu>
                 <!-- /Navbar Menu -->
 
@@ -82,7 +88,8 @@
         <li class="oui-navbar-list__item" data-ng-repeat="internalLink in $ctrl.navigation.internalLinks">
             <button class="oui-navbar-link oui-navbar-link_icon" type="button"
                 aria-haspopup="true" aria-expanded="{{$ctrl.navbarNav[internalLink.name]}}"
-                data-ng-click="$ctrl.toggleMenu(internalLink.name)">
+                data-ng-click="$ctrl.toggleMenu(internalLink.name)"
+                data-keyboard-navigation="{{::internalLink.name}}">
                 <span class="oui-icon" aria-hidden="true"
                     data-ng-class="::'navbar-' + internalLink.iconClass">
                 </span>
@@ -117,7 +124,9 @@
                             data-ng-attr-target="{{::subLink.isExternal ? '_blank' : undefined}}"
                             data-ng-class="::subLink.variantClass"
                             data-ng-click="$ctrl.toggleMenu()"
-                            data-ng-href="{{::subLink.url}}">
+                            data-ng-href="{{::subLink.url}}"
+                            data-keyboard-navigation="{{::internalLink.name}}"
+                            data-is-last="::$last">
                             <span data-ng-bind="::subLink.label"></span>
                             <span class="navbar-external-link" aria-hidden="true"
                                 data-ng-if="::subLink.isExternal">
@@ -130,7 +139,9 @@
                             data-ng-if="!!subLink.click"
                             data-ng-class="subLink.variantClass"
                             data-ng-click="subLink.click($ctrl.toggleMenu)"
-                            data-ng-bind="::subLink.label">
+                            data-ng-bind="::subLink.label"
+                            data-keyboard-navigation="{{::internalLink.name}}"
+                            data-is-last="::$last">
                         </button>
                         <!-- Button -->
 
