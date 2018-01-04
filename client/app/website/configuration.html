@@ -19,6 +19,7 @@
                 <oui-radio text="{{::tr('website_creation_type_classic')}}"
                         description="{{::tr('website_creation_type_classic_explanation')}}"
                         on-change="webSiteConfigurationCtrl.site.config.type = 'classic'"
+                        tag-click tag-name="website_configuration_type_classic"
                         model="webSiteConfigurationCtrl.site.config.type"
                         name="website-configuration"
                         value="'classic'" checked>                       
@@ -27,6 +28,7 @@
                 <oui-radio text="{{::tr('website_creation_type_blog')}}"
                         description="{{::tr('website_creation_type_blog_explanation')}}"
                         on-change="webSiteConfigurationCtrl.site.config.type = 'blog'"
+                        tag-click tag-name="website_configuration_type_blog"
                         model="webSiteConfigurationCtrl.site.config.type"
                         name="website-configuration"
                         value="'blog'">                       
@@ -35,6 +37,7 @@
                 <oui-radio text="{{::tr('website_creation_type_shop')}}"
                         description="{{::tr('website_creation_type_shop_explanation')}}"
                         on-change="webSiteConfigurationCtrl.site.config.type = 'shop'"
+                        tag-click tag-name="website_configuration_type_shop"
                         model="webSiteConfigurationCtrl.site.config.type"
                         name="website-configuration"
                         value="'shop'">                       
