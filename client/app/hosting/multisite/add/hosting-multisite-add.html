@@ -23,13 +23,13 @@
                 <p data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step1_title', model.hosting.serviceDisplayName)"></p>
 
                 <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="hostingDomainAttachMode-ovh" name="hostingDomainAttachMode"
-                           data-ng-model="selected.mode"
-                           data-ng-value="model.mode.OVH">
-                    <label class="oui-radio__label-container" for="hostingDomainAttachMode-ovh">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_ovh"></span>
-                    </label>
+
+                    <oui-radio text="{{::tr('hosting_tab_DOMAINS_configuration_add_step1_ovh')}}"
+                        model="selected.mode"
+                        name="multisite-add"
+                        value="model.mode.OVH" checked>                       
+                    </oui-radio>
+
                     <div class="row mt-3" data-ng-show="selected.mode === model.mode.OVH">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="input-group">
@@ -58,15 +58,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="hostingDomainAttachMode-ext" name="hostingDomainAttachMode"
-                           data-ng-model="selected.mode"
-                           data-ng-value="model.mode.EXTERNAL">
-                    <label class="oui-radio__label-container" for="hostingDomainAttachMode-ext">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_external"></span>
-                    </label>
-                </div>
+
+                <oui-radio text="{{::tr('hosting_tab_DOMAINS_configuration_add_step1_external')}}"
+                    model="selected.mode"
+                    name="multisite-add"
+                    value="model.mode.EXTERNAL" checked>                       
+                </oui-radio>
             </div>
         </div>
 
