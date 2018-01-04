@@ -1,7 +1,9 @@
 <div ui-view>
     <div data-ovh-alert="{{alerts.page}}"></div>
 
-    <oui-loader size="l" data-ng-if="ctrlDomain.loading.domainInfos"></oui-loader>
+    <div class="text-center" data-ng-if="ctrlDomain.loading.domainInfos">
+        <oui-spinner class="d-inline-block" size="l"></oui-spinner>
+    </div>
 
     <div data-ng-if="!ctrlDomain.loading.domainInfos && ctrlDomain.domain">
         <div class="page-header">

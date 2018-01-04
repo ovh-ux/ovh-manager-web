@@ -1,7 +1,7 @@
 <div class="container-fluid px-0" data-ng-controller="MailingListsTabModulesCtrl as ctrlMailingLists">
 
     <div class="text-center" data-ng-if="ctrlMailingLists.loading.quotas">
-        <oui-loader size="l" inline="true"></oui-loader>
+        <oui-spinner size="l" class="d-inline-block"></oui-spinner>
     </div>
 
     <div class="alert alert-info" role="alert"
@@ -30,8 +30,8 @@
             <dl class="dl-horizontal dl-lg" data-ng-if="ctrlMailingLists.quotas.mailingList > 0">
                 <dt data-i18n-static="mailing_list_tab_quotas"></dt>
                 <dd class="text-nowrap">
-                    <oui-loader size="s" inline="true"
-                                data-ng-if="ctrlMailingLists.loading.mailingLists"></oui-loader>
+                    <oui-spinner size="s" class="d-inline-block"
+                                data-ng-if="ctrlMailingLists.loading.mailingLists"></oui-spinner>
                     <span data-ng-bind="ctrlMailingLists.mailingLists.length + ' / ' + ctrlMailingLists.quotas.mailingList"
                           data-ng-if="!ctrlMailingLists.loading.mailingLists"></span>
                 </dd>

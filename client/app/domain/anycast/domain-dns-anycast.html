@@ -10,7 +10,7 @@
              data-wizard-step-valid="!ctrl.loading">
 
             <div class="text-center" data-ng-if="ctrl.loading">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner class="d-inline-block"></oui-spinner>
             </div>
 
             <div data-ng-if="!ctrl.loading">
@@ -47,11 +47,12 @@
                             <a data-ng-href="{{contract.url}}" target="_blank" title="{{contract.name}} ({{i18n.common_newtab}})"
                                data-ng-bind="contract.name"></a><span data-ng-if="!$last">, </span><span data-ng-if="$last">.</span>
                         </span>
-                    </span>
-                    <span class="oui-checkbox__icon">
-                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                        <span class="oui-checkbox__icon">
+                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                            <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                        </span>
                     </span>
                 </label>
             </div>
@@ -62,7 +63,7 @@
              data-wizard-step-valid="ctrl.url">
 
             <div class="text-center" data-ng-if="ctrl.loading">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner class="d-inline-block"></oui-spinner>
                 <p data-i18n-static="domain_configuration_dnsanycast_step3_generation_bc"></p>
             </div>
 

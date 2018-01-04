@@ -5,7 +5,7 @@
 <div data-ovh-alert="{{alerts.order}}"></div>
 
 <div class="text-center" data-ng-if="ctrlMXPlanOrder.loading.init">
-    <oui-loader size="l" inline="true"></oui-loader>
+    <oui-spinner size="l" class="d-inline-block"></oui-spinner>
 </div>
 
 <div class="container-fluid px-5" data-ng-if="!ctrlMXPlanOrder.loading.init">
@@ -52,7 +52,7 @@
 
         <!-- step 2-->
         <div class="text-center mt-5" data-ng-if="ctrlMXPlanOrder.loading.offers">
-            <oui-loader inline="true"></oui-loader>
+            <oui-spinner class="d-inline-block"></oui-spinner>
         </div>
 
         <div class="mt-5"
@@ -109,7 +109,7 @@
 
                 <div data-ng-if="ctrlMXPlanOrder.loading.bc">
                     <span data-i18n-static="mxPlan_order_step3_generating"></span>
-                    <oui-loader size="s" inline="true"></oui-loader>
+                    <oui-spinner size="s" class="d-inline-block"></oui-spinner>
                 </div>
                 <div class="my-5">
                     <button class="oui-button oui-button_primary oui-button_large-height" type="button"

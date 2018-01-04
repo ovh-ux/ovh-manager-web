@@ -12,7 +12,7 @@
             <p data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step1_question"></p>
 
             <div class="text-center" data-ng-if="model.domains == null">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner class="d-inline-block"></oui-spinner>
             </div>
 
             <form class="form-horizontal" data-ng-show="model.domains != null">
@@ -26,19 +26,10 @@
 
                     <div class="col-md-8 col-md-offset-4"
                          data-ng-if="selected.domain.displayName !== selected.domainWww && domainsAlreadyExists()">
-                        <div class="oui-checkbox">
-                            <input type="checkbox" class="oui-checkbox__input" id="domainWwwNeeded"
-                                   data-ng-model="selected.domainWwwNeeded">
-                            <label class="oui-checkbox__label-container" for="domainWwwNeeded">
-                                <span class="oui-checkbox__label"
-                                      data-ng-bind="tr('hosting_tab_DOMAINS_configuration_modify_step1_domain_name_www_question', [getSelectedDomainToDisplay(true)])"></span>
-                                <span class="oui-checkbox__icon">
-                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                                </span>
-                            </label>
-                        </div>
+                        <oui-checkbox id="domainWwwNeeded"
+                            model="selected.domainWwwNeeded"
+                            text="{{tr('hosting_tab_DOMAINS_configuration_modify_step1_domain_name_www_question', [getSelectedDomainToDisplay(true)])}}">
+                        </oui-checkbox>
                     </div>
                 </div>
 
@@ -71,11 +62,12 @@
                                     <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ipv6"></span>
                                     <span class="fa fa-info-circle ml-2"
                                           data-uib-tooltip="{{i18n.hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ipv6_help}}"></span>
-                                </span>
-                                <span class="oui-checkbox__icon">
-                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                    <span class="oui-checkbox__icon">
+                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                    </span>
                                 </span>
                             </label>
                         </div>
@@ -88,11 +80,12 @@
                                     <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl"></span>
                                     <span class="fa fa-info-circle ml-2"
                                           data-uib-tooltip="{{::i18n.hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ssl_help}}"></span>
-                                </span>
-                                <span class="oui-checkbox__icon">
-                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                    <span class="oui-checkbox__icon">
+                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                    </span>
                                 </span>
                             </label>
                         </div>
@@ -108,11 +101,12 @@
                                     <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_cdn"></span>
                                     <span class="fa fa-info-circle ml-2"
                                           data-uib-tooltip="{{i18n.hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_cdn_help}}"></span>
-                                </span>
-                                <span class="oui-checkbox__icon">
-                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                    <span class="oui-checkbox__icon">
+                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                    </span>
                                 </span>
                             </label>
                         </div>
@@ -127,11 +121,12 @@
                                           data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_countriesIp"></span>
                                     <span class="fa fa-info-circle ml-2"
                                           data-uib-tooltip="{{i18n.hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_country_ip_help}}"></span>
-                                </span>
-                                <span class="oui-checkbox__icon">
-                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                    <span class="oui-checkbox__icon">
+                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                    </span>
                                 </span>
                             </label>
                         </div>
@@ -162,10 +157,13 @@
                                    data-ng-false-value="'NONE'"
                                    data-ng-true-value="'ACTIVE'">
                             <label class="oui-checkbox__label-container" for="domainAttacheModeOvhFormSelectedFirewall">
-                                <span class="oui-checkbox__icon">
-                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                <span class="oui-checkbox__label">
+                                    <span class="oui-checkbox__icon">
+                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                    </span>
                                 </span>
                             </label>
                         </div>
@@ -186,10 +184,13 @@
                                    data-ng-false-value="'NONE'"
                                    data-ng-true-value="'ACTIVE'">
                             <label class="oui-checkbox__label-container" for="domainAttacheModeOvhFormSelectedOwnlog">
-                                <span class="oui-checkbox__icon">
-                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                <span class="oui-checkbox__label">
+                                    <span class="oui-checkbox__icon">
+                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                        <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                    </span>
                                 </span>
                             </label>
                         </div>

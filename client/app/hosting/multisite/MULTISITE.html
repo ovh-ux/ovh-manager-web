@@ -1,7 +1,7 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabDomainsCtrl">
 
     <div class="text-center" data-ng-if="loading.init">
-        <oui-loader size="l" inline="true"></oui-loader>
+        <oui-spinner size="l" class="d-inline-block"></oui-spinner>
     </div>
 
     <div class="row" data-ng-show="!loading.init">
@@ -62,7 +62,7 @@
                         <tbody data-ng-if="loading.domains">
                             <tr>
                                 <td class="text-center" colspan="{{hosting.hasCdn ? 7 : 6}}">
-                                    <oui-loader inline="true"></oui-loader>
+                                    <oui-spinner class="d-inline-block"></oui-spinner>
                                 </td>
                             </tr>
                         </tbody>

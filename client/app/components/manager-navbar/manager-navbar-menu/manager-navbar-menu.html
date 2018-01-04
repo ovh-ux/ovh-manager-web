@@ -1,0 +1,38 @@
+<header class="oui-navbar-menu__header">
+    <oui-back-button class="oui-navbar-menu__back"
+        data-on-click="$ctrl.closeMenu($ctrl.menuName, true)">
+    </oui-back-button>
+    <span class="oui-navbar-menu__breadcrumb" data-ng-bind="::$ctrl.headerBreadcrumb"></span>
+    <h3 class="oui-navbar-menu__title" data-ng-bind="::$ctrl.headerTitle"></h3>
+</header>
+<ul class="oui-navbar-list">
+    <li class="oui-navbar-list__item" data-ng-repeat="menuLink in $ctrl.menuLinks track by $index">
+        <a class="oui-navbar-link"
+            data-ng-if="::!menuLink.subLinks"
+            data-ng-init="$ctrl.setKeyboardNavigation($last)"
+            data-ng-click="$ctrl.toggleMenu()"
+            data-ng-bind="::menuLink.label"
+            data-ui-sref="{{::$ctrl.getFullSref(menuLink)}}">
+        </a>
+        <button class="oui-navbar-link" type="button"
+            aria-haspopup="true" aria-expanded="{{$ctrl.navbarNav[menuLink.name]}}"
+            data-ng-if="::!!menuLink.subLinks"
+            data-ng-init="$ctrl.setKeyboardNavigation($last)"
+            data-ng-click="$ctrl.toggleMenu(menuLink.name, true)"
+            data-ng-bind="::menuLink.label">
+        </button>
+
+        <!-- Navbar Next Level -->
+        <manager-navbar-menu
+            data-ng-if="::!!menuLink.subLinks"
+            data-header-breadcrumb="{{::$ctrl.getChildBreadcrumb()}}"
+            data-header-title="{{::menuLink.label}}"
+            data-menu-name="{{::menuLink.name}}"
+            data-menu-links="::menuLink.subLinks"
+            data-navbar-nav="$ctrl.navbarNav"
+            data-is-open="$ctrl.navbarNav[menuLink.name]">
+        </manager-navbar-menu>
+        <!-- Navbar Next Level -->
+
+    </li>
+</ul>

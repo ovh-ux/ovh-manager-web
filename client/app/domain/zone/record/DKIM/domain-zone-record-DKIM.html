@@ -6,19 +6,11 @@
         <label class="control-label col-md-3" for="v"
                data-i18n-static="domain_configuration_dns_entry_add_version"></label>
         <div class="col-md-9 pt-2">
-            <div class="oui-checkbox mb-0">
-                <input type="checkbox" class="oui-checkbox__input" id="v" name="v"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.v.DKIM1">
-                <label class="oui-checkbox__label-container" for="v">
-                    <span class="oui-checkbox__label">DKIM1</span>
-                    <span class="oui-checkbox__icon">
-                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                    </span>
-                </label>
-            </div>
+            <oui-checkbox id="v" name="v"
+                model="ctrl.model.target.v.DKIM1"
+                on-change="ctrl.setTargetValue('DKIM')"
+                text="DKIM1">
+            </oui-checkbox>
         </div>
     </div>
 
@@ -38,32 +30,16 @@
         <label class="control-label col-md-3"
                data-i18n-static="domain_configuration_dns_entry_add_algorithm_hash"></label>
         <div class="col-md-9 pt-2">
-            <div class="oui-checkbox oui-checkbox_inline mb-0">
-                <input type="checkbox" class="oui-checkbox__input" name="h" id="h-sha1"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.h.sha1">
-                <label class="oui-checkbox__label-container" for="h-sha1">
-                    <span class="oui-checkbox__label">SHA-1</span>
-                    <span class="oui-checkbox__icon">
-                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                    </span>
-                </label>
-            </div>
-            <div class="oui-checkbox oui-checkbox_inline mb-0">
-                <input type="checkbox" class="oui-checkbox__input" name="h" id="h-sha256"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.h.sha256">
-                <label class="oui-checkbox__label-container" for="h-sha256">
-                    <span class="oui-checkbox__label">SHA-256</span>
-                    <span class="oui-checkbox__icon">
-                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                    </span>
-                </label>
-            </div>
+            <oui-checkbox name="h" id="h-sha1"
+                model="ctrl.model.target.h.sha1"
+                on-change="ctrl.setTargetValue('DKIM')"
+                text="SHA-1">
+            </oui-checkbox>
+            <oui-checkbox name="h" id="h-sha256"
+                model="ctrl.model.target.h.sha256"
+                on-change="ctrl.setTargetValue('DKIM')"
+                text="SHA-256">
+            </oui-checkbox>
         </div>
     </div>
 
@@ -71,19 +47,11 @@
         <label class="control-label col-md-3" for="k"
                data-i18n-static="domain_configuration_dns_entry_add_algorithm_key"></label>
         <div class="col-md-9">
-            <div class="oui-checkbox mb-0">
-                <input type="checkbox" class="oui-checkbox__input" id="k" name="k"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-model="ctrl.model.target.k.rsa">
-                <label class="oui-checkbox__label-container" for="k">
-                    <span class="oui-checkbox__label">RSA</span>
-                    <span class="oui-checkbox__icon">
-                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                    </span>
-                </label>
-            </div>
+            <oui-checkbox id="k" name="k"
+                model="ctrl.model.target.k.rsa"
+                on-change="ctrl.setTargetValue('DKIM')"
+                text="RSA">
+            </oui-checkbox>
         </div>
     </div>
 
@@ -112,21 +80,12 @@
                       data-ng-pattern="ctrl.DomainValidator.regex.DKIM_p"
                       data-ng-required="!ctrl.model.target.pRevoke"
                       data-ng-trim="false"></textarea>
-            <div class="oui-checkbox mb-0 mt-3">
-                <input type="checkbox" class="oui-checkbox__input" id="pRevoke" name="pRevoke"
-                       data-ng-change="ctrl.setTargetValue('DKIM')"
-                       data-ng-click="ctrl.model.target.p = ''"
-                       data-ng-model="ctrl.model.target.pRevoke">
-                <label class="oui-checkbox__label-container" for="pRevoke">
-                    <span class="oui-checkbox__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_publickey_revoke"></span>
-                    <span class="oui-checkbox__icon">
-                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                    </span>
-                </label>
-            </div>
+            <oui-checkbox class="mt-3" id="pRevoke" name="pRevoke"
+                ng-click="ctrl.model.target.p = ''"
+                model="ctrl.model.target.pRevoke"
+                on-change="ctrl.setTargetValue('DKIM')"
+                text="{{::i18n.domain_configuration_dns_entry_add_publickey_revoke}}">
+            </oui-checkbox>
         </div>
     </div>
 

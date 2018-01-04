@@ -7,7 +7,7 @@
         <div data-wizard-step
              data-wizard-step-valid="editContainsNoError()">
 
-            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
+            <oui-spinner data-ng-if="ctrl.loading"></oui-spinner>
 
             <div data-ng-if="!ctrl.loading">
                 <p class="mb-2"
@@ -97,20 +97,12 @@
                                    data-ng-bind="ctrl.errorLabel"
                                    data-ng-if="ctrl.inputContainErrors()"></small>
 
-                            <div class="oui-checkbox mt-3" data-ng-if="ctrl.redirection.fieldDisplayType === 'CNAME'">
-                                <input type="checkbox" class="oui-checkbox__input" id="includeCNAME" name="includeCNAME"
-                                       data-ng-change="ctrl.redirectionTargetChange()"
-                                       data-ng-model="ctrl.shouldIncludeDomain">
-                                <label class="oui-checkbox__label-container" for="includeCNAME">
-                                    <span class="oui-checkbox__label"
-                                          data-i18n-static="domain_tab_REDIRECTION_edit_server_cname_include_domain"></span>
-                                    <span class="oui-checkbox__icon">
-                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                                    </span>
-                                </label>
-                            </div>
+                            <oui-checkbox class="mt-3" id="includeCNAME" name="includeCNAME"
+                                ng-if="ctrl.redirection.fieldDisplayType === 'CNAME'"
+                                model="ctrl.shouldIncludeDomain"
+                                on-change="ctrl.redirectionTargetChange()"
+                                text="{{::i18n.domain_tab_REDIRECTION_edit_server_cname_include_domain}}">
+                            </oui-checkbox>
                         </div>
                     </div>
                     <p data-ng-bind-html="tr('domain_tab_REDIRECTION_edit_server_cname_include_domain_example', ctrl.getCompleteTarget())"></p>

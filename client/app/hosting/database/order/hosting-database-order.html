@@ -10,7 +10,7 @@
              data-wizard-step-valid="isStepValid(1)">
 
             <div class="text-center" data-ng-if="loading.init || loading.model">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner class="d-inline-block"></oui-spinner>
             </div>
 
             <div data-ng-if="!loading.init">
@@ -44,7 +44,7 @@
              data-wizard-step-valid="isStepValid(2)">
 
             <div class="text-center" data-ng-if="loading.duration">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner class="d-inline-block"></oui-spinner>
             </div>
 
             <form name="extraSqlPersoFormDuration"
@@ -59,8 +59,8 @@
                         <span class="oui-radio__label">
                             <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:
                             <span data-ng-bind-html="details[duration].prices | price:user.ovhSubsidiary"></span>
-                            <oui-loader size="s" inline="true"
-                                        data-ng-if="!details[duration]"></oui-loader>
+                            <oui-spinner size="s" class="d-inline-block"
+                                        data-ng-if="!details[duration]"></oui-spinner>
                         </span>
                     </label>
                 </div>
@@ -80,7 +80,7 @@
              data-wizard-step-valid="!loading.order">
             <p data-i18n-static="hosting_tab_DATABASES_configuration_order_validation"></p>
             <div class="text-center" data-ng-if="loading.order">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner class="d-inline-block"></oui-spinner>
             </div>
         </div>
     </div>

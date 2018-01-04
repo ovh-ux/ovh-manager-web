@@ -1,7 +1,7 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabFTPCtrl as ctrlHostingTabFTP">
 
     <div class="text-center" data-ng-if="ctrlHostingTabFTP.loading.init">
-        <oui-loader size="l" inline="true"></oui-loader>
+        <oui-spinner size="l" class="d-inline-block"></oui-spinner>
     </div>
 
     <div class="row" data-ng-show="!ctrlHostingTabFTP.loading.init">
@@ -29,7 +29,7 @@
                 </dl>
 
                 <div class="text-center" data-ng-if="ctrlHostingTabFTP.loading.ftp">
-                    <oui-loader inline="true"></oui-loader>
+                    <oui-spinner class="d-inline-block"></oui-spinner>
                 </div>
 
                 <div class="alert alert-info" role="alert">
@@ -101,21 +101,22 @@
                                                data-ng-false-value="'none'"
                                                data-ng-init="prevSshState = { sshState : element.sshState }">
                                         <label class="oui-checkbox__label-container" for="prevSshState-{{$index}}">
-                                            <span class="oui-checkbox__label"
-                                                  data-i18n-static="common_activated"
-                                                  data-ng-if="element.sshState === 'sftponly'"></span>
-                                            <span class="oui-checkbox__label"
-                                                  data-i18n-static="common_desactivated"
-                                                  data-ng-if="element.sshState === 'none'"></span>
-                                            <span class="oui-checkbox__icon">
-                                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                            <span class="oui-checkbox__label">
+                                                <span data-i18n-static="common_activated"
+                                                    data-ng-if="element.sshState === 'sftponly'"></span>
+                                                <span data-i18n-static="common_desactivated"
+                                                    data-ng-if="element.sshState === 'none'"></span>
+                                                <span class="oui-checkbox__icon">
+                                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                                    <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                                </span>
                                             </span>
                                         </label>
                                     </div>
                                     <div data-ng-if="!ctrlHostingTabFTP.allowUpdateState">
-                                        <oui-loader size="s" inline="true"></oui-loader>
+                                        <oui-spinner size="s" class="d-inline-block"></oui-spinner>
                                         <span data-i18n-static="hosting_tab_FTP_update"></span>
                                     </div>
                                 </td>
@@ -128,21 +129,22 @@
                                                data-ng-false-value="'off'"
                                                data-ng-init="prevState = { state : element.state }">
                                         <label class="oui-checkbox__label-container" for="prevState-{{$index}}">
-                                            <span class="oui-checkbox__label"
-                                                  data-i18n-static="common_activated"
-                                                  data-ng-if="element.state === 'rw'"></span>
-                                            <span class="oui-checkbox__label"
-                                                  data-i18n-static="common_desactivated"
-                                                  data-ng-if="element.state === 'off'"></span>
-                                            <span class="oui-checkbox__icon">
-                                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                            <span class="oui-checkbox__label">
+                                                <span data-i18n-static="common_activated"
+                                                    data-ng-if="element.state === 'rw'"></span>
+                                                <span data-i18n-static="common_desactivated"
+                                                    data-ng-if="element.state === 'off'"></span>
+                                                <span class="oui-checkbox__icon">
+                                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                                    <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                                </span>
                                             </span>
                                         </label>
                                     </div>
                                     <div data-ng-if="!ctrlHostingTabFTP.allowUpdateState">
-                                        <oui-loader size="s" inline="true"></oui-loader>
+                                        <oui-spinner size="s" class="d-inline-block"></oui-spinner>
                                         <span data-i18n-static="hosting_tab_FTP_update"></span>
                                     </div>
                                 </td>
@@ -205,7 +207,7 @@
             <div data-ng-if="ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
 
                 <div class="text-center" data-ng-if="ctrlHostingTabFTP.loading.init">
-                    <oui-loader inline="true"></oui-loader>
+                    <oui-spinner class="d-inline-block"></oui-spinner>
                 </div>
 
                 <div class="alert alert-info" role="alert"

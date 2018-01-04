@@ -11,7 +11,7 @@
             <p class="font-weight-bold"
                data-i18n-static="email_tab_modal_create_responder_info"></p>
 
-            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
+            <oui-spinner data-ng-if="ctrl.loading"></oui-spinner>
 
             <form class="form-horizontal" name="ctrl.createResponderForm" novalidate
                   data-ng-if="!ctrl.loading">
@@ -167,23 +167,10 @@
 
                 <div class="form-group">
                     <div class="col-md-8 col-md-offset-4">
-                        <div class="oui-checkbox">
-                            <input type="checkbox" class="oui-checkbox__input" id="responderKeepCopy" name="responderKeepCopy"
-                                   data-ng-model="ctrl.model.responderKeepCopy">
-                            <label class="oui-checkbox__label-container" for="responderKeepCopy">
-                                <span class="oui-checkbox__label">
-                                    <span data-i18n-static="email_tab_modal_create_responder_delete_message"
-                                          data-ng-if="ctrl.model.responderType !== 'typeFree'"></span>
-                                    <span data-i18n-static="email_tab_modal_create_responder_copy"
-                                          data-ng-if="ctrl.model.responderType === 'typeFree'"></span>
-                                </span>
-                                <span class="oui-checkbox__icon">
-                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                                </span>
-                            </label>
-                        </div>
+                        <oui-checkbox id="responderKeepCopy" name="responderKeepCopy"
+                            model="ctrl.model.responderKeepCopy"
+                            text="{{::ctrl.model.responderType === 'typeFree' ? i18n.email_tab_modal_create_responder_copy : i18n.email_tab_modal_create_responder_delete_message}}">
+                        </oui-checkbox>
                         <div class="alert alert-warning" role="alert"
                              data-i18n-static="email_tab_modal_create_responder_copy_warning"
                              data-ng-if="!ctrl.model.responderKeepCopy">
