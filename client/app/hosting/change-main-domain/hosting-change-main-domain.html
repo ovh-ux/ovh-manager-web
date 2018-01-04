@@ -68,24 +68,18 @@
                 <p data-i18n-static="hosting_change_main_domain_email_proposal"></p>
 
                 <form class="form-horizontal" name="emailDecision">
-                    <div class="oui-radio">
-                        <input type="radio" class="oui-radio__input" id="emailsKeep-no" name="emailsKeep" checked
-                               data-ng-model="emails.keep"
-                               data-ng-value="false">
-                        <label class="oui-radio__label-container" for="emailsKeep-no">
-                            <span class="oui-radio__label"
-                                  data-ng-bind="tr('hosting_change_main_domain_delete_emails')"></span>
-                        </label>
-                    </div>
-                    <div class="oui-radio">
-                        <input type="radio" class="oui-radio__input" id="emailsKeep-yes" name="emailsKeep"
-                               data-ng-model="emails.keep"
-                               data-ng-value="true">
-                        <label class="oui-radio__label-container" for="emailsKeep-yes">
-                            <span class="oui-radio__label"
-                                  data-ng-bind="tr('hosting_change_main_domain_keep_emails')"></span>
-                        </label>
-                    </div>
+
+                    <oui-radio text="{{::tr('hosting_change_main_domain_delete_emails')}}"
+                            model="emails.keep"
+                            value="false"
+                            name="change-domain" checked>
+                    </oui-radio>
+
+                    <oui-radio text="{{::tr('hosting_change_main_domain_keep_emails')}}"
+                            model="emails.keep"
+                            value="true"
+                            name="change-domain" checked>
+                    </oui-radio>
 
                     <div class="alert alert-warning" role="alert"
                          data-i18n-static="hosting_change_main_domain_warning_delete_emails"
