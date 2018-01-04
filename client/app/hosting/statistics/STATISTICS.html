@@ -71,17 +71,17 @@
         <div class="my-5 text-center" data-ng-if="selected.type === 'IN_HTTP_HITS'">
             <span class="oui-label d-inline-block mr-2"
                   data-i18n-static="hosting_tab_STATISTICS_aggregate"></span>
-            <div class="oui-radio oui-radio_inline"
-                 data-ng-repeat="option in model.constants.aggregateModes track by option">
-                <input type="radio" class="oui-radio__input" id="aggregateModes-{{$index}}" name="aggregationModel"
-                       data-ng-change="getStatistics()"
-                       data-ng-model="selected.aggregateMode"
-                       data-ng-value="option">
-                <label class="oui-radio__label-container" for="aggregateModes-{{$index}}">
-                    <span class="oui-radio__label"
-                          data-ng-bind="tr('hosting_tab_STATISTICS_aggregate_' + option)"></span>
-                </label>
-            </div>
+
+            <div class="oui-radio_inline"
+                  data-ng-repeat="option in model.constants.aggregateModes track by option">
+
+                <oui-radio text="{{::tr('hosting_tab_STATISTICS_aggregate_' + option)}}"
+                        on-change="getStatistics()"
+                        model="selected.aggregateMode"
+                        name="hosting-statistics"
+                        value="option">                       
+                </oui-radio>
+             </div>
         </div>
 
         <div class="text-center mt-5" data-ng-if="!model.datas">
