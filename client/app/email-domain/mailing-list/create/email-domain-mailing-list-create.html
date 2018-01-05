@@ -69,21 +69,21 @@
                         <div class="col-md-8">
 
                             <oui-radio text="{{tr('mailing_list_tab_modal_update_list_reply_to_list')}}"
-                                    on-change="ctrl.selectReplyTo()"
+                                    on-change="ctrl.selectReplyTo(ctrl.constants.MAILING_LIST)"
                                     model="ctrl.replyToSelector"
                                     name="mailing-create-answer"
                                     value="ctrl.constants.MAILING_LIST" checked>
                             </oui-radio>
 
                             <oui-radio text="{{tr('mailing_list_tab_modal_update_list_reply_to_last_user')}}"
-                                    on-change="ctrl.selectReplyTo()"
+                                    on-change="ctrl.selectReplyTo(ctrl.constants.LAST_USER)"
                                     model="ctrl.replyToSelector"
                                     name="mailing-create-answer"
                                     value="ctrl.constants.LAST_USER">
                             </oui-radio>
 
                             <oui-radio text="{{tr('mailing_list_tab_modal_update_list_reply_to_email')}}"
-                                    on-change="ctrl.selectReplyTo()"
+                                    on-change="ctrl.selectReplyTo(ctrl.constants.REPLY_TO_EMAIL)"
                                     model="ctrl.replyToSelector"
                                     name="mailing-create-answer"
                                     value="ctrl.constants.REPLY_TO_EMAIL">
@@ -126,24 +126,25 @@
 
                     <div class="form-group">
                         <label class="control-label col-md-4" data-i18n-static="mailing_list_tab_modal_create_list_moderator_message"></label>
-                        <div class="col-md-8">
+
+                        <div class="col-md-8">                         
 
                             <oui-radio text="{{tr('mailing_list_tab_modal_create_list_moderator_all_messages')}}"
-                                    on-change="ctrl.selectModerationMsg()"
+                                    on-change="ctrl.selectModerationMsg(true)"
                                     model="ctrl.model.mlModerationMsg"
                                     name="mailing-create-moderation"
-                                    value="true" checked>
+                                    value="true">
                             </oui-radio>
 
                             <oui-radio text="{{tr('mailing_list_tab_modal_create_list_users_post_only')}}"
-                                    on-change="ctrl.selectModerationMsg()"
+                                    on-change="ctrl.selectModerationMsg(false)"
                                     model="ctrl.model.mlModerationMsg"
                                     name="mailing-create-moderation"
                                     value="false">
                             </oui-radio>
 
                             <oui-radio text="{{tr('mailing_list_tab_modal_create_list_no_moderation')}}"
-                                    on-change="ctrl.selectModerationMsg()"
+                                    on-change="ctrl.selectModerationMsg(null)"
                                     model="ctrl.model.mlModerationMsg"
                                     name="mailing-create-moderation"
                                     value="null">

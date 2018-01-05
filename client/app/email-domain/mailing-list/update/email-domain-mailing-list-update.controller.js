@@ -58,11 +58,13 @@ angular.module("App").controller(
             input.$setValidity("email", this.MailingLists.constructor.isMailValid(input.$viewValue));
         }
 
-        selectReplyTo () {
+        selectReplyTo (newValue) {
+            this.replyToSelector = newValue;
             this.mailingList.replyTo = this.replyToSelector === this.constants.REPLY_TO_EMAIL ? "" : this.replyToSelector;
         }
 
-        selectModerationMsg () {
+        selectModerationMsg (newValue) {
+            this.mailingList.mlModerationMsg = newValue;
             return this.MailingLists.getMailingListLimits(this.mailingList.mlModerationMsg, true).then((limits) => (this.limits = limits));
         }
 
