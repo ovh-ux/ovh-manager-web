@@ -67,36 +67,27 @@
                     <div class="form-group">
                         <label class="control-label col-md-4" data-i18n-static="mailing_list_tab_modal_create_list_reply_to"></label>
                         <div class="col-md-8">
-                            <div class="oui-radio">
-                                <input type="radio" class="oui-radio__input" id="selectReplyTo-ml" name="selectReplyTo"
-                                       data-ng-change="ctrl.selectReplyTo()"
-                                       data-ng-model="ctrl.replyToSelector"
-                                       data-ng-value="ctrl.constants.MAILING_LIST">
-                                <label class="oui-radio__label-container" for="selectReplyTo-ml">
-                                    <span class="oui-radio__label"
-                                          data-i18n-static="mailing_list_tab_modal_update_list_reply_to_list"></span>
-                                </label>
-                            </div>
-                            <div class="oui-radio">
-                                <input type="radio" class="oui-radio__input" id="selectReplyTo-lu" name="selectReplyTo"
-                                       data-ng-change="ctrl.selectReplyTo()"
-                                       data-ng-model="ctrl.replyToSelector"
-                                       data-ng-value="ctrl.constants.LAST_USER">
-                                <label class="oui-radio__label-container" for="selectReplyTo-lu">
-                                    <span class="oui-radio__label"
-                                          data-i18n-static="mailing_list_tab_modal_update_list_reply_to_last_user"></span>
-                                </label>
-                            </div>
-                            <div class="oui-radio">
-                                <input type="radio" class="oui-radio__input" id="selectReplyTo-rte" name="selectReplyTo"
-                                       data-ng-change="ctrl.selectReplyTo()"
-                                       data-ng-model="ctrl.replyToSelector"
-                                       data-ng-value="ctrl.constants.REPLY_TO_EMAIL">
-                                <label class="oui-radio__label-container" for="selectReplyTo-rte">
-                                    <span class="oui-radio__label"
-                                          data-i18n-static="mailing_list_tab_modal_update_list_reply_to_email"></span>
-                                </label>
-                            </div>
+
+                            <oui-radio text="{{tr('mailing_list_tab_modal_update_list_reply_to_list')}}"
+                                    on-change="ctrl.selectReplyTo()"
+                                    model="ctrl.replyToSelector"
+                                    name="mailing-create-answer"
+                                    value="ctrl.constants.MAILING_LIST" checked>
+                            </oui-radio>
+
+                            <oui-radio text="{{tr('mailing_list_tab_modal_update_list_reply_to_last_user')}}"
+                                    on-change="ctrl.selectReplyTo()"
+                                    model="ctrl.replyToSelector"
+                                    name="mailing-create-answer"
+                                    value="ctrl.constants.LAST_USER">
+                            </oui-radio>
+
+                            <oui-radio text="{{tr('mailing_list_tab_modal_update_list_reply_to_email')}}"
+                                    on-change="ctrl.selectReplyTo()"
+                                    model="ctrl.replyToSelector"
+                                    name="mailing-create-answer"
+                                    value="ctrl.constants.REPLY_TO_EMAIL">
+                            </oui-radio>
                         </div>
                     </div>
 
@@ -136,36 +127,27 @@
                     <div class="form-group">
                         <label class="control-label col-md-4" data-i18n-static="mailing_list_tab_modal_create_list_moderator_message"></label>
                         <div class="col-md-8">
-                            <div class="oui-radio">
-                                <input type="radio" class="oui-radio__input" id="rdMessages-yes" name="rdMessages"
-                                       data-ng-change="ctrl.selectModerationMsg()"
-                                       data-ng-model="ctrl.model.mlModerationMsg"
-                                       data-ng-value="true">
-                                <label class="oui-radio__label-container" for="rdMessages-yes">
-                                    <span class="oui-radio__label"
-                                          data-i18n-static="mailing_list_tab_modal_create_list_moderator_all_messages"></span>
-                                </label>
-                            </div>
-                            <div class="oui-radio">
-                                <input type="radio" class="oui-radio__input" id="rdMessages-no" name="rdMessages"
-                                       data-ng-change="ctrl.selectModerationMsg()"
-                                       data-ng-model="ctrl.model.mlModerationMsg"
-                                       data-ng-value="false">
-                                <label class="oui-radio__label-container" for="rdMessages-no">
-                                    <span class="oui-radio__label"
-                                          data-i18n-static="mailing_list_tab_modal_create_list_users_post_only"></span>
-                                </label>
-                            </div>
-                            <div class="oui-radio">
-                                <input type="radio" class="oui-radio__input" id="rdMessages-null" name="rdMessages"
-                                       data-ng-change="ctrl.selectModerationMsg()"
-                                       data-ng-model="ctrl.model.mlModerationMsg"
-                                       data-ng-value="null">
-                                <label class="oui-radio__label-container" for="rdMessages-null">
-                                    <span class="oui-radio__label"
-                                          data-i18n-static="mailing_list_tab_modal_create_list_no_moderation"></span>
-                                </label>
-                            </div>
+
+                            <oui-radio text="{{tr('mailing_list_tab_modal_create_list_moderator_all_messages')}}"
+                                    on-change="ctrl.selectModerationMsg()"
+                                    model="ctrl.model.mlModerationMsg"
+                                    name="mailing-create-moderation"
+                                    value="true" checked>
+                            </oui-radio>
+
+                            <oui-radio text="{{tr('mailing_list_tab_modal_create_list_users_post_only')}}"
+                                    on-change="ctrl.selectModerationMsg()"
+                                    model="ctrl.model.mlModerationMsg"
+                                    name="mailing-create-moderation"
+                                    value="false">
+                            </oui-radio>
+
+                            <oui-radio text="{{tr('mailing_list_tab_modal_create_list_no_moderation')}}"
+                                    on-change="ctrl.selectModerationMsg()"
+                                    model="ctrl.model.mlModerationMsg"
+                                    name="mailing-create-moderation"
+                                    value="null">
+                            </oui-radio>
                         </div>
                     </div>
 
