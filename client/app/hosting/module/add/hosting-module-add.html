@@ -49,8 +49,8 @@
 
                 <div class="mt-5" data-ng-if="model.templateSelected">
                     <oui-checkbox id="advancedMode" name="advancedMode"
-                        model="advancedMode.value"
-                        text="{{::i18n.hosting_configuration_tab_modules_create_step1_module_advanced_mode}}">
+                        data-model=="advancedMode.value"
+                        data-text=="{{::i18n.hosting_configuration_tab_modules_create_step1_module_advanced_mode}}">
                     </oui-checkbox>
                     <div class="alert alert-info" role="alert">
                         <div>

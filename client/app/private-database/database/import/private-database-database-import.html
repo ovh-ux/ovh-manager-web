@@ -108,12 +108,12 @@
                 <p data-i18n-static="hosting_tab_DATABASES_table_popover_import_step2_title"></p>
 
                 <oui-checkbox id="flush_option"
-                    model="importBddCtrl.model.flushDatabase"
-                    text="{{::i18n.hosting_tab_DATABASES_table_popover_import_step2_flush_database}}">
+                    data-model=="importBddCtrl.model.flushDatabase"
+                    data-text=="{{::i18n.hosting_tab_DATABASES_table_popover_import_step2_flush_database}}">
                 </oui-checkbox>
                 <oui-checkbox id="send_email"
-                    model="importBddCtrl.model.sendEmail"
-                    text="{{::i18n.hosting_tab_DATABASES_table_popover_import_step2_send_email}}">
+                    data-model=="importBddCtrl.model.sendEmail"
+                    data-text=="{{::i18n.hosting_tab_DATABASES_table_popover_import_step2_send_email}}">
                 </oui-checkbox>
             </form>
         </div>

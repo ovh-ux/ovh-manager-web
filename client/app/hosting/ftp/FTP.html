@@ -1,7 +1,7 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabFTPCtrl as ctrlHostingTabFTP">
 
     <div class="text-center" data-ng-if="ctrlHostingTabFTP.loading.init">
-        <oui-spinner size="l" class="d-inline-block"></oui-spinner>
+        <oui-spinner data-size="l"></oui-spinner>
     </div>
 
     <div class="row" data-ng-show="!ctrlHostingTabFTP.loading.init">
@@ -29,7 +29,7 @@
                 </dl>
 
                 <div class="text-center" data-ng-if="ctrlHostingTabFTP.loading.ftp">
-                    <oui-spinner class="d-inline-block"></oui-spinner>
+                    <oui-spinner></oui-spinner>
                 </div>
 
                 <div class="alert alert-info" role="alert">
@@ -116,7 +116,7 @@
                                         </label>
                                     </div>
                                     <div data-ng-if="!ctrlHostingTabFTP.allowUpdateState">
-                                        <oui-spinner size="s" class="d-inline-block"></oui-spinner>
+                                        <oui-spinner data-size="s"></oui-spinner>
                                         <span data-i18n-static="hosting_tab_FTP_update"></span>
                                     </div>
                                 </td>
@@ -144,7 +144,7 @@
                                         </label>
                                     </div>
                                     <div data-ng-if="!ctrlHostingTabFTP.allowUpdateState">
-                                        <oui-spinner size="s" class="d-inline-block"></oui-spinner>
+                                        <oui-spinner data-size="s"></oui-spinner>
                                         <span data-i18n-static="hosting_tab_FTP_update"></span>
                                     </div>
                                 </td>
@@ -207,7 +207,7 @@
             <div data-ng-if="ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
 
                 <div class="text-center" data-ng-if="ctrlHostingTabFTP.loading.init">
-                    <oui-spinner class="d-inline-block"></oui-spinner>
+                    <oui-spinner></oui-spinner>
                 </div>
 
                 <div class="alert alert-info" role="alert"

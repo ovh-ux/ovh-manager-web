@@ -10,7 +10,7 @@
             <p data-i18n-static="hosting_tab_DOMAINS_configuration_remove_step1_title"></p>
 
             <div class="text-center" data-ng-if="!ctrl.model.domains">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="ctrl.model.domains">
@@ -23,8 +23,8 @@
 
                 <oui-checkbox id="wwwNeeded"
                     ng-show="ctrl.domainsWwwExists()"
-                    model="ctrl.selected.wwwNeeded"
-                    text="{{tr('hosting_tab_DOMAINS_configuration_remove_step1_www', ['www.' + ctrl.selected.domain.displayName])}}">
+                    data-model=="ctrl.selected.wwwNeeded"
+                    data-text=="{{tr('hosting_tab_DOMAINS_configuration_remove_step1_www', ['www.' + ctrl.selected.domain.displayName])}}">
                 </oui-checkbox>
 
                 <div class="oui-checkbox oui-checkbox_thumbnail">

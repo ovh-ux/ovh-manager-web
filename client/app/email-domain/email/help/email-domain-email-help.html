@@ -39,12 +39,12 @@
 
                 <form class="mt-5" name="ctrl.configureHelpForm">
                     <oui-checkbox id="hideEmailsHelpOne" name="hideEmailsHelpOne"
-                        model="ctrl.hideEmailsHelp.one"
-                        text="{{::i18n.email_tab_modal_help_explanation_checkbox_this}}">
+                        data-model=="ctrl.hideEmailsHelp.one"
+                        data-text=="{{::i18n.email_tab_modal_help_explanation_checkbox_this}}">
                     </oui-checkbox>
                     <oui-checkbox id="hideEmailsHelpAll" name="hideEmailsHelpAll"
-                        model="ctrl.hideEmailsHelp.all"
-                        text="{{::i18n.email_tab_modal_help_explanation_checkbox_all}}">
+                        data-model=="ctrl.hideEmailsHelp.all"
+                        data-text=="{{::i18n.email_tab_modal_help_explanation_checkbox_all}}">
                     </oui-checkbox>
                 </form>
             </div>

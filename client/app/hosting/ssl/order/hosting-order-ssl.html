@@ -52,7 +52,7 @@
              data-wizard-step-valid="ctrl.isStepOneValid()">
 
             <div class="text-center" data-ng-if="ctrl.loading.init || ctrl.loading.duration || ctrl.loading.generateCertif">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <!-- FREE CERTIFICATE -->
@@ -85,7 +85,7 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading.order">
             <div class="text-center" data-ng-if="ctrl.loading.order">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
             <p data-i18n-static="hosting_dashboard_ssl_order_validation"
                data-ng-if="!ctrl.loading.order"></p>

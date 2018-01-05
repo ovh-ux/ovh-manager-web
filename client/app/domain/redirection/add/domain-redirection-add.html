@@ -30,8 +30,8 @@
 
                 <oui-checkbox id="checkboxWww" name="checkboxWww"
                     disabled="ctrl.newRedirection.disableWww"
-                    model="ctrl.newRedirection.addwww"
-                    text="{{::(i18n.domain_tab_REDIRECTION_add_step1_www + ' ' + ctrl.getDomainNameOf(ctrl.newRedirection.subdomainWww))}}">
+                    data-model=="ctrl.newRedirection.addwww"
+                    data-text=="{{::(i18n.domain_tab_REDIRECTION_add_step1_www + ' ' + ctrl.getDomainNameOf(ctrl.newRedirection.subdomainWww))}}">
                 </oui-checkbox>
             </form>
         </div>
@@ -321,9 +321,9 @@
                                        data-ng-if="ctrl.errors.domainCname && ctrl.errorLabel"></small>
 
                                 <oui-checkbox class="mt-3" id="includeCNAME"
-                                    model="ctrl.shouldIncludeDomain"
+                                    data-model=="ctrl.shouldIncludeDomain"
                                     on-change="ctrl.redirectionTargetChange()"
-                                    text="{{::i18n.domain_tab_REDIRECTION_edit_server_cname_include_domain}}">
+                                    data-text=="{{::i18n.domain_tab_REDIRECTION_edit_server_cname_include_domain}}">
                                 </oui-checkbox>
                             </div>
                         </div>
@@ -345,7 +345,7 @@
              data-wizard-step-valid="(!ctrl.loading.check && !ctrl.loading.add && !ctrl.errors.containAllError && !ctrl.errors.containOneError) || ((ctrl.errors.conflict || ctrl.errors.containAllError || ctrl.errors.containOneError) && ctrl.overwrite)">
 
             <div class="text-center" data-ng-if="ctrl.loading.check">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <p class="text-center"
@@ -509,7 +509,7 @@
             </div>
 
             <div class="text-center" data-ng-if="ctrl.loading.add">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
                 <div data-i18n-static="domain_tab_REDIRECTION_add_step5_add_record"></div>
             </div>
         </div>

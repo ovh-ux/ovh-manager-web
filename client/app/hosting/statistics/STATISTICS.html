@@ -1,6 +1,6 @@
 <div data-ng-controller="HostingStatisticsCtrl">
     <div class="text-center" data-ng-if="!model.constants">
-        <oui-spinner class="d-inline-block"></oui-spinner>
+        <oui-spinner></oui-spinner>
     </div>
 
     <div data-ng-if="model.constants">
@@ -85,7 +85,7 @@
         </div>
 
         <div class="text-center mt-5" data-ng-if="!model.datas">
-            <oui-spinner size="l" class="d-inline-block"></oui-spinner>
+            <oui-spinner data-size="l"></oui-spinner>
         </div>
 
         <div class="chart-container" style="height: 320px;"

@@ -31,7 +31,7 @@
 <div data-ng-if="displayTabs.databases">
 
     <div class="text-center" data-ng-if="ctrlTabDatabases.loading.init">
-        <oui-spinner size="l" class="d-inline-block"></oui-spinner>
+        <oui-spinner data-size="l"></oui-spinner>
     </div>
 
     <div data-ng-if="!ctrlTabDatabases.loading.init">
@@ -131,7 +131,7 @@
                     <tbody data-ng-if="ctrlTabDatabases.loading.databases">
                         <tr>
                             <td class="text-center" colspan="8">
-                                <oui-spinner class="d-inline-block"></oui-spinner>
+                                <oui-spinner></oui-spinner>
                             </td>
                         </tr>
                     </tbody>
@@ -175,7 +175,7 @@
                                 <span data-ng-bind="element.quotaUsed.cappedAsText"
                                       data-ng-if="element.server === 'local'"></span>
                                 <div data-ng-if="element.quotaCalculating">
-                                    <oui-spinner size="s" class="d-inline-block"></oui-spinner>
+                                    <oui-spinner data-size="s"></oui-spinner>
                                     <span data-i18n-static="hosting_tab_DATABASES_configuration_check_quota_calculating"></span>
                                 </div>
                             </td>

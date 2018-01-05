@@ -8,15 +8,15 @@
              data-wizard-step-valid="isStepValid()">
 
             <div class="text-center" data-ng-if="loaders.disable">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="!loaders.disable">
                 <p data-i18n-static="hosting_tab_BOOST_disable_title"></p>
                 <p data-i18n-static="hosting_tab_BOOST_disable_description"></p>
                 <oui-checkbox id="acceptCGV"
-                    model="acceptCGV.value"
-                    text="{{::i18n.hosting_tab_BOOST_accept_cgv}}">
+                    data-model=="acceptCGV.value"
+                    data-text=="{{::i18n.hosting_tab_BOOST_accept_cgv}}">
                 </oui-checkbox>
             </div>
         </div>

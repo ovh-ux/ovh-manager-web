@@ -6,7 +6,7 @@
     <div class="container-fluid px-5">
         <div data-ovh-alert="{{alerts.order}}"></div>
 
-        <oui-spinner size="l" data-ng-if="orderCtrl.loading.init"></oui-spinner>
+        <oui-spinner data-size="l" data-ng-if="orderCtrl.loading.init"></oui-spinner>
 
         <div class="row" data-ng-if="!orderCtrl.loading.init && orderCtrl.list.versions.length">
             <div class="col-md-9">
@@ -96,7 +96,7 @@
                              data-ovh-alert-hide-remove-button></div>
 
                         <div class="text-center" data-ng-if="orderCtrl.loading.durations">
-                            <oui-spinner class="d-inline-block"></oui-spinner>
+                            <oui-spinner></oui-spinner>
                             <span data-i18n-static="license_loading"></span>
                         </div>
 
@@ -115,7 +115,7 @@
                                     <span class="oui-radio__label">
                                         <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:
                                         <span data-ng-bind-html="orderCtrl.durations.details[duration].prices | price:orderCtrl.user.ovhSubsidiary"></span>
-                                        <oui-spinner size="s" class="d-inline-block"
+                                        <oui-spinner data-size="s"
                                                     data-ng-if="!orderCtrl.durations.details[duration]"></oui-spinner>
                                     </span>
                                 </label>
@@ -165,7 +165,7 @@
                                     <span data-i18n-static="privateDatabase_order_step3_generate"
                                           data-ng-if="!orderCtrl.loading.bc"></span>
                                     <span data-ng-if="orderCtrl.loading.bc">
-                                        <oui-spinner class="d-inline-block" size="s"></oui-spinner>
+                                        <oui-spinner data-size="s"></oui-spinner>
                                         <span data-i18n-static="privateDatabase_order_step3_generating"></span>
                                     </span>
                                 </button>

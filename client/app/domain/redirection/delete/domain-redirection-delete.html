@@ -8,7 +8,7 @@
              data-wizard-step-valid="!ctrl.loading">
 
             <div class="text-center" data-ng-if="ctrl.loading">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="!ctrl.loading">
@@ -20,8 +20,8 @@
 
             <oui-checkbox class="mt-4" id="removeWWW" name="removeWWW"
                 ng-if="ctrl.wwwDomainToDelete.data"
-                model="ctrl.wwwDomainToDelete.removeWWW"
-                text="{{tr('domain_tab_REDIRECTION_delete_www_confirm', [ctrl.constructor.getDomainName(ctrl.wwwDomainToDelete.data), ctrl.wwwDomainToDelete.data.targetDisplayName])}}">
+                data-model=="ctrl.wwwDomainToDelete.removeWWW"
+                data-text=="{{tr('domain_tab_REDIRECTION_delete_www_confirm', [ctrl.constructor.getDomainName(ctrl.wwwDomainToDelete.data), ctrl.wwwDomainToDelete.data.targetDisplayName])}}">
             </oui-checkbox>
         </div>
     </div>

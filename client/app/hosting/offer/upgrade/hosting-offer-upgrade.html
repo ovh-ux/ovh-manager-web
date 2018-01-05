@@ -10,7 +10,7 @@
              data-wizard-step-valid="ctrl.model.capacity && (ctrl.model.capacity !== 'KS' || (ctrl.model.capacity === 'KS' && ctrl.downgradeAgree))">
 
             <div class="text-center" data-ng-if="ctrl.loading.availableOffer">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="!ctrl.loading.availableOffer">
@@ -37,8 +37,8 @@
                     <div data-ng-if="ctrl.model.capacity && ctrl.model.capacity === 'KS'">
                         <p data-i18n-static="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015"></p>
                         <oui-checkbox id="downgradeAgree"
-                            model="ctrl.downgradeAgree"
-                            text="{{::i18n.hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree}}">
+                            data-model=="ctrl.downgradeAgree"
+                            data-text=="{{::i18n.hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree}}">
                         </oui-checkbox>
                     </div>
                 </form>
@@ -58,7 +58,7 @@
                data-ng-if="ctrl.durations.available"></p>
 
             <div class="text-center" data-ng-if="ctrl.loading.durations">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
                 <div data-i18n-static="hosting_order_upgrade_loading_order"></div>
             </div>
 
@@ -96,7 +96,7 @@
              data-wizard-step-valid="!ctrl.loading.validation">
 
             <div class="text-center" data-ng-if="ctrl.loading.validation">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="!ctrl.loading.validation">

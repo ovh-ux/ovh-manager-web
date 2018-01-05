@@ -13,7 +13,7 @@
              data-wizard-step-valid="!ctrl.loading.init && ctrl.model.offer">
 
             <div class="text-center" data-ng-if="ctrl.loading.init">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="!ctrl.loading.init">
@@ -80,7 +80,7 @@
              data-wizard-step-valid="ctrl.dnsZones.length && ctrl.model.dnsZone">
 
             <div class="text-center" data-ng-if="ctrl.dnsZones.length === 0">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="ctrl.dnsZones.length > 0">
@@ -128,7 +128,7 @@
              data-wizard-step-valid="!ctrl.loading.order">
 
             <div class="text-center" data-ng-if="ctrl.loading.order">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div class="mt-5" data-ng-if="!ctrl.loading.order">

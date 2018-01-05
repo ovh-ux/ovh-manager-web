@@ -39,7 +39,7 @@
                                               <span class="fa fa-info-circle" aria-hidden="true"></span>
                                           </span>
                                         <div>
-                                            <oui-spinner class="d-inline-block" size="s"
+                                            <oui-spinner data-size="s"
                                                         data-ng-if="ctrlTabGeneralInformations.loading.dnsStatus"></oui-spinner>
                                             <div data-ng-if="!ctrlTabGeneralInformations.loading.dnsStatus">
                                                 <button class="btn btn-success btn-xs" type="button"
@@ -112,7 +112,7 @@
                                                       data-uib-tooltip-append-to-body="true"
                                                       data-uib-tooltip-placement="top"></span>
                                                 <div>
-                                                    <oui-spinner class="d-inline-block" size="s"
+                                                    <oui-spinner data-size="s"
                                                         data-ng-if="ctrlTabGeneralInformations.loading.hosting"></oui-spinner>
                                                     <div data-ng-if="!ctrlTabGeneralInformations.loading.hosting">
                                                           <span class="label"
@@ -149,7 +149,7 @@
                                                       data-uib-tooltip-append-to-body="true"
                                                       data-uib-tooltip-placement="top"></span>
                                                 <div>
-                                                    <oui-spinner class="d-inline-block" size="s"
+                                                    <oui-spinner data-size="s"
                                                         data-ng-if="ctrlTabGeneralInformations.loading.associatedHosting"></oui-spinner>
                                                     <ul class="list-unstyled"
                                                         data-ng-if="!ctrlTabGeneralInformations.loading.associatedHosting && ctrlTabGeneralInformations.hasHostingAssociate">
@@ -306,7 +306,7 @@
         <div class="col-md-3 mt-md-5 mt-lg-0">
             <div class="d-flex flex-column-reverse flex-lg-column">
                 <div class="mb-5 text-center" data-ng-if="!ctrlTabGeneralInformations.domain.isExpired">
-                    <oui-spinner class="d-inline-block"
+                    <oui-spinner
                         data-ng-if="ctrlTabGeneralInformations.loading.screenshot"></oui-spinner>
                     <a data-ng-href="http://{{ctrlTabGeneralInformations.domain.name}}"
                        class="oui-box oui-box_light d-block p-0 text-truncate" target="_blank"

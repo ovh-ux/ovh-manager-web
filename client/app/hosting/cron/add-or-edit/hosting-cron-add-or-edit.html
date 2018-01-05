@@ -10,7 +10,7 @@
              data-wizard-step-valid="isValid(1)">
 
             <div class="text-center" data-ng-if="loading.init">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <form class="form-horizontal" name="addCronForm" data-ng-if="!loading.init">
@@ -129,7 +129,7 @@
              data-wizard-step-on-load="generateCron">
 
             <div class="text-center" data-ng-if="loading.validation">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="!loading.validation">

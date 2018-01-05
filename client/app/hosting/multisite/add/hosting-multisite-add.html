@@ -11,7 +11,7 @@
              data-wizard-step-valid="isStep1Valid()">
 
             <div class="text-center" data-ng-if="!model.hosting || !model.options || !model.capabilities">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div class="alert alert-danger" role="alert"
@@ -75,7 +75,7 @@
              data-wizard-step-valid="model.step2Valid && !domainsAlreadyExists() && !domainIsNotValid() && isPathValid() && (selected.mode === model.mode.EXTERNAL || ((selected.ownLog === 'ACTIVE' && selected.ownLogDomain) || (!selected.ownLog || selected.ownLog === 'NONE')))">
 
             <div class="text-center" data-ng-if="model.domains == null">
-                <oui-spinner class="d-inline-block"></oui-spinner>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-include="getStep2View()"
@@ -151,7 +151,7 @@
                     </span>
                     <span class="oui-checkbox__description">
                         <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_mode_OVH_autoconfigure_text"></span>
-                        <oui-spinner class="d-inline-block" data-ng-if="loadingConflicts"></oui-spinner>
+                        <oui-spinner data-ng-if="loadingConflicts"></oui-spinner>
                         <strong class="d-block mt-3"
                               data-ng-if="hasConflicts()">
                             <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_compatibility_nok"></span>
