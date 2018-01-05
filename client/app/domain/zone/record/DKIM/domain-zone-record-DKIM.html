@@ -7,9 +7,9 @@
                data-i18n-static="domain_configuration_dns_entry_add_version"></label>
         <div class="col-md-9 pt-2">
             <oui-checkbox id="v" name="v"
-                data-model=="ctrl.model.target.v.DKIM1"
-                on-change="ctrl.setTargetValue('DKIM')"
-                data-text=="DKIM1">
+                data-model="ctrl.model.target.v.DKIM1"
+                data-on-change="ctrl.setTargetValue('DKIM')"
+                data-text="DKIM1">
             </oui-checkbox>
         </div>
     </div>
@@ -31,14 +31,14 @@
                data-i18n-static="domain_configuration_dns_entry_add_algorithm_hash"></label>
         <div class="col-md-9 pt-2">
             <oui-checkbox name="h" id="h-sha1"
-                data-model=="ctrl.model.target.h.sha1"
-                on-change="ctrl.setTargetValue('DKIM')"
-                data-text=="SHA-1">
+                data-model="ctrl.model.target.h.sha1"
+                data-on-change="ctrl.setTargetValue('DKIM')"
+                data-text="SHA-1">
             </oui-checkbox>
             <oui-checkbox name="h" id="h-sha256"
-                data-model=="ctrl.model.target.h.sha256"
-                on-change="ctrl.setTargetValue('DKIM')"
-                data-text=="SHA-256">
+                data-model="ctrl.model.target.h.sha256"
+                data-on-change="ctrl.setTargetValue('DKIM')"
+                data-text="SHA-256">
             </oui-checkbox>
         </div>
     </div>
@@ -48,9 +48,9 @@
                data-i18n-static="domain_configuration_dns_entry_add_algorithm_key"></label>
         <div class="col-md-9">
             <oui-checkbox id="k" name="k"
-                data-model=="ctrl.model.target.k.rsa"
-                on-change="ctrl.setTargetValue('DKIM')"
-                data-text=="RSA">
+                data-model="ctrl.model.target.k.rsa"
+                data-on-change="ctrl.setTargetValue('DKIM')"
+                data-text="RSA">
             </oui-checkbox>
         </div>
     </div>
@@ -81,10 +81,10 @@
                       data-ng-required="!ctrl.model.target.pRevoke"
                       data-ng-trim="false"></textarea>
             <oui-checkbox class="mt-3" id="pRevoke" name="pRevoke"
-                ng-click="ctrl.model.target.p = ''"
-                data-model=="ctrl.model.target.pRevoke"
-                on-change="ctrl.setTargetValue('DKIM')"
-                data-text=="{{::i18n.domain_configuration_dns_entry_add_publickey_revoke}}">
+                data-ng-click="ctrl.model.target.p = ''"
+                data-model="ctrl.model.target.pRevoke"
+                data-on-change="ctrl.setTargetValue('DKIM')"
+                data-text="{{::i18n.domain_configuration_dns_entry_add_publickey_revoke}}">
             </oui-checkbox>
         </div>
     </div>

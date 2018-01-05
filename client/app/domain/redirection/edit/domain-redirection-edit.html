@@ -98,10 +98,10 @@
                                    data-ng-if="ctrl.inputContainErrors()"></small>
 
                             <oui-checkbox class="mt-3" id="includeCNAME" name="includeCNAME"
-                                ng-if="ctrl.redirection.fieldDisplayType === 'CNAME'"
-                                data-model=="ctrl.shouldIncludeDomain"
-                                on-change="ctrl.redirectionTargetChange()"
-                                data-text=="{{::i18n.domain_tab_REDIRECTION_edit_server_cname_include_domain}}">
+                                data-ng-if="ctrl.redirection.fieldDisplayType === 'CNAME'"
+                                data-model="ctrl.shouldIncludeDomain"
+                                data-on-change="ctrl.redirectionTargetChange()"
+                                data-text="{{::i18n.domain_tab_REDIRECTION_edit_server_cname_include_domain}}">
                             </oui-checkbox>
                         </div>
                     </div>

@@ -43,8 +43,8 @@
             <form class="form-horizontal" name="privateDatabaseAddBddUserForm">
                 <!-- ADD NEW USER-->
                 <oui-checkbox id="bddAddUser" name="bddAddUser"
-                    data-model=="addBddCtrl.model.addUser"
-                    data-text=="{{::i18n.privateDatabase_add_bdd_new_user}}">
+                    data-model="addBddCtrl.model.addUser"
+                    data-text="{{::i18n.privateDatabase_add_bdd_new_user}}">
                 </oui-checkbox>
 
                 <div class="mt-5" data-ng-if="addBddCtrl.model.addUser">
@@ -115,8 +115,8 @@
                 <!-- ADD AUTHORIZED IP -->
 
                 <oui-checkbox id="bddAddIpCheckbox" name="bddAddIpCheckbox"
-                    data-model=="addBddCtrl.model.addIp"
-                    data-text=="{{::i18n.privateDatabase_add_authorized_ip}}">
+                    data-model="addBddCtrl.model.addIp"
+                    data-text="{{::i18n.privateDatabase_add_authorized_ip}}">
                 </oui-checkbox>
 
                 <div class="alert alert-warning help-block mt-3" data-ng-if="addBddCtrl.model.addIp" data-i18n-static="privateDatabase_add_authorized_ip_explanation"></div>

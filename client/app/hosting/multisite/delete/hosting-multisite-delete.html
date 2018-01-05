@@ -22,9 +22,9 @@
 	            </dl>
 
                 <oui-checkbox id="wwwNeeded"
-                    ng-show="ctrl.domainsWwwExists()"
-                    data-model=="ctrl.selected.wwwNeeded"
-                    data-text=="{{tr('hosting_tab_DOMAINS_configuration_remove_step1_www', ['www.' + ctrl.selected.domain.displayName])}}">
+                    data-ng-show="ctrl.domainsWwwExists()"
+                    data-model="ctrl.selected.wwwNeeded"
+                    data-text="{{tr('hosting_tab_DOMAINS_configuration_remove_step1_www', ['www.' + ctrl.selected.domain.displayName])}}">
                 </oui-checkbox>
 
                 <div class="oui-checkbox oui-checkbox_thumbnail">
