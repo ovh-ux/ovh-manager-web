@@ -79,6 +79,7 @@ angular.module("App").controller(
 
             this.$scope.$watch("selectedDomains", () => this.applySelection(), true);
             this.$scope.$on("$locationChangeStart", () => this.$scope.resetAction());
+            this.$scope.$on("domain.csv.export.cancel", () => (this.loading.domainsExportCsv = false));
             this.$scope.$on("domain.csv.export.doing", () => (this.loading.domainsExportCsv = true));
             this.$scope.$on("domain.csv.export.done", () => (this.loading.domainsExportCsv = false));
             this.$scope.$on("domain.csv.export.error", () => (this.loading.domainsExportCsv = false));

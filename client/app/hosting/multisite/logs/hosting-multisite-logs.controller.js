@@ -20,11 +20,11 @@ angular.module("App").controller(
 
         generateLogHref (domain) {
             domain.logUrlGenerated = true;
-            if (!domain.ownLogToken) {
+            if (_.isString(domain.ownLog) && !domain.ownLogToken) {
                 domain.logsLoading = true;
                 this.Hosting.getUserLogsToken(this.$stateParams.productId, { params: { attachedDomain: domain.name, remoteCheck: true } })
                     .then((result) => {
-                        if (_.indexOf(this.$scope.hostingProxy.datacenter, "gra") === 0) {
+                        if (_.startsWith(this.$scope.hostingProxy.datacenter, "gra")) {
                             domain.logUrl = `${URI.expand(this.constants.stats_logs_gra, {
                                 cluster: this.$scope.hostingProxy.cluster,
                                 serviceName: domain.ownLog

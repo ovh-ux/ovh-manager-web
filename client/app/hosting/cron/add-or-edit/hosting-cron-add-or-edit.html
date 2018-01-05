@@ -140,9 +140,12 @@
                     <dt data-i18n-static="hosting_tab_CRON_label_status"></dt>
                     <dd data-ng-bind="i18n['hosting_tab_CRON_table_status_' + model.status] || model.status"></dd>
                     <dt data-i18n-static="hosting_tab_CRON_label_email"></dt>
-                    <dd data-ng-bind="i18n['hosting_tab_CRON_email_' + getEmailResume()] || getEmailResume()"></dd>
-                    <dt data-i18n-static="hosting_tab_CRON_label_description"></dt>
-                    <dd data-ng-bind="model.description || '-'"></dd>
+                    <dd data-ng-bind="i18n['hosting_tab_CRON_email_' + getEmailResume()] || getEmailResume()" class="word-break"></dd>
+                    <dt data-i18n-static="hosting_tab_CRON_label_description"
+                        data-ng-if="model.description"></dt>
+                    <dd data-ng-bind="model.description"
+                        data-ng-if="model.description"
+                        class="word-break"></dd>
                 </dl>
 
                 <cron-simple-summary crontab-object="crontabObject"></cron-simple-summary>

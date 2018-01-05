@@ -74,16 +74,6 @@ angular.module("services").service("User", [
                 return constants.urls.managerv3.FR;
             });
 
-        this.getUserAlerts = () =>
-            $http
-                .get("/me/alerts", {
-                    serviceType: "aapi",
-                    params: {
-                        target: constants.target
-                    }
-                })
-                .then((response) => response.data);
-
         this.getCreditCards = () =>
             $http.get("apiv6/me/paymentMean/creditCard").then((response) => {
                 const queries = response.data.map(this.getCreditCard);
