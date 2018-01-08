@@ -7,7 +7,7 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading">
 
-            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
+            <oui-spinner data-ng-if="ctrl.loading"></oui-spinner>
 
             <p data-ng-if="ctrl.massDelete && !ctrl.loading"
                data-ng-bind-html="trpl('domain_configuration_dns_entry_mass_delete_step1_question', ctrl.entryToDelete.length)"></p>
