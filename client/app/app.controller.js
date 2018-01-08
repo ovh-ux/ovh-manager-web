@@ -1,7 +1,7 @@
 angular.module("App").controller(
     "AppCtrl",
     class AppCtrl {
-        constructor ($scope, $rootScope, $timeout, constants, incident, User, translator) {
+        constructor ($scope, $rootScope, $timeout, constants, incident, User, translator, OvhApiMeAlertsAapi) {
             this.$scope = $scope;
             this.$rootScope = $rootScope;
             this.$timeout = $timeout;
@@ -9,6 +9,7 @@ angular.module("App").controller(
             this.incident = incident;
             this.translator = translator;
             this.User = User;
+            this.ovhApiMeAlertsAapi = OvhApiMeAlertsAapi;
         }
 
         $onInit () {
@@ -38,7 +39,11 @@ angular.module("App").controller(
                 this.$rootScope.managerPreloadHide += " manager-preload-hide";
             });
 
-            this.User.getUserAlerts().then((alerts) => {
+            this.ovhApiMeAlertsAapi.query({
+                lang: this.translator.getLanguage(),
+                target: this.constants.target,
+                universe: this.constants.UNIVERS.toUpperCase()
+            }).$promise.then((alerts) => {
                 if (alerts && alerts.length) {
                     const messages = [];
 

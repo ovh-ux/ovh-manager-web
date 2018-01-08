@@ -34,7 +34,10 @@ angular.module("App").controller(
                         });
                     });
                 })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_tasks_error"), _.get(err, "data", err), this.$scope.alerts.main))
+                .catch((err) => {
+                    _.set(err, "type", err.type || "ERROR");
+                    this.Alerter.alertFromSWS(this.$scope.tr("email_tab_TASK_error_message"), _.get(err, "data", err), this.$scope.alerts.main);
+                })
                 .finally(() => {
                     if (_.isEmpty(this.taskIds)) {
                         this.loading = false;

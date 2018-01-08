@@ -22,7 +22,7 @@ angular.module("App").controller(
         }
 
         subDomainCheck (input) {
-            input.$setValidity("subdomain", this.dynHost.subDomain === null || this.dynHost.subDomain === "" || this.Validator.isValidSubDomain(this.dynHost.subDomain));
+            input.$setValidity("subdomain", this.dynHost.subDomain === null || this.dynHost.subDomain === "" || this.Validator.domain.isValid(this.dynHost.subDomain, { isSubDomain: true }));
         }
 
         addDynHost () {

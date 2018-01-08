@@ -42,7 +42,7 @@ angular.module("App").controller(
             this.$scope.createCertif = () => this.createCertif();
             this.$scope.generateCertif = () => this.generateCertif();
 
-            if (!this.Validator.isValidLetsEncryptDomain("www.", this.$stateParams.productId)) {
+            if (!this.Validator.domain.isValid(`www.${this.$stateParams.productId}`)) {
                 this.sslType = "payable";
                 this.validDomain = false;
             }

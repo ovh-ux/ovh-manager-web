@@ -33,7 +33,7 @@ angular.module("controllers").controller(
         }
 
         hostCheck (input) {
-            input.$setValidity("host", this.Validator.isValidSubDomain(this.model.host));
+            input.$setValidity("host", this.Validator.domain.isValid(this.model.host, { isSubDomain: true }));
         }
 
         ipsCheck (input) {
@@ -43,7 +43,7 @@ angular.module("controllers").controller(
             if (!this.domain.glueRecordMultiIpSupported && model.ips.length > 1) {
                 valid = false;
             } else {
-                valid = !_.isEmpty(model.ips) && _.every(model.ips, (ip) => this.Validator.isValidIpv4(ip) || (_.get(this.domain, "glueRecordIpv6Supported", false) && this.Validator.isValidIpv6(ip)));
+                valid = !_.isEmpty(model.ips) && _.every(model.ips, (ip) => this.Validator.isValidIpv4(ip) || (_.get(this.domain, "glueRecordIpv6Supported", false) && this.Validator.ip.isValid(ip, { version: 6, cidr: "FORBIDDEN" })));
             }
 
             input.$setValidity("ips", valid);

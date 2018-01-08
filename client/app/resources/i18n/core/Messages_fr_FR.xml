@@ -135,6 +135,7 @@
    <translation id="common_search" qtlid="37659">Rechercher</translation>
    <translation id="common_cancel" qtlid="37863">Annuler</translation>
    <translation id="common_confirm" qtlid="31498">Confirmer</translation>
+   <translation id="common_install">Installer</translation>
    <translation id="common_loading" qtlid="242769">Chargement en cours</translation>
    <translation id="common_back" qtlid="4118">Retour</translation>
    <translation id="common_next" qtlid="17743">Suivant</translation>
@@ -672,7 +673,6 @@
    <translation id="me_alerts_AGREEMENTS_TODO" qtlid="344019">Vous avez <strong>{0}</strong> contrat(s) à valider.</translation>
    <translation id="me_alerts_CONTACTCHANGE_VALIDATINGBYCUSTOMERS" qtlid="344032">Vous avez <strong>{0}</strong> demande(s) de changement de contact.</translation>
 
-
    <translation id="global_ks_upgrade_step1" qtlid="367863">Pour migrer une offre hébergement Kimsufi, procéder comme ceci :</translation>
    <translation id="global_ks_upgrade_step2" qtlid="367876">Sélectionner un hébergement Kimsufi dans le menu</translation>
    <translation id="global_ks_upgrade_step3" qtlid="367889">Cliquer sur le bouton "Changer d'offre" sur la page des informations générales de l'hébergement choisi.</translation>
@@ -688,4 +688,33 @@
    <translation id="preload_tips_4" qtlid="433641">Nouvelle version de l'espace Web !</translation>
 
    <translation id="sidebar_menu_order_actions" qtlid="43558">Commander</translation>
+
+   <!-- Validator -->
+   <translation id="validator_domain_error_length">Un nom de domaine doit faire moins de {0} caractères.</translation>
+   <translation id="validator_domain_error_parts">Un nom de domaine doit être constitué d'au moins deux parties séparés par un point.</translation>
+   <translation id="validator_domain_error_subdomain_length">Un nom de sous-domaine doit faire moins de {0} caractères.</translation>
+   <translation id="validator_domain_error_wildcard">Ce nom de domaine ne peut pas contenir d'étoile *.</translation>
+   <translation id="validator_domain_error_underscore">Ce nom de domaine ne peut pas contenir de tiret bas _.</translation>
+   <translation id="validator_domain_error_ip">Ce nom de domaine ne peut pas être une adresse IP.</translation>
+   <translation id="validator_domain_error_general_form">La valeur donnée n'est pas un nom de domaine valide. Exemple de nom de domaine valide: exemple.domaine-exemple.ovh</translation>
+
+   <translation id="validator_email_error_parts">Une addresse e-mail doit contenir un seul arobase @</translation>
+   <translation id="validator_email_error_localPart">La partie locale (avant le arobase) ne peut contenir que des lettres, chiffres ou - _ +.</translation>
+
+   <translation id="validator_ip_error_ip">L'adresse IP doit respecter la norme</translation>
+   <translation id="validator_ip_error_ipv4">IPv4</translation>
+   <translation id="validator_ip_error_ipv6">IPv6</translation>
+   <translation id="validator_ip_error_or">ou</translation>
+   <translation id="validator_ip_error_with"> avec </translation>
+   <translation id="validator_ip_error_orWithout">ou sans </translation>
+   <translation id="validator_ip_error_cidr">CIDR</translation>
+   <translation id="validator_ip_error_example">Exemple :</translation>
+   <translation id="validator_ip_error_example_ipv4">10.11.12.13</translation>
+   <translation id="validator_ip_error_example_ipv6">2001:db8:a0b:12f0::1</translation>
+   <translation id="validator_ip_error_example_cidr">/20</translation>
+
+   <translation id="validator_url_error_length">Une URL doit faire moins de {0} caractères.</translation>
+   <translation id="validator_url_error_characters">Une URL ne peut pas contenir d'espaces ou les caractères --, < ou >.</translation>
+   <translation id="validator_url_error_protocol">Une URL doit contenir l'un des protocols suivant {0}.</translation>
+   <translation id="validator_url_error_port">Le port d'une URL doit être un nombre compris entre {0} et {1}.</translation>
 </translations>

@@ -36,8 +36,8 @@ angular.module("App").controller(
                 { label: "creation_date", modelKey: "creation", checked: false },
                 { label: "expiration_date", modelKey: "expiration", checked: true },
                 { label: "whois_fields", modelKey: "owo", checked: false, target: "owo", transform: (value, translations) => _.size(value) ? translations.enabled : translations.disabled },
-                { label: "dnssec", modelKey: "dnssec", checked: false, target: "dnssec", transform: (value, translations) => _.isString(value.status) ? translations[value.status] : "" },
-                { label: "dnsanycast", modelKey: "dnsanycast", checked: false, target: "dnsanycast", transform: (value, translations) => _.isString(value.status) ? translations[value.status] : "" },
+                { label: "dnssec", modelKey: "dnssec", checked: false, target: "dnssec", transform: (value, translations) => _.isString(_.get(value, "status")) ? translations[value.status] : "" },
+                { label: "dnsanycast", modelKey: "dnsanycast", checked: false, target: "dnsanycast", transform: (value, translations) => _.isString(_.get(value, "status")) ? translations[value.status] : "" },
                 { label: "nic_billing", modelKey: "contactBilling", checked: true },
                 { label: "nic_tech", modelKey: "contactTech", checked: true },
                 { label: "nic_admin", modelKey: "contactAdmin", checked: true },
@@ -62,6 +62,7 @@ angular.module("App").controller(
                 this.exportResults.error = true;
             });
 
+            this.$scope.closeExport = () => this.closeExport();
             this.$scope.exportAccounts = () => this.exportAccountsToCsv();
         }
 
@@ -76,6 +77,7 @@ angular.module("App").controller(
             this.Domain
                 .getDomains()
                 .then((zones) => {
+                    this.canceler = false;
                     this.exportCsv.wroughtDataForCsv({
                         instanceName: "domain.csv.export",
                         internalData: {
@@ -102,14 +104,18 @@ angular.module("App").controller(
                             });
                         },
                         notify: (options) => this.$scope.$emit("domain.csv.export.doing", { done: options.total - options.zones.length, total: options.total }),
-                        keepGoing: (options) => this.$q.when(!_.isEmpty(_.get(options, "zones"))),
+                        keepGoing: (options) => this.$q.when(!_.isEmpty(_.get(options, "zones")) && !this.canceler),
                         done: (options) => {
-                            const data = this.exportCsv.exportData({
-                                separator: ";",
-                                fileName: null,
-                                datas: options.datas
-                            });
-                            this.$rootScope.$broadcast("domain.csv.export.done", data);
+                            if (this.canceler) {
+                                this.$rootScope.$broadcast("domain.csv.export.cancel");
+                            } else {
+                                const data = this.exportCsv.exportData({
+                                    separator: ";",
+                                    fileName: null,
+                                    datas: options.datas
+                                });
+                                this.$rootScope.$broadcast("domain.csv.export.done", data);
+                            }
                         },
                         error: (err) => this.$rootScope.$broadcast("domain.csv.export.error", err)
                     });
@@ -117,6 +123,11 @@ angular.module("App").controller(
                 .catch((err) => this.$rootScope.$broadcast("domain.csv.export.error", err));
 
             this.$scope.$emit("domain.csv.export.doing");
+        }
+
+        closeExport () {
+            this.canceler = true;
+            this.$scope.resetAction();
         }
     }
 );

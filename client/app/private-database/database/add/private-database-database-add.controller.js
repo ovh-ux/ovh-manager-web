@@ -146,7 +146,7 @@ angular.module("App").controller(
         }
 
         isIpValid (ip) {
-            return this.validator.isValidIpv4Block(ip) || this.validator.isValidIpv4(ip);
+            return this.validator.ip.isValid(ip, { version: 4 });
         }
     }
 );

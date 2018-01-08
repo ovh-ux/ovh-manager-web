@@ -17,8 +17,8 @@
    <translation id="privateDatabase_dashboard_version_postgresql_95" qtlid="354197">PostgreSQL 9.5</translation>
    <translation id="privateDatabase_dashboard_version_postgresql_96" qtlid="360970">PostgreSQL 9.6</translation>
    <translation id="privateDatabase_dashboard_version_postgresql_10" qtlid="444443">PostgreSQL 10</translation>
-   <translation id="privateDatabase_dashboard_version_mongodb_34">MongoDB 3.4</translation>
-   <translation id="privateDatabase_dashboard_version_redis_32">Redis 3.2</translation>
+   <translation id="privateDatabase_dashboard_version_mongodb_34" qtlid="448301">MongoDB 3.4</translation>
+   <translation id="privateDatabase_dashboard_version_redis_32" qtlid="448314">Redis 3.2</translation>
    <translation id="privateDatabase_dashboard_nb_cpu" qtlid="215637">Número de CPU</translation>
    <translation id="privateDatabase_dashboard_ip" qtlid="25615">IP</translation>
    <translation id="privateDatabase_dashboard_detached" qtlid="136100">Suspendido</translation>
@@ -30,7 +30,7 @@
    <translation id="privateDatabase_dashboard_type" qtlid="2642">Tipo</translation>
    <translation id="privateDatabase_dashboard_type_mysql" qtlid="196894">MySQL</translation>
    <translation id="privateDatabase_dashboard_type_postgresql" qtlid="196907">PostgreSQL</translation>
-   <translation id="privateDatabase_dashboard_type_redis">Redis</translation>
+   <translation id="privateDatabase_dashboard_type_redis" qtlid="448327">Redis</translation>
    <translation id="privateDatabase_dashboard_type_mongodb" qtlid="444706">MongoDB</translation>
    <translation id="privateDatabase_dashboard_type_mariadb" qtlid="444719">MariaDB</translation>
    <translation id="privateDatabase_dashboard_ram" qtlid="31354">RAM</translation>
@@ -49,16 +49,16 @@
    <translation id="privateDatabase_dashboard_port_legacy" qtlid="254843">Puerto FTP</translation>
    <translation id="privateDatabase_dashboard_port_docker" qtlid="262947">Puerto SFTP</translation>
    <translation id="privateDatabase_dashboard_port" qtlid="9034">Port</translation>
-   <translation id="privateDatabase_dashboard_certificate">Certificat</translation>
-   <translation id="privateDatabase_dashboard_certificate_tooltip">Le certificat n'est pas obligatoire pour réaliser la connexion à votre instance. Celui-ci est par contre nécessaire si vous désirez chiffrer la connexion vers celle-ci.</translation>
-   <translation id="privateDatabase_dashboard_see_certificate">Voir le certificat</translation>
+   <translation id="privateDatabase_dashboard_certificate" qtlid="19771">Certificat</translation>
+   <translation id="privateDatabase_dashboard_certificate_tooltip" qtlid="448340">Le certificat n'est pas obligatoire pour réaliser la connexion à votre instance. Celui-ci est par contre nécessaire si vous désirez chiffrer la connexion vers celle-ci.</translation>
+   <translation id="privateDatabase_dashboard_see_certificate" qtlid="448353">Voir le certificat</translation>
    <translation id="privateDatabase_dashboard_service_hosting_more" qtlid="325924">Ver la lista</translation>
    <translation id="privateDatabase_dashboard_service_hosting_linked" qtlid="444456">Hébergement web lié</translation>
    <translation id="privateDatabase_dashboard_service_hosting_linked_none" qtlid="30646">Aucun</translation>
 
-   <translation id="privateDatabase_dashboard_connections_title">Informations de connexion</translation>
-   <translation id="privateDatabase_dashboard_ftp_informations_legacy">FTP</translation>
-   <translation id="privateDatabase_dashboard_ftp_informations_docker">SFTP</translation>
+   <translation id="privateDatabase_dashboard_connections_title" qtlid="250927">Datos de conexión</translation>
+   <translation id="privateDatabase_dashboard_ftp_informations_legacy" qtlid="50410">FTP</translation>
+   <translation id="privateDatabase_dashboard_ftp_informations_docker" qtlid="295296">SFTP</translation>
    <translation id="privateDatabase_dashboard_ftp_username" qtlid="56045">Nom d'utilisateur</translation>
    <translation id="privateDatabase_dashboard_admin_informations" qtlid="264001">Administración de la base de datos</translation>
    <translation id="privateDatabase_dashboard_admin_informations_users" qtlid="264014">Diríjase a la pestaña de usuarios y derechos</translation>
@@ -77,7 +77,7 @@
 
    <translation id="privateDatabase_configurations_general_mysql" qtlid="263494">Configuración general de MySQL</translation>
    <translation id="privateDatabase_configurations_general_mariadb" qtlid="404668">Configuración general de MariaDB</translation>
-   <translation id="privateDatabase_configurations_general_redis">Configuration générale de Redis</translation>
+   <translation id="privateDatabase_configurations_general_redis" qtlid="448366">Configuration générale de Redis</translation>
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Configuración general de PostgreSQL</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">Próximamente disponible para PostgreSQL</translation>
 
@@ -100,7 +100,7 @@
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Número de segundos que espera el servidor antes de cerrar la conexión cuando no hay actividad durante una conexión en línea de comandos.</translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Número de segundos que espera el servidor antes de cerrar la conexión cuando no hay actividad durante una conexión externa.</translation>
 
-   <translation id="privateDatabase_capability_disabled_explanation">Cette fonctionnalité n'est pas disponible pour ce type de base de données.</translation>
+   <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Cette fonctionnalité n'est pas disponible pour ce type de base de données.</translation>
 
    <translation id="privateDatabase_action_changepassword" qtlid="80394">Changer le mot de passe</translation>
    <translation id="privateDatabase_action_grants" qtlid="215715">Editar los permisos</translation>
@@ -308,9 +308,9 @@
    <translation id="privateDatabase_add_bdd_new_user_password_confirm" qtlid="300539">Confirmar la contraseña</translation>
    <translation id="privateDatabase_add_bdd_new_user_password_tooltip" qtlid="300552">Entre 8 y 31 caracteres alfanuméricos, incluyendo al menos una letra mayúscula, una letra minúscula y una cifra.</translation>
 
-   <translation id="privateDatabase_add_authorized_ip">Ajouter une adresse IP autorisée</translation>
-   <translation id="privateDatabase_add_authorized_ip_explanation">Vous n'avez pas encore d'adresse IP autorisée à accéder à vos bases de données. Entrez ici l'adresse IP du serveur auquel vous souhaitez donner accès à vos bases.</translation>
-   <translation id="privateDatabase_add_authorized_ip_description">Accès initial à la base de données</translation>
+   <translation id="privateDatabase_add_authorized_ip" qtlid="448392">Ajouter une adresse IP autorisée</translation>
+   <translation id="privateDatabase_add_authorized_ip_explanation" qtlid="448405">Vous n'avez pas encore d'adresse IP autorisée à accéder à vos bases de données. Entrez ici l'adresse IP du serveur auquel vous souhaitez donner accès à vos bases.</translation>
+   <translation id="privateDatabase_add_authorized_ip_description" qtlid="448418">Accès initial à la base de données</translation>
 
    <translation id="privateDatabase_restore_bdd_application" qtlid="404707">Primeramente debe volver a crearla en la pestaña de gestión de sus bases de datos.</translation>
    <translation id="privateDatabase_restore_bdd_close" qtlid="4670">Cerrar</translation>
@@ -336,12 +336,12 @@
    <translation id="privateDatabase_tabs_dumps_restore_in_progress" qtlid="263428">La restauración del backup se ha registrado correctamente.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_success" qtlid="263441">El backup se ha restaurado correctamente.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_fail" qtlid="263454">Se ha producido un error al restaurar el backup:</translation>
-   <translation id="privateDatabase_tabs_dumps_delete">Supprimer la sauvegarde</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_title">Supprimer une sauvegarde</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_confirm">Souhaitez-vous supprimer la sauvegarde du <strong>{0}</strong> de la base de données <strong>{1}</strong> ?</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_start">La demande de suppression de la sauvegarde de base de données a été prise en compte.</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_done">La suppression de la sauvegarde de base de données a été effectuée.</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_error">Une erreur est survenue lors de la suppression de la sauvegarde de base de données.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete" qtlid="448431">Supprimer la sauvegarde</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_title" qtlid="448444">Supprimer une sauvegarde</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_confirm" qtlid="448457">Souhaitez-vous supprimer la sauvegarde du <strong>{0}</strong> de la base de données <strong>{1}</strong> ?</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_start" qtlid="448470">La demande de suppression de la sauvegarde de base de données a été prise en compte.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_done" qtlid="448483">La suppression de la sauvegarde de base de données a été effectuée.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_error" qtlid="448496">Une erreur est survenue lors de la suppression de la sauvegarde de base de données.</translation>
 
    <translation id="privateDatabase_tabs_users_database_error" qtlid="135294">Se ha producido un error al cargar la información.</translation>
    <translation id="privateDatabase_tabs_users_database_username" qtlid="7450">Utilisateur</translation>

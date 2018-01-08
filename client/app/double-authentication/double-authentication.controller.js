@@ -9,11 +9,9 @@ angular.module("App").controller(
         constructor ($scope, $location) {
             this.$scope = $scope;
             this.$location = $location;
-
-            this.init();
         }
 
-        init () {
+        $onInit () {
             this.backupCodeStatus = this.$scope.currentActionData;
 
             /**

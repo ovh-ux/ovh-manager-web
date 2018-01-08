@@ -218,10 +218,8 @@ angular.module("App").controller(
         }
 
         subDomainToDisplayCheck (input) {
-            input.$setValidity(
-                "subdomain",
-                this.addDnsRecord.subDomainToDisplay === null || this.addDnsRecord.subDomainToDisplay === "" || this.Validator.isValidSubDomain(this.addDnsRecord.subDomainToDisplay, { canBeginWithUnderscore: true, canBeginWithWildcard: true })
-            );
+            const subDomainIsValid = this.Validator.domain.isValid(this.addDnsRecord.subDomainToDisplay, { subDomainsCanBeginWithUnderscore: true, canBeginWithWildcard: true, isSubDomain: true });
+            input.$setValidity("subdomain", subDomainIsValid);
         }
 
         ttlCheck (input) {

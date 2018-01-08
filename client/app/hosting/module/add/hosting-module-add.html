@@ -1,7 +1,7 @@
 <div data-ng-controller="HostingModuleCreateCtrl">
     <div data-wizard
          data-wizard-bread-crumb="advancedMode.value"
-         data-wizard-next-button-text="advancedMode.value?tr('common_next'):'installer'"
+         data-wizard-next-button-text="tr(advancedMode.value ? 'common_next' : 'common_install')"
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="createModule"
          data-wizard-title="i18n.hosting_configuration_tab_modules_module_add">
