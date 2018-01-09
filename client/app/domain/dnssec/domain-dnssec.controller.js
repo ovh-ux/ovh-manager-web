@@ -85,7 +85,7 @@ angular.module("controllers").controller(
         getPendingTasks (domain) {
             this.hasActiveTask = 0;
             _.forEach(["todo", "doing", "error"], (status) =>
-                this.Domain.getDomainPendingTasks(domain, { "function": "DomainDsUpdate", status }).then((tasks) => {
+                this.Domain.getDomainPendingTasks(domain, { "function": "DomainDnsUpdate", status }).then((tasks) => {
                     this.hasActiveTask += tasks.length > 0 ? 1 : 0;
                 })
             );
