@@ -691,15 +691,15 @@
 
    <!-- Validator -->
    <translation id="validator_domain_error_length">Un nom de domaine doit faire moins de {0} caractères.</translation>
-   <translation id="validator_domain_error_parts">Un nom de domaine doit être constitué d'au moins deux parties séparés par un point.</translation>
+   <translation id="validator_domain_error_parts">Un nom de domaine doit être constitué d'au moins deux parties séparées par un point.</translation>
    <translation id="validator_domain_error_subdomain_length">Un nom de sous-domaine doit faire moins de {0} caractères.</translation>
-   <translation id="validator_domain_error_wildcard">Ce nom de domaine ne peut pas contenir d'étoile *.</translation>
-   <translation id="validator_domain_error_underscore">Ce nom de domaine ne peut pas contenir de tiret bas _.</translation>
+   <translation id="validator_domain_error_wildcard">Ce nom de domaine ne peut pas contenir d'astérisque (*).</translation>
+   <translation id="validator_domain_error_underscore">Ce nom de domaine ne peut pas contenir d'underscore (_).</translation>
    <translation id="validator_domain_error_ip">Ce nom de domaine ne peut pas être une adresse IP.</translation>
-   <translation id="validator_domain_error_general_form">La valeur donnée n'est pas un nom de domaine valide. Exemple de nom de domaine valide: exemple.domaine-exemple.ovh</translation>
+   <translation id="validator_domain_error_general_form">Ce nom de domaine est invalide. Exemple de nom de domaine valide : "exemple.domaine-exemple.ovh".</translation>
 
-   <translation id="validator_email_error_parts">Une addresse e-mail doit contenir un seul arobase @</translation>
-   <translation id="validator_email_error_localPart">La partie locale (avant le arobase) ne peut contenir que des lettres, chiffres ou - _ +.</translation>
+   <translation id="validator_email_error_parts">Une adresse e-mail doit contenir une seule arobase (@).</translation>
+   <translation id="validator_email_error_localPart">La partie locale (située avant l'arobase) ne peut contenir que des lettres, des chiffres ou les caractères suivants : "-", "_", "+" ou ".".</translation>
 
    <translation id="validator_ip_error_ip">L'adresse IP doit respecter la norme</translation>
    <translation id="validator_ip_error_ipv4">IPv4</translation>
@@ -714,7 +714,7 @@
    <translation id="validator_ip_error_example_cidr">/20</translation>
 
    <translation id="validator_url_error_length">Une URL doit faire moins de {0} caractères.</translation>
-   <translation id="validator_url_error_characters">Une URL ne peut pas contenir d'espaces ou les caractères --, < ou >.</translation>
-   <translation id="validator_url_error_protocol">Une URL doit contenir l'un des protocols suivant {0}.</translation>
+   <translation id="validator_url_error_characters">Une URL ne peut pas contenir d'espaces ou les caractères suivants : "--", "<" ou ">".</translation>
+   <translation id="validator_url_error_protocol">Une URL doit contenir l'un des protocoles suivants {0}.</translation>
    <translation id="validator_url_error_port">Le port d'une URL doit être un nombre compris entre {0} et {1}.</translation>
 </translations>
