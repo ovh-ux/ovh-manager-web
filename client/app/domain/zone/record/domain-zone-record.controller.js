@@ -494,6 +494,27 @@ angular.module("App").controller(
             }
         }
 
+        changeTarget (prefix) {
+            switch (prefix) {
+            case "-": {
+                this.model.target.all = "-all";
+                this.setTargetValue("SPF");
+                break;
+            }
+            case "~": {
+                this.model.target.all = "~all";
+                this.setTargetValue("SPF");
+                break;
+            }
+            case "?": {
+                this.model.target.all = "?all";
+                this.setTargetValue("SPF");
+                break;
+            }
+            default:
+                this.setTargetValue("SPF");
+            }
+        }
         setTtlConfiguration () {
             if (this.model.ttlSelect === "global") {
                 this.model.ttl = 0;

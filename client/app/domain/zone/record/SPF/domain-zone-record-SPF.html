@@ -144,19 +144,19 @@
         <div class="col-md-9 col-md-offset-3">
 
             <oui-radio text="{{::tr('domain_configuration_dns_entry_add_spf_all_title_yes')}}"
-                    on-change="ctrl.model.target.all = '-all'; ctrl.setTargetValue('SPF')"
+                    on-change="ctrl.changeTarget('-')"
                     model="ctrl.model.target.all"
                     name="spf-all"
                     value="'-all'">
             </oui-radio>
             <oui-radio text="{{::tr('domain_configuration_dns_entry_add_spf_all_title_safe')}}"
-                    on-change="ctrl.model.target.all = '~all'; ctrl.setTargetValue('SPF')"
+                    on-change="ctrl.changeTarget('~')"
                     model="ctrl.model.target.all"
                     name="spf-all"
                     value="'~all'">
             </oui-radio>
             <oui-radio text="{{::tr('domain_configuration_dns_entry_add_spf_all_title_no')}}"
-                    on-change="ctrl.model.target.all = '?all'; ctrl.setTargetValue('SPF')"
+                    on-change="ctrl.changeTarget('?')"
                     model="ctrl.model.target.all"
                     name="spf-all"
                     value="'?all'">
