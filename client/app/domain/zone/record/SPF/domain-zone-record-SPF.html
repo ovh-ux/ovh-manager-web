@@ -64,7 +64,7 @@
 
             <div class="oui-radio_inline">
                 <oui-radio text="{{::tr('common_yes')}}"
-                        on-change="ctrl.model.target.ptrSender = true; ctrl.setTargetValue('SPF')"
+                        on-change="setPtrSender(true)"
                         model="ctrl.model.target.ptrSender"
                         name="spf-ptr"
                         value="true">
@@ -73,7 +73,7 @@
 
             <div class="oui-radio_inline ml-4">
                 <oui-radio text="{{::tr('common_no')}}"
-                        on-change="ctrl.model.target.ptrSender = false; ctrl.setTargetValue('SPF')"
+                        on-change="setPtrSender(false)"
                         model="ctrl.model.target.ptrSender"
                         name="spf-ptr"
                         value="false">

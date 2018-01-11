@@ -515,6 +515,14 @@ angular.module("App").controller(
                 this.setTargetValue("SPF");
             }
         }
+
+        setPtrSender (ptrSender) {
+            if (_.isBoolean(ptrSender)) {
+                this.model.target.ptrSender = ptrSender;
+            }
+            this.setTargetValue("SPF");
+        }
+
         setTtlConfiguration () {
             if (this.model.ttlSelect === "global") {
                 this.model.ttl = 0;
