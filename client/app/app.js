@@ -583,4 +583,28 @@ angular
         portal: "https://www.ovh.com/manager/portal/index.html#/",
         partners: "https://www.ovh.com/manager/partners/",
         labs: "https://www.ovh.com/manager/sunrise/uxlabs/#!/"
+    })
+    .run(($rootScope, translator,
+          ouiDatagridConfiguration, ouiPaginationConfiguration) => {
+        "use strict";
+
+        const off = $rootScope.$on("$stateChangeSuccess", () => {
+            ouiDatagridConfiguration.translations = {
+                emptyPlaceholder: translator.tr("common_ouidatagrid_nodata")
+            };
+
+            ouiPaginationConfiguration.translations = {
+                resultsPerPage: translator.tr("common_ouipagination_resultsperpage")
+                    .replace("CURRENT_PAGE", "{{currentPage}}")
+                    .replace("PAGE_COUNT", "{{pageCount}}"),
+                ofNResults: translator.tr("common_ouipagination_ofnresults")
+                    .replace("TOTAL_ITEMS", "{{totalItems}}"),
+                currentPageOfPageCount: translator.tr("common_ouipagination_currentpageofpagecount"),
+                previousPage: translator.tr("common_ouipagination_previous"),
+                nextPage: translator.tr("common_ouipagination_next")
+            };
+
+            off();
+        });
     });
+
