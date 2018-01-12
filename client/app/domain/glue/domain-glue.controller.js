@@ -1,16 +1,18 @@
 angular.module("App").controller(
     "controllers.Domain.Glue",
     class DomainTabGlueCtrl {
-        constructor ($scope, Alerter, Domain) {
+        constructor ($scope, Alerter, Domain, translator) {
             this.$scope = $scope;
             this.Alerter = Alerter;
             this.Domain = Domain;
+
+            this.translator = translator;
         }
 
         $onInit () {
             this.domain = this.$scope.ctrlDomain.domain;
             this.loading = false;
-            this.glueDetails = [];
+            this.glueDetails = undefined;
 
             this.$scope.$on("domain.tabs.glue.refresh", () => this.refreshTableGlues());
             this.$scope.$on("domain.DomainHostCreate.done", () => {
@@ -42,7 +44,7 @@ angular.module("App").controller(
             return this.Domain
                 .getGlueRecords(this.domain.name)
                 .then((hosts) => {
-                    this.glueHosts = hosts;
+                    this.glueHosts = hosts.map((host) => ({ host }));
                 })
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
@@ -60,11 +62,7 @@ angular.module("App").controller(
         }
 
         transformItem (host) {
-            return this.Domain.getGlueRecordDetail(this.domain.name, host);
-        }
-
-        onTransformItemDone () {
-            this.loading = false;
+            return this.Domain.getGlueRecordDetail(this.domain.name, host.host);
         }
     }
 );
