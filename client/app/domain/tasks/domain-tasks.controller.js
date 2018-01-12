@@ -14,8 +14,6 @@ angular.module("controllers").controller(
         }
 
         getTasks () {
-            this.tasks = null;
-
             if (/^\/configuration\/zone.+/.test(this.$state.current.url)) {
                 return this.Domain
                     .getZoneDnsTasks(this.$stateParams.productId)

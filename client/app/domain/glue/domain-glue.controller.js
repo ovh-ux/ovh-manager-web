@@ -1,18 +1,15 @@
 angular.module("App").controller(
     "controllers.Domain.Glue",
     class DomainTabGlueCtrl {
-        constructor ($scope, Alerter, Domain, translator) {
+        constructor ($scope, Alerter, Domain) {
             this.$scope = $scope;
             this.Alerter = Alerter;
             this.Domain = Domain;
-
-            this.translator = translator;
         }
 
         $onInit () {
             this.domain = this.$scope.ctrlDomain.domain;
             this.loading = false;
-            this.glueDetails = undefined;
 
             this.$scope.$on("domain.tabs.glue.refresh", () => this.refreshTableGlues());
             this.$scope.$on("domain.DomainHostCreate.done", () => {
@@ -39,7 +36,6 @@ angular.module("App").controller(
 
         loadGlues () {
             this.loading = true;
-            this.glueHosts = null;
 
             return this.Domain
                 .getGlueRecords(this.domain.name)
@@ -51,9 +47,7 @@ angular.module("App").controller(
                     this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_GLUE_table_error"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
-                    if (_.isEmpty(this.glueHosts)) {
-                        this.loading = false;
-                    }
+                    this.loading = false;
                 });
         }
 

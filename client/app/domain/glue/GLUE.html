@@ -6,11 +6,6 @@
             <p class="font-weight-bold" data-i18n-static="domain_tab_GLUE_heading"></p>
             <p data-i18n-static="domain_tab_GLUE_info"></p>
 
-            <div class="alert alert-info" role="alert"
-                 data-i18n-static="domain_tab_GLUE_empty"
-                 data-ng-if="!ctrlDomainGlue.loading && !ctrlDomainGlue.glueHosts.length">
-            </div>
-
             <oui-datagrid data-rows="ctrlDomainGlue.glueHosts"
                 row-loader="ctrlDomainGlue.transformItem($row)">
                 <oui-column data-property="host"
