@@ -92,13 +92,12 @@ angular.module("controllers").controller(
         }
 
         addRecord () {
-            this.dnssecList.push({ id: this.nextAvailableId(), tag: 0, flags: "", algorithm: "", publicKey: "" });
+            this.dnssecList.push({ id: this.nextAvailableId(), tag: 0, flags: null, algorithm: null, publicKey: null });
         }
 
         nextAvailableId () {
             return _.find(_.range(this.const.MAX_AMOUNT_DNSSEC),
-                          (id) => !_.any(this.dnssecList,
-                                         (record) => record.id === id));
+                          (id) => !_.any(this.dnssecList, { id }));
         }
 
         deleteRecord (dnssec) {
