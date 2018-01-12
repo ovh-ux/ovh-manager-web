@@ -539,6 +539,13 @@
                 });
             }
 
+            retrievingDetails (serviceName) {
+                return this.OvhHttp
+                    .get(`/hosting/web/${serviceName}/ssl/report`, {
+                        rootPath: "apiv6"
+                    });
+            }
+
             /**
              * Order upgraded offer
              * @param {string} serviceName

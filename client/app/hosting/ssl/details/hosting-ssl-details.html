@@ -1,0 +1,43 @@
+<div data-ng-controller="hostingSSLDetailsController as $ctrl">
+    <div data-wizard
+         data-wizard-hide-cancel-button="true"
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="resetAction"
+         data-wizard-confirm-button-text="i18n.hosting_dashboard_ssl_details_confirm_button"
+         data-wizard-title="i18n.hosting_dashboard_ssl_details_title">
+
+        <div data-wizard-step>
+            <oui-spinner data-ng-if="$ctrl.isLoading"></oui-spinner>
+
+            <div data-ng-if="!$ctrl.isLoading">
+                <div class="oui-list_steps oui-list_separated">
+                    <ul class="oui-list__items">
+                        <li class="oui-list__item" data-ng-repeat="sslReportEntry in $ctrl.sslReport" data-ng-class="{
+                            'oui-list__item_checked': sslReportEntry.value !== 'completed',
+                            'oui-list__item_complete': sslReportEntry.value === 'completed',
+                        }">
+                            <span class="oui-list__header" data-ng-bind="$ctrl.translator.tr('hosting_dashboard_ssl_details_entry_' + sslReportEntry.key)"></span>
+                            <span class="oui-list__description"
+                                  data-ng-if="sslReportEntry.value !== 'completed'"
+                                  data-ng-bind="$ctrl.translator.tr('hosting_dashboard_ssl_details_explanation_' + sslReportEntry.value)"></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="oui-message oui-message_warning oui-message_icon-m">
+                    <span class="oui-icon oui-icon-warning_circle oui-icon_bicolor" aria-hidden="true"></span>
+                    <p class="oui-message__body">
+                        <span data-ng-bind="$ctrl.translator.tr('hosting_dashboard_ssl_details_support', $ctrl.orderNumber)"></span>
+                        <a data-ng-href="{{:: $ctrl.comodoSupportLink }}" target="_blank">
+                            <span aria-hidden="true"
+                                  aria-label="{{:: tr('hosting_dashboard_ssl_details_support_new_window') }}"
+                                  title="{{:: tr('hosting_dashboard_ssl_details_support_new_window') }}"
+                                  class="fa fa-edit fa-external-link"></span>
+                        </a>
+                        .
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1705,6 +1705,7 @@ module.exports = {
                 renewAlign : "https://www.ovh.pt/cgi-bin/order/renew.cgi?alignDate=1&csid=0",
                 start10mMarket: "https://www.ovh.pt/dominios/oferta_alojamento_start10m.xml"
             },
+            comodoSupport: "https://www.comodo.com/contact-comodo/contact-us.php?track=8295",
             hosting : {
                 CA : "https://www.ovh.com/ca/en/",
                 CZ : "https://www.ovh.cz/webhosting/",

@@ -178,14 +178,10 @@
                                             <div>
                                                 <strong class="d-block"
                                                         data-i18n-static="hosting_dashboard_service_ssl"></strong>
-                                                <span data-ng-bind="hosting.hasHostedSsl || ssl ? i18n.common_yes : i18n.common_no"></span>
-                                                <span class="ml-2"
-                                                      data-ng-if="ssl && ssl.status === 'creating' || ssl.status === 'deleting' || ssl.status === 'regenerating'"
-                                                      data-uib-tooltip="{{tr('hosting_dashboard_service_ssl_' + ssl.status)}}">
-                                                    <oui-spinner data-size="s"></oui-spinner>
-                                                </span>
+                                                <span data-ng-bind="ctrl.chooseCertificateStatusText()"></span>
                                             </div>
-                                            <div class="ml-auto mb-auto" style="position: relative"
+                                            <div class="ml-auto mb-auto"
+                                                 style="position: relative"
                                                  data-ng-if="ctrl.canOrderSSL() || ctrl.canRegenerateSSL() || ctrl.canDeleteSSL()">
                                                 <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
                                                         data-toggle="dropdown">
@@ -213,6 +209,11 @@
                                                     </li>
                                                 </ul>
                                             </div>
+                                            <button class="btn btn-default ml-auto mb-auto text-wrap"
+                                                    type="button"
+                                                    data-i18n-static="hosting_dashboard_ssl_report_button"
+                                                    data-ng-click="setAction('ssl/details/hosting-ssl-details', hosting)"
+                                                    data-ng-if="ssl.isReportable"></button>
                                         </div>
                                     </div>
                                 </li>
