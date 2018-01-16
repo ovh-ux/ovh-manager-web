@@ -44,78 +44,29 @@
             </dl>
 
             <div class="mt-5">
-                <div class="text-center" data-ng-if="ctrl.loaders.userLogs">
-                    <oui-spinner data-size="l"></oui-spinner>
-                </div>
-
-                <div data-ng-if="!ctrl.loaders.userLogs">
-                    <div class="alert alert-info" role="alert"
-                         data-i18n-static="hosting_tab_USER_LOGS_none"
-                         data-ng-if="!ctrl.userLogs.ids.length">
-                    </div>
-
-                    <div class="table-responsive" data-ng-if="ctrl.userLogs.ids.length > 0">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col" data-i18n-static="hosting_tab_USER_LOGS_table_header_login"></th>
-                                    <th scope="col" data-i18n-static="hosting_tab_USER_LOGS_table_header_description"></th>
-                                    <th scope="col" data-i18n-static="hosting_tab_USER_LOGS_table_header_creationDate"></th>
-                                    <th class="min-width text-right" scope="col">
-                                        <button class="btn btn-icon" type="button" title="{{::i18n.emails_tab_table_header_refresh}}"
-                                                data-ng-click="ctrl.refreshTableUserLogs()">
-                                            <span class="fa fa-refresh" aria-hidden="true"></span>
-                                        </button>
-                                    </th>
-                                </tr>
-                            </thead>
-
-                            <tbody data-ng-if="ctrl.loaders.pager">
-                                <tr>
-                                    <td class="loader text-center" colspan="4"></td>
-                                </tr>
-                            </tbody>
-
-                            <!-- user logs -->
-                            <tbody data-ng-if="!ctrl.loaders.pager">
-                                <tr data-ng-repeat="userLogsEntry in ctrl.userLogs.details track by $index">
-                                    <th class="word-break" scope="row"
-                                        data-ng-bind="userLogsEntry.login"></th>
-                                    <td class="word-break"
-                                        data-ng-bind="userLogsEntry.description"></td>
-                                    <td data-ng-bind="userLogsEntry.creationDate | date:'medium'"></td>
-                                    <td class="text-center">
-                                        <button class="btn btn-icon" type="button"
-                                                data-linkedpopover="hosting/popover/user_logs.html"
-                                                data-linkedpopover-placement="left"
-                                                data-linkedpopover-single="true"
-                                                data-linkedpopover-remote="true"
-                                                data-linkedpopover-title="{{i18n.common_actions}}">
-                                            <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="clearfix"
-                     data-ng-if="ctrl.userLogs.ids">
-                    <div data-pagination-front
-                         data-items="ctrl.userLogs.ids"
-                         data-paginated-items="ctrl.userLogs.details"
-                         data-current-page="currentPage"
-                         data-nb-pages="nbPages"
-                         data-items-per-page="itemsPerPage"
-                         data-transform-item="ctrl.transformItem(item)"
-                         data-on-transform-item-done="ctrl.onTransformItemDone(items)"
-                         data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-                         data-item-per-page-placeholder="{{::tr('pagination_display')}}"
-                         data-on-page-change="ctrl.loaders.pager = true"
-                         data-ng-show="!ctrl.loaders.userLogs && ctrl.userLogs.details.length > 0">
-                    </div>
-                </div>
+                <oui-datagrid data-rows="ctrl.userLogs.ids"
+                              data-row-loader="ctrl.transformItem($row)">
+                    <oui-column data-title="tr('hosting_tab_USER_LOGS_table_header_login')" data-property="login">
+                        <span data-ng-bind="$row.login"></span>
+                    </oui-column>
+                    <oui-column data-title="tr('hosting_tab_USER_LOGS_table_header_description')" data-property="description">
+                        <span data-ng-bind="$row.description | date:'short'"></span>
+                    </oui-column>
+                    <oui-column data-title="tr('hosting_tab_USER_LOGS_table_header_creationDate')" data-property="creationDate">
+                        <span data-ng-bind="$row.creationDate | date: 'medium'"></span>
+                    </oui-column>
+                    <oui-action-menu align="end" compact>
+                        <oui-action-menu-item text="{{::tr('hosting_tab_USER_LOGS_table_popover_modify')}}"
+                                              on-click="setAction('user-logs/update/hosting-user-logs-update', $row)">
+                        </oui-action-menu-item>
+                        <oui-action-menu-item text="{{::tr('hosting_tab_USER_LOGS_table_popover_update_password')}}"
+                                              on-click="setAction('user-logs/password-update/hosting-user-logs-update-password', $row.login)">
+                        </oui-action-menu-item>
+                        <oui-action-menu-item text="{{::tr('hosting_tab_USER_LOGS_table_popover_delete')}}"
+                                              on-click="setAction('user-logs/delete/hosting-user-logs-delete', $row.login)">
+                        </oui-action-menu-item>
+                    </oui-action-menu>
+                </oui-datagrid>
             </div>
         </div>
 

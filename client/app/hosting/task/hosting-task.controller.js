@@ -17,8 +17,7 @@ angular.module("App").controller(
                 TODO: "TODO",
                 INIT: "INIT"
             };
-            this.tasksList = null;
-            this.loading = false;
+            this.tasksList = undefined;
 
             this.loadPaginated = this.loadPaginated.bind(this);
 
@@ -27,17 +26,22 @@ angular.module("App").controller(
             });
         }
 
-        loadPaginated (count, offset) {
-            this.loading = true;
-            return this.Hosting.getTasksList(this.$stateParams.productId, count, offset)
+        loadPaginated (config) {
+            return this.Hosting.getTasksList(this.$stateParams.productId, config.pageSize, config.offset - 1)
                 .then((tasks) => {
                     this.tasksList = tasks;
+                    return {
+                        data: tasks.list.results,
+                        meta: {
+                            currentOffset: config.offset,
+                            pageCount: tasks.pagination.length,
+                            totalCount: tasks.count,
+                            pageSize: config.pageSize
+                        }
+                    };
                 })
                 .catch((err) => {
                     this.Alerter.alertFromSWS(this.$scope.tr("hosting_tab_TASKS_error_message"), _.get(err, "data", err), this.$scope.alerts.main);
-                })
-                .finally(() => {
-                    this.loading = false;
                 });
         }
 
