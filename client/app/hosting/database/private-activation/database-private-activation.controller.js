@@ -33,7 +33,7 @@ angular.module("App").controller("HostingDatabasePrivateActiveCtrl", ($scope, $r
 
     function getAvailableVersions (models) {
         const types = models.models["hosting.PrivateDatabase.OrderableVersionEnum"].enum;
-        return temporarilyFilterTypesUntilTheyAreOfficiallyReleased(types, ["mongodb_3.4", "redis_3.2"]);
+        return temporarilyFilterTypesUntilTheyAreOfficiallyReleased(types, ["mongodb_3.4"]);
     }
 
     function temporarilyFilterTypesUntilTheyAreOfficiallyReleased (types, restrictedList) {
