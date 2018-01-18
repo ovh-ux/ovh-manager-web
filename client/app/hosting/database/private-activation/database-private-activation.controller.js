@@ -3,7 +3,7 @@ angular.module("App").controller("HostingDatabasePrivateActiveCtrl", ($scope, $r
 
     $scope.hosting = $scope.currentActionData;
 
-    $scope.datas = {
+    $scope.data = {
         versions: []
     };
     $scope.loaders = {
@@ -19,8 +19,8 @@ angular.module("App").controller("HostingDatabasePrivateActiveCtrl", ($scope, $r
             $scope.loaders.versions = true;
             Hosting.getModels()
                 .then((models) => {
-                    $scope.datas.versions = models.models["hosting.PrivateDatabase.OrderableVersionEnum"].enum;
-                    $scope.choice.version = $scope.datas.versions.length === 1 ? $scope.datas.versions[0] : null;
+                    $scope.data.versions = getAvailableVersions(models);
+                    $scope.choice.version = $scope.data.versions.length === 1 ? $scope.data.versions[0] : null;
                 })
                 .catch((err) => {
                     Alerter.alertFromSWS($scope.tr("hosting_dashboard_database_versions_error", [$scope.entryToDelete]), _.get(err, "data", err), $scope.alerts.main);
@@ -29,6 +29,15 @@ angular.module("App").controller("HostingDatabasePrivateActiveCtrl", ($scope, $r
                     $scope.loaders.versions = false;
                 });
         }
+    }
+
+    function getAvailableVersions (models) {
+        const types = models.models["hosting.PrivateDatabase.OrderableVersionEnum"].enum;
+        return temporarilyFilterTypesUntilTheyAreOfficiallyReleased(types, ["mongodb_3.4"]);
+    }
+
+    function temporarilyFilterTypesUntilTheyAreOfficiallyReleased (types, restrictedList) {
+        return _.filter(types, (type) => !_.contains(restrictedList, type));
     }
 
     $scope.activeDatabase = function () {
