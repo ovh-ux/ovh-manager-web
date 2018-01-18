@@ -20,8 +20,7 @@ module.exports = {
             "CLOUD": "CLOUD",
             "TELECOM": "TELECOM",
             "SUNRISE": "SUNRISE",
-            "PARTNERS": "PARTNERS",
-            "V3": "V3"
+            "PARTNERS": "PARTNERS"
         },
         HOSTING: {
             OFFERS: {
@@ -74,28 +73,6 @@ module.exports = {
             ]
         },
         URLS: {
-            managerv3: {
-                CA: "https://ca.ovh.com/manager/",
-                CZ: "https://www.ovh.cz/managerv3/home.pl",
-                DE: "https://www.ovh.de/managerv3/home.pl",
-                EN: "https://www.ovh.co.uk/managerv3/home.pl",
-                ES: "https://www.ovh.es/managerv3/home.pl",
-                FI: "https://www.ovh-hosting.fi/managerv3/home.pl",
-                FR: "https://www.ovh.com/managerv3/home.pl",
-                GB: "https://www.ovh.co.uk/managerv3/home.pl",
-                IE: "https://www.ovh.ie/managerv3/home.pl",
-                IT: "https://www.ovh.it/managerv3/home.pl",
-                LT: "https://www.ovh.lt/managerv3/home.pl",
-                MA: "https://www.ovh.com/managerv3/home.pl",
-                NL: "https://www.ovh.nl/managerv3/home.pl",
-                PL: "https://www.ovh.pl/managerv3/home.pl",
-                PT: "https://www.ovh.pt/managerv3/home.pl",
-                QC: "https://ca.ovh.com/manager/",
-                RU: "https://www.ovh.ie/managerv3/home.pl",
-                SN: "https://www.ovh.sn/managerv3/home.pl",
-                TN: "https://www.ovh.com/managerv3/home.pl",
-                WE: "https://ca.ovh.com/manager/"
-            },
             CZ: {
                 support: "http://www.ovh.cz/podpora/",
                 support_contact: "http://www.ovh.cz/podpora/",
@@ -1889,21 +1866,21 @@ module.exports = {
         },
 
         "LANGUAGES": [
-            { value : "de_DE", name : "Deutsch" },
-            { value : "en_GB", name : "English" },
-            { value : "en_CA", name : "English (Canadian)" },
-            { value : "en_US", name : "English (United States)" },
-            { value : "es_ES", name : "Español" },
-            { value : "fr_FR", name : "Français" },
-            { value : "fr_CA", name : "Français (Canadien)" },
-            { value : "it_IT", name : "Italiano" },
-            { value : "lt_LT", name : "Lietuviškai" },
-            { value : "nl_NL", name : "Nederlands" },
-            { value : "pl_PL", name : "Polski" },
-            { value : "pt_PT", name : "Português" },
-            { value : "sk_SK", name : "Slovakian" },
-            { value : "fi_FI", name : "Suomi" },
-            { value : "cs_CZ", name : "Česky" }
+            { value : "de_DE", name : "de-DE" },
+            { value : "en_GB", name : "en-GB" },
+            { value : "en_CA", name : "en-CA" },
+            { value : "en_US", name : "en-US" },
+            { value : "es_ES", name : "es-ES" },
+            { value : "fr_FR", name : "fr-FR" },
+            { value : "fr_CA", name : "fr-CA" },
+            { value : "it_IT", name : "it-IT" },
+            { value : "lt_LT", name : "lt-LT" },
+            { value : "nl_NL", name : "nl-NL" },
+            { value : "pl_PL", name : "pl-PL" },
+            { value : "pt_PT", name : "pt-PT" },
+            { value : "sk_SK", name : "sk-SK" },
+            { value : "fi_FI", name : "fi-FI" },
+            { value : "cs_CZ", name : "cs-CZ" }
         ],
         website_url  : {
             new_nic : {
@@ -1951,7 +1928,6 @@ module.exports = {
             "telecom"   : "https://www.ovhtelecom.fr/manager/index.html#/",
             "sunrise"   : "https://www.ovh.com/manager/sunrise/index.html#/",
             "partners"  : "https://www.ovh.com/manager/partners",
-            "v3"        : "https://www.ovh.com/managerv3/home.pl",
             "labs"      : "https://www.ovh.com/manager/sunrise/uxlabs/"
         },
         NO_AUTORENEW_COUNTRIES : [
@@ -1977,8 +1953,7 @@ module.exports = {
             DEDICATED: "DEDICATED",
             CLOUD: "CLOUD",
             TELECOM: "TELECOM",
-            SUNRISE: "SUNRISE",
-            V3: "V3"
+            SUNRISE: "SUNRISE"
         },
         HOSTING: {
             OFFERS: {
