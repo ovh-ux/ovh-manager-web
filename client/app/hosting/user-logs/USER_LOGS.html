@@ -55,14 +55,14 @@
                     <oui-column data-title="tr('hosting_tab_USER_LOGS_table_header_creationDate')" data-property="creationDate">
                         <span data-ng-bind="$row.creationDate | date: 'medium'"></span>
                     </oui-column>
-                    <oui-action-menu align="end" compact>
-                        <oui-action-menu-item text="{{::tr('hosting_tab_USER_LOGS_table_popover_modify')}}"
+                    <oui-action-menu data-align="end" data-compact>
+                        <oui-action-menu-item data-text="{{::tr('hosting_tab_USER_LOGS_table_popover_modify')}}"
                                               on-click="setAction('user-logs/update/hosting-user-logs-update', $row)">
                         </oui-action-menu-item>
-                        <oui-action-menu-item text="{{::tr('hosting_tab_USER_LOGS_table_popover_update_password')}}"
+                        <oui-action-menu-item data-text="{{::tr('hosting_tab_USER_LOGS_table_popover_update_password')}}"
                                               on-click="setAction('user-logs/password-update/hosting-user-logs-update-password', $row.login)">
                         </oui-action-menu-item>
-                        <oui-action-menu-item text="{{::tr('hosting_tab_USER_LOGS_table_popover_delete')}}"
+                        <oui-action-menu-item data-text="{{::tr('hosting_tab_USER_LOGS_table_popover_delete')}}"
                                               on-click="setAction('user-logs/delete/hosting-user-logs-delete', $row.login)">
                         </oui-action-menu-item>
                     </oui-action-menu>

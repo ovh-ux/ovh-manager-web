@@ -26,17 +26,14 @@ angular.module("App").controller(
             });
         }
 
-        loadPaginated (config) {
-            return this.Hosting.getTasksList(this.$stateParams.productId, config.pageSize, config.offset - 1)
+        loadPaginated ({ pageSize, offset }) {
+            return this.Hosting.getTasksList(this.$stateParams.productId, pageSize, offset - 1)
                 .then((tasks) => {
                     this.tasksList = tasks;
                     return {
                         data: tasks.list.results,
                         meta: {
-                            currentOffset: config.offset,
-                            pageCount: tasks.pagination.length,
-                            totalCount: tasks.count,
-                            pageSize: config.pageSize
+                            totalCount: tasks.count
                         }
                     };
                 })
