@@ -1,61 +1,71 @@
-angular.module("App").controller("HostingDatabasePrivateActiveCtrl", ($scope, $rootScope, $stateParams, HostingDatabase, Alerter, Hosting) => {
-    "use strict";
+angular.module("App").controller(
+    "HostingDatabasePrivateActiveCtrl",
+    class HostingDatabasePrivateActiveCtrl {
 
-    $scope.hosting = $scope.currentActionData;
+        constructor ($scope, $rootScope, $stateParams, HostingDatabase, Alerter, PrivateDatabase) {
+            this.$scope = $scope;
+            this.$rootScope = $rootScope;
+            this.$stateParams = $stateParams;
+            this.HostingDatabase = HostingDatabase;
+            this.Alerter = Alerter;
+            this.PrivateDatabase = PrivateDatabase;
 
-    $scope.data = {
-        versions: []
-    };
-    $scope.loaders = {
-        versions: false
-    };
-    $scope.choice = {
-        ram: $scope.hosting.offerCapabilities.privateDatabases.length === 1 ? $scope.hosting.offerCapabilities.privateDatabases[0] : null,
-        version: null
-    };
+            this.host = this.$scope.currentActionData;
+            this.versions = [];
+            this.loaders = {
+                versions: false
+            };
+            this.choice = {
+                ram: this.host.offerCapabilities.privateDatabases.length === 1 ?
+                       _.first(this.host.offerCapabilities.privateDatabases) : null,
+                version: null
+            };
 
-    function init () {
-        if (!$scope.loaders.versions) {
-            $scope.loaders.versions = true;
-            Hosting.getModels()
-                .then((models) => {
-                    $scope.data.versions = getAvailableVersions(models);
-                    $scope.choice.version = $scope.data.versions.length === 1 ? $scope.data.versions[0] : null;
-                })
-                .catch((err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_database_versions_error", [$scope.entryToDelete]), _.get(err, "data", err), $scope.alerts.main);
-                })
-                .finally(() => {
-                    $scope.loaders.versions = false;
-                });
+            this.$scope.activateDatabase = () => this.activateDatabase();
         }
-    }
 
-    function getAvailableVersions (models) {
-        const types = models.models["hosting.PrivateDatabase.OrderableVersionEnum"].enum;
-        return temporarilyFilterTypesUntilTheyAreOfficiallyReleased(types, ["mongodb_3.4"]);
-    }
+        $onInit () {
+            if (!this.loaders.versions) {
+                this.loaders.versions = true;
+                this.PrivateDatabase.getAvailableOrderCapacities("classic")
+                    .then((capacities) => {
+                        this.versions = _.get(capacities, "version");
+                        this.choice.version = this.versions.length === 1 ? _.first(this.versions) : null;
+                    })
+                    .catch((err) => {
+                        this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_database_versions_error",
+                                                                 [this.$scope.entryToDelete]),
+                                                  _.get(err, "data", err),
+                                                  this.$scope.alerts.main);
+                    })
+                    .finally(() => {
+                        this.loaders.versions = false;
+                    });
+            }
+        }
 
-    function temporarilyFilterTypesUntilTheyAreOfficiallyReleased (types, restrictedList) {
-        return _.filter(types, (type) => !_.contains(restrictedList, type));
-    }
+        activateDatabase () {
+            if (this.loaders.versions) {
+                return;
+            }
 
-    $scope.activeDatabase = function () {
-        if (!$scope.loaders.versions) {
-            $scope.loaders.versions = true;
-            HostingDatabase.activeDatabasePrivate($stateParams.productId, $scope.choice.ram.quota.value, $scope.choice.version)
+            this.loaders.versions = true;
+            this.HostingDatabase.activateDatabasePrivate(this.$stateParams.productId,
+                                                         this.choice.ram.quota.value,
+                                                         this.choice.version)
                 .then(() => {
-                    $rootScope.$broadcast("hosting.database.sqlPrive");
-                    Alerter.success($scope.tr("hosting_dashboard_database_active_success"), $scope.alerts.main);
+                    this.$rootScope.$broadcast("hosting.database.sqlPrive");
+                    this.Alerter.success(this.$scope.tr("hosting_dashboard_database_active_success"),
+                                         this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_database_active_error", [$scope.entryToDelete]), _.get(err, "data", err), $scope.alerts.main);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_database_active_error",
+                                                             [this.$scope.entryToDelete]),
+                                              _.get(err, "data", err),
+                                              this.$scope.alerts.main);
                 })
                 .finally(() => {
-                    $scope.resetAction();
+                    this.$scope.resetAction();
                 });
         }
-    };
-
-    init();
 });
