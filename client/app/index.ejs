@@ -54,6 +54,7 @@
     </head>
     <body data-ng-app="App" data-ng-controller="SessionCtrl" data-ng-cloak class="ng-cloak">
         <div class="col-container">
+
             <!-- Skip to main content -->
             <div class="skipnav">
                 <a class="oui-button oui-button_link" href=""
@@ -61,30 +62,26 @@
                     data-ng-click="scrollTo('maincontent')">
                 </a>
             </div>
+            <!-- /Skip to main content -->
 
             <oui-navbar fixed
-                active-link="web"
-                brand="::navbar.brand"
-                main-links="::navbar.managerLinks"
-                aside-links="::navbar.internalLinks">
+                data-active-link="web"
+                data-brand="::navbar.brand"
+                data-main-links="::navbar.managerLinks"
+                data-aside-links="::navbar.internalLinks">
             </oui-navbar>
 
-            <div class="container-fluid">
-                <div class="row">
-                    <div data-sidebar-menu class="col-sm-4 col-md-2"></div>
-                    <div class="col-md-10 col-md-offset-2 px-0 mt-0">
-                        <div class="mainContainer pb-5">
+            <div data-sidebar-menu></div>
 
-                            <!-- Skip content target -->
-                            <div class="skiptarget">
-                                <a id="maincontent" href="">-</a>
-                            </div>
-                            <!-- /Skip content target -->
+            <div class="main-wrapper pb-5">
 
-                            <div data-ui-view></div>
-                        </div>
-                    </div>
+                <!-- Skip content target -->
+                <div class="skiptarget">
+                    <a id="maincontent" href="">-</a>
                 </div>
+                <!-- /Skip content target -->
+
+                <div data-ui-view></div>
             </div>
         </div>
 
