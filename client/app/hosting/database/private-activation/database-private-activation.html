@@ -5,15 +5,15 @@
          data-wizard-title="i18n.hosting_dashboard_database_active_title">
 
         <div data-wizard-step
-             data-wizard-step-valid="!ctrl.loaders.versions">
+             data-wizard-step-valid="!ctrl.choice.version || !ctrl.choice.ram">
 
             <p data-i18n-static="hosting_dashboard_database_active_info"></p>
 
-            <div class="text-center" data-ng-if="ctrl.loaders.versions">
+            <div class="text-center" data-ng-if="ctrl.loaders.retrievingVersions">
                 <oui-loader inline="true"></oui-loader>
             </div>
 
-            <div data-ng-if="!ctrl.loaders.versions">
+            <div data-ng-if="!ctrl.loaders.retrievingVersions">
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label class="control-label col-md-3" for="databaseRam"
