@@ -20,8 +20,7 @@ module.exports = {
             "CLOUD": "CLOUD",
             "TELECOM": "TELECOM",
             "SUNRISE": "SUNRISE",
-            "PARTNERS": "PARTNERS",
-            "V3": "V3"
+            "PARTNERS": "PARTNERS"
         },
         HOSTING: {
             OFFERS: {
@@ -74,28 +73,6 @@ module.exports = {
             ]
         },
         URLS: {
-            managerv3: {
-                CA: "https://ca.ovh.com/manager/",
-                CZ: "https://www.ovh.cz/managerv3/home.pl",
-                DE: "https://www.ovh.de/managerv3/home.pl",
-                EN: "https://www.ovh.co.uk/managerv3/home.pl",
-                ES: "https://www.ovh.es/managerv3/home.pl",
-                FI: "https://www.ovh-hosting.fi/managerv3/home.pl",
-                FR: "https://www.ovh.com/managerv3/home.pl",
-                GB: "https://www.ovh.co.uk/managerv3/home.pl",
-                IE: "https://www.ovh.ie/managerv3/home.pl",
-                IT: "https://www.ovh.it/managerv3/home.pl",
-                LT: "https://www.ovh.lt/managerv3/home.pl",
-                MA: "https://www.ovh.com/managerv3/home.pl",
-                NL: "https://www.ovh.nl/managerv3/home.pl",
-                PL: "https://www.ovh.pl/managerv3/home.pl",
-                PT: "https://www.ovh.pt/managerv3/home.pl",
-                QC: "https://ca.ovh.com/manager/",
-                RU: "https://www.ovh.ie/managerv3/home.pl",
-                SN: "https://www.ovh.sn/managerv3/home.pl",
-                TN: "https://www.ovh.com/managerv3/home.pl",
-                WE: "https://ca.ovh.com/manager/"
-            },
             CZ: {
                 support: "http://www.ovh.cz/podpora/",
                 support_contact: "http://www.ovh.cz/podpora/",
@@ -155,7 +132,6 @@ module.exports = {
                 domainOrderTrade: "https://www.ovh.cz/order/domain/#/legacy/domain/trade/informations?options=~~(domain~~'{domain})",
                 changeOwner: "https://www.ovh.cz/cgi-bin/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.cz/order/domain/#/legacy/domain/trade/list",
-                oldInterface: "https://www.ovh.cz/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh.cz/emails/hosted-exchange-2013/",
                 emailproOrder: "https://www.ovh.cz/emails/email-pro/",
                 office365Order: "https://www.ovh.cz/office-365/",
@@ -283,7 +259,6 @@ module.exports = {
                 changeOwner: "https://www.ovh.de/cgi-bin/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.de/order/domain/#/legacy/domain/trade/list",
                 domainOrderTrade: "https://www.ovh.de/order/domain/#/legacy/domain/trade/informations?options=~~(domain~~'{domain})",
-                oldInterface: "https://www.ovh.de/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh.de/emails/hosted-exchange/",
                 emailproOrder: "https://www.ovh.de/emails/email-pro/",
                 office365Order: "https://www.ovh.de/office-365/",
@@ -423,7 +398,6 @@ module.exports = {
                 domainOrderTrade: "https://www.ovh.es/order/domain/#/legacy/domain/trade/informations?options=~~(domain~~'{domain})",
                 changeOwner: "https://www.ovh.es/cgi-bin/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.es/order/domain/#/legacy/domain/trade/list",
-                oldInterface: "https://www.ovh.es/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh.es/emails/hosted-exchange/",
                 emailproOrder: "https://www.ovh.es/emails/email-pro/",
                 office365Order: "https://www.ovh.es/office-365/",
@@ -576,7 +550,6 @@ module.exports = {
                 domainOrderTrade: "https://www.ovh-hosting.fi/order/domain/#/legacy/domain/trade/informations?options=~~(domain~~'{domain})",
                 changeOwner: "https://www.ovh.com/cgi-bin/fi/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh-hosting.fi/order/domain/#/legacy/domain/trade/list",
-                oldInterface: "https://www.ovh-hosting.fi/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh-hosting.fi/sahkopostit/hosted-exchange/",
                 emailproOrder: "https://www.ovh-hosting.fi/sahkopostit/email-pro/",
                 office365Order: "https://www.ovh-hosting.fi/office-365/",
@@ -800,7 +773,6 @@ module.exports = {
                 domainWebmailUrl: "https://mail.ovh.net/",
                 changeOwner: "https://www.ovh.com/cgi-bin/fr/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.com/fr/order/domain/#/legacy/domain/trade/list",
-                oldInterface: "https://www.ovh.com/managerv3/home.pl",
                 emailsOrder: "https://www.ovh.com/emails/",
                 exchangeOrder: "https://www.ovh.com/fr/emails/hosted-exchange/",
                 emailproOrder: "https://www.ovh.com/fr/emails/email-pro/",
@@ -907,7 +879,6 @@ module.exports = {
                 domainOrderTrade: "https://www.ovh.co.uk/order/domain/#/legacy/domain/trade/informations?options=~~(domain~~'{domain})",
                 changeOwner: "https://www.ovh.co.uk/cgi-bin/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.co.uk/order/domain/#/legacy/domain/trade/list",
-                oldInterface: "https://www.ovh.co.uk/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh.co.uk/emails/hosted-exchange/",
                 emailproOrder: "https://www.ovh.co.uk/emails/email-pro/",
                 office365Order: "https://www.ovh.co.uk/office-365/",
@@ -1090,7 +1061,6 @@ module.exports = {
                 domainOrderTrade: "https://www.ovh.it/order/domain/#/legacy/domain/trade/informations?options=~~(domain~~'{domain})",
                 changeOwner: "https://www.ovh.it/cgi-bin/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.it/order/domain/#/legacy/domain/trade/list",
-                oldInterface: "https://www.ovh.it/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh.it/emails/hosted-exchange/",
                 emailproOrder: "https://www.ovh.it/emails/email-pro/",
                 office365Order: "https://www.ovh.it/office-365/",
@@ -1264,7 +1234,6 @@ module.exports = {
                 domainOrderTrade: "https://www.ovh.lt/order/domain/#/legacy/domain/trade/informations?options=~~(domain~~'{domain})",
                 changeOwner: "https://www.ovh.com/cgi-bin/lt/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.lt/order/domain/#/legacy/domain/trade/list",
-                oldInterface: "https://www.ovh.lt/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh.lt/El_pastas/hosted-exchange/",
                 emailproOrder: "https://www.ovh.lt/El_pastas/email-pro/",
                 office365Order: "https://www.ovh.lt/office-365/",
@@ -1368,7 +1337,6 @@ module.exports = {
                 domainOrderTrade: "https://www.ovh.nl/order/domain/#/legacy/domain/trade/informations?options=~~(domain~~'{domain})",
                 changeOwner: "https://www.ovh.nl/cgi-bin/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.nl/order/domain/#/legacy/domain/trade/list",
-                oldInterface: "https://www.ovh.nl/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh.nl/emails/hosted-exchange/",
                 emailproOrder: "https://www.ovh.nl/emails/email-pro/",
                 office365Order: "https://www.ovh.nl/office-365/",
@@ -1537,7 +1505,6 @@ module.exports = {
                 domainOrderTrade: "https://www.ovh.pl/order/domain/#/legacy/domain/trade/informations?options=~~(domain~~'{domain})",
                 changeOwner: "https://www.ovh.pl/cgi-bin/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.pl/order/domain/#/legacy/domain/trade/list",
-                oldInterface: "https://www.ovh.pl/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh.pl/emaile/hosted-exchange/",
                 emailproOrder: "https://www.ovh.pl/emaile/email-pro/",
                 office365Order: "https://www.ovh.pl/office-365/",
@@ -1707,7 +1674,6 @@ module.exports = {
                 domainOrderTrade: "https://www.ovh.pt/order/domain/#/legacy/domain/trade/informations?options=~~(domain~~'{domain})",
                 changeOwner: "https://www.ovh.pt/cgi-bin/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.pt/order/domain/#/legacy/domain/trade/list",
-                oldInterface: "https://www.ovh.pt/managerv3/home.pl",
                 exchangeOrder: "https://www.ovh.pt/emails/hosted-exchange-2013/",
                 emailproOrder: "https://www.ovh.pt/emails/email-pro/",
                 office365Order: "https://www.ovh.pt/office-365/",
@@ -1951,7 +1917,6 @@ module.exports = {
             "telecom"   : "https://www.ovhtelecom.fr/manager/index.html#/",
             "sunrise"   : "https://www.ovh.com/manager/sunrise/index.html#/",
             "partners"  : "https://www.ovh.com/manager/partners",
-            "v3"        : "https://www.ovh.com/managerv3/home.pl",
             "labs"      : "https://www.ovh.com/manager/sunrise/uxlabs/"
         },
         NO_AUTORENEW_COUNTRIES : [
@@ -1977,8 +1942,7 @@ module.exports = {
             DEDICATED: "DEDICATED",
             CLOUD: "CLOUD",
             TELECOM: "TELECOM",
-            SUNRISE: "SUNRISE",
-            V3: "V3"
+            SUNRISE: "SUNRISE"
         },
         HOSTING: {
             OFFERS: {

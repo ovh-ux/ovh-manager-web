@@ -3,7 +3,7 @@ angular.module("App").controller("SessionCtrl", [
     "translator",
     "User",
 
-    function ($scope, translator, User) {
+    function ($scope, translator) {
         "use strict";
 
         $scope.accountInfo = {
@@ -30,10 +30,6 @@ angular.module("App").controller("SessionCtrl", [
             translator.setLanguage(newLanguage.value);
             translator.setTitle($scope.tr("global_app_title"));
         };
-
-        User.getV3Url().then((url) => {
-            $scope.v3url = url;
-        });
 
         // FIX for /me/alerts
         $scope.$on("Navigator.navigationInformationsChange", (e, data) => {
