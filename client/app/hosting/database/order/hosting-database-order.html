@@ -51,18 +51,14 @@
                   data-ng-if="!loading.duration">
                 <p data-i18n-static="hosting_tab_DATABASES_configuration_order_choose_duration"></p>
 
-                <div class="oui-radio" data-ng-repeat="duration in durations track by $index">
-                    <input type="radio" class="oui-radio__input" id="selectedDuration-{{$index}}" name="selectedDuration" value="{{duration}}"
-                           data-ng-disabled="(loading.duration && !model.duration) || durations.length === 1"
-                           data-ng-model="model.duration">
-                    <label class="oui-radio__label-container" for="selectedDuration-{{$index}}">
-                        <span class="oui-radio__label">
-                            <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:
-                            <span data-ng-bind-html="details[duration].prices | price:user.ovhSubsidiary"></span>
-                            <oui-spinner data-size="s"
-                                        data-ng-if="!details[duration]"></oui-spinner>
-                        </span>
-                    </label>
+                <div data-ng-repeat="duration in durations track by $index">
+                    <oui-radio text="{{duration | duration:'longDate'}}{{details[duration].prices | price:user.ovhSubsidiary}}"
+                            on-change="ctrl.newRedirection.step4 = ctrl.choice.r301"
+                            disabled="(loading.duration && !model.duration) || durations.length === 1"
+                            model="model.duration"
+                            name="hosting-order-db"
+                            value="duration">
+                    </oui-radio>
                 </div>
             </form>
         </div>

@@ -74,27 +74,22 @@
                     <fieldset class="row">
                         <legend class="col-md-3 oui-label text-lg-right border-0"
                                 data-i18n-static="domains_newdnszone_order_step2_minimized"></legend>
-                        <div class="col-md-9">
-                            <div class="oui-radio mt-0">
-                                <input type="radio" class="oui-radio__input" name="zoneNameOrderMinimized" id="zoneNameOrderMinimized-yes"
-                                       data-ng-model="ctrlNewDnsZone.zoneNameOrder.minimized"
-                                       data-ng-value="true">
-                                <label class="oui-radio__label-container" for="zoneNameOrderMinimized-yes">
-                                    <span class="oui-radio__label">
-                                        <span data-i18n-static="domains_newdnszone_order_step2_minimized_yes"></span>
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="oui-radio">
-                                <input type="radio" class="oui-radio__input" name="zoneNameOrderMinimized" id="zoneNameOrderMinimized-no"
-                                       data-ng-model="ctrlNewDnsZone.zoneNameOrder.minimized"
-                                       data-ng-value="false">
-                                <label class="oui-radio__label-container" for="zoneNameOrderMinimized-no">
-                                    <span class="oui-radio__label">
-                                        <span data-i18n-static="domains_newdnszone_order_step2_minimized_no"></span>
-                                    </span>
-                                </label>
-                            </div>
+                        <div class="col-md-9" data-ng-init="ctrlNewDnsZone.zoneNameOrder.minimized = false">
+
+                            <oui-radio text="{{::tr('domains_newdnszone_order_step2_minimized_yes')}}"
+                                    on-change="ctrlNewDnsZone.zoneNameOrder.minimized = true"
+                                    model="ctrlNewDnsZone.zoneNameOrder.minimized"
+                                    name="minimized-dns"
+                                    value="true">                       
+                            </oui-radio>                                
+                            
+                            <oui-radio text="{{::tr('domains_newdnszone_order_step2_minimized_no')}}"
+                                    on-change="ctrlNewDnsZone.zoneNameOrder.minimized = false"
+                                    model="ctrlNewDnsZone.zoneNameOrder.minimized"
+                                    name="minimized-dns"
+                                    value="false" checked>                       
+                            </oui-radio>
+
                         </div>
                     </fieldset>
                 </form>

@@ -8,27 +8,21 @@
         <div data-wizard-step
              data-wizard-step-valid="importBddCtrl.isActionSelected()">
 
-            <form name="formFileUploadStep0">
+            <form name="formFileUploadStep0" 
+                  data-ng-init="importBddCtrl.selected.action = importBddCtrl.model.actions.IMPORT_FROM_NEW">
                 <p data-i18n-static="wizard_action_question"></p>
 
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="hostingDatabaseImportNewFile" name="hostingDatabaseImportMode"
-                           data-ng-model="importBddCtrl.selected.action"
-                           data-ng-value="importBddCtrl.model.actions.IMPORT_FROM_NEW">
-                    <label class="oui-radio__label-container" for="hostingDatabaseImportNewFile">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_tab_DATABASES_table_popover_import_step0_new_file_mode"></span>
-                    </label>
-                </div>
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="hostingDatabaseImportExistingFile" name="hostingDatabaseImportMode"
-                           data-ng-model="importBddCtrl.selected.action"
-                           data-ng-value="importBddCtrl.model.actions.IMPORT_FROM_EXISTING">
-                    <label class="oui-radio__label-container" for="hostingDatabaseImportExistingFile">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_tab_DATABASES_table_popover_import_step0_existing_file_mode"></span>
-                    </label>
-                </div>
+                <oui-radio text="{{::tr('hosting_tab_DATABASES_table_popover_import_step0_new_file_mode')}}"
+                        model="importBddCtrl.selected.action"
+                        name="db-import"
+                        value="importBddCtrl.model.actions.IMPORT_FROM_NEW" checked>                       
+                </oui-radio>
+
+                <oui-radio text="{{::tr('hosting_tab_DATABASES_table_popover_import_step0_existing_file_mode')}}"
+                        model="importBddCtrl.selected.action"
+                        name="db-import"
+                        value="importBddCtrl.model.actions.IMPORT_FROM_EXISTING">                       
+                </oui-radio>
             </form>
         </div>
 

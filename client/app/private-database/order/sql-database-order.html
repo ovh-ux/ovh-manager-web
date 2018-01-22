@@ -162,7 +162,7 @@
                                     <span class="oui-radio__label">
                                         <span data-ng-bind="duration.duration | duration:'longDate'"></span>&nbsp;:
                                         <span data-ng-bind-html="duration.details.prices | price:sqlOrderCtrl.user.ovhSubsidiary"></span>
-                                        <oui-spinner data-size="s"
+                                        <oui-spinner size="s" class="d-inline-block"
                                                     data-ng-if="!duration.details.prices"></oui-spinner>
                                     </span>
                                 </label>

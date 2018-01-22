@@ -18,26 +18,26 @@
                 <fieldset>
                     <legend class="oui-label border-0"
                             data-i18n-static="hosting_tab_DATABASES_configuration_create_step1_select_sgbd"></legend>
-                    <div class="oui-radio" data-ng-repeat="type in availableDatabasesType track by $index">
-                        <input type="radio" class="oui-radio__input" id="{{type}}" name="{{type}}" value="{{type}}"
-                               data-ng-model="model.selected.type">
-                        <label class="oui-radio__label-container" for="{{type}}">
-                            <span class="oui-radio__label"
-                                  data-ng-bind="tr('hosting_tab_DATABASES_configuration_create_sgbd_' + type)"></span>
-                        </label>
+
+                    <div data-ng-repeat="type in availableDatabasesType track by $index">
+                        <oui-radio text="{{::tr('hosting_tab_DATABASES_configuration_create_sgbd_' + type)}}"
+                                model="model.selected.type"
+                                name="db-type"
+                                value="type">
+                        </oui-radio>
                     </div>
                 </fieldset>
 
                 <fieldset data-ng-if="model.selected.type && model.capabilities.bdVersions">
                     <legend class="oui-label border-0"
                             data-i18n-static="hosting_tab_DATABASES_configuration_create_step1_select_version"></legend>
-                    <div class="oui-radio" data-ng-repeat="version in model.capabilities.bdVersions track by $index">
-                        <input type="radio" class="oui-radio__input" id="{{version}}" name="{{version}}" value="{{version}}"
-                               data-ng-model="model.selected.version">
-                        <label class="oui-radio__label-container" for="{{version}}">
-                            <span class="oui-radio__label"
-                                  data-ng-bind="version"></span>
-                        </label>
+                           
+                    <div data-ng-repeat="version in model.capabilities.bdVersions track by $index">
+                        <oui-radio text="{{version}}"
+                                model="model.selected.version"
+                                name="db-version"
+                                value="version">
+                        </oui-radio>
                     </div>
                 </fieldset>
 

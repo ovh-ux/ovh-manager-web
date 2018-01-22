@@ -17,23 +17,20 @@
 
                 <label class="oui-label"
                        data-i18n-static="hosting_action_edit_need_to_choice"></label>
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="process-rollback" name="process" value="rollback"
-                           data-ng-disabled="!ctrl.toggle.areOldConfigsExist"
-                           data-ng-model="ctrl.toggle.process">
-                    <label class="oui-radio__label-container" for="process-rollback">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_action_edit_choose_rollback"></span>
-                    </label>
-                </div>
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="process-update" name="process" value="update"
-                           data-ng-model="ctrl.toggle.process">
-                    <label class="oui-radio__label-container" for="process-update">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_action_edit_choose_update"></span>
-                    </label>
-                </div>
+
+                    <oui-radio text="{{::tr('hosting_action_edit_choose_rollback')}}"
+                            disabled="!ctrl.toggle.areOldConfigsExist"
+                            model="ctrl.toggle.process"
+                            name="ovh-config"
+                            value="'rollback'" checked>
+                    </oui-radio>
+
+                    <oui-radio text="{{::tr('hosting_action_edit_choose_update')}}"
+                            disabled="!ctrl.toggle.areOldConfigsExist"
+                            model="ctrl.toggle.process"
+                            name="ovh-config"
+                            value="'update'">
+                    </oui-radio>
             </form>
         </div>
 

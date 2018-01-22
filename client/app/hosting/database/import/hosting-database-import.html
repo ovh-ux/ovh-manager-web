@@ -8,24 +8,18 @@
         <div data-wizard-step>
             <form name="ctrl.formFileUploadStep0" novalidate>
                 <p data-i18n-static="wizard_action_question"></p>
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="hostingDatabaseImportMode-new" name="hostingDatabaseImportMode"
-                           data-ng-model="ctrl.selected.action"
-                           data-ng-value="ctrl.model.actions.IMPORT_FROM_NEW">
-                    <label class="oui-radio__label-container" for="hostingDatabaseImportMode-new">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_tab_DATABASES_table_popover_import_step0_new_file_mode"></span>
-                    </label>
-                </div>
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="hostingDatabaseImportMode-existing" name="hostingDatabaseImportMode"
-                           data-ng-model="ctrl.selected.action"
-                           data-ng-value="ctrl.model.actions.IMPORT_FROM_EXISTING">
-                    <label class="oui-radio__label-container" for="hostingDatabaseImportMode-existing">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_tab_DATABASES_table_popover_import_step0_existing_file_mode"></span>
-                    </label>
-                </div>
+
+                <oui-radio text="{{::tr('hosting_tab_DATABASES_table_popover_import_step0_new_file_mode')}}"
+                        model="ctrl.selected.action"
+                        name="db-import"
+                        value="ctrl.model.actions.IMPORT_FROM_NEW">
+                </oui-radio>    
+
+                <oui-radio text="{{::tr('hosting_tab_DATABASES_table_popover_import_step0_existing_file_mode')}}"
+                        model="ctrl.selected.action"
+                        name="db-import"
+                        value="ctrl.model.actions.IMPORT_FROM_EXISTING">
+                </oui-radio>
             </form>
         </div>
 

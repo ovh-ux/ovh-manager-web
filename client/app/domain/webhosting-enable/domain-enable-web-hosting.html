@@ -47,19 +47,17 @@
                     <tbody>
                         <tr data-ng-repeat="offer in ctrl.offers | orderBy:orderByOfferPrice track by $index">
                             <td colspan="2">
-                                <div class="oui-radio m-0">
-                                    <input type="radio" class="oui-radio__input" id="offer-{{offer.offer}}" name="hostingOffer"
-                                           data-ng-disabled="offer.offer === ctrl.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE && ctrl.model.templateSelected"
-                                           data-ng-model="ctrl.model.offer"
-                                           data-ng-value="offer.offer">
-                                    <label class="oui-radio__label-container" for="offer-{{offer.offer}}">
-                                        <span class="oui-radio__label">
-                                            <span data-ng-bind="tr('domain_configuration_web_hosting_offer_' + offer.offer)"></span>
-                                            <span data-ng-show="ctrl.displayRecommendedLabel(offer.offer)"
-                                                  data-ng-bind="tr('domain_configuration_web_hosting_offer_recommended')"></span>
-                                        </span>
-                                    </label>
-                                </div>
+
+                                <oui-radio text="{{::tr('domain_configuration_web_hosting_offer_' + offer.offer)}}"
+                                        on-change="ctrl.model.offer = offer.offer"
+                                        model="ctrl.model.offer"
+                                        disabled="offer.offer === ctrl.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE && ctrl.model.templateSelected"
+                                        name="order-hosting-step1"
+                                        value="offer.offer">
+                                </oui-radio>
+                                <span data-ng-show="ctrl.displayRecommendedLabel(offer.offer)"
+                                        data-ng-bind="tr('domain_configuration_web_hosting_offer_recommended')"></span>
+
                             </td>
                             <td data-ng-bind-html="offer.orderInfos.prices | price:ovhSubsidiary:'yearly'"></td>
                         </tr>
@@ -84,21 +82,21 @@
             </div>
 
             <div data-ng-if="ctrl.dnsZones.length > 0">
-
                 <p data-i18n-static="domain_configuration_web_hosting_dns_reset"></p>
-
                 <form class="ml-4">
-                    <div class="oui-radio" data-ng-repeat="dnsZone in ctrl.dnsZones track by $index">
-                        <input type="radio" class="oui-radio__input" id="dnsZoneKey-{{$index}}" name="dnsZone.key"
-                               data-ng-model="ctrl.model.dnsZone"
-                               data-ng-value="dnsZone.key">
-                        <label class="oui-radio__label-container" for="dnsZoneKey-{{$index}}">
-                            <span class="oui-radio__label"
-                                  data-ng-bind="tr(dnsZone.title, ctrl.domain.displayName)"></span>
-                        </label>
+                    <div data-ng-repeat="dnsZone in ctrl.dnsZones track by $index">
+
+                        <oui-radio text="{{::tr(dnsZone.title, ctrl.domain.displayName)}}"
+                                on-change="ctrl.model.dnsZone = dnsZone.key"
+                                model="ctrl.model.dnsZone"
+                                name="order-hosting-step2"
+                                value="dnsZone.key">
+                        </oui-radio>
+
                         <div class="alert alert-info mb-5 ml-4 mt-3" role="alert"
                              data-ng-bind="tr(dnsZone.helpMsg)"
                              data-ng-if="ctrl.model.dnsZone === dnsZone.key"></div>
+
                     </div>
                 </form>
 

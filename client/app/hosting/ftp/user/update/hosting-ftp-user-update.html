@@ -69,37 +69,31 @@
                      data-ng-if="ctrl.model.operatingSystem === 'linux'">
                     <span class="control-label col-md-4 oui-label"
                           data-i18n-static="hosting_tab_FTP_configuration_user_modify_step1_ssh_state_label"></span>
-                    <div class="col-md-8">
-                        <div class="oui-radio">
-                            <input type="radio" class="oui-radio__input" id="sshState-off" name="sshState" value="none"
-                                   data-ng-change="ctrl.sshStateChange()"
-                                   data-ng-disabled="ctrl.model.user.state === 'off'"
-                                   data-ng-model="ctrl.model.user.sshState">
-                            <label class="oui-radio__label-container" for="sshState-off">
-                                <span class="oui-radio__label"
-                                      data-i18n-static="hosting_tab_FTP_multiftp_table_ssh_state_none"></span>
-                            </label>
-                        </div>
-                        <div class="oui-radio">
-                            <input type="radio" class="oui-radio__input" id="sshState-sftpOnly" name="sshState" value="sftponly"
-                                   data-ng-change="ctrl.sshStateChange()"
-                                   data-ng-disabled="ctrl.model.user.state === 'off'"
-                                   data-ng-model="ctrl.model.user.sshState">
-                            <label class="oui-radio__label-container" for="sshState-sftpOnly">
-                                <span class="oui-radio__label"
-                                      data-i18n-static="hosting_tab_FTP_multiftp_table_ssh_state_sftponly"></span>
-                            </label>
-                        </div>
-                        <div class="oui-radio">
-                            <input type="radio" class="oui-radio__input" id="sshState-active" name="sshState" value="active"
-                                   data-ng-change="ctrl.sshStateChange()"
-                                   data-ng-disabled="ctrl.model.user.state === 'off'"
-                                   data-ng-model="ctrl.model.user.sshState">
-                            <label class="oui-radio__label-container" for="sshState-active">
-                                <span class="oui-radio__label"
-                                      data-i18n-static="hosting_tab_FTP_multiftp_table_ssh_state_active"></span>
-                            </label>
-                        </div>
+                    <div class="col-md-8" data-ng-init="ctrl.model.user.sshState = 'none'">
+
+                        <oui-radio text="{{::tr('hosting_tab_FTP_multiftp_table_ssh_state_none')}}"
+                                on-change="ctrl.sshStateChange()"
+                                disabled="ctrl.model.user.state === 'off'"
+                                model="ctrl.model.user.sshState"
+                                name="ftp-user"
+                                value="'none'" checked>                       
+                        </oui-radio>
+
+                        <oui-radio text="{{::tr('hosting_tab_FTP_multiftp_table_ssh_state_sftponly')}}"
+                                on-change="ctrl.sshStateChange()"
+                                disabled="ctrl.model.user.state === 'off'"
+                                model="ctrl.model.user.sshState"
+                                name="ftp-user"
+                                value="'sftponly'">                       
+                        </oui-radio>
+
+                        <oui-radio text="{{::tr('hosting_tab_FTP_multiftp_table_ssh_state_active')}}"
+                                on-change="ctrl.sshStateChange()"
+                                disabled="ctrl.model.user.state === 'off'"
+                                model="ctrl.model.user.sshState"
+                                name="ftp-user"
+                                value="'active'">                       
+                        </oui-radio>
                     </div>
                 </div>
             </form>

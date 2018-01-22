@@ -12,25 +12,23 @@
                data-ng-if="!ctrlDomainsDnssecBatch.selected.domainsNames"></p>
 
             <p data-i18n-static="domains_configuration_dnssec_batch_step1_question"></p>
-            <form class="ml-2" name="DomainsDnssecBatchForm" data-ng-if="ctrlDomainsDnssecBatch.selected.domainsNames">
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" name="domainsDnssecBatchStateEnabled" id="domainsDnssecBatchStateEnabled-yes"
-                           data-ng-model="ctrlDomainsDnssecBatch.selected.state"
-                           data-ng-value="true">
-                    <label class="oui-radio__label-container" for="domainsDnssecBatchStateEnabled-yes">
-                        <span class="oui-radio__label"
-                              data-i18n-static="domains_configuration_dnssec_batch_step1_status_true"></span>
-                    </label>
-                </div>
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" name="domainsDnssecBatchStateDisabled" id="domainsDnssecBatchStateEnabled-no"
-                           data-ng-model="ctrlDomainsDnssecBatch.selected.state"
-                           data-ng-value="false">
-                    <label class="oui-radio__label-container" for="domainsDnssecBatchStateEnabled-no">
-                        <span class="oui-radio__label"
-                              data-i18n-static="domains_configuration_dnssec_batch_step1_status_false"></span>
-                    </label>
-                </div>
+            <form class="ml-2" name="DomainsDnssecBatchForm" 
+                  data-ng-if="ctrlDomainsDnssecBatch.selected.domainsNames"
+                  data-ng-init="ctrlDomainsDnssecBatch.selected.state = true">
+
+                <oui-radio text="{{::tr('domains_configuration_dnssec_batch_step1_status_true')}}"
+                        on-change="ctrlDomainsDnssecBatch.selected.state = true"
+                        model="ctrlDomainsDnssecBatch.selected.state"
+                        name="dns-batch"
+                        value="true" checked>
+                </oui-radio>
+
+                <oui-radio text="{{::tr('domains_configuration_dnssec_batch_step1_status_false')}}"
+                        on-change="ctrlDomainsDnssecBatch.selected.state = false"
+                        model="ctrlDomainsDnssecBatch.selected.state"
+                        name="dns-batch"
+                        value="false">
+                </oui-radio>
             </form>
 
             <div data-wizard-step-help>
