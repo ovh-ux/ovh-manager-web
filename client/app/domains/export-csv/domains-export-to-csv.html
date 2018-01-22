@@ -16,7 +16,7 @@
                     disabled="opt.mustBeDisabled"
                     data-ng-repeat="opt in ctrlDomainsToCsv.csvExportOptions track by $index"
                     data-model="opt.checked"
-                    data-text="{{::i18n['domains_action_export_csv_form_' + opt.label + '_label']}}"
+                    data-text="{{i18n['domains_action_export_csv_form_' + opt.label + '_label']}}"
                     data-description="{{::i18n['domains_action_export_csv_form_' + opt.label + '_help']}}">
                 </oui-checkbox>
             </form>
