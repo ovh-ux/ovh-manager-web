@@ -33,7 +33,7 @@
    <translation id="domain_dashboard_add_uk_tags_title" qtlid="328823">Please enter the outgoing transfer tag for the <strong>{0}</strong> domain </translation>
    <translation id="domain_dashboard_add_uk_tags_label" qtlid="270423">Outgoing transfer TAG</translation>
    <translation id="domain_dashboard_add_uk_tags_success" qtlid="270449">The outgoing transfer TAG has been sent successfully. </translation>
-   <translation id="domain_dashboard_add_uk_tags_error" qtlid="299384">There was an error:</translation>
+   <translation id="domain_dashboard_add_uk_tags_error" qtlid="299384">An error has occurred:</translation>
    <translation id="domain_dashboard_add_uk_tags_pattern_error" qtlid="270462">The TAG must only contain letters, numbers and -</translation>
    <translation id="domain_dashboard_add_uk_tags_maxlength_error" qtlid="270475">The TAG must not exceed 50 characters</translation>
 
@@ -51,6 +51,7 @@
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">Anycast DNS is a powerful solution that accelerates the normal operation of DNS servers to provide  better response time during the first hits to your website.</translation>
    <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Publicly accessible database containing personal information related to your domain.</translation>
    <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Service allowing you to translate your domain name to an IP address (e.g. indicating the location data of your site).</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating">Un délai de propagation de 48h est nécessaire suite à votre dernière modification.</translation>
    <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">The DNS servers used primarily to change your domain to an IP address.</translation>
    <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Redirects users to an existing site.</translation>
    <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">If the primary DNSs fail, they ensure that your site remains accessible.</translation>
@@ -126,9 +127,9 @@
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Do you really want to reset the DNS servers' configuration? In doing so you will reset the current configuration and switch back to OVH name servers. </translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">The DNS server reset request has been taken into account. </translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Error while requesting the DNS server reset.</translation>
-   <translation id="domain_tab_DNS_update_success" qtlid="284841">DNS modification has been processed. Propagation to other DNSs wil take a few hours </translation>
+   <translation id="domain_tab_DNS_update_success">La modification des DNS a bien été prise en compte. Un délai de 48h est nécessaire pour la propagation aux autres DNS.</translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">An error occurred on modifying DNS. </translation>
-   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Réinitialiser les serveurs DNS : non disponible en cas d'activation de DNSSEC</translation>
+   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Reset DNS servers: unavailable if DNSSEC is enabled</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Apply configuration </translation>
    <translation id="domain_tab_DNS_reset" qtlid="284880">Reset configuration </translation>
    <translation id="domain_tab_DNS_cancel" qtlid="172280">Cancel modifications</translation>
@@ -142,7 +143,7 @@
    <translation id="domain_tab_DNS_unlock_warning_manuel_check" qtlid="328836">To ensure that your configuration works you can use this <a href="{0}" title="{1}" target="_blank">DNS verification tool</a>.</translation>
    <translation id="domain_tab_DNS_unlock_warning_manuel_check_tool" qtlid="293749">DNS verification tool </translation>
 
-   <translation id="domain_tab_DNSSEC_action_add_title" qtlid="37875">Change</translation>
+   <translation id="domain_tab_DNSSEC_action_add_title" qtlid="37875">Edit</translation>
    <translation id="domain_tab_DNSSEC_action_save_title" qtlid="264446">Save</translation>
    <translation id="domain_tab_DNSSEC_action_save_confirm_1" qtlid="264459">It can take some time to apply changes and you may not make any other changes to this domain during the operation.</translation>
    <translation id="domain_tab_DNSSEC_action_save_confirm_2" qtlid="264472">Are you sure you want to apply these changes now?</translation>
@@ -184,7 +185,7 @@
    <translation id="domain_tab_GLUE_ip" qtlid="262319">Target(s)</translation>
    <translation id="domain_tab_GLUE_host" qtlid="2678">Host</translation>
    <translation id="domain_tab_GLUE_delete" qtlid="2414">Delete</translation>
-   <translation id="domain_tab_GLUE_modify" qtlid="37875">Change</translation>
+   <translation id="domain_tab_GLUE_modify" qtlid="37875">Edit</translation>
    <translation id="domain_tab_GLUE_butt_add" qtlid="37923">Add</translation>
    <translation id="domain_tab_GLUE_empty" qtlid="262332">There is no entry in the list of GLUE records.</translation>
    <translation id="domain_tab_GLUE_add_step1" qtlid="262345">Please fill in the following fields:</translation>
@@ -205,7 +206,7 @@
    <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Are you sure you want to remove this GLUE record ?</translation>
    <translation id="domain_tab_GLUE_delete_success" qtlid="262553">GLUE record will be deleted in a few minutes.</translation>
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Error when removing the GLUE record.</translation>
-   <translation id="domain_tab_GLUE_add_warning_done" qtlid="288964">Please note. After validation you have to add an A record associated to the {0} IP in your dns zone so that your GLUE works. </translation>
+   <translation id="domain_tab_GLUE_add_warning_done">Attention, après validation et afin que votre enregistrement GLUE fonctionne, vous devrez modifier votre zone DNS en ajoutant :<ul><li>un champ de type A pour une adresse IPv4,</li><li>un champ de type AAAA pour une adresse IPv6.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Sub-domain</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">DNS zone </translation>
@@ -484,7 +485,7 @@
    <translation id="domain_configuration_dns_entry_add_title" qtlid="129231">Add an entry to the DNS zone</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_title" qtlid="129787">DNS Zone – Adding an entry</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_desc" qtlid="129799">Here's a quick description of the different types of entry that can be added to your DNS zone.</translation>
-   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_a" qtlid="23803">A</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_a" qtlid="23803">To</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_a_desc" qtlid="129811">Allows a domain name or sub-domain to be linked to an IPv4 address.</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_aaaa" qtlid="129823">AAAA</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_aaaa_desc" qtlid="129835">Allows a domain name or sub-domain to be linked to an IPv6 address.</translation>
@@ -664,6 +665,7 @@
    <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">Webs hosting IP address </translation>
 
    <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Do you want to delete the DNS zone? </translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked">Votre zone DNS ne peut être supprimée car elle est actuellement liée à un hébergement Web.</translation>
    <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Warning! This will permanently delete all the existing DNS records.</translation>
    <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">Deletion of the DNS zone has begun, to complete the request please follow the instructions in the email sent to the DNS zone's administrator account. </translation>
    <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">An error when deleting the DNS zone. </translation>
@@ -717,7 +719,7 @@
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Your order has been confirmed. Click <a href="#/billing/orders">here to track the progress of your order</a>.</translation>
 
    <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
-   <translation id="domain_tab_DYNHOST_title" qtlid="270644">DynHOST allows you to point your domain or sub-domain to a dynamic IP address, which will be updated in your DNS zone each time that it changes. </translation>
+   <translation id="domain_tab_DYNHOST_title">DynHOST vous permet de faire pointer un sous-domaine vers une adresse IP dynamique qui sera mise à jour dans votre zone DNS à chaque changement de celle-ci.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">The {0} domain name does not have a DNS zone.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">There was an error: </translation>
    <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>
@@ -806,7 +808,7 @@
    <translation id="domain_configuration_create_site" qtlid="288548">Create your website </translation>
    <translation id="domain_update_owner_cancel" qtlid="37863">Cancel</translation>
    <translation id="domain_update_owner_ok" qtlid="26047">Confirm</translation>
-   <translation id="domain_update_owner_edit" qtlid="37875">Change</translation>
+   <translation id="domain_update_owner_edit" qtlid="37875">Edit</translation>
 
 
    <translation id="domain_update_owner_legalform" qtlid="33526">Legal form</translation>

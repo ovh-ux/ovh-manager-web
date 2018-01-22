@@ -34,7 +34,7 @@
    <translation id="hosting_dashboard_service_main_domain_change" qtlid="284384">Alterar o domínio principal</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_success" qtlid="315722">O seu pedido de regeneração do certificado foi corretamente tomado em conta.</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_error" qtlid="434161">Ocorreu um erro durante o pedido renovação do certificado</translation>
-   <translation id="hosting_dashboard_disk_usage" qtlid="28159">Espaço de disco</translation>
+   <translation id="hosting_dashboard_disk_usage" qtlid="28159">Espaço em disco</translation>
    <translation id="hosting_dashboard_trafic_usage" qtlid="222137">Tráfego utilizado</translation>
    <translation id="hosting_dashboard_hosting_activities" qtlid="268134">Atividades do alojamento</translation>
    <translation id="hosting_dashboard_php_support_SECURITY_FIXES" qtlid="272526">Utiliza atualmente uma versão de PHP que não evoluirá, sendo que apenas as falhas de segurança serão corrigidas. Poderá atualizar esta versão ao utilizar o botão "modificar a configuração" à direita. A alteração da versão pode causar impacto no funcionamento dos seus websites.</translation>
@@ -131,9 +131,7 @@
    <translation id="hosting_dashboard_service_offer_PERFORMANCE_4" qtlid="216937">Performance 4</translation>
    <translation id="hosting_dashboard_service_offer_KIMSUFI_2015" qtlid="271569">Kimsufi 2015</translation>
    <translation id="hosting_dashboard_service_offer_KS" qtlid="271569">Kimsufi 2015</translation>
-   <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015" qtlid="271582">Deseja passar para uma oferta Kimsufi 2015? &#13;
-O serviço de apoio ao cliente via telefone deixará de estar incluído. O contacto com os nossos serviços&#13;
-deverá ser efetuado através de ticket.</translation>
+   <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015">Vous souhaitez passer sur une offre Kimsufi 2015, l'accès au support n'est plus inclus et vous devrez utiliser notre système de tickets pour contacter l'assistance.</translation>
    <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree" qtlid="271595">Eu reconheço ter tomado conhecimento da oferta kimsufi 2015 e valido o meu pedido de migração</translation>
    <translation id="hosting_dashboard_service_offer_KIMSUFI_2015_support" qtlid="271608">Alojamento web Kimsufi: O suporte efetua-se exclusivamente via um ticket de assistência (menu Assistência)</translation>
    <translation id="hosting_dashboard_service_offer_60_FREE_end" qtlid="372256">A oferta 60free será encerrada no dia 1 de Maio de 2017. Pode migrar o seu domínio ovh.org para um outro alojamento web (Botão migrar o meu domínio ovh.org)</translation>
@@ -263,6 +261,8 @@ deverá ser efetuado através de ticket.</translation>
    <translation id="hosting_tab_CRON_table_language_php7_0" qtlid="264433">PHP 7.0</translation>
    <translation id="hosting_tab_CRON_table_language_PHP_7_1" qtlid="434174">PHP 7.1</translation>
    <translation id="hosting_tab_CRON_table_language_php7_1" qtlid="434174">PHP 7.1</translation>
+   <translation id="hosting_tab_CRON_table_language_PHP_7_2">PHP 7.2</translation>
+   <translation id="hosting_tab_CRON_table_language_php7_2">PHP 7.2</translation>
    <translation id="hosting_tab_CRON_table_popover_delete" qtlid="2414">Eliminar</translation>
    <translation id="hosting_tab_CRON_table_popover_modify" qtlid="37875">Modificar</translation>
    <translation id="hosting_tab_CRON_configuration_error" qtlid="244690">Ocorreu um erro aquando da recuperação dos dados:</translation>
@@ -296,10 +296,10 @@ deverá ser efetuado através de ticket.</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_delete" qtlid="2414">Eliminar</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_modify" qtlid="37875">Modificar</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_refresh" qtlid="158708">Recarregar</translation>
-   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Procura...</translation>
+   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Pesquisa...</translation>
 
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation" qtlid="255976">Geração do URL de download</translation>
-   <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="444417">Une erreur est survenue lors de la génération du lien d'accès aux logs</translation>
+   <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="444417">Ocorreu um erro na geração do link de acesso aos logs.</translation>
    <translation id="hosting_tab_DOMAINS_multisite_logs_link" qtlid="296700">Aceder aos logs</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_attachDomain_title_button" qtlid="226969">Adicionar um domínio ou subdomínio</translation>
@@ -347,7 +347,7 @@ deverá ser efetuado através de ticket.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_title" qtlid="7618">Criar uma base de dados</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MYSQL" qtlid="196894">MySQL</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_POSTGRESQL" qtlid="196907">PostgreSQL</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_step1_loading_error" qtlid="168120">Ocorreu um erro durante acesso às informações</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step1_loading_error" qtlid="168120">Ocorreu um erro no acesso às informações</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_question" qtlid="196920">Vai criar uma base de dados</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_no_db_left" qtlid="196933">Não lhe resta nenhuma base de dados disponível.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_sgbd" qtlid="196946">Selecione o motor da base de dados a adicionar:</translation>
@@ -446,11 +446,10 @@ deverá ser efetuado através de ticket.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step0_existing_file_mode" qtlid="288314">Utilizar um ficheiro existente</translation>
 
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_load_documents_error" qtlid="286240">Ocorreu um erro aquando da obtenção dos seus documentos:</translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file" qtlid="286253">Ficheiro {0}:</translation>
+   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file">Fichier (.gz, .sql, .txt) :</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name" qtlid="286266">Nome do ficheiro:</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_info" qtlid="296713">Dê um título ao seu documento para o encontrar mais rapidamente.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_required_error" qtlid="286279">O nome do ficheiro é obrigatório.</translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_format" qtlid="286292">(.gz)</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_format_error" qtlid="286305">O tipo de ficheiro deve ser respeitado.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_required_error" qtlid="286318">O ficheiro é obrigatório.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload" qtlid="52807">Enviar</translation>
@@ -749,7 +748,7 @@ deverá ser efetuado através de ticket.</translation>
    <translation id="hosting_configuration_tab_sql_data_base_state" qtlid="434200">Estado</translation>
    <translation id="hosting_configuration_tab_sql_data_base_server" qtlid="8290">Servidor</translation>
    <translation id="hosting_configuration_tab_sql_data_base_version" qtlid="34210">Versão</translation>
-   <translation id="hosting_tab_MODULES_guide_help" qtlid="271517">Precisa de ajuda para instalar o seu módulo 1 clique?</translation>
+   <translation id="hosting_tab_MODULES_guide_help" qtlid="271517">Precisa de ajuda para instalar o módulo 1 clique?</translation>
    <translation id="hosting_configuration_tab_modules_module_name" qtlid="60978">Módulo </translation>
    <translation id="hosting_configuration_tab_modules_module_path" qtlid="6838">Caminho</translation>
    <translation id="hosting_configuration_tab_modules_status_maintenance" qtlid="215104">O seu alojamento está em curso de manutenção.&#13;
@@ -766,14 +765,14 @@ Queria tentar mais tarde.</translation>
    <translation id="hosting_configuration_tab_modules_module_access" qtlid="211672">Aceder ao módulo</translation>
    <translation id="hosting_configuration_tab_modules_module_actions" qtlid="211685">Ações sobre o módulo</translation>
    <translation id="hosting_configuration_tab_modules_create_title" qtlid="211698">Criar um módulo</translation>
-   <translation id="hosting_configuration_tab_modules_create_step1_loading_error" qtlid="168120">Ocorreu um erro durante acesso às informações</translation>
+   <translation id="hosting_configuration_tab_modules_create_step1_loading_error" qtlid="168120">Ocorreu um erro no acesso às informações</translation>
    <translation id="hosting_configuration_tab_modules_create_step1_question" qtlid="268173">Está na etapa de instalação de um módulo.</translation>
    <translation id="hosting_configuration_tab_modules_create_step1_question_domain" qtlid="268186">Está na etapa de instalação de um módulo no domínio {0}.</translation>
    <translation id="hosting_configuration_tab_modules_create_step1_module_type" qtlid="211724">Escolha o tipo de módulo a instalar:</translation>
    <translation id="hosting_configuration_tab_modules_create_step1_module_type_select" qtlid="211737">Selecionar o módulo</translation>
    <translation id="hosting_configuration_tab_modules_create_step1_module_advanced_mode" qtlid="267449">Instalação em modo avançado.</translation>
    <translation id="hosting_configuration_tab_modules_create_step1_module_domain" qtlid="268199">Escolha o domínio no qual deseja instalar o módulo:</translation>
-   <translation id="hosting_configuration_tab_modules_create_step1_module_default_path" qtlid="444693">Le répertoire d'installation par défaut est <strong>{0}</strong><br> Veuillez sélectionner le mode avancé pour l'installer dans un autre répertoire.</translation>
+   <translation id="hosting_configuration_tab_modules_create_step1_module_default_path" qtlid="444693">A pasta de instalação predefinida é <strong>{0}</strong><br>. Para instalar o módulo noutro diretório, deverá escolher o modo avançado.</translation>
 
 
    <translation id="hosting_configuration_tab_modules_create_step1_module_advancedMode_info" qtlid="268212">Ao escolher o modo avançado, poderá:</translation>
@@ -861,11 +860,11 @@ Queria tentar mais tarde.</translation>
    <translation id="hosting_configuration_renew_step1_confirmation" qtlid="198883">Clique no botão "Encomendar" para renovar o seu Alojamento Partilhado agora.</translation>
    <translation id="hosting_configuration_renew_step1_information" qtlid="153220">Vai ser aberto um novo separador e será automaticamente reencaminhado para a interface de renovação OVH.</translation>
    <translation id="hosting_configuration_renew_step1_alert" qtlid="153233">Queira ter em conta que podem ser necessárias 2h desde a validação do seu pagamento, para que a renovação seja tomada em conta no seu Espaço Cliente Web.</translation>
-   <translation id="hosting_configuration_renew_loading_error" qtlid="168120">Ocorreu um erro durante acesso às informações</translation>
+   <translation id="hosting_configuration_renew_loading_error" qtlid="168120">Ocorreu um erro no acesso às informações</translation>
 
    <translation id="hosting_tab_FTP_configuration_user_create_title_button" qtlid="198896">Criar um utilizador FTP</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_title" qtlid="198896">Criar um utilizador FTP</translation>
-   <translation id="hosting_tab_FTP_configuration_user_create_step1_loading_error" qtlid="168120">Ocorreu um erro durante acesso às informações</translation>
+   <translation id="hosting_tab_FTP_configuration_user_create_step1_loading_error" qtlid="168120">Ocorreu um erro no acesso às informações</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step1_question" qtlid="198909">Vai criar um utilizador FTP sumplementar</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step1_no_user_left" qtlid="434213">Não é possível criar mais utilizadores FTP. Atingiu número máximo de utilizadores.</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step1_user" qtlid="7450">Utilizador</translation>
@@ -904,7 +903,7 @@ Queria tentar mais tarde.</translation>
 
 
    <translation id="hosting_tab_FTP_configuration_user_modify_title" qtlid="199052">Modificar um utilizador FTP</translation>
-   <translation id="hosting_tab_FTP_configuration_user_modify_step1_loading_error" qtlid="168120">Ocorreu um erro durante acesso às informações</translation>
+   <translation id="hosting_tab_FTP_configuration_user_modify_step1_loading_error" qtlid="168120">Ocorreu um erro no acesso às informações</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_step1_question" qtlid="199065">Vai alterar o seguinte utilizador FTP</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_step1_user" qtlid="7450">Utilizador</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_step1_home_label" qtlid="196816">Pasta raiz</translation>
@@ -956,7 +955,7 @@ Queria tentar mais tarde.</translation>
    <translation id="hosting_tab_CRON_edit_success" qtlid="199273">A tarefa será modificada com sucesso.</translation>
    <translation id="hosting_tab_CRON_edit_error" qtlid="199286">Ocorreu um erro durante a edição da tarefa {0}.</translation>
    <translation id="hosting_tab_CRON_simple_mode" qtlid="102849">Modo simples</translation>
-   <translation id="hosting_tab_CRON_expert_mode" qtlid="64616">Modo perito </translation>
+   <translation id="hosting_tab_CRON_expert_mode" qtlid="64616">Modo expert</translation>
    <translation id="hosting_tab_CRON_label_description" qtlid="9238">Descrição </translation>
    <translation id="hosting_tab_CRON_label_status" qtlid="33790">Estado</translation>
    <translation id="hosting_tab_CRON_label_activate" qtlid="74958">Activação</translation>
@@ -1197,6 +1196,8 @@ Será fatura no próximo mês relativamente ao BOOST extra utilizado este mês (
    <translation id="hosting_global_php_version_edit" qtlid="267640">Modificar a configuração</translation>
    <translation id="hosting_action_config_edit_init_error" qtlid="267653">Não foi possível carregar todas as informações sobre a sua configuração, queira tentar mais tarde.</translation>
    <translation id="hosting_action_config_edit_warning" qtlid="364716">Nós aconselhamos que verifique previamente com o seu webmaster a compatibilidade do seu website com esta nova versão de PHP.</translation>
+   <translation id="hosting_action_config_edit_success">La modification de configuration de votre hébergement mutualisé a bien été prise en compte.</translation>
+   <translation id="hosting_action_config_rollback_success">La modification vers la configuration ultérieure de votre hébergement mutualisé a bien été prise en compte.</translation>
    <translation id="hosting_action_config_edit_choose_config" qtlid="267666">Escolha histórica</translation>
    <translation id="hosting_action_config_edit_engine_name" qtlid="267679">Motor</translation>
    <translation id="hosting_action_config_edit_engine_name_help" qtlid="267692">PHP-CGI desativado FPM</translation>
@@ -1240,7 +1241,7 @@ Será fatura no próximo mês relativamente ao BOOST extra utilizado este mês (
    <translation id="hosting_action_config_edit_no_choice" qtlid="267991">Somente está disponível uma configuração no histórico. A escolha está então desativada. Clique em "validar" para aplicar os valores apresentados em baixo.</translation>
    <translation id="hosting_tab_USER_LOGS" qtlid="232375">Estatísticas e logs</translation>
    <translation id="hosting_tab_USER_LOGS_none" qtlid="434239"> Ainda não existe nenhum utilizador</translation>
-   <translation id="hosting_tab_USER_LOGS_guide_help" qtlid="271543">Precisa de ajuda em relação às estatísticas e logs do seu site?</translation>
+   <translation id="hosting_tab_USER_LOGS_guide_help" qtlid="271543">Precisa de ajuda para gerir as estatísticas e logs do seu site?</translation>
    <translation id="hosting_tab_USER_LOGS_dashboard_information" qtlid="268354">Estes URLs permite-lhe consultar as estatísticas e logs de acesso ao seu website:</translation>
    <translation id="hosting_tab_USER_LOGS_dashboard_stats" qtlid="268367">Estatísticas das visitas</translation>
    <translation id="hosting_tab_USER_LOGS_dashboard_stats_newtab" qtlid="402776">Estatísticas Urchin (novo separador)</translation>
@@ -1290,7 +1291,7 @@ Será fatura no próximo mês relativamente ao BOOST extra utilizado este mês (
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_success" qtlid="268549">O utilizador vai ser modificado.</translation>
 
    <translation id="hosting_tab_menu_crons" qtlid="270332">Tarefas planeadas - Crons</translation>
-   <translation id="hosting_tab_menu_emails" qtlid="270345">Gerir os e-mails e as mailing-lists</translation>
+   <translation id="hosting_tab_menu_emails" qtlid="270345">Gerir e-mail e mailing-lists</translation>
    <translation id="hosting_tab_menu_contacts" qtlid="270358">Administrador, técnico e faturação</translation>
    <translation id="hosting_tab_menu_resiliate" qtlid="351896">Eliminar/Rescindir o meu alojamento</translation>
    <translation id="hosting_tab_menu_resiliate_infos" qtlid="270384">Eliminar o serviço na sua data de expiração</translation>
