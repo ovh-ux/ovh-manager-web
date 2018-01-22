@@ -85,18 +85,23 @@ angular.module("controllers").controller(
         getPendingTasks (domain) {
             this.hasActiveTask = 0;
             _.forEach(["todo", "doing", "error"], (status) =>
-                this.Domain.getDomainPendingTasks(domain, { "function": "DomainDsUpdate", status }).then((tasks) => {
+                this.Domain.getDomainPendingTasks(domain, { "function": "DomainDnsUpdate", status }).then((tasks) => {
                     this.hasActiveTask += tasks.length > 0 ? 1 : 0;
                 })
             );
         }
 
         addRecord () {
-            this.dnssecList.push({ id: this.dnssecList.length + 1, tag: 0, flags: "", algorithm: "", publicKey: "" });
+            this.dnssecList.push({ id: this.nextAvailableId(), tag: 0, flags: null, algorithm: null, publicKey: null });
+        }
+
+        nextAvailableId () {
+            return _.find(_.range(this.const.MAX_AMOUNT_DNSSEC),
+                          (id) => !_.any(this.dnssecList, { id }));
         }
 
         deleteRecord (dnssec) {
-            _.remove(this.dnssecList, (item) => dnssec.id === item.id);
+            _.remove(this.dnssecList, dnssec);
         }
 
         reset () {

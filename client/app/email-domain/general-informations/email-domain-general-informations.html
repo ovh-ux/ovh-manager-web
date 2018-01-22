@@ -88,7 +88,7 @@
                                                   data-tooltip-placement="right"></span>
                                         </strong>
                                         <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.quotas"></oui-loader>
-                                        <span data-ng-bind="ctrlTabGeneralInformations.summary.account + ' / ' + (ctrlTabGeneralInformations.quotas.account || '0')"
+                                        <span data-ng-bind="(ctrlTabGeneralInformations.summary.account || '0') + ' / ' + (ctrlTabGeneralInformations.quotas.account || '0')"
                                               data-ng-if="!ctrlTabGeneralInformations.loading.quotas"></span>
                                     </div>
                                 </li>
@@ -97,7 +97,7 @@
                                         <strong class="d-block"
                                                 data-i18n-static="email_tab_responders_quota"></strong>
                                         <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.quotas"></oui-loader>
-                                        <span data-ng-bind="ctrlTabGeneralInformations.summary.responder + ' / ' + (ctrlTabGeneralInformations.quotas.responder || '0')"
+                                        <span data-ng-bind="(ctrlTabGeneralInformations.summary.responder || '0') + ' / ' + (ctrlTabGeneralInformations.quotas.responder || '0')"
                                               data-ng-if="!ctrlTabGeneralInformations.loading.quotas"></span>
                                     </div>
                                 </li>
@@ -106,7 +106,7 @@
                                         <strong class="d-block"
                                                 data-i18n-static="email_tab_redirections_quota"></strong>
                                         <oui-loader size="s" inline="true" data-ng-if="ctrlTabGeneralInformations.loading.quotas"></oui-loader>
-                                        <span data-ng-bind="ctrlTabGeneralInformations.summary.redirection + ' / ' + ((ctrlTabGeneralInformations.quotas.redirection + ctrlTabGeneralInformations.quotas.alias) || '0')"
+                                        <span data-ng-bind="(ctrlTabGeneralInformations.summary.redirection || '0') + ' / ' + ((ctrlTabGeneralInformations.quotas.redirection + ctrlTabGeneralInformations.quotas.alias) || '0')"
                                               data-ng-if="!ctrlTabGeneralInformations.loading.quotas"></span>
                                     </div>
                                 </li>
