@@ -63,6 +63,7 @@
                                 data-i18n-static="domain_tab_DNSSEC_new_inline_zone"></td>
                             <td class="text-center">
                                 <button class="btn btn-default" type="button" title="{{i18n.table_add_entry}}"
+                                        data-ng-disabled="ctrlDomainDnssec.dnssecList.length >= ctrlDomainDnssec.const.MAX_AMOUNT_DNSSEC"
                                         data-ng-click="ctrlDomainDnssec.addRecord()">
                                     <span class="fa fa-plus" aria-hidden="true"></span>
                                 </button>
@@ -77,6 +78,8 @@
                                 <input type="number" class="form-control input-sm" id="tag-{{$index}}" name="tag_{{$index}}" required
                                        data-ng-min="ctrlDomainDnssec.const.TAG_MIN"
                                        data-ng-max="ctrlDomainDnssec.const.TAG_MAX"
+                                       min="{{::ctrlDomainDnssec.const.TAG_MIN}}"
+                                       max="{{::ctrlDomainDnssec.const.TAG_MAX}}"
                                        data-ng-model="myDnssec.tag"
                                        data-uib-tooltip="{{::i18n.domain_tab_DNSSEC_tooltip_tag}}"
                                        data-tooltip-placement="bottom"
@@ -137,7 +140,7 @@
                 <button class="btn btn-block btn-default" type="button"
                         data-i18n-static="domain_tab_DNSSEC_action_add_title"
                         data-ng-click="ctrlDomainDnssec.editMode = true"
-                        data-ng-disabled="ctrlDomainDnssec.dnssecList.length >= ctrlDomainDnssec.const.MAX_AMOUNT_DNSSEC || !ctrlDomainDnssec.isModifiable()"
+                        data-ng-disabled="!ctrlDomainDnssec.isModifiable()"
                         data-ng-if="!ctrlDomainDnssec.editMode">
                 </button>
                 <button class="btn btn-block btn-primary" type="button"
