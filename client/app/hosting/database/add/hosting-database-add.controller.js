@@ -122,7 +122,7 @@ angular.module("App").controller("HostingDatabaseCreateCtrl", ($scope, $location
             $scope.model.selected.version
         )
             .then(() => {
-                Alerter.success($scope.tr("hosting_tab_DATABASES_configuration_create_success"), $scope.alerts.main);
+                Alerter.success($scope.tr("hosting_tab_DATABASES_configuration_create_bdd_adding"), $scope.alerts.main);
             })
             .catch((err) => {
                 Alerter.alertFromSWS($scope.tr("hosting_tab_DATABASES_configuration_create_fail"), _.get(err, "data", err), $scope.alerts.main);
