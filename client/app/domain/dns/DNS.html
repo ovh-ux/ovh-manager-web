@@ -104,6 +104,7 @@
                     </table>
                 </div>
             </form>
+
             <p class="text-center"
                data-i18n-static="domain_tab_DNS_empty"
                data-ng-if="!ctrlDomainDns.dns.table.dns.length"></p>
@@ -119,6 +120,7 @@
                 <button class="btn btn-block btn-default" type="button"
                         data-i18n-static="domain_configuration_dns_config"
                         data-ng-click="ctrlDomainDns.activeEditMode()"
+                        data-ng-disabled="!ctrlDomainDns.dns.table.dns.length"
                         data-ng-if="ctrlDomainDns.allowModification && !ctrlDomainDns.editMode">
                 </button>
                 <button class="btn btn-block btn-default" type="button"
