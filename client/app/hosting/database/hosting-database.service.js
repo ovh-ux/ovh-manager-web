@@ -295,8 +295,15 @@ angular
                     user,
                     version
                 }
-            }).then(() => {
-                this.Hosting.resetDatabases();
+            }).then((task) => {
+                this.pollTasks(serviceName, {
+                    namespace: this.Hosting.events.tabDatabasesCreation,
+                    task,
+                    dump: "hosting",
+                    successSates: ["canceled", "done"],
+                    errorsSates: ["error"]
+                });
+                return task;
             });
         }
 
