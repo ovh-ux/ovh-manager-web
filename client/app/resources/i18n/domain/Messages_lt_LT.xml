@@ -51,7 +51,7 @@
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">DNS Anycast - tai galingas sprendimas, leidžiantis paspartinti įprastą DNS serverių veikimą, siekiant užtikrinti kuo trumpiausią atsako laiką po užklausos pateikimo jūsų interneto svetainėse</translation>
    <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Viešai prieinama duomenų bazė, kurioje pateikiami su Jūsų domenu susiję duomenys.</translation>
    <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Paslauga, leidžianti lokalizuoti jūsų domeną pagal IP adresą (pavyzdžiui, nurodant jūsų svetainės duomenų buvimo vietą).</translation>
-   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">Un délai de propagation de 48h est nécessaire suite à votre dernière modification.</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">DNS paskelbimas įsigalios per 48 val. nuo jūsų paskutinio keitimo.</translation>
    <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">DNS serveriai naudojami pagal prioritetą ir skirti IP adreso gavimui pagal domeną.</translation>
    <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Leidžia nukreipti lankytojus į egzistuojančią svetainę.</translation>
    <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">Jei sutriktų pirminio DNS veikla, antrasis serveris užtikrins, kad svetainė toliau būtų pasiekiama.</translation>
@@ -127,9 +127,9 @@
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Ar tikrai norite iš naujo paleisti DNS serverių konfigūraciją? Dėl šios operacijos dabartinė konfigūracija bus paleista iš naujo, grįžtant į pradinę OVH serverių būklę.</translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">Prašymas iš naujo inicijuoti DNS serverius buvo priimtas.</translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Įvyko klaida teikiant prašymą iš naujo inicijuoti DNS serverius.</translation>
-   <translation id="domain_tab_DNS_update_success" qtlid="447989">La modification des DNS a bien été prise en compte. Un délai de 48h est nécessaire pour la propagation aux autres DNS.</translation>
+   <translation id="domain_tab_DNS_update_success" qtlid="447989">DNS įrašų keitimas priimtas. DNS paskelbimas įsigalios per 48 val. </translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">Įvyko klaida keičiant DNS.</translation>
-   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Réinitialiser les serveurs DNS : non disponible en cas d'activation de DNSSEC</translation>
+   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">DNS serverių konfigūravimas iš naujo: neprieinama, jei įjungta DNSSEC parinktis</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Pritaikyti konfigūraciją</translation>
    <translation id="domain_tab_DNS_reset" qtlid="284880">Paleisti konfigūraciją iš naujo</translation>
    <translation id="domain_tab_DNS_cancel" qtlid="172280">Atšaukti keitimus</translation>
@@ -206,7 +206,7 @@
    <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Ar iš tiesų norite pašalinti šį GLUE įrašą?</translation>
    <translation id="domain_tab_GLUE_delete_success" qtlid="262553">GLUE įrašas bus pašalintas per kelias minutes.</translation>
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Šalinant GLUE įrašą įvyko klaida.</translation>
-   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Attention, après validation et afin que votre enregistrement GLUE fonctionne, vous devrez modifier votre zone DNS en ajoutant :<ul><li>un champ de type A pour une adresse IPv4,</li><li>un champ de type AAAA pour une adresse IPv6.</li></ul></translation>
+   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Dėmesio: po patvirtinimo, siekiant užtikrinti jūsų GLUE įrašo veikimą, jūs turėtumėte pakeisti savo DNS zoną pridedant:<ul><li>A lauką IPv4 adresui,</li><li>AAAA lauką IPv6 adresui.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdomenas</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">DNS zona</translation>
@@ -654,7 +654,7 @@
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM" qtlid="50062">Personalizuoti</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS" qtlid="366450">OVH el. pašto serveris</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS_filter" qtlid="50230">Apsauga</translation>
-   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Séléctionnez...</translation>
+   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Pasirinkite...</translation>
    <translation id="domain_configuration_zonedns_reset_type_HOSTING_WEB_placeholder" qtlid="217132">Pasirinkite...</translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label" qtlid="366463">Nurodykite A tipo lauką:</translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label_MX" qtlid="366476">Nurodykite MX tipo lauką ir pirmumą:</translation>
@@ -664,7 +664,7 @@
    <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">Jūsų web serverio IP adresas</translation>
 
    <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Ar norite pašalinti DNS zoną?</translation>
-   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">Votre zone DNS ne peut être supprimée car elle est actuellement liée à un hébergement Web.</translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">Jūsų DNS zona negali būti pašalinta, kadangi šiuo metu ji susieta su svetainių talpinimu.</translation>
    <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Dėmesio! Dėl šio veiksmo bus galutinai pašalinti visi turimi DNS įrašai.</translation>
    <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">DNS zonos pašalinimas inicijuotas, prašome peržiūrėti DNS zonos administratoriaus kontakto el. pašto dėžutę ir vadovautis tolimesnėmis instrukcijomis.</translation>
    <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">Įvyko klaida trinant DNS zoną.</translation>
@@ -673,7 +673,7 @@
    <translation id="domain_configuration_dnsanycast_title" qtlid="135697">Aktyvuoti DNS Anycast</translation>
    <translation id="domain_configuration_dnsanycast_step1_question" qtlid="135710">Norėdami aktyvuoti DNS Anycast parinktį, spauskite "Toliau".</translation>
    <translation id="domain_configuration_dnsanycast_step1_explanation" qtlid="135723">DNS Anycast parinktis - tai sprendimas, leidžiantis paspartinti DNS serverių veikimą, užtikrinant kuo trumpiausią atsako laiką, kai jūsų interneto svetainę pasiekia pirmos užklausos. </translation>
-   <translation id="domain_configuration_dnsanycast_step1_explanation2" qtlid="329369">Šiai parinkčiai taikomas įkainis: <span class="red bold">{0}</span> be PVM metams.</translation>
+   <translation id="domain_configuration_dnsanycast_step1_explanation2" qtlid="329369">Šiai parinkčiai taikomas įkainis: {0} be PVM metams.</translation>
    <translation id="domain_configuration_dnsanycast_step2_question" qtlid="329382">DNS Anycast parinkties įjungimas domenui <span class="italic normal">{0}</span></translation>
    <translation id="domain_configuration_dnsanycast_step2_id" qtlid="169472">Jūsų užsakymas bus patvirtintas, kai sutiksite su sutartimis ir spragtelėsite mygtuką "Toliau".</translation>
    <translation id="domain_configuration_dnsanycast_step2_totalHT" qtlid="169238">Kaina be PVM:</translation>
@@ -718,7 +718,7 @@
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Jūsų užsakymas sėkmingai patvirtintas. Paspaudę <a href="#/billing/orders">čia galėsite stebėti užsakymo vykdymo eigą</a>.</translation>
 
    <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
-   <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST vous permet de faire pointer un sous-domaine vers une adresse IP dynamique qui sera mise à jour dans votre zone DNS à chaque changement de celle-ci.</translation>
+   <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST jums leidžia nukreipti subdomeną į dinaminį IP adresą, atnaujinamą jūsų DNS zonoje kaskart, kai ji keičiama.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Domenas {0} neturi DNS zonos.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Įvyko klaida:</translation>
    <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>

@@ -27,7 +27,7 @@
    <translation id="domain_dashboard_show_authinfo_description" qtlid="226358">AUTH-INFO kód je klíč, který je vyžadován registrem pro schválení převodu Vaší domény {0}.</translation>
    <translation id="domain_dashboard_authinfo_code" qtlid="226371">AUTH-INFO kód</translation>
    <translation id="domain_dashboard_show_authinfo_error" qtlid="226384">Při získávání AUTH-INFO kódu došlo k chybě</translation>
-   <translation id="domain_dashboard_security" qtlid="125420">Bezpečnost</translation>
+   <translation id="domain_dashboard_security" qtlid="125420">Zabezpečení</translation>
 
    <translation id="domain_dashboard_add_uk_tags" qtlid="270423">Tag odchozího převodu</translation>
    <translation id="domain_dashboard_add_uk_tags_title" qtlid="328823">Vložte prosím tag odchozího převodu domény <strong>{0}</strong></translation>
@@ -51,7 +51,7 @@
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">DNS Anycast je výkonné řešení, umožňující zrychlit funkce DNS serveru a tím urychlit načítání Vašeho webu.</translation>
    <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Veřejně dostupná databáze obsahující osobní informace vztahující se k Vaší doméně.</translation>
    <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Služba umožňující Vám přeložit doménové jméno na IP adresu (určuje umístění dat Vašich stránek).</translation>
-   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">Un délai de propagation de 48h est nécessaire suite à votre dernière modification.</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">Propagace posledních změn v nastavení bude trvat 48 hodin.</translation>
    <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">Primární funkcí DNS serverů je překlad domény na IP adresu.</translation>
    <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Umožňuje přesměrování uživatelů na existující stránku.</translation>
    <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">Pro případ poruchy primárního DNS serveru zaručuje dostupnost Vašich stránek.</translation>
@@ -127,9 +127,9 @@
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Skutečně chcete resetovat konfiguraci DNS serveru? Současná konfigurace se přepíše na výchozí hodnoty, včetně výchozích DNS serverů OVH.</translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">Požadavek na reset DNS serveru byl úspěšně přijat.</translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Při požadavku o reset DNS serveru došlo k chybě.</translation>
-   <translation id="domain_tab_DNS_update_success" qtlid="447989">La modification des DNS a bien été prise en compte. Un délai de 48h est nécessaire pour la propagation aux autres DNS.</translation>
+   <translation id="domain_tab_DNS_update_success" qtlid="447989">Modifikace DNS byla přijata. Změna nastavení u ostatních DNS serverů se projeví za 48 hodin.</translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">Během úprav DNS došlo k chybě.</translation>
-   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Réinitialiser les serveurs DNS : non disponible en cas d'activation de DNSSEC</translation>
+   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Resetování DNS serverů: nelze provést pokud je aktivní DNSSEC</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Použít konfiguraci</translation>
    <translation id="domain_tab_DNS_reset" qtlid="284880">Reset konfigurace</translation>
    <translation id="domain_tab_DNS_cancel" qtlid="172280">Zrušit změny</translation>
@@ -206,7 +206,7 @@
    <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Opravdu si jste jistí, že chcete odebrat tento glue záznam?</translation>
    <translation id="domain_tab_GLUE_delete_success" qtlid="262553">Glue záznam bude vymazán během několika minut.</translation>
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Při odebírání glue záznamu došlo k chybě.</translation>
-   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Attention, après validation et afin que votre enregistrement GLUE fonctionne, vous devrez modifier votre zone DNS en ajoutant :<ul><li>un champ de type A pour une adresse IPv4,</li><li>un champ de type AAAA pour une adresse IPv6.</li></ul></translation>
+   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Pozor, za účelem správné funkčnosti záznamu GLUE bude k DNS zóně zapotřebí přidat následující záznamy: <ul><li>A záznam pro adresy IPv4,</li><li>AAAA záznam pro adresu IPv6.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdoména</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">DNS zóna</translation>
@@ -307,7 +307,7 @@
    <translation id="domain_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_desc" qtlid="329005">Pro registraci domény jsou požadovány osobní informace. &#13;
 Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejně přístupná.<br/>Tato funkce umožňuje tyto informace schovat, pokud si to přejete.</translation>
-   <translation id="domain_configuration_whois_step1_helpwizard_whatis" qtlid="130099">Co je WHOIS?</translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_whatis" qtlid="130099">Co je to registr WHOIS?</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">WHOIS je veřejně dostupná databáze informací o doménách a IP adresách. Tato databáze se většinou skládá z informací o vlastníkovi.</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">Jaké informace jsou zveřejněny ve WHOIS?</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329018">Zveřejněné informace se týkají vlastníka domény. Jejich rozsah záleží na druhu domény (na koncovce). Obvykle se jedná o tyto údaje:<ul><li>Adresa</li><li>Telefon a fax</li><li>E-mail</li></ul><br/>Pro tyto 3 údaje lze využít maskování.</translation>
@@ -657,7 +657,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM" qtlid="50062">Upravitelný</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS" qtlid="366450">E-mailový server OVH</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS_filter" qtlid="50230">Ochrana</translation>
-   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Séléctionnez...</translation>
+   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Vyberte...</translation>
    <translation id="domain_configuration_zonedns_reset_type_HOSTING_WEB_placeholder" qtlid="217132">Vyberte...</translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label" qtlid="366463">Zadejte A záznam:</translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label_MX" qtlid="366476">Zadejte MX záznam a specifikujte jeho prioritu:</translation>
@@ -667,7 +667,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">IP adresa Vašeho webhostingu</translation>
 
    <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Chcete odstranit DNS zónu?</translation>
-   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">Votre zone DNS ne peut être supprimée car elle est actuellement liée à un hébergement Web.</translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">Vaše DNS zóna nemůže být odstraněna, jelikož je připojena k webhostingovému řešení.</translation>
    <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Upozornění! Tímto smažete všechny existující DNS záznamy.</translation>
    <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">Začalo mazání DNS zóny. K dokončení požadavku prosím následujte instrukce v e-mailu, který byl zaslán na adresu správce DNS zóny.</translation>
    <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">Během odstraňování DNS zóny došlo k chybě.</translation>
@@ -676,7 +676,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_dnsanycast_title" qtlid="135697">Aktivovat DNS Anycast</translation>
    <translation id="domain_configuration_dnsanycast_step1_question" qtlid="135710">Pro aktivaci možnosti DNS Anycast klikněte na tlačítko "Další".</translation>
    <translation id="domain_configuration_dnsanycast_step1_explanation" qtlid="135723">Možnost DNS Anycast  je řešením, které urychlí běžné operace na DNS serverech pro poskytnutí rychlejší odezvy při prvním procházení webových stránek. A to odkudkoli na světě.</translation>
-   <translation id="domain_configuration_dnsanycast_step1_explanation2" qtlid="329369">Tato volba bude naúčtována ve výši <span class="red bold">{0}</span> bez DPH na 1 rok.</translation>
+   <translation id="domain_configuration_dnsanycast_step1_explanation2" qtlid="329369">Tato volba bude účtována ve výši <<span class="red bold">{0}</span> bez DPH na 1 rok.</translation>
    <translation id="domain_configuration_dnsanycast_step2_question" qtlid="329382">Aktivace volby DNS Anycast na doméně <span class="italic normal">{0}</span></translation>
    <translation id="domain_configuration_dnsanycast_step2_id" qtlid="169472">K potvrzení Vašeho požadavku musíte souhlasit s podmínkami užití a poté kliknout na tlačítko "Další".</translation>
    <translation id="domain_configuration_dnsanycast_step2_totalHT" qtlid="169238">Cena bez DPH:</translation>
@@ -721,7 +721,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Vaše objednávka byla úspěšně schválena. Pro více informací o průběhu <a href="#/billing/orders">klikněte sem</a>.</translation>
 
    <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
-   <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST vous permet de faire pointer un sous-domaine vers une adresse IP dynamique qui sera mise à jour dans votre zone DNS à chaque changement de celle-ci.</translation>
+   <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST umožňuje směrovat subdoménu na dynamickou IP adresu, která bude ve Vaší DNS zóně aktualizována při každé změně nastavení.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Doména {0} nemá DNS zónu.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Objevila se chyba:</translation>
    <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>
@@ -820,7 +820,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_update_owner_legalform_other" qtlid="19963">Jiné</translation>
 
    <translation id="domain_update_owner_email" qtlid="33598">E-mail</translation>
-   <translation id="domain_update_owner_lastname" qtlid="3818">Příjmení</translation>
+   <translation id="domain_update_owner_lastname" qtlid="3818">Název</translation>
    <translation id="domain_update_owner_firstname" qtlid="23323">Jméno</translation>
    <translation id="domain_update_owner_title" qtlid="157642">Můj účet</translation>
    <translation id="domain_update_owner_edit" qtlid="269851">Změna informací aktuálního vlastníka</translation>
@@ -898,5 +898,5 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_tab_dns_management_step1_updating" qtlid="369099">Probíhá aktualizace DNS zóny...</translation>
 
    <translation id="domain_dashboard_general_informations" qtlid="27115">Základní informace</translation>
-   <translation id="domain_dashboard_general_security" qtlid="125420">Bezpečnost</translation>
+   <translation id="domain_dashboard_general_security" qtlid="125420">Zabezpečení</translation>
 </translations>

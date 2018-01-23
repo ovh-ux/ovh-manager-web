@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="domains_dashboard_title" qtlid="140599">Bulk actions on my domains</translation>
+   <translation id="domains_dashboard_loading_error" qtlid="315904">There was an error loading information. This could be because an Ad-blocker is enabled. </translation>
+   <translation id="domains_dashboard_search_label" qtlid="296937">Search domains </translation>
+   <translation id="domains_dashboard_search_placeholder" qtlid="143199">Search domains...</translation>
+   <translation id="domains_dashboard_selector_all_pages" qtlid="140625">Select all pages</translation>
+   <translation id="domains_dashboard_table_titles_name" qtlid="140638">Domain name</translation>
+   <translation id="domains_dashboard_table_titles_creation" qtlid="26419">Creation date</translation>
+   <translation id="domains_dashboard_table_titles_expiration" qtlid="33010">Expiry date</translation>
+   <translation id="domains_dashboard_table_titles_whois" qtlid="140651">WHOIS Masking</translation>
+   <translation id="domains_dashboard_table_titles_dnssec" qtlid="184529">DNSSEC</translation>
+   <translation id="domains_dashboard_table_titles_dnsanycast" qtlid="135671">Anycast DNS</translation>
+   <translation id="domains_dashboard_table_empty" qtlid="140664">There is no domain matching your criteria </translation>
+   <translation id="domains_dashboard_table_noresult" qtlid="433680">You do not have any domains you can carry out actions on</translation>
+   <translation id="domains_dashboard_message_see_more" qtlid="140677">See the details of the errors</translation>
+   <translation id="domains_dashboard_table_dnssec_status_DISABLE_IN_PROGRESS" qtlid="148487">Deactivating...</translation>
+   <translation id="domains_dashboard_table_dnssec_status_ENABLE_IN_PROGRESS" qtlid="148474">Activating...</translation>
+   <translation id="domains_dashboard_table_dnssec_status_ENABLED" qtlid="30250">Enabled</translation>
+   <translation id="domains_dashboard_table_dnssec_status_DISABLED" qtlid="24967">Disabled</translation>
+
+   <translation id="domains_dashboard_tooltip_renew_multiples" qtlid="143108">Renew the selected domains</translation>
+   <translation id="domains_dashboard_tooltip_whois_multiples" qtlid="143121">Configure the WHOIS of the selected domains</translation>
+   <translation id="domains_dashboard_tooltip_dnssec_multiples" qtlid="184542">Configure DNSSEC on the selected domains</translation>
+   <translation id="domains_dashboard_tooltip_export_csv" qtlid="231682">Export the domains to a CSV file</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_expl" qtlid="273046">It may take a few minutes to export your domains depending on the number of domains that you have. You can use the manager as normal from the web section while you wait. The download is automatic. </translation>
+   <translation id="domains_dashboard_tooltip_export_csv_expl2" qtlid="273453">MX plan domains will not be exported.</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_confirm" qtlid="298378">Are you sure that you want to export the domains in CSV format?</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_success" qtlid="231734">The domains have been exported</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_error" qtlid="231747">An error occurred when exporting the domains</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_creation_doing" qtlid="273059">File being created...</translation>
+   <translation id="domains_dashboard_tooltip_renew_single" qtlid="143134">Renew this domain</translation>
+   <translation id="domains_dashboard_tooltip_whois_single" qtlid="143147">Configure the WHOIS of this domain</translation>
+   <translation id="domains_dashboard_tooltip_dnssec_activate_single" qtlid="184555">Enable DNSSEC on this domain</translation>
+   <translation id="domains_dashboard_tooltip_dnssec_deactivate_single" qtlid="184568">Disable DNSSEC on this domain</translation>
+   <translation id="domains_dashboard_button_renew" qtlid="118962">Renew</translation>
+   <translation id="domains_dashboard_button_whois" qtlid="299072">OWO service</translation>
+   <translation id="domains_dashboard_button_dnssec" qtlid="184581">Configure DNSSEC</translation>
+   <translation id="domains_dashboard_button_export" qtlid="231773">Export in CSV</translation>
+   <translation id="domains_change_owner" qtlid="267240">Change owner</translation>
+   <translation id="domains_dashboard_csv_file_created" qtlid="372230">The file has been correctly created. If the download doesn't start automatically, you can <a target="_blank" href="{0}">download it manually</a>.</translation>
+   <translation id="domains_configuration_renew_title" qtlid="140690">Renew my Domains</translation>
+   <translation id="domains_configuration_renew_step1_question" qtlid="140703">To renew your domains, you must use the OVH renewal interface (outside of the Web Customer Zone).</translation>
+   <translation id="domains_configuration_renew_step1_unable_to_renew" qtlid="140716">You are not the billing contact so you can't renew some of the domains selected (<span class="italic">{0}</span>).</translation>
+   <translation id="domains_configuration_renew_step1_unable_ignored" qtlid="140729">These domains will be ignored for renewal.</translation>
+   <translation id="domains_configuration_renew_step1_no_selected_domains" qtlid="140742">You haven't selected any domains to be renewed or you are not authorised to renew any.</translation>
+   <translation id="domains_configuration_renew_step1_confirmation" qtlid="140755">Click the "Order" button to open a new window and renew your domain names.</translation>
+   <translation id="domains_configuration_renew_step1_information" qtlid="168341">A new tab will open and you will automatically be redirected to the OVH renewal interface.</translation>
+   <translation id="domains_configuration_renew_step1_alert" qtlid="140768">Please note that after your payment has been accepted, a delay of approximately 2 hours is required for the renewal to be registered in the Web Customer Zone.</translation>
+   <translation id="domains_configuration_whois_title" qtlid="124447">Configure WHOIS</translation>
+   <translation id="domains_configuration_whois_step1_no_selected_domains" qtlid="140781">You haven't selected any domains to configure or the WHOIS cannot be changed on the domains selected.</translation>
+   <translation id="domains_configuration_whois_step1_unable_to_configure" qtlid="140794">The WHOIS cannot be changed on some of the domains selected (<span class="italic">{0}</span>).</translation>
+   <translation id="domains_configuration_whois_step1_unable_ignored" qtlid="140807">These domains will be ignored at the time of modification.</translation>
+   <translation id="domains_configuration_whois_step1_question" qtlid="140820">Please choose whether your personal information is to be displayed or hidden in the WHOIS database for the domains selected.</translation>
+   <translation id="domains_configuration_whois_step1_display" qtlid="69353">Display</translation>
+   <translation id="domains_configuration_whois_step1_hide" qtlid="97136">Hide</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_title" qtlid="130075">OwO</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_desc" qtlid="329499">When you register a domain name, you will be asked to provide personal details. These will be published in the publicly available WHOIS database by default. <br/>This feature lets you hide this information if you want to. </translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatis" qtlid="130099">What is WHOIS?</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">WHOIS is a public search facility for information on domain names and IP addresses. This database mainly consists of information on the owners. </translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">What information is published in the WHOIS?</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329512">The information published belongs to the domain name owner. The information depends on the domain name extension but generally it will include:<ul><li>their address</li><li>Their telephone and fax numbers</li><li>Their email</li></ul><br/>You can hide or display each of the three types of information. </translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_how" qtlid="130135">How does OVH enable you to hide this information?</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_how_desc" qtlid="329525">If you enable this service, OVH replaces your personal information with generic information. However you can still be reached by anyone wishing to contact you<ul><li>The address field is replaced by an address linked to OVH, and we send the emails received to the actual recipient.</li><li>The phone and fax fields are replaced by an OwO number.</li><li>The email field is replaced by a redirection that points to the owner's email address. This address is refreshed regularly and an anti-SPAM filter is applied.</li></ul></translation>
+   <translation id="domains_configuration_whois_field_ADDRESS" qtlid="30430">Address</translation>
+   <translation id="domains_configuration_whois_field_EMAIL" qtlid="33598">Email</translation>
+   <translation id="domains_configuration_whois_field_PHONE" qtlid="128214">Phone/Fax</translation>
+   <translation id="domains_configuration_whois_step2_alert" qtlid="128226">Please note that the WHOIS data will be updated in a few hours. </translation>
+   <translation id="domains_configuration_whois_step2_new_configuration" qtlid="128250">New configuration</translation>
+   <translation id="domains_configuration_whois_step2_question" qtlid="128262">Do you really want to apply the following modifications when displaying WHOIS information?</translation>
+   <translation id="domains_configuration_whois_step2_status_activated" qtlid="128274">Hidden</translation>
+   <translation id="domains_configuration_whois_step2_status_desactivated" qtlid="128286">Displayed</translation>
+   <translation id="domains_configuration_whois_step2_status_unchanged" qtlid="140833">Not modified</translation>
+   <translation id="domains_configuration_whois_success" qtlid="128298">Your modification request related to WHOIS information has been taken into account.</translation>
+   <translation id="domains_configuration_whois_partial" qtlid="140846">Your request to modify the WHOIS information was registered for some domains, but errors occurred for others.</translation>
+   <translation id="domains_configuration_whois_fail" qtlid="128310">Error when requesting WHOIS information modification.</translation>
+
+   <translation id="domains_configuration_dnssec_batch_title" qtlid="184581">Configure DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_no_selected_domains" qtlid="184594">You haven't selected any domains to configure or DNSSEC cannot be modified for the selected domains.</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_question" qtlid="184607">Please enable or disable DNSSEC for the selected domains</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_status_true" qtlid="184620">Enable DNSSEC on the selected domains</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_status_false" qtlid="184633">Disable DNSSEC on the selected domains</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_question" qtlid="184646">Do you really want the following modification to be applied to the selected domains?</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_status_true" qtlid="184659">Enable DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_status_false" qtlid="184672">Disable DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_success" qtlid="184685">Your DNSSEC modification request has been registered.</translation>
+   <translation id="domains_configuration_dnssec_batch_partial" qtlid="184698">Your DNSSEC modification request was registered for some domains, but errors occurred for others.</translation>
+   <translation id="domains_configuration_dnssec_batch_fail" qtlid="184711">The error occurred on requesting the DNSSEC modification.</translation>
+
+   <translation id="domains_configuration_dnssec_batch_title" qtlid="184581">Configure DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_no_selected_domains" qtlid="184594">You haven't selected any domains to configure or DNSSEC cannot be modified for the selected domains.</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_question" qtlid="184607">Please enable or disable DNSSEC for the selected domains</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_status_true" qtlid="184620">Enable DNSSEC on the selected domains</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_status_false" qtlid="184633">Disable DNSSEC on the selected domains</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_help_title" qtlid="184529">DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_help_content" qtlid="184724">The DNSSEC protocol secures DNS exchanges via public-key cryptography. DNS responses are authenticated using a pair of keys, a public one which serves to verify the validity of a signature, and a private one to create the signature linked to the DNS zone of the domain name.<br/><br/>As a result, a hacker looking to poison a DNS server would find their attempt foiled by the resolvers, as it would be alerted by the invalid or absent signature linked to the DNS zone.<br/><br/>However, this is not always the case, as few FAI DNS resolvers currently verify the validity of reponses signed by DNSSEC, so the DNS often still works without these authentication mechanisms.</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_help_more" qtlid="44536">Find out more</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_question" qtlid="184646">Do you really want the following modification to be applied to the selected domains?</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_status_true" qtlid="184659">Enable DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_status_false" qtlid="184672">Disable DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_success" qtlid="184685">Your DNSSEC modification request has been registered.</translation>
+   <translation id="domains_configuration_dnssec_batch_partial" qtlid="184698">Your DNSSEC modification request was registered for some domains, but errors occurred for others.</translation>
+   <translation id="domains_configuration_dnssec_batch_fail" qtlid="184711">The error occurred on requesting the DNSSEC modification.</translation>
+
+   <translation id="domains_configuration_dnssec_simple_deactivate_title" qtlid="184672">Disable DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_simple_deactivate_step1_question" qtlid="184750">Do you really want to disable DNSSEC for the domain <span class="italic">{0}</span>?</translation>
+   <translation id="domains_configuration_dnssec_simple_deactivate_success" qtlid="184685">Your DNSSEC modification request has been registered.</translation>
+   <translation id="domains_configuration_dnssec_simple_deactivate_fail" qtlid="184711">The error occurred on requesting the DNSSEC modification.</translation>
+
+   <translation id="domains_configuration_dnssec_simple_activate_title" qtlid="184659">Enable DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_simple_activate_step1_question" qtlid="184763">Do you really want to enable DNSSEC for the domain <span class="italic">{0}</span>?</translation>
+   <translation id="domains_configuration_dnssec_simple_activate_success" qtlid="184776">Your DNSSEC modification request has been registered.</translation>
+   <translation id="domains_configuration_dnssec_simple_activate_fail" qtlid="184711">The error occurred on requesting the DNSSEC modification.</translation>
+
+   <translation id="domains_newdnszone_order_title" qtlid="263181">Add a DNS zone</translation>
+   <translation id="domains_newdnszone_order_step1_title" qtlid="263194">1. Enter a domain name</translation>
+   <translation id="domains_newdnszone_order_step1_zonename" qtlid="66428">Domain name</translation>
+   <translation id="domains_newdnszone_order_step1_zonename_required" qtlid="263220">Zone name required</translation>
+   <translation id="domains_newdnszone_order_step1_zonename_invalid" qtlid="344292">This DNS zone cannot be created because you do not fulfill all the criteria below:</translation>
+   <translation id="domains_newdnszone_order_step1_zonename_pending" qtlid="263884">Checking zone name availability...</translation>
+   <translation id="domains_newdnszone_order_step2_title" qtlid="263259">2. Details</translation>
+   <translation id="domains_newdnszone_order_step2_domain" qtlid="263207">Name of DNS zone</translation>
+   <translation id="domains_newdnszone_order_step2_description" qtlid="9238">Description</translation>
+   <translation id="domains_newdnszone_order_step2_price" qtlid="83913">Price</translation>
+   <translation id="domains_newdnszone_order_step2_minimized" qtlid="263897">Activate minimal entries?</translation>
+   <translation id="domains_newdnszone_order_step2_minimized_yes" qtlid="34776">Yes</translation>
+   <translation id="domains_newdnszone_order_step2_minimized_no" qtlid="34788">No</translation>
+   <translation id="domains_newdnszone_order_step3_title" qtlid="186089">3. Validation</translation>
+   <translation id="domains_newdnszone_order_step3_question" qtlid="263272">Click 'Generate a purchase order' to add a new DNS zone.</translation>
+   <translation id="domains_newdnszone_order_step3_contracts_ask" qtlid="161646">Please read and confirm the terms and conditions below, then click on "Generate the purchase order":</translation>
+   <translation id="domains_newdnszone_order_step3_contracts_check" qtlid="161139">I confirm that I have read and fully understood the terms and conditions.</translation>
+   <translation id="domains_newdnszone_order_step3_generate" qtlid="186219">Generate purchase order</translation>
+   <translation id="domains_newdnszone_order_step3_generating" qtlid="169511">Generating the order...</translation>
+   <translation id="domains_newdnszone_order_step3_fail" qtlid="216781">An error occurred during the generation of a purchase order.</translation>
+   <translation id="domains_newdnszone_order_step3_generated" qtlid="169524">The order was generated successfully.</translation>
+   <translation id="domains_newdnszone_order_step3_clic_here" qtlid="169537">To confirm your order please click the "Pay" button below.</translation>
+   <translation id="domains_newdnszone_order_step3_bc_information" qtlid="167886">A new tab will open and you will automatically be redirected to the OVH payment interface.</translation>
+   <translation id="domains_newdnszone_order_step3_pay_button" qtlid="130183">Pay</translation>
+   <translation id="domains_newdnszone_order_subtitle" qtlid="265584">to configure your domain for your different services. </translation>
+   <translation id="domains_newdnszone_order_example" qtlid="265597">Example of how to add a zone:</translation>
+   <translation id="domains_newdnszone_order_usage" qtlid="265610">You have a domain with another provider which you want to transfer to us. In order to avoid a service interruption, you can add a DNS zone before starting the transfer. </translation>
+   <translation id="domains_newdnszone_order_reminder" qtlid="265623">Remember to change the DNS servers so that the zone is taken into account. </translation>
+   <translation id="domains_newdnszone_zone_invalid_title" qtlid="298404">You can only create a DNS zone if you fill in the following conditions:</translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_active" qtlid="298417">The domain exists and it is active </translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_soa" qtlid="344188">The domain's SOA must be correctly set up in its DNS zone </translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_a" qtlid="344201">There must be no actions in progress at OVH for this domain </translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_zone" qtlid="298456">This DNS cannot already be registered at OVH </translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_guide" qtlid="298469">View guide </translation>
+
+   <translation id="domains_action_export_csv_form_service_name_label" qtlid="273072">ASCII domain name</translation>
+   <translation id="domains_action_export_csv_form_service_name_help" qtlid="273085">Include the name of the ASCII domain (Punycode)</translation>
+   <translation id="domains_action_export_csv_form_creation_date_label" qtlid="26419">Creation date</translation>
+   <translation id="domains_action_export_csv_form_creation_date_help" qtlid="273098">Include the domain creation date </translation>
+   <translation id="domains_action_export_csv_form_expiration_date_label" qtlid="273111">Expiration date </translation>
+   <translation id="domains_action_export_csv_form_expiration_date_help" qtlid="273124">Include the domain expiration date </translation>
+   <translation id="domains_action_export_csv_form_service_display_name_label" qtlid="273137">UTF-8 domain name </translation>
+   <translation id="domains_action_export_csv_form_service_display_name_help" qtlid="273150">Include the UTF-8 domain name </translation>
+   <translation id="domains_action_export_csv_form_whois_fields_label" qtlid="273163">OwO service </translation>
+   <translation id="domains_action_export_csv_form_whois_fields_help" qtlid="273176">Include the status of the OwO (whois) service </translation>
+   <translation id="domains_action_export_csv_form_dnssec_label" qtlid="184529">DNSSEC</translation>
+   <translation id="domains_action_export_csv_form_dnssec_help" qtlid="273189">Include the status of the secure delegation</translation>
+   <translation id="domains_action_export_csv_form_dnsanycast_label" qtlid="135671">Anycast DNS</translation>
+   <translation id="domains_action_export_csv_form_dnsanycast_help" qtlid="448054">Inclure l'état d'activation de la solution DNS Anycast</translation>
+   <translation id="domains_action_export_csv_form_nic_billing_label" qtlid="273202">Billing contact </translation>
+   <translation id="domains_action_export_csv_form_nic_billing_help" qtlid="273215">Include billing contact </translation>
+   <translation id="domains_action_export_csv_form_nic_tech_label" qtlid="273228">Technical contact </translation>
+   <translation id="domains_action_export_csv_form_nic_tech_help" qtlid="273241">Include technical contact </translation>
+   <translation id="domains_action_export_csv_form_nic_admin_label" qtlid="273254">Administrative contact </translation>
+   <translation id="domains_action_export_csv_form_nic_admin_help" qtlid="273267">Include administrative contact </translation>
+   <translation id="domains_action_export_csv_form_nic_owner_label" qtlid="273280">Owner </translation>
+   <translation id="domains_action_export_csv_form_nic_owner_help" qtlid="273293">Include the owner's name </translation>
+   <translation id="domains_action_export_csv_form_dns_label" qtlid="32086">DNS</translation>
+   <translation id="domains_action_export_csv_form_dns_help" qtlid="273306">Include the list of domain name servers</translation>
+</translations>
