@@ -44,16 +44,16 @@
    <translation id="privateDatabase_dashboard_infrastructure_legacy" qtlid="254817">Legacy</translation>
    <translation id="privateDatabase_dashboard_infrastructure_sailabove" qtlid="254830">SailAbove</translation>
    <translation id="privateDatabase_dashboard_infrastructure_docker" qtlid="263468">Docker</translation>
-   <translation id="privateDatabase_dashboard_hostname" qtlid="192201">Nombre de host</translation>
+   <translation id="privateDatabase_dashboard_hostname" qtlid="192201">Nombre del host</translation>
    <translation id="privateDatabase_dashboard_host" qtlid="135229">Host</translation>
    <translation id="privateDatabase_dashboard_port_legacy" qtlid="254843">Puerto FTP</translation>
    <translation id="privateDatabase_dashboard_port_docker" qtlid="262947">Puerto SFTP</translation>
    <translation id="privateDatabase_dashboard_port" qtlid="9034">Puerto</translation>
    <translation id="privateDatabase_dashboard_certificate" qtlid="19771">Certificado</translation>
-   <translation id="privateDatabase_dashboard_certificate_tooltip" qtlid="448340">Le certificat n'est pas obligatoire pour réaliser la connexion à votre instance. Celui-ci est par contre nécessaire si vous désirez chiffrer la connexion vers celle-ci.</translation>
-   <translation id="privateDatabase_dashboard_see_certificate" qtlid="448353">Voir le certificat</translation>
+   <translation id="privateDatabase_dashboard_certificate_tooltip" qtlid="448340">El certificado no es obligatorio para realizar la conexión a la instancia. Sin embargo, sí es necesario si quiere cifrar la conexión con la misma.</translation>
+   <translation id="privateDatabase_dashboard_see_certificate" qtlid="448353">Ver el certificado</translation>
    <translation id="privateDatabase_dashboard_service_hosting_more" qtlid="325924">Ver la lista</translation>
-   <translation id="privateDatabase_dashboard_service_hosting_linked" qtlid="444456">Hébergement web lié</translation>
+   <translation id="privateDatabase_dashboard_service_hosting_linked" qtlid="444456">Alojamiento web asociado</translation>
    <translation id="privateDatabase_dashboard_service_hosting_linked_none" qtlid="30646">Ninguno</translation>
 
    <translation id="privateDatabase_dashboard_connections_title" qtlid="250927">Datos de conexión</translation>
@@ -77,7 +77,7 @@
 
    <translation id="privateDatabase_configurations_general_mysql" qtlid="263494">Configuración general de MySQL</translation>
    <translation id="privateDatabase_configurations_general_mariadb" qtlid="404668">Configuración general de MariaDB</translation>
-   <translation id="privateDatabase_configurations_general_redis" qtlid="448366">Configuration générale de Redis</translation>
+   <translation id="privateDatabase_configurations_general_redis" qtlid="448366">Configuración general de Redis</translation>
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Configuración general del PostgreSQL</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">Pronto disponible para PostgreSQL</translation>
 
@@ -100,7 +100,7 @@
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Número de segundos que espera el servidor antes de cerrar la conexión cuando no hay actividad durante una conexión en línea de comandos.</translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Número de segundos que espera el servidor antes de cerrar la conexión cuando no hay actividad durante una conexión externa.</translation>
 
-   <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Cette fonctionnalité n'est pas disponible pour ce type de base de données.</translation>
+   <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">La funcionalidad no está disponible para este tipo de base de datos.</translation>
 
    <translation id="privateDatabase_action_changepassword" qtlid="80394">Cambiar la contraseña</translation>
    <translation id="privateDatabase_action_grants" qtlid="215715">Editar los permisos</translation>
@@ -116,13 +116,13 @@
    <translation id="privateDatabase_tabs_no_user" qtlid="215741">No hay usuarios.</translation>
    <translation id="privateDatabase_tabs_no_user_error" qtlid="232995">No se han podido mostrar los usuarios.</translation>
    <translation id="privateDatabase_tabs_user_grant_admin" qtlid="43948">Administrador </translation>
-   <translation id="privateDatabase_tabs_user_grant_admin_tooltip" qtlid="342715">Autorización de consultas de tipo: Select, Insert, Update, Delete, Create, Alter, Drop</translation>
+   <translation id="privateDatabase_tabs_user_grant_admin_tooltip" qtlid="342715">Autorización de consultas de tipo Select, Insert, Update, Delete, Create, Alter y Drop.</translation>
    <translation id="privateDatabase_tabs_user_grant_none" qtlid="30646">Ninguno</translation>
-   <translation id="privateDatabase_tabs_user_grant_none_tooltip" qtlid="342728">Sin permisos sobre la base</translation>
+   <translation id="privateDatabase_tabs_user_grant_none_tooltip" qtlid="342728">Sin permisos sobre la base de datos.</translation>
    <translation id="privateDatabase_tabs_user_grant_ro" qtlid="6958">Lectura</translation>
-   <translation id="privateDatabase_tabs_user_grant_ro_tooltip" qtlid="342741">Autorización de consultas de tipo: Select</translation>
+   <translation id="privateDatabase_tabs_user_grant_ro_tooltip" qtlid="342741">Autorización de consultas de tipo Select.</translation>
    <translation id="privateDatabase_tabs_user_grant_rw" qtlid="215754">Lectura y escritura</translation>
-   <translation id="privateDatabase_tabs_user_grant_rw_tooltip" qtlid="342754">Autorización de consultas de tipo: Select, Insert, Update y Delete</translation>
+   <translation id="privateDatabase_tabs_user_grant_rw_tooltip" qtlid="342754">Autorización de consultas de tipo Select, Insert, Update y Delete.</translation>
    <translation id="privateDatabase_tabs_user_grant_change" qtlid="233430">Edición de los permisos del usuario:</translation>
 
    <translation id="privateDatabase_no_db" qtlid="215767">No hay bases de datos.</translation>
@@ -305,12 +305,12 @@
    <translation id="privateDatabase_add_bdd_new_user_grant_ro" qtlid="17333">Solo lectura</translation>
    <translation id="privateDatabase_add_bdd_new_user_grant_rw" qtlid="300526">Lectura-escritura</translation>
    <translation id="privateDatabase_add_bdd_new_user_password" qtlid="2270">Contraseña</translation>
-   <translation id="privateDatabase_add_bdd_new_user_password_confirm" qtlid="300539">Confirmar la contraseña</translation>
+   <translation id="privateDatabase_add_bdd_new_user_password_confirm" qtlid="300539">Repetir contraseña</translation>
    <translation id="privateDatabase_add_bdd_new_user_password_tooltip" qtlid="300552">Entre 8 y 31 caracteres alfanuméricos, con al menos una letra mayúscula, una letra minúscula y una cifra.</translation>
 
-   <translation id="privateDatabase_add_authorized_ip" qtlid="448392">Ajouter une adresse IP autorisée</translation>
-   <translation id="privateDatabase_add_authorized_ip_explanation" qtlid="448405">Vous n'avez pas encore d'adresse IP autorisée à accéder à vos bases de données. Entrez ici l'adresse IP du serveur auquel vous souhaitez donner accès à vos bases.</translation>
-   <translation id="privateDatabase_add_authorized_ip_description" qtlid="448418">Accès initial à la base de données</translation>
+   <translation id="privateDatabase_add_authorized_ip" qtlid="448392">Añadir una dirección IP autorizada</translation>
+   <translation id="privateDatabase_add_authorized_ip_explanation" qtlid="448405">Todavía no ha autorizado a ninguna dirección IP para que acceda a sus bases de datos. Introduzca aquí la dirección IP del servidor al que quiera dar acceso a sus bases de datos.</translation>
+   <translation id="privateDatabase_add_authorized_ip_description" qtlid="448418">Acceso inicial a la base de datos</translation>
 
    <translation id="privateDatabase_restore_bdd_application" qtlid="404707">Primero debe crearla en la pestaña de gestión de sus bases de datos.</translation>
    <translation id="privateDatabase_restore_bdd_close" qtlid="4670">Cerrar</translation>
@@ -336,12 +336,12 @@
    <translation id="privateDatabase_tabs_dumps_restore_in_progress" qtlid="263428">La solicitud de restauración de la copia de seguridad se ha enviado. </translation>
    <translation id="privateDatabase_tabs_dumps_restore_success" qtlid="263441">La copia de seguridad se ha restaurado correctamente.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_fail" qtlid="263454">Se ha producido un error al restaurar la copia de seguridad:</translation>
-   <translation id="privateDatabase_tabs_dumps_delete" qtlid="448431">Supprimer la sauvegarde</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_title" qtlid="448444">Supprimer une sauvegarde</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_confirm" qtlid="448457">Souhaitez-vous supprimer la sauvegarde du <strong>{0}</strong> de la base de données <strong>{1}</strong> ?</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_start" qtlid="448470">La demande de suppression de la sauvegarde de base de données a été prise en compte.</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_done" qtlid="448483">La suppression de la sauvegarde de base de données a été effectuée.</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_error" qtlid="448496">Une erreur est survenue lors de la suppression de la sauvegarde de base de données.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete" qtlid="448431">Eliminar la copia de seguridad</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_title" qtlid="448444">Eliminar una copia de seguridad</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_confirm" qtlid="448457">¿Seguro que quiere eliminar la copia de seguridad del <strong>{0}</strong> de la base de datos <strong>{1}</strong>?</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_start" qtlid="448470">La solicitud de eliminación de la copia de seguridad de la base de datos se ha enviado.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_done" qtlid="448483">La copia de seguridad de la base de datos se ha eliminado.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_error" qtlid="448496">Se ha producido un error al eliminar la copia de seguridad de la base de datos.</translation>
 
    <translation id="privateDatabase_tabs_users_database_error" qtlid="135294">Se ha producido un error al cargar la información.</translation>
    <translation id="privateDatabase_tabs_users_database_username" qtlid="7450">Usuario</translation>
@@ -385,7 +385,7 @@
    <translation id="privateDatabase_RAM_add_do_order_attention" qtlid="108456">¡Atención!</translation>
    <translation id="privateDatabase_RAM_add_do_order_warning" qtlid="304433">La operación conlleva el reinicio del servidor.</translation>
    <translation id="privateDatabase_RAM_loading_order" qtlid="221162">Cargando ofertas...</translation>
-   <translation id="privateDatabase_order_RAM_finish_success" qtlid="444732">Votre <a href="{0}" target="_blank">bon de commande</a> a été généré avec succès. La quantité de RAM sera modifiée lorsque vous l'aurez validé.</translation>
+   <translation id="privateDatabase_order_RAM_finish_success" qtlid="444732">La <a href="{0}" target="_blank">orden de pedido</a> se ha generado correctamente. La cantidad de RAM se modificará una vez haya validado dicha orden de pedido.</translation>
    <translation id="privateDatabase_order_RAM_finish_error" qtlid="181227">Se ha producido un error al generar la orden de pedido.</translation>
    <translation id="privateDatabase_order_RAM_resume" qtlid="177496">Resumen del pedido</translation>
    <translation id="privateDatabase_order_RAM_price_HT" qtlid="146177">Precio total (sin IVA):</translation>
@@ -568,16 +568,16 @@
    <translation id="privateDatabase_modale_whitelist_update_restriction_info" qtlid="405149">Aplicar la restricción a:</translation>
 
 <!-- LOGS -->
-   <translation id="privateDatabase_tabs_logs_list_title" qtlid="413375">Logs de mi base de datos</translation>
+   <translation id="privateDatabase_tabs_logs_list_title" qtlid="413375">Logs de la base de datos</translation>
    <translation id="privateDatabase_tabs_logs_list_no_logs" qtlid="413388">Todavía no hay logs.</translation>
 
 <!-- OOM -->
-   <translation id="privateDatabase_no_oom" qtlid="440313">Aucun dépassement mémoire à signaler.</translation>
-   <translation id="privateDatabase_warning_oom" qtlid="440326">{0} dépassements mémoire ont eu lieu récemment.</translation>
+   <translation id="privateDatabase_no_oom" qtlid="440313">No se han producido rebasamientos de RAM.</translation>
+   <translation id="privateDatabase_warning_oom" qtlid="440326">Recientemente se han producido {0} rebasamientos de RAM.</translation>
    <translation id="privateDatabase_modale_oom_title" qtlid="436957">Cantidad de RAM superada</translation>
-   <translation id="privateDatabase_modale_oom_confirm_button" qtlid="440339">Commander plus de RAM</translation>
+   <translation id="privateDatabase_modale_oom_confirm_button" qtlid="440339">Contratar más RAM</translation>
    <translation id="privateDatabase_modale_oom_close_button" qtlid="4670">Cerrar</translation>
-   <translation id="privateDatabase_modale_oom_info" qtlid="440352">Dépassements de la mémoire vive survenus ces {0} derniers jours.<br />Seuls les {1} derniers dépassements sont disponibles.</translation>
+   <translation id="privateDatabase_modale_oom_info" qtlid="440352">Rebasamientos de la memoria RAM producidos en los {0} últimos días.<br />Solo se mostrarán los últimos {1} rebasamientos.</translation>
    <translation id="privateDatabase_modale_oom_tab_event_date" qtlid="24523">Fecha</translation>
    <translation id="privateDatabase_modale_oom_tab_size_reached" qtlid="436983">Capacidad alcanzada</translation>
    <translation id="privateDatabase_modale_oom_tab_uptime" qtlid="436996">Tiempo transcurrido desde la última vez que superó la cantidad de RAM asignada.</translation>
