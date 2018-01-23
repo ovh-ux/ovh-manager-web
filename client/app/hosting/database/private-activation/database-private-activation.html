@@ -5,7 +5,7 @@
          data-wizard-title="i18n.hosting_dashboard_database_active_title">
 
         <div data-wizard-step
-             data-wizard-step-valid="!ctrl.choice.version || !ctrl.choice.ram">
+             data-wizard-step-valid="ctrl.choice.version && ctrl.choice.ram">
 
             <p data-i18n-static="hosting_dashboard_database_active_info"></p>
 
