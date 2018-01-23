@@ -21,7 +21,7 @@
    <translation id="domain_dashboard_protection_locking" qtlid="148474">Ativação em curso</translation>
    <translation id="domain_dashboard_protection_unlocking" qtlid="148487">Desativação em curso</translation>
    <translation id="domain_dashboard_protection_locked" qtlid="62028">Ativada</translation>
-   <translation id="domain_dashboard_protection_transfert" qtlid="270410">Proteção contra a transferência</translation>
+   <translation id="domain_dashboard_protection_transfert" qtlid="270410">Proteção contra a transferência de domínio</translation>
    <translation id="domain_dashboard_show_authinfo" qtlid="226332">AUTH/INFO</translation>
    <translation id="domain_dashboard_show_authinfo_title" qtlid="226345">Apresentar o código AUTH/INFO</translation>
    <translation id="domain_dashboard_show_authinfo_description" qtlid="226358">O código AUTH/INFO é uma chave necessária para que o registry valide a transferência do seu nome de domínio {0}.</translation>
@@ -29,9 +29,9 @@
    <translation id="domain_dashboard_show_authinfo_error" qtlid="226384">Ocorreu um erro aquando da recuperação do código AUTH/INFO</translation>
    <translation id="domain_dashboard_security" qtlid="125420">Segurança</translation>
 
-   <translation id="domain_dashboard_add_uk_tags" qtlid="270423">Tag de transferência de saída</translation>
+   <translation id="domain_dashboard_add_uk_tags" qtlid="270423">Tag para a transferência de saída</translation>
    <translation id="domain_dashboard_add_uk_tags_title" qtlid="328823">Queira introduzir a 'tag' de transferência de saída para o domínio <strong>{0}</strong></translation>
-   <translation id="domain_dashboard_add_uk_tags_label" qtlid="270423">Tag de transferência de saída</translation>
+   <translation id="domain_dashboard_add_uk_tags_label" qtlid="270423">Tag para a transferência de saída</translation>
    <translation id="domain_dashboard_add_uk_tags_success" qtlid="270449">A tag de transferência de saída foi enviada com sucesso.</translation>
    <translation id="domain_dashboard_add_uk_tags_error" qtlid="299384">Ocorreu um erro:</translation>
    <translation id="domain_dashboard_add_uk_tags_pattern_error" qtlid="270462">A tag deve conter apenas letras, números e -</translation>
@@ -49,23 +49,23 @@
    <translation id="domain_dashboard_dns_state" qtlid="33790">Estado</translation>
    <translation id="domain_dashboard_dns_anycast" qtlid="270540">Opção DNS Anycast</translation>
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">O DNS Anycast é uma solução potente que permite a aceleração do funcionamento clássico dos servidores DNS para fornecer em todo o mundo tempos de resposta mais curtos a partir da primeira ligação aos seus websites</translation>
-   <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Base de dados publicamente acessível que contém as informações pessoais ligadas ao seu domínio.</translation>
-   <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Serviço que permite traduzir o seu nome de domínio num endereço IP (indica por exemplo a localização dos dados do seu website).</translation>
-   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">Un délai de propagation de 48h est nécessaire suite à votre dernière modification.</translation>
-   <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">Os servidores DNS que são utilizados de forma prioritária para a resolução do seu domínio num endereço IP.</translation>
-   <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Permite reencaminhar os utilizadores para um site distante.</translation>
-   <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">Em caso de falha nos DNS primário, estes asseguram que o seu website permanece acessível.</translation>
-   <translation id="domain_dashboard_tooltip_subdomain" qtlid="129655">Declinação do seu nome de domínio que permite, por exemplo, acesso a uma sub-secção do seu website.</translation>
-   <translation id="domain_dashboard_tooltip_protection" qtlid="129099">Bloquear os pedidos de transferência para proteger o seu domínio.</translation>
+   <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Base de dados publicamente acessível que contém as informações pessoais associadas ao seu domínio.</translation>
+   <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Serviço que permite fazer a tradução do seu domínio para um endereço IP (e.g. que indica a localização dos dados do seu website).</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">A propagação desta alteração poderá demorar até 48h</translation>
+   <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">Os servidores DNS usados de forma prioritária na resolução do seu domínio num endereço IP.</translation>
+   <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Permite reencaminhar os utilizadores para um site.</translation>
+   <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">Em caso de falha dos DNS primários, estes asseguram a acessibilidade do site.</translation>
+   <translation id="domain_dashboard_tooltip_subdomain" qtlid="129655">Variação do domínio que permite, por exemplo, acesso a uma subsecção do site.</translation>
+   <translation id="domain_dashboard_tooltip_protection" qtlid="129099">Bloquear pedidos de transferência para impedir a Transferência não autorizada do seu domínio.</translation>
    <translation id="domain_dashboard_tooltip_dnssec" qtlid="184984">Proteja o seu domínio contra o Cache Poisoning.</translation>
    <translation id="domain_dashboard_dnssec" qtlid="179615">Delegação Segura (DNSSEC)</translation>
    <translation id="domain_configuration_dnssec_ENABLED" qtlid="30250">Ativado</translation>
    <translation id="domain_configuration_dnssec_ENABLE_IN_PROGRESS" qtlid="148474">Ativação em curso</translation>
    <translation id="domain_configuration_dnssec_DISABLED" qtlid="24967">Desativado</translation>
    <translation id="domain_configuration_dnssec_DISABLE_IN_PROGRESS" qtlid="148487">Desativação em curso</translation>
-   <translation id="domain_configuration_dnssec_ok_true" qtlid="179628">O pedido de ativação de DNSSEC foi corretamente tomado em conta.</translation>
+   <translation id="domain_configuration_dnssec_ok_true" qtlid="179628">O pedido de ativação de DNSSEC foi registado.</translation>
    <translation id="domain_configuration_dnssec_error_true" qtlid="179641">Ocorreu um erro durante o pedido de ativação de DNSSEC.</translation>
-   <translation id="domain_configuration_dnssec_ok_false" qtlid="179654">O pedido de desativação de DNSSEC foi corretamente tomado em conta.</translation>
+   <translation id="domain_configuration_dnssec_ok_false" qtlid="179654">O pedido de desativação de DNSSEC foi registado.</translation>
    <translation id="domain_configuration_dnssec_error_false" qtlid="179667">Ocorreu um erro durante o pedido de desativação de DNSSEC.</translation>
    <translation id="domain_configuration_dnssec_enable_modal_title" qtlid="219680">Ativação do DNSSEC</translation>
    <translation id="domain_configuration_dnssec_enable_modal_explain" qtlid="219693">A ativação do DNSSEC é uma operação relativamente longa (cerca de 24h).</translation>
@@ -127,9 +127,9 @@
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Têm a certeza de que deseja reinicializar a configuração dos servidores DNS? Esta ação reinicializará a configuração atual e levará à alteração dos servidores DNS para os servidores OVH originais.</translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">O pedido de reinicialização dos servidores DNS foi corretamente tomado em conta.</translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Ocorreu um erro aquando do pedido de reinicialização dos servidores DNS.</translation>
-   <translation id="domain_tab_DNS_update_success" qtlid="447989">La modification des DNS a bien été prise en compte. Un délai de 48h est nécessaire pour la propagation aux autres DNS.</translation>
+   <translation id="domain_tab_DNS_update_success" qtlid="447989">A alteração dos DNS foi registada. A propagação aos outros DNS poderá demorar até 48h.</translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">Ocorreu um erro durante a modificação dos servidores DNS.</translation>
-   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Réinitialiser les serveurs DNS : non disponible en cas d'activation de DNSSEC</translation>
+   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Reinicializar os servidores DNS: não disponível em caso de ativação de DNSSEC</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Aplicar configuração</translation>
    <translation id="domain_tab_DNS_reset" qtlid="284880">Fazer reset à configuração</translation>
    <translation id="domain_tab_DNS_cancel" qtlid="172280">Anular as modificações</translation>
@@ -188,7 +188,7 @@
    <translation id="domain_tab_GLUE_modify" qtlid="37875">Modificar</translation>
    <translation id="domain_tab_GLUE_butt_add" qtlid="37923">Adicionar</translation>
    <translation id="domain_tab_GLUE_empty" qtlid="262332">Não existe nenhuma entrada na lista dos registos GLUE.</translation>
-   <translation id="domain_tab_GLUE_add_step1" qtlid="262345">Queira preencher os seguintes campos:</translation>
+   <translation id="domain_tab_GLUE_add_step1" qtlid="262345">Preencha os seguintes campos:</translation>
    <translation id="domain_tab_GLUE_add_host" qtlid="262358">Nome do host</translation>
    <translation id="domain_tab_GLUE_add_ip" qtlid="262371">IP(s) de destino</translation>
    <translation id="domain_tab_GLUE_add_ips_ipv6_not_supported" qtlid="262384">Apenas poderá indicar endereços IPv4</translation>
@@ -196,9 +196,9 @@
    <translation id="domain_tab_GLUE_add_ips_one_info" qtlid="262410">Apenas poderá indicar um IP.</translation>
    <translation id="domain_tab_GLUE_add_ips_multi_info" qtlid="262423">Pode indicar vários IPs, separadores por uma vírgula.</translation>
    <translation id="domain_tab_GLUE_add_ip_confirm" qtlid="328849">Vai adicionar o registo GLUE do host <strong>{0}</strong> com o destino:</translation>
-   <translation id="domain_tab_GLUE_add_success" qtlid="262449">O novo registo GLUE vai ser criado dentro de alguns minutos.</translation>
-   <translation id="domain_tab_GLUE_add_error" qtlid="262462">Ocorreu um erro aquando da criação do novo registo GLUE.</translation>
-   <translation id="domain_tab_GLUE_modify_title" qtlid="262475">Modificar o registo GLUE</translation>
+   <translation id="domain_tab_GLUE_add_success" qtlid="262449">O novo registo GLUE será criado dentro de alguns minutos.</translation>
+   <translation id="domain_tab_GLUE_add_error" qtlid="262462">Ocorreu um erro na criação do novo registo GLUE.</translation>
+   <translation id="domain_tab_GLUE_modify_title" qtlid="262475">Alterar o registo GLUE</translation>
    <translation id="domain_tab_GLUE_modify_ip_confirm" qtlid="328862">Vai modificar o registo GLUE do host <strong>{0}</strong> com o destino:</translation>
    <translation id="domain_tab_GLUE_modify_success" qtlid="262501">O registo GLUE vai ser atualizado dentro de alguns minutos.</translation>
    <translation id="domain_tab_GLUE_modify_error" qtlid="262514">Ocorreu um erro aquando da atualização do registo GLUE.</translation>
@@ -206,9 +206,9 @@
    <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Têm a certeza de que deseja eliminar este endereço GLUE?</translation>
    <translation id="domain_tab_GLUE_delete_success" qtlid="262553">O registo GLUE será eliminado dentro de alguns minutos.</translation>
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Ocorreu um erro aquando da eliminação do registo GLUE.</translation>
-   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Attention, après validation et afin que votre enregistrement GLUE fonctionne, vous devrez modifier votre zone DNS en ajoutant :<ul><li>un champ de type A pour une adresse IPv4,</li><li>un champ de type AAAA pour une adresse IPv6.</li></ul></translation>
+   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Atenção: após a validação, e para que o registo GLUE possa funcionar, terá de alterar a zona DNS adicionando :<ul><li>um registo de tipo A para um endereço IPv4,</li><li>um registo de tipo AAAA para um endereço IPv6.</li></ul></translation>
 
-   <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Sub-domínios</translation>
+   <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdomínios</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">Zona DNS</translation>
    <translation id="domain_tab_ZONE_named" qtlid="225101">Zona DNS de {0}</translation>
    <translation id="domain_tab_ZONE_search_placeholder" qtlid="213427">A procurar domínio...</translation>
@@ -235,7 +235,7 @@
    <translation id="domain_tab_ZONE_table_headers_field" qtlid="170434">Domínio</translation>
    <translation id="domain_tab_ZONE_table_headers_type" qtlid="2642">Tipo</translation>
    <translation id="domain_tab_ZONE_table_headers_target" qtlid="47644">Alvo</translation>
-   <translation id="domain_tab_ZONE_default_import_button" qtlid="233453">Modificar em modo textual</translation>
+   <translation id="domain_tab_ZONE_default_import_button" qtlid="233453">Editar em modo de texto</translation>
    <translation id="domain_tab_ZONE_default_delete_all" qtlid="290316">Eliminar a zona DNS</translation>
    <translation id="domain_tab_ZONE_default_ttl_button" qtlid="226097">TTL padrão</translation>
    <translation id="domain_tab_ZONE_default_ttl_error" qtlid="226110">Ocorreu um erro aquando da recuperação das informações da zona:</translation>
@@ -259,14 +259,14 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_configuration_add_subdomain_add_record" qtlid="265392">Adicionar uma entrada na zona DNS (A, CNAME, MX...)</translation>
    <translation id="domain_configuration_add_subdomain_add_record_sample" qtlid="265405">Exemplo: teste.meuteste.com 3600 IN A 1.2.3.4</translation>
    <translation id="domain_configuration_add_subdomain_add_dom" qtlid="265418">Adicionar um domínio ou subdomínio ao meu alojamento partilhado</translation>
-   <translation id="domain_configuration_add_subdomain_hosting_choice" qtlid="328901">Escolha o alojamento ao qual pretende associá-lo <strong>{0}.{1}</strong></translation>
+   <translation id="domain_configuration_add_subdomain_hosting_choice" qtlid="328901">Escolha o alojamento ao qual pretende associar o domínio <strong>{0}.{1}</strong></translation>
    <translation id="domain_configuration_add_subdomain_hosting_search" qtlid="265444">Procurar um alojamento</translation>
 
    <translation id="domain_configuration_renew_title_button" qtlid="210124">Renovar</translation>
    <translation id="domain_configuration_renew_alldom_title_button" qtlid="270605">Renovar o meu AllDom</translation>
-   <translation id="domain_configuration_enable_web_hosting" qtlid="283812">Encomendar um Alojamento Web</translation>
+   <translation id="domain_configuration_enable_web_hosting" qtlid="283812">Contratar um Alojamento Web</translation>
    <translation id="domain_configuration_renew_title" qtlid="124399">Renovar o meu Domínio</translation>
-   <translation id="domain_configuration_renew_step1_question" qtlid="328914">A fim de renovar o seu domínio <span class="italic">{0}</span>, deve utilizar a interface de renovação OVH (fora do Espaço Cliente Web).</translation>
+   <translation id="domain_configuration_renew_step1_question" qtlid="328914">Para renovar o seu domínio <span class="italic">{0}</span>, deverá usar a interface de renovação OVH (através da Área de Cliente ou diretamente no site).</translation>
    <translation id="domain_configuration_renew_step1_confirmation" qtlid="125132">Clique no botão "Encomendar" para abrir uma nova janela e renovar o seu nome de domínio.</translation>
    <translation id="domain_configuration_renew_step1_information" qtlid="168341">Irá ser aberto um novo separador e será automaticamente reencaminhado para a interface de renovação OVH.</translation>
    <translation id="domain_configuration_renew_step1_alert" qtlid="168354">Queira ter em conta que podem ser necessárias 2 horas a contar a partir da validação do seu pagamento para que a renovação seja tida em conta no seu Espaço de Cliente Web.</translation>
@@ -279,7 +279,7 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_title" qtlid="129667">Protecção do domínio</translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_desc" qtlid="129679">Ativar a Protecção do Domínio permite-lhe que fique protegido contra o roubo do domínio ao não permitir qualquer transferência.</translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_question1" qtlid="129691">O que é o roubo de domínio?</translation>
-   <translation id="domain_configuration_protection_desactivate_step1_helpwizard_question1_answer" qtlid="328953">Todas as empresas que disponibilizam nomes de domínios oferecem a possibilidade de efetuar transferências de entrada, que consiste em receber um domínio gerido por outro agente registrar. A empresa que solicita a transferência é que deve verificar se o pedido foi efetuado pelo verdadeiro proprietário do domínio.<br/>Se as verificações não são suficientemente sérias, o domínio pode ser transferido sem que se tenha comprovado devidamente a identidade de quem solicitou a transferência, podendo levar a que o legítimo proprietário perca a gestão do domínio.</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_helpwizard_question1_answer" qtlid="328953">Todas as empresas que comercializam domínios aceitam transferências de entrada, que consistem em receber domínios geridos até então por outro agente Registrar. Cabe à empresa que solicita a transferência verificar se o pedido foi efetuado pelo verdadeiro proprietário do domínio.<br/>Se a verificação da identidade de quem solicitou a transferência do domínio não for rigorosa, o legítimo titular do domínio pode perder o acesso à gestão do mesmo.</translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_question2" qtlid="129715">Como é que a OVH protege o seu domínio contra roubo?</translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_question2_answer" qtlid="129727">Para protege-lo contra roubo passámos o seu domínio no estado em que nenhuma transferência pode ser efetuada. Se um outro registrar pedir a transferência ela será automaticamente rejeitada. Nenhuma transferência pode ser pedida sem o seu conhecimento.</translation>
    <translation id="domain_configuration_protection_desactivate_step1_helpwizard_note" qtlid="129739">Nota:</translation>
@@ -292,7 +292,7 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_configuration_protection_activate_step1_helpwizard_title" qtlid="129667">Protecção do domínio</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_desc" qtlid="129679">Ativar a Protecção do Domínio permite-lhe que fique protegido contra o roubo do domínio ao não permitir qualquer transferência.</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_question1" qtlid="129691">O que é o roubo de domínio?</translation>
-   <translation id="domain_configuration_protection_activate_step1_helpwizard_question1_answer" qtlid="328979">Todas as empresas que disponibilizam nomes de domínios oferecem a possibilidade de efetuar transferências de entrada, que consiste em receber um domínio gerido por outro agente registrar. A empresa que solicita a transferência é que deve verificar se o pedido foi efetuado pelo verdadeiro proprietário do domínio.<br/>Se as verificações não são suficientemente sérias, o domínio pode ser transferido sem que se tenha comprovado devidamente a identidade de quem solicitou a transferência, podendo levar a que o legítimo proprietário perca a gestão do domínio.</translation>
+   <translation id="domain_configuration_protection_activate_step1_helpwizard_question1_answer" qtlid="328979">Todas as empresas que comercializam domínios aceitam transferências de entrada, que consistem em receber domínios geridos até então por outro agente Registrar. Cabe à empresa que solicita a transferência verificar se o pedido foi efetuado pelo verdadeiro proprietário do domínio.<br/>Se a verificação da identidade de quem solicitou a transferência do domínio não for rigorosa, o legítimo titular do domínio pode perder o acesso à gestão do mesmo.</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_question2" qtlid="129715">Como é que a OVH protege o seu domínio contra roubo?</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_question2_answer" qtlid="129727">Para protege-lo contra roubo passámos o seu domínio no estado em que nenhuma transferência pode ser efetuada. Se um outro registrar pedir a transferência ela será automaticamente rejeitada. Nenhuma transferência pode ser pedida sem o seu conhecimento.</translation>
    <translation id="domain_configuration_protection_activate_step1_helpwizard_note" qtlid="129739">Nota:</translation>
@@ -305,13 +305,13 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_configuration_whois_step1_display" qtlid="69353">Mostrar</translation>
    <translation id="domain_configuration_whois_step1_hide" qtlid="97136">Ocultar</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
-   <translation id="domain_configuration_whois_step1_helpwizard_desc" qtlid="329005">Aquando do registo de um Nome de Domínio, serão solicitada as suas informações pessoais. De forma padrão essas são as informações que são publicadas na base de dados do Whois que fica acessível ao público. <br/>Esta função permite-lhe ocultar estas informações, se assim o desejar.</translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_desc" qtlid="329005">Durante o registo de um Domínio, serão solicitada informações pessoais. À partida, essas informações serão as transmitidas à base de dados Whois, ficando disponíves para consulta pública. <br/> A função OwO permite ocultar estas informações.</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_whatis" qtlid="130099">O que é o WHOIS?</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">O WHOIS é um serviço público de pesquisa de informações relativas aos nomes de domínio e endereços de IP. Esta base de dados compreende as informações dos titulares.</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">Quais as informações que são publicadas no WHOIS?</translation>
-   <translation id="domain_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329018">As informações publicadas são as do proprietário do nome de domínio. Elas dependem da extensão do domínio mas encontramos geralmente:<ul><li>A sua morada</li><li>Os seus números de telefone e fax</li><li>O seu e-mail</li></ul><br/>A ocultação/apresentação pode ser configurada indiferentemente para estes 3 tipos de informação.</translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329018">As informações publicadas são as do proprietário do domínio. Estas dependem da extensão do domínio mas normalmente incluem:<ul><li>O seu emdereço</li><li>Os seus números de telefone e fax</li><li>O seu e-mail</li></ul><br/>A ocultação/apresentação pode ser configurada individualmente para os 3 tipos de informação.</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_how" qtlid="130135">Como é que a OVH permite que oculte essas informações?</translation>
-   <translation id="domain_configuration_whois_step1_helpwizard_how_desc" qtlid="329031">Se ativar este serviço a OVH substituirá as suas informações pessoas por informações genéricas. Todas as comunicações que lhe serão endereçadas por uma pessoa que procura contactá-lo será transmitidas.<ul><li>A morada será substituída por uma morada postal associada à OVH e nós reencaminharemos as cartas recebidas para o destino real.</li><li>Os campos telefone e fax serão substituídos por um número OwO.</li><li>O campo e-mail será substituído por um reencaminhamento que reencaminhará os pedidos para o endereço de e-mail do proprietário. Este endereço é regenerado regularmente e é efetuada uma filtragem anti-SPAM.</li></ul></translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_how_desc" qtlid="329031">Se ativar este serviço, a OVH irá substituir as suas informações pessoais por informações genéricas.<ul><li>O seu endereço pessoal, de e-mail e contactos telefónicos serão substituídos por endereços postais e de e-mail, e contacto telefónico da OVH.</li><li> Os novos endereços postal e de e-mail incluem um serviço de reencaminhamento que asseguram a entrega das mensagens ao titular do domínio. O endereço de e-mail é regenerado regularmente e inclui filtragem anti-SPAM.</li></ul></translation>
    <translation id="domain_configuration_whois_field_ADDRESS" qtlid="30430">Morada</translation>
    <translation id="domain_configuration_whois_field_EMAIL" qtlid="33598">E-mail</translation>
    <translation id="domain_configuration_whois_field_PHONE" qtlid="128214">Telefone/Fax</translation>
@@ -516,7 +516,7 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
 
    <translation id="domain_configuration_dns_entry_add_step3_check_warning1" qtlid="215065">Atenção, podem ocorrer um ou vários conflitos:</translation>
    <translation id="domain_configuration_dns_entry_add_step3_check_warning2" qtlid="195074">Somente pode ter um único campo do tipo CNAME para o mesmo subdomínio.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="195087">Não pode possuir registo A e AAAA no mesmo subdomínio.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="195087">Não pode ter registos A e AAAA no mesmo subdomínio.</translation>
    <translation id="domain_configuration_dns_entry_add_step3_check_warning4" qtlid="215078">Ou esta entrada já existe na sua zona DNS, ou um campo do tipo CNAME já está presente nesse subdomínio.</translation>
    <translation id="domain_configuration_dns_entry_add_step3_check_warning5" qtlid="215091">Essa entrada já existe na sua zona DNS.</translation>
 
@@ -634,7 +634,7 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
 
    <translation id="domain_configuration_dns_entry_edit_title" qtlid="192721">Modificar uma entrada da zona DNS</translation>
 
-   <translation id="domain_configuration_dns_entry_relative_warning_title" qtlid="225341">Alvo real:</translation>
+   <translation id="domain_configuration_dns_entry_relative_warning_title" qtlid="225341">Destino real:</translation>
    <translation id="domain_configuration_dns_entry_relative_warning_tooltip" qtlid="225354">Deve adicionar um ponto final ao campo alvo se deseja utilizar a noção absoluta (ou clique no ícone para o efetuar automaticamente)</translation>
    <translation id="domain_configuration_dns_entry_add_step3_warning" qtlid="329356">Atenção: O alvo utiliza a notação relativas e aponta para "<strong>{0}</strong>". Deve adicionar um pont final no campo alvo se deseja utilizar a notação absoluta.</translation>
 
@@ -645,7 +645,7 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_configuration_associate_domain_to_ip_title_button" qtlid="124471">Associar o Domínio a um IP</translation>
    <translation id="domain_configuration_zonedns_add_entry_title_button" qtlid="129267">Criar uma entrada</translation>
    <translation id="domain_configuration_zonedns_reset_title_button" qtlid="366424">Reinicializar a minha zona DNS</translation>
-   <translation id="domain_configuration_zonedns_reset_question" qtlid="263949">Deseja ativar as entradas mínimas aquando da reinicialização da sua zona DNS?</translation>
+   <translation id="domain_configuration_zonedns_reset_question" qtlid="263949">Deseja ativar o número mínimo de registos quando a zona DNS for reinicializada?</translation>
    <translation id="domain_configuration_zonedns_reset_warning" qtlid="260247">Atenção! Esta alteração levará à eliminação de todos os registos DNS existentes, e levará à reinicialização da sua zona DNS para o seu estado inicial.</translation>
    <translation id="domain_configuration_zonedns_reset_minimized_yes" qtlid="263962">Sim, eu desejo reinicializar a minha zona DNS com as entradas mínimas.</translation>
    <translation id="domain_configuration_zonedns_reset_minimized_no" qtlid="263975">Não, mas desejo reinicializar a minha zona DNS.</translation>
@@ -656,7 +656,7 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM" qtlid="50062">Personalizável</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS" qtlid="366450">Servidor de E-mails da OVH</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS_filter" qtlid="50230">Protecção</translation>
-   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Séléctionnez...</translation>
+   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Selecione...</translation>
    <translation id="domain_configuration_zonedns_reset_type_HOSTING_WEB_placeholder" qtlid="217132">Selecione...</translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label" qtlid="366463">Indique um campo A:</translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label_MX" qtlid="366476">Indique um campo MX e a sua prioridade:</translation>
@@ -666,7 +666,7 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">Endereço IP do seu alojamento</translation>
 
    <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Deseja eliminar a zona DNS?</translation>
-   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">Votre zone DNS ne peut être supprimée car elle est actuellement liée à un hébergement Web.</translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">A sua zone DNS não pode ser eliminada, pois está associada a um alojamento web.</translation>
    <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Atenção! Esta operação levará à definitiva eliminação de todos os registos DNS existentes.</translation>
    <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">A operação da eliminação da zona DNS foi iniciada, queira consultar a caixa de e-mail do NIC administrador da zona DNS e siga as instruções para finalizar o pedido.</translation>
    <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">Ocorreu um erro aquando da eliminação da sua zona DNS.</translation>
@@ -675,7 +675,7 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_configuration_dnsanycast_title" qtlid="135697">Ativar DNS Anycast</translation>
    <translation id="domain_configuration_dnsanycast_step1_question" qtlid="135710">Queira clicar no botão "Seguinte" para prosseguir com a ativação da opção DNS Anycast.</translation>
    <translation id="domain_configuration_dnsanycast_step1_explanation" qtlid="135723">A opção DNS Anycast é uma solução que permite acelerar o funcionamento clássico dos servidores DNS para fornecer em todo o mundo, uma resposta mais rápida aos primeiros pedidos das páginas web dos seus sites.</translation>
-   <translation id="domain_configuration_dnsanycast_step1_explanation2" qtlid="329369">Esta opção será faturada ao preço de <span class="red bold">{0}</span> /ano + IVA.</translation>
+   <translation id="domain_configuration_dnsanycast_step1_explanation2" qtlid="329369">Esta opção será faturada ao preço de <span class="red bold">{0}</span> /ano (IVA não incluído).</translation>
    <translation id="domain_configuration_dnsanycast_step2_question" qtlid="329382">Ativação da opção DNS Anycast no domínio <span class="italic normal">{0}</span></translation>
    <translation id="domain_configuration_dnsanycast_step2_id" qtlid="169472">Para confirmar o seu pedido queira aceitar as condições de utilização e clicar no botão "Seguinte" em baixo.</translation>
    <translation id="domain_configuration_dnsanycast_step2_totalHT" qtlid="169238">Preço s/IVA.</translation>
@@ -720,7 +720,7 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">A sua encomenda foi validada com sucesso. Clique <a href="#/billing/orders">aqui para consultar o progresso da sua encomenda</a>.</translation>
 
    <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
-   <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST vous permet de faire pointer un sous-domaine vers une adresse IP dynamique qui sera mise à jour dans votre zone DNS à chaque changement de celle-ci.</translation>
+   <translation id="domain_tab_DYNHOST_title" qtlid="448041">O DynHOST permite apontar um subdomínio para um endereço IP dinâmico, que será atualizado na zona DNS sempre que for alterado.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">O domínio {0} não dispõe de zona DNS.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Ocorreu um erro:</translation>
    <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>
@@ -733,7 +733,7 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_tab_DYNHOSTLOGIN_table_header_login" qtlid="46792">Identificador</translation>
    <translation id="domain_tab_DYNHOSTLOGIN_table_search" qtlid="226475">Encontrar um identificador</translation>
    <translation id="domain_tab_DYNHOSTLOGIN_table_header_zone" qtlid="26335">Zona</translation>
-   <translation id="domain_tab_DYNHOSTLOGIN_table_header_subDomain" qtlid="47476">Sub-domínios</translation>
+   <translation id="domain_tab_DYNHOSTLOGIN_table_header_subDomain" qtlid="47476">Subdomínios</translation>
    <translation id="domain_tab_DYNHOSTLOGIN_table_empty" qtlid="226488">Nenhum identificador está associado ao seu Dynhost.</translation>
    <translation id="domain_tab_DYNHOSTLOGIN_delete_title" qtlid="226501">Eliminar um identificador de aceder ao Dynhost</translation>
    <translation id="domain_tab_DYNHOSTLOGIN_delete_confirm" qtlid="329434">Tem a certeza de que deseja eliminar o identificador de acesso <strong>{0}</strong>?</translation>
@@ -789,9 +789,9 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_configuration_web_hosting_offer_PRO" qtlid="216885">Pro</translation>
    <translation id="domain_configuration_web_hosting_offer_START" qtlid="233339">Start10M</translation>
    <translation id="domain_configuration_web_hosting_offer_recommended" qtlid="287645">(recomendado)</translation>
-   <translation id="domain_configuration_web_hosting_offer_START_explain" qtlid="233352">A oferta Start10M está incluída na sua oferta mas possui funcionalidades básicas.</translation>
+   <translation id="domain_configuration_web_hosting_offer_START_explain" qtlid="233352">A oferta Start10M está incluída no serviço, mas só inclui funcionalidades básicas.</translation>
    <translation id="domain_configuration_web_hosting_dns_reset" qtlid="244703">Que alteração deseja efetuar na sua zona DNS?</translation>
-   <translation id="domain_configuration_web_hosting_dns_reset_explain" qtlid="233378">Atenção, se tiver reencaminhamentos de e-mail eles serão eliminados.</translation>
+   <translation id="domain_configuration_web_hosting_dns_reset_explain" qtlid="233378">Atenção, se tiver reencaminhamentos de e-mail ativados, estes serão eliminados.</translation>
    <translation id="domain_configuration_web_hosting_dns_NO_CHANGE" qtlid="72461">Nenhuma alteração</translation>
    <translation id="domain_configuration_web_hosting_dns_info_NO_CHANGE" qtlid="435252">A configuração do novo alojamento está concluída. Contudo o seu domínio irá continuar a apontar para as registos DNS atuais. Cabe ao utilizador efetuar as alterações na zona DNS quando o novo site estiver pronto. Esta é a opção ideal para quem não pretende interromper o acesso a um site em construção.</translation>
    <translation id="domain_configuration_web_hosting_dns_RESET_ALL" qtlid="244716">Os registos A e MX de {0}</translation>
@@ -822,13 +822,13 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_update_owner_lastname" qtlid="3818">Nome</translation>
    <translation id="domain_update_owner_firstname" qtlid="23323">Nome</translation>
    <translation id="domain_update_owner_title" qtlid="157642">A minha conta</translation>
-   <translation id="domain_update_owner_edit" qtlid="269851">Modificar as informações do proprietário atual</translation>
+   <translation id="domain_update_owner_edit" qtlid="269851">Alterar informações do atual proprietário</translation>
    <translation id="domain_update_owner_change_password" qtlid="200066">Alterar a minha palavra-passe</translation>
    <translation id="domain_update_owner_organisation" qtlid="32278">Organização</translation>
    <translation id="domain_update_owner_tva" qtlid="165923">Identificação Fiscal</translation>
    <translation id="domain_update_owner_address_1" qtlid="30430">Morada</translation>
-   <translation id="domain_update_owner_address_2" qtlid="267149">Morada (continuação)</translation>
-   <translation id="domain_update_owner_address_3" qtlid="267162">Morada (complementar)</translation>
+   <translation id="domain_update_owner_address_2" qtlid="267149">Endereço Postal (continuação)</translation>
+   <translation id="domain_update_owner_address_3" qtlid="267162">Endereço Postal (complementar)</translation>
 
    <translation id="domain_update_owner_zip" qtlid="30346">Código postal</translation>
 <translation id="domain_update_owner_birthZip" qtlid="269864">Código postal do local de nascimento</translation>
@@ -870,7 +870,7 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
 
    <translation id="domain_tab_menu_hosting" qtlid="270657">Gerir o alojamento associado</translation>
    <translation id="domain_tab_menu_resiliate" qtlid="270670">Eliminar o domínio</translation>
-   <translation id="domain_tab_menu_emails" qtlid="270345">Gerir os e-mails e as mailing-lists</translation>
+   <translation id="domain_tab_menu_emails" qtlid="270345">Gerir e-mail e mailing-lists</translation>
    <translation id="domain_tab_menu_contacts" qtlid="270358">Administrador, técnico e faturação</translation>
    <translation id="domain_tab_menu_resiliate_infos" qtlid="270384">Eliminar o serviço na sua data de expiração</translation>
 
