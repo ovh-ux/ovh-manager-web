@@ -1,21 +1,21 @@
-<div data-ng-controller="EmailsMigrateAccountCtrl as ctrl">
-    <div data-wizard
-        data-wizard-bread-crumb
-        data-wizard-on-cancel="resetAction"
-        data-wizard-on-finish="migrateAccount"
-        data-wizard-title="ctrl.wizardTitle">
+<div class="row" data-ng-controller="EmailsMigrateAccountCtrl as ctrl">
+    <div class="col-md-12">
 
-        <!-- Step 1 -->
-        <div data-wizard-step
-             data-wizard-step-on-load="getServiceTypes"
-             data-wizard-step-valid="ctrl.migrateDestinationForm.$valid && ctrl.migrate.destinationEmail">
+        <button class="oui-button oui-button_link oui-button_icon-left" type="button" data-ng-click="ctrlEmailDomainEmail.displayEmailsList()">
+            <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+            <span data-i18n-static="common_back"></span>
+        </button>
+        <h2 data-i18n-static="email_tab_modal_migrate_title"></h2>
 
-            <form name="ctrl.migrateDestinationForm" novalidate
-                  data-ng-if="!ctrl.loading || ctrl.availableServices">
+        <form name="ctrl.migrateDestinationForm" novalidate data-ng-if="!ctrl.loaders.isInitialRetrievalRunning || ctrl.availableServices"
+            data-ng-submit="migrateAccount()">
 
+            <fieldset data-ng-disabled="ctrl.loaders.isWaitingForDestinationEmails || ctrl.loaders.isWaitingForMigrationCheck || ctrl.loaders.isWaitingForMigration">
+                <legend class="styleless mb-0" ><h3 class="header-underline" data-i18n-static="email_tab_modal_migrate_detination_title"></h3></legend>
+                
                 <!-- No Service -->
                 <div data-ng-if="!ctrl.availableServices.length">
-                    <p data-i18n-static="email_tab_modal_migrate_no_email_service"></p>
+                    <p data-i18n-static="email_tab_modal_migrate_no_email_service"></p>                
                     <p>
                         <a href="{{::ctrl.emailsOrder}}" target="_blank" class="btn btn-primary">
                             <span data-i18n-static="email_tab_modal_migrate_order_email_service"></span>
@@ -26,202 +26,172 @@
 
                 <!-- Has Services -->
                 <div data-ng-if="ctrl.availableServices.length">
-                    <p data-i18n-static="email_tab_modal_migrate_select_platform_text"></p>
                     <p>
-                        <small class="text-danger">*</small>
-                        <small data-i18n-static="required_fields"></small>
+                        <span data-i18n-static="email_tab_modal_migrate_select_platform_text"></span>
+                        <span data-i18n-static="email_tab_modal_migrate_destination_service_help"></span>
                     </p>
-
+                    
+                    <!-- Not Supported Alert -->
+                    <div class="alert alert-info" role="alert" data-ng-bind-html="tr('email_tab_modal_migrate_alert_not_supported')">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label" data-i18n-static="email_tab_modal_migrate_account_email_label"></label>
+                        <span class="d-block form-control-static" data-ng-bind="ctrl.email.email"></span>
+                    </div>
                     <!-- Service Type -->
                     <div class="form-group">
-                        <label class="control-label required"
-                               data-i18n-static="email_tab_modal_migrate_service_type_label"></label>
-
+                        <label class="control-label" data-i18n-static="email_tab_modal_migrate_service_type_label"></label>
+                    
                         <!-- One Service -->
-                        <span class="d-block form-control-static"
-                              data-ng-if="ctrl.availableServices.length === 1"
-                              data-ng-bind="ctrl.migrate.serviceType"></span>
-
+                        <span class="d-block form-control-static" data-ng-if="ctrl.availableServices.length === 1" data-ng-bind="ctrl.migrate.serviceType"></span>
+                    
                         <!-- Multiple Services -->
-                        <div class="oui-radio"
-                             data-ng-if="ctrl.availableServices.length > 1"
-                             data-ng-repeat="serviceType in ctrl.availableServices">
-                            <input type="radio" class="oui-radio__input" id="migrateServiceType{{$index}}" name="serviceType"
-                                   data-ng-change="ctrl.setWizardTitle(ctrl.migrate.serviceType)"
-                                   data-ng-model="ctrl.migrate.serviceType"
-                                   data-ng-value="serviceType">
+                        <div class="oui-radio" data-ng-if="ctrl.availableServices.length > 1" data-ng-repeat="serviceType in ctrl.availableServices">
+                            <input type="radio" class="oui-radio__input" id="migrateServiceType{{$index}}" name="serviceType" data-ng-model="ctrl.migrate.serviceType"
+                                data-ng-value="serviceType" data-ng-change="ctrl.updateService()">
                             <label class="oui-radio__label-container" for="migrateServiceType{{$index}}">
-                                <span class="oui-radio__label"
-                                      data-ng-bind="::serviceType"></span>
+                                <span class="oui-radio__label" data-ng-bind="::serviceType"></span>
                             </label>
                         </div>
                     </div>
-
+                    
                     <!-- Destination Service -->
-                    <div class="form-group">
-                        <label class="control-label required" for="migrateDestinationServices"
-                               data-i18n-static="email_tab_modal_migrate_destination_service_label"></label>
-                        <div class="oui-select mb-0">
-                            <select class="oui-select__input" id="migrateDestinationServices" required
-                                    data-ng-change="ctrl.getDestinationEmails(ctrl.migrate.destinationService)"
-                                    data-ng-disabled="!ctrl.migrate.serviceType"
-                                    data-ng-model="ctrl.migrate.destinationService"
-                                    data-ng-options="service for service in ctrl.destinationServices[ctrl.migrate.serviceType] track by service">
-                                <option value="" disabled
-                                        data-i18n-static="select_placeholder"></option>
+                    <div class="form-group" ng-if="ctrl.migrate.serviceType">
+                        <label class="control-label" for="migrateDestinationServices" data-i18n-static="email_tab_modal_migrate_destination_service_label"></label>
+                        <div class="oui-select oui-select_inline mb-0">
+                            <select class="oui-select__input" id="migrateDestinationServices" required data-ng-change="ctrl.getDestinationEmails(ctrl.migrate.destinationService)"
+                                data-ng-model="ctrl.migrate.destinationService" data-ng-options="service for service in ctrl.destinationServices[ctrl.migrate.serviceType] track by service">
+                                <option value="" disabled data-i18n-static="select_placeholder"></option>
                             </select>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
-                        <small class="help-block"
-                               data-i18n-static="email_tab_modal_migrate_destination_service_help"></small>
                     </div>
-
-                    <!-- Not Supported Alert -->
-                    <div class="alert alert-warning" role="alert"
-                         data-ng-bind-html="tr('email_tab_modal_migrate_alert_not_supported')"
-                         data-ng-if="!ctrl.migrateDestinationForm.$valid">
-                    </div>
-
+                    
                     <!-- Destination Email -->
-                    <div data-ng-if="ctrl.migrateDestinationForm.$valid && !ctrl.loading">
-
+                    <div class="oui-box mb-5" data-ng-if="ctrl.migrate.destinationService && !ctrl.loaders.isWaitingForDestinationEmails && !ctrl.loaders.isWaitingForMigrationCheck ">
                         <!-- Has available email address -->
                         <div data-ng-if="ctrl.migrate.destinationEmail">
+                    
                             <p data-ng-bind-html="tr('email_tab_modal_migrate_available_email_selected', ctrl.migrate.destinationEmail)"></p>
                             <p data-ng-switch="ctrl.remainingAvailableEmails && ctrl.remainingAvailableEmails > 0">
-                                <span data-ng-switch-when="true"
-                                      data-ng-bind-html="tr('email_tab_modal_migrate_remaining_available_emails', ctrl.remainingAvailableEmails.toString())"></span>
-                                <span data-ng-switch-default
-                                      data-i18n-static="email_tab_modal_migrate_no_remaining_available_emails"></span>
+                                <span data-ng-switch-when="true" data-ng-bind-html="tr('email_tab_modal_migrate_remaining_available_emails', ctrl.remainingAvailableEmails.toString())"></span>
+                                <span data-ng-switch-default data-i18n-static="email_tab_modal_migrate_no_remaining_available_emails"></span>
                             </p>
                         </div>
-
+                    
                         <!-- No available email address -->
                         <div data-ng-if="!ctrl.migrate.destinationEmail">
-                            <div class="alert alert-info" role="alert"
-                                 data-i18n-static="email_tab_modal_migrate_alert_configure_me">
+                            <div class="alert alert-info" role="alert" data-i18n-static="email_tab_modal_migrate_alert_configure_me">
                             </div>
-
+                    
                             <p data-ng-bind-html="tr('email_tab_modal_migrate_no_available_email', ctrl.migrate.destinationService)"></p>
                             <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'">
-                                <a href="/#/configuration/email_pro/{{::ctrl.migrate.destinationService}}?tab=ACCOUNT" class="oui-button oui-button_primary" target="_blank"
-                                   data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></a>
+                                <a href="/#/configuration/email_pro/{{::ctrl.migrate.destinationService}}?tab=ACCOUNT" class="oui-button oui-button_primary"
+                                    data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></a>
                             </p>
                             <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'">
-                                <a href="/#/configuration/exchange_hosted/{{::ctrl.migrate.destinationService}}/{{::ctrl.migrate.destinationService}}?tab=ACCOUNT" class="oui-button oui-button_primary" target="_blank"
-                                   data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></a>
+                                <a href="/#/configuration/exchange_hosted/{{::ctrl.migrate.destinationService}}/{{::ctrl.migrate.destinationService}}?tab=ACCOUNT"
+                                    class="oui-button oui-button_primary" data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></a>
                             </p>
                         </div>
                     </div>
                 </div>
-            </form>
+            </fieldset>
 
-            <div class="text-center" data-ng-if="ctrl.loading">
-                <oui-spinner></oui-spinner>
-            </div>
-        </div>
+            <div data-ng-if="ctrl.isMigrationDataValid">
 
-        <!-- Step 2 -->
-        <div data-wizard-step>
-            <p data-ng-bind-html="tr('email_tab_modal_migrate_confirmation_delay')"></p>
-
-            <!-- Migration Data -->
-            <dl class="dl-horizontal dl-lg">
-                <dt data-i18n-static="email_tab_modal_migrate_account_email_label"></dt>
-                <dd data-ng-bind="ctrl.email.email"></dd>
-
-                <dt data-i18n-static="email_tab_modal_migrate_service_type_label"></dt>
-                <dd data-ng-bind="ctrl.migrate.serviceType"></dd>
-
-                <dt data-i18n-static="email_tab_modal_migrate_destination_service_label"></dt>
-                <dd data-ng-bind="ctrl.migrate.destinationService"></dd>
-            </dl>
-
-            <!-- Guides Text -->
-            <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'"
-               data-i18n-static="email_tab_modal_migrate_configuration_guides_emailpro"></p>
-            <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'"
-               data-i18n-static="email_tab_modal_migrate_configuration_guides_exchange"></p>
-            <p>
-                <a href="{{::ctrl.allGuides}}" class="btn btn-default btn-sm" target="_blank">
-                    <span data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></span>
-                    <span class="fa fa-external-link"></span>
-                </a>
-            </p>
-
-            <!-- Not Supported Alert -->
-            <div class="alert alert-warning" role="alert"
-                 data-ng-bind-html="tr('email_tab_modal_migrate_alert_not_supported')">
-            </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div data-wizard-step
-             data-wizard-step-on-load="checkMigrationData"
-             data-wizard-step-valid="ctrl.migratePasswordForm.$valid && ctrl.isPasswordMatches()">
-
-            <div data-ng-if="!ctrl.loading">
-                <p data-i18n-static="email_tab_modal_migrate_confirmation_heading"></p>
-                <ul>
-                    <li data-i18n-static="email_tab_modal_migrate_confirmation_access_webmail"></li>
-                    <li data-i18n-static="email_tab_modal_migrate_confirmation_cancel_process"></li>
-                </ul>
-
-                <!-- Aknowledge Text -->
-                <p class="font-weight-bold" data-i18n-static="email_tab_modal_migrate_aknowledge"></p>
-                <p data-i18n-static="email_tab_modal_migrate_password_text"></p>
-
-                <form class="form-horizontal" name="ctrl.migratePasswordForm" novalidate>
+                <h3 class="header-underline" data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'" data-i18n-static="email_tab_modal_migrate_title_emailpro"></h3>
+                <h3 class="header-underline" data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'" data-i18n-static="email_tab_modal_migrate_title_exchange"></h3>
+                <h3 class="header-underline" data-ng-if="ctrl.migrate.serviceType === 'PRIVATE EXCHANGE'" data-i18n-static="email_tab_modal_migrate_title_private_exchange"></h3>
+                
+                <div class="oui-box mb-5">
+                    <p data-ng-bind-html="tr('email_tab_modal_migrate_confirmation_before_continue')"></p>
+                    <p data-ng-bind-html="tr('email_tab_modal_migrate_confirmation_delay')"></p>
+                    <p data-i18n-static="email_tab_modal_migrate_confirmation_heading"></p>
+                    <ul>
+                        <li data-i18n-static="email_tab_modal_migrate_confirmation_access_webmail"></li>
+                        <li data-i18n-static="email_tab_modal_migrate_confirmation_cancel_process"></li>
+                    </ul>
+                    <p data-ng-bind-html="tr('email_tab_modal_migrate_alert_dont_change_password')"></p>
+                    
+                    <!-- Guides Text -->
+                    <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'" data-i18n-static="email_tab_modal_migrate_configuration_guides_emailpro"></p>
+                    <p data-ng-if="ctrl.migrate.serviceType === 'HOSTED EXCHANGE'" data-i18n-static="email_tab_modal_migrate_configuration_guides_exchange"></p>
+                    <p data-ng-if="ctrl.migrate.serviceType === 'PRIVATE EXCHANGE'" data-i18n-static="email_tab_modal_migrate_configuration_guides_exchange"></p>
                     <p>
-                        <small class="text-danger">*</small>
-                        <small data-i18n-static="required_fields"></small>
+                        <a href="{{::ctrl.allGuides}}" class="btn btn-default btn-sm" target="_blank">
+                            <span data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></span>
+                            <span class="fa fa-external-link"></span>
+                        </a>
                     </p>
-
-                    <!-- Password -->
-                    <div class="form-group" data-ng-class="{
-                        'has-error': ctrl.migratePasswordForm.accountPassword.$dirty && ctrl.migratePasswordForm.accountPassword.$invalid,
-                        'has-success': ctrl.migratePasswordForm.accountPassword.$dirty && ctrl.migratePasswordForm.accountPassword.$valid
-                    }">
-                        <label class="control-label col-md-4 required" for="accountPassword"
-                               data-i18n-static="email_tab_modal_create_account_account_password"></label>
-                        <div class="col-md-6">
-                            <input type="password" class="form-control" id="accountPassword" name="accountPassword" aria-describedby="emailsChangePasswordHelp" autocomplete="off" required
-                                   data-ng-change="ctrl.checkPassword(ctrl.migratePasswordForm.accountPassword)"
-                                   data-ng-maxlength="ctrl.constants.passwordMaxLength"
-                                   data-ng-minlength="ctrl.constants.passwordMinLength"
-                                   data-ng-model="ctrl.migrate.password">
-                            <small class="help-block"
-                                   data-i18n-static="email_tab_modal_create_account_account_password_error"
-                                   data-ng-show="ctrl.migratePasswordForm.accountPassword.$dirty && ctrl.migratePasswordForm.accountPassword.$invalid"></small>
-                        </div>
-                    </div>
-
-                    <!-- Confirm Password -->
-                    <div class="form-group" data-ng-class="{
-                        'has-error': ctrl.migratePasswordForm.accountPasswordConfirm.$dirty && (ctrl.migratePasswordForm.accountPassword.$invalid || !ctrl.isPasswordMatches()),
-                        'has-success': ctrl.migratePasswordForm.accountPasswordConfirm.$dirty && ctrl.isPasswordDefined() && ctrl.isPasswordMatches()
-                    }">
-                        <label class="control-label col-md-4 required" for="accountPasswordConfirm"
-                               data-i18n-static="email_tab_modal_create_account_account_password_confirm"></label>
-                        <div class="col-md-6">
-                            <input type="password" class="form-control" id="accountPasswordConfirm" name="accountPasswordConfirm" autocomplete="off" required
-                                   data-ng-model="ctrl.migrate.confirmPassword">
-                            <small class="help-block"
-                                   data-i18n-static="email_tab_modal_create_account_account_password_match_error"
-                                   data-ng-show="ctrl.migratePasswordForm.accountPasswordConfirm.$dirty && ctrl.isPasswordDefined() && !ctrl.isPasswordMatches()"></small>
-                        </div>
-                    </div>
-                </form>
-
-                <!-- Don't Change Password Alert -->
-                <div class="alert alert-warning" role="alert"
-                     data-ng-bind-html="tr('email_tab_modal_migrate_alert_dont_change_password')">
                 </div>
-            </div>
 
-            <div class="text-center" data-ng-if="ctrl.loading">
-                <oui-spinner></oui-spinner>
+                <div class="row">
+                    <div class="col-lg-6">
+
+                        <p data-i18n-static="email_tab_modal_migrate_password_text"></p>
+
+                        <!-- Password -->
+                        <div class="form-group" data-ng-class="{
+                            'has-error': ctrl.migrateDestinationForm.accountPassword.$dirty && ctrl.migrateDestinationForm.accountPassword.$invalid,
+                            'has-success': ctrl.migrateDestinationForm.accountPassword.$dirty && ctrl.migrateDestinationForm.accountPassword.$valid
+                        }">
+                            <label class="control-label" for="accountPassword" data-i18n-static="email_tab_modal_create_account_account_password"></label>
+                            
+                            <input type="password" class="form-control" id="accountPassword" name="accountPassword" aria-describedby="emailsChangePasswordHelp"
+                            autocomplete="off" required data-ng-change="ctrl.checkPassword(ctrl.migrateDestinationForm.accountPassword)" data-ng-maxlength="ctrl.constants.passwordMaxLength"
+                            data-ng-minlength="ctrl.constants.passwordMinLength" data-ng-model="ctrl.migrate.password">
+                            <small class="help-block" data-i18n-static="email_tab_modal_create_account_account_password_error" data-ng-show="ctrl.migrateDestinationForm.accountPassword.$dirty && ctrl.migrateDestinationForm.accountPassword.$invalid"></small>
+                            
+                        </div>
+                        
+                        <!-- Confirm Password -->
+                        <div class="form-group" data-ng-class="{
+                            'has-error': ctrl.migrateDestinationForm.accountPasswordConfirm.$dirty && (ctrl.migrateDestinationForm.accountPassword.$invalid || !ctrl.isPasswordMatches()),
+                            'has-success': ctrl.migrateDestinationForm.accountPasswordConfirm.$dirty && ctrl.isPasswordDefined() && ctrl.isPasswordMatches()
+                        }">
+                            <label class="control-label" for="accountPasswordConfirm" data-i18n-static="email_tab_modal_create_account_account_password_confirm"></label>
+                            <input type="password" class="form-control" id="accountPasswordConfirm" name="accountPasswordConfirm" autocomplete="off"
+                            required data-ng-model="ctrl.migrate.confirmPassword">
+                            <small class="help-block" data-i18n-static="email_tab_modal_create_account_account_password_match_error" data-ng-show="ctrl.migrateDestinationForm.accountPasswordConfirm.$dirty && ctrl.isPasswordDefined() && !ctrl.isPasswordMatches()"></small>
+                        </div>
+
+                        <!-- Aknowledge Checkbox -->
+                        <div class="oui-checkbox">
+                            <input 
+                                type="checkbox" 
+                                id="aknowledgeCheckbox" 
+                                class="oui-checkbox__input" 
+                                data-ng-model="ctrl.migrate.aknowledge"
+                            >
+                            <label class="oui-checkbox__label-container" for="aknowledgeCheckbox">
+                                <span class="oui-checkbox__label" data-ng-bind="ctrl.translator.tr('email_tab_modal_migrate_aknowledge')"></span>
+                                    <span class="oui-checkbox__icon">
+                                        <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
+                                        <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
+                                        <i class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></i>
+                                        <i class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></i>
+                                    </span>
+                                </span>
+                            </label>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <button type="submit" class="oui-button oui-button_primary" data-i18n-static="email_tab_modal_migrate_submit" ng-disabled="!ctrl.isPasswordDefined() || !ctrl.isPasswordMatches() || !ctrl.migrate.aknowledge || ctrl.loaders.isWaitingForMigration"></button>
+                <button class="oui-button oui-button_link" data-i18n-static="common_cancel" data-ng-click="ctrlEmailDomainEmail.displayEmailsList()"></button>
             </div>
+        </form>
+
+        <div class="text-center" data-ng-if="ctrl.loaders.isInitialRetrievalRunning || ctrl.loaders.isWaitingForDestinationEmails || ctrl.loaders.isWaitingForMigrationCheck || ctrl.loaders.isWaitingForMigration">
+            <oui-loader inline="true"></oui-loader>
         </div>
+        
+        <div data-ovh-alert="{{alerts.migrate}}"
+            data-ovh-alert-hide-remove-button>
+        </div>
+
     </div>
 </div>
