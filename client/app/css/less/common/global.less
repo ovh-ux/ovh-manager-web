@@ -1,10 +1,12 @@
 html, body {
-    margin  : 0;
-    padding : 0;
-    height  : 100%;
+  margin  : 0;
+  padding : 0;
+  height: 100%;
 }
 
-.col-container { padding-top : @NAVBAR_HEIGHT; }
+body {
+    overflow-x: hidden;
+}
 
 select:focus,
 input:focus,
@@ -118,6 +120,27 @@ code {
 
 .full-height {
     height: 100%;
+}
+
+
+.col-container, .row-container {
+    display: flex;
+    overflow: hidden;
+}
+
+.col-container {
+    padding-top : @NAVBAR_HEIGHT;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+
+    .col-item {
+        display: flex;
+        height: 100%;
+        position: relative;
+    }
+
+    .main-wrapper { overflow: auto; }
 }
 
 .title-underlined {

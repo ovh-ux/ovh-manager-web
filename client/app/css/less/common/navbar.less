@@ -6,16 +6,18 @@
     }
 
     // Universes
-    .navbar-universe(web, @oui-color-jungle);
-    .navbar-universe(cloud, @oui-color-supernova);
-    .navbar-universe(telecom, @oui-color-dodger);
-    .navbar-universe(sunrise, @oui-color-california);
+    &-list_main {
+        .navbar-universe(web, @oui-color-jungle);
+        .navbar-universe(cloud, @oui-color-supernova);
+        .navbar-universe(telecom, @oui-color-dodger);
+        .navbar-universe(sunrise, @oui-color-california);
 
-    .navbar-universe(@universe-selector, @universe-color) {
-        .@{universe-selector} > .oui-navbar-link {
-            &:hover,
-            &:focus,
-            &_active { color: @universe-color; }
+        .navbar-universe(@universe-selector, @universe-color) {
+            .@{universe-selector} > .oui-navbar-link {
+                &:hover,
+                &:focus,
+                &_active { color: @universe-color; }
+            }
         }
     }
 

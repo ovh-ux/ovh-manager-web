@@ -33,13 +33,6 @@ class SessionService {
         return languageChangingMenuObject;
     }
 
-    getCurrentLanguageName () {
-        const currentLanguage = _(this.LANGUAGES).find({ value: this.translator.getLanguage() });
-        const currentLanguageName = _(currentLanguage).get("name");
-
-        return currentLanguageName;
-    }
-
     /* eslint-disable class-methods-use-this */
     getProductsMenu (categoryName, products) {
         return _.map(products, (product) => ({
@@ -256,15 +249,16 @@ class SessionService {
         internalLinks.push(this.getAssistanceMenu(currentUser));
 
         // Language
-        const currentLanguageName = this.getCurrentLanguageName();
-        const currentLanguageDetectedCorrectly = _(currentLanguageName).isString();
-        if (currentLanguageDetectedCorrectly) {
-            internalLinks.push({
-                name: "languages",
-                title: currentLanguageName,
-                subLinks: this.getLanguageChangingMenuObject()
-            });
-        }
+        const currentLanguage = _(this.LANGUAGES).find({ value: this.translator.getLanguage() });
+        const currentLanguageName = _(currentLanguage).get("name");
+        const currentLanguageCode = _(currentLanguage).get("value").replace("_", "-");
+
+        internalLinks.push({
+            name: "languages",
+            label: currentLanguageName,
+            title: currentLanguageCode,
+            subLinks: this.getLanguageChangingMenuObject()
+        });
 
         // User
         internalLinks.push({
@@ -286,6 +280,15 @@ class SessionService {
                 }, {
                     title: this.translator.tr("global_orders"),
                     url: "#/billing/orders"
+                }, {
+                    title: this.translator.tr("global_contacts"),
+                    url: "#/useraccount/contacts?tab=SERVICES"
+                }, {
+                    title: this.translator.tr("global_conso"),
+                    url: "#/billing/consumptionsTelephony"
+                }, {
+                    title: this.translator.tr("global_list_ticket"),
+                    url: "#/ticket"
                 }, {
                     title: this.translator.tr("global_logout"),
                     "class": "logout",
