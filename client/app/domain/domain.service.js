@@ -1084,7 +1084,7 @@ angular.module("services").service(
         getOperations (data) {
             return this.OvhHttp.get("/me/task/domain", {
                 rootPath: "apiv6",
-                data
+                params: data
             });
         }
 
@@ -1096,7 +1096,7 @@ angular.module("services").service(
         getDomainPendingTasks (serviceName, data) {
             return this.OvhHttp.get(`/domain/${serviceName}/task`, {
                 rootPath: "apiv6",
-                data
+                params: data
             });
         }
 
