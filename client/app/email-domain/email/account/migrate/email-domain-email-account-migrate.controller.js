@@ -36,6 +36,9 @@ angular.module("App").controller(
                 passwordMinLength: 9
             };
 
+            this.checkMigrationErrors = [];
+            this.shouldDisplayCheckMigrationsErrors = false;
+
             this.$scope.alerts.migrate = "domain_alert_migrate";
             this.$scope.migrateAccount = () => this.migrateAccount();
 
@@ -49,6 +52,8 @@ angular.module("App").controller(
         updateService () {
             this.migrate.destinationService = null;
             this.migrate.destinationEmail = null;
+            this.isMigrationDataValid = false;
+            this.shouldDisplayCheckMigrationsErrors = false;
             this.resetError();
         }
 
@@ -140,15 +145,24 @@ angular.module("App").controller(
         // Check if it's possible to migrate
         checkMigrationData () {
             this.loaders.isWaitingForMigrationCheck = true;
+            this.checkMigrationErrors = [];
+            this.shouldDisplayCheckMigrationsErrors = false;
+
             this.Emails.checkMigrate(this.email.domain, this.email.accountName, this.migrate.destinationService, this.migrate.destinationEmail)
                 .then(() => {
                     this.isMigrationDataValid = true;
                 })
                 .catch((err) => {
                     this.isMigrationDataValid = false;
-                    this.handleError(err);
+                    if (_.isArray(err)) {
+                        this.displayCheckMigrationErrors(err);
+                    } else {
+                        this.handleError(err);
+                    }
                 })
-                .finally(() => { this.loaders.isWaitingForMigrationCheck = false; });
+                .finally(() => {
+                    this.loaders.isWaitingForMigrationCheck = false;
+                });
         }
 
         // Post request for migration
@@ -157,24 +171,18 @@ angular.module("App").controller(
 
             this.Emails.migrateAccountToDestinationAccount(this.email.domain, this.email.accountName, this.migrate.destinationService, this.migrate.destinationEmail, this.migrate.password)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success"), this.$scope.alerts.main);
+                    if (this.migrate.serviceType === "EMAIL PRO") {
+                        this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success_emailpro"), this.$scope.alerts.main);
+                    } else {
+                        this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success_exchange"), this.$scope.alerts.main);
+                    }
+
                     this.$scope.ctrlEmailDomainEmail.displayEmailsList();
                 })
                 .catch((err) => this.handleError(err))
-                .finally(() => { this.loaders.isWaitingForMigration = false; });
-        }
-
-        // Check from email-domain-email-account-change-password.controller.js
-        checkPassword (input) {
-            input.$setValidity("passwordCheck", !!this.migrate.password && !/^\s/.test(this.migrate.password) && !/\s$/.test(this.migrate.password) && !this.migrate.password.match(/[ÂÃÄÀÁÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ]/));
-        }
-
-        isPasswordMatches () {
-            return this.migrate.password === this.migrate.confirmPassword;
-        }
-
-        isPasswordDefined () {
-            return this.migrate.password && this.migrate.confirmPassword;
+                .finally(() => {
+                    this.loaders.isWaitingForMigration = false;
+                });
         }
 
         // Handle services errors
@@ -183,8 +191,34 @@ angular.module("App").controller(
         }
 
         resetError () {
+            this.checkMigrationErrors = [];
             this.Alerter.resetMessage(this.$scope.alerts.migrate);
         }
 
+        displayCheckMigrationErrors (errors) {
+            this.checkMigrationErrors = errors.map((error) => _.get(error, "code"));
+
+            const shouldRetry = _.isEmpty(_.intersection(this.checkMigrationErrors, ["ACCOUNT_EMPTY",
+                "DOMAIN_EMPTY",
+                "FORWARD_EXIST",
+                "FORWARD_LOCAL",
+                "MAILINGLIST_EXIST",
+                "MAILPROXY_BAD_INFRA",
+                "MAILPROXY_EMPTY",
+                "UNKNOW"
+            ]));
+
+            let shouldRetryLabel = "";
+            if (shouldRetry) {
+                shouldRetryLabel = this.translator.tr("email_tab_modal_migrate_error_check_should_retry");
+            }
+
+            this.checkMigrationErrorLabel = this.translator.tr("email_tab_modal_migrate_errors_check_label", [shouldRetryLabel]);
+            if (this.checkMigrationErrors.length === 1) {
+                this.checkMigrationErrorLabel = this.translator.tr("email_tab_modal_migrate_error_check_label", [shouldRetryLabel]);
+            }
+
+            this.shouldDisplayCheckMigrationsErrors = true;
+        }
     }
 );

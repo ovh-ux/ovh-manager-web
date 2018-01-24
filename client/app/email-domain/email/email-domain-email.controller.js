@@ -97,7 +97,7 @@ angular
         }
 
         refreshSummary () {
-            this.Emails
+            return this.Emails
                 .getSummary(this.$stateParams.productId)
                 .then((summary) => {
                     this.summary = summary;

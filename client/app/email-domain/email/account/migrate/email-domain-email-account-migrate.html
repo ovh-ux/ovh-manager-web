@@ -32,7 +32,14 @@
                     </p>
                     
                     <!-- Not Supported Alert -->
-                    <div class="alert alert-info" role="alert" data-ng-bind-html="tr('email_tab_modal_migrate_alert_not_supported')">
+                    <div class="alert alert-info" role="alert">
+                        <p data-i18n-static="email_tab_modal_migrate_alert_not_supported"></p>
+                        <ul>
+                            <li data-i18n-static="email_tab_modal_migrate_alert_not_supported_filters "></li>
+                            <li data-i18n-static="email_tab_modal_migrate_alert_not_supported_responders "></li>
+                            <li data-i18n-static="email_tab_modal_migrate_alert_not_supported_lists"></li>
+                            <li data-i18n-static="email_tab_modal_migrate_alert_not_supported_roundcube_contacts"></li>
+                        </ul>
                     </div>
                     
                     <div class="form-group">
@@ -69,7 +76,7 @@
                     </div>
                     
                     <!-- Destination Email -->
-                    <div class="oui-box mb-5" data-ng-if="ctrl.migrate.destinationService && !ctrl.loaders.isWaitingForDestinationEmails && !ctrl.loaders.isWaitingForMigrationCheck ">
+                    <div class="oui-box mb-5" data-ng-if="ctrl.migrate.destinationService && !ctrl.loaders.isWaitingForDestinationEmails && !ctrl.loaders.isWaitingForMigrationCheck && !ctrl.shouldDisplayCheckMigrationsErrors">
                         <!-- Has available email address -->
                         <div data-ng-if="ctrl.migrate.destinationEmail">
                     
@@ -106,14 +113,14 @@
                 <h3 class="header-underline" data-ng-if="ctrl.migrate.serviceType === 'PRIVATE EXCHANGE'" data-i18n-static="email_tab_modal_migrate_title_private_exchange"></h3>
                 
                 <div class="oui-box mb-5">
-                    <p data-ng-bind-html="tr('email_tab_modal_migrate_confirmation_before_continue')"></p>
+                    <p><strong data-ng-bind-html="tr('email_tab_modal_migrate_confirmation_before_continue')"></strong></p>
                     <p data-ng-bind-html="tr('email_tab_modal_migrate_confirmation_delay')"></p>
                     <p data-i18n-static="email_tab_modal_migrate_confirmation_heading"></p>
                     <ul>
                         <li data-i18n-static="email_tab_modal_migrate_confirmation_access_webmail"></li>
                         <li data-i18n-static="email_tab_modal_migrate_confirmation_cancel_process"></li>
                     </ul>
-                    <p data-ng-bind-html="tr('email_tab_modal_migrate_alert_dont_change_password')"></p>
+                    <p><strong data-i18n-static="email_tab_modal_migrate_alert_dont_change_password"></strong></p>
                     
                     <!-- Guides Text -->
                     <p data-ng-if="ctrl.migrate.serviceType === 'EMAIL PRO'" data-i18n-static="email_tab_modal_migrate_configuration_guides_emailpro"></p>
@@ -140,21 +147,10 @@
                             <label class="control-label" for="accountPassword" data-i18n-static="email_tab_modal_create_account_account_password"></label>
                             
                             <input type="password" class="form-control" id="accountPassword" name="accountPassword" aria-describedby="emailsChangePasswordHelp"
-                            autocomplete="off" required data-ng-change="ctrl.checkPassword(ctrl.migrateDestinationForm.accountPassword)" data-ng-maxlength="ctrl.constants.passwordMaxLength"
+                            autocomplete="off" required data-ng-maxlength="ctrl.constants.passwordMaxLength"
                             data-ng-minlength="ctrl.constants.passwordMinLength" data-ng-model="ctrl.migrate.password">
                             <small class="help-block" data-i18n-static="email_tab_modal_create_account_account_password_error" data-ng-show="ctrl.migrateDestinationForm.accountPassword.$dirty && ctrl.migrateDestinationForm.accountPassword.$invalid"></small>
                             
-                        </div>
-                        
-                        <!-- Confirm Password -->
-                        <div class="form-group" data-ng-class="{
-                            'has-error': ctrl.migrateDestinationForm.accountPasswordConfirm.$dirty && (ctrl.migrateDestinationForm.accountPassword.$invalid || !ctrl.isPasswordMatches()),
-                            'has-success': ctrl.migrateDestinationForm.accountPasswordConfirm.$dirty && ctrl.isPasswordDefined() && ctrl.isPasswordMatches()
-                        }">
-                            <label class="control-label" for="accountPasswordConfirm" data-i18n-static="email_tab_modal_create_account_account_password_confirm"></label>
-                            <input type="password" class="form-control" id="accountPasswordConfirm" name="accountPasswordConfirm" autocomplete="off"
-                            required data-ng-model="ctrl.migrate.confirmPassword">
-                            <small class="help-block" data-i18n-static="email_tab_modal_create_account_account_password_match_error" data-ng-show="ctrl.migrateDestinationForm.accountPasswordConfirm.$dirty && ctrl.isPasswordDefined() && !ctrl.isPasswordMatches()"></small>
                         </div>
 
                         <!-- Aknowledge Checkbox -->
@@ -166,7 +162,8 @@
                                 data-ng-model="ctrl.migrate.aknowledge"
                             >
                             <label class="oui-checkbox__label-container" for="aknowledgeCheckbox">
-                                <span class="oui-checkbox__label" data-ng-bind="ctrl.translator.tr('email_tab_modal_migrate_aknowledge')"></span>
+                                <span class="oui-checkbox__label">
+                                    <span data-ng-bind="ctrl.translator.tr('email_tab_modal_migrate_aknowledge')"></span>
                                     <span class="oui-checkbox__icon">
                                         <i class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></i>
                                         <i class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></i>
@@ -180,7 +177,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="oui-button oui-button_primary" data-i18n-static="email_tab_modal_migrate_submit" ng-disabled="!ctrl.isPasswordDefined() || !ctrl.isPasswordMatches() || !ctrl.migrate.aknowledge || ctrl.loaders.isWaitingForMigration"></button>
+                <button type="submit" class="oui-button oui-button_primary" data-i18n-static="email_tab_modal_migrate_submit" ng-disabled="!ctrl.migrate.password || !ctrl.migrate.aknowledge || ctrl.loaders.isWaitingForMigration"></button>
                 <button class="oui-button oui-button_link" data-i18n-static="common_cancel" data-ng-click="ctrlEmailDomainEmail.displayEmailsList()"></button>
             </div>
         </form>
@@ -191,6 +188,22 @@
         
         <div data-ovh-alert="{{alerts.migrate}}"
             data-ovh-alert-hide-remove-button>
+        </div>
+
+        
+        <div class="oui-message oui-message_warning" role="alert" ng-if="ctrl.shouldDisplayCheckMigrationsErrors">
+            <i class="oui-icon oui-icon-warning_circle oui-icon_bicolor" aria-hidden="true"></i>
+            <p class="oui-message__body">
+                <span data-ng-bind-html="ctrl.checkMigrationErrorLabel"></span>
+                <ul>
+                    <li ng-repeat="code in ctrl.checkMigrationErrors" 
+                        data-i18n-static="email_tab_modal_migrate_errors_check_{{code}}"></li>
+                </ul>
+            </p>
+        </div>
+
+        <div ng-if="ctrl.shouldDisplayCheckMigrationsErrors">
+            <button class="oui-button oui-button_link" data-i18n-static="common_cancel" data-ng-click="ctrlEmailDomainEmail.displayEmailsList()"></button>
         </div>
 
     </div>

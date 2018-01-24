@@ -325,8 +325,8 @@
    <translation id="email_tab_modal_migrate_account_email_label" qtlid="436671">E-mail source :</translation>
    <translation id="email_tab_modal_migrate_service_type_label" qtlid="436684">Offre de destination :</translation>
    <translation id="email_tab_modal_migrate_destination_service_label" qtlid="436697">Service de destination :</translation>
-   <translation id="email_tab_modal_migrate_destination_service_help">Il est possible de migrer un seul compte email à la fois.</translation>
-   <translation id="email_tab_modal_migrate_password_text" qtlid="436723">Veuillez entrer le mot de passe de l’e-mail source pour valider la migration.</translation>
+   <translation id="email_tab_modal_migrate_destination_service_help">Il est possible de migrer un seul compte e-mail à la fois.</translation>
+   <translation id="email_tab_modal_migrate_password_text">Veuillez entrer le mot de passe de l’e-mail source pour valider la migration.</translation>
    <translation id="email_tab_modal_migrate_order_new_emails_button" qtlid="139169">Commander des comptes</translation>
    <translation id="email_tab_modal_migrate_available_email_selected" qtlid="436736">La migration de votre e-mail se fera sur le compte <strong>{0}</strong>.</translation>
    <translation id="email_tab_modal_migrate_remaining_available_emails" qtlid="436749">Après la migration, il vous restera <strong>{0}</strong> compte(s) libre(s).</translation>
@@ -334,20 +334,42 @@
    <translation id="email_tab_modal_migrate_no_available_email" qtlid="436775">Vous n’avez plus de compte disponible sur votre service <strong>{0}</strong>. Choisissez un autre service dans la liste ou commandez un nouveau compte</translation>
    <translation id="email_tab_modal_migrate_order_email_service" qtlid="436788">Commander une solution e-mail</translation>
    <translation id="email_tab_modal_migrate_no_email_service" qtlid="436801">Vous n’avez pas de solution e-mail compatible pour la migration.</translation>
-   <translation id="email_tab_modal_migrate_confirmation_before_continue"><strong>Avant de continuer...</strong></translation>
+   <translation id="email_tab_modal_migrate_confirmation_before_continue">Avant de continuer…</translation>
    <translation id="email_tab_modal_migrate_confirmation_heading">Une fois la migration lancée, il ne vous sera plus possible :</translation>
    <translation id="email_tab_modal_migrate_confirmation_access_webmail" qtlid="444378">d’accéder à votre ancienne boîte e-mail;</translation>
    <translation id="email_tab_modal_migrate_confirmation_cancel_process" qtlid="444391">d'annuler le processus de migration.</translation>
-   <translation id="email_tab_modal_migrate_confirmation_delay">La migration du contenu peut prendre plusieurs heures selon la taille de la boite e-mail. <br /> Dès qu'elle sera terminée, votre boite email source sera supprimée dans un délai de 15 jours.</translation>
+   <translation id="email_tab_modal_migrate_confirmation_delay">La migration du contenu peut prendre plusieurs heures selon la taille de la boîte e-mail. <br /> Dès qu'elle sera terminée, votre boîte e-mail source sera supprimée dans un délai de 15 jours.</translation>
    <translation id="email_tab_modal_migrate_configuration_guides_exchange" qtlid="436840">Une fois l’opération terminée, il vous sera nécessaire de reconfigurer votre logiciel de messagerie ou de vous connecter au webmail Exchange via la section «&#160;Informations générales&#160;» de votre espace client.</translation>
    <translation id="email_tab_modal_migrate_configuration_guides_emailpro" qtlid="436853">Une fois l’opération terminée, il vous sera nécessaire de reconfigurer votre logiciel de messagerie ou de vous connecter au webmail E-mail Pro via la section «&#160;Informations générales&#160;» de votre espace client.</translation>
    <translation id="email_tab_modal_migrate_configuration_guides_button">Consulter nos guides techniques</translation>
    <translation id="email_tab_modal_migrate_aknowledge" qtlid="436879">En validant, je reconnais avoir pris connaissance de toutes les informations concernant la migration du compte e-mail source sélectionné.</translation>
-   <translation id="email_tab_modal_migrate_alert_not_supported">Les éléments suivants ne seront pas pris en charge par la migration&#160;: <br /><ul><li>vos filtres&#160;;</li><li>vos répondeurs&#160;;</li><li>vos mailing lists&#160;;</li><li>vos contacts Roundcube.</li></ul></translation>
+   <translation id="email_tab_modal_migrate_alert_not_supported">Les éléments suivants ne seront pas pris en charge par la migration&#160;:</translation>
+   <translation id="email_tab_modal_migrate_alert_not_supported_filters">vos filtres&#160;;</translation>
+   <translation id="email_tab_modal_migrate_alert_not_supported_responders">vos répondeurs&#160;;</translation>
+   <translation id="email_tab_modal_migrate_alert_not_supported_lists">vos mailing lists&#160;;</translation>
+   <translation id="email_tab_modal_migrate_alert_not_supported_roundcube_contacts">vos contacts Roundcube.</translation>
    <translation id="email_tab_modal_migrate_alert_configure_me" qtlid="436905">Il est nécessaire de disposer d’un compte e-mail non configuré (@configureme.me) pour réaliser l’opération.</translation>
-   <translation id="email_tab_modal_migrate_alert_dont_change_password"><strong>Veuillez ne pas modifier le mot de passe de votre compte email source tant que sa migration n'est pas terminée.</strong></translation>
-   <translation id="email_tab_modal_migrate_success">La migration de votre compte email vers votre service Email Pro ou Exchange est commencée. </translation>
+   <translation id="email_tab_modal_migrate_alert_dont_change_password">Veuillez ne pas modifier le mot de passe de votre compte e-mail source tant que sa migration n'est pas terminée.</translation>
+   <translation id="email_tab_modal_migrate_success_emailpro">La migration de votre compte e-mail vers votre service Email Pro est commencée.</translation>
+   <translation id="email_tab_modal_migrate_success_exchange">La migration de votre compte e-mail vers votre service Exchange est commencée.</translation>
    <translation id="email_tab_modal_migrate_error" qtlid="436931">Une erreur s'est produite lors de la migration du compte :</translation>
+   <translation id="email_tab_modal_migrate_error_check_label" >Une erreur s'est produite lors de la migration du compte{0} :</translation>
+   <translation id="email_tab_modal_migrate_errors_check_label" >Plusieurs erreurs se sont produites lors de la migration du compte{0} :</translation>
+   <translation id="email_tab_modal_migrate_error_check_should_retry">, nous vous invitons à patienter quelques minutes avant de renouveler l’opération</translation>
+   <translation id="email_tab_modal_migrate_errors_check_ACCOUNT_EMPTY">Erreur interne.</translation>
+   <translation id="email_tab_modal_migrate_errors_check_ACCOUNT_INPROGRESS">Une autre tâche est déjà en cours pour ce compte.</translation>
+   <translation id="email_tab_modal_migrate_errors_check_DOMAIN_EMPTY">Erreur interne.</translation>
+   <translation id="email_tab_modal_migrate_errors_check_FORWARD_EXIST">Il n'est pas possible de migrer une redirection.</translation>
+   <translation id="email_tab_modal_migrate_errors_check_FORWARD_LOCAL">Il n'est pas possible de migrer une redirection.</translation>
+   <translation id="email_tab_modal_migrate_errors_check_MAILINGLIST_EXIST">Il n'est pas possible de migrer une mailing list.</translation>
+   <translation id="email_tab_modal_migrate_errors_check_MAILINGLIST_INPROGRESS">Une autre tâche est déjà en cours sur la mailing list.</translation>
+   <translation id="email_tab_modal_migrate_errors_check_MAILPROXY_BAD_INFRA">Erreur interne.</translation>
+   <translation id="email_tab_modal_migrate_errors_check_MAILPROXY_EMPTY">Erreur interne.</translation>
+   <translation id="email_tab_modal_migrate_errors_check_MAILPROXY_INPROGRESS">Une autre tâche est déjà en cours sur le proxy mail.
+   <translation id="email_tab_modal_migrate_errors_check_MAILPROXY_RESERVATION">Une autre tâche est déjà en cours sur le proxy mail.
+   <translation id="email_tab_modal_migrate_errors_check_REDIRECTION_INPROGRESS">Une autre tâche est déjà en cours sur les redirections.</translation>
+   <translation id="email_tab_modal_migrate_errors_check_RESPONDER_INPROGRESS">Une autre tâche est déjà en cours sur les répondeurs.</translation>
+   <translation id="email_tab_modal_migrate_errors_check_UNKNOW">Erreur interne.</translation>
    <translation id="email_tab_modal_migrate_submit">Migrer mon compte</translation>
 
    <translation id="email_tab_TASK_table_empty" qtlid="144058">Vous n'avez pas de tâches</translation>

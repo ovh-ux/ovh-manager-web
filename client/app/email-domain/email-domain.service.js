@@ -1099,8 +1099,8 @@ angular.module("services").service(
                 })
                 .then((data) => {
                     // error codes are returned in success
-                    if (_.isArray(data.error) && data.error.length) {
-                        defer.reject(_.get(data, "error[0].code", ""));
+                    if (_.isArray(data.error) && !_.isEmpty(data.error)) {
+                        defer.reject(data.error);
                     } else {
                         defer.resolve(data);
                     }
@@ -1111,7 +1111,7 @@ angular.module("services").service(
         }
 
         /**
-         * Check if it's possible to migrate
+         * Migrate account to destination account
          * @param {string} domain
          * @param {string} accountName
          * @param {string} destinationServiceName
