@@ -19,7 +19,7 @@ class SessionService {
                     localStorage["univers-selected-language"] = language.value;
                     window.location.reload();
 
-                    if (typeof callback === "function") {
+                    if (_.isFunction(callback)) {
                         callback();
                     }
                 },
@@ -213,7 +213,7 @@ class SessionService {
                     this.otrsPopupService.toggle();
                 }
 
-                if (typeof callback === "function") {
+                if (_.isFunction(callback)) {
                     callback();
                 }
             }
@@ -295,7 +295,7 @@ class SessionService {
                     click: (callback) => {
                         this.ssoAuthentication.logout();
 
-                        if (typeof callback === "function") {
+                        if (_.isFunction(callback)) {
                             callback();
                         }
                     }

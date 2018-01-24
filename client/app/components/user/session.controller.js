@@ -19,7 +19,9 @@ angular.module("App").controller("SessionCtrl", [
         // Scroll to anchor id
         $scope.scrollTo = (id) => {
             // Set focus to target
-            $document.find(`#${id}`)[0].focus();
+            if (_.isString(id)) {
+                $document.find(`#${id}`)[0].focus();
+            }
         };
 
         // Get structure of the navbar
