@@ -45,6 +45,7 @@ angular.module("App").controller(
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
                     this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_GLUE_table_error"), err, this.$scope.alerts.main);
+                    this.glueHosts = [];
                 })
                 .finally(() => {
                     this.loading = false;
