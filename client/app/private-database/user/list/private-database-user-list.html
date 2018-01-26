@@ -2,82 +2,33 @@
     <div class="col-md-9">
         <div data-ovh-alert="{{alerts.main}}"></div>
 
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col" data-i18n-static="privateDatabase_tabs_user_name"></th>
-                        <th scope="col" data-i18n-static="privateDatabase_tabs_creation_date"></th>
-                        <th scope="col" class="min-width text-center">
-                            <button class="btn btn-icon" type="button" title="{{i18n.privateDatabase_tabs_refresh_data}}"
-                                    data-ng-click="usersListCtrl.getUsers()">
-                                <span class="fa fa-refresh" aria-hidden="true"></span>
-                            </button>
-                        </th>
-                    </tr>
-                </thead>
+        <oui-datagrid data-rows="usersListCtrl.users"
+                      data-row-loader="usersListCtrl.transformItem($row)">
+            <oui-column data-title="tr('privateDatabase_tabs_user_name')" data-property="userName">
+                <span data-ng-bind="$row.userName"></span>
+            </oui-column>
+            <oui-column data-title="tr('privateDatabase_tabs_creation_date')" data-property="creationDate">
+                <span data-ng-bind="$row.creationDate | date:mediumDate"></span>
+            </oui-column>
+            <oui-action-menu data-align="end" data-compact>
+                <oui-action-menu-item data-text="{{::!database.capabilities.user.update ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_action_changepassword}}"
+                                      data-ng-click="setAction('user/update/password/user/private-database-user-update-password-user', {user : $row, database: database})"
+                                      data-ng-disabled="!database.capabilities.user.update || database.state !== 'started' || taskState.changeVersion || lockAction || $row.waitChangePassword"
+                                      data-title="{{!database.capabilities.user.update ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_action_changepassword}}">
+                </oui-action-menu-item>
+                <oui-action-menu-item data-text="{{::tr('privateDatabase_action_grants')}}"
+                                      data-ng-click="goToGrants($row)"
+                                      data-ng-disabled="!database.capabilities.grant.update || database.state !== 'started' || taskState.changeVersion || lockAction"
+                                      data-title="{{!database.capabilities.grant.update ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_action_grants}}">
+                </oui-action-menu-item>
+                <oui-action-menu-item data-text="{{::tr('privateDatabase_action_delete_user')}}"
+                                      data-ng-click="setAction('user/delete/private-database-user-delete', $row)"
+                                      data-ng-disabled="!database.capabilities.user.delete || database.state !== 'started' || taskState.changeVersion || lockAction"
+                                      data-title="{{!database.capabilities.user.delete ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_action_delete_user}}">
+                </oui-action-menu-item>
+            </oui-action-menu>
+        </oui-datagrid>
 
-                <tbody data-ng-if="usersListCtrl.loaders.users">
-                    <tr>
-                        <td class="loader text-center" colspan="3"></td>
-                    </tr>
-                </tbody>
-
-                <tbody data-ng-if="!usersListCtrl.loaders.users && usersListCtrl.usersIds.length === 0 && usersListCtrl.currentUsers.add.length > 0">
-                    <tr>
-                        <td class="text-center" colspan="3" data-i18n-static="privateDatabase_tabs_no_user_error"></td>
-                    </tr>
-                </tbody>
-
-                <tbody data-ng-if="!usersListCtrl.loaders.users && usersListCtrl.usersIds.length === 0 && usersListCtrl.currentUsers.add.length === 0">
-                    <tr>
-                        <td class="text-center" colspan="3" data-i18n-static="privateDatabase_tabs_no_user"></td>
-                    </tr>
-                </tbody>
-
-                <tbody data-ng-if="!usersListCtrl.loaders.users && (usersListCtrl.usersIds.length > 0 || usersListCtrl.currentUsers.add.length > 0)">
-                    <tr data-ng-repeat="user in (usersListCtrl.userDetails | orderBy:'userName') track by $index">
-                        <th scope="row" data-ng-bind="user.userName"></th>
-                        <td class="text-center" colspan="2" data-ng-if="user.waitDelete">
-                            <span class="label label-danger" data-i18n-static="privateDatabase_tabs_user_deleting"></span>
-                        </td>
-                        <td data-ng-if="!user.waitDelete" data-ng-bind="user.creationDate | date:mediumDate"></td>
-                        <td data-ng-if="!user.waitDelete" class="text-center">
-                            <button class="btn btn-icon" type="button" title="{{i18n.privateDatabase_tabs_user_options}}"
-                                    data-linkedpopover="private-database/user/list/popover/private-database-user-list.popover.html"
-                                    data-linkedpopover-placement="left"
-                                    data-linkedpopover-single="true"
-                                    data-linkedpopover-remote="true"
-                                    data-linkedpopover-title="{{i18n.common_actions}}">
-                                 <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr data-ng-repeat="user in usersListCtrl.currentUsers.add track by $index">
-                        <th scope="row" data-ng-bind="user"></th>
-                        <td colspan="2" class="text-center">
-                            <span class="label label-info" data-i18n-static="privateDatabase_tabs_user_adding"></span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="clearfix" data-ng-if="usersListCtrl.usersIds">
-            <div data-pagination-front
-                 data-items="usersListCtrl.usersIds"
-                 data-paginated-items="usersListCtrl.userDetails"
-                 data-current-page="currentPage"
-                 data-nb-pages="nbPages"
-                 data-items-per-page="itemsPerPage"
-                 data-transform-item="usersListCtrl.getUserDetails(item)"
-                 data-on-transform-item-done="usersListCtrl.onTransformItemDone(items)"
-                 data-on-transform-item-get-promise="getPromise(promise)"
-                 data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-                 data-item-per-page-placeholder="{{tr('pagination_display')}}"
-                 data-on-page-change="usersListCtrl.loaders.users = true"
-                 data-ng-show="!usersListCtrl.loaders.users && (usersListCtrl.userDetails.length > 0 || usersListCtrl.currentUsers.add.length > 0)"></div>
-        </div>
     </div>
 
     <div class="col-md-3 mt-5 mt-lg-0">

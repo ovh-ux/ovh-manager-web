@@ -61,6 +61,7 @@ angular.module("App").controller(
                 .getUsers(this.productId)
                 .then((users) => {
                     this.usersIds = users;
+                    this.users = users.map((id) => ({ id }));
                 })
                 .catch((err) => {
                     this.alerter.error(_.get(err, "message", err), this.$scope.alerts.main);
@@ -70,6 +71,13 @@ angular.module("App").controller(
                         this.loaders.users = false;
                     }
                 });
+        }
+
+        transformItem (item) {
+            return this.privateDatabaseService.getUser(this.productId, item.id).then((user) => {
+                user.id = item.id;
+                return user;
+            });
         }
 
         getUserDetails (id) {
