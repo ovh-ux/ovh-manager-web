@@ -1,8 +1,11 @@
 .oui-navbar {
     // Logo
-    .navbar-logo {
-        height: 3rem;
-        margin-top: -.3rem; // For a better centering
+    &__brand {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        .navbar-logo { height: 3rem; }
     }
 
     // Universes
@@ -11,6 +14,7 @@
         .navbar-universe(cloud, @oui-color-supernova);
         .navbar-universe(telecom, @oui-color-dodger);
         .navbar-universe(sunrise, @oui-color-california);
+        .navbar-universe(gamma, @oui-color-california);
 
         .navbar-universe(@universe-selector, @universe-color) {
             .@{universe-selector} > .oui-navbar-link {

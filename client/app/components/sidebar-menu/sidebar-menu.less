@@ -10,14 +10,7 @@ button, toggle-class {
 }
 
 #sidebar-menu {
-    @sidebar-width: 300px;
-
-    width: @sidebar-width;
     z-index: 1020;
-
-    @media (max-width: @screen-sm-min) {
-        width: auto;
-    }
 
     .ms-Icon {
         line-height: 1;
@@ -31,13 +24,5 @@ button, toggle-class {
         -moz-font-smoothing: antialiased;
         -webkit-font-smoothing: antialiased;
         -webkit-font-smoothing: subpixel-antialiased;
-    }
-
-    & + .main-wrapper {
-        margin-left: @sidebar-width;
-
-        @media (max-width: @screen-sm-min) {
-            margin-left: 0;
-        }
     }
 }

@@ -10,31 +10,7 @@ class SessionService {
         this.ssoAuthentication = ssoAuthentication;
     }
 
-    getLanguageChangingMenuObject () {
-        const languageChangingMenuObject = _(this.LANGUAGES)
-            .filter((language) => _(language).has("name", "value"))
-            .map((language) => ({
-                title: language.name,
-                click: (callback) => {
-                    localStorage["univers-selected-language"] = language.value;
-                    window.location.reload();
-
-                    if (_.isFunction(callback)) {
-                        callback();
-                    }
-                },
-                lang: _(language.value).chain()
-                    .words()
-                    .head()
-                    .value()
-            }))
-            .value();
-
-        return languageChangingMenuObject;
-    }
-
-    /* eslint-disable class-methods-use-this */
-    getProductsMenu (categoryName, products) {
+    static getProductsMenu (categoryName, products) {
         return _.map(products, (product) => ({
             title: product.displayName || product.name,
             state: `app.${categoryName}`,
@@ -43,7 +19,6 @@ class SessionService {
             }
         }));
     }
-    /* eslint-enable class-methods-use-this */
 
     getDomainsMenu (domains) {
         const domainsMenu = [{
@@ -84,51 +59,39 @@ class SessionService {
 
     getMicrosoftMenu (products) {
         // Exchange products
-        const exchangeLinks = [];
         const exchangeProducts = _.sortBy(products.exchanges, (elt) => angular.lowercase(elt.displayName || elt.name));
-
-        _.forEach(exchangeProducts, (elt) =>
-            exchangeLinks.push({
-                name: elt.name,
-                title: elt.displayName || elt.name,
-                state: elt.type === "EXCHANGE_PROVIDER" ? "app.microsoft.exchange.provider" : elt.type === "EXCHANGE_DEDICATED" ? "app.microsoft.exchange.dedicated" : "app.microsoft.exchange.hosted",
-                stateParams: {
-                    organization: elt.organization,
-                    productId: elt.name
-                }
-            })
-        );
+        const exchangeLinks = _.map(exchangeProducts, (elt) => ({
+            name: elt.name,
+            title: elt.displayName || elt.name,
+            state: elt.type === "EXCHANGE_PROVIDER" ? "app.microsoft.exchange.provider" : elt.type === "EXCHANGE_DEDICATED" ? "app.microsoft.exchange.dedicated" : "app.microsoft.exchange.hosted",
+            stateParams: {
+                organization: elt.organization,
+                productId: elt.name
+            }
+        }));
 
         // Office products
-        const officeLinks = [];
         const officeProducts = _.sortBy(products.licenseOffice, (elt) => angular.lowercase(elt.displayName || elt.name));
-
-        _.forEach(officeProducts, (elt) =>
-            officeLinks.push({
-                name: elt.name,
-                title: elt.displayName || elt.name,
-                state: "app.microsoft.office.product",
-                stateParams: {
-                    serviceName: elt.name
-                }
-            })
-        );
+        const officeLinks = _.map(officeProducts, (elt) => ({
+            name: elt.name,
+            title: elt.displayName || elt.name,
+            state: "app.microsoft.office.product",
+            stateParams: {
+                serviceName: elt.name
+            }
+        }));
 
         // SharePoint products
-        const sharepointLinks = [];
         const sharepointProducts = _.sortBy(products.sharepoints, (elt) => angular.lowercase(elt.displayName || elt.name));
-
-        _.forEach(sharepointProducts, (elt) =>
-            sharepointLinks.push({
-                name: elt.name,
-                title: elt.displayName || elt.name,
-                state: "app.microsoft.sharepoint.product",
-                stateParams: {
-                    exchangeId: elt.exchangeId,
-                    productId: elt.name
-                }
-            })
-        );
+        const sharepointLinks = _.map(sharepointProducts, (elt) => ({
+            name: elt.name,
+            title: elt.displayName || elt.name,
+            state: "app.microsoft.sharepoint.product",
+            stateParams: {
+                exchangeId: elt.exchangeId,
+                productId: elt.name
+            }
+        }));
 
         // Build Microsoft menu
         return [{
@@ -170,19 +133,19 @@ class SessionService {
         }, {
             name: "hosting",
             title: this.translator.tr("navigation_left_hosting"),
-            subLinks: this.getProductsMenu("hosting", hostingProducts)
+            subLinks: this.constructor.getProductsMenu("hosting", hostingProducts)
         }, {
             name: "private-database",
             title: this.translator.tr("navigation_left_database"),
-            subLinks: this.getProductsMenu("private-database", databaseProducts)
+            subLinks: this.constructor.getProductsMenu("private-database", databaseProducts)
         }, {
             name: "email-pro",
             title: this.translator.tr("navigation_left_emailPro"),
-            subLinks: this.getProductsMenu("email-pro", emailProProducts)
+            subLinks: this.constructor.getProductsMenu("email-pro", emailProProducts)
         }, {
             name: "email",
             title: this.translator.tr("navigation_left_email"),
-            subLinks: this.getProductsMenu("email.domain", emailProducts)
+            subLinks: this.constructor.getProductsMenu("email.domain", emailProducts)
         }, {
             name: "microsoft",
             title: this.translator.tr("navigation_left_microsoft"),
@@ -242,26 +205,36 @@ class SessionService {
         };
     }
 
-    getInternalLinks (currentUser) {
-        const internalLinks = [];
-
-        // Assistance
-        internalLinks.push(this.getAssistanceMenu(currentUser));
-
-        // Language
+    getLanguageMenu () {
         const currentLanguage = _(this.LANGUAGES).find({ value: this.translator.getLanguage() });
-        const currentLanguageName = _(currentLanguage).get("name");
-        const currentLanguageCode = _(currentLanguage).get("value").replace("_", "-");
 
-        internalLinks.push({
+        return {
             name: "languages",
-            label: currentLanguageName,
-            title: currentLanguageCode,
-            subLinks: this.getLanguageChangingMenuObject()
-        });
+            label: _(currentLanguage).get("name"),
+            title: _(currentLanguage).get("value").replace("_", "-"),
+            subLinks: _(this.LANGUAGES)
+                .filter((language) => _(language).has("name", "value"))
+                .map((language) => ({
+                    title: language.name,
+                    click: (callback) => {
+                        localStorage["univers-selected-language"] = language.value;
+                        window.location.reload();
 
-        // User
-        internalLinks.push({
+                        if (_.isFunction(callback)) {
+                            callback();
+                        }
+                    },
+                    lang: _(language.value).chain()
+                        .words()
+                        .head()
+                        .value()
+                }))
+                .value()
+        };
+    }
+
+    getUserMenu (currentUser) {
+        return {
             name: "user",
             title: currentUser.firstName,
             iconClass: "icon-user",
@@ -301,9 +274,7 @@ class SessionService {
                     }
                 }
             ]
-        });
-
-        return internalLinks;
+        };
     }
 
     // Get navbar navigation and user infos
@@ -312,43 +283,42 @@ class SessionService {
         const managerUrls = this.constants.MANAGER_URLS;
         const managerNames = Object.keys(managerUrls);
 
-        return this.$q.all([
-            this.products.getProductsByType(),
-            this.user.getUser()
-        ]).then((result) => {
-            const products = result[0];
-            const currentUser = result[1];
+        return this.$q.all({
+            products: this.products.getProductsByType(),
+            user: this.user.getUser()
+        }).then((result) => ({
+            brand: {
+                title: this.translator.tr("universe_univers-portal_name"),
+                url: managerUrls.portal,
+                iconAlt: "OVH",
+                iconClass: "navbar-logo",
+                iconSrc: "assets/images/navbar/icon-logo-ovh.svg"
+            },
 
-            return {
-                brand: {
-                    title: this.translator.tr("universe_univers-portal_name"),
-                    url: managerUrls.portal,
-                    iconAlt: "OVH",
-                    iconClass: "navbar-logo",
-                    iconSrc: "assets/images/navbar/icon-logo-ovh.svg"
-                },
+            // Set Internal Links
+            internalLinks: [
+                this.getAssistanceMenu(result.user),    // Assistance
+                this.getLanguageMenu(),                 // Language
+                this.getUserMenu(result.user)           // User
+            ],
 
-                // Set Internal Links
-                internalLinks: this.getInternalLinks(currentUser),
+            // Set Manager Links
+            managerLinks: _.map(managerNames, (managerName) => {
+                const managerLink = {
+                    name: managerName,
+                    "class": managerName,
+                    title: this.translator.tr(`universe_univers-${managerName}_name`),
+                    url: managerUrls[managerName],
+                    isPrimary: ["partners", "labs"].indexOf(managerName) === -1
+                };
 
-                // Set Manager Links
-                managerLinks: _.map(managerNames, (managerName) => {
-                    const managerLink = {
-                        name: managerName,
-                        "class": managerName,
-                        title: this.translator.tr(`universe_univers-${managerName}_name`),
-                        url: managerUrls[managerName],
-                        isPrimary: ["partners", "labs"].indexOf(managerName) === -1
-                    };
+                if (managerName === currentUniverse) {
+                    managerLink.subLinks = this.getUniverseMenu(result.products);
+                }
 
-                    if (managerName === currentUniverse) {
-                        managerLink.subLinks = this.getUniverseMenu(products);
-                    }
-
-                    return managerLink;
-                })
-            };
-        });
+                return managerLink;
+            })
+        }));
     }
 }
 

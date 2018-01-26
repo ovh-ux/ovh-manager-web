@@ -1,10 +1,5 @@
-angular.module("App").controller("SessionCtrl", [
-    "$scope",
-    "$document",
-    "translator",
-    "SessionService",
-
-    function ($scope, $document, translator, SessionService) {
+angular.module("App")
+    .controller("SessionCtrl", ($scope, $document, translator, SessionService) => {
         "use strict";
 
         $scope.$watch("i18n.global_app_title", () => {
@@ -18,7 +13,7 @@ angular.module("App").controller("SessionCtrl", [
 
         // Scroll to anchor id
         $scope.scrollTo = (id) => {
-            // Set focus to target
+        // Set focus to target
             if (_.isString(id)) {
                 $document.find(`#${id}`)[0].focus();
             }
@@ -30,5 +25,4 @@ angular.module("App").controller("SessionCtrl", [
                 $scope.navbar = navbar;
                 $scope.managerPreloadHide += " manager-preload-hide";
             });
-    }
-]);
+    });
