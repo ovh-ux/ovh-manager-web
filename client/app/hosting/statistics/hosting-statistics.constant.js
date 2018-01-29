@@ -55,6 +55,11 @@ angular.module("App").constant("HOSTING_STATISTICS", {
                     gridLines: {
                         drawBorder: true,
                         display: false
+                    },
+                    time: {
+                        displayFormats: {
+                            hour: "LT"
+                        }
                     }
                 }]
             }
