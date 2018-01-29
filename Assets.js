@@ -111,6 +111,7 @@ module.exports = {
             "client/bower_components/jquery.ui/ui/resizable.js",
 
             "client/bower_components/angular/angular.min.js",
+            "client/bower_components/angular-aria/angular-aria.min.js",
             "client/bower_components/angular-route/angular-route.min.js",
             "client/bower_components/angular-ui-router/release/angular-ui-router.min.js",
             "client/bower_components/angular-sanitize/angular-sanitize.js",

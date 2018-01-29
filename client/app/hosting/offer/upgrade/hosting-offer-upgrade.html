@@ -10,7 +10,7 @@
              data-wizard-step-valid="ctrl.model.capacity && (ctrl.model.capacity !== 'KS' || (ctrl.model.capacity === 'KS' && ctrl.downgradeAgree))">
 
             <div class="text-center" data-ng-if="ctrl.loading.availableOffer">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="!ctrl.loading.availableOffer">
@@ -36,19 +36,10 @@
 
                     <div data-ng-if="ctrl.model.capacity && ctrl.model.capacity === 'KS'">
                         <p data-i18n-static="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015"></p>
-                        <div class="oui-checkbox">
-                            <input type="checkbox" class="oui-checkbox__input" id="downgradeAgree"
-                                   data-ng-model="ctrl.downgradeAgree">
-                            <label class="oui-checkbox__label-container" for="downgradeAgree">
-                                <span class="oui-checkbox__label"
-                                      data-i18n-static="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree"></span>
-                                <span class="oui-checkbox__icon">
-                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                                </span>
-                            </label>
-                        </div>
+                        <oui-checkbox id="downgradeAgree"
+                            data-model="ctrl.downgradeAgree"
+                            data-text="{{::i18n.hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree}}">
+                        </oui-checkbox>
                     </div>
                 </form>
 
@@ -67,7 +58,7 @@
                data-ng-if="ctrl.durations.available"></p>
 
             <div class="text-center" data-ng-if="ctrl.loading.durations">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner></oui-spinner>
                 <div data-i18n-static="hosting_order_upgrade_loading_order"></div>
             </div>
 
@@ -105,7 +96,7 @@
              data-wizard-step-valid="!ctrl.loading.validation">
 
             <div class="text-center" data-ng-if="ctrl.loading.validation">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="!ctrl.loading.validation">

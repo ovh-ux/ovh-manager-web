@@ -10,7 +10,7 @@
             <p data-i18n-static="hosting_dashboard_database_active_info"></p>
 
             <div class="text-center" data-ng-if="ctrl.loaders.retrievingVersions">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="!ctrl.loaders.retrievingVersions">

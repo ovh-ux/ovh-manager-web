@@ -1,6 +1,8 @@
 <div data-ovh-alert="{{alerts.page}}"></div>
 
-<oui-loader size="l" data-ng-if="loadingHostingInformations && !loadingHostingError"></oui-loader>
+<div class="text-center" data-ng-if="loadingHostingInformations && !loadingHostingError">
+    <oui-spinner data-size="l"></oui-spinner>
+</div>
 
 <div class="page-header" data-ng-if="!loadingHostingInformations && !loadingHostingError">
     <div class="row">

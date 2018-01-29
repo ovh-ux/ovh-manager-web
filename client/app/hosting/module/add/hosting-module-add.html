@@ -11,7 +11,7 @@
              data-wizard-step-on-next="onNextStep"
              data-wizard-step-valid="model.templateSelected">
 
-            <oui-loader data-ng-if="!model.moduleTemplates"></oui-loader>
+            <oui-spinner data-ng-if="!model.moduleTemplates"></oui-spinner>
 
             <div data-ng-if="model.moduleTemplates && model.moduleTemplates.length > 0">
                 <p data-i18n-static="hosting_configuration_tab_modules_create_step1_question"
@@ -48,19 +48,10 @@
                 </div>
 
                 <div class="mt-5" data-ng-if="model.templateSelected">
-                    <div class="oui-checkbox">
-                        <input type="checkbox" class="oui-checkbox__input" id="advancedMode" name="advancedMode"
-                               data-ng-model="advancedMode.value">
-                        <label class="oui-checkbox__label-container" for="advancedMode">
-                            <span class="oui-checkbox__label"
-                                  data-i18n-static="hosting_configuration_tab_modules_create_step1_module_advanced_mode"></span>
-                            <span class="oui-checkbox__icon">
-                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                            </span>
-                        </label>
-                    </div>
+                    <oui-checkbox id="advancedMode" name="advancedMode"
+                        data-model="advancedMode.value"
+                        data-text="{{::i18n.hosting_configuration_tab_modules_create_step1_module_advanced_mode}}">
+                    </oui-checkbox>
                     <div class="alert alert-info" role="alert">
                         <div>
                             <p data-i18n-static="hosting_configuration_tab_modules_create_step1_module_advancedMode_info"></p>
@@ -79,7 +70,7 @@
              data-wizard-step-on-load="loadDatabases"
              data-wizard-step-valid="isStep2Valid()">
 
-            <oui-loader data-ng-if="loading.databases"></oui-loader>
+            <oui-spinner data-ng-if="loading.databases"></oui-spinner>
 
             <div data-ng-if="!loading.databases">
 
@@ -115,7 +106,7 @@
 
                 <p data-i18n-static="hosting_configuration_tab_modules_create_step2_db_info"></p>
 
-                <oui-loader data-ng-if="loading.databaseInfos"></oui-loader>
+                <oui-spinner data-ng-if="loading.databaseInfos"></oui-spinner>
 
                 <form class="form-horizontal mt-4" name="formModuleDB"
                       data-ng-if="!loading.databaseInfos">
