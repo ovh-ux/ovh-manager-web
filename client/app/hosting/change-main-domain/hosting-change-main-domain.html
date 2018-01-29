@@ -13,7 +13,7 @@
              data-wizard-step-valid="model.domain">
 
             <div class="text-center" data-ng-if="loading.availableOffer">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner></oui-spinner>
             </div>
 
             <form name="orderUpgradeForm" data-ng-if="!loading.availableOffer">
@@ -50,7 +50,7 @@
              data-wizard-step-valid="validateEmailDecision()">
 
             <div class="text-center" data-ng-if="loading.emailDecision">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner></oui-spinner>
             </div>
 
             <p data-i18n-static="hosting_change_main_domain_no_email"
@@ -120,7 +120,7 @@
              data-wizard-step-valid="validateOrder()">
 
             <div class="text-center" data-ng-if="loading.validation">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="!loading.validation">

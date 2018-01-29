@@ -10,7 +10,7 @@
 
             <p class="font-weight-bold" data-i18n-static="mailing_list_tab_modal_create_list_title"></p>
 
-            <oui-loader data-ng-if="ctrl.loading.languages"></oui-loader>
+            <oui-spinner data-ng-if="ctrl.loading.languages"></oui-spinner>
 
             <div data-ng-if="!ctrl.loading.languages">
                 <p data-i18n-static="mailing_list_tab_modal_create_list_heading"></p>
@@ -170,19 +170,10 @@
                     </div>
 
                     <div class="col-md-offset-4 pl-lg-3">
-                        <div class="oui-checkbox mb-0">
-                            <input type="checkbox" class="oui-checkbox__input" id="chk-ml-only-subscribers" name="mlSubscribersModeration"
-                                   data-ng-model="ctrl.model.mlSubscribersModeration">
-                            <label class="oui-checkbox__label-container" for="chk-ml-only-subscribers">
-                                <span class="oui-checkbox__label"
-                                      data-i18n-static="mailing_list_tab_modal_create_list_only_subscribers_moderator"></span>
-                                <span class="oui-checkbox__icon">
-                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                                </span>
-                            </label>
-                        </div>
+                        <oui-checkbox id="chk-ml-only-subscribers" name="mlSubscribersModeration"
+                            data-model="ctrl.model.mlSubscribersModeration"
+                            data-text="{{::i18n.mailing_list_tab_modal_create_list_only_subscribers_moderator}}">
+                        </oui-checkbox>
                         <div class="font-italic" data-ng-bind-html="tr('mailing_list_tab_create_subscribers_max', [ctrl.limits.subscribers])"></div>
                     </div>
                 </form>
@@ -192,7 +183,7 @@
         <div data-wizard-step
              data-wizard-step-on-load="summary">
 
-            <oui-loader data-ng-if="ctrl.loading.guides"></oui-loader>
+            <oui-spinner data-ng-if="ctrl.loading.guides"></oui-spinner>
 
             <div data-ng-if="!ctrl.loading.guides">
                 <p data-i18n-static="mailing_list_tab_modal_create_list_validate_title"></p>

@@ -7,7 +7,7 @@
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading">
 
-            <oui-loader data-ng-if="ctrl.loading"></oui-loader>
+            <oui-spinner data-ng-if="ctrl.loading"></oui-spinner>
 
             <p data-ng-bind-html="tr('privateDatabase_tabs_dumps_delete_confirm', [ctrl.dump.creationDate, ctrl.bdd.databaseName])"
                data-ng-if="!ctrl.loading"></p>

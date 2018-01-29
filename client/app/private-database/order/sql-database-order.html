@@ -10,7 +10,7 @@
     <div class="container-fluid px-5">
         <div data-ovh-alert="{{alerts.order}}"></div>
 
-        <oui-loader size="l" data-ng-if="sqlOrderCtrl.loading.init"></oui-loader>
+        <oui-spinner data-size="l" data-ng-if="sqlOrderCtrl.loading.init"></oui-spinner>
 
         <div class="row" data-ng-if="!sqlOrderCtrl.loading.init">
             <div class="col-md-9">
@@ -162,8 +162,8 @@
                                     <span class="oui-radio__label">
                                         <span data-ng-bind="duration.duration | duration:'longDate'"></span>&nbsp;:
                                         <span data-ng-bind-html="duration.details.prices | price:sqlOrderCtrl.user.ovhSubsidiary"></span>
-                                        <oui-loader size="s" inline="true"
-                                                    data-ng-if="!duration.details.prices"></oui-loader>
+                                        <oui-spinner data-size="s"
+                                                    data-ng-if="!duration.details.prices"></oui-spinner>
                                     </span>
                                 </label>
                             </div>
@@ -179,12 +179,14 @@
                                     <input type="checkbox" class="oui-checkbox__input" id="contractsValidated" name="contractsValidated" required
                                            data-ng-model="sqlOrderCtrl.model.contract">
                                     <label class="oui-checkbox__label-container" for="contractsValidated">
-                                        <span class="oui-checkbox__label"
-                                              data-i18n-static="privateDatabase_order_sql_contracts_checkbox_label"></span>
-                                        <span class="oui-checkbox__icon">
-                                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                        <span class="oui-checkbox__label">
+                                            <span data-i18n-static="privateDatabase_order_sql_contracts_checkbox_label"></span>
+                                            <span class="oui-checkbox__icon">
+                                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                                <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                            </span>
                                         </span>
                                     </label>
                                 </div>
@@ -221,12 +223,7 @@
                             <button class="oui-button oui-button_primary oui-button_large-height" type="button"
                                     data-ng-click="sqlOrderCtrl.generateBc()"
                                     data-ng-disabled="!sqlOrderCtrl.canOrder() || !sqlOrderCtrl['canOrder' + sqlOrderCtrl.getData(sqlOrderCtrl.model.type).key]()">
-                                <span class="oui-loader oui-loader_inline oui-loader_s"
-                                      data-ng-if="sqlOrderCtrl.loading.bc">
-                                    <span class="oui-loader__container">
-                                        <span class="oui-loader__image"></span>
-                                    </span>
-                                </span>
+                                <oui-spinner data-size="s" data-ng-if="sqlOrderCtrl.loading.bc"></oui-spinner>
                                 <span data-i18n-static="privateDatabase_order_sql_button_label"></span>
                             </button>
                         </div>
