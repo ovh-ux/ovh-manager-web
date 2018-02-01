@@ -37,10 +37,19 @@ angular
 
             this.$scope.goToList = () => this.goToList();
             this.$scope.$on("hosting.databases.backup.restore", () => this.reloadCurrentPage());
+
+            this.$scope.$on(`${this.hostingService.events.tabDatabasesCreation}.done`, () => {
+                this.alerter.success(this.$scope.tr("hosting_tab_DATABASES_configuration_create_bdd_added"), this.$scope.alerts.main);
+                this.reloadCurrentPage();
+            });
+
+            this.$scope.$on(`${this.hostingService.events.tabDatabasesCreation}.error`, (err) => {
+                this.alerter.alertFromSWS(this.$scope.tr("hosting_tab_databases_get_error"), _.get(err, "data", err), this.$scope.alerts.main);
+                this.reloadCurrentPage();
+            });
+
             this.$scope.$on(this.hostingService.events.tabDatabasesRefresh, () => {
-                this.loading.init = true;
-                this.hasResult = false;
-                this.loadDatabases();
+                this.reloadCurrentPage();
             });
 
             this.loadDatabases();

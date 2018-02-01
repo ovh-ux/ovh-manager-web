@@ -169,7 +169,7 @@
                     <div class="col-md-8 col-md-offset-4">
                         <oui-checkbox id="responderKeepCopy" name="responderKeepCopy"
                             data-model="ctrl.model.responderKeepCopy"
-                            data-text="{{::ctrl.model.responderType === 'typeFree' ? i18n.email_tab_modal_create_responder_copy : i18n.email_tab_modal_create_responder_delete_message}}">
+                            data-text="{{ctrl.model.responderType === 'typeFree' ? i18n.email_tab_modal_create_responder_copy : i18n.email_tab_modal_create_responder_delete_message}}">
                         </oui-checkbox>
                         <div class="alert alert-warning" role="alert"
                              data-i18n-static="email_tab_modal_create_responder_copy_warning"

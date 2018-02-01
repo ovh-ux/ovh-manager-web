@@ -1,52 +1,64 @@
-angular.module("App").controller("HostingDatabasePrivateActiveCtrl", ($scope, $rootScope, $stateParams, HostingDatabase, Alerter, Hosting) => {
-    "use strict";
+angular.module("App").controller(
+    "HostingDatabasePrivateActiveCtrl",
+    class HostingDatabasePrivateActiveCtrl {
 
-    $scope.hosting = $scope.currentActionData;
+        constructor ($scope, $rootScope, $stateParams, HostingDatabase, Alerter, PrivateDatabase) {
+            this.$scope = $scope;
+            this.$rootScope = $rootScope;
+            this.$stateParams = $stateParams;
+            this.HostingDatabase = HostingDatabase;
+            this.Alerter = Alerter;
+            this.PrivateDatabase = PrivateDatabase;
 
-    $scope.datas = {
-        versions: []
-    };
-    $scope.loaders = {
-        versions: false
-    };
-    $scope.choice = {
-        ram: $scope.hosting.offerCapabilities.privateDatabases.length === 1 ? $scope.hosting.offerCapabilities.privateDatabases[0] : null,
-        version: null
-    };
+            this.$scope.activateDatabase = () => this.activateDatabase();
+        }
 
-    function init () {
-        if (!$scope.loaders.versions) {
-            $scope.loaders.versions = true;
-            Hosting.getModels()
-                .then((models) => {
-                    $scope.datas.versions = models.models["hosting.PrivateDatabase.OrderableVersionEnum"].enum;
-                    $scope.choice.version = $scope.datas.versions.length === 1 ? $scope.datas.versions[0] : null;
+        $onInit () {
+            this.host = this.$scope.currentActionData;
+            this.versions = [];
+            this.loaders = {
+                retrievingVersions: true
+            };
+            this.choice = {
+                ram: this.host.offerCapabilities.privateDatabases.length === 1 ?
+                       _.first(this.host.offerCapabilities.privateDatabases) : null,
+                version: null
+            };
+
+            this.PrivateDatabase.getAvailableOrderCapacities("classic")
+                .then((capacities) => {
+                    this.versions = _.get(capacities, "version");
+                    this.choice.version = this.versions && this.versions.length === 1 ? _.first(this.versions) : null;
                 })
                 .catch((err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_database_versions_error", [$scope.entryToDelete]), _.get(err, "data", err), $scope.alerts.main);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_database_versions_error",
+                                                             [this.$scope.entryToDelete]),
+                                              _.get(err, "data", err),
+                                              this.$scope.alerts.main);
                 })
                 .finally(() => {
-                    $scope.loaders.versions = false;
+                    this.loaders.retrievingVersions = false;
                 });
         }
-    }
 
-    $scope.activeDatabase = function () {
-        if (!$scope.loaders.versions) {
-            $scope.loaders.versions = true;
-            HostingDatabase.activeDatabasePrivate($stateParams.productId, $scope.choice.ram.quota.value, $scope.choice.version)
+        activateDatabase () {
+            return this.HostingDatabase
+                .activateDatabasePrivate(this.$stateParams.productId,
+                                         this.choice.ram.quota.value,
+                                         this.choice.version)
                 .then(() => {
-                    $rootScope.$broadcast("hosting.database.sqlPrive");
-                    Alerter.success($scope.tr("hosting_dashboard_database_active_success"), $scope.alerts.main);
+                    this.$rootScope.$broadcast("hosting.database.sqlPrive");
+                    this.Alerter.success(this.$scope.tr("hosting_dashboard_database_active_success"),
+                                         this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    Alerter.alertFromSWS($scope.tr("hosting_dashboard_database_active_error", [$scope.entryToDelete]), _.get(err, "data", err), $scope.alerts.main);
+                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_database_active_error",
+                                                             [this.$scope.entryToDelete]),
+                                              _.get(err, "data", err),
+                                              this.$scope.alerts.main);
                 })
                 .finally(() => {
-                    $scope.resetAction();
+                    this.$scope.resetAction();
                 });
         }
-    };
-
-    init();
 });

@@ -21,11 +21,21 @@
 	                <dd data-ng-bind="ctrl.selected.domain.path"></dd>
 	            </dl>
 
-                <oui-checkbox id="wwwNeeded"
-                    data-ng-show="ctrl.domainsWwwExists()"
-                    data-model="ctrl.selected.wwwNeeded"
-                    data-text="{{tr('hosting_tab_DOMAINS_configuration_remove_step1_www', ['www.' + ctrl.selected.domain.displayName])}}">
-                </oui-checkbox>
+                <div class="oui-checkbox" data-ng-show="ctrl.domainsWwwExists()">
+                    <input type="checkbox" class="oui-checkbox__input" id="wwwNeeded"
+                            data-ng-model="ctrl.selected.wwwNeeded">
+                    <label class="oui-checkbox__label-container" for="wwwNeeded">
+                        <span class="oui-checkbox__label">
+                            <span data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_remove_step1_www', ['www.' + ctrl.selected.domain.displayName])"></span>
+                            <span class="oui-checkbox__icon">
+                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                            </span>
+                        </span>
+                    </label>
+                </div>
 
                 <div class="oui-checkbox oui-checkbox_thumbnail">
                     <input type="checkbox" class="oui-checkbox__input" id="autoConfigure"

@@ -295,8 +295,15 @@ angular
                     user,
                     version
                 }
-            }).then(() => {
-                this.Hosting.resetDatabases();
+            }).then((task) => {
+                this.pollTasks(serviceName, {
+                    namespace: this.Hosting.events.tabDatabasesCreation,
+                    task,
+                    dump: "hosting",
+                    successSates: ["canceled", "done"],
+                    errorsSates: ["error"]
+                });
+                return task;
             });
         }
 
@@ -306,7 +313,7 @@ angular
          * @param {number} ram
          * @param {string} version
          */
-        activeDatabasePrivate (serviceName, ram, version) {
+        activateDatabasePrivate (serviceName, ram, version) {
             return this.OvhHttp.post(`/hosting/web/${serviceName}/activatePrivateDatabase`, {
                 rootPath: "apiv6",
                 data: {

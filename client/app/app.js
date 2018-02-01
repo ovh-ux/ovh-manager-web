@@ -160,58 +160,19 @@ angular
             level2: "2"
         }
     })
-    .config(["$provide", function ($provide) {
+    .run((atInternet, TRACKING, OvhApiMe) => {
         "use strict";
 
-        $provide.decorator("atInternet", ($delegate, User, TRACKING) => {
-            const delegateTrackPage = $delegate.trackPage;
-            let isDefaultConfigurationSet = false;
-            let trackPageRequestArgumentStack = [];
+        const config = TRACKING.config;
 
-            // Decorate trackPage to stack requests until At-internet default configuration is set
-            $delegate.trackPage = (...args) => {
-                if (isDefaultConfigurationSet) {
-                    delegateTrackPage.apply($delegate, args);
-                } else {
-                    trackPageRequestArgumentStack.push(args);
-                }
-            };
-
-            // Get country from User
-            User.getUser()
-                .then((result) => {
-                    const settings = angular.copy(TRACKING.config);
-
-                    // Set identifiedVisitor ID
-                    if ($delegate.isTagAvailable() && result.nichandle) {
-                        const atinternetTag = $delegate.getTag();
-
-                        // atinternetTag.page.set();
-                        atinternetTag.identifiedVisitor.set({ id: result.nichandle });
-                        atinternetTag.dispatch();
-                    }
-
-                    // Set countryCode
-                    settings.countryCode = result.billingCountry;
-                    $delegate.setDefaults(settings);
-
-                    isDefaultConfigurationSet = true;
-
-                    _.forEach(trackPageRequestArgumentStack, (trackPageArguments) => {
-                        delegateTrackPage.apply($delegate, trackPageArguments);
-                    });
-                })
-                .catch(() => {
-                    // Reset trackPage
-                    $delegate.trackPage = () => false;
-                    trackPageRequestArgumentStack = [];
-
-                    $delegate.setEnabled(false);
-                });
-
-            return $delegate;
-        });
-    }])
+        OvhApiMe.Lexi().get().$promise
+            .then((me) => {
+                config.countryCode = me.country;
+                config.currencyCode = me.currency && me.currency.code;
+                config.visitorId = me.customerCode;
+                atInternet.setDefaults(config);
+            });
+    })
     .config([
         "$locationProvider",
         function ($locationProvider) {
@@ -594,12 +555,12 @@ angular
             };
 
             ouiPaginationConfiguration.translations = {
-                resultsPerPage: translator.tr("common_ouipagination_resultsperpage")
-                    .replace("CURRENT_PAGE", "{{currentPage}}")
-                    .replace("PAGE_COUNT", "{{pageCount}}"),
+                resultsPerPage: translator.tr("common_ouipagination_resultsperpage"),
                 ofNResults: translator.tr("common_ouipagination_ofnresults")
                     .replace("TOTAL_ITEMS", "{{totalItems}}"),
-                currentPageOfPageCount: translator.tr("common_ouipagination_currentpageofpagecount"),
+                currentPageOfPageCount: translator.tr("common_ouipagination_currentpageofpagecount")
+                    .replace("CURRENT_PAGE", "{{currentPage}}")
+                    .replace("PAGE_COUNT", "{{pageCount}}"),
                 previousPage: translator.tr("common_ouipagination_previous"),
                 nextPage: translator.tr("common_ouipagination_next")
             };

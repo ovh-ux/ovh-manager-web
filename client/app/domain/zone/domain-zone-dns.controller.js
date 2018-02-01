@@ -1,15 +1,12 @@
 angular.module("App").controller(
     "DomainTabZoneDnsCtrl",
     class DomainTabZoneDnsCtrl {
-        constructor ($scope, $q, Alerter, Domain, DomainValidator, Hosting, User, Validator) {
+        constructor ($scope, $q, Alerter, Domain, User) {
             this.$scope = $scope;
             this.$q = $q;
             this.Alerter = Alerter;
             this.Domain = Domain;
-            this.DomainValidator = DomainValidator;
-            this.Hosting = Hosting;
             this.User = User;
-            this.Validator = Validator;
         }
 
         $onInit () {
@@ -17,10 +14,8 @@ angular.module("App").controller(
 
             this.allowModification = false;
             this.atLeastOneSelected = false;
-            this.editMode = false;
             this.hasResult = false;
             this.loading = {
-                adding: false,
                 table: false,
                 zone: true
             };
@@ -197,54 +192,6 @@ angular.module("App").controller(
             this.selectedRecords = _.xor(this.selectedRecords, [record]);
             this.atLeastOneSelected = this.selectedRecords.length > 0;
             this.applySelection();
-        }
-
-        // Edit Mode --------------------------------------------------------------
-        activeEditMode () {
-            this.addDnsRecord = {};
-            if (this.search.filter) {
-                this.addDnsRecord.fieldType = this.search.filter;
-            }
-            this.editMode = true;
-        }
-
-        cancelAddRecord () {
-            this.addDnsRecord = {};
-            this.editMode = false;
-        }
-
-        fieldAndTargetCheck (input) {
-            input.$setValidity("target", this.addDnsRecord.targetToDisplay && this.addDnsRecord.fieldType && this.DomainValidator.isValidTarget(this.addDnsRecord.targetToDisplay, this.addDnsRecord.fieldType));
-        }
-
-        subDomainToDisplayCheck (input) {
-            input.$setValidity(
-                "subdomain",
-                this.addDnsRecord.subDomainToDisplay === null || this.addDnsRecord.subDomainToDisplay === "" || this.Validator.isValidSubDomain(this.addDnsRecord.subDomainToDisplay, { canBeginWithUnderscore: true, canBeginWithWildcard: true })
-            );
-        }
-
-        ttlCheck (input) {
-            input.$setValidity("ttl", this.addDnsRecord.ttl === null || this.addDnsRecord.ttl === "" || this.DomainValidator.isValidTtl(this.addDnsRecord.ttl));
-        }
-
-        addRecord () {
-            this.loading.adding = true;
-            return this.Domain
-                .addDnsEntry(this.domain.name, {
-                    fieldType: this.addDnsRecord.fieldType,
-                    subDomainToDisplay: this.addDnsRecord.subDomainToDisplay,
-                    ttl: this.addDnsRecord.ttl,
-                    target: this.DomainValidator.convertTargetToPunycode(this.addDnsRecord.fieldType, this.addDnsRecord.targetToDisplay)
-                })
-                .then(() => {
-                    this.cancelAddRecord();
-                    this.Alerter.success(this.$scope.tr("domain_configuration_dns_entry_add_success"), this.$scope.alerts.main);
-                })
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dns_entry_add_fail"), err, this.$scope.alerts.main))
-                .finally(() => {
-                    this.loading.adding = false;
-                });
         }
     }
 );

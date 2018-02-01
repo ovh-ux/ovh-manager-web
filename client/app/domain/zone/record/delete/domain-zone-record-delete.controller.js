@@ -11,6 +11,7 @@ angular.module("App").controller(
         $onInit () {
             this.entryToDelete = this.$scope.currentActionData;
             this.massDelete = _.isArray(this.entryToDelete);
+            this.loading = false;
 
             if (!this.massDelete) {
                 this.entryToDelete.fieldTypeFormatted = this.entryToDelete.fieldType;
@@ -20,6 +21,7 @@ angular.module("App").controller(
         }
 
         deleteDnsEntry () {
+            this.loading = true;
             if (this.massDelete) {
                 return this.Domain
                     .deleteDnsEntry(this.$stateParams.productId, this.entryToDelete)
