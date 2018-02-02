@@ -43,7 +43,7 @@ angular.module("controllers").controller(
             if (!this.domain.glueRecordMultiIpSupported && model.ips.length > 1) {
                 valid = false;
             } else {
-                valid = !_.isEmpty(model.ips) && _.every(model.ips, (ip) => this.Validator.isValidIpv4(ip) || (_.get(this.domain, "glueRecordIpv6Supported", false) && this.Validator.ip.isValid(ip, { version: 6, cidr: "FORBIDDEN" })));
+                valid = !_.isEmpty(model.ips) && _.every(model.ips, (ip) => this.Validator.ip.isValid(ip, { version: 4, cidr: "FORBIDDEN" }) || (_.get(this.domain, "glueRecordIpv6Supported", false) && this.Validator.ip.isValid(ip, { version: 6, cidr: "FORBIDDEN" })));
             }
 
             input.$setValidity("ips", valid);

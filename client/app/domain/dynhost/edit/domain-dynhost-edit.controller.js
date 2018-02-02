@@ -18,7 +18,7 @@ angular.module("App").controller(
         }
 
         ipTargetCheck (input) {
-            input.$setValidity("iptarget", this.Validator.isValidIpv4(this.dynHost.ip));
+            input.$setValidity("iptarget", this.Validator.ip.isValid(this.dynHost.ip, { version: 4, cidr: "FORBIDDEN" }));
         }
 
         subDomainCheck (input) {

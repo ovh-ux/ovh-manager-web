@@ -143,7 +143,7 @@ angular.module("controllers").controller(
             } else {
                 switch (this.redirection.fieldDisplayType) {
                 case "A":
-                    this.errors.redirectionTarget = !this.validator.isValidIpv4(this.redirectionTarget);
+                    this.errors.redirectionTarget = !this.validator.ip.isValid(this.redirectionTarget, { version: 4, cidr: "FORBIDDEN" });
                     break;
                 case "AAAA":
                     this.errors.redirectionTarget = !this.validator.ip.isValid(this.redirectionTarget, { version: 6, cidr: "FORBIDDEN" });

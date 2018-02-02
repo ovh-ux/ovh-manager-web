@@ -20,7 +20,7 @@ angular
          */
         validate (emailAddress, options) {
             if (!_(emailAddress).isString()) {
-                throw new TypeError("domainName argument must be a String");
+                throw new TypeError("emailAddress argument must be a String");
             }
 
             if (!_(options).isObject() && !_(options).isUndefined()) {

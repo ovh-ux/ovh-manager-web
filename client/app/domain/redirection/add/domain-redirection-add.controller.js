@@ -223,7 +223,7 @@ angular.module("controllers").controller(
          * @param {string} ip
          */
         ipaddrValid (ip) {
-            if (this.Validator.isValidIpv4(ip)) {
+            if (this.Validator.ip.isValid(ip, { version: 4, cidr: "FORBIDDEN" })) {
                 return this.typeRedirection.ipv4;
             } else if (this.Validator.ip.isValid(ip, { version: 6, cidr: "FORBIDDEN" })) {
                 return this.typeRedirection.ipv6;

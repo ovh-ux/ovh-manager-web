@@ -150,10 +150,10 @@ angular.module("services").service(
                         if (~field.indexOf("/")) {
                             // Format: "ip4:ipv4/cidr"
                             field = field.split("/");
-                            if (isNaN(field[1]) || field[1] < 1 || field[1] > 32 || !this.Validator.isValidIpv4(field[0])) {
+                            if (isNaN(field[1]) || field[1] < 1 || field[1] > 32 || !this.Validator.ip.isValid(field[0], { version: 4, cidr: "FORBIDDEN" })) {
                                 isValid = false;
                             }
-                        } else if (!this.Validator.isValidIpv4(field)) {
+                        } else if (!this.Validator.ip.isValid(field, { version: 4, cidr: "FORBIDDEN" })) {
                             // Format: "ip4:ipv4"
                             isValid = false;
                         }
@@ -301,7 +301,7 @@ angular.module("services").service(
             switch (fieldType) {
             case "A":
             case "DYNHOST":
-                return this.Validator.isValidIpv4(target);
+                return this.Validator.ip.isValid(target, { version: 4, cidr: "FORBIDDEN" });
             case "AAAA":
                 return this.Validator.ip.isValid(target, { version: 6, cidr: "FORBIDDEN" });
             case "NS":
