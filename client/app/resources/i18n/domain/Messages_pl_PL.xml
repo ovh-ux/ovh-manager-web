@@ -51,7 +51,7 @@
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">DNS Anycast to usługa pozwalająca na przyspieszenie klasycznego działania serwerów DNS tak, aby strona na całym świecie odpowiadała szybciej podczas pierwszego odwiedzania.</translation>
    <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Ogólnodostępna baza danych zawierająca dane osobowe przypisane do domeny.</translation>
    <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Usługa pozwalająca na przetłumaczenie nazwy domeny na adresy IP (wskazując na przykład umieszczenie danych strony).</translation>
-   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">Un délai de propagation de 48h est nécessaire suite à votre dernière modification.</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">Propagacja po ostatniej modyfikacji zajmie do 48 godzin.</translation>
    <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">Serwery DNS używane do wskazania domeny na adres IP.</translation>
    <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Pozwala na przekierowanie internautów na istniejącą stronę.</translation>
    <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">W przypadku awarii serwerów DNS primary, pozwalają na zapewnienie dostępności strony.</translation>
@@ -59,7 +59,7 @@
    <translation id="domain_dashboard_tooltip_protection" qtlid="129099">Zablokuj zlecenia transferu, aby zabezpieczyć się przed kradzieżą domeny.</translation>
    <translation id="domain_dashboard_tooltip_dnssec" qtlid="184984">Chroń swoją domenę przed Cache Poisoning.</translation>
    <translation id="domain_dashboard_dnssec" qtlid="179615">Zabezpieczenie DNS - (DNSSEC)</translation>
-   <translation id="domain_configuration_dnssec_ENABLED" qtlid="30250">Aktywne</translation>
+   <translation id="domain_configuration_dnssec_ENABLED" qtlid="30250">Aktywny</translation>
    <translation id="domain_configuration_dnssec_ENABLE_IN_PROGRESS" qtlid="148474">Trwa aktywacja</translation>
    <translation id="domain_configuration_dnssec_DISABLED" qtlid="24967">Wyłączony</translation>
    <translation id="domain_configuration_dnssec_DISABLE_IN_PROGRESS" qtlid="148487">Trwa dezaktywacja</translation>
@@ -98,7 +98,7 @@
    <translation id="domain_tab_DNS_name" qtlid="148500">Serwer DNS</translation>
    <translation id="domain_tab_DNS_state" qtlid="26443">Status</translation>
    <translation id="domain_tab_DNS_state_deleting" qtlid="133929">W trakcie usuwania</translation>
-   <translation id="domain_tab_DNS_state_adding" qtlid="26383">W trakcie</translation>
+   <translation id="domain_tab_DNS_state_adding" qtlid="26383">W toku</translation>
    <translation id="domain_tab_DNS_state_activated" qtlid="55133">Aktywny</translation>
    <translation id="domain_tab_DNS_empty" qtlid="211060">Nieznane serwery DNS</translation>
    <translation id="domain_tab_DNS_error" qtlid="211073">Z powodu błędu wewnętrznego niektóre informacje DNS nie mogły zostać pobrane.</translation>
@@ -127,9 +127,10 @@
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Czy chcesz zresetować konfigurację serwerów DNS? Operacja ta zresetuje aktualną konfigurację i spowoduje przełączenie na domyślne serwery OVH.</translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">Przyjęto zlecenie zresetowania serwerów DNS.</translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Wystąpił błąd podczas resetowania serwerów DNS.</translation>
-   <translation id="domain_tab_DNS_update_success" qtlid="447989">La modification des DNS a bien été prise en compte. Un délai de 48h est nécessaire pour la propagation aux autres DNS.</translation>
+   <translation id="domain_tab_DNS_update_success" qtlid="447989">Modyfikacja DNS została zapisana. Czas propagacji zmian może potrwać do 48 godzin.&#13;
+</translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">Wystąpił błąd podczas zmiany serwerów DNS.</translation>
-   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Réinitialiser les serveurs DNS : non disponible en cas d'activation de DNSSEC</translation>
+   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Zresetuj serwery DNS: niedostępne, gdy włączona jest usługa DNSSEC</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Zastosuj konfigurację</translation>
    <translation id="domain_tab_DNS_reset" qtlid="284880">Resetuj konfigurację</translation>
    <translation id="domain_tab_DNS_cancel" qtlid="172280">Anuluj zmiany</translation>
@@ -206,7 +207,7 @@
    <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Czy chcesz usunąć ten wpis GLUE?</translation>
    <translation id="domain_tab_GLUE_delete_success" qtlid="262553">Wpis GLUE zostanie usunięty w ciągu kilku minut.</translation>
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Wystąpił błąd podczas usuwania wpisu GLUE.</translation>
-   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Attention, après validation et afin que votre enregistrement GLUE fonctionne, vous devrez modifier votre zone DNS en ajoutant :<ul><li>un champ de type A pour une adresse IPv4,</li><li>un champ de type AAAA pour une adresse IPv6.</li></ul></translation>
+   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Uwaga: aby rejestr Glue działał, po uprzednim potwierdzeniu zmień strefę DNS, dodając:<ul><li>pole A dla adresu IPv4,</li><li>pole typu AAAA dla adresu IPv6.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdomena</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">Strefa DNS</translation>
@@ -311,7 +312,7 @@
    <translation id="domain_configuration_whois_step1_helpwizard_how" qtlid="130135">W jaki sposób możesz ukryć te informacje?</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_how_desc" qtlid="329031">Jeśli uruchomisz tę usługę, OVH zastąpi Twoje dane danymi ogólnymi. Wszelka korespondencja adresowana do Ciebie będzie przekazywana.<ul><li>Pole z adresem zostanie zastąpione skrytką pocztową OVH. Korespondencja będzie przesyłana na rzeczywisty adres.</li><li>Numer telefonu i faksu zostaną zastąpione numerem OwO.</li><li>Pole email zostanie zastąpione przekierowaniem, które wskazuje na adres email właściciela. Adres ten jest regularnie zmieniany i filtrowany pod względem spamu.</li></ul></translation>
    <translation id="domain_configuration_whois_field_ADDRESS" qtlid="30430">Adres</translation>
-   <translation id="domain_configuration_whois_field_EMAIL" qtlid="33598">Email</translation>
+   <translation id="domain_configuration_whois_field_EMAIL" qtlid="33598">E-mail</translation>
    <translation id="domain_configuration_whois_field_PHONE" qtlid="128214">Telefon / Faks</translation>
    <translation id="domain_configuration_whois_step2_alert" qtlid="128226">Aktualizacja danych w bazie WHOIS zajmuje kilka godzin.</translation>
    <translation id="domain_configuration_whois_step2_old_configuration" qtlid="128238">Poprzednia konfiguracja</translation>
@@ -592,7 +593,7 @@
    <translation id="domain_configuration_dns_entry_add_servicetypes_none" qtlid="30646">Żaden</translation>
    <translation id="domain_configuration_dns_entry_add_t_y" qtlid="192435">Tryb testowy</translation>
    <translation id="domain_configuration_dns_entry_add_t_y_no" qtlid="24967">Wyłączony</translation>
-   <translation id="domain_configuration_dns_entry_add_t_y_yes" qtlid="30250">Aktywne</translation>
+   <translation id="domain_configuration_dns_entry_add_t_y_yes" qtlid="30250">Aktywny</translation>
    <translation id="domain_configuration_dns_entry_add_t_s" qtlid="50350">Subdomeny</translation>
    <translation id="domain_configuration_dns_entry_add_t_s_yes" qtlid="192448">Klucz publiczny nie jest ważny dla subdomen tej domeny</translation>
    <translation id="domain_configuration_dns_entry_add_t_s_no" qtlid="192461">Klucz publiczny jest ważny dla subdomen tej domeny</translation>
@@ -643,7 +644,7 @@
    <translation id="domain_configuration_associate_domain_to_ip_title_button" qtlid="124471">Przypisz domenę do adresu IP</translation>
    <translation id="domain_configuration_zonedns_add_entry_title_button" qtlid="129267">Dodaj wpis</translation>
    <translation id="domain_configuration_zonedns_reset_title_button" qtlid="366424">Zresetuj strefę DNS</translation>
-   <translation id="domain_configuration_zonedns_reset_question" qtlid="263949">Czy chcesz włączyć minimalne wpisy podczas resetowania strefy DNS?</translation>
+   <translation id="domain_configuration_zonedns_reset_question" qtlid="263949">Czy chcesz włączyć wpisy minimalne podczas resetowania strefy DNS?</translation>
    <translation id="domain_configuration_zonedns_reset_warning" qtlid="260247">Uwaga! Operacja ta wiąże się z usunięciem wszystkich istniejących wpisów DNS i przywróceniem domyślnej strefy DNS.</translation>
    <translation id="domain_configuration_zonedns_reset_minimized_yes" qtlid="263962">Tak, chcę zresetować strefę DNS i aktywować minimalne wpisy.</translation>
    <translation id="domain_configuration_zonedns_reset_minimized_no" qtlid="263975">Nie, ale chcę zresetować strefę DNS.</translation>
@@ -654,7 +655,7 @@
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM" qtlid="50062">Spersonalizowany</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS" qtlid="366450">Serwer E-mail OVH</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS_filter" qtlid="50230">Ochrona</translation>
-   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Séléctionnez...</translation>
+   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Wybierz...</translation>
    <translation id="domain_configuration_zonedns_reset_type_HOSTING_WEB_placeholder" qtlid="217132">Wybierz...</translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label" qtlid="366463">Wskaż pole A:</translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label_MX" qtlid="366476">Wskaż pole MX i jego priorytet:</translation>
@@ -664,7 +665,7 @@
    <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">Adres IP hostingu</translation>
 
    <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Czy chcesz usunąć strefę DNS?</translation>
-   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">Votre zone DNS ne peut être supprimée car elle est actuellement liée à un hébergement Web.</translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">Twoja strefa DNS nie może zostać zaktualizowana, ponieważ jest powiązana z hostingiem.</translation>
    <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Uwaga! Operacja ta spowoduje definitywne usunięcie wszystkich istniejących wpisów DNS.</translation>
    <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">Rozpoczęliśmy operację usuwania strefy DNS. Prosimy o sprawdzenie skrzynki e-mail kontaktu administracyjnego strefy DNS i postępowanie według podanych instrukcji.</translation>
    <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">Wystąpił problem podczas usuwania strefy DNS.</translation>
@@ -699,7 +700,7 @@
    <translation id="domain_tab_TASKS_no_tasks" qtlid="217093">Brak zadań</translation>
 
    <translation id="domain_tab_TASKS_status_CANCELLED" qtlid="164623">Anulowane</translation>
-   <translation id="domain_tab_TASKS_status_DOING" qtlid="26383">W trakcie</translation>
+   <translation id="domain_tab_TASKS_status_DOING" qtlid="26383">W toku</translation>
    <translation id="domain_tab_TASKS_status_DONE" qtlid="26395">Zakończona</translation>
    <translation id="domain_tab_TASKS_status_ERROR" qtlid="45508">Błąd</translation>
    <translation id="domain_tab_TASKS_status_TODO" qtlid="197947">Zaplanowane</translation>
@@ -718,7 +719,7 @@
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Twoje zamówienie zostało zaakceptowane. Kliknij <a href="#/billing/orders">tutaj, aby sprawdzić stan realizacji</a>.</translation>
 
    <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
-   <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST vous permet de faire pointer un sous-domaine vers une adresse IP dynamique qui sera mise à jour dans votre zone DNS à chaque changement de celle-ci.</translation>
+   <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST pozwala ustawić subdomenę tak, aby wskazywała na dynamiczny adres IP. Adres ten będzie aktualizowany w strefie DNS w przypadku każdej zmiany strefy.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Domena {0} nie ma strefy DNS.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Wystąpił błąd:</translation>
    <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>
@@ -816,7 +817,7 @@
    <translation id="domain_update_owner_legalform_individual" qtlid="163869">Osoba fizyczna</translation>
    <translation id="domain_update_owner_legalform_other" qtlid="19963">Inne</translation>
 
-   <translation id="domain_update_owner_email" qtlid="33598">Email</translation>
+   <translation id="domain_update_owner_email" qtlid="33598">E-mail</translation>
    <translation id="domain_update_owner_lastname" qtlid="3818">Nazwa</translation>
    <translation id="domain_update_owner_firstname" qtlid="23323">Imię</translation>
    <translation id="domain_update_owner_title" qtlid="157642">Moje konto</translation>

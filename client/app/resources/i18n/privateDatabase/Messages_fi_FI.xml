@@ -50,10 +50,10 @@
    <translation id="privateDatabase_dashboard_port_docker" qtlid="262947">SFTP-portti</translation>
    <translation id="privateDatabase_dashboard_port" qtlid="9034">Portti</translation>
    <translation id="privateDatabase_dashboard_certificate" qtlid="19771">Varmenne</translation>
-   <translation id="privateDatabase_dashboard_certificate_tooltip" qtlid="448340">Le certificat n'est pas obligatoire pour réaliser la connexion à votre instance. Celui-ci est par contre nécessaire si vous désirez chiffrer la connexion vers celle-ci.</translation>
-   <translation id="privateDatabase_dashboard_see_certificate" qtlid="448353">Voir le certificat</translation>
+   <translation id="privateDatabase_dashboard_certificate_tooltip" qtlid="448340">Varmenne ei ole pakollinen instanssiin kirjautumista varten. Se kuitenkin vaaditaan, jos haluat salata yhteydet sinne.</translation>
+   <translation id="privateDatabase_dashboard_see_certificate" qtlid="448353">Katso varmenne</translation>
    <translation id="privateDatabase_dashboard_service_hosting_more" qtlid="325924">Katso lista</translation>
-   <translation id="privateDatabase_dashboard_service_hosting_linked" qtlid="444456">Hébergement web lié</translation>
+   <translation id="privateDatabase_dashboard_service_hosting_linked" qtlid="444456">Liitetty webhotelli</translation>
    <translation id="privateDatabase_dashboard_service_hosting_linked_none" qtlid="30646">Ei ole</translation>
 
    <translation id="privateDatabase_dashboard_connections_title" qtlid="250927">Kirjautumistiedot</translation>
@@ -77,7 +77,7 @@
 
    <translation id="privateDatabase_configurations_general_mysql" qtlid="263494">MySql:n yleiset asetukset</translation>
    <translation id="privateDatabase_configurations_general_mariadb" qtlid="404668">MariaDB-tietokannan yleinen konfigurointi</translation>
-   <translation id="privateDatabase_configurations_general_redis" qtlid="448366">Configuration générale de Redis</translation>
+   <translation id="privateDatabase_configurations_general_redis" qtlid="448366">Redis-yleiskonfiguraatio</translation>
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">PostgreSQL -yleiskonfiguraatio</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">Pian saatavilla PostgreSQL:ään</translation>
 
@@ -101,7 +101,7 @@
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Palvelin odottama aika sekunneissa ennen yhteyden katkaisua silloin kun yhteys komentorivin kautta ei ole aktiivinen. </translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Palvelimen odottama aika sekunneissa ennen yhteyden katkaisua silloin kun ulkopuolinen yhteys ei ole aktiivinen.</translation>
 
-   <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Cette fonctionnalité n'est pas disponible pour ce type de base de données.</translation>
+   <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Tätä ominaisuutta ei ole vielä saatavilla tämän tyyppisille tietokannoille.</translation>
 
    <translation id="privateDatabase_action_changepassword" qtlid="80394">Salasanamuutos</translation>
    <translation id="privateDatabase_action_grants" qtlid="215715">Hallitse oikeuksia</translation>
@@ -309,9 +309,9 @@
    <translation id="privateDatabase_add_bdd_new_user_password_confirm" qtlid="300539">Vahvista salasana</translation>
    <translation id="privateDatabase_add_bdd_new_user_password_tooltip" qtlid="300552">8 - 31 merkkiä, vähintään yksi (1) isokirjain, yksi (1) pienikirjain ja yksi numero, salasanan tulee koostua ainoastaan numeroista ja kirjaimista</translation>
 
-   <translation id="privateDatabase_add_authorized_ip" qtlid="448392">Ajouter une adresse IP autorisée</translation>
-   <translation id="privateDatabase_add_authorized_ip_explanation" qtlid="448405">Vous n'avez pas encore d'adresse IP autorisée à accéder à vos bases de données. Entrez ici l'adresse IP du serveur auquel vous souhaitez donner accès à vos bases.</translation>
-   <translation id="privateDatabase_add_authorized_ip_description" qtlid="448418">Accès initial à la base de données</translation>
+   <translation id="privateDatabase_add_authorized_ip" qtlid="448392">Lisää hyväksytty IP-osoite</translation>
+   <translation id="privateDatabase_add_authorized_ip_explanation" qtlid="448405">Sinulla ei ole vielä hyväksyttyä IP-osoitetta, jolla olisi lupa yhdistää palvelimellesi. Syötä IP-osoitteet, joille haluat antaa luvan yhdistää tietokantoihisi.</translation>
+   <translation id="privateDatabase_add_authorized_ip_description" qtlid="448418">Ensimmäinen kirjautuminen tietokantaan</translation>
 
    <translation id="privateDatabase_restore_bdd_application" qtlid="404707">Ole hyvä ja luo tämä ensin uudestaan tietokantojesi hallintakuvakkeessa.</translation>
    <translation id="privateDatabase_restore_bdd_close" qtlid="4670">Sulje</translation>
@@ -337,12 +337,12 @@
    <translation id="privateDatabase_tabs_dumps_restore_in_progress" qtlid="263428">Varmuuskopion palautus on rekisteröity.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_success" qtlid="263441">Varmuuskopio on palautettu.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_fail" qtlid="263454">Varmuuskopiota palautettaessa tapahtui virhe:</translation>
-   <translation id="privateDatabase_tabs_dumps_delete" qtlid="448431">Supprimer la sauvegarde</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_title" qtlid="448444">Supprimer une sauvegarde</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_confirm" qtlid="448457">Souhaitez-vous supprimer la sauvegarde du <strong>{0}</strong> de la base de données <strong>{1}</strong> ?</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_start" qtlid="448470">La demande de suppression de la sauvegarde de base de données a été prise en compte.</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_done" qtlid="448483">La suppression de la sauvegarde de base de données a été effectuée.</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_error" qtlid="448496">Une erreur est survenue lors de la suppression de la sauvegarde de base de données.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete" qtlid="448431">Poista varmuuskopio</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_title" qtlid="448444">Poista varmuuskopio</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_confirm" qtlid="448457">Haluatko poistaa <strong>{0}</strong> tietokannan <strong>{1}</strong> varmuuskopion?</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_start" qtlid="448470">Pyyntö tietokannan varmuuskopion poistamiseksi rekisteröitiin.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_done" qtlid="448483">Tietokannan varmuuskopion poisto onnistui.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_error" qtlid="448496">Tapahtui virhe tietokannan varmuuskopion poistossa.</translation>
 
    <translation id="privateDatabase_tabs_users_database_error" qtlid="135294">Tapahtui virhe tietoja ladattaessa.</translation>
    <translation id="privateDatabase_tabs_users_database_username" qtlid="7450">Käyttäjä</translation>
@@ -386,7 +386,7 @@
    <translation id="privateDatabase_RAM_add_do_order_attention" qtlid="108456">HUOMIO!</translation>
    <translation id="privateDatabase_RAM_add_do_order_warning" qtlid="304433">Toimenpiteen vuoksi palvelin on käynnistettävä uudelleen.</translation>
    <translation id="privateDatabase_RAM_loading_order" qtlid="221162">Palveluiden lataus käynnissä...</translation>
-   <translation id="privateDatabase_order_RAM_finish_success" qtlid="444732">Votre <a href="{0}" target="_blank">bon de commande</a> a été généré avec succès. La quantité de RAM sera modifiée lorsque vous l'aurez validé.</translation>
+   <translation id="privateDatabase_order_RAM_finish_success" qtlid="444732"><a href="{0}" target="_blank">Tilauksesi</a> a été onnistui. RAM-muistin määrä muutetaan, kun olet vahvistanut tämän.</translation>
    <translation id="privateDatabase_order_RAM_finish_error" qtlid="181227">Tapahtui virhe luotaessa tilaustasi.</translation>
    <translation id="privateDatabase_order_RAM_resume" qtlid="177496">Tilauksen yhteenveto</translation>
    <translation id="privateDatabase_order_RAM_price_HT" qtlid="146177">Kokonaishinta (ALV 0 %):</translation>

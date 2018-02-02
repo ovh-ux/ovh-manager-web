@@ -9,7 +9,7 @@
              data-wizard-step-valid="ctrl.createAccountForm.$valid && ctrl.isPasswordMatches()">
 
             <div class="text-center" data-ng-if="ctrl.loading.accountSize">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="!ctrl.loading.accountSize">

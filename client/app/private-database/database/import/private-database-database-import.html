@@ -38,7 +38,7 @@
              data-wizard-step-valid="importBddCtrl.isDocumentsValid()">
 
             <div data-ng-if="importBddCtrl.selected.action === importBddCtrl.model.actions.IMPORT_FROM_NEW">
-                <oui-loader data-ng-if="importBddCtrl.isSendingFile"></oui-loader>
+                <oui-spinner data-ng-if="importBddCtrl.isSendingFile"></oui-spinner>
 
                 <form name="importBddCtrl.formFileUpload" novalidate
                       data-ng-show="!importBddCtrl.isSendingFile"
@@ -87,7 +87,7 @@
             </div>
 
             <div data-ng-if="importBddCtrl.selected.action === importBddCtrl.model.actions.IMPORT_FROM_EXISTING">
-                <oui-loader data-ng-if="importBddCtrl.loading.documents"></oui-loader>
+                <oui-spinner data-ng-if="importBddCtrl.loading.documents"></oui-spinner>
 
                 <form data-ng-if="!importBddCtrl.loading.documents">
                     <label class="oui-label" for="ddlDocuments"
@@ -107,32 +107,14 @@
             <form name="formFileUploadStep2" novalidate>
                 <p data-i18n-static="hosting_tab_DATABASES_table_popover_import_step2_title"></p>
 
-                <div class="oui-checkbox">
-                    <input type="checkbox" class="oui-checkbox__input" id="flush_option"
-                           data-ng-model="importBddCtrl.model.flushDatabase">
-                    <label class="oui-checkbox__label-container" for="flush_option">
-                        <span class="oui-checkbox__label"
-                              data-i18n-static="hosting_tab_DATABASES_table_popover_import_step2_flush_database"></span>
-                        <span class="oui-checkbox__icon">
-                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                        </span>
-                    </label>
-                </div>
-                <div class="oui-checkbox">
-                    <input type="checkbox" class="oui-checkbox__input" id="send_email"
-                           data-ng-model="importBddCtrl.model.sendEmail">
-                    <label class="oui-checkbox__label-container" for="send_email">
-                        <span class="oui-checkbox__label"
-                              data-i18n-static="hosting_tab_DATABASES_table_popover_import_step2_send_email"></span>
-                        <span class="oui-checkbox__icon">
-                            <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                            <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                            <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                        </span>
-                    </label>
-                </div>
+                <oui-checkbox id="flush_option"
+                    data-model="importBddCtrl.model.flushDatabase"
+                    data-text="{{::i18n.hosting_tab_DATABASES_table_popover_import_step2_flush_database}}">
+                </oui-checkbox>
+                <oui-checkbox id="send_email"
+                    data-model="importBddCtrl.model.sendEmail"
+                    data-text="{{::i18n.hosting_tab_DATABASES_table_popover_import_step2_send_email}}">
+                </oui-checkbox>
             </form>
         </div>
     </div>

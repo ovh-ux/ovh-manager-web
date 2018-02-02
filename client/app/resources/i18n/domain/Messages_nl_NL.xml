@@ -51,7 +51,7 @@
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">DNS Anycast is een krachtige oplossing die de normale werking van DNS servers versnelt zodat er betere responstijd geleverd kan worden tijdens de eerste hits op uw website. </translation>
    <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Voor het publiek toegankelijke database, die persoonlijke gegevens met betrekking tot uw domein bevat.</translation>
    <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Met deze dienst wordt uw domeinnaam omgezet naar een IP-adres (hiermee worden bijvoorbeeld de locatiegegevens van uw site aangegeven).</translation>
-   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">Un délai de propagation de 48h est nécessaire suite à votre dernière modification.</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">U moet 48 uur wachten voordat uw meest recente wijziging wordt doorgevoerd.</translation>
    <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">De DNS-servers die voornamelijk worden gebruikt om uw domein om te zetten naar een IP-adres.</translation>
    <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Maakt het doorsturen van bezoekers naar een bestaande site mogelijk.</translation>
    <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">In het geval dat de primaire DNS-server uitvalt, zorgen zij ervoor dat uw site bereikbaar blijft.</translation>
@@ -127,9 +127,9 @@
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Weet u zeker dat u de configuratie van de DNS-servers opnieuw wilt instellen? Deze actie zal de huidige configuratie resetten en de overstap naar de originele OVH servers activeren.</translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">Het reset verzoek van de DNS servers is uitgevoerd.</translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Bij het verzoek om de DNS server te resetten, is een fout opgetreden.</translation>
-   <translation id="domain_tab_DNS_update_success" qtlid="447989">La modification des DNS a bien été prise en compte. Un délai de 48h est nécessaire pour la propagation aux autres DNS.</translation>
+   <translation id="domain_tab_DNS_update_success" qtlid="447989">De DNS-wijziging is verwerkt. U moet 48 uur wachten voordat de wijzigingen worden doorgevoerd in andere DNS-servers.</translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">Er is een fout opgetreden tijdens de DNS wijziging. </translation>
-   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Réinitialiser les serveurs DNS : non disponible en cas d'activation de DNSSEC</translation>
+   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Reset DNS-servers: niet beschikbaar als DNSSEC is ingeschakeld</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Configuratie instellen</translation>
    <translation id="domain_tab_DNS_reset" qtlid="284880">Reset configuratie</translation>
    <translation id="domain_tab_DNS_cancel" qtlid="172280">Wijzigingen annuleren</translation>
@@ -206,7 +206,7 @@
    <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Weet u zeker dat u deze Glue registratie wilt verwijderen?</translation>
    <translation id="domain_tab_GLUE_delete_success" qtlid="262553">De Glue registratie zal binnen een paar ogenblikken worden verwijderd.</translation>
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Er is een fout opgetreden tijdens de verwijdering van de Glue registratie. </translation>
-   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Attention, après validation et afin que votre enregistrement GLUE fonctionne, vous devrez modifier votre zone DNS en ajoutant :<ul><li>un champ de type A pour une adresse IPv4,</li><li>un champ de type AAAA pour une adresse IPv6.</li></ul></translation>
+   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Belangrijk - na validatie moet u uw DNS-zone aanpassen door het volgende toe te voegen: <ul><li>een A-record voor een IPv4-adres, </li><li> en een AAAA-veld voor een IPv6-adres. </Li></ul>U moet dit doen om uw gluerecord te laten functioneren.</translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdomein</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">DNS zone</translation>
@@ -654,7 +654,7 @@
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM" qtlid="50062">Op maat gemaakt</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS" qtlid="366450">OVH e-mailserver</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS_filter" qtlid="50230">Protectie</translation>
-   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Séléctionnez...</translation>
+   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Selecteer...</translation>
    <translation id="domain_configuration_zonedns_reset_type_HOSTING_WEB_placeholder" qtlid="217132">Selecteer...</translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label" qtlid="366463">Selecteer een A veld: </translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label_MX" qtlid="366476">Selecteer een MX veld en kies de prioriteit:</translation>
@@ -664,7 +664,7 @@
    <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">IP-adres van uw hosting</translation>
 
    <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Wilt u de DNS zone verwijderen? </translation>
-   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">Votre zone DNS ne peut être supprimée car elle est actuellement liée à un hébergement Web.</translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">Uw DNS-zone kan niet worden verwijderd omdat deze momenteel aan een website is gekoppeld.</translation>
    <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Let op! Dit zal alle bestaande DNS bestanden permanent verwijderen. </translation>
    <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">De DNS zone is verwijderd, u kunt de DNS zone NIC administrator inbox raadplegen en de instructies volgen om de aanvraag te voltooien. </translation>
    <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">Er is een fout opgetreden tijdens het verwijderen van de DNS zone. </translation>
@@ -718,7 +718,7 @@
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Uw bestelling is gevalideerd. Klik <a href="#/billing/orders">hier om de voortgang van uw bestelling te bekijken</a>.</translation>
 
    <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
-   <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST vous permet de faire pointer un sous-domaine vers une adresse IP dynamique qui sera mise à jour dans votre zone DNS à chaque changement de celle-ci.</translation>
+   <translation id="domain_tab_DYNHOST_title" qtlid="448041">Met DynHost kunt u een subdomein naar een dynamisch IP-adres wijzen dat bij elke wijziging in uw DNS wordt bijgewerkt.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Het domein {0} heeft geen DNS zone.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Er is een fout opgetreden:</translation>
    <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>

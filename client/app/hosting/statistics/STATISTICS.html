@@ -1,6 +1,6 @@
 <div data-ng-controller="HostingStatisticsCtrl">
     <div class="text-center" data-ng-if="!model.constants">
-        <oui-loader inline="true"></oui-loader>
+        <oui-spinner></oui-spinner>
     </div>
 
     <div data-ng-if="model.constants">
@@ -41,10 +41,13 @@
                                data-ng-change="getStatistics()"
                                data-ng-model="selected.httpMeanResponseTime">
                         <label class="oui-checkbox__label-container" for="hostingStatisticsResponseTime">
-                            <span class="oui-checkbox__icon">
-                                <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                            <span class="oui-checkbox__label">
+                                <span class="oui-checkbox__icon">
+                                    <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
+                                    <span class="oui-icon oui-icon-checkbox-indeterminate" aria-hidden="true"></span>
+                                </span>
                             </span>
                         </label>
                     </div>
@@ -82,7 +85,7 @@
         </div>
 
         <div class="text-center mt-5" data-ng-if="!model.datas">
-            <oui-loader size="l" inline="true"></oui-loader>
+            <oui-spinner data-size="l"></oui-spinner>
         </div>
 
         <div class="chart-container" style="height: 320px;"

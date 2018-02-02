@@ -9,7 +9,7 @@
             <p data-i18n-static="email_tab_modal_filter_create_info"></p>
 
             <div class="text-center" data-ng-if="ctrl.loading">
-                <oui-loader inline="true"></oui-loader>
+                <oui-spinner></oui-spinner>
             </div>
 
             <div data-ng-if="!ctrl.loading">
@@ -58,19 +58,10 @@
                         </div>
 
                         <div class="col-md-offset-4 pl-lg-3">
-                            <div class="oui-checkbox mb-0">
-                                <input type="checkbox" class="oui-checkbox__input" id="chk-filter-active" name="filterActive"
-                                       data-ng-model="ctrl.model.filterActive">
-                                <label class="oui-checkbox__label-container" for="chk-filter-active">
-                                    <span class="oui-checkbox__label"
-                                          data-i18n="email_tab_modal_filter_create_active"></span>
-                                    <span class="oui-checkbox__icon">
-                                        <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
-                                        <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
-                                        <span class="oui-icon oui-icon-checkbox-checkmark" aria-hidden="true"></span>
-                                    </span>
-                                </label>
-                            </div>
+                            <oui-checkbox id="chk-filter-active" name="filterActive"
+                                data-model="ctrl.model.filterActive"
+                                data-text="{{::i18n.email_tab_modal_filter_create_active}}">
+                            </oui-checkbox>
                         </div>
                     </fieldset>
 

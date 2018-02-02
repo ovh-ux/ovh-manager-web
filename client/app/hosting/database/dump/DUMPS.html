@@ -7,7 +7,7 @@
         <span data-i18n-static="common_back"></span>
     </button>
 
-    <oui-loader size="l" data-ng-if="ctrlDumps.dumpsLoading"></oui-loader>
+    <oui-spinner data-size="l" data-ng-if="ctrlDumps.dumpsLoading"></oui-spinner>
 
     <div data-ng-if="!ctrlDumps.dumpsLoading">
         <div class="alert alert-info" role="alert"
@@ -41,7 +41,7 @@
                         <td>
                             <span data-ng-bind="::dump.creationDate | date:'medium'"></span>
                             <span class="ml-2" data-ng-if="dump.waitRestore || dump.waitDelete">
-                                <oui-loader size="s" inline="true"></oui-loader>
+                                <oui-spinner data-size="s"></oui-spinner>
                             </span>
                             <span data-i18n-static="database_restore_in_progress" data-ng-if="dump.waitRestore"></span>
                             <span data-i18n-static="common_delete_in_progress" data-ng-if="dump.waitDelete"></span>

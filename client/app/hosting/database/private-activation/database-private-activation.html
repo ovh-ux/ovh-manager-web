@@ -1,19 +1,19 @@
-<div data-ng-controller="HostingDatabasePrivateActiveCtrl">
+<div data-ng-controller="HostingDatabasePrivateActiveCtrl as ctrl">
     <div data-wizard
          data-wizard-on-cancel="resetAction"
-         data-wizard-on-finish="activeDatabase"
+         data-wizard-on-finish="activateDatabase"
          data-wizard-title="i18n.hosting_dashboard_database_active_title">
 
         <div data-wizard-step
-             data-wizard-step-valid="!loaders.versions">
+             data-wizard-step-valid="ctrl.choice.version && ctrl.choice.ram">
 
             <p data-i18n-static="hosting_dashboard_database_active_info"></p>
 
-            <div class="text-center" data-ng-if="loaders.versions">
-                <oui-loader inline="true"></oui-loader>
+            <div class="text-center" data-ng-if="ctrl.loaders.retrievingVersions">
+                <oui-spinner></oui-spinner>
             </div>
 
-            <div data-ng-if="!loaders.versions">
+            <div data-ng-if="!ctrl.loaders.retrievingVersions">
                 <form class="form-horizontal">
                     <div class="form-group">
                         <label class="control-label col-md-3" for="databaseRam"
@@ -21,8 +21,8 @@
                         <div class="col-md-6">
                             <div class="oui-select">
                                 <select class="oui-select__input" id="databaseRam" name="databaseRam"
-                                        data-ng-model="choice.ram"
-                                        data-ng-options="(ram.quota.value + ' ' + ram.quota.unit) for ram in hosting.offerCapabilities.privateDatabases">
+                                        data-ng-model="ctrl.choice.ram"
+                                        data-ng-options="(ram.quota.value + ' ' + ram.quota.unit) for ram in ctrl.host.offerCapabilities.privateDatabases">
                                     <option value="" disabled
                                             data-i18n-static="select_placeholder"></option>
                                 </select>
@@ -36,8 +36,8 @@
                         <div class="col-md-6">
                             <div class="oui-select">
                                 <select class="oui-select__input" id="databaseVersion" name="databaseVersion"
-                                        data-ng-model="choice.version"
-                                        data-ng-options="version for (key, version) in datas.versions track by version">
+                                        data-ng-model="ctrl.choice.version"
+                                        data-ng-options="version for (key, version) in ctrl.versions track by version">
                                     <option value="" disabled
                                             data-i18n-static="select_placeholder"></option>
                                 </select>
