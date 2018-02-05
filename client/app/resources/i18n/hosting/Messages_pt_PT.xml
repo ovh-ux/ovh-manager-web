@@ -264,10 +264,10 @@
    <translation id="hosting_tab_CRON_table_language_PHP_7_2" qtlid="448249">PHP 7.2</translation>
    <translation id="hosting_tab_CRON_table_language_php7_2" qtlid="448249">PHP 7.2</translation>
    <translation id="hosting_tab_CRON_table_popover_delete" qtlid="2414">Eliminar</translation>
-   <translation id="hosting_tab_CRON_table_popover_modify" qtlid="37875">Modificar</translation>
+   <translation id="hosting_tab_CRON_table_popover_modify" qtlid="37875">Alterar</translation>
    <translation id="hosting_tab_CRON_configuration_error" qtlid="244690">Ocorreu um erro aquando da recuperação dos dados:</translation>
 
-   <translation id="hosting_tab_CRON_error" qtlid="233047">Ocorreu um erro aquando da obtenção das informações.</translation>
+   <translation id="hosting_tab_CRON_error" qtlid="233047">Ocorreu um erro no acesso às informações.</translation>
 
    <translation id="hosting_tab_CRON_configuration_delete_title" qtlid="196738">Eliminar uma tarefa Cron</translation>
    <translation id="hosting_tab_CRON_configuration_delete_step1_question" qtlid="196751">Tem a certeza de que deseja eliminar a seguinte tarefa CRON?</translation>
@@ -294,7 +294,7 @@
    <translation id="hosting_tab_DOMAINS_table_firewall_state_NONE" qtlid="24967">Desativado</translation>
    <translation id="hosting_tab_DOMAINS_table_empty" qtlid="196829">Não tem nomes de domínio associados a este alojamento partilhado</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_delete" qtlid="2414">Eliminar</translation>
-   <translation id="hosting_tab_DOMAINS_table_popover_modify" qtlid="37875">Modificar</translation>
+   <translation id="hosting_tab_DOMAINS_table_popover_modify" qtlid="37875">Alterar</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_refresh" qtlid="158708">Recarregar</translation>
    <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Pesquisa...</translation>
 
@@ -375,8 +375,8 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_fail" qtlid="197167">Ocorreu um erro durante o pedido de criação de base de dados.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_success" qtlid="197180">A base de dados vai ser criada.</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_bdd_adding">Ajout de la base de données en cours.</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_bdd_added">La base de données a été créée</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_bdd_adding" qtlid="453189">Ajout de la base de données en cours.</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_bdd_added" qtlid="453202">La base de données a été créée</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_upgrade_perso" qtlid="272734">A oferta "Perso" permite-lhe beneficiar de uma só base de dados, e poderá trocar de oferta para uma Pro ou Performance que permitem a criação de até 4 bases de dados.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_upgrade_pro" qtlid="272747">Migrar para uma oferta performance permite-lhe beneficiar de um servidor "SQL Privado"</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_upgrade_start" qtlid="272760">A oferta "Start 10" não permite a criação de bases de dados, pode no entanto mudar de oferta para uma oferta paga</translation>
@@ -712,7 +712,7 @@
    <translation id="hosting_tab_FTP_multiftp_table_ssh_state_none" qtlid="24967">Desativado</translation>
 
    <translation id="hosting_tab_FTP_multiftp_table_popover_update_password" qtlid="80394">Alterar a password</translation>
-   <translation id="hosting_tab_FTP_multiftp_table_popover_modify" qtlid="37875">Modificar</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_popover_modify" qtlid="37875">Alterar</translation>
    <translation id="hosting_tab_FTP_multiftp_table_popover_delete" qtlid="2414">Eliminar</translation>
 
    <translation id="hosting_tab_DATABASES_configuration_user_delete_title" qtlid="198701">Eliminar um utilizador FTP</translation>
@@ -976,12 +976,12 @@ Queria tentar mais tarde.</translation>
    <translation id="hosting_tab_CRON_label_dow_min" qtlid="199364">dias da semana</translation>
    <translation id="hosting_tab_CRON_label_months" qtlid="37803">Mês</translation>
    <translation id="hosting_tab_CRON_label_months_min" qtlid="40222">mês</translation>
-   <translation id="hosting_tab_CRON_hours_all" qtlid="8782">Todas as horas</translation>
+   <translation id="hosting_tab_CRON_hours_all" qtlid="8782">De hora em hora</translation>
    <translation id="hosting_tab_CRON_hours_items" qtlid="199377">Horas fixas</translation>
    <translation id="hosting_tab_CRON_hours_interval" qtlid="199390">Todas as N horas</translation>
    <translation id="hosting_tab_CRON_hours_interval_value" qtlid="199403">Todas as {0} horas</translation>
    <translation id="hosting_tab_CRON_hours_range" qtlid="199416">De "tal hora" até "tal hora"</translation>
-   <translation id="hosting_tab_CRON_dom_all" qtlid="154091">Todos os dias</translation>
+   <translation id="hosting_tab_CRON_dom_all" qtlid="154091">Diária</translation>
    <translation id="hosting_tab_CRON_dom_items" qtlid="61908">Dias fixos</translation>
    <translation id="hosting_tab_CRON_dom_interval" qtlid="199429">Todos os N dias</translation>
    <translation id="hosting_tab_CRON_dom_interval_value" qtlid="199442">Todos os {0} dias</translation>
@@ -1268,7 +1268,7 @@ Será fatura no próximo mês relativamente ao BOOST extra utilizado este mês (
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step3_desc_label" qtlid="9238">Descrição </translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_fail" qtlid="268432">Ocorreu um erro aquando do pedido de criação do utilizador.</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_success" qtlid="268445">O utilizador vai ser criado.</translation>
-   <translation id="hosting_tab_USER_LOGS_table_popover_modify" qtlid="37875">Modificar</translation>
+   <translation id="hosting_tab_USER_LOGS_table_popover_modify" qtlid="37875">Alterar</translation>
    <translation id="hosting_tab_USER_LOGS_table_popover_update_password" qtlid="80394">Alterar a password</translation>
    <translation id="hosting_tab_USER_LOGS_table_popover_delete" qtlid="2414">Eliminar</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_delete_title" qtlid="269760">Eliminar um utilizador</translation>
