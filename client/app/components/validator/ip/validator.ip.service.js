@@ -143,7 +143,7 @@ angular
          * @returns {boolean} true if the IP is valid according to the options.
          */
         isValid (ip, options) {
-            const isValid = this.validate(ip, options).isValid
+            const isValid = this.validate(ip, options).isValid;
             return isValid;
         }
     });
