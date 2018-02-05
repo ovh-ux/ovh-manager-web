@@ -140,6 +140,7 @@ angular
          * @returns {boolean} True if the url is valid
          */
         isValid (url, options) {
-            return this.validate(url, options).isValid;
+            const isValid = this.validate(url, options).isValid;
+            return isValid;
         }
     });

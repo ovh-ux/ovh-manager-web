@@ -83,7 +83,6 @@ angular
          */
         isValid (emailAddress, options) {
             const isValid = this.validate(emailAddress, options).isValid;
-
             return isValid;
         }
     });

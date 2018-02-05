@@ -149,6 +149,7 @@ angular
          * @returns {boolean} True if the domain name is valid
          */
         isValid (domainName, options) {
-            return this.validate(domainName, options).isValid;
+            const isValid = this.validate(domainName, options).isValid;
+            return isValid;
         }
     });
