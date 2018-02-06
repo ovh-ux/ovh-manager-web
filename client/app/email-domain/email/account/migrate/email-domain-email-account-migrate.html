@@ -196,8 +196,8 @@
             <p class="oui-message__body">
                 <span data-ng-bind-html="ctrl.checkMigrationErrorLabel"></span>
                 <ul>
-                    <li ng-repeat="code in ctrl.checkMigrationErrors" 
-                        data-i18n-static="email_tab_modal_migrate_errors_check_{{code}}"></li>
+                    <li ng-repeat="error in ctrl.checkMigrationErrors" 
+                        data-ng-bind-html="error"></li>
                 </ul>
             </p>
         </div>

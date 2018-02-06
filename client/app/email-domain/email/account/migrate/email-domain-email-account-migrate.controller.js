@@ -196,9 +196,9 @@ angular.module("App").controller(
         }
 
         displayCheckMigrationErrors (errors) {
-            this.checkMigrationErrors = errors.map((error) => _.get(error, "code"));
+            const checkMigrationErrorCodes = errors.map((error) => _.get(error, "code"));
 
-            const shouldRetry = _.isEmpty(_.intersection(this.checkMigrationErrors, ["ACCOUNT_EMPTY",
+            const shouldRetry = _.isEmpty(_.intersection(checkMigrationErrorCodes, ["ACCOUNT_EMPTY",
                 "DOMAIN_EMPTY",
                 "FORWARD_EXIST",
                 "FORWARD_LOCAL",
@@ -207,6 +207,12 @@ angular.module("App").controller(
                 "MAILPROXY_EMPTY",
                 "UNKNOW"
             ]));
+
+            const checkMigrationErrors = [];
+            _.forEach(checkMigrationErrorCodes, (code) => {
+                checkMigrationErrors.push(this.translator.tr(`email_tab_modal_migrate_errors_check_${code}`));
+            });
+            this.checkMigrationErrors = _.uniq(checkMigrationErrors);
 
             let shouldRetryLabel = "";
             if (shouldRetry) {
