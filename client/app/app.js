@@ -554,12 +554,12 @@ angular
             };
 
             ouiPaginationConfiguration.translations = {
-                resultsPerPage: translator.tr("common_ouipagination_resultsperpage")
-                    .replace("CURRENT_PAGE", "{{currentPage}}")
-                    .replace("PAGE_COUNT", "{{pageCount}}"),
+                resultsPerPage: translator.tr("common_ouipagination_resultsperpage"),
                 ofNResults: translator.tr("common_ouipagination_ofnresults")
                     .replace("TOTAL_ITEMS", "{{totalItems}}"),
-                currentPageOfPageCount: translator.tr("common_ouipagination_currentpageofpagecount"),
+                currentPageOfPageCount: translator.tr("common_ouipagination_currentpageofpagecount")
+                    .replace("CURRENT_PAGE", "{{currentPage}}")
+                    .replace("PAGE_COUNT", "{{pageCount}}"),
                 previousPage: translator.tr("common_ouipagination_previous"),
                 nextPage: translator.tr("common_ouipagination_next")
             };

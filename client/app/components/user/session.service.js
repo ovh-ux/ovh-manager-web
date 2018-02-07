@@ -257,9 +257,6 @@ class SessionService {
                     title: this.translator.tr("global_contacts"),
                     url: "#/useraccount/contacts?tab=SERVICES"
                 }, {
-                    title: this.translator.tr("global_conso"),
-                    url: "#/billing/consumptionsTelephony"
-                }, {
                     title: this.translator.tr("global_list_ticket"),
                     url: "#/ticket"
                 }, {

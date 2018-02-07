@@ -13,9 +13,9 @@ angular.module("App")
 
         // Scroll to anchor id
         $scope.scrollTo = (id) => {
-        // Set focus to target
+            // Set focus to target
             if (_.isString(id)) {
-                $document.find(`#${id}`)[0].focus();
+                $document[0].getElementById(id).focus();
             }
         };
 
