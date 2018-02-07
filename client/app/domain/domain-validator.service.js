@@ -79,10 +79,10 @@ angular.module("services").service(
                         if (~field.indexOf("/")) {
                             // Format: "a:domain/cidr"
                             field = field.split("/");
-                            if (isNaN(field[1]) || field[1] < 1 || field[1] > 32 || !this.Validator.isValidDomain(field[0], { canBeginWithUnderscore: true })) {
+                            if (isNaN(field[1]) || field[1] < 1 || field[1] > 32 || !this.Validator.domain.isValid(field[0], { subDomainsCanBeginWithUnderscore: true })) {
                                 isValid = false;
                             }
-                        } else if (!this.Validator.isValidDomain(field, { canBeginWithUnderscore: true })) {
+                        } else if (!this.Validator.domain.isValid(field, { subDomainsCanBeginWithUnderscore: true })) {
                             // Format: "a:domain"
                             isValid = false;
                         }
@@ -109,10 +109,10 @@ angular.module("services").service(
                         if (~field.indexOf("/")) {
                             // Format: "mx:domain/cidr"
                             field = field.split("/");
-                            if (isNaN(field[1]) || field[1] < 1 || field[1] > 32 || !this.Validator.isValidDomain(field[0], { canBeginWithUnderscore: true })) {
+                            if (isNaN(field[1]) || field[1] < 1 || field[1] > 32 || !this.Validator.domain.isValid(field[0], { subDomainsCanBeginWithUnderscore: true })) {
                                 isValid = false;
                             }
-                        } else if (!this.Validator.isValidDomain(field, { canBeginWithUnderscore: true })) {
+                        } else if (!this.Validator.domain.isValid(field, { subDomainsCanBeginWithUnderscore: true })) {
                             // Format: "mx:domain"
                             isValid = false;
                         }
@@ -131,7 +131,7 @@ angular.module("services").service(
                         return true;
                     } else if (/^ptr:.+/.test(field)) {
                         field = field.replace(/^(ptr:)/, "");
-                        if (!this.Validator.isValidDomain(field, { canBeginWithUnderscore: true })) {
+                        if (!this.Validator.domain.isValid(field, { subDomainsCanBeginWithUnderscore: true })) {
                             // Format: "ptr:domain"
                             isValid = false;
                         }
@@ -150,10 +150,10 @@ angular.module("services").service(
                         if (~field.indexOf("/")) {
                             // Format: "ip4:ipv4/cidr"
                             field = field.split("/");
-                            if (isNaN(field[1]) || field[1] < 1 || field[1] > 32 || !this.Validator.isValidIpv4(field[0])) {
+                            if (isNaN(field[1]) || field[1] < 1 || field[1] > 32 || !this.Validator.ip.isValid(field[0], { version: 4, cidr: "FORBIDDEN" })) {
                                 isValid = false;
                             }
-                        } else if (!this.Validator.isValidIpv4(field)) {
+                        } else if (!this.Validator.ip.isValid(field, { version: 4, cidr: "FORBIDDEN" })) {
                             // Format: "ip4:ipv4"
                             isValid = false;
                         }
@@ -172,10 +172,10 @@ angular.module("services").service(
                         if (~field.indexOf("/")) {
                             // Format: "ip6:ipv6/cidr"
                             field = field.split("/");
-                            if (isNaN(field[1]) || field[1] < 1 || field[1] > 128 || !this.Validator.isValidIpv6(field[0])) {
+                            if (isNaN(field[1]) || field[1] < 1 || field[1] > 128 || !this.Validator.ip.isValid(field[0], { version: 6, cidr: "FORBIDDEN" })) {
                                 isValid = false;
                             }
-                        } else if (!this.Validator.isValidIpv6(field)) {
+                        } else if (!this.Validator.ip.isValid(field, { version: 6, cidr: "FORBIDDEN" })) {
                             // Format: "ip6:ipv6"
                             isValid = false;
                         }
@@ -193,7 +193,7 @@ angular.module("services").service(
 
                     if (new RegExp(`^${type}:.+`).test(field)) {
                         field = field.replace(new RegExp(`^(${type}:)`), "");
-                        if (!this.Validator.isValidDomain(field, { canBeginWithUnderscore: true })) {
+                        if (!this.Validator.domain.isValid(field, { subDomainsCanBeginWithUnderscore: true })) {
                             // Format: "type:domain"
                             isValid = false;
                         }
@@ -269,9 +269,9 @@ angular.module("services").service(
                 // prevent spaces before dot
                 return false;
             } else if (/(.+)\.$/.test(value)) {
-                return this.Validator.isValidDomain(value.match(/(.+)\.$/)[1]);
+                return this.Validator.domain.isValid(value.match(/(.+)\.$/)[1]);
             }
-            return this.Validator.isValidSubDomain(value);
+            return this.Validator.domain.isValid(value, { isSubDomain: true });
         }
 
         /**
@@ -283,9 +283,9 @@ angular.module("services").service(
             if (value === ".") {
                 return true;
             } else if (this.regex.NAPTR_replace.test(value)) {
-                return this.Validator.isValidDomain(value.match(this.regex.NAPTR_replace)[1], { canBeginWithUnderscore: true });
+                return this.Validator.domain.isValid(value.match(this.regex.NAPTR_replace)[1], { subDomainsCanBeginWithUnderscore: true });
             }
-            return this.Validator.isValidDomain(value);
+            return this.Validator.domain.isValid(value);
         }
 
         /**
@@ -301,18 +301,18 @@ angular.module("services").service(
             switch (fieldType) {
             case "A":
             case "DYNHOST":
-                return this.Validator.isValidIpv4(target);
+                return this.Validator.ip.isValid(target, { version: 4, cidr: "FORBIDDEN" });
             case "AAAA":
-                return this.Validator.isValidIpv6(target);
+                return this.Validator.ip.isValid(target, { version: 6, cidr: "FORBIDDEN" });
             case "NS":
             case "CNAME":
                 if (/\s+\.$/.test(target)) {
                         // prevent spaces before dot
                     return false;
                 } else if (/(.+)\.$/.test(target)) {
-                    return this.Validator.isValidDomain(target.match(/(.+)\.$/)[1], { canBeginWithUnderscore: true });
+                    return this.Validator.domain.isValid(target.match(/(.+)\.$/)[1], { subDomainsCanBeginWithUnderscore: true });
                 }
-                return this.Validator.isValidSubDomain(target, { canBeginWithUnderscore: true });
+                return this.Validator.domain.isValid(target, { subDomainsCanBeginWithUnderscore: true, isSubDomain: true });
             case "TXT":
                 return this.regex.TXT.test(target);
             case "DKIM":
@@ -473,7 +473,7 @@ angular.module("services").service(
                             // prevent spaces before dot
                         isValid = false;
                     } else if (/(.+)\.$/.test(splitted[4])) {
-                        isValid = this.Validator.isValidDomain(splitted[4].match(/(.+)\.$/)[1]);
+                        isValid = this.Validator.domain.isValid(splitted[4].match(/(.+)\.$/)[1]);
                     } else {
                         isValid = false;
                     }

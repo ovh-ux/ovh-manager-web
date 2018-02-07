@@ -135,9 +135,7 @@ module.exports = {
             "client/bower_components/ovh-utils-angular/lib/core.js",
             // "src/js/app/libs/ng-upload.min.js",
             "client/bower_components/punycode/punycode.min.js",
-            "client/bower_components/uri.js/src/URI.min.js",
-            "client/bower_components/URIjs/src/URI.min.js",
-            "client/bower_components/ipaddr.js/ipaddr.min.js",
+            "client/bower_components/urijs/src/URI.min.js",
             "client/bower_components/filesize/lib/filesize.min.js",
             "client/bower_components/ovh-angular-pagination-front/dist/ovh-angular-pagination-front.min.js",
 
@@ -152,6 +150,7 @@ module.exports = {
             "client/bower_components/df-tab-menu/build/df-tab-menu.min.js",
             "client/bower_components/ovh-angular-swimming-poll/dist/ovh-angular-swimming-poll.min.js",
             "client/bower_components/validator-js/validator.min.js",
+            "client/bower_components/ipaddr.js/ipaddr.min.js",
             "client/bower_components/aapiV6-auth/dist/aapiV6Auth.min.js",
             "client/bower_components/ovh-angular-export-csv/dist/ovh-angular-export-csv.js",
             "client/bower_components/angular-vs-repeat/src/angular-vs-repeat.min.js",

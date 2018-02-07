@@ -16,7 +16,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
         tokenSubdomain: null
     };
 
-    $scope.MAX_DOMAIN_LENGTH = Validator.MAX_DOMAIN_LENGTH;
+    $scope.MAX_SUBDOMAIN_LENGTH = Validator.domain.MAX_SUBDOMAIN_LENGTH;
 
     $scope.isStep1Valid = function () {
         if (!$scope.model.options) {
@@ -248,7 +248,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
 
     $scope.domainIsNotValid = function () {
         if ($scope.selected.ssl) {
-            return $scope.getSelectedDomain() ? !Validator.isValidDomain($scope.getSelectedDomain(), { canBeginWithWildcard: true }) : false;
+            return $scope.getSelectedDomain() ? !Validator.domain.isValid($scope.getSelectedDomain(), { canBeginWithWildcard: true }) : false;
         }
         return false;
     };

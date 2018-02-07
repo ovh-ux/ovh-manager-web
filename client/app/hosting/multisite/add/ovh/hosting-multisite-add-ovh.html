@@ -19,7 +19,7 @@
                    data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_common_domain_exists"
                    data-ng-if="domainAttacheModeOvhForm.domainAttacheModeOvhFormSelectedDomain.$dirty && domainsAlreadyExists()"></small>
             <small class="help-block"
-                   data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step2_common_domain_ssl_invalid', [MAX_DOMAIN_LENGTH])"
+                   data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step2_common_domain_ssl_invalid', [MAX_SUBDOMAIN_LENGTH])"
                    data-ng-if="domainAttacheModeOvhForm.domainAttacheModeOvhFormSelectedDomain.$dirty && domainIsNotValid()"></small>
             <div data-ng-messages="domainAttacheModeOvhForm.domainAttacheModeOvhFormSelectedDomain.$error">
                 <small class="help-block" data-ng-message="pattern"

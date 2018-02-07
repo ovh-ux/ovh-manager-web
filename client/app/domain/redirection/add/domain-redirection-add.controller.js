@@ -184,7 +184,7 @@ angular.module("controllers").controller(
                 this.errors.domainCname = true;
             } else {
                 const domainName = this.getCompleteTarget();
-                this.errors.redirectionTarget = !this.Validator.isValidDomain(domainName);
+                this.errors.redirectionTarget = !this.Validator.domain.isValid(domainName);
                 this.errors.domainCname = this.errors.redirectionTarget;
 
                 if (this.errors.redirectionTarget) {
@@ -223,9 +223,9 @@ angular.module("controllers").controller(
          * @param {string} ip
          */
         ipaddrValid (ip) {
-            if (this.Validator.isValidIpv4(ip)) {
+            if (this.Validator.ip.isValid(ip, { version: 4, cidr: "FORBIDDEN" })) {
                 return this.typeRedirection.ipv4;
-            } else if (this.Validator.isValidIpv6(ip)) {
+            } else if (this.Validator.ip.isValid(ip, { version: 6, cidr: "FORBIDDEN" })) {
                 return this.typeRedirection.ipv6;
             }
             return false;
@@ -260,7 +260,7 @@ angular.module("controllers").controller(
         webTargetCheck () {
             const webTarget = this.newRedirection.webTarget;
             if (webTarget) {
-                this.errors.webTarget = !this.Validator.isValidURL(webTarget);
+                this.errors.webTarget = !this.Validator.url.isValid(webTarget);
                 this.errors.webTargetLength = !this.errors.webTarget && webTarget && this.testInputSize(webTarget);
             }
         }
@@ -297,13 +297,13 @@ angular.module("controllers").controller(
                         this.newRedirection.params.typeRedirection = this.typeRedirection.txt;
                         this.newRedirection.params.targetRedirection = this.newRedirection.webTarget;
                         this.newRedirection.params.visibilityType = "VISIBLE_PERMANENT";
-                        return this.Validator.isValidURL(this.newRedirection.params.targetRedirection);
+                        return this.Validator.url.isValid(this.newRedirection.params.targetRedirection);
                     }
 
                     if (this.newRedirection.webTarget && !this.errors.webTarget && !this.errors.webTargetLength && this.newRedirection.step4 === this.choice.r302) {
                         this.newRedirection.params.typeRedirection = this.typeRedirection.txt;
                         this.newRedirection.params.targetRedirection = this.newRedirection.webTarget;
-                        return this.Validator.isValidURL(this.newRedirection.params.targetRedirection);
+                        return this.Validator.url.isValid(this.newRedirection.params.targetRedirection);
                     }
                 } else if (this.newRedirection.step3 === this.choice.invisible) {
                     if (this.newRedirection.webTarget && !this.errors.webTarget && !this.errors.webTargetLength && !this.errors.ortTitle && !this.errors.ortKeywords && !this.errors.ortDescription && this.newRedirection.step4 === this.choice.iframe) {
