@@ -1,10 +1,6 @@
 .oui-navbar {
     // Logo
     &__brand {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
         .navbar-logo { height: 3rem; }
     }
 
@@ -34,12 +30,6 @@
         .navbar-@{icon-selector} {
             background: url('../assets/images/navbar/@{icon-selector}.svg') no-repeat center center;
             background-size: contain;
-
-            // For a better centering
-            @minWidth: (@oui-responsive-breakpoint-tablet + 1px);
-            @media screen and (min-width: @minWidth) {
-                margin-top: -.3rem;
-            }
         }
 
         .oui-navbar-link  {
