@@ -25,25 +25,22 @@
         <oui-column data-title="tr('database_tabs_dumps_deletion_date')" data-property="deletionDate" data-sortable>
             <span data-ng-bind="$row.deletionDate | date:'medium'"></span>
         </oui-column>
-        <oui-column>
-            <button class="btn btn-icon" type="button"
-                    data-ng-attr-title="{{tr('database_tabs_dumps_download_dump', [($row.creationDate | date:'medium')] )}}"
+        <oui-action-menu data-align="end" data-compact>
+            <oui-action-menu-item
+                    data-text="{{tr('database_tabs_dumps_download_dump')}}"
                     data-ng-click="ctrlDumps.goTo($row.url, '_blank')"
-                    data-ng-disabled="bdd.waitRestore || $row.waitDelete">
-                <span class="fa fa-download" aria-hidden="true"></span>
-            </button>
-            <button class="btn btn-icon" type="button"
-                    data-ng-attr-title="{{tr('database_tabs_dumps_restore_dump_with_creation_date', [($row.creationDate | date:'medium')] )}}"
-                    data-ng-click="setAction('database/restore/hosting-database-restore', {bdd:bdd, dump:$row})"
-                    data-ng-disabled="bdd.waitRestore || $row.waitDelete">
-                <span class="fa fa-repeat" aria-hidden="true"></span>
-            </button>
-            <button class="btn btn-icon" type="button"
-                    data-ng-attr-title="{{tr('database_tabs_dumps_delete_dump', [($row.creationDate | date:'medium')] )}}"
-                    data-ng-click="setAction('database/dump/delete/hosting-database-dump-delete', {database:bdd, dump:$row})"
-                    data-ng-disabled="$row.waitDelete">
-                <span class="fa fa-trash" aria-hidden="true"></span>
-            </button>
-        </oui-column>
+                    data-ng-if="!$row.waitDelete">
+            </oui-action-menu-item>
+            <oui-action-menu-item
+                    data-text="{{tr('database_tabs_dumps_restore_dump')}}"
+                    data-ng-click="setAction('database/restore/hosting-database-restore', { bdd:bdd, dump:$row })"
+                    data-ng-if="!bdd.waitRestore && !$row.waitDelete">
+            </oui-action-menu-item>
+            <oui-action-menu-item
+                    data-text="{{tr('database_tabs_dumps_delete_dump')}}"
+                    data-ng-click="setAction('database/dump/delete/hosting-database-dump-delete', { database:bdd, dump:$row })"
+                    data-ng-if="!$row.waitDelete">
+            </oui-action-menu-item>
+        </oui-action-menu>
     </oui-datagrid>
 </div>

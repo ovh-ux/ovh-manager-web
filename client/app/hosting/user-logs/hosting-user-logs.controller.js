@@ -14,11 +14,7 @@ angular.module("App").controller(
 
         $onInit () {
             this.hosting = this.$scope.hosting;
-            this.userLogs = {};
             this.userLogsToken = null;
-
-            this.$scope.itemsPerPage = 10;
-            this.$scope.nbPages = 1;
 
             this.$scope.$on("hosting.userLogs.refresh", () => {
                 this.refreshTableUserLogs();
@@ -65,13 +61,13 @@ angular.module("App").controller(
         }
 
         refreshTableUserLogs () {
-            this.userLogs.ids = null;
+            this.userLogs = null;
 
             return this.Hosting.getUserLogs(this.$stateParams.productId)
                 .then((data) => data.sort())
                 .then((ids) => {
-                    this.userLogs.ids = ids.map((id) => ({ id }));
-                    return this.userLogs.ids;
+                    this.userLogs = ids.map((id) => ({ id }));
+                    return this.userLogs;
                 })
                 .catch((err) => {
                     this.Alerter.alertFromSWS(err);
