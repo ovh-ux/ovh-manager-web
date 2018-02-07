@@ -12,9 +12,7 @@
 
             <oui-datagrid data-rows="listCtrl.whitelistIps"
                           data-row-loader="listCtrl.transformItem($row)">
-                <oui-column data-title="tr('privateDatabase_tabs_whitelist_list_ip_network')" data-property="ip" data-sortable>
-                    <span data-ng-bind="$row.ip"></span>
-                </oui-column>
+                <oui-column data-title="tr('privateDatabase_tabs_whitelist_list_ip_network')" data-property="ip" data-sortable></oui-column>
                 <oui-column data-title="tr('privateDatabase_tabs_whitelist_list_service')" data-property="service">
                     <i class="oui-icon oui-icon-success"
                        data-ng-show="$row.service"
@@ -39,10 +37,10 @@
                 </oui-column>
                 <oui-action-menu data-align="end" data-compact>
                     <oui-action-menu-item data-text="{{::tr('privateDatabase_tabs_whitelist_list_popover_edit')}}"
-                                          on-click="listCtrl.editWhitelist($row)">
+                                          data-on-click="listCtrl.editWhitelist($row)">
                     </oui-action-menu-item>
                     <oui-action-menu-item data-text="{{::tr('privateDatabase_tabs_whitelist_list_popover_delete')}}"
-                                          on-click="listCtrl.deleteWhitelist($row)">
+                                          data-on-click="listCtrl.deleteWhitelist($row)">
                     </oui-action-menu-item>
                 </oui-action-menu>
             </oui-datagrid>

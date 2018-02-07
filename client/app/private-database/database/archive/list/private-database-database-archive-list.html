@@ -10,9 +10,7 @@
     <h2 data-ng-bind-html="tr('privateDatabase_tabs_dumps_archive_change', [nbDayToDelete])"></h2>
 
     <oui-datagrid data-rows="archiveListCtrl.deletedDbList">
-        <oui-column data-title="tr('privateDatabase_bdd_name')" data-property="databaseName" data-sortable>
-            <span data-ng-bind="$row.databaseName"></span>
-        </oui-column>
+        <oui-column data-title="tr('privateDatabase_bdd_name')" data-property="databaseName" data-sortable></oui-column>
         <oui-column data-title="tr('privateDatabase_bdd_dumps_count')" data-property="dumps.length" data-sortable>
             <button class="btn btn-xs" type="button"
                     data-ng-bind="$row.dumps.length"

@@ -4,9 +4,7 @@
 
         <oui-datagrid data-rows="usersListCtrl.users"
                       data-row-loader="usersListCtrl.transformItem($row)">
-            <oui-column data-title="tr('privateDatabase_tabs_user_name')" data-property="userName">
-                <span data-ng-bind="$row.userName"></span>
-            </oui-column>
+            <oui-column data-title="tr('privateDatabase_tabs_user_name')" data-property="userName"></oui-column>
             <oui-column data-title="tr('privateDatabase_tabs_creation_date')" data-property="creationDate">
                 <span data-ng-bind="$row.creationDate | date:mediumDate"></span>
             </oui-column>
