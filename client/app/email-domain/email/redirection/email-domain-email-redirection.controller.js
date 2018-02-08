@@ -20,7 +20,6 @@ angular.module("App").controller(
         $onInit () {
             this.loading = {
                 exportCSV: false,
-                pager: false,
                 redirections: false
             };
             this.redirectionsDetails = [];
@@ -36,33 +35,23 @@ angular.module("App").controller(
             const dataToExport = [[this.$scope.tr("emails_common_from"), this.$scope.tr("emails_common_to")]];
 
             return this.$q
-                .all(_.map(this.redirections, (redirection) => this.Emails.getRedirection(this.$stateParams.productId, redirection)))
+                .all(_.map(this.redirections, ({ id }) => this.Emails.getRedirection(this.$stateParams.productId, id)))
                 .then((data) => dataToExport.concat(_.map(data, (d) => [d.from, d.to])))
-                .finally(() => (this.loading.exportCSV = false));
+                .finally(() => { this.loading.exportCSV = false; });
         }
 
         refreshTableRedirections () {
             this.loading.redirections = true;
             this.redirections = null;
 
-            return this.Emails
-                .getRedirections(this.$stateParams.productId)
-                .then((data) => (this.redirections = data))
+            return this.Emails.getRedirections(this.$stateParams.productId)
+                .then((data) => { this.redirections = data.map((id) => ({ id })); })
                 .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_redirections_error"), err, this.$scope.alerts.main))
-                .finally(() => {
-                    if (_.isEmpty(this.redirections)) {
-                        this.loading.redirections = false;
-                    }
-                });
+                .finally(() => { this.loading.redirections = false; });
         }
 
-        transformItem (item) {
-            return this.Emails.getRedirection(this.$stateParams.productId, item);
-        }
-
-        onTransformItemDone () {
-            this.loading.pager = false;
-            this.loading.redirections = false;
+        transformItem ({ id }) {
+            return this.Emails.getRedirection(this.$stateParams.productId, id);
         }
     }
 );

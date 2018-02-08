@@ -26,63 +26,17 @@
                  data-ng-if="!ctrlEmailDomainEmailRedirection.redirections.length">
             </div>
 
-            <div class="table-responsive" data-ng-if="ctrlEmailDomainEmailRedirection.redirections.length > 0">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th class="w-50" scope="col" data-i18n-static="emails_common_from"></th>
-                            <th scope="col" data-i18n-static="emails_common_to"></th>
-                            <th class="min-width text-right" scope="col">
-                                <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_header_refresh}}"
-                                        data-ng-click="ctrlEmailDomainEmailRedirection.refreshTableRedirections()">
-                                    <span class="fa fa-refresh" aria-hidden="true"></span>
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody data-ng-if="ctrlEmailDomainEmailRedirection.loading.pager">
-                        <tr>
-                            <td class="loader text-center" colspan="3"></td>
-                        </tr>
-                    </tbody>
-
-                    <!--redirections-->
-                    <tbody>
-                        <tr data-ng-repeat="redirection in ctrlEmailDomainEmailRedirection.redirectionsDetails track by $index">
-                            <td data-ng-bind="redirection.from"></td>
-                            <td class="word-break" data-ng-bind="redirection.to"></td>
-                            <td class="text-center">
-                                <button class="btn btn-icon" type="button"
-                                        data-linkedpopover="email-domain/email/redirection/email-domain-email-redirection.popover.html"
-                                        data-linkedpopover-placement="left"
-                                        data-linkedpopover-remote="true"
-                                        data-linkedpopover-single="true"
-                                        data-linkedpopover-title="{{i18n.common_actions}}">
-                                    <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="clearfix"
-             data-ng-if="ctrlEmailDomainEmailRedirection.redirections">
-            <div data-pagination-front
-                 data-items="ctrlEmailDomainEmailRedirection.redirections"
-                 data-paginated-items="ctrlEmailDomainEmailRedirection.redirectionsDetails"
-                 data-current-page="currentPageRedirections"
-                 data-nb-pages="nbPages"
-                 data-items-per-page="itemsPerPage"
-                 data-transform-item="ctrlEmailDomainEmailRedirection.transformItem(item)"
-                 data-on-transform-item-done="ctrlEmailDomainEmailRedirection.onTransformItemDone()"
-                 data-page-placeholder="{{tr('pagination_page', [currentPageRedirections, nbPages])}}"
-                 data-item-per-page-placeholder="{{tr('pagination_display')}}"
-                 data-on-page-change="ctrlEmailDomainEmailRedirection.loading.pager = true"
-                 data-ng-show="!ctrlEmailDomainEmailRedirection.loading.redirections && ctrlEmailDomainEmailRedirection.redirectionsDetails.length > 0">
-            </div>
+            <oui-datagrid data-rows="ctrlEmailDomainEmailRedirection.redirections"
+                          data-row-loader="ctrlEmailDomainEmailRedirection.transformItem($row)">
+                <oui-column data-title="tr('emails_common_from')" data-property="from"></oui-column>
+                <oui-column data-title="tr('emails_common_to')" data-property="to"></oui-column>
+                <oui-action-menu data-align="end" data-compact>
+                    <oui-action-menu-item data-text="{{i18n.email_tab_popover_redirection_update}}"
+                                          data-on-click="setAction('email-domain/email/redirection/update/email-domain-email-redirection-update', { redirection: $row, domain: domain })"></oui-action-menu-item>
+                    <oui-action-menu-item data-text="{{i18n.email_tab_popover_redirection_delete}}"
+                                          data-on-click="setAction('email-domain/email/redirection/delete/email-domain-email-redirection-delete', { redirection: $row })"></oui-action-menu-item>
+                </oui-action-menu>
+            </oui-datagrid>
         </div>
     </div>
 
