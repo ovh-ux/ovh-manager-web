@@ -10,7 +10,6 @@ angular.module("App").controller(
         $onInit () {
             this.domain = this.$scope.ctrlDomain.domain;
             this.loading = false;
-            this.glueDetails = [];
 
             this.$scope.$on("domain.tabs.glue.refresh", () => this.refreshTableGlues());
             this.$scope.$on("domain.DomainHostCreate.done", () => {
@@ -37,21 +36,19 @@ angular.module("App").controller(
 
         loadGlues () {
             this.loading = true;
-            this.glueHosts = null;
 
             return this.Domain
                 .getGlueRecords(this.domain.name)
                 .then((hosts) => {
-                    this.glueHosts = hosts;
+                    this.glueHosts = hosts.map((host) => ({ host }));
                 })
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
                     this.Alerter.alertFromSWS(this.$scope.tr("domain_tab_GLUE_table_error"), err, this.$scope.alerts.main);
+                    this.glueHosts = [];
                 })
                 .finally(() => {
-                    if (_.isEmpty(this.glueHosts)) {
-                        this.loading = false;
-                    }
+                    this.loading = false;
                 });
         }
 
@@ -60,11 +57,7 @@ angular.module("App").controller(
         }
 
         transformItem (host) {
-            return this.Domain.getGlueRecordDetail(this.domain.name, host);
-        }
-
-        onTransformItemDone () {
-            this.loading = false;
+            return this.Domain.getGlueRecordDetail(this.domain.name, host.host);
         }
     }
 );
