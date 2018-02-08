@@ -60,8 +60,8 @@ angular.module("App").controller(
             return this.privateDatabaseService
                 .getUsers(this.productId)
                 .then((users) => {
-                    this.usersIds = users;
-                    this.users = users.map((id) => ({ id }));
+                    this.usersIds = users.sort((a, b) => a.localeCompare(b));
+                    this.users = this.usersIds.map((id) => ({ id }));
                 })
                 .catch((err) => {
                     this.alerter.error(_.get(err, "message", err), this.$scope.alerts.main);

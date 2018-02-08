@@ -33,7 +33,7 @@
                     <span class="label label-info"
                           data-ng-if="$row.deleting"
                           data-i18n-static="privateDatabase_tabs_whitelist_list_status_deleting"></span>
-                    {{ $row.name | wrapOverflow: 50 }}
+                    {{ $row.name | sliceContent: 50 }}
                 </oui-column>
                 <oui-action-menu data-align="end" data-compact>
                     <oui-action-menu-item data-text="{{::tr('privateDatabase_tabs_whitelist_list_popover_edit')}}"

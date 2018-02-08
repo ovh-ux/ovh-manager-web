@@ -18,7 +18,7 @@
         </oui-column>
         <oui-column data-title="tr('database_tabs_dumps_creation_date')" data-property="creationDate">
             <span data-ng-bind="::$row.creationDate | date:'medium'"></span>
-            <oui-spinner data-size="s" data-ng-if="$row.waitRestore || $row.waitDelete"></oui-spinner>
+            <oui-spinner class="pl-2" data-size="s" data-ng-if="$row.waitRestore || $row.waitDelete"></oui-spinner>
             <span data-i18n-static="database_restore_in_progress" data-ng-if="$row.waitRestore"></span>
             <span data-i18n-static="common_delete_in_progress" data-ng-if="$row.waitDelete"></span>
         </oui-column>
