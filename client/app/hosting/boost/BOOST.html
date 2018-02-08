@@ -28,7 +28,7 @@
                     <span data-ng-bind="$row.offer"></span>
                 </oui-column>
                 <oui-column data-title="tr('hosting_tab_BOOST_history_table_header_boost_offer')" data-property="boostOffer">
-                    <span data-ng-class="{center: $row.boostOffer === null}">
+                    <span data-ng-class="{text-center: $row.boostOffer === null}">
                         <span data-ng-bind="::$row.boostOffer"
                               data-ng-if="$row.boostOffer !== null"></span>
                         <span class="label label-danger"
