@@ -16,18 +16,13 @@ angular.module("App").controller(
         }
 
         $onInit () {
-            this.loading = false;
             this.refreshTasks();
         }
 
         refreshTasks () {
-            this.loading = true;
-            this.taskIds = null;
-
-            return this.Emails
-                .getAllTaskIds(this.$stateParams.productId)
+            this.taskIds = [];
+            return this.Emails.getAllTaskIds(this.$stateParams.productId)
                 .then((ids) => {
-                    this.taskIds = [];
                     _.forEach(ids, (type) => {
                         _.forEach(type.ids, (id) => {
                             this.taskIds.push({ action: type.action, id });
@@ -37,19 +32,11 @@ angular.module("App").controller(
                 .catch((err) => {
                     _.set(err, "type", err.type || "ERROR");
                     this.Alerter.alertFromSWS(this.$scope.tr("email_tab_TASK_error_message"), _.get(err, "data", err), this.$scope.alerts.main);
-                })
-                .finally(() => {
-                    if (_.isEmpty(this.taskIds)) {
-                        this.loading = false;
-                    }
                 });
         }
 
         transformItem (item) {
             return this.Emails.getTask(this.$stateParams.productId, item);
-        }
-        onTransformItemDone () {
-            this.loading = false;
         }
     }
 );

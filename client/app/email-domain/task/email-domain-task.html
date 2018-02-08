@@ -1,73 +1,30 @@
 <div class="container-fluid px-0" data-ng-controller="EmailsTabTasksCtrl as ctrlEmailsTabTasksCtrl">
 
-    <div class="text-center" data-ng-if="ctrlEmailsTabTasksCtrl.loading">
-        <oui-spinner data-size="l"></oui-spinner>
-    </div>
-
     <div data-ovh-alert="{{alerts.main}}"></div>
-    <div class="alert alert-info" role="alert"
-         data-i18n-static="email_tab_TASK_table_empty"
-         data-ng-if="!ctrlEmailsTabTasksCtrl.loading && !ctrlEmailsTabTasksCtrl.tasks.length">
-    </div>
 
-    <div class="table-responsive"
-         data-ng-if="!ctrlEmailsTabTasksCtrl.loading && ctrlEmailsTabTasksCtrl.tasks.length > 0">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col" data-i18n-static="email_tab_TASK_table_function"></th>
-                    <th scope="col" data-i18n-static="email_tab_TASK_table_account"></th>
-                    <th scope="col" data-i18n-static="email_tab_TASK_table_domain"></th>
-                    <th scope="col" data-i18n-static="email_tab_TASK_table_start_date"></th>
-                    <th class="min-width text-right" scope="col">
-                        <button class="btn btn-icon" type="button" title="{{::i18n.mailing_list_tab_table_header_refresh}}"
-                                data-ng-click="ctrlEmailsTabTasksCtrl.refreshTasks()">
-                            <span class="fa fa-refresh" aria-hidden="true"></span>
-                        </button>
-                    </th>
-                </tr>
-            </thead>
+    <oui-datagrid data-rows="ctrlEmailsTabTasksCtrl.taskIds"
+                  data-row-loader="ctrlEmailsTabTasksCtrl.transformItem($row)">
+        <oui-column data-title="tr('email_tab_TASK_table_function')" data-property="action"></oui-column>
+        <oui-column data-title="tr('email_tab_TASK_table_account')">
+            <span data-ng-bind="($row.account || $row.name)"></span>
+        </oui-column>
+        <oui-column data-property="domain"></oui-column>
+        <oui-column data-title="tr('email_tab_TASK_table_start_date')">
+            <span data-ng-bind="($row.date || $row.timestamp) | date:'medium'"></span>
+        </oui-column>
+        <oui-column data-title="tr('email_tab_TASK_table_state')">
+            <span class="label"
+                  data-ng-if="$row.status"
+                  data-ng-class="{
+                    'label-info': $row.status !== 'ERROR' && $row.status !== 'CANCELLED' && $row.status !== 'DONE',
+                    'label-danger': $row.status === 'ERROR',
+                    'label-default': $row.status === 'CANCELLED',
+                    'label-success': $row.status === 'DONE' }"
+                  data-ng-bind="tr('email_tab_TASK_status_' + $row.status)"></span>
+            <span class="label label-info"
+                  data-ng-if="!$row.status"
+                  data-ng-bind="tr('email_tab_TASK_status_DOING')"></span>
+        </oui-column>
+    </oui-datagrid>
 
-            <!-- tasks -->
-            <tbody>
-                <tr data-ng-repeat="task in (ctrlEmailsTabTasksCtrl.tasks | orderBy:['date', 'timestamp']:true) track by $index">
-                    <td data-ng-bind="task.action"></td>
-                    <td data-ng-bind="(task.account || task.name)"></td>
-                    <td data-ng-bind="task.domain"></td>
-                    <td data-ng-bind="(task.date || task.timestamp) | date:'medium'"></td>
-                    <td class="text-center"
-                        data-ng-if="task.status">
-                        <span class="label"
-                              data-ng-class="{
-                                'label-info': task.status !== 'ERROR' && task.status !== 'CANCELLED' && task.status !== 'DONE',
-                                'label-danger': task.status === 'ERROR',
-                                'label-default': task.status === 'CANCELLED',
-                                'label-success': task.status === 'DONE' }"
-                              data-ng-bind="tr('email_tab_TASK_status_' + task.status)"></span>
-                    </td>
-                    <td class="text-center"
-                        data-ng-if="!task.status">
-                        <span class="label label-info"
-                              data-ng-bind="tr('email_tab_TASK_status_DOING')"></span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="clearfix"
-         data-ng-if="ctrlEmailsTabTasksCtrl.taskIds">
-        <div data-pagination-front
-             data-items="ctrlEmailsTabTasksCtrl.taskIds"
-             data-paginated-items="ctrlEmailsTabTasksCtrl.tasks"
-             data-current-page="currentPage"
-             data-nb-pages="nbPages"
-             data-items-per-page="itemsPerPage"
-             data-transform-item="ctrlEmailsTabTasksCtrl.transformItem(item)"
-             data-on-transform-item-done="ctrlEmailsTabTasksCtrl.onTransformItemDone()"
-             data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-             data-item-per-page-placeholder="{{tr('pagination_display')}}"
-             data-ng-show="!ctrlEmailsTabTasksCtrl.loading && ctrlEmailsTabTasksCtrl.tasks.length > 0">
-        </div>
-    </div>
 </div>
