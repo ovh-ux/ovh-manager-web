@@ -17,9 +17,6 @@ angular.module("App").controller(
             this.accounts = this.$scope.ctrlEmailDelegate.emails || [];
             this.currentAccount = this.$scope.ctrlEmailDelegate.currentViewData || null;
             this.filtersDetails = [];
-            this.loading = {
-                filters: false
-            };
 
             this.$scope.$on("hosting.tabs.emails.delegatedFilters.refresh", () => this.refreshTableFilters());
 
@@ -27,22 +24,15 @@ angular.module("App").controller(
         }
 
         refreshTableFilters () {
-            this.loading.filters = true;
             this.filters = null;
 
-            return this.Emails
-                .getDelegatedFilters(this.currentAccount.email)
-                .then((data) => (this.filters = data.sort()))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_filters_error"), err, this.$scope.alerts.main))
-                .finally(() => {
-                    if (_.isEmpty(this.filters)) {
-                        this.loading.filters = false;
-                    }
-                });
+            return this.Emails.getDelegatedFilters(this.currentAccount.email)
+                .then((data) => { this.filters = data.map((name) => ({ name })); })
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_filters_error"), err, this.$scope.alerts.main));
         }
 
-        transformItem (item) {
-            return this.Emails.getDelegatedFilter(this.currentAccount.email, item);
+        transformItem ({ name }) {
+            return this.Emails.getDelegatedFilter(this.currentAccount.email, name);
         }
     }
 );
