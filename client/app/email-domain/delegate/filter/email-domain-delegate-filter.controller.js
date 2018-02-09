@@ -16,7 +16,6 @@ angular.module("App").controller(
         $onInit () {
             this.accounts = this.$scope.ctrlEmailDelegate.emails || [];
             this.currentAccount = this.$scope.ctrlEmailDelegate.currentViewData || null;
-            this.filtersDetails = [];
 
             this.$scope.$on("hosting.tabs.emails.delegatedFilters.refresh", () => this.refreshTableFilters());
 
