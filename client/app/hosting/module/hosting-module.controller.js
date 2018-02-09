@@ -1,9 +1,10 @@
 angular.module("App").controller(
     "HostingTabModulesController",
     class HostingTabModulesController {
-        constructor ($scope, $stateParams, Alerter, Hosting, HostingModule, User) {
+        constructor ($scope, $stateParams, $window, Alerter, Hosting, HostingModule, User) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
+            this.$window = $window;
             this.Alerter = Alerter;
             this.Hosting = Hosting;
             this.HostingModule = HostingModule;
@@ -11,13 +12,9 @@ angular.module("App").controller(
         }
 
         $onInit () {
-            this.modules = {
-                details: []
-            };
-            this.loading = true;
 
             this.$scope.$on("hosting.tabs.modules.refresh", () => {
-                this.loadTab(true);
+                this.getModules(true);
             });
 
             this.Hosting.getSelected(this.$stateParams.productId)
@@ -35,38 +32,34 @@ angular.module("App").controller(
                     }
                 });
 
-            this.loadTab();
+            this.getModules();
         }
 
-        loadTab (forceRefresh) {
-            this.loading = true;
-            this.modules.ids = null;
+        getModules (forceRefresh) {
+            this.modules = null;
 
             return this.HostingModule.getModules(this.$stateParams.productId, { forceRefresh })
-                .then((data) => {
-                    this.modules.ids = data;
+                .then((moduleIds) => {
+                    this.modules = moduleIds.map((id) => ({ id }));
+                    return this.modules;
                 })
                 .catch((err) => {
                     this.Alerter.alertFromSWS(this.$scope.tr("hosting_configuration_tab_modules_create_step1_loading_error"), err, this.$scope.alerts.main);
-                })
-                .finally(() => {
-                    if (_.isEmpty(this.modules.ids)) {
-                        this.loading = false;
-                    }
                 });
         }
 
-        transformItem (id) {
-            return this.HostingModule.getModule(this.$stateParams.productId, id)
+        transformItem (item) {
+            return this.HostingModule.getModule(this.$stateParams.productId, item.id)
                 .then((module) => this.HostingModule.getAvailableModule(module.moduleId)
                     .then((template) => {
                         module.template = template;
+                        module.id = item.id;
                         return module;
                     }));
         }
 
-        onTransformItemDone () {
-            this.loading = false;
+        goToModule (module, target = "_blank") {
+            this.$window.open(`http://${module.targetUrl}`, target);
         }
     }
 );
