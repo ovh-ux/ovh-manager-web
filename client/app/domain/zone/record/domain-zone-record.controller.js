@@ -130,6 +130,12 @@ angular.module("App").controller(
             input.$setValidity("target", isValid);
         }
 
+        checkCAATarget (input) {
+            const value = _.get(this.model, "target.target");
+
+            input.$setValidity("target", _.isString(value) && !_.isEmpty(value));
+        }
+
         checkSubDomainToDisplay (input) {
             const value = angular.copy(this.model.subDomainToDisplay);
             input.$setValidity("subdomain", value === null || value === "" || this.Validator.isValidSubDomain(value, { canBeginWithUnderscore: true, canBeginWithWildcard: true }));
@@ -237,6 +243,9 @@ angular.module("App").controller(
                 break;
             case "TLSA":
                 this.loadTslaModel(this.edit.targetToDisplay);
+                break;
+            case "CAA":
+                this.loadCAAModel(this.edit.targetToDisplay);
                 break;
             default:
             }
@@ -442,6 +451,15 @@ angular.module("App").controller(
             }
         }
 
+        loadCAAModel (target) {
+            const splitted = target.match(this.DomainValidator.regex.CAA);
+            if (_.isArray(splitted) && splitted.length > 3) {
+                this.model.target.flags = parseInt(splitted[1], 10) || 0;
+                this.model.target.tag = splitted[2] || "";
+                this.model.target.target = splitted[3] || "";
+            }
+        }
+
         selectFieldType (fieldType) {
             this.model.fieldType = fieldType;
             this.model.subDomainToDisplay = null;
@@ -488,6 +506,9 @@ angular.module("App").controller(
                 break;
             case "tlsa":
                 this.model.target.value = this.DomainValidator.constructor.transformTLSATarget(this.model.target);
+                break;
+            case "caa":
+                this.model.target.value = this.DomainValidator.constructor.transformCAATarget(this.model.target);
                 break;
             default:
                 this.model.target.value = this.model.target.target || "";

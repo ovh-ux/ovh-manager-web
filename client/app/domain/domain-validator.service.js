@@ -52,7 +52,8 @@ angular.module("services").service(
                 SSHFP_fp1: /^(?:[a-zA-Z0-9]){40}$/,
                 SSHFP_fp2: /^(?:[a-zA-Z0-9]){64}$/,
                 TXT: /^"?([^"]{1,255})"?$/,
-                TLSA: /^(\d) (\d) (\d) ([a-z0-9]+)$/
+                TLSA: /^(\d) (\d) (\d) ([a-z0-9]+)$/,
+                CAA: /^(\d+)\s+(issue|issuewild|iodef)\s+"(\S+)"$/
             };
 
             this.regex.SRV_target = this.regex.NAPTR_replace;
@@ -744,6 +745,24 @@ angular.module("services").service(
                 target.certificateData !== ""
             ) {
                 return [target.usage.toString(), target.selector.toString(), target.matchingType.toString(), target.certificateData.toString()].join(" ").trim();
+            }
+            return "";
+        }
+
+
+        /**
+         * Transform CAA target to expected value
+         * @param {object} target
+         * @returns {string}
+         */
+        static transformCAATarget (target) {
+            const isValidFlags = _.has(target, "flags") && _.isFinite(target.flags) && (target.flags >= 0) && (target.flags < 256);
+
+            if (isValidFlags) {
+                const flags = target.flags;
+                const tag = _.get(target, "tag", false) ? target.tag.toString() : "";
+                const caaTarget = _.get(target, "target", false) ? target.target.toString() : "";
+                return `${flags} ${tag} "${caaTarget}"`;
             }
             return "";
         }
