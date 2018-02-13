@@ -10,7 +10,6 @@ angular.module("App").controller(
 
         $onInit () {
             this.productId = this.$stateParams.productId;
-            this.statusToWatch = ["start", "done", "error"];
 
             this.grants = [
                 "admin",
@@ -27,12 +26,8 @@ angular.module("App").controller(
             this.isDoingGrant = [];
             this.userGrantsDetails = [];
 
-            /*
-            * Listners
-            */
-            _.forEach(this.statusToWatch, (state) => {
-                this.$scope.$on(`privateDatabase.grant.set.${state}`, this[`onUserGrant${state}`].bind(this));
-            });
+            this.bindGrantStatusToMethods(["start", "done", "error"]);
+
             _.forEach(["done", "error"], (state) => {
                 this.$scope.$on(`privateDatabase.global.actions.${state}`, (e, taskOpt) => {
                     this.$scope.lockAction = taskOpt.lock ? false : this.$scope.lockAction;
@@ -94,10 +89,13 @@ angular.module("App").controller(
             this.privateDatabaseService.restartPoll(this.productId, ["grant/create", "grant/update"]);
         }
 
-        /*
-         * Grant User jobs
-         */
-        onUserGrantstart (evt, opts) {
+        bindGrantStatusToMethods (statusToWatch) {
+            _.forEach(statusToWatch, (state) => {
+                this.$scope.$on(`privateDatabase.grant.set.${state}`, this[`onUserGrant_${state}`].bind(this));
+            });
+        }
+
+        onUserGrant_start (evt, opts) {
             let unregister = null;
 
             const todo = () => {
@@ -118,7 +116,7 @@ angular.module("App").controller(
             }
         }
 
-        onUserGrantdone (evt, opts) {
+        onUserGrant_done (evt, opts) {
             let unregister = null;
 
             const todo = () => {
@@ -142,7 +140,7 @@ angular.module("App").controller(
             }
         }
 
-        onUserGranterror (evt, opts) {
+        onUserGrant_error (evt, opts) {
             let unregister = null;
 
             const todo = () => {
