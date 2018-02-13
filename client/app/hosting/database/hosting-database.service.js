@@ -92,12 +92,31 @@ angular
          * Get dump details
          * @param {string} serviceName
          * @param {string} name
-         * @param {string} dump
+         * @param {string} dumpId
          */
-        getDump (serviceName, name, dump) {
-            return this.OvhHttp.get(`/hosting/web/${serviceName}/database/${name}/dump/${dump}`, {
+        getDump (serviceName, name, dumpId) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/database/${name}/dump/${dumpId}`, {
                 rootPath: "apiv6"
+            }).then((dump) => {
+                dump.snapshotDate = this.constructor.getSnapshotDateOfDump(dump);
+                return dump;
             });
+        }
+
+        /**
+         * Get snapshot date of database dump
+         * @param {Object} dump
+         */
+        static getSnapshotDateOfDump (dump) {
+            if (!dump.creationDate) { return undefined; }
+
+            const snapshotDate = moment(dump.creationDate);
+            if (dump.type === "daily.1") {
+                snapshotDate.subtract(1, "d");
+            } else if (dump.type === "weekly.1") {
+                snapshotDate.subtract(1, "w");
+            }
+            return snapshotDate.format();
         }
 
         /**
