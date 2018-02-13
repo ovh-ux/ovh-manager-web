@@ -1,65 +1,34 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabTasksCtrl as ctrl">
 
-    <div class="text-center" data-ng-if="ctrl.loading">
-        <oui-spinner data-size="l"></oui-spinner>
-    </div>
-
     <div class="alert alert-warning" role="alert"
-         data-ng-if="!ctrl.loading && ctrl.tasksList && ctrl.tasksList.list.messages.length > 0">
+         data-ng-if="ctrl.tasksList && ctrl.tasksList.list.messages.length > 0">
         <div>
             <strong data-i18n-static="hosting_tab_TASKS_warning"></strong>
             <span data-i18n-static="hosting_tab_TASKS_partial"></span>
         </div>
     </div>
 
-    <div class="alert alert-info" role="alert"
-         data-i18n-static="hosting_tab_TASKS_table_empty"
-         data-ng-if="!ctrl.loading && !ctrl.tasksList.list.results.length">
-    </div>
-
-    <div class="table-responsive" data-ng-if="!ctrl.loading && ctrl.tasksList.list.results.length > 0">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col" data-i18n-static="hosting_tab_TASKS_table_function"></th>
-                    <th scope="col" data-i18n-static="hosting_tab_TASKS_table_state"></th>
-                    <th scope="col" data-i18n-static="hosting_tab_TASKS_table_start_date"></th>
-                    <th scope="col" data-i18n-static="hosting_tab_TASKS_table_finish_date"></th>
-                    <th class="min-width text-right" scope="col">
-                        <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
-                                data-ng-click="ctrl.refreshTable()">
-                            <span class="fa fa-refresh" aria-hidden="true"></span>
-                        </button>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr data-ng-repeat="element in ctrl.tasksList.list.results track by $index">
-                    <th scope="row"
-                        data-ng-bind-html="i18n['hosting_tab_TASKS_function_'+ element.function] || i18n['hosting_tab_TASKS_function_'+ element.function.replace('/','_')] || element.function.replace('_',' ')"></th>
-                    <td>
-                        <span class="label"
-                              data-ng-class="{
-                                 'label-info': element.status !== 'ERROR' && element.status !== 'CANCELLED' && element.status !== 'DONE',
-                                 'label-danger': element.status === 'ERROR',
-                                 'label-default': element.status === 'CANCELED',
-                                 'label-success': element.status === 'DONE'}"
-                              data-ng-bind="tr('hosting_tab_TASKS_status_' +  element.status)">
-                        </span>
-                    </td>
-                    <td data-ng-bind="element.startDate|date:'short'"></td>
-                    <td colspan="2" data-ng-bind="element.doneDate|date:'short'"></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-    <div class="clearfix"
-         data-ng-show="!ctrl.loading && ctrl.tasksList.list.results.length > 0"
-         data-pagination-server-side="tasksTable"
-         data-pagination-server-side-function="ctrl.loadPaginated"
-         data-pagination-server-side-paginated-stuff="ctrl.tasksList"
-         data-pagination-server-side-table-loading="ctrl.loading">
-    </div>
+    <oui-datagrid data-rows-loader="ctrl.loadPaginated($config)">
+        <oui-column data-title="tr('hosting_tab_TASKS_table_state')" data-property="function">
+            <span data-ng-bind-html="i18n['hosting_tab_TASKS_function_'+ $row.function] ||
+                      i18n['hosting_tab_TASKS_function_'+ $row.function.replace('/','_')] ||
+                      $row.function.replace('_',' ')">
+            </span>
+        </oui-column>
+        <oui-column data-title="tr('hosting_tab_TASKS_table_start_date')" data-property="status">
+            <span class="label"
+                  data-ng-class="{ 'label-info': $row.status !== 'ERROR' && $row.status !== 'CANCELLED' && $row.status !== 'DONE',
+                                   'label-danger': $row.status === 'ERROR',
+                                   'label-default': $row.status === 'CANCELED',
+                                   'label-success': $row.status === 'DONE'}"
+                  data-ng-bind="tr('hosting_tab_TASKS_status_' +  $row.status)">
+            </span>
+        </oui-column>
+        <oui-column data-title="tr('hosting_tab_TASKS_table_function')" data-property="startDate">
+            <span data-ng-bind="$row.startDate | date:'short'"></span>
+        </oui-column>
+        <oui-column data-title="tr('hosting_tab_TASKS_table_finish_date')" data-property="doneDate">
+            <span data-ng-bind="$row.doneDate | date: 'short'"></span>
+        </oui-column>
+    </oui-datagrid>
 </div>

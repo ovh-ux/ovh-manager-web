@@ -35,10 +35,6 @@ angular.module("App").controller(
                 }
             });
 
-            this.User.getUser().then(() => {
-                this.$rootScope.managerPreloadHide += " manager-preload-hide";
-            });
-
             this.ovhApiMeAlertsAapi.query({
                 lang: this.translator.getLanguage(),
                 target: this.constants.target,

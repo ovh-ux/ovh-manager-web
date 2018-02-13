@@ -65,15 +65,6 @@ angular.module("services").service("User", [
                 return constants.urls.FR[link];
             });
 
-        this.getV3Url = () =>
-            this.getUser().then((data) => {
-                if (_.has(constants, "urls.managerv3" && constants.urls.managerv3[data.ovhSubsidiary] != null)) {
-                    return constants.urls.managerv3[data.ovhSubsidiary];
-                }
-
-                return constants.urls.managerv3.FR;
-            });
-
         this.getCreditCards = () =>
             $http.get("apiv6/me/paymentMean/creditCard").then((response) => {
                 const queries = response.data.map(this.getCreditCard);

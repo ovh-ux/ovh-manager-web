@@ -5,7 +5,6 @@
 
 @import "node_modules/ovh-ui-kit-bs/src/ovh-ui-kit-bs";
 
-@import "bower_components/ovh-angular-manager-navbar/less/ovh-angular-manager-navbar";
 @import "bower_components/ovh-angular-actions-menu/less/ovh-angular-actions-menu";
 @import "bower_components/ovh-angular-otrs/dist/ovh-angular-otrs";
 @import 'bower_components/ovh-manager-webfont/dist/less/ovh-font';
@@ -26,6 +25,7 @@
 @import "common/incident";
 @import "common/linkedPopover";
 @import "common/microsoft";
+@import "common/navbar";
 @import "common/progress";
 @import "common/selectList";
 @import "common/switch";
@@ -47,17 +47,3 @@
 
 @ovh-font-path: "../bower_components/ovh-manager-webfont/dist/fonts";
 @ovh-universe-color: @oui-color-jungle;
-
-#manager-navbar {
-    .dropdown-menu li {
-        &::before {
-            display: none;
-        }
-
-        & > a, & > button {
-            font-size: inherit;
-            margin-left: inherit;
-            white-space: nowrap;
-        }
-    }
-}

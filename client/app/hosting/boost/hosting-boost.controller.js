@@ -1,4 +1,4 @@
-angular.module("App").controller("HostingBoostTabCtrl", ($scope, $stateParams, HostingBoost, Hosting, Alerter) => {
+angular.module("App").controller("HostingBoostTabCtrl", ($scope, $q, $stateParams, HostingBoost, Hosting, Alerter) => {
     "use strict";
 
     $scope.models = {
@@ -8,17 +8,10 @@ angular.module("App").controller("HostingBoostTabCtrl", ($scope, $stateParams, H
         disable: null
     };
 
-    $scope.boostHistory = {
-        details: []
-    };
-
     $scope.loaders = {
-        product: false,
-        boostHistory: false
+        product: false
     };
 
-    $scope.itemsPerPage = 10;
-    $scope.nbPages = 1;
     $scope.isLoading = false;
 
     //---------------------------------------------
@@ -98,20 +91,14 @@ angular.module("App").controller("HostingBoostTabCtrl", ($scope, $stateParams, H
     // BOOSTS
     //---------------------------------------------
     $scope.refreshTableBoostHistory = function () {
-        $scope.loaders.boostHistory = true;
-        $scope.boostHistory.ids = null;
-
         HostingBoost.getHistory($stateParams.productId)
-            .then((data) => {
-                $scope.boostHistory.ids = data.sort((d1, d2) => new Date(d2) - new Date(d1));
+            .then((hostingBoostIds) => {
+                $scope.hostingBoosts = hostingBoostIds
+                    .sort((d1, d2) => moment(d2).diff(moment(d1)))
+                    .map((id) => ({ id }));
             })
             .catch((err) => {
                 Alerter.alertFromSWS($scope.tr("hosting_tab_BOOST_error"), err, $scope.alerts.main);
-            })
-            .finally(() => {
-                if (_.isEmpty($scope.boostHistory.ids)) {
-                    $scope.loaders.boostHistory = false;
-                }
             });
     };
 
@@ -120,15 +107,15 @@ angular.module("App").controller("HostingBoostTabCtrl", ($scope, $stateParams, H
      * item is the current item to transform
      */
     $scope.transformItem = function (item) {
-        return HostingBoost.getHistoryEntry($stateParams.productId, item);
-    };
-
-    /*
-     * call when all item of current page are transformed
-     * tasksDetails contains transformated item
-     */
-    $scope.onTransformItemDone = function () {
-        $scope.loaders.boostHistory = false;
+        if (item.transformed) {
+            return $q((resolve) => resolve(item));
+        }
+        return HostingBoost.getHistoryEntry($stateParams.productId, item.id)
+            .then((boost) => {
+                boost.id = item.id;
+                boost.transformed = true;
+                return boost;
+            });
     };
 
     $scope.$on("hosting.tabs.boostHistory.refresh", () => {

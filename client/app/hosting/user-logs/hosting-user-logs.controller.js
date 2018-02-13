@@ -1,8 +1,9 @@
 angular.module("App").controller(
     "HostingTabUserLogsCtrl",
     class HostingTabUserLogsCtrl {
-        constructor ($scope, $filter, $stateParams, Alerter, constants, Hosting, User) {
+        constructor ($scope, $q, $filter, $stateParams, Alerter, constants, Hosting, User) {
             this.$scope = $scope;
+            this.$q = $q;
             this.$filter = $filter;
             this.$stateParams = $stateParams;
             this.Alerter = Alerter;
@@ -13,13 +14,7 @@ angular.module("App").controller(
 
         $onInit () {
             this.hosting = this.$scope.hosting;
-            this.loaders = {
-                pager: false,
-                userLogs: false
-            };
-            this.userLogs = {
-                details: []
-            };
+            this.userLogs = {};
             this.userLogsToken = null;
 
             this.$scope.itemsPerPage = 10;
@@ -70,32 +65,34 @@ angular.module("App").controller(
         }
 
         refreshTableUserLogs () {
-            this.loaders.userLogs = true;
             this.userLogs.ids = null;
 
             return this.Hosting.getUserLogs(this.$stateParams.productId)
-                .then((data) => {
-                    this.userLogs.ids = this.$filter("orderBy")(data);
+                .then((data) => data.sort())
+                .then((ids) => {
+                    this.userLogs.ids = ids.map((id) => ({ id }));
+                    return this.userLogs.ids;
                 })
                 .catch((err) => {
                     this.Alerter.alertFromSWS(err);
-                })
-                .finally(() => {
-                    if (_.isEmpty(this.userLogs.ids)) {
-                        this.loaders.userLogs = false;
-                        this.loaders.pager = false;
-                    }
                 });
         }
 
         transformItem (item) {
-            return this.Hosting.getUserLogsEntry(this.$stateParams.productId, item)
-                .catch(() => ({ login: item }));
-        }
-
-        onTransformItemDone () {
-            this.loaders.userLogs = false;
-            this.loaders.pager = false;
+            if (item.transformed) {
+                return this.$q((resolve) => resolve(item));
+            }
+            return this.Hosting.getUserLogsEntry(this.$stateParams.productId, item.id)
+                .then((logEntry) => {
+                    logEntry.id = item.id;
+                    logEntry.transformed = true;
+                    return logEntry;
+                })
+                .catch(() => ({
+                    id: item.id,
+                    login: item.id,
+                    transformed: true
+                }));
         }
     }
 );
