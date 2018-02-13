@@ -54,12 +54,14 @@ angular.module("App").controller(
                     .then((template) => {
                         module.template = template;
                         module.id = item.id;
+                        module.href = `http://${module.targetUrl}`;
+                        module.adminHref = `http://${module.targetUrl}/${module.adminFolder}`;
                         return module;
                     }));
         }
 
-        goToModule (module, target = "_blank") {
-            this.$window.open(`http://${module.targetUrl}`, target);
+        goToHref (href, target = "_blank") {
+            this.$window.open(href, target);
         }
     }
 );

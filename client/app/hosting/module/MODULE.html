@@ -57,12 +57,17 @@
                     <oui-datagrid data-rows="ctrlHostingTabModules.modules"
                                   data-row-loader="ctrlHostingTabModules.transformItem($row)">
                         <oui-column data-title="tr('hosting_configuration_tab_modules_module_name')" data-property="template.name"></oui-column>
-                        <oui-column data-title="tr('hosting_configuration_tab_modules_module_path')" data-property="path"></oui-column>
+                        <oui-column data-title="tr('hosting_configuration_tab_modules_module_path')" data-property="path">
+                            <a data-ng-bind="$row.path" data-ng-href="{{$row.href}}" target="_blank"></a>
+                        </oui-column>
                         <oui-column data-title="tr('hosting_configuration_tab_modules_module_version')" data-property="template.version"></oui-column>
                         <oui-column data-title="tr('hosting_configuration_tab_modules_module_login')" data-property="adminName"></oui-column>
                         <oui-action-menu data-align="end" data-compact>
                             <oui-action-menu-item data-text="{{::tr('hosting_configuration_tab_modules_module_access')}}"
-                                                  data-ng-click="ctrlHostingTabModules.goToModule($row)">
+                                                  data-ng-click="ctrlHostingTabModules.goToHref($row.href)">
+                            </oui-action-menu-item>
+                            <oui-action-menu-item data-text="{{::tr('hosting_configuration_tab_modules_module_access_admin')}}"
+                                                  data-ng-click="ctrlHostingTabModules.goToHref($row.adminHref)">
                             </oui-action-menu-item>
                             <oui-action-menu-item data-text="{{::tr('hosting_configuration_tab_modules_module_change_password')}}"
                                                   data-ng-click="setAction('module/update-password/hosting-module-update-password', $row)"
