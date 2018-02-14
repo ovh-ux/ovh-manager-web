@@ -18,6 +18,7 @@
             <oui-column data-title="tr('email_tab_table_header_filter_priority')" data-property="priority" data-sortable></oui-column>
             <oui-column data-title="tr('emails_common_status')">
                 <span class="label"
+                      data-ng-show="$row.active"
                       data-ng-class="{'label-success': $row.active, 'label-danger': !$row.active}"
                       data-ng-bind="tr('email_tab_filters_status_' + $row.active)"></span>
             </oui-column>
