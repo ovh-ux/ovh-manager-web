@@ -1,6 +1,7 @@
 class SessionService {
-    constructor ($q, constants, translator, Products, User, LANGUAGES, OtrsPopupService, ssoAuthentication) {
+    constructor ($q, $translate, constants, translator, Products, User, LANGUAGES, OtrsPopupService, ssoAuthentication) {
         this.$q = $q;
+        this.$translate = $translate;
         this.constants = constants;
         this.translator = translator;
         this.products = Products;
@@ -211,11 +212,14 @@ class SessionService {
         return {
             name: "languages",
             label: _(currentLanguage).get("name"),
+            "class": "oui-navbar-menu_languages",
             title: _(currentLanguage).get("value").replace("_", "-"),
+            headerTitle: this.translator.tr("global_language"),
             subLinks: _(this.LANGUAGES)
                 .filter((language) => _(language).has("name", "value"))
                 .map((language) => ({
                     title: language.name,
+                    isActive: language.value === currentLanguage.value,
                     click: (callback) => {
                         localStorage["univers-selected-language"] = language.value;
                         window.location.reload();
@@ -241,25 +245,114 @@ class SessionService {
             nichandle: currentUser.nichandle,
             fullName: `${currentUser.firstName} ${currentUser.lastName}`,
             subLinks: [
+                // My Account
                 {
+                    name: "user.account",
                     title: this.translator.tr("global_account"),
-                    url: "#/useraccount/infos"
-                }, {
+                    url: "#/useraccount/infos",
+                    subLinks: [{
+                        title: this.translator.tr("global_account_infos"),
+                        url: "#/useraccount/infos"
+                    }, {
+                        title: this.translator.tr("global_account_security"),
+                        url: "#/useraccount/security"
+                    },
+                        (this.constants.target === "EU" || this.constants.target === "CA") && {
+                            title: this.translator.tr("global_account_emails"),
+                            url: "#/useraccount/emails"
+                        },
+                        (this.constants.target === "EU") && {
+                            title: this.translator.tr("global_account_subscriptions"),
+                            url: "#/useraccount/subscriptions"
+                        }, {
+                            title: this.translator.tr("global_account_ssh"),
+                            url: "#/useraccount/ssh"
+                        }, {
+                            title: this.translator.tr("global_account_advanced"),
+                            url: "#/useraccount/advanced"
+                        }]
+                },
+
+                // Billing
+                !currentUser.isEnterprise && {
+                    name: "user.billing",
                     title: this.translator.tr("global_billing"),
-                    url: "#/billing/history"
-                }, {
+                    url: "#/billing/history",
+                    subLinks: [{
+                        title: this.translator.tr("global_billing_history"),
+                        url: "#/billing/history"
+                    }, {
+                        title: this.translator.tr("global_billing_payments"),
+                        url: "#/billing/payments"
+                    }]
+                },
+
+                // Services
+                (this.constants.target === "EU" || this.constants.target === "CA") && (!currentUser.isEnterprise ? {
+                    name: "user.services",
                     title: this.translator.tr("global_renew"),
-                    url: "#/billing/autoRenew"
-                }, {
+                    url: "#/billing/autoRenew",
+                    subLinks: [{
+                        title: this.translator.tr("global_renew_management"),
+                        url: "#/billing/autoRenew"
+                    }, {
+                        title: this.translator.tr("global_renew_agreements"),
+                        url: "#/useraccount/agreements"
+                    }]
+                } : {
+                    title: this.translator.tr("global_renew_agreements"),
+                    url: "#/useraccount/agreements"
+                }),
+
+                // Payment
+                !currentUser.isEnterprise && {
+                    name: "user.payment",
+                    title: this.translator.tr("global_means"),
+                    url: "#/billing/mean",
+                    subLinks: [{
+                        title: this.translator.tr("global_means_mean"),
+                        url: "#/billing/mean"
+                    },
+                        (this.constants.target === "EU" || this.constants.target === "CA") && {
+                            title: this.translator.tr("global_means_ovhaccount"),
+                            url: "#/billing/ovhaccount"
+                        },
+                        (this.constants.target === "EU" || this.constants.target === "CA") && {
+                            title: this.translator.tr("global_means_vouchers"),
+                            url: "#/billing/vouchers"
+                        }, {
+                            title: this.translator.tr("global_means_refunds"),
+                            url: "#/billing/refunds"
+                        },
+                        (this.constants.target === "EU") && {
+                            title: this.translator.tr("global_means_fidelity"),
+                            url: "#/billing/fidelity"
+                        }, {
+                            title: this.translator.tr("global_means_credits"),
+                            url: "#/billing/credits"
+                        }]
+                },
+
+                // Orders
+                (!currentUser.isEnterprise && this.constants.target === "EU" && currentUser.ovhSubsidiary === "FR") && {
                     title: this.translator.tr("global_orders"),
                     url: "#/billing/orders"
-                }, {
+                },
+
+                // Contacts
+                (this.constants.target === "EU") && {
                     title: this.translator.tr("global_contacts"),
                     url: "#/useraccount/contacts?tab=SERVICES"
-                }, {
+                },
+
+                // Tickets
+                {
                     title: this.translator.tr("global_list_ticket"),
                     url: "#/ticket"
-                }, {
+                },
+
+                // Logout
+                {
                     title: this.translator.tr("global_logout"),
                     "class": "logout",
                     click: (callback) => {
@@ -274,48 +367,80 @@ class SessionService {
         };
     }
 
-    // Get navbar navigation and user infos
-    getNavbar () {
+    loadTranslations () {
+        // Add all $translatePartialLoader for Navbar here
+        // Not used for the moment
+        return this.$translate.refresh();
+    }
+
+    // Get managers links for main-links attribute
+    getManagerLinks (products) {
         const currentUniverse = this.constants.UNIVERS;
         const managerUrls = this.constants.MANAGER_URLS;
         const managerNames = Object.keys(managerUrls);
 
-        return this.$q.all({
-            products: this.products.getProductsByType(),
-            user: this.user.getUser()
-        }).then((result) => ({
-            brand: {
-                title: this.translator.tr("universe_univers-portal_name"),
-                url: managerUrls.portal,
-                iconAlt: "OVH",
-                iconClass: "navbar-logo",
-                iconSrc: "assets/images/navbar/icon-logo-ovh.svg"
-            },
+        return _.map(managerNames, (managerName) => {
+            const managerLink = {
+                name: managerName,
+                "class": managerName,
+                title: this.translator.tr(`universe_univers-${managerName}_name`),
+                url: managerUrls[managerName],
+                isPrimary: ["partners", "labs"].indexOf(managerName) === -1
+            };
+
+            if (products && managerName === currentUniverse) {
+                managerLink.subLinks = this.getUniverseMenu(products);
+            }
+
+            return managerLink;
+        });
+    }
+
+    // Get products and build responsive menu
+    getResponsiveLinks () {
+        return this.products.getProductsByType()
+            .then((products) => this.getManagerLinks(products))
+            .catch(() => this.getManagerLinks());
+    }
+
+    // Get navbar navigation and user infos
+    getNavbar () {
+        const managerUrls = this.constants.MANAGER_URLS;
+
+        // Get base structure for the navbar
+        const getBaseNavbar = (user) => {
+            const baseNavbar = {
+                // Set OVH Logo
+                brand: {
+                    title: this.translator.tr("universe_univers-web_name"),
+                    url: managerUrls.web,
+                    iconAlt: "OVH",
+                    iconClass: "navbar-logo",
+                    iconSrc: "assets/images/navbar/icon-logo-ovh.svg"
+                },
+
+                // Set Manager Links
+                managerLinks: this.getManagerLinks()
+            };
 
             // Set Internal Links
-            internalLinks: [
-                this.getAssistanceMenu(result.user),    // Assistance
-                this.getLanguageMenu(),                 // Language
-                this.getUserMenu(result.user)           // User
-            ],
+            if (user) {
+                baseNavbar.internalLinks = [
+                    this.getAssistanceMenu(user), // Assistance
+                    this.getLanguageMenu(), // Language
+                    this.getUserMenu(user) // User
+                ];
+            }
 
-            // Set Manager Links
-            managerLinks: _.map(managerNames, (managerName) => {
-                const managerLink = {
-                    name: managerName,
-                    "class": managerName,
-                    title: this.translator.tr(`universe_univers-${managerName}_name`),
-                    url: managerUrls[managerName],
-                    isPrimary: ["partners", "labs"].indexOf(managerName) === -1
-                };
+            return baseNavbar;
+        };
 
-                if (managerName === currentUniverse) {
-                    managerLink.subLinks = this.getUniverseMenu(result.products);
-                }
-
-                return managerLink;
-            })
-        }));
+        return this.$q.all({
+            translate: this.loadTranslations(),
+            user: this.user.getUser()
+        })
+            .then(({ user }) => getBaseNavbar(user))
+            .catch(() => getBaseNavbar());
     }
 }
 

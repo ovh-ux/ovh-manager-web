@@ -21,6 +21,27 @@
         }
     }
 
+
+    // Languages menu
+    &-menu {
+        &_language &__item_active {
+            &,
+            &:hover,
+            &:active { background-color: @oui-navbar-menu-background-color_hover; }
+
+            .oui-navbar-link::after {
+                content: @oui-icon-index-check_line;
+                display: inline-block;
+                margin-left: rem-calc(20);
+                margin-top: -.3rem; // For a better centering
+                vertical-align: middle;
+                font-family: 'Oui Icons';
+                font-size: @oui-navbar-external-size;
+                color: inherit;
+            }
+        }
+    }
+
     // Icons
     .navbar-icon(icon-assistance);
     .navbar-icon(icon-notifications);
