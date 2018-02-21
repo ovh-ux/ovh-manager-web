@@ -212,7 +212,7 @@ class SessionService {
         return {
             name: "languages",
             label: _(currentLanguage).get("name"),
-            "class": "oui-navbar-menu_languages",
+            "class": "oui-navbar-menu_language",
             title: _(currentLanguage).get("value").replace("_", "-"),
             headerTitle: this.translator.tr("global_language"),
             subLinks: _(this.LANGUAGES)
