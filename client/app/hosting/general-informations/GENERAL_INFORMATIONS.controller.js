@@ -16,9 +16,7 @@ angular
         }
 
         hasHostedSSL () {
-            return _(this.$scope.hosting).isObject();
-            const hasHostedSSL = _(this.$scope.hosting).isObject() && this.$scope.hosting.hasHostedSsl === true;
-            return hasHostedSSL;
+            return _(this.$scope.hosting).isObject() && this.$scope.hosting.hasHostedSsl === true;
         }
 
         isNonHostedSSLAvailable () {
