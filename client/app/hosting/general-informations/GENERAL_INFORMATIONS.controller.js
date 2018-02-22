@@ -7,8 +7,7 @@ angular
         }
 
         canOrderSSL () {
-            const canOrderSSL = !this.hasHostedSSL() && !this.hasNonHostedSSL();
-            return canOrderSSL;
+            return !this.hasHostedSSL() && !this.hasNonHostedSSL();
         }
 
         hasNonHostedSSL () {
@@ -24,15 +23,13 @@ angular
         }
 
         canRegenerateSSL () {
-            const canRegenerateSSL = this.isNonHostedSSLAvailable() && this.$scope.ssl.regenerable && this.$scope.ssl.provider !== "COMODO";
-            return canRegenerateSSL;
+            return this.isNonHostedSSLAvailable() && this.$scope.ssl.regenerable && this.$scope.ssl.provider !== "COMODO";
         }
 
         canDeleteSSL () {
             // hasHostedSsl is true only for legacy SSL offers
             // the new system is through the ssl API
-            const canDeleteSSL = this.hasHostedSSL() || this.isNonHostedSSLAvailable();
-            return canDeleteSSL;
+            return this.hasHostedSSL() || this.isNonHostedSSLAvailable();
         }
 
         chooseCertificateStatusText () {
