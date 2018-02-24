@@ -36,7 +36,10 @@
                     </a>
                 </div>
 
-                <oui-spinner data-size="l" data-ng-if="loading.init"></oui-spinner>
+                <div class="text-center"
+                     data-ng-if="loading.init">
+                    <oui-spinner></oui-spinner>
+                </div>
 
                 <div class="alert alert-info" role="alert"
                      data-i18n-static="hosting_tab_CRON_table_empty"
