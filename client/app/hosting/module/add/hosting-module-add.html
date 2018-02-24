@@ -11,7 +11,10 @@
              data-wizard-step-on-next="onNextStep"
              data-wizard-step-valid="model.templateSelected">
 
-            <oui-spinner data-ng-if="!model.moduleTemplates"></oui-spinner>
+            <div class="text-center"
+                 data-ng-if="!model.moduleTemplates">
+                <oui-spinner></oui-spinner>
+            </div>
 
             <div data-ng-if="model.moduleTemplates && model.moduleTemplates.length > 0">
                 <p data-i18n-static="hosting_configuration_tab_modules_create_step1_question"
