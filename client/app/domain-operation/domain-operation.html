@@ -117,7 +117,7 @@
                                     data-linkedpopover-remote="true"
                                     data-linkedpopover-single="true"
                                     data-linkedpopover-title="{{i18n.common_actions}}"
-                                    data-ng-disabled="!operation.canCancel && !operation.canRelaunch && !operation.canAccelerate"
+                                    data-ng-disabled="!operation.canCancel && !operation.canRelaunch && !operation.canAccelerate && operation.function !== 'DomainIncomingTransfer'"
                                     data-ng-attr-title="{{(operation.canCancel || operation.canRelaunch || operation.canAccelerate) && tr('common_actions') || '' }}">
                                 <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                             </button>
