@@ -60,7 +60,8 @@ angular.module("App").controller(
             return this.privateDatabaseService
                 .getUsers(this.productId)
                 .then((users) => {
-                    this.usersIds = users;
+                    this.usersIds = users.sort((a, b) => a.localeCompare(b));
+                    this.users = this.usersIds.map((id) => ({ id }));
                 })
                 .catch((err) => {
                     this.alerter.error(_.get(err, "message", err), this.$scope.alerts.main);
@@ -70,6 +71,13 @@ angular.module("App").controller(
                         this.loaders.users = false;
                     }
                 });
+        }
+
+        transformItem (item) {
+            return this.privateDatabaseService.getUser(this.productId, item.id).then((user) => {
+                user.id = item.id;
+                return user;
+            });
         }
 
         getUserDetails (id) {

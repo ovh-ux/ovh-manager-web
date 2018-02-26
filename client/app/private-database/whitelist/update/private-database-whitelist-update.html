@@ -22,8 +22,10 @@
                     <label class="control-label col-md-4" for="inputName"
                            data-i18n-static="privateDatabase_modale_whitelist_update_name"></label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="inputName"
-                               data-ng-model="updateCtrl.model.name">
+                        <textarea class="form-control"
+                                  id="inputName"
+                                  maxlength="256"
+                                  data-ng-model="updateCtrl.model.name"></textarea>
                     </div>
                 </div>
 

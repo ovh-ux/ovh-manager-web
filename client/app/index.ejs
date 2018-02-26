@@ -68,13 +68,14 @@
                 data-active-link="web"
                 data-brand="::navbar.brand"
                 data-main-links="::navbar.managerLinks"
-                data-aside-links="::navbar.internalLinks">
+                data-aside-links="::navbar.internalLinks"
+                data-toggler-links="::navbar.responsiveLinks">
             </oui-navbar>
 
             <div class="container-fluid h-100 w-100" style="overflow: auto">
                 <div class="row">
-                    <div data-sidebar-menu class="col-sm-4 col-md-2"></div>
-                    <div class="col-sm-8 col-sm-offset-4 col-md-10 col-md-offset-2 px-0 mt-md-0">
+                    <div data-sidebar-menu class="col-md-3 col-lg-2"></div>
+                    <div class="col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2 px-0">
                         <div class="mainContainer pb-5">
 
                             <!-- Skip content target -->
@@ -90,7 +91,8 @@
             </div>
         </div>
 
-        <div id="managerPreload" class="d-flex text-center" data-ng-class="managerPreloadHide">
+        <div id="managerPreload" class="d-flex text-center"
+            data-ng-class="!!navbar && managerPreloadHide">
             <div class="m-auto">
                 <p class="lead mb-3" data-i18n-static="preload_welcome"></p>
                 <hr class="my-0" />

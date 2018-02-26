@@ -10,20 +10,16 @@ angular.module("App").controller(
         }
 
         $onInit () {
-            this.$scope.loader = true;
-            this.$scope.itemsPerPage = 10;
-
             this.$scope.goTo = (page, target) => {
                 this.$window.open(page, target);
             };
+            if (!this.$scope.bdd.name && this.$scope.bdd.dumps.length > 0) {
+                this.$scope.bdd.name = this.$scope.bdd.dumps[0].databaseName;
+            }
         }
 
-        callModal (dump) {
+        restaureDumpRequest (dump) {
             this.$scope.setAction("database/restore-archive/private-database-database-restore-archive", { bdd: dump.databaseName, dump, func: this.$scope });
-        }
-
-        onTransformItemDone () {
-            this.loader = false;
         }
     }
 );

@@ -22,6 +22,7 @@ angular
             this.emailsDetails = [];
             this.emailIsUnavailable = true;
             this.userPreferences = null;
+            this.shouldDisplayAccountMigration = false;
             this.loading = {
                 accounts: false,
                 emails: false,
@@ -97,6 +98,14 @@ angular
                 });
         }
 
+        refreshSummary () {
+            return this.Emails
+                .getSummary(this.$stateParams.productId)
+                .then((summary) => {
+                    this.summary = summary;
+                });
+        }
+
         //---------------------------------------------
         // Navigation
         //---------------------------------------------
@@ -109,19 +118,27 @@ angular
         resetInitialView () {
             this.currentView = "accountsView";
             this.currentViewData = null;
-            this.Emails
-                .getSummary(this.$stateParams.productId)
-                .then((summary) => {
-                    this.summary = summary;
-                });
+            this.refreshSummary();
         }
 
         openWebMailTab () {
             this.$window.open(this.webMailUrl, "_blank");
         }
 
+
         openOMMTab () {
             this.$window.open(this.webOMMUrl, "_blank");
+        }
+      
+        displayAccountMigration (email) {
+            this.shouldDisplayAccountMigration = true;
+            this.accountMigrationEmail = email;
+        }
+
+        displayEmailsList () {
+            this.shouldDisplayAccountMigration = false;
+            this.accountMigrationEmail = null;
+            this.refreshSummary();
         }
 
         //---------------------------------------------
