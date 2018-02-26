@@ -242,17 +242,6 @@ angular.module("services").service(
         }
 
         /**
-         * Copy emails form imap
-         * @param {object} data
-         */
-        imapCopy (data) {
-            return this.OvhHttp.post("/email/imapCopy", {
-                rootPath: "apiv6",
-                data
-            });
-        }
-
-        /**
          * Obtain a list of available filters
          * @param {string} serviceName
          * @param {string} accountName

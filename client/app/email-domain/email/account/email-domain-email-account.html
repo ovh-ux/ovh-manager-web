@@ -186,6 +186,11 @@
                     data-ng-click="setAction('email-domain/email/account/export-csv/email-domain-email-account-export-csv')"
                     data-ng-disabled="ctrlEmailDomainEmail.emails.length === 0">
             </button>
+             <button class="btn btn-block btn-default text-wrap" type="button"
+                    data-i18n-static="email_tab_popover_import_from_imap"
+                    data-ng-click="ctrlEmailDomainEmail.openOMMTab()"
+                    data-ng-if="ctrlEmailDomainEmail.quotas.account > 0">
+            </button>
         </div>
 
         <div class="mb-5"

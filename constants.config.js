@@ -797,6 +797,7 @@ module.exports = {
                 domainOrderChange: "https://www.ovh.com/fr/cgi-bin/newOrder/order.cgi",
                 domainOrderTrade: "https://www.ovh.com/fr/order/domain/#/legacy/domain/trade/informations?options=~~(domain~~'{domain})",
                 domainWebmailUrl: "https://mail.ovh.net/",
+                domainOMMUrl: "https://omm.ovh.net/",
                 changeOwner: "https://www.ovh.com/cgi-bin/fr/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.com/fr/order/domain/#/legacy/domain/trade/list",
                 oldInterface: "https://www.ovh.com/managerv3/home.pl",
