@@ -68,7 +68,8 @@
                 data-active-link="web"
                 data-brand="::navbar.brand"
                 data-main-links="::navbar.managerLinks"
-                data-aside-links="::navbar.internalLinks">
+                data-aside-links="::navbar.internalLinks"
+                data-toggler-links="::navbar.responsiveLinks">
             </oui-navbar>
 
             <div class="container-fluid h-100 w-100" style="overflow: auto">
@@ -90,7 +91,8 @@
             </div>
         </div>
 
-        <div id="managerPreload" class="d-flex text-center" data-ng-class="managerPreloadHide">
+        <div id="managerPreload" class="d-flex text-center"
+            data-ng-class="!!navbar && managerPreloadHide">
             <div class="m-auto">
                 <p class="lead mb-3" data-i18n-static="preload_welcome"></p>
                 <hr class="my-0" />

@@ -19,10 +19,16 @@ angular.module("App")
             }
         };
 
-        // Get structure of the navbar
+        // Get first base structure of the navbar, to avoid heavy loading
         SessionService.getNavbar()
             .then((navbar) => {
                 $scope.navbar = navbar;
                 $scope.managerPreloadHide += " manager-preload-hide";
+
+                // Then get the products links, to build the reponsive menu
+                SessionService.getResponsiveLinks()
+                    .then((responsiveLinks) => {
+                        $scope.navbar.responsiveLinks = responsiveLinks;
+                    });
             });
     });
