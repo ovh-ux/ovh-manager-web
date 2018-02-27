@@ -181,7 +181,6 @@
                                                 <span data-ng-bind="ctrl.chooseCertificateStatusText()"></span>
                                             </div>
                                             <div class="ml-auto mb-auto"
-                                                 style="position: relative"
                                                  data-ng-if="ctrl.canOrderSSL() || ctrl.canRegenerateSSL() || ctrl.canDeleteSSL()">
                                                 <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
                                                         data-toggle="dropdown">
@@ -230,7 +229,7 @@
                                                       data-i18n-static="hosting_dashboard_service_flush_cdn_doing"
                                                       data-ng-if="flushCdnState === 'doing'"></span>
                                             </div>
-                                            <div class="ml-auto mb-auto" style="position: relative"
+                                            <div class="ml-auto mb-auto"
                                                  data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M' || hosting.hasCdn && flushCdnState === 'ok' || hosting.hasCdn">
                                                 <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
                                                         data-toggle="dropdown">
@@ -302,7 +301,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div class="mb-auto ml-auto" style="position: relative;">
+                                            <div class="mb-auto ml-auto">
                                                 <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
                                                         data-toggle="dropdown">
                                                     <span data-i18n-static="common_actions"></span>

@@ -539,7 +539,7 @@
                 });
             }
 
-            retrievingDetails (serviceName) {
+            retrievingSSLValidationReport (serviceName) {
                 return this.OvhHttp
                     .get(`/hosting/web/${serviceName}/ssl/report`, {
                         rootPath: "apiv6"
