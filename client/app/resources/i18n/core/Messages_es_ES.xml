@@ -115,8 +115,8 @@
    <translation id="wizard_previous" qtlid="17431">Anterior</translation>
    <translation id="wizard_export" qtlid="69881">Exportar</translation>
    <translation id="table_search_noresult" qtlid="433498">No se ha encontrado ningún resultado</translation>
-   <translation id="table_modify_entry" qtlid="402074">: modificar el registro</translation>
-   <translation id="table_delete_entry" qtlid="402087">: eliminar el registro</translation>
+   <translation id="table_modify_entry" qtlid="402074">Modificar el registro</translation>
+   <translation id="table_delete_entry" qtlid="402087">Eliminar el registro</translation>
    <translation id="table_filter" qtlid="59207">Filtrar</translation>
    <translation id="table_add_entry" qtlid="129219">Añadir un registro</translation>
    <translation id="table_validate_entry" qtlid="172267">Aceptar los cambios</translation>
@@ -157,11 +157,20 @@
    <translation id="common_managerv5" qtlid="190784">Manager V5</translation>
    <translation id="common_managerv3" qtlid="34512">Manager V3</translation>
    <translation id="global_app_title" qtlid="122131">Su área de cliente Web OVH</translation>
+   <translation id="global_language" qtlid="30598">Idioma</translation>
    <translation id="global_logout" qtlid="33658">Salir</translation>
    <translation id="global_changelog" qtlid="124964">Historial de actualizaciones</translation>
    <translation id="global_preference" qtlid="144708">Mis suscripciones</translation>
    <translation id="global_billing" qtlid="32950">Facturación</translation>
+   <translation id="global_billing_history" qtlid="159540">Mis facturas</translation>
+   <translation id="global_billing_payments" qtlid="398781">Seguimiento de los pagos</translation>
    <translation id="global_account" qtlid="157642">Mi cuenta</translation>
+   <translation id="global_account_infos" qtlid="405499">Mi perfil</translation>
+   <translation id="global_account_security" qtlid="125420">Seguridad</translation>
+   <translation id="global_account_emails" qtlid="266118">Mensajes recibidos</translation>
+   <translation id="global_account_subscriptions" qtlid="144708">Mis suscripciones</translation>
+   <translation id="global_account_ssh" qtlid="165897">Mis llaves SSH</translation>
+   <translation id="global_account_advanced" qtlid="39958">Parámetros avanzados</translation>
    <translation id="global_support" qtlid="39994">Soporte</translation>
    <translation id="global_feedback" qtlid="103558">Denos su opinión</translation>
    <translation id="global_feedback_appreciation" qtlid="127468">Su opinión nos interesa</translation>
@@ -180,7 +189,21 @@
    <translation id="global_feedback_subject_maxlength" qtlid="281732">El título no debe superar los 255 caracteres.</translation>
    <translation id="global_feedback_send" qtlid="52807">Enviar</translation>
    <translation id="global_renew" qtlid="229658">Mis servicios</translation>
+   <translation id="global_renew_management" qtlid="287527">Administrar mis servicios</translation>
+   <translation id="global_renew_agreements" qtlid="204350">Mis contratos</translation>
+   <translation id="global_means" qtlid="90049">Formas de pago</translation>
+   <translation id="global_means_mean" qtlid="139949">Mis formas de pago</translation>
+   <translation id="global_means_ovhaccount" qtlid="366826">Mi cuenta de prepago</translation>
+   <translation id="global_means_vouchers" qtlid="270917">Códigos promocionales</translation>
+   <translation id="global_means_refunds" qtlid="139923">Mis devoluciones</translation>
+   <translation id="global_means_fidelity" qtlid="260606">Área de fidelidad</translation>
+   <translation id="global_means_credits" qtlid="448907">Mi crédito</translation>
+
+
+
    <translation id="global_orders" qtlid="282809">Mis pedidos </translation>
+   <translation id="global_contacts" qtlid="70541">Mis contactos</translation>
+   <translation id="global_list_ticket" qtlid="454039">Mis solicitudes de asistencia</translation>
    <translation id="global_profil" qtlid="23035">Perfil</translation>
    <translation id="global_OK" qtlid="31522">OK</translation>
    <translation id="global_KO" qtlid="122155">Cancelar</translation>
@@ -232,6 +255,7 @@
    <translation id="required" qtlid="182514">Campo obligatorio</translation>
    <translation id="required_fields" qtlid="433550">Los campos con asterisco son obligatorios.</translation>
    <translation id="common_go_to_next_error" qtlid="282562">Pasar al siguiente error</translation>
+   <translation id="common_skip_to_main_content" qtlid="454052">Ir al contenido principal</translation>
 
    <translation id="common_menu_support_assistance" qtlid="52699">Soporte</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Todas las guías</translation>
@@ -681,7 +705,7 @@
    <translation id="global_ks_upgrade_step1_level" qtlid="172891">1</translation>
    <translation id="global_ks_upgrade_step2_level" qtlid="367902">2</translation>
 
-   <translation id="preload_welcome" qtlid="433576">Bienvenido a su</translation>
+   <translation id="preload_welcome" qtlid="433576">Bienvenido/a al</translation>
    <translation id="preload_manager_ovh" qtlid="433589">Área de cliente de OVH</translation>
    <translation id="preload_tips_1" qtlid="433602">Consultar sus facturas desde el área de cliente Dedicado de OVH</translation>
    <translation id="preload_tips_2" qtlid="433615">¡Que tenga un buen día!</translation>
@@ -689,4 +713,11 @@
    <translation id="preload_tips_4" qtlid="433641">¡Nueva versión del área de cliente Web!</translation>
 
    <translation id="sidebar_menu_order_actions" qtlid="43558">Contratar</translation>
+
+   <translation id="common_ouidatagrid_nodata" qtlid="197635">No hay resultados</translation>
+   <translation id="common_ouipagination_resultsperpage" qtlid="433384">Resultados por página</translation>
+   <translation id="common_ouipagination_ofnresults" qtlid="452982">de TOTAL_ITEMS resultados</translation>
+   <translation id="common_ouipagination_currentpageofpagecount" qtlid="452995">Página CURRENT_PAGE de PAGE_COUNT</translation>
+   <translation id="common_ouipagination_next" qtlid="433423">Página siguiente</translation>
+   <translation id="common_ouipagination_previous" qtlid="433436">Página anterior</translation>
 </translations>
