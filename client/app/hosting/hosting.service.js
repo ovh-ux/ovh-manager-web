@@ -9,7 +9,7 @@
         .module("services")
         .service("Hosting", class Hosting {
 
-            constructor ($q, $http, $rootScope, $stateParams, constants, OvhHttp, Poll, Products) {
+            constructor ($q, $http, $rootScope, $stateParams, constants, OvhHttp, Poll, Products, OvhApiHostingWebSsl) {
                 this.$q = $q;
                 this.$http = $http;
                 this.$rootScope = $rootScope;
@@ -18,6 +18,7 @@
                 this.OvhHttp = OvhHttp;
                 this.Poll = Poll;
                 this.Products = Products;
+                this.OvhApiHostingWebSsl = OvhApiHostingWebSsl;
 
                 this.cloudWebUnlimitedQuantity = 100000;
                 this.events = {
@@ -540,10 +541,9 @@
             }
 
             retrievingSSLValidationReport (serviceName) {
-                return this.OvhHttp
-                    .get(`/hosting/web/${serviceName}/ssl/report`, {
-                        rootPath: "apiv6"
-                    });
+                return this.OvhApiHostingWebSsl.Lexi().report({
+                    serviceName
+                }).$promise;
             }
 
             /**

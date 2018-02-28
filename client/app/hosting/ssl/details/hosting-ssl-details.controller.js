@@ -26,7 +26,7 @@ angular
                     this.sslReport = _(sslReport)
                         .pairs()
                         .map((sslReportEntry) => ({ name: sslReportEntry[0], value: sslReportEntry[1] }))
-                        .filter((sslReportEntry) => sslReportEntry.value !== "non-required" && sslReportEntry.value !== "not-applicable" && sslReportEntry.name !== "providerOrderId")
+                        .filter((sslReportEntry) => sslReportEntry.value !== "non-required" && sslReportEntry.value !== "not-applicable" && sslReportEntry.name !== "providerOrderId" && !_(sslReportEntry.name).startsWith("$"))
                         .value();
                 })
                 .catch((err) => {
