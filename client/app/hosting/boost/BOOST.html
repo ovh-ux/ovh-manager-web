@@ -21,12 +21,8 @@
             </div>
             <oui-datagrid data-rows="hostingBoosts"
                           data-row-loader="transformItem($row)">
-                <oui-column data-title="tr('hosting_tab_BOOST_history_table_header_id')" data-property="accountId">
-                    <span data-ng-bind="$row.accountId"></span>
-                </oui-column>
-                <oui-column data-title="tr('hosting_tab_BOOST_history_table_header_offer')" data-property="offer">
-                    <span data-ng-bind="$row.offer"></span>
-                </oui-column>
+                <oui-column data-title="tr('hosting_tab_BOOST_history_table_header_id')" data-property="accountId"></oui-column>
+                <oui-column data-title="tr('hosting_tab_BOOST_history_table_header_offer')" data-property="offer"></oui-column>
                 <oui-column data-title="tr('hosting_tab_BOOST_history_table_header_boost_offer')" data-property="boostOffer">
                     <span data-ng-class="{text-center: $row.boostOffer === null}">
                         <span data-ng-bind="::$row.boostOffer"
