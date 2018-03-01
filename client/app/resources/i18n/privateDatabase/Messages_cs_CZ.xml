@@ -73,7 +73,7 @@
    <translation id="privateDatabase_tab_LOGS" qtlid="62064">Logy</translation>
    <translation id="privateDatabase_tab_CONFIGURATION" qtlid="4406">Konfigurace</translation>
    <translation id="privateDatabase_dashboard_general_informations" qtlid="27115">Základní informace</translation>
-   <translation id="privateDatabase_configurations_select" qtlid="263481">Zvolte si typ Vaší databáze:</translation>
+   <translation id="privateDatabase_configurations_select" qtlid="263481">Zvolte typ své databáze:</translation>
 
    <translation id="privateDatabase_configurations_general_mysql" qtlid="263494">Obecné nastavení MySQL</translation>
    <translation id="privateDatabase_configurations_general_mariadb" qtlid="404668">Obecné nastavení MariaDB</translation>
@@ -317,6 +317,7 @@
    <translation id="privateDatabase_add_authorized_ip" qtlid="448392">Ajouter une adresse IP autorisée</translation>
    <translation id="privateDatabase_add_authorized_ip_explanation" qtlid="448405">Vous n'avez pas encore d'adresse IP autorisée à accéder à vos bases de données. Entrez ici l'adresse IP du serveur auquel vous souhaitez donner accès à vos bases.</translation>
    <translation id="privateDatabase_add_authorized_ip_description" qtlid="448418">Accès initial à la base de données</translation>
+   <translation id="privateDatabase_add_authorized_ip_title" qtlid="455633">IP autorisée à accéder à la base de données</translation>
 
    <translation id="privateDatabase_restore_bdd_application" qtlid="404707">Nejprve je prosím vytvořte na záložce správy databází.</translation>
    <translation id="privateDatabase_restore_bdd_close" qtlid="4670">Zavřít</translation>
@@ -401,7 +402,7 @@
    <translation id="privateDatabase_gui" qtlid="103642">Uživatelské rozhraní</translation>
    <translation id="privateDatabase_tabs_bdd_no" qtlid="220746">Žádné databáze</translation>
 
-   <translation id="privateDatabase_tab_TASK" qtlid="136217">Nedávné úkoly</translation>
+   <translation id="privateDatabase_tab_TASK" qtlid="195633">Probíhající úkol</translation>
    <translation id="privateDatabase_tabs_tasks_name" qtlid="85509">Funkce</translation>
    <translation id="privateDatabase_tabs_tasks_startDate" qtlid="159176">Datum vytvoření</translation>
    <translation id="privateDatabase_tabs_tasks_lastUpdate" qtlid="434304">Poslední aktualizace</translation>
@@ -472,18 +473,18 @@
    <translation id="privateDatabase_order_sql_type_premium_label" qtlid="72845">SQL Private</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_title" qtlid="353491">Výhody Private SQL:</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_line_1" qtlid="404811">Neomezený počet databází</translation>
-   <translation id="privateDatabase_order_sql_type_premium_info_line_2" qtlid="353517">Garantovaná RAM o velikosti 256 MB až 2 GB</translation>
+   <translation id="privateDatabase_order_sql_type_premium_info_line_2" qtlid="455646">Mémoire RAM garantie de {0} à {1}</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_line_3" qtlid="353530">Automatické zálohy na denní bázi</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_line_4" qtlid="404824">Až 200 simultánních připojení</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_line_5" qtlid="404837">Přístupné pouze z Vašeho OVH webhostingu</translation>
-   <translation id="privateDatabase_order_sql_type_premium_info_line_6" qtlid="404850">Garantovaný diskový prostor o velikosti 4 GB až 32 GB</translation>
+   <translation id="privateDatabase_order_sql_type_premium_info_line_6" qtlid="455659">Disque garanti de 8 Go à 64 Go</translation>
 
    <translation id="privateDatabase_order_sql_type_dbaas_label" qtlid="404863">CloudDB</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_title" qtlid="404876">Parametry CloudDB:</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_line_1" qtlid="404889">Přístupné pouze z veřejné sítě</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_line_2" qtlid="404811">Neomezený počet databází</translation>
-   <translation id="privateDatabase_order_sql_type_dbaas_info_line_3" qtlid="353517">Garantovaná RAM o velikosti 256 MB až 2 GB</translation>
-   <translation id="privateDatabase_order_sql_type_dbaas_info_line_4" qtlid="404850">Garantovaný diskový prostor o velikosti 4 GB až 32 GB</translation>
+   <translation id="privateDatabase_order_sql_type_dbaas_info_line_3" qtlid="455646">Mémoire RAM garantie de {0} à {1}</translation>
+   <translation id="privateDatabase_order_sql_type_dbaas_info_line_4" qtlid="455659">Disque garanti de 8 Go à 64 Go</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_line_5" qtlid="353530">Automatické zálohy na denní bázi</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_line_6" qtlid="404824">Až 200 simultánních připojení</translation>
 
@@ -599,7 +600,7 @@
    <translation id="privateDatabase_tabs_list_extensions_title" qtlid="341927">Rozšíření</translation>
    <translation id="privateDatabase_tabs_list_extensions_extension" qtlid="94231">Přípona</translation>
    <translation id="privateDatabase_tabs_list_extensions_description" qtlid="9238">Popis</translation>
-   <translation id="privateDatabase_tabs_list_extensions_status" qtlid="26443">Stav</translation>
+   <translation id="privateDatabase_tabs_list_extensions_enabled" qtlid="55133">Aktivní</translation>
 
 <!-- INFOS -->
    <translation id="privateDatabase_tabs_list_go_extensions" qtlid="437035">Zobrazit rozšíření</translation>
