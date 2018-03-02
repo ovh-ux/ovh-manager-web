@@ -96,68 +96,24 @@ angular.module("App").controller(
         }
 
         onUserGrant_start (evt, opts) {
-            let unregister = null;
-
-            const todo = () => {
-                const idx = _.findIndex(this.$scope.userGrants, (grant) => grant.dataBase === opts.databaseName);
-
-                if (~idx) {
-                    this.isDoingGrant[opts.databaseName] = true;
-                    if (unregister) {
-                        unregister();
-                    }
-                }
-            };
-
-            if (this.$scope.userGrants && this.$scope.userGrants.length) {
-                todo();
-            } else {
-                unregister = this.$scope.$watch("userGrants.length", todo);
+            if (_.any(this.userGrants, { dataBase: opts.databaseName })) {
+                this.isDoingGrant[opts.databaseName] = true;
             }
         }
 
         onUserGrant_done (evt, opts) {
-            let unregister = null;
+            this.isDoingGrant[opts.databaseName] = false;
+            this.loaders.setGrant = false;
+            this.userGrants[opts.databaseName].value = opts.grants[opts.databaseName].value;
 
-            const todo = () => {
-                this.isDoingGrant[opts.databaseName] = false;
+            this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_success"), this.$scope.alerts.main);
 
-                this.userGrants[opts.databaseName].value = opts.grants[opts.databaseName].value;
-
-                this.alerter.success(this.$scope.tr("privateDatabase_tabs_users_grant_success"), this.$scope.alerts.main);
-
-                this.getUserGrants();
-
-                if (unregister) {
-                    unregister();
-                }
-            };
-
-            if (this.$scope.userGrants && this.$scope.userGrants.length) {
-                todo();
-            } else {
-                unregister = this.$scope.$watch("users.length", todo);
-            }
+            this.getUserGrants();
         }
 
         onUserGrant_error (evt, opts) {
-            let unregister = null;
-
-            const todo = () => {
-                this.isDoingGrant[opts.databaseName] = false;
-
-                this.alerter.error(this.$scope.tr("privateDatabase_tabs_users_grant_error"), this.$scope.alerts.main);
-
-                if (unregister) {
-                    unregister();
-                }
-            };
-
-            if (this.$scope.userGrants && this.$scope.userGrants.length) {
-                todo();
-            } else {
-                unregister = this.$scope.$watch("users.length", todo);
-            }
+            this.isDoingGrant[opts.databaseName] = false;
+            this.alerter.error(this.$scope.tr("privateDatabase_tabs_users_grant_error"), this.$scope.alerts.main);
         }
     }
 );
