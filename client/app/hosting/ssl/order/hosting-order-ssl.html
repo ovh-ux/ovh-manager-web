@@ -2,10 +2,6 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="onFinishWizard"
-         data-wizard-hide-confirm-button="!$ctrl.global.hideButtons"
-         data-wizard-hide-cancel-button="$ctrl.global.hideButtons"
-         data-wizard-hide-close-button="$ctrl.global.hideButtons"
-         data-wizard-hide-previous-button="$ctrl.global.hideButtons"
          data-wizard-title="i18n.hosting_dashboard_service_order_ssl">
 
         <div data-wizard-step
@@ -81,7 +77,7 @@
                 <textarea class="oui-textarea"
                             id="importCertificateContent"
                             rows="7"
-                            data-ng-model="$ctrl.importedCertificate.content"
+                            data-ng-model="$ctrl.step2.importedCertificate.content"
                             required></textarea>
                 <label class="oui-label"
                         for="importCertificateKey"
@@ -89,7 +85,7 @@
                 <textarea class="oui-textarea"
                             id="importCertificateKey"
                             rows="7"
-                            data-ng-model="$ctrl.importedCertificate.key"
+                            data-ng-model="$ctrl.step2.importedCertificate.key"
                             required></textarea>
                 <label class="oui-label"
                         for="importCertificateChain"
@@ -97,15 +93,15 @@
                 <textarea class="form-control"
                             id="importCertificateChain"
                             rows="7"
-                            data-ng-model="$ctrl.importedCertificate.chain"></textarea>
+                            data-ng-model="$ctrl.step2.importedCertificate.chain"></textarea>
             </form>
 
             <div data-ng-if="$ctrl.global.selectedCertificateType === $ctrl.certificateTypes.paid">
-                <div class="text-center" data-ng-if="$ctrl.step3.loading.isGeneratingOrderForm">
+                <div class="text-center" data-ng-if="$ctrl.step2.loading.isGeneratingOrderForm">
                     <oui-spinner></oui-spinner>
                 </div>
 
-                <p data-ng-if="!$ctrl.step3.loading.isGeneratingOrderForm" data-i18n-static="hosting_dashboard_ssl_order_preamble"></p>
+                <p data-ng-if="!$ctrl.step2.loading.isGeneratingOrderForm" data-i18n-static="hosting_dashboard_ssl_order_preamble"></p>
             </div>
         </div>
     </div>

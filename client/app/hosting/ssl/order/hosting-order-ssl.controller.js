@@ -21,11 +21,8 @@ angular.module("App").controller(
                 "import": "import"
             };
 
-            this.importedCertificate = { };
-
             this.global = {
-                selectedCertificateType: this.certificateTypes.letsEncrypt,
-                hideButtons: false
+                selectedCertificateType: this.certificateTypes.letsEncrypt
             };
 
             this.step1 = {
@@ -35,11 +32,12 @@ angular.module("App").controller(
                 canOrderLetEncryptCertificate: true
             };
 
-            this.step3 = {
+            this.step2 = {
                 loading: {
                     isGeneratingOrderForm: false,
                     isCreatingCertificate: false
-                }
+                },
+                importedCertificate: {}
             };
 
             if (!this.Validator.isValidLetsEncryptDomain("www.", this.$stateParams.productId)) {
@@ -54,7 +52,6 @@ angular.module("App").controller(
         }
 
         onStep1Load () {
-            this.global.hideButtons = true;
             this.step1.loading.isRetrievingInitialData = true;
 
             return this.HostingDomain.getAttachedDomain(this.$stateParams.productId, this.$stateParams.productId)
@@ -73,7 +70,6 @@ angular.module("App").controller(
                 })
                 .finally(() => {
                     this.step1.loading.isRetrievingInitialData = false;
-                    this.global.hideButtons = false;
                 });
         }
 
@@ -90,15 +86,14 @@ angular.module("App").controller(
         }
 
         isStep2Valid () {
-            const isPaidCertificateValid = this.global.selectedCertificateType === this.certificateTypes.paid && !this.step3.loading.isGeneratingOrderForm;
-            const isImportCertificateValid = this.global.selectedCertificateType === this.certificateTypes.import && _(this.importedCertificate.content).isString() && _(this.importedCertificate.key).isString();
+            const isPaidCertificateValid = this.global.selectedCertificateType === this.certificateTypes.paid && !this.step2.loading.isGeneratingOrderForm;
+            const isImportCertificateValid = this.global.selectedCertificateType === this.certificateTypes.import && _(this.step2.importedCertificate.content).isString() && _(this.step2.importedCertificate.key).isString();
+
             return isPaidCertificateValid || isImportCertificateValid;
         }
 
         creatingCertificate () {
-            this.global.hideButtons = true;
-
-            return this.hostingSSL.creatingCertificate(this.$stateParams.productId, this.importedCertificate.content, this.importedCertificate.key, this.importedCertificate.chain)
+            return this.hostingSSL.creatingCertificate(this.$stateParams.productId, this.step2.importedCertificate.content, this.step2.importedCertificate.key, this.step2.importedCertificate.chain)
                 .then(() => {
                     this.Alerter.success(this.$scope.tr("hosting_dashboard_ssl_generate_success"), this.$scope.alerts.main);
                     this.$scope.loadSsl();
@@ -112,7 +107,7 @@ angular.module("App").controller(
         }
 
         generatingOrderForm () {
-            this.step3.loading.isGeneratingOrderForm = true;
+            this.step2.loading.isGeneratingOrderForm = true;
 
             return this.User.getUrlOfEndsWithSubsidiary("domain_order_options_service")
                 .then((rawOrderFormURL) => {
@@ -123,7 +118,7 @@ angular.module("App").controller(
                     this.$scope.resetAction();
                 })
                 .finally(() => {
-                    this.step3.loading.isGeneratingOrderForm = false;
+                    this.step2.loading.isGeneratingOrderForm = false;
                 });
         }
 
@@ -131,9 +126,7 @@ angular.module("App").controller(
             if (this.global.selectedCertificateType === this.certificateTypes.paid) {
                 this.$window.open(this.orderFormURL, "_blank");
                 this.$scope.resetAction();
-            }
-
-            if (this.global.selectedCertificateType === this.certificateTypes.import) {
+            } else if (this.global.selectedCertificateType === this.certificateTypes.import) {
                 this.creatingCertificate();
             }
         }
