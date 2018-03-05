@@ -576,16 +576,6 @@
             }
 
             /**
-             * Regenerate SSL certificate
-             * @param {string} serviceName
-             */
-            regeneratingSSL (serviceName) {
-                return this.OvhHttp.post(`/hosting/web/${serviceName}/ssl/regenerate`, {
-                    rootPath: "apiv6"
-                });
-            }
-
-            /**
              * Delete SSL certificate
              * @param {string} serviceName
              */
