@@ -1,94 +1,112 @@
-<div data-ng-controller="HostingOrderSslCtrl as ctrl">
+<div data-ng-controller="HostingOrderSslCtrl as $ctrl">
     <div data-wizard
-         data-wizard-bread-crumb
          data-wizard-on-cancel="resetAction"
-         data-wizard-on-finish="makeOrder"
+         data-wizard-on-finish="onFinishWizard"
+         data-wizard-hide-confirm-button="!$ctrl.global.hideButtons"
+         data-wizard-hide-cancel-button="$ctrl.global.hideButtons"
+         data-wizard-hide-close-button="$ctrl.global.hideButtons"
+         data-wizard-hide-previous-button="$ctrl.global.hideButtons"
          data-wizard-title="i18n.hosting_dashboard_service_order_ssl">
 
         <div data-wizard-step
-             data-wizard-step-valid="ctrl.sslType != null"
-             data-wizard-step-on-next="createCertif">
+             data-wizard-step-on-load="onStep1Load"
+             data-wizard-step-on-next="onStep1NextStep">
+            <div class="text-center" data-ng-if="$ctrl.step1.loading.isRetrievingInitialData">
+                <oui-spinner></oui-spinner>
+            </div>
 
-            <form name="hostingOrderSslForm">
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="sslType-free" name="sslType" value="letsencrypt"
-                           data-ng-disabled="!ctrl.validDomain"
-                           data-ng-model="ctrl.sslType">
-                    <label class="oui-radio__label-container" for="sslType-free">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_dashboard_ssl_order_free"></span>
-                    </label>
-                </div>
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="sslType-payable" name="sslType" value="payable"
-                           data-ng-model="ctrl.sslType">
-                    <label class="oui-radio__label-container" for="sslType-payable">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_dashboard_ssl_order_payable"></span>
-                    </label>
-                </div>
-                <div class="oui-radio">
-                    <input type="radio" class="oui-radio__input" id="sslType-import" name="sslType" value="import"
-                           data-ng-model="ctrl.sslType">
-                    <label class="oui-radio__label-container" for="sslType-import">
-                        <span class="oui-radio__label"
-                              data-i18n-static="hosting_dashboard_ssl_order_import"></span>
-                    </label>
-                </div>
+            <div data-ng-if="!$ctrl.step1.loading.isRetrievingInitialData">
+                <form data-ng-if="!$ctrl.step1.loading.isRetrievingInitialData">
+                    <fieldset>
+                        <div class="oui-radio" data-ng-if="$ctrl.step1.canOrderLetEncryptCertificate">
+                            <input type="radio"
+                                    class="oui-radio__input"
+                                    id="sslTypeLetsEncrypt"
+                                    name="sslType"
+                                    data-ng-value="$ctrl.certificateTypes.letsEncrypt"
+                                    data-ng-model="$ctrl.global.selectedCertificateType"
+                                    required>
+                            <label class="oui-radio__label-container" for="sslTypeLetsEncrypt">
+                                <span class="oui-radio__label" data-i18n-static="hosting_dashboard_ssl_order_free"></span>
+                            </label>
+                        </div>
+                        <div class="oui-radio" data-ng-if="$ctrl.step1.canOrderPaidCertificate">
+                            <input type="radio"
+                                    class="oui-radio__input"
+                                    id="sslTypePaid"
+                                    name="sslType"
+                                    data-ng-value="$ctrl.certificateTypes.paid"
+                                    data-ng-model="$ctrl.global.selectedCertificateType"
+                                    required>
+                            <label class="oui-radio__label-container" for="sslTypePaid">
+                                <span class="oui-radio__label" data-i18n-static="hosting_dashboard_ssl_order_payable"></span>
+                            </label>
+                        </div>
+                        <div class="oui-radio">
+                            <input type="radio"
+                                    class="oui-radio__input"
+                                    id="sslTypeImport"
+                                    name="sslType"
+                                    data-ng-value="$ctrl.certificateTypes.import"
+                                    data-ng-model="$ctrl.global.selectedCertificateType"
+                                    required>
+                            <label class="oui-radio__label-container" for="sslTypeImport">
+                                <span class="oui-radio__label" data-i18n-static="hosting_dashboard_ssl_order_import"></span>
+                            </label>
+                        </div>
+                    </fieldset>
+                </form>
+
+                <div class="alert alert-warning mt-5"
+                     role="alert"
+                     data-i18n-static="hosting_ssl_regenerate_info_warning"></div>
+                <div class="alert alert-info"
+                     role="alert"
+                     data-ng-bind-html="tr('hosting_ssl_limit_characters_info_warning', [$ctrl.Validator.MAX_DOMAIN_LENGTH])"
+                     data-ng-if="!$ctrl.step1.canOrderLetEncryptCertificate"></div>
+                <div class="alert alert-warning"
+                     role="alert"
+                     data-ng-if="$ctrl.step1.cannotOrderPaidCertificateErrorMessage !== undefined"
+                     data-ng-bind="$ctrl.step1.cannotOrderPaidCertificateErrorMessage"></div>
+            </div>
+        </div>
+
+        <div data-wizard-step
+             data-wizard-step-on-load="onStep2Load"
+             data-wizard-step-valid="$ctrl.isStep2Valid()">
+            <form data-ng-if="$ctrl.global.selectedCertificateType === $ctrl.certificateTypes.import">
+                <label class="oui-label"
+                        for="importCertificateContent"
+                        data-i18n-static="hosting_dashboard_ssl_order_manual_mode_certif"></label>
+                <textarea class="oui-textarea"
+                            id="importCertificateContent"
+                            rows="7"
+                            data-ng-model="$ctrl.importedCertificate.content"
+                            required></textarea>
+                <label class="oui-label"
+                        for="importCertificateKey"
+                        data-i18n-static="hosting_dashboard_ssl_order_manual_mode_key"></label>
+                <textarea class="oui-textarea"
+                            id="importCertificateKey"
+                            rows="7"
+                            data-ng-model="$ctrl.importedCertificate.key"
+                            required></textarea>
+                <label class="oui-label"
+                        for="importCertificateChain"
+                        data-i18n-static="hosting_dashboard_ssl_order_manual_mode_chain"></label>
+                <textarea class="form-control"
+                            id="importCertificateChain"
+                            rows="7"
+                            data-ng-model="$ctrl.importedCertificate.chain"></textarea>
             </form>
 
-            <div class="alert alert-warning mt-5" role="alert"
-                 data-i18n-static="hosting_ssl_regenerate_info_warning">
-            </div>
-            <div class="alert alert-info" role="alert"
-                 data-ng-bind-html="tr('hosting_ssl_limit_characters_info_warning', [ctrl.Validator.MAX_DOMAIN_LENGTH])">
-            </div>
-        </div>
-
-
-        <div data-wizard-step
-             data-wizard-step-on-load="checkMultisitesSSL"
-             data-wizard-step-on-next="generateCertif"
-             data-wizard-step-valid="ctrl.isStepOneValid()">
-
-            <div class="text-center" data-ng-if="ctrl.loading.init || ctrl.loading.duration || ctrl.loading.generateCertif">
-                <oui-spinner></oui-spinner>
-            </div>
-
-            <!-- FREE CERTIFICATE -->
-            <div data-ng-if="!(ctrl.loading.init || ctrl.loading.duration || ctrl.loading.generateCertif)">
-                <div data-ng-if="ctrl.sslType === 'import'">
-                    <p data-i18n-static="hosting_dashboard_ssl_order_choose_mode"></p>
-                    <form name="hostingOrderSslImportForm">
-                        <label class="oui-label" for="manualModeCertif"
-                               data-i18n-static="hosting_dashboard_ssl_order_manual_mode_certif"></label>
-                        <textarea class="oui-textarea" id="manualModeCertif" rows="7"
-                                  data-ng-model="ctrl.manualMode.certificate">
-                        </textarea>
-                        <label class="oui-label" for="manualModeKey"
-                               data-i18n-static="hosting_dashboard_ssl_order_manual_mode_key"></label>
-                        <textarea class="oui-textarea" id="manualModeKey" rows="7"
-                                  data-ng-model="ctrl.manualMode.key">
-                        </textarea>
-                        <label class="oui-label" for="manualModeChain"
-                               data-i18n-static="hosting_dashboard_ssl_order_manual_mode_chain"></label>
-                        <textarea class="form-control" id="manualModeChain" rows="7"
-                                  data-ng-model="ctrl.manualMode.chain">
-                        </textarea>
-                    </form>
+            <div data-ng-if="$ctrl.global.selectedCertificateType === $ctrl.certificateTypes.paid">
+                <div class="text-center" data-ng-if="$ctrl.step3.loading.isGeneratingOrderForm">
+                    <oui-spinner></oui-spinner>
                 </div>
-                <p data-ng-if="ctrl.sslType === 'payable'"
-                   data-i18n-static="hosting_dashboard_ssl_order_pay"></p>
-            </div>
-        </div>
 
-        <div data-wizard-step
-             data-wizard-step-valid="!ctrl.loading.order">
-            <div class="text-center" data-ng-if="ctrl.loading.order">
-                <oui-spinner></oui-spinner>
+                <p data-ng-if="!$ctrl.step3.loading.isGeneratingOrderForm" data-i18n-static="hosting_dashboard_ssl_order_preamble"></p>
             </div>
-            <p data-i18n-static="hosting_dashboard_ssl_order_validation"
-               data-ng-if="!ctrl.loading.order"></p>
         </div>
     </div>
 </div>

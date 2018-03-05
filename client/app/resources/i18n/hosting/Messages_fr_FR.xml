@@ -191,10 +191,9 @@
    <translation id="hosting_dashboard_ssl_order_success" qtlid="181266">La commande numéro <a href='{0}' target='_blank'>{1}</a> a bien été prise en compte.</translation>
    <translation id="hosting_dashboard_ssl_order_error" qtlid="217678">Une erreur est survenue lors de la commande d'un certificat SSL.</translation>
    <translation id="hosting_dashboard_ssl_order_payable" qtlid="298877">Certificat payant</translation>
-   <translation id="hosting_dashboard_ssl_order_free" qtlid="298890">Certificat gratuit (Let's encrypt)</translation>
+   <translation id="hosting_dashboard_ssl_order_free" qtlid="298890">Certificat gratuit (Let's Encrypt)</translation>
    <translation id="hosting_dashboard_ssl_order_a_certificate" qtlid="382141">Commander un certificat payant</translation>
    <translation id="hosting_dashboard_ssl_order_import" qtlid="315735">Import de votre certificat SSL</translation>
-   <translation id="hosting_dashboard_ssl_order_choose_mode" qtlid="315748">Configuration du certificat :</translation>
    <translation id="hosting_dashboard_ssl_order_manual_mode" qtlid="298929">Manuelle</translation>
    <translation id="hosting_dashboard_ssl_order_automatic_mode" qtlid="134215">Automatique</translation>
    <translation id="hosting_dashboard_ssl_order_manual_mode_certif" qtlid="397507">Copier le contenu de votre certificat (RSA uniquement) :</translation>
@@ -202,6 +201,9 @@
    <translation id="hosting_dashboard_ssl_order_manual_mode_chain" qtlid="402685">Copier le contenu de votre chaîne de certificats :</translation>
    <translation id="hosting_dashboard_ssl_order_pay" qtlid="402698">Pour poursuivre l'achat de votre certificat SSL, vous allez être redirigé vers notre processus de commande.</translation>
    <translation id="hosting_dashboard_ssl_redirect_to_order" qtlid="382154">Une nouvelle fenêtre s'est ouverte pour poursuivre votre commande. Si ce n'est pas le cas, <a href="{0}">cliquez-ici pour continuer l'achat de vos options</a>.</translation>
+   <translation id="hosting_dashboard_ssl_redirect_to_order_error">Une erreur est survenue lors de la récupération de l'adresse nécessaire à la génération du bon de commande.</translation>
+   <translation id="hosting_dashboard_ssl_order_preamble">En cliquant sur Valider, vous allez ouvrir un bon de commande dans un nouvel onglet pour votre certificat SSL.</translation>
+   <translation id="hosting_dashboard_ssl_paid_certificate_error">Vous pouvez commander des certificats gratuits ou importer des certificats, mais une erreur vous empêche de commander des certificats payants : {0}.</translation>
 
    <translation id="hosting_dashboard_cdn_order_not_available" qtlid="217691">L'option CDN n'est pas disponible pour votre plateforme.</translation>
    <translation id="hosting_dashboard_cdn_order_choose_duration" qtlid="217652">Choisissez une durée :</translation>
@@ -305,7 +307,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_attachDomain_title_button" qtlid="226969">Ajouter un domaine ou sous domaine</translation>
    <translation id="hosting_ssl_regenerate_title_button" qtlid="315787">Régénérer le certificat SSL</translation>
    <translation id="hosting_ssl_regenerate_info" qtlid="315800">En regénérant votre certificat SSL vos changements concernant l'activation ou la désactivation de SSL sur vos multisites prendront effet à la fin de cette génération.</translation>
-   <translation id="hosting_ssl_regenerate_info_warning" qtlid="315813">Attention si vous avez ajouté vos multisites récemment (2h), il est possible qu'il ne soit pas inclus dans votre certificat SSL.</translation>
+   <translation id="hosting_ssl_regenerate_info_warning">Si vous ajouté des hébergements multisites il y a moins de deux heures, il est possible qu'ils ne soient pas inclus dans votre certificat SSL.</translation>
    <translation id="hosting_ssl_limit_characters_info_warning" qtlid="402711">La certification gratuite n'est pas disponible pour les noms de domaines dépassant {0} caractères.</translation>
 
    <translation id="hosting_tab_DATABASES_change_offer" qtlid="327302">Basculer sur un hébergement payant afin de créer une base de données. Changer d'offre rapidement et sans coupure, via le bouton</translation>
