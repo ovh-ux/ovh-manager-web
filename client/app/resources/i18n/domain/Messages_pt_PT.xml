@@ -89,7 +89,7 @@
    <translation id="domain_dashboard_web_hosting_more_infos" qtlid="238557">Mais informações</translation>
 
    <translation id="domain_configuration_action_disable" qtlid="90973">Desactivar</translation>
-   <translation id="domain_configuration_action_enable" qtlid="76734">Activar</translation>
+   <translation id="domain_configuration_action_enable" qtlid="76734">Ativar</translation>
 
    <translation id="domain_tab_GENERAL_INFORMATIONS" qtlid="27115">Informações gerais</translation>
    <translation id="domain_tab_DNS" qtlid="366398">Servidores DNS</translation>
@@ -620,6 +620,8 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Modo de alinhamento para o SPF</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_r" qtlid="435226">Relaxed</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_s" qtlid="435239">Strict</translation>
+   <translation id="domain_configuration_dns_entry_add_caa_flags" qtlid="316268">Indicador</translation>
+   <translation id="domain_configuration_dns_entry_add_caa_tag" qtlid="96944">Etiqueta</translation>
 
    <translation id="domain_configuration_dns_entry_add_target_ipv4_valid" qtlid="192591">O alvo deve ser um IPv4 válido.</translation>
    <translation id="domain_configuration_dns_entry_add_target_ipv6_valid" qtlid="192604">O alvo deve ser um IPv6 válido.</translation>
@@ -683,12 +685,12 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_configuration_dnsanycast_step2_contracts" qtlid="169485">Eu reconheço ter lido</translation>
    <translation id="domain_configuration_dnsanycast_step2_contracts_of" qtlid="130243">de</translation>
    <translation id="domain_configuration_dnsanycast_step2_contracts_and" qtlid="169498">e</translation>
-   <translation id="domain_configuration_dnsanycast_step3_generation_bc" qtlid="169511">A gerar a nota de encomenda ...</translation>
+   <translation id="domain_configuration_dnsanycast_step3_generation_bc" qtlid="169511">A gerar nota de encomenda ...</translation>
    <translation id="domain_configuration_dnsanycast_step3_bc" qtlid="169524">A nota de encomenda foi gerada com sucesso.</translation>
-   <translation id="domain_configuration_dnsanycast_step3_continue" qtlid="169537">Para confirmar a sua encomenda queira clicar no botão "Pagar" em baixo.</translation>
+   <translation id="domain_configuration_dnsanycast_step3_continue" qtlid="169537">Para confirmar a encomenda, clique no botão "Pagar".</translation>
    <translation id="domain_configuration_dnsanycast_step3_explication2" qtlid="135762">Queira ter em atenção que podem ser necessários 15 minutos desde aceitação do pagamento até que a opção seja tomada em conta no seu Espaço Cliente Web.</translation>
    <translation id="domain_configuration_dnsanycast_step3_explication3" qtlid="135775">Queira ter em atenção que a propagação do serviço de DNS pode levar até 48h.</translation>
-   <translation id="domain_configuration_dnsanycast_step3_explication1" qtlid="167886">Irá surgir um novo separador, e será reencaminhado(a) para a interface de pagamentos OVH.</translation>
+   <translation id="domain_configuration_dnsanycast_step3_explication1" qtlid="167886">Irá surgir uma nova janela, e será reencaminhado(a) para a interface de pagamentos OVH.</translation>
    <translation id="domain_configuration_dnsanycast_fail" qtlid="135788">Ocorreu um erro durante a ativação da opção DNS Anycast.</translation>
    <translation id="domain_configuration_dnsanycast_how_to_activate_1" qtlid="344162">Para ativar o DNS Anycast, queira primeiro</translation>
    <translation id="domain_configuration_dnsanycast_how_to_activate_2" qtlid="344175">criar uma zona DNS</translation>
@@ -713,7 +715,7 @@ Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour 
    <translation id="domain_order_hosting_price_TTC" qtlid="146190">Preço total com IVA:</translation>
    <translation id="domain_order_hosting_mx_explain" qtlid="227572">Atenção, aquando da ativação desta oferta, os eventuais registos MX da sua zona DNS poderão ser substituídos pelos MX padrão de alojamento partilhado OVH, em função da sua escolha na etapa anterior (se desejar, pode escolher que apenas o registo do tipo A seja alterado)</translation>
    <translation id="domain_order_hosting_finish_explain" qtlid="233248">Clique em "Validar" para confirmar a ativação do seu alojamento web.</translation>
-   <translation id="domain_order_hosting_finish_error" qtlid="181227">Ocorreu um erro aquando da criação da nota de encomenda.</translation>
+   <translation id="domain_order_hosting_finish_error" qtlid="181227">Erro na criação da nota de encomenda.</translation>
    <translation id="domain_order_hosting_finish_success" qtlid="329395">A sua <a href="{0}" target="_blank">nota de encomenda</a> foi gerada com sucesso. O seu alojamento será ativado após pagamento da encomenda.</translation>
    <translation id="domain_order_dns_anycast_success" qtlid="329408">A sua <a href="{0}" target="_blank">nota de encomenda</a> foi gerada com sucesso. A sua opção DNS Anycast será ativada após o pagamento da encomenda.</translation>
    <translation id="domain_order_dns_anycast_error" qtlid="299410">Ocorreu um erro aquando da criação da nota de encomenda.</translation>

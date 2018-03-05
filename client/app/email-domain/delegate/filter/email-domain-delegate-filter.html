@@ -13,75 +13,24 @@
                     data-ng-bind="ctrlEmailDelegateFilter.currentAccount.email"></strong>
         </h2>
 
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col" data-i18n-static="email_tab_table_header_filter_name"></th>
-                        <th class="text-center" scope="col" data-i18n-static="email_tab_table_header_filter_priority"></th>
-                        <th class="text-center" scope="col" data-i18n-static="emails_common_status"></th>
-                        <th class="min-width text-right" scope="col">
-                            <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_header_refresh}}"
-                                    data-ng-click="ctrlEmailDelegateFilter.refreshTableFilters()">
-                                <span class="fa fa-refresh" aria-hidden="true"></span>
-                            </button>
-                        </th>
-                    </tr>
-                </thead>
-
-                <!--loader-->
-                <tbody data-ng-if="ctrlEmailDelegateFilter.loading.filters">
-                    <tr>
-                        <td class="loader text-center" colspan="4"></td>
-                    </tr>
-                </tbody>
-
-                <!-- no filters -->
-                <tbody data-ng-if="!ctrlEmailDelegateFilter.loading.filters && !ctrlEmailDelegateFilter.filters.length">
-                    <tr>
-                        <td class="text-center" colspan="4" data-i18n-static="email_tab_table_filters_empty"></td>
-                    </tr>
-                </tbody>
-
-                <!--filters-->
-                <tbody data-ng-if="!ctrlEmailDelegateFilter.loading.filters && ctrlEmailDelegateFilter.filters.length > 0">
-                    <tr data-ng-repeat="filter in (ctrlEmailDelegateFilter.filtersDetails | orderBy:'name') track by $index">
-                        <td data-ng-bind="::filter.name"></td>
-                        <td class="text-center" data-ng-bind="::filter.priority"></td>
-                        <td class="text-center">
-                            <span class="label" data-ng-class="{'label-success': filter.active, 'label-danger': !filter.active}"
-                                  data-ng-bind="::tr('email_tab_filters_status_' + filter.active)"></span>
-                        </td>
-                        <td>
-                            <button class="btn btn-icon" type="button"
-                                    data-linkedpopover="email-domain/delegate/filter/email-domain-delegate-filter.popover.html"
-                                    data-linkedpopover-placement="left"
-                                    data-linkedpopover-remote="true"
-                                    data-linkedpopover-single="true"
-                                    data-linkedpopover-title="{{i18n.common_actions}}">
-                                <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="clearfix"
-             data-ng-if="ctrlEmailDelegateFilter.filters">
-            <div data-pagination-front
-                 data-items="ctrlEmailDelegateFilter.filters"
-                 data-paginated-items="ctrlEmailDelegateFilter.filtersDetails"
-                 data-current-page="currentPageFilters"
-                 data-nb-pages="nbPages"
-                 data-items-per-page="itemsPerPage"
-                 data-transform-item="ctrlEmailDelegateFilter.transformItem(item)"
-                 data-on-transform-item-done="ctrlEmailDelegateFilter.loading.filters = false"
-                 data-page-placeholder="{{tr('pagination_page', [currentPageFilters, nbPages])}}"
-                 data-item-per-page-placeholder="{{tr('pagination_display')}}"
-                 data-ng-show="!ctrlEmailDelegateFilter.loading.filters && ctrlEmailDelegateFilter.filtersDetails.length > 0">
-            </div>
-        </div>
+        <oui-datagrid data-rows="ctrlEmailDelegateFilter.filters"
+                      data-row-loader="ctrlEmailDelegateFilter.transformItem($row)">
+            <oui-column data-title="tr('email_tab_table_header_filter_name')" data-property="name" data-sortable="asc"></oui-column>
+            <oui-column data-title="tr('email_tab_table_header_filter_priority')" data-property="priority" data-sortable></oui-column>
+            <oui-column data-title="tr('emails_common_status')">
+                <span class="label"
+                      data-ng-class="{'label-success': $row.active, 'label-danger': !$row.active}"
+                      data-ng-bind="tr('email_tab_filters_status_' + $row.active)"></span>
+            </oui-column>
+            <oui-action-menu data-align="end" data-compact>
+                <oui-action-menu-item data-text="{{i18n.email_tab_popover_filter_edit}}"
+                                      data-on-click="setAction('email-domain/email/filter/edit/email-domain-email-filter-edit', { account: ctrlEmailDelegateFilter.currentAccount, filter: $row, accounts: ctrlEmailDelegate.emails, delegate: true })">
+                </oui-action-menu-item>
+                <oui-action-menu-item data-text="{{i18n.email_tab_popover_filter_delete}}"
+                                      data-ng-click="setAction('email-domain/email/filter/delete/email-domain-email-filter-delete', { account: ctrlEmailDelegateFilter.currentAccount, filter: $row, delegate: true })">
+                </oui-action-menu-item>
+            </oui-action-menu>
+        </oui-datagrid>
     </div>
 
     <div class="col-md-3 mt-5 mt-lg-0">

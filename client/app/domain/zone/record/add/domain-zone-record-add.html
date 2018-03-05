@@ -25,7 +25,7 @@
             <p class="mt-4" data-i18n-static="domain_configuration_dns_entry_add_step1_subtitle3"></p>
             <ul class="d-flex flex-wrap flex-column flex-md-row list-unstyled">
                 <li class="pr-3"
-                    data-ng-repeat="fieldType in ['TXT', 'NAPTR', 'SRV', 'LOC', 'SSHFP', 'TLSA'] track by $index">
+                    data-ng-repeat="fieldType in ['CAA', 'TXT', 'NAPTR', 'SRV', 'LOC', 'SSHFP', 'TLSA'] track by $index">
                     <button class="oui-button oui-button_primary mb-3" type="button"
                             data-ng-bind="fieldType"
                             data-ng-class="{'active': ctrl.model.fieldType === fieldType}"

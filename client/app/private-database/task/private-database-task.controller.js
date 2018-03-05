@@ -1,44 +1,32 @@
 angular.module("App").controller(
     "PrivateDatabaseTasksCtrl",
     class PrivateDatabaseTasksCtrl {
-        constructor (PrivateDatabase, $scope, $stateParams) {
-            this.privateDatabaseService = PrivateDatabase;
+        constructor ($scope, $stateParams, Alerter, PrivateDatabase) {
             this.$scope = $scope;
-            this.$stateParams = $stateParams;
+            this.productId = $stateParams.productId;
+            this.privateDatabaseService = PrivateDatabase;
+            this.alerter = Alerter;
         }
 
         $onInit () {
-            this.productId = this.$stateParams.productId;
-
-            this.taskDetails = [];
-            this.loaders = {
-                tasks: false
-            };
-
             this.getTasks();
         }
 
         getTasks () {
-            this.loaders.tasks = true;
-            this.tasksIds = null;
+            this.taskDetails = null;
 
             return this.privateDatabaseService.getTasks(this.productId)
                 .then((ids) => {
-                    this.tasksIds = ids;
-                })
-                .finally(() => {
-                    if (_.isEmpty(this.tasksIds)) {
-                        this.loaders.tasks = false;
-                    }
+                    this.taskDetails = ids.sort((a, b) => b - a).map((id) => ({ id }));
+                }).catch(() => {
+                    this.alerter.error(this.$scope.tr("privateDatabase_configuration_error"), this.$scope.alerts.main);
                 });
         }
 
-        getTasksDetails (id) {
-            return this.privateDatabaseService.getTaskDetails(this.productId, id);
-        }
-
-        onTransformItemsDone () {
-            this.loaders.tasks = false;
+        transformItem (item) {
+            return this.privateDatabaseService.getTaskDetails(this.productId, item.id).catch(() => {
+                this.alerter.error(this.$scope.tr("privateDatabase_configuration_error"), this.$scope.alerts.main);
+            });
         }
     }
 );

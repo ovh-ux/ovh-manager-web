@@ -11,8 +11,6 @@ angular.module("App").controller(
         }
 
         $onInit () {
-            this.dumpsDetails = [];
-            this.dumpsLoading = false;
             this.statusToWatch = ["start", "doing", "done", "error"];
 
             _.forEach(this.statusToWatch, (state) => {
@@ -24,52 +22,37 @@ angular.module("App").controller(
         }
 
         loadDumps () {
-            this.dumpsLoading = true;
-            this.dumpsIds = null;
+            this.databaseDumps = undefined;
 
             return this.hostingDatabase
                 .getDumpIds(this.$stateParams.productId, this.$scope.bdd.name)
-                .then((dumpIds) => (this.dumpsIds = dumpIds))
-                .catch((err) => this.alerter.alertFromSWS(this.$scope.tr("hosting_tab_databases_get_error"), err, this.$scope.alerts.main))
-                .finally(() => {
-                    if (_.isEmpty(this.dumpsIds)) {
-                        this.dumpsLoading = false;
-                    }
-                });
+                .then((dumpIds) => dumpIds.map((id) => ({ id })))
+                .then((databaseDumps) => {
+                    this.databaseDumps = databaseDumps;
+                    return databaseDumps;
+                })
+                .catch((err) => this.alerter.alertFromSWS(this.$scope.tr("hosting_tab_databases_get_error"), err, this.$scope.alerts.main));
         }
 
-        transformItem (id) {
-            return this.hostingDatabase.getDump(this.$stateParams.productId, this.$scope.bdd.name, id)
+        transformItem (item) {
+            if (item.transformed) {
+                return this.$q((resolve) => resolve(item));
+            }
+            return this.hostingDatabase.getDump(this.$stateParams.productId, this.$scope.bdd.name, item.id)
                 .then((dump) => {
-                    dump.snapshotDate = this.constructor.getSnapshotDate(dump);
+                    dump.transformed = true;
                     return dump;
                 });
-        }
-
-        onTransformItemDone () {
-            this.dumpsLoading = false;
         }
 
         goTo (page, target) {
             this.$window.open(page, target);
         }
 
-        static getSnapshotDate (dump) {
-            const snapshotDate = moment(new Date(dump.creationDate));
-
-            if (dump.type === "daily.1") {
-                snapshotDate.subtract(1, "d");
-            } else if (dump.type === "weekly.1") {
-                snapshotDate.subtract(1, "w");
-            }
-
-            return snapshotDate.format();
-        }
-
         onDataBaseDumpDeletestart (evt, task, dump) {
             this.findItemIndex(dump.id).then((idx) => {
                 if (idx >= 0) {
-                    this.dumpsDetails[idx].waitDelete = true;
+                    this.databaseDumps[idx].waitDelete = true;
                 }
             });
 
@@ -89,7 +72,7 @@ angular.module("App").controller(
             if (_.get(dump, "id")) {
                 this.findItemIndex(dump.id).then((idx) => {
                     if (~idx) {
-                        delete this.dumpsDetails[idx].waitDelete;
+                        delete this.databaseDumps[idx].waitDelete;
                         this.alerter.error(this.$scope.tr("database_tabs_dumps_delete_fail"), this.$scope.alerts.main);
                     }
                 });
@@ -100,7 +83,7 @@ angular.module("App").controller(
             this.$scope.bdd.waitRestore = true;
 
             this.findItemIndex(dump.id).then((idx) => {
-                this.dumpsDetails[idx].waitRestore = true;
+                this.databaseDumps[idx].waitRestore = true;
                 this.alerter.success(this.$scope.tr("database_tabs_dumps_restore_start"), this.$scope.alerts.main);
             });
         }
@@ -112,7 +95,7 @@ angular.module("App").controller(
         onDataBaseDumpRestoredone () {
             delete this.$scope.bdd.waitRestore;
 
-            this.dumpsDetails.forEach((dump) => {
+            this.databaseDumps.forEach((dump) => {
                 delete dump.waitRestore;
             });
             this.alerter.success(this.$scope.tr("database_tabs_dumps_restore_success"), this.$scope.alerts.main);
@@ -123,7 +106,7 @@ angular.module("App").controller(
 
             if (dump && dump.id) {
                 this.findItemIndex(dump.id).then((idx) => {
-                    this.dumpsDetails[idx].waitRestore = null;
+                    this.databaseDumps[idx].waitRestore = null;
                     this.alerter.error(this.$scope.tr("database_tabs_dumps_restore_fail"), this.$scope.alerts.main);
                 });
             }
@@ -134,7 +117,7 @@ angular.module("App").controller(
             let unregisterWatch = null;
 
             const todo = () => {
-                const idx = _.findIndex(this.dumpsDetails, (dump) => dump.id === dumpId);
+                const idx = _.findIndex(this.databaseDumps, (dump) => dump.id === dumpId);
 
                 if (idx >= 0) {
                     deferred.resolve(idx);
@@ -145,10 +128,10 @@ angular.module("App").controller(
                 }
             };
 
-            if (!_.isEmpty(this.dumpsDetails)) {
+            if (!_.isEmpty(this.databaseDumps)) {
                 todo();
             } else {
-                unregisterWatch = this.$scope.$watch(angular.bind(this, () => this.dumpsDetails.length), todo);
+                unregisterWatch = this.$scope.$watch(angular.bind(this, () => this.databaseDumps.length), todo);
             }
 
             return deferred.promise;

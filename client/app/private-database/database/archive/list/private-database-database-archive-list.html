@@ -6,66 +6,23 @@
         <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
         <span data-i18n-static="common_back"></span>
     </button>
+
     <h2 data-ng-bind-html="tr('privateDatabase_tabs_dumps_archive_change', [nbDayToDelete])"></h2>
 
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col" data-i18n-static="privateDatabase_bdd_name"></th>
-                    <th class="text-center" scope="col" data-i18n-static="privateDatabase_bdd_dumps_count"></th>
-                    <th class="min-width" scope="col"></th>
-                </tr>
-            </thead>
+    <oui-datagrid data-rows="archiveListCtrl.deletedDbList">
+        <oui-column data-title="tr('privateDatabase_bdd_name')" data-property="databaseName" data-sortable></oui-column>
+        <oui-column data-title="tr('privateDatabase_bdd_dumps_count')" data-property="dumps.length" data-sortable>
+            <button class="btn btn-xs" type="button"
+                    data-ng-bind="$row.dumps.length"
+                    data-ng-class="{ 'btn-success': $row.dumps.length > 0, '$row-danger': !($row.dumps.length > 0) }"
+                    data-ng-click="goToArchivesDumps($row)">
+            </button>
+        </oui-column>
+        <oui-action-menu data-align="end" data-compact>
+            <oui-action-menu-item data-text="{{::tr('privateDatabase_action_list_dumps')}}"
+                                  data-on-click="goToArchivesDumps($row)">
+            </oui-action-menu-item>
+        </oui-action-menu>
+    </oui-datagrid>
 
-            <tbody data-ng-if="archiveListCtrl.archivelistLoader">
-                <tr>
-                    <td class="loader text-center" colspan="3"></td>
-                </tr>
-            </tbody>
-
-            <tbody data-ng-if="!archiveListCtrl.archivelistLoader && !archiveListCtrl.deletedBdds.length">
-                <tr>
-                    <td class="text-center" colspan="3"
-                        data-i18n-static="privateDatabase_bdd_dumps_none"></td>
-                </tr>
-            </tbody>
-
-            <tbody data-ng-if="!archiveListCtrl.archivelistLoader && archiveListCtrl.deletedBdds.length > 0">
-                <tr data-ng-repeat="bdd in archiveListCtrl.bddsArchiveDetails track by $index">
-                    <th scope="row" data-ng-bind="bdd.name"></th>
-                    <td class="text-center">
-                        <button class="btn btn-xs" type="button"
-                                data-ng-bind="bdd.dumps.length"
-                                data-ng-class="{'btn-success': bdd.dumps.length > 0, 'btn-danger': !(bdd.dumps.length > 0)}"
-                                data-ng-click="goToArchivesDumps(bdd)">
-                        </button>
-                    </td>
-                    <td class="text-center">
-                        <button class="btn btn-icon" type="button"
-                                data-linkedpopover="private-database/database/popover/archive-list.html"
-                                data-linkedpopover-placement="left"
-                                data-linkedpopover-remote="true"
-                                data-linkedpopover-single="true"
-                                data-linkedpopover-title="{{i18n.common_actions}}">
-                            <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="clearfix"
-         data-ng-if="archiveListCtrl.deletedBdds">
-        <div data-pagination-front
-             data-items="archiveListCtrl.deletedBdds"
-             data-paginated-items="archiveListCtrl.bddsArchiveDetails"
-             data-current-page="currentPage"
-             data-items-per-page="itemsPerPage"
-             data-nb-pages="nbPages"
-             data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-             data-item-per-page-placeholder="{{tr('pagination_display')}}">
-        </div>
-    </div>
 </div>

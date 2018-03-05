@@ -16,15 +16,7 @@ angular
             this.database = this.$scope.bdd;
 
             this.statusToWatch = ["start", "done", "error"];
-            this.dumpIdRestoring = "";
-
-            this.$scope.itemsPerPage = 10;
-
-            this.loaders = {
-                dumps: true
-            };
-
-            this.dumpsDetails = [];
+            this.dumpIdRestoring = null;
 
             _.forEach(this.statusToWatch, (state) => {
                 this.$scope.$on(`privateDatabase.database.dump.${state}`, this[`onDataBaseDump${state}`].bind(this));
@@ -42,20 +34,14 @@ angular
         }
 
         getDumps () {
-            this.loaders.dumps = true;
-            this.dumpsIds = null;
+            this.dumps = null;
 
             this.privateDatabaseService.getDumpsBDD(this.productId, this.database.databaseName)
                 .then((dumpsIds) => {
-                    this.dumpsIds = dumpsIds;
+                    this.dumps = dumpsIds.map((id) => ({ id }));
                 })
                 .catch(() => {
                     this.alerter.error(this.$scope.tr("privateDatabase_tabs_dumps_fail_retrieve_dumps"), this.$scope.alerts.main);
-                })
-                .finally(() => {
-                    if (_.isEmpty(this.dumpsIds)) {
-                        this.loaders.dumps = false;
-                    }
                 });
         }
 
@@ -63,23 +49,18 @@ angular
             this.$window.open(page, target);
         }
 
-        getPromise () {
-            this.loaders.dumps = true;
-        }
-
-        transformItem (dumpId) {
-            return this.privateDatabaseService.getDumpBDD(this.productId, this.database.databaseName, dumpId)
+        transformItem (item) {
+            if (item.transformed) {
+                return this.$q((resolve) => resolve(item));
+            }
+            return this.privateDatabaseService.getDumpBDD(this.productId, this.database.databaseName, item.id)
                 .then((dump) => {
-                    if (this.database.waitRestore && dump.id === this.dumpIdRestoring) {
-                        dump.waitRestore = true;
-                    }
+                    dump.id = item.id;
+                    dump.transformed = true;
+                    dump.waitRestore = this.database.waitRestore && dump.id === this.dumpIdRestoring;
 
                     return dump;
                 });
-        }
-
-        onTransformItemDone () {
-            this.loaders.dumps = false;
         }
 
         onDataBaseDumpstart (opts) {
@@ -126,9 +107,9 @@ angular
             this.database.waitRestore = true;
             this.dumpIdRestoring = opts.dumpId;
 
-            this.findItemIndex(opts.dumpId)
-                .then((idx) => {
-                    this.$scope.dumpsDetails[idx].waitRestore = true;
+            this.dumps.filter((dump) => dump.id === opts.id)
+                .forEach((dump) => {
+                    dump.waitRestore = true;
                 });
         }
 
@@ -136,7 +117,7 @@ angular
             delete this.database.waitRestore;
             this.dumpIdRestoring = null;
 
-            this.$scope.dumpsDetails.forEach((dump) => {
+            this.dumps.forEach((dump) => {
                 delete dump.waitRestore;
             });
             this.alerter.success(this.$scope.tr("privateDatabase_tabs_dumps_restore_success"), this.$scope.alerts.main);
@@ -146,36 +127,10 @@ angular
             delete this.database.waitRestore;
             this.dumpIdRestoring = null;
 
-            this.findItemIndex(opts.dumpId)
-                .then((idx) => {
-                    delete this.$scope.dumpsDetails[idx].waitRestore;
+            this.dumps.filter((dump) => dump.id === opts.id)
+                .forEach((dump) => {
+                    delete dump.waitRestore;
                     this.alerter.error(this.$scope.tr("privateDatabase_tabs_dumps_restore_fail"), this.$scope.alerts.main);
                 });
-        }
-
-        findItemIndex (dumpId) {
-            const deferred = this.$q.defer();
-
-            let unregisterWatch = null;
-
-            const todo = () => {
-                const idx = _.findIndex(this.$scope.dumpsDetails, (dump) => dump.id === dumpId);
-
-                if (~idx) {
-                    deferred.resolve(idx);
-
-                    if (unregisterWatch) {
-                        unregisterWatch();
-                    }
-                }
-            };
-
-            if (_.isArray(this.$scope.dumpsDetails) && !_.isEmpty(this.$scope.dumpsDetails.length)) {
-                todo();
-            } else {
-                unregisterWatch = this.$scope.$watch("dumpsDetails.length", todo);
-            }
-
-            return deferred.promise;
         }
 });

@@ -1,15 +1,17 @@
 angular.module("App").controller(
     "SqlDatabaseOrderCtrl",
     class SqlDatabaseOrderCtrl {
-        constructor (Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, $q, $scope, $stateParams, $timeout, User) {
-            this.hostingService = Hosting;
-            this.hostingDatabaseService = HostingDatabase;
-            this.hostingOptionOrderService = HostingOptionOrder;
-            this.privateDatabaseService = PrivateDatabase;
+        constructor ($q, $scope, $stateParams, $timeout, ConverterService, Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, User) {
             this.$q = $q;
             this.$scope = $scope;
             this.$stateParams = $stateParams;
             this.$timeout = $timeout;
+
+            this.converterService = ConverterService;
+            this.hostingService = Hosting;
+            this.hostingDatabaseService = HostingDatabase;
+            this.hostingOptionOrderService = HostingOptionOrder;
+            this.privateDatabaseService = PrivateDatabase;
             this.User = User;
         }
 
@@ -52,6 +54,13 @@ angular.module("App").controller(
             });
         }
 
+        convertBytesSize (nb, unit = "MB") {
+            const res = filesize(this.converterService.convertToOctet(nb, unit), { output: "object", round: 0, base: -1 });
+            const resUnit = this.$scope.tr(`unit_size_${res.symbol}`);
+
+            return `${res.value} ${resUnit}`;
+        }
+
         getAvailableOrderCapacities () {
 
             const typeConverter = {
@@ -86,7 +95,13 @@ angular.module("App").controller(
                                 dbPack: null,
                                 hostings: null,
                                 durations: null,
-                                nbTooltip: 6
+                                nbTooltip: 6,
+                                tooltips: {
+                                    rams: {
+                                        min: this.convertBytesSize(_.min(res.dbaasOrderCapacities.ram)),
+                                        max: this.convertBytesSize(_.max(res.dbaasOrderCapacities.ram))
+                                    }
+                                }
                             });
                             this.data.push({
                                 key: "premium",
@@ -97,7 +112,13 @@ angular.module("App").controller(
                                 dbPack: null,
                                 hostings: [],
                                 durations: null,
-                                nbTooltip: 6
+                                nbTooltip: 6,
+                                tooltips: {
+                                    rams: {
+                                        min: this.convertBytesSize(_.min(res.privateOrderCapacities.ram)),
+                                        max: this.convertBytesSize(_.max(res.privateOrderCapacities.ram))
+                                    }
+                                }
                             });
                             this.data.push({
                                 key: "start",

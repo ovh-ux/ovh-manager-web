@@ -20,8 +20,7 @@ module.exports = {
             "CLOUD": "CLOUD",
             "TELECOM": "TELECOM",
             "SUNRISE": "SUNRISE",
-            "PARTNERS": "PARTNERS",
-            "V3": "V3"
+            "PARTNERS": "PARTNERS"
         },
         HOSTING: {
             OFFERS: {
@@ -1951,7 +1950,6 @@ module.exports = {
             "telecom"   : "https://www.ovhtelecom.fr/manager/index.html#/",
             "sunrise"   : "https://www.ovh.com/manager/sunrise/index.html#/",
             "partners"  : "https://www.ovh.com/manager/partners",
-            "v3"        : "https://www.ovh.com/managerv3/home.pl",
             "labs"      : "https://www.ovh.com/manager/sunrise/uxlabs/"
         },
         NO_AUTORENEW_COUNTRIES : [
@@ -1977,8 +1975,7 @@ module.exports = {
             DEDICATED: "DEDICATED",
             CLOUD: "CLOUD",
             TELECOM: "TELECOM",
-            SUNRISE: "SUNRISE",
-            V3: "V3"
+            SUNRISE: "SUNRISE"
         },
         HOSTING: {
             OFFERS: {
