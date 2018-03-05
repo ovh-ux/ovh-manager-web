@@ -26,7 +26,9 @@ angular.module("App").controller(
             this.isDoingGrant = [];
             this.userGrantsDetails = [];
 
-            this.bindGrantStatusToMethods(["start", "done", "error"]);
+            this.$scope.$on("privateDatabase.grant.set.start", this.onUserGrantStart.bind(this));
+            this.$scope.$on("privateDatabase.grant.set.done", this.onUserGrantDone.bind(this));
+            this.$scope.$on("privateDatabase.grant.set.error", this.onUserGrantError.bind(this));
 
             _.forEach(["done", "error"], (state) => {
                 this.$scope.$on(`privateDatabase.global.actions.${state}`, (e, taskOpt) => {
@@ -89,19 +91,11 @@ angular.module("App").controller(
             this.privateDatabaseService.restartPoll(this.productId, ["grant/create", "grant/update"]);
         }
 
-        bindGrantStatusToMethods (statusToWatch) {
-            _.forEach(statusToWatch, (state) => {
-                this.$scope.$on(`privateDatabase.grant.set.${state}`, this[`onUserGrant_${state}`].bind(this));
-            });
+        onUserGrantStart (evt, opts) {
+            this.isDoingGrant[opts.databaseName] = _.any(this.userGrants, { dataBase: opts.databaseName });
         }
 
-        onUserGrant_start (evt, opts) {
-            if (_.any(this.userGrants, { dataBase: opts.databaseName })) {
-                this.isDoingGrant[opts.databaseName] = true;
-            }
-        }
-
-        onUserGrant_done (evt, opts) {
+        onUserGrantDone (evt, opts) {
             this.isDoingGrant[opts.databaseName] = false;
             this.loaders.setGrant = false;
             this.userGrants[opts.databaseName].value = opts.grants[opts.databaseName].value;
@@ -111,7 +105,7 @@ angular.module("App").controller(
             this.getUserGrants();
         }
 
-        onUserGrant_error (evt, opts) {
+        onUserGrantError (evt, opts) {
             this.isDoingGrant[opts.databaseName] = false;
             this.alerter.error(this.$scope.tr("privateDatabase_tabs_users_grant_error"), this.$scope.alerts.main);
         }
