@@ -4,11 +4,28 @@ angular
         constructor (OvhApiHostingWebSsl) {
             this.OvhApiHostingWebSsl = OvhApiHostingWebSsl;
 
-            this.certificateTypes = {
+            /**
+             * Enum for certificate types
+             * @readonly
+             * @enum {String}
+             */
+            this.CERTIFICATE_TYPES = {
                 letsEncrypt: "letsEncrypt",
                 paid: "paid",
                 "import": "import"
             };
+        }
+
+        static isCertificateType (mysteryCertificateType, knownCertificateType) {
+            if (!_(mysteryCertificateType).isString() || _(mysteryCertificateType).isEmpty()) {
+                throw new TypeError("mysteryCertificateType should be a non-empty String");
+            }
+
+            if (!_(knownCertificateType).isString() || _(knownCertificateType).isEmpty()) {
+                throw new TypeError("knownCertificateType should be a non-empty String");
+            }
+
+            return _(mysteryCertificateType).camelCase().toUpperCase() === _(knownCertificateType).camelCase().toUpperCase();
         }
 
         retrievingCertificateValidationReport (serviceName) {

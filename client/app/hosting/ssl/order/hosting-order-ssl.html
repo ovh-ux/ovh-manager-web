@@ -19,7 +19,7 @@
                                     class="oui-radio__input"
                                     id="sslTypeLetsEncrypt"
                                     name="sslType"
-                                    data-ng-value="$ctrl.certificateTypes.letsEncrypt"
+                                    data-ng-value="$ctrl.hostingSSL.CERTIFICATE_TYPES.letsEncrypt"
                                     data-ng-model="$ctrl.global.selectedCertificateType"
                                     required>
                             <label class="oui-radio__label-container" for="sslTypeLetsEncrypt">
@@ -31,7 +31,7 @@
                                     class="oui-radio__input"
                                     id="sslTypePaid"
                                     name="sslType"
-                                    data-ng-value="$ctrl.certificateTypes.paid"
+                                    data-ng-value="$ctrl.hostingSSL.CERTIFICATE_TYPES.paid"
                                     data-ng-model="$ctrl.global.selectedCertificateType"
                                     required>
                             <label class="oui-radio__label-container" for="sslTypePaid">
@@ -43,7 +43,7 @@
                                     class="oui-radio__input"
                                     id="sslTypeImport"
                                     name="sslType"
-                                    data-ng-value="$ctrl.certificateTypes.import"
+                                    data-ng-value="$ctrl.hostingSSL.CERTIFICATE_TYPES.import"
                                     data-ng-model="$ctrl.global.selectedCertificateType"
                                     required>
                             <label class="oui-radio__label-container" for="sslTypeImport">
@@ -70,7 +70,7 @@
         <div data-wizard-step
              data-wizard-step-on-load="onStep2Load"
              data-wizard-step-valid="$ctrl.isStep2Valid()">
-            <form data-ng-if="$ctrl.global.selectedCertificateType === $ctrl.certificateTypes.import">
+            <form data-ng-if="$ctrl.hostingSSL.constructor.isCertificateType($ctrl.global.selectedCertificateType, $ctrl.hostingSSL.CERTIFICATE_TYPES.import)">
                 <label class="oui-label"
                         for="importCertificateContent"
                         data-i18n-static="hosting_dashboard_ssl_order_manual_mode_certif"></label>
@@ -96,7 +96,7 @@
                             data-ng-model="$ctrl.step2.importedCertificate.chain"></textarea>
             </form>
 
-            <div data-ng-if="$ctrl.global.selectedCertificateType === $ctrl.certificateTypes.paid">
+            <div data-ng-if="$ctrl.hostingSSL.constructor.isCertificateType($ctrl.global.selectedCertificateType, $ctrl.hostingSSL.CERTIFICATE_TYPES.paid)">
                 <div class="text-center" data-ng-if="$ctrl.step2.loading.isGeneratingOrderForm">
                     <oui-spinner></oui-spinner>
                 </div>

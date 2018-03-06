@@ -15,14 +15,8 @@ angular
         }
 
         $onInit () {
-            this.certificateTypes = {
-                letsEncrypt: "letsEncrypt",
-                paid: "paid",
-                "import": "import"
-            };
-
             this.global = {
-                selectedCertificateType: this.certificateTypes.letsEncrypt
+                selectedCertificateType: this.hostingSSL.CERTIFICATE_TYPES.letsEncrypt
             };
 
             this.step1 = {
@@ -41,7 +35,7 @@ angular
             };
 
             if (!this.Validator.isValidLetsEncryptDomain("www.", this.$stateParams.productId)) {
-                this.global.selectedCertificateType = this.certificateTypes.paid;
+                this.global.selectedCertificateType = this.hostingSSL.CERTIFICATE_TYPES.paid;
                 this.step1.canOrderLetEncryptCertificate = false;
             }
 
@@ -74,20 +68,20 @@ angular
         }
 
         onStep1NextStep () {
-            if (this.global.selectedCertificateType === this.certificateTypes.letsEncrypt) {
+            if (this.hostingSSL.constructor.isCertificateType(this.global.selectedCertificateType, this.hostingSSL.CERTIFICATE_TYPES.letsEncrypt)) {
                 this.creatingCertificate();
             }
         }
 
         onStep2Load () {
-            if (this.global.selectedCertificateType === this.certificateTypes.paid) {
+            if (this.hostingSSL.constructor.isCertificateType(this.global.selectedCertificateType, this.hostingSSL.CERTIFICATE_TYPES.paid)) {
                 this.generatingOrderForm();
             }
         }
 
         isStep2Valid () {
-            const isPaidCertificateValid = this.global.selectedCertificateType === this.certificateTypes.paid && !this.step2.loading.isGeneratingOrderForm;
-            const isImportCertificateValid = this.global.selectedCertificateType === this.certificateTypes.import && _(this.step2.importedCertificate.content).isString() && _(this.step2.importedCertificate.key).isString();
+            const isPaidCertificateValid = this.hostingSSL.constructor.isCertificateType(this.global.selectedCertificateType, this.hostingSSL.CERTIFICATE_TYPES.paid) && !this.step2.loading.isGeneratingOrderForm;
+            const isImportCertificateValid = this.hostingSSL.constructor.isCertificateType(this.global.selectedCertificateType, this.hostingSSL.CERTIFICATE_TYPES.import) && _(this.step2.importedCertificate.content).isString() && _(this.step2.importedCertificate.key).isString();
 
             return isPaidCertificateValid || isImportCertificateValid;
         }
@@ -123,10 +117,10 @@ angular
         }
 
         onFinishWizard () {
-            if (this.global.selectedCertificateType === this.certificateTypes.paid) {
+            if (this.hostingSSL.constructor.isCertificateType(this.global.selectedCertificateType, this.hostingSSL.CERTIFICATE_TYPES.paid)) {
                 this.$window.open(this.orderFormURL, "_blank");
                 this.$scope.resetAction();
-            } else if (this.global.selectedCertificateType === this.certificateTypes.import) {
+            } else if (this.hostingSSL.constructor.isCertificateType(this.global.selectedCertificateType, this.hostingSSL.CERTIFICATE_TYPES.import)) {
                 this.creatingCertificate();
             }
         }
