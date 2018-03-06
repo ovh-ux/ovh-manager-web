@@ -56,14 +56,16 @@ angular
             this.$q
                 .all({
                     webMailUrl: this.User.getUrlOf("domainWebmailUrl"),
+                    webOMMUrl: this.User.getUrlOf("domainOMMUrl"),
                     user: this.User.getUser(),
                     serviceInfos: this.Emails.getServiceInfos(this.$stateParams.productId),
                     allDomains: this.Emails.getDomains(),
                     quotas: this.Emails.getQuotas(this.$stateParams.productId),
                     summary: this.Emails.getSummary(this.$stateParams.productId)
                 })
-                .then(({ webMailUrl, user, serviceInfos, allDomains, quotas, summary }) => {
+                .then(({ webMailUrl, webOMMUrl, user, serviceInfos, allDomains, quotas, summary }) => {
                     this.webMailUrl = webMailUrl;
+                    this.webOMMUrl = webOMMUrl;
                     this.delegationsIsAvailable = _.includes([serviceInfos.contactTech, serviceInfos.contactAdmin], user.nichandle);
                     this.domains = allDomains;
                     this.quotas = quotas;
@@ -122,7 +124,7 @@ angular
         openWebMailTab () {
             this.$window.open(this.webMailUrl, "_blank");
         }
-
+      
         displayAccountMigration (email) {
             this.shouldDisplayAccountMigration = true;
             this.accountMigrationEmail = email;
