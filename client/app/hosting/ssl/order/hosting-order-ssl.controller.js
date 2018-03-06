@@ -1,4 +1,5 @@
-angular.module("App")
+angular
+    .module("App")
     .controller("hostingOrderSslCtrl", class HostingOrderSslCtrl {
         constructor ($scope, $stateParams, $window, Alerter, HostingDomain, hostingSSL, translator, User, Validator) {
             this.$scope = $scope;
