@@ -2,7 +2,6 @@
 NODE=node
 NPM=npm
 GRUNT=grunt
-GULP=gulp
 BOWER=bower
 GIT=git
 CD=cd
@@ -86,10 +85,6 @@ install:
 
 dev: deps
 	$(GRUNT) serve
-
-# [OLD] legacy
-devfast:
-	$(GULP)
 
 # [OLD] legacy system, should be:
 # prod: deps
