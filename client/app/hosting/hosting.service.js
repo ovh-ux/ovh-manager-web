@@ -566,47 +566,6 @@
             }
 
             /**
-             * Get SSL State
-             * @param {string} serviceName
-             */
-            getSslState (serviceName) {
-                return this.OvhHttp.get(`/hosting/web/${serviceName}/ssl`, {
-                    rootPath: "apiv6"
-                });
-            }
-
-            /**
-             * Delete SSL certificate
-             * @param {string} serviceName
-             */
-            deleteSsl (serviceName) {
-                return this.OvhHttp.delete(`/hosting/web/${serviceName}/ssl`, {
-                    rootPath: "apiv6"
-                });
-            }
-
-            /**
-             * Get attached domain linked by SSL certificate
-             * @param {string} serviceName
-             */
-            getAttachDomainSslLinked (serviceName) {
-                const defered = this.$q.defer();
-
-                this.$http.get(`/hosting/web/${serviceName}/ssl/domains`)
-                    .then((resp) => {
-                        defered.resolve(resp.data);
-                    }).catch((err) => {
-                        if (err.status === 404) {
-                            defered.resolve([]);
-                        } else {
-                            defered.reject(err.data);
-                        }
-                    });
-
-                return defered.promise;
-            }
-
-            /**
              * Get linked private databases
              * @param {string} serviceName
              */

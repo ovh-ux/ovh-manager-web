@@ -1,6 +1,6 @@
 angular
     .module("App")
-    .controller("HostingCtrl", ($scope, $rootScope, $q, $timeout, ConverterService, Hosting, Screenshot, Alerter, Navigator, constants, User, HostingOvhConfig, HostingTask, HostingDatabase, HostingDomain, PrivateDatabase, $stateParams) => {
+    .controller("HostingCtrl", ($scope, $rootScope, $q, $timeout, ConverterService, Hosting, hostingSSL, Screenshot, Alerter, Navigator, constants, User, HostingOvhConfig, HostingTask, HostingDatabase, HostingDomain, PrivateDatabase, $stateParams) => {
         "use strict";
 
         $scope.loadingHostingInformations = true;
@@ -114,7 +114,7 @@ angular
             loadOvhConfig();
         });
 
-        $scope.loadSsl = () => Hosting.getSslState($stateParams.productId).then((ssl) => ($scope.ssl = ssl));
+        $scope.loadSsl = () => hostingSSL.retrievingCertificate($stateParams.productId).then((ssl) => ($scope.ssl = ssl));
 
         $scope.goToPrivateDb = (privateDb) => {
             $rootScope.$broadcast("leftNavigation.selectProduct.fromName", {

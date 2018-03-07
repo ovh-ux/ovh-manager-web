@@ -20,8 +20,7 @@ angular
         retrievingCertificateValidationReport () {
             this.isLoading = true;
 
-            return this.hostingSSL
-                .retrievingCertificateValidationReport(this.hosting.serviceName)
+            return this.hostingSSL.retrievingCertificateValidationReport(this.hosting.serviceName)
                 .then((sslReport) => {
                     this.orderNumber = sslReport.providerOrderId;
 
