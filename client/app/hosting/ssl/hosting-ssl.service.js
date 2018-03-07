@@ -16,4 +16,8 @@ angular
         regeneratingCertificate (serviceName) {
             return this.OvhApiHostingWebSsl.Lexi().regenerate({ serviceName }).$promise;
         }
+
+        deletingCertificate (serviceName) {
+            return this.OvhApiHostingWebSsl.Lexi().delete({ serviceName }).$promise;
+        }
 });

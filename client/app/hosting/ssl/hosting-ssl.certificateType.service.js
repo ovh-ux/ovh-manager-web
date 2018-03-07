@@ -1,82 +1,86 @@
 /**
- * @typedef {Object} CertificateType
- * @property {String} name - Name of the certificate
- * @property {String} displayName - Name of the certificate to display to users
- * @property {boolean} isFree - True if the user had the certificate for free
+ * @typedef     {Object}   CertificateType
+ * @property    {String}   name             Name of the certificate
+ * @property    {boolean}  isFree           True if the user had the certificate for free
+ * @property    {String}   provider         How was the certificate provided (either LETSENCRYPT for free certificates, COMODO for paid certificates or CUSTOM for imported certificates)
  */
-
 angular
     .module("services")
     .service("hostingSSLCertificateType", class HostingSSLCertificateType {
         constructor () {
-            /**
-             * Certificate types
-             * @readonly
-             * @enum {CertificateType}
-             */
-            this.CERTIFICATE_TYPES = {
+            _(HostingSSLCertificateType.getCertificateTypes())
+                .forEach((certificateType) => {
+                    const formattedCertificateTypeName = _(certificateType.name).chain()
+                        .camelCase()
+                        .capitalize()
+                        .value();
+
+                    this[`is${formattedCertificateTypeName}`] = (mysteryCertificateType) => HostingSSLCertificateType.isCertificateType(mysteryCertificateType, certificateType.name);
+                })
+                .value();
+        }
+
+        /**
+         * @static
+         * @returns All the known certificate types
+         */
+        static getCertificateTypes () {
+            return {
                 LETS_ENCRYPT: {
                     name: "letsEncrypt",
-                    displayName: "Let's Encrypt",
-                    isFree: true
+                    isFree: true,
+                    provider: "LETSENCRYPT"
                 },
                 PAID: {
                     name: "paid",
-                    displayName: "payant",
-                    isFree: false
+                    isFree: false,
+                    provider: "COMODO"
                 },
                 IMPORTED: {
                     name: "imported",
-                    displayName: "importé",
-                    isFree: true
+                    isFree: true,
+                    provider: "CUSTOM"
                 }
             };
-
-            _(this.CERTIFICATE_TYPES).forEach((certificateType) => {
-                const formattedCertificateTypeName = _(certificateType.name).chain()
-                    .camelCase()
-                    .capitalize()
-                    .value();
-
-
-                this[`is${formattedCertificateTypeName}`] = (mysteryCertificateType) => HostingSSLCertificateType.isCertificateType(mysteryCertificateType, certificateType.name);
-            });
         }
 
+        /**
+         * Checks if a mysteryCertificateType is a knownCertificateType
+         *
+         * @static
+         * @param {String} mysteryCertificateType Unknown certificate type
+         * @param {String} knownCertificateType Known certificate type to check against
+         * @returns {boolean} True if the mysteryCertificateType is the same as the knownCertificateType
+         */
         static isCertificateType (mysteryCertificateType, knownCertificateType) {
             if (!_(mysteryCertificateType).isString() || _(mysteryCertificateType).isEmpty()) {
                 throw new TypeError("mysteryCertificateType should be a non-empty String");
             }
 
-            if (!_(knownCertificateType).isObject() || !_(knownCertificateType.name).isString() || _(knownCertificateType.name).isEmpty()) {
+            if (!_(knownCertificateType).isString() || _(knownCertificateType).isEmpty()) {
                 throw new TypeError("knownCertificateType should be a non-empty String");
             }
 
-            return _(mysteryCertificateType).snakeCase().toUpperCase() === _(knownCertificateType.name).snakeCase().toUpperCase();
+            return _(mysteryCertificateType).snakeCase().toUpperCase() === _(knownCertificateType).snakeCase().toUpperCase();
         }
 
-        getCertificate (certificateTypeName) {
-            if (!_(certificateTypeName).isString() || _(certificateTypeName).isEmpty()) {
-                throw new TypeError("certificateTypeName should be a non-empty String");
+        /**
+         * @param {string} providerName - Name of the proviser
+         * @returns {CertificateType} Matching certificate type
+         */
+        static getCertificateTypeByProvider (providerName) {
+            if (!_(providerName).isString() || _(providerName).isEmpty()) {
+                throw new TypeError("providerName should be a non-empty String");
             }
 
-            const formattedCertificateTypeName = _(certificateTypeName).snakeCase().toUpperCase();
-            const matchingCertificate = this.CERTIFICATE_TYPES[formattedCertificateTypeName];
+            const formattedProvider = _(providerName).snakeCase().toUpperCase();
+            const matchingCertificate = _(HostingSSLCertificateType.getCertificateTypes()).find((certificateType) => certificateType.provider === formattedProvider);
 
             const certificateIsFound = _(matchingCertificate).isObject();
             if (!certificateIsFound) {
-                throw new Error(`${certificateTypeName} is not a valid certificate name`);
+                throw new Error(`${providerName} is not a valid provider`);
             }
 
             return matchingCertificate;
-        }
-
-        isFree (certificateTypeName) {
-            if (!_(certificateTypeName).isString() || _(certificateTypeName).isEmpty()) {
-                throw new TypeError("certificateTypeName should be a non-empty String");
-            }
-
-            const matchingCertificate = this.getCertificate(certificateTypeName);
-            return matchingCertificate.isFree;
         }
     });

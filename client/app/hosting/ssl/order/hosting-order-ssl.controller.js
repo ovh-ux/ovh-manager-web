@@ -16,9 +16,8 @@ angular
         }
 
         $onInit () {
-            this.global = {
-                selectedCertificateType: this.hostingSSLCertificateType.CERTIFICATE_TYPES.LETS_ENCRYPT
-            };
+            this.certificateTypes = this.hostingSSLCertificateType.constructor.getCertificateTypes();
+            this.selectedCertificateType = this.certificateTypes.LETS_ENCRYPT.name;
 
             this.step1 = {
                 loading: {
@@ -29,14 +28,13 @@ angular
 
             this.step2 = {
                 loading: {
-                    isGeneratingOrderForm: false,
-                    isCreatingCertificate: false
+                    isGeneratingOrderForm: false
                 },
                 importedCertificate: {}
             };
 
             if (!this.Validator.isValidLetsEncryptDomain("www.", this.$stateParams.productId)) {
-                this.global.selectedCertificateType = this.hostingSSLCertificateType.CERTIFICATE_TYPES.PAID;
+                this.selectedCertificateType = this.certificateTypes.IMPORTED.name;
                 this.step1.canOrderLetEncryptCertificate = false;
             }
 
@@ -69,20 +67,20 @@ angular
         }
 
         onStep1NextStep () {
-            if (this.hostingSSLCertificateType.isLetsEncrypt(this.global.selectedCertificateType)) {
+            if (this.hostingSSLCertificateType.isLetsEncrypt(this.selectedCertificateType)) {
                 this.creatingCertificate();
             }
         }
 
         onStep2Load () {
-            if (this.hostingSSLCertificateType.isPaid(this.global.selectedCertificateType)) {
+            if (this.hostingSSLCertificateType.isPaid(this.selectedCertificateType)) {
                 this.generatingOrderForm();
             }
         }
 
         isStep2Valid () {
-            const isPaidCertificateValid = this.hostingSSLCertificateType.isPaid(this.global.selectedCertificateType) && !this.step2.loading.isGeneratingOrderForm;
-            const isImportCertificateValid = this.hostingSSLCertificateType.isImported(this.global.selectedCertificateType);
+            const isPaidCertificateValid = this.hostingSSLCertificateType.isPaid(this.selectedCertificateType) && !this.step2.loading.isGeneratingOrderForm;
+            const isImportCertificateValid = this.hostingSSLCertificateType.isImported(this.selectedCertificateType) && _(this.importCertificateForm).isObject() && this.importCertificateForm.$valid;
 
             return isPaidCertificateValid || isImportCertificateValid;
         }
@@ -118,10 +116,10 @@ angular
         }
 
         onFinishWizard () {
-            if (this.hostingSSLCertificateType.isPaid(this.global.selectedCertificateType)) {
+            if (this.hostingSSLCertificateType.isPaid(this.selectedCertificateType)) {
                 this.$window.open(this.orderFormURL, "_blank");
                 this.$scope.resetAction();
-            } else if (this.hostingSSLCertificateType.isImported(this.global.selectedCertificateType)) {
+            } else if (this.hostingSSLCertificateType.isImported(this.selectedCertificateType)) {
                 this.creatingCertificate();
             }
         }
