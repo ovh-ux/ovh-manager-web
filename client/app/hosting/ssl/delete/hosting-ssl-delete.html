@@ -5,8 +5,8 @@
          data-wizard-title="i18n.hosting_dashboard_service_delete_ssl_title">
 
         <div data-wizard-step>
-            <p data-i18n-static="hosting_dashboard_service_delete_ssl_warning" data-ng-if="$ctrl.ssl.provider === 'LETSENCRYPT'"></p>
-            <p data-i18n-static="hosting_dashboard_service_delete_ssl_warning_payable" data-ng-if="$ctrl.ssl.provider !== 'LETSENCRYPT'"></p>
+            <p data-i18n-static="hosting_dashboard_service_delete_ssl_warning" data-ng-if="$ctrl.isCertificateFree"></p>
+            <p data-i18n-static="hosting_dashboard_service_delete_ssl_warning_payable" data-ng-if="!$ctrl.isCertificateFree"></p>
         </div>
     </div>
 </div>

@@ -1,17 +1,19 @@
 angular
     .module("App")
     .controller("hostingDeleteSslCtrl", class HostingDeleteSslCtrl {
-        constructor ($scope, $stateParams, Alerter, Hosting, translator) {
+        constructor ($scope, $stateParams, Alerter, Hosting, hostingSSL, hostingSSLCertificateType, translator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
 
             this.Alerter = Alerter;
             this.Hosting = Hosting;
+            this.hostingSSL = hostingSSL;
+            this.hostingSSLCertificateType = hostingSSLCertificateType;
             this.translator = translator;
         }
 
         $onInit () {
-            this.ssl = this.$scope.currentActionData;
+            this.isCertificateFree = this.hostingSSLCertificateType.isFree(this.$scope.currentActionData.provider);
 
             this.$scope.deletingCertificate = () => this.deletingCertificate();
         }

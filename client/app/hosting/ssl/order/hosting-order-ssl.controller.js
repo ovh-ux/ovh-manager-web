@@ -1,13 +1,14 @@
 angular
     .module("App")
     .controller("hostingOrderSslCtrl", class HostingOrderSslCtrl {
-        constructor ($scope, $stateParams, $window, Alerter, HostingDomain, hostingSSL, translator, User, Validator) {
+        constructor ($scope, $stateParams, $window, Alerter, HostingDomain, hostingSSL, hostingSSLCertificateType, translator, User, Validator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
 
             this.Alerter = Alerter;
             this.HostingDomain = HostingDomain;
             this.hostingSSL = hostingSSL;
+            this.hostingSSLCertificateType = hostingSSLCertificateType;
             this.translator = translator;
             this.User = User;
             this.Validator = Validator;
@@ -16,7 +17,7 @@ angular
 
         $onInit () {
             this.global = {
-                selectedCertificateType: this.hostingSSL.CERTIFICATE_TYPES.letsEncrypt
+                selectedCertificateType: this.hostingSSLCertificateType.CERTIFICATE_TYPES.LETS_ENCRYPT
             };
 
             this.step1 = {
@@ -35,7 +36,7 @@ angular
             };
 
             if (!this.Validator.isValidLetsEncryptDomain("www.", this.$stateParams.productId)) {
-                this.global.selectedCertificateType = this.hostingSSL.CERTIFICATE_TYPES.paid;
+                this.global.selectedCertificateType = this.hostingSSLCertificateType.CERTIFICATE_TYPES.PAID;
                 this.step1.canOrderLetEncryptCertificate = false;
             }
 
@@ -68,20 +69,20 @@ angular
         }
 
         onStep1NextStep () {
-            if (this.hostingSSL.constructor.isCertificateType(this.global.selectedCertificateType, this.hostingSSL.CERTIFICATE_TYPES.letsEncrypt)) {
+            if (this.hostingSSLCertificateType.isLetsEncrypt(this.global.selectedCertificateType)) {
                 this.creatingCertificate();
             }
         }
 
         onStep2Load () {
-            if (this.hostingSSL.constructor.isCertificateType(this.global.selectedCertificateType, this.hostingSSL.CERTIFICATE_TYPES.paid)) {
+            if (this.hostingSSLCertificateType.isPaid(this.global.selectedCertificateType)) {
                 this.generatingOrderForm();
             }
         }
 
         isStep2Valid () {
-            const isPaidCertificateValid = this.hostingSSL.constructor.isCertificateType(this.global.selectedCertificateType, this.hostingSSL.CERTIFICATE_TYPES.paid) && !this.step2.loading.isGeneratingOrderForm;
-            const isImportCertificateValid = this.hostingSSL.constructor.isCertificateType(this.global.selectedCertificateType, this.hostingSSL.CERTIFICATE_TYPES.import) && _(this.step2.importedCertificate.content).isString() && _(this.step2.importedCertificate.key).isString();
+            const isPaidCertificateValid = this.hostingSSLCertificateType.isPaid(this.global.selectedCertificateType) && !this.step2.loading.isGeneratingOrderForm;
+            const isImportCertificateValid = this.hostingSSLCertificateType.isImported(this.global.selectedCertificateType);
 
             return isPaidCertificateValid || isImportCertificateValid;
         }
@@ -117,10 +118,10 @@ angular
         }
 
         onFinishWizard () {
-            if (this.hostingSSL.constructor.isCertificateType(this.global.selectedCertificateType, this.hostingSSL.CERTIFICATE_TYPES.paid)) {
+            if (this.hostingSSLCertificateType.isPaid(this.global.selectedCertificateType)) {
                 this.$window.open(this.orderFormURL, "_blank");
                 this.$scope.resetAction();
-            } else if (this.hostingSSL.constructor.isCertificateType(this.global.selectedCertificateType, this.hostingSSL.CERTIFICATE_TYPES.import)) {
+            } else if (this.hostingSSLCertificateType.isImported(this.global.selectedCertificateType)) {
                 this.creatingCertificate();
             }
         }
