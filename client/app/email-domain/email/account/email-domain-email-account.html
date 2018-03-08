@@ -193,6 +193,14 @@
                     data-ng-click="setAction('email-domain/email/account/export-csv/email-domain-email-account-export-csv')"
                     data-ng-disabled="ctrlEmailDomainEmail.emails.length === 0">
             </button>
+            <a data-ng-href="{{ $ctrl.webOMMUrl }}"
+               class="btn btn-block btn-default text-wrap"
+               target="_blank"
+               role="button">
+                <span data-i18n-static="email_tab_popover_import_from_imap"></span>
+                <span class="sr-only" data-i18n-static="common_newtab"></span>
+                <span aria-hidden="true" class="fa fa-external-link"></span>
+            </a>
         </div>
 
         <div class="mb-5"
