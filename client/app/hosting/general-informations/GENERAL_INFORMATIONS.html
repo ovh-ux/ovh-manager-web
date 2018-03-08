@@ -71,14 +71,22 @@
                                                       data-ng-if="hostingProxy.recommendedOffer"
                                                       data-uib-tooltip="{{::tr('hosting_dashboard_service_offer_recommanded', [hostingProxy.recommendedOffer])}}"></span>
                                             </div>
+
+                                            <button class="btn btn-default ml-auto my-auto text-wrap disabled" type="button"
+                                                    data-ng-if="hosting.isCloudWeb"
+                                                    data-i18n-static="hosting_dashboard_service_change_offer_coming_soon"
+                                                    disabled>
+                                            </button>
+
                                             <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
+                                                    data-ng-if="!hosting.isCloudWeb"
                                                     data-i18n-static="hosting_dashboard_service_change_offer"
                                                     data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
                                             </button>
                                         </div>
                                     </div>
                                 </li>
-                                <li class="oui-tile__item">
+                                <li class="oui-tile__item" data-ng-if="!hosting.isCloudWeb">
                                     <div class="oui-tile__definition">
                                         <strong class="d-block"
                                                 data-i18n-static="hosting_dashboard_service_boost"></strong>
@@ -102,7 +110,7 @@
                                             data-ng-bind="tr('hosting_dashboard_service_datacenter_'+ hostingProxy.datacenter) || hostingProxy.datacenter"></span>
                                     </div>
                                 </li>
-                                <li class="oui-tile__item">
+                                <li class="oui-tile__item" data-ng-if="!hosting.isCloudWeb">
                                     <div class="oui-tile__definition">
                                         <div class="d-flex w-100">
                                             <div>
@@ -138,7 +146,7 @@
                         <h3 class="oui-tile__title" data-i18n-static="hosting_dashboard_configuration"></h3>
                         <div class="oui-tile__body">
                             <ul class="list-unstyled">
-                                <li class="oui-tile__item" data-ng-if="ovhConfig.isPhpEngine">
+                                <li class="oui-tile__item" data-ng-if="ovhConfig.isPhpEngine && !hosting.isCloudWeb">
                                     <div class="oui-tile__definition">
                                         <div class="d-flex w-100">
                                             <div>
@@ -353,7 +361,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="oui-tile__item">
+                                <li class="oui-tile__item" data-ng-if="!hosting.isCloudWeb">
                                     <div class="oui-tile__definition">
                                         <strong class="d-block"
                                                 data-i18n-static="hosting_dashboard_service_filer"></strong>

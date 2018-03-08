@@ -1,0 +1,19 @@
+<div class="popover-menu">
+    <button class="btn btn-link" type="button"
+            data-i18n-static="hosting_tab_FRAMEWORK_runtime_table_popover_modify"
+            data-ng-click="setAction('framework/runtime/add-or-edit/hosting-framework-runtime-add-or-edit', {runtime})"
+            data-ng-disabled="runtime.status !== 'created'">
+    </button>
+
+    <button class="btn btn-link" type="button"
+            data-i18n-static="hosting_tab_FRAMEWORK_runtime_table_popover_delete"
+            data-ng-click="setAction('framework/runtime/delete/hosting-framework-runtime-delete', {runtime})"
+            data-ng-disabled="!runtime.isDeletable">
+    </button>
+
+    <button class="btn btn-link" type="button"
+            data-i18n-static="hosting_tab_FRAMEWORK_runtime_table_popover_set_default"
+            data-ng-click="setAction('framework/runtime/set-default/hosting-framework-runtime-set-default', {runtime})"
+            data-ng-disabled="runtime.status !== 'created' || runtime.isDefault">
+    </button>
+</div>

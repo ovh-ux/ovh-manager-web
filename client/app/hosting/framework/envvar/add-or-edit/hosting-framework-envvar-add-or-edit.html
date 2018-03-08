@@ -1,0 +1,54 @@
+<div data-ng-controller="controllers.Hosting.Framework.Envvar.create as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="save"
+         data-wizard-title="ctrl.title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="isValid">
+
+            <form class="form-horizontal" name="addEnvarForm" data-ng-if="!ctrl.loading">
+                <p>
+                    <small class="text-danger">*</small>
+                    <small data-i18n-static="required_fields"></small>
+                </p>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4 required" for="envvarKey" data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_key"></label>
+
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="envvarKey" data-ng-model="ctrl.entryToSave.key">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4 required" for="envvarType" data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_type"></label>
+
+                    <div class="col-md-8">
+                        <div class="oui-select oui-select_inline mb-0">
+                            <select class="oui-select__input" id="envvarType" required
+                                    data-ng-change="ctrl.entryToSave.value = null"
+                                    data-ng-model="ctrl.entryToSave.type">
+                                <option>string</option>
+                                <option>integer</option>
+                                <option>password</option>
+                            </select>
+
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4 required" for="envvarValue" data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_value"></label>
+
+                    <div class="col-md-6">
+                        <input type="number" data-ng-if="ctrl.entryToSave.type === 'integer'" class="form-control" id="envvarValue" data-ng-model="ctrl.entryToSave.value">
+                        <input type="password" data-ng-if="ctrl.entryToSave.type === 'password'" class="form-control" id="envvarValue" data-ng-model="ctrl.entryToSave.value">
+                        <input type="text" data-ng-if="ctrl.entryToSave.type !== 'password' && ctrl.entryToSave.type !== 'integer'" class="form-control" id="envvarValue" data-ng-model="ctrl.entryToSave.value">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

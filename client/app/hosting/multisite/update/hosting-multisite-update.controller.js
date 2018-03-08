@@ -1,4 +1,4 @@
-angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParams, HostingDomain, Hosting, Alerter, Domain, User, $q) => {
+angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParams, HostingDomain, Hosting, HostingFrameworkRuntime, Alerter, Domain, User, $q) => {
     "use strict";
 
     $scope.selectedOptions = {};
@@ -9,7 +9,8 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
         domainWww: null,
         pathFinal: null,
         ipv6: $scope.currentActionData.ipV6Enabled,
-        ssl: $scope.currentActionData.rawSsl
+        ssl: $scope.currentActionData.rawSsl,
+        runtime: null
     };
 
     if ($scope.selected.domain.ownLog) {
@@ -23,7 +24,12 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
     }
 
     $scope.model = {
-        domains: null
+        domains: null,
+        runtimes: []
+    };
+
+    $scope.loading = {
+        runtimes: false
     };
 
     $scope.classes = {
@@ -117,18 +123,19 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
                             .catch((err) => {
                                 $scope.resetAction();
                                 Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
-                            });
+                            })
+                        ;
                     })
                     .catch((err) => {
                         $scope.resetAction();
                         Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
-                    }
-                    )
+                    })
                     .then(() => {
                         if ($scope.hosting.hasCdn && $scope.selected.domain.cdn !== "NONE") {
                             $scope.selected.domain.cdn = "ACTIVE";
                         }
-                    });
+                    })
+                ;
             })
             .catch((err) => {
                 $scope.resetAction();
@@ -147,7 +154,48 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
             .catch((err) => {
                 $scope.resetAction();
                 Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
-            });
+            })
+        ;
+
+        Hosting.getSelected($stateParams.productId)
+            .then((hosting) => {
+                $scope.hosting = hosting;
+
+                if (hosting.isCloudWeb) {
+                    // Load runtimes configuration
+                    HostingFrameworkRuntime.list($scope.hosting.serviceName)
+                        .then((runtimes) => {
+                            $scope.loading.runtimes = true;
+
+                            const promises = [];
+                            _.forEach(runtimes, (runtimeId) => {
+                                promises.push(HostingFrameworkRuntime.get($scope.hosting.serviceName, runtimeId)
+                                    .then((runtime) => {
+                                        $scope.model.runtimes.push(runtime);
+
+                                        return runtime;
+                                    })
+                                );
+                            });
+
+                            $q.all(promises).then(() => {
+                                $scope.loading.runtimes = false;
+                            });
+                        })
+                        .catch((err) => {
+                            Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+
+                            $scope.resetAction();
+                        })
+                    ;
+                }
+            })
+            .catch((err) => {
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+
+                $scope.resetAction();
+            })
+        ;
     };
 
     $scope.getSelectedDomain = function (wwwNeeded) {
@@ -209,6 +257,7 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
             $scope.selected.domain.firewall,
             $scope.selected.domain.ownLog === "ACTIVE" ? $scope.selected.ownLogDomain.name : null,
             !!$scope.selected.domain.ssl, // mandatory because it could be 0, 1, 2 or true/false
+            $scope.selected.runtime ? $scope.selected.runtime.id : null,
             $stateParams.productId
         )
             .then((data) => {

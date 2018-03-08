@@ -1,0 +1,34 @@
+<div data-ng-controller="controllers.Hosting.Framework.Runtime.setDefault as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="setDefault"
+         data-wizard-title="i18n.hosting_tab_FRAMEWORK_runtime_set_default_title">
+
+        <div data-wizard-step>
+            <p data-i18n-static="hosting_tab_FRAMEWORK_runtime_set_default_step1_question"></p>
+
+            <dl class="dl-horizontal dl-lg">
+                <dt data-i18n-static="hosting_tab_FRAMEWORK_runtime_table_header_name"></dt>
+                <dd data-ng-bind="ctrl.entryToSetup.name"></dd>
+
+                <dt data-i18n-static="hosting_tab_FRAMEWORK_runtime_table_header_language"></dt>
+                <dd data-ng-bind="ctrl.entryToSetup.type"></dd>
+
+                <div data-ng-if="ctrl.entryToSetup.type.indexOf('nodejs') !== -1">
+                    <dt data-i18n-static="hosting_tab_FRAMEWORK_runtime_table_header_publicDir"></dt>
+                    <dd data-ng-bind="ctrl.entryToSetup.publicDir"></dd>
+
+                    <dt data-i18n-static="hosting_tab_FRAMEWORK_runtime_table_header_appEnv"></dt>
+                    <dd data-ng-bind="ctrl.entryToSetup.appEnv"></dd>
+
+                    <dt data-i18n-static="hosting_tab_FRAMEWORK_runtime_table_header_appBootstrap"></dt>
+                    <dd data-ng-bind="ctrl.entryToSetup.appBootstrap"></dd>
+                </div>
+            </dl>
+
+            <div class="alert alert-warning" role="alert"
+                 data-i18n-static="hosting_tab_FRAMEWORK_runtime_set_default_information">
+            </div>
+        </div>
+    </div>
+</div>

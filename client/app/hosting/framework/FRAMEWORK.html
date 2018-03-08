@@ -1,0 +1,8 @@
+<div class="container-fluid px-0" data-ng-controller="HostingTabFrameworkCtrl as ctrl">
+    <div data-ovh-alert="{{ alerts.main }}"></div>
+
+    <div class="row">
+        <oui-spinner data-size="l" data-ng-if="ctrl.loading.init"></oui-spinner>
+        <div data-ng-include="ctrl.template"></div>
+    </div>
+</div>

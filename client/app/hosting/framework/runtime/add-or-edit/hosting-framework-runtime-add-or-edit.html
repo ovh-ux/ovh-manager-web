@@ -1,0 +1,69 @@
+<div data-ng-controller="controllers.Hosting.Framework.Runtime.create as ctrl">
+    <div data-wizard
+         data-wizard-on-cancel="resetAction"
+         data-wizard-on-finish="save"
+         data-wizard-title="ctrl.title">
+
+        <div data-wizard-step
+             data-wizard-step-valid="isValid">
+
+            <form class="form-horizontal" name="addRuntimeForm" data-ng-if="!ctrl.loading">
+                <p>
+                    <small class="text-danger">*</small>
+                    <small data-i18n-static="required_fields"></small>
+                </p>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4 required" for="runtimeName" data-i18n-static="hosting_tab_FRAMEWORK_runtime_label_name"></label>
+
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="runtimeName" data-ng-model="ctrl.entryToSave.name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-4 required" for="runtimeType" data-i18n-static="hosting_tab_FRAMEWORK_runtime_label_type"></label>
+
+                    <div class="col-md-8">
+                        <div class="oui-select oui-select_inline mb-0">
+                            <select class="oui-select__input" id="runtimeType" data-ng-model="ctrl.entryToSave.type" data-ng-options="type for type in ctrl.availableTypes" required></select>
+                            <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-ng-if="ctrl.entryToSave.type.length && ctrl.entryToSave.type.indexOf('nodejs') !== -1">
+                    <div class="form-group">
+                        <label class="control-label col-md-4 required" for="runtimePublicDir" data-i18n-static="hosting_tab_FRAMEWORK_runtime_label_publicDir"></label>
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="runtimePublicDir" data-ng-model="ctrl.entryToSave.publicDir">
+                        </div>
+
+                        <span class="fa fa-info-circle ml-2" data-uib-tooltip="{{ i18n.hosting_tab_FRAMEWORK_runtime_publicDir_help }}"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4 required" for="runtimeAppEnv" data-i18n-static="hosting_tab_FRAMEWORK_runtime_label_appEnv"></label>
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="runtimeAppEnv" data-ng-model="ctrl.entryToSave.appEnv">
+                        </div>
+
+                        <span class="fa fa-info-circle ml-2" data-uib-tooltip="{{ i18n.hosting_tab_FRAMEWORK_runtime_appEnv_help }}"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-4 required" for="runtimeAppBootstrap" data-i18n-static="hosting_tab_FRAMEWORK_runtime_label_appBootstrap"></label>
+
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="runtimeAppBootstrap" data-ng-model="ctrl.entryToSave.appBootstrap">
+                        </div>
+
+                        <span class="fa fa-info-circle ml-2" data-uib-tooltip="{{ i18n.hosting_tab_FRAMEWORK_runtime_appBootstrap_help }}"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
