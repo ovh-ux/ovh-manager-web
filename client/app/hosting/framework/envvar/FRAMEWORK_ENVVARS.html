@@ -1,0 +1,128 @@
+<div data-ng-controller="HostingFrameworkEnvvarCtrl as ctrlEnvvar">
+    <div class="col-md-9">
+        <button class="oui-button oui-button_link oui-button_icon-left" type="button" data-ng-click="goToRuntimeList()" data-ng-disabled="ctrlEnvvar.loading.envvars">
+            <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+            <span data-i18n-static="common_back"></span>
+        </button>
+
+        <div class="container-fluid px-0">
+            <h6 data-i18n-static="hosting_tab_FRAMEWORK_envvar_list"></h6>
+            <div class="mb-3">
+                <form class="form-inline d-md-flex justify-content-md-end" name="searchEnvvarForm">
+                    <div class="form-group">
+                        <label class="sr-only" for="searchEnvvar" data-ng-i18n-static="common_search"></label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="searchEnvvar" name="searchEnvvar" placeholder="{{::i18n.hosting_tab_FRAMEWORK_envvar_search_placeholder}}"
+                                   data-ng-model="ctrlEnvvar.search"
+                                   data-ng-change="ctrlEnvvar.onSearch(ctrlEnvvar.search)"
+                                   data-ng-model-options='{ debounce: 800 }'>
+
+                            <div class="input-group-btn" data-ng-if="ctrlEnvvar.search">
+                                <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
+                                        data-ng-click="ctrlEnvvar = ''">
+                                    <span class="fa fa-times" aria-hidden="true"></span>
+                                </button>
+                            </div>
+
+                            <span class="input-group-addon" data-ng-if="!ctrlEnvvar.search">
+                        <span class="fa fa-search" aria-hidden="true"></span>
+                    </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col" data-i18n-static="hosting_tab_FRAMEWORK_envvar_table_header_key"></th>
+                        <th scope="col" data-i18n-static="hosting_tab_FRAMEWORK_envvar_table_header_type"></th>
+                        <th scope="col" data-i18n-static="hosting_tab_FRAMEWORK_envvar_table_header_value"></th>
+                        <th scope="col" data-i18n-static="hosting_tab_FRAMEWORK_envvar_table_header_status"></th>
+                        <th class="min-width text-right" scope="col">
+                            <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
+                                    data-ng-click="onRefresh()"
+                                    data-ng-disabled="ctrlEnvvar.loading.envvars">
+                                <span class="fa fa-refresh" aria-hidden="true"></span>
+                            </button>
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <tbody data-ng-if="ctrlEnvvar.loading.envvars">
+                    <tr>
+                        <td class="loader text-center" colspan="5"></td>
+                    </tr>
+                    </tbody>
+
+                    <tbody data-ng-if="!ctrlEnvvar.loading.envvars && !ctrlEnvvar.envvars.ids.length">
+                    <tr>
+                        <td class="text-center" colspan="5" data-i18n-static="hosting_tab_FRAMEWORK_envvars_table_empty"></td>
+                    </tr>
+                    </tbody>
+
+                    <tbody data-ng-if="!ctrlEnvvar.loading.envvars && ctrlEnvvar.envvars.ids.length > 0">
+                    <tr data-ng-repeat="envvar in ctrlEnvvar.envvars.details track by $index">
+                        <th class="word-break" scope="row" data-ng-bind="envvar.key"></th>
+                        <td class="word-break" data-ng-bind="envvar.type"></td>
+                        <td class="word-break" data-ng-bind="envvar.value"></td>
+                        <td>
+                        <span class="label"
+                              data-ng-bind="tr('hosting_tab_FRAMEWORK_table_status_' + envvar.status)"
+                              data-ng-class="{
+                                'label-success': envvar.status === 'created',
+                                'label-danger': envvar.status === 'deleting',
+                                'label-warning': envvar.status !== 'created' && envvar.status !== 'deleting'
+                              }">
+                        </span>
+                        </td>
+
+                        <td class="text-center">
+                            <button class="btn btn-icon" type="button" title="{{i18n.global_configuration}}"
+                                    data-linkedpopover="hosting/popover/envvar.html"
+                                    data-linkedpopover-placement="left"
+                                    data-linkedpopover-single="true"
+                                    data-linkedpopover-remote="true"
+                                    data-linkedpopover-title="{{i18n.common_actions}}">
+                                <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="clearfix" data-ng-if="ctrlEnvvar.envvars.ids">
+                <div data-pagination-front
+                     data-items="ctrlEnvvar.envvars.ids"
+                     data-paginated-items="ctrlEnvvar.envvars.details"
+                     data-current-page="currentPage"
+                     data-nb-pages="nbPages"
+                     data-refresh="onRefresh"
+                     data-items-per-page="itemsPerPage"
+                     data-transform-item="onTransformItem(item)"
+                     data-on-transform-item-done="onTransformItemDone(items)"
+                     data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+                     data-item-per-page-placeholder="{{tr('pagination_display')}}"
+                     data-on-page-change="ctrlEnvvar.loading.envvars = true"
+                     data-ng-show="!ctrlEnvvar.loading.init && ctrlEnvvar.hasResult">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <aside class="col-md-3 mt-5 mt-lg-0">
+        <div class="mb-5">
+            <br><br>
+
+            <button type="button" class="btn btn-block btn-default text-wrap"
+                title="{{ ctrlEnvvar.canAddEnvvar() ? i18n.hosting_tab_FRAMEWORK_envvar_add : i18n.hosting_tab_FRAMEWORK_envvar_quota_reached }}"
+                data-i18n-static="hosting_tab_FRAMEWORK_envvar_add"
+                data-ng-click="setAction('framework/envvar/add-or-edit/hosting-framework-envvar-add-or-edit', {})"
+                data-ng-disabled="!ctrlEnvvar.canAddEnvvar()">
+            </button>
+        </div>
+    </aside>
+</div>
+

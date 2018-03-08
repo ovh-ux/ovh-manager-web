@@ -24,17 +24,22 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
 
         Hosting.getTabDomains($stateParams.productId, count, offset, $scope.search.text)
             .then((domains) => {
-                if (_.get(domains, "list.results", []).length > 0) {
+                if (domains.list.results.length > 0) {
                     $scope.hasResult = true;
                 }
+
                 domainsList = domains;
+
+                return Hosting.getSelected($stateParams.productId);
             })
-            .finally(() => {
+            .then((hosting) => {
                 hostingSSLCertificate.retrievingLinkedDomains($stateParams.productId)
                     .then((sslLinked) => {
                         sslInfos = sslLinked;
                     })
                     .finally(() => {
+                        const promises = [];
+
                         _.forEach(_.get(domainsList, "list.results", []), (domain) => {
                             domain.rawSsl = domain.ssl;
                             if (Array.isArray(sslInfos) && sslInfos.indexOf(domain.name) === -1) {
@@ -43,16 +48,27 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
                                 domain.ssl = domain.ssl ? 2 : 1;
                             }
 
+                            if (hosting.isCloudWeb && domain.runtimeId) {
+                                promises.push(HostingDomain.getRuntimeConfiguration($stateParams.productId, domain.runtimeId)
+                                    .then((runtime) => {
+                                        domain.runtime = runtime;
+                                    })
+                                );
+                            }
+
                             return domain;
                         });
 
-                        $scope.domains = domainsList;
+                        $q.all(promises).then(() => {
+                            $scope.domains = domainsList;
 
-                        $location.search("domain", null);
+                            $location.search("domain", null);
 
-                        $scope.loading.domains = false;
-                        $scope.loading.init = false;
-                    });
+                            $scope.loading.domains = false;
+                            $scope.loading.init = false;
+                        });
+                    })
+                ;
             });
 
         $scope.excludeAttachedDomains = [$scope.hosting.cluster.replace(/^ftp/, $scope.hosting.primaryLogin)];

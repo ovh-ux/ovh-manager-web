@@ -26,6 +26,8 @@
                     tabDomainsRefresh: "hosting.tabs.domains.refresh",
                     tabDatabasesRefresh: "hosting.tabs.databases.refresh",
                     tabDatabasesCreation: "hosting.tabs.databases.creation",
+                    tabFrameworkRuntimesRefresh: "hosting.tabs.framework.runtimes.refresh",
+                    tabFrameworkEnvvarsRefresh: "hosting.tabs.framework.envvars.refresh",
                     tasksChanged: "hosting.tabs.tasks.refresh",
                     tabFtpRefresh: "hosting.tabs.ftp.refresh"
                 };
@@ -59,6 +61,20 @@
              */
             resetCrons () {
                 this.$rootScope.$broadcast(this.events.tabCronsRefresh);
+            }
+
+            /**
+             * Broadcast reset runtimes event
+             */
+            resetRuntimes () {
+                this.$rootScope.$broadcast(this.events.tabFrameworkRuntimesRefresh);
+            }
+
+            /**
+             * Broadcast reset envvars event
+             */
+            resetEnvvars () {
+                this.$rootScope.$broadcast(this.events.tabFrameworkEnvvarsRefresh);
             }
 
             /* -------------------------MODELS-------------------------*/
@@ -152,6 +168,8 @@
                     cache: hostingCache,
                     clearCache: forceRefresh
                 }).then((hosting) => {
+                    hosting.isCloudWeb = hosting.offer.indexOf("CLOUD") !== -1;
+
                     if (hosting.offer === "START_10_M") {
                         return this.OvhHttp.get(`/domain/${serviceName}/serviceInfos`, {
                             rootPath: "apiv6",

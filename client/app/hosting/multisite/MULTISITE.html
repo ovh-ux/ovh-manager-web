@@ -45,6 +45,7 @@
                             <tr>
                                 <th scope="col" data-i18n-static="hosting_tab_DOMAINS_table_header_domain"></th>
                                 <th scope="col" data-i18n-static="hosting_tab_DOMAINS_table_header_home"></th>
+                                <th scope="col" data-i18n-static="hosting_tab_DOMAINS_table_header_runtime" data-ng-if="hosting.isCloudWeb"></th>
                                 <th class="text-center" scope="col" data-i18n-static="hosting_tab_DOMAINS_table_header_ownlog"></th>
                                 <th class="text-center" scope="col" data-i18n-static="hosting_tab_DOMAINS_table_header_firewall"></th>
                                 <th class="text-center" scope="col" data-i18n-static="hosting_tab_DOMAINS_table_header_cdn" data-ng-if="hosting.hasCdn"></th>
@@ -79,6 +80,9 @@
                                 <td class="word-break"
                                     data-ng-bind="domain.displayName"></td>
                                 <td data-ng-bind="domain.path"></td>
+                                <td data-ng-if="hosting.isCloudWeb">
+                                    {{ domain.runtime.name }}
+                                </td>
                                 <td class="text-center">
                                     <span class="label"
                                           data-ng-bind="i18n['hosting_tab_DOMAINS_table_cdn_state_' + (domain.ownLog ? 'ACTIVE' : 'NONE')] || domain.ownLog"

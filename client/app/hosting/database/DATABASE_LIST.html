@@ -114,7 +114,7 @@
                             <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_name"></th>
                             <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_database_name"></th>
                             <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_server_address"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_size"></th>
+                            <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_size" data-ng-if="!hosting.isCloudWeb"></th>
                             <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_server"></th>
                             <th class="text-center" scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_state"></th>
                             <th class="text-center" scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_backup"></th>
@@ -152,7 +152,7 @@
                                 data-uib-tooltip="{{element.server}}"
                                 data-tooltip-append-to-body="true">
                             </td>
-                            <td>
+                            <td data-ng-if="!hosting.isCloudWeb">
                                 <div data-ng-if="element.server !== 'local' && !element.quotaCalculating">
                                     <div class="oui-progress m-0" style="min-width:200px"
                                          data-ng-class="{

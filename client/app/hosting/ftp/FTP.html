@@ -327,13 +327,22 @@
                     data-i18n-static="hosting_tab_FTP_configuration_restore_snapshot_title_button"
                     data-ng-click="setAction('ftp/snapshot/restore/hosting-ftp-snapshot-restore')"
                     data-ng-disabled="ctrlHostingTabFTP.disableRestoreFtp"
-                    data-ng-if="ctrlHostingTabFTP.displayRestoreFtp">
+                    data-ng-if="ctrlHostingTabFTP.displayRestoreFtp && !hosting.isCloudWeb">
             </button>
+
+            <button class="btn btn-block btn-default" type="button"
+                    data-i18n-static="hosting_tab_FTP_configuration_generate_snapshot_title_button"
+                    data-ng-click="setAction('ftp/snapshot/generate/hosting-ftp-snapshot-generate')"
+                    data-ng-disabled="ctrlHostingTabFTP.disableRestoreFtp"
+                    data-ng-if="ctrlHostingTabFTP.displayRestoreFtp && hosting.isCloudWeb">
+            </button>
+
             <button class="btn btn-block btn-default" type="button"
                     data-i18n-static="hosting_tab_FTP_configuration_user_create_title_button"
                     data-ng-click="setAction('ftp/user/add/hosting-ftp-user-add', { primaryLogin: ctrlHostingTabFTP.ftpInformations.primaryLogin, operatingSystem: ctrlHostingTabFTP.ftpInformations.operatingSystem })"
                     data-ng-if="ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
             </button>
+
             <button class="btn btn-block btn-default" type="button"
                     data-i18n-static="hosting_tab_FTP_configuration_explorer_title"
                     data-ng-click="ctrlHostingTabFTP.openFtpExplorer()"

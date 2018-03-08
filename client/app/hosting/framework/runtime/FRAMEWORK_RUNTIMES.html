@@ -1,0 +1,132 @@
+<div data-ng-controller="HostingFrameworkRuntimeCtrl as ctrlRuntime">
+    <div class="col-md-9">
+        <div class="container-fluid px-0">
+            <h6 data-i18n-static="hosting_tab_FRAMEWORK_runtime_list"></h6>
+            <div class="mb-3">
+                <form class="form-inline d-md-flex justify-content-md-end" name="searchRuntimeForm">
+                    <div class="form-group">
+                        <label class="sr-only" for="searchRuntime" data-ng-i18n-static="common_search"></label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="searchRuntime" name="searchRuntime" placeholder="{{::i18n.hosting_tab_FRAMEWORK_runtime_search_placeholder}}"
+                                   data-ng-model="ctrlRuntime.search"
+                                   data-ng-change="ctrlRuntime.onSearch(ctrlRuntime.search)"
+                                   data-ng-model-options='{ debounce: 800 }'>
+
+                            <div class="input-group-btn" data-ng-if="ctrlRuntime.search">
+                                <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
+                                        data-ng-click="ctrlRuntime.search = ''">
+                                    <span class="fa fa-times" aria-hidden="true"></span>
+                                </button>
+                            </div>
+
+                            <span class="input-group-addon" data-ng-if="!ctrlRuntime.search">
+                            <span class="fa fa-search" aria-hidden="true"></span>
+                        </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col" data-i18n-static="hosting_tab_FRAMEWORK_runtime_table_header_default"></th>
+                        <th scope="col" data-i18n-static="hosting_tab_FRAMEWORK_runtime_table_header_name"></th>
+                        <th scope="col" data-i18n-static="hosting_tab_FRAMEWORK_runtime_table_header_language"></th>
+                        <th scope="col" data-i18n-static="hosting_tab_FRAMEWORK_runtime_table_header_number_multisite"></th>
+                        <th scope="col" data-i18n-static="hosting_tab_FRAMEWORK_envvar_table_header_status"></th>
+                        <th class="min-width text-right" scope="col">
+                            <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
+                                    data-ng-click="onRefresh()"
+                                    data-ng-disabled="ctrlRuntime.loading.runtimes">
+                                <span class="fa fa-refresh" aria-hidden="true"></span>
+                            </button>
+                        </th>
+                    </tr>
+                    </thead>
+
+                    <tbody data-ng-if="ctrlRuntime.loading.runtimes">
+                    <tr>
+                        <td class="loader text-center" colspan="6"></td>
+                    </tr>
+                    </tbody>
+
+                    <tbody data-ng-if="!ctrlRuntime.loading.runtimes && !ctrlRuntime.runtimes.ids.length">
+                    <tr>
+                        <td class="text-center" colspan="6" data-i18n-static="hosting_tab_FRAMEWORK_runtimes_table_empty"></td>
+                    </tr>
+                    </tbody>
+
+                    <tbody data-ng-if="!ctrlRuntime.loading.runtimes && ctrlRuntime.runtimes.ids.length > 0">
+                    <tr data-ng-repeat="runtime in ctrlRuntime.runtimes.details track by $index">
+                        <td class="word-break text-center">
+                            <input class="m-0" data-ng-model="runtime.isDefault" type="checkbox" onclick="return false;">
+                        </td>
+                        <th class="word-break" scope="row" data-ng-bind="runtime.name"></th>
+                        <td class="word-break" data-ng-bind="runtime.type"></td>
+                        <td class="word-break text-center" data-ng-bind="runtime.countAttachedDomains"></td>
+                        <td>
+                            <span class="label"
+                                  data-ng-bind="tr('hosting_tab_FRAMEWORK_table_status_' + runtime.status)"
+                                  data-ng-class="{
+                                    'label-success': runtime.status === 'created',
+                                    'label-danger': runtime.status === 'deleting',
+                                    'label-warning': runtime.status !== 'created' && runtime.status !== 'deleting'
+                                  }">
+                            </span>
+                        </td>
+
+                        <td class="text-center">
+                            <button class="btn btn-icon" type="button" title="{{i18n.global_configuration}}"
+                                    data-linkedpopover="hosting/popover/runtime.html"
+                                    data-linkedpopover-placement="left"
+                                    data-linkedpopover-single="true"
+                                    data-linkedpopover-remote="true"
+                                    data-linkedpopover-title="{{i18n.common_actions}}">
+                                <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="clearfix" data-ng-if="ctrlRuntime.runtimes.ids">
+                <div data-pagination-front
+                     data-items="ctrlRuntime.runtimes.ids"
+                     data-paginated-items="ctrlRuntime.runtimes.details"
+                     data-current-page="currentPage"
+                     data-nb-pages="nbPages"
+                     data-refresh="onRefresh"
+                     data-items-per-page="itemsPerPage"
+                     data-transform-item="onTransformItem(item)"
+                     data-on-transform-item-done="onTransformItemDone(items)"
+                     data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
+                     data-item-per-page-placeholder="{{tr('pagination_display')}}"
+                     data-on-page-change="ctrlRuntime.loading.runtimes = true"
+                     data-ng-show="!ctrlRuntime.loading.init && ctrlRuntime.hasResult">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <aside class="col-md-3 mt-5 mt-lg-0">
+        <div class="mb-5">
+            <button type="button" class="btn btn-block btn-default text-wrap"
+                    title="{{ ctrlRuntime.canAddRuntime() ? i18n.hosting_tab_FRAMEWORK_runtime_add : i18n.hosting_tab_FRAMEWORK_runtime_quota_reached }}"
+                    data-i18n-static="hosting_tab_FRAMEWORK_runtime_add"
+                    data-ng-click="setAction('framework/runtime/add-or-edit/hosting-framework-runtime-add-or-edit', {})"
+                    data-ng-disabled="!ctrlRuntime.canAddRuntime()">
+            </button>
+            <br><br>
+
+            <button type="button" class="btn btn-block btn-default text-wrap"
+                    title="{{ i18n.hosting_tab_FRAMEWORK_runtime_configure_envvar }}"
+                    data-i18n-static="hosting_tab_FRAMEWORK_runtime_configure_envvar"
+                    data-ng-click="goToEnvvarList()"
+                    data-ng-disabled="ctrlRuntime.loading.runtimes">
+            </button>
+        </div>
+    </aside>
+</div>

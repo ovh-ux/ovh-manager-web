@@ -1,11 +1,12 @@
 angular.module("App").controller(
     "HostingTabsCtrl",
     class HostingTabsCtrl {
-        constructor ($scope, $q, $location, $stateParams, HostingFreedom, HostingIndy) {
+        constructor ($scope, $q, $location, $stateParams, Hosting, HostingFreedom, HostingIndy) {
             this.$scope = $scope;
             this.$q = $q;
             this.$location = $location;
             this.$stateParams = $stateParams;
+            this.Hosting = Hosting;
             this.HostingFreedom = HostingFreedom;
             this.HostingIndy = HostingIndy;
         }
@@ -81,9 +82,10 @@ angular.module("App").controller(
             this.$q
                 .all({
                     indys: this.HostingIndy.getIndys(this.$stateParams.productId),
-                    freedoms: this.HostingFreedom.getFreedoms(this.$stateParams.productId, { forceRefresh: false })
+                    freedoms: this.HostingFreedom.getFreedoms(this.$stateParams.productId, { forceRefresh: false }),
+                    hosting: this.Hosting.getSelected(this.$stateParams.productId)
                 })
-                .then(({ indys, freedoms }) => {
+                .then(({ indys, freedoms, hosting }) => {
                     if (!_.isEmpty(indys)) {
                         this.tabMenu.items.splice(4, 0, {
                             label: this.$scope.i18n.hosting_tab_INDY,
@@ -98,6 +100,11 @@ angular.module("App").controller(
                             target: "FREEDOM",
                             type: "SWITCH_TABS"
                         });
+                    }
+
+                    if (hosting.isCloudWeb) {
+                        this.tabs.splice(1, 0, "FRAMEWORK");
+                        this.tabMenu.items.splice(3, 1);
                     }
                 });
         }
