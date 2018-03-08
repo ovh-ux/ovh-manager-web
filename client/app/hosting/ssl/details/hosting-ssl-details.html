@@ -19,9 +19,10 @@
                             'oui-list__item_complete': sslReportEntry.value === 'completed',
                         }">
                             <span class="oui-list__header" data-ng-bind="$ctrl.translator.tr('hosting_dashboard_ssl_details_entry_' + sslReportEntry.name)"></span>
-                            <span class="oui-list__description"
-                                  data-ng-if="sslReportEntry.value !== 'completed'"
-                                  data-ng-bind="$ctrl.translator.tr('hosting_dashboard_ssl_details_explanation_' + sslReportEntry.value)"></span>
+                            <div class="oui-list__description" data-ng-switch="sslReportEntry.value" data-ng-if="sslReportEntry.value !== 'completed'">
+                                <span data-ng-switch-when="in-progress" data-ng-bind="$ctrl.translator.tr('hosting_dashboard_ssl_details_explanation_in-progress')"></span>
+                                <span data-ng-switch-default data-ng-bind-html="$ctrl.translator.tr('hosting_dashboard_ssl_details_entry_' + sslReportEntry.name + '_error', [], true)"></span>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -29,14 +30,16 @@
                 <div class="oui-message oui-message_warning oui-message_icon-m">
                     <span class="oui-icon oui-icon-warning_circle oui-icon_bicolor" aria-hidden="true"></span>
                     <p class="oui-message__body">
-                        <span data-ng-bind="$ctrl.translator.tr('hosting_dashboard_ssl_details_support', $ctrl.orderNumber)"></span>
-                        <a data-ng-href="{{:: $ctrl.comodoSupportLink }}" target="_blank">
+                        <span data-ng-bind-html="$ctrl.translator.tr('hosting_dashboard_ssl_details_support_1', $ctrl.orderNumber, true)"></span>
+                        <a data-ng-href="{{:: $ctrl.comodoKnowledgebase }}" target="_blank">
                             <span aria-hidden="true"
-                                  aria-label="{{:: tr('hosting_dashboard_ssl_details_support_new_window') }}"
                                   title="{{:: tr('hosting_dashboard_ssl_details_support_new_window') }}"
                                   class="fa fa-external-link"></span>
+                            <span class="sr-only" data-i18n-static="hosting_dashboard_ssl_details_support_new_window"></span>
                         </a>
-                        .
+                        <span data-ng-bind-html="$ctrl.translator.tr('hosting_dashboard_ssl_details_support_2')"></span>
+                        <a data-ng-href="{{:: 'mailto:' + $ctrl.comodoContactEmail }}" target="_blank" data-ng-bind="$ctrl.comodoContactEmail"></a>
+                        <span data-ng-bind-html="$ctrl.translator.tr('hosting_dashboard_ssl_details_support_3', $ctrl.orderNumber, true)"></span>
                     </p>
                 </div>
             </div>
