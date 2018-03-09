@@ -124,7 +124,7 @@ angular
         openWebMailTab () {
             this.$window.open(this.webMailUrl, "_blank");
         }
-      
+
         displayAccountMigration (email) {
             this.shouldDisplayAccountMigration = true;
             this.accountMigrationEmail = email;
