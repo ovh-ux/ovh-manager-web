@@ -114,6 +114,13 @@ angular.module("App").controller(
                     email.quota = usage.quota;
                     email.emailCount = usage.emailCount;
                     email.date = usage.date;
+
+                    if (email.size > 0) {
+                        email.percentUse = _.round(email.quota * 100 / email.size);
+                    } else {
+                        email.percentUse = 0;
+                    }
+
                     return email;
                 });
         }
