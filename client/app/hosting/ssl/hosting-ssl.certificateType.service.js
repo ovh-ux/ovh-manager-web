@@ -1,30 +1,17 @@
-/**
- * @typedef     {Object}   CertificateType
- * @property    {String}   name             Name of the certificate
- * @property    {boolean}  isFree           True if the user had the certificate for free
- * @property    {String}   provider         How was the certificate provided (either LETSENCRYPT for free certificates, COMODO for paid certificates or CUSTOM for imported certificates)
- */
 angular
     .module("services")
     .service("hostingSSLCertificateType", class HostingSSLCertificateType {
-        constructor () {
-            _(HostingSSLCertificateType.getCertificateTypes())
-                .forEach((certificateType) => {
-                    const formattedCertificateTypeName = _(certificateType.name).chain()
-                        .camelCase()
-                        .capitalize()
-                        .value();
-
-                    this[`is${formattedCertificateTypeName}`] = (mysteryCertificateType) => HostingSSLCertificateType.isCertificateType(mysteryCertificateType, certificateType.name);
-                })
-                .value();
-        }
-
         /**
          * @static
          * @returns All the known certificate types
          */
         static getCertificateTypes () {
+            /**
+             * @typedef     {Object}   CertificateType
+             * @property    {String}   name             Name of the certificate
+             * @property    {boolean}  isFree           True if the user had the certificate for free
+             * @property    {String}   provider         How was the certificate provided (either LETSENCRYPT for free certificates, COMODO for paid certificates or CUSTOM for imported certificates)
+             */
             return {
                 LETS_ENCRYPT: {
                     name: "letsEncrypt",
@@ -62,6 +49,39 @@ angular
             }
 
             return _(mysteryCertificateType).snakeCase().toUpperCase() === _(knownCertificateType).snakeCase().toUpperCase();
+        }
+
+        /**
+         * Checks if a certificate is a Let's Encrypt certificate
+         *
+         * @static
+         * @param {String} mysteryCertificateType The type to check
+         * @returns True if the certificate is a Let's Encrypt certificate
+         */
+        static isLetsEncrypt (mysteryCertificateType) {
+            return HostingSSLCertificateType.isCertificateType(mysteryCertificateType, HostingSSLCertificateType.getCertificateTypes().LETS_ENCRYPT.name);
+        }
+
+        /**
+         * Checks if a certificate is a paid certificate
+         *
+         * @static
+         * @param {String} mysteryCertificateType The type to check
+         * @returns True if the certificate is a paid certificate
+         */
+        static isPaid (mysteryCertificateType) {
+            return HostingSSLCertificateType.isCertificateType(mysteryCertificateType, HostingSSLCertificateType.getCertificateTypes().PAID.name);
+        }
+
+        /**
+         * Checks if a certificate was imported by the user
+         *
+         * @static
+         * @param {String} mysteryCertificateType The type to check
+         * @returns True if the certificate was imported
+         */
+        static isImported (mysteryCertificateType) {
+            return HostingSSLCertificateType.isCertificateType(mysteryCertificateType, HostingSSLCertificateType.getCertificateTypes().IMPORTED.name);
         }
 
         /**
