@@ -1,6 +1,6 @@
 angular
     .module("App")
-    .controller("GeneralInformationsCtrl", class GeneralInformationsCtrl {
+    .controller("hostingGeneralInformationsCtrl", class HostingGeneralInformationsCtrl {
         constructor ($scope, translator) {
             this.$scope = $scope;
             this.translator = translator;
