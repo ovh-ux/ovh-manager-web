@@ -691,7 +691,8 @@ module.exports = function (grunt) {
                             "ovh-angular-toaster",
                             "ngCkeditor",
                             "moment-picker",
-                            "oui"
+                            "oui",
+                            "ovhNgRavenConfig"
                         ];
 
                         _.forEach(assets[target].modules, (module) => {
