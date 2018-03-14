@@ -159,9 +159,9 @@ angular.module("controllers").controller(
                     this.$scope.resetAction();
                 }
                 }
-            }
 
-            this.changeErrorLabel();
+                this.changeErrorLabel();
+            }
         }
 
         /**
