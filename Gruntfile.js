@@ -973,16 +973,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-
-        // To release
-        bump: {
-            options: {
-                pushTo: "origin",
-                files: ["package.json", "bower.json"],
-                updateConfigs: ["pkg", "bower"],
-                commitFiles: ["-a"]
-            }
-        },
         ngAnnotate: {
             dist: {
                 files: [
@@ -1307,29 +1297,6 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask("serve", ["build", "watch"]);
-
-    /*
-     * --type=patch
-     * --type=minor
-     * --type=major
-     */
-    grunt.registerTask("release", "Release", () => {
-        const type = grunt.option("type");
-        if (isProd()) {
-            mode = "prod";
-            grunt.task.run([
-                `bump-only:${type}` /* , "changelog"*/,
-                "bump-commit"
-            ]);
-        } else {
-            grunt.verbose.or
-                .write(
-                    `You try to release in a weird version type [${type}]`
-                )
-                .error();
-            grunt.fail.warn("Please try with --type=patch|minor|major");
-        }
-    });
 
     grunt.registerTask("prettier-eslint", "My prettier eslint task", (
         done
