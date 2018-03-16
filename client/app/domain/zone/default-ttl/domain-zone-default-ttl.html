@@ -1,33 +1,33 @@
 <div data-ng-controller="DomainZoneDefaultTTLCtrl as ctrl">
+    <form
+        name="updateDefaultTtlForm"
+        id="updateDefaultTtlForm"
+        data-ng-submit="updateDefaultTtlForm.$valid && ctrl.updateDefaultTTL()"
+        novalidate>
 
-    <oui-modal data-title="{{tr('domain_tab_ZONE_default_ttl_button')}}"
-               primary-action="ctrl.updateDefaultTTL()"
-               primary-label="{{tr('wizard_confirm')}}"
-               secondary-action="resetAction()"
-               secondary-label="{{tr('wizard_cancel')}}"
-               on-dismiss="resetAction()">
-        <div class="text-center" data-ng-if="ctrl.loading">
-            <oui-spinner></oui-spinner>
-        </div>
-        <div data-ng-if="!ctrl.loading">
-            <p data-ng-bind-html="tr('domain_tab_ZONE_default_ttl_heading', '<strong>' + ctrl.domain.displayName + '</strong>')"></p>
+        <oui-modal
+            data-title="{{::tr('domain_tab_ZONE_default_ttl_button')}}"
+            data-primary-label="{{::tr('wizard_modify')}}"
+            data-secondary-action="resetAction()"
+            data-secondary-label="{{::tr('wizard_cancel')}}"
+            data-on-dismiss="resetAction()"
+            data-loading="ctrl.loading" >
 
-            <form name="updateDefaultTtlForm">
-                <oui-field label="{{tr('domain_tab_ZONE_default_ttl_default_value')}}">
-                    <oui-numeric id="nb-ttl"
-                                 name="ttl"
-                                 model="ctrl.zoneSOA.ttl"
-                                 required
-                                 min="{{ctrl.autorizedValues.min}}"
-                                 max="{{ctrl.autorizedValues.max}}">
-                    </oui-numeric>
-                </oui-field>
-            </form>
+            <p data-i18n-static="domain_tab_ZONE_default_ttl_info"></p>
+            <p data-ng-bind-html="::tr('domain_tab_ZONE_default_ttl_heading', '<strong>' + ctrl.domain.displayName + '</strong>')"></p>
 
-            <div class="alert alert-info mt-5"
-                 role="alert"
-                 data-i18n-static="domain_tab_ZONE_default_ttl_info">
-            </div>
-        </div>
-    </oui-modal>
+            <oui-field
+                data-label="{{::tr('domain_tab_ZONE_default_ttl_default_value')}}"
+                data-help-text="{{::tr('domain_tab_ZONE_default_ttl_help')}}">
+                <oui-numeric id="nb-ttl"
+                             name="ttl"
+                             data-model="ctrl.zoneSOA.ttl"
+                             required
+                             data-ng-min="ctrl.autorizedValues.min"
+                             data-ng-max="ctrl.autorizedValues.max">
+                </oui-numeric>
+            </oui-field>
+
+        </oui-modal>
+    </form>
 </div>
