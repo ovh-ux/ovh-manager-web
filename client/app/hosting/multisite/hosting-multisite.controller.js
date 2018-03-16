@@ -1,4 +1,4 @@
-angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $stateParams, $location, Hosting, HostingDomain, hostingSSL, $timeout, Alerter) => {
+angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $stateParams, $location, Hosting, HostingDomain, hostingSSLCertificate, $timeout, Alerter) => {
     "use strict";
 
     $scope.domains = null;
@@ -30,7 +30,7 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
                 domainsList = domains;
             })
             .finally(() => {
-                hostingSSL.retrievingLinkedDomains($stateParams.productId)
+                hostingSSLCertificate.retrievingLinkedDomains($stateParams.productId)
                     .then((sslLinked) => {
                         sslInfos = sslLinked;
                     })

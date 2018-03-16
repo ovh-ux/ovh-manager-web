@@ -2,31 +2,44 @@ angular
     .module("services")
     .service("hostingSSLCertificateType", class HostingSSLCertificateType {
         /**
+         * Tests if a parameter is a non-empty string
+         *
          * @static
-         * @returns All the known certificate types
+         * @param   {string}       parameter
+         * @throws  {TypeError} Only if the parameter is not a string or is empty
+         */
+        static testIsValidStringParameter (parameter) {
+            if (!_(parameter).isString() || _(parameter).isEmpty()) {
+                throw new TypeError("parameter should be a non-empty String");
+            }
+        }
+
+        /**
+         * @static
+         * @returns {Object}    All the known certificate types
          */
         static getCertificateTypes () {
             /**
-             * @typedef     {Object}   CertificateType
-             * @property    {String}   name             Name of the certificate
+             * @typedef     {object}   CertificateType
+             * @property    {string}   name             Name of the certificate
              * @property    {boolean}  isFree           True if the user had the certificate for free
-             * @property    {String}   provider         How was the certificate provided (either LETSENCRYPT for free certificates, COMODO for paid certificates or CUSTOM for imported certificates)
+             * @property    {string}   providerName     How was the certificate provided (either LETSENCRYPT for free certificates, COMODO for paid certificates or CUSTOM for imported certificates)
              */
             return {
                 LETS_ENCRYPT: {
                     name: "letsEncrypt",
                     isFree: true,
-                    provider: "LETSENCRYPT"
+                    providerName: "LETSENCRYPT"
                 },
                 PAID: {
                     name: "paid",
                     isFree: false,
-                    provider: "COMODO"
+                    providerName: "COMODO"
                 },
                 IMPORTED: {
                     name: "imported",
                     isFree: true,
-                    provider: "CUSTOM"
+                    providerName: "CUSTOM"
                 }
             };
         }
@@ -35,18 +48,13 @@ angular
          * Checks if a mysteryCertificateType is a knownCertificateType
          *
          * @static
-         * @param {String} mysteryCertificateType Unknown certificate type
-         * @param {String} knownCertificateType Known certificate type to check against
-         * @returns {boolean} True if the mysteryCertificateType is the same as the knownCertificateType
+         * @param   {string}    mysteryCertificateType  Unknown certificate type
+         * @param   {string}    knownCertificateType    Known certificate type to check against
+         * @returns {boolean}   True if the mysteryCertificateType is the same as the knownCertificateType
          */
         static isCertificateType (mysteryCertificateType, knownCertificateType) {
-            if (!_(mysteryCertificateType).isString() || _(mysteryCertificateType).isEmpty()) {
-                throw new TypeError("mysteryCertificateType should be a non-empty String");
-            }
-
-            if (!_(knownCertificateType).isString() || _(knownCertificateType).isEmpty()) {
-                throw new TypeError("knownCertificateType should be a non-empty String");
-            }
+            HostingSSLCertificateType.testIsValidStringParameter(mysteryCertificateType);
+            HostingSSLCertificateType.testIsValidStringParameter(knownCertificateType);
 
             return _(mysteryCertificateType).snakeCase().toUpperCase() === _(knownCertificateType).snakeCase().toUpperCase();
         }
@@ -55,8 +63,8 @@ angular
          * Checks if a certificate is a Let's Encrypt certificate
          *
          * @static
-         * @param {String} mysteryCertificateType The type to check
-         * @returns True if the certificate is a Let's Encrypt certificate
+         * @param {string}      mysteryCertificateType  The type to check
+         * @returns {boolean}   True if the certificate is a Let's Encrypt certificate
          */
         static isLetsEncrypt (mysteryCertificateType) {
             return HostingSSLCertificateType.isCertificateType(mysteryCertificateType, HostingSSLCertificateType.getCertificateTypes().LETS_ENCRYPT.name);
@@ -66,8 +74,8 @@ angular
          * Checks if a certificate is a paid certificate
          *
          * @static
-         * @param {String} mysteryCertificateType The type to check
-         * @returns True if the certificate is a paid certificate
+         * @param   {string}    mysteryCertificateType  The type to check
+         * @returns {boolean}   True if the certificate is a paid certificate
          */
         static isPaid (mysteryCertificateType) {
             return HostingSSLCertificateType.isCertificateType(mysteryCertificateType, HostingSSLCertificateType.getCertificateTypes().PAID.name);
@@ -77,28 +85,26 @@ angular
          * Checks if a certificate was imported by the user
          *
          * @static
-         * @param {String} mysteryCertificateType The type to check
-         * @returns True if the certificate was imported
+         * @param   {string}    mysteryCertificateType  The type to check
+         * @returns {boolean}   True if the certificate was imported
          */
         static isImported (mysteryCertificateType) {
             return HostingSSLCertificateType.isCertificateType(mysteryCertificateType, HostingSSLCertificateType.getCertificateTypes().IMPORTED.name);
         }
 
         /**
-         * @param {string} providerName - Name of the proviser
-         * @returns {CertificateType} Matching certificate type
+         * @param   {string}            providerName    Name of the provider
+         * @returns {CertificateType}   Matching certificate type
          */
         static getCertificateTypeByProvider (providerName) {
-            if (!_(providerName).isString() || _(providerName).isEmpty()) {
-                throw new TypeError("providerName should be a non-empty String");
-            }
+            HostingSSLCertificateType.testIsValidStringParameter(providerName);
 
-            const formattedProvider = _(providerName).snakeCase().toUpperCase();
-            const matchingCertificate = _(HostingSSLCertificateType.getCertificateTypes()).find((certificateType) => certificateType.provider === formattedProvider);
+            const formattedProviderName = _(providerName).snakeCase().toUpperCase();
+            const matchingCertificate = _(HostingSSLCertificateType.getCertificateTypes()).find((certificateType) => certificateType.providerName === formattedProviderName);
 
             const certificateIsFound = _(matchingCertificate).isObject();
             if (!certificateIsFound) {
-                throw new Error(`${providerName} is not a valid provider`);
+                throw new Error(`${providerName} is not a valid provider name`);
             }
 
             return matchingCertificate;

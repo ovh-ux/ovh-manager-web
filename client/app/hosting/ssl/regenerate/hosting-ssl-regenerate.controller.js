@@ -1,12 +1,13 @@
 angular
     .module("App")
     .controller("hostingRegenerateSSLCtrl", class HostingRegenerateSSLCtrl {
-        constructor ($scope, $stateParams, hostingSSL, Alerter, translator) {
+        constructor ($rootScope, $scope, $stateParams, hostingSSLCertificate, Alerter, translator) {
+            this.$rootScope = $rootScope;
             this.$scope = $scope;
             this.$stateParams = $stateParams;
 
             this.Alerter = Alerter;
-            this.hostingSSL = hostingSSL;
+            this.hostingSSLCertificate = hostingSSLCertificate;
             this.translator = translator;
         }
 
@@ -15,9 +16,9 @@ angular
         }
 
         regeneratingCertificate () {
-            return this.hostingSSL.regeneratingSSL(this.$stateParams.productId)
+            return this.hostingSSLCertificate.regeneratingCertificate(this.$stateParams.productId)
                 .then(() => {
-                    this.$scope.loadSsl();
+                    this.hostingSSLCertificate.reload();
                     this.Alerter.success(this.translator.tr("hosting_dashboard_service_regenerate_ssl_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {

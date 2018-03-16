@@ -1,55 +1,68 @@
 angular
     .module("App")
     .controller("hostingGeneralInformationsCtrl", class HostingGeneralInformationsCtrl {
-        constructor ($scope, translator) {
+        constructor ($scope, $stateParams, Alerter, hostingSSLCertificate, translator) {
             this.$scope = $scope;
+            this.$stateParams = $stateParams;
+
+            this.Alerter = Alerter;
+            this.hostingSSLCertificate = hostingSSLCertificate;
             this.translator = translator;
         }
 
-        canOrderSSL () {
-            return !this.hasHostedSSL() && !this.hasNonHostedSSL();
+        $onInit () {
+            this.$scope.$on("hosting.ssl.reload", () => this.retrievingSSLCertificate());
+
+            return this.retrievingSSLCertificate();
         }
 
-        hasNonHostedSSL () {
-            return _(this.$scope.ssl).isObject();
+        retrievingSSLCertificate () {
+            this.isRetrievingSSLCertificate = true;
+
+            return this.hostingSSLCertificate.retrievingCertificate(this.$stateParams.productId)
+                .then((certificate) => {
+                    this.sslCertificate = certificate;
+                })
+                .catch((error) => {
+                    // 404 error means that the user has no SSL certificate
+                    if (error.status !== 404) {
+                        this.Alerter.alertFromSWS(this.translator.tr("hosting_dashboard_ssl_details_error"), error, this.$scope.alerts.main);
+                    }
+                })
+                .finally(() => {
+                    this.isRetrievingSSLCertificate = false;
+                });
         }
 
-        hasHostedSSL () {
-            return _(this.$scope.hosting).isObject() && this.$scope.hosting.hasHostedSsl === true;
+        hasSSLCertificate () {
+            return _(this.sslCertificate).isObject();
         }
 
-        isNonHostedSSLAvailable () {
-            return this.hasNonHostedSSL() && this.$scope.ssl.status !== "creating" && this.$scope.ssl.status !== "deleting" && this.$scope.ssl.status !== "regenerating";
+        canOrderSSLCertificate () {
+            return !this.hasSSLCertificate();
         }
 
-        canRegenerateSSL () {
-            return this.isNonHostedSSLAvailable() && this.$scope.ssl.regenerable && this.$scope.ssl.provider !== "COMODO";
+        canRegenerateSSLCertificate () {
+            return this.hasSSLCertificate() && this.sslCertificate.regenerable && this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate);
         }
 
-        canDeleteSSL () {
-            // hasHostedSsl is true only for legacy SSL offers
-            // the new system is through the ssl API
-            return this.hasHostedSSL() || this.isNonHostedSSLAvailable();
+        canDeleteSSLCertificate () {
+            return this.hasSSLCertificate() && this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate);
         }
 
-        chooseCertificateStatusText () {
-            if (this.hasNonHostedSSL()) {
-                switch (this.$scope.ssl.status) {
-                case "creating":
-                    return this.translator.tr("hosting_dashboard_service_ssl_creating");
-                case "deleting":
-                    return this.translator.tr("hosting_dashboard_service_ssl_deleting");
-                case "regenerating":
-                    return this.translator.tr("hosting_dashboard_service_ssl_regenerating");
-                default:
-                    return this.translator.tr("common_yes");
-                }
+        hasSSLCertificateCreationReport () {
+            return this.hasSSLCertificate() && this.sslCertificate.isReportable;
+        }
+
+        selectSSLCertificateStatusText () {
+            if (!this.hasSSLCertificate()) {
+                return this.translator.tr("common_no");
             }
 
-            if (this.hasHostedSSL()) {
+            if (this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)) {
                 return this.translator.tr("common_yes");
             }
 
-            return this.translator.tr("common_no");
+            return this.translator.tr(`hosting_dashboard_service_ssl_${this.sslCertificate.status}`);
         }
     });

@@ -1,12 +1,12 @@
 angular
     .module("App")
     .controller("hostingDeleteSslCtrl", class HostingDeleteSslCtrl {
-        constructor ($scope, $stateParams, Alerter, hostingSSL, hostingSSLCertificateType, translator) {
+        constructor ($scope, $stateParams, Alerter, hostingSSLCertificate, hostingSSLCertificateType, translator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
 
             this.Alerter = Alerter;
-            this.hostingSSL = hostingSSL;
+            this.hostingSSLCertificate = hostingSSLCertificate;
             this.hostingSSLCertificateType = hostingSSLCertificateType;
             this.translator = translator;
         }
@@ -18,9 +18,9 @@ angular
         }
 
         deletingCertificate () {
-            return this.hostingSSL.deletingCertificate(this.$stateParams.productId)
+            return this.hostingSSLCertificate.deletingCertificate(this.$stateParams.productId)
                 .then(() => {
-                    this.$scope.loadSsl();
+                    this.hostingSSLCertificate.reload();
                     this.Alerter.success(this.translator.tr("hosting_dashboard_service_delete_ssl_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {

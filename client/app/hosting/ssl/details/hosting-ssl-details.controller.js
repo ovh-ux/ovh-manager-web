@@ -1,12 +1,12 @@
 angular
     .module("App")
     .controller("hostingSSLDetailsController", class HostingSSLDetailsController {
-        constructor ($scope, Alerter, constants, hostingSSL, translator) {
+        constructor ($scope, Alerter, constants, hostingSSLCertificate, translator) {
             this.$scope = $scope;
 
             this.Alerter = Alerter;
             this.constants = constants;
-            this.hostingSSL = hostingSSL;
+            this.hostingSSLCertificate = hostingSSLCertificate;
             this.translator = translator;
         }
 
@@ -21,7 +21,7 @@ angular
         retrievingCertificateValidationReport () {
             this.isLoading = true;
 
-            return this.hostingSSL.retrievingCertificateValidationReport(this.hosting.serviceName)
+            return this.hostingSSLCertificate.retrievingCertificateValidationReport(this.hosting.serviceName)
                 .then((sslReport) => {
                     this.orderNumber = sslReport.providerOrderId;
 
