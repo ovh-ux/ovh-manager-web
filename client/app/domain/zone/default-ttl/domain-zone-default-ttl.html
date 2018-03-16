@@ -19,13 +19,15 @@
             <oui-field
                 data-label="{{::tr('domain_tab_ZONE_default_ttl_default_value')}}"
                 data-help-text="{{::tr('domain_tab_ZONE_default_ttl_help')}}">
-                <oui-numeric id="nb-ttl"
-                             name="ttl"
-                             data-model="ctrl.zoneSOA.ttl"
-                             required
-                             data-ng-min="ctrl.autorizedValues.min"
-                             data-ng-max="ctrl.autorizedValues.max">
-                </oui-numeric>
+                <input id="nb-ttl"
+                    type="number"
+                    class="oui-input"
+                    name="ttl"
+                    data-ng-model="ctrl.zoneSOA.ttl"
+                    required
+                    data-ng-min="ctrl.autorizedValues.min"
+                    data-ng-max="ctrl.autorizedValues.max">
+                </input>
             </oui-field>
 
         </oui-modal>
