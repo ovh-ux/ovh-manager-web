@@ -538,6 +538,7 @@ module.exports = function (grunt) {
                             "ovh-angular-pagination-front",
                             "ovh-utils-angular",
                             "ui.bootstrap",
+                            "ngAria",
                             "ngRoute",
                             "ngResource",
                             "ngSanitize",
@@ -560,8 +561,6 @@ module.exports = function (grunt) {
                             "ovh-angular-sso-auth",
                             "ovh-angular-sso-auth-modal-plugin",
                             "ui.router",
-                            "ovh-angular-toggleClass",
-                            "ovh-angular-manager-navbar",
                             "ovh-angular-sidebar-menu",
                             "pascalprecht.translate",
                             "ovh-angular-responsive-tabs",
@@ -658,6 +657,7 @@ module.exports = function (grunt) {
                             "ovh-angular-pagination-front",
                             "ovh-utils-angular",
                             "ui.bootstrap",
+                            "ngAria",
                             "ngRoute",
                             "ngResource",
                             "ngSanitize",
@@ -681,8 +681,6 @@ module.exports = function (grunt) {
                             "ovh-angular-sso-auth-modal-plugin",
                             "ngRaven",
                             "ui.router",
-                            "ovh-angular-toggleClass",
-                            "ovh-angular-manager-navbar",
                             "ovh-angular-sidebar-menu",
                             "pascalprecht.translate",
                             "ovh-angular-responsive-tabs",
@@ -693,7 +691,8 @@ module.exports = function (grunt) {
                             "ovh-angular-toaster",
                             "ngCkeditor",
                             "moment-picker",
-                            "oui"
+                            "oui",
+                            "ovhNgRavenConfig"
                         ];
 
                         _.forEach(assets[target].modules, (module) => {

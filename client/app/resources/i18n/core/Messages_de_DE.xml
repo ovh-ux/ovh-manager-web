@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
    <translation id="select_option" qtlid="159046">Auswahl...</translation>
-   <translation id="welcome_to_your_manager_1" qtlid="282393">Herzlich Willkommen in Ihrem</translation>
+   <translation id="welcome_to_your_manager_1" qtlid="282393">Herzlich willkommen in Ihrem</translation>
    <translation id="welcome_to_your_manager_2" qtlid="282406">OVH Kundencenter</translation>
    <translation id="select_product_on_left" qtlid="123487">Bitte wählen Sie in der linken Spalte ein zu konfigurierendes Produkt aus.</translation>
    <translation id="select_product_on_top" qtlid="123499">Bitte wählen Sie oben ein zu konfigurierendes Produkt aus.</translation>
@@ -126,7 +126,7 @@
    <translation id="form_add_item" qtlid="402126">Element hinzufügen</translation>
    <translation id="wizard_breadcrumb" qtlid="158682">Schritt {0} von {1}</translation>
    <translation id="table_delete_search" qtlid="402139">Suche löschen</translation>
-   <translation id="select_placeholder" qtlid="447963">Séléctionnez...</translation>
+   <translation id="select_placeholder" qtlid="447963">Auswählen...</translation>
    <translation id="pagination_page" qtlid="129123">Seite {0} / {1}</translation>
    <translation id="pagination_go" qtlid="31522">OK</translation>
    <translation id="pagination_display" qtlid="69353">Anzeigen</translation>
@@ -135,6 +135,7 @@
    <translation id="common_search" qtlid="37659">Suchen</translation>
    <translation id="common_cancel" qtlid="37863">Abbrechen</translation>
    <translation id="common_confirm" qtlid="31498">Bestätigen</translation>
+   <translation id="common_install" qtlid="108709">Installieren</translation>
    <translation id="common_loading" qtlid="242769">Wird geladen</translation>
    <translation id="common_back" qtlid="4118">Zurück</translation>
    <translation id="common_next" qtlid="17743">Weiter</translation>
@@ -156,11 +157,20 @@
    <translation id="common_managerv5" qtlid="190784">Manager V5</translation>
    <translation id="common_managerv3" qtlid="34512">Manager v3</translation>
    <translation id="global_app_title" qtlid="122131">Ihr OVH Web Kundencenter</translation>
+   <translation id="global_language" qtlid="30598">Sprache</translation>
    <translation id="global_logout" qtlid="33658">Abmelden</translation>
    <translation id="global_changelog" qtlid="124964">Changelog</translation>
    <translation id="global_preference" qtlid="144708">Meine Abos</translation>
    <translation id="global_billing" qtlid="32950">Abrechnung</translation>
+   <translation id="global_billing_history" qtlid="159540">Meine Rechnungen</translation>
+   <translation id="global_billing_payments" qtlid="398781">Zahlungsverfolgung</translation>
    <translation id="global_account" qtlid="157642">Mein Account</translation>
+   <translation id="global_account_infos" qtlid="405499">Mein Profil</translation>
+   <translation id="global_account_security" qtlid="125420">Sicherheit</translation>
+   <translation id="global_account_emails" qtlid="266118">Empfangene E-Mails</translation>
+   <translation id="global_account_subscriptions" qtlid="144708">Meine Abos</translation>
+   <translation id="global_account_ssh" qtlid="165897">Meine SSH Keys</translation>
+   <translation id="global_account_advanced" qtlid="39958">Erweiterte Einstellungen</translation>
    <translation id="global_support" qtlid="39994">Support</translation>
    <translation id="global_feedback" qtlid="103558">Kommentar</translation>
    <translation id="global_feedback_appreciation" qtlid="127468">Ihre Meinung interessiert uns</translation>
@@ -179,7 +189,21 @@
    <translation id="global_feedback_subject_maxlength" qtlid="281732">Der Titel darf maximal 255 Zeichen lang sein</translation>
    <translation id="global_feedback_send" qtlid="52807">Absenden</translation>
    <translation id="global_renew" qtlid="229658">Meine Dienstleistungen</translation>
+   <translation id="global_renew_management" qtlid="287527">Meine Dienste verwalten</translation>
+   <translation id="global_renew_agreements" qtlid="204350">Meine Verträge</translation>
+   <translation id="global_means" qtlid="90049">Zahlungsarten</translation>
+   <translation id="global_means_mean" qtlid="139949">Meine Zahlungsarten</translation>
+   <translation id="global_means_ovhaccount" qtlid="366826">Mein Prepaid-Account</translation>
+   <translation id="global_means_vouchers" qtlid="270917">Meine Gutscheine</translation>
+   <translation id="global_means_refunds" qtlid="139923">Meine Gutschriften</translation>
+   <translation id="global_means_fidelity" qtlid="260606">Mein Treuebereich</translation>
+   <translation id="global_means_credits" qtlid="448907">Meine Guthaben</translation>
+
+
+
    <translation id="global_orders" qtlid="282809">Meine Bestellungen</translation>
+   <translation id="global_contacts" qtlid="70541">Meine Kontakte</translation>
+   <translation id="global_list_ticket" qtlid="454039">Meine Support-Anfragen</translation>
    <translation id="global_profil" qtlid="23035">Profil</translation>
    <translation id="global_OK" qtlid="31522">OK</translation>
    <translation id="global_KO" qtlid="122155">KO</translation>
@@ -196,7 +220,7 @@
    <translation id="navigation_left_all_domains" qtlid="152141">Alle meine Domains</translation>
    <translation id="navigation_left_order_dnszone" qtlid="433654">DNS Zone</translation>
    <translation id="navigation_left_all_domains_operations" qtlid="76470">Laufende Operationen</translation>
-   <translation id="navigation_left_order_private_database" qtlid="7702">Datenbank</translation>
+   <translation id="navigation_left_order_private_database" qtlid="7702">Datenbanken</translation>
    <translation id="navigation_left_order_mxplan" qtlid="286513">MX Plan</translation>
    <translation id="navigation_left_order_emailpro" qtlid="374893">E-Mail Pro</translation>
    <translation id="navigation_left_order_domain" qtlid="32590">Domains</translation>
@@ -205,7 +229,7 @@
    <translation id="navigation_left_platform_other" qtlid="123607">Plattformen</translation>
    <translation id="navigation_left_ip" qtlid="25615">IP</translation>
    <translation id="navigation_left_hosting" qtlid="50470">Hosting-Pakete</translation>
-   <translation id="navigation_left_database" qtlid="7702">Datenbank</translation>
+   <translation id="navigation_left_database" qtlid="7702">Datenbanken</translation>
    <translation id="navigation_left_exchange" qtlid="80430">Exchange</translation>
    <translation id="navigation_left_office" qtlid="100544">Office</translation>
    <translation id="navigation_left_sharepoint" qtlid="298352">SharePoint</translation>
@@ -231,6 +255,7 @@
    <translation id="required" qtlid="182514">Pflichtangabe</translation>
    <translation id="required_fields" qtlid="433550">Die Felder mit Asterisk sind Pflichtfelder.</translation>
    <translation id="common_go_to_next_error" qtlid="282562">Weiter zum nächsten Fehler</translation>
+   <translation id="common_skip_to_main_content" qtlid="454052">Zum Hauptinhalt</translation>
 
    <translation id="common_menu_support_assistance" qtlid="52699">Support</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Alle Anleitungen</translation>
@@ -688,4 +713,11 @@
    <translation id="preload_tips_4" qtlid="433641">Neue Version des Web Kundencenters!</translation>
 
    <translation id="sidebar_menu_order_actions" qtlid="43558">Bestellen</translation>
+
+   <translation id="common_ouidatagrid_nodata" qtlid="197635">Keine Ergebnisse</translation>
+   <translation id="common_ouipagination_resultsperpage" qtlid="433384">Ergebnisse pro Seite</translation>
+   <translation id="common_ouipagination_ofnresults" qtlid="452982">von TOTAL_ITEMS Ergebnissen</translation>
+   <translation id="common_ouipagination_currentpageofpagecount" qtlid="452995">Seite CURRENT_PAGE von PAGE_COUNT</translation>
+   <translation id="common_ouipagination_next" qtlid="433423">Nächste Seite</translation>
+   <translation id="common_ouipagination_previous" qtlid="433436">Vorherige Seite</translation>
 </translations>

@@ -242,17 +242,6 @@ angular.module("services").service(
         }
 
         /**
-         * Copy emails form imap
-         * @param {object} data
-         */
-        imapCopy (data) {
-            return this.OvhHttp.post("/email/imapCopy", {
-                rootPath: "apiv6",
-                data
-            });
-        }
-
-        /**
          * Obtain a list of available filters
          * @param {string} serviceName
          * @param {string} accountName
@@ -1091,13 +1080,27 @@ angular.module("services").service(
          * @param {string} destinationEmailAddress
          */
         checkMigrate (domain, accountName, destinationServiceName, destinationEmailAddress) {
-            return this.OvhHttp.get(`/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress/${destinationEmailAddress}/checkMigrate`, {
-                rootPath: "apiv6"
-            });
+            const defer = this.$q.defer();
+
+            this.OvhHttp
+                .get(`/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress/${destinationEmailAddress}/checkMigrate`, {
+                    rootPath: "apiv6"
+                })
+                .then((data) => {
+                    // error codes are returned in success
+                    if (_.isArray(data.error) && !_.isEmpty(data.error)) {
+                        defer.reject(data.error);
+                    } else {
+                        defer.resolve(data);
+                    }
+                })
+                .catch((err) => { defer.reject(err); });
+
+            return defer.promise;
         }
 
         /**
-         * Check if it's possible to migrate
+         * Migrate account to destination account
          * @param {string} domain
          * @param {string} accountName
          * @param {string} destinationServiceName

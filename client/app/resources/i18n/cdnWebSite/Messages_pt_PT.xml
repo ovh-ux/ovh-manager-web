@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="cdnwebsite_dashboard_loading_error" qtlid="168120">Ocorreu um erro durante acesso às informações</translation>
-   <translation id="cdnwebsite_dashboard_loading_expired" qtlid="148461">Este serviço está expirado.</translation>
+   <translation id="cdnwebsite_dashboard_loading_error" qtlid="168120">Erro ao carregar a informação.</translation>
+   <translation id="cdnwebsite_dashboard_loading_expired" qtlid="148461">Este serviço expirou.</translation>
    <translation id="cdnwebsite_dashboard_zone" qtlid="66428">Domínio</translation>
    <translation id="cdnwebsite_dashboard_zone_status" qtlid="152765">Estado da zona DNS</translation>
    <translation id="cdnwebsite_dashboard_zone_status_ON" qtlid="31522">OK</translation>
    <translation id="cdnwebsite_dashboard_zone_status_ERROR" qtlid="26407">Erro</translation>
    <translation id="cdnwebsite_dashboard_zone_status_REMOVING" qtlid="152778">Eliminação em curso</translation>
-   <translation id="cdnwebsite_dashboard_zone_none" qtlid="152791">Nenhum configurado</translation>
+   <translation id="cdnwebsite_dashboard_zone_none" qtlid="152791">Nenhuma configuração</translation>
    <translation id="cdnwebsite_dashboard_backend_status" qtlid="152804">Estado do alojamento</translation>
    <translation id="cdnwebsite_dashboard_backend_status_ON" qtlid="31522">OK</translation>
    <translation id="cdnwebsite_dashboard_backend_status_ERROR" qtlid="26407">Erro</translation>
    <translation id="cdnwebsite_dashboard_backend_status_CREATING" qtlid="29647">Criação em curso</translation>
    <translation id="cdnwebsite_dashboard_backend_status_REMOVING" qtlid="152778">Eliminação em curso</translation>
-   <translation id="cdnwebsite_dashboard_backend_none" qtlid="152817">Nenhum configurado</translation>
+   <translation id="cdnwebsite_dashboard_backend_none" qtlid="152817">Nenhuma configuração</translation>
    <translation id="cdnwebsite_dashboard_anycast" qtlid="152830">IP Anycast</translation>
    <translation id="cdnwebsite_dashboard_backend" qtlid="31990">Alojamento</translation>
    <translation id="cdnwebsite_dashboard_creation" qtlid="168185">Criação</translation>
@@ -21,99 +21,99 @@
    <translation id="cdnwebsite_dashboard_ssl" qtlid="152843">Opção SSL</translation>
    <translation id="cdnwebsite_configuration_zone_add_title_button" qtlid="152856">Associar uma zona DNS (domínio)</translation>
    <translation id="cdnwebsite_configuration_zone_add_title" qtlid="152856">Associar uma zona DNS (domínio)</translation>
-   <translation id="cdnwebsite_configuration_zone_add_step1_question" qtlid="152869">Vai configurar o seu CDN WebSite <span class="normal italic">{0}</span> sob uma zona DNS.</translation>
-   <translation id="cdnwebsite_configuration_zone_add_step1_loading_error" qtlid="135294">Ocorreu um erro ao carregar as informações.</translation>
+   <translation id="cdnwebsite_configuration_zone_add_step1_question" qtlid="152869">Vai configurar a CDN WebSite <span class="normal italic">{0}</span> numa zona DNS.</translation>
+   <translation id="cdnwebsite_configuration_zone_add_step1_loading_error" qtlid="135294">Erro ao carregar a informação.</translation>
    <translation id="cdnwebsite_configuration_zone_add_step1_zone" qtlid="111918">Domínio:</translation>
-   <translation id="cdnwebsite_configuration_zone_add_step2_question" qtlid="152882">Deseja realmente configurar a seguinte zona DNS no seu CDN WebSite <span class="normal italic">{0}</span>?</translation>
+   <translation id="cdnwebsite_configuration_zone_add_step2_question" qtlid="152882">Quer mesmo configurar esta zona DNS na CDN WebSite <span class="normal italic">{0}</span>?</translation>
    <translation id="cdnwebsite_configuration_zone_add_step2_zone" qtlid="111918">Domínio:</translation>
-   <translation id="cdnwebsite_configuration_zone_add_step2_info" qtlid="152895">Uma vez validado, a configuração da zona DNS levará alguns minutos.</translation>
+   <translation id="cdnwebsite_configuration_zone_add_step2_info" qtlid="152895">Depois da validação, a configuração da zona DNS irá demorar alguns minutos.</translation>
    <translation id="cdnwebsite_configuration_zone_add_success" qtlid="152908">A configuração da zona DNS foi efetuada com sucesso.</translation>
-   <translation id="cdnwebsite_configuration_zone_add_fail" qtlid="152921">Ocorreu um erro aquando do pedido de configuração da zona DNS.</translation>
+   <translation id="cdnwebsite_configuration_zone_add_fail" qtlid="152921">Erro no processamento da configuração da zona DNS.</translation>
    <translation id="cdnwebsite_configuration_zone_delete_title_button" qtlid="152934">Desassociar a zona DNS (domínio)</translation>
    <translation id="cdnwebsite_configuration_zone_delete_title" qtlid="152934">Desassociar a zona DNS (domínio)</translation>
-   <translation id="cdnwebsite_configuration_zone_delete_step1_loading_error" qtlid="135294">Ocorreu um erro ao carregar as informações.</translation>
-   <translation id="cdnwebsite_configuration_zone_delete_step1_question" qtlid="152947">Deseja realmente desassociar a seguinte zona DNS do seu CDN WebSite <span class="normal italic">{0}</span>?</translation>
+   <translation id="cdnwebsite_configuration_zone_delete_step1_loading_error" qtlid="135294">Erro ao carregar a informação.</translation>
+   <translation id="cdnwebsite_configuration_zone_delete_step1_question" qtlid="152947">Quer mesmo desassociar esta zona DNS da CDN WebSite <span class="normal italic">{0}</span>?</translation>
    <translation id="cdnwebsite_configuration_zone_delete_step1_zone" qtlid="111918">Domínio:</translation>
-   <translation id="cdnwebsite_configuration_zone_delete_step1_warning" qtlid="152960">Atenção, a desassociação da zona DNS do CDN WebSite levará à perda das configurações dos domínios e dos backends associados.</translation>
-   <translation id="cdnwebsite_configuration_zone_delete_step1_info" qtlid="152973">Uma vez validado, a desassociação da zona DNS do CDN WebSite levará alguns minutos.</translation>
-   <translation id="cdnwebsite_configuration_zone_delete_success" qtlid="152986">O pedido de desassociação da zona DNS foi corretamente tomado em conta. Ela será efetiva dentro de alguns minutos.</translation>
-   <translation id="cdnwebsite_configuration_zone_delete_fail" qtlid="152999">Ocorreu um erro aquando do pedido de desassociação da zona DNS.</translation>
+   <translation id="cdnwebsite_configuration_zone_delete_step1_warning" qtlid="152960">Atenção: a desassociação da zona DNS da CDN WebSite implica a perda das configurações dos domínios e dos backends associados.</translation>
+   <translation id="cdnwebsite_configuration_zone_delete_step1_info" qtlid="152973">Depois da validação, a desassociação da zona DNS da CDN WebSite irá demorar alguns minutos.</translation>
+   <translation id="cdnwebsite_configuration_zone_delete_success" qtlid="152986">O pedido de desassociação da zona DNS estará concretizado dentro de alguns minutos.</translation>
+   <translation id="cdnwebsite_configuration_zone_delete_fail" qtlid="152999">Erro ao executar a desassociação da zona DNS.</translation>
    <translation id="cdnwebsite_configuration_backend_add_title_button" qtlid="153012">Associar o alojamento (IP)</translation>
    <translation id="cdnwebsite_configuration_backend_add_title" qtlid="153012">Associar o alojamento (IP)</translation>
-   <translation id="cdnwebsite_configuration_backend_add_step1_question" qtlid="153025">Vai configurar o seu CDN WebSite <span class="normal italic">{0}</span> sob um alojamento.</translation>
-   <translation id="cdnwebsite_configuration_backend_add_step1_loading_error" qtlid="135294">Ocorreu um erro ao carregar as informações.</translation>
+   <translation id="cdnwebsite_configuration_backend_add_step1_question" qtlid="153025">Vai configurar a CDN WebSite <span class="normal italic">{0}</span>  num alojamento.</translation>
+   <translation id="cdnwebsite_configuration_backend_add_step1_loading_error" qtlid="135294">Erro ao carregar a informação.</translation>
    <translation id="cdnwebsite_configuration_backend_add_step1_backend" qtlid="153038">Alojamento:</translation>
    <translation id="cdnwebsite_configuration_backend_add_step1_ip_not_valid" qtlid="153051">O endereço IP não é válido</translation>
-   <translation id="cdnwebsite_configuration_backend_add_step2_question" qtlid="153064">Deseja realmente configurar o seguinte alojamento no seu CDN WebSite <span class="normal italic">{0}</span>?</translation>
+   <translation id="cdnwebsite_configuration_backend_add_step2_question" qtlid="153064">Quer mesmo configurar este alojamento na CDN WebSite <span class="normal italic">{0}</span>?</translation>
    <translation id="cdnwebsite_configuration_backend_add_step2_backend" qtlid="153038">Alojamento:</translation>
-   <translation id="cdnwebsite_configuration_backend_add_step2_info" qtlid="153077">Uma vez validado, a configuração do alojamento levar alguns minutos.</translation>
+   <translation id="cdnwebsite_configuration_backend_add_step2_info" qtlid="153077">Depois da validação, a configuração do alojamento irá demorar alguns minutos.</translation>
    <translation id="cdnwebsite_configuration_backend_add_success" qtlid="153090">A configuração do alojamento foi efetuada com sucesso.</translation>
-   <translation id="cdnwebsite_configuration_backend_add_fail" qtlid="153103">Ocorreu um erro aquando do pedido de configuração do alojamento.</translation>
+   <translation id="cdnwebsite_configuration_backend_add_fail" qtlid="153103">Erro ao executar a configuração do alojamento.</translation>
    <translation id="cdnwebsite_configuration_backend_delete_title_button" qtlid="153116">Desassociar o alojamento (IP)</translation>
    <translation id="cdnwebsite_configuration_backend_delete_title" qtlid="153116">Desassociar o alojamento (IP)</translation>
-   <translation id="cdnwebsite_configuration_backend_delete_step1_loading_error" qtlid="135294">Ocorreu um erro ao carregar as informações.</translation>
-   <translation id="cdnwebsite_configuration_backend_delete_step1_question" qtlid="153129">Deseja realmente desassociar o seguinte alojamento do seu CDN WebSite <span class="normal italic">{0}</span>?</translation>
+   <translation id="cdnwebsite_configuration_backend_delete_step1_loading_error" qtlid="135294">Erro ao carregar a informação.</translation>
+   <translation id="cdnwebsite_configuration_backend_delete_step1_question" qtlid="153129">Quer mesmo desassociar este alojamento da CDN WebSite <span class="normal italic">{0}</span>?</translation>
    <translation id="cdnwebsite_configuration_backend_delete_step1_backend" qtlid="153038">Alojamento:</translation>
-   <translation id="cdnwebsite_configuration_backend_delete_step1_info" qtlid="153142">Uma vez validado, a desassociação de alojamento do CDN WebSite levará alguns minutos.</translation>
-   <translation id="cdnwebsite_configuration_backend_delete_success" qtlid="153155">O pedido de desassociação do alojamento foi corretamente tomado em conta. Ela será efetiva dentro de alguns minutos.</translation>
-   <translation id="cdnwebsite_configuration_backend_delete_fail" qtlid="153168">Ocorreu um erro aquando do pedido de desassociação do alojamento.</translation>
-   <translation id="cdnwebsite_configuration_renew_title_button" qtlid="153181">Renovar o meu CDN WebSite</translation>
-   <translation id="cdnwebsite_configuration_renew_title" qtlid="153181">Renovar o meu CDN WebSite</translation>
-   <translation id="cdnwebsite_configuration_renew_step1_question" qtlid="153194">Para que possa renovar o seu CDN WebSite <span class="italic">{0}</span>, deve utilizar a interface de renovação OVH (fora do Espaço Cliente Web).</translation>
-   <translation id="cdnwebsite_configuration_renew_step1_confirmation" qtlid="153207">Clique no botão "Encomendar" para renovar agora o seu CDN WebSite.</translation>
-   <translation id="cdnwebsite_configuration_renew_step1_information" qtlid="153220">Vai ser aberto um novo separador e será automaticamente reencaminhado para a interface de renovação OVH.</translation>
-   <translation id="cdnwebsite_configuration_renew_step1_alert" qtlid="153233">Queira ter em conta que podem ser necessárias 2h desde a validação do seu pagamento, para que a renovação seja tomada em conta no seu Espaço Cliente Web.</translation>
+   <translation id="cdnwebsite_configuration_backend_delete_step1_info" qtlid="153142">Depois da validação, a desassociação de alojamento da CDN WebSite irá demorar alguns minutos.</translation>
+   <translation id="cdnwebsite_configuration_backend_delete_success" qtlid="153155">O pedido de desassociação do alojamento estará concretizado dentro de alguns minutos.</translation>
+   <translation id="cdnwebsite_configuration_backend_delete_fail" qtlid="153168">Erro ao executar a desassociação do alojamento.</translation>
+   <translation id="cdnwebsite_configuration_renew_title_button" qtlid="153181">Renovar CDN WebSite</translation>
+   <translation id="cdnwebsite_configuration_renew_title" qtlid="153181">Renovar CDN WebSite</translation>
+   <translation id="cdnwebsite_configuration_renew_step1_question" qtlid="153194">Para renovar a CDN WebSite <span class="italic">{0}</span>, deverá usar a interface de renovação OVH (fora Área de Cliente).</translation>
+   <translation id="cdnwebsite_configuration_renew_step1_confirmation" qtlid="153207">Clique no botão "Encomendar" para renovar agora a CDN WebSite.</translation>
+   <translation id="cdnwebsite_configuration_renew_step1_information" qtlid="153220">Irá surgir um novo separador e será automaticamente reencaminhado para a interface de renovação OVH.</translation>
+   <translation id="cdnwebsite_configuration_renew_step1_alert" qtlid="153233">Atenção: após a validação do pagamento, o estado da renovação pode demorar 2 horas até ficar atualizado na Área de Cliente.</translation>
    <translation id="cdnwebsite_tabs_STATISTICS" qtlid="26671">Estatísticas</translation>
    <translation id="cdnwebsite_tabs_DOMAINS" qtlid="32590">Domínios</translation>
    <translation id="cdnwebsite_tabs_DOMAINS_table_headers_name" qtlid="153246">Subdomínio(s)</translation>
    <translation id="cdnwebsite_tabs_DOMAINS_table_headers_status" qtlid="26443">Estado</translation>
-   <translation id="cdnwebsite_tabs_DOMAINS_table_empty" qtlid="153259">Não possui nenhum domínio configurado</translation>
+   <translation id="cdnwebsite_tabs_DOMAINS_table_empty" qtlid="153259">Não tem nenhum domínio configurado</translation>
    <translation id="cdnwebsite_tabs_DOMAINS_table_status_ON" qtlid="31522">OK</translation>
    <translation id="cdnwebsite_tabs_DOMAINS_table_status_ERROR" qtlid="26407">Erro</translation>
    <translation id="cdnwebsite_tabs_DOMAINS_table_status_REMOVING" qtlid="152778">Eliminação em curso</translation>
    <translation id="cdnwebsite_tabs_DOMAINS_table_tooltip_flush" qtlid="153272">Limpar a cache CDN do subdomínio</translation>
-   <translation id="cdnwebsite_tabs_DOMAINS_table_tooltip_delete" qtlid="153285">Eliminar o domínio do CDN</translation>
-   <translation id="cdnwebsite_tabs_DOMAINS_tooltip_add_domain_disabled" qtlid="153298">Não pode adicionar o domínio uma vez que não configurou o alojamento</translation>
+   <translation id="cdnwebsite_tabs_DOMAINS_table_tooltip_delete" qtlid="153285">Eliminar o domínio da CDN</translation>
+   <translation id="cdnwebsite_tabs_DOMAINS_tooltip_add_domain_disabled" qtlid="153298">Não pode adicionar o domínio; o alojamento não foi configurado</translation>
    <translation id="cdnwebsite_configuration_domains_delete_title" qtlid="153311">Eliminar o subdomínio</translation>
-   <translation id="cdnwebsite_configuration_domains_delete_step1_loading_error" qtlid="135294">Ocorreu um erro ao carregar as informações.</translation>
-   <translation id="cdnwebsite_configuration_domains_delete_step1_question" qtlid="153324">Deseja realmente eliminar o subdomínio seguinte do seu CDN WebSite <span class="normal italic">{0}</span>?</translation>
-   <translation id="cdnwebsite_configuration_domains_delete_step1_domain" qtlid="99776">Sub-domínio :</translation>
-   <translation id="cdnwebsite_configuration_domains_delete_success" qtlid="153337">O pedido de eliminação do subdomínio foi corretamente tomado em conta. Ela será efetiva dentro de alguns minutos.</translation>
-   <translation id="cdnwebsite_configuration_domains_delete_fail" qtlid="153350">Ocorreu um erro aquando do pedido de eliminação do subdomínio.</translation>
-   <translation id="cdnwebsite_configuration_domains_flushall_title_button" qtlid="153363">Limpar toda a cache</translation>
-   <translation id="cdnwebsite_configuration_domains_flushall_title" qtlid="153363">Limpar toda a cache</translation>
-   <translation id="cdnwebsite_configuration_domains_flushall_step1_loading_error" qtlid="135294">Ocorreu um erro ao carregar as informações.</translation>
-   <translation id="cdnwebsite_configuration_domains_flushall_step1_question" qtlid="153376">Limpar a cache CDN de todos os subdomínios declarados do seu CDN WebSite <span class="normal italic">{0}</span>?</translation>
-   <translation id="cdnwebsite_configuration_domains_flushall_success" qtlid="153389">O pedido de limpeza da cache de todos os subdomínios declarados foi corretamente tomado em conta. Ela será efetiva dentro de alguns minutos.</translation>
-   <translation id="cdnwebsite_configuration_domains_flushall_partial" qtlid="153402">O seu pedido de limpeza da cache de todos os subdomínios declarados foi corretamente tomado em conta para alguns domínios, mas noutros ocorreram alguns erros.</translation>
-   <translation id="cdnwebsite_configuration_domains_flushall_fail" qtlid="153415">Ocorreu um erro aquando do pedido de limpeza da cache dos seus subdomínios.</translation>
+   <translation id="cdnwebsite_configuration_domains_delete_step1_loading_error" qtlid="135294">Erro ao carregar a informação.</translation>
+   <translation id="cdnwebsite_configuration_domains_delete_step1_question" qtlid="153324">Quer mesmo eliminar este subdomínio da CDN WebSite <span class="normal italic">{0}</span>?</translation>
+   <translation id="cdnwebsite_configuration_domains_delete_step1_domain" qtlid="99776">Subdomínio:</translation>
+   <translation id="cdnwebsite_configuration_domains_delete_success" qtlid="153337">A eliminação do subdomínio estará concretizada dentro de alguns minutos.</translation>
+   <translation id="cdnwebsite_configuration_domains_delete_fail" qtlid="153350">Erro ao executar a eliminação do subdomínio.</translation>
+   <translation id="cdnwebsite_configuration_domains_flushall_title_button" qtlid="153363">Limpar a cache</translation>
+   <translation id="cdnwebsite_configuration_domains_flushall_title" qtlid="153363">Limpar a cache</translation>
+   <translation id="cdnwebsite_configuration_domains_flushall_step1_loading_error" qtlid="135294">Erro ao carregar a informação.</translation>
+   <translation id="cdnwebsite_configuration_domains_flushall_step1_question" qtlid="153376">Limpar a cache CDN de todos os subdomínios declarados associados à CDN WebSite <span class="normal italic">{0}</span>?</translation>
+   <translation id="cdnwebsite_configuration_domains_flushall_success" qtlid="153389">A limpeza da cache estará concretizada dentro de alguns minutos.</translation>
+   <translation id="cdnwebsite_configuration_domains_flushall_partial" qtlid="153402">Erro: não foi possível efetuar limpeza da cache de alguns subdomínios declarados. </translation>
+   <translation id="cdnwebsite_configuration_domains_flushall_fail" qtlid="153415">Erro ao executar a limpeza da cache dos subdomínios.</translation>
    <translation id="cdnwebsite_configuration_domains_flush_title" qtlid="153428">Limpar a cache do subdomínio</translation>
-   <translation id="cdnwebsite_configuration_domains_flush_step1_loading_error" qtlid="135294">Ocorreu um erro ao carregar as informações.</translation>
-   <translation id="cdnwebsite_configuration_domains_flush_step1_question" qtlid="153441">Deseja realmente limpar a cache do seguinte subdomínio do seu CDN WebSite <span class="normal italic">{0}</span>?</translation>
-   <translation id="cdnwebsite_configuration_domains_flush_step1_domain" qtlid="99776">Sub-domínio :</translation>
-   <translation id="cdnwebsite_configuration_domains_flush_success" qtlid="153454">O pedido de limpeza da cache do sub-domínio foi tomado em conta. Ela será efetiva dentro de alguns minutos.</translation>
-   <translation id="cdnwebsite_configuration_domains_flush_fail" qtlid="153467">Ocorreu um erro aquando do pedido de limpeza da cache do sub-domínio.</translation>
-   <translation id="cdnwebsite_configuration_domain_add_title_button" qtlid="95167">Adição de um sub-domínio</translation>
-   <translation id="cdnwebsite_configuration_domain_add_title" qtlid="95167">Adição de um sub-domínio</translation>
-   <translation id="cdnwebsite_configuration_domain_add_step1_question" qtlid="153480">Vai adicionar um sub-domínio no seu CDN WebSite <span class="normal italic">{0}</span>.</translation>
-   <translation id="cdnwebsite_configuration_domain_add_step1_loading_error" qtlid="135294">Ocorreu um erro ao carregar as informações.</translation>
-   <translation id="cdnwebsite_configuration_domain_add_step1_domain" qtlid="99776">Sub-domínio :</translation>
-   <translation id="cdnwebsite_configuration_domain_add_step2_question" qtlid="153493">Deseja adicionar realmente o sub-domínio no seu CDN WebSite <span class="normal italic">{0}</span>?</translation>
+   <translation id="cdnwebsite_configuration_domains_flush_step1_loading_error" qtlid="135294">Erro ao carregar a informação.</translation>
+   <translation id="cdnwebsite_configuration_domains_flush_step1_question" qtlid="153441">Quer mesmo limpar a cache do subdomínio associado à CDN WebSite <span class="normal italic">{0}</span>?</translation>
+   <translation id="cdnwebsite_configuration_domains_flush_step1_domain" qtlid="99776">Subdomínio:</translation>
+   <translation id="cdnwebsite_configuration_domains_flush_success" qtlid="153454">A limpeza da cache do subdomínio estará concretizada dentro de alguns minutos.</translation>
+   <translation id="cdnwebsite_configuration_domains_flush_fail" qtlid="153467">Erro ao executar a limpeza da cache do subdomínio.</translation>
+   <translation id="cdnwebsite_configuration_domain_add_title_button" qtlid="95167">Adicionar um subdomínio</translation>
+   <translation id="cdnwebsite_configuration_domain_add_title" qtlid="95167">Adicionar um subdomínio</translation>
+   <translation id="cdnwebsite_configuration_domain_add_step1_question" qtlid="153480">Vai adicionar um subdomínio à CDN WebSite <span class="normal italic">{0}</span>.</translation>
+   <translation id="cdnwebsite_configuration_domain_add_step1_loading_error" qtlid="135294">Erro ao carregar a informação.</translation>
+   <translation id="cdnwebsite_configuration_domain_add_step1_domain" qtlid="99776">Subdomínio:</translation>
+   <translation id="cdnwebsite_configuration_domain_add_step2_question" qtlid="153493">Quer mesmo adicionar este subdomínio à CDN WebSite <span class="normal italic">{0}</span>?</translation>
    <translation id="cdnwebsite_configuration_domain_add_step2_domain" qtlid="111918">Domínio:</translation>
-   <translation id="cdnwebsite_configuration_domain_add_step2_info" qtlid="153506">Após a validação, a adição do sub-domínio levará alguns minutos.</translation>
-   <translation id="cdnwebsite_configuration_domain_add_success" qtlid="153519">A adição do sub-domínio foi efetuada com sucesso.</translation>
-   <translation id="cdnwebsite_configuration_domain_add_fail" qtlid="153532">Ocorreu um erro aquando do pedido de adição do sub-domínio.</translation>
+   <translation id="cdnwebsite_configuration_domain_add_step2_info" qtlid="153506">Após a validação, a adição do subdomínio irá demorar alguns minutos.</translation>
+   <translation id="cdnwebsite_configuration_domain_add_success" qtlid="153519">Subdomínio adicionado com sucesso.</translation>
+   <translation id="cdnwebsite_configuration_domain_add_fail" qtlid="153532">Erro ao adicionar o subdomínio.</translation>
    <translation id="cdnwebsite_tabs_STATISTICS_visualize" qtlid="125648">Visualizar</translation>
-   <translation id="cdnwebsite_tabs_STATISTICS_from" qtlid="130243">de</translation>
+   <translation id="cdnwebsite_tabs_STATISTICS_from" qtlid="130243">as</translation>
    <translation id="cdnwebsite_tabs_STATISTICS_period_DAY" qtlid="126844">Últimas 24 horas</translation>
    <translation id="cdnwebsite_tabs_STATISTICS_period_MONTH" qtlid="99632">Últimos 30 dias</translation>
    <translation id="cdnwebsite_tabs_STATISTICS_period_WEEK" qtlid="126856">Últimos 7 dias</translation>
-   <translation id="cdnwebsite_tabs_STATISTICS_type_BANDWIDTH" qtlid="153545">Largura de banda de saída (tráfego consumindo)</translation>
+   <translation id="cdnwebsite_tabs_STATISTICS_type_BANDWIDTH" qtlid="153545">Largura de banda de saída (consumo de tráfego)</translation>
    <translation id="cdnwebsite_tabs_STATISTICS_type_REQUEST" qtlid="126868">Pedidos</translation>
    <translation id="cdnwebsite_tabs_STATISTICS_legend_bandwidth_cdn" qtlid="127770">A partir da cache CDN</translation>
    <translation id="cdnwebsite_tabs_STATISTICS_legend_bandwidth_backend" qtlid="127782">A partir do alojamento</translation>
    <translation id="cdnwebsite_tabs_STATISTICS_legend_request_cdn" qtlid="127770">A partir da cache CDN</translation>
    <translation id="cdnwebsite_tabs_STATISTICS_legend_request_backend" qtlid="127782">A partir do alojamento</translation>
-   <translation id="cdnwebsite_tabs_STATISTICS_y_axis_text_bandwidth" qtlid="153545">Largura de banda de saída (tráfego consumindo)</translation>
+   <translation id="cdnwebsite_tabs_STATISTICS_y_axis_text_bandwidth" qtlid="153545">Largura de banda de saída (consumo de tráfego)</translation>
    <translation id="cdnwebsite_tabs_STATISTICS_y_axis_text_request" qtlid="153558">Número de pedidos</translation>
 </translations>

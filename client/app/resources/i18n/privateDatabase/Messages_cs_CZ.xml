@@ -50,10 +50,10 @@
    <translation id="privateDatabase_dashboard_port_docker" qtlid="262947">SFTP port</translation>
    <translation id="privateDatabase_dashboard_port" qtlid="9034">Port</translation>
    <translation id="privateDatabase_dashboard_certificate" qtlid="19771">Certifikát</translation>
-   <translation id="privateDatabase_dashboard_certificate_tooltip" qtlid="448340">Le certificat n'est pas obligatoire pour réaliser la connexion à votre instance. Celui-ci est par contre nécessaire si vous désirez chiffrer la connexion vers celle-ci.</translation>
-   <translation id="privateDatabase_dashboard_see_certificate" qtlid="448353">Voir le certificat</translation>
+   <translation id="privateDatabase_dashboard_certificate_tooltip" qtlid="448340">Pro samotné připojení k instanci není certifikát zapotřebí. Pokud si však budete přát připojení k instanci šifrovat, budete certifikát potřebovat.</translation>
+   <translation id="privateDatabase_dashboard_see_certificate" qtlid="448353">Zobrazit certifikát</translation>
    <translation id="privateDatabase_dashboard_service_hosting_more" qtlid="325924">Prohlédněte si seznam</translation>
-   <translation id="privateDatabase_dashboard_service_hosting_linked" qtlid="444456">Hébergement web lié</translation>
+   <translation id="privateDatabase_dashboard_service_hosting_linked" qtlid="444456">Připojený webhosting</translation>
    <translation id="privateDatabase_dashboard_service_hosting_linked_none" qtlid="30646">Ne</translation>
 
    <translation id="privateDatabase_dashboard_connections_title" qtlid="250927">Přístupové údaje</translation>
@@ -73,11 +73,11 @@
    <translation id="privateDatabase_tab_LOGS" qtlid="62064">Logy</translation>
    <translation id="privateDatabase_tab_CONFIGURATION" qtlid="4406">Konfigurace</translation>
    <translation id="privateDatabase_dashboard_general_informations" qtlid="27115">Základní informace</translation>
-   <translation id="privateDatabase_configurations_select" qtlid="263481">Zvolte si typ Vaší databáze:</translation>
+   <translation id="privateDatabase_configurations_select" qtlid="263481">Zvolte typ své databáze:</translation>
 
    <translation id="privateDatabase_configurations_general_mysql" qtlid="263494">Obecné nastavení MySQL</translation>
    <translation id="privateDatabase_configurations_general_mariadb" qtlid="404668">Obecné nastavení MariaDB</translation>
-   <translation id="privateDatabase_configurations_general_redis" qtlid="448366">Configuration générale de Redis</translation>
+   <translation id="privateDatabase_configurations_general_redis" qtlid="448366">Obecné nastavení Redis</translation>
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Obecné nastavení PostgreSQL</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">Již brzy k dispozici pro PostgreSQL</translation>
 
@@ -104,7 +104,7 @@
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Počet vteřin nečinnosti během externího připojení, po jejichž uplynutí server připojení ukončí.&#13;
 </translation>
 
-   <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Cette fonctionnalité n'est pas disponible pour ce type de base de données.</translation>
+   <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Tato funkce není pro daný typ databáze k dispozici.</translation>
 
    <translation id="privateDatabase_action_changepassword" qtlid="80394">Změna hesla</translation>
    <translation id="privateDatabase_action_grants" qtlid="215715">Správa oprávnění</translation>
@@ -220,7 +220,7 @@
    <translation id="privateDatabase_change_version_step1" qtlid="217145">Na jakou verzi byste chtěli zmigrovat svůj server? Současný: {0}.</translation>
    <translation id="privateDatabase_change_version_step1_fail" qtlid="216118">Při vyhledávání dostupných verzí došlo k chybě.</translation>
    <translation id="privateDatabase_change_version_available" qtlid="216131">Dostupné verze:</translation>
-   <translation id="privateDatabase_change_version_available_select" qtlid="159046">Vybírání...</translation>
+   <translation id="privateDatabase_change_version_available_select" qtlid="159046">Zvolte...</translation>
    <translation id="privateDatabase_change_version_step2" qtlid="353374">Potvrďte prosím migraci služby Private SQL: {0} na verzi {1}.</translation>
    <translation id="privateDatabase_change_version_warn_1" qtlid="353387">Z bezpečnostních důvodů doporučujeme před migrací provést zálohu všech databází.&#13;
 &#13;
@@ -270,7 +270,7 @@
    <translation id="privateDatabase_global_actions_fail_changeFtpPassword" qtlid="216521">Při změně hesla došlo k chybě.</translation>
    <translation id="privateDatabase_global_actions_fail_refresh" qtlid="217509">Při synchronizaci Vašich dat se serverem došlo k chybě.</translation>
 
-   <translation id="privateDatabase_bdd_name" qtlid="3818">Příjmení</translation>
+   <translation id="privateDatabase_bdd_name" qtlid="3818">Název</translation>
    <translation id="privateDatabase_bdd_dumps_count" qtlid="304407">Zálohy</translation>
    <translation id="privateDatabase_bdd_dumps_none" qtlid="434291">Za posledních 30 dní nebyla odstraněna žádná databázová záloha</translation>
    <translation id="privateDatabase_bdd_creationDate" qtlid="26419">Datum vytvoření</translation>
@@ -314,9 +314,10 @@
    <translation id="privateDatabase_add_bdd_new_user_password_confirm" qtlid="300539">Potvrďte heslo</translation>
    <translation id="privateDatabase_add_bdd_new_user_password_tooltip" qtlid="300552">Mezi 8 a 31 znaky, alespoň jedno velké písmeno, jedno malé písmeno a číslo. Pouze písmena a čísla (alfanumerické znaky).</translation>
 
-   <translation id="privateDatabase_add_authorized_ip" qtlid="448392">Ajouter une adresse IP autorisée</translation>
-   <translation id="privateDatabase_add_authorized_ip_explanation" qtlid="448405">Vous n'avez pas encore d'adresse IP autorisée à accéder à vos bases de données. Entrez ici l'adresse IP du serveur auquel vous souhaitez donner accès à vos bases.</translation>
-   <translation id="privateDatabase_add_authorized_ip_description" qtlid="448418">Accès initial à la base de données</translation>
+   <translation id="privateDatabase_add_authorized_ip" qtlid="448392">Přidat autorizovanou IP adresu</translation>
+   <translation id="privateDatabase_add_authorized_ip_explanation" qtlid="448405">V současné době nemáte žádnou autorizovanou IP adresu pro přístup k Vašim databázím. Zadejte prosím IP adresu serveru, jemuž chcete přístup k databázím umožnit.</translation>
+   <translation id="privateDatabase_add_authorized_ip_description" qtlid="448418">Prvotní přístup do databáze</translation>
+   <translation id="privateDatabase_add_authorized_ip_title" qtlid="455633">IP adresa s přístupem k databázi</translation>
 
    <translation id="privateDatabase_restore_bdd_application" qtlid="404707">Nejprve je prosím vytvořte na záložce správy databází.</translation>
    <translation id="privateDatabase_restore_bdd_close" qtlid="4670">Zavřít</translation>
@@ -342,12 +343,12 @@
    <translation id="privateDatabase_tabs_dumps_restore_in_progress" qtlid="263428">Obnovení zálohy provedeno.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_success" qtlid="263441">Záloha úspěšně obnovena.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_fail" qtlid="263454">Při obnovení zálohy došlo k chybě.</translation>
-   <translation id="privateDatabase_tabs_dumps_delete" qtlid="448431">Supprimer la sauvegarde</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_title" qtlid="448444">Supprimer une sauvegarde</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_confirm" qtlid="448457">Souhaitez-vous supprimer la sauvegarde du <strong>{0}</strong> de la base de données <strong>{1}</strong> ?</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_start" qtlid="448470">La demande de suppression de la sauvegarde de base de données a été prise en compte.</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_done" qtlid="448483">La suppression de la sauvegarde de base de données a été effectuée.</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_error" qtlid="448496">Une erreur est survenue lors de la suppression de la sauvegarde de base de données.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete" qtlid="448431">Odstranit zálohu</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_title" qtlid="448444">Odstranit zálohu</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_confirm" qtlid="448457">Opravdu si přejete odstranit zálohu databáze <strong>{1}</strong> ze dne <strong>{0}</strong>?</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_start" qtlid="448470">Požadavek na odstranění databázové zálohy byl přijat.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_done" qtlid="448483">Záloha databáze byla úspěšně odstraněna.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_error" qtlid="448496">Při odstraňování databázové zálohy došlo k chybě.</translation>
 
    <translation id="privateDatabase_tabs_users_database_error" qtlid="135294">Při načítání dat došlo k chybě</translation>
    <translation id="privateDatabase_tabs_users_database_username" qtlid="7450">Uživatel</translation>
@@ -391,7 +392,7 @@
    <translation id="privateDatabase_RAM_add_do_order_attention" qtlid="108456">Pozor!</translation>
    <translation id="privateDatabase_RAM_add_do_order_warning" qtlid="304433">Operace způsobí restart serveru.</translation>
    <translation id="privateDatabase_RAM_loading_order" qtlid="221162">Načítání služeb...</translation>
-   <translation id="privateDatabase_order_RAM_finish_success" qtlid="444732">Votre <a href="{0}" target="_blank">bon de commande</a> a été généré avec succès. La quantité de RAM sera modifiée lorsque vous l'aurez validé.</translation>
+   <translation id="privateDatabase_order_RAM_finish_success" qtlid="444732">Vaše <a href="{0}" target="_blank">obejdnávka</a> byla úspěšně vytvořena. Objem RAM bude upraven po jejím potvrzení.</translation>
    <translation id="privateDatabase_order_RAM_finish_error" qtlid="181227">Při potvrzení objednávky došlo k chybě.</translation>
    <translation id="privateDatabase_order_RAM_resume" qtlid="177496">Shrnutí Vaší objednávky</translation>
    <translation id="privateDatabase_order_RAM_price_HT" qtlid="146177">Celková cena bez DPH:</translation>
@@ -401,7 +402,7 @@
    <translation id="privateDatabase_gui" qtlid="103642">Uživatelské rozhraní</translation>
    <translation id="privateDatabase_tabs_bdd_no" qtlid="220746">Žádné databáze</translation>
 
-   <translation id="privateDatabase_tab_TASK" qtlid="136217">Nedávné úkoly</translation>
+   <translation id="privateDatabase_tab_TASK" qtlid="195633">Probíhající úkoly</translation>
    <translation id="privateDatabase_tabs_tasks_name" qtlid="85509">Funkce</translation>
    <translation id="privateDatabase_tabs_tasks_startDate" qtlid="159176">Datum vytvoření</translation>
    <translation id="privateDatabase_tabs_tasks_lastUpdate" qtlid="434304">Poslední aktualizace</translation>
@@ -472,18 +473,18 @@
    <translation id="privateDatabase_order_sql_type_premium_label" qtlid="72845">SQL Private</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_title" qtlid="353491">Výhody Private SQL:</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_line_1" qtlid="404811">Neomezený počet databází</translation>
-   <translation id="privateDatabase_order_sql_type_premium_info_line_2" qtlid="353517">Garantovaná RAM o velikosti 256 MB až 2 GB</translation>
+   <translation id="privateDatabase_order_sql_type_premium_info_line_2" qtlid="455646">Garantovaná RAM {0} až {1}</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_line_3" qtlid="353530">Automatické zálohy na denní bázi</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_line_4" qtlid="404824">Až 200 simultánních připojení</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_line_5" qtlid="404837">Přístupné pouze z Vašeho OVH webhostingu</translation>
-   <translation id="privateDatabase_order_sql_type_premium_info_line_6" qtlid="404850">Garantovaný diskový prostor o velikosti 4 GB až 32 GB</translation>
+   <translation id="privateDatabase_order_sql_type_premium_info_line_6" qtlid="455659">Garantovaný diskový prostor 8 GB až 64 GB</translation>
 
    <translation id="privateDatabase_order_sql_type_dbaas_label" qtlid="404863">CloudDB</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_title" qtlid="404876">Parametry CloudDB:</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_line_1" qtlid="404889">Přístupné pouze z veřejné sítě</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_line_2" qtlid="404811">Neomezený počet databází</translation>
-   <translation id="privateDatabase_order_sql_type_dbaas_info_line_3" qtlid="353517">Garantovaná RAM o velikosti 256 MB až 2 GB</translation>
-   <translation id="privateDatabase_order_sql_type_dbaas_info_line_4" qtlid="404850">Garantovaný diskový prostor o velikosti 4 GB až 32 GB</translation>
+   <translation id="privateDatabase_order_sql_type_dbaas_info_line_3" qtlid="455646">Garantovaná RAM {0} až {1}</translation>
+   <translation id="privateDatabase_order_sql_type_dbaas_info_line_4" qtlid="455659">Garantovaný diskový prostor 8 GB až 64 GB</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_line_5" qtlid="353530">Automatické zálohy na denní bázi</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_line_6" qtlid="404824">Až 200 simultánních připojení</translation>
 
@@ -582,15 +583,15 @@
    <translation id="privateDatabase_tabs_logs_list_no_logs" qtlid="413388">Aktuálně nejsou k dispozici žádné logy</translation>
 
 <!-- OOM -->
-   <translation id="privateDatabase_no_oom" qtlid="440313">Aucun dépassement mémoire à signaler.</translation>
-   <translation id="privateDatabase_warning_oom" qtlid="440326">{0} dépassements mémoire ont eu lieu récemment.</translation>
-   <translation id="privateDatabase_modale_oom_title" qtlid="436957">Překročení kapacity RAM</translation>
-   <translation id="privateDatabase_modale_oom_confirm_button" qtlid="440339">Commander plus de RAM</translation>
+   <translation id="privateDatabase_no_oom" qtlid="440313">Nebylo zaznamenáno žádné přetečení paměti.</translation>
+   <translation id="privateDatabase_warning_oom" qtlid="440326">Počet případů přetečení paměti v poslední době: {0}</translation>
+   <translation id="privateDatabase_modale_oom_title" qtlid="436957">Přetečení paměti RAM</translation>
+   <translation id="privateDatabase_modale_oom_confirm_button" qtlid="440339">Objednat více RAM</translation>
    <translation id="privateDatabase_modale_oom_close_button" qtlid="4670">Zavřít</translation>
-   <translation id="privateDatabase_modale_oom_info" qtlid="440352">Dépassements de la mémoire vive survenus ces {0} derniers jours.<br />Seuls les {1} derniers dépassements sont disponibles.</translation>
+   <translation id="privateDatabase_modale_oom_info" qtlid="440352">V posledních {0} dnech došlo k přetečení paměti.<br />K dispozici je pouze posledních {1} přetečení.</translation>
    <translation id="privateDatabase_modale_oom_tab_event_date" qtlid="24523">Datum</translation>
-   <translation id="privateDatabase_modale_oom_tab_size_reached" qtlid="436983">Překročený objem</translation>
-   <translation id="privateDatabase_modale_oom_tab_uptime" qtlid="436996">Čas od posledního překročení</translation>
+   <translation id="privateDatabase_modale_oom_tab_size_reached" qtlid="436983">Přetečený objem</translation>
+   <translation id="privateDatabase_modale_oom_tab_uptime" qtlid="436996">Čas od posledního přetečení</translation>
    <translation id="privateDatabase_modale_oom_no_oom" qtlid="437009">Kapacita RAM nebyla překročena.</translation>
    <translation id="privateDatabase_modale_oom_info_order" qtlid="437022">Za účelem vyhnutí se podobným situacím doporučujeme provést navýšení objemu RAM na službě {0}.</translation>
 
@@ -599,7 +600,7 @@
    <translation id="privateDatabase_tabs_list_extensions_title" qtlid="341927">Rozšíření</translation>
    <translation id="privateDatabase_tabs_list_extensions_extension" qtlid="94231">Přípona</translation>
    <translation id="privateDatabase_tabs_list_extensions_description" qtlid="9238">Popis</translation>
-   <translation id="privateDatabase_tabs_list_extensions_status" qtlid="26443">Stav</translation>
+   <translation id="privateDatabase_tabs_list_extensions_enabled" qtlid="55133">Aktivní</translation>
 
 <!-- INFOS -->
    <translation id="privateDatabase_tabs_list_go_extensions" qtlid="437035">Zobrazit rozšíření</translation>

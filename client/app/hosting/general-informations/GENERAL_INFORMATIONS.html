@@ -1,6 +1,6 @@
 <div class="container-fluid px-0" data-ng-controller="GeneralInformationsCtrl as ctrl">
 
-    <oui-loader data-ng-if="!hosting"></oui-loader>
+    <oui-spinner data-ng-if="!hosting"></oui-spinner>
 
     <div class="row" data-ng-show="hosting">
         <div class="col-md-9">
@@ -155,7 +155,7 @@
                                                       data-tooltip-placement="bottom">
                                                 </span>
                                                 <div class="d-inline ml-2" data-ng-if="ovhConfig.taskPending">
-                                                    <oui-loader size="s" inline="true"></oui-loader>
+                                                    <oui-spinner data-size="s"></oui-spinner>
                                                 </div>
                                                 <span class="help-inside ml-2"
                                                       data-ng-if="ovhConfig.taskPendingError"
@@ -182,7 +182,7 @@
                                                 <span class="ml-2"
                                                       data-ng-if="ssl && ssl.status === 'creating' || ssl.status === 'deleting' || ssl.status === 'regenerating'"
                                                       data-uib-tooltip="{{tr('hosting_dashboard_service_ssl_' + ssl.status)}}">
-                                                    <oui-loader size="s" inline="true"></oui-loader>
+                                                    <oui-spinner data-size="s"></oui-spinner>
                                                 </span>
                                             </div>
                                             <div class="ml-auto mb-auto" style="position: relative"
@@ -224,7 +224,7 @@
                                                         data-i18n-static="hosting_dashboard_service_cdn"></strong>
                                                 <span class="mr-2"
                                                       data-ng-bind="hosting.hasCdn ? i18n.common_yes : i18n.common_no"></span>
-                                                <oui-loader size="s" inline="true" data-ng-if="flushCdnState === 'check'"></oui-loader>
+                                                <oui-spinner data-size="s" data-ng-if="flushCdnState === 'check'"></oui-spinner>
                                                 <span class="label label-info"
                                                       data-i18n-static="hosting_dashboard_service_flush_cdn_doing"
                                                       data-ng-if="flushCdnState === 'doing'"></span>
@@ -361,7 +361,7 @@
                 <div class="text-center"
                      data-ng-class="{'mb-5': screenshot}"
                      data-ng-if="!hosting.isExpired">
-                    <oui-loader inline="true" data-ng-if="loadingScreenshot"></oui-loader>
+                    <oui-spinner data-ng-if="loadingScreenshot"></oui-spinner>
                     <a class="oui-box oui-box_light d-block p-0 text-truncate" target="_blank" title="{{hosting.serviceName}} ({{i18n.common_newtab}})"
                        data-ng-href="http://{{hosting.serviceName}}"
                        data-ng-if="!loadingScreenshot && screenshot">

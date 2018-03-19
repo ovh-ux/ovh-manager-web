@@ -12,7 +12,7 @@
    <translation id="domains_dashboard_table_titles_dnssec" qtlid="184529">DNSSEC</translation>
    <translation id="domains_dashboard_table_titles_dnsanycast" qtlid="135671">DNS Anycast</translation>
    <translation id="domains_dashboard_table_empty" qtlid="140664">No hay ningún dominio que se ajuste a sus criterios</translation>
-   <translation id="domains_dashboard_table_noresult" qtlid="433680">No tiene ningún dominio en el que realizar acciones</translation>
+   <translation id="domains_dashboard_table_noresult" qtlid="433680">No tiene ningún dominio en el que realizar acciones.</translation>
    <translation id="domains_dashboard_message_see_more" qtlid="140677">Ver el detalle de los errores</translation>
    <translation id="domains_dashboard_table_dnssec_status_DISABLE_IN_PROGRESS" qtlid="148487">Desactivando</translation>
    <translation id="domains_dashboard_table_dnssec_status_ENABLE_IN_PROGRESS" qtlid="148474">Activando...</translation>
@@ -23,7 +23,7 @@
    <translation id="domains_dashboard_tooltip_whois_multiples" qtlid="143121">Configurar el WHOIS de los dominios seleccionados</translation>
    <translation id="domains_dashboard_tooltip_dnssec_multiples" qtlid="184542">Configurar DNSSEC de los dominios seleccionados</translation>
    <translation id="domains_dashboard_tooltip_export_csv" qtlid="231682">Exportar los dominios en formato CSV</translation>
-   <translation id="domains_dashboard_tooltip_export_csv_expl" qtlid="273046">La exportación de sus dominios puede tardar algunos minutos, en función de la cantidad de dominios que posea. Durante la operación, podrá utilizar su área de cliente Web con normalidad. La descargará se realizará automáticamente. </translation>
+   <translation id="domains_dashboard_tooltip_export_csv_expl" qtlid="273046">La exportación de sus dominios puede tardar unos minutos, en función de la cantidad de dominios que posea. Durante la operación, podrá utilizar el área de cliente Web con normalidad. La descargará se realizará automáticamente.</translation>
    <translation id="domains_dashboard_tooltip_export_csv_expl2" qtlid="273453">Los dominios MX Plan no se exportarán. </translation>
    <translation id="domains_dashboard_tooltip_export_csv_confirm" qtlid="298378">¿Seguro que quiere exportar los dominios en formato CSV?</translation>
    <translation id="domains_dashboard_tooltip_export_csv_success" qtlid="231734">La exportación de los dominios ha finalizado</translation>
@@ -38,7 +38,7 @@
    <translation id="domains_dashboard_button_dnssec" qtlid="184581">Configurar DNSSEC</translation>
    <translation id="domains_dashboard_button_export" qtlid="231773">Exportar en CSV</translation>
    <translation id="domains_change_owner" qtlid="267240">Cambiar de propietario</translation>
-   <translation id="domains_dashboard_csv_file_created" qtlid="372230">El archivo se ha creado correctamente. Si la descarga no comienza, puede <a target="_blank" href="{0}">descargarlo manualmente</a>.</translation>
+   <translation id="domains_dashboard_csv_file_created" qtlid="372230">El archivo se ha creado correctamente. Si la descarga no comienza, puede <a target="_blank" href="{0}" download>descargarlo manualmente</a>.</translation>
    <translation id="domains_configuration_renew_title" qtlid="140690">Renovar mis dominios</translation>
    <translation id="domains_configuration_renew_step1_question" qtlid="140703">Para renovar sus dominios, debe utilizar la interfaz de renovación OVH (fuera del área de cliente Web).</translation>
    <translation id="domains_configuration_renew_step1_unable_to_renew" qtlid="140716">Debido a que usted no es el contacto de facturación, no puede renovar algunos de los dominios seleccionados (<span class="italic">{0}</span>).</translation>
@@ -56,7 +56,7 @@
    <translation id="domains_configuration_whois_step1_hide" qtlid="97136">Ocultar</translation>
    <translation id="domains_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
    <translation id="domains_configuration_whois_step1_helpwizard_desc" qtlid="329499">Cuando se registra un dominio, se solicita información personal que por defecto es publicada en la base de datos WHOIS, que es pública.<br/>Esta función le permite ocultar esa información si lo desea.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis" qtlid="130099">¿Qué es el WHOIS?</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatis" qtlid="130099">¿Qué es el Whois?</translation>
    <translation id="domains_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">El WHOIS es un servicio público para la búsqueda de información relativa a los dominios y direcciones IP. Esta base de datos incluye, entre otros datos, información sobre los titulares. </translation>
    <translation id="domains_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">¿Qué datos se publican en el WHOIS?</translation>
    <translation id="domains_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329512">La información publicada es la del propietario del dominio. Depende de la extensión del dominio, pero por lo general incluye:<ul><li>dirección</li><li>números de teléfono y fax</li><li>dirección de correo electrónico</li></ul><br/>Es posible configurar si desea ocultar o mostrar estos tres datos por separado.</translation>
@@ -94,7 +94,7 @@
    <translation id="domains_configuration_dnssec_batch_step1_status_true" qtlid="184620">Activar DNSSEC en los dominios seleccionados</translation>
    <translation id="domains_configuration_dnssec_batch_step1_status_false" qtlid="184633">Desactivar DNSSEC en los dominios seleccionados</translation>
    <translation id="domains_configuration_dnssec_batch_step1_help_title" qtlid="184529">DNSSEC</translation>
-   <translation id="domains_configuration_dnssec_batch_step1_help_content" qtlid="184724">El protocolo DNSSEC protege los intercambios DNS mediante un mecanismo de firma criptográfica asimétrica. Las respuestas DNS se autentifican utilizando una pareja de claves: una pública que permite comprobar si la firma es válida y otra privada que sirve para firmar la zona DNS asociada al dominio.<br/><br/>De esta forma, si un hacker intentase contaminar el servidor DNS, los resolver no se lo permitirían, al no disponer este de la firma válida asociada a la zona DNS.<br/><br/>No obstante, este sistema tiene limitaciones ya que, a día de hoy, no todos los resolvers DNS de los proveedores de acceso a internet comprueban la validez de las respuestas firmadas por DNSSEC, aunque el DNS sigue funcionando sin estos mecanismos de autentificación.</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_help_content" qtlid="184724">El protocolo DNSSEC protege los intercambios DNS mediante un mecanismo de firma criptográfica asimétrica. Las respuestas DNS se autentifican utilizando una pareja de claves: una pública que permite comprobar si la firma es válida y otra privada que sirve para firmar la zona DNS asociada al dominio.<br/><br/>De esta forma, si un hacker intentase contaminar el servidor DNS, los resolvers no se lo permitirían, al no disponer este de la firma válida asociada a la zona DNS.<br/><br/>No obstante, este sistema tiene limitaciones ya que, a día de hoy, no todos los resolvers DNS de los proveedores de acceso a internet comprueban la validez de las respuestas firmadas por DNSSEC, aunque el DNS sigue funcionando sin estos mecanismos de autentificación.</translation>
    <translation id="domains_configuration_dnssec_batch_step1_help_more" qtlid="44536">Más información</translation>
    <translation id="domains_configuration_dnssec_batch_step2_question" qtlid="184646">¿Seguro que quiere aplicar el siguiente cambio en los dominios seleccionados?</translation>
    <translation id="domains_configuration_dnssec_batch_step2_status_true" qtlid="184659">Activar DNSSEC</translation>
@@ -153,7 +153,7 @@
    <translation id="domains_action_export_csv_form_creation_date_label" qtlid="26419">Fecha de creación</translation>
    <translation id="domains_action_export_csv_form_creation_date_help" qtlid="273098">Incluir la fecha de creación del dominio </translation>
    <translation id="domains_action_export_csv_form_expiration_date_label" qtlid="273111">Fecha de expiración</translation>
-   <translation id="domains_action_export_csv_form_expiration_date_help" qtlid="273124">Incluir la fecha de caducidad del dominio </translation>
+   <translation id="domains_action_export_csv_form_expiration_date_help" qtlid="273124">Incluir la fecha de expiración del dominio </translation>
    <translation id="domains_action_export_csv_form_service_display_name_label" qtlid="273137">Nombre de dominio UTF-8</translation>
    <translation id="domains_action_export_csv_form_service_display_name_help" qtlid="273150">Incluir el nombre de dominio UTF-8</translation>
    <translation id="domains_action_export_csv_form_whois_fields_label" qtlid="273163">Servicio OWO</translation>
@@ -161,7 +161,7 @@
    <translation id="domains_action_export_csv_form_dnssec_label" qtlid="184529">DNSSEC</translation>
    <translation id="domains_action_export_csv_form_dnssec_help" qtlid="273189">Incluir el estado de la delegación segura </translation>
    <translation id="domains_action_export_csv_form_dnsanycast_label" qtlid="135671">DNS Anycast</translation>
-   <translation id="domains_action_export_csv_form_dnsanycast_help" qtlid="448054">Inclure l'état d'activation de la solution DNS Anycast</translation>
+   <translation id="domains_action_export_csv_form_dnsanycast_help" qtlid="448054">Incluir el estado de activación de la solución DNS Anycast</translation>
    <translation id="domains_action_export_csv_form_nic_billing_label" qtlid="273202">Contacto de facturación </translation>
    <translation id="domains_action_export_csv_form_nic_billing_help" qtlid="273215">Incluir el contacto de facturación </translation>
    <translation id="domains_action_export_csv_form_nic_tech_label" qtlid="273228">Contacto técnico </translation>

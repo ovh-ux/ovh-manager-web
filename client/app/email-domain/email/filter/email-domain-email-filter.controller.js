@@ -17,9 +17,6 @@ angular.module("App").controller(
 
         $onInit () {
             this.currentAccount = this.$scope.ctrlEmailDomainEmail.currentViewData || null;
-            this.loading = {
-                filters: false
-            };
 
             this.$scope.$on("hosting.tabs.emails.filters.refresh", () => this.refreshTableFilters());
 
@@ -27,26 +24,15 @@ angular.module("App").controller(
         }
 
         refreshTableFilters () {
-            this.loading.filters = true;
             this.filters = null;
 
-            return this.Emails
-                .getFilters(this.$stateParams.productId, this.currentAccount.accountName)
-                .then((data) => (this.filters = data.sort()))
-                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_filters_error"), err, this.$scope.alerts.main))
-                .finally(() => {
-                    if (_.isEmpty(this.filters)) {
-                        this.loading.filters = false;
-                    }
-                });
+            return this.Emails.getFilters(this.$stateParams.productId, this.currentAccount.accountName)
+                .then((data) => { this.filters = data.map((name) => ({ name })); })
+                .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_filters_error"), err, this.$scope.alerts.main));
         }
 
-        transformItem (item) {
-            return this.Emails.getFilter(this.$stateParams.productId, this.currentAccount.accountName, item);
-        }
-
-        onTransformItemDone () {
-            this.loading.filters = false;
+        transformItem ({ name }) {
+            return this.Emails.getFilter(this.$stateParams.productId, this.currentAccount.accountName, name);
         }
     }
 );

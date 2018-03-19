@@ -33,7 +33,7 @@
    <translation id="domain_dashboard_add_uk_tags_title" qtlid="328823">Please enter the outgoing transfer tag for the <strong>{0}</strong> domain </translation>
    <translation id="domain_dashboard_add_uk_tags_label" qtlid="270423">Outgoing transfer TAG</translation>
    <translation id="domain_dashboard_add_uk_tags_success" qtlid="270449">The outgoing transfer TAG has been sent successfully. </translation>
-   <translation id="domain_dashboard_add_uk_tags_error" qtlid="299384">There was an error:</translation>
+   <translation id="domain_dashboard_add_uk_tags_error" qtlid="299384">An error has occurred:</translation>
    <translation id="domain_dashboard_add_uk_tags_pattern_error" qtlid="270462">The TAG must only contain letters, numbers and -</translation>
    <translation id="domain_dashboard_add_uk_tags_maxlength_error" qtlid="270475">The TAG must not exceed 50 characters</translation>
 
@@ -51,7 +51,7 @@
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">Anycast DNS is a powerful solution that accelerates the normal operation of DNS servers to provide  better response time during the first hits to your website.</translation>
    <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Publicly accessible database containing personal information related to your domain.</translation>
    <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Service allowing you to translate your domain name to an IP address (e.g. indicating the location data of your site).</translation>
-   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">Un délai de propagation de 48h est nécessaire suite à votre dernière modification.</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">You will need to wait 48 hours for your most recent modification to propagate.</translation>
    <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">The DNS servers used primarily to change your domain to an IP address.</translation>
    <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Redirects users to an existing site.</translation>
    <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">If the primary DNSs fail, they ensure that your site remains accessible.</translation>
@@ -127,9 +127,9 @@
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Do you really want to reset the DNS servers' configuration? In doing so you will reset the current configuration and switch back to OVH name servers. </translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">The DNS server reset request has been taken into account. </translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Error while requesting the DNS server reset.</translation>
-   <translation id="domain_tab_DNS_update_success" qtlid="447989">La modification des DNS a bien été prise en compte. Un délai de 48h est nécessaire pour la propagation aux autres DNS.</translation>
+   <translation id="domain_tab_DNS_update_success" qtlid="447989">The DNS modification has been processed. You will need to wait 48 hours for the modifications to propragate in other DNS servers.</translation>
    <translation id="domain_tab_DNS_update_error" qtlid="284854">An error occurred on modifying DNS. </translation>
-   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Réinitialiser les serveurs DNS : non disponible en cas d'activation de DNSSEC</translation>
+   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Reset DNS servers: unavailable if DNSSEC is enabled</translation>
    <translation id="domain_tab_DNS_save" qtlid="284867">Apply configuration </translation>
    <translation id="domain_tab_DNS_reset" qtlid="284880">Reset configuration </translation>
    <translation id="domain_tab_DNS_cancel" qtlid="172280">Cancel modifications</translation>
@@ -206,7 +206,7 @@
    <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Are you sure you want to remove this GLUE record ?</translation>
    <translation id="domain_tab_GLUE_delete_success" qtlid="262553">GLUE record will be deleted in a few minutes.</translation>
    <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Error when removing the GLUE record.</translation>
-   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Attention, après validation et afin que votre enregistrement GLUE fonctionne, vous devrez modifier votre zone DNS en ajoutant :<ul><li>un champ de type A pour une adresse IPv4,</li><li>un champ de type AAAA pour une adresse IPv6.</li></ul></translation>
+   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Important - after validation, you must modify your DNS zone by adding:<ul><li>an A record for an IPv4 address,</li><li>and an AAAA field for anIPv6 address.</li></ul> You must do this for your glue record to function.</translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Sub-domain</translation>
    <translation id="domain_tab_ZONE" qtlid="45976">DNS zone </translation>
@@ -246,11 +246,11 @@
    <translation id="domain_tab_ZONE_default_ttl_default_value_conditions" qtlid="328888">The value must be a whole number between <strong>{0}</strong> and <strong>{1}</strong>.</translation>
 
    <translation id="domain_configuration_dns_config" qtlid="270592">Modify DNS servers</translation>
-   <translation id="domain_configuration_add_subdomain" qtlid="95167">Add a sub-domain</translation>
+   <translation id="domain_configuration_add_subdomain" qtlid="95167">Add subdomain</translation>
    <translation id="domain_configuration_order_alldom" qtlid="288990">Order an allDom pack </translation>
    <translation id="domain_configuration_add_subdomain_subdomain" qtlid="265327">sub-domain</translation>
    <translation id="domain_configuration_add_subdomain_tip" qtlid="265340">If you leave this field empty, the configuration will apply directly to the domain name</translation>
-   <translation id="domain_configuration_add_subdomain_error" qtlid="213765">Invalid sub-domain.</translation>
+   <translation id="domain_configuration_add_subdomain_error" qtlid="213765">Invalid subdomain.</translation>
    <translation id="domain_configuration_add_subdomain_iwant" qtlid="265353">I want: </translation>
    <translation id="domain_configuration_add_subdomain_redir" qtlid="265366">Add a redirection </translation>
    <translation id="domain_configuration_add_subdomain_redir_sample" qtlid="265379">Example: test.mytest.com redirects to test.mytest.uk</translation>
@@ -306,21 +306,21 @@
    <translation id="domain_configuration_whois_step1_helpwizard_desc" qtlid="329005">When you register a domain name, you will be asked for personal details. These are published by default in the WHOIS database, which is publicly accessible. <br/>This function lets you hide information if you wish to. </translation>
    <translation id="domain_configuration_whois_step1_helpwizard_whatis" qtlid="130099">What is WHOIS?</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">WHOIS is a public search facility for information on domain names and IP addresses. This database mainly consists of information on the owners. </translation>
-   <translation id="domain_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">What information is published in the WHOIS?</translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">What information is published in WHOIS?</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329018">The details published are the domain name owner's. They depend on the domain name extension, but in general they will be :<ul><li>their address</li><li>Their phone and fax number</li><li>Their e-mail</li></ul><br/>All three pieces of information can be masked.</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_how" qtlid="130135">How does OVH enable you to hide this information?</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_how_desc" qtlid="329031">If you enable this service, OVH will replace your personal information with generic information. However you will stay contactable.<ul><li>The address field is replaced with an OVH address and we send the emails to the real recipient. </li><li>The telephone and fax fields are replaced by an OwO number.</li><li>The email field is replaced by a redirection which points towards the owner's email address. This address is regenerated regularly and an anti-SPAM filter is applied.</li></ul></translation>
    <translation id="domain_configuration_whois_field_ADDRESS" qtlid="30430">Address</translation>
    <translation id="domain_configuration_whois_field_EMAIL" qtlid="33598">Email</translation>
    <translation id="domain_configuration_whois_field_PHONE" qtlid="128214">Phone/Fax</translation>
-   <translation id="domain_configuration_whois_step2_alert" qtlid="128226">Please note that the WHOIS data will be updated in a few hours. </translation>
+   <translation id="domain_configuration_whois_step2_alert" qtlid="128226">Please note that the WHOIS data will take a few hours to update.</translation>
    <translation id="domain_configuration_whois_step2_old_configuration" qtlid="128238">Previous configuration</translation>
    <translation id="domain_configuration_whois_step2_new_configuration" qtlid="128250">New configuration</translation>
-   <translation id="domain_configuration_whois_step2_question" qtlid="128262">Do you really want to apply the following modifications when displaying WHOIS information?</translation>
+   <translation id="domain_configuration_whois_step2_question" qtlid="128262">Are you sure you want to apply the following modifications for displaying WHOIS information?</translation>
    <translation id="domain_configuration_whois_step2_activated" qtlid="128274">Hidden</translation>
    <translation id="domain_configuration_whois_step2_desactivated" qtlid="128286">Displayed</translation>
    <translation id="domain_configuration_whois_success" qtlid="128298">Your modification request related to WHOIS information has been taken into account.</translation>
-   <translation id="domain_configuration_whois_fail" qtlid="128310">Error when requesting WHOIS information modification.</translation>
+   <translation id="domain_configuration_whois_fail" qtlid="128310">An error has occurred requesting WHOIS information modification.</translation>
    <translation id="domain_configuration_whois_contracts" qtlid="329044">To enable WHOIS information, you must accept the terms and conditions. <a href="#/useraccount/agreements">Access terms and conditions</a>.</translation>
 
    <translation id="domain_exemple" qtlid="182475">E.g.</translation>
@@ -368,10 +368,10 @@
    <translation id="domain_tab_REDIRECTION_add_www" qtlid="213726">(www.)</translation>
    <translation id="domain_tab_REDIRECTION_add_title" qtlid="213739">Add a redirection</translation>
 
-   <translation id="domain_tab_REDIRECTION_add_step1" qtlid="213752">What do you want to redirect? Please enter the sub-domain name or leave it blank to redirect the domain:</translation>
+   <translation id="domain_tab_REDIRECTION_add_step1" qtlid="213752">What do you want to redirect? Please enter the subdomain name, or leave it blank to redirect the domain:</translation>
    <translation id="domain_tab_REDIRECTION_add_step1_label" qtlid="296622">Sub-domain name </translation>
-   <translation id="domain_tab_REDIRECTION_add_step1_subdomain_error" qtlid="213765">Invalid sub-domain.</translation>
-   <translation id="domain_tab_REDIRECTION_add_step1_www" qtlid="213778">Redirect too</translation>
+   <translation id="domain_tab_REDIRECTION_add_step1_subdomain_error" qtlid="213765">Invalid subdomain.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step1_www" qtlid="213778">Also redirect</translation>
 
    <translation id="domain_tab_REDIRECTION_add_step2" qtlid="329135">What type of target do you want to redirect <b>{0}</b> {1} to?</translation>
    <translation id="domain_tab_REDIRECTION_add_step2_web" qtlid="213804">to a web address</translation>
@@ -542,7 +542,7 @@
 
    <translation id="domain_configuration_dns_entry_add_ipv4" qtlid="101781">IPv4</translation>
    <translation id="domain_configuration_dns_entry_add_ipv6" qtlid="34126">IPv6</translation>
-   <translation id="domain_configuration_dns_entry_add_host" qtlid="192201">Name of host</translation>
+   <translation id="domain_configuration_dns_entry_add_host" qtlid="192201">Host name</translation>
    <translation id="domain_configuration_dns_entry_add_value" qtlid="47548">Value</translation>
    <translation id="domain_configuration_dns_entry_add_format" qtlid="5846">Format</translation>
    <translation id="domain_configuration_dns_entry_add_ttl" qtlid="121747">TTL</translation>
@@ -618,6 +618,8 @@
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Alignment mode for SPF</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_r" qtlid="435226">Relaxed</translation>
    <translation id="domain_configuration_dns_entry_add_dmarc_aspf_s" qtlid="435239">Strict</translation>
+   <translation id="domain_configuration_dns_entry_add_caa_flags" qtlid="316268">Indicator </translation>
+   <translation id="domain_configuration_dns_entry_add_caa_tag" qtlid="96944">Tag</translation>
 
    <translation id="domain_configuration_dns_entry_add_target_ipv4_valid" qtlid="192591">The target must be a valid IPv4.</translation>
    <translation id="domain_configuration_dns_entry_add_target_ipv6_valid" qtlid="192604">The target must be a valid IPv6.</translation>
@@ -654,7 +656,7 @@
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM" qtlid="50062">Personalised</translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS" qtlid="366450">OVH email server </translation>
    <translation id="domain_configuration_zonedns_reset_type_EMAILS_filter" qtlid="50230">Protection</translation>
-   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Séléctionnez...</translation>
+   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Select...</translation>
    <translation id="domain_configuration_zonedns_reset_type_HOSTING_WEB_placeholder" qtlid="217132">Select...</translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label" qtlid="366463">Enter A record: </translation>
    <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label_MX" qtlid="366476">Enter an MX record and set its priority: </translation>
@@ -665,7 +667,7 @@
    <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">Webs hosting IP address </translation>
 
    <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Do you want to delete the DNS zone? </translation>
-   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">Votre zone DNS ne peut être supprimée car elle est actuellement liée à un hébergement Web.</translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">Your DNS zone cannot be deleted as it is currently linked to a website.</translation>
    <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Warning! This will permanently delete all the existing DNS records.</translation>
    <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">Deletion of the DNS zone has begun, to complete the request please follow the instructions in the email sent to the DNS zone's administrator account. </translation>
    <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">An error when deleting the DNS zone. </translation>
@@ -708,8 +710,8 @@
    <translation id="domain_order_start10M_choose_duration" qtlid="225408">Select the duration of your Start 10M plan.</translation>
    <translation id="domain_order_start10M_duration_choosed" qtlid="225421">Click "Next" to continue.</translation>
    <translation id="domain_order_start10M_contract_accept" qtlid="225434">Please read and accept the terms and conditions below, and click "Next".</translation>
-   <translation id="domain_order_hosting_price_HT" qtlid="146177">Total price excl. taxes:</translation>
-   <translation id="domain_order_hosting_price_TTC" qtlid="146190">Total price incl. taxes:</translation>
+   <translation id="domain_order_hosting_price_HT" qtlid="146177">Sub-total:</translation>
+   <translation id="domain_order_hosting_price_TTC" qtlid="146190">Total price:</translation>
    <translation id="domain_order_hosting_mx_explain" qtlid="227572">Please note: when you activate this solution, your DNS zone's MX records will automatically be replaced by OVH's default MX records.</translation>
    <translation id="domain_order_hosting_finish_explain" qtlid="233248">Click "Confirm" to activate your web hosting package. </translation>
    <translation id="domain_order_hosting_finish_error" qtlid="181227">An error occurred while creating the order confirmation.</translation>
@@ -719,7 +721,7 @@
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Your order has been confirmed. Click <a href="#/billing/orders">here to track the progress of your order</a>.</translation>
 
    <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
-   <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST vous permet de faire pointer un sous-domaine vers une adresse IP dynamique qui sera mise à jour dans votre zone DNS à chaque changement de celle-ci.</translation>
+   <translation id="domain_tab_DYNHOST_title" qtlid="448041">With DynHost, you can point a subdomain to a dynamic IP address that will be updated in your DNS each time it changes.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">The {0} domain name does not have a DNS zone.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">There was an error: </translation>
    <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>
@@ -747,7 +749,7 @@
    <translation id="domain_tab_DYNHOST_delete_success" qtlid="226605">The DynHost entry has been deleted.</translation>
 
    <translation id="domain_tab_DYNHOST_add_title" qtlid="226618">Create a DynHost</translation>
-   <translation id="domain_tab_DYNHOST_add_subDomain" qtlid="99776">Sub-domain:</translation>
+   <translation id="domain_tab_DYNHOST_add_subDomain" qtlid="99776">Subdomain:</translation>
    <translation id="domain_tab_DYNHOST_add_target_ip" qtlid="226631">Enter the current target IP. It will then be updated dynamically.</translation>
    <translation id="domain_tab_DYNHOST_add_step1" qtlid="226644">Add a DynHost entry to the DNS zone</translation>
    <translation id="domain_tab_DYNHOST_add_success" qtlid="226657">The DynHost entry has been added.</translation>

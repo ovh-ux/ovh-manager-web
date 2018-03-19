@@ -13,11 +13,6 @@ angular.module("App").controller(
             const statusToWatch = ["start", "done", "error"];
             this.serviceName = this.$stateParams.productId;
 
-            this.loader = false;
-
-            this.updatingWhitelist = [];
-            this.whitelistsDetail = [];
-
             this.getList();
 
             this.privateDatabaseService.restartPoll(this.serviceName, ["whitelist/delete", "whitelist/create"]);
@@ -26,6 +21,7 @@ angular.module("App").controller(
                 this.$scope.$on(`privateDatabase.whitelist.create.${state}`, this[`onWhitelistCreate${state}`].bind(this));
                 this.$scope.$on(`privateDatabase.whitelist.delete.${state}`, this[`onWhitelistDelete${state}`].bind(this));
             });
+            this.$scope.$on("privateDatabase.whitelist.update.done", (opts) => opts.serviceName === this.serviceName ? this.getList() : undefined);
 
             _.forEach(["done", "error"], (state) => {
                 this.$scope.$on(`privateDatabase.global.actions.${state}`, (e, taskOpt) => {
@@ -39,29 +35,15 @@ angular.module("App").controller(
         }
 
         getList () {
-            this.loader = true;
-            this.whitelistIds = null;
+            this.whitelistIps = null;
 
             return this.whitelistService
                 .getWhitelistIds(this.serviceName)
                 .then((res) => {
-                    this.whitelistIds = res;
-                    return res;
+                    this.whitelistIps = res.map((id) => ({ id }));
+                    return this.whitelistIps;
                 })
-                .catch((err) => this.alerter.error(err))
-                .finally(() => {
-                    if (_.isEmpty(this.whitelistIds)) {
-                        this.loader = false;
-                    }
-                });
-        }
-
-        isLoading () {
-            return this.loader && this.updatingWhitelist.length === 0;
-        }
-
-        isWhitelistEmpty () {
-            return !this.loader && this.updatingWhitelist.length === 0 && this.whitelistIds.length === 0;
+                .catch((err) => this.alerter.error(err));
         }
 
         createWhitelist () {
@@ -76,40 +58,34 @@ angular.module("App").controller(
             this.$scope.setAction("whitelist/delete/private-database-whitelist-delete", whitelist);
         }
 
-        transformItem (whitelistId) {
-            return this.whitelistService.getWhitelist(this.serviceName, whitelistId).catch((err) => this.alerter.error(err));
-        }
-
-        onTransformItemDone () {
-            this.loader = false;
+        transformItem (whitelist) {
+            return this.whitelistService.getWhitelist(this.serviceName, whitelist.id).catch((err) => this.alerter.error(err));
         }
 
         /*
             POLLING
         */
         onWhitelistCreatestart (evt, opts) {
-            this.updatingWhitelist.push(opts.whitelistIp);
+            this.whitelistIps.push({ ip: opts.whitelistIp, creating: true, name: "" });
         }
 
-        onWhitelistCreatedone (evt, opts) {
-            this.updatingWhitelist = _.remove(this.updatingWhitelist, (whitelistIp) => whitelistIp !== opts.whitelistIp);
+        onWhitelistCreatedone () {
             this.getList();
         }
 
-        onWhitelistCreateerror (evt, opts) {
-            this.updatingWhitelist = _.remove(this.updatingWhitelist, (whitelistIp) => whitelistIp !== opts.whitelistIp);
+        onWhitelistCreateerror () {
             this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_add_fail"), this.$scope.alerts.main);
+            this.getList();
         }
 
         onWhitelistDeletestart (evt, opts) {
             let unregister = null;
 
             const todo = () => {
-                const el = _.find(this.whitelistsDetail, (whitelist) => whitelist.ip === opts.whitelistIp);
+                const el = _.find(this.whitelistIps, (whitelist) => whitelist.ip === opts.whitelistIp);
 
                 if (el) {
-                    el.status = "deleting";
-                    el.waitDelete = true;
+                    el.deleting = true;
 
                     if (unregister) {
                         unregister();
@@ -117,10 +93,10 @@ angular.module("App").controller(
                 }
             };
 
-            if (this.whitelistsDetail && this.whitelistsDetail.length) {
+            if (this.whitelistIps && this.whitelistIps.length) {
                 todo();
             } else {
-                unregister = this.$scope.$watch(angular.bind(this, () => this.whitelistsDetail.length), todo);
+                unregister = this.$scope.$watch(angular.bind(this, () => this.whitelistIps && this.whitelistIps.length), todo);
             }
         }
 
@@ -132,10 +108,10 @@ angular.module("App").controller(
             let unregister = null;
 
             const todo = () => {
-                const el = _.find(this.whitelistsDetail, (whitelist) => whitelist.ip === opts.whitelistIp);
+                const el = _.find(this.whitelistIps, (whitelist) => whitelist.ip === opts.whitelistIp);
 
                 if (el) {
-                    delete el.waiteDelete;
+                    delete el.deleting;
 
                     this.alerter.error(this.$scope.tr("privateDatabase_modale_whitelist_delete_fail"), this.$scope.alerts.main);
 
@@ -145,10 +121,10 @@ angular.module("App").controller(
                 }
             };
 
-            if (this.whitelistsDetail && this.whitelistsDetail.length) {
+            if (this.whitelistIps && this.whitelistIps.length) {
                 todo();
             } else {
-                unregister = this.$scope.$watch(angular.bind(this, () => this.whitelistsDetail.length), todo);
+                unregister = this.$scope.$watch(angular.bind(this, () => this.whitelistIps && this.whitelistIps.length), todo);
             }
         }
     }

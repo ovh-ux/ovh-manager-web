@@ -7,9 +7,9 @@
    <translation id="select_product_on_top" qtlid="123499">Wybierz z listy usługę do konfiguracji.</translation>
    <translation id="index_nav_bar_logo_alt" qtlid="128190">Manager WEB OVH</translation>
    <translation id="universe_univers-cloud_name" qtlid="15677">Cloud</translation>
-   <translation id="universe_univers-dedicated_name" qtlid="31738">Dedykowany</translation>
-   <translation id="universe_univers-telecom_name" qtlid="135827">Telefoniczne</translation>
-   <translation id="universe_univers-web_name" qtlid="135840">WWW</translation>
+   <translation id="universe_univers-dedicated_name" qtlid="31738">Dedykowane</translation>
+   <translation id="universe_univers-telecom_name" qtlid="135827">Telefonia</translation>
+   <translation id="universe_univers-web_name" qtlid="135840">Web</translation>
    <translation id="universe_univers-sunrise_name" qtlid="232401">Sunrise</translation>
 <translation id="universe_univers-portal_name" translate="none">MyOVH</translation>
    <translation id="universe_univers-partners_name" qtlid="383512">Partnerzy</translation>
@@ -126,7 +126,7 @@
    <translation id="form_add_item" qtlid="402126">Dodaj element</translation>
    <translation id="wizard_breadcrumb" qtlid="158682">Etap {0} na {1}</translation>
    <translation id="table_delete_search" qtlid="402139">Wyczyść wyszukiwanie w tabeli</translation>
-   <translation id="select_placeholder" qtlid="447963">Séléctionnez...</translation>
+   <translation id="select_placeholder" qtlid="447963">Wybierz...</translation>
    <translation id="pagination_page" qtlid="129123">Strona {0} / {1}</translation>
    <translation id="pagination_go" qtlid="31522">OK</translation>
    <translation id="pagination_display" qtlid="69353">Wyświetl</translation>
@@ -135,12 +135,13 @@
    <translation id="common_search" qtlid="37659">Szukaj</translation>
    <translation id="common_cancel" qtlid="37863">Anuluj</translation>
    <translation id="common_confirm" qtlid="31498">Potwierdź</translation>
+   <translation id="common_install" qtlid="108709">Instaluj</translation>
    <translation id="common_loading" qtlid="242769">Trwa pobieranie informacji</translation>
    <translation id="common_back" qtlid="4118">Powrót</translation>
    <translation id="common_next" qtlid="17743">Dalej</translation>
    <translation id="common_previous" qtlid="17431">Wstecz</translation>
    <translation id="common_newtab" qtlid="402165">nowa zakładka</translation>
-   <translation id="common_activated" qtlid="30250">Aktywne</translation>
+   <translation id="common_activated" qtlid="30250">Aktywny</translation>
    <translation id="common_desactivated" qtlid="24967">Wyłączony</translation>
    <translation id="common_not_supported" qtlid="190771">Nie obsługiwane</translation>
    <translation id="common_not_available" qtlid="94783">Niedostępne</translation>
@@ -156,11 +157,20 @@
    <translation id="common_managerv5" qtlid="190784">Manager V5</translation>
    <translation id="common_managerv3" qtlid="34512">Manager V3</translation>
    <translation id="global_app_title" qtlid="122131">Twój panel klienta OVH</translation>
+   <translation id="global_language" qtlid="30598">Język</translation>
    <translation id="global_logout" qtlid="33658">Wyloguj</translation>
    <translation id="global_changelog" qtlid="124964">Historia aktualizacji</translation>
    <translation id="global_preference" qtlid="144708">Moje abonamenty</translation>
    <translation id="global_billing" qtlid="32950">Płatności</translation>
+   <translation id="global_billing_history" qtlid="159540">Faktury</translation>
+   <translation id="global_billing_payments" qtlid="398781">Informacje o płatnościach</translation>
    <translation id="global_account" qtlid="157642">Moje konto</translation>
+   <translation id="global_account_infos" qtlid="405499">Mój profil</translation>
+   <translation id="global_account_security" qtlid="125420">Bezpieczeństwo</translation>
+   <translation id="global_account_emails" qtlid="266118">Otrzymane e-maile</translation>
+   <translation id="global_account_subscriptions" qtlid="144708">Moje abonamenty</translation>
+   <translation id="global_account_ssh" qtlid="165897">Moje klucze SSH</translation>
+   <translation id="global_account_advanced" qtlid="39958">Zaawansowane parametry</translation>
    <translation id="global_support" qtlid="39994">Pomoc</translation>
    <translation id="global_feedback" qtlid="103558">Dodaj swoją opinię</translation>
    <translation id="global_feedback_appreciation" qtlid="127468">Twoja opinia nas interesuje.</translation>
@@ -179,7 +189,21 @@
    <translation id="global_feedback_subject_maxlength" qtlid="281732">Tytuł nie może przekraczać 255 znaków</translation>
    <translation id="global_feedback_send" qtlid="52807">Wyślij</translation>
    <translation id="global_renew" qtlid="229658">Moje usługi</translation>
+   <translation id="global_renew_management" qtlid="287527">Zarządzaj usługami</translation>
+   <translation id="global_renew_agreements" qtlid="204350">Regulaminy</translation>
+   <translation id="global_means" qtlid="90049">Sposoby płatności</translation>
+   <translation id="global_means_mean" qtlid="139949">Moje sposoby płatności</translation>
+   <translation id="global_means_ovhaccount" qtlid="366826">Moje konto przedpłacone</translation>
+   <translation id="global_means_vouchers" qtlid="270917">Moje kody</translation>
+   <translation id="global_means_refunds" qtlid="139923">Moje zwroty</translation>
+   <translation id="global_means_fidelity" qtlid="260606">Konto prepaid</translation>
+   <translation id="global_means_credits" qtlid="448907">Moje zasilenia</translation>
+
+
+
    <translation id="global_orders" qtlid="282809">Moje zamówienia</translation>
+   <translation id="global_contacts" qtlid="70541">Moje kontakty</translation>
+   <translation id="global_list_ticket" qtlid="454039">Moje zgłoszenia wysłane do pomocy technicznej</translation>
    <translation id="global_profil" qtlid="23035">Profil</translation>
    <translation id="global_OK" qtlid="31522">OK</translation>
    <translation id="global_KO" qtlid="122155">KO</translation>
@@ -231,6 +255,7 @@
    <translation id="required" qtlid="182514">Pole wymagane</translation>
    <translation id="required_fields" qtlid="433550">Pola oznaczone gwiazdką są obowiązkowe.</translation>
    <translation id="common_go_to_next_error" qtlid="282562">Przejdź do następnego błędu</translation>
+   <translation id="common_skip_to_main_content" qtlid="454052">Przejdź do głównej sekcji</translation>
 
    <translation id="common_menu_support_assistance" qtlid="52699">Pomoc</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Wszystkie przewodniki</translation>
@@ -688,4 +713,11 @@
    <translation id="preload_tips_4" qtlid="433641">Nowa wersja panelu WWW!</translation>
 
    <translation id="sidebar_menu_order_actions" qtlid="43558">Zamów</translation>
+
+   <translation id="common_ouidatagrid_nodata" qtlid="197635">Brak rezultatu</translation>
+   <translation id="common_ouipagination_resultsperpage" qtlid="433384">Wyniki na stronie</translation>
+   <translation id="common_ouipagination_ofnresults" qtlid="452982">z TOTAL_ITEMS wyników</translation>
+   <translation id="common_ouipagination_currentpageofpagecount" qtlid="452995">Strona CURRENT_PAGE z PAGE_COUNT</translation>
+   <translation id="common_ouipagination_next" qtlid="433423">Następna strona</translation>
+   <translation id="common_ouipagination_previous" qtlid="433436">Poprzednia strona</translation>
 </translations>

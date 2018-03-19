@@ -4,10 +4,15 @@
          data-wizard-on-finish="deleteDnsEntry"
          data-wizard-title="i18n.domain_configuration_dns_entry_delete_title">
 
-        <div data-wizard-step>
-            <p data-ng-if="ctrl.massDelete" data-ng-bind-html="trpl('domain_configuration_dns_entry_mass_delete_step1_question', ctrl.entryToDelete.length)"></p>
+        <div data-wizard-step
+             data-wizard-step-valid="!ctrl.loading">
 
-            <div data-ng-if="!ctrl.massDelete">
+            <oui-spinner data-ng-if="ctrl.loading"></oui-spinner>
+
+            <p data-ng-if="ctrl.massDelete && !ctrl.loading"
+               data-ng-bind-html="trpl('domain_configuration_dns_entry_mass_delete_step1_question', ctrl.entryToDelete.length)"></p>
+
+            <div data-ng-if="!ctrl.massDelete && !ctrl.loading">
                 <p data-ng-bind-html="tr('domain_configuration_dns_entry_delete_step1_question', [ctrl.domain.displayName])"></p>
 
                 <dl class="dl-horizontal dl-lg">

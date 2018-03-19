@@ -96,7 +96,10 @@ angular.module("services").service(
          * @return {void}
          */
         updateWhitelist (serviceName, whitelistId, model) {
-            return this.$http.put(`${this.rootPath}/${this.swsProxypassPath}/${serviceName}/whitelist/${encodeURIComponent(whitelistId)}`, model).then((res) => res.data);
+            return this.$http.put(`${this.rootPath}/${this.swsProxypassPath}/${serviceName}/whitelist/${encodeURIComponent(whitelistId)}`, model).then((res) => {
+                this.$rootScope.$broadcast("privateDatabase.whitelist.create.done", _.defaults(res.data, { serviceName }));
+                return res.data;
+            });
         }
 
         /**

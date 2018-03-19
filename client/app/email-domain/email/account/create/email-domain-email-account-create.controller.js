@@ -81,7 +81,6 @@ angular.module("App").controller(
             this.$scope.createAccount = () => this.createAccount();
 
             this.User.getUrlOf("guides").then((guides) => {
-                this.createGuide("MAC", "", _.get(guides, "emailsConfigurationAuto"), "assets/images/logos/iOS9.png");
                 this.createGuide("MAC", "El capitan", _.get(guides, "emailsConfigurationMacElCapitain"), "assets/images/logos/iOS9.png");
                 this.createGuide("MAC", "Mavericks / Yosemite", _.get(guides, "emailsConfigurationMacMavericksAndYosemite"), "assets/images/logos/iOS9.png");
                 this.createGuide("MAC", "Mountain Lion", _.get(guides, "emailsConfigurationMacMountainLion"), "assets/images/logos/iOS9.png");

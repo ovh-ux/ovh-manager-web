@@ -6,81 +6,29 @@
         <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
         <span data-i18n-static="common_back"></span>
     </button>
+
     <h2 data-ng-bind="i18n.privateDatabase_tabs_dumps_change + ' ' + dumpCtrl.database.databaseName"></h2>
 
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col" data-i18n-static="privateDatabase_tabs_dumps_creation_date"></th>
-                    <th scope="col" data-i18n-static="privateDatabase_tabs_dumps_deletion_date"></th>
-                    <th class="min-width text-right" scope="col">
-                        <button class="btn btn-icon" type="button" title="{{i18n.privateDatabase_tabs_refresh_data}}"
-                                data-ng-click="dumpCtrl.getDumps()">
-                            <span class="fa fa-refresh" aria-hidden="true"></span>
-                        </button>
-                    </th>
-                </tr>
-            </thead>
+    <oui-datagrid data-rows="dumpCtrl.dumps"
+                  data-row-loader="dumpCtrl.transformItem($row)">
+        <oui-column data-title="tr('privateDatabase_tabs_dumps_creation_date')" data-property="creationDate">
+            <span data-ng-bind="$row.creationDate | date:'medium'"></span>
+        </oui-column>
+        <oui-column data-title="tr('privateDatabase_tabs_dumps_deletion_date')" data-property="deletionDate">
+            <span data-ng-bind="$row.deletionDate | date:'medium'"></span>
+        </oui-column>
+        <oui-action-menu data-align="end" data-compact>
+            <oui-action-menu-item data-text="{{::tr('privateDatabase_tabs_dumps_download_dump')}}"
+                                  data-on-click="dumpCtrl.goTo($row.url, '_blank')">
+            </oui-action-menu-item>
+            <oui-action-menu-item data-text="{{::tr('privateDatabase_tabs_dumps_restore_dump')}}"
+                                  data-on-click="setAction('database/restore/private-database-database-restore', { bdd:dumpCtrl.database, dump:$row })"
+                                  data-ng-if="!dumpCtrl.dumpIdRestoring">
+            </oui-action-menu-item>
+            <oui-action-menu-item data-text="{{::tr('privateDatabase_tabs_dumps_delete')}}"
+                                  data-on-click="setAction('database/dump/delete/private-database-database-dump-delete', { bdd:dumpCtrl.database, dump:$row })">
+            </oui-action-menu-item>
+        </oui-action-menu>
+    </oui-datagrid>
 
-            <tbody data-ng-if="dumpCtrl.loaders.dumps">
-                <tr>
-                    <td class="loader text-center" colspan="3"></td>
-                </tr>
-            </tbody>
-
-            <tbody data-ng-if="!dumpCtrl.loaders.dumps">
-                <tr data-ng-if="!dumpCtrl.dumpsIds.length">
-                    <td class="text-center" colspan="3"
-                        data-i18n-static="privateDatabase_tabs_dumps_no_dumps">
-                    </td>
-                </tr>
-
-                <tr data-ng-repeat="dump in dumpCtrl.dumpsDetails track by $index">
-                    <td>
-                        <span class="mr-3" data-ng-bind="::dump.creationDate | date:'medium'"></span>
-                        <span class="label label-info" data-ng-if="dump.waitRestore">
-                            <oui-loader size="s" inline="true"></oui-loader>
-                            <span data-i18n-static="privateDatabase_restore_in_progress"></span>
-                        </span>
-                    </td>
-                    <td data-ng-bind="::dump.deletionDate | date:'medium'"></td>
-                    <td class="text-right">
-                        <button class="btn btn-icon" type="button"
-                                data-linkedpopover="private-database/database/dump/private-database-database-dump.popover.html"
-                                data-linkedpopover-placement="left"
-                                data-linkedpopover-remote="true"
-                                data-linkedpopover-single="true"
-                                data-linkedpopover-title="{{i18n.common_actions}}">
-                            <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                        </button>
-                    </td>
-                </tr>
-
-                <tr data-ng-if="dumpCtrl.database.waitDump">
-                    <td class="text-center" colspan="3">
-                        <span class="label label-danger"
-                              data-i18n-static="privateDatabase_dump_in_progress"></span>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-    <div class="clearfix"
-         data-ng-if="dumpCtrl.dumpsIds">
-        <div data-pagination-front
-             data-items="dumpCtrl.dumpsIds"
-             data-paginated-items="dumpCtrl.dumpsDetails"
-             data-current-page="currentPage"
-             data-items-per-page="itemsPerPage"
-             data-nb-pages="nbPages"
-             data-transform-item="dumpCtrl.transformItem(item)"
-             data-on-transform-item-done="dumpCtrl.onTransformItemDone(items)"
-             data-on-transform-item-get-promise="dumpCtrl.getPromise(promise)"
-             data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-             data-item-per-page-placeholder="{{tr('pagination_display')}}">
-        </div>
-    </div>
 </div>

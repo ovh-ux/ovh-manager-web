@@ -131,7 +131,7 @@
    <translation id="hosting_dashboard_service_offer_PERFORMANCE_4" qtlid="216937">Performance 4</translation>
    <translation id="hosting_dashboard_service_offer_KIMSUFI_2015" qtlid="271569">Kimsufi 2015</translation>
    <translation id="hosting_dashboard_service_offer_KS" qtlid="271569">Kimsufi 2015</translation>
-   <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015" qtlid="448236">Vous souhaitez passer sur une offre Kimsufi 2015, l'accès au support n'est plus inclus et vous devrez utiliser notre système de tickets pour contacter l'assistance.</translation>
+   <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015" qtlid="448236">Al pasar a los planes Kimsufi 2015, no tendrá incluido el acceso al Soporte y deberá utilizar el sistema de tickets para contactar con nuestro equipo.</translation>
    <translation id="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree" qtlid="271595">He leído y acepto las condiciones de la oferta kimsufi 2015, y deseo validar mi solicitud de migración.</translation>
    <translation id="hosting_dashboard_service_offer_KIMSUFI_2015_support" qtlid="271608">Alojamiento web kimsufi: el soporte se realiza solamente a través de un sistema de tickets (menú de soporte)</translation>
    <translation id="hosting_dashboard_service_offer_60_FREE_end" qtlid="372256">La oferta 60free se cerrará el 1ro de mayo de 2017. Puede migrar su dominio .ovh.org a otro plan de alojamiento haciendo clic en «Migrar mi dominio ovh.org».</translation>
@@ -299,7 +299,7 @@
    <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Recherche...</translation>
 
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation" qtlid="255976">Generar enlace</translation>
-   <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="444417">Une erreur est survenue lors de la génération du lien d'accès aux logs</translation>
+   <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="444417">Se ha producido un error al generar el enlace de acceso a los logs.</translation>
    <translation id="hosting_tab_DOMAINS_multisite_logs_link" qtlid="296700">Acceder a los logs</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_attachDomain_title_button" qtlid="226969">Añadir un dominio o subdominio</translation>
@@ -375,6 +375,8 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_fail" qtlid="197167">Se ha producido un error al solicitar la creación de la base de datos.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_success" qtlid="197180">La base de datos va a crearse.</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_bdd_adding" qtlid="453189">Añadiendo base de datos...</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_bdd_added" qtlid="453202">La base de datos se ha creado correctamente.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_upgrade_perso" qtlid="272734">La oferta Personal solo permite crear una base de datos. Si desea más de una, puede pasarse a la oferta Profesional o a la Performance, que permiten la creación de hasta 4 bases de datos</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_upgrade_pro" qtlid="272747">Cambie a la oferta Performance, que le permitirá disponer de un servidor SQL Privado</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_upgrade_start" qtlid="272760">La oferta start 10m no permite la creación de bases de datos, puede pasar a una oferta de pago que ofrezca ese servicio</translation>
@@ -431,9 +433,8 @@
    <translation id="database_tabs_dumps_actions" qtlid="72809">Actions</translation>
    <translation id="database_tabs_dumps_no_dumps" qtlid="263376">No se ha realizado el backup de la base de datos.</translation>
    <translation id="database_tabs_dumps_fail_retrieve_dumps" qtlid="263389">Se ha producido un error al recuperar la lista de backup.</translation>
-   <translation id="database_tabs_dumps_download_dump" qtlid="370031">Descargar el backup del {0}</translation>
-   <translation id="database_tabs_dumps_restore_dump_with_creation_date" qtlid="370044">Restaurar el backup del {0}</translation>
-   <translation id="database_tabs_dumps_delete_dump" qtlid="370057">Eliminar el backup del {0}</translation>
+   <translation id="database_tabs_dumps_download_dump" qtlid="263402">Descargar el backup</translation>
+   <translation id="database_tabs_dumps_delete_dump" qtlid="448431">Eliminar el backup</translation>
    <translation id="database_tabs_dumps_dump_in_progress" qtlid="304420">Efectuando backup...</translation>
    <translation id="database_restore_bdd_confirm" qtlid="272290">¿Desea restaurar el backup del <strong>{0}</strong> de la base de datos <strong>{1}</strong>?</translation>
    <translation id="database_restore_bdd_confirm_daily" qtlid="287254">¿Desea restaurar el backup <strong>de ayer</strong> en la base de datos <strong>{0}</strong>?</translation>
@@ -446,7 +447,7 @@
    <translation id="hosting_tab_DATABASES_table_popover_import_step0_existing_file_mode" qtlid="288314">Utilizar un archivo ya existente</translation>
 
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_load_documents_error" qtlid="286240">Se ha producido un error al cargar los documentos:</translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file" qtlid="448262">Fichier (.gz, .sql, .txt) :</translation>
+   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file" qtlid="448262">Archivo (.gz, .sql, .txt):</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name" qtlid="286266">Nombre del archivo:</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_info" qtlid="296713">Ponga un título a su documento para encontrarlo más rápidamente.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_required_error" qtlid="286279">El nombre del archivo es obligatorio.</translation>
@@ -771,7 +772,7 @@
    <translation id="hosting_configuration_tab_modules_create_step1_module_type_select" qtlid="211737">Seleccionar el módulo</translation>
    <translation id="hosting_configuration_tab_modules_create_step1_module_advanced_mode" qtlid="267449">Instalación en modo avanzado </translation>
    <translation id="hosting_configuration_tab_modules_create_step1_module_domain" qtlid="268199">Seleccione el dominio en el que desea instalar el módulo:</translation>
-   <translation id="hosting_configuration_tab_modules_create_step1_module_default_path" qtlid="444693">Le répertoire d'installation par défaut est <strong>{0}</strong><br> Veuillez sélectionner le mode avancé pour l'installer dans un autre répertoire.</translation>
+   <translation id="hosting_configuration_tab_modules_create_step1_module_default_path" qtlid="444693">El directorio de instalación por defecto es <strong>{0}</strong><br>. Debe seleccionar el modo avanzado para instalar el módulo en otro directorio.</translation>
 
 
    <translation id="hosting_configuration_tab_modules_create_step1_module_advancedMode_info" qtlid="268212">El modo avanzado le permite:</translation>
@@ -1193,8 +1194,8 @@
    <translation id="hosting_global_php_version_edit" qtlid="267640">Modificar la configuración</translation>
    <translation id="hosting_action_config_edit_init_error" qtlid="267653">Lo sentimos: no se han podido cargar todos los datos en la configuración. Por favor, inténtelo más tarde.</translation>
    <translation id="hosting_action_config_edit_warning" qtlid="364716">Le recomendamos que compruebe previamente con su webmaster que su sitio web es compatible con esta nueva versión de PHP.</translation>
-   <translation id="hosting_action_config_edit_success" qtlid="448275">La modification de configuration de votre hébergement mutualisé a bien été prise en compte.</translation>
-   <translation id="hosting_action_config_rollback_success" qtlid="448288">La modification vers la configuration ultérieure de votre hébergement mutualisé a bien été prise en compte.</translation>
+   <translation id="hosting_action_config_edit_success" qtlid="448275">Los cambios en la configuración de su alojamiento compartido se han registrado correctamente.</translation>
+   <translation id="hosting_action_config_rollback_success" qtlid="448288">La nueva configuración de su alojamiento compartido se ha registrado correctamente.</translation>
    <translation id="hosting_action_config_edit_choose_config" qtlid="267666">Historial</translation>
    <translation id="hosting_action_config_edit_engine_name" qtlid="267679">Motor</translation>
    <translation id="hosting_action_config_edit_engine_name_help" qtlid="267692">PHP-CGI desactiva FPM</translation>

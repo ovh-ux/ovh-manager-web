@@ -2,7 +2,7 @@
 <translations>
    <translation id="select_option" qtlid="159046">Selecting...</translation>
    <translation id="welcome_to_your_manager_1" qtlid="282393">Welcome to your </translation>
-   <translation id="welcome_to_your_manager_2" qtlid="282406">OVH Control Panel </translation>
+   <translation id="welcome_to_your_manager_2" qtlid="282406">OVH Manager</translation>
    <translation id="select_product_on_left" qtlid="123487">Please select a product to configure in the left-side column.</translation>
    <translation id="select_product_on_top" qtlid="123499">Please select a product to configure.</translation>
    <translation id="index_nav_bar_logo_alt" qtlid="128190">OVH WEB Control Panel</translation>
@@ -115,8 +115,8 @@
    <translation id="wizard_previous" qtlid="17431">Previous</translation>
    <translation id="wizard_export" qtlid="69881">Export</translation>
    <translation id="table_search_noresult" qtlid="433498">Your search has returned no results</translation>
-   <translation id="table_modify_entry" qtlid="402074">: change entry </translation>
-   <translation id="table_delete_entry" qtlid="402087">: delete entry </translation>
+   <translation id="table_modify_entry" qtlid="402074">Change entry </translation>
+   <translation id="table_delete_entry" qtlid="402087">Delete entry </translation>
    <translation id="table_filter" qtlid="59207">Filter</translation>
    <translation id="table_add_entry" qtlid="129219">Add an entry</translation>
    <translation id="table_validate_entry" qtlid="172267">Confirm modifications</translation>
@@ -126,7 +126,7 @@
    <translation id="form_add_item" qtlid="402126">Add an element </translation>
    <translation id="wizard_breadcrumb" qtlid="158682">Step {0} of {1}</translation>
    <translation id="table_delete_search" qtlid="402139">Clear search </translation>
-   <translation id="select_placeholder" qtlid="447963">Séléctionnez...</translation>
+   <translation id="select_placeholder" qtlid="447963">Please choose...</translation>
    <translation id="pagination_page" qtlid="129123">Page {0}/{1}</translation>
    <translation id="pagination_go" qtlid="31522">OK</translation>
    <translation id="pagination_display" qtlid="69353">Display</translation>
@@ -135,6 +135,7 @@
    <translation id="common_search" qtlid="37659">Search</translation>
    <translation id="common_cancel" qtlid="37863">Cancel</translation>
    <translation id="common_confirm" qtlid="31498">Confirm</translation>
+   <translation id="common_install" qtlid="108709">Install</translation>
    <translation id="common_loading" qtlid="242769">Loading...</translation>
    <translation id="common_back" qtlid="4118">Back</translation>
    <translation id="common_next" qtlid="17743">Next</translation>
@@ -156,11 +157,20 @@
    <translation id="common_managerv5" qtlid="190784"></translation>
    <translation id="common_managerv3" qtlid="34512"></translation>
    <translation id="global_app_title" qtlid="122131">Your OVH Web Control Panel</translation>
+   <translation id="global_language" qtlid="30598">Language</translation>
    <translation id="global_logout" qtlid="33658">Log out</translation>
    <translation id="global_changelog" qtlid="124964">Changelog</translation>
    <translation id="global_preference" qtlid="144708">My subscriptions</translation>
    <translation id="global_billing" qtlid="32950">Billing</translation>
+   <translation id="global_billing_history" qtlid="159540">My bills</translation>
+   <translation id="global_billing_payments" qtlid="398781">Payment tracking</translation>
    <translation id="global_account" qtlid="157642">My account</translation>
+   <translation id="global_account_infos" qtlid="405499">My profile</translation>
+   <translation id="global_account_security" qtlid="125420">Security</translation>
+   <translation id="global_account_emails" qtlid="266118">Emails received</translation>
+   <translation id="global_account_subscriptions" qtlid="144708">My subscriptions</translation>
+   <translation id="global_account_ssh" qtlid="165897">My SSH keys</translation>
+   <translation id="global_account_advanced" qtlid="39958">Advanced settings</translation>
    <translation id="global_support" qtlid="39994">Support</translation>
    <translation id="global_feedback" qtlid="103558">Provide feedback</translation>
    <translation id="global_feedback_appreciation" qtlid="127468">We would like to get your feedback</translation>
@@ -176,10 +186,24 @@
    <translation id="global_feedback_support_inquiries" qtlid="156043">If you have any commercial or technical questions, please contact</translation>
    <translation id="global_feedback_support_inquiries_ovh" qtlid="156056">OVH support.</translation>
    <translation id="global_feedback_subject_required" qtlid="281719">Please enter a subject </translation>
-   <translation id="global_feedback_subject_maxlength" qtlid="281732">The title must not exceed 255 characters </translation>
+   <translation id="global_feedback_subject_maxlength" qtlid="281732">Title must not exceed 255 characters </translation>
    <translation id="global_feedback_send" qtlid="52807">Send</translation>
    <translation id="global_renew" qtlid="229658">My services</translation>
+   <translation id="global_renew_management" qtlid="287527">Manage my services </translation>
+   <translation id="global_renew_agreements" qtlid="204350">My contracts</translation>
+   <translation id="global_means" qtlid="90049">Payment method</translation>
+   <translation id="global_means_mean" qtlid="139949">My payment methods</translation>
+   <translation id="global_means_ovhaccount" qtlid="366826">My prepaid account </translation>
+   <translation id="global_means_vouchers" qtlid="270917">My vouchers</translation>
+   <translation id="global_means_refunds" qtlid="139923">My credit notes</translation>
+   <translation id="global_means_fidelity" qtlid="260606">My Loyalty control panel</translation>
+   <translation id="global_means_credits" qtlid="448907">My credits</translation>
+
+
+
    <translation id="global_orders" qtlid="282809">My orders </translation>
+   <translation id="global_contacts" qtlid="70541">My contacts</translation>
+   <translation id="global_list_ticket" qtlid="454039">My support requests</translation>
    <translation id="global_profil" qtlid="23035">Profile</translation>
    <translation id="global_OK" qtlid="31522">OK</translation>
    <translation id="global_KO" qtlid="122155">KO</translation>
@@ -229,8 +253,9 @@
    <translation id="common_delete_in_progress" qtlid="200300">Deleting...</translation>
    <translation id="common_delete_all" qtlid="159891">Delete all</translation>
    <translation id="required" qtlid="182514">Mandatory fields</translation>
-   <translation id="required_fields" qtlid="433550">Fields followed by an asterisk are obligatory.</translation>
+   <translation id="required_fields" qtlid="433550">Fields followed by an asterisk are mandatory.</translation>
    <translation id="common_go_to_next_error" qtlid="282562">Go to the next error </translation>
+   <translation id="common_skip_to_main_content" qtlid="454052">Skip to main content</translation>
 
    <translation id="common_menu_support_assistance" qtlid="52699">Assistance</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">All guides</translation>
@@ -543,7 +568,7 @@
    <translation id="renew_date" qtlid="440287">Automatic renewal is scheduled for <strong>{0}</strong></translation>
    <translation id="core_email_voila_title" qtlid="271751">@voila.fr address </translation>
    <translation id="core_email_voila_alert" qtlid="271764">Because Voila Mail is closing, all @voila.fr addresses will be deactivated from the 12th January 2016. If you have a @voila.fr address you will have to switch to a new webmail. </translation>
-   <translation id="core_email_voila_alert2" qtlid="271777">To continue to receive information by e- mail, we suggest you provide a new contact address in the My Account section ASAP.</translation>
+   <translation id="core_email_voila_alert2" qtlid="271777">To continue receiving information by email, we suggest you provide a new contact address in the My Account section ASAP.</translation>
    <translation id="core_email_voila_update_info" qtlid="271790">Change my e-mail address </translation>
 
    <translation id="core_top_guides_header" qtlid="328797">For more detailed information, please read <a href="{0}" target="_blank">our guides</a>.</translation>
@@ -567,8 +592,8 @@
    <translation id="core_vps_top_guide_5_title" qtlid="290798">Get started with the Swift API </translation>
    <translation id="core_vps_top_guide_6_title" qtlid="290811">Prepare the environment to use the OpenStack API</translation>
    <translation id="core_vps_top_guide_7_title" qtlid="290824">Synchronise NAS Synology with Object Storage using DiskStation Manager 6.0</translation>
-   <translation id="core_vps_top_guide_8_title" qtlid="290837">Cloud - In the OVH control panel </translation>
-   <translation id="core_vps_top_guide_9_title" qtlid="290850">Create an instance in the OVH control panel </translation>
+   <translation id="core_vps_top_guide_8_title" qtlid="290837">Cloud - In the OVH Control Panel</translation>
+   <translation id="core_vps_top_guide_9_title" qtlid="290850">Create an instance in the OVH Control Panel</translation>
 
    <translation id="guide_add_subtitle" qtlid="285447">Tips</translation>
    <translation id="guide_add_subscope" qtlid="285460">Attach a domain to my hosting account</translation>
@@ -681,11 +706,18 @@
    <translation id="global_ks_upgrade_step2_level" qtlid="367902">2</translation>
 
    <translation id="preload_welcome" qtlid="433576">Welcome to your</translation>
-   <translation id="preload_manager_ovh" qtlid="433589">OVH Control Panel</translation>
+   <translation id="preload_manager_ovh" qtlid="433589">OVH Manager</translation>
    <translation id="preload_tips_1" qtlid="433602">View your invoices in the dedicated section, in your Control Panel</translation>
    <translation id="preload_tips_2" qtlid="433615">Have a great day!</translation>
    <translation id="preload_tips_3" qtlid="433628">See our cloud solutions on our website</translation>
    <translation id="preload_tips_4" qtlid="433641">New version of the web Control Panel!</translation>
 
    <translation id="sidebar_menu_order_actions" qtlid="43558">Order</translation>
+
+   <translation id="common_ouidatagrid_nodata" qtlid="197635">No result</translation>
+   <translation id="common_ouipagination_resultsperpage" qtlid="433384">Results per page</translation>
+   <translation id="common_ouipagination_ofnresults" qtlid="452982">out of TOTAL_ITEMS results</translation>
+   <translation id="common_ouipagination_currentpageofpagecount" qtlid="452995">Page CURRENT_PAGE out of PAGE_COUNT</translation>
+   <translation id="common_ouipagination_next" qtlid="433423">Next page</translation>
+   <translation id="common_ouipagination_previous" qtlid="433436">Page précédente</translation>
 </translations>

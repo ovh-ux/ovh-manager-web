@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <translations>
-   <translation id="select_option" qtlid="159046">Vybírání...</translation>
+   <translation id="select_option" qtlid="159046">Zvolte...</translation>
    <translation id="welcome_to_your_manager_1" qtlid="282393">Vítejte ve svém</translation>
    <translation id="welcome_to_your_manager_2" qtlid="282406">Zákaznickém prostoru OVH</translation>
    <translation id="select_product_on_left" qtlid="123487">V levém sloupci si zvolte produkt k nastavení.</translation>
@@ -115,8 +115,8 @@
    <translation id="wizard_previous" qtlid="17431">Předcházející</translation>
    <translation id="wizard_export" qtlid="69881">Export</translation>
    <translation id="table_search_noresult" qtlid="433498">Nebyly nalezeny žádné výsledky, které by odpovídaly Vašim kritériím</translation>
-   <translation id="table_modify_entry" qtlid="402074">: upravit záznam</translation>
-   <translation id="table_delete_entry" qtlid="402087">: vymazat záznam</translation>
+   <translation id="table_modify_entry" qtlid="402074">Upravit záznam</translation>
+   <translation id="table_delete_entry" qtlid="402087">Vymazat záznam</translation>
    <translation id="table_filter" qtlid="59207">Filter</translation>
    <translation id="table_add_entry" qtlid="129219">Přidat záznam</translation>
    <translation id="table_validate_entry" qtlid="172267">Potvrdit změny</translation>
@@ -126,7 +126,7 @@
    <translation id="form_add_item" qtlid="402126">Přidat element</translation>
    <translation id="wizard_breadcrumb" qtlid="158682">Krok {0} z {1}</translation>
    <translation id="table_delete_search" qtlid="402139">Vymazat vyhledávání</translation>
-   <translation id="select_placeholder" qtlid="447963">Séléctionnez...</translation>
+   <translation id="select_placeholder" qtlid="447963">Vyberte...</translation>
    <translation id="pagination_page" qtlid="129123">Strana {0}/{1}</translation>
    <translation id="pagination_go" qtlid="31522">OK</translation>
    <translation id="pagination_display" qtlid="69353">Zobrazit</translation>
@@ -135,6 +135,7 @@
    <translation id="common_search" qtlid="37659">Hledat</translation>
    <translation id="common_cancel" qtlid="37863">Zrušit</translation>
    <translation id="common_confirm" qtlid="31498">Dokončit</translation>
+   <translation id="common_install" qtlid="108709">Instalovat</translation>
    <translation id="common_loading" qtlid="242769">Načítání...</translation>
    <translation id="common_back" qtlid="4118">Zpět</translation>
    <translation id="common_next" qtlid="17743">Další</translation>
@@ -156,11 +157,20 @@
    <translation id="common_managerv5" qtlid="190784">Manažer V5</translation>
    <translation id="common_managerv3" qtlid="34512">Manager V3</translation>
    <translation id="global_app_title" qtlid="122131">Váš zákaznický prostor WEB</translation>
+   <translation id="global_language" qtlid="30598">Jazyk</translation>
    <translation id="global_logout" qtlid="33658">Odpojení</translation>
    <translation id="global_changelog" qtlid="124964">Changelog</translation>
    <translation id="global_preference" qtlid="144708">Přihlášky k odebírání novinek</translation>
-   <translation id="global_billing" qtlid="32950">Fakturační kontakt</translation>
+   <translation id="global_billing" qtlid="32950">Fakturace</translation>
+   <translation id="global_billing_history" qtlid="159540">Mé faktury</translation>
+   <translation id="global_billing_payments" qtlid="398781">Informace o platbách</translation>
    <translation id="global_account" qtlid="157642">Můj účet</translation>
+   <translation id="global_account_infos" qtlid="405499">Můj profil</translation>
+   <translation id="global_account_security" qtlid="125420">Zabezpečení</translation>
+   <translation id="global_account_emails" qtlid="266118">Přijaté e-maily</translation>
+   <translation id="global_account_subscriptions" qtlid="144708">Přihlášky k odebírání novinek</translation>
+   <translation id="global_account_ssh" qtlid="165897">Moje klíče SSH</translation>
+   <translation id="global_account_advanced" qtlid="39958">Pokročilé nastavení</translation>
    <translation id="global_support" qtlid="39994">Podpora</translation>
    <translation id="global_feedback" qtlid="103558">Zaslat Váš názor</translation>
    <translation id="global_feedback_appreciation" qtlid="127468">Napište nám své připomínky</translation>
@@ -179,7 +189,21 @@
    <translation id="global_feedback_subject_maxlength" qtlid="281732">Max. 255 znaků</translation>
    <translation id="global_feedback_send" qtlid="52807">Odeslat</translation>
    <translation id="global_renew" qtlid="229658">Mé služby</translation>
+   <translation id="global_renew_management" qtlid="287527">Správa mých služeb</translation>
+   <translation id="global_renew_agreements" qtlid="204350">Mé smlouvy</translation>
+   <translation id="global_means" qtlid="90049">Platební metoda</translation>
+   <translation id="global_means_mean" qtlid="139949">Mé platební metody</translation>
+   <translation id="global_means_ovhaccount" qtlid="366826">Můj předplacený účet</translation>
+   <translation id="global_means_vouchers" qtlid="270917">Mé vouchery</translation>
+   <translation id="global_means_refunds" qtlid="139923">Mé dobropisy</translation>
+   <translation id="global_means_fidelity" qtlid="260606">Můj bodový účet</translation>
+   <translation id="global_means_credits" qtlid="448907">Mé kredity</translation>
+
+
+
    <translation id="global_orders" qtlid="282809">Moje objednávky</translation>
+   <translation id="global_contacts" qtlid="70541">Moje kontakty</translation>
+   <translation id="global_list_ticket" qtlid="454039">Mé tikety</translation>
    <translation id="global_profil" qtlid="23035">Profil</translation>
    <translation id="global_OK" qtlid="31522">OK</translation>
    <translation id="global_KO" qtlid="122155">KB</translation>
@@ -189,7 +213,7 @@
    <translation id="global_processing" qtlid="122227">Provádění...</translation>
    <translation id="global_doing" qtlid="210163">Načítání...</translation>
    <translation id="main_menu_products_and_config" qtlid="4406">Konfigurace</translation>
-   <translation id="main_menu_bill_and_renew" qtlid="32950">Fakturační kontakt</translation>
+   <translation id="main_menu_bill_and_renew" qtlid="32950">Fakturace</translation>
    <translation id="main_menu_help_and_support" qtlid="26035">Pomoc</translation>
    <translation id="navigation_left_search" qtlid="122275">Vyhledávání...</translation>
    <translation id="navigation_left_domains" qtlid="32590">Domény</translation>
@@ -231,6 +255,7 @@
    <translation id="required" qtlid="182514">Povinná pole</translation>
    <translation id="required_fields" qtlid="433550">Pole označená hvězdičkou jsou povinná.</translation>
    <translation id="common_go_to_next_error" qtlid="282562">Přechod na další chybu</translation>
+   <translation id="common_skip_to_main_content" qtlid="454052">Přejít na hlavní obsah</translation>
 
    <translation id="common_menu_support_assistance" qtlid="52699">Podpora</translation>
    <translation id="common_menu_support_all_guides" qtlid="260788">Všechny přiručky</translation>
@@ -587,7 +612,7 @@
    <translation id="core_works" qtlid="285720">Prohlédnout incidenty</translation>
    <translation id="core_works_description" qtlid="317555">Máte nějaký problém?</translation>
    <translation id="core_works_link" qtlid="286188">Prohlédněte si Úlohy OVH.</translation>
-   <translation id="guide_domain_subtitle" qtlid="300370">Průvodci</translation>
+   <translation id="guide_domain_subtitle" qtlid="300370">Příručky</translation>
    <translation id="guide_general_info_subscope" qtlid="27115">Základní informace</translation>
    <translation id="guide_domain_owo_activation" qtlid="300383">Whois - aktivace OwO</translation>
    <translation id="guide_domain_transfert" qtlid="300396">Příručky pro převod domén</translation>
@@ -609,7 +634,7 @@
    <translation id="guide_add_zone_subscope" qtlid="263181">Přidat DNS zónu</translation>
    <translation id="guide_domain_add_dns_zone" qtlid="300500">Vytvoření DNS zóny pro Vaši externí doménu</translation>
 
-   <translation id="guide_subtitle" qtlid="300370">Průvodci</translation>
+   <translation id="guide_subtitle" qtlid="300370">Příručky</translation>
    <translation id="guide_tips_subtitle" qtlid="285447">Tipy</translation>
    <translation id="guide_emails_general_title" qtlid="304121">Obecné informace</translation>
    <translation id="guide_emails_configuration_title" qtlid="4406">Konfigurace</translation>
@@ -689,4 +714,11 @@
    <translation id="preload_tips_4" qtlid="433641">Nová verze Zákaznického prostoru WEB!</translation>
 
    <translation id="sidebar_menu_order_actions" qtlid="43558">Objednat</translation>
+
+   <translation id="common_ouidatagrid_nodata" qtlid="197635">Žádný výsledek</translation>
+   <translation id="common_ouipagination_resultsperpage" qtlid="433384">Výsledky na stránku</translation>
+   <translation id="common_ouipagination_ofnresults" qtlid="452982">z TOTAL_ITEMS výsledků</translation>
+   <translation id="common_ouipagination_currentpageofpagecount" qtlid="452995">Strana CURRENT_PAGE z PAGE_COUNT</translation>
+   <translation id="common_ouipagination_next" qtlid="433423">Následující stránka</translation>
+   <translation id="common_ouipagination_previous" qtlid="433436">Předchozí stránka</translation>
 </translations>

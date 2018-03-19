@@ -92,12 +92,31 @@ angular
          * Get dump details
          * @param {string} serviceName
          * @param {string} name
-         * @param {string} dump
+         * @param {string} dumpId
          */
-        getDump (serviceName, name, dump) {
-            return this.OvhHttp.get(`/hosting/web/${serviceName}/database/${name}/dump/${dump}`, {
+        getDump (serviceName, name, dumpId) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/database/${name}/dump/${dumpId}`, {
                 rootPath: "apiv6"
+            }).then((dump) => {
+                dump.snapshotDate = this.constructor.getSnapshotDateOfDump(dump);
+                return dump;
             });
+        }
+
+        /**
+         * Get snapshot date of database dump
+         * @param {Object} dump
+         */
+        static getSnapshotDateOfDump (dump) {
+            if (!dump.creationDate) { return undefined; }
+
+            const snapshotDate = moment(dump.creationDate);
+            if (dump.type === "daily.1") {
+                snapshotDate.subtract(1, "d");
+            } else if (dump.type === "weekly.1") {
+                snapshotDate.subtract(1, "w");
+            }
+            return snapshotDate.format();
         }
 
         /**
@@ -295,8 +314,15 @@ angular
                     user,
                     version
                 }
-            }).then(() => {
-                this.Hosting.resetDatabases();
+            }).then((task) => {
+                this.pollTasks(serviceName, {
+                    namespace: this.Hosting.events.tabDatabasesCreation,
+                    task,
+                    dump: "hosting",
+                    successSates: ["canceled", "done"],
+                    errorsSates: ["error"]
+                });
+                return task;
             });
         }
 
@@ -306,7 +332,7 @@ angular
          * @param {number} ram
          * @param {string} version
          */
-        activeDatabasePrivate (serviceName, ram, version) {
+        activateDatabasePrivate (serviceName, ram, version) {
             return this.OvhHttp.post(`/hosting/web/${serviceName}/activatePrivateDatabase`, {
                 rootPath: "apiv6",
                 data: {

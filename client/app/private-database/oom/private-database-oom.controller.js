@@ -28,11 +28,6 @@ angular.module("App").controller(
             };
 
             this.database = this.$scope.currentActionData.database;
-            this.loader = {
-                ommList: false
-            };
-
-            this.oomList = [];
 
             this.$scope.orderMoreRam = () => this.orderMoreRam();
 
@@ -40,8 +35,6 @@ angular.module("App").controller(
         }
 
         getOom () {
-            this.loader.oomList = true;
-
             this.oomList = this.database.oom.list.reverse();
         }
 
@@ -61,18 +54,14 @@ angular.module("App").controller(
             }
             const now = moment(item.date);
             const end = moment(this.oomList[idx - 1].date);
-            const duration = moment.duration(now.diff(end));
 
-            return duration.humanize();
+            return moment.duration(now.diff(end)).humanize();
         }
 
         transformItem (item) {
             item.uptime = this.getUptime(item);
-            item.sizeReached = filesize(item.sizeReached, { output: "object" });
-            return item;
-        }
 
-        transformItemDone () {
-            this.loader.oomList = false;
+            item.overflow = filesize(item.sizeReached, { output: "object" });
+            return item;
         }
 });
