@@ -50,10 +50,10 @@
    <translation id="privateDatabase_dashboard_port_docker" qtlid="262947">SFTP Port</translation>
    <translation id="privateDatabase_dashboard_port" qtlid="9034">Port</translation>
    <translation id="privateDatabase_dashboard_certificate" qtlid="19771">Zertifikat</translation>
-   <translation id="privateDatabase_dashboard_certificate_tooltip" qtlid="448340">Le certificat n'est pas obligatoire pour réaliser la connexion à votre instance. Celui-ci est par contre nécessaire si vous désirez chiffrer la connexion vers celle-ci.</translation>
-   <translation id="privateDatabase_dashboard_see_certificate" qtlid="448353">Voir le certificat</translation>
+   <translation id="privateDatabase_dashboard_certificate_tooltip" qtlid="448340">Das Zertifikat ist nicht obligatorisch, um sich mit Ihrer Instanz zu verbinden. Allerdings ist es notwendig, wenn Sie die Verbindung zur Instanz verschlüsseln möchten.</translation>
+   <translation id="privateDatabase_dashboard_see_certificate" qtlid="448353">Zum Zertifikat</translation>
    <translation id="privateDatabase_dashboard_service_hosting_more" qtlid="325924">Die Liste anzeigen</translation>
-   <translation id="privateDatabase_dashboard_service_hosting_linked" qtlid="444456">Hébergement web lié</translation>
+   <translation id="privateDatabase_dashboard_service_hosting_linked" qtlid="444456">Zugehöriges Webhosting</translation>
    <translation id="privateDatabase_dashboard_service_hosting_linked_none" qtlid="30646">Keiner</translation>
 
    <translation id="privateDatabase_dashboard_connections_title" qtlid="250927">Verbindungsinformationen</translation>
@@ -77,7 +77,7 @@
 
    <translation id="privateDatabase_configurations_general_mysql" qtlid="263494">Allgemeine Konfiguration von MySQL</translation>
    <translation id="privateDatabase_configurations_general_mariadb" qtlid="404668">Allgemeine Konfiguration von MariaDB</translation>
-   <translation id="privateDatabase_configurations_general_redis" qtlid="448366">Configuration générale de Redis</translation>
+   <translation id="privateDatabase_configurations_general_redis" qtlid="448366">Allgemeine Konfiguration von Redis</translation>
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Allgemeine Konfiguration von PostgreSQL</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">In Kürze verfügbar für PostgreSQL</translation>
 
@@ -100,10 +100,10 @@
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Anzahl der Sekunden an Inaktivität nach einer Eingabeaufforderung, bevor der Server die Verbindung unterbricht.</translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Anzahl der Sekunden an Inaktivität während einer externen Verbindung, bevor der Server die Verbindung unterbricht.</translation>
 
-   <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Cette fonctionnalité n'est pas disponible pour ce type de base de données.</translation>
+   <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Die Funktion ist für diesen Datenbanktyp nicht verfügbar.</translation>
 
    <translation id="privateDatabase_action_changepassword" qtlid="80394">Das Passwort ändern</translation>
-   <translation id="privateDatabase_action_grants" qtlid="215715">Verwaltung der Rechte</translation>
+   <translation id="privateDatabase_action_grants" qtlid="215715">Rechte verwalten</translation>
    <translation id="privateDatabase_action_delete_user" qtlid="49550">Den Benutzer löschen</translation>
    <translation id="privateDatabase_tabs_user_grants" qtlid="215728">Datenbankrechte</translation>
 
@@ -126,7 +126,7 @@
    <translation id="privateDatabase_tabs_user_grant_change" qtlid="233430">Änderung der Rechte des Benutzers:</translation>
 
    <translation id="privateDatabase_no_db" qtlid="215767">Sie haben keine Datenbanken</translation>
-   <translation id="privateDatabase_database" qtlid="275052">Datenbank</translation>
+   <translation id="privateDatabase_database" qtlid="275052">Datenbanken</translation>
    <translation id="privateDatabase_tabs_user_grant_updating" qtlid="215780">Update der Rechte wird durchgeführt</translation>
    <translation id="privateDatabase_tabs_users_grant_error_deleting" qtlid="215793">Sie können die Rechte eines Benutzers, der gerade gelöscht wird, nicht ändern</translation>
 
@@ -143,7 +143,7 @@
 
    <translation id="privateDatabase_add_user_title" qtlid="7150">Einen Benutzer hinzufügen</translation>
    <translation id="privateDatabase_add_user_password" qtlid="2270">Passwort</translation>
-   <translation id="privateDatabase_add_user_password_confirm" qtlid="9382">Bestätigung des Passworts</translation>
+   <translation id="privateDatabase_add_user_password_confirm" qtlid="9382">Passwort bestätigen</translation>
    <translation id="privateDatabase_action_changepassword_doing" qtlid="215897">Änderung des Passworts wird durchgeführt</translation>
    <translation id="privateDatabase_add_user_name" qtlid="56045">Benutzername</translation>
    <translation id="privateDatabase_add_user_error_password_required" qtlid="215910">Das Passwort ist zwingend erforderlich</translation>
@@ -308,10 +308,10 @@
    <translation id="privateDatabase_add_bdd_new_user_password_confirm" qtlid="300539">Passwort bestätigen</translation>
    <translation id="privateDatabase_add_bdd_new_user_password_tooltip" qtlid="300552">Länge 8 bis 31 Zeichen, mindestens ein Großbuchstabe, ein Kleinbuchstabe und eine Ziffer. Darf ausschließlich aus Buchstaben und Ziffern bestehen.</translation>
 
-   <translation id="privateDatabase_add_authorized_ip" qtlid="448392">Ajouter une adresse IP autorisée</translation>
-   <translation id="privateDatabase_add_authorized_ip_explanation" qtlid="448405">Vous n'avez pas encore d'adresse IP autorisée à accéder à vos bases de données. Entrez ici l'adresse IP du serveur auquel vous souhaitez donner accès à vos bases.</translation>
-   <translation id="privateDatabase_add_authorized_ip_description" qtlid="448418">Accès initial à la base de données</translation>
-   <translation id="privateDatabase_add_authorized_ip_title" qtlid="455633">IP autorisée à accéder à la base de données</translation>
+   <translation id="privateDatabase_add_authorized_ip" qtlid="448392">Eine autorisierte IP-Adresse hinzufügen</translation>
+   <translation id="privateDatabase_add_authorized_ip_explanation" qtlid="448405">Sie haben noch keine autorisierte IP-Adresse, die auf Ihre Datenbank zugreifen kann. Geben Sie hier die IP-Adresse des Servers an, dem Sie den Zugriff auf Ihre Datenbank erlauben möchten.</translation>
+   <translation id="privateDatabase_add_authorized_ip_description" qtlid="448418">Erster Zugriff auf die Datenbank</translation>
+   <translation id="privateDatabase_add_authorized_ip_title" qtlid="455633">Autorisierte IP mit Zugriff auf die Datenbank</translation>
 
    <translation id="privateDatabase_restore_bdd_application" qtlid="404707">Bitte erstellen Sie diese zunächst erneut im Verwaltungstab Ihrer Datenbanken.</translation>
    <translation id="privateDatabase_restore_bdd_close" qtlid="4670">Schließen</translation>
@@ -337,12 +337,12 @@
    <translation id="privateDatabase_tabs_dumps_restore_in_progress" qtlid="263428">Die Wiederherstellung der Sicherung wird durchgeführt.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_success" qtlid="263441">Die Wiederherstellung der Datenbank wurde erfolgreich durchgeführt.</translation>
    <translation id="privateDatabase_tabs_dumps_restore_fail" qtlid="263454">Bei der Wiederherstellung der Datenbank ist ein Fehler aufgetreten:</translation>
-   <translation id="privateDatabase_tabs_dumps_delete" qtlid="448431">Supprimer la sauvegarde</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_title" qtlid="448444">Supprimer une sauvegarde</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_confirm" qtlid="448457">Souhaitez-vous supprimer la sauvegarde du <strong>{0}</strong> de la base de données <strong>{1}</strong> ?</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_start" qtlid="448470">La demande de suppression de la sauvegarde de base de données a été prise en compte.</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_done" qtlid="448483">La suppression de la sauvegarde de base de données a été effectuée.</translation>
-   <translation id="privateDatabase_tabs_dumps_delete_error" qtlid="448496">Une erreur est survenue lors de la suppression de la sauvegarde de base de données.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete" qtlid="448431">Backup löschen</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_title" qtlid="448444">Ein Backup löschen</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_confirm" qtlid="448457">Sind Sie sicher, dass Sie das Backup <strong>{0}</strong> der Datenbank <strong>{1}</strong> löschen möchten?</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_start" qtlid="448470">Die Anfrage zur Löschung des Datenbankbackups wurde aufgenommen.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_done" qtlid="448483">Das Datenbankbackup wurde gelöscht.</translation>
+   <translation id="privateDatabase_tabs_dumps_delete_error" qtlid="448496">Beim Löschen des Datenbankbackups ist ein Fehler aufgetreten.</translation>
 
    <translation id="privateDatabase_tabs_users_database_error" qtlid="135294">Beim Laden der Informationen ist ein Fehler aufgetreten.</translation>
    <translation id="privateDatabase_tabs_users_database_username" qtlid="7450">Benutzer</translation>
@@ -375,8 +375,8 @@
    <translation id="privateDatabase_order_step3_fail" qtlid="216781">Bei der Erstellung des Bestellscheins ist ein Fehler aufgetreten.</translation>
 
    <translation id="privateDatabase_change_ram" qtlid="37875">Ändern</translation>
-   <translation id="privateDatabase_change_ram_title" qtlid="217106">Die Menge des RAM ändern</translation>
-   <translation id="privateDatabase_order_select_ram_description" qtlid="217119">Die ausgewählte RAM Menge ersetzt die derzeit verbaute Menge.</translation>
+   <translation id="privateDatabase_change_ram_title" qtlid="217106">RAM-Menge ändern</translation>
+   <translation id="privateDatabase_order_select_ram_description" qtlid="217119">Die ausgewählte RAM-Menge ersetzt die derzeit verbaute Menge.</translation>
    <translation id="privateDatabase_order_select_ram_placeholder" qtlid="217132">Auswählen...</translation>
 
    <translation id="privateDatabase_RAM_add_select" qtlid="31858">RAM</translation>
@@ -386,7 +386,7 @@
    <translation id="privateDatabase_RAM_add_do_order_attention" qtlid="108456">Achtung!</translation>
    <translation id="privateDatabase_RAM_add_do_order_warning" qtlid="304433">Diese Operation erfordert einen Neustart des Servers.</translation>
    <translation id="privateDatabase_RAM_loading_order" qtlid="221162">Angebote werden geladen...</translation>
-   <translation id="privateDatabase_order_RAM_finish_success" qtlid="444732">Votre <a href="{0}" target="_blank">bon de commande</a> a été généré avec succès. La quantité de RAM sera modifiée lorsque vous l'aurez validé.</translation>
+   <translation id="privateDatabase_order_RAM_finish_success" qtlid="444732">Ihr <a href="{0}" target="_blank">Bestellschein</a> wurde erfolgreich erstellt. Die RAM-Menge wird aktualisiert, sobald Sie den Bestellschein bestätigt haben.</translation>
    <translation id="privateDatabase_order_RAM_finish_error" qtlid="181227">Bei der Erstellung des Bestellscheins ist ein Fehler aufgetreten.</translation>
    <translation id="privateDatabase_order_RAM_resume" qtlid="177496">Zusammenfassung Ihrer Bestellung</translation>
    <translation id="privateDatabase_order_RAM_price_HT" qtlid="146177">Gesamtpreis zzgl. MwSt:</translation>
@@ -409,7 +409,7 @@
    <translation id="privateDatabase_tab_CRON" qtlid="263064">Geplante Sicherungen</translation>
    <translation id="privateDatabase_add_cron_title" qtlid="263077">Eine geplante Sicherung hinzufügen</translation>
    <translation id="privateDatabase_tabs_cron_command" qtlid="199299">Auszuführender Befehl</translation>
-   <translation id="privateDatabase_tabs_cron_database" qtlid="275065">Datenbank</translation>
+   <translation id="privateDatabase_tabs_cron_database" qtlid="275065">Datenbanken</translation>
    <translation id="privateDatabase_tabs_cron_description" qtlid="9238">Beschreibung</translation>
    <translation id="privateDatabase_tabs_cron_frequency" qtlid="30442">Frequenz</translation>
    <translation id="privateDatabase_tabs_cron_status" qtlid="33790">Zustand</translation>
@@ -418,7 +418,7 @@
    <translation id="privateDatabase_tabs_cron_status_disabled" qtlid="125084">Deaktiviert</translation>
    <translation id="privateDatabase_tabs_cron_status_enabled" qtlid="62028">Aktiviert</translation>
    <translation id="privateDatabase_tabs_cron_status_suspended" qtlid="125096">Abgelaufen</translation>
-   <translation id="privateDatabase_tabs_cron_label_database_name" qtlid="275078">Datenbank</translation>
+   <translation id="privateDatabase_tabs_cron_label_database_name" qtlid="275078">Datenbanken</translation>
    <translation id="privateDatabase_tabs_cron_configuration_delete_title" qtlid="263103">Eine geplante Sicherung löschen</translation>
    <translation id="privateDatabase_tabs_cron_configuration_delete_step1_question" qtlid="263116">Sind Sie sicher, dass Sie diese geplante Sicherung löschen möchten?</translation>
    <translation id="privateDatabase_tabs_cron_configuration_delete_success" qtlid="263129">Die geplante Sicherung wird gelöscht.</translation>
@@ -464,18 +464,18 @@
    <translation id="privateDatabase_order_sql_type_premium_label" qtlid="72845">SQL Private</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_title" qtlid="353491">Vorteile von SQL Private: </translation>
    <translation id="privateDatabase_order_sql_type_premium_info_line_1" qtlid="404811">Anzahl Datenbanken unbegrenzt</translation>
-   <translation id="privateDatabase_order_sql_type_premium_info_line_2" qtlid="455646">Mémoire RAM garantie de {0} à {1}</translation>
+   <translation id="privateDatabase_order_sql_type_premium_info_line_2" qtlid="455646">Garantierter RAM von {0} bis {1}</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_line_3" qtlid="353530">Tägliche automatische Backups </translation>
    <translation id="privateDatabase_order_sql_type_premium_info_line_4" qtlid="404824">Bis zu 200 Simultanverbindungen</translation>
    <translation id="privateDatabase_order_sql_type_premium_info_line_5" qtlid="404837">Zugang über Ihr OVH Webhosting</translation>
-   <translation id="privateDatabase_order_sql_type_premium_info_line_6" qtlid="455659">Disque garanti de 8 Go à 64 Go</translation>
+   <translation id="privateDatabase_order_sql_type_premium_info_line_6" qtlid="455659">Garantierter Festplattenspeicher mit 8 GB bis 64 GB</translation>
 
    <translation id="privateDatabase_order_sql_type_dbaas_label" qtlid="404863">CloudDB</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_title" qtlid="404876">CloudDB Eigenschaften:</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_line_1" qtlid="404889">Zugang über das öffentliche Netzwerk</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_line_2" qtlid="404811">Anzahl Datenbanken unbegrenzt</translation>
-   <translation id="privateDatabase_order_sql_type_dbaas_info_line_3" qtlid="455646">Mémoire RAM garantie de {0} à {1}</translation>
-   <translation id="privateDatabase_order_sql_type_dbaas_info_line_4" qtlid="455659">Disque garanti de 8 Go à 64 Go</translation>
+   <translation id="privateDatabase_order_sql_type_dbaas_info_line_3" qtlid="455646">Garantierter RAM von {0} bis {1}</translation>
+   <translation id="privateDatabase_order_sql_type_dbaas_info_line_4" qtlid="455659">Garantierter Festplattenspeicher mit 8 GB bis 64 GB</translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_line_5" qtlid="353530">Tägliche automatische Backups </translation>
    <translation id="privateDatabase_order_sql_type_dbaas_info_line_6" qtlid="404824">Bis zu 200 Simultanverbindungen</translation>
 
@@ -510,7 +510,7 @@
    <translation id="privateDatabase_tabs_whitelist_list_ip_network" qtlid="404915">IP / Maske</translation>
    <translation id="privateDatabase_tabs_whitelist_list_ip_network_description" qtlid="404928">Liste der autorisierten IPs</translation>
 <!-- SERVICE -->
-   <translation id="privateDatabase_tabs_whitelist_list_service" qtlid="7702">Datenbank</translation>
+   <translation id="privateDatabase_tabs_whitelist_list_service" qtlid="7702">Datenbanken</translation>
    <translation id="privateDatabase_tabs_whitelist_list_service_description" qtlid="404941">Dieser IP-Adresse den Zugriff auf die Datenbanken erlauben</translation>
    <translation id="privateDatabase_tabs_whitelist_list_service_true" qtlid="208898">Erlaubt</translation>
    <translation id="privateDatabase_tabs_whitelist_list_service_false" qtlid="404954">Nicht-autorisiert</translation>
@@ -545,7 +545,7 @@
    <translation id="privateDatabase_modale_whitelist_add_ip_tooltip" qtlid="405097">Die IP-Adresse / Maske muss eine IPv4 sein (127.0.0.1 ou 127.0.0.0/32)</translation>
    <translation id="privateDatabase_modale_whitelist_add_ip_title" qtlid="405110">IP-Adresse / Maske der Whitelist hinzufügen</translation>
    <translation id="privateDatabase_modale_whitelist_add_name" qtlid="9238">Beschreibung</translation>
-   <translation id="privateDatabase_modale_whitelist_add_service" qtlid="7702">Datenbank</translation>
+   <translation id="privateDatabase_modale_whitelist_add_service" qtlid="7702">Datenbanken</translation>
    <translation id="privateDatabase_modale_whitelist_add_service_title" qtlid="405123">Dieser IP-Adresse / Maske den Zugriff auf die Datenbanken erlauben</translation>
    <translation id="privateDatabase_modale_whitelist_add_sftp" qtlid="295296">SFTP</translation>
    <translation id="privateDatabase_modale_whitelist_add_sftp_title" qtlid="405136">Dieser IP-Adresse / Maske den Zugriff auf den SFTP-Port erlauben</translation>
@@ -562,7 +562,7 @@
    <translation id="privateDatabase_modale_whitelist_update_fail" qtlid="405253">Beim Bearbeiten der Whitelist ist ein Fehler aufgetreten.</translation>
    <translation id="privateDatabase_modale_whitelist_update_ip" qtlid="404915">IP / Maske</translation>
    <translation id="privateDatabase_modale_whitelist_update_name" qtlid="9238">Beschreibung</translation>
-   <translation id="privateDatabase_modale_whitelist_update_service" qtlid="7702">Datenbank</translation>
+   <translation id="privateDatabase_modale_whitelist_update_service" qtlid="7702">Datenbanken</translation>
    <translation id="privateDatabase_modale_whitelist_update_service_title" qtlid="405266">Dieser IP-Adresse / Maske den Zugriff auf die Datenbanken erlauben</translation>
    <translation id="privateDatabase_modale_whitelist_update_sftp" qtlid="295296">SFTP</translation>
    <translation id="privateDatabase_modale_whitelist_update_sftp_title" qtlid="405136">Dieser IP-Adresse / Maske den Zugriff auf den SFTP-Port erlauben</translation>
