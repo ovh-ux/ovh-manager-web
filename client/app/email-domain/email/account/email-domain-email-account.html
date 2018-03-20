@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-md-9">
         <div data-ovh-alert="{{alerts.main}}"></div>
-        
-       
+
+
         <div data-ng-if="ctrlEmailDomainEmail.shouldDisplayAccountMigration">
             <div data-ng-include="'email-domain/email/account/migrate/email-domain-email-account-migrate.html'"></div>
         </div>
@@ -193,7 +193,7 @@
                     data-ng-click="setAction('email-domain/email/account/export-csv/email-domain-email-account-export-csv')"
                     data-ng-disabled="ctrlEmailDomainEmail.emails.length === 0">
             </button>
-            <a data-ng-href="{{ $ctrl.webOMMUrl }}"
+            <a data-ng-href="{{:: ctrlEmailDomainEmail.webOMMUrl }}"
                class="btn btn-block btn-default text-wrap"
                target="_blank"
                role="button">
