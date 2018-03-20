@@ -246,7 +246,7 @@
    <translation id="domain_tab_ZONE_default_ttl_default_value_conditions" qtlid="328888">The value must be a whole number between <strong>{0}</strong> and <strong>{1}</strong>.</translation>
 
    <translation id="domain_configuration_dns_config" qtlid="270592">Modify DNS servers</translation>
-   <translation id="domain_configuration_add_subdomain" qtlid="95167">Add a sub-domain</translation>
+   <translation id="domain_configuration_add_subdomain" qtlid="95167">Add subdomain</translation>
    <translation id="domain_configuration_order_alldom" qtlid="288990">Order an allDom pack </translation>
    <translation id="domain_configuration_add_subdomain_subdomain" qtlid="265327">sub-domain</translation>
    <translation id="domain_configuration_add_subdomain_tip" qtlid="265340">If you leave this field empty, the configuration will apply directly to the domain name</translation>
@@ -306,21 +306,21 @@
    <translation id="domain_configuration_whois_step1_helpwizard_desc" qtlid="329005">When you register a domain name, you will be asked for personal details. These are published by default in the WHOIS database, which is publicly accessible. <br/>This function lets you hide information if you wish to. </translation>
    <translation id="domain_configuration_whois_step1_helpwizard_whatis" qtlid="130099">What is WHOIS?</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">WHOIS is a public search facility for information on domain names and IP addresses. This database mainly consists of information on the owners. </translation>
-   <translation id="domain_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">What information is published in the WHOIS?</translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">What information is published in WHOIS?</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329018">The details published are the domain name owner's. They depend on the domain name extension, but in general they will be :<ul><li>their address</li><li>Their phone and fax number</li><li>Their e-mail</li></ul><br/>All three pieces of information can be masked.</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_how" qtlid="130135">How does OVH enable you to hide this information?</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_how_desc" qtlid="329031">If you enable this service, OVH will replace your personal information with generic information. However you will stay contactable.<ul><li>The address field is replaced with an OVH address and we send the emails to the real recipient. </li><li>The telephone and fax fields are replaced by an OwO number.</li><li>The email field is replaced by a redirection which points towards the owner's email address. This address is regenerated regularly and an anti-SPAM filter is applied.</li></ul></translation>
    <translation id="domain_configuration_whois_field_ADDRESS" qtlid="30430">Address</translation>
    <translation id="domain_configuration_whois_field_EMAIL" qtlid="33598">Email</translation>
    <translation id="domain_configuration_whois_field_PHONE" qtlid="128214">Phone/Fax</translation>
-   <translation id="domain_configuration_whois_step2_alert" qtlid="128226">Please note that the WHOIS data will be updated in a few hours. </translation>
+   <translation id="domain_configuration_whois_step2_alert" qtlid="128226">Please note that the WHOIS data will take a few hours to update.</translation>
    <translation id="domain_configuration_whois_step2_old_configuration" qtlid="128238">Previous configuration</translation>
    <translation id="domain_configuration_whois_step2_new_configuration" qtlid="128250">New configuration</translation>
-   <translation id="domain_configuration_whois_step2_question" qtlid="128262">Do you really want to apply the following modifications when displaying WHOIS information?</translation>
+   <translation id="domain_configuration_whois_step2_question" qtlid="128262">Are you sure you want to apply the following modifications for displaying WHOIS information?</translation>
    <translation id="domain_configuration_whois_step2_activated" qtlid="128274">Hidden</translation>
    <translation id="domain_configuration_whois_step2_desactivated" qtlid="128286">Displayed</translation>
    <translation id="domain_configuration_whois_success" qtlid="128298">Your modification request related to WHOIS information has been taken into account.</translation>
-   <translation id="domain_configuration_whois_fail" qtlid="128310">Error when requesting WHOIS information modification.</translation>
+   <translation id="domain_configuration_whois_fail" qtlid="128310">An error has occurred requesting WHOIS information modification.</translation>
    <translation id="domain_configuration_whois_contracts" qtlid="329044">To enable WHOIS information, you must accept the terms and conditions. <a href="#/useraccount/agreements">Access terms and conditions</a>.</translation>
 
    <translation id="domain_exemple" qtlid="182475">E.g.</translation>
@@ -542,7 +542,7 @@
 
    <translation id="domain_configuration_dns_entry_add_ipv4" qtlid="101781">IPv4</translation>
    <translation id="domain_configuration_dns_entry_add_ipv6" qtlid="34126">IPv6</translation>
-   <translation id="domain_configuration_dns_entry_add_host" qtlid="192201">Name of host</translation>
+   <translation id="domain_configuration_dns_entry_add_host" qtlid="192201">Host name</translation>
    <translation id="domain_configuration_dns_entry_add_value" qtlid="47548">Value</translation>
    <translation id="domain_configuration_dns_entry_add_format" qtlid="5846">Format</translation>
    <translation id="domain_configuration_dns_entry_add_ttl" qtlid="121747">TTL</translation>
@@ -710,8 +710,8 @@
    <translation id="domain_order_start10M_choose_duration" qtlid="225408">Select the duration of your Start 10M plan.</translation>
    <translation id="domain_order_start10M_duration_choosed" qtlid="225421">Click "Next" to continue.</translation>
    <translation id="domain_order_start10M_contract_accept" qtlid="225434">Please read and accept the terms and conditions below, and click "Next".</translation>
-   <translation id="domain_order_hosting_price_HT" qtlid="146177">Total price excl. taxes:</translation>
-   <translation id="domain_order_hosting_price_TTC" qtlid="146190">Total price incl. taxes:</translation>
+   <translation id="domain_order_hosting_price_HT" qtlid="146177">Sub-total:</translation>
+   <translation id="domain_order_hosting_price_TTC" qtlid="146190">Total price:</translation>
    <translation id="domain_order_hosting_mx_explain" qtlid="227572">Please note: when you activate this solution, your DNS zone's MX records will automatically be replaced by OVH's default MX records.</translation>
    <translation id="domain_order_hosting_finish_explain" qtlid="233248">Click "Confirm" to activate your web hosting package. </translation>
    <translation id="domain_order_hosting_finish_error" qtlid="181227">An error occurred while creating the order confirmation.</translation>
@@ -749,7 +749,7 @@
    <translation id="domain_tab_DYNHOST_delete_success" qtlid="226605">The DynHost entry has been deleted.</translation>
 
    <translation id="domain_tab_DYNHOST_add_title" qtlid="226618">Create a DynHost</translation>
-   <translation id="domain_tab_DYNHOST_add_subDomain" qtlid="99776">Sub-domain:</translation>
+   <translation id="domain_tab_DYNHOST_add_subDomain" qtlid="99776">Subdomain:</translation>
    <translation id="domain_tab_DYNHOST_add_target_ip" qtlid="226631">Enter the current target IP. It will then be updated dynamically.</translation>
    <translation id="domain_tab_DYNHOST_add_step1" qtlid="226644">Add a DynHost entry to the DNS zone</translation>
    <translation id="domain_tab_DYNHOST_add_success" qtlid="226657">The DynHost entry has been added.</translation>
