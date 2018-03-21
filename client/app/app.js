@@ -569,14 +569,10 @@ angular
                     required: translator.tr("common_field_error_required"),
                     number: translator.tr("common_field_error_number"),
                     email: translator.tr("common_field_error_email"),
-                    min: translator.tr("common_field_error_min")
-                        .replace("MIN_VALUE", "{{min}}"),
-                    max: translator.tr("common_field_error_max")
-                        .replace("MAX_VALUE", "{{max}}"),
-                    minlength: translator.tr("common_field_error_minlength")
-                        .replace("MIN_LENGTH_VALUE", "{{minlength}}"),
-                    maxlength: translator.tr("common_field_error_maxlength")
-                        .replace("MAX_LENGTH_VALUE", "{{maxlength}}"),
+                    min: translator.tr("common_field_error_min", { min: "{{min}}" }),
+                    max: translator.tr("common_field_error_max", { max: "{{max}}" }),
+                    minlength: translator.tr("common_field_error_minlength", { minlength: "{{minlength}}" }),
+                    maxlength: translator.tr("common_field_error_maxlength", { maxlength: "{{maxlength}}" }),
                     pattern: translator.tr("common_field_error_pattern")
                 }
             };
