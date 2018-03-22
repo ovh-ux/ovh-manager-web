@@ -91,10 +91,10 @@ angular.module("services").service("Products", [
                                             products = [];
                                         }
 
-                                        let productDomains = [];
                                         const allDomains = _.pluck(productsByType.domains, "name");
                                         const allDomainsOnly = _.pluck(productsByType.domains.filter((x) => x.type === "DOMAIN"), "name");
                                         const allZones = _.pluck(productsByType.domains.filter((x) => x.type === "ZONE" && allDomainsOnly.indexOf(x.name) === -1), "name");
+                                        let productDomains = allDomains;
 
                                         if (allDoms && allDoms.length > 0) {
                                             productsByType.allDoms = [];
@@ -103,7 +103,7 @@ angular.module("services").service("Products", [
                                                     allDoms.map((allDom) =>
                                                         AllDom.getDomains(allDom).then(
                                                             (domains) => {
-                                                                productDomains = productDomains.concat(allDomains.filter((d) => !~domains.indexOf(d)));
+                                                                productDomains = productDomains.filter((d) => !~domains.indexOf(d));
 
                                                                 productsByType.allDoms.push({
                                                                     name: allDom,
