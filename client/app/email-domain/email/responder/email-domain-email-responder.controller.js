@@ -40,7 +40,7 @@ angular.module("App").controller(
             this.responders = null;
 
             return this.Emails
-                .getResponders(this.$stateParams.productId)
+                .getResponders(this.domain)
                 .then((data) => (this.responders = data.sort()))
                 .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_table_responders_error"), err, this.$scope.alerts.main))
                 .finally(() => {
