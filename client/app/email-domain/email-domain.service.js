@@ -575,6 +575,18 @@ angular.module("services").service(
         }
 
         /**
+         * Get tasks for responder
+         * @param {string} serviceName
+         * @param {string} account
+         */
+        getResponderTasks (serviceName, account) {
+            return this.OvhHttp.get(`/email/domain/${serviceName}/task/responder`, {
+                rootPath: "apiv6",
+                params: { account }
+            });
+        }
+
+        /**
          * Obtain list of available ACL
          * @param {string} serviceName
          * @param {boolean} forceRefresh

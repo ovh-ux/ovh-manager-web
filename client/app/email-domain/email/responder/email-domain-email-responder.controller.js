@@ -8,9 +8,10 @@ angular.module("App").controller(
          * @param Alerter
          * @param Emails
          */
-        constructor ($scope, $stateParams, Alerter, Emails) {
+        constructor ($scope, $stateParams, $timeout, Alerter, Emails) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
+            this.$timeout = $timeout;
             this.Alerter = Alerter;
             this.Emails = Emails;
         }
@@ -20,6 +21,7 @@ angular.module("App").controller(
                 responders: false,
                 pager: false
             };
+            this.domain = this.$stateParams.productId;
 
             this.$scope.$on("hosting.tabs.emails.responders.refresh", () => this.refreshTableResponders());
 
@@ -49,12 +51,31 @@ angular.module("App").controller(
         }
 
         transformItem (item) {
-            return this.Emails.getResponder(this.$stateParams.productId, item);
+            return this.Emails.getResponder(this.domain, item)
+                .then((responder) => {
+                    this.pollResponderTasks(responder);
+                    return responder;
+                });
         }
 
         onTransformItemDone () {
             this.loading.responders = false;
             this.loading.pager = false;
+        }
+
+        pollResponderTasks (responder) {
+            this.Emails
+                .getResponderTasks(this.domain, responder.account)
+                .then((tasks) => {
+                    if (_.isEmpty(tasks)) {
+                        responder.actionsDisabled = false;
+                    } else {
+                        responder.actionsDisabled = true;
+                        this.$timeout(() => {
+                            this.pollResponderTasks(responder);
+                        }, 2000);
+                    }
+                });
         }
     }
 );
