@@ -115,7 +115,7 @@ angular.module("App").controller(
                     email.emailCount = usage.emailCount;
                     email.date = usage.date;
 
-                    this.setAccountPercentUse(email);
+                    this.constructor.setAccountPercentUse(email);
 
                     return email;
                 });
@@ -135,13 +135,13 @@ angular.module("App").controller(
             this.Emails
                 .updateDelegatedUsage(account.email)
                 .then(() =>
-                    this.Emails.getEmailDelegatedUsage(account.email).then(() => this.setAccountPercentUse(account))
+                    this.Emails.getEmailDelegatedUsage(account.email).then(() => this.constructor.setAccountPercentUse(account))
                 )
                 .catch((err) => this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_update_usage_error"), err, this.$scope.alerts.main))
                 .finally(() => (this.loading.usage = false));
         }
 
-        setAccountPercentUse (account) {
+        static setAccountPercentUse (account) {
             if (account.size > 0) {
                 account.percentUse = _.round(account.quota * 100 / account.size);
             } else {
