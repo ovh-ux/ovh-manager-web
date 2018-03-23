@@ -7,7 +7,7 @@
    <translation id="privateDatabase_dashboard_quota" qtlid="258951">L'espace total utilisé est : {0}</translation>
    <translation id="privateDatabase_dashboard_version" qtlid="34210">Version</translation>
    <translation id="privateDatabase_dashboard_version_mariadb_101" qtlid="444430">MariaDB 10.1</translation>
-   <translation id="privateDatabase_dashboard_version_mariadb_102">MariaDB 10.2</translation>   
+   <translation id="privateDatabase_dashboard_version_mariadb_102">MariaDB 10.2</translation>
    <translation id="privateDatabase_dashboard_version_mysql_41" qtlid="215572">MySQL 4.1</translation>
    <translation id="privateDatabase_dashboard_version_mysql_50" qtlid="215585">MySQL 5.0</translation>
    <translation id="privateDatabase_dashboard_version_mysql_51" qtlid="215598">MySQL 5.1</translation>
@@ -85,7 +85,7 @@
    <translation id="privateDatabase_configuration_alert" qtlid="263507">Attention ! Toute modification entraîne un redémarrage du serveur.</translation>
    <translation id="privateDatabase_configuration_edit_btn" qtlid="185452">Editer</translation>
    <translation id="privateDatabase_configuration_cancel_btn" qtlid="37863">Annuler</translation>
-   <translation id="privateDatabase_configuration_confirm_btn" qtlid="31498">Confirmer</translation>
+   <translation id="privateDatabase_configuration_confirm_btn">Appliquer</translation>
    <translation id="privateDatabase_configuration_reboot" qtlid="263520">Changement de configuration en cours. Votre serveur va redémarrer.</translation>
    <translation id="privateDatabase_configuration_error_put" qtlid="263533">Une erreur est survenue lors de la modification de la configuration.</translation>
    <translation id="privateDatabase_configuration_error" qtlid="233047">Une erreur est survenue lors de la récupération des informations.</translation>
@@ -100,6 +100,16 @@
    <translation id="privateDatabase_configuration_event_scheduler" qtlid="370187">Statut de l'orchestrateur d'évènements</translation>
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Le nombre de secondes que le serveur attend avant de fermer la connexion lorsqu'il n'y a pas d'activité lors d'une connexion en invite de commande.</translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Le nombre de secondes que le serveur attend avant de fermer la connexion lorsqu'il n'y a pas d'activité lors d'une connexion externe.</translation>
+
+   <translation id="privateDatabase_configuration_field_autocommit">Définit si les requêtes sont automatiquement commitées ou non.</translation>
+   <translation id="privateDatabase_configuration_field_event_scheduler">Permet de déclencher l’exécution de requêtes programmées directement dans le serveur MySQL.</translation>
+   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size">Choix de la taille de la mémoire tampon (en megabytes).</translation>
+   <translation id="privateDatabase_configuration_field_interactive_timeout">Nombre de secondes pendant lesquelles le serveur attend une activité sur une connexion interactive avant de la fermer.</translation>
+   <translation id="privateDatabase_configuration_field_max_allowed_packet">Taille maximum des paquets (en megabytes).</translation>
+   <translation id="privateDatabase_configuration_field_max_connections">Nombre de connexions simultanées autorisées sur le SQL Privé.</translation>
+   <translation id="privateDatabase_configuration_field_max_user_connections">Nombre de connexions simultanées autorisées par utilisateur.</translation>
+   <translation id="privateDatabase_configuration_field_tmpdir">Répertoire des fichiers temporaires (RAM ou disque dur de l'instance).</translation>
+   <translation id="privateDatabase_configuration_field_wait_timeout">Temps pendant lequel le serveur attend l’activité sur une connexion non interactive avant de la fermer (en secondes).</translation>
 
    <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Cette fonctionnalité n'est pas disponible pour ce type de base de données.</translation>
 
