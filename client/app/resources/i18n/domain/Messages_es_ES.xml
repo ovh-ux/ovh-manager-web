@@ -490,7 +490,7 @@
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_aaaa" qtlid="129823">AAAA</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_aaaa_desc" qtlid="129835">Permite asociar un dominio o subdominio a una dirección IPv6.</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_cname" qtlid="129847">CNAME</translation>
-   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_cname_desc" qtlid="129859">Es un alias del campo A, útil para asignar diferentes nombres alternativos a los servicios de un host.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_cname_desc" qtlid="129859">Es un alias del registro A, útil para asignar diferentes nombres alternativos a los servicios de un host.</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_dkim" qtlid="129871">DKIM</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_dkim_desc" qtlid="129883">Permite difundir las llaves que posibilitan que un servidor de correo verifique las firmas DKIM (útil en la lucha contra el spam).</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_loc" qtlid="129895">LOC</translation>
@@ -504,7 +504,7 @@
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_spf" qtlid="129979">SPF</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_spf_desc" qtlid="129991">Permite garantizar a los servidores de correo electrónico remotos que los servidores de que usted dispone están autorizados para enviar correo. Útil en la lucha contra el spam.</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_srv" qtlid="130003">SRV</translation>
-   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_srv_desc" qtlid="130015">Permite especificar la dirección de un servidor, así como el puerto a utilizar, para un servicio determinado. Es una versión más amplia y genérica del campo MX.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_srv_desc" qtlid="130015">Permite especificar la dirección de un servidor, así como el puerto a utilizar, para un servicio determinado. Es una versión más amplia y genérica del registro MX.</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_sshfp" qtlid="130027">SSHFP</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_sshfp_desc" qtlid="130039">Permite publicar las claves SSH públicas en el sistema DNS, ayudando a la verificación de la autenticidad de la máquina host.</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_txt" qtlid="130051">TXT</translation>
@@ -527,13 +527,13 @@
    <translation id="domain_configuration_dns_importtext_error_regex" qtlid="233505">Atención: El TTL especificado es incorrecto.</translation>
    <translation id="domain_configuration_dns_importtext_error" qtlid="233518">Se ha producido un error al importar la configuración.</translation>
 
-   <translation id="domain_configuration_dns_entry_add_step1_title" qtlid="192123">Seleccione un tipo de campo DNS:</translation>
-   <translation id="domain_configuration_dns_entry_add_step1_subtitle1" qtlid="192136">Campos de dirección</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_title" qtlid="192123">Seleccione un tipo de registro DNS:</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_subtitle1" qtlid="192136">Registros de direccionamiento</translation>
    <translation id="domain_configuration_dns_entry_add_step1_subtitle2" qtlid="9466">Alias</translation>
-   <translation id="domain_configuration_dns_entry_add_step1_subtitle3" qtlid="192149">Campos extendidos</translation>
-   <translation id="domain_configuration_dns_entry_add_step1_subtitle4" qtlid="192162">Campos de correo</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_subtitle3" qtlid="192149">Registros extendidos</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_subtitle4" qtlid="192162">Registros de correo</translation>
 
-   <translation id="domain_configuration_dns_entry_add_expert_title" qtlid="192175">Indique el valor para este campo:</translation>
+   <translation id="domain_configuration_dns_entry_add_expert_title" qtlid="192175">Indique el valor para este registro:</translation>
    <translation id="domain_configuration_dns_entry_add_type" qtlid="129171">Tipo de campo</translation>
    <translation id="domain_configuration_dns_entry_add_subdomain" qtlid="192188">Subdominio</translation>
    <translation id="domain_configuration_dns_entry_add_domain" qtlid="170434">Dominio</translation>
@@ -605,7 +605,7 @@
    <translation id="domain_configuration_dns_entry_add_spf_others_title" qtlid="192539">¿El correo de {0} proviene originariamente de otros servidores que pertenezcan a otros dominios (por ejemplo, su proveedor de acceso a internet)?</translation>
    <translation id="domain_configuration_dns_entry_add_spf_all_title" qtlid="192552">¿La información que ha indicado describe todos los hosts que envían correo de {0}?</translation>
    <translation id="domain_configuration_dns_entry_add_spf_all_title_yes" qtlid="192565">Sí, estoy seguro</translation>
-   <translation id="domain_configuration_dns_entry_add_spf_all_title_safe" qtlid="192578">Sí, pero utilizar el safe mode</translation>
+   <translation id="domain_configuration_dns_entry_add_spf_all_title_safe" qtlid="192578">Sí, pero utilizar el modo seguro</translation>
    <translation id="domain_configuration_dns_entry_add_spf_all_title_no" qtlid="34788">No</translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_usage" qtlid="109974">Uso</translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_selector" qtlid="291669">Selector</translation>
