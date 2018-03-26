@@ -1,12 +1,10 @@
-@import "bower_components/ovh-ui-kit/packages/oui-color/_constants";
-
+@rem-base: rem-base(10px);
 @bs-path: "bower_components/bootstrap";
 @oui-path: "bower_components/ovh-ui-kit";
 
+// Vendors
+@import "@{oui-path}/packages/oui/stylekit";
 @import "bower_components/ovh-ui-kit-bs/src/ovh-ui-kit-bs";
-
-@oui-icon-dist-folder: "../bower_components/ovh-ui-kit/dist/icons";
-
 @import "bower_components/ovh-angular-actions-menu/less/ovh-angular-actions-menu";
 @import "bower_components/ovh-angular-otrs/dist/ovh-angular-otrs";
 @import 'bower_components/ovh-manager-webfont/dist/less/ovh-font';
@@ -45,5 +43,10 @@
 @import "../components/manager-preload/manager-preload";
 @import "../components/sidebar-menu/sidebar-menu";
 
+// Paths for Icons & Fonts
+@icon-font-path: "../bower_components/bootstrap/fonts/";
+@oui-icon-dist-folder: "../bower_components/ovh-ui-kit/dist/icons";
+@oui-font-source-sans-pro-folder: "../bower_components/ovh-ui-kit/packages/oui-typography/fonts/source-sans-pro";
 @ovh-font-path: "../bower_components/ovh-manager-webfont/dist/fonts";
+
 @ovh-universe-color: @oui-color-jungle;
