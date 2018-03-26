@@ -8,25 +8,24 @@
 
     <div data-ng-if="!configurationsCtrl.loading">
 
-        <div class="alert alert-info" role="alert"
-             data-i18n-static="privateDatabase_configurations_general_postgresql_soon"
+        <oui-message type="info"
              data-ng-if="configurationsCtrl.database.type === 'postgresql'">
-        </div>
-        <div class="alert alert-info" role="alert"
-             data-i18n-static="privateDatabase_capability_disabled_explanation"
+            <span data-i18n-static="privateDatabase_configurations_general_postgresql_soon"></span>
+        </oui-message>
+        <oui-message type="info"
              data-ng-if="configurationsCtrl.database.type !== 'postgresql' && configurationsCtrl.configurations.length === 0">
-        </div>
+            <span data-i18n-static="privateDatabase_capability_disabled_explanation"></span>
+        </oui-message>
 
         <div data-ng-if="configurationsCtrl.configurations.length >= 1">
 
-            <div class="alert alert-warning"
-                 role="alert"
-                 data-i18n-static="privateDatabase_configuration_alert">
-            </div>
+            <oui-message type="warning">
+                <span data-i18n-static="privateDatabase_configuration_alert"></span>
+            </oui-message>
 
             <h2 data-ng-bind-html="tr('privateDatabase_configurations_general_' + configurationsCtrl.database.type)"></h2>
 
-            <form name="db_configuration_form">
+            <form name="dbConfigurationForm" data-ng-submit="configurationsCtrl.updateConfigurations()">
                 <div data-ng-repeat="configuration in configurationsCtrl.configurations track by $index">
                     <oui-field label="{{configuration.key}}"
                                size="m"
@@ -47,21 +46,15 @@
                                size="s"
                                ng-if="configuration.type === 'toggle'"
                                help-text="{{configuration.description}}">
-                        <oui-radio-toggle-group model="configuration.selectedValue.id" required>
+                        <oui-radio-toggle-group model="configuration.selectedValue.id">
                            <oui-radio ng-repeat="item in configuration.availableValues"
                                       text="{{item.text}}"
                                       value="item.id"></oui-radio>
                         </oui-radio-toggle-group>
                     </oui-field>
                 </div>
-                <oui-button
-                    variant="primary"
-                    on-click="configurationsCtrl.updateConfigurations()"
-                    text="{{ tr('privateDatabase_configuration_confirm_btn') }}"
-                    disabled="db_configuration_form.$pristine">
-                </oui-button>
+                <oui-form-actions submit-text="{{ tr('privateDatabase_configuration_confirm_btn') }}"></oui-form-actions>
             </form>
         </div>
-
     </div>
 </div>
