@@ -18,7 +18,9 @@ angular.module("App").controller(
 
             this.loading = {
                 checkSubDomain: false,
-                resume: false
+                resume: false,
+                addDnsEntry: false,
+                editDnsEntry: false
             };
             this.model = {
                 fieldType: this.edit ? this.edit.fieldType : null,
@@ -543,6 +545,7 @@ angular.module("App").controller(
 
         // Add DNS ----------------------------------------------------------------
         addDnsEntry () {
+            this.loading.addDnsEntry = true;
             return this.Domain
                 .addDnsEntry(this.domain.name, {
                     fieldType: this.model.fieldType,
@@ -557,12 +560,14 @@ angular.module("App").controller(
                     this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dns_entry_add_fail"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
+                    this.loading.addDnsEntry = false;
                     this.$scope.resetAction();
                 });
         }
 
         // Update DNS -------------------------------------------------------------
         editDnsEntry () {
+            this.loading.editDnsEntry = true;
             return this.Domain
                 .modifyDnsEntry(this.domain.name, {
                     id: this.edit.id,
@@ -579,6 +584,7 @@ angular.module("App").controller(
                     this.Alerter.alertFromSWS(this.$scope.tr("domain_configuration_dns_entry_modify_fail"), err, this.$scope.alerts.main);
                 })
                 .finally(() => {
+                    this.loading.editDnsEntry = false;
                     this.$scope.resetAction();
                 });
         }
