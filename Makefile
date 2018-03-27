@@ -104,7 +104,7 @@ build-ca: deps
 	$(TAR) $(DIST_CA_TAR) $(DIST_CA_DIR)
 
 release: deps
-	$(GRUNT) release --type=$(type)
+	$(NPM) version $(type) -m "chore: release v%s"
 
 
 ###############
