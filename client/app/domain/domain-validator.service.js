@@ -766,5 +766,14 @@ angular.module("services").service(
             }
             return "";
         }
+
+        /**
+         * Convert host to unicode
+         * @param {string} host
+         * @returns {string}
+         */
+        static convertHostToUnicode (host) {
+            return punycode.toUnicode(host);
+        }
     }
 );
