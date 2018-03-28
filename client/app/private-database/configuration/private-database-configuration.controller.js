@@ -2,10 +2,11 @@
 angular.module("App").controller(
     "PrivateDatabaseConfigurationsCtrl",
     class PrivateDatabaseConfigurationsCtrl {
-        constructor (Alerter, PrivateDatabase, translator, $scope, $stateParams) {
+        constructor (Alerter, PrivateDatabase, translator, $q, $scope, $stateParams) {
             this.alerter = Alerter;
             this.privateDatabaseService = PrivateDatabase;
             this.translator = translator;
+            this.$q = $q;
             this.$scope = $scope;
             this.$stateParams = $stateParams;
         }
@@ -29,8 +30,9 @@ angular.module("App").controller(
                 .then((config) => {
                     this.configurations = config.details.map((field) => this.convertAvailableValues(field));
                 })
-                .catch(() => {
+                .catch((error) => {
                     this.alerter.error(this.translator.tr("privateDatabase_configuration_error"), this.$scope.alerts.main);
+                    this.$q.reject(error);
                 })
                 .finally(() => {
                     this.loading = false;
@@ -60,18 +62,21 @@ angular.module("App").controller(
         getFieldDescriptionTranslated (field) {
             const translationId = `privateDatabase_configuration_field_${field.key}`;
             let description = this.translator.tr(translationId);
-            if (description.includes(translationId)) {
+            if (_.includes(description, translationId)) {
                 description = field.description;
             }
             return description;
         }
 
         updateConfigurations () {
+            if (this.dbConfigurationForm.$invalid) {
+                return this.$q.reject();
+            }
             this.loading = true;
             this.edit.value = false;
             const parameters = this.configurations.map((conf) => ({ key: conf.key, value: conf.selectedValue.id }));
 
-            this.privateDatabaseService
+            return this.privateDatabaseService
                 .changeConfigurationDetails(this.productId, { parameters })
                 .then(() => {
                     this.alerter.success(this.translator.tr("privateDatabase_configuration_reboot"), this.$scope.alerts.main);
@@ -80,8 +85,9 @@ angular.module("App").controller(
                 .then(() => {
                     this.alerter.success(this.translator.tr("privateDatabase_configuration_success"), this.$scope.alerts.main);
                 })
-                .catch(() => {
+                .catch((error) => {
                     this.alerter.error(this.translator.tr("privateDatabase_configuration_error_put"), this.$scope.alerts.main);
+                    this.$q.reject(error);
                 })
                 .finally(() => {
                     this.edit.value = false;
