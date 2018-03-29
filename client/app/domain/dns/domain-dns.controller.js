@@ -22,6 +22,10 @@ angular.module("controllers").controller(
                 table: null,
                 activeDns: null
             };
+            this.dnsStatus = {
+                isHosted: null,
+                isOk: null
+            };
             this.isDnssecEnable = false;
             this.editMode = false;
             this.loading = {
@@ -64,15 +68,20 @@ angular.module("controllers").controller(
 
         loadTable () {
             this.loading.table = true;
+            this.dns.table = [];
             return this.Domain
                 .getTabDns(this.$stateParams.productId)
                 .then((tabDns) => {
                     this.dns.table = tabDns;
                     this.dns.original = angular.copy(tabDns);
                     this.dns.activeDns = this.$filter("filter")(tabDns.dns, { isUsed: true, toDelete: false }).length;
+                    return this.$q.all(_.map(tabDns.dns, (nameServer) => this.Domain.getNameServerStatus(this.$stateParams.productId, nameServer.id)));
                 })
-                .catch(() => {
-                    this.dns.table = [];
+                .then((nameServersStatus) => {
+                    if (!_.isEmpty(nameServersStatus)) {
+                        this.dnsStatus.isOk = !_.some(nameServersStatus, { state: "ko" });
+                        this.dnsStatus.isHosted = !_.some(nameServersStatus, { type: "external" });
+                    }
                 })
                 .finally(() => {
                     this.loading.all = false;
