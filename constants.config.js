@@ -1958,7 +1958,10 @@ module.exports = {
             "MA",
             "TN",
             "SN"
-        ]
+        ],
+        REDIRECT_URLS: {
+            listTicket: "https://www.ovh.com/manager/dedicated/index.html#/ticket"
+        }
     },
     CA: {
         RENEW_URL: "https://ca.ovh.com/fr/cgi-bin/order/renew.cgi?domainChooser={serviceName}",
@@ -2187,6 +2190,9 @@ module.exports = {
             "MA",
             "TN",
             "SN"
-        ]
+        ],
+        REDIRECT_URLS: {
+            listTicket: "https://ca.ovh.com/manager/index.html#/ticket"
+        }
     }
 };
