@@ -218,7 +218,7 @@ angular.module("controllers").controller(
                 .finally(() => {
                     this.isLoading = false;
                     this.$scope.resetAction();
-                    this.$rootScope.broadcast("domain.tabs.redirection.reload", true);
+                    this.$rootScope.$broadcast("domain.tabs.redirection.reload", true);
                     this.shouldIncludeDomain = false;
                 });
         }
