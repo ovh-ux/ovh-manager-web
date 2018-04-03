@@ -125,7 +125,7 @@
                         data-ng-attr-title="{{ctrlDomainDns.domain.managedByOvh && ctrlDomainDns.isDnssecEnable && tr('domain_tab_DNS_lock_button_title') || undefined }}"
                         data-i18n-static="domain_tab_DNS_lock_button"
                         data-ng-click="setAction('dns/lock/domain-dns-lock', false)"
-                        data-ng-disabled="ctrlDomainDns.domain.managedByOvh"
+                        data-ng-disabled="ctrlDomainDns.dnsStatus.isOk && ctrlDomainDns.dnsStatus.isHosted"
                         data-ng-if="ctrlDomainDns.allowModification && !ctrlDomainDns.editMode">
                 </button>
                 <button class="btn btn-block btn-primary" type="button"
