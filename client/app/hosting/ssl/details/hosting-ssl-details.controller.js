@@ -12,8 +12,7 @@ angular
 
         $onInit () {
             this.hosting = this.$scope.currentActionData;
-            this.comodoKnowledgebase = this.constants.urls.comodoKnowledgebase;
-            this.comodoContactEmail = this.constants.urls.comodoContactEmail;
+            this.comodoConstants = this.constants.comodo;
 
             return this.retrievingCertificateValidationReport();
         }

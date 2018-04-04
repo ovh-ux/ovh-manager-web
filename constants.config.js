@@ -1705,8 +1705,6 @@ module.exports = {
                 renewAlign : "https://www.ovh.pt/cgi-bin/order/renew.cgi?alignDate=1&csid=0",
                 start10mMarket: "https://www.ovh.pt/dominios/oferta_alojamento_start10m.xml"
             },
-            comodoKnowledgebase: "https://support.comodo.com/index.php?/Knowledgebase/Article/View/702/0/ev-certificate-validation-checklist",
-            comodoContactEmail: "validation@comodo.eu",
             hosting : {
                 CA : "https://www.ovh.com/ca/en/",
                 CZ : "https://www.ovh.cz/webhosting/",
@@ -1879,6 +1877,11 @@ module.exports = {
                 vpsUniverse: "https://www.ovh.com/manager/dedicated/index.html#/configuration?sessionv6={sessionv6}&landingTo=vps",
                 vps: "https://www.ovh.com/manager/dedicated/index.html#/configuration/vps/{vps}?sessionv6={sessionv6}&landingTo=vps"
             }
+        },
+        COMODO: {
+            knowledgebase: "https://support.comodo.com/index.php?/Knowledgebase/Article/View/702/0/ev-certificate-validation-checklist",
+            contactEmail: "validation@comodo.eu",
+            phoneNumber: "+31 88 775 7777"
         },
 
         "LANGUAGES": [
@@ -2117,6 +2120,11 @@ module.exports = {
                 TN: "https://www.ovh.com/tn/order/express/",
                 WE: "https://www.ovh.com/us/order/express/"
             }
+        },
+        COMODO: {
+            knowledgebase: "https://support.comodo.com/index.php?/Knowledgebase/Article/View/702/0/ev-certificate-validation-checklist",
+            contactEmail: "validation@comodo.eu",
+            phoneNumber: "+31 88 775 7777"
         },
         LANGUAGES: [
             { value: "de_DE", name: "Deutsch" },

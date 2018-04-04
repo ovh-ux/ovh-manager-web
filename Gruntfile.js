@@ -604,6 +604,7 @@ module.exports = function (grunt) {
                         renew: constants[target].RENEW_URL,
                         loginUrl: constants[target].loginUrl,
                         urls: constants[target].URLS,
+                        comodo: constants[target].COMODO,
                         CHATBOT_URL: constants[target].CHATBOT_URL,
                         BILLING_URL: constants[target].BILLING_URL,
                         UNIVERS: constants[target].UNIVERS,
