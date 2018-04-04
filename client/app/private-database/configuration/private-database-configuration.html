@@ -19,13 +19,13 @@
 
         <div data-ng-if="configurationsCtrl.configurations.length >= 1">
 
-            <oui-message data-type="warning">
-                <span data-i18n-static="privateDatabase_configuration_alert"></span>
-            </oui-message>
-
             <h2 data-ng-bind-html="tr('privateDatabase_configurations_general_' + configurationsCtrl.database.type)"></h2>
 
-            <form name="configurationsCtrl.dbConfigurationForm" data-ng-submit="configurationsCtrl.updateConfigurations()">
+            <p data-i18n-static="privateDatabase_configuration_alert"></p>
+
+            <form name="configurationsCtrl.dbConfigurationForm"
+                  data-ng-submit="configurationsCtrl.dbConfigurationForm.$valid && configurationsCtrl.updateConfigurations()"
+                  novalidate>
                 <div data-ng-repeat="configuration in configurationsCtrl.configurations track by $index">
                     <oui-field data-label="{{:: configuration.key}}"
                                data-size="m"
