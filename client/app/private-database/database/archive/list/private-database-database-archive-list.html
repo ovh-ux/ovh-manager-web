@@ -1,17 +1,20 @@
 <div data-ng-controller="PrivateDatabaseArchiveListCtrl as archiveListCtrl">
     <div data-ovh-alert="{{alerts.main}}"></div>
 
-    <button class="oui-button oui-button_link oui-button_icon-left" type="button"
-            data-ng-click="goToList()">
-        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
-        <span data-i18n-static="common_back"></span>
-    </button>
-
-    <h2 data-ng-bind-html="tr('privateDatabase_tabs_dumps_archive_change', [nbDayToDelete])"></h2>
+    <oui-back-button
+        data-on-click="goToList()"
+        data-title="{{::tr('privateDatabase_tabs_dumps_archive_change', [nbDayToDelete])}}">
+    </oui-back-button>
 
     <oui-datagrid data-rows="archiveListCtrl.deletedDbList">
-        <oui-column data-title="tr('privateDatabase_bdd_name')" data-property="databaseName" data-sortable></oui-column>
-        <oui-column data-title="tr('privateDatabase_bdd_dumps_count')" data-property="dumps.length" data-sortable>
+        <oui-column data-title="::tr('privateDatabase_bdd_name')"
+            data-property="databaseName"
+            data-sortable
+            data-type="string"
+            data-searchable
+            data-filterable>
+        </oui-column>
+        <oui-column data-title="::tr('privateDatabase_bdd_dumps_count')" data-property="dumps.length" data-sortable>
             <button class="btn btn-xs" type="button"
                     data-ng-bind="$row.dumps.length"
                     data-ng-class="{ 'btn-success': $row.dumps.length > 0, '$row-danger': !($row.dumps.length > 0) }"
