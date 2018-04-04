@@ -89,11 +89,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        open: {
-            server: {
-                url: "https://localhost:<%= express.options.port %>/client/app"
-            }
-        },
 
         prettier_eslint: {
             dist: {
@@ -1247,8 +1242,6 @@ module.exports = function (grunt) {
         "copy:dev",
         "express:dev",
         "wait",
-
-        // "open",
         "watch"
     ]);
 
