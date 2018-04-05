@@ -174,44 +174,51 @@ angular.module("services").service("Products", [
                 };
             }
 
-            return this.getProducts(forceRefresh).then((productsList) => {
-                let productLength = productsList.length;
+            return this.getProducts(forceRefresh)
+                .then((productsList) => {
+                    const selectedProductIsUnknown = _(selectedProduct.name).isEmpty();
+                    if (selectedProductIsUnknown) {
+                        selectedProduct.name = _($stateParams).get("productId", "");
+                        selectedProduct.type = _($rootScope).get("currentSectionInformation", "").toUpperCase();
+                        selectedProduct.organization = _($stateParams).get("organization", "");
 
-                if ($.isEmpty(selectedProduct.name)) {
-                    selectedProduct.name = $stateParams.productId ? $stateParams.productId : "";
-                    selectedProduct.type = $rootScope.currentSectionInformation ? $rootScope.currentSectionInformation.toUpperCase() : null;
-                    selectedProduct.organization = $stateParams.organization ? $stateParams.organization : "";
-
-                    if (selectedProduct.name === "") {
-                        return {
-                            name: "",
-                            organization: "",
-                            type: ""
-                        };
-                    }
-                }
-
-                for (productLength; productLength--;) {
-                    if (productsList[productLength].name === selectedProduct.name && productsList[productLength].type === selectedProduct.type) {
-                        return productsList[productLength];
-                    } else if (productsList[productLength].hasSubComponent === true) {
-                        let i = 0;
-                        let found;
-
-                        while (!found && i < productsList[productLength].subProducts.length) {
-                            if (productsList[productLength].subProducts[i].name === selectedProduct.name && productsList[productLength].subProducts[i].type === selectedProduct.type) {
-                                found = productsList[productLength].subProducts[i];
-                            }
-                            i++;
-                        }
-                        if (found) {
-                            return found;
+                        if (selectedProduct.name === "") {
+                            return {
+                                name: "",
+                                organization: "",
+                                type: ""
+                            };
                         }
                     }
-                }
 
-                return null;
-            });
+                    let productMatchingSelectedProduct = null;
+
+                    _(productsList).forEach((product) => {
+                        if (currentProductMatchesSelectedProduct(product)) {
+                            productMatchingSelectedProduct = product;
+                            return false;
+                        }
+
+                        if (product.hasSubComponent) {
+                            _(product.subProducts).forEach((subProduct) => {
+                                if (currentProductMatchesSelectedProduct(subProduct)) {
+                                    productMatchingSelectedProduct = subProduct;
+                                    return false;
+                                }
+
+                                return true;
+                            }).value();
+                        }
+
+                        return true;
+                    }).value();
+
+                    return productMatchingSelectedProduct;
+                });
+
+            function currentProductMatchesSelectedProduct (currentProduct) {
+                return currentProduct.name === selectedProduct.name && currentProduct.type === selectedProduct.type;
+            }
         };
 
         /*

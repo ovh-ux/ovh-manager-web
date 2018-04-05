@@ -250,12 +250,18 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
             loadOnState: "app.microsoft.exchange"
         }, microsoftItem);
 
+        const exchangeProductTypes = {
+            EXCHANGE_PROVIDER: "app.microsoft.exchange.provider",
+            EXCHANGE_DEDICATED: "app.microsoft.exchange.dedicated",
+            EXCHANGE_DEDICATEDCLUSTER: "app.microsoft.exchange.dedicatedcluster"
+        };
+
         _.forEach(_.sortBy(products.exchanges, (elt) => angular.lowercase(elt.displayName || elt.name)), (elt) => {
             SidebarMenu.addMenuItem({
                 title: elt.displayName || elt.name,
                 category: "microsoft",
                 icon: "ms-Icon ms-Icon--ExchangeLogo",
-                state: elt.type === "EXCHANGE_PROVIDER" ? "app.microsoft.exchange.provider" : elt.type === "EXCHANGE_DEDICATED" ? "app.microsoft.exchange.dedicated" : "app.microsoft.exchange.hosted",
+                state: _(exchangeProductTypes[elt.type]).isString() ? exchangeProductTypes[elt.type] : "app.microsoft.exchange.hosted",
                 stateParams: {
                     organization: elt.organization,
                     productId: elt.name
@@ -264,7 +270,6 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
         });
 
         // Office
-
         const officesItem = SidebarMenu.addMenuItem({
             title: translator.tr("navigation_left_office"),
             category: "microsoft",
@@ -286,7 +291,6 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
         });
 
         // Sharepoint
-
         const sharepointItems = SidebarMenu.addMenuItem({
             title: translator.tr("navigation_left_sharepoint"),
             category: "microsoft",
