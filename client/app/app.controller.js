@@ -42,6 +42,7 @@ angular.module("App").controller(
             }).$promise.then((alerts) => {
                 if (alerts && alerts.length) {
                     const messages = [];
+                    let translatedAlert = "";
 
                     angular.forEach(alerts, (alert) => {
                         if (alert.level === "warning") {
@@ -68,7 +69,7 @@ angular.module("App").controller(
                                 messages.push(this.translator.tr("me_alerts_ORDERS_DOCUMENTSREQUESTED", [(_.get(alert, "data.ordersWithDocumentsRequested") || []).length]));
                                 break;
                             default:
-                                var translatedAlert = this.translator.tr(`me_alerts_${alert.id}`);
+                                translatedAlert = this.translator.tr(`me_alerts_${alert.id}`);
                                 if (translatedAlert === `/!\\ me_alerts_${alert.id}`) {
                                         // No translation
                                     messages.push(alert.description);
