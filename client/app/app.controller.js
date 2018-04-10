@@ -42,6 +42,7 @@ angular.module("App").controller(
             }).$promise.then((alerts) => {
                 if (alerts && alerts.length) {
                     const messages = [];
+                    let translatedAlert = "";
 
                     angular.forEach(alerts, (alert) => {
                         if (alert.level === "warning") {
@@ -68,7 +69,7 @@ angular.module("App").controller(
                                 messages.push(this.translator.tr("me_alerts_ORDERS_DOCUMENTSREQUESTED", [(_.get(alert, "data.ordersWithDocumentsRequested") || []).length]));
                                 break;
                             default:
-                                var translatedAlert = this.translator.tr(`me_alerts_${alert.id}`);
+                                translatedAlert = this.translator.tr(`me_alerts_${alert.id}`);
                                 if (translatedAlert === `/!\\ me_alerts_${alert.id}`) {
                                         // No translation
                                     messages.push(alert.description);
@@ -83,6 +84,21 @@ angular.module("App").controller(
                         this.userImportantAlertsMessages = messages;
                     }
                 }
+            });
+
+            // Prevents a bug with CKEditor.
+            // See: https://stackoverflow.com/a/23667151 and includes updates from https://github.com/twbs/bootstrap-sass/blob/5d6b2ebba0c2a5885ce2f0e01e9218db3d3b5e47/assets/javascripts/bootstrap/modal.js#L139
+            this.$timeout(() => {
+                $.fn.modal.Constructor.prototype.enforceFocus = function () {
+                    $(document)
+                        .off("focusin.bs.modal")
+                        .on("focusin.bs.modal", $.proxy((event) => {
+                            const $parent = $(event.target.parentNode);
+                            if (document !== event.target && this.$element[0] !== event.target && !this.$element.has(event.target).length && !$parent.hasClass("cke_dialog_ui_input_select") && !$parent.hasClass("cke_dialog_ui_input_text")) {
+                                this.$element.trigger("focus");
+                            }
+                        }, this));
+                };
             });
         }
 
