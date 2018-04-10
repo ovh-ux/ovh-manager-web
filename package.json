@@ -86,6 +86,7 @@
     "commit": "npm-scripts-config commit",
     "commitmsg": "npm-scripts-config commitmsg",
     "version": "npm-scripts-config version && npm-bower-sync-ver && git add bower.json",
+    "postversion": "git push && git push --tags",
     "preview-changelog": "npm-scripts-config preview-changelog"
   },
   "private": true,
