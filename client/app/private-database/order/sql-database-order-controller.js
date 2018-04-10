@@ -175,6 +175,7 @@ angular.module("App").controller(
             this.model.dbPack = null;
             this.model.hosting = null;
             this.getDuration();
+            this.resetOrder();
         }
 
         /*
@@ -183,6 +184,7 @@ angular.module("App").controller(
         getDuration () {
             this.loading.durations = true;
             this.model.duration = null;
+            this.resetOrder();
             const selected = this.getData(this.model.type);
 
             return this[`getDurations${selected.key}`](selected).then((durations) => {
@@ -403,6 +405,10 @@ angular.module("App").controller(
 
         isStart () {
             return this.getData(this.model.type).key === "start";
+        }
+
+        resetOrder () {
+            this.order = null;
         }
     }
 );

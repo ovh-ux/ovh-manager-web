@@ -223,7 +223,7 @@
    <translation id="domain_tab_ZONE_no_zone_activate_minimized_yes" qtlid="263923">Sí, quiero activar la zona DNS con los registros mínimos. </translation>
    <translation id="domain_tab_ZONE_no_zone_activate_minimized_no" qtlid="263936">No, pero quiero activar la zona DNS.</translation>
    <translation id="domain_tab_ZONE_no_defaut_dns_used" qtlid="344123">Actualmente utiliza los siguientes servidores DNS:</translation>
-   <translation id="domain_tab_ZONE_set_defaut_dns" qtlid="344305">Para que la zona DNS de abajo se aplique, utilice los siguientes servidores DNS:</translation>
+   <translation id="domain_tab_ZONE_set_defaut_dns" qtlid="344305">Para que se aplique la zona DNS de abajo, utilice los siguientes servidores DNS:</translation>
 
    <translation id="domain_tab_ZONE_title" qtlid="265636">Aquí puede ver la configuración de los distintos registros de su dominio.</translation>
    <translation id="domain_tab_ZONE_info" qtlid="265649">También puede configurar estos registros para asociar su dominio a los distintos servicios haciendo clic en «Añadir un registro».</translation>
@@ -237,12 +237,13 @@
    <translation id="domain_tab_ZONE_table_headers_target" qtlid="47644">Destino</translation>
    <translation id="domain_tab_ZONE_default_import_button" qtlid="233453">Editar en modo de texto</translation>
    <translation id="domain_tab_ZONE_default_delete_all" qtlid="290316">Eliminar la zona DNS</translation>
-   <translation id="domain_tab_ZONE_default_ttl_button" qtlid="226097">TTL por defecto</translation>
+   <translation id="domain_tab_ZONE_default_ttl_button" qtlid="473269">Modifier le TTL par défaut</translation>
    <translation id="domain_tab_ZONE_default_ttl_error" qtlid="226110">Se ha producido un error al cargar los datos de la zona:</translation>
    <translation id="domain_tab_ZONE_default_ttl_success" qtlid="226123">El TTL de la zona se ha actualizado correctamente.</translation>
    <translation id="domain_tab_ZONE_default_ttl_heading" qtlid="226136">Va a cambiar el valor por defecto del TTL de la zona {0}.</translation>
-   <translation id="domain_tab_ZONE_default_ttl_info" qtlid="285564">El TTL corresponde al tiempo máximo (en segundos) de propagación de la actualización de la zona DNS. Valores recomendables en caso de cambios frecuentes: 3600 segundos; si no, 86400 segundos (1 día).</translation>
-   <translation id="domain_tab_ZONE_default_ttl_default_value" qtlid="226149">TTL por defecto:</translation>
+   <translation id="domain_tab_ZONE_default_ttl_info" qtlid="473282">Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour de la zone DNS.</translation>
+   <translation id="domain_tab_ZONE_default_ttl_help" qtlid="473295">Valeur conseillée en cas de changements fréquents 3600 secondes, sinon 86400 secondes (1 jour).</translation>
+   <translation id="domain_tab_ZONE_default_ttl_default_value" qtlid="226097">TTL por defecto</translation>
    <translation id="domain_tab_ZONE_default_ttl_default_value_conditions" qtlid="328888">El valor debe ser un número entero comprendido entre <strong>{0}</strong> y <strong>{1}</strong>.</translation>
 
    <translation id="domain_configuration_dns_config" qtlid="270592">Cambiar los servidores DNS</translation>
@@ -413,7 +414,7 @@
    <translation id="domain_tab_REDIRECTION_add_step4_web_target_error" qtlid="213635">La dirección no es válida.</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_target_error_length" qtlid="213648">La dirección es demasiado larga.</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web" qtlid="214064">La redirección será:</translation>
-   <translation id="domain_tab_REDIRECTION_add_step4_web_example" qtlid="290668">https://www.ejemplo.com:1234</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_example" qtlid="290668">https://www.example.com:1234</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_visible_302" qtlid="214077">Temporal (302):</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_visible_302_help" qtlid="329291">Los motores de búsqueda no leerán la página, de modo que <b>{0}</b> no será indexada.</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_visible_302_help_warning" qtlid="329304">La dirección puede contener un protocolo <strong>«http://»</strong> o <strong>«https://»</strong> y puede terminar con un número de puerto. El dominio debe tener al menos un carácter seguido de «.» y al menos dos caracteres para la extensión.</translation>
@@ -490,7 +491,7 @@
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_aaaa" qtlid="129823">AAAA</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_aaaa_desc" qtlid="129835">Permite asociar un dominio o subdominio a una dirección IPv6.</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_cname" qtlid="129847">CNAME</translation>
-   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_cname_desc" qtlid="129859">Es un alias del campo A, útil para asignar diferentes nombres alternativos a los servicios de un host.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_cname_desc" qtlid="129859">Es un alias del registro A, útil para asignar diferentes nombres alternativos a los servicios de un host.</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_dkim" qtlid="129871">DKIM</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_dkim_desc" qtlid="129883">Permite difundir las llaves que posibilitan que un servidor de correo verifique las firmas DKIM (útil en la lucha contra el spam).</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_loc" qtlid="129895">LOC</translation>
@@ -504,7 +505,7 @@
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_spf" qtlid="129979">SPF</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_spf_desc" qtlid="129991">Permite garantizar a los servidores de correo electrónico remotos que los servidores de que usted dispone están autorizados para enviar correo. Útil en la lucha contra el spam.</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_srv" qtlid="130003">SRV</translation>
-   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_srv_desc" qtlid="130015">Permite especificar la dirección de un servidor, así como el puerto a utilizar, para un servicio determinado. Es una versión más amplia y genérica del campo MX.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_srv_desc" qtlid="130015">Permite especificar la dirección de un servidor, así como el puerto a utilizar, para un servicio determinado. Es una versión más amplia y genérica del registro MX.</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_sshfp" qtlid="130027">SSHFP</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_sshfp_desc" qtlid="130039">Permite publicar las claves SSH públicas en el sistema DNS, ayudando a la verificación de la autenticidad de la máquina host.</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_txt" qtlid="130051">TXT</translation>
@@ -527,13 +528,13 @@
    <translation id="domain_configuration_dns_importtext_error_regex" qtlid="233505">Atención: El TTL especificado es incorrecto.</translation>
    <translation id="domain_configuration_dns_importtext_error" qtlid="233518">Se ha producido un error al importar la configuración.</translation>
 
-   <translation id="domain_configuration_dns_entry_add_step1_title" qtlid="192123">Seleccione un tipo de campo DNS:</translation>
-   <translation id="domain_configuration_dns_entry_add_step1_subtitle1" qtlid="192136">Campos de dirección</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_title" qtlid="192123">Seleccione un tipo de registro DNS:</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_subtitle1" qtlid="192136">Registros de direccionamiento</translation>
    <translation id="domain_configuration_dns_entry_add_step1_subtitle2" qtlid="9466">Alias</translation>
-   <translation id="domain_configuration_dns_entry_add_step1_subtitle3" qtlid="192149">Campos extendidos</translation>
-   <translation id="domain_configuration_dns_entry_add_step1_subtitle4" qtlid="192162">Campos de correo</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_subtitle3" qtlid="192149">Registros extendidos</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_subtitle4" qtlid="192162">Registros de correo</translation>
 
-   <translation id="domain_configuration_dns_entry_add_expert_title" qtlid="192175">Indique el valor para este campo:</translation>
+   <translation id="domain_configuration_dns_entry_add_expert_title" qtlid="192175">Indique el valor para este registro:</translation>
    <translation id="domain_configuration_dns_entry_add_type" qtlid="129171">Tipo de campo</translation>
    <translation id="domain_configuration_dns_entry_add_subdomain" qtlid="192188">Subdominio</translation>
    <translation id="domain_configuration_dns_entry_add_domain" qtlid="170434">Dominio</translation>
@@ -605,7 +606,7 @@
    <translation id="domain_configuration_dns_entry_add_spf_others_title" qtlid="192539">¿El correo de {0} proviene originariamente de otros servidores que pertenezcan a otros dominios (por ejemplo, su proveedor de acceso a internet)?</translation>
    <translation id="domain_configuration_dns_entry_add_spf_all_title" qtlid="192552">¿La información que ha indicado describe todos los hosts que envían correo de {0}?</translation>
    <translation id="domain_configuration_dns_entry_add_spf_all_title_yes" qtlid="192565">Sí, estoy seguro</translation>
-   <translation id="domain_configuration_dns_entry_add_spf_all_title_safe" qtlid="192578">Sí, pero utilizar el safe mode</translation>
+   <translation id="domain_configuration_dns_entry_add_spf_all_title_safe" qtlid="192578">Sí, pero utilizar el modo seguro</translation>
    <translation id="domain_configuration_dns_entry_add_spf_all_title_no" qtlid="34788">No</translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_usage" qtlid="109974">Uso</translation>
    <translation id="domain_configuration_dns_entry_add_tlsa_selector" qtlid="291669">Selector</translation>

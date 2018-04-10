@@ -33,10 +33,10 @@ angular.module("App").controller(
                     value: "",
                     condition: {
                         length: {
-                            min: 3,
+                            min: 1,
                             max: 50
                         },
-                        reg: /^([\d\w\_\-]){3,50}$/
+                        reg: /^([\d\w\_\-]){1,50}$/
                     }
                 },
                 user: {

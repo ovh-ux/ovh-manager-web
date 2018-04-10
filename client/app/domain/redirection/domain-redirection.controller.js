@@ -27,18 +27,12 @@ angular.module("controllers").controller(
             };
 
             this.$scope.$on("domain.tabs.redirection.reload", (event, forceRef) => {
-                this.loading.init = true;
-                this.search.value = null;
-                this.forceRefresh = forceRef;
-                this.scroll = true;
+                this.setLoadingMode(forceRef);
                 this.$scope.$broadcast("paginationServerSide.reload", "redirectionTable");
             });
 
             this.$scope.$on("domain.tabs.redirection.load", (event, forceRef) => {
-                this.loading.init = true;
-                this.search.value = null;
-                this.forceRefresh = forceRef;
-                this.scroll = true;
+                this.setLoadingMode(forceRef);
                 this.$scope.$broadcast("paginationServerSide.loadPage", 1, "redirectionTable");
             });
 
@@ -150,6 +144,14 @@ angular.module("controllers").controller(
                 .finally(() => {
                     this.loading.exportCSV = false;
                 });
+        }
+
+        // Utils
+        setLoadingMode (forceRefresh) {
+            this.loading.init = true;
+            this.search.value = null;
+            this.forceRefresh = forceRefresh;
+            this.scroll = true;
         }
     }
 );
