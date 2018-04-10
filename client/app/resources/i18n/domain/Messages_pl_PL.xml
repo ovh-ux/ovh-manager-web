@@ -238,12 +238,13 @@
    <translation id="domain_tab_ZONE_table_headers_target" qtlid="47644">Adres docelowy</translation>
    <translation id="domain_tab_ZONE_default_import_button" qtlid="233453">Modyfikacja w trybie tekstowym</translation>
    <translation id="domain_tab_ZONE_default_delete_all" qtlid="290316">Usuń strefę DNS</translation>
-   <translation id="domain_tab_ZONE_default_ttl_button" qtlid="226097">Domyślny TTL</translation>
+   <translation id="domain_tab_ZONE_default_ttl_button" qtlid="473269">Modifier le TTL par défaut</translation>
    <translation id="domain_tab_ZONE_default_ttl_error" qtlid="226110">Wystąpił błąd podczas pobierania informacji ze strefy:</translation>
    <translation id="domain_tab_ZONE_default_ttl_success" qtlid="226123">Wartość TTL strefy została zaktualizowana.</translation>
    <translation id="domain_tab_ZONE_default_ttl_heading" qtlid="226136">Chcesz zmienić domyślną wartość TTL w strefie {0}</translation>
-   <translation id="domain_tab_ZONE_default_ttl_info" qtlid="285564">Parametr TTL to maksymalny czas propagacji aktualizacji strefy DNS (w sekundach). Zalecana wartość w przypadku częstych zmian to 3600 sekund, w innej sytuacji 86400 sekund (1 dzień).</translation>
-   <translation id="domain_tab_ZONE_default_ttl_default_value" qtlid="226149">Domyślny TTL:</translation>
+   <translation id="domain_tab_ZONE_default_ttl_info" qtlid="473282">Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour de la zone DNS.</translation>
+   <translation id="domain_tab_ZONE_default_ttl_help" qtlid="473295">Valeur conseillée en cas de changements fréquents 3600 secondes, sinon 86400 secondes (1 jour).</translation>
+   <translation id="domain_tab_ZONE_default_ttl_default_value" qtlid="226097">Domyślny TTL</translation>
    <translation id="domain_tab_ZONE_default_ttl_default_value_conditions" qtlid="328888">Wartość musi być liczbą całkowitą zawartą między <strong>{0}</strong> i <strong>{1}</strong>.</translation>
 
    <translation id="domain_configuration_dns_config" qtlid="270592">Zmień serwery DNS</translation>
@@ -482,7 +483,7 @@
    <translation id="domain_configuration_dns_entry_delete_mass_fail" qtlid="192110">Wystąpił błąd podczas usuwania wpisów ze strefy DNS.</translation>
 
 
-   <translation id="domain_configuration_dns_entry_add_title_button" qtlid="129219">Dodaj wpis</translation>
+   <translation id="domain_configuration_dns_entry_add_title_button" qtlid="129219">Dodaj rekord</translation>
    <translation id="domain_configuration_dns_entry_add_title" qtlid="129231">Dodaj wpis w strefie DNS</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_title" qtlid="129787">Strefa DNS – Dodanie wpisu</translation>
    <translation id="domain_configuration_dns_entry_add_step1_helpwizard_desc" qtlid="129799">Oto krótki opis różnych typów wpisów, które można dodać w strefie DNS.</translation>

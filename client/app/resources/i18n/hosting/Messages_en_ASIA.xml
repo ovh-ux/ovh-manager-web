@@ -44,7 +44,7 @@
    <translation id="hosting_displayName_required" qtlid="88293">The name cannot be empty.</translation>
 
    <translation id="hosting_dashboard_close_service" qtlid="255417">Delete my web hosting package</translation>
-   <translation id="hosting_dashboard_close_service_warning" qtlid="255430">When a web hosting package is deleted, all the data linked to it is lost. No refund will be granted for a deleted web hosting package.</translation>
+   <translation id="hosting_dashboard_close_service_warning" qtlid="255430">When a web hosting package is deleted, all the data linked to it is lost. No refund will be granted for any deleted web hosting packages.</translation>
    <translation id="hosting_dashboard_close_service_desc1" qtlid="351857">You will be sent an email containing the procedure for cancelling your hosting package.</translation>
    <translation id="hosting_dashboard_close_service_question" qtlid="351870">Do you want to continue? </translation>
    <translation id="hosting_dashboard_close_service_success" qtlid="255456">Your request to close your web hosting package has been processed. You will receive an email detailing the shutdown procedure.</translation>
@@ -396,7 +396,7 @@
    <translation id="hosting_tab_DATABASES_configuration_dump_date_DAILY_1" qtlid="37479">Yesterday</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_date_WEEKLY_1" qtlid="197271">Last week</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step1_question" qtlid="413154">You will create a backup of your database {0}</translation>
-   <translation id="hosting_tab_DATABASES_configuration_dump_step1_loaderror" qtlid="135294">An error has occurred loading the information.</translation>
+   <translation id="hosting_tab_DATABASES_configuration_dump_step1_loaderror" qtlid="135294">An error has occurred when loading the information.</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step1_date" qtlid="363583">Choose the date for the desired backup:</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step2_question" qtlid="413167">Would you like to request a backup of your database {0} with the following settings?</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step2_date" qtlid="66308">Date:</translation>
@@ -464,7 +464,7 @@
    <translation id="hosting_tab_DATABASES_table_popover_import_step3_fail" qtlid="286409">An error occurred when sending. Please try again.</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_remove_title" qtlid="197414">Detach a domain</translation>
-   <translation id="hosting_tab_DOMAINS_configuration_remove_step1_loading_error" qtlid="135294">An error has occurred loading the information.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_remove_step1_loading_error" qtlid="135294">An error has occurred when loading the information.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_step1_title" qtlid="197427">Are you sure you want to detach the following domain from your hosting package?</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_step1_domain_name" qtlid="197440">Domain name:</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_step1_home" qtlid="197453">Root folder:</translation>
@@ -498,7 +498,7 @@
 
 
    <translation id="hosting_tab_DOMAINS_configuration_add_title" qtlid="225140">Add a domain or sub-domain</translation>
-   <translation id="hosting_tab_DOMAINS_configuration_add_loading_error" qtlid="135294">An error has occurred loading the information.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_add_loading_error" qtlid="135294">An error has occurred when loading the information.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_loading_error_configuration" qtlid="271452">An error has occurred loading information (you have a configuration error).</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step1_title" qtlid="434187">You can add a domain to your web hosting package <strong class="font-italic">{0}</strong></translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step1_no_db_left" qtlid="210111">You cannot add more domains to your web hosting</translation>
@@ -530,7 +530,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_home" qtlid="196816">Root folder</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_myfolder" qtlid="265314">myfolder</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ipv6" qtlid="105178">Activate IPv6</translation>
-   <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_firewall" qtlid="141860">Activate firewall</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_firewall" qtlid="141860">Enable firewall</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_cdn" qtlid="232466">Activate the CDN</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_information" qtlid="197791">For the configuration to function, you will need to make the following adjustments on your domain:</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_none_options" qtlid="84225">No option</translation>
@@ -878,7 +878,7 @@
    <translation id="hosting_tab_FTP_configuration_user_create_iisRemoteRights_read" qtlid="198961">READ</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_iisRemoteRights_RW" qtlid="198974">RW</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_iisRemoteRights_rw" qtlid="198974">RW</translation>
-   <translation id="hosting_tab_FTP_configuration_user_create_iisRemoteRights_none" qtlid="30646">No</translation>
+   <translation id="hosting_tab_FTP_configuration_user_create_iisRemoteRights_none" qtlid="30646">None</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step1_webDavRights_label" qtlid="198987">WebDav rights</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_webDavRights_OFF" qtlid="126368">OFF</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_webDavRights_READ" qtlid="198961">READ</translation>
@@ -886,7 +886,7 @@
    <translation id="hosting_tab_FTP_configuration_user_create_webDavRights_off" qtlid="126368">OFF</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_webDavRights_read" qtlid="198961">READ</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_webDavRights_rw" qtlid="198974">RW</translation>
-   <translation id="hosting_tab_FTP_configuration_user_create_webDavRights_none" qtlid="30646">No</translation>
+   <translation id="hosting_tab_FTP_configuration_user_create_webDavRights_none" qtlid="30646">None</translation>
 
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_question" qtlid="199000">Select the user password</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step2_password_password" qtlid="2270">Password</translation>
@@ -924,7 +924,7 @@
    <translation id="hosting_tab_FTP_configuration_user_modify_iisRemoteRights_off" qtlid="126368">OFF</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_iisRemoteRights_read" qtlid="198961">READ</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_iisRemoteRights_rw" qtlid="198974">RW</translation>
-   <translation id="hosting_tab_FTP_configuration_user_modify_iisRemoteRights_none" qtlid="30646">No</translation>
+   <translation id="hosting_tab_FTP_configuration_user_modify_iisRemoteRights_none" qtlid="30646">None</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_step1_webDavRights_label" qtlid="198987">WebDav rights</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_webDavRights_OFF" qtlid="126368">OFF</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_webDavRights_READ" qtlid="198961">READ</translation>
@@ -932,7 +932,7 @@
    <translation id="hosting_tab_FTP_configuration_user_modify_webDavRights_off" qtlid="126368">OFF</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_webDavRights_read" qtlid="198961">READ</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_webDavRights_rw" qtlid="198974">RW</translation>
-   <translation id="hosting_tab_FTP_configuration_user_modify_webDavRights_none" qtlid="30646">No</translation>
+   <translation id="hosting_tab_FTP_configuration_user_modify_webDavRights_none" qtlid="30646">None</translation>
 
    <translation id="hosting_tab_FTP_configuration_user_modify_step2_question" qtlid="199130">Do you really want to modify the FTP user with the following values?</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_step2_user" qtlid="7450">User</translation>
