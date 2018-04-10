@@ -32,12 +32,11 @@
     "babel-preset-env": "^1.6.0",
     "base64url": "^2.0.0",
     "bootstrap": "^3.3.7",
-    "chalk": "^2.1.0",
+    "chalk": "^2.3.2",
     "eslint": "^3.19.0",
     "eslint-config-ovh": "^0.1.1",
     "grunt": "~0.4.1",
     "grunt-babel": "~7.0.0",
-    "grunt-bump": "~0.8.0",
     "grunt-cli": "^1.2.0",
     "grunt-contrib-clean": "~0.7.0",
     "grunt-contrib-concat": "~0.5.1",
@@ -55,7 +54,6 @@
     "grunt-newer": "~1.1.1",
     "grunt-ng-annotate": "~1.0.1",
     "grunt-ng-constant": "~1.1.0",
-    "grunt-open": "~0.2.3",
     "grunt-prettier-eslint": "^0.1.0",
     "grunt-sass": "^2.0.0",
     "grunt-templater": "0.0.4-1",
@@ -69,6 +67,9 @@
     "jit-grunt": "^0.9.1",
     "jshint-stylish": "~2.1.0",
     "less-plugin-remcalc": "0.0.1",
+    "npm-bower-sync-ver": "^1.1.2",
+    "npm-scripts-config": "0.0.2",
+    "npm-scripts-conventional-changelog": "^0.1.0",
     "ovh-protractor-jasmine2-logs-reporter": "0.0.1",
     "prettier-eslint": "^6.2.2",
     "protractor-jasmine2-screenshot-reporter": "^0.3.0",
@@ -79,7 +80,17 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "update-webdriver": "node node_modules/.bin/webdriver-manager update"
+    "update-webdriver": "node node_modules/.bin/webdriver-manager update",
+    "commit": "npm-scripts-config commit",
+    "commitmsg": "npm-scripts-config commitmsg",
+    "version": "npm-scripts-config version && npm-bower-sync-ver && git add bower.json",
+    "postversion": "git push && git push --tags",
+    "preview-changelog": "npm-scripts-config preview-changelog"
   },
-  "private": true
+  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
 }
