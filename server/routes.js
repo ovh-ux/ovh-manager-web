@@ -51,7 +51,9 @@ module.exports = function (app) {
 
     app.route("/auth").get((req, res) => {
         const origin = req.headers.host;
-        const headers = req.headers;
+        const headers = {
+          contentType: "application/json"
+        };
         const defaultErrorStatus = 500;
 
         headers.host = "www.ovh.com";
