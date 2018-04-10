@@ -55,6 +55,11 @@ angular.module("App").constant("PRIVATE_DATABASE_METRICS", {
                     gridLines: {
                         drawBorder: true,
                         display: false
+                    },
+                    time: {
+                        displayFormats: {
+                            hour: "LT"
+                        }
                     }
                 }]
             }

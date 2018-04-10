@@ -545,7 +545,7 @@ angular
         labs: "https://www.ovh.com/manager/sunrise/uxlabs/#!/"
     })
     .run(($rootScope, translator,
-          ouiDatagridConfiguration, ouiPaginationConfiguration) => {
+          ouiDatagridConfiguration, ouiPaginationConfiguration, ouiFieldConfiguration) => {
         "use strict";
 
         const off = $rootScope.$on("$stateChangeSuccess", () => {
@@ -562,6 +562,19 @@ angular
                     .replace("PAGE_COUNT", "{{pageCount}}"),
                 previousPage: translator.tr("common_ouipagination_previous"),
                 nextPage: translator.tr("common_ouipagination_next")
+            };
+
+            ouiFieldConfiguration.translations = {
+                errors: {
+                    required: translator.tr("common_field_error_required"),
+                    number: translator.tr("common_field_error_number"),
+                    email: translator.tr("common_field_error_email"),
+                    min: translator.tr("common_field_error_min", { min: "{{min}}" }),
+                    max: translator.tr("common_field_error_max", { max: "{{max}}" }),
+                    minlength: translator.tr("common_field_error_minlength", { minlength: "{{minlength}}" }),
+                    maxlength: translator.tr("common_field_error_maxlength", { maxlength: "{{maxlength}}" }),
+                    pattern: translator.tr("common_field_error_pattern")
+                }
             };
 
             off();

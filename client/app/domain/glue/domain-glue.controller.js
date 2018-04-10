@@ -1,10 +1,11 @@
 angular.module("App").controller(
     "controllers.Domain.Glue",
     class DomainTabGlueCtrl {
-        constructor ($scope, Alerter, Domain) {
+        constructor ($scope, Alerter, Domain, DomainValidator) {
             this.$scope = $scope;
             this.Alerter = Alerter;
             this.Domain = Domain;
+            this.DomainValidator = DomainValidator;
         }
 
         $onInit () {
@@ -57,7 +58,11 @@ angular.module("App").controller(
         }
 
         transformItem (host) {
-            return this.Domain.getGlueRecordDetail(this.domain.name, host.host);
+            return this.Domain.getGlueRecordDetail(this.domain.name, host.host)
+                .then((glueRecord) => {
+                    _.set(glueRecord, "hostToDisplay", this.DomainValidator.constructor.convertHostToUnicode(host.host));
+                    return glueRecord;
+                });
         }
     }
 );

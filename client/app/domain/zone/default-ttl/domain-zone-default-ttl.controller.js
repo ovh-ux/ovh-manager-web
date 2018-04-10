@@ -16,8 +16,6 @@ angular.module("controllers").controller(
             this.loading = true;
             this.zoneSOA = { ttl: "" };
 
-            this.$scope.updateDefaultTTL = () => this.updateDefaultTTL();
-
             this.Domain
                 .getZoneSOA(this.domain.name)
                 .then((data) => {

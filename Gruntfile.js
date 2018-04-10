@@ -319,13 +319,13 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: "./node_modules/ovh-ui-kit-bs/dist/fonts",
+                        cwd: "<%= bowerdir %>/ovh-ui-kit-bs/dist/fonts",
                         src: ["**/*"],
                         dest: "<%= publicdir %>/css/fonts"
                     },
                     {
                         expand: true,
-                        cwd: "./node_modules/ovh-ui-kit-bs/dist/icons",
+                        cwd: "<%= bowerdir %>/ovh-ui-kit-bs/dist/icons",
                         src: ["*"],
                         dest: "<%= publicdir %>/css/icons"
                     }
@@ -341,13 +341,13 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: "./node_modules/ovh-ui-kit-bs/dist/fonts",
+                        cwd: "<%= bowerdir %>/ovh-ui-kit-bs/dist/fonts",
                         src: ["**/*"],
                         dest: "<%= distdir %>/css/fonts"
                     },
                     {
                         expand: true,
-                        cwd: "./node_modules/ovh-ui-kit-bs/dist/icons",
+                        cwd: "<%= bowerdir %>/ovh-ui-kit-bs/dist/icons",
                         src: ["*"],
                         dest: "<%= distdir %>/css/icons"
                     },
@@ -425,6 +425,12 @@ module.exports = function (grunt) {
                         cwd: "<%= bowerdir %>/ovh-manager-webfont",
                         src: ["**"],
                         dest: "<%= distdir %>/bower_components/ovh-manager-webfont"
+                    },
+                    {
+                        expand: true,
+                        cwd: "<%= bowerdir %>/ovh-ui-kit",
+                        src: ["**"],
+                        dest: "<%= distdir %>/bower_components/ovh-ui-kit"
                     },
                     {
                         expand: true,

@@ -223,7 +223,7 @@
    <translation id="domain_tab_ZONE_no_zone_activate_minimized_yes" qtlid="263923">Sí, quiero activar la zona DNS con los registros mínimos. </translation>
    <translation id="domain_tab_ZONE_no_zone_activate_minimized_no" qtlid="263936">No, pero quiero activar la zona DNS.</translation>
    <translation id="domain_tab_ZONE_no_defaut_dns_used" qtlid="344123">Actualmente utiliza los siguientes servidores DNS:</translation>
-   <translation id="domain_tab_ZONE_set_defaut_dns" qtlid="344305">Para que la zona DNS de abajo se aplique, utilice los siguientes servidores DNS:</translation>
+   <translation id="domain_tab_ZONE_set_defaut_dns" qtlid="344305">Para que se aplique la zona DNS de abajo, utilice los siguientes servidores DNS:</translation>
 
    <translation id="domain_tab_ZONE_title" qtlid="265636">Aquí puede ver la configuración de los distintos registros de su dominio.</translation>
    <translation id="domain_tab_ZONE_info" qtlid="265649">También puede configurar estos registros para asociar su dominio a los distintos servicios haciendo clic en «Añadir un registro».</translation>
@@ -237,12 +237,13 @@
    <translation id="domain_tab_ZONE_table_headers_target" qtlid="47644">Destino</translation>
    <translation id="domain_tab_ZONE_default_import_button" qtlid="233453">Editar en modo de texto</translation>
    <translation id="domain_tab_ZONE_default_delete_all" qtlid="290316">Eliminar la zona DNS</translation>
-   <translation id="domain_tab_ZONE_default_ttl_button" qtlid="226097">TTL por defecto</translation>
+   <translation id="domain_tab_ZONE_default_ttl_button" qtlid="473269">Modifier le TTL par défaut</translation>
    <translation id="domain_tab_ZONE_default_ttl_error" qtlid="226110">Se ha producido un error al cargar los datos de la zona:</translation>
    <translation id="domain_tab_ZONE_default_ttl_success" qtlid="226123">El TTL de la zona se ha actualizado correctamente.</translation>
    <translation id="domain_tab_ZONE_default_ttl_heading" qtlid="226136">Va a cambiar el valor por defecto del TTL de la zona {0}.</translation>
-   <translation id="domain_tab_ZONE_default_ttl_info" qtlid="285564">El TTL corresponde al tiempo máximo (en segundos) de propagación de la actualización de la zona DNS. Valores recomendables en caso de cambios frecuentes: 3600 segundos; si no, 86400 segundos (1 día).</translation>
-   <translation id="domain_tab_ZONE_default_ttl_default_value" qtlid="226149">TTL por defecto:</translation>
+   <translation id="domain_tab_ZONE_default_ttl_info" qtlid="473282">Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour de la zone DNS.</translation>
+   <translation id="domain_tab_ZONE_default_ttl_help" qtlid="473295">Valeur conseillée en cas de changements fréquents 3600 secondes, sinon 86400 secondes (1 jour).</translation>
+   <translation id="domain_tab_ZONE_default_ttl_default_value" qtlid="226097">TTL por defecto</translation>
    <translation id="domain_tab_ZONE_default_ttl_default_value_conditions" qtlid="328888">El valor debe ser un número entero comprendido entre <strong>{0}</strong> y <strong>{1}</strong>.</translation>
 
    <translation id="domain_configuration_dns_config" qtlid="270592">Cambiar los servidores DNS</translation>
@@ -413,7 +414,7 @@
    <translation id="domain_tab_REDIRECTION_add_step4_web_target_error" qtlid="213635">La dirección no es válida.</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_target_error_length" qtlid="213648">La dirección es demasiado larga.</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web" qtlid="214064">La redirección será:</translation>
-   <translation id="domain_tab_REDIRECTION_add_step4_web_example" qtlid="290668">https://www.ejemplo.com:1234</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_example" qtlid="290668">https://www.example.com:1234</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_visible_302" qtlid="214077">Temporal (302):</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_visible_302_help" qtlid="329291">Los motores de búsqueda no leerán la página, de modo que <b>{0}</b> no será indexada.</translation>
    <translation id="domain_tab_REDIRECTION_add_step4_web_visible_302_help_warning" qtlid="329304">La dirección puede contener un protocolo <strong>«http://»</strong> o <strong>«https://»</strong> y puede terminar con un número de puerto. El dominio debe tener al menos un carácter seguido de «.» y al menos dos caracteres para la extensión.</translation>

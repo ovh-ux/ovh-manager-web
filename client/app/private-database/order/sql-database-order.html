@@ -158,6 +158,7 @@
                                  data-ng-repeat="duration in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).durations track by $index">
                                 <input type="radio" class="oui-radio__input" name="durationRadio[$index]" id="durationRadio-{{$index}}" required
                                        data-ng-click="contractsValidated = false"
+                                       data-ng-change="sqlOrderCtrl.resetOrder()"
                                        data-ng-disabled="sqlOrderCtrl.loading.prices || sqlOrderCtrl.durations.length === 1"
                                        data-ng-model="sqlOrderCtrl.model.duration"
                                        data-ng-value="duration.duration">
