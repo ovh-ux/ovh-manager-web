@@ -19,34 +19,18 @@
         <!-- step 1 -->
         <h2 data-i18n-static="mxPlan_order_step1_title"></h2>
 
-        <div class="row">
-            <div class="form-group col-md-4">
-                <label class="oui-label" for="select-order-domain"
-                    data-i18n-static="mxPlan_order_step1_domain"></label>
-                <div class="oui-select oui-select_inline">
-                    <select class="oui-select__input" id="select-order-domain" name="orderDomain"
-                            data-ng-change="ctrlMXPlanOrder.fetchOffers()"
-                            data-ng-model="ctrlMXPlanOrder.selectedOrder.config.domain"
-                            data-ng-options="domain for domain in (ctrlMXPlanOrder.list.domains | orderBy) track by domain">
-                        <option value="" disabled
-                                data-i18n-static="select_option"></option>
-                    </select>
-                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
-                </div>
-            </div>
-            <div class="col-md-6 col-md-offset-1">
-                <div class="oui-message oui-message_warning" role="alert">
-                    <span class="oui-icon oui-icon-warning_circle oui-icon_bicolor" aria-hidden="true"></span>
-                    <p class="oui-message__body">
-                        <span data-i18n-static="mxPlan_order_step1_expiration_warning"></span>
-                        <a href="https://community.ovh.com/t/arret-de-la-commercialisation-du-mx-plan/5578" target="_blank">
-                            <span aria-hidden="true"
-                                  aria-label="{{:: tr('mxPlan_order_step1_expiration_warning_new_window') }}"
-                                  title="{{:: tr('mxPlan_order_step1_expiration_warning_new_window') }}"
-                                  class="fa fa-edit fa-external-link"></span>.
-                        </a>
-                    </p>
-                </div>
+        <div class="form-group">
+            <label class="oui-label" for="select-order-domain"
+                   data-i18n-static="mxPlan_order_step1_domain"></label>
+            <div class="oui-select oui-select_inline">
+                <select class="oui-select__input" id="select-order-domain" name="orderDomain"
+                        data-ng-change="ctrlMXPlanOrder.fetchOffers()"
+                        data-ng-model="ctrlMXPlanOrder.selectedOrder.config.domain"
+                        data-ng-options="domain for domain in (ctrlMXPlanOrder.list.domains | orderBy) track by domain">
+                    <option value="" disabled
+                            data-i18n-static="select_option"></option>
+                </select>
+                <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
             </div>
         </div>
 
