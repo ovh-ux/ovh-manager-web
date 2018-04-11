@@ -1878,6 +1878,11 @@ module.exports = {
                 vps: "https://www.ovh.com/manager/dedicated/index.html#/configuration/vps/{vps}?sessionv6={sessionv6}&landingTo=vps"
             }
         },
+        COMODO: {
+            knowledgebase: "https://support.comodo.com/index.php?/Knowledgebase/Article/View/702/0/ev-certificate-validation-checklist",
+            contactEmail: "validation@comodo.eu",
+            phoneNumber: "+31 88 775 7777"
+        },
 
         "LANGUAGES": [
             { value : "de_DE", name : "Deutsch" },
@@ -2115,6 +2120,11 @@ module.exports = {
                 TN: "https://www.ovh.com/tn/order/express/",
                 WE: "https://www.ovh.com/us/order/express/"
             }
+        },
+        COMODO: {
+            knowledgebase: "https://support.comodo.com/index.php?/Knowledgebase/Article/View/702/0/ev-certificate-validation-checklist",
+            contactEmail: "validation@comodo.eu",
+            phoneNumber: "+31 88 775 7777"
         },
         LANGUAGES: [
             { value: "de_DE", name: "Deutsch" },
