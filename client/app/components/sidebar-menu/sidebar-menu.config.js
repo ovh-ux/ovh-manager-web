@@ -1,4 +1,4 @@
-angular.module("App").run(($q, SidebarMenu, Products, User, constants, translator) => {
+angular.module("App").run(($q, $rootScope, SidebarMenu, Products, User, constants, translator) => {
     "use strict";
 
     const menuOptions = [];
@@ -140,6 +140,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
 
         _.forEach(hostings, (elt) => {
             SidebarMenu.addMenuItem({
+                id: elt.name,
                 title: elt.displayName || elt.name,
                 category: "hosting",
                 icon: "ovh-font ovh-font-server",
@@ -169,6 +170,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
 
         _.forEach(databases, (elt) => {
             SidebarMenu.addMenuItem({
+                id: elt.name,
                 title: elt.displayName || elt.name,
                 category: "private_database",
                 icon: "ovh-font ovh-font-database",
@@ -194,6 +196,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
 
         _.forEach(emailProsItems, (elt) => {
             SidebarMenu.addMenuItem({
+                id: elt.name,
                 title: elt.displayName || elt.name,
                 category: "emailPro",
                 icon: "ovh-font ovh-font-mail",
@@ -252,6 +255,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
 
         _.forEach(_.sortBy(products.exchanges, (elt) => angular.lowercase(elt.displayName || elt.name)), (elt) => {
             SidebarMenu.addMenuItem({
+                id: elt.name,
                 title: elt.displayName || elt.name,
                 category: "microsoft",
                 icon: "ms-Icon ms-Icon--ExchangeLogo",
@@ -275,6 +279,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
 
         _.forEach(_.sortBy(products.licenseOffice, (elt) => angular.lowercase(elt.displayName || elt.name)), (elt) => {
             SidebarMenu.addMenuItem({
+                id: elt.name,
                 title: elt.displayName || elt.name,
                 category: "microsoft",
                 icon: "ms-Icon ms-Icon--OfficeLogo",
@@ -297,6 +302,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
 
         _.forEach(_.sortBy(products.sharepoints, (elt) => angular.lowercase(elt.displayName || elt.name)), (elt) => {
             SidebarMenu.addMenuItem({
+                id: elt.name,
                 title: elt.displayName || elt.name,
                 category: "microsoft",
                 icon: "ms-Icon ms-Icon--SharepointLogo",
@@ -306,6 +312,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
                     productId: elt.name
                 }
             }, sharepointItems);
+
         });
     }
 
@@ -323,5 +330,10 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
         SidebarMenu.addActionsMenuOptions(menuOptions);
     });
 
+    $rootScope.$on("change.displayName", (event, [id, displayName]) => {
+        SidebarMenu.updateItemDisplay({
+            title: displayName
+        }, id);
+    });
     SidebarMenu.setInitializationPromise(productsPromise);
 });
