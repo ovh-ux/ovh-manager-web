@@ -53,29 +53,21 @@ angular.module("App").controller(
         transformItem (item) {
             return this.Emails.getResponder(this.domain, item)
                 .then((responder) => {
-                    this.pollResponderTasks(responder);
-                    return responder;
+                    const displayedResponder = _.clone(responder);
+                    displayedResponder.actionsDisabled = true;
+
+                    this.Emails.pollResponderTasks(this.domain, responder.account)
+                        .then(() => {
+                            displayedResponder.actionsDisabled = false;
+                        });
+
+                    return displayedResponder;
                 });
         }
 
         onTransformItemDone () {
             this.loading.responders = false;
             this.loading.pager = false;
-        }
-
-        pollResponderTasks (responder) {
-            this.Emails
-                .getResponderTasks(this.domain, responder.account)
-                .then((tasks) => {
-                    if (_.isEmpty(tasks)) {
-                        responder.actionsDisabled = false;
-                    } else {
-                        responder.actionsDisabled = true;
-                        this.$timeout(() => {
-                            this.pollResponderTasks(responder);
-                        }, 2000);
-                    }
-                });
         }
     }
 );

@@ -6,9 +6,10 @@ angular.module("services").service(
          * @param $q
          * @param OvhHttp
          */
-        constructor ($q, OvhHttp) {
+        constructor ($q, OvhHttp, Poller) {
             this.$q = $q;
             this.OvhHttp = OvhHttp;
+            this.Poller = Poller;
 
             this.cache = {
                 emails: "UNIVERS_WEB_EMAILS",
@@ -575,15 +576,24 @@ angular.module("services").service(
         }
 
         /**
-         * Get tasks for responder
-         * @param {string} serviceName
-         * @param {string} account
+         * Poll responder
          */
-        getResponderTasks (serviceName, account) {
-            return this.OvhHttp.get(`/email/domain/${serviceName}/task/responder`, {
-                rootPath: "apiv6",
-                params: { account }
-            });
+        pollResponderTasks (serviceName, account) {
+            return this.Poller
+                .poll(`/email/domain/${serviceName}/task/responder?account=${account}`, null,
+                      {
+                          namespace: "email.domain.responder",
+                          successRule: {
+                              state: (task) => _.isNull(task)
+                          }
+                      });
+        }
+
+        /**
+         * Force responder polling to stop
+         */
+        killPollResponderTasks () {
+            this.Poll.kill({ namespace: "email.domain.responder" });
         }
 
         /**
