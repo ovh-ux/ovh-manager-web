@@ -192,10 +192,10 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_dashboard_ssl_order_success" qtlid="181266">Byla vytvořena objednávka <a href='{0}' target='_blank'>{1}</a>.</translation>
    <translation id="hosting_dashboard_ssl_order_error" qtlid="217678">Při objednávání SSL certifikátu došlo k chybě.</translation>
    <translation id="hosting_dashboard_ssl_order_payable" qtlid="298877">Placený certifikát</translation>
+   <translation id="hosting_dashboard_ssl_order_imported">Certificat importé</translation>
    <translation id="hosting_dashboard_ssl_order_free" qtlid="298890">Certifikát zdarma (Let's Encrypt)</translation>
    <translation id="hosting_dashboard_ssl_order_a_certificate" qtlid="382141">Zakoupit certifikát</translation>
    <translation id="hosting_dashboard_ssl_order_import" qtlid="315735">Import Vašeho certifikátu SSL</translation>
-   <translation id="hosting_dashboard_ssl_order_choose_mode" qtlid="315748">Konfigurace certifikátu:</translation>
    <translation id="hosting_dashboard_ssl_order_manual_mode" qtlid="298929">Ručně</translation>
    <translation id="hosting_dashboard_ssl_order_automatic_mode" qtlid="134215">Automatické</translation>
    <translation id="hosting_dashboard_ssl_order_manual_mode_certif" qtlid="397507">Kopírovat obsah certifikátu (pouze RSA):</translation>
@@ -203,6 +203,9 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_dashboard_ssl_order_manual_mode_chain" qtlid="402685">Kopírovat obsah certifikačního řetězce:</translation>
    <translation id="hosting_dashboard_ssl_order_pay" qtlid="402698">Za účelem dokončení objednávky Vašeho SSL certifikátu budete přesměrováni do našeho objednávkového rozhraní.</translation>
    <translation id="hosting_dashboard_ssl_redirect_to_order" qtlid="382154">Vaše objednávka se otevřela v novém okně. Pokud se tak nestalo, <a href="{0}">klikněte prosím zde</a> a pokračujte ve svém nákupu.</translation>
+   <translation id="hosting_dashboard_ssl_redirect_to_order_error">Une erreur est survenue lors de la récupération de l'adresse nécessaire à la génération du bon de commande.</translation>
+   <translation id="hosting_dashboard_ssl_order_preamble">En cliquant sur Valider, vous allez ouvrir un bon de commande dans un nouvel onglet pour votre certificat SSL.</translation>
+   <translation id="hosting_dashboard_ssl_paid_certificate_error">Vous pouvez commander des certificats gratuits ou importer des certificats, mais une erreur vous empêche de commander des certificats payants : {0}.</translation>
 
    <translation id="hosting_dashboard_cdn_order_not_available" qtlid="217691">Na Vaši platformu nelze objednat CDN.</translation>
    <translation id="hosting_dashboard_cdn_order_choose_duration" qtlid="217652">Volba období:</translation>
@@ -306,7 +309,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_DOMAINS_configuration_attachDomain_title_button" qtlid="226969">Přidat doménu či subdoménu</translation>
    <translation id="hosting_ssl_regenerate_title_button" qtlid="315787">Znovu vygenerovat certifikát SSL</translation>
    <translation id="hosting_ssl_regenerate_info" qtlid="315800">Změny týkající se povolení nebo zakázání SSL na Vašem multisite začnou platit po vygenerování SSL certifikátu.</translation>
-   <translation id="hosting_ssl_regenerate_info_warning" qtlid="315813">Pokud jste své multisite aktualizovali nedávno (cca 2 hod.), je možné, že SSL certifikát pro ně bude ještě nedostupný.</translation>
+   <translation id="hosting_ssl_regenerate_info_warning">Si vous avez ajouté des hébergements multisites il y a moins de deux heures, il est possible qu'ils ne soient pas inclus dans votre certificat SSL.</translation>
    <translation id="hosting_ssl_limit_characters_info_warning" qtlid="402711">Bezplatná certifikace není k dispozici pro domény, jejichž název obsahuje více než {0} znaků.</translation>
 
    <translation id="hosting_tab_DATABASES_change_offer" qtlid="327302">Přechod na placený webhostingový balíček před vytvořením databáze. Nabídku lze změnit rychle a bez přerušení služby kliknutím na tlačítko</translation>
@@ -1363,12 +1366,37 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_change_main_domain_help_ssl_title" qtlid="84921">SSL</translation>
    <translation id="hosting_change_main_domain_help_ssl_desc" qtlid="286539">Změna hlavní domény nezajistí převod SSL certifikátu na novou hlavní doménu. Toto je třeba provést zvlášť - objednávkou a zaplacením za nový SSL certifikát</translation>
    <translation id="hosting_dashboard_ssl_generate_success" qtlid="298968">Probíhá aktivace SSL Vašeho webhostingu.</translation>
-   <translation id="hosting_dashboard_service_ssl_creating" qtlid="298981">Probíhá generování...</translation>
-   <translation id="hosting_dashboard_service_ssl_regenerating" qtlid="315852">Probíhá opětovné generování...</translation>
-   <translation id="hosting_dashboard_service_ssl_deleting" qtlid="298994">Probíhá odstranění...</translation>
+   <translation id="hosting_dashboard_ssl_report_button">État de la progression</translation>
+   <translation id="hosting_dashboard_service_ssl_creating">En cours de création</translation>
+   <translation id="hosting_dashboard_service_ssl_regenerating">En cours de régénération</translation>
+   <translation id="hosting_dashboard_service_ssl_deleting">En cours de suppression</translation>
+   <translation id="hosting_dashboard_service_ssl_importing">En cours d'import</translation>
    <translation id="hosting_dashboard_service_order_ssl_delete" qtlid="299007">Odstranit SSL</translation>
    <translation id="hosting_dashboard_service_delete_ssl_warning" qtlid="299020">Opravdu chcete odstranit SSL na svém webhostingu?</translation>
    <translation id="hosting_dashboard_service_delete_ssl_warning_payable" qtlid="363479">Opravdu si přejete smazat zakoupený certifikát? Tento certifikát již nebude možné obnovit. V případě potřeby bude nutné zakoupit zcela nový certifikát.</translation>
+   <translation id="hosting_dashboard_ssl_details_title">Progression de la validation du certificat SSL</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus">Vérification des conditions d’utilisation</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus_error">La vérification des conditions d’utilisation de Comodo n’a pas pu être effectuée.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus">Vérification du nom de marque</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus_error">La vérification du nom de marque par une agence d’enregistrement n’a pas pu être effectuée.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_phoneCallApprovalStatus">Vérification téléphonique auprès du contact enregistré</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus">Vérification du statut légal</translation>
+<translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus_error">Durant le processus de validation de votre certificat SSL, il est nécessaire de contacter Comodo à ce numéro&#160;<strong>{0}</strong>.
+<br/>
+<br/>Notez qu’il s’agit d’une plateforme néerlandaise. Il vous suffira de demander un interlocuteur francophone.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus">Vérification de la validité du domaine</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus_error">Il s’agit généralement d’une restriction indiquée dans votre fichier <strong>.htaccess</strong>.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus">Vérification de la demande de signature de certificat</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus_error">Nous vous invitons à créer une demande d'assistance auprès de Comodo.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_in-progress">Cette étape est en cours de traitement.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_non-completed">Comodo est en attente d'informations pour compléter cette étape.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_not-provided">Le traitement de cette étape n'a pas encore commencé.</translation>
+   <translation id="hosting_dashboard_ssl_details_confirm_button">Fermer</translation>
+   <translation id="hosting_dashboard_ssl_details_error">Une erreur est survenue lors de la récupération du rapport de génération SSL.</translation>
+   <translation id="hosting_dashboard_ssl_details_support_1">Vous pourrez trouver toutes les informations nécessaires à la validation de ces différents éléments sur ce lien menant à la documentation (en anglais) de Comodo&#160;</translation>
+   <translation id="hosting_dashboard_ssl_details_support_2">.<br><br>Pour toute question relative à la validation de votre certificat SSL EV, nous vous invitons à contacter Comodo à l’adresse&#160;</translation>
+   <translation id="hosting_dashboard_ssl_details_support_3">, en précisant le numéro de commande suivant <strong>{0}</strong>.</translation>
+   <translation id="hosting_dashboard_ssl_details_support_new_window">Ce lien va s'ouvrir dans un nouvel onglet</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_warning" qtlid="315865">Opravdu chcete znovu vygenerovat SSL certifikát pro svůj webhostingový balíček?</translation>
    <translation id="hosting_dashboard_service_delete_ssl_title" qtlid="299033">Odstranění SSL</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_title" qtlid="315878">Vytvoření SSL</translation>
