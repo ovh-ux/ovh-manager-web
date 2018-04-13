@@ -114,8 +114,6 @@ angular
             loadOvhConfig();
         });
 
-        $scope.loadSsl = () => Hosting.getSslState($stateParams.productId).then((ssl) => ($scope.ssl = ssl));
-
         $scope.goToPrivateDb = (privateDb) => {
             $rootScope.$broadcast("leftNavigation.selectProduct.fromName", {
                 name: privateDb,
@@ -144,8 +142,6 @@ angular
                 });
 
         $scope.loadHosting = function () {
-            $scope.loadSsl();
-
             Hosting.getSelected($stateParams.productId, true)
                 .then((hosting) => {
                     $scope.hosting = hosting;

@@ -89,11 +89,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        open: {
-            server: {
-                url: "https://localhost:<%= express.options.port %>/client/app"
-            }
-        },
 
         prettier_eslint: {
             dist: {
@@ -324,13 +319,13 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: "./node_modules/ovh-ui-kit-bs/dist/fonts",
+                        cwd: "<%= bowerdir %>/ovh-ui-kit-bs/dist/fonts",
                         src: ["**/*"],
                         dest: "<%= publicdir %>/css/fonts"
                     },
                     {
                         expand: true,
-                        cwd: "./node_modules/ovh-ui-kit-bs/dist/icons",
+                        cwd: "<%= bowerdir %>/ovh-ui-kit-bs/dist/icons",
                         src: ["*"],
                         dest: "<%= publicdir %>/css/icons"
                     }
@@ -346,13 +341,13 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
-                        cwd: "./node_modules/ovh-ui-kit-bs/dist/fonts",
+                        cwd: "<%= bowerdir %>/ovh-ui-kit-bs/dist/fonts",
                         src: ["**/*"],
                         dest: "<%= distdir %>/css/fonts"
                     },
                     {
                         expand: true,
-                        cwd: "./node_modules/ovh-ui-kit-bs/dist/icons",
+                        cwd: "<%= bowerdir %>/ovh-ui-kit-bs/dist/icons",
                         src: ["*"],
                         dest: "<%= distdir %>/css/icons"
                     },
@@ -430,6 +425,12 @@ module.exports = function (grunt) {
                         cwd: "<%= bowerdir %>/ovh-manager-webfont",
                         src: ["**"],
                         dest: "<%= distdir %>/bower_components/ovh-manager-webfont"
+                    },
+                    {
+                        expand: true,
+                        cwd: "<%= bowerdir %>/ovh-ui-kit",
+                        src: ["**"],
+                        dest: "<%= distdir %>/bower_components/ovh-ui-kit"
                     },
                     {
                         expand: true,
@@ -598,6 +599,7 @@ module.exports = function (grunt) {
                         renew: constants[target].RENEW_URL,
                         loginUrl: constants[target].loginUrl,
                         urls: constants[target].URLS,
+                        comodo: constants[target].COMODO,
                         CHATBOT_URL: constants[target].CHATBOT_URL,
                         BILLING_URL: constants[target].BILLING_URL,
                         UNIVERS: constants[target].UNIVERS,
@@ -973,16 +975,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-
-        // To release
-        bump: {
-            options: {
-                pushTo: "origin",
-                files: ["package.json", "bower.json"],
-                updateConfigs: ["pkg", "bower"],
-                commitFiles: ["-a"]
-            }
-        },
         ngAnnotate: {
             dist: {
                 files: [
@@ -1257,8 +1249,6 @@ module.exports = function (grunt) {
         "copy:dev",
         "express:dev",
         "wait",
-
-        // "open",
         "watch"
     ]);
 
@@ -1307,29 +1297,6 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask("serve", ["build", "watch"]);
-
-    /*
-     * --type=patch
-     * --type=minor
-     * --type=major
-     */
-    grunt.registerTask("release", "Release", () => {
-        const type = grunt.option("type");
-        if (isProd()) {
-            mode = "prod";
-            grunt.task.run([
-                `bump-only:${type}` /* , "changelog"*/,
-                "bump-commit"
-            ]);
-        } else {
-            grunt.verbose.or
-                .write(
-                    `You try to release in a weird version type [${type}]`
-                )
-                .error();
-            grunt.fail.warn("Please try with --type=patch|minor|major");
-        }
-    });
 
     grunt.registerTask("prettier-eslint", "My prettier eslint task", (
         done

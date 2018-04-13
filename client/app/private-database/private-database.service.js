@@ -541,7 +541,7 @@ angular.module("services").service(
         }
 
         getTasks (serviceName) {
-            return this.$http.get(`${this.swsProxypassPath}/${serviceName}/tasks`).then((response) => response.data).catch((err) => err.data);
+            return this.$http.get(`${this.swsProxypassPath}/${serviceName}/tasks`).then((response) => response.data).catch((err) => this.$q.reject(err));
         }
 
         getTasksFiltered (serviceName, type, status) {
@@ -553,7 +553,7 @@ angular.module("services").service(
                     }
                 })
                 .then((response) => response.data)
-                .catch((err) => err.data);
+                .catch((err) => this.$q.reject(err));
         }
 
         getTaskDetails (serviceName, tasksId) {
@@ -566,7 +566,7 @@ angular.module("services").service(
                     status
                 })
                 .then((response) => response.data)
-                .catch((err) => err.data);
+                .catch((err) => this.$q.reject(err));
         }
 
         getTasksToPoll (serviceName, filters) {

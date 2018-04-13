@@ -243,7 +243,6 @@ module.exports = {
                             list: [
                                 { url: "https://www.ovh.de/g1913.webhosting_e-mail-angebot_wechseln", title: "guide_emails_emails_change_offer" },
                                 { url: "https://www.ovh.de/g2028.webhosting_spf-eintrag", title: "guide_emails_emails_spf" },
-                                { url: "https://www.ovh.de/g2086.time_machine_-_eine_geloschte_e-mail_wiederherstellen", title: "guide_emails_emails_recovery" },
                                 { url: "https://www.ovh.de/g2117.erweiterte_funktionen_von_ovh_e-mails", title: "guide_emails_emails_advanced" }
                             ]
                         }
@@ -392,7 +391,6 @@ module.exports = {
                             list: [
                                 { url: "https://www.ovh.es/g1913.web_hosting_cambiar_de_servicio_de_correo", title: "guide_emails_emails_change_offer" },
                                 { url: "https://www.ovh.es/g2028.web_hosting_el_registro_spf", title: "guide_emails_emails_spf" },
-                                { url: "https://www.ovh.es/g2086.time_machine_-_recuperar_mensajes_de_correo_eliminados", title: "guide_emails_emails_recovery" },
                                 { url: "https://www.ovh.es/g2117.uso_avanzado_del_correo_de_ovh", title: "guide_emails_emails_advanced" },
                                 { url: "https://www.ovh.es/g2272.codigos_de_respuesta_de_un_servidor_smtp", title: "guide_emails_emails_smtp_response_code" }
                             ]
@@ -537,7 +535,6 @@ module.exports = {
                             list: [
                                 { url: "https://www.ovh-hosting.fi/g1913.webhotelli_sahkopostituotteen_vaihtaminen", title: "guide_emails_emails_change_offer" },
                                 { url: "https://www.ovh-hosting.fi/g2028.webhotelli_spf-kentta", title: "guide_emails_emails_spf" },
-                                { url: "https://www.ovh-hosting.fi/g2086.time_machine_-_poistetun_sahkopostiviestin_palauttaminen", title: "guide_emails_emails_recovery" },
                                 { url: "https://www.ovh-hosting.fi/g2117.ovhn_sahkopostiohjelmien_edistynyt_kaytto", title: "guide_emails_emails_advanced" },
                                 { url: "https://www.ovh-hosting.fi/g2272.smtp-palvelimen_vastauskoodit", title: "guide_emails_emails_smtp_response_code" }
                             ]
@@ -751,7 +748,6 @@ module.exports = {
                                 { url: "https://docs.ovh.com/fr/emails/deleguer-gestion-emails-autre-identifiant/", title: "guide_emails_emails_delegation" },
                                 { url: "https://docs.ovh.com/fr/emails/le-champ-spf/", title: "guide_emails_emails_spf" },
                                 { url: "https://docs.ovh.com/fr/emails/diagnostiquer-mon-adresse-e-mail/", title: "guide_emails_emails_diagnosis" },
-                                { url: "https://docs.ovh.com/fr/emails/time-machine-recuperer-un-mail-supprime/", title: "guide_emails_emails_recovery" },
                                 { url: "https://docs.ovh.com/fr/microsoft-collaborative-solutions/migration-adresse-e-mail-mutualisee-vers-exchange/", title: "guide_emails_emails_migrate_to_exchange" },
                                 { url: "https://docs.ovh.com/fr/emails/utilisation-avancee-des-e-mails/", title: "guide_emails_emails_advanced" },
                                 { url: "https://docs.ovh.com/fr/emails/codes-de-reponse-serveur-smtp/", title: "guide_emails_emails_smtp_response_code" }
@@ -895,7 +891,6 @@ module.exports = {
                             title: "guide_emails_how_to_title",
                             list: [
                                 { url: "https://www.ovh.co.uk/g2028.web_hosting_the_spf_record", title: "guide_emails_emails_spf" },
-                                { url: "https://www.ovh.co.uk/g2086.time_machine_-_retrieve_a_deleted_email", title: "guide_emails_emails_recovery" }
                             ]
                         }
                     ]
@@ -1217,7 +1212,6 @@ module.exports = {
                             list: [
                                 { url: "https://www.ovh.lt/g1913.svetainiu_talpinimas_el_pasto_plano_keitimas", title: "guide_emails_emails_change_offer" },
                                 { url: "https://www.ovh.lt/g2028.svetainiu_talpinimas_spf_laukas", title: "guide_emails_emails_spf" },
-                                { url: "https://www.ovh.lt/g2086.time_machine_-_atkurkite_istrintus_el_laiskus", title: "guide_emails_emails_recovery" },
                                 { url: "https://www.ovh.lt/g2117.ovh_el_pastas_pazangiam_naudojimui", title: "guide_emails_emails_advanced" },
                                 { url: "https://www.ovh.lt/g2272.smtp_serverio_atsako_kodai", title: "guide_emails_emails_smtp_response_code" }
                             ]
@@ -1356,7 +1350,6 @@ module.exports = {
                             title: "guide_emails_how_to_title",
                             list: [
                                 { url: "https://www.ovh.nl/g2028.het_spf_veld", title: "guide_emails_emails_spf" },
-                                { url: " https://www.ovh.nl/g2086.time_machine_een_verwijderde_e-mail_terughalen", title: "guide_emails_emails_recovery" }
                             ]
                         }
                     ]
@@ -1491,7 +1484,6 @@ module.exports = {
                             list: [
                                 { url: "https://www.ovh.pl/g1913.uslugi_www_zmiana_oferty_e-mail", title: "guide_emails_emails_change_offer" },
                                 { url: "https://www.ovh.pl/g2028.uslugi_www_pole_spf", title: "guide_emails_emails_spf" },
-                                { url: "https://www.ovh.pl/g2086.time_machine_-_jak_odzyskac_usuniety_e-mail", title: "guide_emails_emails_recovery" },
                                 { url: "https://www.ovh.pl/g2117.zaawansowane_korzystanie_z_e-maili_ovh", title: "guide_emails_emails_advanced" },
                                 { url: "https://www.ovh.pl/g2272.kody_odpowiedzi_serwera_smtp", title: "guide_emails_emails_smtp_response_code" }
                             ]
@@ -1667,7 +1659,6 @@ module.exports = {
                             list: [
                                 { url: "https://www.ovh.pt/g1913.partilhado_alterar_o_servico_de_email", title: "guide_emails_emails_change_offer" },
                                 { url: "https://www.ovh.pt/g2028.partilhado_o_campo_spf", title: "guide_emails_emails_spf" },
-                                { url: " https://www.ovh.pt/g2086.time_machine_-_recuperar_um_e-mail_eliminado", title: "guide_emails_emails_recovery" },
                                 { url: "https://www.ovh.pt/g2117.utilizacao_avancada_dos_e-mails_ovh", title: "guide_emails_emails_advanced" },
                                 { url: "https://www.ovh.pt/g2272.os_codigos_de_resposta_de_um_servidor_smtp", title: "guide_emails_emails_smtp_response_code" }
                             ]
@@ -1886,6 +1877,11 @@ module.exports = {
                 vpsUniverse: "https://www.ovh.com/manager/dedicated/index.html#/configuration?sessionv6={sessionv6}&landingTo=vps",
                 vps: "https://www.ovh.com/manager/dedicated/index.html#/configuration/vps/{vps}?sessionv6={sessionv6}&landingTo=vps"
             }
+        },
+        COMODO: {
+            knowledgebase: "https://support.comodo.com/index.php?/Knowledgebase/Article/View/702/0/ev-certificate-validation-checklist",
+            contactEmail: "validation@comodo.eu",
+            phoneNumber: "+31 88 775 7777"
         },
 
         "LANGUAGES": [
@@ -2124,6 +2120,11 @@ module.exports = {
                 TN: "https://www.ovh.com/tn/order/express/",
                 WE: "https://www.ovh.com/us/order/express/"
             }
+        },
+        COMODO: {
+            knowledgebase: "https://support.comodo.com/index.php?/Knowledgebase/Article/View/702/0/ev-certificate-validation-checklist",
+            contactEmail: "validation@comodo.eu",
+            phoneNumber: "+31 88 775 7777"
         },
         LANGUAGES: [
             { value: "de_DE", name: "Deutsch" },

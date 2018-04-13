@@ -1,4 +1,4 @@
-<div class="container-fluid px-0" data-ng-controller="GeneralInformationsCtrl as ctrl">
+<div class="container-fluid px-0" data-ng-controller="hostingGeneralInformationsCtrl as ctrl">
 
     <oui-spinner data-ng-if="!hosting"></oui-spinner>
 
@@ -176,43 +176,54 @@
                                     <div class="oui-tile__definition">
                                         <div class="d-flex w-100">
                                             <div>
-                                                <strong class="d-block"
-                                                        data-i18n-static="hosting_dashboard_service_ssl"></strong>
-                                                <span data-ng-bind="hosting.hasHostedSsl || ssl ? i18n.common_yes : i18n.common_no"></span>
-                                                <span class="ml-2"
-                                                      data-ng-if="ssl && ssl.status === 'creating' || ssl.status === 'deleting' || ssl.status === 'regenerating'"
-                                                      data-uib-tooltip="{{tr('hosting_dashboard_service_ssl_' + ssl.status)}}">
-                                                    <oui-spinner data-size="s"></oui-spinner>
-                                                </span>
+                                                <strong class="d-block" data-i18n-static="hosting_dashboard_service_ssl"></strong>
+                                                <span data-ng-if="!ctrl.isRetrievingSSLCertificate" data-ng-bind="ctrl.selectSSLCertificateStatusText()"></span>
                                             </div>
-                                            <div class="ml-auto mb-auto" style="position: relative"
-                                                 data-ng-if="ctrl.canOrderSSL() || ctrl.canRegenerateSSL() || ctrl.canDeleteSSL()">
-                                                <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
+                                            <div class="ml-auto mb-auto"
+                                                 data-ng-if="!ctrl.isRetrievingSSLCertificate && (ctrl.canOrderSSLCertificate() || ctrl.canRegenerateSSLCertificate() || ctrl.canDeleteSSLCertificate())">
+                                                <button class="oui-button oui-button_dropdown mb-0"
+                                                        type="button"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false"
                                                         data-toggle="dropdown">
                                                     <span data-i18n-static="common_actions"></span>
                                                     <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li data-ng-if="ctrl.canOrderSSL()">
+                                                    <li data-ng-if="ctrl.canOrderSSLCertificate()">
                                                         <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
-                                                        <button class="btn btn-link" type="button" name="orderSsl"
+                                                        <button class="btn btn-link"
+                                                                type="button"
+                                                                name="orderSsl"
                                                                 data-i18n-static="hosting_dashboard_service_order_ssl"
                                                                 data-ng-click="setAction('ssl/order/hosting-order-ssl')"></button>
                                                     </li>
-                                                    <li data-ng-if="ctrl.canRegenerateSSL()">
+                                                    <li data-ng-if="ctrl.canRegenerateSSLCertificate()">
                                                         <i class="fa fa-refresh" aria-hidden="true"></i>
-                                                        <button class="btn btn-link" type="button" name="regenerateSsl"
+                                                        <button class="btn btn-link"
+                                                                type="button"
+                                                                name="regenerateSsl"
                                                                 data-i18n-static="hosting_ssl_regenerate_title_button"
                                                                 data-ng-click="setAction('ssl/regenerate/hosting-ssl-regenerate')"></button>
                                                     </li>
-                                                    <li data-ng-if="ctrl.canDeleteSSL()">
+                                                    <li data-ng-if="ctrl.canDeleteSSLCertificate()">
                                                         <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                                        <button class="btn btn-link" type="button" name="deleteSsl"
+                                                        <button class="btn btn-link"
+                                                                type="button"
+                                                                name="deleteSsl"
                                                                 data-i18n-static="hosting_dashboard_service_order_ssl_delete"
-                                                                data-ng-click="setAction('ssl/delete/hosting-ssl-delete', ssl)"></button>
+                                                                data-ng-click="setAction('ssl/delete/hosting-ssl-delete', ctrl.sslCertificate)"></button>
                                                     </li>
                                                 </ul>
                                             </div>
+                                            <button class="btn btn-default ml-auto mb-auto text-wrap"
+                                                    type="button"
+                                                    data-i18n-static="hosting_dashboard_ssl_report_button"
+                                                    data-ng-click="setAction('ssl/details/hosting-ssl-details', hosting)"
+                                                    data-ng-if="ctrl.hasSSLCertificateCreationReport()"></button>
+                                        </div>
+                                        <div class="text-center" data-ng-if="ctrl.isRetrievingSSLCertificate">
+                                            <oui-spinner></oui-spinner>
                                         </div>
                                     </div>
                                 </li>
@@ -229,7 +240,7 @@
                                                       data-i18n-static="hosting_dashboard_service_flush_cdn_doing"
                                                       data-ng-if="flushCdnState === 'doing'"></span>
                                             </div>
-                                            <div class="ml-auto mb-auto" style="position: relative"
+                                            <div class="ml-auto mb-auto"
                                                  data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M' || hosting.hasCdn && flushCdnState === 'ok' || hosting.hasCdn">
                                                 <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
                                                         data-toggle="dropdown">
@@ -301,7 +312,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div class="mb-auto ml-auto" style="position: relative;">
+                                            <div class="mb-auto ml-auto">
                                                 <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
                                                         data-toggle="dropdown">
                                                     <span data-i18n-static="common_actions"></span>
