@@ -548,13 +548,45 @@ angular
         partners: "https://www.ovh.com/manager/partners/",
         labs: "https://www.ovh.com/manager/sunrise/uxlabs/#!/"
     })
-    .run(($rootScope, $transitions, translator,
-          ouiDatagridConfiguration, ouiPaginationConfiguration, ouiFieldConfiguration) => {
+    .run(($rootScope, $transitions,translator,
+          ouiDatagridConfiguration, ouiPaginationConfiguration, ouiFieldConfiguration, ouiCriteriaAdderConfiguration) => {
         "use strict";
 
         const removeHook = $transitions.onSuccess({}, () => {
             ouiDatagridConfiguration.translations = {
                 emptyPlaceholder: translator.tr("common_ouidatagrid_nodata")
+            };
+
+            ouiCriteriaAdderConfiguration.translations = {
+                column_label: translator.tr("common_criteria_adder_column_label"),
+                operator_label: translator.tr("common_criteria_adder_operator_label"),
+
+                operator_boolean_is: translator.tr("common_criteria_adder_operator_boolean_is"),
+                operator_boolean_isNot: translator.tr("common_criteria_adder_operator_boolean_isNot"),
+
+                operator_string_contains: translator.tr("common_criteria_adder_operator_string_contains"),
+                operator_string_containsNot: translator.tr("common_criteria_adder_operator_string_containsNot"),
+                operator_string_startsWith: translator.tr("common_criteria_adder_operator_string_startsWith"),
+                operator_string_endsWith: translator.tr("common_criteria_adder_operator_string_endsWith"),
+                operator_string_is: translator.tr("common_criteria_adder_operator_string_is"),
+                operator_string_isNot: translator.tr("common_criteria_adder_operator_string_isNot"),
+
+                operator_number_is: translator.tr("common_criteria_adder_operator_number_is"),
+                operator_number_smaller: translator.tr("common_criteria_adder_operator_number_smaller"),
+                operator_number_bigger: translator.tr("common_criteria_adder_operator_number_bigger"),
+
+                operator_date_is: translator.tr("common_criteria_adder_operator_date_is"),
+                operator_date_isBefore: translator.tr("common_criteria_adder_operator_date_isBefore"),
+                operator_date_isAfter: translator.tr("common_criteria_adder_operator_date_isAfter"),
+
+                operator_options_is: translator.tr("common_criteria_adder_operator_options_is"),
+                operator_options_isNot: translator.tr("common_criteria_adder_operator_options_isNot"),
+
+                true_label: translator.tr("common_criteria_adder_true_label"),
+                false_label: translator.tr("common_criteria_adder_false_label"),
+
+                value_label: translator.tr("common_criteria_adder_value_label"),
+                submit_label: translator.tr("common_criteria_adder_submit_label")
             };
 
             ouiPaginationConfiguration.translations = {
