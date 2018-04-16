@@ -186,7 +186,7 @@ class SessionService {
         // Tickets list
         assistanceMenu.push({
             title: this.translator.tr("common_menu_support_list_ticket"),
-            url: "#/support"
+            url: _.get(this.constants, "REDIRECT_URLS.listTicket", "")
         });
 
         // Telephony (External)

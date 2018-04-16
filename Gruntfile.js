@@ -622,7 +622,8 @@ module.exports = function (grunt) {
                         WEBSITE_URLS: constants[target].website_url,
                         new_bdd_user_grant_options: constants[target]
                             .new_bdd_user_grant_options,
-                        OVHGuides: constants[target].OVHGuides
+                        OVHGuides: constants[target].OVHGuides,
+                        REDIRECT_URLS: constants[target].REDIRECT_URLS
                     },
                     LANGUAGES: constants[target].LANGUAGES,
                     website_url: constants[target].website_url
@@ -750,7 +751,8 @@ module.exports = function (grunt) {
                         NO_AUTORENEW_COUNTRIES: constants[target].NO_AUTORENEW_COUNTRIES,
                         WEBSITE_URLS: constants[target].website_url,
                         new_bdd_user_grant_options: constants[target].new_bdd_user_grant_options,
-                        OVHGuides: constants[target].OVHGuides
+                        OVHGuides: constants[target].OVHGuides,
+                        REDIRECT_URLS: constants[target].REDIRECT_URLS
                     },
                     LANGUAGES: constants[target].LANGUAGES,
                     website_url: constants[target].website_url

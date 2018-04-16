@@ -165,7 +165,7 @@ angular
 
         const config = TRACKING.config;
 
-        OvhApiMe.Lexi().get().$promise
+        OvhApiMe.v6().get().$promise
             .then((me) => {
                 config.countryCode = me.country;
                 config.currencyCode = me.currency && me.currency.code;
@@ -533,6 +533,9 @@ angular
                 }
             }); // translation.addResolvable
         }); // translationProvider.onBefore
+    })
+    .config((OtrsPopupProvider, constants) => {
+        OtrsPopupProvider.setBaseUrlTickets(_.get(constants, "REDIRECT_URLS.listTicket", null));
     })
     .constant("UNIVERSE", "WEB")
     .constant("MANAGER_URLS", {
