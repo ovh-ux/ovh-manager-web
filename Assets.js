@@ -208,8 +208,7 @@ module.exports = {
             "client/bower_components/ovh-angular-responsive-popover/dist/ovh-angular-responsive-popover.min.css",
             "client/bower_components/ovh-angular-tail-logs/dist/ovh-angular-tail-logs.css",
             "client/bower_components/messenger/build/css/messenger.css",
-            "client/bower_components/ng-ckeditor/ng-ckeditor.css",
-            "client/bower_components/flatpickr/dist/flatpickr.css"
+            "client/bower_components/ng-ckeditor/ng-ckeditor.css"
         ]
     },
     resources: {

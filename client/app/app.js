@@ -548,7 +548,7 @@ angular
         partners: "https://www.ovh.com/manager/partners/",
         labs: "https://www.ovh.com/manager/sunrise/uxlabs/#!/"
     })
-    .run(($rootScope, $transitions,translator,
+    .run(($rootScope, $transitions, translator,
           ouiDatagridConfiguration, ouiPaginationConfiguration, ouiFieldConfiguration, ouiCriteriaAdderConfiguration) => {
         "use strict";
 
