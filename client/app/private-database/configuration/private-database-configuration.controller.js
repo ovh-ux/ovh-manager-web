@@ -32,7 +32,7 @@ angular.module("App").controller(
                 })
                 .catch((error) => {
                     this.alerter.error(this.translator.tr("privateDatabase_configuration_error"), this.$scope.alerts.main);
-                    this.$q.reject(error);
+                    return this.$q.reject(error);
                 })
                 .finally(() => {
                     this.loading = false;
@@ -49,7 +49,7 @@ angular.module("App").controller(
                 PrivateDatabaseConfigurationsCtrl.convertFieldAsToggle(field);
             } else {
                 field.type = "select";
-                field.selectedValue = field.availableValues.find((value) => value.id === field.value);
+                field.selectedValue = _.find(field.availableValues, { id: field.value });
             }
             return field;
         }
@@ -87,7 +87,7 @@ angular.module("App").controller(
                 })
                 .catch((error) => {
                     this.alerter.error(this.translator.tr("privateDatabase_configuration_error_put"), this.$scope.alerts.main);
-                    this.$q.reject(error);
+                    return this.$q.reject(error);
                 })
                 .finally(() => {
                     this.edit.value = false;

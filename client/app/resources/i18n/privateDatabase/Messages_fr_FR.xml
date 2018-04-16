@@ -90,7 +90,7 @@
    <translation id="privateDatabase_configuration_error_put" qtlid="263533">Une erreur est survenue lors de la modification de la configuration.</translation>
    <translation id="privateDatabase_configuration_error" qtlid="233047">Une erreur est survenue lors de la récupération des informations.</translation>
    <translation id="privateDatabase_configuration_success" qtlid="263546">Votre serveur a redémarré et la configuration a été modifiée avec succès.</translation>
-   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Définit si le mode auto-commit est activé ou non, donc si les requêtes sont automatiquement commitées ou s'il est nécessaire de les commiter pour qu'elles prennent effet.</translation>
+   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Définit si le mode auto-commit est activé ou non, donc si les transactions SQL sont automatiquement soumises ou s'il est nécessaire d'utiliser la commande «commit» pour qu'elles prennent effet.</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263572">Nombre maximal de connexions autorisées au serveur.</translation>
    <translation id="privateDatabase_configuration_skipInnodb" qtlid="263585">Désactiver l'utilisation des tables InnoDB.</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263598">Nombre maximal de connexions simultanées</translation>
@@ -101,7 +101,7 @@
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Le nombre de secondes que le serveur attend avant de fermer la connexion lorsqu'il n'y a pas d'activité lors d'une connexion en invite de commande.</translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Le nombre de secondes que le serveur attend avant de fermer la connexion lorsqu'il n'y a pas d'activité lors d'une connexion externe.</translation>
 
-   <translation id="privateDatabase_configuration_field_autocommit">Définit si les requêtes sont automatiquement commitées ou non.</translation>
+   <translation id="privateDatabase_configuration_field_autocommit">Définit si les transactions SLQ sont automatiquement soumises ou non.</translation>
    <translation id="privateDatabase_configuration_field_event_scheduler">Permet de déclencher l’exécution de requêtes programmées directement dans le serveur MySQL.</translation>
    <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size">Choix de la taille de la mémoire tampon (en mégaoctets).</translation>
    <translation id="privateDatabase_configuration_field_interactive_timeout">Nombre de secondes pendant lesquelles le serveur attend une activité sur une connexion interactive avant de la fermer.</translation>
