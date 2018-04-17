@@ -549,7 +549,8 @@ angular
         labs: "https://www.ovh.com/manager/sunrise/uxlabs/#!/"
     })
     .run(($rootScope, $transitions, translator,
-          ouiDatagridConfiguration, ouiPaginationConfiguration, ouiFieldConfiguration) => {
+          ouiDatagridConfiguration, ouiPaginationConfiguration,
+          ouiFieldConfiguration, ouiStepperConfiguration) => {
         "use strict";
 
         const removeHook = $transitions.onSuccess({}, () => {
@@ -579,6 +580,14 @@ angular
                     maxlength: translator.tr("common_field_error_maxlength", { maxlength: "{{maxlength}}" }),
                     pattern: translator.tr("common_field_error_pattern")
                 }
+            };
+
+            ouiStepperConfiguration.translations = {
+                optionalLabel: translator.tr("common_stepper_optional_label"),
+                modifyThisStep: translator.tr("common_stepper_modify_this_step"),
+                skipThisStep: translator.tr("common_stepper_skip_this_step"),
+                nextButtonLabel: translator.tr("common_stepper_next_button_label"),
+                submitButtonLabel: translator.tr("common_stepper_submit_button_label")
             };
 
             removeHook();

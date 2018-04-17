@@ -49,14 +49,6 @@ angular.module("App").controller(
             this.getServiceTypes();
         }
 
-        updateService () {
-            this.migrate.destinationService = null;
-            this.migrate.destinationEmail = null;
-            this.isMigrationDataValid = false;
-            this.shouldDisplayCheckMigrationsErrors = false;
-            this.resetError();
-        }
-
         // Request Service types
         getServiceTypes () {
             this.loaders.isInitialRetrievalRunning = true;
@@ -81,22 +73,21 @@ angular.module("App").controller(
             this.$q.allSettled(promises)
                 .then((data) => {
                     this.destinationServices = {};
-                    this.availableServices = [];
+                    this.availableServices = 0;
 
                     // Merge destinationServices with serviceTypes, and get available services
-                    angular.forEach(serviceTypes, (service, index) => {
-                        this.destinationServices[service] = data[index];
+                    angular.forEach(serviceTypes, (serviceType, index) => {
+                        if (data[index].length) {
+                            const services = _.map(data[index], (destinationService) => ({
+                                id: destinationService,
+                                name: destinationService,
+                                type: serviceType
+                            }));
 
-                        if (this.destinationServices[service].length) {
-                            this.availableServices.push(service);
+                            this.destinationServices[serviceType] = services;
+                            this.availableServices++;
                         }
                     });
-                })
-                .finally(() => {
-                    // Auto select the first type of service if only one available service for migration
-                    if (this.availableServices.length === 1) {
-                        this.migrate.serviceType = this.availableServices[0];
-                    }
 
                     this.loaders.isInitialRetrievalRunning = false;
                 });
@@ -135,7 +126,8 @@ angular.module("App").controller(
                     if (this.destinationEmails && this.destinationEmails.length > 0) {
                         this.remainingAvailableEmails = this.destinationEmails.length - 1;
                         this.migrate.destinationEmail = this.destinationEmails[0];
-                        this.checkMigrationData();
+
+                        // this.checkMigrationData();
                     }
                 })
                 .catch((err) => this.handleError(err))
@@ -148,7 +140,7 @@ angular.module("App").controller(
             this.checkMigrationErrors = [];
             this.shouldDisplayCheckMigrationsErrors = false;
 
-            this.Emails.checkMigrate(this.email.domain, this.email.accountName, this.migrate.destinationService, this.migrate.destinationEmail)
+            this.Emails.checkMigrate(this.email.domain, this.email.accountName, this.migrate.destinationService.name, this.migrate.destinationEmail)
                 .then(() => {
                     this.isMigrationDataValid = true;
                 })
@@ -169,12 +161,12 @@ angular.module("App").controller(
         migrateAccount () {
             this.loaders.isWaitingForMigration = true;
 
-            this.Emails.migrateAccountToDestinationAccount(this.email.domain, this.email.accountName, this.migrate.destinationService, this.migrate.destinationEmail, this.migrate.password)
+            this.Emails.migrateAccountToDestinationAccount(this.email.domain, this.email.accountName, this.migrate.destinationService.name, this.migrate.destinationEmail, this.migrate.password)
                 .then(() => {
-                    if (this.migrate.serviceType === "EMAIL PRO") {
-                        this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success_emailpro"), this.$scope.alerts.main);
+                    if (this.migrate.destinationService.type === "EMAIL PRO") {
+                        this.Alerter.success(this.$scope.tr("email_tab_stepper_migrate_success_emailpro"), this.$scope.alerts.main);
                     } else {
-                        this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success_exchange"), this.$scope.alerts.main);
+                        this.Alerter.success(this.$scope.tr("email_tab_stepper_migrate_success_exchange"), this.$scope.alerts.main);
                     }
 
                     this.$scope.ctrlEmailDomainEmail.displayEmailsList();
@@ -187,7 +179,7 @@ angular.module("App").controller(
 
         // Handle services errors
         handleError (err) {
-            this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_migrate_error"), _.get(err, "data", err), this.$scope.alerts.migrate);
+            this.Alerter.alertFromSWS(this.$scope.tr("email_tab_stepper_migrate_error"), _.get(err, "data", err), this.$scope.alerts.migrate);
         }
 
         resetError () {
@@ -210,18 +202,18 @@ angular.module("App").controller(
 
             const checkMigrationErrors = [];
             _.forEach(checkMigrationErrorCodes, (code) => {
-                checkMigrationErrors.push(this.translator.tr(`email_tab_modal_migrate_errors_check_${code}`));
+                checkMigrationErrors.push(this.translator.tr(`email_tab_stepper_migrate_errors_check_${code}`));
             });
             this.checkMigrationErrors = _.uniq(checkMigrationErrors);
 
             let shouldRetryLabel = "";
             if (shouldRetry) {
-                shouldRetryLabel = this.translator.tr("email_tab_modal_migrate_error_check_should_retry");
+                shouldRetryLabel = this.translator.tr("email_tab_stepper_migrate_error_check_should_retry");
             }
 
-            this.checkMigrationErrorLabel = this.translator.tr("email_tab_modal_migrate_errors_check_label", [shouldRetryLabel]);
+            this.checkMigrationErrorLabel = this.translator.tr("email_tab_stepper_migrate_errors_check_label", [shouldRetryLabel]);
             if (this.checkMigrationErrors.length === 1) {
-                this.checkMigrationErrorLabel = this.translator.tr("email_tab_modal_migrate_error_check_label", [shouldRetryLabel]);
+                this.checkMigrationErrorLabel = this.translator.tr("email_tab_stepper_migrate_error_check_label", [shouldRetryLabel]);
             }
 
             this.shouldDisplayCheckMigrationsErrors = true;
