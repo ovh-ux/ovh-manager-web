@@ -253,7 +253,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
         const exchangeProductTypes = {
             EXCHANGE_PROVIDER: "app.microsoft.exchange.provider",
             EXCHANGE_DEDICATED: "app.microsoft.exchange.dedicated",
-            EXCHANGE_DEDICATEDCLUSTER: "app.microsoft.exchange.dedicatedcluster"
+            EXCHANGE_DEDICATEDCLUSTER: "app.microsoft.exchange.dedicatedCluster"
         };
 
         _.forEach(_.sortBy(products.exchanges, (elt) => angular.lowercase(elt.displayName || elt.name)), (elt) => {

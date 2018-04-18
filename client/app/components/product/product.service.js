@@ -176,19 +176,22 @@ angular.module("services").service("Products", [
 
             return this.getProducts(forceRefresh)
                 .then((productsList) => {
-                    const selectedProductIsUnknown = _(selectedProduct.name).isEmpty();
-                    if (selectedProductIsUnknown) {
-                        selectedProduct.name = _($stateParams).get("productId", "");
-                        selectedProduct.type = _($rootScope).get("currentSectionInformation", "").toUpperCase();
-                        selectedProduct.organization = _($stateParams).get("organization", "");
+                    const noCurrentlySelectedProduct = _(selectedProduct.name).isEmpty();
 
-                        if (selectedProduct.name === "") {
+                    if (noCurrentlySelectedProduct) {
+                        const currentStateProductId = _($stateParams).get("productId", "");
+
+                        if (_(currentStateProductId).isEmpty()) {
                             return {
                                 name: "",
                                 organization: "",
                                 type: ""
                             };
                         }
+
+                        selectedProduct.name = currentStateProductId;
+                        selectedProduct.type = _($rootScope).get("currentSectionInformation", "").toUpperCase();
+                        selectedProduct.organization = _($stateParams).get("organization", "");
                     }
 
                     let productMatchingSelectedProduct = null;
