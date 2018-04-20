@@ -1,11 +1,11 @@
 <div data-ng-controller="EmailsMigrateAccountCtrl as ctrl">
-    <oui-back-button data-title="{{::tr('email_tab_stepper_migrate_title')}}"
+    <oui-back-button data-title="{{::tr('email_tab_modal_migrate_title')}}"
         data-on-click="ctrlEmailDomainEmail.displayEmailsList()">
     </oui-back-button>
 
     <p>
         <a class="oui-link oui-link_icon" href="{{::ctrl.allGuides}}" target="_blank">
-            <span data-i18n-static="email_tab_stepper_migrate_configuration_guides_link"></span>
+            <span data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></span>
             <span class="oui-icon oui-icon-external_link" aria-hidden="true"></span>
         </a>
     </p>
@@ -13,7 +13,7 @@
     <!-- Email Account -->
     <div class="oui-field">
         <label class="oui-field__label oui-label"
-            data-i18n-static="email_tab_stepper_migrate_account_email_label">
+            data-i18n-static="email_tab_modal_migrate_account_email_label">
         </label>
         <div class="oui-field__control oui-field__control_m">
             <p data-ng-bind="ctrl.email.email"></p>
@@ -25,17 +25,17 @@
         data-on-finish="ctrl.migrateAccount()">
 
         <!-- Step 1: Destination -->
-        <oui-step-form data-header="{{::tr('email_tab_stepper_migrate_detination_step_title')}}"
+        <oui-step-form data-header="{{::tr('email_tab_modal_migrate_detination_step_title')}}"
             data-loading="ctrl.loaders.isInitialRetrievalRunning"
             data-navigation="ctrl.availableServices"
             data-on-submit="ctrl.getDestinationEmails(ctrl.migrate.destinationService.name)">
 
             <!-- No Service -->
             <div data-ng-if="!ctrl.availableServices">
-                <p data-i18n-static="email_tab_stepper_migrate_no_email_service"></p>
+                <p data-i18n-static="email_tab_modal_migrate_no_email_service"></p>
                 <p>
                     <a href="{{::ctrl.emailsOrder}}" target="_blank" class="btn btn-primary">
-                        <span data-i18n-static="email_tab_stepper_migrate_order_email_service"></span>
+                        <span data-i18n-static="email_tab_modal_migrate_order_email_service"></span>
                         <span class="fa fa-external-link"></span>
                     </a>
                 </p>
@@ -45,14 +45,14 @@
             <!-- Has Services -->
             <div data-ng-if="ctrl.availableServices">
                 <oui-message type="info">
-                    <span data-i18n-static="email_tab_stepper_migrate_select_platform_text"></span>
-                    <span data-i18n-static="email_tab_stepper_migrate_destination_service_help"></span>
+                    <span data-i18n-static="email_tab_modal_migrate_select_platform_text"></span>
+                    <span data-i18n-static="email_tab_modal_migrate_destination_service_help"></span>
                 </oui-message>
 
                 <!-- Destination Service -->
                 <div class="oui-field">
                     <label class="oui-field__label oui-label"
-                        data-i18n-static="email_tab_stepper_migrate_destination_service_label">
+                        data-i18n-static="email_tab_modal_migrate_destination_service_label">
                     </label>
                     <div class="row oui-field__control oui-field__control_auto">
                         <div class="col-md-{{(12 / ctrl.availableServices)}}"
@@ -76,7 +76,7 @@
         <!-- /Step 1: Destination -->
 
         <!-- Step 2: Informations -->
-        <oui-step-form data-header="{{::tr('email_tab_stepper_migrate_informations_step_title')}}"
+        <oui-step-form data-header="{{::tr('email_tab_modal_migrate_informations_step_title')}}"
             data-loading="ctrl.loaders.isWaitingForDestinationEmails"
             data-valid="ctrl.migrate.destinationEmail"
             data-navigation="ctrl.migrate.destinationEmail"
@@ -86,33 +86,33 @@
             <div data-ng-if="ctrl.migrate.destinationEmail">
 
                 <!-- Before -->
-                <h4 data-i18n-static="email_tab_stepper_migrate_informations_before_title"></h4>
+                <h4 data-i18n-static="email_tab_modal_migrate_informations_before_title"></h4>
                 <p>
-                    <span data-ng-bind-html="tr('email_tab_stepper_migrate_available_email_selected', ctrl.migrate.destinationEmail)"></span>
-                    <span data-i18n-static="email_tab_stepper_migrate_not_supported"></span>
+                    <span data-ng-bind-html="tr('email_tab_modal_migrate_available_email_selected', ctrl.migrate.destinationEmail)"></span>
+                    <span data-i18n-static="email_tab_modal_migrate_not_supported"></span>
                 </p>
                 <!-- /Before -->
 
                 <!-- While -->
-                <h4 data-i18n-static="email_tab_stepper_migrate_informations_while_title"></h4>
+                <h4 data-i18n-static="email_tab_modal_migrate_informations_while_title"></h4>
                 <p>
-                    <span data-ng-bind-html="::tr('email_tab_stepper_migrate_content_delay')"></span>
-                    <span data-i18n-static="email_tab_stepper_migrate_cant_cancel_or_access"></span>
-                    <span data-i18n-static="email_tab_stepper_migrate_dont_change_password"></span>
+                    <span data-ng-bind-html="::tr('email_tab_modal_migrate_confirmation_delay')"></span>
+                    <span data-i18n-static="email_tab_modal_migrate_cant_cancel_or_access"></span>
+                    <span data-i18n-static="email_tab_modal_migrate_alert_dont_change_password"></span>
                 </p>
                 <!-- /While -->
 
                 <!-- After -->
-                <h4 data-i18n-static="email_tab_stepper_migrate_informations_after_title"></h4>
+                <h4 data-i18n-static="email_tab_modal_migrate_informations_after_title"></h4>
                 <p>
                     <span data-ng-if="ctrl.remainingAvailableEmails"
-                        data-ng-bind-html="tr('email_tab_stepper_migrate_remaining_available_emails', ctrl.remainingAvailableEmails.toString())">
+                        data-ng-bind-html="tr('email_tab_modal_migrate_remaining_available_emails', ctrl.remainingAvailableEmails.toString())">
                     </span>
                     <span data-ng-if="!ctrl.remainingAvailableEmails"
-                        data-i18n-static="email_tab_stepper_migrate_no_remaining_available_emails">
+                        data-i18n-static="email_tab_modal_migrate_no_remaining_available_emails">
                     </span>
-                    <span data-i18n-static="email_tab_stepper_migrate_email_deleted"></span>
-                    <span data-i18n-static="email_tab_stepper_migrate_email_reconfiguration"></span>
+                    <span data-i18n-static="email_tab_modal_migrate_email_deleted"></span>
+                    <span data-i18n-static="email_tab_modal_migrate_email_reconfiguration"></span>
                 </p>
                 <!-- /After -->
 
@@ -120,7 +120,7 @@
                 <!-- Aknowledge Checkbox -->
                 <oui-field>
                     <oui-checkbox name="aknowledge" required
-                        data-text="{{::tr('email_tab_stepper_migrate_aknowledge')}}"
+                        data-text="{{::tr('email_tab_modal_migrate_aknowledge')}}"
                         data-model="ctrl.migrate.aknowledge">
                     </oui-checkbox>
                 </oui-field>
@@ -132,19 +132,19 @@
             <!-- No available email address -->
             <div data-ng-if="!ctrl.migrate.destinationEmail">
                 <p>
-                    <span data-ng-bind-html="tr('email_tab_stepper_migrate_no_available_email', ctrl.migrate.destinationService.name)"></span>
-                    <span data-i18n-static="email_tab_stepper_migrate_configure_me"></span>
+                    <span data-ng-bind-html="tr('email_tab_modal_migrate_no_available_email', ctrl.migrate.destinationService.name)"></span>
+                    <span data-i18n-static="email_tab_modal_migrate_configure_me"></span>
                 </p>
                 <p>
-                    <span data-i18n-static="email_tab_stepper_migrate_choose_another_service_or"></span>
+                    <span data-i18n-static="email_tab_modal_migrate_choose_another_service_or"></span>
                     <a class="oui-link oui-link_icon" href="/#/configuration/email_pro/{{::ctrl.migrate.destinationService.name}}?tab=ACCOUNT" target="_blank"
                         data-ng-if="ctrl.migrate.destinationService.type === 'EMAIL PRO'">
-                        <span data-i18n-static="email_tab_stepper_migrate_order_new_account_link"></span>
+                        <span data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></span>
                         <span class="oui-icon oui-icon-external_link" aria-hidden="true"></span>
                     </a>
                     <a class="oui-link oui-link_icon" href="/#/configuration/exchange_hosted/{{::ctrl.migrate.destinationService.name}}/{{::ctrl.migrate.destinationService.name}}?tab=ACCOUNT" target="_blank"
                         data-ng-if="ctrl.migrate.destinationService.type === 'HOSTED EXCHANGE'">
-                        <span data-i18n-static="email_tab_stepper_migrate_order_new_account_link"></span>
+                        <span data-i18n-static="email_tab_modal_migrate_order_new_emails_button"></span>
                         <span class="oui-icon oui-icon-external_link" aria-hidden="true"></span>
                     </a>
                 </p>
@@ -155,11 +155,11 @@
         <!-- /Step 2: Informations -->
 
         <!-- Step 3: Confirmation -->
-        <oui-step-form data-header="{{::tr('email_tab_stepper_migrate_confirmation_step_title')}}"
+        <oui-step-form data-header="{{::tr('email_tab_modal_migrate_confirmation_step_title')}}"
             data-loading="ctrl.loaders.isWaitingForMigrationCheck || ctrl.loaders.isWaitingForMigration"
             data-valid="ctrl.isMigrationDataValid"
             data-navigation="ctrl.isMigrationDataValid"
-            data-submit-text="{{::tr('email_tab_stepper_migrate_submit')}}">
+            data-submit-text="{{::tr('email_tab_modal_migrate_submit')}}">
 
             <!-- Migration data invalid -->
             <oui-message type="warning" data-ng-if="ctrl.shouldDisplayCheckMigrationsErrors">
@@ -175,7 +175,7 @@
             <div data-ng-if="ctrl.isMigrationDataValid">
 
                 <!-- Password -->
-                <oui-field data-label="{{::tr('email_tab_stepper_migrate_confirmation_password')}}"
+                <oui-field data-label="{{::tr('email_tab_modal_migrate_confirmation_password')}}"
                     data-size="m">
                     <input class="oui-input" id="accountPassword" name="accountPassword"
                         type="password" autocomplete="off" required

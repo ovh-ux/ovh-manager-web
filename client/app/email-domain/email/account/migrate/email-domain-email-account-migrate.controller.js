@@ -126,8 +126,6 @@ angular.module("App").controller(
                     if (this.destinationEmails && this.destinationEmails.length > 0) {
                         this.remainingAvailableEmails = this.destinationEmails.length - 1;
                         this.migrate.destinationEmail = this.destinationEmails[0];
-
-                        // this.checkMigrationData();
                     }
                 })
                 .catch((err) => this.handleError(err))
@@ -164,9 +162,9 @@ angular.module("App").controller(
             this.Emails.migrateAccountToDestinationAccount(this.email.domain, this.email.accountName, this.migrate.destinationService.name, this.migrate.destinationEmail, this.migrate.password)
                 .then(() => {
                     if (this.migrate.destinationService.type === "EMAIL PRO") {
-                        this.Alerter.success(this.$scope.tr("email_tab_stepper_migrate_success_emailpro"), this.$scope.alerts.main);
+                        this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success_emailpro"), this.$scope.alerts.main);
                     } else {
-                        this.Alerter.success(this.$scope.tr("email_tab_stepper_migrate_success_exchange"), this.$scope.alerts.main);
+                        this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success_exchange"), this.$scope.alerts.main);
                     }
 
                     this.$scope.ctrlEmailDomainEmail.displayEmailsList();
@@ -179,7 +177,7 @@ angular.module("App").controller(
 
         // Handle services errors
         handleError (err) {
-            this.Alerter.alertFromSWS(this.$scope.tr("email_tab_stepper_migrate_error"), _.get(err, "data", err), this.$scope.alerts.migrate);
+            this.Alerter.alertFromSWS(this.$scope.tr("email_tab_modal_migrate_error"), _.get(err, "data", err), this.$scope.alerts.migrate);
         }
 
         resetError () {
@@ -202,18 +200,18 @@ angular.module("App").controller(
 
             const checkMigrationErrors = [];
             _.forEach(checkMigrationErrorCodes, (code) => {
-                checkMigrationErrors.push(this.translator.tr(`email_tab_stepper_migrate_errors_check_${code}`));
+                checkMigrationErrors.push(this.translator.tr(`email_tab_modal_migrate_errors_check_${code}`));
             });
             this.checkMigrationErrors = _.uniq(checkMigrationErrors);
 
             let shouldRetryLabel = "";
             if (shouldRetry) {
-                shouldRetryLabel = this.translator.tr("email_tab_stepper_migrate_error_check_should_retry");
+                shouldRetryLabel = this.translator.tr("email_tab_modal_migrate_error_check_should_retry");
             }
 
-            this.checkMigrationErrorLabel = this.translator.tr("email_tab_stepper_migrate_errors_check_label", [shouldRetryLabel]);
+            this.checkMigrationErrorLabel = this.translator.tr("email_tab_modal_migrate_errors_check_label", [shouldRetryLabel]);
             if (this.checkMigrationErrors.length === 1) {
-                this.checkMigrationErrorLabel = this.translator.tr("email_tab_stepper_migrate_error_check_label", [shouldRetryLabel]);
+                this.checkMigrationErrorLabel = this.translator.tr("email_tab_modal_migrate_error_check_label", [shouldRetryLabel]);
             }
 
             this.shouldDisplayCheckMigrationsErrors = true;
