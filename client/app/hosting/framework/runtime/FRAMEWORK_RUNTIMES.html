@@ -113,13 +113,12 @@
 
     <aside class="col-md-3 mt-5 mt-lg-0">
         <div class="mb-5">
-            <button type="button" class="btn btn-block btn-default text-wrap"
+            <button type="button" class="btn btn-block btn-default text-wrap mb-3"
                     title="{{ ctrlRuntime.canAddRuntime() ? i18n.hosting_tab_FRAMEWORK_runtime_add : i18n.hosting_tab_FRAMEWORK_runtime_quota_reached }}"
                     data-i18n-static="hosting_tab_FRAMEWORK_runtime_add"
                     data-ng-click="setAction('framework/runtime/add-or-edit/hosting-framework-runtime-add-or-edit', {})"
                     data-ng-disabled="!ctrlRuntime.canAddRuntime()">
             </button>
-            <br><br>
 
             <button type="button" class="btn btn-block btn-default text-wrap"
                     title="{{ i18n.hosting_tab_FRAMEWORK_runtime_configure_envvar }}"
