@@ -1,20 +1,30 @@
 <div data-ng-controller="PrivateDatabaseArchiveDumpCtrl as archiveDumpCtrl">
     <div data-ovh-alert="{{alerts.main}}"></div>
 
-    <button class="oui-button oui-button_link oui-button_icon-left" type="button"
-            data-ng-click="goToArchivesList()">
-        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
-        <span data-i18n-static="common_back"></span>
-    </button>
-
-    <h2 data-ng-bind-html="tr('privateDatabase_tabs_dumps_change') + ' ' + bdd.name"></h2>
+    <oui-back-button
+        data-on-click="goToArchivesList()"
+        data-title="{{tr('privateDatabase_tabs_dumps_change') + ' ' + bdd.name}}">
+    </oui-back-button>
 
     <oui-datagrid data-rows="bdd.dumps">
-        <oui-column data-title="tr('privateDatabase_bdd_name')" data-property="databaseName" data-sortable></oui-column>
-        <oui-column data-title="tr('privateDatabase_tabs_dumps_creation_date')" data-property="creationDate" data-sortable>
+        <oui-column data-title="::tr('privateDatabase_bdd_name')"
+            data-property="databaseName"
+            data-sortable
+            data-type="string"
+            data-searchable
+            data-filterable></oui-column>
+        <oui-column data-title="::tr('privateDatabase_tabs_dumps_creation_date')"
+            data-property="creationDate"
+            data-sortable
+            data-type="date"
+            data-filterable>
             <span data-ng-bind="$row.creationDate | date: 'medium'"></span>
         </oui-column>
-        <oui-column data-title="tr('privateDatabase_tabs_dumps_deletion_date')" data-property="deletionDate" data-sortable>
+        <oui-column data-title="::tr('privateDatabase_tabs_dumps_deletion_date')"
+            data-property="deletionDate"
+            data-sortable
+            data-type="date"
+            data-filterable>
             <span data-ng-bind="$row.deletionDate | date: 'medium'"></span>
         </oui-column>
         <oui-action-menu data-align="end" data-compact>
