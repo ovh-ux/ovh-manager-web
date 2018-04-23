@@ -57,7 +57,7 @@ angular.module("App").controller(
             let filters = null;
             if (this.search) {
                 filters = [
-                    { name: "%" + this.search + "%" }
+                    { name: `%${this.search}%` }
                 ];
             }
 
