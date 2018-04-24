@@ -28,6 +28,7 @@
         <oui-step-form data-header="{{::tr('email_tab_modal_migrate_detination_step_title')}}"
             data-loading="ctrl.loaders.isInitialRetrievalRunning"
             data-navigation="ctrl.availableServices"
+            data-on-focus="ctrl.destinationFocused = true"
             data-on-submit="ctrl.getDestinationEmails(ctrl.migrate.destinationService.name)">
 
             <!-- No Service -->
@@ -43,32 +44,24 @@
             <!-- /No Service -->
 
             <!-- Has Services -->
-            <div data-ng-if="ctrl.availableServices">
-                <oui-message type="info">
-                    <span data-i18n-static="email_tab_modal_migrate_select_platform_text"></span>
-                    <span data-i18n-static="email_tab_modal_migrate_destination_service_help"></span>
-                </oui-message>
-
-                <!-- Destination Service -->
-                <div class="oui-field">
-                    <label class="oui-field__label oui-label"
-                        data-i18n-static="email_tab_modal_migrate_destination_service_label">
-                    </label>
-                    <div class="row oui-field__control oui-field__control_auto">
-                        <div class="col-md-{{(12 / ctrl.availableServices)}}"
-                            data-ng-repeat="(serviceType, destinationService) in ctrl.destinationServices">
-                            <oui-select-picker name="serviceType"
-                                data-text="{{::serviceType}}"
-                                data-placeholder="{{::tr('select_placeholder')}}"
-                                data-model="ctrl.migrate.destinationService"
-                                data-match="name"
-                                data-values="destinationService">
-                            </oui-select-picker>
-                        </div>
+            <div class="oui-field"
+                data-ng-if="ctrl.availableServices">
+                <label class="oui-field__label oui-label"
+                    data-i18n-static="email_tab_modal_migrate_destination_service_label">
+                </label>
+                <div class="row oui-field__control oui-field__control_auto">
+                    <div class="col-md-{{(12 / ctrl.availableServices)}}"
+                        data-ng-repeat="(serviceType, destinationService) in ctrl.destinationServices"
+                        data-ng-hide="!ctrl.destinationFocused && (ctrl.migrate.destinationService.type !== serviceType)">
+                        <oui-select-picker name="serviceType"
+                            data-text="{{::serviceType}}"
+                            data-placeholder="{{::tr('select_placeholder')}}"
+                            data-model="ctrl.migrate.destinationService"
+                            data-match="name"
+                            data-values="destinationService">
+                        </oui-select-picker>
                     </div>
                 </div>
-                <!-- /Destination Service -->
-
             </div>
             <!-- /Has Services -->
 
@@ -80,6 +73,7 @@
             data-loading="ctrl.loaders.isWaitingForDestinationEmails"
             data-valid="ctrl.migrate.destinationEmail"
             data-navigation="ctrl.migrate.destinationEmail"
+            data-on-focus="ctrl.destinationFocused = false"
             data-on-submit="ctrl.checkMigrationData()">
 
             <!-- Has available email address -->
@@ -159,7 +153,9 @@
             data-loading="ctrl.loaders.isWaitingForMigrationCheck || ctrl.loaders.isWaitingForMigration"
             data-valid="ctrl.isMigrationDataValid"
             data-navigation="ctrl.isMigrationDataValid"
-            data-submit-text="{{::tr('email_tab_modal_migrate_submit')}}">
+            data-submit-text="{{::tr('email_tab_modal_migrate_submit')}}"
+            data-cancel-text="{{::tr('wizard_cancel')}}"
+            data-on-cancel="ctrlEmailDomainEmail.displayEmailsList()">
 
             <!-- Migration data invalid -->
             <oui-message type="warning" data-ng-if="ctrl.shouldDisplayCheckMigrationsErrors">
