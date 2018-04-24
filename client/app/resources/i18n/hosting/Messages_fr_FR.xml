@@ -647,7 +647,7 @@
    <translation id="hosting_tab_FRAMEWORK_runtime_label_appEnv">Environnement de l'application</translation>
    <translation id="hosting_tab_FRAMEWORK_runtime_label_appBootstrap">Script de lancement de l'application</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_publicDir_help">Renseignez le chemin d'accès au répertoire public de votre application nécessaire au lancement d'un serveur nodejs.</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_publicDir_help">Renseignez le chemin d'accès au répertoire public nécessaire au lancement de votre serveur nodejs</translation>
    <translation id="hosting_tab_FRAMEWORK_runtime_appEnv_help">Renseignez l'environnement sous lequel l'application nodejs doit être lancée (prod, dev, test, ...)</translation>
    <translation id="hosting_tab_FRAMEWORK_runtime_appBootstrap_help">Renseignez le nom du script servant à lancer votre application depuis le binaire nodejs.</translation>
 
@@ -681,6 +681,7 @@
    <translation id="hosting_tab_FRAMEWORK_runtime_set_default_error">Une erreur est survenue lors de la mise en place par défaut de ce moteur d'exécution: </translation>
 
    <translation id="hosting_tab_FRAMEWORK_envvar_label_key">Nom</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_label_key_error">Le nom de la variable contient des caractères interdits</translation>
    <translation id="hosting_tab_FRAMEWORK_envvar_label_type">Type de variable</translation>
    <translation id="hosting_tab_FRAMEWORK_envvar_label_value">Valeur</translation>
 
@@ -783,10 +784,14 @@
    <translation id="hosting_tab_FTP_dashboard_information" qtlid="198584">Ces paramètres vous permettront de mettre votre site en ligne</translation>
    <translation id="hosting_tab_FTP_dashboard_server" qtlid="198597">Serveur FTP :</translation>
    <translation id="hosting_tab_FTP_dashboard_login" qtlid="198610">Login principal :</translation>
+   <translation id="hosting_tab_FTP_dashboard_primary_ftp_login">Login FTP principal :</translation>
+   <translation id="hosting_tab_FTP_dashboard_primary_ssh_login">Login SSH principal :</translation>
    <translation id="hosting_tab_FTP_dashboard_login_enabled" qtlid="198623">Login principal activé :</translation>
    <translation id="hosting_tab_FTP_dashboard_homez" qtlid="271621">Chemin du répertoire home :</translation>
    <translation id="hosting_tab_FTP_dashboard_clusterip" qtlid="198636">Adresse IP du cluster :</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_login" qtlid="41062">Login</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_ftp_login">Login FTP</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_ssh_login">Login SSH</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_home" qtlid="198649">Répertoire cible</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_iisRemoteRights" qtlid="198662">iisRemoteRights</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_state" qtlid="369025">Etat</translation>

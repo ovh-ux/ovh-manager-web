@@ -23,16 +23,22 @@ angular.module("App").controller(
          */
         $onInit () {
             this.isLoading = true;
-
-            const actionData = angular.copy(this.$scope.currentActionData) || {};
-            this.entryToSave = actionData.runtime;
+            this.entryToSave = {
+                name: null,
+                type: null,
+                publicDir: null,
+                appEnv: null,
+                appBootstrap: null
+            };
 
             this.title = this.translator.tr("hosting_tab_FRAMEWORK_runtime_create_title");
 
-            if (this.entryToSave) {
-                this.title = this.translator.tr("hosting_tab_FRAMEWORK_runtime_edit_title");
-
+            const actionData = angular.copy(this.$scope.currentActionData);
+            if (actionData) {
+                this.entryToSave = actionData;
                 this.entryToSave.isEdition = true;
+
+                this.title = this.translator.tr("hosting_tab_FRAMEWORK_runtime_edit_title");
             }
 
             this.$scope.save = () => this.save();
@@ -58,11 +64,11 @@ angular.module("App").controller(
          * @returns {boolean}
          */
         isValid () {
-            if (this.entryToSave.type && this.entryToSave.type.indexOf("nodejs") !== -1) {
-                return this.entryToSave.name && this.entryToSave.publicDir && this.entryToSave.appEnv && this.entryToSave.appBootstrap;
+            if (this.this.entryToSave && this.entryToSave.type && this.entryToSave.type.indexOf("nodejs") !== -1) {
+                return this.entryToSave && this.entryToSave.name && this.entryToSave.publicDir && this.entryToSave.appEnv && this.entryToSave.appBootstrap;
             }
 
-            return this.entryToSave.name && this.entryToSave.type;
+            return this.entryToSave && this.entryToSave.name && this.entryToSave.type;
         }
 
         /**
