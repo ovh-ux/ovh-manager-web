@@ -23,16 +23,20 @@ angular.module("App").controller(
          */
         $onInit () {
             this.isLoading = true;
-
-            const actionData = angular.copy(this.$scope.currentActionData) || {};
-            this.entryToSave = actionData.envvar;
+            this.entryToSave = {
+                key: null,
+                type: null,
+                value: null
+            };
 
             this.title = this.translator.tr("hosting_tab_FRAMEWORK_envvar_create_title");
 
-            if (this.entryToSave) {
-                this.title = this.translator.tr("hosting_tab_FRAMEWORK_envvar_edit_title");
-
+            const actionData = angular.copy(this.$scope.currentActionData);
+            if (actionData && actionData.envvar) {
+                this.entryToSave = actionData.envvar;
                 this.entryToSave.isEdition = true;
+
+                this.title = this.translator.tr("hosting_tab_FRAMEWORK_envvar_edit_title");
             }
 
             this.$scope.save = () => this.save();
@@ -42,11 +46,19 @@ angular.module("App").controller(
         }
 
         /**
+         * Verify if current form key entry does not contain any spaces
+         * @returns {boolean}
+         */
+        isKeyValid () {
+            return this.entryToSave && this.entryToSave.key && this.entryToSave.key.indexOf(" ") === -1;
+        }
+
+        /**
          * Verify if current form is valid
          * @returns {boolean}
          */
         isValid () {
-            return this.entryToSave.key && this.entryToSave.type && this.entryToSave.value;
+            return this.entryToSave && this.isKeyValid() && this.entryToSave.type && this.entryToSave.value;
         }
 
         /**

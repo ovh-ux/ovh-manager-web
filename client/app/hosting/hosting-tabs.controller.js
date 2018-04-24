@@ -36,22 +36,11 @@ angular.module("App").controller(
                         type: "SWITCH_TABS"
                     },
                     {
-                        label: this.$scope.tr("hosting_tab_BOOST"),
-                        target: "BOOST",
-                        type: "SWITCH_TABS"
-                    },
-                    {
                         type: "SEPARATOR"
-                    },
-                    {
-                        label: this.$scope.tr("hosting_tab_menu_emails"),
-                        target: `#/configuration/email-domain/${this.$stateParams.productId}?tab=MAILING_LIST`,
-                        type: "LINK"
                     },
                     {
                         label: this.$scope.tr("contacts_management"),
                         target: `#/useraccount/contacts?tab=SERVICES&serviceName=${this.$stateParams.productId}`,
-                        text: this.$scope.tr("hosting_tab_menu_contacts"),
                         type: "LINK"
                     },
                     {
@@ -86,6 +75,22 @@ angular.module("App").controller(
                     hosting: this.Hosting.getSelected(this.$stateParams.productId)
                 })
                 .then(({ indys, freedoms, hosting }) => {
+                    if (!hosting.isCloudWeb) {
+                        this.tabMenu.items.splice(3, 0, {
+                            label: this.$scope.i18n.hosting_tab_BOOST,
+                            target: "BOOST",
+                            type: "SWITCH_TABS"
+                        });
+
+                        this.tabMenu.items.splice(5, 0, {
+                            label: this.$scope.i18n.hosting_tab_menu_emails,
+                            target: `#/configuration/email-domain/${this.$stateParams.productId}?tab=MAILING_LIST`,
+                            type: "LINK"
+                        });
+                    } else {
+                        this.tabs.splice(1, 0, "FRAMEWORK");
+                    }
+
                     if (!_.isEmpty(indys)) {
                         this.tabMenu.items.splice(4, 0, {
                             label: this.$scope.i18n.hosting_tab_INDY,
@@ -100,11 +105,6 @@ angular.module("App").controller(
                             target: "FREEDOM",
                             type: "SWITCH_TABS"
                         });
-                    }
-
-                    if (hosting.isCloudWeb) {
-                        this.tabs.splice(1, 0, "FRAMEWORK");
-                        this.tabMenu.items.splice(3, 1);
                     }
                 });
         }

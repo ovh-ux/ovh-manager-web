@@ -5,7 +5,7 @@
          data-wizard-title="ctrl.title">
 
         <div data-wizard-step
-             data-wizard-step-valid="isValid">
+             data-wizard-step-valid="isValid()">
 
             <form class="form-horizontal" name="addEnvarForm" data-ng-if="!ctrl.loading">
                 <p>
@@ -13,11 +13,16 @@
                     <small data-i18n-static="required_fields"></small>
                 </p>
 
-                <div class="form-group">
+                <div class="form-group"
+                     data-ng-class="{ 'has-error': ctrl.entryToSave.key && !ctrl.isKeyValid() }">
                     <label class="control-label col-md-4 required" for="envvarKey" data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_key"></label>
 
                     <div class="col-md-6">
                         <input type="text" class="form-control" id="envvarKey" data-ng-model="ctrl.entryToSave.key">
+                        <small class="help-block"
+                               data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_key_error"
+                               data-ng-if="ctrl.entryToSave.key && !ctrl.isKeyValid()">
+                        </small>
                     </div>
                 </div>
 
