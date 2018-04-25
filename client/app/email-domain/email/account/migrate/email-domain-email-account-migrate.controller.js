@@ -216,9 +216,5 @@ angular.module("App").controller(
 
             this.shouldDisplayCheckMigrationsErrors = true;
         }
-
-        cancel () {
-            console.log("cancel !", this);
-        }
     }
 );
