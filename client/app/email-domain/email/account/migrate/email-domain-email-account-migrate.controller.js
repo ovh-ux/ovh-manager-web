@@ -129,7 +129,10 @@ angular.module("App").controller(
                     }
                 })
                 .catch((err) => this.handleError(err))
-                .finally(() => { this.loaders.isWaitingForDestinationEmails = false; });
+                .finally(() => {
+                    this.loaders.isWaitingForDestinationEmails = false;
+                    this.isExchange = _.get(this, "migrate.destinationService.type") !== "EMAIL PRO";
+                });
         }
 
         // Check if it's possible to migrate

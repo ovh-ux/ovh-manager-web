@@ -29,6 +29,7 @@
         <oui-step-form data-header="{{::tr('email_tab_modal_migrate_detination_step_title')}}"
             data-loading="ctrl.loaders.isInitialRetrievalRunning"
             data-navigation="ctrl.availableServices"
+            data-valid="ctrl.migrate.destinationService"
             data-on-focus="ctrl.destinationFocused = true"
             data-on-submit="ctrl.getDestinationEmails(ctrl.migrate.destinationService.name)">
 
@@ -85,7 +86,8 @@
                 <h4 data-i18n-static="email_tab_modal_migrate_informations_before_title"></h4>
                 <p>
                     <span data-ng-bind-html="tr('email_tab_modal_migrate_available_email_selected', ctrl.migrate.destinationEmail)"></span>
-                    <span data-i18n-static="email_tab_modal_migrate_not_supported"></span>
+                    <span data-ng-if="!ctrl.isExchange" data-i18n-static="email_tab_modal_migrate_not_supported"></span>
+                    <span data-ng-if="ctrl.isExchange" data-i18n-static="email_tab_modal_migrate_not_supported_exchange"></span>
                 </p>
                 <!-- /Before -->
 
@@ -108,7 +110,8 @@
                         data-i18n-static="email_tab_modal_migrate_no_remaining_available_emails">
                     </span>
                     <span data-i18n-static="email_tab_modal_migrate_email_deleted"></span>
-                    <span data-i18n-static="email_tab_modal_migrate_email_reconfiguration"></span>
+                    <span data-ng-if="!ctrl.isExchange" data-i18n-static="email_tab_modal_migrate_email_reconfiguration"></span>
+                    <span data-ng-if="ctrl.isExchange" data-i18n-static="email_tab_modal_migrate_email_reconfiguration_exchange"></span>
                 </p>
                 <!-- /After -->
 
