@@ -25,7 +25,17 @@
         <oui-column data-title="tr('database_tabs_dumps_deletion_date')" data-property="deletionDate" data-sortable>
             <span data-ng-bind="$row.deletionDate | date:'medium'"></span>
         </oui-column>
-        <oui-action-menu data-align="end" data-compact>
+        <oui-column data-title="tr('database_tabs_dumps_status')" data-property="status" data-sortable>
+            <span class="label"
+                  data-ng-bind="tr('database_tabs_dumps_status_' + $row.status)"
+                  data-ng-class="{
+                    'label-success': $row.status.status === 'created',
+                    'label-danger': $row.status.status === 'deleting',
+                    'label-warning': $row.status.status !== 'created' && $row.status.status !== 'deleting'
+                  }">
+            </span>
+        </oui-column>
+        <oui-action-menu data-align="end" data-compact data-ng-if="$row.status === 'created'">
             <oui-action-menu-item
                     data-text="{{tr('database_tabs_dumps_download_dump')}}"
                     data-ng-click="ctrlDumps.goTo($row.url, '_blank')"

@@ -66,16 +66,17 @@ angular.module("services").service(
         /**
          * Create an envvar on hosting configuration
          * @param serviceName
-         * @param model
+         * @param key
+         * @param type
+         * @param value
          */
-        create (serviceName, model) {
+        create (serviceName, { key, type, value }) {
             return this.OvhHttp.post(`/hosting/web/${serviceName}/envVar`, {
                 rootPath: "apiv6",
                 data: {
-                    key: model.key,
-                    type: model.type,
-                    value: model.value
-
+                    key,
+                    type,
+                    value
                 }
             }).then(
                 (data) => {
@@ -91,17 +92,18 @@ angular.module("services").service(
         /**
          * Edit an envvar on hosting configuration
          * @param serviceName
+         * @param oldKey
          * @param key
-         * @param model
+         * @param type
+         * @param value
          */
-        edit (serviceName, key, model) {
-            return this.OvhHttp.put(`/hosting/web/${serviceName}/envVar/${key}`, {
+        edit (serviceName, oldKey, { key, type, value }) {
+            return this.OvhHttp.put(`/hosting/web/${serviceName}/envVar/${oldKey}`, {
                 rootPath: "apiv6",
                 data: {
-                    key: model.key,
-                    type: model.type,
-                    value: model.value
-
+                    key,
+                    type,
+                    value
                 }
             }).then((data) => {
                 this.Hosting.resetEnvvars();

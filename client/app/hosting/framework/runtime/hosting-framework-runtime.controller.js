@@ -25,66 +25,61 @@ angular.module("App").controller(
          */
         $onInit () {
             this.hasResult = false;
-            this.loading = {
-                runtimes: false,
-                init: true
-            };
+            this.loading = true;
+            this.runtimes = [];
+            this.maxRuntimes = 0;
 
-            this.runtimes = {
-                ids: [],
-                details: [],
-                quotas: 0
-            };
+            this.$scope.$on(this.Hosting.events.tabFrameworkRuntimesRefresh, () => this.getIds());
 
-            this.search = null;
-
-            this.$scope.onTransformItem = (id) => this.onTransformItem(id);
-            this.$scope.onTransformItemDone = () => this.onTransformItemDone();
-            this.$scope.onRefresh = () => this.onRefresh();
-
-            this.$scope.$on(this.Hosting.events.tabFrameworkRuntimesRefresh, () => this.onRefresh());
-
-            this.loadRuntimes();
+            this.getIds();
             this.loadCapabilities();
         }
 
         /**
-         * Load all runtime configurations on hosting
+         * Load all runtimes ids from API
          */
-        loadRuntimes () {
-            this.loading.runtimes = true;
-
-            let filters = null;
-            if (this.search) {
-                filters = [
-                    { name: `%${this.search}%` }
-                ];
-            }
-
-            this.HostingFrameworkRuntime.list(this.$stateParams.productId, filters)
+        getIds () {
+            return this.HostingFrameworkRuntime.list(this.$stateParams.productId)
                 .then((ids) => {
-                    this.runtimes.ids = ids;
+                    if (ids) {
+                        const runtimeIds = ids.sort((a, b) => a < b);
+
+                        this.runtimes = runtimeIds.map((id) => ({ id }));
+                    }
                 })
                 .catch((err) => {
                     this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_runtime_list_error") + err.message, this.$scope.alerts.main);
                 })
                 .finally(() => {
-                    if (!_.isEmpty(this.runtimes.ids)) {
+                    if (this.runtimes.length > 0) {
                         this.hasResult = true;
                     }
 
-                    this.loading.runtimes = false;
-                    this.loading.init = false;
+                    this.loading = false;
                 })
             ;
         }
 
         /**
-         * Check if customer can add a new runtime
-         * @returns {boolean}
+         * Load a runtime given its id
          */
-        canAddRuntime () {
-            return this.runtimes.ids && this.runtimes.ids.length < this.runtimes.quotas;
+        getRuntime (row) {
+            let runtime = null;
+
+            return this.HostingFrameworkRuntime.get(this.$stateParams.productId, row.id)
+                .then((data) => {
+                    runtime = data;
+                    runtime.countAttachedDomains = 0;
+
+                    return this.HostingFrameworkRuntime.getAttachedDomains(this.$stateParams.productId, runtime.id);
+                })
+                .then((attachedDomains) => {
+                    runtime.countAttachedDomains = attachedDomains.length;
+                    runtime.loaded = true;
+
+                    return runtime;
+                })
+            ;
         }
 
         /**
@@ -98,7 +93,7 @@ angular.module("App").controller(
                     return this.Hosting.getOfferCapabilities(offer);
                 })
                 .then((capabilities) => {
-                    this.runtimes.quotas = capabilities.runtimes;
+                    this.maxRuntimes = capabilities.runtimes;
                 })
                 .catch((err) => {
                     this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_error") + err.message, this.$scope.alerts.main);
@@ -107,54 +102,11 @@ angular.module("App").controller(
         }
 
         /**
-         * Transform runtime id into fully runtime object
-         * @param id
+         * Check if customer can add a new runtime
+         * @returns {boolean}
          */
-        onTransformItem (id) {
-            let runtime = null;
-
-            return this.HostingFrameworkRuntime.get(this.$stateParams.productId, id)
-                .then((data) => {
-                    runtime = data;
-
-                    return this.HostingFrameworkRuntime.getAttachedDomains(this.$stateParams.productId, id);
-                })
-                .then((attachedDomains) => {
-                    runtime.countAttachedDomains = attachedDomains.length;
-
-                    return runtime;
-                })
-            ;
-        }
-
-        /**
-         * Event called when runtime transformation is done
-         */
-        onTransformItemDone () {
-            this.loading.runtimes = false;
-        }
-
-        /**
-         * Refresh runtimes list
-         */
-        onRefresh () {
-            this.loading.runtimes = true;
-            this.runtimes.ids = null;
-            this.runtimes.details = [];
-
-            this.loadRuntimes();
-        }
-
-        /**
-         * Search a needle in configurations list
-         * @param newValue
-         */
-        onSearch (newValue) {
-            if (this.search !== null) {
-                if (this.search === "" || this.search === newValue) {
-                    this.onRefresh();
-                }
-            }
+        canAddRuntime () {
+            return this.runtimes && this.runtimes.length < this.maxRuntimes;
         }
     }
 );

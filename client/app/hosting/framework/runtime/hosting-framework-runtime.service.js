@@ -88,17 +88,21 @@ angular.module("services").service(
         /**
          * Create a runtime configuration on hosting
          * @param serviceName
-         * @param model
+         * @param name
+         * @param type
+         * @param publicDir
+         * @param appEnv
+         * @param appBootstrap
          */
-        create (serviceName, model) {
+        create (serviceName, { name, type, publicDir, appEnv, appBootstrap }) {
             return this.OvhHttp.post(`/hosting/web/${serviceName}/runtime`, {
                 rootPath: "apiv6",
                 data: {
-                    name: model.name,
-                    type: model.type,
-                    publicDir: model.publicDir,
-                    appEnv: model.appEnv,
-                    appBootstrap: model.appBootstrap
+                    name,
+                    type,
+                    publicDir,
+                    appEnv,
+                    appBootstrap
                 }
             }).then(
                 (data) => {
@@ -115,17 +119,21 @@ angular.module("services").service(
          * Update a runtime configuration on hosting
          * @param serviceName
          * @param id
-         * @param model
+         * @param name
+         * @param type
+         * @param publicDir
+         * @param appEnv
+         * @param appBootstrap
          */
-        edit (serviceName, id, model) {
+        edit (serviceName, id, { name, type, publicDir, appEnv, appBootstrap }) {
             return this.OvhHttp.put(`/hosting/web/${serviceName}/runtime/${id}`, {
                 rootPath: "apiv6",
                 data: {
-                    name: model.name,
-                    type: model.type,
-                    publicDir: model.publicDir,
-                    appEnv: model.appEnv,
-                    appBootstrap: model.appBootstrap
+                    name,
+                    type,
+                    publicDir,
+                    appEnv,
+                    appBootstrap
                 }
             }).then((data) => {
                 this.Hosting.resetRuntimes();

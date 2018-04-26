@@ -354,6 +354,7 @@
    <translation id="hosting_tab_DATABASES_configuration_create_title" qtlid="7618">Créer une base de données</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MYSQL" qtlid="196894">MySQL</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_POSTGRESQL" qtlid="196907">PostgreSQL</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MONGODB">MongoDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_loading_error" qtlid="168120">Une erreur s'est produite lors du chargement des informations.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_question" qtlid="196920">Vous allez créer une base de données</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_no_db_left" qtlid="196933">Il ne vous reste aucune base de données disponible.</translation>
@@ -418,6 +419,11 @@
    <translation id="database_tabs_dumps_delete_success" qtlid="290264">La suppression de la sauvegarde a bien été effectuée.</translation>
    <translation id="database_tabs_dumps_delete_fail" qtlid="290277">Une erreur est survenue lors de la suppression de la sauvegarde :</translation>
 
+   <translation id="database_tabs_dumps_status">Status</translation>
+   <translation id="database_tabs_dumps_status_created">Créé</translation>
+   <translation id="database_tabs_dumps_status_creating">Dump en création</translation>
+   <translation id="database_tabs_dumps_status_updating">Dump en modification</translation>
+   <translation id="database_tabs_dumps_status_deleting">Dump en suppression</translation>
 
    <translation id="hosting_tab_DATABASES_configuration_update_password_title" qtlid="80394">Changer le mot de passe</translation>
    <translation id="hosting_tab_DATABASES_configuration_update_password_question" qtlid="413180">Vous allez changer le mot de passe de la base de données {0} :</translation>
@@ -601,13 +607,13 @@
    <translation id="hosting_tab_FRAMEWORK_runtimes_table_empty">La liste des moteurs d'exécution est vide.</translation>
    <translation id="hosting_tab_FRAMEWORK_envvars_table_empty">La liste des variables d'environnement est vide.</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_table_status_created" qtlid="30250">Actif</translation>
-   <translation id="hosting_tab_FRAMEWORK_table_status_creating" qtlid="24967">Création en cours</translation>
-   <translation id="hosting_tab_FRAMEWORK_table_status_updating" qtlid="136100">Modification en cours</translation>
-   <translation id="hosting_tab_FRAMEWORK_table_status_deleting" qtlid="136100">Suppression en cours</translation>
+   <translation id="hosting_tab_FRAMEWORK_table_status_created">Actif</translation>
+   <translation id="hosting_tab_FRAMEWORK_table_status_creating">Création en cours</translation>
+   <translation id="hosting_tab_FRAMEWORK_table_status_updating">Modification en cours</translation>
+   <translation id="hosting_tab_FRAMEWORK_table_status_deleting">Suppression en cours</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_list_error">Une erreur est survenue lors de la récupération des données des moteurs d'exécution: </translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_list_error">Une erreur est survenue lors de la récupération des données des variables d'environnement: </translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_list_error">Une erreur est survenue lors de la récupération des données des moteurs d'exécution : </translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_list_error">Une erreur est survenue lors de la récupération des données des variables d'environnement : </translation>
 
    <translation id="hosting_tab_FRAMEWORK_runtime_list">Liste des moteurs d'exécutions disponibles</translation>
    <translation id="hosting_tab_FRAMEWORK_envvar_list">Liste des variables d'environnements actives</translation>
@@ -620,6 +626,7 @@
    <translation id="hosting_tab_FRAMEWORK_error">Une erreur est survenue lors de la récupération des informations: </translation>
    <translation id="hosting_tab_FRAMEWORK_empty">La liste de configuration est vide.</translation>
 
+   <translation id="hosting_tab_FRAMEWORK_runtime_actions">Actions</translation>
    <translation id="hosting_tab_FRAMEWORK_runtime_table_header_name">Nom de la configuration</translation>
    <translation id="hosting_tab_FRAMEWORK_runtime_table_header_language">Moteur d'exécution</translation>
    <translation id="hosting_tab_FRAMEWORK_runtime_table_header_default">Choix par défaut</translation>
@@ -634,11 +641,11 @@
    <translation id="hosting_tab_FRAMEWORK_runtime_delete_step1_question">Êtes-vous sûr de vouloir supprimer ce moteur d'exécution ?</translation>
 
    <translation id="hosting_tab_FRAMEWORK_runtime_save_success">Ce nouveau moteur d'exécution sera disponible d'ici quelques instants (+- 2 minutes).</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_save_error">Une erreur est survenue lors de la création d'un moteur d'exécution: </translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_save_error">Une erreur est survenue lors de la création d'un moteur d'exécution : </translation>
    <translation id="hosting_tab_FRAMEWORK_runtime_edit_success">Le moteur d'exécution est en cours de modification.</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_edit_error">Une erreur est survenue lors de la modification du moteur d'exécution: </translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_edit_error">Une erreur est survenue lors de la modification du moteur d'exécution : </translation>
    <translation id="hosting_tab_FRAMEWORK_runtime_delete_success">Ce moteur d'exécution est en cours de suppression.</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_delete_error">Une erreur est survenue lors de la suppression du moteur d'exécution: </translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_delete_error">Une erreur est survenue lors de la suppression du moteur d'exécution : </translation>
    <translation id="hosting_tab_FRAMEWORK_runtime_delete_information">Attention, cette action est irréversible et entraînera la perte de toutes les données.</translation>
 
    <translation id="hosting_tab_FRAMEWORK_runtime_label_name">Nom personnalisé</translation>
@@ -647,16 +654,17 @@
    <translation id="hosting_tab_FRAMEWORK_runtime_label_appEnv">Environnement de l'application</translation>
    <translation id="hosting_tab_FRAMEWORK_runtime_label_appBootstrap">Script de lancement de l'application</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_publicDir_help">Renseignez le chemin d'accès au répertoire public nécessaire au lancement de votre serveur nodejs</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_appEnv_help">Renseignez l'environnement sous lequel l'application nodejs doit être lancée (prod, dev, test, ...)</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_appBootstrap_help">Renseignez le nom du script servant à lancer votre application depuis le binaire nodejs.</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_publicDir_help">Renseignez le chemin d'accès au répertoire public nécessaire au lancement de votre serveur Node.js</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_appEnv_help">Renseignez l'environnement sous lequel l'application nodejs doit être lancée (prod, dev, test, …)</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_appBootstrap_help">Renseignez le nom du script servant à lancer votre application depuis le binaire Node.js.</translation>
 
    <translation id="hosting_tab_FRAMEWORK_runtime_configure_envvar">Configurer les variables d'environnement</translation>
 
+   <translation id="hosting_tab_FRAMEWORK_envvar_actions">Actions</translation>
    <translation id="hosting_tab_FRAMEWORK_envvar_table_header_key">Nom de la variable</translation>
    <translation id="hosting_tab_FRAMEWORK_envvar_table_header_type">Type de variable</translation>
    <translation id="hosting_tab_FRAMEWORK_envvar_table_header_value">Valeur</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_table_header_status">Etat</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_table_header_status">État</translation>
 
    <translation id="hosting_tab_FRAMEWORK_envvar_table_popover_modify">Modifier</translation>
    <translation id="hosting_tab_FRAMEWORK_envvar_table_popover_delete">Supprimer</translation>
@@ -672,13 +680,13 @@
    <translation id="hosting_tab_FRAMEWORK_runtime_set_default_information">Attention, après cela, tous vos multisites seront par défaut créés sur ce moteur. Cependant, vous aurez toujours le choix de modifier cela plus tard.</translation>
 
    <translation id="hosting_tab_FRAMEWORK_envvar_save_success">La nouvelle variable d'environnement sera disponible d'ici quelques instants (+- 2 minutes).</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_save_error">Une erreur est survenue lors de la création d'une variable d'environnement: </translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_save_error">Une erreur est survenue lors de la création d'une variable d'environnement : </translation>
    <translation id="hosting_tab_FRAMEWORK_envvar_edit_success">La variable d'environnement est en cours de modification.</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_edit_error">Une erreur est survenue lors de la modification de la variable d'environnement: </translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_edit_error">Une erreur est survenue lors de la modification de la variable d'environnement : </translation>
    <translation id="hosting_tab_FRAMEWORK_envvar_delete_success">La variable d'environnement est en cours de suppression.</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_delete_error">Une erreur est survenue lors de la suppression de la variable d'environnement: </translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_delete_error">Une erreur est survenue lors de la suppression de la variable d'environnement : </translation>
    <translation id="hosting_tab_FRAMEWORK_runtime_set_default_success">Ce moteur d'exécution sera disponible par défaut d'ici quelques instants.</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_set_default_error">Une erreur est survenue lors de la mise en place par défaut de ce moteur d'exécution: </translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_set_default_error">Une erreur est survenue lors de la mise en place par défaut de ce moteur d'exécution : </translation>
 
    <translation id="hosting_tab_FRAMEWORK_envvar_label_key">Nom</translation>
    <translation id="hosting_tab_FRAMEWORK_envvar_label_key_error">Le nom de la variable contient des caractères interdits</translation>

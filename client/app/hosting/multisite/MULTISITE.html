@@ -80,9 +80,7 @@
                                 <td class="word-break"
                                     data-ng-bind="domain.displayName"></td>
                                 <td data-ng-bind="domain.path"></td>
-                                <td data-ng-if="hosting.isCloudWeb">
-                                    {{ domain.runtime.name }}
-                                </td>
+                                <td data-ng-if="hosting.isCloudWeb" data-ng-bind="domain.runtime.name"></td>
                                 <td class="text-center">
                                     <span class="label"
                                           data-ng-bind="i18n['hosting_tab_DOMAINS_table_cdn_state_' + (domain.ownLog ? 'ACTIVE' : 'NONE')] || domain.ownLog"

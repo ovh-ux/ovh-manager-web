@@ -1,27 +1,27 @@
 <div data-ng-controller="controllers.Hosting.Framework.Envvar.create as ctrl">
     <div data-wizard
          data-wizard-on-cancel="resetAction"
-         data-wizard-on-finish="save"
-         data-wizard-title="ctrl.title">
+         data-wizard-on-finish="create"
+         data-wizard-title="i18n.hosting_tab_FRAMEWORK_envvar_create_title">
 
         <div data-wizard-step
              data-wizard-step-valid="isValid()">
 
-            <form class="form-horizontal" name="addEnvarForm" data-ng-if="!ctrl.loading">
+            <form class="form-horizontal" name="addEnvvarForm" data-ng-if="!ctrl.loading">
                 <p>
                     <small class="text-danger">*</small>
                     <small data-i18n-static="required_fields"></small>
                 </p>
 
                 <div class="form-group"
-                     data-ng-class="{ 'has-error': ctrl.entryToSave.key && !ctrl.isKeyValid() }">
+                     data-ng-class="{ 'has-error': ctrl.entryToCreate.key && !ctrl.isKeyValid() }">
                     <label class="control-label col-md-4 required" for="envvarKey" data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_key"></label>
 
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="envvarKey" data-ng-model="ctrl.entryToSave.key">
-                        <small class="help-block"
+                        <input type="text" class="form-control" id="envvarKey" data-ng-model="ctrl.entryToCreate.key">
+                        <small class="help-block" role="alert"
                                data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_key_error"
-                               data-ng-if="ctrl.entryToSave.key && !ctrl.isKeyValid()">
+                               data-ng-if="ctrl.entryToCreate.key && !ctrl.isKeyValid()">
                         </small>
                     </div>
                 </div>
@@ -32,8 +32,8 @@
                     <div class="col-md-8">
                         <div class="oui-select oui-select_inline mb-0">
                             <select class="oui-select__input" id="envvarType" required
-                                    data-ng-change="ctrl.entryToSave.value = null"
-                                    data-ng-model="ctrl.entryToSave.type">
+                                    data-ng-change="ctrl.entryToCreate.value = null"
+                                    data-ng-model="ctrl.entryToCreate.type">
                                 <option>string</option>
                                 <option>integer</option>
                                 <option>password</option>
@@ -48,9 +48,9 @@
                     <label class="control-label col-md-4 required" for="envvarValue" data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_value"></label>
 
                     <div class="col-md-6">
-                        <input type="number" data-ng-if="ctrl.entryToSave.type === 'integer'" class="form-control" id="envvarValue" data-ng-model="ctrl.entryToSave.value">
-                        <input type="password" data-ng-if="ctrl.entryToSave.type === 'password'" class="form-control" id="envvarValue" data-ng-model="ctrl.entryToSave.value">
-                        <input type="text" data-ng-if="ctrl.entryToSave.type !== 'password' && ctrl.entryToSave.type !== 'integer'" class="form-control" id="envvarValue" data-ng-model="ctrl.entryToSave.value">
+                        <input type="number" data-ng-if="ctrl.entryToCreate.type === 'integer'" class="form-control" id="envvarValue" data-ng-model="ctrl.entryToCreate.value">
+                        <input type="password" data-ng-if="ctrl.entryToCreate.type === 'password'" class="form-control" id="envvarValue" data-ng-model="ctrl.entryToCreate.value">
+                        <input type="text" data-ng-if="ctrl.entryToCreate.type !== 'password' && ctrl.entryToCreate.type !== 'integer'" class="form-control" id="envvarValue" data-ng-model="ctrl.entryToCreate.value">
                     </div>
                 </div>
             </form>
