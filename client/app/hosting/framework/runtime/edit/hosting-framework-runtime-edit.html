@@ -1,13 +1,13 @@
-<div data-ng-controller="controllers.Hosting.Framework.Runtime.create as ctrl">
+<div data-ng-controller="controllers.Hosting.Framework.Runtime.edit as ctrl">
     <div data-wizard
          data-wizard-on-cancel="resetAction"
-         data-wizard-on-finish="save"
-         data-wizard-title="ctrl.title">
+         data-wizard-on-finish="edit"
+         data-wizard-title="i18n.hosting_tab_FRAMEWORK_runtime_edit_title">
 
         <div data-wizard-step
              data-wizard-step-valid="isValid()">
 
-            <form class="form-horizontal" name="addRuntimeForm" data-ng-if="!ctrl.loading">
+            <form class="form-horizontal" name="editRuntimeForm" data-ng-if="!ctrl.loading">
                 <p>
                     <small class="text-danger">*</small>
                     <small data-i18n-static="required_fields"></small>
@@ -17,7 +17,7 @@
                     <label class="control-label col-md-4 required" for="runtimeName" data-i18n-static="hosting_tab_FRAMEWORK_runtime_label_name"></label>
 
                     <div class="col-md-6">
-                        <input type="text" class="form-control" id="runtimeName" data-ng-model="ctrl.entryToSave.name">
+                        <input type="text" class="form-control" id="runtimeName" data-ng-model="ctrl.entryToEdit.name">
                     </div>
                 </div>
 
@@ -26,18 +26,18 @@
 
                     <div class="col-md-8">
                         <div class="oui-select oui-select_inline mb-0">
-                            <select class="oui-select__input" id="runtimeType" data-ng-model="ctrl.entryToSave.type" data-ng-options="type for type in ctrl.availableTypes" required></select>
+                            <select class="oui-select__input" id="runtimeType" data-ng-model="ctrl.entryToEdit.type" data-ng-options="type for type in ctrl.availableTypes" required></select>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
                     </div>
                 </div>
 
-                <div data-ng-if="ctrl.entryToSave.type.length && ctrl.entryToSave.type.indexOf('nodejs') !== -1">
+                <div data-ng-if="ctrl.entryToEdit.type.length && ctrl.entryToEdit.type.indexOf('nodejs') !== -1">
                     <div class="form-group">
                         <label class="control-label col-md-4 required" for="runtimePublicDir" data-i18n-static="hosting_tab_FRAMEWORK_runtime_label_publicDir"></label>
 
                         <div class="col-md-6">
-                            <input type="text" class="form-control" id="runtimePublicDir" data-ng-model="ctrl.entryToSave.publicDir">
+                            <input type="text" class="form-control" id="runtimePublicDir" data-ng-model="ctrl.entryToEdit.publicDir">
                         </div>
 
                         <span class="fa fa-info-circle m-2" data-uib-tooltip="{{ i18n.hosting_tab_FRAMEWORK_runtime_publicDir_help }}"></span>
@@ -47,7 +47,7 @@
                         <label class="control-label col-md-4 required" for="runtimeAppEnv" data-i18n-static="hosting_tab_FRAMEWORK_runtime_label_appEnv"></label>
 
                         <div class="col-md-6">
-                            <input type="text" class="form-control" id="runtimeAppEnv" data-ng-model="ctrl.entryToSave.appEnv">
+                            <input type="text" class="form-control" id="runtimeAppEnv" data-ng-model="ctrl.entryToEdit.appEnv">
                         </div>
 
                         <span class="fa fa-info-circle m-2" data-uib-tooltip="{{ i18n.hosting_tab_FRAMEWORK_runtime_appEnv_help }}"></span>
@@ -57,7 +57,7 @@
                         <label class="control-label col-md-4 required" for="runtimeAppBootstrap" data-i18n-static="hosting_tab_FRAMEWORK_runtime_label_appBootstrap"></label>
 
                         <div class="col-md-6">
-                            <input type="text" class="form-control" id="runtimeAppBootstrap" data-ng-model="ctrl.entryToSave.appBootstrap">
+                            <input type="text" class="form-control" id="runtimeAppBootstrap" data-ng-model="ctrl.entryToEdit.appBootstrap">
                         </div>
 
                         <span class="fa fa-info-circle m-2" data-uib-tooltip="{{ i18n.hosting_tab_FRAMEWORK_runtime_appBootstrap_help }}"></span>

@@ -24,57 +24,51 @@ angular.module("App").controller(
          * Initialize HostingFrameworkEnvvarCtrl
          */
         $onInit () {
+            this.loading = true;
             this.hasResult = false;
-            this.loading = {
-                envvars: false,
-                init: true
-            };
+            this.envvars = [];
+            this.maxEnvvars = 0;
 
-            this.envvars = {
-                ids: [],
-                details: [],
-                quotas: 0
-            };
+            this.$scope.$on(this.Hosting.events.tabFrameworkEnvvarsRefresh, () => this.getIds());
 
-            this.search = null;
-
-            this.$scope.onTransformItem = (id) => this.onTransformItem(id);
-            this.$scope.onTransformItemDone = () => this.onTransformItemDone();
-            this.$scope.onRefresh = () => this.onRefresh();
-
-            this.$scope.$on(this.Hosting.events.tabFrameworkEnvvarsRefresh, () => this.onRefresh());
-
-            this.loadEnvvars();
+            this.getIds();
             this.loadCapabilities();
         }
 
         /**
-         * Load all environment variables on hosting
+         * Load all environment variables keys from API
          */
-        loadEnvvars () {
-            this.loading.envvars = true;
+        getIds () {
+            return this.HostingFrameworkEnvvar.list(this.$stateParams.productId)
+                .then((keys) => {
+                    if (keys) {
+                        const envvarKeys = keys.sort((a, b) => a.localeCompare(b));
 
-            let filters = null;
-            if (this.search) {
-                filters = [
-                    { type: this.search }
-                ];
-            }
-
-            this.HostingFrameworkEnvvar.list(this.$stateParams.productId, filters)
-                .then((ids) => {
-                    this.envvars.ids = ids;
+                        this.envvars = envvarKeys.map((key) => ({ key }));
+                    }
                 })
                 .catch((err) => {
                     this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_envvar_list_error") + err.message, this.$scope.alerts.main);
                 })
                 .finally(() => {
-                    if (!_.isEmpty(this.envvars.ids)) {
+                    if (this.envvars.length > 0) {
                         this.hasResult = true;
                     }
 
-                    this.loading.envvars = false;
-                    this.loading.init = false;
+                    this.loading = false;
+                })
+            ;
+        }
+
+        /**
+         * Load an environment variable given its key
+         */
+        getEnvvar (row) {
+            return this.HostingFrameworkEnvvar.get(this.$stateParams.productId, row.key)
+                .then((envvar) => {
+                    envvar.loaded = true;
+
+                    return envvar;
                 })
             ;
         }
@@ -84,7 +78,7 @@ angular.module("App").controller(
          * @returns {boolean}
          */
         canAddEnvvar () {
-            return this.envvars.ids && this.envvars.ids.length < this.envvars.quotas;
+            return this.envvars && this.envvars.length < this.maxEnvvars;
         }
 
         /**
@@ -98,51 +92,12 @@ angular.module("App").controller(
                     return this.Hosting.getOfferCapabilities(offer);
                 })
                 .then((capabilities) => {
-                    this.envvars.quotas = capabilities.envVars;
+                    this.maxEnvvars = capabilities.envVars;
                 })
                 .catch((err) => {
                     this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_error") + err.message, this.$scope.alerts.main);
                 })
             ;
         }
-
-        /**
-         * Transform envvar id into fully envvar object
-         * @param id
-         */
-        onTransformItem (id) {
-            return this.HostingFrameworkEnvvar.get(this.$stateParams.productId, id);
-        }
-
-        /**
-         * Event called when envvar transformation is done
-         */
-        onTransformItemDone () {
-            this.loading.envvars = false;
-        }
-
-        /**
-         * Refresh envvars list
-         */
-        onRefresh () {
-            this.loading.envvars = true;
-            this.envvars.ids = null;
-            this.envvars.details = [];
-
-            this.loadEnvvars();
-        }
-
-        /**
-         * Search a needle in configurations list
-         * @param newValue
-         */
-        onSearch (newValue) {
-            if (this.search !== null) {
-                if (this.search === "" || this.search === newValue) {
-                    this.onRefresh();
-                }
-            }
-        }
-
     }
 );

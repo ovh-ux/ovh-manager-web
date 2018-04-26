@@ -248,7 +248,7 @@
                                             </button>
                                         </li>
                                         <li role="menuitem"
-                                            data-ng-if="element.type === 'MYSQL'">
+                                            data-ng-if="!hosting.isCloudWeb && element.type === 'MYSQL'">
                                             <button class="btn btn-link" type="button"
                                                     data-i18n-static="hosting_tab_DATABASES_table_popover_check_quota"
                                                     data-ng-click="ctrlTabDatabases.checkQuota(element)">
