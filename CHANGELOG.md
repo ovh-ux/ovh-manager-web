@@ -1,3 +1,60 @@
+<a name="13.3.2"></a>
+## [13.3.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.1...v13.3.2) (2018-04-26)
+
+
+
+<a name="13.3.1"></a>
+## [13.3.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.0...v13.3.1) (2018-04-16)
+
+
+
+<a name="13.3.0"></a>
+# 13.3.0 (2018-04-10)
+
+
+### Bug Fixes
+
+* update icons path and bump versions of ovh-ui-* ([077b846](https://github.com/ovh-ux/ovh-manager-web/commit/077b846))
+* **analytics:** fix addStateNameFilter and change stateName app.x by web.x ([dffb515](https://github.com/ovh-ux/ovh-manager-web/commit/dffb515))
+* **app:** Remove piwik ([5dacf9e](https://github.com/ovh-ux/ovh-manager-web/commit/5dacf9e))
+* **auth:** apply the same fix as in dedicated to fix dev authentication ([dd6c6e0](https://github.com/ovh-ux/ovh-manager-web/commit/dd6c6e0))
+* **deps:** fix security problems ([1e53279](https://github.com/ovh-ux/ovh-manager-web/commit/1e53279))
+* **domain:** fix datagrid in domain/tasks ([a7abb86](https://github.com/ovh-ux/ovh-manager-web/commit/a7abb86))
+* **domain:** fix loading when the service is expired ([9f423e7](https://github.com/ovh-ux/ovh-manager-web/commit/9f423e7))
+* **domain.zone.record:** add .word-break to target value ([9314152](https://github.com/ovh-ux/ovh-manager-web/commit/9314152))
+* **domain.zone.record:** add service type none to DKIM ([6d9625a](https://github.com/ovh-ux/ovh-manager-web/commit/6d9625a))
+* **email:** improve HTML and remove unuse ([88fb9d6](https://github.com/ovh-ux/ovh-manager-web/commit/88fb9d6))
+* add an explanation ([20f1091](https://github.com/ovh-ux/ovh-manager-web/commit/20f1091))
+* **email-domain:** Fix for using deprecated API call ([8d358f0](https://github.com/ovh-ux/ovh-manager-web/commit/8d358f0))
+* **email-domain:** Remove old guides ([201bdb3](https://github.com/ovh-ux/ovh-manager-web/commit/201bdb3))
+* **email-domain:** Remove unused translation ([0d8a8d9](https://github.com/ovh-ux/ovh-manager-web/commit/0d8a8d9))
+* **email-domain:** Use link instead of js for OMM ([07e8832](https://github.com/ovh-ux/ovh-manager-web/commit/07e8832))
+* **email.delegate:** Set property to display quota progress bar ([74a89ab](https://github.com/ovh-ux/ovh-manager-web/commit/74a89ab))
+* **pagination:** fix pagination translations ([6c1cedd](https://github.com/ovh-ux/ovh-manager-web/commit/6c1cedd))
+* **privatedb:** update all bad catching for tasks ([02eaf80](https://github.com/ovh-ux/ovh-manager-web/commit/02eaf80))
+* **privatedb:** update bad catching for tasks ([a1a52a5](https://github.com/ovh-ux/ovh-manager-web/commit/a1a52a5))
+* **translation:** change field error translation pattern ([8f18c9c](https://github.com/ovh-ux/ovh-manager-web/commit/8f18c9c))
+
+
+### Features
+
+* add datagrid translations and configuration ([b817dec](https://github.com/ovh-ux/ovh-manager-web/commit/b817dec))
+* **at-internet:** update lib and config ([7c922ca](https://github.com/ovh-ux/ovh-manager-web/commit/7c922ca))
+* **domain:** add datagrid in domain/GLUE ([ecdb07c](https://github.com/ovh-ux/ovh-manager-web/commit/ecdb07c))
+* **domain:** add datagrid in domain/tasks ([de66b1f](https://github.com/ovh-ux/ovh-manager-web/commit/de66b1f))
+* **domain:** specify field size ([b623baf](https://github.com/ovh-ux/ovh-manager-web/commit/b623baf))
+* **domain:** standardize default TTL modal with ui-kit ([5f8fec0](https://github.com/ovh-ux/ovh-manager-web/commit/5f8fec0))
+* **domain:** support more than 5 numbers for TTL ([0fb7be1](https://github.com/ovh-ux/ovh-manager-web/commit/0fb7be1))
+* **email:** oui-datagrid email-delegate-filter ([30bdbbe](https://github.com/ovh-ux/ovh-manager-web/commit/30bdbbe))
+* **email:** oui-datagrid email-filter ([10c6e8c](https://github.com/ovh-ux/ovh-manager-web/commit/10c6e8c))
+* **email:** oui-datagrid email-redirection ([c999734](https://github.com/ovh-ux/ovh-manager-web/commit/c999734))
+* **email:** oui-datagrid task ([2bc613f](https://github.com/ovh-ux/ovh-manager-web/commit/2bc613f))
+* **i18n:** submit/retrieve ([cc0e474](https://github.com/ovh-ux/ovh-manager-web/commit/cc0e474))
+* **msg:** adding message for task ([d581736](https://github.com/ovh-ux/ovh-manager-web/commit/d581736))
+* **oui-field:** configure translations ([c5b048b](https://github.com/ovh-ux/ovh-manager-web/commit/c5b048b))
+
+
+
 <a name="13.2.2"></a>
 ## [13.2.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.2.1...v13.2.2) (2018-03-14)
 
