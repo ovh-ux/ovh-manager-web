@@ -191,7 +191,7 @@
    <translation id="hosting_dashboard_ssl_order_success" qtlid="181266">Die Bestellung Nummer <a href='{0}' target='_blank'>{1}</a> wurde erfolgreich durchgeführt.</translation>
    <translation id="hosting_dashboard_ssl_order_error" qtlid="217678">Bei der Bestellung des SSL Zertifikats ist ein Fehler aufgetreten.</translation>
    <translation id="hosting_dashboard_ssl_order_payable" qtlid="298877">Kostenpflichtiges Zertifikat</translation>
-   <translation id="hosting_dashboard_ssl_order_imported">Certificat importé</translation>
+   <translation id="hosting_dashboard_ssl_order_imported" qtlid="473544">Certificat importé</translation>
    <translation id="hosting_dashboard_ssl_order_free" qtlid="298890">Kostenloses Zertifikat (Let’s Encrypt)</translation>
    <translation id="hosting_dashboard_ssl_order_a_certificate" qtlid="382141">Ein Zertifikat bestellen</translation>
    <translation id="hosting_dashboard_ssl_order_import" qtlid="315735">Import Ihres SSL Zertifikats</translation>
@@ -202,9 +202,9 @@
    <translation id="hosting_dashboard_ssl_order_manual_mode_chain" qtlid="402685">Inhalt Ihrer Zertifikatskette kopieren:</translation>
    <translation id="hosting_dashboard_ssl_order_pay" qtlid="402698">Sie werden zum Bestellprozess weitergeleitet, um den Kauf Ihres SSL-Zertifikats abzuschließen.</translation>
    <translation id="hosting_dashboard_ssl_redirect_to_order" qtlid="382154">Für Ihre Bestellung wird ein neues Fenster geöffnet. Geschieht dies nicht automatisch, <a href="{0}">klicken Sie bitte hier, um Ihre Bestellung fortzusetzen</a>.</translation>
-   <translation id="hosting_dashboard_ssl_redirect_to_order_error">Une erreur est survenue lors de la récupération de l'adresse nécessaire à la génération du bon de commande.</translation>
-   <translation id="hosting_dashboard_ssl_order_preamble">En cliquant sur Valider, vous allez ouvrir un bon de commande dans un nouvel onglet pour votre certificat SSL.</translation>
-   <translation id="hosting_dashboard_ssl_paid_certificate_error">Vous pouvez commander des certificats gratuits ou importer des certificats, mais une erreur vous empêche de commander des certificats payants : {0}.</translation>
+   <translation id="hosting_dashboard_ssl_redirect_to_order_error" qtlid="473557">Une erreur est survenue lors de la récupération de l'adresse nécessaire à la génération du bon de commande.</translation>
+   <translation id="hosting_dashboard_ssl_order_preamble" qtlid="473570">En cliquant sur Valider, vous allez ouvrir un bon de commande dans un nouvel onglet pour votre certificat SSL.</translation>
+   <translation id="hosting_dashboard_ssl_paid_certificate_error" qtlid="473583">Vous pouvez commander des certificats gratuits ou importer des certificats, mais une erreur vous empêche de commander des certificats payants : {0}.</translation>
 
    <translation id="hosting_dashboard_cdn_order_not_available" qtlid="217691">Die CDN Option ist für Ihre Plattform nicht verfügbar.</translation>
    <translation id="hosting_dashboard_cdn_order_choose_duration" qtlid="217652">Wählen Sie eine Laufzeit aus:</translation>
@@ -308,7 +308,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_attachDomain_title_button" qtlid="226969">Eine Domain oder Subdomain hinzufügen</translation>
    <translation id="hosting_ssl_regenerate_title_button" qtlid="315787">Das SSL Zertifikat neu erstellen</translation>
    <translation id="hosting_ssl_regenerate_info" qtlid="315800">Durch die erneute Erstellung Ihrer SSL Zertifikate werden Ihre Änderungen zur Aktivierung oder Deaktivierung von SSL für Ihre Multi-Sites aktiv.</translation>
-   <translation id="hosting_ssl_regenerate_info_warning">Si vous avez ajouté des hébergements multisites il y a moins de deux heures, il est possible qu'ils ne soient pas inclus dans votre certificat SSL.</translation>
+   <translation id="hosting_ssl_regenerate_info_warning" qtlid="473596">Si vous avez ajouté des hébergements multisites il y a moins de deux heures, il est possible qu'ils ne soient pas inclus dans votre certificat SSL.</translation>
    <translation id="hosting_ssl_limit_characters_info_warning" qtlid="402711">Gratis-Zertifizierung ist nicht verfügbar für Domains mit mehr als {0} Zeichen.</translation>
 
    <translation id="hosting_tab_DATABASES_change_offer" qtlid="327302">Umstellung auf ein kostenpflichtiges Hosting, um eine Datenbank zu erstellen. Wechseln Sie Ihr Angebot schnell und ohne Unterbrechung des Dienstes mit dem Button</translation>
@@ -1360,39 +1360,39 @@
    <translation id="hosting_change_main_domain_help_ssl_title" qtlid="84921">SSL</translation>
    <translation id="hosting_change_main_domain_help_ssl_desc" qtlid="286539">Wenn Sie die Hauptdomain ändern, wird das SSL-Zertifikat nicht automatisch dieser neuen Hauptdomain hinzugefügt. Sie müssen das Zertifikat gegebenenfalls kostenpflichtig bestellen.</translation>
    <translation id="hosting_dashboard_ssl_generate_success" qtlid="298968">Die Aktivierung Ihres Hostings mit SSL wird durchgeführt.</translation>
-   <translation id="hosting_dashboard_ssl_report_button">État de la progression</translation>
-   <translation id="hosting_dashboard_service_ssl_creating">En cours de création</translation>
-   <translation id="hosting_dashboard_service_ssl_regenerating">En cours de régénération</translation>
-   <translation id="hosting_dashboard_service_ssl_deleting">En cours de suppression</translation>
-   <translation id="hosting_dashboard_service_ssl_importing">En cours d'import</translation>
+   <translation id="hosting_dashboard_ssl_report_button" qtlid="473609">État de la progression</translation>
+   <translation id="hosting_dashboard_service_ssl_creating" qtlid="29647">Wird erstellt</translation>
+   <translation id="hosting_dashboard_service_ssl_regenerating" qtlid="473622">En cours de régénération</translation>
+   <translation id="hosting_dashboard_service_ssl_deleting" qtlid="152778">Löschung wird ausgeführt</translation>
+   <translation id="hosting_dashboard_service_ssl_importing" qtlid="473635">En cours d'import</translation>
    <translation id="hosting_dashboard_service_order_ssl_delete" qtlid="299007">SSL löschen</translation>
    <translation id="hosting_dashboard_service_delete_ssl_warning" qtlid="299020">Sind Sie sicher, dass Sie das SSL auf Ihrem Hosting löschen möchten?</translation>
    <translation id="hosting_dashboard_service_delete_ssl_warning_payable" qtlid="363479">Möchten Sie das kostenpflichtige Zertifikat wirklich löschen? Wenn Sie fortfahren, können Sie das Zertifikat nicht erneut installieren, sondern müssen ggf. ein neues kaufen. &#13;
 &#13;
 Une fois supprimé, vous ne pourrez pas le réinstaller et devrez en payer un nouveau.</translation>
-   <translation id="hosting_dashboard_ssl_details_title">Progression de la validation du certificat SSL</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus">Vérification des conditions d’utilisation</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus_error">La vérification des conditions d’utilisation de Comodo n’a pas pu être effectuée.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus">Vérification du nom de marque</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus_error">La vérification du nom de marque par une agence d’enregistrement n’a pas pu être effectuée.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_phoneCallApprovalStatus">Vérification téléphonique auprès du contact enregistré</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus">Vérification du statut légal</translation>
-<translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus_error">Durant le processus de validation de votre certificat SSL, il est nécessaire de contacter Comodo à ce numéro&#160;<strong>{0}</strong>.
+   <translation id="hosting_dashboard_ssl_details_title" qtlid="473648">SSL-Zertifikat-Validierungsfortschritt</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus" qtlid="473661">Überprüfung der Nutzungsbedingungen</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus_error" qtlid="473674">Die Nutzungsbedingungen von Comodo konnten nicht überprüft werden.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus" qtlid="473687">Überprüfung des Markennamens</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus_error" qtlid="473700">Die Überprüfung des Markennamens durch eine Registrierungsstelle konnte nicht durchgeführt werden.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_phoneCallApprovalStatus" qtlid="473713">Telefonische Verifizierung mit dem registrierten Kontakt</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus" qtlid="473726">Überprüfung der Rechtslage</translation>
+<translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus_error" qtlid="473739">Während des Validierungsprozesses Ihres SSL-Zertifikats ist es notwendig, Comodo unter dieser Nummer zu kontaktieren. &#160;<strong>+31 88 775 7777</strong>.
 <br/>
 <br/>Notez qu’il s’agit d’une plateforme néerlandaise. Il vous suffira de demander un interlocuteur francophone.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus">Vérification de la validité du domaine</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus_error">Il s’agit généralement d’une restriction indiquée dans votre fichier <strong>.htaccess</strong>.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus">Vérification de la demande de signature de certificat</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus_error">Nous vous invitons à créer une demande d'assistance auprès de Comodo.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_in-progress">Cette étape est en cours de traitement.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_non-completed">Comodo est en attente d'informations pour compléter cette étape.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_not-provided">Le traitement de cette étape n'a pas encore commencé.</translation>
-   <translation id="hosting_dashboard_ssl_details_confirm_button">Fermer</translation>
-   <translation id="hosting_dashboard_ssl_details_error">Une erreur est survenue lors de la récupération du rapport de génération SSL.</translation>
-   <translation id="hosting_dashboard_ssl_details_support_1">Vous pourrez trouver toutes les informations nécessaires à la validation de ces différents éléments sur ce lien menant à la documentation (en anglais) de Comodo&#160;</translation>
-   <translation id="hosting_dashboard_ssl_details_support_2">.<br><br>Pour toute question relative à la validation de votre certificat SSL EV, nous vous invitons à contacter Comodo à l’adresse&#160;</translation>
-   <translation id="hosting_dashboard_ssl_details_support_3">, en précisant le numéro de commande suivant <strong>{0}</strong>.</translation>
-   <translation id="hosting_dashboard_ssl_details_support_new_window">Ce lien va s'ouvrir dans un nouvel onglet</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus" qtlid="473765">Überprüfung der Domaingültigkeit</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus_error" qtlid="473778">Dies ist in der Regel eine Einschränkung, die in Ihrer Datei angegeben ist <strong>.htaccess</strong>.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus" qtlid="473791">Überprüfen der Zertifikats-Signaturanforderung</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus_error" qtlid="473804">Wir laden Sie ein, eine Supportanfrage mit Comodo zu erstellen.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_in-progress" qtlid="473817">Dieser Schritt wird derzeit bearbeitet.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_non-completed" qtlid="473830">Comodo wartet auf Informationen, um diesen Schritt abzuschließen.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_not-provided" qtlid="473843">Die Bearbeitung dieses Schrittes hat noch nicht begonnen.</translation>
+   <translation id="hosting_dashboard_ssl_details_confirm_button" qtlid="4670">Schließen</translation>
+   <translation id="hosting_dashboard_ssl_details_error" qtlid="473856">Beim Wiederherstellen des SSL-Generierungsberichts ist ein Fehler aufgetreten.</translation>
+   <translation id="hosting_dashboard_ssl_details_support_1" qtlid="473869">Alle Informationen, die für die Validierung dieser verschiedenen Elemente notwendig sind, finden Sie unter diesem Link, der zur Comodo-Dokumentation führt&#160;</translation>
+   <translation id="hosting_dashboard_ssl_details_support_2" qtlid="473882">.<br><br>Wenn Sie Fragen zur Validierung Ihres EV SSL-Zertifikats haben, wenden Sie sich bitte an Comodo unter der Adresse &#160;</translation>
+   <translation id="hosting_dashboard_ssl_details_support_3" qtlid="473895">, unter Angabe der folgenden Bestellnummer <strong>{0}</strong>.</translation>
+   <translation id="hosting_dashboard_ssl_details_support_new_window" qtlid="453228">Link wird in einem neuen Tab geöffnet</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_warning" qtlid="315865">Sind Sie sicher, dass Sie das gesamte SSL Zertifikat auf Ihrem Hosting neu erstellen möchten?</translation>
    <translation id="hosting_dashboard_service_delete_ssl_title" qtlid="299033">SSL Löschung</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_title" qtlid="315878">SSL neu erstellen</translation>

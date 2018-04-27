@@ -40,14 +40,14 @@
    <translation id="domain_dashboard_owo" qtlid="270488">Služba OwO (zdarma)</translation>
    <translation id="domain_dashboard_owo_hide_address" qtlid="270501">Maskování adresy</translation>
    <translation id="domain_dashboard_owo_hide_email" qtlid="270514">Maskování e-mailu</translation>
-   <translation id="domain_dashboard_owo_hide_phone" qtlid="270527">Maskování čísla telefonu</translation>
+   <translation id="domain_dashboard_owo_hide_phone" qtlid="270527">Maskování telefonního čísla</translation>
 
    <translation id="domain_dashboard_whois" qtlid="125108">Skrýt WHOIS</translation>
    <translation id="domain_dashboard_whois_not_activable" qtlid="94783">Není dostupný</translation>
    <translation id="domain_dashboard_owo_not_supported" qtlid="288652">Pro tuto koncovku nedostupné</translation>
    <translation id="domain_dashboard_offer" qtlid="38217">Nabídka</translation>
    <translation id="domain_dashboard_dns_state" qtlid="33790">Stav</translation>
-   <translation id="domain_dashboard_dns_anycast" qtlid="270540">Možnost DNS Anycast</translation>
+   <translation id="domain_dashboard_dns_anycast" qtlid="270540">DNS Anycast</translation>
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">DNS Anycast je výkonné řešení, umožňující zrychlit funkce DNS serveru a tím urychlit načítání Vašeho webu.</translation>
    <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Veřejně dostupná databáze obsahující osobní informace vztahující se k Vaší doméně.</translation>
    <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Služba umožňující Vám přeložit doménové jméno na IP adresu (určuje umístění dat Vašich stránek).</translation>
@@ -239,12 +239,12 @@
    <translation id="domain_tab_ZONE_table_headers_target" qtlid="47644">Cíl</translation>
    <translation id="domain_tab_ZONE_default_import_button" qtlid="233453">Změna v textovém formátu</translation>
    <translation id="domain_tab_ZONE_default_delete_all" qtlid="290316">Odstranit DNS zónu</translation>
-   <translation id="domain_tab_ZONE_default_ttl_button" qtlid="473269">Modifier le TTL par défaut</translation>
+   <translation id="domain_tab_ZONE_default_ttl_button" qtlid="473269">Upravit výchozí TTL</translation>
    <translation id="domain_tab_ZONE_default_ttl_error" qtlid="226110">Při získávání informací ze zóny došlo k chybě:</translation>
    <translation id="domain_tab_ZONE_default_ttl_success" qtlid="226123">TTL zóny bylo úspěšně aktualizováno.</translation>
    <translation id="domain_tab_ZONE_default_ttl_heading" qtlid="226136">Chystáte se aktualizovat implicitní hodnotu TTL zóny {0}</translation>
-   <translation id="domain_tab_ZONE_default_ttl_info" qtlid="473282">Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour de la zone DNS.</translation>
-   <translation id="domain_tab_ZONE_default_ttl_help" qtlid="473295">Valeur conseillée en cas de changements fréquents 3600 secondes, sinon 86400 secondes (1 jour).</translation>
+   <translation id="domain_tab_ZONE_default_ttl_info" qtlid="473282">TTL udává maximální dobu propagace změn v DNS zóně domény (v sekundách).</translation>
+   <translation id="domain_tab_ZONE_default_ttl_help" qtlid="473295">Doporučená hodnota v případě častých změn: 3 600 sekund. Pokud neprovádíte časté změny v DNS zóně: 86 400 sekund (=1 den).</translation>
    <translation id="domain_tab_ZONE_default_ttl_default_value" qtlid="226097">Implicitní TTL</translation>
    <translation id="domain_tab_ZONE_default_ttl_default_value_conditions" qtlid="328888">Hodnota musí být celé číslo v intervalu od <strong>{0}</strong> do <strong>{1}</strong>.</translation>
 
@@ -315,7 +315,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_whois_step1_helpwizard_how" qtlid="130135">Jak OVH umožní skrýt tuto informaci?</translation>
    <translation id="domain_configuration_whois_step1_helpwizard_how_desc" qtlid="329031">Pokud aktivujete tuto službu, OVH nahradí Vaše osobní údaje obecnými informacemi. Veškerá komunikace iniciovaná stranou, která Vás chce kontaktovat, bude přeposílána.<ul><li>Adresa je nahrazena adresou OVH, poštu přeposíláme na adresu reálného koncového uživatele.</li><li>Telefon a fax jsou nahrazeny číslem OwO.</li><li>E-mail je nahrazen přesměrováním na adresu vlastníka. Tato e-mailová adresa je pravidelně obnovována a v činnosti je anti-spam filtr.</li></ul></translation>
    <translation id="domain_configuration_whois_field_ADDRESS" qtlid="30430">Adresa</translation>
-   <translation id="domain_configuration_whois_field_EMAIL" qtlid="33598">E-mail</translation>
+   <translation id="domain_configuration_whois_field_EMAIL" qtlid="33598">E-mailová adresa</translation>
    <translation id="domain_configuration_whois_field_PHONE" qtlid="128214">Telefon/Fax</translation>
    <translation id="domain_configuration_whois_step2_alert" qtlid="128226">Berte v potaz, že aktualizace informace ve WHOIS zabere několik hodin.</translation>
    <translation id="domain_configuration_whois_step2_old_configuration" qtlid="128238">Předchozí nastavení</translation>
@@ -822,7 +822,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_update_owner_legalform_individual" qtlid="163869">Individual</translation>
    <translation id="domain_update_owner_legalform_other" qtlid="19963">Jiné</translation>
 
-   <translation id="domain_update_owner_email" qtlid="33598">E-mail</translation>
+   <translation id="domain_update_owner_email" qtlid="33598">E-mailová adresa</translation>
    <translation id="domain_update_owner_lastname" qtlid="3818">Název</translation>
    <translation id="domain_update_owner_firstname" qtlid="23323">Jméno</translation>
    <translation id="domain_update_owner_title" qtlid="157642">Můj účet</translation>

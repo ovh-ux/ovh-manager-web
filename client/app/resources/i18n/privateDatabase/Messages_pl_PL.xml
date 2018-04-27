@@ -82,10 +82,10 @@
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Podstawowa konfiguracja PostgreSQL</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">Wkrótce dostępne dla PostgreSQL</translation>
 
-   <translation id="privateDatabase_configuration_alert" qtlid="263507">Uwaga! Każda zmiana wiąże się ze zrestartowaniem serwera.</translation>
+   <translation id="privateDatabase_configuration_alert">Toute modification entraîne un redémarrage du serveur.</translation>
    <translation id="privateDatabase_configuration_edit_btn" qtlid="185452">Edycja</translation>
    <translation id="privateDatabase_configuration_cancel_btn" qtlid="37863">Anuluj</translation>
-   <translation id="privateDatabase_configuration_confirm_btn" qtlid="31498">Potwierdź</translation>
+   <translation id="privateDatabase_configuration_confirm_btn">Appliquer</translation>
    <translation id="privateDatabase_configuration_reboot" qtlid="263520">Trwa modyfikowania konfiguracji. Serwer zrestartuje się.</translation>
    <translation id="privateDatabase_configuration_error_put" qtlid="263533">Wystąpił błąd podczas modyfikowania konfiguracji.</translation>
    <translation id="privateDatabase_configuration_error" qtlid="233047">Wystąpił błąd podczas pobierania informacji.</translation>
@@ -100,6 +100,16 @@
    <translation id="privateDatabase_configuration_event_scheduler" qtlid="370187">Status menedżera wydarzeń</translation>
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Liczba sekund, podczas których serwer czeka zanim zamknie połączenie, gdy nie ma aktywności podczas połączenia w wierszu poleceń.</translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Liczba sekund, podczas których serwer czeka zanim zamknie połączenie, gdy nie ma aktywności podczas połączenia zewnętrznego.</translation>
+
+   <translation id="privateDatabase_configuration_field_autocommit">Définit si les transactions SLQ sont automatiquement soumises ou non.</translation>
+   <translation id="privateDatabase_configuration_field_event_scheduler">Permet de déclencher l’exécution de requêtes programmées directement dans le serveur MySQL.</translation>
+   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size">Choix de la taille de la mémoire tampon (en mégaoctets).</translation>
+   <translation id="privateDatabase_configuration_field_interactive_timeout">Nombre de secondes pendant lesquelles le serveur attend une activité sur une connexion interactive avant de la fermer.</translation>
+   <translation id="privateDatabase_configuration_field_max_allowed_packet">Taille maximum des paquets (en mégaoctets).</translation>
+   <translation id="privateDatabase_configuration_field_max_connections">Nombre de connexions simultanées autorisées sur le SQL Privé.</translation>
+   <translation id="privateDatabase_configuration_field_max_user_connections">Nombre de connexions simultanées autorisées par utilisateur.</translation>
+   <translation id="privateDatabase_configuration_field_tmpdir">Répertoire des fichiers temporaires (RAM ou disque dur de l'instance).</translation>
+   <translation id="privateDatabase_configuration_field_wait_timeout">Temps pendant lequel le serveur attend l’activité sur une connexion non interactive avant de la fermer (en secondes).</translation>
 
    <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Ta funkcjonalność nie jest dostępna dla tego typu bazy danych.</translation>
 
