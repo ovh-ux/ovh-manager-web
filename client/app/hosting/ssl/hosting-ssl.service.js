@@ -9,27 +9,27 @@ angular
         }
 
         creatingCertificate (serviceName, certificate, key, chain) {
-            return this.OvhApiHostingWebSsl.Lexi().post({ serviceName }, { certificate, key, chain }).$promise;
+            return this.OvhApiHostingWebSsl.v6().post({ serviceName }, { certificate, key, chain }).$promise;
         }
 
         retrievingLinkedDomains (serviceName) {
-            return this.OvhApiHostingWebSsl.Lexi().queryDomains({ serviceName }).$promise;
+            return this.OvhApiHostingWebSsl.v6().queryDomains({ serviceName }).$promise;
         }
 
         retrievingCertificate (serviceName) {
-            return this.OvhApiHostingWebSsl.Lexi().get({ serviceName }).$promise;
+            return this.OvhApiHostingWebSsl.v6().get({ serviceName }).$promise;
         }
 
         retrievingCertificateValidationReport (serviceName) {
-            return this.OvhApiHostingWebSsl.Lexi().getReport({ serviceName }).$promise;
+            return this.OvhApiHostingWebSsl.v6().getReport({ serviceName }).$promise;
         }
 
         regeneratingCertificate (serviceName) {
-            return this.OvhApiHostingWebSsl.Lexi().regenerate({ serviceName }, {}).$promise;
+            return this.OvhApiHostingWebSsl.v6().regenerate({ serviceName }, {}).$promise;
         }
 
         deletingCertificate (serviceName) {
-            return this.OvhApiHostingWebSsl.Lexi().delete({ serviceName }).$promise;
+            return this.OvhApiHostingWebSsl.v6().delete({ serviceName }).$promise;
         }
 
         /**
