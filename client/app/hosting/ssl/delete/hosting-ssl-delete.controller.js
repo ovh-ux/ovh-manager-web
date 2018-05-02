@@ -1,28 +1,33 @@
-angular.module("App").controller(
-    "HostingDeleteSslCtrl",
-    class HostingDeleteSslCtrl {
-        constructor ($scope, $stateParams, Alerter, Hosting) {
+angular
+    .module("App")
+    .controller("hostingDeleteSslCtrl", class HostingDeleteSslCtrl {
+        constructor ($scope, $stateParams, Alerter, hostingSSLCertificate, hostingSSLCertificateType, translator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
+
             this.Alerter = Alerter;
-            this.Hosting = Hosting;
+            this.hostingSSLCertificate = hostingSSLCertificate;
+            this.hostingSSLCertificateType = hostingSSLCertificateType;
+            this.translator = translator;
         }
 
         $onInit () {
-            this.ssl = this.$scope.currentActionData;
+            this.wasCertificateFree = this.hostingSSLCertificateType.constructor.getCertificateTypeByProvider(this.$scope.currentActionData.provider).isFree;
 
-            this.$scope.deleteSsl = () => this.deleteSsl();
+            this.$scope.deletingCertificate = () => this.deletingCertificate();
         }
 
-        deleteSsl () {
-            this.$scope.resetAction();
-            return this.Hosting.deleteSsl(this.$stateParams.productId)
+        deletingCertificate () {
+            return this.hostingSSLCertificate.deletingCertificate(this.$stateParams.productId)
                 .then(() => {
-                    this.$scope.loadSsl();
-                    this.Alerter.success(this.$scope.tr("hosting_dashboard_service_delete_ssl_success"), this.$scope.alerts.main);
+                    this.hostingSSLCertificate.reload();
+                    this.Alerter.success(this.translator.tr("hosting_dashboard_service_delete_ssl_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.alertFromSWS(this.$scope.tr("hosting_dashboard_service_delete_ssl_error"), err, this.$scope.alerts.main);
+                    this.Alerter.alertFromSWS(this.translator.tr("hosting_dashboard_service_delete_ssl_error"), err.data, this.$scope.alerts.main);
+                })
+                .finally(() => {
+                    this.$scope.resetAction();
                 });
         }
     }

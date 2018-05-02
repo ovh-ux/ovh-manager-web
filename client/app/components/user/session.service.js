@@ -186,7 +186,7 @@ class SessionService {
         // Tickets list
         assistanceMenu.push({
             title: this.translator.tr("common_menu_support_list_ticket"),
-            url: "#/support"
+            url: _.get(this.constants, "REDIRECT_URLS.listTicket", "")
         });
 
         // Telephony (External)
@@ -213,7 +213,7 @@ class SessionService {
             name: "languages",
             label: _(currentLanguage).get("name"),
             "class": "oui-navbar-menu_language",
-            title: _(currentLanguage).get("value").replace("_", "-"),
+            title: _(currentLanguage).get("value").split("_")[0].toUpperCase(),
             headerTitle: this.translator.tr("global_language"),
             subLinks: _(this.LANGUAGES)
                 .filter((language) => _(language).has("name", "value"))
@@ -426,8 +426,8 @@ class SessionService {
             // Set Internal Links
             if (user) {
                 baseNavbar.internalLinks = [
-                    this.getAssistanceMenu(user), // Assistance
                     this.getLanguageMenu(), // Language
+                    this.getAssistanceMenu(user), // Assistance
                     this.getUserMenu(user) // User
                 ];
             }
