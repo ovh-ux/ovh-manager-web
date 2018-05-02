@@ -216,12 +216,14 @@
                                         </li>
                                         <li role="menuitem">
                                             <button class="btn btn-link" type="button"
+                                                    data-ng-if="element.type !== 'MONGODB'"
                                                     data-i18n-static="hosting_tab_DATABASES_table_popover_dump"
                                                     data-ng-click="setAction('database/dump/add/hosting-database-dump-add', element.name)">
                                             </button>
                                         </li>
                                         <li role="menuitem">
                                             <button class="btn btn-link" type="button"
+                                                    data-ng-if="element.type !== 'MONGODB'"
                                                     data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore"
                                                     data-ng-click="ctrlTabDatabases.restoreDump(element)">
                                             </button>
@@ -255,7 +257,7 @@
                                             </button>
                                         </li>
                                         <li role="menuitem"
-                                            data-ng-if="element.type === 'MYSQL'">
+                                            data-ng-if="element.type === 'MYSQL' || element.type === 'MONGODB'">
                                             <button class="btn btn-link" type="button"
                                                     data-i18n-static="hosting_tab_DATABASES_table_popover_delete"
                                                     data-ng-click="setAction('database/delete/hosting-database-delete', element.name)">
