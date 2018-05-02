@@ -1,3 +1,24 @@
+<a name="13.3.3"></a>
+## [13.3.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.2...v13.3.3) (2018-05-02)
+
+
+### Bug Fixes
+
+* rename services to v6 and v7 ([165fb24](https://github.com/ovh-ux/ovh-manager-web/commit/165fb24)), closes [ovh-ux/ovh-api-services#68](https://github.com/ovh-ux/ovh-api-services/issues/68)
+* **hosting:** Update translation for SSL Comodo validation ([f0d1615](https://github.com/ovh-ux/ovh-manager-web/commit/f0d1615))
+* **hosting.ssl:** Resolution ovh-api-services ([031289c](https://github.com/ovh-ux/ovh-manager-web/commit/031289c))
+* **i18n:** multiple qtlid ([863f728](https://github.com/ovh-ux/ovh-manager-web/commit/863f728))
+* **navbar:** language button position and format ([7eaca86](https://github.com/ovh-ux/ovh-manager-web/commit/7eaca86))
+
+
+### Features
+
+* submit / retrieve ([23d5dc2](https://github.com/ovh-ux/ovh-manager-web/commit/23d5dc2))
+* **chore:** bump ui-router to version ^1.0.0. ([33b7ee8](https://github.com/ovh-ux/ovh-manager-web/commit/33b7ee8))
+* **i18n:** submit translations ([c23e235](https://github.com/ovh-ux/ovh-manager-web/commit/c23e235))
+
+
+
 <a name="13.3.2"></a>
 ## [13.3.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.1...v13.3.2) (2018-04-26)
 
