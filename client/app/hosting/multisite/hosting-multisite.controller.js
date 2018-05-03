@@ -60,8 +60,6 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
     };
 
     $scope.retrievingSSLCertificate = function () {
-        $scope.isRetrievingSSLCertificate = true;
-
         return hostingSSLCertificate
             .retrievingCertificate($stateParams.productId)
             .then((certificate) => {
@@ -72,9 +70,6 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
                 if (error.status !== 404) {
                     Alerter.alertFromSWS(translator.tr("hosting_dashboard_ssl_details_error"), error, $scope.alerts.main);
                 }
-            })
-            .finally(() => {
-                $scope.isRetrievingSSLCertificate = false;
             });
     };
 
