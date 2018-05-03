@@ -1,3 +1,13 @@
+<a name="13.3.4"></a>
+## [13.3.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.3...v13.3.4) (2018-05-03)
+
+
+### Bug Fixes
+
+* **hosting:** fix i18n for ssl validation modal ([18073b2](https://github.com/ovh-ux/ovh-manager-web/commit/18073b2))
+
+
+
 <a name="13.3.3"></a>
 ## [13.3.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.2...v13.3.3) (2018-05-02)
 
