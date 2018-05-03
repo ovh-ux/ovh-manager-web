@@ -173,12 +173,12 @@
                         data-i18n-static="hosting_tab_DOMAINS_configuration_attachDomain_title_button"
                         data-ng-click="setAction('multisite/add/hosting-multisite-add', {domains: domains})">
                 </button>
-                <button type="button" class="btn btn-block btn-default text-wrap" title="{{i18n.hosting_ssl_regenerate_title_button}}"
-                        data-i18n-static="hosting_ssl_regenerate_title_button"
-                        data-uib-tooltip="{{ssl && (ssl.status === 'deleting' || ssl.status === 'regenerating' || ssl.status === 'creating') ? tr('hosting_dashboard_service_ssl_' + ssl.status) : ''}}"
-                        data-ng-click="setAction(ssl ? 'ssl/regenerate/hosting-ssl-regenerate' : 'ssl/order/hosting-order-ssl')"
-                        data-ng-disabled="ssl && (ssl.status === 'deleting' || ssl.status === 'regenerating' || ssl.status === 'creating')"
-                        data-ng-if="!hosting.hasHostedSsl">
+                <button
+                    type="button"
+                    class="btn btn-block btn-default text-wrap"
+                    data-ng-bind="sslCertificate ? tr('hosting_ssl_regenerate_title_button') : tr('hosting_dashboard_service_order_ssl')"
+                    data-ng-click="setAction(sslCertificate ? 'ssl/regenerate/hosting-ssl-regenerate' : 'ssl/order/hosting-order-ssl')"
+                    data-ng-if="!hosting.hasHostedSsl && !(sslCertificate.status === 'deleting' || sslCertificate.status === 'regenerating' || sslCertificate.status === 'creating')">
                 </button>
             </div>
 
