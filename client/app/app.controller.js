@@ -49,9 +49,9 @@ angular.module("App").controller(
                             switch (alert.id) {
                             case "DEBTACCOUNT_DEBT":
                                 if (_.get(alert, "data.debtAccount.unmaturedAmount.value", 0) > 0) {
-                                    messages.push(this.translator.tr("me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT", [_.get(alert, "data.debtAccount.dueAmount.text"), _.get(alert, "data.debtAccount.unmaturedAmount.text")]));
+                                    messages.push(this.translator.tr("me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT", [_.get(alert, "data.debtAccount.dueAmount.text"), _.get(alert, "data.debtAccount.unmaturedAmount.text"), "#/billing/history"]));
                                 } else {
-                                    messages.push(this.translator.tr("me_alerts_DEBTACCOUNT_DEBT", [_.get(alert, "data.debtAccount.dueAmount.text")]));
+                                    messages.push(this.translator.tr("me_alerts_DEBTACCOUNT_DEBT", [_.get(alert, "data.debtAccount.dueAmount.text"), "#/billing/history"]));
                                 }
                                 break;
                             case "OVHACCOUNT_DEBT":
