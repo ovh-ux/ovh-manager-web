@@ -1,4 +1,4 @@
-angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $stateParams, $location, Hosting, HostingDomain, hostingSSLCertificate, $timeout, Alerter) => {
+angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $stateParams, $location, Hosting, HostingDomain, hostingSSLCertificate, $timeout, Alerter, translator) => {
     "use strict";
 
     $scope.domains = null;
@@ -29,6 +29,7 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
                 }
                 domainsList = domains;
             })
+            .then(() => $scope.retrievingSSLCertificate())
             .finally(() => {
                 hostingSSLCertificate.retrievingLinkedDomains($stateParams.productId)
                     .then((sslLinked) => {
@@ -56,6 +57,25 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
             });
 
         $scope.excludeAttachedDomains = [$scope.hosting.cluster.replace(/^ftp/, $scope.hosting.primaryLogin)];
+    };
+
+    $scope.retrievingSSLCertificate = function () {
+        $scope.isRetrievingSSLCertificate = true;
+
+        return hostingSSLCertificate
+            .retrievingCertificate($stateParams.productId)
+            .then((certificate) => {
+                $scope.sslCertificate = certificate;
+            })
+            .catch((error) => {
+                // 404 error means that the user has no SSL certificate
+                if (error.status !== 404) {
+                    Alerter.alertFromSWS(translator.tr("hosting_dashboard_ssl_details_error"), error, $scope.alerts.main);
+                }
+            })
+            .finally(() => {
+                $scope.isRetrievingSSLCertificate = false;
+            });
     };
 
     $scope.detachDomain = function (domain) {
