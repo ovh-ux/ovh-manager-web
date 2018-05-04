@@ -1,17 +1,20 @@
 <div data-ng-controller="HostingFrameworkEnvvarCtrl as ctrlEnvvar">
-    <oui-back-button on-click="goToRuntimeList()" data-title="{{ i18n.common_back }}" data-ng-disabled="ctrlEnvvar.loading"></oui-back-button>
+    <oui-back-button
+        data-on-click="goToRuntimeList()"
+        data-title="{{ i18n.common_back }}"
+        data-ng-disabled="ctrlEnvvar.loading"></oui-back-button>
 
     <h6 data-i18n-static="hosting_tab_FRAMEWORK_envvar_list" class="py-3"></h6>
 
-    <div data-ng-if="ctrlEnvvar.loading">
+    <div class="text-center" data-ng-if="ctrlEnvvar.loading">
         <oui-spinner data-size="m"></oui-spinner>
     </div>
 
     <oui-datagrid data-ng-if="!ctrlEnvvar.loading" data-rows="ctrlEnvvar.envvars" row-loader="ctrlEnvvar.getEnvvar($row)" page-size="10">
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_key')" data-property="key" data-sortable="asc" data-type="string" searchable filterable></oui-column>
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_type')" data-property="type" data-type="string" searchable filterable></oui-column>
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_value')" data-property="value" data-type="string" searchable filterable></oui-column>
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_status')" data-property="status" sortable>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_key')" data-property="key" data-sortable="asc" data-type="string" data-searchable data-filterable></oui-column>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_type')" data-property="type" data-type="string" data-searchable data-filterable></oui-column>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_value')" data-property="value" data-type="string" data-searchable data-filterable></oui-column>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_status')" data-property="status" data-sortable>
             <span class="label"
                 data-ng-bind="tr('hosting_tab_FRAMEWORK_table_status_' + $row.status)"
                 data-ng-class="{
@@ -22,7 +25,7 @@
             </span>
         </oui-column>
 
-        <oui-action-menu align="end" compact>
+        <oui-action-menu data-align="end" data-compact>
             <oui-action-menu-item
                 data-text="{{ i18n.hosting_tab_FRAMEWORK_envvar_table_popover_modify }}"
                 data-on-click="setAction('framework/envvar/edit/hosting-framework-envvar-edit', { envvar: $row })"
@@ -37,7 +40,7 @@
         </oui-action-menu>
 
         <extra-top>
-            <oui-action-menu data-text="{{ i18n.hosting_tab_FRAMEWORK_envvar_actions }}" align="start">
+            <oui-action-menu data-text="{{ i18n.hosting_tab_FRAMEWORK_envvar_actions }}" data-align="start">
                 <oui-action-menu-item
                     data-text="{{ i18n.hosting_tab_FRAMEWORK_envvar_add }}"
                     data-on-click="setAction('framework/envvar/add/hosting-framework-envvar-add')"

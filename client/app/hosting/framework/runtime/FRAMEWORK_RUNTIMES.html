@@ -10,10 +10,10 @@
             <oui-checkbox data-model="$row.isDefault" disabled></oui-checkbox>
         </oui-column>
 
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_name')" data-property="name" data-type="string" searchable filterable sortable></oui-column>
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_language')" data-property="type" data-type="string" searchable filterable sortable></oui-column>
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_number_multisite')" data-property="countAttachedDomains" data-type="string" sortable></oui-column>
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_status')" data-property="status" sortable>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_name')" data-property="name" data-type="string" data-searchable data-filterable data-sortable></oui-column>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_language')" data-property="type" data-type="string" data-searchable data-filterable data-sortable></oui-column>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_number_multisite')" data-property="countAttachedDomains" data-type="string" data-sortable></oui-column>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_status')" data-property="status" data-sortable>
             <span class="label"
                   data-ng-bind="tr('hosting_tab_FRAMEWORK_table_status_' + $row.status)"
                   data-ng-class="{
@@ -24,7 +24,7 @@
             </span>
         </oui-column>
 
-        <oui-action-menu align="end" compact>
+        <oui-action-menu data-align="end" data-compact>
             <oui-action-menu-item
                 data-text="{{ i18n.hosting_tab_FRAMEWORK_runtime_table_popover_modify }}"
                 data-on-click="setAction('framework/runtime/edit/hosting-framework-runtime-edit', { runtime: $row })"
@@ -47,7 +47,7 @@
         </oui-action-menu>
 
         <extra-top>
-            <oui-action-menu data-text="{{ i18n.hosting_tab_FRAMEWORK_runtime_actions }}" align="start">
+            <oui-action-menu data-text="{{ i18n.hosting_tab_FRAMEWORK_runtime_actions }}" data-align="start">
                 <oui-action-menu-item
                     data-text="{{ i18n.hosting_tab_FRAMEWORK_runtime_add }}"
                     data-on-click="setAction('framework/runtime/add/hosting-framework-runtime-add')"

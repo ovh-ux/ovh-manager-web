@@ -29,9 +29,9 @@
             <span class="label"
                   data-ng-bind="tr('database_tabs_dumps_status_' + $row.status)"
                   data-ng-class="{
-                    'label-success': $row.status.status === 'created',
-                    'label-danger': $row.status.status === 'deleting',
-                    'label-warning': $row.status.status !== 'created' && $row.status.status !== 'deleting'
+                    'label-success': $row.status === 'created',
+                    'label-danger': $row.status === 'deleting',
+                    'label-warning': $row.status !== 'created' && $row.status !== 'deleting'
                   }">
             </span>
         </oui-column>

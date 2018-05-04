@@ -2,14 +2,6 @@ angular.module("App").controller(
     "controllers.Hosting.Framework.Envvar.delete",
     class HostingFrameworkEnvvarDeleteCtrl {
 
-        /**
-         * @constructs HostingFrameworkEnvvarDeleteCtrl
-         * @param $scope
-         * @param $stateParams
-         * @param translator
-         * @param Alerter
-         * @param HostingFrameworkEnvvar
-         */
         constructor ($scope, $stateParams, translator, Alerter, HostingFrameworkEnvvar) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
@@ -18,23 +10,14 @@ angular.module("App").controller(
             this.HostingFrameworkEnvvar = HostingFrameworkEnvvar;
         }
 
-        /**
-         * Initialize HostingFrameworkEnvvarDeleteCtrl
-         */
         $onInit () {
-            this.isLoading = true;
+            this.isLoading = false;
 
-            const actionData = angular.copy(this.$scope.currentActionData);
-            this.entryToDelete = actionData.envvar;
+            this.entryToDelete = angular.copy(this.$scope.currentActionData).envvar;
 
             this.$scope.delete = () => this.delete();
-
-            this.isLoading = false;
         }
 
-        /**
-         * Call on envvar deletion
-         */
         delete () {
             this.isLoading = true;
 
