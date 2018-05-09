@@ -41,7 +41,7 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
                             if (Array.isArray(sslInfos) && sslInfos.indexOf(domain.name) === -1) {
                                 domain.ssl = domain.ssl ? 1 : 0;
                             } else {
-                                domain.ssl = domain.ssl ? 2 : 1;
+                                domain.ssl = domain.ssl ? 2 : 0;
                             }
 
                             return domain;
