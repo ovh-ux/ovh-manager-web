@@ -1,3 +1,13 @@
+<a name="13.3.6"></a>
+## [13.3.6](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.5...v13.3.6) (2018-05-09)
+
+
+### Bug Fixes
+
+* **hosting:** right display for multisite ssl ([9c00bb5](https://github.com/ovh-ux/ovh-manager-web/commit/9c00bb5))
+
+
+
 <a name="13.3.5"></a>
 ## [13.3.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.4...v13.3.5) (2018-05-04)
 
