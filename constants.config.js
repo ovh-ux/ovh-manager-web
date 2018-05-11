@@ -293,7 +293,7 @@ module.exports = {
                 support_contact: "http://www.ovh.es/soporte/",
                 guides: {
                     home: "http://guias.ovh.es/",
-                    all: "https://docs.ovh.com/es/es/web/",
+                    all: "https://docs.ovh.com/es/web/",
                     emailsConfiguration: "https://www.ovh.es/g1474.correo-alojamiento-compartido-ovh",
                     emailsCreation: "https://www.ovh.es/g1343.qssq",
                     hostingPhpConfiguration: "https://www.ovh.es/g1999.alojamiento_compartido_configurar_la_versión_de_PHP_desde_el_área_de_cliente",
