@@ -1,3 +1,13 @@
+<a name="13.3.7"></a>
+## [13.3.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.6...v13.3.7) (2018-05-11)
+
+
+### Bug Fixes
+
+* **guide:** update ES link for all guides ([854baf3](https://github.com/ovh-ux/ovh-manager-web/commit/854baf3))
+
+
+
 <a name="13.3.6"></a>
 ## [13.3.6](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.5...v13.3.6) (2018-05-09)
 
