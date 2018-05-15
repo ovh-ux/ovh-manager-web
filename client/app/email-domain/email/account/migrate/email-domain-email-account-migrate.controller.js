@@ -20,6 +20,11 @@ angular.module("App").controller(
         }
 
         $onInit () {
+            this.destinationServiceType = {
+                EMAIL_PRO: "EMAIL PRO",
+                HOSTED_EXCHANGE: "HOSTED EXCHANGE",
+                PRIVATE_EXCHANGE: "PRIVATE EXCHANGE"
+            };
             this.email = this.$scope.ctrlEmailDomainEmail.accountMigrationEmail || null;
 
             this.loaders = {
@@ -131,7 +136,7 @@ angular.module("App").controller(
                 .catch((err) => this.handleError(err))
                 .finally(() => {
                     this.loaders.isWaitingForDestinationEmails = false;
-                    this.isExchange = _.get(this, "migrate.destinationService.type") !== "EMAIL PRO";
+                    this.isExchange = _.get(this, "migrate.destinationService.type") !== this.destinationServiceType.emailPro;
                 });
         }
 
@@ -164,7 +169,7 @@ angular.module("App").controller(
 
             this.Emails.migrateAccountToDestinationAccount(this.email.domain, this.email.accountName, this.migrate.destinationService.name, this.migrate.destinationEmail, this.migrate.password)
                 .then(() => {
-                    if (this.migrate.destinationService.type === "EMAIL PRO") {
+                    if (_.get(this, "migrate.destinationService.type") === this.destinationServiceType.emailPro) {
                         this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success_emailpro"), this.$scope.alerts.main);
                     } else {
                         this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success_exchange"), this.$scope.alerts.main);

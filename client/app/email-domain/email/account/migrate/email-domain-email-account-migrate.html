@@ -36,13 +36,11 @@
             <!-- No Service -->
             <div data-ng-if="!ctrl.availableServices">
                 <p data-i18n-static="email_tab_modal_migrate_no_email_service"></p>
-                <p>
-                    <a class="btn btn-primary" href="{{::ctrl.emailsOrder}}" target="_blank"
-                        title="{{tr('email_tab_modal_migrate_order_email_service')}} ({{tr('core_new_window')}})">
-                        <span data-i18n-static="email_tab_modal_migrate_order_email_service"></span>
-                        <span class="fa fa-external-link"></span>
-                    </a>
-                </p>
+                <a class="btn btn-primary" href="{{::ctrl.emailsOrder}}" target="_blank"
+                    title="{{tr('email_tab_modal_migrate_order_email_service')}} ({{tr('core_new_window')}})">
+                    <span data-i18n-static="email_tab_modal_migrate_order_email_service"></span>
+                    <span class="fa fa-external-link"></span>
+                </a>
             </div>
             <!-- /No Service -->
 
@@ -83,7 +81,7 @@
             <div data-ng-if="ctrl.migrate.destinationEmail">
 
                 <!-- Before -->
-                <h4 data-i18n-static="email_tab_modal_migrate_informations_before_title"></h4>
+                <p class="oui-header_4" data-i18n-static="email_tab_modal_migrate_informations_before_title"></p>
                 <p>
                     <span data-ng-bind-html="tr('email_tab_modal_migrate_available_email_selected', ctrl.migrate.destinationEmail)"></span>
                     <span data-ng-if="!ctrl.isExchange" data-i18n-static="email_tab_modal_migrate_not_supported"></span>
@@ -92,7 +90,7 @@
                 <!-- /Before -->
 
                 <!-- While -->
-                <h4 data-i18n-static="email_tab_modal_migrate_informations_while_title"></h4>
+                <p class="oui-header_4" data-i18n-static="email_tab_modal_migrate_informations_while_title"></p>
                 <p>
                     <span data-ng-bind-html="::tr('email_tab_modal_migrate_confirmation_delay')"></span>
                     <span data-i18n-static="email_tab_modal_migrate_cant_cancel_or_access"></span>
@@ -101,7 +99,7 @@
                 <!-- /While -->
 
                 <!-- After -->
-                <h4 data-i18n-static="email_tab_modal_migrate_informations_after_title"></h4>
+                <p class="oui-header_4" data-i18n-static="email_tab_modal_migrate_informations_after_title"></p>
                 <p>
                     <span data-ng-if="ctrl.remainingAvailableEmails"
                         data-ng-bind-html="tr('email_tab_modal_migrate_remaining_available_emails', ctrl.remainingAvailableEmails.toString())">
@@ -134,14 +132,18 @@
                     <span data-ng-bind-html="tr('email_tab_modal_migrate_no_available_email', ctrl.migrate.destinationService.name)"></span>
                     <span data-i18n-static="email_tab_modal_migrate_configure_me"></span>
                 </p>
-                <p>
+                <p data-ng-switch="ctrl.migrate.destinationService.type">
                     <span data-i18n-static="email_tab_modal_migrate_choose_another_service_or"></span>
-                    <a class="oui-link" href="/#/configuration/email_pro/{{::ctrl.migrate.destinationService.name}}?tab=ACCOUNT"
-                        data-ng-if="ctrl.migrate.destinationService.type === 'EMAIL PRO'"
+                    <a class="oui-link" href="/#/configuration/email_pro/{{ctrl.migrate.destinationService.name}}?tab=ACCOUNT"
+                        data-ng-switch-when="EMAIL PRO"
                         data-i18n-static="email_tab_modal_migrate_order_new_emails_button">
                     </a>
-                    <a class="oui-link" href="/#/configuration/exchange_hosted/{{::ctrl.migrate.destinationService.name}}/{{::ctrl.migrate.destinationService.name}}?tab=ACCOUNT"
-                        data-ng-if="ctrl.migrate.destinationService.type === 'HOSTED EXCHANGE'"
+                    <a class="oui-link" href="/#/configuration/exchange_hosted/{{ctrl.migrate.destinationService.name}}/{{ctrl.migrate.destinationService.name}}?tab=ACCOUNT"
+                        data-ng-switch-when="HOSTED EXCHANGE"
+                        data-i18n-static="email_tab_modal_migrate_order_new_emails_button">
+                    </a>
+                    <a class="oui-link" href="/#/configuration/exchange_dedicated/{{ctrl.migrate.destinationService.name}}/{{ctrl.migrate.destinationService.name}}?tab=ACCOUNT"
+                        data-ng-switch-when="PRIVATE EXCHANGE"
                         data-i18n-static="email_tab_modal_migrate_order_new_emails_button">
                     </a>
                 </p>
