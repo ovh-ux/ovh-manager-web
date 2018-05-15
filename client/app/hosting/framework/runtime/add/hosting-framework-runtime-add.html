@@ -1,20 +1,28 @@
 <div data-ng-controller="controllers.Hosting.Framework.Runtime.create as ctrl">
-    <div data-wizard
-         data-wizard-on-cancel="resetAction"
-         data-wizard-on-finish="create"
-         data-wizard-title="i18n.hosting_tab_FRAMEWORK_runtime_create_title">
+    <div
+        data-wizard
+        data-wizard-on-cancel="resetAction"
+        data-wizard-on-finish="create"
+        data-wizard-title="i18n.hosting_tab_FRAMEWORK_runtime_create_title">
 
-        <div data-wizard-step
-             data-wizard-step-valid="isValid()">
+        <div
+            data-wizard-step
+            data-wizard-step-valid="isValid()">
 
-            <form class="form-horizontal" name="addRuntimeForm" data-ng-if="!ctrl.loading">
+            <form
+                class="form-horizontal"
+                name="addRuntimeForm"
+                data-ng-if="!ctrl.loading">
                 <p>
                     <small class="text-danger">*</small>
                     <small data-i18n-static="required_fields"></small>
                 </p>
 
                 <div class="form-group">
-                    <label class="control-label col-md-4 required" for="runtimeName" data-i18n-static="hosting_tab_FRAMEWORK_runtime_label_name"></label>
+                    <label
+                        class="control-label col-md-4 required"
+                        for="runtimeName"
+                        data-i18n-static="hosting_tab_FRAMEWORK_runtime_label_name"></label>
 
                     <div class="col-md-6">
                         <input type="text" class="form-control" id="runtimeName" data-ng-model="ctrl.entryToCreate.name">
@@ -26,7 +34,7 @@
 
                     <div class="col-md-8">
                         <div class="oui-select oui-select_inline mb-0">
-                            <select class="oui-select__input" id="runtimeType" data-ng-model="ctrl.entryToCreate.type" data-ng-options="type for type in ctrl.availableTypes" required></select>
+                            <select class="oui-select__input" id="runtimeType" data-ng-model="ctrl.entryToCreate.type" data-ng-options="type for type in ctrl.availableTypes track by $index" required></select>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
                     </div>

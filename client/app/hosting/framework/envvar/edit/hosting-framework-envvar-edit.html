@@ -11,8 +11,7 @@
 
             <form
                 class="form-horizontal"
-                name="ctrl.editEnvvarForm"
-                data-ng-if="!ctrl.isLoading">
+                name="ctrl.editEnvvarForm">
                 <p>
                     <small class="text-danger">*</small>
                     <small data-i18n-static="required_fields"></small>
@@ -87,7 +86,7 @@
                             id="envvarValue"
                             name="envvarValue"
                             required
-                            data-ng-model="ctrl.entryToEdit.value">
+                            data-ng-model="+ctrl.entryToEdit.value">
                             
                         <input
                             type="password"

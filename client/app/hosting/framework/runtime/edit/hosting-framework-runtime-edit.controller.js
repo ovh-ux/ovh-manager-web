@@ -1,26 +1,15 @@
-angular.module("App").controller(
-    "controllers.Hosting.Framework.Runtime.edit",
-    class HostingFrameworkRuntimeEditCtrl {
-
-        /**
-         * @constructs HostingFrameworkRuntimeEditCtrl
-         * @param $scope
-         * @param $stateParams
-         * @param translator
-         * @param Alerter
-         * @param HostingFrameworkRuntime
-         */
-        constructor ($scope, $stateParams, translator, Alerter, HostingFrameworkRuntime) {
+angular
+    .module("App")
+    .controller("controllers.Hosting.Framework.Runtime.edit", class HostingFrameworkRuntimeEditCtrl {
+        constructor ($scope, $stateParams, Alerter, HostingFrameworkRuntime, translator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
-            this.translator = translator;
+
             this.Alerter = Alerter;
             this.HostingFrameworkRuntime = HostingFrameworkRuntime;
+            this.translator = translator;
         }
 
-        /**
-         * Initialize HostingFrameworkRuntimeEditCtrl
-         */
         $onInit () {
             this.isLoading = true;
 
@@ -30,7 +19,12 @@ angular.module("App").controller(
             this.$scope.edit = () => this.edit();
             this.$scope.isValid = () => this.isValid();
 
-            this.HostingFrameworkRuntime.getAvailableTypes(this.$stateParams.productId)
+            return this.fetchAvailableTypes();
+        }
+
+        fetchAvailableTypes () {
+            return this.HostingFrameworkRuntime
+                .getAvailableTypes(this.$stateParams.productId)
                 .then((types) => {
                     this.availableTypes = types;
                 })
@@ -41,14 +35,9 @@ angular.module("App").controller(
                 })
                 .finally(() => {
                     this.isLoading = false;
-                })
-            ;
+                });
         }
 
-        /**
-         * Verify if current form is valid
-         * @returns {boolean}
-         */
         isValid () {
             if (this.entryToEdit && this.entryToEdit.type && this.entryToEdit.type.indexOf("nodejs") !== -1) {
                 return this.entryToEdit && this.entryToEdit.name && this.entryToEdit.publicDir && this.entryToEdit.appEnv && this.entryToEdit.appBootstrap;
@@ -57,13 +46,9 @@ angular.module("App").controller(
             return this.entryToEdit && this.entryToEdit.name && this.entryToEdit.type;
         }
 
-        /**
-         * Called on runtime edit popover
-         */
         edit () {
-            this.isLoading = true;
-
-            this.HostingFrameworkRuntime.edit(this.$stateParams.productId, this.entryToEdit.id, this.entryToEdit)
+            return this.HostingFrameworkRuntime
+                .edit(this.$stateParams.productId, this.entryToEdit.id, this.entryToEdit)
                 .then(() => {
                     this.Alerter.success(this.$scope.tr("hosting_tab_FRAMEWORK_runtime_edit_success"), this.$scope.alerts.main);
                 })

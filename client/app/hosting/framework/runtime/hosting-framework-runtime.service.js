@@ -1,15 +1,9 @@
-angular.module("services").service(
-    "HostingFrameworkRuntime",
-    class HostingFrameworkRuntime {
-
-        /**
-         * @constructs HostingFrameworkRuntime
-         * @param $q
-         * @param OvhHttp
-         * @param Hosting
-         */
+angular
+    .module("services")
+    .service("HostingFrameworkRuntime", class HostingFrameworkRuntime {
         constructor ($q, OvhHttp, Hosting) {
             this.$q = $q;
+
             this.OvhHttp = OvhHttp;
             this.Hosting = Hosting;
         }

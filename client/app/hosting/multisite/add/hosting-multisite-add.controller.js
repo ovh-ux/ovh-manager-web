@@ -208,7 +208,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
             $scope.selected.firewall,
             $scope.selected.ownLog === "ACTIVE" ? $scope.selected.ownLogDomain.name : null,
             $scope.selected.ssl,
-            $scope.selected.runtime ? $scope.selected.runtime.id : null,
+            _($scope.selected).get("runtime.id", null),
             $scope.selected.hosting || $stateParams.productId
         )
             .then((data) => {

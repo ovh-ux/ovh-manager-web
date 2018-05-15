@@ -1,43 +1,23 @@
-angular.module("App").controller(
-    "controllers.Hosting.Framework.Runtime.delete",
-    class HostingFrameworkRuntimeDeleteCtrl {
-
-        /**
-         * @constructs HostingFrameworkRuntimeDeleteCtrl
-         * @param $scope
-         * @param $stateParams
-         * @param translator
-         * @param Alerter
-         * @param HostingFrameworkRuntime
-         */
-        constructor ($scope, $stateParams, translator, Alerter, HostingFrameworkRuntime) {
+angular
+    .module("App")
+    .controller("controllers.Hosting.Framework.Runtime.delete", class HostingFrameworkRuntimeDeleteCtrl {
+        constructor ($scope, $stateParams, Alerter, HostingFrameworkRuntime, translator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
-            this.translator = translator;
+
             this.Alerter = Alerter;
             this.HostingFrameworkRuntime = HostingFrameworkRuntime;
+            this.translator = translator;
         }
 
-        /**
-         * Initialize HostingFrameworkRuntimeDeleteCtrl
-         */
         $onInit () {
-            this.isLoading = true;
-
             const actionData = angular.copy(this.$scope.currentActionData);
             this.entryToDelete = actionData.runtime;
 
             this.$scope.delete = () => this.delete();
-
-            this.isLoading = false;
         }
 
-        /**
-         * Call on runtime deletion
-         */
         delete () {
-            this.isLoading = true;
-
             this.HostingFrameworkRuntime.delete(this.$stateParams.productId, this.entryToDelete.id)
                 .then(() => {
                     this.Alerter.success(this.translator.tr("hosting_tab_FRAMEWORK_runtime_delete_success"), this.$scope.alerts.main);

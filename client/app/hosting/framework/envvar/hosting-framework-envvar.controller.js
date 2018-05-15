@@ -1,6 +1,6 @@
-angular.module("App").controller(
-    "HostingFrameworkEnvvarCtrl",
-    class HostingFrameworkEnvvarCtrl {
+angular
+    .module("App")
+    .controller("HostingFrameworkEnvvarCtrl", class HostingFrameworkEnvvarCtrl {
         constructor ($scope, $stateParams, $timeout, Alerter, Hosting, HostingFrameworkEnvvar, translator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
@@ -34,49 +34,44 @@ angular.module("App").controller(
                         throw this.translator.tr("hosting_tab_FRAMEWORK_envvar_list_error_temporary");
                     }
 
-                    this.envvars = keys.sort((a, b) => a.localeCompare(b)).map((key) => ({ key }));
+                    this.envvars = keys.map((key) => ({ key }));
                 })
                 .catch((err) => {
                     this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_envvar_list_error") + err.message, this.$scope.alerts.main);
                 })
                 .finally(() => {
-                    if (this.envvars.length > 0) {
-                        this.hasResult = true;
-                    }
-
+                    this.hasResult = _(this.envvars).isArray() && !_(this.envvars).isEmpty();
                     this.loading = false;
-                })
-            ;
+                });
         }
 
         /**
          * Load an environment variable given its key
          */
         getEnvvar (row) {
-            return this.HostingFrameworkEnvvar.get(this.$stateParams.productId, row.key)
+            return this.HostingFrameworkEnvvar
+                .get(this.$stateParams.productId, row.key)
                 .then((envvar) => {
-                    envvar.loaded = true;
+                    const formattedEnvar = _(envvar).clone();
+                    formattedEnvar.loaded = true;
 
                     return envvar;
                 })
             ;
         }
 
-        /**
-         * Check if customer can add a new envvar
-         * @returns {boolean}
-         */
         canAddEnvvar () {
-            return this.envvars && this.envvars.length < this.maxEnvvars;
+            return _(this.envvars).isArray() && this.envvars.length < this.maxEnvvars;
         }
 
         /**
          * Load offer capabilities to check if envvars can be added
          */
         loadCapabilities () {
-            return this.Hosting.getSelected(this.$stateParams.productId)
+            return this.Hosting
+                .getSelected(this.$stateParams.productId)
                 .then((hosting) => {
-                    const offer = hosting.offer.toLowerCase().replace("_", "");
+                    const offer = _(hosting).get("offer", "").toLowerCase().replace("_", "");
 
                     return this.Hosting.getOfferCapabilities(offer);
                 })

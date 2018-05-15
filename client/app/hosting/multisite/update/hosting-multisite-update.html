@@ -50,16 +50,16 @@
 
                 <div class="form-group" data-ng-if="hosting.isCloudWeb">
                     <label class="control-label col-md-4" for="selectedRuntime" data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step1_runtime"></label>
-                    <div ng-if="loading.runtimes">
+                    <div data-ng-if="loading.runtimes">
                         <oui-spinner></oui-spinner>
                     </div>
 
-                    <div ng-if="!loading.runtimes">
+                    <div data-ng-if="!loading.runtimes">
                         <div class="col-md-8">
                             <div class="oui-select oui-select_inline mb-0">
                                 <select class="oui-select__input" id="selectedRuntime" required
                                         data-ng-model="selected.runtime"
-                                        data-ng-options="runtime.name for runtime in model.runtimes">
+                                        data-ng-options="runtime.name for runtime in model.runtimes track by runtime.name">
                                     <option value="" data-i18n-static="select_placeholder" disabled></option>
                                 </select>
                                 <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>

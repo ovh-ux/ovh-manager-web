@@ -72,12 +72,6 @@
                                                       data-uib-tooltip="{{::tr('hosting_dashboard_service_offer_recommanded', [hostingProxy.recommendedOffer])}}"></span>
                                             </div>
 
-                                            <button class="btn btn-default ml-auto my-auto text-wrap disabled" type="button"
-                                                    data-ng-if="hosting.isCloudWeb"
-                                                    data-i18n-static="hosting_dashboard_service_change_offer_coming_soon"
-                                                    disabled>
-                                            </button>
-
                                             <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
                                                     data-ng-if="!hosting.isCloudWeb"
                                                     data-i18n-static="hosting_dashboard_service_change_offer"
@@ -298,27 +292,28 @@
                                                          data-pbec-max-elements="hosting.sqlPriveInfo.nbDataBaseInclude"
                                                          data-pbec-upper-limit="cloudWebUnlimitedQuantity"></div>
                                                 </div>
-                                                <span data-ng-if="!hosting.sqlPriveInfo.nbDataBaseInclude">0</span>
-                                                <button class="oui-button oui-button_dropdown mb-0 mt-3" type="button" title="{{::i18n.hosting_dashboard_service_privatesql_more}}"
-                                                        data-ng-click="displayMore.value = !displayMore.value"
-                                                        data-ng-if="privateDatabasesLinked && privateDatabasesLinked.length">
-                                                    <span class="mr-3"
-                                                          data-i18n-static="hosting_dashboard_service_privatesql_more"></span>
-                                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"
-                                                          data-ng-class="{'oui-icon-chevron-down': !displayMore.value, 'oui-icon-chevron-up': displayMore.value}"></span>
-                                                </button>
-                                                <ul class="list-unstyled mt-2" data-ng-if="displayMore.value">
-                                                    <li data-ng-repeat="privateDb in privateDatabasesLinked track by $index"
-                                                        data-ng-class="{'animated fadeInDown fast-fade-in-down': displayMore.value}">
-                                                        <span data-ng-bind="privateDb.name"
-                                                              data-ng-if="!privateDb.isAdmin"></span>
-                                                        <button class="btn btn-link py-0" type="button" role="link"
+                                                <div class="dropdown" data-ng-if="privateDatabasesLinked.length > 0">
+                                                    <button
+                                                        id="privateDatabasesDropdown"
+                                                        class="btn btn-default dropdown-toggle"
+                                                        type="button"
+                                                        data-toggle="dropdown"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                        <span data-i18n-static="hosting_dashboard_service_privatesql_more"></span>
+                                                        <span class="caret" aria-hidden="true"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" aria-labelledby="privateDatabasesDropdown">
+                                                        <li data-ng-repeat="privateDb in privateDatabasesLinked track by privateDb.name">
+                                                            <span data-ng-bind="privateDb.name" data-ng-if="!privateDb.isAdmin"></span>
+                                                            <a
+                                                                data-ng-href="#/configuration/private_database/{{ privateDb.name }}"
                                                                 data-ng-bind="privateDb.name"
                                                                 data-ng-click="goToPrivateDb(privateDb.name)"
-                                                                data-ng-if="privateDb.isAdmin">
-                                                        </button>
-                                                    </li>
-                                                </ul>
+                                                                data-ng-if="privateDb.isAdmin"></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                             <div class="mb-auto ml-auto">
                                                 <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"

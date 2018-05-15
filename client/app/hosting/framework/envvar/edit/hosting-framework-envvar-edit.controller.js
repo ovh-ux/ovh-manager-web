@@ -11,7 +11,6 @@ angular.module("App").controller(
         }
 
         $onInit () {
-            this.isLoading = true;
             this.entryToEdit = angular.copy(this.$scope.currentActionData).envvar;
 
             this.$scope.edit = () => this.edit();
@@ -19,13 +18,11 @@ angular.module("App").controller(
         }
 
         isValid () {
-            return this.editEnvvarForm.$dirty && this.editEnvvarForm.$valid;
+            return _(this.editEnvvarForm).isObject() && this.editEnvvarForm.$dirty && this.editEnvvarForm.$valid;
         }
 
         edit () {
-            this.isLoading = true;
-
-            this.HostingFrameworkEnvvar.edit(this.$stateParams.productId, this.entryToEdit.key, this.entryToEdit)
+            return this.HostingFrameworkEnvvar.edit(this.$stateParams.productId, this.entryToEdit.key, this.entryToEdit)
                 .then(() => {
                     this.Alerter.success(this.$scope.tr("hosting_tab_FRAMEWORK_envvar_edit_success"), this.$scope.alerts.main);
                 })

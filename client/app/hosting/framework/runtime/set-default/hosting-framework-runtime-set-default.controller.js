@@ -1,44 +1,25 @@
-angular.module("App").controller(
-    "controllers.Hosting.Framework.Runtime.setDefault",
-    class HostingFrameworkRuntimeSetDefaultCtrl {
-
-        /**
-         * @constructs HostingFrameworkRuntimeSetDefaultCtrl
-         * @param $scope
-         * @param $stateParams
-         * @param translator
-         * @param Alerter
-         * @param HostingFrameworkRuntime
-         */
-        constructor ($scope, $stateParams, translator, Alerter, HostingFrameworkRuntime) {
+angular
+    .module("App")
+    .controller("controllers.Hosting.Framework.Runtime.setDefault", class HostingFrameworkRuntimeSetDefaultCtrl {
+        constructor ($scope, $stateParams, Alerter, HostingFrameworkRuntime, translator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
-            this.translator = translator;
+
             this.Alerter = Alerter;
             this.HostingFrameworkRuntime = HostingFrameworkRuntime;
+            this.translator = translator;
         }
 
-        /**
-         * Initialize HostingFrameworkRuntimeSetDefaultCtrl
-         */
         $onInit () {
-            this.isLoading = true;
-
             const actionData = angular.copy(this.$scope.currentActionData);
             this.entryToSetup = actionData.runtime;
 
             this.$scope.setDefault = () => this.setDefault();
-
-            this.isLoading = false;
         }
 
-        /**
-         * Call on runtime set default popover
-         */
         setDefault () {
-            this.isLoading = true;
-
-            this.HostingFrameworkRuntime.setDefault(this.$stateParams.productId, this.entryToSetup.id)
+            return this.HostingFrameworkRuntime
+                .setDefault(this.$stateParams.productId, this.entryToSetup.id)
                 .then(() => {
                     this.Alerter.success(this.translator.tr("hosting_tab_FRAMEWORK_runtime_set_default_success"), this.$scope.alerts.main);
                 })
@@ -47,8 +28,7 @@ angular.module("App").controller(
                 })
                 .finally(() => {
                     this.$scope.resetAction();
-                })
-            ;
+                });
         }
     }
 );

@@ -1,10 +1,11 @@
-angular.module("App").controller(
-    "HostingFtpGenerateSnapshotCtrl",
-    class HostingFtpGenerateSnapshotCtrl {
-        constructor ($scope, $rootScope, $stateParams, Alerter, Hosting, HostingFtp) {
-            this.$scope = $scope;
+angular
+    .module("App")
+    .controller("HostingFtpGenerateSnapshotCtrl", class HostingFtpGenerateSnapshotCtrl {
+        constructor ($rootScope, $scope, $stateParams, Alerter, Hosting, HostingFtp) {
             this.$rootScope = $rootScope;
+            this.$scope = $scope;
             this.$stateParams = $stateParams;
+
             this.Alerter = Alerter;
             this.Hosting = Hosting;
             this.HostingFtp = HostingFtp;
@@ -16,9 +17,10 @@ angular.module("App").controller(
 
             this.$scope.generateSnapshot = () => this.generateSnapshot();
 
-            this.HostingFtp.getModels()
-                .then((data) => {
-                    this.instances = data.models["hosting.web.backup.TypeEnum"].enum;
+            this.HostingFtp
+                .getModels()
+                .then(({ models }) => {
+                    this.instances = models["hosting.web.backup.TypeEnum"].enum;
                     this.model.snapshotInstance = this.instances[0];
 
                     _.pull(this.instances, "weekly.2");

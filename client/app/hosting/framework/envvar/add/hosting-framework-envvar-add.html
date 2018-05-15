@@ -1,4 +1,4 @@
-<div data-ng-controller="controllers.Hosting.Framework.Envvar.create as ctrl">
+<div data-ng-controller="HostingFrameworkEnvvarCreateCtrl as ctrl">
     <div
         data-wizard
         data-wizard-on-cancel="resetAction"
@@ -8,11 +8,9 @@
         <div
             data-wizard-step
             data-wizard-step-valid="isValid()">
-
             <form
                 class="form-horizontal"
-                name="ctrl.addEnvvarForm"
-                data-ng-if="!ctrl.isLoading">
+                name="ctrl.addEnvvarForm">
                 <p>
                     <small class="text-danger">*</small>
                     <small data-i18n-static="required_fields"></small>

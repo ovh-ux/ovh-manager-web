@@ -168,7 +168,7 @@
                     cache: hostingCache,
                     clearCache: forceRefresh
                 }).then((hosting) => {
-                    hosting.isCloudWeb = hosting.offer.indexOf("CLOUD") !== -1;
+                    hosting.isCloudWeb = _(hosting.offer).includes("CLOUD");
 
                     if (hosting.offer === "START_10_M") {
                         return this.OvhHttp.get(`/domain/${serviceName}/serviceInfos`, {

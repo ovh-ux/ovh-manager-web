@@ -1,7 +1,6 @@
-angular.module("services").service(
-    "HostingFrameworkEnvvar",
-    class HostingFrameworkEnvvar {
-
+angular
+    .module("services")
+    .service("HostingFrameworkEnvvar", class HostingFrameworkEnvvar {
         constructor ($q, Hosting, OvhHttp) {
             this.$q = $q;
 
@@ -38,7 +37,8 @@ angular.module("services").service(
                     }
 
                     return _(dataAsArray).chain()
-                        .map((datum) => _(datum).isArray ? _(datum).flatten().value() : datum)
+                        .map((datum) => _(datum).isArray ? _(datum).flatten().value() : datum) // The API returns an array of array sometimes
+                        .flatten()
                         .uniq()
                         .value();
                 });

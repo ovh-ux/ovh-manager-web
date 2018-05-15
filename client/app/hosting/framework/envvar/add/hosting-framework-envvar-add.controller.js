@@ -1,5 +1,5 @@
 angular.module("App").controller(
-    "controllers.Hosting.Framework.Envvar.create",
+    "HostingFrameworkEnvvarCreateCtrl",
     class HostingFrameworkEnvvarCreateCtrl {
         constructor ($scope, $stateParams, Alerter, HostingFrameworkEnvvar, translator) {
             this.$scope = $scope;
@@ -11,7 +11,6 @@ angular.module("App").controller(
         }
 
         $onInit () {
-            this.isLoading = true;
             this.entryToCreate = {
                 key: null,
                 type: "string",
@@ -23,12 +22,10 @@ angular.module("App").controller(
         }
 
         isValid () {
-            return this.addEnvvarForm.$dirty && this.addEnvvarForm.$valid;
+            return _(this.addEnvvarForm).isObject() && this.addEnvvarForm.$dirty && this.addEnvvarForm.$valid;
         }
 
         create () {
-            this.isLoading = true;
-
             this.HostingFrameworkEnvvar.create(this.$stateParams.productId, this.entryToCreate)
                 .then(() => {
                     this.Alerter.success(this.$scope.tr("hosting_tab_FRAMEWORK_envvar_save_success"), this.$scope.alerts.main);
@@ -38,8 +35,6 @@ angular.module("App").controller(
                 })
                 .finally(() => {
                     this.$scope.resetAction();
-                })
-            ;
+                });
         }
-    }
-);
+    });

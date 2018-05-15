@@ -106,7 +106,7 @@ angular.module("App").controller(
          * @returns {boolean}
          */
         canAddRuntime () {
-            return this.runtimes && this.runtimes.length < this.maxRuntimes;
+            return _(this.runtimes).isArray() && this.runtimes.length < this.maxRuntimes;
         }
     }
 );
