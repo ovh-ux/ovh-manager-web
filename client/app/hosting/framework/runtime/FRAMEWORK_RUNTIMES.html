@@ -1,0 +1,67 @@
+<div data-ng-controller="HostingFrameworkRuntimeCtrl as ctrlRuntime">
+    <h6 data-i18n-static="hosting_tab_FRAMEWORK_runtime_list"></h6>
+
+    <div data-ng-if="ctrlRuntime.loading">
+        <oui-spinner data-size="m"></oui-spinner>
+    </div>
+
+    <oui-datagrid data-ng-if="!ctrlRuntime.loading" data-rows="ctrlRuntime.runtimes" row-loader="ctrlRuntime.getRuntime($row)" page-size="10">
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_default')" data-sortable="desc" data-property="isDefault" data-type="string">
+            <oui-checkbox data-model="$row.isDefault" disabled></oui-checkbox>
+        </oui-column>
+
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_name')" data-property="name" data-type="string" searchable filterable sortable></oui-column>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_language')" data-property="type" data-type="string" searchable filterable sortable></oui-column>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_number_multisite')" data-property="countAttachedDomains" data-type="string" sortable></oui-column>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_status')" data-property="status" sortable>
+            <span class="label"
+                  data-ng-bind="tr('hosting_tab_FRAMEWORK_table_status_' + $row.status)"
+                  data-ng-class="{
+                    'label-success': $row.status === 'created',
+                    'label-danger': $row.status === 'deleting',
+                    'label-warning': $row.status !== 'created' && $row.status !== 'deleting'
+                }">
+            </span>
+        </oui-column>
+
+        <oui-action-menu align="end" compact>
+            <oui-action-menu-item
+                data-text="{{ i18n.hosting_tab_FRAMEWORK_runtime_table_popover_modify }}"
+                data-on-click="setAction('framework/runtime/edit/hosting-framework-runtime-edit', { runtime: $row })"
+                data-disabled="$row.status !== 'created'">
+            </oui-action-menu-item>
+
+            <oui-action-menu-item
+                data-text="{{ i18n.hosting_tab_FRAMEWORK_runtime_table_popover_set_default }}"
+                data-on-click="setAction('framework/runtime/set-default/hosting-framework-runtime-set-default', { runtime: $row })"
+                data-disabled="$row.status !== 'created' || $row.isDefault">
+            </oui-action-menu-item>
+
+            <oui-action-menu-divider></oui-action-menu-divider>
+
+            <oui-action-menu-item
+                data-text="{{ i18n.hosting_tab_FRAMEWORK_runtime_table_popover_delete }}"
+                data-on-click="setAction('framework/runtime/delete/hosting-framework-runtime-delete', { runtime: $row })"
+                data-disabled="!$row.isDeletable">
+            </oui-action-menu-item>
+        </oui-action-menu>
+
+        <extra-top>
+            <oui-action-menu data-text="{{ i18n.hosting_tab_FRAMEWORK_runtime_actions }}" align="start">
+                <oui-action-menu-item
+                    data-text="{{ i18n.hosting_tab_FRAMEWORK_runtime_add }}"
+                    data-on-click="setAction('framework/runtime/add/hosting-framework-runtime-add')"
+                    data-disabled="!ctrlRuntime.canAddRuntime()">
+                </oui-action-menu-item>
+
+                <oui-action-menu-divider></oui-action-menu-divider>
+
+                <oui-action-menu-item
+                    data-text="{{ i18n.hosting_tab_FRAMEWORK_runtime_configure_envvar }}"
+                    data-on-click="goToEnvvarList()"
+                    data-disabled="ctrlRuntime.loading">
+                </oui-action-menu-item>
+            </oui-action-menu>
+        </extra-top>
+    </oui-datagrid>
+</div>

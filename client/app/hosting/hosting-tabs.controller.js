@@ -1,11 +1,12 @@
 angular.module("App").controller(
     "HostingTabsCtrl",
     class HostingTabsCtrl {
-        constructor ($scope, $q, $location, $stateParams, HostingFreedom, HostingIndy) {
+        constructor ($scope, $q, $location, $stateParams, Hosting, HostingFreedom, HostingIndy) {
             this.$scope = $scope;
             this.$q = $q;
             this.$location = $location;
             this.$stateParams = $stateParams;
+            this.Hosting = Hosting;
             this.HostingFreedom = HostingFreedom;
             this.HostingIndy = HostingIndy;
         }
@@ -35,22 +36,11 @@ angular.module("App").controller(
                         type: "SWITCH_TABS"
                     },
                     {
-                        label: this.$scope.tr("hosting_tab_BOOST"),
-                        target: "BOOST",
-                        type: "SWITCH_TABS"
-                    },
-                    {
                         type: "SEPARATOR"
-                    },
-                    {
-                        label: this.$scope.tr("hosting_tab_menu_emails"),
-                        target: `#/configuration/email-domain/${this.$stateParams.productId}?tab=MAILING_LIST`,
-                        type: "LINK"
                     },
                     {
                         label: this.$scope.tr("contacts_management"),
                         target: `#/useraccount/contacts?tab=SERVICES&serviceName=${this.$stateParams.productId}`,
-                        text: this.$scope.tr("hosting_tab_menu_contacts"),
                         type: "LINK"
                     },
                     {
@@ -81,9 +71,26 @@ angular.module("App").controller(
             this.$q
                 .all({
                     indys: this.HostingIndy.getIndys(this.$stateParams.productId),
-                    freedoms: this.HostingFreedom.getFreedoms(this.$stateParams.productId, { forceRefresh: false })
+                    freedoms: this.HostingFreedom.getFreedoms(this.$stateParams.productId, { forceRefresh: false }),
+                    hosting: this.Hosting.getSelected(this.$stateParams.productId)
                 })
-                .then(({ indys, freedoms }) => {
+                .then(({ indys, freedoms, hosting }) => {
+                    if (!hosting.isCloudWeb) {
+                        this.tabMenu.items.splice(3, 0, {
+                            label: this.$scope.i18n.hosting_tab_BOOST,
+                            target: "BOOST",
+                            type: "SWITCH_TABS"
+                        });
+
+                        this.tabMenu.items.splice(5, 0, {
+                            label: this.$scope.i18n.hosting_tab_menu_emails,
+                            target: `#/configuration/email-domain/${this.$stateParams.productId}?tab=MAILING_LIST`,
+                            type: "LINK"
+                        });
+                    } else {
+                        this.tabs.splice(1, 0, "FRAMEWORK");
+                    }
+
                     if (!_.isEmpty(indys)) {
                         this.tabMenu.items.splice(4, 0, {
                             label: this.$scope.i18n.hosting_tab_INDY,
