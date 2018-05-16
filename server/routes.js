@@ -52,7 +52,7 @@ module.exports = function (app) {
     app.route("/auth").get((req, res) => {
         const origin = req.headers.host;
         const headers = {
-          contentType: "application/json"
+            contentType: "application/json"
         };
         const defaultErrorStatus = 500;
 

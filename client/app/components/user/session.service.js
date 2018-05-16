@@ -59,12 +59,18 @@ class SessionService {
     }
 
     getMicrosoftMenu (products) {
+        const exchangeProductTypes = {
+            EXCHANGE_PROVIDER: "app.microsoft.exchange.provider",
+            EXCHANGE_DEDICATED: "app.microsoft.exchange.dedicated",
+            EXCHANGE_DEDICATEDCLUSTER: "app.microsoft.exchange.dedicatedCluster"
+        };
+
         // Exchange products
         const exchangeProducts = _.sortBy(products.exchanges, (elt) => angular.lowercase(elt.displayName || elt.name));
         const exchangeLinks = _.map(exchangeProducts, (elt) => ({
             name: elt.name,
             title: elt.displayName || elt.name,
-            state: elt.type === "EXCHANGE_PROVIDER" ? "app.microsoft.exchange.provider" : elt.type === "EXCHANGE_DEDICATED" ? "app.microsoft.exchange.dedicated" : "app.microsoft.exchange.hosted",
+            state: _(exchangeProductTypes[elt.type]).isString() ? exchangeProductTypes[elt.type] : "app.microsoft.exchange.hosted",
             stateParams: {
                 organization: elt.organization,
                 productId: elt.name
