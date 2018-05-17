@@ -1,3 +1,22 @@
+<a name="13.4.0"></a>
+# [13.4.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.7...v13.4.0) (2018-05-17)
+
+
+### Bug Fixes
+
+* added route for mobile menu for Exchange Dedicatedf ([110114c](https://github.com/ovh-ux/ovh-manager-web/commit/110114c))
+* fixes before PR ([d6f2f56](https://github.com/ovh-ux/ovh-manager-web/commit/d6f2f56))
+* ident issue ([bda4444](https://github.com/ovh-ux/ovh-manager-web/commit/bda4444))
+* **routing:** Downgrade ui-router version ([525f19a](https://github.com/ovh-ux/ovh-manager-web/commit/525f19a))
+
+
+### Features
+
+* updated ChartJS to fix issue with Exchange Licence chart ([5db3794](https://github.com/ovh-ux/ovh-manager-web/commit/5db3794))
+* updated UI kit to last version ([33b24b9](https://github.com/ovh-ux/ovh-manager-web/commit/33b24b9))
+
+
+
 <a name="13.3.7"></a>
 ## [13.3.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.6...v13.3.7) (2018-05-11)
 
