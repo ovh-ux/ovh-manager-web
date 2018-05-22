@@ -1,19 +1,19 @@
-<div data-ng-controller="HostingFrameworkRuntimeCtrl as ctrlRuntime">
+<div data-ng-controller="HostingFrameworkRuntimeCtrl as $ctrl">
     <h6 data-i18n-static="hosting_tab_FRAMEWORK_runtime_list"></h6>
 
-    <div data-ng-if="ctrlRuntime.loading">
+    <div class="text-center" data-ng-if="$ctrl.loading">
         <oui-spinner data-size="m"></oui-spinner>
     </div>
 
-    <oui-datagrid data-ng-if="!ctrlRuntime.loading" data-rows="ctrlRuntime.runtimes" row-loader="ctrlRuntime.getRuntime($row)" page-size="10">
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_default')" data-sortable="desc" data-property="isDefault" data-type="string">
+    <oui-datagrid data-ng-show="!$ctrl.loading" data-rows="$ctrl.runtimes" data-page-size="10">
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_default')" data-property="isDefault" data-type="string">
             <oui-checkbox data-model="$row.isDefault" disabled></oui-checkbox>
         </oui-column>
 
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_name')" data-property="name" data-type="string" data-searchable data-filterable data-sortable></oui-column>
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_language')" data-property="type" data-type="string" data-searchable data-filterable data-sortable></oui-column>
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_number_multisite')" data-property="countAttachedDomains" data-type="string" data-sortable></oui-column>
-        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_status')" data-property="status" data-sortable>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_name')" data-property="name" data-type="string"></oui-column>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_language')" data-property="type" data-type="string"></oui-column>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_runtime_table_header_number_multisite')" data-property="countAttachedDomains" data-type="string"></oui-column>
+        <oui-column data-title="tr('hosting_tab_FRAMEWORK_envvar_table_header_status')" data-property="status">
             <span class="label"
                   data-ng-bind="tr('hosting_tab_FRAMEWORK_table_status_' + $row.status)"
                   data-ng-class="{
@@ -51,7 +51,7 @@
                 <oui-action-menu-item
                     data-text="{{ i18n.hosting_tab_FRAMEWORK_runtime_add }}"
                     data-on-click="setAction('framework/runtime/add/hosting-framework-runtime-add')"
-                    data-disabled="!ctrlRuntime.canAddRuntime()">
+                    data-disabled="!$ctrl.canAddRuntime()">
                 </oui-action-menu-item>
 
                 <oui-action-menu-divider></oui-action-menu-divider>
@@ -59,7 +59,7 @@
                 <oui-action-menu-item
                     data-text="{{ i18n.hosting_tab_FRAMEWORK_runtime_configure_envvar }}"
                     data-on-click="goToEnvvarList()"
-                    data-disabled="ctrlRuntime.loading">
+                    data-disabled="$ctrl.loading">
                 </oui-action-menu-item>
             </oui-action-menu>
         </extra-top>

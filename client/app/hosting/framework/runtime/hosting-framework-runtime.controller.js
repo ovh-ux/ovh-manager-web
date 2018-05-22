@@ -11,13 +11,16 @@ angular.module("App").controller(
          * @param Hosting
          * @param HostingFrameworkRuntime
          */
-        constructor ($scope, $stateParams, $timeout, Alerter, Hosting, HostingFrameworkRuntime) {
+        constructor ($q, $scope, $stateParams, $timeout, Alerter, Hosting, HostingFrameworkRuntime, translator) {
+            this.$q = $q;
             this.$scope = $scope;
             this.$stateParams = $stateParams;
             this.$timeout = $timeout;
+
             this.Alerter = Alerter;
             this.Hosting = Hosting;
             this.HostingFrameworkRuntime = HostingFrameworkRuntime;
+            this.translator = translator;
         }
 
         /**
@@ -31,8 +34,11 @@ angular.module("App").controller(
 
             this.$scope.$on(this.Hosting.events.tabFrameworkRuntimesRefresh, () => this.getIds());
 
-            this.getIds();
-            this.loadCapabilities();
+            return this.getIds()
+                .finally(() => this.loadCapabilities())
+                .finally(() => {
+                    this.loading = false;
+                });
         }
 
         /**
@@ -41,45 +47,40 @@ angular.module("App").controller(
         getIds () {
             return this.HostingFrameworkRuntime.list(this.$stateParams.productId)
                 .then((ids) => {
-                    if (ids) {
-                        const runtimeIds = ids.sort((a, b) => a < b);
-
-                        this.runtimes = runtimeIds.map((id) => ({ id }));
+                    if (!_(ids).isArray()) {
+                        throw this.translator.tr("hosting_tab_FRAMEWORK_runtime_list_error");
                     }
+
+                    this.runtimes = ids.sort().map((id) => ({ id }));
+                })
+                .then(() => this.$q.all(this.runtimes.map((row) => this.HostingFrameworkRuntime
+                    .get(this.$stateParams.productId, row.id)
+                    .then((data) => {
+                        const runtime = _(data).clone();
+                        runtime.countAttachedDomains = 0;
+
+                        return this.HostingFrameworkRuntime
+                            .getAttachedDomains(this.$stateParams.productId, runtime.id)
+                            .then((attachedDomains) => {
+                                runtime.loaded = true;
+
+                                if (_(attachedDomains).isArray()) {
+                                    runtime.countAttachedDomains = attachedDomains.length;
+                                }
+
+                                return runtime;
+                            });
+                    })))
+                )
+                .then((runtimes) => {
+                    this.runtimes = runtimes;
                 })
                 .catch((err) => {
                     this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_runtime_list_error") + err.message, this.$scope.alerts.main);
                 })
                 .finally(() => {
-                    if (this.runtimes.length > 0) {
-                        this.hasResult = true;
-                    }
-
-                    this.loading = false;
-                })
-            ;
-        }
-
-        /**
-         * Load a runtime given its id
-         */
-        getRuntime (row) {
-            let runtime = null;
-
-            return this.HostingFrameworkRuntime.get(this.$stateParams.productId, row.id)
-                .then((data) => {
-                    runtime = data;
-                    runtime.countAttachedDomains = 0;
-
-                    return this.HostingFrameworkRuntime.getAttachedDomains(this.$stateParams.productId, runtime.id);
-                })
-                .then((attachedDomains) => {
-                    runtime.countAttachedDomains = attachedDomains.length;
-                    runtime.loaded = true;
-
-                    return runtime;
-                })
-            ;
+                    this.hasResult = _(this.runtimes).isArray() && !_(this.runtimes).isEmpty();
+                });
         }
 
         /**
@@ -97,8 +98,7 @@ angular.module("App").controller(
                 })
                 .catch((err) => {
                     this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_error") + err.message, this.$scope.alerts.main);
-                })
-            ;
+                });
         }
 
         /**
