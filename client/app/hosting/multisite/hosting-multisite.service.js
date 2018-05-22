@@ -305,7 +305,7 @@ angular
                     search,
                     searchedType: "AAAA"
                 }
-            }).then((data) => _.get(data, "paginatedZone.records.list"));
+            }).then((data) => _.get(data, "paginatedZone.records.results"));
         }
 
         /**

@@ -62,7 +62,7 @@
 
                         <tbody data-ng-if="loading.domains">
                             <tr>
-                                <td class="text-center" colspan="{{hosting.hasCdn ? 7 : 6}}">
+                                <td class="text-center" colspan="{{hosting.numberOfColumns}}">
                                     <oui-spinner></oui-spinner>
                                 </td>
                             </tr>
@@ -70,7 +70,7 @@
 
                         <tbody data-ng-if="!loading.domains && domains.list.results.length <= 0">
                             <tr>
-                                <td class="text-center" colspan="{{hosting.hasCdn ? 7 : 6}}"
+                                <td class="text-center" colspan="{{hosting.numberOfColumns}}"
                                     data-i18n-static="table_search_noresult"></td>
                             </tr>
                         </tbody>
@@ -86,7 +86,8 @@
                                           data-ng-bind="i18n['hosting_tab_DOMAINS_table_cdn_state_' + (domain.ownLog ? 'ACTIVE' : 'NONE')] || domain.ownLog"
                                           data-ng-class="{
                                             'label-success': domain.ownLog,
-                                            'label-danger': domain.ownLog === 'NONE' || !domain.ownLog}">
+                                            'label-danger': domain.ownLog === 'NONE' || !domain.ownLog
+                                        }">
                                     </span>
                                 </td>
                                 <td class="text-center">
@@ -94,7 +95,8 @@
                                           data-ng-bind="i18n['hosting_tab_DOMAINS_table_firewall_state_' + domain.firewall] || domain.firewall"
                                           data-ng-class="{
                                             'label-success': domain.firewall === 'ACTIVE',
-                                            'label-danger': domain.firewall === 'NONE'}">
+                                            'label-danger': domain.firewall === 'NONE'
+                                        }">
                                     </span>
                                 </td>
                                 <td class="text-center" data-ng-if="hosting.hasCdn">
@@ -102,7 +104,8 @@
                                           data-ng-bind="i18n['hosting_tab_DOMAINS_table_cdn_state_' + domain.cdn] || domain.cdn"
                                           data-ng-class="{
                                             'label-success': domain.cdn === 'ACTIVE',
-                                            'label-danger': domain.cdn === 'NONE'}">
+                                            'label-danger': domain.cdn === 'NONE'
+                                        }">
                                     </span>
                                 </td>
                                 <td class="text-center">
@@ -177,9 +180,9 @@
                 </button>
                 <button type="button" class="btn btn-block btn-default text-wrap" title="{{i18n.hosting_ssl_regenerate_title_button}}"
                         data-i18n-static="hosting_ssl_regenerate_title_button"
-                        data-uib-tooltip="{{ssl && (ssl.status === 'deleting' || ssl.status === 'regenerating' || ssl.status === 'creating') ? tr('hosting_dashboard_service_ssl_' + ssl.status) : ''}}"
-                        data-ng-click="setAction(ssl ? 'ssl/regenerate/hosting-ssl-regenerate' : 'ssl/order/hosting-order-ssl')"
-                        data-ng-disabled="ssl && (ssl.status === 'deleting' || ssl.status === 'regenerating' || ssl.status === 'creating')"
+                        data-uib-tooltip="{{sslCertificate && (sslCertificate.status === 'deleting' || sslCertificate.status === 'regenerating' || sslCertificate.status === 'creating') ? tr('hosting_dashboard_service_ssl_' + sslCertificate.status) : ''}}"
+                        data-ng-click="setAction(sslCertificate ? 'ssl/regenerate/hosting-ssl-regenerate' : 'ssl/order/hosting-order-ssl')"
+                        data-ng-disabled="sslCertificate && (sslCertificate.status === 'deleting' || sslCertificate.status === 'regenerating' || sslCertificate.status === 'creating')"
                         data-ng-if="!hosting.hasHostedSsl">
                 </button>
             </div>

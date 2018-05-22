@@ -22,16 +22,20 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
 
         $scope.excludeAttachedDomains = [$scope.hosting.cluster.replace(/^ftp/, $scope.hosting.primaryLogin)];
 
-        return Hosting.getTabDomains($stateParams.productId, count, offset, $scope.search.text)
+        return Hosting
+            .getTabDomains($stateParams.productId, count, offset, $scope.search.text)
             .then((domains) => {
-                $scope.domains = _(domains).get("list.results", []);
+                $scope.domains = domains;
                 $scope.hasResult = !_($scope.domains).isEmpty();
+            })
+            .catch((error) => {
+                Alerter.alertFromSWS(this.translator.tr("hosting_dashboard_ssl_details_error"), error, $scope.alerts.main);
             })
             .then(() => hostingSSLCertificate.retrievingLinkedDomains($stateParams.productId))
             .then((sslLinked) => {
                 const linkedSSLs = _(sslLinked).isArray() ? sslLinked : [sslLinked];
 
-                $scope.domains = _($scope.domains)
+                $scope.domains.list.results = _($scope.domains.list.results)
                     .map((domain) => {
                         const newDomain = _(domain).clone();
                         newDomain.rawSsl = newDomain.ssl;
@@ -46,10 +50,16 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
                     })
                     .value();
             })
-            .finally(() => Hosting.getSelected($stateParams.productId))
+            .catch((error) => {
+                Alerter.alertFromSWS(this.translator.tr("hosting_dashboard_ssl_details_error"), error, $scope.alerts.main);
+            })
+            .then(() => Hosting.getSelected($stateParams.productId))
             .then((hosting) => {
+                $scope.hosting = hosting;
+                $scope.numberOfColumns = 5 + hosting.isCloudWeb + hosting.hasCdn;
+
                 if (hosting.isCloudWeb) {
-                    const promises = _($scope.domains)
+                    const promises = _($scope.domains.list.results)
                         .filter((domain) => domain.runtimeId)
                         .map((domain) => HostingDomain
                             .getRuntimeConfiguration($stateParams.productId, domain.runtimeId)
@@ -64,13 +74,25 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
 
                 return null;
             })
-            .then(() => {
+            .catch((error) => {
+                Alerter.alertFromSWS(this.translator.tr("hosting_dashboard_ssl_details_error"), error, $scope.alerts.main);
+            })
+            .then(() => this.hostingSSLCertificate.retrievingCertificate(this.$stateParams.productId))
+            .then((certificate) => {
+                $scope.sslCertificate = certificate;
+            })
+            .catch((error) => {
+                // 404 error means that the user has no SSL certificate
+                if (error.status !== 404) {
+                    Alerter.alertFromSWS(this.translator.tr("hosting_dashboard_ssl_details_error"), error, $scope.alerts.main);
+                }
+            })
+            .finally(() => {
                 $location.search("domain", null);
 
                 $scope.loading.domains = false;
                 $scope.loading.init = false;
-            })
-            .then(() => $scope.retrievingSSLCertificate());
+            });
     };
 
     $scope.detachDomain = function (domain) {

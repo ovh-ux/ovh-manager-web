@@ -3,14 +3,16 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
 
     $scope.selectedOptions = {};
 
+    const domainFromMultisite = _($scope.currentActionData).clone();
+
     $scope.selected = {
-        domain: angular.copy($scope.currentActionData),
+        domain: domainFromMultisite,
         domainWwwNeeded: false,
         domainWww: null,
         pathFinal: null,
-        ipv6: $scope.currentActionData.ipV6Enabled,
-        ssl: $scope.currentActionData.rawSsl,
-        runtime: null
+        ipv6: domainFromMultisite.ipV6Enabled,
+        ssl: domainFromMultisite.rawSsl,
+        runtime: domainFromMultisite.runtime
     };
 
     if ($scope.selected.domain.ownLog) {
@@ -85,39 +87,13 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
         }
 
         return HostingDomain
-            .getExistingDomains(false, $stateParams.productId)
+            .getExistingDomains($stateParams.productId, false)
             .then((data) => {
                 $scope.model.domains = data.existingDomains;
-            })
-            .then(() => Domain.getRecordsIds($stateParams.productId, {
-                fieldType: "A",
-                subDomain: subDomainName
-            }))
-            .then((recordIds) => {
-                const recordsPromises = _.map(recordIds, (recordId) => Domain.getRecord($stateParams.productId, recordId));
-
-                return $q.all(recordsPromises);
             })
             .then(() => User.getUser())
             .then((user) => {
                 $scope.userInfos = user;
-            })
-            .then((recordIdsData) => {
-                $scope.selected.domain.ipLocation = null;
-                isCountryIp($scope.hosting.countriesIp, recordIdsData);
-            })
-            .then(() => HostingDomain.getIPv6Configuration($scope.hosting.serviceName, $scope.selected.domain.name.replace(`.${$scope.hosting.serviceName}`, "")))
-            .then((records) => {
-                $scope.selected.domain.ipV6Enabled = _.some(records, (record) => $scope.hosting.clusterIpv6 === record.target);
-
-                if ($scope.selected.domain.ipV6Enabled) {
-                    $scope.selected.domain.ipLocation = "";
-                    $scope.selected.domain.ipV6Enabled = true;
-                }
-            })
-            .then(() => HostingDomain.getAddDomainOptions($stateParams.productId))
-            .then((options) => {
-                $scope.availableDomains = options.availableDomains;
             })
             .then(() => Hosting.getSelected($stateParams.productId))
             .then((hosting) => {
@@ -130,14 +106,16 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
                         .then((runtimes) => {
                             $scope.loading.runtimes = true;
 
-                            const promises = _(runtimes).map((runtimeId) => HostingFrameworkRuntime
-                                .get($scope.hosting.serviceName, runtimeId)
-                                .then((runtime) => {
-                                    $scope.model.runtimes.push(runtime);
+                            const promises = _(runtimes)
+                                .map((runtimeId) => HostingFrameworkRuntime
+                                    .get($scope.hosting.serviceName, runtimeId)
+                                    .then((runtime) => {
+                                        $scope.model.runtimes.push(runtime);
 
-                                    return runtime;
-                                })
-                            );
+                                        return runtime;
+                                    })
+                                )
+                                .value();
 
                             return $q.all(promises);
                         })
@@ -152,6 +130,32 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
                 }
 
                 return null;
+            })
+            .then(() => HostingDomain.getIPv6Configuration($scope.hosting.serviceName, $scope.selected.domain.name.replace(`.${$scope.hosting.serviceName}`, "")))
+            .then((records) => {
+                $scope.selected.domain.ipV6Enabled = _.some(records, (record) => $scope.hosting.clusterIpv6 === record.target);
+
+                if ($scope.selected.domain.ipV6Enabled) {
+                    $scope.selected.domain.ipLocation = "";
+                    $scope.selected.domain.ipV6Enabled = true;
+                }
+            })
+            .then(() => HostingDomain.getAddDomainOptions($stateParams.productId))
+            .then((options) => {
+                $scope.availableDomains = options.availableDomains;
+            })
+            .then(() => Domain.getRecordsIds($stateParams.productId, {
+                fieldType: "A",
+                subDomain: subDomainName
+            }))
+            .then((recordIds) => {
+                const recordsPromises = _(recordIds).map((recordId) => Domain.getRecord($stateParams.productId, recordId)).value();
+
+                return $q.all(recordsPromises);
+            })
+            .then((recordIdsData) => {
+                $scope.selected.domain.ipLocation = null;
+                isCountryIp($scope.hosting.countriesIp, recordIdsData);
             })
             .catch((err) => {
                 $scope.resetAction();
