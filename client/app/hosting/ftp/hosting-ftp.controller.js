@@ -11,6 +11,7 @@ angular.module("App").controller(
         }
 
         $onInit () {
+            this.primaryUser = null;
             this.allowUpdateState = true;
             this.displayFtpExplorer = true;
             this.disableRestoreFtp = false;
@@ -103,6 +104,8 @@ angular.module("App").controller(
                         user.ftpUrl = `ftp://${user.serviceManagementCredentials.ftp.user}@${user.serviceManagementCredentials.ftp.url}:${user.serviceManagementCredentials.ftp.port}/`;
                         user.ssh = user.serviceManagementCredentials.ssh;
                         user.sshUrl = `ssh://${user.serviceManagementCredentials.ssh.user}@${user.serviceManagementCredentials.ssh.url}:${user.serviceManagementCredentials.ssh.port}/`;
+
+                        this.primaryUser = user.isPrimaryAccount ? user : null;
                     });
 
                     this.primaryUserEnabled = ftpInformations.list.results.length && ftpInformations.list.results[0].isPrimaryAccount ? ftpInformations.list.results[0].state === "RW" : null;

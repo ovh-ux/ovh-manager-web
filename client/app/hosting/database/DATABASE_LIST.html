@@ -114,7 +114,7 @@
                             <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_name"></th>
                             <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_database_name"></th>
                             <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_server_address"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_size"></th>
+                            <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_size" data-ng-if="!hosting.isCloudWeb"></th>
                             <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_server"></th>
                             <th class="text-center" scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_state"></th>
                             <th class="text-center" scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_backup"></th>
@@ -152,7 +152,7 @@
                                 data-uib-tooltip="{{element.server}}"
                                 data-tooltip-append-to-body="true">
                             </td>
-                            <td>
+                            <td data-ng-if="!hosting.isCloudWeb">
                                 <div data-ng-if="element.server !== 'local' && !element.quotaCalculating">
                                     <div class="oui-progress m-0" style="min-width:200px"
                                          data-ng-class="{
@@ -216,12 +216,14 @@
                                         </li>
                                         <li role="menuitem">
                                             <button class="btn btn-link" type="button"
+                                                    data-ng-if="element.type !== 'MONGODB'"
                                                     data-i18n-static="hosting_tab_DATABASES_table_popover_dump"
                                                     data-ng-click="setAction('database/dump/add/hosting-database-dump-add', element.name)">
                                             </button>
                                         </li>
                                         <li role="menuitem">
                                             <button class="btn btn-link" type="button"
+                                                    data-ng-if="element.type !== 'MONGODB'"
                                                     data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore"
                                                     data-ng-click="ctrlTabDatabases.restoreDump(element)">
                                             </button>
@@ -248,14 +250,14 @@
                                             </button>
                                         </li>
                                         <li role="menuitem"
-                                            data-ng-if="element.type === 'MYSQL'">
+                                            data-ng-if="!hosting.isCloudWeb && element.type === 'MYSQL'">
                                             <button class="btn btn-link" type="button"
                                                     data-i18n-static="hosting_tab_DATABASES_table_popover_check_quota"
                                                     data-ng-click="ctrlTabDatabases.checkQuota(element)">
                                             </button>
                                         </li>
                                         <li role="menuitem"
-                                            data-ng-if="element.type === 'MYSQL'">
+                                            data-ng-if="element.type === 'MYSQL' || element.type === 'MONGODB'">
                                             <button class="btn btn-link" type="button"
                                                     data-i18n-static="hosting_tab_DATABASES_table_popover_delete"
                                                     data-ng-click="setAction('database/delete/hosting-database-delete', element.name)">

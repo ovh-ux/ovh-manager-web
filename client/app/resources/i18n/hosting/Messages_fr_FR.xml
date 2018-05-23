@@ -184,6 +184,8 @@
    <translation id="hosting_tab_DATABASE" qtlid="7702">Bases de données</translation>
    <translation id="hosting_tab_STATISTICS" qtlid="26671">Statistiques</translation>
    <translation id="hosting_tab_INDY" qtlid="272396">Multi domaines indépendants</translation>
+   <translation id="hosting_tab_FRAMEWORK">Configuration</translation>
+
    <translation id="hosting_tab_GENERAL_INFORMATIONS" qtlid="27115">Informations générales</translation>
    <translation id="hosting_dashboard_ssl_order_not_available" qtlid="217639">La commande de certificat SSL n'est pas disponible pour votre plateforme.</translation>
    <translation id="hosting_dashboard_ssl_order_choose_duration" qtlid="217652">Choisissez une durée :</translation>
@@ -281,6 +283,7 @@
    <translation id="hosting_configuration_order_ssl" qtlid="196803">Commander un certificat SSL</translation>
    <translation id="hosting_tab_DOMAINS_table_header_domain" qtlid="8458">Domaine</translation>
    <translation id="hosting_tab_DOMAINS_table_header_home" qtlid="196816">Dossier racine</translation>
+   <translation id="hosting_tab_DOMAINS_table_header_runtime">Moteur d'exécution</translation>
    <translation id="hosting_tab_DOMAINS_table_header_cdn" qtlid="99812">CDN</translation>
    <translation id="hosting_tab_DOMAINS_table_header_firewall" qtlid="141418">Firewall</translation>
    <translation id="hosting_tab_DOMAINS_table_header_ownlog" qtlid="62172">Logs séparés</translation>
@@ -346,10 +349,13 @@
    <translation id="hosting_tab_DATABASES_configuration_quota_warning_message" qtlid="261452">Si vous dépassez l'espace de stockage recommandé, vos droits seront limités à un accès en lecture seule.</translation>
    <translation id="hosting_tab_DATABASES_configuration_quota_warning_resolution" qtlid="261465">Pour éviter cette limitation, nous vous invitons à effectuer une purge de votre base de données et recalculer vos quotas afin de repasser en dessous de la taille recommandée. Votre base de données sera déverrouillée automatiquement dans les minutes suivantes.</translation>
 
+   <translation id="hosting_tab_databases_get_error">Une erreur est survenue lors de la récupération de vos bases de données.</translation>
+   <translation id="hosting_tab_databases_dumps_error_fetch">Une erreur est survenue lors de la récupération de vos sauvegardes.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_title_button" qtlid="7618">Créer une base de données</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_title" qtlid="7618">Créer une base de données</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MYSQL" qtlid="196894">MySQL</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_POSTGRESQL" qtlid="196907">PostgreSQL</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MONGODB">MongoDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_loading_error" qtlid="168120">Une erreur s'est produite lors du chargement des informations.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_question" qtlid="196920">Vous allez créer une base de données</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_no_db_left" qtlid="196933">Il ne vous reste aucune base de données disponible.</translation>
@@ -414,6 +420,11 @@
    <translation id="database_tabs_dumps_delete_success" qtlid="290264">La suppression de la sauvegarde a bien été effectuée.</translation>
    <translation id="database_tabs_dumps_delete_fail" qtlid="290277">Une erreur est survenue lors de la suppression de la sauvegarde :</translation>
 
+   <translation id="database_tabs_dumps_status">Statut</translation>
+   <translation id="database_tabs_dumps_status_created">Créé</translation>
+   <translation id="database_tabs_dumps_status_creating">Dump en création</translation>
+   <translation id="database_tabs_dumps_status_updating">Dump en modification</translation>
+   <translation id="database_tabs_dumps_status_deleting">Dump en suppression</translation>
 
    <translation id="hosting_tab_DATABASES_configuration_update_password_title" qtlid="80394">Changer le mot de passe</translation>
    <translation id="hosting_tab_DATABASES_configuration_update_password_question" qtlid="413180">Vous allez changer le mot de passe de la base de données {0} :</translation>
@@ -485,6 +496,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_domain_name" qtlid="140638">Nom du domaine</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_domain_name_www_question" qtlid="197557">Modifier également le sous domaine {0}</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_home" qtlid="196816">Dossier racine</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_step1_runtime">Moteur d'exécution</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_cdn" qtlid="232466">Activer le CDN</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step2_summary" qtlid="197570">Souhaitez-vous réellement apporter ces modifications aux domaines suivants ?</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step2_domain_name" qtlid="140638">Nom du domaine</translation>
@@ -588,6 +600,103 @@
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_type" qtlid="2642">Type</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_target" qtlid="47644">Cible</translation>
 
+
+   <translation id="hosting_tab_FRAMEWORK">Application</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_guide_help">Besoin d'aide pour mettre à jour votre configuration ?</translation>
+   <translation id="hosting_tab_FRAMEWORK_table_empty">La liste des configurations est vide.</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtimes_table_empty">La liste des moteurs d'exécution est vide.</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvars_table_empty">La liste des variables d'environnement est vide.</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_table_status_created">Actif</translation>
+   <translation id="hosting_tab_FRAMEWORK_table_status_creating">Création en cours</translation>
+   <translation id="hosting_tab_FRAMEWORK_table_status_updating">Modification en cours</translation>
+   <translation id="hosting_tab_FRAMEWORK_table_status_deleting">Suppression en cours</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_runtime_list_error">Une erreur est survenue lors de la récupération des données des moteurs d'exécution : </translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_list_error_temporary">Une erreur temporaire est survenue lors de la récupération des données des variables d'environnement. Merci de réessayer plus tard.</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_list_error">Une erreur est survenue lors de la récupération des données des variables d'environnement : </translation>
+
+   <translation id="hosting_tab_FRAMEWORK_runtime_list">Liste des moteurs d'exécutions disponibles</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_list">Liste des variables d'environnements actives</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_runtime_add">Ajouter un moteur d'exécution</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_quota_reached">Nombre maximum de moteurs d'exécution atteint pour votre offre</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_add">Ajouter une variable d'environnement</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_quota_reached">Nombre maximum de variables d'environnement atteint pour votre offre</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_error">Une erreur est survenue lors de la récupération des informations : </translation>
+   <translation id="hosting_tab_FRAMEWORK_empty">La liste de configuration est vide.</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_runtime_actions">Actions</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_table_header_name">Nom de la configuration</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_table_header_language">Moteur d'exécution</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_table_header_default">Choix par défaut</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_table_header_number_multisite">Nombre de multisites liés</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_runtime_table_popover_modify">Modifier</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_table_popover_delete">Supprimer</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_runtime_create_title">Ajouter un moteur d'exécution</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_edit_title">Modifier un moteur d'exécution</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_delete_title">Supprimer un moteur d'exécution</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_delete_step1_question">Êtes-vous sûr de vouloir supprimer ce moteur d'exécution ?</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_runtime_save_success">Ce nouveau moteur d'exécution sera disponible d'ici quelques minutes.</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_save_error">Une erreur est survenue lors de la création d'un moteur d'exécution : </translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_edit_success">Le moteur d'exécution est en cours de modification.</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_edit_error">Une erreur est survenue lors de la modification du moteur d'exécution : </translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_delete_success">Ce moteur d'exécution est en cours de suppression.</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_delete_error">Une erreur est survenue lors de la suppression du moteur d'exécution : </translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_delete_information">Attention, cette action est irréversible et entraînera la perte de toutes les données.</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_runtime_label_name">Nom personnalisé</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_label_type">Moteur d'exécution</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_label_publicDir">Chemin d'accès au répertoire public</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_label_appEnv">Environnement de l'application</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_label_appBootstrap">Script de lancement de l'application</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_runtime_publicDir_help">Renseignez le chemin d'accès au répertoire public nécessaire au lancement de votre serveur Node.js.</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_appEnv_help">Renseignez l'environnement sous lequel l'application Node.js doit être lancée (production, développement, test, …).</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_appBootstrap_help">Renseignez le nom du script servant à lancer depuis le binaire Node.js.</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_runtime_configure_envvar">Configurer les variables d'environnement</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_envvar_actions">Actions</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_table_header_key">Nom de la variable</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_table_header_type">Type de variable</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_table_header_value">Valeur</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_table_header_status">État</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_envvar_table_popover_modify">Modifier</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_table_popover_delete">Supprimer</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_table_popover_set_default">Choix par défaut</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_envvar_create_title">Ajouter une variable d'environnement</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_edit_title">Modifier une variable d'environnement</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_delete_title">Supprimer une variable d'environnement</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_delete_step1_question">Êtes-vous sûr de vouloir supprimer cette variable d'environnement ?</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_delete_information">Attention, cette action est irréversible et entraînera la perte de toutes les données.</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_set_default_title">Mettre un moteur d'exécution par défaut</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_set_default_step1_question">Êtes-vous sûr de vouloir de choisir ce moteur d'exécution par défaut ?</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_set_default_information">Attention, après cela, tous vos multisites seront par défaut créés sur ce moteur. Cependant, vous aurez toujours le choix de modifier cela plus tard.</translation>
+
+   <translation id="hosting_tab_FRAMEWORK_envvar_save_success">La nouvelle variable d'environnement sera disponible d'ici quelques minutes.</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_save_error">Une erreur est survenue lors de la création d'une variable d'environnement : </translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_edit_success">La variable d'environnement est en cours de modification.</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_edit_error">Une erreur est survenue lors de la modification de la variable d'environnement : </translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_delete_success">La variable d'environnement est en cours de suppression.</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_delete_error">Une erreur est survenue lors de la suppression de la variable d'environnement : </translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_set_default_success">Ce moteur d'exécution sera disponible par défaut d'ici quelques instants.</translation>
+   <translation id="hosting_tab_FRAMEWORK_runtime_set_default_error">Une erreur est survenue lors de la mise en place par défaut de ce moteur d'exécution : </translation>
+
+   <translation id="hosting_tab_FRAMEWORK_envvar_label_key">Nom</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_label_error_required">Ce champ est requis.</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_label_error_pattern">Le nom de la variable ne peut pas contenir d'espaces.</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_label_type">Type de variable</translation>
+   <translation id="hosting_tab_FRAMEWORK_envvar_label_value">Valeur</translation>
+
+
    <translation id="hosting_tab_TASK" qtlid="201172">Tâches en cours</translation>
    <translation id="hosting_tab_TASKS_table_empty" qtlid="144058">Vous n'avez pas de tâches</translation>
    <translation id="hosting_tab_TASKS_table_function" qtlid="61872">Tâche</translation>
@@ -686,10 +795,14 @@
    <translation id="hosting_tab_FTP_dashboard_information" qtlid="198584">Ces paramètres vous permettront de mettre votre site en ligne</translation>
    <translation id="hosting_tab_FTP_dashboard_server" qtlid="198597">Serveur FTP :</translation>
    <translation id="hosting_tab_FTP_dashboard_login" qtlid="198610">Login principal :</translation>
+   <translation id="hosting_tab_FTP_dashboard_primary_ftp_login">Login FTP principal :</translation>
+   <translation id="hosting_tab_FTP_dashboard_primary_ssh_login">Login SSH principal :</translation>
    <translation id="hosting_tab_FTP_dashboard_login_enabled" qtlid="198623">Login principal activé :</translation>
    <translation id="hosting_tab_FTP_dashboard_homez" qtlid="271621">Chemin du répertoire home :</translation>
    <translation id="hosting_tab_FTP_dashboard_clusterip" qtlid="198636">Adresse IP du cluster :</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_login" qtlid="41062">Login</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_ftp_login">Login FTP</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_ssh_login">Login SSH</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_home" qtlid="198649">Répertoire cible</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_iisRemoteRights" qtlid="198662">iisRemoteRights</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_state" qtlid="369025">Etat</translation>
@@ -726,6 +839,7 @@
    <translation id="hosting_tab_FTP_configuration_explorer_disabled" qtlid="250043">Bientôt disponible</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_title" qtlid="198766">Modifier mon mot de passe</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_title_button" qtlid="198766">Modifier mon mot de passe</translation>
+
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_title" qtlid="215442">Restaurer une sauvegarde</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_title_button" qtlid="215442">Restaurer une sauvegarde</translation>
    <translation id="hosting_tab_FTP_configuration_restore_password_step1_question" qtlid="215455">Vous allez restaurer une sauvegarde de votre espace FTP</translation>
@@ -739,6 +853,20 @@
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_step2_alert_question" qtlid="351883">Voulez-vous continuer ?</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_success" qtlid="215546">Un snapshot est en cours de restauration</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_error" qtlid="215559">Une erreur est survenue lors de la restauration de votre espace :</translation>
+
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_title">Générer une sauvegarde</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_title_button">Générer une sauvegarde</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_password_step1_question">Vous allez générer une sauvegarde de votre espace FTP</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_snapshot_instance">Instance à générer :</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_1">j-1</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_2">j-2</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_3">j-3</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_weekly_1">1 semaine</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert">Attention, la sauvegarde générée vous sera envoyée par e-mail et ne sera pas restaurée automatiquement sur votre espace FTP.</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert_question">Voulez-vous continuer ?</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_success">Une sauvegarde est en cours de génération.</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_error">Une erreur est survenue lors de la génération de votre sauvegarde :</translation>
+
    <translation id="hosting_tab_FTP_configuration_change_password_step1_question" qtlid="413206">Vous allez changer le mot de passe de l'utilisateur {0}</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_step1_password" qtlid="17177">Nouveau mot de passe</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_step1_confirmation" qtlid="9983">Confirmation</translation>
@@ -1291,8 +1419,9 @@
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_fail" qtlid="268536">Une erreur est survenue lors de la demande de modification de l'utilisateur.</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_success" qtlid="268549">L'utilisateur va être modifié.</translation>
 
+   <translation id="hosting_tab_menu_framework">Moteurs d'exécution</translation>
    <translation id="hosting_tab_menu_crons" qtlid="270332">Tâches planifiées - Cron</translation>
-   <translation id="hosting_tab_menu_emails" qtlid="270345">Gérer les e-mails et mailing-lists</translation>
+   <translation id="hosting_tab_menu_emails">E-mails et mailing-lists</translation>
    <translation id="hosting_tab_menu_contacts" qtlid="270358">Administratif, technique et facturation</translation>
    <translation id="hosting_tab_menu_resiliate" qtlid="351896">Supprimer / Résilier mon hébergement</translation>
    <translation id="hosting_tab_menu_resiliate_infos" qtlid="270384">Supprime le service à la date d'expiration.</translation>

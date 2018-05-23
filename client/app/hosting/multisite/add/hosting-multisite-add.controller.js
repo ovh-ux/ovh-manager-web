@@ -1,4 +1,4 @@
-angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParams, $rootScope, Hosting, HostingDomain, Alerter, $q, Validator, COMPOSED_TLD) => {
+angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParams, $rootScope, Hosting, HostingDomain, HostingFrameworkRuntime, Alerter, $q, Validator, COMPOSED_TLD) => {
     "use strict";
 
     $scope.model = {
@@ -13,7 +13,8 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
         options: null,
         step2Valid: null,
         token: null,
-        tokenSubdomain: null
+        tokenSubdomain: null,
+        runtimes: []
     };
 
     $scope.MAX_DOMAIN_LENGTH = Validator.MAX_DOMAIN_LENGTH;
@@ -47,7 +48,8 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
         countryIp: null,
         firewall: "NONE",
         ownLog: null,
-        ssl: false
+        ssl: false,
+        runtime: null
     };
 
     $scope.hosting = $scope.currentActionData ? $scope.currentActionData.hosting || $scope.hosting : $scope.hosting;
@@ -56,7 +58,8 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
 
     $scope.loaders = {
         hosting: false,
-        conflicts: false
+        conflicts: false,
+        runtime: false
     };
 
     const pattern = {
@@ -205,6 +208,7 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
             $scope.selected.firewall,
             $scope.selected.ownLog === "ACTIVE" ? $scope.selected.ownLogDomain.name : null,
             $scope.selected.ssl,
+            _($scope.selected).get("runtime.id", null),
             $scope.selected.hosting || $stateParams.productId
         )
             .then((data) => {
@@ -237,6 +241,49 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
                 Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
             }
         );
+
+        Hosting.getSelected($stateParams.productId)
+            .then((hosting) => {
+                $scope.hosting = hosting;
+
+                if (hosting.isCloudWeb) {
+                    // Load runtimes configuration
+                    HostingFrameworkRuntime.list($scope.hosting.serviceName)
+                        .then((runtimes) => {
+                            $scope.loaders.runtimes = true;
+
+                            const promises = [];
+                            _.forEach(runtimes, (runtimeId) => {
+                                promises.push(HostingFrameworkRuntime.get($scope.hosting.serviceName, runtimeId)
+                                    .then((runtime) => {
+                                        $scope.model.runtimes.push(runtime);
+                                        if (runtime.isDefault) {
+                                            $scope.selected.runtime = runtime;
+                                        }
+
+                                        return runtime;
+                                    })
+                                );
+                            });
+
+                            $q.all(promises).then(() => {
+                                $scope.loaders.runtimes = false;
+                            });
+                        })
+                        .catch((err) => {
+                            Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+
+                            $scope.resetAction();
+                        })
+                    ;
+                }
+            })
+            .catch((err) => {
+                Alerter.alertFromSWS($scope.tr("hosting_tab_DOMAINS_configuration_add_loading_error"), _.get(err, "data", err), $scope.alerts.main);
+
+                $scope.resetAction();
+            })
+        ;
     };
 
     $scope.domainsAlreadyExists = function (wwwNeeded) {
