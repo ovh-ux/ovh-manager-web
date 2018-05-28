@@ -1,10 +1,11 @@
 angular.module("App").controller(
     "App.Controllers.EnableWebHostingOrderController",
     class EnableWebHostingOrderCtrl {
-        constructor ($scope, $q, Alerter, Hosting, HostingModule, HostingOrder, User, constants) {
+        constructor ($scope, $q, Alerter, atInternet, Hosting, HostingModule, HostingOrder, User, constants) {
             this.$scope = $scope;
             this.$q = $q;
             this.Alerter = Alerter;
+            this.atInternet = atInternet;
             this.Hosting = Hosting;
             this.HostingModule = HostingModule;
             this.HostingOrder = HostingOrder;
@@ -179,6 +180,12 @@ angular.module("App").controller(
                             paymentMean: "fidelityAccount"
                         });
                     }
+                    this.atInternet.trackOrder({
+                        name: `[hosting]${this.model.offer}`,
+                        page: "web::domain::product",
+                        orderId: order.orderId,
+                        priceTaxFree: order.prices.withoutTax.value
+                    });
 
                     this.Alerter.success(this.$scope.tr("domain_order_hosting_finish_success", [order.url]), this.$scope.alerts.main);
                     window.open(order.url, "_blank");

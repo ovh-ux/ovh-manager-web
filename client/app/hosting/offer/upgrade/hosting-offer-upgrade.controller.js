@@ -1,11 +1,12 @@
 angular.module("App").controller(
     "HostingUpgradeOfferCtrl",
     class HostingUpgradeOfferCtrl {
-        constructor ($scope, $rootScope, $stateParams, Alerter, Hosting, User) {
+        constructor ($scope, $rootScope, $stateParams, Alerter, atInternet, Hosting, User) {
             this.$scope = $scope;
             this.$rootScope = $rootScope;
             this.$stateParams = $stateParams;
             this.Alerter = Alerter;
+            this.atInternet = atInternet;
             this.Hosting = Hosting;
             this.User = User;
         }
@@ -102,6 +103,12 @@ angular.module("App").controller(
             return this.Hosting.orderUpgrade(_.get(this.hosting, "serviceName", this.$stateParams.productId), this.model.capacity, this.model.duration.duration)
                 .then((order) => {
                     this.Alerter.success(this.$scope.tr("hosting_order_upgrade_success", [order.url, order.orderId]), this.$scope.alerts.main);
+                    this.atInternet.trackOrder({
+                        name: `[hosting]${this.model.capacity}`,
+                        page: "web::hosting",
+                        orderId: order.orderId,
+                        priceTaxFree: order.prices.withoutTax.value
+                    });
                     window.open(order.url, "_blank");
                 })
                 .catch((err) => {

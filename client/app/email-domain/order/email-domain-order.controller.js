@@ -6,14 +6,16 @@ angular.module("App").controller(
      * @param $scope
      * @param $q
      * @param Alerter
+     * @param atInternet
      * @param Domain
      * @param MXPlan
      * @param User
      */
-        constructor ($scope, $q, Alerter, Domain, MXPlan, User) {
+        constructor ($scope, $q, Alerter, atInternet, Domain, MXPlan, User) {
             this.$scope = $scope;
             this.$q = $q;
             this.Alerter = Alerter;
+            this.atInternet = atInternet;
             this.Domain = Domain;
             this.MXPlan = MXPlan;
             this.User = User;
@@ -129,6 +131,12 @@ angular.module("App").controller(
         }
 
         openBc () {
+            this.atInternet.trackOrder({
+                name: `[MXPlan]MX-${this.selectedOrder.offer.offer}`,
+                page: "web::mx-plan",
+                orderId: this.order.orderId,
+                priceTaxFree: this.order.prices.withoutTax.value
+            });
             window.open(this.order.url);
             this.$onInit();
         }
