@@ -1,3 +1,13 @@
+<a name="13.4.3"></a>
+## [13.4.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.2...v13.4.3) (2018-05-29)
+
+
+### Bug Fixes
+
+* **navbar:** remove labs URL ([ab24db6](https://github.com/ovh-ux/ovh-manager-web/commit/ab24db6))
+
+
+
 <a name="13.4.2"></a>
 ## [13.4.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.1...v13.4.2) (2018-05-24)
 
