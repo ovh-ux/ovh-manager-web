@@ -1,3 +1,13 @@
+<a name="13.4.4"></a>
+## [13.4.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.3...v13.4.4) (2018-05-29)
+
+
+### Bug Fixes
+
+* **navbar:** fix label property for brand ([8235fa6](https://github.com/ovh-ux/ovh-manager-web/commit/8235fa6))
+
+
+
 <a name="13.4.3"></a>
 ## [13.4.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.2...v13.4.3) (2018-05-29)
 
