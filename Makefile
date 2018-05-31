@@ -1,6 +1,5 @@
 #### SYSTEM COMMAND ####
 NODE=node
-NPM=npm
 YARN=yarn
 GRUNT=grunt
 GIT=git
@@ -97,7 +96,7 @@ build-ca: deps
 	$(TAR) $(DIST_CA_TAR) $(DIST_CA_DIR)
 
 release: deps
-	$(NPM) version $(type) -m "chore: release v%s"
+	$(YARN) version $(type) -m "chore: release v%s"
 
 
 ###############
@@ -113,7 +112,7 @@ coverage: deps
 	$(GRUNT) test:coverage:unit
 
 webdriver:
-	$(NPM) run update-webdriver
+	$(YARN) run update-webdriver
 
 test-e2e: deps webdriver
 	$(GRUNT) test:e2e --suite=$(suite) --browser=$(browser); \
