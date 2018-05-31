@@ -1,3 +1,114 @@
+<a name="13.4.4"></a>
+## [13.4.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.3...v13.4.4) (2018-05-29)
+
+
+### Bug Fixes
+
+* **navbar:** fix label property for brand ([8235fa6](https://github.com/ovh-ux/ovh-manager-web/commit/8235fa6))
+
+
+
+<a name="13.4.3"></a>
+## [13.4.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.2...v13.4.3) (2018-05-29)
+
+
+### Bug Fixes
+
+* **navbar:** remove labs URL ([ab24db6](https://github.com/ovh-ux/ovh-manager-web/commit/ab24db6))
+
+
+
+<a name="13.4.2"></a>
+## [13.4.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.1...v13.4.2) (2018-05-24)
+
+
+
+<a name="13.4.1"></a>
+## [13.4.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.0...v13.4.1) (2018-05-22)
+
+
+
+<a name="13.4.0"></a>
+# [13.4.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.7...v13.4.0) (2018-05-17)
+
+
+### Bug Fixes
+
+* added route for mobile menu for Exchange Dedicatedf ([110114c](https://github.com/ovh-ux/ovh-manager-web/commit/110114c))
+* fixes before PR ([d6f2f56](https://github.com/ovh-ux/ovh-manager-web/commit/d6f2f56))
+* ident issue ([bda4444](https://github.com/ovh-ux/ovh-manager-web/commit/bda4444))
+* **routing:** Downgrade ui-router version ([525f19a](https://github.com/ovh-ux/ovh-manager-web/commit/525f19a))
+
+
+### Features
+
+* updated ChartJS to fix issue with Exchange Licence chart ([5db3794](https://github.com/ovh-ux/ovh-manager-web/commit/5db3794))
+* updated UI kit to last version ([33b24b9](https://github.com/ovh-ux/ovh-manager-web/commit/33b24b9))
+
+
+
+<a name="13.3.7"></a>
+## [13.3.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.6...v13.3.7) (2018-05-11)
+
+
+### Bug Fixes
+
+* **guide:** update ES link for all guides ([854baf3](https://github.com/ovh-ux/ovh-manager-web/commit/854baf3))
+
+
+
+<a name="13.3.6"></a>
+## [13.3.6](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.5...v13.3.6) (2018-05-09)
+
+
+### Bug Fixes
+
+* **hosting:** right display for multisite ssl ([9c00bb5](https://github.com/ovh-ux/ovh-manager-web/commit/9c00bb5))
+
+
+
+<a name="13.3.5"></a>
+## [13.3.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.4...v13.3.5) (2018-05-04)
+
+
+### Bug Fixes
+
+* fix ssl order/regenerate button in multisite ([a3ab77f](https://github.com/ovh-ux/ovh-manager-web/commit/a3ab77f))
+* fix ssl order/regenerate button in multisite ([ad65e08](https://github.com/ovh-ux/ovh-manager-web/commit/ad65e08))
+
+
+
+<a name="13.3.4"></a>
+## [13.3.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.3...v13.3.4) (2018-05-03)
+
+
+### Bug Fixes
+
+* **hosting:** fix i18n for ssl validation modal ([18073b2](https://github.com/ovh-ux/ovh-manager-web/commit/18073b2))
+
+
+
+<a name="13.3.3"></a>
+## [13.3.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.2...v13.3.3) (2018-05-02)
+
+
+### Bug Fixes
+
+* rename services to v6 and v7 ([165fb24](https://github.com/ovh-ux/ovh-manager-web/commit/165fb24)), closes [ovh-ux/ovh-api-services#68](https://github.com/ovh-ux/ovh-api-services/issues/68)
+* **hosting:** Update translation for SSL Comodo validation ([f0d1615](https://github.com/ovh-ux/ovh-manager-web/commit/f0d1615))
+* **hosting.ssl:** Resolution ovh-api-services ([031289c](https://github.com/ovh-ux/ovh-manager-web/commit/031289c))
+* **i18n:** multiple qtlid ([863f728](https://github.com/ovh-ux/ovh-manager-web/commit/863f728))
+* **navbar:** language button position and format ([7eaca86](https://github.com/ovh-ux/ovh-manager-web/commit/7eaca86))
+
+
+### Features
+
+* submit / retrieve ([23d5dc2](https://github.com/ovh-ux/ovh-manager-web/commit/23d5dc2))
+* **chore:** bump ui-router to version ^1.0.0. ([33b7ee8](https://github.com/ovh-ux/ovh-manager-web/commit/33b7ee8))
+* **i18n:** submit translations ([c23e235](https://github.com/ovh-ux/ovh-manager-web/commit/c23e235))
+
+
+
 <a name="13.3.2"></a>
 ## [13.3.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.3.1...v13.3.2) (2018-04-26)
 
