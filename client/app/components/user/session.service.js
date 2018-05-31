@@ -418,7 +418,7 @@ class SessionService {
             const baseNavbar = {
                 // Set OVH Logo
                 brand: {
-                    title: this.translator.tr("universe_univers-web_name"),
+                    label: this.translator.tr("universe_univers-web_name"),
                     url: managerUrls.web,
                     iconAlt: "OVH",
                     iconClass: "navbar-logo",
