@@ -62,7 +62,6 @@ module.exports = function (grunt) {
     grunt.initConfig({
         // Config
         pkg: grunt.file.readJSON("package.json"),
-        bower: grunt.file.readJSON("bower.json"),
         bowerdir: "client/bower_components",
         builddir: "tmp",
         publicdir: "client/app",

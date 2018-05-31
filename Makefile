@@ -1,8 +1,8 @@
 #### SYSTEM COMMAND ####
 NODE=node
 NPM=npm
+YARN=yarn
 GRUNT=grunt
-BOWER=bower
 GIT=git
 CD=cd
 ECHO=@echo
@@ -20,7 +20,7 @@ CERTIFICATE_CSR_FILE=server/certificate/server.csr
 CERTIFICATE_CRT_FILE=server/certificate/server.crt
 
 #### FOLDERS ####
-BOWER_DIR=client/bower_components
+BOWER_DIR=node_modules/@bower_components
 NODE_DIR=node_modules
 GRUNT_DEP=$(NODE_DIR)/grunt
 DIST_DIR=dist
@@ -34,11 +34,6 @@ DIST_CA_TAR=dist-CA.tar.gz
 
 #### MACRO ####
 NAME=`grep -Po '(?<="name": ")[^"]*' package.json`
-
-#### OTHER ####
-ifneq ($(strip $(bower_registry)),)
-BOWER_PARAM=--config.registry=$(bower_registry)
-endif
 
 
 help:
@@ -62,7 +57,6 @@ help:
 
 clean:
 	$(DEL) $(NODE_DIR)
-	$(DEL) $(BOWER_DIR)
 	$(DEL) $(DIST_DIR)
 	$(DEL) $(DIST_TAR)
 	$(DEL) $(DIST_EU_DIR)
@@ -80,8 +74,7 @@ gen-certificate:
 	rm $(CERTIFICATE_TMP_KEY)
 
 install:
-	$(NPM) install
-	$(BOWER) install $(BOWER_PARAM)
+	$(YARN) install
 
 dev: deps
 	$(GRUNT) serve
