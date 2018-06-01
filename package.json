@@ -108,7 +108,6 @@
     "lodash": "~3.10.1",
     "matchdep": "~0.3.0",
     "morgan": "~1.6.1",
-    "npm": "^6.1.0",
     "office-ui-fabric-react": "^4.35.2",
     "ovh-angular-tail-logs": "^1.1.1",
     "properties": "latest",
@@ -164,8 +163,8 @@
     "time-grunt": "~1.2.2"
   },
   "engines": {
-    "node": ">=0.10.0",
-    "yarn": ">= 1.0.0"
+    "node": ">=8",
+    "yarn": ">=1.0.0"
   },
   "scripts": {
     "update-webdriver": "node node_modules/.bin/webdriver-manager update",
