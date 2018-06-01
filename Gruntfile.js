@@ -408,6 +408,36 @@ module.exports = function (grunt) {
                     },
                     {
                         expand: true,
+                        cwd: "<%= bowerdir %>/ovh-angular-actions-menu/dist",
+                        src: ["**"],
+                        dest: "<%= distdir %>/<%= bowerdir %>/ovh-angular-actions-menu/dist"
+                    },
+                    {
+                        expand: true,
+                        cwd: "<%= bowerdir %>/ovh-angular-sidebar-menu/dist",
+                        src: ["**"],
+                        dest: "<%= distdir %>/<%= bowerdir %>/ovh-angular-sidebar-menu/dist"
+                    },
+                    {
+                        expand: true,
+                        cwd: "<%= bowerdir %>/ovh-manager-webfont/dist",
+                        src: ["**"],
+                        dest: "<%= distdir %>/<%= bowerdir %>/ovh-manager-webfont/dist"
+                    },
+                    {
+                        expand: true,
+                        cwd: "<%= bowerdir %>/ovh-ui-kit/dist",
+                        src: ["**"],
+                        dest: "<%= distdir %>/<%= bowerdir %>/ovh-ui-kit/dist"
+                    },
+                    {
+                        expand: true,
+                        cwd: "<%= bowerdir %>/ckeditor",
+                        src: ["**"],
+                        dest: "<%= distdir %>/<%= bowerdir %>/ckeditor"
+                    },
+                    {
+                        expand: true,
                         cwd: "client/assets",
                         src: ["**"],
                         dest: "<%= distdir %>/assets"
