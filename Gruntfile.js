@@ -14,7 +14,7 @@ module.exports = function (grunt) {
     const filesJsModules = _.map(
         assets[target].modules,
         (module) => {
-            const assetsModule = require(`./client/bower_components/${
+            const assetsModule = require(`./node_modules/@bower_components/${
                 module
                 }/Assets.js`);
             return {
@@ -36,7 +36,7 @@ module.exports = function (grunt) {
 
     function copyFromEachModules (properties, dest) {
         return _.map(assets[target].modules, (module) => {
-            const assetsModule = require(`./client/bower_components/${
+            const assetsModule = require(`./node_modules/@bower_components/${
                 module
                 }/Assets.js`);
 
@@ -62,7 +62,7 @@ module.exports = function (grunt) {
     grunt.initConfig({
         // Config
         pkg: grunt.file.readJSON("package.json"),
-        bowerdir: "client/bower_components",
+        bowerdir: "node_modules/@bower_components",
         builddir: "tmp",
         publicdir: "client/app",
         distdir: isProd() ? "dist/client/" : "dist/",
@@ -115,7 +115,7 @@ module.exports = function (grunt) {
                 const files = [];
                 _.forEach(targetsAvailable, (tgt) => {
                     _.forEach(assets[tgt].modules, (module) => {
-                        const assetsModule = require(`./client/bower_components/${
+                        const assetsModule = require(`./node_modules/@bower_components/${
                             module
                             }/Assets.js`);
                         files.push(assetsModule.src.js);
@@ -405,36 +405,6 @@ module.exports = function (grunt) {
                             "json3/lib/json3.min.js"
                         ],
                         dest: "<%= distdir %>/js/"
-                    },
-                    {
-                        expand: true,
-                        cwd: "<%= bowerdir %>/ovh-angular-actions-menu",
-                        src: ["**"],
-                        dest: "<%= distdir %>/bower_components/ovh-angular-actions-menu"
-                    },
-                    {
-                        expand: true,
-                        cwd: "<%= bowerdir %>/ovh-angular-sidebar-menu",
-                        src: ["**"],
-                        dest: "<%= distdir %>/bower_components/ovh-angular-sidebar-menu"
-                    },
-                    {
-                        expand: true,
-                        cwd: "<%= bowerdir %>/ovh-manager-webfont",
-                        src: ["**"],
-                        dest: "<%= distdir %>/bower_components/ovh-manager-webfont"
-                    },
-                    {
-                        expand: true,
-                        cwd: "<%= bowerdir %>/ovh-ui-kit",
-                        src: ["**"],
-                        dest: "<%= distdir %>/bower_components/ovh-ui-kit"
-                    },
-                    {
-                        expand: true,
-                        cwd: "<%= bowerdir %>/ckeditor",
-                        src: ["**"],
-                        dest: "<%= distdir %>/bower_components/ckeditor"
                     },
                     {
                         expand: true,
@@ -842,12 +812,12 @@ module.exports = function (grunt) {
                 files: (function () {
                     const files = [];
                     _.forEach(assets[target].modules, (module) => {
-                        const assetsModule = require(`./client/bower_components/${
+                        const assetsModule = require(`./node_modules/@bower_components/${
                             module
                             }/Assets.js`);
                         _.forEach(assetsModule.resources.i18n, (val) => {
                             files.push(
-                                `./client/bower_components/${module}/${val}`,
+                                `./node_modules/@bower_components/${module}/${val}`,
                                 `!${val}`
                             );
                         });
@@ -872,10 +842,10 @@ module.exports = function (grunt) {
                 files: (function () {
                     const files = [];
                     _.forEach(assets[target].modules, (module) => {
-                        const assetsModule = require(`./client/bower_components/${module}/Assets.js`);
+                        const assetsModule = require(`./node_modules/@bower_components/${module}/Assets.js`);
                         _.forEach(assetsModule.src.html, (val) => {
                             files.push(
-                                `./client/bower_components/${module}/${val}`,
+                                `./node_modules/@bower_components/${module}/${val}`,
                                 `!${val}`
                             );
                         });
@@ -912,12 +882,12 @@ module.exports = function (grunt) {
                 files: (function () {
                     const files = [];
                     _.forEach(assets[target].modules, (module) => {
-                        const assetsModule = require(`./client/bower_components/${
+                        const assetsModule = require(`./node_modules/@bower_components/${
                             module
                             }/Assets.js`);
                         _.forEach(assetsModule.src.js, (val) => {
                             files.push(
-                                `./client/bower_components/${
+                                `./node_modules/@bower_components/${
                                     module
                                     }/${
                                     val}`,
@@ -937,12 +907,12 @@ module.exports = function (grunt) {
                 files: (function () {
                     const files = [assets.src.css];
                     _.forEach(assets[target].modules, (module) => {
-                        const assetsModule = require(`./client/bower_components/${
+                        const assetsModule = require(`./node_modules/@bower_components/${
                             module
                             }/Assets.js`);
                         _.forEach(assetsModule.src.css, (val) => {
                             files.push(
-                                `./client/bower_components/${
+                                `./node_modules/@bower_components/${
                                     module
                                     }/${
                                     val}`,

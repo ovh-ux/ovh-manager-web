@@ -172,8 +172,7 @@
     "commitmsg": "npm-scripts-config commitmsg",
     "version": "npm-scripts-config version && npm-bower-sync-ver && git add bower.json",
     "postversion": "git push && git push --tags",
-    "preview-changelog": "npm-scripts-config preview-changelog",
-    "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/@bower_components'), 'client/bower_components', 'junction') } catch (e) { }\""
+    "preview-changelog": "npm-scripts-config preview-changelog"
   },
   "private": true,
   "config": {

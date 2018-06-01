@@ -23,17 +23,16 @@ module.exports = function (app) {
         app.use(express.static(path.join(config.root, "client/app")));
         // app.use(express.static(path.join(config.root, 'dist/client')));
         app.set("appPath", fs.realpathSync("client/app"));
-        app.set("bowerPath", "client/bower_components");
         app.set("rootPath", "/");
 
         app.use("/client/app", express.static(path.join(config.root, "client/app")));
         app.use("/app", express.static(path.join(config.root, "client/app")));
         app.use("/app/components/translations", express.static(path.join(config.root, "dist/app/components/translations")));
         app.use("/tmp", express.static(path.join(config.root, "tmp")));
-        app.use("/app/bower_components", express.static(path.join(config.root, "client/bower_components")));
-        app.use("/bower_components", express.static(path.join(config.root, "client/bower_components")));
-        app.use("/client/bower_components", express.static(path.join(config.root, "client/bower_components")));
-        app.use("/client/app/bower_components", express.static(path.join(config.root, "client/bower_components")));
+        app.use("/app/node_modules", express.static(path.join(config.root, "node_modules")));
+        app.use("/node_modules", express.static(path.join(config.root, "node_modules")));
+        app.use("/client/node_modules", express.static(path.join(config.root, "node_modules")));
+        app.use("/client/app/node_modules", express.static(path.join(config.root, "node_modules")));
         app.use("/client/assets", express.static(path.join(config.root, "client/assets")));
         app.use("/client/app/assets", express.static(path.join(config.root, "client/assets")));
         app.use("/assets", express.static(path.join(config.root, "client/assets")));
