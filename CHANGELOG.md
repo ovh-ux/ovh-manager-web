@@ -1,3 +1,13 @@
+<a name="13.4.5"></a>
+## [13.4.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.4...v13.4.5) (2018-06-04)
+
+
+### Bug Fixes
+
+* **incident:** temporarily disable calls to ovh-tasks ([2519d41](https://github.com/ovh-ux/ovh-manager-web/commit/2519d41))
+
+
+
 <a name="13.4.4"></a>
 ## [13.4.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.3...v13.4.4) (2018-05-29)
 
