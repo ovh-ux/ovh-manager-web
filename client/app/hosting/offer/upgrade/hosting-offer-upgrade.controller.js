@@ -107,7 +107,8 @@ angular.module("App").controller(
                         name: `[hosting]${this.model.capacity}`,
                         page: "web::hosting",
                         orderId: order.orderId,
-                        priceTaxFree: order.prices.withoutTax.value
+                        priceTaxFree: order.prices.withoutTax.value,
+                        status: 1
                     });
                     window.open(order.url, "_blank");
                 })

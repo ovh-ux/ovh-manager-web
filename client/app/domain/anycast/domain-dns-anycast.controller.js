@@ -61,7 +61,8 @@ angular.module("App").controller(
                 name: `[domain]${this.optionName}`,
                 page: "web::domain::product",
                 orderId: this.order.orderId,
-                priceTaxFree: this.order.prices.withoutTax.value
+                priceTaxFree: this.order.prices.withoutTax.value,
+                status: 1
             });
             this.Alerter.success(this.$scope.tr("domain_order_dns_anycast_success", [this.url]), this.$scope.alerts.main);
             window.open(this.url, "_blank");

@@ -389,7 +389,8 @@ angular.module("App").controller(
                 name: `[SQL-${this.model.type}]${this.model.version || this.model.dbPack}`,
                 page: "web::sql-order",
                 orderId: this.order.orderId,
-                priceTaxFree: this.order.prices.withoutTax.value
+                priceTaxFree: this.order.prices.withoutTax.value,
+                status: 1
             });
             window.open(this.order.url);
         }

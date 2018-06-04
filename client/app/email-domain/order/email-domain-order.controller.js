@@ -135,7 +135,8 @@ angular.module("App").controller(
                 name: `[MXPlan]MX-${this.selectedOrder.offer.offer}`,
                 page: "web::mx-plan",
                 orderId: this.order.orderId,
-                priceTaxFree: this.order.prices.withoutTax.value
+                priceTaxFree: this.order.prices.withoutTax.value,
+                status: 1
             });
             window.open(this.order.url);
             this.$onInit();
