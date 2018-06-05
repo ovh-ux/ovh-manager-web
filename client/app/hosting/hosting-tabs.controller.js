@@ -32,6 +32,7 @@ angular.module("App").controller(
                     hosting: this.Hosting.getSelected(this.$stateParams.productId)
                 })
                 .then(({ indys, freedoms, hosting }) => {
+
                     this.tabMenu = {
                         title: this.$scope.tr("navigation_more"),
                         items: [
@@ -45,9 +46,11 @@ angular.module("App").controller(
                     };
 
                     if (hosting.isCloudWeb) {
-                        this.tabMenu.items.push({
-                            label: this.$scope.tr("hosting_tab_menu_framework"),
-                            target: "FRAMEWORK",
+                        _.remove(this.tabs, (t) => t === "TASK");
+                        this.tabs.splice(1, 0, "RUNTIMES", "ENVVARS");
+                        this.tabMenu.items.splice(0, 0, {
+                            label: this.$scope.tr("hosting_tab_TASK"),
+                            target: "TASK",
                             type: "SWITCH_TABS"
                         });
                     }

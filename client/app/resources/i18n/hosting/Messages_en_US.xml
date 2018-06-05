@@ -184,7 +184,7 @@
    <translation id="hosting_tab_DATABASE" qtlid="7702">Databases</translation>
    <translation id="hosting_tab_STATISTICS" qtlid="26671">Statistics</translation>
    <translation id="hosting_tab_INDY" qtlid="272396">Independent multi-domains</translation>
-   <translation id="hosting_tab_FRAMEWORK" qtlid="4406">Configuration</translation>
+   <translation id="hosting_tab_RUNTIMES" qtlid="488991">Moteurs d'exécution</translation>
 
    <translation id="hosting_tab_GENERAL_INFORMATIONS" qtlid="27115">General information</translation>
    <translation id="hosting_dashboard_ssl_order_not_available" qtlid="217639">You can't order an SSL certificate on your platform. </translation>
@@ -600,101 +600,98 @@
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_type" qtlid="2642">Type</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_target" qtlid="47644">Target </translation>
 
+   <translation id="hosting_tab_RUNTIMES_guide_help" qtlid="488185">Besoin d'aide pour mettre à jour votre configuration ?</translation>
+   <translation id="hosting_tab_RUNTIMES_table_empty" qtlid="488198">La liste des configurations est vide.</translation>
+   <translation id="hosting_tab_RUNTIMES_runtimes_table_empty" qtlid="488211">La liste des moteurs d'exécution est vide.</translation>
+   <translation id="hosting_tab_RUNTIMES_envvars_table_empty" qtlid="488224">La liste des variables d'environnement est vide.</translation>
 
-   <translation id="hosting_tab_FRAMEWORK" qtlid="159826">Application</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_created" qtlid="55133">Active</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_creating" qtlid="146632">Creating...</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_updating" qtlid="124303">Modifying </translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_deleting" qtlid="146645">Deleting...</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_guide_help" qtlid="488185">Besoin d'aide pour mettre à jour votre configuration ?</translation>
-   <translation id="hosting_tab_FRAMEWORK_table_empty" qtlid="488198">La liste des configurations est vide.</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtimes_table_empty" qtlid="488211">La liste des moteurs d'exécution est vide.</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvars_table_empty" qtlid="488224">La liste des variables d'environnement est vide.</translation>
+   <translation id="hosting_tab_RUNTIMES_list_error" qtlid="488237">Une erreur est survenue lors de la récupération des données des moteurs d'exécution :</translation>
+   <translation id="hosting_tab_ENVVARS_list_error_temporary" qtlid="488250">Une erreur temporaire est survenue lors de la récupération des données des variables d'environnement. Merci de réessayer plus tard.</translation>
+   <translation id="hosting_tab_ENVVARS_list_error" qtlid="488263">Une erreur est survenue lors de la récupération des données des variables d'environnement :</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_table_status_created" qtlid="55133">Active</translation>
-   <translation id="hosting_tab_FRAMEWORK_table_status_creating" qtlid="146632">Creating...</translation>
-   <translation id="hosting_tab_FRAMEWORK_table_status_updating" qtlid="124303">Modifying </translation>
-   <translation id="hosting_tab_FRAMEWORK_table_status_deleting" qtlid="146645">Deleting...</translation>
+   <translation id="hosting_tab_RUNTIMES_list" qtlid="488276">Liste des moteurs d'exécutions disponibles</translation>
+   <translation id="hosting_tab_ENVVARS_list" qtlid="488289">Liste des variables d'environnements actives</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_list_error" qtlid="488237">Une erreur est survenue lors de la récupération des données des moteurs d'exécution :</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_list_error_temporary" qtlid="488250">Une erreur temporaire est survenue lors de la récupération des données des variables d'environnement. Merci de réessayer plus tard.</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_list_error" qtlid="488263">Une erreur est survenue lors de la récupération des données des variables d'environnement :</translation>
+   <translation id="hosting_tab_RUNTIMES_add" qtlid="488302">Ajouter un moteur d'exécution</translation>
+   <translation id="hosting_tab_RUNTIMES_quota_reached" qtlid="488315">Nombre maximum de moteurs d'exécution atteint pour votre offre</translation>
+   <translation id="hosting_tab_ENVVARS_add" qtlid="488328">Ajouter une variable d'environnement</translation>
+   <translation id="hosting_tab_ENVVARS_quota_reached" qtlid="488341">Nombre maximum de variables d'environnement atteint pour votre offre</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_list" qtlid="488276">Liste des moteurs d'exécutions disponibles</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_list" qtlid="488289">Liste des variables d'environnements actives</translation>
+   <translation id="hosting_tab_RUNTIMES_error" qtlid="243832">An error occurred while retrieving the details:</translation>
+   <translation id="hosting_tab_RUNTIMES_empty" qtlid="488354">La liste de configuration est vide.</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_add" qtlid="488302">Ajouter un moteur d'exécution</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_quota_reached" qtlid="488315">Nombre maximum de moteurs d'exécution atteint pour votre offre</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_add" qtlid="488328">Ajouter une variable d'environnement</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_quota_reached" qtlid="488341">Nombre maximum de variables d'environnement atteint pour votre offre</translation>
+   <translation id="hosting_tab_RUNTIMES_actions" qtlid="72809">Actions</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_name" qtlid="488367">Nom de la configuration</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_language" qtlid="488107">Moteur d'exécution</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_default" qtlid="488380">Choix par défaut</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_number_multisite" qtlid="488393">Nombre de multisites liés</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_error" qtlid="243832">An error occurred while retrieving the details:</translation>
-   <translation id="hosting_tab_FRAMEWORK_empty" qtlid="488354">La liste de configuration est vide.</translation>
+   <translation id="hosting_tab_RUNTIMES_table_popover_modify" qtlid="37875">Modify</translation>
+   <translation id="hosting_tab_RUNTIMES_table_popover_delete" qtlid="2414">Delete</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_actions" qtlid="72809">Actions</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_table_header_name" qtlid="488367">Nom de la configuration</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_table_header_language" qtlid="488107">Moteur d'exécution</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_table_header_default" qtlid="488380">Choix par défaut</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_table_header_number_multisite" qtlid="488393">Nombre de multisites liés</translation>
+   <translation id="hosting_tab_RUNTIMES_create_title" qtlid="488302">Ajouter un moteur d'exécution</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_title" qtlid="488406">Modifier un moteur d'exécution</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_title" qtlid="488419">Supprimer un moteur d'exécution</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_step1_question" qtlid="488432">Êtes-vous sûr de vouloir supprimer ce moteur d'exécution ?</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_table_popover_modify" qtlid="37875">Modify</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_table_popover_delete" qtlid="2414">Delete</translation>
+   <translation id="hosting_tab_RUNTIMES_save_success" qtlid="488445">Ce nouveau moteur d'exécution sera disponible d'ici quelques minutes.</translation>
+   <translation id="hosting_tab_RUNTIMES_save_error" qtlid="488458">Une erreur est survenue lors de la création d'un moteur d'exécution :</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_success" qtlid="488471">Le moteur d'exécution est en cours de modification.</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_error" qtlid="488484">Une erreur est survenue lors de la modification du moteur d'exécution :</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_success" qtlid="488497">Ce moteur d'exécution est en cours de suppression.</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_error" qtlid="488510">Une erreur est survenue lors de la suppression du moteur d'exécution :</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_information" qtlid="488523">Attention, cette action est irréversible et entraînera la perte de toutes les données.</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_create_title" qtlid="488302">Ajouter un moteur d'exécution</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_edit_title" qtlid="488406">Modifier un moteur d'exécution</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_delete_title" qtlid="488419">Supprimer un moteur d'exécution</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_delete_step1_question" qtlid="488432">Êtes-vous sûr de vouloir supprimer ce moteur d'exécution ?</translation>
+   <translation id="hosting_tab_RUNTIMES_label_name" qtlid="415727">Customized name</translation>
+   <translation id="hosting_tab_RUNTIMES_label_type" qtlid="488107">Moteur d'exécution</translation>
+   <translation id="hosting_tab_RUNTIMES_label_publicDir" qtlid="488536">Chemin d'accès au répertoire public</translation>
+   <translation id="hosting_tab_RUNTIMES_label_appEnv" qtlid="488549">Environnement de l'application</translation>
+   <translation id="hosting_tab_RUNTIMES_label_appBootstrap" qtlid="488562">Script de lancement de l'application</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_save_success" qtlid="488445">Ce nouveau moteur d'exécution sera disponible d'ici quelques minutes.</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_save_error" qtlid="488458">Une erreur est survenue lors de la création d'un moteur d'exécution :</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_edit_success" qtlid="488471">Le moteur d'exécution est en cours de modification.</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_edit_error" qtlid="488484">Une erreur est survenue lors de la modification du moteur d'exécution :</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_delete_success" qtlid="488497">Ce moteur d'exécution est en cours de suppression.</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_delete_error" qtlid="488510">Une erreur est survenue lors de la suppression du moteur d'exécution :</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_delete_information" qtlid="488523">Attention, cette action est irréversible et entraînera la perte de toutes les données.</translation>
+   <translation id="hosting_tab_RUNTIMES_publicDir_help" qtlid="488575">Renseignez le chemin d'accès au répertoire public nécessaire au lancement de votre serveur Node.js.</translation>
+   <translation id="hosting_tab_RUNTIMES_appEnv_help" qtlid="488588">Renseignez l'environnement sous lequel l'application Node.js doit être lancée (production, développement, test, …).</translation>
+   <translation id="hosting_tab_RUNTIMES_appBootstrap_help" qtlid="488601">Renseignez le nom du script servant à lancer depuis le binaire Node.js.</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_label_name" qtlid="415727">Customized name</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_label_type" qtlid="488107">Moteur d'exécution</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_label_publicDir" qtlid="488536">Chemin d'accès au répertoire public</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_label_appEnv" qtlid="488549">Environnement de l'application</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_label_appBootstrap" qtlid="488562">Script de lancement de l'application</translation>
+   <translation id="hosting_tab_RUNTIMES_configure_envvar" qtlid="488614">Configurer les variables d'environnement</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_publicDir_help" qtlid="488575">Renseignez le chemin d'accès au répertoire public nécessaire au lancement de votre serveur Node.js.</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_appEnv_help" qtlid="488588">Renseignez l'environnement sous lequel l'application Node.js doit être lancée (production, développement, test, …).</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_appBootstrap_help" qtlid="488601">Renseignez le nom du script servant à lancer depuis le binaire Node.js.</translation>
+   <translation id="hosting_tab_ENVVARS_actions" qtlid="72809">Actions</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_key" qtlid="488627">Nom de la variable</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_type" qtlid="488640">Type de variable</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_value" qtlid="47548">Value</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_status" qtlid="33790">State</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_runtime_configure_envvar" qtlid="488614">Configurer les variables d'environnement</translation>
+   <translation id="hosting_tab_ENVVARS_table_popover_modify" qtlid="37875">Modify</translation>
+   <translation id="hosting_tab_ENVVARS_table_popover_delete" qtlid="2414">Delete</translation>
+   <translation id="hosting_tab_RUNTIMES_table_popover_set_default" qtlid="488380">Choix par défaut</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_envvar_actions" qtlid="72809">Actions</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_table_header_key" qtlid="488627">Nom de la variable</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_table_header_type" qtlid="488640">Type de variable</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_table_header_value" qtlid="47548">Value</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_table_header_status" qtlid="33790">State</translation>
+   <translation id="hosting_tab_ENVVARS_create_title" qtlid="488328">Ajouter une variable d'environnement</translation>
+   <translation id="hosting_tab_ENVVARS_edit_title" qtlid="488653">Modifier une variable d'environnement</translation>
+   <translation id="hosting_tab_ENVVARS_delete_title" qtlid="488666">Supprimer une variable d'environnement</translation>
+   <translation id="hosting_tab_ENVVARS_delete_step1_question" qtlid="488679">Êtes-vous sûr de vouloir supprimer cette variable d'environnement ?</translation>
+   <translation id="hosting_tab_ENVVARS_delete_information" qtlid="488523">Attention, cette action est irréversible et entraînera la perte de toutes les données.</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_title" qtlid="488692">Mettre un moteur d'exécution par défaut</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_step1_question" qtlid="488705">Êtes-vous sûr de vouloir de choisir ce moteur d'exécution par défaut ?</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_information" qtlid="488718">Attention, après cela, tous vos multisites seront par défaut créés sur ce moteur. Cependant, vous aurez toujours le choix de modifier cela plus tard.</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_envvar_table_popover_modify" qtlid="37875">Modify</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_table_popover_delete" qtlid="2414">Delete</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_table_popover_set_default" qtlid="488380">Choix par défaut</translation>
+   <translation id="hosting_tab_ENVVARS_save_success" qtlid="488731">La nouvelle variable d'environnement sera disponible d'ici quelques minutes.</translation>
+   <translation id="hosting_tab_ENVVARS_save_error" qtlid="488744">Une erreur est survenue lors de la création d'une variable d'environnement :</translation>
+   <translation id="hosting_tab_ENVVARS_edit_success" qtlid="488757">La variable d'environnement est en cours de modification.</translation>
+   <translation id="hosting_tab_ENVVARS_edit_error" qtlid="488770">Une erreur est survenue lors de la modification de la variable d'environnement :</translation>
+   <translation id="hosting_tab_ENVVARS_delete_success" qtlid="488783">La variable d'environnement est en cours de suppression.</translation>
+   <translation id="hosting_tab_ENVVARS_delete_error" qtlid="488796">Une erreur est survenue lors de la suppression de la variable d'environnement :</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_success" qtlid="488809">Ce moteur d'exécution sera disponible par défaut d'ici quelques instants.</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_error" qtlid="488822">Une erreur est survenue lors de la mise en place par défaut de ce moteur d'exécution :</translation>
 
-   <translation id="hosting_tab_FRAMEWORK_envvar_create_title" qtlid="488328">Ajouter une variable d'environnement</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_edit_title" qtlid="488653">Modifier une variable d'environnement</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_delete_title" qtlid="488666">Supprimer une variable d'environnement</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_delete_step1_question" qtlid="488679">Êtes-vous sûr de vouloir supprimer cette variable d'environnement ?</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_delete_information" qtlid="488523">Attention, cette action est irréversible et entraînera la perte de toutes les données.</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_set_default_title" qtlid="488692">Mettre un moteur d'exécution par défaut</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_set_default_step1_question" qtlid="488705">Êtes-vous sûr de vouloir de choisir ce moteur d'exécution par défaut ?</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_set_default_information" qtlid="488718">Attention, après cela, tous vos multisites seront par défaut créés sur ce moteur. Cependant, vous aurez toujours le choix de modifier cela plus tard.</translation>
-
-   <translation id="hosting_tab_FRAMEWORK_envvar_save_success" qtlid="488731">La nouvelle variable d'environnement sera disponible d'ici quelques minutes.</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_save_error" qtlid="488744">Une erreur est survenue lors de la création d'une variable d'environnement :</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_edit_success" qtlid="488757">La variable d'environnement est en cours de modification.</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_edit_error" qtlid="488770">Une erreur est survenue lors de la modification de la variable d'environnement :</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_delete_success" qtlid="488783">La variable d'environnement est en cours de suppression.</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_delete_error" qtlid="488796">Une erreur est survenue lors de la suppression de la variable d'environnement :</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_set_default_success" qtlid="488809">Ce moteur d'exécution sera disponible par défaut d'ici quelques instants.</translation>
-   <translation id="hosting_tab_FRAMEWORK_runtime_set_default_error" qtlid="488822">Une erreur est survenue lors de la mise en place par défaut de ce moteur d'exécution :</translation>
-
-   <translation id="hosting_tab_FRAMEWORK_envvar_label_key" qtlid="3818">Name</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_label_error_required" qtlid="459430">Ce champ est requis.</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_label_error_pattern" qtlid="488835">Le nom de la variable ne peut pas contenir d'espaces.</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_label_type" qtlid="488640">Type de variable</translation>
-   <translation id="hosting_tab_FRAMEWORK_envvar_label_value" qtlid="47548">Value</translation>
+   <translation id="hosting_tab_ENVVARS_label_key" qtlid="3818">Name</translation>
+   <translation id="hosting_tab_ENVVARS_label_error_required" qtlid="459430">Ce champ est requis.</translation>
+   <translation id="hosting_tab_ENVVARS_label_error_pattern" qtlid="488835">Le nom de la variable ne peut pas contenir d'espaces.</translation>
+   <translation id="hosting_tab_ENVVARS_label_type" qtlid="488640">Type de variable</translation>
+   <translation id="hosting_tab_ENVVARS_label_value" qtlid="47548">Value</translation>
 
 
    <translation id="hosting_tab_TASK" qtlid="201172">Ongoing tasks </translation>
@@ -1419,7 +1416,6 @@
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_fail" qtlid="268536">An error occured when a user modification was requested. </translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_success" qtlid="268549">The user is about to be changed.</translation>
 
-   <translation id="hosting_tab_menu_framework" qtlid="488991">Moteurs d'exécution</translation>
    <translation id="hosting_tab_menu_crons" qtlid="270332">Scheduled tasks - Cron</translation>
    <translation id="hosting_tab_menu_emails" qtlid="489004">E-mails et mailing-lists</translation>
    <translation id="hosting_tab_menu_contacts" qtlid="270358">Administrative, technical and billing</translation>

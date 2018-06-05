@@ -1,12 +1,12 @@
 angular.module("App").controller(
-    "controllers.Hosting.Framework.Envvar.edit",
-    class HostingFrameworkEnvvarEditCtrl {
-        constructor ($scope, $stateParams, Alerter, HostingFrameworkEnvvar, translator) {
+    "controllers.Hosting.Envvars.edit",
+    class HostingEnvvarsEditCtrl {
+        constructor ($scope, $stateParams, Alerter, HostingEnvvars, translator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
 
             this.Alerter = Alerter;
-            this.HostingFrameworkEnvvar = HostingFrameworkEnvvar;
+            this.HostingEnvvars = HostingEnvvars;
             this.translator = translator;
         }
 
@@ -22,12 +22,12 @@ angular.module("App").controller(
         }
 
         edit () {
-            return this.HostingFrameworkEnvvar.edit(this.$stateParams.productId, this.entryToEdit.key, this.entryToEdit)
+            return this.HostingEnvvars.edit(this.$stateParams.productId, this.entryToEdit.key, this.entryToEdit)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_tab_FRAMEWORK_envvar_edit_success"), this.$scope.alerts.main);
+                    this.Alerter.success(this.$scope.tr("hosting_tab_ENVVARS_edit_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_envvar_edit_error") + err.message, this.$scope.alerts.main);
+                    this.Alerter.error(this.$scope.tr("hosting_tab_ENVVARS_edit_error") + err.message, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.$scope.resetAction();

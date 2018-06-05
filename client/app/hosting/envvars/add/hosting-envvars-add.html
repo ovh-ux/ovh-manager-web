@@ -1,29 +1,27 @@
-<div data-ng-controller="controllers.Hosting.Framework.Envvar.edit as ctrl">
+<div data-ng-controller="HostingEnvvarsCreateCtrl as ctrl">
     <div
         data-wizard
         data-wizard-on-cancel="resetAction"
-        data-wizard-on-finish="edit"
-        data-wizard-title="i18n.hosting_tab_FRAMEWORK_envvar_edit_title">
+        data-wizard-on-finish="create"
+        data-wizard-title="i18n.hosting_tab_ENVVARS_create_title">
 
         <div
             data-wizard-step
             data-wizard-step-valid="isValid()">
-
             <form
                 class="form-horizontal"
-                name="ctrl.editEnvvarForm">
+                name="ctrl.addEnvvarForm">
                 <p>
                     <small class="text-danger">*</small>
                     <small data-i18n-static="required_fields"></small>
                 </p>
 
-                <div
-                    class="form-group"
-                    data-ng-class="{ 'has-error': ctrl.editEnvvarForm.envvarKey.$dirty && ctrl.editEnvvarForm.envvarKey.$invalid }">
+                <div class="form-group"
+                     data-ng-class="{ 'has-error': ctrl.addEnvvarForm.envvarKey.$dirty && ctrl.addEnvvarForm.envvarKey.$invalid }">
                     <label
                         class="control-label col-md-4 required"
                         for="envvarKey"
-                        data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_key"></label>
+                        data-i18n-static="hosting_tab_ENVVARS_label_key"></label>
 
                     <div class="col-md-6">
                         <input
@@ -31,19 +29,19 @@
                             class="form-control"
                             id="envvarKey"
                             name="envvarKey"
-                            data-ng-model="ctrl.entryToEdit.key"
+                            data-ng-model="ctrl.entryToCreate.key"
                             data-ng-pattern="/^\w+$/"
                             required>
                         <small
                             class="help-block"
                             role="alert"
-                            data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_error_required"
-                            data-ng-if="ctrl.editEnvvarForm.envvarKey.$error.required"></small>
+                            data-i18n-static="hosting_tab_ENVVARS_label_error_required"
+                            data-ng-if="ctrl.addEnvvarForm.envvarKey.$error.required"></small>
                         <small
                             class="help-block"
                             role="alert"
-                            data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_error_pattern"
-                            data-ng-if="ctrl.editEnvvarForm.envvarKey.$error.pattern"></small>
+                            data-i18n-static="hosting_tab_ENVVARS_label_error_pattern"
+                            data-ng-if="ctrl.addEnvvarForm.envvarKey.$error.pattern"></small>
                     </div>
                 </div>
 
@@ -51,7 +49,7 @@
                     <label
                         class="control-label col-md-4 required"
                         for="envvarType"
-                        data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_type"></label>
+                        data-i18n-static="hosting_tab_ENVVARS_label_type"></label>
 
                     <div class="col-md-8">
                         <div class="oui-select oui-select_inline mb-0">
@@ -60,8 +58,8 @@
                                 id="envvarType"
                                 name="envvarType"
                                 required
-                                data-ng-change="ctrl.entryToEdit.value = null"
-                                data-ng-model="ctrl.entryToEdit.type">
+                                data-ng-change="ctrl.entryToCreate.value = null"
+                                data-ng-model="ctrl.entryToCreate.type">
                                 <option>string</option>
                                 <option>integer</option>
                                 <option>password</option>
@@ -76,41 +74,41 @@
                     <label
                         class="control-label col-md-4 required"
                         for="envvarValue"
-                        data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_value"></label>
+                        data-i18n-static="hosting_tab_ENVVARS_label_value"></label>
 
                     <div class="col-md-6">
                         <input
                             type="number"
-                            data-ng-if="ctrl.entryToEdit.type === 'integer'"
+                            data-ng-if="ctrl.entryToCreate.type === 'integer'"
                             class="form-control"
                             id="envvarValue"
                             name="envvarValue"
                             required
-                            data-ng-model="+ctrl.entryToEdit.value">
-                            
+                            data-ng-model="ctrl.entryToCreate.value">
+
                         <input
                             type="password"
-                            data-ng-if="ctrl.entryToEdit.type === 'password'"
+                            data-ng-if="ctrl.entryToCreate.type === 'password'"
                             class="form-control"
                             id="envvarValue"
                             name="envvarValue"
                             required
-                            data-ng-model="ctrl.entryToEdit.value">
+                            data-ng-model="ctrl.entryToCreate.value">
 
                         <input
                             type="text"
-                            data-ng-if="ctrl.entryToEdit.type === 'string'"
+                            data-ng-if="ctrl.entryToCreate.type === 'string'"
                             class="form-control"
                             id="envvarValue"
                             name="envvarValue"
                             required
-                            data-ng-model="ctrl.entryToEdit.value">
+                            data-ng-model="ctrl.entryToCreate.value">
                         
                         <small
                             class="help-block"
                             role="alert"
-                            data-i18n-static="hosting_tab_FRAMEWORK_envvar_label_error_required"
-                            data-ng-if="ctrl.editEnvvarForm.envvarValue.$error.required"></small>
+                            data-i18n-static="hosting_tab_ENVVARS_label_error_required"
+                            data-ng-if="ctrl.addEnvvarForm.envvarValue.$error.required"></small>
                     </div>
                 </div>
             </form>

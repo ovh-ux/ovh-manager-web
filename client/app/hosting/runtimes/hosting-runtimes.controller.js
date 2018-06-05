@@ -1,17 +1,17 @@
 angular.module("App").controller(
-    "HostingFrameworkRuntimeCtrl",
-    class HostingFrameworkRuntimeCtrl {
+    "HostingRuntimesCtrl",
+    class HostingRuntimesCtrl {
 
         /**
-         * @constructs HostingFrameworkRuntimeCtrl
+         * @constructs HostingRuntimesCtrl
          * @param $scope
          * @param $stateParams
          * @param $timeout
          * @param Alerter
          * @param Hosting
-         * @param HostingFrameworkRuntime
+         * @param HostingRuntimes
          */
-        constructor ($q, $scope, $stateParams, $timeout, Alerter, Hosting, HostingFrameworkRuntime, translator) {
+        constructor ($q, $scope, $stateParams, $timeout, Alerter, Hosting, HostingRuntimes, translator) {
             this.$q = $q;
             this.$scope = $scope;
             this.$stateParams = $stateParams;
@@ -19,12 +19,12 @@ angular.module("App").controller(
 
             this.Alerter = Alerter;
             this.Hosting = Hosting;
-            this.HostingFrameworkRuntime = HostingFrameworkRuntime;
+            this.HostingRuntimes = HostingRuntimes;
             this.translator = translator;
         }
 
         /**
-         * Initialize HostingFrameworkRuntimeCtrl
+         * Initialize HostingRuntimesCtrl
          */
         $onInit () {
             this.hasResult = false;
@@ -32,7 +32,7 @@ angular.module("App").controller(
             this.runtimes = [];
             this.maxRuntimes = 0;
 
-            this.$scope.$on(this.Hosting.events.tabFrameworkRuntimesRefresh, () => this.getIds());
+            this.$scope.$on(this.Hosting.events.tabRuntimesRefresh, () => this.getIds());
 
             return this.getIds()
                 .finally(() => this.loadCapabilities())
@@ -45,21 +45,21 @@ angular.module("App").controller(
          * Load all runtimes ids from API
          */
         getIds () {
-            return this.HostingFrameworkRuntime.list(this.$stateParams.productId)
+            return this.HostingRuntimes.list(this.$stateParams.productId)
                 .then((ids) => {
                     if (!_(ids).isArray()) {
-                        throw this.translator.tr("hosting_tab_FRAMEWORK_runtime_list_error");
+                        throw this.translator.tr("hosting_tab_RUNTIMES_list_error");
                     }
 
                     this.runtimes = ids.sort().map((id) => ({ id }));
                 })
-                .then(() => this.$q.all(this.runtimes.map((row) => this.HostingFrameworkRuntime
+                .then(() => this.$q.all(this.runtimes.map((row) => this.HostingRuntimes
                     .get(this.$stateParams.productId, row.id)
                     .then((data) => {
                         const runtime = _(data).clone();
                         runtime.countAttachedDomains = 0;
 
-                        return this.HostingFrameworkRuntime
+                        return this.HostingRuntimes
                             .getAttachedDomains(this.$stateParams.productId, runtime.id)
                             .then((attachedDomains) => {
                                 runtime.loaded = true;
@@ -76,7 +76,7 @@ angular.module("App").controller(
                     this.runtimes = runtimes;
                 })
                 .catch((err) => {
-                    this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_runtime_list_error") + err.message, this.$scope.alerts.main);
+                    this.Alerter.error(this.$scope.tr("hosting_tab_RUNTIMES_list_error") + err.message, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.hasResult = _(this.runtimes).isArray() && !_(this.runtimes).isEmpty();
@@ -97,7 +97,7 @@ angular.module("App").controller(
                     this.maxRuntimes = capabilities.runtimes;
                 })
                 .catch((err) => {
-                    this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_error") + err.message, this.$scope.alerts.main);
+                    this.Alerter.error(this.$scope.tr("hosting_tab_RUNTIMES_error") + err.message, this.$scope.alerts.main);
                 });
         }
 

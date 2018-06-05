@@ -1,6 +1,6 @@
 angular
     .module("services")
-    .service("HostingFrameworkRuntime", class HostingFrameworkRuntime {
+    .service("HostingRuntimes", class HostingRuntimes {
         constructor ($q, OvhHttp, Hosting) {
             this.$q = $q;
 
