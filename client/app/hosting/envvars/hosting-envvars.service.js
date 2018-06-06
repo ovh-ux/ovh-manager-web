@@ -1,6 +1,6 @@
 angular
     .module("services")
-    .service("HostingFrameworkEnvvar", class HostingFrameworkEnvvar {
+    .service("HostingEnvvars", class HostingEnvvars {
         constructor ($q, Hosting, OvhHttp) {
             this.$q = $q;
 

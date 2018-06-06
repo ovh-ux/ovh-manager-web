@@ -26,8 +26,8 @@
                     tabDomainsRefresh: "hosting.tabs.domains.refresh",
                     tabDatabasesRefresh: "hosting.tabs.databases.refresh",
                     tabDatabasesCreation: "hosting.tabs.databases.creation",
-                    tabFrameworkRuntimesRefresh: "hosting.tabs.framework.runtimes.refresh",
-                    tabFrameworkEnvvarsRefresh: "hosting.tabs.framework.envvars.refresh",
+                    tabRuntimesRefresh: "hosting.tabs.runtimes.refresh",
+                    tabEnvvarsRefresh: "hosting.tabs.envvars.refresh",
                     tasksChanged: "hosting.tabs.tasks.refresh",
                     tabFtpRefresh: "hosting.tabs.ftp.refresh"
                 };
@@ -67,14 +67,14 @@
              * Broadcast reset runtimes event
              */
             resetRuntimes () {
-                this.$rootScope.$broadcast(this.events.tabFrameworkRuntimesRefresh);
+                this.$rootScope.$broadcast(this.events.tabRuntimesRefresh);
             }
 
             /**
              * Broadcast reset envvars event
              */
             resetEnvvars () {
-                this.$rootScope.$broadcast(this.events.tabFrameworkEnvvarsRefresh);
+                this.$rootScope.$broadcast(this.events.tabEnvvarsRefresh);
             }
 
             /* -------------------------MODELS-------------------------*/

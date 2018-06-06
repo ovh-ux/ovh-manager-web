@@ -1,4 +1,4 @@
-angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParams, HostingDomain, Hosting, HostingFrameworkRuntime, Alerter, Domain, User, $q) => {
+angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParams, HostingDomain, Hosting, HostingRuntimes, Alerter, Domain, User, $q) => {
     "use strict";
 
     $scope.selectedOptions = {};
@@ -101,13 +101,13 @@ angular.module("App").controller("HostingDomainModifyCtrl", ($scope, $stateParam
 
                 if (hosting.isCloudWeb) {
                     // Load runtimes configuration
-                    return HostingFrameworkRuntime
+                    return HostingRuntimes
                         .list($scope.hosting.serviceName)
                         .then((runtimes) => {
                             $scope.loading.runtimes = true;
 
                             const promises = _(runtimes)
-                                .map((runtimeId) => HostingFrameworkRuntime
+                                .map((runtimeId) => HostingRuntimes
                                     .get($scope.hosting.serviceName, runtimeId)
                                     .then((runtime) => {
                                         $scope.model.runtimes.push(runtime);

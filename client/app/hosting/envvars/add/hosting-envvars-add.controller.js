@@ -1,12 +1,12 @@
 angular.module("App").controller(
-    "HostingFrameworkEnvvarCreateCtrl",
-    class HostingFrameworkEnvvarCreateCtrl {
-        constructor ($scope, $stateParams, Alerter, HostingFrameworkEnvvar, translator) {
+    "HostingEnvvarsCreateCtrl",
+    class HostingEnvvarsCreateCtrl {
+        constructor ($scope, $stateParams, Alerter, HostingEnvvars, translator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
 
             this.Alerter = Alerter;
-            this.HostingFrameworkEnvvar = HostingFrameworkEnvvar;
+            this.HostingEnvvars = HostingEnvvars;
             this.translator = translator;
         }
 
@@ -26,12 +26,12 @@ angular.module("App").controller(
         }
 
         create () {
-            this.HostingFrameworkEnvvar.create(this.$stateParams.productId, this.entryToCreate)
+            this.HostingEnvvars.create(this.$stateParams.productId, this.entryToCreate)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_tab_FRAMEWORK_envvar_save_success"), this.$scope.alerts.main);
+                    this.Alerter.success(this.$scope.tr("hosting_tab_ENVVARS_save_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_envvar_save_error") + err.message, this.$scope.alerts.main);
+                    this.Alerter.error(this.$scope.tr("hosting_tab_ENVVARS_save_error") + err.message, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.$scope.resetAction();

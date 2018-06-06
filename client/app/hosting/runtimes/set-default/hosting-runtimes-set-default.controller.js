@@ -1,12 +1,12 @@
 angular
     .module("App")
-    .controller("controllers.Hosting.Framework.Runtime.setDefault", class HostingFrameworkRuntimeSetDefaultCtrl {
-        constructor ($scope, $stateParams, Alerter, HostingFrameworkRuntime, translator) {
+    .controller("controllers.Hosting.Runtimes.setDefault", class HostingRuntimesSetDefaultCtrl {
+        constructor ($scope, $stateParams, Alerter, HostingRuntimes, translator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
 
             this.Alerter = Alerter;
-            this.HostingFrameworkRuntime = HostingFrameworkRuntime;
+            this.HostingRuntimes = HostingRuntimes;
             this.translator = translator;
         }
 
@@ -18,13 +18,13 @@ angular
         }
 
         setDefault () {
-            return this.HostingFrameworkRuntime
+            return this.HostingRuntimes
                 .setDefault(this.$stateParams.productId, this.entryToSetup.id)
                 .then(() => {
-                    this.Alerter.success(this.translator.tr("hosting_tab_FRAMEWORK_runtime_set_default_success"), this.$scope.alerts.main);
+                    this.Alerter.success(this.translator.tr("hosting_tab_RUNTIMES_set_default_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.error(this.translator.tr("hosting_tab_FRAMEWORK_runtime_set_default_error") + err.message, this.$scope.alerts.main);
+                    this.Alerter.error(this.translator.tr("hosting_tab_RUNTIMES_set_default_error") + err.message, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.$scope.resetAction();

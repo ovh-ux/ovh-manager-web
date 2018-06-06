@@ -1,4 +1,4 @@
-angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParams, $rootScope, Hosting, HostingDomain, HostingFrameworkRuntime, Alerter, $q, Validator, COMPOSED_TLD) => {
+angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParams, $rootScope, Hosting, HostingDomain, HostingRuntimes, Alerter, $q, Validator, COMPOSED_TLD) => {
     "use strict";
 
     $scope.model = {
@@ -248,13 +248,13 @@ angular.module("App").controller("HostingDomainAttachCtrl", ($scope, $stateParam
 
                 if (hosting.isCloudWeb) {
                     // Load runtimes configuration
-                    HostingFrameworkRuntime.list($scope.hosting.serviceName)
+                    HostingRuntimes.list($scope.hosting.serviceName)
                         .then((runtimes) => {
                             $scope.loaders.runtimes = true;
 
                             const promises = [];
                             _.forEach(runtimes, (runtimeId) => {
-                                promises.push(HostingFrameworkRuntime.get($scope.hosting.serviceName, runtimeId)
+                                promises.push(HostingRuntimes.get($scope.hosting.serviceName, runtimeId)
                                     .then((runtime) => {
                                         $scope.model.runtimes.push(runtime);
                                         if (runtime.isDefault) {

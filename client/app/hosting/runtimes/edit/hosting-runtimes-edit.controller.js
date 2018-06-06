@@ -1,12 +1,12 @@
 angular
     .module("App")
-    .controller("controllers.Hosting.Framework.Runtime.edit", class HostingFrameworkRuntimeEditCtrl {
-        constructor ($scope, $stateParams, Alerter, HostingFrameworkRuntime, translator) {
+    .controller("controllers.Hosting.Runtimes.edit", class HostingRuntimesEditCtrl {
+        constructor ($scope, $stateParams, Alerter, HostingRuntimes, translator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
 
             this.Alerter = Alerter;
-            this.HostingFrameworkRuntime = HostingFrameworkRuntime;
+            this.HostingRuntimes = HostingRuntimes;
             this.translator = translator;
         }
 
@@ -23,13 +23,13 @@ angular
         }
 
         fetchAvailableTypes () {
-            return this.HostingFrameworkRuntime
+            return this.HostingRuntimes
                 .getAvailableTypes(this.$stateParams.productId)
                 .then((types) => {
                     this.availableTypes = types;
                 })
                 .catch(() => {
-                    this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_runtime_list_error"), this.$scope.alerts.main);
+                    this.Alerter.error(this.$scope.tr("hosting_tab_RUNTIMES_list_error"), this.$scope.alerts.main);
 
                     this.$scope.resetAction();
                 })
@@ -47,13 +47,13 @@ angular
         }
 
         edit () {
-            return this.HostingFrameworkRuntime
+            return this.HostingRuntimes
                 .edit(this.$stateParams.productId, this.entryToEdit.id, this.entryToEdit)
                 .then(() => {
-                    this.Alerter.success(this.$scope.tr("hosting_tab_FRAMEWORK_runtime_edit_success"), this.$scope.alerts.main);
+                    this.Alerter.success(this.$scope.tr("hosting_tab_RUNTIMES_edit_success"), this.$scope.alerts.main);
                 })
                 .catch((err) => {
-                    this.Alerter.error(this.$scope.tr("hosting_tab_FRAMEWORK_runtime_edit_error") + err.message, this.$scope.alerts.main);
+                    this.Alerter.error(this.$scope.tr("hosting_tab_RUNTIMES_edit_error") + err.message, this.$scope.alerts.main);
                 })
                 .finally(() => {
                     this.$scope.resetAction();
