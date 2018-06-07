@@ -484,6 +484,9 @@
         </div>
     </div>
 
-    <h2 class="mt-5" data-i18n-static="hosting_dashboard_hosting_activities"></h2>
-    <div data-ng-include="'hosting/statistics/STATISTICS.html'"></div>
+    <div class="mt-5"
+         data-ng-if="!hosting.isCloudWeb">
+        <h2 data-i18n-static="hosting_dashboard_hosting_activities"></h2>
+        <div data-ng-include="'hosting/statistics/STATISTICS.html'"></div>
+    </div>
 </div>
