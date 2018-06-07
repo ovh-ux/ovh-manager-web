@@ -1,10 +1,11 @@
 angular.module("App").controller(
     "HostingUpgradeOfferCtrl",
     class HostingUpgradeOfferCtrl {
-        constructor ($scope, $rootScope, $stateParams, Alerter, atInternet, Hosting, User) {
+        constructor ($scope, $rootScope, $stateParams, $window, Alerter, atInternet, Hosting, User) {
             this.$scope = $scope;
             this.$rootScope = $rootScope;
             this.$stateParams = $stateParams;
+            this.$window = $window;
             this.Alerter = Alerter;
             this.atInternet = atInternet;
             this.Hosting = Hosting;
@@ -104,13 +105,14 @@ angular.module("App").controller(
                 .then((order) => {
                     this.Alerter.success(this.$scope.tr("hosting_order_upgrade_success", [order.url, order.orderId]), this.$scope.alerts.main);
                     this.atInternet.trackOrder({
-                        name: `[hosting]${this.model.capacity}`,
-                        page: "web::hosting",
+                        name: `[hosting]::${this.model.capacity}[${this.model.capacity}]`,
+                        page: "web::payment-pending",
                         orderId: order.orderId,
                         priceTaxFree: order.prices.withoutTax.value,
+                        price: order.prices.withTax.value,
                         status: 1
                     });
-                    window.open(order.url, "_blank");
+                    this.$window.open(order.url, "_blank");
                 })
                 .catch((err) => {
                     this.Alerter.alertFromSWS(this.$scope.tr("hosting_order_upgrade_error"), err, this.$scope.alerts.main);

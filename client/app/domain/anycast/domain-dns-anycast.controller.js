@@ -1,9 +1,10 @@
 angular.module("App").controller(
     "DomainDnsAnycastActivateCtrl",
     class DomainDnsAnycastActivateCtrl {
-        constructor ($scope, $stateParams, Alerter, atInternet, Domain) {
+        constructor ($scope, $stateParams, $window, Alerter, atInternet, Domain) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
+            this.$window = $window;
             this.Alerter = Alerter;
             this.atInternet = atInternet;
             this.Domain = Domain;
@@ -58,14 +59,15 @@ angular.module("App").controller(
         displayBC () {
             this.$scope.resetAction();
             this.atInternet.trackOrder({
-                name: `[domain]${this.optionName}`,
-                page: "web::domain::product",
+                name: `[domain]::${this.optionName}[${this.optionName}]`,
+                page: "web::payment-pending",
                 orderId: this.order.orderId,
                 priceTaxFree: this.order.prices.withoutTax.value,
+                price: this.order.prices.withTax.value,
                 status: 1
             });
             this.Alerter.success(this.$scope.tr("domain_order_dns_anycast_success", [this.url]), this.$scope.alerts.main);
-            window.open(this.url, "_blank");
+            this.$window.open(this.url, "_blank");
         }
     }
 );

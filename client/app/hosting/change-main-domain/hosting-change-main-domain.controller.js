@@ -159,10 +159,11 @@ angular.module("App").controller("HostingChangeMainDomainCtrl", ($scope, $rootSc
             })
             .then((order) => {
                 atInternet.trackOrder({
-                    name: "[hosting]change-main-domain",
+                    name: "[hosting]::change-main-domain[change-main-domain]",
                     page: "web::hosting",
                     orderId: order.orderId,
-                    priceTaxFree: order.prices.withoutTax.value
+                    priceTaxFree: order.prices.withoutTax.value,
+                    price: order.prices.withTax.value
                 });
                 Alerter.success($scope.tr("hosting_order_upgrade_success", [order.url, order.orderId]), $scope.alerts.main);
             })
