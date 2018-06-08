@@ -1,17 +1,25 @@
 angular
     .module("App")
     .controller("hostingGeneralInformationsCtrl", class HostingGeneralInformationsCtrl {
-        constructor ($scope, $stateParams, Alerter, hostingSSLCertificate, translator) {
+        constructor ($scope, $stateParams, Alerter, hostingSSLCertificate, HostingRuntimes, translator) {
             this.$scope = $scope;
             this.$stateParams = $stateParams;
 
             this.Alerter = Alerter;
             this.hostingSSLCertificate = hostingSSLCertificate;
             this.translator = translator;
+            this.HostingRuntimes = HostingRuntimes;
         }
 
         $onInit () {
             this.$scope.$on("hosting.ssl.reload", () => this.retrievingSSLCertificate());
+
+            this.defaultRuntime = null;
+            this.HostingRuntimes.getDefault(this.$stateParams.productId)
+                .then((runtime) => {
+                    console.log(runtime);
+                    this.defaultRuntime = runtime;
+                });
 
             return this.retrievingSSLCertificate();
         }
