@@ -17,8 +17,10 @@ angular
             this.defaultRuntime = null;
             this.HostingRuntimes.getDefault(this.$stateParams.productId)
                 .then((runtime) => {
-                    console.log(runtime);
                     this.defaultRuntime = runtime;
+                })
+                .catch(() => {
+                    this.defaultRuntime = { name: this.translator.tr("common_not_available") };
                 });
 
             return this.retrievingSSLCertificate();
