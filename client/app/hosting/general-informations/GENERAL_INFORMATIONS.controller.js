@@ -14,13 +14,17 @@ angular
         $onInit () {
             this.$scope.$on("hosting.ssl.reload", () => this.retrievingSSLCertificate());
 
+            this.loading = {
+                defaultRuntime: true
+            };
+
             this.defaultRuntime = null;
             this.HostingRuntimes.getDefault(this.$stateParams.productId)
                 .then((runtime) => {
                     this.defaultRuntime = runtime;
                 })
-                .catch(() => {
-                    this.defaultRuntime = { name: this.translator.tr("common_not_available") };
+                .finally(() => {
+                    this.loading.defaultRuntime = false;
                 });
 
             return this.retrievingSSLCertificate();
