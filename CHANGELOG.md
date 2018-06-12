@@ -1,3 +1,13 @@
+<a name="13.4.6"></a>
+## [13.4.6](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.5...v13.4.6) (2018-06-12)
+
+
+### Bug Fixes
+
+* chart now works better ([9c9d955](https://github.com/ovh-ux/ovh-manager-web/commit/9c9d955))
+
+
+
 <a name="13.4.5"></a>
 ## [13.4.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.4...v13.4.5) (2018-06-04)
 
