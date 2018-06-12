@@ -1,28 +1,28 @@
-angular.module("services").service(
-    "DomainsDnsSec",
-    class DomainsDnsSec {
-        /**
+angular.module('services').service(
+  'DomainsDnsSec',
+  class DomainsDnsSec {
+    /**
         * Constructor
          * @param OvhHttp
          */
-        constructor (OvhHttp) {
-            this.OvhHttp = OvhHttp;
-        }
+    constructor(OvhHttp) {
+      this.OvhHttp = OvhHttp;
+    }
 
-        /**
+    /**
          * Update DNSSEC state
          * @param newState
          * @param domains
          */
-        updateDnssecState (newState, domains) {
-            return this.OvhHttp.put("/sws/domains/dnssec", {
-                rootPath: "2api",
-                data: {
-                    domains,
-                    newState
-                },
-                broadcast: "domains.list.refresh"
-            });
-        }
+    updateDnssecState(newState, domains) {
+      return this.OvhHttp.put('/sws/domains/dnssec', {
+        rootPath: '2api',
+        data: {
+          domains,
+          newState,
+        },
+        broadcast: 'domains.list.refresh',
+      });
     }
+  },
 );

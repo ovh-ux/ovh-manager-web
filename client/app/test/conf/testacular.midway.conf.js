@@ -8,25 +8,25 @@ utilsDir = '../components/ovh-utils-angular';
 
 // list of files / patterns to load in the
 files = [
-    JASMINE,
-    JASMINE_ADAPTER,
-    //require
-    utilsDir + '/lib/jquery.js',
-    utilsDir + '/lib/jquery.cookie.js',
-    utilsDir + '/lib/jquery.i18n.properties-1.0.9.js',
-    utilsDir + '/lib/bootstrap/bootstrap.js',
-    utilsDir + '/lib/angular.js',
-    utilsDir + '/lib/ui-bootstrap-0.1.2-ovh.js.min',
-    utilsDir + '/bin/ovh-utils-angular-4.0.8.js',
-    utilsDir + '/core.js',
-    'js/app/services/services.js',
-    'js/app/services/**/**/*.js',
-    'js/app/directives/directives.js',
-    'js/app/directives/**/*/*.js',
-    'js/app/controllers/**/*/*.js',
-    'js/app/managerApp.js',
-    //midway conf
-    'test/midway/*Spec.js'
+  JASMINE,
+  JASMINE_ADAPTER,
+  // require
+  `${utilsDir}/lib/jquery.js`,
+  `${utilsDir}/lib/jquery.cookie.js`,
+  `${utilsDir}/lib/jquery.i18n.properties-1.0.9.js`,
+  `${utilsDir}/lib/bootstrap/bootstrap.js`,
+  `${utilsDir}/lib/angular.js`,
+  `${utilsDir}/lib/ui-bootstrap-0.1.2-ovh.js.min`,
+  `${utilsDir}/bin/ovh-utils-angular-4.0.8.js`,
+  `${utilsDir}/core.js`,
+  'js/app/services/services.js',
+  'js/app/services/**/**/*.js',
+  'js/app/directives/directives.js',
+  'js/app/directives/**/*/*.js',
+  'js/app/controllers/**/*/*.js',
+  'js/app/managerApp.js',
+  // midway conf
+  'test/midway/*Spec.js',
 ];
 
 

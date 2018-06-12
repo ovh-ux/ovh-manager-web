@@ -1,24 +1,22 @@
-(function () {
-    "use strict";
+{
+  function WebSiteSuccessController($stateParams, User, Hosting, Alerter) {
+    const self = this;
 
-    function WebSiteSuccessController ($stateParams, User, Hosting, Alerter) {
-        const self = this;
+    self.type = $stateParams.type;
+    self.domain = $stateParams.domain;
+    self.hostingName = $stateParams.hosting;
+    self.loading = self.type === 'classic';
 
-        self.type = $stateParams.type;
-        self.domain = $stateParams.domain;
-        self.hostingName = $stateParams.hosting;
-        self.loading = self.type === "classic";
+    function init() {
+      User.getUrlOf('guides').then((guides) => { self.guides = guides; });
 
-        function init () {
-            User.getUrlOf("guides").then((guides) => (self.guides = guides));
-
-            if (self.type === "classic") {
-                Hosting.getHosting(self.hostingName).then((hosting) => (self.hosting = hosting)).catch((err) => Alerter.alertFromSWS("website_success_text_classic_error", err, "website.success.alert")).finally(() => (self.loading = false));
-            }
-        }
-
-        init();
+      if (self.type === 'classic') {
+        Hosting.getHosting(self.hostingName).then((hosting) => { self.hosting = hosting; }).catch(err => Alerter.alertFromSWS('website_success_text_classic_error', err, 'website.success.alert')).finally(() => { self.loading = false; });
+      }
     }
 
-    angular.module("App").controller("WebSiteSuccessCtrl", WebSiteSuccessController);
-})();
+    init();
+  }
+
+  angular.module('App').controller('WebSiteSuccessCtrl', WebSiteSuccessController);
+}

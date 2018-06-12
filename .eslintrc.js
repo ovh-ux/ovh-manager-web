@@ -22,5 +22,9 @@ module.exports = {
         "filesize": true,
         "validator": true,
         "Raven": true
+    },
+    "rules": {
+        "no-param-reassign": 0,
+        "max-len": 0
     }
 };
