@@ -12,7 +12,17 @@ angular.module('App').controller(
       this.currentTab = this.$stateParams.tab;
 
       this.defaultTab = 'STATE';
-      this.$scope.tabs = ['STATE', 'USER', 'DATABASE', 'WHITELIST', 'CRON', 'METRICS', 'LOGS', 'CONFIGURATION', 'TASK'];
+      this.$scope.tabs = [
+        'STATE',
+        'USER',
+        'DATABASE',
+        'WHITELIST',
+        'CRON',
+        'METRICS',
+        'LOGS',
+        'CONFIGURATION',
+        'TASK',
+      ];
 
       if (_.get(this.$scope, 'database.serviceInfos.status') === 'expired') {
         this.$scope.tabs = ['STATE'];
@@ -26,12 +36,11 @@ angular.module('App').controller(
         _.pull(this.$scope.tabs, 'CONFIGURATION', 'METRICS');
       }
 
-      this.$scope.isConfigSet()
-        .then((res) => {
-          if (!res) {
-            _.pull(this.$scope.tabs, 'CONFIGURATION');
-          }
-        });
+      this.$scope.isConfigSet().then((res) => {
+        if (!res) {
+          _.pull(this.$scope.tabs, 'CONFIGURATION');
+        }
+      });
 
       if (!this.$scope.isDBaaS()) {
         _.pull(this.$scope.tabs, 'WHITELIST');
@@ -46,7 +55,10 @@ angular.module('App').controller(
         this.$location.search('tab', this.$scope.selectedTab);
       };
 
-      if (this.currentTab && this.$scope.tabs.indexOf(angular.uppercase(this.currentTab)) !== -1) {
+      if (
+        this.currentTab &&
+        this.$scope.tabs.indexOf(angular.uppercase(this.currentTab)) !== -1
+      ) {
         this.$scope.setSelectedTab(angular.uppercase(this.currentTab));
       } else {
         this.$scope.setSelectedTab(this.defaultTab);

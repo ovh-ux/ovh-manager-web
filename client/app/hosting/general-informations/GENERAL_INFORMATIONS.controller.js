@@ -1,7 +1,13 @@
-angular
-  .module('App')
-  .controller('hostingGeneralInformationsCtrl', class HostingGeneralInformationsCtrl {
-    constructor($scope, $stateParams, Alerter, hostingSSLCertificate, translator) {
+angular.module('App').controller(
+  'hostingGeneralInformationsCtrl',
+  class HostingGeneralInformationsCtrl {
+    constructor(
+      $scope,
+      $stateParams,
+      Alerter,
+      hostingSSLCertificate,
+      translator,
+    ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
 
@@ -11,7 +17,8 @@ angular
     }
 
     $onInit() {
-      this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
+      this.$scope.$on('hosting.ssl.reload', () =>
+        this.retrievingSSLCertificate());
 
       return this.retrievingSSLCertificate();
     }
@@ -19,14 +26,19 @@ angular
     retrievingSSLCertificate() {
       this.isRetrievingSSLCertificate = true;
 
-      return this.hostingSSLCertificate.retrievingCertificate(this.$stateParams.productId)
+      return this.hostingSSLCertificate
+        .retrievingCertificate(this.$stateParams.productId)
         .then((certificate) => {
           this.sslCertificate = certificate;
         })
         .catch((error) => {
           // 404 error means that the user has no SSL certificate
           if (error.status !== 404) {
-            this.Alerter.alertFromSWS(this.translator.tr('hosting_dashboard_ssl_details_error'), error, this.$scope.alerts.main);
+            this.Alerter.alertFromSWS(
+              this.translator.tr('hosting_dashboard_ssl_details_error'),
+              error,
+              this.$scope.alerts.main,
+            );
           }
         })
         .finally(() => {
@@ -43,11 +55,18 @@ angular
     }
 
     canRegenerateSSLCertificate() {
-      return this.hasSSLCertificate() && this.sslCertificate.regenerable && this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate);
+      return (
+        this.hasSSLCertificate() &&
+        this.sslCertificate.regenerable &&
+        this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
+      );
     }
 
     canDeleteSSLCertificate() {
-      return this.hasSSLCertificate() && this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate);
+      return (
+        this.hasSSLCertificate() &&
+        this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
+      );
     }
 
     hasSSLCertificateCreationReport() {
@@ -59,10 +78,13 @@ angular
         return this.translator.tr('common_no');
       }
 
-      if (this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)) {
+      if (
+        this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
+      ) {
         return this.translator.tr('common_yes');
       }
 
       return this.translator.tr(`hosting_dashboard_service_ssl_${this.sslCertificate.status}`);
     }
-  });
+  },
+);

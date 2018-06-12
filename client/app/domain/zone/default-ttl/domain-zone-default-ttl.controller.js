@@ -16,13 +16,16 @@ angular.module('controllers').controller(
       this.loading = true;
       this.zoneSOA = { ttl: '' };
 
-      this.Domain
-        .getZoneSOA(this.domain.name)
+      this.Domain.getZoneSOA(this.domain.name)
         .then((data) => {
           this.zoneSOA = data;
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('domain_tab_ZONE_default_ttl_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_tab_ZONE_default_ttl_error'),
+            err,
+            this.$scope.alerts.main,
+          );
           this.$scope.resetAction();
         })
         .finally(() => {
@@ -32,10 +35,18 @@ angular.module('controllers').controller(
 
     updateDefaultTTL() {
       this.loading = true;
-      return this.Domain
-        .putZoneSOA(this.domain.name, this.zoneSOA)
-        .then(() => this.Alerter.success(this.$scope.tr('domain_tab_ZONE_default_ttl_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('domain_tab_ZONE_default_ttl_error'), err, this.$scope.alerts.main))
+      return this.Domain.putZoneSOA(this.domain.name, this.zoneSOA)
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('domain_tab_ZONE_default_ttl_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_tab_ZONE_default_ttl_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

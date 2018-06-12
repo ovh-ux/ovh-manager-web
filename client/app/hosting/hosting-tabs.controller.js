@@ -19,7 +19,8 @@ angular.module('App').controller(
 
       this.setSelectedTab = this.setSelectedTab.bind(this);
 
-      if (this.$stateParams.tab && this.tabs.indexOf(angular.uppercase(this.$stateParams.tab)) !== -1) {
+      if (this.$stateParams.tab &&
+        this.tabs.indexOf(angular.uppercase(this.$stateParams.tab)) !== -1) {
         this.setSelectedTab(angular.uppercase(this.$stateParams.tab));
       } else {
         this.setSelectedTab(this.defaultTab);
@@ -28,7 +29,10 @@ angular.module('App').controller(
       return this.$q
         .all({
           indys: this.HostingIndy.getIndys(this.$stateParams.productId),
-          freedoms: this.HostingFreedom.getFreedoms(this.$stateParams.productId, { forceRefresh: false }),
+          freedoms: this.HostingFreedom.getFreedoms(
+            this.$stateParams.productId,
+            { forceRefresh: false },
+          ),
           hosting: this.Hosting.getSelected(this.$stateParams.productId),
         })
         .then(({ indys, freedoms, hosting }) => {

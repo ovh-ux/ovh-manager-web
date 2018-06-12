@@ -78,7 +78,10 @@ class SessionService {
     };
 
       // Exchange products
-    const exchangeProducts = _.sortBy(products.exchanges, elt => angular.lowercase(elt.displayName || elt.name));
+    const exchangeProducts = _.sortBy(
+      products.exchanges,
+      elt => angular.lowercase(elt.displayName || elt.name),
+    );
     const exchangeLinks = _.map(exchangeProducts, elt => ({
       name: elt.name,
       title: elt.displayName || elt.name,
@@ -90,7 +93,10 @@ class SessionService {
     }));
 
       // Office products
-    const officeProducts = _.sortBy(products.licenseOffice, elt => angular.lowercase(elt.displayName || elt.name));
+    const officeProducts = _.sortBy(
+      products.licenseOffice,
+      elt => angular.lowercase(elt.displayName || elt.name),
+    );
     const officeLinks = _.map(officeProducts, elt => ({
       name: elt.name,
       title: elt.displayName || elt.name,
@@ -101,7 +107,10 @@ class SessionService {
     }));
 
       // SharePoint products
-    const sharepointProducts = _.sortBy(products.sharepoints, elt => angular.lowercase(elt.displayName || elt.name));
+    const sharepointProducts = _.sortBy(
+      products.sharepoints,
+      elt => angular.lowercase(elt.displayName || elt.name),
+    );
     const sharepointLinks = _.map(sharepointProducts, elt => ({
       name: elt.name,
       title: elt.displayName || elt.name,
@@ -131,7 +140,10 @@ class SessionService {
   getUniverseMenu(products) {
     const domainProducts = products.domains;
     const emailProProducts = _.sortBy(products.emailPros, elt => angular.lowercase(elt.name));
-    const emailProducts = _.sortBy(products.emails, elt => angular.lowercase(elt.displayName || elt.name));
+    const emailProducts = _.sortBy(
+      products.emails,
+      elt => angular.lowercase(elt.displayName || elt.name),
+    );
 
     // Products filtered
     const hostingProducts = _(products.hostings)

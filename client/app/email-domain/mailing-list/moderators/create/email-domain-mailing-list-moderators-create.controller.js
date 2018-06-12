@@ -2,12 +2,12 @@ angular.module('App').controller(
   'MailingListsCreateModeratorCtrl',
   class MailingListsCreateModeratorCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param Alerter
-         * @param MailingLists
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param Alerter
+     * @param MailingLists
+     */
     constructor($scope, $stateParams, Alerter, MailingLists) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -26,23 +26,24 @@ angular.module('App').controller(
     }
 
     static addressValidator(addr) {
-      return validator.isEmail(addr) && /^[\w@\.\-_]+$/.test(addr);
+      return validator.isEmail(addr) && /^[\w@.-]+$/.test(addr);
     }
 
     createModerator() {
       this.loading = true;
       const moderatorsToAdd = _.uniq(this.selection);
 
-      return this.MailingLists
-        .addModerators(this.$stateParams.productId, {
-          mailingList: this.mailingList.name,
-          users: moderatorsToAdd,
-          type: 'moderator',
-        })
+      return this.MailingLists.addModerators(this.$stateParams.productId, {
+        mailingList: this.mailingList.name,
+        users: moderatorsToAdd,
+        type: 'moderator',
+      })
         .then((tasks) => {
           this.Alerter.alertFromSWSBatchResult(
             {
-              OK: this.$scope.tr(moderatorsToAdd.length === 1 ? 'mailing_list_tab_modal_create_moderator_success' : 'mailing_list_tab_modal_create_moderators_success'),
+              OK: this.$scope.tr(moderatorsToAdd.length === 1
+                ? 'mailing_list_tab_modal_create_moderator_success'
+                : 'mailing_list_tab_modal_create_moderators_success'),
               PARTIAL: this.$scope.tr('mailing_list_tab_modal_create_moderators_error'),
               ERROR: this.$scope.tr('mailing_list_tab_modal_create_moderators_error'),
             },
@@ -59,7 +60,9 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr(moderatorsToAdd.length === 1 ? 'mailing_list_tab_modal_create_moderator_error' : 'mailing_list_tab_modal_create_moderators_error'),
+            this.$scope.tr(moderatorsToAdd.length === 1
+              ? 'mailing_list_tab_modal_create_moderator_error'
+              : 'mailing_list_tab_modal_create_moderators_error'),
             err,
             this.$scope.alerts.main,
           );

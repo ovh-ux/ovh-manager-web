@@ -1,6 +1,6 @@
-angular
-  .module('App')
-  .controller('controllers.Hosting.Runtimes.edit', class HostingRuntimesEditCtrl {
+angular.module('App').controller(
+  'controllers.Hosting.Runtimes.edit',
+  class HostingRuntimesEditCtrl {
     constructor($scope, $stateParams, Alerter, HostingRuntimes, translator) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -23,13 +23,15 @@ angular
     }
 
     fetchAvailableTypes() {
-      return this.HostingRuntimes
-        .getAvailableTypes(this.$stateParams.productId)
+      return this.HostingRuntimes.getAvailableTypes(this.$stateParams.productId)
         .then((types) => {
           this.availableTypes = types;
         })
         .catch(() => {
-          this.Alerter.error(this.$scope.tr('hosting_tab_RUNTIMES_list_error'), this.$scope.alerts.main);
+          this.Alerter.error(
+            this.$scope.tr('hosting_tab_RUNTIMES_list_error'),
+            this.$scope.alerts.main,
+          );
 
           this.$scope.resetAction();
         })
@@ -39,24 +41,44 @@ angular
     }
 
     isValid() {
-      if (this.entryToEdit && this.entryToEdit.type && this.entryToEdit.type.indexOf('nodejs') !== -1) {
-        return this.entryToEdit && this.entryToEdit.name && this.entryToEdit.publicDir && this.entryToEdit.appEnv && this.entryToEdit.appBootstrap;
+      if (
+        this.entryToEdit &&
+        this.entryToEdit.type &&
+        this.entryToEdit.type.indexOf('nodejs') !== -1
+      ) {
+        return (
+          this.entryToEdit &&
+          this.entryToEdit.name &&
+          this.entryToEdit.publicDir &&
+          this.entryToEdit.appEnv &&
+          this.entryToEdit.appBootstrap
+        );
       }
 
       return this.entryToEdit && this.entryToEdit.name && this.entryToEdit.type;
     }
 
     edit() {
-      return this.HostingRuntimes
-        .edit(this.$stateParams.productId, this.entryToEdit.id, this.entryToEdit)
+      return this.HostingRuntimes.edit(
+        this.$stateParams.productId,
+        this.entryToEdit.id,
+        this.entryToEdit,
+      )
         .then(() => {
-          this.Alerter.success(this.$scope.tr('hosting_tab_RUNTIMES_edit_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('hosting_tab_RUNTIMES_edit_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.Alerter.error(this.$scope.tr('hosting_tab_RUNTIMES_edit_error') + err.message, this.$scope.alerts.main);
+          this.Alerter.error(
+            this.$scope.tr('hosting_tab_RUNTIMES_edit_error') + err.message,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.$scope.resetAction();
         });
     }
-  });
+  },
+);

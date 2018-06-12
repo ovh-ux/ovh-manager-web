@@ -2,13 +2,13 @@ angular.module('App').controller(
   'EmailDomainCtrl',
   class EmailDomainCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param $timeout
-         * @param Alerter
-         * @param Emails
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param $timeout
+     * @param Alerter
+     * @param Emails
+     */
     constructor($scope, $stateParams, $timeout, Alerter, Emails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -60,15 +60,15 @@ angular.module('App').controller(
     loadDomain() {
       this.loading.domainsInfos = true;
 
-      this.Emails
-        .getDomain(this.$stateParams.productId)
+      this.Emails.getDomain(this.$stateParams.productId)
         .then((domain) => {
           this.$scope.domain = domain;
           if (domain.offer && domain.offer.indexOf('hosting') === -1) {
             this.$scope.$broadcast('emails.canTerminate');
           }
         })
-        .catch(() => this.Alerter.error(this.$scope.tr('domain_dashboard_loading_error')))
+        .catch(() =>
+          this.Alerter.error(this.$scope.tr('domain_dashboard_loading_error')))
         .finally(() => {
           this.loading.init = false;
           this.loading.domainsInfos = false;

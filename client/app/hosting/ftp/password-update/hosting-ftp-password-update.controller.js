@@ -21,7 +21,12 @@ angular.module('App').controller(
     }
 
     isPasswordValid() {
-      return this.password.value && this.password.confirmation && this.password.value === this.password.confirmation && this.Hosting.constructor.isPasswordValid(this.password.value);
+      return (
+        this.password.value &&
+        this.password.confirmation &&
+        this.password.value === this.password.confirmation &&
+        this.Hosting.constructor.isPasswordValid(this.password.value)
+      );
     }
 
     isPasswordInvalid() {
@@ -34,12 +39,26 @@ angular.module('App').controller(
 
     updatePassword() {
       this.$scope.resetAction();
-      return this.HostingUser.changePassword(this.$stateParams.productId, this.login, this.password.value)
+      return this.HostingUser.changePassword(
+        this.$stateParams.productId,
+        this.login,
+        this.password.value,
+      )
         .then(() => {
-          this.Alerter.success(this.$scope.tr('hosting_tab_FTP_configuration_change_password_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('hosting_tab_FTP_configuration_change_password_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_FTP_configuration_change_password_fail', [this.login]), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr(
+              'hosting_tab_FTP_configuration_change_password_fail',
+              [this.login],
+            ),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
         });
     }
   },

@@ -12,11 +12,23 @@ angular.module('App').controller(
 
     $onInit() {
       this.defaultTab = 'GENERAL_INFORMATIONS';
-      this.tabs = ['GENERAL_INFORMATIONS', 'ZONE', 'DNS', 'REDIRECTION', 'DYNHOST', 'GLUE', 'DNSSEC', 'TASKS'];
+      this.tabs = [
+        'GENERAL_INFORMATIONS',
+        'ZONE',
+        'DNS',
+        'REDIRECTION',
+        'DYNHOST',
+        'GLUE',
+        'DNSSEC',
+        'TASKS',
+      ];
 
       this.domain = this.$scope.ctrlDomain.domain;
 
-      const changeOwnerClassic = !_.includes(this.Domain.extensionsChangeOwnerByOrder, _.last(this.domain.name.split('.')));
+      const changeOwnerClassic = !_.includes(
+        this.Domain.extensionsChangeOwnerByOrder,
+        _.last(this.domain.name.split('.')),
+      );
       const updateOwnerUrl = this.constructor.getUpdateOwnerUrl(this.domain);
 
       this.tabMenu = {
@@ -24,19 +36,25 @@ angular.module('App').controller(
         items: [
           {
             label: this.$scope.tr('hosting_tab_menu_emails'),
-            target: `#/configuration/email-domain/${this.domain.name}?tab=MAILING_LIST`,
+            target: `#/configuration/email-domain/${
+              this.domain.name
+            }?tab=MAILING_LIST`,
             type: 'LINK',
           },
           {
             label: this.$scope.tr('contacts_management'),
-            target: `#/useraccount/contacts?tab=SERVICES&serviceName=${this.domain.name}`,
+            target: `#/useraccount/contacts?tab=SERVICES&serviceName=${
+              this.domain.name
+            }`,
             text: this.$scope.tr('hosting_tab_menu_contacts'),
             type: 'LINK',
           },
           {
             label: this.$scope.tr('core_change_owner'),
             target: '',
-            text: changeOwnerClassic ? '' : this.$scope.tr('core_change_owner_order'),
+            text: changeOwnerClassic
+              ? ''
+              : this.$scope.tr('core_change_owner_order'),
             type: 'EXTERNAL_LINK',
           },
           {
@@ -50,7 +68,9 @@ angular.module('App').controller(
           },
           {
             label: this.$scope.tr('domain_tab_menu_resiliate'),
-            target: `#/billing/autoRenew?selectedType=DOMAIN&searchText=${this.domain.name}`,
+            target: `#/billing/autoRenew?selectedType=DOMAIN&searchText=${
+              this.domain.name
+            }`,
             text: this.$scope.tr('hosting_tab_menu_resiliate_infos'),
             type: 'LINK',
           },
@@ -76,7 +96,9 @@ angular.module('App').controller(
           if (changeOwnerClassic) {
             this.tabMenu.items[2].target = changeOwnerUrl;
           } else {
-            this.tabMenu.items[2].target = `${changeOwnerUrl}?domain=${domain.name}`;
+            this.tabMenu.items[2].target = `${changeOwnerUrl}?domain=${
+              domain.name
+            }`;
           }
 
           if (_.isObject(domain.whoisOwner)) {
@@ -87,7 +109,10 @@ angular.module('App').controller(
               })
               .then(({ domainOrderTradeUrl, orderServiceOption }) => {
                 if (_.find(orderServiceOption, opt => opt.family === 'trade')) {
-                  this.tabMenu.items[2].target = domainOrderTradeUrl.replace('{domain}', domain.name);
+                  this.tabMenu.items[2].target = domainOrderTradeUrl.replace(
+                    '{domain}',
+                    domain.name,
+                  );
                 }
               });
           }
@@ -106,7 +131,10 @@ angular.module('App').controller(
     }
 
     static getUpdateOwnerUrl(domain) {
-      if (_.get(domain, 'whoisOwner', false) && domain.whoisOwner !== 'pending') {
+      if (
+        _.get(domain, 'whoisOwner', false) &&
+        domain.whoisOwner !== 'pending'
+      ) {
         return `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
       }
       return '';

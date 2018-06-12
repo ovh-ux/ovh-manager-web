@@ -34,7 +34,8 @@ angular.module('App').controller(
         this.selectedRecords = [];
         this.refreshTable();
       });
-      this.$scope.loadPaginated = (count, offset) => this.loadPaginated(count, offset);
+      this.$scope.loadPaginated = (count, offset) =>
+        this.loadPaginated(count, offset);
 
       this.checkAllowModification(this.domain.name);
       this.getZoneDns(this.domain.name);
@@ -68,14 +69,20 @@ angular.module('App').controller(
         })
         .then(({ domainServiceInfo, zoneServiceInfo, user }) => {
           this.allowModification =
-                        user &&
-                        ((domainServiceInfo && (domainServiceInfo.contactTech === user.nichandle || domainServiceInfo.contactAdmin === user.nichandle)) ||
-                            (zoneServiceInfo && (zoneServiceInfo.contactTech === user.nichandle || zoneServiceInfo.contactAdmin === user.nichandle)));
+            user &&
+            ((domainServiceInfo &&
+              (domainServiceInfo.contactTech === user.nichandle ||
+                domainServiceInfo.contactAdmin === user.nichandle)) ||
+              (zoneServiceInfo &&
+                (zoneServiceInfo.contactTech === user.nichandle ||
+                  zoneServiceInfo.contactAdmin === user.nichandle)));
         });
     }
 
     static getDomainToDisplay(record) {
-      return `${(record.subDomainToDisplay ? `${record.subDomainToDisplay}.` : '') + record.zoneToDisplay}.`;
+      return `${(record.subDomainToDisplay
+        ? `${record.subDomainToDisplay}.`
+        : '') + record.zoneToDisplay}.`;
     }
 
     getZoneDns(domainName) {
@@ -88,21 +95,37 @@ angular.module('App').controller(
           this.Domain.getTabZoneDns(domainName, 0, 0, null, 'NS'),
           this.Domain.getTabDns(domainName),
         ])
-        .then((results) => {
-          defaults = results[0];
-          activated = results[1];
-        }, (err) => {
-          if (err[0].code !== 404 || err[1].code) { // LEGIT 404
-            throw err;
-          }
+        .then(
+          (results) => {
+            [defaults, activated] = results;
+          },
+          (err) => {
+            if (err[0].code !== 404 || err[1].code) {
+              // LEGIT 404
+              throw err;
+            }
 
-          activated = err[1];
-        })
+            [, activated] = err;
+          },
+        )
         .finally(() => {
-          this.defaultsDns = _.get(defaults, 'paginatedZone.records.results', []).filter(data => data.subDomain === '' && data.subDomainToDisplay === '').map(value => value.targetToDisplay.slice(0, -1)).sort();
-          this.activatedDns = _.get(activated, 'dns', []).filter(dns => dns.isUsed).map(value => value.host).sort();
+          this.defaultsDns = _.get(
+            defaults,
+            'paginatedZone.records.results',
+            [],
+          )
+            .filter(data => data.subDomain === '' && data.subDomainToDisplay === '')
+            .map(value => value.targetToDisplay.slice(0, -1))
+            .sort();
+          this.activatedDns = _.get(activated, 'dns', [])
+            .filter(dns => dns.isUsed)
+            .map(value => value.host)
+            .sort();
 
-          if (!_.isEmpty(this.defaultsDns) && !_.isEqual(this.defaultsDns, this.activatedDns)) {
+          if (
+            !_.isEmpty(this.defaultsDns) &&
+            !_.isEqual(this.defaultsDns, this.activatedDns)
+          ) {
             this.useDefaultsDns = false;
           }
 
@@ -113,8 +136,13 @@ angular.module('App').controller(
     loadPaginated(count, offset) {
       this.loading.table = true;
 
-      return this.Domain
-        .getTabZoneDns(this.domain.name, count, offset, this.search.value || '', this.search.filter)
+      return this.Domain.getTabZoneDns(
+        this.domain.name,
+        count,
+        offset,
+        this.search.value || '',
+        this.search.filter,
+      )
         .then((tabZone) => {
           this.zone = tabZone;
           if (_.get(tabZone, 'paginatedZone.records.results', []).length > 0) {
@@ -122,15 +150,24 @@ angular.module('App').controller(
           }
           this.displayActivateZone = false;
           this.applySelection();
-          return this.Domain.getZoneStatus(this.domain.name).catch(err => this.Alerter.alertFromSWS(this.$scope.tr('domain_dashboard_loading_error'), err, this.$scope.alerts.main));
+          return this.Domain.getZoneStatus(this.domain.name).catch(err =>
+            this.Alerter.alertFromSWS(
+              this.$scope.tr('domain_dashboard_loading_error'),
+              err,
+              this.$scope.alerts.main,
+            ));
         })
         .then((data) => {
-          this.zoneStatusErrors = (data && !data.isDeployed && _.get(data, 'errors', [])) || [];
+          this.zoneStatusErrors =
+            (data && !data.isDeployed && _.get(data, 'errors', [])) || [];
           this.zoneStatusWarnings = _.get(data, 'warnings', []);
         })
         .catch((err) => {
-          if (/service(\s|\s\w+\s)expired/i.test(_.get(err, 'data.message', err.message || ''))) {
-            // A service expired here, is a temporary status, display the message: "service expired" in the page as general message is very confusing for customers.
+          if (
+            /service(\s|\s\w+\s)expired/i.test(_.get(err, 'data.message', err.message || ''))
+          ) {
+            // A service expired here, is a temporary status, display the message: "service expired
+            // in the page as general message is very confusing for customers.
             // A message like: "no DNS zone" is already displayed at the good place. So, get out.
             this.displayActivateZone = false;
             return;
@@ -140,7 +177,11 @@ angular.module('App').controller(
           if (err.code && err.code === 404) {
             this.displayActivateZone = true;
           } else {
-            this.Alerter.alertFromSWS(this.$scope.tr('domain_dashboard_loading_error'), _.get(err, 'data', err), this.$scope.alerts.main);
+            this.Alerter.alertFromSWS(
+              this.$scope.tr('domain_dashboard_loading_error'),
+              _.get(err, 'data', err),
+              this.$scope.alerts.main,
+            );
           }
         })
         .finally(() => {
@@ -156,13 +197,17 @@ angular.module('App').controller(
     }
 
     targetIsRelativeDomain(domain) {
-      return domain.target && _.indexOf(this.typesToCheck, domain.fieldType) !== -1 && /\..*[^\.]$/.test(domain.target);
+      return (
+        domain.target &&
+        _.indexOf(this.typesToCheck, domain.fieldType) !== -1 &&
+        /\..*[^.]$/.test(domain.target)
+      );
     }
 
     // checboxes --------------------------------------------------------------
     applySelection() {
       _.forEach(_.get(this.zone, 'paginatedZone.records.results'), (item) => {
-        item.selected = _.indexOf(this.selectedRecords, item.id) !== -1;
+        item.selected = _.indexOf(this.selectedRecords, item.id) !== -1; // eslint-disable-line
       });
     }
 
@@ -174,7 +219,10 @@ angular.module('App').controller(
             this.atLeastOneSelected = false;
             break;
           case 1:
-            this.selectedRecords = _.map(this.zone.paginatedZone.records.results, 'id').filter(result => !_.some(this.selectedRecords, result.id));
+            this.selectedRecords = _.map(
+              this.zone.paginatedZone.records.results,
+              'id',
+            ).filter(result => !_.some(this.selectedRecords, result.id));
             this.atLeastOneSelected = true;
             break;
           case 2:

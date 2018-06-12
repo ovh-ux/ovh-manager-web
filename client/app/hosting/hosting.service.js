@@ -8,7 +8,10 @@
   angular
     .module('services')
     .service('Hosting', class Hosting {
-      constructor($q, $http, $rootScope, $stateParams, constants, ConverterService, HOSTING, OvhHttp, Poll, Products) {
+      constructor(
+        $q, $http, $rootScope, $stateParams,
+        constants, ConverterService, HOSTING, OvhHttp, Poll, Products,
+      ) {
         this.$q = $q;
         this.$http = $http;
         this.$rootScope = $rootScope;
@@ -168,15 +171,24 @@
           rootPath: '2api',
           cache: hostingCache,
           clearCache: forceRefresh,
-        }).then((hosting) => {
+        }).then((originalHosting) => {
+          const hosting = _(originalHosting).clone(true);
           hosting.isCloudWeb = _(hosting.offer).includes('CLOUD');
 
           if (hosting.isCloudWeb) {
             hosting.configurationQuota = this.HOSTING.cloudWeb.configurationQuota;
             hosting.totalQuota = _.clone(this.HOSTING.cloudWeb.configurationQuota);
 
-            const configurationOctet = this.ConverterService.convertToOctet(hosting.configurationQuota.value, hosting.configurationQuota.unit);
-            const quotaSizeOctet = this.ConverterService.convertToOctet(hosting.quotaSize.value, hosting.quotaSize.unit);
+            const configurationOctet =
+                this.ConverterService.convertToOctet(
+                  hosting.configurationQuota.value,
+                  hosting.configurationQuota.unit,
+                );
+            const quotaSizeOctet =
+                this.ConverterService.convertToOctet(
+                  hosting.quotaSize.value,
+                  hosting.quotaSize.unit,
+                );
 
             hosting.totalQuota.unit = 'B';
             hosting.totalQuota.value = configurationOctet + quotaSizeOctet;

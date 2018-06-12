@@ -14,14 +14,17 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'zone';
+          $rootScope.currentSectionInformation = 'zone'; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['domain']).then(() => translator)],
+      translator: [
+        'translator',
+        translator => translator.load(['domain']).then(() => translator),
+      ],
     },
   });
 
@@ -35,14 +38,17 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'newDnsZone';
+          $rootScope.currentSectionInformation = 'newDnsZone'; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['domains']).then(() => translator)],
+      translator: [
+        'translator',
+        translator => translator.load(['domains']).then(() => translator),
+      ],
     },
   });
 });

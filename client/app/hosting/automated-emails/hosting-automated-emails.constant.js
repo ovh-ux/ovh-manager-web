@@ -38,25 +38,29 @@ angular.module('App').constant('HOSTING_AUTOMATED_EMAILS', {
         },
       },
       scales: {
-        yAxes: [{
-          display: true,
-          position: 'left',
-          scaleLabel: {
+        yAxes: [
+          {
             display: true,
+            position: 'left',
+            scaleLabel: {
+              display: true,
+            },
+            gridLines: {
+              drawBorder: true,
+              display: true,
+            },
           },
-          gridLines: {
-            drawBorder: true,
-            display: true,
+        ],
+        xAxes: [
+          {
+            type: 'time',
+            position: 'bottom',
+            gridLines: {
+              drawBorder: true,
+              display: false,
+            },
           },
-        }],
-        xAxes: [{
-          type: 'time',
-          position: 'bottom',
-          gridLines: {
-            drawBorder: true,
-            display: false,
-          },
-        }],
+        ],
       },
     },
   },

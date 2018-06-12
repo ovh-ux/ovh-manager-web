@@ -2,10 +2,10 @@ angular.module('services').service(
   'Emails',
   class Emails {
     /**
-         * Constructor
-         * @param $q
-         * @param OvhHttp
-         */
+     * Constructor
+     * @param $q
+     * @param OvhHttp
+     */
     constructor($q, OvhHttp) {
       this.$q = $q;
       this.OvhHttp = OvhHttp;
@@ -24,8 +24,8 @@ angular.module('services').service(
     }
 
     /**
-         * Get emails models
-         */
+     * Get emails models
+     */
     getModels() {
       return this.OvhHttp.get('/email/domain.json', {
         rootPath: 'apiv6',
@@ -34,8 +34,8 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain all domains
-         */
+     * Obtain all domains
+     */
     getDomains() {
       return this.OvhHttp.get('/email/domain', {
         rootPath: 'apiv6',
@@ -44,9 +44,9 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain domain informations
-         * @param {string} serviceName
-         */
+     * Obtain domain informations
+     * @param {string} serviceName
+     */
     getDomain(serviceName) {
       return this.OvhHttp.get(`/email/domain/${serviceName}`, {
         rootPath: 'apiv6',
@@ -54,19 +54,22 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain recommended DNS records
-         * @param {string} serviceName
-         */
+     * Obtain recommended DNS records
+     * @param {string} serviceName
+     */
     getRecommendedDNSRecords(serviceName) {
-      return this.OvhHttp.get(`/email/domain/${serviceName}/recommendedDNSRecords`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/${serviceName}/recommendedDNSRecords`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Obtain serviceInfos
-         * @param {string} serviceName
-         */
+     * Obtain serviceInfos
+     * @param {string} serviceName
+     */
     getServiceInfos(serviceName) {
       return this.OvhHttp.get(`/email/domain/${serviceName}/serviceInfos`, {
         rootPath: 'apiv6',
@@ -74,10 +77,10 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain a list of available emails account
-         * @param {string} serviceName
-         * @param {object} opts
-         */
+     * Obtain a list of available emails account
+     * @param {string} serviceName
+     * @param {object} opts
+     */
     getEmails(serviceName, opts) {
       return this.OvhHttp.get(`/email/domain/${serviceName}/account`, {
         rootPath: 'apiv6',
@@ -89,20 +92,23 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain a selected email account
-         * @param {string} serviceName
-         * @param {string} accountName
-         */
+     * Obtain a selected email account
+     * @param {string} serviceName
+     * @param {string} accountName
+     */
     getEmail(serviceName, accountName) {
-      return this.OvhHttp.get(`/email/domain/${serviceName}/account/${accountName}`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/${serviceName}/account/${accountName}`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Get summary of this domain
-         * @param {string} serviceName
-         */
+     * Get summary of this domain
+     * @param {string} serviceName
+     */
     getSummary(serviceName) {
       return this.OvhHttp.get(`/email/domain/${serviceName}/summary`, {
         rootPath: 'apiv6',
@@ -110,10 +116,10 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain a list of current emails account tasks
-         * @param {string} serviceName
-         * @param {string} accountName
-         */
+     * Obtain a list of current emails account tasks
+     * @param {string} serviceName
+     * @param {string} accountName
+     */
     getEmailTasks(serviceName, accountName) {
       return this.OvhHttp.get(`/email/domain/${serviceName}/task/account`, {
         rootPath: 'apiv6',
@@ -124,31 +130,37 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain space used by an email account
-         * @param {string} serviceName
-         * @param {string} accountName
-         */
+     * Obtain space used by an email account
+     * @param {string} serviceName
+     * @param {string} accountName
+     */
     getEmailUsage(serviceName, accountName) {
-      return this.OvhHttp.get(`/email/domain/${serviceName}/account/${accountName}/usage`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/${serviceName}/account/${accountName}/usage`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Update usage account information
-         * @param {string} serviceName
-         * @param {string} accountName
-         */
+     * Update usage account information
+     * @param {string} serviceName
+     * @param {string} accountName
+     */
     updateUsage(serviceName, accountName) {
-      return this.OvhHttp.post(`/email/domain/${serviceName}/account/${accountName}/updateUsage`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.post(
+        `/email/domain/${serviceName}/account/${accountName}/updateUsage`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Obtain dns filter
-         * @param {string} serviceName
-         */
+     * Obtain dns filter
+     * @param {string} serviceName
+     */
     getDnsFilter(serviceName) {
       return this.OvhHttp.get(`/email/domain/${serviceName}/dnsMXFilter`, {
         rootPath: 'apiv6',
@@ -156,22 +168,25 @@ angular.module('services').service(
     }
 
     /**
-         * Set DNS filter
-         * @param {string} serviceName
-         * @param {object} data
-         */
+     * Set DNS filter
+     * @param {string} serviceName
+     * @param {object} data
+     */
     setDnsFilter(serviceName, data) {
-      return this.OvhHttp.post(`/email/domain/${serviceName}/changeDnsMXFilter`, {
-        rootPath: 'apiv6',
-        data,
-        broadcast: 'domain.dashboard.refresh',
-      });
+      return this.OvhHttp.post(
+        `/email/domain/${serviceName}/changeDnsMXFilter`,
+        {
+          rootPath: 'apiv6',
+          data,
+          broadcast: 'domain.dashboard.refresh',
+        },
+      );
     }
 
     /**
-         * Obtain MX records
-         * @param {string} serviceName
-         */
+     * Obtain MX records
+     * @param {string} serviceName
+     */
     getMxRecords(serviceName) {
       return this.OvhHttp.get(`/email/domain/${serviceName}/dnsMXRecords`, {
         rootPath: 'apiv6',
@@ -179,9 +194,9 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain quota
-         * @param {string} serviceName
-         */
+     * Obtain quota
+     * @param {string} serviceName
+     */
     getQuotas(serviceName) {
       return this.OvhHttp.get(`/email/domain/${serviceName}/quota`, {
         rootPath: 'apiv6',
@@ -190,10 +205,10 @@ angular.module('services').service(
     }
 
     /**
-         * Create a new account
-         * @param {string} serviceName
-         * @param {object} data
-         */
+     * Create a new account
+     * @param {string} serviceName
+     * @param {object} data
+     */
     createAccount(serviceName, data) {
       return this.OvhHttp.post(`/email/domain/${serviceName}/account`, {
         rootPath: 'apiv6',
@@ -203,197 +218,241 @@ angular.module('services').service(
     }
 
     /**
-         * Update an account
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {object} data
-         */
+     * Update an account
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {object} data
+     */
     updateAccount(serviceName, accountName, data) {
-      return this.OvhHttp.put(`/email/domain/${serviceName}/account/${accountName}`, {
-        rootPath: 'apiv6',
-        data,
-        broadcast: 'hosting.tabs.emails.refresh',
-      });
+      return this.OvhHttp.put(
+        `/email/domain/${serviceName}/account/${accountName}`,
+        {
+          rootPath: 'apiv6',
+          data,
+          broadcast: 'hosting.tabs.emails.refresh',
+        },
+      );
     }
 
     /**
-         * Change password
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {object} data
-         */
+     * Change password
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {object} data
+     */
     changePasswordAccount(serviceName, accountName, data) {
-      return this.OvhHttp.post(`/email/domain/${serviceName}/account/${accountName}/changePassword`, {
-        rootPath: 'apiv6',
-        data,
-      });
+      return this.OvhHttp.post(
+        `/email/domain/${serviceName}/account/${accountName}/changePassword`,
+        {
+          rootPath: 'apiv6',
+          data,
+        },
+      );
     }
 
     /**
-         * Remove an account
-         * @param {string} serviceName
-         * @param {string} accountName
-         */
+     * Remove an account
+     * @param {string} serviceName
+     * @param {string} accountName
+     */
     deleteAccount(serviceName, accountName) {
-      return this.OvhHttp.delete(`/email/domain/${serviceName}/account/${accountName}`, {
-        rootPath: 'apiv6',
-        broadcast: 'hosting.tabs.emails.refresh',
-      });
+      return this.OvhHttp.delete(
+        `/email/domain/${serviceName}/account/${accountName}`,
+        {
+          rootPath: 'apiv6',
+          broadcast: 'hosting.tabs.emails.refresh',
+        },
+      );
     }
 
     /**
-         * Obtain a list of available filters
-         * @param {string} serviceName
-         * @param {string} accountName
-         */
+     * Obtain a list of available filters
+     * @param {string} serviceName
+     * @param {string} accountName
+     */
     getFilters(serviceName, accountName) {
-      return this.OvhHttp.get(`/email/domain/${serviceName}/account/${accountName}/filter`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/${serviceName}/account/${accountName}/filter`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Get filter details
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} name
-         */
+     * Get filter details
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} name
+     */
     getFilter(serviceName, accountName, name) {
-      return this.OvhHttp.get(`/email/domain/${serviceName}/account/${accountName}/filter/${name}`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/${serviceName}/account/${accountName}/filter/${name}`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Create filter
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {object} filter
-         * @param rules
-         */
+     * Create filter
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {object} filter
+     * @param rules
+     */
     createFilter(serviceName, accountName, filter, rules) {
       const defer = this.$q.defer();
 
-      this.OvhHttp
-        .post(`/email/domain/${serviceName}/account/${accountName}/filter`, {
+      this.OvhHttp.post(
+        `/email/domain/${serviceName}/account/${accountName}/filter`,
+        {
           rootPath: 'apiv6',
           data: filter,
           broadcast: 'hosting.tabs.emails.filters.refresh',
-        })
-        .then(() => this.createRules(serviceName, accountName, filter.name, rules).then(data => defer.resolve(data)).catch(err => defer.reject(err)))
+        },
+      )
+        .then(() =>
+          this.createRules(serviceName, accountName, filter.name, rules)
+            .then(data => defer.resolve(data))
+            .catch(err => defer.reject(err)))
         .catch(err => defer.reject(err));
 
       return defer.promise;
     }
 
     /**
-         * Update filter
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {object} filter
-         * @param rules
-         */
+     * Update filter
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {object} filter
+     * @param rules
+     */
     updateFilter(serviceName, accountName, filter, rules) {
       const defer = this.$q.defer();
 
-      this.deleteFilter(serviceName, accountName, filter.name).then(() => this.createFilter(serviceName, accountName, filter, rules).then(data => defer.resolve(data)).catch(err => defer.reject(err))).catch(err => defer.reject(err));
+      this.deleteFilter(serviceName, accountName, filter.name)
+        .then(() =>
+          this.createFilter(serviceName, accountName, filter, rules)
+            .then(data => defer.resolve(data))
+            .catch(err => defer.reject(err)))
+        .catch(err => defer.reject(err));
 
       return defer.promise;
     }
 
     /**
-         * Delete filter
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} filterName
-         */
+     * Delete filter
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} filterName
+     */
     deleteFilter(serviceName, accountName, filterName) {
-      return this.OvhHttp.delete(`/email/domain/${serviceName}/account/${accountName}/filter/${filterName}`, {
-        rootPath: 'apiv6',
-        broadcast: 'hosting.tabs.emails.filters.refresh',
-      });
+      return this.OvhHttp.delete(
+        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}`,
+        {
+          rootPath: 'apiv6',
+          broadcast: 'hosting.tabs.emails.filters.refresh',
+        },
+      );
     }
 
     /**
-         * Active or deactive a filter
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param {object} data
-         */
+     * Active or deactive a filter
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param {object} data
+     */
     changeFilterActivity(serviceName, accountName, filterName, data) {
-      return this.OvhHttp.post(`/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/changeActivity`, {
-        rootPath: 'apiv6',
-        data,
-        broadcast: 'hosting.tabs.emails.filters.refresh',
-      });
+      return this.OvhHttp.post(
+        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/changeActivity`,
+        {
+          rootPath: 'apiv6',
+          data,
+          broadcast: 'hosting.tabs.emails.filters.refresh',
+        },
+      );
     }
 
     /**
-         * Change filter priority
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param {object} data
-         */
+     * Change filter priority
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param {object} data
+     */
     changeFilterPriority(serviceName, accountName, filterName, data) {
-      return this.OvhHttp.post(`/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/changePriority`, {
-        rootPath: 'apiv6',
-        data,
-        broadcast: 'hosting.tabs.emails.filters.refresh',
-      });
+      return this.OvhHttp.post(
+        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/changePriority`,
+        {
+          rootPath: 'apiv6',
+          data,
+          broadcast: 'hosting.tabs.emails.filters.refresh',
+        },
+      );
     }
 
     /**
-         * Create single rule
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param {object} data
-         */
+     * Create single rule
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param {object} data
+     */
     createRule(serviceName, accountName, filterName, data) {
-      return this.OvhHttp.post(`/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/rule`, {
-        rootPath: 'apiv6',
-        data,
-      });
+      return this.OvhHttp.post(
+        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/rule`,
+        {
+          rootPath: 'apiv6',
+          data,
+        },
+      );
     }
 
     /**
-         * Associated rules
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param rules
-         */
+     * Associated rules
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param rules
+     */
     createRules(serviceName, accountName, filterName, rules) {
-      const promises = rules.map(rule => this.createRule(serviceName, accountName, filterName, rule));
+      const promises = rules.map(rule =>
+        this.createRule(serviceName, accountName, filterName, rule));
 
       return this.$q.all(promises);
     }
 
     /**
-         * Get rules
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} filterName
-         * @returns {Promise}
-         */
+     * Get rules
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} filterName
+     * @returns {Promise}
+     */
     getRules(serviceName, accountName, filterName) {
       const defer = this.$q.defer();
       const promises = [];
       const rules = [];
 
-      this.OvhHttp
-        .get(`/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/rule`, {
+      this.OvhHttp.get(
+        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/rule`,
+        {
           rootPath: 'apiv6',
-        })
+        },
+      )
         .then((rulesId) => {
           rulesId.forEach((id) => {
-            promises.push(this.getRule(serviceName, accountName, filterName, id).then(rule => rules.push(rule)));
+            promises.push(this.getRule(serviceName, accountName, filterName, id)
+              .then(rule => rules.push(rule)));
           });
 
           // Resolve when all promise are resolve
-          this.$q.all(promises).then(() => defer.resolve(rules)).catch(() => defer.resolve(rules));
+          this.$q
+            .all(promises)
+            .then(() => defer.resolve(rules))
+            .catch(() => defer.resolve(rules));
         })
         .catch(() => defer.resolve([]));
 
@@ -401,26 +460,29 @@ angular.module('services').service(
     }
 
     /**
-         * Get rule by id
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param {string} id
-         */
+     * Get rule by id
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param {string} id
+     */
     getRule(serviceName, accountName, filterName, id) {
-      return this.OvhHttp.get(`/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/rule/${id}`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/rule/${id}`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Delete all rules
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param rulesId
-         * @returns {Promise}
-         */
+     * Delete all rules
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param rulesId
+     * @returns {Promise}
+     */
     deleteRules(serviceName, accountName, filterName, rulesId) {
       const defer = this.$q.defer();
       const promises = [];
@@ -430,30 +492,36 @@ angular.module('services').service(
       });
 
       // Resolve when all promise are resolve
-      this.$q.all(promises).then(() => defer.resolve()).catch(data => defer.resolve(data));
+      this.$q
+        .all(promises)
+        .then(() => defer.resolve())
+        .catch(data => defer.resolve(data));
 
       return defer.promise;
     }
 
     /**
-         * Delete single rule
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param {string} id
-         */
+     * Delete single rule
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param {string} id
+     */
     deleteRule(serviceName, accountName, filterName, id) {
-      return this.OvhHttp.delete(`/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/rule/${id}`, {
-        rootPath: 'apiv6',
-        broadcast: 'hosting.tabs.emails.filters.refresh',
-      });
+      return this.OvhHttp.delete(
+        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/rule/${id}`,
+        {
+          rootPath: 'apiv6',
+          broadcast: 'hosting.tabs.emails.filters.refresh',
+        },
+      );
     }
 
     /**
-         * Obtain a list of available redirects
-         * @param {string} serviceName
-         * @param from
-         */
+     * Obtain a list of available redirects
+     * @param {string} serviceName
+     * @param from
+     */
     getRedirections(serviceName, from) {
       return this.OvhHttp.get(`/email/domain/${serviceName}/redirection`, {
         rootPath: 'apiv6',
@@ -464,21 +532,24 @@ angular.module('services').service(
     }
 
     /**
-         * Get redirection by id
-         * @param {string} serviceName
-         * @param {string} id
-         */
+     * Get redirection by id
+     * @param {string} serviceName
+     * @param {string} id
+     */
     getRedirection(serviceName, id) {
-      return this.OvhHttp.get(`/email/domain/${serviceName}/redirection/${id}`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/${serviceName}/redirection/${id}`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Create redirection
-         * @param {string} serviceName
-         * @param {object} data
-         */
+     * Create redirection
+     * @param {string} serviceName
+     * @param {object} data
+     */
     createRedirection(serviceName, data) {
       return this.OvhHttp.post(`/email/domain/${serviceName}/redirection`, {
         rootPath: 'apiv6',
@@ -488,34 +559,40 @@ angular.module('services').service(
     }
 
     /**
-         * Update redirection
-         * @param {string} serviceName
-         * @param {object} opts
-         */
+     * Update redirection
+     * @param {string} serviceName
+     * @param {object} opts
+     */
     updateRedirection(serviceName, opts) {
-      return this.OvhHttp.post(`/email/domain/${serviceName}/redirection/${opts.id}/changeRedirection`, {
-        rootPath: 'apiv6',
-        data: opts.data,
-        broadcast: 'hosting.tabs.emails.redirections.refresh',
-      });
+      return this.OvhHttp.post(
+        `/email/domain/${serviceName}/redirection/${opts.id}/changeRedirection`,
+        {
+          rootPath: 'apiv6',
+          data: opts.data,
+          broadcast: 'hosting.tabs.emails.redirections.refresh',
+        },
+      );
     }
 
     /**
-         * Delete redirection
-         * @param {string} serviceName
-         * @param {string} id
-         */
+     * Delete redirection
+     * @param {string} serviceName
+     * @param {string} id
+     */
     deleteRedirection(serviceName, id) {
-      return this.OvhHttp.delete(`/email/domain/${serviceName}/redirection/${id}`, {
-        rootPath: 'apiv6',
-        broadcast: 'hosting.tabs.emails.redirections.refresh',
-      });
+      return this.OvhHttp.delete(
+        `/email/domain/${serviceName}/redirection/${id}`,
+        {
+          rootPath: 'apiv6',
+          broadcast: 'hosting.tabs.emails.redirections.refresh',
+        },
+      );
     }
 
     /**
-         * Obtain a list of availables responders
-         * @param {string} serviceName
-         */
+     * Obtain a list of availables responders
+     * @param {string} serviceName
+     */
     getResponders(serviceName) {
       return this.OvhHttp.get(`/email/domain/${serviceName}/responder`, {
         rootPath: 'apiv6',
@@ -523,23 +600,24 @@ angular.module('services').service(
     }
 
     /**
-         * Get responder details
-         * @param {string} serviceName
-         * @param {string} accountName
-         */
+     * Get responder details
+     * @param {string} serviceName
+     * @param {string} accountName
+     */
     getResponder(serviceName, accountName) {
-      return this.OvhHttp
-        .get(`/email/domain/${serviceName}/responder/${accountName}`, {
+      return this.OvhHttp.get(
+        `/email/domain/${serviceName}/responder/${accountName}`,
+        {
           rootPath: 'apiv6',
-        })
-        .catch(err => ({ account: accountName, err }));
+        },
+      ).catch(err => ({ account: accountName, err }));
     }
 
     /**
-         * Create responder
-         * @param {string} serviceName
-         * @param {object} data
-         */
+     * Create responder
+     * @param {string} serviceName
+     * @param {object} data
+     */
     createResponder(serviceName, data) {
       return this.OvhHttp.post(`/email/domain/${serviceName}/responder`, {
         rootPath: 'apiv6',
@@ -549,36 +627,42 @@ angular.module('services').service(
     }
 
     /**
-         * Update responder
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {object} data
-         */
+     * Update responder
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {object} data
+     */
     updateResponder(serviceName, accountName, data) {
-      return this.OvhHttp.put(`/email/domain/${serviceName}/responder/${accountName}`, {
-        rootPath: 'apiv6',
-        data,
-        broadcast: 'hosting.tabs.emails.responders.refresh',
-      });
+      return this.OvhHttp.put(
+        `/email/domain/${serviceName}/responder/${accountName}`,
+        {
+          rootPath: 'apiv6',
+          data,
+          broadcast: 'hosting.tabs.emails.responders.refresh',
+        },
+      );
     }
 
     /**
-         * Delete responder
-         * @param {string} serviceName
-         * @param {string} accountName
-         */
+     * Delete responder
+     * @param {string} serviceName
+     * @param {string} accountName
+     */
     deleteResponder(serviceName, accountName) {
-      return this.OvhHttp.delete(`/email/domain/${serviceName}/responder/${accountName}`, {
-        rootPath: 'apiv6',
-        broadcast: 'hosting.tabs.emails.responders.refresh',
-      });
+      return this.OvhHttp.delete(
+        `/email/domain/${serviceName}/responder/${accountName}`,
+        {
+          rootPath: 'apiv6',
+          broadcast: 'hosting.tabs.emails.responders.refresh',
+        },
+      );
     }
 
     /**
-         * Obtain list of available ACL
-         * @param {string} serviceName
-         * @param {boolean} forceRefresh
-         */
+     * Obtain list of available ACL
+     * @param {string} serviceName
+     * @param {boolean} forceRefresh
+     */
     getAcls(serviceName, forceRefresh) {
       return this.OvhHttp.get(`/email/domain/${serviceName}/acl`, {
         rootPath: 'apiv6',
@@ -588,10 +672,10 @@ angular.module('services').service(
     }
 
     /**
-         * Create ACL
-         * @param {string} serviceName
-         * @param accountId
-         */
+     * Create ACL
+     * @param {string} serviceName
+     * @param accountId
+     */
     createAcl(serviceName, accountId) {
       return this.OvhHttp.post(`/email/domain/${serviceName}/acl`, {
         rootPath: 'apiv6',
@@ -604,10 +688,10 @@ angular.module('services').service(
     }
 
     /**
-         * Get ACL
-         * @param {string} serviceName
-         * @param {string} accountId
-         */
+     * Get ACL
+     * @param {string} serviceName
+     * @param {string} accountId
+     */
     getAcl(serviceName, accountId) {
       return this.OvhHttp.get(`/email/domain/${serviceName}/acl/${accountId}`, {
         rootPath: 'apiv6',
@@ -615,31 +699,39 @@ angular.module('services').service(
     }
 
     /**
-         * Delete ACL
-         * @param {string} serviceName
-         * @param {string} accountId
-         */
+     * Delete ACL
+     * @param {string} serviceName
+     * @param {string} accountId
+     */
     deleteAcl(serviceName, accountId) {
-      return this.OvhHttp.delete(`/email/domain/${serviceName}/acl/${accountId}`, {
-        rootPath: 'apiv6',
-        clearAllCache: this.cache.acl,
-        broadcast: 'hosting.tabs.emails.acls.refresh',
-      });
+      return this.OvhHttp.delete(
+        `/email/domain/${serviceName}/acl/${accountId}`,
+        {
+          rootPath: 'apiv6',
+          clearAllCache: this.cache.acl,
+          broadcast: 'hosting.tabs.emails.acls.refresh',
+        },
+      );
     }
 
     /**
-         * Get tasks
-         * @param {string} serviceName
-         * @returns {Promise}
-         */
+     * Get tasks
+     * @param {string} serviceName
+     * @returns {Promise}
+     */
     getAllTaskIds(serviceName) {
-      const actions = ['account', 'filter', 'mailinglist', 'redirection', 'responder'];
+      const actions = [
+        'account',
+        'filter',
+        'mailinglist',
+        'redirection',
+        'responder',
+      ];
 
       return this.$q.all(actions.map(action =>
-        this.OvhHttp
-          .get(`/email/domain/${serviceName}/task/${action}`, {
-            rootPath: 'apiv6',
-          })
+        this.OvhHttp.get(`/email/domain/${serviceName}/task/${action}`, {
+          rootPath: 'apiv6',
+        })
           .then(data => ({
             action,
             ids: data,
@@ -648,77 +740,92 @@ angular.module('services').service(
     }
 
     /**
-         * Get task
-         * @param {string} serviceName
-         * @param {object} opts
-         */
+     * Get task
+     * @param {string} serviceName
+     * @param {object} opts
+     */
     getTask(serviceName, opts) {
-      return this.OvhHttp.get(`/email/domain/${serviceName}/task/${opts.action}/${opts.id}`, {
-        rootPath: 'apiv6',
-      });
-    }
-
-    /**
-         * Get delegation
-         * @param {string} serviceName
-         * @param {string} accountName
-         */
-    getDelegationList(serviceName, accountName) {
-      return this.OvhHttp.get(`/email/domain/${serviceName}/account/${accountName}/delegation`, {
-        rootPath: 'apiv6',
-        cache: this.cache.delegation,
-      });
-    }
-
-    /**
-         * Get unique delegation
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} accountId
-         */
-    getDelegation(serviceName, accountName, accountId) {
-      return this.OvhHttp.get(`/email/domain/${serviceName}/account/${accountName}/delegation/${accountId}`, {
-        rootPath: 'apiv6',
-        cache: this.cache.delegation,
-      });
-    }
-
-    /**
-         * Add delegation
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} accountId
-         */
-    addDelegation(serviceName, accountName, accountId) {
-      return this.OvhHttp.post(`/email/domain/${serviceName}/account/${accountName}/delegation`, {
-        rootPath: 'apiv6',
-        data: {
-          accountId,
+      return this.OvhHttp.get(
+        `/email/domain/${serviceName}/task/${opts.action}/${opts.id}`,
+        {
+          rootPath: 'apiv6',
         },
-        clearAllCache: this.cache.delegation,
-        broadcast: 'hosting.tabs.emails.delegation.refresh',
-      });
+      );
     }
 
     /**
-         * Remove delegation
-         * @param {string} serviceName
-         * @param {string} accountName
-         * @param {string} accountId
-         */
+     * Get delegation
+     * @param {string} serviceName
+     * @param {string} accountName
+     */
+    getDelegationList(serviceName, accountName) {
+      return this.OvhHttp.get(
+        `/email/domain/${serviceName}/account/${accountName}/delegation`,
+        {
+          rootPath: 'apiv6',
+          cache: this.cache.delegation,
+        },
+      );
+    }
+
+    /**
+     * Get unique delegation
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} accountId
+     */
+    getDelegation(serviceName, accountName, accountId) {
+      return this.OvhHttp.get(
+        `/email/domain/${serviceName}/account/${accountName}/delegation/${accountId}`,
+        {
+          rootPath: 'apiv6',
+          cache: this.cache.delegation,
+        },
+      );
+    }
+
+    /**
+     * Add delegation
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} accountId
+     */
+    addDelegation(serviceName, accountName, accountId) {
+      return this.OvhHttp.post(
+        `/email/domain/${serviceName}/account/${accountName}/delegation`,
+        {
+          rootPath: 'apiv6',
+          data: {
+            accountId,
+          },
+          clearAllCache: this.cache.delegation,
+          broadcast: 'hosting.tabs.emails.delegation.refresh',
+        },
+      );
+    }
+
+    /**
+     * Remove delegation
+     * @param {string} serviceName
+     * @param {string} accountName
+     * @param {string} accountId
+     */
     removeDelegation(serviceName, accountName, accountId) {
-      return this.OvhHttp.delete(`/email/domain/${serviceName}/account/${accountName}/delegation/${accountId}`, {
-        rootPath: 'apiv6',
-        clearAllCache: this.cache.delegation,
-        broadcast: 'hosting.tabs.emails.delegation.refresh',
-      });
+      return this.OvhHttp.delete(
+        `/email/domain/${serviceName}/account/${accountName}/delegation/${accountId}`,
+        {
+          rootPath: 'apiv6',
+          clearAllCache: this.cache.delegation,
+          broadcast: 'hosting.tabs.emails.delegation.refresh',
+        },
+      );
     }
 
     /**
-         * Obtain Emails delegation
-         * @param {string|null} domain
-         * @param {string|null} accountName
-         */
+     * Obtain Emails delegation
+     * @param {string|null} domain
+     * @param {string|null} accountName
+     */
     getDelegatedEmails(domain, accountName) {
       return this.OvhHttp.get('/email/domain/delegatedAccount', {
         rootPath: 'apiv6',
@@ -730,9 +837,9 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain delegated account from email
-         * @param {string} email
-         */
+     * Obtain delegated account from email
+     * @param {string} email
+     */
     getDelegatedEmail(email) {
       return this.OvhHttp.get(`/email/domain/delegatedAccount/${email}`, {
         rootPath: 'apiv6',
@@ -741,10 +848,10 @@ angular.module('services').service(
     }
 
     /**
-         * Update delegated account
-         * @param {string} email
-         * @param data
-         */
+     * Update delegated account
+     * @param {string} email
+     * @param data
+     */
     updateDelegatedAccount(email, data) {
       return this.OvhHttp.put(`/email/domain/delegatedAccount/${email}`, {
         rootPath: 'apiv6',
@@ -755,194 +862,240 @@ angular.module('services').service(
     }
 
     /**
-         * Change delegated account password
-         * @param {string} email
-         * @param {object} data
-         */
+     * Change delegated account password
+     * @param {string} email
+     * @param {object} data
+     */
     changePasswordDelegatedAccount(email, data) {
-      return this.OvhHttp.post(`/email/domain/delegatedAccount/${email}/changePassword`, {
-        rootPath: 'apiv6',
-        data,
-        clearAllCache: this.cache.delegated,
-      });
+      return this.OvhHttp.post(
+        `/email/domain/delegatedAccount/${email}/changePassword`,
+        {
+          rootPath: 'apiv6',
+          data,
+          clearAllCache: this.cache.delegated,
+        },
+      );
     }
 
     /**
-         * Update delegated account usage
-         * @param {string} email
-         */
+     * Update delegated account usage
+     * @param {string} email
+     */
     updateDelegatedUsage(email) {
-      return this.OvhHttp.post(`/email/domain/delegatedAccount/${email}/updateUsage`, {
-        rootPath: 'apiv6',
-        clearAllCache: this.cache.delegated,
-      });
+      return this.OvhHttp.post(
+        `/email/domain/delegatedAccount/${email}/updateUsage`,
+        {
+          rootPath: 'apiv6',
+          clearAllCache: this.cache.delegated,
+        },
+      );
     }
 
     /**
-         * Get delegated account usage
-         * @param {string} email
-         */
+     * Get delegated account usage
+     * @param {string} email
+     */
     getEmailDelegatedUsage(email) {
-      return this.OvhHttp.post(`/email/domain/delegatedAccount/${email}/usage`, {
-        rootPath: 'apiv6',
-        clearAllCache: this.cache.delegated,
-      });
+      return this.OvhHttp.post(
+        `/email/domain/delegatedAccount/${email}/usage`,
+        {
+          rootPath: 'apiv6',
+          clearAllCache: this.cache.delegated,
+        },
+      );
     }
 
     /**
-         * Obtain a list of available delegated account filters
-         * @param {string} accountName
-         */
+     * Obtain a list of available delegated account filters
+     * @param {string} accountName
+     */
     getDelegatedFilters(accountName) {
-      return this.OvhHttp.get(`/email/domain/delegatedAccount/${accountName}/filter`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/delegatedAccount/${accountName}/filter`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Get delegated account filter details
-         * @param {string} accountName
-         * @param {string} filterName
-         */
+     * Get delegated account filter details
+     * @param {string} accountName
+     * @param {string} filterName
+     */
     getDelegatedFilter(accountName, filterName) {
-      return this.OvhHttp.get(`/email/domain/delegatedAccount/${accountName}/filter/${filterName}`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Create delegated account filter
-         * @param {string} accountName
-         * @param filter
-         * @param rules
-         * @returns {Promise}
-         */
+     * Create delegated account filter
+     * @param {string} accountName
+     * @param filter
+     * @param rules
+     * @returns {Promise}
+     */
     createDelegatedFilter(accountName, filter, rules) {
       const defer = this.$q.defer();
 
-      this.OvhHttp
-        .post(`/email/domain/delegatedAccount/${accountName}/filter`, {
+      this.OvhHttp.post(
+        `/email/domain/delegatedAccount/${accountName}/filter`,
+        {
           rootPath: 'apiv6',
           data: filter,
           broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
-        })
-        .then(() => this.createDelegatedRules(accountName, filter.name, rules).then(data => defer.resolve(data)).catch(err => defer.reject(err)))
+        },
+      )
+        .then(() =>
+          this.createDelegatedRules(accountName, filter.name, rules)
+            .then(data => defer.resolve(data))
+            .catch(err => defer.reject(err)))
         .catch(err => defer.reject(err));
 
       return defer.promise;
     }
 
     /**
-         * Update delegated account filter
-         * @param {string} accountName
-         * @param filter
-         * @param rules
-         * @returns {Promise}
-         */
+     * Update delegated account filter
+     * @param {string} accountName
+     * @param filter
+     * @param rules
+     * @returns {Promise}
+     */
     updateDelegatedFilter(accountName, filter, rules) {
       const defer = this.$q.defer();
 
-      this.deleteDelegatedFilter(accountName, filter.name).then(() => this.createDelegatedFilter(accountName, filter, rules).then(data => defer.resolve(data)).catch(err => defer.reject(err))).catch(err => defer.reject(err));
+      this.deleteDelegatedFilter(accountName, filter.name)
+        .then(() =>
+          this.createDelegatedFilter(accountName, filter, rules)
+            .then(data => defer.resolve(data))
+            .catch(err => defer.reject(err)))
+        .catch(err => defer.reject(err));
 
       return defer.promise;
     }
 
     /**
-         * Delete delegated account filter
-         * @param {string} accountName
-         * @param {string} filterName
-         */
+     * Delete delegated account filter
+     * @param {string} accountName
+     * @param {string} filterName
+     */
     deleteDelegatedFilter(accountName, filterName) {
-      return this.OvhHttp.delete(`/email/domain/delegatedAccount/${accountName}/filter/${filterName}`, {
-        rootPath: 'apiv6',
-        broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
-      });
+      return this.OvhHttp.delete(
+        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}`,
+        {
+          rootPath: 'apiv6',
+          broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
+        },
+      );
     }
 
     /**
-         * Active or deactive a delegated account filter
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param data
-         */
+     * Active or deactive a delegated account filter
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param data
+     */
     changeDelegatedFilterActivity(accountName, filterName, data) {
-      return this.OvhHttp.post(`/email/domain/delegatedAccount/${accountName}/filter/${filterName}/changeActivity`, {
-        rootPath: 'apiv6',
-        data,
-        broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
-      });
+      return this.OvhHttp.post(
+        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/changeActivity`,
+        {
+          rootPath: 'apiv6',
+          data,
+          broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
+        },
+      );
     }
 
     /**
-         * Change delegated account filter priority
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param data
-         */
+     * Change delegated account filter priority
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param data
+     */
     changeDelegatedFilterPriority(accountName, filterName, data) {
-      return this.OvhHttp.post(`/email/domain/delegatedAccount/${accountName}/filter/${filterName}/changePriority`, {
-        rootPath: 'apiv6',
-        data,
-        broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
-      });
+      return this.OvhHttp.post(
+        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/changePriority`,
+        {
+          rootPath: 'apiv6',
+          data,
+          broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
+        },
+      );
     }
 
     /**
-         * Create delegated account rule
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param data
-         */
+     * Create delegated account rule
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param data
+     */
     createDelegatedRule(accountName, filterName, data) {
-      return this.OvhHttp.post(`/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule`, {
-        rootPath: 'apiv6',
-        data,
-      });
+      return this.OvhHttp.post(
+        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule`,
+        {
+          rootPath: 'apiv6',
+          data,
+        },
+      );
     }
 
     /**
-         * Create delegated account associated rules
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param {array} rules
-         * @returns {Promise}
-         */
+     * Create delegated account associated rules
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param {array} rules
+     * @returns {Promise}
+     */
     createDelegatedRules(accountName, filterName, rules) {
       const promises = _.map(rules, rule =>
-        this.OvhHttp.post(`/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule`, {
-          rootPath: 'apiv6',
-          data: {
-            operand: rule.operand,
-            value: rule.value,
-            header: rule.header,
+        this.OvhHttp.post(
+          `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule`,
+          {
+            rootPath: 'apiv6',
+            data: {
+              operand: rule.operand,
+              value: rule.value,
+              header: rule.header,
+            },
           },
-        }));
+        ));
 
       return this.$q.all(promises);
     }
 
     /**
-         * Get all rules from delegated account
-         * @param {string} accountName
-         * @param {string} filterName
-         * @returns {Promise}
-         */
+     * Get all rules from delegated account
+     * @param {string} accountName
+     * @param {string} filterName
+     * @returns {Promise}
+     */
     getDelegatedRules(accountName, filterName) {
       const defer = this.$q.defer();
       const promises = [];
       const rules = [];
 
-      this.OvhHttp
-        .get(`/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule`, {
+      this.OvhHttp.get(
+        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule`,
+        {
           rootPath: 'apiv6',
-        })
+        },
+      )
         .then((rulesId) => {
           rulesId.forEach((id) => {
-            promises.push(this.getDelegatedRule(accountName, filterName, id).then(rule => rules.push(rule)));
+            promises.push(this.getDelegatedRule(accountName, filterName, id).then(rule =>
+              rules.push(rule)));
           });
 
           // Resolve when all promise are resolve
-          this.$q.all(promises).then(() => defer.resolve(rules)).catch(() => defer.resolve(rules));
+          this.$q
+            .all(promises)
+            .then(() => defer.resolve(rules))
+            .catch(() => defer.resolve(rules));
         })
         .catch(() => defer.resolve([]));
 
@@ -950,138 +1103,173 @@ angular.module('services').service(
     }
 
     /**
-         * Get rule from delegated account
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param {string} id
-         */
+     * Get rule from delegated account
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param {string} id
+     */
     getDelegatedRule(accountName, filterName, id) {
-      return this.OvhHttp.get(`/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule/${id}`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule/${id}`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Delete all rules form delegated account
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param {array} rulesId
-         */
+     * Delete all rules form delegated account
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param {array} rulesId
+     */
     deleteDelegatedRules(accountName, filterName, rulesId) {
-      return this.$q.all(_.map(rulesId, id => this.deleteDelegatedRule(accountName, filterName, id)));
+      return this.$q.all(_.map(rulesId, id =>
+        this.deleteDelegatedRule(accountName, filterName, id)));
     }
 
     /**
-         * Delete rule from delegated account
-         * @param {string} accountName
-         * @param {string} filterName
-         * @param {string} id
-         */
+     * Delete rule from delegated account
+     * @param {string} accountName
+     * @param {string} filterName
+     * @param {string} id
+     */
     deleteDelegatedRule(accountName, filterName, id) {
-      return this.OvhHttp.delete(`/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule/${id}`, {
-        rootPath: 'apiv6',
-        broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
-      });
+      return this.OvhHttp.delete(
+        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule/${id}`,
+        {
+          rootPath: 'apiv6',
+          broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
+        },
+      );
     }
 
     /**
-         * Get a delegated responder
-         * @param {string} email
-         */
+     * Get a delegated responder
+     * @param {string} email
+     */
     getDelegatedResponder(email) {
-      return this.OvhHttp.get(`/email/domain/delegatedAccount/${email}/responder`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/delegatedAccount/${email}/responder`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Create responder
-         * @param {string} email
-         * @param {object} data
-         */
+     * Create responder
+     * @param {string} email
+     * @param {object} data
+     */
     createDelegatedResponder(email, data) {
-      return this.OvhHttp.post(`/email/domain/delegatedAccount/${email}/responder`, {
-        rootPath: 'apiv6',
-        data,
-        broadcast: 'hosting.tabs.delegate.responders.refresh',
-      });
+      return this.OvhHttp.post(
+        `/email/domain/delegatedAccount/${email}/responder`,
+        {
+          rootPath: 'apiv6',
+          data,
+          broadcast: 'hosting.tabs.delegate.responders.refresh',
+        },
+      );
     }
 
     /**
-         * Update responder
-         * @param {string} email
-         * @param {object} data
-         */
+     * Update responder
+     * @param {string} email
+     * @param {object} data
+     */
     updateDelegatedResponder(email, data) {
-      return this.OvhHttp.put(`/email/domain/delegatedAccount/${email}/responder`, {
-        rootPath: 'apiv6',
-        data,
-        broadcast: 'hosting.tabs.delegate.responders.refresh',
-      });
+      return this.OvhHttp.put(
+        `/email/domain/delegatedAccount/${email}/responder`,
+        {
+          rootPath: 'apiv6',
+          data,
+          broadcast: 'hosting.tabs.delegate.responders.refresh',
+        },
+      );
     }
 
     /**
-         * Delete responder
-         * @param {string} email
-         */
+     * Delete responder
+     * @param {string} email
+     */
     deleteDelegatedResponder(email) {
-      return this.OvhHttp.delete(`/email/domain/delegatedAccount/${email}/responder`, {
-        rootPath: 'apiv6',
-        broadcast: 'hosting.tabs.delegate.responders.refresh',
-      });
+      return this.OvhHttp.delete(
+        `/email/domain/delegatedAccount/${email}/responder`,
+        {
+          rootPath: 'apiv6',
+          broadcast: 'hosting.tabs.delegate.responders.refresh',
+        },
+      );
     }
 
     /**
-         * Obtain a list of available services
-         * @param {string} domain
-         * @param {string} accountName
-         * @param {string} type
-         */
+     * Obtain a list of available services
+     * @param {string} domain
+     * @param {string} accountName
+     * @param {string} type
+     */
     getDestinationServices(domain, accountName, type) {
-      return this.OvhHttp.get(`/email/domain/${domain}/account/${accountName}/migrate`, {
-        rootPath: 'apiv6',
-        params: { type },
-      });
+      return this.OvhHttp.get(
+        `/email/domain/${domain}/account/${accountName}/migrate`,
+        {
+          rootPath: 'apiv6',
+          params: { type },
+        },
+      );
     }
 
     /**
-         * Get migration service details
-         * @param {string} domain
-         * @param {string} accountName
-         * @param {string} destinationServiceName
-         */
+     * Get migration service details
+     * @param {string} domain
+     * @param {string} accountName
+     * @param {string} destinationServiceName
+     */
     getDestinationService(domain, accountName, destinationServiceName) {
-      return this.OvhHttp.get(`/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Obtain a list of email address available for migration
-         * @param {string} domain
-         * @param {string} accountName
-         * @param {string} destinationServiceName
-         */
+     * Obtain a list of email address available for migration
+     * @param {string} domain
+     * @param {string} accountName
+     * @param {string} destinationServiceName
+     */
     getDestinationEmailAddresses(domain, accountName, destinationServiceName) {
-      return this.OvhHttp.get(`/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Check if it's possible to migrate
-         * @param {string} domain
-         * @param {string} accountName
-         * @param {string} destinationServiceName
-         * @param {string} destinationEmailAddress
-         */
-    checkMigrate(domain, accountName, destinationServiceName, destinationEmailAddress) {
+     * Check if it's possible to migrate
+     * @param {string} domain
+     * @param {string} accountName
+     * @param {string} destinationServiceName
+     * @param {string} destinationEmailAddress
+     */
+    checkMigrate(
+      domain,
+      accountName,
+      destinationServiceName,
+      destinationEmailAddress,
+    ) {
       const defer = this.$q.defer();
 
-      this.OvhHttp
-        .get(`/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress/${destinationEmailAddress}/checkMigrate`, {
+      this.OvhHttp.get(
+        `/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress/${destinationEmailAddress}/checkMigrate`,
+        {
           rootPath: 'apiv6',
-        })
+        },
+      )
         .then((data) => {
           // error codes are returned in success
           if (_.isArray(data.error) && !_.isEmpty(data.error)) {
@@ -1090,24 +1278,35 @@ angular.module('services').service(
             defer.resolve(data);
           }
         })
-        .catch((err) => { defer.reject(err); });
+        .catch((err) => {
+          defer.reject(err);
+        });
 
       return defer.promise;
     }
 
     /**
-         * Migrate account to destination account
-         * @param {string} domain
-         * @param {string} accountName
-         * @param {string} destinationServiceName
-         * @param {string} destinationEmailAddress
-         * @param {password} password
-         */
-    migrateAccountToDestinationAccount(domain, accountName, destinationServiceName, destinationEmailAddress, password) {
-      return this.OvhHttp.post(`/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress/${destinationEmailAddress}/migrate`, {
-        rootPath: 'apiv6',
-        data: { password },
-      });
+     * Migrate account to destination account
+     * @param {string} domain
+     * @param {string} accountName
+     * @param {string} destinationServiceName
+     * @param {string} destinationEmailAddress
+     * @param {password} password
+     */
+    migrateAccountToDestinationAccount(
+      domain,
+      accountName,
+      destinationServiceName,
+      destinationEmailAddress,
+      password,
+    ) {
+      return this.OvhHttp.post(
+        `/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress/${destinationEmailAddress}/migrate`,
+        {
+          rootPath: 'apiv6',
+          data: { password },
+        },
+      );
     }
   },
 );

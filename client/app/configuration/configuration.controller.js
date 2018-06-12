@@ -14,7 +14,11 @@ angular.module('App').controller(
 
       this.User.getUser()
         .then((user) => {
-          this.allGuides = _.get(this.constants, `urls.${user.ovhSubsidiary}.guides.all`, this.constants.urls.FR.guides.all);
+          this.allGuides = _.get(
+            this.constants,
+            `urls.${user.ovhSubsidiary}.guides.all`,
+            this.constants.urls.FR.guides.all,
+          );
         })
         .catch(() => {
           this.allGuides = this.constants.urls.FR.guides.all;
@@ -28,7 +32,9 @@ angular.module('App').controller(
     }
 
     unSelectProduct() {
-      this.Products.removeSelectedProduct().then(p => (this.$scope.product = p));
+      this.Products.removeSelectedProduct().then((p) => {
+        this.$scope.product = p;
+      });
     }
 
     selectTypeOfGuide(typeOfGuide) {

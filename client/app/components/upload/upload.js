@@ -1,6 +1,6 @@
 angular.module('App').config([
   '$routeProvider',
-  function ($routeProvider) {
+  ($routeProvider) => {
     $routeProvider.when('/upload', {
       templateUrl: 'components/upload/upload.html',
       resolve: {

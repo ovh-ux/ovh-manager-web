@@ -18,12 +18,23 @@ angular.module('App').controller(
 
     modifyUser() {
       this.$scope.resetAction();
-      return this.Hosting.modifyUserLogs(this.$stateParams.productId, this.model.user.login, this.model.user.description)
+      return this.Hosting.modifyUserLogs(
+        this.$stateParams.productId,
+        this.model.user.login,
+        this.model.user.description,
+      )
         .then(() => {
-          this.Alerter.success(this.$scope.tr('hosting_tab_USER_LOGS_configuration_user_modify_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('hosting_tab_USER_LOGS_configuration_user_modify_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_USER_LOGS_configuration_user_modify_fail'), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_USER_LOGS_configuration_user_modify_fail'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
         });
     }
   },

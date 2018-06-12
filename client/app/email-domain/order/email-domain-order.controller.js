@@ -57,9 +57,8 @@ angular.module('App').controller(
         this.urls.mxPlanProductDescription = page;
       });
 
-      return this.Domain.getDomains().then((domains) => {
-        this.list.domains = domains;
-      })
+      return this.Domain.getDomains()
+        .then((domains) => { this.list.domains = domains; })
         .catch(() => this.Alerter.error(this.$scope.tr('mxPlan_order_step1_error'), this.$scope.alerts.order))
         .finally(() => { this.loading.init = false; });
     }
@@ -84,7 +83,10 @@ angular.module('App').controller(
 
     selectOffer() {
       this.selectedOrder.contractsValidated = false;
-      if (this.selectedOrder.config.domain && this.selectedOrder.config.domain.length && this.selectedOrder.config.offer && this.selectedOrder.config.offer.length) {
+      if (this.selectedOrder.config.domain
+          && this.selectedOrder.config.domain.length
+          && this.selectedOrder.config.offer
+          && this.selectedOrder.config.offer.length) {
         this.order = null;
         this.selectedOrder.duration = null;
         this.getDurations();
@@ -112,28 +114,30 @@ angular.module('App').controller(
     loadPrices(durations) {
       this.loading.prices = true;
       const queue = _.map(durations, duration =>
-        this.MXPlan.orderPrice(this.selectedOrder.config.domain, this.selectedOrder.config.offer, duration).then((details) => {
-          this.durations.details[duration] = details;
-        }));
+        this.MXPlan
+          .orderPrice(this.selectedOrder.config.domain, this.selectedOrder.config.offer, duration)
+          .then((details) => {
+            this.durations.details[duration] = details;
+          }));
 
       return this.$q
         .all(queue)
         .then(() => {
           if (durations && durations.length === 1) {
-            [this.selectedOrder.duration] = durations;
+            this.selectedOrder.duration = durations[0];
           }
         })
         .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('mxPlan_order_step2_price_fail'), err, this.$scope.alerts.order))
-        .finally(() => { this.loading.prices = false; });
+        .finally(() => (this.loading.prices = false));
     }
 
     generateBc() {
       this.loading.bc = true;
       this.MXPlan
         .orderMxPlan(this.selectedOrder.config.domain, this.selectedOrder.offer.offer, this.selectedOrder.offer.duration)
-        .then((details) => { this.order = details; })
+        .then(details => (this.order = details))
         .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('mxPlan_order_step3_fail'), err, this.$scope.alerts.order))
-        .catch(() => { this.loading.bc = false; });
+        .catch(() => (this.loading.bc = false));
     }
 
     openBc() {

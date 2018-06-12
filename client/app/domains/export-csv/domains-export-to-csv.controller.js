@@ -2,13 +2,13 @@ angular.module('App').controller(
   'DomainsToCsvCtrl',
   class DomainsToCsvCtrl {
     /**
-       * Constructor
-       * @param $scope
-       * @param $rootScope
-       * @param $q
-       * @param Domain
-       * @param exportCsv
-       */
+         * Constructor
+         * @param $scope
+         * @param $rootScope
+         * @param $q
+         * @param Domain
+         * @param exportCsv
+         */
     constructor($scope, $rootScope, $q, Domain, exportCsv) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
@@ -92,8 +92,8 @@ angular.module('App').controller(
     }
 
     /**
-       * Export Accounts to CSV file
-       */
+         * Export Accounts to CSV file
+         */
     exportAccountsToCsv() {
       const choices = _.filter(this.csvExportOptions, opt => opt.checked);
       const header = _.map(choices, opt => this.$scope.tr(`domains_action_export_csv_form_${opt.label}_label`));
@@ -123,7 +123,13 @@ angular.module('App').controller(
 
               return this.Domain.getDetails(zone, requestsNeeded).then((domain) => {
                 if (domain) {
-                  const data = _.map(options.choices, opt => (opt.transform ? opt.transform(domain[opt.modelKey], options.translations) : domain[opt.modelKey]));
+                  const data =
+                    _.map(
+                      options.choices,
+                      opt => (opt.transform ?
+                        opt.transform(domain[opt.modelKey], options.translations) :
+                        domain[opt.modelKey]),
+                    );
                   options.datas.push(data);
                 }
               });

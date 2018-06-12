@@ -2,14 +2,14 @@ angular.module('App').controller(
   'MailingListsCreateCtrl',
   class MailingListsCreateCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $q
-         * @param $stateParams
-         * @param Alerter
-         * @param MailingLists
-         * @param User
-         */
+     * Constructor
+     * @param $scope
+     * @param $q
+     * @param $stateParams
+     * @param Alerter
+     * @param MailingLists
+     * @param User
+     */
     constructor($scope, $q, $stateParams, Alerter, MailingLists, User) {
       this.$scope = $scope;
       this.$q = $q;
@@ -65,26 +65,47 @@ angular.module('App').controller(
           this.limits = limits;
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('email_tab_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_error'),
+            err,
+            this.$scope.alerts.main,
+          );
           this.$scope.resetAction();
         })
-        .finally(() => (this.loading.languages = false));
+        .finally(() => {
+          this.loading.languages = false;
+        });
     }
 
     mlNameCheck(input) {
-      input.$setValidity('unique', this.mailingLists.length === 0 || _.indexOf(this.mailingLists, this.model.mlName) === -1);
+      input.$setValidity(
+        'unique',
+        this.mailingLists.length === 0 ||
+          _.indexOf(this.mailingLists, this.model.mlName) === -1,
+      );
     }
 
     emailCheck(input) {
-      input.$setValidity('email', this.MailingLists.constructor.isMailValid(input.$viewValue));
+      input.$setValidity(
+        'email',
+        this.MailingLists.constructor.isMailValid(input.$viewValue),
+      );
     }
 
     selectReplyTo() {
-      this.model.replyTo = this.replyToSelector === this.constants.REPLY_TO_EMAIL ? '' : this.replyToSelector;
+      this.model.replyTo =
+        this.replyToSelector === this.constants.REPLY_TO_EMAIL
+          ? ''
+          : this.replyToSelector;
     }
 
     selectModerationMsg() {
-      return this.MailingLists.getMailingListLimits(this.model.mlModerationMsg, true).then(limits => (this.limits = limits));
+      return this.MailingLists.getMailingListLimits(
+        this.model.mlModerationMsg,
+        true,
+      ).then((limits) => {
+        this.limits = limits;
+      });
     }
 
     //---------
@@ -93,15 +114,18 @@ angular.module('App').controller(
 
     summary() {
       this.loading.guides = true;
-      this.User
-        .getUrlOf('guides')
+      this.User.getUrlOf('guides')
         .then((guides) => {
           if (guides && guides.emailsCreateMailingListGuide) {
             this.guide = guides.emailsCreateMailingListGuide;
           }
         })
-        .catch(() => (this.guide = null))
-        .finally(() => (this.loading.guides = false));
+        .catch(() => {
+          this.guide = null;
+        })
+        .finally(() => {
+          this.loading.guides = false;
+        });
     }
 
     //------------------------
@@ -109,20 +133,31 @@ angular.module('App').controller(
     //------------------------
 
     createMailingList() {
-      return this.MailingLists
-        .createMailingList(this.$stateParams.productId, {
-          name: this.model.mlName,
-          language: this.model.mlLanguage,
-          ownerEmail: this.model.mlOwner,
-          replyTo: this.model.replyTo,
-          options: {
-            moderatorMessage: !!this.model.mlModerationMsg,
-            usersPostOnly: this.model.mlModerationMsg === null ? false : !this.model.mlModerationMsg,
-            subscribeByModerator: this.model.mlSubscribersModeration,
-          },
-        })
-        .then(() => this.Alerter.success(this.$scope.tr('mailing_list_tab_modal_create_list_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('mailing_list_tab_modal_create_list_error'), err, this.$scope.alerts.main))
+      return this.MailingLists.createMailingList(this.$stateParams.productId, {
+        name: this.model.mlName,
+        language: this.model.mlLanguage,
+        ownerEmail: this.model.mlOwner,
+        replyTo: this.model.replyTo,
+        options: {
+          moderatorMessage: !!this.model.mlModerationMsg,
+          usersPostOnly:
+            this.model.mlModerationMsg === null
+              ? false
+              : !this.model.mlModerationMsg,
+          subscribeByModerator: this.model.mlSubscribersModeration,
+        },
+      })
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('mailing_list_tab_modal_create_list_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('mailing_list_tab_modal_create_list_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => this.$scope.resetAction());
     }
   },

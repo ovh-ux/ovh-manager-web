@@ -2,15 +2,22 @@ angular.module('App').controller(
   'MailingListsSubscribersCtrl',
   class MailingListsSubscribersCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $filter
-         * @param $stateParams
-         * @param Alerter
-         * @param MailingLists
-         * @param exportCsv
-         */
-    constructor($scope, $filter, $stateParams, Alerter, MailingLists, exportCsv) {
+     * Constructor
+     * @param $scope
+     * @param $filter
+     * @param $stateParams
+     * @param Alerter
+     * @param MailingLists
+     * @param exportCsv
+     */
+    constructor(
+      $scope,
+      $filter,
+      $stateParams,
+      Alerter,
+      MailingLists,
+      exportCsv,
+    ) {
       this.$scope = $scope;
       this.$filter = $filter;
       this.$stateParams = $stateParams;
@@ -31,38 +38,59 @@ angular.module('App').controller(
       };
       this.search = { subscribers: '' };
 
-      this.$scope.$on('hosting.tabs.mailingLists.subscribers.refresh', () => this.refreshTableSubscribers());
-      this.$scope.$on('mailingLists.subscribers.poll.start', (pollObject, task) => {
-        if (task.account === this.mailingList.name) {
-          const action = task.action.split(':')[0];
-          if (_.indexOf(['add', 'del'], action) !== -1) {
-            this.subscribers.updating = true;
+      this.$scope.$on('hosting.tabs.mailingLists.subscribers.refresh', () =>
+        this.refreshTableSubscribers());
+      this.$scope.$on(
+        'mailingLists.subscribers.poll.start',
+        (pollObject, task) => {
+          if (task.account === this.mailingList.name) {
+            const action = task.action.split(':')[0];
+            if (_.indexOf(['add', 'del'], action) !== -1) {
+              this.subscribers.updating = true;
+            }
           }
-        }
-      });
-      this.$scope.$on('mailingLists.subscribers.poll.done', (pollObject, task) => {
-        if (task.account === this.mailingList.name) {
-          const action = task.action.split(':')[0];
-          if (_.indexOf(['add', 'del'], action) !== -1) {
-            this.runPolling().then((hasPolling) => {
-              if (!hasPolling) {
-                this.subscribers.updating = false;
-                this.Alerter.resetMessage(this.$scope.alerts.main);
-                this.refreshTableSubscribers(true);
-              }
-            });
+        },
+      );
+      this.$scope.$on(
+        'mailingLists.subscribers.poll.done',
+        (pollObject, task) => {
+          if (task.account === this.mailingList.name) {
+            const action = task.action.split(':')[0];
+            if (_.indexOf(['add', 'del'], action) !== -1) {
+              this.runPolling().then((hasPolling) => {
+                if (!hasPolling) {
+                  this.subscribers.updating = false;
+                  this.Alerter.resetMessage(this.$scope.alerts.main);
+                  this.refreshTableSubscribers(true);
+                }
+              });
+            }
           }
-        }
-      });
-      this.$scope.$on('mailingLists.subscribers.sendListByEmail.poll.done', () => {
-        this.Alerter.success(this.$scope.tr('mailing_list_tab_modal_sendListByEmail_sent_success'), this.$scope.alerts.main);
-      });
+        },
+      );
+      this.$scope.$on(
+        'mailingLists.subscribers.sendListByEmail.poll.done',
+        () => {
+          this.Alerter.success(
+            this.$scope.tr('mailing_list_tab_modal_sendListByEmail_sent_success'),
+            this.$scope.alerts.main,
+          );
+        },
+      );
       this.$scope.$on('$destroy', () => {
-        this.MailingLists.killAllPolling({ namespace: 'mailingLists.subscribers.poll' });
-        this.MailingLists.killAllPolling({ namespace: 'mailingLists.subscribers.sendListByEmail.poll' });
+        this.MailingLists.killAllPolling({
+          namespace: 'mailingLists.subscribers.poll',
+        });
+        this.MailingLists.killAllPolling({
+          namespace: 'mailingLists.subscribers.sendListByEmail.poll',
+        });
       });
 
-      this.MailingLists.getMailingListLimits(this.mailingList.options.moderatorMessage).then(limits => (this.mailingList.limits = limits));
+      this.MailingLists
+        .getMailingListLimits(this.mailingList.options.moderatorMessage)
+        .then((limits) => {
+          this.mailingList.limits = limits;
+        });
       this.refreshTableSubscribers();
       this.runPolling();
     }
@@ -91,7 +119,10 @@ angular.module('App').controller(
             this.subscribers.selected = [];
             break;
           case 1:
-            this.subscribers.selected = _.filter(_.map(this.subscribers.details, 'email'), result => !_.some(this.subscribers.selected, result.email));
+            this.subscribers.selected = _.filter(
+              _.map(this.subscribers.details, 'email'),
+              result => !_.some(this.subscribers.selected, result.email),
+            );
             break;
           case 2:
             this.subscribers.selected = this.subscribers.ids;
@@ -109,7 +140,8 @@ angular.module('App').controller(
 
     applySelection(subscribers) {
       _.forEach(subscribers, (subscriber) => {
-        subscriber.selected = _.indexOf(this.subscribers.selected, subscriber.email) !== -1;
+        subscriber.selected = // eslint-disable-line no-param-reassign
+          _.indexOf(this.subscribers.selected, subscriber.email) !== -1;
       });
     }
 
@@ -122,14 +154,20 @@ angular.module('App').controller(
       this.subscribers.ids = null;
       this.subscribers.selected = [];
 
-      return this.MailingLists
-        .getSubscribers(this.$stateParams.productId, {
-          name: this.mailingList.name,
-          email: this.search.subscribers ? `%${this.search.subscribers}%` : null,
-          forceRefresh,
+      return this.MailingLists.getSubscribers(this.$stateParams.productId, {
+        name: this.mailingList.name,
+        email: this.search.subscribers ? `%${this.search.subscribers}%` : null,
+        forceRefresh,
+      })
+        .then((data) => {
+          this.subscribers.ids = this.$filter('orderBy')(data);
         })
-        .then(data => (this.subscribers.ids = this.$filter('orderBy')(data)))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('mailing_list_tab_modal_get_lists_error'), err, this.$scope.alerts.main))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('mailing_list_tab_modal_get_lists_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           if (_.isEmpty(this.subscribers.ids)) {
             this.loading.subscribers = false;
@@ -138,7 +176,11 @@ angular.module('App').controller(
     }
 
     transformItemSubscriber(item) {
-      return this.MailingLists.getSubscriber(this.$stateParams.productId, this.mailingList.name, item);
+      return this.MailingLists.getSubscriber(
+        this.$stateParams.productId,
+        this.mailingList.name,
+        item,
+      );
     }
 
     onTransformItemSubscribersDone(items) {
@@ -148,8 +190,9 @@ angular.module('App').controller(
     }
 
     runPolling() {
-      return this.MailingLists
-        .getTaskIds(this.$stateParams.productId, { account: this.mailingList.name })
+      return this.MailingLists.getTaskIds(this.$stateParams.productId, {
+        account: this.mailingList.name,
+      })
         .then((tasks) => {
           if (tasks.length > 0) {
             this.MailingLists.pollState(this.$stateParams.productId, {
@@ -174,7 +217,10 @@ angular.module('App').controller(
         fileName: `export_${this.mailingList.name}`,
         datas: `${this.$scope.tr('mailing_list_tab_table_header_subscriber_email')}\n${this.subscribers.ids.join('\n')}`,
       });
-      this.Alerter.success(this.$scope.tr('mailing_list_tab_export_csv_success', [data]), this.$scope.alerts.main);
+      this.Alerter.success(
+        this.$scope.tr('mailing_list_tab_export_csv_success', [data]),
+        this.$scope.alerts.main,
+      );
     }
   },
 );

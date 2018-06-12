@@ -153,7 +153,8 @@ angular.module('services').service(
           const users = _.drop(opts.users, limit);
 
           if (_.size(users) > 0) {
-            return this.addSubscribers(serviceName, _.assign(opts, { users })).then(d => [data].concat(d));
+            return this.addSubscribers(serviceName, _.assign(opts, { users }))
+              .then(d => [data].concat(d));
           }
 
           return [data];
@@ -173,7 +174,8 @@ angular.module('services').service(
           const users = _.drop(opts.users, limit);
 
           if (_.size(users) > 0) {
-            return this.deleteSubscribers(serviceName, _.assign(opts, { users })).then(d => [data].concat(d));
+            return this.deleteSubscribers(serviceName, _.assign(opts, { users }))
+              .then(d => [data].concat(d));
           }
 
           return [data];
@@ -252,7 +254,7 @@ angular.module('services').service(
       }
 
       if (!_.isArray(opts.successSates)) {
-        opts.successSates = [opts.successSates];
+        opts.successSates = [opts.successSates]; // eslint-disable-line no-param-reassign
       }
 
       this.$rootScope.$broadcast(`${opts.namespace}.start`, opts);

@@ -39,7 +39,10 @@ angular.module('App').controller(
 
     orderMoreRam() {
       if (this.database.oom.realList.length >= this.database.oom.nbOomError) {
-        this.$scope.setAction('database/ram/update/private-database-database-ram-update', this.database);
+        this.$scope.setAction(
+          'database/ram/update/private-database-database-ram-update',
+          this.database,
+        );
       } else {
         this.$scope.resetAction();
       }
@@ -57,7 +60,8 @@ angular.module('App').controller(
       return moment.duration(now.diff(end)).humanize();
     }
 
-    transformItem(item) {
+    transformItem(original) {
+      const item = _(original).clone();
       item.uptime = this.getUptime(item);
 
       item.overflow = filesize(item.sizeReached, { output: 'object' });

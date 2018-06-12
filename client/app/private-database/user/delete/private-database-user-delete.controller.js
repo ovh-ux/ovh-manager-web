@@ -15,10 +15,20 @@ angular.module('App').controller(
 
     deleteUser() {
       this.$scope.resetAction();
-      return this.PrivateDatabase
-        .deleteUser(this.$stateParams.productId, this.userToDelete.userName)
-        .then(() => this.Alerter.success(this.$scope.tr('privateDatabase_delete_user_success'), this.$scope.alerts.main))
-        .catch(() => this.Alerter.error(this.$scope.tr('privateDatabase_delete_user_fail'), this.$scope.alerts.main));
+      return this.PrivateDatabase.deleteUser(
+        this.$stateParams.productId,
+        this.userToDelete.userName,
+      )
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('privateDatabase_delete_user_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(() =>
+          this.Alerter.error(
+            this.$scope.tr('privateDatabase_delete_user_fail'),
+            this.$scope.alerts.main,
+          ));
     }
   },
 );

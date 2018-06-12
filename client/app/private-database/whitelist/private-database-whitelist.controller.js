@@ -1,7 +1,13 @@
 angular.module('App').controller(
   'PrivateDatabaseWhitelistCtrl',
   class PrivateDatabaseWhitelistListCtrl {
-    constructor(Alerter, PrivateDatabase, $scope, $stateParams, WhitelistService) {
+    constructor(
+      Alerter,
+      PrivateDatabase,
+      $scope,
+      $stateParams,
+      WhitelistService,
+    ) {
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
       this.$scope = $scope;
@@ -15,18 +21,36 @@ angular.module('App').controller(
 
       this.getList();
 
-      this.privateDatabaseService.restartPoll(this.serviceName, ['whitelist/delete', 'whitelist/create']);
+      this.privateDatabaseService.restartPoll(this.serviceName, [
+        'whitelist/delete',
+        'whitelist/create',
+      ]);
 
       _.forEach(statusToWatch, (state) => {
-        this.$scope.$on(`privateDatabase.whitelist.create.${state}`, this[`onWhitelistCreate${state}`].bind(this));
-        this.$scope.$on(`privateDatabase.whitelist.delete.${state}`, this[`onWhitelistDelete${state}`].bind(this));
+        this.$scope.$on(
+          `privateDatabase.whitelist.create.${state}`,
+          this[`onWhitelistCreate${state}`].bind(this),
+        );
+        this.$scope.$on(
+          `privateDatabase.whitelist.delete.${state}`,
+          this[`onWhitelistDelete${state}`].bind(this),
+        );
       });
-      this.$scope.$on('privateDatabase.whitelist.update.done', opts => (opts.serviceName === this.serviceName ? this.getList() : undefined));
+      this.$scope.$on(
+        'privateDatabase.whitelist.update.done',
+        opts =>
+          (opts.serviceName === this.serviceName ? this.getList() : undefined),
+      );
 
       _.forEach(['done', 'error'], (state) => {
-        this.$scope.$on(`privateDatabase.global.actions.${state}`, (e, taskOpt) => {
-          this.$scope.lockAction = taskOpt.lock ? false : this.$scope.lockAction;
-        });
+        this.$scope.$on(
+          `privateDatabase.global.actions.${state}`,
+          (e, taskOpt) => {
+            this.$scope.lockAction = taskOpt.lock
+              ? false
+              : this.$scope.lockAction;
+          },
+        );
       });
 
       this.$scope.$on('privateDatabase.global.actions.start', (e, taskOpt) => {
@@ -51,22 +75,34 @@ angular.module('App').controller(
     }
 
     editWhitelist(whitelist) {
-      this.$scope.setAction('whitelist/update/private-database-whitelist-update', whitelist);
+      this.$scope.setAction(
+        'whitelist/update/private-database-whitelist-update',
+        whitelist,
+      );
     }
 
     deleteWhitelist(whitelist) {
-      this.$scope.setAction('whitelist/delete/private-database-whitelist-delete', whitelist);
+      this.$scope.setAction(
+        'whitelist/delete/private-database-whitelist-delete',
+        whitelist,
+      );
     }
 
     transformItem(whitelist) {
-      return this.whitelistService.getWhitelist(this.serviceName, whitelist.id).catch(err => this.alerter.error(err));
+      return this.whitelistService
+        .getWhitelist(this.serviceName, whitelist.id)
+        .catch(err => this.alerter.error(err));
     }
 
     /*
             POLLING
         */
     onWhitelistCreatestart(evt, opts) {
-      this.whitelistIps.push({ ip: opts.whitelistIp, creating: true, name: '' });
+      this.whitelistIps.push({
+        ip: opts.whitelistIp,
+        creating: true,
+        name: '',
+      });
     }
 
     onWhitelistCreatedone() {
@@ -74,7 +110,10 @@ angular.module('App').controller(
     }
 
     onWhitelistCreateerror() {
-      this.alerter.error(this.$scope.tr('privateDatabase_modale_whitelist_add_fail'), this.$scope.alerts.main);
+      this.alerter.error(
+        this.$scope.tr('privateDatabase_modale_whitelist_add_fail'),
+        this.$scope.alerts.main,
+      );
       this.getList();
     }
 
@@ -82,7 +121,10 @@ angular.module('App').controller(
       let unregister = null;
 
       const todo = () => {
-        const el = _.find(this.whitelistIps, whitelist => whitelist.ip === opts.whitelistIp);
+        const el = _.find(
+          this.whitelistIps,
+          whitelist => whitelist.ip === opts.whitelistIp,
+        );
 
         if (el) {
           el.deleting = true;
@@ -96,7 +138,13 @@ angular.module('App').controller(
       if (this.whitelistIps && this.whitelistIps.length) {
         todo();
       } else {
-        unregister = this.$scope.$watch(angular.bind(this, () => this.whitelistIps && this.whitelistIps.length), todo);
+        unregister = this.$scope.$watch(
+          angular.bind(
+            this,
+            () => this.whitelistIps && this.whitelistIps.length,
+          ),
+          todo,
+        );
       }
     }
 
@@ -108,12 +156,18 @@ angular.module('App').controller(
       let unregister = null;
 
       const todo = () => {
-        const el = _.find(this.whitelistIps, whitelist => whitelist.ip === opts.whitelistIp);
+        const el = _.find(
+          this.whitelistIps,
+          whitelist => whitelist.ip === opts.whitelistIp,
+        );
 
         if (el) {
           delete el.deleting;
 
-          this.alerter.error(this.$scope.tr('privateDatabase_modale_whitelist_delete_fail'), this.$scope.alerts.main);
+          this.alerter.error(
+            this.$scope.tr('privateDatabase_modale_whitelist_delete_fail'),
+            this.$scope.alerts.main,
+          );
 
           if (unregister) {
             unregister();
@@ -124,7 +178,13 @@ angular.module('App').controller(
       if (this.whitelistIps && this.whitelistIps.length) {
         todo();
       } else {
-        unregister = this.$scope.$watch(angular.bind(this, () => this.whitelistIps && this.whitelistIps.length), todo);
+        unregister = this.$scope.$watch(
+          angular.bind(
+            this,
+            () => this.whitelistIps && this.whitelistIps.length,
+          ),
+          todo,
+        );
       }
     }
   },

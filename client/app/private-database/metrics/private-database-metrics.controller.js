@@ -1,7 +1,10 @@
 angular
   .module('App')
   .controller('PrivateDatabaseMetricsCtrl', class PrivateDatabaseMetricsCtrl {
-    constructor($scope, Alerter, ChartjsFactory, PrivateDatabase, PRIVATE_DATABASE_METRICS, translator) {
+    constructor(
+      $scope,
+      Alerter, ChartjsFactory, PrivateDatabase, PRIVATE_DATABASE_METRICS, translator,
+    ) {
       this.$scope = $scope;
 
       this.Alerter = Alerter;
@@ -30,12 +33,16 @@ angular
             throw new Error(this.translator.tr('common_temporary_error'));
           }
 
+
+          const currentDatabaseVersionChartData = this.PRIVATE_DATABASE_METRICS
+            .specificDatabaseVersionChartSelection[this.$scope.database.version];
           _(this.PRIVATE_DATABASE_METRICS.specificChartSettings)
             .filter(currentChartSettings =>
-              !_(this.PRIVATE_DATABASE_METRICS.specificDatabaseVersionChartSelection[this.$scope.database.version]).isArray() ||
-                            _(this.PRIVATE_DATABASE_METRICS.specificDatabaseVersionChartSelection[this.$scope.database.version]).includes(currentChartSettings.chartName))
+              !_(currentDatabaseVersionChartData).isArray() ||
+              _(currentDatabaseVersionChartData[this.$scope.database.version])
+                .includes(currentChartSettings.chartName))
             .forEach((currentChartSettings) => {
-              const { chartName } = currentChartSettings;
+              const { chartName } = currentChartSettings.chartName;
               const currentChartData = chartData[currentChartSettings.dataFromAPIIndex];
 
               if (!_(currentChartData).isObject()) {
@@ -44,13 +51,19 @@ angular
                   name: chartName,
                 };
               } else {
-                const settingsForAllCharts = _(this.PRIVATE_DATABASE_METRICS.settingsForAllCharts).clone(true);
-                const settingsForCurrentChart = _(settingsForAllCharts).merge(currentChartSettings).value();
+                const settingsForAllCharts =
+                  _(this.PRIVATE_DATABASE_METRICS.settingsForAllCharts).clone(true);
+                const settingsForCurrentChart =
+                  _(settingsForAllCharts).merge(currentChartSettings).value();
                 const chart = new this.ChartjsFactory(settingsForCurrentChart);
                 const serieName = this.translator.tr(`privateDatabase_metrics_${chartName}_graph_${currentChartData.metric.replace(/\./g, '_')}`);
                 const serieValue = this.constructor.getChartSeries(currentChartData);
 
-                chart.addSerie(serieName, serieValue, this.PRIVATE_DATABASE_METRICS.settingsForAllSeries);
+                chart.addSerie(
+                  serieName,
+                  serieValue,
+                  this.PRIVATE_DATABASE_METRICS.settingsForAllSeries,
+                );
 
                 this.charts[chartName] = {
                   hasData: true,

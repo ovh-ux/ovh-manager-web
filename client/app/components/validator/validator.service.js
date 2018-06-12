@@ -1,9 +1,9 @@
 angular.module('services').service('Validator', [
-  function () {
+  function validatorService() {
     const self = this;
     this.MAX_DOMAIN_LENGTH = 63;
 
-    this.isValidIpv4 = function (ip) {
+    this.isValidIpv4 = (ip) => {
       if (ip != null && _.isString(ip) && ip.split('.').length === 4) {
         return ipaddr.IPv4.isValid(ip);
       }
@@ -12,24 +12,32 @@ angular.module('services').service('Validator', [
     };
 
     // @todo use a regexp instead
-    this.isValidIpv4Block = function (block) {
+    this.isValidIpv4Block = function isValidIpv4Block(block) {
       const split = block.split('/');
-      return split.length === 2 && this.isValidIpv4(split[0]) && parseInt(split[1], 10) > 0 && parseInt(split[1], 10) < 33;
+      return (
+        split.length === 2 &&
+        this.isValidIpv4(split[0]) &&
+        parseInt(split[1], 10) > 0 &&
+        parseInt(split[1], 10) < 33
+      );
     };
 
-    this.isValidIpv6 = function (ip) {
-      return ip != null && ipaddr.IPv6.isValid(ip);
-    };
+    this.isValidIpv6 = ip => ip != null && ipaddr.IPv6.isValid(ip);
 
     // TODO use a regexp instead
-    this.isValidIpv6Block = function (block) {
+    this.isValidIpv6Block = function isValidIpv6Block(block) {
       const split = block.split('/');
-      return split.length === 2 && this.isValidIpv6(split[0]) && parseInt(split[1], 10) > 0 && parseInt(split[1], 10) < 129;
+      return (
+        split.length === 2 &&
+        this.isValidIpv6(split[0]) &&
+        parseInt(split[1], 10) > 0 &&
+        parseInt(split[1], 10) < 129
+      );
     };
 
     // opts.canBeginWithUnderscore = specifics NDD can be like: _foo._bar.example.com
     // opts.canBeginWithWildcard = specifics NDD can be like: *.foo.bar.example.com
-    this.isValidDomain = function (domain, opts = {}) {
+    this.isValidDomain = (domain, opts = {}) => {
       let inError = false;
 
       if (domain) {
@@ -40,7 +48,13 @@ angular.module('services').service('Validator', [
         inError = punycodeVersion.length > 255 || dotSplit.length < 2;
 
         // Check wildcard
-        if (!inError && ~punycodeVersion.indexOf('*') && (opts.canBeginWithWildcard ? !/^(?:\*\.)[^\*]+$/.test(punycodeVersion) : true)) {
+        if (
+          !inError &&
+          punycodeVersion.indexOf('*') !== -1 &&
+          (opts.canBeginWithWildcard
+            ? !/^(?:\*\.)[^*]+$/.test(punycodeVersion)
+            : true)
+        ) {
           inError = true;
         }
 
@@ -50,51 +64,63 @@ angular.module('services').service('Validator', [
             if (sub.length > 63 || /(?:(?:^\s*$)|(?:^-)|(?:-$))/.test(sub)) {
               inError = true;
             }
-            if (~sub.indexOf('_') && (opts.canBeginWithUnderscore ? !/^_[^_]+$/.test(sub) : true)) {
+
+            if (
+              sub.indexOf('_') === -1 &&
+              (opts.canBeginWithUnderscore ? !/^_[^_]+$/.test(sub) : true)
+            ) {
               inError = true;
             }
           });
         }
 
         // Check if it's not an IP
-        if (!inError && (self.isValidIpv4(domain) || self.isValidIpv6(domain))) {
+        if (
+          !inError &&
+          (self.isValidIpv4(domain) || self.isValidIpv6(domain))
+        ) {
           inError = true;
         }
 
         // Check chars globally
         if (!inError) {
-          inError = !/^[\w\-\.\*]+$/.test(punycodeVersion);
+          inError = !/^[\w.*-]+$/.test(punycodeVersion);
         }
       }
       return !inError;
     };
 
-    this.isValidSubDomain = function (subDomain, opts) {
-      return self.isValidDomain(`${subDomain}.example.com`, opts);
-    };
+    this.isValidSubDomain = (subDomain, opts) =>
+      self.isValidDomain(`${subDomain}.example.com`, opts);
 
-    this.isValidLetsEncryptDomain = (subdomain, domain, opts) => self.isValidDomain(subdomain + domain, opts) || (subdomain + domain).length < this.MAX_DOMAIN_LENGTH;
+    this.isValidLetsEncryptDomain = (subdomain, domain, opts) =>
+      self.isValidDomain(subdomain + domain, opts) ||
+        (subdomain + domain).length < this.MAX_DOMAIN_LENGTH;
 
     /**
-         * regexp matching
-         * x.ca
-         * x.ca:1
-         * http://x.ca:1
-         * http://x.ca
-         * https://x.ca:1
-         * https://x.ca
-         * example.com
-         * example.co.uk
-         * www.example.com
-         * example.com/path?query
-         */
+     * regexp matching
+     * x.ca
+     * x.ca:1
+     * http://x.ca:1
+     * http://x.ca
+     * https://x.ca:1
+     * https://x.ca
+     * example.com
+     * example.co.uk
+     * www.example.com
+     * example.com/path?query
+     */
     this.isValidURL = (target) => {
       let hasValidProtocol = true;
       let hasValidPort = true;
       let uri = new URI(target);
       uri = uri.normalize();
 
-      const hasPortWithoutProtocol = uri.protocol() && target.match(/:/g) && target.match(/:/g).length === 1 && !target.match(/:\//g);
+      const hasPortWithoutProtocol =
+        uri.protocol() &&
+        target.match(/:/g) &&
+        target.match(/:/g).length === 1 &&
+        !target.match(/:\//g);
 
       // fix when uri has no protocol. Without this condition, we have some mixed parts in url.parts
       if (!uri.protocol() || hasPortWithoutProtocol) {
@@ -109,7 +135,13 @@ angular.module('services').service('Validator', [
       }
       const hasValidDomain = /.+(\..+)*\.\w{2,}(\/.+)*/.test(uri.hostname());
 
-      return !!target && !/\:$/.test(target) && (hasValidDomain || self.ipaddrValid(uri.hostname())) && (!uri.protocol() || (uri.protocol() && hasValidProtocol)) && (!uri.port() || (uri.port() && hasValidPort));
+      return (
+        !!target &&
+        !/:$/.test(target) &&
+        (hasValidDomain || self.ipaddrValid(uri.hostname())) &&
+        (!uri.protocol() || (uri.protocol() && hasValidProtocol)) &&
+        (!uri.port() || (uri.port() && hasValidPort))
+      );
     };
 
     // valid an ipv4 or ipv6

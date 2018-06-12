@@ -24,7 +24,10 @@ angular.module('App').controller(
     }
 
     isPasswordMatches(input = null) {
-      const valid = !!this.dynHostLogin.password && !!this.validation.password && this.dynHostLogin.password === this.validation.password;
+      const valid =
+        !!this.dynHostLogin.password &&
+        !!this.validation.password &&
+        this.dynHostLogin.password === this.validation.password;
       if (input && typeof input.$setValidity === 'function') {
         input.$setValidity('match', valid);
       }
@@ -32,21 +35,36 @@ angular.module('App').controller(
     }
 
     loginSuffixCheck(input) {
-      input.$setValidity('login', /^[a-zA-Z0-9_\-\.]+$/.test(this.dynHostLogin.loginSuffix));
+      input.$setValidity(
+        'login',
+        /^[\w.-]+$/.test(this.dynHostLogin.loginSuffix),
+      );
     }
 
     subDomainCheck(input) {
-      input.$setValidity('subdomain', this.dynHostLogin.subDomain === '*' || this.Validator.isValidSubDomain(this.dynHostLogin.subDomain));
+      input.$setValidity(
+        'subdomain',
+        this.dynHostLogin.subDomain === '*' ||
+          this.Validator.isValidSubDomain(this.dynHostLogin.subDomain),
+      );
     }
 
     addLogin() {
       this.loading = true;
       this.dynHostLogin.subDomain = punycode.toASCII(this.dynHostLogin.subDomain);
 
-      return this.Domain
-        .addDynHostLogin(this.product.name, this.dynHostLogin)
-        .then(() => this.Alerter.success(this.$scope.tr('domain_tab_DYNHOST_add_login_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('domain_tab_DYNHOST_error'), err, this.$scope.alerts.main))
+      return this.Domain.addDynHostLogin(this.product.name, this.dynHostLogin)
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('domain_tab_DYNHOST_add_login_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_tab_DYNHOST_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

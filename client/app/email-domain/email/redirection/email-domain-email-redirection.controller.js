@@ -2,13 +2,13 @@ angular.module('App').controller(
   'EmailDomainEmailRedirectionCtrl',
   class EmailDomainEmailRedirectionCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param $q
-         * @param Alerter
-         * @param Emails
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param $q
+     * @param Alerter
+     * @param Emails
+     */
     constructor($scope, $stateParams, $q, Alerter, Emails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -24,7 +24,8 @@ angular.module('App').controller(
       };
       this.redirectionsDetails = [];
 
-      this.$scope.$on('hosting.tabs.emails.redirections.refresh', () => this.refreshTableRedirections());
+      this.$scope.$on('hosting.tabs.emails.redirections.refresh', () =>
+        this.refreshTableRedirections());
 
       this.refreshTableRedirections();
     }
@@ -32,12 +33,20 @@ angular.module('App').controller(
     getDatasToExport() {
       this.loading.exportCSV = true;
 
-      const dataToExport = [[this.$scope.tr('emails_common_from'), this.$scope.tr('emails_common_to')]];
+      const dataToExport = [
+        [
+          this.$scope.tr('emails_common_from'),
+          this.$scope.tr('emails_common_to'),
+        ],
+      ];
 
       return this.$q
-        .all(_.map(this.redirections, ({ id }) => this.Emails.getRedirection(this.$stateParams.productId, id)))
+        .all(_.map(this.redirections, ({ id }) =>
+          this.Emails.getRedirection(this.$stateParams.productId, id)))
         .then(data => dataToExport.concat(_.map(data, d => [d.from, d.to])))
-        .finally(() => { this.loading.exportCSV = false; });
+        .finally(() => {
+          this.loading.exportCSV = false;
+        });
     }
 
     refreshTableRedirections() {
@@ -45,9 +54,18 @@ angular.module('App').controller(
       this.redirections = null;
 
       return this.Emails.getRedirections(this.$stateParams.productId)
-        .then((data) => { this.redirections = data.map(id => ({ id })); })
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_table_redirections_error'), err, this.$scope.alerts.main))
-        .finally(() => { this.loading.redirections = false; });
+        .then((data) => {
+          this.redirections = data.map(id => ({ id }));
+        })
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_table_redirections_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
+        .finally(() => {
+          this.loading.redirections = false;
+        });
     }
 
     transformItem({ id }) {

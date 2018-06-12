@@ -2,10 +2,10 @@ angular.module('services').service(
   'HostingStatistics',
   class HostingStatistics {
     /**
-         * Constructor
-         * @param $q
-         * @param OvhHttp
-         */
+     * Constructor
+     * @param $q
+     * @param OvhHttp
+     */
     constructor($q, OvhHttp) {
       this.$q = $q;
       this.OvhHttp = OvhHttp;
@@ -13,7 +13,14 @@ angular.module('services').service(
 
     getStatisticsConstants() {
       return this.$q.when({
-        types: ['IN_FTP_COMMANDS', 'IN_HTTP_HITS', 'IN_HTTP_MEAN_RESPONSE_TIME', 'OUT_TCP_CONN', 'SYS_CPU_USAGE', 'SYS_WORKER_SPAWN_OVERLOAD'],
+        types: [
+          'IN_FTP_COMMANDS',
+          'IN_HTTP_HITS',
+          'IN_HTTP_MEAN_RESPONSE_TIME',
+          'OUT_TCP_CONN',
+          'SYS_CPU_USAGE',
+          'SYS_WORKER_SPAWN_OVERLOAD',
+        ],
         dbTypes: ['STATEMENT', 'STATEMENT_MEAN_TIME'],
         defaultType: 'IN_HTTP_HITS',
         periods: ['DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY'],

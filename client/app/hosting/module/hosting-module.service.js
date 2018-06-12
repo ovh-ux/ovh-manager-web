@@ -10,21 +10,21 @@
     attachedDomain: 'UNIVERS_HOSTING_MODULES_ATTACHED_DOMAIN',
   };
 
-  angular
-    .module('services')
-    .service('HostingModule', class HostingModule {
+  angular.module('services').service(
+    'HostingModule',
+    class HostingModule {
       /**
-             * Constructor
-             * @param OvhHttp
-             */
+       * Constructor
+       * @param OvhHttp
+       */
       constructor(OvhHttp) {
         this.OvhHttp = OvhHttp;
       }
 
       /**
-             * Obtain service
-             * @param {string} serviceName
-             */
+       * Obtain service
+       * @param {string} serviceName
+       */
       getService(serviceName) {
         return this.OvhHttp.get(`/hosting/web/${serviceName}`, {
           rootPath: 'apiv6',
@@ -32,8 +32,8 @@
       }
 
       /**
-             * Obtain a list of available modules
-             */
+       * Obtain a list of available modules
+       */
       getModulesList() {
         return this.OvhHttp.get('/hosting/web/moduleList', {
           rootPath: 'apiv6',
@@ -45,8 +45,8 @@
       }
 
       /**
-             * Obtain a list of latest  modules
-             */
+       * Obtain a list of latest  modules
+       */
       getModulesLatestList() {
         return this.OvhHttp.get('/hosting/web/moduleList', {
           rootPath: 'apiv6',
@@ -59,9 +59,9 @@
       }
 
       /**
-             * Obtain a module
-             * @param {string} id
-             */
+       * Obtain a module
+       * @param {string} id
+       */
       getAvailableModule(id) {
         return this.OvhHttp.get(`/hosting/web/moduleList/${id}`, {
           rootPath: 'apiv6',
@@ -70,9 +70,9 @@
       }
 
       /**
-             * Obtain a list of avalaibles databases
-             * @param {string} serviceName
-             */
+       * Obtain a list of avalaibles databases
+       * @param {string} serviceName
+       */
       getDatabases(serviceName) {
         return this.OvhHttp.get(`/hosting/web/${serviceName}/database`, {
           rootPath: 'apiv6',
@@ -83,21 +83,24 @@
       }
 
       /**
-             * Obtain a database by name
-             * @param {string} serviceName
-             * @param {string} name
-             */
+       * Obtain a database by name
+       * @param {string} serviceName
+       * @param {string} name
+       */
       getDatabase(serviceName, name) {
-        return this.OvhHttp.get(`/hosting/web/${serviceName}/database/${name}`, {
-          rootPath: 'apiv6',
-        });
+        return this.OvhHttp.get(
+          `/hosting/web/${serviceName}/database/${name}`,
+          {
+            rootPath: 'apiv6',
+          },
+        );
       }
 
       /**
-             * Obtain a list of installed modules
-             * @param {string} serviceName
-             * @param {object} opts
-             */
+       * Obtain a list of installed modules
+       * @param {string} serviceName
+       * @param {object} opts
+       */
       getModules(serviceName, opts) {
         return this.OvhHttp.get(`/hosting/web/${serviceName}/module`, {
           rootPath: 'apiv6',
@@ -107,10 +110,10 @@
       }
 
       /**
-             * Obtain a an installed module
-             * @param {string} serviceName
-             * @param {string} id
-             */
+       * Obtain a an installed module
+       * @param {string} serviceName
+       * @param {string} id
+       */
       getModule(serviceName, id) {
         return this.OvhHttp.get(`/hosting/web/${serviceName}/module/${id}`, {
           rootPath: 'apiv6',
@@ -119,9 +122,9 @@
       }
 
       /**
-             * Obtain a attached domains
-             * @param {string} serviceName
-             */
+       * Obtain a attached domains
+       * @param {string} serviceName
+       */
       getAttachedDomains(serviceName) {
         return this.OvhHttp.get(`/hosting/web/${serviceName}/attachedDomain`, {
           rootPath: 'apiv6',
@@ -130,21 +133,24 @@
       }
 
       /**
-             * Obtain a attached domain path
-             * @param {string} serviceName
-             * @param {string} domain
-             */
+       * Obtain a attached domain path
+       * @param {string} serviceName
+       * @param {string} domain
+       */
       getAttachedDomainPath(serviceName, domain) {
-        return this.OvhHttp.get(`/hosting/web/${serviceName}/attachedDomain/${domain}`, {
-          rootPath: 'apiv6',
-        });
+        return this.OvhHttp.get(
+          `/hosting/web/${serviceName}/attachedDomain/${domain}`,
+          {
+            rootPath: 'apiv6',
+          },
+        );
       }
 
       /**
-             * Create a new module
-             * @param {string} serviceName
-             * @param {object} data
-             */
+       * Create a new module
+       * @param {string} serviceName
+       * @param {object} data
+       */
       createModule(serviceName, data) {
         return this.OvhHttp.post(`/hosting/web/${serviceName}/module`, {
           rootPath: 'apiv6',
@@ -154,21 +160,24 @@
       }
 
       /**
-             * Reset the admin password of a module
-             * @param {string} serviceName
-             * @param {string} id
-             */
+       * Reset the admin password of a module
+       * @param {string} serviceName
+       * @param {string} id
+       */
       changePassword(serviceName, id) {
-        return this.OvhHttp.post(`/hosting/web/${serviceName}/module/${id}/changePassword`, {
-          rootPath: 'apiv6',
-        });
+        return this.OvhHttp.post(
+          `/hosting/web/${serviceName}/module/${id}/changePassword`,
+          {
+            rootPath: 'apiv6',
+          },
+        );
       }
 
       /**
-             * Remove an installed module
-             * @param {string} serviceName
-             * @param {string} id
-             */
+       * Remove an installed module
+       * @param {string} serviceName
+       * @param {string} id
+       */
       deleteModule(serviceName, id) {
         return this.OvhHttp.delete(`/hosting/web/${serviceName}/module/${id}`, {
           rootPath: 'apiv6',
@@ -176,5 +185,6 @@
           broadcast: 'hosting.tabs.modules.refresh',
         });
       }
-    });
+    },
+  );
 }

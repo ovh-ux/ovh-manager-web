@@ -1,7 +1,15 @@
 angular.module('App').controller(
   'EmailsAccountsToCsvCtrl',
   class EmailsAccountsToCsvCtrl {
-    constructor($scope, $interval, $q, $stateParams, Alerter, Emails, exportCsv) {
+    constructor(
+      $scope,
+      $interval,
+      $q,
+      $stateParams,
+      Alerter,
+      Emails,
+      exportCsv,
+    ) {
       this.$scope = $scope;
       this.$interval = $interval;
       this.$q = $q;
@@ -47,11 +55,20 @@ angular.module('App').controller(
         let currentPull = 0;
         const requestsCount = 200;
         let quit = false;
-        const requests = _.map(emails, id => (delegated ? this.Emails.getDelegatedEmail(id) : this.Emails.getEmail(this.$stateParams.productId, id)));
+        const requests = _.map(
+          emails,
+          id =>
+            (delegated
+              ? this.Emails.getDelegatedEmail(id)
+              : this.Emails.getEmail(this.$stateParams.productId, id)),
+        );
 
         this.intervalPromise = this.$interval(() => {
-          const pull = requests.slice(currentPull * requestsCount, (currentPull * requestsCount) + requestsCount);
-          currentPull++;
+          const pull = requests.slice(
+            currentPull * requestsCount,
+            (currentPull * requestsCount) + requestsCount,
+          );
+          currentPull += 1;
 
           if (pull.length <= 0) {
             quit = true;
@@ -62,7 +79,10 @@ angular.module('App').controller(
           return this.$q
             .all(pull)
             .then((accounts) => {
-              const content = _.map(accounts, account => `${_.values(account).join(';')};`).join('\n');
+              const content = _.map(
+                accounts,
+                account => `${_.values(account).join(';')};`,
+              ).join('\n');
               const header = `${_.keys(accounts[0]).join(';')};`;
 
               if (content && (emails.length < requestsCount || quit)) {
@@ -71,10 +91,21 @@ angular.module('App').controller(
                   fileName: `export_emails_${moment().format('YYYY-MM-DD_HH:mm:ss')}.csv`,
                   separator: ';',
                 });
-                this.Alerter.success(this.$scope.tr('email_tab_modal_accounts_export_csv_success', [data]), this.$scope.alerts.main);
+                this.Alerter.success(
+                  this.$scope.tr(
+                    'email_tab_modal_accounts_export_csv_success',
+                    [data],
+                  ),
+                  this.$scope.alerts.main,
+                );
               }
             })
-            .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_modal_accounts_export_csv_error'), err, this.$scope.alerts.main))
+            .catch(err =>
+              this.Alerter.alertFromSWS(
+                this.$scope.tr('email_tab_modal_accounts_export_csv_error'),
+                err,
+                this.$scope.alerts.main,
+              ))
             .finally(() => {
               this.loading.exportCsv = false;
               this.$scope.resetAction();

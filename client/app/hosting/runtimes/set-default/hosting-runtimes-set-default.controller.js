@@ -1,6 +1,6 @@
-angular
-  .module('App')
-  .controller('controllers.Hosting.Runtimes.setDefault', class HostingRuntimesSetDefaultCtrl {
+angular.module('App').controller(
+  'controllers.Hosting.Runtimes.setDefault',
+  class HostingRuntimesSetDefaultCtrl {
     constructor($scope, $stateParams, Alerter, HostingRuntimes, translator) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -18,16 +18,26 @@ angular
     }
 
     setDefault() {
-      return this.HostingRuntimes
-        .setDefault(this.$stateParams.productId, this.entryToSetup.id)
+      return this.HostingRuntimes.setDefault(
+        this.$stateParams.productId,
+        this.entryToSetup.id,
+      )
         .then(() => {
-          this.Alerter.success(this.translator.tr('hosting_tab_RUNTIMES_set_default_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.translator.tr('hosting_tab_RUNTIMES_set_default_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.Alerter.error(this.translator.tr('hosting_tab_RUNTIMES_set_default_error') + err.message, this.$scope.alerts.main);
+          this.Alerter.error(
+            this.translator.tr('hosting_tab_RUNTIMES_set_default_error') +
+              err.message,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.$scope.resetAction();
         });
     }
-  });
+  },
+);

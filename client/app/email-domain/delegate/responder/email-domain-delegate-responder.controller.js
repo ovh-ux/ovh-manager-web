@@ -2,12 +2,12 @@ angular.module('App').controller(
   'EmailDelegateResponderCtrl',
   class EmailDelegateResponderCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param Alerter
-         * @param Emails
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param Alerter
+     * @param Emails
+     */
     constructor($scope, $stateParams, Alerter, Emails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -20,7 +20,8 @@ angular.module('App').controller(
         responders: false,
       };
 
-      this.$scope.$on('hosting.tabs.delegate.responders.refresh', () => this.refreshTableResponders());
+      this.$scope.$on('hosting.tabs.delegate.responders.refresh', () =>
+        this.refreshTableResponders());
 
       this.refreshTableResponders();
     }
@@ -37,13 +38,17 @@ angular.module('App').controller(
       this.emailsList = null;
       this.accounts = [];
 
-      return this.Emails
-        .getDelegatedEmails(this.$stateParams.productId)
+      return this.Emails.getDelegatedEmails(this.$stateParams.productId)
         .then((data) => {
           this.accounts = _.map(data, email => email.split('@')[0]);
           this.emailsList = data.sort();
         })
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_table_accounts_error'), err, this.$scope.alerts.main))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_table_accounts_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           if (_.isEmpty(this.emailsList)) {
             this.loading.responders = false;

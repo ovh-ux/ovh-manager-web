@@ -14,27 +14,32 @@ angular.module('services').service(
     }
 
     /**
-         * Get all whitelistIds allowed on the privatesql
-         * @param  {string} serviceName
-         * @return {ipBlock[]}
-         */
+     * Get all whitelistIds allowed on the privatesql
+     * @param  {string} serviceName
+     * @return {ipBlock[]}
+     */
     getWhitelistIds(serviceName) {
-      return this.$http.get(`${this.rootPath}/${this.swsProxypassPath}/${serviceName}/whitelist`).then(res => res.data);
+      return this.$http
+        .get(`${this.rootPath}/${this.swsProxypassPath}/${serviceName}/whitelist`)
+        .then(res => res.data);
     }
 
     /**
-         * Create a new IP whitelist
-         * @param  {string} serviceName
-         * @param  {{ip: ipBlock, name: string, service: boolean, sftp: boolean}} model
-         */
+     * Create a new IP whitelist
+     * @param  {string} serviceName
+     * @param  {{ip: ipBlock, name: string, service: boolean, sftp: boolean}} model
+     */
     createWhitelist(serviceName, model) {
       return this.$http
-        .post(`${this.rootPath}/${this.swsProxypassPath}/${serviceName}/whitelist`, {
-          ip: model.ip,
-          name: model.name,
-          service: model.service,
-          sftp: model.sftp,
-        })
+        .post(
+          `${this.rootPath}/${this.swsProxypassPath}/${serviceName}/whitelist`,
+          {
+            ip: model.ip,
+            name: model.name,
+            service: model.service,
+            sftp: model.sftp,
+          },
+        )
         .then((res) => {
           this.pollwhitelistcreate(serviceName, {
             taskId: res.data.id,
@@ -47,7 +52,10 @@ angular.module('services').service(
     }
 
     pollwhitelistcreate(serviceName, opts) {
-      const namespace = `privateDatabase.${opts.taskFunction.replace(/\//g, '.')}`;
+      const namespace = `privateDatabase.${opts.taskFunction.replace(
+        /\//g,
+        '.',
+      )}`;
       const options = angular.copy(opts);
       options.namespace = namespace;
 
@@ -79,38 +87,54 @@ angular.module('services').service(
     }
 
     /**
-         * Get data of an whitelist
-         * @param  {string} serviceName
-         * @param  {ipBlock} whitelistId
-         * @return {whitelist}
-         */
+     * Get data of an whitelist
+     * @param  {string} serviceName
+     * @param  {ipBlock} whitelistId
+     * @return {whitelist}
+     */
     getWhitelist(serviceName, whitelistId) {
-      return this.$http.get(`${this.rootPath}/${this.swsProxypassPath}/${serviceName}/whitelist/${encodeURIComponent(whitelistId)}`).then(res => res.data);
+      return this.$http
+        .get(`${this.rootPath}/${
+          this.swsProxypassPath
+        }/${serviceName}/whitelist/${encodeURIComponent(whitelistId)}`)
+        .then(res => res.data);
     }
 
     /**
-         * Alter a whitelist
-         * @param  {string} serviceName
-         * @param  {ipBlock} whitelistId
-         * @param  { { name: string, service: boolean, sftp: boolean } } model
-         * @return {void}
-         */
+     * Alter a whitelist
+     * @param  {string} serviceName
+     * @param  {ipBlock} whitelistId
+     * @param  { { name: string, service: boolean, sftp: boolean } } model
+     * @return {void}
+     */
     updateWhitelist(serviceName, whitelistId, model) {
-      return this.$http.put(`${this.rootPath}/${this.swsProxypassPath}/${serviceName}/whitelist/${encodeURIComponent(whitelistId)}`, model).then((res) => {
-        this.$rootScope.$broadcast('privateDatabase.whitelist.create.done', _.defaults(res.data, { serviceName }));
-        return res.data;
-      });
+      return this.$http
+        .put(
+          `${this.rootPath}/${
+            this.swsProxypassPath
+          }/${serviceName}/whitelist/${encodeURIComponent(whitelistId)}`,
+          model,
+        )
+        .then((res) => {
+          this.$rootScope.$broadcast(
+            'privateDatabase.whitelist.create.done',
+            _.defaults(res.data, { serviceName }),
+          );
+          return res.data;
+        });
     }
 
     /**
-         * Delete an IP whitelist
-         * @param  {string} serviceName
-         * @param  {ipBlock} whitelistId
-         * @return {task}
-         */
+     * Delete an IP whitelist
+     * @param  {string} serviceName
+     * @param  {ipBlock} whitelistId
+     * @return {task}
+     */
     deleteWhitelist(serviceName, whitelistId) {
       return this.$http
-        .delete(`${this.rootPath}/${this.swsProxypassPath}/${serviceName}/whitelist/${encodeURIComponent(whitelistId)}`)
+        .delete(`${this.rootPath}/${
+          this.swsProxypassPath
+        }/${serviceName}/whitelist/${encodeURIComponent(whitelistId)}`)
         .then((res) => {
           this.pollwhitelistdelete(serviceName, {
             taskId: res.data.id,
@@ -124,7 +148,10 @@ angular.module('services').service(
     }
 
     pollwhitelistdelete(serviceName, opts) {
-      const namespace = `privateDatabase.${opts.taskFunction.replace(/\//g, '.')}`;
+      const namespace = `privateDatabase.${opts.taskFunction.replace(
+        /\//g,
+        '.',
+      )}`;
       const options = angular.copy(opts);
       options.namespace = namespace;
 

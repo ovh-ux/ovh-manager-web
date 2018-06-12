@@ -10,14 +10,21 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'website';
+          $rootScope.currentSectionInformation = 'website'; // eslint-disable-line no-param-reassign
+
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['domain', 'hosting', 'website']).then(() => translator)],
+      translator: [
+        'translator',
+        translator =>
+          translator
+            .load(['domain', 'hosting', 'website'])
+            .then(() => translator),
+      ],
       currentSection: () => 'website',
     },
   });
@@ -33,14 +40,21 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'website';
+          $rootScope.currentSectionInformation = 'website'; // eslint-disable-line no-param-reassign
+
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['domain', 'hosting', 'website']).then(() => translator)],
+      translator: [
+        'translator',
+        translator =>
+          translator
+            .load(['domain', 'hosting', 'website'])
+            .then(() => translator),
+      ],
       currentSection: () => 'website',
     },
   });

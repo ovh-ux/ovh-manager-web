@@ -2,13 +2,13 @@ angular.module('App').controller(
   'EmailsUpdateAccountCtrl',
   class EmailsUpdateAccountCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param Alerter
-         * @param Emails
-         * @param User
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param Alerter
+     * @param Emails
+     * @param User
+     */
     constructor($scope, $stateParams, Alerter, Emails, User) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -19,7 +19,9 @@ angular.module('App').controller(
 
     $onInit() {
       this.isDelegate = _.get(this.$scope.currentActionData, 'delegate', false);
-      this.account = angular.copy(this.isDelegate ? this.$scope.currentActionData.account : this.$scope.currentActionData);
+      this.account = angular.copy(this.isDelegate
+        ? this.$scope.currentActionData.account
+        : this.$scope.currentActionData);
       this.accountSize = [];
       this.constants = {
         descMaxLength: 32,
@@ -29,16 +31,14 @@ angular.module('App').controller(
 
       this.$scope.updateAccount = () => this.updateAccount();
 
-      this.User
-        .getUrlOf('exchangeOrder')
+      this.User.getUrlOf('exchangeOrder')
         .then((exchangeOrder) => {
           this.exchangeOrderUrl = exchangeOrder;
         })
         .catch(() => {
           this.exchangeOrderUrl = null;
         });
-      this.User
-        .getUrlOf('guides')
+      this.User.getUrlOf('guides')
         .then((guides) => {
           this.guideMigrate = _.get(guides, 'emailsMigrateToExchange');
         })
@@ -50,7 +50,12 @@ angular.module('App').controller(
     }
 
     accountDescriptionCheck(input) {
-      input.$setValidity('descriptionCheck', !this.account.description || punycode.toASCII(this.account.description).length <= this.constants.descMaxLength);
+      input.$setValidity(
+        'descriptionCheck',
+        !this.account.description ||
+          punycode.toASCII(this.account.description).length <=
+            this.constants.descMaxLength,
+      );
     }
 
     getAccountSize() {
@@ -67,27 +72,52 @@ angular.module('App').controller(
         .then((data) => {
           this.accountSize = data.allowedAccountSize;
         })
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_error'), _.get(err, 'data', err), this.$scope.alerts.main))
-        .finally(() => (this.loading = false));
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_error'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          ))
+        .finally(() => {
+          this.loading = false;
+        });
     }
 
     updateAccount() {
       this.loading = true;
       const data = {
-        description: this.account.description ? punycode.toASCII(this.account.description) : '',
+        description: this.account.description
+          ? punycode.toASCII(this.account.description)
+          : '',
         size: this.account.size,
       };
 
       let accountPromise;
       if (this.isDelegate) {
-        accountPromise = this.Emails.updateDelegatedAccount(this.account.email, data);
+        accountPromise = this.Emails.updateDelegatedAccount(
+          this.account.email,
+          data,
+        );
       } else {
-        accountPromise = this.Emails.updateAccount(this.$stateParams.productId, this.account.accountName, data);
+        accountPromise = this.Emails.updateAccount(
+          this.$stateParams.productId,
+          this.account.accountName,
+          data,
+        );
       }
 
       return accountPromise
-        .then(() => this.Alerter.success(this.$scope.tr('email_tab_modal_update_account_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_modal_update_account_error'), _.get(err, 'data', err), this.$scope.alerts.main))
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('email_tab_modal_update_account_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_modal_update_account_error'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

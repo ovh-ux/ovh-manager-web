@@ -2,13 +2,13 @@ angular.module('App').controller(
   'ZonesTabsCtrl',
   class ZonesTabsCtrl {
     /**
-        * Constructor
-        * @param $scope
-        * @param $location
-        * @param $stateParams
-        * @param Domain
-        * @param Emails
-        */
+     * Constructor
+     * @param $scope
+     * @param $location
+     * @param $stateParams
+     * @param Domain
+     * @param Emails
+     */
     constructor($scope, $location, $stateParams, Domain, Emails) {
       this.$scope = $scope;
       this.$location = $location;
@@ -25,12 +25,16 @@ angular.module('App').controller(
         items: [
           {
             label: this.$scope.tr('domain_tab_menu_emails'),
-            target: `#/configuration/email-domain/${this.$stateParams.productId}?tab=MAILING_LIST`,
+            target: `#/configuration/email-domain/${
+              this.$stateParams.productId
+            }?tab=MAILING_LIST`,
             type: 'LINK',
           },
           {
             label: this.$scope.tr('contacts_management'),
-            target: `#/useraccount/contacts?tab=SERVICES&serviceName=${this.$stateParams.productId}`,
+            target: `#/useraccount/contacts?tab=SERVICES&serviceName=${
+              this.$stateParams.productId
+            }`,
             text: this.$scope.tr('domain_tab_menu_contacts'),
             type: 'LINK',
           },
@@ -56,9 +60,9 @@ angular.module('App').controller(
     }
 
     /**
-        * Convert string to KebabCase
-        * @param {string} str
-        */
+     * Convert string to KebabCase
+     * @param {string} str
+     */
     static toKebabCase(str) {
       return _.kebabCase(str);
     }

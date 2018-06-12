@@ -16,12 +16,22 @@ angular.module('controllers').controller(
 
     updateDomainLock() {
       this.loading = true;
-      return this.Domain
-        .updateNameServerType(this.$stateParams.productId, 'hosted')
-        .then(() => this.Alerter.success(this.$scope.i18n.domain_tab_DNS_lock_success, this.$scope.alerts.main))
+      return this.Domain.updateNameServerType(
+        this.$stateParams.productId,
+        'hosted',
+      )
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.i18n.domain_tab_DNS_lock_success,
+            this.$scope.alerts.main,
+          ))
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          this.Alerter.alertFromSWS(this.$scope.i18n.domain_tab_DNS_lock_error, err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.i18n.domain_tab_DNS_lock_error,
+            err,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.$rootScope.$broadcast('Domain.Dns.Reload');

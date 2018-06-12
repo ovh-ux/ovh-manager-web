@@ -21,7 +21,8 @@ angular.module('App').controller(
           WINDOWS: 'windows',
         },
         capabilities: null,
-        operatingSystem: this.$scope.currentActionData.ftpInformations.operatingSystem,
+        operatingSystem: this.$scope.currentActionData.ftpInformations
+          .operatingSystem,
       };
 
       this.$scope.updateUser = () => this.updateUser();
@@ -31,7 +32,11 @@ angular.module('App').controller(
           this.model.capabilities = capabilities;
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_FTP_configuration_user_modify_step1_loading_error'), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_FTP_configuration_user_modify_step1_loading_error'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
         });
     }
 
@@ -46,11 +51,13 @@ angular.module('App').controller(
     getSelectedHome() {
       let home;
       if (this.model.user.home !== null) {
-        if (/^\/.*/.test(this.model.user.home) || this.model.user.isPrimaryAccount) {
-          home = this.model.user.home;
-        } else {
-          home = `./${this.model.user.home}`;
+        if (
+          /^\/.*/.test(this.model.user.home) ||
+          this.model.user.isPrimaryAccount
+        ) {
+          return this.model.user.home;
         }
+        return `./${this.model.user.home}`;
       }
       return home;
     }
@@ -66,12 +73,22 @@ angular.module('App').controller(
       const user = angular.copy(this.model.user);
       delete user.isPrimaryAccount;
 
-      return this.HostingUser.updateUser(this.$stateParams.productId, { login: this.model.userLogin, data: user })
+      return this.HostingUser.updateUser(this.$stateParams.productId, {
+        login: this.model.userLogin,
+        data: user,
+      })
         .then(() => {
-          this.Alerter.success(this.$scope.tr('hosting_tab_FTP_configuration_user_modify_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('hosting_tab_FTP_configuration_user_modify_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_FTP_configuration_user_modify_fail'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_FTP_configuration_user_modify_fail'),
+            err,
+            this.$scope.alerts.main,
+          );
         });
     }
   },

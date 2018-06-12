@@ -1,7 +1,16 @@
 angular.module('App').controller(
   'HostingTabUserLogsCtrl',
   class HostingTabUserLogsCtrl {
-    constructor($scope, $q, $filter, $stateParams, Alerter, constants, Hosting, User) {
+    constructor(
+      $scope,
+      $q,
+      $filter,
+      $stateParams,
+      Alerter,
+      constants,
+      Hosting,
+      User,
+    ) {
       this.$scope = $scope;
       this.$q = $q;
       this.$filter = $filter;
@@ -29,12 +38,13 @@ angular.module('App').controller(
         this.userLogsToken = token;
       });
 
-      this.User.getUrlOf('guides')
-        .then((guides) => {
-          this.guide = _.get(guides, 'hostingStatsLogs');
-        });
+      this.User.getUrlOf('guides').then((guides) => {
+        this.guide = _.get(guides, 'hostingStatsLogs');
+      });
 
-      if (parseInt(this.$scope.hostingProxy.cluster.split('cluster')[1], 10) >= 20) {
+      if (
+        parseInt(this.$scope.hostingProxy.cluster.split('cluster')[1], 10) >= 20
+      ) {
         // FOR GRAVELINE
         this.urlUrchin = URI.expand(this.constants.urchin_gra, {
           serviceName: this.$stateParams.productId,
@@ -79,9 +89,11 @@ angular.module('App').controller(
         return this.$q(resolve => resolve(item));
       }
       return this.Hosting.getUserLogsEntry(this.$stateParams.productId, item.id)
-        .then((logEntry) => {
+        .then((originalLogEntry) => {
+          const logEntry = _(originalLogEntry).clone();
           logEntry.id = item.id;
           logEntry.transformed = true;
+
           return logEntry;
         })
         .catch(() => ({

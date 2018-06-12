@@ -1,7 +1,16 @@
-angular
-  .module('App')
-  .controller('HostingTabDatabasesCtrl', class HostingTabDatabasesCtrl {
-    constructor($scope, $q, $stateParams, $timeout, Alerter, ConverterService, Hosting, HostingDatabase) {
+angular.module('App').controller(
+  'HostingTabDatabasesCtrl',
+  class HostingTabDatabasesCtrl {
+    constructor(
+      $scope,
+      $q,
+      $stateParams,
+      $timeout,
+      Alerter,
+      ConverterService,
+      Hosting,
+      HostingDatabase,
+    ) {
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -22,7 +31,8 @@ angular
         WEEKLY: 'weekly.1',
         NOW: 'now',
       };
-      this.canCreateDatabase = this.hosting.databaseMax - this.hosting.databaseCount > 0;
+      this.canCreateDatabase =
+        this.hosting.databaseMax - this.hosting.databaseCount > 0;
       this.databases = {
         details: [],
       };
@@ -36,17 +46,31 @@ angular
       };
 
       this.$scope.goToList = () => this.goToList();
-      this.$scope.$on('hosting.databases.backup.restore', () => this.reloadCurrentPage());
+      this.$scope.$on('hosting.databases.backup.restore', () =>
+        this.reloadCurrentPage());
 
-      this.$scope.$on(`${this.hostingService.events.tabDatabasesCreation}.done`, () => {
-        this.alerter.success(this.$scope.tr('hosting_tab_DATABASES_configuration_create_bdd_added'), this.$scope.alerts.main);
-        this.reloadCurrentPage();
-      });
+      this.$scope.$on(
+        `${this.hostingService.events.tabDatabasesCreation}.done`,
+        () => {
+          this.alerter.success(
+            this.$scope.tr('hosting_tab_DATABASES_configuration_create_bdd_added'),
+            this.$scope.alerts.main,
+          );
+          this.reloadCurrentPage();
+        },
+      );
 
-      this.$scope.$on(`${this.hostingService.events.tabDatabasesCreation}.error`, (err) => {
-        this.alerter.alertFromSWS(this.$scope.tr('hosting_tab_databases_get_error'), _.get(err, 'data', err), this.$scope.alerts.main);
-        this.reloadCurrentPage();
-      });
+      this.$scope.$on(
+        `${this.hostingService.events.tabDatabasesCreation}.error`,
+        (err) => {
+          this.alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_databases_get_error'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
+          this.reloadCurrentPage();
+        },
+      );
 
       this.$scope.$on(this.hostingService.events.tabDatabasesRefresh, () => {
         this.reloadCurrentPage();
@@ -67,11 +91,14 @@ angular
       });
       return deferred.promise
         .then((task) => {
-          database.quotaCalculating = true;
-          return this.hostingService.pollDatabaseQuotaTask(this.$stateParams.productId, task.id);
+          database.quotaCalculating = true; // eslint-disable-line no-param-reassign
+          return this.hostingService.pollDatabaseQuotaTask(
+            this.$stateParams.productId,
+            task.id,
+          );
         })
         .then(() => {
-          database.quotaCalculating = false;
+          database.quotaCalculating = false; // eslint-disable-line no-param-reassign
           this.reloadCurrentPage();
         });
     }
@@ -86,21 +113,33 @@ angular
     }
 
     convertBytesSize(nb, unit, decimalWanted = 0) {
-      const res = filesize(this.converterService.convertToOctet(nb, unit), { output: 'object', round: decimalWanted, base: -1 });
+      const res = filesize(this.converterService.convertToOctet(nb, unit), {
+        output: 'object',
+        round: decimalWanted,
+        base: -1,
+      });
       const resUnit = this.$scope.tr(`unit_size_${res.symbol}`);
       return `${res.value} ${resUnit}`;
     }
 
     getQuotaUsageString(quotaUsed, quotaSize) {
-      return `${this.convertBytesSize(quotaUsed.value, quotaUsed.unit, 2)} / ${this.convertBytesSize(quotaSize.value, quotaSize.unit)}`;
+      return `${this.convertBytesSize(
+        quotaUsed.value,
+        quotaUsed.unit,
+        2,
+      )} / ${this.convertBytesSize(quotaSize.value, quotaSize.unit)}`;
     }
 
     getPhpMyAdminUrl(element) {
       let PHPMYADMIN_BASE_URL = 'https://phpmyadmin.ovh.net/index.php';
-      const queryString = `pma_username=${element.user}&pma_servername=${element.name}`;
+      const queryString = `pma_username=${element.user}&pma_servername=${
+        element.name
+      }`;
 
       if (this.hostingProxy.datacenter !== 'p19') {
-        PHPMYADMIN_BASE_URL = `https://phpmyadmin.${this.hostingProxy.cluster}.hosting.ovh.net/index.php`;
+        PHPMYADMIN_BASE_URL = `https://phpmyadmin.${
+          this.hostingProxy.cluster
+        }.hosting.ovh.net/index.php`;
       }
       return `${PHPMYADMIN_BASE_URL}?${queryString}`;
     }
@@ -115,12 +154,17 @@ angular
       this.loading.databases = true;
       this.databases.ids = null;
 
-      return this.hostingDatabaseService.getDatabaseIds(this.$stateParams.productId, this.search.value)
+      return this.hostingDatabaseService
+        .getDatabaseIds(this.$stateParams.productId, this.search.value)
         .then((ids) => {
           this.databases.ids = ids;
         })
         .catch((err) => {
-          this.alerter.alertFromSWS(this.$scope.tr('hosting_tab_databases_get_error'), err, this.$scope.alerts.main);
+          this.alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_databases_get_error'),
+            err,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           if (_.isEmpty(this.databases.ids)) {
@@ -144,20 +188,41 @@ angular
     }
 
     transformItem(id) {
-      return this.$q.all({
-        database: this.hostingDatabaseService.getDatabase(this.$stateParams.productId, id),
-        dumps: this.hostingDatabaseService.getDumpIds(this.$stateParams.productId, id),
-      }).then(({ database, dumps }) => {
-        _.set(database, 'quotaUsed.asText', this.getQuotaUsageString(database.quotaUsed, database.quotaSize));
-        _.set(database, 'quotaUsed.cappedAsText', this.convertBytesSize(database.quotaUsed.value, database.quotaUsed.unit, 2));
-        _.set(database, 'dumpsCount', dumps.length || 0);
-        _.set(database, 'dumps', dumps);
-        return database;
-      });
+      return this.$q
+        .all({
+          database: this.hostingDatabaseService.getDatabase(
+            this.$stateParams.productId,
+            id,
+          ),
+          dumps: this.hostingDatabaseService.getDumpIds(
+            this.$stateParams.productId,
+            id,
+          ),
+        })
+        .then(({ database, dumps }) => {
+          _.set(
+            database,
+            'quotaUsed.asText',
+            this.getQuotaUsageString(database.quotaUsed, database.quotaSize),
+          );
+          _.set(
+            database,
+            'quotaUsed.cappedAsText',
+            this.convertBytesSize(
+              database.quotaUsed.value,
+              database.quotaUsed.unit,
+              2,
+            ),
+          );
+          _.set(database, 'dumpsCount', dumps.length || 0);
+          _.set(database, 'dumps', dumps);
+          return database;
+        });
     }
 
     onTransformItemDone() {
       this.loading.init = false;
       this.loading.databases = false;
     }
-  });
+  },
+);

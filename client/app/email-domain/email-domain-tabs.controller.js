@@ -2,13 +2,13 @@ angular.module('App').controller(
   'EmailDomainTabsCtrl',
   class EmailDomainTabsCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $location
-         * @param $stateParams
-         * @param Emails
-         * @param Alerter
-         */
+     * Constructor
+     * @param $scope
+     * @param $location
+     * @param $stateParams
+     * @param Emails
+     * @param Alerter
+     */
     constructor($scope, $location, $stateParams, Emails, Alerter) {
       this.$scope = $scope;
       this.$location = $location;
@@ -31,7 +31,9 @@ angular.module('App').controller(
           items: [
             {
               label: this.$scope.tr('email_tab_menu_resiliate'),
-              target: `#/billing/autoRenew?selectedType=EMAIL_DOMAIN&searchText=${this.$stateParams.productId}`,
+              target: `#/billing/autoRenew?selectedType=EMAIL_DOMAIN&searchText=${
+                this.$stateParams.productId
+              }`,
               type: 'LINK',
               styles: 'text-warning',
             },
@@ -50,9 +52,9 @@ angular.module('App').controller(
     }
 
     /**
-         * Convert string to KebabCase
-         * @param {string} str
-         */
+     * Convert string to KebabCase
+     * @param {string} str
+     */
     static toKebabCase(str) {
       return _.kebabCase(str);
     }

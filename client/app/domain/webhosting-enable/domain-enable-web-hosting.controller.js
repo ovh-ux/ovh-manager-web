@@ -1,7 +1,10 @@
 angular.module('App').controller(
   'App.Controllers.EnableWebHostingOrderController',
   class EnableWebHostingOrderCtrl {
-    constructor($scope, $q, $window, Alerter, atInternet, Hosting, HostingModule, HostingOrder, User, constants) {
+    constructor(
+      $scope, $q, $window,
+      Alerter, atInternet, Hosting, HostingModule, HostingOrder, User, constants,
+    ) {
       this.$scope = $scope;
       this.$q = $q;
       this.$window = $window;
@@ -44,14 +47,16 @@ angular.module('App').controller(
 
       this.$q
         .all({
-          modules: this.model.offer !== this.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE ? this.getModulesList() : null,
+          modules: this.model.offer !== this.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE ?
+            this.getModulesList() : null,
           offers: this.offers.length ? this.offers : this.getOffersList(),
           user: this.User.getUser(),
         })
         .then(({ modules, offers, user }) => {
           this.model.moduleTemplates = _.filter(modules, { branch: 'stable' });
           this.offers = _.compact(offers);
-          this.hostingUrl = this.constants.urls.hosting[user.ovhSubsidiary] || this.constants.urls.hosting.FR;
+          this.hostingUrl = this.constants.urls.hosting[user.ovhSubsidiary] ||
+            this.constants.urls.hosting.FR;
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_DATABASES_configuration_create_step1_loading_error'), err, this.$scope.alerts.main);
@@ -85,15 +90,21 @@ angular.module('App').controller(
     }
 
     getModulesList() {
-      return this.HostingModule.getModulesLatestList().then(moduleTemplates => this.$q.all(_.map(moduleTemplates, id => this.HostingModule.getAvailableModule(id))));
+      return this.HostingModule.getModulesLatestList().then(moduleTemplates =>
+        this.$q.all(_.map(moduleTemplates, id => this.HostingModule.getAvailableModule(id))));
     }
 
     getOffersList() {
       return this.Hosting.getAvailableOffer(this.domain.name).then(offers =>
         this.$q.all(_.map(offers, (offer) => {
           let rtn;
-          if ((!this.model.offer && offer !== this.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE) || (this.model.offer && offer === this.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE)) {
-            rtn = this.HostingOrder.get(this.domain.name, offer, this.model.dnsZone, this.model.duration).then(orderInfos => ({
+          if ((!this.model.offer &&
+            offer !== this.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE) ||
+            (this.model.offer && offer === this.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE)) {
+            rtn = this.HostingOrder.get(
+              this.domain.name, offer,
+              this.model.dnsZone, this.model.duration,
+            ).then(orderInfos => ({
               offer,
               orderInfos,
             }));
@@ -151,7 +162,11 @@ angular.module('App').controller(
       let rtn;
       if (this.model.templateSelected) {
         // get the contracts for hosting WITH modules
-        rtn = this.HostingOrder.get(this.domain.name, this.model.offer, this.model.dnsZone, this.model.duration, this.model.templateSelected.name.toUpperCase()).then((options) => {
+        rtn = this.HostingOrder.get(
+          this.domain.name,
+          this.model.offer,
+          this.model.dnsZone, this.model.duration, this.model.templateSelected.name.toUpperCase(),
+        ).then((options) => {
           this.getSelectedOfferOrderInfos().contracts = options.contracts;
           this.getSelectedOfferOrderInfos().details = options.details;
         });
@@ -170,7 +185,13 @@ angular.module('App').controller(
     orderHosting() {
       this.loading.order = true;
       return this.HostingOrder
-        .post(this.domain.name, this.model.offer, this.model.dnsZone, this.model.duration, this.model.templateSelected ? this.model.templateSelected.name.toUpperCase() : null)
+        .post(
+          this.domain.name,
+          this.model.offer,
+          this.model.dnsZone,
+          this.model.duration,
+          this.model.templateSelected ? this.model.templateSelected.name.toUpperCase() : null,
+        )
         .then((order) => {
           if (this.getSelectedOfferOrderInfos().prices.withTax.value === 0) {
             this.User.payWithRegisteredPaymentMean({

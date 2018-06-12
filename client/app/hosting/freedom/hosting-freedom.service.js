@@ -5,22 +5,22 @@
     models: 'UNIVERS_WEB_FREEDOM_MODELS',
   };
 
-  angular
-    .module('services')
-    .service('HostingFreedom', class HostingFreedom {
+  angular.module('services').service(
+    'HostingFreedom',
+    class HostingFreedom {
       /**
-             * Constructor
-             * @param OvhHttp
-             */
+       * Constructor
+       * @param OvhHttp
+       */
       constructor(OvhHttp) {
         this.OvhHttp = OvhHttp;
       }
 
       /**
-             * Get Freedoms
-             * @param {string} serviceName
-             * @param {object} opts
-             */
+       * Get Freedoms
+       * @param {string} serviceName
+       * @param {object} opts
+       */
       getFreedoms(serviceName, opts = {}) {
         return this.OvhHttp.get(`/hosting/web/${serviceName}/freedom`, {
           rootPath: 'apiv6',
@@ -31,38 +31,45 @@
       }
 
       /**
-             * Get Freedom
-             * @param {string} serviceName
-             * @param {object} opts
-             */
+       * Get Freedom
+       * @param {string} serviceName
+       * @param {object} opts
+       */
       getFreedom(serviceName, opts) {
-        return this.OvhHttp.get(`/hosting/web/${serviceName}/freedom/${opts.domain}`, {
-          rootPath: 'apiv6',
-          cache: cache.freedom,
-        });
+        return this.OvhHttp.get(
+          `/hosting/web/${serviceName}/freedom/${opts.domain}`,
+          {
+            rootPath: 'apiv6',
+            cache: cache.freedom,
+          },
+        );
       }
 
       /**
-             * Delete Freedom
-             * @param {string} serviceName
-             * @param {string} domain
-             */
+       * Delete Freedom
+       * @param {string} serviceName
+       * @param {string} domain
+       */
       deleteFreedom(serviceName, domain) {
-        return this.OvhHttp.delete(`/hosting/web/${serviceName}/freedom/${domain}`, {
-          rootPath: 'apiv6',
-          clearAllCache: cache.freedom,
-          broadcast: 'hosting.web.freedom.delete',
-        });
+        return this.OvhHttp.delete(
+          `/hosting/web/${serviceName}/freedom/${domain}`,
+          {
+            rootPath: 'apiv6',
+            clearAllCache: cache.freedom,
+            broadcast: 'hosting.web.freedom.delete',
+          },
+        );
       }
 
       /**
-             * Get Models
-             */
+       * Get Models
+       */
       getModels() {
         return this.OvhHttp.get('/hosting/web.json', {
           rootPath: 'apiv6',
           cache: cache.models,
         });
       }
-    });
+    },
+  );
 }

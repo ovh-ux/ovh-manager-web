@@ -33,7 +33,10 @@ angular.module('services').service(
       this.NBDAYTODELETE = 30;
     }
 
-
+    /**
+       * Private function to reset the cache
+       * @param key
+       */
     resetCache(key) {
       if (key !== undefined) {
         if (this.requests[key] !== undefined) {
@@ -114,13 +117,15 @@ angular.module('services').service(
               return database;
             });
         })
-        .then((database) => {
+        .then((formerDatabase) => {
+          const database = _(formerDatabase).clone();
           database.capabilities = _.mapKeys(database.capabilities, capability => capability.object);
           return database;
         })
-        .then((database) => {
+        .then((formerDatabase) => {
           // we don't have any other certificate types right now
           // and the API doesn't have this field
+          const database = _(formerDatabase).clone();
           database.certificateType = 'TLS CA';
           return database;
         })
@@ -387,13 +392,16 @@ angular.module('services').service(
     }
 
     canOrder(serviceName) {
-      return this.$http.get(this.swsProxypassOrderPath).then(response => _.findIndex(response.data, service => service === serviceName) !== -1).catch(() => false);
+      return this.$http.get(this.swsProxypassOrderPath)
+        .then(response => _.findIndex(response.data, service => service === serviceName) !== -1)
+        .catch(() => false);
     }
 
     canOrderRam(serviceName) {
       return this.canOrder(serviceName).then((canOrder) => {
         if (canOrder) {
-          return this.$http.get(`${this.swsProxypassOrderPath}/${serviceName}`).then(response => _.findIndex(response.data, service => service === 'ram' || service === 'upgrade') !== -1);
+          return this.$http.get(`${this.swsProxypassOrderPath}/${serviceName}`)
+            .then(response => _.findIndex(response.data, service => service === 'ram' || service === 'upgrade') !== -1);
         }
         return false;
       });
@@ -759,11 +767,16 @@ angular.module('services').service(
       const options = angular.copy(opts);
       options.namespace = `privateDatabase.${opts.taskFunction.replace(/\//g, '.')}`;
 
-      return this.poll(serviceName, {
-        taskId: opts.taskId,
-        namespace: options.namespace,
-        databaseName: opts.databaseName,
-      }).then(() => this.databasesetSuccess(serviceName, options), () => this.databasesetError(options));
+      return this
+        .poll(serviceName, {
+          taskId: opts.taskId,
+          namespace: options.namespace,
+          databaseName: opts.databaseName,
+        })
+        .then(
+          () => this.databasesetSuccess(serviceName, options),
+          () => this.databasesetError(options),
+        );
     }
 
     databasesetSuccess(serviceName, opts) {

@@ -1,6 +1,6 @@
-angular.module('App').service('hostingChangeDomain', function (OvhHttp) {
-  this.getAllowedDurations = function (serviceName, opts) {
-    return OvhHttp.get('/order/hosting/web/{serviceName}/changeMainDomain', {
+angular.module('App').service('hostingChangeDomain', function hostingChangeDomain(OvhHttp) {
+  this.getAllowedDurations = (serviceName, opts) =>
+    OvhHttp.get('/order/hosting/web/{serviceName}/changeMainDomain', {
       rootPath: 'apiv6',
       urlParams: {
         serviceName,
@@ -10,39 +10,41 @@ angular.module('App').service('hostingChangeDomain', function (OvhHttp) {
         mxplan: opts.mxplan,
       },
     });
-  };
 
-  this.get = function (serviceName, opts) {
-    return OvhHttp.get('/order/hosting/web/{serviceName}/changeMainDomain/{duration}', {
-      rootPath: 'apiv6',
-      urlParams: {
-        serviceName,
-        duration: opts.duration,
+  this.get = (serviceName, opts) =>
+    OvhHttp.get(
+      '/order/hosting/web/{serviceName}/changeMainDomain/{duration}',
+      {
+        rootPath: 'apiv6',
+        urlParams: {
+          serviceName,
+          duration: opts.duration,
+        },
+        params: {
+          domain: opts.domain,
+          mxplan: opts.mxplan,
+        },
       },
-      params: {
-        domain: opts.domain,
-        mxplan: opts.mxplan,
-      },
-    });
-  };
+    );
 
-  this.post = function (serviceName, opts) {
-    return OvhHttp.post('/order/hosting/web/{serviceName}/changeMainDomain/{duration}', {
-      rootPath: 'apiv6',
-      urlParams: {
-        serviceName,
-        duration: opts.duration,
+  this.post = (serviceName, opts) =>
+    OvhHttp.post(
+      '/order/hosting/web/{serviceName}/changeMainDomain/{duration}',
+      {
+        rootPath: 'apiv6',
+        urlParams: {
+          serviceName,
+          duration: opts.duration,
+        },
+        data: {
+          domain: opts.domain,
+          mxplan: opts.mxplan,
+        },
       },
-      data: {
-        domain: opts.domain,
-        mxplan: opts.mxplan,
-      },
-    });
-  };
+    );
 
-  this.getModels = function () {
-    return OvhHttp.get('/order.json', {
+  this.getModels = () =>
+    OvhHttp.get('/order.json', {
       rootPath: 'apiv6',
     }).then(data => data.models);
-  };
 });

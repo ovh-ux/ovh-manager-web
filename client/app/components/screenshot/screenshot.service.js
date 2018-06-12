@@ -2,12 +2,12 @@ angular.module('services').service('Screenshot', [
   '$http',
   'constants',
   '$cacheFactory',
-  function ($http, constants, cache) {
+  function screenshot($http, constants, cache) {
     const swsScreenshotPath = `${constants.aapiRootPath}sws/screenshot`;
     const screenshotsCache = cache('SCREENSHOTS');
 
-    this.getScreenshot = function (url) {
-      return $http
+    this.getScreenshot = url =>
+      $http
         .get(swsScreenshotPath, {
           cache: screenshotsCache,
           params: {
@@ -15,6 +15,5 @@ angular.module('services').service('Screenshot', [
           },
         })
         .then(response => (response ? response.data : null));
-    };
   },
 ]);

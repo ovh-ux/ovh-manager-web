@@ -2,14 +2,14 @@ angular.module('App').controller(
   'EmailDelegateCtrl',
   class EmailDelegateCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $q
-         * @param $stateParams
-         * @param $timeout
-         * @param Alerter
-         * @param Emails
-         */
+     * Constructor
+     * @param $scope
+     * @param $q
+     * @param $stateParams
+     * @param $timeout
+     * @param Alerter
+     * @param Emails
+     */
     constructor($scope, $q, $stateParams, $timeout, Alerter, Emails) {
       this.$scope = $scope;
       this.$q = $q;
@@ -54,11 +54,14 @@ angular.module('App').controller(
           });
         } else {
           $('#currentAction').modal('hide');
-          this.$timeout(() => (this.stepPath = ''), 300);
+          this.$timeout(() => {
+            this.stepPath = '';
+          }, 300);
         }
       };
 
-      this.$scope.$on('hosting.tabs.emails.delegate.refresh', () => this.loadEmails());
+      this.$scope.$on('hosting.tabs.emails.delegate.refresh', () =>
+        this.loadEmails());
 
       this.loadEmails();
     }
@@ -92,10 +95,19 @@ angular.module('App').controller(
       this.loading.accounts = true;
       this.emails = null;
 
-      this.Emails
-        .getDelegatedEmails(this.$stateParams.productId, `%${this.search.accounts || ''}%`)
-        .then(data => (this.emails = data.sort()))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_table_accounts_error'), err, this.$scope.alerts.main))
+      this.Emails.getDelegatedEmails(
+        this.$stateParams.productId,
+        `%${this.search.accounts || ''}%`,
+      )
+        .then((data) => {
+          this.emails = data.sort();
+        })
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_table_accounts_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           if (_.isEmpty(this.emails)) {
             this.loading.accounts = false;
@@ -110,7 +122,9 @@ angular.module('App').controller(
           email: this.Emails.getDelegatedEmail(item),
           usage: this.Emails.getEmailDelegatedUsage(item),
         })
-        .then(({ email, usage }) => {
+        .then(({ originalEmail, usage }) => {
+          const email = _(originalEmail).clone();
+
           email.quota = usage.quota;
           email.emailCount = usage.emailCount;
           email.date = usage.date;
@@ -127,25 +141,29 @@ angular.module('App').controller(
     }
 
     /**
-         * Update selected Email usage
-         * @param {object} account
-         */
+     * Update selected Email usage
+     * @param {object} account
+     */
     updateUsage(account) {
       this.loading.usage = true;
-      this.Emails
-        .updateDelegatedUsage(account.email)
+      this.Emails.updateDelegatedUsage(account.email)
         .then(() =>
-          this.Emails.getEmailDelegatedUsage(account.email).then(() => this.constructor.setAccountPercentUse(account)))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_modal_update_usage_error'), err, this.$scope.alerts.main))
-        .finally(() => (this.loading.usage = false));
+          this.Emails.getEmailDelegatedUsage(account.email).then(() =>
+            this.constructor.setAccountPercentUse(account)))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_modal_update_usage_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
+        .finally(() => {
+          this.loading.usage = false;
+        });
     }
 
     static setAccountPercentUse(account) {
-      if (account.size > 0) {
-        account.percentUse = _.round(account.quota * 100 / account.size);
-      } else {
-        account.percentUse = 0;
-      }
+      account.percentUse = // eslint-disable-line no-param-reassign
+        account.size > 0 ? _.round((account.quota * 100) / account.size) : 0;
     }
   },
 );

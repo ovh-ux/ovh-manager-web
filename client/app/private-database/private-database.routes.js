@@ -9,14 +9,18 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'private_database';
+          $rootScope.currentSectionInformation = 'private_database'; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['privateDatabase', 'hosting']).then(() => translator)],
+      translator: [
+        'translator',
+        translator =>
+          translator.load(['privateDatabase', 'hosting']).then(() => translator),
+      ],
     },
   });
 
@@ -29,14 +33,18 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'private_database';
+          $rootScope.currentSectionInformation = 'private_database'; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['privateDatabase']).then(() => translator)],
+      translator: [
+        'translator',
+        translator =>
+          translator.load(['privateDatabase']).then(() => translator),
+      ],
     },
   });
 
@@ -53,14 +61,18 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'private_database';
+          $rootScope.currentSectionInformation = 'private_database'; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['privateDatabase']).then(() => translator)],
+      translator: [
+        'translator',
+        translator =>
+          translator.load(['privateDatabase']).then(() => translator),
+      ],
     },
   });
 });

@@ -1,7 +1,14 @@
-angular
-  .module('App')
-  .controller('PrivateDatabaseImportCtrl', class PrivateDatabaseImportCtrl {
-    constructor($rootScope, $scope, $stateParams, Alerter, PrivateDatabase, User) {
+angular.module('App').controller(
+  'PrivateDatabaseImportCtrl',
+  class PrivateDatabaseImportCtrl {
+    constructor(
+      $rootScope,
+      $scope,
+      $stateParams,
+      Alerter,
+      PrivateDatabase,
+      User,
+    ) {
       this.$rootScope = $rootScope;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -51,7 +58,8 @@ angular
       const filename = this.model.uploadFileName;
       this.isSendingFile = true;
 
-      this.userService.uploadFile(filename, file, [this.importScriptTag])
+      this.userService
+        .uploadFile(filename, file, [this.importScriptTag])
         .then((id) => {
           _.set(this.model, 'document.id', id);
           this.atLeastOneFileHasBeenSend = true;
@@ -64,19 +72,29 @@ angular
     getDocuments() {
       if (this.selected.action === this.model.actions.IMPORT_FROM_EXISTING) {
         this.loading.documents = true;
-        this.userService.getDocuments()
+        this.userService
+          .getDocuments()
           .then((data) => {
             const onlyImportScripts = [];
 
             _.forEach(data, (document) => {
-              if (_.find(document.tags, { key: this.importScriptTag.key, value: this.importScriptTag.value })) {
+              if (
+                _.find(document.tags, {
+                  key: this.importScriptTag.key,
+                  value: this.importScriptTag.value,
+                })
+              ) {
                 onlyImportScripts.push(document);
               }
             });
             this.model.documents = onlyImportScripts;
           })
           .catch((err) => {
-            this.alerter.alertFromSWS(this.$scope.tr('hosting_tab_DATABASES_table_popover_import_step1_load_documents_error'), _.get(err, 'data', err), this.$scope.alerts.main);
+            this.alerter.alertFromSWS(
+              this.$scope.tr('hosting_tab_DATABASES_table_popover_import_step1_load_documents_error'),
+              _.get(err, 'data', err),
+              this.$scope.alerts.main,
+            );
           })
           .finally(() => {
             this.loading.documents = false;
@@ -87,12 +105,26 @@ angular
     importDatabase() {
       this.$scope.resetAction();
 
-      this.privateDatabaseService.importDatabase(this.productId, this.model.database, this.model.document.id, this.model.flushDatabase, this.model.sendEmail)
+      this.privateDatabaseService
+        .importDatabase(
+          this.productId,
+          this.model.database,
+          this.model.document.id,
+          this.model.flushDatabase,
+          this.model.sendEmail,
+        )
         .then(() => {
-          this.alerter.success(this.$scope.tr('hosting_tab_DATABASES_table_popover_import_step3_succes'), this.$scope.alerts.main);
+          this.alerter.success(
+            this.$scope.tr('hosting_tab_DATABASES_table_popover_import_step3_succes'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.alerter.alertFromSWS(this.$scope.tr('hosting_tab_DATABASES_table_popover_import_step3_fail'), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_DATABASES_table_popover_import_step3_fail'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
         });
     }
 
@@ -123,4 +155,5 @@ angular
       this.model.uploadFileName = filename;
       input.$setValidity('format', validFormat);
     }
-  });
+  },
+);

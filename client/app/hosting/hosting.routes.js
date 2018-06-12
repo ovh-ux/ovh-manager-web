@@ -12,14 +12,17 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'hosting';
+          $rootScope.currentSectionInformation = 'hosting'; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['hosting']).then(() => translator)],
+      translator: [
+        'translator',
+        translator => translator.load(['hosting']).then(() => translator),
+      ],
     },
   });
 });

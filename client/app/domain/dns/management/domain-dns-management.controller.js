@@ -12,13 +12,14 @@ angular.module('App').controller(
       this.nameServers = angular.copy(this.$scope.currentActionData.nameServers);
 
       this.hasZone = false;
-      this.hideButtonConfirm = !(this.dnsStatus.isOk && this.dnsStatus.isHosted);
+      this.hideButtonConfirm = !(
+        this.dnsStatus.isOk && this.dnsStatus.isHosted
+      );
       this.loading = true;
 
       this.$scope.submit = () => this.submit();
 
-      this.Domain
-        .getZones()
+      this.Domain.getZones()
         .then((zones) => {
           this.hasZone = _.includes(zones, this.domain.name);
         })
@@ -31,7 +32,10 @@ angular.module('App').controller(
       if (this.hasZone) {
         this.$scope.setAction('dns/lock/domain-dns-lock', false);
       } else {
-        this.$scope.setAction('zone/activate/domain-zone-activate', this.domain);
+        this.$scope.setAction(
+          'zone/activate/domain-zone-activate',
+          this.domain,
+        );
       }
     }
   },

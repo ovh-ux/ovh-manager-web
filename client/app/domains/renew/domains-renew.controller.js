@@ -2,11 +2,11 @@ angular.module('App').controller(
   'DomainsRenewCtrl',
   class DomainsRenewCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $window
-         * @param constants
-         */
+     * Constructor
+     * @param $scope
+     * @param $window
+     * @param constants
+     */
     constructor($scope, $window, constants) {
       this.$scope = $scope;
       this.$window = $window;

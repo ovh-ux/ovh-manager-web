@@ -1,3 +1,4 @@
+
 angular.module('services').service('Products', [
   '$rootScope',
   '$http',
@@ -6,7 +7,7 @@ angular.module('services').service('Products', [
   '$stateParams',
   'AllDom',
   'Emails',
-  function ($rootScope, $http, $q, constants, $stateParams, AllDom, Emails) {
+  function productServices($rootScope, $http, $q, constants, $stateParams, AllDom, Emails) {
     let products = null;
     let productsByType = null;
     let selectedProduct = {
@@ -26,9 +27,9 @@ angular.module('services').service('Products', [
     }
 
     /*
-         * get product by SWS
-         */
-    this.getProducts = function (forceRefresh) {
+       * get product by SWS
+       */
+    this.getProducts = function getProducts(forceRefresh) {
       if (forceRefresh === true) {
         resetCache();
       }
@@ -73,7 +74,9 @@ angular.module('services').service('Products', [
                     });
 
                     /* Exchange 25g */
-                    if (productsByType && productsByType.platforms && productsByType.platforms.length) {
+                    if (productsByType &&
+                        productsByType.platforms &&
+                        productsByType.platforms.length) {
                       // 1. Remove all occurances and put them in other var
                       let exchangeOld = _.remove(productsByType.platforms, a => a.type === 'EXCHANGE_OLD');
                       if (exchangeOld && exchangeOld.length) {
@@ -100,7 +103,8 @@ angular.module('services').service('Products', [
                         .allSettled(allDoms.map(allDom =>
                           AllDom.getDomains(allDom).then(
                             (domains) => {
-                              productDomains = productDomains.filter(d => !~domains.indexOf(d));
+                              productDomains =
+                                productDomains.filter(d => domains.indexOf(d) === -1);
 
                               productsByType.allDoms.push({
                                 name: allDom,
@@ -120,9 +124,11 @@ angular.module('services').service('Products', [
                           )))
                         .then(() => {
                           if (productsByType.allDoms.length > 0) {
-                            const d = productsByType.domains.filter(domain => ~productDomains.indexOf(domain.name));
+                            const d = productsByType.domains.filter(domain =>
+                              productDomains.indexOf(domain.name) !== -1);
 
-                            productsByType.domains = productsByType.allDoms.concat(_.sortBy(d, elt => elt.name));
+                            productsByType.domains =
+                              productsByType.allDoms.concat(_.sortBy(d, elt => elt.name));
                           }
 
                           ['domains', 'hostings', 'exchanges', 'sharepoints', 'vps', 'cdns', 'emails', 'licenseOffice', 'allDoms', 'emailPros'].forEach((type) => {
@@ -151,16 +157,21 @@ angular.module('services').service('Products', [
     };
 
     /*
-         * Get list of products orderBy Type
-         */
-    this.getProductsByType = function () {
+       * Get list of products orderBy Type
+       */
+    this.getProductsByType = function getProductsByType() {
       return this.getProducts().then(() => productsByType);
     };
 
     /*
-         * Get the selected product
-         */
-    this.getSelectedProduct = function (forceRefresh) {
+       * Get the selected product
+       */
+    this.getSelectedProduct = function getSelectedProduct(forceRefresh) {
+      function currentProductMatchesSelectedProduct(currentProduct) {
+        return currentProduct.name === selectedProduct.name
+          && currentProduct.type === selectedProduct.type;
+      }
+
       if (forceRefresh) {
         selectedProduct = {
           name: '',
@@ -213,16 +224,12 @@ angular.module('services').service('Products', [
 
           return productMatchingSelectedProduct;
         });
-
-      function currentProductMatchesSelectedProduct(currentProduct) {
-        return currentProduct.name === selectedProduct.name && currentProduct.type === selectedProduct.type;
-      }
     };
 
     /*
-         * set the selected product by Id
-         */
-    this.setSelectedProduct = function (product) {
+       * set the selected product by Id
+       */
+    this.setSelectedProduct = function setSelectedProduct(product) {
       if (product) {
         if (angular.isString(product)) {
           selectedProduct.name = product;
@@ -244,9 +251,9 @@ angular.module('services').service('Products', [
     };
 
     /*
-         * set the selected product by Id
-         */
-    this.removeSelectedProduct = function () {
+       * set the selected product by Id
+       */
+    this.removeSelectedProduct = function removeSelectedProduct() {
       return this.setSelectedProduct({
         name: '',
         type: '',
@@ -257,9 +264,9 @@ angular.module('services').service('Products', [
     };
 
     /**
-         * Get working-status for the specified product
-         */
-    this.getWorks = function (product) {
+       * Get working-status for the specified product
+       */
+    this.getWorks = function getWorks(product) {
       return $http.get(`${constants.aapiRootPath}working-status/${product}`).then(resp => resp.data);
     };
 

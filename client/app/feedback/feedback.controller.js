@@ -3,10 +3,10 @@ angular.module('App').controller('FeedBackCtrl', [
   'OvhHttp',
   '$location',
   'constants',
-  function ($scope, OvhHttp, $location, constants) {
+  ($scope, OvhHttp, $location, constants) => {
     $scope.feedback = null;
 
-    $scope.initForm = function () {
+    $scope.initForm = () => {
       $scope.feedback = {
         subject: '',
         body: '',
@@ -15,10 +15,16 @@ angular.module('App').controller('FeedBackCtrl', [
 
     $scope.isSending = false;
 
-    $scope.sendFeedBack = function () {
+    $scope.sendFeedBack = () => {
       if ($scope.feedBackForm.$valid) {
         $scope.isSending = true;
-        $scope.feedback.body = [$scope.feedback.body, '------------------------------------------', `univers : ${constants.UNIVERS}`, `location : ${$location.path()}`, `userAgent : ${window.navigator.userAgent}`].join('\n');
+        $scope.feedback.body = [
+          $scope.feedback.body,
+          '------------------------------------------',
+          `univers : ${constants.UNIVERS}`,
+          `location : ${$location.path()}`,
+          `userAgent : ${window.navigator.userAgent}`,
+        ].join('\n');
         OvhHttp.post('/me/feedback', {
           rootPath: 'apiv6',
           data: $scope.feedback,
@@ -30,7 +36,7 @@ angular.module('App').controller('FeedBackCtrl', [
       }
     };
 
-    $scope.closeModal = function () {
+    $scope.closeModal = () => {
       $('#feedback').modal('toggle');
     };
 

@@ -17,7 +17,8 @@ angular.module('App').controller(
           WINDOWS: 'windows',
         },
         capabilities: null,
-        maxUserLength: 20 - this.$scope.currentActionData.primaryLogin.length - 1,
+        maxUserLength:
+          20 - this.$scope.currentActionData.primaryLogin.length - 1,
         minUserLength: 1,
         operatingSystem: this.$scope.currentActionData.operatingSystem,
         primaryLogin: this.$scope.currentActionData.primaryLogin,
@@ -38,21 +39,31 @@ angular.module('App').controller(
           this.model.capabilities = capabilities;
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_FTP_configuration_user_create_step1_loading_error'), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_FTP_configuration_user_create_step1_loading_error'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
         });
     }
 
     isUserValid() {
-      return this.model.selected.login != null &&
-                this.model.selected.login.length >= this.model.minUserLength &&
-                this.model.selected.login.length <= this.model.maxUserLength &&
-                this.model.selected.login.match(/^[\w]+$/);
+      return (
+        this.model.selected.login != null &&
+        this.model.selected.login.length >= this.model.minUserLength &&
+        this.model.selected.login.length <= this.model.maxUserLength &&
+        this.model.selected.login.match(/^[\w]+$/)
+      );
     }
 
     isPasswordValid() {
-      return this.model.selected.password.value && this.model.selected.password.confirmation &&
-                this.model.selected.password.value === this.model.selected.password.confirmation &&
-                this.Hosting.constructor.isPasswordValid(this.model.selected.password.value);
+      return (
+        this.model.selected.password.value &&
+        this.model.selected.password.confirmation &&
+        this.model.selected.password.value ===
+          this.model.selected.password.confirmation &&
+        this.Hosting.constructor.isPasswordValid(this.model.selected.password.value)
+      );
     }
 
     isPasswordInvalid() {
@@ -60,7 +71,10 @@ angular.module('App').controller(
     }
 
     isPasswordConfirmationInvalid() {
-      return this.model.selected.password.value !== this.model.selected.password.confirmation;
+      return (
+        this.model.selected.password.value !==
+        this.model.selected.password.confirmation
+      );
     }
 
     isPathValid() {
@@ -72,25 +86,39 @@ angular.module('App').controller(
     }
 
     getSelectedHome() {
-      let home = '/';
+      const home = '/';
       if (this.model.selected.home !== null) {
-        if (/^\/.*/.test(this.model.selected.home || '') || /^\.\/.*/.test(this.model.selected.home || '')) {
-          home = this.model.selected.home;
-        } else {
-          home = `./${this.model.selected.home}`;
+        if (
+          /^\/.*/.test(this.model.selected.home || '') ||
+          /^\.\/.*/.test(this.model.selected.home || '')
+        ) {
+          return this.model.selected.home;
         }
+        return `./${this.model.selected.home}`;
       }
       return home;
     }
 
     createUser() {
       this.$scope.resetAction();
-      return this.HostingUser.addUser(this.$stateParams.productId, `${this.model.primaryLogin}-${this.model.selected.login}`, this.model.selected.password.value || '', this.getSelectedHome())
+      return this.HostingUser.addUser(
+        this.$stateParams.productId,
+        `${this.model.primaryLogin}-${this.model.selected.login}`,
+        this.model.selected.password.value || '',
+        this.getSelectedHome(),
+      )
         .then(() => {
-          this.Alerter.success(this.$scope.tr('hosting_tab_FTP_configuration_user_create_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('hosting_tab_FTP_configuration_user_create_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_FTP_configuration_user_create_fail'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_FTP_configuration_user_create_fail'),
+            err,
+            this.$scope.alerts.main,
+          );
         });
     }
   },

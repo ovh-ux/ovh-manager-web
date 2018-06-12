@@ -2,12 +2,12 @@ angular.module('App').controller(
   'MailingListsDeleteSubscribersCtrl',
   class MailingListsDeleteSubscribersCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param Alerter
-         * @param MailingLists
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param Alerter
+     * @param MailingLists
+     */
     constructor($scope, $stateParams, Alerter, MailingLists) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -33,18 +33,19 @@ angular.module('App').controller(
       this.loading = true;
       const subscribersToDelete = _.uniq(this.selection);
 
-      return this.MailingLists
-        .deleteSubscribers(this.$stateParams.productId, {
-          mailingList: this.mailingList.name,
-          users: subscribersToDelete,
-          type: 'subscriber',
-        })
+      return this.MailingLists.deleteSubscribers(this.$stateParams.productId, {
+        mailingList: this.mailingList.name,
+        users: subscribersToDelete,
+        type: 'subscriber',
+      })
         .then((tasks) => {
           const task = tasks.pop();
 
           this.Alerter.alertFromSWSBatchResult(
             {
-              OK: this.$scope.tr(subscribersToDelete.length === 1 ? 'mailing_list_tab_modal_subscriber_delete_success' : 'mailing_list_tab_modal_subscribers_delete_success'),
+              OK: this.$scope.tr(subscribersToDelete.length === 1
+                ? 'mailing_list_tab_modal_subscriber_delete_success'
+                : 'mailing_list_tab_modal_subscribers_delete_success'),
               PARTIAL: this.$scope.tr('mailing_list_tab_modal_subscribers_delete_error'),
               ERROR: this.$scope.tr('mailing_list_tab_modal_subscribers_delete_error'),
             },
@@ -60,7 +61,9 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr(subscribersToDelete.length === 1 ? 'mailing_list_tab_modal_subscriber_delete_error' : 'mailing_list_tab_modal_subscribers_delete_error'),
+            this.$scope.tr(subscribersToDelete.length === 1
+              ? 'mailing_list_tab_modal_subscriber_delete_error'
+              : 'mailing_list_tab_modal_subscribers_delete_error'),
             err,
             this.$scope.alerts.main,
           );

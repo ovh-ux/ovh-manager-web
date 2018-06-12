@@ -1,7 +1,18 @@
-angular
-  .module('App')
-  .controller('HostingTabAutomatedEmailsCtrl', class HostingTabAutomatedEmailsCtrl {
-    constructor($scope, $stateParams, $timeout, HostingAutomatedEmails, Alerter, $filter, User, ChartjsFactory, HOSTING_AUTOMATED_EMAILS, translator) {
+angular.module('App').controller(
+  'HostingTabAutomatedEmailsCtrl',
+  class HostingTabAutomatedEmailsCtrl {
+    constructor(
+      $scope,
+      $stateParams,
+      $timeout,
+      HostingAutomatedEmails,
+      Alerter,
+      $filter,
+      User,
+      ChartjsFactory,
+      HOSTING_AUTOMATED_EMAILS,
+      translator,
+    ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
@@ -40,11 +51,9 @@ angular
         this.retrievingAutomatedEmails();
       });
 
-      this.User
-        .getUrlOf('guides')
-        .then((guides) => {
-          this.guide = _.get(guides, 'hostingScriptEmail', null);
-        });
+      this.User.getUrlOf('guides').then((guides) => {
+        this.guide = _.get(guides, 'hostingScriptEmail', null);
+      });
 
       this.retrievingAutomatedEmails();
     }
@@ -53,10 +62,13 @@ angular
       this.loaders.loading = true;
       this.Alerter.resetMessage(this.$scope.alerts.main);
 
-      return this.HostingAutomatedEmails
-        .getAutomatedEmails(this.$stateParams.productId)
+      return this.HostingAutomatedEmails.getAutomatedEmails(this.$stateParams.productId)
         .then((data) => {
-          if (!_.isEmpty(this.automatedEmails) && this.automatedEmails.state !== data.state && data.state === 'purging') {
+          if (
+            !_.isEmpty(this.automatedEmails) &&
+            this.automatedEmails.state !== data.state &&
+            data.state === 'purging'
+          ) {
             this.polling();
           }
 
@@ -66,7 +78,11 @@ angular
         })
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          this.Alerter.alertFromSWS(this.translator.tr('hosting_tab_AUTOMATED_EMAILS_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.translator.tr('hosting_tab_AUTOMATED_EMAILS_error'),
+            err,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.loaders.loading = false;
@@ -76,10 +92,10 @@ angular
     retrievingVolumes() {
       this.loaders.volumes = true;
 
-      return this.HostingAutomatedEmails
-        .retrievingVolumes(this.$stateParams.productId)
+      return this.HostingAutomatedEmails.retrievingVolumes(this.$stateParams.productId)
         .then((data) => {
-          this.stats.chart = new this.ChartjsFactory(angular.copy(this.HOSTING_AUTOMATED_EMAILS.chart));
+          this.stats.chart =
+            new this.ChartjsFactory(angular.copy(this.HOSTING_AUTOMATED_EMAILS.chart));
           this.stats.chart.setAxisOptions('yAxes', {
             type: 'linear',
           });
@@ -89,7 +105,8 @@ angular
             data.data.reverse().map(d => ({
               x: moment.utc(new Date(d.date)).valueOf(),
               y: d.volume,
-            })), {
+            })),
+            {
               dataset: {
                 fill: true,
                 borderWidth: 1,
@@ -99,14 +116,17 @@ angular
         })
         .catch((err) => {
           if (err.status !== 404) {
-            this.Alerter.alertFromSWS(this.translator.tr('hosting_tab_AUTOMATED_EMAILS_error'), _.get(err, 'data', err), this.$scope.alerts.main);
+            this.Alerter.alertFromSWS(
+              this.translator.tr('hosting_tab_AUTOMATED_EMAILS_error'),
+              _.get(err, 'data', err),
+              this.$scope.alerts.main,
+            );
           }
         })
         .finally(() => {
           this.loaders.volumes = false;
         });
     }
-
 
     retrievingBounces() {
       if (this.bounceLimitForm.$dirty && !this.bounceLimitForm.$valid) {
@@ -115,15 +135,21 @@ angular
 
       this.loaders.bounces = true;
 
-      return this.HostingAutomatedEmails
-        .retrievingBounces(this.$stateParams.productId, this.limits.bounces)
+      return this.HostingAutomatedEmails.retrievingBounces(
+        this.$stateParams.productId,
+        this.limits.bounces,
+      )
         .then((data) => {
           this.thereAreEmailsInError = !_.isEmpty(data.data);
           this.bounces = data.data;
         })
         .catch((err) => {
           if (err.status !== 404) {
-            this.Alerter.alertFromSWS(this.translator.tr('hosting_tab_AUTOMATED_EMAILS_error'), _.get(err, 'data', err), this.$scope.alerts.main);
+            this.Alerter.alertFromSWS(
+              this.translator.tr('hosting_tab_AUTOMATED_EMAILS_error'),
+              _.get(err, 'data', err),
+              this.$scope.alerts.main,
+            );
           } else {
             this.thereAreEmailsInError = false;
           }
@@ -139,14 +165,21 @@ angular
     }
 
     purge() {
-      if (this.automatedEmails.state !== 'ko' && this.automatedEmails.state !== 'spam' && this.automatedEmails.state !== 'bounce') {
+      if (
+        this.automatedEmails.state !== 'ko' &&
+        this.automatedEmails.state !== 'spam' &&
+        this.automatedEmails.state !== 'bounce'
+      ) {
         return;
       }
 
-      this.$scope.setAction('automated-emails/request/hosting-automated-emails-request', {
-        automatedEmails: this.automatedEmails,
-        action: 'PURGE',
-      });
+      this.$scope.setAction(
+        'automated-emails/request/hosting-automated-emails-request',
+        {
+          automatedEmails: this.automatedEmails,
+          action: 'PURGE',
+        },
+      );
     }
 
     polling() {
@@ -164,4 +197,5 @@ angular
           }
         });
     }
-  });
+  },
+);

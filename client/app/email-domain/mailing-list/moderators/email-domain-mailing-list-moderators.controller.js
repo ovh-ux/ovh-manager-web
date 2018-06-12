@@ -2,13 +2,13 @@ angular.module('App').controller(
   'MailingListsModeratorsCtrl',
   class MailingListsModeratorsCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $filter
-         * @param $stateParams
-         * @param Alerter
-         * @param MailingLists
-         */
+     * Constructor
+     * @param $scope
+     * @param $filter
+     * @param $stateParams
+     * @param Alerter
+     * @param MailingLists
+     */
     constructor($scope, $filter, $stateParams, Alerter, MailingLists) {
       this.$scope = $scope;
       this.$filter = $filter;
@@ -29,31 +29,40 @@ angular.module('App').controller(
       };
       this.search = { moderators: '' };
 
-      this.$scope.$on('hosting.tabs.mailingLists.moderators.refresh', () => this.refreshTableModerators());
-      this.$scope.$on('mailingLists.moderators.poll.start', (pollObject, task) => {
-        if (task.account === this.mailingList.name) {
-          const action = task.action.split(':')[0];
-          if (_.indexOf(['addm', 'delm'], action) !== -1) {
-            this.moderators.updating = true;
+      this.$scope.$on('hosting.tabs.mailingLists.moderators.refresh', () =>
+        this.refreshTableModerators());
+      this.$scope.$on(
+        'mailingLists.moderators.poll.start',
+        (pollObject, task) => {
+          if (task.account === this.mailingList.name) {
+            const action = task.action.split(':')[0];
+            if (_.indexOf(['addm', 'delm'], action) !== -1) {
+              this.moderators.updating = true;
+            }
           }
-        }
-      });
-      this.$scope.$on('mailingLists.moderators.poll.done', (pollObject, task) => {
-        if (task.account === this.mailingList.name) {
-          const action = task.action.split(':')[0];
-          if (_.indexOf(['addm', 'delm'], action) !== -1) {
-            this.runPolling().then((hasPolling) => {
-              if (!hasPolling) {
-                this.moderators.updating = false;
-                this.Alerter.resetMessage(this.$scope.alerts.main);
-                this.refreshTableModerators(true);
-              }
-            });
+        },
+      );
+      this.$scope.$on(
+        'mailingLists.moderators.poll.done',
+        (pollObject, task) => {
+          if (task.account === this.mailingList.name) {
+            const action = task.action.split(':')[0];
+            if (_.indexOf(['addm', 'delm'], action) !== -1) {
+              this.runPolling().then((hasPolling) => {
+                if (!hasPolling) {
+                  this.moderators.updating = false;
+                  this.Alerter.resetMessage(this.$scope.alerts.main);
+                  this.refreshTableModerators(true);
+                }
+              });
+            }
           }
-        }
-      });
+        },
+      );
       this.$scope.$on('$destroy', () => {
-        this.MailingLists.killAllPolling({ namespace: 'mailingLists.moderators.poll' });
+        this.MailingLists.killAllPolling({
+          namespace: 'mailingLists.moderators.poll',
+        });
       });
 
       this.refreshTableModerators();
@@ -84,7 +93,10 @@ angular.module('App').controller(
             this.moderators.selected = [];
             break;
           case 1:
-            this.moderators.selected = _.filter(_.map(this.moderators.details, 'email'), result => !_.some(this.moderators.selected, result.email));
+            this.moderators.selected = _.filter(
+              _.map(this.moderators.details, 'email'),
+              result => !_.some(this.moderators.selected, result.email),
+            );
             break;
           case 2:
             this.moderators.selected = this.moderators.ids;
@@ -102,7 +114,8 @@ angular.module('App').controller(
 
     applySelection(moderators) {
       _.forEach(moderators, (moderator) => {
-        moderator.selected = _.indexOf(this.moderators.selected, moderator.email) !== -1;
+        moderator.selected = // eslint-disable-line no-param-reassign
+          _.indexOf(this.moderators.selected, moderator.email) !== -1;
       });
     }
 
@@ -115,16 +128,20 @@ angular.module('App').controller(
       this.moderators.ids = null;
       this.moderators.selected = [];
 
-      return this.MailingLists
-        .getModerators(this.$stateParams.productId, {
-          name: this.mailingList.name,
-          email: this.search.moderators ? `%${this.search.moderators}%` : null,
-          forceRefresh,
-        })
+      return this.MailingLists.getModerators(this.$stateParams.productId, {
+        name: this.mailingList.name,
+        email: this.search.moderators ? `%${this.search.moderators}%` : null,
+        forceRefresh,
+      })
         .then((data) => {
           this.moderators.ids = this.$filter('orderBy')(data);
         })
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('mailing_list_tab_modal_get_lists_error'), err, this.$scope.alerts.main))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('mailing_list_tab_modal_get_lists_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           if (_.isEmpty(this.moderators.ids)) {
             this.loading.moderators = false;
@@ -133,7 +150,11 @@ angular.module('App').controller(
     }
 
     transformItemModerator(item) {
-      return this.MailingLists.getModerator(this.$stateParams.productId, this.mailingList.name, item);
+      return this.MailingLists.getModerator(
+        this.$stateParams.productId,
+        this.mailingList.name,
+        item,
+      );
     }
 
     onTransformItemModeratorDone(items) {
@@ -143,8 +164,9 @@ angular.module('App').controller(
     }
 
     runPolling() {
-      return this.MailingLists
-        .getTaskIds(this.$stateParams.productId, { account: this.mailingList.name })
+      return this.MailingLists.getTaskIds(this.$stateParams.productId, {
+        account: this.mailingList.name,
+      })
         .then((tasks) => {
           if (tasks.length > 0) {
             this.MailingLists.pollState(this.$stateParams.productId, {

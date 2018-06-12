@@ -2,17 +2,26 @@ angular.module('App').controller(
   'DnsZoneCtrl',
   class DnsZoneCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $q
-         * @param $stateParams
-         * @param $timeout
-         * @param Alerter
-         * @param Domain
-         * @param Products
-         * @param currentSection
-         */
-    constructor($scope, $q, $stateParams, $timeout, Alerter, Domain, Products, currentSection) {
+     * Constructor
+     * @param $scope
+     * @param $q
+     * @param $stateParams
+     * @param $timeout
+     * @param Alerter
+     * @param Domain
+     * @param Products
+     * @param currentSection
+     */
+    constructor(
+      $scope,
+      $q,
+      $stateParams,
+      $timeout,
+      Alerter,
+      Domain,
+      Products,
+      currentSection,
+    ) {
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -73,14 +82,18 @@ angular.module('App').controller(
 
           this.domain = product;
 
-          return this.Domain.getZoneByZoneName(this.domain.name)
-            .then((zoneInfos) => {
-              this.domain.displayName = this.domain.name;
-              this.domain.nameServers = zoneInfos.nameServers;
-              return this.domain;
-            });
+          return this.Domain.getZoneByZoneName(this.domain.name).then((zoneInfos) => {
+            this.domain.displayName = this.domain.name;
+            this.domain.nameServers = zoneInfos.nameServers;
+            return this.domain;
+          });
         })
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('domain_dashboard_loading_error'), err, this.$scope.alerts.page))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_dashboard_loading_error'),
+            err,
+            this.$scope.alerts.page,
+          ))
         .finally(() => {
           this.loading.domainsInfos = false;
         });

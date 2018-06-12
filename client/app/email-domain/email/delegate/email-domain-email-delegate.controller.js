@@ -2,14 +2,14 @@ angular.module('App').controller(
   'EmailsDelegateCtrl',
   class EmailsDelegateCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param Alerter
-         * @param Emails
-         * @param constants
-         * @param translator
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param Alerter
+     * @param Emails
+     * @param constants
+     * @param translator
+     */
     constructor($scope, $stateParams, Alerter, Emails, constants, translator) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -21,7 +21,10 @@ angular.module('App').controller(
 
     $onInit() {
       this.addDelegateShown = false;
-      this.createNicUrl = this.constants.WEBSITE_URLS.new_nic[this.translator.getSelectedAvailableLanguage().value] || null;
+      this.createNicUrl =
+        this.constants.WEBSITE_URLS.new_nic[
+          this.translator.getSelectedAvailableLanguage().value
+        ] || null;
       this.currentAccount = this.$scope.currentActionData.accountName || null;
       this.delegationAccountList = [];
       this.loading = false;
@@ -34,23 +37,41 @@ angular.module('App').controller(
     initDelegate() {
       this.loading = true;
       this.addDelegateShown = false;
-      return this.Emails
-        .getDelegationList(this.$stateParams.productId, this.currentAccount)
-        .then(list => (this.delegationAccountList = list))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_error'), _.get(err, 'data', err), this.$scope.alerts.main))
-        .finally(() => (this.loading = false));
+      return this.Emails.getDelegationList(
+        this.$stateParams.productId,
+        this.currentAccount,
+      )
+        .then((list) => {
+          this.delegationAccountList = list;
+        })
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_error'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          ))
+        .finally(() => {
+          this.loading = false;
+        });
     }
 
     addDelegate() {
       this.loading = true;
-      return this.Emails
-        .addDelegation(this.$stateParams.productId, this.currentAccount, this.model.value)
+      return this.Emails.addDelegation(
+        this.$stateParams.productId,
+        this.currentAccount,
+        this.model.value,
+      )
         .then(() => {
           this.delegationAccountList.push(this.model.value);
           this.model.value = '';
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('email_tab_error'), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_error'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
           this.$scope.resetAction();
         })
         .finally(() => {
@@ -61,14 +82,27 @@ angular.module('App').controller(
 
     removeDelegate(delegationAccount) {
       this.loading = true;
-      return this.Emails
-        .removeDelegation(this.$stateParams.productId, this.currentAccount, delegationAccount)
-        .then(() => _.remove(this.delegationAccountList, name => name === delegationAccount))
+      return this.Emails.removeDelegation(
+        this.$stateParams.productId,
+        this.currentAccount,
+        delegationAccount,
+      )
+        .then(() =>
+          _.remove(
+            this.delegationAccountList,
+            name => name === delegationAccount,
+          ))
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('email_tab_error'), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_error'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
           this.$scope.resetAction();
         })
-        .finally(() => (this.loading = false));
+        .finally(() => {
+          this.loading = false;
+        });
     }
   },
 );

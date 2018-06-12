@@ -38,30 +38,34 @@ angular.module('App').constant('HOSTING_STATISTICS', {
         },
       },
       scales: {
-        yAxes: [{
-          display: true,
-          position: 'left',
-          scaleLabel: {
+        yAxes: [
+          {
             display: true,
-          },
-          gridLines: {
-            drawBorder: true,
-            display: true,
-          },
-        }],
-        xAxes: [{
-          type: 'time',
-          position: 'bottom',
-          gridLines: {
-            drawBorder: true,
-            display: false,
-          },
-          time: {
-            displayFormats: {
-              hour: 'LT',
+            position: 'left',
+            scaleLabel: {
+              display: true,
+            },
+            gridLines: {
+              drawBorder: true,
+              display: true,
             },
           },
-        }],
+        ],
+        xAxes: [
+          {
+            type: 'time',
+            position: 'bottom',
+            gridLines: {
+              drawBorder: true,
+              display: false,
+            },
+            time: {
+              displayFormats: {
+                hour: 'LT',
+              },
+            },
+          },
+        ],
       },
     },
   },

@@ -10,7 +10,10 @@ angular.module('App').controller(
 
     $onInit() {
       this.account = this.$scope.currentActionData.account || null;
-      this.accounts = _.map(this.$scope.currentActionData.accounts, account => `${account}@${this.account.domain}`);
+      this.accounts = _.map(
+        this.$scope.currentActionData.accounts,
+        account => `${account}@${this.account.domain}`,
+      );
       this.filters = this.$scope.currentActionData.filterNames || [];
       this.headers = ['From', 'To', 'Subject', 'other'];
       this.loading = false;
@@ -37,8 +40,7 @@ angular.module('App').controller(
 
     getModels() {
       this.loading = true;
-      this.Emails
-        .getModels()
+      this.Emails.getModels()
         .then((models) => {
           this.actions = models.models['domain.DomainFilterActionEnum'].enum;
           this.operands = models.models['domain.DomainFilterOperandEnum'].enum;
@@ -47,12 +49,17 @@ angular.module('App').controller(
           this.actions = [];
           this.operands = [];
         })
-        .finally(() => (this.loading = false));
+        .finally(() => {
+          this.loading = false;
+        });
     }
 
     addRule() {
       this.model.rules.push({
-        header: '', operand: null, value: '', headerSelect: null,
+        header: '',
+        operand: null,
+        value: '',
+        headerSelect: null,
       });
     }
 
@@ -62,37 +69,66 @@ angular.module('App').controller(
 
     static filterActionRedirectCheck(input) {
       const value = input.$viewValue;
-      input.$setValidity('filterActionRedirect', !!value && /^[A-Za-z0-9._\-\+]+@[A-Za-z0-9.\-_]+\.[A-Za-z]{2,}$/.test(value) && !/^\./.test(value));
+      input.$setValidity(
+        'filterActionRedirect',
+        !!value &&
+          /^[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(value) &&
+          !/^\./.test(value),
+      );
     }
 
     filterNameCheck(input) {
       const value = input.$viewValue;
-      input.$setValidity('filterName', !!value && /^[\w-._\s]+$/.test(value) && !_.find(this.filters, filter => value === filter));
+      input.$setValidity(
+        'filterName',
+        !!value &&
+          /^[\w.\s-]+$/.test(value) &&
+          !_.find(this.filters, filter => value === filter),
+      );
     }
 
     static filterPriorityCheck(input) {
       const value = input.$viewValue;
-      input.$setValidity('filterPriority', !!value && /^[0-9]+$/.test(value));
+      input.$setValidity('filterPriority', !!value && /^\d+$/.test(value));
     }
 
     filterRuleCheck() {
-      return _.every(this.model.rules, rule => rule.value && rule.operand && ((rule.headerSelect && rule.headerSelect !== 'other') || (rule.headerSelect === 'other' && rule.header)));
+      return _.every(
+        this.model.rules,
+        rule =>
+          rule.value &&
+          rule.operand &&
+          ((rule.headerSelect && rule.headerSelect !== 'other') ||
+            (rule.headerSelect === 'other' && rule.header)),
+      );
     }
 
     createFilter() {
       this.loading = true;
-      const rules = _.map(_.filter(this.model.rules, rule => (rule.headerSelect !== '' || rule.header !== '') && rule.operand !== '' && rule.value !== ''), rule => ({
-        operand: rule.operand,
-        value: rule.value,
-        header: rule.headerSelect === 'other' ? rule.header : rule.headerSelect,
-      }));
+      const rules = _.map(
+        _.filter(
+          this.model.rules,
+          rule =>
+            (rule.headerSelect !== '' || rule.header !== '') &&
+            rule.operand !== '' &&
+            rule.value !== '',
+        ),
+        rule => ({
+          operand: rule.operand,
+          value: rule.value,
+          header:
+            rule.headerSelect === 'other' ? rule.header : rule.headerSelect,
+        }),
+      );
       const rule = rules.shift();
       const filter = {
         name: this.model.filterName,
         priority: parseInt(this.model.filterPriority, 10),
         active: this.model.filterActive,
         action: this.model.filterAction,
-        actionParam: this.model.filterActionParam ? this.model.filterActionParam : '',
+        actionParam: this.model.filterActionParam
+          ? this.model.filterActionParam
+          : '',
         header: rule.header,
         operand: rule.operand,
         value: rule.value,
@@ -100,17 +136,33 @@ angular.module('App').controller(
 
       let filterPromise;
       if (_.get(this.$scope.currentActionData, 'delegate', false)) {
-        filterPromise = this.Emails.createDelegatedFilter(this.account.email, filter, rules);
+        filterPromise = this.Emails.createDelegatedFilter(
+          this.account.email,
+          filter,
+          rules,
+        );
       } else {
-        filterPromise = this.Emails.createFilter(this.$stateParams.productId, this.account.accountName, filter, rules);
+        filterPromise = this.Emails.createFilter(
+          this.$stateParams.productId,
+          this.account.accountName,
+          filter,
+          rules,
+        );
       }
 
       return filterPromise
         .then(() => {
-          this.Alerter.success(this.$scope.tr('email_tab_modal_create_filter_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('email_tab_modal_create_filter_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('email_tab_modal_create_filter_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_modal_create_filter_error'),
+            err,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.loading = false;

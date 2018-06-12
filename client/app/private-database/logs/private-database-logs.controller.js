@@ -1,6 +1,6 @@
-angular
-  .module('App')
-  .controller('PrivateDatabaseLogsCtrl', class PrivateDatabaseLogsCtrl {
+angular.module('App').controller(
+  'PrivateDatabaseLogsCtrl',
+  class PrivateDatabaseLogsCtrl {
     constructor($scope, $stateParams, OvhTailLogs, PrivateDatabaseLogsService) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -12,8 +12,10 @@ angular
       this.productId = this.$stateParams.productId;
 
       this.logger = new this.OvhTailLogs({
-        source: () => this.privateDatabaseLogsService.getLogs(this.productId)
-          .then(logs => logs.url),
+        source: () =>
+          this.privateDatabaseLogsService
+            .getLogs(this.productId)
+            .then(logs => logs.url),
         delay: 2000,
       });
 
@@ -36,4 +38,5 @@ angular
       this.logger = this.logger.logs;
       return this.logger;
     }
-  });
+  },
+);

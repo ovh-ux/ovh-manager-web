@@ -1,7 +1,14 @@
 angular.module('App').controller(
   'PrivateDatabaseAddWhitelistCtrl',
   class PrivateDatabaseAddWhitelistCtrl {
-    constructor(Alerter, WhitelistService, $rootScope, $scope, $stateParams, Validator) {
+    constructor(
+      Alerter,
+      WhitelistService,
+      $rootScope,
+      $scope,
+      $stateParams,
+      Validator,
+    ) {
       this.alerter = Alerter;
       this.whitelistService = WhitelistService;
       this.$rootScope = $rootScope;
@@ -24,21 +31,32 @@ angular.module('App').controller(
         this.whitelistService
           .createWhitelist(this.productId, this.model)
           .then(() => {
-            this.alerter.success(this.$scope.tr('privateDatabase_modale_whitelist_add_success'), this.$scope.alerts.main);
+            this.alerter.success(
+              this.$scope.tr('privateDatabase_modale_whitelist_add_success'),
+              this.$scope.alerts.main,
+            );
           })
           .catch((err) => {
-            this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_modale_whitelist_add_fail'), _.get(err, 'data', err), this.$scope.alerts.main);
+            this.alerter.alertFromSWS(
+              this.$scope.tr('privateDatabase_modale_whitelist_add_fail'),
+              _.get(err, 'data', err),
+              this.$scope.alerts.main,
+            );
           })
           .finally(() => this.$scope.resetAction());
       };
     }
 
     isIpValid(ip) {
-      return this.validator.isValidIpv4Block(ip) || this.validator.isValidIpv4(ip);
+      return (
+        this.validator.isValidIpv4Block(ip) || this.validator.isValidIpv4(ip)
+      );
     }
 
     isWhitelistValid() {
-      return this.isIpValid(this.model.ip) && (this.model.service || this.model.sftp);
+      return (
+        this.isIpValid(this.model.ip) && (this.model.service || this.model.sftp)
+      );
     }
   },
 );

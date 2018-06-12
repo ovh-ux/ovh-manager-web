@@ -8,15 +8,31 @@
     self.loading = self.type === 'classic';
 
     function init() {
-      User.getUrlOf('guides').then((guides) => { self.guides = guides; });
+      User.getUrlOf('guides').then((guides) => {
+        self.guides = guides;
+      });
 
       if (self.type === 'classic') {
-        Hosting.getHosting(self.hostingName).then((hosting) => { self.hosting = hosting; }).catch(err => Alerter.alertFromSWS('website_success_text_classic_error', err, 'website.success.alert')).finally(() => { self.loading = false; });
+        Hosting.getHosting(self.hostingName)
+          .then((hosting) => {
+            self.hosting = hosting;
+          })
+          .catch(err =>
+            Alerter.alertFromSWS(
+              'website_success_text_classic_error',
+              err,
+              'website.success.alert',
+            ))
+          .finally(() => {
+            self.loading = false;
+          });
       }
     }
 
     init();
   }
 
-  angular.module('App').controller('WebSiteSuccessCtrl', WebSiteSuccessController);
+  angular
+    .module('App')
+    .controller('WebSiteSuccessCtrl', WebSiteSuccessController);
 }

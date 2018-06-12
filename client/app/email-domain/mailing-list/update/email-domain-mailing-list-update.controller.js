@@ -2,14 +2,14 @@ angular.module('App').controller(
   'MailingListsUpdateCtrl',
   class MailingListsUpdateCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $q
-         * @param $stateParams
-         * @param Alerter
-         * @param MailingLists
-         * @param User
-         */
+     * Constructor
+     * @param $scope
+     * @param $q
+     * @param $stateParams
+     * @param Alerter
+     * @param MailingLists
+     * @param User
+     */
     constructor($scope, $q, $stateParams, Alerter, MailingLists, User) {
       this.$scope = $scope;
       this.$q = $q;
@@ -21,7 +21,11 @@ angular.module('App').controller(
 
     $onInit() {
       this.mailingList = angular.copy(this.$scope.currentActionData);
-      this.mailingList.mlModerationMsg = !this.mailingList.options.moderatorMessage && !this.mailingList.options.usersPostOnly ? null : this.mailingList.options.moderatorMessage;
+      this.mailingList.mlModerationMsg =
+        !this.mailingList.options.moderatorMessage &&
+        !this.mailingList.options.usersPostOnly
+          ? null
+          : this.mailingList.options.moderatorMessage;
 
       this.constants = {
         MAILING_LIST: 'mailinglist',
@@ -48,29 +52,48 @@ angular.module('App').controller(
           this.limits = limits;
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('email_tab_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_error'),
+            err,
+            this.$scope.alerts.main,
+          );
           this.$scope.resetAction();
         })
-        .finally(() => (this.loading = false));
+        .finally(() => {
+          this.loading = false;
+        });
     }
 
     emailCheck(input) {
-      input.$setValidity('email', this.MailingLists.constructor.isMailValid(input.$viewValue));
+      input.$setValidity(
+        'email',
+        this.MailingLists.constructor.isMailValid(input.$viewValue),
+      );
     }
 
     selectReplyTo() {
-      this.mailingList.replyTo = this.replyToSelector === this.constants.REPLY_TO_EMAIL ? '' : this.replyToSelector;
+      this.mailingList.replyTo =
+        this.replyToSelector === this.constants.REPLY_TO_EMAIL
+          ? ''
+          : this.replyToSelector;
     }
 
     selectModerationMsg() {
-      return this.MailingLists.getMailingListLimits(this.mailingList.mlModerationMsg, true).then(limits => (this.limits = limits));
+      return this.MailingLists.getMailingListLimits(
+        this.mailingList.mlModerationMsg,
+        true,
+      ).then((limits) => {
+        this.limits = limits;
+      });
     }
 
     updateMailingList() {
       this.loading = true;
 
-      return this.MailingLists
-        .updateMailingList(this.$stateParams.productId, this.mailingList.name, {
+      return this.MailingLists.updateMailingList(
+        this.$stateParams.productId,
+        this.mailingList.name,
+        {
           infos: {
             language: this.mailingList.language,
             ownerEmail: this.mailingList.ownerEmail,
@@ -78,12 +101,25 @@ angular.module('App').controller(
           },
           options: {
             moderatorMessage: !!this.mailingList.mlModerationMsg,
-            usersPostOnly: this.mailingList.mlModerationMsg === null ? false : !this.mailingList.mlModerationMsg,
+            usersPostOnly:
+              this.mailingList.mlModerationMsg === null
+                ? false
+                : !this.mailingList.mlModerationMsg,
             subscribeByModerator: this.mailingList.options.subscribeByModerator,
           },
-        })
-        .then(() => this.Alerter.success(this.$scope.tr('mailing_list_tab_modal_update_list_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('mailing_list_tab_modal_update_list_error'), _.get(err, 'data', err), this.$scope.alerts.main))
+        },
+      )
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('mailing_list_tab_modal_update_list_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('mailing_list_tab_modal_update_list_error'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

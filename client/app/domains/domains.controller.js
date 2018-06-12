@@ -2,16 +2,24 @@ angular.module('App').controller(
   'DomainsCtrl',
   class DomainsCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $rootScope
-         * @param $timeout
-         * @param Domains
-         * @param Navigator
-         * @param Alerter
-         * @param User
-         */
-    constructor($scope, $rootScope, $timeout, Domains, Navigator, Alerter, User) {
+     * Constructor
+     * @param $scope
+     * @param $rootScope
+     * @param $timeout
+     * @param Domains
+     * @param Navigator
+     * @param Alerter
+     * @param User
+     */
+    constructor(
+      $scope,
+      $rootScope,
+      $timeout,
+      Domains,
+      Navigator,
+      Alerter,
+      User,
+    ) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$timeout = $timeout;
@@ -34,7 +42,13 @@ angular.module('App').controller(
       this.search = { value: null };
       this.stepPath = '';
 
-      this.User.getUrlOf('bulkChangeOwner').then(link => (this.urlBulkChangeOwner = link)).catch(() => (this.urlBulkChangeOwner = null));
+      this.User.getUrlOf('bulkChangeOwner')
+        .then((link) => {
+          this.urlBulkChangeOwner = link;
+        })
+        .catch(() => {
+          this.urlBulkChangeOwner = null;
+        });
 
       this.$scope.domains = null;
       this.$scope.selectedDomains = [];
@@ -49,8 +63,7 @@ angular.module('App').controller(
         this.loading.domainsInfos = true;
         this.loading.domainsSearch = true;
 
-        this.Domains
-          .getDomains(count, offset, this.search.value)
+        this.Domains.getDomains(count, offset, this.search.value)
           .then((domains) => {
             this.$scope.domains = domains;
             if (_.get(domains, 'list.results', []).length > 0) {
@@ -60,7 +73,10 @@ angular.module('App').controller(
           })
           .catch(() => {
             this.loading.domainsError = true;
-            this.Alerter.error(this.$scope.tr('domains_dashboard_loading_error'), this.$scope.alerts.page);
+            this.Alerter.error(
+              this.$scope.tr('domains_dashboard_loading_error'),
+              this.$scope.alerts.page,
+            );
           })
           .finally(() => {
             this.loading.init = false;
@@ -73,16 +89,25 @@ angular.module('App').controller(
           this.setAction(action, 'domains/', data);
         }
       };
-      this.$scope.setActionMultiple = (action, data) => this.setAction(action, 'domains/', data);
+      this.$scope.setActionMultiple = (action, data) =>
+        this.setAction(action, 'domains/', data);
       this.$scope.resetAction = () => this.setAction(false);
       this.$scope.getSelectedDomains = () => this.$scope.selectedDomains;
 
       this.$scope.$watch('selectedDomains', () => this.applySelection(), true);
       this.$scope.$on('$locationChangeStart', () => this.$scope.resetAction());
-      this.$scope.$on('domain.csv.export.cancel', () => (this.loading.domainsExportCsv = false));
-      this.$scope.$on('domain.csv.export.doing', () => (this.loading.domainsExportCsv = true));
-      this.$scope.$on('domain.csv.export.done', () => (this.loading.domainsExportCsv = false));
-      this.$scope.$on('domain.csv.export.error', () => (this.loading.domainsExportCsv = false));
+      this.$scope.$on('domain.csv.export.cancel', () => {
+        this.loading.domainsExportCsv = false;
+      });
+      this.$scope.$on('domain.csv.export.doing', () => {
+        this.loading.domainsExportCsv = true;
+      });
+      this.$scope.$on('domain.csv.export.done', () => {
+        this.loading.domainsExportCsv = false;
+      });
+      this.$scope.$on('domain.csv.export.error', () => {
+        this.loading.domainsExportCsv = false;
+      });
       this.$scope.$on('domains.list.refresh', () => {
         this.$scope.selectedDomains = [];
         this.$scope.$broadcast('paginationServerSide.reload');
@@ -91,7 +116,8 @@ angular.module('App').controller(
 
     applySelection() {
       _.forEach(_.get(this.$scope.domains, 'list.results'), (value) => {
-        value.selected = _.indexOf(this.$scope.selectedDomains, value.name) !== -1;
+        value.selected = // eslint-disable-line no-param-reassign
+          _.indexOf(this.$scope.selectedDomains, value.name) !== -1;
       });
     }
 
@@ -108,9 +134,9 @@ angular.module('App').controller(
     }
 
     /**
-         * Handle checkboxes with "deselect/select all" option
-         * @param {integer} state
-         */
+     * Handle checkboxes with "deselect/select all" option
+     * @param {integer} state
+     */
     globalCheckboxStateChange(state) {
       if (_.get(this.$scope.domains, 'list.results')) {
         switch (state) {
@@ -119,7 +145,10 @@ angular.module('App').controller(
             this.atLeastOneSelected = false;
             break;
           case 1:
-            this.$scope.selectedDomains = _.map(this.$scope.domains.list.results, 'name').filter(result => !_.some(this.$scope.selectedDomains, result.name));
+            this.$scope.selectedDomains = _.map(
+              this.$scope.domains.list.results,
+              'name',
+            ).filter(result => !_.some(this.$scope.selectedDomains, result.name));
             this.atLeastOneSelected = true;
             break;
           case 2:
@@ -133,9 +162,9 @@ angular.module('App').controller(
     }
 
     /**
-         * Redirect to domain page
-         * @param {string} domain name
-         */
+     * Redirect to domain page
+     * @param {string} domain name
+     */
     openDomain(domain) {
       this.$rootScope.$broadcast('leftNavigation.selectProduct.fromName', {
         name: domain,
@@ -144,20 +173,22 @@ angular.module('App').controller(
     }
 
     /**
-         * Toggle the clicked domain checkbox
-         * @param {string} domain name
-         */
+     * Toggle the clicked domain checkbox
+     * @param {string} domain name
+     */
     toggleDomain(domain) {
-      this.$scope.selectedDomains = _.xor(this.$scope.selectedDomains, [domain]);
+      this.$scope.selectedDomains = _.xor(this.$scope.selectedDomains, [
+        domain,
+      ]);
       this.atLeastOneSelected = this.$scope.selectedDomains.length > 0;
     }
 
     /**
-         * Set Action
-         * @param action
-         * @param baseStepPath
-         * @param data
-         */
+     * Set Action
+     * @param action
+     * @param baseStepPath
+     * @param data
+     */
     setAction(action, baseStepPath, data) {
       this.$scope.currentAction = action;
       this.$scope.currentActionData = data;
@@ -168,7 +199,9 @@ angular.module('App').controller(
       } else {
         $('#currentAction').modal('hide');
         this.$scope.currentActionData = null;
-        this.$timeout(() => (this.stepPath = ''), 300);
+        this.$timeout(() => {
+          this.stepPath = '';
+        }, 300);
       }
     }
   },

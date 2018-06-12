@@ -1,6 +1,6 @@
-angular
-  .module('services')
-  .service('HostingEnvvars', class HostingEnvvars {
+angular.module('services').service(
+  'HostingEnvvars',
+  class HostingEnvvars {
     constructor($q, Hosting, OvhHttp) {
       this.$q = $q;
 
@@ -9,10 +9,10 @@ angular
     }
 
     /**
-         * Get list of envvars on hosting
-         * @param serviceName
-         * @param filters
-         */
+     * Get list of envvars on hosting
+     * @param serviceName
+     * @param filters
+     */
     list(serviceName, filters) {
       let filtersAsArray = filters;
 
@@ -26,21 +26,25 @@ angular
           params: filter,
         }));
 
-      return this.$q
-        .allSettled(promises)
-        .then((data) => {
-          let dataAsArray = data;
+      return this.$q.allSettled(promises).then((data) => {
+        let dataAsArray = data;
 
-          if (!_(data).isArray()) {
-            dataAsArray = [data];
-          }
+        if (!_(data).isArray()) {
+          dataAsArray = [data];
+        }
 
-          return _(dataAsArray).chain()
-            .map(datum => (_(datum).isArray ? _(datum).flatten().value() : datum)) // The API returns an array of array sometimes
-            .flatten()
-            .uniq()
-            .value();
-        });
+        return _(dataAsArray)
+          .chain()
+          .map(datum =>
+            (_(datum).isArray
+              ? _(datum)
+                .flatten()
+                .value()
+              : datum)) // The API returns an array of array sometimes
+          .flatten()
+          .uniq()
+          .value();
+      });
     }
 
     get(serviceName, key) {
@@ -50,48 +54,43 @@ angular
     }
 
     create(serviceName, { key, type, value }) {
-      return this.OvhHttp
-        .post(`/hosting/web/${serviceName}/envVar`, {
-          rootPath: 'apiv6',
-          data: {
-            key,
-            type,
-            value,
-          },
-        })
-        .then((data) => {
-          this.Hosting.resetEnvvars();
+      return this.OvhHttp.post(`/hosting/web/${serviceName}/envVar`, {
+        rootPath: 'apiv6',
+        data: {
+          key,
+          type,
+          value,
+        },
+      }).then((data) => {
+        this.Hosting.resetEnvvars();
 
-          return data;
-        });
+        return data;
+      });
     }
 
     edit(serviceName, oldKey, { key, type, value }) {
-      return this.OvhHttp
-        .put(`/hosting/web/${serviceName}/envVar/${oldKey}`, {
-          rootPath: 'apiv6',
-          data: {
-            key,
-            type,
-            value,
-          },
-        })
-        .then((data) => {
-          this.Hosting.resetEnvvars();
+      return this.OvhHttp.put(`/hosting/web/${serviceName}/envVar/${oldKey}`, {
+        rootPath: 'apiv6',
+        data: {
+          key,
+          type,
+          value,
+        },
+      }).then((data) => {
+        this.Hosting.resetEnvvars();
 
-          return data;
-        });
+        return data;
+      });
     }
 
     delete(serviceName, key) {
-      return this.OvhHttp
-        .delete(`/hosting/web/${serviceName}/envVar/${key}`, {
-          rootPath: 'apiv6',
-        })
-        .then((data) => {
-          this.Hosting.resetEnvvars();
+      return this.OvhHttp.delete(`/hosting/web/${serviceName}/envVar/${key}`, {
+        rootPath: 'apiv6',
+      }).then((data) => {
+        this.Hosting.resetEnvvars();
 
-          return data;
-        });
+        return data;
+      });
     }
-  });
+  },
+);

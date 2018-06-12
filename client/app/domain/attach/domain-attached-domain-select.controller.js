@@ -1,7 +1,14 @@
 angular.module('App').controller(
   'DomainAttachedDomainSelectCtrl',
   class DomainAttachedDomainSelectCtrl {
-    constructor($scope, $rootScope, $stateParams, $timeout, HostingDomain, Navigator) {
+    constructor(
+      $scope,
+      $rootScope,
+      $stateParams,
+      $timeout,
+      HostingDomain,
+      Navigator,
+    ) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$stateParams = $stateParams;
@@ -20,12 +27,11 @@ angular.module('App').controller(
 
     getAttachedDomains() {
       this.loading = true;
-      return this.HostingDomain
-        .getAttachedDomains(this.domainName)
+      return this.HostingDomain.getAttachedDomains(this.domainName)
         .then((data) => {
           if (_.isArray(data) && data.length > 0) {
             this.attachedDomains = data;
-            this.selectedAttachedDomain = this.attachedDomains[0];
+            [this.selectedAttachedDomain] = this.attachedDomains;
           } else {
             this.$scope.resetAction();
           }

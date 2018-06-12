@@ -2,8 +2,8 @@ angular.module('App').controller(
   'MailingListsTabViewController',
   class MailingListsTabViewController {
     /**
-         * Constructor
-         */
+     * Constructor
+     */
     constructor() {
       this.setCurrentView();
     }

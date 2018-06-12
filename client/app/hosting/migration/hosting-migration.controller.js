@@ -38,12 +38,22 @@ angular.module('App').controller(
       this.loading = true;
       this.$scope.resetAction();
 
-      return this.Hosting.migrateMyOvhOrg(this.$stateParams.productId, this.model.destination)
+      return this.Hosting.migrateMyOvhOrg(
+        this.$stateParams.productId,
+        this.model.destination,
+      )
         .then(() => {
-          this.Alerter.success(this.$scope.tr('hosting_migrate_my_ovh_org_success'), this.$scope.alerts.tabs);
+          this.Alerter.success(
+            this.$scope.tr('hosting_migrate_my_ovh_org_success'),
+            this.$scope.alerts.tabs,
+          );
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_migrate_my_ovh_org_error'), err, this.$scope.alerts.tabs);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('hosting_migrate_my_ovh_org_error'),
+            err,
+            this.$scope.alerts.tabs,
+          );
         })
         .finally(() => {
           this.loading = false;

@@ -1,6 +1,6 @@
-angular
-  .module('App')
-  .controller('PrivateDatabaseRestoreBDDCtrl', class PrivateDatabaseRestoreBDDCtrl {
+angular.module('App').controller(
+  'PrivateDatabaseRestoreBDDCtrl',
+  class PrivateDatabaseRestoreBDDCtrl {
     constructor($scope, $stateParams, Alerter, PrivateDatabase) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -18,15 +18,24 @@ angular
     }
 
     restoreBDD() {
-      this.privateDatabaseService.restoreBDD(this.productId, this.bdd.databaseName, this.dump.id)
+      this.privateDatabaseService
+        .restoreBDD(this.productId, this.bdd.databaseName, this.dump.id)
         .then(() => {
-          this.alerter.success(this.$scope.tr('privateDatabase_tabs_dumps_restore_in_progress'), this.$scope.alerts.main);
+          this.alerter.success(
+            this.$scope.tr('privateDatabase_tabs_dumps_restore_in_progress'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_tabs_dumps_restore_fail'), err, this.$scope.alerts.main);
+          this.alerter.alertFromSWS(
+            this.$scope.tr('privateDatabase_tabs_dumps_restore_fail'),
+            err,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.$scope.resetAction();
         });
     }
-  });
+  },
+);

@@ -17,14 +17,25 @@ angular.module('App').controller(
       const completionDeferred = this.$scope.currentActionData.deferred;
 
       this.$scope.resetAction();
-      return this.hostingDatabaseService.requestDatabaseQuotaCheck(this.$stateParams.productId, this.bddName)
+      return this.hostingDatabaseService
+        .requestDatabaseQuotaCheck(this.$stateParams.productId, this.bddName)
         .then((data) => {
-          this.alerter.success(this.$scope.tr('hosting_tab_DATABASES_configuration_check_quota_success', [this.bddName]), this.$scope.alerts.main);
+          this.alerter.success(
+            this.$scope.tr(
+              'hosting_tab_DATABASES_configuration_check_quota_success',
+              [this.bddName],
+            ),
+            this.$scope.alerts.main,
+          );
           completionDeferred.resolve(data);
         })
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          this.alerter.alertFromSWS(this.$scope.tr('hosting_tab_DATABASES_configuration_check_quota_fail'), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_DATABASES_configuration_check_quota_fail'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
           completionDeferred.reject(err);
         });
     }

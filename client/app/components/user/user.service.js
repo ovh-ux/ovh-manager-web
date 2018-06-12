@@ -1,12 +1,9 @@
 angular.module('services').service('User', [
-  '$rootScope',
   '$http',
   '$q',
   'constants',
-  'Products',
-  'translator',
   'OvhHttp',
-  function ($rootScope, $http, $q, constants, Products, translator, OvhHttp) {
+  function userService($http, $q, constants, OvhHttp) {
     let user = null;
     let userPromise;
     let userPromiseRunning = false;
@@ -42,7 +39,11 @@ angular.module('services').service('User', [
 
     this.getUrlOf = link =>
       this.getUser().then((data) => {
-        if (_.has(constants, 'urls') && constants.urls[data.ovhSubsidiary] != null && constants.urls[data.ovhSubsidiary][link] != null) {
+        if (
+          _.has(constants, 'urls') &&
+          constants.urls[data.ovhSubsidiary] != null &&
+          constants.urls[data.ovhSubsidiary][link] != null
+        ) {
           return constants.urls[data.ovhSubsidiary][link];
         }
 
@@ -50,12 +51,17 @@ angular.module('services').service('User', [
       });
 
     /* The new structure in constants.config.js will be ...value.subsidiary and not subsidiary.value
-         * It will be easier for maintainers when you see all the possible values for a constant at the same place
-         * If constants are structured the old way, use getUrlOf
-         */
+    * It will be easier for maintainers when you see all
+    * the possible values for a constant at the same place
+    * If constants are structured the old way, use getUrlOf
+    */
     this.getUrlOfEndsWithSubsidiary = link =>
       this.getUser().then((data) => {
-        if (_.has(constants, 'urls') && constants.urls[link] != null && constants.urls[link][data.ovhSubsidiary] != null) {
+        if (
+          _.has(constants, 'urls') &&
+          constants.urls[link] != null &&
+          constants.urls[link][data.ovhSubsidiary] != null
+        ) {
           return constants.urls[link][data.ovhSubsidiary];
         }
 
@@ -69,7 +75,10 @@ angular.module('services').service('User', [
         return $q.all(queries);
       });
 
-    this.getCreditCard = id => $http.get(`apiv6/me/paymentMean/creditCard/${id}`).then(response => response.data);
+    this.getCreditCard = id =>
+      $http
+        .get(`apiv6/me/paymentMean/creditCard/${id}`)
+        .then(response => response.data);
 
     this.uploadFile = (filename, file, tags) => {
       if (filename == null || filename === '' || _.isEmpty(file.name)) {
@@ -82,7 +91,8 @@ angular.module('services').service('User', [
       const filenameSplitted = file.name.split('.');
       const fileNameExtension = filenameSplitted[filenameSplitted.length - 1];
       const givenFilenameSplitted = filename.split('.');
-      const givenFilenameExtension = givenFilenameSplitted[givenFilenameSplitted.length - 1];
+      const givenFilenameExtension =
+        givenFilenameSplitted[givenFilenameSplitted.length - 1];
 
       let finalExtension = '';
       if (fileNameExtension !== givenFilenameExtension) {
@@ -102,7 +112,9 @@ angular.module('services').service('User', [
         .then((response) => {
           documentResponse = response;
 
-          return $http.post('apiv6/me/document/cors', { origin: window.location.origin });
+          return $http.post('apiv6/me/document/cors', {
+            origin: window.location.origin,
+          });
         })
         .then(() => {
           idFile = documentResponse.data.id;
@@ -115,9 +127,11 @@ angular.module('services').service('User', [
         .then(() => idFile);
     };
 
-    this.getDocument = id => $http.get(`apiv6/me/document/${id}`).then(response => response.data);
+    this.getDocument = id =>
+      $http.get(`apiv6/me/document/${id}`).then(response => response.data);
 
-    this.getDocumentIds = () => $http.get('apiv6/me/document').then(response => response.data);
+    this.getDocumentIds = () =>
+      $http.get('apiv6/me/document').then(response => response.data);
 
     this.getDocuments = () =>
       this.getDocumentIds().then((data) => {

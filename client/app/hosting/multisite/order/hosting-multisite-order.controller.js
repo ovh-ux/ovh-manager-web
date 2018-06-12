@@ -33,7 +33,9 @@ angular.module('App').controller(
           this.$scope.resetAction();
           break;
         case this.model.actions.ATTACH:
-          this.$scope.setAction('multisite/add/hosting-multisite-add', { domains: this.$scope.domains });
+          this.$scope.setAction('multisite/add/hosting-multisite-add', {
+            domains: this.$scope.domains,
+          });
           break;
         default:
           break;

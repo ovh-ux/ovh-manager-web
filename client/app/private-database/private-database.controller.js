@@ -1,7 +1,18 @@
-angular
-  .module('App')
-  .controller('PrivateDatabaseCtrl', class PrivateDatabaseCtrl {
-    constructor($q, $rootScope, $scope, $stateParams, $timeout, Alerter, Hosting, PrivateDatabase, PrivateDatabaseExtension, User) {
+angular.module('App').controller(
+  'PrivateDatabaseCtrl',
+  class PrivateDatabaseCtrl {
+    constructor(
+      $q,
+      $rootScope,
+      $scope,
+      $stateParams,
+      $timeout,
+      Alerter,
+      Hosting,
+      PrivateDatabase,
+      PrivateDatabaseExtension,
+      User,
+    ) {
       this.$q = $q;
       this.$rootScope = $rootScope;
       this.$scope = $scope;
@@ -38,34 +49,46 @@ angular
 
       this.$scope.database = null;
 
-      this.userService.getUrlOf('changeOwner')
-        .then((link) => {
-          this.$scope.changeOwnerUrl = link;
-        });
-
-      _.forEach(['done', 'error'], (state) => {
-        this.$scope.$on(`privateDatabase.global.actions.${state}`, (e, taskOpt) => {
-          this.$scope.taskState.lockAction = taskOpt.lock ? false : this.$scope.taskState.lockAction;
-
-          this.$scope.taskState.changeFtpPassword = false;
-          this.$scope.taskState.changeRootPassword = false;
-        });
+      this.userService.getUrlOf('changeOwner').then((link) => {
+        this.$scope.changeOwnerUrl = link;
       });
 
-      this.$scope.isDockerDatabase = () => this.$scope.database.infrastructure === 'docker';
+      _.forEach(['done', 'error'], (state) => {
+        this.$scope.$on(
+          `privateDatabase.global.actions.${state}`,
+          (e, taskOpt) => {
+            this.$scope.taskState.lockAction = taskOpt.lock
+              ? false
+              : this.$scope.taskState.lockAction;
 
-      this.$scope.isLegacyDatabase = () => this.$scope.database.infrastructure === 'legacy';
+            this.$scope.taskState.changeFtpPassword = false;
+            this.$scope.taskState.changeRootPassword = false;
+          },
+        );
+      });
 
-      this.$scope.isConfigSet = () => this.privateDatabaseService.getConfigurationDetails(this.productId)
-        .then(res => !_.isEmpty(res.details));
+      this.$scope.isDockerDatabase = () =>
+        this.$scope.database.infrastructure === 'docker';
 
-      this.$scope.isExtensionSet = () => this.privateDatabaseExtensionService.getExtensions(this.productId, this.$scope.database.databaseName)
-        .then(res => !_.isEmpty(res));
+      this.$scope.isLegacyDatabase = () =>
+        this.$scope.database.infrastructure === 'legacy';
 
+      this.$scope.isConfigSet = () =>
+        this.privateDatabaseService
+          .getConfigurationDetails(this.productId)
+          .then(res => !_.isEmpty(res.details));
+
+      this.$scope.isExtensionSet = () =>
+        this.privateDatabaseExtensionService
+          .getExtensions(this.productId, this.$scope.database.databaseName)
+          .then(res => !_.isEmpty(res));
 
       this.$scope.isDBaaS = () => this.$scope.database.offer === 'public';
 
-      this.$scope.isRenew = () => this.$scope.database.serviceInfos.renew && (this.$scope.database.serviceInfos.renew.forced || this.$scope.database.serviceInfos.renew.automatic);
+      this.$scope.isRenew = () =>
+        this.$scope.database.serviceInfos.renew &&
+        (this.$scope.database.serviceInfos.renew.forced ||
+          this.$scope.database.serviceInfos.renew.automatic);
 
       this.$scope.addCron = (data) => {
         this.$scope.setAction('cron/add/private-database-cron-add', data);
@@ -79,7 +102,9 @@ angular
         this.$scope.currentAction = action;
         this.$scope.currentActionData = data;
         if (action) {
-          this.$scope.stepPath = `private-database/${this.$scope.currentAction}.html`;
+          this.$scope.stepPath = `private-database/${
+            this.$scope.currentAction
+          }.html`;
           $('#currentAction').modal({
             keyboard: true,
             backdrop: 'static',
@@ -113,16 +138,23 @@ angular
       };
 
       this.$scope.$on('privateDatabase.global.actions.start', (e, taskOpt) => {
-        this.$scope.taskState.lockAction = taskOpt.lock || this.$scope.taskState.lockAction;
+        this.$scope.taskState.lockAction =
+          taskOpt.lock || this.$scope.taskState.lockAction;
       });
 
-      this.$scope.$on('privateDataBase.action.change.ftp.password.cancel', () => {
-        this.$scope.taskState.changeFtpPassword = false;
-      });
+      this.$scope.$on(
+        'privateDataBase.action.change.ftp.password.cancel',
+        () => {
+          this.$scope.taskState.changeFtpPassword = false;
+        },
+      );
 
-      this.$scope.$on('privateDataBase.action.change.root.password.cancel', () => {
-        this.$scope.taskState.changeRootPassword = false;
-      });
+      this.$scope.$on(
+        'privateDataBase.action.change.root.password.cancel',
+        () => {
+          this.$scope.taskState.changeRootPassword = false;
+        },
+      );
 
       this.getDetails(true).then(() => {
         if (!this.isExpired) {
@@ -139,26 +171,28 @@ angular
       this.loaders.details = true;
       this.$scope.database = null;
 
-      return this.privateDatabaseService.getSelected(this.productId, forceRefresh)
+      return this.privateDatabaseService
+        .getSelected(this.productId, forceRefresh)
         .then((database) => {
           this.$scope.database = database;
           this.$scope.database.version = database.version.replace('.', '');
           this.isExpired = _.get(database, 'serviceInfos.status') === 'expired';
           this.$scope.guides = [];
 
-          this.userService.getUrlOf('guides')
-            .then((guides) => {
-              if (this.$scope.database && guides) {
-                if (this.$scope.database.offer === 'classic') {
-                  if (guides.hostingPrivateDatabase) {
-                    this.$scope.guides.push({
-                      title: 'guide_add_hosting_private_database',
-                      url: guides.hostingPrivateDatabase,
-                    });
-                  }
-                } else if (this.$scope.database.offer === 'public') {
-                  if (guides.hostingPrivateDatabaseDBaaS) {
-                    this.$scope.guides = _.map(guides.hostingPrivateDatabaseDBaaS, (url, key) => {
+          this.userService.getUrlOf('guides').then((guides) => {
+            if (this.$scope.database && guides) {
+              if (this.$scope.database.offer === 'classic') {
+                if (guides.hostingPrivateDatabase) {
+                  this.$scope.guides.push({
+                    title: 'guide_add_hosting_private_database',
+                    url: guides.hostingPrivateDatabase,
+                  });
+                }
+              } else if (this.$scope.database.offer === 'public') {
+                if (guides.hostingPrivateDatabaseDBaaS) {
+                  this.$scope.guides = _.map(
+                    guides.hostingPrivateDatabaseDBaaS,
+                    (url, key) => {
                       let returnedObject;
                       if (!_.isEmpty(url)) {
                         returnedObject = {
@@ -167,22 +201,27 @@ angular
                         };
                       }
                       return returnedObject;
-                    });
-                  }
+                    },
+                  );
                 }
               }
-            });
+            }
+          });
 
           this.$scope.database.quotaPercent = {};
           if (database.quotaSize && +database.quotaSize.value) {
             this.$scope.database.quotaPercent = {
-              value: (database.quotaUsed.value / database.quotaSize.value) * 100,
+              value:
+                (database.quotaUsed.value / database.quotaSize.value) * 100,
               unit: database.quotaSize.unit,
             };
           }
 
           if (!this.$scope.database.hostnameFtp) {
-            this.$scope.database.hostnameFtp = this.$scope.database.infrastructure === 'legacy' ? 'sqlprive.ovh.net' : this.$scope.database.hostname.replace('.ha.', '.');
+            this.$scope.database.hostnameFtp =
+              this.$scope.database.infrastructure === 'legacy'
+                ? 'sqlprive.ovh.net'
+                : this.$scope.database.hostname.replace('.ha.', '.');
           }
 
           if (!this.$scope.database.portFtp) {
@@ -198,24 +237,34 @@ angular
     }
 
     editDisplayName() {
-      this.newDisplayName.value = this.$scope.database.displayName || this.$scope.database.serviceName;
+      this.newDisplayName.value =
+        this.$scope.database.displayName || this.$scope.database.serviceName;
       this.editMode = true;
     }
 
     saveDisplayName() {
-      const displayName = this.newDisplayName.value || this.$scope.database.serviceName;
-      this.privateDatabaseService.updatePrivateDatabase(this.productId, {
-        body: {
-          displayName,
-        },
-      })
+      const displayName =
+        this.newDisplayName.value || this.$scope.database.serviceName;
+      this.privateDatabaseService
+        .updatePrivateDatabase(this.productId, {
+          body: {
+            displayName,
+          },
+        })
         .then(() => {
           this.$scope.database.displayName = displayName;
-          this.$rootScope.$broadcast('change.displayName', [this.$scope.database.serviceName, displayName]);
+          this.$rootScope.$broadcast('change.displayName', [
+            this.$scope.database.serviceName,
+            displayName,
+          ]);
         })
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_dashboard_loading_error'), err, this.$scope.alerts.page);
+          this.alerter.alertFromSWS(
+            this.$scope.tr('privateDatabase_dashboard_loading_error'),
+            err,
+            this.$scope.alerts.page,
+          );
         })
         .finally(() => {
           this.editMode = false;
@@ -223,17 +272,21 @@ angular
     }
 
     getTasksToPoll() {
-      this.privateDatabaseService.getTasksToPoll(this.productId)
-        .then((tasks) => {
-          _.forEach(tasks, this.$scope.pollAction);
-        });
+      this.privateDatabaseService.getTasksToPoll(this.productId).then((tasks) => {
+        _.forEach(tasks, this.$scope.pollAction);
+      });
     }
 
     runPoll(task, lock) {
       this.$scope.taskState[task.function] = true;
 
-      const opt = { taskId: task.id, namespace: 'privateDatabase.global.actions', lock };
-      this.privateDatabaseService.poll(this.productId, opt)
+      const opt = {
+        taskId: task.id,
+        namespace: 'privateDatabase.global.actions',
+        lock,
+      };
+      this.privateDatabaseService
+        .poll(this.productId, opt)
         .then(() => {
           this.$scope.taskState[task.function] = false;
 
@@ -241,12 +294,25 @@ angular
             this.getDetails(true);
           }
 
-          this.$rootScope.$broadcast('privateDatabase.global.actions.done', opt);
-          this.alerter.success(this.$scope.tr(`privateDatabase_global_actions_success_${task.function}`), this.$scope.alerts.main);
+          this.$rootScope.$broadcast(
+            'privateDatabase.global.actions.done',
+            opt,
+          );
+          this.alerter.success(
+            this.$scope.tr(`privateDatabase_global_actions_success_${task.function}`),
+            this.$scope.alerts.main,
+          );
         })
         .catch(() => {
-          this.$rootScope.$broadcast('privateDatabase.global.actions.error', opt);
-          this.alerter.error(this.$scope.tr(`privateDatabase_global_actions_fail_${task.function}`), this.$scope.alerts.main);
+          this.$rootScope.$broadcast(
+            'privateDatabase.global.actions.error',
+            opt,
+          );
+          this.alerter.error(
+            this.$scope.tr(`privateDatabase_global_actions_fail_${task.function}`),
+            this.$scope.alerts.main,
+          );
         });
     }
-  });
+  },
+);

@@ -16,13 +16,26 @@ angular.module('App').controller(
     }
 
     restoreDatabaseBackup() {
-      return this.hostingDatabaseService.restoreBDDBackup(this.$stateParams.productId, this.bdd.name, this.backupType, true)
+      return this.hostingDatabaseService
+        .restoreBDDBackup(
+          this.$stateParams.productId,
+          this.bdd.name,
+          this.backupType,
+          true,
+        )
         .then(() => {
-          this.alerter.success(this.$scope.tr('database_tabs_dumps_restore_in_start'), this.$scope.alerts.main);
+          this.alerter.success(
+            this.$scope.tr('database_tabs_dumps_restore_in_start'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          this.alerter.alertFromSWS(this.$scope.tr('database_tabs_dumps_restore_fail'), err, this.$scope.alerts.main);
+          this.alerter.alertFromSWS(
+            this.$scope.tr('database_tabs_dumps_restore_fail'),
+            err,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.$scope.resetAction();

@@ -18,16 +18,30 @@ angular.module('App').controller(
     }
 
     isValid() {
-      return _(this.editEnvvarForm).isObject() && this.editEnvvarForm.$dirty && this.editEnvvarForm.$valid;
+      return (
+        _(this.editEnvvarForm).isObject() &&
+        this.editEnvvarForm.$dirty &&
+        this.editEnvvarForm.$valid
+      );
     }
 
     edit() {
-      return this.HostingEnvvars.edit(this.$stateParams.productId, this.entryToEdit.key, this.entryToEdit)
+      return this.HostingEnvvars.edit(
+        this.$stateParams.productId,
+        this.entryToEdit.key,
+        this.entryToEdit,
+      )
         .then(() => {
-          this.Alerter.success(this.$scope.tr('hosting_tab_ENVVARS_edit_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('hosting_tab_ENVVARS_edit_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.Alerter.error(this.$scope.tr('hosting_tab_ENVVARS_edit_error') + err.message, this.$scope.alerts.main);
+          this.Alerter.error(
+            this.$scope.tr('hosting_tab_ENVVARS_edit_error') + err.message,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.$scope.resetAction();

@@ -9,7 +9,7 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = '';
+          $rootScope.currentSectionInformation = ''; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,

@@ -33,10 +33,16 @@ angular.module('App').controller(
       this.user = null;
 
       if (this.$scope.currentActionData) {
-        database = this.$scope.currentActionData.database ? this.$scope.currentActionData.database : null;
-        this.user = this.$scope.currentActionData.user ? this.$scope.currentActionData.user : null;
+        database = this.$scope.currentActionData.database
+          ? this.$scope.currentActionData.database
+          : null;
+        this.user = this.$scope.currentActionData.user
+          ? this.$scope.currentActionData.user
+          : null;
 
-        this.model.password.type = this.$scope.currentActionData.passwordType ? this.$scope.currentActionData.passwordType : null;
+        this.model.password.type = this.$scope.currentActionData.passwordType
+          ? this.$scope.currentActionData.passwordType
+          : null;
 
         if (database && database.infrastructure === 'legacy') {
           if (this.model.password.type === 'root') {
@@ -55,7 +61,12 @@ angular.module('App').controller(
         this.$scope.resetAction();
 
         this.privateDatabaseService
-          .changePassword(this.productId, this.model.password.value, this.user, this.model.password.type)
+          .changePassword(
+            this.productId,
+            this.model.password.value,
+            this.user,
+            this.model.password.type,
+          )
           .then((_task) => {
             let task = _task;
 
@@ -67,10 +78,17 @@ angular.module('App').controller(
               task.function = 'changeRootPassword';
             }
             this.$scope.pollAction(task);
-            this.alerter.success(this.$scope.tr(`privateDatabase_change_${this.prefix}Password_success`), this.$scope.alerts.main);
+            this.alerter.success(
+              this.$scope.tr(`privateDatabase_change_${this.prefix}Password_success`),
+              this.$scope.alerts.main,
+            );
           })
           .catch((err) => {
-            this.alerter.alertFromSWS(this.$scope.tr(`privateDatabase_change_${this.prefix}Password_fail`), _.get(err, 'data', err), this.$scope.alerts.main);
+            this.alerter.alertFromSWS(
+              this.$scope.tr(`privateDatabase_change_${this.prefix}Password_fail`),
+              _.get(err, 'data', err),
+              this.$scope.alerts.main,
+            );
           });
       };
 
@@ -86,7 +104,12 @@ angular.module('App').controller(
     }
 
     isPasswordValid() {
-      return this.model.password.value && this.model.password.value.length && this.model.password.value === this.model.password.confirmation && this.model.password.condition.pattern.test(this.model.password.value);
+      return (
+        this.model.password.value &&
+        this.model.password.value.length &&
+        this.model.password.value === this.model.password.confirmation &&
+        this.model.password.condition.pattern.test(this.model.password.value)
+      );
     }
 
     static getClassLabel(label, errorValue) {

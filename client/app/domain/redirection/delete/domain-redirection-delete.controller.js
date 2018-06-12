@@ -23,8 +23,22 @@ angular.module('controllers').controller(
 
       this.$scope.deleteRedirection = () => this.deleteRedirection();
 
-      this.Domain.getRedirection(this.$stateParams.productId, { elementsByPage: 100, elementsToSkip: 0, search: this.entryToDelete.subDomain }, true).then((results) => {
-        this.wwwDomainToDelete.data = _.find(_.get(results, 'list.results'), redirection => redirection.subDomain === `www.${this.entryToDelete.subDomain}` || (redirection.subDomain === 'www' && this.entryToDelete.subDomain !== 'www'));
+      this.Domain.getRedirection(
+        this.$stateParams.productId,
+        {
+          elementsByPage: 100,
+          elementsToSkip: 0,
+          search: this.entryToDelete.subDomain,
+        },
+        true,
+      ).then((results) => {
+        this.wwwDomainToDelete.data = _.find(
+          _.get(results, 'list.results'),
+          redirection =>
+            redirection.subDomain === `www.${this.entryToDelete.subDomain}` ||
+            (redirection.subDomain === 'www' &&
+              this.entryToDelete.subDomain !== 'www'),
+        );
       });
     }
 
@@ -35,15 +49,34 @@ angular.module('controllers').controller(
     deleteRedirection() {
       this.loading = true;
 
-      const deletePromises = [this.Domain[this.entryToDelete.isOrt === true ? 'deleteRedirection' : 'deleteDnsEntry'](this.$stateParams.productId, this.entryToDelete.id)];
+      const deletePromises = [
+        this.Domain[
+          this.entryToDelete.isOrt === true
+            ? 'deleteRedirection'
+            : 'deleteDnsEntry'
+        ](this.$stateParams.productId, this.entryToDelete.id),
+      ];
       if (this.wwwDomainToDelete.data && this.wwwDomainToDelete.removeWWW) {
-        deletePromises.push(this.Domain[this.wwwDomainToDelete.data.isOrt === true ? 'deleteRedirection' : 'deleteDnsEntry'](this.$stateParams.productId, this.wwwDomainToDelete.data.id));
+        deletePromises.push(this.Domain[
+          this.wwwDomainToDelete.data.isOrt === true
+            ? 'deleteRedirection'
+            : 'deleteDnsEntry'
+        ](this.$stateParams.productId, this.wwwDomainToDelete.data.id));
       }
 
       return this.$q
         .all(deletePromises)
-        .then(() => this.Alerter.success(this.$scope.tr('domain_tab_REDIRECTION_delete_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('domain_tab_REDIRECTION_delete_fail'), err, this.$scope.alerts.main))
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('domain_tab_REDIRECTION_delete_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_tab_REDIRECTION_delete_fail'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

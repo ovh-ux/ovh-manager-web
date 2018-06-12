@@ -2,12 +2,12 @@ angular.module('services').service(
   'HostingUser',
   class HostingUser {
     /**
-         * Constructor
-         * @param Hosting
-         * @param OvhHttp
-         * @param Poller
-         * @param $rootScope
-         */
+     * Constructor
+     * @param Hosting
+     * @param OvhHttp
+     * @param Poller
+     * @param $rootScope
+     */
     constructor(Hosting, OvhHttp, Poller, $rootScope) {
       this.Hosting = Hosting;
       this.OvhHttp = OvhHttp;
@@ -16,10 +16,10 @@ angular.module('services').service(
     }
 
     /**
-         * Delete a FTP user
-         * @param {string} serviceName
-         * @param {string} userId
-         */
+     * Delete a FTP user
+     * @param {string} serviceName
+     * @param {string} userId
+     */
     deleteUser(serviceName, userId) {
       return this.OvhHttp.delete(`/hosting/web/${serviceName}/user/${userId}`, {
         rootPath: 'apiv6',
@@ -29,27 +29,30 @@ angular.module('services').service(
     }
 
     /**
-         * Update password for user
-         * @param {string} serviceName
-         * @param {string} userId
-         * @param {string} password
-         */
+     * Update password for user
+     * @param {string} serviceName
+     * @param {string} userId
+     * @param {string} password
+     */
     changePassword(serviceName, userId, password) {
-      return this.OvhHttp.post(`/hosting/web/${serviceName}/user/${userId}/changePassword`, {
-        rootPath: 'apiv6',
-        data: {
-          password,
+      return this.OvhHttp.post(
+        `/hosting/web/${serviceName}/user/${userId}/changePassword`,
+        {
+          rootPath: 'apiv6',
+          data: {
+            password,
+          },
         },
-      });
+      );
     }
 
     /**
-         * Add user
-         * @param {string} serviceName
-         * @param {string} login
-         * @param {string} password
-         * @param {string} home
-         */
+     * Add user
+     * @param {string} serviceName
+     * @param {string} login
+     * @param {string} password
+     * @param {string} home
+     */
     addUser(serviceName, login, password, home) {
       return this.OvhHttp.post(`/hosting/web/${serviceName}/user`, {
         rootPath: 'apiv6',
@@ -65,22 +68,25 @@ angular.module('services').service(
     }
 
     /**
-         * Update user
-         * @param {string} serviceName
-         * @param {object} opts
-         */
+     * Update user
+     * @param {string} serviceName
+     * @param {object} opts
+     */
     updateUser(serviceName, opts) {
-      return this.OvhHttp.put(`/hosting/web/${serviceName}/user/${opts.login}`, {
-        rootPath: 'apiv6',
-        data: opts.data,
-      }).then(() => {
+      return this.OvhHttp.put(
+        `/hosting/web/${serviceName}/user/${opts.login}`,
+        {
+          rootPath: 'apiv6',
+          data: opts.data,
+        },
+      ).then(() => {
         this.Hosting.resetUsers();
       });
     }
 
     /**
-         * Get user creation capabilities
-         */
+     * Get user creation capabilities
+     */
     getUserCreationCapabilities() {
       return this.Hosting.getModels().then(models => ({
         maxUser: 1000,
@@ -89,10 +95,10 @@ angular.module('services').service(
     }
 
     /**
-         * Get tasks
-         * @param {string} serviceName
-         * @param {object} opts
-         */
+     * Get tasks
+     * @param {string} serviceName
+     * @param {object} opts
+     */
     getTasks(serviceName, opts) {
       return this.OvhHttp.get(`/hosting/web/${serviceName}/tasks`, {
         rootPath: 'apiv6',
@@ -101,12 +107,14 @@ angular.module('services').service(
     }
 
     /**
-         * Poll State
-         * @param {string} serviceName
-         * @param {object} opts
-         * @returns {boolean}
-         */
-    pollState(serviceName, opts) {
+     * Poll State
+     * @param {string} serviceName
+     * @param {object} opts
+     * @returns {boolean}
+     */
+    pollState(serviceName, originalOpts) {
+      const opts = _(originalOpts).clone();
+
       if (!opts.id) {
         return this.$rootScope.$broadcast(`${opts.namespace}.error`, '');
       }
@@ -116,25 +124,35 @@ angular.module('services').service(
       }
 
       this.$rootScope.$broadcast(`${opts.namespace}.start`, opts.id);
-      return this.Poller.poll(`apiv6/hosting/web/${serviceName}/tasks/${opts.id}`, null, {
-        interval: 5000,
-        successRule: {
-          state(task) {
-            return opts.successSates.indexOf(task.state) !== -1;
+      return this.Poller.poll(
+        `apiv6/hosting/web/${serviceName}/tasks/${opts.id}`,
+        null,
+        {
+          interval: 5000,
+          successRule: {
+            state(task) {
+              return opts.successSates.indexOf(task.state) !== -1;
+            },
           },
+          namespace: opts.namespace,
         },
-        namespace: opts.namespace,
-      }).then((pollObject, task) => {
-        this.$rootScope.$broadcast(`${opts.namespace}.done`, pollObject, task);
-      }).catch((err) => {
-        this.$rootScope.$broadcast(`${opts.namespace}.error`, err);
-      });
+      )
+        .then((pollObject, task) => {
+          this.$rootScope.$broadcast(
+            `${opts.namespace}.done`,
+            pollObject,
+            task,
+          );
+        })
+        .catch((err) => {
+          this.$rootScope.$broadcast(`${opts.namespace}.error`, err);
+        });
     }
 
     /**
-         * Kill polling
-         * @param {object} opts
-         */
+     * Kill polling
+     * @param {object} opts
+     */
     killAllPolling(opts) {
       this.Poller.kill({ namespace: opts.namespace });
     }

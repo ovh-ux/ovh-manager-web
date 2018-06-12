@@ -1,6 +1,6 @@
-angular
-  .module('services')
-  .service('HostingRuntimes', class HostingRuntimes {
+angular.module('services').service(
+  'HostingRuntimes',
+  class HostingRuntimes {
     constructor($q, OvhHttp, Hosting) {
       this.$q = $q;
 
@@ -9,10 +9,10 @@ angular
     }
 
     /**
-         * List all runtime configurations on hosting
-         * @param serviceName
-         * @param filters
-         */
+     * List all runtime configurations on hosting
+     * @param serviceName
+     * @param filters
+     */
     list(serviceName, filters) {
       const promises = [];
 
@@ -44,10 +44,10 @@ angular
     }
 
     /**
-         * Get runtime configuration informations
-         * @param serviceName
-         * @param id
-         */
+     * Get runtime configuration informations
+     * @param serviceName
+     * @param id
+     */
     get(serviceName, id) {
       return this.OvhHttp.get(`/hosting/web/${serviceName}/runtime/${id}`, {
         rootPath: 'apiv6',
@@ -55,35 +55,41 @@ angular
     }
 
     /**
-         * Get runtime attached domains
-         * @param serviceName
-         * @param id
-         */
+     * Get runtime attached domains
+     * @param serviceName
+     * @param id
+     */
     getAttachedDomains(serviceName, id) {
-      return this.OvhHttp.get(`/hosting/web/${serviceName}/runtime/${id}/attachedDomains`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/hosting/web/${serviceName}/runtime/${id}/attachedDomains`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Get runtime available backend types
-         * @param {string} serviceName
-         */
+     * Get runtime available backend types
+     * @param {string} serviceName
+     */
     getAvailableTypes(serviceName) {
-      return this.OvhHttp.get(`/hosting/web/${serviceName}/runtimeAvailableTypes`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/hosting/web/${serviceName}/runtimeAvailableTypes`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Create a runtime configuration on hosting
-         * @param serviceName
-         * @param name
-         * @param type
-         * @param publicDir
-         * @param appEnv
-         * @param appBootstrap
-         */
+     * Create a runtime configuration on hosting
+     * @param serviceName
+     * @param name
+     * @param type
+     * @param publicDir
+     * @param appEnv
+     * @param appBootstrap
+     */
     create(serviceName, {
       name, type, publicDir, appEnv, appBootstrap,
     }) {
@@ -108,15 +114,15 @@ angular
     }
 
     /**
-         * Update a runtime configuration on hosting
-         * @param serviceName
-         * @param id
-         * @param name
-         * @param type
-         * @param publicDir
-         * @param appEnv
-         * @param appBootstrap
-         */
+     * Update a runtime configuration on hosting
+     * @param serviceName
+     * @param id
+     * @param name
+     * @param type
+     * @param publicDir
+     * @param appEnv
+     * @param appBootstrap
+     */
     edit(serviceName, id, {
       name, type, publicDir, appEnv, appBootstrap,
     }) {
@@ -137,10 +143,10 @@ angular
     }
 
     /**
-         * Delete a runtime configuration on hosting
-         * @param serviceName
-         * @param id
-         */
+     * Delete a runtime configuration on hosting
+     * @param serviceName
+     * @param id
+     */
     delete(serviceName, id) {
       return this.OvhHttp.delete(`/hosting/web/${serviceName}/runtime/${id}`, {
         rootPath: 'apiv6',
@@ -156,11 +162,11 @@ angular
     }
 
     /**
-         * Set a runtime configuration to default on hosting
-         * @param serviceName
-         * @param model
-         * @param id
-         */
+     * Set a runtime configuration to default on hosting
+     * @param serviceName
+     * @param model
+     * @param id
+     */
     setDefault(serviceName, id) {
       return this.OvhHttp.put(`/hosting/web/${serviceName}/runtime/${id}`, {
         rootPath: 'apiv6',
@@ -177,4 +183,5 @@ angular
         http => this.$q.reject(http),
       );
     }
-  });
+  },
+);

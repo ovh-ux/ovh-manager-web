@@ -1,6 +1,6 @@
-angular
-  .module('App')
-  .controller('DomainTabDynHostCtrl', class DomainTabDynHostCtrl {
+angular.module('App').controller(
+  'DomainTabDynHostCtrl',
+  class DomainTabDynHostCtrl {
     constructor($scope, $q, $stateParams, Alerter, Domain, Products) {
       this.$scope = $scope;
       this.$q = $q;
@@ -44,7 +44,11 @@ angular
           }
         })
         .catch((err) => {
-          this.displayError(err, 'domain_tab_DYNHOST_error', this.$scope.alerts.main);
+          this.displayError(
+            err,
+            'domain_tab_DYNHOST_error',
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.loading.init = false;
@@ -52,11 +56,19 @@ angular
     }
 
     displayError(err, trKey, alert) {
-      if (err.status === 460 && err.data && /service(\s|\s\w+\s)expired/i.test(err.data.message)) {
+      if (
+        err.status === 460 &&
+        err.data &&
+        /service(\s|\s\w+\s)expired/i.test(err.data.message)
+      ) {
         // If the service is really expired, the customers have already received several messages
         return;
       }
-      this.Alerter.alertFromSWS(this.$scope.tr(trKey), _.get(err, 'data', err), alert);
+      this.Alerter.alertFromSWS(
+        this.$scope.tr(trKey),
+        _.get(err, 'data', err),
+        alert,
+      );
     }
 
     //---------------------------------------------
@@ -88,17 +100,23 @@ angular
     refreshTableDynHosts() {
       this.loading.dynHosts = true;
       this.dynHosts = null;
-      const subDomain = this.search.subDomain ? punycode.toASCII(this.search.subDomain) : null;
+      const subDomain = this.search.subDomain
+        ? punycode.toASCII(this.search.subDomain)
+        : null;
 
-      return this.Domain
-        .getDynHosts(this.product.name, subDomain)
+      return this.Domain.getDynHosts(this.product.name, subDomain)
         .then((data) => {
           this.dynHosts = data;
           if (!_.isEmpty(this.dynHosts)) {
             this.hasResult = true;
           }
         })
-        .catch(err => this.displayError(err, 'domain_tab_DYNHOST_error', this.$scope.alerts.main))
+        .catch(err =>
+          this.displayError(
+            err,
+            'domain_tab_DYNHOST_error',
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           if (_.isEmpty(this.dynHosts)) {
             this.loading.dynHosts = false;
@@ -107,7 +125,10 @@ angular
     }
 
     transformItem(item) {
-      return this.Domain.getDynHost(this.product.name, item).then(this.constructor.subDomainToPunycode, err => err);
+      return this.Domain.getDynHost(this.product.name, item).then(
+        this.constructor.subDomainToPunycode,
+        err => err,
+      );
     }
 
     onTransformItemDone() {
@@ -118,4 +139,5 @@ angular
       _.set(item, 'subDomain', punycode.toUnicode(item.subDomain));
       return item;
     }
-  });
+  },
+);

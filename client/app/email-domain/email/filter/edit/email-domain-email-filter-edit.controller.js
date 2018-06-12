@@ -10,7 +10,10 @@ angular.module('App').controller(
 
     $onInit() {
       this.account = angular.copy(this.$scope.currentActionData.account);
-      this.accounts = _.map(this.$scope.currentActionData.accounts, account => `${account}@${this.account.domain}`);
+      this.accounts = _.map(
+        this.$scope.currentActionData.accounts,
+        account => `${account}@${this.account.domain}`,
+      );
       this.filter = angular.copy(this.$scope.currentActionData.filter);
       this.headers = ['From', 'To', 'Subject', 'other'];
       this.loading = false;
@@ -22,16 +25,22 @@ angular.module('App').controller(
 
     getModels() {
       this.loading = true;
-      this.Emails
-        .getModels()
+      this.Emails.getModels()
         .then((models) => {
           this.actions = models.models['domain.DomainFilterActionEnum'].enum;
           this.operands = models.models['domain.DomainFilterOperandEnum'].enum;
 
           if (_.get(this.$scope.currentActionData, 'delegate', false)) {
-            return this.Emails.getDelegatedRules(this.account.email, this.filter.name);
+            return this.Emails.getDelegatedRules(
+              this.account.email,
+              this.filter.name,
+            );
           }
-          return this.Emails.getRules(this.$stateParams.productId, this.account.accountName, this.filter.name);
+          return this.Emails.getRules(
+            this.$stateParams.productId,
+            this.account.accountName,
+            this.filter.name,
+          );
         })
         .catch(() => {
           this.actions = [];
@@ -39,7 +48,9 @@ angular.module('App').controller(
         })
         .then((rules) => {
           if (rules != null) {
-            this.filter.rules = rules.map((rule) => {
+            this.filter.rules = rules.map((originalRule) => {
+              const rule = _(originalRule).clone();
+
               const matchingHeader = this.headers.find(header => header === rule.header);
 
               if (matchingHeader == null) {
@@ -59,7 +70,10 @@ angular.module('App').controller(
 
     addRule() {
       this.filter.rules.push({
-        header: '', operand: '', value: '', headerSelect: '',
+        header: '',
+        operand: '',
+        value: '',
+        headerSelect: '',
       });
     }
 
@@ -70,7 +84,12 @@ angular.module('App').controller(
     filterActionRedirectCheck() {
       const input = this.editFilterForm.filterActionParam;
       const value = input.$viewValue;
-      input.$setValidity('filterActionRedirect', !!value && /^[A-Za-z0-9._\-\+]+@[A-Za-z0-9.\-_]+\.[A-Za-z]{2,}$/.test(value) && !/^\./.test(value));
+      input.$setValidity(
+        'filterActionRedirect',
+        !!value &&
+          /^[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(value) &&
+          !/^\./.test(value),
+      );
     }
 
     filterPriorityCheck() {
@@ -80,19 +99,36 @@ angular.module('App').controller(
     }
 
     filterRuleCheck() {
-      return _.every(this.filter.rules, rule => rule.value && rule.operand && ((rule.headerSelect && rule.headerSelect !== 'other') || (rule.headerSelect === 'other' && rule.header)));
+      return _.every(
+        this.filter.rules,
+        rule =>
+          rule.value &&
+          rule.operand &&
+          ((rule.headerSelect && rule.headerSelect !== 'other') ||
+            (rule.headerSelect === 'other' && rule.header)),
+      );
     }
 
     updateFilter() {
       this.loading = true;
-      const rules = _.map(_.filter(this.filter.rules, rule => (rule.headerSelect !== '' || rule.header !== '') && rule.operand !== '' && rule.value !== ''), rule => ({
-        operand: rule.operand,
-        value: rule.value,
-        header: rule.headerSelect === 'other' ? rule.header : rule.headerSelect,
-      }));
+      const rules = _.map(
+        _.filter(
+          this.filter.rules,
+          rule =>
+            (rule.headerSelect !== '' || rule.header !== '') &&
+            rule.operand !== '' &&
+            rule.value !== '',
+        ),
+        rule => ({
+          operand: rule.operand,
+          value: rule.value,
+          header:
+            rule.headerSelect === 'other' ? rule.header : rule.headerSelect,
+        }),
+      );
       const rule = rules.shift();
 
-      const filter = this.filter;
+      const { filter } = this;
       delete filter.rules;
       delete filter.domain;
       delete filter.pop;
@@ -102,14 +138,32 @@ angular.module('App').controller(
 
       let filterPromise;
       if (_.get(this.$scope.currentActionData, 'delegate', false)) {
-        filterPromise = this.Emails.updateDelegatedFilter(this.account.email, filter, rules);
+        filterPromise = this.Emails.updateDelegatedFilter(
+          this.account.email,
+          filter,
+          rules,
+        );
       } else {
-        filterPromise = this.Emails.updateFilter(this.$stateParams.productId, this.account.accountName, filter, rules);
+        filterPromise = this.Emails.updateFilter(
+          this.$stateParams.productId,
+          this.account.accountName,
+          filter,
+          rules,
+        );
       }
 
       return filterPromise
-        .then(() => this.Alerter.success(this.$scope.tr('email_tab_modal_edit_filter_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_modal_edit_filter_error'), _.get(err, 'data', err), this.$scope.alerts.main))
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('email_tab_modal_edit_filter_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_modal_edit_filter_error'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

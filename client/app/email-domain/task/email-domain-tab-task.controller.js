@@ -31,7 +31,11 @@ angular.module('App').controller(
         })
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          this.Alerter.alertFromSWS(this.$scope.tr('email_tab_TASK_error_message'), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_TASK_error_message'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
         });
     }
 

@@ -39,7 +39,11 @@ angular.module('App').controller(
     }
 
     isPasswordValid() {
-      return this.model.password.value && this.model.password.value.length && this.model.password.condition.pattern.test(this.model.password.value);
+      return (
+        this.model.password.value &&
+        this.model.password.value.length &&
+        this.model.password.condition.pattern.test(this.model.password.value)
+      );
     }
 
     isPasswordConfirmed() {
@@ -47,7 +51,12 @@ angular.module('App').controller(
     }
 
     isNameValid() {
-      return this.model.user.value && this.model.user.value.length && this.model.user.condition.pattern.test(this.model.user.value) && !this.nameAlreadyExist();
+      return (
+        this.model.user.value &&
+        this.model.user.value.length &&
+        this.model.user.condition.pattern.test(this.model.user.value) &&
+        !this.nameAlreadyExist()
+      );
     }
 
     nameAlreadyExist() {
@@ -56,13 +65,22 @@ angular.module('App').controller(
 
     addUser() {
       this.$scope.resetAction();
-      return this.PrivateDatabase
-        .addUser(this.$stateParams.productId, this.model.password.value, this.model.user.value)
+      return this.PrivateDatabase.addUser(
+        this.$stateParams.productId,
+        this.model.password.value,
+        this.model.user.value,
+      )
         .then(() => {
-          this.Alerter.success(this.$scope.tr('privateDatabase_add_user_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('privateDatabase_add_user_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch(() => {
-          this.Alerter.error(this.$scope.tr('privateDatabase_add_user_fail'), this.$scope.alerts.main);
+          this.Alerter.error(
+            this.$scope.tr('privateDatabase_add_user_fail'),
+            this.$scope.alerts.main,
+          );
         });
     }
   },

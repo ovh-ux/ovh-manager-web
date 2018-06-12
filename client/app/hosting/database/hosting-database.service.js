@@ -1,6 +1,6 @@
-angular
-  .module('services')
-  .service('HostingDatabase', class HostingDatabase {
+angular.module('services').service(
+  'HostingDatabase',
+  class HostingDatabase {
     constructor($q, $rootScope, Hosting, JavaEnum, OvhHttp, Poller) {
       this.$q = $q;
       this.$rootScope = $rootScope;
@@ -11,23 +11,26 @@ angular
     }
 
     /**
-         * Delete a database
-         * @param {string} serviceName
-         * @param {string} name
-         */
+     * Delete a database
+     * @param {string} serviceName
+     * @param {string} name
+     */
     deleteDatabase(serviceName, name) {
-      return this.OvhHttp.delete(`/hosting/web/${serviceName}/database/${name}`, {
-        rootPath: 'apiv6',
-      }).then((response) => {
+      return this.OvhHttp.delete(
+        `/hosting/web/${serviceName}/database/${name}`,
+        {
+          rootPath: 'apiv6',
+        },
+      ).then((response) => {
         this.Hosting.resetDatabases();
         return response;
       });
     }
 
     /**
-         * Get database list
-         * @param {string} serviceName
-         */
+     * Get database list
+     * @param {string} serviceName
+     */
     databaseList(serviceName) {
       return this.OvhHttp.get(`/hosting/web/${serviceName}/database`, {
         rootPath: 'apiv6',
@@ -35,20 +38,23 @@ angular
     }
 
     /**
-         * Get database type availability
-         * @param {string} serviceName
-         */
+     * Get database type availability
+     * @param {string} serviceName
+     */
     getDatabaseAvailableType(serviceName) {
-      return this.OvhHttp.get(`/hosting/web/${serviceName}/databaseAvailableType`, {
-        rootPath: 'apiv6',
-      }).then(availableTypes => availableTypes.map(type => type.toUpperCase()));
+      return this.OvhHttp.get(
+        `/hosting/web/${serviceName}/databaseAvailableType`,
+        {
+          rootPath: 'apiv6',
+        },
+      ).then(availableTypes => availableTypes.map(type => type.toUpperCase()));
     }
 
     /**
-         * Get database ids
-         * @param {string} serviceName
-         * @param {string} search
-         */
+     * Get database ids
+     * @param {string} serviceName
+     * @param {string} search
+     */
     getDatabaseIds(serviceName, search) {
       return this.OvhHttp.get(`/hosting/web/${serviceName}/database`, {
         rootPath: 'apiv6',
@@ -59,56 +65,68 @@ angular
     }
 
     /**
-         * Get database detail
-         * @param {string} serviceName
-         * @param {string} name
-         */
+     * Get database detail
+     * @param {string} serviceName
+     * @param {string} name
+     */
     getDatabase(serviceName, name) {
       return this.OvhHttp.get(`/hosting/web/${serviceName}/database/${name}`, {
         rootPath: 'apiv6',
-      }).then((database) => {
+      }).then((originalDatabase) => {
+        const database = _(originalDatabase).clone();
+
         _.forEach(['type', 'state', 'mode'], (elt) => {
           database[elt] = database[elt].toUpperCase();
         });
         database.version = `_${_.snakeCase(database.version)}`;
-        database.quotaPercent = database.quotaUsed.value / database.quotaSize.value * 100;
+        database.quotaPercent =
+          (database.quotaUsed.value / database.quotaSize.value) * 100;
 
         return database;
       });
     }
 
     /**
-         * Get dumps ids
-         * @param {string} serviceName
-         * @param {string} name
-         */
+     * Get dumps ids
+     * @param {string} serviceName
+     * @param {string} name
+     */
     getDumpIds(serviceName, name) {
-      return this.OvhHttp.get(`/hosting/web/${serviceName}/database/${name}/dump`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/hosting/web/${serviceName}/database/${name}/dump`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Get dump details
-         * @param {string} serviceName
-         * @param {string} name
-         * @param {string} dumpId
-         */
+     * Get dump details
+     * @param {string} serviceName
+     * @param {string} name
+     * @param {string} dumpId
+     */
     getDump(serviceName, name, dumpId) {
-      return this.OvhHttp.get(`/hosting/web/${serviceName}/database/${name}/dump/${dumpId}`, {
-        rootPath: 'apiv6',
-      }).then((dump) => {
+      return this.OvhHttp.get(
+        `/hosting/web/${serviceName}/database/${name}/dump/${dumpId}`,
+        {
+          rootPath: 'apiv6',
+        },
+      ).then((originalDump) => {
+        const dump = _(originalDump).clone();
         dump.snapshotDate = this.constructor.getSnapshotDateOfDump(dump);
         return dump;
       });
     }
 
     /**
-         * Get snapshot date of database dump
-         * @param {Object} dump
-         */
+     * Get snapshot date of database dump
+     * @param {Object} dump
+     */
     static getSnapshotDateOfDump(dump) {
-      if (!dump.creationDate) { return undefined; }
+      if (!dump.creationDate) {
+        return undefined;
+      }
 
       const snapshotDate = moment(dump.creationDate);
       if (dump.type === 'daily.1') {
@@ -120,15 +138,18 @@ angular
     }
 
     /**
-         * Restore database dump
-         * @param {string} serviceName
-         * @param {string} name
-         * @param {object} dump
-         */
+     * Restore database dump
+     * @param {string} serviceName
+     * @param {string} name
+     * @param {object} dump
+     */
     restoreBDD(serviceName, name, dump) {
-      return this.OvhHttp.post(`/hosting/web/${serviceName}/database/${name}/dump/${dump.id}/restore`, {
-        rootPath: 'apiv6',
-      }).then((task) => {
+      return this.OvhHttp.post(
+        `/hosting/web/${serviceName}/database/${name}/dump/${dump.id}/restore`,
+        {
+          rootPath: 'apiv6',
+        },
+      ).then((task) => {
         this.pollTasks(serviceName, {
           namespace: 'database.dump.restore.poll',
           task,
@@ -140,84 +161,99 @@ angular
     }
 
     /**
-         * Restore database from a dynamic backup
-         * @param {string} serviceName
-         * @param {string} name
-         * @param {string} backupType
-         * @param {boolean} sendEmail
-         */
+     * Restore database from a dynamic backup
+     * @param {string} serviceName
+     * @param {string} name
+     * @param {string} backupType
+     * @param {boolean} sendEmail
+     */
     restoreBDDBackup(serviceName, name, backupType, sendEmail) {
-      return this.OvhHttp.post(`/hosting/web/${serviceName}/database/${name}/restore`, {
-        rootPath: 'apiv6',
-        data: {
-          date: backupType,
-          sendEmail,
+      return this.OvhHttp.post(
+        `/hosting/web/${serviceName}/database/${name}/restore`,
+        {
+          rootPath: 'apiv6',
+          data: {
+            date: backupType,
+            sendEmail,
+          },
+          broadcast: 'hosting.databases.backup.restore',
         },
-        broadcast: 'hosting.databases.backup.restore',
-      });
+      );
     }
 
     /**
-         * Get database stats
-         * @param {string} serviceName
-         * @param {string} name
-         * @param period
-         * @param type
-         * @param aggregation
-         */
+     * Get database stats
+     * @param {string} serviceName
+     * @param {string} name
+     * @param period
+     * @param type
+     * @param aggregation
+     */
     databaseStatistics(serviceName, name, period, type, aggregation) {
-      return this.OvhHttp.get(`/sws/hosting/web/${serviceName}/databases/${name}/statistics`, {
-        rootPath: '2api',
-        params: {
-          period,
-          type,
-          aggregation,
+      return this.OvhHttp.get(
+        `/sws/hosting/web/${serviceName}/databases/${name}/statistics`,
+        {
+          rootPath: '2api',
+          params: {
+            period,
+            type,
+            aggregation,
+          },
         },
-      });
+      );
     }
 
     /**
-         * Update password for database
-         * @param {string} serviceName
-         * @param {string} name
-         * @param {string} password
-         */
+     * Update password for database
+     * @param {string} serviceName
+     * @param {string} name
+     * @param {string} password
+     */
     changePassword(serviceName, name, password) {
-      return this.OvhHttp.post(`/hosting/web/${serviceName}/database/${name}/changePassword`, {
-        rootPath: 'apiv6',
-        data: {
-          password,
+      return this.OvhHttp.post(
+        `/hosting/web/${serviceName}/database/${name}/changePassword`,
+        {
+          rootPath: 'apiv6',
+          data: {
+            password,
+          },
         },
-      });
+      );
     }
 
     /**
-         * Ask a dump for a database
-         * @param {string} serviceName
-         * @param {string} name
-         * @param {string} date
-         * @param {boolean} sendEmail
-         */
+     * Ask a dump for a database
+     * @param {string} serviceName
+     * @param {string} name
+     * @param {string} date
+     * @param {boolean} sendEmail
+     */
     dumpDatabase(serviceName, name, date, sendEmail) {
-      return this.OvhHttp.post(`/hosting/web/${serviceName}/database/${name}/dump`, {
-        rootPath: 'apiv6',
-        data: {
-          date: date.toLowerCase().replace('_', '.'),
-          sendEmail,
+      return this.OvhHttp.post(
+        `/hosting/web/${serviceName}/database/${name}/dump`,
+        {
+          rootPath: 'apiv6',
+          data: {
+            date: date.toLowerCase().replace('_', '.'),
+            sendEmail,
+          },
         },
-      });
+      );
     }
 
     /**
-         * Delete a database dump
-         * @param {string} serviceName
-         * @param {string} name
-         * @param {object} dump
-         */
+     * Delete a database dump
+     * @param {string} serviceName
+     * @param {string} name
+     * @param {object} dump
+     */
     deleteDatabaseDump(serviceName, name, dump) {
-      return this.OvhHttp.delete(`/hosting/web/${serviceName}/database/${name}/dump/${dump.id}`, {
-        rootPath: 'apiv6',
-      }).then((task) => {
+      return this.OvhHttp.delete(
+        `/hosting/web/${serviceName}/database/${name}/dump/${dump.id}`,
+        {
+          rootPath: 'apiv6',
+        },
+      ).then((task) => {
         this.pollTasks(serviceName, {
           namespace: 'database.dump.delete.poll',
           task,
@@ -229,81 +265,103 @@ angular
     }
 
     /**
-         * Import a database from a file updloaded in /me/document/
-         * @param {string} serviceName
-         * @param {string} name
-         * @param {string} documentId
-         * @param {boolean} flushDatabase
-         * @param {boolean} sendEmail
-         */
+     * Import a database from a file updloaded in /me/document/
+     * @param {string} serviceName
+     * @param {string} name
+     * @param {string} documentId
+     * @param {boolean} flushDatabase
+     * @param {boolean} sendEmail
+     */
     importDatabase(serviceName, name, documentId, flushDatabase, sendEmail) {
-      return this.OvhHttp.post(`/hosting/web/${serviceName}/database/${name}/import`, {
-        rootPath: 'apiv6',
-        data: {
-          documentId,
-          flushDatabase,
-          sendEmail,
+      return this.OvhHttp.post(
+        `/hosting/web/${serviceName}/database/${name}/import`,
+        {
+          rootPath: 'apiv6',
+          data: {
+            documentId,
+            flushDatabase,
+            sendEmail,
+          },
         },
-      });
+      );
     }
 
     /**
-         * Get dump options
-         */
+     * Get dump options
+     */
     dumpDatabaseOptions() {
-      return this.Hosting.getModels()
-        .then(models => ({
-          dumpDates: models.models['hosting.web.database.dump.DateEnum'].enum.map(model => this.JavaEnum.tr(model)),
-        }));
+      return this.Hosting.getModels().then(models => ({
+        dumpDates: models.models['hosting.web.database.dump.DateEnum'].enum.map(model => this.JavaEnum.tr(model)),
+      }));
     }
 
     /**
-         * Get database capabilities for creation
-         * @param {string} serviceName
-         */
+     * Get database capabilities for creation
+     * @param {string} serviceName
+     */
     getCreationCapabilities(serviceName) {
-      return this.$q.all({
-        hosting: this.OvhHttp.get(`/hosting/web/${serviceName}`, { rootPath: 'apiv6' }),
-        capabilities: this.OvhHttp.get(`/hosting/web/${serviceName}/databaseCreationCapabilities`, { rootPath: 'apiv6' }),
-        models: this.Hosting.getModels(),
-      })
+      return this.$q
+        .all({
+          hosting: this.OvhHttp.get(`/hosting/web/${serviceName}`, {
+            rootPath: 'apiv6',
+          }),
+          capabilities: this.OvhHttp.get(
+            `/hosting/web/${serviceName}/databaseCreationCapabilities`,
+            { rootPath: 'apiv6' },
+          ),
+          models: this.Hosting.getModels(),
+        })
         .then(({ hosting, capabilities, models }) => ({
           availableDatabases: capabilities.map(capa => ({
             type: this.JavaEnum.tr(capa.type),
             quota: capa.quota,
-            extraSqlQuota: capa.type === 'extraSqlPerso' ? `_${capa.quota.value}` : null,
+            extraSqlQuota:
+              capa.type === 'extraSqlPerso' ? `_${capa.quota.value}` : null,
             available: capa.available,
           })),
-          databaseTypes: models.models['hosting.web.database.DatabaseTypeEnum'].enum.map(m => this.JavaEnum.tr(m)),
+          databaseTypes: models.models[
+            'hosting.web.database.DatabaseTypeEnum'
+          ].enum.map(m => this.JavaEnum.tr(m)),
           primaryLogin: hosting.primaryLogin,
         }));
     }
 
     /**
-         * Get database capabilities for creation
-         * @param {string} serviceName
-         * @param type
-         */
+     * Get database capabilities for creation
+     * @param {string} serviceName
+     * @param type
+     */
     getAvailableVersion(serviceName, type) {
-      return this.OvhHttp.get(`/hosting/web/${serviceName}/databaseAvailableVersion`, {
-        rootPath: 'apiv6',
-        params: {
-          type,
+      return this.OvhHttp.get(
+        `/hosting/web/${serviceName}/databaseAvailableVersion`,
+        {
+          rootPath: 'apiv6',
+          params: {
+            type,
+          },
         },
-      });
+      );
     }
 
     /**
-         * Create a database
-         * @param {string} serviceName
-         * @param capabilitie
-         * @param {string} password
-         * @param quota
-         * @param {string} type
-         * @param {string} user
-         * @param {string} version
-         */
-    createDatabase(serviceName, capabilitie, password, quota, type, user, version) {
+     * Create a database
+     * @param {string} serviceName
+     * @param capabilitie
+     * @param {string} password
+     * @param quota
+     * @param {string} type
+     * @param {string} user
+     * @param {string} version
+     */
+    createDatabase(
+      serviceName,
+      capabilitie,
+      password,
+      quota,
+      type,
+      user,
+      version,
+    ) {
       return this.OvhHttp.post(`/hosting/web/${serviceName}/database`, {
         rootPath: 'apiv6',
         data: {
@@ -327,62 +385,77 @@ angular
     }
 
     /**
-         * Activate private database
-         * @param {string} serviceName
-         * @param {number} ram
-         * @param {string} version
-         */
+     * Activate private database
+     * @param {string} serviceName
+     * @param {number} ram
+     * @param {string} version
+     */
     activateDatabasePrivate(serviceName, ram, version) {
-      return this.OvhHttp.post(`/hosting/web/${serviceName}/activatePrivateDatabase`, {
-        rootPath: 'apiv6',
-        data: {
-          ram,
-          version,
+      return this.OvhHttp.post(
+        `/hosting/web/${serviceName}/activatePrivateDatabase`,
+        {
+          rootPath: 'apiv6',
+          data: {
+            ram,
+            version,
+          },
         },
-      });
+      );
     }
 
     /**
-         * Get private database capabilities
-         * @param {string} serviceName
-         */
+     * Get private database capabilities
+     * @param {string} serviceName
+     */
     getPrivateDatabaseCapabilities(serviceName) {
-      return this.OvhHttp.get(`/hosting/web/${serviceName}/privateDatabaseCreationCapabilities`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/hosting/web/${serviceName}/privateDatabaseCreationCapabilities`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Get database capabilities
-         * @param {string} serviceName
-         */
+     * Get database capabilities
+     * @param {string} serviceName
+     */
     getDatabasesCapabilities(serviceName) {
       return this.$q.all({
-        database: this.OvhHttp.get(`/hosting/web/${serviceName}/privateDatabaseCreationCapabilities`, { rootPath: 'apiv6' }),
-        privateDatabase: this.OvhHttp.get(`/hosting/web/${serviceName}/databaseCreationCapabilities`, { rootPath: 'apiv6' }),
+        database: this.OvhHttp.get(
+          `/hosting/web/${serviceName}/privateDatabaseCreationCapabilities`,
+          { rootPath: 'apiv6' },
+        ),
+        privateDatabase: this.OvhHttp.get(
+          `/hosting/web/${serviceName}/databaseCreationCapabilities`,
+          { rootPath: 'apiv6' },
+        ),
       });
     }
 
     /**
-         * Request check quota database
-         * @param {string} serviceName
-         * @param {string} name
-         */
+     * Request check quota database
+     * @param {string} serviceName
+     * @param {string} name
+     */
     requestDatabaseQuotaCheck(serviceName, name) {
-      return this.OvhHttp.post(`/hosting/web/${serviceName}/database/${name}/request`, {
-        rootPath: 'apiv6',
-        data: {
-          action: 'CHECK_QUOTA',
+      return this.OvhHttp.post(
+        `/hosting/web/${serviceName}/database/${name}/request`,
+        {
+          rootPath: 'apiv6',
+          data: {
+            action: 'CHECK_QUOTA',
+          },
         },
-      });
+      );
     }
 
     /**
-         * Get tasks list
-         * @param {string} serviceName
-         * @param status
-         * @param func
-         */
+     * Get tasks list
+     * @param {string} serviceName
+     * @param status
+     * @param func
+     */
     getTaskIds(serviceName, status, func) {
       return this.OvhHttp.get(`/hosting/web/${serviceName}/tasks`, {
         rootPath: 'apiv6',
@@ -394,26 +467,30 @@ angular
     }
 
     /**
-         * Get tasks list with details
-         * @param {string} serviceName
-         * @param status
-         * @param func
-         */
+     * Get tasks list with details
+     * @param {string} serviceName
+     * @param status
+     * @param func
+     */
     getTasks(serviceName, status, func) {
-      return this.getTaskIds(serviceName, status, func)
-        .then((tasksId) => {
-          const promises = tasksId.map(id => this.OvhHttp.get(`/hosting/web/${serviceName}/tasks/${id}`, { rootPath: 'apiv6' }));
-          return this.$q.all(promises);
-        });
+      return this.getTaskIds(serviceName, status, func).then((tasksId) => {
+        const promises = tasksId.map(id =>
+          this.OvhHttp.get(`/hosting/web/${serviceName}/tasks/${id}`, {
+            rootPath: 'apiv6',
+          }));
+        return this.$q.all(promises);
+      });
     }
 
     /**
-         * Polling tasks
-         * @param {string} serviceName
-         * @param {object} opts
-         * @returns {boolean}
-         */
-    pollTasks(serviceName, opts) {
+     * Polling tasks
+     * @param {string} serviceName
+     * @param {object} opts
+     * @returns {boolean}
+     */
+    pollTasks(serviceName, originalOpts) {
+      const opts = _(originalOpts).clone();
+
       if (!opts.dump || !opts.task) {
         return this.$rootScope.$broadcast(`${opts.namespace}.error`, '');
       }
@@ -423,7 +500,11 @@ angular
       }
 
       const url = `apiv6/hosting/web/${serviceName}/tasks/${opts.task.id}`;
-      this.$rootScope.$broadcast(`${opts.namespace}.start`, opts.task, opts.dump);
+      this.$rootScope.$broadcast(
+        `${opts.namespace}.start`,
+        opts.task,
+        opts.dump,
+      );
 
       return this.Poller.poll(url, null, {
         namespace: opts.namespace,
@@ -438,12 +519,22 @@ angular
             return opts.errorsSates.indexOf(task.state) !== -1;
           },
         },
-      }).then((pollObject, task) => {
-        this.$rootScope.$broadcast(`${opts.namespace}.done`, pollObject, task, opts.dump);
-      }, (err) => {
-        this.$rootScope.$broadcast(`${opts.namespace}.error`, err);
-      }, (task) => {
-        this.$rootScope.$broadcast(`${opts.namespace}.doing`, task);
-      });
+      }).then(
+        (pollObject, task) => {
+          this.$rootScope.$broadcast(
+            `${opts.namespace}.done`,
+            pollObject,
+            task,
+            opts.dump,
+          );
+        },
+        (err) => {
+          this.$rootScope.$broadcast(`${opts.namespace}.error`, err);
+        },
+        (task) => {
+          this.$rootScope.$broadcast(`${opts.namespace}.doing`, task);
+        },
+      );
     }
-  });
+  },
+);

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 angular
   .module('App')
   .factory('serviceTypeInterceptor', () => ({
@@ -133,7 +134,8 @@ angular
       atInternetProvider.setEnabled(constants.prodMode && window.location.port.length <= 3);
       atInternetProvider.setDebug(!constants.prodMode);
 
-      atInternetUiRouterPluginProvider.setTrackStateChange(constants.prodMode && window.location.port.length <= 3);
+      atInternetUiRouterPluginProvider
+        .setTrackStateChange(constants.prodMode && window.location.port.length <= 3);
       atInternetUiRouterPluginProvider.addStateNameFilter(routeName => (routeName ? routeName.replace(/^app/, 'web').replace(/\./g, '::') : ''));
     },
   ])
@@ -596,3 +598,4 @@ angular
       removeHook();
     });
   });
+/* eslint-enable no-param-reassign */

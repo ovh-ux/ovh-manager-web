@@ -1,6 +1,6 @@
-angular
-  .module('App')
-  .controller('PrivateDatabaseCertificateCtrl', class PrivateDatabaseCertificateCtrl {
+angular.module('App').controller(
+  'PrivateDatabaseCertificateCtrl',
+  class PrivateDatabaseCertificateCtrl {
     constructor($scope, $stateParams, Alerter, PrivateDatabase) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -16,4 +16,5 @@ angular
         certificate: _.get(this.database, 'tlsCa', null),
       };
     }
-  });
+  },
+);

@@ -1,6 +1,6 @@
-angular
-  .module('services')
-  .service('PrivateDatabaseLogsService', class PrivateDatabaseLogsService {
+angular.module('services').service(
+  'PrivateDatabaseLogsService',
+  class PrivateDatabaseLogsService {
     constructor($http) {
       this.$http = $http;
 
@@ -8,7 +8,11 @@ angular
     }
 
     getLogs(serviceName) {
-      return this.$http.post(`${this.apiVersion}/hosting/privateDatabase/${serviceName}/generateTemporaryLogsLink`)
+      return this.$http
+        .post(`${
+          this.apiVersion
+        }/hosting/privateDatabase/${serviceName}/generateTemporaryLogsLink`)
         .then(res => res.data);
     }
-  });
+  },
+);

@@ -9,14 +9,18 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'domains';
+          $rootScope.currentSectionInformation = 'domains'; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['domain', 'domains']).then(() => translator)],
+      translator: [
+        'translator',
+        translator =>
+          translator.load(['domain', 'domains']).then(() => translator),
+      ],
     },
   });
 });

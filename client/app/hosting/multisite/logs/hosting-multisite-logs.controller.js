@@ -11,18 +11,23 @@ angular.module('App').controller(
 
     $onInit() {
       this.$scope.$on('popover.show', (evt, elm) => {
-        const domain = this.$scope.domains.list.results[elm['0'].dataset.domainIndex];
+        const domain = this.$scope.domains.list.results[
+          elm['0'].dataset.domainIndex
+        ];
         if (!domain.logUrlGenerated) {
           this.generateLogHref(domain);
         }
       });
     }
 
+    /* eslint-disable no-param-reassign */
     generateLogHref(domain) {
       domain.logUrlGenerated = true;
       if (_.isString(domain.ownLog) && !domain.ownLogToken) {
         domain.logsLoading = true;
-        this.Hosting.getUserLogsToken(this.$stateParams.productId, { params: { attachedDomain: domain.name, remoteCheck: true } })
+        this.Hosting.getUserLogsToken(this.$stateParams.productId, {
+          params: { attachedDomain: domain.name, remoteCheck: true },
+        })
           .then((result) => {
             if (_.startsWith(this.$scope.hostingProxy.datacenter, 'gra')) {
               domain.logUrl = `${URI.expand(this.constants.stats_logs_gra, {
@@ -36,7 +41,10 @@ angular.module('App').controller(
             }
           })
           .catch(() => {
-            this.Alerter.error(this.$scope.tr('hosting_tab_DOMAINS_multisite_logs_generation_error'), this.$scope.alerts.main);
+            this.Alerter.error(
+              this.$scope.tr('hosting_tab_DOMAINS_multisite_logs_generation_error'),
+              this.$scope.alerts.main,
+            );
           })
           .finally(() => {
             domain.logsLoading = false;
@@ -44,5 +52,6 @@ angular.module('App').controller(
       }
       return false;
     }
+    /* eslint-enable no-param-reassign */
   },
 );

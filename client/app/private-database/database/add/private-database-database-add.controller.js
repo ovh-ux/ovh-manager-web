@@ -1,7 +1,16 @@
 angular.module('App').controller(
   'PrivateDatabaseAddBddCtrl',
   class PrivateDatabaseAddBddCtrl {
-    constructor($scope, $q, $stateParams, Alerter, PrivateDatabase, Hosting, WhitelistService, Validator) {
+    constructor(
+      $scope,
+      $q,
+      $stateParams,
+      Alerter,
+      PrivateDatabase,
+      Hosting,
+      WhitelistService,
+      Validator,
+    ) {
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -16,14 +25,13 @@ angular.module('App').controller(
       this.productId = this.$stateParams.productId;
 
       if (this.$scope.isDBaaS()) {
-        this.checkAuthorizedIp()
-          .then((hasAuthorizedIp) => {
-            // if there are no ip configured,
-            // we check the box to suggest the user to add an ip
-            this.model.addIp = !hasAuthorizedIp;
+        this.checkAuthorizedIp().then((hasAuthorizedIp) => {
+          // if there are no ip configured,
+          // we check the box to suggest the user to add an ip
+          this.model.addIp = !hasAuthorizedIp;
 
-            this.hasAuthorizedIp = hasAuthorizedIp;
-          });
+          this.hasAuthorizedIp = hasAuthorizedIp;
+        });
       }
 
       this.model = {
@@ -36,7 +44,7 @@ angular.module('App').controller(
               min: 1,
               max: 50,
             },
-            reg: /^([\d\w\-]){1,50}$/,
+            reg: /^([\d\w-]){1,50}$/,
           },
         },
         user: {
@@ -47,7 +55,7 @@ angular.module('App').controller(
                 min: 1,
                 max: 16,
               },
-              reg: /^([\d\w.\-]){1,16}$/,
+              reg: /^([\d\w.-]){1,16}$/,
             },
           },
           grant: {
@@ -97,7 +105,10 @@ angular.module('App').controller(
               userName: this.model.user.login.value,
             });
           }
-          return this.PrivateDatabase.addBdd(this.productId, this.model.database.value);
+          return this.PrivateDatabase.addBdd(
+            this.productId,
+            this.model.database.value,
+          );
         })
         .then(() => {
           if (this.model.addIp) {
@@ -111,8 +122,16 @@ angular.module('App').controller(
           return null;
         })
         .then(
-          () => this.Alerter.success(this.$scope.tr('privateDatabase_add_bdd_success'), this.$scope.alerts.main),
-          () => this.Alerter.error(this.$scope.tr('privateDatabase_add_bdd_fail'), this.$scope.alerts.main),
+          () =>
+            this.Alerter.success(
+              this.$scope.tr('privateDatabase_add_bdd_success'),
+              this.$scope.alerts.main,
+            ),
+          () =>
+            this.Alerter.error(
+              this.$scope.tr('privateDatabase_add_bdd_fail'),
+              this.$scope.alerts.main,
+            ),
         );
     }
 
@@ -120,15 +139,26 @@ angular.module('App').controller(
       if (!this.model.addUser) {
         return this.isBddNameValid();
       }
-      return this.isBddNameValid() && this.isLoginValid() && this.isPasswordValid() && !!this.model.user.grant.value;
+      return (
+        this.isBddNameValid() &&
+        this.isLoginValid() &&
+        this.isPasswordValid() &&
+        !!this.model.user.grant.value
+      );
     }
 
     isBddNameValid() {
-      return this.model.database.value && this.model.database.condition.reg.test(this.model.database.value);
+      return (
+        this.model.database.value &&
+        this.model.database.condition.reg.test(this.model.database.value)
+      );
     }
 
     isLoginValid() {
-      return this.model.user.login.value && this.model.user.login.condition.reg.test(this.model.user.login.value);
+      return (
+        this.model.user.login.value &&
+        this.model.user.login.condition.reg.test(this.model.user.login.value)
+      );
     }
 
     isPasswordValid() {
@@ -136,19 +166,30 @@ angular.module('App').controller(
     }
 
     checkPassword() {
-      return this.model.user.password.value && this.Hosting.constructor.isPasswordValid(this.model.user.password.value);
+      return (
+        this.model.user.password.value &&
+        this.Hosting.constructor.isPasswordValid(this.model.user.password.value)
+      );
     }
 
     checkPasswordConfirm() {
-      return this.model.user.password.confirm && this.Hosting.constructor.isPasswordValid(this.model.user.password.confirm) && this.model.user.password.confirm === this.model.user.password.value;
+      return (
+        this.model.user.password.confirm &&
+        this.Hosting.constructor.isPasswordValid(this.model.user.password.confirm) &&
+        this.model.user.password.confirm === this.model.user.password.value
+      );
     }
 
     getGrantLabel(grant) {
-      return grant ? this.$scope.tr(`privateDatabase_add_bdd_new_user_grant_${grant}`) : '';
+      return grant
+        ? this.$scope.tr(`privateDatabase_add_bdd_new_user_grant_${grant}`)
+        : '';
     }
 
     isIpValid(ip) {
-      return this.validator.isValidIpv4Block(ip) || this.validator.isValidIpv4(ip);
+      return (
+        this.validator.isValidIpv4Block(ip) || this.validator.isValidIpv4(ip)
+      );
     }
   },
 );

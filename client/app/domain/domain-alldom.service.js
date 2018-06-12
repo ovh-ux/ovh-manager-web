@@ -2,11 +2,11 @@ angular.module('services').service(
   'AllDom',
   class AllDom {
     /**
-         * Constructor
-         * @param $q
-         * @param OvhHttp
-         * @param constants
-         */
+     * Constructor
+     * @param $q
+     * @param OvhHttp
+     * @param constants
+     */
     constructor($q, OvhHttp, constants) {
       this.$q = $q;
       this.OvhHttp = OvhHttp;
@@ -21,8 +21,8 @@ angular.module('services').service(
     }
 
     /**
-         * Get models
-         */
+     * Get models
+     */
     getModels() {
       return this.OvhHttp.get('/allDom.json', {
         rootPath: 'apiv6',
@@ -31,9 +31,9 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain a list of available allDoms
-         * @param {boolean} forceRefresh
-         */
+     * Obtain a list of available allDoms
+     * @param {boolean} forceRefresh
+     */
     getAllDoms(forceRefresh = false) {
       return this.OvhHttp.get('/allDom', {
         rootPath: 'apiv6',
@@ -43,10 +43,10 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain allDom
-         * @param {string} serviceName
-         * @param {boolean} forceRefresh
-         */
+     * Obtain allDom
+     * @param {string} serviceName
+     * @param {boolean} forceRefresh
+     */
     getAllDom(serviceName, forceRefresh = false) {
       return this.OvhHttp.get(`/allDom/${serviceName}`, {
         rootPath: 'apiv6',
@@ -56,10 +56,10 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain domains
-         * @param {string} serviceName
-         * @param {boolean} forceRefresh
-         */
+     * Obtain domains
+     * @param {string} serviceName
+     * @param {boolean} forceRefresh
+     */
     getDomains(serviceName, forceRefresh = false) {
       return this.OvhHttp.get(`/allDom/${serviceName}/domain`, {
         rootPath: 'apiv6',
@@ -69,10 +69,10 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain specific domain
-         * @param {string} serviceName
-         * @param {string} domain
-         */
+     * Obtain specific domain
+     * @param {string} serviceName
+     * @param {string} domain
+     */
     getDomain(serviceName, domain = '') {
       return this.OvhHttp.get(`/allDom/${serviceName}/domain/${domain}`, {
         rootPath: 'apiv6',
@@ -80,9 +80,9 @@ angular.module('services').service(
     }
 
     /**
-         * Obtain serviceInfos
-         * @param {string} serviceName
-         */
+     * Obtain serviceInfos
+     * @param {string} serviceName
+     */
     getServiceInfos(serviceName) {
       return this.OvhHttp.get(`/allDom/${serviceName}/serviceInfos`, {
         rootPath: 'apiv6',
@@ -90,10 +90,10 @@ angular.module('services').service(
     }
 
     /**
-         * Update serviceInfos
-         * @param {string} serviceName
-         * @param {object} data
-         */
+     * Update serviceInfos
+     * @param {string} serviceName
+     * @param {object} data
+     */
     updateServiceInfos(serviceName, data) {
       return this.OvhHttp.put(`/allDom/${serviceName}/serviceInfos`, {
         rootPath: 'apiv6',

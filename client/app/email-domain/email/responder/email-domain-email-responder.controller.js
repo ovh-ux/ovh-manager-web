@@ -2,12 +2,12 @@ angular.module('App').controller(
   'EmailDomainEmailResponderCtrl',
   class EmailDomainEmailResponderCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param Alerter
-         * @param Emails
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param Alerter
+     * @param Emails
+     */
     constructor($scope, $stateParams, Alerter, Emails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -21,7 +21,8 @@ angular.module('App').controller(
         pager: false,
       };
 
-      this.$scope.$on('hosting.tabs.emails.responders.refresh', () => this.refreshTableResponders());
+      this.$scope.$on('hosting.tabs.emails.responders.refresh', () =>
+        this.refreshTableResponders());
 
       this.refreshTableResponders();
     }
@@ -37,10 +38,16 @@ angular.module('App').controller(
       this.loading.responders = true;
       this.responders = null;
 
-      return this.Emails
-        .getResponders(this.$stateParams.productId)
-        .then(data => (this.responders = data.sort()))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_table_responders_error'), err, this.$scope.alerts.main))
+      return this.Emails.getResponders(this.$stateParams.productId)
+        .then((data) => {
+          this.responders = data.sort();
+        })
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_table_responders_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           if (_.isEmpty(this.responders)) {
             this.loading.responders = false;

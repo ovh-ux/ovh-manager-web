@@ -2,12 +2,12 @@ angular.module('App').controller(
   'MailingListsDeleteModeratorCtrl',
   class MailingListsDeleteModeratorCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param Alerter
-         * @param MailingLists
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param Alerter
+     * @param MailingLists
+     */
     constructor($scope, $stateParams, Alerter, MailingLists) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -26,16 +26,17 @@ angular.module('App').controller(
     deleteModerators() {
       this.loading = true;
 
-      return this.MailingLists
-        .deleteModerators(this.$stateParams.productId, {
-          mailingList: this.mailingList.name,
-          users: this.moderators,
-          type: 'moderator',
-        })
+      return this.MailingLists.deleteModerators(this.$stateParams.productId, {
+        mailingList: this.mailingList.name,
+        users: this.moderators,
+        type: 'moderator',
+      })
         .then((tasks) => {
           this.Alerter.alertFromSWSBatchResult(
             {
-              OK: this.$scope.tr(this.moderators.length === 1 ? 'mailing_list_tab_modal_moderator_delete_success' : 'mailing_list_tab_modal_moderators_delete_success'),
+              OK: this.$scope.tr(this.moderators.length === 1
+                ? 'mailing_list_tab_modal_moderator_delete_success'
+                : 'mailing_list_tab_modal_moderators_delete_success'),
               PARTIAL: this.$scope.tr('mailing_list_tab_modal_moderators_delete_error'),
               ERROR: this.$scope.tr('mailing_list_tab_modal_moderators_delete_error'),
             },
@@ -52,7 +53,9 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr(this.moderators.length === 1 ? 'mailing_list_tab_modal_moderator_delete_error' : 'mailing_list_tab_modal_moderators_delete_error'),
+            this.$scope.tr(this.moderators.length === 1
+              ? 'mailing_list_tab_modal_moderator_delete_error'
+              : 'mailing_list_tab_modal_moderators_delete_error'),
             err,
             this.$scope.alerts.main,
           );

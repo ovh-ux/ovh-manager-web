@@ -20,15 +20,21 @@ angular.module('App').controller(
     }
 
     unlockDomain() {
-      return this.Domain
-        .changeLockState(this.domain.name, 'unlocked')
+      return this.Domain.changeLockState(this.domain.name, 'unlocked')
         .then((data) => {
           this.$rootScope.$broadcast('domain.protection.unlock.done', data);
-          this.Alerter.success(this.$scope.tr('domain_configuration_protection_desactivate_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('domain_configuration_protection_desactivate_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
           this.$rootScope.$broadcast('domain.protection.unlock.error', err);
-          this.Alerter.alertFromSWS(this.$scope.tr('domain_configuration_protection_desactivate_fail'), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_configuration_protection_desactivate_fail'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.$scope.resetAction();

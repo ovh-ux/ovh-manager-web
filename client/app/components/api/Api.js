@@ -1,12 +1,14 @@
 angular.module('services').service('Api', [
   '$http',
   '$q',
-  function ($http, $q) {
+  function api($http, $q) {
     const self = this;
 
     // DEPRECATED: You should use ovh.http
-    this.operation = function (opt) {
-      const requestUrl = URI.expand(opt.url, opt.urlParams || {}).search(opt.params || {}).toString();
+    this.operation = (opt) => {
+      const requestUrl = URI.expand(opt.url, opt.urlParams || {})
+        .search(opt.params || {})
+        .toString();
       let requestBody;
 
       // Add body to the request (POST & PUT)
@@ -23,7 +25,7 @@ angular.module('services').service('Api', [
     };
 
     angular.forEach(['get', 'put', 'post', 'delete'], (operationType) => {
-      self[operationType] = function (url, opt) {
+      self[operationType] = (url, opt) => {
         const options = angular.extend({}, opt);
         options.method = angular.uppercase(operationType);
         options.url = url;

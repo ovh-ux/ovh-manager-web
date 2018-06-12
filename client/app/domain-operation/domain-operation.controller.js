@@ -2,13 +2,13 @@ angular.module('App').controller(
   'DomainOperationCtrl',
   class DomainOperationCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $location
-         * @param $timeout
-         * @param Alerter
-         * @param domainOperationService
-         */
+     * Constructor
+     * @param $scope
+     * @param $location
+     * @param $timeout
+     * @param Alerter
+     * @param domainOperationService
+     */
     constructor($scope, $location, $timeout, Alerter, domainOperationService) {
       this.$scope = $scope;
       this.$location = $location;
@@ -61,19 +61,23 @@ angular.module('App').controller(
             this.filters.nicOperation = fnFilter;
           }
         })
-        .finally(() => (this.loading.filters = false));
+        .finally(() => {
+          this.loading.filters = false;
+        });
 
       this.getOperationIds();
     }
 
     getModels() {
-      return this.Operation
-        .getOperationModels()
+      return this.Operation.getOperationModels()
         .then((models) => {
-          this.nicOperationEnum = models.models['domain.NicOperationFunctionEnum'].enum;
-          this.operationStatusEnum = models.models['domain.OperationStatusEnum'].enum;
+          this.nicOperationEnum =
+            models.models['domain.NicOperationFunctionEnum'].enum;
+          this.operationStatusEnum =
+            models.models['domain.OperationStatusEnum'].enum;
         })
-        .catch(err => this.Alerter.alertFromSWS('', err, this.$scope.alerts.main));
+        .catch(err =>
+          this.Alerter.alertFromSWS('', err, this.$scope.alerts.main));
     }
 
     resetSearch() {
@@ -85,16 +89,21 @@ angular.module('App').controller(
       this.loading.init = true;
       this.operationIds = null;
 
-      return this.Operation
-        .getOperations({
-          function: this.filters.nicOperation || undefined,
-          status: this.filters.operationStatus || undefined,
-          domain: `%${this.filters.domain || ''}%`,
+      return this.Operation.getOperations({
+        function: this.filters.nicOperation || undefined,
+        status: this.filters.operationStatus || undefined,
+        domain: `%${this.filters.domain || ''}%`,
+      })
+        .then((operationIds) => {
+          this.operationIds = operationIds;
         })
-        .then(operationIds => (this.operationIds = operationIds))
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          this.Alerter.alertFromSWS(this.$scope.tr('domains_operations_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domains_operations_error'),
+            err,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           if (_.isEmpty(this.operationIds)) {

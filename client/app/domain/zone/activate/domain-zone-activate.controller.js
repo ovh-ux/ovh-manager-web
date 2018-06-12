@@ -17,12 +17,22 @@ angular.module('App').controller(
 
     activateZone() {
       this.loading = true;
-      return this.Domain
-        .activateZone(this.domain.name, this.activationZone.minimized)
-        .then(() => this.Alerter.success(this.$scope.tr('domain_tab_ZONE_no_zone_activate_success'), this.$scope.alerts.main))
+      return this.Domain.activateZone(
+        this.domain.name,
+        this.activationZone.minimized,
+      )
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('domain_tab_ZONE_no_zone_activate_success'),
+            this.$scope.alerts.main,
+          ))
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          this.Alerter.alertFromSWS(this.$scope.tr('domain_tab_ZONE_no_zone_activate_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_tab_ZONE_no_zone_activate_error'),
+            err,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.$scope.resetAction();

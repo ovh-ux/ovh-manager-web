@@ -1,7 +1,14 @@
-angular
-  .module('App')
-  .controller('PrivateDatabaseChangeRamCtrl', class PrivateDatabaseChangeRamCtrl {
-    constructor($rootScope, $scope, $stateParams, Alerter, PrivateDatabase, User) {
+angular.module('App').controller(
+  'PrivateDatabaseChangeRamCtrl',
+  class PrivateDatabaseChangeRamCtrl {
+    constructor(
+      $rootScope,
+      $scope,
+      $stateParams,
+      Alerter,
+      PrivateDatabase,
+      User,
+    ) {
       this.$rootScope = $rootScope;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -37,26 +44,27 @@ angular
 
       this.$scope.sortRam = ram => +ram;
 
-      this.userService.getUser()
-        .then((user) => {
-          this.data.ovhSubsidiary = user.ovhSubsidiary;
-        });
+      this.userService.getUser().then((user) => {
+        this.data.ovhSubsidiary = user.ovhSubsidiary;
+      });
 
       /*= =============================
              =            STEP 1            =
              ============================== */
       this.loading.availableRam = true;
 
-      this.privateDatabaseService.listAvailableRam()
-        .then((availableRam) => {
-          this.loading.availableRam = false;
-          this.data.availableRam = availableRam;
-          if (this.database.infrastructure === 'legacy') {
-            _.remove(this.data.availableRam, ram => ram === '2048');
-          }
+      this.privateDatabaseService.listAvailableRam().then((availableRam) => {
+        this.loading.availableRam = false;
+        this.data.availableRam = availableRam;
+        if (this.database.infrastructure === 'legacy') {
+          _.remove(this.data.availableRam, ram => ram === '2048');
+        }
 
-          _.remove(this.data.availableRam, ram => +ram === +this.database.ram.value);
-        });
+        _.remove(
+          this.data.availableRam,
+          ram => +ram === +this.database.ram.value,
+        );
+      });
 
       /*= =============================
              =            STEP 2            =
@@ -78,15 +86,18 @@ angular
     }
 
     getResumePrice(price) {
-      return price.value === 0 ? this.$scope.tr('price_free') : this.$scope.tr('price_ht_label', [price.text]);
+      return price.value === 0
+        ? this.$scope.tr('price_free')
+        : this.$scope.tr('price_ht_label', [price.text]);
     }
 
     getDurations() {
       this.loading.durations = true;
 
-      this.privateDatabaseService.getRamPrices(this.productId, {
-        ram: this.model.capacity,
-      })
+      this.privateDatabaseService
+        .getRamPrices(this.productId, {
+          ram: this.model.capacity,
+        })
         .then(
           (durations) => {
             this.loading.durations = false;
@@ -101,13 +112,19 @@ angular
 
     loadContracts() {
       this.model.contract = false;
-      if (!this.model.duration.contracts || !this.model.duration.contracts.length) {
+      if (
+        !this.model.duration.contracts ||
+        !this.model.duration.contracts.length
+      ) {
         this.$rootScope.$broadcast('wizard-goToStep', 5);
       }
     }
 
     backToContracts() {
-      if (!this.model.duration.contracts || !this.model.duration.contracts.length) {
+      if (
+        !this.model.duration.contracts ||
+        !this.model.duration.contracts.length
+      ) {
         this.$rootScope.$broadcast('wizard-goToStep', 2);
       }
     }
@@ -117,16 +134,30 @@ angular
 
       this.$scope.resetAction();
 
-      this.privateDatabaseService.orderRam(this.productId, this.model.capacity, this.model.duration.duration)
+      this.privateDatabaseService
+        .orderRam(
+          this.productId,
+          this.model.capacity,
+          this.model.duration.duration,
+        )
         .then((order) => {
-          this.alerter.success(this.$scope.tr('privateDatabase_order_RAM_finish_success', [order.url]), this.$scope.alerts.main);
+          this.alerter.success(
+            this.$scope.tr('privateDatabase_order_RAM_finish_success', [
+              order.url,
+            ]),
+            this.$scope.alerts.main,
+          );
           window.open(order.url, '_blank');
         })
         .catch((err) => {
-          this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_RAM_finish_error'), _.get(err, 'data', err));
+          this.alerter.alertFromSWS(
+            this.$scope.tr('privateDatabase_order_RAM_finish_error'),
+            _.get(err, 'data', err),
+          );
         })
         .finally(() => {
           this.loading.validation = false;
         });
     }
-  });
+  },
+);

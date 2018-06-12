@@ -1,4 +1,3 @@
-
 angular.module('App').controller(
   'AppCtrl',
   class AppCtrl {
@@ -6,7 +5,6 @@ angular.module('App').controller(
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$timeout = $timeout;
-
       this.constants = constants;
       this.incident = incident;
       this.translator = translator;
@@ -29,6 +27,13 @@ angular.module('App').controller(
           this.$scope.stepPath = '';
         }, 300);
       };
+
+      this.incident.getOvhTasks().then((informations) => {
+        if (!_.isEmpty(informations)) {
+          this.incidentMessage =
+            informations.alert[this.translator.getLanguage()] || informations.alert.en_GB;
+        }
+      });
 
       // Prevents a bug with CKEditor.
       // See: https://stackoverflow.com/a/23667151 and includes updates from https://github.com/twbs/bootstrap-sass/blob/5d6b2ebba0c2a5885ce2f0e01e9218db3d3b5e47/assets/javascripts/bootstrap/modal.js#L139

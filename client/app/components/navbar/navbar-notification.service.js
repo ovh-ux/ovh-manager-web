@@ -1,5 +1,9 @@
 class NavbarNotificationService {
-  constructor($interval, $q, $translate, Alerter, constants, OvhApiNotificationAapi, translator, UNIVERSE) {
+  constructor(
+    $interval, $q, $translate,
+    Alerter, constants, OvhApiNotificationAapi, translator,
+    UNIVERSE,
+  ) {
     this.$interval = $interval;
     this.$q = $q;
     this.$translate = $translate;
@@ -32,6 +36,7 @@ class NavbarNotificationService {
   }
   /* eslint-enable class-methods-use-this */
 
+  /* eslint-disable no-param-reassign */
   toggleSublinkAction(toUpdate, linkClicked) {
     if (toUpdate.isActive && !toUpdate.updating) {
       toUpdate.updating = true;
@@ -57,17 +62,20 @@ class NavbarNotificationService {
     notification.linkClicked = toUpdate => this.toggleSublinkAction(toUpdate, true);
     return notification;
   }
+  /* eslint-enable no-param-reassign */
 
   acknowledgeAll() {
     if (this.navbarContent) {
       const toAcknowledge = this.navbarContent.subLinks
         .filter(subLink => !subLink.acknowledged && subLink.isActive);
       if (toAcknowledge.length) {
-        this.OvhApiNotificationAapi.post({ acknowledged: toAcknowledge.map(x => x.id) }).$promise.then(() => {
-          toAcknowledge.forEach((sublink) => {
-            sublink.acknowledged = true;
+        this.OvhApiNotificationAapi
+          .post({ acknowledged: toAcknowledge.map(x => x.id) }).$promise
+          .then(() => {
+            toAcknowledge.forEach((sublink) => {
+              sublink.acknowledged = true; // eslint-disable-line no-param-reassign
+            });
           });
-        });
       }
     }
   }
@@ -78,7 +86,8 @@ class NavbarNotificationService {
     }
     this.formatTimeTask = this.$interval(() => {
       sublinks.forEach((notification) => {
-        notification.time = this.formatTime(notification.date);
+        notification.time = // eslint-disable-line no-param-reassign
+            this.formatTime(notification.date);
       });
     }, this.NOTIFICATION_REFRESH_TIME);
   }

@@ -2,12 +2,12 @@ angular.module('App').controller(
   'EmailsDeleteFilterCtrl',
   class EmailsDeleteFilterCtrl {
     /**
-        * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param Alerter
-         * @param Emails
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param Alerter
+     * @param Emails
+     */
     constructor($scope, $stateParams, Alerter, Emails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -24,14 +24,30 @@ angular.module('App').controller(
     deleteFilter() {
       let filterPromise;
       if (_.get(this.$scope.currentActionData, 'delegate', false)) {
-        filterPromise = this.Emails.deleteDelegatedFilter(this.account.email, this.filter.name);
+        filterPromise = this.Emails.deleteDelegatedFilter(
+          this.account.email,
+          this.filter.name,
+        );
       } else {
-        filterPromise = this.Emails.deleteFilter(this.$stateParams.productId, this.account.accountName, this.filter.name);
+        filterPromise = this.Emails.deleteFilter(
+          this.$stateParams.productId,
+          this.account.accountName,
+          this.filter.name,
+        );
       }
 
       return filterPromise
-        .then(() => this.Alerter.success(this.$scope.tr('email_tab_modal_delete_filter_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_modal_delete_filter_error'), _.get(err, 'data', err), this.$scope.alerts.main))
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('email_tab_modal_delete_filter_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_modal_delete_filter_error'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          ))
         .finally(() => this.$scope.resetAction());
     }
   },

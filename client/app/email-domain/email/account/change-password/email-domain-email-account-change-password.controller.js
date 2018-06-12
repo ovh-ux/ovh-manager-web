@@ -2,12 +2,12 @@ angular.module('App').controller(
   'EmailsChangePasswordAccountCtrl',
   class EmailsChangePasswordAccountCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param Alerter
-         * @param Emails
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param Alerter
+     * @param Emails
+     */
     constructor($scope, $stateParams, Alerter, Emails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -34,7 +34,13 @@ angular.module('App').controller(
     }
 
     accountPasswordCheck(input) {
-      input.$setValidity('passwordCheck', !!this.model.password && !/^\s/.test(this.model.password) && !/\s$/.test(this.model.password) && !this.model.password.match(/[ÂÃÄÀÁÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ]/));
+      input.$setValidity(
+        'passwordCheck',
+        !!this.model.password &&
+          !/^\s/.test(this.model.password) &&
+          !/\s$/.test(this.model.password) &&
+          !this.model.password.match(/[ÂÃÄÀÁÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûüýþÿ]/),
+      );
     }
 
     isPasswordMatches() {
@@ -48,14 +54,30 @@ angular.module('App').controller(
     changePasswordAccount() {
       let passwordPromise = null;
       if (_.get(this.$scope.currentActionData, 'delegate', false)) {
-        passwordPromise = this.Emails.changePasswordDelegatedAccount(this.currentAccount.email, this.model);
+        passwordPromise = this.Emails.changePasswordDelegatedAccount(
+          this.currentAccount.email,
+          this.model,
+        );
       } else {
-        passwordPromise = this.Emails.changePasswordAccount(this.$stateParams.productId, this.currentAccount.accountName, this.model);
+        passwordPromise = this.Emails.changePasswordAccount(
+          this.$stateParams.productId,
+          this.currentAccount.accountName,
+          this.model,
+        );
       }
 
       passwordPromise
-        .then(() => this.Alerter.success(this.$scope.tr('email_tab_modal_change_account_password_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_modal_change_account_password_error'), err, this.$scope.alerts.main))
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('email_tab_modal_change_account_password_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_modal_change_account_password_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => this.$scope.resetAction());
     }
   },

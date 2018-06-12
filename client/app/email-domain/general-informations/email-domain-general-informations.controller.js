@@ -2,13 +2,13 @@ angular.module('App').controller(
   'EmailTabGeneralInformationsCtrl',
   class EmailTabGeneralInformationsCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $q
-         * @param $stateParams
-         * @param Alerter
-         * @param Emails
-         */
+     * Constructor
+     * @param $scope
+     * @param $q
+     * @param $stateParams
+     * @param Alerter
+     * @param Emails
+     */
     constructor($scope, $q, $stateParams, Alerter, Emails) {
       this.$scope = $scope;
       this.$q = $q;
@@ -32,18 +32,23 @@ angular.module('App').controller(
     loadDomain() {
       this.loading.domain = true;
 
-      this.$q.all({
-        domain: this.Emails.getDomain(this.$stateParams.productId),
-        dnsFilter: this.Emails.getDnsFilter(this.$stateParams.productId).catch(() => null),
-        mxRecords: this.Emails.getMxRecords(this.$stateParams.productId).catch(() => null),
-      })
+      this.$q
+        .all({
+          domain: this.Emails.getDomain(this.$stateParams.productId),
+          dnsFilter: this.Emails.getDnsFilter(this.$stateParams.productId).catch(() => null),
+          mxRecords: this.Emails.getMxRecords(this.$stateParams.productId).catch(() => null),
+        })
         .then(({ domain, dnsFilter, mxRecords }) => {
           this.domain = domain;
           this.dnsFilter = dnsFilter;
           this.mxRecords = mxRecords;
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('email_tab_table_accounts_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_table_accounts_error'),
+            err,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.loading.domain = false;
@@ -63,7 +68,11 @@ angular.module('App').controller(
         })
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          this.Alerter.alertFromSWS(this.$scope.tr('email_tab_table_accounts_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_table_accounts_error'),
+            err,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.loading.quotas = false;

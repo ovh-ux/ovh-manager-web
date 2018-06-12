@@ -1,7 +1,15 @@
 angular.module('controllers').controller(
   'DomainDnssecTabCtrl',
   class DomainDnssecTabCtrl {
-    constructor($scope, $q, $stateParams, Alerter, Domain, Products, constants) {
+    constructor(
+      $scope,
+      $q,
+      $stateParams,
+      Alerter,
+      Domain,
+      Products,
+      constants,
+    ) {
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -25,7 +33,8 @@ angular.module('controllers').controller(
       this.loading = false;
       this.product = null;
 
-      this.$scope.$on('domain.tabs.dnssec.save', () => this.saveModifications());
+      this.$scope.$on('domain.tabs.dnssec.save', () =>
+        this.saveModifications());
 
       this.loadDnssec();
     }
@@ -34,14 +43,25 @@ angular.module('controllers').controller(
       if (!this.product) {
         return false;
       }
-      return this.product.nameServerType === this.const.ALTERABLE_DNSSEC_SERVER_TYPE && !this.product.managedByOvh && !this.hasActiveTask;
+      return (
+        this.product.nameServerType ===
+          this.const.ALTERABLE_DNSSEC_SERVER_TYPE &&
+        !this.product.managedByOvh &&
+        !this.hasActiveTask
+      );
     }
 
     isNotModifiableByActiveTask() {
       if (!this.product) {
         return false;
       }
-      return this.product.nameServerType === this.const.ALTERABLE_DNSSEC_SERVER_TYPE && !this.product.managedByOvh && this.hasActiveTask && this.product.dnssecSupported;
+      return (
+        this.product.nameServerType ===
+          this.const.ALTERABLE_DNSSEC_SERVER_TYPE &&
+        !this.product.managedByOvh &&
+        this.hasActiveTask &&
+        this.product.dnssecSupported
+      );
     }
 
     loadDnssec() {
@@ -59,10 +79,21 @@ angular.module('controllers').controller(
         })
         .then(({ product, models }) => {
           this.product = product;
-          this.keyAlgorithmEnum = _.map(models.models['dnssec.KeyAlgorithmEnum'].enum, algorithm => +algorithm);
-          this.keyFlagEnum = _.map(models.models['dnssec.KeyFlagEnum'].enum, flag => +flag);
+          this.keyAlgorithmEnum = _.map(
+            models.models['dnssec.KeyAlgorithmEnum'].enum,
+            algorithm => +algorithm,
+          );
+          this.keyFlagEnum = _.map(
+            models.models['dnssec.KeyFlagEnum'].enum,
+            flag => +flag,
+          );
         })
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('domain_tab_DNSSEC_loading_error'), _.get(err, 'data', err), this.$scope.alerts.main))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_tab_DNSSEC_loading_error'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           this.dnssecListSave = _.slice(this.dnssecList);
           this.loading = false;
@@ -71,11 +102,17 @@ angular.module('controllers').controller(
 
     getDnsSecs(domain) {
       this.dnssecList = [];
-      return this.Domain.getDnssecList(domain).then(dnssecList => this.$q.all(_.map(dnssecList, dnsSecName => this.Domain.getDnssec(domain, dnsSecName).then(dnssec => this.dnssecList.push(dnssec)))));
+      return this.Domain.getDnssecList(domain).then(dnssecList =>
+        this.$q.all(_.map(dnssecList, dnsSecName =>
+          this.Domain.getDnssec(domain, dnsSecName).then(dnssec =>
+            this.dnssecList.push(dnssec)))));
     }
 
     static getLabel(key, options) {
-      const option = _.find(options, currentOption => currentOption.value === key);
+      const option = _.find(
+        options,
+        currentOption => currentOption.value === key,
+      );
       if (!option) {
         return key;
       }
@@ -85,14 +122,21 @@ angular.module('controllers').controller(
     getPendingTasks(domain) {
       this.hasActiveTask = 0;
       _.forEach(['todo', 'doing', 'error'], status =>
-        this.Domain.getDomainPendingTasks(domain, { function: 'DomainDnsUpdate', status }).then((tasks) => {
+        this.Domain.getDomainPendingTasks(domain, {
+          function: 'DomainDnsUpdate',
+          status,
+        }).then((tasks) => {
           this.hasActiveTask += tasks.length > 0 ? 1 : 0;
         }));
     }
 
     addRecord() {
       this.dnssecList.push({
-        id: this.nextAvailableId(), tag: 0, flags: null, algorithm: null, publicKey: null,
+        id: this.nextAvailableId(),
+        tag: 0,
+        flags: null,
+        algorithm: null,
+        publicKey: null,
       });
     }
 
@@ -114,10 +158,20 @@ angular.module('controllers').controller(
 
     saveModifications() {
       this.loading = true;
-      return this.Domain
-        .saveDnssecList(this.product.name, { keys: this.dnssecList })
-        .then(() => this.Alerter.success(this.$scope.tr('domain_tab_DNSSEC_action_add_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('domain_tab_DNSSEC_action_add_error'), err, this.$scope.alerts.main))
+      return this.Domain.saveDnssecList(this.product.name, {
+        keys: this.dnssecList,
+      })
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('domain_tab_DNSSEC_action_add_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_tab_DNSSEC_action_add_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => this.loadDnssec());
     }
   },

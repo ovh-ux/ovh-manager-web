@@ -10,7 +10,8 @@ angular.module('services').service(
     }
 
     getOomList(serviceName) {
-      return this.$http.get(`${this.rootPath}/${this.swsProxypassPath}/${serviceName}/oom`)
+      return this.$http
+        .get(`${this.rootPath}/${this.swsProxypassPath}/${serviceName}/oom`)
         .then(res => res.data);
     }
   },

@@ -1,7 +1,16 @@
-angular
-  .module('services')
-  .service('HostingDomain', class HostingDomain {
-    constructor($rootScope, $http, $q, Hosting, OvhHttp, Poll, Products, constants) {
+angular.module('services').service(
+  'HostingDomain',
+  class HostingDomain {
+    constructor(
+      $rootScope,
+      $http,
+      $q,
+      Hosting,
+      OvhHttp,
+      Poll,
+      Products,
+      constants,
+    ) {
       this.$rootScope = $rootScope;
       this.$http = $http;
       this.$q = $q;
@@ -15,99 +24,130 @@ angular
     }
 
     /**
-         * Delete domain of domains tab
-         * @param {string} serviceName
-         * @param {string} domain
-         * @param {boolean} wwwNeeded
-         * @param {boolean} autoconfigure
-         */
+     * Delete domain of domains tab
+     * @param {string} serviceName
+     * @param {string} domain
+     * @param {boolean} wwwNeeded
+     * @param {boolean} autoconfigure
+     */
     removeDomain(serviceName, domain, wwwNeeded, autoconfigure) {
-      return this.OvhHttp.delete(`/sws/hosting/web/${serviceName}/domains-delete`, {
-        rootPath: '2api',
-        params: {
-          domain,
-          wwwNeeded,
-          autoconfigure,
+      return this.OvhHttp.delete(
+        `/sws/hosting/web/${serviceName}/domains-delete`,
+        {
+          rootPath: '2api',
+          params: {
+            domain,
+            wwwNeeded,
+            autoconfigure,
+          },
         },
-      }).then((response) => {
+      ).then((response) => {
         if (response.state !== 'ERROR') {
-          this.getTaskIds({ fn: 'web/detachDomain' }, serviceName)
-            .then((taskIds) => {
-              this.pollRequest({
-                serviceName,
-                taskIds,
-                namespace: 'detachDomain',
-              });
+          this.getTaskIds({ fn: 'web/detachDomain' }, serviceName).then((taskIds) => {
+            this.pollRequest({
+              serviceName,
+              taskIds,
+              namespace: 'detachDomain',
             });
+          });
         }
         this.Hosting.resetDomains();
-        this.getTaskIds({ fn: 'attachedDomain/delete' }, serviceName)
-          .then((taskIds) => {
+        this.getTaskIds({ fn: 'attachedDomain/delete' }, serviceName).then((taskIds) => {
+          this.pollRequest({
+            serviceName,
+            taskIds,
+            namespace: 'modifyDomain',
+          });
+        });
+      });
+    }
+
+    /**
+     * Add domain of domains tab
+     * @param {string} baseDomain
+     * @param {string} domainName
+     * @param {string} home
+     * @param {boolean} wwwNeeded
+     * @param {boolean} ipv6Needed
+     * @param {boolean} autoconfigure
+     * @param {string} cdn
+     * @param {string} countryIp
+     * @param {string} firewall
+     * @param ownLog
+     * @param {boolean} ssl
+     * @param {string|null} runtimeId
+     * @param {string} serviceName
+     */
+    addDomain(
+      baseDomain,
+      domainName,
+      home,
+      wwwNeeded,
+      ipv6Needed,
+      autoconfigure,
+      cdn,
+      countryIp,
+      firewall,
+      ownLog,
+      ssl,
+      runtimeId,
+      serviceName,
+    ) {
+      return this.$http
+        .put(`${this.aapiHostingPath}/${serviceName}/domains`, {
+          baseDomain,
+          domainName,
+          home,
+          wwwNeeded,
+          ipv6Needed,
+          autoconfigure,
+          cdn: cdn.toLowerCase(),
+          countryIp,
+          firewallNeeded: firewall.toLowerCase(),
+          ownLog,
+          ssl,
+          runtimeId,
+        })
+        .then((response) => {
+          this.Hosting.resetDomains();
+          this.getTaskIds({ fn: 'attachedDomain/create' }, serviceName).then((taskIds) => {
             this.pollRequest({
               serviceName,
               taskIds,
               namespace: 'modifyDomain',
             });
           });
-      });
-    }
-
-    /**
-         * Add domain of domains tab
-         * @param {string} baseDomain
-         * @param {string} domainName
-         * @param {string} home
-         * @param {boolean} wwwNeeded
-         * @param {boolean} ipv6Needed
-         * @param {boolean} autoconfigure
-         * @param {string} cdn
-         * @param {string} countryIp
-         * @param {string} firewall
-         * @param ownLog
-         * @param {boolean} ssl
-         * @param {string|null} runtimeId
-         * @param {string} serviceName
-         */
-    addDomain(baseDomain, domainName, home, wwwNeeded, ipv6Needed, autoconfigure, cdn, countryIp, firewall, ownLog, ssl, runtimeId, serviceName) {
-      return this.$http.put(`${this.aapiHostingPath}/${serviceName}/domains`, {
-        baseDomain,
-        domainName,
-        home,
-        wwwNeeded,
-        ipv6Needed,
-        autoconfigure,
-        cdn: cdn.toLowerCase(),
-        countryIp,
-        firewallNeeded: firewall.toLowerCase(),
-        ownLog,
-        ssl,
-        runtimeId,
-      })
-        .then((response) => {
-          this.Hosting.resetDomains();
-          this.getTaskIds({ fn: 'attachedDomain/create' }, serviceName)
-            .then((taskIds) => {
-              this.pollRequest({ serviceName, taskIds, namespace: 'modifyDomain' });
-            });
           return response.data;
         });
     }
 
     /**
-         * Update domain of domains tab
-         * @param {string} domain
-         * @param {string} home
-         * @param {boolean} wwwNeeded
-         * @param {boolean} ipv6Needed
-         * @param {string} cdn
-         * @param {string} countryIp
-         * @param {string} firewall
-         * @param ownLog
-         * @param {boolean} ssl
-         * @param {string|null} runtimeId
-         * @param {string} serviceName
-         */
-    modifyDomain(domain, home, wwwNeeded, ipv6Needed, cdn, countryIp, firewall, ownLog, ssl, runtimeId, serviceName) {
+     * Update domain of domains tab
+     * @param {string} domain
+     * @param {string} home
+     * @param {boolean} wwwNeeded
+     * @param {boolean} ipv6Needed
+     * @param {string} cdn
+     * @param {string} countryIp
+     * @param {string} firewall
+     * @param ownLog
+     * @param {boolean} ssl
+     * @param {string|null} runtimeId
+     * @param {string} serviceName
+     */
+    modifyDomain(
+      domain,
+      home,
+      wwwNeeded,
+      ipv6Needed,
+      cdn,
+      countryIp,
+      firewall,
+      ownLog,
+      ssl,
+      runtimeId,
+      serviceName,
+    ) {
       return this.getZoneLinked(domain)
         .then((urlSplitted) => {
           let baseDomain;
@@ -121,53 +161,79 @@ angular
             domainName = null;
           }
 
-          return this.addDomain(baseDomain, domainName, home, wwwNeeded, ipv6Needed, !!urlSplitted.zone, cdn.toLowerCase(), countryIp, firewall.toLowerCase(), ownLog, ssl, runtimeId, serviceName);
+          return this.addDomain(
+            baseDomain,
+            domainName,
+            home,
+            wwwNeeded,
+            ipv6Needed,
+            !!urlSplitted.zone,
+            cdn.toLowerCase(),
+            countryIp,
+            firewall.toLowerCase(),
+            ownLog,
+            ssl,
+            runtimeId,
+            serviceName,
+          );
         })
         .then((response) => {
           this.Hosting.resetDomains();
-          this.getTaskIds({ fn: 'attachedDomain/update' }, serviceName)
-            .then((taskIds) => {
-              this.pollRequest({ serviceName, taskIds, namespace: 'modifyDomain' });
+          this.getTaskIds({ fn: 'attachedDomain/update' }, serviceName).then((taskIds) => {
+            this.pollRequest({
+              serviceName,
+              taskIds,
+              namespace: 'modifyDomain',
             });
+          });
           return response.data;
         });
     }
 
     /**
-         * Get existing domain
-         * @param {string} serviceName
-         * @param tokenNeeded
-         */
+     * Get existing domain
+     * @param {string} serviceName
+     * @param tokenNeeded
+     */
     getExistingDomains(serviceName, tokenNeeded) {
-      return this.OvhHttp.get(`/sws/hosting/web/${serviceName}/add-domain-existing`, {
-        rootPath: '2api',
-        params: {
-          tokenNeeded,
+      return this.OvhHttp.get(
+        `/sws/hosting/web/${serviceName}/add-domain-existing`,
+        {
+          rootPath: '2api',
+          params: {
+            tokenNeeded,
+          },
         },
-      });
+      );
     }
 
     /**
-         *
-         * @param {string} serviceName
-         * @param {string} domain
-         * @param {string} subDomain
-         * @param {boolean} wwwNeeded
-         */
+     *
+     * @param {string} serviceName
+     * @param {string} domain
+     * @param {string} subDomain
+     * @param {boolean} wwwNeeded
+     */
     getExistingConfiguration(serviceName, domain, subDomain, wwwNeeded) {
-      return this.$http.get(`${this.aapiHostingPath}/${serviceName}/domains/${domain}/configuration`, {
-        params: {
-          domainName: subDomain,
-          wwwNeeded,
-        },
-      })
+      return this.$http
+        .get(
+          `${
+            this.aapiHostingPath
+          }/${serviceName}/domains/${domain}/configuration`,
+          {
+            params: {
+              domainName: subDomain,
+              wwwNeeded,
+            },
+          },
+        )
         .then(response => response.data);
     }
 
     /**
-         * Get offer capabilities
-         * @param {string} offer
-         */
+     * Get offer capabilities
+     * @param {string} offer
+     */
     getCapabilities(offer) {
       return this.OvhHttp.get('/hosting/web/offerCapabilities', {
         rootPath: 'apiv6',
@@ -179,8 +245,8 @@ angular
     }
 
     /**
-         * Get domain creation options
-         */
+     * Get domain creation options
+     */
     getAddDomainOptions() {
       return this.OvhHttp.get('/domain/zone', {
         rootPath: 'apiv6',
@@ -198,46 +264,62 @@ angular
     }
 
     /**
-         * Get task ids
-         * @param {object} opts
-         * @param {string} serviceName
-         */
+     * Get task ids
+     * @param {object} opts
+     * @param {string} serviceName
+     */
     getTaskIds(opts, serviceName) {
       const fn = opts.fn || '';
-      return this.$http.get(`apiv6/hosting/web/${serviceName}/tasks`, {
-        params: {
-          function: fn,
-        },
-      })
+      return this.$http
+        .get(`apiv6/hosting/web/${serviceName}/tasks`, {
+          params: {
+            function: fn,
+          },
+        })
         .then(response => response.data);
     }
 
     /**
-         * Poll request
-         * @param {object} opts
-         */
+     * Poll request
+     * @param {object} opts
+     */
     pollRequest(opts) {
       if (!_.isArray(opts.taskIds) || opts.taskIds.length <= 0) {
         this.$rootScope.$broadcast(`hostingDomain.${opts.namespace}.done`);
       } else {
         _.forEach(opts.taskIds, (taskId) => {
-          this.$rootScope.$broadcast(`hostingDomain.${opts.namespace}.start`, opts);
+          this.$rootScope.$broadcast(
+            `hostingDomain.${opts.namespace}.start`,
+            opts,
+          );
 
-          this.Poll.poll(`apiv6/hosting/web/${opts.serviceName}/tasks/${taskId}`, null, {
-            successRule: { state: 'done' },
-            namespace: 'hostingDomain.request',
-          }).then((task) => {
-            this.$rootScope.$broadcast(`hostingDomain.${opts.namespace}.done`, task);
-          }).catch((err) => {
-            this.$rootScope.$broadcast(`hostingDomain.${opts.namespace}.error`, err);
-          });
+          this.Poll.poll(
+            `apiv6/hosting/web/${opts.serviceName}/tasks/${taskId}`,
+            null,
+            {
+              successRule: { state: 'done' },
+              namespace: 'hostingDomain.request',
+            },
+          )
+            .then((task) => {
+              this.$rootScope.$broadcast(
+                `hostingDomain.${opts.namespace}.done`,
+                task,
+              );
+            })
+            .catch((err) => {
+              this.$rootScope.$broadcast(
+                `hostingDomain.${opts.namespace}.error`,
+                err,
+              );
+            });
         });
       }
     }
 
     /**
-         * Kill all polling
-         */
+     * Kill all polling
+     */
     killAllPolling() {
       _.forEach(['detachDomain', 'attachDomain', 'modifyDomain'], (action) => {
         this.Poll.kill({ namespace: `hostingDomain.${action}` });
@@ -245,11 +327,11 @@ angular
     }
 
     /**
-         * Get records
-         * @param {string} domain
-         * @param {string} subDomain
-         * @param {string} fieldType
-         */
+     * Get records
+     * @param {string} domain
+     * @param {string} subDomain
+     * @param {string} fieldType
+     */
     getRecords(domain, subDomain, fieldType) {
       return this.OvhHttp.get(`domain/${domain}/record`, {
         params: {
@@ -260,8 +342,8 @@ angular
     }
 
     /**
-         * Get zones
-         */
+     * Get zones
+     */
     getZones() {
       return this.OvhHttp.get('/domain/zone', {
         rootPath: 'apiv6',
@@ -269,34 +351,37 @@ angular
     }
 
     /**
-         * Get zone linked
-         * @param {string} url
-         */
+     * Get zone linked
+     * @param {string} url
+     */
     getZoneLinked(url) {
       const zoneAssociated = {};
 
-      return this.getZones()
-        .then((zones) => {
-          const urlSplitted = url.split('.');
+      return this.getZones().then((zones) => {
+        const urlSplitted = url.split('.');
 
-          for (let index = 0; index < urlSplitted.length - 1 && !zoneAssociated.zone; index++) {
-            const zoneIndex = zones.indexOf(urlSplitted.slice(index).join('.'));
+        for (
+          let index = 0;
+          index < urlSplitted.length - 1 && !zoneAssociated.zone;
+          index += 1
+        ) {
+          const zoneIndex = zones.indexOf(urlSplitted.slice(index).join('.'));
 
-            if (zoneIndex !== -1) {
-              zoneAssociated.zone = zones[zoneIndex];
-              zoneAssociated.subDomain = urlSplitted.slice(0, index).join('.');
-            }
+          if (zoneIndex !== -1) {
+            zoneAssociated.zone = zones[zoneIndex];
+            zoneAssociated.subDomain = urlSplitted.slice(0, index).join('.');
           }
+        }
 
-          return zoneAssociated;
-        });
+        return zoneAssociated;
+      });
     }
 
     /**
-         * Get IPv6 configuration
-         * @param {string} serviceName
-         * @param {string} search
-         */
+     * Get IPv6 configuration
+     * @param {string} serviceName
+     * @param {string} search
+     */
     getIPv6Configuration(serviceName, search) {
       return this.OvhHttp.get(`/sws/domain/${serviceName}/zone/records`, {
         rootPath: '2api',
@@ -308,9 +393,9 @@ angular
     }
 
     /**
-         * Get attached domains
-         * @param {string} serviceName
-         */
+     * Get attached domains
+     * @param {string} serviceName
+     */
     getAttachedDomains(serviceName) {
       return this.OvhHttp.get(`/hosting/web/${serviceName}/attachedDomain`, {
         rootPath: 'apiv6',
@@ -318,38 +403,48 @@ angular
     }
 
     /**
-         * Get attached domains
-         * @param {string} serviceName
-         * @param {string} attachedDomain
-         */
+     * Get attached domains
+     * @param {string} serviceName
+     * @param {string} attachedDomain
+     */
     getAttachedDomain(serviceName, attachedDomain) {
-      return this.OvhHttp.get(`/hosting/web/${serviceName}/attachedDomain/${attachedDomain}`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/hosting/web/${serviceName}/attachedDomain/${attachedDomain}`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
 
     /**
-         * Update attached domain
-         * @param {string} serviceName
-         * @param {string} attachedDomain
-         * @param {object} data
-         */
+     * Update attached domain
+     * @param {string} serviceName
+     * @param {string} attachedDomain
+     * @param {object} data
+     */
     updateAttachedDomain(serviceName, attachedDomain, data) {
-      return this.OvhHttp.put(`/hosting/web/${serviceName}/attachedDomain/${attachedDomain}`, {
-        rootPath: 'apiv6',
-        data,
-      });
+      return this.OvhHttp.put(
+        `/hosting/web/${serviceName}/attachedDomain/${attachedDomain}`,
+        {
+          rootPath: 'apiv6',
+          data,
+        },
+      );
     }
 
     /**
-         * Get runtime linked to an attached domain
-         *
-         * @param serviceName
-         * @param runtimeId
-         */
+     * Get runtime linked to an attached domain
+     *
+     * @param serviceName
+     * @param runtimeId
+     */
     getRuntimeConfiguration(serviceName, runtimeId) {
-      return this.OvhHttp.get(`/hosting/web/${serviceName}/runtime/${runtimeId}`, {
-        rootPath: 'apiv6',
-      });
+      return this.OvhHttp.get(
+        `/hosting/web/${serviceName}/runtime/${runtimeId}`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
     }
-  });
+  },
+);

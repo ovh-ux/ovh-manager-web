@@ -15,12 +15,25 @@ angular.module('App').controller(
 
     deleteUser() {
       this.$scope.resetAction();
-      return this.Hosting.deleteUserLogs(this.$stateParams.productId, this.entryToDelete)
+      return this.Hosting.deleteUserLogs(
+        this.$stateParams.productId,
+        this.entryToDelete,
+      )
         .then(() => {
-          this.Alerter.success(this.$scope.tr('hosting_tab_USER_LOGS_configuration_user_delete_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('hosting_tab_USER_LOGS_configuration_user_delete_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_USER_LOGS_configuration_user_delete_fail', [this.entryToDelete]), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr(
+              'hosting_tab_USER_LOGS_configuration_user_delete_fail',
+              [this.entryToDelete],
+            ),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
         });
     }
   },

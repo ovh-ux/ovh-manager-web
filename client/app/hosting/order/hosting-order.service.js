@@ -2,10 +2,10 @@ angular.module('services').service(
   'HostingOrder',
   class HostingOrder {
     /**
-         * Constructor
-         * @param Api
-         * @param constants
-         */
+     * Constructor
+     * @param Api
+     * @param constants
+     */
     constructor(Api, constants) {
       this.Api = Api;
       this.constants = constants;
@@ -55,8 +55,7 @@ angular.module('services').service(
     }
 
     getModels() {
-      return this.Api.get(`${this.constants.swsProxyRootPath}order.json`)
-        .then(data => data.models);
+      return this.Api.get(`${this.constants.swsProxyRootPath}order.json`).then(data => data.models);
     }
   },
 );

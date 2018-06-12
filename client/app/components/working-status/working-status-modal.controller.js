@@ -1,6 +1,6 @@
 angular.module('App').controller('WorkingStatusModal', [
   '$scope',
-  function ($scope) {
+  ($scope) => {
     $scope.works = $scope.currentActionData;
   },
 ]);

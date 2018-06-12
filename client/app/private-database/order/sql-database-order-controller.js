@@ -1,7 +1,11 @@
 angular.module('App').controller(
   'SqlDatabaseOrderCtrl',
   class SqlDatabaseOrderCtrl {
-    constructor($q, $scope, $stateParams, $timeout, $window, atInternet, ConverterService, Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, User) {
+    constructor(
+      $q, $scope, $stateParams, $timeout, $window,
+      atInternet,
+      ConverterService, Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, User,
+    ) {
       this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -81,10 +85,14 @@ angular.module('App').controller(
 
           return this.$q
             .all({
-              dbaasOrderCapacities: this.privateDatabaseService.getAvailableOrderCapacities(dbaasName),
-              privateOrderCapacities: this.privateDatabaseService.getAvailableOrderCapacities(sqlName),
-              hostings: this.hostingService.getHostings(),
-              dbPack: this.hostingOptionOrderService.getOrderEnums('hosting.web.database.SqlPersoOfferEnum'),
+              dbaasOrderCapacities:
+                this.privateDatabaseService.getAvailableOrderCapacities(dbaasName),
+              privateOrderCapacities:
+                this.privateDatabaseService.getAvailableOrderCapacities(sqlName),
+              hostings:
+                this.hostingService.getHostings(),
+              dbPack:
+                this.hostingOptionOrderService.getOrderEnums('hosting.web.database.SqlPersoOfferEnum'),
             })
             .then((res) => {
               this.data.push({
@@ -198,7 +206,7 @@ angular.module('App').controller(
       return this.privateDatabaseService
         .orderDuration(version, ram)
         .then((durations) => {
-          data.durations = _.map(durations, duration => ({
+          data.durations = _.map(durations, duration => ({ // eslint-disable-line no-param-reassign
             duration,
             details: {},
           }));
@@ -223,7 +231,7 @@ angular.module('App').controller(
       return this.hostingOptionOrderService
         .getSqlPersoAllowedDurations(hosting, startDbVersion)
         .then((durations) => {
-          data.durations = _.map(durations, duration => ({
+          data.durations = _.map(durations, duration => ({ // eslint-disable-line no-param-reassign
             duration,
             details: {},
           }));
@@ -243,19 +251,22 @@ angular.module('App').controller(
       const { version, ram } = this.model;
 
       return this.$q
-        .all(_.map(durations, duration => this.privateDatabaseService.orderPrice(version, ram, duration).then((details) => {
-          _.find(data.durations, 'duration', duration).details = details;
-          return details;
-        })))
+        .all(_.map(
+          durations,
+          duration => this.privateDatabaseService
+            .orderPrice(version, ram, duration)
+            .then((details) => {
+              _.find(data.durations, 'duration', duration).details = details;
+              return details;
+            }),
+        ))
         .then(() => {
           if (durations && durations.length === 1) {
             this.model.duration = _.first(durations);
           }
         })
         .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step2_price_fail'), err, this.$scope.alerts.order))
-        .finally(() => {
-          this.loading.prices = false;
-        });
+        .finally(() => { this.loading.prices = false; });
     }
 
     getPricesdbaas(data, durations) {
@@ -263,22 +274,23 @@ angular.module('App').controller(
     }
 
     getPricesstart(data, durations) {
-      const { hosting, startDbVersion } = this.model;
+      const { hosting } = this.model;
+      const startDbVersion = this.model.dbPack;
 
       return this.$q
-        .all(_.map(durations, duration => this.hostingOptionOrderService.getSqlPersoPrice(hosting, startDbVersion, duration).then((details) => {
-          _.find(data.durations, 'duration', duration).details = details;
-          return details;
-        })))
+        .all(_.map(durations, duration => this.hostingOptionOrderService
+          .getSqlPersoPrice(hosting, startDbVersion, duration)
+          .then((details) => {
+            _.find(data.durations, 'duration', duration).details = details;
+            return details;
+          })))
         .then(() => {
           if (durations && durations.length === 1) {
             this.model.duration = _.first(durations);
           }
         })
         .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step2_price_fail'), err, this.$scope.alerts.order))
-        .finally(() => {
-          this.loading.prices = false;
-        });
+        .finally(() => { this.loading.prices = false; });
     }
 
     /*
@@ -296,7 +308,12 @@ angular.module('App').controller(
       this.loading.bc = true;
 
       return this.privateDatabaseService
-        .orderPrivateDatabase(this.model.version, this.model.ram, this.model.duration, this.model.datacenter)
+        .orderPrivateDatabase(
+          this.model.version,
+          this.model.ram,
+          this.model.duration,
+          this.model.datacenter,
+        )
         .then((details) => {
           this.order = details;
           this.$timeout(() => {
@@ -323,9 +340,7 @@ angular.module('App').controller(
           }, 5000);
         })
         .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step3_fail'), err, this.$scope.alerts.order))
-        .finally(() => {
-          this.loading.bc = false;
-        });
+        .finally(() => { this.loading.bc = false; });
     }
 
     generateBcstart() {
@@ -341,9 +356,7 @@ angular.module('App').controller(
           }, 5000);
         })
         .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step3_fail'), err, this.$scope.alerts.order))
-        .finally(() => {
-          this.loading.bc = false;
-        });
+        .finally(() => { this.loading.bc = false; });
     }
 
     /*
@@ -354,15 +367,28 @@ angular.module('App').controller(
     }
 
     canOrderpremium() {
-      return this.model.contract && this.model.duration && this.model.ram && this.model.hosting && this.model.datacenter && this.model.version;
+      return this.model.contract
+        && this.model.duration
+        && this.model.ram
+        && this.model.hosting
+        && this.model.datacenter
+        && this.model.version;
     }
 
     canOrderdbaas() {
-      return this.model.contract && this.model.duration && this.model.ram && this.model.datacenter && this.model.version;
+      return this.model.contract
+        && this.model.duration
+        && this.model.ram
+        && this.model.datacenter
+        && this.model.version;
     }
 
     canOrderstart() {
-      return this.model.contract && this.model.duration && this.model.hosting && this.model.datacenter && this.model.dbPack;
+      return this.model.contract
+        && this.model.duration
+        && this.model.hosting
+        && this.model.datacenter
+        && this.model.dbPack;
     }
 
     /*

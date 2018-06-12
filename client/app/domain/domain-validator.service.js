@@ -2,9 +2,9 @@ angular.module('services').service(
   'DomainValidator',
   class DomainValidator {
     /**
-         * Constructor
-         * @param Validator
-         */
+     * Constructor
+     * @param Validator
+     */
     constructor(Validator) {
       this.Validator = Validator;
 
@@ -12,11 +12,11 @@ angular.module('services').service(
         TTL: /^\d+$/,
         DKIM: /^(?:\s*[vghknpst]\s*=\s*[^=;]*\s*(?:;\s*$|;|$))+/,
         DKIM_v: /^DKIM1$/,
-        DKIM_g: /^[a-zA-Z0-9!#$%&"*+\-\/=?^_`{|}~.]+$/,
+        DKIM_g: /^[\w!#$%&"*+/=?^`{|}~.-]+$/,
         DKIM_h: /^(?:\*|sha1(?::sha256)?|sha256(?::sha1)?)$/,
         DKIM_k: /^rsa$/,
         DKIM_n: /^[^=;"]+$/,
-        DKIM_p: /^(?:[A-Za-z0-9+\/]{4})+(?:[A-Za-z0-9+\/]{2}==|[A-Za-z0-9+\/]{3}=|[A-Za-z0-9+\/]{4})$/,
+        DKIM_p: /^(?:[A-Za-z0-9+/]{4})+(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=|[A-Za-z0-9+/]{4})$/,
         DKIM_s: /^(?:\*|email)$/,
         DKIM_t: /^(?:y(?::s)?|s(?::y)?)$/,
         DMARC: /^(?:\s*(v|p|pct|rua|sp|aspf)\s*=\s*[^=;]*\s*(?:;\s*$|;|$))+/,
@@ -24,7 +24,7 @@ angular.module('services').service(
         DMARC_p: /^none|quarantine|reject$/,
         DMARC_pct: /^0$|^\d\d?$|^100$/,
         DMARC_sp: /^$|none|quarantine|reject$/,
-        DMARC_rua: /^([a-z][a-z0-9+.-]*):(?:\/\/((?:(?=((?:[a-z0-9-._~!$&'()*+,;=:]|%[0-9A-F]{2})*))(\3)@)?(?=(\[[0-9A-F:.]{2,}\]|(?:[a-z0-9-._~!$&'()*+,;=]|%[0-9A-F]{2})*))\5(?::(?=(\d*))\6)?)(\/(?=((?:[a-z0-9-._~!$&'()*+,;=:@\/]|%[0-9A-F]{2})*))\8)?|(\/?(?!\/)(?=((?:[a-z0-9-._~!$&'()*+,;=:@\/]|%[0-9A-F]{2})*))\10)?)(?:\?(?=((?:[a-z0-9-._~!$&'()*+,;=:@\/?]|%[0-9A-F]{2})*))\11)?(?:#(?=((?:[a-z0-9-._~!$&'()*+,;=:@\/?]|%[0-9A-F]{2})*))\12)?$/, // eslint-disable-line max-len
+        DMARC_rua: /^([a-z][a-z0-9+.-]*):(?:\/\/((?:(?=((?:[a-z0-9-._~!$&'()*+,;=:]|%[0-9A-F]{2})*))(\3)@)?(?=(\[[0-9A-F:.]{2,}\]|(?:[a-z0-9-._~!$&'()*+,;=]|%[0-9A-F]{2})*))\5(?::(?=(\d*))\6)?)(\/(?=((?:[a-z0-9-._~!$&'()*+,;=:@/]|%[0-9A-F]{2})*))\8)?|(\/?(?!\/)(?=((?:[a-z0-9-._~!$&'()*+,;=:@/]|%[0-9A-F]{2})*))\10)?)(?:\?(?=((?:[a-z0-9-._~!$&'()*+,;=:@/?]|%[0-9A-F]{2})*))\11)?(?:#(?=((?:[a-z0-9-._~!$&'()*+,;=:@/?]|%[0-9A-F]{2})*))\12)?$/, // eslint-disable-line max-len
         DMARC_aspf: /^r|s$/,
         LOC: /^(\d+)\s+(?:|(\d+)\s+(?:(\d+(?:\.\d{1,3})?)\s+)?)(N|S)\s+(\d+)\s+(?:|(\d+)\s+(?:(\d+(?:\.\d{1,3})?)\s+)?)(E|W)\s+(-?(?:\d+)(?:\.\d{1,2})?)m(?:\s+(\d+(?:\.\d{1,2})?)m(?:\s+(\d+(?:\.\d{1,2})?)m(?:\s+(?:(\d+(?:\.\d{1,2})?)m)|)|))?$/, // eslint-disable-line max-len
         MX: /^(\d+)\s+(\S+)$/,
@@ -59,8 +59,8 @@ angular.module('services').service(
       this.regex.SRV_target = this.regex.NAPTR_replace;
 
       /**
-             * Special rules for SPF...
-             */
+       * Special rules for SPF...
+       */
       this.SPF = {
         isValidA: (_field) => {
           let field = _field;
@@ -77,13 +77,24 @@ angular.module('services').service(
             }
           } else if (/^a:.+/.test(field)) {
             field = field.replace(/^(a:)/, '');
-            if (~field.indexOf('/')) {
+            if (field.indexOf('/') !== -1) {
               // Format: "a:domain/cidr"
               field = field.split('/');
-              if (isNaN(field[1]) || field[1] < 1 || field[1] > 32 || !this.Validator.isValidDomain(field[0], { canBeginWithUnderscore: true })) {
+              if (
+                !_.isFinite(field[1]) ||
+                field[1] < 1 ||
+                field[1] > 32 ||
+                !this.Validator.isValidDomain(field[0], {
+                  canBeginWithUnderscore: true,
+                })
+              ) {
                 isValid = false;
               }
-            } else if (!this.Validator.isValidDomain(field, { canBeginWithUnderscore: true })) {
+            } else if (
+              !this.Validator.isValidDomain(field, {
+                canBeginWithUnderscore: true,
+              })
+            ) {
               // Format: "a:domain"
               isValid = false;
             }
@@ -107,13 +118,24 @@ angular.module('services').service(
             }
           } else if (/^mx:.+/.test(field)) {
             field = field.replace(/^(mx:)/, '');
-            if (~field.indexOf('/')) {
+            if (field.indexOf('/') !== -1) {
               // Format: "mx:domain/cidr"
               field = field.split('/');
-              if (isNaN(field[1]) || field[1] < 1 || field[1] > 32 || !this.Validator.isValidDomain(field[0], { canBeginWithUnderscore: true })) {
+              if (
+                !_.isFinite(field[1]) ||
+                field[1] < 1 ||
+                field[1] > 32 ||
+                !this.Validator.isValidDomain(field[0], {
+                  canBeginWithUnderscore: true,
+                })
+              ) {
                 isValid = false;
               }
-            } else if (!this.Validator.isValidDomain(field, { canBeginWithUnderscore: true })) {
+            } else if (
+              !this.Validator.isValidDomain(field, {
+                canBeginWithUnderscore: true,
+              })
+            ) {
               // Format: "mx:domain"
               isValid = false;
             }
@@ -132,7 +154,11 @@ angular.module('services').service(
             return true;
           } else if (/^ptr:.+/.test(field)) {
             field = field.replace(/^(ptr:)/, '');
-            if (!this.Validator.isValidDomain(field, { canBeginWithUnderscore: true })) {
+            if (
+              !this.Validator.isValidDomain(field, {
+                canBeginWithUnderscore: true,
+              })
+            ) {
               // Format: "ptr:domain"
               isValid = false;
             }
@@ -148,10 +174,15 @@ angular.module('services').service(
 
           if (/^ip4:.+/.test(field)) {
             field = field.replace(/^(ip4:)/, '');
-            if (~field.indexOf('/')) {
+            if (field.indexOf('/') !== -1) {
               // Format: "ip4:ipv4/cidr"
               field = field.split('/');
-              if (isNaN(field[1]) || field[1] < 1 || field[1] > 32 || !this.Validator.isValidIpv4(field[0])) {
+              if (
+                !_.isFinite(field[1]) ||
+                field[1] < 1 ||
+                field[1] > 32 ||
+                !this.Validator.isValidIpv4(field[0])
+              ) {
                 isValid = false;
               }
             } else if (!this.Validator.isValidIpv4(field)) {
@@ -170,10 +201,15 @@ angular.module('services').service(
 
           if (/^ip6:.+/.test(field)) {
             field = field.replace(/^(ip6:)/, '');
-            if (~field.indexOf('/')) {
+            if (field.indexOf('/') !== -1) {
               // Format: "ip6:ipv6/cidr"
               field = field.split('/');
-              if (isNaN(field[1]) || field[1] < 1 || field[1] > 128 || !this.Validator.isValidIpv6(field[0])) {
+              if (
+                !_.isFinite(field[1]) ||
+                field[1] < 1 ||
+                field[1] > 128 ||
+                !this.Validator.isValidIpv6(field[0])
+              ) {
                 isValid = false;
               }
             } else if (!this.Validator.isValidIpv6(field)) {
@@ -194,7 +230,11 @@ angular.module('services').service(
 
           if (new RegExp(`^${type}:.+`).test(field)) {
             field = field.replace(new RegExp(`^(${type}:)`), '');
-            if (!this.Validator.isValidDomain(field, { canBeginWithUnderscore: true })) {
+            if (
+              !this.Validator.isValidDomain(field, {
+                canBeginWithUnderscore: true,
+              })
+            ) {
               // Format: "type:domain"
               isValid = false;
             }
@@ -204,18 +244,22 @@ angular.module('services').service(
 
           return isValid;
         },
-        isValidEXIST: field => this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('exists', field),
-        isValidINCLUDE: field => this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('include', field),
-        isValidREDIRECT: field => this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('redirect', field),
-        isValidEXP: field => this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('exp', field),
+        isValidEXIST: field =>
+          this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('exists', field),
+        isValidINCLUDE: field =>
+          this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('include', field),
+        isValidREDIRECT: field =>
+          this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('redirect', field),
+        isValidEXP: field =>
+          this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('exp', field),
       };
     }
 
     /**
-         * Validate TTL
-         * @param {string} ttl
-         * @returns {boolean}
-         */
+     * Validate TTL
+     * @param {string} ttl
+     * @returns {boolean}
+     */
     isValidTtl(_ttl) {
       let ttl = _ttl;
 
@@ -224,14 +268,14 @@ angular.module('services').service(
       }
 
       ttl = parseInt(ttl, 10);
-      return !isNaN(ttl) && (ttl === 0 || (ttl >= 60 && ttl <= 2147483647));
+      return _.isFinite(ttl) && (ttl === 0 || (ttl >= 60 && ttl <= 2147483647));
     }
 
     /**
-         * Validate Tlsa
-         * @param {string} target
-         * @returns {boolean}
-         */
+     * Validate Tlsa
+     * @param {string} target
+     * @returns {boolean}
+     */
     isValidTlsa(target) {
       const splitted = target.match(this.regex.TLSA);
 
@@ -261,10 +305,10 @@ angular.module('services').service(
     }
 
     /**
-         * Check if MX target is valid
-         * @param {string} value
-         * @returns {boolean}
-         */
+     * Check if MX target is valid
+     * @param {string} value
+     * @returns {boolean}
+     */
     isValidMXTarget(value) {
       if (/\s+\.$/.test(value)) {
         // prevent spaces before dot
@@ -276,25 +320,28 @@ angular.module('services').service(
     }
 
     /**
-         * Check if NAPTR replace field is valid
-         * @param {string} value
-         * @returns {boolean}
-         */
+     * Check if NAPTR replace field is valid
+     * @param {string} value
+     * @returns {boolean}
+     */
     isValidReplaceNaptr(value) {
       if (value === '.') {
         return true;
       } else if (this.regex.NAPTR_replace.test(value)) {
-        return this.Validator.isValidDomain(value.match(this.regex.NAPTR_replace)[1], { canBeginWithUnderscore: true });
+        return this.Validator.isValidDomain(
+          value.match(this.regex.NAPTR_replace)[1],
+          { canBeginWithUnderscore: true },
+        );
       }
       return this.Validator.isValidDomain(value);
     }
 
     /**
-         * Validate a target field
-         * @param {string} target
-         * @param {string} fieldType
-         * @returns {boolean}
-         */
+     * Validate a target field
+     * @param {string} target
+     * @param {string} fieldType
+     * @returns {boolean}
+     */
     isValidTarget(target, fieldType) {
       let isValid = true;
       let splitted;
@@ -311,9 +358,13 @@ angular.module('services').service(
             // prevent spaces before dot
             return false;
           } else if (/(.+)\.$/.test(target)) {
-            return this.Validator.isValidDomain(target.match(/(.+)\.$/)[1], { canBeginWithUnderscore: true });
+            return this.Validator.isValidDomain(target.match(/(.+)\.$/)[1], {
+              canBeginWithUnderscore: true,
+            });
           }
-          return this.Validator.isValidSubDomain(target, { canBeginWithUnderscore: true });
+          return this.Validator.isValidSubDomain(target, {
+            canBeginWithUnderscore: true,
+          });
         case 'TXT':
           return this.regex.TXT.test(target);
         case 'DKIM':
@@ -324,9 +375,13 @@ angular.module('services').service(
           }
           splitted = _.split(target.replace(/(;)$/, ''), ';');
           if (!_.isEmpty(splitted)) {
-            for (let i = 0; i < splitted.length; i++) {
+            for (let i = 0; i < splitted.length; i += 1) {
               const splittedVal = splitted[i].trim().split('=');
-              if (!this.regex[`${fieldType}_${splittedVal[0]}`] || !this.regex[`${fieldType}_${splittedVal[0]}`].test(splittedVal[1])) {
+
+              if (
+                !this.regex[`${fieldType}_${splittedVal[0]}`] ||
+                !this.regex[`${fieldType}_${splittedVal[0]}`].test(splittedVal[1])
+              ) {
                 isValid = false;
                 break;
               }
@@ -345,18 +400,18 @@ angular.module('services').service(
 
             if (
               splitted[1] < 0 ||
-                            splitted[1] > 90 || // d1
-                            (splitted[2] && (splitted[2] < 0 || splitted[2] > 59)) || // m1
-                            (splitted[3] && (splitted[3] < 0 || splitted[3] > 59.999)) || // s1
-                            splitted[5] < 0 ||
-                            splitted[5] > 180 || // d2
-                            (splitted[6] && (splitted[6] < 0 || splitted[6] > 59)) || // m2
-                            (splitted[7] && (splitted[7] < 0 || splitted[7] > 59.999)) || // s2
-                            splitted[9] < -100000 ||
-                            splitted[9] > 42849672.95 || // alt
-                            (splitted[10] && (splitted[10] < 0 || splitted[10] > 90000000)) || // size
-                            (splitted[11] && (splitted[11] < 0 || splitted[11] > 90000000)) || // hp
-                            (splitted[12] && (splitted[12] < 0 || splitted[12] > 90000000))
+              splitted[1] > 90 || // d1
+              (splitted[2] && (splitted[2] < 0 || splitted[2] > 59)) || // m1
+              (splitted[3] && (splitted[3] < 0 || splitted[3] > 59.999)) || // s1
+              splitted[5] < 0 ||
+              splitted[5] > 180 || // d2
+              (splitted[6] && (splitted[6] < 0 || splitted[6] > 59)) || // m2
+              (splitted[7] && (splitted[7] < 0 || splitted[7] > 59.999)) || // s2
+              splitted[9] < -100000 ||
+              splitted[9] > 42849672.95 || // alt
+              (splitted[10] && (splitted[10] < 0 || splitted[10] > 90000000)) || // size
+              (splitted[11] && (splitted[11] < 0 || splitted[11] > 90000000)) || // hp
+              (splitted[12] && (splitted[12] < 0 || splitted[12] > 90000000))
             ) {
               // vp
               isValid = false;
@@ -389,13 +444,21 @@ angular.module('services').service(
             splitted[2] = parseInt(splitted[2], 10);
 
             // order || pref || services
-            if (splitted[1] < 0 || splitted[1] > 65535 || (splitted[2] < 0 || splitted[2] > 65535) || !this.regex.NAPTR_service.test(splitted[4])) {
+            if (
+              splitted[1] < 0 ||
+              splitted[1] > 65535 ||
+              (splitted[2] < 0 || splitted[2] > 65535) ||
+              !this.regex.NAPTR_service.test(splitted[4])
+            ) {
               isValid = false;
               break;
             }
 
             // replace must be "."
-            if (splitted[5] && (!this.regex.NAPTR_regex.test(splitted[5]) || splitted[6] !== '.')) {
+            if (
+              splitted[5] &&
+              (!this.regex.NAPTR_regex.test(splitted[5]) || splitted[6] !== '.')
+            ) {
               isValid = false;
               break;
             }
@@ -419,23 +482,39 @@ angular.module('services').service(
             isValid = false;
             break;
           }
-          splitted = target.replace(/\s{2,}/g, ' ').replace(/^"(.*)"$/, '$1').trim().split(/\s/);
+          splitted = target
+            .replace(/\s{2,}/g, ' ')
+            .replace(/^"(.*)"$/, '$1')
+            .trim()
+            .split(/\s/);
 
           if (splitted && splitted.length > 2) {
             let found = false;
 
             // Begin at "i = 1" because exclude first field (v=spf1)
-            for (let i = 1; i < splitted.length; i++) {
-              /* jshint -W083 */
+            for (let i = 1; i < splitted.length; i += 1) {
               found = false;
 
               // Test "a", "mx", "ptr", "ip4", "ip6", "include", "exists", "redirect", "exp" fields
-              const fieldTypes = ['A', 'MX', 'PTR', 'IP4', 'IP6', 'INCLUDE', 'EXISTS', 'REDIRECT', 'EXP'];
+              const fieldTypes = [
+                'A',
+                'MX',
+                'PTR',
+                'IP4',
+                'IP6',
+                'INCLUDE',
+                'EXISTS',
+                'REDIRECT',
+                'EXP',
+              ];
 
-              for (let j = 0; j < fieldTypes.length; j++) {
+              for (let j = 0; j < fieldTypes.length; j += 1) {
                 const currentFieldType = fieldTypes[j];
 
-                if (!found && this.regex.SPF_sender[currentFieldType].test(splitted[i])) {
+                if (
+                  !found &&
+                  this.regex.SPF_sender[currentFieldType].test(splitted[i])
+                ) {
                   found = true;
 
                   if (!this.SPF[`isValid${currentFieldType}`](splitted[i])) {
@@ -464,7 +543,12 @@ angular.module('services').service(
             splitted[3] = parseInt(splitted[3], 10);
 
             // priority || weight || port
-            if (splitted[1] < 0 || splitted[1] > 65535 || (splitted[2] < 0 || splitted[2] > 65535) || (splitted[3] < 0 || splitted[3] > 65535)) {
+            if (
+              splitted[1] < 0 ||
+              splitted[1] > 65535 ||
+              (splitted[2] < 0 || splitted[2] > 65535) ||
+              (splitted[3] < 0 || splitted[3] > 65535)
+            ) {
               isValid = false;
               break;
             }
@@ -486,7 +570,10 @@ angular.module('services').service(
           splitted = target.match(this.regex.SSHFP);
           if (splitted && splitted.length > 1) {
             // (SHA-1 : length 40) || (SHA-256 : length 64)
-            if ((+splitted[2] === 1 && !this.regex.SSHFP_fp1.test(splitted[3])) || (+splitted[2] === 2 && !this.regex.SSHFP_fp2.test(splitted[3]))) {
+            if (
+              (+splitted[2] === 1 && !this.regex.SSHFP_fp1.test(splitted[3])) ||
+              (+splitted[2] === 2 && !this.regex.SSHFP_fp2.test(splitted[3]))
+            ) {
               isValid = false;
               break;
             }
@@ -505,11 +592,11 @@ angular.module('services').service(
     }
 
     /**
-         * Convert target host field unicode <-> punycode
-         * @param action
-         * @param fieldType
-         * @param target
-         */
+     * Convert target host field unicode <-> punycode
+     * @param action
+     * @param fieldType
+     * @param target
+     */
     getConvertedTarget(action, fieldType, target) {
       let splitted;
 
@@ -541,34 +628,37 @@ angular.module('services').service(
 
       if (splitted) {
         splitted.shift();
-        return splitted.join(' ').replace(/\s{2,}/g, ' ').trim();
+        return splitted
+          .join(' ')
+          .replace(/\s{2,}/g, ' ')
+          .trim();
       }
       return target;
     }
 
     /**
-         * Convert target to Unicode
-         * @param fieldType
-         * @param target
-         */
+     * Convert target to Unicode
+     * @param fieldType
+     * @param target
+     */
     convertTargetToUnicode(fieldType, target) {
       return this.getConvertedTarget('toUnicode', fieldType, target);
     }
 
     /**
-         * Convert target to ASCII
-         * @param fieldType
-         * @param target
-         */
+     * Convert target to ASCII
+     * @param fieldType
+     * @param target
+     */
     convertTargetToPunycode(fieldType, target) {
       return this.getConvertedTarget('toASCII', fieldType, target);
     }
 
     /**
-        * Transform DKIM target to expected value
-         * @param {object} target
-         * @returns {string}
-         */
+     * Transform DKIM target to expected value
+     * @param {object} target
+     * @returns {string}
+     */
     static transformDKIMTarget(target) {
       const hash = _.keys(_.pick(_.get(target, 'h'), val => !!val));
       const flags = _.keys(_.pick(_.get(target, 't'), val => !!val));
@@ -589,10 +679,10 @@ angular.module('services').service(
     }
 
     /**
-         * Transform DMARC target to expected value
-         * @param {object} target
-         * @returns {string}
-         */
+     * Transform DMARC target to expected value
+     * @param {object} target
+     * @returns {string}
+     */
     static transformDMARCTarget(target) {
       let value = 'v=DMARC1;'; // Version
       value += _.get(target, 'p', false) ? `p=${target.p};` : ''; // Domain Policy
@@ -605,10 +695,10 @@ angular.module('services').service(
     }
 
     /**
-         * Transform LOC target to expected value
-         * @param {object} target
-         * @returns {string}
-         */
+     * Transform LOC target to expected value
+     * @param {object} target
+     * @returns {string}
+     */
     static transformLOCTarget(target) {
       return [
         _.get(target, 'lat_deg', false) ? target.lat_deg.toString() : '',
@@ -619,7 +709,9 @@ angular.module('services').service(
         _.get(target, 'long_min', false) ? target.long_min.toString() : '',
         _.get(target, 'long_sec', false) ? target.long_sec.toString() : '',
         _.get(target, 'longitude', false) ? target.longitude.toString() : '',
-        _.get(target, 'altitude', false) ? `${target.altitude.toString()}m` : '',
+        _.get(target, 'altitude', false)
+          ? `${target.altitude.toString()}m`
+          : '',
         _.get(target, 'size', false) ? `${target.size.toString()}m` : '',
         _.get(target, 'hp', false) ? `${target.hp.toString()}m` : '',
         _.get(target, 'vp', false) ? `${target.vp.toString()}m` : '',
@@ -630,27 +722,14 @@ angular.module('services').service(
     }
 
     /**
-         * Transform MX target to expected value
-         * @param {object} target
-         * @returns {string}
-         */
+     * Transform MX target to expected value
+     * @param {object} target
+     * @returns {string}
+     */
     static transformMXTarget(target) {
-      return [target.priority != null ? target.priority.toString() : '', _.get(target, 'target', false) ? punycode.toASCII(target.target) : ''].join(' ').replace(/\s{2,}/g, ' ').trim();
-    }
-
-    /**
-         * Transform NAPTR target to expected value
-         * @param {object} target
-         * @returns {string}
-         */
-    static transformNAPTRTarget(target) {
       return [
-        _.get(target, 'order', false) ? target.order.toString() : '',
-        _.get(target, 'pref', false) ? target.pref.toString() : '',
-        `"${_.get(target, 'flag', false) ? target.flag.toUpperCase() : ''}"`,
-        `"${target.service || ''}"`,
-        `"${target.regex || ''}"`,
-        target.replace ? /\.$/.test(target.replace) ? punycode.toASCII(target.replace) : `${punycode.toASCII(target.replace)}.` : '.',
+        target.priority != null ? target.priority.toString() : '',
+        _.get(target, 'target', false) ? punycode.toASCII(target.target) : '',
       ]
         .join(' ')
         .replace(/\s{2,}/g, ' ')
@@ -658,29 +737,60 @@ angular.module('services').service(
     }
 
     /**
-         * Get the formatted string by field type
-         * @param {string} value
-         * @param {string} fieldType
-         */
+     * Transform NAPTR target to expected value
+     * @param {object} target
+     * @returns {string}
+     */
+    static transformNAPTRTarget(target) {
+      let lastItem = target.replace ? /\.$/.test(target.replace) : null;
+
+      if (lastItem === null) {
+        lastItem = punycode.toASCII(target.replace)
+          ? `${punycode.toASCII(target.replace)}.`
+          : '.';
+      }
+
+      return [
+        _.get(target, 'order', false) ? target.order.toString() : '',
+        _.get(target, 'pref', false) ? target.pref.toString() : '',
+        `"${_.get(target, 'flag', false) ? target.flag.toUpperCase() : ''}"`,
+        `"${target.service || ''}"`,
+        `"${target.regex || ''}"`,
+        lastItem,
+      ]
+        .join(' ')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
+    }
+
+    /**
+     * Get the formatted string by field type
+     * @param {string} value
+     * @param {string} fieldType
+     */
     static getSpfFieldFormatted(value, fieldType) {
       let fieldFormatted;
       switch (fieldType) {
         case 'a':
         case 'mx':
         case 'ptr':
-          fieldFormatted = new RegExp(`^${fieldType}[/:].+`).test(value) ? value : `${fieldType}:${value}`;
+          fieldFormatted = new RegExp(`^${fieldType}[/:].+`).test(value)
+            ? value
+            : `${fieldType}:${value}`;
           break;
         default:
-          fieldFormatted = new RegExp(`^${fieldType}:.+`).test(value) ? value : `${fieldType}:${value}`;
+          fieldFormatted = new RegExp(`^${fieldType}:.+`).test(value)
+            ? value
+            : `${fieldType}:${value}`;
       }
       return fieldFormatted;
     }
 
     /**
-         * Transform SPF target to expected value
-         * @param {object} target
-         * @returns {string}
-         */
+     * Transform SPF target to expected value
+     * @param {object} target
+     * @returns {string}
+     */
     static transformSPFTarget(target) {
       let value = 'v=spf1';
       value += _.get(target, 'aSender', false) ? ' a' : '';
@@ -689,9 +799,14 @@ angular.module('services').service(
 
       _.forEach(['a', 'mx', 'ptr', 'ip4', 'ip6', 'include'], (fieldType) => {
         if (_.get(target, fieldType, false)) {
-          const splitted = target[fieldType].replace(/\s{2,}/g, ' ').split(/\s/);
-          for (let i = 0; i < splitted.length; i++) {
-            const fieldFormatted = this.getSpfFieldFormatted(splitted[i], fieldType);
+          const splitted = target[fieldType]
+            .replace(/\s{2,}/g, ' ')
+            .split(/\s/);
+          for (let i = 0; i < splitted.length; i += 1) {
+            const fieldFormatted = this.getSpfFieldFormatted(
+              splitted[i],
+              fieldType,
+            );
             value += ` ${fieldFormatted}`;
           }
         }
@@ -703,16 +818,24 @@ angular.module('services').service(
     }
 
     /**
-         * Transform SRV target to expected value
-         * @param {object} target
-         * @returns {string}
-         */
+     * Transform SRV target to expected value
+     * @param {object} target
+     * @returns {string}
+     */
     static transformSRVTarget(target) {
+      let lastItem = target.target ? /\.$/.test(target.target) : null;
+
+      if (lastItem === null) {
+        lastItem = punycode.toASCII(target.target)
+          ? `${punycode.toASCII(target.target)}.`
+          : '.';
+      }
+
       return [
         target.priority != null ? target.priority.toString() : '',
         target.weight != null ? target.weight.toString() : '',
         target.port != null ? target.port.toString() : '',
-        target.target ? /\.$/.test(target.target) ? punycode.toASCII(target.target) : `${punycode.toASCII(target.target)}.` : '.',
+        lastItem,
       ]
         .join(' ')
         .replace(/\s{2,}/g, ' ')
@@ -720,58 +843,73 @@ angular.module('services').service(
     }
 
     /**
-         * Transform SSHFP target to expected value
-         * @param {object} target
-         * @returns {string}
-         */
+     * Transform SSHFP target to expected value
+     * @param {object} target
+     * @returns {string}
+     */
     static transformSSHFPTarget(target) {
-      return [target.algorithm || '', target.fptype || '', target.fp || ''].join(' ').replace(/\s{2,}/g, ' ').trim();
+      return [target.algorithm || '', target.fptype || '', target.fp || '']
+        .join(' ')
+        .replace(/\s{2,}/g, ' ')
+        .trim();
     }
 
     /**
-         * Transform TLSA target to expected value
-         * @param {object} target
-         * @returns {string}
-         */
+     * Transform TLSA target to expected value
+     * @param {object} target
+     * @returns {string}
+     */
     static transformTLSATarget(target) {
       if (
         _.has(target, 'usage') &&
-                parseInt(target.usage, 10) >= 0 &&
-                _.has(target, 'selector') &&
-                parseInt(target.selector, 10) >= 0 &&
-                _.has(target, 'matchingType') &&
-                parseInt(target.matchingType, 10) > 0 &&
-                _.has(target, 'certificateData') &&
-                target.certificateData !== ''
+        parseInt(target.usage, 10) >= 0 &&
+        _.has(target, 'selector') &&
+        parseInt(target.selector, 10) >= 0 &&
+        _.has(target, 'matchingType') &&
+        parseInt(target.matchingType, 10) > 0 &&
+        _.has(target, 'certificateData') &&
+        target.certificateData !== ''
       ) {
-        return [target.usage.toString(), target.selector.toString(), target.matchingType.toString(), target.certificateData.toString()].join(' ').trim();
+        return [
+          target.usage.toString(),
+          target.selector.toString(),
+          target.matchingType.toString(),
+          target.certificateData.toString(),
+        ]
+          .join(' ')
+          .trim();
       }
       return '';
     }
 
-
     /**
-         * Transform CAA target to expected value
-         * @param {object} target
-         * @returns {string}
-         */
+     * Transform CAA target to expected value
+     * @param {object} target
+     * @returns {string}
+     */
     static transformCAATarget(target) {
-      const isValidFlags = _.has(target, 'flags') && _.isFinite(target.flags) && (target.flags >= 0) && (target.flags < 256);
+      const isValidFlags =
+        _.has(target, 'flags') &&
+        _.isFinite(target.flags) &&
+        target.flags >= 0 &&
+        target.flags < 256;
 
       if (isValidFlags) {
-        const flags = target.flags;
+        const { flags } = target;
         const tag = _.get(target, 'tag', false) ? target.tag.toString() : '';
-        const caaTarget = _.get(target, 'target', false) ? target.target.toString() : '';
+        const caaTarget = _.get(target, 'target', false)
+          ? target.target.toString()
+          : '';
         return `${flags} ${tag} "${caaTarget}"`;
       }
       return '';
     }
 
     /**
-         * Convert host to unicode
-         * @param {string} host
-         * @returns {string}
-         */
+     * Convert host to unicode
+     * @param {string} host
+     * @returns {string}
+     */
     static convertHostToUnicode(host) {
       return punycode.toUnicode(host);
     }

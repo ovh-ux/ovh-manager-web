@@ -1,7 +1,15 @@
 angular.module('App').controller(
   'PrivateDatabaseOrderCtrl',
   class PrivateDatabaseOrderCtrl {
-    constructor(Alerter, $location, Hosting, PrivateDatabase, $q, $scope, User) {
+    constructor(
+      Alerter,
+      $location,
+      Hosting,
+      PrivateDatabase,
+      $q,
+      $scope,
+      User,
+    ) {
       this.alerter = Alerter;
       this.$location = $location;
       this.hostingService = Hosting;
@@ -81,18 +89,30 @@ angular.module('App').controller(
       this.loading.prices = true;
 
       this.$q
-        .all(_.map(durations, duration => this.privateDatabaseService.orderPrice(this.selectedOrder.config.version, this.selectedOrder.config.ramSize, duration).then((details) => {
-          this.durations.details[duration] = details;
-          return details;
-        })))
+        .all(_.map(durations, duration =>
+          this.privateDatabaseService
+            .orderPrice(
+              this.selectedOrder.config.version,
+              this.selectedOrder.config.ramSize,
+              duration,
+            )
+            .then((details) => {
+              this.durations.details[duration] = details;
+              return details;
+            })))
         .then(() => {
           if (durations && durations.length === 1) {
-            this.model.duration = durations[0];
+            [this.model.duration] = durations;
           }
+
           this.loading.prices = false;
         })
         .catch((data) => {
-          this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step2_price_fail'), data, this.$scope.alerts.order);
+          this.alerter.alertFromSWS(
+            this.$scope.tr('privateDatabase_order_step2_price_fail'),
+            data,
+            this.$scope.alerts.order,
+          );
           this.loading.durations = false;
         });
     }
@@ -104,13 +124,22 @@ angular.module('App').controller(
           hostings: this.hostingService.getHostings(),
         })
         .then((result) => {
-          this.list.versions = result.models['hosting.PrivateDatabase.OrderableVersionEnum'].enum;
-          this.list.ramSize = result.models['hosting.PrivateDatabase.AvailableRamSizeEnum'].enum;
-          this.list.datacenters = result.models['hosting.PrivateDatabase.DatacenterEnum'].enum;
+          this.list.versions =
+            result.models['hosting.PrivateDatabase.OrderableVersionEnum'].enum;
+          this.list.ramSize =
+            result.models['hosting.PrivateDatabase.AvailableRamSizeEnum'].enum;
+          this.list.datacenters =
+            result.models['hosting.PrivateDatabase.DatacenterEnum'].enum;
           this.hostings = result.hostings;
         })
-        .catch(() => this.alerter.error(this.$scope.tr('privateDatabase_order_step1_error'), this.$scope.alerts.order))
-        .finally(() => (this.loading.init = false));
+        .catch(() =>
+          this.alerter.error(
+            this.$scope.tr('privateDatabase_order_step1_error'),
+            this.$scope.alerts.order,
+          ))
+        .finally(() => {
+          this.loading.init = false;
+        });
     }
 
     onHostingChanged() {
@@ -121,8 +150,14 @@ angular.module('App').controller(
       }
       this.hostingService
         .getHosting(this.selectedHosting.value)
-        .then(hosting => (this.selectedOrder.config.datacenter = hosting.datacenter))
-        .catch(() => this.alerter.error(this.$scope.tr('privateDatabase_order_step1_error'), this.$scope.alerts.order));
+        .then((hosting) => {
+          this.selectedOrder.config.datacenter = hosting.datacenter;
+        })
+        .catch(() =>
+          this.alerter.error(
+            this.$scope.tr('privateDatabase_order_step1_error'),
+            this.$scope.alerts.order,
+          ));
     }
 
     getDurations() {
@@ -135,26 +170,45 @@ angular.module('App').controller(
       this.loading.durations = true;
 
       return this.privateDatabaseService
-        .orderDuration(this.selectedOrder.config.version, this.selectedOrder.config.ramSize)
+        .orderDuration(
+          this.selectedOrder.config.version,
+          this.selectedOrder.config.ramSize,
+        )
         .then((durations) => {
           this.durations.available = durations;
           this.loadPrices(durations);
         })
-        .catch(data => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step2_duration_fail'), data, this.$scope.alerts.durations))
-        .finally(() => (this.loading.durations = false));
+        .catch(data =>
+          this.alerter.alertFromSWS(
+            this.$scope.tr('privateDatabase_order_step2_duration_fail'),
+            data,
+            this.$scope.alerts.durations,
+          ))
+        .finally(() => {
+          this.loading.durations = false;
+        });
     }
 
     generateBc() {
       this.loading.bc = true;
 
       return this.privateDatabaseService
-        .orderPrivateDatabase(this.selectedOrder.config.version, this.selectedOrder.config.ramSize, this.selectedOrder.duration, this.selectedOrder.config.datacenter)
+        .orderPrivateDatabase(
+          this.selectedOrder.config.version,
+          this.selectedOrder.config.ramSize,
+          this.selectedOrder.duration,
+          this.selectedOrder.config.datacenter,
+        )
         .then((details) => {
           this.order = details;
           this.loading.bc = false;
         })
         .catch((data) => {
-          this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step3_fail'), data, this.$scope.alerts.order);
+          this.alerter.alertFromSWS(
+            this.$scope.tr('privateDatabase_order_step3_fail'),
+            data,
+            this.$scope.alerts.order,
+          );
           this.loading.durations = false;
         });
     }

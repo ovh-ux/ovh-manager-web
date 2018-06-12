@@ -1,7 +1,14 @@
 angular.module('App').controller(
   'HostingFreedomTabCtrl',
   class HostingFreedomTabCtrl {
-    constructor($scope, $rootScope, $location, $stateParams, Alerter, HostingFreedom) {
+    constructor(
+      $scope,
+      $rootScope,
+      $location,
+      $stateParams,
+      Alerter,
+      HostingFreedom,
+    ) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$location = $location;
@@ -23,8 +30,13 @@ angular.module('App').controller(
       this.HostingFreedom.getModels()
         .then((model) => {
           this.statusEnum = model.models['hosting.web.freedom.StatusEnum'].enum;
-        }).catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_FREEDOM_error'), err, this.$scope.alerts.main);
+        })
+        .catch((err) => {
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_FREEDOM_error'),
+            err,
+            this.$scope.alerts.main,
+          );
         });
     }
 
@@ -44,12 +56,21 @@ angular.module('App').controller(
         params = { status: this.filter.status };
       }
 
-      this.HostingFreedom.getFreedoms(this.$stateParams.productId, { params, forceRefresh })
+      this.HostingFreedom.getFreedoms(this.$stateParams.productId, {
+        params,
+        forceRefresh,
+      })
         .then((ids) => {
           this.freedomIds = ids;
-        }).catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_FREEDOM_error'), err, this.$scope.alerts.main);
-        }).finally(() => {
+        })
+        .catch((err) => {
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_FREEDOM_error'),
+            err,
+            this.$scope.alerts.main,
+          );
+        })
+        .finally(() => {
           if (_.isEmpty(this.freedomIds)) {
             this.loading = false;
           }
@@ -57,7 +78,9 @@ angular.module('App').controller(
     }
 
     transformItem(item) {
-      return this.HostingFreedom.getFreedom(this.$stateParams.productId, { domain: item });
+      return this.HostingFreedom.getFreedom(this.$stateParams.productId, {
+        domain: item,
+      });
     }
 
     onTransformItemDone() {

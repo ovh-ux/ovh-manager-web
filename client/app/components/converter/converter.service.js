@@ -1,6 +1,6 @@
-angular
-  .module('services')
-  .service('ConverterService', class ConverterService {
+angular.module('services').service(
+  'ConverterService',
+  class ConverterService {
     constructor(translator) {
       this.translator = translator;
 
@@ -10,39 +10,69 @@ angular
         {
           val: 1,
           unit: 'B',
-        }, {
+        },
+        {
           val: this.base,
           unit: 'KB',
-        }, {
+        },
+        {
           val: this.base * this.base,
           unit: 'MB',
-        }, {
+        },
+        {
           val: this.base * this.base * this.base,
           unit: 'GB',
-        }, {
+        },
+        {
           val: this.base * this.base * this.base * this.base,
           unit: 'TB',
-        }, {
+        },
+        {
           val: this.base * this.base * this.base * this.base * this.base,
           unit: 'PB',
-        }, {
-          val: this.base * this.base * this.base * this.base * this.base * this.base,
+        },
+        {
+          val:
+            this.base *
+            this.base *
+            this.base *
+            this.base *
+            this.base *
+            this.base,
           unit: 'EB',
-        }, {
-          val: this.base * this.base * this.base * this.base * this.base * this.base * this.base,
+        },
+        {
+          val:
+            this.base *
+            this.base *
+            this.base *
+            this.base *
+            this.base *
+            this.base *
+            this.base,
           unit: 'ZB',
-        }, {
-          val: this.base * this.base * this.base * this.base * this.base * this.base * this.base * this.base,
+        },
+        {
+          val:
+            this.base *
+            this.base *
+            this.base *
+            this.base *
+            this.base *
+            this.base *
+            this.base *
+            this.base,
           unit: 'YB',
-        }];
+        },
+      ];
     }
 
     /**
-         * Convert a number into octet
-         * @param  {number} nb   Number to convert
-         * @param  {string} unit Unit of the number
-         * @return {number}      the number converted
-         */
+     * Convert a number into octet
+     * @param  {number} nb   Number to convert
+     * @param  {string} unit Unit of the number
+     * @return {number}      the number converted
+     */
     convertToOctet(nb, unit) {
       if (!_.isNumber(Number(nb)) || !_.isString(unit)) {
         throw new Error('Wrong parameter(s)');
@@ -58,14 +88,20 @@ angular
     }
 
     /**
-         * Convert a number to its best unit => Now use (filesize)[https://github.com/avoidwork/filesize.js]
-         * @param  {number} nb                Number to convert
-         * @param  {string} unit              Unit of the number to convert
-         * @param  {number} [decimalWanted=0] Number of decimal wanted
-         * @return {Object}                   An object composed with the number converted and its unit
-         */
+     * Convert a number to its best unit => Now use (filesize)[https://github.com/avoidwork/filesize.js]
+     * @param  {number} nb                Number to convert
+     * @param  {string} unit              Unit of the number to convert
+     * @param  {number} [decimalWanted=0] Number of decimal wanted
+     * @return {Object}                   An object composed with the number converted and its unit
+     */
     convertBytesSize(nb, unit, decimalWanted = 0) {
-      if (!_.isNumber(Number(nb)) || !_.isString(unit) || !_.isNumber(decimalWanted) || nb <= 0 || decimalWanted < 0) {
+      if (
+        !_.isNumber(Number(nb)) ||
+        !_.isString(unit) ||
+        !_.isNumber(decimalWanted) ||
+        nb <= 0 ||
+        decimalWanted < 0
+      ) {
         throw new Error('Wrong parameter(s)');
       }
 
@@ -87,4 +123,5 @@ angular
         unit: bestUnit,
       };
     }
-  });
+  },
+);

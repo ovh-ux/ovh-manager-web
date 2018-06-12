@@ -15,11 +15,9 @@ angular.module('controllers').controller(
 
     getTasks() {
       if (/^\/configuration\/zone.+/.test(this.$state.current.url)) {
-        return this.Domain
-          .getZoneDnsTasks(this.$stateParams.productId)
-          .then((tasks) => {
-            this.tasks = this.constructor.getTaskStruct(tasks, true);
-          });
+        return this.Domain.getZoneDnsTasks(this.$stateParams.productId).then((tasks) => {
+          this.tasks = this.constructor.getTaskStruct(tasks, true);
+        });
       }
       return this.$q
         .all({
@@ -27,7 +25,9 @@ angular.module('controllers').controller(
           tasks: this.Domain.getTasks(this.$stateParams.productId),
         })
         .then(({ zoneDnsTasks, tasks }) => {
-          this.tasks = this.constructor.getTaskStruct(zoneDnsTasks, true).concat(this.constructor.getTaskStruct(tasks, false));
+          this.tasks = this.constructor
+            .getTaskStruct(zoneDnsTasks, true)
+            .concat(this.constructor.getTaskStruct(tasks, false));
         });
     }
 
@@ -37,11 +37,15 @@ angular.module('controllers').controller(
 
     transformItem(item) {
       if (item.zone) {
-        return this.Domain.getZoneDnsTask(this.$stateParams.productId, item.id)
-          .then((result) => {
-            result.status = result.status.toUpperCase();
-            return result;
-          });
+        return this.Domain.getZoneDnsTask(
+          this.$stateParams.productId,
+          item.id,
+        ).then((originalResult) => {
+          const result = _(originalResult).clone();
+
+          result.status = result.status.toUpperCase();
+          return result;
+        });
       }
       return this.Domain.getTask(this.$stateParams.productId, item.id);
     }

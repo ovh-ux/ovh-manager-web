@@ -27,7 +27,11 @@ angular.module('App').controller(
     }
 
     loadPaginated({ pageSize, offset }) {
-      return this.Hosting.getTasksList(this.$stateParams.productId, pageSize, offset - 1)
+      return this.Hosting.getTasksList(
+        this.$stateParams.productId,
+        pageSize,
+        offset - 1,
+      )
         .then((tasks) => {
           this.tasksList = tasks;
           return {
@@ -38,7 +42,11 @@ angular.module('App').controller(
           };
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_TASKS_error_message'), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_TASKS_error_message'),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
         });
     }
 

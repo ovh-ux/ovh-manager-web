@@ -1,6 +1,6 @@
 angular.module('directives').directive('v6UiSwitch', () => {
-  const V6UiSwitchState = function (options) {
-    this._data = {};
+  const V6UiSwitchState = function v6UiSwitchState(options) {
+    this.data = {};
 
     if (options) {
       if (typeof options === 'object') {
@@ -26,7 +26,7 @@ angular.module('directives').directive('v6UiSwitch', () => {
     }
   };
   Object.defineProperties(V6UiSwitchState.prototype, {
-    _data: {
+    data: {
       enumerable: false,
       configurable: false,
       writable: true,
@@ -36,43 +36,43 @@ angular.module('directives').directive('v6UiSwitch', () => {
       enumerable: true,
       configurable: false,
       get() {
-        return this._data.checked;
+        return this.data.checked;
       },
       set(val) {
-        this._data.checked = !!val;
-        this._data.partial = false;
+        this.data.checked = !!val;
+        this.data.partial = false;
       },
     },
     disabled: {
       enumerable: true,
       configurable: false,
       get() {
-        return this._data.disabled;
+        return this.data.disabled;
       },
       set(val) {
-        this._data.disabled = !!val;
+        this.data.disabled = !!val;
       },
     },
     pending: {
       enumerable: true,
       configurable: false,
       get() {
-        return this._data.pending;
+        return this.data.pending;
       },
       set(val) {
-        this._data.pending = !!val;
+        this.data.pending = !!val;
       },
     },
     partial: {
       enumerable: true,
       configurable: false,
       get() {
-        return this._data.partial;
+        return this.data.partial;
       },
       set(val) {
-        this._data.partial = !!val;
-        if (this._data.partial) {
-          this._data.checked = false;
+        this.data.partial = !!val;
+        if (this.data.partial) {
+          this.data.checked = false;
         }
       },
     },
@@ -100,7 +100,10 @@ angular.module('directives').directive('v6UiSwitch', () => {
       return;
     }
 
-    if (typeof Switch === 'object' && Object.getPrototypeOf(Switch) === V6UiSwitchState.prototype) {
+    if (
+      typeof Switch === 'object' &&
+      Object.getPrototypeOf(Switch) === V6UiSwitchState.prototype
+    ) {
       return;
     }
 
@@ -115,7 +118,9 @@ angular.module('directives').directive('v6UiSwitch', () => {
     scope: false,
     link,
     template(element, attrs) {
-      let html = `<button type="button" class="v6us-switch${attrs.class ? ` ${attrs.class}` : ''}"`;
+      let html = `<button type="button" class="v6us-switch${
+        attrs.class ? ` ${attrs.class}` : ''
+      }"`;
 
       if (attrs.ngModel) {
         html += ` data-ng-click="${attrs.ngModel}.switch()`;
@@ -135,15 +140,23 @@ angular.module('directives').directive('v6UiSwitch', () => {
         }
       }
 
-      html += ` data-ng-class="{ checked:${attrs.ngModel}.checked, disabled:${attrs.ngModel}.disabled, pending:${attrs.ngModel}.pending, partial:${attrs.ngModel}.partial}"`;
+      html += ` data-ng-class="{ checked:${attrs.ngModel}.checked, disabled:${
+        attrs.ngModel
+      }.disabled, pending:${attrs.ngModel}.pending, partial:${
+        attrs.ngModel
+      }.partial}"`;
       html += '>';
       html += '<small></small>';
 
       html += '<span class="v6us-switch-text">';
-      html += '<span class="v6us-on"><span class="oui-icon oui-icon-success"></span></span>';
-      html += '<span class="v6us-off"><span class="oui-icon oui-icon-error"></span></span>';
-      html += '<span class="v6us-partial"><span class="oui-icon oui-icon-remove"></span></span>';
-      html += '<span class="v6us-pending"><span class="fa fa-circle-o-notch fa-spin"></span></span>';
+      html +=
+        '<span class="v6us-on"><span class="oui-icon oui-icon-success"></span></span>';
+      html +=
+        '<span class="v6us-off"><span class="oui-icon oui-icon-error"></span></span>';
+      html +=
+        '<span class="v6us-partial"><span class="oui-icon oui-icon-remove"></span></span>';
+      html +=
+        '<span class="v6us-pending"><span class="fa fa-circle-o-notch fa-spin"></span></span>';
       html += '</button>';
 
       return html;

@@ -18,8 +18,17 @@ angular.module('controllers').controller(
     deleteDump() {
       this.loading = true;
       return this.privateDatabaseService
-        .deleteDumpBDD(this.$stateParams.productId, this.bdd.databaseName, this.dump.id)
-        .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_tabs_dumps_delete_error'), err, this.$scope.alerts.main))
+        .deleteDumpBDD(
+          this.$stateParams.productId,
+          this.bdd.databaseName,
+          this.dump.id,
+        )
+        .catch(err =>
+          this.alerter.alertFromSWS(
+            this.$scope.tr('privateDatabase_tabs_dumps_delete_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           this.$scope.resetAction();
         });

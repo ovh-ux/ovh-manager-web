@@ -1,6 +1,6 @@
-angular
-  .module('App')
-  .controller('controllers.Hosting.Envvars.delete', class HostingEnvvarsDeleteCtrl {
+angular.module('App').controller(
+  'controllers.Hosting.Envvars.delete',
+  class HostingEnvvarsDeleteCtrl {
     constructor($scope, $stateParams, Alerter, HostingEnvvars, translator) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -17,15 +17,26 @@ angular
     }
 
     delete() {
-      return this.HostingEnvvars.delete(this.$stateParams.productId, this.entryToDelete.key)
+      return this.HostingEnvvars.delete(
+        this.$stateParams.productId,
+        this.entryToDelete.key,
+      )
         .then(() => {
-          this.Alerter.success(this.translator.tr('hosting_tab_ENVVARS_delete_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.translator.tr('hosting_tab_ENVVARS_delete_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.Alerter.error(this.translator.tr('hosting_tab_ENVVARS_delete_error') + err.message, this.$scope.alerts.main);
+          this.Alerter.error(
+            this.translator.tr('hosting_tab_ENVVARS_delete_error') +
+              err.message,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.$scope.resetAction();
         });
     }
-  });
+  },
+);

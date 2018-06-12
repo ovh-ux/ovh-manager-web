@@ -1,6 +1,6 @@
-angular
-  .module('services')
-  .service('hostingSSLCertificate', class HostingSSLCertificate {
+angular.module('services').service(
+  'hostingSSLCertificate',
+  class HostingSSLCertificate {
     constructor($rootScope, hostingSSLCertificateType, OvhApiHostingWebSsl) {
       this.$rootScope = $rootScope;
 
@@ -9,11 +9,15 @@ angular
     }
 
     creatingCertificate(serviceName, certificate, key, chain) {
-      return this.OvhApiHostingWebSsl.v6().post({ serviceName }, { certificate, key, chain }).$promise;
+      return this.OvhApiHostingWebSsl.v6().post(
+        { serviceName },
+        { certificate, key, chain },
+      ).$promise;
     }
 
     retrievingLinkedDomains(serviceName) {
-      return this.OvhApiHostingWebSsl.v6().queryDomains({ serviceName }).$promise;
+      return this.OvhApiHostingWebSsl.v6().queryDomains({ serviceName })
+        .$promise;
     }
 
     retrievingCertificate(serviceName) {
@@ -25,7 +29,8 @@ angular
     }
 
     regeneratingCertificate(serviceName) {
-      return this.OvhApiHostingWebSsl.v6().regenerate({ serviceName }, {}).$promise;
+      return this.OvhApiHostingWebSsl.v6().regenerate({ serviceName }, {})
+        .$promise;
     }
 
     deletingCertificate(serviceName) {
@@ -33,15 +38,16 @@ angular
     }
 
     /**
-         * Tests if a variable is a valid certificate
-         *
-         * @static
-         * @param {Certificate} certificate
-         * @throws  {TypeError} If the parameter is not a valid certificate
-         */
+     * Tests if a variable is a valid certificate
+     *
+     * @static
+     * @param {Certificate} certificate
+     * @throws  {TypeError} If the parameter is not a valid certificate
+     */
     static testIsCertificate(certificate) {
       const tests = [
-        _(certificate).chain()
+        _(certificate)
+          .chain()
           .get('status')
           .isString()
           .value(),
@@ -53,9 +59,9 @@ angular
     }
 
     /**
-         * @static
-         * @returns {object}    All the status a certificate can be in
-         */
+     * @static
+     * @returns {object}    All the status a certificate can be in
+     */
     static getStatuses() {
       return {
         CREATED: {
@@ -77,22 +83,25 @@ angular
     }
 
     /**
-         * Tests if a certificate can be handled/manipulated
-         *
-         * @static
-         * @param   {Certificate}       certificate
-         * @returns {boolean}   True if the certificate can be handled/manipulated
-         */
+     * Tests if a certificate can be handled/manipulated
+     *
+     * @static
+     * @param   {Certificate}       certificate
+     * @returns {boolean}   True if the certificate can be handled/manipulated
+     */
     static testCanBeHandled(certificate) {
       HostingSSLCertificate.testIsCertificate(certificate);
 
-      return HostingSSLCertificate.getStatuses()[certificate.status.toUpperCase()].canBeHandled;
+      return HostingSSLCertificate.getStatuses()[
+        certificate.status.toUpperCase()
+      ].canBeHandled;
     }
 
     /**
-         * Asks the controller to reload the status of the certificate to display
-         */
+     * Asks the controller to reload the status of the certificate to display
+     */
     reload() {
       this.$rootScope.$broadcast('hosting.ssl.reload');
     }
-  });
+  },
+);

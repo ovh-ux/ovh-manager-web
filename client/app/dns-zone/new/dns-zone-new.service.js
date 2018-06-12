@@ -2,11 +2,11 @@ angular.module('services').service(
   'newDnsZone',
   class newDnsZone {
     /**
-         * Constructor
-         * @param $http
-         * @param $q
-         * @param Products
-         */
+     * Constructor
+     * @param $http
+     * @param $q
+     * @param Products
+     */
     constructor($http, $q, Products) {
       this.$http = $http;
       this.$q = $q;
@@ -16,9 +16,9 @@ angular.module('services').service(
     }
 
     /**
-         * Get zoneName Validation Response
-         * @param zoneName
-         */
+     * Get zoneName Validation Response
+     * @param zoneName
+     */
     getZoneNameValidation(zoneName) {
       return this.$http
         .get(`${this.swsProxypassOrderPath}/new`, {
@@ -31,10 +31,10 @@ angular.module('services').service(
     }
 
     /**
-         * Order a new ZoneName (DNS)
-         * @param zoneName
-         * @param minimized
-         */
+     * Order a new ZoneName (DNS)
+     * @param zoneName
+     * @param minimized
+     */
     orderZoneName(zoneName, minimized) {
       return this.$http
         .post(`${this.swsProxypassOrderPath}/new`, {

@@ -19,14 +19,20 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'domain';
+          $rootScope.currentSectionInformation = 'domain'; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['domain', 'email', 'hosting', 'domainsOperations']).then(() => translator)],
+      translator: [
+        'translator',
+        translator =>
+          translator
+            .load(['domain', 'email', 'hosting', 'domainsOperations'])
+            .then(() => translator),
+      ],
     },
   });
 
@@ -45,14 +51,20 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'all_dom';
+          $rootScope.currentSectionInformation = 'all_dom'; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['domain', 'email', 'hosting', 'domainsOperations']).then(() => translator)],
+      translator: [
+        'translator',
+        translator =>
+          translator
+            .load(['domain', 'email', 'hosting', 'domainsOperations'])
+            .then(() => translator),
+      ],
     },
   });
 });

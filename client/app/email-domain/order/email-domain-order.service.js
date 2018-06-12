@@ -12,18 +12,21 @@ angular.module('services').service(
     }
 
     getOrderModels(domain) {
-      return this.OvhHttp
-        .get('/order.json', {
-          rootPath: 'apiv6',
-          cache: 'MX_PLAN_MODELS',
-        })
-        .then((response) => {
-          if (response && response.models) {
-            const promises = _.map(response.models['email.domain.OfferEnum'].enum, offer => this.orderDuration(domain, offer).then(duration => this.orderPrice(domain, offer, duration)));
-            return this.$q.allSettled(promises);
-          }
-          return [];
-        });
+      return this.OvhHttp.get('/order.json', {
+        rootPath: 'apiv6',
+        cache: 'MX_PLAN_MODELS',
+      }).then((response) => {
+        if (response && response.models) {
+          const promises = _.map(
+            response.models['email.domain.OfferEnum'].enum,
+            offer =>
+              this.orderDuration(domain, offer).then(duration =>
+                this.orderPrice(domain, offer, duration)),
+          );
+          return this.$q.allSettled(promises);
+        }
+        return [];
+      });
     }
 
     orderDuration(domain, offer) {
@@ -37,14 +40,13 @@ angular.module('services').service(
     }
 
     orderPrice(domain, offer, duration) {
-      return this.OvhHttp
-        .get(`/order/email/domain/new/${duration}`, {
-          rootPath: 'apiv6',
-          params: {
-            domain,
-            offer,
-          },
-        })
+      return this.OvhHttp.get(`/order/email/domain/new/${duration}`, {
+        rootPath: 'apiv6',
+        params: {
+          domain,
+          offer,
+        },
+      })
         .then(response => _.assign(response, { duration, offer }))
         .catch(err => this.$q.reject(err));
     }

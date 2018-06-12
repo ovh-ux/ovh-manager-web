@@ -17,7 +17,7 @@ angular.module('App').controller(
 
       this.Hosting.getHostings().then((data) => {
         if (data.length === 1) {
-          this.selected.hosting = data[0];
+          [this.selected.hosting] = data;
           this.redirect();
         } else {
           this.hostings = data;
@@ -27,7 +27,10 @@ angular.module('App').controller(
     }
 
     goBack() {
-      this.$scope.setAction('subdomain/add/domain-subdomain-add', { domain: this.$scope.currentActionData.domain, subdomain: this.$scope.currentActionData.subdomain || '' });
+      this.$scope.setAction('subdomain/add/domain-subdomain-add', {
+        domain: this.$scope.currentActionData.domain,
+        subdomain: this.$scope.currentActionData.subdomain || '',
+      });
     }
 
     redirect() {

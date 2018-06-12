@@ -1,7 +1,15 @@
-angular
-  .module('App')
-  .controller('HostingEditOvhConfig', class HostingEditOvhConfig {
-    constructor($scope, $q, $stateParams, Alerter, Hosting, HostingOvhConfig, User) {
+angular.module('App').controller(
+  'HostingEditOvhConfig',
+  class HostingEditOvhConfig {
+    constructor(
+      $scope,
+      $q,
+      $stateParams,
+      Alerter,
+      Hosting,
+      HostingOvhConfig,
+      User,
+    ) {
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -44,25 +52,25 @@ angular
       const queue = [];
       this.loading = true;
 
-      this.User.getUrlOf('guides')
-        .then((guides) => {
-          this.phpAppendicesGuide = guides.phpAppendices;
-          this.hostingPhpGuide = guides.hostingPhpConfiguration;
-        });
+      this.User.getUrlOf('guides').then((guides) => {
+        this.phpAppendicesGuide = guides.phpAppendices;
+        this.hostingPhpGuide = guides.hostingPhpConfiguration;
+      });
 
-      queue.push(this.hostingService.getModels()
-        .then((apiStruct) => {
-          this.apiStruct = {
-            models: apiStruct.models,
-          };
-        }));
+      queue.push(this.hostingService.getModels().then((apiStruct) => {
+        this.apiStruct = {
+          models: apiStruct.models,
+        };
+      }));
 
-      queue.push(this.hostingOvhConfigService.getHistoric(this.$stateParams.productId)
+      queue.push(this.hostingOvhConfigService
+        .getHistoric(this.$stateParams.productId)
         .then((configs) => {
           this.oldConfigs = configs;
         }));
 
-      queue.push(this.hostingOvhConfigService.getCurrent(this.$stateParams.productId)
+      queue.push(this.hostingOvhConfigService
+        .getCurrent(this.$stateParams.productId)
         .then((conf) => {
           this.currentConfig = conf;
         }));
@@ -87,10 +95,11 @@ angular
     setProcess() {
       if (this.toggle.process === 'rollback') {
         this.toggle.isRollbackProcess = true;
-        this.selectedConfig = this.oldConfigs[0];
+        [this.selectedConfig] = this.oldConfigs;
       } else {
         this.selectedConfig = this.currentConfig;
       }
+
       this.changeToConfig(this.selectedConfig);
     }
 
@@ -118,7 +127,14 @@ angular
     checkCohesion() {
       if (this.toggle.isRollbackProcess) {
         this.toggle.isConfigCanBeSaved = true;
-      } else if (_.indexOf(this.apiStruct.models['hosting.web.ovhConfig.AvailableEngineVersionEnum'].enum, this.model.engineVersion) !== -1) {
+      } else if (
+        _.indexOf(
+          this.apiStruct.models[
+            'hosting.web.ovhConfig.AvailableEngineVersionEnum'
+          ].enum,
+          this.model.engineVersion,
+        ) !== -1
+      ) {
         this.toggle.isPhpVersionAvailable = true;
         this.toggle.isConfigCanBeSaved = this.toggle.isConfigIsEdited;
       } else {
@@ -131,9 +147,13 @@ angular
       if (this.toggle.isConfigIsEdited) {
         const model = angular.copy(this.model);
         model.id = this.currentConfig.id;
-        return this.hostingOvhConfigService.changeConfiguration(this.$stateParams.productId, model)
+        return this.hostingOvhConfigService
+          .changeConfiguration(this.$stateParams.productId, model)
           .then(() => {
-            this.alerter.success(this.$scope.tr('hosting_action_config_edit_success'), this.$scope.alerts.main);
+            this.alerter.success(
+              this.$scope.tr('hosting_action_config_edit_success'),
+              this.$scope.alerts.main,
+            );
             this.$scope.$emit(this.hostingOvhConfigService.events.ovhConfigNeedRefresh);
             this.$scope.resetAction();
           })
@@ -141,9 +161,17 @@ angular
             this.displayError(err);
           });
       }
-      return this.hostingOvhConfigService.rollbackConfig(this.$stateParams.productId, this.currentConfig.id, this.selectedConfig.id)
+      return this.hostingOvhConfigService
+        .rollbackConfig(
+          this.$stateParams.productId,
+          this.currentConfig.id,
+          this.selectedConfig.id,
+        )
         .then(() => {
-          this.alerter.success(this.$scope.tr('hosting_action_config_rollback_success'), this.$scope.alerts.main);
+          this.alerter.success(
+            this.$scope.tr('hosting_action_config_rollback_success'),
+            this.$scope.alerts.main,
+          );
           this.$scope.$emit(this.hostingOvhConfigService.events.ovhConfigNeedRefresh);
           this.$scope.resetAction();
         })
@@ -163,4 +191,5 @@ angular
       this.errorMsg = _.get(err, 'message');
       this.toggle.isErrorNotDefined = !this.errorMsg;
     }
-  });
+  },
+);

@@ -2,12 +2,12 @@ angular.module('App').controller(
   'MailingListsCreateSubscriberCtrl',
   class MailingListsCreateSubscriberCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param Alerter
-         * @param MailingLists
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param Alerter
+     * @param MailingLists
+     */
     constructor($scope, $stateParams, Alerter, MailingLists) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -33,18 +33,19 @@ angular.module('App').controller(
       this.loading = true;
       const subscribersToAdd = _.uniq(this.selection);
 
-      return this.MailingLists
-        .addSubscribers(this.$stateParams.productId, {
-          mailingList: this.mailingList.name,
-          users: subscribersToAdd,
-          type: 'subscriber',
-        })
+      return this.MailingLists.addSubscribers(this.$stateParams.productId, {
+        mailingList: this.mailingList.name,
+        users: subscribersToAdd,
+        type: 'subscriber',
+      })
         .then((tasks) => {
           const task = tasks.pop();
 
           this.Alerter.alertFromSWSBatchResult(
             {
-              OK: this.$scope.tr(subscribersToAdd.length === 1 ? 'mailing_list_tab_modal_create_subscriber_success' : 'mailing_list_tab_modal_create_subscribers_success'),
+              OK: this.$scope.tr(subscribersToAdd.length === 1
+                ? 'mailing_list_tab_modal_create_subscriber_success'
+                : 'mailing_list_tab_modal_create_subscribers_success'),
               PARTIAL: this.$scope.tr('mailing_list_tab_modal_create_subscribers_error'),
               ERROR: this.$scope.tr('mailing_list_tab_modal_create_subscribers_error'),
             },
@@ -60,7 +61,9 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr(subscribersToAdd.length === 1 ? 'mailing_list_tab_modal_create_subscriber_error' : 'mailing_list_tab_modal_create_subscribers_error'),
+            this.$scope.tr(subscribersToAdd.length === 1
+              ? 'mailing_list_tab_modal_create_subscriber_error'
+              : 'mailing_list_tab_modal_create_subscribers_error'),
             err,
             this.$scope.alerts.main,
           );

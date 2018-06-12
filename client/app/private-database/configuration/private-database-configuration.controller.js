@@ -2,7 +2,14 @@
 angular.module('App').controller(
   'PrivateDatabaseConfigurationsCtrl',
   class PrivateDatabaseConfigurationsCtrl {
-    constructor(Alerter, PrivateDatabase, translator, $q, $scope, $stateParams) {
+    constructor(
+      Alerter,
+      PrivateDatabase,
+      translator,
+      $q,
+      $scope,
+      $stateParams,
+    ) {
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
       this.translator = translator;
@@ -28,10 +35,14 @@ angular.module('App').controller(
       return this.privateDatabaseService
         .getConfigurationDetails(this.productId)
         .then((config) => {
-          this.configurations = config.details.map(field => this.convertAvailableValues(field));
+          this.configurations = config.details.map(field =>
+            this.convertAvailableValues(field));
         })
         .catch((error) => {
-          this.alerter.error(this.translator.tr('privateDatabase_configuration_error'), this.$scope.alerts.main);
+          this.alerter.error(
+            this.translator.tr('privateDatabase_configuration_error'),
+            this.$scope.alerts.main,
+          );
           return this.$q.reject(error);
         })
         .finally(() => {
@@ -39,32 +50,45 @@ angular.module('App').controller(
         });
     }
 
-    convertAvailableValues(field) {
+    convertAvailableValues(opts) {
+      const field = _(opts).clone();
+
       field.description = this.getFieldDescriptionTranslated(field);
-      field.availableValues = field.availableValues.map(value => ({ id: value, text: value }));
+      field.availableValues = field.availableValues.map(value => ({
+        id: value,
+        text: value,
+      }));
       if (field.key === 'autocommit') {
         PrivateDatabaseConfigurationsCtrl.convertFieldAsToggle(field);
-        field.availableValues = [{ id: '0', text: ' OFF' }, { id: '1', text: 'ON' }];
+        field.availableValues = [
+          { id: '0', text: ' OFF' },
+          { id: '1', text: 'ON' },
+        ];
       } else if (field.key === 'event_scheduler') {
         PrivateDatabaseConfigurationsCtrl.convertFieldAsToggle(field);
       } else {
         field.type = 'select';
-        field.selectedValue = _.find(field.availableValues, { id: field.value });
+        field.selectedValue = _.find(field.availableValues, {
+          id: field.value,
+        });
       }
       return field;
     }
 
+    /* eslint-disable no-param-reassign */
     static convertFieldAsToggle(field) {
       field.type = 'toggle';
       field.selectedValue = { id: field.value };
     }
+    /* eslint-enable no-param-reassign */
 
     getFieldDescriptionTranslated(field) {
       const translationId = `privateDatabase_configuration_field_${field.key}`;
-      let description = this.translator.tr(translationId);
+      const description = this.translator.tr(translationId);
       if (_.includes(description, translationId)) {
-        description = field.description;
+        return field.description;
       }
+
       return description;
     }
 
@@ -74,19 +98,31 @@ angular.module('App').controller(
       }
       this.loading = true;
       this.edit.value = false;
-      const parameters = this.configurations.map(conf => ({ key: conf.key, value: conf.selectedValue.id }));
+      const parameters = this.configurations.map(conf => ({
+        key: conf.key,
+        value: conf.selectedValue.id,
+      }));
 
       return this.privateDatabaseService
         .changeConfigurationDetails(this.productId, { parameters })
         .then(() => {
-          this.alerter.success(this.translator.tr('privateDatabase_configuration_reboot'), this.$scope.alerts.main);
+          this.alerter.success(
+            this.translator.tr('privateDatabase_configuration_reboot'),
+            this.$scope.alerts.main,
+          );
           return this.privateDatabaseService.pollConfigurationChange(this.productId);
         })
         .then(() => {
-          this.alerter.success(this.translator.tr('privateDatabase_configuration_success'), this.$scope.alerts.main);
+          this.alerter.success(
+            this.translator.tr('privateDatabase_configuration_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((error) => {
-          this.alerter.error(this.translator.tr('privateDatabase_configuration_error_put'), this.$scope.alerts.main);
+          this.alerter.error(
+            this.translator.tr('privateDatabase_configuration_error_put'),
+            this.$scope.alerts.main,
+          );
           return this.$q.reject(error);
         })
         .finally(() => {

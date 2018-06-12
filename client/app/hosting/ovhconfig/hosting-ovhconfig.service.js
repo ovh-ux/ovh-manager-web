@@ -1,16 +1,16 @@
 function OvhConfig(data) {
-  this._setData(data);
+  this.setData(data);
 }
 
 Object.defineProperties(OvhConfig.prototype, {
-  _patterns: {
+  patterns: {
     writable: false,
     configurable: false,
     value: {
       phpEngine: /php/i,
     },
   },
-  _setData: {
+  setData: {
     writable: false,
     configurable: false,
     value(data) {
@@ -19,7 +19,7 @@ Object.defineProperties(OvhConfig.prototype, {
       if (_.isObject(data)) {
         keys = Object.keys(data);
 
-        for (let i = 0, imax = keys.length; i < imax; i++) {
+        for (let i = 0, imax = keys.length; i < imax; i += 1) {
           this[keys[i]] = data[keys[i]];
         }
       }
@@ -31,7 +31,7 @@ Object.defineProperties(OvhConfig.prototype, {
       throw new Error('OvhConfig.isPhpEngine is a read only property');
     },
     get() {
-      return this.engineName && this._patterns.phpEngine.test(this.engineName);
+      return this.engineName && this.patterns.phpEngine.test(this.engineName);
     },
   },
   label: {
@@ -46,24 +46,28 @@ Object.defineProperties(OvhConfig.prototype, {
         this.creationDateHr = moment(this.creationDate).format('ll');
       }
 
-      angular.forEach(['engineName', 'engineVersion', 'environment', 'creationDateHr'], function (key) {
-        if (this[key]) {
-          if (label.length > 0) {
-            label += ' ';
-          }
+      angular.forEach(
+        ['engineName', 'engineVersion', 'environment', 'creationDateHr'],
+        function forLoop(key) {
+          if (this[key]) {
+            if (label.length > 0) {
+              label += ' ';
+            }
 
-          label += this[key];
-        }
-      }, this);
+            label += this[key];
+          }
+        },
+        this,
+      );
 
       return label;
     },
   },
 });
 
-angular
-  .module('services')
-  .service('HostingOvhConfig', class HostingOvhConfig {
+angular.module('services').service(
+  'HostingOvhConfig',
+  class HostingOvhConfig {
     constructor($q, OvhHttp) {
       this.$q = $q;
       this.OvhHttp = OvhHttp;
@@ -75,9 +79,9 @@ angular
     }
 
     /**
-         * Sync the api with the host, in case of manual modification (ftp, ...)
-         * @param {string} serviceName
-         */
+     * Sync the api with the host, in case of manual modification (ftp, ...)
+     * @param {string} serviceName
+     */
     ovhConfigRefresh(serviceName) {
       return this.OvhHttp.post(`/hosting/web/${serviceName}/ovhConfigRefresh`, {
         rootPath: 'apiv6',
@@ -86,26 +90,32 @@ angular
     }
 
     /**
-         * Get config Ids
-         * @param {string} serviceName
-         * @param {boolean} getHistory
-         * @param {string} path
-         */
+     * Get config Ids
+     * @param {string} serviceName
+     * @param {boolean} getHistory
+     * @param {string} path
+     */
     getIds(serviceName, getHistory, path = '') {
+      let historical = !!getHistory;
+
+      if (!historical) {
+        historical = getHistory === false ? false : undefined;
+      }
+
       return this.OvhHttp.get(`/hosting/web/${serviceName}/ovhConfig`, {
         rootPath: 'apiv6',
         params: {
-          historical: getHistory ? true : getHistory === false ? false : undefined,
+          historical,
           path,
         },
       });
     }
 
     /**
-         * Get config by Id
-         * @param {string} serviceName
-         * @param {string} id
-         */
+     * Get config by Id
+     * @param {string} serviceName
+     * @param {string} id
+     */
     getFromId(serviceName, id) {
       return this.OvhHttp.get(`/hosting/web/${serviceName}/ovhConfig/${id}`, {
         rootPath: 'apiv6',
@@ -114,75 +124,80 @@ angular
     }
 
     /**
-         *
-         * @param {string} serviceName
-         * @param {array} ids
-         * @returns {Promise}
-         */
+     *
+     * @param {string} serviceName
+     * @param {array} ids
+     * @returns {Promise}
+     */
     getDatasFromIds(serviceName, ids) {
       const queue = _.map(ids, id => this.getFromId(serviceName, id));
       return this.$q.all(queue);
     }
 
     /**
-         * Get current config
-         * @param {string} serviceName
-         */
+     * Get current config
+     * @param {string} serviceName
+     */
     getCurrent(serviceName) {
-      return this
-        .getIds(serviceName, false)
-        .then(ids => this.getFromId(serviceName, ids.pop()));
+      return this.getIds(serviceName, false).then(ids =>
+        this.getFromId(serviceName, ids.pop()));
     }
 
     /**
-         *
-         * @param {string} serviceName
-         */
+     *
+     * @param {string} serviceName
+     */
     getAll(serviceName) {
-      return this
-        .getIds(serviceName, false)
-        .then(ids => this.getDatasFromIds(serviceName, ids));
+      return this.getIds(serviceName, false).then(ids =>
+        this.getDatasFromIds(serviceName, ids));
     }
 
     /**
-         *
-         * @param {string} serviceName
-         */
+     *
+     * @param {string} serviceName
+     */
     getHistoric(serviceName) {
-      return this
-        .getIds(serviceName, true)
-        .then(ids => this.getDatasFromIds(serviceName, ids));
+      return this.getIds(serviceName, true).then(ids =>
+        this.getDatasFromIds(serviceName, ids));
     }
 
     /**
-         * Change configuration
-         * @param {string} serviceName
-         * @param {object} data
-         */
-    changeConfiguration(serviceName, data) {
-      const id = data.id;
+     * Change configuration
+     * @param {string} serviceName
+     * @param {object} data
+     */
+    changeConfiguration(serviceName, opts) {
+      const data = _(opts).clone();
+      const { id } = data;
       delete data.id;
 
-      return this.OvhHttp.post(`/hosting/web/${serviceName}/ovhConfig/${id}/changeConfiguration`, {
-        rootPath: 'apiv6',
-        clearAllCache: this.cache,
-        data,
-      });
+      return this.OvhHttp.post(
+        `/hosting/web/${serviceName}/ovhConfig/${id}/changeConfiguration`,
+        {
+          rootPath: 'apiv6',
+          clearAllCache: this.cache,
+          data,
+        },
+      );
     }
 
     /**
-         * Rollback to previous config
-         * @param {string} serviceName
-         * @param {string} id
-         * @param {string} idToRollback
-         */
+     * Rollback to previous config
+     * @param {string} serviceName
+     * @param {string} id
+     * @param {string} idToRollback
+     */
     rollbackConfig(serviceName, id, idToRollback) {
-      return this.OvhHttp.post(`/hosting/web/${serviceName}/ovhConfig/${id}/rollback`, {
-        rootPath: 'apiv6',
-        clearAllCache: this.cache,
-        data: {
-          rollbackId: idToRollback,
+      return this.OvhHttp.post(
+        `/hosting/web/${serviceName}/ovhConfig/${id}/rollback`,
+        {
+          rootPath: 'apiv6',
+          clearAllCache: this.cache,
+          data: {
+            rollbackId: idToRollback,
+          },
         },
-      });
+      );
     }
-  });
+  },
+);

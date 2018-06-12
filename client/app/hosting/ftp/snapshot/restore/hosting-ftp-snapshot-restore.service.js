@@ -2,16 +2,16 @@ angular.module('services').service(
   'HostingFtp',
   class HostingFtp {
     /**
-         * Constructor
-         * @param OvhHttp
-         */
+     * Constructor
+     * @param OvhHttp
+     */
     constructor(OvhHttp) {
       this.OvhHttp = OvhHttp;
     }
 
     /**
-         * Get hosting models
-         */
+     * Get hosting models
+     */
     getModels() {
       return this.OvhHttp.get('/hosting/web.json', {
         rootPath: 'apiv6',

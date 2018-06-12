@@ -22,16 +22,29 @@ angular.module('App').controller(
     }
 
     isValid() {
-      return _(this.addEnvvarForm).isObject() && this.addEnvvarForm.$dirty && this.addEnvvarForm.$valid;
+      return (
+        _(this.addEnvvarForm).isObject() &&
+        this.addEnvvarForm.$dirty &&
+        this.addEnvvarForm.$valid
+      );
     }
 
     create() {
-      this.HostingEnvvars.create(this.$stateParams.productId, this.entryToCreate)
+      this.HostingEnvvars.create(
+        this.$stateParams.productId,
+        this.entryToCreate,
+      )
         .then(() => {
-          this.Alerter.success(this.$scope.tr('hosting_tab_ENVVARS_save_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('hosting_tab_ENVVARS_save_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
-          this.Alerter.error(this.$scope.tr('hosting_tab_ENVVARS_save_error') + err.message, this.$scope.alerts.main);
+          this.Alerter.error(
+            this.$scope.tr('hosting_tab_ENVVARS_save_error') + err.message,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.$scope.resetAction();

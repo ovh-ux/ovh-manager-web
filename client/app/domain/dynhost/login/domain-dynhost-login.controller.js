@@ -40,17 +40,23 @@ angular.module('App').controller(
     refreshTableDynHostsLogin() {
       this.loading.login = true;
       this.dynHostsLogin = null;
-      const login = this.search.login ? punycode.toASCII(this.search.login) : null;
+      const login = this.search.login
+        ? punycode.toASCII(this.search.login)
+        : null;
 
-      return this.Domain
-        .getDynHostLogin(this.product.name, login)
+      return this.Domain.getDynHostLogin(this.product.name, login)
         .then((data) => {
           this.dynHostsLogin = data;
           if (this.dynHostsLogin.length > 0) {
             this.hasResult = true;
           }
         })
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('domain_tab_DYNHOSTLOGIN_table_empty'), err.data || err, this.$scope.alerts.main))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_tab_DYNHOSTLOGIN_table_empty'),
+            err.data || err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           this.loading.init = false;
           if (_.isEmpty(this.dynHostsLogin)) {
@@ -60,7 +66,10 @@ angular.module('App').controller(
     }
 
     transformItem(item) {
-      return this.Domain.getDynHostLoginDetails(this.product.name, item).then(this.constructor.subDomainToPunycode, err => err);
+      return this.Domain.getDynHostLoginDetails(this.product.name, item).then(
+        this.constructor.subDomainToPunycode,
+        err => err,
+      );
     }
 
     onTransformItemDone() {

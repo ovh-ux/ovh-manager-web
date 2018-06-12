@@ -2,12 +2,12 @@ angular.module('App').controller(
   'EmailsUpdateUsageAccountCtrl',
   class EmailsUpdateUsageAccountCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param Alerter
-         * @param Emails
-         */
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param Alerter
+     * @param Emails
+     */
     constructor($scope, $stateParams, Alerter, Emails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -17,7 +17,9 @@ angular.module('App').controller(
 
     $onInit() {
       this.isDelegate = _.get(this.$scope.currentActionData, 'delegate', false);
-      this.account = this.isDelegate ? this.$scope.currentActionData.account : this.$scope.currentActionData;
+      this.account = this.isDelegate
+        ? this.$scope.currentActionData.account
+        : this.$scope.currentActionData;
       this.lastUpdated = {
         diff: null,
         value: null,
@@ -36,13 +38,19 @@ angular.module('App').controller(
       if (this.isDelegate) {
         getUsagePromise = this.Emails.getEmailDelegatedUsage(this.account.email);
       } else {
-        getUsagePromise = this.Emails.getEmailUsage(this.$stateParams.productId, this.account.accountName);
+        getUsagePromise = this.Emails.getEmailUsage(
+          this.$stateParams.productId,
+          this.account.accountName,
+        );
       }
 
       return getUsagePromise
         .then((quota) => {
           this.lastUpdated.value = quota.date;
-          this.lastUpdated.diff = parseInt(moment().diff(this.lastUpdated.value, 'minutes'), 10);
+          this.lastUpdated.diff = parseInt(
+            moment().diff(this.lastUpdated.value, 'minutes'),
+            10,
+          );
         })
         .finally(() => {
           this.loading = false;
@@ -54,7 +62,9 @@ angular.module('App').controller(
     }
 
     isUsageRequestValid() {
-      return !this.loading && !this.account.isBlocked && this.isCheckAuthorized();
+      return (
+        !this.loading && !this.account.isBlocked && this.isCheckAuthorized()
+      );
     }
 
     updateUsageAccount() {
@@ -64,12 +74,24 @@ angular.module('App').controller(
       if (this.isDelegate) {
         updateUsagePromise = this.Emails.updateDelegatedUsage(this.account.email);
       } else {
-        updateUsagePromise = this.Emails.updateUsage(this.$stateParams.productId, this.account.accountName);
+        updateUsagePromise = this.Emails.updateUsage(
+          this.$stateParams.productId,
+          this.account.accountName,
+        );
       }
 
       return updateUsagePromise
-        .then(() => this.Alerter.success(this.$scope.tr('email_tab_modal_update_usage_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_modal_update_usage_error'), err, this.$scope.alerts.main))
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr('email_tab_modal_update_usage_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_modal_update_usage_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

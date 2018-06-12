@@ -21,25 +21,45 @@ angular.module('App').controller(
     }
 
     shouldDisplayDifferentPasswordMessage() {
-      return this.password.value && this.password.confirmation && this.password.value !== this.password.confirmation;
+      return (
+        this.password.value &&
+        this.password.confirmation &&
+        this.password.value !== this.password.confirmation
+      );
     }
 
     validPassword(password, confirmation) {
       const validPassword = this.Hosting.constructor.isPasswordValid(_.get(this.password, 'value'));
-      const validConfirmation = this.password.value && this.password.value === this.password.confirmation;
+      const validConfirmation =
+        this.password.value &&
+        this.password.value === this.password.confirmation;
       password.$setValidity('password', validPassword);
       confirmation.$setValidity('confirm', validConfirmation);
     }
 
     updatePassword() {
       this.$scope.resetAction();
-      return this.HostingDatabase.changePassword(this.$stateParams.productId, this.databaseName, this.password.value)
+      return this.HostingDatabase.changePassword(
+        this.$stateParams.productId,
+        this.databaseName,
+        this.password.value,
+      )
         .then(() => {
-          this.Alerter.success(this.$scope.tr('hosting_tab_DATABASES_configuration_update_password_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('hosting_tab_DATABASES_configuration_update_password_success'),
+            this.$scope.alerts.main,
+          );
         })
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_DATABASES_configuration_update_password_fail', [this.databaseName]), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr(
+              'hosting_tab_DATABASES_configuration_update_password_fail',
+              [this.databaseName],
+            ),
+            _.get(err, 'data', err),
+            this.$scope.alerts.main,
+          );
         });
     }
   },

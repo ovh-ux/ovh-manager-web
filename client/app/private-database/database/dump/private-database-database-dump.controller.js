@@ -1,6 +1,6 @@
-angular
-  .module('App')
-  .controller('PrivateDatabaseBDDsDumpsCtrl', class PrivateDatabaseBDDsDumpsCtrl {
+angular.module('App').controller(
+  'PrivateDatabaseBDDsDumpsCtrl',
+  class PrivateDatabaseBDDsDumpsCtrl {
     constructor($q, $scope, $stateParams, $window, Alerter, PrivateDatabase) {
       this.$q = $q;
       this.$scope = $scope;
@@ -18,12 +18,24 @@ angular
       this.dumpIdRestoring = null;
 
       _.forEach(this.statusToWatch, (state) => {
-        this.$scope.$on(`privateDatabase.database.dump.${state}`, this[`onDataBaseDump${state}`].bind(this));
-        this.$scope.$on(`privateDatabase.database.dump.delete.${state}`, this[`onDataBaseDumpDelete${state}`].bind(this));
-        this.$scope.$on(`privateDatabase.database.restore.${state}`, this[`onDataBaseRestore${state}`].bind(this));
+        this.$scope.$on(
+          `privateDatabase.database.dump.${state}`,
+          this[`onDataBaseDump${state}`].bind(this),
+        );
+        this.$scope.$on(
+          `privateDatabase.database.dump.delete.${state}`,
+          this[`onDataBaseDumpDelete${state}`].bind(this),
+        );
+        this.$scope.$on(
+          `privateDatabase.database.restore.${state}`,
+          this[`onDataBaseRestore${state}`].bind(this),
+        );
       });
 
-      this.privateDatabaseService.restartPoll(this.productId, ['database/dump', 'database/restore']);
+      this.privateDatabaseService.restartPoll(this.productId, [
+        'database/dump',
+        'database/restore',
+      ]);
 
       this.getDumps();
     }
@@ -35,12 +47,16 @@ angular
     getDumps() {
       this.dumps = null;
 
-      this.privateDatabaseService.getDumpsBDD(this.productId, this.database.databaseName)
+      this.privateDatabaseService
+        .getDumpsBDD(this.productId, this.database.databaseName)
         .then((dumpsIds) => {
           this.dumps = dumpsIds.map(id => ({ id }));
         })
         .catch(() => {
-          this.alerter.error(this.$scope.tr('privateDatabase_tabs_dumps_fail_retrieve_dumps'), this.$scope.alerts.main);
+          this.alerter.error(
+            this.$scope.tr('privateDatabase_tabs_dumps_fail_retrieve_dumps'),
+            this.$scope.alerts.main,
+          );
         });
     }
 
@@ -52,11 +68,14 @@ angular
       if (item.transformed) {
         return this.$q(resolve => resolve(item));
       }
-      return this.privateDatabaseService.getDumpBDD(this.productId, this.database.databaseName, item.id)
-        .then((dump) => {
+      return this.privateDatabaseService
+        .getDumpBDD(this.productId, this.database.databaseName, item.id)
+        .then((originalDump) => {
+          const dump = _(originalDump).clone();
           dump.id = item.id;
           dump.transformed = true;
-          dump.waitRestore = this.database.waitRestore && dump.id === this.dumpIdRestoring;
+          dump.waitRestore =
+            this.database.waitRestore && dump.id === this.dumpIdRestoring;
 
           return dump;
         });
@@ -72,33 +91,48 @@ angular
       if (this.database.databaseName === opts.databaseName) {
         delete this.database.waitDump;
         this.getDumps();
-        this.alerter.success(this.$scope.tr('privateDatabase_dump_bdd_success'), this.$scope.alerts.main);
+        this.alerter.success(
+          this.$scope.tr('privateDatabase_dump_bdd_success'),
+          this.$scope.alerts.main,
+        );
       }
     }
 
     onDataBaseDumperror(opts) {
       if (this.database.databaseName === opts.databaseName) {
         delete this.database.waitDump;
-        this.alerter.error(this.$scope.tr('privateDatabase_dump_bdd_fail'), this.$scope.alerts.main);
+        this.alerter.error(
+          this.$scope.tr('privateDatabase_dump_bdd_fail'),
+          this.$scope.alerts.main,
+        );
       }
     }
 
     onDataBaseDumpDeletestart(evt, opts) {
       if (this.database.databaseName === opts.databaseName) {
-        this.alerter.success(this.$scope.tr('privateDatabase_tabs_dumps_delete_start'), this.$scope.alerts.main);
+        this.alerter.success(
+          this.$scope.tr('privateDatabase_tabs_dumps_delete_start'),
+          this.$scope.alerts.main,
+        );
       }
     }
 
     onDataBaseDumpDeletedone(evt, opts) {
       if (this.database.databaseName === opts.databaseName) {
         this.getDumps();
-        this.alerter.success(this.$scope.tr('privateDatabase_tabs_dumps_delete_done'), this.$scope.alerts.main);
+        this.alerter.success(
+          this.$scope.tr('privateDatabase_tabs_dumps_delete_done'),
+          this.$scope.alerts.main,
+        );
       }
     }
 
     onDataBaseDumpDeleteerror(evt, opts) {
       if (this.database.databaseName === opts.databaseName) {
-        this.alerter.error(this.$scope.tr('privateDatabase_tabs_dumps_delete_error'), this.$scope.alerts.main);
+        this.alerter.error(
+          this.$scope.tr('privateDatabase_tabs_dumps_delete_error'),
+          this.$scope.alerts.main,
+        );
       }
     }
 
@@ -106,10 +140,9 @@ angular
       this.database.waitRestore = true;
       this.dumpIdRestoring = opts.dumpId;
 
-      this.dumps.filter(dump => dump.id === opts.id)
-        .forEach((dump) => {
-          dump.waitRestore = true;
-        });
+      this.dumps.filter(dump => dump.id === opts.id).forEach((dump) => {
+        dump.waitRestore = true; // eslint-disable-line no-param-reassign
+      });
     }
 
     onDataBaseRestoredone() {
@@ -117,19 +150,25 @@ angular
       this.dumpIdRestoring = null;
 
       this.dumps.forEach((dump) => {
-        delete dump.waitRestore;
+        delete dump.waitRestore; // eslint-disable-line no-param-reassign
       });
-      this.alerter.success(this.$scope.tr('privateDatabase_tabs_dumps_restore_success'), this.$scope.alerts.main);
+      this.alerter.success(
+        this.$scope.tr('privateDatabase_tabs_dumps_restore_success'),
+        this.$scope.alerts.main,
+      );
     }
 
     onDataBaseRestoreerror(opts) {
       delete this.database.waitRestore;
       this.dumpIdRestoring = null;
 
-      this.dumps.filter(dump => dump.id === opts.id)
-        .forEach((dump) => {
-          delete dump.waitRestore;
-          this.alerter.error(this.$scope.tr('privateDatabase_tabs_dumps_restore_fail'), this.$scope.alerts.main);
-        });
+      this.dumps.filter(dump => dump.id === opts.id).forEach((dump) => {
+        delete dump.waitRestore; // eslint-disable-line no-param-reassign
+        this.alerter.error(
+          this.$scope.tr('privateDatabase_tabs_dumps_restore_fail'),
+          this.$scope.alerts.main,
+        );
+      });
     }
-  });
+  },
+);

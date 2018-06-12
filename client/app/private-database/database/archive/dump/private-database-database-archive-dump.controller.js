@@ -19,7 +19,10 @@ angular.module('App').controller(
     }
 
     restaureDumpRequest(dump) {
-      this.$scope.setAction('database/restore-archive/private-database-database-restore-archive', { bdd: dump.databaseName, dump, func: this.$scope });
+      this.$scope.setAction(
+        'database/restore-archive/private-database-database-restore-archive',
+        { bdd: dump.databaseName, dump, func: this.$scope },
+      );
     }
   },
 );

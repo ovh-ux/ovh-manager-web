@@ -10,7 +10,11 @@ angular.module('controllers').controller(
 
     $onInit() {
       this.domain = angular.copy(this.$scope.currentActionData.domain);
-      this.editedGlueRecord = _.get(this.$scope.currentActionData, 'editedGlueRecord', null);
+      this.editedGlueRecord = _.get(
+        this.$scope.currentActionData,
+        'editedGlueRecord',
+        null,
+      );
       this.editMode = !!this.editedGlueRecord;
 
       this.loading = false;
@@ -18,7 +22,11 @@ angular.module('controllers').controller(
 
       // edit mode
       if (this.editMode) {
-        _.set(this.model, 'host', this.editedGlueRecord.host.replace(`.${this.domain.name}`, ''));
+        _.set(
+          this.model,
+          'host',
+          this.editedGlueRecord.host.replace(`.${this.domain.name}`, ''),
+        );
         _.set(this.model, 'ips', this.editedGlueRecord.ips.toString());
       }
 
@@ -28,12 +36,18 @@ angular.module('controllers').controller(
     getModelFormatted() {
       return {
         host: `${this.model.host}.${this.domain.name}`,
-        ips: this.model.ips ? _.uniq(_.map(this.model.ips.replace(/,\s*$/, '').split(','), ip => _.trim(ip))) : [],
+        ips: this.model.ips
+          ? _.uniq(_.map(this.model.ips.replace(/,\s*$/, '').split(','), ip =>
+            _.trim(ip)))
+          : [],
       };
     }
 
     hostCheck(input) {
-      input.$setValidity('host', this.Validator.isValidSubDomain(this.model.host));
+      input.$setValidity(
+        'host',
+        this.Validator.isValidSubDomain(this.model.host),
+      );
     }
 
     ipsCheck(input) {
@@ -43,7 +57,15 @@ angular.module('controllers').controller(
       if (!this.domain.glueRecordMultiIpSupported && model.ips.length > 1) {
         valid = false;
       } else {
-        valid = !_.isEmpty(model.ips) && _.every(model.ips, ip => this.Validator.isValidIpv4(ip) || (_.get(this.domain, 'glueRecordIpv6Supported', false) && this.Validator.isValidIpv6(ip)));
+        valid =
+          !_.isEmpty(model.ips) &&
+          _.every(
+            model.ips,
+            ip =>
+              this.Validator.isValidIpv4(ip) ||
+              (_.get(this.domain, 'glueRecordIpv6Supported', false) &&
+                this.Validator.isValidIpv6(ip)),
+          );
       }
 
       input.$setValidity('ips', valid);
@@ -54,14 +76,34 @@ angular.module('controllers').controller(
       let promise;
 
       if (this.editMode) {
-        promise = this.Domain.editGlueRecord(this.domain.name, `${this.model.host}.${this.domain.name}`, this.getModelFormatted());
+        promise = this.Domain.editGlueRecord(
+          this.domain.name,
+          `${this.model.host}.${this.domain.name}`,
+          this.getModelFormatted(),
+        );
       } else {
-        promise = this.Domain.addGlueRecord(this.domain.name, this.getModelFormatted());
+        promise = this.Domain.addGlueRecord(
+          this.domain.name,
+          this.getModelFormatted(),
+        );
       }
 
       return promise
-        .then(() => this.Alerter.success(this.$scope.tr(this.editMode ? 'domain_tab_GLUE_modify_success' : 'domain_tab_GLUE_add_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr(this.editMode ? 'domain_tab_GLUE_modify_error' : 'domain_tab_GLUE_add_error'), err, this.$scope.alerts.main))
+        .then(() =>
+          this.Alerter.success(
+            this.$scope.tr(this.editMode
+              ? 'domain_tab_GLUE_modify_success'
+              : 'domain_tab_GLUE_add_success'),
+            this.$scope.alerts.main,
+          ))
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr(this.editMode
+              ? 'domain_tab_GLUE_modify_error'
+              : 'domain_tab_GLUE_add_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

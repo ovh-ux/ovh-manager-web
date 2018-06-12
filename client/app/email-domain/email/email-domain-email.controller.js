@@ -1,7 +1,18 @@
-angular
-  .module('App')
-  .controller('EmailDomainEmailCtrl', class EmailDomainEmailCtrl {
-    constructor($scope, $q, $stateParams, $timeout, Alerter, Emails, User, ovhUserPref, $window, constants) {
+angular.module('App').controller(
+  'EmailDomainEmailCtrl',
+  class EmailDomainEmailCtrl {
+    constructor(
+      $scope,
+      $q,
+      $stateParams,
+      $timeout,
+      Alerter,
+      Emails,
+      User,
+      ovhUserPref,
+      $window,
+      constants,
+    ) {
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
@@ -32,8 +43,7 @@ angular
       this.works = {};
       this.statusWorksDone = ['closed', 'finished'];
 
-      this.User
-        .getUrlOf('guides')
+      this.User.getUrlOf('guides')
         .then((guides) => {
           if (guides != null) {
             this.$scope.guide = guides.emailsConfiguration;
@@ -45,7 +55,8 @@ angular
           this.$scope.guides = null;
         });
 
-      this.$scope.$on('hosting.tabs.emails.refresh', () => this.refreshAllInfos(true));
+      this.$scope.$on('hosting.tabs.emails.refresh', () =>
+        this.refreshAllInfos(true));
 
       this.initialLoad();
     }
@@ -64,11 +75,20 @@ angular
           summary: this.Emails.getSummary(this.$stateParams.productId),
         })
         .then(({
-          webMailUrl, webOMMUrl, user, serviceInfos, allDomains, quotas, summary,
+          webMailUrl,
+          webOMMUrl,
+          user,
+          serviceInfos,
+          allDomains,
+          quotas,
+          summary,
         }) => {
           this.webMailUrl = webMailUrl;
           this.webOMMUrl = webOMMUrl;
-          this.delegationsIsAvailable = _.includes([serviceInfos.contactTech, serviceInfos.contactAdmin], user.nichandle);
+          this.delegationsIsAvailable = _.includes(
+            [serviceInfos.contactTech, serviceInfos.contactAdmin],
+            user.nichandle,
+          );
           this.domains = allDomains;
           this.quotas = quotas;
           this.summary = summary;
@@ -101,11 +121,9 @@ angular
     }
 
     refreshSummary() {
-      return this.Emails
-        .getSummary(this.$stateParams.productId)
-        .then((summary) => {
-          this.summary = summary;
-        });
+      return this.Emails.getSummary(this.$stateParams.productId).then((summary) => {
+        this.summary = summary;
+      });
     }
 
     //---------------------------------------------
@@ -158,44 +176,68 @@ angular
     //---------------------------------------------
 
     canAddAccount() {
-      return this.emails != null && (!_.includes(this.emails, 'postmaster') || this.emails.length < this.quotas.account + 1);
+      return (
+        this.emails != null &&
+        (!_.includes(this.emails, 'postmaster') ||
+          this.emails.length < this.quotas.account + 1)
+      );
     }
 
     refreshTableAccounts(forceRefresh) {
       this.loading.accounts = true;
       this.emails = null;
 
-      return this.Emails
-        .getEmails(this.$stateParams.productId, {
-          accountName: `%${this.search.accounts || ''}%`,
-          forceRefresh,
-        })
+      return this.Emails.getEmails(this.$stateParams.productId, {
+        accountName: `%${this.search.accounts || ''}%`,
+        forceRefresh,
+      })
         .then((data) => {
           this.emails = data.sort();
 
-          const userWantsHelpHidden = _(this.userPreferences).get('hideEmailsHelp', false);
+          const userWantsHelpHidden = _(this.userPreferences).get(
+            'hideEmailsHelp',
+            false,
+          );
           const userWantsHelpHiddenForCurrentProduct = _(this.userPreferences).get(`${this.$stateParams.productId}.hideEmailsHelp`, false);
 
-          const shouldShowHelp = !userWantsHelpHidden && !userWantsHelpHiddenForCurrentProduct;
-          const guidesAlreadyRetrieved = _(this.$scope).has('guides.emailsConfiguration') || _(this.$scope).has('guides.emailsCreation');
+          const shouldShowHelp =
+            !userWantsHelpHidden && !userWantsHelpHiddenForCurrentProduct;
+          const guidesAlreadyRetrieved =
+            _(this.$scope).has('guides.emailsConfiguration') ||
+            _(this.$scope).has('guides.emailsCreation');
           const canCreateAccounts = _(this.quotas).get('account', 0) > 0;
-          const userMustCreateAccount = (this.emails.length === 1 && this.emails[0] === 'postmaster') || _.isEmpty(this.emails);
+          const userMustCreateAccount =
+            (this.emails.length === 1 && this.emails[0] === 'postmaster') ||
+            _.isEmpty(this.emails);
 
-          if (shouldShowHelp && !guidesAlreadyRetrieved && !this.search.accounts && canCreateAccounts && userMustCreateAccount) {
+          if (
+            shouldShowHelp &&
+            !guidesAlreadyRetrieved &&
+            !this.search.accounts &&
+            canCreateAccounts &&
+            userMustCreateAccount
+          ) {
             this.$timeout(() => {
               if (this.quotas != null) {
-                this.$scope.setAction('email-domain/email/help/email-domain-email-help', {
-                  productId: this.$stateParams.productId || null,
-                  quotas: this.quotas,
-                  summary: this.summary,
-                  emails: this.emails,
-                });
+                this.$scope.setAction(
+                  'email-domain/email/help/email-domain-email-help',
+                  {
+                    productId: this.$stateParams.productId || null,
+                    quotas: this.quotas,
+                    summary: this.summary,
+                    emails: this.emails,
+                  },
+                );
               }
             });
           }
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('email_tab_table_accounts_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_table_accounts_error'),
+            err,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           if (_.isEmpty(this.emails)) {
@@ -211,14 +253,16 @@ angular
           tasks: this.Emails.getEmailTasks(this.$stateParams.productId, item),
           usage: this.Emails.getEmailUsage(this.$stateParams.productId, item),
         })
-        .then(({ account, tasks, usage }) => {
+        .then(({ originalAccount, tasks, usage }) => {
+          const account = _(originalAccount).clone();
+
           account.taskDoing = !_.isEmpty(tasks.data);
           account.description = punycode.toUnicode(account.description);
           account.quota = usage.quota;
           account.date = usage.date;
 
           if (account.size > 0) {
-            account.percentUse = _.round(account.quota * 100 / account.size);
+            account.percentUse = _.round((account.quota * 100) / account.size);
           } else {
             account.percentUse = 0;
           }
@@ -231,4 +275,5 @@ angular
       this.loading.accounts = false;
       this.loading.pager = false;
     }
-  });
+  },
+);

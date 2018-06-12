@@ -17,14 +17,20 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'email_domain';
+          $rootScope.currentSectionInformation = 'email_domain'; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['email', 'hosting', 'mailing_list']).then(() => translator)],
+      translator: [
+        'translator',
+        translator =>
+          translator
+            .load(['email', 'hosting', 'mailing_list'])
+            .then(() => translator),
+      ],
     },
   });
 
@@ -40,14 +46,17 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'email_delegate';
+          $rootScope.currentSectionInformation = 'email_delegate'; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['email']).then(() => translator)],
+      translator: [
+        'translator',
+        translator => translator.load(['email']).then(() => translator),
+      ],
     },
   });
 
@@ -61,14 +70,17 @@ angular.module('App').config(($stateProvider) => {
         'Navigator',
         '$rootScope',
         (Navigator, $rootScope) => {
-          $rootScope.currentSectionInformation = 'mxPlan';
+          $rootScope.currentSectionInformation = 'mxPlan'; // eslint-disable-line no-param-reassign
           return Navigator.setNavigationInformation({
             leftMenuVisible: true,
             configurationSelected: true,
           });
         },
       ],
-      translator: ['translator', translator => translator.load(['mxPlan']).then(() => translator)],
+      translator: [
+        'translator',
+        translator => translator.load(['mxPlan']).then(() => translator),
+      ],
     },
   });
 });

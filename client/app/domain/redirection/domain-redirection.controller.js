@@ -28,15 +28,23 @@ angular.module('controllers').controller(
 
       this.$scope.$on('domain.tabs.redirection.reload', (event, forceRef) => {
         this.setLoadingMode(forceRef);
-        this.$scope.$broadcast('paginationServerSide.reload', 'redirectionTable');
+        this.$scope.$broadcast(
+          'paginationServerSide.reload',
+          'redirectionTable',
+        );
       });
 
       this.$scope.$on('domain.tabs.redirection.load', (event, forceRef) => {
         this.setLoadingMode(forceRef);
-        this.$scope.$broadcast('paginationServerSide.loadPage', 1, 'redirectionTable');
+        this.$scope.$broadcast(
+          'paginationServerSide.loadPage',
+          1,
+          'redirectionTable',
+        );
       });
 
-      this.$scope.loadRedirection = (count, offset) => this.loadRedirection(count, offset);
+      this.$scope.loadRedirection = (count, offset) =>
+        this.loadRedirection(count, offset);
     }
 
     loadRedirection(count, offset) {
@@ -54,25 +62,34 @@ angular.module('controllers').controller(
         search: this.search.value || null,
       };
 
-      this.Domain
-        .getRedirection(this.domain.name, model, this.forceRefresh)
+      this.Domain.getRedirection(this.domain.name, model, this.forceRefresh)
         .then((results) => {
           this.forceRefresh = false;
           this.redirectionList = results;
 
-          if (_.has(results, 'list.results') && !_(results.list.results).isEmpty()) {
+          if (
+            _.has(results, 'list.results') &&
+            !_(results.list.results).isEmpty()
+          ) {
             this.hasResult = true;
           }
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('domain_tab_REDIRECTION_load_fail'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_tab_REDIRECTION_load_fail'),
+            err,
+            this.$scope.alerts.main,
+          );
         })
         .finally(() => {
           this.loading.init = false;
           this.loading.search = false;
 
           if (this.scroll) {
-            $('html, body').animate({ scrollTop: $('#domainTabRedirection').offset().top }, 500);
+            $('html, body').animate(
+              { scrollTop: $('#domainTabRedirection').offset().top },
+              500,
+            );
             this.scroll = false;
           }
         });
@@ -94,7 +111,11 @@ angular.module('controllers').controller(
         this.loading.search = true;
       }
 
-      this.$scope.$broadcast('paginationServerSide.loadPage', 1, 'redirectionTable');
+      this.$scope.$broadcast(
+        'paginationServerSide.loadPage',
+        1,
+        'redirectionTable',
+      );
     }
 
     // Redirects data ---------------------------------------------------------
@@ -102,7 +123,10 @@ angular.module('controllers').controller(
       if (!this.loading.search) {
         this.forceRefresh = true;
         this.scroll = true;
-        this.$scope.$broadcast('paginationServerSide.reload', 'redirectionTable');
+        this.$scope.$broadcast(
+          'paginationServerSide.reload',
+          'redirectionTable',
+        );
       }
     }
 
@@ -113,7 +137,9 @@ angular.module('controllers').controller(
 
       const separator = redirection.subDomainDisplayName === '' ? '' : '.';
 
-      return `${redirection.subDomainDisplayName}${separator}${redirection.zoneDisplayName}`;
+      return `${redirection.subDomainDisplayName}${separator}${
+        redirection.zoneDisplayName
+      }`;
     }
 
     // Export CSV -------------------------------------------------------------
@@ -126,19 +152,34 @@ angular.module('controllers').controller(
         search: null,
       };
 
-      return this.Domain
-        .getRedirection(this.domain.name, model, true)
+      return this.Domain.getRedirection(this.domain.name, model, true)
         .then((results) => {
-          const datasToReturn = [['', this.$scope.tr('domain_tab_REDIRECTION_table_headers_field'), this.$scope.tr('domain_tab_REDIRECTION_table_headers_type'), this.$scope.tr('domain_tab_REDIRECTION_table_headers_target')]];
+          const datasToReturn = [
+            [
+              '',
+              this.$scope.tr('domain_tab_REDIRECTION_table_headers_field'),
+              this.$scope.tr('domain_tab_REDIRECTION_table_headers_type'),
+              this.$scope.tr('domain_tab_REDIRECTION_table_headers_target'),
+            ],
+          ];
 
           _.forEach(results.list.results, (redirection) => {
-            datasToReturn.push([redirection.fieldDisplayType, this.constructor.getDomain(redirection), this.$scope.tr(`domain_tab_REDIRECTION_type_${redirection.fieldDisplayType}`), redirection.targetDisplayName]);
+            datasToReturn.push([
+              redirection.fieldDisplayType,
+              this.constructor.getDomain(redirection),
+              this.$scope.tr(`domain_tab_REDIRECTION_type_${redirection.fieldDisplayType}`),
+              redirection.targetDisplayName,
+            ]);
           });
 
           return datasToReturn;
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('domain_tab_REDIRECTION_load_fail'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_tab_REDIRECTION_load_fail'),
+            err,
+            this.$scope.alerts.main,
+          );
           return [];
         })
         .finally(() => {

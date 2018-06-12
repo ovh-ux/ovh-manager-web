@@ -12,7 +12,8 @@ angular.module('App').controller(
       this.domain = this.$scope.ctrlDomain.domain;
       this.loading = false;
 
-      this.$scope.$on('domain.tabs.glue.refresh', () => this.refreshTableGlues());
+      this.$scope.$on('domain.tabs.glue.refresh', () =>
+        this.refreshTableGlues());
       this.$scope.$on('domain.DomainHostCreate.done', () => {
         this.refreshTableGlues();
         this.Alerter.resetMessage(this.$scope.alerts.main);
@@ -31,21 +32,28 @@ angular.module('App').controller(
         this.Domain.killPollDomainHostUpdate();
       });
 
-      this.Domain.restartPoll(this.domain.name, ['DomainHostCreate', 'DomainHostDelete', 'DomainHostUpdate']);
+      this.Domain.restartPoll(this.domain.name, [
+        'DomainHostCreate',
+        'DomainHostDelete',
+        'DomainHostUpdate',
+      ]);
       this.loadGlues();
     }
 
     loadGlues() {
       this.loading = true;
 
-      return this.Domain
-        .getGlueRecords(this.domain.name)
+      return this.Domain.getGlueRecords(this.domain.name)
         .then((hosts) => {
           this.glueHosts = hosts.map(host => ({ host }));
         })
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          this.Alerter.alertFromSWS(this.$scope.tr('domain_tab_GLUE_table_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('domain_tab_GLUE_table_error'),
+            err,
+            this.$scope.alerts.main,
+          );
           this.glueHosts = [];
         })
         .finally(() => {
@@ -58,11 +66,14 @@ angular.module('App').controller(
     }
 
     transformItem(host) {
-      return this.Domain.getGlueRecordDetail(this.domain.name, host.host)
-        .then((glueRecord) => {
-          _.set(glueRecord, 'hostToDisplay', this.DomainValidator.constructor.convertHostToUnicode(host.host));
-          return glueRecord;
-        });
+      return this.Domain.getGlueRecordDetail(this.domain.name, host.host).then((glueRecord) => {
+        _.set(
+          glueRecord,
+          'hostToDisplay',
+          this.DomainValidator.constructor.convertHostToUnicode(host.host),
+        );
+        return glueRecord;
+      });
     }
   },
 );

@@ -2,7 +2,7 @@ angular.module('directives').controller('cronSimpleSummaryCtrl', [
   '$scope',
   '$rootScope',
   'CronValidator',
-  function ($scope, $rootScope, CronValidator) {
+  ($scope, $rootScope, CronValidator) => {
     // Hack for trads
     $scope.tr = $rootScope.tr;
     $scope.trpl = $rootScope.trpl;
@@ -12,8 +12,7 @@ angular.module('directives').controller('cronSimpleSummaryCtrl', [
     $scope.cron = $scope.crontabObject.getCronValue();
 
     // Returns an array of selected items
-    $scope.getSimpleModeItems = function (field) {
-      return CronValidator.getSimpleModeItems($scope.cron, field);
-    };
+    $scope.getSimpleModeItems = field =>
+      CronValidator.getSimpleModeItems($scope.cron, field);
   },
 ]);

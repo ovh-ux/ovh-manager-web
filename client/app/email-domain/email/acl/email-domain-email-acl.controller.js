@@ -2,16 +2,24 @@ angular.module('App').controller(
   'EmailDomainEmailAclCtrl',
   class EmailDomainEmailAclCtrl {
     /**
-         * Constructor
-         * @param $scope
-         * @param $stateParams
-         * @param Alerter
-         * @param Emails
-         * @param User
-         * @param constants
-         * @param translator
-         */
-    constructor($scope, $stateParams, Alerter, Emails, User, constants, translator) {
+     * Constructor
+     * @param $scope
+     * @param $stateParams
+     * @param Alerter
+     * @param Emails
+     * @param User
+     * @param constants
+     * @param translator
+     */
+    constructor(
+      $scope,
+      $stateParams,
+      Alerter,
+      Emails,
+      User,
+      constants,
+      translator,
+    ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.Alerter = Alerter;
@@ -30,31 +38,44 @@ angular.module('App').controller(
         acls: false,
       };
 
-      this.User
-        .getUser()
+      this.User.getUser()
         .then((user) => {
-          const nicLanguage = _.find(this.translator.getAvailableLanguages(), language => _(language.value).endsWith(user.ovhSubsidiary));
+          const nicLanguage = _.find(
+            this.translator.getAvailableLanguages(),
+            language => _(language.value).endsWith(user.ovhSubsidiary),
+          );
           if (nicLanguage) {
-            this.createNicUrl.value = this.constants.WEBSITE_URLS.new_nic[nicLanguage.value];
+            this.createNicUrl.value = this.constants.WEBSITE_URLS.new_nic[
+              nicLanguage.value
+            ];
           }
         })
-        .catch(() => (this.createNicUrl.value = ''));
+        .catch(() => {
+          this.createNicUrl.value = '';
+        });
 
-      this.$scope.$on('hosting.tabs.emails.acls.refresh', () => this.refreshTableAcls());
+      this.$scope.$on('hosting.tabs.emails.acls.refresh', () =>
+        this.refreshTableAcls());
 
       this.refreshTableAcls();
     }
 
     addAcl() {
       this.loading.acls = true;
-      this.Emails
-        .createAcl(this.$stateParams.productId, this.addAclItem.value)
+      this.Emails.createAcl(this.$stateParams.productId, this.addAclItem.value)
         .then(() => {
-          this.Alerter.success(this.$scope.tr('email_tab_table_acls_add_success'), this.$scope.alerts.main);
+          this.Alerter.success(
+            this.$scope.tr('email_tab_table_acls_add_success'),
+            this.$scope.alerts.main,
+          );
           this.refreshTableAcls();
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('email_tab_table_acls_add_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_table_acls_add_error'),
+            err,
+            this.$scope.alerts.main,
+          );
           this.loading.acls = false;
         })
         .finally(() => {
@@ -67,10 +88,16 @@ angular.module('App').controller(
       this.loading.acls = true;
       this.acls = null;
 
-      return this.Emails
-        .getAcls(this.$stateParams.productId, forceRefresh)
-        .then(acls => (this.acls = acls))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('email_tab_table_acls_error'), err, this.$scope.alerts.main))
+      return this.Emails.getAcls(this.$stateParams.productId, forceRefresh)
+        .then((acls) => {
+          this.acls = acls;
+        })
+        .catch(err =>
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('email_tab_table_acls_error'),
+            err,
+            this.$scope.alerts.main,
+          ))
         .finally(() => {
           if (_.isEmpty(this.acls)) {
             this.loading.acls = false;

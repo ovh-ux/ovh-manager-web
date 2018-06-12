@@ -1,7 +1,17 @@
 angular.module('controllers').controller(
   'controllers.Domain.Dns',
   class DomainDnsCtrl {
-    constructor($scope, $filter, $q, $stateParams, Alerter, Domain, User, Validator, constants) {
+    constructor(
+      $scope,
+      $filter,
+      $q,
+      $stateParams,
+      Alerter,
+      Domain,
+      User,
+      Validator,
+      constants,
+    ) {
       this.$scope = $scope;
       this.$filter = $filter;
       this.$q = $q;
@@ -46,7 +56,11 @@ angular.module('controllers').controller(
           user: this.User.getUser(),
         })
         .then(({ serviceInfo, user }) => {
-          this.allowModification = serviceInfo && user && (serviceInfo.contactTech === user.nichandle || serviceInfo.contactAdmin === user.nichandle);
+          this.allowModification =
+            serviceInfo &&
+            user &&
+            (serviceInfo.contactTech === user.nichandle ||
+              serviceInfo.contactAdmin === user.nichandle);
         });
 
       this.init();
@@ -54,8 +68,7 @@ angular.module('controllers').controller(
 
     init() {
       this.loading.all = true;
-      return this.Domain
-        .getSelected(this.$stateParams.productId)
+      return this.Domain.getSelected(this.$stateParams.productId)
         .then((domain) => {
           this.domain = domain;
           this.isDnssecEnable = domain.dnssecStatus === 'ENABLED';
@@ -69,18 +82,26 @@ angular.module('controllers').controller(
     loadTable() {
       this.loading.table = true;
       this.dns.table = [];
-      return this.Domain
-        .getTabDns(this.$stateParams.productId)
+      return this.Domain.getTabDns(this.$stateParams.productId)
         .then((tabDns) => {
           this.dns.table = tabDns;
           this.dns.original = angular.copy(tabDns);
-          this.dns.activeDns = this.$filter('filter')(tabDns.dns, { isUsed: true, toDelete: false }).length;
-          return this.$q.all(_.map(tabDns.dns, nameServer => this.Domain.getNameServerStatus(this.$stateParams.productId, nameServer.id)));
+          this.dns.activeDns = this.$filter('filter')(tabDns.dns, {
+            isUsed: true,
+            toDelete: false,
+          }).length;
+          return this.$q.all(_.map(tabDns.dns, nameServer =>
+            this.Domain.getNameServerStatus(
+              this.$stateParams.productId,
+              nameServer.id,
+            )));
         })
         .then((nameServersStatus) => {
           if (!_.isEmpty(nameServersStatus)) {
             this.dnsStatus.isOk = !_.some(nameServersStatus, { state: 'ko' });
-            this.dnsStatus.isHosted = !_.some(nameServersStatus, { type: 'external' });
+            this.dnsStatus.isHosted = !_.some(nameServersStatus, {
+              type: 'external',
+            });
           }
         })
         .finally(() => {
@@ -94,12 +115,18 @@ angular.module('controllers').controller(
     }
 
     addNewLine() {
-      return this.dns.table.dns.length >= 10 || this.dns.table.dns.push({ editedHost: '', editedIp: '' });
+      return (
+        this.dns.table.dns.length >= 10 ||
+        this.dns.table.dns.push({ editedHost: '', editedIp: '' })
+      );
     }
 
     removeLine(item) {
       _.remove(this.dns.table.dns, item);
-      const filtered = _.filter(this.dns.table.dns, currentDNS => !currentDNS.toDelete);
+      const filtered = _.filter(
+        this.dns.table.dns,
+        currentDNS => !currentDNS.toDelete,
+      );
       this.atLeastOneToRemove = this.dns.table.dns && filtered.length > 1;
     }
 
@@ -111,37 +138,73 @@ angular.module('controllers').controller(
     }
 
     checkAtLeastOneDns() {
-      const filtered = _.filter(this.dns.table.dns, currentDNS => !currentDNS.toDelete && ((currentDNS.host && currentDNS.editedHost == null) || (currentDNS.editedHost && currentDNS.editedHost !== '')));
+      const filtered = _.filter(
+        this.dns.table.dns,
+        currentDNS =>
+          !currentDNS.toDelete &&
+          ((currentDNS.host && currentDNS.editedHost == null) ||
+            (currentDNS.editedHost && currentDNS.editedHost !== '')),
+      );
       this.atLeastOneDns = this.dns.table.dns && filtered.length > 0;
     }
 
     hostCheck(input) {
       const value = input.$viewValue;
-      input.$setValidity('domain', value === '' || this.Validator.isValidDomain(value));
+      input.$setValidity(
+        'domain',
+        value === '' || this.Validator.isValidDomain(value),
+      );
     }
 
     ipCheck(input) {
       const value = input.$viewValue;
-      input.$setValidity('ip', value === '' || this.Validator.isValidIpv4(value) || this.Validator.isValidIpv6(value));
+      input.$setValidity(
+        'ip',
+        value === '' ||
+          this.Validator.isValidIpv4(value) ||
+          this.Validator.isValidIpv6(value),
+      );
     }
 
     saveDns() {
-      let dns = _.filter(this.dns.table.dns, currentDNS => currentDNS.editedHost !== '' || currentDNS.editedIp);
+      let dns = _.filter(
+        this.dns.table.dns,
+        currentDNS => currentDNS.editedHost !== '' || currentDNS.editedIp,
+      );
 
       if (!_.isEmpty(dns)) {
         this.loading.table = true;
-        dns = _.map(dns, d => ({ host: d.editedHost || d.host, ip: d.editedIp || d.ip || undefined }));
+        dns = _.map(dns, d => ({
+          host: d.editedHost || d.host,
+          ip: d.editedIp || d.ip || undefined,
+        }));
 
         this.$q
-          .when(this.domain.managedByOvh ? this.Domain.updateNameServerType(this.$stateParams.productId, 'external') : null)
+          .when(this.domain.managedByOvh
+            ? this.Domain.updateNameServerType(
+              this.$stateParams.productId,
+              'external',
+            )
+            : null)
           .then(() => {
             this.domain.managedByOvh = false;
-            return this.Domain.updateDnsNameServerList(this.$stateParams.productId, dns);
+            return this.Domain.updateDnsNameServerList(
+              this.$stateParams.productId,
+              dns,
+            );
           })
-          .then(() => this.Alerter.success(this.$scope.i18n.domain_tab_DNS_update_success, this.$scope.alerts.main))
+          .then(() =>
+            this.Alerter.success(
+              this.$scope.i18n.domain_tab_DNS_update_success,
+              this.$scope.alerts.main,
+            ))
           .catch((err) => {
             _.set(err, 'type', err.type || 'ERROR');
-            this.Alerter.alertFromSWS(this.$scope.i18n.domain_tab_DNS_update_error, err, this.$scope.alerts.main);
+            this.Alerter.alertFromSWS(
+              this.$scope.i18n.domain_tab_DNS_update_error,
+              err,
+              this.$scope.alerts.main,
+            );
           })
           .finally(() => {
             this.editMode = false;
@@ -149,7 +212,10 @@ angular.module('controllers').controller(
           });
       }
 
-      this.dns.table.dns = _.filter(this.dns.table.dns, currentDNS => currentDNS.host || currentDNS.ip);
+      this.dns.table.dns = _.filter(
+        this.dns.table.dns,
+        currentDNS => currentDNS.host || currentDNS.ip,
+      );
       this.editMode = false;
     }
   },

@@ -39,12 +39,21 @@ angular.module('App').controller(
         params = { login: `%${this.filter.login}%` };
       }
 
-      this.HostingIndy.getIndys(this.$stateParams.productId, { params, forceRefresh })
+      this.HostingIndy.getIndys(this.$stateParams.productId, {
+        params,
+        forceRefresh,
+      })
         .then((ids) => {
           this.indyIds = ids;
-        }).catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_INDY_error'), err, this.$scope.alerts.main);
-        }).finally(() => {
+        })
+        .catch((err) => {
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('hosting_tab_INDY_error'),
+            err,
+            this.$scope.alerts.main,
+          );
+        })
+        .finally(() => {
           if (_.isEmpty(this.indyIds)) {
             this.loading = false;
           }
@@ -52,7 +61,9 @@ angular.module('App').controller(
     }
 
     transformItem(item) {
-      return this.HostingIndy.getIndy(this.$stateParams.productId, { login: item });
+      return this.HostingIndy.getIndy(this.$stateParams.productId, {
+        login: item,
+      });
     }
 
     onTransformItemDone() {
