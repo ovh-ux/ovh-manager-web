@@ -1,4 +1,5 @@
 module.exports = {
+    "extends": "airbnb-base",
     "env": {
         "node": true,
         "browser": true,
@@ -6,9 +7,6 @@ module.exports = {
         "jquery": true,
         "jasmine": true,
         "mocha": true
-    },
-    "extends": "ovh",
-    "rules": {
     },
     "globals": {
         "_": true,
