@@ -1,16 +1,6 @@
 <div>
     <div class="alert alert-dismissible alert-warning mb-0"
          role="alert"
-         data-ng-if="AppCtrl.userImportantAlertsMessages">
-        <button type="button" class="close" data-dismiss="alert" aria-label="{{i18n.wizard_close}}"></button>
-        <ul class="list-unstyled">
-            <li data-ng-repeat="message in AppCtrl.userImportantAlertsMessages track by $index"
-                data-ng-bind-html="message">
-            </li>
-        </ul>
-    </div>
-    <div class="alert alert-dismissible alert-warning mb-0"
-         role="alert"
          data-ng-if="AppCtrl.incidentMessage">
         <button type="button" class="close" data-dismiss="alert" aria-label="{{i18n.wizard_close}}"></button>
         <span data-ng-bind-html="AppCtrl.incidentMessage"></span>
