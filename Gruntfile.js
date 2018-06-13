@@ -459,7 +459,15 @@ module.exports = function (grunt) {
                 files: copyFromEachModules(["src.images"], "client/assets")
             },
             resources: {
-                files: copyFromEachModules(["resources.i18n"], "client/app")
+                files: [
+                    copyFromEachModules(["resources.i18n"], "client/app"),
+                    {
+                        expand: true,
+                        cwd: "<%= publicdir %>/core/translations",
+                        src: ["**"],
+                        dest: "<%= publicdir %>/resources/i18n/core"
+                    }
+                ]
             },
             css: {
                 files: copyFromEachModules(["src.css"], "client/app")

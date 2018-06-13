@@ -73,7 +73,6 @@
    <translation id="domain_configuration_dnssec_disable_modal_title" qtlid="219719">Wyłączanie usługi DNSSEC</translation>
    <translation id="domain_configuration_dnssec_disable_modal_explain" qtlid="219732">Wyłączanie usługi DNSSEC to długa operacja (około 24 godziny).</translation>
    <translation id="domain_configuration_dnssec_disable_modal_confirm" qtlid="219745">Kliknij na "Zatwierdź", aby wyłączyć usługę DNSSEC.</translation>
-   <translation id="domain_tab_SUMMARY" qtlid="4082">Podsumowanie</translation>
    <translation id="domain_tab_SUMMARY_dns_master" qtlid="30874">Serwery DNS</translation>
    <translation id="domain_tab_SUMMARY_dns_master_1" qtlid="148500">Serwer DNS</translation>
    <translation id="domain_tab_SUMMARY_dns_master_other" qtlid="30874">Serwery DNS</translation>
@@ -91,8 +90,6 @@
    <translation id="domain_configuration_action_disable" qtlid="90973">Wyłącz</translation>
    <translation id="domain_configuration_action_enable" qtlid="76734">Włącz</translation>
 
-   <translation id="domain_tab_GENERAL_INFORMATIONS" qtlid="27115">Informacje ogólne</translation>
-   <translation id="domain_tab_DNS" qtlid="366398">Serwery DNS</translation>
    <translation id="domain_tab_DNS_warning_only_one_dns" qtlid="228183">Uwaga, odradzamy posiadanie tylko jednego aktywnego serwera DNS.</translation>
    <translation id="domain_tab_DNS_ip" qtlid="211047">Przypisany adres IP </translation>
    <translation id="domain_tab_DNS_name" qtlid="148500">Serwer DNS</translation>
@@ -177,7 +174,6 @@
    <translation id="domain_tab_DNSSEC_tooltip_algorithm" qtlid="298851">Algorytm używany do wygenerowania klucza.</translation>
    <translation id="domain_tab_DNSSEC_tooltip_publickey" qtlid="298864">Wersja klucza publicznego zakodowana w base64.</translation>
 
-   <translation id="domain_tab_GLUE" qtlid="262280">GLUE</translation>
    <translation id="domain_tab_GLUE_heading" qtlid="270579">Spersonalizuj serwery DNS z własną nazwą domeny, aby pojawiały się one w bazach WHOIS. </translation>
    <translation id="domain_tab_GLUE_info" qtlid="293762">Możesz utworzyć własne serwery DNS z IPv4.</translation>
    <translation id="domain_tab_GLUE_title" qtlid="262293">Wpis GLUE</translation>
@@ -210,7 +206,6 @@
    <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Uwaga: aby rejestr Glue działał, po uprzednim potwierdzeniu zmień strefę DNS, dodając:<ul><li>pole A dla adresu IPv4,</li><li>pole typu AAAA dla adresu IPv6.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdomena</translation>
-   <translation id="domain_tab_ZONE" qtlid="45976">Strefa DNS</translation>
    <translation id="domain_tab_ZONE_named" qtlid="225101">Strefa DNS dla {0}</translation>
    <translation id="domain_tab_ZONE_search_placeholder" qtlid="213427">Wyszukiwanie domeny...</translation>
    <translation id="domain_tab_ZONE_type_placeholder" qtlid="122275">Wyszukiwanie...</translation>
@@ -327,11 +322,9 @@
 
    <translation id="domain_exemple" qtlid="182475">Przykład:</translation>
    <translation id="domain_and" qtlid="329057">i <b>{0}</b></translation>
-   <translation id="domain_tab_REDIRECTION" qtlid="46000">Przekierowanie</translation>
    <translation id="domain_tab_REDIRECTION_title" qtlid="270618">Zarządzaj przekierowaniami domen i subdomen na inne adresy www lub na inne serwery.</translation>
    <translation id="domain_tab_REDIRECTION_add_info" qtlid="270631">Dodawaj przekierowania domeny lub subdomen na inne adresy www lub na inne serwery.</translation>
    <translation id="domain_tab_REDIRECTION_load_fail" qtlid="364729">Wystąpił błąd podczas pobierania informacji o przekierowaniach.</translation>
-   <translation id="domain_tab_DNSSEC" qtlid="264719">Rekordy DS</translation>
 
    <translation id="domain_tab_REDIRECTION_csv_button" qtlid="231773">Eksportuj w formacie CSV</translation>
    <translation id="domain_tab_REDIRECTION_delete_success" qtlid="213453">Usunięcie przekierowania zostało zarejestrowane w naszym systemie.</translation>
@@ -695,7 +688,6 @@
    <translation id="domain_configuration_dnsanycast_how_to_activate_1" qtlid="344162">Jeśli chcesz korzystać z usług DNS Anycast, </translation>
    <translation id="domain_configuration_dnsanycast_how_to_activate_2" qtlid="344175">utwórz strefę DNS</translation>
 
-   <translation id="domain_tab_TASKS" qtlid="136217">Ostatnie zadania</translation>
    <translation id="domain_tab_TASKS_function" qtlid="61872">Zadanie</translation>
    <translation id="domain_tab_TASKS_todoDate" qtlid="26419">Data utworzenia</translation>
    <translation id="domain_tab_TASKS_comment" qtlid="233531">Szczegóły techniczne</translation>
@@ -721,7 +713,6 @@
    <translation id="domain_order_dns_anycast_error" qtlid="299410">Wystąpił błąd podczas generowania zamówienia.</translation>
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Twoje zamówienie zostało zaakceptowane. Kliknij <a href="#/billing/orders">tutaj, aby sprawdzić stan realizacji</a>.</translation>
 
-   <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
    <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST pozwala ustawić subdomenę tak, aby wskazywała na dynamiczny adres IP. Adres ten będzie aktualizowany w strefie DNS w przypadku każdej zmiany strefy.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Domena {0} nie ma strefy DNS.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Wystąpił błąd:</translation>

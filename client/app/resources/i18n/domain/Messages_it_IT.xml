@@ -73,7 +73,6 @@
    <translation id="domain_configuration_dnssec_disable_modal_title" qtlid="219719">Disattivazione di DNSSEC</translation>
    <translation id="domain_configuration_dnssec_disable_modal_explain" qtlid="219732">La disattivazione di DNSSEC può richiedere fino a 24 ore.</translation>
    <translation id="domain_configuration_dnssec_disable_modal_confirm" qtlid="219745">Clicca su "Conferma" per disattivare DNSSEC.</translation>
-   <translation id="domain_tab_SUMMARY" qtlid="4082">Riepilogo</translation>
    <translation id="domain_tab_SUMMARY_dns_master" qtlid="30874">Server DNS</translation>
    <translation id="domain_tab_SUMMARY_dns_master_1" qtlid="148500">Server DNS</translation>
    <translation id="domain_tab_SUMMARY_dns_master_other" qtlid="30874">Server DNS</translation>
@@ -91,8 +90,6 @@
    <translation id="domain_configuration_action_disable" qtlid="90973">Disattiva</translation>
    <translation id="domain_configuration_action_enable" qtlid="76734">Attiva</translation>
 
-   <translation id="domain_tab_GENERAL_INFORMATIONS" qtlid="27115">Informazioni generali</translation>
-   <translation id="domain_tab_DNS" qtlid="366398">Server DNS</translation>
    <translation id="domain_tab_DNS_warning_only_one_dns" qtlid="228183">Attenzione: è fortemente sconsigliato avere un solo DNS attivo.</translation>
    <translation id="domain_tab_DNS_ip" qtlid="211047">IP associato</translation>
    <translation id="domain_tab_DNS_name" qtlid="148500">Server DNS</translation>
@@ -180,7 +177,6 @@ Questa operazione reinizializza la configurazione corrente e trasferisce tutto s
    <translation id="domain_tab_DNSSEC_tooltip_algorithm" qtlid="298851">L’algoritmo utilizzato per generare la chiave.</translation>
    <translation id="domain_tab_DNSSEC_tooltip_publickey" qtlid="298864">Versione della chiave pubblica codificata in base64.</translation>
 
-   <translation id="domain_tab_GLUE" qtlid="262280">GLUE</translation>
    <translation id="domain_tab_GLUE_heading" qtlid="270579">Per visualizzare i tuoi server DNS nel database WHOIS, personalizzali qui con il tuo dominio.</translation>
    <translation id="domain_tab_GLUE_info" qtlid="293762">Crea i tuoi server DNS in IPv4.</translation>
    <translation id="domain_tab_GLUE_title" qtlid="262293">Record GLUE</translation>
@@ -213,7 +209,6 @@ Questa operazione reinizializza la configurazione corrente e trasferisce tutto s
    <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Attenzione: per il corretto funzionamento del record GLUE, dopo la conferma è necessario modificare la zona DNS aggiungendo:<ul><li>un record di tipo A per un indirizzo IPv4</li><li>un record di tipo AAAA per un indirizzo IPv6</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Sottodominio</translation>
-   <translation id="domain_tab_ZONE" qtlid="45976">Zona DNS</translation>
    <translation id="domain_tab_ZONE_named" qtlid="225101">Zona DNS di {0}</translation>
    <translation id="domain_tab_ZONE_search_placeholder" qtlid="213427">Ricerca dominio...</translation>
    <translation id="domain_tab_ZONE_type_placeholder" qtlid="122275">Ricerca...</translation>
@@ -337,11 +332,9 @@ Questa operazione reinizializza la configurazione corrente e trasferisce tutto s
 
    <translation id="domain_exemple" qtlid="182475">Esempio:</translation>
    <translation id="domain_and" qtlid="329057">e <b>{0}</b></translation>
-   <translation id="domain_tab_REDIRECTION" qtlid="46000">Reindirizzamento</translation>
    <translation id="domain_tab_REDIRECTION_title" qtlid="270618">Gestisci qui i reindirizzamenti dei tuoi domini e sottodomini verso altri indirizzi Web o server.</translation>
    <translation id="domain_tab_REDIRECTION_add_info" qtlid="270631">Aggiungi un reindirizzamento per il tuo dominio o sottodominio verso altri indirizzi Web o server.</translation>
    <translation id="domain_tab_REDIRECTION_load_fail" qtlid="364729">Si è verificato un problema durante il caricamento dei reindirizzamenti.</translation>
-   <translation id="domain_tab_DNSSEC" qtlid="264719">Record DS </translation>
 
    <translation id="domain_tab_REDIRECTION_csv_button" qtlid="231773">Esporta in CSV</translation>
    <translation id="domain_tab_REDIRECTION_delete_success" qtlid="213453">La richiesta di eliminazione del reindirizzamento è stata presa in carico.</translation>
@@ -713,7 +706,6 @@ Questa operazione reinizializza la configurazione corrente e trasferisce tutto s
    <translation id="domain_configuration_dnsanycast_how_to_activate_1" qtlid="344162">Per attivare DNS Anycast, è necessario</translation>
    <translation id="domain_configuration_dnsanycast_how_to_activate_2" qtlid="344175">creare una zona DNS</translation>
 
-   <translation id="domain_tab_TASKS" qtlid="136217">Task recenti</translation>
    <translation id="domain_tab_TASKS_function" qtlid="61872">Operazione</translation>
    <translation id="domain_tab_TASKS_todoDate" qtlid="26419">Data di creazione</translation>
    <translation id="domain_tab_TASKS_comment" qtlid="233531">Dettagli tecnici</translation>
@@ -739,7 +731,6 @@ Questa operazione reinizializza la configurazione corrente e trasferisce tutto s
    <translation id="domain_order_dns_anycast_error" qtlid="299410">Si è verificato un errore durante la generazione del tuo buono d'ordine.</translation>
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Il tuo ordine è stato convalidato correttamente. Clicca <a href="#/billing/orders">qui per visualizzare lo stato del tuo ordine</a>.</translation>
 
-   <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
    <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST ti permette di far puntare un sottodominio verso un indirizzo IP dinamico che sarà aggiornato nella tua zona DNS ogni volta che viene modificata.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Il dominio {0} non ha una zona DNS.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Si è verificato un errore:</translation>

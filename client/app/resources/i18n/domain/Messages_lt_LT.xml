@@ -73,7 +73,6 @@
    <translation id="domain_configuration_dnssec_disable_modal_title" qtlid="219719">DNSSEC išjungimas</translation>
    <translation id="domain_configuration_dnssec_disable_modal_explain" qtlid="219732">DNSSEC išjungimas yra santykinai ilga operacija (trunka apie 24 val.).</translation>
    <translation id="domain_configuration_dnssec_disable_modal_confirm" qtlid="219745">Spragtelėkite "Patvirtinti", kad išjungtumėte DNSSEC.</translation>
-   <translation id="domain_tab_SUMMARY" qtlid="4082">Santrauka</translation>
    <translation id="domain_tab_SUMMARY_dns_master" qtlid="30874">DNS serveriai</translation>
    <translation id="domain_tab_SUMMARY_dns_master_1" qtlid="148500">DNS serveris</translation>
    <translation id="domain_tab_SUMMARY_dns_master_other" qtlid="30874">DNS serveriai</translation>
@@ -91,8 +90,6 @@
    <translation id="domain_configuration_action_disable" qtlid="90973">Išjungti</translation>
    <translation id="domain_configuration_action_enable" qtlid="76734">Įjungti</translation>
 
-   <translation id="domain_tab_GENERAL_INFORMATIONS" qtlid="27115">Pagrindinė informacija</translation>
-   <translation id="domain_tab_DNS" qtlid="366398">DNS serveriai</translation>
    <translation id="domain_tab_DNS_warning_only_one_dns" qtlid="228183">Dėmesio, griežtai nerekomenduojame naudoti tik vieno DNS serverio.</translation>
    <translation id="domain_tab_DNS_ip" qtlid="211047">Susietas IP</translation>
    <translation id="domain_tab_DNS_name" qtlid="148500">DNS serveris</translation>
@@ -176,7 +173,6 @@
    <translation id="domain_tab_DNSSEC_tooltip_algorithm" qtlid="298851">Panaudotas rakto generavimo algoritmas.</translation>
    <translation id="domain_tab_DNSSEC_tooltip_publickey" qtlid="298864">Viešasis raktas, užsifruotas base64.</translation>
 
-   <translation id="domain_tab_GLUE" qtlid="262280">GLUE</translation>
    <translation id="domain_tab_GLUE_heading" qtlid="270579">Personalizuokite DNS serverius su savo domenu, kad jie būtų paskelbti WHOIS duomenų bazėje.</translation>
    <translation id="domain_tab_GLUE_info" qtlid="293762">Jūs galite sukurti nuosavus DNS serverius IPv4.</translation>
    <translation id="domain_tab_GLUE_title" qtlid="262293">GLUE įrašas</translation>
@@ -209,7 +205,6 @@
    <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Dėmesio: po patvirtinimo, siekiant užtikrinti jūsų GLUE įrašo veikimą, jūs turėtumėte pakeisti savo DNS zoną pridedant:<ul><li>A lauką IPv4 adresui,</li><li>AAAA lauką IPv6 adresui.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdomenas</translation>
-   <translation id="domain_tab_ZONE" qtlid="45976">DNS zona</translation>
    <translation id="domain_tab_ZONE_named" qtlid="225101">{0} DNS zona </translation>
    <translation id="domain_tab_ZONE_search_placeholder" qtlid="213427">Domeno paieška ...</translation>
    <translation id="domain_tab_ZONE_type_placeholder" qtlid="122275">Ieškoma...</translation>
@@ -326,11 +321,9 @@
 
    <translation id="domain_exemple" qtlid="182475">Pvz.:</translation>
    <translation id="domain_and" qtlid="329057">ir <b>{0}</b></translation>
-   <translation id="domain_tab_REDIRECTION" qtlid="46000">Peradresavimas</translation>
    <translation id="domain_tab_REDIRECTION_title" qtlid="270618">Valdykite visus domenų ir subdomenų nukreipimus į kitus žiniatinklio adresus ar serverius.  </translation>
    <translation id="domain_tab_REDIRECTION_add_info" qtlid="270631">Pridėkite jūsų domeno ar subdomeno nukreipimą į kitą žiniatinklio adresą ar serverį. </translation>
    <translation id="domain_tab_REDIRECTION_load_fail" qtlid="364729">Įkraunant nukreipimus įvyko klaida.</translation>
-   <translation id="domain_tab_DNSSEC" qtlid="264719">DS įrašai</translation>
 
    <translation id="domain_tab_REDIRECTION_csv_button" qtlid="231773">Eksportuoti CSV formatu</translation>
    <translation id="domain_tab_REDIRECTION_delete_success" qtlid="213453">Nukreipimo trynimas buvo atliktas sėkmingai.</translation>
@@ -694,7 +687,6 @@
    <translation id="domain_configuration_dnsanycast_how_to_activate_1" qtlid="344162">Norėdami įjungti DNS Anycast, pirmiausiai turite</translation>
    <translation id="domain_configuration_dnsanycast_how_to_activate_2" qtlid="344175">sukurti DNS zoną</translation>
 
-   <translation id="domain_tab_TASKS" qtlid="136217">Paskutinės užduotys</translation>
    <translation id="domain_tab_TASKS_function" qtlid="61872">Užduotis</translation>
    <translation id="domain_tab_TASKS_todoDate" qtlid="26419">Sukūrimo data</translation>
    <translation id="domain_tab_TASKS_comment" qtlid="233531">Techninės detalės</translation>
@@ -720,7 +712,6 @@
    <translation id="domain_order_dns_anycast_error" qtlid="299410">Įvyko klaida generuojant užsakymą.</translation>
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Jūsų užsakymas sėkmingai patvirtintas. Paspaudę <a href="#/billing/orders">čia galėsite stebėti užsakymo vykdymo eigą</a>.</translation>
 
-   <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
    <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST jums leidžia nukreipti subdomeną į dinaminį IP adresą, atnaujinamą jūsų DNS zonoje kaskart, kai ji keičiama.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Domenas {0} neturi DNS zonos.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Įvyko klaida:</translation>

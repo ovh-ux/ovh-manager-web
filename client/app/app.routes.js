@@ -6,7 +6,8 @@ angular.module("App").config(($stateProvider) => {
         url: "",
         controller: "AppCtrl",
         controllerAs: "AppCtrl",
-        templateUrl: "app.html"
+        templateUrl: "app.html",
+        translations: ["core"]
     });
 
     $stateProvider.state("app.microsoft", {

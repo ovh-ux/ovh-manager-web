@@ -13,6 +13,7 @@ angular.module("App").config(($stateProvider) => {
         controller: "EmailDomainCtrl",
         controllerAs: "ctrlEmailDomain",
         reloadOnSearch: false,
+        translations: ["email", "hosting"],
         resolve: {
             currentSection: () => "email_domain",
             navigationInformations: [
@@ -36,6 +37,7 @@ angular.module("App").config(($stateProvider) => {
         controller: "EmailDelegateCtrl",
         controllerAs: "ctrlEmailDelegate",
         reloadOnSearch: false,
+        translations: ["email"],
         resolve: {
             currentSection: () => "email_delegate",
             navigationInformations: [

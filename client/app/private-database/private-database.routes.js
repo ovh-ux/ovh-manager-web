@@ -6,6 +6,7 @@ angular.module("App").config(($stateProvider) => {
         templateUrl: "private-database/private-database.html",
         controller: "PrivateDatabaseCtrl",
         reloadOnSearch: false,
+        translations: ["privateDatabase", "hosting"],
         resolve: {
             navigationInformations: [
                 "Navigator",
@@ -26,6 +27,7 @@ angular.module("App").config(($stateProvider) => {
         url: "/configuration/private_database",
         templateUrl: "private-database/order/private-database-order.html",
         controller: "PrivateDatabaseOrderCtrl",
+        translations: ["privateDatabase"],
         resolve: {
             navigationInformations: [
                 "Navigator",
@@ -50,6 +52,7 @@ angular.module("App").config(($stateProvider) => {
         },
         templateUrl: "private-database/order/sql-database-order.html",
         controller: "SqlDatabaseOrderCtrl",
+        translations: ["privateDatabase"],
         resolve: {
             navigationInformations: [
                 "Navigator",

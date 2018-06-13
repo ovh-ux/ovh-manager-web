@@ -6,6 +6,7 @@ angular.module("App").config(($stateProvider) => {
         templateUrl: "domain-operation/domain-operation.html",
         controller: "DomainOperationCtrl",
         controllerAs: "ctrlOperations",
+        translations: ["domain", "domainsOperations"],
         resolve: {
             navigationInformations: [
                 "Navigator",
@@ -27,6 +28,7 @@ angular.module("App").config(($stateProvider) => {
         templateUrl: "domain-operation/progress/domain-operation-progress.html",
         controller: "DomainOperationProgressCtrl",
         controllerAs: "ctrlDomainOperationProgress",
+        translations: ["domain", "domainsOperations"],
         resolve: {
             navigationInformations: [
                 "Navigator",

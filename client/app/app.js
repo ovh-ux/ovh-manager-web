@@ -399,10 +399,12 @@ angular
         }
     ])
     .run([
-        "translator",
-        (translator) => {
+        "translator", "$translatePartialLoader",
+        (translator, $translatePartialLoader) => {
             "use strict";
+
             translator.load(["core", "doubleAuth"]);
+            $translatePartialLoader.addPart("core");
 
             const selectedLanguage = translator.getSelectedAvailableLanguage();
             const selectedLanguageValue = _(selectedLanguage).get("value", null);
@@ -449,6 +451,9 @@ angular
             return $sanitize(translationId);
         };
     })
+    .config(($httpProvider) => {
+        $httpProvider.interceptors.push("translateInterceptor");
+    })
     .config((LANGUAGES, $translateProvider, constants) => {
         "use strict";
 
@@ -472,68 +477,6 @@ angular
         $translateProvider.use(defaultLanguage);
         $translateProvider.fallbackLanguage("fr_FR");
     })
-    .config(($transitionsProvider, $httpProvider) => {
-        "use strict";
-
-        $httpProvider.interceptors.push("translateInterceptor");
-
-        $transitionsProvider.onBefore({}, (transition) => {
-
-            transition.addResolvable({
-                token: "translations",
-                deps: ["$translate", "$translatePartialLoader"],
-                resolveFn: ($translate, $translatePartialLoader) => {
-                    const state = transition.to();
-
-                    if (state.translations) {
-
-                        const templateUrlTab = [];
-                        let translationsTab = state.translations;
-
-                        if (state.views) {
-                            angular.forEach(state.views, (value) => {
-
-                                if (_.isUndefined(value.noTranslations) && !value.noTranslations) {
-                                    if (value.templateUrl) {
-                                        templateUrlTab.push(value.templateUrl);
-                                    }
-                                    if (value.translations) {
-                                        translationsTab = _.union(translationsTab, value.translations);
-                                    }
-                                }
-
-                            });
-                        }
-
-                        angular.forEach(templateUrlTab, (templateUrl) => {
-                            let routeTmp = templateUrl.substring(templateUrl.indexOf("/") + 1, templateUrl.lastIndexOf("/"));
-                            let index = routeTmp.lastIndexOf("/");
-
-                            while (index > 0) {
-                                translationsTab.push(routeTmp);
-                                routeTmp = routeTmp.substring(0, index);
-                                index = routeTmp.lastIndexOf("/");
-                            }
-
-                            translationsTab.push(routeTmp);
-                        });
-
-                        // mmmhhh... It seems that we have to refresh after each time a part is added
-
-                        translationsTab = _.uniq(translationsTab);
-
-                        angular.forEach(translationsTab, (part) => {
-                            $translatePartialLoader.addPart(part);
-                        });
-
-                        return $translate.refresh();
-                    }
-
-                    return null;
-                }
-            }); // translation.addResolvable
-        }); // translationProvider.onBefore
-    })
     .config((OtrsPopupProvider, constants) => {
         OtrsPopupProvider.setBaseUrlTickets(_.get(constants, "REDIRECT_URLS.listTicket", null));
     })
@@ -549,47 +492,47 @@ angular
         labs: "https://www.ovh.com/manager/sunrise/uxlabs/#!/"
     })
     .run(($rootScope, $transitions, translator,
+          $translate, $translatePartialLoader,
           ouiDatagridConfiguration, ouiPaginationConfiguration,
           ouiFieldConfiguration, ouiStepperConfiguration) => {
         "use strict";
 
-        const removeHook = $transitions.onSuccess({}, () => {
+        $translatePartialLoader.addPart("core");
+        $translate.refresh().then(() => {
             ouiDatagridConfiguration.translations = {
-                emptyPlaceholder: translator.tr("common_ouidatagrid_nodata")
+                emptyPlaceholder: $translate.instant("common_ouidatagrid_nodata")
             };
 
             ouiPaginationConfiguration.translations = {
-                resultsPerPage: translator.tr("common_ouipagination_resultsperpage"),
-                ofNResults: translator.tr("common_ouipagination_ofnresults")
+                resultsPerPage: $translate.instant("common_ouipagination_resultsperpage"),
+                ofNResults: $translate.instant("common_ouipagination_ofnresults")
                     .replace("TOTAL_ITEMS", "{{totalItems}}"),
-                currentPageOfPageCount: translator.tr("common_ouipagination_currentpageofpagecount")
+                currentPageOfPageCount: $translate.instant("common_ouipagination_currentpageofpagecount")
                     .replace("CURRENT_PAGE", "{{currentPage}}")
                     .replace("PAGE_COUNT", "{{pageCount}}"),
-                previousPage: translator.tr("common_ouipagination_previous"),
-                nextPage: translator.tr("common_ouipagination_next")
+                previousPage: $translate.instant("common_ouipagination_previous"),
+                nextPage: $translate.instant("common_ouipagination_next")
             };
 
             ouiFieldConfiguration.translations = {
                 errors: {
-                    required: translator.tr("common_field_error_required"),
-                    number: translator.tr("common_field_error_number"),
-                    email: translator.tr("common_field_error_email"),
-                    min: translator.tr("common_field_error_min", { min: "{{min}}" }),
-                    max: translator.tr("common_field_error_max", { max: "{{max}}" }),
-                    minlength: translator.tr("common_field_error_minlength", { minlength: "{{minlength}}" }),
-                    maxlength: translator.tr("common_field_error_maxlength", { maxlength: "{{maxlength}}" }),
-                    pattern: translator.tr("common_field_error_pattern")
+                    required: $translate.instant("common_field_error_required"),
+                    number: $translate.instant("common_field_error_number"),
+                    email: $translate.instant("common_field_error_email"),
+                    min: $translate.instant("common_field_error_min", { min: "{{min}}" }),
+                    max: $translate.instant("common_field_error_max", { max: "{{max}}" }),
+                    minlength: $translate.instant("common_field_error_minlength", { minlength: "{{minlength}}" }),
+                    maxlength: $translate.instant("common_field_error_maxlength", { maxlength: "{{maxlength}}" }),
+                    pattern: $translate.instant("common_field_error_pattern")
                 }
             };
 
             ouiStepperConfiguration.translations = {
-                optionalLabel: translator.tr("common_stepper_optional_label"),
-                modifyThisStep: translator.tr("common_stepper_modify_this_step"),
-                skipThisStep: translator.tr("common_stepper_skip_this_step"),
-                nextButtonLabel: translator.tr("common_stepper_next_button_label"),
-                submitButtonLabel: translator.tr("common_stepper_submit_button_label")
+                optionalLabel: $translate.instant("common_stepper_optional_label"),
+                modifyThisStep: $translate.instant("common_stepper_modify_this_step"),
+                skipThisStep: $translate.instant("common_stepper_skip_this_step"),
+                nextButtonLabel: $translate.instant("common_stepper_next_button_label"),
+                submitButtonLabel: $translate.instant("common_stepper_submit_button_label")
             };
-
-            removeHook();
         });
     });

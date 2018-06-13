@@ -73,7 +73,6 @@
    <translation id="domain_configuration_dnssec_disable_modal_title" qtlid="219719">DNSSEC käytöstä poisto</translation>
    <translation id="domain_configuration_dnssec_disable_modal_explain" qtlid="219732">DNSSECin poistoon käytöstä kestää verrattain kauan (noin 24 tuntia).</translation>
    <translation id="domain_configuration_dnssec_disable_modal_confirm" qtlid="219745">Klikkaa "Vahvista" aloittaaksesi DNSSECin käytöstä poistamisen.</translation>
-   <translation id="domain_tab_SUMMARY" qtlid="4082">Yhteenveto</translation>
    <translation id="domain_tab_SUMMARY_dns_master" qtlid="30874">Nimipalvelimet</translation>
    <translation id="domain_tab_SUMMARY_dns_master_1" qtlid="148500">Nimipalvelin</translation>
    <translation id="domain_tab_SUMMARY_dns_master_other" qtlid="30874">Nimipalvelimet</translation>
@@ -91,8 +90,6 @@
    <translation id="domain_configuration_action_disable" qtlid="90973">Poista käytöstä</translation>
    <translation id="domain_configuration_action_enable" qtlid="76734">Aktivoi</translation>
 
-   <translation id="domain_tab_GENERAL_INFORMATIONS" qtlid="27115">Yleiset tiedot</translation>
-   <translation id="domain_tab_DNS" qtlid="366398">Nimipalvelimet</translation>
    <translation id="domain_tab_DNS_warning_only_one_dns" qtlid="228183">Huomio, ei ole suotavaa käyttää vain yhtä aktiivista DNS-palvelinta.</translation>
    <translation id="domain_tab_DNS_ip" qtlid="211047">Määritetty IP</translation>
    <translation id="domain_tab_DNS_name" qtlid="148500">Nimipalvelin</translation>
@@ -176,7 +173,6 @@
    <translation id="domain_tab_DNSSEC_tooltip_algorithm" qtlid="298851">Avaimen muodostamiseen käytetty algoritmi.</translation>
    <translation id="domain_tab_DNSSEC_tooltip_publickey" qtlid="298864">Julkisen avaimen base64-salattu versio.</translation>
 
-   <translation id="domain_tab_GLUE" qtlid="262280">GLUE</translation>
    <translation id="domain_tab_GLUE_heading" qtlid="270579">Täällä voi kustomoida nimipalvelimet omalla verkkotunnuksella, jotta ne näkyvät WHOIS-kannoissa.</translation>
    <translation id="domain_tab_GLUE_info" qtlid="293762">Voit luoda omia IPv4-nimipalvelimia.</translation>
    <translation id="domain_tab_GLUE_title" qtlid="262293">GLUE-tietue</translation>
@@ -209,7 +205,6 @@
    <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Huomio, vahvistuksen jälkeen ja jotta GLUE-rekisterisi toimii, sinun on muokattava DNS-aluettasi lisäämällä:<ul><li>A-tyypin kenttä IPv4-osoitteelle,</li><li>AAAA-tyypin kenttä IPv6-osoitteelle.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Aliverkkotunnus</translation>
-   <translation id="domain_tab_ZONE" qtlid="45976">DNS-alue</translation>
    <translation id="domain_tab_ZONE_named" qtlid="225101">DNS-alue {0}</translation>
    <translation id="domain_tab_ZONE_search_placeholder" qtlid="213427">Etsitään verkkotunnusta...</translation>
    <translation id="domain_tab_ZONE_type_placeholder" qtlid="122275">Haetaan…</translation>
@@ -326,11 +321,9 @@
 
    <translation id="domain_exemple" qtlid="182475">Esim.:</translation>
    <translation id="domain_and" qtlid="329057">ja <b>{0}</b></translation>
-   <translation id="domain_tab_REDIRECTION" qtlid="46000">Uudelleenohjaus</translation>
    <translation id="domain_tab_REDIRECTION_title" qtlid="270618">Täällä voit hallinnoida verkkotunnusten ja aliverkkotunnusten uudelleenohjauksia muihin nettiosoitteisiin ja muille palvelimille.</translation>
    <translation id="domain_tab_REDIRECTION_add_info" qtlid="270631">Verkkotunnuksen tai aliverkkotunnuksen uudelleenohjauksen lisäys toiseen nettiosoitteeseen tai toiselle palvelimelle.</translation>
    <translation id="domain_tab_REDIRECTION_load_fail" qtlid="364729">Tapahtui virhe uudelleenohjausten lataamisessa.</translation>
-   <translation id="domain_tab_DNSSEC" qtlid="264719">DS Records</translation>
 
    <translation id="domain_tab_REDIRECTION_csv_button" qtlid="231773">CSV-vienti</translation>
    <translation id="domain_tab_REDIRECTION_delete_success" qtlid="213453">Uudellenohjauksen poisto on rekisteröity.</translation>
@@ -694,7 +687,6 @@
    <translation id="domain_configuration_dnsanycast_how_to_activate_1" qtlid="344162">Luo DNS Anycast -palvelun aktivoimiseksi</translation>
    <translation id="domain_configuration_dnsanycast_how_to_activate_2" qtlid="344175">ensin DNS-alue</translation>
 
-   <translation id="domain_tab_TASKS" qtlid="136217">Viimeaikaiset tehtävät</translation>
    <translation id="domain_tab_TASKS_function" qtlid="61872">Tehtävä</translation>
    <translation id="domain_tab_TASKS_todoDate" qtlid="26419">Luontipäivä</translation>
    <translation id="domain_tab_TASKS_comment" qtlid="233531">Tekniset tiedot</translation>
@@ -720,7 +712,6 @@
    <translation id="domain_order_dns_anycast_error" qtlid="299410">Tapahtui virhe tilausvahvistuksen luomisessa.</translation>
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Tilauksesi on vahvistettu. Klikkaa <a href="#/billing/orders">tästä seurataksesi tilauksen etenemistä</a>.</translation>
 
-   <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
    <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST-palvelulla voit asettaa aliverkkotunnuksesi osoittamaan kohti dynaamista IP-osoitetta. Tämä jälkimmäinen päivittyy DNS-alueellasi jokaisen alueen muutoksen myötä.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Verkkotunnuksella {0} ei ole DNS-aluetta.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Tapahtui virhe:</translation>

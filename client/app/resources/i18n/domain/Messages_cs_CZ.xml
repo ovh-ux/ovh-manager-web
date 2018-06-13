@@ -73,7 +73,6 @@
    <translation id="domain_configuration_dnssec_disable_modal_title" qtlid="219719">Deaktivace DNSSEC</translation>
    <translation id="domain_configuration_dnssec_disable_modal_explain" qtlid="219732">Deaktivace DNSSEC probíhá zhruba 24 hodin.</translation>
    <translation id="domain_configuration_dnssec_disable_modal_confirm" qtlid="219745">Pro deaktivaci DNSSEC klikněte na "Schválit",</translation>
-   <translation id="domain_tab_SUMMARY" qtlid="4082">Shrnutí</translation>
    <translation id="domain_tab_SUMMARY_dns_master" qtlid="30874">Server DNS</translation>
    <translation id="domain_tab_SUMMARY_dns_master_1" qtlid="148500">DNS server</translation>
    <translation id="domain_tab_SUMMARY_dns_master_other" qtlid="30874">Server DNS</translation>
@@ -91,8 +90,6 @@
    <translation id="domain_configuration_action_disable" qtlid="90973">Deaktivovat</translation>
    <translation id="domain_configuration_action_enable" qtlid="76734">Aktivovat</translation>
 
-   <translation id="domain_tab_GENERAL_INFORMATIONS" qtlid="27115">Základní informace</translation>
-   <translation id="domain_tab_DNS" qtlid="366398">DNS servery</translation>
    <translation id="domain_tab_DNS_warning_only_one_dns" qtlid="228183">Pozor: je důrazně doporučeno mít více jak jeden aktivní DNS server.</translation>
    <translation id="domain_tab_DNS_ip" qtlid="211047">přiřazená IP</translation>
    <translation id="domain_tab_DNS_name" qtlid="148500">DNS server</translation>
@@ -176,7 +173,6 @@
    <translation id="domain_tab_DNSSEC_tooltip_algorithm" qtlid="298851">Algoritmus použitý pro generování klíče.</translation>
    <translation id="domain_tab_DNSSEC_tooltip_publickey" qtlid="298864">Veřejný klíč je kódován pomocí base64.</translation>
 
-   <translation id="domain_tab_GLUE" qtlid="262280">GLUE</translation>
    <translation id="domain_tab_GLUE_heading" qtlid="270579">Přizpůsobte své DNS servery zadáním své domény pro správné zobrazení v databázi WHOIS.</translation>
    <translation id="domain_tab_GLUE_info" qtlid="293762">Můžete si vytvořit vlastní DNS servery v rámci IPv4.</translation>
    <translation id="domain_tab_GLUE_title" qtlid="262293">Glue záznam</translation>
@@ -209,7 +205,6 @@
    <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Pozor, za účelem správné funkčnosti záznamu GLUE bude k DNS zóně zapotřebí přidat následující záznamy: <ul><li>A záznam pro adresy IPv4,</li><li>AAAA záznam pro adresu IPv6.</li></ul></translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdoména</translation>
-   <translation id="domain_tab_ZONE" qtlid="45976">DNS zóna</translation>
    <translation id="domain_tab_ZONE_named" qtlid="225101">DNS zóna {0}</translation>
    <translation id="domain_tab_ZONE_search_placeholder" qtlid="213427">Vyhledávání domény...</translation>
    <translation id="domain_tab_ZONE_type_placeholder" qtlid="122275">Vyhledávání...</translation>
@@ -329,11 +324,9 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
 
    <translation id="domain_exemple" qtlid="182475">Příklad:</translation>
    <translation id="domain_and" qtlid="329057">a <b>{0}</b></translation>
-   <translation id="domain_tab_REDIRECTION" qtlid="46000">Přesměrování</translation>
    <translation id="domain_tab_REDIRECTION_title" qtlid="270618">Správa přesměrování Vaší domény a subdomén na další webové adresy nebo servery.</translation>
    <translation id="domain_tab_REDIRECTION_add_info" qtlid="270631">Přidat přesměrování Vaší domény nebo subdomén na další webové adresy nebo servery.</translation>
    <translation id="domain_tab_REDIRECTION_load_fail" qtlid="364729">Při načítání informací o přesměrováni došlo k chybě.</translation>
-   <translation id="domain_tab_DNSSEC" qtlid="264719">DS záznamy</translation>
 
    <translation id="domain_tab_REDIRECTION_csv_button" qtlid="231773">Export do CSV</translation>
    <translation id="domain_tab_REDIRECTION_delete_success" qtlid="213453">Vymazání přesměrování bylo úspěšně přijato.</translation>
@@ -697,7 +690,6 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_dnsanycast_how_to_activate_1" qtlid="344162">Pro aktivaci DNS Anycast nejprve</translation>
    <translation id="domain_configuration_dnsanycast_how_to_activate_2" qtlid="344175">vytvořit zónu DNS</translation>
 
-   <translation id="domain_tab_TASKS" qtlid="136217">Nedávné úkoly</translation>
    <translation id="domain_tab_TASKS_function" qtlid="61872">Úkol</translation>
    <translation id="domain_tab_TASKS_todoDate" qtlid="26419">Datum vytvoření</translation>
    <translation id="domain_tab_TASKS_comment" qtlid="233531">Technické detaily</translation>
@@ -723,7 +715,6 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_order_dns_anycast_error" qtlid="299410">Při vytváření objednávky došlo k chybě.</translation>
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Vaše objednávka byla úspěšně schválena. Pro více informací o průběhu <a href="#/billing/orders">klikněte sem</a>.</translation>
 
-   <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
    <translation id="domain_tab_DYNHOST_title" qtlid="448041">DynHOST umožňuje směrovat subdoménu na dynamickou IP adresu, která bude ve Vaší DNS zóně aktualizována při každé změně nastavení.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Doména {0} nemá DNS zónu.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Objevila se chyba:</translation>

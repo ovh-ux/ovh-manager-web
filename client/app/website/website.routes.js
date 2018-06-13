@@ -7,6 +7,7 @@ angular.module("App").config(($stateProvider) => {
         controller: "WebSiteConfigurationCtrl",
         controllerAs: "webSiteConfigurationCtrl",
         reloadOnSearch: false,
+        translations: ["domain", "hosting", "website"],
         resolve: {
             navigationInformations: [
                 "Navigator",
@@ -30,6 +31,7 @@ angular.module("App").config(($stateProvider) => {
         controller: "WebSiteSuccessCtrl",
         controllerAs: "webSiteSuccessCtrl",
         reloadOnSearch: false,
+        translations: ["domain", "hosting", "website"],
         resolve: {
             navigationInformations: [
                 "Navigator",

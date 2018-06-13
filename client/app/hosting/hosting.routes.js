@@ -9,6 +9,7 @@ angular.module("App").config(($stateProvider) => {
         params: {
             tab: null
         },
+        translations: ["hosting"],
         resolve: {
             navigationInformations: [
                 "Navigator",

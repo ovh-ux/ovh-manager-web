@@ -73,7 +73,6 @@
    <translation id="domain_configuration_dnssec_disable_modal_title" qtlid="219719">Het deactiveren van de DNSSEC</translation>
    <translation id="domain_configuration_dnssec_disable_modal_explain" qtlid="219732">Het deactiveren van DNSSEC is een relatief langdurig proces (ongeveer 24 uur).</translation>
    <translation id="domain_configuration_dnssec_disable_modal_confirm" qtlid="219745">Klik op "Valideren" om te beginnen met het deactiveren van DNSSEC.</translation>
-   <translation id="domain_tab_SUMMARY" qtlid="4082">Overzicht</translation>
    <translation id="domain_tab_SUMMARY_dns_master" qtlid="30874">DNS-servers</translation>
    <translation id="domain_tab_SUMMARY_dns_master_1" qtlid="148500">DNS-server</translation>
    <translation id="domain_tab_SUMMARY_dns_master_other" qtlid="30874">DNS-servers</translation>
@@ -91,8 +90,6 @@
    <translation id="domain_configuration_action_disable" qtlid="90973">Deactiveren</translation>
    <translation id="domain_configuration_action_enable" qtlid="76734">Activeren</translation>
 
-   <translation id="domain_tab_GENERAL_INFORMATIONS" qtlid="27115">Algemene informatie</translation>
-   <translation id="domain_tab_DNS" qtlid="366398">DNS servers</translation>
    <translation id="domain_tab_DNS_warning_only_one_dns" qtlid="228183">Let op, het wordt sterk aangeraden om slechts één actieve DNS-server te hebben.</translation>
    <translation id="domain_tab_DNS_ip" qtlid="211047">Toegewezen IP </translation>
    <translation id="domain_tab_DNS_name" qtlid="148500">DNS-server</translation>
@@ -176,7 +173,6 @@
    <translation id="domain_tab_DNSSEC_tooltip_algorithm" qtlid="298851">Het gebruikte algoritme om de key te genereren. </translation>
    <translation id="domain_tab_DNSSEC_tooltip_publickey" qtlid="298864">base64 gecodeerde openbare key. </translation>
 
-   <translation id="domain_tab_GLUE" qtlid="262280">GLUE</translation>
    <translation id="domain_tab_GLUE_heading" qtlid="270579">Personaliseer uw DNS servers hier met uw domeinnaam zodat ze in de WHOIS database weergegeven kunnen worden. </translation>
    <translation id="domain_tab_GLUE_info" qtlid="293762">U kunt uw eigen DNS servers aanmaken in Iv4. </translation>
    <translation id="domain_tab_GLUE_title" qtlid="262293">Glue registratie</translation>
@@ -209,7 +205,6 @@
    <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Belangrijk - na validatie moet u uw DNS-zone aanpassen door het volgende toe te voegen: <ul><li>een A-record voor een IPv4-adres, </li><li> en een AAAA-veld voor een IPv6-adres. </Li></ul>U moet dit doen om uw gluerecord te laten functioneren.</translation>
 
    <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Subdomein</translation>
-   <translation id="domain_tab_ZONE" qtlid="45976">DNS zone</translation>
    <translation id="domain_tab_ZONE_named" qtlid="225101">DNS zone voor {0}</translation>
    <translation id="domain_tab_ZONE_search_placeholder" qtlid="213427">Zoeken naar een domein...</translation>
    <translation id="domain_tab_ZONE_type_placeholder" qtlid="122275">Zoeken...</translation>
@@ -326,11 +321,9 @@
 
    <translation id="domain_exemple" qtlid="182475">Bijvoorbeeld:</translation>
    <translation id="domain_and" qtlid="329057">en <b>{0}</b></translation>
-   <translation id="domain_tab_REDIRECTION" qtlid="46000">Redirection</translation>
    <translation id="domain_tab_REDIRECTION_title" qtlid="270618">Hier kunt u uw domeinen en subdomeinen omleiden naar andere webadressen of servers.  </translation>
    <translation id="domain_tab_REDIRECTION_add_info" qtlid="270631">Voeg een omleiding toe voor uw domein of subdomein naar een ander webadres of server. </translation>
    <translation id="domain_tab_REDIRECTION_load_fail" qtlid="364729">Er is een fout opgetreden tijdens het laden van omleidingen</translation>
-   <translation id="domain_tab_DNSSEC" qtlid="264719">DS Records</translation>
 
    <translation id="domain_tab_REDIRECTION_csv_button" qtlid="231773">Exporteren in CSV</translation>
    <translation id="domain_tab_REDIRECTION_delete_success" qtlid="213453">Het verwijderen van de redirection is uitgevoerd.</translation>
@@ -694,7 +687,6 @@
    <translation id="domain_configuration_dnsanycast_how_to_activate_1" qtlid="344162">Voor het inschakelen van DNS Anycast: aub eerst</translation>
    <translation id="domain_configuration_dnsanycast_how_to_activate_2" qtlid="344175">Creëer een DNS zone</translation>
 
-   <translation id="domain_tab_TASKS" qtlid="136217">Recente taken</translation>
    <translation id="domain_tab_TASKS_function" qtlid="61872">Taak</translation>
    <translation id="domain_tab_TASKS_todoDate" qtlid="26419">Aanmaakdatum</translation>
    <translation id="domain_tab_TASKS_comment" qtlid="233531">Technische details</translation>
@@ -720,7 +712,6 @@
    <translation id="domain_order_dns_anycast_error" qtlid="299410">Er is een fout opgetreden tijdens de aanmaak van de bestelling. </translation>
    <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Uw bestelling is gevalideerd. Klik <a href="#/billing/orders">hier om de voortgang van uw bestelling te bekijken</a>.</translation>
 
-   <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
    <translation id="domain_tab_DYNHOST_title" qtlid="448041">Met DynHost kunt u een subdomein naar een dynamisch IP-adres wijzen dat bij elke wijziging in uw DNS wordt bijgewerkt.</translation>
    <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">Het domein {0} heeft geen DNS zone.</translation>
    <translation id="domain_tab_DYNHOST_error" qtlid="299423">Er is een fout opgetreden:</translation>

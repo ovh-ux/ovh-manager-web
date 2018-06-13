@@ -10,6 +10,7 @@ angular.module("App").config(($stateProvider) => {
         params: {
             tab: null
         },
+        translations: ["domain"],
         resolve: {
             currentSection: () => "zone",
             navigationInformations: [
@@ -32,6 +33,7 @@ angular.module("App").config(($stateProvider) => {
         templateUrl: "dns-zone/new/dns-zone-new.html",
         controller: "newDnsZoneCtrl",
         controllerAs: "ctrlNewDnsZone",
+        translations: ["domains"],
         resolve: {
             navigationInformations: [
                 "Navigator",

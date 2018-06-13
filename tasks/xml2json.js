@@ -28,6 +28,11 @@ module.exports = function(grunt) {
                     id: match[1],
                     text: match[4].replace(/&#13;\n/g, " ").replace(/&#160;/g, " ")
                 };
+
+                if(/\/translations\/Messages_\w{2}_\w{2,4}.xml$/.test(filePath)) {
+                    elem.text = elem.text.replace(/\{(\s?\d\s?)\}/g, "{{t$1}}")
+                }
+
                 obj.push(elem);
             }
             return JSON.stringify(formatTranslation(obj));
@@ -61,13 +66,13 @@ module.exports = function(grunt) {
                 return !src.match(regExpOther);
             }).map(function (filePath) {
 
-                var formattedPath = filePath.replace(/_.._..\.json$/g, ''),
+                var formattedPath = filePath.replace(/_\w{2}_\w{2,4}\.json$/g, ''),
                     memoizePathFr = 'frFR' + formattedPath;
 
                 //Memorize data fr
                 if (!memoize[memoizePathFr]) {
                     jsonFrFR.filter(function (src) {
-                        return formattedPath === src.replace(/_.._..\.json$/g, '');
+                        return formattedPath === src.replace(/_\w{2}_\w{2,4}\.json$/g, '');
                     }).map(function (p) {
                         memoize[memoizePathFr] = grunt.file.readJSON(p);
                     })[0];

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="domains_dashboard_title" qtlid="140599">Verkkotunnusten massasuoritus</translation>
+   <translation id="domains_dashboard_loading_error" qtlid="315904">Tapahtui virhe tietojen lataamisessa. Tämä voi johtua siitä, että mainosten esto on aktivoituna. </translation>
+   <translation id="domains_dashboard_search_label" qtlid="296937">Etsi verkkotunnuksia</translation>
+   <translation id="domains_dashboard_search_placeholder" qtlid="143199">Verkkotunnuksia etsitään…</translation>
+   <translation id="domains_dashboard_selector_all_pages" qtlid="140625">Valitse kaikki sivut</translation>
+   <translation id="domains_dashboard_table_titles_name" qtlid="140638">Verkkotunnus</translation>
+   <translation id="domains_dashboard_table_titles_creation" qtlid="26419">Luontipäivä</translation>
+   <translation id="domains_dashboard_table_titles_expiration" qtlid="33010">Umpeutumispäivä</translation>
+   <translation id="domains_dashboard_table_titles_whois" qtlid="140651">WHOIS-salaus</translation>
+   <translation id="domains_dashboard_table_titles_dnssec" qtlid="184529">DNSSEC</translation>
+   <translation id="domains_dashboard_table_titles_dnsanycast" qtlid="135671">Anycast-nimipalvelimet</translation>
+   <translation id="domains_dashboard_table_empty" qtlid="140664">Kriteerit täyttäviä verkkotunnuksia ei löytynyt</translation>
+   <translation id="domains_dashboard_table_noresult" qtlid="433680">Sinulla ei ole yhtään verkkotunnusta, jolla suorittaa toimintoja</translation>
+   <translation id="domains_dashboard_message_see_more" qtlid="140677">Katso virheilmoituksien yksityiskohdat</translation>
+   <translation id="domains_dashboard_table_dnssec_status_DISABLE_IN_PROGRESS" qtlid="148487">Poistetaan käytöstä…</translation>
+   <translation id="domains_dashboard_table_dnssec_status_ENABLE_IN_PROGRESS" qtlid="148474">Aktivoidaan…</translation>
+   <translation id="domains_dashboard_table_dnssec_status_ENABLED" qtlid="30250">Aktivoitu</translation>
+   <translation id="domains_dashboard_table_dnssec_status_DISABLED" qtlid="24967">Deaktivoitu</translation>
+
+   <translation id="domains_dashboard_tooltip_renew_multiples" qtlid="143108">Uudista valitut verkkotunnukset</translation>
+   <translation id="domains_dashboard_tooltip_whois_multiples" qtlid="143121">Määrittele valittujen verkkotunnusten WHOIS</translation>
+   <translation id="domains_dashboard_tooltip_dnssec_multiples" qtlid="184542">Konfiguroi DNSSEC valituille verkkotunnuksille</translation>
+   <translation id="domains_dashboard_tooltip_export_csv" qtlid="231682">Verkkotunnusten vienti CSV-tiedostona</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_expl" qtlid="273046">Verkkotunnusten tuominen voi kestää muutamia minuutteja (vaihtelee verkkotunnusten lukumäärästä riippuen). Toimenpiteen aikana voit käyttää hallintapaneelia normaalisti selainosassa. Lataus tapahtuu automaattisesti.</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_expl2" qtlid="273453">MX plan- verkkotunnuksia ei tuoda.</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_confirm" qtlid="298378">Haluatko varmasti viedä verkkotunnukset CSV-formaatissa?</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_success" qtlid="231734">Verkkotunnusvienti on suoritettu</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_error" qtlid="231747">Tapahtui virhe verkkotunnusten viennin aikana</translation>
+   <translation id="domains_dashboard_tooltip_export_csv_creation_doing" qtlid="273059">Luodaan tiedostoa…</translation>
+   <translation id="domains_dashboard_tooltip_renew_single" qtlid="143134">Uudista tämä verkkotunnus</translation>
+   <translation id="domains_dashboard_tooltip_whois_single" qtlid="143147">Määrittele tämän verkkotunnuksen WHOIS</translation>
+   <translation id="domains_dashboard_tooltip_dnssec_activate_single" qtlid="184555">Aktivoi DNSSEC tälle verkkotunnukselle</translation>
+   <translation id="domains_dashboard_tooltip_dnssec_deactivate_single" qtlid="184568">Poista DNSSEC käytöstä tältä verkkotunnukselta</translation>
+   <translation id="domains_dashboard_button_renew" qtlid="118962">Uudista palvelu</translation>
+   <translation id="domains_dashboard_button_whois" qtlid="299072">OWO-palvelu</translation>
+   <translation id="domains_dashboard_button_dnssec" qtlid="184581">Konfiguroi DNSSEC</translation>
+   <translation id="domains_dashboard_button_export" qtlid="231773">CSV-vienti</translation>
+   <translation id="domains_change_owner" qtlid="267240">Vaihda omistaja</translation>
+   <translation id="domains_dashboard_csv_file_created" qtlid="372230">Tiedoston luominen onnistui. Jos lataus ei käynnisty, voit <a target="_blank" href="{0}">tehdä latauksen käsin</a>.</translation>
+   <translation id="domains_configuration_renew_title" qtlid="140690">Uudista verkkotunnukset</translation>
+   <translation id="domains_configuration_renew_step1_question" qtlid="140703">Uudistaaksesi verkkotunnuksesi, sinun täytyy käyttää OVH:n uudistamiskäyttöliittymää, joka on Web-hallintapaneelin ulkopuolella.</translation>
+   <translation id="domains_configuration_renew_step1_unable_to_renew" qtlid="140716">Et ole laskutusyhteyshenkilö joten et voi uusia joitakin valittuja verkkotunnuksia (<span class="italic">{0}</span>).</translation>
+   <translation id="domains_configuration_renew_step1_unable_ignored" qtlid="140729">Nämä verkkotunnukset jätetään huomioimatta uusintatilauksella.</translation>
+   <translation id="domains_configuration_renew_step1_no_selected_domains" qtlid="140742">Et ole valinnut yhtään verkkotunnusta uusittavaksi tai sinulla ei ole oikeuksia uusia verkkotunnusta.</translation>
+   <translation id="domains_configuration_renew_step1_confirmation" qtlid="140755">Klikkaa ”Tilaa”-nappia avataksesi uuden ikkunan ja uudistaaksesi verkkotunnuksesi.</translation>
+   <translation id="domains_configuration_renew_step1_information" qtlid="168341">Uusi välilehti avataan ja sinut ohjataan OVH:n maksusivulle.</translation>
+   <translation id="domains_configuration_renew_step1_alert" qtlid="140768">Ota huomioon että maksun hyväksymisestä uusintatilauksen rekisteröimiseen ja sen näkymiseen Web-hallintapaneelissasi kuluu keskimäärin noin kaksi tuntia.</translation>
+   <translation id="domains_configuration_whois_title" qtlid="124447">Määrittele WHOIS</translation>
+   <translation id="domains_configuration_whois_step1_no_selected_domains" qtlid="140781">Et ole valinnut yhtään määriteltäviä verkkotunnuksia tai valittujen verkkotunnuksien WHOIS-tietoja ei voida muokata.</translation>
+   <translation id="domains_configuration_whois_step1_unable_to_configure" qtlid="140794">WHOIS-tietoja ei voida muokata valitsemillesi verkkotunnuksille (<span class="italic">{0}</span>).</translation>
+   <translation id="domains_configuration_whois_step1_unable_ignored" qtlid="140807">Nämä verkkotunnukset jätetään huomioimatta muokkausaikana.</translation>
+   <translation id="domains_configuration_whois_step1_question" qtlid="140820">Valitse, haluatko henkilökohtaisten tietojesi olevan julkisesti esillä tai piilossa WHOIS-tietokannassa valitulla verkkotunnuksella.</translation>
+   <translation id="domains_configuration_whois_step1_display" qtlid="69353">Näytä</translation>
+   <translation id="domains_configuration_whois_step1_hide" qtlid="97136">Piilota</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_desc" qtlid="329499">Kun rekisteröit verkkotunnuksen, sinulta pyydetään henkilötietoja. Oletuksena nämä tiedot julkaistaan WHOIS-tietokannassa, joka on julkisesti kaikkien saatavilla. <br/>Tällä toiminnolla voit halutessasi häivyttää nämä tiedot.</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatis" qtlid="130099">Mikä on WHOIS?</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">WHOIS on julkinen etsintätyökalu verkkotunnustiedoille ja IP-osoitteille. Tietokanta käsittää tiedot verkkotunnusten ja IP-osoitteiden omistajista.</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">Mitkä tiedot julkaistaan WHOIS-tietokannassa?</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329512">Verkkotunnuksen omistajan tiedot ovat julkaistavia tietoja. Ne riippuvat verkkotunnuksesta, mutta yleensä niistä löytyy omistajan:<ul><li>Osoite</li><li>Puhelinnumero ja faksi</li><li>Sähköpostiosoite</li></ul><br/>Näiden kolmen tyyppisten tietojen häivytys/näyttö voidaan konfiguroida samalla tavoin.</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_how" qtlid="130135">Miten OVH auttaa WHOIS-tietojen piilotuksessa?</translation>
+   <translation id="domains_configuration_whois_step1_helpwizard_how_desc" qtlid="329525">Jos aktivoit tämän palvelun, OVH korvaa henkilötietosi geneerisillä tiedoilla. Kaikki sinua koskevat yhteydenotot välitetään kuitenkin eteenpäin.<ul><li>Osoitekenttä korvataan OVH:n postilaatiokolla, ja lähetämme vastaanotetut viestit eteenpäin oikealle vastaanottajalle.</li><li>Puhelinnumero ja faksi korvataan OwO-numerolla. Sähköpostiosoite korvataan uudelleenohjauksella, joka osoittaa omistajan sähköpostiin. Tämä osoite uudelleengeneroidaan säännöllisesti ja sille tehdään ROSKAPOSTI-suodatus.</li></ul></translation>
+   <translation id="domains_configuration_whois_field_ADDRESS" qtlid="30430">Osoite</translation>
+   <translation id="domains_configuration_whois_field_EMAIL" qtlid="33598">Sähköposti</translation>
+   <translation id="domains_configuration_whois_field_PHONE" qtlid="128214">Puhelin/Faksi</translation>
+   <translation id="domains_configuration_whois_step2_alert" qtlid="128226">Huomaa, että WHOIS-tietojen päivitys kestää useita tunteja.</translation>
+   <translation id="domains_configuration_whois_step2_new_configuration" qtlid="128250">Uusi konfiguraatio</translation>
+   <translation id="domains_configuration_whois_step2_question" qtlid="128262">Oletko varma, että haluat ottaa seuraavat WHOIS-tietojen näyttömuutokset käyttöön?</translation>
+   <translation id="domains_configuration_whois_step2_status_activated" qtlid="128274">Piilotetaan</translation>
+   <translation id="domains_configuration_whois_step2_status_desactivated" qtlid="128286">Näytetään</translation>
+   <translation id="domains_configuration_whois_step2_status_unchanged" qtlid="140833">Ei muokattu</translation>
+   <translation id="domains_configuration_whois_success" qtlid="128298">WHOIS-tietojen muutospyyntö on rekisteröity.</translation>
+   <translation id="domains_configuration_whois_partial" qtlid="140846">WHOIS-tietojen muokkauspyyntö tapahtui tietyille verkkotunnuksille, mutta tietyillä verkkotunnuksilla tapahtui virheitä.</translation>
+   <translation id="domains_configuration_whois_fail" qtlid="128310">Tapahtui virhe WHOIS-tietojen muutospyynnössä.</translation>
+
+   <translation id="domains_configuration_dnssec_batch_title" qtlid="184581">Konfiguroi DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_no_selected_domains" qtlid="184594">Et ole valinnut konfiguroitavia verkkotunnuksia tai DNSSEC ei ole muutettavissa valituille verkkotunnuksille.</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_question" qtlid="184607">Valitse, onko DNSSECin oltava aktivoituna vai poissa käytöstä valituille verkkotunnuksille</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_status_true" qtlid="184620">Aktivoi DNSSEC valituille verkkotunnuksille</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_status_false" qtlid="184633">Poista DNSSEC käytöstä valituilta verkkotunnuksilta</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_question" qtlid="184646">Oletko varma että haluat ottaa seuraavan muutoksen käyttöön valituille verkkotunnuksille?</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_status_true" qtlid="184659">Aktivoi DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_status_false" qtlid="184672">Deaktivoi DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_success" qtlid="184685">DNSSEC-muutospyyntö on rekisteröity.</translation>
+   <translation id="domains_configuration_dnssec_batch_partial" qtlid="184698">DNSSEC-muutospyyntö on rekisteröity osalle verkkotunnuksista, mutta osassa esiintyi virhe.</translation>
+   <translation id="domains_configuration_dnssec_batch_fail" qtlid="184711">Tapahtui virhe pyydettäessä DNSSEC-muutosta.</translation>
+
+   <translation id="domains_configuration_dnssec_batch_title" qtlid="184581">Konfiguroi DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_no_selected_domains" qtlid="184594">Et ole valinnut konfiguroitavia verkkotunnuksia tai DNSSEC ei ole muutettavissa valituille verkkotunnuksille.</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_question" qtlid="184607">Valitse, onko DNSSECin oltava aktivoituna vai poissa käytöstä valituille verkkotunnuksille</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_status_true" qtlid="184620">Aktivoi DNSSEC valituille verkkotunnuksille</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_status_false" qtlid="184633">Poista DNSSEC käytöstä valituilta verkkotunnuksilta</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_help_title" qtlid="184529">DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_help_content" qtlid="184724">DNSSEC-protokolla on nimipalvelun tietoturvalaajennos, joka suojaa nimipalvelun tiedonsiirrot epäsymmetrisen salatun allekirjoituksen avulla. Nimipalvelimelta saatavien vastausten alkuperä ja eheys varmistetaan avainparilla, joista toinen on yksityinen allekirjoituksen varmistamiseksi ja toinen julkinen, joka allekirjoittaa verkkotunnuksen nimipalvelinvyöhykkeen.&#13;
+<br/><br/>Krakkeri, joka yrittää myrkyttää nimipalvelimet ei pystynekään toteuttamaan suunnitelmaansa, koska resolverit hälyttävät, kun nimipalvelinvyöhykkeen allekirjoitukset ovat väärin (tai puuttuvat).<br/><br/>Mutta myrkytys on mahdollinen edelleen, sillä tällä hetkellä vain muutamat internetpalveluntarjoajan nimipalvelimet varmistavat DNSSECillä allekirjoitettuja vastauksia. Nimipalvelut toimivat ilman varmistusmekanismeja.&#13;
+</translation>
+   <translation id="domains_configuration_dnssec_batch_step1_help_more" qtlid="44536">Lisätietoa</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_question" qtlid="184646">Oletko varma että haluat ottaa seuraavan muutoksen käyttöön valituille verkkotunnuksille?</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_status_true" qtlid="184659">Aktivoi DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_step2_status_false" qtlid="184672">Deaktivoi DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_batch_success" qtlid="184685">DNSSEC-muutospyyntö on rekisteröity.</translation>
+   <translation id="domains_configuration_dnssec_batch_partial" qtlid="184698">DNSSEC-muutospyyntö on rekisteröity osalle verkkotunnuksista, mutta osassa esiintyi virhe.</translation>
+   <translation id="domains_configuration_dnssec_batch_fail" qtlid="184711">Tapahtui virhe pyydettäessä DNSSEC-muutosta.</translation>
+
+   <translation id="domains_configuration_dnssec_simple_deactivate_title" qtlid="184672">Deaktivoi DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_simple_deactivate_step1_question" qtlid="184750">Oletko varma että haluat poistaa DNSSEC-laajennuksen verkkotunnukselta <span class="italic">{0}</span>?</translation>
+   <translation id="domains_configuration_dnssec_simple_deactivate_success" qtlid="184685">DNSSEC-muutospyyntö on rekisteröity.</translation>
+   <translation id="domains_configuration_dnssec_simple_deactivate_fail" qtlid="184711">Tapahtui virhe pyydettäessä DNSSEC-muutosta.</translation>
+
+   <translation id="domains_configuration_dnssec_simple_activate_title" qtlid="184659">Aktivoi DNSSEC</translation>
+   <translation id="domains_configuration_dnssec_simple_activate_step1_question" qtlid="184763">Oletko varma että haluat aktivoida DNSSEC-laajennuksen verkkotunnukselle <span class="italic">{0}</span>?</translation>
+   <translation id="domains_configuration_dnssec_simple_activate_success" qtlid="184776">DNSSEC-muutospyyntö on rekisteröity.</translation>
+   <translation id="domains_configuration_dnssec_simple_activate_fail" qtlid="184711">Tapahtui virhe pyydettäessä DNSSEC-muutosta.</translation>
+
+   <translation id="domains_newdnszone_order_title" qtlid="263181">Lisää DNS-alue</translation>
+   <translation id="domains_newdnszone_order_step1_title" qtlid="263194">1. Syötä verkkotunnus</translation>
+   <translation id="domains_newdnszone_order_step1_zonename" qtlid="66428">Verkkotunnuksen nimi</translation>
+   <translation id="domains_newdnszone_order_step1_zonename_required" qtlid="263220">Alueen nimi on pakollinen</translation>
+   <translation id="domains_newdnszone_order_step1_zonename_invalid" qtlid="344292">DNS-aluetta ei voida luoda, koska et täytä kaikkia alla olevia ehtoja:</translation>
+   <translation id="domains_newdnszone_order_step1_zonename_pending" qtlid="263884">Tarkistetaan verkkotunnuksen DNS-alueen saatavuutta…</translation>
+   <translation id="domains_newdnszone_order_step2_title" qtlid="263259">2. Tiedot</translation>
+   <translation id="domains_newdnszone_order_step2_domain" qtlid="263207">DNS-alueen nimi</translation>
+   <translation id="domains_newdnszone_order_step2_description" qtlid="9238">Kuvaus</translation>
+   <translation id="domains_newdnszone_order_step2_price" qtlid="83913">Hinta</translation>
+   <translation id="domains_newdnszone_order_step2_minimized" qtlid="263897">Aktivoidaanko vähimmäis-DNS-alue?</translation>
+   <translation id="domains_newdnszone_order_step2_minimized_yes" qtlid="34776">Kyllä</translation>
+   <translation id="domains_newdnszone_order_step2_minimized_no" qtlid="34788">Ei</translation>
+   <translation id="domains_newdnszone_order_step3_title" qtlid="186089">3. Vahvistus</translation>
+   <translation id="domains_newdnszone_order_step3_question" qtlid="263272">Klikkaa "Luo tilaus" tilataksesi uuden DNS-alueen.</translation>
+   <translation id="domains_newdnszone_order_step3_contracts_ask" qtlid="161646">Ole hyvä, lue ja hyväksy oheiset käyttöehdot. Klikkaa sitten ”Luo tilaus”:</translation>
+   <translation id="domains_newdnszone_order_step3_contracts_check" qtlid="161139">Vahvistan, että olen lukenut sopimusehdot ja hyväksyn ne.</translation>
+   <translation id="domains_newdnszone_order_step3_generate" qtlid="186219">Luo tilaus</translation>
+   <translation id="domains_newdnszone_order_step3_generating" qtlid="169511">Tilausta luodaan…</translation>
+   <translation id="domains_newdnszone_order_step3_fail" qtlid="216781">Tapahtui virhe tilausta luodessa.</translation>
+   <translation id="domains_newdnszone_order_step3_generated" qtlid="169524">Tilaus on luotu onnistuneesti.</translation>
+   <translation id="domains_newdnszone_order_step3_clic_here" qtlid="169537">Vahvistaaksesi tilauksesi, klikkaa alla olevaa ”Maksa”-nappia.</translation>
+   <translation id="domains_newdnszone_order_step3_bc_information" qtlid="167886">Uusi välilehti avataan ja sinut ohjataan OVH:n maksusivulle.</translation>
+   <translation id="domains_newdnszone_order_step3_pay_button" qtlid="130183">Maksa</translation>
+   <translation id="domains_newdnszone_order_subtitle" qtlid="265584">verkkotunnuksen konfiguroimiseksi muihin palveluihin.</translation>
+   <translation id="domains_newdnszone_order_example" qtlid="265597">Esimerkki alueen lisäämisestä:</translation>
+   <translation id="domains_newdnszone_order_usage" qtlid="265610">Haluat siirtää verkkotunnuksen toiselta palveluntarjoajalta OVH:lle. Palvelunkatkoksen välttämiseksi lisää DNS-alue ennen siirron aloittamista.</translation>
+   <translation id="domains_newdnszone_order_reminder" qtlid="265623">Älä unohda muuttaa nimipalvelimia alueen käyttöönottamiseksi.</translation>
+   <translation id="domains_newdnszone_zone_invalid_title" qtlid="298404">DNS-alueen luominen on mahdollista ainoastaan mikäli kaikki alla olevat ehdot täyttyvät:</translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_active" qtlid="298417">Verkkotunnus on olemassa ja aktiivinen</translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_soa" qtlid="344188">Verkkotunnuksen SOA:n on oltava oikein sijoitettuna DNS-alueellaan.</translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_a" qtlid="344201">Yhtään tilausprosessia ei voi olla käynnissä tällä verkkotunnuksella OVH:lla </translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_zone" qtlid="298456">DNS-aluetta ei ole vielä rekisteröity OVH:lla</translation>
+   <translation id="domains_newdnszone_zone_invalid_domain_guide" qtlid="298469">Katso ohjetta</translation>
+
+   <translation id="domains_action_export_csv_form_service_name_label" qtlid="273072">Verkkotunnuksen nimi ASCII</translation>
+   <translation id="domains_action_export_csv_form_service_name_help" qtlid="273085">Sisällytä verkkotunnuksen nimi ASCII (Punycode)</translation>
+   <translation id="domains_action_export_csv_form_creation_date_label" qtlid="26419">Luontipäivä</translation>
+   <translation id="domains_action_export_csv_form_creation_date_help" qtlid="273098">Sisällytä verkkotunnuksen luomispäivä</translation>
+   <translation id="domains_action_export_csv_form_expiration_date_label" qtlid="273111">Umpeutumispäivä</translation>
+   <translation id="domains_action_export_csv_form_expiration_date_help" qtlid="273124">Sisällytä verkkotunnuksen umpeutumispäivä</translation>
+   <translation id="domains_action_export_csv_form_service_display_name_label" qtlid="273137">UTF-8 -verkkotunnuksen nimi</translation>
+   <translation id="domains_action_export_csv_form_service_display_name_help" qtlid="273150">Sisällytä UTF-8 -verkkotunnuksen nimi</translation>
+   <translation id="domains_action_export_csv_form_whois_fields_label" qtlid="273163">OwO -palvelu</translation>
+   <translation id="domains_action_export_csv_form_whois_fields_help" qtlid="273176">Sisällytä OwO- palvelun (whois) tila </translation>
+   <translation id="domains_action_export_csv_form_dnssec_label" qtlid="184529">DNSSEC</translation>
+   <translation id="domains_action_export_csv_form_dnssec_help" qtlid="273189">Sisällytä suojatun delegoinnin tila</translation>
+   <translation id="domains_action_export_csv_form_dnsanycast_label" qtlid="135671">Anycast-nimipalvelimet</translation>
+   <translation id="domains_action_export_csv_form_dnsanycast_help" qtlid="448054">Sisällytä DNS Anycast -ratkaisun aktivointitila</translation>
+   <translation id="domains_action_export_csv_form_nic_billing_label" qtlid="273202">Laskutusyhteyshenkilö</translation>
+   <translation id="domains_action_export_csv_form_nic_billing_help" qtlid="273215">Laskutusyhteyshenkilö lisätty</translation>
+   <translation id="domains_action_export_csv_form_nic_tech_label" qtlid="273228">Tekninen yhteyshenkilö</translation>
+   <translation id="domains_action_export_csv_form_nic_tech_help" qtlid="273241">Tekninen yhteyshenkilö lisätty</translation>
+   <translation id="domains_action_export_csv_form_nic_admin_label" qtlid="273254">Admin-yhteyshenkilö</translation>
+   <translation id="domains_action_export_csv_form_nic_admin_help" qtlid="273267">Admin-yhteyshenkilö lisätty</translation>
+   <translation id="domains_action_export_csv_form_nic_owner_label" qtlid="273280">Omistaja</translation>
+   <translation id="domains_action_export_csv_form_nic_owner_help" qtlid="273293">Lisää omistajan nimi</translation>
+   <translation id="domains_action_export_csv_form_dns_label" qtlid="32086">DNS</translation>
+   <translation id="domains_action_export_csv_form_dns_help" qtlid="273306">Sisällytä verkkotunnuksen palvelinlista</translation>
+</translations>

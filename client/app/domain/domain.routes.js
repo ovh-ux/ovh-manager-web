@@ -15,6 +15,7 @@ angular.module("App").config(($stateProvider) => {
         params: {
             tab: null
         },
+        translations: ["domain", "email", "hosting", "domainsOperations"],
         resolve: {
             currentSection: () => "domain",
             navigationInformations: [
@@ -41,6 +42,7 @@ angular.module("App").config(($stateProvider) => {
         params: {
             tab: null
         },
+        translations: ["domain", "email", "hosting", "domainsOperations"],
         resolve: {
             currentSection: () => "domain",
             navigationInformations: [

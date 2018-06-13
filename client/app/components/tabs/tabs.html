@@ -1,5 +1,5 @@
 <ul df-tab-menu data-menu-control="{{navigationState}}" data-theme="bootstrap">
-    <li data-ng-repeat="tab in tabs track by $index" data-menu-item="tr(productType + '_tab_' + tab)" data-ng-class="isActive(tab)"><a data-ng-click="navigationState = tr(productType + '_tab_' + tab) && setSelectedTab(tab)"><span data-ng-bind="tr(productType + '_tab_' + tab)"></span></a></li>
+    <li data-ng-repeat="tab in tabs track by $index" data-menu-item="::(productType + '_tab_' + tab) | translate" data-ng-class="isActive(tab)"><a data-ng-click="navigationState = ((productType + '_tab_' + tab) | translate) && setSelectedTab(tab)"><span data-ng-bind="::(productType + '_tab_' + tab) | translate"></span></a></li>
     <li class="dropdown tab-menu" data-ng-if="menu" uib-dropdown>
         <!-- TODO : remove this onclick event and replace this directive by ovh-angular-responsive-tabs -->
         <a href data-uib-dropdown-toggle onclick="$(this).offset().left < ($(document).width() / 2) ? $(this).next().addClass('dropdown-menu-left').removeClass('dropdown-menu-right') : $(this).next().addClass('dropdown-menu-right').removeClass('dropdown-menu-left')">
@@ -24,7 +24,7 @@
         </ul>
     </li>
     <li data-more-menu-item>
-        <a title="{{tr('more_tabs')}}">
+        <a title="{{:: ('more_tabs' | translate)}}">
             <span class="fa fa-bars" aria-hidden="true"></span>
         </a>
     </li>
