@@ -1,10 +1,11 @@
 angular.module("App").controller(
     "HostingDomainAttachOrOrderCtrl",
     class HostingDomainAttachOrOrderCtrl {
-        constructor ($scope, $rootScope, $window) {
+        constructor ($scope, $rootScope, $window, atInternet) {
             this.$scope = $scope;
             this.$rootScope = $rootScope;
             this.$window = $window;
+            this.atInternet = atInternet;
         }
 
         $onInit () {
@@ -22,6 +23,10 @@ angular.module("App").controller(
         }
 
         orderDomain () {
+            this.atInternet.trackEvent({
+                event: "hosting-add-domain",
+                page: "web::hosting"
+            });
             switch (this.selected.action) {
             case this.model.actions.ORDER:
                 this.$window.open(this.$scope.urlDomainOrder);
