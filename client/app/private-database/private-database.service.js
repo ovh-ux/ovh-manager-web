@@ -1006,13 +1006,13 @@ angular.module("services").service(
         static getStartTime (range) {
             switch (range) {
             case "DAY":
-                return parseInt(new Date().getTime() - (24 * 3600000), 10);
+                return moment().subtract(1, "days").valueOf();
             case "WEEK":
-                return parseInt(new Date().getTime() - (24 * 3600000 * 7), 10);
+                return moment().subtract(1, "weeks").valueOf();
             case "MONTH":
-                return parseInt(new Date().getTime() - (24 * 3600000 * 31), 10);
+                return moment().subtract(1, "months").valueOf();
             default:
-                return parseInt(new Date().getTime() - (24 * 3600000), 10);
+                return moment().subtract(1, "days").valueOf();
             }
         }
 
@@ -1030,7 +1030,7 @@ angular.module("services").service(
         }
 
         getGraphData (opts) {
-            const downSample = this.constructor.getDownSample("DAY"); // Usefull later for pricing option: see MVW-1523
+            const downSample = this.constructor.getDownSample(opts.range);
 
             return this.$http({
                 method: "POST",
@@ -1040,7 +1040,7 @@ angular.module("services").service(
                     Authorization: `Basic ${btoa(`privatedatabase:${opts.graphEndpoint.readToken}`)}`
                 },
                 data: JSON.stringify({
-                    start: this.constructor.getStartTime("DAY"),
+                    start: this.constructor.getStartTime(opts.range),
                     queries: [{
                         metric: "dbaas.metrics.docker_container_mem_usage_percent",
                         aggregator: "sum",
