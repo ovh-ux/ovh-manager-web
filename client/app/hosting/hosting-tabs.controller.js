@@ -96,13 +96,11 @@ angular.module("App").controller(
                         type: "SEPARATOR"
                     });
 
-                    if (!hosting.isCloudWeb) {
-                        this.tabMenu.items.push({
-                            label: this.$scope.tr("hosting_tab_menu_emails"),
-                            target: `#/configuration/email-domain/${this.$stateParams.productId}?tab=MAILING_LIST`,
-                            type: "LINK"
-                        });
-                    }
+                    this.tabMenu.items.push({
+                        label: this.$scope.tr("hosting_tab_menu_emails"),
+                        target: `#/configuration/email-domain/${this.$stateParams.productId}?tab=MAILING_LIST`,
+                        type: "LINK"
+                    });
 
                     this.tabMenu.items = this.tabMenu.items.concat([
                         {
