@@ -82,7 +82,7 @@
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Allgemeine Konfiguration von PostgreSQL</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">In Kürze verfügbar für PostgreSQL</translation>
 
-   <translation id="privateDatabase_configuration_alert" qtlid="482212">Toute modification entraîne un redémarrage du serveur.</translation>
+   <translation id="privateDatabase_configuration_alert" qtlid="482212">Jede Änderung führt zu einem Neustart des Servers.</translation>
    <translation id="privateDatabase_configuration_edit_btn" qtlid="185452">Bearbeiten</translation>
    <translation id="privateDatabase_configuration_cancel_btn" qtlid="37863">Abbrechen</translation>
    <translation id="privateDatabase_configuration_confirm_btn" qtlid="41326">Anwenden</translation>
@@ -90,7 +90,7 @@
    <translation id="privateDatabase_configuration_error_put" qtlid="263533">Bei der Änderung der Konfiguration ist ein Fehler aufgetreten.</translation>
    <translation id="privateDatabase_configuration_error" qtlid="233047">Beim Abruf der Informationen ist ein Fehler aufgetreten.</translation>
    <translation id="privateDatabase_configuration_success" qtlid="263546">Ihr Server wurde neu gestartet und die Konfiguration wurde erfolgreich geändert.</translation>
-   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Legt fest, ob der Auto-Commit Modus aktiviert ist oder nicht, also ob die Requests automatisch committed werden oder ob der Commit von Hand durchgeführt werden muss.</translation>
+   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Legt fest, ob der Auto-Commit-Modus aktiviert ist oder nicht, das heißt, ob die SQL-Transaktionen automatisch bestätigt werden oder ob der Commit-Befehl verwendet werden muss, damit sie durchgeführt werden.</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263572">Maximal erlaubte Anzahl an Verbindungen mit dem Server.</translation>
    <translation id="privateDatabase_configuration_skipInnodb" qtlid="263585">Die Verwendung der InnoDB-Tabellen deaktivieren.</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263598">Maximale Anzahl an Simultanverbindungen</translation>
@@ -101,15 +101,15 @@
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Anzahl der Sekunden an Inaktivität nach einer Eingabeaufforderung, bevor der Server die Verbindung unterbricht.</translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Anzahl der Sekunden an Inaktivität während einer externen Verbindung, bevor der Server die Verbindung unterbricht.</translation>
 
-   <translation id="privateDatabase_configuration_field_autocommit" qtlid="482225">Définit si les transactions SLQ sont automatiquement soumises ou non.</translation>
-   <translation id="privateDatabase_configuration_field_event_scheduler" qtlid="482238">Permet de déclencher l’exécution de requêtes programmées directement dans le serveur MySQL.</translation>
-   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size" qtlid="482251">Choix de la taille de la mémoire tampon (en mégaoctets).</translation>
-   <translation id="privateDatabase_configuration_field_interactive_timeout" qtlid="482264">Nombre de secondes pendant lesquelles le serveur attend une activité sur une connexion interactive avant de la fermer.</translation>
-   <translation id="privateDatabase_configuration_field_max_allowed_packet" qtlid="482277">Taille maximum des paquets (en mégaoctets).</translation>
-   <translation id="privateDatabase_configuration_field_max_connections" qtlid="482290">Nombre de connexions simultanées autorisées sur le SQL Privé.</translation>
-   <translation id="privateDatabase_configuration_field_max_user_connections" qtlid="482303">Nombre de connexions simultanées autorisées par utilisateur.</translation>
-   <translation id="privateDatabase_configuration_field_tmpdir" qtlid="482316">Répertoire des fichiers temporaires (RAM ou disque dur de l'instance).</translation>
-   <translation id="privateDatabase_configuration_field_wait_timeout" qtlid="482329">Temps pendant lequel le serveur attend l’activité sur une connexion non interactive avant de la fermer (en secondes).</translation>
+   <translation id="privateDatabase_configuration_field_autocommit" qtlid="482225">Legt fest, ob die SQL-Transaktionen automatisch bestätigt werden oder nicht.</translation>
+   <translation id="privateDatabase_configuration_field_event_scheduler" qtlid="482238">Wird verwendet, um die Ausführung programmierter Anfragen direkt im MySQL-Server zu starten.</translation>
+   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size" qtlid="482251">Größe des Pufferspeichers auswählen (in Megabyte).</translation>
+   <translation id="privateDatabase_configuration_field_interactive_timeout" qtlid="482264">Zeit (in Sekunden), während der der Server auf eine Aktivität auf einer interaktiven Verbindung wartet, bevor er diese schließt.</translation>
+   <translation id="privateDatabase_configuration_field_max_allowed_packet" qtlid="482277">Maximale Paketgröße (in Megabyte).</translation>
+   <translation id="privateDatabase_configuration_field_max_connections" qtlid="482290">Anzahl der erlaubten Simultanverbindungen auf SQL Private.</translation>
+   <translation id="privateDatabase_configuration_field_max_user_connections" qtlid="482303">Anzahl der erlaubten Simultanverbindungen je Benutzer.</translation>
+   <translation id="privateDatabase_configuration_field_tmpdir" qtlid="482316">Verzeichnis temporärer Dateien (RAM oder Festplatte der Instanz).</translation>
+   <translation id="privateDatabase_configuration_field_wait_timeout" qtlid="482329">Zeit (in Sekunden), während der der Server auf eine Aktivität auf einer nicht interaktiven Verbindung wartet, bevor er diese schließt.</translation>
 
    <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Die Funktion ist für diesen Datenbanktyp nicht verfügbar.</translation>
 
