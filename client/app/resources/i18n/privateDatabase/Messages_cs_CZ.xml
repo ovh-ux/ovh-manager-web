@@ -82,7 +82,7 @@
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Obecné nastavení PostgreSQL</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">Již brzy k dispozici pro PostgreSQL</translation>
 
-   <translation id="privateDatabase_configuration_alert" qtlid="482212">Toute modification entraîne un redémarrage du serveur.</translation>
+   <translation id="privateDatabase_configuration_alert" qtlid="482212">Jakákoli změna bude mít za následek restart serveru.</translation>
    <translation id="privateDatabase_configuration_edit_btn" qtlid="185452">Upravit</translation>
    <translation id="privateDatabase_configuration_cancel_btn" qtlid="37863">Zrušit</translation>
    <translation id="privateDatabase_configuration_confirm_btn" qtlid="41326">Provést změny</translation>
@@ -90,7 +90,7 @@
    <translation id="privateDatabase_configuration_error_put" qtlid="263533">Při změně nastavení došlo k chybě.</translation>
    <translation id="privateDatabase_configuration_error" qtlid="233047">Při získávání dat došlo k chybě.</translation>
    <translation id="privateDatabase_configuration_success" qtlid="263546">Restartování a nastavení Vašeho serveru bylo úspěšné.</translation>
-   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Zadejte zda máte nastaveno automatické nasazení. To znamená zda se požadavky automaticky nasadí, nebo zda je nutné je nasadit, aby začali fungovat.</translation>
+   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Určuje nastavení režimu auto-commit (zda se požadavky nasadí automaticky, nebo zda je nutné je nasadit manuálně, aby začali fungovat).</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263572">Maximální počet autorizovaných souběžných připojení na server.</translation>
    <translation id="privateDatabase_configuration_skipInnodb" qtlid="263585">Zakázat používání InnoDB tabulek.</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263598">Maximální počet souběžných připojení</translation>
@@ -105,15 +105,17 @@
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Počet vteřin nečinnosti během externího připojení, po jejichž uplynutí server připojení ukončí.&#13;
 </translation>
 
-   <translation id="privateDatabase_configuration_field_autocommit" qtlid="482225">Définit si les transactions SLQ sont automatiquement soumises ou non.</translation>
-   <translation id="privateDatabase_configuration_field_event_scheduler" qtlid="482238">Permet de déclencher l’exécution de requêtes programmées directement dans le serveur MySQL.</translation>
-   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size" qtlid="482251">Choix de la taille de la mémoire tampon (en mégaoctets).</translation>
-   <translation id="privateDatabase_configuration_field_interactive_timeout" qtlid="482264">Nombre de secondes pendant lesquelles le serveur attend une activité sur une connexion interactive avant de la fermer.</translation>
-   <translation id="privateDatabase_configuration_field_max_allowed_packet" qtlid="482277">Taille maximum des paquets (en mégaoctets).</translation>
-   <translation id="privateDatabase_configuration_field_max_connections" qtlid="482290">Nombre de connexions simultanées autorisées sur le SQL Privé.</translation>
-   <translation id="privateDatabase_configuration_field_max_user_connections" qtlid="482303">Nombre de connexions simultanées autorisées par utilisateur.</translation>
-   <translation id="privateDatabase_configuration_field_tmpdir" qtlid="482316">Répertoire des fichiers temporaires (RAM ou disque dur de l'instance).</translation>
-   <translation id="privateDatabase_configuration_field_wait_timeout" qtlid="482329">Temps pendant lequel le serveur attend l’activité sur une connexion non interactive avant de la fermer (en secondes).</translation>
+   <translation id="privateDatabase_configuration_field_autocommit" qtlid="482225">Určuje, zda jsou SQL transakce prováděny automaticky či nikoli.</translation>
+   <translation id="privateDatabase_configuration_field_event_scheduler" qtlid="482238">Používá se pro spuštění naprogramovaných požadavků přímo na MySQL serveru.</translation>
+   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size" qtlid="482251">Velikost vyrovnávací paměti (MB).</translation>
+   <translation id="privateDatabase_configuration_field_interactive_timeout" qtlid="482264">Doba, během níž bude server čekat na aktivitu v interaktivním spojení, než dojde k uzavření spojení (v sekundách).</translation>
+   <translation id="privateDatabase_configuration_field_max_allowed_packet" qtlid="482277">Maximální velikost paketu (MB).</translation>
+   <translation id="privateDatabase_configuration_field_max_connections" qtlid="482290">Počet autorizovaných simultánních připojení na Private SQL.</translation>
+   <translation id="privateDatabase_configuration_field_max_user_connections" qtlid="482303">Počet autorizovaných simultánních připojení na uživatele.</translation>
+   <translation id="privateDatabase_configuration_field_tmpdir" qtlid="482316">Dočasný adresář souborů (RAM nebo disk instance).</translation>
+   <translation id="privateDatabase_configuration_field_wait_timeout" qtlid="482329">Doba, během níž bude server čekat na aktivitu v neinteraktivním spojení, než dojde k uzavření spojení (v sekundách).&#13;
+&#13;
+</translation>
 
    <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Tato funkce není pro daný typ databáze k dispozici.</translation>
 

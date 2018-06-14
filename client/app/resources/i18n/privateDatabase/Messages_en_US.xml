@@ -82,7 +82,7 @@
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">General PostgreSQL configuration </translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">Soon available for PostgreSQL</translation>
 
-   <translation id="privateDatabase_configuration_alert" qtlid="482212">Toute modification entraîne un redémarrage du serveur.</translation>
+   <translation id="privateDatabase_configuration_alert" qtlid="482212">Any changes will result in the server rebooting.</translation>
    <translation id="privateDatabase_configuration_edit_btn" qtlid="185452">Edit</translation>
    <translation id="privateDatabase_configuration_cancel_btn" qtlid="37863">Cancel</translation>
    <translation id="privateDatabase_configuration_confirm_btn" qtlid="41326">Apply</translation>
@@ -105,15 +105,15 @@
 &#13;
 </translation>
 
-   <translation id="privateDatabase_configuration_field_autocommit" qtlid="482225">Définit si les transactions SLQ sont automatiquement soumises ou non.</translation>
-   <translation id="privateDatabase_configuration_field_event_scheduler" qtlid="482238">Permet de déclencher l’exécution de requêtes programmées directement dans le serveur MySQL.</translation>
-   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size" qtlid="482251">Choix de la taille de la mémoire tampon (en mégaoctets).</translation>
-   <translation id="privateDatabase_configuration_field_interactive_timeout" qtlid="482264">Nombre de secondes pendant lesquelles le serveur attend une activité sur une connexion interactive avant de la fermer.</translation>
-   <translation id="privateDatabase_configuration_field_max_allowed_packet" qtlid="482277">Taille maximum des paquets (en mégaoctets).</translation>
-   <translation id="privateDatabase_configuration_field_max_connections" qtlid="482290">Nombre de connexions simultanées autorisées sur le SQL Privé.</translation>
-   <translation id="privateDatabase_configuration_field_max_user_connections" qtlid="482303">Nombre de connexions simultanées autorisées par utilisateur.</translation>
-   <translation id="privateDatabase_configuration_field_tmpdir" qtlid="482316">Répertoire des fichiers temporaires (RAM ou disque dur de l'instance).</translation>
-   <translation id="privateDatabase_configuration_field_wait_timeout" qtlid="482329">Temps pendant lequel le serveur attend l’activité sur une connexion non interactive avant de la fermer (en secondes).</translation>
+   <translation id="privateDatabase_configuration_field_autocommit" qtlid="482225">Defines whether SQL transactions are automatically submitted or not.</translation>
+   <translation id="privateDatabase_configuration_field_event_scheduler" qtlid="482238">Is used to trigger the execution of requests programmed directly on the MySQL server.</translation>
+   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size" qtlid="482251">Selected size of memory buffer (in megabytes).</translation>
+   <translation id="privateDatabase_configuration_field_interactive_timeout" qtlid="482264">Number of seconds for which the server will wait for activity on an interactive connection before closing the connection.</translation>
+   <translation id="privateDatabase_configuration_field_max_allowed_packet" qtlid="482277">Maximum packet size (in megabytes).</translation>
+   <translation id="privateDatabase_configuration_field_max_connections" qtlid="482290">Number of simultaneous connections authorized on Private SQL.</translation>
+   <translation id="privateDatabase_configuration_field_max_user_connections" qtlid="482303">Number of simultaneous connections authorised per user.</translation>
+   <translation id="privateDatabase_configuration_field_tmpdir" qtlid="482316">Temporary file folder (RAM or hard disk of the instance).</translation>
+   <translation id="privateDatabase_configuration_field_wait_timeout" qtlid="482329">Time for which the server will wait for activity on a non-interactive connection before closing the connection (in seconds).</translation>
 
    <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">This feature is not available for this database type.</translation>
 
@@ -152,7 +152,7 @@
    <translation id="privateDatabase_tabs_user_deleting" qtlid="215845">The user is being deleted...</translation>
    <translation id="privateDatabase_tabs_user_options" qtlid="413297">Options</translation>
 
-   <translation id="privateDatabase_tabs_users_grant_error" qtlid="215858">An error has occurred modifying rights.</translation>
+   <translation id="privateDatabase_tabs_users_grant_error" qtlid="215858">An error has occurred while modifying rights.</translation>
    <translation id="privateDatabase_tabs_users_grant_success" qtlid="215871">The rights have been successfully modified.</translation>
    <translation id="privateDatabase_tabs_users_grant_doing" qtlid="215884">The modification will be effective in a few minutes.</translation>
 
@@ -293,7 +293,7 @@
    <translation id="privateDatabase_delete_bdd_title" qtlid="196881">Delete a database</translation>
    <translation id="privateDatabase_delete_bdd_confirm" qtlid="216560">Confirm the deletion of the database: {0}</translation>
    <translation id="privateDatabase_delete_bdd_success" qtlid="216573">The deletion of the database has been registered.</translation>
-   <translation id="privateDatabase_delete_bdd_fail" qtlid="216586">An error has occurred deleting the database.</translation>
+   <translation id="privateDatabase_delete_bdd_fail" qtlid="216586">An error has occurred when deleting the database.</translation>
    <translation id="privateDatabase_dump_in_progress" qtlid="304420">Backing up...</translation>
    <translation id="privateDatabase_restore_in_progress" qtlid="223827">Restoring...</translation>
    <translation id="privateDatabase_dump_bdd_creationDate" qtlid="26419">Creation date</translation>
@@ -528,12 +528,12 @@
    <translation id="privateDatabase_tabs_whitelist_list_service" qtlid="7702">Databases</translation>
    <translation id="privateDatabase_tabs_whitelist_list_service_description" qtlid="404941">Allow this IP to access the databases </translation>
    <translation id="privateDatabase_tabs_whitelist_list_service_true" qtlid="208898">Authorized</translation>
-   <translation id="privateDatabase_tabs_whitelist_list_service_false" qtlid="404954">Not authorised </translation>
+   <translation id="privateDatabase_tabs_whitelist_list_service_false" qtlid="404954">Not authorized </translation>
 <!-- SFTP -->
    <translation id="privateDatabase_tabs_whitelist_list_sftp" qtlid="295296">SFTP</translation>
    <translation id="privateDatabase_tabs_whitelist_list_sftp_description" qtlid="404967">Allow this IP address to access the SFTP port</translation>
    <translation id="privateDatabase_tabs_whitelist_list_sftp_true" qtlid="208898">Authorized</translation>
-   <translation id="privateDatabase_tabs_whitelist_list_sftp_false" qtlid="404954">Not authorised </translation>
+   <translation id="privateDatabase_tabs_whitelist_list_sftp_false" qtlid="404954">Not authorized </translation>
 <!-- DESCRIPTION -->
    <translation id="privateDatabase_tabs_whitelist_list_status" qtlid="9238">Description</translation>
    <translation id="privateDatabase_tabs_whitelist_list_status_description" qtlid="404980">Whitelist description </translation>
