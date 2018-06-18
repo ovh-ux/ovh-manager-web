@@ -1,3 +1,31 @@
+<a name="13.4.7"></a>
+## [13.4.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.6...v13.4.7) (2018-06-18)
+
+
+### Bug Fixes
+
+* framework page loading ([e5218db](https://github.com/ovh-ux/ovh-manager-web/commit/e5218db))
+* multisite table and update dialog ([633ec7b](https://github.com/ovh-ux/ovh-manager-web/commit/633ec7b))
+* PR remarks ([bc4bc01](https://github.com/ovh-ux/ovh-manager-web/commit/bc4bc01))
+* spelling mistakes ([951bf65](https://github.com/ovh-ux/ovh-manager-web/commit/951bf65))
+* **cloudweb:** display runtimes in external multisite creation ([35dbc64](https://github.com/ovh-ux/ovh-manager-web/commit/35dbc64))
+* **cloudweb:** hide statistics in cloudweb dashboard ([d53da2c](https://github.com/ovh-ux/ovh-manager-web/commit/d53da2c))
+* **cloudweb:** move subpages "Runtimes" & "Envvars" to their own tabs ([34fb0bc](https://github.com/ovh-ux/ovh-manager-web/commit/34fb0bc))
+* **cloudweb:** reactivate MX plan menu button ([ae95fc6](https://github.com/ovh-ux/ovh-manager-web/commit/ae95fc6))
+* **cloudweb:** use oui-tooltip in runtime ([7822c6f](https://github.com/ovh-ux/ovh-manager-web/commit/7822c6f))
+* **package.lock:** update ([1d86f29](https://github.com/ovh-ux/ovh-manager-web/commit/1d86f29))
+
+
+### Features
+
+* add tracking ([ec4df96](https://github.com/ovh-ux/ovh-manager-web/commit/ec4df96))
+* **navbar:** add navbar notification ([0722a22](https://github.com/ovh-ux/ovh-manager-web/commit/0722a22))
+* **oui-angular:** add more translations ([a4e5ede](https://github.com/ovh-ux/ovh-manager-web/commit/a4e5ede))
+* **track:** add status for trackOrder ([a707e38](https://github.com/ovh-ux/ovh-manager-web/commit/a707e38))
+* **track:** add track to sidebar order buttons ([68d3e83](https://github.com/ovh-ux/ovh-manager-web/commit/68d3e83))
+
+
+
 <a name="13.4.6"></a>
 ## [13.4.6](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.5...v13.4.6) (2018-06-12)
 
