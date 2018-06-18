@@ -559,7 +559,7 @@
    <translation id="core_change_owner" qtlid="271491">Cambiar de propietario </translation>
    <translation id="core_change_owner_order" qtlid="283981">Para modificar el propietario de su dominio, debe realizar un pedido directamente en nuestro sitio web. </translation>
    <translation id="core_change_owner_error" qtlid="270735">No se ha podido obtener la información necesaria para el cambio de propietario. </translation>
-   <translation id="contacts_management" qtlid="259575">Editar los contactos</translation>
+   <translation id="contacts_management" qtlid="32206">Contactos</translation>
    <translation id="more_tabs" qtlid="270748">Más pestañas</translation>
    <translation id="expired_date" qtlid="382076">Vencimiento el <strong>{0}</strong></translation>
    <translation id="expiration_date" qtlid="440274">Debe renovarse manualmente el <strong>{0}</strong></translation>
@@ -687,8 +687,8 @@
    <translation id="me_alerts_PAYMENTMEAN_PAYPAL_TOOMANYFAILURES" qtlid="343967">Se ha registrado un error en <strong>{0}</strong> cuenta(s) PayPal. Acceda a <a href="#/billing/mean" class="alert-link">«Facturación»</a> para realizar las comprobaciones necesarias y/o registrar una nueva forma de pago.</translation>
 
    <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="433563">Su cuenta OVH tiene un saldo negativo de <strong>{0}</strong> a fecha de {1}. Acceda a <a href="#/billing/ovhaccount" class="alert-link">Facturación</a> para regularizar la situación.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="343993">Tiene un saldo pendiente de <strong>{0}</strong>. Acceda a la sección <a href="{1}" class="alert-link">«Facturación»</a> para regularizar su situación.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369545">Tiene un saldo pendiente de <strong>{0}</strong> (incluyendo un importe de {1} no vencido). Acceda a la sección <a href="{2}" class="alert-link">«Facturación»</a> para regularizar su situación.</translation>
+   <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="343993">Tiene un saldo pendiente de <strong>{0}</strong>. Acceda a la sección <a href="#/billing/statements" class="alert-link">«Facturación»</a> para regularizar su situación.</translation>
+   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369545">Tiene un saldo pendiente de <strong>{0}</strong> (incluido un importe de {1} no vencido). Acceda a la sección <a href="#/billing/statements" class="alert-link">«Facturación»</a> para regularizar su situación.</translation>
 
    <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="383919">Su cuenta de prepago ha alcanzado el umbral que usted ha establecido. Para más información, acceda a la sección «<a href="#/billing/ovhaccount" class="alert-link">Facturación</a>».</translation>
 
@@ -728,4 +728,10 @@
    <translation id="common_field_error_minlength" qtlid="472359">Introduzca un mínimo de {{minlength}} caracteres.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Introduzca un máximo de {{maxlength}} caracteres.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Introduzca un formato válido.</translation>
+
+   <translation id="common_stepper_optional_label" qtlid="488081">(opcional)</translation>
+   <translation id="common_stepper_modify_this_step" qtlid="480922">Modificar este paso</translation>
+   <translation id="common_stepper_skip_this_step" qtlid="230127">Saltar este paso</translation>
+   <translation id="common_stepper_next_button_label" qtlid="17743">Siguiente</translation>
+   <translation id="common_stepper_submit_button_label" qtlid="113382">Enviar</translation>
 </translations>

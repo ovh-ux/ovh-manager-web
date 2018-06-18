@@ -72,7 +72,7 @@
                                     data-ng-change="ctrl.updateConfig()"
                                     data-ng-disabled="ctrl.oldConfigs.length < 2"
                                     data-ng-model="ctrl.selectedConfig"
-                                    data-ng-options="config.label for config in ctrl.oldConfigs">
+                                    data-ng-options="config.label for config in ctrl.oldConfigs track by config.label">
                             </select>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>

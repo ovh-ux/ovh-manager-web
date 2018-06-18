@@ -22,7 +22,7 @@
                             <div class="oui-select">
                                 <select class="oui-select__input" id="databaseRam" name="databaseRam"
                                         data-ng-model="ctrl.choice.ram"
-                                        data-ng-options="(ram.quota.value + ' ' + ram.quota.unit) for ram in ctrl.host.offerCapabilities.privateDatabases">
+                                        data-ng-options="(ram.quota.value + ' ' + ram.quota.unit) for ram in ctrl.host.offerCapabilities.privateDatabases track by $index">
                                     <option value="" disabled
                                             data-i18n-static="select_placeholder"></option>
                                 </select>

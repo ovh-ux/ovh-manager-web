@@ -1,4 +1,4 @@
-angular.module("App").run(($q, SidebarMenu, Products, User, constants, translator) => {
+angular.module("App").run(($q, SidebarMenu, Products, User, atInternet, constants, translator) => {
     "use strict";
 
     const menuOptions = [];
@@ -10,49 +10,58 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
             User.getUrlOf("office365Order")])
             .then(([domainOrderUrl, emailproOrderUrl, office365OrderUrl]) => {
                 menuOptions.push({
+                    id: "order-domain",
                     title: translator.tr("navigation_left_order_domain"),
                     icon: "ovh-font ovh-font-domain",
                     href: domainOrderUrl,
                     target: "_blank"
                 });
                 menuOptions.push({
+                    id: "order-dnszone",
                     title: translator.tr("navigation_left_order_dnszone"),
                     icon: "ovh-font ovh-font-domain",
                     state: "app.dns-zone-new"
                 });
                 menuOptions.push({
+                    id: "order-private-database",
                     title: translator.tr("navigation_left_order_private_database"),
                     icon: "ovh-font ovh-font-database",
                     state: "app.sql-order"
                 });
                 menuOptions.push({
+                    id: "order-emailpro",
                     title: translator.tr("navigation_left_order_emailpro"),
                     icon: "ovh-font ovh-font-mail",
                     href: emailproOrderUrl,
                     target: "_blank"
                 });
                 menuOptions.push({
+                    id: "order-mxplan",
                     title: translator.tr("navigation_left_order_mxplan"),
                     icon: "ovh-font ovh-font-mail",
                     state: "app.mx-plan"
                 });
                 menuOptions.push({
+                    id: "order-exchange",
                     title: translator.tr("navigation_left_order_exchange"),
                     icon: "ms-Icon ms-Icon--ExchangeLogo",
                     state: "app.microsoft.exchange.order"
                 });
                 menuOptions.push({
+                    id: "order-office365",
                     title: translator.tr("navigation_left_office365_order"),
                     icon: "ms-Icon ms-Icon--OfficeLogo",
                     href: office365OrderUrl,
                     target: "_blank"
                 });
                 menuOptions.push({
+                    id: "order-office-reseller",
                     title: translator.tr("navigation_left_office_reseller_order"),
                     icon: "ms-Icon ms-Icon--OfficeLogo",
                     href: `${constants.MANAGER_URLS.sunrise}csp2`
                 });
                 menuOptions.push({
+                    id: "order-sharepoint",
                     title: translator.tr("navigation_left_sharepoint_order"),
                     icon: "ms-Icon ms-Icon--SharepointLogo",
                     state: "app.microsoft.sharepoint.order"
@@ -325,6 +334,12 @@ angular.module("App").run(($q, SidebarMenu, Products, User, constants, translato
     SidebarMenu.loadDeferred.promise.then(() => {
         SidebarMenu.manageStateChange();
         SidebarMenu.addActionsMenuOptions(menuOptions);
+        SidebarMenu.addActionsMenuItemClickHandler((id) => {
+            atInternet.trackClick({
+                name: id,
+                type: "action"
+            });
+        });
     });
 
     SidebarMenu.setInitializationPromise(productsPromise);

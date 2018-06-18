@@ -66,9 +66,10 @@ angular
          * @param {string} firewall
          * @param ownLog
          * @param {boolean} ssl
+         * @param {string|null} runtimeId
          * @param {string} serviceName
          */
-        addDomain (baseDomain, domainName, home, wwwNeeded, ipv6Needed, autoconfigure, cdn, countryIp, firewall, ownLog, ssl, serviceName) {
+        addDomain (baseDomain, domainName, home, wwwNeeded, ipv6Needed, autoconfigure, cdn, countryIp, firewall, ownLog, ssl, runtimeId, serviceName) {
             return this.$http.put(`${this.aapiHostingPath}/${serviceName}/domains`, {
                 baseDomain,
                 domainName,
@@ -80,7 +81,8 @@ angular
                 countryIp,
                 firewallNeeded: firewall.toLowerCase(),
                 ownLog,
-                ssl
+                ssl,
+                runtimeId
             })
                 .then((response) => {
                     this.Hosting.resetDomains();
@@ -103,9 +105,10 @@ angular
          * @param {string} firewall
          * @param ownLog
          * @param {boolean} ssl
+         * @param {string|null} runtimeId
          * @param {string} serviceName
          */
-        modifyDomain (domain, home, wwwNeeded, ipv6Needed, cdn, countryIp, firewall, ownLog, ssl, serviceName) {
+        modifyDomain (domain, home, wwwNeeded, ipv6Needed, cdn, countryIp, firewall, ownLog, ssl, runtimeId, serviceName) {
             return this.getZoneLinked(domain)
                 .then((urlSplitted) => {
                     let baseDomain;
@@ -119,7 +122,7 @@ angular
                         domainName = null;
                     }
 
-                    return this.addDomain(baseDomain, domainName, home, wwwNeeded, ipv6Needed, !!urlSplitted.zone, cdn.toLowerCase(), countryIp, firewall.toLowerCase(), ownLog, ssl, serviceName);
+                    return this.addDomain(baseDomain, domainName, home, wwwNeeded, ipv6Needed, !!urlSplitted.zone, cdn.toLowerCase(), countryIp, firewall.toLowerCase(), ownLog, ssl, runtimeId, serviceName);
                 })
                 .then((response) => {
                     this.Hosting.resetDomains();
@@ -302,19 +305,16 @@ angular
                     search,
                     searchedType: "AAAA"
                 }
-            }).then((data) => _.get(data, "paginatedZone.records.list"));
+            }).then((data) => _.get(data, "paginatedZone.records.results"));
         }
 
         /**
          * Get attached domains
-         * @param {string} domain
+         * @param {string} serviceName
          */
-        getAttachedDomains (domain) {
-            return this.OvhHttp.get("/hosting/web/attachedDomain", {
-                rootPath: "apiv6",
-                params: {
-                    domain
-                }
+        getAttachedDomains (serviceName) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/attachedDomain`, {
+                rootPath: "apiv6"
             });
         }
 
@@ -339,6 +339,18 @@ angular
             return this.OvhHttp.put(`/hosting/web/${serviceName}/attachedDomain/${attachedDomain}`, {
                 rootPath: "apiv6",
                 data
+            });
+        }
+
+        /**
+         * Get runtime linked to an attached domain
+         *
+         * @param serviceName
+         * @param runtimeId
+         */
+        getRuntimeConfiguration (serviceName, runtimeId) {
+            return this.OvhHttp.get(`/hosting/web/${serviceName}/runtime/${runtimeId}`, {
+                rootPath: "apiv6"
             });
         }
     }

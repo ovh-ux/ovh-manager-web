@@ -1,4 +1,4 @@
-angular.module("App").controller("HostingChangeMainDomainCtrl", ($scope, $rootScope, $q, $stateParams, Alerter, Hosting, hostingChangeDomain, Domain, Emails, User) => {
+angular.module("App").controller("HostingChangeMainDomainCtrl", ($scope, $rootScope, $q, $stateParams, Alerter, atInternet, Hosting, hostingChangeDomain, Domain, Emails, User) => {
     "use strict";
 
     $scope.model = {
@@ -157,7 +157,16 @@ angular.module("App").controller("HostingChangeMainDomainCtrl", ($scope, $rootSc
                 domain: $scope.model.domain,
                 mxplan
             })
-            .then((order) => Alerter.success($scope.tr("hosting_order_upgrade_success", [order.url, order.orderId]), $scope.alerts.main))
+            .then((order) => {
+                atInternet.trackOrder({
+                    name: "[hosting]::change-main-domain[change-main-domain]",
+                    page: "web::hosting",
+                    orderId: order.orderId,
+                    priceTaxFree: order.prices.withoutTax.value,
+                    price: order.prices.withTax.value
+                });
+                Alerter.success($scope.tr("hosting_order_upgrade_success", [order.url, order.orderId]), $scope.alerts.main);
+            })
             .catch((err) => Alerter.alertFromSWS($scope.tr("hosting_order_upgrade_error"), err, $scope.alerts.main))
             .finally(() => {
                 $scope.resetAction();

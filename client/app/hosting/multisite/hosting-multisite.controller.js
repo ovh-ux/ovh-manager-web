@@ -1,4 +1,4 @@
-angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $stateParams, $location, Hosting, HostingDomain, hostingSSLCertificate, $timeout, Alerter, translator) => {
+angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $stateParams, $location, Hosting, HostingDomain, hostingSSLCertificate, $timeout, Alerter) => {
     "use strict";
 
     $scope.domains = null;
@@ -14,62 +14,84 @@ angular.module("App").controller("HostingTabDomainsCtrl", ($scope, $q, $statePar
     };
 
     $scope.loadDomains = function (count, offset) {
-        let sslInfos;
-        let domainsList;
-
         $scope.loading.domains = true;
+
         if ($location.search().domain) {
             $scope.search.text = $location.search().domain;
         }
 
-        Hosting.getTabDomains($stateParams.productId, count, offset, $scope.search.text)
-            .then((domains) => {
-                if (_.get(domains, "list.results", []).length > 0) {
-                    $scope.hasResult = true;
-                }
-                domainsList = domains;
-            })
-            .then(() => $scope.retrievingSSLCertificate())
-            .finally(() => {
-                hostingSSLCertificate.retrievingLinkedDomains($stateParams.productId)
-                    .then((sslLinked) => {
-                        sslInfos = sslLinked;
-                    })
-                    .finally(() => {
-                        _.forEach(_.get(domainsList, "list.results", []), (domain) => {
-                            domain.rawSsl = domain.ssl;
-                            if (Array.isArray(sslInfos) && sslInfos.indexOf(domain.name) === -1) {
-                                domain.ssl = domain.ssl ? 1 : 0;
-                            } else {
-                                domain.ssl = domain.ssl ? 2 : 0;
-                            }
-
-                            return domain;
-                        });
-
-                        $scope.domains = domainsList;
-
-                        $location.search("domain", null);
-
-                        $scope.loading.domains = false;
-                        $scope.loading.init = false;
-                    });
-            });
-
         $scope.excludeAttachedDomains = [$scope.hosting.cluster.replace(/^ftp/, $scope.hosting.primaryLogin)];
-    };
 
-    $scope.retrievingSSLCertificate = function () {
-        return hostingSSLCertificate
-            .retrievingCertificate($stateParams.productId)
+        return Hosting
+            .getTabDomains($stateParams.productId, count, offset, $scope.search.text)
+            .then((domains) => {
+                $scope.domains = domains;
+                $scope.hasResult = !_($scope.domains).isEmpty();
+            })
+            .catch((error) => {
+                Alerter.alertFromSWS(this.translator.tr("hosting_dashboard_ssl_details_error"), error, $scope.alerts.main);
+            })
+            .then(() => hostingSSLCertificate.retrievingLinkedDomains($stateParams.productId))
+            .then((sslLinked) => {
+                const linkedSSLs = _(sslLinked).isArray() ? sslLinked : [sslLinked];
+
+                $scope.domains.list.results = _($scope.domains.list.results)
+                    .map((domain) => {
+                        const newDomain = _(domain).clone();
+                        newDomain.rawSsl = newDomain.ssl;
+
+                        if (_(linkedSSLs).includes(newDomain.name)) {
+                            newDomain.ssl = newDomain.ssl ? 2 : 1;
+                        } else {
+                            newDomain.ssl = newDomain.ssl ? 1 : 0;
+                        }
+
+                        return newDomain;
+                    })
+                    .value();
+            })
+            .catch((error) => {
+                Alerter.alertFromSWS(this.translator.tr("hosting_dashboard_ssl_details_error"), error, $scope.alerts.main);
+            })
+            .then(() => Hosting.getSelected($stateParams.productId))
+            .then((hosting) => {
+                $scope.hosting = hosting;
+                $scope.numberOfColumns = 5 + hosting.isCloudWeb + hosting.hasCdn;
+
+                if (hosting.isCloudWeb) {
+                    const promises = _($scope.domains.list.results)
+                        .filter((domain) => domain.runtimeId)
+                        .map((domain) => HostingDomain
+                            .getRuntimeConfiguration($stateParams.productId, domain.runtimeId)
+                            .then((runtime) => {
+                                domain.runtime = runtime;
+                            })
+                        )
+                        .value();
+
+                    return $q.all(promises);
+                }
+
+                return null;
+            })
+            .catch((error) => {
+                Alerter.alertFromSWS(this.translator.tr("hosting_dashboard_ssl_details_error"), error, $scope.alerts.main);
+            })
+            .then(() => this.hostingSSLCertificate.retrievingCertificate(this.$stateParams.productId))
             .then((certificate) => {
                 $scope.sslCertificate = certificate;
             })
             .catch((error) => {
                 // 404 error means that the user has no SSL certificate
                 if (error.status !== 404) {
-                    Alerter.alertFromSWS(translator.tr("hosting_dashboard_ssl_details_error"), error, $scope.alerts.main);
+                    Alerter.alertFromSWS(this.translator.tr("hosting_dashboard_ssl_details_error"), error, $scope.alerts.main);
                 }
+            })
+            .finally(() => {
+                $location.search("domain", null);
+
+                $scope.loading.domains = false;
+                $scope.loading.init = false;
             });
     };
 

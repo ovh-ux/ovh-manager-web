@@ -84,7 +84,7 @@
             </div>
         </div>
 
-        <div class="text-center mt-5" data-ng-if="!model.datas">
+        <div class="text-center mt-5" data-ng-if="!hosting.isCloudWeb && !model.datas">
             <oui-spinner data-size="l"></oui-spinner>
         </div>
 
@@ -94,7 +94,7 @@
 
         <div class="alert alert-info my-5" role="alert"
              data-i18n-static="hosting_tab_STATISTICS_none"
-             data-ng-if="model.datas && !selected.haveDataToDisplay">
+             data-ng-if="hosting.isCloudWeb || (model.datas && !selected.haveDataToDisplay)">
         </div>
     </div>
 </div>

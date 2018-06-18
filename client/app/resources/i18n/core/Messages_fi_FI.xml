@@ -559,7 +559,7 @@
    <translation id="core_change_owner" qtlid="271491">Muuta omistajatietoja</translation>
    <translation id="core_change_owner_order" qtlid="283981">Verkkotunnuksen omistajan vaihtamiseksi on tehtävä tilaus suoraan verkkosivuillamme. </translation>
    <translation id="core_change_owner_error" qtlid="270735">Omistajan muutokseen tarvittavia tietoja ei pystytä hakemaan</translation>
-   <translation id="contacts_management" qtlid="259575">Yhteystietojen hallinta</translation>
+   <translation id="contacts_management" qtlid="32206">Yhteystiedot</translation>
    <translation id="more_tabs" qtlid="270748">Muut välilehdet</translation>
    <translation id="expired_date" qtlid="382076">Vanhentunut <strong>{0}</strong></translation>
    <translation id="expiration_date" qtlid="440274">Uusittava manuaalisesti <strong>{0}</strong></translation>
@@ -687,8 +687,8 @@
    <translation id="me_alerts_PAYMENTMEAN_PAYPAL_TOOMANYFAILURES" qtlid="343967">Sinulla on<strong>{0}</strong> virheellistä PayPal-tiliä. Mene<a href="#/billing/mean" class="alert-link">laskutusosioon</a> ja tee tarkistukset ja/tai rekisteröi uusi maksutapa.</translation>
 
    <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="433563">Prepaid-tilisi saldo on negatiivinen, <strong>{0}</strong> maksettava summa {1}. Mene<a href="#/billing/ovhaccount" class="alert-link">laskutusosioon suorittamaan puuttuva maksu.</a></translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="343993">OVH-tililläsi on velkaa <strong>{0}</strong>. Mene <a href="{1}" class="alert-link">laskutusosioon</a> korjaamaan tilanne.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369545">Sinulla on velkaa <strong>{0}</strong> (josta summa {1} ei ole erääntynyt). Mene<a href="{2}" class="alert-link">laskutusosioon</a> korjaamaan tilanne.</translation>
+   <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="343993">Sinulla on velkaa <strong>{0}</strong>. Mene <a href="#/billing/statements" class="alert-link">laskutusosioon</a> korjaamaan tilanne.</translation>
+   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369545">Sinulla on velkaa <strong>{0}</strong> (josta summa {1} ei ole erääntynyt). Mene <a href="#/billing/statements" class="alert-link">laskutusosioon</a> korjaamaan tilanne.</translation>
 
    <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="383919">Prepaid-tilisi on saavuttanut määrittämäsi kynnysrajan. Katso lisätietoja <a href="#/billing/ovhaccount" class="alert-link">laskustusosiosta</a>.</translation>
 
@@ -728,4 +728,10 @@
    <translation id="common_field_error_minlength" qtlid="472359">Syötä vähintään {{minlength}} merkkiä.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Syötä enintään {{maxlength}} merkkiä.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Syötä hyväksytty formaatti.</translation>
+
+   <translation id="common_stepper_optional_label" qtlid="488081">(valinnainen)</translation>
+   <translation id="common_stepper_modify_this_step" qtlid="480922">Muokkaa tätä vaihetta</translation>
+   <translation id="common_stepper_skip_this_step" qtlid="230127">Ohita tämä vaihe</translation>
+   <translation id="common_stepper_next_button_label" qtlid="17743">Seuraava</translation>
+   <translation id="common_stepper_submit_button_label" qtlid="113382">Lähetä</translation>
 </translations>

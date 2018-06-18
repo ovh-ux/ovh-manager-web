@@ -181,9 +181,13 @@
                 </div>
                 <div class="col-md-6">
                     <dl>
-                        <dt data-i18n-static="hosting_tab_FTP_dashboard_login"></dt>
+                        <dt data-i18n-static="hosting_tab_FTP_dashboard_primary_ftp_login"></dt>
                         <dd class="mb-3"
-                            data-ng-bind="ctrlHostingTabFTP.ftpInformations.primaryLogin"></dd>
+                            data-ng-bind="ctrlHostingTabFTP.primaryUser.ftp.user"></dd>
+
+                        <dt data-i18n-static="hosting_tab_FTP_dashboard_primary_ssh_login"></dt>
+                        <dd class="mb-3"
+                            data-ng-bind="ctrlHostingTabFTP.primaryUser.ssh.user"></dd>
 
                         <dt data-ng-if="!ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
                             <label class="font-weight-bold" for="primaryUserEnabled"
@@ -246,7 +250,8 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_login"></th>
+                                    <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_ftp_login"></th>
+                                    <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_ssh_login"></th>
                                     <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_home"></th>
                                     <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_ftp_state"></th>
                                     <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_ssh_state"></th>
@@ -261,20 +266,23 @@
 
                             <tbody data-ng-if="ctrlHostingTabFTP.loading.ftp">
                                 <tr>
-                                    <td class="loader text-center" colspan="5"></td>
+                                    <td colspan="6">
+                                        <oui-spinner data-size="s"></oui-spinner>
+                                    </td>
                                 </tr>
                             </tbody>
 
                             <tbody data-ng-if="!ctrlHostingTabFTP.loading.ftp && !ctrlHostingTabFTP.ftpInformations.list.results.length">
                                 <tr>
-                                    <td class="text-center" colspan="5"
+                                    <td class="text-center" colspan="6"
                                         data-i18n-static="table_search_noresult"></td>
                                 </tr>
                             </tbody>
 
                             <tbody data-ng-if="!ctrlHostingTabFTP.loading.ftp && ctrlHostingTabFTP.ftpInformations.list.results.length > 0">
                                 <tr data-ng-repeat="element in ctrlHostingTabFTP.ftpInformations.list.results track by $index">
-                                    <th scope="row" data-ng-bind="element.login"></th>
+                                    <th scope="row" data-ng-bind="element.ftp.user"></th>
+                                    <th scope="row" data-ng-bind="element.ssh.user"></th>
                                     <td data-ng-bind="element.home"></td>
                                     <td>
                                         <span class="label label-danger"
@@ -297,7 +305,7 @@
                                         </a>
                                     </td>
                                     <td class="text-center">
-                                        <button class="btn btn-icon" type="button" title="{{element.login}} : {{i18n.global_configuration}}"
+                                        <button class="btn btn-icon" type="button" title="{{element.ftp.user}} : {{i18n.global_configuration}}"
                                                 data-linkedpopover="hosting/popover/multiftp.html"
                                                 data-linkedpopover-placement="left"
                                                 data-linkedpopover-single="true"
@@ -327,13 +335,22 @@
                     data-i18n-static="hosting_tab_FTP_configuration_restore_snapshot_title_button"
                     data-ng-click="setAction('ftp/snapshot/restore/hosting-ftp-snapshot-restore')"
                     data-ng-disabled="ctrlHostingTabFTP.disableRestoreFtp"
-                    data-ng-if="ctrlHostingTabFTP.displayRestoreFtp">
+                    data-ng-if="ctrlHostingTabFTP.displayRestoreFtp && !hosting.isCloudWeb">
             </button>
+
+            <button class="btn btn-block btn-default" type="button"
+                    data-i18n-static="hosting_tab_FTP_configuration_generate_snapshot_title_button"
+                    data-ng-click="setAction('ftp/snapshot/generate/hosting-ftp-snapshot-generate')"
+                    data-ng-disabled="ctrlHostingTabFTP.disableRestoreFtp"
+                    data-ng-if="ctrlHostingTabFTP.displayRestoreFtp && hosting.isCloudWeb">
+            </button>
+
             <button class="btn btn-block btn-default" type="button"
                     data-i18n-static="hosting_tab_FTP_configuration_user_create_title_button"
                     data-ng-click="setAction('ftp/user/add/hosting-ftp-user-add', { primaryLogin: ctrlHostingTabFTP.ftpInformations.primaryLogin, operatingSystem: ctrlHostingTabFTP.ftpInformations.operatingSystem })"
                     data-ng-if="ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
             </button>
+
             <button class="btn btn-block btn-default" type="button"
                     data-i18n-static="hosting_tab_FTP_configuration_explorer_title"
                     data-ng-click="ctrlHostingTabFTP.openFtpExplorer()"

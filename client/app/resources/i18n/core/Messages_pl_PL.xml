@@ -219,7 +219,7 @@
    <translation id="navigation_left_domains" qtlid="32590">Domeny</translation>
    <translation id="navigation_left_all_domains" qtlid="152141">Wszystkie domeny</translation>
    <translation id="navigation_left_order_dnszone" qtlid="433654">Strefa DNS</translation>
-   <translation id="navigation_left_all_domains_operations" qtlid="76470">Operacje w trakcie</translation>
+   <translation id="navigation_left_all_domains_operations" qtlid="76470">Operacje w toku</translation>
    <translation id="navigation_left_order_private_database" qtlid="7702">Bazy danych</translation>
    <translation id="navigation_left_order_mxplan" qtlid="286513">MX Plan</translation>
    <translation id="navigation_left_order_emailpro" qtlid="374893">E-mail Pro</translation>
@@ -559,7 +559,7 @@
    <translation id="core_change_owner" qtlid="271491">Zmień właściciela</translation>
    <translation id="core_change_owner_order" qtlid="283981">Jeśli chcesz zmienić właściciela domeny, złoż zamówienie bezpośrednio na naszej stronie. </translation>
    <translation id="core_change_owner_error" qtlid="270735">Nie można pobrać informacji niezbędnych do zmiany właściciela.</translation>
-   <translation id="contacts_management" qtlid="259575">Zarządzanie kontaktami</translation>
+   <translation id="contacts_management" qtlid="32206">Kontakt</translation>
    <translation id="more_tabs" qtlid="270748">Inne zakładki</translation>
    <translation id="expired_date" qtlid="382076">Usługa wygasła <strong>{0}</strong></translation>
    <translation id="expiration_date" qtlid="440274">Ręcznie odnów usługę w dniu <strong>{0}</strong></translation>
@@ -687,8 +687,8 @@
    <translation id="me_alerts_PAYMENTMEAN_PAYPAL_TOOMANYFAILURES" qtlid="343967">Liczba kont PayPal z błędem: <strong>{0}</strong>.  Przejdź do <a href="#/billing/mean" class="alert-link">sekcji Płatności</a>, aby dokonać weryfikacji i/lub zarejestrować nowy sposób płatności.</translation>
 
    <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="433563">Twoje konto posiada zadłużenie <strong>{0}</strong> na dzień {1}. Przejdź do <a href="#/billing/ovhaccount" class="alert-link">sekcji płatności</a>, aby uregulować płatność.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="343993">Posiadasz zadłużenie w kwocie <strong>{0}</strong>. Przejdź do <a href="{1}" class="alert-link">sekcji Płatności</a>, aby uregulować płatności.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369545">Posiadasz zadłużenie na kwotę <strong>{0}</strong> (z czego kwota {1} nieprzedawniona). Przejdź do <a href="{2}" class="alert-link">sekcji płatności</a>, aby uregulować płatności.</translation>
+   <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="343993">Posiadasz zadłużenie na kwotę <strong>{0}</strong>. Przejdź do <a href="#/billing/statements" class="alert-link">sekcji Płatności</a>, aby uregulować należność.</translation>
+   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369545">Posiadasz zadłużenie na kwotę <strong>{0}</strong> (z czego {1} to kwota nieprzedawniona). Przejdź do <a href="#/billing/statements" class="alert-link">sekcji Płatności</a>, aby uregulować należność.</translation>
 
    <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="383919">Twoje konto prepaid osiągnęło zdefiniowany próg. Przejdź do <a href="#/billing/ovhaccount" class="alert-link">sekcji płatności</a>, aby uzyskać więcej informacji.</translation>
 
@@ -728,4 +728,10 @@
    <translation id="common_field_error_minlength" qtlid="472359">Wprowadź minimum {{minlength}} znaków.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Wprowadź maksimum {{maxlength}} znaków.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Użyj poprawnego formatu.</translation>
+
+   <translation id="common_stepper_optional_label" qtlid="488081">(opcjonalnie)</translation>
+   <translation id="common_stepper_modify_this_step" qtlid="480922">Edytuj ten krok</translation>
+   <translation id="common_stepper_skip_this_step" qtlid="230127">Przejdź ten etap.</translation>
+   <translation id="common_stepper_next_button_label" qtlid="17743">Dalej</translation>
+   <translation id="common_stepper_submit_button_label" qtlid="113382">Przenieś</translation>
 </translations>

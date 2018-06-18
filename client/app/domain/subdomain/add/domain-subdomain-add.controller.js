@@ -1,8 +1,9 @@
 angular.module("App").controller(
     "AddSubdomainCtrl",
     class AddSubdomainCtrl {
-        constructor ($scope, Domain, DomainValidator) {
+        constructor ($scope, atInternet, Domain, DomainValidator) {
             this.$scope = $scope;
+            this.atInternet = atInternet;
             this.Domain = Domain;
             this.DomainValidator = DomainValidator;
         }
@@ -28,6 +29,10 @@ angular.module("App").controller(
             case "redirection": {
                 const domain = angular.copy(this.domain);
                 domain.subdomainPreset = this.model.subdomain;
+                this.atInternet.trackClick({
+                    name: "domain-add-subdomain",
+                    type: "action"
+                });
                 return this.$scope.setAction("redirection/add/domain-redirection-add", domain);
             }
             case "addRecord":

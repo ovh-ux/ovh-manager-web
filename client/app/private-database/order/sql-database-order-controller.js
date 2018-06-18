@@ -1,12 +1,14 @@
 angular.module("App").controller(
     "SqlDatabaseOrderCtrl",
     class SqlDatabaseOrderCtrl {
-        constructor ($q, $scope, $stateParams, $timeout, ConverterService, Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, User) {
+        constructor ($q, $scope, $stateParams, $timeout, $window, atInternet, ConverterService, Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, User) {
             this.$q = $q;
             this.$scope = $scope;
             this.$stateParams = $stateParams;
             this.$timeout = $timeout;
+            this.$window = $window;
 
+            this.atInternet = atInternet;
             this.converterService = ConverterService;
             this.hostingService = Hosting;
             this.hostingDatabaseService = HostingDatabase;
@@ -384,7 +386,15 @@ angular.module("App").controller(
         }
 
         openBc () {
-            window.open(this.order.url);
+            this.atInternet.trackOrder({
+                name: `[sql-${this.model.type}]::${this.model.version || this.model.dbPack}[${this.model.version || this.model.dbPack}]`,
+                page: "web::payment-pending",
+                orderId: this.order.orderId,
+                priceTaxFree: this.order.prices.withoutTax.value,
+                price: this.order.prices.withTax.value,
+                status: 1
+            });
+            this.$window.open(this.order.url);
         }
 
         findHosting (name) {

@@ -20,6 +20,11 @@ angular.module("App").controller(
         }
 
         $onInit () {
+            this.destinationServiceType = {
+                EMAIL_PRO: "EMAIL PRO",
+                HOSTED_EXCHANGE: "HOSTED EXCHANGE",
+                PRIVATE_EXCHANGE: "PRIVATE EXCHANGE"
+            };
             this.email = this.$scope.ctrlEmailDomainEmail.accountMigrationEmail || null;
 
             this.loaders = {
@@ -49,14 +54,6 @@ angular.module("App").controller(
             this.getServiceTypes();
         }
 
-        updateService () {
-            this.migrate.destinationService = null;
-            this.migrate.destinationEmail = null;
-            this.isMigrationDataValid = false;
-            this.shouldDisplayCheckMigrationsErrors = false;
-            this.resetError();
-        }
-
         // Request Service types
         getServiceTypes () {
             this.loaders.isInitialRetrievalRunning = true;
@@ -81,22 +78,21 @@ angular.module("App").controller(
             this.$q.allSettled(promises)
                 .then((data) => {
                     this.destinationServices = {};
-                    this.availableServices = [];
+                    this.availableServices = 0;
 
                     // Merge destinationServices with serviceTypes, and get available services
-                    angular.forEach(serviceTypes, (service, index) => {
-                        this.destinationServices[service] = data[index];
+                    angular.forEach(serviceTypes, (serviceType, index) => {
+                        if (data[index].length) {
+                            const services = _.map(data[index], (destinationService) => ({
+                                id: destinationService,
+                                name: destinationService,
+                                type: serviceType
+                            }));
 
-                        if (this.destinationServices[service].length) {
-                            this.availableServices.push(service);
+                            this.destinationServices[serviceType] = services;
+                            this.availableServices++;
                         }
                     });
-                })
-                .finally(() => {
-                    // Auto select the first type of service if only one available service for migration
-                    if (this.availableServices.length === 1) {
-                        this.migrate.serviceType = this.availableServices[0];
-                    }
 
                     this.loaders.isInitialRetrievalRunning = false;
                 });
@@ -135,11 +131,13 @@ angular.module("App").controller(
                     if (this.destinationEmails && this.destinationEmails.length > 0) {
                         this.remainingAvailableEmails = this.destinationEmails.length - 1;
                         this.migrate.destinationEmail = this.destinationEmails[0];
-                        this.checkMigrationData();
                     }
                 })
                 .catch((err) => this.handleError(err))
-                .finally(() => { this.loaders.isWaitingForDestinationEmails = false; });
+                .finally(() => {
+                    this.loaders.isWaitingForDestinationEmails = false;
+                    this.isExchange = _.get(this, "migrate.destinationService.type") !== this.destinationServiceType.emailPro;
+                });
         }
 
         // Check if it's possible to migrate
@@ -148,7 +146,7 @@ angular.module("App").controller(
             this.checkMigrationErrors = [];
             this.shouldDisplayCheckMigrationsErrors = false;
 
-            this.Emails.checkMigrate(this.email.domain, this.email.accountName, this.migrate.destinationService, this.migrate.destinationEmail)
+            this.Emails.checkMigrate(this.email.domain, this.email.accountName, this.migrate.destinationService.name, this.migrate.destinationEmail)
                 .then(() => {
                     this.isMigrationDataValid = true;
                 })
@@ -169,9 +167,9 @@ angular.module("App").controller(
         migrateAccount () {
             this.loaders.isWaitingForMigration = true;
 
-            this.Emails.migrateAccountToDestinationAccount(this.email.domain, this.email.accountName, this.migrate.destinationService, this.migrate.destinationEmail, this.migrate.password)
+            this.Emails.migrateAccountToDestinationAccount(this.email.domain, this.email.accountName, this.migrate.destinationService.name, this.migrate.destinationEmail, this.migrate.password)
                 .then(() => {
-                    if (this.migrate.serviceType === "EMAIL PRO") {
+                    if (_.get(this, "migrate.destinationService.type") === this.destinationServiceType.emailPro) {
                         this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success_emailpro"), this.$scope.alerts.main);
                     } else {
                         this.Alerter.success(this.$scope.tr("email_tab_modal_migrate_success_exchange"), this.$scope.alerts.main);
