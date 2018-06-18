@@ -1,3 +1,13 @@
+<a name="13.4.8"></a>
+## [13.4.8](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.7...v13.4.8) (2018-06-18)
+
+
+### Bug Fixes
+
+* **translations:** fix translations path ([0a54719](https://github.com/ovh-ux/ovh-manager-web/commit/0a54719))
+
+
+
 <a name="13.4.7"></a>
 ## [13.4.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.6...v13.4.7) (2018-06-18)
 
