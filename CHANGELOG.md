@@ -1,3 +1,13 @@
+<a name="13.4.9"></a>
+## [13.4.9](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.8...v13.4.9) (2018-06-19)
+
+
+### Bug Fixes
+
+* **hosting:** send the right option when switching offer ([ac86bec](https://github.com/ovh-ux/ovh-manager-web/commit/ac86bec))
+
+
+
 <a name="13.4.8"></a>
 ## [13.4.8](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.7...v13.4.8) (2018-06-18)
 
