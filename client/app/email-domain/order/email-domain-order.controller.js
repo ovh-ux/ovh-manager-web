@@ -124,20 +124,26 @@ angular.module('App').controller(
         .all(queue)
         .then(() => {
           if (durations && durations.length === 1) {
-            this.selectedOrder.duration = durations[0];
+            [this.selectedOrder.duration] = durations;
           }
         })
         .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('mxPlan_order_step2_price_fail'), err, this.$scope.alerts.order))
-        .finally(() => (this.loading.prices = false));
+        .finally(() => {
+          this.loading.prices = false;
+        });
     }
 
     generateBc() {
       this.loading.bc = true;
       this.MXPlan
-        .orderMxPlan(this.selectedOrder.config.domain, this.selectedOrder.offer.offer, this.selectedOrder.offer.duration)
-        .then(details => (this.order = details))
+        .orderMxPlan(
+          this.selectedOrder.config.domain,
+          this.selectedOrder.offer.offer,
+          this.selectedOrder.offer.duration,
+        )
+        .then((details) => { this.order = details; })
         .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('mxPlan_order_step3_fail'), err, this.$scope.alerts.order))
-        .catch(() => (this.loading.bc = false));
+        .catch(() => { this.loading.bc = false; });
     }
 
     openBc() {
