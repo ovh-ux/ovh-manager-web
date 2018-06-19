@@ -1727,6 +1727,9 @@ module.exports = {
                 TN : "https://www.ovh.com/tn/hebergement-web/",
                 WE : "http://www.ovh.com/us/"
             },
+            cloudweb_order : {
+                FR: "https://www.ovh.com/fr/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+            },
             MX_PLAN : {
                 CA : "",
                 CZ : "https://www.ovh.cz/produkty/mxplan.xml",
