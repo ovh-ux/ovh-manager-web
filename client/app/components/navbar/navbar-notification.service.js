@@ -52,6 +52,7 @@ class NavbarNotificationService {
       }).finally(() => { toUpdate.updating = false; });
     }
   }
+  /* eslint-disable no-param-reassign */
 
   convertSubLink(notification) {
     notification.time = this.formatTime(notification.date);
@@ -62,7 +63,6 @@ class NavbarNotificationService {
     notification.linkClicked = toUpdate => this.toggleSublinkAction(toUpdate, true);
     return notification;
   }
-  /* eslint-enable no-param-reassign */
 
   acknowledgeAll() {
     if (this.navbarContent) {
@@ -73,7 +73,7 @@ class NavbarNotificationService {
           .post({ acknowledged: toAcknowledge.map(x => x.id) }).$promise
           .then(() => {
             toAcknowledge.forEach((sublink) => {
-              sublink.acknowledged = true; // eslint-disable-line no-param-reassign
+              sublink.acknowledged = true;
             });
           });
       }
@@ -86,8 +86,7 @@ class NavbarNotificationService {
     }
     this.formatTimeTask = this.$interval(() => {
       sublinks.forEach((notification) => {
-        notification.time = // eslint-disable-line no-param-reassign
-            this.formatTime(notification.date);
+        notification.time = this.formatTime(notification.date);
       });
     }, this.NOTIFICATION_REFRESH_TIME);
   }
