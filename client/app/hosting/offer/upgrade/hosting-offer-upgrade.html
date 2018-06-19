@@ -26,7 +26,7 @@
                         <div class="oui-select">
                             <select class="oui-select__input" id="hostingOffer" name="capacity"
                                     data-ng-model="ctrl.model.capacity"
-                                    data-ng-options="(i18n['hosting_dashboard_service_offer_' + availableOffer] || availableOffer) for availableOffer in ctrl.availableOffers | orderBy:ctrl.orderByOffer() track by $index">
+                                    data-ng-options="(i18n['hosting_dashboard_service_offer_' + availableOffer] || availableOffer) for availableOffer in ctrl.availableOffers | orderBy:ctrl.orderByOffer()">
                                 <option value="" disabled
                                         data-i18n-static="select_placeholder"></option>
                             </select>
