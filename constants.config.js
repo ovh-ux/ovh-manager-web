@@ -1728,7 +1728,22 @@ module.exports = {
                 WE : "http://www.ovh.com/us/"
             },
             cloudweb_order : {
-                FR: "https://www.ovh.com/fr/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                FR : "https://www.ovh.com/fr/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                DE : "https://www.ovh.de/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                ES : "https://www.ovh.es/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                IE : "https://www.ovh.ie/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                IT : "https://www.ovh.it/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                NL : "https://www.ovh.nl/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                PL : "https://www.ovh.pl/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                PT : "https://www.ovh.pt/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                CZ : "https://www.ovh.cz/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                SN : "https://www.ovh.sn/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                FI : "https://www.ovh-hosting.fi/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                MA : "https://www.ovh.com/ma/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                TN : "https://www.ovh.com/tn/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                LT : "https://www.ovh.lt/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                GB : "https://www.ovh.co.uk/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)",
+                EN : "https://www.ovh.co.uk/order/domain/#/legacy/domain/search?options=~(hosting~'cloudweb1)"
             },
             MX_PLAN : {
                 CA : "",
