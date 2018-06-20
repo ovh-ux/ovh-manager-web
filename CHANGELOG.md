@@ -1,3 +1,13 @@
+<a name="13.4.10"></a>
+## [13.4.10](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.9...v13.4.10) (2018-06-20)
+
+
+### Bug Fixes
+
+* remove "track by $index" on ng-options ([a9315c8](https://github.com/ovh-ux/ovh-manager-web/commit/a9315c8))
+
+
+
 <a name="13.4.9"></a>
 ## [13.4.9](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.8...v13.4.9) (2018-06-19)
 
