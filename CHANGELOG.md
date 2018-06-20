@@ -1,3 +1,18 @@
+<a name="13.4.11"></a>
+## [13.4.11](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.10...v13.4.11) (2018-06-20)
+
+
+### Bug Fixes
+
+* **cloudweb:** fix "sqlLocal" text ([4586086](https://github.com/ovh-ux/ovh-manager-web/commit/4586086))
+
+
+### Features
+
+* **cloudweb:** display default runtime in general informations tab ([#417](https://github.com/ovh-ux/ovh-manager-web/issues/417)) ([bb4f148](https://github.com/ovh-ux/ovh-manager-web/commit/bb4f148))
+
+
+
 <a name="13.4.10"></a>
 ## [13.4.10](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.9...v13.4.10) (2018-06-20)
 
