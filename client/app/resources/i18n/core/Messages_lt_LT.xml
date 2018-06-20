@@ -215,7 +215,7 @@
    <translation id="main_menu_products_and_config" qtlid="4406">Konfigūracija</translation>
    <translation id="main_menu_bill_and_renew" qtlid="32950">Sąskaita</translation>
    <translation id="main_menu_help_and_support" qtlid="26035">Pagalba</translation>
-   <translation id="navigation_left_search" qtlid="122275">Ieškoma...</translation>
+   <translation id="navigation_left_search" qtlid="491925">Paieška...</translation>
    <translation id="navigation_left_domains" qtlid="32590">Domenai</translation>
    <translation id="navigation_left_all_domains" qtlid="152141">Visi mano domenai</translation>
    <translation id="navigation_left_order_dnszone" qtlid="433654">DNS zona</translation>
@@ -410,7 +410,7 @@
    <translation id="country_KW" qtlid="188262">Kuveitas</translation>
    <translation id="country_KY" qtlid="188275">Kaimanų salos</translation>
    <translation id="country_KZ" qtlid="188288">Kazachstanas</translation>
-   <translation id="country_LA" qtlid="188301">Laosas, Liaudies demokratinė respublika -</translation>
+   <translation id="country_LA" qtlid="491938">Laosas, Liaudies Demokratinė Respublika -</translation>
    <translation id="country_LB" qtlid="188314">Libanas</translation>
    <translation id="country_LC" qtlid="188327">Sent Liusija</translation>
    <translation id="country_LI" qtlid="188340">Lichtenšteinas</translation>
@@ -675,28 +675,6 @@
    <translation id="sso_modal_action_reload" qtlid="328810">Tęsti kaip <strong>{{name}}</strong></translation>
    <translation id="sso_modal_action_logout" qtlid="316021">Eiti į autentifikavimo puslapį</translation>
 
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_MISSING" qtlid="363852">Nepasirinkta jokia mokėjimo priemonė pagal nutylėjimą. Jūs galite pasirinkti ar pridėti naują mokėjimo priemonę <a href="#/billing/mean" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_EXPIRED" qtlid="343876">Jūsų mokėjimo priemonės, nustatytos pagal nutylėjimą, galiojimas baigėsi! Jūs galite įregistruoti naują mokėjimo priemonę <a href="#/billing/mean" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_EXPIRE_SOON" qtlid="343889">Jūsų mokėjimo priemonė, nustatyta pagal nutylėjimą, baigs galioti po 30 dienų. Jūs galite įregistruoti naują mokėjimo priemonę <a href="#/billing/mean" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_BANKACCOUNT_PENDINGVALIDATION" qtlid="343902">Jūsų mokėjimo priemonei, nustatytai pagal nutylėjimą, (banko sąskaitai) laukiama patvirtinimo. Daugiau informacijos <a href="#/billing/mean" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_CREDITCARD_TOOMANYFAILURES" qtlid="343915">Jūsų mokėjimo priemonėje, nustatytoje pagal nutylėjimą, (kredito kortelėje) yra klaidų! Jūs galite atlikti patikrą ir/ar užregistruoti naują mokėjimo priemonę <a href="#/billing/mean" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_PAYPAL_TOOMANYFAILURES" qtlid="343928">Jūsų mokėjimo priemonėje, nustatytoje pagal nutylėjimą, (PayPal) yra klaidų! Jūs galite atlikti patikrą ir/ar užregistruoti naują mokėjimo priemonę <a href="#/billing/mean" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-
-   <translation id="me_alerts_PAYMENTMEAN_BANKACCOUNT_PENDINGVALIDATION" qtlid="343941">Jūs pridėjote <strong>{0}</strong> banko sąskaitą(-as)/(-ų), kurioms laukiama patvirtinimo. Daugiau informacijos <a href="#/billing/mean" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_CREDITCARD_TOOMANYFAILURES" qtlid="343954">Jūs pridėjote <strong>{0}</strong> kredito kortelę(-es)/(-ių), kurioje(-iose) yra klaidų. Jūs galite atlikti patikrą ir/ar užregistruoti naują mokėjimo priemonę <a href="#/billing/mean" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_PAYPAL_TOOMANYFAILURES" qtlid="343967">Jūs pridėjote <strong>{0}</strong> PayPal paskyrą(-as)/(-ų), kurioje(-iose) yra klaidų. Jūs galite atlikti patikrą ir/ar užregistruoti naują mokėjimo priemonę <a href="#/billing/mean" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-
-   <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="433563">Jūsų išankstinio mokėjimo sąskaitoje skola: <strong>{0}</strong> dienai: {1}. Jūs galite apmokėti skolą <a href="#/billing/ovhaccount" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="343993">Jūsų skola yra <strong>{0}</strong>. Jūs galite apmokėti likusią sumą <a href="{1}" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369545">Jūs turite skolą: <strong>{0}</strong> (laiku neapmokėta suma: {1}). Jūs galite apmokėti skolą <a href="{2}" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-
-   <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="383919">Jūsų išankstinio mokėjimo paskyroje pasiektas jūsų nustatytas limitas. Daugiau informacijos <a href="#/billing/ovhaccount" class="alert-link">sąskaitų ir mokėjimų skiltyje</a>.</translation>
-
-   <translation id="me_alerts_ORDERS_DOCUMENTSREQUESTED" qtlid="344006">Jūs pridėjote <strong>{0}</strong> užsakymą(-us)/(-ų), kuriam(-iems) laukiama dokumentų patikrinimo. Jūs galite atnaujinti duomenis <a href="#/billing/orders?status=in-progress" class="alert-link">skiltyje „Mano užsakymai“</a>.</translation>
-   <translation id="me_alerts_AGREEMENTS_TODO" qtlid="344019">Jums reikia patvirtinti <strong>{0}</strong> sutartį(-is)/(-čių).</translation>
-   <translation id="me_alerts_CONTACTCHANGE_VALIDATINGBYCUSTOMERS" qtlid="344032">Jūs pridėjote <strong>{0}</strong> užklausą(-as)/(-ų) dėl kontaktų keitimo.</translation>
-
-
    <translation id="global_ks_upgrade_step1" qtlid="367863">Norėdami migruoti Kimsufi talpinimo pasiūlymą, atlikite šiuos veiksmus:</translation>
    <translation id="global_ks_upgrade_step2" qtlid="367876">Meniu pasirinkite Kimsufi talpinimą</translation>
    <translation id="global_ks_upgrade_step3" qtlid="367889">Pagrindiniame talpinimo plano informaciniame puslapyje paspauskite „Pakeisti pasiūlymą“.</translation>
@@ -713,12 +691,30 @@
 
    <translation id="sidebar_menu_order_actions" qtlid="43558">Užsakyti</translation>
 
-   <translation id="common_ouidatagrid_nodata" qtlid="197635">Jokio rezultato</translation>
-   <translation id="common_ouipagination_resultsperpage" qtlid="433384">Rezultatai / 1 psl.</translation>
-   <translation id="common_ouipagination_ofnresults" qtlid="452982">viso rezultatų: TOTAL_ITEMS </translation>
-   <translation id="common_ouipagination_currentpageofpagecount" qtlid="452995">Puslapis CURRENT_PAGE iš PAGE_COUNT</translation>
-   <translation id="common_ouipagination_next" qtlid="433423">Kitas puslapis</translation>
-   <translation id="common_ouipagination_previous" qtlid="433436">Ankstesnis puslapis</translation>
+   <translation id="common_criteria_adder_column_label" qtlid="479108">Stulpelis</translation>
+   <translation id="common_criteria_adder_operator_label" qtlid="425806">Sąlygos</translation>
+   <translation id="common_criteria_adder_operator_boolean_is" qtlid="479121">yra</translation>
+   <translation id="common_criteria_adder_operator_boolean_isNot" qtlid="479134">yra skirtingas nei</translation>
+   <translation id="common_criteria_adder_operator_string_contains" qtlid="218692">yra</translation>
+   <translation id="common_criteria_adder_operator_string_containsNot" qtlid="218705">nėra</translation>
+   <translation id="common_criteria_adder_operator_string_startsWith" qtlid="479147">prasideda</translation>
+   <translation id="common_criteria_adder_operator_string_endsWith" qtlid="479160">baigiasi</translation>
+   <translation id="common_criteria_adder_operator_string_is" qtlid="479173">yra lygus</translation>
+   <translation id="common_criteria_adder_operator_string_isNot" qtlid="479134">yra skirtingas nei</translation>
+   <translation id="common_criteria_adder_operator_number_is" qtlid="479173">yra lygus</translation>
+   <translation id="common_criteria_adder_operator_number_smaller" qtlid="479186">yra žemesnis nei</translation>
+   <translation id="common_criteria_adder_operator_number_bigger" qtlid="479199">yra didesnis nei</translation>
+   <translation id="common_criteria_adder_operator_date_is" qtlid="479121">yra</translation>
+   <translation id="common_criteria_adder_operator_date_isBefore" qtlid="479212">yra ankčiau nei</translation>
+   <translation id="common_criteria_adder_operator_date_isAfter" qtlid="479225">yra vėliau nei</translation>
+   <translation id="common_criteria_adder_operator_options_is" qtlid="479121">yra</translation>
+   <translation id="common_criteria_adder_operator_options_isNot" qtlid="479134">yra skirtingas nei</translation>
+   <translation id="common_criteria_adder_true_label" qtlid="34776">Taip</translation>
+   <translation id="common_criteria_adder_false_label" qtlid="34788">Ne</translation>
+   <translation id="common_criteria_adder_value_label" qtlid="47548">Reikšmė</translation>
+   <translation id="common_criteria_adder_submit_label" qtlid="37923">Pridėti</translation>
+
+   <translation id="common_datagrid_nodata" qtlid="197635">Jokio rezultato</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Prašome užpildyti šį lauką</translation>
    <translation id="common_field_error_number" qtlid="472307">Įveskite skaitinę reikšmę.</translation>
@@ -728,6 +724,22 @@
    <translation id="common_field_error_minlength" qtlid="472359">Įveskite bent {{minlength}} simbolius.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Įveskite na daugiau kaip {{maxlength}} simbolius.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Prašome naudoti priimtiną formatą</translation>
+
+   <translation id="common_navbar_notification_title" qtlid="33250">Pranešimai</translation>
+   <translation id="common_navbar_notification_error" qtlid="323434">Atsiprašome, nepavyko inicijuoti šio meniu!</translation>
+   <translation id="common_navbar_notification_error_subject" qtlid="26407">Klaida</translation>
+   <translation id="common_navbar_notification_see_all" qtlid="401914">Peržiūrėti visus pranešimus</translation>
+   <translation id="common_navbar_notification_mark_as_read" qtlid="70865">Žymėti kaip perskaitytus</translation>
+   <translation id="common_navbar_notification_mark_as_unread" qtlid="70877">Žymėti kaip neskaitytus</translation>
+
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Rezultatai / 1 psl.</translation>
+   <translation id="common_pagination_page" qtlid="433397">puslapis</translation>
+   <translation id="common_pagination_of" qtlid="121615"></translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">viso rezultatų: TOTAL_ITEMS </translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Puslapis CURRENT_PAGE iš PAGE_COUNT</translation>
+   <translation id="common_pagination_results" qtlid="433410">rezultatai</translation>
+   <translation id="common_pagination_next" qtlid="433423">Kitas puslapis</translation>
+   <translation id="common_pagination_previous" qtlid="433436">Ankstesnis puslapis</translation>
 
    <translation id="common_stepper_optional_label" qtlid="488081">(pasirinktinai)</translation>
    <translation id="common_stepper_modify_this_step" qtlid="480922">Keisti šį žingsnį</translation>
