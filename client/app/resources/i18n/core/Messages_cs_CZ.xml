@@ -215,7 +215,7 @@
    <translation id="main_menu_products_and_config" qtlid="4406">Konfigurace</translation>
    <translation id="main_menu_bill_and_renew" qtlid="32950">Fakturace</translation>
    <translation id="main_menu_help_and_support" qtlid="26035">Pomoc</translation>
-   <translation id="navigation_left_search" qtlid="122275">Vyhledávání...</translation>
+   <translation id="navigation_left_search" qtlid="491925">Vyhledávání...</translation>
    <translation id="navigation_left_domains" qtlid="32590">Domény</translation>
    <translation id="navigation_left_all_domains" qtlid="152141">Všechny mé domény</translation>
    <translation id="navigation_left_order_dnszone" qtlid="433654">DNS zóna</translation>
@@ -410,7 +410,7 @@
    <translation id="country_KW" qtlid="188262">Kuvajt</translation>
    <translation id="country_KY" qtlid="188275">Kajmanské ostrovy</translation>
    <translation id="country_KZ" qtlid="188288">Kazachstán</translation>
-   <translation id="country_LA" qtlid="188301">Laos, lidově demokratická republika</translation>
+   <translation id="country_LA" qtlid="491938">Laos, lidově demokratická republika -</translation>
    <translation id="country_LB" qtlid="188314">Libanon</translation>
    <translation id="country_LC" qtlid="188327">Svatá Lucie</translation>
    <translation id="country_LI" qtlid="188340">Lichtenštejnsko</translation>
@@ -676,28 +676,6 @@
    <translation id="sso_modal_action_reload" qtlid="328810">Pokračovat jako <strong>{{name}}</strong></translation>
    <translation id="sso_modal_action_logout" qtlid="316021">Běžte na přihlašovací stránku</translation>
 
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_MISSING" qtlid="363852">Nebyla zvolena výchozí platební metoda. Pro zvolení některé ze stávajících či zadání nové platební metody přejděte prosím do <a href="#/billing/mean" class="alert-link">sekce "Fakturace"</a>.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_EXPIRED" qtlid="343876">Vaše výchozí platební metoda expirovala! Běžte do <a href="#/billing/mean" class="alert-link">sekce fakturace</a> a obnovte ji.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_EXPIRE_SOON" qtlid="343889">Vaše výchozí platební metoda expiruje za méně než 30 dní. Běžte do <a href="#/billing/mean" class="alert-link">sekce fakturace</a> a obnovte ji.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_BANKACCOUNT_PENDINGVALIDATION" qtlid="343902">Vaše výchozí platební metoda (bankovní účet) čeká na schválení. Běžte do <a href="#/billing/mean" class="alert-link">sekce fakturace</a> pro více informací.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_CREDITCARD_TOOMANYFAILURES" qtlid="343915">Vaše výchozí platební metoda (kreditní karta) hlásí chybu! Běžte do <a href="#/billing/mean" class="alert-link">sekce fakturace</a> a proveďte potřebná ověření, případně zadejte novou kartu jako novou platební metodu.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_PAYPAL_TOOMANYFAILURES" qtlid="343928">Vaše výchozí platební metoda (PayPal) hlásí chybu! Běžte do <a href="#/billing/mean" class="alert-link">sekce fakturace</a> a proveďte potřebná ověření, případně zadejte novou platební metodu.</translation>
-
-   <translation id="me_alerts_PAYMENTMEAN_BANKACCOUNT_PENDINGVALIDATION" qtlid="343941">Počet bankovních účtů ke schválení: <strong>{0}</strong>. Běžte do <a href="#/billing/mean" class="alert-link">sekce fakturace</a> pro více informací.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_CREDITCARD_TOOMANYFAILURES" qtlid="343954">Počet kreditních karet hlásících chybu: <strong>{0}</strong>. Běžte do <a href="#/billing/mean" class="alert-link">sekce fakturace</a> a proveďte potřebná ověření, případně zadejte novou platební metodu.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_PAYPAL_TOOMANYFAILURES" qtlid="343967">Počet účtů PayPal hlásících chybu: <strong>{0}</strong>. Běžte do <a href="#/billing/mean" class="alert-link">sekce fakturace</a> a proveďte potřebná ověření, případně zadejte novou platební metodu.</translation>
-
-   <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="433563">Záporný zůstatek na Vašem předplaceném účtu je <strong>{0}</strong> k datu {1}. Pro vyřešení této situace přejděte prosím do sekce <a href="#/billing/ovhaccount" class="alert-link">Fakturace</a>.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="343993">Váš aktuální dluh: <strong>{0}</strong>. Přejděte prosím do <a href="#/billing/statements" class="alert-link">sekce Fakturace</a> a zjednejte nápravu.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369545">Vaše aktuální dlužná částka činní <strong>{0}</strong> (včetně  doposud neuhrazených pohledávek {1}). Pro uhrazení prosím přejděte do <a href="#/billing/statements" class="alert-link">sekce "Fakturace"</a>.</translation>
-
-   <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="383919">Váš předplacený účet dosáhl Vámi stanovené hranice. Pro více informací přejděte prosím do <a href="#/billing/ovhaccount" class="alert-link"> sekce "Fakturace"</a>.</translation>
-
-   <translation id="me_alerts_ORDERS_DOCUMENTSREQUESTED" qtlid="344006">Počet objednávek čekajících na nezbytné dokumenty: <strong>{0}</strong>. Běžte do <a href="#/billing/orders?status=in-progress" class="alert-link">sekce "Moje objednávky"</a> a aktualizujte je.</translation>
-   <translation id="me_alerts_AGREEMENTS_TODO" qtlid="344019">Počet smluv čekajících na schválení: <strong>{0}</strong></translation>
-   <translation id="me_alerts_CONTACTCHANGE_VALIDATINGBYCUSTOMERS" qtlid="344032">Počet požadavků na změnu kontaktu: <strong>{0}</strong></translation>
-
-
    <translation id="global_ks_upgrade_step1" qtlid="367863">Pro migraci z hostingového řešení Kimsufi postupujte podle následujících pokynů:</translation>
    <translation id="global_ks_upgrade_step2" qtlid="367876">V menu vyberte své hostingové řešení Kimsufi</translation>
    <translation id="global_ks_upgrade_step3" qtlid="367889">Na hlavní informační stránce zvoleného hostingového řešení klikněte na tlačítko "změnit nabídku".</translation>
@@ -714,12 +692,30 @@
 
    <translation id="sidebar_menu_order_actions" qtlid="43558">Objednat</translation>
 
-   <translation id="common_ouidatagrid_nodata" qtlid="197635">Žádný výsledek</translation>
-   <translation id="common_ouipagination_resultsperpage" qtlid="433384">Výsledky na stránku</translation>
-   <translation id="common_ouipagination_ofnresults" qtlid="452982">z TOTAL_ITEMS výsledků</translation>
-   <translation id="common_ouipagination_currentpageofpagecount" qtlid="452995">Strana CURRENT_PAGE z PAGE_COUNT</translation>
-   <translation id="common_ouipagination_next" qtlid="433423">Následující stránka</translation>
-   <translation id="common_ouipagination_previous" qtlid="433436">Předchozí stránka</translation>
+   <translation id="common_criteria_adder_column_label" qtlid="479108">Sloupec</translation>
+   <translation id="common_criteria_adder_operator_label" qtlid="425806">Podmínka</translation>
+   <translation id="common_criteria_adder_operator_boolean_is" qtlid="479121">je</translation>
+   <translation id="common_criteria_adder_operator_boolean_isNot" qtlid="479134">je jiný než</translation>
+   <translation id="common_criteria_adder_operator_string_contains" qtlid="218692">zahrnuje</translation>
+   <translation id="common_criteria_adder_operator_string_containsNot" qtlid="218705">nezahrnuje</translation>
+   <translation id="common_criteria_adder_operator_string_startsWith" qtlid="479147">začíná na</translation>
+   <translation id="common_criteria_adder_operator_string_endsWith" qtlid="479160">končí na</translation>
+   <translation id="common_criteria_adder_operator_string_is" qtlid="479173">je rovný</translation>
+   <translation id="common_criteria_adder_operator_string_isNot" qtlid="479134">je jiný než</translation>
+   <translation id="common_criteria_adder_operator_number_is" qtlid="479173">je rovný</translation>
+   <translation id="common_criteria_adder_operator_number_smaller" qtlid="479186">je menší než</translation>
+   <translation id="common_criteria_adder_operator_number_bigger" qtlid="479199">je větší než</translation>
+   <translation id="common_criteria_adder_operator_date_is" qtlid="479121">je</translation>
+   <translation id="common_criteria_adder_operator_date_isBefore" qtlid="479212">je před</translation>
+   <translation id="common_criteria_adder_operator_date_isAfter" qtlid="479225">je po</translation>
+   <translation id="common_criteria_adder_operator_options_is" qtlid="479121">je</translation>
+   <translation id="common_criteria_adder_operator_options_isNot" qtlid="479134">je jiný než</translation>
+   <translation id="common_criteria_adder_true_label" qtlid="34776">Ano</translation>
+   <translation id="common_criteria_adder_false_label" qtlid="34788">Ne</translation>
+   <translation id="common_criteria_adder_value_label" qtlid="47548">Hodnota</translation>
+   <translation id="common_criteria_adder_submit_label" qtlid="37923">Přidat</translation>
+
+   <translation id="common_datagrid_nodata" qtlid="197635">Žádný výsledek</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Vyplňte prosím toto pole.</translation>
    <translation id="common_field_error_number" qtlid="472307">Zadejte prosím platnou numerickou hodnotu.</translation>
@@ -730,6 +726,22 @@
    <translation id="common_field_error_minlength" qtlid="472359">Zadejte alespoň {{minlength}} znaků.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Zadejte maximálně {{maxlength}} znaků.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Zadejte platný formát.</translation>
+
+   <translation id="common_navbar_notification_title" qtlid="33250">Oznámení</translation>
+   <translation id="common_navbar_notification_error" qtlid="323434">Nepodařilo se inicializovat menu!</translation>
+   <translation id="common_navbar_notification_error_subject" qtlid="26407">Chyba</translation>
+   <translation id="common_navbar_notification_see_all" qtlid="401914">Zobrazit všechna upozornění</translation>
+   <translation id="common_navbar_notification_mark_as_read" qtlid="70865">Označit jako přečtené</translation>
+   <translation id="common_navbar_notification_mark_as_unread" qtlid="70877">Označit jako nepřečtené</translation>
+
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Výsledky na stránku</translation>
+   <translation id="common_pagination_page" qtlid="433397">stránka</translation>
+   <translation id="common_pagination_of" qtlid="121615">na</translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">z TOTAL_ITEMS výsledků</translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Strana CURRENT_PAGE z PAGE_COUNT</translation>
+   <translation id="common_pagination_results" qtlid="433410">výsledky</translation>
+   <translation id="common_pagination_next" qtlid="433423">Následující stránka</translation>
+   <translation id="common_pagination_previous" qtlid="433436">Předchozí stránka</translation>
 
    <translation id="common_stepper_optional_label" qtlid="488081">(volitelné)</translation>
    <translation id="common_stepper_modify_this_step" qtlid="480922">Upravit tento krok</translation>

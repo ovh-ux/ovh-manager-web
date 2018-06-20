@@ -175,6 +175,7 @@
    <translation id="hosting_dashboard_service_datacenter" qtlid="30802">Datacenter</translation>
    <translation id="hosting_dashboard_service_datacenter_p19" qtlid="93991">París</translation>
    <translation id="hosting_dashboard_service_datacenter_gra1" qtlid="264192">Gravelines</translation>
+   <translation id="hosting_dashboard_service_default_runtime" qtlid="491951">Motor de ejecución por defecto</translation>
 
    <translation id="hosting_dashboard_available_space" qtlid="196608">Espacio disponible</translation>
    <translation id="hosting_tab_DOMAINS_OLD" qtlid="223528">Sitios web</translation>
@@ -184,7 +185,7 @@
    <translation id="hosting_tab_DATABASE" qtlid="7702">Bases de datos</translation>
    <translation id="hosting_tab_STATISTICS" qtlid="26671">Estadísticas</translation>
    <translation id="hosting_tab_INDY" qtlid="272396">Multidominios independientes </translation>
-   <translation id="hosting_tab_RUNTIMES" qtlid="488991">Motor de ejecución</translation>
+   <translation id="hosting_tab_RUNTIMES" qtlid="488991">Motores de ejecución</translation>
    <translation id="hosting_tab_ENVVARS" qtlid="491650">Variables de entorno</translation>
 
    <translation id="hosting_tab_GENERAL_INFORMATIONS" qtlid="27115">Información general</translation>
@@ -303,7 +304,7 @@
    <translation id="hosting_tab_DOMAINS_table_popover_delete" qtlid="2414">Eliminar</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_modify" qtlid="37875">Editar</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_refresh" qtlid="158708">Actualizar</translation>
-   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Buscar...</translation>
+   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="491964">Buscar...</translation>
 
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation" qtlid="255976">Generación del enlace</translation>
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="444417">Se ha producido un error al generar el enlace de acceso a los logs.</translation>
@@ -365,7 +366,7 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type" qtlid="196959">Seleccione el tipo de base de datos:</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PERSO" qtlid="196972">SQL Personal {0} {1}: {2} restante(s)</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PRO" qtlid="196985">SQL Profesional {0} {1}: {2} restante(s)</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="491977">Almacenada en la instancia Cloud Web</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_EXTRA_SQL_PERSO" qtlid="196998">Extra SQL Personal {0} {1}: {2} restante(s)</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_PRIVATE_SQL" qtlid="261734">SQL Privado{0} {1} : {2} restante(s)</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step2_password_question" qtlid="197011">Indique el nombre del usuario de la base de datos y la contraseña.</translation>
@@ -382,7 +383,7 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PERSO" qtlid="197128">SQL Personal {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PRO" qtlid="197141">SQL Profesional {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_EXTRA_SQL_PERSO" qtlid="197154">Extra SQL Personal {0} {1}</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="491977">Almacenada en la instancia Cloud Web</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_fail" qtlid="197167">Se ha producido un error al solicitar la creación de la base de datos.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_success" qtlid="197180">La base de datos va a crearse.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_bdd_adding" qtlid="453189">Añadiendo la base de datos...</translation>
@@ -652,10 +653,10 @@
    <translation id="hosting_tab_RUNTIMES_label_type" qtlid="488107">Motor de ejecución</translation>
    <translation id="hosting_tab_RUNTIMES_label_publicDir" qtlid="488536">Ruta de acceso al directorio público</translation>
    <translation id="hosting_tab_RUNTIMES_label_appEnv" qtlid="488549">Entorno de la aplicación</translation>
-   <translation id="hosting_tab_RUNTIMES_label_appBootstrap" qtlid="488562">Script de lanzamiento de la aplicación</translation>
+   <translation id="hosting_tab_RUNTIMES_label_appBootstrap" qtlid="488562">Script de ejecución de la aplicación</translation>
 
    <translation id="hosting_tab_RUNTIMES_publicDir_help" qtlid="488575">Introduzca la ruta de acceso al directorio público necesaria para el lanzamiento de su servidor Node.js.</translation>
-   <translation id="hosting_tab_RUNTIMES_appEnv_help" qtlid="488588">Introduzca el entorno en el que debe lanzarse la aplicación Node.js (producción, desarrollo, test, etc.).</translation>
+   <translation id="hosting_tab_RUNTIMES_appEnv_help" qtlid="488588">Introduzca el entorno en el que debe ejecutarse la aplicación Node.js (producción, desarrollo, test…).</translation>
    <translation id="hosting_tab_RUNTIMES_appBootstrap_help" qtlid="488601">Introduzca el nombre del script para arrancar el servidor desde el binario Node.js.</translation>
 
    <translation id="hosting_tab_RUNTIMES_configure_envvar" qtlid="488614">Configurar las variables de entorno</translation>
@@ -861,7 +862,7 @@
    <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_3" qtlid="215507">3 días antes</translation>
    <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_weekly_1" qtlid="70217">1 semana</translation>
    <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert" qtlid="488939">Atención: La copia de seguridad generada se enviará por correo electrónico y no se restaurará automáticamente en su espacio FTP.</translation>
-   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert_question" qtlid="352009">¿Desea continuar?</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert_question" qtlid="352009">¿Quiere continuar?</translation>
    <translation id="hosting_tab_FTP_configuration_generate_snapshot_success" qtlid="488952">Generando la copia de seguridad...</translation>
    <translation id="hosting_tab_FTP_configuration_generate_snapshot_error" qtlid="488965">Se ha producido un error al generar la copia de seguridad:</translation>
 

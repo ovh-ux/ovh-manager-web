@@ -369,6 +369,40 @@
                                         <span data-ng-bind="hosting.filer"></span>
                                     </div>
                                 </li>
+                                <li class="oui-tile__item" data-ng-if="hosting.isCloudWeb">
+                                    <div class="oui-tile__definition">
+                                        <div class="d-flex w-100">
+                                            <div>
+                                                <strong class="d-block"
+                                                        data-i18n-static="hosting_dashboard_service_default_runtime"></strong>
+                                                <span data-ng-bind="ctrl.defaultRuntime.name"
+                                                      data-ng-if="ctrl.defaultRuntime"></span>
+                                                <span class="oui-status oui-status_error"
+                                                      data-i18n-static="common_not_available"
+                                                      data-ng-if="!ctrl.loading.defaultRuntime && !ctrl.defaultRuntime"></span>
+                                                <div class="d-inline ml-2" data-ng-if="ctrl.loading.defaultRuntime">
+                                                    <oui-spinner data-size="s"></oui-spinner>
+                                                </div>
+                                            </div>
+                                            <div class="mb-auto ml-auto">
+                                                <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
+                                                        data-toggle="dropdown">
+                                                    <span data-i18n-static="common_actions"></span>
+                                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
+                                                    <li>
+                                                        <i class="oui-icon oui-icon-power_line" aria-hidden="true"></i>
+                                                        <button class="btn btn-link" type="button" name="configureRuntimes"
+                                                                data-ng-click="ctrlHostingTabs.setSelectedTab('RUNTIMES')">
+                                                            <span data-i18n-static="common_configure"></span>
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
