@@ -25,7 +25,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, atInternet, constant
                     target: "_blank"
                 });
                 menuOptions.push({
-                    id: "order-hosting",
+                    id: "order-cloudweb",
                     title: translator.tr("navigation_left_order_cloudweb"),
                     icon: "ovh-font ovh-font-hosting",
                     href: cloudWebOrderUrl,
