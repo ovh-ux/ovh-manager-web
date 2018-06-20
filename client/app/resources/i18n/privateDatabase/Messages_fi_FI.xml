@@ -389,7 +389,7 @@
    <translation id="privateDatabase_change_ram" qtlid="37875">Muokkaa</translation>
    <translation id="privateDatabase_change_ram_title" qtlid="217106">Muuta RAM-muistin määrää</translation>
    <translation id="privateDatabase_order_select_ram_description" qtlid="217119">Valittu muistimäärä korvaa nykyisen määrän.</translation>
-   <translation id="privateDatabase_order_select_ram_placeholder" qtlid="217132">Valitse...</translation>
+   <translation id="privateDatabase_order_select_ram_placeholder" qtlid="491990">Valitse...</translation>
 
    <translation id="privateDatabase_RAM_add_select" qtlid="31858">RAM</translation>
    <translation id="privateDatabase_order_select_ram" qtlid="216807">Valitse haluttu määrä.</translation>
@@ -437,20 +437,24 @@
    <translation id="privateDatabase_tabs_cron_configuration_delete_fail" qtlid="263142">Suunnitellun varmuuskopion poistossa tapahtui virhe.</translation>
 
    <translation id="privateDatabase_tab_METRICS" qtlid="271819">Tilastot</translation>
-   <translation id="privateDatabase_metrics_memory_title" qtlid="284789">Tilastot käytetystä keskusmuistista</translation>
-   <translation id="privateDatabase_metrics_connections_title" qtlid="284802">Tilastot aktiivisista  yhteyksistä</translation>
-   <translation id="privateDatabase_metrics_memory_graph_y" qtlid="31858">RAM</translation>
-   <translation id="privateDatabase_metrics_connections_graph_mysql_active_connections" qtlid="272578">Aktiiviset yhteydet</translation>
+   <translation id="privateDatabase_metrics_no_data" qtlid="271871">Ei tietoja.</translation>
+
+   <translation id="privateDatabase_metrics_memoryUsages_title" qtlid="284789">Tilastot käytetystä keskusmuistista</translation>
+   <translation id="privateDatabase_metrics_memoryUsages_graph_dbaas_metrics_docker_container_mem_usage_percent" qtlid="271845">RAM-muistin käyttö</translation>
+
+   <translation id="privateDatabase_metrics_activeConnections_title" qtlid="284802">Tilastot aktiivisista  yhteyksistä</translation>
+   <translation id="privateDatabase_metrics_activeConnections_graph_dbaas_metrics_mysql_connexion_count" qtlid="272578">Aktiiviset yhteydet</translation>
+
+   <translation id="privateDatabase_metrics_queryExecutionTimes_title" qtlid="284815">Tilastot pyyntöjen suoritusajoista</translation>
+   <translation id="privateDatabase_metrics_queryExecutionTimes_graph_dbaas_metrics_mysql_query_time_average" qtlid="272604">Pyynnön suoritusaika</translation>
+
+   <translation id="privateDatabase_metrics_memoryUsages_graph_y" qtlid="31858">RAM</translation>
+   <translation id="privateDatabase_metrics_activeConnections_graph_mysql_active_connections" qtlid="272578">Aktiiviset yhteydet</translation>
    <translation id="privateDatabase_metrics_connections_graph_dbaas_metrics_mysql_connexion_count" qtlid="272578">Aktiiviset yhteydet</translation>
    <translation id="privateDatabase_metrics_memory_graph_memory_rss" qtlid="271845">RAM-muistin käyttö</translation>
-   <translation id="privateDatabase_metrics_memory_graph_dbaas_metrics_docker_container_mem_usage_percent" qtlid="271845">RAM-muistin käyttö</translation>
    <translation id="privateDatabase_metrics_memory_graph_memory_hierarchical_memory_limit" qtlid="271858">RAM-muistin enimmäisrajoitus</translation>
-   <translation id="privateDatabase_metrics_no_data" qtlid="271871">Ei tietoja.</translation>
    <translation id="privateDatabase_metrics_wrong_version" qtlid="412152">Tietoja ei ole saatavilla versioista {0}.</translation>
    <translation id="privateDatabase_metrics_time_graph_mysql_ms" qtlid="272591">Millisekuntia</translation>
-   <translation id="privateDatabase_metrics_time_graph_mysql_query_time" qtlid="272604">Pyynnön suoritusaika</translation>
-   <translation id="privateDatabase_metrics_time_graph_dbaas_metrics_mysql_query_time_average" qtlid="272604">Pyynnön suoritusaika</translation>
-   <translation id="privateDatabase_metrics_time_title" qtlid="284815">Tilastot pyyntöjen suoritusajoista</translation>
    <translation id="privateDatabase_metrics_time_range_DAY" qtlid="284828">Viimeiset 24 tuntia</translation>
    <translation id="privateDatabase_metrics_time_range_WEEK" qtlid="37491">Viime viikolla</translation>
    <translation id="privateDatabase_metrics_time_range_MONTH" qtlid="37503">Viime kuussa</translation>

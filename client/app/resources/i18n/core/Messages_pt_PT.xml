@@ -215,7 +215,7 @@
    <translation id="main_menu_products_and_config" qtlid="4406">Configuração</translation>
    <translation id="main_menu_bill_and_renew" qtlid="32950">Faturação</translation>
    <translation id="main_menu_help_and_support" qtlid="26035">Ajuda</translation>
-   <translation id="navigation_left_search" qtlid="122275">Buscando...</translation>
+   <translation id="navigation_left_search" qtlid="491925">Buscando...</translation>
    <translation id="navigation_left_domains" qtlid="32590">Domínios</translation>
    <translation id="navigation_left_all_domains" qtlid="152141">Todos os meus domínios</translation>
    <translation id="navigation_left_order_dnszone" qtlid="433654">Zona DNS</translation>
@@ -410,7 +410,7 @@
    <translation id="country_KW" qtlid="188262">Kuwait</translation>
    <translation id="country_KY" qtlid="188275">Caimão, Ilhas</translation>
    <translation id="country_KZ" qtlid="188288">Cazaquistão</translation>
-   <translation id="country_LA" qtlid="188301">Laos, República Democrática Popular</translation>
+   <translation id="country_LA" qtlid="491938">Laos, Republica Democrática Popular -</translation>
    <translation id="country_LB" qtlid="188314">Líbano</translation>
    <translation id="country_LC" qtlid="188327">Santa Lúcia</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>
@@ -676,28 +676,6 @@ Esta opção permite-lhe associar o seu alojamento:</translation>
    <translation id="sso_modal_action_reload" qtlid="328810">Continuar como <strong>{{name}}</strong></translation>
    <translation id="sso_modal_action_logout" qtlid="316021">Aceder à página de autenticação</translation>
 
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_MISSING" qtlid="363852">Não predefiniu qualquer método de pagamento. Aceda <a href="#/billing/mean" class="alert-link">à secção Faturação</a> para selecionar ou adicionar um novo método de pagamento.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_EXPIRED" qtlid="343876">O seu método de pagamento predefinido expirou! Aceda <a href="#/billing/mean" class="alert-link">à secção faturação</a> para atualizar a informação.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_EXPIRE_SOON" qtlid="343889">O seu método de pagamento predefinido irá expirar dentro de 30 dias. Aceda <a href="#/billing/mean" class="alert-link">à secção faturação</a> para atualizar a informação.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_BANKACCOUNT_PENDINGVALIDATION" qtlid="343902">O seu método de pagamento predefinido (conta bancária) está a aguardar validação. Aceda <a href="#/billing/mean" class="alert-link">à secção faturação</a> para acompanhar o processo.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_CREDITCARD_TOOMANYFAILURES" qtlid="343915">O seu método de pagamento predefinido (cartão de crédito) encontra-se em erro! Aceda <a href="#/billing/mean" class="alert-link">à secção faturação</a> para verificar os dados ou registar um novo método de pagamento.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_PAYPAL_TOOMANYFAILURES" qtlid="343928">O seu método de pagamento predefinido (PayPal) encontra-se em erro! Aceda <a href="#/billing/mean" class="alert-link">à secção de faturação</a> para verificar os dados ou registar um novo método de pagamento.</translation>
-
-   <translation id="me_alerts_PAYMENTMEAN_BANKACCOUNT_PENDINGVALIDATION" qtlid="343941">Tem <strong>{0}</strong> conta(s) bancária(s) a aguardar validação. Aceda <a href="#/billing/mean" class="alert-link">à secção faturação</a> para obter mais informações.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_CREDITCARD_TOOMANYFAILURES" qtlid="343954">Tem <strong>{0}</strong> cartão de crédito em erro. Aceda <a href="#/billing/mean" class="alert-link">à secção faturação</a> para verificar os dados ou registar um novo método de pagamento.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_PAYPAL_TOOMANYFAILURES" qtlid="343967">Tem <strong>{0}</strong> conta(s) PayPal em erro. Aceda <a href="#/billing/mean" class="alert-link">à secção faturação</a> para verificar os dados ou registar um novo método de pagamento.</translation>
-
-   <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="433563">A sua conta pré-paga tem um pagamento pendente de  <strong>{0}</strong> desde {1}. Aceda a <a href="#/billing/ovhaccount" class="alert-link"> secção de faturação facturation</a> para regularizar a situação.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="343993">Tem uma dívida de <strong>{0}</strong>. Aceda <a href="{1}" class="alert-link">à secção faturação</a> para regularizar a situação.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369545">Tem um saldo negativo de <strong>{0}</strong> (incluindo um montante de {1} não vencido). Aceda à <a href="{2}" class="alert-link">secção de faturação</a> para regularizar a situação</translation>
-
-   <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="383919">A sua conta pré-paga atingiu o limite. Aceda à <a href="#/billing/ovhaccount" class="alert-link">secção de faturação</a> para obter mais informações.</translation>
-
-   <translation id="me_alerts_ORDERS_DOCUMENTSREQUESTED" qtlid="344006">Tem <strong>{0}</strong> encomenda(s) pendentes a aguardar envio de documentação. Aceda <a href="#/billing/orders?status=in-progress" class="alert-link">à secção "As minhas encomendas"</a> para resolver situação.</translation>
-   <translation id="me_alerts_AGREEMENTS_TODO" qtlid="344019">Tem <strong>{0}</strong> contrato(s) para serem validados.</translation>
-   <translation id="me_alerts_CONTACTCHANGE_VALIDATINGBYCUSTOMERS" qtlid="344032">Tem <strong>{0}</strong> pedido(s) de alteração de contacto.</translation>
-
-
    <translation id="global_ks_upgrade_step1" qtlid="367863">Para migrar uma oferta de alojamento Kimsufi, proceda da seguinte forma:</translation>
    <translation id="global_ks_upgrade_step2" qtlid="367876">Selecione um alojamento Kimsufi no menu</translation>
    <translation id="global_ks_upgrade_step3" qtlid="367889">Clique no botão "Mudar de oferta" na página das informações gerais do alojamento escolhido.</translation>
@@ -714,12 +692,30 @@ Esta opção permite-lhe associar o seu alojamento:</translation>
 
    <translation id="sidebar_menu_order_actions" qtlid="43558">Encomendar</translation>
 
-   <translation id="common_ouidatagrid_nodata" qtlid="197635">Nenhum resultado encontrado</translation>
-   <translation id="common_ouipagination_resultsperpage" qtlid="433384">Resultados por página</translation>
-   <translation id="common_ouipagination_ofnresults" qtlid="452982">de TOTAL_ITEMS resultados</translation>
-   <translation id="common_ouipagination_currentpageofpagecount" qtlid="452995">Página CURRENT_PAGE de PAGE_COUNT</translation>
-   <translation id="common_ouipagination_next" qtlid="433423">Página seguinte</translation>
-   <translation id="common_ouipagination_previous" qtlid="433436">Página anterior</translation>
+   <translation id="common_criteria_adder_column_label" qtlid="479108">Coluna</translation>
+   <translation id="common_criteria_adder_operator_label" qtlid="425806">Regra</translation>
+   <translation id="common_criteria_adder_operator_boolean_is" qtlid="479121">é</translation>
+   <translation id="common_criteria_adder_operator_boolean_isNot" qtlid="479134">é diferente de</translation>
+   <translation id="common_criteria_adder_operator_string_contains" qtlid="218692">contém</translation>
+   <translation id="common_criteria_adder_operator_string_containsNot" qtlid="218705">não contém</translation>
+   <translation id="common_criteria_adder_operator_string_startsWith" qtlid="479147">começa por</translation>
+   <translation id="common_criteria_adder_operator_string_endsWith" qtlid="479160">termina em</translation>
+   <translation id="common_criteria_adder_operator_string_is" qtlid="479173">é igual a</translation>
+   <translation id="common_criteria_adder_operator_string_isNot" qtlid="479134">é diferente de</translation>
+   <translation id="common_criteria_adder_operator_number_is" qtlid="479173">é igual a</translation>
+   <translation id="common_criteria_adder_operator_number_smaller" qtlid="479186">é inferior a</translation>
+   <translation id="common_criteria_adder_operator_number_bigger" qtlid="479199">é superior a</translation>
+   <translation id="common_criteria_adder_operator_date_is" qtlid="479121">é</translation>
+   <translation id="common_criteria_adder_operator_date_isBefore" qtlid="479212">está antes</translation>
+   <translation id="common_criteria_adder_operator_date_isAfter" qtlid="479225">está depois</translation>
+   <translation id="common_criteria_adder_operator_options_is" qtlid="479121">é</translation>
+   <translation id="common_criteria_adder_operator_options_isNot" qtlid="479134">é diferente de</translation>
+   <translation id="common_criteria_adder_true_label" qtlid="34776">Sim</translation>
+   <translation id="common_criteria_adder_false_label" qtlid="34788">Não</translation>
+   <translation id="common_criteria_adder_value_label" qtlid="47548">Valor</translation>
+   <translation id="common_criteria_adder_submit_label" qtlid="37923">Adicionar</translation>
+
+   <translation id="common_datagrid_nodata" qtlid="197635">Nenhum resultado encontrado</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Complete o preenchimento do campo</translation>
    <translation id="common_field_error_number" qtlid="472307">Introduza um valor numérico válido</translation>
@@ -729,6 +725,22 @@ Esta opção permite-lhe associar o seu alojamento:</translation>
    <translation id="common_field_error_minlength" qtlid="472359">Introduza um mínimo de {{minlength}} caracteres.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Introduza um máximo de {{maxlength}} caracteres.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Introduza um formato válido.</translation>
+
+   <translation id="common_navbar_notification_title" qtlid="33250">Notificações via e-mail</translation>
+   <translation id="common_navbar_notification_error" qtlid="323434">Ups, não conseguimos inicializar o menu!</translation>
+   <translation id="common_navbar_notification_error_subject" qtlid="26407">Erro</translation>
+   <translation id="common_navbar_notification_see_all" qtlid="401914">Consultar todas as notificações</translation>
+   <translation id="common_navbar_notification_mark_as_read" qtlid="70865">Marcar como lida</translation>
+   <translation id="common_navbar_notification_mark_as_unread" qtlid="70877">Marcar como não lida</translation>
+
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Resultados por página</translation>
+   <translation id="common_pagination_page" qtlid="433397">página</translation>
+   <translation id="common_pagination_of" qtlid="121615">em</translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">de TOTAL_ITEMS resultados</translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Página CURRENT_PAGE de PAGE_COUNT</translation>
+   <translation id="common_pagination_results" qtlid="433410">resultados</translation>
+   <translation id="common_pagination_next" qtlid="433423">Página seguinte</translation>
+   <translation id="common_pagination_previous" qtlid="433436">Página anterior</translation>
 
    <translation id="common_stepper_optional_label" qtlid="488081">(opcional)</translation>
    <translation id="common_stepper_modify_this_step" qtlid="480922">Edite este passo</translation>

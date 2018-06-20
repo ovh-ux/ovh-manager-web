@@ -215,7 +215,7 @@
    <translation id="main_menu_products_and_config" qtlid="4406">Konfiguracja</translation>
    <translation id="main_menu_bill_and_renew" qtlid="32950">Płatności</translation>
    <translation id="main_menu_help_and_support" qtlid="26035">Pomoc</translation>
-   <translation id="navigation_left_search" qtlid="122275">Wyszukiwanie...</translation>
+   <translation id="navigation_left_search" qtlid="491925">Wyszukiwanie...</translation>
    <translation id="navigation_left_domains" qtlid="32590">Domeny</translation>
    <translation id="navigation_left_all_domains" qtlid="152141">Wszystkie domeny</translation>
    <translation id="navigation_left_order_dnszone" qtlid="433654">Strefa DNS</translation>
@@ -410,7 +410,7 @@
    <translation id="country_KW" qtlid="188262">Kuwejt</translation>
    <translation id="country_KY" qtlid="188275">Kajmany, Wyspy</translation>
    <translation id="country_KZ" qtlid="188288">Kazachstan</translation>
-   <translation id="country_LA" qtlid="188301">Laos, Republika Ludowo-Demokratyczna</translation>
+   <translation id="country_LA" qtlid="491938">Laos, Republika Ludowo-Demokratyczna -</translation>
    <translation id="country_LB" qtlid="188314">Liban</translation>
    <translation id="country_LC" qtlid="188327">Sainte-Lucie</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>
@@ -675,28 +675,6 @@
    <translation id="sso_modal_action_reload" qtlid="328810">Kontynuuj jako <strong>{{name}}</strong></translation>
    <translation id="sso_modal_action_logout" qtlid="316021">Przejdź na stronę logowania</translation>
 
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_MISSING" qtlid="363852">Nie wybrano domyślnego sposobu płatności. Przejdź do <a href="#/billing/mean" class="alert-link">sekcji Płatności</a>, aby dodać sposób płatności.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_EXPIRED" qtlid="343876">Twój domyślny sposób płatności wygasł! Przejdź do <a href="#/billing/mean" class="alert-link">sekcji Płatności</a>, aby zarejestrować nowy sposób płatności.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_EXPIRE_SOON" qtlid="343889">Twój domyślny sposób płatności wygasa w ciągu 30 dni. Przejdź do <a href="#/billing/mean" class="alert-link">sekcji Płatności</a>, aby zarejestrować nowy sposób płatności.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_BANKACCOUNT_PENDINGVALIDATION" qtlid="343902">Twój domyślny sposób płatności (konto bankowe) czeka na zatwierdzenie. Przejdź do <a href="#/billing/mean" class="alert-link">sekcji Płatności</a>, aby uzyskać dodatkowe informacje.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_CREDITCARD_TOOMANYFAILURES" qtlid="343915">Twój domyślny sposób płatności (karta kredytowa) zgłasza błędy! Przejdź do <a href="#/billing/mean" class="alert-link">sekcji Płatności</a>, aby dokonać weryfikacji i/lub zarejestrować nowy sposób płatności.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_PAYPAL_TOOMANYFAILURES" qtlid="343928">Twój domyślny sposób płatności (PayPal) zgłasza błędy! Przejdź do <a href="#/billing/mean" class="alert-link">sekcji Płatności</a>, aby dokonać weryfikacji i/lub zarejestrować nowy sposób płatności.</translation>
-
-   <translation id="me_alerts_PAYMENTMEAN_BANKACCOUNT_PENDINGVALIDATION" qtlid="343941">Liczba kont bankowych oczekujących na zatwierdzenie:  <strong>{0}</strong>. Przejdź do <a href="#/billing/mean" class="alert-link">sekcji Płatności</a>, aby uzyskać dodatkowe informacje.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_CREDITCARD_TOOMANYFAILURES" qtlid="343954">Liczba kart kredytowych z błędem: <strong>{0}</strong>. Przejdź do <a href="#/billing/mean" class="alert-link">sekcji Płatności</a>, aby dokonać weryfikacji i/lub zarejestrować nowy sposób płatności.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_PAYPAL_TOOMANYFAILURES" qtlid="343967">Liczba kont PayPal z błędem: <strong>{0}</strong>.  Przejdź do <a href="#/billing/mean" class="alert-link">sekcji Płatności</a>, aby dokonać weryfikacji i/lub zarejestrować nowy sposób płatności.</translation>
-
-   <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="433563">Twoje konto posiada zadłużenie <strong>{0}</strong> na dzień {1}. Przejdź do <a href="#/billing/ovhaccount" class="alert-link">sekcji płatności</a>, aby uregulować płatność.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="343993">Posiadasz zadłużenie na kwotę <strong>{0}</strong>. Przejdź do <a href="#/billing/statements" class="alert-link">sekcji Płatności</a>, aby uregulować należność.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369545">Posiadasz zadłużenie na kwotę <strong>{0}</strong> (z czego {1} to kwota nieprzedawniona). Przejdź do <a href="#/billing/statements" class="alert-link">sekcji Płatności</a>, aby uregulować należność.</translation>
-
-   <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="383919">Twoje konto prepaid osiągnęło zdefiniowany próg. Przejdź do <a href="#/billing/ovhaccount" class="alert-link">sekcji płatności</a>, aby uzyskać więcej informacji.</translation>
-
-   <translation id="me_alerts_ORDERS_DOCUMENTSREQUESTED" qtlid="344006">Liczba oczekujących zamówień, dla których wymagane są dokumenty: <strong>{0}</strong>. Przejdź do <a href="#/billing/orders?status=in-progress" class="alert-link">sekcji "Moje zamówienia"</a>, aby dokonać aktualizacji.</translation>
-   <translation id="me_alerts_AGREEMENTS_TODO" qtlid="344019">Liczba regulaminów do zatwierdzenia:</translation>
-   <translation id="me_alerts_CONTACTCHANGE_VALIDATINGBYCUSTOMERS" qtlid="344032">Liczba zleceń zmiany kontaktów: <strong>{0}</strong></translation>
-
-
    <translation id="global_ks_upgrade_step1" qtlid="367863">Aby dokonać migracji na ofertę Kimsufi, postępuj zgodnie z tymi wskazówkami:</translation>
    <translation id="global_ks_upgrade_step2" qtlid="367876">Wybierz hosting Kimsufi z listy</translation>
    <translation id="global_ks_upgrade_step3" qtlid="367889">Kliknij na przycisk "Zmień ofertę" na stronie z ogólnymi informacjami o wybranym hostingu.</translation>
@@ -713,12 +691,30 @@
 
    <translation id="sidebar_menu_order_actions" qtlid="43558">Zamów</translation>
 
-   <translation id="common_ouidatagrid_nodata" qtlid="197635">Brak rezultatu</translation>
-   <translation id="common_ouipagination_resultsperpage" qtlid="433384">Wyniki na stronie</translation>
-   <translation id="common_ouipagination_ofnresults" qtlid="452982">z TOTAL_ITEMS wyników</translation>
-   <translation id="common_ouipagination_currentpageofpagecount" qtlid="452995">Strona CURRENT_PAGE z PAGE_COUNT</translation>
-   <translation id="common_ouipagination_next" qtlid="433423">Następna strona</translation>
-   <translation id="common_ouipagination_previous" qtlid="433436">Poprzednia strona</translation>
+   <translation id="common_criteria_adder_column_label" qtlid="479108">Kolumna</translation>
+   <translation id="common_criteria_adder_operator_label" qtlid="425806">Warunek</translation>
+   <translation id="common_criteria_adder_operator_boolean_is" qtlid="479121">jest</translation>
+   <translation id="common_criteria_adder_operator_boolean_isNot" qtlid="479134">nie jest</translation>
+   <translation id="common_criteria_adder_operator_string_contains" qtlid="218692">zawiera</translation>
+   <translation id="common_criteria_adder_operator_string_containsNot" qtlid="218705">nie zawiera</translation>
+   <translation id="common_criteria_adder_operator_string_startsWith" qtlid="479147">zaczyna się na</translation>
+   <translation id="common_criteria_adder_operator_string_endsWith" qtlid="479160">kończy się na</translation>
+   <translation id="common_criteria_adder_operator_string_is" qtlid="479173">jest równy</translation>
+   <translation id="common_criteria_adder_operator_string_isNot" qtlid="479134">nie jest</translation>
+   <translation id="common_criteria_adder_operator_number_is" qtlid="479173">jest równy</translation>
+   <translation id="common_criteria_adder_operator_number_smaller" qtlid="479186">jest mniejszy niż</translation>
+   <translation id="common_criteria_adder_operator_number_bigger" qtlid="479199">jest większy niż</translation>
+   <translation id="common_criteria_adder_operator_date_is" qtlid="479121">jest</translation>
+   <translation id="common_criteria_adder_operator_date_isBefore" qtlid="479212">jest przed</translation>
+   <translation id="common_criteria_adder_operator_date_isAfter" qtlid="479225">jest po</translation>
+   <translation id="common_criteria_adder_operator_options_is" qtlid="479121">jest</translation>
+   <translation id="common_criteria_adder_operator_options_isNot" qtlid="479134">nie jest</translation>
+   <translation id="common_criteria_adder_true_label" qtlid="34776">Tak</translation>
+   <translation id="common_criteria_adder_false_label" qtlid="34788">Nie</translation>
+   <translation id="common_criteria_adder_value_label" qtlid="47548">Wartość</translation>
+   <translation id="common_criteria_adder_submit_label" qtlid="37923">Dodaj</translation>
+
+   <translation id="common_datagrid_nodata" qtlid="197635">Brak rezultatu</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Wypełnij to pole.</translation>
    <translation id="common_field_error_number" qtlid="472307">Wprowadź poprawną wartość liczbową.</translation>
@@ -728,6 +724,22 @@
    <translation id="common_field_error_minlength" qtlid="472359">Wprowadź minimum {{minlength}} znaków.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Wprowadź maksimum {{maxlength}} znaków.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Użyj poprawnego formatu.</translation>
+
+   <translation id="common_navbar_notification_title" qtlid="33250">Powiadomienia</translation>
+   <translation id="common_navbar_notification_error" qtlid="323434">Wystąpił problem z włączeniem menu.</translation>
+   <translation id="common_navbar_notification_error_subject" qtlid="26407">Błąd</translation>
+   <translation id="common_navbar_notification_see_all" qtlid="401914">Wyświetl wszystkie powiadomienia</translation>
+   <translation id="common_navbar_notification_mark_as_read" qtlid="70865">Oznacz jako przeczytaną</translation>
+   <translation id="common_navbar_notification_mark_as_unread" qtlid="70877">Oznacz jako nieprzeczytaną</translation>
+
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Wyniki na stronie</translation>
+   <translation id="common_pagination_page" qtlid="433397">strona</translation>
+   <translation id="common_pagination_of" qtlid="121615">z</translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">z TOTAL_ITEMS wyników</translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Strona CURRENT_PAGE z PAGE_COUNT</translation>
+   <translation id="common_pagination_results" qtlid="433410">wyniki</translation>
+   <translation id="common_pagination_next" qtlid="433423">Następna strona</translation>
+   <translation id="common_pagination_previous" qtlid="433436">Poprzednia strona</translation>
 
    <translation id="common_stepper_optional_label" qtlid="488081">(opcjonalnie)</translation>
    <translation id="common_stepper_modify_this_step" qtlid="480922">Edytuj ten krok</translation>
