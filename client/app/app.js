@@ -611,8 +611,12 @@ angular
 
             ouiNavbarConfiguration.translations = {
                 notification: {
+                    errorInNotification: translator.tr("common_navbar_notification_error_in_notification"),
+                    errorInNotificationDescription: translator.tr("common_navbar_notification_error_in_notification_description"),
                     markRead: translator.tr("common_navbar_notification_mark_as_read"),
-                    markUnread: translator.tr("common_navbar_notification_mark_as_unread")
+                    markUnread: translator.tr("common_navbar_notification_mark_as_unread"),
+                    noNotification: translator.tr("common_navbar_notification_none"),
+                    noNotificationDescription: translator.tr("common_navbar_notification_none_description")
                 }
             };
 
