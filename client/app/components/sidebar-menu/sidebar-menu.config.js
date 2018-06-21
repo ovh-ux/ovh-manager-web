@@ -6,29 +6,17 @@ angular.module("App").run(($q, SidebarMenu, Products, User, atInternet, constant
     function buildMenuOptions () {
         return $q.all([
             User.getUrlOf("domainOrder"),
-            User.getUrlOfEndsWithSubsidiary("cloudweb_order"),
+            User.getUrlOfEndsWithSubsidiary("hosting"),
+            User.getUrlOfEndsWithSubsidiary("cloudweb"),
+            User.getUrlOfEndsWithSubsidiary("performance"),
             User.getUrlOf("emailproOrder"),
             User.getUrlOf("office365Order")])
-            .then(([domainOrderUrl, cloudWebOrderUrl, emailproOrderUrl, office365OrderUrl]) => {
+            .then(([domainOrderUrl, hostingUrl, cloudWebUrl, perfUrl, emailproOrderUrl, office365OrderUrl]) => {
                 menuOptions.push({
                     id: "order-domain",
                     title: translator.tr("navigation_left_order_domain"),
                     icon: "ovh-font ovh-font-domain",
                     href: domainOrderUrl,
-                    target: "_blank"
-                });
-                menuOptions.push({
-                    id: "order-hosting",
-                    title: translator.tr("navigation_left_hosting"),
-                    icon: "ovh-font ovh-font-hosting",
-                    href: domainOrderUrl,
-                    target: "_blank"
-                });
-                menuOptions.push({
-                    id: "order-cloudweb",
-                    title: translator.tr("navigation_left_order_cloudweb"),
-                    icon: "ovh-font ovh-font-hosting",
-                    href: cloudWebOrderUrl,
                     target: "_blank"
                 });
                 menuOptions.push({
@@ -42,6 +30,27 @@ angular.module("App").run(($q, SidebarMenu, Products, User, atInternet, constant
                     title: translator.tr("navigation_left_order_private_database"),
                     icon: "ovh-font ovh-font-database",
                     state: "app.sql-order"
+                });
+                menuOptions.push({
+                    id: "order-hosting",
+                    title: translator.tr("navigation_left_hosting"),
+                    icon: "ovh-font ovh-font-hosting",
+                    href: hostingUrl,
+                    target: "_blank"
+                });
+                menuOptions.push({
+                    id: "order-cloudweb",
+                    title: translator.tr("navigation_left_order_cloudweb"),
+                    icon: "ovh-font ovh-font-hosting",
+                    href: cloudWebUrl,
+                    target: "_blank"
+                });
+                menuOptions.push({
+                    id: "order-performance",
+                    title: translator.tr("navigation_left_hosting_perf"),
+                    icon: "ovh-font ovh-font-hosting",
+                    href: perfUrl,
+                    target: "_blank"
                 });
                 menuOptions.push({
                     id: "order-emailpro",
