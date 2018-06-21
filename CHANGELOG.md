@@ -1,3 +1,14 @@
+<a name="13.4.12"></a>
+## [13.4.12](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.11...v13.4.12) (2018-06-21)
+
+
+### Bug Fixes
+
+* **cloudweb:** deactivate email shortcut ([9dac027](https://github.com/ovh-ux/ovh-manager-web/commit/9dac027))
+* **hosting:** fix cloudweb offer name ([2622f55](https://github.com/ovh-ux/ovh-manager-web/commit/2622f55))
+
+
+
 <a name="13.4.11"></a>
 ## [13.4.11](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.10...v13.4.11) (2018-06-20)
 
