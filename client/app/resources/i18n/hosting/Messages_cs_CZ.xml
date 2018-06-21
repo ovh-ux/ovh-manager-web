@@ -79,6 +79,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_dashboard_service_offer__90_PLAN" qtlid="196036">90plan</translation>
    <translation id="hosting_dashboard_service_offer_ASPFREE" qtlid="196049">aspfree</translation>
    <translation id="hosting_dashboard_service_offer_BUSINESS" qtlid="314110">business 2010</translation>
+   <translation id="hosting_dashboard_service_offer_CLOUDWEB_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_CLOUDWEBX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_CLOUDWEBBETAX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_DEMO_1_G" qtlid="196075">demo1g</translation>
@@ -186,7 +187,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_DATABASE" qtlid="7702">Databáze</translation>
    <translation id="hosting_tab_STATISTICS" qtlid="26671">Statistiky</translation>
    <translation id="hosting_tab_INDY" qtlid="272396">Nezávislé multidomény</translation>
-   <translation id="hosting_tab_RUNTIMES" qtlid="488991">Frameworky</translation>
+   <translation id="hosting_tab_RUNTIMES" qtlid="488991">Runtime Engines</translation>
    <translation id="hosting_tab_ENVVARS" qtlid="491650">Proměnné prostředí</translation>
 
    <translation id="hosting_tab_GENERAL_INFORMATIONS" qtlid="27115">Základní informace</translation>
@@ -286,7 +287,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_configuration_order_ssl" qtlid="196803">Objednat SSL certifikát</translation>
    <translation id="hosting_tab_DOMAINS_table_header_domain" qtlid="8458">Doména</translation>
    <translation id="hosting_tab_DOMAINS_table_header_home" qtlid="196816">Root adresář</translation>
-   <translation id="hosting_tab_DOMAINS_table_header_runtime" qtlid="488107">Framework</translation>
+   <translation id="hosting_tab_DOMAINS_table_header_runtime" qtlid="488107">Runtime Engine</translation>
    <translation id="hosting_tab_DOMAINS_table_header_cdn" qtlid="99812">CDN</translation>
    <translation id="hosting_tab_DOMAINS_table_header_firewall" qtlid="141418">Firewall</translation>
    <translation id="hosting_tab_DOMAINS_table_header_ownlog" qtlid="62172">Oddělené logy</translation>
@@ -501,7 +502,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_domain_name" qtlid="140638">Doména</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_domain_name_www_question" qtlid="197557">Také změnit subdoménu {0}</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_home" qtlid="196816">Root adresář</translation>
-   <translation id="hosting_tab_DOMAINS_configuration_modify_step1_runtime" qtlid="488107">Framework</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_step1_runtime" qtlid="488107">Runtime Engine</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_cdn" qtlid="232466">Aktivovat CDN</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step2_summary" qtlid="197570">Opravdu chcete provést tyto úpravy na následujících doménách?</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step2_domain_name" qtlid="140638">Doména</translation>
@@ -608,7 +609,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
 
    <translation id="hosting_tab_RUNTIMES_guide_help" qtlid="488185">Potřebujete pomoc s aktualizací své konfigurace?</translation>
    <translation id="hosting_tab_RUNTIMES_table_empty" qtlid="488198">Seznam konfigurací je prázdný.</translation>
-   <translation id="hosting_tab_RUNTIMES_runtimes_table_empty" qtlid="488211">Seznam frameworků je prázdný.</translation>
+   <translation id="hosting_tab_RUNTIMES_runtimes_table_empty" qtlid="488211">Seznam Runtime enginů je prázdný.</translation>
    <translation id="hosting_tab_RUNTIMES_envvars_table_empty" qtlid="488224">Seznam proměnných prostředí je prázdný.</translation>
 
    <translation id="hosting_tab_RUNTIMES_table_status_created" qtlid="55133">Aktivní</translation>
@@ -616,16 +617,16 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_RUNTIMES_table_status_updating" qtlid="124303">Provádí se změna</translation>
    <translation id="hosting_tab_RUNTIMES_table_status_deleting" qtlid="146645">Odstraňování...</translation>
 
-   <translation id="hosting_tab_RUNTIMES_list_error" qtlid="488237">Při načítání dat frameworků došlo k chybě:</translation>
+   <translation id="hosting_tab_RUNTIMES_list_error" qtlid="488237">Při načítání dat Runtime enginů došlo k chybě:</translation>
    <translation id="hosting_tab_ENVVARS_list_error_temporary" qtlid="488250">Při načítání informací o proměnných prostředí došlo k dočasné chybě. Zkuste to prosím později.</translation>
    <translation id="hosting_tab_ENVVARS_list_error" qtlid="488263">Při načítání informací o proměnných prostředí došlo k chybě:</translation>
 
-   <translation id="hosting_tab_RUNTIMES_list" qtlid="488276">Seznam dostupných frameworků&#13;
+   <translation id="hosting_tab_RUNTIMES_list" qtlid="488276">Seznam dostupných Runtime enginů&#13;
 </translation>
    <translation id="hosting_tab_ENVVARS_list" qtlid="488289">Seznam aktivních proměnných prostředí</translation>
 
-   <translation id="hosting_tab_RUNTIMES_add" qtlid="488302">Přidat framework</translation>
-   <translation id="hosting_tab_RUNTIMES_quota_reached" qtlid="488315">Bylo dosaženo maximálního počtu frameworků</translation>
+   <translation id="hosting_tab_RUNTIMES_add" qtlid="488302">Přidat Runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_quota_reached" qtlid="488315">Bylo dosaženo maximálního počtu Runtime enginů</translation>
    <translation id="hosting_tab_ENVVARS_add" qtlid="488328">Připojit proměnnou prostředí</translation>
    <translation id="hosting_tab_ENVVARS_quota_reached" qtlid="488341">Bylo dosaženo maximálního počtu proměnných prostředí</translation>
 
@@ -634,28 +635,28 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
 
    <translation id="hosting_tab_RUNTIMES_actions" qtlid="72809">Akce</translation>
    <translation id="hosting_tab_RUNTIMES_table_header_name" qtlid="488367">Název konfigurace</translation>
-   <translation id="hosting_tab_RUNTIMES_table_header_language" qtlid="488107">Framework</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_language" qtlid="488107">Runtime Engine</translation>
    <translation id="hosting_tab_RUNTIMES_table_header_default" qtlid="488380">Výchozí volba</translation>
    <translation id="hosting_tab_RUNTIMES_table_header_number_multisite" qtlid="488393">Počet připojených multisite</translation>
 
    <translation id="hosting_tab_RUNTIMES_table_popover_modify" qtlid="37875">Upravit</translation>
    <translation id="hosting_tab_RUNTIMES_table_popover_delete" qtlid="2414">Odstranit</translation>
 
-   <translation id="hosting_tab_RUNTIMES_create_title" qtlid="488302">Přidat framework</translation>
-   <translation id="hosting_tab_RUNTIMES_edit_title" qtlid="488406">Upravit framework</translation>
-   <translation id="hosting_tab_RUNTIMES_delete_title" qtlid="488419">Odstranit framework</translation>
-   <translation id="hosting_tab_RUNTIMES_delete_step1_question" qtlid="488432">Opravdu si přejete odstranit tento framework?</translation>
+   <translation id="hosting_tab_RUNTIMES_create_title" qtlid="488302">Přidat Runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_title" qtlid="488406">Upravit Runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_title" qtlid="488419">Odstranit Runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_step1_question" qtlid="488432">Opravdu si přejete odstranit tento Runtime engine?</translation>
 
-   <translation id="hosting_tab_RUNTIMES_save_success" qtlid="488445">Nový framework bude dostupný za několik minut.</translation>
-   <translation id="hosting_tab_RUNTIMES_save_error" qtlid="488458">Při vytváření frameworku došlo k chybě:</translation>
-   <translation id="hosting_tab_RUNTIMES_edit_success" qtlid="488471">Probíhá modifikace frameworku.</translation>
-   <translation id="hosting_tab_RUNTIMES_edit_error" qtlid="488484">Při modifikaci frameworku došlo k chybě:</translation>
-   <translation id="hosting_tab_RUNTIMES_delete_success" qtlid="488497">Probíhá odstraňování frameworku.</translation>
-   <translation id="hosting_tab_RUNTIMES_delete_error" qtlid="488510">Při odstraňování frameworku došlo k chybě:</translation>
+   <translation id="hosting_tab_RUNTIMES_save_success" qtlid="488445">Nový Runtime engine bude dostupný za několik minut.</translation>
+   <translation id="hosting_tab_RUNTIMES_save_error" qtlid="488458">Při vytváření Runtime enginu došlo k chybě:</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_success" qtlid="488471">Probíhá modifikace Runtime enginu.</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_error" qtlid="488484">Při modifikaci Runtime enginu došlo k chybě:</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_success" qtlid="488497">Probíhá odstraňování Runtime enginu.</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_error" qtlid="488510">Při odstraňování Runtime enginu došlo k chybě:</translation>
    <translation id="hosting_tab_RUNTIMES_delete_information" qtlid="488523">Pozor, tato akce je nevratná a bude mít za následek ztrátu všech dat.</translation>
 
    <translation id="hosting_tab_RUNTIMES_label_name" qtlid="415727">Vlastní název</translation>
-   <translation id="hosting_tab_RUNTIMES_label_type" qtlid="488107">Framework</translation>
+   <translation id="hosting_tab_RUNTIMES_label_type" qtlid="488107">Runtime Engine</translation>
    <translation id="hosting_tab_RUNTIMES_label_publicDir" qtlid="488536">Cesta do veřejného adresáře</translation>
    <translation id="hosting_tab_RUNTIMES_label_appEnv" qtlid="488549">Aplikační prostředí</translation>
    <translation id="hosting_tab_RUNTIMES_label_appBootstrap" qtlid="488562">Spouštěcí skript aplikace</translation>
@@ -681,9 +682,9 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_ENVVARS_delete_title" qtlid="488666">Odstranit proměnnou prostředí</translation>
    <translation id="hosting_tab_ENVVARS_delete_step1_question" qtlid="488679">Opravdu si přejete odstranit tuto proměnnou prostředí?</translation>
    <translation id="hosting_tab_ENVVARS_delete_information" qtlid="488523">Pozor, tato akce je nevratná a bude mít za následek ztrátu všech dat.</translation>
-   <translation id="hosting_tab_RUNTIMES_set_default_title" qtlid="488692">Nastavit výchozí framework</translation>
-   <translation id="hosting_tab_RUNTIMES_set_default_step1_question" qtlid="488705">Opravdu si přejete nastavit tento framework jako výchozí?</translation>
-   <translation id="hosting_tab_RUNTIMES_set_default_information" qtlid="488718">Upozornění: všechny multisite budou implicitně vytvářeny v tomto frameworku. Toto nastavení budete moci kdykoli změnit.</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_title" qtlid="488692">Nastavit výchozí Runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_step1_question" qtlid="488705">Opravdu si přejete nastavit tento Runtime engine jako výchozí?</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_information" qtlid="488718">Upozornění: všechny multisite budou implicitně vytvářeny v tomto enginu. Toto nastavení budete moci kdykoli změnit.</translation>
 
    <translation id="hosting_tab_ENVVARS_save_success" qtlid="488731">Nová proměnná prostředí bude k dispozici v rámci několika minut.</translation>
    <translation id="hosting_tab_ENVVARS_save_error" qtlid="488744">Při vytváření proměnné prostředí došlo k chybě:</translation>
@@ -691,8 +692,8 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_ENVVARS_edit_error" qtlid="488770">Při modifikaci proměnné prostředí došlo k chybě:</translation>
    <translation id="hosting_tab_ENVVARS_delete_success" qtlid="488783">Proměnná prostředí bude odstraněna.</translation>
    <translation id="hosting_tab_ENVVARS_delete_error" qtlid="488796">Při odstraňování proměnné prostředí došlo k chybě:</translation>
-   <translation id="hosting_tab_RUNTIMES_set_default_success" qtlid="488809">Tento framework bude k dispozici v rámci několika minut.</translation>
-   <translation id="hosting_tab_RUNTIMES_set_default_error" qtlid="488822">Při nastavování výchozího frameworku došlo k chybě:</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_success" qtlid="488809">Tento Runtime engine bude k dispozici v rámci několika minut.</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_error" qtlid="488822">Při nastavování výchozího Runtime enginu došlo k chybě:</translation>
 
    <translation id="hosting_tab_ENVVARS_label_key" qtlid="3818">Název</translation>
    <translation id="hosting_tab_ENVVARS_label_error_required" qtlid="459430">Povinné pole.</translation>
