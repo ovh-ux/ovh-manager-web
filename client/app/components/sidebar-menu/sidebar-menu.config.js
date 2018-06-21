@@ -8,10 +8,9 @@ angular.module("App").run(($q, SidebarMenu, Products, User, atInternet, constant
             User.getUrlOf("domainOrder"),
             User.getUrlOfEndsWithSubsidiary("hosting"),
             User.getUrlOfEndsWithSubsidiary("cloudweb"),
-            User.getUrlOfEndsWithSubsidiary("performance"),
             User.getUrlOf("emailproOrder"),
             User.getUrlOf("office365Order")])
-            .then(([domainOrderUrl, hostingUrl, cloudWebUrl, perfUrl, emailproOrderUrl, office365OrderUrl]) => {
+            .then(([domainOrderUrl, hostingUrl, cloudWebUrl, emailproOrderUrl, office365OrderUrl]) => {
                 menuOptions.push({
                     id: "order-domain",
                     title: translator.tr("navigation_left_order_domain"),
@@ -45,13 +44,7 @@ angular.module("App").run(($q, SidebarMenu, Products, User, atInternet, constant
                     href: cloudWebUrl,
                     target: "_blank"
                 });
-                menuOptions.push({
-                    id: "order-performance",
-                    title: translator.tr("navigation_left_hosting_perf"),
-                    icon: "ovh-font ovh-font-hosting",
-                    href: perfUrl,
-                    target: "_blank"
-                });
+                menuOptions.push({ /* blank space */ });
                 menuOptions.push({
                     id: "order-emailpro",
                     title: translator.tr("navigation_left_order_emailpro"),
