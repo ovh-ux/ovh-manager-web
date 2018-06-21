@@ -44,7 +44,6 @@ angular.module("App").run(($q, SidebarMenu, Products, User, atInternet, constant
                     href: cloudWebUrl,
                     target: "_blank"
                 });
-                menuOptions.push({ /* blank space */ });
                 menuOptions.push({
                     id: "order-emailpro",
                     title: translator.tr("navigation_left_order_emailpro"),
