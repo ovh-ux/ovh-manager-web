@@ -226,7 +226,7 @@ angular.module('App').controller(
     }
 
     isAvailableFieldType(fieldType) {
-      return this.fieldTypes && this.fieldTypes.indexOf(fieldType) === -1;
+      return this.fieldTypes && this.fieldTypes.indexOf(fieldType) !== -1;
     }
 
     isCustomTtlWithValueZero() {
