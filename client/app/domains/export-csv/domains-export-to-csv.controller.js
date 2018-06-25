@@ -32,7 +32,20 @@ angular.module("App").controller(
             this.csvExportOptions = [
                 { label: "service_name", modelKey: "domain", mustBeDisabled: true, checked: true },
                 { label: "service_display_name", modelKey: "displayName", checked: true },
-                { label: "nic_owner", modelKey: "owner", target: "owner", checked: true, transform: (value) => _.trim(`${_.get(value, "firstName", "")} ${_.get(value, "lastName", "")}`) },
+                { label: "nic_owner",
+                    modelKey: "owner",
+                    target: "owner",
+                    checked: true,
+                    transform: (value) => {
+                        const hasOrganisationName = !_(value).chain()
+                            .get("organisationName", "")
+                            .isEmpty()
+                            .value();
+                        if (hasOrganisationName) {
+                            return _.get(value, "organisationName");
+                        }
+                        return _.trim(`${_.get(value, "firstName", "")} ${_.get(value, "lastName", "")}`);
+                    } },
                 { label: "creation_date", modelKey: "creation", checked: false },
                 { label: "expiration_date", modelKey: "expiration", checked: true },
                 { label: "whois_fields", modelKey: "owo", checked: false, target: "owo", transform: (value, translations) => _.size(value) ? translations.enabled : translations.disabled },
