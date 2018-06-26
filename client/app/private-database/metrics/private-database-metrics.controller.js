@@ -3,15 +3,17 @@ angular
   .controller('PrivateDatabaseMetricsCtrl', class PrivateDatabaseMetricsCtrl {
     constructor(
       $scope,
-      Alerter, ChartjsFactory, PrivateDatabase, PRIVATE_DATABASE_METRICS, translator,
+      Alerter, ChartjsFactory, PrivateDatabase, translator,
+      PRIVATE_DATABASE_METRICS,
     ) {
       this.$scope = $scope;
 
       this.Alerter = Alerter;
       this.ChartjsFactory = ChartjsFactory;
       this.PrivateDatabase = PrivateDatabase;
-      this.PRIVATE_DATABASE_METRICS = PRIVATE_DATABASE_METRICS;
       this.translator = translator;
+
+      this.PRIVATE_DATABASE_METRICS = PRIVATE_DATABASE_METRICS;
     }
 
     $onInit() {
@@ -33,16 +35,16 @@ angular
             throw new Error(this.translator.tr('common_temporary_error'));
           }
 
-
-          const currentDatabaseVersionChartData = this.PRIVATE_DATABASE_METRICS
-            .specificDatabaseVersionChartSelection[this.$scope.database.version];
+          const chartSettings =
+            this.PRIVATE_DATABASE_METRICS.specificDatabaseVersionChartSelection[
+              this.$scope.database.version
+            ];
           _(this.PRIVATE_DATABASE_METRICS.specificChartSettings)
             .filter(currentChartSettings =>
-              !_(currentDatabaseVersionChartData).isArray() ||
-              _(currentDatabaseVersionChartData[this.$scope.database.version])
-                .includes(currentChartSettings.chartName))
+              !_(chartSettings).isArray() ||
+                            _(chartSettings).includes(currentChartSettings.chartName))
             .forEach((currentChartSettings) => {
-              const { chartName } = currentChartSettings.chartName;
+              const { chartName } = currentChartSettings;
               const currentChartData = chartData[currentChartSettings.dataFromAPIIndex];
 
               if (!_(currentChartData).isObject()) {
