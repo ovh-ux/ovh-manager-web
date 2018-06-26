@@ -1,3 +1,14 @@
+<a name="13.4.13"></a>
+## [13.4.13](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.12...v13.4.13) (2018-06-26)
+
+
+### Bug Fixes
+
+* **domains:** return organisationName as owner in domains CSV export ([#449](https://github.com/ovh-ux/ovh-manager-web/issues/449)) ([b34e32a](https://github.com/ovh-ux/ovh-manager-web/commit/b34e32a))
+* **package engines:** require node 8 current lts ([efe1208](https://github.com/ovh-ux/ovh-manager-web/commit/efe1208))
+
+
+
 <a name="13.4.12"></a>
 ## [13.4.12](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.11...v13.4.12) (2018-06-21)
 
