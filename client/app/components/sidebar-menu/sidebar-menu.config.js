@@ -6,9 +6,11 @@ angular.module("App").run(($q, SidebarMenu, Products, User, atInternet, constant
     function buildMenuOptions () {
         return $q.all([
             User.getUrlOf("domainOrder"),
+            User.getUrlOfEndsWithSubsidiary("hosting"),
+            User.getUrlOfEndsWithSubsidiary("cloudweb"),
             User.getUrlOf("emailproOrder"),
             User.getUrlOf("office365Order")])
-            .then(([domainOrderUrl, emailproOrderUrl, office365OrderUrl]) => {
+            .then(([domainOrderUrl, hostingUrl, cloudWebUrl, emailproOrderUrl, office365OrderUrl]) => {
                 menuOptions.push({
                     id: "order-domain",
                     title: translator.tr("navigation_left_order_domain"),
@@ -27,6 +29,20 @@ angular.module("App").run(($q, SidebarMenu, Products, User, atInternet, constant
                     title: translator.tr("navigation_left_order_private_database"),
                     icon: "ovh-font ovh-font-database",
                     state: "app.sql-order"
+                });
+                menuOptions.push({
+                    id: "order-hosting",
+                    title: translator.tr("navigation_left_hosting"),
+                    icon: "ovh-font ovh-font-hosting",
+                    href: hostingUrl,
+                    target: "_blank"
+                });
+                menuOptions.push({
+                    id: "order-cloudweb",
+                    title: translator.tr("navigation_left_order_cloudweb"),
+                    icon: "ovh-font ovh-font-hosting",
+                    href: cloudWebUrl,
+                    target: "_blank"
                 });
                 menuOptions.push({
                     id: "order-emailpro",
