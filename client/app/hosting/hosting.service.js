@@ -9,12 +9,14 @@
         .module("services")
         .service("Hosting", class Hosting {
 
-            constructor ($q, $http, $rootScope, $stateParams, constants, OvhHttp, Poll, Products) {
+            constructor ($q, $http, $rootScope, $stateParams, constants, ConverterService, HOSTING, OvhHttp, Poll, Products) {
                 this.$q = $q;
                 this.$http = $http;
                 this.$rootScope = $rootScope;
                 this.$stateParams = $stateParams;
                 this.constants = constants;
+                this.ConverterService = ConverterService;
+                this.HOSTING = HOSTING;
                 this.OvhHttp = OvhHttp;
                 this.Poll = Poll;
                 this.Products = Products;
@@ -169,6 +171,17 @@
                     clearCache: forceRefresh
                 }).then((hosting) => {
                     hosting.isCloudWeb = _(hosting.offer).includes("CLOUD");
+
+                    if (hosting.isCloudWeb) {
+                        hosting.configurationQuota = this.HOSTING.cloudWeb.configurationQuota;
+                        hosting.totalQuota = _.clone(this.HOSTING.cloudWeb.configurationQuota);
+
+                        const configurationOctet = this.ConverterService.convertToOctet(hosting.configurationQuota.value, hosting.configurationQuota.unit);
+                        const quotaSizeOctet = this.ConverterService.convertToOctet(hosting.quotaSize.value, hosting.quotaSize.unit);
+
+                        hosting.totalQuota.unit = "B";
+                        hosting.totalQuota.value = configurationOctet + quotaSizeOctet;
+                    }
 
                     if (hosting.offer === "START_10_M") {
                         return this.OvhHttp.get(`/domain/${serviceName}/serviceInfos`, {
