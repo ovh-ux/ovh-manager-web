@@ -638,10 +638,6 @@ module.exports = {
                             title: "guide_add_subscope",
                             description: "guide_add_subcontext",
                             list: [
-                                { url: "https://www.ovh.com/fr/g1332.hebergement_web_comment_attacher_un_domaine_ou_un_sous-domaine_a_mon_hebergement_web#attacher_un_domaine_depose_chez_ovh", title: "guide_add_subclient" },
-                                { url: "https://www.ovh.com/fr/g1332.hebergement_web_comment_attacher_un_domaine_ou_un_sous-domaine_a_mon_hebergement_web#attacher_un_domaine_externe", title: "guide_add_subnon_client" },
-                                { url: "https://www.ovh.com/fr/g1332.hebergement_web_comment_attacher_un_domaine_ou_un_sous-domaine_a_mon_hebergement_web#attacher_un_domaine_externe", title: "guide_add_subnon_registered" },
-                                { url: "https://www.ovh.com/fr/g1332.hebergement_web_comment_attacher_un_domaine_ou_un_sous-domaine_a_mon_hebergement_web#ajouter_un_sous-domaine_vers_votre_hebergement_web", title: "guide_add_subcreate" },
                                 { url: "https://docs.ovh.com/fr/hosting/erreur-site-non-installe/", title: "guide_add_subnot_installed" }
                             ]
                         }
