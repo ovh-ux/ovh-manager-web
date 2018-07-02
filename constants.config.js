@@ -58,8 +58,8 @@ module.exports = {
                     title: "core_top_guide_7_title",
                     url: "https://docs.ovh.com/fr/hosting/erreur-site-non-installe/"
                 }, {
-                    title: "core_top_guide_8_title",
-                    url: "https://docs.ovh.com/fr/microsoft-collaborative-solutions/premiere-configuration-exchange/"
+                    title: "core_top_guide_database_title",
+                    url: "https://docs.ovh.com/fr/hosting/creer-base-de-donnees/"
                 }, {
                     title: "core_top_guide_9_title",
                     url: "https://docs.ovh.com/fr/microsoft-collaborative-solutions/migration-adresse-e-mail-mutualisee-vers-exchange/"
