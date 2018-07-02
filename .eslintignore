@@ -1,11 +1,21 @@
 # Ignore files not managed by ourselves
-client/app/resources/*
-client/app/test/*
-client/app/components/modal/*
-**/bower_components/*
+Assets.js
+commitlint.config.js
+constants.config.js
+Gruntfile.js
+protactor.conf.js
+/dist/**
+/e2e/**
+/server/**
+/tasks/**
+/tmp/**
+/client/app/resources/**
+/client/app/test/**
+/client/app/components/modal/**
+**/bower_components/**
 
 # Ignore modules
-client/app/exchange/*
-client/app/emailpro/*
-client/app/sharepoint/*
-client/app/microsoft/*
+/client/app/exchange/**
+/client/app/emailpro/**
+/client/app/sharepoint/**
+/client/app/microsoft/**
