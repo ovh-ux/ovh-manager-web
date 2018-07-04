@@ -405,6 +405,10 @@ angular
 
             translator.load(["core", "doubleAuth"]);
             $translatePartialLoader.addPart("core");
+            $translatePartialLoader.addPart("sharepoint");
+            $translatePartialLoader.addPart("microsoft");
+            $translatePartialLoader.addPart("emailpro");
+            $translatePartialLoader.addPart("exchange");
 
             const selectedLanguage = translator.getSelectedAvailableLanguage();
             const selectedLanguageValue = _(selectedLanguage).get("value", null);
@@ -491,8 +495,7 @@ angular
         partners: "https://www.ovh.com/manager/partners/",
         labs: "https://www.ovh.com/manager/sunrise/uxlabs/#!/"
     })
-    .run(($rootScope, $transitions, translator,
-          $translate, $translatePartialLoader,
+    .run(($rootScope, $translate, $translatePartialLoader,
           ouiDatagridConfiguration, ouiPaginationConfiguration,
           ouiFieldConfiguration, ouiStepperConfiguration) => {
         "use strict";
