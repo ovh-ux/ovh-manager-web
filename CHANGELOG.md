@@ -1,3 +1,13 @@
+<a name="13.4.15"></a>
+## [13.4.15](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.14...v13.4.15) (2018-07-06)
+
+
+### Bug Fixes
+
+* **email:** add subcribers in series instead of parallel ([#460](https://github.com/ovh-ux/ovh-manager-web/issues/460)) ([1063231](https://github.com/ovh-ux/ovh-manager-web/commit/1063231))
+
+
+
 <a name="13.4.14"></a>
 ## [13.4.14](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.13...v13.4.14) (2018-07-04)
 
