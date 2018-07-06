@@ -141,39 +141,43 @@ angular.module("services").service(
             });
         }
 
-        addSubscribers (serviceName, opts) {
-            return this.$q
-                .all(
-                    _.chunk(opts.users, 500).map((subscribers) =>
-                        this.OvhHttp.post(`/email/domain/${serviceName}/mailinglist/${opts.mailingList}/users/add`, {
-                            rootPath: "2api",
-                            data: {
-                                users: subscribers,
-                                type: opts.type
-                            }
-                        })
-                    )
-                )
-                .then((data) => data.pop());
+        addSubscribers (serviceName, opts, limit = 500) {
+            return this.OvhHttp.post(`/email/domain/${serviceName}/mailinglist/${opts.mailingList}/users/add`, {
+                rootPath: "2api",
+                data: {
+                    users: _.take(opts.users, limit),
+                    type: opts.type
+                }
+            })
+                .then((data) => {
+                    const users = _.drop(opts.users, limit);
+
+                    if (_.size(users) > 0) {
+                        return this.addSubscribers(serviceName, _.assign(opts, { users })).then((d) => [data].concat(d));
+                    }
+
+                    return [data];
+                });
         }
 
-        deleteSubscribers (serviceName, opts) {
-            return this.$q
-                .all(
-                    _.chunk(opts.users, 500).map((subscribers) =>
-                        this.OvhHttp
-                            .delete(`/email/domain/${serviceName}/mailinglist/${opts.mailingList}/users/delete`, {
-                                rootPath: "2api",
-                                headers: { "Content-Type": "application/json;charset=utf-8" },
-                                data: {
-                                    users: subscribers,
-                                    type: opts.type
-                                }
-                            })
-                            .then((resp) => resp)
-                    )
-                )
-                .then((data) => data.pop());
+        deleteSubscribers (serviceName, opts, limit = 500) {
+            return this.OvhHttp.delete(`/email/domain/${serviceName}/mailinglist/${opts.mailingList}/users/delete`, {
+                rootPath: "2api",
+                headers: { "Content-Type": "application/json;charset=utf-8" },
+                data: {
+                    users: _.take(opts.users, limit),
+                    type: opts.type
+                }
+            })
+                .then((data) => {
+                    const users = _.drop(opts.users, limit);
+
+                    if (_.size(users) > 0) {
+                        return this.deleteSubscribers(serviceName, _.assign(opts, { users })).then((d) => [data].concat(d));
+                    }
+
+                    return [data];
+                });
         }
 
         getModerators (serviceName, opts) {

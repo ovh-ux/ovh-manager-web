@@ -40,18 +40,20 @@ angular.module("App").controller(
                     type: "subscriber"
                 })
                 .then((tasks) => {
+                    const task = tasks.pop();
+
                     this.Alerter.alertFromSWSBatchResult(
                         {
                             OK: this.$scope.tr(subscribersToAdd.length === 1 ? "mailing_list_tab_modal_create_subscriber_success" : "mailing_list_tab_modal_create_subscribers_success"),
                             PARTIAL: this.$scope.tr("mailing_list_tab_modal_create_subscribers_error"),
                             ERROR: this.$scope.tr("mailing_list_tab_modal_create_subscribers_error")
                         },
-                        tasks,
+                        task,
                         this.$scope.alerts.main
                     );
 
                     this.MailingLists.pollState(this.$stateParams.productId, {
-                        id: tasks.task,
+                        id: task.task,
                         successStates: ["noState"],
                         namespace: "mailingLists.subscribers.poll"
                     });
