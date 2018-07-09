@@ -1,37 +1,24 @@
 //URL PATH
-@helpModalImg : '../assets/images/trigger-help-domains.png';
+@helpmodalimg : '../assets/images/trigger-help-domains.png';
 
 // --------------------------------------------------
 //      CONSTANTS (used in CSS - No change)
 // --------------------------------------------------
+@animation-time-const : 0.35s;
 
-@RED_CONST            : #F00F00;
-@REDLOW_CONST         : #F2DEDE;
-@WHITE_CONST          : #FFFFFF;
-@INFO_CONST           : #3A87AD;
-@NAV_ACTIVE_CONST     : #2F3545;
-@NAV_BORDER_CONST     : #7b8593;
-@RADIUS_CONST         : 2px;
-@ANIMATION_TIME_CONST : 0.35s;
-@BLUE_CONST           : #33acff;
-@ALERT_CONST           : #E49400;
+@univers : #3B4151;
+@cloud : #ffd740;
+@dedicated : #74b9cd;
+@telecom : #4587a7;
+@web : #54a89b;
+@sunrise : #ff9800;
+@partners : #54c7e4;
 
-@UNIVERS              : #3B4151;
-@CLOUD                : #ffd740;
-@DEDICATED            : #74b9cd;
-@TELECOM              : #4587a7;
-@WEB                  : #54a89b;
-@SUNRISE              : #ff9800;
-@PARTNERS             : #54c7e4;
-@OLDER_UNIVERS        : #C3CADB;
+@blue-boostrap-info : #5bc0de;
 
-@BLUE_BOOTSRAP_INFO   : #5bc0de;
-
-@NAVBAR_HEIGHT        : 44px;
-@NAVBAR_BG            : #122844;
-@NAVBAR_HOVER         : darken(@NAVBAR_BG, 4%);
-@MENU_MASS_ACTIONS_BG : #3F5167;
-@MENU_BG              : #273b54;
+@navbar-height : 44px;
+@navbar-bg : #122844;
+@xs-spacing : 8px;
 
 // --------------------------------------------------
 //                DEFAULT Level 0
@@ -40,35 +27,15 @@
 //
 // Univers Size (used in CSS)
 // -------------------------
+@font-size-mini : 11px; // TODO : TO REMOVE WHEN BS3
 
-@fontSizeH1      : 32px; // TODO : TO REMOVE WHEN BS3
-@fontSizeH2      : 22px; // TODO : TO REMOVE WHEN BS3
-@fontSizeH3      : 18px; // TODO : TO REMOVE WHEN BS3
-@fontSizeH4      : 16px; // TODO : TO REMOVE WHEN BS3
-@fontSizeH5      : 14px; // TODO : TO REMOVE WHEN BS3
-@fontSizeH6      : 12px; // TODO : TO REMOVE WHEN BS3
-
-@fontSizeMega    : 28px; // TODO : TO REMOVE WHEN BS3
-@fontSizeBig     : 18px; // TODO : TO REMOVE WHEN BS3
-
-@fontSizeLarge   : 16px; // TODO : TO REMOVE WHEN BS3
-@fontSizeDefault : 12px; // TODO : TO REMOVE WHEN BS3
-@fontSizeMini    : 11px; // TODO : TO REMOVE WHEN BS3
-
-@buttonIconSize  : 36px; // TODO : TO REMOVE WHEN BS3
-
-@lineHeightMini  : 16px;
-
-@xs-spacing : 8px;
-@base-spacing : 16px;
-
-
+@button-icon-size : 36px; // TODO : TO REMOVE WHEN BS3
 
 //
 // Univers Colors (NOT USE IN CSS, just for this file)
 // -------------------------
 
-@green  : #54A89B;
+@green : #54A89B;
 @white : #FFFFFF;
 
 @grey1 : #F7F5F6; //search bar color
@@ -80,10 +47,6 @@
 @grey7 : #3C3C3C; // title font
 @grey8 : #cacaca; // shadow box
 
-
-
-
-
 // --------------------------------------------------
 //          DEFAULT Level 1 (USE IN CSS)
 // --------------------------------------------------
@@ -91,16 +54,8 @@
 //
 // Default
 // -------------------------
-
-@CURRENT_UNIVERS : @WEB;
-
-@defaultFont       : @grey4;
-@defaultTitle      : @grey7;
-@defaultBackground : @white;
-@defaultBorder     : @white;
-
-
-
+@default-font : @grey4;
+@default-background : @white;
 
 // --------------------------------------------------
 //                DEFAULT Level 2
@@ -110,117 +65,31 @@
 // Line table and list
 // -------------------------
 
-//Head table or list category
-@defaultLineHeadBackground     : #3B4151;
-@defaultLineHeadFont           : @white;
-
-//Odd and even for list
-@defaultLineOddBackground      : #D8E2E4;
-@defaultLineOddFont            : @grey6;
-
-@defaultLineEvenBackground     : none;
-@defaultLineEvenFont           : @grey6;
-
-//Odd and even for table
-@defaultTableLineOddBackground      : transparent;
-
-@defaultTableLineEvenBackground     : #D8E2E4;
-
 //Odd and even hover for table and list
-@defaultLineHoverBackground    : none;
-@defaultLineHoverFont          : #1A1A1A;
+@default-line-hover-font : #1A1A1A;
 
 //hover or select line for list, table, dropfownlist
-@defaultLineSelectedBackground : @green;
-@defaultLineSelectedFont       : @white;
+@default-line-selected-background : @green;
+@default-line-selected-font : @white;
 
 //
 // Buttons
 // -------------------------
 
-@defaultButtonShadow          : #CACACA;
-@defaultButtonBackground      : @grey3;
-@defaultButtonFont            : @grey5;
-
-@defaultButtonHoverBackground : @green;
-@defaultButtonHoverFont       : @white;
+@default-button-shadow : #CACACA;
 
 //
 // Search bar (charts)
 // -------------------------
-
-@barBlockBackground : @grey1;
-@barBlockFont       : @defaultFont;
-@barBlockBorder     : @grey3;
-
-//
-// Search bar (form)
-// -------------------------
-
-@barFormFont : @grey7;
+@bar-block-border : @grey3;
 
 //
 // Pagination bar
 // -------------------------
+@default-pagination-active-font : @grey7;
 
-@defaultPaginationFont                     : @grey5;
-
-@defaultPaginationHoverBackground          : @white;
-@defaultPaginationHoverFont                : @grey7;
-
-@defaultPaginationActiveBackground         : @white;
-@defaultPaginationActiveFont               : @grey7;
-@defaultPaginationNextPreviousButtonBorder : @grey3;
-
-@defaultPaginationGoToBackground           : #B8B7BA;
-@defaultPaginationGoToFont                 : @white;
-@defaultPaginationGoToHoverBackground      : #8C8C8C;
-@defaultPaginationGoToHoverFont            : none;
-
-
-@defaultPaginationGoToPageBackground       : none;
-@defaultPaginationGoToPageFont             : #3C3C3C;
-@defaultPaginationGoToPageBorder           : #B8B7BA;
-
-//
-// Modal
-// -------------------------
-
-@defaultModalBackground                         : @grey2;
-
-@defaultModalHeaderTopGradientBackground        : #333333;
-@defaultModalHeaderBottomGradientBackground     : #1A1A1A;
-@defaultModalHeaderBorderBottom                 : #EEEEEE;
-@defaultModalHeaderFont                         : @white;
-
-@defaultModalFooterBackground                   : #F5F5F5;
-@defaultModalFooterBorderTop                    : @grey3;
-
-@defaultModalFooterButtonConfirmBackground      : @green;
-@defaultModalFooterButtonConfirmFont            : @white;
-@defaultModalFooterButtonHoverConfirmBackground : #69CDBE;
-@defaultModalFooterButtonHoverConfirmFont       : none;
-
-@defaultModalFooterButtonCancelBackground       : @white;
-@defaultModalFooterButtonCancelFont             : #7D7D7D;
-@defaultModalFooterButtonHoverCancelBackground  : none;
-@defaultModalFooterButtonHoverCancelFont        : @defaultLineHoverFont;
-
-
-@defaultModalHelpBackground                     : #F7F7F7;
-@defaultModalHelpFont                           : #737373;
-@defaultModalHelpBorder                         : #C6C6C8;
-@defaultModalHelpTitleUnderLineColor            : #737373;
-
-@defaultModalBackdropColor                      : @white; //cover under modal
-
-//
-// popover
-// -------------------------
-
-@defaultPopoverFont                             : @grey6;
 
 //
 // Microsoft
 // -------------------------
-@exchangeIconColor                              : #0072c8;
+@exchange-icon-color : #0072c8;
