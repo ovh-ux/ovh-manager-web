@@ -2,7 +2,7 @@ angular
   .module('App')
   .controller(
     'HostingModuleCreateCtrl',
-    ($scope, $q, $stateParams, HostingModule, Alerter, Hosting, constants) => {
+    ($scope, $q, $stateParams, Alerter, constants, Hosting, HostingModule, HOSTING_MODULE) => {
       $scope.model = {
         databases: null,
         moduleTemplates: null,
@@ -17,8 +17,10 @@ angular
         domain: '',
         language: '',
         path: '',
-        minPasswdLength: 8,
-        maxPasswdLength: 30,
+        minPasswdLength: HOSTING_MODULE.admin.password.minLength,
+        maxPasswdLength: HOSTING_MODULE.admin.password.maxLength,
+        databasePasswordMinLength: HOSTING_MODULE.database.password.minLength,
+        databasePasswordMaxLength: HOSTING_MODULE.database.password.maxLength,
       };
 
       $scope.loading = {
