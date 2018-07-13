@@ -134,15 +134,18 @@
                 </p>
                 <p data-ng-switch="ctrl.migrate.destinationService.type">
                     <span data-i18n-static="email_tab_modal_migrate_choose_another_service_or"></span>
-                    <a class="oui-link" href="/#/configuration/email_pro/{{ctrl.migrate.destinationService.name}}?tab=ACCOUNT"
+                    <a class="oui-link" 
+                        data-ui-sref="app.email-pro({productId: ctrl.migrate.destinationService.name, tab: 'ACCOUNT'})"
                         data-ng-switch-when="EMAIL PRO"
                         data-i18n-static="email_tab_modal_migrate_order_new_emails_button">
                     </a>
-                    <a class="oui-link" href="/#/configuration/exchange_hosted/{{ctrl.migrate.destinationService.name}}/{{ctrl.migrate.destinationService.name}}?tab=ACCOUNT"
+                    <a class="oui-link"
+                        data-ui-sref="app.microsoft.exchange.hosted({organization: ctrl.migrate.destinationService.name, productId: ctrl.migrate.destinationService.name, tab: 'ACCOUNT'})"
                         data-ng-switch-when="HOSTED EXCHANGE"
                         data-i18n-static="email_tab_modal_migrate_order_new_emails_button">
                     </a>
-                    <a class="oui-link" href="/#/configuration/exchange_dedicated/{{ctrl.migrate.destinationService.name}}/{{ctrl.migrate.destinationService.name}}?tab=ACCOUNT"
+                    <a class="oui-link"
+                        data-ui-sref="app.microsoft.exchange.dedicated({organization: ctrl.migrate.destinationService.name, productId: ctrl.migrate.destinationService.name, tab: 'ACCOUNT'})"
                         data-ng-switch-when="PRIVATE EXCHANGE"
                         data-i18n-static="email_tab_modal_migrate_order_new_emails_button">
                     </a>
