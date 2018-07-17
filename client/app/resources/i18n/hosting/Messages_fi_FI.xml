@@ -47,7 +47,7 @@
    <translation id="hosting_dashboard_close_service_warning" qtlid="255430">Kun webhotelli suljetaan, kaikki siellä oleva data poistuu. Mitään hyvitystä webhotellitilin sulkemisesta ei anneta.</translation>
    <translation id="hosting_dashboard_close_service_desc1" qtlid="351857">Saat sähköpostitse ohjeet webhotellin sulkemisprosessia varten. </translation>
    <translation id="hosting_dashboard_close_service_question" qtlid="351870">Haluatko jatkaa?</translation>
-   <translation id="hosting_dashboard_close_service_success" qtlid="255456">Pyyntösi webhotellin sulkemiseksi on käsitelty. Saat sähköpostia webhotellin sulkemisen menettelytavasta.</translation>
+   <translation id="hosting_dashboard_close_service_success" qtlid="255456">Webhotellin sulkemispyyntösi on käsitelty. Ohjeet Webhotellin sulkemismenettelyyn on lähetetty sinulle sähköpostitse.</translation>
    <translation id="hosting_dashboard_close_service_error" qtlid="255469">Webhotellia ei voida sulkea seuraavan virheen takia:</translation>
 
    <translation id="hosting_dashboard_service_offer" qtlid="38217">Palvelu</translation>
@@ -78,6 +78,7 @@
    <translation id="hosting_dashboard_service_offer__90_PLAN" qtlid="196036">90plan</translation>
    <translation id="hosting_dashboard_service_offer_ASPFREE" qtlid="196049">aspfree</translation>
    <translation id="hosting_dashboard_service_offer_BUSINESS" qtlid="314110">Business 2010</translation>
+   <translation id="hosting_dashboard_service_offer_CLOUDWEB_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_CLOUDWEBX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_CLOUDWEBBETAX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_DEMO_1_G" qtlid="196075">demo1g</translation>
@@ -175,6 +176,7 @@
    <translation id="hosting_dashboard_service_datacenter" qtlid="30802">Palvelinkeskus</translation>
    <translation id="hosting_dashboard_service_datacenter_p19" qtlid="93991">Pariisi</translation>
    <translation id="hosting_dashboard_service_datacenter_gra1" qtlid="264192">Gravelines</translation>
+   <translation id="hosting_dashboard_service_default_runtime" qtlid="491951">Runtime engine -oletusmoottori</translation>
 
    <translation id="hosting_dashboard_available_space" qtlid="196608">Käytettävissä oleva tila</translation>
    <translation id="hosting_tab_DOMAINS_OLD" qtlid="223528">Verkkosivustot</translation>
@@ -184,6 +186,9 @@
    <translation id="hosting_tab_DATABASE" qtlid="7702">Tietokanta</translation>
    <translation id="hosting_tab_STATISTICS" qtlid="26671">Tilastot</translation>
    <translation id="hosting_tab_INDY" qtlid="272396">Itsenäiset moniverkkotunnukset</translation>
+   <translation id="hosting_tab_RUNTIMES" qtlid="488991">Runtime engine -ohjelmistot</translation>
+   <translation id="hosting_tab_ENVVARS" qtlid="491650">Ympäristömuuttujat</translation>
+
    <translation id="hosting_tab_GENERAL_INFORMATIONS" qtlid="27115">Yleiset tiedot</translation>
    <translation id="hosting_dashboard_ssl_order_not_available" qtlid="217639">SSL-sertifikaatti ei ole tilattavissa palveluusi.</translation>
    <translation id="hosting_dashboard_ssl_order_choose_duration" qtlid="217652">Valitse kesto:</translation>
@@ -191,8 +196,8 @@
    <translation id="hosting_dashboard_ssl_order_success" qtlid="181266">Tilaus <a href='{0}' target='_blank'>{1}</a> on rekisteröity onnistuneesti.</translation>
    <translation id="hosting_dashboard_ssl_order_error" qtlid="217678">SSL-sertifikaattia tilattaessa tapahtui virhe.</translation>
    <translation id="hosting_dashboard_ssl_order_payable" qtlid="298877">Maksullinen sertifikaatti</translation>
-   <translation id="hosting_dashboard_ssl_order_imported">Certificat importé</translation>
-   <translation id="hosting_dashboard_ssl_order_free" qtlid="298890">Maksuton sertifikaatti (Let's encrypt)</translation>
+   <translation id="hosting_dashboard_ssl_order_imported" qtlid="473544">Tuotu varmenne</translation>
+   <translation id="hosting_dashboard_ssl_order_free" qtlid="298890">Maksuton varmenne (Let's encrypt)</translation>
    <translation id="hosting_dashboard_ssl_order_a_certificate" qtlid="382141">Tilaa maksullinen varmenne</translation>
    <translation id="hosting_dashboard_ssl_order_import" qtlid="315735">SSL-varmenteen tuominen</translation>
    <translation id="hosting_dashboard_ssl_order_manual_mode" qtlid="298929">Manuaalinen</translation>
@@ -202,9 +207,9 @@
    <translation id="hosting_dashboard_ssl_order_manual_mode_chain" qtlid="402685">Kopioi varmenneketjusi sisältö:</translation>
    <translation id="hosting_dashboard_ssl_order_pay" qtlid="402698">Jatkaaksesi SSL-varmenteen tilausta sinut uudelleenohjataan tilausprosessiimme.</translation>
    <translation id="hosting_dashboard_ssl_redirect_to_order" qtlid="382154">Uusi ikkuna on avattu tilauksesi seuraamista varten. Mikäli näin ei ole tapahtunut, <a href="{0}">klikkaa tästä jatkaaksesi lisäpalveluiden tilausta</a>.</translation>
-   <translation id="hosting_dashboard_ssl_redirect_to_order_error">Une erreur est survenue lors de la récupération de l'adresse nécessaire à la génération du bon de commande.</translation>
-   <translation id="hosting_dashboard_ssl_order_preamble">En cliquant sur Valider, vous allez ouvrir un bon de commande dans un nouvel onglet pour votre certificat SSL.</translation>
-   <translation id="hosting_dashboard_ssl_paid_certificate_error">Vous pouvez commander des certificats gratuits ou importer des certificats, mais une erreur vous empêche de commander des certificats payants : {0}.</translation>
+   <translation id="hosting_dashboard_ssl_redirect_to_order_error" qtlid="473557">Tapahtui virhe tilauksen muodostamiseen tarvittavan osoitteen haussa.</translation>
+   <translation id="hosting_dashboard_ssl_order_preamble" qtlid="473570">Kun klikkaat Vahvista, avaat SSl-varmenteen tilauslomakkeen uuteen välilehteen.</translation>
+   <translation id="hosting_dashboard_ssl_paid_certificate_error" qtlid="473583">Voit tilata maksuttomia varmenteita tai tuoda varmenteita, mutta virhe estää tilaamasta maksullisia varmenteita: {0}.</translation>
 
    <translation id="hosting_dashboard_cdn_order_not_available" qtlid="217691">CDN ei ole tilattavissa palveluusi.</translation>
    <translation id="hosting_dashboard_cdn_order_choose_duration" qtlid="217652">Valitse kesto:</translation>
@@ -222,8 +227,8 @@
    <translation id="hosting_dashboard_service_flush_cdn_doing" qtlid="217795">Tyhjennys käynnissä...</translation>
    <translation id="hosting_dashboard_service_terminate_cdn_question" qtlid="301976">Haluatko varmasti irtisanoa CDN-palvelun?</translation>
    <translation id="hosting_dashboard_service_terminate_cdn_title" qtlid="301989">CDN-palvelun irtisanominen</translation>
-   <translation id="hosting_dashboard_service_terminate_cdn_success" qtlid="302002">CDN-palvelun irtisanomispyyntö on rekisteröity.&#13;
-Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translation>
+   <translation id="hosting_dashboard_service_terminate_cdn_success" qtlid="302002">CDN-palvelusi irtisanomispyyntö on rekisteröity.&#13;
+Saat pian sähköpostiviestin, jossa on ohjeet sulkemisprosessiin.</translation>
    <translation id="hosting_dashboard_service_terminate_cdn_error" qtlid="302015">Tapahtui virhe CDN:n irtisanomisessa.</translation>
    <translation id="hosting_dashboard_service_ssl_impossible" qtlid="302028">Et voi tilata SSL-varmennetta, jos CDN on aktiivinen</translation>
 
@@ -282,6 +287,7 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_configuration_order_ssl" qtlid="196803">SSL-sertifikaatin tilaus</translation>
    <translation id="hosting_tab_DOMAINS_table_header_domain" qtlid="8458">Verkkotunnus</translation>
    <translation id="hosting_tab_DOMAINS_table_header_home" qtlid="196816">Juurihakemisto</translation>
+   <translation id="hosting_tab_DOMAINS_table_header_runtime" qtlid="488107">Runtime-ohjelmisto</translation>
    <translation id="hosting_tab_DOMAINS_table_header_cdn" qtlid="99812">CDN</translation>
    <translation id="hosting_tab_DOMAINS_table_header_firewall" qtlid="141418">Palomuuri</translation>
    <translation id="hosting_tab_DOMAINS_table_header_ownlog" qtlid="62172">Erillislokit</translation>
@@ -293,14 +299,14 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_DOMAINS_table_ssl_state_2" qtlid="30250">Aktivoitu</translation>
    <translation id="hosting_tab_DOMAINS_table_ssl_state_0" qtlid="24967">Deaktivoitu</translation>
    <translation id="hosting_tab_DOMAINS_table_ssl_state_1" qtlid="315761">Generoitava</translation>
-   <translation id="hosting_tab_DOMAINS_table_ssl_state_1_tooltip" qtlid="315774">Varmenne on generoitava, jotta tekemäsi muutokset huomioidaan. </translation>
+   <translation id="hosting_tab_DOMAINS_table_ssl_state_1_tooltip" qtlid="315774">Varmenne on generoitava uudelleen, jotta tekemäsi muutokset huomioidaan. </translation>
    <translation id="hosting_tab_DOMAINS_table_firewall_state_ACTIVE" qtlid="30250">Aktivoitu</translation>
    <translation id="hosting_tab_DOMAINS_table_firewall_state_NONE" qtlid="24967">Deaktivoitu</translation>
    <translation id="hosting_tab_DOMAINS_table_empty" qtlid="196829">Sinulla ei ole webhotelliin liitettyjä verkkotunnuksia</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_delete" qtlid="2414">Poista</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_modify" qtlid="37875">Muokkaa</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_refresh" qtlid="158708">Virkistä</translation>
-   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Haetaan…</translation>
+   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="491964">Haetaan...</translation>
 
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation" qtlid="255976">Luodaan linkkiä</translation>
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="444417">Tapahtui virhe yhdyslinkin muodostamisessa lokeihin.</translation>
@@ -308,8 +314,8 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
 
    <translation id="hosting_tab_DOMAINS_configuration_attachDomain_title_button" qtlid="226969">Lisää verkkotunnus tai aliverkkotunnus</translation>
    <translation id="hosting_ssl_regenerate_title_button" qtlid="315787">Uudelleengeneroi SSL-varmenne</translation>
-   <translation id="hosting_ssl_regenerate_info" qtlid="315800">Kun uudelleen generoit SSL-varmenteesi, tulevat  SSL:n aktivoimista tai deaktivoimista multisivuilla koskevat muutoksesi voimaan generoinnin lopussa. </translation>
-   <translation id="hosting_ssl_regenerate_info_warning">Si vous avez ajouté des hébergements multisites il y a moins de deux heures, il est possible qu'ils ne soient pas inclus dans votre certificat SSL.</translation>
+   <translation id="hosting_ssl_regenerate_info" qtlid="315800">Kun uudelleengeneroit SSL-varmenteesi, tulevat  SSL:n aktivoimista tai käytöstä poistamista multisite-sivuilla koskevat muutoksesi voimaan generoinnin lopussa.</translation>
+   <translation id="hosting_ssl_regenerate_info_warning" qtlid="473596">Jos olet lisännyt multisite-webhotelleja alle kaksi tuntia sitten, on mahdollista, etteivät ne sisälly SSL-varmenteeseesi.</translation>
    <translation id="hosting_ssl_limit_characters_info_warning" qtlid="402711">Maksuton varmenne ei ole saatavilla yli {0} merkin pituisiin verkkotunnuksiin.</translation>
 
    <translation id="hosting_tab_DATABASES_change_offer" qtlid="327302">Siirry maksulliseen webhotelliin luodaksesi tietokanta. Muuta tuotetta nopeasti ja ilman katkoksia painikkeesta</translation>
@@ -347,10 +353,13 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_DATABASES_configuration_quota_warning_message" qtlid="261452">Mikäli ylität suositellun kiintiön, tietokantaan liittyvät oikeutesi rajoitetaan vain luku -tilaan.</translation>
    <translation id="hosting_tab_DATABASES_configuration_quota_warning_resolution" qtlid="261465">Välttyäksesi tältä rajoitukselta, suosittelemme tyhjentämään tietokantasi tai siivoamaan tietokantasi tauluja ja tämän jälkeen uudelleenlaskemaan kannan kiintiön suositellulle tasolle. Kantasi lukitus poistetaan tämän jälkeen automaattisesti muutamassa minuutissa.</translation>
 
+   <translation id="hosting_tab_databases_get_error" qtlid="488120">Tapahtui virhe tietokantojen haussa.</translation>
+   <translation id="hosting_tab_databases_dumps_error_fetch" qtlid="488133">Tapahtui virhe varmuuskopioiden haussa.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_title_button" qtlid="7618">Luo tietokanta</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_title" qtlid="7618">Luo tietokanta</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MYSQL" qtlid="196894">MySQL</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_POSTGRESQL" qtlid="196907">PostgreSQL</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MONGODB" qtlid="444706">MongoDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_loading_error" qtlid="168120">Tapahtui virhe ladattaessa tietoja.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_question" qtlid="196920">Olet luomassa tietokantaa</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_no_db_left" qtlid="196933">Et voi luoda enää tietokantoja.</translation>
@@ -359,7 +368,7 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type" qtlid="196959">Valitse lisättävän tietokannan tyyppi:</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PERSO" qtlid="196972">Personal SQL {0} {1}: {2} jäljellä</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PRO" qtlid="196985">Professional SQL {0} {1}: {2} jäljellä</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="491977">Tallennettu Cloud Web -instanssiisi</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_EXTRA_SQL_PERSO" qtlid="196998">Extra Personal SQL {0} {1}: {2} jäljellä</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_PRIVATE_SQL" qtlid="261734">Private SQL {0} {1}: {2} jäljellä</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step2_password_question" qtlid="197011">Valitse tietokannan käyttäjätunnus ja sen salasana</translation>
@@ -376,7 +385,7 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PERSO" qtlid="197128">SQL Perso {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PRO" qtlid="197141">SQL Pro {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_EXTRA_SQL_PERSO" qtlid="197154">Extra SQL Perso {0} {1}</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="491977">Tallennettu Cloud Web -instanssiisi</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_fail" qtlid="197167">Tapahtui virhe pyydettäessä tietokannan luontia.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_success" qtlid="197180">Tietokanta luodaan.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_bdd_adding" qtlid="453189">Tietokantaa lisätään parhaillaan.</translation>
@@ -404,7 +413,7 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_DATABASES_configuration_dump_step1_date" qtlid="363583">Valitse haluttu tallennuspäivä:</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step2_question" qtlid="413167">Haluatko pyytää tietokantasi {0} varmuuskopiointia seuraavilla asetuksilla?</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step2_date" qtlid="66308">Päivämäärä:</translation>
-   <translation id="hosting_tab_DATABASES_configuration_dump_step2_information" qtlid="274974">Saat varmuuskopion sähköpostitse muutaman minuutin kuluttua pyynnöstä.</translation>
+   <translation id="hosting_tab_DATABASES_configuration_dump_step2_information" qtlid="274974">Saat varmuuskopiosi sähköpostitse muutaman minuutin kuluttua pyynnöstä.</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_fail" qtlid="274987">Tapahtui virhe tietokannan varmuuskopion luomisessa {0}.</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_success" qtlid="275000">Tietokannasta luodaan varmuuskopio.</translation>
 
@@ -415,6 +424,11 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="database_tabs_dumps_delete_success" qtlid="290264">Varmuuskopion poistaminen onnistui.</translation>
    <translation id="database_tabs_dumps_delete_fail" qtlid="290277">Tapahtui virhe varmuuskopioin poistossa:</translation>
 
+   <translation id="database_tabs_dumps_status" qtlid="26443">Tila</translation>
+   <translation id="database_tabs_dumps_status_created" qtlid="264862">Luo</translation>
+   <translation id="database_tabs_dumps_status_creating" qtlid="488146">Luodaan dumppia</translation>
+   <translation id="database_tabs_dumps_status_updating" qtlid="488159">Muokataan dumppia</translation>
+   <translation id="database_tabs_dumps_status_deleting" qtlid="488172">Poistetaan dumppia</translation>
 
    <translation id="hosting_tab_DATABASES_configuration_update_password_title" qtlid="80394">Salasanamuutos</translation>
    <translation id="hosting_tab_DATABASES_configuration_update_password_question" qtlid="413180">Olet vaihtamassa salasanaa tietokannalle {0}:</translation>
@@ -486,6 +500,7 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_domain_name" qtlid="140638">Verkkotunnus</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_domain_name_www_question" qtlid="197557">Aliverkkotunnuksen {0} muokkaus</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_home" qtlid="196816">Juurihakemisto</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_step1_runtime" qtlid="488107">Runtime-ohjelmisto</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_cdn" qtlid="232466">Aktivoi CDN</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step2_summary" qtlid="197570">Haluatko varmasti tehdä seuraavat muutokset verkkotunnuksille?</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step2_domain_name" qtlid="140638">Verkkotunnus</translation>
@@ -589,6 +604,100 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_type" qtlid="2642">Tyyppi</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_target" qtlid="47644">Kohde</translation>
 
+   <translation id="hosting_tab_RUNTIMES_guide_help" qtlid="488185">Tarvitsetko apua konfiguraatiosi päivityksessä?</translation>
+   <translation id="hosting_tab_RUNTIMES_table_empty" qtlid="488198">Konfiguraatioiden lista on tyhjä.</translation>
+   <translation id="hosting_tab_RUNTIMES_runtimes_table_empty" qtlid="488211">Framwork lista on tyhjä.</translation>
+   <translation id="hosting_tab_RUNTIMES_envvars_table_empty" qtlid="488224">Ympäristömuuttujen lista on tyhjä.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_table_status_created" qtlid="55133">Aktiivinen</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_creating" qtlid="146632">Luodaan…</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_updating" qtlid="124303">Muutos keskeneräinen</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_deleting" qtlid="146645">Poistetaan…</translation>
+
+   <translation id="hosting_tab_RUNTIMES_list_error" qtlid="488237">Tapahtui virhe runtime engine -ohjelmiston tietojen haussa:</translation>
+   <translation id="hosting_tab_ENVVARS_list_error_temporary" qtlid="488250">Ympäristömuuttujien tietojen haussa tapahtui tilapäinen virhe. Ole hyvä ja yritä myöhemmin uudelleen.</translation>
+   <translation id="hosting_tab_ENVVARS_list_error" qtlid="488263">Tapahtui virhe ympäristömuuttujen tietoja haettaessa:</translation>
+
+   <translation id="hosting_tab_RUNTIMES_list" qtlid="488276">Lista saatavilla olevista runtime engine -ohjelmistoista</translation>
+   <translation id="hosting_tab_ENVVARS_list" qtlid="488289">Luettelo aktiivisista ympäristömuuttujista</translation>
+
+   <translation id="hosting_tab_RUNTIMES_add" qtlid="488302">Lisää runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_quota_reached" qtlid="488315">Tuotteen runtime engine -ohjelmistojen enimmäismäärä on saavutettu</translation>
+   <translation id="hosting_tab_ENVVARS_add" qtlid="488328">Liitä ympäristömuuttuja</translation>
+   <translation id="hosting_tab_ENVVARS_quota_reached" qtlid="488341">Tuotteen ympäristömuuttujien maksimimäärä saavutettu</translation>
+
+   <translation id="hosting_tab_RUNTIMES_error" qtlid="243832">Tapahtui virhe tietoja haettaessa:</translation>
+   <translation id="hosting_tab_RUNTIMES_empty" qtlid="488354">Konfigurointilista on tyhjä.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_actions" qtlid="72809">Toiminnot</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_name" qtlid="488367">Konfiguroinnin nimi</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_language" qtlid="488107">Runtime-ohjelmisto</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_default" qtlid="488380">Oletusvalinta</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_number_multisite" qtlid="488393">Liitettyjen multisite-sivujen määrä</translation>
+
+   <translation id="hosting_tab_RUNTIMES_table_popover_modify" qtlid="37875">Muokkaa</translation>
+   <translation id="hosting_tab_RUNTIMES_table_popover_delete" qtlid="2414">Poista</translation>
+
+   <translation id="hosting_tab_RUNTIMES_create_title" qtlid="488302">Lisää runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_title" qtlid="488406">Muokkaa runtime engine -ohjelmistoa</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_title" qtlid="488419">Poista runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_step1_question" qtlid="488432">Haluatko varmasti poistaa tämän runtime engine -ohjelmiston?</translation>
+
+   <translation id="hosting_tab_RUNTIMES_save_success" qtlid="488445">Uusi runtime engine on käytettävissä muutaman minuutin kuluessa.</translation>
+   <translation id="hosting_tab_RUNTIMES_save_error" qtlid="488458">Tapahtui virhe runtime engine -ohjelmiston luomisessa:</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_success" qtlid="488471">Runtime engine -ohjelmistoa muokataan.</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_error" qtlid="488484">Tapahtui virhe runtime engine -ohjelmiston muokkauksessa:</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_success" qtlid="488497">Tätä runtime engine -ohjelmistoa poistetaan.</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_error" qtlid="488510">Tapahtui virhe runtime engine -ohjelmiston poistossa:</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_information" qtlid="488523">Varoitus, tämä toiminto on peruuttamaton ja johtaa kaikkien tietojen menetykseen.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_label_name" qtlid="415727">Personoitu nimi</translation>
+   <translation id="hosting_tab_RUNTIMES_label_type" qtlid="488107">Runtime-ohjelmisto</translation>
+   <translation id="hosting_tab_RUNTIMES_label_publicDir" qtlid="488536">Polku julkiseen hakemistoon</translation>
+   <translation id="hosting_tab_RUNTIMES_label_appEnv" qtlid="488549">Sovellusympäristö</translation>
+   <translation id="hosting_tab_RUNTIMES_label_appBootstrap" qtlid="488562">Sovelluksen käynnistysskripti</translation>
+
+   <translation id="hosting_tab_RUNTIMES_publicDir_help" qtlid="488575">Syötä Node.js-palvelimesi käynnistykseen tarvittava polku julkiseen hakemistoon.</translation>
+   <translation id="hosting_tab_RUNTIMES_appEnv_help" qtlid="488588">Syötä ympäristö, jossa Node.js-sovellus on käynnistettävä (tuotanto, kehitys, testi jne.).</translation>
+   <translation id="hosting_tab_RUNTIMES_appBootstrap_help" qtlid="488601">Syötä skripti, jota käytetään Node.js-binääriä käyttävän palvelimen käynnistämiseen.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_configure_envvar" qtlid="488614">Konfiguroi ympäristömuuttujat</translation>
+
+   <translation id="hosting_tab_ENVVARS_actions" qtlid="72809">Toiminnot</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_key" qtlid="488627">Muuttujan nimi</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_type" qtlid="488640">Muuttujan tyyppi</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_value" qtlid="47548">Arvo</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_status" qtlid="33790">Tila</translation>
+
+   <translation id="hosting_tab_ENVVARS_table_popover_modify" qtlid="37875">Muokkaa</translation>
+   <translation id="hosting_tab_ENVVARS_table_popover_delete" qtlid="2414">Poista</translation>
+   <translation id="hosting_tab_RUNTIMES_table_popover_set_default" qtlid="488380">Oletusvalinta</translation>
+
+   <translation id="hosting_tab_ENVVARS_create_title" qtlid="488328">Liitä ympäristömuuttuja</translation>
+   <translation id="hosting_tab_ENVVARS_edit_title" qtlid="488653">Muokkaa ympäristömuuttujaa</translation>
+   <translation id="hosting_tab_ENVVARS_delete_title" qtlid="488666">Poista ympäristömuuttuja</translation>
+   <translation id="hosting_tab_ENVVARS_delete_step1_question" qtlid="488679">Haluatko varmasti poistaa tämän ympäristömuuttujan?</translation>
+   <translation id="hosting_tab_ENVVARS_delete_information" qtlid="488523">Varoitus, tämä toiminto on peruuttamaton ja johtaa kaikkien tietojen menetykseen.</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_title" qtlid="488692">Aseta runtime engine oletukseksi</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_step1_question" qtlid="488705">Haluatko varmasti valita tämän runtime engine -ohjelmiston oletukseksi?</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_information" qtlid="488718">Huomio, tämän jälkeen kaikki multisite-sivusi luodaan tällä runtime engine -ohjelmistolla. Voit kuitenkin aina muokata sitä myöhemmin.</translation>
+
+   <translation id="hosting_tab_ENVVARS_save_success" qtlid="488731">Uusi ympäristömuuttuja on saatavilla muutaman minuutin kuluessa.</translation>
+   <translation id="hosting_tab_ENVVARS_save_error" qtlid="488744">Tapahtui virhe ympäristömuuttujan luomisessa:</translation>
+   <translation id="hosting_tab_ENVVARS_edit_success" qtlid="488757">Ympäristömuuttujaa muokataan.</translation>
+   <translation id="hosting_tab_ENVVARS_edit_error" qtlid="488770">Tapahtui virhe ympäristömuuttujan muokkauksessa:</translation>
+   <translation id="hosting_tab_ENVVARS_delete_success" qtlid="488783">Ympäristömuuttujaa poistetaan.</translation>
+   <translation id="hosting_tab_ENVVARS_delete_error" qtlid="488796">Tapahtui virhe ympäristömuuttujan poistossa:</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_success" qtlid="488809">Tämä runtime engine -ohjelmisto on hetken kuluttua saatavilla oletuksena.</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_error" qtlid="488822">Tapahtui virhe oletus runtime engine -ohjelmiston asettamisessa:</translation>
+
+   <translation id="hosting_tab_ENVVARS_label_key" qtlid="3818">Nimi</translation>
+   <translation id="hosting_tab_ENVVARS_label_error_required" qtlid="459430">Tämä kenttä on pakollinen.</translation>
+   <translation id="hosting_tab_ENVVARS_label_error_pattern" qtlid="488835">Muuttujan nimi ei voi sisältää välilyöntejä.</translation>
+   <translation id="hosting_tab_ENVVARS_label_type" qtlid="488640">Muuttujan tyyppi</translation>
+   <translation id="hosting_tab_ENVVARS_label_value" qtlid="47548">Arvo</translation>
+
+
    <translation id="hosting_tab_TASK" qtlid="201172">Meneillään olevat tehtävät</translation>
    <translation id="hosting_tab_TASKS_table_empty" qtlid="144058">Ei tehtäviä</translation>
    <translation id="hosting_tab_TASKS_table_function" qtlid="61872">Tehtävä</translation>
@@ -687,10 +796,14 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_FTP_dashboard_information" qtlid="198584">Nämä asetukset mahdollistavat tiedostojen siirron webhotelliin</translation>
    <translation id="hosting_tab_FTP_dashboard_server" qtlid="198597">FTP-palvelin</translation>
    <translation id="hosting_tab_FTP_dashboard_login" qtlid="198610">Pääkäyttäjätunnus:</translation>
+   <translation id="hosting_tab_FTP_dashboard_primary_ftp_login" qtlid="488848">Pää FTP-login:</translation>
+   <translation id="hosting_tab_FTP_dashboard_primary_ssh_login" qtlid="488861">Pää SSH-login:</translation>
    <translation id="hosting_tab_FTP_dashboard_login_enabled" qtlid="198623">Aktiivinen päätunnus:</translation>
    <translation id="hosting_tab_FTP_dashboard_homez" qtlid="271621">Kotihakemistopolku:</translation>
    <translation id="hosting_tab_FTP_dashboard_clusterip" qtlid="198636">Klusterin IP-osoite:</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_login" qtlid="41062">Käyttäjätunnus</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_ftp_login" qtlid="488874">FTP-login</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_ssh_login" qtlid="488887">SSH-login</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_home" qtlid="198649">Kohdehakemisto</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_iisRemoteRights" qtlid="198662">iisRemoteRights</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_state" qtlid="369025">Tila</translation>
@@ -727,6 +840,7 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_FTP_configuration_explorer_disabled" qtlid="250043">Tulossa pian</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_title" qtlid="198766">Salasanamuutos</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_title_button" qtlid="198766">Salasanamuutos</translation>
+
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_title" qtlid="215442">Varmuuskopion palautus</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_title_button" qtlid="215442">Varmuuskopion palautus</translation>
    <translation id="hosting_tab_FTP_configuration_restore_password_step1_question" qtlid="215455">Olet palauttamassa FTP-tilan varmuuskopiota</translation>
@@ -740,6 +854,20 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_step2_alert_question" qtlid="351883">Haluatko jatkaa?</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_success" qtlid="215546">Tilannekuvaa palautetaan</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_error" qtlid="215559">Tapahtui virhe palautettaessa varmuuskopiota:</translation>
+
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_title" qtlid="488900">Generoi varmuuskopio</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_title_button" qtlid="488900">Generoi varmuuskopio</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_password_step1_question" qtlid="488913">Olet generoimassa FTP-tilastasi varmuuskopion.</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_snapshot_instance" qtlid="488926">Generoitava instanssi:</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_1" qtlid="215481">1 päivää vanha</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_2" qtlid="215494">2 päivää vanha</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_3" qtlid="215507">3 päivää vanha</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_weekly_1" qtlid="70217">1 viikko</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert" qtlid="488939">Huomio, generoitu varmuuskopio lähetetään sinulle sähköpostitse eikä sitä palauteta automaattisesti FTP-tilaasi.</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert_question" qtlid="352009">Haluatko jatkaa?</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_success" qtlid="488952">Varmuuskopiota generoidaan.</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_error" qtlid="488965">Tapahtui virhe varmuuskopion generoinnissa:</translation>
+
    <translation id="hosting_tab_FTP_configuration_change_password_step1_question" qtlid="413206">Olet vaihtamassa salasanaa käyttäjälle{0}</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_step1_password" qtlid="17177">Uusi salasana</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_step1_confirmation" qtlid="9983">Vahvista</translation>
@@ -805,11 +933,11 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_configuration_tab_modules_create_step3_infos_title" qtlid="211958">Syötä moduulikonfiguraation tiedot</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_intro" qtlid="211971">Lisätiedot</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_name" qtlid="211984">Pääkäyttäjän nimi:</translation>
-   <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_mail" qtlid="215130">Admin-sähköposti:</translation>
-   <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_email" qtlid="211997">Pääkäyttäjän sähköpostiosoite:</translation>
+   <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_mail" qtlid="215130">Administraattorin sähköposti:</translation>
+   <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_email" qtlid="211997">Administraattorin sähköpostiosoite:</translation>
    <translation id="hosting_configuration_tab_modules_create_step2_db_admin_error" qtlid="212010">Pääkäyttäjän nimi on virheellinen. Seuraavat merkit ovat sallittuja: aakkosnumeeriset merkit, -, _, @</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_info_admin_error" qtlid="212023">Pääkäyttäjän nimi on virheellinen. Seuraavat merkit ovat sallittuja: aakkosnumeeriset merkit, -, _,</translation>
-   <translation id="hosting_configuration_tab_modules_create_step3_infos_email_admin_error" qtlid="212036">Sähköpostiosoite on virheellinen</translation>
+   <translation id="hosting_configuration_tab_modules_create_step3_infos_email_admin_error" qtlid="488978">Sähköpostiosoite ei kelpaa</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_password" qtlid="91129">Salasana:</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_password_confirm" qtlid="197063">Varmistus:</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_password_error" qtlid="197076">Salasanat eivät ole samat.</translation>
@@ -843,7 +971,7 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_configuration_tab_modules_update_information" qtlid="212322">Saat sähköpostitse uuden salasanan.</translation>
    <translation id="hosting_configuration_tab_modules_update_success" qtlid="212335">Pääkäyttäjän salasana nollataan.</translation>
    <translation id="hosting_configuration_tab_modules_update_fail" qtlid="212348">Tapahtui virhe nollattaessa moduulin {0} pääkäyttäjäsalasanaa.</translation>
-   <translation id="hosting_configuration_tab_modules_create_success" qtlid="212361">Moduuli asennetaan. Saat sähköpostia kun sen asennus on valmis.</translation>
+   <translation id="hosting_configuration_tab_modules_create_success" qtlid="212361">Moduulia asennetaan. Saat sähköpostitse ilmoituksen, kun asennus on valmis.</translation>
    <translation id="hosting_configuration_tab_modules_table_empty" qtlid="212374">Sinulla ei ole asennettuja moduuleja</translation>
    <translation id="hosting_configuration_tab_modules_db_help_title" qtlid="212387">Moduulin tietokantakonfiguraatio</translation>
    <translation id="hosting_configuration_tab_modules_db_help_addr_title" qtlid="212400">Tietokantapalvelimen osoite</translation>
@@ -967,7 +1095,7 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_CRON_command_maxlength_help_inline" qtlid="199312">Ajettavan komennon pituus on rajoitettu 100 merkkiin</translation>
    <translation id="hosting_tab_CRON_command_placeholder" qtlid="199325">hakemisto/esimerkki.php</translation>
    <translation id="hosting_tab_CRON_label_language" qtlid="145644">Kieli</translation>
-   <translation id="hosting_tab_CRON_label_email" qtlid="199338">Logit sähköpostiin</translation>
+   <translation id="hosting_tab_CRON_label_email" qtlid="199338">Lokit sähköpostia kohti</translation>
    <translation id="hosting_tab_CRON_label_email_info" qtlid="296726">Lähetetään vain virhetilanteessa</translation>
    <translation id="hosting_tab_CRON_label_crontab" qtlid="199351">Crontab</translation>
    <translation id="hosting_tab_CRON_label_hours" qtlid="8842">Tunnit</translation>
@@ -1078,7 +1206,7 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_order_upgrade_price_TTC" qtlid="146190">Kokonaishinta (sis. ALV):</translation>
    <translation id="hosting_order_upgrade_success" qtlid="181266">Tilaus <a href='{0}' target='_blank'>{1}</a> on rekisteröity onnistuneesti.</translation>
    <translation id="hosting_order_upgrade_error" qtlid="225153">Tapahtui virhe webhotellituotetta vaihdettaessa.</translation>
-   <translation id="hosting_migrate_my_ovh_org_success" qtlid="372334">Verkkotunnukksesi ovh.org migraatiopyyntö on rekisteröity. Saat sähköpostitse ilmoituksen kun toimenpide on valmis.</translation>
+   <translation id="hosting_migrate_my_ovh_org_success" qtlid="372334">Verkkotunnukksesi ovh.org migraatiopyyntö on rekisteröity. Saat sähköpostitse ilmoituksen, kun toimenpide on valmis.</translation>
    <translation id="hosting_migrate_my_ovh_org_error" qtlid="372347">Tapahtui virhe verkkotunnuksesi ovh.org migraatiossa.</translation>
 
    <translation id="hosting_tab_DATABASES_configuration_order_button_group" qtlid="293723">Konfiguroi tietokantasi</translation>
@@ -1149,7 +1277,7 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_BOOST_disable_error" qtlid="227559">Tapahtui virhe poistettaessa kiihdytintä käytöstä.</translation>
 
    <translation id="hosting_tab_AUTOMATED_EMAILS" qtlid="267536">Sähköpostien skriptit</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_guide_help" qtlid="271530">Tarvitsetko apua skriptien lähettämien sähköpostien suhteen?</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_guide_help" qtlid="271530">Tarvitsetko apua skriptien lähettämien sähköpostien kanssa?</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_desc" qtlid="270319">CGI-/PERL-/PHP-skripteillä lähetetyt sähköpostit.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_info" qtlid="254414">Tämä sivu koskee ainoastaan CGI/PERL/PHP-skripteillä lähetettyjä sähköposteja.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_status" qtlid="254427">Palvelun tila:</translation>
@@ -1172,9 +1300,9 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_AUTOMATED_EMAILS_block_title" qtlid="254609">Estä sähköpostien lähetys</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_unblock_title" qtlid="254622">Salli sähköpostien lähetys</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_purge_title" qtlid="254544">Siivoa sähköpostit</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_block_question" qtlid="254635">Olet estämässä webhotellista lähetettävien sähköpostien lähetyksen. Viestejä ei poisteta vaan ne laitetaan odottamaan 72 tunnin ajaksi. Tänä aikana voit sallia lähetyksen uudelleen tai tyhjentää viestit.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_block_question" qtlid="254635">Olet estämässä webhotellista lähetettävien sähköpostien lähetyksen. Viestejä ei poisteta, vaan ne laitetaan odottamaan 72 tunnin ajaksi. Tänä aikana voit sallia lähetyksen uudelleen tai tyhjentää viestit.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_purge_question" qtlid="254648">Olet poistamassa kaikki tilin jonossa olevat sähköpostiviestit. Sen jälkeen tilin esto poistuu automaattisesti. Toimintoihin kuluu noin 5 - 10 minuuttia.</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_unblock_question" qtlid="254661">Olet sallimassa sähköpostien lähetystä. Lähettäminen jatkuu heti kun seuraava sähköpostiviesti lähetetään. Estetyt viestit lähetetään uudelleen.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_unblock_question" qtlid="254661">Olet sallimassa sähköpostien lähetyksen. Lähettäminen jatkuu heti, kun seuraava sähköpostiviesti lähetetään. Estetyt viestit lähetetään uudelleen.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_request_success" qtlid="254674">Pyyntö lähetetty onnistuneesti.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_request_error" qtlid="254687">Virhe tapahtui pyynnön aikana:</translation>
 
@@ -1182,10 +1310,10 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_info" qtlid="254713">Määrittele sähköpostiosoite, johon virheraportit halutaan. Jos webhotellista lähtevissä sähköposteissa on virheitä lähetyksen aikana, virheraportti lähetetään seuraavana päivänä.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email" qtlid="254726">Sähköpostiosoite:</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_success" qtlid="254739">Virheraporttien vastaanotto-osoite on muutettu onnistuneesti.</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_error" qtlid="254752">Virhe tapahtui muutettaessa virheraporttien vastaanotto-osoitetta:</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_error" qtlid="254752">Tapahtui virhe muutettaessa virheraporttien vastaanotto-osoitetta:</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_required" qtlid="254765">Syötä sähköpostiosoite.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_invalid" qtlid="254778">Sähköpostiosoite ei kelpaa.</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_volume" qtlid="267549">Lähetettyjen sähköpostien historia</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_volume" qtlid="267549">Lähetettyjen sähköpostien historiatiedot</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_emails_sent" qtlid="267562">Lähetetyt sähköpostit</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_volume_limit" qtlid="267575">Sähköpostien lukumäärä (enintään 100):</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_volume_history" qtlid="267588">Sähköpostit virhetilassa</translation>
@@ -1243,7 +1371,7 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_action_config_edit_no_choice" qtlid="267991">Historiassa on ainoastaan yksi konfiguraatio. Muita vaihtoehtoja ei löydy. Klikkaa "Vahvista" ottaaksesi ohessa esitetyt arvot käyttöön.</translation>
    <translation id="hosting_tab_USER_LOGS" qtlid="232375">Tilastot ja logit</translation>
    <translation id="hosting_tab_USER_LOGS_none" qtlid="434239">Sinulla ei ole käyttäjiä</translation>
-   <translation id="hosting_tab_USER_LOGS_guide_help" qtlid="271543">Tarvitsetko apua sivustosi statistiikka- ja logitietojen katseluun?</translation>
+   <translation id="hosting_tab_USER_LOGS_guide_help" qtlid="271543">Tarvitsetko apua sivustosi statistiikka- ja lokitietojen katseluun?</translation>
    <translation id="hosting_tab_USER_LOGS_dashboard_information" qtlid="268354">Nämä osoitteet mahdollistavat sivustoihisi liittyvien statistiikkatietojen tarkastelun:</translation>
    <translation id="hosting_tab_USER_LOGS_dashboard_stats" qtlid="268367">Kävijätilastot</translation>
    <translation id="hosting_tab_USER_LOGS_dashboard_stats_newtab" qtlid="402776">Urchin-tilastot (uusi ikkuna)</translation>
@@ -1293,7 +1421,7 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_success" qtlid="268549">Käyttäjää muokataan.</translation>
 
    <translation id="hosting_tab_menu_crons" qtlid="270332">Ajastetut tehtävät - Cron</translation>
-   <translation id="hosting_tab_menu_emails" qtlid="270345">Sähköpostien ja postituslistojen hallinta</translation>
+   <translation id="hosting_tab_menu_emails" qtlid="489004">Sähköpostit ja postituslistat</translation>
    <translation id="hosting_tab_menu_contacts" qtlid="270358">Hallinnollinen, tekninen ja laskutus</translation>
    <translation id="hosting_tab_menu_resiliate" qtlid="351896">Poista/Irtisano webhotelli</translation>
    <translation id="hosting_tab_menu_resiliate_infos" qtlid="270384">Poistaa palvelun sen voimassaolon päättyessä</translation>
@@ -1361,43 +1489,41 @@ Saat pian sulkemisprosessin ohjeet sisältävän sähköpostiviestin. </translat
    <translation id="hosting_change_main_domain_help_ssl_title" qtlid="84921">SSL</translation>
    <translation id="hosting_change_main_domain_help_ssl_desc" qtlid="286539">Pääverkkotunnuksen muutos ei lisää ssl-sertifikaattia uuteen verkkotunnukseen, vaan on tilattava uusi maksullinen sertifikaatti.</translation>
    <translation id="hosting_dashboard_ssl_generate_success" qtlid="298968">Webhotellin aktivointi SSL-varmenteella on käynnissä.</translation>
-   <translation id="hosting_dashboard_ssl_report_button">État de la progression</translation>
-   <translation id="hosting_dashboard_service_ssl_creating">En cours de création</translation>
-   <translation id="hosting_dashboard_service_ssl_regenerating">En cours de régénération</translation>
-   <translation id="hosting_dashboard_service_ssl_deleting">En cours de suppression</translation>
-   <translation id="hosting_dashboard_service_ssl_importing">En cours d'import</translation>
+   <translation id="hosting_dashboard_ssl_report_button" qtlid="473609">Etenemisen tilanne</translation>
+   <translation id="hosting_dashboard_service_ssl_creating" qtlid="29647">Luodaan</translation>
+   <translation id="hosting_dashboard_service_ssl_regenerating" qtlid="473622">Uudelleengeneroidaan</translation>
+   <translation id="hosting_dashboard_service_ssl_deleting" qtlid="152778">Poistetaan</translation>
+   <translation id="hosting_dashboard_service_ssl_importing" qtlid="473635">Tuodaan</translation>
    <translation id="hosting_dashboard_service_order_ssl_delete" qtlid="299007">Poista SSL-varmenne</translation>
    <translation id="hosting_dashboard_service_delete_ssl_warning" qtlid="299020">Haluatko varmasti poistaa SSL-varmenteen webhotellistasi?</translation>
-   <translation id="hosting_dashboard_service_delete_ssl_warning_payable" qtlid="363479">Oletko varma, että haluat poistaa maksullisen varmenteen? Kun varmenne on poistettu, sitä ei voi enää uudelleen asentaa vaan se on ostettava uudelleen.</translation>
-   <translation id="hosting_dashboard_ssl_details_title">Progression de la validation du certificat SSL</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus">Vérification des conditions d’utilisation</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus_error">La vérification des conditions d’utilisation de Comodo n’a pas pu être effectuée.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus">Vérification du nom de marque</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus_error">La vérification du nom de marque par une agence d’enregistrement n’a pas pu être effectuée.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_phoneCallApprovalStatus">Vérification téléphonique auprès du contact enregistré</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus">Vérification du statut légal</translation>
-<translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus_error">Durant le processus de validation de votre certificat SSL, il est nécessaire de contacter Comodo à ce numéro&#160;<strong>{0}</strong>.
-<br/>
-<br/>Notez qu’il s’agit d’une plateforme néerlandaise. Il vous suffira de demander un interlocuteur francophone.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus">Vérification de la validité du domaine</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus_error">Il s’agit généralement d’une restriction indiquée dans votre fichier <strong>.htaccess</strong>.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus">Vérification de la demande de signature de certificat</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus_error">Nous vous invitons à créer une demande d'assistance auprès de Comodo.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_in-progress">Cette étape est en cours de traitement.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_non-completed">Comodo est en attente d'informations pour compléter cette étape.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_not-provided">Le traitement de cette étape n'a pas encore commencé.</translation>
-   <translation id="hosting_dashboard_ssl_details_confirm_button">Fermer</translation>
-   <translation id="hosting_dashboard_ssl_details_error">Une erreur est survenue lors de la récupération du rapport de génération SSL.</translation>
-   <translation id="hosting_dashboard_ssl_details_support_1">Vous pourrez trouver toutes les informations nécessaires à la validation de ces différents éléments sur ce lien menant à la documentation (en anglais) de Comodo&#160;</translation>
-   <translation id="hosting_dashboard_ssl_details_support_2">.<br><br>Pour toute question relative à la validation de votre certificat SSL EV, nous vous invitons à contacter Comodo à l’adresse&#160;</translation>
-   <translation id="hosting_dashboard_ssl_details_support_3">, en précisant le numéro de commande suivant <strong>{0}</strong>.</translation>
-   <translation id="hosting_dashboard_ssl_details_support_new_window">Ce lien va s'ouvrir dans un nouvel onglet</translation>
+   <translation id="hosting_dashboard_service_delete_ssl_warning_payable" qtlid="363479">Oletko varma, että haluat poistaa maksullisen varmenteen? Kun varmenne on poistettu, sitä ei voida asentaa enää uudelleen. Sinun on ostettava uusi.</translation>
+   <translation id="hosting_dashboard_ssl_details_title" qtlid="473648">SSL-sertifikaatin validoinnin edistyminen</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus" qtlid="473661">Käyttöolosuhteiden tarkistaminen</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus_error" qtlid="473674">Comodon käyttöolosuhteiden tarkistamista ei voitu suorittaa.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus" qtlid="473687">Tuotemerkin tarkistus</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus_error" qtlid="473700">Rekisteriorganisaation rekisteröimää tuotemerkkiä ei voitu suorittaa.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_phoneCallApprovalStatus" qtlid="473713">Rekisteröidyn yhteyshenkilön tarkistus puhelimitse</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus" qtlid="473726">Oikeudellisen aseman tarkistaminen</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus_error" qtlid="484513">SSL-varmenteen vahvistamisprosessin aikana on otettava yhteyttä Comodoon soittamalla numeroon <strong> +31 88 775 7777 </strong>. Huomaa, että tämä on hollantilainen alusta. Voit pyytää englanninkielistä palvelua.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus" qtlid="473765">Verkkotunnuksen pätevyyden tarkistaminen</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus_error" qtlid="473778">Tämä on tavallisesti rajoitus, joka ilmoitetaan <strong>.htaccess</strong>-tiedostossasi.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus" qtlid="473791">Vahvista varmenteen allekirjoituspyyntö</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus_error" qtlid="473804">Kutsumme sinut luomaan Comodo-tukihakemuksen.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_in-progress" qtlid="473817">Tätä vaihetta käsitellään.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_non-completed" qtlid="473830">Comodo odottaa tietoja tämän vaiheen suorittamiseksi.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_not-provided" qtlid="473843">Tämän vaiheen käsittely ei ole vielä alkanut.</translation>
+   <translation id="hosting_dashboard_ssl_details_confirm_button" qtlid="4670">Sulje</translation>
+   <translation id="hosting_dashboard_ssl_details_error" qtlid="473856">Virhe noudettaessa SSL-rakennusraporttia.</translation>
+   <translation id="hosting_dashboard_ssl_details_support_1" qtlid="473869">Löydät kaikki tarvittavat tiedot näiden elementtien validoimiseksi tällä linkillä Comodo-dokumentaatioon (englanniksi)&#160;</translation>
+   <translation id="hosting_dashboard_ssl_details_support_2" qtlid="473882">. <br><br>Jos sinulla on kysyttävää SSL EV-sertifikaatin validoinnista, ota yhteyttä Comodoon osoitteessa&#160;</translation>
+   <translation id="hosting_dashboard_ssl_details_support_3" qtlid="473895">, josta ilmenee seuraava tilausnumero <strong>{0}</strong>.</translation>
+   <translation id="hosting_dashboard_ssl_details_support_new_window" qtlid="453228">Tämä linkki avautuu uuteen välilehteen.</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_warning" qtlid="315865">Haluatko varmasti uudelleengeneroida webhotellisi SSL-varmenteen kokonaisuudessaan?</translation>
    <translation id="hosting_dashboard_service_delete_ssl_title" qtlid="299033">SSL-varmenteen poisto</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_title" qtlid="315878">Uudelleengeneroi SSL</translation>
    <translation id="hosting_dashboard_service_delete_ssl_success" qtlid="299046">SSL-varmennne on poistettu webhotellistasi.</translation>
    <translation id="hosting_dashboard_service_delete_ssl_error" qtlid="299059">Tapahtui virhe webhotellin SSL-varmenteen poistossa</translation>
-   <translation id="hosting_change_main_domain_keep_emails" qtlid="286552">Haluan säilyttää nykyiseen verkkotunnukseeni liitetyt sähköpostitilit</translation>
+   <translation id="hosting_change_main_domain_keep_emails" qtlid="286552">Säilytä sähköpostiosoitteet</translation>
    <translation id="hosting_change_main_domain_email_title" qtlid="402789">Webhotelliisi liitetyt sähköpostiosoitteet:</translation>
    <translation id="hosting_change_main_domain_email_deletion_warning" qtlid="402802">Nykyiseen verkkotunnukseesi (<strong>{0}</strong>) sisältyy sähköpostiosoitteita. Pääverkkotunnuksen muuttaminen johtaa näiden osoitteiden poistamiseen.</translation>
    <translation id="hosting_change_main_domain_email_proposal" qtlid="402815">Voit kuitenkin luoda uusia sähköpostiosoitteita webhotelliisi liittyvään tulevaan verkkotunnukseen.</translation>

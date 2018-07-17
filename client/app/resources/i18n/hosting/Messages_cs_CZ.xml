@@ -48,7 +48,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_dashboard_close_service_warning" qtlid="255430">Při vymazání webhostingového účtu dojde ke smazání i všech spjatých dat. Obnovení těchto dat v budoucnosti již nebude možné.</translation>
    <translation id="hosting_dashboard_close_service_desc1" qtlid="351857">Bude Vám zaslán e-mail s postupem pro zrušení Vašeho webhostingu.</translation>
    <translation id="hosting_dashboard_close_service_question" qtlid="351870">Chcete pokračovat?</translation>
-   <translation id="hosting_dashboard_close_service_success" qtlid="255456">Váš požadavek na uzavření webhostingového účtu byl přijat. Obdržíte od nás e-mail s dalšími informacemi.</translation>
+   <translation id="hosting_dashboard_close_service_success" qtlid="255456">Váš požadavek na uzavření webhostingu byl přijat. Obdržíte od nás e-mail s dalšími informacemi.</translation>
    <translation id="hosting_dashboard_close_service_error" qtlid="255469">Váš webhostingový účet nebylo možné uzavřít, kvůli následující chybě:</translation>
 
    <translation id="hosting_dashboard_service_offer" qtlid="38217">Nabídka</translation>
@@ -79,6 +79,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_dashboard_service_offer__90_PLAN" qtlid="196036">90plan</translation>
    <translation id="hosting_dashboard_service_offer_ASPFREE" qtlid="196049">aspfree</translation>
    <translation id="hosting_dashboard_service_offer_BUSINESS" qtlid="314110">business 2010</translation>
+   <translation id="hosting_dashboard_service_offer_CLOUDWEB_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_CLOUDWEBX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_CLOUDWEBBETAX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_DEMO_1_G" qtlid="196075">demo1g</translation>
@@ -176,6 +177,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_dashboard_service_datacenter" qtlid="30802">Datacentrum</translation>
    <translation id="hosting_dashboard_service_datacenter_p19" qtlid="93991">Paříž</translation>
    <translation id="hosting_dashboard_service_datacenter_gra1" qtlid="264192">Gravelines</translation>
+   <translation id="hosting_dashboard_service_default_runtime" qtlid="491951">Výchozí engine</translation>
 
    <translation id="hosting_dashboard_available_space" qtlid="196608">Dostupný prostor</translation>
    <translation id="hosting_tab_DOMAINS_OLD" qtlid="223528">Webové stránky</translation>
@@ -185,6 +187,9 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_DATABASE" qtlid="7702">Databáze</translation>
    <translation id="hosting_tab_STATISTICS" qtlid="26671">Statistiky</translation>
    <translation id="hosting_tab_INDY" qtlid="272396">Nezávislé multidomény</translation>
+   <translation id="hosting_tab_RUNTIMES" qtlid="488991">Runtime Engines</translation>
+   <translation id="hosting_tab_ENVVARS" qtlid="491650">Proměnné prostředí</translation>
+
    <translation id="hosting_tab_GENERAL_INFORMATIONS" qtlid="27115">Základní informace</translation>
    <translation id="hosting_dashboard_ssl_order_not_available" qtlid="217639">Na Vaši platformu nelze objednat SSL certifikát.</translation>
    <translation id="hosting_dashboard_ssl_order_choose_duration" qtlid="217652">Volba období:</translation>
@@ -192,8 +197,8 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_dashboard_ssl_order_success" qtlid="181266">Byla vytvořena objednávka <a href='{0}' target='_blank'>{1}</a>.</translation>
    <translation id="hosting_dashboard_ssl_order_error" qtlid="217678">Při objednávání SSL certifikátu došlo k chybě.</translation>
    <translation id="hosting_dashboard_ssl_order_payable" qtlid="298877">Placený certifikát</translation>
-   <translation id="hosting_dashboard_ssl_order_imported">Certificat importé</translation>
-   <translation id="hosting_dashboard_ssl_order_free" qtlid="298890">Certifikát zdarma (Let's Encrypt)</translation>
+   <translation id="hosting_dashboard_ssl_order_imported" qtlid="473544">Importovaný certifikát</translation>
+   <translation id="hosting_dashboard_ssl_order_free" qtlid="298890">Bezplatný certifikát (Let's Encrypt)</translation>
    <translation id="hosting_dashboard_ssl_order_a_certificate" qtlid="382141">Zakoupit certifikát</translation>
    <translation id="hosting_dashboard_ssl_order_import" qtlid="315735">Import Vašeho certifikátu SSL</translation>
    <translation id="hosting_dashboard_ssl_order_manual_mode" qtlid="298929">Ručně</translation>
@@ -203,9 +208,9 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_dashboard_ssl_order_manual_mode_chain" qtlid="402685">Kopírovat obsah certifikačního řetězce:</translation>
    <translation id="hosting_dashboard_ssl_order_pay" qtlid="402698">Za účelem dokončení objednávky Vašeho SSL certifikátu budete přesměrováni do našeho objednávkového rozhraní.</translation>
    <translation id="hosting_dashboard_ssl_redirect_to_order" qtlid="382154">Vaše objednávka se otevřela v novém okně. Pokud se tak nestalo, <a href="{0}">klikněte prosím zde</a> a pokračujte ve svém nákupu.</translation>
-   <translation id="hosting_dashboard_ssl_redirect_to_order_error">Une erreur est survenue lors de la récupération de l'adresse nécessaire à la génération du bon de commande.</translation>
-   <translation id="hosting_dashboard_ssl_order_preamble">En cliquant sur Valider, vous allez ouvrir un bon de commande dans un nouvel onglet pour votre certificat SSL.</translation>
-   <translation id="hosting_dashboard_ssl_paid_certificate_error">Vous pouvez commander des certificats gratuits ou importer des certificats, mais une erreur vous empêche de commander des certificats payants : {0}.</translation>
+   <translation id="hosting_dashboard_ssl_redirect_to_order_error" qtlid="473557">Při získávání adresy nezbytné pro vytvoření objednávky došlo k chybě.</translation>
+   <translation id="hosting_dashboard_ssl_order_preamble" qtlid="473570">Po kliknutí na tlačítko Schválit se otevře nová záložka s objednávkovým rozhraním certifikátu SSL.</translation>
+   <translation id="hosting_dashboard_ssl_paid_certificate_error" qtlid="473583">Můžete si objednat bezplatné certifikáty nebo importovat vlastní certifikáty, avšak v objednávce placených certifikátů Vám zabrání následující chyba: {0}</translation>
 
    <translation id="hosting_dashboard_cdn_order_not_available" qtlid="217691">Na Vaši platformu nelze objednat CDN.</translation>
    <translation id="hosting_dashboard_cdn_order_choose_duration" qtlid="217652">Volba období:</translation>
@@ -223,7 +228,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_dashboard_service_flush_cdn_doing" qtlid="217795">Probíhá čištění...</translation>
    <translation id="hosting_dashboard_service_terminate_cdn_question" qtlid="301976">Opravdu chcete odstranit službu CDN?</translation>
    <translation id="hosting_dashboard_service_terminate_cdn_title" qtlid="301989">Odstranění služby CDN</translation>
-   <translation id="hosting_dashboard_service_terminate_cdn_success" qtlid="302002">Váš požadavek na odstranění CDN byl přijat. Pošleme Vám e-mail s podrobnými pokyny.</translation>
+   <translation id="hosting_dashboard_service_terminate_cdn_success" qtlid="302002">Váš požadavek na zrušení CDN byl přijat. Obdržíte od nás e-mail s dalšími informacemi.</translation>
    <translation id="hosting_dashboard_service_terminate_cdn_error" qtlid="302015">Během odstraňování CDN došlo k chybě.</translation>
    <translation id="hosting_dashboard_service_ssl_impossible" qtlid="302028">Pokud je aktivní CDN, nelze objednat certifikát SSL.</translation>
 
@@ -240,7 +245,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_CRON_guide_help" qtlid="271504">Potřebujete pomoci s konfigurací naplánovaných úkolů?</translation>
    <translation id="hosting_guide_help" qtlid="156732">Podívejte se na naše příručky.</translation>
    <translation id="hosting_tab_CRON_table_empty" qtlid="200274">Seznam je prázdný.</translation>
-   <translation id="hosting_tab_CRON_table_header_email" qtlid="33598">E-mail</translation>
+   <translation id="hosting_tab_CRON_table_header_email" qtlid="33598">E-mailová adresa</translation>
    <translation id="hosting_tab_CRON_table_header_status" qtlid="33790">Stav</translation>
    <translation id="hosting_tab_CRON_table_header_language" qtlid="145644">Jazyk</translation>
    <translation id="hosting_tab_CRON_table_header_frequency" qtlid="30442">Frekvence</translation>
@@ -282,6 +287,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_configuration_order_ssl" qtlid="196803">Objednat SSL certifikát</translation>
    <translation id="hosting_tab_DOMAINS_table_header_domain" qtlid="8458">Doména</translation>
    <translation id="hosting_tab_DOMAINS_table_header_home" qtlid="196816">Root adresář</translation>
+   <translation id="hosting_tab_DOMAINS_table_header_runtime" qtlid="488107">Runtime Engine</translation>
    <translation id="hosting_tab_DOMAINS_table_header_cdn" qtlid="99812">CDN</translation>
    <translation id="hosting_tab_DOMAINS_table_header_firewall" qtlid="141418">Firewall</translation>
    <translation id="hosting_tab_DOMAINS_table_header_ownlog" qtlid="62172">Oddělené logy</translation>
@@ -293,23 +299,23 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_DOMAINS_table_ssl_state_2" qtlid="30250">Aktivní</translation>
    <translation id="hosting_tab_DOMAINS_table_ssl_state_0" qtlid="24967">Neaktivní</translation>
    <translation id="hosting_tab_DOMAINS_table_ssl_state_1" qtlid="315761">K vygenerování</translation>
-   <translation id="hosting_tab_DOMAINS_table_ssl_state_1_tooltip" qtlid="315774">Aby změny nabyly účinnosti, musíte svůj certifikát znovu vygenerovat.</translation>
+   <translation id="hosting_tab_DOMAINS_table_ssl_state_1_tooltip" qtlid="315774">Aby změny nabyly účinnosti, musíte svůj certifikát obnovit.</translation>
    <translation id="hosting_tab_DOMAINS_table_firewall_state_ACTIVE" qtlid="30250">Aktivní</translation>
    <translation id="hosting_tab_DOMAINS_table_firewall_state_NONE" qtlid="24967">Neaktivní</translation>
    <translation id="hosting_tab_DOMAINS_table_empty" qtlid="196829">Nemáte žádnou doménu, která by byla spjata s Vaším hostingovým systémem</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_delete" qtlid="2414">Odstranit</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_modify" qtlid="37875">Upravit</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_refresh" qtlid="158708">Načíst</translation>
-   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Vyhledávání...</translation>
+   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="491964">Vyhledávání...</translation>
 
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation" qtlid="255976">Generovat odkaz</translation>
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="444417">Při generování odkazu pro přístup k logům došlo k chybě.</translation>
    <translation id="hosting_tab_DOMAINS_multisite_logs_link" qtlid="296700">Přístup k logům</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_attachDomain_title_button" qtlid="226969">Přidat doménu či subdoménu</translation>
-   <translation id="hosting_ssl_regenerate_title_button" qtlid="315787">Znovu vygenerovat certifikát SSL</translation>
-   <translation id="hosting_ssl_regenerate_info" qtlid="315800">Změny týkající se povolení nebo zakázání SSL na Vašem multisite začnou platit po vygenerování SSL certifikátu.</translation>
-   <translation id="hosting_ssl_regenerate_info_warning">Si vous avez ajouté des hébergements multisites il y a moins de deux heures, il est possible qu'ils ne soient pas inclus dans votre certificat SSL.</translation>
+   <translation id="hosting_ssl_regenerate_title_button" qtlid="315787">Obnovit certifikát SSL</translation>
+   <translation id="hosting_ssl_regenerate_info" qtlid="315800">Změny týkající se povolení nebo zakázání SSL na Vašem multisite vstoupí v platnost po obnovení SSL certifikátu.</translation>
+   <translation id="hosting_ssl_regenerate_info_warning" qtlid="473596">Pokud jste připojili multisite hosting před méně než dvěma hodinami, je možné, že nebude ve Vašem SSL certifikátu zahrnut.</translation>
    <translation id="hosting_ssl_limit_characters_info_warning" qtlid="402711">Bezplatná certifikace není k dispozici pro domény, jejichž název obsahuje více než {0} znaků.</translation>
 
    <translation id="hosting_tab_DATABASES_change_offer" qtlid="327302">Přechod na placený webhostingový balíček před vytvořením databáze. Nabídku lze změnit rychle a bez přerušení služby kliknutím na tlačítko</translation>
@@ -347,10 +353,13 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_DATABASES_configuration_quota_warning_message" qtlid="261452">Pokud překročíte přidělené diskové místo, Vaše práva budou omezena pouze na čtení.</translation>
    <translation id="hosting_tab_DATABASES_configuration_quota_warning_resolution" qtlid="261465">Chcete-li se vyhnout tomuto prostorovému omezení, doporučujeme zmenšit objem dat na doporučenou velikost. Vaše databáze bude automaticky odemčena během několika minut.</translation>
 
+   <translation id="hosting_tab_databases_get_error" qtlid="488120">Při načítání Vašich databází došlo k chybě.</translation>
+   <translation id="hosting_tab_databases_dumps_error_fetch" qtlid="488133">Při načítání Vašich záloh došlo k chybě.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_title_button" qtlid="7618">Vytvoření databáze</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_title" qtlid="7618">Vytvoření databáze</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MYSQL" qtlid="196894">MySQL</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_POSTGRESQL" qtlid="196907">PostgreSQL</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MONGODB" qtlid="444706">MongoDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_loading_error" qtlid="168120">Během načítání informací nastala chyba.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_question" qtlid="196920">Chystáte se vytvořit databázi</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_no_db_left" qtlid="196933">Nemáte žádné dostupné databáze.</translation>
@@ -359,7 +368,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type" qtlid="196959">Zvolte typ databáze:</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PERSO" qtlid="196972">SQL Personal {0} {1}: {2} zbývá</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PRO" qtlid="196985">SQL Professional {0} {1}: {2} zbývá</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="491977">Uloženo na Vaší instanci Cloud Web</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_EXTRA_SQL_PERSO" qtlid="196998">Extra SQL Personal {0} {1}: {2} zbývá</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_PRIVATE_SQL" qtlid="261734">Privátní SQL {0} {1} : {2} zbývá</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step2_password_question" qtlid="197011">Zvolte si uživatelské jméno pro databázi a k němu přiřazené heslo</translation>
@@ -376,7 +385,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PERSO" qtlid="197128">SQL Personal {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PRO" qtlid="197141">SQL Professional {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_EXTRA_SQL_PERSO" qtlid="197154">Extra SQL Personal {0} {1}</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="491977">Uloženo na Vaší instanci Cloud Web</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_fail" qtlid="197167">Během požadavku o vytvoření databáze došlo k chybě.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_success" qtlid="197180">Databáze bude vytvořena.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_bdd_adding" qtlid="453189">Probíhá připojování databáze.</translation>
@@ -405,7 +414,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step1_date" qtlid="363583">Zvolte datum pro požadovanou zálohu:</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step2_question" qtlid="413167">Přejete si vytvořit zálohu své databáze {0} s následujícími parametry?</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step2_date" qtlid="66308">Datum:</translation>
-   <translation id="hosting_tab_DATABASES_configuration_dump_step2_information" qtlid="274974">Záloha Vám přijde na e-mail jen několik minut po požadavku na její vytvoření.</translation>
+   <translation id="hosting_tab_DATABASES_configuration_dump_step2_information" qtlid="274974">Zálohu obdržíte na e-mail jen několik minut po požadavku na její vytvoření.</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_fail" qtlid="274987">Během požadavku na vytvoření zálohy databáze {0} došlo k chybě.</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_success" qtlid="275000">Bude vytvořena záloha databáze.</translation>
 
@@ -416,6 +425,11 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="database_tabs_dumps_delete_success" qtlid="290264">Záloha byla odstraněna.</translation>
    <translation id="database_tabs_dumps_delete_fail" qtlid="290277">Během odstraňování zálohy došlo k chybě:</translation>
 
+   <translation id="database_tabs_dumps_status" qtlid="26443">Stav</translation>
+   <translation id="database_tabs_dumps_status_created" qtlid="264862">Hotovo</translation>
+   <translation id="database_tabs_dumps_status_creating" qtlid="488146">Vytváření dumpu</translation>
+   <translation id="database_tabs_dumps_status_updating" qtlid="488159">Modifikace dumpu</translation>
+   <translation id="database_tabs_dumps_status_deleting" qtlid="488172">Odstraňování dumpu</translation>
 
    <translation id="hosting_tab_DATABASES_configuration_update_password_title" qtlid="80394">Změna hesla</translation>
    <translation id="hosting_tab_DATABASES_configuration_update_password_question" qtlid="413180">Chystáte se změnit heslo pro databázi: {0}&#13;
@@ -488,6 +502,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_domain_name" qtlid="140638">Doména</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_domain_name_www_question" qtlid="197557">Také změnit subdoménu {0}</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_home" qtlid="196816">Root adresář</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_step1_runtime" qtlid="488107">Runtime Engine</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_cdn" qtlid="232466">Aktivovat CDN</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step2_summary" qtlid="197570">Opravdu chcete provést tyto úpravy na následujících doménách?</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step2_domain_name" qtlid="140638">Doména</translation>
@@ -592,6 +607,101 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_type" qtlid="2642">Typ</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_target" qtlid="47644">Cíl</translation>
 
+   <translation id="hosting_tab_RUNTIMES_guide_help" qtlid="488185">Potřebujete pomoc s aktualizací své konfigurace?</translation>
+   <translation id="hosting_tab_RUNTIMES_table_empty" qtlid="488198">Seznam konfigurací je prázdný.</translation>
+   <translation id="hosting_tab_RUNTIMES_runtimes_table_empty" qtlid="488211">Seznam Runtime enginů je prázdný.</translation>
+   <translation id="hosting_tab_RUNTIMES_envvars_table_empty" qtlid="488224">Seznam proměnných prostředí je prázdný.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_table_status_created" qtlid="55133">Aktivní</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_creating" qtlid="146632">Vytváření...</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_updating" qtlid="124303">Provádí se změna</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_deleting" qtlid="146645">Odstraňování...</translation>
+
+   <translation id="hosting_tab_RUNTIMES_list_error" qtlid="488237">Při načítání dat Runtime enginů došlo k chybě:</translation>
+   <translation id="hosting_tab_ENVVARS_list_error_temporary" qtlid="488250">Při načítání informací o proměnných prostředí došlo k dočasné chybě. Zkuste to prosím později.</translation>
+   <translation id="hosting_tab_ENVVARS_list_error" qtlid="488263">Při načítání informací o proměnných prostředí došlo k chybě:</translation>
+
+   <translation id="hosting_tab_RUNTIMES_list" qtlid="488276">Seznam dostupných Runtime enginů&#13;
+</translation>
+   <translation id="hosting_tab_ENVVARS_list" qtlid="488289">Seznam aktivních proměnných prostředí</translation>
+
+   <translation id="hosting_tab_RUNTIMES_add" qtlid="488302">Přidat Runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_quota_reached" qtlid="488315">Bylo dosaženo maximálního počtu Runtime enginů</translation>
+   <translation id="hosting_tab_ENVVARS_add" qtlid="488328">Připojit proměnnou prostředí</translation>
+   <translation id="hosting_tab_ENVVARS_quota_reached" qtlid="488341">Bylo dosaženo maximálního počtu proměnných prostředí</translation>
+
+   <translation id="hosting_tab_RUNTIMES_error" qtlid="243832">Při získávání detailů došlo k chybě:</translation>
+   <translation id="hosting_tab_RUNTIMES_empty" qtlid="488354">Seznam konfigurace je prázdný.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_actions" qtlid="72809">Akce</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_name" qtlid="488367">Název konfigurace</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_language" qtlid="488107">Runtime Engine</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_default" qtlid="488380">Výchozí volba</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_number_multisite" qtlid="488393">Počet připojených multisite</translation>
+
+   <translation id="hosting_tab_RUNTIMES_table_popover_modify" qtlid="37875">Upravit</translation>
+   <translation id="hosting_tab_RUNTIMES_table_popover_delete" qtlid="2414">Odstranit</translation>
+
+   <translation id="hosting_tab_RUNTIMES_create_title" qtlid="488302">Přidat Runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_title" qtlid="488406">Upravit Runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_title" qtlid="488419">Odstranit Runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_step1_question" qtlid="488432">Opravdu si přejete odstranit tento Runtime engine?</translation>
+
+   <translation id="hosting_tab_RUNTIMES_save_success" qtlid="488445">Nový Runtime engine bude dostupný za několik minut.</translation>
+   <translation id="hosting_tab_RUNTIMES_save_error" qtlid="488458">Při vytváření Runtime enginu došlo k chybě:</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_success" qtlid="488471">Probíhá modifikace Runtime enginu.</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_error" qtlid="488484">Při modifikaci Runtime enginu došlo k chybě:</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_success" qtlid="488497">Probíhá odstraňování Runtime enginu.</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_error" qtlid="488510">Při odstraňování Runtime enginu došlo k chybě:</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_information" qtlid="488523">Pozor, tato akce je nevratná a bude mít za následek ztrátu všech dat.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_label_name" qtlid="415727">Vlastní název</translation>
+   <translation id="hosting_tab_RUNTIMES_label_type" qtlid="488107">Runtime Engine</translation>
+   <translation id="hosting_tab_RUNTIMES_label_publicDir" qtlid="488536">Cesta do veřejného adresáře</translation>
+   <translation id="hosting_tab_RUNTIMES_label_appEnv" qtlid="488549">Aplikační prostředí</translation>
+   <translation id="hosting_tab_RUNTIMES_label_appBootstrap" qtlid="488562">Spouštěcí skript aplikace</translation>
+
+   <translation id="hosting_tab_RUNTIMES_publicDir_help" qtlid="488575">Zadejte přístupovou cestu k veřejnému adresáři, nezbytnému pro spuštění Vašeho serveru Node.js.</translation>
+   <translation id="hosting_tab_RUNTIMES_appEnv_help" qtlid="488588">Zadejte prostředí, v němž se má aplikace Node.js spustit (produkce, vývoj, test apod.).</translation>
+   <translation id="hosting_tab_RUNTIMES_appBootstrap_help" qtlid="488601">Zadejte název skriptu sloužícího ke spuštění binárního souboru Node.js.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_configure_envvar" qtlid="488614">Konfigurace proměnných prostředí</translation>
+
+   <translation id="hosting_tab_ENVVARS_actions" qtlid="72809">Akce</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_key" qtlid="488627">Název proměnné</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_type" qtlid="488640">Typ proměnné</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_value" qtlid="47548">Hodnota</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_status" qtlid="33790">Stav</translation>
+
+   <translation id="hosting_tab_ENVVARS_table_popover_modify" qtlid="37875">Upravit</translation>
+   <translation id="hosting_tab_ENVVARS_table_popover_delete" qtlid="2414">Odstranit</translation>
+   <translation id="hosting_tab_RUNTIMES_table_popover_set_default" qtlid="488380">Výchozí volba</translation>
+
+   <translation id="hosting_tab_ENVVARS_create_title" qtlid="488328">Připojit proměnnou prostředí</translation>
+   <translation id="hosting_tab_ENVVARS_edit_title" qtlid="488653">Upravit proměnnou prostředí</translation>
+   <translation id="hosting_tab_ENVVARS_delete_title" qtlid="488666">Odstranit proměnnou prostředí</translation>
+   <translation id="hosting_tab_ENVVARS_delete_step1_question" qtlid="488679">Opravdu si přejete odstranit tuto proměnnou prostředí?</translation>
+   <translation id="hosting_tab_ENVVARS_delete_information" qtlid="488523">Pozor, tato akce je nevratná a bude mít za následek ztrátu všech dat.</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_title" qtlid="488692">Nastavit výchozí Runtime engine</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_step1_question" qtlid="488705">Opravdu si přejete nastavit tento Runtime engine jako výchozí?</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_information" qtlid="488718">Upozornění: všechny multisite budou implicitně vytvářeny v tomto enginu. Toto nastavení budete moci kdykoli změnit.</translation>
+
+   <translation id="hosting_tab_ENVVARS_save_success" qtlid="488731">Nová proměnná prostředí bude k dispozici v rámci několika minut.</translation>
+   <translation id="hosting_tab_ENVVARS_save_error" qtlid="488744">Při vytváření proměnné prostředí došlo k chybě:</translation>
+   <translation id="hosting_tab_ENVVARS_edit_success" qtlid="488757">Probíhá modifikace proměnné prostředí.</translation>
+   <translation id="hosting_tab_ENVVARS_edit_error" qtlid="488770">Při modifikaci proměnné prostředí došlo k chybě:</translation>
+   <translation id="hosting_tab_ENVVARS_delete_success" qtlid="488783">Proměnná prostředí bude odstraněna.</translation>
+   <translation id="hosting_tab_ENVVARS_delete_error" qtlid="488796">Při odstraňování proměnné prostředí došlo k chybě:</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_success" qtlid="488809">Tento Runtime engine bude k dispozici v rámci několika minut.</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_error" qtlid="488822">Při nastavování výchozího Runtime enginu došlo k chybě:</translation>
+
+   <translation id="hosting_tab_ENVVARS_label_key" qtlid="3818">Název</translation>
+   <translation id="hosting_tab_ENVVARS_label_error_required" qtlid="459430">Povinné pole.</translation>
+   <translation id="hosting_tab_ENVVARS_label_error_pattern" qtlid="488835">Název proměnné nesmí obsahovat mezery.</translation>
+   <translation id="hosting_tab_ENVVARS_label_type" qtlid="488640">Typ proměnné</translation>
+   <translation id="hosting_tab_ENVVARS_label_value" qtlid="47548">Hodnota</translation>
+
+
    <translation id="hosting_tab_TASK" qtlid="201172">Probíhající úkoly</translation>
    <translation id="hosting_tab_TASKS_table_empty" qtlid="144058">Nemáte žádné úkoly</translation>
    <translation id="hosting_tab_TASKS_table_function" qtlid="61872">Úkol</translation>
@@ -690,10 +800,14 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_FTP_dashboard_information" qtlid="198584">Tato nastavení umožňují spustit Vaše stránky online</translation>
    <translation id="hosting_tab_FTP_dashboard_server" qtlid="198597">FTP server:</translation>
    <translation id="hosting_tab_FTP_dashboard_login" qtlid="198610">Hlavní login:</translation>
+   <translation id="hosting_tab_FTP_dashboard_primary_ftp_login" qtlid="488848">Primární FTP login:</translation>
+   <translation id="hosting_tab_FTP_dashboard_primary_ssh_login" qtlid="488861">Primární SSH login:</translation>
    <translation id="hosting_tab_FTP_dashboard_login_enabled" qtlid="198623">Hlavní login aktivovaný:</translation>
    <translation id="hosting_tab_FTP_dashboard_homez" qtlid="271621">Cesta k domovské složce:</translation>
    <translation id="hosting_tab_FTP_dashboard_clusterip" qtlid="198636">IP adresa clusteru:</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_login" qtlid="41062">Uživatelské jméno</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_ftp_login" qtlid="488874">FTP login</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_ssh_login" qtlid="488887">SSH login</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_home" qtlid="198649">Cílový adresář</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_iisRemoteRights" qtlid="198662">iisRemoteRights</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_state" qtlid="369025">Stav</translation>
@@ -730,6 +844,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_FTP_configuration_explorer_disabled" qtlid="250043">Již brzy</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_title" qtlid="198766">Změnit mé heslo</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_title_button" qtlid="198766">Změnit mé heslo</translation>
+
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_title" qtlid="215442">Obnovení zálohy</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_title_button" qtlid="215442">Obnovení zálohy</translation>
    <translation id="hosting_tab_FTP_configuration_restore_password_step1_question" qtlid="215455">Chystáte se obnovit zálohu Vašeho FTP prostoru</translation>
@@ -743,6 +858,20 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_step2_alert_question" qtlid="351883">Chcete pokračovat?</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_success" qtlid="215546">Obnovuje se snapshot</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_error" qtlid="215559">Při obnovování Vašeho prostoru došlo k chybě:</translation>
+
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_title" qtlid="488900">Vytvořit zálohu</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_title_button" qtlid="488900">Vytvořit zálohu</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_password_step1_question" qtlid="488913">Chystáte se vytvořit zálohu svého FTP prostoru</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_snapshot_instance" qtlid="488926">Instance pro vygenerování:</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_1" qtlid="215481">Obnovení zálohy z předchozího dne</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_2" qtlid="215494">Obnovení zálohy z doby 2 dny zpátky</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_3" qtlid="215507">Obnovení zálohy z doby 3 dny zpátky</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_weekly_1" qtlid="70217">1 týden</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert" qtlid="488939">Upozornění: záloha Vám bude zaslána e-mailem a nebude automaticky obnovena ve Vašem FTP prostoru.</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert_question" qtlid="352009">Chcete pokračovat?</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_success" qtlid="488952">Probíhá vytváření zálohy.</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_error" qtlid="488965">Při vytváření zálohy došlo k chybě:</translation>
+
    <translation id="hosting_tab_FTP_configuration_change_password_step1_question" qtlid="413206">Chystáte se změnit heslo pro uživatele: {0}&#13;
 </translation>
    <translation id="hosting_tab_FTP_configuration_change_password_step1_password" qtlid="17177">Nové heslo</translation>
@@ -810,10 +939,10 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_intro" qtlid="211971">Přídavné informace</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_name" qtlid="211984">Jméno administrátora:</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_mail" qtlid="215130">E-mail administrátora:</translation>
-   <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_email" qtlid="211997">E-mail administrátora:</translation>
+   <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_email" qtlid="211997">E-mailová adresa administrátora:</translation>
    <translation id="hosting_configuration_tab_modules_create_step2_db_admin_error" qtlid="212010">Neplatný název uživatele. Jsou povoleny alfanumerické znaky a , -, _, @</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_info_admin_error" qtlid="212023">Neplatný název uživatele. Jsou povoleny alfanumerické znaky a -, _,</translation>
-   <translation id="hosting_configuration_tab_modules_create_step3_infos_email_admin_error" qtlid="212036">Neplatný e-mail</translation>
+   <translation id="hosting_configuration_tab_modules_create_step3_infos_email_admin_error" qtlid="488978">Neplatná e-mailová adresa</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_password" qtlid="91129">Heslo:</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_password_confirm" qtlid="197063">Potvrzení:</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_password_error" qtlid="197076">Zadaná hesla nejsou totožná.</translation>
@@ -1153,9 +1282,9 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_BOOST_disable_error" qtlid="227559">Při deaktivaci dočasného upgrade došlo k chybě.</translation>
 
    <translation id="hosting_tab_AUTOMATED_EMAILS" qtlid="267536">E-mailové skripty</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_guide_help" qtlid="271530">Potřebujete pomoci s e-maily, odeslanými pomocí skriptů?</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_desc" qtlid="270319">E-maily odeslané ze skriptů CGI/PERL/PHP.</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_info" qtlid="254414">Tato stránka zobrazuje pouze e-maily poslané pomocí CGI/PERL/PHP skriptů.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_guide_help" qtlid="271530">Potřebujete pomoc s e-maily odesílanými pomocí skriptů?</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_desc" qtlid="270319">E-maily odesílané pomocí skriptů CGI/PERL/PHP.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_info" qtlid="254414">Tato stránka zobrazuje pouze e-maily odesílané pomocí skriptů CGI/PERL/PHP.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_status" qtlid="254427">Stav služby:</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_status_ok" qtlid="65490">aktivní</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_status_ko" qtlid="65694">Neaktivní</translation>
@@ -1173,31 +1302,31 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_purge_info" qtlid="254583">Nejdříve potřebujete blokovat odesílání e-mailů, nežli je budete moci vyčistit.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_total_bounce" qtlid="254596">Celkový počet neodeslaných e-mailů:</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_error" qtlid="243832">Při získávání detailů došlo k chybě:</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_block_title" qtlid="254609">Blokace posílání e-mailů</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_unblock_title" qtlid="254622">Odblokování posílání e-mailů</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_block_title" qtlid="254609">Blokace odesílání e-mailů</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_unblock_title" qtlid="254622">Odblokování odesílání e-mailů</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_purge_title" qtlid="254544">Vyčistit e-maily</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_block_question" qtlid="254635">Chystáte se zablokovat distribuci e-mailů posílaných z Vašeho webhostingového účtu. E-maily budou zařazeny do fronty na dobu 72 hodin, ale žádný z nich nebude vymazán. Během této doby budete moci odblokovat jejich posílání, nebo je pročistit.</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_purge_question" qtlid="254648">Chystáte se vymazat frontu e-mailů na Vašem účtu. Poté bude Váš účet automaticky odblokován. Tato operace bude trvat mezi 5 a 10 minutami.</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_unblock_question" qtlid="254661">Chystáte se odblokovat distribuci e-mail odeslaných z Vašeho webhostingového účtu. Budete mít možnost poslat další e-maily. Blokované e-maily budou odeslány.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_block_question" qtlid="254635">Chystáte se zablokovat distribuci e-mailů odesílaných z Vašeho webhostingového účtu. E-maily budou zařazeny do fronty na dobu 72 hodin, ale žádný z nich nebude vymazán. Během této doby budete moci odblokovat jejich odesílání, nebo je pročistit.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_purge_question" qtlid="254648">Chystáte se vymazat frontu e-mailů na Vašem účtu. Poté bude Váš účet automaticky odblokován. Tato operace bude trvat 5 až 10 minut.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_unblock_question" qtlid="254661">Chystáte se odblokovat distribuci e-mailů odesílaných z Vašeho webhostingového účtu. Budete mít možnost posílat další e-maily. Blokované e-maily budou odeslány.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_request_success" qtlid="254674">Váš požadavek byl odeslán.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_request_error" qtlid="254687">Chyba. Není možné poslat požadavek:</translation>
 
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_title" qtlid="254700">Příjemce hlásí chybu</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_info" qtlid="254713">Zadejte e-mailovou adresu, na kterou chcete dostávat chybová hlášení. Jestliže dojde k chybě při posílání e-mailu z Vašeho webhostingového účtu, dostanete e-mail následující den.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_info" qtlid="254713">Zadejte e-mailovou adresu, na níž si přejete dostávat chybová hlášení. Jestliže při odesílání e-mailu z Vašeho webhostingového účtu dojde k chybě, obdržíte následující den hlášení.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email" qtlid="254726">E-mailová adresa:</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_success" qtlid="254739">Došlo ke změně e-mailové adresy pro zasílání chybových hlášení.</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_error" qtlid="254752">Chyba: není možné změnit e-mailovou adresu, na kterou budou posílány chybová hlášení</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_required" qtlid="254765">Musíte zadat e-mailovou adresu</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_invalid" qtlid="254778">E-mailová adresa není platná.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_success" qtlid="254739">E-mailová adresa pro zasílání chybových hlášení byla úspěšně změněna.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_error" qtlid="254752">Při změně e-mailové adresy pro zasílání chybových hlášení došlo k chybě:</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_required" qtlid="254765">Zadejte e-mailovou adresu.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_invalid" qtlid="254778">Neplatná e-mailová adresa.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_volume" qtlid="267549">Historie odeslaných e-mailů</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_emails_sent" qtlid="267562">Odeslané e-maily</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_volume_limit" qtlid="267575">Počet e-mailů (max. 100):</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_volume_history" qtlid="267588">Problémy s e-maily</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_bounces_empty" qtlid="267601">Žádný problém s e-mailem</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_bounces_date" qtlid="24523">Datum</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_bounces_to" qtlid="33598">E-mail</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_bounces_to" qtlid="33598">E-mailová adresa</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_bounces_message" qtlid="30574">Zpráva</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_volume_count" qtlid="267614">Odeslaných e-mailů</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_volume_count" qtlid="267614">Počet odeslaných e-mailů</translation>
    <translation id="hosting_global_php_version" qtlid="267627">Verze globálního PHP</translation>
    <translation id="hosting_global_php_version_edit" qtlid="267640">Upravit konfiguraci</translation>
    <translation id="hosting_action_config_edit_init_error" qtlid="267653">Nelze stáhnout všechny informace k Vaší konfiguraci. Zkuste to prosím později.</translation>
@@ -1298,7 +1427,7 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_success" qtlid="268549">Uživatel byl upraven.</translation>
 
    <translation id="hosting_tab_menu_crons" qtlid="270332">Naplánované úlohy - Cron</translation>
-   <translation id="hosting_tab_menu_emails" qtlid="270345">Správa e-mailů a mailing-listů</translation>
+   <translation id="hosting_tab_menu_emails" qtlid="489004">E-maily a mailing listy</translation>
    <translation id="hosting_tab_menu_contacts" qtlid="270358">Administrativní, technický a fakturační</translation>
    <translation id="hosting_tab_menu_resiliate" qtlid="351896">Zrušit webhosting</translation>
    <translation id="hosting_tab_menu_resiliate_infos" qtlid="270384">Zrušení služby ke dni expirace.</translation>
@@ -1366,52 +1495,50 @@ Dále je zakázáno přistupovat k nadřazené složce pomocí ..</translation>
    <translation id="hosting_change_main_domain_help_ssl_title" qtlid="84921">SSL</translation>
    <translation id="hosting_change_main_domain_help_ssl_desc" qtlid="286539">Změna hlavní domény nezajistí převod SSL certifikátu na novou hlavní doménu. Toto je třeba provést zvlášť - objednávkou a zaplacením za nový SSL certifikát</translation>
    <translation id="hosting_dashboard_ssl_generate_success" qtlid="298968">Probíhá aktivace SSL Vašeho webhostingu.</translation>
-   <translation id="hosting_dashboard_ssl_report_button">État de la progression</translation>
-   <translation id="hosting_dashboard_service_ssl_creating">En cours de création</translation>
-   <translation id="hosting_dashboard_service_ssl_regenerating">En cours de régénération</translation>
-   <translation id="hosting_dashboard_service_ssl_deleting">En cours de suppression</translation>
-   <translation id="hosting_dashboard_service_ssl_importing">En cours d'import</translation>
+   <translation id="hosting_dashboard_ssl_report_button" qtlid="473609">Stav</translation>
+   <translation id="hosting_dashboard_service_ssl_creating" qtlid="29647">Probíhá vytváření</translation>
+   <translation id="hosting_dashboard_service_ssl_regenerating" qtlid="473622">Probíhá obnovení</translation>
+   <translation id="hosting_dashboard_service_ssl_deleting" qtlid="152778">Mazáni</translation>
+   <translation id="hosting_dashboard_service_ssl_importing" qtlid="473635">Probíhá import</translation>
    <translation id="hosting_dashboard_service_order_ssl_delete" qtlid="299007">Odstranit SSL</translation>
-   <translation id="hosting_dashboard_service_delete_ssl_warning" qtlid="299020">Opravdu chcete odstranit SSL na svém webhostingu?</translation>
-   <translation id="hosting_dashboard_service_delete_ssl_warning_payable" qtlid="363479">Opravdu si přejete smazat zakoupený certifikát? Tento certifikát již nebude možné obnovit. V případě potřeby bude nutné zakoupit zcela nový certifikát.</translation>
-   <translation id="hosting_dashboard_ssl_details_title">Progression de la validation du certificat SSL</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus">Vérification des conditions d’utilisation</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus_error">La vérification des conditions d’utilisation de Comodo n’a pas pu être effectuée.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus">Vérification du nom de marque</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus_error">La vérification du nom de marque par une agence d’enregistrement n’a pas pu être effectuée.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_phoneCallApprovalStatus">Vérification téléphonique auprès du contact enregistré</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus">Vérification du statut légal</translation>
-<translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus_error">Durant le processus de validation de votre certificat SSL, il est nécessaire de contacter Comodo à ce numéro&#160;<strong>{0}</strong>.
-<br/>
-<br/>Notez qu’il s’agit d’une plateforme néerlandaise. Il vous suffira de demander un interlocuteur francophone.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus">Vérification de la validité du domaine</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus_error">Il s’agit généralement d’une restriction indiquée dans votre fichier <strong>.htaccess</strong>.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus">Vérification de la demande de signature de certificat</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus_error">Nous vous invitons à créer une demande d'assistance auprès de Comodo.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_in-progress">Cette étape est en cours de traitement.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_non-completed">Comodo est en attente d'informations pour compléter cette étape.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_not-provided">Le traitement de cette étape n'a pas encore commencé.</translation>
-   <translation id="hosting_dashboard_ssl_details_confirm_button">Fermer</translation>
-   <translation id="hosting_dashboard_ssl_details_error">Une erreur est survenue lors de la récupération du rapport de génération SSL.</translation>
-   <translation id="hosting_dashboard_ssl_details_support_1">Vous pourrez trouver toutes les informations nécessaires à la validation de ces différents éléments sur ce lien menant à la documentation (en anglais) de Comodo&#160;</translation>
-   <translation id="hosting_dashboard_ssl_details_support_2">.<br><br>Pour toute question relative à la validation de votre certificat SSL EV, nous vous invitons à contacter Comodo à l’adresse&#160;</translation>
-   <translation id="hosting_dashboard_ssl_details_support_3">, en précisant le numéro de commande suivant <strong>{0}</strong>.</translation>
-   <translation id="hosting_dashboard_ssl_details_support_new_window">Ce lien va s'ouvrir dans un nouvel onglet</translation>
-   <translation id="hosting_dashboard_service_regenerate_ssl_warning" qtlid="315865">Opravdu chcete znovu vygenerovat SSL certifikát pro svůj webhostingový balíček?</translation>
+   <translation id="hosting_dashboard_service_delete_ssl_warning" qtlid="299020">Opravdu si přejete odstranit SSL ze svého webhostingu?</translation>
+   <translation id="hosting_dashboard_service_delete_ssl_warning_payable" qtlid="363479">Opravdu si přejete odstranit zakoupený certifikát? Tento certifikát již nebude možné obnovit. V případě potřeby bude nutné zakoupit zcela nový certifikát.</translation>
+   <translation id="hosting_dashboard_ssl_details_title" qtlid="473648">Pokrok v ověření certifikátu SSL</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus" qtlid="473661">Ověření podmínek použití</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus_error" qtlid="473674">Ověření podmínek použití společnosti Comodo se nepodařilo provést.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus" qtlid="473687">Ověření názvu značky</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus_error" qtlid="473700">Ověření názvu značky registrační autoritou se nepodařilo provést.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_phoneCallApprovalStatus" qtlid="473713">Ověření telefonu u registrovaného kontaktu</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus" qtlid="473726">Ověření právního statusu</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus_error" qtlid="484513">Během procesu ověřování certifikátu SSL je nutné kontaktovat certifikační autoritu Comodo na následujícím telefonním čísle: <strong> +31 88 775 7777 </strong>. Všimněte si, že jde o holandskou platformu. Můžete si vyžádat anglicky mluvící kontakt.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus" qtlid="473765">Ověření platnosti domény</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus_error" qtlid="473778">Obvykle se jedná o omezení v souboru <strong>.htaccess</strong>.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus" qtlid="473791">Ověření požadavku na podepsání certifikátu</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus_error" qtlid="473804">Vytvořte prosím požadavek na podporu adresovaný certifikační autoritě Comodo.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_in-progress" qtlid="473817">Tento krok se zpracovává.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_non-completed" qtlid="473830">Comodo čeká na dokončení tohoto kroku.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_not-provided" qtlid="473843">Zpracování tohoto kroku ještě nezačalo.</translation>
+   <translation id="hosting_dashboard_ssl_details_confirm_button" qtlid="4670">Zavřít</translation>
+   <translation id="hosting_dashboard_ssl_details_error" qtlid="473856">Při získávání hlášení o vygenerování SSL došlo k chybě.</translation>
+   <translation id="hosting_dashboard_ssl_details_support_1" qtlid="473869">Veškeré informace potřebné pro úspěšně dokončení těchto kroků naleznete v oficiální dokumentaci certifikační autority Comodo (EN)&#160;</translation>
+   <translation id="hosting_dashboard_ssl_details_support_2" qtlid="473882">.<br><br>V případě jakýchkoli dotazů ohledně ověřovacího procesu Vašeho certifikátu SSL EV kontaktujte prosím certifikační autoritu Comodo na následující adrese: &#160;</translation>
+   <translation id="hosting_dashboard_ssl_details_support_3" qtlid="473895">. K dotazu připojte následující číslo objednávky: <strong>{0}</strong>.</translation>
+   <translation id="hosting_dashboard_ssl_details_support_new_window" qtlid="453228">Odkaz se otevře v novém okně</translation>
+   <translation id="hosting_dashboard_service_regenerate_ssl_warning" qtlid="315865">Opravdu si přejete obnovit SSL certifikát pro svůj webhosting?</translation>
    <translation id="hosting_dashboard_service_delete_ssl_title" qtlid="299033">Odstranění SSL</translation>
-   <translation id="hosting_dashboard_service_regenerate_ssl_title" qtlid="315878">Vytvoření SSL</translation>
-   <translation id="hosting_dashboard_service_delete_ssl_success" qtlid="299046">Probíhá odstranění SSL na Vašem webhostingu...</translation>
+   <translation id="hosting_dashboard_service_regenerate_ssl_title" qtlid="315878">Obnovení SSL</translation>
+   <translation id="hosting_dashboard_service_delete_ssl_success" qtlid="299046">Požadavek na odstranění SSL z Vašeho webhostingu byl úspěšně přijat</translation>
    <translation id="hosting_dashboard_service_delete_ssl_error" qtlid="299059">Během odstraňování SSL z webhostingu došlo k chybě</translation>
    <translation id="hosting_change_main_domain_keep_emails" qtlid="286552">Zachovat e-mailové adresy</translation>
-   <translation id="hosting_change_main_domain_email_title" qtlid="402789">E-mailové adresy připojené k Vaší doméně:</translation>
-   <translation id="hosting_change_main_domain_email_deletion_warning" qtlid="402802">K Vaší aktuální doméně (<strong>{0}</strong>) jsou připojeny e-mailové adresy. Změna primární domény bude mít za následek jejich odstranění.</translation>
-   <translation id="hosting_change_main_domain_email_proposal" qtlid="402815">Na budoucí doméně přiřazené k Vašemu webhostingu budete moci vytvořit nové e-mailové adresy.</translation>
+   <translation id="hosting_change_main_domain_email_title" qtlid="402789">E-mailové adresy připojené k Vašemu webhostingu:</translation>
+   <translation id="hosting_change_main_domain_email_deletion_warning" qtlid="402802">K Vaší doméně (<strong>{0}</strong>) jsou připojeny e-mailové adresy. Změna primární domény bude mít za následek jejich vymazání.</translation>
+   <translation id="hosting_change_main_domain_email_proposal" qtlid="402815">Na další doméně připojené k Vašemu webhostingu však budete moci vytvořit nové e-mailové adresy.</translation>
    <translation id="hosting_change_main_domain_delete_emails" qtlid="402828">Odstranit e-mailové adresy</translation>
    <translation id="hosting_change_main_domain_email_list" qtlid="402841">Stejně tak jako {0} dalších</translation>
    <translation id="hosting_change_main_domain_no_email" qtlid="402854">K této doméně nejsou připojeny žádné e-mailové adresy. Můžete pokračovat.</translation>
    <translation id="hosting_change_main_domain_no_bill" qtlid="402867">Změny budou provedeny.</translation>
    <translation id="hosting_change_main_domain_mx_link" qtlid="296843">Pro více informací navštivte <a href="{0}" target="{1}">popis našich produktů. {2}</a></translation>
-   <translation id="hosting_change_main_domain_warning_delete_emails" qtlid="286565">Upozornění! Odstranění služby e-mail povede ke smazání všech e-mailových adres, které byly pod touto doménou vytvořeny.</translation>
+   <translation id="hosting_change_main_domain_warning_delete_emails" qtlid="286565">Upozornění! Odstranění e-mailové služby povede ke smazání všech e-mailových adres, které byly pod touto doménou vytvořeny.</translation>
 
    <translation id="hosting_dashboard_general_informations" qtlid="27115">Základní informace</translation>
    <translation id="hosting_dashboard_configuration" qtlid="4406">Konfigurace</translation>

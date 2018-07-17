@@ -82,10 +82,10 @@
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Configuração geral do PostgreSQL</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">Em breve disponível para PostgreSQL</translation>
 
-   <translation id="privateDatabase_configuration_alert" qtlid="263507">Atenção! As alterações irão gerar o reboot do servidor.</translation>
+   <translation id="privateDatabase_configuration_alert" qtlid="482212">Qualquer alteração resultará na reinicialização do servidor.</translation>
    <translation id="privateDatabase_configuration_edit_btn" qtlid="185452">Editar</translation>
    <translation id="privateDatabase_configuration_cancel_btn" qtlid="37863">Anular</translation>
-   <translation id="privateDatabase_configuration_confirm_btn" qtlid="31498">Confirmar</translation>
+   <translation id="privateDatabase_configuration_confirm_btn" qtlid="41326">Aplicar</translation>
    <translation id="privateDatabase_configuration_reboot" qtlid="263520">Alteração da configuração em curso. O servidor será reiniciado.</translation>
    <translation id="privateDatabase_configuration_error_put" qtlid="263533">Erro ao processar alteração da configuração.</translation>
    <translation id="privateDatabase_configuration_error" qtlid="233047">Erro ao aceder às informações.</translation>
@@ -100,6 +100,16 @@
    <translation id="privateDatabase_configuration_event_scheduler" qtlid="370187">Estado do gestor de eventos</translation>
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Tempo de espera (segundos) do servidor antes de terminar a ligação (após inatividade de uma ligação através da linha de comandos).</translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Tempo de espera (segundos) do servidor antes de terminar a ligação (após inatividade de uma ligação externa).</translation>
+
+   <translation id="privateDatabase_configuration_field_autocommit" qtlid="482225">Define se as transações SQL são enviadas automaticamente ou não.</translation>
+   <translation id="privateDatabase_configuration_field_event_scheduler" qtlid="482238">É usado para acionar a execução de pedidos programados diretamente no servidor MySQL.</translation>
+   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size" qtlid="482251">Tamanho selecionado do buffer de memória (em megabytes).</translation>
+   <translation id="privateDatabase_configuration_field_interactive_timeout" qtlid="482264">Número de segundos durante os quais o servidor aguardará atividade em uma conexão interativa antes de fechar a conexão.</translation>
+   <translation id="privateDatabase_configuration_field_max_allowed_packet" qtlid="482277">Tamanho máximo do pacote (em megabytes).</translation>
+   <translation id="privateDatabase_configuration_field_max_connections" qtlid="482290">Número de conexões simultâneas autorizadas no SQL Privado.</translation>
+   <translation id="privateDatabase_configuration_field_max_user_connections" qtlid="482303">Número de conexões simultâneas autorizadas por usuário.</translation>
+   <translation id="privateDatabase_configuration_field_tmpdir" qtlid="482316">Pasta de arquivos temporários (RAM ou disco rígido da instância).</translation>
+   <translation id="privateDatabase_configuration_field_wait_timeout" qtlid="482329">Hora em que o servidor aguardará atividade em uma conexão não interativa antes de fechar a conexão (em segundos).</translation>
 
    <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Funcionalidade indisponível para este tipo de base de dados.</translation>
 
@@ -378,7 +388,7 @@
    <translation id="privateDatabase_change_ram" qtlid="37875">Alterar</translation>
    <translation id="privateDatabase_change_ram_title" qtlid="217106">Alterar quantidade de RAM</translation>
    <translation id="privateDatabase_order_select_ram_description" qtlid="217119">A quantidade de RAM selecionada irá substituir a quantidade atual.</translation>
-   <translation id="privateDatabase_order_select_ram_placeholder" qtlid="217132">Selecione...</translation>
+   <translation id="privateDatabase_order_select_ram_placeholder" qtlid="491990">Selecionar...</translation>
 
    <translation id="privateDatabase_RAM_add_select" qtlid="31858">Memória RAM</translation>
    <translation id="privateDatabase_order_select_ram" qtlid="216807">Selecione a quantidade desejada.</translation>
@@ -426,20 +436,24 @@
    <translation id="privateDatabase_tabs_cron_configuration_delete_fail" qtlid="263142">Erro ao processar eliminação da cópia de segurança agendada.</translation>
 
    <translation id="privateDatabase_tab_METRICS" qtlid="271819">Métricas</translation>
-   <translation id="privateDatabase_metrics_memory_title" qtlid="284789">Estatísticas de utilização da memória RAM</translation>
-   <translation id="privateDatabase_metrics_connections_title" qtlid="284802">Estatísticas das ligações ativas</translation>
-   <translation id="privateDatabase_metrics_memory_graph_y" qtlid="31858">Memória RAM</translation>
-   <translation id="privateDatabase_metrics_connections_graph_mysql_active_connections" qtlid="272578">Ligações ativas</translation>
+   <translation id="privateDatabase_metrics_no_data" qtlid="271871">Nenhum dado disponível</translation>
+
+   <translation id="privateDatabase_metrics_memoryUsages_title" qtlid="284789">Estatísticas de utilização da memória RAM</translation>
+   <translation id="privateDatabase_metrics_memoryUsages_graph_dbaas_metrics_docker_container_mem_usage_percent" qtlid="271845">Utilização da memória RAM</translation>
+
+   <translation id="privateDatabase_metrics_activeConnections_title" qtlid="284802">Estatísticas das ligações ativas</translation>
+   <translation id="privateDatabase_metrics_activeConnections_graph_dbaas_metrics_mysql_connexion_count" qtlid="272578">Ligações ativas</translation>
+
+   <translation id="privateDatabase_metrics_queryExecutionTimes_title" qtlid="284815">Estatísticas do tempo de execução das queries</translation>
+   <translation id="privateDatabase_metrics_queryExecutionTimes_graph_dbaas_metrics_mysql_query_time_average" qtlid="272604">Tempo de execução de uma consulta</translation>
+
+   <translation id="privateDatabase_metrics_memoryUsages_graph_y" qtlid="31858">Memória RAM</translation>
+   <translation id="privateDatabase_metrics_activeConnections_graph_mysql_active_connections" qtlid="272578">Ligações ativas</translation>
    <translation id="privateDatabase_metrics_connections_graph_dbaas_metrics_mysql_connexion_count" qtlid="272578">Ligações ativas</translation>
    <translation id="privateDatabase_metrics_memory_graph_memory_rss" qtlid="271845">Utilização da memória RAM</translation>
-   <translation id="privateDatabase_metrics_memory_graph_dbaas_metrics_docker_container_mem_usage_percent" qtlid="271845">Utilização da memória RAM</translation>
    <translation id="privateDatabase_metrics_memory_graph_memory_hierarchical_memory_limit" qtlid="271858">Limite máximo da memória RAM</translation>
-   <translation id="privateDatabase_metrics_no_data" qtlid="271871">Nenhum dado disponível</translation>
    <translation id="privateDatabase_metrics_wrong_version" qtlid="412152">Dados indisponíveis para a(s) versão(ões) {0}.</translation>
    <translation id="privateDatabase_metrics_time_graph_mysql_ms" qtlid="272591">Milissegundos</translation>
-   <translation id="privateDatabase_metrics_time_graph_mysql_query_time" qtlid="272604">Tempo de execução de uma consulta</translation>
-   <translation id="privateDatabase_metrics_time_graph_dbaas_metrics_mysql_query_time_average" qtlid="272604">Tempo de execução de uma consulta</translation>
-   <translation id="privateDatabase_metrics_time_title" qtlid="284815">Estatísticas do tempo de execução das queries</translation>
    <translation id="privateDatabase_metrics_time_range_DAY" qtlid="284828">Últimas 24 horas</translation>
    <translation id="privateDatabase_metrics_time_range_WEEK" qtlid="37491">Última semana</translation>
    <translation id="privateDatabase_metrics_time_range_MONTH" qtlid="37503">Último mês</translation>

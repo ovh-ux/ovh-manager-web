@@ -1,1 +1,1 @@
-angular.module("directives", ["digitalfondue.dftabmenu"]);
+angular.module('directives', ['digitalfondue.dftabmenu']);

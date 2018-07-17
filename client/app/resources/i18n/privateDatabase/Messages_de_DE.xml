@@ -82,15 +82,15 @@
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Allgemeine Konfiguration von PostgreSQL</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">In Kürze verfügbar für PostgreSQL</translation>
 
-   <translation id="privateDatabase_configuration_alert" qtlid="263507">Achtung! Jede Änderung zieht einen Neustart des Servers nach sich.</translation>
+   <translation id="privateDatabase_configuration_alert" qtlid="482212">Jede Änderung führt zu einem Neustart des Servers.</translation>
    <translation id="privateDatabase_configuration_edit_btn" qtlid="185452">Bearbeiten</translation>
    <translation id="privateDatabase_configuration_cancel_btn" qtlid="37863">Abbrechen</translation>
-   <translation id="privateDatabase_configuration_confirm_btn" qtlid="31498">Bestätigen</translation>
+   <translation id="privateDatabase_configuration_confirm_btn" qtlid="41326">Anwenden</translation>
    <translation id="privateDatabase_configuration_reboot" qtlid="263520">Die Änderung der Konfiguration wird durchgeführt, Ihr Server wird neu gestartet.</translation>
    <translation id="privateDatabase_configuration_error_put" qtlid="263533">Bei der Änderung der Konfiguration ist ein Fehler aufgetreten.</translation>
    <translation id="privateDatabase_configuration_error" qtlid="233047">Beim Abruf der Informationen ist ein Fehler aufgetreten.</translation>
    <translation id="privateDatabase_configuration_success" qtlid="263546">Ihr Server wurde neu gestartet und die Konfiguration wurde erfolgreich geändert.</translation>
-   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Legt fest, ob der Auto-Commit Modus aktiviert ist oder nicht, also ob die Requests automatisch committed werden oder ob der Commit von Hand durchgeführt werden muss.</translation>
+   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Legt fest, ob der Auto-Commit-Modus aktiviert ist oder nicht, das heißt, ob die SQL-Transaktionen automatisch bestätigt werden oder ob der Commit-Befehl verwendet werden muss, damit sie durchgeführt werden.</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263572">Maximal erlaubte Anzahl an Verbindungen mit dem Server.</translation>
    <translation id="privateDatabase_configuration_skipInnodb" qtlid="263585">Die Verwendung der InnoDB-Tabellen deaktivieren.</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263598">Maximale Anzahl an Simultanverbindungen</translation>
@@ -100,6 +100,16 @@
    <translation id="privateDatabase_configuration_event_scheduler" qtlid="370187">Status Event Scheduler</translation>
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Anzahl der Sekunden an Inaktivität nach einer Eingabeaufforderung, bevor der Server die Verbindung unterbricht.</translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Anzahl der Sekunden an Inaktivität während einer externen Verbindung, bevor der Server die Verbindung unterbricht.</translation>
+
+   <translation id="privateDatabase_configuration_field_autocommit" qtlid="482225">Legt fest, ob die SQL-Transaktionen automatisch bestätigt werden oder nicht.</translation>
+   <translation id="privateDatabase_configuration_field_event_scheduler" qtlid="482238">Wird verwendet, um die Ausführung programmierter Anfragen direkt im MySQL-Server zu starten.</translation>
+   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size" qtlid="482251">Größe des Pufferspeichers auswählen (in Megabyte).</translation>
+   <translation id="privateDatabase_configuration_field_interactive_timeout" qtlid="482264">Zeit (in Sekunden), während der der Server auf eine Aktivität auf einer interaktiven Verbindung wartet, bevor er diese schließt.</translation>
+   <translation id="privateDatabase_configuration_field_max_allowed_packet" qtlid="482277">Maximale Paketgröße (in Megabyte).</translation>
+   <translation id="privateDatabase_configuration_field_max_connections" qtlid="482290">Anzahl der erlaubten Simultanverbindungen auf SQL Private.</translation>
+   <translation id="privateDatabase_configuration_field_max_user_connections" qtlid="482303">Anzahl der erlaubten Simultanverbindungen je Benutzer.</translation>
+   <translation id="privateDatabase_configuration_field_tmpdir" qtlid="482316">Verzeichnis temporärer Dateien (RAM oder Festplatte der Instanz).</translation>
+   <translation id="privateDatabase_configuration_field_wait_timeout" qtlid="482329">Zeit (in Sekunden), während der der Server auf eine Aktivität auf einer nicht interaktiven Verbindung wartet, bevor er diese schließt.</translation>
 
    <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Die Funktion ist für diesen Datenbanktyp nicht verfügbar.</translation>
 
@@ -378,7 +388,7 @@
    <translation id="privateDatabase_change_ram" qtlid="37875">Ändern</translation>
    <translation id="privateDatabase_change_ram_title" qtlid="217106">RAM-Menge ändern</translation>
    <translation id="privateDatabase_order_select_ram_description" qtlid="217119">Die ausgewählte RAM-Menge ersetzt die derzeit verbaute Menge.</translation>
-   <translation id="privateDatabase_order_select_ram_placeholder" qtlid="217132">Auswählen...</translation>
+   <translation id="privateDatabase_order_select_ram_placeholder" qtlid="491990">Auswählen...</translation>
 
    <translation id="privateDatabase_RAM_add_select" qtlid="31858">RAM</translation>
    <translation id="privateDatabase_order_select_ram" qtlid="216807">Wählen Sie die gewünschte Menge aus.</translation>
@@ -426,20 +436,24 @@
    <translation id="privateDatabase_tabs_cron_configuration_delete_fail" qtlid="263142">Bei der Löschung der geplanten Sicherung ist ein Fehler aufgetreten.</translation>
 
    <translation id="privateDatabase_tab_METRICS" qtlid="271819">Messwerte</translation>
-   <translation id="privateDatabase_metrics_memory_title" qtlid="284789">Statistiken zum verwendeten RAM</translation>
-   <translation id="privateDatabase_metrics_connections_title" qtlid="284802">Statistiken der aktiven Verbindungen</translation>
-   <translation id="privateDatabase_metrics_memory_graph_y" qtlid="31858">RAM</translation>
-   <translation id="privateDatabase_metrics_connections_graph_mysql_active_connections" qtlid="272578">Aktive Verbindungen</translation>
+   <translation id="privateDatabase_metrics_no_data" qtlid="271871">Keine Daten verfügbar.</translation>
+
+   <translation id="privateDatabase_metrics_memoryUsages_title" qtlid="284789">Statistiken zum verwendeten RAM</translation>
+   <translation id="privateDatabase_metrics_memoryUsages_graph_dbaas_metrics_docker_container_mem_usage_percent" qtlid="271845">RAM Verwendung</translation>
+
+   <translation id="privateDatabase_metrics_activeConnections_title" qtlid="284802">Statistiken der aktiven Verbindungen</translation>
+   <translation id="privateDatabase_metrics_activeConnections_graph_dbaas_metrics_mysql_connexion_count" qtlid="272578">Aktive Verbindungen</translation>
+
+   <translation id="privateDatabase_metrics_queryExecutionTimes_title" qtlid="284815">Statistiken zur Ausführungsdauer der Anfragen</translation>
+   <translation id="privateDatabase_metrics_queryExecutionTimes_graph_dbaas_metrics_mysql_query_time_average" qtlid="272604">Ausführungsdauer einer Anfrage</translation>
+
+   <translation id="privateDatabase_metrics_memoryUsages_graph_y" qtlid="31858">RAM</translation>
+   <translation id="privateDatabase_metrics_activeConnections_graph_mysql_active_connections" qtlid="272578">Aktive Verbindungen</translation>
    <translation id="privateDatabase_metrics_connections_graph_dbaas_metrics_mysql_connexion_count" qtlid="272578">Aktive Verbindungen</translation>
    <translation id="privateDatabase_metrics_memory_graph_memory_rss" qtlid="271845">RAM Verwendung</translation>
-   <translation id="privateDatabase_metrics_memory_graph_dbaas_metrics_docker_container_mem_usage_percent" qtlid="271845">RAM Verwendung</translation>
    <translation id="privateDatabase_metrics_memory_graph_memory_hierarchical_memory_limit" qtlid="271858">Maximales RAM-Limit</translation>
-   <translation id="privateDatabase_metrics_no_data" qtlid="271871">Keine Daten verfügbar.</translation>
    <translation id="privateDatabase_metrics_wrong_version" qtlid="412152">Keine Daten vorhanden für die Verion(en) {0}.</translation>
    <translation id="privateDatabase_metrics_time_graph_mysql_ms" qtlid="272591">Millisekunden</translation>
-   <translation id="privateDatabase_metrics_time_graph_mysql_query_time" qtlid="272604">Ausführungsdauer einer Anfrage</translation>
-   <translation id="privateDatabase_metrics_time_graph_dbaas_metrics_mysql_query_time_average" qtlid="272604">Ausführungsdauer einer Anfrage</translation>
-   <translation id="privateDatabase_metrics_time_title" qtlid="284815">Statistiken zur Ausführungsdauer der Anfragen</translation>
    <translation id="privateDatabase_metrics_time_range_DAY" qtlid="284828">Letzte 24 Stunden</translation>
    <translation id="privateDatabase_metrics_time_range_WEEK" qtlid="37491">Letzte Woche</translation>
    <translation id="privateDatabase_metrics_time_range_MONTH" qtlid="37503">Letzter Monat</translation>

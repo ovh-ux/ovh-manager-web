@@ -1,11 +1,12 @@
-html, body {
-    margin  : 0;
-    padding : 0;
-    height  : 100%;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
 }
 
 body {
-  overflow-x       : hidden;
+    overflow-x: hidden;
 }
 
 select:focus,
@@ -22,10 +23,11 @@ input:focus,
     color: @oui-color-zodiac;
     font-size: rem-calc(21);
     font-weight: @oui-font-semibold;
-    letter-spacing: .01em;
+    letter-spacing: 0.01em;
 }
 
-select, textarea,
+select,
+textarea,
 input[type="text"],
 input[type="password"],
 input[type="datetime"],
@@ -40,7 +42,7 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="color"],
-.uneditable-input{
+.uneditable-input {
     margin-bottom: 0;
 }
 
@@ -65,12 +67,12 @@ code {
 // --------------------------------------------------
 
 .alert-account {
-    margin-top: @NAVBAR_HEIGHT;
+    margin-top: @navbar-height;
     padding: 5px 10px;
     font-size: 12px;
-    color: #B94A48;
-    background-color: #F2DEDE;
-    border-bottom: 1px solid #EED3D7;
+    color: #b94a48;
+    background-color: #f2dede;
+    border-bottom: 1px solid #eed3d7;
     margin: 0;
 
     p {
@@ -85,9 +87,9 @@ code {
     right: 0;
     padding: 5px 10px;
     font-size: 12px;
-    color: #C09853;
-    background-color: #FCF8E3;
-    border-bottom: 1px solid #FBEED5;
+    color: #c09853;
+    background-color: #fcf8e3;
+    border-bottom: 1px solid #fbeed5;
     p {
         margin: 0;
     }
@@ -107,14 +109,13 @@ code {
         margin: 0;
     }
     .close {
-            display: none;
+        display: none;
     }
 }
 
-
 .module-billing-sections-container,
 .module-useraccount-sections-container {
-    padding-top : 50px !important;
+    padding-top: 50px !important;
 }
 // ---
 
@@ -122,13 +123,14 @@ code {
     height: 100%;
 }
 
-.col-container, .row-container {
+.col-container,
+.row-container {
     display: flex;
     overflow: hidden;
 }
 
 .col-container {
-    padding-top : @NAVBAR_HEIGHT;
+    padding-top: @navbar-height;
     flex-direction: column;
     height: 100%;
     overflow: hidden;
@@ -141,17 +143,17 @@ code {
 }
 
 .title-underlined {
-    border-bottom: 1px solid @NAVBAR_BG;
+    border-bottom: 1px solid @navbar-bg;
 }
 
 .styleless {
-    color: @NAVBAR_BG;
+    color: @navbar-bg;
     border-bottom: initial;
 }
 
 .small-blockquote {
     color: @grey4;
-    font-size: @fontSizeMini;
+    font-size: @font-size-mini;
 }
 
 .table > tbody > tr {

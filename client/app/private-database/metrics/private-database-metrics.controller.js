@@ -1,100 +1,93 @@
-angular.module("App").controller(
-    "PrivateDatabaseMetricsCtrl",
-    class PrivateDatabaseMetricsCtrl {
-        constructor (Alerter, PrivateDatabase, $scope, ChartjsFactory, PRIVATE_DATABASE_METRICS) {
-            this.alerter = Alerter;
-            this.privateDatabaseService = PrivateDatabase;
-            this.$scope = $scope;
-            this.ChartjsFactory = ChartjsFactory;
-            this.constant = { PRIVATE_DATABASE_METRICS };
-        }
+angular
+  .module('App')
+  .controller('PrivateDatabaseMetricsCtrl', class PrivateDatabaseMetricsCtrl {
+    constructor(
+      $scope,
+      Alerter, ChartjsFactory, PrivateDatabase, translator,
+      PRIVATE_DATABASE_METRICS,
+    ) {
+      this.$scope = $scope;
 
-        $onInit () {
-            this.timeRange = ["DAY", "WEEK", "MONTH"];
-            this.timeRangeSelected = this.timeRange[0];
+      this.Alerter = Alerter;
+      this.ChartjsFactory = ChartjsFactory;
+      this.PrivateDatabase = PrivateDatabase;
+      this.translator = translator;
 
-            this.loaders = {
-                metrics: false
-            };
-
-            this.chart = {
-                memory: null,
-                connections: null,
-                time: null
-            };
-
-            const wrongVersion = [
-                "mysql_55"
-            ];
-            this.wrongVersionTrad = _.trim(_.map(wrongVersion, (version) => ` ${this.$scope.tr(`privateDatabase_dashboard_version_${version}`)}`));
-            this.isWrongVersion = _.indexOf(wrongVersion, this.$scope.database.version) !== -1;
-
-            this.loadMetrics();
-
-            this.getMetrics = (range) => this.getMetrics(range);
-        }
-
-        getMetrics (range) {
-            this.timeRangeSelected = range;
-            this.loadMetrics();
-        }
-
-        loadMetrics () {
-            this.loaders.metrics = true;
-
-            return this.privateDatabaseService
-                .getGraphData({
-                    graphEndpoint: this.$scope.database.graphEndpoint,
-                    range: this.timeRangeSelected
-                })
-                .then((data) => {
-                    if (_.isArray(data)) {
-
-                        const graphs = {
-                            memory: _.get(data, ["0"]),
-                            connections: _.get(data, ["1"]),
-                            time: _.get(data, ["2"])
-                        };
-
-                        _.each(_.pairs(graphs), (graph) => {
-                            const key = graph[0];
-                            const value = graph[1];
-
-                            if (!value) {
-                                return;
-                            }
-
-                            this.chart[key] = new this.ChartjsFactory(angular.copy(this.constant.PRIVATE_DATABASE_METRICS.chart));
-                            this.chart[key].setAxisOptions("yAxes", {
-                                type: "linear"
-                            });
-                            this.chart[key].addSerie(
-                                this.$scope.tr(`privateDatabase_metrics_${key}_graph_${value.metric.replace(/\./g, "_")}`),
-                                this.constructor.getChartSeries(value),
-                                {
-                                    dataset: {
-                                        fill: true,
-                                        borderWidth: 1
-                                    }
-                                }
-                            );
-                        });
-                    }
-                })
-                .catch((err) => {
-                    _.set(err, "type", err.type || "ERROR");
-                    this.alerter.alertFromSWS(this.$scope.tr("privateDatabase_dashboard_loading_error"), err, this.$scope.alerts.main);
-                })
-                .finally(() => {
-                    this.loaders.metrics = false;
-                });
-        }
-
-        static getChartSeries (data) {
-            return _(data.dps).keys().map((key) => ({
-                x: key * 1000,
-                y: data.dps[key]
-            })).value();
-        }
+      this.PRIVATE_DATABASE_METRICS = PRIVATE_DATABASE_METRICS;
     }
-);
+
+    $onInit() {
+      this.charts = { };
+
+      return this.fetchingMetrics();
+    }
+
+    fetchingMetrics() {
+      this.isFetchingMetrics = true;
+
+      return this.PrivateDatabase
+        .getGraphData({
+          graphEndpoint: this.$scope.database.graphEndpoint,
+          range: 'DAY',
+        })
+        .then((chartData) => {
+          if (!_(chartData).isArray()) {
+            throw new Error(this.translator.tr('common_temporary_error'));
+          }
+
+          const chartSettings =
+            this.PRIVATE_DATABASE_METRICS.specificDatabaseVersionChartSelection[
+              this.$scope.database.version
+            ];
+          _(this.PRIVATE_DATABASE_METRICS.specificChartSettings)
+            .filter(currentChartSettings =>
+              !_(chartSettings).isArray() ||
+                            _(chartSettings).includes(currentChartSettings.chartName))
+            .forEach((currentChartSettings) => {
+              const { chartName } = currentChartSettings;
+              const currentChartData = chartData[currentChartSettings.dataFromAPIIndex];
+
+              if (!_(currentChartData).isObject()) {
+                this.charts[chartName] = {
+                  hasData: false,
+                  name: chartName,
+                };
+              } else {
+                const settingsForAllCharts =
+                  _(this.PRIVATE_DATABASE_METRICS.settingsForAllCharts).clone(true);
+                const settingsForCurrentChart =
+                  _(settingsForAllCharts).merge(currentChartSettings).value();
+                const chart = new this.ChartjsFactory(settingsForCurrentChart);
+                const serieName = this.translator.tr(`privateDatabase_metrics_${chartName}_graph_${currentChartData.metric.replace(/\./g, '_')}`);
+                const serieValue = this.constructor.getChartSeries(currentChartData);
+
+                chart.addSerie(
+                  serieName,
+                  serieValue,
+                  this.PRIVATE_DATABASE_METRICS.settingsForAllSeries,
+                );
+
+                this.charts[chartName] = {
+                  hasData: true,
+                  data: chart,
+                  name: chartName,
+                };
+              }
+            }).value();
+        })
+        .catch((err) => {
+          _.set(err, 'type', err.type || 'ERROR');
+          this.Alerter.alertFromSWS(this.$scope.tr('privateDatabase_dashboard_loading_error'), err, this.$scope.alerts.main);
+        })
+        .finally(() => {
+          this.isFetchingMetrics = false;
+        });
+    }
+
+    static getChartSeries(data) {
+      return _(data.dps).keys().map(key => ({
+        x: key * 1000,
+        y: Math.round(data.dps[key] * 100) / 100,
+      })).value();
+    }
+  });

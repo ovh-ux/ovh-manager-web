@@ -9,7 +9,10 @@
     <a class="ml-3"
        data-ng-if="::(!$ctrl.isAutoRenew() && $ctrl.getRenewUrl() && !$ctrl.hideRenewAction) || $ctrl.isExpired()"
        data-ng-switch="$ctrl.serviceInfos.renew.deleteAtExpiration"
-       data-ng-href="{{::$ctrl.getRenewUrl()}}">
+       data-ng-href="{{::$ctrl.getRenewUrl()}}"
+       data-track-on="click"
+       data-track-name="renew-{{::$ctrl.serviceType.toLowerCase()}}"
+       data-track-click="action">
         <span data-ng-switch-when="false" data-i18n-static="wizard_renew"></span>
         <span data-ng-switch-when="true" data-i18n-static="resiliation_cancel_label"></span>
     </a>
