@@ -65,9 +65,9 @@ angular.module('App').controller(
       return this.HostingAutomatedEmails.getAutomatedEmails(this.$stateParams.productId)
         .then((data) => {
           if (
-            !_.isEmpty(this.automatedEmails) &&
-            this.automatedEmails.state !== data.state &&
-            data.state === 'purging'
+            !_.isEmpty(this.automatedEmails)
+            && this.automatedEmails.state !== data.state
+            && data.state === 'purging'
           ) {
             this.polling();
           }
@@ -94,8 +94,8 @@ angular.module('App').controller(
 
       return this.HostingAutomatedEmails.retrievingVolumes(this.$stateParams.productId)
         .then((data) => {
-          this.stats.chart =
-            new this.ChartjsFactory(angular.copy(this.HOSTING_AUTOMATED_EMAILS.chart));
+          this.stats.chart = new this.ChartjsFactory(angular.copy(this
+            .HOSTING_AUTOMATED_EMAILS.chart));
           this.stats.chart.setAxisOptions('yAxes', {
             type: 'linear',
           });
@@ -166,9 +166,9 @@ angular.module('App').controller(
 
     purge() {
       if (
-        this.automatedEmails.state !== 'ko' &&
-        this.automatedEmails.state !== 'spam' &&
-        this.automatedEmails.state !== 'bounce'
+        this.automatedEmails.state !== 'ko'
+        && this.automatedEmails.state !== 'spam'
+        && this.automatedEmails.state !== 'bounce'
       ) {
         return;
       }

@@ -95,7 +95,7 @@ module.exports = function (grunt) {
               dest: "."
           },
           options: {
-              filePath: path.resolve("./.eslintrc.js")
+              filePath: path.resolve("./.eslintrc")
           }
       },
 

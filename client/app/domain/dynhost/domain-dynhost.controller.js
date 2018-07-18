@@ -57,9 +57,9 @@ angular.module('App').controller(
 
     displayError(err, trKey, alert) {
       if (
-        err.status === 460 &&
-        err.data &&
-        /service(\s|\s\w+\s)expired/i.test(err.data.message)
+        err.status === 460
+        && err.data
+        && /service(\s|\s\w+\s)expired/i.test(err.data.message)
       ) {
         // If the service is really expired, the customers have already received several messages
         return;
@@ -111,12 +111,11 @@ angular.module('App').controller(
             this.hasResult = true;
           }
         })
-        .catch(err =>
-          this.displayError(
-            err,
-            'domain_tab_DYNHOST_error',
-            this.$scope.alerts.main,
-          ))
+        .catch(err => this.displayError(
+          err,
+          'domain_tab_DYNHOST_error',
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           if (_.isEmpty(this.dynHosts)) {
             this.loading.dynHosts = false;

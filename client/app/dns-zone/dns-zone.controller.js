@@ -88,12 +88,11 @@ angular.module('App').controller(
             return this.domain;
           });
         })
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_dashboard_loading_error'),
-            err,
-            this.$scope.alerts.page,
-          ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('domain_dashboard_loading_error'),
+          err,
+          this.$scope.alerts.page,
+        ))
         .finally(() => {
           this.loading.domainsInfos = false;
         });

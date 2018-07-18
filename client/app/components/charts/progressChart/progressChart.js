@@ -9,11 +9,11 @@ angular.module('directives').directive('progressChart', () => ({
     red: '@redLimit',
   },
   template:
-    '<div class="progress">' +
-    "<div class=\"bar bar-success\" data-ng-style=\"{'width': progressGreen + '%'}\"></div> " +
-    "<div class=\"bar bar-warning\" data-ng-style=\"{'width': progressYellow +'%'}\"></div>" +
-    "<div class=\"bar bar-danger\" data-ng-style=\"{'width': progressRed + '%'}\"></div>" +
-    '</div>',
+    '<div class="progress">'
+    + "<div class=\"bar bar-success\" data-ng-style=\"{'width': progressGreen + '%'}\"></div> "
+    + "<div class=\"bar bar-warning\" data-ng-style=\"{'width': progressYellow +'%'}\"></div>"
+    + "<div class=\"bar bar-danger\" data-ng-style=\"{'width': progressRed + '%'}\"></div>"
+    + '</div>',
   link($scope) {
     function computePercent(nStr, minStr, maxStr) {
       const min = parseInt(minStr, 10);
@@ -48,24 +48,20 @@ angular.module('directives').directive('progressChart', () => ({
             );
 
             if (nv < $scope.red) {
-              $scope.progressYellow =
-                computePercent(nv, $scope.min, $scope.max) -
-                $scope.progressGreen;
+              $scope.progressYellow = computePercent(nv, $scope.min, $scope.max)
+                - $scope.progressGreen;
               $scope.progressRed = 0;
             } else {
-              $scope.progressYellow =
-                computePercent($scope.red, $scope.min, $scope.max) -
-                $scope.progressGreen;
+              $scope.progressYellow = computePercent($scope.red, $scope.min, $scope.max)
+                - $scope.progressGreen;
               if (nv < $scope.max) {
-                $scope.progressRed =
-                  computePercent(nv, $scope.min, $scope.max) -
-                  $scope.progressGreen -
-                  $scope.progressYellow;
+                $scope.progressRed = computePercent(nv, $scope.min, $scope.max)
+                  - $scope.progressGreen
+                  - $scope.progressYellow;
               } else {
-                $scope.progressRed =
-                  computePercent($scope.max, $scope.min, $scope.max) -
-                  $scope.progressGreen -
-                  $scope.progressYellow;
+                $scope.progressRed = computePercent($scope.max, $scope.min, $scope.max)
+                  - $scope.progressGreen
+                  - $scope.progressYellow;
               }
             }
           }

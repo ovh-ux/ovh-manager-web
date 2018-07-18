@@ -38,8 +38,7 @@ angular.module('App').controller(
       });
       this.$scope.$on(
         'privateDatabase.whitelist.update.done',
-        opts =>
-          (opts.serviceName === this.serviceName ? this.getList() : undefined),
+        opts => (opts.serviceName === this.serviceName ? this.getList() : undefined),
       );
 
       _.forEach(['done', 'error'], (state) => {

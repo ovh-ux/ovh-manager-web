@@ -21,8 +21,8 @@ angular.module('directives').directive('workingStatus', [
         }
         if ($scope.productType) {
           Products.getWorks($scope.productType).then((works) => {
-            $scope.worksDetails = works.items.filter(work =>
-              statusDone.indexOf(work.details.status.toLowerCase()) === -1);
+            $scope.worksDetails = works.items
+              .filter(work => statusDone.indexOf(work.details.status.toLowerCase()) === -1);
           });
         }
 
@@ -31,8 +31,7 @@ angular.module('directives').directive('workingStatus', [
         $scope.openListModal = (data) => {
           $scope.currentActionData = data;
           if ($scope.currentActionData) {
-            $scope.worksStepPath =
-              'components/working-status/working-status-modal.html';
+            $scope.worksStepPath = 'components/working-status/working-status-modal.html';
             $(`#${$scope.modalId}`).modal({
               keyboard: true,
               backdrop: 'static',

@@ -2,15 +2,15 @@ angular.module('services').service(
   'PrivateDatabase',
   class PrivateDatabase {
     /**
-       * Constructor
-       * @param $rootScope
-       * @param $cacheFactory
-       * @param $http
-       * @param $q
-       * @param OvhHttp
-       * @param Poll
-       * @param Products
-       */
+     * Constructor
+     * @param $rootScope
+     * @param $cacheFactory
+     * @param $http
+     * @param $q
+     * @param OvhHttp
+     * @param Poll
+     * @param Products
+     */
     constructor($rootScope, $cacheFactory, $http, $q, OvhHttp, Poll, Products) {
       this.$rootScope = $rootScope;
       this.cach = $cacheFactory;
@@ -34,9 +34,9 @@ angular.module('services').service(
     }
 
     /**
-       * Private function to reset the cache
-       * @param key
-       */
+     * Private function to reset the cache
+     * @param key
+     */
     resetCache(key) {
       if (key !== undefined) {
         if (this.requests[key] !== undefined) {
@@ -52,17 +52,17 @@ angular.module('services').service(
     }
 
     /**
-       * Get order models
-       */
+     * Get order models
+     */
     getOrderModels() {
       return this.$http.get('apiv6/order.json', { cache: true }).then(response => _.get(response, 'data.models', {}));
     }
 
     /**
-       * Get sql order capacities
-       * @param  {string} offer - "public" for DBaaS or "classic" for sqlPrive
-       * @return {object}
-       */
+     * Get sql order capacities
+     * @param  {string} offer - "public" for DBaaS or "classic" for sqlPrive
+     * @return {object}
+     */
     getAvailableOrderCapacities(offer) {
       return this.$http
         .get('apiv6/hosting/privateDatabase/availableOrderCapacities', {
@@ -74,8 +74,8 @@ angular.module('services').service(
     }
 
     /**
-       * Get hosting models
-       */
+     * Get hosting models
+     */
     getModels() {
       return this.OvhHttp
         .get('/hosting/privateDatabase.json', {
@@ -274,15 +274,14 @@ angular.module('services').service(
 
       // First get databases
       this.getDatabases(serviceName)
-        .then(resp =>
-          _(resp)
-            .map(base => ({
-              virgin: true,
-              dataBase: base,
-              value: 'none',
-            }))
-            .mapKeys(item => item.dataBase)
-            .value())
+        .then(resp => _(resp)
+          .map(base => ({
+            virgin: true,
+            dataBase: base,
+            value: 'none',
+          }))
+          .mapKeys(item => item.dataBase)
+          .value())
         .then((grants) => {
           if (!_.size(grants)) {
             return deferred.reject(grants);
@@ -293,17 +292,17 @@ angular.module('services').service(
           return this.getUserGrant(serviceName, user);
         })
         .then(response => response.data)
-        .then(data =>
-
-        // populate grants
-          this.$q.all(_.map(data, grantsBase =>
-            this.getUserGrantDatabase(serviceName, user, grantsBase).then((result) => {
+        .then(data => this.$q.all(_.map(
+          data,
+          grantsBase => this.getUserGrantDatabase(serviceName, user, grantsBase)
+            .then((result) => {
               if (returnGrant[grantsBase]) {
                 returnGrant[grantsBase].value = result.data.grant;
                 returnGrant[grantsBase].virgin = false;
               }
               deferred.notify(returnGrant);
-            }))))
+            }),
+        )))
         .then(() => deferred.resolve(returnGrant))
         .catch(() => deferred.resolve(returnGrant));
 
@@ -439,19 +438,18 @@ angular.module('services').service(
         .then((durations) => {
           defer.notify(durations);
 
-          return this.$q.all(_.map(durations, duration =>
-            this.$http
-              .get(`${this.swsProxypassOrderPath}/${serviceName}/ram/${duration}`, {
-                params: {
-                  ram: opts.ram,
-                },
-              })
-              .then((durationDetails) => {
-                const details = angular.copy(durationDetails.data);
-                details.duration = duration;
-                durationsTab.push(details);
-                defer.notify(durationsTab);
-              })));
+          return this.$q.all(_.map(durations, duration => this.$http
+            .get(`${this.swsProxypassOrderPath}/${serviceName}/ram/${duration}`, {
+              params: {
+                ram: opts.ram,
+              },
+            })
+            .then((durationDetails) => {
+              const details = angular.copy(durationDetails.data);
+              details.duration = duration;
+              durationsTab.push(details);
+              defer.notify(durationsTab);
+            })));
         })
         .then(() => defer.resolve(durationsTab))
         .catch(() => defer.resolve(durationsTab));
@@ -582,14 +580,13 @@ angular.module('services').service(
         defer.resolve(filteredTask);
       };
 
-      this.$q.all(_.map(['init', 'doing', 'todo'], status =>
-        this.getTasksWithStatus(serviceName, status)
-          .then(response => _.map(response, tasksId => this.getTaskDetails(serviceName, tasksId)))
-          .then((requests) => {
-            tasks = _.filter(requests, request => _.get(request, 'data'));
-          })
-          .then(doFilter())
-          .catch(doFilter())));
+      this.$q.all(_.map(['init', 'doing', 'todo'], status => this.getTasksWithStatus(serviceName, status)
+        .then(response => _.map(response, tasksId => this.getTaskDetails(serviceName, tasksId)))
+        .then((requests) => {
+          tasks = _.filter(requests, request => _.get(request, 'data'));
+        })
+        .then(doFilter())
+        .catch(doFilter())));
       return defer.promise;
     }
 
@@ -651,10 +648,10 @@ angular.module('services').service(
     }
 
     /**
-       * Get all database Id
-       * @param  {string}  serviceName [description]
-       * @return {string[]}              [description]
-       */
+     * Get all database Id
+     * @param  {string}  serviceName [description]
+     * @return {string[]}              [description]
+     */
     getBDDSId(serviceName) {
       return this.$http.get(`${this.swsProxypassPath}/${serviceName}/database`).then(response => response.data).catch(err => this.$q.reject(err.data));
     }
@@ -668,15 +665,13 @@ angular.module('services').service(
       }
 
       this.getBDDSId(serviceName)
-        .then(response =>
-          this.$q
-            .all(_.map(response, bdd =>
-              this.getBDD(serviceName, bdd).then((BDD) => {
-                bddsTab.push(BDD);
-                defer.notify(bddsTab);
-              })))
-            .then(() => defer.resolve(bddsTab))
-            .catch(() => defer.resolve(bddsTab)))
+        .then(response => this.$q
+          .all(_.map(response, bdd => this.getBDD(serviceName, bdd).then((BDD) => {
+            bddsTab.push(BDD);
+            defer.notify(bddsTab);
+          })))
+          .then(() => defer.resolve(bddsTab))
+          .catch(() => defer.resolve(bddsTab)))
         .catch(err => this.$q.reject(err.data));
 
       return defer.promise;
@@ -794,11 +789,11 @@ angular.module('services').service(
     }
 
     /**
-       * Get all dumps id
-       * @param  {string}  serviceName
-       * @param  {Boolean} isOrphan
-       * @return {string[]}
-       */
+     * Get all dumps id
+     * @param  {string}  serviceName
+     * @param  {Boolean} isOrphan
+     * @return {string[]}
+     */
     getDumps(serviceName, isOrphan) {
       return this.$http
         .get(`${this.swsProxypassPath}/${serviceName}/dump`, {

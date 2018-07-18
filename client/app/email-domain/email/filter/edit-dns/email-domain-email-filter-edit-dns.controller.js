@@ -35,8 +35,7 @@ angular.module('App').controller(
             models.models['domain.DomainMXFilterEnum'].enum,
             'CUSTOM',
           );
-          this.selectedFilter =
-            models.models['domain.DomainFilterOperandEnum'].enum;
+          this.selectedFilter = models.models['domain.DomainFilterOperandEnum'].enum;
           this.loading = false;
         })
         .catch((err) => {
@@ -55,17 +54,15 @@ angular.module('App').controller(
         mxFilter: this.selectedFilter,
         customTarget: this.customFilter.value,
       })
-        .then(() =>
-          this.Alerter.success(
-            this.$scope.tr('emails_dns_filter_edit_success'),
-            this.$scope.alerts.main,
-          ))
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('email_tab_modal_edit_filter_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .then(() => this.Alerter.success(
+          this.$scope.tr('emails_dns_filter_edit_success'),
+          this.$scope.alerts.main,
+        ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('email_tab_modal_edit_filter_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

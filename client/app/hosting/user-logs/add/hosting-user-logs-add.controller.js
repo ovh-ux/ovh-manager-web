@@ -32,36 +32,36 @@ angular.module('App').controller(
 
     isPasswordConfirmationInvalid() {
       return (
-        this.model.selected.password.value !==
-        this.model.selected.password.confirmation
+        this.model.selected.password.value
+        !== this.model.selected.password.confirmation
       );
     }
 
     isPasswordValid() {
       return (
-        this.model.selected.password.value &&
-        this.model.selected.password.confirmation &&
-        this.model.selected.password.value ===
-          this.model.selected.password.confirmation &&
-        this.Hosting.constructor.isPasswordValid(this.model.selected.password.value)
+        this.model.selected.password.value
+        && this.model.selected.password.confirmation
+        && this.model.selected.password.value
+          === this.model.selected.password.confirmation
+        && this.Hosting.constructor.isPasswordValid(this.model.selected.password.value)
       );
     }
 
     isUserValid() {
       return (
-        this.model.selected.login &&
-        this.model.selected.login.length >= this.model.minUserLength &&
-        this.model.selected.login.length <= this.model.maxUserLength &&
-        this.model.selected.login.match(/^[a-z-]+$/)
+        this.model.selected.login
+        && this.model.selected.login.length >= this.model.minUserLength
+        && this.model.selected.login.length <= this.model.maxUserLength
+        && this.model.selected.login.match(/^[a-z-]+$/)
       );
     }
 
     shouldDisplayDifferentPasswordMessage() {
       return (
-        this.model.selected.password.value &&
-        this.model.selected.password.confirmation &&
-        this.model.selected.password.value !==
-          this.model.selected.password.confirmation
+        this.model.selected.password.value
+        && this.model.selected.password.confirmation
+        && this.model.selected.password.value
+          !== this.model.selected.password.confirmation
       );
     }
 

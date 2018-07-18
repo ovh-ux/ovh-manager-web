@@ -71,9 +71,9 @@ angular.module('App').controller(
       const value = input.$viewValue;
       input.$setValidity(
         'filterActionRedirect',
-        !!value &&
-          /^[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(value) &&
-          !/^\./.test(value),
+        !!value
+          && /^[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}$/.test(value)
+          && !/^\./.test(value),
       );
     }
 
@@ -81,9 +81,9 @@ angular.module('App').controller(
       const value = input.$viewValue;
       input.$setValidity(
         'filterName',
-        !!value &&
-          /^[\w.\s-]+$/.test(value) &&
-          !_.find(this.filters, filter => value === filter),
+        !!value
+          && /^[\w.\s-]+$/.test(value)
+          && !_.find(this.filters, filter => value === filter),
       );
     }
 
@@ -95,11 +95,10 @@ angular.module('App').controller(
     filterRuleCheck() {
       return _.every(
         this.model.rules,
-        rule =>
-          rule.value &&
-          rule.operand &&
-          ((rule.headerSelect && rule.headerSelect !== 'other') ||
-            (rule.headerSelect === 'other' && rule.header)),
+        rule => rule.value
+          && rule.operand
+          && ((rule.headerSelect && rule.headerSelect !== 'other')
+            || (rule.headerSelect === 'other' && rule.header)),
       );
     }
 
@@ -108,10 +107,9 @@ angular.module('App').controller(
       const rules = _.map(
         _.filter(
           this.model.rules,
-          rule =>
-            (rule.headerSelect !== '' || rule.header !== '') &&
-            rule.operand !== '' &&
-            rule.value !== '',
+          rule => (rule.headerSelect !== '' || rule.header !== '')
+            && rule.operand !== ''
+            && rule.value !== '',
         ),
         rule => ({
           operand: rule.operand,

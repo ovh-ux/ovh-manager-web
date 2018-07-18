@@ -18,8 +18,7 @@ angular.module('App').config(($stateProvider) => {
       ],
       translator: [
         'translator',
-        translator =>
-          translator.load(['domain', 'domains']).then(() => translator),
+        translator => translator.load(['domain', 'domains']).then(() => translator),
       ],
     },
   });

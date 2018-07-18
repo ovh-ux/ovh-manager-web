@@ -19,18 +19,15 @@ angular.module('App').controller(
     deleteDynHost() {
       this.loading = true;
       return this.Domain.deleteDynHost(this.zoneName, this.dynHost.id)
-        .then(() =>
-          this.Domain.refreshZoneState(this.zoneName).then(() =>
-            this.Alerter.success(
-              this.$scope.tr('domain_tab_DYNHOST_delete_success'),
-              this.$scope.alerts.main,
-            )))
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_tab_DYNHOST_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .then(() => this.Domain.refreshZoneState(this.zoneName).then(() => this.Alerter.success(
+          this.$scope.tr('domain_tab_DYNHOST_delete_success'),
+          this.$scope.alerts.main,
+        )))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('domain_tab_DYNHOST_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

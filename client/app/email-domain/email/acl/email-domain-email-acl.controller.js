@@ -54,8 +54,7 @@ angular.module('App').controller(
           this.createNicUrl.value = '';
         });
 
-      this.$scope.$on('hosting.tabs.emails.acls.refresh', () =>
-        this.refreshTableAcls());
+      this.$scope.$on('hosting.tabs.emails.acls.refresh', () => this.refreshTableAcls());
 
       this.refreshTableAcls();
     }
@@ -92,12 +91,11 @@ angular.module('App').controller(
         .then((acls) => {
           this.acls = acls;
         })
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('email_tab_table_acls_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('email_tab_table_acls_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           if (_.isEmpty(this.acls)) {
             this.loading.acls = false;

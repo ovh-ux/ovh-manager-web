@@ -30,8 +30,8 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.error(
-            this.translator.tr('hosting_tab_RUNTIMES_delete_error') +
-              err.message,
+            this.translator.tr('hosting_tab_RUNTIMES_delete_error')
+              + err.message,
             this.$scope.alerts.main,
           );
         })

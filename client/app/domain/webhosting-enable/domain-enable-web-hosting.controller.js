@@ -47,16 +47,16 @@ angular.module('App').controller(
 
       this.$q
         .all({
-          modules: this.model.offer !== this.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE ?
-            this.getModulesList() : null,
+          modules: this.model.offer !== this.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE
+            ? this.getModulesList() : null,
           offers: this.offers.length ? this.offers : this.getOffersList(),
           user: this.User.getUser(),
         })
         .then(({ modules, offers, user }) => {
           this.model.moduleTemplates = _.filter(modules, { branch: 'stable' });
           this.offers = _.compact(offers);
-          this.hostingUrl = this.constants.urls.hosting[user.ovhSubsidiary] ||
-            this.constants.urls.hosting.FR;
+          this.hostingUrl = this.constants.urls.hosting[user.ovhSubsidiary]
+            || this.constants.urls.hosting.FR;
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_DATABASES_configuration_create_step1_loading_error'), err, this.$scope.alerts.main);
@@ -90,17 +90,23 @@ angular.module('App').controller(
     }
 
     getModulesList() {
-      return this.HostingModule.getModulesLatestList().then(moduleTemplates =>
-        this.$q.all(_.map(moduleTemplates, id => this.HostingModule.getAvailableModule(id))));
+      return this.HostingModule
+        .getModulesLatestList()
+        .then(moduleTemplates => this.$q.all(_.map(
+          moduleTemplates,
+          id => this.HostingModule.getAvailableModule(id),
+        )));
     }
 
     getOffersList() {
-      return this.Hosting.getAvailableOffer(this.domain.name).then(offers =>
-        this.$q.all(_.map(offers, (offer) => {
+      return this.Hosting
+        .getAvailableOffer(this.domain.name)
+        .then(offers => this.$q.all(_.map(offers, (offer) => {
           let rtn;
-          if ((!this.model.offer &&
-            offer !== this.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE) ||
-            (this.model.offer && offer === this.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE)) {
+          if ((!this.model.offer
+              && offer !== this.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE)
+              || (this.model.offer
+                && offer === this.constants.HOSTING.OFFERS.START_10_M.LIST_VALUE)) {
             rtn = this.HostingOrder.get(
               this.domain.name, offer,
               this.model.dnsZone, this.model.duration,

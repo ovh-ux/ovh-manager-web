@@ -36,10 +36,9 @@ angular.module('App').controller(
       this.PrivateDatabase.getAvailableOrderCapacities('classic')
         .then((capacities) => {
           this.versions = _.get(capacities, 'version');
-          this.choice.version =
-            this.versions && this.versions.length === 1
-              ? _.first(this.versions)
-              : null;
+          this.choice.version = this.versions && this.versions.length === 1
+            ? _.first(this.versions)
+            : null;
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(

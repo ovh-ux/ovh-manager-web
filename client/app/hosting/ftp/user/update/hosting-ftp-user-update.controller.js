@@ -52,8 +52,8 @@ angular.module('App').controller(
       let home;
       if (this.model.user.home !== null) {
         if (
-          /^\/.*/.test(this.model.user.home) ||
-          this.model.user.isPrimaryAccount
+          /^\/.*/.test(this.model.user.home)
+          || this.model.user.isPrimaryAccount
         ) {
           return this.model.user.home;
         }

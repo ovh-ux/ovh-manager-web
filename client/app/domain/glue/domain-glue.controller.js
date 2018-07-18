@@ -12,8 +12,7 @@ angular.module('App').controller(
       this.domain = this.$scope.ctrlDomain.domain;
       this.loading = false;
 
-      this.$scope.$on('domain.tabs.glue.refresh', () =>
-        this.refreshTableGlues());
+      this.$scope.$on('domain.tabs.glue.refresh', () => this.refreshTableGlues());
       this.$scope.$on('domain.DomainHostCreate.done', () => {
         this.refreshTableGlues();
         this.Alerter.resetMessage(this.$scope.alerts.main);

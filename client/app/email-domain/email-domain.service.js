@@ -312,10 +312,9 @@ angular.module('services').service(
           broadcast: 'hosting.tabs.emails.filters.refresh',
         },
       )
-        .then(() =>
-          this.createRules(serviceName, accountName, filter.name, rules)
-            .then(data => defer.resolve(data))
-            .catch(err => defer.reject(err)))
+        .then(() => this.createRules(serviceName, accountName, filter.name, rules)
+          .then(data => defer.resolve(data))
+          .catch(err => defer.reject(err)))
         .catch(err => defer.reject(err));
 
       return defer.promise;
@@ -332,10 +331,9 @@ angular.module('services').service(
       const defer = this.$q.defer();
 
       this.deleteFilter(serviceName, accountName, filter.name)
-        .then(() =>
-          this.createFilter(serviceName, accountName, filter, rules)
-            .then(data => defer.resolve(data))
-            .catch(err => defer.reject(err)))
+        .then(() => this.createFilter(serviceName, accountName, filter, rules)
+          .then(data => defer.resolve(data))
+          .catch(err => defer.reject(err)))
         .catch(err => defer.reject(err));
 
       return defer.promise;
@@ -418,8 +416,12 @@ angular.module('services').service(
      * @param rules
      */
     createRules(serviceName, accountName, filterName, rules) {
-      const promises = rules.map(rule =>
-        this.createRule(serviceName, accountName, filterName, rule));
+      const promises = rules.map(rule => this.createRule(
+        serviceName,
+        accountName,
+        filterName,
+        rule,
+      ));
 
       return this.$q.all(promises);
     }
@@ -728,15 +730,14 @@ angular.module('services').service(
         'responder',
       ];
 
-      return this.$q.all(actions.map(action =>
-        this.OvhHttp.get(`/email/domain/${serviceName}/task/${action}`, {
-          rootPath: 'apiv6',
-        })
-          .then(data => ({
-            action,
-            ids: data,
-          }))
-          .catch(err => this.$q.reject(err))));
+      return this.$q.all(actions.map(action => this.OvhHttp.get(`/email/domain/${serviceName}/task/${action}`, {
+        rootPath: 'apiv6',
+      })
+        .then(data => ({
+          action,
+          ids: data,
+        }))
+        .catch(err => this.$q.reject(err))));
     }
 
     /**
@@ -950,10 +951,9 @@ angular.module('services').service(
           broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
         },
       )
-        .then(() =>
-          this.createDelegatedRules(accountName, filter.name, rules)
-            .then(data => defer.resolve(data))
-            .catch(err => defer.reject(err)))
+        .then(() => this.createDelegatedRules(accountName, filter.name, rules)
+          .then(data => defer.resolve(data))
+          .catch(err => defer.reject(err)))
         .catch(err => defer.reject(err));
 
       return defer.promise;
@@ -970,10 +970,9 @@ angular.module('services').service(
       const defer = this.$q.defer();
 
       this.deleteDelegatedFilter(accountName, filter.name)
-        .then(() =>
-          this.createDelegatedFilter(accountName, filter, rules)
-            .then(data => defer.resolve(data))
-            .catch(err => defer.reject(err)))
+        .then(() => this.createDelegatedFilter(accountName, filter, rules)
+          .then(data => defer.resolve(data))
+          .catch(err => defer.reject(err)))
         .catch(err => defer.reject(err));
 
       return defer.promise;
@@ -1052,18 +1051,17 @@ angular.module('services').service(
      * @returns {Promise}
      */
     createDelegatedRules(accountName, filterName, rules) {
-      const promises = _.map(rules, rule =>
-        this.OvhHttp.post(
-          `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule`,
-          {
-            rootPath: 'apiv6',
-            data: {
-              operand: rule.operand,
-              value: rule.value,
-              header: rule.header,
-            },
+      const promises = _.map(rules, rule => this.OvhHttp.post(
+        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule`,
+        {
+          rootPath: 'apiv6',
+          data: {
+            operand: rule.operand,
+            value: rule.value,
+            header: rule.header,
           },
-        ));
+        },
+      ));
 
       return this.$q.all(promises);
     }
@@ -1087,8 +1085,9 @@ angular.module('services').service(
       )
         .then((rulesId) => {
           rulesId.forEach((id) => {
-            promises.push(this.getDelegatedRule(accountName, filterName, id).then(rule =>
-              rules.push(rule)));
+            promises.push(this
+              .getDelegatedRule(accountName, filterName, id)
+              .then(rule => rules.push(rule)));
           });
 
           // Resolve when all promise are resolve
@@ -1124,8 +1123,10 @@ angular.module('services').service(
      * @param {array} rulesId
      */
     deleteDelegatedRules(accountName, filterName, rulesId) {
-      return this.$q.all(_.map(rulesId, id =>
-        this.deleteDelegatedRule(accountName, filterName, id)));
+      return this.$q.all(_.map(
+        rulesId,
+        id => this.deleteDelegatedRule(accountName, filterName, id),
+      ));
     }
 
     /**

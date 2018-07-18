@@ -57,10 +57,9 @@ angular.module('App').controller(
         let quit = false;
         const requests = _.map(
           emails,
-          id =>
-            (delegated
-              ? this.Emails.getDelegatedEmail(id)
-              : this.Emails.getEmail(this.$stateParams.productId, id)),
+          id => (delegated
+            ? this.Emails.getDelegatedEmail(id)
+            : this.Emails.getEmail(this.$stateParams.productId, id)),
         );
 
         this.intervalPromise = this.$interval(() => {
@@ -100,12 +99,11 @@ angular.module('App').controller(
                 );
               }
             })
-            .catch(err =>
-              this.Alerter.alertFromSWS(
-                this.$scope.tr('email_tab_modal_accounts_export_csv_error'),
-                err,
-                this.$scope.alerts.main,
-              ))
+            .catch(err => this.Alerter.alertFromSWS(
+              this.$scope.tr('email_tab_modal_accounts_export_csv_error'),
+              err,
+              this.$scope.alerts.main,
+            ))
             .finally(() => {
               this.loading.exportCsv = false;
               this.$scope.resetAction();

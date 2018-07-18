@@ -89,8 +89,7 @@ angular.module('App').controller(
           this.setAction(action, 'domains/', data);
         }
       };
-      this.$scope.setActionMultiple = (action, data) =>
-        this.setAction(action, 'domains/', data);
+      this.$scope.setActionMultiple = (action, data) => this.setAction(action, 'domains/', data);
       this.$scope.resetAction = () => this.setAction(false);
       this.$scope.getSelectedDomains = () => this.$scope.selectedDomains;
 
@@ -116,8 +115,7 @@ angular.module('App').controller(
 
     applySelection() {
       _.forEach(_.get(this.$scope.domains, 'list.results'), (value) => {
-        value.selected = // eslint-disable-line no-param-reassign
-          _.indexOf(this.$scope.selectedDomains, value.name) !== -1;
+        _.set(value, 'selected', _.indexOf(this.$scope.selectedDomains, value.name) !== -1);
       });
     }
 
