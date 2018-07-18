@@ -40,8 +40,7 @@ angular.module('App').controller(
       this.runtimes = [];
       this.maxRuntimes = 0;
 
-      this.$scope.$on(this.Hosting.events.tabRuntimesRefresh, () =>
-        this.getIds());
+      this.$scope.$on(this.Hosting.events.tabRuntimesRefresh, () => this.getIds());
 
       return this.getIds()
         .finally(() => this.loadCapabilities())
@@ -62,28 +61,26 @@ angular.module('App').controller(
 
           this.runtimes = ids.sort().map(id => ({ id }));
         })
-        .then(() =>
-          this.$q.all(this.runtimes.map(row =>
-            this.HostingRuntimes.get(
-              this.$stateParams.productId,
-              row.id,
-            ).then((data) => {
-              const runtime = _(data).clone();
-              runtime.countAttachedDomains = 0;
+        .then(() => this.$q.all(this.runtimes.map(row => this.HostingRuntimes.get(
+          this.$stateParams.productId,
+          row.id,
+        ).then((data) => {
+          const runtime = _(data).clone();
+          runtime.countAttachedDomains = 0;
 
-              return this.HostingRuntimes.getAttachedDomains(
-                this.$stateParams.productId,
-                runtime.id,
-              ).then((attachedDomains) => {
-                runtime.loaded = true;
+          return this.HostingRuntimes.getAttachedDomains(
+            this.$stateParams.productId,
+            runtime.id,
+          ).then((attachedDomains) => {
+            runtime.loaded = true;
 
-                if (_(attachedDomains).isArray()) {
-                  runtime.countAttachedDomains = attachedDomains.length;
-                }
+            if (_(attachedDomains).isArray()) {
+              runtime.countAttachedDomains = attachedDomains.length;
+            }
 
-                return runtime;
-              });
-            }))))
+            return runtime;
+          });
+        }))))
         .then((runtimes) => {
           this.runtimes = runtimes;
         })
@@ -94,8 +91,7 @@ angular.module('App').controller(
           );
         })
         .finally(() => {
-          this.hasResult =
-            _(this.runtimes).isArray() && !_(this.runtimes).isEmpty();
+          this.hasResult = _(this.runtimes).isArray() && !_(this.runtimes).isEmpty();
         });
     }
 

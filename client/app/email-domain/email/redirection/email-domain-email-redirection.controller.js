@@ -24,8 +24,7 @@ angular.module('App').controller(
       };
       this.redirectionsDetails = [];
 
-      this.$scope.$on('hosting.tabs.emails.redirections.refresh', () =>
-        this.refreshTableRedirections());
+      this.$scope.$on('hosting.tabs.emails.redirections.refresh', () => this.refreshTableRedirections());
 
       this.refreshTableRedirections();
     }
@@ -41,8 +40,10 @@ angular.module('App').controller(
       ];
 
       return this.$q
-        .all(_.map(this.redirections, ({ id }) =>
-          this.Emails.getRedirection(this.$stateParams.productId, id)))
+        .all(_.map(
+          this.redirections,
+          ({ id }) => this.Emails.getRedirection(this.$stateParams.productId, id),
+        ))
         .then(data => dataToExport.concat(_.map(data, d => [d.from, d.to])))
         .finally(() => {
           this.loading.exportCSV = false;
@@ -57,12 +58,11 @@ angular.module('App').controller(
         .then((data) => {
           this.redirections = data.map(id => ({ id }));
         })
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('email_tab_table_redirections_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('email_tab_table_redirections_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           this.loading.redirections = false;
         });

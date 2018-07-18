@@ -14,10 +14,10 @@ angular.module('services').service('Validator', [
     // @todo use a regexp instead
     this.isValidIpv4Block = function isValidIpv4Block(block) {
       const split = block.split('/');
-      return split.length === 2 &&
-        this.isValidIpv4(split[0]) &&
-        parseInt(split[1], 10) > 0 &&
-        parseInt(split[1], 10) < 33;
+      return split.length === 2
+        && this.isValidIpv4(split[0])
+        && parseInt(split[1], 10) > 0
+        && parseInt(split[1], 10) < 33;
     };
 
     this.isValidIpv6 = function isValidIpv6(ip) {
@@ -27,10 +27,10 @@ angular.module('services').service('Validator', [
     // TODO use a regexp instead
     this.isValidIpv6Block = function isValidIpv6Block(block) {
       const split = block.split('/');
-      return split.length === 2 &&
-        this.isValidIpv6(split[0]) &&
-        parseInt(split[1], 10) > 0 &&
-        parseInt(split[1], 10) < 129;
+      return split.length === 2
+        && this.isValidIpv6(split[0])
+        && parseInt(split[1], 10) > 0
+        && parseInt(split[1], 10) < 129;
     };
 
     // opts.canBeginWithUnderscore = specifics NDD can be like: _foo._bar.example.com
@@ -79,10 +79,9 @@ angular.module('services').service('Validator', [
       return self.isValidDomain(`${subDomain}.example.com`, opts);
     };
 
-    this.isValidLetsEncryptDomain =
-    (subdomain, domain, opts) =>
-      self.isValidDomain(subdomain + domain, opts) ||
-      (subdomain + domain).length < this.MAX_DOMAIN_LENGTH;
+    this.isValidLetsEncryptDomain = (subdomain, domain, opts) => self
+      .isValidDomain(subdomain + domain, opts)
+        || (subdomain + domain).length < this.MAX_DOMAIN_LENGTH;
 
     /**
        * regexp matching
@@ -125,7 +124,7 @@ angular.module('services').service('Validator', [
     this.ipaddrValid = (ip) => {
       if (self.isValidIpv4(ip)) {
         return true;
-      } else if (self.isValidIpv6(ip)) {
+      } if (self.isValidIpv6(ip)) {
         return true;
       }
 

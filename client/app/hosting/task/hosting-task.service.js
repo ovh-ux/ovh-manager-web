@@ -93,22 +93,21 @@ angular
       pollDeferred(serviceName);
     }
 
-    this.getFromId = (serviceName, id) =>
-      OvhHttp.get('/hosting/web/{serviceName}/tasks/{id}', {
-        rootPath: 'apiv6',
-        urlParams: {
-          serviceName,
-          id,
-        },
-        returnSuccessKey: '',
-      }).then(
-        response => response.data,
-        (err) => {
-          const { data } = err.data;
-          data.status = err.status;
-          return $q.reject(data);
-        },
-      );
+    this.getFromId = (serviceName, id) => OvhHttp.get('/hosting/web/{serviceName}/tasks/{id}', {
+      rootPath: 'apiv6',
+      urlParams: {
+        serviceName,
+        id,
+      },
+      returnSuccessKey: '',
+    }).then(
+      response => response.data,
+      (err) => {
+        const { data } = err.data;
+        data.status = err.status;
+        return $q.reject(data);
+      },
+    );
 
     function getFromFunctionAndStatus(serviceName, fncName, fncStatus) {
       return OvhHttp.get('/hosting/web/{serviceName}/tasks/', {

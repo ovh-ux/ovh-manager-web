@@ -24,11 +24,11 @@ angular.module('directives').controller('cronEditorCtrl', [
       CronValidator.switchToExpertMode($scope.cron, $scope.mode);
     };
 
-    $scope.cronSimpleValueIsValid = field =>
-      CronValidator.cronSimpleValueIsValid(field, $scope.cron, $scope.mode);
+    $scope.cronSimpleValueIsValid = field => CronValidator
+      .cronSimpleValueIsValid(field, $scope.cron, $scope.mode);
 
-    $scope.cronExpertValueIsValid = field =>
-      CronValidator.cronExpertValueIsValid(field, $scope.cron);
+    $scope.cronExpertValueIsValid = field => CronValidator
+      .cronExpertValueIsValid(field, $scope.cron);
 
     function getCaretPosition(elem) {
       if (!elem) {
@@ -82,8 +82,8 @@ angular.module('directives').controller('cronEditorCtrl', [
       $scope.expertInlineView = expertInlineView;
 
       if (
-        angular.element(`#currentAction .cron_${field}:visible`) &&
-        angular.element(`#currentAction .cron_${field}:visible`).length
+        angular.element(`#currentAction .cron_${field}:visible`)
+        && angular.element(`#currentAction .cron_${field}:visible`).length
       ) {
         caretPos = getCaretPosition(angular.element(`#currentAction .cron_${field}:visible`)[0]);
         $timeout(() => {

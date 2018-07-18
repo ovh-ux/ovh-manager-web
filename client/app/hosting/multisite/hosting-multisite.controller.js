@@ -53,8 +53,7 @@ angular
               $scope.alerts.main,
             );
           })
-          .then(() =>
-            hostingSSLCertificate.retrievingLinkedDomains($stateParams.productId))
+          .then(() => hostingSSLCertificate.retrievingLinkedDomains($stateParams.productId))
           .then((sslLinked) => {
             const linkedSSLs = _(sslLinked).isArray() ? sslLinked : [sslLinked];
 
@@ -112,8 +111,7 @@ angular
               $scope.alerts.main,
             );
           })
-          .then(() =>
-            this.hostingSSLCertificate.retrievingCertificate(this.$stateParams.productId))
+          .then(() => this.hostingSSLCertificate.retrievingCertificate(this.$stateParams.productId))
           .then((certificate) => {
             $scope.sslCertificate = certificate;
           })

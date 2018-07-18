@@ -26,8 +26,7 @@ angular.module('App').controller(
         this.$scope.currentActionData = data;
 
         if (this.$scope.currentActionData) {
-          this.$scope.stepPath =
-            'double-authentication/double-authentication.html';
+          this.$scope.stepPath = 'double-authentication/double-authentication.html';
           $('#currentActionDoubleAlert').modal({
             keyboard: false,
             backdrop: 'static',
@@ -43,8 +42,7 @@ angular.module('App').controller(
        */
       this.$scope.resetAction = () => this.$scope.setAction(false);
 
-      this.$scope.getDoubleAuthBackupCode = () =>
-        this.getDoubleAuthBackupCode();
+      this.$scope.getDoubleAuthBackupCode = () => this.getDoubleAuthBackupCode();
 
       this.getDoubleAuthBackupCode();
     }
@@ -60,8 +58,8 @@ angular.module('App').controller(
         .then((sotpAccount) => {
           this.$scope.backupCodeStatus = sotpAccount;
           if (
-            this.$scope.backupCodeStatus.status === 'enabled' &&
-            this.$scope.backupCodeStatus.remaining <= 3
+            this.$scope.backupCodeStatus.status === 'enabled'
+            && this.$scope.backupCodeStatus.remaining <= 3
           ) {
             this.$scope.setAction(
               'doubleAuthAlert',

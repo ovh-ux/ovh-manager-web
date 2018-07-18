@@ -35,22 +35,20 @@ angular.module('App').controller(
           this.selected.state,
           this.selected.domainsNames,
         )
-          .then(data =>
-            this.Alerter.alertFromSWSBatchResult(
-              {
-                OK: this.$scope.tr('domains_configuration_dnssec_batch_success'),
-                PARTIAL: this.$scope.tr('domains_configuration_dnssec_batch_partial'),
-                ERROR: this.$scope.tr('domains_configuration_dnssec_batch_fail'),
-              },
-              data,
-              this.$scope.alerts.main,
-            ))
-          .catch(err =>
-            this.Alerter.alertFromSWS(
-              this.$scope.tr('domains_configuration_dnssec_batch_fail'),
-              err,
-              this.$scope.alerts.main,
-            ));
+          .then(data => this.Alerter.alertFromSWSBatchResult(
+            {
+              OK: this.$scope.tr('domains_configuration_dnssec_batch_success'),
+              PARTIAL: this.$scope.tr('domains_configuration_dnssec_batch_partial'),
+              ERROR: this.$scope.tr('domains_configuration_dnssec_batch_fail'),
+            },
+            data,
+            this.$scope.alerts.main,
+          ))
+          .catch(err => this.Alerter.alertFromSWS(
+            this.$scope.tr('domains_configuration_dnssec_batch_fail'),
+            err,
+            this.$scope.alerts.main,
+          ));
       };
     }
   },

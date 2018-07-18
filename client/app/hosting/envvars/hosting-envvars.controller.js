@@ -26,8 +26,7 @@ angular.module('App').controller(
       this.envvars = [];
       this.maxEnvvars = 0;
 
-      this.$scope.$on(this.Hosting.events.tabEnvvarsRefresh, () =>
-        this.getIds());
+      this.$scope.$on(this.Hosting.events.tabEnvvarsRefresh, () => this.getIds());
 
       return this.getIds().then(() => this.loadCapabilities());
     }
@@ -51,8 +50,7 @@ angular.module('App').controller(
           );
         })
         .finally(() => {
-          this.hasResult =
-            _(this.envvars).isArray() && !_(this.envvars).isEmpty();
+          this.hasResult = _(this.envvars).isArray() && !_(this.envvars).isEmpty();
           this.loading = false;
         });
     }

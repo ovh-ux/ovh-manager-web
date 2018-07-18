@@ -21,10 +21,9 @@ angular.module('App').controller(
 
     $onInit() {
       this.addDelegateShown = false;
-      this.createNicUrl =
-        this.constants.WEBSITE_URLS.new_nic[
-          this.translator.getSelectedAvailableLanguage().value
-        ] || null;
+      this.createNicUrl = this.constants.WEBSITE_URLS.new_nic[
+        this.translator.getSelectedAvailableLanguage().value
+      ] || null;
       this.currentAccount = this.$scope.currentActionData.accountName || null;
       this.delegationAccountList = [];
       this.loading = false;
@@ -44,12 +43,11 @@ angular.module('App').controller(
         .then((list) => {
           this.delegationAccountList = list;
         })
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('email_tab_error'),
-            _.get(err, 'data', err),
-            this.$scope.alerts.main,
-          ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('email_tab_error'),
+          _.get(err, 'data', err),
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           this.loading = false;
         });
@@ -87,11 +85,10 @@ angular.module('App').controller(
         this.currentAccount,
         delegationAccount,
       )
-        .then(() =>
-          _.remove(
-            this.delegationAccountList,
-            name => name === delegationAccount,
-          ))
+        .then(() => _.remove(
+          this.delegationAccountList,
+          name => name === delegationAccount,
+        ))
         .catch((err) => {
           this.Alerter.alertFromSWS(
             this.$scope.tr('email_tab_error'),

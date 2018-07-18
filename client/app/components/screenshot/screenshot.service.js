@@ -6,14 +6,13 @@ angular.module('services').service('Screenshot', [
     const swsScreenshotPath = `${constants.aapiRootPath}sws/screenshot`;
     const screenshotsCache = cache('SCREENSHOTS');
 
-    this.getScreenshot = url =>
-      $http
-        .get(swsScreenshotPath, {
-          cache: screenshotsCache,
-          params: {
-            url,
-          },
-        })
-        .then(response => (response ? response.data : null));
+    this.getScreenshot = url => $http
+      .get(swsScreenshotPath, {
+        cache: screenshotsCache,
+        params: {
+          url,
+        },
+      })
+      .then(response => (response ? response.data : null));
   },
 ]);

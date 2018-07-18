@@ -43,8 +43,7 @@ angular.module('controllers').controller(
         );
       });
 
-      this.$scope.loadRedirection = (count, offset) =>
-        this.loadRedirection(count, offset);
+      this.$scope.loadRedirection = (count, offset) => this.loadRedirection(count, offset);
     }
 
     loadRedirection(count, offset) {
@@ -68,8 +67,8 @@ angular.module('controllers').controller(
           this.redirectionList = results;
 
           if (
-            _.has(results, 'list.results') &&
-            !_(results.list.results).isEmpty()
+            _.has(results, 'list.results')
+            && !_(results.list.results).isEmpty()
           ) {
             this.hasResult = true;
           }

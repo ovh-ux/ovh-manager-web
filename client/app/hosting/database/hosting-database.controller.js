@@ -31,8 +31,7 @@ angular.module('App').controller(
         WEEKLY: 'weekly.1',
         NOW: 'now',
       };
-      this.canCreateDatabase =
-        this.hosting.databaseMax - this.hosting.databaseCount > 0;
+      this.canCreateDatabase = this.hosting.databaseMax - this.hosting.databaseCount > 0;
       this.databases = {
         details: [],
       };
@@ -46,8 +45,7 @@ angular.module('App').controller(
       };
 
       this.$scope.goToList = () => this.goToList();
-      this.$scope.$on('hosting.databases.backup.restore', () =>
-        this.reloadCurrentPage());
+      this.$scope.$on('hosting.databases.backup.restore', () => this.reloadCurrentPage());
 
       this.$scope.$on(
         `${this.hostingService.events.tabDatabasesCreation}.done`,

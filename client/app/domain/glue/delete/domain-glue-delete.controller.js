@@ -21,17 +21,15 @@ angular.module('controllers').controller(
         this.$stateParams.productId,
         this.glueRecord.host,
       )
-        .then(() =>
-          this.Alerter.success(
-            this.$scope.tr('domain_tab_GLUE_delete_success'),
-            this.$scope.alerts.main,
-          ))
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_tab_GLUE_delete_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .then(() => this.Alerter.success(
+          this.$scope.tr('domain_tab_GLUE_delete_success'),
+          this.$scope.alerts.main,
+        ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('domain_tab_GLUE_delete_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

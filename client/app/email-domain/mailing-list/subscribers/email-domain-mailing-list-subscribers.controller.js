@@ -38,8 +38,7 @@ angular.module('App').controller(
       };
       this.search = { subscribers: '' };
 
-      this.$scope.$on('hosting.tabs.mailingLists.subscribers.refresh', () =>
-        this.refreshTableSubscribers());
+      this.$scope.$on('hosting.tabs.mailingLists.subscribers.refresh', () => this.refreshTableSubscribers());
       this.$scope.$on(
         'mailingLists.subscribers.poll.start',
         (pollObject, task) => {
@@ -140,8 +139,7 @@ angular.module('App').controller(
 
     applySelection(subscribers) {
       _.forEach(subscribers, (subscriber) => {
-        subscriber.selected = // eslint-disable-line no-param-reassign
-          _.indexOf(this.subscribers.selected, subscriber.email) !== -1;
+        _.set(subscriber, 'selected', _.indexOf(this.subscribers.selected, subscriber.email) !== -1);
       });
     }
 
@@ -162,12 +160,11 @@ angular.module('App').controller(
         .then((data) => {
           this.subscribers.ids = this.$filter('orderBy')(data);
         })
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('mailing_list_tab_modal_get_lists_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('mailing_list_tab_modal_get_lists_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           if (_.isEmpty(this.subscribers.ids)) {
             this.loading.subscribers = false;

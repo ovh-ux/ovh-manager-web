@@ -113,8 +113,8 @@ angular.module('App').controller(
     loadContracts() {
       this.model.contract = false;
       if (
-        !this.model.duration.contracts ||
-        !this.model.duration.contracts.length
+        !this.model.duration.contracts
+        || !this.model.duration.contracts.length
       ) {
         this.$rootScope.$broadcast('wizard-goToStep', 5);
       }
@@ -122,8 +122,8 @@ angular.module('App').controller(
 
     backToContracts() {
       if (
-        !this.model.duration.contracts ||
-        !this.model.duration.contracts.length
+        !this.model.duration.contracts
+        || !this.model.duration.contracts.length
       ) {
         this.$rootScope.$broadcast('wizard-goToStep', 2);
       }

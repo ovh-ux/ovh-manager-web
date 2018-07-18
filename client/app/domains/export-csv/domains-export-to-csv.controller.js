@@ -123,13 +123,12 @@ angular.module('App').controller(
 
               return this.Domain.getDetails(zone, requestsNeeded).then((domain) => {
                 if (domain) {
-                  const data =
-                    _.map(
-                      options.choices,
-                      opt => (opt.transform ?
-                        opt.transform(domain[opt.modelKey], options.translations) :
-                        domain[opt.modelKey]),
-                    );
+                  const data = _.map(
+                    options.choices,
+                    opt => (opt.transform
+                      ? opt.transform(domain[opt.modelKey], options.translations)
+                      : domain[opt.modelKey]),
+                  );
                   options.datas.push(data);
                 }
               });

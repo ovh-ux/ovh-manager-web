@@ -106,9 +106,9 @@ angular.module('controllers').controller(
     getCompleteTarget() {
       let redirectionTarget = this.newRedirection.serverTarget;
       if (
-        !_.isEmpty(redirectionTarget) &&
-        this.shouldIncludeDomain &&
-        _.isString(this.newRedirection.domain.name)
+        !_.isEmpty(redirectionTarget)
+        && this.shouldIncludeDomain
+        && _.isString(this.newRedirection.domain.name)
       ) {
         redirectionTarget += `.${this.newRedirection.domain.name}`;
       }
@@ -140,26 +140,26 @@ angular.module('controllers').controller(
      */
     getSmallDomainNameOf() {
       if (
-        this.errors.containOneError &&
-        !this.errors.containAllError &&
-        this.errors.wwwhasError
+        this.errors.containOneError
+        && !this.errors.containAllError
+        && this.errors.wwwhasError
       ) {
         return this.getDomainNameOf(this.newRedirection.subdomain);
       }
       if (
-        this.newRedirection.addwww &&
-        !this.newRedirection.disableWww &&
-        this.errors.containOneError &&
-        !this.errors.containAllError &&
-        !this.errors.wwwhasError
+        this.newRedirection.addwww
+        && !this.newRedirection.disableWww
+        && this.errors.containOneError
+        && !this.errors.containAllError
+        && !this.errors.wwwhasError
       ) {
         return this.getDomainNameOf(this.newRedirection.subdomainWww);
       }
       return (
-        ((this.newRedirection.addwww &&
-          !this.newRedirection.disableWww &&
-          this.$scope.i18n.domain_tab_REDIRECTION_add_www) ||
-          '') + this.getDomainNameOf(this.newRedirection.subdomain)
+        ((this.newRedirection.addwww
+          && !this.newRedirection.disableWww
+          && this.$scope.i18n.domain_tab_REDIRECTION_add_www)
+          || '') + this.getDomainNameOf(this.newRedirection.subdomain)
       );
     }
 
@@ -185,13 +185,13 @@ angular.module('controllers').controller(
     getTitle() {
       return [
         this.getDomainNameOf(this.newRedirection.subdomain),
-        (this.newRedirection.addwww &&
-          !this.newRedirection.disableWww &&
-          this.$scope.tr(
+        (this.newRedirection.addwww
+          && !this.newRedirection.disableWww
+          && this.$scope.tr(
             'domain_and',
             this.getDomainNameOf(this.newRedirection.subdomainWww),
-          )) ||
-          '',
+          ))
+          || '',
       ];
     }
 
@@ -280,7 +280,7 @@ angular.module('controllers').controller(
     ipaddrValid(ip) {
       if (this.Validator.isValidIpv4(ip)) {
         return this.typeRedirection.ipv4;
-      } else if (this.Validator.isValidIpv6(ip)) {
+      } if (this.Validator.isValidIpv6(ip)) {
         return this.typeRedirection.ipv6;
       }
       return false;
@@ -299,18 +299,16 @@ angular.module('controllers').controller(
 
     subDomainCheck(input) {
       const subDomain = this.newRedirection.subdomain;
-      const isValid =
-        subDomain === null ||
-        subDomain === '' ||
-        this.DomainValidator.isValidTarget(
+      const isValid = subDomain === null
+        || subDomain === ''
+        || this.DomainValidator.isValidTarget(
           `${subDomain}.${this.newRedirection.domain.displayName}`,
           'CNAME',
         );
       input.$setValidity('subdomain', isValid);
 
       if (subDomain !== null && subDomain !== '') {
-        this.newRedirection.disableWww =
-          subDomain === 'www' || _.startsWith(subDomain, 'www.');
+        this.newRedirection.disableWww = subDomain === 'www' || _.startsWith(subDomain, 'www.');
         this.newRedirection.subdomainWww = !this.newRedirection.disableWww
           ? `www.${subDomain}`
           : 'www';
@@ -327,8 +325,9 @@ angular.module('controllers').controller(
       const { webTarget } = this.newRedirection;
       if (webTarget) {
         this.errors.webTarget = !this.Validator.isValidURL(webTarget);
-        this.errors.webTargetLength =
-          !this.errors.webTarget && webTarget && this.testInputSize(webTarget);
+        this.errors.webTargetLength = !this.errors.webTarget
+          && webTarget
+          && this.testInputSize(webTarget);
       }
     }
 
@@ -336,16 +335,16 @@ angular.module('controllers').controller(
      * Valid web target on step 4 description option
      */
     webTargetDescriptionCheck() {
-      this.errors.ortDescription =
-        this.testInputSize(this.newRedirection.webTargetdetail.webTargetDescription);
+      this.errors.ortDescription = this.testInputSize(this.newRedirection
+        .webTargetdetail.webTargetDescription);
     }
 
     /**
      * Valid web target on step 4 keywords option
      */
     webTargetKeywordsCheck() {
-      this.errors.ortKeywords =
-        this.testInputSize(this.newRedirection.webTargetdetail.webTargetKeywords);
+      this.errors.ortKeywords = this.testInputSize(this.newRedirection
+        .webTargetdetail.webTargetKeywords);
     }
 
     /**
@@ -363,10 +362,10 @@ angular.module('controllers').controller(
       if (this.newRedirection.step2 === this.choice.web) {
         if (this.newRedirection.step3 === this.choice.visible) {
           if (
-            this.newRedirection.webTarget &&
-            !this.errors.webTarget &&
-            !this.errors.webTargetLength &&
-            this.newRedirection.step4 === this.choice.r301
+            this.newRedirection.webTarget
+            && !this.errors.webTarget
+            && !this.errors.webTargetLength
+            && this.newRedirection.step4 === this.choice.r301
           ) {
             this.newRedirection.params.typeRedirection = this.typeRedirection.txt;
             this.newRedirection.params.targetRedirection = this.newRedirection.webTarget;
@@ -375,10 +374,10 @@ angular.module('controllers').controller(
           }
 
           if (
-            this.newRedirection.webTarget &&
-            !this.errors.webTarget &&
-            !this.errors.webTargetLength &&
-            this.newRedirection.step4 === this.choice.r302
+            this.newRedirection.webTarget
+            && !this.errors.webTarget
+            && !this.errors.webTargetLength
+            && this.newRedirection.step4 === this.choice.r302
           ) {
             this.newRedirection.params.typeRedirection = this.typeRedirection.txt;
             this.newRedirection.params.targetRedirection = this.newRedirection.webTarget;
@@ -386,13 +385,13 @@ angular.module('controllers').controller(
           }
         } else if (this.newRedirection.step3 === this.choice.invisible) {
           if (
-            this.newRedirection.webTarget &&
-            !this.errors.webTarget &&
-            !this.errors.webTargetLength &&
-            !this.errors.ortTitle &&
-            !this.errors.ortKeywords &&
-            !this.errors.ortDescription &&
-            this.newRedirection.step4 === this.choice.iframe
+            this.newRedirection.webTarget
+            && !this.errors.webTarget
+            && !this.errors.webTargetLength
+            && !this.errors.ortTitle
+            && !this.errors.ortKeywords
+            && !this.errors.ortDescription
+            && this.newRedirection.step4 === this.choice.iframe
           ) {
             this.newRedirection.params.typeRedirection = this.typeRedirection.txt;
             this.newRedirection.params.targetRedirection = this.newRedirection.webTarget;
@@ -401,9 +400,8 @@ angular.module('controllers').controller(
         }
       } else if (this.newRedirection.step2 === this.choice.server) {
         if (this.newRedirection.step3 === this.choice.ip) {
-          const validIP =
-            this.newRedirection.ipTarget &&
-            this.ipaddrValid(this.newRedirection.ipTarget);
+          const validIP = this.newRedirection.ipTarget
+            && this.ipaddrValid(this.newRedirection.ipTarget);
           if (validIP) {
             this.newRedirection.params.typeRedirection = validIP;
             this.newRedirection.params.targetRedirection = this.newRedirection.ipTarget;
@@ -493,9 +491,9 @@ angular.module('controllers').controller(
           considerWww:
             this.newRedirection.addwww && !this.newRedirection.disableWww,
         },
-        this.errors.conflict ||
-        this.errors.containAllError ||
-        this.errors.containOneError
+        this.errors.conflict
+        || this.errors.containAllError
+        || this.errors.containOneError
           ? this.newRedirection.listValidRedirection
           : null,
       )

@@ -26,10 +26,9 @@ angular.module('App').config(($stateProvider) => {
       ],
       translator: [
         'translator',
-        translator =>
-          translator
-            .load(['email', 'hosting', 'mailing_list'])
-            .then(() => translator),
+        translator => translator
+          .load(['email', 'hosting', 'mailing_list'])
+          .then(() => translator),
       ],
     },
   });

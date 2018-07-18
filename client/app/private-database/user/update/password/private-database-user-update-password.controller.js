@@ -105,10 +105,10 @@ angular.module('App').controller(
 
     isPasswordValid() {
       return (
-        this.model.password.value &&
-        this.model.password.value.length &&
-        this.model.password.value === this.model.password.confirmation &&
-        this.model.password.condition.pattern.test(this.model.password.value)
+        this.model.password.value
+        && this.model.password.value.length
+        && this.model.password.value === this.model.password.confirmation
+        && this.model.password.condition.pattern.test(this.model.password.value)
       );
     }
 

@@ -28,8 +28,8 @@ angular.module('App').controller(
       this.getUsers();
 
       /*
-           * Listners
-           */
+       * Listners
+       */
       _.forEach(this.statusToWatch, (state) => {
         this.$scope.$on(`privateDatabase.user.create.${state}`, this[`onUserCreate${state}`].bind(this));
         this.$scope.$on(`privateDatabase.user.delete.${state}`, this[`onUserDelete${state}`].bind(this));
@@ -98,29 +98,33 @@ angular.module('App').controller(
     }
 
     /*
-       * Create User jobs
-       */
+     * Create User jobs
+     */
     onUserCreatestart(evt, opts) {
       this.currentUsers.add.push(opts.userName);
     }
 
     onUserCreatedone(evt, opts) {
-      this.currentUsers.add =
-        _.remove(this.currentUsers.add, userName => userName !== opts.userName);
+      this.currentUsers.add = _.remove(
+        this.currentUsers.add,
+        userName => userName !== opts.userName,
+      );
       this.getUsers();
     }
 
     onUserCreateerror(evt, opts) {
-      this.currentUsers.add =
-        _.remove(this.currentUsers.add, userName => userName !== opts.userName);
+      this.currentUsers.add = _.remove(
+        this.currentUsers.add,
+        userName => userName !== opts.userName,
+      );
       this.alerter.error(this.$scope.tr('privateDatabase_add_user_fail'), this.$scope.alerts.main);
     }
 
     /** EndCreateUserJobs */
 
     /*
-       * delete User jobs
-       */
+     * delete User jobs
+     */
     onUserDeletestart(evt, opts) {
       let unregister = null;
       const todo = () => {

@@ -39,77 +39,73 @@ angular.module('services').service('HostingCron', function hostingCron($q, OvhHt
   /*
      * Get cron
      */
-  this.getCron = (serviceName, id) =>
-    OvhHttp.get(['/hosting/web/{serviceName}/cron', id].join('/'), {
-      rootPath: 'apiv6',
-      urlParams: {
-        serviceName,
-      },
-    });
+  this.getCron = (serviceName, id) => OvhHttp.get(['/hosting/web/{serviceName}/cron', id].join('/'), {
+    rootPath: 'apiv6',
+    urlParams: {
+      serviceName,
+    },
+  });
 
   /*
      * Create a new cron
      */
-  this.createCron = (serviceName, model) =>
-    OvhHttp.post('/hosting/web/{serviceName}/cron', {
-      rootPath: 'apiv6',
-      urlParams: {
-        serviceName,
-      },
-      data: {
-        command: model.command,
-        description: model.description || undefined,
-        email: model.email || undefined,
-        frequency: model.frequency,
-        language: model.language,
-        status: model.status,
-      },
-    }).then(
-      (data) => {
-        Hosting.resetCrons();
-        return data;
-      },
-      http => $q.reject(http),
-    );
+  this.createCron = (serviceName, model) => OvhHttp.post('/hosting/web/{serviceName}/cron', {
+    rootPath: 'apiv6',
+    urlParams: {
+      serviceName,
+    },
+    data: {
+      command: model.command,
+      description: model.description || undefined,
+      email: model.email || undefined,
+      frequency: model.frequency,
+      language: model.language,
+      status: model.status,
+    },
+  }).then(
+    (data) => {
+      Hosting.resetCrons();
+      return data;
+    },
+    http => $q.reject(http),
+  );
 
   /*
      * Delete a cron
      */
-  this.deleteCron = (serviceName, cronId) =>
-    OvhHttp.delete(['/hosting/web/{serviceName}/cron', cronId].join('/'), {
-      rootPath: 'apiv6',
-      urlParams: {
-        serviceName,
-      },
-    }).then(
-      (data) => {
-        Hosting.resetCrons();
-        return data;
-      },
-      http => $q.reject(http),
-    );
+  this.deleteCron = (serviceName, cronId) => OvhHttp.delete(['/hosting/web/{serviceName}/cron', cronId].join('/'), {
+    rootPath: 'apiv6',
+    urlParams: {
+      serviceName,
+    },
+  }).then(
+    (data) => {
+      Hosting.resetCrons();
+      return data;
+    },
+    http => $q.reject(http),
+  );
 
   /*
      * Edit a cron
      */
-  this.editCron = (serviceName, cronId, model) =>
-    OvhHttp.put(['/hosting/web/{serviceName}/cron', cronId].join('/'), {
-      rootPath: 'apiv6',
-      urlParams: {
-        serviceName,
-      },
-      data: {
-        command: model.command,
-        description: model.description || undefined,
-        email: model.email || undefined,
-        frequency: model.frequency,
-        language: model.language,
-        status: model.status,
-      },
-    }).then((data) => {
-      Hosting.resetCrons();
-      return data;
-    });
+  this.editCron = (serviceName, cronId, model) => OvhHttp.put(['/hosting/web/{serviceName}/cron', cronId].join('/'), {
+    rootPath: 'apiv6',
+    urlParams: {
+      serviceName,
+    },
+    data: {
+      command: model.command,
+      description: model.description || undefined,
+      email: model.email || undefined,
+      frequency: model.frequency,
+      language: model.language,
+      status: model.status,
+    },
+  }).then((data) => {
+    Hosting.resetCrons();
+    return data;
+  });
 
   this.trEnum = (str) => {
     if (!str) {
@@ -119,11 +115,10 @@ angular.module('services').service('HostingCron', function hostingCron($q, OvhHt
     return str.replace(/\./g, '_');
   };
 
-  this.getAvailableLanguage = serviceName =>
-    OvhHttp.get('/hosting/web/{serviceName}/cronAvailableLanguage', {
-      rootPath: 'apiv6',
-      urlParams: {
-        serviceName,
-      },
-    });
+  this.getAvailableLanguage = serviceName => OvhHttp.get('/hosting/web/{serviceName}/cronAvailableLanguage', {
+    rootPath: 'apiv6',
+    urlParams: {
+      serviceName,
+    },
+  });
 });

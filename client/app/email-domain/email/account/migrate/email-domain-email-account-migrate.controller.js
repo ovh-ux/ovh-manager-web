@@ -25,8 +25,7 @@ angular.module('App').controller(
         HOSTED_EXCHANGE: 'HOSTED EXCHANGE',
         PRIVATE_EXCHANGE: 'PRIVATE EXCHANGE',
       };
-      this.email =
-        this.$scope.ctrlEmailDomainEmail.accountMigrationEmail || null;
+      this.email = this.$scope.ctrlEmailDomainEmail.accountMigrationEmail || null;
 
       this.loaders = {
         isInitialRetrievalRunning: true,
@@ -142,9 +141,8 @@ angular.module('App').controller(
         .catch(err => this.handleError(err))
         .finally(() => {
           this.loaders.isWaitingForDestinationEmails = false;
-          this.isExchange =
-            _.get(this, 'migrate.destinationService.type') !==
-            this.destinationServiceType.emailPro;
+          this.isExchange = _.get(this, 'migrate.destinationService.type')
+            !== this.destinationServiceType.emailPro;
         });
     }
 
@@ -189,8 +187,8 @@ angular.module('App').controller(
       )
         .then(() => {
           if (
-            _.get(this, 'migrate.destinationService.type') ===
-            this.destinationServiceType.emailPro
+            _.get(this, 'migrate.destinationService.type')
+            === this.destinationServiceType.emailPro
           ) {
             this.Alerter.success(
               this.$scope.tr('email_tab_modal_migrate_success_emailpro'),
@@ -226,8 +224,7 @@ angular.module('App').controller(
     }
 
     displayCheckMigrationErrors(errors) {
-      const checkMigrationErrorCodes = errors.map(error =>
-        _.get(error, 'code'));
+      const checkMigrationErrorCodes = errors.map(error => _.get(error, 'code'));
 
       const shouldRetry = _.isEmpty(_.intersection(checkMigrationErrorCodes, [
         'ACCOUNT_EMPTY',

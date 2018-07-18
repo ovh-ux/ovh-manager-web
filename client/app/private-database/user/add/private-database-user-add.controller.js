@@ -40,9 +40,9 @@ angular.module('App').controller(
 
     isPasswordValid() {
       return (
-        this.model.password.value &&
-        this.model.password.value.length &&
-        this.model.password.condition.pattern.test(this.model.password.value)
+        this.model.password.value
+        && this.model.password.value.length
+        && this.model.password.condition.pattern.test(this.model.password.value)
       );
     }
 
@@ -52,10 +52,10 @@ angular.module('App').controller(
 
     isNameValid() {
       return (
-        this.model.user.value &&
-        this.model.user.value.length &&
-        this.model.user.condition.pattern.test(this.model.user.value) &&
-        !this.nameAlreadyExist()
+        this.model.user.value
+        && this.model.user.value.length
+        && this.model.user.condition.pattern.test(this.model.user.value)
+        && !this.nameAlreadyExist()
       );
     }
 

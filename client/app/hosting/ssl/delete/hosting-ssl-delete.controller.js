@@ -19,9 +19,8 @@ angular.module('App').controller(
     }
 
     $onInit() {
-      this.wasCertificateFree =
-        this.hostingSSLCertificateType.constructor
-          .getCertificateTypeByProvider(this.$scope.currentActionData.provider).isFree;
+      this.wasCertificateFree = this.hostingSSLCertificateType.constructor
+        .getCertificateTypeByProvider(this.$scope.currentActionData.provider).isFree;
 
       this.$scope.deletingCertificate = () => this.deletingCertificate();
     }

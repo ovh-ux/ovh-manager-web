@@ -64,8 +64,7 @@ angular.module('App').controller(
         }
       };
 
-      this.$scope.$on('domain.dashboard.refresh', () =>
-        this.reloadDomain(true));
+      this.$scope.$on('domain.dashboard.refresh', () => this.reloadDomain(true));
       this.$scope.$on('$locationChangeStart', () => this.$scope.resetAction());
       this.$scope.$on('transfertLock.get.done', (e, infos) => {
         this.domain.protection = infos.transferLockStatus;
@@ -84,17 +83,15 @@ angular.module('App').controller(
         .then(({
           user, domain, allDom, alldomOrder,
         }) => {
-          this.isAdmin =
-            domain.contactAdmin === user.nichandle ||
-            domain.contactTech === user.nichandle;
+          this.isAdmin = domain.contactAdmin === user.nichandle
+            || domain.contactTech === user.nichandle;
           this.domainInfos = domain;
           if (this.isAllDom) {
             this.allDom = this.$stateParams.allDom;
             this.allDomInfos = allDom;
           } else if (alldomOrder) {
-            this.alldomURL =
-              alldomOrder +
-              new URI(`http://${domain.domain}`).tld('alldom').domain();
+            this.alldomURL = alldomOrder
+              + new URI(`http://${domain.domain}`).tld('alldom').domain();
           }
         })
         .catch(() => {
@@ -180,11 +177,10 @@ angular.module('App').controller(
             }),
           ]);
         })
-        .catch(() =>
-          this.Alerter.error(
-            this.$scope.tr('domain_dashboard_loading_error'),
-            this.$scope.alerts.page,
-          ))
+        .catch(() => this.Alerter.error(
+          this.$scope.tr('domain_dashboard_loading_error'),
+          this.$scope.alerts.page,
+        ))
         .finally(() => {
           this.loading.domainInfos = false;
           this.$scope.$broadcast('domain.refreshData.done');

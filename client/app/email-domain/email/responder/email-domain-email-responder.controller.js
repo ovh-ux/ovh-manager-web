@@ -21,8 +21,7 @@ angular.module('App').controller(
         pager: false,
       };
 
-      this.$scope.$on('hosting.tabs.emails.responders.refresh', () =>
-        this.refreshTableResponders());
+      this.$scope.$on('hosting.tabs.emails.responders.refresh', () => this.refreshTableResponders());
 
       this.refreshTableResponders();
     }
@@ -42,12 +41,11 @@ angular.module('App').controller(
         .then((data) => {
           this.responders = data.sort();
         })
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('email_tab_table_responders_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('email_tab_table_responders_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           if (_.isEmpty(this.responders)) {
             this.loading.responders = false;
