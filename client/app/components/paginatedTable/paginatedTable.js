@@ -5,11 +5,9 @@ angular.module('directives').directive('paginatedTable', [
     scope: true,
     templateUrl: 'components/paginatedTable/paginatedTable.html',
     link($scope, $attr) {
-      $scope.getPaginatedTableStuff = () =>
-        $scope[$attr.paginatedTablePaginatedStuff];
+      $scope.getPaginatedTableStuff = () => $scope[$attr.paginatedTablePaginatedStuff];
 
-      $scope.getPaginatedTableLoading = () =>
-        $scope[$attr.paginatedTableTableLoading];
+      $scope.getPaginatedTableLoading = () => $scope[$attr.paginatedTableTableLoading];
 
       if ($attr.paginatedTableTitles) {
         $scope.paginatedTableTitles = $scope.$eval($attr.paginatedTableTitles);

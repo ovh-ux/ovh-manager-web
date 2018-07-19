@@ -41,10 +41,9 @@ angular.module('App').controller(
               this.DomainsOwo.getOwoFieldsSelection(this.selectedDomainsNames[0])
                 .then((selection) => {
                   _.forEach(this.fields, (field) => {
-                    this.fieldsModel[field] =
-                      _.indexOf(selection, field.toLowerCase()) !== -1
-                        ? 'activated'
-                        : 'desactivated';
+                    this.fieldsModel[field] = _.indexOf(selection, field.toLowerCase()) !== -1
+                      ? 'activated'
+                      : 'desactivated';
                   });
                 })
                 .finally(() => {
@@ -71,18 +70,16 @@ angular.module('App').controller(
           this.desactivated,
           this.selectedDomainsNames,
         )
-          .then(data =>
-            this.Alerter.alertFromSWSBatchResult(
-              this.domainsOwoMessages,
-              data,
-              this.$scope.alerts.main,
-            ))
-          .catch(err =>
-            this.Alerter.alertFromSWS(
-              this.$scope.tr('domains_configuration_whois_fail'),
-              err,
-              this.$scope.alerts.main,
-            ));
+          .then(data => this.Alerter.alertFromSWSBatchResult(
+            this.domainsOwoMessages,
+            data,
+            this.$scope.alerts.main,
+          ))
+          .catch(err => this.Alerter.alertFromSWS(
+            this.$scope.tr('domains_configuration_whois_fail'),
+            err,
+            this.$scope.alerts.main,
+          ));
       };
     }
 

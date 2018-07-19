@@ -29,18 +29,18 @@ angular.module('App').controller(
 
     isPasswordValid() {
       return (
-        this.password.value &&
-        this.password.confirmation &&
-        this.password.value === this.password.confirmation &&
-        this.Hosting.constructor.isPasswordValid(this.password.value)
+        this.password.value
+        && this.password.confirmation
+        && this.password.value === this.password.confirmation
+        && this.Hosting.constructor.isPasswordValid(this.password.value)
       );
     }
 
     shouldDisplayDifferentPasswordMessage() {
       return (
-        this.password.value &&
-        this.password.confirmation &&
-        this.password.value !== this.password.confirmation
+        this.password.value
+        && this.password.confirmation
+        && this.password.value !== this.password.confirmation
       );
     }
 

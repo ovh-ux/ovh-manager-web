@@ -21,11 +21,10 @@ angular.module('App').controller(
         this.domain.name,
         this.activationZone.minimized,
       )
-        .then(() =>
-          this.Alerter.success(
-            this.$scope.tr('domain_tab_ZONE_no_zone_activate_success'),
-            this.$scope.alerts.main,
-          ))
+        .then(() => this.Alerter.success(
+          this.$scope.tr('domain_tab_ZONE_no_zone_activate_success'),
+          this.$scope.alerts.main,
+        ))
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.Alerter.alertFromSWS(

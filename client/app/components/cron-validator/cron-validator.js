@@ -2,8 +2,7 @@ angular.module('services').service('CronValidator', function cronValidator() {
   const self = this;
 
   let cronMinutes = '?';
-  const months =
-    '(?:JAN)|(?:FEB)|(?:MAR)|(?:APR)|(?:MAY)|(?:JUN)|(?:JUL)|(?:AUG)|(?:SEP)|(?:OCT)|(?:NOV)|(?:DEC)';
+  const months = '(?:JAN)|(?:FEB)|(?:MAR)|(?:APR)|(?:MAY)|(?:JUN)|(?:JUL)|(?:AUG)|(?:SEP)|(?:OCT)|(?:NOV)|(?:DEC)';
   const days = '(?:MON)|(?:TUE)|(?:WED)|(?:THU)|(?:FRI)|(?:SAT)|(?:SUN)';
 
   const validacron = {
@@ -93,36 +92,34 @@ angular.module('services').service('CronValidator', function cronValidator() {
   /**
    * @constructor
    */
-  this.CronValue = () =>
-    // crontab format: m h dom mon dow
-    ({
-      simple: {
-        items: {
-          h: {},
-          dom: {},
-          mon: {},
-          dow: {},
-        },
-        interval: {
-          h: null,
-          dom: null,
-          mon: null,
-          dow: null,
-        },
-        range: {
-          h: { from: null, to: null },
-          dom: { from: null, to: null },
-          mon: { from: null, to: null },
-          dow: { from: null, to: null },
-        },
+  this.CronValue = () => ({
+    simple: {
+      items: {
+        h: {},
+        dom: {},
+        mon: {},
+        dow: {},
       },
-      expert: {
-        h: '*',
-        dom: '*',
-        mon: '*',
-        dow: '*',
+      interval: {
+        h: null,
+        dom: null,
+        mon: null,
+        dow: null,
       },
-    });
+      range: {
+        h: { from: null, to: null },
+        dom: { from: null, to: null },
+        mon: { from: null, to: null },
+        dow: { from: null, to: null },
+      },
+    },
+    expert: {
+      h: '*',
+      dom: '*',
+      mon: '*',
+      dow: '*',
+    },
+  });
 
   this.getSimpleModeItems = (cronValue, field) => {
     let selectValuesTempo = _.pick(
@@ -348,10 +345,10 @@ angular.module('services').service('CronValidator', function cronValidator() {
 
     angular.forEach(splittedCrontab, (val, key) => {
       if (
-        val !== '*' &&
-        !cronFieldRegex.interval[key].test(val) &&
-        !cronFieldRegex.range[key].test(val) &&
-        !cronFieldRegex.items[key].test(val)
+        val !== '*'
+        && !cronFieldRegex.interval[key].test(val)
+        && !cronFieldRegex.range[key].test(val)
+        && !cronFieldRegex.items[key].test(val)
       ) {
         isOK = false;
       }
@@ -393,19 +390,19 @@ angular.module('services').service('CronValidator', function cronValidator() {
     if (cronMode.active === 'simple') {
       // Mode simple
       return (
-        self.cronSimpleValueIsValid('h', cronValue, cronMode) &&
-        self.cronSimpleValueIsValid('dom', cronValue, cronMode) &&
-        self.cronSimpleValueIsValid('mon', cronValue, cronMode) &&
-        self.cronSimpleValueIsValid('dow', cronValue, cronMode)
+        self.cronSimpleValueIsValid('h', cronValue, cronMode)
+        && self.cronSimpleValueIsValid('dom', cronValue, cronMode)
+        && self.cronSimpleValueIsValid('mon', cronValue, cronMode)
+        && self.cronSimpleValueIsValid('dow', cronValue, cronMode)
       );
     }
 
     // Mode expert
     return (
-      self.cronExpertValueIsValid('h', cronValue) &&
-      self.cronExpertValueIsValid('dom', cronValue) &&
-      self.cronExpertValueIsValid('mon', cronValue) &&
-      self.cronExpertValueIsValid('dow', cronValue)
+      self.cronExpertValueIsValid('h', cronValue)
+      && self.cronExpertValueIsValid('dom', cronValue)
+      && self.cronExpertValueIsValid('mon', cronValue)
+      && self.cronExpertValueIsValid('dow', cronValue)
     );
   };
 
@@ -419,15 +416,15 @@ angular.module('services').service('CronValidator', function cronValidator() {
         return !!cronValue.simple.interval[field];
       case 'range':
         return !!(
-          cronValue.simple.range[field].from != null &&
-          cronValue.simple.range[field].to != null &&
-          cronValue.simple.range[field].to > cronValue.simple.range[field].from
+          cronValue.simple.range[field].from != null
+          && cronValue.simple.range[field].to != null
+          && cronValue.simple.range[field].to > cronValue.simple.range[field].from
         );
       default:
         return false;
     }
   };
 
-  this.cronExpertValueIsValid = (field, cronValue) =>
-    cronValue.expert[field] && validacron[field].test(cronValue.expert[field]);
+  this.cronExpertValueIsValid = (field, cronValue) => cronValue.expert[field]
+    && validacron[field].test(cronValue.expert[field]);
 });

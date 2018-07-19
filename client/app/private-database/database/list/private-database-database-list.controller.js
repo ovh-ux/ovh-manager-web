@@ -134,8 +134,10 @@ angular
       if (!_.isEmpty(this.bddsDetails)) {
         todo();
       } else {
-        unregisterWatch =
-          this.$scope.$watch(angular.bind(this, () => this.bddsDetails.length), todo);
+        unregisterWatch = this.$scope.$watch(
+          angular.bind(this, () => this.bddsDetails.length),
+          todo,
+        );
       }
 
       return deferred.promise;

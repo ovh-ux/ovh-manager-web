@@ -18,10 +18,9 @@ angular.module('App').config(($stateProvider) => {
       ],
       translator: [
         'translator',
-        translator =>
-          translator
-            .load(['domain', 'domainsOperations'])
-            .then(() => translator),
+        translator => translator
+          .load(['domain', 'domainsOperations'])
+          .then(() => translator),
       ],
     },
   });
@@ -45,10 +44,9 @@ angular.module('App').config(($stateProvider) => {
       ],
       translator: [
         'translator',
-        translator =>
-          translator
-            .load(['domain', 'domainsOperations'])
-            .then(() => translator),
+        translator => translator
+          .load(['domain', 'domainsOperations'])
+          .then(() => translator),
       ],
     },
   });

@@ -15,11 +15,9 @@ angular.module('App').controller(
 
     $onInit() {
       this.accounts = this.$scope.ctrlEmailDelegate.emails || [];
-      this.currentAccount =
-        this.$scope.ctrlEmailDelegate.currentViewData || null;
+      this.currentAccount = this.$scope.ctrlEmailDelegate.currentViewData || null;
 
-      this.$scope.$on('hosting.tabs.emails.delegatedFilters.refresh', () =>
-        this.refreshTableFilters());
+      this.$scope.$on('hosting.tabs.emails.delegatedFilters.refresh', () => this.refreshTableFilters());
 
       this.refreshTableFilters();
     }
@@ -31,12 +29,11 @@ angular.module('App').controller(
         .then((data) => {
           this.filters = data.map(name => ({ name }));
         })
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('email_tab_table_filters_error'),
-            err,
-            this.$scope.alerts.main,
-          ));
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('email_tab_table_filters_error'),
+          err,
+          this.$scope.alerts.main,
+        ));
     }
 
     transformItem({ name }) {

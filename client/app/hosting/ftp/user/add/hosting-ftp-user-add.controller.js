@@ -49,20 +49,20 @@ angular.module('App').controller(
 
     isUserValid() {
       return (
-        this.model.selected.login != null &&
-        this.model.selected.login.length >= this.model.minUserLength &&
-        this.model.selected.login.length <= this.model.maxUserLength &&
-        this.model.selected.login.match(/^[\w]+$/)
+        this.model.selected.login != null
+        && this.model.selected.login.length >= this.model.minUserLength
+        && this.model.selected.login.length <= this.model.maxUserLength
+        && this.model.selected.login.match(/^[\w]+$/)
       );
     }
 
     isPasswordValid() {
       return (
-        this.model.selected.password.value &&
-        this.model.selected.password.confirmation &&
-        this.model.selected.password.value ===
-          this.model.selected.password.confirmation &&
-        this.Hosting.constructor.isPasswordValid(this.model.selected.password.value)
+        this.model.selected.password.value
+        && this.model.selected.password.confirmation
+        && this.model.selected.password.value
+          === this.model.selected.password.confirmation
+        && this.Hosting.constructor.isPasswordValid(this.model.selected.password.value)
       );
     }
 
@@ -72,8 +72,8 @@ angular.module('App').controller(
 
     isPasswordConfirmationInvalid() {
       return (
-        this.model.selected.password.value !==
-        this.model.selected.password.confirmation
+        this.model.selected.password.value
+        !== this.model.selected.password.confirmation
       );
     }
 
@@ -89,8 +89,8 @@ angular.module('App').controller(
       const home = '/';
       if (this.model.selected.home !== null) {
         if (
-          /^\/.*/.test(this.model.selected.home || '') ||
-          /^\.\/.*/.test(this.model.selected.home || '')
+          /^\/.*/.test(this.model.selected.home || '')
+          || /^\.\/.*/.test(this.model.selected.home || '')
         ) {
           return this.model.selected.home;
         }

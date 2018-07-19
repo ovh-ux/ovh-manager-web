@@ -60,8 +60,7 @@ angular.module('App').controller(
         }
       };
 
-      this.$scope.$on('hosting.tabs.emails.delegate.refresh', () =>
-        this.loadEmails());
+      this.$scope.$on('hosting.tabs.emails.delegate.refresh', () => this.loadEmails());
 
       this.loadEmails();
     }
@@ -102,12 +101,11 @@ angular.module('App').controller(
         .then((data) => {
           this.emails = data.sort();
         })
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('email_tab_table_accounts_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('email_tab_table_accounts_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           if (_.isEmpty(this.emails)) {
             this.loading.accounts = false;
@@ -147,23 +145,21 @@ angular.module('App').controller(
     updateUsage(account) {
       this.loading.usage = true;
       this.Emails.updateDelegatedUsage(account.email)
-        .then(() =>
-          this.Emails.getEmailDelegatedUsage(account.email).then(() =>
-            this.constructor.setAccountPercentUse(account)))
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('email_tab_modal_update_usage_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .then(() => this.Emails
+          .getEmailDelegatedUsage(account.email)
+          .then(() => this.constructor.setAccountPercentUse(account)))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('email_tab_modal_update_usage_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           this.loading.usage = false;
         });
     }
 
     static setAccountPercentUse(account) {
-      account.percentUse = // eslint-disable-line no-param-reassign
-        account.size > 0 ? _.round((account.quota * 100) / account.size) : 0;
+      _.set(account, 'percentUse', account.size > 0 ? _.round((account.quota * 100) / account.size) : 0);
     }
   },
 );

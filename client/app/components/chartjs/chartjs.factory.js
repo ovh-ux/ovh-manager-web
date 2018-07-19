@@ -61,9 +61,9 @@ angular.module('App').factory('ChartjsFactory', (CHARTJS) => {
    */
   ChartjsFactory.prototype.setYLabel = function setYLabel(label) {
     if (
-      this.options.scales.yAxes.length &&
-      _.first(this.options.scales.yAxes) &&
-      _.first(this.options.scales.yAxes).scaleLabel
+      this.options.scales.yAxes.length
+      && _.first(this.options.scales.yAxes)
+      && _.first(this.options.scales.yAxes).scaleLabel
     ) {
       this.options.scales.yAxes[0].scaleLabel.labelString = label;
     }

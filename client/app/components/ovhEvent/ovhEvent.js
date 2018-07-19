@@ -2,9 +2,9 @@ angular.module('directives').directive('ovhEvent', () => ({
   restrict: 'A',
   link($scope, $elm, $attrs) {
     if (
-      !!$attrs.ovhEvent &&
-      !!$attrs.ovhEventCallback &&
-      typeof $scope[$attrs.ovhEventCallback] === 'function'
+      !!$attrs.ovhEvent
+      && !!$attrs.ovhEventCallback
+      && typeof $scope[$attrs.ovhEventCallback] === 'function'
     ) {
       if ($attrs.ovhEventTarget) {
         if ($attrs.ovhEventData) {

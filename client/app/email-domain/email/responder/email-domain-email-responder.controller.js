@@ -84,10 +84,5 @@ angular.module('App').controller(
           return newResponder;
         });
     }
-
-    onTransformItemDone() {
-      this.loading.responders = false;
-      this.loading.pager = false;
-    }
   },
 );

@@ -74,8 +74,7 @@ angular.module('App').controller(
           const dump = _(originalDump).clone();
           dump.id = item.id;
           dump.transformed = true;
-          dump.waitRestore =
-            this.database.waitRestore && dump.id === this.dumpIdRestoring;
+          dump.waitRestore = this.database.waitRestore && dump.id === this.dumpIdRestoring;
 
           return dump;
         });

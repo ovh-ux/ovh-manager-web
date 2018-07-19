@@ -35,12 +35,11 @@ angular.module('App').controller(
         .then((data) => {
           this.model.options = data;
         })
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_DATABASES_configuration_dump_step1_loaderror'),
-            _.get(err, 'data', err),
-            this.$scope.alerts.main,
-          ));
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('hosting_tab_DATABASES_configuration_dump_step1_loaderror'),
+          _.get(err, 'data', err),
+          this.$scope.alerts.main,
+        ));
     }
 
     dumpDatabase() {
@@ -50,19 +49,17 @@ angular.module('App').controller(
         this.model.date,
         true,
       )
-        .then(() =>
-          this.Alerter.success(
-            this.$scope.tr('hosting_tab_DATABASES_configuration_dump_success'),
-            this.$scope.alerts.main,
-          ))
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_DATABASES_configuration_dump_fail', [
-              this.entryToDump,
-            ]),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .then(() => this.Alerter.success(
+          this.$scope.tr('hosting_tab_DATABASES_configuration_dump_success'),
+          this.$scope.alerts.main,
+        ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('hosting_tab_DATABASES_configuration_dump_fail', [
+            this.entryToDump,
+          ]),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => this.$scope.resetAction());
     }
   },

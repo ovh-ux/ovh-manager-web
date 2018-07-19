@@ -35,8 +35,7 @@ angular.module('App').controller(
       return this.privateDatabaseService
         .getConfigurationDetails(this.productId)
         .then((config) => {
-          this.configurations = config.details.map(field =>
-            this.convertAvailableValues(field));
+          this.configurations = config.details.map(field => this.convertAvailableValues(field));
         })
         .catch((error) => {
           this.alerter.error(

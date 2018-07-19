@@ -62,8 +62,8 @@ angular.module('services').service(
       return (
         _(mysteryCertificateType)
           .snakeCase()
-          .toUpperCase() ===
-        _(knownCertificateType)
+          .toUpperCase()
+        === _(knownCertificateType)
           .snakeCase()
           .toUpperCase()
       );
@@ -122,8 +122,7 @@ angular.module('services').service(
         .snakeCase()
         .toUpperCase();
       const matchingCertificate = _(HostingSSLCertificateType.getCertificateTypes())
-        .find(certificateType =>
-          certificateType.providerName === formattedProviderName);
+        .find(certificateType => certificateType.providerName === formattedProviderName);
 
       const certificateIsFound = _(matchingCertificate).isObject();
       if (!certificateIsFound) {

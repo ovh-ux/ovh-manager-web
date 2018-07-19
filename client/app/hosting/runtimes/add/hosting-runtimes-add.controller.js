@@ -45,16 +45,16 @@ angular.module('App').controller(
 
     isValid() {
       if (
-        this.entryToCreate &&
-        this.entryToCreate.type &&
-        this.entryToCreate.type.indexOf('nodejs') !== -1
+        this.entryToCreate
+        && this.entryToCreate.type
+        && this.entryToCreate.type.indexOf('nodejs') !== -1
       ) {
         return (
-          this.entryToCreate &&
-          this.entryToCreate.name &&
-          this.entryToCreate.publicDir &&
-          this.entryToCreate.appEnv &&
-          this.entryToCreate.appBootstrap
+          this.entryToCreate
+          && this.entryToCreate.name
+          && this.entryToCreate.publicDir
+          && this.entryToCreate.appEnv
+          && this.entryToCreate.appBootstrap
         );
       }
 

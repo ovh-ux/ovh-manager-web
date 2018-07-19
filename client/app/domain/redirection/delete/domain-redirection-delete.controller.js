@@ -34,10 +34,9 @@ angular.module('controllers').controller(
       ).then((results) => {
         this.wwwDomainToDelete.data = _.find(
           _.get(results, 'list.results'),
-          redirection =>
-            redirection.subDomain === `www.${this.entryToDelete.subDomain}` ||
-            (redirection.subDomain === 'www' &&
-              this.entryToDelete.subDomain !== 'www'),
+          redirection => redirection.subDomain === `www.${this.entryToDelete.subDomain}`
+            || (redirection.subDomain === 'www'
+              && this.entryToDelete.subDomain !== 'www'),
         );
       });
     }
@@ -66,17 +65,15 @@ angular.module('controllers').controller(
 
       return this.$q
         .all(deletePromises)
-        .then(() =>
-          this.Alerter.success(
-            this.$scope.tr('domain_tab_REDIRECTION_delete_success'),
-            this.$scope.alerts.main,
-          ))
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_tab_REDIRECTION_delete_fail'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .then(() => this.Alerter.success(
+          this.$scope.tr('domain_tab_REDIRECTION_delete_success'),
+          this.$scope.alerts.main,
+        ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('domain_tab_REDIRECTION_delete_fail'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

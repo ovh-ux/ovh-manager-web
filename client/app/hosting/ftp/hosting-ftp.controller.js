@@ -29,8 +29,7 @@ angular.module('App').controller(
         value: null,
       };
 
-      this.$scope.loadFtpInformations = (count, offset) =>
-        this.loadFtpInformations(count, offset);
+      this.$scope.loadFtpInformations = (count, offset) => this.loadFtpInformations(count, offset);
 
       this.$scope.$on(this.Hosting.events.tabFtpRefresh, () => {
         if (_.get(this.ftpInformations, 'hasMultiFtp', false)) {
@@ -102,11 +101,11 @@ angular.module('App').controller(
       )
         .then((ftpInformations) => {
           if (
-            ftpInformations != null &&
-            !_.isEmpty(ftpInformations.list.results)
+            ftpInformations != null
+            && !_.isEmpty(ftpInformations.list.results)
           ) {
-            const firstUserCredentials =
-              ftpInformations.list.results[0].serviceManagementCredentials;
+            const firstUserCredentials = ftpInformations.list.results[0]
+              .serviceManagementCredentials;
             this.hasResult = true;
             this.firstUser = {
               ftp: firstUserCredentials.ftp,
@@ -139,11 +138,10 @@ angular.module('App').controller(
           });
           /* eslint-enable no-param-reassign */
 
-          this.primaryUserEnabled =
-            ftpInformations.list.results.length &&
-            ftpInformations.list.results[0].isPrimaryAccount
-              ? ftpInformations.list.results[0].state === 'RW'
-              : null;
+          this.primaryUserEnabled = ftpInformations.list.results.length
+            && ftpInformations.list.results[0].isPrimaryAccount
+            ? ftpInformations.list.results[0].state === 'RW'
+            : null;
           this.ftpInformations = ftpInformations;
         })
         .finally(() => {

@@ -17,8 +17,7 @@ angular.module('App').controller(
     }
 
     $onInit() {
-      this.$scope.$on('hosting.ssl.reload', () =>
-        this.retrievingSSLCertificate());
+      this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
 
       return this.retrievingSSLCertificate();
     }
@@ -56,16 +55,16 @@ angular.module('App').controller(
 
     canRegenerateSSLCertificate() {
       return (
-        this.hasSSLCertificate() &&
-        this.sslCertificate.regenerable &&
-        this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
+        this.hasSSLCertificate()
+        && this.sslCertificate.regenerable
+        && this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
       );
     }
 
     canDeleteSSLCertificate() {
       return (
-        this.hasSSLCertificate() &&
-        this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
+        this.hasSSLCertificate()
+        && this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
       );
     }
 

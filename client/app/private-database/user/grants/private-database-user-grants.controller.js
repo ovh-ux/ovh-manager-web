@@ -123,8 +123,7 @@ angular.module('App').controller(
     onUserGrantDone(evt, opts) {
       this.isDoingGrant[opts.databaseName] = false;
       this.loaders.setGrant = false;
-      this.userGrants[opts.databaseName].value =
-        opts.grants[opts.databaseName].value;
+      this.userGrants[opts.databaseName].value = opts.grants[opts.databaseName].value;
 
       this.alerter.success(
         this.$scope.tr('privateDatabase_tabs_users_grant_success'),

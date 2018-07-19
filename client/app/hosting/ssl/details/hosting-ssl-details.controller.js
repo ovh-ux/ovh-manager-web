@@ -31,11 +31,10 @@ angular.module('App').controller(
               name: sslReportEntry[0],
               value: sslReportEntry[1],
             }))
-            .filter(sslReportEntry =>
-              sslReportEntry.value !== 'non-required' &&
-                sslReportEntry.value !== 'not-applicable' &&
-                sslReportEntry.name !== 'providerOrderId' &&
-                !_(sslReportEntry.name).startsWith('$'))
+            .filter(sslReportEntry => sslReportEntry.value !== 'non-required'
+                && sslReportEntry.value !== 'not-applicable'
+                && sslReportEntry.name !== 'providerOrderId'
+                && !_(sslReportEntry.name).startsWith('$'))
             .value();
         })
         .catch((error) => {

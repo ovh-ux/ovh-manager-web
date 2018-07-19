@@ -6,10 +6,10 @@ angular.module('directives').directive('availableIps', () => ({
     maxIps: '=',
   },
   template:
-    '<div class="availableIp" style="display:inline">' +
-    '<i class="availableIp-breadcrumb" data-ng-repeat="fakeIp in fakeIps" data-ng-class="{active: $index+1 <= nbIps, inactive:$index+1 > nbIps}"></i>' +
-    '<span class="availableIp-number">{{nbIps}}/{{maxIps}}</span>' +
-    '</div>',
+    '<div class="availableIp" style="display:inline">'
+    + '<i class="availableIp-breadcrumb" data-ng-repeat="fakeIp in fakeIps" data-ng-class="{active: $index+1 <= nbIps, inactive:$index+1 > nbIps}"></i>'
+    + '<span class="availableIp-number">{{nbIps}}/{{maxIps}}</span>'
+    + '</div>',
   link($scope) {
     $scope.fakeIps = [];
 

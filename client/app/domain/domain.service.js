@@ -131,8 +131,10 @@ angular.module('services').service(
      * @param {Array} status
      */
     getTasksByStatus(serviceName, fn, status = []) {
-      const promisesTasks = _.map(status, st =>
-        this.getTasks(serviceName, { status: st, function: fn }));
+      const promisesTasks = _.map(
+        status,
+        st => this.getTasks(serviceName, { status: st, function: fn }),
+      );
       return this.$q.all(promisesTasks).then(_.flatten);
     }
 
@@ -255,10 +257,9 @@ angular.module('services').service(
           return deferred.promise;
         }
 
-        return this.$q.all(_.map(ids, id =>
-          this.OvhHttp.get(`/domain/${serviceName}/nameServer/${id}`, {
-            rootPath: 'apiv6',
-          })));
+        return this.$q.all(_.map(ids, id => this.OvhHttp.get(`/domain/${serviceName}/nameServer/${id}`, {
+          rootPath: 'apiv6',
+        })));
       });
     }
 
@@ -422,9 +423,9 @@ angular.module('services').service(
         const { data } = _data;
 
         if (
-          data &&
-          (!data.messages ||
-            (_.isArray(data.messages) && data.messages.length === 0))
+          data
+          && (!data.messages
+            || (_.isArray(data.messages) && data.messages.length === 0))
         ) {
           // Generates sanitized targets
           if (_.get(data, 'paginatedZone.records.results', false)) {
@@ -536,8 +537,8 @@ angular.module('services').service(
         let recordsIds = _recordsIds;
 
         if (
-          _.isEmpty(recordsIds) ||
-          _.isEmpty(_.without(recordsIds, excludeId))
+          _.isEmpty(recordsIds)
+          || _.isEmpty(_.without(recordsIds, excludeId))
         ) {
           return true;
         }
@@ -545,18 +546,17 @@ angular.module('services').service(
         recordsIds = _.without(recordsIds, excludeId);
 
         let found = false;
-        const queue = _.map(recordsIds, id =>
-          this.OvhHttp.get(`/domain/zone/${serviceName}/record/${id}`, {
-            rootPath: 'apiv6',
-          }).then((record) => {
-            if (
-              record &&
-              record.target === target &&
-              record.subDomain === subDomain
-            ) {
-              found = true;
-            }
-          }));
+        const queue = _.map(recordsIds, id => this.OvhHttp.get(`/domain/zone/${serviceName}/record/${id}`, {
+          rootPath: 'apiv6',
+        }).then((record) => {
+          if (
+            record
+              && record.target === target
+              && record.subDomain === subDomain
+          ) {
+            found = true;
+          }
+        }));
 
         return this.$q.all(queue).then(() => !found);
       });
@@ -831,8 +831,7 @@ angular.module('services').service(
      * @param {Array} redirectionIds
      */
     overwriteRedirection(serviceName, options, redirectionIds) {
-      const createDeletePromises = ids =>
-        _.map(ids, id => this.deleteDnsEntry(serviceName, id));
+      const createDeletePromises = ids => _.map(ids, id => this.deleteDnsEntry(serviceName, id));
 
       if (!_.isEmpty(redirectionIds)) {
         let deletePromises = [];
@@ -1437,8 +1436,8 @@ angular.module('services').service(
       return this.OvhHttp.get(`/domain/${serviceName}`, { rootPath: 'apiv6' })
         .then((response) => {
           if (
-            response.whoisOwner &&
-            _.isFinite(parseInt(response.whoisOwner, 10))
+            response.whoisOwner
+            && _.isFinite(parseInt(response.whoisOwner, 10))
           ) {
             return this.OvhHttp.get(`/me/contact/${response.whoisOwner}`, {
               rootPath: 'apiv6',
@@ -1504,8 +1503,7 @@ angular.module('services').service(
         .all(queue)
         .then((results) => {
           const data = results[0] || {};
-          [
-            ,
+          [,
             data.dnssec,
             data.owo,
             data.owner,
