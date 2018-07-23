@@ -8,7 +8,8 @@ angular.module('App').controller(
      * @param Alerter
      * @param Emails
      */
-    constructor($scope, $stateParams, $timeout, Alerter, Emails) {
+    constructor($q, $scope, $stateParams, $timeout, Alerter, Emails) {
+      this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
@@ -58,18 +59,16 @@ angular.module('App').controller(
 
     transformItem({ account }) {
       return this.Emails.getResponder(this.productId, account)
-        .then((responder) => {
+        .then(responder =>
+          this.$q.all([responder, this.Emails.getResponderTasks(this.productId, account)]))
+        .then(([responder, tasks]) => {
           const displayedResponder = _.clone(responder);
-          return this.Emails.getResponderTasks(this.productId, account)
-            .then((tasks) => {
-              if (_.isEmpty(tasks)) {
-                displayedResponder.actionsDisabled = false;
-              } else {
-                this.pollResponder(displayedResponder);
-                displayedResponder.actionsDisabled = true;
-              }
-              return displayedResponder;
-            });
+          const actionsDisabled = !_.isEmpty(tasks);
+          if (actionsDisabled) {
+            this.pollResponder(displayedResponder);
+          }
+          displayedResponder.actionsDisabled = actionsDisabled;
+          return displayedResponder;
         });
     }
 
