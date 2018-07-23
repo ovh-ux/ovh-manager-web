@@ -463,7 +463,7 @@
                             <span data-ng-bind=":: convertBytesSize(hosting.totalQuota.value, hosting.totalQuota.unit, 2)"></span>
                         </li>
                         <li>
-                            <span data-ng-bind-html=":: tr('hosting_dashboard_disk_available_total')"></span>
+                            <span data-ng-bind-html=":: tr('hosting_dashboard_disk_available_total') + '* :' "></span>
                             <span data-ng-bind=":: convertBytesSize(hosting.quotaSize.value, hosting.quotaSize.unit, 2)"></span>
                         </li>
                         <li>
@@ -471,7 +471,7 @@
                             <span data-ng-bind=":: convertBytesSize(hosting.quotaUsed.value, hosting.quotaUsed.unit, 2) + ' / ' + convertBytesSize(hosting.quotaSize.value, hosting.quotaSize.unit)"></span>
                         </li>
                         <li>
-                            <small data-ng-bind-html=":: tr('hosting_dashboard_disk_usage_configuration', [ convertBytesSize(hosting.configurationQuota.value, hosting.configurationQuota.unit, 2) ])"></small>
+                            <small data-ng-bind-html=":: '*' + tr('hosting_dashboard_disk_usage_configuration', [ convertBytesSize(hosting.configurationQuota.value, hosting.configurationQuota.unit, 2) ])"></small>
                         </li>
                     </ul>
                 </div>
