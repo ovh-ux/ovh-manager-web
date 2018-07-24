@@ -1,8 +1,4 @@
-angular.module("directives").directive("loader", () => {
-    "use strict";
-
-    return {
-        restrict: "C",
-        templateUrl: "components/loader/loader.html"
-    };
-});
+angular.module('directives').directive('loader', () => ({
+  restrict: 'C',
+  templateUrl: 'components/loader/loader.html',
+}));

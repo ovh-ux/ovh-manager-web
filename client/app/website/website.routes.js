@@ -1,49 +1,59 @@
-angular.module("App").config(($stateProvider) => {
-    "use strict";
+angular.module('App').config(($stateProvider) => {
+  $stateProvider.state('app.website', {
+    url: '/website/configuration',
+    templateUrl: 'website/configuration.html',
+    controller: 'WebSiteConfigurationCtrl',
+    controllerAs: 'webSiteConfigurationCtrl',
+    reloadOnSearch: false,
+    resolve: {
+      navigationInformations: [
+        'Navigator',
+        '$rootScope',
+        (Navigator, $rootScope) => {
+          $rootScope.currentSectionInformation = 'website'; // eslint-disable-line no-param-reassign
 
-    $stateProvider.state("app.website", {
-        url: "/website/configuration",
-        templateUrl: "website/configuration.html",
-        controller: "WebSiteConfigurationCtrl",
-        controllerAs: "webSiteConfigurationCtrl",
-        reloadOnSearch: false,
-        resolve: {
-            navigationInformations: [
-                "Navigator",
-                "$rootScope",
-                (Navigator, $rootScope) => {
-                    $rootScope.currentSectionInformation = "website";
-                    return Navigator.setNavigationInformation({
-                        leftMenuVisible: true,
-                        configurationSelected: true
-                    });
-                }
-            ],
-            translator: ["translator", (translator) => translator.load(["domain", "hosting", "website"]).then(() => translator)],
-            currentSection: () => "website"
-        }
-    });
+          return Navigator.setNavigationInformation({
+            leftMenuVisible: true,
+            configurationSelected: true,
+          });
+        },
+      ],
+      translator: [
+        'translator',
+        translator => translator
+          .load(['domain', 'hosting', 'website'])
+          .then(() => translator),
+      ],
+      currentSection: () => 'website',
+    },
+  });
 
-    $stateProvider.state("app.website-success", {
-        url: "/website/configuration/:domain/:hosting/success/:type",
-        templateUrl: "website/success/success.html",
-        controller: "WebSiteSuccessCtrl",
-        controllerAs: "webSiteSuccessCtrl",
-        reloadOnSearch: false,
-        resolve: {
-            navigationInformations: [
-                "Navigator",
-                "$rootScope",
-                (Navigator, $rootScope) => {
-                    $rootScope.currentSectionInformation = "website";
-                    return Navigator.setNavigationInformation({
-                        leftMenuVisible: true,
-                        configurationSelected: true
-                    });
-                }
-            ],
-            translator: ["translator", (translator) => translator.load(["domain", "hosting", "website"]).then(() => translator)],
-            currentSection: () => "website"
-        }
-    });
+  $stateProvider.state('app.website-success', {
+    url: '/website/configuration/:domain/:hosting/success/:type',
+    templateUrl: 'website/success/success.html',
+    controller: 'WebSiteSuccessCtrl',
+    controllerAs: 'webSiteSuccessCtrl',
+    reloadOnSearch: false,
+    resolve: {
+      navigationInformations: [
+        'Navigator',
+        '$rootScope',
+        (Navigator, $rootScope) => {
+          $rootScope.currentSectionInformation = 'website'; // eslint-disable-line no-param-reassign
+
+          return Navigator.setNavigationInformation({
+            leftMenuVisible: true,
+            configurationSelected: true,
+          });
+        },
+      ],
+      translator: [
+        'translator',
+        translator => translator
+          .load(['domain', 'hosting', 'website'])
+          .then(() => translator),
+      ],
+      currentSection: () => 'website',
+    },
+  });
 });

@@ -1,11 +1,7 @@
-angular.module("filters").filter("orderObjectBy", () => {
-    "use strict";
+angular.module('filters').filter('orderObjectBy', () => (arr, prop) => {
+  _.each(arr, (item, key) => {
+    item.key = key; // eslint-disable-line no-param-reassign
+  });
 
-    return function (arr, prop) {
-        _.each(arr, (item, key) => {
-            item.key = key;
-        });
-
-        return _.sortBy(arr, prop);
-    };
+  return _.sortBy(arr, prop);
 });

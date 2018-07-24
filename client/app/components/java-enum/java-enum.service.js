@@ -1,9 +1,5 @@
-angular.module("services").service("JavaEnum", [
-    function () {
-        "use strict";
-
-        this.tr = function (enumValue) {
-            return _.snakeCase(enumValue).toUpperCase();
-        };
-    }
+angular.module('services').service('JavaEnum', [
+  function javaEnumService() {
+    this.tr = enumValue => _.snakeCase(enumValue).toUpperCase();
+  },
 ]);

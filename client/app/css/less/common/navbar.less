@@ -1,7 +1,9 @@
 .oui-navbar {
     // Logo
     &__brand {
-        .navbar-logo { height: 3rem; }
+        .navbar-logo {
+            height: 3rem;
+        }
     }
 
     // Universes
@@ -16,26 +18,29 @@
             .@{universe-selector} > .oui-navbar-link {
                 &:hover,
                 &:focus,
-                &_active { color: @universe-color; }
+                &_active {
+                    color: @universe-color;
+                }
             }
         }
     }
-
 
     // Languages menu
     &-menu {
         &_language &__item_active {
             &,
             &:hover,
-            &:active { background-color: @oui-navbar-menu-background-color_hover; }
+            &:active {
+                background-color: @oui-navbar-menu-background-color_hover;
+            }
 
             .oui-navbar-link::after {
                 content: @oui-icon-index-check_line;
                 display: inline-block;
                 margin-left: rem-calc(20);
-                margin-top: -.3rem; // For a better centering
+                margin-top: -0.3rem; // For a better centering
                 vertical-align: middle;
-                font-family: 'Oui Icons';
+                font-family: "Oui Icons";
                 font-size: @oui-navbar-external-size;
                 color: inherit;
             }
@@ -49,16 +54,20 @@
 
     .navbar-icon(@icon-selector) {
         .navbar-@{icon-selector} {
-            background: url('../assets/images/navbar/@{icon-selector}.svg') no-repeat center center;
+            background: url("../assets/images/navbar/@{icon-selector}.svg")
+                no-repeat center center;
             background-size: contain;
         }
 
-        .oui-navbar-link  {
+        .oui-navbar-link {
             &:hover,
             &:focus,
             &_active,
             &[aria-expanded="true"] {
-                .navbar-@{icon-selector} { background: url('../assets/images/navbar/@{icon-selector}_on.svg') no-repeat center center; }
+                .navbar-@{icon-selector} {
+                    background: url("../assets/images/navbar/@{icon-selector}_on.svg")
+                        no-repeat center center;
+                }
             }
         }
     }
@@ -81,8 +90,8 @@
     position: fixed;
     left: -100%;
     top: auto;
-    overflow:hidden;
-    z-index:-1;
+    overflow: hidden;
+    z-index: -1;
 
     &:focus,
     &:active {

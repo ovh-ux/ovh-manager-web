@@ -1,8 +1,6 @@
-angular.module("App").controller("WorkingStatusModal", [
-    "$scope",
-    function ($scope) {
-        "use strict";
-
-        $scope.works = $scope.currentActionData;
-    }
+angular.module('App').controller('WorkingStatusModal', [
+  '$scope',
+  ($scope) => {
+    $scope.works = $scope.currentActionData;
+  },
 ]);

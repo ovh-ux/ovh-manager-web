@@ -7,7 +7,7 @@
    <translation id="hosting_common_target_new_window" qtlid="211633">(Nueva ventana)</translation>
    <translation id="hosting_dashboard_title" qtlid="47488">Hébergement Mutualisé</translation>
    <translation id="hosting_dashboard_loading_error" qtlid="315709">Se ha producido un error al cargar la información. Esto puede ocurrir cuando tiene activado un bloqueador de publicidad.</translation>
-   <translation id="hosting_dashboard_creation_date" qtlid="26419">Date de création</translation>
+   <translation id="hosting_dashboard_creation_date" qtlid="26419">Fecha de creación</translation>
    <translation id="hosting_dashboard_expiration_date" qtlid="268121">Expira el</translation>
    <translation id="hosting_dashboard_databases" qtlid="195815">Bases de datos SQL</translation>
    <translation id="hosting_dashboard_one_click_modules" qtlid="195867">Módulos en un clic</translation>
@@ -35,6 +35,10 @@
    <translation id="hosting_dashboard_service_regenerate_ssl_success" qtlid="315722">La solicitud de regeneración del certificado se ha enviado.</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_error" qtlid="434161">Se ha producido un error al solicitar la regeneración del certificado.</translation>
    <translation id="hosting_dashboard_disk_usage" qtlid="28159">Espace disque</translation>
+   <translation id="hosting_dashboard_disk_total" qtlid="252776">Capacidad del disco:</translation>
+   <translation id="hosting_dashboard_disk_available_total" qtlid="492392">Espacio disponible</translation>
+   <translation id="hosting_dashboard_disk_usage_total" qtlid="109129">Espace utilisé :</translation>
+   <translation id="hosting_dashboard_disk_usage_configuration" qtlid="492405">{0} están asignados a la configuración del servidor</translation>
    <translation id="hosting_dashboard_trafic_usage" qtlid="222137">Tráfico consumido</translation>
    <translation id="hosting_dashboard_hosting_activities" qtlid="268134">Actividades de alojamiento</translation>
    <translation id="hosting_dashboard_php_support_SECURITY_FIXES" qtlid="272526">La versión de PHP que utiliza actualmente ya no tendrá más soporte. Solo se corregirán los fallos de seguridad. Para actualizarla, haga clic en «Modificar la configuración», que se muestra a la derecha de la versión actual. El cambio de versión podría afectar al funcionamiento de sus sitios web. </translation>
@@ -173,7 +177,7 @@
    <translation id="hosting_dashboard_service_order_db" qtlid="196595">Contratar SQL</translation>
    <translation id="hosting_dashboard_service_filer" qtlid="222761">Servidor de archivos</translation>
    <translation id="hosting_dashboard_service_urchin" qtlid="232375">Estadísticas y registros</translation>
-   <translation id="hosting_dashboard_service_datacenter" qtlid="30802">Datacentre</translation>
+   <translation id="hosting_dashboard_service_datacenter" qtlid="30802">Centro de datos</translation>
    <translation id="hosting_dashboard_service_datacenter_p19" qtlid="93991">Paris</translation>
    <translation id="hosting_dashboard_service_datacenter_gra1" qtlid="264192">Gravelines</translation>
    <translation id="hosting_dashboard_service_default_runtime" qtlid="491951">Motor de ejecución predeterminado</translation>
@@ -248,7 +252,7 @@
    <translation id="hosting_tab_CRON_table_header_status" qtlid="33790">État</translation>
    <translation id="hosting_tab_CRON_table_header_language" qtlid="145644">Idioma</translation>
    <translation id="hosting_tab_CRON_table_header_frequency" qtlid="30442">Fréquence</translation>
-   <translation id="hosting_tab_CRON_table_header_description" qtlid="9238">Description</translation>
+   <translation id="hosting_tab_CRON_table_header_description" qtlid="9238">Descripción</translation>
    <translation id="hosting_tab_CRON_table_header_command" qtlid="8302">Commande</translation>
    <translation id="hosting_tab_CRON_table_language_OTHER" qtlid="19963">Autre</translation>
    <translation id="hosting_tab_CRON_table_language_other" qtlid="19963">Autre</translation>
@@ -272,7 +276,7 @@
    <translation id="hosting_tab_CRON_table_language_PHP_7_2" qtlid="448249">PHP 7.2</translation>
    <translation id="hosting_tab_CRON_table_language_php7_2" qtlid="448249">PHP 7.2</translation>
    <translation id="hosting_tab_CRON_table_popover_delete" qtlid="2414">Eliminar</translation>
-   <translation id="hosting_tab_CRON_table_popover_modify" qtlid="37875">Modifier</translation>
+   <translation id="hosting_tab_CRON_table_popover_modify" qtlid="37875">Modificar</translation>
    <translation id="hosting_tab_CRON_configuration_error" qtlid="244690">Se ha producido un error al recuperar los datos:</translation>
 
    <translation id="hosting_tab_CRON_error" qtlid="233047">Se ha producido un error al recuperar la información.</translation>
@@ -284,7 +288,7 @@
 
    <translation id="hosting_configuration_change_offer_title_button" qtlid="196790">Cambiar de plan de alojamiento</translation>
    <translation id="hosting_configuration_order_ssl" qtlid="196803">Contratar un certificado SSL</translation>
-   <translation id="hosting_tab_DOMAINS_table_header_domain" qtlid="8458">Domaine</translation>
+   <translation id="hosting_tab_DOMAINS_table_header_domain" qtlid="8458">Dominio</translation>
    <translation id="hosting_tab_DOMAINS_table_header_home" qtlid="196816">Carpeta raíz</translation>
    <translation id="hosting_tab_DOMAINS_table_header_runtime" qtlid="488107">Unidad funcional</translation>
    <translation id="hosting_tab_DOMAINS_table_header_cdn" qtlid="99812">CDN</translation>
@@ -303,7 +307,7 @@
    <translation id="hosting_tab_DOMAINS_table_firewall_state_NONE" qtlid="24967">Desactivada</translation>
    <translation id="hosting_tab_DOMAINS_table_empty" qtlid="196829">No hay dominios asociados al alojamiento compartido</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_delete" qtlid="2414">Eliminar</translation>
-   <translation id="hosting_tab_DOMAINS_table_popover_modify" qtlid="37875">Modifier</translation>
+   <translation id="hosting_tab_DOMAINS_table_popover_modify" qtlid="37875">Modificar</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_refresh" qtlid="158708">Recargar</translation>
    <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="491964">Buscar...</translation>
 
@@ -423,7 +427,7 @@
    <translation id="database_tabs_dumps_delete_success" qtlid="290264">La copia de seguridad se ha eliminado correctamente.</translation>
    <translation id="database_tabs_dumps_delete_fail" qtlid="290277">Se ha producido un error al eliminar la copia de seguridad:</translation>
 
-   <translation id="database_tabs_dumps_status" qtlid="26443">Statut</translation>
+   <translation id="database_tabs_dumps_status" qtlid="26443">Estado</translation>
    <translation id="database_tabs_dumps_status_created" qtlid="264862">Creada </translation>
    <translation id="database_tabs_dumps_status_creating" qtlid="488146">Creando Dump...</translation>
    <translation id="database_tabs_dumps_status_updating" qtlid="488159">Modificando Dump...</translation>
@@ -445,7 +449,7 @@
 
    <translation id="database_tabs_dumps_change" qtlid="263363">Backup de la base de datos</translation>
    <translation id="database_tabs_dumps_snapshot_date" qtlid="402724">Fecha de snapshot</translation>
-   <translation id="database_tabs_dumps_creation_date" qtlid="26419">Date de création</translation>
+   <translation id="database_tabs_dumps_creation_date" qtlid="26419">Fecha de creación</translation>
    <translation id="database_tabs_dumps_deletion_date" qtlid="95563">Date de suppression</translation>
    <translation id="database_tabs_dumps_actions" qtlid="72809">Actions</translation>
    <translation id="database_tabs_dumps_no_dumps" qtlid="263376">No se ha realizado el backup de la base de datos.</translation>
@@ -542,7 +546,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_EXTERNAL_attention" qtlid="197752">¡Atención! Sin estos cambios, la configuración no funcionará.</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_question" qtlid="197765">Introduzca los datos del dominio que quiera asociar al alojamiento compartido:</translation>
-   <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_domain_name" qtlid="8458">Domaine</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_domain_name" qtlid="8458">Dominio</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_domain_name_placeholder" qtlid="197778">subdominio</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_domain_name_www_question" qtlid="197726">Crear también el subdominio {0}</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_home" qtlid="196816">Carpeta raíz</translation>
@@ -634,7 +638,7 @@
    <translation id="hosting_tab_RUNTIMES_table_header_default" qtlid="488380">Selección predeterminada</translation>
    <translation id="hosting_tab_RUNTIMES_table_header_number_multisite" qtlid="488393">Número de multisitios asociados</translation>
 
-   <translation id="hosting_tab_RUNTIMES_table_popover_modify" qtlid="37875">Modifier</translation>
+   <translation id="hosting_tab_RUNTIMES_table_popover_modify" qtlid="37875">Modificar</translation>
    <translation id="hosting_tab_RUNTIMES_table_popover_delete" qtlid="2414">Eliminar</translation>
 
    <translation id="hosting_tab_RUNTIMES_create_title" qtlid="488302">Añadir una unidad funcional</translation>
@@ -668,7 +672,7 @@
    <translation id="hosting_tab_ENVVARS_table_header_value" qtlid="47548">Valeur</translation>
    <translation id="hosting_tab_ENVVARS_table_header_status" qtlid="33790">État</translation>
 
-   <translation id="hosting_tab_ENVVARS_table_popover_modify" qtlid="37875">Modifier</translation>
+   <translation id="hosting_tab_ENVVARS_table_popover_modify" qtlid="37875">Modificar</translation>
    <translation id="hosting_tab_ENVVARS_table_popover_delete" qtlid="2414">Eliminar</translation>
    <translation id="hosting_tab_RUNTIMES_table_popover_set_default" qtlid="488380">Selección predeterminada</translation>
 
@@ -700,8 +704,8 @@
    <translation id="hosting_tab_TASK" qtlid="201172">Tareas en curso</translation>
    <translation id="hosting_tab_TASKS_table_empty" qtlid="144058">No hay tareas</translation>
    <translation id="hosting_tab_TASKS_table_function" qtlid="61872">Tâche</translation>
-   <translation id="hosting_tab_TASKS_table_state" qtlid="26443">Statut</translation>
-   <translation id="hosting_tab_TASKS_table_start_date" qtlid="26419">Date de création</translation>
+   <translation id="hosting_tab_TASKS_table_state" qtlid="26443">Estado</translation>
+   <translation id="hosting_tab_TASKS_table_start_date" qtlid="26419">Fecha de creación</translation>
    <translation id="hosting_tab_TASKS_table_finish_date" qtlid="299858">Fecha de finalización</translation>
    <translation id="hosting_tab_TASKS_warning" qtlid="108456">Attention !</translation>
    <translation id="hosting_tab_TASKS_partial" qtlid="137426">La lista mostrada no está completa. Algunas tareas no han podido cargarse correctamente.</translation>
@@ -827,7 +831,7 @@
    <translation id="hosting_tab_FTP_multiftp_table_ssh_state_none" qtlid="24967">Desactivada</translation>
 
    <translation id="hosting_tab_FTP_multiftp_table_popover_update_password" qtlid="80394">Changer le mot de passe</translation>
-   <translation id="hosting_tab_FTP_multiftp_table_popover_modify" qtlid="37875">Modifier</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_popover_modify" qtlid="37875">Modificar</translation>
    <translation id="hosting_tab_FTP_multiftp_table_popover_delete" qtlid="2414">Eliminar</translation>
 
    <translation id="hosting_tab_DATABASES_configuration_user_delete_title" qtlid="198701">Eliminar un usuario FTP</translation>
@@ -878,7 +882,7 @@
    <translation id="hosting_configuration_tab_sql_data_base" qtlid="275026">Base de datos</translation>
    <translation id="hosting_configuration_tab_sql_data_base_size" qtlid="7726">Taille</translation>
    <translation id="hosting_configuration_tab_sql_data_base_state" qtlid="434200">Estado</translation>
-   <translation id="hosting_configuration_tab_sql_data_base_server" qtlid="8290">Serveur</translation>
+   <translation id="hosting_configuration_tab_sql_data_base_server" qtlid="8290">Servidor</translation>
    <translation id="hosting_configuration_tab_sql_data_base_version" qtlid="34210">Version</translation>
    <translation id="hosting_tab_MODULES_guide_help" qtlid="271517">¿Necesita ayuda para instalar su módulo en solo un clic?</translation>
    <translation id="hosting_configuration_tab_modules_module_name" qtlid="60978">Module</translation>
@@ -948,7 +952,7 @@
    <translation id="hosting_configuration_tab_modules_create_step3_help_title" qtlid="212088">Configuración del módulo</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_help_admin_name_title" qtlid="212101">Nombre del administrador</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_help_admin_name_desc" qtlid="212114">El nombre del administrador es el nombre utilizado para conectarse al panel de administración de su módulo.</translation>
-   <translation id="hosting_configuration_tab_modules_create_step3_help_domain_title" qtlid="8458">Domaine</translation>
+   <translation id="hosting_configuration_tab_modules_create_step3_help_domain_title" qtlid="8458">Dominio</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_help_domain_desc" qtlid="218042">Seleccione el dominio que quiere asociar al módulo. Dicho dominio debe apuntar al alojamiento compartido.</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_help_path_title" qtlid="212140">Ruta de instalación</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_help_path_desc" qtlid="212153">Ubicación en la que se instalará el módulo. La ruta indicada es relativa al directorio HOME.</translation>
@@ -1087,7 +1091,7 @@
    <translation id="hosting_tab_CRON_edit_error" qtlid="199286">Se ha producido un error al editar la tarea {0}.</translation>
    <translation id="hosting_tab_CRON_simple_mode" qtlid="102849">Mode simple</translation>
    <translation id="hosting_tab_CRON_expert_mode" qtlid="64616">Mode expert</translation>
-   <translation id="hosting_tab_CRON_label_description" qtlid="9238">Description</translation>
+   <translation id="hosting_tab_CRON_label_description" qtlid="9238">Descripción</translation>
    <translation id="hosting_tab_CRON_label_status" qtlid="33790">État</translation>
    <translation id="hosting_tab_CRON_label_activate" qtlid="74958">Activation</translation>
    <translation id="hosting_tab_CRON_label_command" qtlid="199299">Modo simple</translation>
@@ -1377,14 +1381,14 @@
    <translation id="hosting_tab_USER_LOGS_dashboard_logs_link" qtlid="413219">Ver los Logs</translation>
    <translation id="hosting_tab_USER_LOGS_dashboard_logs" qtlid="62064">Logs</translation>
    <translation id="hosting_tab_USER_LOGS_table_header_login" qtlid="269708">Usuario</translation>
-   <translation id="hosting_tab_USER_LOGS_table_header_description" qtlid="9238">Description</translation>
-   <translation id="hosting_tab_USER_LOGS_table_header_creationDate" qtlid="26419">Date de création</translation>
+   <translation id="hosting_tab_USER_LOGS_table_header_description" qtlid="9238">Descripción</translation>
+   <translation id="hosting_tab_USER_LOGS_table_header_creationDate" qtlid="26419">Fecha de creación</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_title_button" qtlid="269721">Crear un nuevo usuario</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_title" qtlid="269734">Crear un nuevo usuario</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step1_question" qtlid="269747">Este nuevo usuario estará disponible, además de los contactos normales del alojamiento (contacto administrador, técnico y de facturación). <br />Puede añadir, modificar o eliminar libremente estos usuarios adicionales.<br /><br />Esta operación se hará efectiva en los próximos minutos.</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step1_user" qtlid="7450">Utilisateur</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step1_user_error" qtlid="197050">Nombre de usuario no válido</translation>
-   <translation id="hosting_tab_USER_LOGS_configuration_user_create_step1_desc_label" qtlid="9238">Description</translation>
+   <translation id="hosting_tab_USER_LOGS_configuration_user_create_step1_desc_label" qtlid="9238">Descripción</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step1_user_condition" qtlid="268406">Entre {0} y {1} caracteres alfabéticos</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step2_password_question" qtlid="199000">Seleccione la contraseña del usuario</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step2_password_password" qtlid="2270">Mot de passe</translation>
@@ -1392,10 +1396,10 @@
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step2_password_error" qtlid="197076">Las contraseñas introducidas no son idénticas.</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step3_question" qtlid="268419">¿Está seguro(a) que desea crear el siguiente usuario?</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step3_user" qtlid="7450">Utilisateur</translation>
-   <translation id="hosting_tab_USER_LOGS_configuration_user_create_step3_desc_label" qtlid="9238">Description</translation>
+   <translation id="hosting_tab_USER_LOGS_configuration_user_create_step3_desc_label" qtlid="9238">Descripción</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_fail" qtlid="268432">Se ha producido un error al solicitar la creación del usuario.</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_success" qtlid="268445">Se va a crear el usuario.</translation>
-   <translation id="hosting_tab_USER_LOGS_table_popover_modify" qtlid="37875">Modifier</translation>
+   <translation id="hosting_tab_USER_LOGS_table_popover_modify" qtlid="37875">Modificar</translation>
    <translation id="hosting_tab_USER_LOGS_table_popover_update_password" qtlid="80394">Changer le mot de passe</translation>
    <translation id="hosting_tab_USER_LOGS_table_popover_delete" qtlid="2414">Eliminar</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_delete_title" qtlid="269760">Eliminar un usuario</translation>
@@ -1412,10 +1416,10 @@
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_title" qtlid="269773">Modificar un usuario</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_step1_question" qtlid="268510">Usted va a modificar el siguiente usuario</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_step1_user" qtlid="7450">Utilisateur</translation>
-   <translation id="hosting_tab_USER_LOGS_configuration_user_modify_step1_desc_label" qtlid="9238">Description</translation>
+   <translation id="hosting_tab_USER_LOGS_configuration_user_modify_step1_desc_label" qtlid="9238">Descripción</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_step2_question" qtlid="268523">¿Está seguro(a) que desea modificar el usuario con los siguientes valores?</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_step2_user" qtlid="7450">Utilisateur</translation>
-   <translation id="hosting_tab_USER_LOGS_configuration_user_modify_step2_desc_label" qtlid="9238">Description</translation>
+   <translation id="hosting_tab_USER_LOGS_configuration_user_modify_step2_desc_label" qtlid="9238">Descripción</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_fail" qtlid="268536">Se ha producido un error al solicitar la modificación del usuario.</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_success" qtlid="268549">Atención: el usuario se va a modificar.</translation>
 
@@ -1435,7 +1439,7 @@
    <translation id="hosting_tab_INDY_state_off" qtlid="24967">Desactivada</translation>
 
    <translation id="hosting_tab_FREEDOM" qtlid="33238">Freedom</translation>
-   <translation id="hosting_tab_FREEDOM_table_header_domain" qtlid="8458">Domaine</translation>
+   <translation id="hosting_tab_FREEDOM_table_header_domain" qtlid="8458">Dominio</translation>
    <translation id="hosting_tab_FREEDOM_table_header_type" qtlid="2642">Tipo</translation>
    <translation id="hosting_tab_FREEDOM_table_header_status" qtlid="33790">État</translation>
    <translation id="hosting_tab_FREEDOM_status_filter" qtlid="272435">Estado del FreeDom:</translation>

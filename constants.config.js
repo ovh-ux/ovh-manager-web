@@ -43,32 +43,26 @@ module.exports = {
         TOP_GUIDES: {
             domainHosting: [
                 {
-                    title: "core_top_guide_1_title",
-                    url: "https://www.ovh.com/fr/g1271.guide_utilisation_renouvellement_automatique_ovh"
-                }, {
                     title: "core_top_guide_2_title",
-                    url: "https://www.ovh.com/fr/g2110.debuter_sur_un_hebergement_web"
+                    url: "https://docs.ovh.com/fr/hosting/premiers-pas-avec-hebergement-web/"
                 }, {
                     title: "core_top_guide_3_title",
-                    url: "https://www.ovh.com/fr/g1474.Configurer_Votre_Logiciel_De_Messagerie"
-                }, {
-                    title: "core_top_guide_4_title",
-                    url: "https://www.ovh.com/fr/g1349.mutualise_guide_transfert_dun_nom_de_domaine_generique_com_net_org_info_biz"
+                    url: "https://docs.ovh.com/fr/emails/generalites-sur-les-emails-mutualises/"
                 }, {
                     title: "core_top_guide_5_title",
-                    url: "https://www.ovh.com/fr/g1402.mutualise_guide_modules_des_hebergements_mutualises"
+                    url: "https://docs.ovh.com/fr/hosting/modules-en-1-clic/"
                 }, {
                     title: "core_top_guide_6_title",
-                    url: "https://www.ovh.com/fr/g1604.mutualise_comment_editer_ma_zone_dns"
+                    url: "https://docs.ovh.com/fr/domains/editer-ma-zone-dns/"
                 }, {
                     title: "core_top_guide_7_title",
-                    url: "https://www.ovh.com/fr/g1585.hebergement_web_erreur_site_non_installe"
+                    url: "https://docs.ovh.com/fr/hosting/erreur-site-non-installe/"
                 }, {
-                    title: "core_top_guide_8_title",
-                    url: "https://www.ovh.com/fr/g1311.configuration-service"
+                    title: "core_top_guide_database_title",
+                    url: "https://docs.ovh.com/fr/hosting/creer-base-de-donnees/"
                 }, {
                     title: "core_top_guide_9_title",
-                    url: "https://www.ovh.com/fr/g2089.basculer_une_adresse_e-mail_ovh_mutualisee_vers_exchange"
+                    url: "https://docs.ovh.com/fr/microsoft-collaborative-solutions/migration-adresse-e-mail-mutualisee-vers-exchange/"
                 }
             ]
         },
@@ -585,13 +579,13 @@ module.exports = {
                 support_contact: "https://www.ovh.com/fr/support/nous-contacter/",
                 guides: {
                     home: "https://docs.ovh.com",
-                    all: "https://docs.ovh.com/fr/fr/web/",
+                    all: "https://docs.ovh.com/fr/web/",
                     hostingCron: "https://www.ovh.com/fr/g1990.mutualise_taches_automatisees_cron",
-                    hostingModule: "https://www.ovh.com/fr/g1402.mutualise_guide_modules_des_hebergements_mutualises",
+                    hostingModule: "https://docs.ovh.com/fr/hosting/modules-en-1-clic/",
                     hostingScriptEmail: "https://www.ovh.com/fr/g1974.mutualise_suivi_des_emails_automatises",
                     hostingStatsLogs: "https://www.ovh.com/fr/g1344.mutualise_consulter_les_statistiques_et_les_logs_de_mon_site",
                     hostingPhpConfiguration: "https://docs.ovh.com/fr/fr/web/hosting/mutualise-configurer-la-version-de-php-depuis-votre-espace-client/",
-                    hostingPrivateDatabase: "https://www.ovh.com/fr/g2023.tout_sur_le_sql_prive",
+                    hostingPrivateDatabase: "https://docs.ovh.com/fr/hosting/premiers-pas-avec-sql-prive/",
                     hostingPrivateDatabaseDBaaS: {
                         beginner: "https://docs.ovh.com/fr/fr/cloud/clouddb/debuter-avec-clouddb/",
                         db: "https://docs.ovh.com/fr/fr/cloud/clouddb/demarrez-avec-mysql-et-mariadb/",
@@ -609,9 +603,8 @@ module.exports = {
                     emailsConfigurationIos9: "https://docs.ovh.com/fr/fr/web/emails/mail-mutualise-guide-configuration-iphone-ios-91/",
                     emailsConfigurationAndroid6: "https://docs.ovh.com/fr/fr/web/emails/configuration-android-6/",
 
-                    autoRenew: "https://www.ovh.com/fr/g1271.guide_utilisation_renouvellement_automatique_ovh",
                     emailsCreation: "https://www.ovh.com/fr/g1343.creation-adresse-e-mail",
-                    emailsMigrateToExchange: "https://www.ovh.com/fr/g2089.basculer_une_adresse_e-mail_ovh_mutualisee_vers_exchange",
+                    emailsMigrateToExchange: "https://docs.ovh.com/fr/microsoft-collaborative-solutions/migration-adresse-e-mail-mutualisee-vers-exchange/",
                     emailsCreateMailingListGuide: "https://www.ovh.com/fr/g1596.mail_mutualise_guide_dutilisation_mailing-list",
                     office365: "https://docs.ovh.com/fr/fr/web/microsoft-collaborative-solutions/commander-et-gerer-un-groupe-de-licences-office-365-ovh",
                     hostingHackState: "https://www.ovh.com/fr/g1392.procedure-fermeture-hack-ovh#reouverture_de_lhebergement_reouverture_suite_passage_en_etat_hack",
@@ -622,14 +615,13 @@ module.exports = {
                     prestashop: "http://doc.prestashop.com/display/PS16/Guide+de+l%27utilisateur",
                     siteOnline: "https://www.ovh.com/fr/g1374.mutualise_mettre_mon_site_en_ligne",
                     domainOwoActivation: "https://www.ovh.com/fr/g2137.whois_-_activation_de_owo",
-                    domainTranfert: "https://www.ovh.com/fr/g2151.centralisation_des_guides_de_transfert_de_domaines",
-                    domainOwnerTransfert: "https://www.ovh.com/fr/g2267.centralisation_des_guides_de_changements_de_proprietaires_de_domaine",
-                    domainEditZone: "https://www.ovh.com/fr/g1604.mutualise_comment_editer_ma_zone_dns",
-                    domainDnsGettingStarted: "https://www.ovh.com/fr/g2015.mutualise_generalites_sur_les_serveurs_dns",
-                    domainZonecheck: "https://www.ovh.com/fr/g1980.zonecheck_de_votre_domaine",
-                    domainRedirection: "https://www.ovh.com/fr/g1339.redirection-nom-de-domaine",
-                    domainDynHost: "https://www.ovh.com/fr/g2024.mutualise_dynhost",
-                    domainGlueRegistry: "https://www.ovh.com/fr/g1568.glue_registry",
+                    domainOwnerTransfert: "https://docs.ovh.com/fr/domains/changement-proprietaire-domaine/",
+                    domainEditZone: "https://docs.ovh.com/fr/domains/editer-ma-zone-dns/",
+                    domainDnsGettingStarted: "https://docs.ovh.com/fr/domains/generalites-serveurs-dns/",
+                    domainZonecheck: "https://docs.ovh.com/fr/domains/zonecheck-de-votre-domaine/",
+                    domainRedirection: "https://docs.ovh.com/fr/domains/redirection-nom-de-domaine/",
+                    domainDynHost: "https://docs.ovh.com/fr/domains/utilisation-dynhost/",
+                    domainGlueRegistry: "https://docs.ovh.com/fr/domains/glue-registry/",
                     domainDsRecord: "https://www.ovh.com/fr/g609.securiser_votre_domaine_avec_dnssec",
                     domainAddDnsZone: "https://www.ovh.com/fr/g2229.creer_une_zone_dns_pour_un_domaine_externe",
                     phpAppendices: "http://php.net/manual/fr/appendices.php",
@@ -646,11 +638,7 @@ module.exports = {
                             title: "guide_add_subscope",
                             description: "guide_add_subcontext",
                             list: [
-                                { url: "https://www.ovh.com/fr/g1332.hebergement_web_comment_attacher_un_domaine_ou_un_sous-domaine_a_mon_hebergement_web#attacher_un_domaine_depose_chez_ovh", title: "guide_add_subclient" },
-                                { url: "https://www.ovh.com/fr/g1332.hebergement_web_comment_attacher_un_domaine_ou_un_sous-domaine_a_mon_hebergement_web#attacher_un_domaine_externe", title: "guide_add_subnon_client" },
-                                { url: "https://www.ovh.com/fr/g1332.hebergement_web_comment_attacher_un_domaine_ou_un_sous-domaine_a_mon_hebergement_web#attacher_un_domaine_externe", title: "guide_add_subnon_registered" },
-                                { url: "https://www.ovh.com/fr/g1332.hebergement_web_comment_attacher_un_domaine_ou_un_sous-domaine_a_mon_hebergement_web#ajouter_un_sous-domaine_vers_votre_hebergement_web", title: "guide_add_subcreate" },
-                                { url: "https://www.ovh.com/fr/g1585.hebergement_web_erreur_site_non_installe#site_non_installe_erreur_dans_la_mise_en_place_dun_de_vos_domaines_ou_sous-domaine_sur_lhebergement", title: "guide_add_subnot_installed" }
+                                { url: "https://docs.ovh.com/fr/hosting/erreur-site-non-installe/", title: "guide_add_subnot_installed" }
                             ]
                         }
                     ],
@@ -658,9 +646,7 @@ module.exports = {
                         {
                             title: "guide_general_info_subscope",
                             list: [
-                                { url: "https://www.ovh.com/fr/g2137.whois_activation_de_owo", title: "guide_domain_owo_activation" },
-                                { url: "https://www.ovh.com/fr/g2151.centralisation_des_guides_de_transfert_de_domaines", title: "guide_domain_transfert" },
-                                { url: "https://www.ovh.com/fr/g2267.centralisation_des_guides_de_changements_de_proprietaires_de_domaine", title: "guide_domain_owner_transfert" }
+                                { url: "https://docs.ovh.com/fr/domains/changement-proprietaire-domaine/", title: "guide_domain_owner_transfert" }
                             ]
                         }
                     ],
@@ -668,7 +654,7 @@ module.exports = {
                         {
                             title: "guide_zone_subscope",
                             list: [
-                                { url: "https://www.ovh.com/fr/g1604.mutualise_comment_editer_ma_zone_dns", title: "guide_domain_edit_zone" }
+                                { url: "https://docs.ovh.com/fr/domains/editer-ma-zone-dns/", title: "guide_domain_edit_zone" }
                             ]
                         }
                     ],
@@ -676,8 +662,8 @@ module.exports = {
                         {
                             title: "guide_dns_subscope",
                             list: [
-                                { url: "https://www.ovh.com/fr/g2015.mutualise_generalites_sur_les_serveurs_dns", title: "guide_domain_dns_getting_started" },
-                                { url: "https://www.ovh.com/fr/g1980.zonecheck_de_votre_domaine", title: "guide_domain_dns_zone_check" }
+                                { url: "https://docs.ovh.com/fr/domains/generalites-serveurs-dns/", title: "guide_domain_dns_getting_started" },
+                                { url: "https://docs.ovh.com/fr/domains/zonecheck-de-votre-domaine/", title: "guide_domain_dns_zone_check" }
                             ]
                         }
                     ],
@@ -685,7 +671,7 @@ module.exports = {
                         {
                             title: "guide_redirection_subscope",
                             list: [
-                                { url: "https://www.ovh.com/fr/g1339.redirection-nom-de-domaine", title: "guide_domain_redirection" }
+                                { url: "https://docs.ovh.com/fr/domains/redirection-nom-de-domaine/", title: "guide_domain_redirection" }
                             ]
                         }
                     ],
@@ -693,7 +679,7 @@ module.exports = {
                         {
                             title: "guide_dyn_host_subscope",
                             list: [
-                                { url: "https://www.ovh.com/fr/g2024.mutualise_dynhost", title: "guide_domain_dyn_host" }
+                                { url: "https://docs.ovh.com/fr/domains/utilisation-dynhost/", title: "guide_domain_dyn_host" }
                             ]
                         }
                     ],
@@ -701,7 +687,7 @@ module.exports = {
                         {
                             title: "guide_glue_subscope",
                             list: [
-                                { url: "https://www.ovh.com/fr/g1568.glue_registry", title: "guide_domain_glue_registry" }
+                                { url: "https://docs.ovh.com/fr/domains/glue-registry/", title: "guide_domain_glue_registry" }
                             ]
                         }
                     ],

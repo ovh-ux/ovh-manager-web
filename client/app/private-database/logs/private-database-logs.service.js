@@ -1,15 +1,18 @@
-angular
-    .module("services")
-    .service("PrivateDatabaseLogsService", class PrivateDatabaseLogsService {
+angular.module('services').service(
+  'PrivateDatabaseLogsService',
+  class PrivateDatabaseLogsService {
+    constructor($http) {
+      this.$http = $http;
 
-        constructor ($http) {
-            this.$http = $http;
+      this.apiVersion = 'apiv6';
+    }
 
-            this.apiVersion = "apiv6";
-        }
-
-        getLogs (serviceName) {
-            return this.$http.post(`${this.apiVersion}/hosting/privateDatabase/${serviceName}/generateTemporaryLogsLink`)
-                .then((res) => res.data);
-        }
-});
+    getLogs(serviceName) {
+      return this.$http
+        .post(`${
+          this.apiVersion
+        }/hosting/privateDatabase/${serviceName}/generateTemporaryLogsLink`)
+        .then(res => res.data);
+    }
+  },
+);
