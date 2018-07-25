@@ -19,7 +19,6 @@ CERTIFICATE_CSR_FILE=server/certificate/server.csr
 CERTIFICATE_CRT_FILE=server/certificate/server.crt
 
 #### FOLDERS ####
-BOWER_DIR=node_modules/@bower_components
 NODE_DIR=node_modules
 GRUNT_DEP=$(NODE_DIR)/grunt
 DIST_DIR=dist
@@ -134,10 +133,7 @@ tar-test-reports:
 #############
 
 # Dependencies of the project
-deps: $(GRUNT_DEP) $(BOWER_DIR)
-
-$(BOWER_DIR):
-	$(MAKE) install
+deps: $(GRUNT_DEP)
 
 $(NODE_DIR)/%:
 	$(MAKE) install
