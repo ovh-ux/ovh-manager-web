@@ -82,15 +82,15 @@
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Bendras PostgreSQL konfigūravimas</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">Jau greitai prieinama PostgreSQL</translation>
 
-   <translation id="privateDatabase_configuration_alert" qtlid="263507">Dėmesio! Atlikus keitimus, serveris bus perkrautas.</translation>
+   <translation id="privateDatabase_configuration_alert" qtlid="482212">Po kiekvieno keitimo perkraunamas serveris.</translation>
    <translation id="privateDatabase_configuration_edit_btn" qtlid="185452">Redaguoti</translation>
    <translation id="privateDatabase_configuration_cancel_btn" qtlid="37863">Anuliuoti</translation>
-   <translation id="privateDatabase_configuration_confirm_btn" qtlid="31498">Patvirtinti</translation>
+   <translation id="privateDatabase_configuration_confirm_btn" qtlid="41326">Taikyti</translation>
    <translation id="privateDatabase_configuration_reboot" qtlid="263520">Atliekamas konfigūracijos keitimas. Jūsų serveris bus perkrautas.</translation>
    <translation id="privateDatabase_configuration_error_put" qtlid="263533">Įvyko klaida keičiant konfigūraciją.</translation>
    <translation id="privateDatabase_configuration_error" qtlid="233047">Klaida nuskaitant informaciją.</translation>
    <translation id="privateDatabase_configuration_success" qtlid="263546">Jūsų serveris buvo perkrautas ir konfigūracija sėkmingai pakeista.</translation>
-   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Nurodo, jei auto-commit režimas įjungtas ar išjungtas, t.y. jei užklausos automatiškai įvykdytos ar jas įvykdyti būtina, kad jos įsigaliotų. </translation>
+   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Nurodo, jei auto-commit režimas įjungtas ar išjungtas, t.y. jei SQL užklausos automatiškai įvykdytos ar būtina naudoti commit užklausą, kad jos įsigaliotų. </translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263572">Didžiausias autorizuotų prisijungimų prie serverio skaičius.</translation>
    <translation id="privateDatabase_configuration_skipInnodb" qtlid="263585">Išjungti InnoDB lentelių naudojimą.</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263598">Didžiausias vienalaikių prisijungimų skaičius</translation>
@@ -100,6 +100,16 @@
    <translation id="privateDatabase_configuration_event_scheduler" qtlid="370187">Įvykių valdiklio (orchestrator) būsena</translation>
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Laikas (sekundėmis), kiek serveris laukia prieš uždarant prisijungimą, jeigu nėra jokios veiklos per prisijungimą naudojant komandinę eilutę.</translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Laikas (sekundėmis), kiek serveris laukia prieš uždarant prisijungimą, jeigu nėra jokios veiklos per išorinį prisijungimą.</translation>
+
+   <translation id="privateDatabase_configuration_field_autocommit" qtlid="482225">Apibrėžia, ar SLQ užklausos pateiktos automatiškai ar ne.</translation>
+   <translation id="privateDatabase_configuration_field_event_scheduler" qtlid="482238">Leidžia pradėti vykdyti užklausas, užprogramuotas tiesiogiai MySQL serveryje.</translation>
+   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size" qtlid="482251">Buferinės atminties dydžio pasirinkimas (megabaitais).</translation>
+   <translation id="privateDatabase_configuration_field_interactive_timeout" qtlid="482264">Laikas (sekundėmis), kai serveris laukia veiklos interaktyvioje jungtyje prieš ją uždarant.</translation>
+   <translation id="privateDatabase_configuration_field_max_allowed_packet" qtlid="482277">Didžiausias paketų dydis (megabaitais).</translation>
+   <translation id="privateDatabase_configuration_field_max_connections" qtlid="482290">Private SQL autorizuotų vienalaikių jungčių skaičius.</translation>
+   <translation id="privateDatabase_configuration_field_max_user_connections" qtlid="482303">Vartotojui autorizuotų vienalaikių jungčių skaičius.</translation>
+   <translation id="privateDatabase_configuration_field_tmpdir" qtlid="482316">Laikinų failų katalogas (virtualios mašinos RAM ar standusis diskas).</translation>
+   <translation id="privateDatabase_configuration_field_wait_timeout" qtlid="482329">Laikas (sekundėmis), kai serveris laukia veiklos neinteraktyvioje jungtyje prieš ją uždarant.</translation>
 
    <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Ši funkcija negalima su šio tipo duomenų bazėmis.</translation>
 
@@ -378,7 +388,7 @@
    <translation id="privateDatabase_change_ram" qtlid="37875">Keisti</translation>
    <translation id="privateDatabase_change_ram_title" qtlid="217106">Keisti RAM kiekį</translation>
    <translation id="privateDatabase_order_select_ram_description" qtlid="217119">Pasirinktas RAM kiekis pakeis dabartinį.</translation>
-   <translation id="privateDatabase_order_select_ram_placeholder" qtlid="217132">Pasirinkite...</translation>
+   <translation id="privateDatabase_order_select_ram_placeholder" qtlid="491990">Pasirinkite...</translation>
 
    <translation id="privateDatabase_RAM_add_select" qtlid="31858">RAM atmintis</translation>
    <translation id="privateDatabase_order_select_ram" qtlid="216807">Pasirinkite norimą kiekį.</translation>
@@ -426,20 +436,24 @@
    <translation id="privateDatabase_tabs_cron_configuration_delete_fail" qtlid="263142">Šalinant suplanuotą rezervinį kopijavimą įvyko klaida.</translation>
 
    <translation id="privateDatabase_tab_METRICS" qtlid="271819">Santrauka</translation>
-   <translation id="privateDatabase_metrics_memory_title" qtlid="284789">Panaudotų RAM resursų statistika </translation>
-   <translation id="privateDatabase_metrics_connections_title" qtlid="284802">Aktyvių prisijungimų statistika</translation>
-   <translation id="privateDatabase_metrics_memory_graph_y" qtlid="31858">RAM atmintis</translation>
-   <translation id="privateDatabase_metrics_connections_graph_mysql_active_connections" qtlid="272578">Aktyvūs prisijungimai</translation>
+   <translation id="privateDatabase_metrics_no_data" qtlid="271871">Neprieinami jokie duomenys.</translation>
+
+   <translation id="privateDatabase_metrics_memoryUsages_title" qtlid="284789">Panaudotų RAM resursų statistika </translation>
+   <translation id="privateDatabase_metrics_memoryUsages_graph_dbaas_metrics_docker_container_mem_usage_percent" qtlid="271845">RAM naudojimas</translation>
+
+   <translation id="privateDatabase_metrics_activeConnections_title" qtlid="284802">Aktyvių prisijungimų statistika</translation>
+   <translation id="privateDatabase_metrics_activeConnections_graph_dbaas_metrics_mysql_connexion_count" qtlid="272578">Aktyvūs prisijungimai</translation>
+
+   <translation id="privateDatabase_metrics_queryExecutionTimes_title" qtlid="284815">Užklausų vykdymo statistika</translation>
+   <translation id="privateDatabase_metrics_queryExecutionTimes_graph_dbaas_metrics_mysql_query_time_average" qtlid="272604">Užklausos vykdymo laikas</translation>
+
+   <translation id="privateDatabase_metrics_memoryUsages_graph_y" qtlid="31858">RAM atmintis</translation>
+   <translation id="privateDatabase_metrics_activeConnections_graph_mysql_active_connections" qtlid="272578">Aktyvūs prisijungimai</translation>
    <translation id="privateDatabase_metrics_connections_graph_dbaas_metrics_mysql_connexion_count" qtlid="272578">Aktyvūs prisijungimai</translation>
    <translation id="privateDatabase_metrics_memory_graph_memory_rss" qtlid="271845">RAM naudojimas</translation>
-   <translation id="privateDatabase_metrics_memory_graph_dbaas_metrics_docker_container_mem_usage_percent" qtlid="271845">RAM naudojimas</translation>
    <translation id="privateDatabase_metrics_memory_graph_memory_hierarchical_memory_limit" qtlid="271858">Didžiausias RAM kiekis</translation>
-   <translation id="privateDatabase_metrics_no_data" qtlid="271871">Neprieinami jokie duomenys.</translation>
    <translation id="privateDatabase_metrics_wrong_version" qtlid="412152">Duomenys neprieinami versijai(-oms) {0}.</translation>
    <translation id="privateDatabase_metrics_time_graph_mysql_ms" qtlid="272591">Milisekundės</translation>
-   <translation id="privateDatabase_metrics_time_graph_mysql_query_time" qtlid="272604">Užklausos vykdymo laikas</translation>
-   <translation id="privateDatabase_metrics_time_graph_dbaas_metrics_mysql_query_time_average" qtlid="272604">Užklausos vykdymo laikas</translation>
-   <translation id="privateDatabase_metrics_time_title" qtlid="284815">Užklausų vykdymo statistika</translation>
    <translation id="privateDatabase_metrics_time_range_DAY" qtlid="284828">Per pastarąsias 24 valandas</translation>
    <translation id="privateDatabase_metrics_time_range_WEEK" qtlid="37491">Paskutinę savaitę</translation>
    <translation id="privateDatabase_metrics_time_range_MONTH" qtlid="37503">Paskutinį mėnesį</translation>

@@ -215,7 +215,7 @@
    <translation id="main_menu_products_and_config" qtlid="4406">Konfiguraatio</translation>
    <translation id="main_menu_bill_and_renew" qtlid="32950">Laskutus</translation>
    <translation id="main_menu_help_and_support" qtlid="26035">Apua</translation>
-   <translation id="navigation_left_search" qtlid="122275">Haetaan…</translation>
+   <translation id="navigation_left_search" qtlid="491925">Haetaan...</translation>
    <translation id="navigation_left_domains" qtlid="32590">Verkkotunnukset</translation>
    <translation id="navigation_left_all_domains" qtlid="152141">Kaikki omat verkkotunnukset</translation>
    <translation id="navigation_left_order_dnszone" qtlid="433654">DNS-alue</translation>
@@ -224,11 +224,13 @@
    <translation id="navigation_left_order_mxplan" qtlid="286513">MX Plan</translation>
    <translation id="navigation_left_order_emailpro" qtlid="374893">E-mail Pro</translation>
    <translation id="navigation_left_order_domain" qtlid="32590">Verkkotunnukset</translation>
+   <translation id="navigation_left_order_cloudweb" qtlid="437178">Cloud Web</translation>
    <translation id="navigation_left_platform" qtlid="123607">Alustat</translation>
    <translation id="navigation_left_platform_1" qtlid="3854">Alusta</translation>
    <translation id="navigation_left_platform_other" qtlid="123607">Alustat</translation>
    <translation id="navigation_left_ip" qtlid="25615">IP</translation>
    <translation id="navigation_left_hosting" qtlid="50470">Webhotellit</translation>
+   <translation id="navigation_left_hosting_perf" qtlid="492340">Performance</translation>
    <translation id="navigation_left_database" qtlid="7702">Tietokanta</translation>
    <translation id="navigation_left_exchange" qtlid="80430">Exchange</translation>
    <translation id="navigation_left_office" qtlid="100544">Office</translation>
@@ -410,7 +412,7 @@
    <translation id="country_KW" qtlid="188262">Kuwait</translation>
    <translation id="country_KY" qtlid="188275">Caymansaaret</translation>
    <translation id="country_KZ" qtlid="188288">Kazakstan</translation>
-   <translation id="country_LA" qtlid="188301">Laosin demokraattinen kansantasavalta</translation>
+   <translation id="country_LA" qtlid="491938">Laosin demokraattinen kansantasavalta -</translation>
    <translation id="country_LB" qtlid="188314">Libanon</translation>
    <translation id="country_LC" qtlid="188327">Saint Lucia</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>
@@ -559,7 +561,7 @@
    <translation id="core_change_owner" qtlid="271491">Muuta omistajatietoja</translation>
    <translation id="core_change_owner_order" qtlid="283981">Verkkotunnuksen omistajan vaihtamiseksi on tehtävä tilaus suoraan verkkosivuillamme. </translation>
    <translation id="core_change_owner_error" qtlid="270735">Omistajan muutokseen tarvittavia tietoja ei pystytä hakemaan</translation>
-   <translation id="contacts_management" qtlid="259575">Yhteystietojen hallinta</translation>
+   <translation id="contacts_management" qtlid="32206">Yhteystiedot</translation>
    <translation id="more_tabs" qtlid="270748">Muut välilehdet</translation>
    <translation id="expired_date" qtlid="382076">Vanhentunut <strong>{0}</strong></translation>
    <translation id="expiration_date" qtlid="440274">Uusittava manuaalisesti <strong>{0}</strong></translation>
@@ -675,28 +677,6 @@
    <translation id="sso_modal_action_reload" qtlid="328810">Jatka nimellä <strong>{{name}}</strong></translation>
    <translation id="sso_modal_action_logout" qtlid="316021">Mene tunnistautumissivulle</translation>
 
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_MISSING" qtlid="363852">Et ole valinnut oletusmaksutapaa. Mene <a href="#/billing/mean" class="alert-link">laskutusosioon </a> ja valitse tai luo uusi maksutapa.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_EXPIRED" qtlid="343876">Oletusmaksutapasi on vanhentunut! Mene <a href="#/billing/mean" class="alert-link">laskutusosioon</a> rekisteröidäksesi uusi maksutapa.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_EXPIRE_SOON" qtlid="343889">Oletusmaksutapasi vanhenee 30 päivän kuluessa. Mene <a href="#/billing/mean" class="alert-link">laskutusosioon</a> rekisteröidäksesi uusi maksutapa.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_BANKACCOUNT_PENDINGVALIDATION" qtlid="343902">Oletusmaksutapasi (pankkitili)odottaa hyväksyntää. Mene <a href="#/billing/mean" class="alert-link">laskutusosioon</a> saadaksesi lisätietoja.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_CREDITCARD_TOOMANYFAILURES" qtlid="343915">Oletusmaksutapasi (luottokortti) on virheellinen! Mene <a href="#/billing/mean" class="alert-link">laskutusosioon</a> tekemään tarkistukset ja/tai rekisteröidäksesi uusi maksutapa.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_PAYPAL_TOOMANYFAILURES" qtlid="343928">Oletusmaksutapasi (PayPal) on virheellinen! Mene <a href="#/billing/mean" class="alert-link">laskutusosioon</a> ja tee tarkistukset ja/tai rekisteröi uusi maksutapa.</translation>
-
-   <translation id="me_alerts_PAYMENTMEAN_BANKACCOUNT_PENDINGVALIDATION" qtlid="343941">Sinulla on <strong>{0}</strong> pankkitiliä odottamassa hyväksyntää. Mene <a href="#/billing/mean" class="alert-link">laskutusosioon</a> nähdäksi lisätietoja. </translation>
-   <translation id="me_alerts_PAYMENTMEAN_CREDITCARD_TOOMANYFAILURES" qtlid="343954">Sinulla on <strong>{0}</strong> carte(s) virheellistä pankkikorttia. Mene<a href="#/billing/mean" class="alert-link">laskutusosioon</a> ja tee tarkistukset ja/tai rekisteröi uusi maksutapa.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_PAYPAL_TOOMANYFAILURES" qtlid="343967">Sinulla on<strong>{0}</strong> virheellistä PayPal-tiliä. Mene<a href="#/billing/mean" class="alert-link">laskutusosioon</a> ja tee tarkistukset ja/tai rekisteröi uusi maksutapa.</translation>
-
-   <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="433563">Prepaid-tilisi saldo on negatiivinen, <strong>{0}</strong> maksettava summa {1}. Mene<a href="#/billing/ovhaccount" class="alert-link">laskutusosioon suorittamaan puuttuva maksu.</a></translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="343993">OVH-tililläsi on velkaa <strong>{0}</strong>. Mene <a href="#/billing/statements" class="alert-link">laskutusosioon</a> korjaamaan tilanne.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369545">Sinulla on velkaa <strong>{0}</strong> (josta summa {1} ei ole erääntynyt). Mene<a href="#/billing/statements" class="alert-link">laskutusosioon</a> korjaamaan tilanne.</translation>
-
-   <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="383919">Prepaid-tilisi on saavuttanut määrittämäsi kynnysrajan. Katso lisätietoja <a href="#/billing/ovhaccount" class="alert-link">laskustusosiosta</a>.</translation>
-
-   <translation id="me_alerts_ORDERS_DOCUMENTSREQUESTED" qtlid="344006">Sinulla on <strong>{0}</strong> tilausta odottamassa niitä varten vaadittuja dokumentteja. Mene <a href="#/billing/orders?status=in-progress" class="alert-link">osioon "Omat tilaukset"</a> päivittämään ne.</translation>
-   <translation id="me_alerts_AGREEMENTS_TODO" qtlid="344019">Sinulla on  <strong>{0}</strong> sopimusta hyväksyttävänä.</translation>
-   <translation id="me_alerts_CONTACTCHANGE_VALIDATINGBYCUSTOMERS" qtlid="344032">Sinulla on <strong>{0}</strong> yhteystietojen muutospyyntöä.</translation>
-
-
    <translation id="global_ks_upgrade_step1" qtlid="367863">Tee Kimsufi-webhotellin migraatio seuraavalla tavalla:  </translation>
    <translation id="global_ks_upgrade_step2" qtlid="367876">Valitse valikosta Kimsufi-webhotelli</translation>
    <translation id="global_ks_upgrade_step3" qtlid="367889">Klikkaa painiketta "Vaihda tuote" valitun webhotellin yleisten tietojen sivulla.</translation>
@@ -713,12 +693,30 @@
 
    <translation id="sidebar_menu_order_actions" qtlid="43558">Tilaa</translation>
 
-   <translation id="common_ouidatagrid_nodata" qtlid="197635">Ei tuloksia</translation>
-   <translation id="common_ouipagination_resultsperpage" qtlid="433384">Tulosta per sivu</translation>
-   <translation id="common_ouipagination_ofnresults" qtlid="452982">/ TOTAL_ITEMS tulosta</translation>
-   <translation id="common_ouipagination_currentpageofpagecount" qtlid="452995">Sivu CURRENT_PAGE / PAGE_COUNT</translation>
-   <translation id="common_ouipagination_next" qtlid="433423">Seuraava sivu</translation>
-   <translation id="common_ouipagination_previous" qtlid="433436">Edellinen sivu</translation>
+   <translation id="common_criteria_adder_column_label" qtlid="479108">Sarake</translation>
+   <translation id="common_criteria_adder_operator_label" qtlid="425806">Ehto</translation>
+   <translation id="common_criteria_adder_operator_boolean_is" qtlid="479121">on</translation>
+   <translation id="common_criteria_adder_operator_boolean_isNot" qtlid="479134">ei ole</translation>
+   <translation id="common_criteria_adder_operator_string_contains" qtlid="218692">sisältää</translation>
+   <translation id="common_criteria_adder_operator_string_containsNot" qtlid="218705">ei sisällä</translation>
+   <translation id="common_criteria_adder_operator_string_startsWith" qtlid="479147">alkaa arvolla</translation>
+   <translation id="common_criteria_adder_operator_string_endsWith" qtlid="479160">päättyy arvoon</translation>
+   <translation id="common_criteria_adder_operator_string_is" qtlid="479173">on yhtä suuri kuin</translation>
+   <translation id="common_criteria_adder_operator_string_isNot" qtlid="479134">ei ole</translation>
+   <translation id="common_criteria_adder_operator_number_is" qtlid="479173">on yhtä suuri kuin</translation>
+   <translation id="common_criteria_adder_operator_number_smaller" qtlid="479186">on pienempi kuin</translation>
+   <translation id="common_criteria_adder_operator_number_bigger" qtlid="479199">on suurempi kuin</translation>
+   <translation id="common_criteria_adder_operator_date_is" qtlid="479121">on</translation>
+   <translation id="common_criteria_adder_operator_date_isBefore" qtlid="479212">on ennen </translation>
+   <translation id="common_criteria_adder_operator_date_isAfter" qtlid="479225">on jälkeen </translation>
+   <translation id="common_criteria_adder_operator_options_is" qtlid="479121">on</translation>
+   <translation id="common_criteria_adder_operator_options_isNot" qtlid="479134">ei ole</translation>
+   <translation id="common_criteria_adder_true_label" qtlid="34776">Kyllä</translation>
+   <translation id="common_criteria_adder_false_label" qtlid="34788">Ei</translation>
+   <translation id="common_criteria_adder_value_label" qtlid="47548">Arvo</translation>
+   <translation id="common_criteria_adder_submit_label" qtlid="37923">Lisää</translation>
+
+   <translation id="common_datagrid_nodata" qtlid="197635">Ei tuloksia</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Ole hyvä ja täytä tämä kenttä.</translation>
    <translation id="common_field_error_number" qtlid="472307">Syötä hyväksytty numeerinen arvo.</translation>
@@ -728,4 +726,26 @@
    <translation id="common_field_error_minlength" qtlid="472359">Syötä vähintään {{minlength}} merkkiä.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Syötä enintään {{maxlength}} merkkiä.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Syötä hyväksytty formaatti.</translation>
+
+   <translation id="common_navbar_notification_title" qtlid="33250">Ilmoitukset</translation>
+   <translation id="common_navbar_notification_error" qtlid="323434">Hups, valikkoa ei pystytä alustamaan!</translation>
+   <translation id="common_navbar_notification_error_subject" qtlid="26407">Virhe</translation>
+   <translation id="common_navbar_notification_see_all" qtlid="401914">Katso kaikki ilmoitukset</translation>
+   <translation id="common_navbar_notification_mark_as_read" qtlid="70865">Merkitse luetuksi</translation>
+   <translation id="common_navbar_notification_mark_as_unread" qtlid="70877">Merkitse lukemattomaksi</translation>
+
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Tulosta per sivu</translation>
+   <translation id="common_pagination_page" qtlid="433397">sivu</translation>
+   <translation id="common_pagination_of" qtlid="121615">aikaväli</translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">/ TOTAL_ITEMS tulosta</translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Sivu CURRENT_PAGE / PAGE_COUNT</translation>
+   <translation id="common_pagination_results" qtlid="433410">tulokset</translation>
+   <translation id="common_pagination_next" qtlid="433423">Seuraava sivu</translation>
+   <translation id="common_pagination_previous" qtlid="433436">Edellinen sivu</translation>
+
+   <translation id="common_stepper_optional_label" qtlid="488081">(valinnainen)</translation>
+   <translation id="common_stepper_modify_this_step" qtlid="480922">Muokkaa tätä vaihetta</translation>
+   <translation id="common_stepper_skip_this_step" qtlid="230127">Ohita tämä vaihe</translation>
+   <translation id="common_stepper_next_button_label" qtlid="17743">Seuraava</translation>
+   <translation id="common_stepper_submit_button_label" qtlid="113382">Lähetä</translation>
 </translations>

@@ -82,15 +82,15 @@
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Obecné nastavení PostgreSQL</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">Již brzy k dispozici pro PostgreSQL</translation>
 
-   <translation id="privateDatabase_configuration_alert" qtlid="263507">Pozor! Jakékoli změny způsobí restart serveru.</translation>
+   <translation id="privateDatabase_configuration_alert" qtlid="482212">Jakákoli změna bude mít za následek restart serveru.</translation>
    <translation id="privateDatabase_configuration_edit_btn" qtlid="185452">Upravit</translation>
    <translation id="privateDatabase_configuration_cancel_btn" qtlid="37863">Zrušit</translation>
-   <translation id="privateDatabase_configuration_confirm_btn" qtlid="31498">Dokončit</translation>
+   <translation id="privateDatabase_configuration_confirm_btn" qtlid="41326">Provést změny</translation>
    <translation id="privateDatabase_configuration_reboot" qtlid="263520">Nastavení bylo změněno. Váš server bude restartován.</translation>
    <translation id="privateDatabase_configuration_error_put" qtlid="263533">Při změně nastavení došlo k chybě.</translation>
    <translation id="privateDatabase_configuration_error" qtlid="233047">Při získávání dat došlo k chybě.</translation>
    <translation id="privateDatabase_configuration_success" qtlid="263546">Restartování a nastavení Vašeho serveru bylo úspěšné.</translation>
-   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Zadejte zda máte nastaveno automatické nasazení. To znamená zda se požadavky automaticky nasadí, nebo zda je nutné je nasadit, aby začali fungovat.</translation>
+   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Určuje nastavení režimu auto-commit (zda se požadavky nasadí automaticky, nebo zda je nutné je nasadit manuálně, aby začali fungovat).</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263572">Maximální počet autorizovaných souběžných připojení na server.</translation>
    <translation id="privateDatabase_configuration_skipInnodb" qtlid="263585">Zakázat používání InnoDB tabulek.</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263598">Maximální počet souběžných připojení</translation>
@@ -103,6 +103,18 @@
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Počet vteřin nečinnosti během připojení přes příkazový řádek, po jejichž uplynutí server připojení ukončí.&#13;
 </translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Počet vteřin nečinnosti během externího připojení, po jejichž uplynutí server připojení ukončí.&#13;
+</translation>
+
+   <translation id="privateDatabase_configuration_field_autocommit" qtlid="482225">Určuje, zda jsou SQL transakce prováděny automaticky či nikoli.</translation>
+   <translation id="privateDatabase_configuration_field_event_scheduler" qtlid="482238">Používá se pro spuštění naprogramovaných požadavků přímo na MySQL serveru.</translation>
+   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size" qtlid="482251">Velikost vyrovnávací paměti (MB).</translation>
+   <translation id="privateDatabase_configuration_field_interactive_timeout" qtlid="482264">Doba, během níž bude server čekat na aktivitu v interaktivním spojení, než dojde k uzavření spojení (v sekundách).</translation>
+   <translation id="privateDatabase_configuration_field_max_allowed_packet" qtlid="482277">Maximální velikost paketu (MB).</translation>
+   <translation id="privateDatabase_configuration_field_max_connections" qtlid="482290">Počet autorizovaných simultánních připojení na Private SQL.</translation>
+   <translation id="privateDatabase_configuration_field_max_user_connections" qtlid="482303">Počet autorizovaných simultánních připojení na uživatele.</translation>
+   <translation id="privateDatabase_configuration_field_tmpdir" qtlid="482316">Dočasný adresář souborů (RAM nebo disk instance).</translation>
+   <translation id="privateDatabase_configuration_field_wait_timeout" qtlid="482329">Doba, během níž bude server čekat na aktivitu v neinteraktivním spojení, než dojde k uzavření spojení (v sekundách).&#13;
+&#13;
 </translation>
 
    <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Tato funkce není pro daný typ databáze k dispozici.</translation>
@@ -384,7 +396,7 @@
    <translation id="privateDatabase_change_ram" qtlid="37875">Upravit</translation>
    <translation id="privateDatabase_change_ram_title" qtlid="217106">Změna kapacity RAM</translation>
    <translation id="privateDatabase_order_select_ram_description" qtlid="217119">Zvolená hodnota nahradí současnou kapacitu.</translation>
-   <translation id="privateDatabase_order_select_ram_placeholder" qtlid="217132">Vyberte...</translation>
+   <translation id="privateDatabase_order_select_ram_placeholder" qtlid="491990">Zvolte...</translation>
 
    <translation id="privateDatabase_RAM_add_select" qtlid="31858">RAM</translation>
    <translation id="privateDatabase_order_select_ram" qtlid="216807">Zvolte požadovanou kapacitu.</translation>
@@ -420,7 +432,7 @@
    <translation id="privateDatabase_tabs_cron_description" qtlid="9238">Popis</translation>
    <translation id="privateDatabase_tabs_cron_frequency" qtlid="30442">Frekvence</translation>
    <translation id="privateDatabase_tabs_cron_status" qtlid="33790">Stav</translation>
-   <translation id="privateDatabase_tabs_cron_email" qtlid="33598">E-mail</translation>
+   <translation id="privateDatabase_tabs_cron_email" qtlid="33598">E-mailová adresa</translation>
    <translation id="privateDatabase_tabs_cron_null" qtlid="263090">Žádný cron úkol</translation>
    <translation id="privateDatabase_tabs_cron_status_disabled" qtlid="125084">Deaktivováno</translation>
    <translation id="privateDatabase_tabs_cron_status_enabled" qtlid="62028">Aktivováno</translation>
@@ -432,21 +444,25 @@
    <translation id="privateDatabase_tabs_cron_configuration_delete_fail" qtlid="263142">Při mazání plánované zálohy došlo k chybě.</translation>
 
    <translation id="privateDatabase_tab_METRICS" qtlid="271819">Metriky</translation>
-   <translation id="privateDatabase_metrics_memory_title" qtlid="284789">Statistiky využití RAM</translation>
-   <translation id="privateDatabase_metrics_connections_title" qtlid="284802">Statistiky aktivních připojení</translation>
-   <translation id="privateDatabase_metrics_memory_graph_y" qtlid="31858">RAM</translation>
-   <translation id="privateDatabase_metrics_connections_graph_mysql_active_connections" qtlid="272578">Aktivní připojení</translation>
+   <translation id="privateDatabase_metrics_no_data" qtlid="271871">Žádná data k dispozici.</translation>
+
+   <translation id="privateDatabase_metrics_memoryUsages_title" qtlid="284789">Statistiky využití RAM</translation>
+   <translation id="privateDatabase_metrics_memoryUsages_graph_dbaas_metrics_docker_container_mem_usage_percent" qtlid="271845">Využití RAM</translation>
+
+   <translation id="privateDatabase_metrics_activeConnections_title" qtlid="284802">Statistiky aktivních připojení</translation>
+   <translation id="privateDatabase_metrics_activeConnections_graph_dbaas_metrics_mysql_connexion_count" qtlid="272578">Aktivní připojení</translation>
+
+   <translation id="privateDatabase_metrics_queryExecutionTimes_title" qtlid="284815">Statistiky časů prováděných operací</translation>
+   <translation id="privateDatabase_metrics_queryExecutionTimes_graph_dbaas_metrics_mysql_query_time_average" qtlid="272604">Doba zpracování požadavku</translation>
+
+   <translation id="privateDatabase_metrics_memoryUsages_graph_y" qtlid="31858">RAM</translation>
+   <translation id="privateDatabase_metrics_activeConnections_graph_mysql_active_connections" qtlid="272578">Aktivní připojení</translation>
    <translation id="privateDatabase_metrics_connections_graph_dbaas_metrics_mysql_connexion_count" qtlid="272578">Aktivní připojení</translation>
    <translation id="privateDatabase_metrics_memory_graph_memory_rss" qtlid="271845">Využití RAM</translation>
-   <translation id="privateDatabase_metrics_memory_graph_dbaas_metrics_docker_container_mem_usage_percent" qtlid="271845">Využití RAM</translation>
    <translation id="privateDatabase_metrics_memory_graph_memory_hierarchical_memory_limit" qtlid="271858">Max. limit RAM</translation>
-   <translation id="privateDatabase_metrics_no_data" qtlid="271871">Žádná data k dispozici.</translation>
    <translation id="privateDatabase_metrics_wrong_version" qtlid="412152">Data nedostupná pro verzi/verze {0}.&#13;
 </translation>
    <translation id="privateDatabase_metrics_time_graph_mysql_ms" qtlid="272591">Milisekundy</translation>
-   <translation id="privateDatabase_metrics_time_graph_mysql_query_time" qtlid="272604">Doba zpracování požadavku</translation>
-   <translation id="privateDatabase_metrics_time_graph_dbaas_metrics_mysql_query_time_average" qtlid="272604">Doba zpracování požadavku</translation>
-   <translation id="privateDatabase_metrics_time_title" qtlid="284815">Statistiky časů prováděných operací</translation>
    <translation id="privateDatabase_metrics_time_range_DAY" qtlid="284828">Posledních 24 hodin</translation>
    <translation id="privateDatabase_metrics_time_range_WEEK" qtlid="37491">Minulý týden</translation>
    <translation id="privateDatabase_metrics_time_range_MONTH" qtlid="37503">Minulý měsíc</translation>

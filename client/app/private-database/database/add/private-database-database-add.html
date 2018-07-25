@@ -111,7 +111,7 @@
                 </div>
             </form>
 
-            <form class="form-horizontal" name="privateDatabaseAddAuthorizedIpForm" ng-if="isDBaaS() && !addBddCtrl.hasAuthorizedIp">
+            <form class="form-horizontal" name="privateDatabaseAddAuthorizedIpForm" data-ng-if="isDBaaS() && !addBddCtrl.hasAuthorizedIp">
                 <!-- ADD AUTHORIZED IP -->
 
                 <oui-checkbox id="bddAddIpCheckbox" name="bddAddIpCheckbox"

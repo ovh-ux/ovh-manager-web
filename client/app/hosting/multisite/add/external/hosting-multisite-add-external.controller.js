@@ -1,8 +1,8 @@
-angular.module("App").controller("HostingDomainAttachModeExternalCtrl", ($scope) => {
-    "use strict";
-
+angular
+  .module('App')
+  .controller('HostingDomainAttachModeExternalCtrl', ($scope) => {
     // Validator
-    $scope.$watch("domainAttacheModeExternalForm.$valid", () => {
-        $scope.model.step2Valid = $scope.domainAttacheModeExternalForm.$valid;
+    $scope.$watch('domainAttacheModeExternalForm.$valid', () => {
+      $scope.model.step2Valid = $scope.domainAttacheModeExternalForm.$valid;
     });
-});
+  });

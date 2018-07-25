@@ -45,7 +45,7 @@
 
    <translation id="hosting_dashboard_close_service" qtlid="255417">Eliminar mi alojamiento</translation>
    <translation id="hosting_dashboard_close_service_warning" qtlid="255430">La eliminación de un alojamiento conlleva a la pérdida definitiva de todos los datos correspondientes al mismo. Esta acción no implica ningún reembolso.</translation>
-   <translation id="hosting_dashboard_close_service_desc1" qtlid="351857">Recibirá un mensaje correo electrónico con el procedimiento a seguir para el cierre de su alojamiento.</translation>
+   <translation id="hosting_dashboard_close_service_desc1" qtlid="351857">Usted recibirá un mensaje correo electrónico con el procedimiento a seguir para el cierre de su alojamiento.</translation>
    <translation id="hosting_dashboard_close_service_question" qtlid="351870">¿Desea continuar?</translation>
    <translation id="hosting_dashboard_close_service_success" qtlid="255456">Su solicitud de cierre de alojamiento se ha recibido. Usted recibirá un mensaje con el procedimiento requerido.</translation>
    <translation id="hosting_dashboard_close_service_error" qtlid="255469">Se ha producido un error al solicitar el cierre del alojamiento:</translation>
@@ -78,6 +78,7 @@
    <translation id="hosting_dashboard_service_offer__90_PLAN" qtlid="196036">90plan</translation>
    <translation id="hosting_dashboard_service_offer_ASPFREE" qtlid="196049">aspfree</translation>
    <translation id="hosting_dashboard_service_offer_BUSINESS" qtlid="314110">business 2010</translation>
+   <translation id="hosting_dashboard_service_offer_CLOUDWEB_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_CLOUDWEBX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_CLOUDWEBBETAX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_DEMO_1_G" qtlid="196075">demo1g</translation>
@@ -161,7 +162,7 @@
    <translation id="hosting_dashboard_service_change_offer" qtlid="95995">Changer d'offre</translation>
    <translation id="hosting_dashboard_service_change_offer_explanation" qtlid="327237">Cambie a un alojamiento de pago para crear una base de datos. Es rápido y sin cortes. Nuestros planes de alojamiento le permitirán disfrutar de:</translation>
    <translation id="hosting_dashboard_service_change_offer_explanation_ftp" qtlid="327250">un espacio FTP de al menos 100 GB</translation>
-   <translation id="hosting_dashboard_service_change_offer_explanation_mail" qtlid="327263">un mínimo de 10 direcciones de correo de 5 GB</translation>
+   <translation id="hosting_dashboard_service_change_offer_explanation_mail" qtlid="327263">Un mínimo de 10 direcciones de correo de 5 GB</translation>
    <translation id="hosting_dashboard_service_change_offer_explanation_db" qtlid="327276">una base de datos de 200 MB o más</translation>
    <translation id="hosting_dashboard_service_change_offer_now" qtlid="327289">Cambiar de plan ahora</translation>
    <translation id="hosting_dashboard_service_order_ssl" qtlid="196803">Contratar un certificado SSL</translation>
@@ -175,6 +176,7 @@
    <translation id="hosting_dashboard_service_datacenter" qtlid="30802">Datacentre</translation>
    <translation id="hosting_dashboard_service_datacenter_p19" qtlid="93991">Paris</translation>
    <translation id="hosting_dashboard_service_datacenter_gra1" qtlid="264192">Gravelines</translation>
+   <translation id="hosting_dashboard_service_default_runtime" qtlid="491951">Motor de ejecución predeterminado</translation>
 
    <translation id="hosting_dashboard_available_space" qtlid="196608">Espacio disponible</translation>
    <translation id="hosting_tab_DOMAINS_OLD" qtlid="223528">Sitios Web</translation>
@@ -184,6 +186,9 @@
    <translation id="hosting_tab_DATABASE" qtlid="7702">Bases de données</translation>
    <translation id="hosting_tab_STATISTICS" qtlid="26671">Statistiques</translation>
    <translation id="hosting_tab_INDY" qtlid="272396">Multidominios independientes </translation>
+   <translation id="hosting_tab_RUNTIMES" qtlid="488991">Unidades funcionales</translation>
+   <translation id="hosting_tab_ENVVARS" qtlid="491650">Variables de entorno</translation>
+
    <translation id="hosting_tab_GENERAL_INFORMATIONS" qtlid="27115">Informations générales</translation>
    <translation id="hosting_dashboard_ssl_order_not_available" qtlid="217639">La contratación de certificado SSL no está disponible para su plataforma.</translation>
    <translation id="hosting_dashboard_ssl_order_choose_duration" qtlid="217652">Seleccione una duración:</translation>
@@ -191,7 +196,7 @@
    <translation id="hosting_dashboard_ssl_order_success" qtlid="181266">El pedido número <a href='{0}' target='_blank'>{1}</a> se ha enviado.</translation>
    <translation id="hosting_dashboard_ssl_order_error" qtlid="217678">Se ha producido un error al contratar un certificado SSL.</translation>
    <translation id="hosting_dashboard_ssl_order_payable" qtlid="298877">Certificado de pago</translation>
-   <translation id="hosting_dashboard_ssl_order_imported">Certificat importé</translation>
+   <translation id="hosting_dashboard_ssl_order_imported" qtlid="473544">Certificado importado</translation>
    <translation id="hosting_dashboard_ssl_order_free" qtlid="298890">Certificado gratuito (Let's encrypt)</translation>
    <translation id="hosting_dashboard_ssl_order_a_certificate" qtlid="382141">Contratar un certificado de pago</translation>
    <translation id="hosting_dashboard_ssl_order_import" qtlid="315735">Importar un certificado SSL</translation>
@@ -202,9 +207,9 @@
    <translation id="hosting_dashboard_ssl_order_manual_mode_chain" qtlid="402685">Copiar el contenido de su cadena de certificados:</translation>
    <translation id="hosting_dashboard_ssl_order_pay" qtlid="402698">Para continuar la adquisición de su certificado SSL, será redirigido a nuestro procedimiento de pedidos.</translation>
    <translation id="hosting_dashboard_ssl_redirect_to_order" qtlid="382154">Se abrirá una nueva ventana para continuar el pedido. Si no se abre, <a href="{0}">haga clic aquí para continuar con su elección de opciones</a>.</translation>
-   <translation id="hosting_dashboard_ssl_redirect_to_order_error">Une erreur est survenue lors de la récupération de l'adresse nécessaire à la génération du bon de commande.</translation>
-   <translation id="hosting_dashboard_ssl_order_preamble">En cliquant sur Valider, vous allez ouvrir un bon de commande dans un nouvel onglet pour votre certificat SSL.</translation>
-   <translation id="hosting_dashboard_ssl_paid_certificate_error">Vous pouvez commander des certificats gratuits ou importer des certificats, mais une erreur vous empêche de commander des certificats payants : {0}.</translation>
+   <translation id="hosting_dashboard_ssl_redirect_to_order_error" qtlid="473557">Se ha producido un error al intentar recuperar la dirección necesaria para generar la orden de pedido correctamente.</translation>
+   <translation id="hosting_dashboard_ssl_order_preamble" qtlid="473570">Al hacer clic en "Validar", se abrirá una nueva pestaña con una orden de pedido para su certificado SSL.</translation>
+   <translation id="hosting_dashboard_ssl_paid_certificate_error" qtlid="473583">Usted puede hacer un pedido de certificados gratuitos o importar los certificados, pero un error le impide contratar certificados de pago: {0}.</translation>
 
    <translation id="hosting_dashboard_cdn_order_not_available" qtlid="217691">La opción CDN no está disponible para su plataforma.</translation>
    <translation id="hosting_dashboard_cdn_order_choose_duration" qtlid="217652">Seleccione una duración:</translation>
@@ -281,6 +286,7 @@
    <translation id="hosting_configuration_order_ssl" qtlid="196803">Contratar un certificado SSL</translation>
    <translation id="hosting_tab_DOMAINS_table_header_domain" qtlid="8458">Domaine</translation>
    <translation id="hosting_tab_DOMAINS_table_header_home" qtlid="196816">Carpeta raíz</translation>
+   <translation id="hosting_tab_DOMAINS_table_header_runtime" qtlid="488107">Unidad funcional</translation>
    <translation id="hosting_tab_DOMAINS_table_header_cdn" qtlid="99812">CDN</translation>
    <translation id="hosting_tab_DOMAINS_table_header_firewall" qtlid="141418">Firewall</translation>
    <translation id="hosting_tab_DOMAINS_table_header_ownlog" qtlid="62172">Logs séparés</translation>
@@ -299,7 +305,7 @@
    <translation id="hosting_tab_DOMAINS_table_popover_delete" qtlid="2414">Eliminar</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_modify" qtlid="37875">Modifier</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_refresh" qtlid="158708">Recargar</translation>
-   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Recherche...</translation>
+   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="491964">Buscar...</translation>
 
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation" qtlid="255976">Generar enlace</translation>
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="444417">Se ha producido un error al generar el enlace de acceso a los logs.</translation>
@@ -308,7 +314,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_attachDomain_title_button" qtlid="226969">Añadir un dominio o subdominio</translation>
    <translation id="hosting_ssl_regenerate_title_button" qtlid="315787">Generar nuevamente el certificado SSL</translation>
    <translation id="hosting_ssl_regenerate_info" qtlid="315800">Al generar nuevamente el certificado SSL, se aplicarán los cambios asociados a la activación o desactivación de SSL en los multisitios.</translation>
-   <translation id="hosting_ssl_regenerate_info_warning">Si vous avez ajouté des hébergements multisites il y a moins de deux heures, il est possible qu'ils ne soient pas inclus dans votre certificat SSL.</translation>
+   <translation id="hosting_ssl_regenerate_info_warning" qtlid="473596">Si ha añadido alojamientos multisitio hace menos de dos horas, es posible que estos aún no estén incluidos en su certificado SSL.</translation>
    <translation id="hosting_ssl_limit_characters_info_warning" qtlid="402711">La certificación gratuita no está disponible para los dominios que exceden los {0} caracteres.</translation>
 
    <translation id="hosting_tab_DATABASES_change_offer" qtlid="327302">Cambiar a un alojamiento de pago para crear una base datos. Cambiar de plan rápidamente y sin cortes haciendo clic en</translation>
@@ -346,10 +352,13 @@
    <translation id="hosting_tab_DATABASES_configuration_quota_warning_message" qtlid="261452">Si usted se excede del espacio de almacenamiento recomendado, sus permisos se restringirán a un acceso de solo lectura.</translation>
    <translation id="hosting_tab_DATABASES_configuration_quota_warning_resolution" qtlid="261465">Para evitar esta limitación, le recomendamos liberar espacio de su base de datos y calcular nuevamente el espacio utilizado. La base de datos se desbloqueará automáticamente en los próximos minutos.</translation>
 
+   <translation id="hosting_tab_databases_get_error" qtlid="488120">Se ha producido un error al intentar recuperar sus bases de datos.</translation>
+   <translation id="hosting_tab_databases_dumps_error_fetch" qtlid="488133">Se ha producido un error al intentar recuperar las copias de seguridad.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_title_button" qtlid="7618">Créer une base de données</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_title" qtlid="7618">Créer une base de données</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MYSQL" qtlid="196894">MySQL</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_POSTGRESQL" qtlid="196907">PostgreSQL</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MONGODB" qtlid="444706">MongoDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_loading_error" qtlid="168120">Se ha producido un error al cargar la información.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_question" qtlid="196920">Va a crear una base de datos.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_no_db_left" qtlid="196933">No queda ninguna base de datos disponible.</translation>
@@ -358,7 +367,7 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type" qtlid="196959">Seleccione el tipo de base de datos:</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PERSO" qtlid="196972">SQL Personal {0} {1}: {2} restante(s)</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PRO" qtlid="196985">SQL Profesional {0} {1}: {2} restante(s)</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="491977">Almacenada en la instancia Cloud Web</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_EXTRA_SQL_PERSO" qtlid="196998">SQL Personal {0} {1}: {2} restante(s)</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_PRIVATE_SQL" qtlid="261734">SQL Privado {0} {1}: {2} restante(s)</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step2_password_question" qtlid="197011">Indique el nombre del usuario de la base de datos y la contraseña.</translation>
@@ -375,7 +384,7 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PERSO" qtlid="197128">SQL Personal {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PRO" qtlid="197141">SQL Profesional {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_EXTRA_SQL_PERSO" qtlid="197154">Extra SQL Personal {0} {1}</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="491977">Almacenada en la instancia Cloud Web</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_fail" qtlid="197167">Se ha producido un error al solicitar la creación de la base de datos.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_success" qtlid="197180">La base de datos va a crearse.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_bdd_adding" qtlid="453189">Añadiendo base de datos...</translation>
@@ -414,6 +423,11 @@
    <translation id="database_tabs_dumps_delete_success" qtlid="290264">La copia de seguridad se ha eliminado correctamente.</translation>
    <translation id="database_tabs_dumps_delete_fail" qtlid="290277">Se ha producido un error al eliminar la copia de seguridad:</translation>
 
+   <translation id="database_tabs_dumps_status" qtlid="26443">Statut</translation>
+   <translation id="database_tabs_dumps_status_created" qtlid="264862">Creada </translation>
+   <translation id="database_tabs_dumps_status_creating" qtlid="488146">Creando Dump...</translation>
+   <translation id="database_tabs_dumps_status_updating" qtlid="488159">Modificando Dump...</translation>
+   <translation id="database_tabs_dumps_status_deleting" qtlid="488172">Eliminando Dump...</translation>
 
    <translation id="hosting_tab_DATABASES_configuration_update_password_title" qtlid="80394">Changer le mot de passe</translation>
    <translation id="hosting_tab_DATABASES_configuration_update_password_question" qtlid="413180">Usted va a modificar la contraseña de la base de datos {0}:</translation>
@@ -485,6 +499,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_domain_name" qtlid="140638">Nombre del dominio</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_domain_name_www_question" qtlid="197557">Editar también el subdominio {0}</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_home" qtlid="196816">Carpeta raíz</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_step1_runtime" qtlid="488107">Unidad funcional</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_cdn" qtlid="232466">Activar el CDN</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step2_summary" qtlid="197570">¿Seguro que desea aplicar los cambios en los siguientes dominios?</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step2_domain_name" qtlid="140638">Nombre del dominio</translation>
@@ -588,6 +603,100 @@
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_type" qtlid="2642">Tipo</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_target" qtlid="47644">Cible</translation>
 
+   <translation id="hosting_tab_RUNTIMES_guide_help" qtlid="488185">¿Necesita ayuda para actualizar su configuración?</translation>
+   <translation id="hosting_tab_RUNTIMES_table_empty" qtlid="488198">La lista de las configuraciónes está vacía.</translation>
+   <translation id="hosting_tab_RUNTIMES_runtimes_table_empty" qtlid="488211">La lista de las unidades funcionales está vacía.</translation>
+   <translation id="hosting_tab_RUNTIMES_envvars_table_empty" qtlid="488224">La lista de las variables de entorno está vacía.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_table_status_created" qtlid="55133">Actif</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_creating" qtlid="146632">Creando...</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_updating" qtlid="124303">Modification en cours</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_deleting" qtlid="146645">Eliminando...</translation>
+
+   <translation id="hosting_tab_RUNTIMES_list_error" qtlid="488237">Se ha producido un error al intentar recuperar los datos de las unidades funcionales:</translation>
+   <translation id="hosting_tab_ENVVARS_list_error_temporary" qtlid="488250">Se ha producido un error temporal al intentar recuperar los datos de las variables de entorno. Por favor, inténtelo de nuevo más tarde.</translation>
+   <translation id="hosting_tab_ENVVARS_list_error" qtlid="488263">Se ha producido un error al intentar recuperar los datos de las variables de entorno:</translation>
+
+   <translation id="hosting_tab_RUNTIMES_list" qtlid="488276">Lista de unidades funcionales disponibles</translation>
+   <translation id="hosting_tab_ENVVARS_list" qtlid="488289">Lista de variables de entornos activos</translation>
+
+   <translation id="hosting_tab_RUNTIMES_add" qtlid="488302">Añadir una unidad funcional</translation>
+   <translation id="hosting_tab_RUNTIMES_quota_reached" qtlid="488315">Número máximo de unidades funcionales alcanzado para su oferta</translation>
+   <translation id="hosting_tab_ENVVARS_add" qtlid="488328">Añadir una variable de entorno</translation>
+   <translation id="hosting_tab_ENVVARS_quota_reached" qtlid="488341">Número máximo de variables de entorno alcanzado para su oferta</translation>
+
+   <translation id="hosting_tab_RUNTIMES_error" qtlid="243832">Se ha producido un error al recuperar la información:</translation>
+   <translation id="hosting_tab_RUNTIMES_empty" qtlid="488354">La lista de configuraciones está vacía.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_actions" qtlid="72809">Actions</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_name" qtlid="488367">Nombre de la configuración</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_language" qtlid="488107">Unidad funcional</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_default" qtlid="488380">Selección predeterminada</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_number_multisite" qtlid="488393">Número de multisitios asociados</translation>
+
+   <translation id="hosting_tab_RUNTIMES_table_popover_modify" qtlid="37875">Modifier</translation>
+   <translation id="hosting_tab_RUNTIMES_table_popover_delete" qtlid="2414">Eliminar</translation>
+
+   <translation id="hosting_tab_RUNTIMES_create_title" qtlid="488302">Añadir una unidad funcional</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_title" qtlid="488406">Modificar una unidad funcional</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_title" qtlid="488419">Eliminar una unidad funcional</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_step1_question" qtlid="488432">¿Está seguro(a) de que desea eliminar la unidad funcional?</translation>
+
+   <translation id="hosting_tab_RUNTIMES_save_success" qtlid="488445">La nueva unidad funcional estará disponible en unos minutos.</translation>
+   <translation id="hosting_tab_RUNTIMES_save_error" qtlid="488458">Se ha producido un error al crear la unidad funcional:</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_success" qtlid="488471">Modificando unidad funcional...</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_error" qtlid="488484">Se ha producido un error al modificar la unidad funcional:</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_success" qtlid="488497">Eliminando unidad funcional...</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_error" qtlid="488510">Se ha producido un error al eliminar la unidad funcional:</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_information" qtlid="488523">¡Atención! Esta acción es irreversible e implica la pérdida de todos los datos.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_label_name" qtlid="415727">Nombre personalizado</translation>
+   <translation id="hosting_tab_RUNTIMES_label_type" qtlid="488107">Unidad funcional</translation>
+   <translation id="hosting_tab_RUNTIMES_label_publicDir" qtlid="488536">Ruta de acceso al directorio público</translation>
+   <translation id="hosting_tab_RUNTIMES_label_appEnv" qtlid="488549">Entorno de la aplicación</translation>
+   <translation id="hosting_tab_RUNTIMES_label_appBootstrap" qtlid="488562">Script de lanzamiento de la aplicación</translation>
+
+   <translation id="hosting_tab_RUNTIMES_publicDir_help" qtlid="488575">Introduzca la ruta de acceso al directorio público necesaria para el lanzamiento de su servidor Node.js.</translation>
+   <translation id="hosting_tab_RUNTIMES_appEnv_help" qtlid="488588">Introduzca el entorno en el que se debe lanzar la aplicación Node.js (producción, desarrollo, test, …).</translation>
+   <translation id="hosting_tab_RUNTIMES_appBootstrap_help" qtlid="488601">Introduzca el nombre del script utilizado para el lanzamiento desde el binario Node.js.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_configure_envvar" qtlid="488614">Configurar las variables de entorno</translation>
+
+   <translation id="hosting_tab_ENVVARS_actions" qtlid="72809">Actions</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_key" qtlid="488627">Nombre de la variable</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_type" qtlid="488640">Tipo de variable</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_value" qtlid="47548">Valeur</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_status" qtlid="33790">État</translation>
+
+   <translation id="hosting_tab_ENVVARS_table_popover_modify" qtlid="37875">Modifier</translation>
+   <translation id="hosting_tab_ENVVARS_table_popover_delete" qtlid="2414">Eliminar</translation>
+   <translation id="hosting_tab_RUNTIMES_table_popover_set_default" qtlid="488380">Selección predeterminada</translation>
+
+   <translation id="hosting_tab_ENVVARS_create_title" qtlid="488328">Añadir una variable de entorno</translation>
+   <translation id="hosting_tab_ENVVARS_edit_title" qtlid="488653">Modificar una variable de entorno</translation>
+   <translation id="hosting_tab_ENVVARS_delete_title" qtlid="488666">Eliminar una variable de entorno</translation>
+   <translation id="hosting_tab_ENVVARS_delete_step1_question" qtlid="488679">¿Está seguro(a) de que desea eliminar la variable de entorno?</translation>
+   <translation id="hosting_tab_ENVVARS_delete_information" qtlid="488523">¡Atención! Esta acción es irreversible e implica la pérdida de todos los datos.</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_title" qtlid="488692">Seleccione una unidad funcional por defecto</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_step1_question" qtlid="488705">¿Está seguro(a) de que desea seleccionar esta unidad funcional como predeterminada?</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_information" qtlid="488718">¡Attention! a continuación, todos sus multisitios se crearán por defecto en esta unidad. Usted podrá modificar esta acción más tarde.</translation>
+
+   <translation id="hosting_tab_ENVVARS_save_success" qtlid="488731">La nueva variable dentorno estará disponible en unos minutos.</translation>
+   <translation id="hosting_tab_ENVVARS_save_error" qtlid="488744">Se ha producido un error al crear una variable de entorno:</translation>
+   <translation id="hosting_tab_ENVVARS_edit_success" qtlid="488757">Modificando variable de entorno...</translation>
+   <translation id="hosting_tab_ENVVARS_edit_error" qtlid="488770">Se ha producido un error al modificar la variable de entorno:</translation>
+   <translation id="hosting_tab_ENVVARS_delete_success" qtlid="488783">Eliminando variable de entorno...</translation>
+   <translation id="hosting_tab_ENVVARS_delete_error" qtlid="488796">Se ha producido un error al eliminar la variable de entorno:</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_success" qtlid="488809">La unidad funcional estará disponible como predeterminada en unos instantes.</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_error" qtlid="488822">Se ha producido un error al implementar la unidad funcional como predeterminada:</translation>
+
+   <translation id="hosting_tab_ENVVARS_label_key" qtlid="3818">Nombre</translation>
+   <translation id="hosting_tab_ENVVARS_label_error_required" qtlid="459430">Campo obligatorio</translation>
+   <translation id="hosting_tab_ENVVARS_label_error_pattern" qtlid="488835">El nombre de la variable no puede contener espacios.</translation>
+   <translation id="hosting_tab_ENVVARS_label_type" qtlid="488640">Tipo de variable</translation>
+   <translation id="hosting_tab_ENVVARS_label_value" qtlid="47548">Valeur</translation>
+
+
    <translation id="hosting_tab_TASK" qtlid="201172">Tareas en curso</translation>
    <translation id="hosting_tab_TASKS_table_empty" qtlid="144058">No hay tareas</translation>
    <translation id="hosting_tab_TASKS_table_function" qtlid="61872">Tâche</translation>
@@ -686,10 +795,14 @@
    <translation id="hosting_tab_FTP_dashboard_information" qtlid="198584">Para publicar su sitio web en internet, necesitará estos valores.</translation>
    <translation id="hosting_tab_FTP_dashboard_server" qtlid="198597">Servidor FTP :</translation>
    <translation id="hosting_tab_FTP_dashboard_login" qtlid="198610">Login principal :</translation>
+   <translation id="hosting_tab_FTP_dashboard_primary_ftp_login" qtlid="488848">Login FTP principal:</translation>
+   <translation id="hosting_tab_FTP_dashboard_primary_ssh_login" qtlid="488861">Login SSH principal:</translation>
    <translation id="hosting_tab_FTP_dashboard_login_enabled" qtlid="198623">Login principal activado:</translation>
    <translation id="hosting_tab_FTP_dashboard_homez" qtlid="271621">Acceso al directorio de la página principal:</translation>
    <translation id="hosting_tab_FTP_dashboard_clusterip" qtlid="198636">Dirección IP del cluster:</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_login" qtlid="41062">Login</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_ftp_login" qtlid="488874">Login FTP</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_ssh_login" qtlid="488887">Login SSH</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_home" qtlid="198649">Carpeta de destino</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_iisRemoteRights" qtlid="198662">iisRemoteRights</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_state" qtlid="369025">Estado</translation>
@@ -726,6 +839,7 @@
    <translation id="hosting_tab_FTP_configuration_explorer_disabled" qtlid="250043">Próximamente disponible</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_title" qtlid="198766">Cambiar la contraseña</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_title_button" qtlid="198766">Cambiar la contraseña</translation>
+
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_title" qtlid="215442">Restaurar una copia de seguridad</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_title_button" qtlid="215442">Restaurar una copia de seguridad</translation>
    <translation id="hosting_tab_FTP_configuration_restore_password_step1_question" qtlid="215455">Va a restaurar una copia de seguridad de su espacio FTP.</translation>
@@ -739,6 +853,20 @@
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_step2_alert_question" qtlid="351883">¿Desea continuar?</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_success" qtlid="215546">Se está restaurando un snapshot.</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_error" qtlid="215559">Se ha producido un error al restaurar su copia de seguridad:</translation>
+
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_title" qtlid="488900">Generar una copia de seguridad</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_title_button" qtlid="488900">Generar una copia de seguridad</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_password_step1_question" qtlid="488913">Usted va a generar una copia de seguridad de su espacio FTP</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_snapshot_instance" qtlid="488926">Instancia a generar:</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_1" qtlid="215481">1 día antes</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_2" qtlid="215494">2 días antes</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_3" qtlid="215507">3 días antes</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_weekly_1" qtlid="70217">1 semaine</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert" qtlid="488939">¡Atención! la copia de seguridad generada se le enviará por correo electrónico y no se podrá restaurar automáticamente en su espacio FTP.</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert_question" qtlid="352009">¿Desea continuar?</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_success" qtlid="488952">Generando copia de seguridad...</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_error" qtlid="488965">Se ha producido un error al generar la copia de seguridad:</translation>
+
    <translation id="hosting_tab_FTP_configuration_change_password_step1_question" qtlid="413206">Usted va a modificar la contraseña del usuario {0}</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_step1_password" qtlid="17177">Nouveau mot de passe</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_step1_confirmation" qtlid="9983">Confirmation</translation>
@@ -808,7 +936,7 @@
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_email" qtlid="211997">Correo electrónico del administrador:</translation>
    <translation id="hosting_configuration_tab_modules_create_step2_db_admin_error" qtlid="212010">El nombre de usuario no es válido. Están autorizados los caracteres alfanuméricos y los siguientes símbolos: - _ @</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_info_admin_error" qtlid="212023">El nombre de usuario no es válido. Están autorizados los caracteres alfanuméricos y los siguientes símbolos: - _</translation>
-   <translation id="hosting_configuration_tab_modules_create_step3_infos_email_admin_error" qtlid="212036">El correo electrónico no es válido.</translation>
+   <translation id="hosting_configuration_tab_modules_create_step3_infos_email_admin_error" qtlid="488978">El correo electrónico no es válido</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_password" qtlid="91129">Mot de passe :</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_password_confirm" qtlid="197063">Repetir contraseña:</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_password_error" qtlid="197076">Las contraseñas introducidas no son idénticas.</translation>
@@ -1165,7 +1293,7 @@
    <translation id="hosting_tab_AUTOMATED_EMAILS_purge" qtlid="254544">Eliminar los mensajes</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_total_sent" qtlid="254557">Total de mensajes enviados:</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_today_sent" qtlid="254570">Mensajes enviados hoy:</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_purge_info" qtlid="254583">Para eliminar los mensajes, es necesario solicitar primero el bloqueo.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_purge_info" qtlid="254583">Para eliminar los mensajes, es necesario solicitar previamente el bloqueo.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_total_bounce" qtlid="254596">Total de mensajes de error:</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_error" qtlid="243832">Se ha producido un error al recuperar la información:</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_block_title" qtlid="254609">Bloquear el envío de mensajes</translation>
@@ -1186,13 +1314,13 @@
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_invalid" qtlid="254778">La dirección de correo electrónico no es válida.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_volume" qtlid="267549">Historial de mensajes enviados</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_emails_sent" qtlid="267562">Mensajes enviados</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_volume_limit" qtlid="267575">Cantidad de mensajes (máx. 100):</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_volume_limit" qtlid="267575">Número de mensajes (máx. 100):</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_volume_history" qtlid="267588">Mensajes de error</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_bounces_empty" qtlid="267601">No ay mensajes de error.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_bounces_empty" qtlid="267601">No hay mensajes de error.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_bounces_date" qtlid="24523">Date</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_bounces_to" qtlid="33598">E-mail</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_bounces_message" qtlid="30574">Message</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_volume_count" qtlid="267614">No. de mensajes enviados</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_volume_count" qtlid="267614">Número de mensajes enviados</translation>
    <translation id="hosting_global_php_version" qtlid="267627">Versión PHP global</translation>
    <translation id="hosting_global_php_version_edit" qtlid="267640">Modificar la configuración</translation>
    <translation id="hosting_action_config_edit_init_error" qtlid="267653">Lo sentimos: no se han podido cargar todos los datos en la configuración. Por favor, inténtelo más tarde.</translation>
@@ -1236,7 +1364,7 @@
    <translation id="hosting_global_php_version_pending_task_error_common" qtlid="267913">Ha fallado una operación, por favor, verifique la configuración.</translation>
    <translation id="hosting_action_config_edit_not_defined_error" qtlid="267926">Error desconocido: no se puede continuar</translation>
    <translation id="hosting_action_edit_ovhconfig_title" qtlid="289185">Configuración de alojamiento</translation>
-   <translation id="hosting_action_edit_need_to_choice" qtlid="267952">Seleccione la operación que desee realizar</translation>
+   <translation id="hosting_action_edit_need_to_choice" qtlid="267952">Seleccione la operación que desea realizar</translation>
    <translation id="hosting_action_edit_choose_update" qtlid="267965">Modificar la configuración actual</translation>
    <translation id="hosting_action_edit_choose_rollback" qtlid="267978">Volver a la configuración anterior</translation>
    <translation id="hosting_action_config_edit_no_choice" qtlid="267991">Solo hay una configuración disponible en el historial, la opción de selección está desactivada. Haga clic en "Aceptar" para aplicar los valores presentados a continuación.</translation>
@@ -1292,7 +1420,7 @@
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_success" qtlid="268549">Atención: el usuario se va a modificar.</translation>
 
    <translation id="hosting_tab_menu_crons" qtlid="270332">Tareas programadas - Cron</translation>
-   <translation id="hosting_tab_menu_emails" qtlid="270345">Gestionar las listas de correo electrónico</translation>
+   <translation id="hosting_tab_menu_emails" qtlid="489004">Correo electrónico y listas de difusión</translation>
    <translation id="hosting_tab_menu_contacts" qtlid="270358">técnico, de administración y de facturación</translation>
    <translation id="hosting_tab_menu_resiliate" qtlid="351896">Eliminar/ Cancelar mi alojamiento</translation>
    <translation id="hosting_tab_menu_resiliate_infos" qtlid="270384">Eliminar el servicio en la fecha de caducidad.</translation>
@@ -1352,7 +1480,7 @@
    <translation id="hosting_change_main_domain_help_title" qtlid="286461">Asociar el alojamiento a otro dominio</translation>
    <translation id="hosting_change_main_domain_help_desc" qtlid="286474">El dominio principal no se puede cambiar a un dominio externo. Si desea asociar el alojamiento a un dominio externo, deberá transferirlo previamente a OVH. </translation>
    <translation id="hosting_change_main_domain_help_keep_email_title" qtlid="286487">Conservar las cuentas de correo</translation>
-   <translation id="hosting_change_main_domain_help_keep_email_desc" qtlid="286500">Con su plan de alojamiento, usted obtiene una dirección de correo con su dominio actual. Si transfiere el dominio, deberá contratar un  Plan MX para conservar las direcciones. </translation>
+   <translation id="hosting_change_main_domain_help_keep_email_desc" qtlid="286500">Con su plan de alojamiento, usted obtiene una dirección de correo con su dominio actual. Si transfiere el dominio, deberá contratar un Plan MX para conservar las direcciones. </translation>
    <translation id="hosting_change_main_domain_help_mxplan_title" qtlid="286513">MX Plan</translation>
    <translation id="hosting_change_main_domain_help_mxplan_desc1" qtlid="286526">Si desea más información sobre el MX Plan, haga clic</translation>
    <translation id="hosting_change_main_domain_help_mxplan_desc2" qtlid="137452">aquí</translation>
@@ -1362,37 +1490,35 @@
 &#13;
 </translation>
    <translation id="hosting_dashboard_ssl_generate_success" qtlid="298968">El alojamiento se está activando con SSL.</translation>
-   <translation id="hosting_dashboard_ssl_report_button">État de la progression</translation>
-   <translation id="hosting_dashboard_service_ssl_creating">En cours de création</translation>
-   <translation id="hosting_dashboard_service_ssl_regenerating">En cours de régénération</translation>
-   <translation id="hosting_dashboard_service_ssl_deleting">En cours de suppression</translation>
-   <translation id="hosting_dashboard_service_ssl_importing">En cours d'import</translation>
+   <translation id="hosting_dashboard_ssl_report_button" qtlid="473609">Estado de progreso</translation>
+   <translation id="hosting_dashboard_service_ssl_creating" qtlid="29647">En cours de création</translation>
+   <translation id="hosting_dashboard_service_ssl_regenerating" qtlid="473622">Regenerando...</translation>
+   <translation id="hosting_dashboard_service_ssl_deleting" qtlid="152778">Eliminando</translation>
+   <translation id="hosting_dashboard_service_ssl_importing" qtlid="473635">Importando...</translation>
    <translation id="hosting_dashboard_service_order_ssl_delete" qtlid="299007">Eliminar el SSL</translation>
-   <translation id="hosting_dashboard_service_delete_ssl_warning" qtlid="299020">¿Está seguro(a) que desea eliminar el SSL de su alojamiento?</translation>
+   <translation id="hosting_dashboard_service_delete_ssl_warning" qtlid="299020">¿Está seguro(a) de que desea eliminar el SSL de su alojamiento?</translation>
    <translation id="hosting_dashboard_service_delete_ssl_warning_payable" qtlid="363479">¿Está seguro(a) que desea eliminar el certificado de pago? Una vez eliminado, no podrá reinstalarlo y deberá pagar uno nuevo.</translation>
-   <translation id="hosting_dashboard_ssl_details_title">Progression de la validation du certificat SSL</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus">Vérification des conditions d’utilisation</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus_error">La vérification des conditions d’utilisation de Comodo n’a pas pu être effectuée.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus">Vérification du nom de marque</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus_error">La vérification du nom de marque par une agence d’enregistrement n’a pas pu être effectuée.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_phoneCallApprovalStatus">Vérification téléphonique auprès du contact enregistré</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus">Vérification du statut légal</translation>
-<translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus_error">Durant le processus de validation de votre certificat SSL, il est nécessaire de contacter Comodo à ce numéro&#160;<strong>{0}</strong>.
-<br/>
-<br/>Notez qu’il s’agit d’une plateforme néerlandaise. Il vous suffira de demander un interlocuteur francophone.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus">Vérification de la validité du domaine</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus_error">Il s’agit généralement d’une restriction indiquée dans votre fichier <strong>.htaccess</strong>.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus">Vérification de la demande de signature de certificat</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus_error">Nous vous invitons à créer une demande d'assistance auprès de Comodo.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_in-progress">Cette étape est en cours de traitement.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_non-completed">Comodo est en attente d'informations pour compléter cette étape.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_not-provided">Le traitement de cette étape n'a pas encore commencé.</translation>
-   <translation id="hosting_dashboard_ssl_details_confirm_button">Fermer</translation>
-   <translation id="hosting_dashboard_ssl_details_error">Une erreur est survenue lors de la récupération du rapport de génération SSL.</translation>
-   <translation id="hosting_dashboard_ssl_details_support_1">Vous pourrez trouver toutes les informations nécessaires à la validation de ces différents éléments sur ce lien menant à la documentation (en anglais) de Comodo&#160;</translation>
-   <translation id="hosting_dashboard_ssl_details_support_2">.<br><br>Pour toute question relative à la validation de votre certificat SSL EV, nous vous invitons à contacter Comodo à l’adresse&#160;</translation>
-   <translation id="hosting_dashboard_ssl_details_support_3">, en précisant le numéro de commande suivant <strong>{0}</strong>.</translation>
-   <translation id="hosting_dashboard_ssl_details_support_new_window">Ce lien va s'ouvrir dans un nouvel onglet</translation>
+   <translation id="hosting_dashboard_ssl_details_title" qtlid="473648">Progreso de la validación del certificado SSL</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus" qtlid="473661">Verificación de las condiciones de uso</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus_error" qtlid="473674">La verificación de las condiciones de uso de Comodo no ha podido realizarse.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus" qtlid="473687">Verificación de la marca</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus_error" qtlid="473700">La verificación de la marca por parte de una compañía de registro, no ha podido realizarse.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_phoneCallApprovalStatus" qtlid="473713">Verificación telefónica a través del contacto registrado</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus" qtlid="473726">Verificación de la situación legal</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus_error" qtlid="484513">Durante el proceso de validación de su certificado SSL, es necesario ponerse en contacto con Comodo en este número <strong> +31 88 775 7777 </strong>. Tenga en cuenta que esta es una plataforma holandesa. Puede solicitar un contacto de habla inglesa.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus" qtlid="473765">Verificación de la validez del dominio</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus_error" qtlid="473778">Generalmente se trata de una restricción indicada en su archivo <strong>.htaccess</strong>.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus" qtlid="473791">Verificación de la solicitud de firma del certificado</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus_error" qtlid="473804">Le invitamos a crear una solicitud de asistencia a través de Comodo.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_in-progress" qtlid="473817">Este paso está en procesamiento...</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_non-completed" qtlid="473830">Comodo está esperando información para completar este paso.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_not-provided" qtlid="473843">El procesamiento de este paso no ha comenzado.</translation>
+   <translation id="hosting_dashboard_ssl_details_confirm_button" qtlid="4670">Cerrar</translation>
+   <translation id="hosting_dashboard_ssl_details_error" qtlid="473856">Se ha producido un error al recuperar el informe de generación de SSL.</translation>
+   <translation id="hosting_dashboard_ssl_details_support_1" qtlid="473869">uede encontrar toda la información necesaria para la validación de estos diferentes elementos en este enlace que lleva a la documentación de Comodo(en inglés)&#160;</translation>
+   <translation id="hosting_dashboard_ssl_details_support_2" qtlid="473882">.<br><br>Para cualquier pregunta relacionada con la validación de su certificado SSL con EV, le invitamos a ponerse en contacto con Comodo en la siguiente dirección &#160;</translation>
+   <translation id="hosting_dashboard_ssl_details_support_3" qtlid="473895">, especificando el siguiente número de pedido <strong>{0}</strong>.</translation>
+   <translation id="hosting_dashboard_ssl_details_support_new_window" qtlid="453228">El enlace se abrirá en una nueva pestaña.</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_warning" qtlid="315865">¿Está seguro(a) de que desea generar nuevamente el certificado SSL íntegro en su alojamiento?</translation>
    <translation id="hosting_dashboard_service_delete_ssl_title" qtlid="299033">Eliminar SSL</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_title" qtlid="315878">Generación SSL</translation>

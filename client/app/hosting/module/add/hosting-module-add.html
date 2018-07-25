@@ -182,12 +182,12 @@
                                data-i18n-static="hosting_configuration_tab_modules_create_step2_db_passwd"></label>
                         <div class="col-md-6">
                             <input type="password" autocomplete="off" class="form-control" id="dbPasswd" name="dbPasswd" required
-                                   data-ng-minlength="8"
-                                   data-ng-maxlength="model.databaseSelected.name ? 12 : 31"
+                                   data-ng-minlength="model.databasePasswordMinLength"
+                                   data-ng-maxlength="model.databasePasswordMaxLength"
                                    data-ng-model="model.databaseSelected.password"
                                    data-ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/">
                             <small class="help-block" data-ng-if="!formModuleDB.dbPasswd.$valid"
-                                   data-ng-bind-html="tr('hosting_common_password_conditions', [8, model.databaseSelected.name ? 12 : 31])"></small>
+                                   data-ng-bind-html="tr('hosting_common_password_conditions', [model.databasePasswordMinLength, model.databasePasswordMaxLength])"></small>
                         </div>
                     </div>
                 </form>

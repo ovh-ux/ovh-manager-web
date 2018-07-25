@@ -7,7 +7,7 @@
    <translation id="select_product_on_top" qtlid="123499">Seleccione arriba el producto que desee configurar.</translation>
    <translation id="index_nav_bar_logo_alt" qtlid="128190">Manager Web OVH</translation>
    <translation id="universe_univers-cloud_name" qtlid="15677">Cloud</translation>
-   <translation id="universe_univers-dedicated_name" qtlid="31738">Serviços Dedicados</translation>
+   <translation id="universe_univers-dedicated_name" qtlid="31738">Dedicado</translation>
    <translation id="universe_univers-telecom_name" qtlid="135827">Telecom</translation>
    <translation id="universe_univers-web_name" qtlid="135840">Web</translation>
    <translation id="universe_univers-sunrise_name" qtlid="232401">Sunrise</translation>
@@ -215,7 +215,7 @@
    <translation id="main_menu_products_and_config" qtlid="4406">Configuración</translation>
    <translation id="main_menu_bill_and_renew" qtlid="32950">Facturación</translation>
    <translation id="main_menu_help_and_support" qtlid="26035">Ayuda</translation>
-   <translation id="navigation_left_search" qtlid="122275">Buscar...</translation>
+   <translation id="navigation_left_search" qtlid="491925">Buscar...</translation>
    <translation id="navigation_left_domains" qtlid="32590">Dominios</translation>
    <translation id="navigation_left_all_domains" qtlid="152141">Todos mis dominios</translation>
    <translation id="navigation_left_order_dnszone" qtlid="433654">Zona DNS</translation>
@@ -224,11 +224,13 @@
    <translation id="navigation_left_order_mxplan" qtlid="286513">MX Plan</translation>
    <translation id="navigation_left_order_emailpro" qtlid="374893">Email Pro</translation>
    <translation id="navigation_left_order_domain" qtlid="32590">Dominios</translation>
+   <translation id="navigation_left_order_cloudweb" qtlid="437178">Cloud Web</translation>
    <translation id="navigation_left_platform" qtlid="123607">Plataformas</translation>
    <translation id="navigation_left_platform_1" qtlid="3854">Plataforma</translation>
    <translation id="navigation_left_platform_other" qtlid="123607">Plataformas</translation>
    <translation id="navigation_left_ip" qtlid="25615">IP</translation>
    <translation id="navigation_left_hosting" qtlid="50470">Alojamientos</translation>
+   <translation id="navigation_left_hosting_perf" qtlid="492340">Performance</translation>
    <translation id="navigation_left_database" qtlid="7702">Bases de datos</translation>
    <translation id="navigation_left_exchange" qtlid="80430">Exchange</translation>
    <translation id="navigation_left_office" qtlid="100544">Office</translation>
@@ -410,7 +412,7 @@
    <translation id="country_KW" qtlid="188262">Kuwait</translation>
    <translation id="country_KY" qtlid="188275">Caimán, Islas</translation>
    <translation id="country_KZ" qtlid="188288">Kazajistán</translation>
-   <translation id="country_LA" qtlid="188301">Laos, República Democrática Popular</translation>
+   <translation id="country_LA" qtlid="491938">Laos, República Democrática Popular de</translation>
    <translation id="country_LB" qtlid="188314">Líbano</translation>
    <translation id="country_LC" qtlid="188327">Santa Lucía</translation>
    <translation id="country_LI" qtlid="188340">Liechtenstein</translation>
@@ -559,7 +561,7 @@
    <translation id="core_change_owner" qtlid="271491">Cambiar de propietario </translation>
    <translation id="core_change_owner_order" qtlid="283981">Para modificar el propietario de su dominio, debe realizar un pedido directamente en nuestro sitio web. </translation>
    <translation id="core_change_owner_error" qtlid="270735">No se ha podido obtener la información necesaria para el cambio de propietario. </translation>
-   <translation id="contacts_management" qtlid="259575">Editar los contactos</translation>
+   <translation id="contacts_management" qtlid="32206">Contactos</translation>
    <translation id="more_tabs" qtlid="270748">Más pestañas</translation>
    <translation id="expired_date" qtlid="382076">Vencimiento el <strong>{0}</strong></translation>
    <translation id="expiration_date" qtlid="440274">Debe renovarse manualmente el <strong>{0}</strong></translation>
@@ -675,28 +677,6 @@
    <translation id="sso_modal_action_reload" qtlid="328810">Continuar como <strong>{{name}}</strong></translation>
    <translation id="sso_modal_action_logout" qtlid="316021">Ir a la página de autenticación</translation>
 
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_MISSING" qtlid="363852">No ha indicado ninguna forma de pago por defecto. Acceda a la sección <a href="#/billing/mean" class="alert-link">«Facturación»</a> para seleccionarla o añadir una nueva.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_EXPIRED" qtlid="343876">¡Su forma de pago por defecto ha expirado! Acceda a <a href="#/billing/mean" class="alert-link">«Facturación»</a> para registrar una nueva forma de pago.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_EXPIRE_SOON" qtlid="343889">Su forma de pago por defecto expira en menos de 30 días. Acceda a <a href="#/billing/mean" class="alert-link">«Facturación»</a> para registrar una nueva forma de pago.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_BANKACCOUNT_PENDINGVALIDATION" qtlid="343902">Su forma de pago por defecto (cuenta bancaria) está pendiente de validación. Acceda a <a href="#/billing/mean" class="alert-link">«Facturación»</a> para más información. </translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_CREDITCARD_TOOMANYFAILURES" qtlid="343915">¡Se ha registrado un error en su forma de pago por defecto (tarjeta bancaria)! Acceda a <a href="#/billing/mean" class="alert-link">«Facturación»</a> para realizar las comprobaciones necesarias y/o registrar una nueva forma de pago.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_DEFAULT_PAYPAL_TOOMANYFAILURES" qtlid="343928">¡Se ha registrado un error en su forma de pago por defecto (PayPal)! Acceda a <a href="#/billing/mean" class="alert-link">«Facturación»</a> para realizar las comprobaciones necesarias y/o registrar una nueva forma de pago.</translation>
-
-   <translation id="me_alerts_PAYMENTMEAN_BANKACCOUNT_PENDINGVALIDATION" qtlid="343941">Tiene <strong>{0}</strong> cuenta(s) bancaria(s) pendiente(s) de validación. Acceda <a href="#/billing/mean" class="alert-link">«Facturación»</a> para más información.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_CREDITCARD_TOOMANYFAILURES" qtlid="343954">Se ha registrado un error en <strong>{0}</strong> tarjeta(s) bancaria(s). Acceda a <a href="#/billing/mean" class="alert-link">«Facturación»</a> para realizar las comprobaciones necesarias y/o registrar una nueva forma de pago.</translation>
-   <translation id="me_alerts_PAYMENTMEAN_PAYPAL_TOOMANYFAILURES" qtlid="343967">Se ha registrado un error en <strong>{0}</strong> cuenta(s) PayPal. Acceda a <a href="#/billing/mean" class="alert-link">«Facturación»</a> para realizar las comprobaciones necesarias y/o registrar una nueva forma de pago.</translation>
-
-   <translation id="me_alerts_OVHACCOUNT_DEBT" qtlid="433563">Su cuenta OVH tiene un saldo negativo de <strong>{0}</strong> a fecha de {1}. Acceda a <a href="#/billing/ovhaccount" class="alert-link">Facturación</a> para regularizar la situación.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT" qtlid="343993">Tiene un saldo pendiente de <strong>{0}</strong>. Acceda a <a href="#/billing/statements" class="alert-link"> «Facturación»</a> para regularizar su situación.</translation>
-   <translation id="me_alerts_DEBTACCOUNT_DEBT_WITH_UNMATURED_AMOUNT" qtlid="369545">Tiene un saldo negativo de <strong>{0}</strong> (incluyendo un importe de {1} no vencido). Acceda a la sección <a href="#/billing/statements" class="alert-link">«Facturación»</a> para regularizar su situación.</translation>
-
-   <translation id="me_alerts_OVHACCOUNT_ALERTTHRESHOLD" qtlid="383919">Su cuenta de prepago ha alcanzado el umbral que usted ha establecido. Para más información, acceda a la sección «<a href="#/billing/ovhaccount" class="alert-link">Facturación</a>».</translation>
-
-   <translation id="me_alerts_ORDERS_DOCUMENTSREQUESTED" qtlid="344006">Tiene <strong>{0}</strong> pedido(s) en espera de documentación pendiente. Acceda a <a href="#/billing/orders?status=in-progress" class="alert-link">«Mis pedidos»</a> para actualizar la documentación.</translation>
-   <translation id="me_alerts_AGREEMENTS_TODO" qtlid="344019">Tiene <strong>{0}</strong> contrato(s) pendiente(s) de validación.</translation>
-   <translation id="me_alerts_CONTACTCHANGE_VALIDATINGBYCUSTOMERS" qtlid="344032">Tiene <strong>{0}</strong> solicitud(es) de cambio de contacto.</translation>
-
-
    <translation id="global_ks_upgrade_step1" qtlid="367863">Para migrar un hosting Kimsufi, siga estas indicaciones:</translation>
    <translation id="global_ks_upgrade_step2" qtlid="367876">Seleccione el hosting Kimsufi en la columna izquierda.</translation>
    <translation id="global_ks_upgrade_step3" qtlid="367889">En la pestaña de información general del alojamiento seleccionado, haga clic en el botón «Cambiar de plan».</translation>
@@ -713,12 +693,30 @@
 
    <translation id="sidebar_menu_order_actions" qtlid="43558">Contratar</translation>
 
-   <translation id="common_ouidatagrid_nodata" qtlid="197635">No hay resultados</translation>
-   <translation id="common_ouipagination_resultsperpage" qtlid="433384">Resultados por página</translation>
-   <translation id="common_ouipagination_ofnresults" qtlid="452982">de TOTAL_ITEMS resultados</translation>
-   <translation id="common_ouipagination_currentpageofpagecount" qtlid="452995">Página CURRENT_PAGE de PAGE_COUNT</translation>
-   <translation id="common_ouipagination_next" qtlid="433423">Página siguiente</translation>
-   <translation id="common_ouipagination_previous" qtlid="433436">Página anterior</translation>
+   <translation id="common_criteria_adder_column_label" qtlid="479108">Columna</translation>
+   <translation id="common_criteria_adder_operator_label" qtlid="425806">Condición</translation>
+   <translation id="common_criteria_adder_operator_boolean_is" qtlid="479121">es</translation>
+   <translation id="common_criteria_adder_operator_boolean_isNot" qtlid="479134">no es</translation>
+   <translation id="common_criteria_adder_operator_string_contains" qtlid="218692">contiene</translation>
+   <translation id="common_criteria_adder_operator_string_containsNot" qtlid="218705">no contiene</translation>
+   <translation id="common_criteria_adder_operator_string_startsWith" qtlid="479147">empieza por</translation>
+   <translation id="common_criteria_adder_operator_string_endsWith" qtlid="479160">termina por</translation>
+   <translation id="common_criteria_adder_operator_string_is" qtlid="479173">es igual a</translation>
+   <translation id="common_criteria_adder_operator_string_isNot" qtlid="479134">no es</translation>
+   <translation id="common_criteria_adder_operator_number_is" qtlid="479173">es igual a</translation>
+   <translation id="common_criteria_adder_operator_number_smaller" qtlid="479186">es inferior a</translation>
+   <translation id="common_criteria_adder_operator_number_bigger" qtlid="479199">es superior a</translation>
+   <translation id="common_criteria_adder_operator_date_is" qtlid="479121">es</translation>
+   <translation id="common_criteria_adder_operator_date_isBefore" qtlid="479212">es antes de</translation>
+   <translation id="common_criteria_adder_operator_date_isAfter" qtlid="479225">es después de</translation>
+   <translation id="common_criteria_adder_operator_options_is" qtlid="479121">es</translation>
+   <translation id="common_criteria_adder_operator_options_isNot" qtlid="479134">no es</translation>
+   <translation id="common_criteria_adder_true_label" qtlid="34776">Sí</translation>
+   <translation id="common_criteria_adder_false_label" qtlid="34788">No</translation>
+   <translation id="common_criteria_adder_value_label" qtlid="47548">Valor</translation>
+   <translation id="common_criteria_adder_submit_label" qtlid="37923">Añadir</translation>
+
+   <translation id="common_datagrid_nodata" qtlid="197635">No hay resultados</translation>
 
    <translation id="common_field_error_required" qtlid="472294">Complete este campo.</translation>
    <translation id="common_field_error_number" qtlid="472307">Introduzca un valor numérico válido.</translation>
@@ -728,4 +726,26 @@
    <translation id="common_field_error_minlength" qtlid="472359">Introduzca un mínimo de {{minlength}} caracteres.</translation>
    <translation id="common_field_error_maxlength" qtlid="472372">Introduzca un máximo de {{maxlength}} caracteres.</translation>
    <translation id="common_field_error_pattern" qtlid="472385">Introduzca un formato válido.</translation>
+
+   <translation id="common_navbar_notification_title" qtlid="33250">Notificaciones</translation>
+   <translation id="common_navbar_notification_error" qtlid="323434">¡Vaya! No se ha podido crear el menú.</translation>
+   <translation id="common_navbar_notification_error_subject" qtlid="26407">Error</translation>
+   <translation id="common_navbar_notification_see_all" qtlid="401914">Ver todas las notificaciones</translation>
+   <translation id="common_navbar_notification_mark_as_read" qtlid="70865">Marcar como leído</translation>
+   <translation id="common_navbar_notification_mark_as_unread" qtlid="70877">Marcar como no leído</translation>
+
+   <translation id="common_pagination_resultsperpage" qtlid="433384">Resultados por página</translation>
+   <translation id="common_pagination_page" qtlid="433397">página</translation>
+   <translation id="common_pagination_of" qtlid="121615">en</translation>
+   <translation id="common_pagination_ofnresults" qtlid="452982">de TOTAL_ITEMS resultados</translation>
+   <translation id="common_pagination_currentpageofpagecount" qtlid="452995">Página CURRENT_PAGE de PAGE_COUNT</translation>
+   <translation id="common_pagination_results" qtlid="433410">resultados</translation>
+   <translation id="common_pagination_next" qtlid="433423">Página siguiente</translation>
+   <translation id="common_pagination_previous" qtlid="433436">Página anterior</translation>
+
+   <translation id="common_stepper_optional_label" qtlid="488081">(opcional)</translation>
+   <translation id="common_stepper_modify_this_step" qtlid="480922">Modificar este paso</translation>
+   <translation id="common_stepper_skip_this_step" qtlid="230127">Saltar este paso</translation>
+   <translation id="common_stepper_next_button_label" qtlid="17743">Siguiente</translation>
+   <translation id="common_stepper_submit_button_label" qtlid="113382">Enviar</translation>
 </translations>

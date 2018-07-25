@@ -82,15 +82,15 @@
    <translation id="privateDatabase_configurations_general_postgresql" qtlid="371149">Algemene PostgreSQL configuratie</translation>
    <translation id="privateDatabase_configurations_general_postgresql_soon" qtlid="371162">Binnenkort beschikbaar voor PostgreSQL</translation>
 
-   <translation id="privateDatabase_configuration_alert" qtlid="263507">Let op! Voor alle aanpassingen moeten de server opnieuw worden gestart.</translation>
+   <translation id="privateDatabase_configuration_alert" qtlid="482212">Elke wijziging herstart de server.</translation>
    <translation id="privateDatabase_configuration_edit_btn" qtlid="185452">Bewerken</translation>
    <translation id="privateDatabase_configuration_cancel_btn" qtlid="37863">Annuleren</translation>
-   <translation id="privateDatabase_configuration_confirm_btn" qtlid="31498">Bevestigen</translation>
+   <translation id="privateDatabase_configuration_confirm_btn" qtlid="41326">Toepassen</translation>
    <translation id="privateDatabase_configuration_reboot" qtlid="263520">De configuratie wordt aangepast. Uw server gaat opnieuw starten.</translation>
    <translation id="privateDatabase_configuration_error_put" qtlid="263533">Er is een fout opgetreden tijdens de aanpassing van de configuratie.</translation>
    <translation id="privateDatabase_configuration_error" qtlid="233047">Er is een fout opgetreden tijdens het ophalen van de gegevens.</translation>
    <translation id="privateDatabase_configuration_success" qtlid="263546">Uw server is opnieuw gestart en de configuratie is succesvol aangepast.</translation>
-   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Leg vast of de auto-commit modus actief on onactief wordt, d.w.z. of de aanvragen automatisch worden ingediend of dat ze handmatig moeten worden ingediend voordat ze effectief zijn.</translation>
+   <translation id="privateDatabase_configuration_autoCommit" qtlid="263559">Bepaalt of de auto-commit-modus al dan niet is ingeschakeld, dat wil zeggen als verzoeken automatisch zijn uitgevoerd of als ze moeten worden vastgelegd om te kunnen werken.</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263572">Maximaal aantal geautoriseerde verbindingen met de server.</translation>
    <translation id="privateDatabase_configuration_skipInnodb" qtlid="263585">Het gebruik van InnoDB-tabellen deactiveren.</translation>
    <translation id="privateDatabase_configuration_maxConnections" qtlid="263598">Maximaal aantal gelijktijdige verbindingen</translation>
@@ -100,6 +100,16 @@
    <translation id="privateDatabase_configuration_event_scheduler" qtlid="370187">Status van de event orchestrator</translation>
    <translation id="privateDatabase_configuration_interactive_timeout" qtlid="370200">Het aantal seconden aan inactiviteit tijdens een command line verbinding, waarna de server de verbinding sluit.</translation>
    <translation id="privateDatabase_configuration_wait_timeout" qtlid="370213">Het aantal seconden aan inactiviteit tijdens een externe verbinding, waarna de server de verbinding sluit.</translation>
+
+   <translation id="privateDatabase_configuration_field_autocommit" qtlid="482225">Bepaalt of SLQ-transacties automatisch worden ingediend of niet.</translation>
+   <translation id="privateDatabase_configuration_field_event_scheduler" qtlid="482238">Hiermee kunt u de uitvoering van geplande query's direct op de MySQL-server activeren.</translation>
+   <translation id="privateDatabase_configuration_field_innodb_buffer_pool_size" qtlid="482251">De grootte van de buffer kiezen (in megabytes).</translation>
+   <translation id="privateDatabase_configuration_field_interactive_timeout" qtlid="482264">Het aantal seconden dat de server wacht op activiteit op een interactieve verbinding voordat deze wordt afgesloten.</translation>
+   <translation id="privateDatabase_configuration_field_max_allowed_packet" qtlid="482277">Maximale pakketgrootte (in megabytes).</translation>
+   <translation id="privateDatabase_configuration_field_max_connections" qtlid="482290">Aantal toegestane gelijktijdige verbindingen op Private SQL.</translation>
+   <translation id="privateDatabase_configuration_field_max_user_connections" qtlid="482303">Aantal toegestane gelijktijdige verbindingen per gebruiker.</translation>
+   <translation id="privateDatabase_configuration_field_tmpdir" qtlid="482316">Directory van tijdelijke bestanden (RAM of harde schijf van een exemplaar).</translation>
+   <translation id="privateDatabase_configuration_field_wait_timeout" qtlid="482329">De tijd dat de server wacht op de activiteit op een niet-interactieve verbinding voordat deze wordt gesloten (in seconden).</translation>
 
    <translation id="privateDatabase_capability_disabled_explanation" qtlid="448379">Deze functie is niet beschikbaar bij dit type database. </translation>
 
@@ -378,7 +388,7 @@
    <translation id="privateDatabase_change_ram" qtlid="37875">Wijzigen</translation>
    <translation id="privateDatabase_change_ram_title" qtlid="217106">Wijzig de hoeveelheid RAM-geheugen</translation>
    <translation id="privateDatabase_order_select_ram_description" qtlid="217119">De geselecteerde hoeveelheid RAM-geheugen vervangt de huidige hoeveelheid.</translation>
-   <translation id="privateDatabase_order_select_ram_placeholder" qtlid="217132">Selecteer...</translation>
+   <translation id="privateDatabase_order_select_ram_placeholder" qtlid="491990">Selecteer...</translation>
 
    <translation id="privateDatabase_RAM_add_select" qtlid="31858">RAM-geheugen</translation>
    <translation id="privateDatabase_order_select_ram" qtlid="216807">Selecteer de gewenste hoeveelheid.</translation>
@@ -426,20 +436,24 @@
    <translation id="privateDatabase_tabs_cron_configuration_delete_fail" qtlid="263142">Er is een fout opgetreden tijdens de verwijdering van het geplande back-up.</translation>
 
    <translation id="privateDatabase_tab_METRICS" qtlid="271819">Metrics</translation>
-   <translation id="privateDatabase_metrics_memory_title" qtlid="284789">RAM - memory gebruik statistieken </translation>
-   <translation id="privateDatabase_metrics_connections_title" qtlid="284802">Statistieken over actieve verbindingen </translation>
-   <translation id="privateDatabase_metrics_memory_graph_y" qtlid="31858">RAM-geheugen</translation>
-   <translation id="privateDatabase_metrics_connections_graph_mysql_active_connections" qtlid="272578">Actieve verbindingen</translation>
+   <translation id="privateDatabase_metrics_no_data" qtlid="271871">Geen data beschikbaar. </translation>
+
+   <translation id="privateDatabase_metrics_memoryUsages_title" qtlid="284789">RAM - memory gebruik statistieken </translation>
+   <translation id="privateDatabase_metrics_memoryUsages_graph_dbaas_metrics_docker_container_mem_usage_percent" qtlid="271845">RAM gebruik</translation>
+
+   <translation id="privateDatabase_metrics_activeConnections_title" qtlid="284802">Statistieken over actieve verbindingen </translation>
+   <translation id="privateDatabase_metrics_activeConnections_graph_dbaas_metrics_mysql_connexion_count" qtlid="272578">Actieve verbindingen</translation>
+
+   <translation id="privateDatabase_metrics_queryExecutionTimes_title" qtlid="284815">Query runtime statistieken</translation>
+   <translation id="privateDatabase_metrics_queryExecutionTimes_graph_dbaas_metrics_mysql_query_time_average" qtlid="272604">Runtime aanvragen</translation>
+
+   <translation id="privateDatabase_metrics_memoryUsages_graph_y" qtlid="31858">RAM-geheugen</translation>
+   <translation id="privateDatabase_metrics_activeConnections_graph_mysql_active_connections" qtlid="272578">Actieve verbindingen</translation>
    <translation id="privateDatabase_metrics_connections_graph_dbaas_metrics_mysql_connexion_count" qtlid="272578">Actieve verbindingen</translation>
    <translation id="privateDatabase_metrics_memory_graph_memory_rss" qtlid="271845">RAM gebruik</translation>
-   <translation id="privateDatabase_metrics_memory_graph_dbaas_metrics_docker_container_mem_usage_percent" qtlid="271845">RAM gebruik</translation>
    <translation id="privateDatabase_metrics_memory_graph_memory_hierarchical_memory_limit" qtlid="271858">Maximale RAM limiet</translation>
-   <translation id="privateDatabase_metrics_no_data" qtlid="271871">Geen data beschikbaar. </translation>
    <translation id="privateDatabase_metrics_wrong_version" qtlid="412152">Geen data beschikbaar voor versie(s) {0}.</translation>
    <translation id="privateDatabase_metrics_time_graph_mysql_ms" qtlid="272591">Milliseconden</translation>
-   <translation id="privateDatabase_metrics_time_graph_mysql_query_time" qtlid="272604">Runtime aanvragen</translation>
-   <translation id="privateDatabase_metrics_time_graph_dbaas_metrics_mysql_query_time_average" qtlid="272604">Runtime aanvragen</translation>
-   <translation id="privateDatabase_metrics_time_title" qtlid="284815">Query runtime statistieken</translation>
    <translation id="privateDatabase_metrics_time_range_DAY" qtlid="284828">Afgelopen 24 uur</translation>
    <translation id="privateDatabase_metrics_time_range_WEEK" qtlid="37491">Vorige week</translation>
    <translation id="privateDatabase_metrics_time_range_MONTH" qtlid="37503">Afgelopen maand</translation>

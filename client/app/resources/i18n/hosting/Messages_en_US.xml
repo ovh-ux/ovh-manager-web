@@ -6,7 +6,7 @@
    <translation id="hosting_common_path_help_inline" qtlid="263025">Accepted types for the files include letters, numbers and characters. It is forbidden to access parent files using..</translation>
    <translation id="hosting_common_target_new_window" qtlid="211633">(New window)</translation>
    <translation id="hosting_dashboard_title" qtlid="47488">Shared hosting</translation>
-   <translation id="hosting_dashboard_loading_error" qtlid="315709">There was an error loading information. This sometimes happens when there is an Ad-blocker enabled. </translation>
+   <translation id="hosting_dashboard_loading_error" qtlid="315709">An error has occurred loading information. This sometimes happens when there is an ad-blocker enabled. </translation>
    <translation id="hosting_dashboard_creation_date" qtlid="26419">Creation date</translation>
    <translation id="hosting_dashboard_expiration_date" qtlid="268121">Expires on </translation>
    <translation id="hosting_dashboard_databases" qtlid="195815">SQL databases</translation>
@@ -33,7 +33,7 @@
    <translation id="hosting_dashboard_service_main_domain" qtlid="191122">Main domain</translation>
    <translation id="hosting_dashboard_service_main_domain_change" qtlid="284384">Change primary domain </translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_success" qtlid="315722">Your request to regenerate a certificate has been processed. </translation>
-   <translation id="hosting_dashboard_service_regenerate_ssl_error" qtlid="434161">There was an error regenerating your certificate. </translation>
+   <translation id="hosting_dashboard_service_regenerate_ssl_error" qtlid="434161">An error has occurred regenerating your certificate. </translation>
    <translation id="hosting_dashboard_disk_usage" qtlid="28159">Disk space</translation>
    <translation id="hosting_dashboard_trafic_usage" qtlid="222137">Traffic used</translation>
    <translation id="hosting_dashboard_hosting_activities" qtlid="268134">Hosting activity</translation>
@@ -45,9 +45,9 @@
 
    <translation id="hosting_dashboard_close_service" qtlid="255417">Delete my web hosting package</translation>
    <translation id="hosting_dashboard_close_service_warning" qtlid="255430">When a web hosting package is deleted, all the data linked to it is lost. No refund will be granted for any deleted web hosting packages.</translation>
-   <translation id="hosting_dashboard_close_service_desc1" qtlid="351857">You will be sent an email containing the procedure for cancelling your hosting package.</translation>
+   <translation id="hosting_dashboard_close_service_desc1" qtlid="351857">You will be sent an email containing the procedure for canceling your hosting plan.</translation>
    <translation id="hosting_dashboard_close_service_question" qtlid="351870">Do you want to continue? </translation>
-   <translation id="hosting_dashboard_close_service_success" qtlid="255456">Your request to close your web hosting package has been processed. You will receive an email detailing the shutdown procedure.</translation>
+   <translation id="hosting_dashboard_close_service_success" qtlid="255456">Your request to close your web hosting plan has been processed. You will receive an email detailing the procedure.</translation>
    <translation id="hosting_dashboard_close_service_error" qtlid="255469">Unable to close your web hosting package due to the following error:</translation>
 
    <translation id="hosting_dashboard_service_offer" qtlid="38217">Solution </translation>
@@ -78,6 +78,7 @@
    <translation id="hosting_dashboard_service_offer__90_PLAN" qtlid="196036">90plan</translation>
    <translation id="hosting_dashboard_service_offer_ASPFREE" qtlid="196049">aspfree</translation>
    <translation id="hosting_dashboard_service_offer_BUSINESS" qtlid="314110">business 2010</translation>
+   <translation id="hosting_dashboard_service_offer_CLOUDWEB_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_CLOUDWEBX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_CLOUDWEBBETAX_1" qtlid="437178">Cloud Web</translation>
    <translation id="hosting_dashboard_service_offer_DEMO_1_G" qtlid="196075">demo1g</translation>
@@ -175,6 +176,7 @@
    <translation id="hosting_dashboard_service_datacenter" qtlid="30802">Data center</translation>
    <translation id="hosting_dashboard_service_datacenter_p19" qtlid="93991">Paris</translation>
    <translation id="hosting_dashboard_service_datacenter_gra1" qtlid="264192">Gravelines</translation>
+   <translation id="hosting_dashboard_service_default_runtime" qtlid="491951">Default runtime software</translation>
 
    <translation id="hosting_dashboard_available_space" qtlid="196608">Space available</translation>
    <translation id="hosting_tab_DOMAINS_OLD" qtlid="223528">Websites</translation>
@@ -184,15 +186,18 @@
    <translation id="hosting_tab_DATABASE" qtlid="7702">Databases</translation>
    <translation id="hosting_tab_STATISTICS" qtlid="26671">Statistics</translation>
    <translation id="hosting_tab_INDY" qtlid="272396">Independent multi-domains</translation>
+   <translation id="hosting_tab_RUNTIMES" qtlid="488991">Runtime frameworks</translation>
+   <translation id="hosting_tab_ENVVARS" qtlid="491650">Environment variables</translation>
+
    <translation id="hosting_tab_GENERAL_INFORMATIONS" qtlid="27115">General information</translation>
    <translation id="hosting_dashboard_ssl_order_not_available" qtlid="217639">You can't order an SSL certificate on your platform. </translation>
    <translation id="hosting_dashboard_ssl_order_choose_duration" qtlid="217652">Select a duration:</translation>
    <translation id="hosting_dashboard_ssl_order_validation" qtlid="217665">Click "Validate" to generate your purchase order. After your payment has been approved, your SSL certificate will be available within 48 hours.</translation>
    <translation id="hosting_dashboard_ssl_order_success" qtlid="181266">The order number <a href='{0}' target='_blank'>{1}</a> has been registered.</translation>
-   <translation id="hosting_dashboard_ssl_order_error" qtlid="217678">An error occurred when you were ordering an SSL certificate.</translation>
+   <translation id="hosting_dashboard_ssl_order_error" qtlid="217678">An error has occurred ordering an SSL certificate.</translation>
    <translation id="hosting_dashboard_ssl_order_payable" qtlid="298877">Paid certificate</translation>
-   <translation id="hosting_dashboard_ssl_order_imported">Certificat importé</translation>
-   <translation id="hosting_dashboard_ssl_order_free" qtlid="298890">Free certificate (Let's encrypt)</translation>
+   <translation id="hosting_dashboard_ssl_order_imported" qtlid="473544">Certificate imported</translation>
+   <translation id="hosting_dashboard_ssl_order_free" qtlid="298890">Free certificate (Let's Encrypt)</translation>
    <translation id="hosting_dashboard_ssl_order_a_certificate" qtlid="382141">Purchase a certificate </translation>
    <translation id="hosting_dashboard_ssl_order_import" qtlid="315735">Import your SSL certificate </translation>
    <translation id="hosting_dashboard_ssl_order_manual_mode" qtlid="298929">Manual </translation>
@@ -202,15 +207,15 @@
    <translation id="hosting_dashboard_ssl_order_manual_mode_chain" qtlid="402685">Copy the content of your certificate chain:</translation>
    <translation id="hosting_dashboard_ssl_order_pay" qtlid="402698">You are about to be redirected to our order process, to complete your SSL certificate purchase. </translation>
    <translation id="hosting_dashboard_ssl_redirect_to_order" qtlid="382154">A new window opened where you can follow your order. <a href="{0}">Click here to continue purchasing your options</a>.</translation>
-   <translation id="hosting_dashboard_ssl_redirect_to_order_error">Une erreur est survenue lors de la récupération de l'adresse nécessaire à la génération du bon de commande.</translation>
-   <translation id="hosting_dashboard_ssl_order_preamble">En cliquant sur Valider, vous allez ouvrir un bon de commande dans un nouvel onglet pour votre certificat SSL.</translation>
-   <translation id="hosting_dashboard_ssl_paid_certificate_error">Vous pouvez commander des certificats gratuits ou importer des certificats, mais une erreur vous empêche de commander des certificats payants : {0}.</translation>
+   <translation id="hosting_dashboard_ssl_redirect_to_order_error" qtlid="473557">An error has occurred retrieving the address required to generate the invoice.</translation>
+   <translation id="hosting_dashboard_ssl_order_preamble" qtlid="473570">By clicking Confirm, you will open an invoice in a new tab for your SSL certificate.</translation>
+   <translation id="hosting_dashboard_ssl_paid_certificate_error" qtlid="473583">You can order free certificates or import certificates that you have purchased elsewhere, but an error is preventing you from ordering paid certificates: {0}.</translation>
 
    <translation id="hosting_dashboard_cdn_order_not_available" qtlid="217691">You can't order a CDN on your platform. </translation>
    <translation id="hosting_dashboard_cdn_order_choose_duration" qtlid="217652">Select a duration:</translation>
    <translation id="hosting_dashboard_cdn_order_validation" qtlid="217704">Click "Validate" to generate a purchase order.</translation>
    <translation id="hosting_dashboard_cdn_order_success" qtlid="413141">Your <a href="{0}" traget="_blank">invoice</a> has successfully been generated. Your product will be activated when you validate it.</translation>
-   <translation id="hosting_dashboard_cdn_order_error" qtlid="217717">An error occurred when you were ordering your CDN.</translation>
+   <translation id="hosting_dashboard_cdn_order_error" qtlid="217717">An error has occurred ordering your CDN.</translation>
    <translation id="hosting_dashboard_cdn_order_select_pack_offer" qtlid="217730">Select the CDN offer you want:</translation>
    <translation id="hosting_dashboard_cdn_order_CDN_BUSINESS" qtlid="222696">17 PoP CDN</translation>
    <translation id="hosting_dashboard_cdn_order_CDN_BUSINESS_FREE" qtlid="317061">CDN option includes </translation>
@@ -218,12 +223,12 @@
    <translation id="hosting_dashboard_cdn_flush_question" qtlid="217756">Are you sure you want to clear the cache in your CDN?</translation>
    <translation id="hosting_dashboard_cdn_flush_success" qtlid="217769">Your CDN cache will be cleared in a few moments.</translation>
    <translation id="hosting_dashboard_cdn_flush_done_success" qtlid="232427">Your CDN cache has been emptied.</translation>
-   <translation id="hosting_dashboard_cdn_flush_error" qtlid="217782">An error occurred during your request to clear the CDN cache.</translation>
+   <translation id="hosting_dashboard_cdn_flush_error" qtlid="217782">An error has occurred processing your request to clear the CDN cache.</translation>
    <translation id="hosting_dashboard_service_flush_cdn_doing" qtlid="217795">Clearing...</translation>
    <translation id="hosting_dashboard_service_terminate_cdn_question" qtlid="301976">Are you sure that you want to cancel your CDN service? </translation>
    <translation id="hosting_dashboard_service_terminate_cdn_title" qtlid="301989">CDN service cancellation </translation>
    <translation id="hosting_dashboard_service_terminate_cdn_success" qtlid="302002">Your CDN cancellation request has been processed. An email containing the closure procedure will be sent to you.</translation>
-   <translation id="hosting_dashboard_service_terminate_cdn_error" qtlid="302015">An error occurred during the cancellation of the CDN.</translation>
+   <translation id="hosting_dashboard_service_terminate_cdn_error" qtlid="302015">An error has occurred cancelling the CDN.</translation>
    <translation id="hosting_dashboard_service_ssl_impossible" qtlid="302028">You can not order an SSL certificate if the CDN is enabled. </translation>
 
    <translation id="hosting_dashboard_database_active_title" qtlid="260299">Private database activation included.</translation>
@@ -232,8 +237,8 @@
    <translation id="hosting_dashboard_database_active_version" qtlid="34210">Version</translation>
    <translation id="hosting_dashboard_database_active_success" qtlid="260325">Your private database is being activated.</translation>
    <translation id="hosting_dashboard_database_active_success_done" qtlid="260338">Your private database has been activated.</translation>
-   <translation id="hosting_dashboard_database_active_error" qtlid="260351">An error has occurred while requesting the activation of your private database.</translation>
-   <translation id="hosting_dashboard_database_versions_error" qtlid="260364">An error has occurred while retrieving available versions of the private databases. </translation>
+   <translation id="hosting_dashboard_database_active_error" qtlid="260351">An error has occurred requesting the activation of your private database.</translation>
+   <translation id="hosting_dashboard_database_versions_error" qtlid="260364">An error has occurred retrieving available versions of the private databases. </translation>
 
    <translation id="hosting_tab_CRON" qtlid="196660">Cron</translation>
    <translation id="hosting_tab_CRON_guide_help" qtlid="271504">Do you need help configuring your scheduled tasks?</translation>
@@ -268,19 +273,20 @@
    <translation id="hosting_tab_CRON_table_language_php7_2" qtlid="448249">PHP 7.2</translation>
    <translation id="hosting_tab_CRON_table_popover_delete" qtlid="2414">Delete</translation>
    <translation id="hosting_tab_CRON_table_popover_modify" qtlid="37875">Modify</translation>
-   <translation id="hosting_tab_CRON_configuration_error" qtlid="244690">An error retrieving the data occurred:</translation>
+   <translation id="hosting_tab_CRON_configuration_error" qtlid="244690">An error has occurred retrieving the data:</translation>
 
    <translation id="hosting_tab_CRON_error" qtlid="233047">An error has occurred while retrieving the data.</translation>
 
    <translation id="hosting_tab_CRON_configuration_delete_title" qtlid="196738">Delete a cron task</translation>
    <translation id="hosting_tab_CRON_configuration_delete_step1_question" qtlid="196751">Are you sure you want to delete the following cron task?</translation>
-   <translation id="hosting_tab_CRON_configuration_delete_fail" qtlid="196764">An error occurred when requesting to delete the cron task.</translation>
+   <translation id="hosting_tab_CRON_configuration_delete_fail" qtlid="196764">An error has occurred requesting to delete the Cron job.</translation>
    <translation id="hosting_tab_CRON_configuration_delete_success" qtlid="196777">The cron task will be deleted.</translation>
 
    <translation id="hosting_configuration_change_offer_title_button" qtlid="196790">Change hosting offer</translation>
    <translation id="hosting_configuration_order_ssl" qtlid="196803">Order an SSL certificate</translation>
    <translation id="hosting_tab_DOMAINS_table_header_domain" qtlid="8458">Domain</translation>
    <translation id="hosting_tab_DOMAINS_table_header_home" qtlid="196816">Root folder</translation>
+   <translation id="hosting_tab_DOMAINS_table_header_runtime" qtlid="488107">Runtime software application</translation>
    <translation id="hosting_tab_DOMAINS_table_header_cdn" qtlid="99812">CDN</translation>
    <translation id="hosting_tab_DOMAINS_table_header_firewall" qtlid="141418">Firewall</translation>
    <translation id="hosting_tab_DOMAINS_table_header_ownlog" qtlid="62172">Separate logs</translation>
@@ -299,7 +305,7 @@
    <translation id="hosting_tab_DOMAINS_table_popover_delete" qtlid="2414">Delete</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_modify" qtlid="37875">Modify</translation>
    <translation id="hosting_tab_DOMAINS_table_popover_refresh" qtlid="158708">Reload</translation>
-   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="122275">Searching...</translation>
+   <translation id="hosting_tab_DOMAINS_search_placeholder" qtlid="491964">Searching...</translation>
 
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation" qtlid="255976">Generating the link</translation>
    <translation id="hosting_tab_DOMAINS_multisite_logs_generation_error" qtlid="444417">An error has occurred generating the access link to logs</translation>
@@ -307,8 +313,8 @@
 
    <translation id="hosting_tab_DOMAINS_configuration_attachDomain_title_button" qtlid="226969">Add a domain or sub-domain</translation>
    <translation id="hosting_ssl_regenerate_title_button" qtlid="315787">Regenerate SSL certificate </translation>
-   <translation id="hosting_ssl_regenerate_info" qtlid="315800">Any of your changes regarding enabling or disabling SSL on your multisite will take effect after you have regenerated your SSL certificate. </translation>
-   <translation id="hosting_ssl_regenerate_info_warning">Si vous avez ajouté des hébergements multisites il y a moins de deux heures, il est possible qu'ils ne soient pas inclus dans votre certificat SSL.</translation>
+   <translation id="hosting_ssl_regenerate_info" qtlid="315800">Any of your changes related to enabling or disabling SSL on your multisite will take effect after you have regenerated your SSL certificate. </translation>
+   <translation id="hosting_ssl_regenerate_info_warning" qtlid="473596">You have added multisite hosting within the last two hours. Please note that they may not be included in your SSL certificate.</translation>
    <translation id="hosting_ssl_limit_characters_info_warning" qtlid="402711">Free certification is not available for domain names with more than {0} characters. </translation>
 
    <translation id="hosting_tab_DATABASES_change_offer" qtlid="327302">Switch to a paid hosting package in order to create a database. Change service quickly and with no interruption, via the button</translation>
@@ -323,7 +329,7 @@
    <translation id="hosting_tab_DATABASES_table_popover_update_password" qtlid="80394">Change password</translation>
    <translation id="hosting_tab_DATABASES_table_popover_dump" qtlid="274909">Create a backup </translation>
    <translation id="hosting_tab_DATABASES_table_popover_dump_edit" qtlid="404460">: edit backups </translation>
-   <translation id="hosting_tab_DATABASES_table_popover_dump_restore" qtlid="215442">Restoring a back-up</translation>
+   <translation id="hosting_tab_DATABASES_table_popover_dump_restore" qtlid="215442">Retrieve backup</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import" qtlid="261942">Upload a file</translation>
    <translation id="hosting_tab_DATABASES_table_popover_dump_restore_yesterday" qtlid="287228">Restore yesterday's backup </translation>
    <translation id="hosting_tab_DATABASES_table_popover_dump_restore_one_week" qtlid="287241">Restore one week old backup </translation>
@@ -337,7 +343,7 @@
    <translation id="hosting_tab_DATABASES_configuration_check_quota_question" qtlid="261361">You are about to recalculate the quota of the following database: {0}</translation>
    <translation id="hosting_tab_DATABASES_configuration_check_quota_information" qtlid="261374">This may take a few minutes</translation>
    <translation id="hosting_tab_DATABASES_configuration_check_quota_success" qtlid="261387">The quota for the following database is being calculated: {0}</translation>
-   <translation id="hosting_tab_DATABASES_configuration_check_quota_fail" qtlid="261400">An error occured when calculating the quota of your database</translation>
+   <translation id="hosting_tab_DATABASES_configuration_check_quota_fail" qtlid="261400">An error has occurred calculating the quota of your database</translation>
    <translation id="hosting_tab_DATABASES_configuration_check_quota_calculating" qtlid="72605">Calculation in progress...</translation>
 
    <translation id="hosting_tab_DATABASES_configuration_quota_info_lead" qtlid="261413">Important information on quotas</translation>
@@ -346,10 +352,13 @@
    <translation id="hosting_tab_DATABASES_configuration_quota_warning_message" qtlid="261452">If you exceed the recommended storage space, you will be limited to read-only access. </translation>
    <translation id="hosting_tab_DATABASES_configuration_quota_warning_resolution" qtlid="261465">To avoid this limitation, we reccommend that you purge your database and recalculate your quotas so that you fall below the recommended limit. Your database will be automatically unlocked in a few minutes. </translation>
 
+   <translation id="hosting_tab_databases_get_error" qtlid="488120">An error has occurred retrieving your database.</translation>
+   <translation id="hosting_tab_databases_dumps_error_fetch" qtlid="488133">An error has occurred retrieving your backups.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_title_button" qtlid="7618">Create a database</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_title" qtlid="7618">Create a database</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MYSQL" qtlid="196894">MySQL</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_sgbd_POSTGRESQL" qtlid="196907">PostgreSQL</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_sgbd_MONGODB" qtlid="444706">MongoDB</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_loading_error" qtlid="168120">An error occurred while loading the information.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_question" qtlid="196920">You are about to create a database</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_no_db_left" qtlid="196933">You don't have any databases available.</translation>
@@ -358,7 +367,7 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type" qtlid="196959">Select the type of database:</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PERSO" qtlid="196972">Personal SQL {0} {1}: {2} remaining</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_PRO" qtlid="196985">Professional SQL {0} {1}: {2} remaining</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_SQL_LOCAL" qtlid="491977">Stored in your Cloud Web instance</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_EXTRA_SQL_PERSO" qtlid="196998">Extra Personal SQL {0} {1} : {2}  remaining</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step1_select_type_PRIVATE_SQL" qtlid="261734">Private SQL {0} {1} : {2} remaining</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step2_password_question" qtlid="197011">Select the database username and the associated password</translation>
@@ -375,8 +384,8 @@
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PERSO" qtlid="197128">Personal SQL {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_PRO" qtlid="197141">Professional SQL {0} {1}</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_step3_type_EXTRA_SQL_PERSO" qtlid="197154">Extra Personal SQL {0} {1}</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="404863">CloudDB</translation>
-   <translation id="hosting_tab_DATABASES_configuration_create_fail" qtlid="197167">An error occurred when requesting to create the database.</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_step3_type_SQL_LOCAL" qtlid="491977">Stored in your Cloud Web instance</translation>
+   <translation id="hosting_tab_DATABASES_configuration_create_fail" qtlid="197167">An error has occurred requesting to create the database.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_success" qtlid="197180">The database will be created.</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_bdd_adding" qtlid="453189">Adding database</translation>
    <translation id="hosting_tab_DATABASES_configuration_create_bdd_added" qtlid="453202">Database created</translation>
@@ -391,7 +400,7 @@
    <translation id="hosting_tab_DATABASES_configuration_delete_title" qtlid="7642">Delete a database</translation>
    <translation id="hosting_tab_DATABASES_configuration_delete_question" qtlid="197193">Do you want to delete the database <span class="normal italic">{0}</span>?</translation>
    <translation id="hosting_tab_DATABASES_configuration_delete_information" qtlid="197206">Warning, this action is irreversible and will cause the data contained in the database to be lost.</translation>
-   <translation id="hosting_tab_DATABASES_configuration_delete_fail" qtlid="197219">An error occurred when deleting the database {0}.</translation>
+   <translation id="hosting_tab_DATABASES_configuration_delete_fail" qtlid="197219">An error has occurred deleting the database {0}.</translation>
    <translation id="hosting_tab_DATABASES_configuration_delete_success" qtlid="197232">The database will be deleted.</translation>
 
    <translation id="hosting_tab_DATABASES_configuration_dump_title" qtlid="274922">Create a database backup </translation>
@@ -403,8 +412,8 @@
    <translation id="hosting_tab_DATABASES_configuration_dump_step1_date" qtlid="363583">Choose the date for the desired backup:</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step2_question" qtlid="413167">Would you like to request a backup of your database {0} with the following settings?</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step2_date" qtlid="66308">Date:</translation>
-   <translation id="hosting_tab_DATABASES_configuration_dump_step2_information" qtlid="274974">You will receive your backup by email within minutes of your request.</translation>
-   <translation id="hosting_tab_DATABASES_configuration_dump_fail" qtlid="274987">An error occurred when requesting the database backup {0}.</translation>
+   <translation id="hosting_tab_DATABASES_configuration_dump_step2_information" qtlid="274974">You will receive your backup by email within a few minutes of your request.</translation>
+   <translation id="hosting_tab_DATABASES_configuration_dump_fail" qtlid="274987">An error has occurred requesting the database backup {0}.</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_success" qtlid="275000">Database backup about to be created.</translation>
 
    <translation id="hosting_tab_DATABASES_configuration_dump_delete_title" qtlid="290212">Delete a database backup </translation>
@@ -412,15 +421,20 @@
    <translation id="database_tabs_dumps_delete_start" qtlid="290238">The backup deletion has been processed.</translation>
    <translation id="database_tabs_dumps_delete_in_progress" qtlid="290251">The backup is being deleted..</translation>
    <translation id="database_tabs_dumps_delete_success" qtlid="290264">The backup has been deleted. </translation>
-   <translation id="database_tabs_dumps_delete_fail" qtlid="290277">There was an error when deleting your backup: </translation>
+   <translation id="database_tabs_dumps_delete_fail" qtlid="290277">An error has occurred deleting your backup: </translation>
 
+   <translation id="database_tabs_dumps_status" qtlid="26443">Status</translation>
+   <translation id="database_tabs_dumps_status_created" qtlid="264862">Created </translation>
+   <translation id="database_tabs_dumps_status_creating" qtlid="488146">Creating dump file</translation>
+   <translation id="database_tabs_dumps_status_updating" qtlid="488159">Modifying dump file</translation>
+   <translation id="database_tabs_dumps_status_deleting" qtlid="488172">Deleting dump file</translation>
 
    <translation id="hosting_tab_DATABASES_configuration_update_password_title" qtlid="80394">Change password</translation>
    <translation id="hosting_tab_DATABASES_configuration_update_password_question" qtlid="413180">You will change the password for the database {0}:</translation>
    <translation id="hosting_tab_DATABASES_configuration_update_password_password" qtlid="197375">New password:</translation>
    <translation id="hosting_tab_DATABASES_configuration_update_password_confirmation" qtlid="197063">Confirmation:</translation>
    <translation id="hosting_tab_DATABASES_configuration_update_password_error" qtlid="197076">The passwords entered are not identicaal.</translation>
-   <translation id="hosting_tab_DATABASES_configuration_update_password_fail" qtlid="197388">An error occurred on requesting to change the password of the database {0}.</translation>
+   <translation id="hosting_tab_DATABASES_configuration_update_password_fail" qtlid="197388">An error has occurred requesting to change the password of the database {0}.</translation>
    <translation id="hosting_tab_DATABASES_configuration_update_password_success" qtlid="197401">The password will be modified.</translation>
    <translation id="database_tabs_dumps_restore_dump" qtlid="263415">Restore the backup</translation>
    <translation id="database_tabs_dumps_restore_in_start" qtlid="263428">Backup restore is being processed.</translation>
@@ -442,14 +456,14 @@
    <translation id="database_restore_bdd_confirm" qtlid="272290">Do you want to restore the <strong>{0}</strong> backup for the <strong>{1}</strong> database?</translation>
    <translation id="database_restore_bdd_confirm_daily" qtlid="287254">Would you like to restore <strong>yesterday's</strong> database backup? </translation>
    <translation id="database_restore_bdd_confirm_weekly" qtlid="287267">Would you like to restore the <strong>one week</strong> old database backup?</translation>
-   <translation id="database_restore_bdd_get_last_error" qtlid="287280">There was an error getting the last backup:</translation>
+   <translation id="database_restore_bdd_get_last_error" qtlid="287280">An error has occurred retrieving the last backup:</translation>
 
 
    <translation id="hosting_tab_DATABASES_configuration_import_title" qtlid="286214">Database import </translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step0_new_file_mode" qtlid="288301">Import a new file</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step0_existing_file_mode" qtlid="288314">Use an existing file </translation>
 
-   <translation id="hosting_tab_DATABASES_table_popover_import_step1_load_documents_error" qtlid="286240">An error occurred when retrieving your documents: </translation>
+   <translation id="hosting_tab_DATABASES_table_popover_import_step1_load_documents_error" qtlid="286240">An error has occurred retrieving your documents: </translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file" qtlid="448262">File (.gz, .sql, .txt):</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name" qtlid="286266">Filename:</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_info" qtlid="296713">Give your document a title so that you can find it again more quickly. </translation>
@@ -464,7 +478,7 @@
    <translation id="hosting_tab_DATABASES_table_popover_import_step2_flush_database" qtlid="286370">Empty the current database:</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step2_send_email" qtlid="286383">Send an email when the import is complete</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step3_succes" qtlid="286396">An import task has been added to the ongoing tasks section. </translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step3_fail" qtlid="286409">An error occurred when sending. Please try again.</translation>
+   <translation id="hosting_tab_DATABASES_table_popover_import_step3_fail" qtlid="286409">An error has occurred attempting to send. Please try again.</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_remove_title" qtlid="197414">Detach a domain</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_step1_loading_error" qtlid="135294">An error has occurred while loading the data</translation>
@@ -478,13 +492,14 @@
    <translation id="hosting_tab_DOMAINS_configuration_remove_success_progress" qtlid="232440">Removing the domain from your hosting package ...</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_success_finish" qtlid="232453">The domain has been removed from your hosting package.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_partial" qtlid="197518">Some domains were detached from your hosting package, but errors occurred for others.</translation>
-   <translation id="hosting_tab_DOMAINS_configuration_remove_failure" qtlid="197531">An error occurred on detaching the domain from your hosting system.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_remove_failure" qtlid="197531">An error has occurred detaching the domain from your hosting plan.</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_modify_title" qtlid="211476">Modify a domain</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_question" qtlid="197544">You are about to modify the following domain:</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_domain_name" qtlid="140638">Domain name</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_domain_name_www_question" qtlid="197557">Also modify the sub-domain {0}</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_home" qtlid="196816">Root folder</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_step1_runtime" qtlid="488107">Runtime software application</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_cdn" qtlid="232466">Activate the CDN</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step2_summary" qtlid="197570">Are you sure to want to carry out these modifications on the following domains?</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step2_domain_name" qtlid="140638">Domain name</translation>
@@ -497,7 +512,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_modify_success_progress" qtlid="271413">Your shared hosting domain(s) is/are being modified...</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_success_finish" qtlid="271426">Your shared hosting domain(s) has/have been modified. </translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_partial" qtlid="271439">Modifications on some of your shared hosting domains have been processed but there are errors on other domains. </translation>
-   <translation id="hosting_tab_DOMAINS_configuration_modify_failure" qtlid="197609">An error occurred on modifying the domain/s of your hosting system.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_failure" qtlid="197609">An error has occurred modifying the domain/s of your hosting plan.</translation>
 
 
    <translation id="hosting_tab_DOMAINS_configuration_add_title" qtlid="225140">Add a domain or sub-domain</translation>
@@ -510,14 +525,14 @@
    <translation id="hosting_tab_DOMAINS_configuration_add_step1_ovh" qtlid="197648">Add a domain registered with OVH</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step1_external" qtlid="197661">Add an external domain</translation>
 
-   <translation id="hosting_tab_DOMAINS_configuration_add_step2_common_domain_exists" qtlid="197674">The domain selected is already linked to the web hosting system</translation>
-   <translation id="hosting_tab_DOMAINS_configuration_add_step2_common_domain_exists_with_name" qtlid="197687">The domain {0} is already linked to the web hosting system</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_add_step2_common_domain_exists" qtlid="197674">The domain selected is already linked to the web hosting plan</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_add_step2_common_domain_exists_with_name" qtlid="197687">The domain {0} is already linked to the web hosting plan</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_common_domain_invalid" qtlid="225328">The domain name is invalid.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_common_domain_ssl_invalid" qtlid="402737">Domain name is not valid. If you are choosing the SSL option, the domain name cannot be longer than <strong>{0}</strong> characters.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_common_domain_invalid_uppercase" qtlid="271374">The domain name must not include capitals.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_common_domain_invalid_character" qtlid="402750">The domain name cannot contain uppercase or special characters.</translation>
 
-   <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_EXTERNAL_question" qtlid="197700">Select the information of the external domain to be linked to the hosting system (formerly known as multi-domain)</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_EXTERNAL_question" qtlid="197700">Select the information of the external domain to be linked to the hosting plan (formerly known as multi-domain)</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_EXTERNAL_domain_name" qtlid="140638">Domain name</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_EXTERNAL_domain_name_placeholder" qtlid="197713">subdomain.mydomain.com</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_EXTERNAL_domain_name_www_question" qtlid="197726">Also create the sub-domain {0}</translation>
@@ -526,7 +541,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_EXTERNAL_information" qtlid="197739">For the configuration to function, you will need to make the following adjustments with the current provider:</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_EXTERNAL_attention" qtlid="197752">Warning! The configuration will not function without these modifications.</translation>
 
-   <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_question" qtlid="197765">Select the information of the domain to be linked to the hosting system </translation>
+   <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_question" qtlid="197765">Select the information of the domain to be linked to the hosting plan</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_domain_name" qtlid="8458">Domain</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_domain_name_placeholder" qtlid="197778">subdomain</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_domain_name_www_question" qtlid="197726">Also create the sub-domain {0}</translation>
@@ -546,7 +561,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_firewall_help" qtlid="265729">Enable the firewall to benefit from enhanced site protection. </translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_ownlog_help" qtlid="287579">Enable this option to get separate logs for your multi-domain. </translation>
 
-   <translation id="hosting_tab_DOMAINS_configuration_add_step3_summary" qtlid="197804">Are you sure to want to add this/these domain/s to your hosting system?</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_add_step3_summary" qtlid="197804">Are you sure to want to add this/these domain/s to your hosting plan?</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step3_mode_OVH_autoconfigure" qtlid="197466">Automatic configuration (recommended)</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step3_mode_OVH_autoconfigure_text" qtlid="197817">The automatic configuration corresponds to creating the A and AAAA records in the DNS zone of the domain</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step3_domain_name" qtlid="140638">Domain name</translation>
@@ -570,11 +585,11 @@
    <translation id="hosting_tab_DOMAINS_configuration_add_step3_common_action" qtlid="197882">Point the <span class="bold" translate="none">{0}</span> record of your domain <span class="bold" translate="none">{1}</span> to <span class="bold" translate="none">{2}</span></translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step3_insert_token_field" qtlid="197895">Insert a <span class="bold" translate="none">{0}</span> record for the domain <span class="bold" translate="none">{1}</span> with the value <span class="bold" translate="none">{2}</span></translation>
 
-   <translation id="hosting_tab_DOMAINS_configuration_add_success" qtlid="197908">The domain/s will be added to your hosting system.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_add_success" qtlid="197908">The domain/s will be added to your hosting plan.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_success_progress" qtlid="232505">Your domains are being added to your hosting package ...</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_success_finish" qtlid="232518">The domain(s) have been added to your hosting package.</translation>
-   <translation id="hosting_tab_DOMAINS_configuration_add_partial" qtlid="197921">Some domains were added to your hosting system, but errors occurred for others.</translation>
-   <translation id="hosting_tab_DOMAINS_configuration_add_failure" qtlid="197934">An error occurred on adding the domain/s to your hosting system.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_add_partial" qtlid="197921">Some domains were added to your hosting plan, but errors occurred for others.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_add_failure" qtlid="197934">An error has occurred adding the domain/s to your hosting plan.</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_countriesIp" qtlid="260221">Country IP</translation>
    <translation id="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_countriesIp_none" qtlid="8674">None</translation>
@@ -587,6 +602,100 @@
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_ttl" qtlid="121747">TTL</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_type" qtlid="2642">Type</translation>
    <translation id="hosting_tab_DOMAINS_configuration_ovhcontrol_table_target" qtlid="47644">Target </translation>
+
+   <translation id="hosting_tab_RUNTIMES_guide_help" qtlid="488185">Need help updating your configuration?</translation>
+   <translation id="hosting_tab_RUNTIMES_table_empty" qtlid="488198">The list of configurations is empty.</translation>
+   <translation id="hosting_tab_RUNTIMES_runtimes_table_empty" qtlid="488211">The list of runtime frameworks is empty.</translation>
+   <translation id="hosting_tab_RUNTIMES_envvars_table_empty" qtlid="488224">The list of environment variables is empty.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_table_status_created" qtlid="55133">Active</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_creating" qtlid="146632">Creating...</translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_updating" qtlid="124303">Modifying </translation>
+   <translation id="hosting_tab_RUNTIMES_table_status_deleting" qtlid="146645">Deleting...</translation>
+
+   <translation id="hosting_tab_RUNTIMES_list_error" qtlid="488237">An error has occurred while retrieving information on the environment variables:</translation>
+   <translation id="hosting_tab_ENVVARS_list_error_temporary" qtlid="488250">A temporary error has occurred while retrieving information on the environment variables. Please try again later.</translation>
+   <translation id="hosting_tab_ENVVARS_list_error" qtlid="488263">An error has occurred while retrieving information on the environment variables:</translation>
+
+   <translation id="hosting_tab_RUNTIMES_list" qtlid="488276">List of available runtime frameworks</translation>
+   <translation id="hosting_tab_ENVVARS_list" qtlid="488289">List of active environment variables</translation>
+
+   <translation id="hosting_tab_RUNTIMES_add" qtlid="488302">Add a runtime framework</translation>
+   <translation id="hosting_tab_RUNTIMES_quota_reached" qtlid="488315">Maximum number of runtime frameworks reached for your solution</translation>
+   <translation id="hosting_tab_ENVVARS_add" qtlid="488328">Add an environment variable</translation>
+   <translation id="hosting_tab_ENVVARS_quota_reached" qtlid="488341">Maximum number of environment variables reached for your solution</translation>
+
+   <translation id="hosting_tab_RUNTIMES_error" qtlid="243832">An error occurred while retrieving the details:</translation>
+   <translation id="hosting_tab_RUNTIMES_empty" qtlid="488354">The configuration list is empty.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_actions" qtlid="72809">Actions</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_name" qtlid="488367">Name of the configuration</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_language" qtlid="488107">Runtime software application</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_default" qtlid="488380">Default choice</translation>
+   <translation id="hosting_tab_RUNTIMES_table_header_number_multisite" qtlid="488393">Number of linked multisites</translation>
+
+   <translation id="hosting_tab_RUNTIMES_table_popover_modify" qtlid="37875">Modify</translation>
+   <translation id="hosting_tab_RUNTIMES_table_popover_delete" qtlid="2414">Delete</translation>
+
+   <translation id="hosting_tab_RUNTIMES_create_title" qtlid="488302">Add a runtime framework</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_title" qtlid="488406">Modify a runtime framework</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_title" qtlid="488419">Delete a runtime framework</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_step1_question" qtlid="488432">Are you sure you want to delete this runtime framework?</translation>
+
+   <translation id="hosting_tab_RUNTIMES_save_success" qtlid="488445">This new runtime framework will be available in a few minutes.</translation>
+   <translation id="hosting_tab_RUNTIMES_save_error" qtlid="488458">An error has occurred while creating a runtime framework :</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_success" qtlid="488471">The runtime framework is being modified.</translation>
+   <translation id="hosting_tab_RUNTIMES_edit_error" qtlid="488484">An error has occurred while modifying a runtime framework :</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_success" qtlid="488497">This runtime framework is being deleted.</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_error" qtlid="488510">An error has occurred while deleting the runtime framework :</translation>
+   <translation id="hosting_tab_RUNTIMES_delete_information" qtlid="488523">Warning: this action is irreversible and will cause the loss of all data.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_label_name" qtlid="415727">Customized name</translation>
+   <translation id="hosting_tab_RUNTIMES_label_type" qtlid="488107">Runtime software application</translation>
+   <translation id="hosting_tab_RUNTIMES_label_publicDir" qtlid="488536">Access path to public directory</translation>
+   <translation id="hosting_tab_RUNTIMES_label_appEnv" qtlid="488549">Application environment</translation>
+   <translation id="hosting_tab_RUNTIMES_label_appBootstrap" qtlid="488562">Application launch script</translation>
+
+   <translation id="hosting_tab_RUNTIMES_publicDir_help" qtlid="488575">Enter the access path to the public directory needed to launch your Node.js server.</translation>
+   <translation id="hosting_tab_RUNTIMES_appEnv_help" qtlid="488588">Enter the environment where the Node.js application must be launched (production, development, test, etc).</translation>
+   <translation id="hosting_tab_RUNTIMES_appBootstrap_help" qtlid="488601">Enter the name of the script used to launch from the  Node.js binary.</translation>
+
+   <translation id="hosting_tab_RUNTIMES_configure_envvar" qtlid="488614">Configure environment variables</translation>
+
+   <translation id="hosting_tab_ENVVARS_actions" qtlid="72809">Actions</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_key" qtlid="488627">Name of variable</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_type" qtlid="488640">Variable type</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_value" qtlid="47548">Value</translation>
+   <translation id="hosting_tab_ENVVARS_table_header_status" qtlid="33790">State</translation>
+
+   <translation id="hosting_tab_ENVVARS_table_popover_modify" qtlid="37875">Modify</translation>
+   <translation id="hosting_tab_ENVVARS_table_popover_delete" qtlid="2414">Delete</translation>
+   <translation id="hosting_tab_RUNTIMES_table_popover_set_default" qtlid="488380">Default choice</translation>
+
+   <translation id="hosting_tab_ENVVARS_create_title" qtlid="488328">Add an environment variable</translation>
+   <translation id="hosting_tab_ENVVARS_edit_title" qtlid="488653">Modify an environment variable</translation>
+   <translation id="hosting_tab_ENVVARS_delete_title" qtlid="488666">Delete an environment variable</translation>
+   <translation id="hosting_tab_ENVVARS_delete_step1_question" qtlid="488679">Are you sure you want to delete this environment variable?</translation>
+   <translation id="hosting_tab_ENVVARS_delete_information" qtlid="488523">Warning: this action is irreversible and will cause the loss of all data.</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_title" qtlid="488692">Set a default runtime framework</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_step1_question" qtlid="488705">Are you sure you want to choose this runtime framework as default?</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_information" qtlid="488718">Warning: all your multisites will then be created on this framework by default. However, you will always be able to change this later.</translation>
+
+   <translation id="hosting_tab_ENVVARS_save_success" qtlid="488731">The new environment variable will be available in a few minutes.</translation>
+   <translation id="hosting_tab_ENVVARS_save_error" qtlid="488744">An error has occurred while creating an environment variable:</translation>
+   <translation id="hosting_tab_ENVVARS_edit_success" qtlid="488757">The environment variable is being modified.</translation>
+   <translation id="hosting_tab_ENVVARS_edit_error" qtlid="488770">Une erreur est survenue lors de la modification de la variable d'environnement :</translation>
+   <translation id="hosting_tab_ENVVARS_delete_success" qtlid="488783">The environment variable is being deleted.</translation>
+   <translation id="hosting_tab_ENVVARS_delete_error" qtlid="488796">An error has occurred while deleting the environment variable:</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_success" qtlid="488809">This framework will be available as default in a new minutes.</translation>
+   <translation id="hosting_tab_RUNTIMES_set_default_error" qtlid="488822">An error occurred while setting this runtime framework as default:</translation>
+
+   <translation id="hosting_tab_ENVVARS_label_key" qtlid="3818">Name</translation>
+   <translation id="hosting_tab_ENVVARS_label_error_required" qtlid="459430">This field is mandatory</translation>
+   <translation id="hosting_tab_ENVVARS_label_error_pattern" qtlid="488835">The name of the variable cannot contain any spaces.</translation>
+   <translation id="hosting_tab_ENVVARS_label_type" qtlid="488640">Variable type</translation>
+   <translation id="hosting_tab_ENVVARS_label_value" qtlid="47548">Value</translation>
+
 
    <translation id="hosting_tab_TASK" qtlid="201172">Ongoing tasks </translation>
    <translation id="hosting_tab_TASKS_table_empty" qtlid="144058">You don't have any tasks</translation>
@@ -605,8 +714,8 @@
    <translation id="hosting_tab_TASKS_status_TODO" qtlid="197947">Planned</translation>
    <translation id="hosting_tab_TASKS_status_INIT" qtlid="197960">Initiated</translation>
 
-   <translation id="hosting_tab_TASKS_function_hosting_install" qtlid="197973">Hosting system installation</translation>
-   <translation id="hosting_tab_TASKS_function_hosting_install_paas" qtlid="197986">Hosting system installation in PaaS mode</translation>
+   <translation id="hosting_tab_TASKS_function_hosting_install" qtlid="197973">Hosting plan installation</translation>
+   <translation id="hosting_tab_TASKS_function_hosting_install_paas" qtlid="197986">Hosting plan installation in PaaS mode</translation>
 <translation id="hosting_tab_TASKS_function_hosting_changement"/>
    <translation id="hosting_tab_TASKS_function_hosting_basculement" qtlid="197999">Switching hosting service</translation>
    <translation id="hosting_tab_TASKS_function_hosting_reopen" qtlid="198012">Reopening hosting service</translation>
@@ -627,8 +736,8 @@
    <translation id="hosting_tab_TASKS_function_web_changePassword" qtlid="198129">Changing the FTP password</translation>
    <translation id="hosting_tab_TASKS_function_web_changeDirectory" qtlid="198142">Updating the user directory</translation>
    <translation id="hosting_tab_TASKS_function_web_deleteUser" qtlid="198155">Deleting the FTP user</translation>
-   <translation id="hosting_tab_TASKS_function_web_attachDomain" qtlid="198168">Adding a domain to the hosting system</translation>
-   <translation id="hosting_tab_TASKS_function_attachedDomain_create" qtlid="198168">Adding a domain to the hosting system</translation>
+   <translation id="hosting_tab_TASKS_function_web_attachDomain" qtlid="198168">Adding a domain to the hosting plan</translation>
+   <translation id="hosting_tab_TASKS_function_attachedDomain_create" qtlid="198168">Adding a domain to the hosting plan</translation>
    <translation id="hosting_tab_TASKS_function_attachedDomain_delete" qtlid="363926">Deleting a domain on a web hosting package </translation>
    <translation id="hosting_tab_TASKS_function_web_changeAttachedDomain" qtlid="198181">Changing the attached domain</translation>
    <translation id="hosting_tab_TASKS_function_web_detachDomain" qtlid="198194">Detaching a domain</translation>
@@ -671,9 +780,9 @@
    <translation id="hosting_tab_TASKS_function_ssl_delete" qtlid="198493">Deleting an SSL certificate</translation>
    <translation id="hosting_tab_TASKS_function_cdn_create" qtlid="198506">Adding the CDN</translation>
    <translation id="hosting_tab_TASKS_function_cdn_flush" qtlid="198519">Refreshing the CDN for a specific domain</translation>
-   <translation id="hosting_tab_TASKS_function_cdn_flushAll" qtlid="198532">Refreshing the CDN for all domains on the hosting system</translation>
+   <translation id="hosting_tab_TASKS_function_cdn_flushAll" qtlid="198532">Refreshing the CDN for all domains on the hosting plan</translation>
    <translation id="hosting_tab_TASKS_function_cdn_delete" qtlid="198545">Deleting the CDN for one domain</translation>
-   <translation id="hosting_tab_TASKS_function_cdn_deleteAll" qtlid="198558">Refreshing the CDN for all domains linked to the hosting system</translation>
+   <translation id="hosting_tab_TASKS_function_cdn_deleteAll" qtlid="198558">Refreshing the CDN for all domains linked to the hosting plan</translation>
 <translation id="hosting_tab_TASKS_function_sqlProvisionning"/>
 <translation id="hosting_tab_TASKS_function_sqlVMMigration"/>
 <translation id="hosting_tab_TASKS_function_webProvisionning"/>
@@ -686,10 +795,14 @@
    <translation id="hosting_tab_FTP_dashboard_information" qtlid="198584">These setting allow you to put your website online</translation>
    <translation id="hosting_tab_FTP_dashboard_server" qtlid="198597">FTP server:</translation>
    <translation id="hosting_tab_FTP_dashboard_login" qtlid="198610">Main login:</translation>
+   <translation id="hosting_tab_FTP_dashboard_primary_ftp_login" qtlid="488848">Main FTP login:</translation>
+   <translation id="hosting_tab_FTP_dashboard_primary_ssh_login" qtlid="488861">Main SSH login:</translation>
    <translation id="hosting_tab_FTP_dashboard_login_enabled" qtlid="198623">Main login activated:</translation>
    <translation id="hosting_tab_FTP_dashboard_homez" qtlid="271621">Home directory path:</translation>
    <translation id="hosting_tab_FTP_dashboard_clusterip" qtlid="198636">Cluster IP address:</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_login" qtlid="41062">Login</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_ftp_login" qtlid="488874">FTP login</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_ssh_login" qtlid="488887">SSH login</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_home" qtlid="198649">Target directory</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_iisRemoteRights" qtlid="198662">iisRemoteRights</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_state" qtlid="369025">Status </translation>
@@ -719,31 +832,46 @@
 
    <translation id="hosting_tab_DATABASES_configuration_user_delete_title" qtlid="198701">Delete an FTP user</translation>
    <translation id="hosting_tab_DATABASES_configuration_user_delete_question" qtlid="413193">Do you want to delete the FTP user {0}?</translation>
-   <translation id="hosting_tab_DATABASES_configuration_user_delete_fail" qtlid="198727">An error occurred on requesting to delete the password of the FTP user {0}.</translation>
+   <translation id="hosting_tab_DATABASES_configuration_user_delete_fail" qtlid="198727">An error has occurred requesting to delete the password of the FTP user {0}.</translation>
    <translation id="hosting_tab_DATABASES_configuration_user_delete_success" qtlid="198740">The FTP user will be deleted.</translation>
 
    <translation id="hosting_tab_FTP_configuration_explorer_title" qtlid="198753">FTP Explorer</translation>
    <translation id="hosting_tab_FTP_configuration_explorer_disabled" qtlid="250043">Coming soon</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_title" qtlid="198766">Change my password</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_title_button" qtlid="198766">Change my password</translation>
-   <translation id="hosting_tab_FTP_configuration_restore_snapshot_title" qtlid="215442">Restoring a back-up</translation>
-   <translation id="hosting_tab_FTP_configuration_restore_snapshot_title_button" qtlid="215442">Restoring a back-up</translation>
-   <translation id="hosting_tab_FTP_configuration_restore_password_step1_question" qtlid="215455">You are going to restore a back-up of your FTP space</translation>
+
+   <translation id="hosting_tab_FTP_configuration_restore_snapshot_title" qtlid="215442">Retrieve backup</translation>
+   <translation id="hosting_tab_FTP_configuration_restore_snapshot_title_button" qtlid="215442">Retrieve backup</translation>
+   <translation id="hosting_tab_FTP_configuration_restore_password_step1_question" qtlid="215455">You are about to retrieve a backup of your FTP space</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_step1_snapshot_instance" qtlid="215468">Instance to restore:</translation>
-   <translation id="hosting_tab_FTP_configuration_restore_snapshot_step1_instance_daily_1" qtlid="215481">Restore back-up to 1 day ago</translation>
-   <translation id="hosting_tab_FTP_configuration_restore_snapshot_step1_instance_daily_2" qtlid="215494">Restore back-up to 2 days ago</translation>
-   <translation id="hosting_tab_FTP_configuration_restore_snapshot_step1_instance_daily_3" qtlid="215507">Restore back-up to 3 days ago</translation>
+   <translation id="hosting_tab_FTP_configuration_restore_snapshot_step1_instance_daily_1" qtlid="215481">Restore backup to 1 day ago</translation>
+   <translation id="hosting_tab_FTP_configuration_restore_snapshot_step1_instance_daily_2" qtlid="215494">Restore backup to 2 days ago</translation>
+   <translation id="hosting_tab_FTP_configuration_restore_snapshot_step1_instance_daily_3" qtlid="215507">Restore backup to 3 days ago</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_step1_instance_weekly_1" qtlid="70217">1 week</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_step1_instance_weekly_2" qtlid="70229">2 weeks</translation>
-   <translation id="hosting_tab_FTP_configuration_restore_snapshot_step2_alert" qtlid="215520">Please note: the restore will overwrite your current data in order to replace it with the back-up data.</translation>
+   <translation id="hosting_tab_FTP_configuration_restore_snapshot_step2_alert" qtlid="215520">Please note: the restore will overwrite your current data in order to replace it with the backup data.</translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_step2_alert_question" qtlid="351883">Do you want to continue? </translation>
    <translation id="hosting_tab_FTP_configuration_restore_snapshot_success" qtlid="215546">A snapshot is being restored</translation>
-   <translation id="hosting_tab_FTP_configuration_restore_snapshot_error" qtlid="215559">An error occurred when your space was being restored:</translation>
+   <translation id="hosting_tab_FTP_configuration_restore_snapshot_error" qtlid="215559">An error has occurred restoring your space:</translation>
+
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_title" qtlid="488900">Generate backup</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_title_button" qtlid="488900">Generate backup</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_password_step1_question" qtlid="488913">You are about to generate a backup of your FTP storage</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_snapshot_instance" qtlid="488926">Instance to generate:</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_1" qtlid="215481">Restore backup to 1 day ago</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_2" qtlid="215494">Restore backup to 2 days ago</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_daily_3" qtlid="215507">Restore backup to 3 days ago</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step1_instance_weekly_1" qtlid="70217">1 week</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert" qtlid="488939">Warning: the backup you generated will be sent to you by email and will not be automatically restored in your FTP storage.</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_step2_alert_question" qtlid="352009">Do you want to continue?</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_success" qtlid="488952">A backup is being generated.</translation>
+   <translation id="hosting_tab_FTP_configuration_generate_snapshot_error" qtlid="488965">An error has occurred while generating your backup:</translation>
+
    <translation id="hosting_tab_FTP_configuration_change_password_step1_question" qtlid="413206">You will change the password for the user {0}</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_step1_password" qtlid="17177">New password</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_step1_confirmation" qtlid="9983">Confirmation</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_step1_error" qtlid="197076">The passwords entered are not identicaal.</translation>
-   <translation id="hosting_tab_FTP_configuration_change_password_fail" qtlid="198792">An error occurred on requesting to change the password of the user {0}.</translation>
+   <translation id="hosting_tab_FTP_configuration_change_password_fail" qtlid="198792">An error has occurred requesting to change the password of the user {0}.</translation>
    <translation id="hosting_tab_FTP_configuration_change_password_success" qtlid="197401">The password will be modified.</translation>
    <translation id="hosting_configuration_tab_sql_add_base" qtlid="198805">Add a database</translation>
    <translation id="hosting_configuration_tab_sql_php_my_admin" qtlid="198818">phpMyAdmin</translation>
@@ -805,10 +933,10 @@
    <translation id="hosting_configuration_tab_modules_create_step3_intro" qtlid="211971">Additional information</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_name" qtlid="211984">Administrator name:</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_mail" qtlid="215130">Admin email:</translation>
-   <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_email" qtlid="211997">Administrator email:</translation>
+   <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_email" qtlid="211997">Administrator email address:</translation>
    <translation id="hosting_configuration_tab_modules_create_step2_db_admin_error" qtlid="212010">Invalid user name. The alphanumeric characters are allowed: -, _, @</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_info_admin_error" qtlid="212023">Invalid user name. The alphanumeric characters are allowed: -, _,</translation>
-   <translation id="hosting_configuration_tab_modules_create_step3_infos_email_admin_error" qtlid="212036">Invalid email address</translation>
+   <translation id="hosting_configuration_tab_modules_create_step3_infos_email_admin_error" qtlid="488978">Invalid email address</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_password" qtlid="91129">Password:</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_password_confirm" qtlid="197063">Confirmation:</translation>
    <translation id="hosting_configuration_tab_modules_create_step3_infos_admin_password_error" qtlid="197076">The passwords entered are not identicaal.</translation>
@@ -836,13 +964,13 @@
    <translation id="hosting_configuration_tab_modules_delete_question" qtlid="212257">Do you want to delete the {0} module? </translation>
    <translation id="hosting_configuration_tab_modules_delete_information" qtlid="212270">Please note that this action cannot be reversed, and will result in the loss of all data.</translation>
    <translation id="hosting_configuration_tab_modules_delete_success" qtlid="212283">The module is going to be deleted.</translation>
-   <translation id="hosting_configuration_tab_modules_delete_fail" qtlid="212296">An error occurred when requesting the module {0} deletion.</translation>
+   <translation id="hosting_configuration_tab_modules_delete_fail" qtlid="212296">An error has occurred requesting the module {0} deletion.</translation>
    <translation id="hosting_configuration_tab_modules_update_password_title" qtlid="48057">Reset the password</translation>
    <translation id="hosting_configuration_tab_modules_update_password_question" qtlid="212309">Do you wish to reset the {0} module admin password? </translation>
    <translation id="hosting_configuration_tab_modules_update_information" qtlid="212322">Your password will be sent to you by email.</translation>
    <translation id="hosting_configuration_tab_modules_update_success" qtlid="212335">The admin password will be reset.</translation>
-   <translation id="hosting_configuration_tab_modules_update_fail" qtlid="212348">An error occurred when resetting the admin password of the module {0}.</translation>
-   <translation id="hosting_configuration_tab_modules_create_success" qtlid="212361">The module is being installed. An email will be sent to you after completion.</translation>
+   <translation id="hosting_configuration_tab_modules_update_fail" qtlid="212348">An error has occurred resetting the admin password of the module {0}.</translation>
+   <translation id="hosting_configuration_tab_modules_create_success" qtlid="212361">The module is being installed. An email will be sent to you when the installation is complete.</translation>
    <translation id="hosting_configuration_tab_modules_table_empty" qtlid="212374">You have no installed modules</translation>
    <translation id="hosting_configuration_tab_modules_db_help_title" qtlid="212387">Configuration of the module database</translation>
    <translation id="hosting_configuration_tab_modules_db_help_addr_title" qtlid="212400">Server address of the database</translation>
@@ -901,7 +1029,7 @@
    <translation id="hosting_tab_FTP_configuration_user_create_step3_home_label" qtlid="196816">Root folder</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step3_iisRemoteRights_label" qtlid="198948">iis Remote rights</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_step3_webDavRights_label" qtlid="198987">WebDav rights</translation>
-   <translation id="hosting_tab_FTP_configuration_user_create_fail" qtlid="199026">An error occurred on requesting to create the FTP user.</translation>
+   <translation id="hosting_tab_FTP_configuration_user_create_fail" qtlid="199026">An error has occurred requesting to create the FTP user.</translation>
    <translation id="hosting_tab_FTP_configuration_user_create_success" qtlid="199039">The FTP user will be created.</translation>
 
 
@@ -943,7 +1071,7 @@
    <translation id="hosting_tab_FTP_configuration_user_modify_step2_state_label" qtlid="199078">Disable the user</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_step2_iisRemoteRights_label" qtlid="198948">iis Remote rights</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_step2_webDavRights_label" qtlid="198987">WebDav rights</translation>
-   <translation id="hosting_tab_FTP_configuration_user_modify_fail" qtlid="199143">An error occurred on requesting to modify the FTP user.</translation>
+   <translation id="hosting_tab_FTP_configuration_user_modify_fail" qtlid="199143">An error has occurred requesting to modify the FTP user.</translation>
    <translation id="hosting_tab_FTP_configuration_user_modify_success" qtlid="199156">The FTP user will be modified</translation>
    <translation id="hosting_tab_FTP_configuration_offer_upgrade" qtlid="269786">Your current solution does not allow you to create other users.</translation>
 
@@ -954,9 +1082,9 @@
    <translation id="hosting_tab_CRON_step2_expert_toocomplicated" qtlid="199221">The values are to complex to switch to simple mode.</translation>
    <translation id="hosting_tab_CRON_step3_title" qtlid="199234">Task summary</translation>
    <translation id="hosting_tab_CRON_save_success" qtlid="199247">The new task will be available very shortly (+/- 2 minutes).</translation>
-   <translation id="hosting_tab_CRON_save_error" qtlid="199260">An error occurred on creating a task.</translation>
+   <translation id="hosting_tab_CRON_save_error" qtlid="199260">An error has occurred creating a task.</translation>
    <translation id="hosting_tab_CRON_edit_success" qtlid="199273">The task was modified successfully.</translation>
-   <translation id="hosting_tab_CRON_edit_error" qtlid="199286">An error occurred on editing the task {0}.</translation>
+   <translation id="hosting_tab_CRON_edit_error" qtlid="199286">An error has occurred editing the task {0}.</translation>
    <translation id="hosting_tab_CRON_simple_mode" qtlid="102849">Simple mode </translation>
    <translation id="hosting_tab_CRON_expert_mode" qtlid="64616">Advanced mode</translation>
    <translation id="hosting_tab_CRON_label_description" qtlid="9238">Description</translation>
@@ -1071,14 +1199,14 @@
    <translation id="hosting_order_upgrade_do_order_downgrade" qtlid="296765">Note if you are switching to a lower offer:</translation>
    <translation id="hosting_order_upgrade_do_order_downgrade_text" qtlid="296778">If your old hosting plan has not yet expired when you switch over, the remaining credit will not be transferred. The expiration date will be extended by a year and transferred to the new offer.</translation>
    <translation id="hosting_order_upgrade_freedom_warning" qtlid="314201">Please note:</translation>
-   <translation id="hosting_order_upgrade_freedom_warning_text" qtlid="314214">any freedom domain names that you have will no longer be included in your web hosting package after the renewal.  </translation>
+   <translation id="hosting_order_upgrade_freedom_warning_text" qtlid="314214">any freedom domain names that you have will no longer be included in your web hosting plan after the renewal.  </translation>
    <translation id="hosting_order_upgrade_no_offer" qtlid="216976">Your current offer cannot be upgraded.</translation>
    <translation id="hosting_order_upgrade_price_HT" qtlid="146177">Sub-total:</translation>
    <translation id="hosting_order_upgrade_price_TTC" qtlid="146190">Total price:</translation>
    <translation id="hosting_order_upgrade_success" qtlid="181266">The order number <a href='{0}' target='_blank'>{1}</a> has been registered.</translation>
-   <translation id="hosting_order_upgrade_error" qtlid="225153">An error occurred when updating your hosting plan.</translation>
+   <translation id="hosting_order_upgrade_error" qtlid="225153">An error has occurred updating your hosting plan.</translation>
    <translation id="hosting_migrate_my_ovh_org_success" qtlid="372334">Your ovh.org domain migration has been processed. You will get an email when the migration is complete.</translation>
-   <translation id="hosting_migrate_my_ovh_org_error" qtlid="372347">There was an error when migrating your ovh.org domain. </translation>
+   <translation id="hosting_migrate_my_ovh_org_error" qtlid="372347">An error has occurred migrating your ovh.org domain. </translation>
 
    <translation id="hosting_tab_DATABASES_configuration_order_button_group" qtlid="293723">Configure your databases </translation>
    <translation id="hosting_tab_DATABASES_configuration_order_info" qtlid="271884">Database packages are not cumulative</translation>
@@ -1108,7 +1236,7 @@
    <translation id="hosting_tab_BOOST_not_supported" qtlid="227234">The {0} plan cannot be boosted.</translation>
    <translation id="hosting_tab_BOOST_supported_performance" qtlid="229086">The BOOST option can only be used with the Performance plan.</translation>
    <translation id="hosting_tab_BOOST_supported_performance_migrate" qtlid="229099">Migrate quickly and without interrupting service via this button:</translation>
-   <translation id="hosting_tab_BOOST_error" qtlid="299436">There was an error: </translation>
+   <translation id="hosting_tab_BOOST_error" qtlid="299436">An error has occurred:</translation>
    <translation id="hosting_tab_BOOST_boost_enabled" qtlid="227247">Your plan is currently boosted to the {0} plan</translation>
    <translation id="hosting_tab_BOOST_boost_disable" qtlid="227260">Deactivate the boost plan</translation>
    <translation id="hosting_tab_BOOST_boost_update" qtlid="227273">Change the boost plan</translation>
@@ -1130,14 +1258,14 @@
 
    <translation id="hosting_tab_BOOST_request_activation" qtlid="227403">Boosting your plan...</translation>
    <translation id="hosting_tab_BOOST_request_success" qtlid="227416">Your plan has been successfully booted.</translation>
-   <translation id="hosting_tab_BOOST_request_error" qtlid="227429">An error occurred when boosting your plan.</translation>
+   <translation id="hosting_tab_BOOST_request_error" qtlid="227429">An error has occurred boosting your plan.</translation>
 
 
    <translation id="hosting_tab_BOOST_update_offer" qtlid="227273">Change the boost plan</translation>
    <translation id="hosting_tab_BOOST_update_title" qtlid="227442">You want to change your boost plan.</translation>
    <translation id="hosting_tab_BOOST_update_select_offer" qtlid="227455">Select a plan:</translation>
    <translation id="hosting_tab_BOOST_update_activation" qtlid="227468">Changing your boost plan...</translation>
-   <translation id="hosting_tab_BOOST_update_error" qtlid="227481">An error occurred when changing your boost plan.</translation>
+   <translation id="hosting_tab_BOOST_update_error" qtlid="227481">An error has occurred changing your boost plan.</translation>
 
    <translation id="hosting_tab_BOOST_disable_offer" qtlid="227260">Deactivate the boost plan</translation>
    <translation id="hosting_tab_BOOST_disable_title" qtlid="227494">You're about to disable your boost plan.</translation>
@@ -1145,10 +1273,10 @@
    <translation id="hosting_tab_BOOST_accept_cgv" qtlid="229164">I have understood and I accept the conditions of service. My hosting plan will be updated a few minutes after validation.</translation>
    <translation id="hosting_tab_BOOST_disable_started" qtlid="227533">Deactivating your boost plan...</translation>
    <translation id="hosting_tab_BOOST_disable_success" qtlid="227546">Your boost plan has been deactivated.</translation>
-   <translation id="hosting_tab_BOOST_disable_error" qtlid="227559">An error occurred when deactivating your boost plan.</translation>
+   <translation id="hosting_tab_BOOST_disable_error" qtlid="227559">An error has occurred deactivating your boost plan.</translation>
 
    <translation id="hosting_tab_AUTOMATED_EMAILS" qtlid="267536">Email scripts</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_guide_help" qtlid="271530">Do you need help with your emails sent from scripts? </translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_guide_help" qtlid="271530">Need help with your emails sent from scripts? </translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_desc" qtlid="270319">Emails sent from CGI/PERL/PHP scripts.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_info" qtlid="254414">This page only shows emails sent from CGI/PERL/PHP scripts.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_status" qtlid="254427">Service state:</translation>
@@ -1165,14 +1293,14 @@
    <translation id="hosting_tab_AUTOMATED_EMAILS_purge" qtlid="254544">Purge emails</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_total_sent" qtlid="254557">Total number of emails sent:</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_today_sent" qtlid="254570">Emails sent today:</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_purge_info" qtlid="254583">You firstly need to block the sending of emails before you can purge them.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_purge_info" qtlid="254583">First, you need to block the sending of emails before you can purge them.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_total_bounce" qtlid="254596">Total number of unsent emails:</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_error" qtlid="243832">An error occurred while retrieving the details:</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_block_title" qtlid="254609">Block the sending of emails</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_unblock_title" qtlid="254622">Unblock the sending of emails</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_purge_title" qtlid="254544">Purge emails</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_block_question" qtlid="254635">You are about to block the distribution of emails sent from your web hosting package. Emails will be queued for 72 hours, but none will be deleted. You may during this period unblock the sending of emails or purge the emails.</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_purge_question" qtlid="254648">You're about to delete all the queued emails in your account. Afterwards your account will be automatically unblocked. The operation will take between 5 and 10 minutes.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_block_question" qtlid="254635">You are about to block emails from being sent from your web hosting plan. Emails will be queued for 72 hours, but none will be deleted. During this period, you may unblock the email sending, or purge the emails.</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_purge_question" qtlid="254648">You're about to delete all the queued emails in your account. Afterwards, your account will be automatically unblocked. The operation will take between 5 and 10 minutes.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_unblock_question" qtlid="254661">You are about to unblock the distribution of emails sent from your web hosting account. You will be able to send your next email. Mails that were blocked will be sent.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_request_success" qtlid="254674">Your request has been sent.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_request_error" qtlid="254687">Error. Unable to send request:</translation>
@@ -1181,7 +1309,7 @@
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_info" qtlid="254713">Enter the email address where you wish to receive error reports. If an error occurs when you send an email from your web hosting package, you will receive an email the following day.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email" qtlid="254726">Email address:</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_success" qtlid="254739">The email address that error reports will be sent to has been changed.</translation>
-   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_error" qtlid="254752">Error: unable to change the email address that error reports will be sent to</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_error" qtlid="254752">An error has occurred changing the email address that error reports will be sent to:</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_required" qtlid="254765">You must enter an email address.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_err_reports_email_invalid" qtlid="254778">The email address is invalid.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_volume" qtlid="267549">Record of sent emails</translation>
@@ -1236,7 +1364,7 @@
    <translation id="hosting_global_php_version_pending_task_error_common" qtlid="267913">An operation failed, please check your configuration.</translation>
    <translation id="hosting_action_config_edit_not_defined_error" qtlid="267926">Unable to continue, unknown error</translation>
    <translation id="hosting_action_edit_ovhconfig_title" qtlid="289185">Hosting configuration </translation>
-   <translation id="hosting_action_edit_need_to_choice" qtlid="267952">Select the desired operation</translation>
+   <translation id="hosting_action_edit_need_to_choice" qtlid="267952">Select the operation you want to carry out</translation>
    <translation id="hosting_action_edit_choose_update" qtlid="267965">Modify the current configuration</translation>
    <translation id="hosting_action_edit_choose_rollback" qtlid="267978">Return to a previous configuration</translation>
    <translation id="hosting_action_config_edit_no_choice" qtlid="267991">Only one configration is available in your history of previous choices. You therefore cannot choose another configuration, please click "Submit" to apply the values ​​displayed below.</translation>
@@ -1265,7 +1393,7 @@
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step3_question" qtlid="268419">Are you sure you want to create the following user?</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step3_user" qtlid="7450">User</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_step3_desc_label" qtlid="9238">Description</translation>
-   <translation id="hosting_tab_USER_LOGS_configuration_user_create_fail" qtlid="268432">An error occurred when requesting to create another user. </translation>
+   <translation id="hosting_tab_USER_LOGS_configuration_user_create_fail" qtlid="268432">An error has occurred requesting to create another user. </translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_create_success" qtlid="268445">The user is about to be created.</translation>
    <translation id="hosting_tab_USER_LOGS_table_popover_modify" qtlid="37875">Modify</translation>
    <translation id="hosting_tab_USER_LOGS_table_popover_update_password" qtlid="80394">Change password</translation>
@@ -1273,13 +1401,13 @@
    <translation id="hosting_tab_USER_LOGS_configuration_user_delete_title" qtlid="269760">Delete a user</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_delete_question" qtlid="413232">Do you want to delete the user: {0}?</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_delete_success" qtlid="268471">The user has been deleted.</translation>
-   <translation id="hosting_tab_USER_LOGS_configuration_user_delete_fail" qtlid="268484">An error occurred when requesting to delete the user {0}.</translation>
+   <translation id="hosting_tab_USER_LOGS_configuration_user_delete_fail" qtlid="268484">An error has occurred deleting the user {0}.</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_change_password_title" qtlid="198766">Change my password</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_change_password_step1_question" qtlid="413245">You will change the password for your user: {0}</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_change_password_step1_password" qtlid="17177">New password</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_change_password_step1_confirmation" qtlid="9983">Confirmation</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_change_password_step1_error" qtlid="197076">The passwords entered are not identicaal.</translation>
-   <translation id="hosting_tab_USER_LOGS_configuration_change_password_fail" qtlid="198792">An error occurred on requesting to change the password of the user {0}.</translation>
+   <translation id="hosting_tab_USER_LOGS_configuration_change_password_fail" qtlid="198792">An error has occurred requesting to change the password of the user {0}.</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_change_password_success" qtlid="197401">The password will be modified.</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_title" qtlid="269773">Modify a user</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_step1_question" qtlid="268510">You are about to modify the following user</translation>
@@ -1288,11 +1416,11 @@
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_step2_question" qtlid="268523">Are you sure you want to modify the user with the following values?</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_step2_user" qtlid="7450">User</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_step2_desc_label" qtlid="9238">Description</translation>
-   <translation id="hosting_tab_USER_LOGS_configuration_user_modify_fail" qtlid="268536">An error occured when a user modification was requested. </translation>
+   <translation id="hosting_tab_USER_LOGS_configuration_user_modify_fail" qtlid="268536">An error has occurred requesting a user modification.</translation>
    <translation id="hosting_tab_USER_LOGS_configuration_user_modify_success" qtlid="268549">The user is about to be changed.</translation>
 
    <translation id="hosting_tab_menu_crons" qtlid="270332">Scheduled tasks - Cron</translation>
-   <translation id="hosting_tab_menu_emails" qtlid="270345">Manage emails and mailing lists</translation>
+   <translation id="hosting_tab_menu_emails" qtlid="489004">Emails and mailing lists</translation>
    <translation id="hosting_tab_menu_contacts" qtlid="270358">Administrative, technical and billing</translation>
    <translation id="hosting_tab_menu_resiliate" qtlid="351896">Cancel my hosting package </translation>
    <translation id="hosting_tab_menu_resiliate_infos" qtlid="270384">Cancel the service on the expiration date.</translation>
@@ -1302,7 +1430,7 @@
    <translation id="hosting_tab_INDY_table_header_state" qtlid="33790">State</translation>
    <translation id="hosting_tab_INDY_table_header_domains" qtlid="290707">Multisite</translation>
    <translation id="hosting_tab_INDY_table_empty" qtlid="287605">No separate multi-domain. </translation>
-   <translation id="hosting_tab_INDY_error" qtlid="299449">There was an error: </translation>
+   <translation id="hosting_tab_INDY_error" qtlid="299449">An error has occurred:</translation>
    <translation id="hosting_tab_INDY_state_rw" qtlid="272422">Active</translation>
    <translation id="hosting_tab_INDY_state_off" qtlid="24967">Disabled</translation>
 
@@ -1326,7 +1454,7 @@
 
    <translation id="hosting_dashboard_service_order_bandwidth" qtlid="145267">Order traffic</translation>
    <translation id="hosting_dashboard_bandwidth_order_traffic" qtlid="272500">Select traffic bandwidth in (GB): </translation>
-   <translation id="hosting_dashboard_bandwidth_order_error" qtlid="272513">An error occurred while ordering bandwidth.</translation>
+   <translation id="hosting_dashboard_bandwidth_order_error" qtlid="272513">An error has occurred ordering bandwidth.</translation>
 
    <translation id="hosting_common_no_filter" qtlid="85281">No filter</translation>
    <translation id="hosting_tab_DOMAINS_ovhcontrol_token" qtlid="273414">ovhcontrol token</translation>
@@ -1352,7 +1480,7 @@
    <translation id="hosting_change_main_domain_help_title" qtlid="286461">Attach your hosting package to one of your other domains</translation>
    <translation id="hosting_change_main_domain_help_desc" qtlid="286474">You cannot change your primary domain to an external domain. You have to transfer your domain to OVH beforehand in order to attach it to your hosting package. </translation>
    <translation id="hosting_change_main_domain_help_keep_email_title" qtlid="286487">Keep email accounts </translation>
-   <translation id="hosting_change_main_domain_help_keep_email_desc" qtlid="286500">Your hosting package allows you to have an email address associated with your domain. If you transfer your domain, you have to subscribe to the MX Plan to keep these addresses.</translation>
+   <translation id="hosting_change_main_domain_help_keep_email_desc" qtlid="286500">Your hosting plan allows you to have an email address associated with your domain. If you transfer your domain, you have to subscribe to the MX Plan to keep these addresses.</translation>
    <translation id="hosting_change_main_domain_help_mxplan_title" qtlid="286513">MX Plan</translation>
    <translation id="hosting_change_main_domain_help_mxplan_desc1" qtlid="286526">For more information about MX Plan, click </translation>
    <translation id="hosting_change_main_domain_help_mxplan_desc2" qtlid="137452">here</translation>
@@ -1360,52 +1488,50 @@
    <translation id="hosting_change_main_domain_help_ssl_title" qtlid="84921">SSL</translation>
    <translation id="hosting_change_main_domain_help_ssl_desc" qtlid="286539">Any SSL certificate on the old primary domain name will not continue to work for the new primary domain name. You have to purchase an SSL certificate </translation>
    <translation id="hosting_dashboard_ssl_generate_success" qtlid="298968">Your hosting package's SSL certificate is being generated. </translation>
-   <translation id="hosting_dashboard_ssl_report_button">État de la progression</translation>
-   <translation id="hosting_dashboard_service_ssl_creating">En cours de création</translation>
-   <translation id="hosting_dashboard_service_ssl_regenerating">En cours de régénération</translation>
-   <translation id="hosting_dashboard_service_ssl_deleting">En cours de suppression</translation>
-   <translation id="hosting_dashboard_service_ssl_importing">En cours d'import</translation>
+   <translation id="hosting_dashboard_ssl_report_button" qtlid="473609">Progress status</translation>
+   <translation id="hosting_dashboard_service_ssl_creating" qtlid="29647">Under construction</translation>
+   <translation id="hosting_dashboard_service_ssl_regenerating" qtlid="473622">Regeneration in progress</translation>
+   <translation id="hosting_dashboard_service_ssl_deleting" qtlid="152778">Deleting</translation>
+   <translation id="hosting_dashboard_service_ssl_importing" qtlid="473635">Import in progress</translation>
    <translation id="hosting_dashboard_service_order_ssl_delete" qtlid="299007">Delete SSL</translation>
-   <translation id="hosting_dashboard_service_delete_ssl_warning" qtlid="299020">Are you sure that you want to remove SSL from your hosting package? </translation>
-   <translation id="hosting_dashboard_service_delete_ssl_warning_payable" qtlid="363479">Are you sure that you want to delete the purchased certificate? Once it is removed you cannot reinstate it and you will have to purchase another one. </translation>
-   <translation id="hosting_dashboard_ssl_details_title">Progression de la validation du certificat SSL</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus">Vérification des conditions d’utilisation</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus_error">La vérification des conditions d’utilisation de Comodo n’a pas pu être effectuée.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus">Vérification du nom de marque</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus_error">La vérification du nom de marque par une agence d’enregistrement n’a pas pu être effectuée.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_phoneCallApprovalStatus">Vérification téléphonique auprès du contact enregistré</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus">Vérification du statut légal</translation>
-<translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus_error">Durant le processus de validation de votre certificat SSL, il est nécessaire de contacter Comodo à ce numéro&#160;<strong>{0}</strong>.
-<br/>
-<br/>Notez qu’il s’agit d’une plateforme néerlandaise. Il vous suffira de demander un interlocuteur francophone.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus">Vérification de la validité du domaine</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus_error">Il s’agit généralement d’une restriction indiquée dans votre fichier <strong>.htaccess</strong>.</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus">Vérification de la demande de signature de certificat</translation>
-   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus_error">Nous vous invitons à créer une demande d'assistance auprès de Comodo.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_in-progress">Cette étape est en cours de traitement.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_non-completed">Comodo est en attente d'informations pour compléter cette étape.</translation>
-   <translation id="hosting_dashboard_ssl_details_explanation_not-provided">Le traitement de cette étape n'a pas encore commencé.</translation>
-   <translation id="hosting_dashboard_ssl_details_confirm_button">Fermer</translation>
-   <translation id="hosting_dashboard_ssl_details_error">Une erreur est survenue lors de la récupération du rapport de génération SSL.</translation>
-   <translation id="hosting_dashboard_ssl_details_support_1">Vous pourrez trouver toutes les informations nécessaires à la validation de ces différents éléments sur ce lien menant à la documentation (en anglais) de Comodo&#160;</translation>
-   <translation id="hosting_dashboard_ssl_details_support_2">.<br><br>Pour toute question relative à la validation de votre certificat SSL EV, nous vous invitons à contacter Comodo à l’adresse&#160;</translation>
-   <translation id="hosting_dashboard_ssl_details_support_3">, en précisant le numéro de commande suivant <strong>{0}</strong>.</translation>
-   <translation id="hosting_dashboard_ssl_details_support_new_window">Ce lien va s'ouvrir dans un nouvel onglet</translation>
-   <translation id="hosting_dashboard_service_regenerate_ssl_warning" qtlid="315865">Are you sure that you want to regenerate your SSL certificate on your web hosting package?</translation>
+   <translation id="hosting_dashboard_service_delete_ssl_warning" qtlid="299020">Are you sure that you want to remove SSL from your hosting plan? </translation>
+   <translation id="hosting_dashboard_service_delete_ssl_warning_payable" qtlid="363479">Are you sure that you want to delete the certificate you have purchased? Once it is removed, you cannot reinstall it and you will have to purchase another one. </translation>
+   <translation id="hosting_dashboard_ssl_details_title" qtlid="473648">SSL Certificate Validation Progress</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus" qtlid="473661">Verification of the conditions of use</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_termsAndConditionsAcceptanceStatus_error" qtlid="473674">The Comodo conditions of use could not be verified.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus" qtlid="473687">Trademark name verification</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_tradeNameVerificationStatus_error" qtlid="473700">The verification of the trademark name by a registration agency could not be carried out.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_phoneCallApprovalStatus" qtlid="473713">Telephone verification with the registered contact</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus" qtlid="473726">Verification of legal status</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_organizationValidationStatus_error" qtlid="484513">During the validation process for your SSL certificate, you will need to contact Comodo on this number <strong> +31 88 775 7777 </strong>. Please note that this is a Dutch platform. You can request an English speaking contact.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus" qtlid="473765">Domain validity check</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_domainControlValidationStatus_error" qtlid="473778">This is usually a restriction specified in your <strong>.htaccess</strong> file.</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus" qtlid="473791">Verifying the Certificate Signing Request</translation>
+   <translation id="hosting_dashboard_ssl_details_entry_certificateSigningRequestStatus_error" qtlid="473804">Please create a support request with Comodo.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_in-progress" qtlid="473817">This step is currently being processed.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_non-completed" qtlid="473830">Comodo is waiting for information to complete this step.</translation>
+   <translation id="hosting_dashboard_ssl_details_explanation_not-provided" qtlid="473843">Processing of this step has not yet been launched.</translation>
+   <translation id="hosting_dashboard_ssl_details_confirm_button" qtlid="4670">Close</translation>
+   <translation id="hosting_dashboard_ssl_details_error" qtlid="473856">An error has occurred recovering the SSL generation report.</translation>
+   <translation id="hosting_dashboard_ssl_details_support_1" qtlid="473869">You can find all the information required for the validation of these different elements on this link leading to the Comodo documentation. &#160;</translation>
+   <translation id="hosting_dashboard_ssl_details_support_2" qtlid="473882">.<br><br>If you have any questions regarding the validation of your EV SSL Certificate, please contact Comodo on &#160;</translation>
+   <translation id="hosting_dashboard_ssl_details_support_3" qtlid="473895">, specifying the following order number: <strong>{0}</strong>.</translation>
+   <translation id="hosting_dashboard_ssl_details_support_new_window" qtlid="453228">This link will open in a new tab</translation>
+   <translation id="hosting_dashboard_service_regenerate_ssl_warning" qtlid="315865">Are you sure you want to regenerate your SSL certificate on your web hosting plan?</translation>
    <translation id="hosting_dashboard_service_delete_ssl_title" qtlid="299033">SSL deletion </translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_title" qtlid="315878">SSL regeneration </translation>
-   <translation id="hosting_dashboard_service_delete_ssl_success" qtlid="299046">The removal of SSL from your hosting package is being processed...</translation>
-   <translation id="hosting_dashboard_service_delete_ssl_error" qtlid="299059">There was an error when deleting SSL from your hosting package</translation>
-   <translation id="hosting_change_main_domain_keep_emails" qtlid="286552">I want to keep the email accounts attached to my current domain</translation>
+   <translation id="hosting_dashboard_service_delete_ssl_success" qtlid="299046">The removal of SSL from your hosting plan has been processed</translation>
+   <translation id="hosting_dashboard_service_delete_ssl_error" qtlid="299059">An error has occurred deleting SSL from your hosting plan</translation>
+   <translation id="hosting_change_main_domain_keep_emails" qtlid="286552">Keep the email accounts attached to my current domain</translation>
    <translation id="hosting_change_main_domain_email_title" qtlid="402789">Email addresses linked to your domain name:</translation>
-   <translation id="hosting_change_main_domain_email_deletion_warning" qtlid="402802">Your current domain name (<strong>{0}</strong>) is linked to email addresses. If you change your primary domain these addresses will be deleted. </translation>
-   <translation id="hosting_change_main_domain_email_proposal" qtlid="402815">However, you can create new email addresses linked to your future domain. </translation>
+   <translation id="hosting_change_main_domain_email_deletion_warning" qtlid="402802">Your current domain name (<strong>{0}</strong>) is linked to email addresses. If you change your primary domain, these addresses will be deleted. </translation>
+   <translation id="hosting_change_main_domain_email_proposal" qtlid="402815">However, you can create new email addresses linked to your future domain associated with your hosting plan. </translation>
    <translation id="hosting_change_main_domain_delete_emails" qtlid="402828">Delete the email addresses </translation>
    <translation id="hosting_change_main_domain_email_list" qtlid="402841">As well as {0} others </translation>
    <translation id="hosting_change_main_domain_no_email" qtlid="402854">This domain does not have any associated email addresses, you can continue unhindered. </translation>
    <translation id="hosting_change_main_domain_no_bill" qtlid="402867">The modification is about to take place </translation>
    <translation id="hosting_change_main_domain_mx_link" qtlid="296843">For more information, please see our <a href="{0}" target="{1}">product descriptions. {2}</a></translation>
-   <translation id="hosting_change_main_domain_warning_delete_emails" qtlid="286565">Warning! Deleting your existing email service will also delete all the email addresses which you created with your domain name. </translation>
+   <translation id="hosting_change_main_domain_warning_delete_emails" qtlid="286565">Warning! Deleting your existing email service will also delete all the email addresses that you created with your domain name. </translation>
 
    <translation id="hosting_dashboard_general_informations" qtlid="27115">General information</translation>
    <translation id="hosting_dashboard_configuration" qtlid="4406">Configuration</translation>

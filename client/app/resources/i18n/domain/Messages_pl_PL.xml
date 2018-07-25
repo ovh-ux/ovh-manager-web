@@ -45,7 +45,7 @@
    <translation id="domain_dashboard_whois" qtlid="125108">Ukrycie danych WHOIS</translation>
    <translation id="domain_dashboard_whois_not_activable" qtlid="94783">Niedostępne</translation>
    <translation id="domain_dashboard_owo_not_supported" qtlid="288652">Niedostępne dla tego rozszerzenia</translation>
-   <translation id="domain_dashboard_offer" qtlid="38217">Oferta</translation>
+   <translation id="domain_dashboard_offer" qtlid="38217">Pakiet</translation>
    <translation id="domain_dashboard_dns_state" qtlid="33790">Status</translation>
    <translation id="domain_dashboard_dns_anycast" qtlid="270540">Opcja DNS Anycast</translation>
    <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">DNS Anycast to usługa pozwalająca na przyspieszenie klasycznego działania serwerów DNS tak, aby strona na całym świecie odpowiadała szybciej podczas pierwszego odwiedzania.</translation>
@@ -122,8 +122,8 @@
    <translation id="domain_tab_DNS_delete_success" qtlid="211229">Serwer DNS {0} został usunięty.</translation>
    <translation id="domain_tab_DNS_delete_error" qtlid="211242">Wystąpił błąd podczas usuwania serwera DNS {0}.</translation>
 
-   <translation id="domain_tab_DNS_lock_button" qtlid="285668">Zresetowanie serwerów DNS</translation>
-   <translation id="domain_tab_DNS_lock_title" qtlid="285681">Zresetowanie serwerów DNS</translation>
+   <translation id="domain_tab_DNS_lock_button" qtlid="285668">Resetuj serwery DNS</translation>
+   <translation id="domain_tab_DNS_lock_title" qtlid="285681">Resetuj serwery DNS</translation>
    <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Czy chcesz zresetować konfigurację serwerów DNS? Operacja ta zresetuje aktualną konfigurację i spowoduje przełączenie na domyślne serwery OVH.</translation>
    <translation id="domain_tab_DNS_lock_success" qtlid="211294">Przyjęto zlecenie zresetowania serwerów DNS.</translation>
    <translation id="domain_tab_DNS_lock_error" qtlid="211307">Wystąpił błąd podczas resetowania serwerów DNS.</translation>
@@ -213,7 +213,7 @@
    <translation id="domain_tab_ZONE" qtlid="45976">Strefa DNS</translation>
    <translation id="domain_tab_ZONE_named" qtlid="225101">Strefa DNS dla {0}</translation>
    <translation id="domain_tab_ZONE_search_placeholder" qtlid="213427">Wyszukiwanie domeny...</translation>
-   <translation id="domain_tab_ZONE_type_placeholder" qtlid="122275">Wyszukiwanie...</translation>
+   <translation id="domain_tab_ZONE_type_placeholder" qtlid="492003">Wyszukiwanie...</translation>
    <translation id="domain_tab_ZONE_type_all" qtlid="69173">Wszystkie</translation>
    <translation id="domain_tab_ZONE_no_zone" qtlid="223463">Nie masz strefy DNS przypisanej do tej domeny.</translation>
    <translation id="domain_tab_ZONE_delete_doing" qtlid="366411">Opcja ponownego włączenia strefy DNS będzie dostępna za około godzinę.</translation>
@@ -238,12 +238,12 @@
    <translation id="domain_tab_ZONE_table_headers_target" qtlid="47644">Adres docelowy</translation>
    <translation id="domain_tab_ZONE_default_import_button" qtlid="233453">Modyfikacja w trybie tekstowym</translation>
    <translation id="domain_tab_ZONE_default_delete_all" qtlid="290316">Usuń strefę DNS</translation>
-   <translation id="domain_tab_ZONE_default_ttl_button" qtlid="473269">Modifier le TTL par défaut</translation>
+   <translation id="domain_tab_ZONE_default_ttl_button" qtlid="473269">Zmień domyślny TTL</translation>
    <translation id="domain_tab_ZONE_default_ttl_error" qtlid="226110">Wystąpił błąd podczas pobierania informacji ze strefy:</translation>
    <translation id="domain_tab_ZONE_default_ttl_success" qtlid="226123">Wartość TTL strefy została zaktualizowana.</translation>
    <translation id="domain_tab_ZONE_default_ttl_heading" qtlid="226136">Chcesz zmienić domyślną wartość TTL w strefie {0}</translation>
-   <translation id="domain_tab_ZONE_default_ttl_info" qtlid="473282">Le TTL correspond au temps maximum (en secondes) de propagation de mise à jour de la zone DNS.</translation>
-   <translation id="domain_tab_ZONE_default_ttl_help" qtlid="473295">Valeur conseillée en cas de changements fréquents 3600 secondes, sinon 86400 secondes (1 jour).</translation>
+   <translation id="domain_tab_ZONE_default_ttl_info" qtlid="473282">TTL określa maksymalny czas (w sekundach) propagacji zmian w strefie DNS.</translation>
+   <translation id="domain_tab_ZONE_default_ttl_help" qtlid="473295">Zalecana wartość w przypadku częstych zmian: 3600 sekund. Jeśli nie wprowadzasz częstych zmian w strefie DNS: 86 400 sekund (1 dzień).</translation>
    <translation id="domain_tab_ZONE_default_ttl_default_value" qtlid="226097">Domyślny TTL</translation>
    <translation id="domain_tab_ZONE_default_ttl_default_value_conditions" qtlid="328888">Wartość musi być liczbą całkowitą zawartą między <strong>{0}</strong> i <strong>{1}</strong>.</translation>
 
@@ -776,8 +776,8 @@
 
    <translation id="domain_configuration_web_hosting_offer_header" qtlid="287619">Nazwa hostingu</translation>
    <translation id="domain_configuration_web_hosting_offer_KS" qtlid="271569">Kimsufi 2015</translation>
-   <translation id="domain_configuration_web_hosting_sqlPerso_header" qtlid="233287">SQL Perso</translation>
-   <translation id="domain_configuration_web_hosting_sqlPro_header" qtlid="233300">SQL Pro</translation>
+   <translation id="domain_configuration_web_hosting_sqlPerso_header" qtlid="492016">SQL Perso</translation>
+   <translation id="domain_configuration_web_hosting_sqlPro_header" qtlid="492029">SQL Pro</translation>
    <translation id="domain_configuration_web_hosting_privateSql_header" qtlid="72845">SQL Prywatny</translation>
    <translation id="domain_configuration_web_hosting_price_header" qtlid="83913">Cena</translation>
    <translation id="domain_configuration_web_hosting_choose_offer" qtlid="233313">Wybierz ofertę, którą chcesz zamówić.</translation>
@@ -893,7 +893,7 @@
    <translation id="domain_tab_dns_management_step1_noZone_p2" qtlid="367787">Jeśli chcesz korzystać z serwerów DNS OVH, włącz strefę DNS.</translation>
    <translation id="domain_tab_dns_management_step1_hasZone" qtlid="367800">Jeśli chcesz korzystać z serwerów DNS OVH, sprawdź najpierw, czy strefa DNS OVH jest poprawnie skonfigurowana.</translation>
    <translation id="domain_dashboard_dns_refresh" qtlid="367813">Aktualizacja w trakcie</translation>
-   <translation id="domain_dashboard_dns_reset_your_zone" qtlid="285668">Zresetowanie serwerów DNS</translation>
+   <translation id="domain_dashboard_dns_reset_your_zone" qtlid="285668">Resetuj serwery DNS</translation>
    <translation id="domain_dashboard_dns_activate_zone" qtlid="260429">Aktywuj strefę DNS</translation>
    <translation id="domain_tab_dns_management_step1_updating" qtlid="369099">Trwa aktualizacja strefy DNS...</translation>
 
