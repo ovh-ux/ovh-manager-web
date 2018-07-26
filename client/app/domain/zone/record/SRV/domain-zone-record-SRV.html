@@ -54,7 +54,7 @@
             </div>
             <small class="help-block"
                    data-ng-if="ctrl.targetIsRelativeDomain()">
-                <span data-ng-bind="i18n.domain_configuration_dns_entry_relative_warning_title + ' &laquo;&nbsp;' + ctrl.model.target.target + '.' + ctrl.domain.displayName + '&nbsp;&raquo;'"></span>
+                <span data-ng-bind="i18n.domain_configuration_dns_entry_relative_warning_title + ' &laquo;&nbsp;' + ctrl.model.target.target + '.' + '&nbsp;&raquo;'"></span>
                 <button class="btn btn-icon" type="button"
                         data-ng-click="ctrl.switchTargetToAbsolute()"
                         data-uib-tooltip="{{i18n.domain_configuration_dns_entry_relative_warning_tooltip}}"
