@@ -738,12 +738,12 @@ angular.module('services').service(
      * @returns {string}
      */
     static transformNAPTRTarget(target) {
-      let lastItem = target.replace ? /\.$/.test(target.replace) : null;
+      let lastItem = '.';
 
-      if (lastItem === null) {
-        lastItem = punycode.toASCII(target.replace)
-          ? `${punycode.toASCII(target.replace)}.`
-          : '.';
+      if (target.replace) {
+        lastItem = /\.$/.test(target.replace)
+          ? punycode.toASCII(target.replace)
+          : `${punycode.toASCII(target.replace)}.`;
       }
 
       return [
@@ -819,12 +819,12 @@ angular.module('services').service(
      * @returns {string}
      */
     static transformSRVTarget(target) {
-      let lastItem = target.target ? /\.$/.test(target.target) : null;
+      let lastItem = '.';
 
-      if (lastItem === null) {
-        lastItem = punycode.toASCII(target.target)
-          ? `${punycode.toASCII(target.target)}.`
-          : '.';
+      if (target.target) {
+        lastItem = /\.$/.test(target.target)
+          ? punycode.toASCII(target.target)
+          : `${punycode.toASCII(target.target)}.`;
       }
 
       return [
