@@ -1,3 +1,13 @@
+<a name="13.4.17"></a>
+## [13.4.17](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.16...v13.4.17) (2018-07-26)
+
+
+### Bug Fixes
+
+* **domain.zone:** fix dns NAPTR and SRV record creation ([c5c7955](https://github.com/ovh-ux/ovh-manager-web/commit/c5c7955))
+
+
+
 <a name="13.4.16"></a>
 ## [13.4.16](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.15...v13.4.16) (2018-07-24)
 
