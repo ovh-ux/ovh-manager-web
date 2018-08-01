@@ -1,3 +1,13 @@
+<a name="13.4.18"></a>
+## [13.4.18](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.17...v13.4.18) (2018-08-01)
+
+
+### Features
+
+* **email.responder:** disable actions while task processes ([#469](https://github.com/ovh-ux/ovh-manager-web/issues/469)) ([85417bb](https://github.com/ovh-ux/ovh-manager-web/commit/85417bb))
+
+
+
 <a name="13.4.17"></a>
 ## [13.4.17](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.16...v13.4.17) (2018-07-26)
 
