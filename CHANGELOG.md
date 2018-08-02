@@ -1,3 +1,14 @@
+<a name="13.4.19"></a>
+## [13.4.19](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.18...v13.4.19) (2018-08-02)
+
+
+### Bug Fixes
+
+* **deps:** raven-js ENORESTARGET ([6dcf0f2](https://github.com/ovh-ux/ovh-manager-web/commit/6dcf0f2))
+* **hosting.private-database.order:** retrieve dbPack for startSQL order ([9d4c843](https://github.com/ovh-ux/ovh-manager-web/commit/9d4c843))
+
+
+
 <a name="13.4.18"></a>
 ## [13.4.18](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.17...v13.4.18) (2018-08-01)
 
