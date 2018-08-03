@@ -372,9 +372,13 @@ angular
     },
   ])
   .run([
-    'translator',
-    (translator) => {
+    '$translatePartialLoader', 'translator',
+    ($translatePartialLoader, translator) => {
       translator.load(['core', 'doubleAuth']);
+      // FIX ME: The loading of the exchange translations has to be removed once we move completely to angular-translate
+      translator.load(['exchange/translations'], '', ' ');
+
+      $translatePartialLoader.addPart('core');
 
       const selectedLanguage = translator.getSelectedAvailableLanguage();
       const selectedLanguageValue = _(selectedLanguage).get('value', null);
@@ -421,7 +425,14 @@ angular
     }
 
     $translateProvider.useLoader('$translatePartialLoader', {
-      urlTemplate: constants.prodMode ? '{part}/translations/Messages_{lang}.json' : 'app/{part}/translations/Messages_{lang}.json',
+      urlTemplate(part, lang) {
+        if (part === 'core') {
+          // FIX ME: Temporary fix until core and all other translations are moved
+          // directly into the app folder. This can be done when traslator is removed
+          return constants.prodMode ? `resources/i18n/${part}/Messages_${lang}.json` : `app/resources/i18n/${part}/Messages_${lang}.json`;
+        }
+        return constants.prodMode ? `${part}/translations/Messages_${lang}.json` : `app/${part}/translations/Messages_${lang}.json`;
+      },
     });
 
     $translateProvider.useMissingTranslationHandler('translateMissingTranslationHandler');
