@@ -375,7 +375,8 @@ angular
     '$translatePartialLoader', 'translator',
     ($translatePartialLoader, translator) => {
       translator.load(['core', 'doubleAuth']);
-      // FIX ME: The loading of the exchange translations has to be removed once we move completely to angular-translate
+      // FIX ME: The loading of the exchange translations has to be removed
+      // once we move completely to angular-translate
       translator.load(['exchange/translations'], '', ' ');
 
       $translatePartialLoader.addPart('core');
