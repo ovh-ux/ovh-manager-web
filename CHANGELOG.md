@@ -1,3 +1,8 @@
+<a name="13.4.20"></a>
+## [13.4.20](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.19...v13.4.20) (2018-08-06)
+
+
+
 <a name="13.4.19"></a>
 ## [13.4.19](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.18...v13.4.19) (2018-08-02)
 
