@@ -17,8 +17,12 @@
                  data-ng-if="ctrlDomainDns.dns.activeDns === 1 && !ctrlDomainDns.dns.table.isPartial"></div>
 
             <div class="alert alert-info" role="alert"
-                 data-ng-bind-html="tr('domain_tab_DNS_unlock_warning_manuel_check', [ctrlDomainDns.urls.zoneCheck, i18n.domain_tab_DNS_unlock_warning_manuel_check_tool + ' (' + i18n.core_new_window + ')'])"
                  data-ng-if="ctrlDomainDns.allowModification">
+                 <span data-ng-bind="tr('domain_tab_DNS_unlock_warning_manuel_check')"></span>
+                 <a data-ng-href="{{ctrlDomainDns.urls.zoneCheck}}" title="{{i18n.domain_tab_DNS_unlock_warning_manuel_check_tool + ' (' + i18n.core_new_window + ')'}}" target="_blank">
+                    <span data-ng-bind="tr('domain_tab_DNS_unlock_warning_manuel_check2')"></span>
+                    <span class="fa fa-external-link" aria-hidden="true"></span>
+                </a>
             </div>
 
             <form name="ctrlDomainDns.dnsServerNamesForm" data-ng-if="ctrlDomainDns.dns.table.dns.length">
