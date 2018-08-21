@@ -1,7 +1,7 @@
 <div data-ng-controller="HostingLocalSeoDeleteCtrl as ctrl">
     <div data-wizard
          data-wizard-on-cancel="resetAction"
-         data-wizard-on-finish="ctrl.deleteLocation"
+         data-wizard-on-finish="ctrl.deleteLocation.bind(ctrl)"
          data-wizard-confirm-button-text="i18n.hosting_tab_LOCAL_SEO_delete"
          data-wizard-title="i18n.hosting_tab_LOCAL_SEO_delete">
 

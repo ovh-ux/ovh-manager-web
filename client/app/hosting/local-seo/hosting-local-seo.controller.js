@@ -41,7 +41,9 @@ angular.module('App').controller(
 
     getAccounts() {
       return this.HostingLocalSeo.getAccounts(this.productId)
-        .then(accounts => this.$q.all(_.map(accounts, account => this.HostingLocalSeo.getAccount(this.productId, account))));
+        .then(accounts => this.$q.all(
+          _.map(accounts, account => this.HostingLocalSeo.getAccount(this.productId, account)),
+        ));
     }
 
     getLocations() {
@@ -71,7 +73,7 @@ angular.module('App').controller(
         });
     }
 
-    transformItemDone(locations) {
+    transformItemDone() {
       this.loading.locations = false;
     }
 

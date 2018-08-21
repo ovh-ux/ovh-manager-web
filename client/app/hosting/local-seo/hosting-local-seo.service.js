@@ -1,6 +1,6 @@
 angular
   .module('services')
-  .service('HostingLocalSeo', class HostingDomain {
+  .service('HostingLocalSeo', class HostingLocalSeo {
     constructor($rootScope, $q, Hosting, OvhHttp) {
       this.$rootScope = $rootScope;
       this.$q = $q;
@@ -34,6 +34,12 @@ angular
 
     getLocation(serviceName, locationId) {
       return this.OvhHttp.get(`/hosting/web/${serviceName}/localSeo/location/${locationId}`, {
+        rootPath: 'apiv6',
+      });
+    }
+
+    deleteLocation(serviceName, locationId) {
+      return this.OvhHttp.delete(`/hosting/web/${serviceName}/localSeo/location/${locationId}`, {
         rootPath: 'apiv6',
       });
     }
