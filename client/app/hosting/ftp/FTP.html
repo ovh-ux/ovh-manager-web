@@ -17,6 +17,11 @@
                 <dl>
                     <dt data-i18n-static="hosting_tab_FTP_dashboard_server"></dt>
                     <dd class="mb-3">
+                        <oui-clipboard class="w-25" data-model="ctrlHostingTabFTP.firstUser.ftp.url"></oui-clipboard>
+                    </dd>
+
+                    <dt data-i18n-static="hosting_tab_FTP_dashboard_server_link"></dt>
+                    <dd class="mb-3">
                         <a data-ng-href="ftp://{{ctrlHostingTabFTP.firstUser.ftp.user}}@{{ctrlHostingTabFTP.firstUser.ftp.url}}:{{ctrlHostingTabFTP.firstUser.ftp.port}}/" target="_blank" title="{{i18n.hosting_dashboard_service_home_ftp_newtab}}">
                             <span data-ng-bind="ctrlHostingTabFTP.firstUser.ftpUrl"></span>
                             <span class="fa fa-external-link" aria-hidden="true"></span>
@@ -159,6 +164,11 @@
                 <div class="col-md-6">
                     <dl>
                         <dt data-i18n-static="hosting_tab_FTP_dashboard_server"></dt>
+                        <dd class="mb-3">
+                            <oui-clipboard class="w-75" data-model="ftp.url"></oui-clipboard>
+                        </dd>
+
+                        <dt data-i18n-static="hosting_tab_FTP_dashboard_server_link"></dt>
                         <dd class="mb-3">
                             <a data-ng-href="ftp://{{ftp.url}}:{{ftp.port}}/" target="_blank" title="{{i18n.hosting_dashboard_service_home_ftp_newtab}}">
                                 <span data-ng-bind="ftpUrl"></span>
