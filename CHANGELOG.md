@@ -1,3 +1,13 @@
+<a name="13.4.22"></a>
+## [13.4.22](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.21...v13.4.22) (2018-08-22)
+
+
+### Bug Fixes
+
+* **constants:** new signup url ([38dcb88](https://github.com/ovh-ux/ovh-manager-web/commit/38dcb88))
+
+
+
 <a name="13.4.21"></a>
 ## [13.4.21](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.20...v13.4.21) (2018-08-20)
 
