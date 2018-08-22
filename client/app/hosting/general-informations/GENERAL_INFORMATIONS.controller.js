@@ -7,6 +7,7 @@ angular.module('App').controller(
       Alerter,
       hostingSSLCertificate,
       translator,
+      HostingLocalSeo,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -14,12 +15,32 @@ angular.module('App').controller(
       this.Alerter = Alerter;
       this.hostingSSLCertificate = hostingSSLCertificate;
       this.translator = translator;
+      this.HostingLocalSeo = HostingLocalSeo;
     }
 
     $onInit() {
       this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
 
+      this.localSeo = {
+        active: false,
+        quantity: 0,
+      };
+      this.initLocalSeo(this.$scope.hosting.serviceName);
+
       return this.retrievingSSLCertificate();
+    }
+
+    initLocalSeo(serviceName) {
+      this.HostingLocalSeo.getAccounts(serviceName)
+        .then(accountIds => this.HostingLocalSeo.getAccount(serviceName, accountIds[0]))
+        .then((account) => {
+          this.localSeo.active = account.status === 'created';
+        });
+
+      this.HostingLocalSeo.getLocations(serviceName)
+        .then((locationIds) => {
+          this.localSeo.quantity = locationIds.length;
+        });
     }
 
     retrievingSSLCertificate() {

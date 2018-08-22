@@ -368,15 +368,28 @@
                                             <div>
                                                 <strong class="d-block"
                                                         data-i18n-static="hosting_dashboard_local_seo"></strong>
-                                                <span data-ng-bind-html="::tr('hosting_dashboard_local_seo_quantity', hosting.localSeo.locationQuantity)"></span>
+                                                <span data-ng-bind-html="ctrl.localSeo.quantity > 0 ?
+                                                                           ctrl.localSeo.active ?
+                                                                             tr('hosting_dashboard_local_seo_quantity', [ctrl.localSeo.quantity])
+                                                                             : tr('hosting_dashboard_local_seo_activating')
+                                                                           : tr('hosting_dashboard_local_seo_inactive')"></span>
                                             </div>
                                             <div class="mb-auto ml-auto">
-                                                <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
-                                                        data-toggle="dropdown">
+                                                <oui-button data-ng-if="ctrl.localSeo.active && ctrl.localSeo.quantity > 0"
+                                                            data-on-click="ctrlHostingTabs.setSelectedTab('LOCAL_SEO')">
+                                                    <span data-i18n-static="common_manage"></span>
+                                                </oui-button>
+                                                <button class="oui-button oui-button_dropdown mb-0"
+                                                        type="button"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false"
+                                                        data-toggle="dropdown"
+                                                        data-ng-if="ctrl.localSeo.quantity === 0">
                                                     <span data-i18n-static="common_actions"></span>
                                                     <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                                                 </button>
-                                                <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
+                                                <ul class="dropdown-menu dropdown-menu-right m-0 p-0"
+                                                    data-ng-if="ctrl.localSeo.quantity === 0">
                                                     <li>
                                                         <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
                                                         <button class="btn btn-link" type="button" name="orderLocalSeo"
