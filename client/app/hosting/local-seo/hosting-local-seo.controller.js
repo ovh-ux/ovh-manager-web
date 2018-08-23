@@ -86,6 +86,10 @@ angular.module('App').controller(
         return;
       }
 
+      /*
+        Opening the window first then setting the location prevents browsers
+        from blocking it as a popup.
+      */
       const win = this.$window.open('', '_blank');
       this.HostingLocalSeo.login(this.productId, location.accountId)
         .then((token) => {
