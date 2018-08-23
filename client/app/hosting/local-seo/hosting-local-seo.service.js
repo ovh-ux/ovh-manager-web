@@ -1,9 +1,11 @@
 angular
   .module('services')
   .service('HostingLocalSeo', class HostingLocalSeo {
-    constructor($rootScope, $q, Hosting, OvhHttp) {
+    constructor($rootScope, $q, $window, User, Hosting, OvhHttp) {
       this.$rootScope = $rootScope;
       this.$q = $q;
+      this.$window = $window;
+      this.User = User;
       this.Hosting = Hosting;
       this.OvhHttp = OvhHttp;
     }
@@ -42,5 +44,21 @@ angular
       return this.OvhHttp.delete(`/hosting/web/${serviceName}/localSeo/location/${locationId}`, {
         rootPath: 'apiv6',
       });
+    }
+
+    goToLocalSeoOrder(serviceName) {
+      const win = this.$window.open('', '_blank');
+      this.User.getUrlOfEndsWithSubsidiary('localseo_order_options_service')
+        .then((url) => {
+          win.location = url.replace('{serviceName}', serviceName);
+        });
+    }
+
+    goToVisibilityChecker() {
+      const win = this.$window.open('', '_blank');
+      this.User.getUrlOfEndsWithSubsidiary('localseo_visibility_checker')
+        .then((url) => {
+          win.location = url;
+        });
     }
   });

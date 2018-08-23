@@ -19,7 +19,9 @@ angular.module('App').controller(
     }
 
     $onInit() {
-      this.loaders = {
+      this.serviceName = this.$stateParams.productId;
+
+      this.loading = {
         localSeo: true,
       };
 
@@ -27,9 +29,11 @@ angular.module('App').controller(
         active: false,
         quantity: 0,
       };
-      this.initLocalSeo(this.$scope.hosting.serviceName).finally(() => {
-        this.loaders.localSeo = false;
-      });
+
+      this.initLocalSeo(this.serviceName)
+        .finally(() => {
+          this.loading.localSeo = false;
+        });
 
       this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
       return this.retrievingSSLCertificate();
@@ -37,7 +41,12 @@ angular.module('App').controller(
 
     initLocalSeo(serviceName) {
       return this.HostingLocalSeo.getAccounts(serviceName)
-        .then(accountIds => this.HostingLocalSeo.getAccount(serviceName, accountIds[0]))
+        .then((accountIds) => {
+          if (!accountIds || accountIds.length <= 0) {
+            throw new Error('No LocalSEO Accounts');
+          }
+          return this.HostingLocalSeo.getAccount(serviceName, accountIds[0]);
+        })
         .then((account) => {
           this.localSeo.active = account.status === 'created';
         })
@@ -51,7 +60,7 @@ angular.module('App').controller(
       this.isRetrievingSSLCertificate = true;
 
       return this.hostingSSLCertificate
-        .retrievingCertificate(this.$stateParams.productId)
+        .retrievingCertificate(this.serviceName)
         .then((certificate) => {
           this.sslCertificate = certificate;
         })
