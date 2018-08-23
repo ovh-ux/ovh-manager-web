@@ -7,6 +7,7 @@ angular.module('App').controller(
       Alerter,
       hostingSSLCertificate,
       translator,
+      HostingRuntimes,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -14,10 +15,24 @@ angular.module('App').controller(
       this.Alerter = Alerter;
       this.hostingSSLCertificate = hostingSSLCertificate;
       this.translator = translator;
+      this.HostingRuntimes = HostingRuntimes;
     }
 
     $onInit() {
       this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
+
+      this.loading = {
+        defaultRuntime: true,
+      };
+
+      this.defaultRuntime = null;
+      this.HostingRuntimes.getDefault(this.$stateParams.productId)
+        .then((runtime) => {
+          this.defaultRuntime = runtime;
+        })
+        .finally(() => {
+          this.loading.defaultRuntime = false;
+        });
 
       return this.retrievingSSLCertificate();
     }
