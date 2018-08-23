@@ -86,9 +86,10 @@ angular.module('App').controller(
         return;
       }
 
+      const win = this.$window.open('', '_blank');
       this.HostingLocalSeo.login(this.productId, location.accountId)
         .then((token) => {
-          this.$window.open(`https://localseo.ovh.net/?access_token=${token}`, '_blank');
+          win.location = `https://localseo.ovh.net/?access_token=${token}`;
         });
     }
   },
