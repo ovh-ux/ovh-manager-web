@@ -22,9 +22,9 @@
                                     <div class="oui-tile__definition">
                                         <strong class="d-block"
                                                 data-i18n-static="hosting_dashboard_service_state"></strong>
-                                        <span class="label" data-ng-class="getStateBadgeClass()"
+                                        <span class="oui-status" data-ng-class="getStateBadgeClass()"
                                               data-ng-bind="tr('hosting_dashboard_service_state_' + hosting.serviceState)"></span>
-                                        <span class="label label-danger"
+                                        <span class="oui-status oui-status_error"
                                               data-i18n-static="hosting_dashboard_service_state_DELETE"
                                               data-ng-if="hosting.serviceInfos.renew.deleteAtExpiration"></span>
                                         <div class="mt-2" data-ng-if="guideHostingState">
