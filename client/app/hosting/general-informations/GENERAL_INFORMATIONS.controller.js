@@ -19,25 +19,29 @@ angular.module('App').controller(
     }
 
     $onInit() {
-      this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
+      this.loaders = {
+        localSeo: true,
+      };
 
       this.localSeo = {
         active: false,
         quantity: 0,
       };
-      this.initLocalSeo(this.$scope.hosting.serviceName);
+      this.initLocalSeo(this.$scope.hosting.serviceName).finally(() => {
+        this.loaders.localSeo = false;
+      });
 
+      this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
       return this.retrievingSSLCertificate();
     }
 
     initLocalSeo(serviceName) {
-      this.HostingLocalSeo.getAccounts(serviceName)
+      return this.HostingLocalSeo.getAccounts(serviceName)
         .then(accountIds => this.HostingLocalSeo.getAccount(serviceName, accountIds[0]))
         .then((account) => {
           this.localSeo.active = account.status === 'created';
-        });
-
-      this.HostingLocalSeo.getLocations(serviceName)
+        })
+        .then(() => this.HostingLocalSeo.getLocations(serviceName))
         .then((locationIds) => {
           this.localSeo.quantity = locationIds.length;
         });

@@ -368,13 +368,15 @@
                                             <div>
                                                 <strong class="d-block"
                                                         data-i18n-static="hosting_dashboard_local_seo"></strong>
-                                                <span data-ng-bind-html="ctrl.localSeo.quantity > 0 ?
+                                                <span data-ng-if="!ctrl.loaders.localSeo"
+                                                      data-ng-bind-html="ctrl.localSeo.quantity > 0 ?
                                                                            ctrl.localSeo.active ?
                                                                              tr('hosting_dashboard_local_seo_quantity', [ctrl.localSeo.quantity])
                                                                              : tr('hosting_dashboard_local_seo_activating')
                                                                            : tr('hosting_dashboard_local_seo_inactive')"></span>
+                                                <oui-spinner data-ng-if="ctrl.loaders.localSeo" data-size="s"></oui-spinner>
                                             </div>
-                                            <div class="mb-auto ml-auto">
+                                            <div class="mb-auto ml-auto" data-ng-if="!ctrl.loaders.localSeo">
                                                 <oui-button data-ng-if="ctrl.localSeo.active && ctrl.localSeo.quantity > 0"
                                                             data-on-click="ctrlHostingTabs.setSelectedTab('LOCAL_SEO')">
                                                     <span data-i18n-static="common_manage"></span>
