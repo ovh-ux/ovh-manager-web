@@ -442,11 +442,11 @@ angular
       $scope.getStateBadgeClass = () => {
         switch (_.get($scope.hosting, 'serviceState')) {
           case 'ACTIVE':
-            return 'label-success';
+            return 'oui-status_success';
           case 'MAINTENANCE':
-            return 'label-warning';
+            return 'oui-status_warning';
           case 'BLOQUED':
-            return 'label-important';
+            return 'oui-status_error';
           default:
             return null;
         }
