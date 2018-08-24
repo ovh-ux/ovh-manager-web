@@ -55,6 +55,16 @@ angular.module('services').service(
     }
 
     /**
+     * Get default runtime
+     * @param serviceName
+     */
+    getDefault(serviceName) {
+      return this.list(serviceName)
+        .then(runtimeIds => this.$q.all(_(runtimeIds).map(runtimeId => this.get(serviceName, runtimeId)).value()))
+        .then(runtimes => _(runtimes).filter(runtime => runtime.isDefault).first());
+    }
+
+    /**
      * Get runtime attached domains
      * @param serviceName
      * @param id
