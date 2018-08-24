@@ -29,11 +29,11 @@
                 <dl class="dl-horizontal dl-lg mt-5">
                     <dt data-i18n-static="hosting_tab_AUTOMATED_EMAILS_status"></dt>
                     <dd>
-                        <span class="label mr-2"
+                        <span class="oui-status"
                               data-ng-bind="tr('hosting_tab_AUTOMATED_EMAILS_status_' + ctrl.automatedEmails.state)"
                               data-ng-class="{
-                                'label-success': ctrl.automatedEmails.state === 'ok' || ctrl.automatedEmails.state === 'force',
-                                'label-danger': ctrl.automatedEmails.state !== 'ok' && ctrl.automatedEmails.state !== 'force'}">
+                                'oui-status_success': ctrl.automatedEmails.state === 'ok' || ctrl.automatedEmails.state === 'force',
+                                'oui-status_error': ctrl.automatedEmails.state !== 'ok' && ctrl.automatedEmails.state !== 'force'}">
                         </span>
                         <oui-spinner data-size="s"
                                     data-ng-if="ctrl.isPurging"></oui-spinner>
