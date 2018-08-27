@@ -1,28 +1,29 @@
-<div class="container-fluid px-0" data-ng-controller="HostingTabLocalSeoCtrl as ctrl">
+<div class="container-fluid px-0" data-ng-controller="HostingTabLocalSeoCtrl as $ctrl">
 
-    <div class="text-center" data-ng-if="ctrl.loading.accounts">
+    <div class="text-center" data-ng-if="$ctrl.loading.accounts">
         <oui-loader size="l" inline="true"></oui-loader>
     </div>
 
-    <div class="row" data-ng-show="!ctrl.loading.accounts">
+    <div class="row" data-ng-if="!$ctrl.loading.accounts">
         <div class="col-md-9">
             <div data-ovh-alert="{{alerts.main}}"></div>
 
             <h3 data-i18n-static="hosting_tab_LOCAL_SEO"></h3>
             <p>
-                {{::i18n.hosting_tab_LOCAL_SEO_description}}
-                <a href="#" target="_blank">
+                <span data-i18n-static="hosting_tab_LOCAL_SEO_description"></span>
+                <a href="#" target="_blank" rel="noopener">
                     <span data-i18n-static="hosting_dashboard_local_seo_visibility_check"></span>
                     <span class="fa fa-external-link" aria-label="{{ tr('core_new_window') }}"></span>
                 </a>
             </p>
 
-            <button class="oui-button oui-button_primary oui-button_large-height mb-5"
-                    data-ng-click="ctrl.HostingLocalSeo.goToLocalSeoOrder(hosting.serviceName)">
+            <oui-button class="mb-5"
+                        data-variant="primary"
+                        data-on-click="$ctrl.HostingLocalSeo.goToLocalSeoOrder(hosting.serviceName)">
                 <span data-i18n-static="hosting_dashboard_local_seo_order"></span>
-            </button>
+            </oui-button>
 
-            <div data-ng-if="ctrl.hasAccounts()">
+            <div data-ng-if="$ctrl.hasAccounts()">
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -33,28 +34,28 @@
                                 <th scope="col" data-i18n-static="hosting_tab_LOCAL_SEO_table_header_status"></th>
                                 <th class="min-width text-right" scope="col">
                                     <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
-                                            data-ng-click="ctrl.refreshLocations()">
+                                            data-ng-click="$ctrl.refreshLocations()">
                                         <span class="fa fa-refresh" aria-hidden="true"></span>
                                     </button>
                                 </th>
                             </tr>
                         </thead>
 
-                        <tbody data-ng-if="ctrl.loading.locations">
+                        <tbody data-ng-if="$ctrl.loading.locations">
                             <tr>
                                 <td class="loader text-center" colspan="4"></td>
                             </tr>
                         </tbody>
 
-                        <tbody data-ng-if="!ctrl.loading.locations && !ctrl.hasLocations()">
+                        <tbody data-ng-if="!$ctrl.loading.locations && !$ctrl.hasLocations()">
                             <tr>
                                 <td class="text-center" colspan="4"
                                     data-i18n-static="hosting_tab_LOCAL_SEO_table_empty"></td>
                             </tr>
                         </tbody>
 
-                        <tbody data-ng-if="!ctrl.loading.locations && ctrl.hasLocations()">
-                            <tr data-ng-repeat="location in ctrl.locationDetails track by location.id">
+                        <tbody data-ng-if="!$ctrl.loading.locations && $ctrl.hasLocations()">
+                            <tr data-ng-repeat="location in $ctrl.locationDetails track by location.id">
                                 <td>
                                     {{location.name}}
                                     <span class="label label-info"
@@ -96,18 +97,18 @@
             </div>
 
             <div class="clearfix"
-                 data-ng-if="ctrl.hasLocations()">
+                 data-ng-if="$ctrl.hasLocations()">
                 <div data-pagination-front
-                     data-items="ctrl.locations"
-                     data-paginated-items="ctrl.locationDetails"
+                     data-items="$ctrl.locations"
+                     data-paginated-items="$ctrl.locationDetails"
                      data-current-page="currentPage"
                      data-nb-pages="nbPages"
                      data-items-per-page="itemsPerPage"
-                     data-transform-item="ctrl.transformItem(item)"
-                     data-on-transform-item-done="ctrl.transformItemDone(items)"
+                     data-transform-item="$ctrl.transformItem(item)"
+                     data-on-transform-item-done="$ctrl.transformItemDone(items)"
                      data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
                      data-item-per-page-placeholder="{{tr('pagination_display')}}"
-                     data-on-page-change="ctrl.loading.locations = true">
+                     data-on-page-change="$ctrl.loading.locations = true">
                 </div>
             </div>
         </div>

@@ -26,29 +26,28 @@ angular.module('App').controller(
       };
 
       this.localSeo = {
-        active: false,
+        isActive: false,
         quantity: 0,
       };
 
-      this.initLocalSeo(this.serviceName)
+      this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
+      return this.retrievingSSLCertificate()
+        .then(() => this.initializeLocalSeo(this.serviceName))
         .finally(() => {
           this.loading.localSeo = false;
         });
-
-      this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
-      return this.retrievingSSLCertificate();
     }
 
-    initLocalSeo(serviceName) {
+    initializeLocalSeo(serviceName) {
       return this.HostingLocalSeo.getAccounts(serviceName)
         .then((accountIds) => {
           if (!accountIds || accountIds.length <= 0) {
             throw new Error('No LocalSEO Accounts');
           }
-          return this.HostingLocalSeo.getAccount(serviceName, accountIds[0]);
+          return this.HostingLocalSeo.getAccount(serviceName, _.first(accountIds));
         })
         .then((account) => {
-          this.localSeo.active = account.status === 'created';
+          this.localSeo.isActive = account.status === 'created';
         })
         .then(() => this.HostingLocalSeo.getLocations(serviceName))
         .then((locationIds) => {

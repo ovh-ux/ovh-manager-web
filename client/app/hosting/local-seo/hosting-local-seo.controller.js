@@ -1,10 +1,9 @@
 angular.module('App').controller(
   'HostingTabLocalSeoCtrl',
   class HostingTabLocalSeoCtrl {
-    constructor($scope, $stateParams, $q, $window, HostingLocalSeo) {
-      this.$scope = $scope;
-      this.$stateParams = $stateParams;
+    constructor($q, $stateParams, $window, HostingLocalSeo) {
       this.$q = $q;
+      this.$stateParams = $stateParams;
       this.$window = $window;
       this.HostingLocalSeo = HostingLocalSeo;
     }
@@ -33,6 +32,7 @@ angular.module('App').controller(
               this.locations = locations;
             });
           }
+          return null;
         })
         .finally(() => {
           this.loading.accounts = false;
@@ -61,7 +61,8 @@ angular.module('App').controller(
     transformItem(locationId) {
       this.loading.locations = true;
       return this.HostingLocalSeo.getLocation(this.productId, locationId)
-        .then((location) => {
+        .then((result) => {
+          const location = angular.copy(result);
           const accountId = _.get(location, 'accountId');
           if (accountId) {
             const account = _.find(this.accounts, { id: accountId });

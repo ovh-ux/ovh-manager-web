@@ -1,13 +1,10 @@
 angular
   .module('services')
   .service('HostingLocalSeo', class HostingLocalSeo {
-    constructor($rootScope, $q, $window, User, Hosting, OvhHttp) {
-      this.$rootScope = $rootScope;
-      this.$q = $q;
+    constructor($window, OvhHttp, User) {
       this.$window = $window;
-      this.User = User;
-      this.Hosting = Hosting;
       this.OvhHttp = OvhHttp;
+      this.User = User;
     }
 
     getAccounts(serviceName) {
@@ -48,7 +45,8 @@ angular
 
     goToLocalSeoOrder(serviceName) {
       const win = this.$window.open('', '_blank');
-      this.User.getUrlOfEndsWithSubsidiary('localseo_order_options_service')
+      win.opener = null;
+      return this.User.getUrlOfEndsWithSubsidiary('localseo_order_options_service')
         .then((url) => {
           win.location = url.replace('{serviceName}', serviceName);
         });
@@ -56,7 +54,8 @@ angular
 
     goToVisibilityChecker() {
       const win = this.$window.open('', '_blank');
-      this.User.getUrlOfEndsWithSubsidiary('localseo_visibility_checker')
+      win.opener = null;
+      return this.User.getUrlOfEndsWithSubsidiary('localseo_visibility_checker')
         .then((url) => {
           win.location = url;
         });
