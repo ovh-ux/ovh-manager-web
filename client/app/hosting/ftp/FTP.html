@@ -295,7 +295,7 @@
                                     <th scope="row" data-ng-bind="element.ssh.user"></th>
                                     <td data-ng-bind="element.home"></td>
                                     <td>
-                                        <span class="label label-danger"
+                                        <span class="oui-status oui-status_error"
                                               data-ng-bind="tr('hosting_tab_FTP_multiftp_table_state_' + element.state) || element.state"
                                               data-ng-if="element.state === 'off'"></span>
                                         <a data-ng-href="ftp://{{element.ftp.user}}@{{element.ftp.url}}:{{element.ftp.port}}/" class="d-block word-break" target="_blank"
@@ -305,7 +305,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <span class="label" data-ng-class="{'label-success': element.sshState === 'sftponly', 'label-danger': element.sshState === 'none'}"
+                                        <span class="oui-status" data-ng-class="{'oui-status_success': element.sshState === 'sftponly', 'oui-status_error': element.sshState === 'none'}"
                                               data-ng-bind="tr('hosting_tab_FTP_multiftp_table_ssh_state_' + element.sshState) || element.sshState"
                                               data-ng-if="element.sshState !== 'active'"></span>
                                         <a data-ng-href="ssh://{{element.ssh.user}}@{{element.ssh.url}}:{{element.ssh.port}}/" class="d-block word-break" target="_blank"
