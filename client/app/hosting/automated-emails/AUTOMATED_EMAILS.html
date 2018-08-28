@@ -42,10 +42,10 @@
                     <dd>
                         <span class="d-block word-break"
                               data-ng-bind="ctrl.automatedEmails.email"></span>
-                        <button class="btn btn-default btn-xs" type="button"
-                                data-i18n-static="hosting_tab_AUTOMATED_EMAILS_report_email_change"
-                                data-ng-click="setAction('automated-emails/error-report/hosting-automated-emails-error-report', {automatedEmails: ctrl.automatedEmails})">
-                        </button>
+                        <oui-button data-on-click="setAction('automated-emails/error-report/hosting-automated-emails-error-report', {automatedEmails: ctrl.automatedEmails})"
+                                    data-variant="secondary">
+                                    <span data-i18n-static="hosting_tab_AUTOMATED_EMAILS_report_email_change"></span>
+                        </oui-button>
                     </dd>
                     <dt data-i18n-static="hosting_tab_AUTOMATED_EMAILS_total_sent"></dt>
                     <dd data-ng-bind="ctrl.automatedEmails.sent"></dd>
