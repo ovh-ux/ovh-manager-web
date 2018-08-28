@@ -86,13 +86,13 @@
                                     </div>
                                 </td>
                                 <td class="text-center" data-ng-if="!ctrlDomainDns.editMode">
-                                    <span class="label label-success"
+                                    <span class="oui-status oui-status_success"
                                           data-i18n-static="domain_tab_DNS_state_activated"
                                           data-ng-if="dnsItem.isUsed && !dnsItem.toDelete"></span>
-                                    <span class="label label-info"
+                                    <span class="oui-status oui-status_info"
                                           data-i18n-static="domain_tab_DNS_state_adding"
                                           data-ng-if="!dnsItem.isUsed && !dnsItem.toDelete"></span>
-                                    <span class="label label-danger"
+                                    <span class="oui-status oui-status_error"
                                           data-i18n-static="domain_tab_DNS_state_deleting"
                                           data-ng-if="dnsItem.toDelete"></span>
                                 </td>
