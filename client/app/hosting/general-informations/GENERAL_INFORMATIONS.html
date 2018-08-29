@@ -191,13 +191,13 @@
                                                  data-ng-if="!ctrl.isRetrievingSSLCertificate && (ctrl.canOrderSSLCertificate() || ctrl.canRegenerateSSLCertificate() || ctrl.canDeleteSSLCertificate())">
                                                 <oui-action-menu data-compact data-align="end">
                                                     <oui-action-menu-item data-ng-if="ctrl.canOrderSSLCertificate()"
-                                                        data-text="{{ tr('hosting_dashboard_service_order_ssl') }}"
+                                                        data-text="{{:: tr('hosting_dashboard_service_order_ssl') }}"
                                                         data-on-click="setAction('ssl/order/hosting-order-ssl')"></oui-action-menu-item>
                                                     <oui-action-menu-item data-ng-if="ctrl.canRegenerateSSLCertificate()"
-                                                        data-text="{{ tr('hosting_ssl_regenerate_title_button') }}"
+                                                        data-text="{{:: tr('hosting_ssl_regenerate_title_button') }}"
                                                         data-on-click="setAction('ssl/regenerate/hosting-ssl-regenerate')"></oui-action-menu-item>
                                                     <oui-action-menu-item data-ng-if="ctrl.canRegenerateSSLCertificate()"
-                                                        data-text="{{ tr('hosting_dashboard_service_order_ssl_delete') }}"
+                                                        data-text="{{:: tr('hosting_dashboard_service_order_ssl_delete') }}"
                                                         data-on-click="setAction('ssl/delete/hosting-ssl-delete', ctrl.sslCertificate)"></oui-action-menu-item>
                                                 </oui-action-menu>
                                             </div>
@@ -229,13 +229,13 @@
                                                  data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M' || hosting.hasCdn && flushCdnState === 'ok' || hosting.hasCdn">
                                                 <oui-action-menu data-compact data-align="end">
                                                     <oui-action-menu-item data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M'"
-                                                        data-text="{{ tr('hosting_dashboard_service_order_cdn') }}"
+                                                        data-text="{{:: tr('hosting_dashboard_service_order_cdn') }}"
                                                         data-on-click="setAction('cdn/order/hosting-cdn-order', hostingProxy)"></oui-action-menu-item>
                                                     <oui-action-menu-item data-ng-if="hosting.hasCdn && flushCdnState === 'ok'"
-                                                        data-text="{{ tr('hosting_dashboard_service_flush_cdn') }}"
+                                                        data-text="{{:: tr('hosting_dashboard_service_flush_cdn') }}"
                                                         data-on-click="setAction('cdn/flush/hosting-cdn-flush')"></oui-action-menu-item>
                                                     <oui-action-menu-item data-ng-if="hosting.hasCdn"
-                                                        data-text="{{ tr('hosting_dashboard_service_terminate_cdn') }}"
+                                                        data-text="{{:: tr('hosting_dashboard_service_terminate_cdn') }}"
                                                         data-on-click="setAction('cdn/terminate/hosting-cdn-terminate')"></oui-action-menu-item>
                                                 </oui-action-menu>
                                             </div>
@@ -254,11 +254,11 @@
                                                          data-pbec-max-elements="hosting.sqlPriveInfo.nbDataBaseInclude"
                                                          data-pbec-upper-limit="cloudWebUnlimitedQuantity"></div>
                                                 </div>
-                                                <oui-action-menu data-text="{{ tr('hosting_dashboard_service_privatesql_more') }}" data-ng-if="privateDatabasesLinked.length > 0">
+                                                <oui-action-menu data-text="{{:: tr('hosting_dashboard_service_privatesql_more') }}" data-ng-if="privateDatabasesLinked.length > 0">
                                                     <div data-ng-repeat="privateDb in privateDatabasesLinked track by privateDb.name">
-                                                        <oui-action-menu-item data-text="{{privateDb.name}}" data-ng-if="!privateDb.isAdmin" data-disabled></oui-action-menu-item>
+                                                        <oui-action-menu-item data-text="{{::privateDb.name}}" data-ng-if="!privateDb.isAdmin" data-disabled></oui-action-menu-item>
                                                         <oui-action-menu-item data-ng-if="privateDb.isAdmin"
-                                                            data-text="{{privateDb.name}}"
+                                                            data-text="{{::privateDb.name}}"
                                                             data-href="#/configuration/private_database/{{ privateDb.name }}">
                                                         </oui-action-menu-item>
                                                     </div>
@@ -267,15 +267,15 @@
                                             <div class="mb-auto ml-auto">
                                                 <oui-action-menu data-compact data-align="end">
                                                     <oui-action-menu-item data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0 && hosting.sqlPriveInfo.nbDataBaseActive < hosting.sqlPriveInfo.nbDataBaseInclude && sqlPriveState !== 'doing'"
-                                                        data-text="{{ tr('hosting_dashboard_service_privatesql_active') }}"
+                                                        data-text="{{:: tr('hosting_dashboard_service_privatesql_active') }}"
                                                         data-ng-disabled="sqlPriveState === 'check' || sqlPriveState === 'doing'"
                                                         data-on-click="setAction('database/private-activation/database-private-activation', hosting)"></oui-action-menu-item>
                                                     <oui-action-menu-item data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0 && hosting.sqlPriveInfo.nbDataBaseActive < hosting.sqlPriveInfo.nbDataBaseInclude && sqlPriveState === 'doing'"
-                                                        data-text="{{ tr('hosting_dashboard_service_privatesql_active_doing') }}"
+                                                        data-text="{{:: tr('hosting_dashboard_service_privatesql_active_doing') }}"
                                                         data-ng-disabled="sqlPriveState === 'check' || sqlPriveState === 'doing'"
                                                         data-on-click="setAction('database/private-activation/database-private-activation', hosting)"></oui-action-menu-item>
                                                     <oui-action-menu-item
-                                                        data-text="{{ tr('hosting_dashboard_service_privatesql_order') }}"
+                                                        data-text="{{:: tr('hosting_dashboard_service_privatesql_order') }}"
                                                         data-ui-sref="app.sql-order({orderType: 'private', currentHosting: hosting.serviceName})">
                                                     </oui-action-menu-item>
                                                 </oui-action-menu>
@@ -318,7 +318,7 @@
                                             </div>
                                             <div class="mb-auto ml-auto">
                                                 <oui-action-menu data-compact data-align="end">
-                                                    <oui-action-menu-item data-text="{{ tr('common_configure') }}"
+                                                    <oui-action-menu-item data-text="{{:: tr('common_configure') }}"
                                                         data-on-click="ctrlHostingTabs.setSelectedTab('RUNTIMES')"></oui-action-menu-item>
                                                 </oui-action-menu>
                                             </div>
