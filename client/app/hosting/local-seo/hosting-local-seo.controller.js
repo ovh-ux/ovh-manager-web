@@ -9,33 +9,22 @@ angular.module('App').controller(
     }
 
     $onInit() {
+      this.datagridId = 'localSeoDatagrid';
       this.loading = {
-        accounts: true,
         locations: false,
       };
       this.productId = this.$stateParams.productId;
-
       this.accounts = null;
-      this.locations = null;
-      this.locationDetails = null;
-
-      this.loadAccountsAndLocations();
     }
 
-    loadAccountsAndLocations() {
-      this.loading.accounts = true;
+    refresh() {
+      return this.loadAccounts().then(() => this.loadLocations());
+    }
+
+    loadAccounts() {
       return this.getAccounts()
         .then((accounts) => {
           this.accounts = accounts;
-          if (!_.isEmpty(accounts)) {
-            return this.getLocations().then((locations) => {
-              this.locations = locations;
-            });
-          }
-          return null;
-        })
-        .finally(() => {
-          this.loading.accounts = false;
         });
     }
 
@@ -46,8 +35,26 @@ angular.module('App').controller(
         ));
     }
 
+    loadLocations() {
+      this.loading.locations = true;
+      return this.$q.when().then(() => {
+        if (!_.isEmpty(this.accounts)) {
+          return this.getLocations();
+        }
+        return { data: [], meta: { totalCount: 0 } };
+      }).finally(() => {
+        this.loading.locations = false;
+      });
+    }
+
     getLocations() {
-      return this.HostingLocalSeo.getLocations(this.productId);
+      return this.HostingLocalSeo.getLocations(this.productId)
+        .then(locationIds => ({
+          data: _.map(locationIds, id => ({ id })),
+          meta: {
+            totalCount: locationIds.length,
+          },
+        }));
     }
 
     hasAccounts() {
@@ -58,9 +65,9 @@ angular.module('App').controller(
       return !_.isEmpty(this.locations);
     }
 
-    transformItem(locationId) {
+    transformItem(row) {
       this.loading.locations = true;
-      return this.HostingLocalSeo.getLocation(this.productId, locationId)
+      return this.HostingLocalSeo.getLocation(this.productId, row.id)
         .then((result) => {
           const location = angular.copy(result);
           const accountId = _.get(location, 'accountId');
@@ -72,14 +79,6 @@ angular.module('App').controller(
           }
           return location;
         });
-    }
-
-    transformItemDone() {
-      this.loading.locations = false;
-    }
-
-    refreshLocations() {
-      this.loadAccountsAndLocations();
     }
 
     goToInterface(location) {

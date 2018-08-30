@@ -1,10 +1,6 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabLocalSeoCtrl as $ctrl">
 
-    <div class="text-center" data-ng-if="$ctrl.loading.accounts">
-        <oui-loader size="l" inline="true"></oui-loader>
-    </div>
-
-    <div class="row" data-ng-if="!$ctrl.loading.accounts">
+    <div class="row">
         <div class="col-md-9">
             <div data-ovh-alert="{{alerts.main}}"></div>
 
@@ -23,94 +19,52 @@
                 <span data-i18n-static="hosting_dashboard_local_seo_order"></span>
             </oui-button>
 
-            <div data-ng-if="$ctrl.hasAccounts()">
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col" data-i18n-static="hosting_tab_LOCAL_SEO_table_header_name"></th>
-                                <th scope="col" data-i18n-static="hosting_tab_LOCAL_SEO_table_header_address"></th>
-                                <th scope="col" data-i18n-static="hosting_tab_LOCAL_SEO_table_header_email"></th>
-                                <th scope="col" data-i18n-static="hosting_tab_LOCAL_SEO_table_header_status"></th>
-                                <th class="min-width text-right" scope="col">
-                                    <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
-                                            data-ng-click="$ctrl.refreshLocations()">
-                                        <span class="fa fa-refresh" aria-hidden="true"></span>
-                                    </button>
-                                </th>
-                            </tr>
-                        </thead>
-
-                        <tbody data-ng-if="$ctrl.loading.locations">
-                            <tr>
-                                <td class="loader text-center" colspan="4"></td>
-                            </tr>
-                        </tbody>
-
-                        <tbody data-ng-if="!$ctrl.loading.locations && !$ctrl.hasLocations()">
-                            <tr>
-                                <td class="text-center" colspan="4"
-                                    data-i18n-static="hosting_tab_LOCAL_SEO_table_empty"></td>
-                            </tr>
-                        </tbody>
-
-                        <tbody data-ng-if="!$ctrl.loading.locations && $ctrl.hasLocations()">
-                            <tr data-ng-repeat="location in $ctrl.locationDetails track by location.id">
-                                <td>
-                                    {{location.name}}
-                                    <span class="label label-info"
-                                          data-ng-if="!location.name"
-                                          data-i18n-static="hosting_tab_LOCAL_SEO_table_value_undefined">
-                                    </span>
-                                </td>
-                                <td>
-                                    {{location.address}}
-                                    <span class="label label-info"
-                                          data-ng-if="!location.address"
-                                          data-i18n-static="hosting_tab_LOCAL_SEO_table_value_undefined">
-                                    </span>
-                                </td>
-                                <td data-ng-bind="location.account.email || '-'"></td>
-                                <td>
-                                    <span class="label"
-                                          data-ng-class="{'label-success': location.status === 'created',
-                                                          'label-warning': location.status === 'creating',
-                                                          'label-danger': location.status === 'deleting'}"
-                                          data-ng-bind="tr('hosting_tab_LOCAL_SEO_state_' + location.status)">
-                                    </span>
-                                </td>
-                                <td class="text-right">
-                                    <button class="btn btn-icon" type="button"
-                                            data-ng-if="location.status === 'created'"
-                                            data-linkedpopover="hosting/local-seo/hosting-local-seo.popover.html"
-                                            data-linkedpopover-placement="left"
-                                            data-linkedpopover-remote="true"
-                                            data-linkedpopover-single="true"
-                                            data-linkedpopover-title="{{i18n.common_actions}}">
-                                        <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="clearfix"
-                 data-ng-if="$ctrl.hasLocations()">
-                <div data-pagination-front
-                     data-items="$ctrl.locations"
-                     data-paginated-items="$ctrl.locationDetails"
-                     data-current-page="currentPage"
-                     data-nb-pages="nbPages"
-                     data-items-per-page="itemsPerPage"
-                     data-transform-item="$ctrl.transformItem(item)"
-                     data-on-transform-item-done="$ctrl.transformItemDone(items)"
-                     data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-                     data-item-per-page-placeholder="{{tr('pagination_display')}}"
-                     data-on-page-change="$ctrl.loading.locations = true">
-                </div>
-            </div>
+            <oui-datagrid id="{{ $ctrl.datagridId }}"
+                          data-rows-loader="$ctrl.refresh($config)"
+                          data-row-loader="$ctrl.transformItem($row)"
+                          data-empty-text="{{::tr('hosting_tab_LOCAL_SEO_table_empty')}}">
+                <oui-column data-title="::tr('hosting_tab_LOCAL_SEO_table_header_name')"
+                            data-property="name">
+                    {{$row.name}}
+                    <span class="label label-info"
+                          data-ng-if="!$row.name"
+                          data-i18n-static="hosting_tab_LOCAL_SEO_table_value_undefined">
+                    </span>
+                </oui-column>
+                <oui-column data-title="::tr('hosting_tab_LOCAL_SEO_table_header_address')"
+                            data-property="address">
+                    {{$row.address}}
+                    <span class="label label-info"
+                            data-ng-if="!$row.address"
+                            data-i18n-static="hosting_tab_LOCAL_SEO_table_value_undefined">
+                    </span>
+                </oui-column>
+                <oui-column data-title="::tr('hosting_tab_LOCAL_SEO_table_header_email')"
+                            data-property="account.email">
+                    {{$row.account.email || '-'}}
+                </oui-column>
+                <oui-column data-title="::tr('hosting_tab_LOCAL_SEO_table_header_status')"
+                            data-property="status">
+                    <span class="label"
+                          data-ng-class="{'label-success': $row.status === 'created',
+                                          'label-warning': $row.status === 'creating',
+                                          'label-danger': $row.status === 'deleting'}"
+                          data-ng-bind="tr('hosting_tab_LOCAL_SEO_state_' + $row.status)">
+                    </span>
+                </oui-column>
+                <oui-action-menu data-align="end" data-compact>
+                    <oui-action-menu-item
+                        data-text="{{::tr('hosting_tab_LOCAL_SEO_access_interface')}}"
+                        data-disabled="$row.status !== 'created'"
+                        data-on-click="$ctrl.goToInterface($row)">
+                    </oui-action-menu-item>
+                    <oui-action-menu-item
+                        data-text="{{::tr('hosting_tab_LOCAL_SEO_delete')}}"
+                        data-disabled="$row.status !== 'created'"
+                        data-on-click="setAction('local-seo/delete/hosting-local-seo-delete', $row)">
+                    </oui-action-menu-item>
+                </oui-action-menu>
+            </oui-datagrid>
         </div>
     </div>
 </div>
