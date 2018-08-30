@@ -131,7 +131,7 @@ angular.module('App').controller(
     }
 
     static getUpdateOwnerUrl(domain) {
-      if (_.has(domain, 'whoisOwner.id')) {
+      if (_.isObject(domain.whoisOwner) && _.has(domain, 'whoisOwner.id')) {
         return `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
       }
       return '';
