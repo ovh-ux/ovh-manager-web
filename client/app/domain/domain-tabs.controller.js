@@ -1,11 +1,13 @@
 angular.module('App').controller(
   'DomainTabsCtrl',
   class DomainTabsCtrl {
-    constructor($scope, $q, $location, $stateParams, Domain, User) {
+    constructor($scope, $q, $location, $stateParams, $timeout, Alerter, Domain, User) {
       this.$scope = $scope;
       this.$q = $q;
       this.$location = $location;
       this.$stateParams = $stateParams;
+      this.$timeout = $timeout;
+      this.Alerter = Alerter;
       this.Domain = Domain;
       this.User = User;
     }
@@ -29,7 +31,7 @@ angular.module('App').controller(
         this.Domain.extensionsChangeOwnerByOrder,
         _.last(this.domain.name.split('.')),
       );
-      const updateOwnerUrl = this.constructor.getUpdateOwnerUrl(this.domain);
+      const updateOwnerUrl = this.getUpdateOwnerUrl(this.domain);
 
       this.tabMenu = {
         title: this.$scope.tr('navigation_more'),
@@ -130,10 +132,19 @@ angular.module('App').controller(
       this.$location.search('tab', this.selectedTab);
     }
 
-    static getUpdateOwnerUrl(domain) {
-      if (_.isObject(domain.whoisOwner) && _.has(domain, 'whoisOwner.id')) {
+    getUpdateOwnerUrl(domain) {
+      if (_.has(domain, 'name') && _.has(domain, 'whoisOwner.id')) {
         return `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
       }
+      this.$timeout(() => {
+        // Timeout is required so that the tabs get rendered before the error is shown
+        this.Alerter.error(
+          this.$scope.tr('domain_dashboard_whois_error', [
+            (!_.has(domain, 'name')) ? this.$scope.tr('domain_tab_REDIRECTION_add_step4_server_cname_error') : domain.whoisOwner,
+          ]),
+          this.$scope.alerts.tabs,
+        );
+      });
       return '';
     }
 
