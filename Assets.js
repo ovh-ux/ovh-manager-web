@@ -85,7 +85,6 @@ module.exports = {
         js: [
             "node_modules/moment/min/moment-with-locales.min.js",
             "node_modules/jquery/dist/jquery.min.js",
-
             "node_modules/@bower_components/jquery.ui/ui/core.js",
             "node_modules/@bower_components/jquery.ui/ui/widget.js",
             "node_modules/@bower_components/jquery.ui/ui/mouse.js",
@@ -93,7 +92,6 @@ module.exports = {
             "node_modules/@bower_components/jquery.ui/ui/droppable.js",
             "node_modules/@bower_components/jquery.ui/ui/resizable.js",
             "node_modules/@bower_components/lodash/lodash.min.js",
-
             "node_modules/angular/angular.min.js",
             "node_modules/angular-aria/angular-aria.min.js",
             "node_modules/@bower_components/angular-route/angular-route.min.js",
@@ -116,17 +114,14 @@ module.exports = {
             "node_modules/justgage/justgage.js",
             "node_modules/@ovh-ux/ovh-utils-angular/bin/ovh-utils-angular.min.js",
             "node_modules/@ovh-ux/ovh-utils-angular/lib/core.js",
-            // "src/js/app/libs/ng-upload.min.js",
             "node_modules/punycode/punycode.min.js",
             "node_modules/uri.js/src/URI.min.js",
             "node_modules/@bower_components/URIjs/src/URI.min.js",
             "node_modules/ipaddr.js/ipaddr.min.js",
-            "node_modules/filesize/lib/filesize.min.js",
+            "node_modules/filesize/lib/filesize.js",
             "node_modules/ovh-angular-pagination-front/dist/ovh-angular-pagination-front.min.js",
-
             "node_modules/@bower_components/angular-scroll-glue/src/scrollglue.js",
             "node_modules/ovh-angular-tail-logs/dist/ovh-angular-tail-logs.min.js",
-
             "node_modules/ovh-angular-proxy-request/dist/ovh-angular-proxy-request.min.js",
 
             // ???
@@ -145,7 +140,7 @@ module.exports = {
             "node_modules/ovh-angular-export-csv/dist/ovh-angular-export-csv.js",
             "node_modules/@bower_components/angular-vs-repeat/src/angular-vs-repeat.min.js",
 
-            // ???
+            // injected by CDS
             "node_modules/@bower_components/at-internet-smarttag-manager/dist/smarttag.js",
 
             "node_modules/ng-at-internet/dist/ng-at-internet.min.js",
@@ -160,7 +155,7 @@ module.exports = {
             "node_modules/raven-js/dist/raven.min.js",
             "node_modules/raven-js/dist/plugins/angular.min.js",
 
-            // ???
+            // injected by CDS
             "node_modules/@bower_components/ovh-ng-raven-config/dist/ovh-ng-raven-config.min.js",
 
             "node_modules/ovh-angular-sidebar-menu/dist/ovh-angular-sidebar-menu.min.js",
