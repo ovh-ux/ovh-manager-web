@@ -1,12 +1,11 @@
 angular.module('App').controller(
   'DomainTabsCtrl',
   class DomainTabsCtrl {
-    constructor($scope, $q, $location, $stateParams, $timeout, Alerter, Domain, User) {
+    constructor($scope, $q, $location, $stateParams, Alerter, Domain, User) {
       this.$scope = $scope;
       this.$q = $q;
       this.$location = $location;
       this.$stateParams = $stateParams;
-      this.$timeout = $timeout;
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.User = User;
