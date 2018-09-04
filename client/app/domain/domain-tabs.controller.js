@@ -61,9 +61,10 @@ angular.module('App').controller(
           },
           {
             label: this.$scope.tr('domain_configuration_update_owner'),
-            target: updateOwnerUrl,
-            type: 'LINK',
-            disabled: !updateOwnerUrl,
+            target: updateOwnerUrl.target,
+            fn: () => this.handleOwnerUrlError(updateOwnerUrl.error),
+            type: 'ACTION',
+            disabled: !updateOwnerUrl.target,
           },
           {
             type: 'SEPARATOR',
@@ -133,19 +134,21 @@ angular.module('App').controller(
     }
 
     getUpdateOwnerUrl(domain) {
+      const ownerUrlInfo = { target: '', error: '' };
       if (_.has(domain, 'name') && _.has(domain, 'whoisOwner.id')) {
-        return `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
+        ownerUrlInfo.target = `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
+      } else {
+        ownerUrlInfo.error = this.$scope.tr('domain_dashboard_whois_error', [
+          (!_.has(domain, 'name')) ? this.$scope.tr('domain_tab_REDIRECTION_add_step4_server_cname_error') : domain.whoisOwner,
+        ]);
       }
-      this.$timeout(() => {
-        // Timeout is required so that the tabs get rendered before the error is shown
-        this.Alerter.error(
-          this.$scope.tr('domain_dashboard_whois_error', [
-            (!_.has(domain, 'name')) ? this.$scope.tr('domain_tab_REDIRECTION_add_step4_server_cname_error') : domain.whoisOwner,
-          ]),
-          this.$scope.alerts.tabs,
-        );
-      });
-      return '';
+      return ownerUrlInfo;
+    }
+
+    handleOwnerUrlError(errMsg) {
+      if (errMsg) {
+        this.Alerter.error(errMsg, this.$scope.alerts.tabs);
+      }
     }
 
     static toKebabCase(str) {
