@@ -80,8 +80,8 @@ angular.module('App').controller(
     mlNameCheck(input) {
       input.$setValidity(
         'unique',
-        this.mailingLists.length === 0 ||
-          _.indexOf(this.mailingLists, this.model.mlName) === -1,
+        this.mailingLists.length === 0
+          || _.indexOf(this.mailingLists, this.model.mlName) === -1,
       );
     }
 
@@ -93,10 +93,9 @@ angular.module('App').controller(
     }
 
     selectReplyTo() {
-      this.model.replyTo =
-        this.replyToSelector === this.constants.REPLY_TO_EMAIL
-          ? ''
-          : this.replyToSelector;
+      this.model.replyTo = this.replyToSelector === this.constants.REPLY_TO_EMAIL
+        ? ''
+        : this.replyToSelector;
     }
 
     selectModerationMsg() {
@@ -147,17 +146,15 @@ angular.module('App').controller(
           subscribeByModerator: this.model.mlSubscribersModeration,
         },
       })
-        .then(() =>
-          this.Alerter.success(
-            this.$scope.tr('mailing_list_tab_modal_create_list_success'),
-            this.$scope.alerts.main,
-          ))
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('mailing_list_tab_modal_create_list_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .then(() => this.Alerter.success(
+          this.$scope.tr('mailing_list_tab_modal_create_list_success'),
+          this.$scope.alerts.main,
+        ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('mailing_list_tab_modal_create_list_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => this.$scope.resetAction());
     }
   },

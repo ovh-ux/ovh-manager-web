@@ -79,8 +79,7 @@ angular.module('services').service(
           database[elt] = database[elt].toUpperCase();
         });
         database.version = `_${_.snakeCase(database.version)}`;
-        database.quotaPercent =
-          (database.quotaUsed.value / database.quotaSize.value) * 100;
+        database.quotaPercent = (database.quotaUsed.value / database.quotaSize.value) * 100;
 
         return database;
       });
@@ -474,10 +473,9 @@ angular.module('services').service(
      */
     getTasks(serviceName, status, func) {
       return this.getTaskIds(serviceName, status, func).then((tasksId) => {
-        const promises = tasksId.map(id =>
-          this.OvhHttp.get(`/hosting/web/${serviceName}/tasks/${id}`, {
-            rootPath: 'apiv6',
-          }));
+        const promises = tasksId.map(id => this.OvhHttp.get(`/hosting/web/${serviceName}/tasks/${id}`, {
+          rootPath: 'apiv6',
+        }));
         return this.$q.all(promises);
       });
     }

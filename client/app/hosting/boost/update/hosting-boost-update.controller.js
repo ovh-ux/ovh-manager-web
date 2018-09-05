@@ -11,9 +11,8 @@ angular
         request: false,
       };
 
-      $scope.isStepValid = () =>
-        $scope.acceptCGV.value === true &&
-        angular.isObject($scope.models.boostOffer);
+      $scope.isStepValid = () => $scope.acceptCGV.value === true
+        && angular.isObject($scope.models.boostOffer);
 
       $scope.updateBoost = () => {
         $scope.loaders.request = true;

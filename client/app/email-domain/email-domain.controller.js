@@ -67,8 +67,7 @@ angular.module('App').controller(
             this.$scope.$broadcast('emails.canTerminate');
           }
         })
-        .catch(() =>
-          this.Alerter.error(this.$scope.tr('domain_dashboard_loading_error')))
+        .catch(() => this.Alerter.error(this.$scope.tr('domain_dashboard_loading_error')))
         .finally(() => {
           this.loading.init = false;
           this.loading.domainsInfos = false;

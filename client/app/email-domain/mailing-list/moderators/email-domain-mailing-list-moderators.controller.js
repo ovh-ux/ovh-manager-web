@@ -29,8 +29,7 @@ angular.module('App').controller(
       };
       this.search = { moderators: '' };
 
-      this.$scope.$on('hosting.tabs.mailingLists.moderators.refresh', () =>
-        this.refreshTableModerators());
+      this.$scope.$on('hosting.tabs.mailingLists.moderators.refresh', () => this.refreshTableModerators());
       this.$scope.$on(
         'mailingLists.moderators.poll.start',
         (pollObject, task) => {
@@ -114,8 +113,7 @@ angular.module('App').controller(
 
     applySelection(moderators) {
       _.forEach(moderators, (moderator) => {
-        moderator.selected = // eslint-disable-line no-param-reassign
-          _.indexOf(this.moderators.selected, moderator.email) !== -1;
+        _.set(moderator, 'selected', _.indexOf(this.moderators.selected, moderator.email) !== -1);
       });
     }
 
@@ -136,12 +134,11 @@ angular.module('App').controller(
         .then((data) => {
           this.moderators.ids = this.$filter('orderBy')(data);
         })
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('mailing_list_tab_modal_get_lists_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('mailing_list_tab_modal_get_lists_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           if (_.isEmpty(this.moderators.ids)) {
             this.loading.moderators = false;

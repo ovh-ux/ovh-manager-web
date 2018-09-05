@@ -17,6 +17,7 @@
                    data-ng-href="{{menuItem.type !== 'SELECT_PRODUCT' && menuItem.type !== 'SWITCH_TABS' && menuItem.disabled !== true ? menuItem.target : ''}}"
                    data-ng-if="menuItem.type !== 'SEPARATOR'">
                     <span class="{{menuItem.styles}}" data-ng-bind=":: menuItem.label"></span>
+                    <span class="fa fa-external-link" aria-hidden="true" data-ng-if="menuItem.type === 'EXTERNAL_LINK'"></span>
                     <br>
                     <small data-ng-bind="::menuItem.text" data-ng-if="menuItem.text"></small>
                 </a>

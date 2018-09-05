@@ -226,7 +226,7 @@ angular.module('App').controller(
     }
 
     getDurationsstart(data) {
-      const { hosting, startDbVersion } = this.model;
+      const { hosting, dbPack: startDbVersion } = this.model;
 
       return this.hostingOptionOrderService
         .getSqlPersoAllowedDurations(hosting, startDbVersion)
@@ -274,8 +274,7 @@ angular.module('App').controller(
     }
 
     getPricesstart(data, durations) {
-      const { hosting } = this.model;
-      const startDbVersion = this.model.dbPack;
+      const { hosting, dbPack: startDbVersion } = this.model;
 
       return this.$q
         .all(_.map(durations, duration => this.hostingOptionOrderService

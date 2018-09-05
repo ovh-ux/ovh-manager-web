@@ -69,7 +69,7 @@ angular.module('services').service(
           if (/^a$/.test(field)) {
             // Format: "a"
             return true;
-          } else if (/^a\/([0-9]+)$/.test(field)) {
+          } if (/^a\/([0-9]+)$/.test(field)) {
             // Format: "a/cidr"
             field = field.match(/^a\/([0-9]+)$/);
             if (field[1] < 1 || field[1] > 32) {
@@ -81,10 +81,10 @@ angular.module('services').service(
               // Format: "a:domain/cidr"
               field = field.split('/');
               if (
-                !_.isFinite(field[1]) ||
-                field[1] < 1 ||
-                field[1] > 32 ||
-                !this.Validator.isValidDomain(field[0], {
+                !_.isFinite(field[1])
+                || field[1] < 1
+                || field[1] > 32
+                || !this.Validator.isValidDomain(field[0], {
                   canBeginWithUnderscore: true,
                 })
               ) {
@@ -110,7 +110,7 @@ angular.module('services').service(
           if (/^mx$/.test(field)) {
             // Format: "mx"
             return true;
-          } else if (/^mx\/([0-9]+)$/.test(field)) {
+          } if (/^mx\/([0-9]+)$/.test(field)) {
             // Format: "mx/cidr"
             field = field.match(/^mx\/([0-9]+)$/);
             if (field[1] < 1 || field[1] > 32) {
@@ -122,10 +122,10 @@ angular.module('services').service(
               // Format: "mx:domain/cidr"
               field = field.split('/');
               if (
-                !_.isFinite(field[1]) ||
-                field[1] < 1 ||
-                field[1] > 32 ||
-                !this.Validator.isValidDomain(field[0], {
+                !_.isFinite(field[1])
+                || field[1] < 1
+                || field[1] > 32
+                || !this.Validator.isValidDomain(field[0], {
                   canBeginWithUnderscore: true,
                 })
               ) {
@@ -152,7 +152,7 @@ angular.module('services').service(
           if (/^ptr$/.test(field)) {
             // Format: "ptr"
             return true;
-          } else if (/^ptr:.+/.test(field)) {
+          } if (/^ptr:.+/.test(field)) {
             field = field.replace(/^(ptr:)/, '');
             if (
               !this.Validator.isValidDomain(field, {
@@ -178,10 +178,10 @@ angular.module('services').service(
               // Format: "ip4:ipv4/cidr"
               field = field.split('/');
               if (
-                !_.isFinite(field[1]) ||
-                field[1] < 1 ||
-                field[1] > 32 ||
-                !this.Validator.isValidIpv4(field[0])
+                !_.isFinite(field[1])
+                || field[1] < 1
+                || field[1] > 32
+                || !this.Validator.isValidIpv4(field[0])
               ) {
                 isValid = false;
               }
@@ -205,10 +205,10 @@ angular.module('services').service(
               // Format: "ip6:ipv6/cidr"
               field = field.split('/');
               if (
-                !_.isFinite(field[1]) ||
-                field[1] < 1 ||
-                field[1] > 128 ||
-                !this.Validator.isValidIpv6(field[0])
+                !_.isFinite(field[1])
+                || field[1] < 1
+                || field[1] > 128
+                || !this.Validator.isValidIpv6(field[0])
               ) {
                 isValid = false;
               }
@@ -244,14 +244,10 @@ angular.module('services').service(
 
           return isValid;
         },
-        isValidEXIST: field =>
-          this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('exists', field),
-        isValidINCLUDE: field =>
-          this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('include', field),
-        isValidREDIRECT: field =>
-          this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('redirect', field),
-        isValidEXP: field =>
-          this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('exp', field),
+        isValidEXIST: field => this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('exists', field),
+        isValidINCLUDE: field => this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('include', field),
+        isValidREDIRECT: field => this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('redirect', field),
+        isValidEXP: field => this.SPF.isValidEXISTSorINCLUDEorREDIRECTorEXP('exp', field),
       };
     }
 
@@ -313,7 +309,7 @@ angular.module('services').service(
       if (/\s+\.$/.test(value)) {
         // prevent spaces before dot
         return false;
-      } else if (/(.+)\.$/.test(value)) {
+      } if (/(.+)\.$/.test(value)) {
         return this.Validator.isValidDomain(value.match(/(.+)\.$/)[1]);
       }
       return this.Validator.isValidSubDomain(value);
@@ -327,7 +323,7 @@ angular.module('services').service(
     isValidReplaceNaptr(value) {
       if (value === '.') {
         return true;
-      } else if (this.regex.NAPTR_replace.test(value)) {
+      } if (this.regex.NAPTR_replace.test(value)) {
         return this.Validator.isValidDomain(
           value.match(this.regex.NAPTR_replace)[1],
           { canBeginWithUnderscore: true },
@@ -357,7 +353,7 @@ angular.module('services').service(
           if (/\s+\.$/.test(target)) {
             // prevent spaces before dot
             return false;
-          } else if (/(.+)\.$/.test(target)) {
+          } if (/(.+)\.$/.test(target)) {
             return this.Validator.isValidDomain(target.match(/(.+)\.$/)[1], {
               canBeginWithUnderscore: true,
             });
@@ -379,8 +375,8 @@ angular.module('services').service(
               const splittedVal = splitted[i].trim().split('=');
 
               if (
-                !this.regex[`${fieldType}_${splittedVal[0]}`] ||
-                !this.regex[`${fieldType}_${splittedVal[0]}`].test(splittedVal[1])
+                !this.regex[`${fieldType}_${splittedVal[0]}`]
+                || !this.regex[`${fieldType}_${splittedVal[0]}`].test(splittedVal[1])
               ) {
                 isValid = false;
                 break;
@@ -399,19 +395,19 @@ angular.module('services').service(
             });
 
             if (
-              splitted[1] < 0 ||
-              splitted[1] > 90 || // d1
-              (splitted[2] && (splitted[2] < 0 || splitted[2] > 59)) || // m1
-              (splitted[3] && (splitted[3] < 0 || splitted[3] > 59.999)) || // s1
-              splitted[5] < 0 ||
-              splitted[5] > 180 || // d2
-              (splitted[6] && (splitted[6] < 0 || splitted[6] > 59)) || // m2
-              (splitted[7] && (splitted[7] < 0 || splitted[7] > 59.999)) || // s2
-              splitted[9] < -100000 ||
-              splitted[9] > 42849672.95 || // alt
-              (splitted[10] && (splitted[10] < 0 || splitted[10] > 90000000)) || // size
-              (splitted[11] && (splitted[11] < 0 || splitted[11] > 90000000)) || // hp
-              (splitted[12] && (splitted[12] < 0 || splitted[12] > 90000000))
+              splitted[1] < 0
+              || splitted[1] > 90 // d1
+              || (splitted[2] && (splitted[2] < 0 || splitted[2] > 59)) // m1
+              || (splitted[3] && (splitted[3] < 0 || splitted[3] > 59.999)) // s1
+              || splitted[5] < 0
+              || splitted[5] > 180 // d2
+              || (splitted[6] && (splitted[6] < 0 || splitted[6] > 59)) // m2
+              || (splitted[7] && (splitted[7] < 0 || splitted[7] > 59.999)) // s2
+              || splitted[9] < -100000
+              || splitted[9] > 42849672.95 // alt
+              || (splitted[10] && (splitted[10] < 0 || splitted[10] > 90000000)) // size
+              || (splitted[11] && (splitted[11] < 0 || splitted[11] > 90000000)) // hp
+              || (splitted[12] && (splitted[12] < 0 || splitted[12] > 90000000))
             ) {
               // vp
               isValid = false;
@@ -445,10 +441,10 @@ angular.module('services').service(
 
             // order || pref || services
             if (
-              splitted[1] < 0 ||
-              splitted[1] > 65535 ||
-              (splitted[2] < 0 || splitted[2] > 65535) ||
-              !this.regex.NAPTR_service.test(splitted[4])
+              splitted[1] < 0
+              || splitted[1] > 65535
+              || (splitted[2] < 0 || splitted[2] > 65535)
+              || !this.regex.NAPTR_service.test(splitted[4])
             ) {
               isValid = false;
               break;
@@ -456,8 +452,8 @@ angular.module('services').service(
 
             // replace must be "."
             if (
-              splitted[5] &&
-              (!this.regex.NAPTR_regex.test(splitted[5]) || splitted[6] !== '.')
+              splitted[5]
+              && (!this.regex.NAPTR_regex.test(splitted[5]) || splitted[6] !== '.')
             ) {
               isValid = false;
               break;
@@ -512,8 +508,8 @@ angular.module('services').service(
                 const currentFieldType = fieldTypes[j];
 
                 if (
-                  !found &&
-                  this.regex.SPF_sender[currentFieldType].test(splitted[i])
+                  !found
+                  && this.regex.SPF_sender[currentFieldType].test(splitted[i])
                 ) {
                   found = true;
 
@@ -544,10 +540,10 @@ angular.module('services').service(
 
             // priority || weight || port
             if (
-              splitted[1] < 0 ||
-              splitted[1] > 65535 ||
-              (splitted[2] < 0 || splitted[2] > 65535) ||
-              (splitted[3] < 0 || splitted[3] > 65535)
+              splitted[1] < 0
+              || splitted[1] > 65535
+              || (splitted[2] < 0 || splitted[2] > 65535)
+              || (splitted[3] < 0 || splitted[3] > 65535)
             ) {
               isValid = false;
               break;
@@ -571,8 +567,8 @@ angular.module('services').service(
           if (splitted && splitted.length > 1) {
             // (SHA-1 : length 40) || (SHA-256 : length 64)
             if (
-              (+splitted[2] === 1 && !this.regex.SSHFP_fp1.test(splitted[3])) ||
-              (+splitted[2] === 2 && !this.regex.SSHFP_fp2.test(splitted[3]))
+              (+splitted[2] === 1 && !this.regex.SSHFP_fp1.test(splitted[3]))
+              || (+splitted[2] === 2 && !this.regex.SSHFP_fp2.test(splitted[3]))
             ) {
               isValid = false;
               break;
@@ -742,12 +738,12 @@ angular.module('services').service(
      * @returns {string}
      */
     static transformNAPTRTarget(target) {
-      let lastItem = target.replace ? /\.$/.test(target.replace) : null;
+      let lastItem = '.';
 
-      if (lastItem === null) {
-        lastItem = punycode.toASCII(target.replace)
-          ? `${punycode.toASCII(target.replace)}.`
-          : '.';
+      if (target.replace) {
+        lastItem = /\.$/.test(target.replace)
+          ? punycode.toASCII(target.replace)
+          : `${punycode.toASCII(target.replace)}.`;
       }
 
       return [
@@ -823,12 +819,12 @@ angular.module('services').service(
      * @returns {string}
      */
     static transformSRVTarget(target) {
-      let lastItem = target.target ? /\.$/.test(target.target) : null;
+      let lastItem = '.';
 
-      if (lastItem === null) {
-        lastItem = punycode.toASCII(target.target)
-          ? `${punycode.toASCII(target.target)}.`
-          : '.';
+      if (target.target) {
+        lastItem = /\.$/.test(target.target)
+          ? punycode.toASCII(target.target)
+          : `${punycode.toASCII(target.target)}.`;
       }
 
       return [
@@ -861,14 +857,14 @@ angular.module('services').service(
      */
     static transformTLSATarget(target) {
       if (
-        _.has(target, 'usage') &&
-        parseInt(target.usage, 10) >= 0 &&
-        _.has(target, 'selector') &&
-        parseInt(target.selector, 10) >= 0 &&
-        _.has(target, 'matchingType') &&
-        parseInt(target.matchingType, 10) > 0 &&
-        _.has(target, 'certificateData') &&
-        target.certificateData !== ''
+        _.has(target, 'usage')
+        && parseInt(target.usage, 10) >= 0
+        && _.has(target, 'selector')
+        && parseInt(target.selector, 10) >= 0
+        && _.has(target, 'matchingType')
+        && parseInt(target.matchingType, 10) > 0
+        && _.has(target, 'certificateData')
+        && target.certificateData !== ''
       ) {
         return [
           target.usage.toString(),
@@ -888,11 +884,10 @@ angular.module('services').service(
      * @returns {string}
      */
     static transformCAATarget(target) {
-      const isValidFlags =
-        _.has(target, 'flags') &&
-        _.isFinite(target.flags) &&
-        target.flags >= 0 &&
-        target.flags < 256;
+      const isValidFlags = _.has(target, 'flags')
+        && _.isFinite(target.flags)
+        && target.flags >= 0
+        && target.flags < 256;
 
       if (isValidFlags) {
         const { flags } = target;

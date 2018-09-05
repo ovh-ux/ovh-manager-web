@@ -30,10 +30,8 @@ angular.module('App').controller(
         mailingLists: '',
       };
 
-      this.$scope.$on('hosting.tabs.mailingLists.refresh', () =>
-        this.refreshTableMailingLists(true));
-      this.$scope.$on('mailingLists.update.poll.done', () =>
-        this.refreshTableMailingLists(true));
+      this.$scope.$on('hosting.tabs.mailingLists.refresh', () => this.refreshTableMailingLists(true));
+      this.$scope.$on('mailingLists.update.poll.done', () => this.refreshTableMailingLists(true));
       this.$scope.$on('$destroy', () => {
         this.Alerter.resetMessage(this.$scope.alerts.tabs);
         this.MailingLists.killAllPolling({

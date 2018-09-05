@@ -56,8 +56,8 @@ angular.module('App').controller(
       };
 
       if (
-        this.currentTab &&
-        this.$scope.tabs.indexOf(angular.uppercase(this.currentTab)) !== -1
+        this.currentTab
+        && this.$scope.tabs.indexOf(angular.uppercase(this.currentTab)) !== -1
       ) {
         this.$scope.setSelectedTab(angular.uppercase(this.currentTab));
       } else {

@@ -85,8 +85,8 @@ angular.module('App').controller(
     responderAccountCheck(input) {
       input.$setValidity(
         'email',
-        _.isString(this.model.account) &&
-          validator.isEmail(`${this.model.account}@${this.domain}`),
+        _.isString(this.model.account)
+          && validator.isEmail(`${this.model.account}@${this.domain}`),
       );
       input.$setValidity(
         'responder',
@@ -109,9 +109,9 @@ angular.module('App').controller(
       }
       input.$setValidity(
         'date',
-        !!this.model.responderDateStart &&
-          (!this.model.responderDateEnd ||
-            moment(this.model.responderDateStart).isBefore(this.model.responderDateEnd)),
+        !!this.model.responderDateStart
+          && (!this.model.responderDateEnd
+            || moment(this.model.responderDateStart).isBefore(this.model.responderDateEnd)),
       );
     }
 
@@ -121,20 +121,20 @@ angular.module('App').controller(
       }
       input.$setValidity(
         'date',
-        !!this.model.responderDateEnd &&
-          (!this.model.responderDateStart ||
-            moment(this.model.responderDateEnd).isAfter(this.model.responderDateStart)) &&
-          moment(this.model.responderDateEnd).isAfter(new Date()),
+        !!this.model.responderDateEnd
+          && (!this.model.responderDateStart
+            || moment(this.model.responderDateEnd).isAfter(this.model.responderDateStart))
+          && moment(this.model.responderDateEnd).isAfter(new Date()),
       );
     }
 
     responderDurationCheck() {
       return (
-        this.model.responderDuration === 'permanent' ||
-        (!!this.model.responderDateStart &&
-          !!this.model.responderDateEnd &&
-          moment(this.model.responderDateEnd).isAfter(this.model.responderDateStart) &&
-          moment(this.model.responderDateEnd).isAfter(new Date()))
+        this.model.responderDuration === 'permanent'
+        || (!!this.model.responderDateStart
+          && !!this.model.responderDateEnd
+          && moment(this.model.responderDateEnd).isAfter(this.model.responderDateStart)
+          && moment(this.model.responderDateEnd).isAfter(new Date()))
       );
     }
 
@@ -145,19 +145,19 @@ angular.module('App').controller(
         content: this.model.responderContent,
         copy: !!this.model.responderKeepCopy,
         copyTo:
-          this.model.responderType === 'typeFree' &&
-          this.model.responderKeepCopy &&
-          this.model.responderCopyTo
+          this.model.responderType === 'typeFree'
+          && this.model.responderKeepCopy
+          && this.model.responderCopyTo
             ? this.model.responderCopyTo
             : '',
         from:
-          (this.model.responderDateStart &&
-            moment(this.model.responderDateStart)) ||
-          undefined,
+          (this.model.responderDateStart
+            && moment(this.model.responderDateStart))
+          || undefined,
         to:
-          (this.model.responderDateEnd &&
-            moment(this.model.responderDateEnd)) ||
-          undefined,
+          (this.model.responderDateEnd
+            && moment(this.model.responderDateEnd))
+          || undefined,
       };
 
       let promise;
@@ -175,17 +175,15 @@ angular.module('App').controller(
       }
 
       return promise
-        .then(() =>
-          this.Alerter.success(
-            this.$scope.tr('email_tab_modal_create_responder_success'),
-            this.$scope.alerts.main,
-          ))
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('email_tab_modal_create_responder_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .then(() => this.Alerter.success(
+          this.$scope.tr('email_tab_modal_create_responder_success'),
+          this.$scope.alerts.main,
+        ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('email_tab_modal_create_responder_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

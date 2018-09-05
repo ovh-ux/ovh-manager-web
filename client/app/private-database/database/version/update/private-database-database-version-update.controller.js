@@ -36,9 +36,8 @@ angular.module('App').controller(
 
           _.remove(
             this.model.versions,
-            version =>
-              version.replace(/\./g, '') ===
-              this.$scope.currentActionData.version,
+            version => version.replace(/\./g, '')
+              === this.$scope.currentActionData.version,
           );
 
           this.loading.init = false;

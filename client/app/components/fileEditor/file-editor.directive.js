@@ -106,8 +106,8 @@ angular.module('directives').directive('fileEditor', [
           $scope.ngModel = _.uniq($scope.fileModel.value.trim().split(/\s/g));
 
           if (!$scope.fileEditorMatchExistingItems) {
-            $scope.ngModel = $scope.ngModel.filter(item =>
-              !!item && $scope.fileEditorExistingItems.indexOf(item) === -1);
+            $scope.ngModel = $scope.ngModel
+              .filter(item => !!item && $scope.fileEditorExistingItems.indexOf(item) === -1);
           } else {
             $scope.ngModel = $scope.ngModel
               .filter(item => $scope.fileEditorExistingItems.indexOf(item) !== -1);

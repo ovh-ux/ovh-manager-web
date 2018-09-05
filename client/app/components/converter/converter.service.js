@@ -33,35 +33,35 @@ angular.module('services').service(
         },
         {
           val:
-            this.base *
-            this.base *
-            this.base *
-            this.base *
-            this.base *
-            this.base,
+            this.base
+            * this.base
+            * this.base
+            * this.base
+            * this.base
+            * this.base,
           unit: 'EB',
         },
         {
           val:
-            this.base *
-            this.base *
-            this.base *
-            this.base *
-            this.base *
-            this.base *
-            this.base,
+            this.base
+            * this.base
+            * this.base
+            * this.base
+            * this.base
+            * this.base
+            * this.base,
           unit: 'ZB',
         },
         {
           val:
-            this.base *
-            this.base *
-            this.base *
-            this.base *
-            this.base *
-            this.base *
-            this.base *
-            this.base,
+            this.base
+            * this.base
+            * this.base
+            * this.base
+            * this.base
+            * this.base
+            * this.base
+            * this.base,
           unit: 'YB',
         },
       ];
@@ -96,11 +96,11 @@ angular.module('services').service(
      */
     convertBytesSize(nb, unit, decimalWanted = 0) {
       if (
-        !_.isNumber(Number(nb)) ||
-        !_.isString(unit) ||
-        !_.isNumber(decimalWanted) ||
-        nb <= 0 ||
-        decimalWanted < 0
+        !_.isNumber(Number(nb))
+        || !_.isString(unit)
+        || !_.isNumber(decimalWanted)
+        || nb <= 0
+        || decimalWanted < 0
       ) {
         throw new Error('Wrong parameter(s)');
       }

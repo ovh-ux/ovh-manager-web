@@ -19,8 +19,8 @@ angular.module('App').controller(
 
       this.setSelectedTab = this.setSelectedTab.bind(this);
 
-      if (this.$stateParams.tab &&
-        this.tabs.indexOf(angular.uppercase(this.$stateParams.tab)) !== -1) {
+      if (this.$stateParams.tab
+        && this.tabs.indexOf(angular.uppercase(this.$stateParams.tab)) !== -1) {
         this.setSelectedTab(angular.uppercase(this.$stateParams.tab));
       } else {
         this.setSelectedTab(this.defaultTab);

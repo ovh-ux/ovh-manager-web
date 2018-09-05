@@ -86,6 +86,7 @@ angular
             taskPending: _.get($scope.ovhConfig, 'taskPending', false),
             taskPendingError: _.get($scope.ovhConfig, 'taskPendingError', false),
           });
+
           $scope.phpVersionSupport = _.find(
             $scope.hosting.phpVersions,
             (version) => {
@@ -101,24 +102,27 @@ angular
             .then((tasks) => {
               let queue;
               if (tasks && tasks.length > 0) {
-                const taskPendingMessage =
-                  $scope.i18n[
-                    `hosting_global_php_version_pending_task_${tasks[0].function.replace(
-                      /ovhConfig\//,
-                      '',
-                    )}`
-                  ];
+                const taskPendingMessage = $scope.i18n[
+                  `hosting_global_php_version_pending_task_${tasks[0].function.replace(
+                    /ovhConfig\//,
+                    '',
+                  )}`
+                ];
                 _.set(
                   $scope.ovhConfig,
                   'taskPending',
-                  taskPendingMessage ||
-                    $scope.i18n.hosting_global_php_version_pending_task_common,
+                  taskPendingMessage
+                    || $scope.i18n.hosting_global_php_version_pending_task_common,
                 );
 
-                queue = _.map(tasks, task =>
-                  HostingTask.poll($stateParams.productId, task).catch(() => {
-                    _.set($scope.ovhConfig, 'taskPendingError', false);
-                  }));
+                queue = _.map(
+                  tasks,
+                  task => HostingTask
+                    .poll($stateParams.productId, task)
+                    .catch(() => {
+                      _.set($scope.ovhConfig, 'taskPendingError', false);
+                    }),
+                );
 
                 $q.all(queue).then(() => {
                   loadOvhConfig();
@@ -135,18 +139,17 @@ angular
             .then((tasks) => {
               if ($scope.ovhConfig) {
                 if (tasks && tasks.length > 0) {
-                  const taskErrorMessage =
-                    $scope.i18n[
-                      `hosting_global_php_version_pending_task_error_${tasks[0].function.replace(
-                        /ovhConfig\//,
-                        '',
-                      )}`
-                    ];
+                  const taskErrorMessage = $scope.i18n[
+                    `hosting_global_php_version_pending_task_error_${tasks[0].function.replace(
+                      /ovhConfig\//,
+                      '',
+                    )}`
+                  ];
                   _.set(
                     $scope.ovhConfig,
                     'taskPendingError',
-                    taskErrorMessage ||
-                      $scope.i18n
+                    taskErrorMessage
+                      || $scope.i18n
                         .hosting_global_php_version_pending_task_error_common,
                   );
                 } else {
@@ -174,34 +177,31 @@ angular
 
       $scope.userInfos = {};
 
-      $scope.getUserInfos = () =>
-        User.getUser()
-          .then((user) => {
-            $scope.userInfos = user;
-          })
-          .catch(err => $q.reject(err));
+      $scope.getUserInfos = () => User.getUser()
+        .then((user) => {
+          $scope.userInfos = user;
+        })
+        .catch(err => $q.reject(err));
 
-      $scope.isAdminPrivateDb = privateDb =>
-        $scope
-          .getUserInfos()
-          .then(() => PrivateDatabase.getServiceInfos(privateDb))
-          .then(privateDbInfo =>
-            _.some(
-              [
-                privateDbInfo.contactBilling,
-                privateDbInfo.contactTech,
-                privateDbInfo.contactAdmin,
-              ],
-              contactName => $scope.userInfos.nichandle === contactName,
-            ))
-          .catch((err) => {
-            Alerter.alertFromSWS(
-              $scope.tr('common_serviceinfos_error', [privateDb]),
-              err,
-              $scope.alerts.main,
-            );
-            return false;
-          });
+      $scope.isAdminPrivateDb = privateDb => $scope
+        .getUserInfos()
+        .then(() => PrivateDatabase.getServiceInfos(privateDb))
+        .then(privateDbInfo => _.some(
+          [
+            privateDbInfo.contactBilling,
+            privateDbInfo.contactTech,
+            privateDbInfo.contactAdmin,
+          ],
+          contactName => $scope.userInfos.nichandle === contactName,
+        ))
+        .catch((err) => {
+          Alerter.alertFromSWS(
+            $scope.tr('common_serviceinfos_error', [privateDb]),
+            err,
+            $scope.alerts.main,
+          );
+          return false;
+        });
 
       // FLUSH CDN
       function checkFlushCdnState() {
@@ -247,8 +247,7 @@ angular
           .then(
             (hosting) => {
               $scope.hosting = hosting;
-              $scope.hosting.displayName =
-                hosting.displayName || hosting.serviceDisplayName;
+              $scope.hosting.displayName = hosting.displayName || hosting.serviceDisplayName;
 
               $scope.isAdminPvtDb = false;
 
@@ -279,9 +278,9 @@ angular
                   }:${hostingProxy.serviceManagementAccess.ssh.port}/`;
 
                   if (
-                    $scope.hostingProxy &&
-                    $scope.hostingProxy.cluster &&
-                    parseInt(
+                    $scope.hostingProxy
+                    && $scope.hostingProxy.cluster
+                    && parseInt(
                       $scope.hostingProxy.cluster.split('cluster')[1],
                       10,
                     ) >= 20
@@ -329,8 +328,7 @@ angular
                         break;
                       case 'MAINTENANCE':
                         if (guides.hostingDisabledState) {
-                          $scope.guideHostingState =
-                            guides.hostingDisabledState;
+                          $scope.guideHostingState = guides.hostingDisabledState;
                         }
                         break;
                       default:
@@ -338,8 +336,15 @@ angular
                     }
                   }
                 })
+                .then(() => {
+                  if (moment().isAfter(moment($scope.hostingProxy.lastOvhConfigScan).add(12, 'hours'))) {
+                    return HostingOvhConfig.ovhConfigRefresh($stateParams.productId);
+                  }
+                  return null;
+                })
                 .finally(() => {
                   $scope.loadingHostingInformations = false;
+                  loadOvhConfig();
                 });
 
               User.getUrlOfEndsWithSubsidiary('hosting').then((url) => {
@@ -347,12 +352,13 @@ angular
               });
 
               Hosting.getPrivateDatabasesLinked($stateParams.productId)
-                .then(databasesId =>
-                  $q.all(_.map(databasesId, dbName =>
-                    $scope.isAdminPrivateDb(dbName).then(isAdmin => ({
-                      name: dbName,
-                      isAdmin,
-                    })))))
+                .then(databasesId => $q.all(_.map(
+                  databasesId,
+                  dbName => $scope.isAdminPrivateDb(dbName).then(isAdmin => ({
+                    name: dbName,
+                    isAdmin,
+                  })),
+                )))
                 .then((databases) => {
                   $scope.privateDatabasesLinked = databases;
                 })
@@ -367,11 +373,6 @@ angular
                   $scope.loadingHostingError = true;
                 }
               }
-
-              // error 409 and 403 have no matter, they juste saying: "the job is pending"
-              // and other ?  I think is a kind of sub treat as "best effort"
-              // Anyway, the ovhConfig must be loaded
-              HostingOvhConfig.ovhConfigRefresh($stateParams.productId).finally(loadOvhConfig);
 
               if (!hosting.isExpired) {
                 checkFlushCdnState();
@@ -404,14 +405,12 @@ angular
       };
 
       $scope.editDisplayName = () => {
-        $scope.newDisplayName.value =
-          $scope.hosting.displayName || $scope.hosting.serviceName;
+        $scope.newDisplayName.value = $scope.hosting.displayName || $scope.hosting.serviceName;
         $scope.edit.active = true;
       };
 
       $scope.saveDisplayName = () => {
-        const displayName =
-          $scope.newDisplayName.value || $scope.hosting.serviceName;
+        const displayName = $scope.newDisplayName.value || $scope.hosting.serviceName;
         Hosting.updateHosting($stateParams.productId, {
           body: {
             displayName,
@@ -446,11 +445,11 @@ angular
       $scope.getStateBadgeClass = () => {
         switch (_.get($scope.hosting, 'serviceState')) {
           case 'ACTIVE':
-            return 'label-success';
+            return 'oui-status_success';
           case 'MAINTENANCE':
-            return 'label-warning';
+            return 'oui-status_warning';
           case 'BLOQUED':
-            return 'label-important';
+            return 'oui-status_error';
           default:
             return null;
         }
@@ -507,11 +506,10 @@ angular
 
         HostingDatabase.getPrivateDatabaseCapabilities($stateParams.productId)
           .then((privateDbCapabilities) => {
-            $scope.hosting.sqlPriveInfo.nbDataBaseInclude =
-              $scope.hosting.offerCapabilities.privateDatabases.length;
-            $scope.hosting.sqlPriveInfo.nbDataBaseActive =
-              $scope.hosting.sqlPriveInfo.nbDataBaseInclude -
-              privateDbCapabilities.length;
+            $scope.hosting.sqlPriveInfo.nbDataBaseInclude = $scope.hosting
+              .offerCapabilities.privateDatabases.length;
+            $scope.hosting.sqlPriveInfo.nbDataBaseActive = $scope.hosting
+              .sqlPriveInfo.nbDataBaseInclude - privateDbCapabilities.length;
           });
       };
 

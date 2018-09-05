@@ -41,8 +41,8 @@ angular.module('App').controller(
 
     domainsWwwExists() {
       return (
-        this.model.domains &&
-        _.indexOf(this.model.domains, `www.${this.selected.domain.name}`) !== -1
+        this.model.domains
+        && _.indexOf(this.model.domains, `www.${this.selected.domain.name}`) !== -1
       );
     }
 

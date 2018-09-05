@@ -27,17 +27,15 @@ angular.module('services').service(
      * @param option
      */
     isOptionOrderable(option) {
-      return this.Hosting.getSelected(this.$stateParams.productId).then(hosting =>
-        this.$http
-          .get(`${this.swsHostingOrderProxyPath}/${hosting.serviceName}`)
-          .then(response =>
-            !!(
-              response &&
-                  response.data &&
-                  response.data.length &&
-                  response.data.indexOf(option) !== -1
-            ))
-          .catch(() => false));
+      return this.Hosting.getSelected(this.$stateParams.productId).then(hosting => this.$http
+        .get(`${this.swsHostingOrderProxyPath}/${hosting.serviceName}`)
+        .then(response => !!(
+          response
+                  && response.data
+                  && response.data.length
+                  && response.data.indexOf(option) !== -1
+        ))
+        .catch(() => false));
     }
 
     /**
@@ -64,19 +62,17 @@ angular.module('services').service(
      * @param params
      */
     getOrderDurations(option, params) {
-      return this.Hosting.getSelected(this.$stateParams.productId).then(hosting =>
-        this.$http
-          .get(
-            `${this.swsHostingOrderProxyPath}/${
-              hosting.serviceName
-            }/${option}`,
-            { params },
-          )
-          .then(response =>
-            (response && response.data && response.data.length
-              ? response.data
-              : []))
-          .catch(http => this.$q.reject(http)));
+      return this.Hosting.getSelected(this.$stateParams.productId).then(hosting => this.$http
+        .get(
+          `${this.swsHostingOrderProxyPath}/${
+            hosting.serviceName
+          }/${option}`,
+          { params },
+        )
+        .then(response => (response && response.data && response.data.length
+          ? response.data
+          : []))
+        .catch(http => this.$q.reject(http)));
     }
 
     /**
@@ -86,16 +82,15 @@ angular.module('services').service(
      * @param params
      */
     getOrderDetailsForDuration(option, duration, params) {
-      return this.Hosting.getSelected(this.$stateParams.productId).then(hosting =>
-        this.$http
-          .get(
-            `${this.swsHostingOrderProxyPath}/${
-              hosting.serviceName
-            }/${option}/${duration}`,
-            { params },
-          )
-          .then(response => (response && response.data ? response.data : {}))
-          .catch(http => this.$q.reject(http)));
+      return this.Hosting.getSelected(this.$stateParams.productId).then(hosting => this.$http
+        .get(
+          `${this.swsHostingOrderProxyPath}/${
+            hosting.serviceName
+          }/${option}/${duration}`,
+          { params },
+        )
+        .then(response => (response && response.data ? response.data : {}))
+        .catch(http => this.$q.reject(http)));
     }
 
     /**
@@ -105,16 +100,15 @@ angular.module('services').service(
      * @param params
      */
     makeOrder(option, duration, params) {
-      return this.Hosting.getSelected(this.$stateParams.productId).then(hosting =>
-        this.$http
-          .post(
-            `${this.swsHostingOrderProxyPath}/${
-              hosting.serviceName
-            }/${option}/${duration}`,
-            params,
-          )
-          .then(response => (response && response.data ? response.data : {}))
-          .catch(http => this.$q.reject(http)));
+      return this.Hosting.getSelected(this.$stateParams.productId).then(hosting => this.$http
+        .post(
+          `${this.swsHostingOrderProxyPath}/${
+            hosting.serviceName
+          }/${option}/${duration}`,
+          params,
+        )
+        .then(response => (response && response.data ? response.data : {}))
+        .catch(http => this.$q.reject(http)));
     }
 
     /**

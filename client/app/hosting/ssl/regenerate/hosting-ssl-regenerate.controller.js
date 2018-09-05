@@ -19,8 +19,7 @@ angular.module('App').controller(
     }
 
     $onInit() {
-      this.$scope.regeneratingCertificate = () =>
-        this.regeneratingCertificate();
+      this.$scope.regeneratingCertificate = () => this.regeneratingCertificate();
     }
 
     regeneratingCertificate() {

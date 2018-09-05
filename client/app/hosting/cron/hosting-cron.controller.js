@@ -55,8 +55,7 @@ angular
           });
       };
 
-      $scope.transformItem = id =>
-        HostingCron.getCron($stateParams.productId, id);
+      $scope.transformItem = id => HostingCron.getCron($stateParams.productId, id);
 
       $scope.onTransformItemDone = () => {
         $scope.loading.cron = false;

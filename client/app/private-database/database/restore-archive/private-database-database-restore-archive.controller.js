@@ -42,17 +42,15 @@ angular.module('App').controller(
           this.$scope.bddName,
           this.$scope.dump.dumpId,
         )
-        .then(() =>
-          this.alerter.success(
-            this.$scope.tr('privateDatabase_tabs_dumps_restore_in_progress'),
-            this.$scope.alerts.main,
-          ))
-        .catch(err =>
-          this.alerter.alertFromSWS(
-            this.$scope.tr('privateDatabase_restore_bdd_fail'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .then(() => this.alerter.success(
+          this.$scope.tr('privateDatabase_tabs_dumps_restore_in_progress'),
+          this.$scope.alerts.main,
+        ))
+        .catch(err => this.alerter.alertFromSWS(
+          this.$scope.tr('privateDatabase_restore_bdd_fail'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => this.$scope.resetAction());
     }
 

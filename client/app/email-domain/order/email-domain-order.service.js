@@ -19,9 +19,9 @@ angular.module('services').service(
         if (response && response.models) {
           const promises = _.map(
             response.models['email.domain.OfferEnum'].enum,
-            offer =>
-              this.orderDuration(domain, offer).then(duration =>
-                this.orderPrice(domain, offer, duration)),
+            offer => this
+              .orderDuration(domain, offer)
+              .then(duration => this.orderPrice(domain, offer, duration)),
           );
           return this.$q.allSettled(promises);
         }

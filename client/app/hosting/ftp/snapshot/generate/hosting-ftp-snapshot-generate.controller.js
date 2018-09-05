@@ -62,9 +62,9 @@ angular.module('App').controller(
 
     isStep1Valid() {
       return (
-        this.instances &&
-        this.model.snapshotInstance &&
-        _.indexOf(this.instances, this.model.snapshotInstance) !== -1
+        this.instances
+        && this.model.snapshotInstance
+        && _.indexOf(this.instances, this.model.snapshotInstance) !== -1
       );
     }
 

@@ -410,9 +410,7 @@ angular
       },
     };
   })
-  .factory('translateMissingTranslationHandler', $sanitize => translationId =>
-    // Fix security issue: https://github.com/angular-translate/angular-translate/issues/1418
-    $sanitize(translationId))
+  .factory('translateMissingTranslationHandler', $sanitize => translationId => $sanitize(translationId))
   .config((LANGUAGES, $translateProvider, constants) => {
     let defaultLanguage = 'fr_FR';
 

@@ -72,8 +72,10 @@ angular
         }) => {
           this.webMailUrl = webMailUrl;
           this.webOMMUrl = webOMMUrl;
-          this.delegationsIsAvailable =
-            _.includes([serviceInfos.contactTech, serviceInfos.contactAdmin], user.nichandle);
+          this.delegationsIsAvailable = _.includes(
+            [serviceInfos.contactTech, serviceInfos.contactAdmin],
+            user.nichandle,
+          );
           this.domains = allDomains;
           this.quotas = quotas;
           this.summary = summary;
@@ -186,11 +188,11 @@ angular
           const canCreateAccounts = _(this.quotas).get('account', 0) > 0;
           const userMustCreateAccount = (this.emails.length === 1 && this.emails[0] === 'postmaster') || _.isEmpty(this.emails);
 
-          if (shouldShowHelp &&
-              !guidesAlreadyRetrieved &&
-              !this.search.accounts &&
-              canCreateAccounts &&
-              userMustCreateAccount) {
+          if (shouldShowHelp
+              && !guidesAlreadyRetrieved
+              && !this.search.accounts
+              && canCreateAccounts
+              && userMustCreateAccount) {
             this.$timeout(() => {
               if (this.quotas != null) {
                 this.$scope.setAction('email-domain/email/help/email-domain-email-help', {

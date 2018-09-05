@@ -6,11 +6,10 @@ angular.module('App').config([
       resolve: {
         navigationInformations: [
           'Navigator',
-          Navigator =>
-            Navigator.setNavigationInformation({
-              leftMenuVisible: true,
-              configurationSelected: true,
-            }),
+          Navigator => Navigator.setNavigationInformation({
+            leftMenuVisible: true,
+            configurationSelected: true,
+          }),
         ],
       },
     });

@@ -162,8 +162,8 @@ angular.module('services').service('Polling', [
 
           // Delete taskid of dead scope if promise = 0
           if (
-            !watchedTasksPromise[eachTask] ||
-            _.isEmpty(watchedTasksPromise[eachTask])
+            !watchedTasksPromise[eachTask]
+            || _.isEmpty(watchedTasksPromise[eachTask])
           ) {
             delete watchedTasksPromise[eachTask];
             delete watchedTasksList[eachTask];
@@ -307,7 +307,6 @@ angular.module('services').service('Polling', [
 
     this.isAlreadyExist = state => state.state === notifyExist;
 
-    this.isDone = state =>
-      state.task && state.task.status.toUpperCase() === 'DONE';
+    this.isDone = state => state.task && state.task.status.toUpperCase() === 'DONE';
   },
 ]);

@@ -21,8 +21,8 @@ angular
         typeIsDb() {
           const condition = v => $scope.selected.type === v;
           return (
-            $scope.model.db &&
-            !!_.find($scope.model.constants.dbTypes, condition)
+            $scope.model.db
+            && !!_.find($scope.model.constants.dbTypes, condition)
           );
         },
       };
@@ -65,10 +65,10 @@ angular
         if ($scope.model.datas && $scope.model.datas.length > 0) {
           angular.forEach($scope.model.datas, (data) => {
             if (
-              data &&
-              data.state === 'OK' &&
-              data.series &&
-              data.series.length > 0
+              data
+              && data.state === 'OK'
+              && data.series
+              && data.series.length > 0
             ) {
               $scope.selected.haveDataToDisplay = true;
               $scope.stats.chart.setYLabel(data.series[0].unit);
@@ -152,8 +152,8 @@ angular
       function init() {
         HostingStatistics.getStatisticsConstants().then((data) => {
           $scope.model.constants = data;
-          $scope.model.constants.types =
-            $scope.model.constants.types.concat($scope.model.constants.dbTypes);
+          $scope.model.constants.types = $scope.model.constants.types
+            .concat($scope.model.constants.dbTypes);
           _.remove(
             $scope.model.constants.types,
             value => value === 'IN_HTTP_MEAN_RESPONSE_TIME',
