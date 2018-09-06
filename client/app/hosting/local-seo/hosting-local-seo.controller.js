@@ -95,6 +95,7 @@ angular.module('App').controller(
         from blocking it as a popup.
       */
       const win = this.$window.open('', '_blank');
+      win.opener = null;
       this.HostingLocalSeo.login(this.productId, location.accountId)
         .then((token) => {
           win.location = `https://localseo.ovh.net/?access_token=${token}`;

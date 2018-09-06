@@ -38,7 +38,7 @@ angular
     }
 
     deleteLocation(serviceName, locationId) {
-      return this.OvhHttp.delete(`/hosting/web/${serviceName}/localSeo/location/${locationId}`, {
+      return this.OvhHttp.post(`/hosting/web/${serviceName}/localSeo/location/${locationId}/terminate`, {
         rootPath: 'apiv6',
       });
     }
