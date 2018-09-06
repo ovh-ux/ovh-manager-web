@@ -15,6 +15,10 @@ angular.module('App').controller(
       };
       this.productId = this.$stateParams.productId;
       this.accounts = null;
+
+      this.HostingLocalSeo.getVisibilityCheckerURL().then((url) => {
+        this.visibilityCheckerURL = url;
+      });
     }
 
     refresh() {

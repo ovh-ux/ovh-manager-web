@@ -55,9 +55,13 @@ angular
     goToVisibilityChecker() {
       const win = this.$window.open('', '_blank');
       win.opener = null;
-      return this.User.getUrlOfEndsWithSubsidiary('localseo_visibility_checker')
+      return this.getVisibilityCheckerURL()
         .then((url) => {
           win.location = url;
         });
+    }
+
+    getVisibilityCheckerURL() {
+      return this.User.getUrlOfEndsWithSubsidiary('localseo_visibility_checker');
     }
   });
