@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'HostingTabLocalSeoCtrl',
   class HostingTabLocalSeoCtrl {
-    constructor($q, $stateParams, $window, HostingLocalSeo) {
+    constructor($q, $stateParams, $translate, $window, HostingLocalSeo) {
       this.$q = $q;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.$window = $window;
       this.HostingLocalSeo = HostingLocalSeo;
     }
@@ -90,6 +91,8 @@ angular.module('App').controller(
         return;
       }
 
+      const lang = _.first(this.$translate.preferredLanguage().split('_'));
+
       /*
         Opening the window first then setting the location prevents browsers
         from blocking it as a popup.
@@ -98,7 +101,7 @@ angular.module('App').controller(
       win.opener = null;
       this.HostingLocalSeo.login(this.productId, location.accountId)
         .then((token) => {
-          win.location = `https://localseo.ovh.net/?access_token=${token}`;
+          win.location = `https://localseo.hosting.ovh.net/${lang}/app/ovh?access_token=${token}`;
         });
     }
   },
