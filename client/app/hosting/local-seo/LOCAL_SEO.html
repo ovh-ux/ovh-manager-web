@@ -26,7 +26,7 @@
                 <oui-column data-title="::tr('hosting_tab_LOCAL_SEO_table_header_name')"
                             data-property="name">
                     {{$row.name}}
-                    <span class="label label-info"
+                    <span class="oui-status oui-status_info"
                           data-ng-if="!$row.name"
                           data-i18n-static="hosting_tab_LOCAL_SEO_table_value_undefined">
                     </span>
@@ -34,7 +34,7 @@
                 <oui-column data-title="::tr('hosting_tab_LOCAL_SEO_table_header_address')"
                             data-property="address">
                     {{$row.address}}
-                    <span class="label label-info"
+                    <span class="oui-status oui-status_info"
                             data-ng-if="!$row.address"
                             data-i18n-static="hosting_tab_LOCAL_SEO_table_value_undefined">
                     </span>
@@ -45,10 +45,10 @@
                 </oui-column>
                 <oui-column data-title="::tr('hosting_tab_LOCAL_SEO_table_header_status')"
                             data-property="status">
-                    <span class="label"
-                          data-ng-class="{'label-success': $row.status === 'created',
-                                          'label-warning': $row.status === 'creating',
-                                          'label-danger': $row.status === 'deleting'}"
+                    <span class="oui-status"
+                          data-ng-class="{'oui-status_success': $row.status === 'created',
+                                          'oui-status_warning': $row.status === 'creating',
+                                          'oui-status_error': $row.status === 'deleting'}"
                           data-ng-bind="tr('hosting_tab_LOCAL_SEO_state_' + $row.status)">
                     </span>
                 </oui-column>
