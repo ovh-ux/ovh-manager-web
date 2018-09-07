@@ -1819,8 +1819,8 @@ module.exports = {
                 FR : "https://www.ovh.com/fr/order/domain/#/legacy/domain/hosting/choose?options=~(flow~'hosting_existing_service~serviceName~'{serviceName})",
             },
             localseo_visibility_checker : {
-              FR : "https://www.ovh.com/fr/hebergement-web/referencement-local.xml",
-          },
+                FR : "https://www.ovh.com/fr/hebergement-web/referencement-local.xml",
+            },
             FAQS : {
                 EXCHANGE: {
                     URL: {
