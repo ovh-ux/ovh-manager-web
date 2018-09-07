@@ -187,8 +187,8 @@
                             <td class="text-center"
                                 data-ng-bind="element.state"></td>
                             <td class="text-center">
-                                <span class="label"
-                                      data-ng-class="{'label-success': element.dumpsCount > 0, 'label-default': element.dumpsCount <= 0}"
+                                <span class="oui-status"
+                                      data-ng-class="{'oui-status_success': element.dumpsCount > 0, 'oui-status_info': element.dumpsCount <= 0}"
                                       data-ng-bind="element.dumpsCount">
                                 </span>
                                 <button class="btn btn-icon" type="button" title="{{element.user}} {{::i18n.hosting_tab_DATABASES_table_popover_dump_edit}}"

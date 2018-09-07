@@ -1,3 +1,29 @@
+<a name="13.4.22"></a>
+## [13.4.22](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.21...v13.4.22) (2018-08-22)
+
+
+### Bug Fixes
+
+* **constants:** new signup url ([38dcb88](https://github.com/ovh-ux/ovh-manager-web/commit/38dcb88))
+
+
+
+<a name="13.4.21"></a>
+## [13.4.21](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.20...v13.4.21) (2018-08-20)
+
+
+### Bug Fixes
+
+* **domain.dnsserver:** add-icon-external-link ([#497](https://github.com/ovh-ux/ovh-manager-web/issues/497)) ([fe4c1f1](https://github.com/ovh-ux/ovh-manager-web/commit/fe4c1f1))
+* **hosting.tabs:** add icon for external redirection ([9279fb4](https://github.com/ovh-ux/ovh-manager-web/commit/9279fb4))
+
+
+
+<a name="13.4.20"></a>
+## [13.4.20](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.19...v13.4.20) (2018-08-06)
+
+
+
 <a name="13.4.19"></a>
 ## [13.4.19](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.18...v13.4.19) (2018-08-02)
 

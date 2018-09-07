@@ -8,6 +8,7 @@ angular.module('App').controller(
       hostingSSLCertificate,
       translator,
       HostingLocalSeo,
+      HostingRuntimes,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -16,12 +17,15 @@ angular.module('App').controller(
       this.hostingSSLCertificate = hostingSSLCertificate;
       this.translator = translator;
       this.HostingLocalSeo = HostingLocalSeo;
+      this.HostingRuntimes = HostingRuntimes;
     }
 
     $onInit() {
       this.serviceName = this.$stateParams.productId;
+      this.defaultRuntime = null;
 
       this.loading = {
+        defaultRuntime: true,
         localSeo: true,
       };
 
@@ -32,8 +36,13 @@ angular.module('App').controller(
 
       this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
       return this.retrievingSSLCertificate()
+        .then(() => this.HostingRuntimes.getDefault(this.serviceName))
+        .then((runtime) => {
+          this.defaultRuntime = runtime;
+        })
         .then(() => this.initializeLocalSeo(this.serviceName))
         .finally(() => {
+          this.loading.defaultRuntime = false;
           this.loading.localSeo = false;
         });
     }
