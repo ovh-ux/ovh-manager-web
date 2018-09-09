@@ -205,7 +205,7 @@ angular.module('App').controller(
     getAssociatedHosting(serviceName) {
       this.loading.associatedHosting = true;
       this.hostingAssociated = [];
-      return this.HostingDomain.getAttachedDomains(serviceName)
+      return this.HostingDomain.getHostingWithAttachedDomain(serviceName)
         .then((response) => {
           if (_.isArray(response) && !_.isEmpty(response)) {
             this.hasHostingAssociate = true;

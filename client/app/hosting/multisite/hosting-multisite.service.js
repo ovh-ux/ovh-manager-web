@@ -403,6 +403,20 @@ angular.module('services').service(
     }
 
     /**
+     * Return array of hosting with domain attached
+     * @param {string} serviceName
+     * @return Array
+     */
+    getHostingWithAttachedDomain(serviceName) {
+      return this.OvhHttp.get('/hosting/web/attachedDomain', {
+        rootPath: 'apiv6',
+        params: {
+          domain: serviceName,
+        },
+      });
+    }
+
+    /**
      * Get attached domains
      * @param {string} serviceName
      * @param {string} attachedDomain
