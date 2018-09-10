@@ -1,7 +1,7 @@
 <div class="container-fluid px-0" data-ng-controller="HostingTabLocalSeoCtrl as $ctrl">
 
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div data-ovh-alert="{{alerts.main}}"></div>
 
             <h3 data-i18n-static="hosting_tab_LOCAL_SEO"></h3>
@@ -13,11 +13,18 @@
                 </a>
             </p>
 
-            <oui-button class="mb-5"
-                        data-variant="primary"
-                        data-on-click="$ctrl.HostingLocalSeo.goToLocalSeoOrder(hosting.serviceName)">
-                <span data-i18n-static="hosting_dashboard_local_seo_order"></span>
-            </oui-button>
+            <div class="d-flex align-items-center mb-5">
+                <oui-button data-variant="primary"
+                            data-on-click="$ctrl.HostingLocalSeo.goToLocalSeoOrder(hosting.serviceName)"
+                            data-disabled="!$ctrl.isAdmin">
+                    <span data-i18n-static="hosting_dashboard_local_seo_order"></span>
+                </oui-button>
+
+                <oui-popover data-ng-if="!$ctrl.isAdmin">
+                    <button type="button" class="oui-popover-button" oui-popover-trigger></button>
+                    <oui-popover-content>{{::tr('hosting_dashboard_local_seo_cannot_order')}}</oui-popover-content>
+                </oui-popover>
+            </div>
 
             <oui-datagrid id="{{ $ctrl.datagridId }}"
                           data-rows-loader="$ctrl.refresh($config)"

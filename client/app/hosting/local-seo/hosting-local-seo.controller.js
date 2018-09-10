@@ -1,12 +1,16 @@
 angular.module('App').controller(
   'HostingTabLocalSeoCtrl',
   class HostingTabLocalSeoCtrl {
-    constructor($q, $stateParams, $translate, $window, HostingLocalSeo) {
+    constructor($q, $scope, $stateParams, $translate, $window, Alerter, Domain, HostingLocalSeo, User) {
       this.$q = $q;
+      this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.$window = $window;
+      this.Alerter = Alerter;
+      this.Domain = Domain;
       this.HostingLocalSeo = HostingLocalSeo;
+      this.User = User;
     }
 
     $onInit() {
@@ -17,9 +21,32 @@ angular.module('App').controller(
       this.productId = this.$stateParams.productId;
       this.accounts = null;
 
+      this.isAdmin = false;
+
+      this.checkAdmin().then((isAdmin) => {
+        this.isAdmin = isAdmin;
+      });
+
       this.HostingLocalSeo.getVisibilityCheckerURL().then((url) => {
         this.visibilityCheckerURL = url;
       });
+    }
+
+    checkAdmin() {
+      return this.$q
+        .all({
+          serviceInfo: this.Domain.getServiceInfo(this.productId),
+          user: this.User.getUser(),
+        })
+        .then(({ serviceInfo, user }) => serviceInfo.contactAdmin === user.nichandle)
+        .catch((err) => {
+          this.Alerter.alertFromSWS(
+            this.$scope.tr('common_serviceinfos_error', [this.productId]),
+            err,
+            this.$scope.alerts.main,
+          );
+          return false;
+        });
     }
 
     refresh() {
