@@ -179,16 +179,14 @@
             hosting.configurationQuota = this.HOSTING.cloudWeb.configurationQuota;
             hosting.totalQuota = _.clone(this.HOSTING.cloudWeb.configurationQuota);
 
-            const configurationOctet =
-                this.ConverterService.convertToOctet(
-                  hosting.configurationQuota.value,
-                  hosting.configurationQuota.unit,
-                );
-            const quotaSizeOctet =
-                this.ConverterService.convertToOctet(
-                  hosting.quotaSize.value,
-                  hosting.quotaSize.unit,
-                );
+            const configurationOctet = this.ConverterService.convertToOctet(
+              hosting.configurationQuota.value,
+              hosting.configurationQuota.unit,
+            );
+            const quotaSizeOctet = this.ConverterService.convertToOctet(
+              hosting.quotaSize.value,
+              hosting.quotaSize.unit,
+            );
 
             hosting.totalQuota.unit = 'B';
             hosting.totalQuota.value = configurationOctet + quotaSizeOctet;

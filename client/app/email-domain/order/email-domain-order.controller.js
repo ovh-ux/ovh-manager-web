@@ -113,12 +113,11 @@ angular.module('App').controller(
 
     loadPrices(durations) {
       this.loading.prices = true;
-      const queue = _.map(durations, duration =>
-        this.MXPlan
-          .orderPrice(this.selectedOrder.config.domain, this.selectedOrder.config.offer, duration)
-          .then((details) => {
-            this.durations.details[duration] = details;
-          }));
+      const queue = _.map(durations, duration => this.MXPlan
+        .orderPrice(this.selectedOrder.config.domain, this.selectedOrder.config.offer, duration)
+        .then((details) => {
+          this.durations.details[duration] = details;
+        }));
 
       return this.$q
         .all(queue)

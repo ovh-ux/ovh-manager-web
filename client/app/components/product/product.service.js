@@ -74,9 +74,9 @@ angular.module('services').service('Products', [
                     });
 
                     /* Exchange 25g */
-                    if (productsByType &&
-                        productsByType.platforms &&
-                        productsByType.platforms.length) {
+                    if (productsByType
+                        && productsByType.platforms
+                        && productsByType.platforms.length) {
                       // 1. Remove all occurances and put them in other var
                       let exchangeOld = _.remove(productsByType.platforms, a => a.type === 'EXCHANGE_OLD');
                       if (exchangeOld && exchangeOld.length) {
@@ -100,35 +100,33 @@ angular.module('services').service('Products', [
                     if (allDoms && allDoms.length > 0) {
                       productsByType.allDoms = [];
                       return $q
-                        .allSettled(allDoms.map(allDom =>
-                          AllDom.getDomains(allDom).then(
-                            (domains) => {
-                              productDomains =
-                                productDomains.filter(d => domains.indexOf(d) === -1);
+                        .allSettled(allDoms.map(allDom => AllDom.getDomains(allDom).then(
+                          (domains) => {
+                            productDomains = productDomains.filter(d => domains.indexOf(d) === -1);
 
-                              productsByType.allDoms.push({
-                                name: allDom,
-                                displayName: allDom,
-                                hasSubComponent: true,
-                                type: 'ALL_DOM',
-                                subProducts: _.intersection(allDomains, domains).map(d => ({
-                                  name: d,
-                                  displayName: d,
-                                  allDomName: allDom,
-                                  allDomZoneOnly: allZones.indexOf(d) !== -1,
-                                  type: allZones.indexOf(d) !== -1 ? 'ZONE' : 'ALL_DOM',
-                                })),
-                              });
-                            },
-                            err => ({ error: err, allDom }),
-                          )))
+                            productsByType.allDoms.push({
+                              name: allDom,
+                              displayName: allDom,
+                              hasSubComponent: true,
+                              type: 'ALL_DOM',
+                              subProducts: _.intersection(allDomains, domains).map(d => ({
+                                name: d,
+                                displayName: d,
+                                allDomName: allDom,
+                                allDomZoneOnly: allZones.indexOf(d) !== -1,
+                                type: allZones.indexOf(d) !== -1 ? 'ZONE' : 'ALL_DOM',
+                              })),
+                            });
+                          },
+                          err => ({ error: err, allDom }),
+                        )))
                         .then(() => {
                           if (productsByType.allDoms.length > 0) {
-                            const d = productsByType.domains.filter(domain =>
-                              productDomains.indexOf(domain.name) !== -1);
+                            const d = productsByType.domains
+                              .filter(domain => productDomains.indexOf(domain.name) !== -1);
 
-                            productsByType.domains =
-                              productsByType.allDoms.concat(_.sortBy(d, elt => elt.name));
+                            productsByType.domains = productsByType.allDoms
+                              .concat(_.sortBy(d, elt => elt.name));
                           }
 
                           ['domains', 'hostings', 'exchanges', 'sharepoints', 'vps', 'cdns', 'emails', 'licenseOffice', 'allDoms', 'emailPros'].forEach((type) => {

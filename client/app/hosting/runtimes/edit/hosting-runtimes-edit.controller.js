@@ -42,16 +42,16 @@ angular.module('App').controller(
 
     isValid() {
       if (
-        this.entryToEdit &&
-        this.entryToEdit.type &&
-        this.entryToEdit.type.indexOf('nodejs') !== -1
+        this.entryToEdit
+        && this.entryToEdit.type
+        && this.entryToEdit.type.indexOf('nodejs') !== -1
       ) {
         return (
-          this.entryToEdit &&
-          this.entryToEdit.name &&
-          this.entryToEdit.publicDir &&
-          this.entryToEdit.appEnv &&
-          this.entryToEdit.appBootstrap
+          this.entryToEdit
+          && this.entryToEdit.name
+          && this.entryToEdit.publicDir
+          && this.entryToEdit.appEnv
+          && this.entryToEdit.appBootstrap
         );
       }
 

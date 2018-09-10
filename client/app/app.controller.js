@@ -30,8 +30,8 @@ angular.module('App').controller(
 
       this.incident.getOvhTasks().then((informations) => {
         if (!_.isEmpty(informations)) {
-          this.incidentMessage =
-            informations.alert[this.translator.getLanguage()] || informations.alert.en_GB;
+          this.incidentMessage = informations.alert[this.translator.getLanguage()]
+            || informations.alert.en_GB;
         }
       });
 

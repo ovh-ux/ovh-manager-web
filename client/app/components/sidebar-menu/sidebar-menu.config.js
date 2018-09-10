@@ -238,8 +238,10 @@ angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constant
       allowSearch: true,
     });
 
-    const emailItems =
-      _.sortBy(products.emails, elt => angular.lowercase(elt.displayName || elt.name));
+    const emailItems = _.sortBy(
+      products.emails,
+      elt => angular.lowercase(elt.displayName || elt.name),
+    );
 
     _.forEach(emailItems, (elt) => {
       SidebarMenu.addMenuItem({

@@ -36,16 +36,16 @@ angular.module('directives').directive('incrementNumber', () => ({
     scope.isOverMin = (strict) => {
       const offset = strict ? 0 : 1;
       return (
-        angular.isDefined(scope.min) &&
-        parseInt(scope.ngModel, 10) - offset < parseInt(scope.min, 10)
+        angular.isDefined(scope.min)
+        && parseInt(scope.ngModel, 10) - offset < parseInt(scope.min, 10)
       );
     };
 
     scope.isOverMax = (strict) => {
       const offset = strict ? 0 : 1;
       return (
-        angular.isDefined(scope.max) &&
-        parseInt(scope.ngModel, 10) + offset > parseInt(scope.max, 10)
+        angular.isDefined(scope.max)
+        && parseInt(scope.ngModel, 10) + offset > parseInt(scope.max, 10)
       );
     };
 

@@ -206,30 +206,28 @@ angular.module('services').service(
 
     addModerators(serviceName, opts) {
       return this.$q
-        .all(_.chunk(opts.users, 500).map(moderators =>
-          this.OvhHttp.post(`/email/domain/${serviceName}/mailinglist/${opts.mailingList}/users/add`, {
-            rootPath: '2api',
-            data: {
-              users: moderators,
-              type: opts.type,
-            },
-          })))
+        .all(_.chunk(opts.users, 500).map(moderators => this.OvhHttp.post(`/email/domain/${serviceName}/mailinglist/${opts.mailingList}/users/add`, {
+          rootPath: '2api',
+          data: {
+            users: moderators,
+            type: opts.type,
+          },
+        })))
         .then(data => data.pop());
     }
 
     deleteModerators(serviceName, opts) {
       return this.$q
-        .all(_.chunk(opts.users, 500).map(moderators =>
-          this.OvhHttp
-            .delete(`/email/domain/${serviceName}/mailinglist/${opts.mailingList}/users/delete`, {
-              rootPath: '2api',
-              headers: { 'Content-Type': 'application/json;charset=utf-8' },
-              data: {
-                users: moderators,
-                type: opts.type,
-              },
-            })
-            .then(resp => resp)))
+        .all(_.chunk(opts.users, 500).map(moderators => this.OvhHttp
+          .delete(`/email/domain/${serviceName}/mailinglist/${opts.mailingList}/users/delete`, {
+            rootPath: '2api',
+            headers: { 'Content-Type': 'application/json;charset=utf-8' },
+            data: {
+              users: moderators,
+              type: opts.type,
+            },
+          })
+          .then(resp => resp)))
         .then(data => data.pop());
     }
 

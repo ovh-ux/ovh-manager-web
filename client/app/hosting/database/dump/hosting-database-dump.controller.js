@@ -37,12 +37,11 @@ angular.module('App').controller(
           this.databaseDumps = databaseDumps;
           return databaseDumps;
         })
-        .catch(err =>
-          this.alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_databases_dumps_error_fetch'),
-            err,
-            this.$scope.alerts.main,
-          ));
+        .catch(err => this.alerter.alertFromSWS(
+          this.$scope.tr('hosting_tab_databases_dumps_error_fetch'),
+          err,
+          this.$scope.alerts.main,
+        ));
     }
 
     transformItem(item) {

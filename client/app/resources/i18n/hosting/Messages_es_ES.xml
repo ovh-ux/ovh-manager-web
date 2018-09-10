@@ -35,6 +35,10 @@
    <translation id="hosting_dashboard_service_regenerate_ssl_success" qtlid="315722">La solicitud de regeneración del certificado se ha enviado.</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_error" qtlid="434161">Se ha producido un error al solicitar la regeneración del certificado.</translation>
    <translation id="hosting_dashboard_disk_usage" qtlid="28159">Espacio en disco</translation>
+   <translation id="hosting_dashboard_disk_total" qtlid="252776">Capacidad del disco:</translation>
+   <translation id="hosting_dashboard_disk_available_total" qtlid="492392">Espacio disponible</translation>
+   <translation id="hosting_dashboard_disk_usage_total" qtlid="109129">Espacio utilizado:</translation>
+   <translation id="hosting_dashboard_disk_usage_configuration" qtlid="492405">{0} están asignados a la configuración del servidor</translation>
    <translation id="hosting_dashboard_trafic_usage" qtlid="222137">Tráfico consumido</translation>
    <translation id="hosting_dashboard_hosting_activities" qtlid="268134">Actividades del alojamiento</translation>
    <translation id="hosting_dashboard_php_support_SECURITY_FIXES" qtlid="272526">Ya no existen más versiones actualizadas de la configuración de PHP que utiliza actualmente. Tan solo podrá corregir los fallos de seguridad. Haga clic en el botón «Modificar la configuración», que se muestra a la derecha de la versión actual, para actualizar su versión. El cambio de versión podría afectar al funcionamiento de sus sitios web. </translation>
@@ -412,7 +416,7 @@
    <translation id="hosting_tab_DATABASES_configuration_dump_step1_date" qtlid="363583">Elija la fecha de la copia de seguridad deseada:</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step2_question" qtlid="413167">¿Quiere solicitar el backup de la base de datos {0} con los siguientes parámetros?</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_step2_date" qtlid="66308">Fecha:</translation>
-   <translation id="hosting_tab_DATABASES_configuration_dump_step2_information" qtlid="274974">Tras la solicitud de creación, recibirá su copia de seguridad por correo electrónico al cabo de unos minutos.</translation>
+   <translation id="hosting_tab_DATABASES_configuration_dump_step2_information" qtlid="274974">Una vez enviada la solicitud, recibirá su copia de seguridad por correo electrónico al cabo de unos minutos.</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_fail" qtlid="274987">Se ha producido un error al solicitar la creación de la copia de seguridad de la base de datos {0}.</translation>
    <translation id="hosting_tab_DATABASES_configuration_dump_success" qtlid="275000">Se va a crear la copia de seguridad de la base de datos. </translation>
 
@@ -468,15 +472,15 @@
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name" qtlid="286266">Nombre del archivo:</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_info" qtlid="296713">Asigne un título a su documento para encontrarlo más fácilmente.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_required_error" qtlid="286279">Es obligatorio introducir el nombre del archivo. </translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_format_error" qtlid="286305">Debe respetar el tipo de archivo.</translation>
+   <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_format_error" qtlid="286305">Utilice un tipo de archivo compatible.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_required_error" qtlid="286318">El archivo es obligatorio.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload" qtlid="52807">Enviar</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_succes" qtlid="286331">El archivo se ha enviado correctamente.</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_upload_fail" qtlid="286344">Error al enviar el archivo:</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step1_choose_file" qtlid="286357">Archivos presentes en su cuenta:</translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step2_title" qtlid="84237">Opciones adicionales :</translation>
+   <translation id="hosting_tab_DATABASES_table_popover_import_step2_title" qtlid="84237">Opciones adicionales:</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step2_flush_database" qtlid="286370">Vaciar la base de datos actual</translation>
-   <translation id="hosting_tab_DATABASES_table_popover_import_step2_send_email" qtlid="286383">Enviar un mensaje de correo cuando termine la importación</translation>
+   <translation id="hosting_tab_DATABASES_table_popover_import_step2_send_email" qtlid="286383">Enviar un email cuando termine la importación</translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step3_succes" qtlid="286396">Se ha añadido una tarea de importación a la sección «Tareas en curso».  </translation>
    <translation id="hosting_tab_DATABASES_table_popover_import_step3_fail" qtlid="286409">Se ha producido un problema durante el envío. Por favor, vuelva a intentarlo. </translation>
 
@@ -1275,7 +1279,7 @@
    <translation id="hosting_tab_BOOST_disable_success" qtlid="227546">El «boost» de su producto se ha desactivado.</translation>
    <translation id="hosting_tab_BOOST_disable_error" qtlid="227559">Se ha producido un error al desactivar el «boost»:</translation>
 
-   <translation id="hosting_tab_AUTOMATED_EMAILS" qtlid="267536">Scripts de mensajes</translation>
+   <translation id="hosting_tab_AUTOMATED_EMAILS" qtlid="267536">Scripts de correo electrónico</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_guide_help" qtlid="271530">¿Necesita ayuda para gestionar los mensajes de correo enviados desde los scripts?</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_desc" qtlid="270319">Mensajes de correo enviados desde los scripts CGI/PERL/PHP.</translation>
    <translation id="hosting_tab_AUTOMATED_EMAILS_info" qtlid="254414">Esta página solo recoge los mensajes de correo enviados desde los scripts CGI, Perl o PHP.</translation>

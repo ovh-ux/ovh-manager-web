@@ -139,8 +139,7 @@ angular.module('services').service(
      * @param {string} serviceName
      */
     getCurrent(serviceName) {
-      return this.getIds(serviceName, false).then(ids =>
-        this.getFromId(serviceName, ids.pop()));
+      return this.getIds(serviceName, false).then(ids => this.getFromId(serviceName, ids.pop()));
     }
 
     /**
@@ -148,8 +147,7 @@ angular.module('services').service(
      * @param {string} serviceName
      */
     getAll(serviceName) {
-      return this.getIds(serviceName, false).then(ids =>
-        this.getDatasFromIds(serviceName, ids));
+      return this.getIds(serviceName, false).then(ids => this.getDatasFromIds(serviceName, ids));
     }
 
     /**
@@ -157,8 +155,7 @@ angular.module('services').service(
      * @param {string} serviceName
      */
     getHistoric(serviceName) {
-      return this.getIds(serviceName, true).then(ids =>
-        this.getDatasFromIds(serviceName, ids));
+      return this.getIds(serviceName, true).then(ids => this.getDatasFromIds(serviceName, ids));
     }
 
     /**

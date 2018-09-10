@@ -135,7 +135,8 @@
                                  data-locale="{{translator.locale}}"
                                  data-start-view="month">
                                 <input type="text" class="form-control" id="date-responder-start" name="responderDateStart" required
-                                       data-ng-model="ctrl.model.responderDateStart">
+                                       data-ng-model="ctrl.model.responderDateStart"
+                                       data-ng-model-options="{ updateOn: 'blur' }">
                                 <div class="input-group-addon">
                                     <span class="fa fa-calendar" aria-hidden="true"></span>
                                 </div>

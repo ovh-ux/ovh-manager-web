@@ -21,17 +21,15 @@ angular.module('App').controller(
       return this.Domain.postTagsUk(this.$stateParams.productId, {
         tag: this.ukTag,
       })
-        .then(() =>
-          this.Alerter.success(
-            this.$scope.tr('domain_dashboard_add_uk_tags_success'),
-            this.$scope.alerts.main,
-          ))
-        .catch(err =>
-          this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_dashboard_add_uk_tags_error'),
-            err,
-            this.$scope.alerts.main,
-          ))
+        .then(() => this.Alerter.success(
+          this.$scope.tr('domain_dashboard_add_uk_tags_success'),
+          this.$scope.alerts.main,
+        ))
+        .catch(err => this.Alerter.alertFromSWS(
+          this.$scope.tr('domain_dashboard_add_uk_tags_error'),
+          err,
+          this.$scope.alerts.main,
+        ))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

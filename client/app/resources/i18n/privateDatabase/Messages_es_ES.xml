@@ -192,7 +192,7 @@
    <translation id="privateDatabase_password_docker" qtlid="251824">Contraseña del servidor</translation>
    <translation id="privateDatabase_change_rootPassword_new" qtlid="17177">Nueva contraseña</translation>
    <translation id="privateDatabase_change_rootPassword_confirm" qtlid="9983">Confirmar</translation>
-   <translation id="privateDatabase_change_rootPassword_conditions" qtlid="216001">Atención, la contraseña debe cumplir los siguientes criterios: <br/>- solo debe tener caracteres alfanuméricos;<br/>- mínimo {0} caracteres;<br/>- máximo {1} caracteres;<br/>- al menos una letra mayúscula;<br/>- al menos una letra minúscula;<br/>- al menos una cifra.</translation>
+   <translation id="privateDatabase_change_rootPassword_conditions" qtlid="216001">Atención, la contraseña debe cumplir los siguientes criterios: <br/>- solo caracteres alfanuméricos<br/>- mínimo {0} caracter(es)<br/>- máximo {1} caracteres<br/>- al menos una letra mayúscula<br/>- al menos una letra minúscula<br/>- al menos una cifra</translation>
    <translation id="privateDatabase_change_rootPassword_error_equals" qtlid="216014">Las contraseñas no son iguales.</translation>
    <translation id="privateDatabase_change_rootPassword_error_pattern" qtlid="216027">Formato de la contraseña incorrecto.</translation>
    <translation id="privateDatabase_change_rootPassword_error_required" qtlid="216040">Campos obligatorios.</translation>
@@ -207,8 +207,8 @@
    <translation id="privateDatabase_change_userPassword_title" qtlid="80394">Cambiar la contraseña</translation>
    <translation id="privateDatabase_change_userPassword_new" qtlid="17177">Nueva contraseña</translation>
    <translation id="privateDatabase_change_userPassword_confirm" qtlid="9983">Confirmar</translation>
-   <translation id="privateDatabase_change_userPassword_conditions" qtlid="216001">Atención, la contraseña debe cumplir los siguientes criterios: <br/>- solo debe tener caracteres alfanuméricos;<br/>- mínimo {0} caracteres;<br/>- máximo {1} caracteres;<br/>- al menos una letra mayúscula;<br/>- al menos una letra minúscula;<br/>- al menos una cifra.</translation>
-   <translation id="privateDatabase_add_user_conditions" qtlid="221149">Atención, el nombre debe cumplir los siguientes criterios: <br/>- mínimo {0} caracteres<br/>- máximo {1} caracteres<br/>- debe estar formado únicamente por caracteres alfanuméricos<br/>- puede contener los caracteres «-», «_» y «.»</translation>
+   <translation id="privateDatabase_change_userPassword_conditions" qtlid="216001">Atención, la contraseña debe cumplir los siguientes criterios: <br/>- solo caracteres alfanuméricos<br/>- mínimo {0} caracter(es)<br/>- máximo {1} caracteres<br/>- al menos una letra mayúscula<br/>- al menos una letra minúscula<br/>- al menos una cifra</translation>
+   <translation id="privateDatabase_add_user_conditions" qtlid="221149">Atención, el nombre debe cumplir los siguientes criterios: <br/>- mínimo {0} caracteres<br/>- máximo {1} caracteres<br/>- solo caracteres alfanuméricos<br/>- puede contener los caracteres «-», «_» y «.»</translation>
    <translation id="privateDatabase_change_userPassword_error_equals" qtlid="216014">Las contraseñas no son iguales.</translation>
    <translation id="privateDatabase_change_userPassword_error_pattern" qtlid="216027">Formato de la contraseña incorrecto.</translation>
    <translation id="privateDatabase_change_userPassword_error_required" qtlid="216040">Campos obligatorios.</translation>
@@ -304,7 +304,7 @@
    <translation id="privateDatabase_add_bdd_name" qtlid="60059">Nombre de la BD</translation>
    <translation id="privateDatabase_add_bdd_error_name_pattern" qtlid="216625">El nombre no cumple los criterios.</translation>
    <translation id="privateDatabase_add_bdd_error_name_required" qtlid="216040">Campos obligatorios.</translation>
-   <translation id="privateDatabase_create_bdd_conditions" qtlid="216638">Atención, el nombre debe cumplir los siguientes criterios: <br/>- solo debe tener caracteres alfanuméricos;<br/>- mínimo {0} caracteres;<br/>- máximo {1} caracteres.</translation>
+   <translation id="privateDatabase_create_bdd_conditions" qtlid="216638">Atención, el nombre debe cumplir los siguientes criterios: <br/>- solo caracteres alfanuméricos<br/>- mínimo {0} caracter(es)<br/>- máximo {1} caracteres</translation>
    <translation id="privateDatabase_add_bdd_success" qtlid="216651">La solicitud de creación de la base de datos se ha enviado.</translation>
    <translation id="privateDatabase_add_bdd_fail" qtlid="216664">Se ha producido un error al crear la base de datos.</translation>
    <translation id="privateDatabase_tabs_bdd_adding" qtlid="216677">Creando la base de datos...</translation>
@@ -397,7 +397,7 @@
    <translation id="privateDatabase_RAM_add_do_order_attention" qtlid="108456">¡Atención!</translation>
    <translation id="privateDatabase_RAM_add_do_order_warning" qtlid="304433">La operación conlleva el reinicio del servidor.</translation>
    <translation id="privateDatabase_RAM_loading_order" qtlid="221162">Cargando ofertas...</translation>
-   <translation id="privateDatabase_order_RAM_finish_success" qtlid="444732">La <a href="{0}" target="_blank">orden de pedido</a> se ha generado correctamente. La cantidad de RAM se modificará una vez haya validado dicha orden de pedido.</translation>
+   <translation id="privateDatabase_order_RAM_finish_success" qtlid="444732">La <a href="{0}" target="_blank">orden de pedido</a> se ha generado correctamente. La cantidad de RAM se modificará una vez que haya validado dicha orden de pedido.</translation>
    <translation id="privateDatabase_order_RAM_finish_error" qtlid="181227">Se ha producido un error al generar la orden de pedido.</translation>
    <translation id="privateDatabase_order_RAM_resume" qtlid="177496">Resumen del pedido</translation>
    <translation id="privateDatabase_order_RAM_price_HT" qtlid="146177">Precio total (sin IVA):</translation>
@@ -588,17 +588,17 @@
    <translation id="privateDatabase_tabs_logs_list_no_logs" qtlid="413388">Todavía no hay logs.</translation>
 
 <!-- OOM -->
-   <translation id="privateDatabase_no_oom" qtlid="440313">No se han producido rebasamientos de RAM.</translation>
-   <translation id="privateDatabase_warning_oom" qtlid="440326">Recientemente se han producido {0} rebasamientos de RAM.</translation>
-   <translation id="privateDatabase_modale_oom_title" qtlid="436957">Cantidad de RAM superada</translation>
+   <translation id="privateDatabase_no_oom" qtlid="440313">No se ha rebasado la RAM.</translation>
+   <translation id="privateDatabase_warning_oom" qtlid="440326">Recientemente se ha rebasado la RAM {0} veces.</translation>
+   <translation id="privateDatabase_modale_oom_title" qtlid="436957">Memoria RAM rebasada</translation>
    <translation id="privateDatabase_modale_oom_confirm_button" qtlid="440339">Contratar más RAM</translation>
    <translation id="privateDatabase_modale_oom_close_button" qtlid="4670">Cerrar</translation>
-   <translation id="privateDatabase_modale_oom_info" qtlid="440352">Rebasamientos de la memoria RAM producidos en los {0} últimos días.<br />Solo se mostrarán los últimos {1} rebasamientos.</translation>
+   <translation id="privateDatabase_modale_oom_info" qtlid="440352">Esta tabla muestra las veces en las que se ha rebasado la RAM en los últimos {0} días. Solo se mostrarán las últimas {1} veces.</translation>
    <translation id="privateDatabase_modale_oom_tab_event_date" qtlid="24523">Fecha</translation>
-   <translation id="privateDatabase_modale_oom_tab_size_reached" qtlid="436983">Capacidad alcanzada</translation>
-   <translation id="privateDatabase_modale_oom_tab_uptime" qtlid="436996">Tiempo transcurrido desde la última vez que superó la cantidad de RAM asignada.</translation>
-   <translation id="privateDatabase_modale_oom_no_oom" qtlid="437009">No se ha superado la cantidad de RAM asignada.</translation>
-   <translation id="privateDatabase_modale_oom_info_order" qtlid="437022">Le aconsejamos que aumente la cantidad de RAM de su {0} para solucionar estos problemas.</translation>
+   <translation id="privateDatabase_modale_oom_tab_size_reached" qtlid="436983">Tamaño alcanzado</translation>
+   <translation id="privateDatabase_modale_oom_tab_uptime" qtlid="436996">Tiempo transcurrido desde la última vez</translation>
+   <translation id="privateDatabase_modale_oom_no_oom" qtlid="437009">No se ha rebasado la RAM asignada.</translation>
+   <translation id="privateDatabase_modale_oom_info_order" qtlid="437022">Le recomendamos que aumente la RAM de su {0} para solucionar estos problemas.</translation>
 
 <!-- EXTENSIONS -->
 <!-- LIST -->
@@ -610,7 +610,7 @@
 <!-- INFOS -->
    <translation id="privateDatabase_tabs_list_go_extensions" qtlid="437035">Ver las extensiones</translation>
    <translation id="privateDatabase_tabs_list_extensions_info" qtlid="437048">Extensiones de la base de datos {0}</translation>
-   <translation id="privateDatabase_tabs_list_extensions_no_extensions" qtlid="437061">No hay ninguna extensión disponible</translation>
+   <translation id="privateDatabase_tabs_list_extensions_no_extensions" qtlid="437061">No hay extensiones disponibles</translation>
    <translation id="privateDatabase_tabs_list_extensions_enable_info" qtlid="437074">Activar la extensión</translation>
    <translation id="privateDatabase_tabs_list_extensions_disable_info" qtlid="437087">Desactivar la extensión</translation>
    <translation id="privateDatabase_tabs_list_extensions_reload_info" qtlid="437100">Volver a cargar las extensiones</translation>

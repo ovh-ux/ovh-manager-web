@@ -21,8 +21,7 @@ angular.module('App').controller(
       this.domain = this.$scope.currentActionData.domain;
       this.fieldTypes = this.$scope.currentActionData.fieldTypes;
       this.edit = this.$scope.currentActionData.edit || false;
-      this.subdomainPreset =
-        this.$scope.currentActionData.subdomainPreset || '';
+      this.subdomainPreset = this.$scope.currentActionData.subdomainPreset || '';
 
       this.loading = {
         checkSubDomain: false,
@@ -108,9 +107,9 @@ angular.module('App').controller(
       const value = _.get(this.model, 'target.target');
       input.$setValidity(
         'target',
-        value === null ||
-          value === '' ||
-          this.DomainValidator.isValidMXTarget(value),
+        value === null
+          || value === ''
+          || this.DomainValidator.isValidMXTarget(value),
       );
     }
 
@@ -118,9 +117,9 @@ angular.module('App').controller(
       const value = _.get(this.model, 'target.replace');
       input.$setValidity(
         'replace',
-        value === null ||
-          value === '' ||
-          this.DomainValidator.isValidReplaceNaptr(value),
+        value === null
+          || value === ''
+          || this.DomainValidator.isValidReplaceNaptr(value),
       );
     }
 
@@ -136,8 +135,8 @@ angular.module('App').controller(
             fieldType,
           );
           if (
-            splitted[i] === fieldType ||
-            !this.DomainValidator.SPF[`isValid${fieldType.toUpperCase()}`](fieldFormatted)
+            splitted[i] === fieldType
+            || !this.DomainValidator.SPF[`isValid${fieldType.toUpperCase()}`](fieldFormatted)
           ) {
             isValid = false;
           }
@@ -151,8 +150,8 @@ angular.module('App').controller(
       let isValid;
 
       if (this.DomainValidator.regex.SRV_target.test(value)) {
-        isValid =
-          this.Validator.isValidDomain(value.match(this.DomainValidator.regex.SRV_target)[1]);
+        isValid = this.Validator
+          .isValidDomain(value.match(this.DomainValidator.regex.SRV_target)[1]);
       } else {
         isValid = this.Validator.isValidSubDomain(value);
       }
@@ -169,9 +168,9 @@ angular.module('App').controller(
       const value = angular.copy(this.model.subDomainToDisplay);
       input.$setValidity(
         'subdomain',
-        value === null ||
-          value === '' ||
-          this.Validator.isValidSubDomain(value, {
+        value === null
+          || value === ''
+          || this.Validator.isValidSubDomain(value, {
             canBeginWithUnderscore: true,
             canBeginWithWildcard: true,
           }),
@@ -190,8 +189,8 @@ angular.module('App').controller(
 
     checkExistingSubDomain() {
       if (
-        !!_.find(['A', 'AAAA'], entry => entry === this.model.fieldType) &&
-        _.isString(this.model.subDomainToDisplay)
+        !!_.find(['A', 'AAAA'], entry => entry === this.model.fieldType)
+        && _.isString(this.model.subDomainToDisplay)
       ) {
         return this.Domain.getTabZoneDns(
           this.domain.name,
@@ -219,9 +218,9 @@ angular.module('App').controller(
       const value = input.$viewValue;
       input.$setValidity(
         'target',
-        value === null ||
-          value === '' ||
-          this.DomainValidator.isValidTarget(value, type),
+        value === null
+          || value === ''
+          || this.DomainValidator.isValidTarget(value, type),
       );
     }
 
@@ -262,9 +261,9 @@ angular.module('App').controller(
 
     getResumeTargetAlert() {
       if (
-        this.model.target &&
-        /[^.]$/.test(this.model.target.value) &&
-        ['NS', 'CNAME', 'SRV', 'MX'].indexOf(this.model.fieldType) !== -1
+        this.model.target
+        && /[^.]$/.test(this.model.target.value)
+        && ['NS', 'CNAME', 'SRV', 'MX'].indexOf(this.model.fieldType) !== -1
       ) {
         return `${this.model.target.target}.${this.domain.displayName}.`;
       }
@@ -355,8 +354,8 @@ angular.module('App').controller(
                 this.model.target.h = {};
               }
               if (
-                splittedVal[1] === '*' ||
-                splittedVal[1].indexOf(':') !== -1
+                splittedVal[1] === '*'
+                || splittedVal[1].indexOf(':') !== -1
               ) {
                 this.model.target.h.sha1 = true;
                 this.model.target.h.sha256 = true;
@@ -497,8 +496,8 @@ angular.module('App').controller(
           // Test "a", "mx", "ptr", "ip4", "ip6", "include", "exists", "redirect", "exp" fields
           _.forEach(['a', 'mx', 'ptr', 'ip4', 'ip6', 'include'], (fieldType) => {
             if (
-              !found &&
-              this.DomainValidator.regex.SPF_sender[
+              !found
+              && this.DomainValidator.regex.SPF_sender[
                 fieldType.toUpperCase()
               ].test(splitted[i])
             ) {
@@ -571,11 +570,9 @@ angular.module('App').controller(
     setTargetValue(fieldType) {
       switch (fieldType.toLowerCase()) {
         case 'txt': {
-          const search =
-            this.model.target.target &&
-            this.model.target.target.match(this.DomainValidator.regex.TXT);
-          this.model.target.value =
-            search && search.length >= 2 ? `"${search[1]}"` : null;
+          const search = this.model.target.target
+            && this.model.target.target.match(this.DomainValidator.regex.TXT);
+          this.model.target.value = search && search.length >= 2 ? `"${search[1]}"` : null;
           break;
         }
         case 'cname':
@@ -583,44 +580,44 @@ angular.module('App').controller(
           this.model.target.value = punycode.toASCII(this.model.target.target || '');
           break;
         case 'dkim':
-          this.model.target.value =
-            this.DomainValidator.constructor.transformDKIMTarget(this.model.target);
+          this.model.target.value = this.DomainValidator.constructor
+            .transformDKIMTarget(this.model.target);
           break;
         case 'dmarc':
-          this.model.target.value =
-            this.DomainValidator.constructor.transformDMARCTarget(this.model.target);
+          this.model.target.value = this.DomainValidator.constructor
+            .transformDMARCTarget(this.model.target);
           break;
         case 'loc':
-          this.model.target.value =
-            this.DomainValidator.constructor.transformLOCTarget(this.model.target);
+          this.model.target.value = this.DomainValidator.constructor
+            .transformLOCTarget(this.model.target);
           break;
         case 'mx':
-          this.model.target.value =
-            this.DomainValidator.constructor.transformMXTarget(this.model.target);
+          this.model.target.value = this.DomainValidator.constructor
+            .transformMXTarget(this.model.target);
           break;
         case 'naptr':
-          this.model.target.value =
-            this.DomainValidator.constructor.transformNAPTRTarget(this.model.target);
+          this.model.target.value = this.DomainValidator.constructor
+            .transformNAPTRTarget(this.model.target);
           break;
         case 'spf':
-          this.model.target.value =
-            this.DomainValidator.constructor.transformSPFTarget(this.model.target);
+          this.model.target.value = this.DomainValidator.constructor
+            .transformSPFTarget(this.model.target);
           break;
         case 'srv':
-          this.model.target.value =
-            this.DomainValidator.constructor.transformSRVTarget(this.model.target);
+          this.model.target.value = this.DomainValidator.constructor
+            .transformSRVTarget(this.model.target);
           break;
         case 'sshfp':
-          this.model.target.value =
-            this.DomainValidator.constructor.transformSSHFPTarget(this.model.target);
+          this.model.target.value = this.DomainValidator.constructor
+            .transformSSHFPTarget(this.model.target);
           break;
         case 'tlsa':
-          this.model.target.value =
-            this.DomainValidator.constructor.transformTLSATarget(this.model.target);
+          this.model.target.value = this.DomainValidator.constructor
+            .transformTLSATarget(this.model.target);
           break;
         case 'caa':
-          this.model.target.value =
-            this.DomainValidator.constructor.transformCAATarget(this.model.target);
+          this.model.target.value = this.DomainValidator.constructor
+            .transformCAATarget(this.model.target);
           break;
         default:
           this.model.target.value = this.model.target.target || '';

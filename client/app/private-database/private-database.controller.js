@@ -67,28 +67,23 @@ angular.module('App').controller(
         );
       });
 
-      this.$scope.isDockerDatabase = () =>
-        this.$scope.database.infrastructure === 'docker';
+      this.$scope.isDockerDatabase = () => this.$scope.database.infrastructure === 'docker';
 
-      this.$scope.isLegacyDatabase = () =>
-        this.$scope.database.infrastructure === 'legacy';
+      this.$scope.isLegacyDatabase = () => this.$scope.database.infrastructure === 'legacy';
 
-      this.$scope.isConfigSet = () =>
-        this.privateDatabaseService
-          .getConfigurationDetails(this.productId)
-          .then(res => !_.isEmpty(res.details));
+      this.$scope.isConfigSet = () => this.privateDatabaseService
+        .getConfigurationDetails(this.productId)
+        .then(res => !_.isEmpty(res.details));
 
-      this.$scope.isExtensionSet = () =>
-        this.privateDatabaseExtensionService
-          .getExtensions(this.productId, this.$scope.database.databaseName)
-          .then(res => !_.isEmpty(res));
+      this.$scope.isExtensionSet = () => this.privateDatabaseExtensionService
+        .getExtensions(this.productId, this.$scope.database.databaseName)
+        .then(res => !_.isEmpty(res));
 
       this.$scope.isDBaaS = () => this.$scope.database.offer === 'public';
 
-      this.$scope.isRenew = () =>
-        this.$scope.database.serviceInfos.renew &&
-        (this.$scope.database.serviceInfos.renew.forced ||
-          this.$scope.database.serviceInfos.renew.automatic);
+      this.$scope.isRenew = () => this.$scope.database.serviceInfos.renew
+        && (this.$scope.database.serviceInfos.renew.forced
+          || this.$scope.database.serviceInfos.renew.automatic);
 
       this.$scope.addCron = (data) => {
         this.$scope.setAction('cron/add/private-database-cron-add', data);
@@ -138,8 +133,7 @@ angular.module('App').controller(
       };
 
       this.$scope.$on('privateDatabase.global.actions.start', (e, taskOpt) => {
-        this.$scope.taskState.lockAction =
-          taskOpt.lock || this.$scope.taskState.lockAction;
+        this.$scope.taskState.lockAction = taskOpt.lock || this.$scope.taskState.lockAction;
       });
 
       this.$scope.$on(
@@ -218,10 +212,9 @@ angular.module('App').controller(
           }
 
           if (!this.$scope.database.hostnameFtp) {
-            this.$scope.database.hostnameFtp =
-              this.$scope.database.infrastructure === 'legacy'
-                ? 'sqlprive.ovh.net'
-                : this.$scope.database.hostname.replace('.ha.', '.');
+            this.$scope.database.hostnameFtp = this.$scope.database.infrastructure === 'legacy'
+              ? 'sqlprive.ovh.net'
+              : this.$scope.database.hostname.replace('.ha.', '.');
           }
 
           if (!this.$scope.database.portFtp) {
@@ -237,14 +230,13 @@ angular.module('App').controller(
     }
 
     editDisplayName() {
-      this.newDisplayName.value =
-        this.$scope.database.displayName || this.$scope.database.serviceName;
+      this.newDisplayName.value = this.$scope.database.displayName
+        || this.$scope.database.serviceName;
       this.editMode = true;
     }
 
     saveDisplayName() {
-      const displayName =
-        this.newDisplayName.value || this.$scope.database.serviceName;
+      const displayName = this.newDisplayName.value || this.$scope.database.serviceName;
       this.privateDatabaseService
         .updatePrivateDatabase(this.productId, {
           body: {

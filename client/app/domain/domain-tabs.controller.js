@@ -132,8 +132,8 @@ angular.module('App').controller(
 
     static getUpdateOwnerUrl(domain) {
       if (
-        _.get(domain, 'whoisOwner', false) &&
-        domain.whoisOwner !== 'pending'
+        _.get(domain, 'whoisOwner', false)
+        && domain.whoisOwner !== 'pending'
       ) {
         return `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
       }

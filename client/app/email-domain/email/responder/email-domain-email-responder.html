@@ -1,4 +1,4 @@
-<div class="row" data-ng-controller="EmailDomainEmailResponderCtrl as ctrlEmailDomainEmailResponder">
+<div class="row" data-ng-controller="EmailDomainEmailResponderCtrl as $ctrl">
     <div class="col-md-9">
         <div data-ovh-alert="{{alerts.main}}"></div>
 
@@ -9,101 +9,65 @@
         </button>
         <h2 data-i18n-static="email_tab_responders_management_heading"></h2>
 
-        <div class="text-center" data-ng-if="ctrlEmailDomainEmailResponder.loading.responders">
+        <div class="text-center" data-ng-if="$ctrl.loading.responders">
             <oui-spinner data-size="l"></oui-spinner>
         </div>
 
-        <div data-ng-if="!ctrlEmailDomainEmailResponder.loading.responders">
+        <div data-ng-if="!$ctrl.loading.responders">
             <dl class="dl-horizontal dl-lg" data-ng-if="ctrlEmailDomainEmail.quotas.responder > 0">
                 <dt data-i18n-static="email_tab_responders_quota"></dt>
                 <dd class="text-nowrap"
-                    data-ng-bind="ctrlEmailDomainEmailResponder.responders.length + ' / ' + (ctrlEmailDomainEmail.quotas.responder || '0')">
+                    data-ng-bind="$ctrl.responders.length + ' / ' + (ctrlEmailDomainEmail.quotas.responder || '0')">
                 </dd>
             </dl>
 
-            <div class="alert alert-danger" role="alert"
-                 data-ng-bind="tr('email_tab_table_emails_responder_quota_excedeed', [ctrlEmailDomainEmailResponder.responders.length, ctrlEmailDomainEmail.quotas.responder])"
-                 data-ng-if="ctrlEmailDomainEmailResponder.responders.length >= ctrlEmailDomainEmail.quotas.responder">
-            </div>
+            <oui-message data-ng-if="$ctrl.responders.length >= ctrlEmailDomainEmail.quotas.responder"
+                         data-type="error"
+                         data-ng-bind="::tr('email_tab_table_emails_responder_quota_excedeed', [$ctrl.responders.length, ctrlEmailDomainEmail.quotas.responder])">
+            </oui-message>
 
-            <div class="alert alert-info" role="alert"
-                 data-i18n-static="email_tab_table_responders_empty"
-                 data-ng-if="!ctrlEmailDomainEmailResponder.responders.length">
-            </div>
+            <oui-message data-ng-if="!$ctrl.responders.length"
+                         data-type="info"
+                         data-i18n-static="email_tab_table_responders_empty">
+            </oui-message>
 
-            <div class="table-responsive"
-                 data-ng-if="ctrlEmailDomainEmailResponder.responders.length > 0">
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col" data-i18n-static="email_tab_responders_name"></th>
-                            <th scope="col" data-i18n-static="emails_common_date_from"></th>
-                            <th scope="col" data-i18n-static="emails_common_date_to"></th>
-                            <th class="min-width text-center" scope="col" data-i18n-static="emails_common_status"></th>
-                            <th scope="col" data-i18n-static="emails_common_copy_to"></th>
-                            <th class="min-width text-right" scope="col">
-                                <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_header_refresh}}"
-                                        data-ng-click="ctrlEmailDomainEmailResponder.refreshTableResponders()">
-                                    <span class="fa fa-refresh" aria-hidden="true"></span>
-                                </button>
-                            </th>
-                        </tr>
-                    </thead>
-
-                    <tbody data-ng-if="ctrlEmailDomainEmailResponder.loading.pager">
-                        <tr>
-                            <td class="loader text-center" colspan="6"></td>
-                        </tr>
-                    </tbody>
-
-                    <tbody>
-                        <tr data-ng-repeat="responder in ctrlEmailDomainEmailResponder.respondersDetails track by $index">
-                            <td data-ng-bind="::responder.account"></td>
-                            <td data-ng-bind="::responder.from | date:'medium'" data-ng-if="responder.from"></td>
-                            <td data-ng-if="responder.from && !responder.to"></td>
-                            <td data-ng-if="!responder.from && responder.to"></td>
-                            <td data-ng-bind="::responder.to | date:'medium'" data-ng-if="responder.to"></td>
-                            <td class="text-center" colspan="2"
-                                data-ng-if="!responder.to && !responder.from">permanent</td>
-                            <td class="text-center">
-                                <span class="label" data-ng-class="{
-                                    'label-success': !ctrlEmailDomainEmailResponder.constructor.isExpired(responder),
-                                    'label-danger': ctrlEmailDomainEmailResponder.constructor.isExpired(responder)
-                                    }"
-                                      data-ng-bind="tr('email_tab_responders_status_expired_' + ctrlEmailDomainEmailResponder.constructor.isExpired(responder))"></span>
-                            </td>
-                            <td data-ng-bind="::responder.copyTo"></td>
-                            <td class="text-center">
-                                <button class="btn btn-icon" type="button"
-                                        data-linkedpopover="email-domain/email/responder/email-domain-email-responder.popover.html"
-                                        data-linkedpopover-placement="left"
-                                        data-linkedpopover-remote="true"
-                                        data-linkedpopover-single="true"
-                                        data-linkedpopover-title="{{i18n.common_actions}}">
-                                    <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="clearfix"
-             data-ng-if="ctrlEmailDomainEmailResponder.responders">
-            <div data-pagination-front
-                 data-items="ctrlEmailDomainEmailResponder.responders"
-                 data-paginated-items="ctrlEmailDomainEmailResponder.respondersDetails"
-                 data-current-page="currentPageResponders"
-                 data-nb-pages="nbPages"
-                 data-items-per-page="itemsPerPage"
-                 data-transform-item="ctrlEmailDomainEmailResponder.transformItem(item)"
-                 data-on-transform-item-done="ctrlEmailDomainEmailResponder.onTransformItemDone()"
-                 data-page-placeholder="{{tr('pagination_page', [currentPageResponders, nbPages])}}"
-                 data-item-per-page-placeholder="{{tr('pagination_display')}}"
-                 data-on-page-change="ctrlEmailDomainEmailResponder.loading.pager = true"
-                 data-ng-show="!ctrlEmailDomainEmailResponder.loading.responders && ctrlEmailDomainEmailResponder.respondersDetails.length > 0">
-            </div>
+            <oui-datagrid data-rows="$ctrl.responders" data-row-loader="$ctrl.transformItem($row)">
+                <oui-column data-title="::i18n.email_tab_responders_name" data-property="account"></oui-column>
+                <oui-column data-title="::i18n.emails_common_date_from" data-property="from">
+                    <span data-ng-bind="::'$row.from | date: 'medium'" data-ng-if="$row.from"></span>
+                </oui-column>
+                <oui-column data-title="::i18n.emails_common_date_to" data-property="to">
+                    <span data-ng-bind="::$row.to | date: 'medium'" data-ng-if="$row.to"></span>
+                    <span data-ng-if="!$row.to && !$row.from" data-i18n-static="email_tab_modal_create_responder_permanent"></span>
+                </oui-column>
+                <oui-column data-title="::i18n.emails_common_status">
+                    <span class="oui-status"
+                          data-ng-class="{
+                            'oui-status_success': !$ctrl.constructor.isExpired($row),
+                            'oui-status_error': $ctrl.constructor.isExpired($row)
+                            }"
+                          data-ng-bind="::tr('email_tab_responders_status_expired_' + $ctrl.constructor.isExpired($row))"></span>
+                </oui-column>
+                <oui-column data-title="::i18n.emails_common_copy_to" data-property="copyTo"></oui-column>
+                <oui-column data-title="">
+                    <span data-ng-if="$row.actionsDisabled" class="fa fa-hourglass-half" aria-hidden="true"></span>
+                </oui-column>
+                <oui-action-menu data-align="end" data-compact data-disabled="$row.actionsDisabled">
+                    <oui-action-menu-item data-text="{{::i18n.email_tab_popover_responder_update}}"
+                                          data-on-click="setAction('email-domain/email/responder/update/email-domain-email-responder-update', { responder: $row })">
+                    </oui-action-menu-item>
+                    <oui-action-menu-item data-text="{{::i18n.email_tab_popover_responder_delete}}"
+                                          data-on-click="setAction('email-domain/email/responder/delete/email-domain-email-responder-delete', { responder: $row })">
+                    </oui-action-menu-item>
+                </oui-action-menu>
+                <extra-top>
+                    <button class="float-right oui-button oui-button_secondary oui-button_icon-only oui-button_small-width"
+                            data-title="{{::i18n.email_tab_table_header_refresh}}"
+                            data-ng-click="$ctrl.refreshTableResponders()">
+                        <span class="fa fa-refresh" aria-hidden="true"></span>
+                    </button>
+                </extra-top>
+            </oui-datagrid>
         </div>
     </div>
 
@@ -114,7 +78,7 @@
                     data-ng-click="setAction('email-domain/email/responder/create/email-domain-email-responder-create', {
                         accounts: ctrlEmailDomainEmail.emails
                     })"
-                    data-ng-if="ctrlEmailDomainEmailResponder.responders.length < ctrlEmailDomainEmail.quotas.responder">
+                    data-ng-if="$ctrl.responders.length < ctrlEmailDomainEmail.quotas.responder">
             </button>
         </div>
         <div data-guides

@@ -7,6 +7,7 @@ angular.module('App').controller(
       Alerter,
       hostingSSLCertificate,
       translator,
+      HostingRuntimes,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -14,11 +15,24 @@ angular.module('App').controller(
       this.Alerter = Alerter;
       this.hostingSSLCertificate = hostingSSLCertificate;
       this.translator = translator;
+      this.HostingRuntimes = HostingRuntimes;
     }
 
     $onInit() {
-      this.$scope.$on('hosting.ssl.reload', () =>
-        this.retrievingSSLCertificate());
+      this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
+
+      this.loading = {
+        defaultRuntime: true,
+      };
+
+      this.defaultRuntime = null;
+      this.HostingRuntimes.getDefault(this.$stateParams.productId)
+        .then((runtime) => {
+          this.defaultRuntime = runtime;
+        })
+        .finally(() => {
+          this.loading.defaultRuntime = false;
+        });
 
       return this.retrievingSSLCertificate();
     }
@@ -56,16 +70,16 @@ angular.module('App').controller(
 
     canRegenerateSSLCertificate() {
       return (
-        this.hasSSLCertificate() &&
-        this.sslCertificate.regenerable &&
-        this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
+        this.hasSSLCertificate()
+        && this.sslCertificate.regenerable
+        && this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
       );
     }
 
     canDeleteSSLCertificate() {
       return (
-        this.hasSSLCertificate() &&
-        this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
+        this.hasSSLCertificate()
+        && this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
       );
     }
 

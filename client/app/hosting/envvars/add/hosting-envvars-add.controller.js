@@ -23,9 +23,9 @@ angular.module('App').controller(
 
     isValid() {
       return (
-        _(this.addEnvvarForm).isObject() &&
-        this.addEnvvarForm.$dirty &&
-        this.addEnvvarForm.$valid
+        _(this.addEnvvarForm).isObject()
+        && this.addEnvvarForm.$dirty
+        && this.addEnvvarForm.$valid
       );
     }
 

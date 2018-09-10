@@ -35,14 +35,12 @@ angular
             throw new Error(this.translator.tr('common_temporary_error'));
           }
 
-          const chartSettings =
-            this.PRIVATE_DATABASE_METRICS.specificDatabaseVersionChartSelection[
-              this.$scope.database.version
-            ];
+          const chartSettings = this.PRIVATE_DATABASE_METRICS.specificDatabaseVersionChartSelection[
+            this.$scope.database.version
+          ];
           _(this.PRIVATE_DATABASE_METRICS.specificChartSettings)
-            .filter(currentChartSettings =>
-              !_(chartSettings).isArray() ||
-                            _(chartSettings).includes(currentChartSettings.chartName))
+            .filter(currentChartSettings => !_(chartSettings).isArray()
+                            || _(chartSettings).includes(currentChartSettings.chartName))
             .forEach((currentChartSettings) => {
               const { chartName } = currentChartSettings;
               const currentChartData = chartData[currentChartSettings.dataFromAPIIndex];
@@ -53,10 +51,11 @@ angular
                   name: chartName,
                 };
               } else {
-                const settingsForAllCharts =
-                  _(this.PRIVATE_DATABASE_METRICS.settingsForAllCharts).clone(true);
-                const settingsForCurrentChart =
-                  _(settingsForAllCharts).merge(currentChartSettings).value();
+                const settingsForAllCharts = _(this.PRIVATE_DATABASE_METRICS.settingsForAllCharts)
+                  .clone(true);
+                const settingsForCurrentChart = _(settingsForAllCharts)
+                  .merge(currentChartSettings)
+                  .value();
                 const chart = new this.ChartjsFactory(settingsForCurrentChart);
                 const serieName = this.translator.tr(`privateDatabase_metrics_${chartName}_graph_${currentChartData.metric.replace(/\./g, '_')}`);
                 const serieValue = this.constructor.getChartSeries(currentChartData);

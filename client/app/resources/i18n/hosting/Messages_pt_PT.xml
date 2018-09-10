@@ -35,6 +35,10 @@
    <translation id="hosting_dashboard_service_regenerate_ssl_success" qtlid="315722">O pedido de geração / atualização do certificado foi registado.</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_error" qtlid="434161">Ocorreu um erro durante o pedido renovação do certificado</translation>
    <translation id="hosting_dashboard_disk_usage" qtlid="28159">Espaço em disco</translation>
+   <translation id="hosting_dashboard_disk_total" qtlid="252776">Capacidade do disco:</translation>
+   <translation id="hosting_dashboard_disk_available_total" qtlid="492392">Espaço disponível</translation>
+   <translation id="hosting_dashboard_disk_usage_total" qtlid="109129">Espaço utilizado:</translation>
+   <translation id="hosting_dashboard_disk_usage_configuration" qtlid="492405">{0} são atribuídos à configuração do servidor</translation>
    <translation id="hosting_dashboard_trafic_usage" qtlid="222137">Tráfego utilizado</translation>
    <translation id="hosting_dashboard_hosting_activities" qtlid="268134">Atividades do alojamento</translation>
    <translation id="hosting_dashboard_php_support_SECURITY_FIXES" qtlid="272526">Utiliza atualmente uma versão de PHP que não evoluirá, sendo que apenas as falhas de segurança serão corrigidas. Poderá atualizar esta versão ao utilizar o botão "modificar a configuração" à direita. A alteração da versão pode causar impacto no funcionamento dos seus websites.</translation>
@@ -800,7 +804,7 @@
    <translation id="hosting_tab_FTP_dashboard_login_enabled" qtlid="198623">Login principal ativado:</translation>
    <translation id="hosting_tab_FTP_dashboard_homez" qtlid="271621">Caminho da pasta home:</translation>
    <translation id="hosting_tab_FTP_dashboard_clusterip" qtlid="198636">Endereço IP do cluster:</translation>
-   <translation id="hosting_tab_FTP_multiftp_table_header_login" qtlid="41062">Login</translation>
+   <translation id="hosting_tab_FTP_multiftp_table_header_login" qtlid="41062">Nome de utilizador</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_ftp_login" qtlid="488874">Login FTP</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_ssh_login" qtlid="488887">Login SSH</translation>
    <translation id="hosting_tab_FTP_multiftp_table_header_home" qtlid="198649">Pasta alvo</translation>
@@ -886,7 +890,7 @@
    <translation id="hosting_configuration_tab_modules_status_maintenance" qtlid="215104">Neste momento, existe, uma operação de manutenção em curso. Tente mais tarde.</translation>
    <translation id="hosting_configuration_tab_modules_status_bloqued" qtlid="215117">O seu alojamento está bloqueado.</translation>
    <translation id="hosting_configuration_tab_modules_module_version" qtlid="34210">Versão</translation>
-   <translation id="hosting_configuration_tab_modules_module_login" qtlid="41062">Login</translation>
+   <translation id="hosting_configuration_tab_modules_module_login" qtlid="41062">Nome de utilizador</translation>
    <translation id="hosting_configuration_tab_modules_module_add" qtlid="198831">Adicionar um módulo</translation>
    <translation id="hosting_configuration_tab_modules_module_config" qtlid="402763">: gestão do módulo</translation>
    <translation id="hosting_configuration_tab_modules_module_delete" qtlid="198844">Eliminar o módulo</translation>
@@ -1269,7 +1273,7 @@
 
    <translation id="hosting_tab_BOOST_disable_offer" qtlid="227260">Desativar boost</translation>
    <translation id="hosting_tab_BOOST_disable_title" qtlid="227494">Está prestes a desativar a opção boost.</translation>
-   <translation id="hosting_tab_BOOST_disable_description" qtlid="227507">Deseja fazer downgrade e voltar à sua oferta base (de subscrição anual). Se quiser poderá mudar novamente de oferta.
+   <translation id="hosting_tab_BOOST_disable_description" qtlid="227507">Deseja fazer downgrade e voltar à sua oferta base (de subscrição anual). Se quiser poderá mudar novamente de oferta.&#13;
 O serviço será faturado no mês posterior à utilização do BOOST extra(1 única faturação extra por mês, que tem em conta a utilização da opção boost mais vanaçada).</translation>
    <translation id="hosting_tab_BOOST_accept_cgv" qtlid="229164">Eu compreendi e aceito as condições do serviço. O meu alojamento será atualizado alguns minutos após a validação.</translation>
    <translation id="hosting_tab_BOOST_disable_started" qtlid="227533">Boost em processo de desativação ...</translation>
@@ -1516,7 +1520,7 @@ O serviço será faturado no mês posterior à utilização do BOOST extra(1 ún
    <translation id="hosting_dashboard_ssl_details_error" qtlid="473856">Ocorreu um erro ao recuperar o relatório de criação de SSL.</translation>
    <translation id="hosting_dashboard_ssl_details_support_1" qtlid="473869">Você pode encontrar todas as informações necessárias para validar esses elementos neste link para a documentação do Comodo (em inglês).&#160;</translation>
    <translation id="hosting_dashboard_ssl_details_support_2" qtlid="473882">.<br><br>Se você tiver alguma dúvida sobre a validação do seu certificado SSL EV, entre em contato com a Comodo em&#160;</translation>
-   <translation id="hosting_dashboard_ssl_details_support_3" qtlid="473895">, especificando o seguinte número de pedido
+   <translation id="hosting_dashboard_ssl_details_support_3" qtlid="473895">, especificando o seguinte número de pedido&#13;
 <strong>{0}</strong>.</translation>
    <translation id="hosting_dashboard_ssl_details_support_new_window" qtlid="453228">Este link irá abrir uma nova janela.</translation>
    <translation id="hosting_dashboard_service_regenerate_ssl_warning" qtlid="315865">Quer mesmo gerar / atualizar o certificado SSL do seu alojamento?</translation>

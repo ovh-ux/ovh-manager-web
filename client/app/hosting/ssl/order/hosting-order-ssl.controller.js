@@ -67,16 +67,15 @@ angular.module('App').controller(
         this.$stateParams.productId,
         this.$stateParams.productId,
       )
-        .then(attachedDomain =>
-          (!attachedDomain.ssl
-            ? this.HostingDomain.updateAttachedDomain(
-              this.$stateParams.productId,
-              this.$stateParams.productId,
-              {
-                ssl: true,
-              },
-            )
-            : null))
+        .then(attachedDomain => (!attachedDomain.ssl
+          ? this.HostingDomain.updateAttachedDomain(
+            this.$stateParams.productId,
+            this.$stateParams.productId,
+            {
+              ssl: true,
+            },
+          )
+          : null))
         .then(() => {
           this.step1.canOrderPaidCertificate = true;
         })
@@ -109,13 +108,13 @@ angular.module('App').controller(
     }
 
     isStep2Valid() {
-      const isPaidCertificateValid =
-        this.hostingSSLCertificateType.constructor.isPaid(this.selectedCertificateType) &&
-        !this.step2.loading.isGeneratingOrderForm;
-      const isImportCertificateValid =
-        this.hostingSSLCertificateType.constructor.isImported(this.selectedCertificateType) &&
-        _(this.importCertificateForm).isObject() &&
-        this.importCertificateForm.$valid;
+      const isPaidCertificateValid = this.hostingSSLCertificateType
+        .constructor.isPaid(this.selectedCertificateType)
+          && !this.step2.loading.isGeneratingOrderForm;
+      const isImportCertificateValid = this.hostingSSLCertificateType
+        .constructor.isImported(this.selectedCertificateType)
+          && _(this.importCertificateForm).isObject()
+          && this.importCertificateForm.$valid;
 
       return isPaidCertificateValid || isImportCertificateValid;
     }

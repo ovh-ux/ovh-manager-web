@@ -31,8 +31,7 @@ angular.module('App').controller(
       this.productId = this.$stateParams.productId;
 
       this.database = this.$scope.database;
-      this.isExpired =
-        _.get(this.database, 'serviceInfos.status') === 'expired';
+      this.isExpired = _.get(this.database, 'serviceInfos.status') === 'expired';
       this.displayMore = {
         value: false,
       };
@@ -75,9 +74,8 @@ angular.module('App').controller(
     getRealList() {
       this.database.oom.realList = _.filter(
         this.database.oom.list,
-        item =>
-          filesize(item.sizeReached, { output: 'object' }).value >
-          this.database.ram.value,
+        item => filesize(item.sizeReached, { output: 'object' }).value
+          > this.database.ram.value,
       );
       return this.database.oom.realList;
     }
@@ -85,12 +83,14 @@ angular.module('App').controller(
     getHostingsLinked() {
       this.privateDatabaseService
         .getHostingsLinked(this.productId)
-        .then(hostingsLinkedsId =>
-          this.$q.all(_.map(hostingsLinkedsId, mutuName =>
-            this.isAdminMutu(mutuName).then(isAdmin => ({
+        .then(hostingsLinkedsId => this.$q.all(_.map(
+          hostingsLinkedsId,
+          mutuName => this.isAdminMutu(mutuName)
+            .then(isAdmin => ({
               name: mutuName,
               isAdmin,
-            })))))
+            })),
+        )))
         .then((hostingsLinked) => {
           this.hostingsLinked = hostingsLinked;
         })
@@ -109,15 +109,14 @@ angular.module('App').controller(
     isAdminMutu(mutu) {
       this.getUserInfos()
         .then(() => this.hostingService.getServiceInfos(mutu))
-        .then(mutuInfo =>
-          _.some(
-            [
-              mutuInfo.contactBilling,
-              mutuInfo.contactTech,
-              mutuInfo.contactAdmin,
-            ],
-            contactName => this.userInfos.nichandle === contactName,
-          ))
+        .then(mutuInfo => _.some(
+          [
+            mutuInfo.contactBilling,
+            mutuInfo.contactTech,
+            mutuInfo.contactAdmin,
+          ],
+          contactName => this.userInfos.nichandle === contactName,
+        ))
         .catch((err) => {
           this.alerter.error(err);
           return false;

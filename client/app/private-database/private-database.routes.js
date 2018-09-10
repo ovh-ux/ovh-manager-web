@@ -18,8 +18,7 @@ angular.module('App').config(($stateProvider) => {
       ],
       translator: [
         'translator',
-        translator =>
-          translator.load(['privateDatabase', 'hosting']).then(() => translator),
+        translator => translator.load(['privateDatabase', 'hosting']).then(() => translator),
       ],
     },
   });
@@ -42,8 +41,7 @@ angular.module('App').config(($stateProvider) => {
       ],
       translator: [
         'translator',
-        translator =>
-          translator.load(['privateDatabase']).then(() => translator),
+        translator => translator.load(['privateDatabase']).then(() => translator),
       ],
     },
   });
@@ -70,8 +68,7 @@ angular.module('App').config(($stateProvider) => {
       ],
       translator: [
         'translator',
-        translator =>
-          translator.load(['privateDatabase']).then(() => translator),
+        translator => translator.load(['privateDatabase']).then(() => translator),
       ],
     },
   });

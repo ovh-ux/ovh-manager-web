@@ -20,11 +20,11 @@ angular.module('App').controller('DocumentUploadCtrl', [
       input.$setValidity('format', false);
 
       if (
-        !documentType ||
-        (Array.isArray(documentType) &&
-          !!file &&
-          file.type &&
-          documentType.indexOf(file.type) !== -1)
+        !documentType
+        || (Array.isArray(documentType)
+          && !!file
+          && file.type
+          && documentType.indexOf(file.type) !== -1)
       ) {
         input.$setValidity('format', true);
       }
@@ -35,9 +35,9 @@ angular.module('App').controller('DocumentUploadCtrl', [
       self.uploadFileFileCheck($scope.formFileUpload.file, file, documentType);
 
       return (
-        $scope.formFileUpload.$valid &&
-        $scope.formFileUpload.file.$valid &&
-        $scope.formFileUpload.file
+        $scope.formFileUpload.$valid
+        && $scope.formFileUpload.file.$valid
+        && $scope.formFileUpload.file
       );
     };
 

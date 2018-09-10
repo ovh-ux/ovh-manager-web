@@ -89,7 +89,7 @@ module.exports = function (grunt) {
               dest: "."
           },
           options: {
-              filePath: path.resolve("./.eslintrc.js")
+              filePath: path.resolve("./.eslintrc")
           }
       },
 
@@ -403,25 +403,31 @@ module.exports = function (grunt) {
                       expand: true,
                       cwd: "node_modules/ovh-angular-actions-menu/dist",
                       src: ["**"],
-                      dest: "<%= distdir %>/ovh-angular-actions-menu/dist"
+                      dest: "<%= distdir %>/node_modules/ovh-angular-actions-menu/dist"
                   },
                   {
                       expand: true,
                       cwd: "node_modules/ovh-angular-sidebar-menu/dist",
                       src: ["**"],
-                      dest: "<%= distdir %>/ovh-angular-sidebar-menu/dist"
+                      dest: "<%= distdir %>/node_modules/ovh-angular-sidebar-menu/dist"
                   },
                   {
                       expand: true,
                       cwd: "node_modules/ovh-manager-webfont/dist",
                       src: ["**"],
-                      dest: "<%= distdir %>/ovh-manager-webfont/dist"
+                      dest: "<%= distdir %>/node_modules/ovh-manager-webfont/dist"
                   },
                   {
                       expand: true,
                       cwd: "node_modules/ovh-ui-kit/dist",
                       src: ["**"],
-                      dest: "<%= distdir %>/ovh-ui-kit/dist"
+                      dest: "<%= distdir %>/node_modules/ovh-ui-kit/dist"
+                  },
+                  {
+                      expand: true,
+                      cwd: "node_modules/ovh-ui-kit/packages",
+                      src: ["**"],
+                      dest: "<%= distdir %>/node_modules/ovh-ui-kit/packages"
                   },
                   {
                       expand: true,

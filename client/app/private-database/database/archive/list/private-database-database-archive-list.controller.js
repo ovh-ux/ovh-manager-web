@@ -31,8 +31,7 @@ angular.module('App').controller(
       this.deletedDbList = null;
       return this.privateDatabase
         .getDumps(this.productId, true)
-        .then(dumpsId =>
-          this.$q.all(_.map(dumpsId, dumpId => this.getDump(dumpId))))
+        .then(dumpsId => this.$q.all(_.map(dumpsId, dumpId => this.getDump(dumpId))))
         .then((dumps) => {
           dumps.forEach((dump) => {
             let deletedDb = deletedDbs[dump.databaseName];
@@ -42,8 +41,8 @@ angular.module('App').controller(
             }
             deletedDb.dumps.push(dump);
           });
-          this.deletedDbList = _.values(deletedDbs).sort((a, b) =>
-            a.databaseName.localeCompare(b.databaseName));
+          this.deletedDbList = _.values(deletedDbs)
+            .sort((a, b) => a.databaseName.localeCompare(b.databaseName));
         })
         .catch(err => this.alerter.error(err));
     }

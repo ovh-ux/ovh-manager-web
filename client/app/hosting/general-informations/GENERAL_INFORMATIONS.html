@@ -22,9 +22,9 @@
                                     <div class="oui-tile__definition">
                                         <strong class="d-block"
                                                 data-i18n-static="hosting_dashboard_service_state"></strong>
-                                        <span class="label" data-ng-class="getStateBadgeClass()"
+                                        <span class="oui-status" data-ng-class="getStateBadgeClass()"
                                               data-ng-bind="tr('hosting_dashboard_service_state_' + hosting.serviceState)"></span>
-                                        <span class="label label-danger"
+                                        <span class="oui-status oui-status_error"
                                               data-i18n-static="hosting_dashboard_service_state_DELETE"
                                               data-ng-if="hosting.serviceInfos.renew.deleteAtExpiration"></span>
                                         <div class="mt-2" data-ng-if="guideHostingState">
@@ -189,40 +189,17 @@
                                             </div>
                                             <div class="ml-auto mb-auto"
                                                  data-ng-if="!ctrl.isRetrievingSSLCertificate && (ctrl.canOrderSSLCertificate() || ctrl.canRegenerateSSLCertificate() || ctrl.canDeleteSSLCertificate())">
-                                                <button class="oui-button oui-button_dropdown mb-0"
-                                                        type="button"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false"
-                                                        data-toggle="dropdown">
-                                                    <span data-i18n-static="common_actions"></span>
-                                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-right">
-                                                    <li data-ng-if="ctrl.canOrderSSLCertificate()">
-                                                        <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
-                                                        <button class="btn btn-link"
-                                                                type="button"
-                                                                name="orderSsl"
-                                                                data-i18n-static="hosting_dashboard_service_order_ssl"
-                                                                data-ng-click="setAction('ssl/order/hosting-order-ssl')"></button>
-                                                    </li>
-                                                    <li data-ng-if="ctrl.canRegenerateSSLCertificate()">
-                                                        <i class="fa fa-refresh" aria-hidden="true"></i>
-                                                        <button class="btn btn-link"
-                                                                type="button"
-                                                                name="regenerateSsl"
-                                                                data-i18n-static="hosting_ssl_regenerate_title_button"
-                                                                data-ng-click="setAction('ssl/regenerate/hosting-ssl-regenerate')"></button>
-                                                    </li>
-                                                    <li data-ng-if="ctrl.canDeleteSSLCertificate()">
-                                                        <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                                        <button class="btn btn-link"
-                                                                type="button"
-                                                                name="deleteSsl"
-                                                                data-i18n-static="hosting_dashboard_service_order_ssl_delete"
-                                                                data-ng-click="setAction('ssl/delete/hosting-ssl-delete', ctrl.sslCertificate)"></button>
-                                                    </li>
-                                                </ul>
+                                                <oui-action-menu data-compact data-align="end">
+                                                    <oui-action-menu-item data-ng-if="ctrl.canOrderSSLCertificate()"
+                                                        data-text="{{:: tr('hosting_dashboard_service_order_ssl') }}"
+                                                        data-on-click="setAction('ssl/order/hosting-order-ssl')"></oui-action-menu-item>
+                                                    <oui-action-menu-item data-ng-if="ctrl.canRegenerateSSLCertificate()"
+                                                        data-text="{{:: tr('hosting_ssl_regenerate_title_button') }}"
+                                                        data-on-click="setAction('ssl/regenerate/hosting-ssl-regenerate')"></oui-action-menu-item>
+                                                    <oui-action-menu-item data-ng-if="ctrl.canDeleteSSLCertificate()"
+                                                        data-text="{{:: tr('hosting_dashboard_service_order_ssl_delete') }}"
+                                                        data-on-click="setAction('ssl/delete/hosting-ssl-delete', ctrl.sslCertificate)"></oui-action-menu-item>
+                                                </oui-action-menu>
                                             </div>
                                             <button class="btn btn-default ml-auto mb-auto text-wrap"
                                                     type="button"
@@ -250,38 +227,17 @@
                                             </div>
                                             <div class="ml-auto mb-auto"
                                                  data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M' || hosting.hasCdn && flushCdnState === 'ok' || hosting.hasCdn">
-                                                <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
-                                                        data-toggle="dropdown">
-                                                    <span data-i18n-static="common_actions"></span>
-                                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
-                                                    <li data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M'">
-                                                        <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
-                                                        <button class="btn btn-link" type="button" name="orderCdn"
-                                                                data-i18n-static="hosting_dashboard_service_order_cdn"
-                                                                data-ng-click="setAction('cdn/order/hosting-cdn-order', hostingProxy)">
-                                                        </button>
-                                                    </li>
-                                                    <li data-ng-if="hosting.hasCdn && flushCdnState === 'ok'">
-                                                        <i class="oui-icon oui-icon-trash_line" aria-hidden="true"></i>
-                                                        <button class="btn btn-link" type="button" name="flushCdn"
-                                                                data-ng-click="setAction('cdn/flush/hosting-cdn-flush')">
-                                                            <span data-i18n-static="hosting_dashboard_service_flush_cdn"
-                                                                  data-ng-if="hosting.hasCdn"></span>
-                                                            <span
-                                                                data-i18n-static="hosting_dashboard_service_flush_cdn_basic"
-                                                                data-ng-if="!hosting.hasCdn"></span>
-                                                        </button>
-                                                    </li>
-                                                    <li data-ng-if="hosting.hasCdn">
-                                                        <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                                        <button class="btn btn-link" type="button" name="terminateCdn"
-                                                                data-i18n-static="hosting_dashboard_service_terminate_cdn"
-                                                                data-ng-click="setAction('cdn/terminate/hosting-cdn-terminate')">
-                                                        </button>
-                                                    </li>
-                                                </ul>
+                                                <oui-action-menu data-compact data-align="end">
+                                                    <oui-action-menu-item data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M'"
+                                                        data-text="{{:: tr('hosting_dashboard_service_order_cdn') }}"
+                                                        data-on-click="setAction('cdn/order/hosting-cdn-order', hostingProxy)"></oui-action-menu-item>
+                                                    <oui-action-menu-item data-ng-if="hosting.hasCdn && flushCdnState === 'ok'"
+                                                        data-text="{{:: tr('hosting_dashboard_service_flush_cdn') }}"
+                                                        data-on-click="setAction('cdn/flush/hosting-cdn-flush')"></oui-action-menu-item>
+                                                    <oui-action-menu-item data-ng-if="hosting.hasCdn"
+                                                        data-text="{{:: tr('hosting_dashboard_service_terminate_cdn') }}"
+                                                        data-on-click="setAction('cdn/terminate/hosting-cdn-terminate')"></oui-action-menu-item>
+                                                </oui-action-menu>
                                             </div>
                                         </div>
                                     </div>
@@ -298,55 +254,31 @@
                                                          data-pbec-max-elements="hosting.sqlPriveInfo.nbDataBaseInclude"
                                                          data-pbec-upper-limit="cloudWebUnlimitedQuantity"></div>
                                                 </div>
-                                                <div class="dropdown" data-ng-if="privateDatabasesLinked.length > 0">
-                                                    <button
-                                                        id="privateDatabasesDropdown"
-                                                        class="btn btn-default dropdown-toggle"
-                                                        type="button"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <span data-i18n-static="hosting_dashboard_service_privatesql_more"></span>
-                                                        <span class="caret" aria-hidden="true"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu" aria-labelledby="privateDatabasesDropdown">
-                                                        <li data-ng-repeat="privateDb in privateDatabasesLinked track by privateDb.name">
-                                                            <span data-ng-bind="privateDb.name" data-ng-if="!privateDb.isAdmin"></span>
-                                                            <a
-                                                                data-ng-href="#/configuration/private_database/{{ privateDb.name }}"
-                                                                data-ng-bind="privateDb.name"
-                                                                data-ng-click="goToPrivateDb(privateDb.name)"
-                                                                data-ng-if="privateDb.isAdmin"></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
+                                                <oui-action-menu data-text="{{:: tr('hosting_dashboard_service_privatesql_more') }}" data-ng-if="privateDatabasesLinked.length > 0">
+                                                    <div data-ng-repeat="privateDb in privateDatabasesLinked track by privateDb.name">
+                                                        <oui-action-menu-item data-text="{{::privateDb.name}}" data-ng-if="!privateDb.isAdmin" data-disabled></oui-action-menu-item>
+                                                        <oui-action-menu-item data-ng-if="privateDb.isAdmin"
+                                                            data-text="{{::privateDb.name}}"
+                                                            data-href="#/configuration/private_database/{{ privateDb.name }}">
+                                                        </oui-action-menu-item>
+                                                    </div>
+                                                </oui-action-menu>
                                             </div>
                                             <div class="mb-auto ml-auto">
-                                                <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
-                                                        data-toggle="dropdown">
-                                                    <span data-i18n-static="common_actions"></span>
-                                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
-                                                    <li data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0 && hosting.sqlPriveInfo.nbDataBaseActive < hosting.sqlPriveInfo.nbDataBaseInclude">
-                                                        <i class="oui-icon oui-icon-power_line" aria-hidden="true"></i>
-                                                        <button class="btn btn-link" type="button" name="orderCdn"
-                                                                data-ng-click="setAction('database/private-activation/database-private-activation', hosting)"
-                                                                data-ng-disabled="sqlPriveState === 'check' || sqlPriveState === 'doing'">
-                                                            <span
-                                                                data-i18n-static="hosting_dashboard_service_privatesql_active"
-                                                                data-ng-if="sqlPriveState !== 'doing'"></span>
-                                                            <span
-                                                                data-i18n-static="hosting_dashboard_service_privatesql_active_doing"
-                                                                data-ng-if="sqlPriveState === 'doing'"></span>
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
-                                                        <a data-ui-sref="app.sql-order({orderType: 'private', currentHosting: hosting.serviceName})"
-                                                           data-i18n-static="hosting_dashboard_service_privatesql_order"></a>
-                                                    </li>
-                                                </ul>
+                                                <oui-action-menu data-compact data-align="end">
+                                                    <oui-action-menu-item data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0 && hosting.sqlPriveInfo.nbDataBaseActive < hosting.sqlPriveInfo.nbDataBaseInclude && sqlPriveState !== 'doing'"
+                                                        data-text="{{:: tr('hosting_dashboard_service_privatesql_active') }}"
+                                                        data-ng-disabled="sqlPriveState === 'check' || sqlPriveState === 'doing'"
+                                                        data-on-click="setAction('database/private-activation/database-private-activation', hosting)"></oui-action-menu-item>
+                                                    <oui-action-menu-item data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0 && hosting.sqlPriveInfo.nbDataBaseActive < hosting.sqlPriveInfo.nbDataBaseInclude && sqlPriveState === 'doing'"
+                                                        data-text="{{:: tr('hosting_dashboard_service_privatesql_active_doing') }}"
+                                                        data-ng-disabled="sqlPriveState === 'check' || sqlPriveState === 'doing'"
+                                                        data-on-click="setAction('database/private-activation/database-private-activation', hosting)"></oui-action-menu-item>
+                                                    <oui-action-menu-item
+                                                        data-text="{{:: tr('hosting_dashboard_service_privatesql_order') }}"
+                                                        data-ui-sref="app.sql-order({orderType: 'private', currentHosting: hosting.serviceName})">
+                                                    </oui-action-menu-item>
+                                                </oui-action-menu>
                                             </div>
                                         </div>
                                     </div>
@@ -385,20 +317,10 @@
                                                 </div>
                                             </div>
                                             <div class="mb-auto ml-auto">
-                                                <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
-                                                        data-toggle="dropdown">
-                                                    <span data-i18n-static="common_actions"></span>
-                                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
-                                                    <li>
-                                                        <i class="oui-icon oui-icon-power_line" aria-hidden="true"></i>
-                                                        <button class="btn btn-link" type="button" name="configureRuntimes"
-                                                                data-ng-click="ctrlHostingTabs.setSelectedTab('RUNTIMES')">
-                                                            <span data-i18n-static="common_configure"></span>
-                                                        </button>
-                                                    </li>
-                                                </ul>
+                                                <oui-action-menu data-compact data-align="end">
+                                                    <oui-action-menu-item data-text="{{:: tr('common_configure') }}"
+                                                        data-on-click="ctrlHostingTabs.setSelectedTab('RUNTIMES')"></oui-action-menu-item>
+                                                </oui-action-menu>
                                             </div>
                                         </div>
                                     </div>
@@ -406,6 +328,7 @@
                             </ul>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -463,7 +386,7 @@
                             <span data-ng-bind=":: convertBytesSize(hosting.totalQuota.value, hosting.totalQuota.unit, 2)"></span>
                         </li>
                         <li>
-                            <span data-ng-bind-html=":: tr('hosting_dashboard_disk_available_total')"></span>
+                            <span data-ng-bind-html=":: tr('hosting_dashboard_disk_available_total') + '* :' "></span>
                             <span data-ng-bind=":: convertBytesSize(hosting.quotaSize.value, hosting.quotaSize.unit, 2)"></span>
                         </li>
                         <li>
@@ -471,7 +394,7 @@
                             <span data-ng-bind=":: convertBytesSize(hosting.quotaUsed.value, hosting.quotaUsed.unit, 2) + ' / ' + convertBytesSize(hosting.quotaSize.value, hosting.quotaSize.unit)"></span>
                         </li>
                         <li>
-                            <small data-ng-bind-html=":: tr('hosting_dashboard_disk_usage_configuration', [ convertBytesSize(hosting.configurationQuota.value, hosting.configurationQuota.unit, 2) ])"></small>
+                            <small data-ng-bind-html=":: '*' + tr('hosting_dashboard_disk_usage_configuration', [ convertBytesSize(hosting.configurationQuota.value, hosting.configurationQuota.unit, 2) ])"></small>
                         </li>
                     </ul>
                 </div>

@@ -60,17 +60,16 @@ angular
 
       $scope.domainsAlreadyExists = () => {
         if (
-          $scope.model.domains &&
-          $scope.model.domains.indexOf(`www.${$scope.selected.domain.name}`) !==
-            -1
+          $scope.model.domains
+          && $scope.model.domains.indexOf(`www.${$scope.selected.domain.name}`)
+            !== -1
         ) {
           return true;
         }
         return false;
       };
 
-      $scope.isPathValid = () =>
-        Hosting.constructor.isPathValid($scope.selected.domain.path);
+      $scope.isPathValid = () => Hosting.constructor.isPathValid($scope.selected.domain.path);
 
       function isCountryIp(countryIps, recordIdsData) {
         let target = 'FR';
@@ -133,15 +132,14 @@ angular
                   $scope.loading.runtimes = true;
 
                   const promises = _(runtimes)
-                    .map(runtimeId =>
-                      HostingRuntimes.get(
-                        $scope.hosting.serviceName,
-                        runtimeId,
-                      ).then((runtime) => {
-                        $scope.model.runtimes.push(runtime);
+                    .map(runtimeId => HostingRuntimes.get(
+                      $scope.hosting.serviceName,
+                      runtimeId,
+                    ).then((runtime) => {
+                      $scope.model.runtimes.push(runtime);
 
-                        return runtime;
-                      }))
+                      return runtime;
+                    }))
                     .value();
 
                   return $q.all(promises);
@@ -162,14 +160,13 @@ angular
 
             return null;
           })
-          .then(() =>
-            HostingDomain.getIPv6Configuration(
-              $scope.hosting.serviceName,
-              $scope.selected.domain.name.replace(
-                `.${$scope.hosting.serviceName}`,
-                '',
-              ),
-            ))
+          .then(() => HostingDomain.getIPv6Configuration(
+            $scope.hosting.serviceName,
+            $scope.selected.domain.name.replace(
+              `.${$scope.hosting.serviceName}`,
+              '',
+            ),
+          ))
           .then((records) => {
             $scope.selected.domain.ipV6Enabled = _.some(
               records,
@@ -185,15 +182,13 @@ angular
           .then((options) => {
             $scope.availableDomains = options.availableDomains;
           })
-          .then(() =>
-            Domain.getRecordsIds($stateParams.productId, {
-              fieldType: 'A',
-              subDomain: subDomainName,
-            }))
+          .then(() => Domain.getRecordsIds($stateParams.productId, {
+            fieldType: 'A',
+            subDomain: subDomainName,
+          }))
           .then((recordIds) => {
             const recordsPromises = _(recordIds)
-              .map(recordId =>
-                Domain.getRecord($stateParams.productId, recordId))
+              .map(recordId => Domain.getRecord($stateParams.productId, recordId))
               .value();
 
             return $q.all(recordsPromises);
@@ -212,8 +207,8 @@ angular
           })
           .finally(() => {
             if (
-              $scope.hosting.hasCdn &&
-              $scope.selected.domain.cdn !== 'NONE'
+              $scope.hosting.hasCdn
+              && $scope.selected.domain.cdn !== 'NONE'
             ) {
               $scope.selected.domain.cdn = 'ACTIVE';
             }
@@ -244,10 +239,9 @@ angular
         return result;
       };
 
-      $scope.needWwwDomain = () =>
-        $scope.selected.domainWwwNeeded &&
-        $scope.selected.domain.name !== $scope.selected.domainWww &&
-        $scope.domainsAlreadyExists();
+      $scope.needWwwDomain = () => $scope.selected.domainWwwNeeded
+        && $scope.selected.domain.name !== $scope.selected.domainWww
+        && $scope.domainsAlreadyExists();
 
       $scope.loadStep2 = () => {
         $scope.selected.pathFinal = $scope.getSelectedPath();
@@ -257,8 +251,8 @@ angular
         let home;
         if ($scope.selected.domain.path !== null) {
           if (
-            /^\/.*/.test($scope.selected.domain.path) ||
-            /^\.\/.*/.test($scope.selected.domain.path)
+            /^\/.*/.test($scope.selected.domain.path)
+            || /^\.\/.*/.test($scope.selected.domain.path)
           ) {
             home = $scope.selected.domain.path;
           } else {
