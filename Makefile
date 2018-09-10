@@ -29,6 +29,7 @@ DIST_CA_DIR=dist-CA
 DIST_TAR=dist.tar.gz
 DIST_EU_TAR=dist-EU.tar.gz
 DIST_CA_TAR=dist-CA.tar.gz
+DEPENDENCIES_FILES_LIST=Assets.js
 
 #### MACRO ####
 NAME=`grep -Po '(?<="name": ")[^"]*' package.json`
@@ -85,6 +86,8 @@ build: build-eu
 	$(TAR) $(DIST_TAR) $(DIST_EU_TAR)
 
 build-eu: deps
+	if [ -n "$(SMARTTAG_REPO_EU)" ]; then $(YARN) add "$(SMARTTAG_REPO_EU)" --no-lockfile; fi
+	if [ -n "$(SMARTTAG_REPO_EU)" ]; then sed -i -r 's/at\-internet\-smarttag\-manager(-eu|-ca|-us)?\/dist/at-internet-smarttag-manager-eu\/dist/' $(DEPENDENCIES_FILES_LIST); fi
 	$(GRUNT) build --mode=prod --zone=EU
 	$(MV) $(DIST_DIR) $(DIST_EU_DIR)
 	$(TAR) $(DIST_EU_TAR) $(DIST_EU_DIR)
