@@ -1,14 +1,14 @@
 angular.module('App').controller(
   'HostingTabLocalSeoCtrl',
   class HostingTabLocalSeoCtrl {
-    constructor($q, $scope, $stateParams, $translate, $window, Alerter, Domain, HostingLocalSeo, User) {
+    constructor($q, $scope, $stateParams, $translate, $window, Alerter, Hosting, HostingLocalSeo, User) {
       this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.$window = $window;
       this.Alerter = Alerter;
-      this.Domain = Domain;
+      this.Hosting = Hosting;
       this.HostingLocalSeo = HostingLocalSeo;
       this.User = User;
     }
@@ -35,7 +35,7 @@ angular.module('App').controller(
     checkAdmin() {
       return this.$q
         .all({
-          serviceInfo: this.Domain.getServiceInfo(this.productId),
+          serviceInfo: this.Hosting.getServiceInfos(this.productId),
           user: this.User.getUser(),
         })
         .then(({ serviceInfo, user }) => serviceInfo.contactAdmin === user.nichandle)
