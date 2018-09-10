@@ -14,12 +14,12 @@
         <oui-column data-property="status"
             data-title="tr('domain_tab_TASKS_state')"
             class="text-center">
-            <span class="label"
+            <span class="oui-status"
                   data-ng-class="{
-                    'label-info': $row.status === 'TODO' || $row.status === 'DOING',
-                    'label-danger': $row.status === 'ERROR',
-                    'label-default': $row.status === 'CANCELLED',
-                    'label-success': $row.status === 'DONE'
+                    'oui-status_info': $row.status === 'TODO' || $row.status === 'DOING',
+                    'oui-status_error': $row.status === 'ERROR',
+                    'oui-status_info': $row.status === 'CANCELLED',
+                    'oui-status_success': $row.status === 'DONE'
                   }"
                   data-ng-bind="tr('domain_tab_TASKS_status_' +  $row.status)">
             </span>
