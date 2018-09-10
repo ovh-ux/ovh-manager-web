@@ -22,7 +22,7 @@
             <oui-datagrid id="{{ $ctrl.datagridId }}"
                           data-rows-loader="$ctrl.refresh($config)"
                           data-row-loader="$ctrl.transformItem($row)"
-                          data-empty-text="{{::tr('hosting_tab_LOCAL_SEO_table_empty')}}">
+                          data-empty-placeholder="{{::tr('hosting_tab_LOCAL_SEO_table_empty')}}">
                 <oui-column data-title="::tr('hosting_tab_LOCAL_SEO_table_header_name')"
                             data-property="name">
                     {{$row.name}}
