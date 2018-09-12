@@ -6,6 +6,7 @@ angular.module('App').controller(
       $rootScope,
       $q,
       $stateParams,
+      $translate,
       Alerter,
       AllDom,
       Domain,
@@ -20,6 +21,7 @@ angular.module('App').controller(
       this.$rootScope = $rootScope;
       this.$q = $q;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.AllDom = AllDom;
       this.Domain = Domain;
@@ -136,7 +138,7 @@ angular.module('App').controller(
               }));
             })
             .catch(err => this.Alerter.alertFromSWS(
-              this.$scope.tr('domain_tab_GLUE_table_error'),
+              this.$translate.instant('domain_tab_GLUE_table_error'),
               err,
               this.$scope.alerts.page,
             ))
@@ -147,7 +149,7 @@ angular.module('App').controller(
         .catch((err) => {
           this.loading.allDom = false;
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_tab_GLUE_table_error'),
+            this.$translate.instant('domain_tab_GLUE_table_error'),
             err,
             this.$scope.alerts.page,
           );
@@ -219,7 +221,7 @@ angular.module('App').controller(
           }
         })
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('domain_configuration_web_hosting_fail'),
+          this.$translate.instant('domain_configuration_web_hosting_fail'),
           err,
           this.$scope.alerts.page,
         ))
@@ -303,12 +305,12 @@ angular.module('App').controller(
             });
             if (hasHttpErr409) {
               this.Alerter.error(
-                this.$scope.tr('domain_configuration_whois_contracts'),
+                this.$translate.instant('domain_configuration_whois_contracts'),
                 this.$scope.alerts.main,
               );
             } else {
               this.Alerter.alertFromSWS(
-                this.$scope.tr('domain_configuration_whois_fail'),
+                this.$translate.instant('domain_configuration_whois_fail'),
                 { message },
                 this.$scope.alerts.main,
               );
@@ -320,12 +322,12 @@ angular.module('App').controller(
             .checked;
           if (err.data.code === 409) {
             this.Alerter.error(
-              this.$scope.tr('domain_configuration_whois_contracts'),
+              this.$translate.instant('domain_configuration_whois_contracts'),
               this.$scope.alerts.main,
             );
           } else {
             this.Alerter.alertFromSWS(
-              this.$scope.tr('domain_configuration_whois_fail'),
+              this.$translate.instant('domain_configuration_whois_fail'),
               err,
               this.$scope.alerts.main,
             );

@@ -5,24 +5,24 @@ angular.module('App').controller(
       $scope,
       $stateParams,
       $timeout,
+      $translate,
       HostingAutomatedEmails,
       Alerter,
       $filter,
       User,
       ChartjsFactory,
       HOSTING_AUTOMATED_EMAILS,
-      translator,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
+      this.$translate = $translate;
       this.HostingAutomatedEmails = HostingAutomatedEmails;
       this.Alerter = Alerter;
       this.$filter = $filter;
       this.User = User;
       this.ChartjsFactory = ChartjsFactory;
       this.HOSTING_AUTOMATED_EMAILS = HOSTING_AUTOMATED_EMAILS;
-      this.translator = translator;
     }
 
     $onInit() {
@@ -79,7 +79,7 @@ angular.module('App').controller(
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.Alerter.alertFromSWS(
-            this.translator.tr('hosting_tab_AUTOMATED_EMAILS_error'),
+            this.$translate.instant('hosting_tab_AUTOMATED_EMAILS_error'),
             err,
             this.$scope.alerts.main,
           );
@@ -101,7 +101,7 @@ angular.module('App').controller(
           });
 
           this.stats.chart.addSerie(
-            this.translator.tr('hosting_tab_AUTOMATED_EMAILS_emails_sent'),
+            this.$translate.instant('hosting_tab_AUTOMATED_EMAILS_emails_sent'),
             data.data.reverse().map(d => ({
               x: moment.utc(new Date(d.date)).valueOf(),
               y: d.volume,
@@ -117,7 +117,7 @@ angular.module('App').controller(
         .catch((err) => {
           if (err.status !== 404) {
             this.Alerter.alertFromSWS(
-              this.translator.tr('hosting_tab_AUTOMATED_EMAILS_error'),
+              this.$translate.instant('hosting_tab_AUTOMATED_EMAILS_error'),
               _.get(err, 'data', err),
               this.$scope.alerts.main,
             );
@@ -146,7 +146,7 @@ angular.module('App').controller(
         .catch((err) => {
           if (err.status !== 404) {
             this.Alerter.alertFromSWS(
-              this.translator.tr('hosting_tab_AUTOMATED_EMAILS_error'),
+              this.$translate.instant('hosting_tab_AUTOMATED_EMAILS_error'),
               _.get(err, 'data', err),
               this.$scope.alerts.main,
             );

@@ -6,14 +6,14 @@
             <table class="table table-hover">
                 <thead>
                     <tr>
-                        <th scope="col" data-i18n-static="privateDatabase_bdd_name"></th>
-                        <th scope="col" data-i18n-static="privateDatabase_bdd_creationDate"></th>
-                        <th class="text-center" scope="col" data-i18n-static="privateDatabase_bdd_quota"></th>
-                        <th class="text-center" scope="col" data-i18n-static="privateDatabase_bdd_dumps_count"></th>
-                        <th class="text-center" scope="col" data-i18n-static="privateDatabase_tabs_list_extensions_title"
+                        <th scope="col" data-translate="privateDatabase_bdd_name"></th>
+                        <th scope="col" data-translate="privateDatabase_bdd_creationDate"></th>
+                        <th class="text-center" scope="col" data-translate="privateDatabase_bdd_quota"></th>
+                        <th class="text-center" scope="col" data-translate="privateDatabase_bdd_dumps_count"></th>
+                        <th class="text-center" scope="col" data-translate="privateDatabase_tabs_list_extensions_title"
                             data-ng-if="listCtrl.isPostgreSql"></th>
                         <th class="min-width text-right" scope="col">
-                            <button class="btn btn-icon" type="button" title="{{i18n.privateDatabase_tabs_refresh_data}}"
+                            <button class="btn btn-icon" type="button" title="{{ 'privateDatabase_tabs_refresh_data' | translate }}"
                                     data-ng-click="listCtrl.getBDDS()">
                                 <span class="fa fa-refresh" aria-hidden="true"></span>
                             </button>
@@ -30,7 +30,7 @@
                 <tbody data-ng-if="!listCtrl.loaders.bdd && !listCtrl.bddsIds.length">
                     <tr>
                         <td class="text-center" colspan="6"
-                            data-i18n-static="privateDatabase_tabs_bdd_no"></td>
+                            data-translate="privateDatabase_tabs_bdd_no"></td>
                     </tr>
                 </tbody>
 
@@ -40,12 +40,12 @@
                         <td class="text-center" colspan="{{listCtrl.isPostgreSql ? 5 : 4}}"
                             data-ng-if="bdd.waitDelete">
                             <span class="label label-danger"
-                                  data-i18n-static="privateDatabase_tabs_bdd_deleting"></span>
+                                  data-translate="privateDatabase_tabs_bdd_deleting"></span>
                         </td>
                         <td data-ng-bind="bdd.creationDate | date:'mediumDate'"
                             data-ng-if="!bdd.waitDelete"></td>
                         <td class="text-center"
-                            data-ng-bind="bdd.quotaUsed.value + tr('unit_size_' + bdd.quotaUsed.unit)"
+                            data-ng-bind="bdd.quotaUsed.value + ('unit_size_' + bdd.quotaUsed.unit | translate)"
                             data-ng-if="!bdd.waitDelete"></td>
                         <td class="text-center"
                             data-ng-if="!bdd.waitDelete">
@@ -55,17 +55,17 @@
                                     data-ng-click="goToDumps(bdd)">
                             </button>
                             <small class="d-block mt-2"
-                                   data-i18n-static="privateDatabase_dump_in_progress"
+                                   data-translate="privateDatabase_dump_in_progress"
                                    data-ng-if="bdd.waitDump"></small>
                             <small class="d-block mt-2"
-                                   data-i18n-static="privateDatabase_restore_in_progress"
+                                   data-translate="privateDatabase_restore_in_progress"
                                    data-ng-if="bdd.waitRestore"></small>
                         </td>
                         <td class="text-center" data-ng-if="!bdd.waitDelete && listCtrl.isPostgreSql">
                             <button class="btn btn-icon" type="button"
                                     data-ng-click="goToExtension(bdd)">
                                 <span class="fa fa-table" aria-hidden="true"></span>
-                                <span class="sr-only" data-i18n-static="privateDatabase_tabs_list_go_extensions"></span>
+                                <span class="sr-only" data-translate="privateDatabase_tabs_list_go_extensions"></span>
                             </button>
                         </td>
                         <td class="text-center" data-ng-show="!bdd.waitDelete">
@@ -75,7 +75,7 @@
                                     data-linkedpopover-placement="left"
                                     data-linkedpopover-remote="true"
                                     data-linkedpopover-single="true"
-                                    data-linkedpopover-title="{{i18n.common_actions}}">
+                                    data-linkedpopover-title="{{ 'common_actions' | translate }}">
                                 <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                             </button>
                         </td>
@@ -86,7 +86,7 @@
 
                         <td colspan="5" class="text-center">
                             <span class="label label-info"
-                                  data-i18n-static="privateDatabase_tabs_bdd_adding"></span>
+                                  data-translate="privateDatabase_tabs_bdd_adding"></span>
                         </td>
                     </tr>
                 </tbody>
@@ -105,21 +105,21 @@
                  data-on-page-change="listCtrl.loaders.bdd = true"
                  data-on-transform-item-done="listCtrl.onTransformItemDone(items)"
                  data-on-transform-item-get-promise="listCtrl.getPromise(promise)"
-                 data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-                 data-item-per-page-placeholder="{{tr('pagination_display')}}">
+                 data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPage, t1: nbPages } }}"
+                 data-item-per-page-placeholder="{{ 'pagination_display' | translate }}">
             </div>
         </div>
     </div>
 
     <div class="col-md-3 mt-5 mt-lg-0">
         <button class="btn btn-default btn-block" type="button"
-                data-i18n-static="privateDatabase_add_bdd_title"
+                data-translate="privateDatabase_add_bdd_title"
                 data-ng-click="setAction('database/add/private-database-database-add')"
                 data-ng-disabled="!database.capabilities.database.create || database.state !== 'started' || taskState.changeVersion || lockAction"
-                title="{{!database.capabilities.database.create ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_add_bdd_title}}">
+                title="{{!database.capabilities.database.create ? ('privateDatabase_capability_disabled_explanation' | translate): ('privateDatabase_add_bdd_title' | translate) }}">
         </button>
         <button class="btn btn-default btn-block" type="button"
-                data-i18n-static="privateDatabase_dump_bdd_title"
+                data-translate="privateDatabase_dump_bdd_title"
                 data-ng-click="goToArchivesList()"
                 data-ng-disabled="database.state !== 'started' || taskState.changeVersion || lockAction">
         </button>

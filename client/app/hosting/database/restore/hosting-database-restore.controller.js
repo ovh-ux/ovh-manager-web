@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'HostingDatabaseRestoreCtrl',
   class HostingDatabaseRestoreCtrl {
-    constructor($scope, $stateParams, Alerter, HostingDatabase) {
+    constructor($scope, $stateParams, $translate, Alerter, HostingDatabase) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.HostingDatabase = HostingDatabase;
     }
@@ -25,13 +26,13 @@ angular.module('App').controller(
       )
         .then(() => {
           this.Alerter.success(
-            this.$scope.tr('database_tabs_dumps_restore_in_start'),
+            this.$translate.instant('database_tabs_dumps_restore_in_start'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('database_tabs_dumps_restore_fail'),
+            this.$translate.instant('database_tabs_dumps_restore_fail'),
             err,
             this.$scope.alerts.main,
           );

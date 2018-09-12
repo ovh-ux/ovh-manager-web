@@ -110,13 +110,6 @@ angular
     },
   ])
   .config([
-    'LANGUAGES',
-    'translatorProvider',
-    (LANGUAGES, translator) => {
-      translator.setAvailableLanguages(LANGUAGES);
-    },
-  ])
-  .config([
     '$compileProvider',
     '$logProvider',
     'constants',
@@ -186,12 +179,9 @@ angular
               });
             },
           ],
-          translator: [
-            'translator',
-            translator => translator.load(['domain', 'hosting']).then(() => translator),
-          ],
           currentSection: () => 'all_dom',
         },
+        translations: ['domain', 'hosting'],
       });
 
       _(URLS_REDIRECTED_TO_DEDICATED)
@@ -372,17 +362,11 @@ angular
     },
   ])
   .run([
-    '$translatePartialLoader', 'translator',
-    ($translatePartialLoader, translator) => {
-      translator.load(['core', 'doubleAuth']);
-      // FIX ME: The loading of the exchange translations has to be removed
-      // once we move completely to angular-translate
-      translator.load(['exchange/translations'], '', ' ');
-
+    '$translate', '$translatePartialLoader',
+    ($translate, $translatePartialLoader) => {
       $translatePartialLoader.addPart('core');
-
-      const selectedLanguage = translator.getSelectedAvailableLanguage();
-      const selectedLanguageValue = _(selectedLanguage).get('value', null);
+      $translatePartialLoader.addPart('double-authentication');
+      const selectedLanguageValue = $translate.use();
 
       if (_(moment).isObject() && _(selectedLanguageValue).isString()) {
         const locale = selectedLanguageValue.replace(/_/, '-');
@@ -427,11 +411,6 @@ angular
 
     $translateProvider.useLoader('$translatePartialLoader', {
       urlTemplate(part, lang) {
-        if (part === 'core') {
-          // FIX ME: Temporary fix until core and all other translations are moved
-          // directly into the app folder. This can be done when traslator is removed
-          return constants.prodMode ? `resources/i18n/${part}/Messages_${lang}.json` : `app/resources/i18n/${part}/Messages_${lang}.json`;
-        }
         return constants.prodMode ? `${part}/translations/Messages_${lang}.json` : `app/${part}/translations/Messages_${lang}.json`;
       },
     });
@@ -446,59 +425,6 @@ angular
   })
   .config(($transitionsProvider, $httpProvider) => {
     $httpProvider.interceptors.push('translateInterceptor');
-
-    $transitionsProvider.onBefore({}, (transition) => {
-      transition.addResolvable({
-        token: 'translations',
-        deps: ['$translate', '$translatePartialLoader'],
-        resolveFn: ($translate, $translatePartialLoader) => {
-          const state = transition.to();
-
-          if (state.translations) {
-            const templateUrlTab = [];
-            let translationsTab = state.translations;
-
-            if (state.views) {
-              angular.forEach(state.views, (value) => {
-                if (_.isUndefined(value.noTranslations) && !value.noTranslations) {
-                  if (value.templateUrl) {
-                    templateUrlTab.push(value.templateUrl);
-                  }
-                  if (value.translations) {
-                    translationsTab = _.union(translationsTab, value.translations);
-                  }
-                }
-              });
-            }
-
-            angular.forEach(templateUrlTab, (templateUrl) => {
-              let routeTmp = templateUrl.substring(templateUrl.indexOf('/') + 1, templateUrl.lastIndexOf('/'));
-              let index = routeTmp.lastIndexOf('/');
-
-              while (index > 0) {
-                translationsTab.push(routeTmp);
-                routeTmp = routeTmp.substring(0, index);
-                index = routeTmp.lastIndexOf('/');
-              }
-
-              translationsTab.push(routeTmp);
-            });
-
-            // mmmhhh... It seems that we have to refresh after each time a part is added
-
-            translationsTab = _.uniq(translationsTab);
-
-            angular.forEach(translationsTab, (part) => {
-              $translatePartialLoader.addPart(part);
-            });
-
-            return $translate.refresh();
-          }
-
-          return null;
-        },
-      }); // translation.addResolvable
-    }); // translationProvider.onBefore
   })
   .config((OtrsPopupProvider, constants) => {
     OtrsPopupProvider.setBaseUrlTickets(_.get(constants, 'REDIRECT_URLS.listTicket', null));
@@ -517,92 +443,92 @@ angular
   .run((
     $rootScope,
     $transitions,
+    $translate,
     ouiCriteriaAdderConfiguration,
     ouiDatagridConfiguration,
     ouiFieldConfiguration,
     ouiNavbarConfiguration,
     ouiPaginationConfiguration,
     ouiStepperConfiguration,
-    translator,
   ) => {
     const removeHook = $transitions.onSuccess({}, () => {
       ouiCriteriaAdderConfiguration.translations = {
-        column_label: translator.tr('common_criteria_adder_column_label'),
-        operator_label: translator.tr('common_criteria_adder_operator_label'),
+        column_label: $translate.instant('common_criteria_adder_column_label'),
+        operator_label: $translate.instant('common_criteria_adder_operator_label'),
 
-        operator_boolean_is: translator.tr('common_criteria_adder_operator_boolean_is'),
-        operator_boolean_isNot: translator.tr('common_criteria_adder_operator_boolean_isNot'),
+        operator_boolean_is: $translate.instant('common_criteria_adder_operator_boolean_is'),
+        operator_boolean_isNot: $translate.instant('common_criteria_adder_operator_boolean_isNot'),
 
-        operator_string_contains: translator.tr('common_criteria_adder_operator_string_contains'),
-        operator_string_containsNot: translator.tr('common_criteria_adder_operator_string_containsNot'),
-        operator_string_startsWith: translator.tr('common_criteria_adder_operator_string_startsWith'),
-        operator_string_endsWith: translator.tr('common_criteria_adder_operator_string_endsWith'),
-        operator_string_is: translator.tr('common_criteria_adder_operator_string_is'),
-        operator_string_isNot: translator.tr('common_criteria_adder_operator_string_isNot'),
+        operator_string_contains: $translate.instant('common_criteria_adder_operator_string_contains'),
+        operator_string_containsNot: $translate.instant('common_criteria_adder_operator_string_containsNot'),
+        operator_string_startsWith: $translate.instant('common_criteria_adder_operator_string_startsWith'),
+        operator_string_endsWith: $translate.instant('common_criteria_adder_operator_string_endsWith'),
+        operator_string_is: $translate.instant('common_criteria_adder_operator_string_is'),
+        operator_string_isNot: $translate.instant('common_criteria_adder_operator_string_isNot'),
 
-        operator_number_is: translator.tr('common_criteria_adder_operator_number_is'),
-        operator_number_smaller: translator.tr('common_criteria_adder_operator_number_smaller'),
-        operator_number_bigger: translator.tr('common_criteria_adder_operator_number_bigger'),
+        operator_number_is: $translate.instant('common_criteria_adder_operator_number_is'),
+        operator_number_smaller: $translate.instant('common_criteria_adder_operator_number_smaller'),
+        operator_number_bigger: $translate.instant('common_criteria_adder_operator_number_bigger'),
 
-        operator_date_is: translator.tr('common_criteria_adder_operator_date_is'),
-        operator_date_isBefore: translator.tr('common_criteria_adder_operator_date_isBefore'),
-        operator_date_isAfter: translator.tr('common_criteria_adder_operator_date_isAfter'),
+        operator_date_is: $translate.instant('common_criteria_adder_operator_date_is'),
+        operator_date_isBefore: $translate.instant('common_criteria_adder_operator_date_isBefore'),
+        operator_date_isAfter: $translate.instant('common_criteria_adder_operator_date_isAfter'),
 
-        operator_options_is: translator.tr('common_criteria_adder_operator_options_is'),
-        operator_options_isNot: translator.tr('common_criteria_adder_operator_options_isNot'),
+        operator_options_is: $translate.instant('common_criteria_adder_operator_options_is'),
+        operator_options_isNot: $translate.instant('common_criteria_adder_operator_options_isNot'),
 
-        true_label: translator.tr('common_criteria_adder_true_label'),
-        false_label: translator.tr('common_criteria_adder_false_label'),
+        true_label: $translate.instant('common_criteria_adder_true_label'),
+        false_label: $translate.instant('common_criteria_adder_false_label'),
 
-        value_label: translator.tr('common_criteria_adder_value_label'),
-        submit_label: translator.tr('common_criteria_adder_submit_label'),
+        value_label: $translate.instant('common_criteria_adder_value_label'),
+        submit_label: $translate.instant('common_criteria_adder_submit_label'),
       };
 
       ouiDatagridConfiguration.translations = {
-        emptyPlaceholder: translator.tr('common_datagrid_nodata'),
+        emptyPlaceholder: $translate.instant('common_datagrid_nodata'),
       };
 
       ouiFieldConfiguration.translations = {
         errors: {
-          required: translator.tr('common_field_error_required'),
-          number: translator.tr('common_field_error_number'),
-          email: translator.tr('common_field_error_email'),
-          min: translator.tr('common_field_error_min', { min: '{{min}}' }),
-          max: translator.tr('common_field_error_max', { max: '{{max}}' }),
-          minlength: translator.tr('common_field_error_minlength', { minlength: '{{minlength}}' }),
-          maxlength: translator.tr('common_field_error_maxlength', { maxlength: '{{maxlength}}' }),
-          pattern: translator.tr('common_field_error_pattern'),
+          required: $translate.instant('common_field_error_required'),
+          number: $translate.instant('common_field_error_number'),
+          email: $translate.instant('common_field_error_email'),
+          min: $translate.instant('common_field_error_min', { min: '{{min}}' }),
+          max: $translate.instant('common_field_error_max', { max: '{{max}}' }),
+          minlength: $translate.instant('common_field_error_minlength', { minlength: '{{minlength}}' }),
+          maxlength: $translate.instant('common_field_error_maxlength', { maxlength: '{{maxlength}}' }),
+          pattern: $translate.instant('common_field_error_pattern'),
         },
       };
 
       ouiNavbarConfiguration.translations = {
         notification: {
-          errorInNotification: translator.tr('common_navbar_notification_error_in_notification'),
-          errorInNotificationDescription: translator.tr('common_navbar_notification_error_in_notification_description'),
-          markRead: translator.tr('common_navbar_notification_mark_as_read'),
-          markUnread: translator.tr('common_navbar_notification_mark_as_unread'),
-          noNotification: translator.tr('common_navbar_notification_none'),
-          noNotificationDescription: translator.tr('common_navbar_notification_none_description'),
+          errorInNotification: $translate.instant('common_navbar_notification_error_in_notification'),
+          errorInNotificationDescription: $translate.instant('common_navbar_notification_error_in_notification_description'),
+          markRead: $translate.instant('common_navbar_notification_mark_as_read'),
+          markUnread: $translate.instant('common_navbar_notification_mark_as_unread'),
+          noNotification: $translate.instant('common_navbar_notification_none'),
+          noNotificationDescription: $translate.instant('common_navbar_notification_none_description'),
         },
       };
 
       ouiPaginationConfiguration.translations = {
-        resultsPerPage: translator.tr('common_pagination_resultsperpage'),
-        ofNResults: translator.tr('common_pagination_ofnresults')
+        resultsPerPage: $translate.instant('common_pagination_resultsperpage'),
+        ofNResults: $translate.instant('common_pagination_ofnresults')
           .replace('TOTAL_ITEMS', '{{totalItems}}'),
-        currentPageOfPageCount: translator.tr('common_pagination_currentpageofpagecount')
+        currentPageOfPageCount: $translate.instant('common_pagination_currentpageofpagecount')
           .replace('CURRENT_PAGE', '{{currentPage}}')
           .replace('PAGE_COUNT', '{{pageCount}}'),
-        previousPage: translator.tr('common_pagination_previous'),
-        nextPage: translator.tr('common_pagination_next'),
+        previousPage: $translate.instant('common_pagination_previous'),
+        nextPage: $translate.instant('common_pagination_next'),
       };
 
       ouiStepperConfiguration.translations = {
-        optionalLabel: translator.tr('common_stepper_optional_label'),
-        modifyThisStep: translator.tr('common_stepper_modify_this_step'),
-        skipThisStep: translator.tr('common_stepper_skip_this_step'),
-        nextButtonLabel: translator.tr('common_stepper_next_button_label'),
-        submitButtonLabel: translator.tr('common_stepper_submit_button_label'),
+        optionalLabel: $translate.instant('common_stepper_optional_label'),
+        modifyThisStep: $translate.instant('common_stepper_modify_this_step'),
+        skipThisStep: $translate.instant('common_stepper_skip_this_step'),
+        nextButtonLabel: $translate.instant('common_stepper_next_button_label'),
+        submitButtonLabel: $translate.instant('common_stepper_submit_button_label'),
       };
 
       removeHook();

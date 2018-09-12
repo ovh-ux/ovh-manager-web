@@ -6,14 +6,16 @@ angular.module('App').controller(
      * @param $scope
      * @param $q
      * @param $stateParams
+     * @param $translate
      * @param Alerter
      * @param Emails
      * @param User
      */
-    constructor($scope, $q, $stateParams, Alerter, Emails, User) {
+    constructor($scope, $q, $stateParams, $translate, Alerter, Emails, User) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$q = $q;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Emails = Emails;
       this.User = User;
@@ -178,11 +180,11 @@ angular.module('App').controller(
 
       this.Emails.createAccount(this.$stateParams.productId, this.account)
         .then(() => this.Alerter.success(
-          this.$scope.tr('email_tab_modal_create_account_success'),
+          this.$translate.instant('email_tab_modal_create_account_success'),
           this.$scope.alerts.main,
         ))
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('email_tab_modal_create_account_error'),
+          this.$translate.instant('email_tab_modal_create_account_error'),
           err,
           this.$scope.alerts.main,
         ))
@@ -212,7 +214,7 @@ angular.module('App').controller(
           }
         })
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('email_tab_error'),
+          this.$translate.instant('email_tab_error'),
           err.data,
           this.$scope.alerts.main,
         ))

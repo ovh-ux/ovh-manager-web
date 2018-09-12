@@ -19,10 +19,7 @@ angular.module('App').config(($stateProvider) => {
           });
         },
       ],
-      translator: [
-        'translator',
-        translator => translator.load(['hosting']).then(() => translator),
-      ],
     },
+    translations: ['hosting'],
   });
 });

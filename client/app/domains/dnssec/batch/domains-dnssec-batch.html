@@ -3,15 +3,15 @@
          data-wizard-bread-crumb
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="updateDnssec"
-         data-wizard-title="i18n.domains_configuration_dnssec_batch_title + ' (' + ctrlDomainsDnssecBatch.selected.domainsNames.length + ')'">
+         data-wizard-title="('domains_configuration_dnssec_batch_title' | translate) + ' (' + ctrlDomainsDnssecBatch.selected.domainsNames.length + ')'">
 
         <div data-wizard-step
              data-wizard-step-valid="ctrlDomainsDnssecBatch.selected.domainsNames.length > 0 && ctrlDomainsDnssecBatch.selected.state !== null">
 
-            <p data-i18n-static="domains_configuration_dnssec_batch_step1_no_selected_domains"
+            <p data-translate="domains_configuration_dnssec_batch_step1_no_selected_domains"
                data-ng-if="!ctrlDomainsDnssecBatch.selected.domainsNames"></p>
 
-            <p data-i18n-static="domains_configuration_dnssec_batch_step1_question"></p>
+            <p data-translate="domains_configuration_dnssec_batch_step1_question"></p>
             <form class="ml-2" name="DomainsDnssecBatchForm" data-ng-if="ctrlDomainsDnssecBatch.selected.domainsNames">
                 <div class="oui-radio">
                     <input type="radio" class="oui-radio__input" name="domainsDnssecBatchStateEnabled" id="domainsDnssecBatchStateEnabled-yes"
@@ -19,7 +19,7 @@
                            data-ng-value="true">
                     <label class="oui-radio__label-container" for="domainsDnssecBatchStateEnabled-yes">
                         <span class="oui-radio__label"
-                              data-i18n-static="domains_configuration_dnssec_batch_step1_status_true"></span>
+                              data-translate="domains_configuration_dnssec_batch_step1_status_true"></span>
                     </label>
                 </div>
                 <div class="oui-radio">
@@ -28,24 +28,24 @@
                            data-ng-value="false">
                     <label class="oui-radio__label-container" for="domainsDnssecBatchStateEnabled-no">
                         <span class="oui-radio__label"
-                              data-i18n-static="domains_configuration_dnssec_batch_step1_status_false"></span>
+                              data-translate="domains_configuration_dnssec_batch_step1_status_false"></span>
                     </label>
                 </div>
             </form>
 
             <div data-wizard-step-help>
-                <h3 data-i18n-static="domains_configuration_dnssec_batch_step1_help_title"></h3>
-                <p data-ng-bind-html="tr('domains_configuration_dnssec_batch_step1_help_content')"></p>
+                <h3 data-translate="domains_configuration_dnssec_batch_step1_help_title"></h3>
+                <p data-ng-bind-html="'domains_configuration_dnssec_batch_step1_help_content' | translate"></p>
                 <p>
                     <a data-ng-href="{{ctrlDomainsDnssecBatch.dnssec_service_url}}" target="_blank"
-                       data-i18n-static="domains_configuration_dnssec_batch_step1_help_more"></a>
+                       data-translate="domains_configuration_dnssec_batch_step1_help_more"></a>
                 </p>
             </div>
         </div>
 
         <div data-wizard-step>
-            <p data-i18n-static="domains_configuration_dnssec_batch_step2_question"></p>
-            <strong data-ng-bind="tr('domains_configuration_dnssec_batch_step2_status_' + ctrlDomainsDnssecBatch.selected.state)"></strong>
+            <p data-translate="domains_configuration_dnssec_batch_step2_question"></p>
+            <strong data-ng-bind="'domains_configuration_dnssec_batch_step2_status_' + ctrlDomainsDnssecBatch.selected.state | translate"></strong>
         </div>
     </div>
 </div>

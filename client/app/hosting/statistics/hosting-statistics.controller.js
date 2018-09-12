@@ -5,6 +5,7 @@ angular
     (
       $scope,
       $stateParams,
+      $translate,
       HostingStatistics,
       HostingDatabase,
       $q,
@@ -74,9 +75,9 @@ angular
               $scope.stats.chart.setYLabel(data.series[0].unit);
               angular.forEach(data.series, (serie) => {
                 $scope.stats.chart.addSerie(
-                  $scope.i18n[
-                    `hosting_tab_STATISTICS_series_${serie.serieName}`
-                  ] || serie.serieName,
+                  $translate.instant(
+                    `hosting_tab_STATISTICS_series_${serie.serieName}`,
+                  ) || serie.serieName,
                   _.map(serie.points, point => ({
                     x: point.x,
                     y: point.y,

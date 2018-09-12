@@ -2,7 +2,7 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="updateWhitelist"
-         data-wizard-title="i18n.privateDatabase_modale_whitelist_update_title">
+         data-wizard-title="'privateDatabase_modale_whitelist_update_title' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="updateCtrl.isWhitelistValid()">
@@ -11,7 +11,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-4"
-                           data-i18n-static="privateDatabase_modale_whitelist_update_ip"></label>
+                           data-translate="privateDatabase_modale_whitelist_update_ip"></label>
                     <div class="col-md-8">
                         <span class="d-block form-control-static"
                               data-ng-bind="updateCtrl.whitelistId"></span>
@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                     <label class="control-label col-md-4" for="inputName"
-                           data-i18n-static="privateDatabase_modale_whitelist_update_name"></label>
+                           data-translate="privateDatabase_modale_whitelist_update_name"></label>
                     <div class="col-md-6">
                         <textarea class="form-control"
                                   id="inputName"
@@ -31,16 +31,16 @@
 
                 <div class="form-group mt-3">
                     <label class="control-label col-md-4"
-                           data-i18n-static="privateDatabase_modale_whitelist_update_restriction_info"></label>
+                           data-translate="privateDatabase_modale_whitelist_update_restriction_info"></label>
                     <div class="col-md-8">
                         <div class="oui-checkbox">
                             <input type="checkbox" class="oui-checkbox__input" id="updateService"
                                    data-ng-model="updateCtrl.model.service">
                             <label class="oui-checkbox__label-container" for="updateService">
                                 <span class="oui-checkbox__label">
-                                    <span class="mr-2" data-i18n-static="privateDatabase_modale_whitelist_update_service"></span>
+                                    <span class="mr-2" data-translate="privateDatabase_modale_whitelist_update_service"></span>
                                     <span class="fa fa-question-circle" aria-hidden="true"
-                                          data-uib-tooltip="{{i18n.privateDatabase_modale_whitelist_update_service_title}}"></span>
+                                          data-uib-tooltip="{{ 'privateDatabase_modale_whitelist_update_service_title' | translate }}"></span>
                                     <span class="oui-checkbox__icon">
                                         <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
                                         <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
@@ -55,9 +55,9 @@
                                    data-ng-model="updateCtrl.model.sftp">
                             <label class="oui-checkbox__label-container" for="updateSftp">
                                 <span class="oui-checkbox__label">
-                                    <span class="mr-2" data-i18n-static="privateDatabase_modale_whitelist_update_sftp"></span>
+                                    <span class="mr-2" data-translate="privateDatabase_modale_whitelist_update_sftp"></span>
                                     <span class="fa fa-question-circle" aria-hidden="true"
-                                          data-uib-tooltip="{{i18n.privateDatabase_modale_whitelist_update_sftp_title}}"></span>
+                                          data-uib-tooltip="{{ 'privateDatabase_modale_whitelist_update_sftp_title' | translate }}"></span>
                                     <span class="oui-checkbox__icon">
                                         <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
                                         <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>

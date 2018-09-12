@@ -3,7 +3,7 @@
         data-wizard
         data-wizard-on-cancel="resetAction"
         data-wizard-on-finish="create"
-        data-wizard-title="i18n.hosting_tab_RUNTIMES_create_title">
+        data-wizard-title="'hosting_tab_RUNTIMES_create_title' | translate">
 
         <div
             data-wizard-step
@@ -15,14 +15,14 @@
                 data-ng-if="!ctrl.loading">
                 <p>
                     <small class="text-danger">*</small>
-                    <small data-i18n-static="required_fields"></small>
+                    <small data-translate="required_fields"></small>
                 </p>
 
                 <div class="form-group">
                     <label
                         class="control-label col-md-4 required"
                         for="runtimeName"
-                        data-i18n-static="hosting_tab_RUNTIMES_label_name"></label>
+                        data-translate="hosting_tab_RUNTIMES_label_name"></label>
 
                     <div class="col-md-6">
                         <input type="text" class="form-control" id="runtimeName" data-ng-model="ctrl.entryToCreate.name">
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-md-4 required" for="runtimeType" data-i18n-static="hosting_tab_RUNTIMES_label_type"></label>
+                    <label class="control-label col-md-4 required" for="runtimeType" data-translate="hosting_tab_RUNTIMES_label_type"></label>
 
                     <div class="col-md-8">
                         <div class="oui-select oui-select_inline mb-0">
@@ -42,33 +42,33 @@
 
                 <div data-ng-if="ctrl.entryToCreate.type.length && ctrl.entryToCreate.type.indexOf('nodejs') !== -1">
                     <div class="form-group">
-                        <label class="control-label col-md-4 required" for="runtimePublicDir" data-i18n-static="hosting_tab_RUNTIMES_label_publicDir"></label>
+                        <label class="control-label col-md-4 required" for="runtimePublicDir" data-translate="hosting_tab_RUNTIMES_label_publicDir"></label>
 
                         <div class="col-md-6">
                             <input type="text" class="form-control" id="runtimePublicDir" data-ng-model="ctrl.entryToCreate.publicDir">
                         </div>
 
-                        <span class="fa fa-info-circle m-2" data-oui-tooltip="{{:: i18n.hosting_tab_RUNTIMES_publicDir_help }}"></span>
+                        <span class="fa fa-info-circle m-2" data-oui-tooltip="{{:: 'hosting_tab_RUNTIMES_publicDir_help' | translate  }}"></span>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-4 required" for="runtimeAppEnv" data-i18n-static="hosting_tab_RUNTIMES_label_appEnv"></label>
+                        <label class="control-label col-md-4 required" for="runtimeAppEnv" data-translate="hosting_tab_RUNTIMES_label_appEnv"></label>
 
                         <div class="col-md-6">
                             <input type="text" class="form-control" id="runtimeAppEnv" data-ng-model="ctrl.entryToCreate.appEnv">
                         </div>
 
-                        <span class="fa fa-info-circle m-2" data-oui-tooltip="{{:: i18n.hosting_tab_RUNTIMES_appEnv_help }}"></span>
+                        <span class="fa fa-info-circle m-2" data-oui-tooltip="{{:: 'hosting_tab_RUNTIMES_appEnv_help' | translate }}"></span>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-4 required" for="runtimeAppBootstrap" data-i18n-static="hosting_tab_RUNTIMES_label_appBootstrap"></label>
+                        <label class="control-label col-md-4 required" for="runtimeAppBootstrap" data-translate="hosting_tab_RUNTIMES_label_appBootstrap"></label>
 
                         <div class="col-md-6">
                             <input type="text" class="form-control" id="runtimeAppBootstrap" data-ng-model="ctrl.entryToCreate.appBootstrap">
                         </div>
 
-                        <span class="fa fa-info-circle m-2" data-oui-tooltip="{{:: i18n.hosting_tab_RUNTIMES_appBootstrap_help }}"></span>
+                        <span class="fa fa-info-circle m-2" data-oui-tooltip="{{:: 'hosting_tab_RUNTIMES_appBootstrap_help' | translate }}"></span>
                     </div>
                 </div>
             </form>

@@ -3,20 +3,20 @@
          data-wizard-bread-crumb
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="addRedirection"
-         data-wizard-title="i18n.domain_tab_REDIRECTION_add_title">
+         data-wizard-title="'domain_tab_REDIRECTION_add_title' | translate">
 
         <!-- STEP 1 -->
         <div data-wizard-step
              data-wizard-step-valid="ctrl.addRedirectStep1Form.$valid">
 
-            <p data-i18n-static="domain_tab_REDIRECTION_add_step1"></p>
+            <p data-translate="domain_tab_REDIRECTION_add_step1"></p>
 
             <form name="ctrl.addRedirectStep1Form">
                 <div class="form-group w-75 mx-auto" data-ng-class="{ 'has-error': ctrl.addRedirectStep1Form.subDomain.$dirty && ctrl.addRedirectStep1Form.subDomain.$invalid }">
                     <label class="sr-only" for="subDomain"
-                           data-i18n-static="domain_tab_REDIRECTION_add_step1_label"></label>
+                           data-translate="domain_tab_REDIRECTION_add_step1_label"></label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="subDomain" name="subDomain" aria-label="{{::i18n.domain_tab_REDIRECTION_add_step1_label}}"
+                        <input type="text" class="form-control" id="subDomain" name="subDomain" aria-label="{{:: 'domain_tab_REDIRECTION_add_step1_label' | translate }}"
                                data-ng-change="ctrl.subDomainCheck(ctrl.addRedirectStep1Form.subDomain)"
                                data-ng-model="ctrl.newRedirection.subdomain"
                                data-ng-trim="true">
@@ -24,14 +24,14 @@
                               data-ng-bind="'.' + ctrl.newRedirection.domain.displayName"></span>
                     </div>
                     <small class="help-block"
-                           data-i18n-static="domain_tab_REDIRECTION_add_step1_subdomain_error"
+                           data-translate="domain_tab_REDIRECTION_add_step1_subdomain_error"
                            data-ng-if="ctrl.addRedirectStep1Form.subDomain.$dirty && ctrl.addRedirectStep1Form.subDomain.$invalid"></small>
                 </div>
 
                 <oui-checkbox id="checkboxWww" name="checkboxWww"
                     disabled="ctrl.newRedirection.disableWww"
                     data-model="ctrl.newRedirection.addwww"
-                    data-text="{{(i18n.domain_tab_REDIRECTION_add_step1_www + ' ' + ctrl.getDomainNameOf(ctrl.newRedirection.subdomainWww))}}">
+                    data-text="{{(('domain_tab_REDIRECTION_add_step1_www' | translate) + ' ' + ctrl.getDomainNameOf(ctrl.newRedirection.subdomainWww))}}">
                 </oui-checkbox>
             </form>
         </div>
@@ -40,7 +40,7 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.addRedirectStep2Form.$valid">
 
-            <p data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step2', ctrl.getTitle())"></p>
+            <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step2' | translate: { t0: ctrl.getTitle() }"></p>
 
             <form class="ml-4" name="ctrl.addRedirectStep2Form">
                 <!-- to web address -->
@@ -51,9 +51,9 @@
                            data-ng-value="ctrl.choice.web">
                     <label class="oui-radio__label-container" for="choiceTargetRedirectionWeb">
                         <span class="oui-radio__label"
-                              data-i18n-static="domain_tab_REDIRECTION_add_step2_web"></span>
+                              data-translate="domain_tab_REDIRECTION_add_step2_web"></span>
                         <span class="oui-radio__description"
-                              data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step2_web_help"></span>
+                              data-ng-bind-html="'domain_tab_REDIRECTION_add_step2_web_help' | translate"></span>
                     </label>
                 </div>
 
@@ -65,9 +65,9 @@
                            data-ng-value="ctrl.choice.server">
                     <label class="oui-radio__label-container" for="choiceTargetRedirectionServer">
                         <span class="oui-radio__label"
-                              data-i18n-static="domain_tab_REDIRECTION_add_step2_server"></span>
+                              data-translate="domain_tab_REDIRECTION_add_step2_server"></span>
                         <span class="oui-radio__description"
-                              data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step2_server_help"></span>
+                              data-ng-bind-html="'domain_tab_REDIRECTION_add_step2_server_help' | translate"></span>
                     </label>
                 </div>
             </form>
@@ -79,7 +79,7 @@
 
             <!-- to web address -->
             <div data-ng-if="ctrl.newRedirection.step2 === ctrl.choice.web">
-                <p data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web', ctrl.getTitle())"></p>
+                <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_web' | translate: { t0: ctrl.getTitle() }"></p>
 
                 <form class="ml-4" name="ctrl.addRedirectStep3Form">
                     <!-- visible -->
@@ -90,9 +90,9 @@
                                data-ng-value="ctrl.choice.visible">
                         <label class="oui-radio__label-container" for="choiceTargetRedirectionWebVisible">
                             <span class="oui-radio__label"
-                                  data-i18n-static="domain_tab_REDIRECTION_add_step3_web_visible"></span>
+                                  data-translate="domain_tab_REDIRECTION_add_step3_web_visible"></span>
                             <span class="oui-radio__description"
-                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web_visible_help', ctrl.getSmallDomainNameOf())"></span>
+                                  data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_web_visible_help' | translate: { t0: ctrl.getSmallDomainNameOf() }"></span>
                         </label>
                     </div>
 
@@ -104,9 +104,9 @@
                                data-ng-value="ctrl.choice.invisible">
                         <label class="oui-radio__label-container" for="choiceTargetRedirectionWebInvisible">
                             <span class="oui-radio__label"
-                                  data-i18n-static="domain_tab_REDIRECTION_add_step3_web_invisible"></span>
+                                  data-translate="domain_tab_REDIRECTION_add_step3_web_invisible"></span>
                             <span class="oui-radio__description"
-                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_web_invisible_help', ctrl.getSmallDomainNameOf())"></span>
+                                  data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_web_invisible_help' | translate: { t0: ctrl.getSmallDomainNameOf() }"></span>
                         </label>
                     </div>
                 </form>
@@ -114,7 +114,7 @@
 
             <!-- to domain or ip -->
             <div data-ng-if="ctrl.newRedirection.step2 === ctrl.choice.server">
-                <p data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server', ctrl.getTitle())"></p>
+                <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_server' | translate: { t0: ctrl.getTitle() }"></p>
 
                 <form class="ml-4" name="ctrl.addRedirectStep3Form">
                     <!-- IP -->
@@ -125,9 +125,9 @@
                                data-ng-value="ctrl.choice.ip">
                         <label class="oui-radio__label-container" for="choiceTargetRedirectionServerIp">
                             <span class="oui-radio__label"
-                                  data-i18n-static="domain_tab_REDIRECTION_add_step3_server_ip"></span>
+                                  data-translate="domain_tab_REDIRECTION_add_step3_server_ip"></span>
                             <span class="oui-radio__description"
-                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_ip_help', ctrl.getSmallDomainNameOf())"></span>
+                                  data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_server_ip_help' | translate: { t0: ctrl.getSmallDomainNameOf() }"></span>
                         </label>
                     </div>
 
@@ -139,14 +139,14 @@
                                data-ng-value="ctrl.choice.cname">
                         <label class="oui-radio__label-container" for="choiceTargetRedirectionServerCname">
                             <span class="oui-radio__label"
-                                  data-i18n-static="domain_tab_REDIRECTION_add_step3_server_cname"></span>
+                                  data-translate="domain_tab_REDIRECTION_add_step3_server_cname"></span>
                             <span class="oui-radio__description"
-                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_cname_help', ctrl.getSmallDomainNameOf())"></span>
+                                  data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_server_cname_help' | translate: { t0: ctrl.getSmallDomainNameOf() }"></span>
                         </label>
                     </div>
                 </form>
                 <div class="alert alert-warning" role="alert"
-                     data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_cname_warning', [ctrl.getSmallDomainNameOf(), ''])"
+                     data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_server_cname_warning' | translate: { t0: ctrl.getSmallDomainNameOf(), t1: '' }"
                      data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.cname">
                 </div>
             </div>
@@ -158,14 +158,14 @@
 
             <p>
                 <small class="text-danger">*</small>
-                <small data-i18n-static="required_fields"></small>
+                <small data-translate="required_fields"></small>
             </p>
 
             <form class="form-horizontal" name="ctrl.addRedirectStep4Form">
 
                 <!-- to web address -->
                 <div data-ng-if="ctrl.newRedirection.step2 === ctrl.choice.web">
-                    <p data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web')"></p>
+                    <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_web' | translate"></p>
 
                     <div class="ml-4" data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.visible">
                         <!-- to web address with visible (301) -->
@@ -175,9 +175,9 @@
                                    data-ng-value="ctrl.choice.r301">
                             <label class="oui-radio__label-container" for="choiceTargetRedirectionWebVisible301">
                                 <span class="oui-radio__label"
-                                      data-i18n-static="domain_tab_REDIRECTION_add_step4_web_visible_301"></span>
+                                      data-translate="domain_tab_REDIRECTION_add_step4_web_visible_301"></span>
                                 <span class="oui-radio__description"
-                                      data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_301_help', [ctrl.getSmallDomainNameOf(), ''])"></span>
+                                      data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_web_visible_301_help' | translate: { t0: ctrl.getSmallDomainNameOf(), t1: '' }"></span>
                             </label>
                         </div>
 
@@ -188,9 +188,9 @@
                                    data-ng-value="ctrl.choice.r302">
                             <label class="oui-radio__label-container" for="choiceTargetRedirectionWebVisible302">
                                 <span class="oui-radio__label"
-                                      data-i18n-static="domain_tab_REDIRECTION_add_step4_web_visible_302"></span>
+                                      data-translate="domain_tab_REDIRECTION_add_step4_web_visible_302"></span>
                                 <span class="oui-radio__description"
-                                      data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_302_help', ctrl.getSmallDomainNameOf())"></span>
+                                      data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_web_visible_302_help' | translate: { t0: ctrl.getSmallDomainNameOf() }"></span>
                             </label>
                         </div>
                     </div>
@@ -202,32 +202,32 @@
                                data-ng-value="ctrl.choice.iframe">
                         <label class="oui-radio__label-container" for="choiceTargetRedirectionWebVisibleIframe">
                             <span class="oui-radio__label"
-                                  data-i18n-static="domain_tab_REDIRECTION_add_step4_web_invisible_iframe"></span>
+                                  data-translate="domain_tab_REDIRECTION_add_step4_web_invisible_iframe"></span>
                             <span class="oui-radio__description"
-                                  data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help', ctrl.getSmallDomainNameOf())"></span>
+                                  data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help' | translate: { t0: ctrl.getSmallDomainNameOf() }"></span>
                         </label>
                     </div>
 
                     <!-- address target visible invisible (302 iframe) -->
                     <div class="mt-5"
                          data-ng-if="(ctrl.newRedirection.step3 === ctrl.choice.visible && (ctrl.newRedirection.step4 === ctrl.choice.r301 || ctrl.newRedirection.step4 === ctrl.choice.r302)) || (ctrl.newRedirection.step3 === ctrl.choice.invisible && ctrl.newRedirection.step4 === ctrl.choice.iframe)">
-                        <p data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_target')"></p>
+                        <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_web_target' | translate"></p>
 
-                        <p data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_302_help_warning')"
+                        <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_web_visible_302_help_warning' | translate"
                            data-ng-if="ctrl.newRedirection.step4 === ctrl.choice.r301 || ctrl.newRedirection.step4 === ctrl.choice.r302 || ctrl.newRedirection.step4 === ctrl.choice.iframe"></p>
 
                         <div class="form-group" data-ng-class="{ 'has-error': ctrl.errors.webTarget || ctrl.errors.webTargetLength }">
                             <label class="control-label col-md-3 required"
-                                   data-i18n-static="domain_tab_REDIRECTION_add_step4_web_target_label"></label>
+                                   data-translate="domain_tab_REDIRECTION_add_step4_web_target_label"></label>
                             <div class="col-md-8">
-                                <input type="text" class="form-control" id="choiceTargetRedirectionWebTarget" name="webTarget" placeholder="{{::i18n.domain_tab_REDIRECTION_add_step4_web_example}}" required
+                                <input type="text" class="form-control" id="choiceTargetRedirectionWebTarget" name="webTarget" placeholder="{{:: 'domain_tab_REDIRECTION_add_step4_web_example' | translate }}" required
                                        data-ng-change="ctrl.webTargetCheck()"
                                        data-ng-model="ctrl.newRedirection.webTarget">
                                 <small class="help-block"
-                                       data-i18n-static="domain_tab_REDIRECTION_add_step4_web_target_error"
+                                       data-translate="domain_tab_REDIRECTION_add_step4_web_target_error"
                                        data-ng-if="ctrl.errors.webTarget"></small>
                                 <small class="text-danger"
-                                       data-i18n-static="domain_tab_REDIRECTION_add_step4_web_too_much_caractere"
+                                       data-translate="domain_tab_REDIRECTION_add_step4_web_too_much_caractere"
                                        data-ng-if="ctrl.errors.webTargetLength"></small>
                             </div>
                         </div>
@@ -235,46 +235,46 @@
 
                     <div class="mt-4"
                          data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.invisible && ctrl.newRedirection.step4 === ctrl.choice.iframe">
-                        <p data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_option')"></p>
+                        <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_web_option' | translate"></p>
 
                         <div class="form-group" data-ng-class="{'has-error': ctrl.errors.ortTitle}">
                             <label class="control-label col-md-3" for="webTargetTitle"
-                                   data-i18n-static="domain_tab_REDIRECTION_add_step4_web_option_title"></label>
+                                   data-translate="domain_tab_REDIRECTION_add_step4_web_option_title"></label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control" id="webTargetTitle" name="webTargetTitle"
                                        data-ng-change="ctrl.webTargetTitleCheck()"
                                        data-ng-model="ctrl.newRedirection.webTargetdetail.webTargetTitle"
                                        data-ng-trim="true">
                                 <small class="help-block"
-                                       data-i18n-static="domain_tab_REDIRECTION_add_step4_web_too_much_caractere"
+                                       data-translate="domain_tab_REDIRECTION_add_step4_web_too_much_caractere"
                                        data-ng-if="ctrl.errors.ortTitle"></small>
                             </div>
                         </div>
 
                         <div class="form-group" data-ng-class="{'has-error': ctrl.errors.ortKeywords}">
                             <label class="control-label col-md-3" for="webTargetKeywords"
-                                   data-i18n-static="domain_tab_REDIRECTION_add_step4_web_option_keyword"></label>
+                                   data-translate="domain_tab_REDIRECTION_add_step4_web_option_keyword"></label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control" id="webTargetKeywords" name="webTargetKeywords"
                                        data-ng-change="ctrl.webTargetKeywordsCheck()"
                                        data-ng-model="ctrl.newRedirection.webTargetdetail.webTargetKeywords"
                                        data-ng-trim="true">
                                 <small class="help-block"
-                                       data-i18n-static="domain_tab_REDIRECTION_add_step4_web_too_much_caractere"
+                                       data-translate="domain_tab_REDIRECTION_add_step4_web_too_much_caractere"
                                        data-ng-if="ctrl.errors.ortKeywords"></small>
                             </div>
                         </div>
 
                         <div class="form-group" data-ng-class="{'has-error': ctrl.errors.ortDescription}">
                             <label class="control-label col-md-3" for="webTargetDescription"
-                                   data-i18n-static="domain_tab_REDIRECTION_add_step4_web_option_description"></label>
+                                   data-translate="domain_tab_REDIRECTION_add_step4_web_option_description"></label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control" id="webTargetDescription" name="webTargetDescription"
                                        data-ng-change="ctrl.webTargetDescriptionCheck()"
                                        data-ng-model="ctrl.newRedirection.webTargetdetail.webTargetDescription"
                                        data-ng-trim="true">
                                 <small class="help-block"
-                                       data-i18n-static="domain_tab_REDIRECTION_add_step4_web_too_much_caractere"
+                                       data-translate="domain_tab_REDIRECTION_add_step4_web_too_much_caractere"
                                        data-ng-if="ctrl.errors.ortDescription"></small>
                             </div>
                         </div>
@@ -285,33 +285,33 @@
                 <div data-ng-if="ctrl.newRedirection.step2 === ctrl.choice.server">
                     <!-- with ip -->
                     <div data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.ip">
-                        <p data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_server_ip')"></p>
+                        <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_server_ip' | translate"></p>
 
                         <div class="form-group" data-ng-class="{'has-error': ctrl.newRedirection.ipTarget !== null && ctrl.newRedirection.ipTarget !== '' && !ctrl.ipaddrValid(ctrl.newRedirection.ipTarget)}">
                             <label class="control-label col-md-3 required" for="ipTarget"
-                                   data-i18n-static="domain_tab_REDIRECTION_add_step4_server_ip_label"></label>
+                                   data-translate="domain_tab_REDIRECTION_add_step4_server_ip_label"></label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control" id="ipTarget" name="ipTarget" required
                                        data-ng-model="ctrl.newRedirection.ipTarget"
                                        data-ng-trim="true">
                                 <small class="help-block"
-                                       data-i18n-static="domain_tab_REDIRECTION_add_step4_server_ip_error"
+                                       data-translate="domain_tab_REDIRECTION_add_step4_server_ip_error"
                                        data-ng-if="ctrl.newRedirection.ipTarget !== null && ctrl.newRedirection.ipTarget !== '' && !ctrl.ipaddrValid(ctrl.newRedirection.ipTarget)"></small>
                             </div>
                         </div>
                         <div class="alert alert-info mt-5" role="alert"
-                             data-ng-bind-html="i18n.domain_tab_REDIRECTION_ip_version_info">
+                             data-ng-bind-html="'domain_tab_REDIRECTION_ip_version_info' | translate">
                         </div>
                     </div>
 
                     <!-- with domaine -->
                     <div data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.cname">
                         <p class="font-weight-bold"
-                           data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_server_cname')"></p>
+                           data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_server_cname' | translate"></p>
 
                         <div class="form-group" data-ng-class="{'has-error': ctrl.errors.domainCname}">
                             <label class="control-label col-md-3 required" for="redirectionTarget"
-                                   data-i18n-static="domain_tab_REDIRECTION_add_step4_server_cname_label"></label>
+                                   data-translate="domain_tab_REDIRECTION_add_step4_server_cname_label"></label>
                             <div class="col-md-8">
                                 <input type="text" class="form-control" id="redirectionTarget" name="serverTarget" required
                                        data-ng-change="ctrl.redirectionTargetChange()"
@@ -323,14 +323,14 @@
                                 <oui-checkbox class="mt-3" id="includeCNAME"
                                     data-model="ctrl.shouldIncludeDomain"
                                     data-on-change="ctrl.redirectionTargetChange()"
-                                    data-text="{{::i18n.domain_tab_REDIRECTION_edit_server_cname_include_domain}}">
+                                    data-text="{{:: 'domain_tab_REDIRECTION_edit_server_cname_include_domain' | translate }}">
                                 </oui-checkbox>
                             </div>
                         </div>
 
-                        <p data-ng-bind-html="tr('domain_tab_REDIRECTION_edit_server_cname_include_domain_example', [ctrl.getCompleteTarget()])"></p>
+                        <p data-ng-bind-html="'domain_tab_REDIRECTION_edit_server_cname_include_domain_example' | translate: { t0: ctrl.getCompleteTarget() }"></p>
                         <div class="alert alert-info" role="alert"
-                             data-ng-bind-html="i18n.domain_tab_REDIRECTION_add_step4_server_cname_info">
+                             data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_server_cname_info' | translate">
                         </div>
                     </div>
                 </div>
@@ -349,16 +349,16 @@
             </div>
 
             <p class="text-center"
-               data-i18n-static="domain_tab_REDIRECTION_add_step5_check_validity"
+               data-translate="domain_tab_REDIRECTION_add_step5_check_validity"
                data-ng-if="ctrl.loading.check"></p>
 
             <div data-ng-if="!ctrl.loading.check && !ctrl.loading.add">
-                <p data-i18n-static="domain_tab_REDIRECTION_add_step5_resume"></p>
+                <p data-translate="domain_tab_REDIRECTION_add_step5_resume"></p>
 
                 <!-- Source -->
                 <div class="mt-2"
                      data-ng-if="ctrl.newRedirection.listValidRedirection.length">
-                    <span data-i18n-static="domain_tab_REDIRECTION_add_step5_source"></span>
+                    <span data-translate="domain_tab_REDIRECTION_add_step5_source"></span>
                     <ul>
                         <li class="font-weight-bold"
                             data-ng-repeat="sub in ctrl.newRedirection.listValidRedirection track by $index"
@@ -370,7 +370,7 @@
                 <!-- Target -->
                 <div class="mt-2"
                      data-ng-hide="ctrl.newRedirection.step3 === ctrl.choice.visible && ctrl.newRedirection.step4 === ctrl.choice.r301">
-                    <span data-i18n-static="domain_tab_REDIRECTION_add_step5_target"></span>
+                    <span data-translate="domain_tab_REDIRECTION_add_step5_target"></span>
                     <ul>
                         <li class="font-weight-bold"
                             data-ng-bind="ctrl.newRedirection.webTarget"
@@ -389,28 +389,28 @@
 
                 <!-- Information -->
                 <div class="mt-2">
-                    <span data-i18n-static="domain_tab_REDIRECTION_add_step5_info"></span>
+                    <span data-translate="domain_tab_REDIRECTION_add_step5_info"></span>
                     <ul>
                         <li class="font-weight-bold"
-                            data-i18n-static="domain_tab_REDIRECTION_type_invisible"
+                            data-translate="domain_tab_REDIRECTION_type_invisible"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.ip"></li>
                         <li class="font-weight-bold"
-                            data-i18n-static="domain_tab_REDIRECTION_type_invisible"
+                            data-translate="domain_tab_REDIRECTION_type_invisible"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.cname"></li>
                         <li class="font-weight-bold"
-                            data-i18n-static="domain_tab_REDIRECTION_type_visible"
+                            data-translate="domain_tab_REDIRECTION_type_visible"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.visible"></li>
                         <li class="font-weight-bold"
-                            data-i18n-static="domain_tab_REDIRECTION_type_invisible"
+                            data-translate="domain_tab_REDIRECTION_type_invisible"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.invisible"></li>
                         <li class="font-weight-bold"
-                            data-i18n-static="domain_tab_REDIRECTION_type_301"
+                            data-translate="domain_tab_REDIRECTION_type_301"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.visible && ctrl.newRedirection.step4 === ctrl.choice.r301"></li>
                         <li class="font-weight-bold"
-                            data-i18n-static="domain_tab_REDIRECTION_type_302"
+                            data-translate="domain_tab_REDIRECTION_type_302"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.visible && ctrl.newRedirection.step4 === ctrl.choice.r302"></li>
                         <li class="font-weight-bold"
-                            data-i18n-static="domain_tab_REDIRECTION_type_iframe"
+                            data-translate="domain_tab_REDIRECTION_type_iframe"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.invisible && ctrl.newRedirection.step4 === ctrl.choice.iframe"></li>
                     </ul>
                 </div>
@@ -418,18 +418,18 @@
                 <!-- iFrame options -->
                 <div class="mt-2"
                      data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.invisible && ctrl.newRedirection.step4 === ctrl.choice.iframe">
-                    <span data-i18n-static="domain_tab_REDIRECTION_add_step4_web_option"></span>
+                    <span data-translate="domain_tab_REDIRECTION_add_step4_web_option"></span>
                     <ul>
                         <li>
-                            <span data-i18n-static="domain_tab_REDIRECTION_add_step4_web_option_title"></span> :
+                            <span data-translate="domain_tab_REDIRECTION_add_step4_web_option_title"></span> :
                             <strong data-ng-bind="ctrl.constructor.getDisplayOption(ctrl.newRedirection.webTargetdetail.webTargetTitle)"></strong>
                         </li>
                         <li>
-                            <span data-i18n-static="domain_tab_REDIRECTION_add_step4_web_option_keyword"></span> :
+                            <span data-translate="domain_tab_REDIRECTION_add_step4_web_option_keyword"></span> :
                             <strong data-ng-bind="ctrl.constructor.getDisplayOption(ctrl.newRedirection.webTargetdetail.webTargetKeywords)"></strong>
                         </li>
                         <li>
-                            <span data-i18n-static="domain_tab_REDIRECTION_add_step4_web_option_description"></span> :
+                            <span data-translate="domain_tab_REDIRECTION_add_step4_web_option_description"></span> :
                             <strong data-ng-bind="ctrl.constructor.getDisplayOption(ctrl.newRedirection.webTargetdetail.webTargetDescription)"></strong>
                         </li>
                     </ul>
@@ -437,29 +437,30 @@
 
                 <!-- error on domain + www.domain -->
                 <p class="text-center text-danger"
-                   data-i18n-static="domain_tab_REDIRECTION_add_step5_errors"
+                   data-translate="domain_tab_REDIRECTION_add_step5_errors"
                    data-ng-if="ctrl.errors.containAllError"></p>
 
                 <!-- error on domain -->
                 <p class="text-center text-danger"
-                   data-ng-bind="tr('domain_tab_REDIRECTION_add_step5_error', ctrl.getLastError(ctrl.newRedirection.listValidRedirection))"
+                   data-translate="domain_tab_REDIRECTION_add_step5_error"
+                   data-translate-values="{ t0: ctrl.getLastError(ctrl.newRedirection.listValidRedirection) }"
                    data-ng-if="!ctrl.errors.containAllError && ctrl.errors.containOneError"></p>
 
                 <!-- error detail domain -->
                 <div class="mt-2 text-danger"
                      data-ng-repeat="sub in ctrl.newRedirection.listValidRedirection track by $index"
                      data-ng-if="!ctrl.constructor.isValidRedirection(sub)">
-                    <span data-ng-bind="tr('domain_tab_REDIRECTION_add_step5_error_info', ctrl.getDomainNameOf(sub.subDomain))"></span>
+                    <span data-translate="domain_tab_REDIRECTION_add_step5_error_info" data-translate-values="{ t0: ctrl.getDomainNameOf(sub.subDomain) }"></span>
                     <ul>
-                        <li data-i18n-static="domain_tab_REDIRECTION_add_step5_error_unknown"
+                        <li data-translate="domain_tab_REDIRECTION_add_step5_error_unknown"
                             data-ng-if="sub.listBlockingType.length === 0"></li>
-                        <li data-i18n-static="domain_tab_REDIRECTION_add_step5_error_CNAME"
+                        <li data-translate="domain_tab_REDIRECTION_add_step5_error_CNAME"
                             data-ng-if="ctrl.constructor.lodashContain(sub.listBlockingType, ctrl.typeRedirection.cname)"></li>
-                        <li data-i18n-static="domain_tab_REDIRECTION_add_step5_error_A"
+                        <li data-translate="domain_tab_REDIRECTION_add_step5_error_A"
                             data-ng-if="ctrl.constructor.lodashContain(sub.listBlockingType, ctrl.typeRedirection.ipv4) && !ctrl.isORTiP(sub.listA, sub.listORT)"></li>
-                        <li data-i18n-static="domain_tab_REDIRECTION_add_step5_error_AAAA"
+                        <li data-translate="domain_tab_REDIRECTION_add_step5_error_AAAA"
                             data-ng-if="ctrl.constructor.lodashContain(sub.listBlockingType, ctrl.typeRedirection.ipv6)"></li>
-                        <li data-i18n-static="domain_tab_REDIRECTION_add_step5_error_TXT"
+                        <li data-translate="domain_tab_REDIRECTION_add_step5_error_TXT"
                             data-ng-if="ctrl.constructor.lodashContain(sub.listBlockingType, ctrl.typeRedirection.txt)"></li>
                     </ul>
                 </div>
@@ -467,26 +468,26 @@
                 <!-- Informations -->
                 <div class="mt-2"
                      data-ng-hide="ctrl.errors.containAllError">
-                    <span data-i18n-static="domain_tab_REDIRECTION_add_step5_info_other"></span>
+                    <span data-translate="domain_tab_REDIRECTION_add_step5_info_other"></span>
                     <ul>
-                        <li data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_ip_help2', [ctrl.newRedirection.params.typeRedirection, ctrl.getSmallDomainNameOf()])"
+                        <li data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_server_ip_help2' | translate: { t0: ctrl.newRedirection.params.typeRedirection, t1: ctrl.getSmallDomainNameOf() }"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.ip"></li>
                         <li class="text-danger"
-                            data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_cname_warning', [ctrl.getSmallDomainNameOf(), ctrl.newRedirection.serverTarget])"
+                            data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_server_cname_warning' | translate: { t0: ctrl.getSmallDomainNameOf(), t1: ctrl.newRedirection.serverTarget }"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.cname"></li>
-                        <li data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step3_server_cname_help', ctrl.getSmallDomainNameOf())"
+                        <li data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_server_cname_help' | translate: { t0: ctrl.getSmallDomainNameOf() }"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.cname"></li>
-                        <li data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_301_help', [ctrl.getSmallDomainNameOf(), ctrl.newRedirection.ipTarget])"
+                        <li data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_web_visible_301_help' | translate: { t0: ctrl.getSmallDomainNameOf(), t1: ctrl.newRedirection.ipTarget }"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.ip"></li>
-                        <li data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_301_help', [ctrl.getSmallDomainNameOf(), ctrl.newRedirection.serverTarget])"
+                        <li data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_web_visible_301_help' | translate: { t0: ctrl.getSmallDomainNameOf(), t1: ctrl.newRedirection.serverTarget }"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.cname"></li>
-                        <li data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_301_help', [ctrl.getSmallDomainNameOf(), ''])"
+                        <li data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_web_visible_301_help' | translate: { t0: ctrl.getSmallDomainNameOf(), t1: '' }"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.visible && ctrl.newRedirection.step4 === ctrl.choice.r301"></li>
-                        <li data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_visible_302_help', ctrl.getSmallDomainNameOf())"
+                        <li data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_web_visible_302_help' | translate: { t0: ctrl.getSmallDomainNameOf() }"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.visible && ctrl.newRedirection.step4 === ctrl.choice.r302"></li>
-                        <li data-ng-bind-html="tr('domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help', ctrl.getSmallDomainNameOf())"
+                        <li data-ng-bind-html="'domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help' | translate: { t0: ctrl.getSmallDomainNameOf() }"
                             data-ng-if="ctrl.newRedirection.step3 === ctrl.choice.invisible && ctrl.newRedirection.step4 === ctrl.choice.iframe"></li>
-                        <li data-i18n-static="domain_configuration_dns_entry_add_step3_alert"></li>
+                        <li data-translate="domain_configuration_dns_entry_add_step3_alert"></li>
                     </ul>
                 </div>
             </div>
@@ -497,7 +498,7 @@
                        data-ng-model="ctrl.overwrite">
                 <label class="oui-checkbox__label-container" for="overwrite">
                     <span class="oui-checkbox__label">
-                        <span data-i18n-static="domain_tab_REDIRECTION_add_step5_overwrite"></span>
+                        <span data-translate="domain_tab_REDIRECTION_add_step5_overwrite"></span>
                         <span class="oui-checkbox__icon">
                             <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
                             <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
@@ -510,7 +511,7 @@
 
             <div class="text-center" data-ng-if="ctrl.loading.add">
                 <oui-spinner></oui-spinner>
-                <div data-i18n-static="domain_tab_REDIRECTION_add_step5_add_record"></div>
+                <div data-translate="domain_tab_REDIRECTION_add_step5_add_record"></div>
             </div>
         </div>
     </div>

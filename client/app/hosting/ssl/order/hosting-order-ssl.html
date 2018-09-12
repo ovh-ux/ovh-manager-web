@@ -2,7 +2,7 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="onFinishWizard"
-         data-wizard-title="i18n.hosting_dashboard_service_order_ssl">
+         data-wizard-title="'hosting_dashboard_service_order_ssl' | translate">
 
         <div data-wizard-step
              data-wizard-step-on-load="onStep1Load"
@@ -23,7 +23,7 @@
                                    data-ng-model="$ctrl.selectedCertificateType"
                                    required>
                             <label class="oui-radio__label-container" for="sslTypeLetsEncrypt">
-                                <span class="oui-radio__label" data-i18n-static="hosting_dashboard_ssl_order_free"></span>
+                                <span class="oui-radio__label" data-translate="hosting_dashboard_ssl_order_free"></span>
                             </label>
                         </div>
                         <div class="oui-radio" data-ng-if="$ctrl.step1.canOrderPaidCertificate">
@@ -35,7 +35,7 @@
                                    data-ng-model="$ctrl.selectedCertificateType"
                                    required>
                             <label class="oui-radio__label-container" for="sslTypePaid">
-                                <span class="oui-radio__label" data-i18n-static="hosting_dashboard_ssl_order_payable"></span>
+                                <span class="oui-radio__label" data-translate="hosting_dashboard_ssl_order_payable"></span>
                             </label>
                         </div>
                         <div class="oui-radio">
@@ -47,7 +47,7 @@
                                    data-ng-model="$ctrl.selectedCertificateType"
                                    required>
                             <label class="oui-radio__label-container" for="sslTypeImported">
-                                <span class="oui-radio__label" data-i18n-static="hosting_dashboard_ssl_order_import"></span>
+                                <span class="oui-radio__label" data-translate="hosting_dashboard_ssl_order_import"></span>
                             </label>
                         </div>
                     </fieldset>
@@ -55,10 +55,10 @@
 
                 <div class="alert alert-warning mt-5"
                      role="alert"
-                     data-i18n-static="hosting_ssl_regenerate_info_warning"></div>
+                     data-translate="hosting_ssl_regenerate_info_warning"></div>
                 <div class="alert alert-info"
                      role="alert"
-                     data-ng-bind-html="tr('hosting_ssl_limit_characters_info_warning', [$ctrl.Validator.MAX_DOMAIN_LENGTH])"
+                     data-ng-bind-html="'hosting_ssl_limit_characters_info_warning' | translate: { t0: $ctrl.Validator.MAX_DOMAIN_LENGTH }"
                      data-ng-if="!$ctrl.step1.canOrderLetEncryptCertificate"></div>
                 <div class="alert alert-warning"
                      role="alert"
@@ -73,7 +73,7 @@
             <form name="$ctrl.importCertificateForm" data-ng-if="$ctrl.hostingSSLCertificateType.constructor.isImported($ctrl.selectedCertificateType)">
                 <label class="oui-label"
                         for="importCertificateContent"
-                        data-i18n-static="hosting_dashboard_ssl_order_manual_mode_certif"></label>
+                        data-translate="hosting_dashboard_ssl_order_manual_mode_certif"></label>
                 <textarea class="oui-textarea"
                             id="importCertificateContent"
                             rows="7"
@@ -81,7 +81,7 @@
                             required></textarea>
                 <label class="oui-label"
                         for="importCertificateKey"
-                        data-i18n-static="hosting_dashboard_ssl_order_manual_mode_key"></label>
+                        data-translate="hosting_dashboard_ssl_order_manual_mode_key"></label>
                 <textarea class="oui-textarea"
                             id="importCertificateKey"
                             rows="7"
@@ -89,7 +89,7 @@
                             required></textarea>
                 <label class="oui-label"
                         for="importCertificateChain"
-                        data-i18n-static="hosting_dashboard_ssl_order_manual_mode_chain"></label>
+                        data-translate="hosting_dashboard_ssl_order_manual_mode_chain"></label>
                 <textarea class="form-control"
                             id="importCertificateChain"
                             rows="7"
@@ -101,7 +101,7 @@
                     <oui-spinner></oui-spinner>
                 </div>
 
-                <p data-ng-if="!$ctrl.step2.loading.isGeneratingOrderForm" data-i18n-static="hosting_dashboard_ssl_order_preamble"></p>
+                <p data-ng-if="!$ctrl.step2.loading.isGeneratingOrderForm" data-translate="hosting_dashboard_ssl_order_preamble"></p>
             </div>
         </div>
     </div>

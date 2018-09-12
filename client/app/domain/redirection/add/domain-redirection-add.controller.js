@@ -4,6 +4,7 @@ angular.module('controllers').controller(
     constructor(
       $scope,
       $rootScope,
+      $translate,
       Alerter,
       Domain,
       DomainValidator,
@@ -11,6 +12,7 @@ angular.module('controllers').controller(
     ) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.DomainValidator = DomainValidator;
@@ -158,7 +160,7 @@ angular.module('controllers').controller(
       return (
         ((this.newRedirection.addwww
           && !this.newRedirection.disableWww
-          && this.$scope.i18n.domain_tab_REDIRECTION_add_www)
+          && this.$translate.instant('domain_tab_REDIRECTION_add_www'))
           || '') + this.getDomainNameOf(this.newRedirection.subdomain)
       );
     }
@@ -187,9 +189,9 @@ angular.module('controllers').controller(
         this.getDomainNameOf(this.newRedirection.subdomain),
         (this.newRedirection.addwww
           && !this.newRedirection.disableWww
-          && this.$scope.tr(
+          && this.$translate.instant(
             'domain_and',
-            this.getDomainNameOf(this.newRedirection.subdomainWww),
+            { t0: this.getDomainNameOf(this.newRedirection.subdomainWww) },
           ))
           || '',
       ];
@@ -243,7 +245,7 @@ angular.module('controllers').controller(
         this.errors.domainCname = this.errors.redirectionTarget;
 
         if (this.errors.redirectionTarget) {
-          this.errorLabel = this.$scope.tr('domain_tab_REDIRECTION_edit_server_cname_error');
+          this.errorLabel = this.$translate.instant('domain_tab_REDIRECTION_edit_server_cname_error');
         }
       }
     }
@@ -507,25 +509,25 @@ angular.module('controllers').controller(
 
           if (nbError === tab.length) {
             this.Alerter.error(
-              this.$scope.tr('domain_tab_REDIRECTION_add_error'),
+              this.$translate.instant('domain_tab_REDIRECTION_add_error'),
               this.$scope.alerts.main,
             );
           } else if (nbError !== 0) {
             this.Alerter.alertFromSWS(
-              this.$scope.tr('domain_tab_REDIRECTION_add_partial'),
+              this.$translate.instant('domain_tab_REDIRECTION_add_partial'),
               'PARTIAL',
               this.$scope.alerts.main,
             );
           } else {
             this.Alerter.success(
-              this.$scope.tr('domain_tab_REDIRECTION_add_success'),
+              this.$translate.instant('domain_tab_REDIRECTION_add_success'),
               this.$scope.alerts.main,
             );
           }
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_tab_REDIRECTION_delete_error'),
+            this.$translate.instant('domain_tab_REDIRECTION_delete_error'),
             err,
             this.$scope.alerts.main,
           );

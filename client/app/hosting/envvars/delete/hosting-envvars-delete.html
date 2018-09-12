@@ -2,23 +2,23 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="delete"
-         data-wizard-title="i18n.hosting_tab_ENVVARS_delete_title">
+         data-wizard-title="'hosting_tab_ENVVARS_delete_title' | translate">
 
         <div data-wizard-step>
-            <p data-i18n-static="hosting_tab_ENVVARS_delete_step1_question"></p>
+            <p data-translate="hosting_tab_ENVVARS_delete_step1_question"></p>
 
             <dl class="dl-horizontal dl-lg">
-                <dt data-i18n-static="hosting_tab_ENVVARS_table_header_key"></dt>
+                <dt data-translate="hosting_tab_ENVVARS_table_header_key"></dt>
                 <dd data-ng-bind="ctrl.entryToDelete.key"></dd>
 
-                <dt data-i18n-static="hosting_tab_ENVVARS_table_header_type"></dt>
+                <dt data-translate="hosting_tab_ENVVARS_table_header_type"></dt>
                 <dd data-ng-bind="ctrl.entryToDelete.type"></dd>
 
-                <dt data-i18n-static="hosting_tab_ENVVARS_table_header_value"></dt>
+                <dt data-translate="hosting_tab_ENVVARS_table_header_value"></dt>
                 <dd data-ng-bind="ctrl.entryToDelete.value"></dd>
             </dl>
 
-            <oui-message type="warning" data-i18n-static="hosting_tab_ENVVARS_delete_information">
+            <oui-message type="warning" data-translate="hosting_tab_ENVVARS_delete_information">
         </div>
     </div>
 </div>

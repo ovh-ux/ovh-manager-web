@@ -1,8 +1,9 @@
 angular.module('App').controller(
   'DomainZoneDeleteAllCtrl',
   class DomainZoneDeleteAllCtrl {
-    constructor($scope, Alerter, Domain, Hosting) {
+    constructor($scope, $translate, Alerter, Domain, Hosting) {
       this.$scope = $scope;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.domainService = Domain;
       this.hostingService = Hosting;
@@ -37,11 +38,11 @@ angular.module('App').controller(
       return this.domainService
         .deleteAllZone(this.domain.name)
         .then(() => this.alerter.success(
-          this.$scope.tr('domain_configuration_zonedns_delete_all_success'),
+          this.$translate.instant('domain_configuration_zonedns_delete_all_success'),
           this.$scope.alerts.main,
         ))
         .catch(err => this.alerter.alertFromSWS(
-          this.$scope.tr('domain_configuration_zonedns_delete_all_error'),
+          this.$translate.instant('domain_configuration_zonedns_delete_all_error'),
           err,
           this.$scope.alerts.main,
         ))

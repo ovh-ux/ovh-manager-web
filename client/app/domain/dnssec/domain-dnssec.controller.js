@@ -5,6 +5,7 @@ angular.module('controllers').controller(
       $scope,
       $q,
       $stateParams,
+      $translate,
       Alerter,
       Domain,
       Products,
@@ -13,6 +14,7 @@ angular.module('controllers').controller(
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.Products = Products;
@@ -88,7 +90,7 @@ angular.module('controllers').controller(
           );
         })
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('domain_tab_DNSSEC_loading_error'),
+          this.$translate.instant('domain_tab_DNSSEC_loading_error'),
           _.get(err, 'data', err),
           this.$scope.alerts.main,
         ))
@@ -163,11 +165,11 @@ angular.module('controllers').controller(
         keys: this.dnssecList,
       })
         .then(() => this.Alerter.success(
-          this.$scope.tr('domain_tab_DNSSEC_action_add_success'),
+          this.$translate.instant('domain_tab_DNSSEC_action_add_success'),
           this.$scope.alerts.main,
         ))
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('domain_tab_DNSSEC_action_add_error'),
+          this.$translate.instant('domain_tab_DNSSEC_action_add_error'),
           err,
           this.$scope.alerts.main,
         ))

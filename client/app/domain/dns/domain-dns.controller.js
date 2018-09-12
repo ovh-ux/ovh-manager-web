@@ -6,6 +6,7 @@ angular.module('controllers').controller(
       $filter,
       $q,
       $stateParams,
+      $translate,
       Alerter,
       Domain,
       User,
@@ -16,6 +17,7 @@ angular.module('controllers').controller(
       this.$filter = $filter;
       this.$q = $q;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.User = User;
@@ -191,13 +193,13 @@ angular.module('controllers').controller(
             );
           })
           .then(() => this.Alerter.success(
-            this.$scope.i18n.domain_tab_DNS_update_success,
+            this.$translate.instant('domain_tab_DNS_update_success'),
             this.$scope.alerts.main,
           ))
           .catch((err) => {
             _.set(err, 'type', err.type || 'ERROR');
             this.Alerter.alertFromSWS(
-              this.$scope.i18n.domain_tab_DNS_update_error,
+              this.$translate.instant('domain_tab_DNS_update_error'),
               err,
               this.$scope.alerts.main,
             );

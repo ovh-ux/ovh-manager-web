@@ -2,31 +2,31 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="setDefault"
-         data-wizard-title="i18n.hosting_tab_RUNTIMES_set_default_title">
+         data-wizard-title="'hosting_tab_RUNTIMES_set_default_title' | translate">
 
         <div data-wizard-step>
-            <p data-i18n-static="hosting_tab_RUNTIMES_set_default_step1_question"></p>
+            <p data-translate="hosting_tab_RUNTIMES_set_default_step1_question"></p>
 
             <dl class="dl-horizontal dl-lg">
-                <dt data-i18n-static="hosting_tab_RUNTIMES_table_header_name"></dt>
+                <dt data-translate="hosting_tab_RUNTIMES_table_header_name"></dt>
                 <dd data-ng-bind="ctrl.entryToSetup.name"></dd>
 
-                <dt data-i18n-static="hosting_tab_RUNTIMES_table_header_language"></dt>
+                <dt data-translate="hosting_tab_RUNTIMES_table_header_language"></dt>
                 <dd data-ng-bind="ctrl.entryToSetup.type"></dd>
 
                 <div data-ng-if="ctrl.entryToSetup.type.indexOf('nodejs') !== -1">
-                    <dt data-i18n-static="hosting_tab_RUNTIMES_table_header_publicDir"></dt>
+                    <dt data-translate="hosting_tab_RUNTIMES_table_header_publicDir"></dt>
                     <dd data-ng-bind="ctrl.entryToSetup.publicDir"></dd>
 
-                    <dt data-i18n-static="hosting_tab_RUNTIMES_table_header_appEnv"></dt>
+                    <dt data-translate="hosting_tab_RUNTIMES_table_header_appEnv"></dt>
                     <dd data-ng-bind="ctrl.entryToSetup.appEnv"></dd>
 
-                    <dt data-i18n-static="hosting_tab_RUNTIMES_table_header_appBootstrap"></dt>
+                    <dt data-translate="hosting_tab_RUNTIMES_table_header_appBootstrap"></dt>
                     <dd data-ng-bind="ctrl.entryToSetup.appBootstrap"></dd>
                 </div>
             </dl>
 
-            <oui-message type="warning" data-i18n-static="hosting_tab_RUNTIMES_set_default_information"></oui-message>
+            <oui-message type="warning" data-translate="hosting_tab_RUNTIMES_set_default_information"></oui-message>
         </div>
     </div>
 </div>

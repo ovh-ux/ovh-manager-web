@@ -1,48 +1,48 @@
 <oui-spinner data-ng-if="ctrl.loading.resume"></oui-spinner>
 
 <div data-ng-if="!ctrl.loading.resume">
-    <p data-i18n-static="domain_configuration_dns_entry_add_step3_info"></p>
+    <p data-translate="domain_configuration_dns_entry_add_step3_info"></p>
 
     <dl class="dl-horizontal dl-lg">
-        <dt data-i18n-static="domain_configuration_dns_entry_add_type"></dt>
+        <dt data-translate="domain_configuration_dns_entry_add_type"></dt>
         <dd data-ng-bind="ctrl.model.fieldType"></dd>
 
-        <dt data-i18n-static="domain_configuration_dns_entry_add_domain"></dt>
+        <dt data-translate="domain_configuration_dns_entry_add_domain"></dt>
         <dd data-ng-bind="ctrl.getResumeDomain()"></dd>
 
         <dt data-ng-show="ctrl.model.ttlSelect === 'custom' && model.ttl !== null"
-            data-i18n-static="domain_configuration_dns_entry_add_ttl"></dt>
+            data-translate="domain_configuration_dns_entry_add_ttl"></dt>
         <dd data-ng-show="ctrl.model.ttlSelect === 'custom' && model.ttl !== null"
             data-ng-bind="ctrl.model.ttl"></dd>
 
-        <dt data-i18n-static="domain_configuration_dns_entry_add_target"></dt>
+        <dt data-translate="domain_configuration_dns_entry_add_target"></dt>
         <dd class="word-break" data-ng-bind="ctrl.model.target.value"></dd>
     </dl>
 
     <div class="alert alert-warning mt-4" role="alert"
          data-ng-if="ctrl.getResumeTargetAlert()">
-        <div data-ng-bind-html="tr('domain_configuration_dns_entry_add_step3_warning', ctrl.getResumeTargetAlert())"></div>
+        <div data-ng-bind-html="'domain_configuration_dns_entry_add_step3_warning' | translate: { t0: ctrl.getResumeTargetAlert() }"></div>
     </div>
 
     <div class="alert alert-danger mt-4" role="alert"
          data-ng-if="!ctrl.recordConflicts">
         <div>
-            <span data-i18n-static="domain_configuration_dns_entry_add_step3_check_warning1"></span>
+            <span data-translate="domain_configuration_dns_entry_add_step3_check_warning1"></span>
 
             <ul data-ng-if="ctrl.model.fieldType === 'CNAME'">
-                <li data-i18n-static="domain_configuration_dns_entry_add_step3_check_warning2"></li>
-                <li data-i18n-static="domain_configuration_dns_entry_add_step3_check_warning3"></li>
+                <li data-translate="domain_configuration_dns_entry_add_step3_check_warning2"></li>
+                <li data-translate="domain_configuration_dns_entry_add_step3_check_warning3"></li>
             </ul>
             <ul data-ng-if="ctrl.model.fieldType === 'A' || ctrl.model.fieldType === 'AAAA'">
-                <li data-i18n-static="domain_configuration_dns_entry_add_step3_check_warning4"></li>
+                <li data-translate="domain_configuration_dns_entry_add_step3_check_warning4"></li>
             </ul>
             <ul data-ng-if="ctrl.model.fieldType !== 'CNAME' && ctrl.model.fieldType !== 'A' && ctrl.model.fieldType !== 'AAAA'">
-                <li data-i18n-static="domain_configuration_dns_entry_add_step3_check_warning5"></li>
+                <li data-translate="domain_configuration_dns_entry_add_step3_check_warning5"></li>
             </ul>
         </div>
     </div>
 
     <div class="alert alert-info mt-4" role="alert"
-         data-i18n-static="domain_configuration_dns_entry_add_step3_alert">
+         data-translate="domain_configuration_dns_entry_add_step3_alert">
     </div>
 </div>

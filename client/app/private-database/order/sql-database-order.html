@@ -1,9 +1,9 @@
 <div data-ng-controller="SqlDatabaseOrderCtrl as sqlOrderCtrl">
     <div class="page-header">
-        <h1 data-i18n-static="privateDatabase_order_sql_main_title"></h1>
+        <h1 data-translate="privateDatabase_order_sql_main_title"></h1>
         <div class="mt-4">
-            <p data-i18n-static="privateDatabase_order_sql_sub_title_1"></p>
-            <p data-i18n-static="privateDatabase_order_sql_sub_title_2"></p>
+            <p data-translate="privateDatabase_order_sql_sub_title_1"></p>
+            <p data-translate="privateDatabase_order_sql_sub_title_2"></p>
         </div>
     </div>
 
@@ -20,14 +20,14 @@
                 <form name="sqlDatabaseOrderForm">
                     <p class="mt-5">
                         <small class="text-danger">*</small>
-                        <small data-i18n-static="required_fields"></small>
+                        <small data-translate="required_fields"></small>
                     </p>
 
-                    <h2 data-i18n-static="privateDatabase_order_sql_type_title"></h2>
+                    <h2 data-translate="privateDatabase_order_sql_type_title"></h2>
 
                     <fieldset>
                         <legend class="border-0"
-                                data-i18n-static="privateDatabase_order_sql_type_sub_title"></legend>
+                                data-translate="privateDatabase_order_sql_type_sub_title"></legend>
 
                         <div class="oui-radio" data-ng-repeat="item in sqlOrderCtrl.data track by $index">
                             <input type="radio" class="oui-radio__input" name="sql_type" id="sqlType-{{$index}}" required
@@ -37,7 +37,7 @@
                                    data-ng-value="item.offer">
                             <label class="oui-radio__label-container" for="sqlType-{{$index}}">
                                 <span class="oui-radio__label">
-                                    <span data-ng-bind-html="tr('privateDatabase_order_sql_type_' + item.key + '_label')"></span>
+                                    <span data-ng-bind-html="'privateDatabase_order_sql_type_' + item.key + '_label' | translate"></span>
                                     <span class="fa fa-question-circle"
                                           data-uib-tooltip-template="'private-database/order/tooltip/sql-database-order-' + item.key + '.html'"></span>
                                 </span>
@@ -45,40 +45,40 @@
                         </div>
                     </fieldset>
 
-                    <h2 class="mt-5" data-i18n-static="privateDatabase_order_sql_customize_title"></h2>
+                    <h2 class="mt-5" data-translate="privateDatabase_order_sql_customize_title"></h2>
 
                     <!-- dbPack -->
                     <div data-ng-if="sqlOrderCtrl.isStart()">
                         <label class="required" for="startDbVersion"
-                               data-i18n-static="privateDatabase_order_sql_domains_pack_title"></label>
+                               data-translate="privateDatabase_order_sql_domains_pack_title"></label>
                         <div class="oui-select oui-select_inline">
                             <select class="oui-select__input" id="startDbVersion" name="startDbVersion" required
                                     data-ng-change="sqlOrderCtrl.getDuration()"
                                     data-ng-model="sqlOrderCtrl.model.dbPack"
-                                    data-ng-options="version as i18n['privateDatabase_order_sql_domains_pack_db_' + version.replace('.', '')] ||
+                                    data-ng-options="version as ('privateDatabase_order_sql_domains_pack_db_' + version.replace('.', '') | translate) ||
                                     version for version in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).dbPack track by version">
                                 <option value="" disabled
-                                        data-i18n-static="select_option"></option>
+                                        data-translate="select_option"></option>
                             </select>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
                         <div class="alert alert-warning" role="alert"
-                             data-i18n-static="privateDatabase_order_sql_type_start_hosting_info">
+                             data-translate="privateDatabase_order_sql_type_start_hosting_info">
                         </div>
                     </div>
 
                     <!-- version -->
                     <div data-ng-if="sqlOrderCtrl.isCloudDbOrPrivateDb()">
                         <label class="required" for="orderVersion"
-                               data-i18n-static="privateDatabase_order_step1_version"></label>
+                               data-translate="privateDatabase_order_step1_version"></label>
                         <div class="oui-select oui-select_inline">
                             <select class="oui-select__input" id="orderVersion" name="orderVersion" required
                                     data-ng-change="sqlOrderCtrl.getDuration()"
                                     data-ng-model="sqlOrderCtrl.model.version"
-                                    data-ng-options="version as i18n['privateDatabase_dashboard_version_' + version.replace('.', '')] ||
+                                    data-ng-options="version as ('privateDatabase_dashboard_version_' + version.replace('.', '') | translate) ||
                                     version for version in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).versions track by version">
                                 <option value="" disabled
-                                        data-i18n-static="select_option"></option>
+                                        data-translate="select_option"></option>
                             </select>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
@@ -87,14 +87,14 @@
                     <!-- ram -->
                     <div data-ng-if="sqlOrderCtrl.isCloudDbOrPrivateDb()">
                         <label class="required" for="orderRam"
-                               data-i18n-static="privateDatabase_order_step1_ram"></label>
+                               data-translate="privateDatabase_order_step1_ram"></label>
                         <div class="oui-select oui-select_inline">
                             <select class="oui-select__input" id="orderRam" name="orderRam" required
                                     data-ng-change="sqlOrderCtrl.getDuration()"
                                     data-ng-model="sqlOrderCtrl.model.ram"
-                                    data-ng-options="ramSize + tr('unit_size_MB') for ramSize in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).rams track by ramSize">
+                                    data-ng-options="ramSize + ('unit_size_MB' | translate) for ramSize in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).rams track by ramSize">
                                 <option value="" disabled
-                                        data-i18n-static="select_option"></option>
+                                        data-translate="select_option"></option>
                             </select>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
@@ -103,19 +103,19 @@
                     <!-- hosting -->
                     <div data-ng-if="!sqlOrderCtrl.isCloudDb()">
                         <label class="required" for="orderHosting"
-                               data-i18n-static="privateDatabase_order_step1_hosting"></label>
+                               data-translate="privateDatabase_order_step1_hosting"></label>
                         <div class="oui-select oui-select_inline">
                             <select class="oui-select__input" id="orderHosting" name="orderHosting" required
                                     data-ng-change="sqlOrderCtrl.setDatacenter(); sqlOrderCtrl.getDuration()"
                                     data-ng-model="sqlOrderCtrl.selectectedHosting"
                                     data-ng-options="hosting.displayName for hosting in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).hostings | orderBy:'displayName'">
                                 <option value="" disabled
-                                        data-i18n-static="select_option"></option>
+                                        data-translate="select_option"></option>
                             </select>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
                         <div class="alert alert-warning" role="alert"
-                             data-i18n-static="privateDatabase_order_step1_hosting_warning"
+                             data-translate="privateDatabase_order_step1_hosting_warning"
                              data-ng-if="sqlOrderCtrl.isPrivateDb() && sqlOrderCtrl.model.datacenter">
                         </div>
                     </div>
@@ -123,19 +123,19 @@
                     <!-- DataCenter -->
                     <div data-ng-if="(sqlOrderCtrl.isPrivateDb() && sqlOrderCtrl.model.hosting === sqlOrderCtrl.noHostValue) || sqlOrderCtrl.isCloudDb()">
                         <label class="required" for="orderDc"
-                               data-i18n-static="privateDatabase_order_step1_datacenter"></label>
+                               data-translate="privateDatabase_order_step1_datacenter"></label>
                         <div class="oui-select oui-select_inline">
                             <select class="oui-select__input" id="orderDc" name="orderDc" required
                                     data-ng-change="sqlOrderCtrl.getDuration()"
                                     data-ng-model="sqlOrderCtrl.model.datacenter"
-                                    data-ng-options="dc as i18n['privateDatabase_dashboard_datacenter_' + dc] for dc in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).datacenters track by dc">
+                                    data-ng-options="dc as ('privateDatabase_dashboard_datacenter_' + dc | translate) for dc in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).datacenters track by dc">
                                 <option value="" disabled
-                                        data-i18n-static="select_option"></option>
+                                        data-translate="select_option"></option>
                             </select>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
                         <div class="alert alert-warning" role="alert"
-                             data-i18n-static="privateDatabase_order_step1_no_hosting_warning"
+                             data-translate="privateDatabase_order_step1_no_hosting_warning"
                              data-ng-if="sqlOrderCtrl.isPrivateDb() && sqlOrderCtrl.model.hosting === sqlOrderCtrl.noHostValue">
                         </div>
                     </div>
@@ -144,7 +144,7 @@
 
                     <div data-ng-if="!sqlOrderCtrl.loading.durations && sqlOrderCtrl.model.duration">
 
-                        <h2 class="mt-5" data-i18n-static="privateDatabase_order_sql_period_title"></h2>
+                        <h2 class="mt-5" data-translate="privateDatabase_order_sql_period_title"></h2>
 
                         <div role="alert" data-ng-if="sqlOrderCtrl.model.version && sqlOrderCtrl.model.ram"
                              data-ovh-alert="{{alerts.durations}}"
@@ -153,7 +153,7 @@
 
                         <fieldset>
                             <legend class="border-0"
-                                    data-i18n-static="privateDatabase_order_sql_period_sub_title"></legend>
+                                    data-translate="privateDatabase_order_sql_period_sub_title"></legend>
                             <div class="oui-radio"
                                  data-ng-repeat="duration in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).durations track by $index">
                                 <input type="radio" class="oui-radio__input" name="durationRadio[$index]" id="durationRadio-{{$index}}" required
@@ -174,9 +174,9 @@
                         </fieldset>
 
                         <div data-ng-if="sqlOrderCtrl.model.duration">
-                            <h2 class="mt-5" data-i18n-static="privateDatabase_order_sql_contracts_title"></h2>
+                            <h2 class="mt-5" data-translate="privateDatabase_order_sql_contracts_title"></h2>
 
-                            <p data-i18n-static="privateDatabase_order_step3_question"></p>
+                            <p data-translate="privateDatabase_order_step3_question"></p>
 
                             <div data-ng-if="sqlOrderCtrl.getDurationDetails(sqlOrderCtrl.model.type, sqlOrderCtrl.model.duration).contracts.length > 0">
                                 <div class="oui-checkbox">
@@ -184,7 +184,7 @@
                                            data-ng-model="sqlOrderCtrl.model.contract">
                                     <label class="oui-checkbox__label-container" for="contractsValidated">
                                         <span class="oui-checkbox__label">
-                                            <span data-i18n-static="privateDatabase_order_sql_contracts_checkbox_label"></span>
+                                            <span data-translate="privateDatabase_order_sql_contracts_checkbox_label"></span>
                                             <span class="oui-checkbox__icon">
                                                 <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
                                                 <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
@@ -197,7 +197,7 @@
 
                                 <ul>
                                     <li data-ng-repeat="contract in sqlOrderCtrl.getDurationDetails(sqlOrderCtrl.model.type, sqlOrderCtrl.model.duration).contracts track by $index">
-                                        <a data-ng-href="{{contract.url}}" target="_blank" title="{{contract.name}} ({{i18n.core_new_window}})">
+                                        <a data-ng-href="{{contract.url}}" target="_blank" title="{{contract.name}} ({{ 'core_new_window' | translate }})">
                                             <span data-ng-bind="contract.name"></span> (PDF)
                                             <span class="fa fa-external-link" aria-hidden="true"></span>
                                         </a>
@@ -211,13 +211,13 @@
                     <div class="my-5">
                         <div data-ng-if="sqlOrderCtrl.order.url">
                             <strong class="text-success"
-                                    data-i18n-static="privateDatabase_order_bc_created_info"></strong><br>
+                                    data-translate="privateDatabase_order_bc_created_info"></strong><br>
                             <span data-ng-if="sqlOrderCtrl.loading.window"
-                                  data-i18n-static="privateDatabase_order_bc_created_redirection_info"></span>
+                                  data-translate="privateDatabase_order_bc_created_redirection_info"></span>
 
                             <div>
                                 <button class="oui-button oui-button_primary oui-button_large-height" type="button"
-                                        data-i18n-static="privateDatabase_order_show_bc_button_label"
+                                        data-translate="privateDatabase_order_show_bc_button_label"
                                         data-ng-click="sqlOrderCtrl.openBc()">
                                 </button>
                             </div>
@@ -228,7 +228,7 @@
                                     data-ng-click="sqlOrderCtrl.generateBc()"
                                     data-ng-disabled="!sqlOrderCtrl.canOrder() || !sqlOrderCtrl['canOrder' + sqlOrderCtrl.getData(sqlOrderCtrl.model.type).key]()">
                                 <oui-spinner data-size="s" data-ng-if="sqlOrderCtrl.loading.bc"></oui-spinner>
-                                <span data-i18n-static="privateDatabase_order_sql_button_label"></span>
+                                <span data-translate="privateDatabase_order_sql_button_label"></span>
                             </button>
                         </div>
                     </div>

@@ -3,7 +3,7 @@
          data-wizard-bread-crumb
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="orderUpgrade"
-         data-wizard-title="i18n.hosting_order_upgrade_title">
+         data-wizard-title="'hosting_order_upgrade_title' | translate">
 
         <!-- Step 1: Select a capacity -->
         <div data-wizard-step
@@ -16,35 +16,35 @@
             <div data-ng-if="!ctrl.loading.availableOffer">
                 <form name="orderUpgradeForm">
                     <div class="alert alert-warning" role="alert"
-                         data-i18n-static="hosting_order_upgrade_no_offer"
+                         data-translate="hosting_order_upgrade_no_offer"
                          data-ng-if="!ctrl.availableOffers.length">
                     </div>
 
                     <div data-ng-if="ctrl.availableOffers.length > 0">
                         <label class="oui-label" for="hostingOffer"
-                               data-i18n-static="hostin_order_select_offer"></label>
+                               data-translate="hostin_order_select_offer"></label>
                         <div class="oui-select">
                             <select class="oui-select__input" id="hostingOffer" name="capacity"
                                     data-ng-model="ctrl.model.capacity"
-                                    data-ng-options="(i18n['hosting_dashboard_service_offer_' + availableOffer] || availableOffer) for availableOffer in ctrl.availableOffers | orderBy:ctrl.orderByOffer()">
+                                    data-ng-options="(('hosting_dashboard_service_offer_' + availableOffer | translate) || availableOffer) for availableOffer in ctrl.availableOffers | orderBy:ctrl.orderByOffer()">
                                 <option value="" disabled
-                                        data-i18n-static="select_placeholder"></option>
+                                        data-translate="select_placeholder"></option>
                             </select>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
                     </div>
 
                     <div data-ng-if="ctrl.model.capacity && ctrl.model.capacity === 'KS'">
-                        <p data-i18n-static="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015"></p>
+                        <p data-translate="hosting_dashboard_service_offer_downgrade_KIMSUFI_2015"></p>
                         <oui-checkbox id="downgradeAgree"
                             data-model="ctrl.downgradeAgree"
-                            data-text="{{::i18n.hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree}}">
+                            data-text="{{:: 'hosting_dashboard_service_offer_downgrade_KIMSUFI_2015_agree' | translate }}">
                         </oui-checkbox>
                     </div>
                 </form>
 
                 <div class="alert alert-info mt-5" role="alert"
-                     data-i18n-static="hosting_order_upgrade_select_noduration">
+                     data-translate="hosting_order_upgrade_select_noduration">
                 </div>
             </div>
         </div>
@@ -54,12 +54,12 @@
              data-wizard-step-on-load="getDurations"
              data-wizard-step-valid="ctrl.model.duration && ctrl.durations.available">
 
-            <p data-i18n-static="hosting_order_upgrade_select_duration"
+            <p data-translate="hosting_order_upgrade_select_duration"
                data-ng-if="ctrl.durations.available"></p>
 
             <div class="text-center" data-ng-if="ctrl.loading.durations">
                 <oui-spinner></oui-spinner>
-                <div data-i18n-static="hosting_order_upgrade_loading_order"></div>
+                <div data-translate="hosting_order_upgrade_loading_order"></div>
             </div>
 
             <form name="orderUpgradeForm" data-ng-if="!ctrl.loading.durations">
@@ -100,7 +100,7 @@
             </div>
 
             <div data-ng-if="!ctrl.loading.validation">
-                <p data-i18n-static="hosting_order_upgrade_resume"></p>
+                <p data-translate="hosting_order_upgrade_resume"></p>
 
                 <table class="table table-condensed">
                     <tbody>
@@ -116,14 +116,14 @@
                         <tr>
                             <th class="text-right"
                                 scope="row"
-                                data-i18n-static="hosting_order_upgrade_price_HT"></th>
+                                data-translate="hosting_order_upgrade_price_HT"></th>
                             <td class="font-weight-bold text-right"
                                 data-ng-bind="ctrl.model.duration.prices.withoutTax.text"></td>
                         </tr>
                         <tr>
                             <th scope="row"
                                 class="text-right"
-                                data-i18n-static="hosting_order_upgrade_price_TTC"></th>
+                                data-translate="hosting_order_upgrade_price_TTC"></th>
                             <td class="font-weight-bold text-right"
                                 data-ng-bind="ctrl.model.duration.prices.withTax.text"></td>
                         </tr>
@@ -131,21 +131,21 @@
                 </table>
 
                 <div class="alert alert-info mt-4" role="alert"
-                     data-i18n-static="hosting_order_upgrade_do_order">
+                     data-translate="hosting_order_upgrade_do_order">
                 </div>
                 <div class="alert alert-warning mt-4" role="alert">
                     <div>
-                        <strong data-i18n-static="hosting_order_upgrade_freedom_warning"></strong>
-                        <span data-i18n-static="hosting_order_upgrade_freedom_warning_text"></span>
+                        <strong data-translate="hosting_order_upgrade_freedom_warning"></strong>
+                        <span data-translate="hosting_order_upgrade_freedom_warning_text"></span>
                     </div>
                 </div>
                 <p>
-                    <strong data-i18n-static="hosting_order_upgrade_do_order_upgrade"></strong>
-                    <span data-i18n-static="hosting_order_upgrade_do_order_upgrade_text"></span>
+                    <strong data-translate="hosting_order_upgrade_do_order_upgrade"></strong>
+                    <span data-translate="hosting_order_upgrade_do_order_upgrade_text"></span>
                 </p>
                 <p>
-                    <strong data-i18n-static="hosting_order_upgrade_do_order_downgrade"></strong>
-                    <span data-i18n-static="hosting_order_upgrade_do_order_downgrade_text"></span>
+                    <strong data-translate="hosting_order_upgrade_do_order_downgrade"></strong>
+                    <span data-translate="hosting_order_upgrade_do_order_downgrade_text"></span>
                 </p>
             </div>
         </div>

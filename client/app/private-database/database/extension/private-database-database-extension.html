@@ -4,15 +4,15 @@
     <button class="oui-button oui-button_link oui-button_icon-left" type="button"
             data-ng-click="goToList()">
         <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
-        <span data-i18n-static="common_back"></span>
+        <span data-translate="common_back"></span>
     </button>
 
-    <h2 data-ng-bind-html="tr('privateDatabase_tabs_list_extensions_info', ['<strong>' + extensionCtrl.bdd.databaseName + '</strong>'])"></h2>
+    <<h2 data-ng-bind-html="'privateDatabase_tabs_list_extensions_info' | translate: { t0: '<strong>' + extensionCtrl.bdd.databaseName + '</strong>' }"></h2>
 
     <oui-datagrid data-rows="extensionCtrl.extensions"
                   data-row-loader="extensionCtrl.transformItem($row)">
-        <oui-column data-title="tr('privateDatabase_tabs_list_extensions_extension')" data-property="extensionName"></oui-column>
-        <oui-column data-title="tr('privateDatabase_tabs_list_extensions_enabled')" data-property="status">
+        <oui-column data-title="'privateDatabase_tabs_list_extensions_extension' | translate" data-property="extensionName"></oui-column>
+        <oui-column data-title="'privateDatabase_tabs_list_extensions_enabled' | translate" data-property="status">
             <label class="oui-switch"
                    data-ng-show="$row.transformed">
                 <input type="checkbox"
@@ -24,7 +24,7 @@
                 <i class="oui-icon oui-icon-error" aria-hidden="true"></i>
             </label>
         </oui-column>
-        <oui-column data-title="tr('privateDatabase_tabs_list_extensions_description')" data-property="description"></oui-column>
+        <oui-column data-title="'privateDatabase_tabs_list_extensions_description' | translate" data-property="description"></oui-column>
     </oui-datagrid>
 
 </div>

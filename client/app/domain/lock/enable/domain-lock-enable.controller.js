@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'DomainLockEnableCtrl',
   class DomainLockDisableCtrl {
-    constructor($scope, $rootScope, Alerter, Domain) {
+    constructor($scope, $rootScope, $translate, Alerter, Domain) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
     }
@@ -24,14 +25,14 @@ angular.module('App').controller(
         .then((data) => {
           this.$rootScope.$broadcast('domain.protection.lock.done', data);
           this.Alerter.success(
-            this.$scope.tr('domain_configuration_protection_activate_success'),
+            this.$translate.instant('domain_configuration_protection_activate_success'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.$rootScope.$broadcast('domain.protection.lock.error', err);
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_configuration_protection_activate_fail'),
+            this.$translate.instant('domain_configuration_protection_activate_fail'),
             _.get(err, 'data', err),
             this.$scope.alerts.main,
           );

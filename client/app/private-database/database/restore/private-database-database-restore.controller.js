@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'PrivateDatabaseRestoreBDDCtrl',
   class PrivateDatabaseRestoreBDDCtrl {
-    constructor($scope, $stateParams, Alerter, PrivateDatabase) {
+    constructor($scope, $stateParams, $translate, Alerter, PrivateDatabase) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
     }
@@ -22,13 +23,13 @@ angular.module('App').controller(
         .restoreBDD(this.productId, this.bdd.databaseName, this.dump.id)
         .then(() => {
           this.alerter.success(
-            this.$scope.tr('privateDatabase_tabs_dumps_restore_in_progress'),
+            this.$translate.instant('privateDatabase_tabs_dumps_restore_in_progress'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.alerter.alertFromSWS(
-            this.$scope.tr('privateDatabase_tabs_dumps_restore_fail'),
+            this.$translate.instant('privateDatabase_tabs_dumps_restore_fail'),
             err,
             this.$scope.alerts.main,
           );

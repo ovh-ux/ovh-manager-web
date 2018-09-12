@@ -1,4 +1,4 @@
-angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constants, translator) => {
+angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atInternet, constants) => {
   const menuOptions = [];
 
   function buildMenuOptions() {
@@ -11,72 +11,72 @@ angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constant
       .then(([domainOrderUrl, hostingUrl, cloudWebUrl, emailproOrderUrl, office365OrderUrl]) => {
         menuOptions.push({
           id: 'order-domain',
-          title: translator.tr('navigation_left_order_domain'),
+          title: $translate.instant('navigation_left_order_domain'),
           icon: 'ovh-font ovh-font-domain',
           href: domainOrderUrl,
           target: '_blank',
         });
         menuOptions.push({
           id: 'order-dnszone',
-          title: translator.tr('navigation_left_order_dnszone'),
+          title: $translate.instant('navigation_left_order_dnszone'),
           icon: 'ovh-font ovh-font-domain',
           state: 'app.dns-zone-new',
         });
         menuOptions.push({
           id: 'order-private-database',
-          title: translator.tr('navigation_left_order_private_database'),
+          title: $translate.instant('navigation_left_order_private_database'),
           icon: 'ovh-font ovh-font-database',
           state: 'app.sql-order',
         });
         menuOptions.push({
           id: 'order-hosting',
-          title: translator.tr('navigation_left_hosting'),
+          title: $translate.instant('navigation_left_hosting'),
           icon: 'ovh-font ovh-font-hosting',
           href: hostingUrl,
           target: '_blank',
         });
         menuOptions.push({
           id: 'order-cloudweb',
-          title: translator.tr('navigation_left_order_cloudweb'),
+          title: $translate.instant('navigation_left_order_cloudweb'),
           icon: 'ovh-font ovh-font-hosting',
           href: cloudWebUrl,
           target: '_blank',
         });
         menuOptions.push({
           id: 'order-emailpro',
-          title: translator.tr('navigation_left_order_emailpro'),
+          title: $translate.instant('navigation_left_order_emailpro'),
           icon: 'ovh-font ovh-font-mail',
           href: emailproOrderUrl,
           target: '_blank',
         });
         menuOptions.push({
           id: 'order-mxplan',
-          title: translator.tr('navigation_left_order_mxplan'),
+          title: $translate.instant('navigation_left_order_mxplan'),
           icon: 'ovh-font ovh-font-mail',
           state: 'app.mx-plan',
         });
         menuOptions.push({
           id: 'order-exchange',
-          title: translator.tr('navigation_left_order_exchange'),
+          title: $translate.instant('navigation_left_order_exchange'),
           icon: 'ms-Icon ms-Icon--ExchangeLogo',
           state: 'app.microsoft.exchange.order',
         });
         menuOptions.push({
           id: 'order-office365',
-          title: translator.tr('navigation_left_office365_order'),
+          title: $translate.instant('navigation_left_office365_order'),
           icon: 'ms-Icon ms-Icon--OfficeLogo',
           href: office365OrderUrl,
           target: '_blank',
         });
         menuOptions.push({
           id: 'order-office-reseller',
-          title: translator.tr('navigation_left_office_reseller_order'),
+          title: $translate.instant('navigation_left_office_reseller_order'),
           icon: 'ms-Icon ms-Icon--OfficeLogo',
           href: `${constants.MANAGER_URLS.sunrise}csp2`,
         });
         menuOptions.push({
           id: 'order-sharepoint',
-          title: translator.tr('navigation_left_sharepoint_order'),
+          title: $translate.instant('navigation_left_sharepoint_order'),
           icon: 'ms-Icon ms-Icon--SharepointLogo',
           state: 'app.microsoft.sharepoint.order',
         });
@@ -85,7 +85,7 @@ angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constant
 
   function addDomainItems(products) {
     const domainItem = SidebarMenu.addMenuItem({
-      title: translator.tr('navigation_left_domains'),
+      title: $translate.instant('navigation_left_domains'),
       category: 'domain',
       icon: 'ovh-font ovh-font-domain',
       allowSubItems: true,
@@ -94,13 +94,13 @@ angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constant
     });
 
     SidebarMenu.addMenuItems([{
-      title: translator.tr('navigation_left_all_domains'),
+      title: $translate.instant('navigation_left_all_domains'),
       category: 'domain',
       icon: 'ovh-font ovh-font-network',
       state: 'app.domain.all',
       isActive: true,
     }, {
-      title: translator.tr('navigation_left_all_domains_operations'),
+      title: $translate.instant('navigation_left_all_domains_operations'),
       category: 'domain',
       icon: 'ovh-font ovh-font-config',
       state: 'app.domain.operation',
@@ -147,7 +147,7 @@ angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constant
 
   function addHostingItems(products) {
     const hostingItem = SidebarMenu.addMenuItem({
-      title: translator.tr('navigation_left_hosting'),
+      title: $translate.instant('navigation_left_hosting'),
       category: 'hosting',
       icon: 'ovh-font ovh-font-hosting',
       allowSubItems: true,
@@ -176,7 +176,7 @@ angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constant
 
   function addDatabaseItems(products) {
     const databaseItem = SidebarMenu.addMenuItem({
-      title: translator.tr('navigation_left_database'),
+      title: $translate.instant('navigation_left_database'),
       category: 'database',
       icon: 'ovh-font ovh-font-database',
       allowSubItems: true,
@@ -205,7 +205,7 @@ angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constant
 
   function addEmailProItems(products) {
     const emailProItem = SidebarMenu.addMenuItem({
-      title: translator.tr('navigation_left_emailPro'),
+      title: $translate.instant('navigation_left_emailPro'),
       category: 'emailPro',
       icon: 'ovh-font ovh-font-mail',
       allowSubItems: true,
@@ -230,7 +230,7 @@ angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constant
 
   function addEmailItems(products) {
     const emailsItem = SidebarMenu.addMenuItem({
-      title: translator.tr('navigation_left_email'),
+      title: $translate.instant('navigation_left_email'),
       category: 'email',
       icon: 'ovh-font ovh-font-mail',
       allowSubItems: true,
@@ -258,7 +258,7 @@ angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constant
 
   function addMicrosoftItems(products) {
     const microsoftItem = SidebarMenu.addMenuItem({
-      title: translator.tr('navigation_left_microsoft'),
+      title: $translate.instant('navigation_left_microsoft'),
       category: 'microsoft',
       icon: 'ms-Icon ms-Icon--WindowsLogo',
       allowSubItems: true,
@@ -268,7 +268,7 @@ angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constant
 
       // Exchange
     const exchangesItem = SidebarMenu.addMenuItem({
-      title: translator.tr('navigation_left_exchange'),
+      title: $translate.instant('navigation_left_exchange'),
       category: 'microsoft',
       icon: 'ms-Icon ms-Icon--ExchangeLogo',
       allowSubItems: true,
@@ -299,7 +299,7 @@ angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constant
 
     // Office
     const officesItem = SidebarMenu.addMenuItem({
-      title: translator.tr('navigation_left_office'),
+      title: $translate.instant('navigation_left_office'),
       category: 'microsoft',
       icon: 'ms-Icon ms-Icon--OfficeLogo',
       allowSubItems: true,
@@ -323,7 +323,7 @@ angular.module('App').run(($q, SidebarMenu, Products, User, atInternet, constant
 
     // Sharepoint
     const sharepointItems = SidebarMenu.addMenuItem({
-      title: translator.tr('navigation_left_sharepoint'),
+      title: $translate.instant('navigation_left_sharepoint'),
       category: 'microsoft',
       icon: 'ms-Icon ms-Icon--SharepointLogo',
       allowSubItems: true,

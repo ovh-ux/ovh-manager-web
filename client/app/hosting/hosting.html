@@ -17,7 +17,7 @@
                                   data-ng-if="!hosting.displayName"></span>
 
                         </h1>
-                        <button class="btn btn-icon my-auto ml-2" type="button" title="{{i18n.wizard_modify}}"
+                        <button class="btn btn-icon my-auto ml-2" type="button" title="{{ 'wizard_modify' | translate }}"
                                 data-ng-click="editDisplayName()">
                             <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
                         </button>
@@ -33,12 +33,12 @@
                                data-event-blur="newDisplayName.value = ''"
                                data-ng-maxlength="250"
                                data-ng-model="newDisplayName.value">
-                        <button class="oui-button oui-button_small-width" type="button" aria-label="{{i18n.common_confirm}}"
+                        <button class="oui-button oui-button_small-width" type="button" aria-label="{{ 'common_confirm' | translate }}"
                                 data-ng-click="saveDisplayName()"
                                 data-ng-disabled="!formEditDisplayName.txtDisplayName.$dirty || formEditDisplayName.$invalid">
                             <span class="oui-icon oui-icon-success oui-icon_small" aria-hidden="true"></span>
                         </button>
-                        <button class="oui-button oui-button_small-width" type="button" aria-label="{{i18n.common_cancel}}"
+                        <button class="oui-button oui-button_small-width" type="button" aria-label="{{ 'common_cancel' | translate }}"
                                 data-ng-click="resetDisplayName()">
                             <span class="oui-icon oui-icon-error oui-icon_small" aria-hidden="true"></span>
                         </button>
@@ -46,7 +46,7 @@
                     <div class="help-block"
                          data-ng-if="formEditDisplayName.txtDisplayName.$dirty"
                          data-ng-messages="formEditDisplayName.txtDisplayName.$error">
-                        <span data-ng-bind="::i18n.hosting_displayName_length"
+                        <span data-translate="hosting_displayName_length"
                               data-ng-message="maxlength"></span>
                     </div>
                 </div>
@@ -62,14 +62,14 @@
             <div class="btn-group ml-auto mt-4">
                 <button type="button" class="oui-button oui-button_dropdown mb-0" aria-haspopup="true" aria-expanded="false"
                     data-toggle="dropdown">
-                    <span data-i18n-static="common_actions"></span>
+                    <span data-translate="common_actions"></span>
                     <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right m-0 p-0">
                     <li data-ng-if="urlDomainOrder">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                         <button class="btn btn-link" type="button"
-                                data-i18n-static="hosting_dashboard_add_domain"
+                                data-translate="hosting_dashboard_add_domain"
                                 data-ng-click="setAction('multisite/order/hosting-multisite-order', {domains: domains})"
                                 data-track-on="click"
                                 data-track-name="web::hosting::add-domain"
@@ -84,7 +84,8 @@
 
 <div class="p-5" data-ng-if="!loadingHostingInformations && hosting.isExpired">
     <div class="alert alert-warning" role="alert"
-         data-ng-bind="tr('common_service_expired', [hosting.serviceDisplayName])">
+         data-translate="common_service_expired"
+         data-translate-values="{ t0: hosting.serviceDisplayName }">
     </div>
 </div>
 
@@ -102,8 +103,8 @@
         <div class="alert alert-dismissible alert-info" role="alert"
              data-ng-if="hostingProxy.recommendedOffer">
             <button class="close" type="button" data-dismiss="alert"></button>
-            <span data-ng-bind-html="tr('hosting_dashboard_service_offer_recommanded', [hostingProxy.recommendedOffer])"></span>
-            <span data-ng-bind-html="tr('hosting_dashboard_service_offer_recommanded_actions', [urls.hosting, '_blank'])"
+            <span data-ng-bind-html="'hosting_dashboard_service_offer_recommanded' | translate: { t0: hostingProxy.recommendedOffer }"></span>
+            <span data-ng-bind-html="'hosting_dashboard_service_offer_recommanded_actions' | translate: { t0: urls.hosting, t1: '_blank' }"
                   data-ng-if="urls.hosting"></span>
         </div>
 

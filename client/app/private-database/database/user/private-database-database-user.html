@@ -4,10 +4,10 @@
     <button class="oui-button oui-button_link oui-button_icon-left" type="button"
             data-ng-click="goToList()">
         <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
-        <span data-i18n-static="common_back"></span>
+        <span data-translate="common_back"></span>
     </button>
     <h2>
-        <span data-i18n-static="privateDatabase_tabs_users_database_name"></span>
+        <span data-translate="privateDatabase_tabs_users_database_name"></span>
         <strong data-ng-bind="bdd.databaseName"></strong>
     </h2>
 
@@ -15,32 +15,32 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th data-i18n-static="privateDatabase_tabs_users_database_username"></th>
+                    <th data-translate="privateDatabase_tabs_users_database_username"></th>
                     <th class="text-center">
-                        <span data-i18n-static="privateDatabase_tabs_users_database_grant_admin"></span>
+                        <span data-translate="privateDatabase_tabs_users_database_grant_admin"></span>
                         <span class="fa fa-info-circle" aria-hidden="true"
-                              data-uib-tooltip="{{tr('privateDatabase_tabs_user_grant_admin_tooltip')}}"
+                              data-uib-tooltip="{{ 'privateDatabase_tabs_user_grant_admin_tooltip' | translate }}"
                               data-tooltip-append-to-body="true">
                         </span>
                     </th>
                     <th class="text-center">
-                        <span data-i18n-static="privateDatabase_tabs_users_database_grant_rw"></span>
+                        <span data-translate="privateDatabase_tabs_users_database_grant_rw"></span>
                         <span class="fa fa-info-circle" aria-hidden="true"
-                              data-uib-tooltip="{{tr('privateDatabase_tabs_user_grant_rw_tooltip')}}"
+                              data-uib-tooltip="{{ 'privateDatabase_tabs_user_grant_rw_tooltip' | translate }}"
                               data-tooltip-append-to-body="true">
                         </span>
                     </th>
                     <th class="text-center">
-                        <span data-i18n-static="privateDatabase_tabs_users_database_grant_ro"></span>
+                        <span data-translate="privateDatabase_tabs_users_database_grant_ro"></span>
                         <span class="fa fa-info-circle" aria-hidden="true"
-                              data-uib-tooltip="{{tr('privateDatabase_tabs_user_grant_ro_tooltip')}}"
+                              data-uib-tooltip="{{ 'privateDatabase_tabs_user_grant_ro_tooltip' | translate }}"
                               data-tooltip-append-to-body="true">
                         </span>
                     </th>
                     <th class="text-center">
-                        <span data-i18n-static="privateDatabase_tabs_users_database_grant_none"></span>
+                        <span data-translate="privateDatabase_tabs_users_database_grant_none"></span>
                         <span class="fa fa-info-circle" aria-hidden="true"
-                              data-uib-tooltip="{{tr('privateDatabase_tabs_user_grant_none_tooltip')}}"
+                              data-uib-tooltip="{{ 'privateDatabase_tabs_user_grant_none_tooltip' | translate }}"
                               data-tooltip-append-to-body="true">
                         </span>
                     </th>
@@ -56,7 +56,7 @@
             <tbody data-ng-if="!privateDatabaseUserDatabaseCtrl.loading.init && !privateDatabaseUserDatabaseCtrl.users.length">
                 <tr>
                     <td class="text-center" colspan="5"
-                        data-i18n-static="privateDatabase_tabs_users_database_no_users"></td>
+                        data-translate="privateDatabase_tabs_users_database_no_users"></td>
                 </tr>
             </tbody>
 
@@ -66,7 +66,7 @@
                     <td class="text-center" colspan="4"
                         data-ng-if="privateDatabaseUserDatabaseCtrl.pendingGrant[user.userName]">
                         <span class="label label-info"
-                              data-i18n-static="privateDatabase_tabs_user_grant_updating"></span>
+                              data-translate="privateDatabase_tabs_user_grant_updating"></span>
                     </td>
                     <td class="text-center"
                         data-ng-if="!privateDatabaseUserDatabaseCtrl.pendingGrant[user.userName]">
@@ -120,8 +120,8 @@
              data-transform-item="privateDatabaseUserDatabaseCtrl.transformItem(item)"
              data-on-page-change="privateDatabaseUserDatabaseCtrl.loading.init = true"
              data-on-transform-item-done="privateDatabaseUserDatabaseCtrl.onTransformItemDone(items)"
-             data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-             data-item-per-page-placeholder="{{tr('pagination_display')}}"
+             data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPage, t1: nbPages } }}"
+             data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
              data-ng-show="!privateDatabaseUserDatabaseCtrl.loading.init && privateDatabaseUserDatabaseCtrl.usersDetails.length > 0">
         </div>
     </div>

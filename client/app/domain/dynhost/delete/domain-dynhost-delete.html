@@ -2,7 +2,7 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="deleteDynHost"
-         data-wizard-title="i18n.domain_tab_DYNHOST_delete_title">
+         data-wizard-title="'domain_tab_DYNHOST_delete_title' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading">
@@ -11,7 +11,7 @@
                 <oui-spinner></oui-spinner>
             </div>
 
-            <p data-ng-bind-html="tr('domain_tab_DYNHOST_delete_dynhosts_confirm', [ctrl.dynHost.subDomain + '.' + ctrl.zoneName, ctrl.dynHost.ip])"
+            <p data-ng-bind-html="'domain_tab_DYNHOST_delete_dynhosts_confirm' | translate: { t0: ctrl.dynHost.subDomain + '.' + ctrl.zoneName, t1: ctrl.dynHost.ip }"
                data-ng-if="!ctrl.loading"></p>
         </div>
     </div>

@@ -5,9 +5,9 @@
         <button class="oui-button oui-button_link oui-button_icon-left" type="button"
                 data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
             <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
-            <span data-i18n-static="common_back"></span>
+            <span data-translate="common_back"></span>
         </button>
-        <h2 data-i18n-static="email_tab_redirections_management_title"></h2>
+        <h2 data-translate="email_tab_redirections_management_title"></h2>
 
         <div class="text-center" data-ng-if="ctrlEmailDomainEmailRedirection.loading.redirections">
             <oui-spinner></oui-spinner>
@@ -15,25 +15,25 @@
 
         <div data-ng-if="!ctrlEmailDomainEmailRedirection.loading.redirections">
             <dl class="dl-horizontal dl-lg" data-ng-if="ctrlEmailDomainEmail.quotas.redirection > 0">
-                <dt data-i18n-static="email_tab_redirections_quota"></dt>
+                <dt data-translate="email_tab_redirections_quota"></dt>
                 <dd class="text-nowrap"
                     data-ng-bind="ctrlEmailDomainEmailRedirection.redirections.length + ' / ' + (ctrlEmailDomainEmail.quotas.redirection || '0')">
                 </dd>
             </dl>
 
             <div class="alert alert-info mt-4" role="alert"
-                 data-i18n-static="email_tab_table_redirections_empty"
+                 data-translate="email_tab_table_redirections_empty"
                  data-ng-if="!ctrlEmailDomainEmailRedirection.redirections.length">
             </div>
 
             <oui-datagrid data-rows="ctrlEmailDomainEmailRedirection.redirections"
                           data-row-loader="ctrlEmailDomainEmailRedirection.transformItem($row)">
-                <oui-column data-title="tr('emails_common_from')" data-property="from"></oui-column>
-                <oui-column data-title="tr('emails_common_to')" data-property="to"></oui-column>
+                <oui-column data-title="'emails_common_from' | translate" data-property="from"></oui-column>
+                <oui-column data-title="'emails_common_to' | translate" data-property="to"></oui-column>
                 <oui-action-menu data-align="end" data-compact>
-                    <oui-action-menu-item data-text="{{i18n.email_tab_popover_redirection_update}}"
+                    <oui-action-menu-item data-text="{{ 'email_tab_popover_redirection_update' | translate }}"
                                           data-on-click="setAction('email-domain/email/redirection/update/email-domain-email-redirection-update', { redirection: $row, domain: domain })"></oui-action-menu-item>
-                    <oui-action-menu-item data-text="{{i18n.email_tab_popover_redirection_delete}}"
+                    <oui-action-menu-item data-text="{{ 'email_tab_popover_redirection_delete' | translate }}"
                                           data-on-click="setAction('email-domain/email/redirection/delete/email-domain-email-redirection-delete', { redirection: $row })"></oui-action-menu-item>
                 </oui-action-menu>
             </oui-datagrid>
@@ -43,19 +43,19 @@
     <div class="col-md-3 mt-5 mt-lg-0">
         <div class="mb-5">
             <button class="btn btn-block btn-default" type="button"
-                    data-i18n-static="email_tab_button_emails_create_redirection"
+                    data-translate="email_tab_button_emails_create_redirection"
                     data-ng-click="setAction('email-domain/email/redirection/create/email-domain-email-redirection-create')"
                     data-ng-if="ctrlEmailDomainEmailRedirection.redirections.length < (ctrlEmailDomainEmail.quotas.redirection + ctrlEmailDomainEmail.quotas.alias)">
             </button>
             <button class="btn btn-block btn-default" type="button"
-                    data-i18n-static="email_tab_button_emails_export_CSV"
+                    data-translate="email_tab_button_emails_export_CSV"
                     data-export-csv="ctrlEmailDomainEmailRedirection.getDatasToExport()"
                     data-export-csv-separator=";"
                     data-ng-disabled="ctrlEmailDomainEmailRedirection.loading.exportCSV || !ctrlEmailDomainEmailRedirection.redirections.length">
             </button>
         </div>
         <div data-guides
-             data-guides-title="tr('guide_subtitle')"
+             data-guides-title="'guide_subtitle' | translate"
              data-guides-list="'emailsRedirection'"
              data-tr="tr">
         </div>

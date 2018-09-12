@@ -1,11 +1,12 @@
 angular.module('App').controller(
   'DomainTabsCtrl',
   class DomainTabsCtrl {
-    constructor($scope, $q, $location, $stateParams, Domain, User) {
+    constructor($scope, $q, $location, $stateParams, $translate, Domain, User) {
       this.$scope = $scope;
       this.$q = $q;
       this.$location = $location;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Domain = Domain;
       this.User = User;
     }
@@ -32,33 +33,33 @@ angular.module('App').controller(
       const updateOwnerUrl = this.constructor.getUpdateOwnerUrl(this.domain);
 
       this.tabMenu = {
-        title: this.$scope.tr('navigation_more'),
+        title: this.$translate.instant('navigation_more'),
         items: [
           {
-            label: this.$scope.tr('hosting_tab_menu_emails'),
+            label: this.$translate.instant('hosting_tab_menu_emails'),
             target: `#/configuration/email-domain/${
               this.domain.name
             }?tab=MAILING_LIST`,
             type: 'LINK',
           },
           {
-            label: this.$scope.tr('contacts_management'),
+            label: this.$translate.instant('contacts_management'),
             target: `#/useraccount/contacts?tab=SERVICES&serviceName=${
               this.domain.name
             }`,
-            text: this.$scope.tr('hosting_tab_menu_contacts'),
+            text: this.$translate.instant('hosting_tab_menu_contacts'),
             type: 'LINK',
           },
           {
-            label: this.$scope.tr('core_change_owner'),
+            label: this.$translate.instant('core_change_owner'),
             target: '',
             text: changeOwnerClassic
               ? ''
-              : this.$scope.tr('core_change_owner_order'),
+              : this.$translate.instant('core_change_owner_order'),
             type: 'EXTERNAL_LINK',
           },
           {
-            label: this.$scope.tr('domain_configuration_update_owner'),
+            label: this.$translate.instant('domain_configuration_update_owner'),
             target: updateOwnerUrl,
             type: 'LINK',
             disabled: !updateOwnerUrl,
@@ -67,11 +68,11 @@ angular.module('App').controller(
             type: 'SEPARATOR',
           },
           {
-            label: this.$scope.tr('domain_tab_menu_resiliate'),
+            label: this.$translate.instant('domain_tab_menu_resiliate'),
             target: `#/billing/autoRenew?selectedType=DOMAIN&searchText=${
               this.domain.name
             }`,
-            text: this.$scope.tr('hosting_tab_menu_resiliate_infos'),
+            text: this.$translate.instant('hosting_tab_menu_resiliate_infos'),
             type: 'LINK',
           },
         ],

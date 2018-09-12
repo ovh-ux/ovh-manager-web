@@ -4,15 +4,15 @@ angular.module('App').controller(
     constructor(
       $scope,
       $stateParams,
+      $translate,
       HostingAutomatedEmails,
       Alerter,
-      translator,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.HostingAutomatedEmails = HostingAutomatedEmails;
       this.Alerter = Alerter;
-      this.translator = translator;
 
       $scope.submitting = () => this.submitting();
     }
@@ -31,13 +31,13 @@ angular.module('App').controller(
       )
         .then(() => {
           this.Alerter.success(
-            this.translator.tr('hosting_tab_AUTOMATED_EMAILS_request_success'),
+            this.$translate.instant('hosting_tab_AUTOMATED_EMAILS_request_success'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.translator.tr('hosting_tab_AUTOMATED_EMAILS_request_error'),
+            this.$translate.instant('hosting_tab_AUTOMATED_EMAILS_request_error'),
             err,
             this.$scope.alerts.main,
           );

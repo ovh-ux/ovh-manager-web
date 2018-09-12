@@ -5,6 +5,7 @@ angular.module('App').controller(
       $q,
       $scope,
       $stateParams,
+      $translate,
       Alerter,
       PrivateDatabase,
       PrivateDatabaseExtension,
@@ -12,6 +13,7 @@ angular.module('App').controller(
       this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
       this.privateDatabaseExtensionService = PrivateDatabaseExtension;
@@ -39,7 +41,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.alerter.error(
-            this.$scope.tr('privateDatabase_tabs_list_extensions_retrieve_infos'),
+            this.$translate.instant('privateDatabase_tabs_list_extensions_retrieve_infos'),
             err,
           );
         });
@@ -53,18 +55,18 @@ angular.module('App').controller(
         extension.updating = true;
         if (extension.enabled) {
           action = this.enableExtension(extension).then(() => this.alerter.success(
-            this.$scope.tr('privateDatabase_tabs_list_extensions_enable_success'),
+            this.$translate.instant('privateDatabase_tabs_list_extensions_enable_success'),
             this.$scope.alerts.main,
           ));
         } else {
           action = this.disableExtension(extension).then(() => this.alerter.success(
-            this.$scope.tr('privateDatabase_tabs_list_extensions_disable_success'),
+            this.$translate.instant('privateDatabase_tabs_list_extensions_disable_success'),
             this.$scope.alerts.main,
           ));
         }
         action
           .catch((error) => {
-            let errorMessage = this.$scope.tr('privateDatabase_tabs_list_extensions_enable_error');
+            let errorMessage = this.$translate.instant('privateDatabase_tabs_list_extensions_enable_error');
             if (error.data) {
               errorMessage = `${errorMessage} ${error.data.message}`;
             }
@@ -110,7 +112,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.alerter.error(
-            this.$scope.tr('privateDatabase_tabs_list_extensions_retrieve_infos'),
+            this.$translate.instant('privateDatabase_tabs_list_extensions_retrieve_infos'),
             err,
           );
         });

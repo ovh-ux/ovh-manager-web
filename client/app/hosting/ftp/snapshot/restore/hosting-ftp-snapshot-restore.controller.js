@@ -5,6 +5,7 @@ angular.module('App').controller(
       $scope,
       $rootScope,
       $stateParams,
+      $translate,
       Alerter,
       Hosting,
       HostingFtp,
@@ -12,6 +13,7 @@ angular.module('App').controller(
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Hosting = Hosting;
       this.HostingFtp = HostingFtp;
@@ -51,7 +53,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_FTP_configuration_restore_snapshot_error'),
+            this.$translate.instant('hosting_tab_FTP_configuration_restore_snapshot_error'),
             err,
             this.$scope.alerts.main,
           );
@@ -76,14 +78,14 @@ angular.module('App').controller(
       })
         .then(() => {
           this.Alerter.success(
-            this.$scope.tr('hosting_tab_FTP_configuration_restore_snapshot_success'),
+            this.$translate.instant('hosting_tab_FTP_configuration_restore_snapshot_success'),
             this.$scope.alerts.main,
           );
           this.$rootScope.$broadcast('hosting.tabs.tasks.refresh');
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_FTP_configuration_restore_snapshot_error'),
+            this.$translate.instant('hosting_tab_FTP_configuration_restore_snapshot_error'),
             _.get(err, 'data', err),
             this.$scope.alerts.main,
           );

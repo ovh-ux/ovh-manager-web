@@ -16,13 +16,8 @@ angular.module('App').config(($stateProvider) => {
           });
         },
       ],
-      translator: [
-        'translator',
-        translator => translator
-          .load(['domain', 'domainsOperations'])
-          .then(() => translator),
-      ],
     },
+    translations: ['domain', 'domain-operation'],
   });
 
   $stateProvider.state('app.domain.operation-progress', {
@@ -42,12 +37,7 @@ angular.module('App').config(($stateProvider) => {
           });
         },
       ],
-      translator: [
-        'translator',
-        translator => translator
-          .load(['domain', 'domainsOperations'])
-          .then(() => translator),
-      ],
     },
+    translations: ['domain', 'domain-operation'],
   });
 });

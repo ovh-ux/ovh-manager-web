@@ -5,6 +5,7 @@ angular.module('App').controller(
       $rootScope,
       $scope,
       $stateParams,
+      $translate,
       Alerter,
       PrivateDatabase,
       User,
@@ -12,6 +13,7 @@ angular.module('App').controller(
       this.$rootScope = $rootScope;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
       this.userService = User;
@@ -87,8 +89,8 @@ angular.module('App').controller(
 
     getResumePrice(price) {
       return price.value === 0
-        ? this.$scope.tr('price_free')
-        : this.$scope.tr('price_ht_label', [price.text]);
+        ? this.$translate.instant('price_free')
+        : this.$translate.instant('price_ht_label', { t0: price.text });
     }
 
     getDurations() {
@@ -142,16 +144,16 @@ angular.module('App').controller(
         )
         .then((order) => {
           this.alerter.success(
-            this.$scope.tr('privateDatabase_order_RAM_finish_success', [
-              order.url,
-            ]),
+            this.$translate.instant('privateDatabase_order_RAM_finish_success', {
+              t0: order.url,
+            }),
             this.$scope.alerts.main,
           );
           window.open(order.url, '_blank');
         })
         .catch((err) => {
           this.alerter.alertFromSWS(
-            this.$scope.tr('privateDatabase_order_RAM_finish_error'),
+            this.$translate.instant('privateDatabase_order_RAM_finish_error'),
             _.get(err, 'data', err),
           );
         })

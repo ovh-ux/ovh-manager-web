@@ -1,11 +1,13 @@
 angular.module('App').controller(
   'HostingTabsCtrl',
   class HostingTabsCtrl {
-    constructor($scope, $q, $location, $stateParams, Hosting, HostingFreedom, HostingIndy) {
+    constructor($scope, $q, $location, $stateParams, $translate,
+      Hosting, HostingFreedom, HostingIndy) {
       this.$scope = $scope;
       this.$q = $q;
       this.$location = $location;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
 
       this.Hosting = Hosting;
       this.HostingFreedom = HostingFreedom;
@@ -37,11 +39,11 @@ angular.module('App').controller(
         })
         .then(({ indys, freedoms, hosting }) => {
           this.tabMenu = {
-            title: this.$scope.tr('navigation_more'),
+            title: this.$translate.instant('navigation_more'),
             items: [
               {
-                label: this.$scope.tr('hosting_tab_AUTOMATED_EMAILS'),
-                text: this.$scope.tr('hosting_tab_AUTOMATED_EMAILS_desc'),
+                label: this.$translate.instant('hosting_tab_AUTOMATED_EMAILS'),
+                text: this.$translate.instant('hosting_tab_AUTOMATED_EMAILS_desc'),
                 target: 'AUTOMATED_EMAILS',
                 type: 'SWITCH_TABS',
               },
@@ -52,7 +54,7 @@ angular.module('App').controller(
             _.remove(this.tabs, t => t === 'TASK');
             this.tabs.splice(1, 0, 'RUNTIMES', 'ENVVARS');
             this.tabMenu.items.splice(0, 0, {
-              label: this.$scope.tr('hosting_tab_TASK'),
+              label: this.$translate.instant('hosting_tab_TASK'),
               target: 'TASK',
               type: 'SWITCH_TABS',
             });
@@ -60,19 +62,19 @@ angular.module('App').controller(
 
           this.tabMenu.items = this.tabMenu.items.concat([
             {
-              label: this.$scope.tr('hosting_tab_menu_crons'),
+              label: this.$translate.instant('hosting_tab_menu_crons'),
               target: 'CRON',
               type: 'SWITCH_TABS',
             },
             {
-              label: this.$scope.tr('hosting_tab_USER_LOGS'),
+              label: this.$translate.instant('hosting_tab_USER_LOGS'),
               target: 'USER_LOGS',
               type: 'SWITCH_TABS',
             }]);
 
           if (!hosting.isCloudWeb) {
             this.tabMenu.items.push({
-              label: this.$scope.i18n.hosting_tab_BOOST,
+              label: this.$translate.instant('hosting_tab_BOOST'),
               target: 'BOOST',
               type: 'SWITCH_TABS',
             });
@@ -80,7 +82,7 @@ angular.module('App').controller(
 
           if (!_.isEmpty(indys)) {
             this.tabMenu.items.push({
-              label: this.$scope.i18n.hosting_tab_INDY,
+              label: this.$translate.instant('hosting_tab_INDY'),
               target: 'INDY',
               type: 'SWITCH_TABS',
             });
@@ -88,7 +90,7 @@ angular.module('App').controller(
 
           if (!_.isEmpty(freedoms)) {
             this.tabMenu.items.push({
-              label: this.$scope.i18n.hosting_tab_FREEDOM,
+              label: this.$translate.instant('hosting_tab_FREEDOM'),
               target: 'FREEDOM',
               type: 'SWITCH_TABS',
             });
@@ -100,7 +102,7 @@ angular.module('App').controller(
 
           if (!hosting.isCloudWeb) {
             this.tabMenu.items.push({
-              label: this.$scope.tr('hosting_tab_menu_emails'),
+              label: this.$translate.instant('hosting_tab_menu_emails'),
               target: `#/configuration/email-domain/${this.$stateParams.productId}?tab=MAILING_LIST`,
               type: 'LINK',
             });
@@ -108,12 +110,12 @@ angular.module('App').controller(
 
           this.tabMenu.items = this.tabMenu.items.concat([
             {
-              label: this.$scope.tr('contacts_management'),
+              label: this.$translate.instant('contacts_management'),
               target: `#/useraccount/contacts?tab=SERVICES&serviceName=${this.$stateParams.productId}`,
               type: 'LINK',
             },
             {
-              label: this.$scope.tr('core_change_owner'),
+              label: this.$translate.instant('core_change_owner'),
               target: this.$scope.changeOwnerUrl,
               type: 'EXTERNAL_LINK',
             },
@@ -121,7 +123,7 @@ angular.module('App').controller(
               type: 'SEPARATOR',
             },
             {
-              label: this.$scope.tr('hosting_tab_menu_resiliate'),
+              label: this.$translate.instant('hosting_tab_menu_resiliate'),
               target: `#/billing/autoRenew?selectedType=HOSTING_WEB&searchText=${this.$stateParams.productId}`,
               type: 'LINK',
               styles: 'text-warning',

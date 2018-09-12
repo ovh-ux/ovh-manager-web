@@ -29,14 +29,14 @@
                     <div class="btn-group ml-auto mt-4">
                         <button class="oui-button oui-button_dropdown mb-0" type="button" aria-haspopup="true" aria-expanded="false"
                                 data-toggle="dropdown">
-                            <span data-i18n-static="common_actions"></span>
+                            <span data-translate="common_actions"></span>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li data-ng-if="ctrlDomain.alldomURL">
                                 <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
-                                <a data-ng-href="{{ctrlDomain.alldomURL}}" target="_blank" title="{{i18n.domain_configuration_order_alldom}} ({{i18n.common_newtab}})"
-                                   data-i18n-static="domain_configuration_order_alldom"
+                                <a data-ng-href="{{ctrlDomain.alldomURL}}" target="_blank" title="{{ 'domain_configuration_order_alldom' | translate }} ({{ 'common_newtab' | translate }})"
+                                   data-translate="domain_configuration_order_alldom"
                                    data-track-on="click"
                                    data-track-name="web::domain::order-pack-allDom"
                                    data-track-click="action">
@@ -45,7 +45,7 @@
                             <li data-ng-if="ctrlDomain.canOrderHosting && ctrlDomain.isAdmin">
                                 <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
                                 <button class="btn btn-link" type="button"
-                                        data-i18n-static="domain_configuration_enable_web_hosting"
+                                        data-translate="domain_configuration_enable_web_hosting"
                                         data-ng-click="setAction('webhosting-enable/domain-enable-web-hosting', ctrlDomain.domain)"
                                         data-track-on="click"
                                         data-track-name="web::domain::order-pack-hosting"
@@ -55,7 +55,7 @@
                             <li class="dropdown-divider" data-ng-if="ctrlDomain.hostings.length">
                               <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
                               <a data-ng-href="{{'#/website/configuration?domain=' + ctrlDomain.domain.name}}"
-                                 data-i18n-static="domain_configuration_create_site"
+                                 data-translate="domain_configuration_create_site"
                                  data-track-on="click"
                                  data-track-name="web::domain::website-configuration"
                                  data-track-click="action">
@@ -63,7 +63,7 @@
                             </li>
                             <li>
                                 <button class="btn btn-link" type="button"
-                                   data-i18n-static="domain_configuration_add_subdomain"
+                                   data-translate="domain_configuration_add_subdomain"
                                    data-ng-click="setAction('subdomain/add/domain-subdomain-add', { domain: ctrlDomain.domain })"
                                    data-track-on="click"
                                    data-track-name="web::domain::add-subdomain"
@@ -78,7 +78,7 @@
 
         <div class="container-fluid px-5" data-ng-if="ctrlDomain.domain.isExpired">
             <div class="alert alert-warning mt-5" role="alert">
-                <div data-ng-bind-html="tr('common_service_expired', ['<strong>' + ctrlDomain.domain.displayName + '</strong>'])"></div>
+                <div data-ng-bind-html="'common_service_expired' | translate: { t0: '<strong>' + ctrlDomain.domain.displayName + '</strong>' }"></div>
             </div>
         </div>
 

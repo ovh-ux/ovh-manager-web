@@ -3,7 +3,7 @@
          data-wizard-bread-crumb
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="makeOrder"
-         data-wizard-title="i18n.hosting_dashboard_service_order_cdn">
+         data-wizard-title="'hosting_dashboard_service_order_cdn' | translate">
 
         <div data-wizard-step
              data-wizard-step-on-load="loadOrder"
@@ -13,19 +13,19 @@
 
             <div data-ng-if="!loading.init">
                 <div class="alert alert-danger" role="alert"
-                     data-i18n-static="hosting_dashboard_cdn_order_not_available"
+                     data-translate="hosting_dashboard_cdn_order_not_available"
                      data-ng-if="!isOrderable">
                 </div>
 
                 <div class="form-group" data-ng-if="isOrderable && !loading.model">
                     <label class="control-label" for="cdnOffer"
-                           data-i18n-static="hosting_dashboard_cdn_order_select_pack_offer"></label>
+                           data-translate="hosting_dashboard_cdn_order_select_pack_offer"></label>
                     <div class="oui-select">
                         <select class="oui-select__input" id="cdnOffer"
                                 data-ng-model="model.offer"
-                                data-ng-options="offer as (i18n['hosting_dashboard_cdn_order_' + offer] || offer) for offer in availableOffers track by offer">
+                                data-ng-options="offer as (('hosting_dashboard_cdn_order_' + offer | translate) || offer) for offer in availableOffers track by offer">
                             <option value="" disabled
-                                    data-i18n-static="select_placeholder"></option>
+                                    data-translate="select_placeholder"></option>
                         </select>
                         <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                     </div>
@@ -40,7 +40,7 @@
             <div class="loader text-center" data-ng-if="loading.duration"></div>
 
             <div data-ng-if="!loading.duration">
-                <p data-i18n-static="hosting_dashboard_cdn_order_choose_duration"></p>
+                <p data-translate="hosting_dashboard_cdn_order_choose_duration"></p>
                 <form>
                     <div class="oui-radio" data-ng-repeat="duration in durations track by $index">
                         <input type="radio" class="oui-radio__input" id="duration-{{$index}}" name="duration"
@@ -74,7 +74,7 @@
 
             <div class="loader text-center" data-ng-if="loading.order"></div>
 
-            <p data-i18n-static="hosting_dashboard_cdn_order_validation"
+            <p data-translate="hosting_dashboard_cdn_order_validation"
                data-ng-if="!loading.order"></p>
         </div>
     </div>

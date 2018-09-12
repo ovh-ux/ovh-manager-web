@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'DomainDnsAnycastActivateCtrl',
   class DomainDnsAnycastActivateCtrl {
-    constructor($scope, $stateParams, $window, Alerter, atInternet, Domain) {
+    constructor($scope, $stateParams, $translate, $window, Alerter, atInternet, Domain) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.$window = $window;
       this.Alerter = Alerter;
       this.atInternet = atInternet;
@@ -29,7 +30,7 @@ angular.module('App').controller(
           this.optionDetails = data;
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('domain_configuration_dnsanycast_fail'), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(this.$translate.instant('domain_configuration_dnsanycast_fail'), _.get(err, 'data', err), this.$scope.alerts.main);
           this.$scope.resetAction();
         })
         .finally(() => {
@@ -48,7 +49,7 @@ angular.module('App').controller(
           this.url = order.url;
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('domain_configuration_dnsanycast_fail'), _.get(err, 'data', err), this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(this.$translate.instant('domain_configuration_dnsanycast_fail'), _.get(err, 'data', err), this.$scope.alerts.main);
           this.$scope.resetAction();
         })
         .finally(() => {
@@ -66,7 +67,7 @@ angular.module('App').controller(
         price: this.order.prices.withTax.value,
         status: 1,
       });
-      this.Alerter.success(this.$scope.tr('domain_order_dns_anycast_success', [this.url]), this.$scope.alerts.main);
+      this.Alerter.success(this.$translate.instant('domain_order_dns_anycast_success', { t0: this.url }), this.$scope.alerts.main);
       this.$window.open(this.url, '_blank');
     }
   },

@@ -5,32 +5,32 @@
         <button class="oui-button oui-button_link oui-button_icon-left" type="button"
                 data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
             <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
-            <span data-i18n-static="common_back"></span>
+            <span data-translate="common_back"></span>
         </button>
         <h2>
-            <span data-i18n-static="email_tab_filters_management_heading"></span>
+            <span data-translate="email_tab_filters_management_heading"></span>
             <strong data-ng-bind="ctrlEmailDomainEmailFilter.currentAccount.accountName"></strong>
         </h2>
 
         <oui-datagrid data-rows="ctrlEmailDomainEmailFilter.filters"
                       data-row-loader="ctrlEmailDomainEmailFilter.transformItem($row)">
-            <oui-column data-title="tr('email_tab_table_header_filter_name')" data-property="name" data-sortable="asc"></oui-column>
-            <oui-column data-title="tr('email_tab_table_header_filter_priority')" data-property="priority" data-sortable></oui-column>
-            <oui-column data-title="tr('emails_common_status')">
+            <oui-column data-title="'email_tab_table_header_filter_name' | translate" data-property="name" data-sortable="asc"></oui-column>
+            <oui-column data-title="'email_tab_table_header_filter_priority' | translate" data-property="priority" data-sortable></oui-column>
+            <oui-column data-title="'emails_common_status' | translate">
                 <span class="label"
                       data-ng-show="$row.active"
                       data-ng-class="{'label-success': $row.active, 'label-danger': !$row.active}"
-                      data-ng-bind="tr('email_tab_filters_status_' + $row.active)"></span>
+                      data-ng-bind="'email_tab_filters_status_' + $row.active | translate"></span>
             </oui-column>
             <oui-action-menu data-align="end" data-compact>
-                <oui-action-menu-item data-text="{{i18n.email_tab_popover_filter_edit}}"
+                <oui-action-menu-item data-text="{{ 'email_tab_popover_filter_edit' | translate }}"
                                       data-on-click="setAction('email-domain/email/filter/edit/email-domain-email-filter-edit', {
                                           account: ctrlEmailDomainEmailFilter.currentAccount,
                                           filter: $row,
                                           accounts: ctrlEmailDomainEmail.emails
                                       })">
                 </oui-action-menu-item>
-                <oui-action-menu-item data-text="{{i18n.email_tab_popover_filter_delete}}"
+                <oui-action-menu-item data-text="{{ 'email_tab_popover_filter_delete' | translate }}"
                                       data-on-click="setAction('email-domain/email/filter/delete/email-domain-email-filter-delete', {
                                           account: ctrlEmailDomainEmailFilter.currentAccount,
                                           filter: $row
@@ -43,7 +43,7 @@
     <div class="col-md-3 mt-5 mt-lg-0">
         <div class="mb-5">
             <button class="btn btn-block btn-default" type="button"
-                    data-i18n-static="email_tab_button_emails_create_filter"
+                    data-translate="email_tab_button_emails_create_filter"
                     data-ng-click="setAction('email-domain/email/filter/create/email-domain-email-filter-create', {
                         account: ctrlEmailDomainEmailFilter.currentAccount,
                         accounts: ctrlEmailDomainEmail.emails,
@@ -52,7 +52,7 @@
             </button>
         </div>
         <div data-guides
-             data-guides-title="tr('guide_subtitle')"
+             data-guides-title="'guide_subtitle' | translate"
              data-guides-list="'emailsFilter'"
              data-tr="tr"></div>
     </div>

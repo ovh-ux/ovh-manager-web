@@ -7,6 +7,7 @@ angular
       $q,
       $stateParams,
       $location,
+      $translate,
       Hosting,
       HostingDomain,
       hostingSSLCertificate,
@@ -48,7 +49,7 @@ angular
           })
           .catch((error) => {
             Alerter.alertFromSWS(
-              this.translator.tr('hosting_dashboard_ssl_details_error'),
+              $translate.instant('hosting_dashboard_ssl_details_error'),
               error,
               $scope.alerts.main,
             );
@@ -74,7 +75,7 @@ angular
           })
           .catch((error) => {
             Alerter.alertFromSWS(
-              this.translator.tr('hosting_dashboard_ssl_details_error'),
+              $translate.instant('hosting_dashboard_ssl_details_error'),
               error,
               $scope.alerts.main,
             );
@@ -106,7 +107,7 @@ angular
           })
           .catch((error) => {
             Alerter.alertFromSWS(
-              this.translator.tr('hosting_dashboard_ssl_details_error'),
+              $translate.instant('hosting_dashboard_ssl_details_error'),
               error,
               $scope.alerts.main,
             );
@@ -119,7 +120,7 @@ angular
             // 404 error means that the user has no SSL certificate
             if (error.status !== 404) {
               Alerter.alertFromSWS(
-                this.translator.tr('hosting_dashboard_ssl_details_error'),
+                $translate.instant('hosting_dashboard_ssl_details_error'),
                 error,
                 $scope.alerts.main,
               );
@@ -173,7 +174,7 @@ angular
       // Add domain
       $scope.$on('hostingDomain.attachDomain.start', () => {
         Alerter.success(
-          $scope.tr('hosting_tab_DOMAINS_configuration_add_success_progress'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_add_success_progress'),
           $scope.alerts.main,
         );
       });
@@ -181,7 +182,7 @@ angular
       $scope.$on('hostingDomain.attachDomain.done', () => {
         $scope.$broadcast('paginationServerSide.reload');
         Alerter.success(
-          $scope.tr('hosting_tab_DOMAINS_configuration_add_success_finish'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_add_success_finish'),
           $scope.alerts.main,
         );
       });
@@ -189,7 +190,7 @@ angular
       $scope.$on('hostingDomain.attachDomain.error', (event, err) => {
         $scope.$broadcast('paginationServerSide.reload');
         Alerter.alertFromSWS(
-          $scope.tr('hosting_tab_DOMAINS_configuration_add_failure'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_add_failure'),
           _.get(err, 'data', err),
           $scope.alerts.main,
         );
@@ -198,7 +199,7 @@ angular
       // Modify domain
       $scope.$on('hostingDomain.modifyDomain.start', () => {
         Alerter.success(
-          $scope.tr('hosting_tab_DOMAINS_configuration_modify_success_progress'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_modify_success_progress'),
           $scope.alerts.main,
         );
       });
@@ -206,7 +207,7 @@ angular
       $scope.$on('hostingDomain.modifyDomain.done', () => {
         $scope.$broadcast('paginationServerSide.reload');
         Alerter.success(
-          $scope.tr('hosting_tab_DOMAINS_configuration_modify_success_finish'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_modify_success_finish'),
           $scope.alerts.main,
         );
       });
@@ -214,7 +215,7 @@ angular
       $scope.$on('hostingDomain.modifyDomain.error', (err) => {
         $scope.$broadcast('paginationServerSide.reload');
         Alerter.alertFromSWS(
-          $scope.tr('hosting_tab_DOMAINS_configuration_modify_failure'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_modify_failure'),
           _.get(err, 'data', err),
           $scope.alerts.main,
         );
@@ -223,7 +224,7 @@ angular
       // Remove domain
       $scope.$on('hostingDomain.detachDomain.start', () => {
         Alerter.success(
-          $scope.tr('hosting_tab_DOMAINS_configuration_remove_success_progress'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_remove_success_progress'),
           $scope.alerts.main,
         );
       });
@@ -235,7 +236,7 @@ angular
       $scope.$on('hostingDomain.detachDomain.error', (event, err) => {
         $scope.$broadcast('paginationServerSide.reload');
         Alerter.alertFromSWS(
-          $scope.tr('hosting_tab_DOMAINS_configuration_remove_failure'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_remove_failure'),
           _.get(err, 'data', err),
           $scope.alerts.main,
         );

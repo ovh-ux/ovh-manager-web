@@ -5,17 +5,17 @@ angular.module('App').controller(
     constructor(
       Alerter,
       PrivateDatabase,
-      translator,
       $q,
       $scope,
       $stateParams,
+      $translate,
     ) {
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
-      this.translator = translator;
       this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
     }
 
     $onInit() {
@@ -39,7 +39,7 @@ angular.module('App').controller(
         })
         .catch((error) => {
           this.alerter.error(
-            this.translator.tr('privateDatabase_configuration_error'),
+            this.$translate.instant('privateDatabase_configuration_error'),
             this.$scope.alerts.main,
           );
           return this.$q.reject(error);
@@ -83,7 +83,7 @@ angular.module('App').controller(
 
     getFieldDescriptionTranslated(field) {
       const translationId = `privateDatabase_configuration_field_${field.key}`;
-      const description = this.translator.tr(translationId);
+      const description = this.$translate.instant(translationId);
       if (_.includes(description, translationId)) {
         return field.description;
       }
@@ -106,20 +106,20 @@ angular.module('App').controller(
         .changeConfigurationDetails(this.productId, { parameters })
         .then(() => {
           this.alerter.success(
-            this.translator.tr('privateDatabase_configuration_reboot'),
+            this.$translate.instant('privateDatabase_configuration_reboot'),
             this.$scope.alerts.main,
           );
           return this.privateDatabaseService.pollConfigurationChange(this.productId);
         })
         .then(() => {
           this.alerter.success(
-            this.translator.tr('privateDatabase_configuration_success'),
+            this.$translate.instant('privateDatabase_configuration_success'),
             this.$scope.alerts.main,
           );
         })
         .catch((error) => {
           this.alerter.error(
-            this.translator.tr('privateDatabase_configuration_error_put'),
+            this.$translate.instant('privateDatabase_configuration_error_put'),
             this.$scope.alerts.main,
           );
           return this.$q.reject(error);

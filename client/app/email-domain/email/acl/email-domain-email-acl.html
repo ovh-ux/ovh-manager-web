@@ -6,19 +6,19 @@
             <button class="oui-button oui-button_link oui-button_icon-left" type="button"
                     data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
                 <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
-                <span data-i18n-static="common_back"></span>
+                <span data-translate="common_back"></span>
             </button>
-            <h2 data-i18n-static="email_tab_acl_heading"></h2>
+            <h2 data-translate="email_tab_acl_heading"></h2>
 
-            <p data-i18n-static="email_tab_acl_info"></p>
+            <p data-translate="email_tab_acl_info"></p>
 
             <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col" data-i18n-static="email_tab_table_header_nic"></th>
+                            <th scope="col" data-translate="email_tab_table_header_nic"></th>
                             <th class="min-width text-right" scope="col">
-                                <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_table_header_refresh}}"
+                                <button class="btn btn-icon" type="button" title="{{:: 'email_tab_table_header_refresh' | translate }}"
                                         data-ng-click="ctrlEmailDomainEmailAcl.refreshTableAcls()">
                                     <span class="fa fa-refresh" aria-hidden="true"></span>
                                 </button>
@@ -36,9 +36,9 @@
                     <tbody data-ng-if="!ctrlEmailDomainEmailAcl.loading.acls">
                         <!-- add acl  -->
                         <tr data-ng-if="!ctrlEmailDomainEmailAcl.addingAcl">
-                            <td class="align-middle text-center" data-i18n-static="email_tab_button_emails_add_acls"></td>
+                            <td class="align-middle text-center" data-translate="email_tab_button_emails_add_acls"></td>
                             <td class="text-center">
-                                <button class="btn btn-default" type="button" title="{{::i18n.email_tab_button_emails_add_acls}}"
+                                <button class="btn btn-default" type="button" title="{{:: 'email_tab_button_emails_add_acls' | translate }}"
                                         data-ng-click="ctrlEmailDomainEmailAcl.addingAcl = true">
                                     <span class="fa fa-plus" aria-hidden="true"></span>
                                 </button>
@@ -49,8 +49,8 @@
                         <tr data-ng-if="ctrlEmailDomainEmailAcl.addingAcl">
                             <td>
                                 <form class="m-0" name="addAclForm">
-                                    <label class="sr-only" for="addAclItem" data-i18n-static="email_tab_table_header_enter_nic"></label>
-                                    <input type="text" class="form-control" name="addAclItem" id="addAclItem" placeholder="{{::i18n.email_tab_table_header_enter_nic}}"
+                                    <label class="sr-only" for="addAclItem" data-translate="email_tab_table_header_enter_nic"></label>
+                                    <input type="text" class="form-control" name="addAclItem" id="addAclItem" placeholder="{{:: 'email_tab_table_header_enter_nic' | translate }}"
                                            data-ng-model="ctrlEmailDomainEmailAcl.addAclItem.value">
                                 </form>
                             </td>
@@ -69,7 +69,7 @@
 
                         <!-- no acl -->
                         <tr data-ng-if="!ctrlEmailDomainEmailAcl.acls.length">
-                            <td class="text-center" colspan="2" data-i18n-static="email_tab_table_acl_empty"></td>
+                            <td class="text-center" colspan="2" data-translate="email_tab_table_acl_empty"></td>
                         </tr>
 
                         <!-- acls -->
@@ -96,16 +96,16 @@
                      data-items-per-page="itemsPerPage"
                      data-transform-item="ctrlEmailDomainEmailAcl.transformItem(item)"
                      data-on-transform-item-done="ctrlEmailDomainEmailAcl.onTransformItemDone()"
-                     data-page-placeholder="{{tr('pagination_page', [currentPageAcls, nbPages])}}"
-                     data-item-per-page-placeholder="{{tr('pagination_display')}}"
+                     data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPageAcls, t1: nbPages } }}"
+                     data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
                      data-ng-show="!ctrlEmailDomainEmailAcl.loading.acls && ctrlEmailDomainEmailAcl.aclsDetails.length > 0">
                 </div>
             </div>
         </div>
 
         <div class="col-md-3 mt-5 mt-lg-0">
-            <a class="btn btn-block btn-default" target="_blank" title="{{::i18n.emails_create_account_new_window}}"
-               data-i18n-static="emails_create_account"
+            <a class="btn btn-block btn-default" target="_blank" title="{{:: 'emails_create_account_new_window' | translate }}"
+               data-translate="emails_create_account"
                data-ng-href="{{ctrlEmailDomainEmailAcl.createNicUrl.value}}"
                data-ng-if="ctrlEmailDomainEmailAcl.createNicUrl">
             </a>

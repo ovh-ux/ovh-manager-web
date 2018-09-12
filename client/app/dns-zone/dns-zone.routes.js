@@ -21,11 +21,8 @@ angular.module('App').config(($stateProvider) => {
           });
         },
       ],
-      translator: [
-        'translator',
-        translator => translator.load(['domain']).then(() => translator),
-      ],
     },
+    translations: ['domain'],
   });
 
   $stateProvider.state('app.dns-zone-new', {
@@ -45,10 +42,7 @@ angular.module('App').config(($stateProvider) => {
           });
         },
       ],
-      translator: [
-        'translator',
-        translator => translator.load(['domains']).then(() => translator),
-      ],
     },
+    translations: ['domains'],
   });
 });

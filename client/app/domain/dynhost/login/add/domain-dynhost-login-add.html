@@ -2,17 +2,17 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="addLogin"
-         data-wizard-title="i18n.domain_tab_DYNHOST_add_login_title">
+         data-wizard-title="'domain_tab_DYNHOST_add_login_title' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="ctrl.addDynHostLoginForm.$valid">
 
-            <p data-i18n-static="domain_tab_DYNHOST_add_login_step1"></p>
+            <p data-translate="domain_tab_DYNHOST_add_login_step1"></p>
 
             <form name="ctrl.addDynHostLoginForm">
                 <p>
                     <small class="text-danger">*</small>
-                    <small data-i18n-static="required_fields"></small>
+                    <small data-translate="required_fields"></small>
                 </p>
 
                 <!-- //Suffixe -->
@@ -21,7 +21,7 @@
                     'has-success': ctrl.addDynHostLoginForm.loginSuffix.$dirty && ctrl.addDynHostLoginForm.loginSuffix.$valid && ctrl.dynHostLogin.loginSuffix.length
                 }">
                     <label class="control-label required" for="txt-suffix"
-                           data-i18n-static="domain_tab_DYNHOST_login_add_suffixe"></label>
+                           data-translate="domain_tab_DYNHOST_login_add_suffixe"></label>
                     <div class="input-group">
                         <span class="input-group-addon"
                               data-ng-bind="ctrl.product.displayName + ' - '"></span>
@@ -32,7 +32,7 @@
                                data-ng-trim="true">
                     </div>
                     <small class="help-block"
-                           data-ng-bind-html="tr('domain_tab_DYNHOST_add_login_step1_suffix_error', [ctrl.const.nbMaxSuffix])"
+                           data-ng-bind-html="'domain_tab_DYNHOST_add_login_step1_suffix_error' | translate: { t0: ctrl.const.nbMaxSuffix }"
                            data-ng-if="ctrl.addDynHostLoginForm.loginSuffix.$dirty && ctrl.addDynHostLoginForm.loginSuffix.$invalid"></small>
                 </div>
 
@@ -42,7 +42,7 @@
                     'has-success': ctrl.addDynHostLoginForm.subDomain.$dirty && ctrl.addDynHostLoginForm.subDomain.$valid
                     }">
                     <label class="control-label required" for="txt-subDomain"
-                           data-i18n-static="domain_tab_DYNHOST_add_subDomain"></label>
+                           data-translate="domain_tab_DYNHOST_add_subDomain"></label>
                     <div class="input-group">
                         <input type="text" class="form-control" id="txt-subDomain" name="subDomain" required
                                data-ng-change="ctrl.subDomainCheck(ctrl.addDynHostLoginForm.subDomain)"
@@ -52,9 +52,9 @@
                               data-ng-bind="'.' + ctrl.product.displayName"></span>
                     </div>
                     <small class="help-block"
-                           data-i18n-static="domain_tab_REDIRECTION_add_step1_subdomain_error"
+                           data-translate="domain_tab_REDIRECTION_add_step1_subdomain_error"
                            data-ng-if="ctrl.addDynHostLoginForm.subDomain.$dirty && ctrl.addDynHostLoginForm.subDomain.$invalid"></small>
-                    <small data-ng-bind="tr('domain_tab_DYNHOST_add_login_subDomain_help', ['*'])"></small>
+                    <small data-translate="domain_tab_DYNHOST_add_login_subDomain_help" data-translate-values="{ t0: '*' }"></small>
                 </div>
 
                 <!-- //Password -->
@@ -63,7 +63,7 @@
                     'has-success': ctrl.addDynHostLoginForm.password.$dirty && ctrl.addDynHostLoginForm.password.$valid
                 }">
                     <label class="control-label required" for="txt-password"
-                           data-i18n-static="domain_tab_DYNHOST_add_login_password"></label>
+                           data-translate="domain_tab_DYNHOST_add_login_password"></label>
                     <input type="password" autocomplete="off" class="form-control" id="txt-password" name="password" required
                            data-ng-change="ctrl.isPasswordMatches(ctrl.addDynHostLoginForm.passwordConfirm)"
                            data-ng-maxlength="ctrl.const.nbMaxPassword"
@@ -71,7 +71,7 @@
                            data-ng-model="ctrl.dynHostLogin.password"
                            data-ng-trim="true">
                     <small class="help-block"
-                           data-ng-bind-html="tr('domain_tab_DYNHOST_add_login_password_error', [ctrl.const.nbMinPassword, ctrl.const.nbMaxPassword])"
+                           data-ng-bind-html="'domain_tab_DYNHOST_add_login_password_error' | translate: { t0: ctrl.const.nbMinPassword, t1: ctrl.const.nbMaxPassword }"
                            data-ng-if="ctrl.addDynHostLoginForm.password.$dirty && ctrl.addDynHostLoginForm.password.$invalid"></small>
                 </div>
                 <div class="form-group" data-ng-class="{
@@ -79,13 +79,13 @@
                     'has-success': ctrl.addDynHostLoginForm.passwordConfirm.$dirty && ctrl.addDynHostLoginForm.passwordConfirm.$valid
                 }">
                     <label class="control-label required" for="txt-password-confirm"
-                           data-i18n-static="domain_tab_DYNHOST_add_login_password_check"></label>
+                           data-translate="domain_tab_DYNHOST_add_login_password_check"></label>
                     <input type="password" autocomplete="off" class="form-control" id="txt-password-confirm" name="passwordConfirm" required
                            data-ng-change="ctrl.isPasswordMatches(ctrl.addDynHostLoginForm.passwordConfirm)"
                            data-ng-model="ctrl.validation.password"
                            data-ng-trim="true">
                     <small class="help-block"
-                           data-i18n-static="domain_tab_DYNHOST_add_login_password_check_error"
+                           data-translate="domain_tab_DYNHOST_add_login_password_check_error"
                            data-ng-if="ctrl.addDynHostLoginForm.passwordConfirm.$dirty && !!ctrl.validation.password && !ctrl.isPasswordMatches()"></small>
                 </div>
             </form>

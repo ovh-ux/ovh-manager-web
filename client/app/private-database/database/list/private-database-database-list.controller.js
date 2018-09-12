@@ -1,10 +1,11 @@
 angular
   .module('App')
   .controller('PrivateDatabaseBDDsListCtrl', class PrivateDatabaseBDDsListCtrl {
-    constructor($q, $scope, $stateParams, Alerter, PrivateDatabase) {
+    constructor($q, $scope, $stateParams, $translate, Alerter, PrivateDatabase) {
       this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
     }
@@ -93,10 +94,10 @@ angular
     dumpBDD(bdd) {
       this.privateDatabaseService.dumpBDD(this.productId, bdd.databaseName, true)
         .then(() => {
-          this.alerter.success(this.$scope.tr('privateDatabase_dump_bdd_in_progress'), this.$scope.alerts.main);
+          this.alerter.success(this.$translate.instant('privateDatabase_dump_bdd_in_progress'), this.$scope.alerts.main);
         })
         .catch(() => {
-          this.alerter.error(this.$scope.tr('privateDatabase_dump_bdd_fail'), this.$scope.alerts.main);
+          this.alerter.error(this.$translate.instant('privateDatabase_dump_bdd_fail'), this.$scope.alerts.main);
         });
     }
 
@@ -153,14 +154,14 @@ angular
 
     onDataBaseDeletedone() {
       this.getBDDS();
-      this.alerter.success(this.$scope.tr('privateDatabase_delete_user_success'), this.$scope.alerts.main);
+      this.alerter.success(this.$translate.instant('privateDatabase_delete_user_success'), this.$scope.alerts.main);
     }
 
     onDataBaseDeleteerror(opts) {
       this.findItemIndex(opts.databaseName).then((idx) => {
         if (idx !== -1) {
           delete this.bddsDetails[idx].waitDelete;
-          this.alerter.error(this.$scope.tr('privateDatabase_delete_bdd_fail'), this.$scope.alerts.main);
+          this.alerter.error(this.$translate.instant('privateDatabase_delete_bdd_fail'), this.$scope.alerts.main);
         }
       });
     }
@@ -176,12 +177,12 @@ angular
 
       _.remove(this.currentAddBdds, name => opts.databaseName === name);
 
-      this.alerter.success(this.$scope.tr('privateDatabase_add_bdd_success'), this.$scope.alerts.main);
+      this.alerter.success(this.$translate.instant('privateDatabase_add_bdd_success'), this.$scope.alerts.main);
     }
 
     onDataBaseCreateerror(opts) {
       this.currentAddBdds = _.remove(this.currentAddBdds, opts.databaseName);
-      this.alerter.error(this.$scope.tr('privateDatabase_add_bdd_fail'), this.$scope.alerts.main);
+      this.alerter.error(this.$translate.instant('privateDatabase_add_bdd_fail'), this.$scope.alerts.main);
     }
 
     onDataBaseDumpstart(evt, opts) {
@@ -192,13 +193,13 @@ angular
 
     onDataBaseDumpdone() {
       this.getBDDS();
-      this.alerter.success(this.$scope.tr('privateDatabase_dump_bdd_success'), this.$scope.alerts.main);
+      this.alerter.success(this.$translate.instant('privateDatabase_dump_bdd_success'), this.$scope.alerts.main);
     }
 
     onDataBaseDumperror(opts) {
       this.findItemIndex(opts.databaseName).then((idx) => {
         delete this.bddsDetails[idx].waitDump;
-        this.alerter.error(this.$scope.tr('privateDatabase_dump_bdd_fail'), this.$scope.alerts.main);
+        this.alerter.error(this.$translate.instant('privateDatabase_dump_bdd_fail'), this.$scope.alerts.main);
       });
     }
 
@@ -210,13 +211,13 @@ angular
 
     onDataBaseRestoredone() {
       this.getBDDS();
-      this.alerter.success(this.$scope.tr('privateDatabase_tabs_dumps_restore_success'), this.$scope.alerts.main);
+      this.alerter.success(this.$translate.instant('privateDatabase_tabs_dumps_restore_success'), this.$scope.alerts.main);
     }
 
     onDataBaseRestoreerror(opts) {
       this.findItemIndex(opts.databaseName).then((idx) => {
         delete this.bddsDetails[idx].waitRestore;
-        this.alerter.error(this.$scope.tr('privateDatabase_tabs_dumps_restore_fail'), this.$scope.alerts.main);
+        this.alerter.error(this.$translate.instant('privateDatabase_tabs_dumps_restore_fail'), this.$scope.alerts.main);
       });
     }
   });

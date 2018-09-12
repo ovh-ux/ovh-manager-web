@@ -7,6 +7,7 @@ angular.module('App').controller(
       $rootScope,
       $scope,
       $stateParams,
+      $translate,
       Validator,
     ) {
       this.alerter = Alerter;
@@ -14,6 +15,7 @@ angular.module('App').controller(
       this.$rootScope = $rootScope;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.validator = Validator;
     }
 
@@ -34,11 +36,11 @@ angular.module('App').controller(
         this.whitelistService
           .updateWhitelist(this.productId, this.whitelistId, this.model)
           .then(() => this.alerter.success(
-            this.$scope.tr('privateDatabase_modale_whitelist_update_success'),
+            this.$translate.instant('privateDatabase_modale_whitelist_update_success'),
             this.$scope.alerts.main,
           ))
           .catch(() => this.alerter.error(
-            this.$scope.tr('privateDatabase_modale_whitelist_update_fail'),
+            this.$translate.instant('privateDatabase_modale_whitelist_update_fail'),
             this.$scope.alerts.main,
           ))
           .finally(() => this.$scope.resetAction());

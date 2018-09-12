@@ -1,10 +1,12 @@
 angular.module('App').controller(
   'HostingUpgradeOfferCtrl',
   class HostingUpgradeOfferCtrl {
-    constructor($scope, $rootScope, $stateParams, $window, Alerter, atInternet, Hosting, User) {
+    constructor($scope, $rootScope, $stateParams, $translate, $window,
+      Alerter, atInternet, Hosting, User) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.$window = $window;
       this.Alerter = Alerter;
       this.atInternet = atInternet;
@@ -51,7 +53,7 @@ angular.module('App').controller(
 
     /* Step 1 */
     orderByOffer(offer) {
-      return this.$scope.i18n[`hosting_dashboard_service_offer_${offer}`] || offer;
+      return this.$translate.instant(`hosting_dashboard_service_offer_${offer}`) || offer;
     }
 
     /* Step 2 */
@@ -70,7 +72,7 @@ angular.module('App').controller(
           }
         }, (err) => {
           this.$scope.resetAction();
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(this.$translate.instant('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
         }, (durations) => {
           this.durations.available = durations;
         })
@@ -95,7 +97,7 @@ angular.module('App').controller(
     }
 
     getResumePrice(price) {
-      return price.value === 0 ? this.$scope.tr('price_free') : this.$scope.tr('price_ht_label', [price.text]);
+      return price.value === 0 ? this.$translate.instant('price_free') : this.$translate.instant('price_ht_label', { t0: price.text });
     }
 
     orderUpgrade() {
@@ -103,7 +105,7 @@ angular.module('App').controller(
 
       return this.Hosting.orderUpgrade(_.get(this.hosting, 'serviceName', this.$stateParams.productId), this.model.capacity, this.model.duration.duration)
         .then((order) => {
-          this.Alerter.success(this.$scope.tr('hosting_order_upgrade_success', [order.url, order.orderId]), this.$scope.alerts.main);
+          this.Alerter.success(this.$translate.instant('hosting_order_upgrade_success', { t0: order.url, t1: order.orderId }), this.$scope.alerts.main);
           this.atInternet.trackOrder({
             name: `[hosting]::${this.model.capacity}[${this.model.capacity}]`,
             page: 'web::payment-pending',
@@ -115,7 +117,7 @@ angular.module('App').controller(
           this.$window.open(order.url, '_blank');
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(this.$translate.instant('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
         })
         .finally(() => {
           this.loading.validation = false;

@@ -6,6 +6,7 @@ angular.module('App').controller(
       $rootScope,
       $scope,
       $stateParams,
+      $translate,
       Alerter,
       ConverterService,
       Hosting,
@@ -18,6 +19,7 @@ angular.module('App').controller(
       this.$rootScope = $rootScope;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.converterService = ConverterService;
       this.hostingService = Hosting;
@@ -55,7 +57,7 @@ angular.module('App').controller(
         round: decimalWanted,
         base: -1,
       });
-      const resUnit = this.$scope.tr(`unit_size_${res.symbol}`);
+      const resUnit = this.$translate.instant(`unit_size_${res.symbol}`);
 
       return `${res.value} ${resUnit}`;
     }

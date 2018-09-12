@@ -2,22 +2,22 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="updateMailingList"
-         data-wizard-title="i18n.mailing_list_tab_modal_list_update">
+         data-wizard-title="'mailing_list_tab_modal_list_update' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="ctrl.updateMailingListForm.$valid">
 
-            <p class="font-weight-bold" data-ng-bind="tr('mailing_list_tab_modal_update_list_title', ctrl.mailingList.name)"></p>
+            <p class="font-weight-bold" data-translate="mailing_list_tab_modal_update_list_title" data-translate-values="{ t0: ctrl.mailingList.name }"></p>
 
             <oui-spinner data-ng-if="ctrl.loading"></oui-spinner>
 
             <div data-ng-show="!ctrl.loading">
-                <p data-i18n-static="mailing_list_tab_modal_update_list_heading"></p>
+                <p data-translate="mailing_list_tab_modal_update_list_heading"></p>
 
                 <form class="form-horizontal" name="ctrl.updateMailingListForm">
                     <p>
                         <small class="text-danger">*</small>
-                        <small data-i18n-static="required_fields"></small>
+                        <small data-translate="required_fields"></small>
                     </p>
 
                     <div class="form-group" data-ng-class="{
@@ -25,27 +25,27 @@
                         'has-success': ctrl.updateMailingListForm.mlOwner.$dirty && ctrl.updateMailingListForm.mlOwner.$valid
                     }">
                         <label class="control-label col-md-4 required" for="txt-ml-owner"
-                               data-i18n-static="mailing_list_tab_modal_create_list_owner"></label>
+                               data-translate="mailing_list_tab_modal_create_list_owner"></label>
                         <div class="col-md-7">
                             <input type="email" class="form-control" id="txt-ml-owner" name="mlOwner" required
                                    data-ng-change="ctrl.emailCheck(ctrl.updateMailingListForm.mlOwner)"
                                    data-ng-model="ctrl.mailingList.ownerEmail">
                             <small class="help-block"
-                                   data-i18n-static="email_tab_modal_redirection_create_email_error"
+                                   data-translate="email_tab_modal_redirection_create_email_error"
                                    data-ng-if="ctrl.updateMailingListForm.mlOwner.$dirty && ctrl.updateMailingListForm.mlOwner.$invalid"></small>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="control-label col-md-4 required" for="select-languages"
-                               data-i18n-static="mailing_list_tab_modal_create_list_language"></label>
+                               data-translate="mailing_list_tab_modal_create_list_language"></label>
                         <div class="col-md-7">
                             <div class="oui-select oui-select_inline mb-0">
                                 <select class="oui-select__input" id="select-languages" name="mlLanguage" required
                                         data-ng-model="ctrl.mailingList.language"
-                                        data-ng-options="lang as tr('language_' + lang) for lang in ctrl.languages track by lang">
+                                        data-ng-options="lang as ('language_' + lang | translate) for lang in ctrl.languages track by lang">
                                     <option value="" disabled
-                                            data-i18n-static="select_placeholder"></option>
+                                            data-translate="select_placeholder"></option>
                                 </select>
                                 <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                             </div>
@@ -54,7 +54,7 @@
 
                     <div class="form-group">
                         <label class="control-label col-md-4"
-                               data-i18n-static="mailing_list_tab_modal_create_list_reply_to"></label>
+                               data-translate="mailing_list_tab_modal_create_list_reply_to"></label>
                         <div class="col-md-8">
                             <div class="oui-radio">
                                 <input type="radio" class="oui-radio__input" id="selectReplyTo-ml" name="selectReplyTo"
@@ -63,7 +63,7 @@
                                        data-ng-value="ctrl.constants.MAILING_LIST">
                                 <label class="oui-radio__label-container" for="selectReplyTo-ml">
                                     <span class="oui-radio__label"
-                                          data-i18n-static="mailing_list_tab_modal_update_list_reply_to_list"></span>
+                                          data-translate="mailing_list_tab_modal_update_list_reply_to_list"></span>
                                 </label>
                             </div>
                             <div class="oui-radio">
@@ -73,7 +73,7 @@
                                        data-ng-value="ctrl.constants.LAST_USER">
                                 <label class="oui-radio__label-container" for="selectReplyTo-lu">
                                     <span class="oui-radio__label"
-                                          data-i18n-static="mailing_list_tab_modal_update_list_reply_to_last_user"></span>
+                                          data-translate="mailing_list_tab_modal_update_list_reply_to_last_user"></span>
                                 </label>
                             </div>
                             <div class="oui-radio">
@@ -83,7 +83,7 @@
                                        data-ng-value="ctrl.constants.REPLY_TO_EMAIL">
                                 <label class="oui-radio__label-container" for="selectReplyTo-rte">
                                     <span class="oui-radio__label"
-                                          data-i18n-static="mailing_list_tab_modal_update_list_reply_to_email"></span>
+                                          data-translate="mailing_list_tab_modal_update_list_reply_to_email"></span>
                                 </label>
                             </div>
                         </div>
@@ -95,19 +95,19 @@
                         }"
                          data-ng-if="ctrl.replyToSelector === ctrl.constants.REPLY_TO_EMAIL">
                         <label class="control-label col-md-4 required" for="txt-ml-replyTo"
-                               data-i18n-static="mailing_list_tab_modal_create_list_reply_to"></label>
+                               data-translate="mailing_list_tab_modal_create_list_reply_to"></label>
                         <div class="col-md-7">
                             <input type="email" class="form-control" id="txt-ml-replyTo" name="replyTo" required
                                    data-ng-change="ctrl.emailCheck(ctrl.updateMailingListForm.replyTo)"
                                    data-ng-model="ctrl.mailingList.replyTo">
                             <small class="help-block"
-                                   data-i18n-static="email_tab_modal_redirection_create_email_error"
+                                   data-translate="email_tab_modal_redirection_create_email_error"
                                    data-ng-if="ctrl.updateMailingListForm.replyTo.$dirty && ctrl.updateMailingListForm.replyTo.$invalid"></small>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label col-md-4" data-i18n-static="mailing_list_tab_modal_create_list_moderator_message"></label>
+                        <label class="control-label col-md-4" data-translate="mailing_list_tab_modal_create_list_moderator_message"></label>
                         <div class="col-md-8">
                             <div class="oui-radio">
                                 <input type="radio" class="oui-radio__input" id="rdMessages-yes" name="rdMessages"
@@ -116,7 +116,7 @@
                                        data-ng-value="true">
                                 <label class="oui-radio__label-container" for="rdMessages-yes">
                                     <span class="oui-radio__label"
-                                          data-i18n-static="mailing_list_tab_modal_create_list_moderator_all_messages"></span>
+                                          data-translate="mailing_list_tab_modal_create_list_moderator_all_messages"></span>
                                 </label>
                             </div>
                             <div class="oui-radio">
@@ -126,7 +126,7 @@
                                        data-ng-value="false">
                                 <label class="oui-radio__label-container" for="rdMessages-no">
                                     <span class="oui-radio__label"
-                                          data-i18n-static="mailing_list_tab_modal_create_list_users_post_only"></span>
+                                          data-translate="mailing_list_tab_modal_create_list_users_post_only"></span>
                                 </label>
                             </div>
                             <div class="oui-radio">
@@ -136,7 +136,7 @@
                                        data-ng-value="null">
                                 <label class="oui-radio__label-container" for="rdMessages-null">
                                     <span class="oui-radio__label"
-                                          data-i18n-static="mailing_list_tab_modal_create_list_no_moderation"></span>
+                                          data-translate="mailing_list_tab_modal_create_list_no_moderation"></span>
                                 </label>
                             </div>
                         </div>
@@ -145,9 +145,9 @@
                     <div class="col-md-offset-4 pl-lg-3">
                         <oui-checkbox id="chk-ml-only-subscribers" name="mlSubscribersModeration"
                             data-model="ctrl.mailingList.options.subscribeByModerator"
-                            data-text="{{::i18n.mailing_list_tab_modal_create_list_only_subscribers_moderator}}">
+                            data-text="{{:: 'mailing_list_tab_modal_create_list_only_subscribers_moderator' | translate }}">
                         </oui-checkbox>
-                        <div class="font-italic" data-ng-bind-html="tr('mailing_list_tab_create_subscribers_max', [ctrl.limits.subscribers])"></div>
+                        <div class="font-italic" data-ng-bind-html="'mailing_list_tab_create_subscribers_max' | translate: { t0: ctrl.limits.subscribers }"></div>
                     </div>
                 </form>
             </div>
