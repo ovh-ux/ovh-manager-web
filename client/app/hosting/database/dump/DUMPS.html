@@ -26,12 +26,12 @@
             <span data-ng-bind="$row.deletionDate | date:'medium'"></span>
         </oui-column>
         <oui-column data-title="tr('database_tabs_dumps_status')" data-property="status" data-sortable>
-            <span class="label"
+            <span class="oui-status"
                   data-ng-bind="tr('database_tabs_dumps_status_' + $row.status)"
                   data-ng-class="{
-                    'label-success': $row.status === 'created',
-                    'label-danger': $row.status === 'deleting',
-                    'label-warning': $row.status !== 'created' && $row.status !== 'deleting'
+                    'oui-status_success': $row.status === 'created',
+                    'oui-status_error': $row.status === 'deleting',
+                    'oui-status_warning': $row.status !== 'created' && $row.status !== 'deleting'
                   }">
             </span>
         </oui-column>

@@ -86,6 +86,7 @@ angular
             taskPending: _.get($scope.ovhConfig, 'taskPending', false),
             taskPendingError: _.get($scope.ovhConfig, 'taskPendingError', false),
           });
+
           $scope.phpVersionSupport = _.find(
             $scope.hosting.phpVersions,
             (version) => {
@@ -335,8 +336,15 @@ angular
                     }
                   }
                 })
+                .then(() => {
+                  if (moment().isAfter(moment($scope.hostingProxy.lastOvhConfigScan).add(12, 'hours'))) {
+                    return HostingOvhConfig.ovhConfigRefresh($stateParams.productId);
+                  }
+                  return null;
+                })
                 .finally(() => {
                   $scope.loadingHostingInformations = false;
+                  loadOvhConfig();
                 });
 
               User.getUrlOfEndsWithSubsidiary('hosting').then((url) => {
@@ -365,11 +373,6 @@ angular
                   $scope.loadingHostingError = true;
                 }
               }
-
-              // error 409 and 403 have no matter, they juste saying: "the job is pending"
-              // and other ?  I think is a kind of sub treat as "best effort"
-              // Anyway, the ovhConfig must be loaded
-              HostingOvhConfig.ovhConfigRefresh($stateParams.productId).finally(loadOvhConfig);
 
               if (!hosting.isExpired) {
                 checkFlushCdnState();
@@ -442,11 +445,11 @@ angular
       $scope.getStateBadgeClass = () => {
         switch (_.get($scope.hosting, 'serviceState')) {
           case 'ACTIVE':
-            return 'label-success';
+            return 'oui-status_success';
           case 'MAINTENANCE':
-            return 'label-warning';
+            return 'oui-status_warning';
           case 'BLOQUED':
-            return 'label-important';
+            return 'oui-status_error';
           default:
             return null;
         }

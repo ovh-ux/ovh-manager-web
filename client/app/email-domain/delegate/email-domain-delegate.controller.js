@@ -120,16 +120,16 @@ angular.module('App').controller(
           email: this.Emails.getDelegatedEmail(item),
           usage: this.Emails.getEmailDelegatedUsage(item),
         })
-        .then(({ originalEmail, usage }) => {
-          const email = _(originalEmail).clone();
+        .then(({ email, usage }) => {
+          const emailData = _(email).clone();
 
-          email.quota = usage.quota;
-          email.emailCount = usage.emailCount;
-          email.date = usage.date;
+          emailData.quota = usage.quota;
+          emailData.emailCount = usage.emailCount;
+          emailData.date = usage.date;
 
-          this.constructor.setAccountPercentUse(email);
+          this.constructor.setAccountPercentUse(emailData);
 
-          return email;
+          return emailData;
         });
     }
 
