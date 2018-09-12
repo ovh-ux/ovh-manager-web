@@ -3,7 +3,9 @@ angular
   .controller(
     'SessionCtrl',
     ($scope, $document, $translate, SessionService) => {
-      document.title = $translate.instant('global_app_title');
+      $scope.$watch(() => $translate.instant('global_app_title'), () => {
+        document.title = $translate.instant('global_app_title');
+      });
 
       // FIX for /me/alerts
       $scope.$on('Navigator.navigationInformationsChange', (e, data) => {
