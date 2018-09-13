@@ -94,7 +94,7 @@
              data-items-per-page="itemsPerPage"
              data-transform-item="ctrlHostingFreedomTab.transformItem(item)"
              data-on-transform-item-done="ctrlHostingFreedomTab.onTransformItemDone(items)"
-             data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPage, t1: nbPages } }}"
+             data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPage, last: nbPages } }}"
              data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
              data-ng-show="!ctrlHostingFreedomTab.loading && ctrlHostingFreedomTab.freedoms.length > 0">
         </div>

@@ -105,7 +105,7 @@
                  data-on-page-change="listCtrl.loaders.bdd = true"
                  data-on-transform-item-done="listCtrl.onTransformItemDone(items)"
                  data-on-transform-item-get-promise="listCtrl.getPromise(promise)"
-                 data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPage, t1: nbPages } }}"
+                 data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPage, last: nbPages } }}"
                  data-item-per-page-placeholder="{{ 'pagination_display' | translate }}">
             </div>
         </div>

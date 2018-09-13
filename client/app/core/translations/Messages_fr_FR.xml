@@ -124,10 +124,10 @@
    <translation id="table_manage_entry" qtlid="404395">: gérer</translation>
    <translation id="form_delete_item" qtlid="402113">Supprimer l'élément</translation>
    <translation id="form_add_item" qtlid="402126">Ajouter un élément</translation>
-   <translation id="wizard_breadcrumb" qtlid="158682">Étape {0} sur {1}</translation>
+   <translation id="wizard_breadcrumb">Étape {{ currentStep }} sur {{ stepCount }}</translation>
    <translation id="table_delete_search" qtlid="402139">Effacer la recherche sur le tableau</translation>
    <translation id="select_placeholder" qtlid="447963">Sélectionnez…</translation>
-   <translation id="pagination_page" qtlid="129123">Page {0} / {1}</translation>
+   <translation id="pagination_page">Page {{current}} / {{last}}</translation>
    <translation id="pagination_go" qtlid="31522">OK</translation>
    <translation id="pagination_display" qtlid="69353">Afficher</translation>
    <translation id="common_actions" qtlid="72809">Actions</translation>
@@ -269,24 +269,24 @@
 
    <translation id="contract_next" qtlid="17743">Suivant</translation>
    <translation id="contract_previous" qtlid="17431">Précédent</translation>
-   <translation id="download_contract" qtlid="180369">Ouvrir le contrat "{0}" en PDF</translation>
+   <translation id="download_contract">Ouvrir le contrat "{{name}}" en PDF</translation>
    <translation id="contract_help" qtlid="180382">Il faut faire défiler les contrats pour pouvoir les valider.</translation>
-   <translation id="contracts_list_title" qtlid="180395">Il y a {0} contrats à consulter.</translation>
+   <translation id="contracts_list_title">Il y a {{count}} contrats à consulter.</translation>
    <translation id="contract_list_title" qtlid="180408">Il y a 1 contrat à consulter.</translation>
    <translation id="contracts_agree" qtlid="180421">J'accepte les contrats</translation>
    <translation id="contract_agree" qtlid="180434">J'accepte le contrat</translation>
 
    <translation id="day_1" qtlid="28807">1 jour</translation>
-   <translation id="day_other" qtlid="158578">{} jours</translation>
+   <translation id="day_other">{0} jours</translation>
    <translation id="month_1" qtlid="70241">1 mois</translation>
-   <translation id="month_other" qtlid="158591">{} mois</translation>
+   <translation id="month_other">{0} mois</translation>
    <translation id="year_1" qtlid="70277">1 an</translation>
-   <translation id="year_other" qtlid="158604">{} ans</translation>
+   <translation id="year_other">{0} ans</translation>
    <translation id="upto" qtlid="158617">Jusqu'au {0}</translation>
    <translation id="uptofirstdaynextmonth" qtlid="158630">Jusqu'au premier jour du prochain mois</translation>
    <translation id="engage" qtlid="158643">S'engager {0}</translation>
-   <translation id="price_ht_label" qtlid="166183">{0}&#160;HT</translation>
-   <translation id="price_ttc_label" qtlid="166196">{0}&#160;TTC</translation>
+   <translation id="price_ht_label">{{price}}&#160;HT</translation>
+   <translation id="price_ttc_label">{{price}}&#160;TTC</translation>
    <translation id="price_free" qtlid="195776">Inclus</translation>
    <translation id="price_label_yearly" qtlid="288977">/an</translation>
 

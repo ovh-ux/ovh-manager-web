@@ -148,7 +148,7 @@ angular.module('App')
     };
 
     $scope.getResumePrice = function getResumePrice(price) {
-      return price.value === 0 ? $translate.instant('price_free') : $translate.instant('price_ht_label', { t0: price.text });
+      return price.value === 0 ? $translate.instant('price_free') : $translate.instant('price_ht_label', { price: price.text });
     };
 
     $scope.orderUpgrade = function orderUpgrade() {

@@ -83,7 +83,7 @@
                  data-items-per-page="itemsPerPage"
                  data-transform-item="ctrlEmailDelegateResponder.transformItem(item)"
                  data-on-transform-item-done="ctrlEmailDelegateResponder.onTransformItemDone()"
-                 data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPageResponders, t1: nbPages } }}"
+                 data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPageResponders, last: nbPages } }}"
                  data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
                  data-ng-show="!ctrlEmailDelegateResponder.loading.responders && ctrlEmailDelegateResponder.responders.length > 0">
             </div>

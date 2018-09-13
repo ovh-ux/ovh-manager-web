@@ -74,11 +74,11 @@
 
                                             <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
                                                     data-ng-if="!hosting.isCloudWeb"
-                                                    data-translate="hosting_dashboard_service_change_offer"
                                                     data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')"
                                                     data-track-on="click"
                                                     data-track-name="web::hostname::general-informations::change-offer"
                                                     data-track-click="action">
+                                                    {{ 'hosting_dashboard_service_change_offer' | translate }}
                                             </button>
                                         </div>
                                     </div>
@@ -117,12 +117,12 @@
                                                       data-ng-bind="hosting.serviceName"></span>
                                             </div>
                                             <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
-                                                    data-translate="hosting_dashboard_service_main_domain_change"
                                                     data-ng-click="setAction('change-main-domain/hosting-change-main-domain', hosting)"
                                                     data-ng-if="['KIMSUFI_2015','__60_FREE','DEMO_1_G','START_1_M','START_10_M','_ASPFREE'].indexOf(hosting.offer) === -1"
                                                     data-track-on="click"
                                                     data-track-name="web::hostname::general-informations::change-main-domain"
                                                     data-track-click="action">
+                                                    {{ 'hosting_dashboard_service_main_domain_change' | translate }}
                                             </button>
                                         </div>
                                     </div>

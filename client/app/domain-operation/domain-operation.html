@@ -138,7 +138,7 @@
              data-nb-pages="nbPages"
              data-transform-item="ctrlOperations.transformItem(item)"
              data-on-transform-item-done="ctrlOperations.onTransformItemDone()"
-             data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPage, t1: nbPages} }}"
+             data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPage, last: nbPages} }}"
              data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
              data-on-page-change="ctrlOperations.loading.init = true"
              data-ng-show="!ctrlOperations.loading.init && ctrlOperations.operations.length > 0">

@@ -29,6 +29,8 @@ module.exports = function(grunt) {
                     text: match[4].replace(/&#13;\n/g, " ").replace(/&#160;/g, " ")
                 };
 
+                // Generate json files with {0} replaced with {{t0}}, {1} with {{t1}} etc
+                // This is done to make the translations compatible with angular-translate
                 if(/\/translations\/Messages_\w{2}_\w{2,4}.xml$/.test(filePath)) {
                     elem.text = elem.text.replace(/\{(\s?\d\s?)\}/g, "{{t$1}}");
                 }

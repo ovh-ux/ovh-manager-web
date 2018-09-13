@@ -100,7 +100,7 @@
              data-items-per-page="itemsPerPage"
              data-transform-item="ctrlHostingIndyTab.transformItem(item)"
              data-on-transform-item-done="ctrlHostingIndyTab.onTransformItemDone(items)"
-             data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPage, t1: nbPages } }}"
+             data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPage, last: nbPages } }}"
              data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
              data-ng-show="!ctrlHostingIndyTab.loading && ctrlHostingIndyTab.indys.length > 0">
         </div>

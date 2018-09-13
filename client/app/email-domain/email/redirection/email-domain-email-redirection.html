@@ -48,10 +48,10 @@
                     data-ng-if="ctrlEmailDomainEmailRedirection.redirections.length < (ctrlEmailDomainEmail.quotas.redirection + ctrlEmailDomainEmail.quotas.alias)">
             </button>
             <button class="btn btn-block btn-default" type="button"
-                    data-translate="email_tab_button_emails_export_CSV"
                     data-export-csv="ctrlEmailDomainEmailRedirection.getDatasToExport()"
                     data-export-csv-separator=";"
                     data-ng-disabled="ctrlEmailDomainEmailRedirection.loading.exportCSV || !ctrlEmailDomainEmailRedirection.redirections.length">
+                    {{ 'email_tab_button_emails_export_CSV' | translate }}
             </button>
         </div>
         <div data-guides

@@ -96,7 +96,7 @@
                      data-items-per-page="itemsPerPage"
                      data-transform-item="ctrlEmailDomainEmailAcl.transformItem(item)"
                      data-on-transform-item-done="ctrlEmailDomainEmailAcl.onTransformItemDone()"
-                     data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPageAcls, t1: nbPages } }}"
+                     data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPageAcls, last: nbPages } }}"
                      data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
                      data-ng-show="!ctrlEmailDomainEmailAcl.loading.acls && ctrlEmailDomainEmailAcl.aclsDetails.length > 0">
                 </div>

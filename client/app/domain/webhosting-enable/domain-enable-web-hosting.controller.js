@@ -182,7 +182,7 @@ angular.module('App').controller(
     }
 
     getResumePrice(price) {
-      return price.value === 0 ? this.$translate.instant('price_free') : this.$translate.instant('price_ht_label', { t0: price.text });
+      return price.value === 0 ? this.$translate.instant('price_free') : this.$translate.instant('price_ht_label', { price: price.text });
     }
 
     getSelectedOfferOrderInfos() {

@@ -69,11 +69,11 @@
                     <li data-ng-if="urlDomainOrder">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                         <button class="btn btn-link" type="button"
-                                data-translate="hosting_dashboard_add_domain"
                                 data-ng-click="setAction('multisite/order/hosting-multisite-order', {domains: domains})"
                                 data-track-on="click"
                                 data-track-name="web::hosting::add-domain"
                                 data-track-click="action">
+                                {{ 'hosting_dashboard_add_domain' | translate }}
                         </button>
                     </li>
                 </ul>

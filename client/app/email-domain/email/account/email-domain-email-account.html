@@ -146,7 +146,7 @@
                         data-transform-item="ctrlEmailDomainEmail.transformItem(item)"
                         data-on-transform-item-done="ctrlEmailDomainEmail.onTransformItemDone()"
                         data-on-page-change="ctrlEmailDomainEmail.loading.pager = true"
-                        data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPageEmails, t1: nbPages } }}"
+                        data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPageEmails, last: nbPages } }}"
                         data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
                         data-ng-show="!ctrlEmailDomainEmail.loading.accounts && ctrlEmailDomainEmail.emailsDetails.length > 0"></div>
                 </div>

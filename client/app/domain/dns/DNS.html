@@ -116,12 +116,12 @@
         <div class="col-md-3 mt-5 mt-lg-0">
             <div class="mb-5">
                 <button class="btn btn-block btn-default" type="button"
-                        data-translate="domain_configuration_dnsanycast_title_button"
                         data-ng-click="setAction('anycast/domain-dns-anycast')"
                         data-ng-if="ctrlDomainDns.domain.hasDnsAnycast === false && ctrlDomainDns.allowModification && !ctrlDomainDns.editMode"
                         data-track-on="click"
                         data-track-name="web::domain::server-dns::activation-dns-anycast"
                         data-track-click="action">
+                        {{ 'domain_configuration_dnsanycast_title_button' | translate }}
                 </button>
                 <button class="btn btn-block btn-default" type="button"
                         data-translate="domain_configuration_dns_config"

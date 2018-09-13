@@ -92,12 +92,12 @@
                                                 </div>
                                             </div>
                                             <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
-                                                    data-translate="domain_configuration_dnsanycast_title_button"
                                                     data-ng-click="setAction('anycast/domain-dns-anycast')"
                                                     data-ng-if="ctrlTabGeneralInformations.domain.hasDnsAnycast === false"
                                                     data-track-on="click"
                                                     data-track-name="web::domain::general-informations::activation-dns-anycast"
                                                     data-track-click="action">
+                                                    {{ 'domain_configuration_dnsanycast_title_button' | translate }}
                                             </button>
                                         </div>
                                     </div>
@@ -132,12 +132,12 @@
                                                 </div>
                                             </div>
                                             <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
-                                                    data-translate="domain_configuration_action_enable"
                                                     data-ng-if="ctrlDomain.canOrderHosting && ctrlDomain.isAdmin && !ctrlTabGeneralInformations.hasStart10mOffer"
                                                     data-ng-click="ctrlTabGeneralInformations.showWebHostingOrderWithStartOffer()"
                                                     data-track-on="click"
                                                     data-track-name="web::domain::general-informations::activation-start10m"
                                                     data-track-click="action">
+                                                    {{ 'domain_configuration_dnsanycast_title_button' | translate }}
                                             </button>
                                         </div>
                                     </div>

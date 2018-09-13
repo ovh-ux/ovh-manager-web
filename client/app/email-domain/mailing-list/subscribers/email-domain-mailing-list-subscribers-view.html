@@ -126,7 +126,7 @@
                      data-transform-item="ctrlSubscribers.transformItemSubscriber(item)"
                      data-on-transform-item-done="ctrlSubscribers.onTransformItemSubscribersDone(items)"
                      data-on-page-change="ctrlSubscribers.loading.pager = true"
-                     data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPageSubscribers, t1: nbPages } }}"
+                     data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPageSubscribers, last: nbPages } }}"
                      data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
                      data-ng-show="!ctrlSubscribers.loading.subscribers && ctrlSubscribers.subscribers.details.length > 0">
                 </div>

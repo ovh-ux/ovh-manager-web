@@ -95,7 +95,7 @@
                  data-items-per-page="itemsPerPage"
                  data-transform-item="ctrlDomainDynHost.transformItem(item)"
                  data-on-transform-item-done="ctrlDomainDynHost.onTransformItemDone(items)"
-                 data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPageDynHosts, t1: nbPages } }}"
+                 data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPageDynHosts, last: nbPages } }}"
                  data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
                  data-on-page-change="ctrlDomainDynHost.loading.dynHosts = true"
                  data-ng-show="!ctrlDomainDynHost.loading.dynHosts && ctrlDomainDynHost.dynHostsDetails.length > 0">

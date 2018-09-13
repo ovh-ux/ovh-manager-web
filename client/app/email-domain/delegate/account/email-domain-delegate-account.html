@@ -133,7 +133,7 @@
                  data-items-per-page="itemsPerPage"
                  data-transform-item="ctrlEmailDelegate.transformItem(item)"
                  data-on-transform-item-done="ctrlEmailDelegate.onTransformItemDone()"
-                 data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPageEmails, t1: nbPages } }}"
+                 data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPageEmails, last: nbPages } }}"
                  data-item-per-page-placeholder="{{ 'pagination_display'| translate }}"
                  data-ng-show="!ctrlEmailDelegate.loading.accounts && ctrlEmailDelegate.emailsDetails.length > 0">
             </div>

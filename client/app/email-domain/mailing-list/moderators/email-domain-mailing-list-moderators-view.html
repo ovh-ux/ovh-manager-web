@@ -127,7 +127,7 @@
                      data-transform-item="ctrlModerators.transformItemModerator(item)"
                      data-on-transform-item-done="ctrlModerators.onTransformItemModeratorDone(items)"
                      data-on-page-change="ctrlModerators.loading.pager = true"
-                     data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPageModerators, t1: nbPages } }}"
+                     data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPageModerators, last: nbPages } }}"
                      data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
                      data-ng-show="!ctrlModerators.loading.moderators && ctrlModerators.moderators.details.length > 0">
                 </div>

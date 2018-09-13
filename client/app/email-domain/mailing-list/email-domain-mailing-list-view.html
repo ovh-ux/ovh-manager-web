@@ -144,7 +144,7 @@
                      data-transform-item="ctrlMailingLists.transformItem(item)"
                      data-on-transform-item-done="ctrlMailingLists.onTransformItemDone()"
                      data-on-page-change="ctrlMailingLists.loading.pager = true"
-                     data-page-placeholder="{{ 'pagination_page' | translate: { t0: currentPageMailingLists, t1: nbPages } }}"
+                     data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPageMailingLists, last: nbPages } }}"
                      data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
                      data-ng-show="!ctrlMailingLists.loading.mailingLists && ctrlMailingLists.mailingListsDetails.length > 0">
                 </div>
