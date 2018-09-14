@@ -205,7 +205,9 @@ angular.module('App').controller(
     getAssociatedHosting(serviceName) {
       this.loading.associatedHosting = true;
       this.hostingAssociated = [];
-      return this.HostingDomain.getAttachedDomains(serviceName)
+      return this.HostingDomain.getAttachedDomains(serviceName, {
+        returnErrorKey: '',
+      })
         .then((response) => {
           if (_.isArray(response) && !_.isEmpty(response)) {
             this.hasHostingAssociate = true;
@@ -218,11 +220,15 @@ angular.module('App').controller(
             }));
           }
         })
-        .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('domain_configuration_web_hosting_fail'),
-          err,
-          this.$scope.alerts.page,
-        ))
+        .catch((err) => {
+          if (err.status !== 404) {
+            this.Alerter.alertFromSWS(
+              this.$scope.tr('domain_configuration_web_hosting_fail'),
+              _.get(err, 'data'),
+              this.$scope.alerts.page,
+            );
+          }
+        })
         .finally(() => {
           this.loading.associatedHosting = false;
         });

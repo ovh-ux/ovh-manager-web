@@ -396,10 +396,10 @@ angular.module('services').service(
      * Get attached domains
      * @param {string} serviceName
      */
-    getAttachedDomains(serviceName) {
-      return this.OvhHttp.get(`/hosting/web/${serviceName}/attachedDomain`, {
+    getAttachedDomains(serviceName, options) {
+      return this.OvhHttp.get(`/hosting/web/${serviceName}/attachedDomain`, _.assign({
         rootPath: 'apiv6',
-      });
+      }, options));
     }
 
     /**
