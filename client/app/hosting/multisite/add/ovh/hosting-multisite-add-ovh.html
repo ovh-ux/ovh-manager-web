@@ -170,7 +170,7 @@
             <div class="oui-select mb-0" data-ng-if="selectedOptions.ipLocation">
                 <select class="oui-select__input" name="domainAttacheModeOvhFormCountriesIp" aria-labelledby="domainAttacheModeOvhFormCountriesIp"
                         data-ng-model="selected.countryIp"
-                        data-ng-options="countryIp as countryIp.ip group by (('country_' + countryIp.country | translate) || countryIp.country) for countryIp in hostingProxy.countriesIp | orderBy:[('country_' + countryIp.country | translate)] track by countryIp.ip">
+                        data-ng-options="countryIp as countryIp.ip group by ((('country_' + countryIp.country | translate) == 'country_' + countryIp.country)? countryIp.country: ('country_' + countryIp.country | translate)) for countryIp in hostingProxy.countriesIp | orderBy:[('country_' + countryIp.country | translate)] track by countryIp.ip">
                     <option value=""
                             data-translate="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_countriesIp_none"></option>
                 </select>

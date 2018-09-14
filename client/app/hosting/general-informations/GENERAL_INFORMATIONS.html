@@ -104,7 +104,7 @@
                                         <strong class="d-block"
                                                 data-translate="hosting_dashboard_service_datacenter"></strong>
                                         <span
-                                            data-ng-bind="('hosting_dashboard_service_datacenter_'+ hostingProxy.datacenter | translate) || hostingProxy.datacenter"></span>
+                                            data-ng-bind="(('hosting_dashboard_service_datacenter_'+ hostingProxy.datacenter | translate) == 'hosting_dashboard_service_datacenter_'+ hostingProxy.datacenter)? hostingProxy.datacenter: ('hosting_dashboard_service_datacenter_'+ hostingProxy.datacenter | translate)"></span>
                                     </div>
                                 </li>
                                 <li class="oui-tile__item" data-ng-if="!hosting.isCloudWeb">

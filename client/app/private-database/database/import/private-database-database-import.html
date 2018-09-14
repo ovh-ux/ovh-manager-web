@@ -56,7 +56,7 @@
                                data-ng-model="importBddCtrl.model.uploadFileName">
                         <small class="help-block"
                                data-ng-repeat="(type, isError) in importBddCtrl.formFileUpload.uploadFileName.$error track by $index"
-                               data-ng-bind="('hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_' + type + '_error' | translate) || error"
+                               data-ng-bind="(('hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_' + type + '_error' | translate) == 'hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_' + type + '_error')? error: ('hosting_tab_DATABASES_table_popover_import_step1_upload_file_name_' + type + '_error' | translate)"
                                data-ng-if="importBddCtrl.formFileUpload.uploadFileName.$dirty && importBddCtrl.formFileUpload.uploadFileName.$error">
                         </small>
                     </div>
@@ -70,7 +70,7 @@
                                data-ng-model="importBddCtrl.file">
                         <small class="help-block"
                                data-ng-repeat="(type, isError) in importBddCtrl.formFileUpload.file.$error track by $index"
-                               data-ng-bind="('hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_' + type + '_error' | translate) || error"
+                               data-ng-bind="(('hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_' + type + '_error' | translate) == 'hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_' + type + '_error')? error: ('hosting_tab_DATABASES_table_popover_import_step1_upload_file_file_' + type + '_error' | translate)"
                                data-ng-if="importBddCtrl.formFileUpload.file.$dirty && importBddCtrl.formFileUpload.file.$invalid">
                         </small>
                         <div class="mt-3">

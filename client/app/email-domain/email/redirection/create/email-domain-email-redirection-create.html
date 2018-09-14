@@ -69,7 +69,7 @@
                         <div class="oui-select">
                             <select class="oui-select__input" id="select-copy-mode" name="redirectionKeepCopy" required
                                     data-ng-model="ctrl.model.redirectionKeepCopy"
-                                    data-ng-options="value as (('email_tab_modal_redirection_create_copy_' + value | translate) || value) for value in ctrl.copyChoices track by value">
+                                    data-ng-options="value as ((('email_tab_modal_redirection_create_copy_' + value | translate) == 'email_tab_modal_redirection_create_copy_' + value)? value: ('email_tab_modal_redirection_create_copy_' + value | translate)) for value in ctrl.copyChoices track by value">
                                 <option value="" disabled
                                         data-translate="email_tab_modal_redirection_create_copy_select"></option>
                             </select>

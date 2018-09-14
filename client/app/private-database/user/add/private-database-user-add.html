@@ -27,7 +27,7 @@
                                data-ng-model="addUserCtrl.model.user.value"
                                data-ng-pattern="addUserCtrl.model.user.pattern.regValidUser">
                         <small class="help-block mb-0"
-                               data-ng-bind="('privateDatabase_add_user_error_name_' + error | translate) || error"
+                               data-ng-bind="(('privateDatabase_add_user_error_name_' + error | translate) == 'privateDatabase_add_user_error_name_' + error)? error: ('privateDatabase_add_user_error_name_' + error | translate)"
                                data-ng-if="privateDatabaseAddUserForm.nameValue.$dirty && (privateDatabaseAddUserForm.nameValue) && value == true"
                                data-ng-repeat="(error, value) in privateDatabaseAddUserForm.nameValue.$error">
                         </small>
@@ -55,7 +55,7 @@
                                data-ng-model="addUserCtrl.model.password.value"
                                data-ng-pattern="addUserCtrl.model.password.condition.pattern">
                         <small class="help-block mb-0"
-                               data-ng-bind="('privateDatabase_add_user_error_password_' + error | translate) || error"
+                               data-ng-bind="(('privateDatabase_add_user_error_password_' + error | translate) == 'privateDatabase_add_user_error_password_' + error)? error: ('privateDatabase_add_user_error_password_' + error | translate)"
                                data-ng-if="privateDatabaseAddUserForm.passwordValue.$dirty && (privateDatabaseAddUserForm.passwordValue) && value == true"
                                data-ng-repeat="(error, value) in privateDatabaseAddUserForm.passwordValue.$error">
                         </small>
@@ -75,7 +75,7 @@
                                data-ng-model="addUserCtrl.model.password.confirm"
                                data-ng-pattern="addUserCtrl.model.password.value">
                         <small class="help-block mb-0"
-                               data-ng-bind="('privateDatabase_add_user_error_password_confirm_' + error | translate) || error"
+                               data-ng-bind="(('privateDatabase_add_user_error_password_confirm_' + error | translate) == 'privateDatabase_add_user_error_password_confirm_' + error)? error: ('privateDatabase_add_user_error_password_confirm_' + error | translate)"
                                data-ng-if="privateDatabaseAddUserForm.passwordConfirm.$dirty && (privateDatabaseAddUserForm.passwordConfirm) && value == true"
                                data-ng-repeat="(error, value) in privateDatabaseAddUserForm.passwordConfirm.$error">
                         </small>

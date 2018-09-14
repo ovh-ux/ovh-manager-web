@@ -4,13 +4,13 @@
 
 <td class="text-center">
     <span class="badge" data-ng-class="{'badge-success': element.ownLog === 'ACTIVE', 'badge-important': element.ownLog === 'NONE'}"
-          data-ng-bind="('hosting_tab_DOMAINS_table_cdn_state_' + (element.ownLog ? 'ACTIVE' : 'NONE') | translate) || element.ownLog">
+          data-ng-bind="(('hosting_tab_DOMAINS_table_cdn_state_' + (element.ownLog ? 'ACTIVE' : 'NONE') | translate) == 'hosting_tab_DOMAINS_table_cdn_state_' + (element.ownLog ? 'ACTIVE' : 'NONE'))? element.ownLog: ('hosting_tab_DOMAINS_table_cdn_state_' + (element.ownLog ? 'ACTIVE' : 'NONE') | translate)">
     </span>
 </td>
 
 <div data-paginated-table-cell class="text-center" data-ng-if="hosting.hasCdn">
     <span class="badge" data-ng-class="{'badge-success': element.cdn === 'ACTIVE', 'badge-important': element.cdn === 'NONE'}"
-          data-ng-bind="('hosting_tab_DOMAINS_table_cdn_state_' + element.cdn | translate) || element.cdn">
+          data-ng-bind="(('hosting_tab_DOMAINS_table_cdn_state_' + element.cdn | translate) == 'hosting_tab_DOMAINS_table_cdn_state_' + element.cdn)? element.cdn: ('hosting_tab_DOMAINS_table_cdn_state_' + element.cdn | translate)">
     </span>
 </div>
 

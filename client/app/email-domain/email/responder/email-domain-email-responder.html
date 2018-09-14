@@ -22,14 +22,13 @@
             </dl>
 
             <oui-message data-ng-if="$ctrl.responders.length >= ctrlEmailDomainEmail.quotas.responder"
-                         data-type="error"
-                         data-translate="email_tab_table_emails_responder_quota_excedeed"
-                         data-translate-values="{ t0: $ctrl.responders.length, t1: ctrlEmailDomainEmail.quotas.responder }">
+                         data-type="error">
+                         <span data-translate="email_tab_table_emails_responder_quota_excedeed" data-translate-values="{ t0: $ctrl.responders.length, t1: ctrlEmailDomainEmail.quotas.responder }"></span>
             </oui-message>
 
             <oui-message data-ng-if="!$ctrl.responders.length"
-                         data-type="info"
-                         data-translate="email_tab_table_responders_empty">
+                         data-type="info">
+                         <span data-translate="email_tab_table_responders_empty"></span>
             </oui-message>
 
             <oui-datagrid data-rows="$ctrl.responders" data-row-loader="$ctrl.transformItem($row)">

@@ -417,7 +417,7 @@ angular
 
     $translateProvider.useMissingTranslationHandler('translateMissingTranslationHandler');
     $translateProvider.useLoaderCache(true);
-    $translateProvider.useSanitizeValueStrategy('sanitizeParameters');
+    $translateProvider.useSanitizeValueStrategy('sceParameters');
 
     $translateProvider.preferredLanguage(defaultLanguage);
     $translateProvider.use(defaultLanguage);

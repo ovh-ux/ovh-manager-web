@@ -10,9 +10,13 @@
 
     <oui-datagrid data-rows-loader="ctrl.loadPaginated($config)">
         <oui-column data-title="'hosting_tab_TASKS_table_state' | translate" data-property="function">
-            <span data-ng-bind-html="('hosting_tab_TASKS_function_'+ $row.function | translate) ||
-                      ('hosting_tab_TASKS_function_'+ $row.function.replace('/','_') | translate) ||
-                      $row.function.replace('_',' ')">
+            <span data-ng-bind-html="(('hosting_tab_TASKS_function_'+ $row.function | translate) == 'hosting_tab_TASKS_function_'+ $row.function)?
+                  (
+                      (('hosting_tab_TASKS_function_'+ $row.function.replace('/','_') | translate) == 'hosting_tab_TASKS_function_'+ $row.function.replace('/','_'))?
+                      $row.function.replace('_',' '):
+                      ('hosting_tab_TASKS_function_'+ $row.function.replace('/','_') | translate)
+                  ):
+                  ('hosting_tab_TASKS_function_'+ $row.function | translate)">
             </span>
         </oui-column>
         <oui-column data-title="'hosting_tab_TASKS_table_start_date' | translate" data-property="status">

@@ -55,8 +55,7 @@
                             <select class="oui-select__input" id="startDbVersion" name="startDbVersion" required
                                     data-ng-change="sqlOrderCtrl.getDuration()"
                                     data-ng-model="sqlOrderCtrl.model.dbPack"
-                                    data-ng-options="version as ('privateDatabase_order_sql_domains_pack_db_' + version.replace('.', '') | translate) ||
-                                    version for version in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).dbPack track by version">
+                                    data-ng-options="version as ((('privateDatabase_order_sql_domains_pack_db_' + version.replace('.', '') | translate) == 'privateDatabase_order_sql_domains_pack_db_' + version.replace('.', ''))? version: ('privateDatabase_order_sql_domains_pack_db_' + version.replace('.', '') | translate)) for version in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).dbPack track by version">
                                 <option value="" disabled
                                         data-translate="select_option"></option>
                             </select>
@@ -75,8 +74,7 @@
                             <select class="oui-select__input" id="orderVersion" name="orderVersion" required
                                     data-ng-change="sqlOrderCtrl.getDuration()"
                                     data-ng-model="sqlOrderCtrl.model.version"
-                                    data-ng-options="version as ('privateDatabase_dashboard_version_' + version.replace('.', '') | translate) ||
-                                    version for version in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).versions track by version">
+                                    data-ng-options="version as ((('privateDatabase_dashboard_version_' + version.replace('.', '') | translate) == 'privateDatabase_dashboard_version_' + version.replace('.', ''))? version: ('privateDatabase_dashboard_version_' + version.replace('.', '') | translate)) for version in sqlOrderCtrl.getData(sqlOrderCtrl.model.type).versions track by version">
                                 <option value="" disabled
                                         data-translate="select_option"></option>
                             </select>

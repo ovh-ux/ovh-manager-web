@@ -171,7 +171,7 @@
 
                 <dt data-translate="hosting_tab_DATABASES_configuration_create_step3_sgbd"></dt>
                 <dd>
-                    <span data-ng-bind="('hosting_tab_DATABASES_configuration_create_sgbd_' + model.selected.type | translate) || model.selected.type"></span>
+                    <span data-ng-bind="(('hosting_tab_DATABASES_configuration_create_sgbd_' + model.selected.type | translate) == 'hosting_tab_DATABASES_configuration_create_sgbd_' + model.selected.type)? model.selected.type: ('hosting_tab_DATABASES_configuration_create_sgbd_' + model.selected.type | translate)"></span>
                     <span data-ng-if="model.selected.version">&nbsp;v{{model.selected.version}}</span>
                 </dd>
 

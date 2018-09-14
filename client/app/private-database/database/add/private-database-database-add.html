@@ -29,7 +29,7 @@
                                data-ng-model="addBddCtrl.model.database.value"
                                data-ng-pattern="addBddCtrl.model.database.condition.reg">
                         <small class="help-block"
-                               data-ng-bind="('privateDatabase_add_bdd_error_name_' + error | translate) || error"
+                               data-ng-bind="(('privateDatabase_add_bdd_error_name_' + error | translate) == 'privateDatabase_add_bdd_error_name_' + error)? error: ('privateDatabase_add_bdd_error_name_' + error | translate)"
                                data-ng-if="privateDatabaseAddBddForm.bddvalue.$dirty && privateDatabaseAddBddForm.bddvalue.$invalid"
                                data-ng-repeat="(error, value) in privateDatabaseAddBddForm.bddvalue.$error track by error">
                         </small>

@@ -296,7 +296,7 @@
                                     <td data-ng-bind="element.home"></td>
                                     <td>
                                         <span class="oui-status oui-status_error"
-                                              data-ng-bind="('hosting_tab_FTP_multiftp_table_state_' + element.state | translate) || element.state"
+                                              data-ng-bind="(('hosting_tab_FTP_multiftp_table_state_' + element.state | translate) == 'hosting_tab_FTP_multiftp_table_state_' + element.state)? element.state: ('hosting_tab_FTP_multiftp_table_state_' + element.state | translate)"
                                               data-ng-if="element.state === 'off'"></span>
                                         <a data-ng-href="ftp://{{element.ftp.user}}@{{element.ftp.url}}:{{element.ftp.port}}/" class="d-block word-break" target="_blank"
                                            data-ng-if="element.state === 'rw'">
@@ -306,7 +306,7 @@
                                     </td>
                                     <td>
                                         <span class="oui-status" data-ng-class="{'oui-status_success': element.sshState === 'sftponly', 'oui-status_error': element.sshState === 'none'}"
-                                              data-ng-bind="('hosting_tab_FTP_multiftp_table_ssh_state_' + element.sshState | translate) || element.sshState"
+                                              data-ng-bind="(('hosting_tab_FTP_multiftp_table_ssh_state_' + element.sshState | translate) == 'hosting_tab_FTP_multiftp_table_ssh_state_' + element.sshState)? element.sshState: ('hosting_tab_FTP_multiftp_table_ssh_state_' + element.sshState | translate)"
                                               data-ng-if="element.sshState !== 'active'"></span>
                                         <a data-ng-href="ssh://{{element.ssh.user}}@{{element.ssh.url}}:{{element.ssh.port}}/" class="d-block word-break" target="_blank"
                                            data-ng-if="element.sshState === 'active'">

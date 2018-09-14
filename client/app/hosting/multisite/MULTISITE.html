@@ -83,7 +83,7 @@
                                 <td data-ng-if="hosting.isCloudWeb" data-ng-bind="domain.runtime.name"></td>
                                 <td class="text-center">
                                     <span class="oui-status"
-                                          data-ng-bind="('hosting_tab_DOMAINS_table_cdn_state_' + (domain.ownLog ? 'ACTIVE' : 'NONE') | translate) || domain.ownLog"
+                                          data-ng-bind="(('hosting_tab_DOMAINS_table_cdn_state_' + (domain.ownLog ? 'ACTIVE' : 'NONE') | translate) == 'hosting_tab_DOMAINS_table_cdn_state_' + (domain.ownLog ? 'ACTIVE' : 'NONE'))? domain.ownLog: ('hosting_tab_DOMAINS_table_cdn_state_' + (domain.ownLog ? 'ACTIVE' : 'NONE') | translate)"
                                           data-ng-class="{
                                             'oui-status_success': domain.ownLog,
                                             'oui-status_error': domain.ownLog === 'NONE' || !domain.ownLog
@@ -92,7 +92,7 @@
                                 </td>
                                 <td class="text-center">
                                     <span class="oui-status"
-                                          data-ng-bind="('hosting_tab_DOMAINS_table_firewall_state_' + domain.firewall | translate) || domain.firewall"
+                                          data-ng-bind="(('hosting_tab_DOMAINS_table_firewall_state_' + domain.firewall | translate) == 'hosting_tab_DOMAINS_table_firewall_state_' + domain.firewall)? domain.firewall: ('hosting_tab_DOMAINS_table_firewall_state_' + domain.firewall | translate)"
                                           data-ng-class="{
                                             'oui-status_success': domain.firewall === 'ACTIVE',
                                             'oui-status_error': domain.firewall === 'NONE'
@@ -101,7 +101,7 @@
                                 </td>
                                 <td class="text-center" data-ng-if="hosting.hasCdn">
                                     <span class="oui-status"
-                                          data-ng-bind="('hosting_tab_DOMAINS_table_cdn_state_' + domain.cdn | translate) || domain.cdn"
+                                          data-ng-bind="(('hosting_tab_DOMAINS_table_cdn_state_' + domain.cdn | translate) == 'hosting_tab_DOMAINS_table_cdn_state_' + domain.cdn)? domain.cdn: ('hosting_tab_DOMAINS_table_cdn_state_' + domain.cdn | translate)"
                                           data-ng-class="{
                                             'oui-status_success': domain.cdn === 'ACTIVE',
                                             'oui-status_error': domain.cdn === 'NONE'
@@ -110,7 +110,7 @@
                                 </td>
                                 <td class="text-center">
                                     <span class="oui-status"
-                                          data-ng-bind="('hosting_tab_DOMAINS_table_ssl_state_' + domain.ssl | translate) || domain.ssl"
+                                          data-ng-bind="(('hosting_tab_DOMAINS_table_ssl_state_' + domain.ssl | translate) == 'hosting_tab_DOMAINS_table_ssl_state_' + domain.ssl)? domain.ssl: ('hosting_tab_DOMAINS_table_ssl_state_' + domain.ssl | translate)"
                                           data-ng-class="{'oui-status_success': domain.ssl === 2, 'oui-status_error': domain.ssl === 0, 'oui-status_warning': domain.ssl === 1}"
                                           data-uib-tooltip="{{ domain.ssl === 1 ? ('hosting_tab_DOMAINS_table_ssl_state_1_tooltip' | translate) : '' }}"
                                           data-tooltip-append-to-body="true">

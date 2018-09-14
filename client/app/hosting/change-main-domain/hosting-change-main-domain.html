@@ -99,7 +99,7 @@
                                 <div class="oui-select">
                                     <select class="oui-select__input" id="mxplan" name="mxplan"
                                             data-ng-model="model.mxplan"
-                                            data-ng-options="(('hosting_change_main_domain_alt_mx_' + mxplan | translate) || mxplan) for mxplan in mxplanEnum track by mxplan">
+                                            data-ng-options="((('hosting_change_main_domain_alt_mx_' + mxplan | translate) == 'hosting_change_main_domain_alt_mx_' + mxplan)? mxplan: ('hosting_change_main_domain_alt_mx_' + mxplan | translate)) for mxplan in mxplanEnum track by mxplan">
                                         <option value="" disabled
                                                 data-translate="select_placeholder"></option>
                                     </select>

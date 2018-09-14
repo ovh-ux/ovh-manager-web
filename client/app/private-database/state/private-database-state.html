@@ -36,9 +36,8 @@
                                         <div class="oui-tile__definition">
                                             <div class="d-flex w-100">
                                                 <div>
-                                                    <strong class="d-block"
-                                                            data-translate="privateDatabase_dashboard_version"></strong>
-                                                    <span data-ng-bind=":: ('privateDatabase_dashboard_version_' + stateCtrl.database.version | translate) || stateCtrl.database.version"></span>
+                                                    <strong class="d-block" data-translate="privateDatabase_dashboard_version"></strong>
+                                                    <span data-ng-bind=":: (('privateDatabase_dashboard_version_' + stateCtrl.database.version | translate) == 'privateDatabase_dashboard_version_' + stateCtrl.database.version)? stateCtrl.database.version: ('privateDatabase_dashboard_version_' + stateCtrl.database.version | translate)"></span>
                                                 </div>
                                                 <button class="btn btn-default my-auto ml-auto text-wrap" type="button" title="{{:: 'privateDatabase_change_version' | translate }}"
                                                         data-translate="privateDatabase_change_version"
@@ -89,7 +88,7 @@
                                         <div class="oui-tile__definition">
                                             <strong class="d-block"
                                                     data-translate="privateDatabase_dashboard_datacenter"></strong>
-                                            <span data-ng-bind=":: ('privateDatabase_dashboard_datacenter_' + stateCtrl.database.datacenter | translate) || stateCtrl.database.datacenter"></span>
+                                            <span data-ng-bind=":: (('privateDatabase_dashboard_datacenter_' + stateCtrl.database.datacenter | translate) == 'privateDatabase_dashboard_datacenter_' + stateCtrl.database.datacenter)? stateCtrl.database.datacenter: ('privateDatabase_dashboard_datacenter_' + stateCtrl.database.datacenter | translate)"></span>
                                         </div>
                                     </li>
                                     <li class="oui-tile__item">

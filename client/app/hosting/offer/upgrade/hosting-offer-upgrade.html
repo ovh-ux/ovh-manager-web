@@ -26,7 +26,7 @@
                         <div class="oui-select">
                             <select class="oui-select__input" id="hostingOffer" name="capacity"
                                     data-ng-model="ctrl.model.capacity"
-                                    data-ng-options="(('hosting_dashboard_service_offer_' + availableOffer | translate) || availableOffer) for availableOffer in ctrl.availableOffers | orderBy:ctrl.orderByOffer()">
+                                    data-ng-options="((('hosting_dashboard_service_offer_' + availableOffer | translate) == 'hosting_dashboard_service_offer_' + availableOffer)? availableOffer: ('hosting_dashboard_service_offer_' + availableOffer | translate)) for availableOffer in ctrl.availableOffers | orderBy:ctrl.orderByOffer()">
                                 <option value="" disabled
                                         data-translate="select_placeholder"></option>
                             </select>

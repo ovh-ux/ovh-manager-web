@@ -45,7 +45,7 @@
                         <div class="oui-select oui-select_inline mb-0">
                             <select class="oui-select__input" id="cronlanguage" required
                                     data-ng-model="model.language"
-                                    data-ng-options="language as ('hosting_tab_CRON_table_language_'+ trEnum(language) | translate) || language for language in languageEnum track by language" >
+                                    data-ng-options="language as ((('hosting_tab_CRON_table_language_'+ trEnum(language) | translate) == 'hosting_tab_CRON_table_language_'+ trEnum(language))? language: ('hosting_tab_CRON_table_language_'+ trEnum(language) | translate)) for language in languageEnum track by language" >
                                 <option value="" disabled
                                         data-translate="select_placeholder"></option>
                             </select>
@@ -139,11 +139,11 @@
                     <dt data-translate="hosting_tab_CRON_label_command"></dt>
                     <dd data-ng-bind="model.command"></dd>
                     <dt data-translate="hosting_tab_CRON_label_language"></dt>
-                    <dd data-ng-bind="('hosting_tab_CRON_table_language_' + trEnum(model.language) | translate) || model.language"></dd>
+                    <dd data-ng-bind="(('hosting_tab_CRON_table_language_' + trEnum(model.language) | translate) == 'hosting_tab_CRON_table_language_' + trEnum(model.language))? model.language: ('hosting_tab_CRON_table_language_' + trEnum(model.language) | translate)"></dd>
                     <dt data-translate="hosting_tab_CRON_label_status"></dt>
-                    <dd data-ng-bind="('hosting_tab_CRON_table_status_' + model.status | translate) || model.status"></dd>
+                    <dd data-ng-bind="(('hosting_tab_CRON_table_status_' + model.status | translate) == 'hosting_tab_CRON_table_status_' + model.status)? model.status: ('hosting_tab_CRON_table_status_' + model.status | translate)"></dd>
                     <dt data-translate="hosting_tab_CRON_label_email"></dt>
-                    <dd data-ng-bind="('hosting_tab_CRON_email_' + getEmailResume() | translate) || getEmailResume()" class="word-break"></dd>
+                    <dd data-ng-bind="(('hosting_tab_CRON_email_' + getEmailResume() | translate) == 'hosting_tab_CRON_email_' + getEmailResume())? getEmailResume(): ('hosting_tab_CRON_email_' + getEmailResume() | translate)" class="word-break"></dd>
                     <dt data-translate="hosting_tab_CRON_label_description"
                         data-ng-if="model.description"></dt>
                     <dd data-ng-bind="model.description"
