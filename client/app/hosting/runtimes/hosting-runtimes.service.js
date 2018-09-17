@@ -60,7 +60,9 @@ angular.module('services').service(
      */
     getDefault(serviceName) {
       return this.list(serviceName)
-        .then(runtimeIds => this.$q.all(_(runtimeIds).map(runtimeId => this.get(serviceName, runtimeId)).value()))
+        .then(runtimeIds => this.$q.all(
+          _(runtimeIds).map(runtimeId => this.get(serviceName, runtimeId)).value(),
+        ))
         .then(runtimes => _(runtimes).filter(runtime => runtime.isDefault).first());
     }
 

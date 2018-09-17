@@ -1813,7 +1813,13 @@ module.exports = {
                 RU : "https://www.ovh.ie/order/domain/#/legacy/domain/hosting/choose?options=~(~(flow~'hosting_existing_service~serviceName~'{domain}))",
                 SN : "https://www.ovh.sn/order/domain/#/legacy/domain/hosting/choose?options=~(~(flow~'hosting_existing_service~serviceName~'{domain}))",
                 TN : "https://www.ovh.com/tn/order/domain/#/legacy/domain/hosting/choose?options=~(~(flow~'hosting_existing_service~serviceName~'{domain}))",
-                WE : "https://www.ovh.com/us/order/domain/#/legacy/domain/hosting/choose?options=~(~(flow~'hosting_existing_service~serviceName~'{domai}n))"
+                WE : "https://www.ovh.com/us/order/domain/#/legacy/domain/hosting/choose?options=~(~(flow~'hosting_existing_service~serviceName~'{domain}))"
+            },
+            localseo_order_options_service : {
+                FR : "https://www.ovh.com/fr/order/domain/#/legacy/domain/hosting/choose?options=~(flow~'hosting_existing_service~serviceName~'{serviceName})",
+            },
+            localseo_visibility_checker : {
+                FR : "https://www.ovh.com/fr/hebergement-web/referencement-local.xml",
             },
             FAQS : {
                 EXCHANGE: {

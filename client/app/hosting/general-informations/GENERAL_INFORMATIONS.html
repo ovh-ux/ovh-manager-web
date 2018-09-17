@@ -1,4 +1,4 @@
-<div class="container-fluid px-0" data-ng-controller="hostingGeneralInformationsCtrl as ctrl">
+<div class="container-fluid px-0" data-ng-controller="hostingGeneralInformationsCtrl as $ctrl">
 
     <oui-spinner data-ng-if="!hosting"></oui-spinner>
 
@@ -190,29 +190,29 @@
                                         <div class="d-flex w-100">
                                             <div>
                                                 <strong class="oui-tile__term d-block" data-i18n-static="hosting_dashboard_service_ssl"></strong>
-                                                <span data-ng-if="!ctrl.isRetrievingSSLCertificate" data-ng-bind="ctrl.selectSSLCertificateStatusText()"></span>
+                                                <span data-ng-if="!$ctrl.isRetrievingSSLCertificate" data-ng-bind="$ctrl.selectSSLCertificateStatusText()"></span>
                                             </div>
                                             <div class="ml-auto mb-auto"
-                                                 data-ng-if="!ctrl.isRetrievingSSLCertificate && (ctrl.canOrderSSLCertificate() || ctrl.canRegenerateSSLCertificate() || ctrl.canDeleteSSLCertificate())">
+                                                 data-ng-if="!$ctrl.isRetrievingSSLCertificate && ($ctrl.canOrderSSLCertificate() || $ctrl.canRegenerateSSLCertificate() || $ctrl.canDeleteSSLCertificate())">
                                                 <oui-action-menu data-compact data-align="end">
-                                                    <oui-action-menu-item data-ng-if="ctrl.canOrderSSLCertificate()"
+                                                    <oui-action-menu-item data-ng-if="$ctrl.canOrderSSLCertificate()"
                                                         data-text="{{:: tr('hosting_dashboard_service_order_ssl') }}"
                                                         data-on-click="setAction('ssl/order/hosting-order-ssl')"></oui-action-menu-item>
-                                                    <oui-action-menu-item data-ng-if="ctrl.canRegenerateSSLCertificate()"
+                                                    <oui-action-menu-item data-ng-if="$ctrl.canRegenerateSSLCertificate()"
                                                         data-text="{{:: tr('hosting_ssl_regenerate_title_button') }}"
                                                         data-on-click="setAction('ssl/regenerate/hosting-ssl-regenerate')"></oui-action-menu-item>
-                                                    <oui-action-menu-item data-ng-if="ctrl.canDeleteSSLCertificate()"
+                                                    <oui-action-menu-item data-ng-if="$ctrl.canDeleteSSLCertificate()"
                                                         data-text="{{:: tr('hosting_dashboard_service_order_ssl_delete') }}"
-                                                        data-on-click="setAction('ssl/delete/hosting-ssl-delete', ctrl.sslCertificate)"></oui-action-menu-item>
+                                                        data-on-click="setAction('ssl/delete/hosting-ssl-delete', $ctrl.sslCertificate)"></oui-action-menu-item>
                                                 </oui-action-menu>
                                             </div>
                                             <button class="btn btn-default ml-auto mb-auto text-wrap"
                                                     type="button"
                                                     data-i18n-static="hosting_dashboard_ssl_report_button"
                                                     data-ng-click="setAction('ssl/details/hosting-ssl-details', hosting)"
-                                                    data-ng-if="ctrl.hasSSLCertificateCreationReport()"></button>
+                                                    data-ng-if="$ctrl.hasSSLCertificateCreationReport()"></button>
                                         </div>
-                                        <div class="text-center" data-ng-if="ctrl.isRetrievingSSLCertificate">
+                                        <div class="text-center" data-ng-if="$ctrl.isRetrievingSSLCertificate">
                                             <oui-spinner></oui-spinner>
                                         </div>
                                     </div>
@@ -299,6 +299,55 @@
                                         </div>
                                     </div>
                                 </li>
+                                <li class="oui-tile__item">
+                                    <div class="oui-tile__definition">
+                                        <div class="d-flex w-100">
+                                            <div>
+                                                <strong class="d-block"
+                                                        data-i18n-static="hosting_dashboard_local_seo"></strong>
+                                                <span data-ng-if="!$ctrl.loading.localSeo"
+                                                      data-ng-bind-html="$ctrl.localSeo.quantity > 0 ?
+                                                                           $ctrl.localSeo.isActive ?
+                                                                             tr('hosting_dashboard_local_seo_quantity', [$ctrl.localSeo.quantity])
+                                                                             : tr('hosting_dashboard_local_seo_activating')
+                                                                           : tr('hosting_dashboard_local_seo_inactive')"></span>
+                                                <oui-spinner data-ng-if="$ctrl.loading.localSeo" data-size="s"></oui-spinner>
+                                            </div>
+                                            <div class="mb-auto ml-auto" data-ng-if="!$ctrl.loading.localSeo">
+                                                <oui-button data-ng-if="$ctrl.localSeo.isActive && $ctrl.localSeo.quantity > 0"
+                                                            data-on-click="ctrlHostingTabs.setSelectedTab('LOCAL_SEO')">
+                                                    <span data-i18n-static="common_manage"></span>
+                                                </oui-button>
+                                                <button class="oui-button oui-button_dropdown mb-0"
+                                                        type="button"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false"
+                                                        data-toggle="dropdown"
+                                                        data-ng-if="$ctrl.localSeo.quantity === 0">
+                                                    <span data-i18n-static="common_actions"></span>
+                                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-right m-0 p-0"
+                                                    data-ng-if="$ctrl.localSeo.quantity === 0">
+                                                    <li>
+                                                        <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
+                                                        <button class="btn btn-link" type="button" name="orderLocalSeo"
+                                                                data-i18n-static="hosting_dashboard_local_seo_order"
+                                                                data-ng-click="$ctrl.HostingLocalSeo.goToLocalSeoOrder(hosting.serviceName)">
+                                                        </button>
+                                                    </li>
+                                                    <li>
+                                                        <i class="ovh-font ovh-font-search" aria-hidden="true"></i>
+                                                        <button class="btn btn-link" type="button" name="checkVisibility"
+                                                                data-i18n-static="hosting_dashboard_local_seo_visibility_check"
+                                                                data-ng-click="$ctrl.HostingLocalSeo.goToVisibilityChecker()">
+                                                        </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                                 <li class="oui-tile__item" data-ng-if="!hosting.isCloudWeb">
                                     <div class="oui-tile__definition">
                                         <strong class="oui-tile__term d-block"
@@ -312,12 +361,12 @@
                                             <div>
                                                 <strong class="oui-tile__term d-block"
                                                         data-i18n-static="hosting_dashboard_service_default_runtime"></strong>
-                                                <span data-ng-bind="ctrl.defaultRuntime.name"
-                                                      data-ng-if="ctrl.defaultRuntime"></span>
+                                                <span data-ng-bind="$ctrl.defaultRuntime.name"
+                                                      data-ng-if="$ctrl.defaultRuntime"></span>
                                                 <span class="oui-status oui-status_error"
                                                       data-i18n-static="common_not_available"
-                                                      data-ng-if="!ctrl.loading.defaultRuntime && !ctrl.defaultRuntime"></span>
-                                                <div class="d-inline ml-2" data-ng-if="ctrl.loading.defaultRuntime">
+                                                      data-ng-if="!$ctrl.loading.defaultRuntime && !$ctrl.defaultRuntime"></span>
+                                                <div class="d-inline ml-2" data-ng-if="$ctrl.loading.defaultRuntime">
                                                     <oui-spinner data-size="s"></oui-spinner>
                                                 </div>
                                             </div>
