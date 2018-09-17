@@ -1,7 +1,17 @@
 angular.module('App').controller(
   'HostingTabLocalSeoCtrl',
   class HostingTabLocalSeoCtrl {
-    constructor($q, $scope, $stateParams, $translate, $window, Alerter, Hosting, HostingLocalSeo, User) {
+    constructor(
+      $q,
+      $scope,
+      $stateParams,
+      $translate,
+      $window,
+      Alerter,
+      Hosting,
+      HostingLocalSeo,
+      User,
+    ) {
       this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
