@@ -1,3 +1,19 @@
+<a name="13.4.23"></a>
+## [13.4.23](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.22...v13.4.23) (2018-09-12)
+
+
+### Bug Fixes
+
+* **cloudweb:** display default runtime in general infos ([56a16b6](https://github.com/ovh-ux/ovh-manager-web/commit/56a16b6))
+* **create-auto-response:** start date fix ([20b8547](https://github.com/ovh-ux/ovh-manager-web/commit/20b8547))
+* **emails:** email details list ([413cb04](https://github.com/ovh-ux/ovh-manager-web/commit/413cb04))
+* **ftp link:** change ftp server link ([f0a1ec5](https://github.com/ovh-ux/ovh-manager-web/commit/f0a1ec5))
+* **ftp link:** change ftp server link ([06cdc33](https://github.com/ovh-ux/ovh-manager-web/commit/06cdc33))
+* **hosting:** action button does not work in mobile ([0efe572](https://github.com/ovh-ux/ovh-manager-web/commit/0efe572))
+* **hosting:** call ovhConfigRefresh when last call was at least 12h ago ([bf86490](https://github.com/ovh-ux/ovh-manager-web/commit/bf86490))
+
+
+
 <a name="13.4.22"></a>
 ## [13.4.22](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.21...v13.4.22) (2018-08-22)
 

@@ -200,15 +200,13 @@
                                         </span>
                                     </td>
                                     <td class="text-right">
-                                        <button class="btn btn-icon" type="button"
-                                                data-ng-if="!(record.fieldType === 'NS' && !record.subDomain) && ctrlDomainTabZoneDns.allowModification"
-                                                data-linkedpopover="domain/zone/domain-zone-dns.popover.html"
-                                                data-linkedpopover-placement="left"
-                                                data-linkedpopover-remote="true"
-                                                data-linkedpopover-single="true"
-                                                data-linkedpopover-title="{{ 'common_actions' | translate }}">
-                                            <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                                        </button>
+                                        <oui-action-menu data-compact data-align="end"
+                                                         data-ng-if="!(record.fieldType === 'NS' && !record.subDomain) && ctrlDomainTabZoneDns.allowModification">
+                                            <oui-action-menu-item data-text="{{:: 'table_modify_entry' | translate }}"
+                                                                  data-on-click="setAction('zone/record/edit/domain-zone-record-edit', { domain: ctrlDomainTabZoneDns.domain, fieldTypes: ctrlDomainTabZoneDns.zone.fieldsTypes, edit: record })"></oui-action-menu-item>
+                                            <oui-action-menu-item data-text="{{:: 'table_delete_entry' | translate }}"
+                                                                  data-on-click="setAction('zone/record/delete/domain-zone-record-delete', record)"></oui-action-menu-item>
+                                        </oui-action-menu>
                                     </td>
                                 </tr>
                             </tbody>

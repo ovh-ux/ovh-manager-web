@@ -8,11 +8,9 @@
 
         <div data-ng-if="!ctrlDomainDynHostLogin.loading.init && !ctrlDomainDynHostLogin.hasResult">
             <div>
-                <button class="oui-button oui-button_link oui-button_icon-left" type="button"
-                        data-ng-click="ctrlDomainDynHost.resetInitialView()">
-                    <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
-                    <span data-translate="common_back"></span>
-                </button>
+                <oui-back-button data-on-click="ctrlDomainDynHost.resetInitialView()">
+                        <span data-translate="common_back"></span>
+                </oui-back-button>
             </div>
             <div class="alert alert-info" role="alert"
                  data-translate="domain_tab_DYNHOSTLOGIN_table_empty">
@@ -22,11 +20,9 @@
         <div data-ng-if="ctrlDomainDynHostLogin.hasResult">
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <button class="oui-button oui-button_link oui-button_icon-left mb-0" type="button"
-                            data-ng-click="ctrlDomainDynHost.resetInitialView()">
-                        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
-                        <span data-translate="common_back"></span>
-                    </button>
+                    <oui-back-button data-on-click="ctrlDomainDynHost.resetInitialView()">
+                            <span data-translate="common_back"></span>
+                    </oui-back-button>
                 </div>
                 <div class="col-md-6 mb-3">
                     <form class="form-inline d-md-flex justify-content-md-end" name="searchDynhostLoginForm">

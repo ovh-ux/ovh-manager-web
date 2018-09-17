@@ -110,12 +110,12 @@
                                     <td class="text-nowrap" data-ng-bind="cron.frequency"></td>
                                     <td data-ng-bind="'hosting_tab_CRON_table_language_' + trEnum(cron.language) | translate"></td>
                                     <td>
-                                        <span class="label"
+                                        <span class="oui-status"
                                               data-ng-bind="'hosting_tab_CRON_table_status_' + trEnum(cron.status) | translate"
                                               data-ng-class="{
-                                                  'label-success': cron.status === 'enabled',
-                                                  'label-danger': cron.status === 'disabled',
-                                                  'label-warning': cron.status === 'suspended'
+                                                  'oui-status_success': cron.status === 'enabled',
+                                                  'oui-status_error': cron.status === 'disabled',
+                                                  'oui-status_warning': cron.status === 'suspended'
                                               }"></span>
                                     </td>
                                     <td class="text-nowrap" data-ng-bind="cron.email"></td>

@@ -106,7 +106,13 @@ angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atIntern
       state: 'app.domain.operation',
     }], domainItem);
 
-    _.forEach(products.domains, (domain) => {
+    const allDoms = _.chain(products.domains).filter({ hasSubComponent: true }).sortBy('name').value();
+    const domains = _.union(
+      allDoms,
+      _.chain(products.domains).without(allDoms).sortBy('name').value(),
+    );
+
+    _.forEach(domains, (domain) => {
       if (domain.hasSubComponent) {
         const allDomItem = SidebarMenu.addMenuItem({
           title: domain.displayName,
@@ -119,7 +125,7 @@ angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atIntern
           },
         }, domainItem);
 
-        _.forEach(domain.subProducts, (subDomain) => {
+        _.forEach(_.sortBy(domain.subProducts, 'name'), (subDomain) => {
           SidebarMenu.addMenuItem({
             title: subDomain.displayName,
             category: 'domain',
