@@ -1,3 +1,16 @@
+<a name="13.4.24"></a>
+## [13.4.24](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.23...v13.4.24) (2018-09-18)
+
+
+### Bug Fixes
+
+* **domain:** No alert if hosting is not attached ([7e305e7](https://github.com/ovh-ux/ovh-manager-web/commit/7e305e7))
+* **email:** add missing guides links ([b420c18](https://github.com/ovh-ux/ovh-manager-web/commit/b420c18))
+* **email:** fix migration doc links for poland ([0bb02ed](https://github.com/ovh-ux/ovh-manager-web/commit/0bb02ed))
+* **menu:** sort domains by name ([0a3bd9b](https://github.com/ovh-ux/ovh-manager-web/commit/0a3bd9b))
+
+
+
 <a name="13.4.23"></a>
 ## [13.4.23](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.22...v13.4.23) (2018-09-12)
 
