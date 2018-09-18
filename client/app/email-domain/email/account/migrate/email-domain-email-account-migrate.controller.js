@@ -10,13 +10,13 @@ angular.module('App').controller(
      * @param translator
      * @param constants
      */
-    constructor($scope, $q, Alerter, Emails, translator, constants) {
+    constructor($scope, $q, Alerter, Emails, translator, User) {
       this.$scope = $scope;
       this.$q = $q;
       this.Alerter = Alerter;
       this.Emails = Emails;
       this.translator = translator;
-      this.urls = constants.urls;
+      this.User = User;
     }
 
     $onInit() {
@@ -47,9 +47,12 @@ angular.module('App').controller(
       this.$scope.alerts.migrate = 'domain_alert_migrate';
       this.$scope.migrateAccount = () => this.migrateAccount();
 
-      // URLs constants
-      this.allGuides = _.get(this.urls, 'FR.guides.all');
-      this.emailsOrder = _.get(this.urls, 'FR.emailsOrder');
+      this.User.getUrlOf('guides').then((guides) => {
+        this.allGuides = _.get(guides, 'all');
+      });
+      this.User.getUrlOf('emailsOrder').then((url) => {
+        this.emailsOrder = url;
+      });
 
       this.getServiceTypes();
     }
