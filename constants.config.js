@@ -1516,6 +1516,7 @@ module.exports = {
                 changeOwner: "https://www.ovh.pl/cgi-bin/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.pl/order/domain/#/legacy/domain/trade/list",
                 oldInterface: "https://www.ovh.pl/managerv3/home.pl",
+                emailsOrder: "https://www.ovh.pl/emaile/",
                 exchangeOrder: "https://www.ovh.pl/emaile/hosted-exchange/",
                 emailproOrder: "https://www.ovh.pl/emaile/email-pro/",
                 office365Order: "https://www.ovh.pl/office-365/",
