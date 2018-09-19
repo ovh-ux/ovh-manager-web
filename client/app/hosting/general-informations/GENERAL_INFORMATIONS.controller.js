@@ -7,41 +7,68 @@ angular.module('App').controller(
       $translate,
       Alerter,
       hostingSSLCertificate,
+      HostingLocalSeo,
       HostingRuntimes,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.hostingSSLCertificate = hostingSSLCertificate;
-      this.$translate = $translate;
+      this.HostingLocalSeo = HostingLocalSeo;
       this.HostingRuntimes = HostingRuntimes;
     }
 
     $onInit() {
-      this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
+      this.serviceName = this.$stateParams.productId;
+      this.defaultRuntime = null;
 
       this.loading = {
         defaultRuntime: true,
+        localSeo: true,
       };
 
-      this.defaultRuntime = null;
-      this.HostingRuntimes.getDefault(this.$stateParams.productId)
+      this.localSeo = {
+        isActive: false,
+        quantity: 0,
+      };
+
+      this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
+      return this.retrievingSSLCertificate()
+        .then(() => this.HostingRuntimes.getDefault(this.serviceName))
         .then((runtime) => {
           this.defaultRuntime = runtime;
         })
+        .then(() => this.initializeLocalSeo(this.serviceName))
         .finally(() => {
           this.loading.defaultRuntime = false;
+          this.loading.localSeo = false;
         });
+    }
 
-      return this.retrievingSSLCertificate();
+    initializeLocalSeo(serviceName) {
+      return this.HostingLocalSeo.getAccounts(serviceName)
+        .then((accountIds) => {
+          if (!accountIds || accountIds.length <= 0) {
+            throw new Error('No LocalSEO Accounts');
+          }
+          return this.HostingLocalSeo.getAccount(serviceName, _.first(accountIds));
+        })
+        .then((account) => {
+          this.localSeo.isActive = account.status === 'created';
+        })
+        .then(() => this.HostingLocalSeo.getLocations(serviceName))
+        .then((locationIds) => {
+          this.localSeo.quantity = locationIds.length;
+        });
     }
 
     retrievingSSLCertificate() {
       this.isRetrievingSSLCertificate = true;
 
       return this.hostingSSLCertificate
-        .retrievingCertificate(this.$stateParams.productId)
+        .retrievingCertificate(this.serviceName)
         .then((certificate) => {
           this.sslCertificate = certificate;
         })

@@ -16,7 +16,7 @@ angular.module('App').controller(
 
     $onInit() {
       this.defaultTab = 'GENERAL_INFORMATIONS';
-      this.tabs = ['GENERAL_INFORMATIONS', 'MULTISITE', 'MODULE', 'FTP', 'DATABASE', 'TASK'];
+      this.tabs = ['GENERAL_INFORMATIONS', 'MULTISITE', 'MODULE', 'FTP', 'LOCAL_SEO', 'DATABASE', 'TASK'];
       this.$scope.displayTabs = { cron: true, databases: true, modules: true };
 
       this.setSelectedTab = this.setSelectedTab.bind(this);
