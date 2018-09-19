@@ -1,3 +1,38 @@
+<a name="13.5.0"></a>
+# [13.5.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.24...v13.5.0) (2018-09-19)
+
+
+### Bug Fixes
+
+* **i18n:** new translation ([6d9e24b](https://github.com/ovh-ux/ovh-manager-web/commit/6d9e24b))
+* **i18n:** new translation ([7f7b388](https://github.com/ovh-ux/ovh-manager-web/commit/7f7b388))
+* **localseo:** disable feature for other subs than FR ([dd9a23a](https://github.com/ovh-ux/ovh-manager-web/commit/dd9a23a))
+
+
+### Features
+
+* **hosting:** allow deleting a location ([b84df6a](https://github.com/ovh-ux/ovh-manager-web/commit/b84df6a))
+* **hosting:** display number of localseo accounts in general infos ([8f2f27c](https://github.com/ovh-ux/ovh-manager-web/commit/8f2f27c))
+* **localseo:** add a spinner while loading general infos ([1bcec2c](https://github.com/ovh-ux/ovh-manager-web/commit/1bcec2c))
+* **localseo:** add an external icon to visibility checker link ([105bce1](https://github.com/ovh-ux/ovh-manager-web/commit/105bce1))
+* **localseo:** add some one-time bindings ([049af1b](https://github.com/ovh-ux/ovh-manager-web/commit/049af1b))
+* **localseo:** add visibility checker links ([df37345](https://github.com/ovh-ux/ovh-manager-web/commit/df37345))
+* **localseo:** allow only admins to order ([11f363a](https://github.com/ovh-ux/ovh-manager-web/commit/11f363a))
+* **localseo:** call the terminate API ([81e3257](https://github.com/ovh-ux/ovh-manager-web/commit/81e3257))
+* **localseo:** fix eslint ([da4005b](https://github.com/ovh-ux/ovh-manager-web/commit/da4005b))
+* **localseo:** forgot a comment ([a59de07](https://github.com/ovh-ux/ovh-manager-web/commit/a59de07))
+* **localseo:** get service info from hosting ([b133c8b](https://github.com/ovh-ux/ovh-manager-web/commit/b133c8b))
+* **localseo:** go to the order page ([69a0312](https://github.com/ovh-ux/ovh-manager-web/commit/69a0312))
+* **localseo:** PR fixes (first batch) ([4e02515](https://github.com/ovh-ux/ovh-manager-web/commit/4e02515))
+* **localseo:** prevent the auth window from being blocked by browsers ([febf279](https://github.com/ovh-ux/ovh-manager-web/commit/febf279))
+* **localseo:** revive local seo ([ff1d1a7](https://github.com/ovh-ux/ovh-manager-web/commit/ff1d1a7))
+* **localseo:** use custom datagrid placeholder ([7ef327b](https://github.com/ovh-ux/ovh-manager-web/commit/7ef327b))
+* **localseo:** use oui-status ([5b80cd8](https://github.com/ovh-ux/ovh-manager-web/commit/5b80cd8))
+* **localseo:** use the correct link to the interface ([4516305](https://github.com/ovh-ux/ovh-manager-web/commit/4516305))
+* **localseo:** use the datagrid ([a958620](https://github.com/ovh-ux/ovh-manager-web/commit/a958620))
+
+
+
 <a name="13.4.24"></a>
 ## [13.4.24](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.23...v13.4.24) (2018-09-18)
 
