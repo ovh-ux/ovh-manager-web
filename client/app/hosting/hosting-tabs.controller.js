@@ -1,7 +1,7 @@
 angular.module('App').controller(
   'HostingTabsCtrl',
   class HostingTabsCtrl {
-    constructor($scope, $q, $location, $stateParams, Hosting, HostingFreedom, HostingIndy) {
+    constructor($scope, $q, $location, $stateParams, Hosting, HostingFreedom, HostingIndy, User) {
       this.$scope = $scope;
       this.$q = $q;
       this.$location = $location;
@@ -10,6 +10,7 @@ angular.module('App').controller(
       this.Hosting = Hosting;
       this.HostingFreedom = HostingFreedom;
       this.HostingIndy = HostingIndy;
+      this.User = User;
     }
 
     $onInit() {
@@ -34,8 +35,11 @@ angular.module('App').controller(
             { forceRefresh: false },
           ),
           hosting: this.Hosting.getSelected(this.$stateParams.productId),
+          user: this.User.getUser(),
         })
-        .then(({ indys, freedoms, hosting }) => {
+        .then(({
+          indys, freedoms, hosting, user,
+        }) => {
           this.tabMenu = {
             title: this.$scope.tr('navigation_more'),
             items: [
@@ -47,6 +51,11 @@ angular.module('App').controller(
               },
             ],
           };
+
+          if (user.ovhSubsidiary === 'FR') {
+            this.tabs.splice(_.indexOf(this.tabs, 'FTP'), 0, 'LOCAL_SEO');
+            this.$scope.localSeoAvailable = true;
+          }
 
           if (hosting.isCloudWeb) {
             _.remove(this.tabs, t => t === 'TASK');
