@@ -185,16 +185,16 @@ angular.module('controllers').controller(
      * @returns {Array}
      */
     getTitle() {
-      return [
-        this.getDomainNameOf(this.newRedirection.subdomain),
-        (this.newRedirection.addwww
+      return {
+        t0: this.getDomainNameOf(this.newRedirection.subdomain),
+        t1: (this.newRedirection.addwww
           && !this.newRedirection.disableWww
           && this.$translate.instant(
             'domain_and',
             { t0: this.getDomainNameOf(this.newRedirection.subdomainWww) },
           ))
           || '',
-      ];
+      };
     }
 
     /**

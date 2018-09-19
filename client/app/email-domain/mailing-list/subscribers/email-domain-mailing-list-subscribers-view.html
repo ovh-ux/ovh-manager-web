@@ -8,11 +8,17 @@
                 <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
                 <span data-translate="common_back"></span>
             </button>
-            <h2 data-ng-bind-html="trpl('mailing_list_tab_subscribers_management_title', ctrlSubscribers.subscribers.ids.length, [
-                ctrlSubscribers.mailingList.name,
-                ctrlSubscribers.subscribers.ids.length,
-                ctrlSubscribers.mailingList.limits.subscribers
-            ])"></h2>
+            <h2 data-ng-bind-html="(ctrlSubscribers.subscribers.ids.length
+                                        ? (ctrlSubscribers.subscribers.ids.length > 1
+                                            ? 'mailing_list_tab_subscribers_management_title_other'
+                                            : 'mailing_list_tab_subscribers_management_title_1')
+                                        : 'mailing_list_tab_subscribers_management_title')
+                                   | translate: {
+                                        t0: ctrlSubscribers.mailingList.name,
+                                        t1: Subscribers.subscribers.ids.length,
+                                        t2: ctrlSubscribers.mailingList.limits.subscribers
+                                   }">
+            </h2>
 
             <div class="row mb-3 mt-5">
                 <div class="col-xs-4" data-ng-if="ctrlSubscribers.subscribers.selected.length > 0">

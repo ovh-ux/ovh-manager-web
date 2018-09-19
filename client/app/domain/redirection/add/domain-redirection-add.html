@@ -40,7 +40,7 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.addRedirectStep2Form.$valid">
 
-            <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step2' | translate: { t0: ctrl.getTitle()[0] }"></p>
+            <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step2' | translate: ctrl.getTitle()"></p>
             <form class="ml-4" name="ctrl.addRedirectStep2Form">
                 <!-- to web address -->
                 <div class="oui-radio">
@@ -78,7 +78,7 @@
 
             <!-- to web address -->
             <div data-ng-if="ctrl.newRedirection.step2 === ctrl.choice.web">
-                <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_web' | translate: { t0: ctrl.getTitle()[0] }"></p>
+                <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_web' | translate: ctrl.getTitle()"></p>
 
                 <form class="ml-4" name="ctrl.addRedirectStep3Form">
                     <!-- visible -->
@@ -113,7 +113,7 @@
 
             <!-- to domain or ip -->
             <div data-ng-if="ctrl.newRedirection.step2 === ctrl.choice.server">
-                <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_server' | translate: { t0: ctrl.getTitle()[0] }"></p>
+                <p data-ng-bind-html="'domain_tab_REDIRECTION_add_step3_server' | translate: ctrl.getTitle()"></p>
 
                 <form class="ml-4" name="ctrl.addRedirectStep3Form">
                     <!-- IP -->

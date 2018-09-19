@@ -77,7 +77,11 @@ angular
                 $scope.stats.chart.addSerie(
                   $translate.instant(
                     `hosting_tab_STATISTICS_series_${serie.serieName}`,
-                  ) || serie.serieName,
+                  ) === `hosting_tab_STATISTICS_series_${serie.serieName}`
+                    ? serie.serieName
+                    : $translate.instant(
+                      `hosting_tab_STATISTICS_series_${serie.serieName}`,
+                    ),
                   _.map(serie.points, point => ({
                     x: point.x,
                     y: point.y,

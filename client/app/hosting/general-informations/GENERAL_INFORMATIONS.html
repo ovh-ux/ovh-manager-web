@@ -135,9 +135,11 @@
                                         <strong class="oui-tile__term d-block"
                                                 data-translate="hosting_dashboard_service_web"></strong>
                                         <span data-ng-bind="hosting.attachedDomainsCount"></span>&nbsp;
-                                        <span
-                                            data-ng-bind="trpl('hosting_dashboard_service_web_info', hosting.attachedDomainsMaxRecommanded, [hosting.attachedDomainsMaxRecommanded])"
-                                            data-ng-if="hosting.attachedDomainsMaxRecommanded > 0 && hosting.attachedDomainsMaxRecommanded < cloudWebUnlimitedQuantity"></span>
+                                        <span data-ng-bind="(hosting.attachedDomainsMaxRecommanded > 1
+                                                                ? 'hosting_dashboard_service_web_info_other'
+                                                                : 'hosting_dashboard_service_web_info_1')
+                                                            | translate: { t0: hosting.attachedDomainsMaxRecommanded }"
+                                              data-ng-if="hosting.attachedDomainsMaxRecommanded > 0 && hosting.attachedDomainsMaxRecommanded < cloudWebUnlimitedQuantity"></span>
                                     </div>
                                 </li>
                             </ul>

@@ -24,8 +24,13 @@
         <div class="col-md-9">
             <div data-ovh-alert="{{alerts.main}}"></div>
             <div class="alert alert-warning" role="alert"
-                 data-ng-bind="trpl('mailing_list_tab_table_quota_excedeed', ctrlMailingLists.quotas.mailingList, [ctrlMailingLists.mailingLists.length, ctrlMailingLists.quotas.mailingList])"
-                 data-ng-if="ctrlMailingLists.mailingLists.length >= ctrlMailingLists.quotas.mailingList">
+                 data-ng-if="ctrlMailingLists.mailingLists.length >= ctrlMailingLists.quotas.mailingList"
+                 data-ng-bind="(ctrlMailingLists.quotas.mailingList
+                                    ? (ctrlMailingLists.quotas.mailingList > 1
+                                        ? 'mailing_list_tab_table_quota_excedeed_other'
+                                        : 'mailing_list_tab_table_quota_excedeed_1')
+                                    : 'mailing_list_tab_table_quota_excedeed')
+                               | translate: { t0: ctrlMailingLists.mailingLists.length, t1: ctrlMailingLists.quotas.mailingList }">
             </div>
             <dl class="dl-horizontal dl-lg" data-ng-if="ctrlMailingLists.quotas.mailingList > 0">
                 <dt data-translate="mailing_list_tab_quotas"></dt>

@@ -23,7 +23,7 @@
                 data-ng-click="goToNextError()"
                 data-ng-show="fileEditorErrors.length > 0">
             <span class="fa fa-exclamation-triangle mr-2" aria-hidden="true"></span>
-            <span data-ng-bind-html="trpl('mailing_list_common_addr_errors', fileEditorErrors.length, [fileEditorErrors.length])"
+            <span data-ng-bind-html="(fileEditorErrors.length > 1 ? 'mailing_list_common_addr_errors_other' : 'mailing_list_common_addr_errors_1') | translate: { t0: fileEditorErrors.length }"
                   data-ng-show="fileEditorErrors.length > 0">
             </span>
         </button>

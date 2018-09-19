@@ -9,10 +9,13 @@
                 <span data-translate="common_back"></span>
             </button>
             <h2>
-                <span data-ng-bind-html="trpl('mailing_list_tab_moderators_management_title', ctrlModerators.moderators.ids.length, [
-                    ctrlModerators.mailingList.name,
-                    !ctrlModerators.loading.moderators ? ctrlModerators.moderators.ids.length : ''
-                ])"></span>
+                <span data-ng-bind-html="(ctrlModerators.loading.moderators
+                      ? 'mailing_list_tab_moderators_management_title'
+                      : (ctrlModerators.moderators.ids.length == 1
+                            ? 'mailing_list_tab_moderators_management_title_1'
+                            : 'mailing_list_tab_moderators_management_title_other'))
+                      | translate: { t0: ctrlModerators.mailingList.name, t1: ctrlModerators.moderators.ids.length }">
+                </span>
                 <oui-spinner data-ng-if="ctrlModerators.loading.moderators"></oui-spinner>
             </h2>
 
