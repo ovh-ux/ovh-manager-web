@@ -2,7 +2,7 @@ angular.module('App').controller(
   'HostingTabsCtrl',
   class HostingTabsCtrl {
     constructor($scope, $q, $location, $stateParams, $translate,
-      Hosting, HostingFreedom, HostingIndy) {
+      Hosting, HostingFreedom, HostingIndy, User) {
       this.$scope = $scope;
       this.$q = $q;
       this.$location = $location;
@@ -12,11 +12,12 @@ angular.module('App').controller(
       this.Hosting = Hosting;
       this.HostingFreedom = HostingFreedom;
       this.HostingIndy = HostingIndy;
+      this.User = User;
     }
 
     $onInit() {
       this.defaultTab = 'GENERAL_INFORMATIONS';
-      this.tabs = ['GENERAL_INFORMATIONS', 'MULTISITE', 'MODULE', 'FTP', 'LOCAL_SEO', 'DATABASE', 'TASK'];
+      this.tabs = ['GENERAL_INFORMATIONS', 'MULTISITE', 'MODULE', 'FTP', 'DATABASE', 'TASK'];
       this.$scope.displayTabs = { cron: true, databases: true, modules: true };
 
       this.setSelectedTab = this.setSelectedTab.bind(this);
@@ -36,8 +37,11 @@ angular.module('App').controller(
             { forceRefresh: false },
           ),
           hosting: this.Hosting.getSelected(this.$stateParams.productId),
+          user: this.User.getUser(),
         })
-        .then(({ indys, freedoms, hosting }) => {
+        .then(({
+          indys, freedoms, hosting, user,
+        }) => {
           this.tabMenu = {
             title: this.$translate.instant('navigation_more'),
             items: [
@@ -49,6 +53,11 @@ angular.module('App').controller(
               },
             ],
           };
+
+          if (user.ovhSubsidiary === 'FR') {
+            this.tabs.splice(_.indexOf(this.tabs, 'FTP'), 0, 'LOCAL_SEO');
+            this.$scope.localSeoAvailable = true;
+          }
 
           if (hosting.isCloudWeb) {
             _.remove(this.tabs, t => t === 'TASK');

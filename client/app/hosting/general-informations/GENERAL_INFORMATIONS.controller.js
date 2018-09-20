@@ -48,6 +48,10 @@ angular.module('App').controller(
     }
 
     initializeLocalSeo(serviceName) {
+      if (!this.$scope.localSeoAvailable) {
+        return false;
+      }
+
       return this.HostingLocalSeo.getAccounts(serviceName)
         .then((accountIds) => {
           if (!accountIds || accountIds.length <= 0) {
