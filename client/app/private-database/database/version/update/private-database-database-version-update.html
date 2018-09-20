@@ -20,7 +20,7 @@
 
             <div data-ng-if="!versionCtrl.loading.init && versionCtrl.model.versions.length > 0">
                 <p data-translate="privateDatabase_change_version_step1"
-                   data-translate-values="{ t0: 'privateDatabase_dashboard_version_' + versionCtrl.privateDBToUpdate.version | translate }"></p>
+                   data-translate-values="{ t0: ('privateDatabase_dashboard_version_' + versionCtrl.privateDBToUpdate.version | translate) }"></p>
 
                 <form class="form-horizontal mt-4">
                     <div class="form-group">
@@ -45,8 +45,8 @@
         <div data-wizard-step>
             <p data-translate="privateDatabase_change_version_step2"
                data-translate-values="{
-                   t0: 'privateDatabase_dashboard_version_' + versionCtrl.privateDBToUpdate.version | translate,
-                   t1: 'privateDatabase_dashboard_version_' + versionCtrl.model.choice.replace('.', '') | translate
+                   t0: ('privateDatabase_dashboard_version_' + versionCtrl.privateDBToUpdate.version | translate),
+                   t1: ('privateDatabase_dashboard_version_' + versionCtrl.model.choice.replace('.', '') | translate)
                }"></p>
 
             <div class="alert alert-warning" role="alert"
