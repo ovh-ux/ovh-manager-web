@@ -199,39 +199,49 @@
                             </td>
                             <td class="text-center">
                                 <oui-action-menu data-compact data-align="end">
-                                        <oui-action-menu-item data-text="{{:: tr('hosting_tab_DATABASES_table_popover_update_password') }}"
-                                                              data-on-click="setAction('database/update-password/hosting-database-update-password', element.name)"></oui-action-menu-item>
+                                        <oui-action-menu-item data-on-click="setAction('database/update-password/hosting-database-update-password', element.name)">
+                                                              <span data-i18n-static="hosting_tab_DATABASES_table_popover_update_password"></span>
+                                        </oui-action-menu-item>
                                         <oui-action-menu-item data-ng-if="element.type !== 'MONGODB'"
-                                                              data-text="{{:: tr('hosting_tab_DATABASES_table_popover_dump') }}"
-                                                              data-on-click="setAction('database/dump/add/hosting-database-dump-add', element.name)"></oui-action-menu-item>
+                                                              data-on-click="setAction('database/dump/add/hosting-database-dump-add', element.name)">
+                                                              <span data-i18n-static="hosting_tab_DATABASES_table_popover_dump"></span>
+                                        </oui-action-menu-item>
                                         <oui-action-menu-item data-ng-if="element.type !== 'MONGODB'"
-                                                              data-text="{{:: tr('hosting_tab_DATABASES_table_popover_dump_restore') }}"
-                                                              data-on-click="ctrlTabDatabases.restoreDump(element)"></oui-action-menu-item>
+                                                              data-on-click="ctrlTabDatabases.restoreDump(element)">
+                                                              <span data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore"></span>
+                                        </oui-action-menu-item>
                                         <oui-action-menu-item data-ng-if="element.type === 'MYSQL'"
-                                                              data-text="{{:: tr('hosting_tab_DATABASES_table_popover_import') }}"
-                                                              data-on-click="setAction('database/import/hosting-database-import', element.name)"></oui-action-menu-item>
+                                                              data-on-click="setAction('database/import/hosting-database-import', element.name)">
+                                                              <span data-i18n-static="hosting_tab_DATABASES_table_popover_import"></span>
+                                        </oui-action-menu-item>
                                         <oui-action-menu-item data-ng-if="element.type === 'MYSQL'"
-                                                              data-text="{{:: tr('hosting_tab_DATABASES_table_popover_dump_restore_yesterday') }}"
-                                                              data-on-click="setAction('database/restore/confirm/hosting-database-restore-confirm', { bdd: element, backupType: ctrlTabDatabases.backupType.DAILY })"></oui-action-menu-item>
+                                                              data-on-click="setAction('database/restore/confirm/hosting-database-restore-confirm', { bdd: element, backupType: ctrlTabDatabases.backupType.DAILY })">
+                                                              <span data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore_yesterday"></span>
+                                        </oui-action-menu-item>
                                         <oui-action-menu-item data-ng-if="element.type === 'MYSQL'"
-                                                              data-text="{{:: tr('hosting_tab_DATABASES_table_popover_dump_restore_one_week') }}"
-                                                              data-on-click="setAction('database/restore/confirm/hosting-database-restore-confirm', { bdd: element, backupType: ctrlTabDatabases.backupType.WEEKLY })"></oui-action-menu-item>
+                                                              data-on-click="setAction('database/restore/confirm/hosting-database-restore-confirm', { bdd: element, backupType: ctrlTabDatabases.backupType.WEEKLY })">
+                                                              <span data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore_one_week"></span>
+                                        </oui-action-menu-item>
                                         <oui-action-menu-item data-ng-if="!hosting.isCloudWeb && element.type === 'MYSQL'"
-                                                              data-text="{{:: tr('hosting_tab_DATABASES_table_popover_check_quota') }}"
-                                                              data-on-click="ctrlTabDatabases.checkQuota(element)"></oui-action-menu-item>
+                                                              data-on-click="ctrlTabDatabases.checkQuota(element)">
+                                                              <span data-i18n-static="hosting_tab_DATABASES_table_popover_check_quota"></span>
+                                        </oui-action-menu-item>
                                         <oui-action-menu-item data-ng-if="element.type === 'MYSQL' || element.type === 'MONGODB'"
-                                                              data-text="{{:: tr('hosting_tab_DATABASES_table_popover_delete') }}"
-                                                              data-on-click="setAction('database/delete/hosting-database-delete', element.name)"></oui-action-menu-item>
+                                                              data-on-click="setAction('database/delete/hosting-database-delete', element.name)">
+                                                              <span data-i18n-static="hosting_tab_DATABASES_table_popover_delete"></span>
+                                        </oui-action-menu-item>
                                         <oui-action-menu-item data-ng-if="element.type === 'POSTGRESQL'"
-                                                              data-text="{{:: tr('hosting_tab_DATABASES_table_popover_phppgadmin') }}"
                                                               title="{{ i18n.hosting_tab_DATABASES_table_popover_new_window }}"
                                                               data-ng-href="http://phppgadmin.ovh.net/" 
-                                                              data-external></oui-action-menu-item>
+                                                              data-external>
+                                                              <span data-i18n-static="hosting_tab_DATABASES_table_popover_phppgadmin"></span>
+                                        </oui-action-menu-item>
                                         <oui-action-menu-item data-ng-if="element.type === 'MYSQL'"
-                                                              data-text="{{:: tr('hosting_tab_DATABASES_table_popover_phpmyadmin') }}"
                                                               title="{{ i18n.hosting_tab_DATABASES_table_popover_new_window }}"
                                                               data-ng-href="{{ ctrlTabDatabases.getPhpMyAdminUrl(element) }}" 
-                                                              data-external></oui-action-menu-item>
+                                                              data-external>
+                                                              <span data-i18n-static="hosting_tab_DATABASES_table_popover_phpmyadmin"></span>
+                                        </oui-action-menu-item>
                                 </oui-action-menu>
                             </td>
                         </tr>
