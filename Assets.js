@@ -110,7 +110,7 @@ module.exports = {
             "node_modules/@bower_components/bootstrap/dist/js/bootstrap.min.js",
             "node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js",
             "node_modules/@bower_components/moment-picker/dist/angular-moment-picker.min.js",
-            "node_modules/raphael/raphael-min.js",
+            "node_modules/raphael/raphael.min.js",
             "node_modules/justgage/justgage.js",
             "node_modules/@ovh-ux/ovh-utils-angular/bin/ovh-utils-angular.min.js",
             "node_modules/@ovh-ux/ovh-utils-angular/lib/core.js",
