@@ -14,12 +14,12 @@
         <oui-column data-title="'hosting_tab_RUNTIMES_table_header_language' | translate" data-property="type" data-type="string"></oui-column>
         <oui-column data-title="'hosting_tab_RUNTIMES_table_header_number_multisite' | translate" data-property="countAttachedDomains" data-type="string"></oui-column>
         <oui-column data-title="'hosting_tab_ENVVARS_table_header_status' | translate" data-property="status">
-            <span class="label"
+            <span class="oui-status"
                   data-ng-bind="'hosting_tab_RUNTIMES_table_status_' + $row.status | translate"
                   data-ng-class="{
-                    'label-success': $row.status === 'created',
-                    'label-danger': $row.status === 'deleting',
-                    'label-warning': $row.status !== 'created' && $row.status !== 'deleting'
+                    'oui-status_success': $row.status === 'created',
+                    'oui-status_error': $row.status === 'deleting',
+                    'oui-status_warning': $row.status !== 'created' && $row.status !== 'deleting'
                 }">
             </span>
         </oui-column>
