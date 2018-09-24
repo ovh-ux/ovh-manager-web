@@ -2,7 +2,7 @@ angular.module('App').controller(
   'SqlDatabaseOrderCtrl',
   class SqlDatabaseOrderCtrl {
     constructor(
-      $q, $scope, $stateParams, $timeout, $window,
+      $q, $scope, $stateParams, $timeout, $translate, $window,
       atInternet,
       ConverterService, Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, User,
     ) {
@@ -10,6 +10,7 @@ angular.module('App').controller(
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
+      this.$translate = $translate;
       this.$window = $window;
 
       this.atInternet = atInternet;
@@ -62,7 +63,7 @@ angular.module('App').controller(
 
     convertBytesSize(nb, unit = 'MB') {
       const res = filesize(this.converterService.convertToOctet(nb, unit), { output: 'object', round: 0, base: -1 });
-      const resUnit = this.$scope.tr(`unit_size_${res.symbol}`);
+      const resUnit = this.$translate.instant(`unit_size_${res.symbol}`);
 
       return `${res.value} ${resUnit}`;
     }
@@ -158,7 +159,7 @@ angular.module('App').controller(
             _.find(this.data, 'key', 'premium').hostings = angular.copy(_.find(this.data, 'key', 'start').hostings);
             _.find(this.data, 'key', 'premium').hostings.push({
               datacenter: null,
-              displayName: this.$scope.tr('common_other'),
+              displayName: this.$translate.instant('common_other'),
               name: this.noHostValue,
             });
 
@@ -169,7 +170,7 @@ angular.module('App').controller(
               this.model.datacenter = this.selectectedHosting.datacenter || null;
             }
           }))
-        .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step1_error'), err, this.$scope.alerts.durations))
+        .catch(err => this.alerter.alertFromSWS(this.$translate.instant('privateDatabase_order_step1_error'), err, this.$scope.alerts.durations))
         .finally(() => {
           this.loading.init = false;
         });
@@ -213,7 +214,7 @@ angular.module('App').controller(
           this.model.duration = _.last(durations);
           return durations;
         })
-        .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step2_duration_fail'), err, this.$scope.alerts.durations))
+        .catch(err => this.alerter.alertFromSWS(this.$translate.instant('privateDatabase_order_step2_duration_fail'), err, this.$scope.alerts.durations))
         .finally(() => {
           this.loading.durations = false;
         });
@@ -238,7 +239,7 @@ angular.module('App').controller(
           this.model.duration = _.last(durations);
           return durations;
         })
-        .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step2_duration_fail'), err, this.$scope.alerts.durations))
+        .catch(err => this.alerter.alertFromSWS(this.$translate.instant('privateDatabase_order_step2_duration_fail'), err, this.$scope.alerts.durations))
         .finally(() => {
           this.loading.durations = false;
         });
@@ -265,7 +266,7 @@ angular.module('App').controller(
             this.model.duration = _.first(durations);
           }
         })
-        .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step2_price_fail'), err, this.$scope.alerts.order))
+        .catch(err => this.alerter.alertFromSWS(this.$translate.instant('privateDatabase_order_step2_price_fail'), err, this.$scope.alerts.order))
         .finally(() => { this.loading.prices = false; });
     }
 
@@ -288,7 +289,7 @@ angular.module('App').controller(
             this.model.duration = _.first(durations);
           }
         })
-        .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step2_price_fail'), err, this.$scope.alerts.order))
+        .catch(err => this.alerter.alertFromSWS(this.$translate.instant('privateDatabase_order_step2_price_fail'), err, this.$scope.alerts.order))
         .finally(() => { this.loading.prices = false; });
     }
 
@@ -320,7 +321,7 @@ angular.module('App').controller(
             this.openBc();
           }, 5000);
         })
-        .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step3_fail'), err, this.$scope.alerts.order))
+        .catch(err => this.alerter.alertFromSWS(this.$translate.instant('privateDatabase_order_step3_fail'), err, this.$scope.alerts.order))
         .finally(() => {
           this.loading.bc = false;
         });
@@ -338,7 +339,7 @@ angular.module('App').controller(
             this.openBc();
           }, 5000);
         })
-        .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step3_fail'), err, this.$scope.alerts.order))
+        .catch(err => this.alerter.alertFromSWS(this.$translate.instant('privateDatabase_order_step3_fail'), err, this.$scope.alerts.order))
         .finally(() => { this.loading.bc = false; });
     }
 
@@ -354,7 +355,7 @@ angular.module('App').controller(
             this.openBc();
           }, 5000);
         })
-        .catch(err => this.alerter.alertFromSWS(this.$scope.tr('privateDatabase_order_step3_fail'), err, this.$scope.alerts.order))
+        .catch(err => this.alerter.alertFromSWS(this.$translate.instant('privateDatabase_order_step3_fail'), err, this.$scope.alerts.order))
         .finally(() => { this.loading.bc = false; });
     }
 

@@ -1,5 +1,5 @@
 <div class="alert alert-info" role="alert"
-     data-i18n-static="hosting_tab_CRON_step2_expert_toocomplicated"
+     data-translate="hosting_tab_CRON_step2_expert_toocomplicated"
      data-ng-if="isTooComplicatedForSimpleMode"></div>
 
 <div data-ng-show="expertInlineView">
@@ -71,4 +71,4 @@
 </div>
 
 <p class="font-italic mt-5 text-muted"
-   data-ng-bind="tr('hosting_tab_CRON_step2_expert_help', ['H', 'DOM', 'MON', 'DOW']) + ' ' + tr('hosting_tab_CRON_step2_help_subtitle2')"></p>
+   data-ng-bind="('hosting_tab_CRON_step2_expert_help' | translate: { t0: 'H', t1: 'DOM', t2: 'MON', t3: 'DOW' }) + ' ' + ('hosting_tab_CRON_step2_help_subtitle2' | translate)"></p>

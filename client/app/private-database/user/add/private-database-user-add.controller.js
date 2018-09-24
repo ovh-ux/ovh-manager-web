@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'PrivateDatabaseAddUserCtrl',
   class PrivateDatabaseAddUserCtrl {
-    constructor($scope, $stateParams, Alerter, PrivateDatabase) {
+    constructor($scope, $stateParams, $translate, Alerter, PrivateDatabase) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.PrivateDatabase = PrivateDatabase;
     }
@@ -72,13 +73,13 @@ angular.module('App').controller(
       )
         .then(() => {
           this.Alerter.success(
-            this.$scope.tr('privateDatabase_add_user_success'),
+            this.$translate.instant('privateDatabase_add_user_success'),
             this.$scope.alerts.main,
           );
         })
         .catch(() => {
           this.Alerter.error(
-            this.$scope.tr('privateDatabase_add_user_fail'),
+            this.$translate.instant('privateDatabase_add_user_fail'),
             this.$scope.alerts.main,
           );
         });

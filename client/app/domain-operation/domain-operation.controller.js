@@ -9,10 +9,11 @@ angular.module('App').controller(
      * @param Alerter
      * @param domainOperationService
      */
-    constructor($scope, $location, $timeout, Alerter, domainOperationService) {
+    constructor($scope, $location, $timeout, $translate, Alerter, domainOperationService) {
       this.$scope = $scope;
       this.$location = $location;
       this.$timeout = $timeout;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Operation = domainOperationService;
     }
@@ -97,7 +98,7 @@ angular.module('App').controller(
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domains_operations_error'),
+            this.$translate.instant('domains_operations_error'),
             err,
             this.$scope.alerts.main,
           );

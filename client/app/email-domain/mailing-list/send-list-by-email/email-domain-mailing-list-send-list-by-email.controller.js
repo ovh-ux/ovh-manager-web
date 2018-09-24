@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'MailingListsSendListByEmailCtrl',
   class MailingListsSendListByEmailCtrl {
-    constructor($scope, $stateParams, Alerter, MailingLists) {
+    constructor($scope, $stateParams, $translate, Alerter, MailingLists) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.MailingLists = MailingLists;
     }
@@ -30,9 +31,9 @@ angular.module('App').controller(
       })
         .then((task) => {
           this.Alerter.success(
-            this.$scope.tr(
+            this.$translate.instant(
               'mailing_list_tab_modal_sendListByEmail_success',
-              this.email,
+              { t0: this.email },
             ),
             this.$scope.alerts.main,
           );
@@ -45,7 +46,7 @@ angular.module('App').controller(
           });
         })
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('mailing_list_tab_modal_sendListByEmail_error'),
+          this.$translate.instant('mailing_list_tab_modal_sendListByEmail_error'),
           _.get(err, 'data', err),
           this.$scope.alerts.main,
         ))

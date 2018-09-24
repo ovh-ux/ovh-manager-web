@@ -1,10 +1,11 @@
 angular.module('App').controller(
   'PrivateDatabaseUserDatabaseCtrl',
   class PrivateDatabaseUserDatabaseController {
-    constructor($q, $scope, $stateParams, Alerter, PrivateDatabase) {
+    constructor($q, $scope, $stateParams, $translate, Alerter, PrivateDatabase) {
       this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
     }
@@ -88,14 +89,14 @@ angular.module('App').controller(
             'grant/update',
           ]);
           this.alerter.success(
-            this.$scope.tr('privateDatabase_tabs_users_grant_doing'),
+            this.$translate.instant('privateDatabase_tabs_users_grant_doing'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.alerter.alertFromSWS(
-            this.$scope.tr('privateDatabase_tabs_users_grant_error'),
+            this.$translate.instant('privateDatabase_tabs_users_grant_error'),
             err,
             this.$scope.alerts.main,
           );
@@ -104,7 +105,7 @@ angular.module('App').controller(
 
     onUserGrantStart() {
       this.alerter.success(
-        this.$scope.tr('privateDatabase_tabs_users_grant_doing'),
+        this.$translate.instant('privateDatabase_tabs_users_grant_doing'),
         this.$scope.alerts.main,
       );
     }
@@ -112,7 +113,7 @@ angular.module('App').controller(
     onUserGrantError(event, task) {
       this.pendingGrant[task.userName] = false;
       this.alerter.error(
-        this.$scope.tr('privateDatabase_tabs_users_grant_error'),
+        this.$translate.instant('privateDatabase_tabs_users_grant_error'),
         this.$scope.alerts.main,
       );
     }
@@ -121,7 +122,7 @@ angular.module('App').controller(
       this.pendingGrant[task.userName] = false;
       this.refresh();
       this.alerter.success(
-        this.$scope.tr('privateDatabase_tabs_users_grant_success'),
+        this.$translate.instant('privateDatabase_tabs_users_grant_success'),
         this.$scope.alerts.main,
       );
     }

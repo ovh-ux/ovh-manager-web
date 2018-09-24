@@ -1,10 +1,10 @@
 <div class="expiration clearfix">
     <span data-ng-if="$ctrl.isAutoRenew() && !$ctrl.isExpired()"
-          data-ng-bind-html="::tr('renew_date', [($ctrl.serviceInfos.expiration|date:'MMM yyyy')])"></span>
+          data-ng-bind-html=":: 'renew_date' | translate: { t0: ($ctrl.serviceInfos.expiration|date:'MMM yyyy') }"></span>
     <span data-ng-if="!$ctrl.isAutoRenew() && !$ctrl.isExpired()"
-          data-ng-bind-html="::tr(($ctrl.serviceInfos.renew.deleteAtExpiration ? 'resiliation_date' : 'expiration_date'), [($ctrl.serviceInfos.expiration|date:'mediumDate')])"></span>
+          data-ng-bind-html=":: ($ctrl.serviceInfos.renew.deleteAtExpiration ? 'resiliation_date' : 'expiration_date') | translate: { t0: ($ctrl.serviceInfos.expiration|date:'mediumDate') }"></span>
     <span data-ng-if="$ctrl.isExpired()"
-          data-ng-bind-html="::tr('expired_date', [($ctrl.serviceInfos.expiration|date:'mediumDate')])"></span>
+          data-ng-bind-html=":: 'expired_date' | translate: { t0: ($ctrl.serviceInfos.expiration|date:'mediumDate') }"></span>
 
     <a class="ml-3"
        data-ng-if="::(!$ctrl.isAutoRenew() && $ctrl.getRenewUrl() && !$ctrl.hideRenewAction) || $ctrl.isExpired()"
@@ -13,7 +13,7 @@
        data-track-on="click"
        data-track-name="renew-{{::$ctrl.serviceType.toLowerCase()}}"
        data-track-click="action">
-        <span data-ng-switch-when="false" data-i18n-static="wizard_renew"></span>
-        <span data-ng-switch-when="true" data-i18n-static="resiliation_cancel_label"></span>
+        <span data-ng-switch-when="false" data-translate="wizard_renew"></span>
+        <span data-ng-switch-when="true" data-translate="resiliation_cancel_label"></span>
     </a>
 </div>

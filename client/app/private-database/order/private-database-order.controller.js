@@ -8,6 +8,7 @@ angular.module('App').controller(
       PrivateDatabase,
       $q,
       $scope,
+      $translate,
       User,
     ) {
       this.alerter = Alerter;
@@ -16,6 +17,7 @@ angular.module('App').controller(
       this.privateDatabaseService = PrivateDatabase;
       this.$q = $q;
       this.$scope = $scope;
+      this.$translate = $translate;
       this.User = User;
     }
 
@@ -108,7 +110,7 @@ angular.module('App').controller(
         })
         .catch((data) => {
           this.alerter.alertFromSWS(
-            this.$scope.tr('privateDatabase_order_step2_price_fail'),
+            this.$translate.instant('privateDatabase_order_step2_price_fail'),
             data,
             this.$scope.alerts.order,
           );
@@ -129,7 +131,7 @@ angular.module('App').controller(
           this.hostings = result.hostings;
         })
         .catch(() => this.alerter.error(
-          this.$scope.tr('privateDatabase_order_step1_error'),
+          this.$translate.instant('privateDatabase_order_step1_error'),
           this.$scope.alerts.order,
         ))
         .finally(() => {
@@ -149,7 +151,7 @@ angular.module('App').controller(
           this.selectedOrder.config.datacenter = hosting.datacenter;
         })
         .catch(() => this.alerter.error(
-          this.$scope.tr('privateDatabase_order_step1_error'),
+          this.$translate.instant('privateDatabase_order_step1_error'),
           this.$scope.alerts.order,
         ));
     }
@@ -173,7 +175,7 @@ angular.module('App').controller(
           this.loadPrices(durations);
         })
         .catch(data => this.alerter.alertFromSWS(
-          this.$scope.tr('privateDatabase_order_step2_duration_fail'),
+          this.$translate.instant('privateDatabase_order_step2_duration_fail'),
           data,
           this.$scope.alerts.durations,
         ))
@@ -198,7 +200,7 @@ angular.module('App').controller(
         })
         .catch((data) => {
           this.alerter.alertFromSWS(
-            this.$scope.tr('privateDatabase_order_step3_fail'),
+            this.$translate.instant('privateDatabase_order_step3_fail'),
             data,
             this.$scope.alerts.order,
           );

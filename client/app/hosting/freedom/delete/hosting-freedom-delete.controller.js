@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'HostingDeleteFreedomCtrl',
   class HostingDeleteFreedomCtrl {
-    constructor($scope, $stateParams, Alerter, HostingFreedom) {
+    constructor($scope, $stateParams, $translate, Alerter, HostingFreedom) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.HostingFreedom = HostingFreedom;
     }
@@ -22,15 +23,15 @@ angular.module('App').controller(
       )
         .then(() => {
           this.Alerter.success(
-            this.$scope.tr('hosting_dashboard_service_delete_freedom_success', [
-              this.freedom.domain,
-            ]),
+            this.$translate.instant('hosting_dashboard_service_delete_freedom_success', {
+              t0: this.freedom.domain,
+            }),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_FREEDOM_error'),
+            this.$translate.instant('hosting_tab_FREEDOM_error'),
             err,
             this.$scope.alerts.main,
           );

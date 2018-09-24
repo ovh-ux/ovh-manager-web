@@ -1,11 +1,11 @@
 <div class="popover-menu">
     <button class="btn btn-link" type="button"
-            data-i18n-static="domains_operations_tab_popover_update"
+            data-translate="domains_operations_tab_popover_update"
             data-ng-click="setAction('domain-operation/update/domain-operation-update', operation)"
             data-ng-disabled="!operation.canCancel && !operation.canRelaunch && !operation.canAccelerate">
     </button>
     <a class="btn btn-link" data-ng-href="#/configuration/domain_operation/progress/{{operation.id}}"
-       data-i18n-static="domains_operations_tab_popover_progress"
+       data-translate="domains_operations_tab_popover_progress"
        data-ng-if="operation.function === 'DomainIncomingTransfer'">
     </a>
 </div>

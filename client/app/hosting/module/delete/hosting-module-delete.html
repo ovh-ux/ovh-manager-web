@@ -2,12 +2,12 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="deleteModule"
-         data-wizard-title="i18n.hosting_configuration_tab_modules_delete_title">
+         data-wizard-title="'hosting_configuration_tab_modules_delete_title' | translate">
 
         <div data-wizard-step>
-            <p data-ng-bind-html="tr('hosting_configuration_tab_modules_delete_question', ['<strong>' + ctrl.moduleToDelete.template.name + '</strong>'])"></p>
+            <p data-ng-bind-html="'hosting_configuration_tab_modules_delete_question' | translate: { t0: '<strong>' + ctrl.moduleToDelete.template.name + '</strong>' }"></p>
             <div class="alert alert-warning" role="alert"
-                 data-i18n-static="hosting_configuration_tab_modules_delete_information">
+                 data-translate="hosting_configuration_tab_modules_delete_information">
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="activateZone"
-         data-wizard-title="i18n.domain_tab_ZONE_no_zone_activate_btn">
+         data-wizard-title="'domain_tab_ZONE_no_zone_activate_btn' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading">
@@ -10,7 +10,7 @@
             <oui-spinner data-ng-if="ctrl.loading"></oui-spinner>
 
             <div data-ng-if="!ctrl.loading">
-                <p data-i18n-static="domain_tab_ZONE_no_zone_activate_question"></p>
+                <p data-translate="domain_tab_ZONE_no_zone_activate_question"></p>
                 <form class="mt-4">
                     <div class="oui-radio">
                         <input type="radio" class="oui-radio__input" name="activationZone.minimized" id="activationZoneMinimized-yes"
@@ -18,7 +18,7 @@
                                data-ng-value="true">
                         <label class="oui-radio__label-container" for="activationZoneMinimized-yes">
                         <span class="oui-radio__label"
-                              data-i18n-static="domain_tab_ZONE_no_zone_activate_minimized_yes"></span>
+                              data-translate="domain_tab_ZONE_no_zone_activate_minimized_yes"></span>
                         </label>
                     </div>
                     <div class="oui-radio">
@@ -27,7 +27,7 @@
                                data-ng-value="false">
                         <label class="oui-radio__label-container" for="activationZoneMinimized-no">
                         <span class="oui-radio__label"
-                              data-i18n-static="domain_tab_ZONE_no_zone_activate_minimized_no"></span>
+                              data-translate="domain_tab_ZONE_no_zone_activate_minimized_no"></span>
                         </label>
                     </div>
                 </form>

@@ -24,13 +24,8 @@ angular.module('App').config(($stateProvider) => {
           });
         },
       ],
-      translator: [
-        'translator',
-        translator => translator
-          .load(['email', 'hosting', 'mailing_list'])
-          .then(() => translator),
-      ],
     },
+    translations: ['email', 'hosting', 'mailing-list'],
   });
 
   $stateProvider.state('app.email.delegate', {
@@ -52,11 +47,8 @@ angular.module('App').config(($stateProvider) => {
           });
         },
       ],
-      translator: [
-        'translator',
-        translator => translator.load(['email']).then(() => translator),
-      ],
     },
+    translations: ['email'],
   });
 
   $stateProvider.state('app.mx-plan', {
@@ -76,10 +68,7 @@ angular.module('App').config(($stateProvider) => {
           });
         },
       ],
-      translator: [
-        'translator',
-        translator => translator.load(['mxPlan']).then(() => translator),
-      ],
     },
+    translations: ['mx-plan'],
   });
 });

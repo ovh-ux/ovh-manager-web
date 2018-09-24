@@ -6,7 +6,8 @@
 
     <!-- // No zone on domain -->
     <div class="alert alert-warning" role="alert"
-         data-ng-bind="tr('domain_tab_DYNHOST_domain_no_zone', ctrlDomainDynHost.product.displayName)"
+         data-translate="domain_tab_DYNHOST_domain_no_zone"
+         data-translate-values="{ t0: ctrlDomainDynHost.product.displayName }"
          data-ng-if="!ctrlDomainDynHost.loading.init && !ctrlDomainDynHost.domainHasZone"></div>
 
     <!-- // Domain has zone -->

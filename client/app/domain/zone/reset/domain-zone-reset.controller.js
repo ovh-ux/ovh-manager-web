@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'DomainZoneResetCtrl',
   class DomainZoneResetCtrl {
-    constructor($scope, $q, Alerter, Domain, DomainValidator, Emails, Hosting) {
+    constructor($scope, $q, $translate, Alerter, Domain, DomainValidator, Emails, Hosting) {
       this.$scope = $scope;
       this.$q = $q;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.DomainValidator = DomainValidator;
@@ -91,7 +92,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_configuration_zonedns_reset_error'),
+            this.$translate.instant('domain_configuration_zonedns_reset_error'),
             err,
             this.$scope.alerts.main,
           );
@@ -133,11 +134,11 @@ angular.module('App').controller(
           );
         })
         .then(() => this.Alerter.success(
-          this.$scope.tr('domain_configuration_zonedns_reset_success'),
+          this.$translate.instant('domain_configuration_zonedns_reset_success'),
           this.$scope.alerts.main,
         ))
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('domain_configuration_zonedns_reset_error'),
+          this.$translate.instant('domain_configuration_zonedns_reset_error'),
           err,
           this.$scope.alerts.main,
         ))

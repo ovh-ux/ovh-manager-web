@@ -1,12 +1,12 @@
 <div data-ng-controller="EmailsMigrateAccountCtrl as ctrl">
-    <oui-back-button data-heading="{{::tr('email_tab_modal_migrate_title')}}"
+    <oui-back-button data-heading="{{:: 'email_tab_modal_migrate_title' | translate }}"
                      data-on-click="ctrlEmailDomainEmail.displayEmailsList()">
     </oui-back-button>
 
     <p>
         <a class="oui-link oui-link_icon" href="{{::ctrl.allGuides}}" target="_blank"
-            title="{{tr('email_tab_modal_migrate_configuration_guides_button')}} ({{tr('core_new_window')}})">
-            <span data-i18n-static="email_tab_modal_migrate_configuration_guides_button"></span>
+            title="{{ 'email_tab_modal_migrate_configuration_guides_button' | translate }} ({{ 'core_new_window' | translate }})">
+            <span data-translate="email_tab_modal_migrate_configuration_guides_button"></span>
             <span class="oui-icon oui-icon-external_link" aria-hidden="true"></span>
         </a>
     </p>
@@ -14,7 +14,7 @@
     <!-- Email Account -->
     <div class="oui-field">
         <label class="oui-field__label oui-label"
-            data-i18n-static="email_tab_modal_migrate_account_email_label">
+            data-translate="email_tab_modal_migrate_account_email_label">
         </label>
         <div class="oui-field__control oui-field__control_m">
             <p data-ng-bind="ctrl.email.email"></p>
@@ -26,7 +26,7 @@
         data-on-finish="ctrl.migrateAccount()">
 
         <!-- Step 1: Destination -->
-        <oui-step-form data-header="{{::tr('email_tab_modal_migrate_detination_step_title')}}"
+        <oui-step-form data-header="{{:: 'email_tab_modal_migrate_detination_step_title' | translate }}"
             data-loading="ctrl.loaders.isInitialRetrievalRunning"
             data-navigation="ctrl.availableServices"
             data-valid="ctrl.migrate.destinationService"
@@ -35,10 +35,10 @@
 
             <!-- No Service -->
             <div data-ng-if="!ctrl.availableServices">
-                <p data-i18n-static="email_tab_modal_migrate_no_email_service"></p>
+                <p data-translate="email_tab_modal_migrate_no_email_service"></p>
                 <a class="btn btn-primary" href="{{::ctrl.emailsOrder}}" target="_blank"
-                    title="{{tr('email_tab_modal_migrate_order_email_service')}} ({{tr('core_new_window')}})">
-                    <span data-i18n-static="email_tab_modal_migrate_order_email_service"></span>
+                    title="{{ 'email_tab_modal_migrate_order_email_service' | translate }} ({{ 'core_new_window' | translate }})">
+                    <span data-translate="email_tab_modal_migrate_order_email_service"></span>
                     <span class="fa fa-external-link"></span>
                 </a>
             </div>
@@ -48,7 +48,7 @@
             <div class="oui-field"
                 data-ng-if="ctrl.availableServices">
                 <label class="oui-field__label oui-label"
-                    data-i18n-static="email_tab_modal_migrate_destination_service_label">
+                    data-translate="email_tab_modal_migrate_destination_service_label">
                 </label>
                 <div class="row oui-field__control oui-field__control_auto">
                     <div class="col-md-{{(12 / ctrl.availableServices)}}"
@@ -56,7 +56,7 @@
                         data-ng-hide="!ctrl.destinationFocused && (ctrl.migrate.destinationService.type !== serviceType)">
                         <oui-select-picker name="serviceType"
                             data-text="{{::serviceType}}"
-                            data-placeholder="{{::tr('select_placeholder')}}"
+                            data-placeholder="{{:: 'select_placeholder' | translate }}"
                             data-model="ctrl.migrate.destinationService"
                             data-match="name"
                             data-values="destinationService">
@@ -70,7 +70,7 @@
         <!-- /Step 1: Destination -->
 
         <!-- Step 2: Informations -->
-        <oui-step-form data-header="{{::tr('email_tab_modal_migrate_informations_step_title')}}"
+        <oui-step-form data-header="{{:: 'email_tab_modal_migrate_informations_step_title' | translate }}"
             data-loading="ctrl.loaders.isWaitingForDestinationEmails"
             data-valid="ctrl.migrate.destinationEmail"
             data-navigation="ctrl.migrate.destinationEmail"
@@ -81,35 +81,35 @@
             <div data-ng-if="ctrl.migrate.destinationEmail">
 
                 <!-- Before -->
-                <p class="oui-header_4" data-i18n-static="email_tab_modal_migrate_informations_before_title"></p>
+                <p class="oui-header_4" data-translate="email_tab_modal_migrate_informations_before_title"></p>
                 <p>
-                    <span data-ng-bind-html="tr('email_tab_modal_migrate_available_email_selected', ctrl.migrate.destinationEmail)"></span>
-                    <span data-ng-if="!ctrl.isExchange" data-i18n-static="email_tab_modal_migrate_not_supported"></span>
-                    <span data-ng-if="ctrl.isExchange" data-i18n-static="email_tab_modal_migrate_not_supported_exchange"></span>
+                    <span data-ng-bind-html="'email_tab_modal_migrate_available_email_selected' | translate: { t0: ctrl.migrate.destinationEmail }"></span>
+                    <span data-ng-if="!ctrl.isExchange" data-translate="email_tab_modal_migrate_not_supported"></span>
+                    <span data-ng-if="ctrl.isExchange" data-translate="email_tab_modal_migrate_not_supported_exchange"></span>
                 </p>
                 <!-- /Before -->
 
                 <!-- While -->
-                <p class="oui-header_4" data-i18n-static="email_tab_modal_migrate_informations_while_title"></p>
+                <p class="oui-header_4" data-translate="email_tab_modal_migrate_informations_while_title"></p>
                 <p>
-                    <span data-ng-bind-html="::tr('email_tab_modal_migrate_confirmation_delay')"></span>
-                    <span data-i18n-static="email_tab_modal_migrate_cant_cancel_or_access"></span>
-                    <span data-i18n-static="email_tab_modal_migrate_alert_dont_change_password"></span>
+                    <span data-ng-bind-html=":: 'email_tab_modal_migrate_confirmation_delay' | translate"></span>
+                    <span data-translate="email_tab_modal_migrate_cant_cancel_or_access"></span>
+                    <span data-translate="email_tab_modal_migrate_alert_dont_change_password"></span>
                 </p>
                 <!-- /While -->
 
                 <!-- After -->
-                <p class="oui-header_4" data-i18n-static="email_tab_modal_migrate_informations_after_title"></p>
+                <p class="oui-header_4" data-translate="email_tab_modal_migrate_informations_after_title"></p>
                 <p>
                     <span data-ng-if="ctrl.remainingAvailableEmails"
-                        data-ng-bind-html="tr('email_tab_modal_migrate_remaining_available_emails', ctrl.remainingAvailableEmails.toString())">
+                        data-ng-bind-html="'email_tab_modal_migrate_remaining_available_emails' | translate: { t0: ctrl.remainingAvailableEmails.toString() }">
                     </span>
                     <span data-ng-if="!ctrl.remainingAvailableEmails"
-                        data-i18n-static="email_tab_modal_migrate_no_remaining_available_emails">
+                        data-translate="email_tab_modal_migrate_no_remaining_available_emails">
                     </span>
-                    <span data-i18n-static="email_tab_modal_migrate_email_deleted"></span>
-                    <span data-ng-if="!ctrl.isExchange" data-i18n-static="email_tab_modal_migrate_email_reconfiguration"></span>
-                    <span data-ng-if="ctrl.isExchange" data-i18n-static="email_tab_modal_migrate_email_reconfiguration_exchange"></span>
+                    <span data-translate="email_tab_modal_migrate_email_deleted"></span>
+                    <span data-ng-if="!ctrl.isExchange" data-translate="email_tab_modal_migrate_email_reconfiguration"></span>
+                    <span data-ng-if="ctrl.isExchange" data-translate="email_tab_modal_migrate_email_reconfiguration_exchange"></span>
                 </p>
                 <!-- /After -->
 
@@ -117,7 +117,7 @@
                 <!-- Aknowledge Checkbox -->
                 <oui-field>
                     <oui-checkbox name="aknowledge" required
-                        data-text="{{::tr('email_tab_modal_migrate_aknowledge')}}"
+                        data-text="{{:: 'email_tab_modal_migrate_aknowledge' | translate }}"
                         data-model="ctrl.migrate.aknowledge">
                     </oui-checkbox>
                 </oui-field>
@@ -129,25 +129,25 @@
             <!-- No available email address -->
             <div data-ng-if="!ctrl.migrate.destinationEmail">
                 <p>
-                    <span data-ng-bind-html="tr('email_tab_modal_migrate_no_available_email', ctrl.migrate.destinationService.name)"></span>
-                    <span data-i18n-static="email_tab_modal_migrate_configure_me"></span>
+                    <span data-ng-bind-html="'email_tab_modal_migrate_no_available_email' | translate: { t0: ctrl.migrate.destinationService.name }"></span>
+                    <span data-translate="email_tab_modal_migrate_configure_me"></span>
                 </p>
                 <p data-ng-switch="ctrl.migrate.destinationService.type">
-                    <span data-i18n-static="email_tab_modal_migrate_choose_another_service_or"></span>
-                    <a class="oui-link" 
+                    <span data-translate="email_tab_modal_migrate_choose_another_service_or"></span>
+                    <a class="oui-link"
                         data-ui-sref="app.email-pro({productId: ctrl.migrate.destinationService.name, tab: 'ACCOUNT'})"
                         data-ng-switch-when="EMAIL PRO"
-                        data-i18n-static="email_tab_modal_migrate_order_new_emails_button">
+                        data-translate="email_tab_modal_migrate_order_new_emails_button">
                     </a>
                     <a class="oui-link"
                         data-ui-sref="app.microsoft.exchange.hosted({organization: ctrl.migrate.destinationService.name, productId: ctrl.migrate.destinationService.name, tab: 'ACCOUNT'})"
                         data-ng-switch-when="HOSTED EXCHANGE"
-                        data-i18n-static="email_tab_modal_migrate_order_new_emails_button">
+                        data-translate="email_tab_modal_migrate_order_new_emails_button">
                     </a>
                     <a class="oui-link"
                         data-ui-sref="app.microsoft.exchange.dedicated({organization: ctrl.migrate.destinationService.name, productId: ctrl.migrate.destinationService.name, tab: 'ACCOUNT'})"
                         data-ng-switch-when="PRIVATE EXCHANGE"
-                        data-i18n-static="email_tab_modal_migrate_order_new_emails_button">
+                        data-translate="email_tab_modal_migrate_order_new_emails_button">
                     </a>
                 </p>
             </div>
@@ -157,12 +157,12 @@
         <!-- /Step 2: Informations -->
 
         <!-- Step 3: Confirmation -->
-        <oui-step-form data-header="{{::tr('email_tab_modal_migrate_confirmation_step_title')}}"
+        <oui-step-form data-header="{{:: 'email_tab_modal_migrate_confirmation_step_title' | translate }}"
             data-loading="ctrl.loaders.isWaitingForMigrationCheck || ctrl.loaders.isWaitingForMigration"
             data-valid="ctrl.isMigrationDataValid"
             data-navigation="ctrl.isMigrationDataValid"
-            data-submit-text="{{::tr('email_tab_modal_migrate_submit')}}"
-            data-cancel-text="{{::tr('wizard_cancel')}}"
+            data-submit-text="{{:: 'email_tab_modal_migrate_submit' | translate }}"
+            data-cancel-text="{{:: 'wizard_cancel' | translate }}"
             data-on-cancel="ctrlEmailDomainEmail.displayEmailsList()">
 
             <!-- Migration data invalid -->
@@ -179,7 +179,7 @@
             <div data-ng-if="ctrl.isMigrationDataValid">
 
                 <!-- Password -->
-                <oui-field data-label="{{::tr('email_tab_modal_migrate_confirmation_password')}}"
+                <oui-field data-label="{{:: 'email_tab_modal_migrate_confirmation_password' | translate }}"
                     data-size="m">
                     <input class="oui-input" id="accountPassword" name="accountPassword"
                         type="password" autocomplete="off" required

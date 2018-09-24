@@ -2,16 +2,16 @@ angular
   .module('App')
   .controller('PrivateDatabaseMetricsCtrl', class PrivateDatabaseMetricsCtrl {
     constructor(
-      $scope,
-      Alerter, ChartjsFactory, PrivateDatabase, translator,
+      $scope, $translate,
+      Alerter, ChartjsFactory, PrivateDatabase,
       PRIVATE_DATABASE_METRICS,
     ) {
       this.$scope = $scope;
+      this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.ChartjsFactory = ChartjsFactory;
       this.PrivateDatabase = PrivateDatabase;
-      this.translator = translator;
 
       this.PRIVATE_DATABASE_METRICS = PRIVATE_DATABASE_METRICS;
     }
@@ -32,7 +32,7 @@ angular
         })
         .then((chartData) => {
           if (!_(chartData).isArray()) {
-            throw new Error(this.translator.tr('common_temporary_error'));
+            throw new Error(this.$translate.instant('common_temporary_error'));
           }
 
           const chartSettings = this.PRIVATE_DATABASE_METRICS.specificDatabaseVersionChartSelection[
@@ -57,7 +57,7 @@ angular
                   .merge(currentChartSettings)
                   .value();
                 const chart = new this.ChartjsFactory(settingsForCurrentChart);
-                const serieName = this.translator.tr(`privateDatabase_metrics_${chartName}_graph_${currentChartData.metric.replace(/\./g, '_')}`);
+                const serieName = this.$translate.instant(`privateDatabase_metrics_${chartName}_graph_${currentChartData.metric.replace(/\./g, '_')}`);
                 const serieValue = this.constructor.getChartSeries(currentChartData);
 
                 chart.addSerie(
@@ -76,7 +76,7 @@ angular
         })
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          this.Alerter.alertFromSWS(this.$scope.tr('privateDatabase_dashboard_loading_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(this.$translate.instant('privateDatabase_dashboard_loading_error'), err, this.$scope.alerts.main);
         })
         .finally(() => {
           this.isFetchingMetrics = false;

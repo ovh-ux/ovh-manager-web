@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'HostingDatabaseCheckQuotaCtrl',
   class HostingDatabaseCheckQuotaCtrl {
-    constructor($scope, $stateParams, Alerter, HostingDatabase) {
+    constructor($scope, $stateParams, $translate, Alerter, HostingDatabase) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.hostingDatabaseService = HostingDatabase;
     }
@@ -21,9 +22,9 @@ angular.module('App').controller(
         .requestDatabaseQuotaCheck(this.$stateParams.productId, this.bddName)
         .then((data) => {
           this.alerter.success(
-            this.$scope.tr(
+            this.$translate.instant(
               'hosting_tab_DATABASES_configuration_check_quota_success',
-              [this.bddName],
+              { t0: this.bddName },
             ),
             this.$scope.alerts.main,
           );
@@ -32,7 +33,7 @@ angular.module('App').controller(
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_DATABASES_configuration_check_quota_fail'),
+            this.$translate.instant('hosting_tab_DATABASES_configuration_check_quota_fail'),
             _.get(err, 'data', err),
             this.$scope.alerts.main,
           );

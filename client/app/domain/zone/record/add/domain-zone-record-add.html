@@ -3,14 +3,14 @@
          data-wizard-bread-crumb
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="addDnsEntry"
-         data-wizard-title="i18n.domain_configuration_dns_entry_add_title">
+         data-wizard-title="'domain_configuration_dns_entry_add_title' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="ctrl.model.fieldType">
 
-            <p data-i18n-static="domain_configuration_dns_entry_add_step1_title"></p>
+            <p data-translate="domain_configuration_dns_entry_add_step1_title"></p>
 
-            <p class="mt-2" data-i18n-static="domain_configuration_dns_entry_add_step1_subtitle1"></p>
+            <p class="mt-2" data-translate="domain_configuration_dns_entry_add_step1_subtitle1"></p>
             <ul class="d-flex flex-wrap flex-column flex-md-row list-unstyled">
                 <li class="pr-3" data-ng-repeat="fieldType in ['A', 'AAAA', 'NS', 'CNAME'] track by $index">
                     <button class="oui-button oui-button_primary mb-3" type="button"
@@ -22,7 +22,7 @@
                 </li>
             </ul>
 
-            <p class="mt-4" data-i18n-static="domain_configuration_dns_entry_add_step1_subtitle3"></p>
+            <p class="mt-4" data-translate="domain_configuration_dns_entry_add_step1_subtitle3"></p>
             <ul class="d-flex flex-wrap flex-column flex-md-row list-unstyled">
                 <li class="pr-3"
                     data-ng-repeat="fieldType in ['CAA', 'TXT', 'NAPTR', 'SRV', 'LOC', 'SSHFP', 'TLSA'] track by $index">
@@ -35,7 +35,7 @@
                 </li>
             </ul>
 
-            <p class="mt-4" data-i18n-static="domain_configuration_dns_entry_add_step1_subtitle4"></p>
+            <p class="mt-4" data-translate="domain_configuration_dns_entry_add_step1_subtitle4"></p>
             <ul class="d-flex flex-wrap flex-column flex-md-row list-unstyled">
                 <li class="pr-3"
                     data-ng-repeat="fieldType in ['MX', 'SPF', 'DKIM', 'DMARC'] track by $index">
@@ -49,32 +49,32 @@
             </ul>
 
             <div data-wizard-step-help>
-                <h3 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_title"></h3>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_desc"></p>
-                <h4 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_a"></h4>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_a_desc"></p>
-                <h4 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_aaaa"></h4>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_aaaa_desc"></p>
-                <h4 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_cname"></h4>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_cname_desc"></p>
-                <h4 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_dkim"></h4>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_dkim_desc"></p>
-                <h4 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_loc"></h4>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_loc_desc"></p>
-                <h4 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_mx"></h4>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_mx_desc"></p>
-                <h4 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_naptr"></h4>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_naptr_desc"></p>
-                <h4 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_ns"></h4>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_ns_desc"></p>
-                <h4 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_spf"></h4>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_spf_desc"></p>
-                <h4 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_srv"></h4>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_srv_desc"></p>
-                <h4 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_sshfp"></h4>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_sshfp_desc"></p>
-                <h4 data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_txt"></h4>
-                <p data-i18n-static="domain_configuration_dns_entry_add_step1_helpwizard_txt_desc"></p>
+                <h3 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_title"></h3>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_desc"></p>
+                <h4 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_a"></h4>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_a_desc"></p>
+                <h4 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_aaaa"></h4>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_aaaa_desc"></p>
+                <h4 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_cname"></h4>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_cname_desc"></p>
+                <h4 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_dkim"></h4>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_dkim_desc"></p>
+                <h4 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_loc"></h4>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_loc_desc"></p>
+                <h4 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_mx"></h4>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_mx_desc"></p>
+                <h4 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_naptr"></h4>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_naptr_desc"></p>
+                <h4 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_ns"></h4>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_ns_desc"></p>
+                <h4 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_spf"></h4>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_spf_desc"></p>
+                <h4 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_srv"></h4>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_srv_desc"></p>
+                <h4 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_sshfp"></h4>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_sshfp_desc"></p>
+                <h4 data-translate="domain_configuration_dns_entry_add_step1_helpwizard_txt"></h4>
+                <p data-translate="domain_configuration_dns_entry_add_step1_helpwizard_txt_desc"></p>
             </div>
         </div>
 

@@ -3,19 +3,19 @@
          data-wizard
          data-wizard-on-cancel="closeModal"
          data-wizard-on-finish="closeModal"
-         data-wizard-title="tr('modal_working_status_title')"
+         data-wizard-title="'modal_working_status_title' | translate"
          data-wizard-title-icon="'fa fa-exclamation-triangle fa-3x white'"
          data-wizard-hide-cancel-button="true"
-         data-wizard-confirm-button-text="tr('wizard_close')">
+         data-wizard-confirm-button-text="'wizard_close' | translate">
 
         <div data-wizard-step>
             <div data-ng-repeat="work in worksDetails track by $index">
                 <h5><a data-ng-href="{{work.link}}" target="_blank" data-ng-bind="work.title"></a></h5>
                 <em data-ng-bind="work.date | date:'short'"></em>
                 <p data-ng-bind-html="work.summary"></p>
-                <em><strong data-ng-bind="tr('modal_working_status_type')"></strong><span data-ng-bind="work.details.type"></span></em> 
-                <em><strong class="leftspace-15" data-ng-bind="tr('modal_working_status_category')"></strong><span data-ng-bind="work.details.category"></span> <strong class="leftspace-15" data-ng-bind="tr('modal_working_status_status')"></strong> <span data-ng-bind="work.details.status"></span></em>
-                <hr>        
+                <em><strong data-translate="modal_working_status_type"></strong><span data-ng-bind="work.details.type"></span></em>
+                <em><strong class="leftspace-15" data-translate="modal_working_status_category"></strong><span data-ng-bind="work.details.category"></span> <strong class="leftspace-15" data-translate="modal_working_status_status"></strong> <span data-ng-bind="work.details.status"></span></em>
+                <hr>
             </div>
         </div>
     </div>

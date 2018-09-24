@@ -5,12 +5,14 @@ angular.module('App').controller(
      * Constructor
      * @param $scope
      * @param $stateParams
+     * @param $translate
      * @param Alerter
      * @param MailingLists
      */
-    constructor($scope, $stateParams, Alerter, MailingLists) {
+    constructor($scope, $stateParams, $translate, Alerter, MailingLists) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.MailingLists = MailingLists;
     }
@@ -41,11 +43,11 @@ angular.module('App').controller(
         .then((tasks) => {
           this.Alerter.alertFromSWSBatchResult(
             {
-              OK: this.$scope.tr(moderatorsToDelete.length === 1
+              OK: this.$translate.instant(moderatorsToDelete.length === 1
                 ? 'mailing_list_tab_modal_moderator_delete_success'
                 : 'mailing_list_tab_modal_moderators_delete_success'),
-              PARTIAL: this.$scope.tr('mailing_list_tab_modal_moderators_delete_error'),
-              ERROR: this.$scope.tr('mailing_list_tab_modal_moderators_delete_error'),
+              PARTIAL: this.$translate.instant('mailing_list_tab_modal_moderators_delete_error'),
+              ERROR: this.$translate.instant('mailing_list_tab_modal_moderators_delete_error'),
             },
             tasks,
             this.$scope.alerts.main,
@@ -60,7 +62,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr(moderatorsToDelete.length === 1
+            this.$translate.instant(moderatorsToDelete.length === 1
               ? 'mailing_list_tab_modal_moderator_delete_error'
               : 'mailing_list_tab_modal_moderators_delete_error'),
             err,

@@ -15,20 +15,20 @@ angular.module('App').controller(
       $scope,
       $stateParams,
       $timeout,
+      $translate,
       Alerter,
       Hosting,
       HostingRuntimes,
-      translator,
     ) {
       this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
+      this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.Hosting = Hosting;
       this.HostingRuntimes = HostingRuntimes;
-      this.translator = translator;
     }
 
     /**
@@ -56,7 +56,7 @@ angular.module('App').controller(
       return this.HostingRuntimes.list(this.$stateParams.productId)
         .then((ids) => {
           if (!_(ids).isArray()) {
-            throw this.translator.tr('hosting_tab_RUNTIMES_list_error');
+            throw this.$translate.instant('hosting_tab_RUNTIMES_list_error');
           }
 
           this.runtimes = ids.sort().map(id => ({ id }));
@@ -86,7 +86,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.error(
-            this.$scope.tr('hosting_tab_RUNTIMES_list_error') + err.message,
+            this.$translate.instant('hosting_tab_RUNTIMES_list_error') + err.message,
             this.$scope.alerts.main,
           );
         })
@@ -110,7 +110,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.error(
-            this.$scope.tr('hosting_tab_RUNTIMES_error') + err.message,
+            this.$translate.instant('hosting_tab_RUNTIMES_error') + err.message,
             this.$scope.alerts.main,
           );
         });

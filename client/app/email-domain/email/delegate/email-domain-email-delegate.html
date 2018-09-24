@@ -1,19 +1,19 @@
 <div data-ng-controller="EmailsDelegateCtrl as ctrl">
     <div data-wizard
-         data-wizard-confirm-button-text="i18n.wizard_close"
+         data-wizard-confirm-button-text="'wizard_close' | translate"
          data-wizard-hide-cancel-button="true"
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="resetAction"
-         data-wizard-title="i18n.email_tab_popover_delegate_title">
+         data-wizard-title="'email_tab_popover_delegate_title' | translate">
 
         <div data-wizard-step>
 
-            <p data-ng-bind-html="tr('email_tab_popover_delegate_info', [currentActionData.accountName])"></p>
+            <p data-ng-bind-html="'email_tab_popover_delegate_info' | translate: { t0: currentActionData.accountName }"></p>
 
             <p data-ng-if="ctrl.createNicUrl">
-                <a target="_blank" title="{{::i18n.emails_create_account_new_window}}"
+                <a target="_blank" title="{{:: 'emails_create_account_new_window' | translate }}"
                    data-ng-href="{{ctrl.createNicUrl}}">
-                    <span data-i18n-static="emails_create_account"></span>
+                    <span data-translate="emails_create_account"></span>
                     <span class="fa fa-external-link" aria-hidden="true"></span>
                 </a>
             </p>
@@ -25,9 +25,9 @@
             <table class="table table-condensed" data-ng-if="!ctrl.loading">
                 <thead>
                     <tr>
-                        <th scope="col" data-i18n-static="email_tab_popover_delegate_tab_header_name"></th>
+                        <th scope="col" data-translate="email_tab_popover_delegate_tab_header_name"></th>
                         <th class="min-width text-right" scope="col">
-                            <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_popover_delegate_tab_header_reload}}"
+                            <button class="btn btn-icon" type="button" title="{{:: 'email_tab_popover_delegate_tab_header_reload' | translate }}"
                                     data-ng-click="ctrl.initDelegate()">
                                 <span class="fa fa-refresh" aria-hidden="true"></span>
                             </button>
@@ -39,7 +39,7 @@
                     <tr data-ng-if="!ctrl.addDelegateShown">
                         <td class="text-center">
                             <button class="btn btn-link" type="button"
-                                    data-i18n-static="email_tab_popover_delegate_tab_content_add"
+                                    data-translate="email_tab_popover_delegate_tab_content_add"
                                     data-ng-click="ctrl.addDelegateShown = true">
                             </button>
                         </td>
@@ -58,7 +58,7 @@
                                        data-ng-model="ctrl.model.value"
                                        data-ng-pattern="ctrl.nicPattern">
                                 <small class="text-danger"
-                                       data-i18n-static="email_tab_popover_delegate_format_error"
+                                       data-translate="email_tab_popover_delegate_format_error"
                                        data-ng-if="ctrl.addNicForm.nic.$error.pattern"></small>
                             </form>
                         </td>
@@ -78,7 +78,7 @@
                     <tr data-ng-repeat="delegationAccount in ctrl.delegationAccountList track by $index">
                         <td data-ng-bind="delegationAccount"></td>
                         <td class="text-right">
-                            <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_popover_delegate_tab_content_delete}}"
+                            <button class="btn btn-icon" type="button" title="{{:: 'email_tab_popover_delegate_tab_content_delete' | translate }}"
                                     data-ng-click="ctrl.removeDelegate(delegationAccount)">
                                 <span class="fa fa-trash" aria-hidden="true"></span>
                             </button>

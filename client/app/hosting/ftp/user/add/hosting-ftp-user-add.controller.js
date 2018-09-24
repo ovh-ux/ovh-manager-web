@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'HostingFtpUserCreateCtrl',
   class HostingFtpUserCreateCtrl {
-    constructor($scope, $stateParams, Alerter, Hosting, HostingUser) {
+    constructor($scope, $stateParams, $translate, Alerter, Hosting, HostingUser) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Hosting = Hosting;
       this.HostingUser = HostingUser;
@@ -40,7 +41,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_FTP_configuration_user_create_step1_loading_error'),
+            this.$translate.instant('hosting_tab_FTP_configuration_user_create_step1_loading_error'),
             _.get(err, 'data', err),
             this.$scope.alerts.main,
           );
@@ -109,13 +110,13 @@ angular.module('App').controller(
       )
         .then(() => {
           this.Alerter.success(
-            this.$scope.tr('hosting_tab_FTP_configuration_user_create_success'),
+            this.$translate.instant('hosting_tab_FTP_configuration_user_create_success'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_FTP_configuration_user_create_fail'),
+            this.$translate.instant('hosting_tab_FTP_configuration_user_create_fail'),
             err,
             this.$scope.alerts.main,
           );

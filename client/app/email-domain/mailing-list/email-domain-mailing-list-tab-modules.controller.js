@@ -6,14 +6,16 @@ angular.module('App').controller(
      * @param $scope
      * @param $filter
      * @param $stateParams
+     * @param $translate
      * @param Alerter
      * @param Emails
      * @param MailingLists
      */
-    constructor($scope, $filter, $stateParams, Alerter, Emails, MailingLists) {
+    constructor($scope, $filter, $stateParams, $translate, Alerter, Emails, MailingLists) {
       this.$scope = $scope;
       this.$filter = $filter;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Emails = Emails;
       this.MailingLists = MailingLists;
@@ -68,7 +70,7 @@ angular.module('App').controller(
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.Alerter.alertFromSWS(
-            this.$scope.tr('mailing_list_tab_modal_get_lists_error'),
+            this.$translate.instant('mailing_list_tab_modal_get_lists_error'),
             err,
             this.$scope.alerts.tabs,
           );
@@ -92,7 +94,7 @@ angular.module('App').controller(
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.Alerter.alertFromSWS(
-            this.$scope.tr('mailing_list_tab_modal_get_lists_error'),
+            this.$translate.instant('mailing_list_tab_modal_get_lists_error'),
             err,
             this.$scope.alerts.main,
           );

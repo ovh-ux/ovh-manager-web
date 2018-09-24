@@ -4,6 +4,7 @@
     $q,
     $location,
     $timeout,
+    $translate,
     Hosting,
     Domain,
     HostingDomain,
@@ -76,7 +77,7 @@
         })
         .catch((err) => {
           Alerter.alertFromSWS(
-            $scope.tr('website_hosting_capabilities_error'),
+            $translate.instant('website_hosting_capabilities_error'),
             err,
             self.alerts,
           );
@@ -168,7 +169,7 @@
             }
 
             Alerter.alertFromSWS(
-              $scope.tr(traduction),
+              $translate.instant(traduction),
               { message: _.get(err, 'data', err.message), type: 'ERROR' },
               self.alerts,
             );
@@ -187,7 +188,7 @@
     $scope.$on('hostingDomain.modifyDomain.done', () => {
       if (!errorLoad) {
         Alerter.success(
-          $scope.tr('website_creation_success_done'),
+          $translate.instant('website_creation_success_done'),
           self.alerts,
         );
       }
@@ -196,7 +197,7 @@
     $scope.$on('hostingDomain.modifyDomain.error', (err) => {
       if (!errorLoad) {
         Alerter.alertFromSWS(
-          $scope.tr('website_creation_error'),
+          $translate.instant('website_creation_error'),
           _.get(err, 'data', err),
           self.alerts,
         );
@@ -236,6 +237,7 @@
       '$q',
       '$location',
       '$timeout',
+      '$translate',
       'Hosting',
       'Domain',
       'HostingDomain',

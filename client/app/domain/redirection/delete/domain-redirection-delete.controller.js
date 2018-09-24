@@ -1,11 +1,12 @@
 angular.module('controllers').controller(
   'controllers.Domain.Redirection.delete',
   class DomainRedirectionDeleteCtrl {
-    constructor($scope, $rootScope, $q, $stateParams, Alerter, Domain) {
+    constructor($scope, $rootScope, $q, $stateParams, $translate, Alerter, Domain) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$q = $q;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
     }
@@ -66,11 +67,11 @@ angular.module('controllers').controller(
       return this.$q
         .all(deletePromises)
         .then(() => this.Alerter.success(
-          this.$scope.tr('domain_tab_REDIRECTION_delete_success'),
+          this.$translate.instant('domain_tab_REDIRECTION_delete_success'),
           this.$scope.alerts.main,
         ))
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('domain_tab_REDIRECTION_delete_fail'),
+          this.$translate.instant('domain_tab_REDIRECTION_delete_fail'),
           err,
           this.$scope.alerts.main,
         ))

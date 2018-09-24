@@ -1,8 +1,9 @@
 angular.module('App').controller(
   'DomainDynHostEditCtrl',
   class DomainDynHostEditCtrl {
-    constructor($scope, Alerter, Domain, Validator) {
+    constructor($scope, $translate, Alerter, Domain, Validator) {
       this.$scope = $scope;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.Validator = Validator;
@@ -40,11 +41,11 @@ angular.module('App').controller(
         subDomain: punycode.toASCII(this.dynHost.subDomain),
       })
         .then(() => this.Domain.refreshZoneState(this.product.name).then(() => this.Alerter.success(
-          this.$scope.tr('domain_tab_DYNHOST_edit_success'),
+          this.$translate.instant('domain_tab_DYNHOST_edit_success'),
           this.$scope.alerts.main,
         )))
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('domain_tab_DYNHOST_error'),
+          this.$translate.instant('domain_tab_DYNHOST_error'),
           _.get(err, 'data', err),
           this.$scope.alerts.main,
         ))

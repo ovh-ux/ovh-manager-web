@@ -5,28 +5,31 @@ angular.module('App').controller(
      * Constructor
      * @param $scope
      * @param $stateParams
+     * @param $translate
      * @param Alerter
      * @param Emails
+     * @param LANGUAGES
      * @param User
      * @param constants
-     * @param translator
      */
     constructor(
       $scope,
       $stateParams,
+      $translate,
       Alerter,
       Emails,
+      LANGUAGES,
       User,
       constants,
-      translator,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Emails = Emails;
+      this.LANGUAGES = LANGUAGES;
       this.User = User;
       this.constants = constants;
-      this.translator = translator;
     }
 
     $onInit() {
@@ -41,7 +44,7 @@ angular.module('App').controller(
       this.User.getUser()
         .then((user) => {
           const nicLanguage = _.find(
-            this.translator.getAvailableLanguages(),
+            this.LANGUAGES,
             language => _(language.value).endsWith(user.ovhSubsidiary),
           );
           if (nicLanguage) {
@@ -64,14 +67,14 @@ angular.module('App').controller(
       this.Emails.createAcl(this.$stateParams.productId, this.addAclItem.value)
         .then(() => {
           this.Alerter.success(
-            this.$scope.tr('email_tab_table_acls_add_success'),
+            this.$translate.instant('email_tab_table_acls_add_success'),
             this.$scope.alerts.main,
           );
           this.refreshTableAcls();
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('email_tab_table_acls_add_error'),
+            this.$translate.instant('email_tab_table_acls_add_error'),
             err,
             this.$scope.alerts.main,
           );
@@ -92,7 +95,7 @@ angular.module('App').controller(
           this.acls = acls;
         })
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('email_tab_table_acls_error'),
+          this.$translate.instant('email_tab_table_acls_error'),
           err,
           this.$scope.alerts.main,
         ))

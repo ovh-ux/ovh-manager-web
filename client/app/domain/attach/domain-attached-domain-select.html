@@ -2,7 +2,7 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="goToHosting"
-         data-wizard-title="i18n.domain_attached_domain_select_title">
+         data-wizard-title="'domain_attached_domain_select_title' | translate">
 
         <div data-wizard-step>
             <div class="text-center" data-ng-if="ctrl.loading">
@@ -10,9 +10,9 @@
             </div>
 
             <form name="attachedDomainForm" data-ng-if="!ctrl.loading">
-                <p data-ng-bind-html="tr('domain_attached_domain_select_intro', [ctrl.domainName])"></p>
+                <p data-ng-bind-html="'domain_attached_domain_select_intro' | translate: { t0: ctrl.domainName }"></p>
                 <label class="oui-label" for="attachedDomains"
-                       data-i18n-static="domain_attached_domain_select_action"></label>
+                       data-translate="domain_attached_domain_select_action"></label>
                 <div class="oui-select">
                     <select class="oui-select__input" id="attachedDomains" name="attachedDomains"
                             data-ng-model="ctrl.selectedAttachedDomain"

@@ -7,6 +7,7 @@ angular
       $rootScope,
       $q,
       $timeout,
+      $translate,
       ConverterService,
       Hosting,
       Screenshot,
@@ -62,7 +63,7 @@ angular
           round: decimalWanted,
           base: -1,
         });
-        const resUnit = $scope.tr(`unit_size_${res.symbol}`);
+        const resUnit = $translate.instant(`unit_size_${res.symbol}`);
 
         return `${res.value} ${resUnit}`;
       };
@@ -102,17 +103,15 @@ angular
             .then((tasks) => {
               let queue;
               if (tasks && tasks.length > 0) {
-                const taskPendingMessage = $scope.i18n[
-                  `hosting_global_php_version_pending_task_${tasks[0].function.replace(
-                    /ovhConfig\//,
-                    '',
-                  )}`
-                ];
+                const taskPendingMessage = $translate.instant(`hosting_global_php_version_pending_task_${tasks[0].function.replace(
+                  /ovhConfig\//,
+                  '',
+                )}`);
                 _.set(
                   $scope.ovhConfig,
                   'taskPending',
                   taskPendingMessage
-                    || $scope.i18n.hosting_global_php_version_pending_task_common,
+                    || $translate.instant('hosting_global_php_version_pending_task_common'),
                 );
 
                 queue = _.map(
@@ -139,18 +138,15 @@ angular
             .then((tasks) => {
               if ($scope.ovhConfig) {
                 if (tasks && tasks.length > 0) {
-                  const taskErrorMessage = $scope.i18n[
-                    `hosting_global_php_version_pending_task_error_${tasks[0].function.replace(
-                      /ovhConfig\//,
-                      '',
-                    )}`
-                  ];
+                  const taskErrorMessage = $translate.instant(`hosting_global_php_version_pending_task_error_${tasks[0].function.replace(
+                    /ovhConfig\//,
+                    '',
+                  )}`);
                   _.set(
                     $scope.ovhConfig,
                     'taskPendingError',
                     taskErrorMessage
-                      || $scope.i18n
-                        .hosting_global_php_version_pending_task_error_common,
+                      || $translate.instant('hosting_global_php_version_pending_task_error_common'),
                   );
                 } else {
                   _.set($scope.ovhConfig, 'taskPendingError', false);
@@ -196,7 +192,7 @@ angular
         ))
         .catch((err) => {
           Alerter.alertFromSWS(
-            $scope.tr('common_serviceinfos_error', [privateDb]),
+            $translate.instant('common_serviceinfos_error', { t0: privateDb }),
             err,
             $scope.alerts.main,
           );
@@ -214,7 +210,7 @@ angular
               $rootScope.$broadcast(Hosting.events.tasksChanged);
               $scope.flushCdnState = 'ok';
               Alerter.success(
-                $scope.tr('hosting_dashboard_cdn_flush_done_success'),
+                $translate.instant('hosting_dashboard_cdn_flush_done_success'),
                 $scope.alerts.main,
               );
             });
@@ -234,7 +230,7 @@ angular
             $scope.sqlPriveState = 'doing';
             Hosting.pollSqlPrive($stateParams.productId, taskIds).then(() => {
               $scope.sqlPriveState = 'ok';
-              Alerter.success($scope.tr('hosting_dashboard_database_active_success_done'));
+              Alerter.success($translate.instant('hosting_dashboard_database_active_success_done'));
             });
           } else {
             $scope.sqlPriveState = 'ok';
@@ -307,12 +303,12 @@ angular
                     if (_.indexOf(hosting.updates, 'APACHE24') >= 0) {
                       $timeout(() => {
                         Alerter.alertFromSWS(
-                          $scope.tr(
+                          $translate.instant(
                             'hosting_global_php_version_pending_update_apache',
-                            [
-                              guides.works.apache,
-                              'http://travaux.ovh.net/?do=details&id=25601',
-                            ],
+                            {
+                              t0: guides.works.apache,
+                              t1: 'http://travaux.ovh.net/?do=details&id=25601',
+                            },
                           ),
                           null,
                           $scope.alerts.tabs,
@@ -366,7 +362,7 @@ angular
 
               if (hosting.messages.length > 0) {
                 Alerter.error(
-                  $scope.tr('hosting_dashboard_loading_error'),
+                  $translate.instant('hosting_dashboard_loading_error'),
                   $scope.alerts.page,
                 );
                 if (!hosting.name) {
@@ -428,7 +424,7 @@ angular
           .catch((err) => {
             _.set(err, 'type', err.type || 'ERROR');
             Alerter.alertFromSWS(
-              $scope.tr('hosting_dashboard_loading_error'),
+              $translate.instant('hosting_dashboard_loading_error'),
               err,
               $scope.alerts.main,
             );
@@ -521,21 +517,21 @@ angular
       // Add domain
       $scope.$on('hostingDomain.attachDomain.start', () => {
         Alerter.success(
-          $scope.tr('hosting_tab_DOMAINS_configuration_add_success_progress'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_add_success_progress'),
           $scope.alerts.main,
         );
       });
 
       $scope.$on('hostingDomain.attachDomain.done', () => {
         Alerter.success(
-          $scope.tr('hosting_tab_DOMAINS_configuration_add_success_finish'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_add_success_finish'),
           $scope.alerts.main,
         );
       });
 
       $scope.$on('hostingDomain.attachDomain.error', (event, err) => {
         Alerter.alertFromSWS(
-          $scope.tr('hosting_tab_DOMAINS_configuration_add_failure'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_add_failure'),
           _.get(err, 'data', err),
           $scope.alerts.main,
         );
@@ -544,7 +540,7 @@ angular
       // Modify domain
       $scope.$on('hostingDomain.modifyDomain.start', () => {
         Alerter.success(
-          $scope.tr('hosting_tab_DOMAINS_configuration_modify_success_progress'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_modify_success_progress'),
           $scope.alerts.main,
         );
       });
@@ -552,7 +548,7 @@ angular
       $scope.$on('hostingDomain.modifyDomain.done', () => {
         $scope.$broadcast('paginationServerSide.reload');
         Alerter.success(
-          $scope.tr('hosting_tab_DOMAINS_configuration_modify_success_finish'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_modify_success_finish'),
           $scope.alerts.main,
         );
       });
@@ -560,7 +556,7 @@ angular
       $scope.$on('hostingDomain.modifyDomain.error', (err) => {
         $scope.$broadcast('paginationServerSide.reload');
         Alerter.alertFromSWS(
-          $scope.tr('hosting_tab_DOMAINS_configuration_modify_failure'),
+          $translate.instant('hosting_tab_DOMAINS_configuration_modify_failure'),
           _.get(err, 'data', err),
           $scope.alerts.main,
         );

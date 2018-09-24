@@ -2,7 +2,7 @@ angular
   .module('App')
   .controller(
     'HostingBoostOfferDisableCtrl',
-    ($scope, HostingBoost, Alerter) => {
+    ($scope, $translate, HostingBoost, Alerter) => {
       $scope.product = $scope.currentActionData.product;
       $scope.acceptCGV = { value: false };
 
@@ -18,13 +18,13 @@ angular
         HostingBoost.disableBoost({ serviceName: $scope.product.serviceName })
           .then(() => {
             Alerter.success(
-              $scope.tr('hosting_tab_BOOST_disable_started'),
+              $translate.instant('hosting_tab_BOOST_disable_started'),
               $scope.alerts.main,
             );
           })
           .catch((err) => {
             Alerter.alertFromSWS(
-              $scope.tr('hosting_tab_BOOST_disable_error'),
+              $translate.instant('hosting_tab_BOOST_disable_error'),
               _.get(err, 'data', err),
               $scope.alerts.main,
             );

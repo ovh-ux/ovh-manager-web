@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'HostingLocalSeoDeleteCtrl',
   class HostingLocalSeoDeleteCtrl {
-    constructor($scope, $stateParams, Alerter, HostingLocalSeo) {
+    constructor($scope, $stateParams, $translate, Alerter, HostingLocalSeo) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.HostingLocalSeo = HostingLocalSeo;
     }
@@ -18,8 +19,8 @@ angular.module('App').controller(
       this.loading = true;
       return this.HostingLocalSeo
         .deleteLocation(this.productId, this.location.id)
-        .then(() => this.Alerter.success(this.$scope.tr('hosting_tab_LOCAL_SEO_delete_success'), this.$scope.alerts.main))
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('hosting_tab_LOCAL_SEO_delete_error'), err, this.$scope.alerts.main))
+        .then(() => this.Alerter.success(this.$translate.instant('hosting_tab_LOCAL_SEO_delete_success'), this.$scope.alerts.main))
+        .catch(err => this.Alerter.alertFromSWS(this.$translate.instant('hosting_tab_LOCAL_SEO_delete_error'), err, this.$scope.alerts.main))
         .finally(() => {
           this.loading = false;
           this.$scope.resetAction();

@@ -6,7 +6,6 @@ angular.module('directives').controller('cronSimpleSummaryCtrl', [
     // Hack for trads
     $scope.tr = $rootScope.tr;
     $scope.trpl = $rootScope.trpl;
-    $scope.i18n = $rootScope.i18n;
 
     $scope.mode = $scope.crontabObject.getCronMode();
     $scope.cron = $scope.crontabObject.getCronValue();

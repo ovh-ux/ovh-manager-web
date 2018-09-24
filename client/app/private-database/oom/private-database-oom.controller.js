@@ -1,10 +1,11 @@
 angular.module('App').controller(
   'PrivateDatabaseOomCtrl',
   class PrivateDatabaseOomCtrl {
-    constructor($scope, $q, $stateParams, Alerter, OomService) {
+    constructor($scope, $q, $stateParams, $translate, Alerter, OomService) {
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.oomService = OomService;
     }
@@ -18,11 +19,11 @@ angular.module('App').controller(
       this.displayType = {
         classic: {
           key: 'premium',
-          value: this.$scope.tr('privateDatabase_order_sql_type_premium_label'),
+          value: this.$translate.instant('privateDatabase_order_sql_type_premium_label'),
         },
         public: {
           key: 'dbaas',
-          value: this.$scope.tr('privateDatabase_order_sql_type_dbaas_label'),
+          value: this.$translate.instant('privateDatabase_order_sql_type_dbaas_label'),
         },
       };
 
