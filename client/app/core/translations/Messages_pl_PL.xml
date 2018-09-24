@@ -124,10 +124,10 @@
    <translation id="table_manage_entry" qtlid="404395">: zarządzaj</translation>
    <translation id="form_delete_item" qtlid="402113">Usuń element</translation>
    <translation id="form_add_item" qtlid="402126">Dodaj element</translation>
-   <translation id="wizard_breadcrumb" qtlid="158682">Etap {0} na {1}</translation>
+   <translation id="wizard_breadcrumb">Étape {{ currentStep }} sur {{ stepCount }}</translation>
    <translation id="table_delete_search" qtlid="402139">Wyczyść wyszukiwanie w tabeli</translation>
    <translation id="select_placeholder" qtlid="447963">Wybierz...</translation>
-   <translation id="pagination_page" qtlid="129123">Strona {0} / {1}</translation>
+   <translation id="pagination_page">Page {{current}} / {{last}}</translation>
    <translation id="pagination_go" qtlid="31522">OK</translation>
    <translation id="pagination_display" qtlid="69353">Wyświetl</translation>
    <translation id="common_actions" qtlid="72809">Operacje</translation>
@@ -268,24 +268,24 @@
 
    <translation id="contract_next" qtlid="17743">Dalej</translation>
    <translation id="contract_previous" qtlid="17431">Wstecz</translation>
-   <translation id="download_contract" qtlid="180369">Otwórz regulamin "{0}" w formacie PDF</translation>
+   <translation id="download_contract">Ouvrir le contrat "{{name}}" en PDF</translation>
    <translation id="contract_help" qtlid="180382">Przed zatwierdzeniem regulaminów należy je przeczytać.</translation>
-   <translation id="contracts_list_title" qtlid="180395">Masz {0} regulaminy do przeczytania.</translation>
+   <translation id="contracts_list_title">Il y a {{count}} contrats à consulter.</translation>
    <translation id="contract_list_title" qtlid="180408">Masz 1 regulamin do przeczytania.</translation>
    <translation id="contracts_agree" qtlid="180421">Akceptuję regulaminy</translation>
    <translation id="contract_agree" qtlid="180434">Akceptuję regulamin</translation>
 
    <translation id="day_1" qtlid="28807">1 dzień</translation>
-   <translation id="day_other" qtlid="158578">{} dni</translation>
+   <translation id="day_other">{0} jours</translation>
    <translation id="month_1" qtlid="70241">1 m-c</translation>
-   <translation id="month_other" qtlid="158591">{} m-c</translation>
+   <translation id="month_other">{0} mois</translation>
    <translation id="year_1" qtlid="70277">1 rok</translation>
-   <translation id="year_other" qtlid="158604">{} lat(a)</translation>
+   <translation id="year_other">{0} ans</translation>
    <translation id="upto" qtlid="158617">Do {0}</translation>
    <translation id="uptofirstdaynextmonth" qtlid="158630">Do pierwszego dnia kolejnego miesiąca</translation>
    <translation id="engage" qtlid="158643">Zamów {0}</translation>
-   <translation id="price_ht_label" qtlid="166183">{0}&#160;netto</translation>
-   <translation id="price_ttc_label" qtlid="166196">{0}&#160;brutto</translation>
+   <translation id="price_ht_label">{{price}}&#160;HT</translation>
+   <translation id="price_ttc_label">{{price}}&#160;TTC</translation>
    <translation id="price_free" qtlid="195776">W ofercie</translation>
    <translation id="price_label_yearly" qtlid="288977">/rok</translation>
 
