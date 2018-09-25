@@ -42,7 +42,7 @@ angular.module('App').controller(
       this.userInfos = {};
 
       this.database.oom = {
-        nbOomError: 4,
+        nbOomError: 2,
       };
 
       if (!this.isExpired) {
