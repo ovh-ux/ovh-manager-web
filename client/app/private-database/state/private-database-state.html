@@ -7,27 +7,27 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="oui-tile mb-5">
-                            <h3 class="oui-tile__title"
+                            <h3 class="oui-header_4 oui-tile__title"
                                 data-translate="privateDatabase_dashboard_general_informations"></h3>
                             <div class="oui-tile__body">
                                 <ul class="list-unstyled">
                                     <li class="oui-tile__item"
                                         data-ng-if="stateCtrl.database.state">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_dashboard_state"></strong>
-                                            <div class="label"
+                                            <div class="oui-status"
                                                  data-ng-class="{
-                                                    'label-danger': stateCtrl.database.state === 'detached',
-                                                    'label-warning' : stateCtrl.database.state === 'restartPending' || stateCtrl.database.state === 'stopPending' || database.state === 'stopped',
-                                                    'label-success' : stateCtrl.database.state === 'startPending' || stateCtrl.database.state === 'started' }"
+                                                    'oui-status_error': stateCtrl.database.state === 'detached',
+                                                    'oui-status_warning' : stateCtrl.database.state === 'restartPending' || stateCtrl.database.state === 'stopPending' || database.state === 'stopped',
+                                                    'oui-status_success' : stateCtrl.database.state === 'startPending' || stateCtrl.database.state === 'started' }"
                                                  data-ng-bind="'privateDatabase_dashboard_' + stateCtrl.database.state | translate">
                                             </div>
                                         </div>
                                     </li>
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_dashboard_type"></strong>
                                             <span data-ng-bind=":: 'privateDatabase_dashboard_type_' + stateCtrl.database.type | translate"></span>
                                         </div>
@@ -36,7 +36,7 @@
                                         <div class="oui-tile__definition">
                                             <div class="d-flex w-100">
                                                 <div>
-                                                    <strong class="d-block" data-translate="privateDatabase_dashboard_version"></strong>
+                                                    <strong class="oui-tile__term d-block" data-translate="privateDatabase_dashboard_version"></strong>
                                                     <span data-ng-bind=":: (('privateDatabase_dashboard_version_' + stateCtrl.database.version | translate) == 'privateDatabase_dashboard_version_' + stateCtrl.database.version)? stateCtrl.database.version: ('privateDatabase_dashboard_version_' + stateCtrl.database.version | translate)"></span>
                                                 </div>
                                                 <button class="btn btn-default my-auto ml-auto text-wrap" type="button" title="{{:: 'privateDatabase_change_version' | translate }}"
@@ -52,7 +52,7 @@
                                         <div class="oui-tile__definition">
                                             <div class="d-flex w-100">
                                                 <div class="w-50">
-                                                    <strong class="d-block"
+                                                    <strong class="oui-tile__term d-block"
                                                             data-translate="privateDatabase_dashboard_ram"></strong>
                                                     <button class="btn btn-xs d-block" type="button" title="{{:: 'privateDatabase_modale_oom_title' | translate }}"
                                                             data-ng-bind="::stateCtrl.database.ram.value + ('unit_size_' + stateCtrl.database.ram.unit | translate)"
@@ -79,21 +79,21 @@
                                     </li>
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_dashboard_infrastructure"></strong>
                                             <span data-ng-bind=":: 'privateDatabase_dashboard_infrastructure_' + stateCtrl.database.infrastructure | translate"></span>
                                         </div>
                                     </li>
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_dashboard_datacenter"></strong>
                                             <span data-ng-bind=":: (('privateDatabase_dashboard_datacenter_' + stateCtrl.database.datacenter | translate) == 'privateDatabase_dashboard_datacenter_' + stateCtrl.database.datacenter)? stateCtrl.database.datacenter: ('privateDatabase_dashboard_datacenter_' + stateCtrl.database.datacenter | translate)"></span>
                                         </div>
                                     </li>
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_dashboard_host"></strong>
                                             <span data-ng-bind="stateCtrl.database.server"></span>
                                         </div>
@@ -101,14 +101,14 @@
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
                                             <div data-ng-if="isRenew()">
-                                                <strong class="d-block"
+                                                <strong class="oui-tile__term d-block"
                                                         data-translate="privateDatabase_renew_date"></strong>
                                                 <span
                                                     data-ng-bind="::stateCtrl.database.serviceInfos.expiration | date:'MMMM yyyy'"></span>
                                             </div>
                                             <div class="d-flex w-100" data-ng-if="!isRenew()">
                                                 <div>
-                                                    <strong class="d-block"
+                                                    <strong class="oui-tile__term d-block"
                                                             data-translate="privateDatabase_expiration_date"
                                                             data-ng-if="!isRenew()"></strong>
                                                     <span data-ng-bind="::stateCtrl.database.serviceInfos.expiration | date:'mediumDate'"></span>
@@ -122,7 +122,7 @@
                                     </li>
                                     <li class="oui-tile__item" data-ng-if="stateCtrl.database.offer === 'classic'">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_dashboard_service_hosting_linked"></strong>
                                             <span data-ng-if="stateCtrl.hostingsLinked && stateCtrl.hostingsLinked.length === 0"
                                                   data-translate="privateDatabase_dashboard_service_hosting_linked_none"></span>
@@ -160,20 +160,20 @@
                             </div>
                         </div>
                         <div class="oui-tile mb-5" data-ng-if="stateCtrl.database.offer === 'classic'">
-                            <h3 class="oui-tile__title"
+                            <h3 class="oui-header_4 oui-tile__title"
                                 data-translate="privateDatabase_dashboard_admin_informations"></h3>
                             <div class="oui-tile__body">
                                 <ul class="list-unstyled">
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block" data-translate="privateDatabase_gui"></strong>
+                                            <strong class="oui-tile__term d-block" data-translate="privateDatabase_gui"></strong>
                                             <a data-ng-href="{{stateCtrl.database.guiURL}}" target="_blank"
                                                data-ng-bind="::stateCtrl.database.guiURL"></a>
                                         </div>
                                     </li>
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_tab_USER"></strong>
                                             <button class="btn btn-link p-0" type="button"
                                                     data-translate="privateDatabase_dashboard_admin_informations_users"
@@ -188,14 +188,14 @@
 
                     <div class="col-md-6">
                         <div class="oui-tile mb-5">
-                            <h3 class="oui-tile__title"
+                            <h3 class="oui-header_4 oui-tile__title"
                                 data-translate="privateDatabase_dashboard_connections_title"></h3>
                             <div class="oui-tile__body">
-                                <h4 class="oui-tile__definition">SQL</h4>
+                                <h4 class="oui-header_5 oui-tile__definition">SQL</h4>
                                 <ul class="list-unstyled">
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_dashboard_hostname"></strong>
                                             <span data-ng-if="stateCtrl.database.infrastructure === 'docker'"
                                                   data-ng-bind="::stateCtrl.database.hostname"></span>
@@ -205,14 +205,14 @@
                                     </li>
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_dashboard_port"></strong>
                                             <span data-ng-bind="::stateCtrl.database.port"></span>
                                         </div>
                                     </li>
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_tab_USER"></strong>
                                             <button class="btn btn-link p-0" type="button"
                                                     data-translate="privateDatabase_dashboard_admin_informations_users"
@@ -225,8 +225,8 @@
                                             <div class="d-flex w-100">
                                                 <div>
                                                     <div class="d-block">
-                                                        <strong
-                                                            data-translate="privateDatabase_dashboard_certificate"></strong>
+                                                        <strong class="oui-tile__term"
+                                                                data-translate="privateDatabase_dashboard_certificate"></strong>
                                                         <span class="fa fa-info-circle"
                                                               aria-hidden="true"
                                                               data-uib-tooltip="{{ 'privateDatabase_dashboard_certificate_tooltip' | translate }}"
@@ -247,12 +247,12 @@
                                 </ul>
                             </div>
                             <div class="oui-tile__body">
-                                <h4 class="oui-tile__definition"
+                                <h4 class="oui-header_5 oui-tile__definition"
                                     data-ng-bind="'privateDatabase_dashboard_ftp_informations_' + stateCtrl.database.infrastructure | translate"></h4>
                                 <ul class="list-unstyled">
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_dashboard_ftp_username"></strong>
                                             <span data-ng-if="stateCtrl.database.infrastructure === 'legacy'"
                                                   data-ng-bind="::stateCtrl.database.serviceName"></span>
@@ -263,7 +263,7 @@
                                         <div class="oui-tile__definition">
                                             <div class="d-flex w-100">
                                                 <div>
-                                                    <strong class="d-block"
+                                                    <strong class="oui-tile__term d-block"
                                                             data-ng-bind="'privateDatabase_password_' + stateCtrl.database.infrastructure | translate"></strong>
                                                     <span data-ng-show="!taskState.changeFtpPassword">********</span>
                                                 </div>
@@ -289,7 +289,7 @@
                                         <div class="oui-tile__definition">
                                             <div class="d-flex w-100">
                                                 <div>
-                                                    <strong class="d-block"
+                                                    <strong class="oui-tile__term d-block"
                                                             data-translate="privateDatabase_password_docker"></strong>
                                                     <span data-ng-show="!taskState.changeRootPassword">********</span>
                                                 </div>
@@ -310,14 +310,14 @@
                                     </li>
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_dashboard_hostname"></strong>
                                             <span data-ng-bind="::stateCtrl.database.hostnameFtp"></span>
                                         </div>
                                     </li>
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
-                                            <strong class="d-block"
+                                            <strong class="oui-tile__term d-block"
                                                     data-translate="privateDatabase_dashboard_port"></strong>
                                             <span data-ng-bind="::stateCtrl.database.portFtp"></span>
                                         </div>
@@ -333,7 +333,8 @@
         <div class="col-md-3">
             <div class="mb-5">
                 <!-- quota -->
-                <strong data-translate="privateDatabase_dashboard_disk_usage"></strong>
+                <strong class="oui-tile__term"
+                        data-translate="privateDatabase_dashboard_disk_usage"></strong>
                 <div class="oui-progress"
                      data-ng-class="{
                         'oui-progress_success': stateCtrl.database.quotaPercent.value < 51,
@@ -353,7 +354,7 @@
                 </div>
             </div>
             <div class="oui-tile mb-5" data-ng-if="guides">
-                <h3 class="oui-tile__title" data-translate="guide_add_subtitle"></h3>
+                <h3 class="oui-header_4 oui-tile__title" data-translate="guide_add_subtitle"></h3>
                 <div class="oui-tile__body">
                     <ul class="list-unstyled">
                         <li class="oui-tile__item oui-tile__item_button"
