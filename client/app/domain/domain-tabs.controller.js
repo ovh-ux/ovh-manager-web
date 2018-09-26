@@ -139,20 +139,21 @@ angular.module('App').controller(
       if (_.has(domain, 'name') && _.has(domain, 'whoisOwner.id')) {
         ownerUrlInfo.target = `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
       } else if (!_.has(domain, 'name')) {
-        ownerUrlInfo.error = this.$scope.tr('domain_tab_REDIRECTION_add_step4_server_cname_error');
+        ownerUrlInfo.error = this.$translate.instant('domain_tab_REDIRECTION_add_step4_server_cname_error');
       } else {
         switch (domain.whoisOwner) {
           case this.DOMAIN.whoIsStatus.PENDING:
-            ownerUrlInfo.error = this.$scope.tr('domain_dashboard_whois_pending');
+            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_pending');
             break;
           case this.DOMAIN.whoIsStatus.INVALID_CONTACT:
-            ownerUrlInfo.error = this.$scope.tr('domain_dashboard_whois_invalid_contact');
+            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_invalid_contact');
             break;
           default:
-            ownerUrlInfo.error = this.$scope.tr('domain_dashboard_whois_error');
+            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_error');
         }
       }
-      return ownerUrlInfo;
+      console.log(this.DOMAIN.whoIsStatus, domain.whoisOwner);
+      return { target: '', error: '' };
     }
 
     handleOwnerUrlError(errMsg) {
