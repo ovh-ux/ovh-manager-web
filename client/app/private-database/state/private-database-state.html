@@ -54,11 +54,10 @@
                                                 <div class="w-50">
                                                     <strong class="oui-tile__term d-block"
                                                             data-translate="privateDatabase_dashboard_ram"></strong>
-                                                    <button class="btn btn-xs d-block" type="button" title="{{:: 'privateDatabase_modale_oom_title' | translate }}"
-                                                            data-ng-bind="::stateCtrl.database.ram.value + ('unit_size_' + stateCtrl.database.ram.unit | translate)"
-                                                            data-ng-class="stateCtrl.database.oom.realList.length > stateCtrl.database.oom.nbOomError ? 'btn-danger' : (stateCtrl.database.oom.realList.length > 0 ? 'btn-warning' : 'btn-success')"
-                                                            data-ng-click="stateCtrl.goToOom()">
-                                                    </button>
+                                                    <div class="oui-status"
+                                                         data-ng-bind="::stateCtrl.database.ram.value + ('unit_size_' + stateCtrl.database.ram.unit | translate)"
+                                                         data-ng-class="stateCtrl.database.oom.realList.length >= stateCtrl.database.oom.nbOomError ? 'oui-status_error' : (stateCtrl.database.oom.realList.length > 0 ? 'oui-status_warning' : 'oui-status_success')">
+                                                    </div>
                                                     <button class="btn btn-icon btn-xs d-block text-wrap text-left" type="button" title="{{:: 'privateDatabase_modale_oom_title' | translate }}"
                                                             data-ng-class="stateCtrl.database.oom.realList.length > stateCtrl.database.oom.nbOomError ? 'text-danger' : (stateCtrl.database.oom.realList.length > 0 ? 'text-warning' : '')"
                                                             data-ng-click="stateCtrl.goToOom()">
@@ -68,14 +67,19 @@
                                                         <span data-ng-if="stateCtrl.database.oom.realList.length === 0" data-ng-bind-html="'privateDatabase_no_oom' | translate"></span>
                                                     </button>
                                                 </div>
-                                                <button type="button" class="btn btn-default ml-auto my-auto text-wrap" title="{{:: 'privateDatabase_change_ram_title' | translate }}"
-                                                        data-translate="privateDatabase_change_ram_title"
-                                                        data-ng-disabled="taskState.lockAction"
-                                                        data-ng-click="setAction('database/ram/update/private-database-database-ram-update', stateCtrl.database)"
-                                                        data-ng-if="!stateCtrl.isExpired">
-                                                </button>
                                             </div>
                                         </div>
+                                        <oui-action-menu data-compact data-align="end"
+                                                         data-ng-if="!stateCtrl.isExpired">
+                                            <oui-action-menu-item data-on-click="setAction('database/ram/update/private-database-database-ram-update', stateCtrl.database)"
+                                                                  data-ng-disabled="taskState.lockAction">
+                                                <span data-translate="privateDatabase_change_ram_title"></span>
+                                            </oui-action-menu-item>
+                                            <oui-action-menu-item data-on-click="stateCtrl.goToOom()"
+                                                                  data-ng-disabled="taskState.lockAction">
+                                                <span data-translate="privateDatabase_modale_oom_state_button"></span>
+                                            </oui-action-menu-item>
+                                        </oui-action-menu>
                                     </li>
                                     <li class="oui-tile__item">
                                         <div class="oui-tile__definition">
