@@ -4,7 +4,7 @@
 
     <div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.usage.$dirty && ctrl.zoneRecordForm.usage.$invalid }">
         <label class="control-label col-md-3 required" for="usage"
-               data-i18n-static="domain_configuration_dns_entry_add_tlsa_usage"></label>
+               data-translate="domain_configuration_dns_entry_add_tlsa_usage"></label>
         <div class="col-md-3">
             <input type="number" class="form-control" id="usage" name="usage" step="1" required
                    data-ng-change="ctrl.setTargetValue('TLSA')"
@@ -16,7 +16,7 @@
 
     <div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.selector.$dirty && ctrl.zoneRecordForm.selector.$invalid }">
         <label class="control-label col-md-3 required" for="selector"
-               data-i18n-static="domain_configuration_dns_entry_add_tlsa_selector"></label>
+               data-translate="domain_configuration_dns_entry_add_tlsa_selector"></label>
         <div class="col-md-3">
             <input type="number" class="form-control" id="selector" name="selector" step="1" required
                    data-ng-change="ctrl.setTargetValue('TLSA')"
@@ -28,7 +28,7 @@
 
     <div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.matchingType.$dirty && ctrl.zoneRecordForm.matchingType.$invalid }">
          <label class="control-label col-md-3 required" for="matchingType"
-                data-i18n-static="domain_configuration_dns_entry_add_tlsa_matching_type"></label>
+                data-translate="domain_configuration_dns_entry_add_tlsa_matching_type"></label>
         <div class="col-md-3">
             <input type="number" class="form-control" id="matchingType" name="matchingType" step="1" required
                    data-ng-change="ctrl.setTargetValue('TLSA')"
@@ -40,7 +40,7 @@
 
     <div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.certificateData.$dirty && ctrl.zoneRecordForm.certificateData.$invalid }">
          <label class="control-label col-md-3 required" for="certificateData"
-                data-i18n-static="domain_configuration_dns_entry_add_tlsa_certificate_data"></label>
+                data-translate="domain_configuration_dns_entry_add_tlsa_certificate_data"></label>
         <div class="col-md-9">
             <input type="text" class="form-control" id="certificateData" name="certificateData" required
                    data-ng-change="ctrl.setTargetValue('TLSA')"

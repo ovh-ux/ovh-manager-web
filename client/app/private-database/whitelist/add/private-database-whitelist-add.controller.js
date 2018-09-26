@@ -7,6 +7,7 @@ angular.module('App').controller(
       $rootScope,
       $scope,
       $stateParams,
+      $translate,
       Validator,
     ) {
       this.alerter = Alerter;
@@ -14,6 +15,7 @@ angular.module('App').controller(
       this.$rootScope = $rootScope;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.validator = Validator;
     }
 
@@ -32,13 +34,13 @@ angular.module('App').controller(
           .createWhitelist(this.productId, this.model)
           .then(() => {
             this.alerter.success(
-              this.$scope.tr('privateDatabase_modale_whitelist_add_success'),
+              this.$translate.instant('privateDatabase_modale_whitelist_add_success'),
               this.$scope.alerts.main,
             );
           })
           .catch((err) => {
             this.alerter.alertFromSWS(
-              this.$scope.tr('privateDatabase_modale_whitelist_add_fail'),
+              this.$translate.instant('privateDatabase_modale_whitelist_add_fail'),
               _.get(err, 'data', err),
               this.$scope.alerts.main,
             );

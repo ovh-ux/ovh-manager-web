@@ -5,8 +5,8 @@ angular
     (
       $scope,
       $stateParams,
+      $translate,
       Alerter,
-      translator,
       Hosting,
       HostingCron,
       CronValidator,
@@ -94,14 +94,14 @@ angular
           )
             .then(() => {
               Alerter.alertFromSWS(
-                translator.tr('hosting_tab_CRON_edit_success'),
+                $translate.instant('hosting_tab_CRON_edit_success'),
                 { idTask: 42, state: 'OK' },
                 $scope.alerts.main,
               );
             })
             .catch((err) => {
               Alerter.alertFromSWS(
-                translator.tr('hosting_tab_CRON_edit_error', [
+                $translate.instant('hosting_tab_CRON_edit_error', [
                   actionData.cron.id,
                 ]),
                 _.get(err, 'data', err),
@@ -115,14 +115,14 @@ angular
           HostingCron.createCron($stateParams.productId, $scope.model)
             .then(() => {
               Alerter.alertFromSWS(
-                translator.tr('hosting_tab_CRON_save_success'),
+                $translate.instant('hosting_tab_CRON_save_success'),
                 { idTask: 42, state: 'OK' },
                 $scope.alerts.main,
               );
             })
             .catch((err) => {
               Alerter.alertFromSWS(
-                translator.tr('hosting_tab_CRON_save_error'),
+                $translate.instant('hosting_tab_CRON_save_error'),
                 _.get(err, 'data', err),
                 $scope.alerts.main,
               );
@@ -140,8 +140,8 @@ angular
       $scope.init = () => {
         $scope.loading.init = true;
         $scope.title = actionData.cron
-          ? translator.tr('hosting_tab_CRON_configuration_edit_title_button')
-          : translator.tr('hosting_tab_CRON_configuration_create_title_button');
+          ? $translate.instant('hosting_tab_CRON_configuration_edit_title_button')
+          : $translate.instant('hosting_tab_CRON_configuration_create_title_button');
 
         // Edition
         if (actionData.cron) {
@@ -172,7 +172,7 @@ angular
           })
           .catch((err) => {
             Alerter.alertFromSWS(
-              $scope.tr('hosting_tab_CRON_error'),
+              $translate.instant('hosting_tab_CRON_error'),
               _.get(err, 'data', err),
               $scope.alerts.main,
             );
@@ -188,7 +188,7 @@ angular
           })
           .catch((err) => {
             Alerter.alertFromSWS(
-              $scope.tr('hosting_tab_CRON_error'),
+              $translate.instant('hosting_tab_CRON_error'),
               err,
               $scope.alerts.main,
             );

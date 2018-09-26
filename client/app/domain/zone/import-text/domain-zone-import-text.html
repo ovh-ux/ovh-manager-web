@@ -3,7 +3,7 @@
          data-wizard-bread-crumb
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="importDnsText"
-         data-wizard-title="i18n.domain_tab_ZONE_default_import_button">
+         data-wizard-title="'domain_tab_ZONE_default_import_button' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="ctrl.zoneDnsTextForm.$valid">
@@ -16,13 +16,13 @@
                 <form class="mt-4" name="ctrl.zoneDnsTextForm">
                     <div class="form-group">
                         <label class="control-label" for="zoneDnsText"
-                               data-i18n-static="domain_configuration_dns_importtext_title"></label>
+                               data-translate="domain_configuration_dns_importtext_title"></label>
                         <textarea class="mt-2 w-100" id="zoneDnsText" name="zoneDnsText" rows="20" required
                                   data-ng-model="ctrl.model.zoneDnsText"
                                   data-ng-pattern="/^\$TTL[ \\t]+[0-9]+\n.*/">
                         </textarea>
                         <p class="help-block mt-2"
-                           data-i18n-static="domain_configuration_dns_importtext_error_regex"
+                           data-translate="domain_configuration_dns_importtext_error_regex"
                            data-ng-if="ctrl.zoneDnsTextForm.zoneDnsText.$invalid"></p>
                     </div>
                 </form>
@@ -30,7 +30,7 @@
         </div>
 
         <div data-wizard-step>
-            <p data-i18n-static="domain_configuration_dns_importtext_confirm"></p>
+            <p data-translate="domain_configuration_dns_importtext_confirm"></p>
             <div class="text-center" data-ng-if="ctrl.loading">
                 <oui-spinner></oui-spinner>
             </div>

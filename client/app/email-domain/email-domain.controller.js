@@ -6,13 +6,15 @@ angular.module('App').controller(
      * @param $scope
      * @param $stateParams
      * @param $timeout
+     * @param $translate
      * @param Alerter
      * @param Emails
      */
-    constructor($scope, $stateParams, $timeout, Alerter, Emails) {
+    constructor($scope, $stateParams, $timeout, $translate, Alerter, Emails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Emails = Emails;
     }
@@ -67,7 +69,7 @@ angular.module('App').controller(
             this.$scope.$broadcast('emails.canTerminate');
           }
         })
-        .catch(() => this.Alerter.error(this.$scope.tr('domain_dashboard_loading_error')))
+        .catch(() => this.Alerter.error(this.$translate.instant('domain_dashboard_loading_error')))
         .finally(() => {
           this.loading.init = false;
           this.loading.domainsInfos = false;

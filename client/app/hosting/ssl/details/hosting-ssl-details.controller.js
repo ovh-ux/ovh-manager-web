@@ -1,13 +1,13 @@
 angular.module('App').controller(
   'hostingSSLDetailsController',
   class HostingSSLDetailsController {
-    constructor($scope, Alerter, constants, hostingSSLCertificate, translator) {
+    constructor($scope, $translate, Alerter, constants, hostingSSLCertificate) {
       this.$scope = $scope;
+      this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.constants = constants;
       this.hostingSSLCertificate = hostingSSLCertificate;
-      this.translator = translator;
     }
 
     $onInit() {
@@ -38,11 +38,11 @@ angular.module('App').controller(
             .value();
         })
         .catch((error) => {
-          this.Alerter.error(this.translator.tr(
-            'hosting_dashboard_ssl_details_error',
+          this.Alerter.error(
+            this.$translate.instant('hosting_dashboard_ssl_details_error'),
             error.data.message,
             this.$scope.alerts.main,
-          ));
+          );
         })
         .finally(() => {
           this.isLoading = false;

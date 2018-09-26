@@ -7,17 +7,17 @@
 </div>
 
 <span data-paginated-table-cell data-ng-bind="element.frequency"></span>
-<span data-paginated-table-cell data-ng-bind="tr('hosting_tab_CRON_table_language_' + element.language)"></span>
+<span data-paginated-table-cell data-ng-bind="'hosting_tab_CRON_table_language_' + element.language | translate"></span>
 <span data-paginated-table-cell data-ng-bind="element.email"></span>
 
 <div data-paginated-table-cell class="text-center">
-    <button class="btn btn-icon" type="button" title="{{tr('hosting_tab_CRON_table_popover_modify')}}"
+    <button class="btn btn-icon" type="button" title="{{ 'hosting_tab_CRON_table_popover_modify' | translate }}"
             data-ng-click="modifyCron(element)">
         <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
     </button>
 </div>
 <div data-paginated-table-cell class="text-center">
-    <button class="btn btn-icon" type="button" title="{{tr('hosting_tab_CRON_table_popover_delete')}}"
+    <button class="btn btn-icon" type="button" title="{{ 'hosting_tab_CRON_table_popover_delete' | translate }}"
             data-ng-click="deleteCron(element)">
         <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
     </button>

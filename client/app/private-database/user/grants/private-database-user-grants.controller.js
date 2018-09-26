@@ -1,11 +1,12 @@
 angular.module('App').controller(
   'PrivateDatabaseUsersGrantsCtrl',
   class PrivateDatabaseUsersGrantsCtrl {
-    constructor(Alerter, PrivateDatabase, $scope, $stateParams) {
+    constructor(Alerter, PrivateDatabase, $scope, $stateParams, $translate) {
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
     }
 
     $onInit() {
@@ -92,13 +93,13 @@ angular.module('App').controller(
         )
         .then(() => {
           this.alerter.success(
-            this.$scope.tr('privateDatabase_tabs_users_grant_doing'),
+            this.$translate.instant('privateDatabase_tabs_users_grant_doing'),
             this.$scope.alerts.main,
           );
         })
         .catch(() => {
           this.alerter.error(
-            this.$scope.tr('privateDatabase_tabs_users_grant_error'),
+            this.$translate.instant('privateDatabase_tabs_users_grant_error'),
             this.$scope.alerts.main,
           );
         })
@@ -126,7 +127,7 @@ angular.module('App').controller(
       this.userGrants[opts.databaseName].value = opts.grants[opts.databaseName].value;
 
       this.alerter.success(
-        this.$scope.tr('privateDatabase_tabs_users_grant_success'),
+        this.$translate.instant('privateDatabase_tabs_users_grant_success'),
         this.$scope.alerts.main,
       );
 
@@ -136,7 +137,7 @@ angular.module('App').controller(
     onUserGrantError(evt, opts) {
       this.isDoingGrant[opts.databaseName] = false;
       this.alerter.error(
-        this.$scope.tr('privateDatabase_tabs_users_grant_error'),
+        this.$translate.instant('privateDatabase_tabs_users_grant_error'),
         this.$scope.alerts.main,
       );
     }

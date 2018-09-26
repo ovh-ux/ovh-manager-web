@@ -2,19 +2,19 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="addDynHost"
-         data-wizard-title="i18n.domain_tab_DYNHOST_add_title">
+         data-wizard-title="'domain_tab_DYNHOST_add_title' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="ctrl.addDynHostForm.$valid">
 
-            <p data-i18n-static="domain_tab_DYNHOST_add_step1"></p>
+            <p data-translate="domain_tab_DYNHOST_add_step1"></p>
 
             <div class="alert alert-info" role="alert">
                 <div>
-                    <p data-i18n-static="domain_tab_DYNHOST_add_login_info"></p>
+                    <p data-translate="domain_tab_DYNHOST_add_login_info"></p>
                     <div class="mt-4">
                         <button class="btn btn-info" type="button"
-                                data-i18n-static="domain_tab_DYNHOST_add_login_create"
+                                data-translate="domain_tab_DYNHOST_add_login_create"
                                 data-ng-click="setAction('dynhost/login/add/domain-dynhost-login-add', {product: ctrl.product})">
                         </button>
                     </div>
@@ -24,7 +24,7 @@
             <form name="ctrl.addDynHostForm">
                 <p>
                     <small class="text-danger">*</small>
-                    <small data-i18n-static="required_fields"></small>
+                    <small data-translate="required_fields"></small>
                 </p>
 
                 <div class="form-group" data-ng-class="{
@@ -32,7 +32,7 @@
                     'has-success': ctrl.addDynHostForm.subDomain.$dirty && ctrl.addDynHostForm.subDomain.$valid && ctrl.dynHost.subDomain.length
                     }">
                     <label class="control-label" for="txt-subDomain"
-                           data-i18n-static="domain_tab_DYNHOST_add_subDomain"></label>
+                           data-translate="domain_tab_DYNHOST_add_subDomain"></label>
                     <div class="input-group">
                         <input type="text" class="form-control" id="txt-subDomain" name="subDomain"
                                data-ng-change="ctrl.subDomainCheck(ctrl.addDynHostForm.subDomain)"
@@ -42,7 +42,7 @@
                               data-ng-bind="'.' + ctrl.product.displayName"></span>
                     </div>
                     <small class="help-block"
-                           data-i18n-static="domain_tab_REDIRECTION_add_step1_subdomain_error"
+                           data-translate="domain_tab_REDIRECTION_add_step1_subdomain_error"
                            data-ng-if="ctrl.addDynHostForm.subDomain.$dirty && ctrl.addDynHostForm.subDomain.$invalid"></small>
                 </div>
 
@@ -51,13 +51,13 @@
                     'has-success': ctrl.addDynHostForm.ipTarget.$dirty && ctrl.addDynHostForm.ipTarget.$valid
                 }">
                     <label class="control-label required" for="txt-ip"
-                           data-i18n-static="domain_tab_DYNHOST_add_target_ip"></label>
+                           data-translate="domain_tab_DYNHOST_add_target_ip"></label>
                     <input type="text" class="form-control" id="txt-ip" name="ipTarget" required
                            data-ng-change="ctrl.ipTargetCheck(ctrl.addDynHostForm.ipTarget)"
                            data-ng-model="ctrl.dynHost.ipTarget"
                            data-ng-trim="true">
                     <small class="help-block"
-                           data-i18n-static="domain_tab_REDIRECTION_add_step1_ip_error"
+                           data-translate="domain_tab_REDIRECTION_add_step1_ip_error"
                            data-ng-if="ctrl.addDynHostForm.ipTarget.$dirty && ctrl.addDynHostForm.ipTarget.$invalid"></small>
                 </div>
             </form>

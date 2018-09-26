@@ -2,14 +2,14 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="createResponder"
-         data-wizard-title="i18n.email_tab_modal_create_responder_title">
+         data-wizard-title="'email_tab_modal_create_responder_title' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="ctrl.createResponderForm.$valid && ctrl.responderDurationCheck()">
 
-            <p data-i18n-static="email_tab_modal_create_responder_heading"></p>
+            <p data-translate="email_tab_modal_create_responder_heading"></p>
             <p class="font-weight-bold"
-               data-i18n-static="email_tab_modal_create_responder_info"></p>
+               data-translate="email_tab_modal_create_responder_info"></p>
 
             <oui-spinner data-ng-if="ctrl.loading"></oui-spinner>
 
@@ -17,12 +17,12 @@
                   data-ng-if="!ctrl.loading">
                 <p>
                     <small class="text-danger">*</small>
-                    <small data-i18n-static="required_fields"></small>
+                    <small data-translate="required_fields"></small>
                 </p>
 
                 <div class="form-group" data-ng-if="!ctrl.isDelegated">
                     <span class="col-md-4 control-label text-lg-right oui-label"
-                          data-i18n-static="email_tab_modal_create_responder_type"></span>
+                          data-translate="email_tab_modal_create_responder_type"></span>
                     <div class="col-md-8">
                         <div class="oui-radio">
                             <input type="radio" class="oui-radio__input" id="responderType-attached" name="responderType" value="typeAttached"
@@ -30,7 +30,7 @@
                                    data-ng-model="ctrl.model.responderType">
                             <label class="oui-radio__label-container" for="responderType-attached">
                                 <span class="oui-radio__label"
-                                      data-i18n-static="email_tab_modal_create_responder_type_attached"></span>
+                                      data-translate="email_tab_modal_create_responder_type_attached"></span>
                             </label>
                         </div>
                         <div class="oui-radio">
@@ -39,7 +39,7 @@
                                    data-ng-model="ctrl.model.responderType">
                             <label class="oui-radio__label-container" for="responderType-free">
                                 <span class="oui-radio__label"
-                                      data-i18n-static="email_tab_modal_create_responder_type_free"></span>
+                                      data-translate="email_tab_modal_create_responder_type_free"></span>
                             </label>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
 
                 <div class="form-group" data-ng-if="ctrl.model.responderType === 'typeAttached'">
                     <label class="control-label col-md-4 required" for="select-account"
-                           data-i18n-static="email_tab_modal_create_responder_account"></label>
+                           data-translate="email_tab_modal_create_responder_account"></label>
                     <div class="col-md-8">
                         <div class="input-group">
                             <div class="oui-select mb-0">
@@ -55,7 +55,7 @@
                                         data-ng-model="ctrl.model.account"
                                         data-ng-options="account for account in ctrl.accountsNotUsed track by account">
                                     <option value="" disabled
-                                            data-i18n-static="select_placeholder"></option>
+                                            data-translate="select_placeholder"></option>
                                 </select>
                                 <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                             </div>
@@ -69,7 +69,7 @@
                      data-ng-class="{'has-error': ctrl.createResponderForm.responderAccount.$dirty && ctrl.createResponderForm.responderAccount.$invalid}"
                      data-ng-if="ctrl.model.responderType === 'typeFree'">
                     <label class="control-label col-md-4 required" for="txt-account"
-                           data-i18n-static="email_tab_modal_create_responder_name"></label>
+                           data-translate="email_tab_modal_create_responder_name"></label>
                     <div class="col-md-8">
                         <div class="input-group">
                             <input type="text" class="form-control" id="txt-account" name="responderAccount" required
@@ -82,17 +82,17 @@
                                   data-ng-bind="'@' + ctrl.domain"></span>
                         </div>
                         <small class="help-block"
-                               data-i18n-static="email_tab_modal_create_account_exists"
+                               data-translate="email_tab_modal_create_account_exists"
                                data-ng-if="ctrl.createResponderForm.responderAccount.$dirty && ctrl.createResponderForm.responderAccount.$error.account"></small>
                         <small class="help-block"
-                               data-i18n-static="email_tab_modal_create_responder_exists"
+                               data-translate="email_tab_modal_create_responder_exists"
                                data-ng-if="ctrl.createResponderForm.responderAccount.$dirty && ctrl.createResponderForm.responderAccount.$error.responder"></small>
                         <small class="help-block"
-                               data-ng-bind-html="tr('emails_common_account_name_conditions', [ctrl.constants.nameMinLength, ctrl.constants.nameMaxLength])"
+                               data-ng-bind-html="'emails_common_account_name_conditions' | translate: { t0: ctrl.constants.nameMinLength, t1: ctrl.constants.nameMaxLength }"
                                data-ng-if="ctrl.createResponderForm.responderAccount.$dirty &&
                                     (ctrl.createResponderForm.responderAccount.$error.minlength || ctrl.createResponderForm.responderAccount.$error.maxlength || ctrl.createResponderForm.responderAccount.$error.pattern)"></small>
                         <small class="help-block"
-                               data-i18n-static="email_tab_modal_redirection_create_email_error"
+                               data-translate="email_tab_modal_redirection_create_email_error"
                                data-ng-if="ctrl.createResponderForm.responderAccount.$dirty && ctrl.createResponderForm.responderAccount.$error.email &&
                                     !ctrl.createResponderForm.responderAccount.$error.minlength && !ctrl.createResponderForm.responderAccount.$error.maxlength && !ctrl.createResponderForm.responderAccount.$error.pattern"></small>
                     </div>
@@ -100,14 +100,14 @@
 
                 <div class="form-group">
                     <span class="col-md-4 control-label text-lg-right oui-label"
-                          data-i18n-static="email_tab_modal_create_responder_duration"></span>
+                          data-translate="email_tab_modal_create_responder_duration"></span>
                     <div class="col-md-4">
                         <div class="oui-radio">
                             <input type="radio" class="oui-radio__input" id="responderDuration-temporary" name="responderDuration" value="temporary"
                                    data-ng-model="ctrl.model.responderDuration">
                             <label class="oui-radio__label-container" for="responderDuration-temporary">
                                 <span class="oui-radio__label"
-                                      data-i18n-static="email_tab_modal_create_responder_temporary"></span>
+                                      data-translate="email_tab_modal_create_responder_temporary"></span>
                             </label>
                         </div>
                         <div class="oui-radio">
@@ -116,7 +116,7 @@
                                    data-ng-model="ctrl.model.responderDuration">
                              <label class="oui-radio__label-container" for="responderDuration-permanent">
                                  <span class="oui-radio__label"
-                                       data-i18n-static="email_tab_modal_create_responder_permanent"></span>
+                                       data-translate="email_tab_modal_create_responder_permanent"></span>
                             </label>
                         </div>
                     </div>
@@ -126,16 +126,17 @@
                     <div class="form-group"
                          data-ng-class="{'has-error': ctrl.createResponderForm.responderDateStart.$dirty && ctrl.createResponderForm.responderDateStart.$invalid}">
                         <label class="control-label col-md-4 required" for="date-responder-start"
-                               data-i18n-static="email_tab_modal_create_responder_start"></label>
+                               data-translate="email_tab_modal_create_responder_start"></label>
                         <div class="col-md-6">
                             <div class="input-group"
                                  data-moment-picker="ctrl.model.responderDateStart"
                                  data-change="ctrl.responderDatesCheck(ctrl.createResponderForm.responderDateStart, ctrl.createResponderForm.responderDateEnd)"
                                  data-format="YYYY-MM-DD HH:mm"
-                                 data-locale="{{translator.locale}}"
+                                 data-locale="{{ ctrl.SessionService.getCurrentLocale() }}"
                                  data-start-view="month">
                                 <input type="text" class="form-control" id="date-responder-start" name="responderDateStart" required
-                                       data-ng-model="ctrl.model.responderDateStart">
+                                       data-ng-model="ctrl.model.responderDateStart"
+                                       data-ng-model-options="{ updateOn: 'blur' }">
                                 <div class="input-group-addon">
                                     <span class="fa fa-calendar" aria-hidden="true"></span>
                                 </div>
@@ -146,13 +147,13 @@
                     <div class="form-group"
                          data-ng-class="{'has-error': ctrl.createResponderForm.responderDateEnd.$dirty && ctrl.createResponderForm.responderDateEnd.$invalid}">
                         <label class="control-label col-md-4 required" for="date-responder-end"
-                               data-i18n-static="email_tab_modal_create_responder_end"></label>
+                               data-translate="email_tab_modal_create_responder_end"></label>
                         <div class="col-md-6">
                             <div class="input-group"
                                  data-moment-picker="ctrl.model.responderDateEnd"
                                  data-change="ctrl.responderDatesCheck(ctrl.createResponderForm.responderDateStart, ctrl.createResponderForm.responderDateEnd)"
                                  data-format="YYYY-MM-DD HH:mm"
-                                 data-locale="{{translator.locale}}"
+                                 data-locale="{{ ctrl.SessionService.getCurrentLocale() }}"
                                  data-start-view="month">
                                 <input type="text" class="form-control" id="date-responder-end" name="responderDateEnd" required
                                        data-ng-model="ctrl.model.responderDateEnd"
@@ -169,10 +170,10 @@
                     <div class="col-md-8 col-md-offset-4">
                         <oui-checkbox id="responderKeepCopy" name="responderKeepCopy"
                             data-model="ctrl.model.responderKeepCopy"
-                            data-text="{{ctrl.model.responderType === 'typeFree' ? i18n.email_tab_modal_create_responder_copy : i18n.email_tab_modal_create_responder_delete_message}}">
+                            data-text="{{ (ctrl.model.responderType === 'typeFree' ? 'email_tab_modal_create_responder_copy' : 'email_tab_modal_create_responder_delete_message') | translate }}">
                         </oui-checkbox>
                         <div class="alert alert-warning" role="alert"
-                             data-i18n-static="email_tab_modal_create_responder_copy_warning"
+                             data-translate="email_tab_modal_create_responder_copy_warning"
                              data-ng-if="!ctrl.model.responderKeepCopy">
                         </div>
                     </div>
@@ -180,7 +181,7 @@
 
                 <div class="form-group" data-ng-if="ctrl.model.responderKeepCopy && ctrl.model.responderType === 'typeFree'">
                     <label class="control-label col-md-4 required" for="txt-responder-copy-to"
-                           data-i18n-static="email_tab_modal_create_responder_copy_to"></label>
+                           data-translate="email_tab_modal_create_responder_copy_to"></label>
                     <div class="col-md-8">
                         <div class="input-group">
                             <div class="oui-select mb-0">
@@ -188,7 +189,7 @@
                                         data-ng-model="ctrl.model.responderCopyTo"
                                         data-ng-options="account for account in ctrl.accounts track by account">
                                     <option value="" disabled
-                                            data-i18n-static="select_placeholder"></option>
+                                            data-translate="select_placeholder"></option>
                                 </select>
                                 <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                             </div>
@@ -201,13 +202,13 @@
                 <div class="form-group"
                      data-ng-class="{'has-error': ctrl.createResponderForm.responderContent.$dirty && ctrl.createResponderForm.responderContent.$invalid}">
                     <label class="control-label col-md-4 required" for="txt-responder-content"
-                           data-i18n-static="email_tab_modal_create_responder_message"></label>
+                           data-translate="email_tab_modal_create_responder_message"></label>
                     <div class="col-md-8">
                         <textarea class="form-control" id="txt-responder-content" name="responderContent" aria-describedby="responderContentHelp" required
                                   data-ng-model="ctrl.model.responderContent">
                         </textarea>
                         <small class="help-block" id="responderContentHelp"
-                               data-i18n-static="email_tab_responders_message_warning"></small>
+                               data-translate="email_tab_responders_message_warning"></small>
                     </div>
                 </div>
             </form>

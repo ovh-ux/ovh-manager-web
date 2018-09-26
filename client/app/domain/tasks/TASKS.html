@@ -2,33 +2,33 @@
     <oui-datagrid data-rows="ctrlDomainTasks.tasks"
         data-row-loader="ctrlDomainTasks.transformItem($row)">
         <oui-column data-property="function"
-            data-title="tr('domain_tab_TASKS_function')"></oui-column>
+            data-title="'domain_tab_TASKS_function' | translate"></oui-column>
         <oui-column data-property="todoDate"
-            data-title="tr('domain_tab_TASKS_function')">
+            data-title="'domain_tab_TASKS_function' | translate">
             {{ $row.todoDate | date:'mediumDate' }}
         </oui-column>
         <oui-column data-property="comment"
-            data-title="tr('domain_tab_TASKS_comment')">
+            data-title="'domain_tab_TASKS_comment' | translate">
             {{ $row.comment || '-' }}
         </oui-column>
         <oui-column data-property="status"
-            data-title="tr('domain_tab_TASKS_state')"
+            data-title="'domain_tab_TASKS_state' | translate"
             class="text-center">
-            <span class="label"
+            <span class="oui-status"
                   data-ng-class="{
-                    'label-info': $row.status === 'TODO' || $row.status === 'DOING',
-                    'label-danger': $row.status === 'ERROR',
-                    'label-default': $row.status === 'CANCELLED',
-                    'label-success': $row.status === 'DONE'
+                    'oui-status_info': $row.status === 'TODO' || $row.status === 'DOING',
+                    'oui-status_error': $row.status === 'ERROR',
+                    'oui-status_info': $row.status === 'CANCELLED',
+                    'oui-status_success': $row.status === 'DONE'
                   }"
-                  data-ng-bind="tr('domain_tab_TASKS_status_' +  $row.status)">
+                  data-ng-bind="'domain_tab_TASKS_status_' +  $row.status | translate">
             </span>
         </oui-column>
         <oui-action-menu data-ng-if="$row.canCancel || $row.canRelauch || $row.canAccelerate"
             data-align="end"
             data-compact>
             <oui-action-menu-item
-                data-text="{{ i18n.wizard_modify }}"
+                data-text="{{ 'wizard_modify' | translate }}"
                 data-on-click="setAction('../domain-operation/update/domain-operation-update', $row)"></oui-action-menu-item>
         </oui-action-menu>
     </oui-datagrid>

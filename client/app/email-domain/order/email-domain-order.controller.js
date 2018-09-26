@@ -5,15 +5,18 @@ angular.module('App').controller(
    * Constructor
    * @param $scope
    * @param $q
+   * @param $translate
+   * @param $window
    * @param Alerter
    * @param atInternet
    * @param Domain
    * @param MXPlan
    * @param User
    */
-    constructor($scope, $q, $window, Alerter, atInternet, Domain, MXPlan, User) {
+    constructor($scope, $q, $translate, $window, Alerter, atInternet, Domain, MXPlan, User) {
       this.$scope = $scope;
       this.$q = $q;
+      this.$translate = $translate;
       this.$window = $window;
       this.Alerter = Alerter;
       this.atInternet = atInternet;
@@ -59,7 +62,7 @@ angular.module('App').controller(
 
       return this.Domain.getDomains()
         .then((domains) => { this.list.domains = domains; })
-        .catch(() => this.Alerter.error(this.$scope.tr('mxPlan_order_step1_error'), this.$scope.alerts.order))
+        .catch(() => this.Alerter.error(this.$translate.instant('mxPlan_order_step1_error'), this.$scope.alerts.order))
         .finally(() => { this.loading.init = false; });
     }
 
@@ -75,7 +78,7 @@ angular.module('App').controller(
           this.list.offers = _.filter(err, offer => offer.offer);
           const errors = _.filter(err, offer => offer.message);
           if (this.list.offers.length <= 0) {
-            this.Alerter.error(this.$scope.tr('mxPlan_order_step1_error', errors[0].message), this.$scope.alerts.order);
+            this.Alerter.error(this.$translate.instant('mxPlan_order_step1_error', { t0: errors[0].message }), this.$scope.alerts.order);
           }
         })
         .finally(() => { this.loading.offers = false; });
@@ -107,7 +110,7 @@ angular.module('App').controller(
           this.durations.available = durations;
           return this.loadPrices(durations);
         })
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('mxPlan_order_step2_duration_fail'), err, this.$scope.alerts.durations))
+        .catch(err => this.Alerter.alertFromSWS(this.$translate.instant('mxPlan_order_step2_duration_fail'), err, this.$scope.alerts.durations))
         .finally(() => { this.loading.durations = false; });
     }
 
@@ -126,7 +129,7 @@ angular.module('App').controller(
             [this.selectedOrder.duration] = durations;
           }
         })
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('mxPlan_order_step2_price_fail'), err, this.$scope.alerts.order))
+        .catch(err => this.Alerter.alertFromSWS(this.$translate.instant('mxPlan_order_step2_price_fail'), err, this.$scope.alerts.order))
         .finally(() => {
           this.loading.prices = false;
         });
@@ -141,7 +144,7 @@ angular.module('App').controller(
           this.selectedOrder.offer.duration,
         )
         .then((details) => { this.order = details; })
-        .catch(err => this.Alerter.alertFromSWS(this.$scope.tr('mxPlan_order_step3_fail'), err, this.$scope.alerts.order))
+        .catch(err => this.Alerter.alertFromSWS(this.$translate.instant('mxPlan_order_step3_fail'), err, this.$scope.alerts.order))
         .catch(() => { this.loading.bc = false; });
     }
 

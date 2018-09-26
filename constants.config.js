@@ -1363,6 +1363,16 @@ module.exports = {
                     autoRenew: "https://www.ovh.pl/g1271.renew",
                     dnsForExternalDomain: "https://www.ovh.pl/g2229.utworzenie_strefy_dns_dla_zewnetrznej_domeny",
                     emailsConfiguration: "https://www.ovh.pl/g1474.emaile-na-hostingu-www-ovh",
+                    emailsConfigurationAuto: "https://www.ovh.pl/mail/",
+                    emailsConfigurationMacMountainLion: "https://docs.ovh.com/pl/emails/konfiguracja-mail-macos/",
+                    emailsConfigurationMacMavericksAndYosemite: "https://docs.ovh.com/pl/emails/konfiguracja-mail-macos/",
+                    emailsConfigurationMacElCapitain: "https://docs.ovh.com/pl/emails/konfiguracja-mail-macos/",
+                    emailsConfigurationOutlook2007: "https://docs.ovh.com/pl/emails/konfiguracja_konta_e-mail_w_programie_outlook_2007/",
+                    emailsConfigurationOutlook2010: "https://docs.ovh.com/pl/emails/konfiguracja_konta_e-mail_w_programie_outlook_2010/",
+                    emailsConfigurationOutlook2013: "https://docs.ovh.com/pl/microsoft-collaborative-solutions/exchange_2013_przewodnik_dotyczacy_korzystania_z_outlook_web_app/",
+                    emailsConfigurationOutlook2016: "https://docs.ovh.com/pl/emails/konfiguracja-outlook-2016/",
+                    emailsConfigurationIos9: "https://docs.ovh.com/pl/emails/hosting_www_konfiguracja_na_iphone_ios_91/",
+                    emailsConfigurationAndroid6: "https://docs.ovh.com/pl/emails/konfiguracja-android/",
                     emailsCreation: "https://www.ovh.pl/g1343.qssq",
                     emailsCreateMailingListGuide: "https://www.ovh.pl/g1596.mail_mutualise_guide_dutilisation_mailing-list",
                     hostingPhpConfiguration: "https://www.ovh.pl/g1999.skonfiguruj_wersje_php_w_panelu_klienta",
@@ -1516,6 +1526,7 @@ module.exports = {
                 changeOwner: "https://www.ovh.pl/cgi-bin/procedure/procedureChangeOwner.cgi",
                 bulkChangeOwner: "https://www.ovh.pl/order/domain/#/legacy/domain/trade/list",
                 oldInterface: "https://www.ovh.pl/managerv3/home.pl",
+                emailsOrder: "https://www.ovh.pl/emaile/",
                 exchangeOrder: "https://www.ovh.pl/emaile/hosted-exchange/",
                 emailproOrder: "https://www.ovh.pl/emaile/email-pro/",
                 office365Order: "https://www.ovh.pl/office-365/",
@@ -1813,7 +1824,13 @@ module.exports = {
                 RU : "https://www.ovh.ie/order/domain/#/legacy/domain/hosting/choose?options=~(~(flow~'hosting_existing_service~serviceName~'{domain}))",
                 SN : "https://www.ovh.sn/order/domain/#/legacy/domain/hosting/choose?options=~(~(flow~'hosting_existing_service~serviceName~'{domain}))",
                 TN : "https://www.ovh.com/tn/order/domain/#/legacy/domain/hosting/choose?options=~(~(flow~'hosting_existing_service~serviceName~'{domain}))",
-                WE : "https://www.ovh.com/us/order/domain/#/legacy/domain/hosting/choose?options=~(~(flow~'hosting_existing_service~serviceName~'{domai}n))"
+                WE : "https://www.ovh.com/us/order/domain/#/legacy/domain/hosting/choose?options=~(~(flow~'hosting_existing_service~serviceName~'{domain}))"
+            },
+            localseo_order_options_service : {
+                FR : "https://www.ovh.com/fr/order/domain/#/legacy/domain/hosting/choose?options=~(flow~'hosting_existing_service~serviceName~'{serviceName})",
+            },
+            localseo_visibility_checker : {
+                FR : "https://www.ovh.com/fr/hebergement-web/referencement-local.xml",
             },
             FAQS : {
                 EXCHANGE: {

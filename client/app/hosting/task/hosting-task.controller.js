@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'HostingTabTasksCtrl',
   class HostingTabTasksCtrl {
-    constructor($scope, $stateParams, Alerter, Hosting) {
+    constructor($scope, $stateParams, $translate, Alerter, Hosting) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Hosting = Hosting;
     }
@@ -43,7 +44,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_TASKS_error_message'),
+            this.$translate.instant('hosting_tab_TASKS_error_message'),
             _.get(err, 'data', err),
             this.$scope.alerts.main,
           );

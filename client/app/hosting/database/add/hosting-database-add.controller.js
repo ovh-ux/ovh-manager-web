@@ -8,6 +8,7 @@ angular
       $q,
       $timeout,
       $stateParams,
+      $translate,
       Alerter,
       Hosting,
       HostingDatabase,
@@ -90,7 +91,7 @@ angular
           })
           .catch((err) => {
             Alerter.alertFromSWS(
-              $scope.tr('hosting_tab_DATABASES_configuration_create_step1_loading_error'),
+              $translate.instant('hosting_tab_DATABASES_configuration_create_step1_loading_error'),
               _.get(err, 'data', err),
               $scope.alerts.main,
             );
@@ -155,13 +156,13 @@ angular
         )
           .then(() => {
             Alerter.success(
-              $scope.tr('hosting_tab_DATABASES_configuration_create_bdd_adding'),
+              $translate.instant('hosting_tab_DATABASES_configuration_create_bdd_adding'),
               $scope.alerts.main,
             );
           })
           .catch((err) => {
             Alerter.alertFromSWS(
-              $scope.tr('hosting_tab_DATABASES_configuration_create_fail'),
+              $translate.instant('hosting_tab_DATABASES_configuration_create_fail'),
               _.get(err, 'data', err),
               $scope.alerts.main,
             );

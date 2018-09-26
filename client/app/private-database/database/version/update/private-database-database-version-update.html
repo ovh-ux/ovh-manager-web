@@ -4,7 +4,7 @@
          data-wizard-bread-crumb
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="updateVersion"
-         data-wizard-title="i18n.privateDatabase_change_version_title">
+         data-wizard-title="'privateDatabase_change_version_title' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="versionCtrl.model.choice.length">
@@ -14,24 +14,25 @@
             </div>
 
             <div class="alert alert-info" role="alert"
-                 data-i18n-static="privateDatabase_change_version_null"
+                 data-translate="privateDatabase_change_version_null"
                  data-ng-if="!versionCtrl.loading.init && versionCtrl.model.versions.length === 0">
             </div>
 
             <div data-ng-if="!versionCtrl.loading.init && versionCtrl.model.versions.length > 0">
-                <p data-ng-bind="tr('privateDatabase_change_version_step1', tr('privateDatabase_dashboard_version_' + versionCtrl.privateDBToUpdate.version))"></p>
+                <p data-translate="privateDatabase_change_version_step1"
+                   data-translate-values="{ t0: ('privateDatabase_dashboard_version_' + versionCtrl.privateDBToUpdate.version | translate) }"></p>
 
                 <form class="form-horizontal mt-4">
                     <div class="form-group">
                         <label class="control-label col-md-4" for="changeVersion"
-                               data-i18n-static="privateDatabase_change_version_available"></label>
+                               data-translate="privateDatabase_change_version_available"></label>
                         <div class="col-md-6">
                             <div class="oui-select oui-select_inline">
                                 <select class="oui-select__input" id="changeVersion"
                                         data-ng-model="versionCtrl.model.choice"
-                                        data-ng-options="tr('privateDatabase_dashboard_version_' + version.replace('.', '')) for version in versionCtrl.model.versions track by version">
+                                        data-ng-options="('privateDatabase_dashboard_version_' + version.replace('.', '') | translate) for version in versionCtrl.model.versions track by version">
                                     <option value="" disabled
-                                            data-i18n-static="privateDatabase_change_version_available_select"></option>
+                                            data-translate="privateDatabase_change_version_available_select"></option>
                                 </select>
                                 <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                             </div>
@@ -42,16 +43,17 @@
         </div>
 
         <div data-wizard-step>
-            <p data-ng-bind="tr('privateDatabase_change_version_step2', [
-                tr('privateDatabase_dashboard_version_' + versionCtrl.privateDBToUpdate.version),
-                tr('privateDatabase_dashboard_version_' + versionCtrl.model.choice.replace('.', ''))
-            ])"></p>
+            <p data-translate="privateDatabase_change_version_step2"
+               data-translate-values="{
+                   t0: ('privateDatabase_dashboard_version_' + versionCtrl.privateDBToUpdate.version | translate),
+                   t1: ('privateDatabase_dashboard_version_' + versionCtrl.model.choice.replace('.', '') | translate)
+               }"></p>
 
             <div class="alert alert-warning" role="alert"
-                 data-i18n-static="privateDatabase_change_version_warn_1">
+                 data-translate="privateDatabase_change_version_warn_1">
             </div>
             <div class="alert alert-warning" role="alert"
-                 data-i18n-static="privateDatabase_change_version_warn_2">
+                 data-translate="privateDatabase_change_version_warn_2">
             </div>
         </div>
     </div>

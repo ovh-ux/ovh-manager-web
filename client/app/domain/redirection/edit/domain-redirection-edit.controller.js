@@ -9,9 +9,10 @@ angular.module('controllers').controller(
      * @param {Object} DomainRedirection
      * @param {Object} Validator
      */
-    constructor($scope, $rootScope, Alerter, DomainRedirection, Validator) {
+    constructor($scope, $rootScope, $translate, Alerter, DomainRedirection, Validator) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.service = DomainRedirection;
       this.validator = Validator;
@@ -66,14 +67,14 @@ angular.module('controllers').controller(
           message = 'domain_tab_REDIRECTION_edit_server_cname_label';
           break;
         default: {
-          const errorMessage = this.$scope.tr(
+          const errorMessage = this.$translate.instant(
             this.unknownFieldDisplayTypeErrorMessageId,
-            this.redirection.fieldDisplayType,
+            { t0: this.redirection.fieldDisplayType },
           );
           this.alerter.alertFromSWS(
-            this.$scope.tr(
+            this.$translate.instant(
               'domain_tab_REDIRECTION_edit_fail',
-              this.displayName,
+              { t0: this.displayName },
             ),
             errorMessage,
             this.$scope.alerts.main,
@@ -82,7 +83,7 @@ angular.module('controllers').controller(
         }
       }
 
-      return this.$scope.tr(message);
+      return this.$translate.instant(message);
     }
 
     /**
@@ -123,14 +124,14 @@ angular.module('controllers').controller(
             message = 'domain_tab_REDIRECTION_edit_server_cname_error';
             break;
           default: {
-            const errorMessage = this.$scope.tr(
+            const errorMessage = this.$translate.instant(
               this.unknownFieldDisplayTypeErrorMessageId,
-              this.redirection.fieldDisplayType,
+              { t0: this.redirection.fieldDisplayType },
             );
             this.alerter.alertFromSWS(
-              this.$scope.tr(
+              this.$translate.instant(
                 'domain_tab_REDIRECTION_edit_fail',
-                this.displayName,
+                { t0: this.displayName },
               ),
               errorMessage,
               this.$scope.alerts.main,
@@ -140,7 +141,7 @@ angular.module('controllers').controller(
         }
       }
 
-      this.errorLabel = this.$scope.tr(message);
+      this.errorLabel = this.$translate.instant(message);
     }
 
     /**
@@ -177,14 +178,14 @@ angular.module('controllers').controller(
             break;
           }
           default: {
-            const errorMessage = this.$scope.tr(
+            const errorMessage = this.$translate.instant(
               this.unknownFieldDisplayTypeErrorMessageId,
-              this.redirection.fieldDisplayType,
+              { t0: this.redirection.fieldDisplayType },
             );
             this.alerter.alertFromSWS(
-              this.$scope.tr(
+              this.$translate.instant(
                 'domain_tab_REDIRECTION_edit_fail',
-                this.displayName,
+                { t0: this.displayName },
               ),
               errorMessage,
               this.$scope.alerts.main,
@@ -252,16 +253,16 @@ angular.module('controllers').controller(
 
       this.service[method](this.redirection.id, data)
         .then(() => this.alerter.success(
-          this.$scope.tr(
+          this.$translate.instant(
             'domain_tab_REDIRECTION_edit_success',
-            this.displayName,
+            { t0: this.displayName },
           ),
           this.$scope.alerts.main,
         ))
         .catch(err => this.alerter.alertFromSWS(
-          this.$scope.tr(
+          this.$translate.instant(
             'domain_tab_REDIRECTION_edit_fail',
-            this.displayName,
+            { t0: this.displayName },
           ),
           err,
           this.$scope.alerts.main,

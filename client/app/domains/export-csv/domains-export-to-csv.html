@@ -1,27 +1,27 @@
 <div data-ng-controller="DomainsToCsvCtrl as ctrlDomainsToCsv">
     <div data-wizard
-         data-wizard-confirm-button-text="i18n.wizard_close"
+         data-wizard-confirm-button-text="'wizard_close' | translate"
          data-wizard-hide-previous-button="true"
-         data-wizard-next-button-text="i18n.wizard_export"
+         data-wizard-next-button-text="'wizard_export' | translate"
          data-wizard-on-cancel="closeExport"
          data-wizard-on-finish="resetAction"
-         data-wizard-title="i18n.domains_dashboard_tooltip_export_csv">
+         data-wizard-title="'domains_dashboard_tooltip_export_csv' | translate">
 
         <div data-wizard-step>
-            <p data-i18n-static="domains_dashboard_tooltip_export_csv_expl"></p>
-            <p data-i18n-static="domains_dashboard_tooltip_export_csv_expl2"></p>
+            <p data-translate="domains_dashboard_tooltip_export_csv_expl"></p>
+            <p data-translate="domains_dashboard_tooltip_export_csv_expl2"></p>
 
             <form name="csvExportAllDomains">
                 <oui-checkbox id="opt-{{::$index}}"
                     disabled="opt.mustBeDisabled"
                     data-ng-repeat="opt in ctrlDomainsToCsv.csvExportOptions track by $index"
                     data-model="opt.checked"
-                    data-text="{{i18n['domains_action_export_csv_form_' + opt.label + '_label']}}"
-                    data-description="{{::i18n['domains_action_export_csv_form_' + opt.label + '_help']}}">
+                    data-text="{{ 'domains_action_export_csv_form_' + opt.label + '_label' | translate }}"
+                    data-description="{{:: 'domains_action_export_csv_form_' + opt.label + '_help' | translate }}">
                 </oui-checkbox>
             </form>
 
-            <p class="text-right mt-3" data-i18n-static="domains_dashboard_tooltip_export_csv_confirm"></p>
+            <p class="text-right mt-3" data-translate="domains_dashboard_tooltip_export_csv_confirm"></p>
         </div>
 
         <div data-wizard-step
@@ -29,7 +29,7 @@
              data-wizard-step-valid="!ctrlDomainsToCsv.exportStatus.doing">
 
             <div data-ng-if="ctrlDomainsToCsv.exportStatus.doing">
-                <p data-i18n-static="domains_dashboard_tooltip_export_csv_creation_doing"></p>
+                <p data-translate="domains_dashboard_tooltip_export_csv_creation_doing"></p>
                 <div class="oui-progress oui-progress_info">
                     <div class="oui-progress__bar oui-progress__bar_info" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ctrlDomainsToCsv.exportStatus.done / ctrlDomainsToCsv.exportStatus.total * 100}}"
                          data-ng-style="{'width': (ctrlDomainsToCsv.exportStatus.done / ctrlDomainsToCsv.exportStatus.total * 100) + '%'}">
@@ -40,10 +40,10 @@
                 </div>
             </div>
 
-            <p data-ng-bind-html="tr('domains_dashboard_csv_file_created', [ctrlDomainsToCsv.exportResults.data])"
+            <p data-ng-bind-html="'domains_dashboard_csv_file_created' | translate: { t0: ctrlDomainsToCsv.exportResults.data }"
                data-ng-if="ctrlDomainsToCsv.exportResults.success"></p>
 
-            <p data-ng-bind="tr('domains_dashboard_tooltip_export_csv_error')"
+            <p data-translate="domains_dashboard_tooltip_export_csv_error"
                data-ng-if="ctrlDomainsToCsv.exportResults.error"></p>
         </div>
     </div>

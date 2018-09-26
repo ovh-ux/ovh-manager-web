@@ -4,7 +4,7 @@
          data-wizard-hide-previous-button="previousButtonHidden()"
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="submit"
-         data-wizard-title="i18n.hosting_tab_DOMAINS_configuration_add_title">
+         data-wizard-title="'hosting_tab_DOMAINS_configuration_add_title' | translate">
 
         <div data-wizard-step
              data-wizard-step-on-load="loadHosting"
@@ -15,12 +15,12 @@
             </div>
 
             <div class="alert alert-danger" role="alert"
-                 data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_no_db_left"
+                 data-translate="hosting_tab_DOMAINS_configuration_add_step1_no_db_left"
                  data-ng-if="model.hosting && model.options && model.domainsCount >= model.capabilities.attachedDomains">
             </div>
 
             <div data-ng-if="model.hosting && model.options && model.domainsCount < model.capabilities.attachedDomains">
-                <p data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step1_title', model.hosting.serviceDisplayName)"></p>
+                <p data-ng-bind-html="'hosting_tab_DOMAINS_configuration_add_step1_title' | translate: { t0: model.hosting.serviceDisplayName }"></p>
 
                 <div class="oui-radio">
                     <input type="radio" class="oui-radio__input" id="hostingDomainAttachMode-ovh" name="hostingDomainAttachMode"
@@ -28,12 +28,12 @@
                            data-ng-value="model.mode.OVH">
                     <label class="oui-radio__label-container" for="hostingDomainAttachMode-ovh">
                         <span class="oui-radio__label"
-                              data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_ovh"></span>
+                              data-translate="hosting_tab_DOMAINS_configuration_add_step1_ovh"></span>
                     </label>
                     <div class="row mt-3" data-ng-show="selected.mode === model.mode.OVH">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="{{i18n.hosting_tab_DOMAINS_configuration_add_step1_ovh_search_placeholder}}"
+                                <input type="text" class="form-control" placeholder="{{ 'hosting_tab_DOMAINS_configuration_add_step1_ovh_search_placeholder' | translate }}"
                                        data-ng-change="selected.baseDomain = null"
                                        data-ng-model="selected.search">
                                 <div class="input-group-btn"
@@ -52,7 +52,7 @@
                                     data-ng-model="selected.baseDomain"
                                     data-ng-options="domain.displayName for domain in (model.options.availableDomains | filter:selected.search | orderBy:'formattedName') track by domain.displayName">
                                 <option value="" disabled
-                                        data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_ovh_search_no_result_found"
+                                        data-translate="hosting_tab_DOMAINS_configuration_add_step1_ovh_search_no_result_found"
                                         data-ng-show="(model.options.availableDomains | filter:selected.search).length === 0"></option>
                             </select>
                         </div>
@@ -64,7 +64,7 @@
                            data-ng-value="model.mode.EXTERNAL">
                     <label class="oui-radio__label-container" for="hostingDomainAttachMode-ext">
                         <span class="oui-radio__label"
-                              data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_external"></span>
+                              data-translate="hosting_tab_DOMAINS_configuration_add_step1_external"></span>
                     </label>
                 </div>
             </div>
@@ -86,49 +86,49 @@
              data-wizard-step-on-load="loadStep3"
              data-wizard-step-valid="!loading">
 
-            <p data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_summary"></p>
+            <p data-translate="hosting_tab_DOMAINS_configuration_add_step3_summary"></p>
 
             <dl class="dl-horizontal dl-lg">
-                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_domain_name"></dt>
+                <dt data-translate="hosting_tab_DOMAINS_configuration_add_step3_domain_name"></dt>
                 <dd data-ng-bind="getSelectedDomainToDisplay()"></dd>
 
-                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_domain_name"
+                <dt data-translate="hosting_tab_DOMAINS_configuration_add_step3_domain_name"
                     data-ng-if="needWwwDomain()" ></dt>
                 <dd data-ng-bind="getSelectedDomainToDisplay(true)"
                     data-ng-if="needWwwDomain()"></dd>
 
-                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_home"></dt>
+                <dt data-translate="hosting_tab_DOMAINS_configuration_add_step3_home"></dt>
                 <dd data-ng-bind="selected.pathFinal"></dd>
 
-                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_countriesIp"
+                <dt data-translate="hosting_tab_DOMAINS_configuration_add_step2_mode_OVH_countriesIp"
                     data-ng-if="selected.mode === model.mode.OVH && selected.countryIp" ></dt>
-                <dd data-ng-bind="tr('country_' + selected.countryIp.country) + ' - ' + selected.countryIp.ip"
+                <dd data-ng-bind="('country_' + selected.countryIp.country | translate) + ' - ' + selected.countryIp.ip"
                     data-ng-if="selected.mode === model.mode.OVH  && selected.countryIp"></dd>
 
 
-                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_ipv6"
+                <dt data-translate="hosting_tab_DOMAINS_configuration_add_step3_ipv6"
                     data-ng-if="selected.mode === model.mode.OVH"></dt>
-                <dd data-ng-bind="tr('hosting_tab_DOMAINS_configuration_add_step3_ipv6_' + selected.ipv6Needed)"
+                <dd data-ng-bind="'hosting_tab_DOMAINS_configuration_add_step3_ipv6_' + selected.ipv6Needed | translate"
                     data-ng-if="selected.mode === model.mode.OVH"></dd>
 
-                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step2_cdn"
+                <dt data-translate="hosting_tab_DOMAINS_configuration_modify_step2_cdn"
                     data-ng-if="selected.mode === model.mode.OVH"></dt>
-                <dd data-ng-bind="tr('hosting_tab_DOMAINS_table_cdn_state_'+ selected.activeCDN)"
+                <dd data-ng-bind="'hosting_tab_DOMAINS_table_cdn_state_'+ selected.activeCDN | translate"
                     data-ng-if="selected.mode === model.mode.OVH"></dd>
 
-                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_modify_step2_ssl"
+                <dt data-translate="hosting_tab_DOMAINS_configuration_modify_step2_ssl"
                     data-ng-if="selected.mode === model.mode.OVH"></dt>
-                <dd data-ng-bind="tr('hosting_tab_DOMAINS_table_ssl_state_'+ selected.ssl)"
+                <dd data-ng-bind="'hosting_tab_DOMAINS_table_ssl_state_'+ selected.ssl | translate"
                     data-ng-if="selected.mode === model.mode.OVH"></dd>
 
-                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_firewall"
+                <dt data-translate="hosting_tab_DOMAINS_configuration_add_step3_firewall"
                     data-ng-if="selected.mode === model.mode.OVH"></dt>
-                <dd data-ng-bind="tr('hosting_tab_DOMAINS_configuration_add_step3_firewall_' + selected.firewall)"
+                <dd data-ng-bind="'hosting_tab_DOMAINS_configuration_add_step3_firewall_' + selected.firewall | translate"
                     data-ng-if="selected.mode === model.mode.OVH"></dd>
 
-                <dt data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_ownlog"
+                <dt data-translate="hosting_tab_DOMAINS_configuration_add_step3_ownlog"
                     data-ng-if="selected.mode === model.mode.OVH"></dt>
-                <dd data-ng-bind="(selected.ownLog === 'ACTIVE' ? (tr('hosting_tab_DOMAINS_configuration_add_step3_ownlog_enabled') + ' (' + selected.ownLogDomain.name + ')') : tr('hosting_tab_DOMAINS_configuration_add_step3_ownlog_disabled'))"
+                <dd data-ng-bind="(selected.ownLog === 'ACTIVE' ? (('hosting_tab_DOMAINS_configuration_add_step3_ownlog_enabled' | translate) + ' (' + selected.ownLogDomain.name + ')') : ('hosting_tab_DOMAINS_configuration_add_step3_ownlog_disabled' | translate))"
                     data-ng-if="selected.mode === model.mode.OVH"></dd>
             </dl>
 
@@ -141,7 +141,7 @@
                        data-ng-model="selected.autoconfigure">
                 <label class="oui-checkbox__label-container" for="autoConfigure">
                     <span class="oui-checkbox__label">
-                        <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_mode_OVH_autoconfigure"></span>
+                        <span data-translate="hosting_tab_DOMAINS_configuration_add_step3_mode_OVH_autoconfigure"></span>
                         <span class="oui-checkbox__icon">
                             <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
                             <span class="oui-icon oui-icon-checkbox-checked" aria-hidden="true"></span>
@@ -150,14 +150,13 @@
                         </span>
                     </span>
                     <span class="oui-checkbox__description">
-                        <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_mode_OVH_autoconfigure_text"></span>
+                        <span data-translate="hosting_tab_DOMAINS_configuration_add_step3_mode_OVH_autoconfigure_text"></span>
                         <oui-spinner data-ng-if="loadingConflicts"></oui-spinner>
                         <strong class="d-block mt-3"
                               data-ng-if="hasConflicts()">
-                            <span data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_compatibility_nok"></span>
+                            <span data-translate="hosting_tab_DOMAINS_configuration_add_step3_compatibility_nok"></span>
                             <span class="d-block" data-ng-repeat="conflict in model.conflicts track by $index"
-                                  data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step3_compatibility_warning',
-                                    [(conflict.subDomain ? (conflict.subDomain + '.') : '') + conflict.zone, conflict.fieldType])">
+                                  data-ng-bind-html="'hosting_tab_DOMAINS_configuration_add_step3_compatibility_warning' | translate: { t0: (conflict.subDomain ? (conflict.subDomain + '.') : '') + conflict.zone, t1: conflict.fieldType }">
                             </span>
                         </strong>
                     </span>
@@ -165,28 +164,28 @@
             </div>
 
             <div class="alert alert-info" role="alert"
-                 data-i18n-static="hosting_tab_DOMAINS_configuration_add_step3_compatibility_important"
+                 data-translate="hosting_tab_DOMAINS_configuration_add_step3_compatibility_important"
                  data-ng-if="!loadingConflicts && hasConflicts() && selected.autoconfigure">
             </div>
 
             <div class="mt-4"
                  data-ng-if="selected.mode === model.mode.EXTERNAL || (selected.mode === model.mode.OVH && !selected.autoconfigure)">
                 <p class="font-weight-bold"
-                   data-ng-bind="tr('hosting_tab_DOMAINS_configuration_add_step2_mode_' + selected.mode + '_information')"></p>
+                   data-ng-bind="'hosting_tab_DOMAINS_configuration_add_step2_mode_' + selected.mode + '_information' | translate"></p>
                 <ul>
-                    <li data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step3_insert_token_field', ['TXT', getTokenDomain(), model.token])"
+                    <li data-ng-bind-html="'hosting_tab_DOMAINS_configuration_add_step3_insert_token_field' | translate: { t0: 'TXT', t1: getTokenDomain(), t2: model.token }"
                         data-ng-if="model.token"></li>
-                    <li data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step3_common_action', ['A', getSelectedDomainToDisplay(), getHostingIp(hosting, selected.activeCDN, false)])"></li>
-                    <li data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step3_common_action', ['A', getSelectedDomainToDisplay(true), getHostingIp(hosting, selected.activeCDN, false)])"
+                    <li data-ng-bind-html="'hosting_tab_DOMAINS_configuration_add_step3_common_action' | translate: { t0: 'A', t1: getSelectedDomainToDisplay(), t2: getHostingIp(hosting, selected.activeCDN, false) }"></li>
+                    <li data-ng-bind-html="'hosting_tab_DOMAINS_configuration_add_step3_common_action' | translate: { t0: 'A', t1: getSelectedDomainToDisplay(true), t2: getHostingIp(hosting, selected.activeCDN, false) }"
                         data-ng-if="needWwwDomain()"></li>
-                    <li data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step3_common_action', ['AAAA', getSelectedDomainToDisplay(), getHostingIp(hosting, selected.activeCDN, true)])"
+                    <li data-ng-bind-html="'hosting_tab_DOMAINS_configuration_add_step3_common_action' | translate: { t0: 'AAAA', t1: getSelectedDomainToDisplay(), t2: getHostingIp(hosting, selected.activeCDN, true) }"
                         data-ng-if="selected.ipv6Needed"></li>
-                    <li data-ng-bind-html="tr('hosting_tab_DOMAINS_configuration_add_step3_common_action', ['AAAA', getSelectedDomainToDisplay(true), getHostingIp(hosting, selected.activeCDN, true)])"
+                    <li data-ng-bind-html="'hosting_tab_DOMAINS_configuration_add_step3_common_action' | translate: { t0: 'AAAA', t1: getSelectedDomainToDisplay(true), t2: getHostingIp(hosting, selected.activeCDN, true) }"
                         data-ng-if="selected.ipv6Needed && needWwwDomain()"></li>
                 </ul>
 
                 <div class="alert alert-warning" role="alert"
-                     data-i18n-static="hosting_tab_DOMAINS_configuration_add_step2_mode_EXTERNAL_attention">
+                     data-translate="hosting_tab_DOMAINS_configuration_add_step2_mode_EXTERNAL_attention">
                 </div>
             </div>
         </div>

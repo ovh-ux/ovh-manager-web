@@ -1,10 +1,11 @@
 angular.module('App').controller(
   'HostingDatabaseDumpDeleteCtrl',
   class HostingDatabaseDumpDeleteCtrl {
-    constructor($scope, $filter, $stateParams, HostingDatabase, Alerter) {
+    constructor($scope, $filter, $stateParams, $translate, HostingDatabase, Alerter) {
       this.$scope = $scope;
       this.$filter = $filter;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.HostingDatabase = HostingDatabase;
       this.Alerter = Alerter;
     }
@@ -30,7 +31,7 @@ angular.module('App').controller(
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.Alerter.alertFromSWS(
-            this.$scope.tr('database_tabs_dumps_delete_fail'),
+            this.$translate.instant('database_tabs_dumps_delete_fail'),
             err,
             this.$scope.alerts.main,
           );

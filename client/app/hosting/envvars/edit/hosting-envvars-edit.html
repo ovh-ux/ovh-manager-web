@@ -3,7 +3,7 @@
         data-wizard
         data-wizard-on-cancel="resetAction"
         data-wizard-on-finish="edit"
-        data-wizard-title="i18n.hosting_tab_ENVVARS_edit_title">
+        data-wizard-title="'hosting_tab_ENVVARS_edit_title' | translate">
 
         <div
             data-wizard-step
@@ -14,7 +14,7 @@
                 name="ctrl.editEnvvarForm">
                 <p>
                     <small class="text-danger">*</small>
-                    <small data-i18n-static="required_fields"></small>
+                    <small data-translate="required_fields"></small>
                 </p>
 
                 <div
@@ -23,7 +23,7 @@
                     <label
                         class="control-label col-md-4 required"
                         for="envvarKey"
-                        data-i18n-static="hosting_tab_ENVVARS_label_key"></label>
+                        data-translate="hosting_tab_ENVVARS_label_key"></label>
 
                     <div class="col-md-6">
                         <input
@@ -37,12 +37,12 @@
                         <small
                             class="help-block"
                             role="alert"
-                            data-i18n-static="hosting_tab_ENVVARS_label_error_required"
+                            data-translate="hosting_tab_ENVVARS_label_error_required"
                             data-ng-if="ctrl.editEnvvarForm.envvarKey.$error.required"></small>
                         <small
                             class="help-block"
                             role="alert"
-                            data-i18n-static="hosting_tab_ENVVARS_label_error_pattern"
+                            data-translate="hosting_tab_ENVVARS_label_error_pattern"
                             data-ng-if="ctrl.editEnvvarForm.envvarKey.$error.pattern"></small>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                     <label
                         class="control-label col-md-4 required"
                         for="envvarType"
-                        data-i18n-static="hosting_tab_ENVVARS_label_type"></label>
+                        data-translate="hosting_tab_ENVVARS_label_type"></label>
 
                     <div class="col-md-8">
                         <div class="oui-select oui-select_inline mb-0">
@@ -76,7 +76,7 @@
                     <label
                         class="control-label col-md-4 required"
                         for="envvarValue"
-                        data-i18n-static="hosting_tab_ENVVARS_label_value"></label>
+                        data-translate="hosting_tab_ENVVARS_label_value"></label>
 
                     <div class="col-md-6">
                         <input
@@ -87,7 +87,7 @@
                             name="envvarValue"
                             required
                             data-ng-model="+ctrl.entryToEdit.value">
-                            
+
                         <input
                             type="password"
                             data-ng-if="ctrl.entryToEdit.type === 'password'"
@@ -105,11 +105,11 @@
                             name="envvarValue"
                             required
                             data-ng-model="ctrl.entryToEdit.value">
-                        
+
                         <small
                             class="help-block"
                             role="alert"
-                            data-i18n-static="hosting_tab_ENVVARS_label_error_required"
+                            data-translate="hosting_tab_ENVVARS_label_error_required"
                             data-ng-if="ctrl.editEnvvarForm.envvarValue.$error.required"></small>
                     </div>
                 </div>

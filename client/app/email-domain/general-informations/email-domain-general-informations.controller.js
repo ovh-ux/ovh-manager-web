@@ -6,13 +6,15 @@ angular.module('App').controller(
      * @param $scope
      * @param $q
      * @param $stateParams
+     * @param $translate
      * @param Alerter
      * @param Emails
      */
-    constructor($scope, $q, $stateParams, Alerter, Emails) {
+    constructor($scope, $q, $stateParams, $translate, Alerter, Emails) {
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Emails = Emails;
     }
@@ -45,7 +47,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('email_tab_table_accounts_error'),
+            this.$translate.instant('email_tab_table_accounts_error'),
             err,
             this.$scope.alerts.main,
           );
@@ -69,7 +71,7 @@ angular.module('App').controller(
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.Alerter.alertFromSWS(
-            this.$scope.tr('email_tab_table_accounts_error'),
+            this.$translate.instant('email_tab_table_accounts_error'),
             err,
             this.$scope.alerts.main,
           );

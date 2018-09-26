@@ -2,7 +2,7 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="resetAction"
-         data-wizard-title="i18n.common_incident_tracking">
+         data-wizard-title="'common_incident_tracking' | translate">
         <div data-wizard-step>
             <div class="text-center" data-ng-if="!IncidentCtrl.informations.tasks">
                 <oui-spinner></oui-spinner>
@@ -15,7 +15,7 @@
                         <div data-ng-if="informations.comments">
                             <div class="mb-4" data-ng-repeat="comment in informations.comments track by $index">
                                 <p class="font-weight-bold mb-2 text-danger">
-                                    <span data-i18n-static="common_new_update"></span>
+                                    <span data-translate="common_new_update"></span>
                                     (<span data-ng-bind="(comment.date_added * 1000) | date:'medium'"></span>)
                                 </p>
                                 <div class="task"

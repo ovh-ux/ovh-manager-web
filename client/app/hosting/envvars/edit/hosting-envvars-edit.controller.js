@@ -1,13 +1,13 @@
 angular.module('App').controller(
   'controllers.Hosting.Envvars.edit',
   class HostingEnvvarsEditCtrl {
-    constructor($scope, $stateParams, Alerter, HostingEnvvars, translator) {
+    constructor($scope, $stateParams, $translate, Alerter, HostingEnvvars) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.HostingEnvvars = HostingEnvvars;
-      this.translator = translator;
     }
 
     $onInit() {
@@ -33,13 +33,13 @@ angular.module('App').controller(
       )
         .then(() => {
           this.Alerter.success(
-            this.$scope.tr('hosting_tab_ENVVARS_edit_success'),
+            this.$translate.instant('hosting_tab_ENVVARS_edit_success'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.Alerter.error(
-            this.$scope.tr('hosting_tab_ENVVARS_edit_error') + err.message,
+            this.$translate.instant('hosting_tab_ENVVARS_edit_error') + err.message,
             this.$scope.alerts.main,
           );
         })

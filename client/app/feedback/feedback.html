@@ -3,18 +3,18 @@
         <div class="modal-content">
 
             <div class="feedback-title wizard-title-container">
-                <b data-i18n-static="global_feedback_appreciation"></b>
+                <b data-translate="global_feedback_appreciation"></b>
             </div>
 
             <div class="feedback-container">
-                <span class="block bold center fs12" style="color: #737373;" data-ng-bind-html="i18n.global_feedback_appreciation_text"></span>
+                <span class="block bold center fs12" style="color: #737373;" data-ng-bind-html="'global_feedback_appreciation_text' | translate"></span>
             </div>
             <div class="feedback-container">
                 <form name="feedBackForm" data-ng-show="!isSending">
 
                     <div class="form-group">
                         <label class="control-label" for="subject"
-                               data-i18n-static="global_feedback_subject"></label>
+                               data-translate="global_feedback_subject"></label>
                         <div class="controls">
                             <input type="text" id="subject" name="subject"
                                    data-ng-model="feedback.subject"
@@ -22,10 +22,10 @@
                                    data-ng-maxlength="255" required />
                             <div ng-messages="feedBackForm.subject.$error" style="color:red" role="alert">
                                 <div ng-message="required">
-                                    <span data-i18n-static="global_feedback_subject_required"></span>
+                                    <span data-translate="global_feedback_subject_required"></span>
                                 </div>
                                 <div ng-message="maxlength">
-                                    <span data-i18n-static="global_feedback_subject_maxlength"></span>
+                                    <span data-translate="global_feedback_subject_maxlength"></span>
                                 </div>
                             </div>
                         </div>
@@ -33,7 +33,7 @@
 
                     <div class="form-group">
                         <label class="control-label" for="feedBackFormComment"
-                               data-i18n-static="global_feedback_more_details">
+                               data-translate="global_feedback_more_details">
                         </label>
                         <textarea id="feedBackFormComment" style="width: 506px;"
                                   required data-ng-model="feedback.body"
@@ -46,17 +46,17 @@
                 </div>
             </div>
             <div class="feedback-container" style="background-color: #E6E4E5; border-top: solid 1px #DDD;">
-                <span class="bold fs12" data-i18n-static="global_feedback_warning"></span>
+                <span class="bold fs12" data-translate="global_feedback_warning"></span>
                 <br/>
-                <span class="fs12" data-i18n-static="global_feedback_support_inquiries"></span>
+                <span class="fs12" data-translate="global_feedback_support_inquiries"></span>
                 <a class="green" href="#/ticket" data-ng-click="closeModal()"
-                   title="{{i18n.global_feedback_support_inquiries_ovh_title}}">
-                    <span data-i18n-static="global_feedback_support_inquiries_ovh"></span></a>
+                   title="{{ 'global_feedback_support_inquiries_ovh_title' | translate }}">
+                    <span data-translate="global_feedback_support_inquiries_ovh"></span></a>
             </div>
 
             <div class="feedback-footer wizard-btn-container" id="buttonComment">
-                <span class="btn btn-default wizard-btn-cancel" data-i18n-static="common_cancel" data-ng-click="initForm()" data-ng-disabled="isSending" data-dismiss="modal" data-aria-hidden="true"></span>
-                <span class="btn btn-default wizard-btn-confirm" data-i18n-static="global_feedback_send" data-ng-click="sendFeedBack()" data-ng-disabled="feedBackForm.$invalid || isSending"></span>
+                <span class="btn btn-default wizard-btn-cancel" data-translate="common_cancel" data-ng-click="initForm()" data-ng-disabled="isSending" data-dismiss="modal" data-aria-hidden="true"></span>
+                <span class="btn btn-default wizard-btn-confirm" data-translate="global_feedback_send" data-ng-click="sendFeedBack()" data-ng-disabled="feedBackForm.$invalid || isSending"></span>
             </div>
         </div>
     </div>

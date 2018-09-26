@@ -10,25 +10,25 @@
         <div class="col-md-9">
             <div data-ovh-alert="{{alerts.main}}"></div>
 
-            <p data-i18n-static="hosting_tab_FTP_dashboard_information"></p>
+            <p data-translate="hosting_tab_FTP_dashboard_information"></p>
 
             <!-- PERSO  -->
             <div data-ng-if="ctrlHostingTabFTP.ftpInformations.hasMultiFtp === false">
                 <dl>
-                    <dt data-i18n-static="hosting_tab_FTP_dashboard_server"></dt>
+                    <dt data-translate="hosting_tab_FTP_dashboard_server"></dt>
                     <dd class="mb-3">
                         <oui-clipboard class="w-25" data-model="ctrlHostingTabFTP.firstUser.ftp.url"></oui-clipboard>
                     </dd>
 
-                    <dt data-i18n-static="hosting_tab_FTP_dashboard_server_link"></dt>
+                    <dt data-translate="hosting_tab_FTP_dashboard_server_link"></dt>
                     <dd class="mb-3">
-                        <a data-ng-href="ftp://{{ctrlHostingTabFTP.firstUser.ftp.user}}@{{ctrlHostingTabFTP.firstUser.ftp.url}}:{{ctrlHostingTabFTP.firstUser.ftp.port}}/" target="_blank" title="{{i18n.hosting_dashboard_service_home_ftp_newtab}}">
+                        <a data-ng-href="ftp://{{ctrlHostingTabFTP.firstUser.ftp.user}}@{{ctrlHostingTabFTP.firstUser.ftp.url}}:{{ctrlHostingTabFTP.firstUser.ftp.port}}/" target="_blank" title="{{ 'hosting_dashboard_service_home_ftp_newtab' | translate }}">
                             <span data-ng-bind="ctrlHostingTabFTP.firstUser.ftpUrl"></span>
                             <span class="fa fa-external-link" aria-hidden="true"></span>
                         </a>
                     </dd>
 
-                    <dt data-i18n-static="hosting_tab_FTP_dashboard_homez"></dt>
+                    <dt data-translate="hosting_tab_FTP_dashboard_homez"></dt>
                     <dd class="mb-3"
                         data-ng-bind="'/home/' + ctrlHostingTabFTP.ftpInformations.primaryLogin"></dd>
                 </dl>
@@ -39,16 +39,16 @@
 
                 <div class="alert alert-info" role="alert">
                     <div>
-                        <p data-i18n-static="hosting_tab_FTP_configuration_offer_upgrade"></p>
+                        <p data-translate="hosting_tab_FTP_configuration_offer_upgrade"></p>
                         <button class="btn btn-info" type="button"
-                                data-i18n-static="hosting_dashboard_service_change_offer"
+                                data-translate="hosting_dashboard_service_change_offer"
                                 data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
                         </button>
                     </div>
                 </div>
 
                 <div class="alert alert-info" role="alert"
-                     data-i18n-static="hosting_tab_FTP_multiftp_table_header_empty"
+                     data-translate="hosting_tab_FTP_multiftp_table_header_empty"
                      data-ng-if="!ctrlHostingTabFTP.loading.ftp && !ctrlHostingTabFTP.ftpInformations.list.results.length">
                 </div>
 
@@ -57,11 +57,11 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_login"></th>
-                                <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_home"></th>
-                                <th scope="col" data-i18n-static="hosting_tab_FTP_configuration_user_create_step2_password_password"></th>
-                                <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_sftp_state"></th>
-                                <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_state"></th>
+                                <th scope="col" data-translate="hosting_tab_FTP_multiftp_table_header_login"></th>
+                                <th scope="col" data-translate="hosting_tab_FTP_multiftp_table_header_home"></th>
+                                <th scope="col" data-translate="hosting_tab_FTP_configuration_user_create_step2_password_password"></th>
+                                <th scope="col" data-translate="hosting_tab_FTP_multiftp_table_header_sftp_state"></th>
+                                <th scope="col" data-translate="hosting_tab_FTP_multiftp_table_header_state"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -72,7 +72,7 @@
                                 <td>
                                     <div class="text-nowrap" data-ng-show="!ctrlHostingTabFTP.editMode">
                                         *****************
-                                        <button class="btn btn-icon" type="button" title="{{::i18n.hosting_tab_FTP_configuration_user_create_step2_password_password}} : {{::i18n.wizard_modify}}"
+                                        <button class="btn btn-icon" type="button" title="{{:: 'hosting_tab_FTP_configuration_user_create_step2_password_password' | translate }} : {{:: 'wizard_modify' | translate }}"
                                                 data-ng-click="ctrlHostingTabFTP.editMode = true">
                                             <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
                                         </button>
@@ -82,19 +82,19 @@
                                             <input type="password" class="form-control" autocomplete="off"
                                                    data-ng-model="ctrlHostingTabFTP.password.value">
                                             <div class="input-group-btn">
-                                                <button class="btn btn-success" type="button" title="{{::i18n.hosting_tab_FTP_configuration_user_create_step2_password_password}} : {{i18n.wizard_confirm}}"
+                                                <button class="btn btn-success" type="button" title="{{:: 'hosting_tab_FTP_configuration_user_create_step2_password_password' | translate }} : {{ 'wizard_confirm' | translate }}"
                                                         data-ng-click="ctrlHostingTabFTP.changePassword()"
                                                         data-ng-disabled="!ctrlHostingTabFTP.isPasswordValid()">
                                                     <span class="fa fa-check" aria-hidden="true"></span>
                                                 </button>
-                                                <button class="btn btn-danger" type="button" title="{{::i18n.hosting_tab_FTP_configuration_user_create_step2_password_password}} : {{i18n.wizard_cancel}}"
+                                                <button class="btn btn-danger" type="button" title="{{:: 'hosting_tab_FTP_configuration_user_create_step2_password_password' | translate }} : {{ 'wizard_cancel' | translate }}"
                                                         data-ng-click="ctrlHostingTabFTP.resetPassword()">
                                                     <span class="fa fa-times" aria-hidden="true"></span>
                                                 </button>
                                             </div>
                                         </div>
                                         <small class="d-block mt-2"
-                                               data-ng-bind-html="tr('hosting_common_password_conditions', [ctrlHostingTabFTP.condition.min, ctrlHostingTabFTP.condition.max])"></small>
+                                               data-ng-bind-html="'hosting_common_password_conditions' | translate: { t0: ctrlHostingTabFTP.condition.min, t1: ctrlHostingTabFTP.condition.max }"></small>
                                     </div>
                                 </td>
                                 <td>
@@ -107,9 +107,9 @@
                                                data-ng-init="prevSshState = { sshState : element.sshState }">
                                         <label class="oui-checkbox__label-container" for="prevSshState-{{$index}}">
                                             <span class="oui-checkbox__label">
-                                                <span data-i18n-static="common_activated"
+                                                <span data-translate="common_activated"
                                                     data-ng-if="element.sshState === 'sftponly'"></span>
-                                                <span data-i18n-static="common_desactivated"
+                                                <span data-translate="common_desactivated"
                                                     data-ng-if="element.sshState === 'none'"></span>
                                                 <span class="oui-checkbox__icon">
                                                     <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
@@ -122,7 +122,7 @@
                                     </div>
                                     <div data-ng-if="!ctrlHostingTabFTP.allowUpdateState">
                                         <oui-spinner data-size="s"></oui-spinner>
-                                        <span data-i18n-static="hosting_tab_FTP_update"></span>
+                                        <span data-translate="hosting_tab_FTP_update"></span>
                                     </div>
                                 </td>
                                 <td>
@@ -135,9 +135,9 @@
                                                data-ng-init="prevState = { state : element.state }">
                                         <label class="oui-checkbox__label-container" for="prevState-{{$index}}">
                                             <span class="oui-checkbox__label">
-                                                <span data-i18n-static="common_activated"
+                                                <span data-translate="common_activated"
                                                     data-ng-if="element.state === 'rw'"></span>
-                                                <span data-i18n-static="common_desactivated"
+                                                <span data-translate="common_desactivated"
                                                     data-ng-if="element.state === 'off'"></span>
                                                 <span class="oui-checkbox__icon">
                                                     <span class="oui-icon oui-icon-checkbox-unchecked" aria-hidden="true"></span>
@@ -150,7 +150,7 @@
                                     </div>
                                     <div data-ng-if="!ctrlHostingTabFTP.allowUpdateState">
                                         <oui-spinner data-size="s"></oui-spinner>
-                                        <span data-i18n-static="hosting_tab_FTP_update"></span>
+                                        <span data-translate="hosting_tab_FTP_update"></span>
                                     </div>
                                 </td>
                             </tr>
@@ -163,26 +163,26 @@
             <div class="row" data-ng-if="ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
                 <div class="col-md-6">
                     <dl>
-                        <dt data-i18n-static="hosting_tab_FTP_dashboard_server"></dt>
+                        <dt data-translate="hosting_tab_FTP_dashboard_server"></dt>
                         <dd class="mb-3">
                             <oui-clipboard class="w-75" data-model="ftp.url"></oui-clipboard>
                         </dd>
 
-                        <dt data-i18n-static="hosting_tab_FTP_dashboard_server_link"></dt>
+                        <dt data-translate="hosting_tab_FTP_dashboard_server_link"></dt>
                         <dd class="mb-3">
-                            <a data-ng-href="ftp://{{ftp.url}}:{{ftp.port}}/" target="_blank" title="{{i18n.hosting_dashboard_service_home_ftp_newtab}}">
+                            <a data-ng-href="ftp://{{ftp.url}}:{{ftp.port}}/" target="_blank" title="{{ 'hosting_dashboard_service_home_ftp_newtab' | translate }}">
                                 <span data-ng-bind="ftpUrl"></span>
                                 <span class="fa fa-external-link" aria-hidden="true"></span>
                             </a>
                         </dd>
 
-                        <dt data-i18n-static="hosting_tab_FTP_dashboard_clusterip"></dt>
+                        <dt data-translate="hosting_tab_FTP_dashboard_clusterip"></dt>
                         <dd class="mb-3"
                             data-ng-bind="ctrlHostingTabFTP.ftpInformations.hostingIp"></dd>
 
-                        <dt data-i18n-static="hosting_dashboard_service_home_ssh"></dt>
+                        <dt data-translate="hosting_dashboard_service_home_ssh"></dt>
                         <dd class="mb-3">
-                            <a data-ng-href="ssh://{{ssh.url}}:{{ssh.port}}/" target="_blank" title="{{i18n.hosting_dashboard_service_home_ssh_newtab}}">
+                            <a data-ng-href="ssh://{{ssh.url}}:{{ssh.port}}/" target="_blank" title="{{ 'hosting_dashboard_service_home_ssh_newtab' | translate }}">
                                 <span data-ng-bind="sshUrl"></span>
                                 <span class="fa fa-external-link" aria-hidden="true"></span>
                             </a>
@@ -191,28 +191,28 @@
                 </div>
                 <div class="col-md-6">
                     <dl>
-                        <dt data-i18n-static="hosting_tab_FTP_dashboard_primary_ftp_login"></dt>
+                        <dt data-translate="hosting_tab_FTP_dashboard_primary_ftp_login"></dt>
                         <dd class="mb-3"
                             data-ng-bind="ctrlHostingTabFTP.primaryUser.ftp.user"></dd>
 
-                        <dt data-i18n-static="hosting_tab_FTP_dashboard_primary_ssh_login"></dt>
+                        <dt data-translate="hosting_tab_FTP_dashboard_primary_ssh_login"></dt>
                         <dd class="mb-3"
                             data-ng-bind="ctrlHostingTabFTP.primaryUser.ssh.user"></dd>
 
                         <dt data-ng-if="!ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
                             <label class="font-weight-bold" for="primaryUserEnabled"
-                                   data-i18n-static="hosting_tab_FTP_dashboard_login_enabled"></label>
+                                   data-translate="hosting_tab_FTP_dashboard_login_enabled"></label>
                         </dt>
                         <dd class="mb-3" data-ng-if="!ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
                             <input class="align-middle" id="primaryUserEnabled"
                                    data-checkbox-switch3
                                    data-ng-model="ctrlHostingTabFTP.primaryUserEnabled"
                                    data-cb-switch-on-change="updatePrimaryLoginState(state)"
-                                   data-cb-switch-on-label="{{ tr('common_yes') }}"
-                                   data-cb-switch-off-label="{{ tr('common_no') }}" />
+                                   data-cb-switch-on-label="{{ 'common_yes' | translate }}"
+                                   data-cb-switch-off-label="{{ 'common_no' | translate }}" />
                         </dd>
 
-                        <dt data-i18n-static="hosting_tab_FTP_dashboard_homez"></dt>
+                        <dt data-translate="hosting_tab_FTP_dashboard_homez"></dt>
                         <dd class="mb-3" data-ng-bind="'/home/' + hosting.primaryLogin"></dd>
                     </dl>
                 </div>
@@ -225,7 +225,7 @@
                 </div>
 
                 <div class="alert alert-info" role="alert"
-                     data-i18n-static="hosting_tab_FTP_multiftp_table_header_empty"
+                     data-translate="hosting_tab_FTP_multiftp_table_header_empty"
                      data-ng-if="!ctrlHostingTabFTP.loading.init && !ctrlHostingTabFTP.hasResult">
                 </div>
 
@@ -234,14 +234,14 @@
                         <form class="form-inline d-md-flex justify-content-md-end" name="searchFtpForm">
                             <div class="form-group">
                                 <label class="sr-only" for="searchFtp"
-                                       data-ng-i18n-static="common_search"></label>
+                                       data-translate="common_search"></label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="searchFtp" name="searchFtp" placeholder="{{::i18n.hosting_tab_DOMAINS_search_placeholder}}"
+                                    <input type="text" class="form-control" id="searchFtp" name="searchFtp" placeholder="{{:: 'hosting_tab_DOMAINS_search_placeholder' | translate }}"
                                            data-ng-change="ctrlHostingTabFTP.goSearch()"
                                            data-ng-model="ctrlHostingTabFTP.search.value"
                                            data-ng-model-options='{ debounce: 800 }'>
                                     <div class="input-group-btn" data-ng-if="ctrlHostingTabFTP.search.value">
-                                        <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
+                                        <button class="btn btn-default" type="button" aria-label="{{ 'common_cancel' | translate }}"
                                                 data-ng-click="ctrlHostingTabFTP.resetSearch()">
                                             <span class="fa fa-times" aria-hidden="true"></span>
                                         </button>
@@ -260,13 +260,13 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_ftp_login"></th>
-                                    <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_ssh_login"></th>
-                                    <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_home"></th>
-                                    <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_ftp_state"></th>
-                                    <th scope="col" data-i18n-static="hosting_tab_FTP_multiftp_table_header_ssh_state"></th>
+                                    <th scope="col" data-translate="hosting_tab_FTP_multiftp_table_header_ftp_login"></th>
+                                    <th scope="col" data-translate="hosting_tab_FTP_multiftp_table_header_ssh_login"></th>
+                                    <th scope="col" data-translate="hosting_tab_FTP_multiftp_table_header_home"></th>
+                                    <th scope="col" data-translate="hosting_tab_FTP_multiftp_table_header_ftp_state"></th>
+                                    <th scope="col" data-translate="hosting_tab_FTP_multiftp_table_header_ssh_state"></th>
                                     <th class="min-width text-right" scope="col">
-                                        <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
+                                        <button class="btn btn-icon" type="button" title="{{ 'refresh' | translate }}"
                                                 data-ng-click="ctrlHostingTabFTP.refreshTable()">
                                             <span class="fa fa-refresh" aria-hidden="true"></span>
                                         </button>
@@ -285,7 +285,7 @@
                             <tbody data-ng-if="!ctrlHostingTabFTP.loading.ftp && !ctrlHostingTabFTP.ftpInformations.list.results.length">
                                 <tr>
                                     <td class="text-center" colspan="6"
-                                        data-i18n-static="table_search_noresult"></td>
+                                        data-translate="table_search_noresult"></td>
                                 </tr>
                             </tbody>
 
@@ -295,8 +295,8 @@
                                     <th scope="row" data-ng-bind="element.ssh.user"></th>
                                     <td data-ng-bind="element.home"></td>
                                     <td>
-                                        <span class="label label-danger"
-                                              data-ng-bind="tr('hosting_tab_FTP_multiftp_table_state_' + element.state) || element.state"
+                                        <span class="oui-status oui-status_error"
+                                              data-ng-bind="(('hosting_tab_FTP_multiftp_table_state_' + element.state | translate) == 'hosting_tab_FTP_multiftp_table_state_' + element.state)? element.state: ('hosting_tab_FTP_multiftp_table_state_' + element.state | translate)"
                                               data-ng-if="element.state === 'off'"></span>
                                         <a data-ng-href="ftp://{{element.ftp.user}}@{{element.ftp.url}}:{{element.ftp.port}}/" class="d-block word-break" target="_blank"
                                            data-ng-if="element.state === 'rw'">
@@ -305,8 +305,8 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <span class="label" data-ng-class="{'label-success': element.sshState === 'sftponly', 'label-danger': element.sshState === 'none'}"
-                                              data-ng-bind="tr('hosting_tab_FTP_multiftp_table_ssh_state_' + element.sshState) || element.sshState"
+                                        <span class="oui-status" data-ng-class="{'oui-status_success': element.sshState === 'sftponly', 'oui-status_error': element.sshState === 'none'}"
+                                              data-ng-bind="(('hosting_tab_FTP_multiftp_table_ssh_state_' + element.sshState | translate) == 'hosting_tab_FTP_multiftp_table_ssh_state_' + element.sshState)? element.sshState: ('hosting_tab_FTP_multiftp_table_ssh_state_' + element.sshState | translate)"
                                               data-ng-if="element.sshState !== 'active'"></span>
                                         <a data-ng-href="ssh://{{element.ssh.user}}@{{element.ssh.url}}:{{element.ssh.port}}/" class="d-block word-break" target="_blank"
                                            data-ng-if="element.sshState === 'active'">
@@ -315,14 +315,15 @@
                                         </a>
                                     </td>
                                     <td class="text-center">
-                                        <button class="btn btn-icon" type="button" title="{{element.ftp.user}} : {{i18n.global_configuration}}"
-                                                data-linkedpopover="hosting/popover/multiftp.html"
-                                                data-linkedpopover-placement="left"
-                                                data-linkedpopover-single="true"
-                                                data-linkedpopover-remote="true"
-                                                data-linkedpopover-title="{{i18n.common_actions}}">
-                                            <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                                        </button>
+                                        <oui-action-menu data-compact data-align="end">
+                                                <oui-action-menu-item data-text="{{:: 'hosting_tab_FTP_multiftp_table_popover_modify' | translate }}"
+                                                                      data-on-click="ctrlHostingTabFTP.modifyUser(element)"></oui-action-menu-item>
+                                                <oui-action-menu-item data-text="{{:: 'hosting_tab_FTP_multiftp_table_popover_update_password' | translate }}"
+                                                                      data-on-click="setAction('ftp/password-update/hosting-ftp-password-update', element.login)"></oui-action-menu-item>
+                                                <oui-action-menu-item data-text="{{:: 'hosting_tab_FTP_multiftp_table_popover_delete' | translate }}"
+                                                                      data-on-click="setAction('ftp/user/delete/hosting-ftp-user-delete', element.login)"
+                                                                      data-disabled="element.login === ctrlHostingTabFTP.ftpInformations.primaryLogin"></oui-action-menu-item>
+                                        </oui-action-menu>
                                     </td>
                                 </tr>
                             </tbody>
@@ -342,27 +343,27 @@
 
         <div class="col-md-3 mt-5 mt-lg-0">
             <button class="btn btn-block btn-default" type="button"
-                    data-i18n-static="hosting_tab_FTP_configuration_restore_snapshot_title_button"
+                    data-translate="hosting_tab_FTP_configuration_restore_snapshot_title_button"
                     data-ng-click="setAction('ftp/snapshot/restore/hosting-ftp-snapshot-restore')"
                     data-ng-disabled="ctrlHostingTabFTP.disableRestoreFtp"
                     data-ng-if="ctrlHostingTabFTP.displayRestoreFtp && !hosting.isCloudWeb">
             </button>
 
             <button class="btn btn-block btn-default" type="button"
-                    data-i18n-static="hosting_tab_FTP_configuration_generate_snapshot_title_button"
+                    data-translate="hosting_tab_FTP_configuration_generate_snapshot_title_button"
                     data-ng-click="setAction('ftp/snapshot/generate/hosting-ftp-snapshot-generate')"
                     data-ng-disabled="ctrlHostingTabFTP.disableRestoreFtp"
                     data-ng-if="ctrlHostingTabFTP.displayRestoreFtp && hosting.isCloudWeb">
             </button>
 
             <button class="btn btn-block btn-default" type="button"
-                    data-i18n-static="hosting_tab_FTP_configuration_user_create_title_button"
+                    data-translate="hosting_tab_FTP_configuration_user_create_title_button"
                     data-ng-click="setAction('ftp/user/add/hosting-ftp-user-add', { primaryLogin: ctrlHostingTabFTP.ftpInformations.primaryLogin, operatingSystem: ctrlHostingTabFTP.ftpInformations.operatingSystem })"
                     data-ng-if="ctrlHostingTabFTP.ftpInformations.hasMultiFtp">
             </button>
 
             <button class="btn btn-block btn-default" type="button"
-                    data-i18n-static="hosting_tab_FTP_configuration_explorer_title"
+                    data-translate="hosting_tab_FTP_configuration_explorer_title"
                     data-ng-click="ctrlHostingTabFTP.openFtpExplorer()"
                     data-ng-if="ctrlHostingTabFTP.displayFtpExplorer">
             </button>

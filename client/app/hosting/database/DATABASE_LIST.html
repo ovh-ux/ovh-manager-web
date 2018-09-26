@@ -4,14 +4,14 @@
 <div class="alert alert-info" role="alert"
      data-ng-if="ctrlTabDatabases.hosting.offer === 'START_10_M'">
     <div>
-        <p data-i18n-static="hosting_dashboard_service_change_offer_explanation"></p>
+        <p data-translate="hosting_dashboard_service_change_offer_explanation"></p>
         <ul class="mb-3">
-            <li data-i18n-static="hosting_dashboard_service_change_offer_explanation_ftp"></li>
-            <li data-i18n-static="hosting_dashboard_service_change_offer_explanation_mail"></li>
-            <li data-i18n-static="hosting_dashboard_service_change_offer_explanation_db"></li>
+            <li data-translate="hosting_dashboard_service_change_offer_explanation_ftp"></li>
+            <li data-translate="hosting_dashboard_service_change_offer_explanation_mail"></li>
+            <li data-translate="hosting_dashboard_service_change_offer_explanation_db"></li>
         </ul>
         <button class="btn btn-info" type="button"
-                data-i18n-static="hosting_dashboard_service_change_offer_now"
+                data-translate="hosting_dashboard_service_change_offer_now"
                 data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
         </button>
     </div>
@@ -20,9 +20,9 @@
 <div class="alert alert-info" role="alert"
      data-ng-if="!displayTabs.databases">
     <div>
-        <p class="mb-3" data-i18n-static="hosting_change_offer_for_service"></p>
+        <p class="mb-3" data-translate="hosting_change_offer_for_service"></p>
         <button class="btn btn-info" type="button"
-                data-i18n-static="hosting_dashboard_service_change_offer"
+                data-translate="hosting_dashboard_service_change_offer"
                 data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', ctrlTabDatabases.hosting)">
         </button>
     </div>
@@ -35,19 +35,19 @@
     </div>
 
     <div data-ng-if="!ctrlTabDatabases.loading.init">
-        <p data-i18n-static="hosting_tab_DATABASES_configuration_quota_info_calculation_period"></p>
-        <p data-i18n-static="hosting_tab_DATABASES_configuration_quota_warning_message"></p>
-        <p data-i18n-static="hosting_tab_DATABASES_configuration_quota_warning_resolution"></p>
+        <p data-translate="hosting_tab_DATABASES_configuration_quota_info_calculation_period"></p>
+        <p data-translate="hosting_tab_DATABASES_configuration_quota_warning_message"></p>
+        <p data-translate="hosting_tab_DATABASES_configuration_quota_warning_resolution"></p>
 
         <div data-ng-if="!ctrlTabDatabases.hasResult">
             <button class="oui-button oui-button_secondary" type="button"
-                    data-i18n-static="hosting_tab_DATABASES_configuration_create_title_button"
+                    data-translate="hosting_tab_DATABASES_configuration_create_title_button"
                     data-ng-click="setAction('database/add/hosting-database-add')"
                     data-ng-disabled="!ctrlTabDatabases.canCreateDatabase">
             </button>
 
             <div class="alert alert-info" role="alert"
-                 data-i18n-static="hosting_tab_DATABASES_table_empty">
+                 data-translate="hosting_tab_DATABASES_table_empty">
             </div>
         </div>
 
@@ -57,15 +57,15 @@
                 <div class="col-xs-6">
                     <div class="btn-group">
                         <button type="button" class="oui-button oui-button_dropdown mb-0" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
-                            <span data-i18n-static="common_actions">Actions</span>
+                            <span data-translate="common_actions">Actions</span>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </button>
                         <ul class="dropdown-menu m-0 p-0">
-                            <li data-uib-tooltip="{{::i18n.hosting_tab_DATABASES_configuration_create_step1_no_db_left}}"
+                            <li data-uib-tooltip="{{:: 'hosting_tab_DATABASES_configuration_create_step1_no_db_left' | translate }}"
                                 data-tooltip-enable="!ctrlTabDatabases.canCreateDatabase">
                                 <i class="fa fa-plus" aria-hidden="true"></i>
                                 <button class="btn btn-link" type="button"
-                                        data-i18n-static="hosting_tab_DATABASES_configuration_create_title_button"
+                                        data-translate="hosting_tab_DATABASES_configuration_create_title_button"
                                         data-ng-click="setAction('database/add/hosting-database-add')"
                                         data-ng-disabled="!ctrlTabDatabases.canCreateDatabase">
                                 </button>
@@ -73,7 +73,7 @@
                             <li>
                                 <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
                                 <a class="btn btn-link"
-                                   data-i18n-static="hosting_tab_DATABASES_configuration_order_title_button"
+                                   data-translate="hosting_tab_DATABASES_configuration_order_title_button"
                                    data-ui-sref="app.sql-order({orderType: 'private', currentHosting: ctrlTabDatabases.hosting.serviceName})">
                                 </a>
                             </li>
@@ -84,14 +84,14 @@
                     <form class="form-inline d-md-flex justify-content-md-end" name="searchDatabaseForm">
                         <div class="form-group">
                             <label class="sr-only" for="searchDatabase"
-                                   data-ng-i18n-static="common_search"></label>
+                                   data-translate="common_search"></label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="searchDatabase" name="searchDatabase" placeholder="{{::i18n.hosting_tab_DOMAINS_search_placeholder}}"
+                                <input type="text" class="form-control" id="searchDatabase" name="searchDatabase" placeholder="{{:: 'hosting_tab_DOMAINS_search_placeholder' | translate }}"
                                        data-ng-change="ctrlTabDatabases.loadDatabases()"
                                        data-ng-model="ctrlTabDatabases.search.value"
                                        data-ng-model-options='{ debounce: 800 }'>
                                 <div class="input-group-btn" data-ng-if="ctrlTabDatabases.search.value">
-                                    <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
+                                    <button class="btn btn-default" type="button" aria-label="{{ 'common_cancel' | translate }}"
                                             data-ng-disabled="ctrlTabDatabases.loading.databases"
                                             data-ng-click="ctrlTabDatabases.emptySearch()">
                                         <span class="fa fa-times" aria-hidden="true"></span>
@@ -111,15 +111,15 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_name"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_database_name"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_server_address"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_size" data-ng-if="!hosting.isCloudWeb"></th>
-                            <th scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_server"></th>
-                            <th class="text-center" scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_state"></th>
-                            <th class="text-center" scope="col" data-i18n-static="hosting_tab_DATABASES_table_header_backup"></th>
+                            <th scope="col" data-translate="hosting_tab_DATABASES_table_header_name"></th>
+                            <th scope="col" data-translate="hosting_tab_DATABASES_table_header_database_name"></th>
+                            <th scope="col" data-translate="hosting_tab_DATABASES_table_header_server_address"></th>
+                            <th scope="col" data-translate="hosting_tab_DATABASES_table_header_size" data-ng-if="!hosting.isCloudWeb"></th>
+                            <th scope="col" data-translate="hosting_tab_DATABASES_table_header_server"></th>
+                            <th class="text-center" scope="col" data-translate="hosting_tab_DATABASES_table_header_state"></th>
+                            <th class="text-center" scope="col" data-translate="hosting_tab_DATABASES_table_header_backup"></th>
                             <th class="min-width text-right" scope="col">
-                                <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
+                                <button class="btn btn-icon" type="button" title="{{ 'refresh' | translate }}"
                                         data-ng-click="ctrlTabDatabases.loadDatabases()"
                                         data-ng-disabled="ctrlTabDatabases.loading.databases">
                                     <span class="fa fa-refresh" aria-hidden="true"></span>
@@ -139,7 +139,7 @@
                     <tbody data-ng-if="!ctrlTabDatabases.loading.databases && !ctrlTabDatabases.databases.details.length">
                         <tr>
                             <td class="text-center" colspan="8"
-                                data-i18n-static="table_search_noresult"></td>
+                                data-translate="table_search_noresult"></td>
                         </tr>
                     </tbody>
 
@@ -176,7 +176,7 @@
                                       data-ng-if="element.server === 'local'"></span>
                                 <div data-ng-if="element.quotaCalculating">
                                     <oui-spinner data-size="s"></oui-spinner>
-                                    <span data-i18n-static="hosting_tab_DATABASES_configuration_check_quota_calculating"></span>
+                                    <span data-translate="hosting_tab_DATABASES_configuration_check_quota_calculating"></span>
                                 </div>
                             </td>
                             <td>
@@ -187,98 +187,62 @@
                             <td class="text-center"
                                 data-ng-bind="element.state"></td>
                             <td class="text-center">
-                                <span class="label"
-                                      data-ng-class="{'label-success': element.dumpsCount > 0, 'label-default': element.dumpsCount <= 0}"
+                                <span class="oui-status"
+                                      data-ng-class="{'oui-status_success': element.dumpsCount > 0, 'oui-status_info': element.dumpsCount <= 0}"
                                       data-ng-bind="element.dumpsCount">
                                 </span>
-                                <button class="btn btn-icon" type="button" title="{{element.user}} {{::i18n.hosting_tab_DATABASES_table_popover_dump_edit}}"
+                                <button class="btn btn-icon" type="button" title="{{element.user}} {{:: 'hosting_tab_DATABASES_table_popover_dump_edit' | translate }}"
                                         data-ng-click="ctrlTabDatabases.restoreDump(element)"
                                         data-ng-if="element.dumpsCount > 0">
                                     <span class="fa fa-edit" aria-hidden="true"></span>
                                 </button>
                             </td>
                             <td class="text-center">
-                                <div class="btn-group dropdown"
-                                     data-uib-dropdown
-                                     data-dropdown-append-to-body>
-                                    <button class="btn btn-icon" type="button" title="{{element.user}} {{::i18n.table_manage_entry}}" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown"
-                                            data-uib-dropdown-toggle>
-                                        <span class="ovh-font ovh-font-dots" aria-hidden="true"></span>
-                                        <span class="sr-only" data-i18n-static="common_actions"></span>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-right m-0 p-0" role="menu"
-                                        data-uib-dropdown-menu>
-                                        <li role="menuitem">
-                                            <button class="btn btn-link" type="button"
-                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_update_password"
-                                                    data-ng-click="setAction('database/update-password/hosting-database-update-password', element.name)">
-                                            </button>
-                                        </li>
-                                        <li role="menuitem">
-                                            <button class="btn btn-link" type="button"
-                                                    data-ng-if="element.type !== 'MONGODB'"
-                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_dump"
-                                                    data-ng-click="setAction('database/dump/add/hosting-database-dump-add', element.name)">
-                                            </button>
-                                        </li>
-                                        <li role="menuitem">
-                                            <button class="btn btn-link" type="button"
-                                                    data-ng-if="element.type !== 'MONGODB'"
-                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore"
-                                                    data-ng-click="ctrlTabDatabases.restoreDump(element)">
-                                            </button>
-                                        </li>
-                                        <li role="menuitem"
-                                            data-ng-if="element.type === 'MYSQL'">
-                                            <button class="btn btn-link" type="button"
-                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_import"
-                                                    data-ng-click="setAction('database/import/hosting-database-import', element.name)">
-                                            </button>
-                                        </li>
-                                        <li role="menuitem"
-                                            data-ng-if="element.type === 'MYSQL'">
-                                            <button class="btn btn-link" type="button"
-                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore_yesterday"
-                                                    data-ng-click="setAction('database/restore/confirm/hosting-database-restore-confirm', { bdd: element, backupType: ctrlTabDatabases.backupType.DAILY })">
-                                            </button>
-                                        </li>
-                                        <li role="menuitem"
-                                            data-ng-if="element.type === 'MYSQL'">
-                                            <button class="btn btn-link" type="button"
-                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_dump_restore_one_week"
-                                                    data-ng-click="setAction('database/restore/confirm/hosting-database-restore-confirm', { bdd: element, backupType: ctrlTabDatabases.backupType.WEEKLY })">
-                                            </button>
-                                        </li>
-                                        <li role="menuitem"
-                                            data-ng-if="!hosting.isCloudWeb && element.type === 'MYSQL'">
-                                            <button class="btn btn-link" type="button"
-                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_check_quota"
-                                                    data-ng-click="ctrlTabDatabases.checkQuota(element)">
-                                            </button>
-                                        </li>
-                                        <li role="menuitem"
-                                            data-ng-if="element.type === 'MYSQL' || element.type === 'MONGODB'">
-                                            <button class="btn btn-link" type="button"
-                                                    data-i18n-static="hosting_tab_DATABASES_table_popover_delete"
-                                                    data-ng-click="setAction('database/delete/hosting-database-delete', element.name)">
-                                            </button>
-                                        </li>
-                                        <li role="menuitem"
-                                            data-ng-if="element.type === 'POSTGRESQL'">
-                                            <a class="btn btn-link d-inline-block text-left" target="_blank" title="{{ i18n.hosting_tab_DATABASES_table_popover_new_window }}"
-                                               data-i18n-static="hosting_tab_DATABASES_table_popover_phppgadmin"
-                                               data-ng-href="http://phppgadmin.ovh.net/">
-                                            </a>
-                                        </li>
-                                        <li role="menuitem"
-                                            data-ng-if="element.type === 'MYSQL'">
-                                            <a class="btn btn-link d-inline-block text-left" target="_blank" title="{{ i18n.hosting_tab_DATABASES_table_popover_new_window }}"
-                                               data-i18n-static="hosting_tab_DATABASES_table_popover_phpmyadmin"
-                                               data-ng-href="{{ ctrlTabDatabases.getPhpMyAdminUrl(element) }}">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <oui-action-menu data-compact data-align="end">
+                                        <oui-action-menu-item data-on-click="setAction('database/update-password/hosting-database-update-password', element.name)">
+                                                              <span data-translate="hosting_tab_DATABASES_table_popover_update_password"></span>
+                                        </oui-action-menu-item>
+                                        <oui-action-menu-item data-ng-if="element.type !== 'MONGODB'"
+                                                              data-on-click="setAction('database/dump/add/hosting-database-dump-add', element.name)">
+                                                              <span data-translate="hosting_tab_DATABASES_table_popover_dump"></span>
+                                        </oui-action-menu-item>
+                                        <oui-action-menu-item data-ng-if="element.type !== 'MONGODB'"
+                                                              data-on-click="ctrlTabDatabases.restoreDump(element)">
+                                                              <span data-translate="hosting_tab_DATABASES_table_popover_dump_restore"></span>
+                                        </oui-action-menu-item>
+                                        <oui-action-menu-item data-ng-if="element.type === 'MYSQL'"
+                                                              data-on-click="setAction('database/import/hosting-database-import', element.name)">
+                                                              <span data-translate="hosting_tab_DATABASES_table_popover_import"></span>
+                                        </oui-action-menu-item>
+                                        <oui-action-menu-item data-ng-if="element.type === 'MYSQL'"
+                                                              data-on-click="setAction('database/restore/confirm/hosting-database-restore-confirm', { bdd: element, backupType: ctrlTabDatabases.backupType.DAILY })">
+                                                              <span data-translate="hosting_tab_DATABASES_table_popover_dump_restore_yesterday"></span>
+                                        </oui-action-menu-item>
+                                        <oui-action-menu-item data-ng-if="element.type === 'MYSQL'"
+                                                              data-on-click="setAction('database/restore/confirm/hosting-database-restore-confirm', { bdd: element, backupType: ctrlTabDatabases.backupType.WEEKLY })">
+                                                              <span data-translate="hosting_tab_DATABASES_table_popover_dump_restore_one_week"></span>
+                                        </oui-action-menu-item>
+                                        <oui-action-menu-item data-ng-if="!hosting.isCloudWeb && element.type === 'MYSQL'"
+                                                              data-on-click="ctrlTabDatabases.checkQuota(element)">
+                                                              <span data-translate="hosting_tab_DATABASES_table_popover_check_quota"></span>
+                                        </oui-action-menu-item>
+                                        <oui-action-menu-item data-ng-if="element.type === 'MYSQL' || element.type === 'MONGODB'"
+                                                              data-on-click="setAction('database/delete/hosting-database-delete', element.name)">
+                                                              <span data-translate="hosting_tab_DATABASES_table_popover_delete"></span>
+                                        </oui-action-menu-item>
+                                        <oui-action-menu-item data-ng-if="element.type === 'POSTGRESQL'"
+                                                              title="{{ 'hosting_tab_DATABASES_table_popover_new_window' | translate }}"
+                                                              data-ng-href="http://phppgadmin.ovh.net/"
+                                                              data-external>
+                                                              <span data-translate="hosting_tab_DATABASES_table_popover_phppgadmin"></span>
+                                        </oui-action-menu-item>
+                                        <oui-action-menu-item data-ng-if="element.type === 'MYSQL'"
+                                                              title="{{ 'hosting_tab_DATABASES_table_popover_new_window' | translate }}"
+                                                              data-ng-href="{{ ctrlTabDatabases.getPhpMyAdminUrl(element) }}"
+                                                              data-external>
+                                                              <span data-translate="hosting_tab_DATABASES_table_popover_phpmyadmin"></span>
+                                        </oui-action-menu-item>
+                                </oui-action-menu>
                             </td>
                         </tr>
                     </tbody>
@@ -297,8 +261,8 @@
              data-items-per-page="itemsPerPage"
              data-transform-item="ctrlTabDatabases.transformItem(item)"
              data-on-transform-item-done="ctrlTabDatabases.onTransformItemDone(items)"
-             data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-             data-item-per-page-placeholder="{{tr('pagination_display')}}"
+             data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPage, last: nbPages } }}"
+             data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
              data-on-page-change="ctrlTabDatabases.loading.databases = true"
              data-ng-show="!ctrlTabDatabases.loading.init && ctrlTabDatabases.hasResult">
         </div>

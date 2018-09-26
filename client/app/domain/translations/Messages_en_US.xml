@@ -1,0 +1,904 @@
+<?xml version="1.0" encoding="utf-8"?>
+<translations>
+   <translation id="domain_close" qtlid="4670">Close</translation>
+   <translation id="domain_dashboard_loading_error" qtlid="315696">There was an error when loading information. This can happen when there is an Ad-blocker enabled. </translation>
+   <translation id="domain_dashboard_creation_date" qtlid="26419">Creation date</translation>
+   <translation id="domain_dashboard_expiration_date" qtlid="33010">Expiry date</translation>
+   <translation id="domain_dashboard_expiration" qtlid="73589">Expires on</translation>
+   <translation id="domain_dashboard_dns_management" qtlid="367683">DNS servers</translation>
+   <translation id="domain_dashboard_dns_servers" qtlid="30874">DNS servers</translation>
+   <translation id="domain_dashboard_dns_management_true" qtlid="273319">Automatic configuration </translation>
+   <translation id="domain_dashboard_dns_management_anycast_true" qtlid="135671">Anycast DNS</translation>
+   <translation id="domain_dashboard_dns_management_anycast_false" qtlid="135684">Classic DNS </translation>
+   <translation id="domain_dashboard_dns_management_anycast_null" qtlid="270397">Anycast DNS not available</translation>
+   <translation id="domain_dashboard_dns_management_false" qtlid="273332">Manual configuration</translation>
+   <translation id="domain_dashboard_dns_management_dnsHostedOK" qtlid="330799">Active</translation>
+   <translation id="domain_dashboard_dns_management_dnsExternalOK" qtlid="367696">DNS servers </translation>
+   <translation id="domain_dashboard_dns_management_dnsKO" qtlid="92053">Inactive</translation>
+   <translation id="domain_dashboard_dns_management_dns_details" qtlid="26551">Information</translation>
+   <translation id="domain_dashboard_protection" qtlid="50230">Protection</translation>
+   <translation id="domain_dashboard_protection_unavailable" qtlid="94783">Not available</translation>
+   <translation id="domain_dashboard_protection_unlocked" qtlid="125084">Disabled</translation>
+   <translation id="domain_dashboard_protection_locking" qtlid="148474">Activating...</translation>
+   <translation id="domain_dashboard_protection_unlocking" qtlid="148487">Deactivating...</translation>
+   <translation id="domain_dashboard_protection_locked" qtlid="62028">Enabled</translation>
+   <translation id="domain_dashboard_protection_transfert" qtlid="270410">Protection against domain name transfer</translation>
+   <translation id="domain_dashboard_show_authinfo" qtlid="226332">AUTH/INFO</translation>
+   <translation id="domain_dashboard_show_authinfo_title" qtlid="226345">Display the AUTH/INFO code</translation>
+   <translation id="domain_dashboard_show_authinfo_description" qtlid="226358">The AUTH/INFO code is a key. It is required by the registry for the purpose of validating the transfer of your {0} domain name.</translation>
+   <translation id="domain_dashboard_authinfo_code" qtlid="226371">AUTH/INFO code</translation>
+   <translation id="domain_dashboard_show_authinfo_error" qtlid="226384">An error occurred when retrieving the AUTH/INFO code</translation>
+   <translation id="domain_dashboard_security" qtlid="125420">Security</translation>
+
+   <translation id="domain_dashboard_add_uk_tags" qtlid="270423">Outgoing transfer TAG</translation>
+   <translation id="domain_dashboard_add_uk_tags_title" qtlid="328823">Please enter the outgoing transfer tag for the <strong>{0}</strong> domain </translation>
+   <translation id="domain_dashboard_add_uk_tags_label" qtlid="270423">Outgoing transfer TAG</translation>
+   <translation id="domain_dashboard_add_uk_tags_success" qtlid="270449">The outgoing transfer TAG has been sent successfully. </translation>
+   <translation id="domain_dashboard_add_uk_tags_error" qtlid="299384">An error has occurred:</translation>
+   <translation id="domain_dashboard_add_uk_tags_pattern_error" qtlid="270462">The TAG must only contain letters, numbers and -</translation>
+   <translation id="domain_dashboard_add_uk_tags_maxlength_error" qtlid="270475">The TAG must not exceed 50 characters</translation>
+
+   <translation id="domain_dashboard_owo" qtlid="270488">OwO service (free)</translation>
+   <translation id="domain_dashboard_owo_hide_address" qtlid="270501">Hide address</translation>
+   <translation id="domain_dashboard_owo_hide_email" qtlid="270514">Hide email</translation>
+   <translation id="domain_dashboard_owo_hide_phone" qtlid="270527">Hide telephone number</translation>
+
+   <translation id="domain_dashboard_whois" qtlid="125108">Hide WHOIS</translation>
+   <translation id="domain_dashboard_whois_not_activable" qtlid="94783">Not available</translation>
+   <translation id="domain_dashboard_owo_not_supported" qtlid="288652">Not available with this extension </translation>
+   <translation id="domain_dashboard_offer" qtlid="38217">Solution </translation>
+   <translation id="domain_dashboard_dns_state" qtlid="33790">State</translation>
+   <translation id="domain_dashboard_dns_anycast" qtlid="270540">Anycast DNS option</translation>
+   <translation id="domain_dashboard_dns_anycast_info" qtlid="270553">Anycast DNS is a powerful solution that accelerates the normal operation of DNS servers to provide  better response time during the first hits to your website.</translation>
+   <translation id="domain_dashboard_tooltip_whois" qtlid="128919">Publicly accessible database containing personal information related to your domain.</translation>
+   <translation id="domain_dashboard_tooltip_dns" qtlid="128727">Service allowing you to translate your domain name to an IP address (e.g. indicating the location data of your site).</translation>
+   <translation id="domain_dashboard_tooltip_dns_updating" qtlid="447976">You will need to wait 48 hours for your most recent modification to propagate.</translation>
+   <translation id="domain_dashboard_tooltip_primary_dns" qtlid="128931">The DNS servers used primarily to change your domain to an IP address.</translation>
+   <translation id="domain_dashboard_tooltip_redirect" qtlid="128943">Redirects users to an existing site.</translation>
+   <translation id="domain_dashboard_tooltip_secondary_dns" qtlid="128955">If the primary DNSs fail, they ensure that your site remains accessible.</translation>
+   <translation id="domain_dashboard_tooltip_subdomain" qtlid="129655">Domain variations allow direct access to a subsection of your site.</translation>
+   <translation id="domain_dashboard_tooltip_protection" qtlid="129099">Block transfer requests to protect yourself against domain theft.</translation>
+   <translation id="domain_dashboard_tooltip_dnssec" qtlid="184984">Protect your domain from cache poisoning.</translation>
+   <translation id="domain_dashboard_dnssec" qtlid="179615">Secured Delegation - DNSSEC</translation>
+   <translation id="domain_configuration_dnssec_ENABLED" qtlid="30250">Enabled</translation>
+   <translation id="domain_configuration_dnssec_ENABLE_IN_PROGRESS" qtlid="148474">Activating...</translation>
+   <translation id="domain_configuration_dnssec_DISABLED" qtlid="24967">Disabled</translation>
+   <translation id="domain_configuration_dnssec_DISABLE_IN_PROGRESS" qtlid="148487">Deactivating...</translation>
+   <translation id="domain_configuration_dnssec_ok_true" qtlid="179628">Request to enable DNSSEC has been registered.</translation>
+   <translation id="domain_configuration_dnssec_error_true" qtlid="179641">An error occurred when requesting to enable DNSSEC.</translation>
+   <translation id="domain_configuration_dnssec_ok_false" qtlid="179654">Request to disable DNSSEC has been registered.</translation>
+   <translation id="domain_configuration_dnssec_error_false" qtlid="179667">An error occurred when requesting to disable the DNSSEC.</translation>
+   <translation id="domain_configuration_dnssec_enable_modal_title" qtlid="219680">Enable DNSSEC</translation>
+   <translation id="domain_configuration_dnssec_enable_modal_explain" qtlid="219693">It takes around 24 hours to activate DNSSEC.</translation>
+   <translation id="domain_configuration_dnssec_enable_modal_confirm" qtlid="219706">Click "Confirm" to launch the DNSSEC activation process.</translation>
+   <translation id="domain_configuration_dnssec_disable_modal_title" qtlid="219719">Disable DNSSEC</translation>
+   <translation id="domain_configuration_dnssec_disable_modal_explain" qtlid="219732">It takes around 24 hours to disable DNSSEC.</translation>
+   <translation id="domain_configuration_dnssec_disable_modal_confirm" qtlid="219745">Click "Confirm" to begin disabling DNSSEC.</translation>
+   <translation id="domain_tab_SUMMARY" qtlid="4082">Summary</translation>
+   <translation id="domain_tab_SUMMARY_dns_master" qtlid="30874">DNS servers</translation>
+   <translation id="domain_tab_SUMMARY_dns_master_1" qtlid="148500">DNS server</translation>
+   <translation id="domain_tab_SUMMARY_dns_master_other" qtlid="30874">DNS servers</translation>
+   <translation id="domain_tab_SUMMARY_dns_empty" qtlid="211008">Unknown DNS servers</translation>
+   <translation id="domain_tab_SUMMARY_redirection" qtlid="46396">Web redirection </translation>
+
+   <translation id="domain_dashboard_enable_web_hosting" qtlid="288678">Web hosting with free email  </translation>
+
+   <translation id="domain_dashboard_web_hosting_associated" qtlid="296557">Associated hosting plans </translation>
+   <translation id="domain_configuration_web_hosting_associated_explain" qtlid="296570">Access the configuration for hosting plans associated to your domain name </translation>
+   <translation id="domain_configuration_web_hosting_fail" qtlid="296583">There was an error when retrieving associated web hosting plans </translation>
+   <translation id="domain_dashboard_web_hosting_associated_upsell" qtlid="434992">No associated hosting package</translation>
+   <translation id="domain_dashboard_web_hosting_more_infos" qtlid="238557">More info</translation>
+
+   <translation id="domain_configuration_action_disable" qtlid="90973">Disable</translation>
+   <translation id="domain_configuration_action_enable" qtlid="76734">Enable</translation>
+
+   <translation id="domain_tab_GENERAL_INFORMATIONS" qtlid="27115">General information</translation>
+   <translation id="domain_tab_DNS" qtlid="366398">DNS servers </translation>
+   <translation id="domain_tab_DNS_warning_only_one_dns" qtlid="228183">Please note: you are strongly encouraged to have more than one active DNS server.</translation>
+   <translation id="domain_tab_DNS_ip" qtlid="211047">IP associated</translation>
+   <translation id="domain_tab_DNS_name" qtlid="148500">DNS server</translation>
+   <translation id="domain_tab_DNS_state" qtlid="26443">Status</translation>
+   <translation id="domain_tab_DNS_state_deleting" qtlid="133929">Deleting</translation>
+   <translation id="domain_tab_DNS_state_adding" qtlid="26383">In progress</translation>
+   <translation id="domain_tab_DNS_state_activated" qtlid="55133">Active</translation>
+   <translation id="domain_tab_DNS_empty" qtlid="211060">Unknown DNS servers.</translation>
+   <translation id="domain_tab_DNS_error" qtlid="211073">Some DNS information can't be displayed due to an internal error.</translation>
+
+   <translation id="domain_tab_DNS_add_button" qtlid="211086">Add a DNS server</translation>
+   <translation id="domain_tab_DNS_add_title" qtlid="211099">Add a DNS server</translation>
+
+   <translation id="domain_tab_DNS_add_step1" qtlid="211112">Please enter the DNS name below:</translation>
+   <translation id="domain_tab_DNS_add_step1_host" qtlid="229385">DNS server:</translation>
+   <translation id="domain_tab_DNS_add_step1_host_error" qtlid="8614">Invalid domain</translation>
+   <translation id="domain_tab_DNS_add_step1_ip" qtlid="211125">DNS IP:</translation>
+   <translation id="domain_tab_DNS_add_step1_ip_error" qtlid="211138">Invalid IP </translation>
+   <translation id="domain_tab_DNS_add_step1_ip_info" qtlid="211151">The DNS IP is mandatory if the DNS is a sub-domain of your domain.</translation>
+
+   <translation id="domain_tab_DNS_add_confirm" qtlid="211164">You are going to add the {0} DNS server.</translation>
+   <translation id="domain_tab_DNS_add_success" qtlid="211177">The {0} DNS server has been successfully added.</translation>
+   <translation id="domain_tab_DNS_add_error" qtlid="211190">Error when requesting the addition of the {0} DNS server. </translation>
+
+   <translation id="domain_tab_DNS_delete" qtlid="211203">DNS deletion</translation>
+   <translation id="domain_tab_DNS_delete_confirm" qtlid="211216">Do you really want to delete the {0} DNS?</translation>
+   <translation id="domain_tab_DNS_delete_success" qtlid="211229">The {0} DNS deletion request has been taken into account. </translation>
+   <translation id="domain_tab_DNS_delete_error" qtlid="211242">An error occurred while requesting the {0} DNS deletion.</translation>
+
+   <translation id="domain_tab_DNS_lock_button" qtlid="285668">Reset the DNS servers </translation>
+   <translation id="domain_tab_DNS_lock_title" qtlid="285681">Reset DNS servers </translation>
+   <translation id="domain_tab_DNS_lock_confirm" qtlid="285694">Do you really want to reset the DNS servers' configuration? In doing so you will reset the current configuration and switch back to OVH name servers. </translation>
+   <translation id="domain_tab_DNS_lock_success" qtlid="211294">The DNS server reset request has been taken into account. </translation>
+   <translation id="domain_tab_DNS_lock_error" qtlid="211307">Error while requesting the DNS server reset.</translation>
+   <translation id="domain_tab_DNS_update_success" qtlid="447989">The DNS modification has been processed. You will need to wait 48 hours for the modifications to propragate in other DNS servers.</translation>
+   <translation id="domain_tab_DNS_update_error" qtlid="284854">An error occurred on modifying DNS. </translation>
+   <translation id="domain_tab_DNS_lock_button_title" qtlid="444680">Reset DNS servers: unavailable if DNSSEC is enabled</translation>
+   <translation id="domain_tab_DNS_save" qtlid="284867">Apply configuration </translation>
+   <translation id="domain_tab_DNS_reset" qtlid="284880">Reset configuration </translation>
+   <translation id="domain_tab_DNS_cancel" qtlid="172280">Cancel modifications</translation>
+
+   <translation id="domain_tab_DNS_unlock_button" qtlid="273358">Manual DNS configuration</translation>
+   <translation id="domain_tab_DNS_unlock_title" qtlid="211333">Customise DNS servers</translation>
+   <translation id="domain_tab_DNS_unlock_confirm" qtlid="211346">You want to enable DNS customisation?</translation>
+   <translation id="domain_tab_DNS_unlock_confirm2" qtlid="211359">Please note that DNS misconfiguration can make your domain unreachable. Continue only if you are sure of what you're doing.</translation>
+   <translation id="domain_tab_DNS_unlock_success" qtlid="211372">You can now customise your DNS servers.</translation>
+   <translation id="domain_tab_DNS_unlock_error" qtlid="211385">Error when requesting DNS server customisation. </translation>
+   <translation id="domain_tab_DNS_unlock_warning_manuel_check" qtlid="293736">To ensure that your configuration works, you can use this</translation>
+   <translation id="domain_tab_DNS_unlock_warning_manuel_check2" qtlid="500378">DNS verification tool.</translation>
+   <translation id="domain_tab_DNS_unlock_warning_manuel_check_tool" qtlid="293749">DNS verification tool </translation>
+
+   <translation id="domain_tab_DNSSEC_action_add_title" qtlid="37875">Modify</translation>
+   <translation id="domain_tab_DNSSEC_action_save_title" qtlid="264446">Save</translation>
+   <translation id="domain_tab_DNSSEC_action_save_confirm_1" qtlid="264459">It can take some time to apply changes and you may not make any other changes to this domain during the operation.</translation>
+   <translation id="domain_tab_DNSSEC_action_save_confirm_2" qtlid="264472">Are you sure you want to apply these changes now?</translation>
+   <translation id="domain_tab_DNSSEC_action_delete_error" qtlid="264485">Error when requesting to change the DNSSEC keys.</translation>
+   <translation id="domain_tab_DNSSEC_action_add_success" qtlid="264498">You have successfully changed the DS records.</translation>
+   <translation id="domain_tab_DNSSEC_action_add_error" qtlid="264485">Error when requesting to change the DNSSEC keys.</translation>
+   <translation id="domain_tab_DNSSEC_action_tags_error" qtlid="264511">The tag must be a number higher than 0 and lower than 65536.</translation>
+   <translation id="domain_tab_DNSSEC_action_publicKey_error" qtlid="264524">Invalid public key.</translation>
+   <translation id="domain_tab_DNSSEC_action_tag_label" qtlid="264537">Tag:</translation>
+   <translation id="domain_tab_DNSSEC_action_flag_label" qtlid="264550">Flag:</translation>
+   <translation id="domain_tab_DNSSEC_action_algorithm_label" qtlid="264563">Algorithm:</translation>
+   <translation id="domain_tab_DNSSEC_action_publicKey_label" qtlid="264576">Public key (coded in base64):</translation>
+   <translation id="domain_tab_DNSSEC_notModifiable" qtlid="264589">DS record management is not available on this domain</translation>
+   <translation id="domain_tab_DNSSEC_hasActiveTasks" qtlid="264602">DS record management is disabled because there are tasks in progress on the DNS</translation>
+   <translation id="domain_tab_DNSSEC_loading_error" qtlid="264615">An error occurred when changing the DS records.</translation>
+   <translation id="domain_tab_DNSSEC_table_empty" qtlid="264628">There are no DS records attached to this domain.</translation>
+   <translation id="domain_tab_DNSSEC_list_modified" qtlid="264641">You need to approve these changes to apply the new configuration.</translation>
+   <translation id="domain_tab_DNSSEC_not_supported_warning" qtlid="264654">DS record management is not supported by this domain.</translation>
+   <translation id="domain_tab_DNSSEC_cancel" qtlid="172280">Cancel modifications</translation>
+   <translation id="domain_tab_DNSSEC_save" qtlid="49754">Save</translation>
+   <translation id="domain_tab_DNSSEC_reset" qtlid="172280">Cancel modifications</translation>
+   <translation id="domain_tab_DNSSEC_tag" qtlid="264667">Key tag</translation>
+   <translation id="domain_tab_DNSSEC_flag" qtlid="264680">Flag</translation>
+   <translation id="domain_tab_DNSSEC_algorithm" qtlid="192318">Algorithm</translation>
+   <translation id="domain_tab_DNSSEC_public_key" qtlid="264693">Public key (coded in base64)</translation>
+   <translation id="domain_tab_DNSSEC_new_inline_zone" qtlid="192058">You can add an entry by clicking on the button opposite.</translation>
+
+   <translation id="domain_tab_DNSSEC_tooltip_tag" qtlid="264706">The key tag must be a number higher than 0 and lower than 65536.</translation>
+   <translation id="domain_tab_DNSSEC_tooltip_flags" qtlid="298838">The flag represents the type of key used.</translation>
+   <translation id="domain_tab_DNSSEC_tooltip_algorithm" qtlid="298851">The algorithm used to generate the key.</translation>
+   <translation id="domain_tab_DNSSEC_tooltip_publickey" qtlid="298864">base64 encoded public key. </translation>
+
+   <translation id="domain_tab_GLUE" qtlid="262280">GLUE</translation>
+   <translation id="domain_tab_GLUE_heading" qtlid="270579">Customise your DNS servers here with your domain name so that they are displayed in the WHOIS database.</translation>
+   <translation id="domain_tab_GLUE_info" qtlid="293762">You can create your own DNS servers in IPv4.</translation>
+   <translation id="domain_tab_GLUE_title" qtlid="262293">GLUE record</translation>
+   <translation id="domain_tab_GLUE_table_error" qtlid="233047">An error has occurred while retrieving the data.</translation>
+   <translation id="domain_tab_GLUE_add_title" qtlid="262306">Add another GLUE record</translation>
+   <translation id="domain_tab_GLUE_ip" qtlid="262319">Target(s)</translation>
+   <translation id="domain_tab_GLUE_host" qtlid="2678">Host</translation>
+   <translation id="domain_tab_GLUE_delete" qtlid="2414">Delete</translation>
+   <translation id="domain_tab_GLUE_modify" qtlid="37875">Modify</translation>
+   <translation id="domain_tab_GLUE_butt_add" qtlid="37923">Add</translation>
+   <translation id="domain_tab_GLUE_empty" qtlid="262332">There is no entry in the list of GLUE records.</translation>
+   <translation id="domain_tab_GLUE_add_step1" qtlid="262345">Please fill in the following fields:</translation>
+   <translation id="domain_tab_GLUE_add_host" qtlid="262358">Host name</translation>
+   <translation id="domain_tab_GLUE_add_ip" qtlid="262371">Target IP(s)</translation>
+   <translation id="domain_tab_GLUE_add_ips_ipv6_not_supported" qtlid="262384">You may only specify IPv4 addresses.</translation>
+   <translation id="domain_tab_GLUE_add_ips_ipv6_supported" qtlid="262397">You may specify IPv4 and IPv6 addresses.</translation>
+   <translation id="domain_tab_GLUE_add_ips_one_info" qtlid="262410">You may only specify one IP.</translation>
+   <translation id="domain_tab_GLUE_add_ips_multi_info" qtlid="262423">You may specify many IPs; separate them with a comma.</translation>
+   <translation id="domain_tab_GLUE_add_ip_confirm" qtlid="328849">You are going to add the GLUE record for the <strong>{0}</strong> host with the following target:</translation>
+   <translation id="domain_tab_GLUE_add_success" qtlid="262449">The new GLUE record will be created in a few minutes.</translation>
+   <translation id="domain_tab_GLUE_add_error" qtlid="262462">An error occurred when creating a new GLUE record.</translation>
+   <translation id="domain_tab_GLUE_modify_title" qtlid="262475">Modify glue record</translation>
+   <translation id="domain_tab_GLUE_modify_ip_confirm" qtlid="328862">you are going to modify the GLUE record for the <strong>{0}</strong> host with the following destination:</translation>
+   <translation id="domain_tab_GLUE_modify_success" qtlid="262501">The GLUE record will be updated here in a few minutes.</translation>
+   <translation id="domain_tab_GLUE_modify_error" qtlid="262514">Error when updating the GLUE record.</translation>
+   <translation id="domain_tab_GLUE_delete_title" qtlid="262527">Remove a GLUE record</translation>
+   <translation id="domain_tab_GLUE_delete_confirm" qtlid="262540">Are you sure you want to remove this GLUE record ?</translation>
+   <translation id="domain_tab_GLUE_delete_success" qtlid="262553">GLUE record will be deleted in a few minutes.</translation>
+   <translation id="domain_tab_GLUE_delete_error" qtlid="262566">Error when removing the GLUE record.</translation>
+   <translation id="domain_tab_GLUE_add_warning_done" qtlid="448002">Important - after validation, you must modify your DNS zone by adding:<ul><li>an A record for an IPv4 address,</li><li>and an AAAA field for anIPv6 address.</li></ul> You must do this for your glue record to function.</translation>
+
+   <translation id="domain_tab_SUMMARY_subdomain" qtlid="47476">Sub-domain</translation>
+   <translation id="domain_tab_ZONE" qtlid="45976">DNS zone </translation>
+   <translation id="domain_tab_ZONE_named" qtlid="225101">DNS zone for {0}</translation>
+   <translation id="domain_tab_ZONE_search_placeholder" qtlid="213427">Looking for domain </translation>
+   <translation id="domain_tab_ZONE_type_placeholder" qtlid="492003">Searching...</translation>
+   <translation id="domain_tab_ZONE_type_all" qtlid="69173">All</translation>
+   <translation id="domain_tab_ZONE_no_zone" qtlid="223463">There's no DNS attached to this domain.</translation>
+   <translation id="domain_tab_ZONE_delete_doing" qtlid="366411">You will be able to reactivate your DNS zone in about an hour. </translation>
+   <translation id="domain_tab_ZONE_no_zone_activate_btn" qtlid="260429">Activating the DNS zone </translation>
+   <translation id="domain_tab_ZONE_no_zone_activate_question" qtlid="263910">Do you want to activate the minimum record in your DNS zone?</translation>
+   <translation id="domain_tab_ZONE_no_zone_activate_success" qtlid="260455">La zone DNS a été activée.</translation>
+   <translation id="domain_tab_ZONE_no_zone_activate_error" qtlid="260468">An error has occurred while activating the DNS zone.</translation>
+   <translation id="domain_tab_ZONE_no_zone_activate_minimized_yes" qtlid="263923">Yes, I want to activate my DNS zone with minimum entries.</translation>
+   <translation id="domain_tab_ZONE_no_zone_activate_minimized_no" qtlid="263936">No, but I want to activate my DNS zone.</translation>
+   <translation id="domain_tab_ZONE_no_defaut_dns_used" qtlid="344123">You currently use the following DNS servers: </translation>
+   <translation id="domain_tab_ZONE_set_defaut_dns" qtlid="344305">Please use the following DNS servers so that your DNS zone is registered:</translation>
+
+   <translation id="domain_tab_ZONE_title" qtlid="265636">Here you can see the configuration of various domain name records. </translation>
+   <translation id="domain_tab_ZONE_info" qtlid="265649">You can also configure these records to connect your domain to your different services (button "Add an entry").</translation>
+
+   <translation id="domain_tab_ZONE_status_error" qtlid="328875">Our systems have detected errors while checking your zone. <strong>The latest amendments were therefore not taken into account</strong>. To remedy this, please correct the following problems:</translation>
+   <translation id="domain_tab_ZONE_status_warning" qtlid="254804">Your zone has been assigned. However the following anomalies have been found:</translation>
+   <translation id="domain_tab_ZONE_empty_zone" qtlid="129111">There is no entry in your DNS zone.</translation>
+   <translation id="domain_tab_ZONE_new_inline_zone" qtlid="192058">You can add an entry by clicking on the button opposite.</translation>
+   <translation id="domain_tab_ZONE_table_headers_field" qtlid="170434">Domain</translation>
+   <translation id="domain_tab_ZONE_table_headers_type" qtlid="2642">Type</translation>
+   <translation id="domain_tab_ZONE_table_headers_target" qtlid="47644">Target </translation>
+   <translation id="domain_tab_ZONE_default_import_button" qtlid="233453">Change in text format</translation>
+   <translation id="domain_tab_ZONE_default_delete_all" qtlid="290316">Delete the DNS zone </translation>
+   <translation id="domain_tab_ZONE_default_ttl_button" qtlid="473269">Modify default TTL</translation>
+   <translation id="domain_tab_ZONE_default_ttl_error" qtlid="226110">Error when retrieving information on the zone:</translation>
+   <translation id="domain_tab_ZONE_default_ttl_success" qtlid="226123">The zone's TTL has been successfully updated.</translation>
+   <translation id="domain_tab_ZONE_default_ttl_heading" qtlid="226136">You are about to update the TTL default value of the {0} zone</translation>
+   <translation id="domain_tab_ZONE_default_ttl_info" qtlid="473282">The TTL defines the maximum amount of time (in seconds) that DNS records can be cached for.</translation>
+   <translation id="domain_tab_ZONE_default_ttl_help" qtlid="473295">The recommended value for frequent changes to the DNS zone is 3,600 seconds, otherwise 86,400 seconds (1 day).</translation>
+   <translation id="domain_tab_ZONE_default_ttl_default_value" qtlid="226097">Default TTL</translation>
+   <translation id="domain_tab_ZONE_default_ttl_default_value_conditions" qtlid="328888">The value must be a whole number between <strong>{0}</strong> and <strong>{1}</strong>.</translation>
+
+   <translation id="domain_configuration_dns_config" qtlid="270592">Modify DNS servers</translation>
+   <translation id="domain_configuration_add_subdomain" qtlid="95167">Add subdomain</translation>
+   <translation id="domain_configuration_order_alldom" qtlid="288990">Order an allDom pack </translation>
+   <translation id="domain_configuration_add_subdomain_subdomain" qtlid="265327">sub-domain</translation>
+   <translation id="domain_configuration_add_subdomain_tip" qtlid="265340">If you leave this field empty, the configuration will apply directly to the domain name</translation>
+   <translation id="domain_configuration_add_subdomain_error" qtlid="213765">Invalid subdomain.</translation>
+   <translation id="domain_configuration_add_subdomain_iwant" qtlid="265353">I want: </translation>
+   <translation id="domain_configuration_add_subdomain_redir" qtlid="265366">Add a redirection </translation>
+   <translation id="domain_configuration_add_subdomain_redir_sample" qtlid="265379">Example: test.mytest.com redirects to test.mytest.uk</translation>
+   <translation id="domain_configuration_add_subdomain_add_record" qtlid="265392">Add a record to the DNS zone (A, CNAME, MX...)</translation>
+   <translation id="domain_configuration_add_subdomain_add_record_sample" qtlid="265405">Example: test.mytest.com 3600 IN A 1.2.3.4</translation>
+   <translation id="domain_configuration_add_subdomain_add_dom" qtlid="265418">Add a domain, sub-domain to your hosting package </translation>
+   <translation id="domain_configuration_add_subdomain_hosting_choice" qtlid="328901">Choose the hosting package that you want to attach <strong>{0}.{1}</strong> to </translation>
+   <translation id="domain_configuration_add_subdomain_hosting_search" qtlid="265444">Search for a hosting service</translation>
+
+   <translation id="domain_configuration_renew_title_button" qtlid="210124">Renew</translation>
+   <translation id="domain_configuration_renew_alldom_title_button" qtlid="270605">Renew AllDom</translation>
+   <translation id="domain_configuration_enable_web_hosting" qtlid="283812">Order a web hosting package </translation>
+   <translation id="domain_configuration_renew_title" qtlid="124399">Renew your domain</translation>
+   <translation id="domain_configuration_renew_step1_question" qtlid="328914">In order to renew your <span class="italic">{0}</span> domain, you have to use the OVH renewal interface (external to your Web Control Panel) </translation>
+   <translation id="domain_configuration_renew_step1_confirmation" qtlid="125132">Click "Order" to open a new window and renew your domain name.</translation>
+   <translation id="domain_configuration_renew_step1_information" qtlid="168341">A new tab will open and you will automatically be redirected to the OVH renewal interface.</translation>
+   <translation id="domain_configuration_renew_step1_alert" qtlid="168354">Please note that a period of approximately 2 hours from your payment being accepted will be necessary for the renewal to take effect in the Web Control Panel.</translation>
+   <translation id="domain_configuration_protection_desactivate_title_button" qtlid="210137">Disable the protection</translation>
+   <translation id="domain_configuration_protection_desactivate_title" qtlid="124423">Disable domain protection </translation>
+   <translation id="domain_configuration_protection_desactivate_step1_question" qtlid="435005">Are you sure you want to disable protection for your {0} domain?</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_info" qtlid="290524">When the protection is disabled, you will be able to access the AUTH/INFO code which means you can transfer domains by clicking on the relevant button.</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_dnssec" qtlid="435018">Your domain uses DNSSEC, please check that your new service provider can manage it correctly. If they cannot do so, please disable the option before transferring your domain.</translation>
+   <translation id="domain_configuration_protection_auth_info_registry" qtlid="344149">To transfer your domain name away from OVH, you should contact the Registry to get the auth-info code. You can do this via the link: <a href="{0}" target="_blank">{0}</a></translation>
+   <translation id="domain_configuration_protection_desactivate_step1_helpwizard_title" qtlid="129667">Domain protection</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_helpwizard_desc" qtlid="129679">Activating Domain Protection enables you to protect yourself against theft by forbidding all transfers.</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_helpwizard_question1" qtlid="129691">What is domain theft?</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_helpwizard_question1_answer" qtlid="328953">All companies that register domain names also offer the possibility to transfer incoming domain names managed by other providers. The company requesting the transfer must ensure that the transaction has actually been requested by the owner.<br/>If the checks are not carried out in sufficient depth, the domain can still be moved, and the rightful owner could lose management of their domain name. </translation>
+   <translation id="domain_configuration_protection_desactivate_step1_helpwizard_question2" qtlid="129715">How does OVH protect you from domain theft?</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_helpwizard_question2_answer" qtlid="129727">In order to protect you against theft, we automatically lock the domain in a state where no transfer can be made. If another registrar requests the transfer of this domain, it will be immediately refused by default, thus no transfer can be made without your knowledge.</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_helpwizard_note" qtlid="129739">Please note:</translation>
+   <translation id="domain_configuration_protection_desactivate_step1_helpwizard_note_desc" qtlid="129751">If you later wish to transfer your domain name to another registrar, you will then have to deactivate the domain protection.</translation>
+   <translation id="domain_configuration_protection_desactivate_success" qtlid="290537">Domain protection will be disabled. The transfer code will be available in a few minutes. </translation>
+   <translation id="domain_configuration_protection_desactivate_fail" qtlid="127552">Error when requesting to disable the domain protection</translation>
+   <translation id="domain_configuration_protection_activate_title_button" qtlid="210150">Enable the protection</translation>
+   <translation id="domain_configuration_protection_activate_title" qtlid="124435">Activate domain protection </translation>
+   <translation id="domain_configuration_protection_activate_step1_question" qtlid="435031">Are you sure you want to enable protection for your {0} domain?</translation>
+   <translation id="domain_configuration_protection_activate_step1_helpwizard_title" qtlid="129667">Domain protection</translation>
+   <translation id="domain_configuration_protection_activate_step1_helpwizard_desc" qtlid="129679">Activating Domain Protection enables you to protect yourself against theft by forbidding all transfers.</translation>
+   <translation id="domain_configuration_protection_activate_step1_helpwizard_question1" qtlid="129691">What is domain theft?</translation>
+   <translation id="domain_configuration_protection_activate_step1_helpwizard_question1_answer" qtlid="328979">All companies that register domain names also offer the possibility to transfer incoming domain names managed by other providers. The company requesting the transfer must ensure that the transaction has actually been requested by the owner.<br/>If the checks are not carried out in sufficient depth, the domain can still be moved, and the rightful owner could lose management of their domain name. </translation>
+   <translation id="domain_configuration_protection_activate_step1_helpwizard_question2" qtlid="129715">How does OVH protect you from domain theft?</translation>
+   <translation id="domain_configuration_protection_activate_step1_helpwizard_question2_answer" qtlid="129727">In order to protect you against theft, we automatically lock the domain in a state where no transfer can be made. If another registrar requests the transfer of this domain, it will be immediately refused by default, thus no transfer can be made without your knowledge.</translation>
+   <translation id="domain_configuration_protection_activate_step1_helpwizard_note" qtlid="129739">Please note:</translation>
+   <translation id="domain_configuration_protection_activate_step1_helpwizard_note_desc" qtlid="129751">If you later wish to transfer your domain name to another registrar, you will then have to deactivate the domain protection.</translation>
+   <translation id="domain_configuration_protection_activate_success" qtlid="127576">The domain protection will be enabled</translation>
+   <translation id="domain_configuration_protection_activate_fail" qtlid="127588">Error when requesting domain protection</translation>
+   <translation id="domain_configuration_whois_title_button" qtlid="124447">Configure WHOIS</translation>
+   <translation id="domain_configuration_whois_title" qtlid="124447">Configure WHOIS</translation>
+   <translation id="domain_configuration_whois_step1_question" qtlid="435044">Please choose whether you would like your personal information to be displayed or hidden in the WHOIS directory for the {0} domain</translation>
+   <translation id="domain_configuration_whois_step1_display" qtlid="69353">Display</translation>
+   <translation id="domain_configuration_whois_step1_hide" qtlid="97136">Hide</translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_title" qtlid="130075">OwO</translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_desc" qtlid="329005">When you register a domain name, you will be asked for personal details. These are published by default in the WHOIS database, which is publicly accessible. <br/>This function lets you hide information if you wish to. </translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_whatis" qtlid="130099">What is WHOIS?</translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">WHOIS is a public search facility for information on domain names and IP addresses. This database mainly consists of information on the owners. </translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">What information is published in WHOIS?</translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329018">The details published are the domain name owner's. They depend on the domain name extension, but in general they will be :<ul><li>their address</li><li>Their phone and fax number</li><li>Their e-mail</li></ul><br/>All three pieces of information can be masked.</translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_how" qtlid="130135">How does OVH enable you to hide this information?</translation>
+   <translation id="domain_configuration_whois_step1_helpwizard_how_desc" qtlid="329031">If you enable this service, OVH will replace your personal information with generic information. However you will stay contactable.<ul><li>The address field is replaced with an OVH address and we send the emails to the real recipient. </li><li>The telephone and fax fields are replaced by an OwO number.</li><li>The email field is replaced by a redirection which points towards the owner's email address. This address is regenerated regularly and an anti-SPAM filter is applied.</li></ul></translation>
+   <translation id="domain_configuration_whois_field_ADDRESS" qtlid="30430">Address</translation>
+   <translation id="domain_configuration_whois_field_EMAIL" qtlid="33598">Email</translation>
+   <translation id="domain_configuration_whois_field_PHONE" qtlid="128214">Phone/Fax</translation>
+   <translation id="domain_configuration_whois_step2_alert" qtlid="128226">Please note that the WHOIS data will take a few hours to update.</translation>
+   <translation id="domain_configuration_whois_step2_old_configuration" qtlid="128238">Previous configuration</translation>
+   <translation id="domain_configuration_whois_step2_new_configuration" qtlid="128250">New configuration</translation>
+   <translation id="domain_configuration_whois_step2_question" qtlid="128262">Are you sure you want to apply the following modifications for displaying WHOIS information?</translation>
+   <translation id="domain_configuration_whois_step2_activated" qtlid="128274">Hidden</translation>
+   <translation id="domain_configuration_whois_step2_desactivated" qtlid="128286">Displayed</translation>
+   <translation id="domain_configuration_whois_success" qtlid="128298">Your modification request related to WHOIS information has been taken into account.</translation>
+   <translation id="domain_configuration_whois_fail" qtlid="128310">An error has occurred requesting WHOIS information modification.</translation>
+   <translation id="domain_configuration_whois_contracts" qtlid="329044">To enable WHOIS information, you must accept the terms and conditions. <a href="#/useraccount/agreements">Access terms and conditions</a>.</translation>
+
+   <translation id="domain_exemple" qtlid="182475">E.g.</translation>
+   <translation id="domain_and" qtlid="329057">and <b>{0}</b></translation>
+   <translation id="domain_tab_REDIRECTION" qtlid="46000">Redirection</translation>
+   <translation id="domain_tab_REDIRECTION_title" qtlid="270618">Here you can manage the redirection of your domains and sub-domains to other web addresses or to servers.</translation>
+   <translation id="domain_tab_REDIRECTION_add_info" qtlid="270631">Add a redirection for your domain or sub-domain to another web address or to a server.</translation>
+   <translation id="domain_tab_REDIRECTION_load_fail" qtlid="364729">There was an error when loading redirections </translation>
+   <translation id="domain_tab_DNSSEC" qtlid="264719">DS Records</translation>
+
+   <translation id="domain_tab_REDIRECTION_csv_button" qtlid="231773">Export in CSV</translation>
+   <translation id="domain_tab_REDIRECTION_delete_success" qtlid="213453">The redirection deletion has been registered. </translation>
+   <translation id="domain_tab_REDIRECTION_delete_fail" qtlid="213466">Error when deleting the redirection.</translation>
+   <translation id="domain_tab_REDIRECTION_delete_title" qtlid="213479">Delete a redirection</translation>
+   <translation id="domain_tab_REDIRECTION_delete_sub_confirm" qtlid="329070">Are you sure that you want to remove the <b>{0}</b> to <b>{1}</b> sub-domain redirection?</translation>
+   <translation id="domain_tab_REDIRECTION_delete_confirm" qtlid="329083">Are you sure that you want to remove the <b>{0}</b> to <b>{1}</b> domain redirection?</translation>
+   <translation id="domain_tab_REDIRECTION_delete_www_confirm" qtlid="329096">Also remove the redirection of the sub-domain  <b>{0}</b> to <b>{1}</b></translation>
+   <translation id="domain_tab_REDIRECTION_search_placeholder" qtlid="364742">Filter sub-domains </translation>
+   <translation id="domain_tab_REDIRECTION_edit_web_option" qtlid="213518">Options:</translation>
+   <translation id="domain_tab_REDIRECTION_edit_web_option_title" qtlid="16469">Title</translation>
+   <translation id="domain_tab_REDIRECTION_edit_web_option_keyword" qtlid="213531">Keywords</translation>
+   <translation id="domain_tab_REDIRECTION_edit_web_option_description" qtlid="9238">Description</translation>
+   <translation id="domain_tab_REDIRECTION_edit_title" qtlid="435057">Configure the redirection</translation>
+   <translation id="domain_tab_REDIRECTION_edit_confirm" qtlid="435070">Configure the redirection of the subdomain from <strong>{0}</strong> to <strong>{1}</strong>:</translation>
+   <translation id="domain_tab_REDIRECTION_edit_web_target_label" qtlid="213570">Web address</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ip_label" qtlid="26191">IP address</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv4_label" qtlid="79314">IPv4 address </translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv6_label" qtlid="79326">IPv6 address</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_label" qtlid="296609">Target domain </translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv4_error" qtlid="435083">This IP address is not a valid IPv4.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_ipv6_error" qtlid="435096">This IP address is not a valid IPv6.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_error" qtlid="435109">This domain is not valid.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_web_target_error" qtlid="213635">Invalid address.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_web_target_error_length" qtlid="213648">This address is too long.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_web_option_length" qtlid="213661">Options not available. Reduce the email length to unblock them.</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_info" qtlid="435122">A domain can contain dots. It cannot contain an (<strong>"http://"</strong> or <strong>"https://"</strong>) header. It cannot contain any slashes (<strong>"/"</strong>), which would reference a file, or a page. It also cannot contain a port number, marked with a <strong>":"</strong> (e.g. ":123").</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain" qtlid="16589">Add domain</translation>
+   <translation id="domain_tab_REDIRECTION_edit_server_cname_include_domain_example" qtlid="435135">Final value: <strong>{0}</strong></translation>
+   <translation id="domain_tab_REDIRECTION_edit_success" qtlid="213687">Your domain {0} redirection has been modified </translation>
+   <translation id="domain_tab_REDIRECTION_edit_fail" qtlid="213700">Error while modifying the {0} domain redirection </translation>
+   <translation id="domain_tab_REDIRECTION_edit_unknown_field_type" qtlid="435148">This redirection type is unknown: {0}</translation>
+
+
+   <translation id="domain_tab_REDIRECTION_add_button" qtlid="213713">Add a redirection</translation>
+   <translation id="domain_tab_REDIRECTION_add_www" qtlid="213726">(www.)</translation>
+   <translation id="domain_tab_REDIRECTION_add_title" qtlid="213739">Add a redirection</translation>
+
+   <translation id="domain_tab_REDIRECTION_add_step1" qtlid="213752">What do you want to redirect? Please enter the subdomain name, or leave it blank to redirect the domain:</translation>
+   <translation id="domain_tab_REDIRECTION_add_step1_label" qtlid="296622">Sub-domain name </translation>
+   <translation id="domain_tab_REDIRECTION_add_step1_subdomain_error" qtlid="213765">Invalid subdomain.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step1_www" qtlid="213778">Also redirect</translation>
+
+   <translation id="domain_tab_REDIRECTION_add_step2" qtlid="329135">What type of target do you want to redirect <b>{0}</b> {1} to?</translation>
+   <translation id="domain_tab_REDIRECTION_add_step2_web" qtlid="213804">to a web address</translation>
+   <translation id="domain_tab_REDIRECTION_add_step2_web_help" qtlid="329148">carry out a <b>visible</b> or <b>invisible</b> redirection.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step2_server" qtlid="213830">to an OVH server or somewhere else.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step2_server_help" qtlid="329161">do a DNS redirection via an <b>IP</b> (A or AAAA) or a <b>Domain</b> (CNAME).</translation>
+
+   <translation id="domain_tab_REDIRECTION_add_step3_web" qtlid="329174">What type of redirection do you want to use to redirect <b>{0}</b> {1} ?</translation>
+   <translation id="domain_tab_REDIRECTION_add_step3_web_visible" qtlid="213869">with a visible redirection.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step3_web_visible_help" qtlid="329187"><b>{0}</b> turns into the target URL. You will see the URL change in the browser. </translation>
+   <translation id="domain_tab_REDIRECTION_add_step3_web_invisible" qtlid="213895">with an invisible redirection.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step3_web_invisible_help" qtlid="329200"><b>{0}</b> does not change in the browser but the content of the target URL is displayed. </translation>
+   <translation id="domain_tab_REDIRECTION_add_step3_server" qtlid="329213">Which type of redirection do you want to use to redirect <b>{0}</b> {1} ?</translation>
+   <translation id="domain_tab_REDIRECTION_add_step3_server_ip" qtlid="213934">with an IP address.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step3_server_ip_help" qtlid="329226">This will add the <b>A</b> or <b>AAAA</b> record in the <b>{0}</b> DNS zone.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step3_server_ip_help2" qtlid="329239">This will add a <b>{0}</b> record in the <b>{1}</b> DNS zone.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step3_server_cname" qtlid="213973">with a domain name.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step3_server_cname_help" qtlid="329252">This will modifiy the <b>CNAME</b> record for the  <b>{0}</b> DNS zone.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step3_server_cname_warning" qtlid="329265">Please note: if <b>{0}</b> is not declared by the target server <b>{1}</b>, the redirection will not work.</translation>
+
+   <translation id="domain_tab_REDIRECTION_add_step4_server_ip" qtlid="214012">Please enter the target IP address of this redirection:</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_server_ip_label" qtlid="26191">IP address</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_server_ip_error" qtlid="214025">Invalid IP.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_server_cname" qtlid="214038">Please enter the target domain of this redirection:</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_server_cname_label" qtlid="213583">Target domain </translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_server_cname_error" qtlid="213622">Invalid domain.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_server_cname_info" qtlid="329278">A domain can contain points. It must not contain headers (<b>"http://"</b> or <b>"https://"</b>). It must not contain a slash (<b>"/"</b>) which refers to a page or folder. It must not contain a port number, designated by a <b>":"</b> (like ":123").</translation>
+
+   <translation id="domain_tab_REDIRECTION_add_step4_web_target" qtlid="214051">Please enter the target address to redirect to:</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_target_label" qtlid="213570">Web address</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_option" qtlid="213518">Options:</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_option_length" qtlid="213661">Options not available. Reduce the email length to unblock them.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_option_title" qtlid="16469">Title</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_option_keyword" qtlid="213531">Keywords</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_option_description" qtlid="9238">Description</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_too_much_caractere" qtlid="182501">Too many characters</translation>
+
+
+   <translation id="domain_tab_REDIRECTION_add_step4_web_target_error" qtlid="213635">Invalid address.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_target_error_length" qtlid="213648">This address is too long.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web" qtlid="214064">This redirection will be:</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_example" qtlid="290668">https://www.exemple.com:1234</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_visible_302" qtlid="214077">Temporary (302):</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_visible_302_help" qtlid="329291">Search engines will not read this page. <b>{0}</b> will therefore not be indexed.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_visible_302_help_warning" qtlid="329304">The address can contain an <strong>"http://"</strong> or <strong>"https://"</strong> protocol and can end in a port number. The domain must be made up of at least one character followed by a "." and the extension must have at least two characters. </translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_visible_301" qtlid="226943">Permanent (301):</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_visible_301_help" qtlid="329317">Search engines will replace the indexed content of <b>{0}</b> with that of the <b>{1}</b> target server.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_visible_301_help_warning" qtlid="214142">Please note: it is not possible to create a 301 redirection from this interface. You must implement this directly on the server by following the tutorial:</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_invisible_iframe" qtlid="214155">Temporary (iframe):</translation>
+   <translation id="domain_tab_REDIRECTION_add_step4_web_invisible_iframe_help" qtlid="329330">Search engines will not read this page. <b>{0}</b> will therefore not be ranked.</translation>
+
+   <translation id="domain_tab_REDIRECTION_add_step5_check_validity" qtlid="214168">Checking redirection consistency... </translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_add_record" qtlid="214181">Adding redirections...</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_resume" qtlid="214194">Redirection summary:</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_error" qtlid="256204">Attention : Il existe une redirection à partir de {0} qui entre en conflit avec la redirection que vous souhaitez ajouter.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_errors" qtlid="214220">Some redirections from domains that you want to redirect conflict with existing redirections.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_error_unknown" qtlid="214233">Error when recovering existing redirections.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_error_CNAME" qtlid="214246">A redirection towards a domain name is currently configured.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_error_A" qtlid="214259">Redirection towards a server (IPv4 address) is currently configured.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_error_AAAA" qtlid="214272">Redirection towards a server (IPv6 address) is currently configured.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_error_TXT" qtlid="214285">Redirection towards a web address is currently configured.</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_error_info" qtlid="214298">Conflicts details for {0}</translation>
+
+   <translation id="domain_tab_REDIRECTION_add_step5_source" qtlid="214311">Domain to redirect:</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_target" qtlid="214324">Target address</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_info" qtlid="214337">Information about redirection:</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_info_other" qtlid="214350">Other information</translation>
+   <translation id="domain_tab_REDIRECTION_add_step5_overwrite" qtlid="256217">Confirm the overwriting of the existing redirection.</translation>
+   <translation id="domain_tab_REDIRECTION_add_success" qtlid="214363">Your redirection has been added.</translation>
+   <translation id="domain_tab_REDIRECTION_add_partial" qtlid="214376">Your request to add a redirection has been taken into account but some redirections have not been added..</translation>
+   <translation id="domain_tab_REDIRECTION_add_error" qtlid="214389">Error when adding a redirection.</translation>
+   <translation id="domain_tab_REDIRECTION_delete_error" qtlid="256230">Une erreur est survenue lors des suppressions des anciennes redirections.</translation>
+
+   <translation id="domain_tab_REDIRECTION_ip_version_info" qtlid="214402">You can provide an IPv4 IP address (eg: "198.168.1.1"), or an IPv6 (eg: "2001:0db8:0000:85a3:0000:0000:ac1f:8001", the IPv6 length is variable).</translation>
+
+
+   <translation id="domain_tab_REDIRECTION_table_headers_field" qtlid="8458">Domain</translation>
+   <translation id="domain_tab_REDIRECTION_table_headers_type" qtlid="2642">Type</translation>
+   <translation id="domain_tab_REDIRECTION_table_headers_target" qtlid="47644">Target </translation>
+   <translation id="domain_tab_REDIRECTION_table_headers_visibility" qtlid="106979">Visibility</translation>
+
+   <translation id="domain_tab_REDIRECTION_type_invisible" qtlid="46012">invisible</translation>
+   <translation id="domain_tab_REDIRECTION_type_visible" qtlid="46600">visible</translation>
+   <translation id="domain_tab_REDIRECTION_type_301" qtlid="226956">permanent (301)</translation>
+   <translation id="domain_tab_REDIRECTION_type_302" qtlid="214428">temporary (302)</translation>
+   <translation id="domain_tab_REDIRECTION_type_iframe" qtlid="214441">temporary (via iframe)</translation>
+
+   <translation id="domain_tab_REDIRECTION_type_CNAME" qtlid="214454">to a domain (CNAME)</translation>
+   <translation id="domain_tab_REDIRECTION_type_A" qtlid="214467">to a server (IPv4 - A)</translation>
+   <translation id="domain_tab_REDIRECTION_type_AAAA" qtlid="214480">to a server (IPv6 - AAAA)</translation>
+   <translation id="domain_tab_REDIRECTION_type_TXT" qtlid="214493">to a web page</translation>
+   <translation id="domain_tab_REDIRECTION_type_visible" qtlid="214506">Visible redirection</translation>
+   <translation id="domain_tab_REDIRECTION_type_invisible" qtlid="214519">Invisible redirection</translation>
+   <translation id="domain_tab_REDIRECTION_type_visiblePermanent" qtlid="226175">Permanent visible redirection</translation>
+
+   <translation id="domain_configuration_dns_entry_delete_title" qtlid="129147">Delete the DNS zone entry</translation>
+   <translation id="domain_configuration_dns_entry_delete_empty_subdomain" qtlid="229750">You may not delete an NS-type entry with an empty sub-domain</translation>
+   <translation id="domain_configuration_dns_entry_delete_step1_question" qtlid="329343">Are you sure you want to delete the DNS zone record for the <span class="normal italic">{0}</span> domain?</translation>
+   <translation id="domain_configuration_dns_entry_delete_step1_type" qtlid="129171">Type of field</translation>
+   <translation id="domain_configuration_dns_entry_delete_step1_subdomain" qtlid="129183">Sub-domain</translation>
+   <translation id="domain_configuration_dns_entry_delete_step1_target" qtlid="47644">Target </translation>
+   <translation id="domain_configuration_dns_entry_mass_delete_step1_question_1" qtlid="192071">Do you really want to delete this entry from the DNS zone?</translation>
+   <translation id="domain_configuration_dns_entry_mass_delete_step1_question_other" qtlid="192084">Do you really want to delete these {} entries from the DNS zone?</translation>
+   <translation id="domain_configuration_dns_entry_delete_success" qtlid="129195">The entry has been deleted from the DNS zone.</translation>
+   <translation id="domain_configuration_dns_entry_delete_fail" qtlid="129207">Error occurred when deleting {0} DNS zone entry.</translation>
+   <translation id="domain_configuration_dns_entry_delete_mass_success" qtlid="192097">The entries have been deleted from your DNS zone.</translation>
+   <translation id="domain_configuration_dns_entry_delete_mass_fail" qtlid="192110">An error occurred when deleting the entries from your DNS zone.</translation>
+
+
+   <translation id="domain_configuration_dns_entry_add_title_button" qtlid="129219">Add an entry</translation>
+   <translation id="domain_configuration_dns_entry_add_title" qtlid="129231">Add an entry to the DNS zone</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_title" qtlid="129787">DNS Zone – Adding an entry</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_desc" qtlid="129799">Here's a quick description of the different types of entry that can be added to your DNS zone.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_a" qtlid="23803">A</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_a_desc" qtlid="129811">Allows a domain name or sub-domain to be linked to an IPv4 address.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_aaaa" qtlid="129823">AAAA</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_aaaa_desc" qtlid="129835">Allows a domain name or sub-domain to be linked to an IPv6 address.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_cname" qtlid="129847">CNAME</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_cname_desc" qtlid="129859">An alias for the An record, useful for finding out alternative names for a host's services.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_dkim" qtlid="129871">DKIM</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_dkim_desc" qtlid="129883">Enables the distribution of keys that allow a mail server to verify DKIM signatures (useful in the fight against SPAM).</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_loc" qtlid="129895">LOC</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_loc_desc" qtlid="129907">Specifies a geographic area associated with the domain name.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_mx" qtlid="23779">MX</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_mx_desc" qtlid="129919">Specifies the mail server responsible for e-mail distribution for a domain.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_naptr" qtlid="129931">NAPTR</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_naptr_desc" qtlid="129943">Allows the public services that you provide under a domain name to be specified.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_ns" qtlid="129955">NS</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_ns_desc" qtlid="129967">Allows the authoritative servers for the zone to be declared.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_spf" qtlid="129979">SPF</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_spf_desc" qtlid="129991">Assures remote mail servers that your servers are fully authorised to send emails. Useful in the fight against SPAM.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_srv" qtlid="130003">SRV</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_srv_desc" qtlid="130015">Allows you to define the address and port number of servers for specified services. An extended and more generic version of the MX record.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_sshfp" qtlid="130027">SSHFP</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_sshfp_desc" qtlid="130039">Allows public SSH keys to be listed in the DNS system, helping to verify the authenticity of the host machine.</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_txt" qtlid="130051">TXT</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_helpwizard_txt_desc" qtlid="130063">Allows any text to be entered in the DNS zone.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_info" qtlid="163791">You are going to add the following entry to your DNS zone:</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_alert" qtlid="195048">The modification will be applied immediately on the DNS zone, but bear in mind the propagation time (maximum 24 hrs).</translation>
+
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning1" qtlid="215065">Warning, one or more conflict(s) may occur:</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning2" qtlid="195074">There can only be one CNAME record per sub-domain.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="195087">There can only be one A or AAAA record per sub-domain.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning4" qtlid="215078">Either this entry already exists in your DNS zone, or there is a CNAME record in this sub-domain.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning5" qtlid="215091">This entry already exists in your DNS zone.</translation>
+
+   <translation id="domain_configuration_dns_entry_add_success" qtlid="129243">The entry has been added to the DNS zone.</translation>
+   <translation id="domain_configuration_dns_entry_add_fail" qtlid="129255">Error when adding the entry to the DNS zone.</translation>
+
+   <translation id="domain_configuration_dns_importtext_title" qtlid="233466">Enter below the text related to the DNS zones you want to import: </translation>
+   <translation id="domain_configuration_dns_importtext_confirm" qtlid="233479">You are going to import a new DNS zone configuration.</translation>
+   <translation id="domain_configuration_dns_importtext_success" qtlid="233492">The configuration will be imported in a few moments. You may track the progress of the DNS zone import in the "Recent tasks" section.</translation>
+   <translation id="domain_configuration_dns_importtext_error_regex" qtlid="233505">Attention: the TTL has been incorrectly defined.</translation>
+   <translation id="domain_configuration_dns_importtext_error" qtlid="233518">An error occurred when importing the configuration</translation>
+
+   <translation id="domain_configuration_dns_entry_add_step1_title" qtlid="192123">Select a type of DNS record:</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_subtitle1" qtlid="192136">Pointer records</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_subtitle2" qtlid="9466">Alias</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_subtitle3" qtlid="192149">Extended records</translation>
+   <translation id="domain_configuration_dns_entry_add_step1_subtitle4" qtlid="192162">Mail records</translation>
+
+   <translation id="domain_configuration_dns_entry_add_expert_title" qtlid="192175">Define the value for this record:</translation>
+   <translation id="domain_configuration_dns_entry_add_type" qtlid="129171">Type of field</translation>
+   <translation id="domain_configuration_dns_entry_add_subdomain" qtlid="192188">Sub-domain</translation>
+   <translation id="domain_configuration_dns_entry_add_domain" qtlid="170434">Domain</translation>
+   <translation id="domain_configuration_dns_entry_add_target" qtlid="47644">Target </translation>
+   <translation id="domain_configuration_dns_entry_add_step1_mx_placeholder" qtlid="171604">Priority</translation>
+
+   <translation id="domain_configuration_dns_entry_add_ipv4" qtlid="101781">IPv4</translation>
+   <translation id="domain_configuration_dns_entry_add_ipv6" qtlid="34126">IPv6</translation>
+   <translation id="domain_configuration_dns_entry_add_host" qtlid="192201">Host name</translation>
+   <translation id="domain_configuration_dns_entry_add_value" qtlid="47548">Value</translation>
+   <translation id="domain_configuration_dns_entry_add_format" qtlid="5846">Format</translation>
+   <translation id="domain_configuration_dns_entry_add_ttl" qtlid="121747">TTL</translation>
+   <translation id="domain_configuration_dns_entry_add_ttl_low_value" qtlid="397351">TTL value is too low </translation>
+   <translation id="domain_configuration_dns_entry_add_ttl_global" qtlid="101193">By default</translation>
+   <translation id="domain_configuration_dns_entry_add_subdomain_already_configured" qtlid="227128">Please note: a target has already been configured for this domain name.</translation>
+   <translation id="domain_configuration_dns_entry_add_ttl_custom" qtlid="50062">Personalized</translation>
+   <translation id="domain_configuration_dns_entry_add_order" qtlid="47260">Order</translation>
+   <translation id="domain_configuration_dns_entry_add_pref" qtlid="46864">Preference</translation>
+   <translation id="domain_configuration_dns_entry_add_flag" qtlid="192214">Attribute</translation>
+   <translation id="domain_configuration_dns_entry_add_service" qtlid="31042">Service</translation>
+   <translation id="domain_configuration_dns_entry_add_regex" qtlid="46036">Regular expression</translation>
+   <translation id="domain_configuration_dns_entry_add_replace" qtlid="47536">Replacement</translation>
+   <translation id="domain_configuration_dns_entry_add_priority" qtlid="45988">Priority</translation>
+   <translation id="domain_configuration_dns_entry_add_weight" qtlid="47572">Weight</translation>
+   <translation id="domain_configuration_dns_entry_add_port" qtlid="9034">Port</translation>
+   <translation id="domain_configuration_dns_entry_add_lat" qtlid="47176">Latitude</translation>
+   <translation id="domain_configuration_dns_entry_add_lat_N" qtlid="46360">North</translation>
+   <translation id="domain_configuration_dns_entry_add_lat_S" qtlid="46180">South</translation>
+   <translation id="domain_configuration_dns_entry_add_lat_deg" qtlid="192227">Latitude (degrees)</translation>
+   <translation id="domain_configuration_dns_entry_add_lat_min" qtlid="192240">Latitude (minutes)</translation>
+   <translation id="domain_configuration_dns_entry_add_lat_sec" qtlid="192253">Latitude (seconds)</translation>
+   <translation id="domain_configuration_dns_entry_add_long_deg" qtlid="192266">Longitude (degrees)</translation>
+   <translation id="domain_configuration_dns_entry_add_long_min" qtlid="192279">Longitude (minutes)</translation>
+   <translation id="domain_configuration_dns_entry_add_long_sec" qtlid="192292">Longitude (seconds)</translation>
+   <translation id="domain_configuration_dns_entry_add_long" qtlid="47368">Longitude</translation>
+   <translation id="domain_configuration_dns_entry_add_long_E" qtlid="46756">East</translation>
+   <translation id="domain_configuration_dns_entry_add_long_W" qtlid="47008">West</translation>
+   <translation id="domain_configuration_dns_entry_add_altitude" qtlid="46540">Altitude</translation>
+   <translation id="domain_configuration_dns_entry_add_size" qtlid="7726">Size</translation>
+   <translation id="domain_configuration_dns_entry_add_hp" qtlid="46084">Horizontal accuracy </translation>
+   <translation id="domain_configuration_dns_entry_add_vp" qtlid="46228">Vertical accuracy</translation>
+   <translation id="domain_configuration_dns_entry_add_meters" qtlid="192305">metres</translation>
+   <translation id="domain_configuration_dns_entry_add_algorithm" qtlid="192318">Algorithm</translation>
+   <translation id="domain_configuration_dns_entry_add_fptype" qtlid="192331">Print</translation>
+   <translation id="domain_configuration_dns_entry_add_fp" qtlid="192344">Type of print</translation>
+   <translation id="domain_configuration_dns_entry_add_version" qtlid="34210">Version</translation>
+   <translation id="domain_configuration_dns_entry_add_granularity" qtlid="192357">Granularity</translation>
+   <translation id="domain_configuration_dns_entry_add_algorithm_hash" qtlid="192370">Algorithm (hash)</translation>
+   <translation id="domain_configuration_dns_entry_add_algorithm_key" qtlid="52303">Key type</translation>
+   <translation id="domain_configuration_dns_entry_add_notes" qtlid="69389">Notes</translation>
+   <translation id="domain_configuration_dns_entry_add_publickey" qtlid="192383">Public key (base64)</translation>
+   <translation id="domain_configuration_dns_entry_add_publickey_revoke" qtlid="192396">Revoke public key</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes" qtlid="192409">Types of service</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_all" qtlid="69173">All</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_email" qtlid="436944">Email</translation>
+   <translation id="domain_configuration_dns_entry_add_servicetypes_none" qtlid="30646">None</translation>
+   <translation id="domain_configuration_dns_entry_add_t_y" qtlid="192435">Test mode</translation>
+   <translation id="domain_configuration_dns_entry_add_t_y_no" qtlid="24967">Disabled</translation>
+   <translation id="domain_configuration_dns_entry_add_t_y_yes" qtlid="30250">Enabled</translation>
+   <translation id="domain_configuration_dns_entry_add_t_s" qtlid="50350">Sub-domains</translation>
+   <translation id="domain_configuration_dns_entry_add_t_s_yes" qtlid="192448">The public key is not valid for the sub-domains of this domain</translation>
+   <translation id="domain_configuration_dns_entry_add_t_s_no" qtlid="192461">The public key is valid for the sub-domains of this domain</translation>
+   <translation id="domain_configuration_dns_entry_add_spf_ovh_title" qtlid="192474">If your  {0} domain is configured on an OVH server, the basic SPF record to use is simply:</translation>
+   <translation id="domain_configuration_dns_entry_add_spf_ovh_btn" qtlid="47116">Use the SPF for OVH web hosting </translation>
+   <translation id="domain_configuration_dns_entry_add_spf_a_title" qtlid="192487">Authorise the {0} IP to send emails?</translation>
+   <translation id="domain_configuration_dns_entry_add_spf_mx_title" qtlid="192500">Authorise the {0} MX servers to send emails?</translation>
+   <translation id="domain_configuration_dns_entry_add_spf_ptr_title" qtlid="192513">Authorise all servers with names ending in {0} to send emails? (This option is not recommended)</translation>
+   <translation id="domain_configuration_dns_entry_add_spf_fields_title" qtlid="192526">Do other servers send email from {0}? You can describe them by indicating the arguments in the following fields:</translation>
+   <translation id="domain_configuration_dns_entry_add_spf_others_title" qtlid="192539">Do the emails of {0} originate from other servers belonging to other domains (e.g. your ISP)?</translation>
+   <translation id="domain_configuration_dns_entry_add_spf_all_title" qtlid="192552">Does the data you have entered describe all hosts that send email from {0}?</translation>
+   <translation id="domain_configuration_dns_entry_add_spf_all_title_yes" qtlid="192565">Yes, I'm sure</translation>
+   <translation id="domain_configuration_dns_entry_add_spf_all_title_safe" qtlid="192578">Yes, but use safe mode</translation>
+   <translation id="domain_configuration_dns_entry_add_spf_all_title_no" qtlid="34788">No</translation>
+   <translation id="domain_configuration_dns_entry_add_tlsa_usage" qtlid="109974">Usage</translation>
+   <translation id="domain_configuration_dns_entry_add_tlsa_selector" qtlid="291669">Selector </translation>
+   <translation id="domain_configuration_dns_entry_add_tlsa_matching_type" qtlid="291682">Type of correspondence </translation>
+   <translation id="domain_configuration_dns_entry_add_tlsa_certificate_data" qtlid="291695">Certificate data </translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_p" qtlid="435161">Rule for the domain</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_pct" qtlid="435174">Percentage of messages filtered</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_rua" qtlid="435187">Log creating URI</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_sp" qtlid="435200">Rule for subdomains</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_aspf" qtlid="435213">Alignment mode for SPF</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_aspf_r" qtlid="435226">Relaxed</translation>
+   <translation id="domain_configuration_dns_entry_add_dmarc_aspf_s" qtlid="435239">Strict</translation>
+   <translation id="domain_configuration_dns_entry_add_caa_flags" qtlid="316268">Indicator </translation>
+   <translation id="domain_configuration_dns_entry_add_caa_tag" qtlid="96944">Tag</translation>
+
+   <translation id="domain_configuration_dns_entry_add_target_ipv4_valid" qtlid="192591">The target must be a valid IPv4.</translation>
+   <translation id="domain_configuration_dns_entry_add_target_ipv6_valid" qtlid="192604">The target must be a valid IPv6.</translation>
+   <translation id="domain_configuration_dns_entry_add_target_host_valid" qtlid="192617">The target must be a valid host name.</translation>
+   <translation id="domain_configuration_dns_entry_add_dynhost_help" qtlid="192630">Information: To update a DynHOST record using software outside the Control Panel, a DynHOST ID is compulsory.</translation>
+   <translation id="domain_configuration_dns_entry_add_mx_help" qtlid="192643">Please note: Editing MX records manually may lead to loss of emails!</translation>
+   <translation id="domain_configuration_dns_entry_add_flag_help" qtlid="192656">An alphanumerical character, e.g.: "S", "A", "U", ...</translation>
+   <translation id="domain_configuration_dns_entry_add_service_help" qtlid="192669">"protocol+rs", example: "SIP+D2U", "SIP+D2T", ...</translation>
+   <translation id="domain_configuration_dns_entry_add_regex_help" qtlid="192682">Leave it empty if the  below has been filled in.</translation>
+   <translation id="domain_configuration_dns_entry_add_replace_help" qtlid="192695">Leave it empty if the record above has been filled in.</translation>
+   <translation id="domain_configuration_dns_entry_add_formatted_value" qtlid="192708">The {0} record currently generated is as follows:</translation>
+
+   <translation id="domain_configuration_dns_entry_edit_title" qtlid="192721">Modify a DNS zone entry </translation>
+
+   <translation id="domain_configuration_dns_entry_relative_warning_title" qtlid="225341">Real target:</translation>
+   <translation id="domain_configuration_dns_entry_relative_warning_tooltip" qtlid="225354">If you want to use the full target, please add a full-stop at the end of the target (or click on this icon to do it automatically).</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_warning" qtlid="329356">Please note: The target uses relative notation, which points to "<strong>{0}</strong>". Add a dot to the target record if you want to use the absolute notation.</translation>
+
+   <translation id="domain_configuration_dns_entry_modify_success" qtlid="195048">The modification will be applied immediately on the DNS zone, but bear in mind the propagation time (maximum 24 hrs).</translation>
+   <translation id="domain_configuration_dns_entry_modify_fail" qtlid="129291">Error when requesting entry modification in the DNS zone.</translation>
+   <translation id="domain_configuration_dns_entry_add_ttl_default_hint" qtlid="245036">Refers to the default value.</translation>
+   <translation id="domain_configuration_redirection_create_title_button" qtlid="124459">Create a redirection</translation>
+   <translation id="domain_configuration_associate_domain_to_ip_title_button" qtlid="124471">Attach the domain to an IP</translation>
+   <translation id="domain_configuration_zonedns_add_entry_title_button" qtlid="129267">Create an entry</translation>
+   <translation id="domain_configuration_zonedns_reset_title_button" qtlid="366424">Reset my DNS zone </translation>
+   <translation id="domain_configuration_zonedns_reset_question" qtlid="263949">Do you want to activate minimum entries when your DNS zone is reset?</translation>
+   <translation id="domain_configuration_zonedns_reset_warning" qtlid="260247">Warning! This will delete all existing DNS records and will reset the DNS zone back to its initial state. </translation>
+   <translation id="domain_configuration_zonedns_reset_minimized_yes" qtlid="263962">Yes, I want to reinstall my DNS zone with minimal entries. </translation>
+   <translation id="domain_configuration_zonedns_reset_minimized_no" qtlid="263975">No, but I want to reset my DNS zone.</translation>
+   <translation id="domain_configuration_zonedns_reset_success" qtlid="260260">The DNS zone has been reset.</translation>
+   <translation id="domain_configuration_zonedns_reset_error" qtlid="260273">An error has occurred while resetting the DNS zone.</translation>
+   <translation id="domain_configuration_zonedns_reset_type_REDIRECTION" qtlid="46000">Redirection</translation>
+   <translation id="domain_configuration_zonedns_reset_type_HOSTING_WEB" qtlid="366437">OVH web hosting </translation>
+   <translation id="domain_configuration_zonedns_reset_type_CUSTOM" qtlid="50062">Personalized</translation>
+   <translation id="domain_configuration_zonedns_reset_type_EMAILS" qtlid="366450">OVH email server </translation>
+   <translation id="domain_configuration_zonedns_reset_type_EMAILS_filter" qtlid="50230">Protection</translation>
+   <translation id="domain_configuration_zonedns_reset_type_EMAILS_placeholder" qtlid="448015">Select...</translation>
+   <translation id="domain_configuration_zonedns_reset_type_HOSTING_WEB_placeholder" qtlid="217132">Select...</translation>
+   <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label" qtlid="366463">Enter A record: </translation>
+   <translation id="domain_configuration_zonedns_reset_type_CUSTOM_label_MX" qtlid="366476">Enter an MX record and set its priority: </translation>
+   <translation id="domain_configuration_zonedns_reset_type_label" qtlid="366489">Please select where your domain should point to:</translation>
+   <translation id="domain_configuration_zonedns_reset_title" qtlid="366502">Configuring your DNS zone reset&#13;
+</translation>
+   <translation id="domain_configuration_zonedns_reset_type_MX_title" qtlid="366515">Mail server address </translation>
+   <translation id="domain_configuration_zonedns_reset_type_A_title" qtlid="366528">Webs hosting IP address </translation>
+
+   <translation id="domain_configuration_zonedns_delete_all_question" qtlid="290329">Do you want to delete the DNS zone? </translation>
+   <translation id="domain_configuration_zonedns_delete_all_blocked" qtlid="448028">Your DNS zone cannot be deleted as it is currently linked to a website.</translation>
+   <translation id="domain_configuration_zonedns_delete_all_warning" qtlid="287319">Warning! This will permanently delete all the existing DNS records.</translation>
+   <translation id="domain_configuration_zonedns_delete_all_success" qtlid="287332">Deletion of the DNS zone has begun, to complete the request please follow the instructions in the email sent to the DNS zone's administrator account. </translation>
+   <translation id="domain_configuration_zonedns_delete_all_error" qtlid="287345">An error when deleting the DNS zone. </translation>
+
+   <translation id="domain_configuration_dnsanycast_title_button" qtlid="135697">Activate Anycast DNS </translation>
+   <translation id="domain_configuration_dnsanycast_title" qtlid="135697">Activate Anycast DNS </translation>
+   <translation id="domain_configuration_dnsanycast_step1_question" qtlid="135710">Please click "Next" to activate the Anycast DNS option.</translation>
+   <translation id="domain_configuration_dnsanycast_step1_explanation" qtlid="135723">The Anycast DNS option is a solution that accelerates the conventional operation of DNS servers, to provide faster response times when visitors browse your website for the first time, anywhere in the world.</translation>
+   <translation id="domain_configuration_dnsanycast_step1_explanation2" qtlid="329369">This option will be billed at the price of <span class="red bold">{0}</span> ex. VAT for one year.</translation>
+   <translation id="domain_configuration_dnsanycast_step2_question" qtlid="329382">Enable Anycast DNS option on the <span class="italic normal">{0}</span> domain </translation>
+   <translation id="domain_configuration_dnsanycast_step2_id" qtlid="169472">To confirm your request, please accept the terms and conditions and click on "Next" below.</translation>
+   <translation id="domain_configuration_dnsanycast_step2_totalHT" qtlid="169238">Price excl. taxes:</translation>
+   <translation id="domain_configuration_dnsanycast_step2_totalTTC" qtlid="169251">Price incl. taxes:</translation>
+   <translation id="domain_configuration_dnsanycast_step2_contracts" qtlid="169485">I have read and understood</translation>
+   <translation id="domain_configuration_dnsanycast_step2_contracts_of" qtlid="130243">the</translation>
+   <translation id="domain_configuration_dnsanycast_step2_contracts_and" qtlid="169498">and</translation>
+   <translation id="domain_configuration_dnsanycast_step3_generation_bc" qtlid="169511">Generating the order...</translation>
+   <translation id="domain_configuration_dnsanycast_step3_bc" qtlid="169524">The order was successfully generated.</translation>
+   <translation id="domain_configuration_dnsanycast_step3_continue" qtlid="169537">To confirm your order please click on the "Pay" button below.</translation>
+   <translation id="domain_configuration_dnsanycast_step3_explication2" qtlid="135762">Please note that there will be a delay of approximately 15 mins after your payment has been accepted, which is required for activation of the option to be registered in your Web Control Panel.</translation>
+   <translation id="domain_configuration_dnsanycast_step3_explication3" qtlid="135775">Please also be aware of the delay of DNS service propagation, which may take up to 48hrs.</translation>
+   <translation id="domain_configuration_dnsanycast_step3_explication1" qtlid="167886">A new tab will open and you will automatically be redirected to the OVH payment interface.</translation>
+   <translation id="domain_configuration_dnsanycast_fail" qtlid="135788">Error when activating the Anycast DNS option</translation>
+   <translation id="domain_configuration_dnsanycast_how_to_activate_1" qtlid="344162">To enable DNS Anycast, please first</translation>
+   <translation id="domain_configuration_dnsanycast_how_to_activate_2" qtlid="344175">Create a DNS zone</translation>
+
+   <translation id="domain_tab_TASKS" qtlid="136217">Recent tasks</translation>
+   <translation id="domain_tab_TASKS_function" qtlid="61872">Task</translation>
+   <translation id="domain_tab_TASKS_todoDate" qtlid="26419">Creation date</translation>
+   <translation id="domain_tab_TASKS_comment" qtlid="233531">Technical details</translation>
+   <translation id="domain_tab_TASKS_state" qtlid="26443">Status</translation>
+   <translation id="domain_tab_TASKS_no_tasks" qtlid="217093">No task</translation>
+
+   <translation id="domain_tab_TASKS_status_CANCELLED" qtlid="164623">Cancelled</translation>
+   <translation id="domain_tab_TASKS_status_DOING" qtlid="26383">In progress</translation>
+   <translation id="domain_tab_TASKS_status_DONE" qtlid="26395">Terminated</translation>
+   <translation id="domain_tab_TASKS_status_ERROR" qtlid="45508">Error</translation>
+   <translation id="domain_tab_TASKS_status_TODO" qtlid="197947">Planned</translation>
+
+   <translation id="domain_order_start10M_choose_duration" qtlid="225408">Select the duration of your Start 10M plan.</translation>
+   <translation id="domain_order_start10M_duration_choosed" qtlid="225421">Click "Next" to continue.</translation>
+   <translation id="domain_order_start10M_contract_accept" qtlid="225434">Please read and accept the terms and conditions below, and click "Next".</translation>
+   <translation id="domain_order_hosting_price_HT" qtlid="146177">Sub-total:</translation>
+   <translation id="domain_order_hosting_price_TTC" qtlid="146190">Total price:</translation>
+   <translation id="domain_order_hosting_mx_explain" qtlid="227572">Please note: when you activate this solution, your DNS zone's MX records will automatically be replaced by OVH's default MX records.</translation>
+   <translation id="domain_order_hosting_finish_explain" qtlid="233248">Click "Confirm" to activate your web hosting package. </translation>
+   <translation id="domain_order_hosting_finish_error" qtlid="181227">An error occurred while creating the order confirmation.</translation>
+   <translation id="domain_order_hosting_finish_success" qtlid="329395">Your <a href="{0}" target="_blank">purchase order</a> has been generated. Your web hosting package will be enabled after this has been settled. </translation>
+   <translation id="domain_order_dns_anycast_success" qtlid="329408">Your <a href="{0}" target="_blank">purchase order</a> has been successfully generated. Your Anycast DNS option will be enabled after this has been settled. </translation>
+   <translation id="domain_order_dns_anycast_error" qtlid="299410">There was an error when creating the purchase order. </translation>
+   <translation id="domain_order_hosting_validate_finish_success" qtlid="329421">Your order has been confirmed. Click <a href="#/billing/orders">here to track the progress of your order</a>.</translation>
+
+   <translation id="domain_tab_DYNHOST" qtlid="226397">DynHost</translation>
+   <translation id="domain_tab_DYNHOST_title" qtlid="448041">With DynHost, you can point a subdomain to a dynamic IP address that will be updated in your DNS each time it changes.</translation>
+   <translation id="domain_tab_DYNHOST_domain_no_zone" qtlid="226410">The {0} domain name does not have a DNS zone.</translation>
+   <translation id="domain_tab_DYNHOST_error" qtlid="299423">There was an error: </translation>
+   <translation id="domain_tab_DYNHOST_table_header_field" qtlid="226397">DynHost</translation>
+   <translation id="domain_tab_DYNHOST_table_header_target" qtlid="47644">Target </translation>
+   <translation id="domain_tab_DYNHOST_table_dynhosts_empty" qtlid="226436">There is no DynHost entry in the DNS zone.</translation>
+   <translation id="domain_tab_DYNHOST_table_dynhosts_create" qtlid="226449">Add a DynHost</translation>
+   <translation id="domain_tab_DYNHOST_table_search" qtlid="226462">Search DynHost</translation>
+   <translation id="domain_tab_DYNHOST_management_heading" qtlid="82581">Manage access</translation>
+
+   <translation id="domain_tab_DYNHOSTLOGIN_table_header_login" qtlid="46792">ID</translation>
+   <translation id="domain_tab_DYNHOSTLOGIN_table_search" qtlid="226475">Search for a username </translation>
+   <translation id="domain_tab_DYNHOSTLOGIN_table_header_zone" qtlid="26335">Zone</translation>
+   <translation id="domain_tab_DYNHOSTLOGIN_table_header_subDomain" qtlid="47476">Sub-domain</translation>
+   <translation id="domain_tab_DYNHOSTLOGIN_table_empty" qtlid="226488">There is no username attached to your DynHosts.</translation>
+   <translation id="domain_tab_DYNHOSTLOGIN_delete_title" qtlid="226501">Delete a DynHost access username</translation>
+   <translation id="domain_tab_DYNHOSTLOGIN_delete_confirm" qtlid="329434">Do you really want to delete the <strong>{0}</strong> username?</translation>
+   <translation id="domain_tab_DYNHOSTLOGIN_delete_success" qtlid="226527">The access username has been deleted.</translation>
+
+   <translation id="domain_tab_DYNHOSTLOGIN_edit_title" qtlid="226540">Change a DynHost access username</translation>
+   <translation id="domain_tab_DYNHOSTLOGIN_edit_step1" qtlid="226553">Change the sub-domain of an access username</translation>
+   <translation id="domain_tab_DYNHOSTLOGIN_edit_success" qtlid="226566">The access username has been changed.</translation>
+
+   <translation id="domain_tab_DYNHOST_delete_title" qtlid="226579">Delete a DynHost</translation>
+   <translation id="domain_tab_DYNHOST_delete_dynhosts_confirm" qtlid="329447">Are you sure that you want to delete the DynHost entry for the sub-domain <strong>{0}</strong> to <strong>{1}</strong>?</translation>
+   <translation id="domain_tab_DYNHOST_delete_success" qtlid="226605">The DynHost entry has been deleted.</translation>
+
+   <translation id="domain_tab_DYNHOST_add_title" qtlid="226618">Create a DynHost</translation>
+   <translation id="domain_tab_DYNHOST_add_subDomain" qtlid="99776">Subdomain:</translation>
+   <translation id="domain_tab_DYNHOST_add_target_ip" qtlid="226631">Enter the current target IP. It will then be updated dynamically.</translation>
+   <translation id="domain_tab_DYNHOST_add_step1" qtlid="226644">Add a DynHost entry to the DNS zone</translation>
+   <translation id="domain_tab_DYNHOST_add_success" qtlid="226657">The DynHost entry has been added.</translation>
+   <translation id="domain_tab_DYNHOST_add_login_info_title" qtlid="29227">Information</translation>
+   <translation id="domain_tab_DYNHOST_add_login_info" qtlid="226670">To update a DynHost record from software other than the Control Panel, you will need a DynHost login.</translation>
+   <translation id="domain_tab_DYNHOST_add_login_create" qtlid="23059">Create a username</translation>
+
+   <translation id="domain_tab_DYNHOST_edit_title" qtlid="226683">Change a DynHost</translation>
+   <translation id="domain_tab_DYNHOST_edit_step1" qtlid="226696">Change a DynHost entry in the DNS zone</translation>
+   <translation id="domain_tab_DYNHOST_edit_success" qtlid="226709">The DynHost entry has been changed.</translation>
+
+
+   <translation id="domain_tab_DYNHOST_add_login_title" qtlid="226722">Create a DynHost username</translation>
+   <translation id="domain_tab_DYNHOST_login_add_suffixe" qtlid="226735">The username suffix:</translation>
+   <translation id="domain_tab_DYNHOST_add_login_step1" qtlid="226748">You are going to create a DynHost username to manage the DynHost sub-domains you have created. It is made up of your domain name followed by your chosen name, for example, domainname.com-username.</translation>
+   <translation id="domain_tab_DYNHOST_add_login_subDomain_help" qtlid="226813">Enter a sub-domain or {0} to manage all sub-domains with this login.</translation>
+   <translation id="domain_tab_DYNHOST_add_login_password" qtlid="91129">Password:</translation>
+   <translation id="domain_tab_DYNHOST_add_login_password_check" qtlid="197063">Confirmation:</translation>
+   <translation id="domain_tab_DYNHOST_add_login_step1_suffix_error" qtlid="329460">The suffix must only include: <ul><li><strong>{0}</strong> characters max</li><li>Alphanumeric characters only</li></ul>.</translation>
+   <translation id="domain_tab_DYNHOST_add_login_password_error" qtlid="226787">The password must include {0} to {1} alphanumerical characters.</translation>
+   <translation id="domain_tab_DYNHOST_add_login_password_check_error" qtlid="216014">The passwords do not match.</translation>
+   <translation id="domain_tab_DYNHOST_add_login_success" qtlid="226800">Your DynHost username has been created.</translation>
+
+   <translation id="domain_configuration_web_hosting_offer_header" qtlid="287619">Name of the hosting package </translation>
+   <translation id="domain_configuration_web_hosting_offer_KS" qtlid="271569">Kimsufi 2015</translation>
+   <translation id="domain_configuration_web_hosting_sqlPerso_header" qtlid="492016">Personal SQL</translation>
+   <translation id="domain_configuration_web_hosting_sqlPro_header" qtlid="492029">Professional SQL</translation>
+   <translation id="domain_configuration_web_hosting_privateSql_header" qtlid="72845">Private SQL</translation>
+   <translation id="domain_configuration_web_hosting_price_header" qtlid="83913">Price</translation>
+   <translation id="domain_configuration_web_hosting_choose_offer" qtlid="233313">Choose the solution you want to order </translation>
+   <translation id="domain_configuration_web_hosting_choose_module" qtlid="287632">Get a module preinstalled by us:</translation>
+   <translation id="domain_configuration_web_hosting_choose_offer_explain" qtlid="329473">To learn more about our services, their technical specifications and different options, visit <a href="{0}" target="_blank">our site</a>.</translation>
+   <translation id="domain_configuration_web_hosting_offer_PERFORMANCE_1" qtlid="216898">Performance 1</translation>
+   <translation id="domain_configuration_web_hosting_offer_PERFORMANCE_2" qtlid="216911">Performance 2</translation>
+   <translation id="domain_configuration_web_hosting_offer_PERFORMANCE_3" qtlid="216924">Performance 3</translation>
+   <translation id="domain_configuration_web_hosting_offer_PERFORMANCE_4" qtlid="216937">Performance 4</translation>
+   <translation id="domain_configuration_web_hosting_offer_PERSO" qtlid="216872">Personal</translation>
+   <translation id="domain_configuration_web_hosting_offer_PRO" qtlid="216885">Professional</translation>
+   <translation id="domain_configuration_web_hosting_offer_START" qtlid="233339">Start10M</translation>
+   <translation id="domain_configuration_web_hosting_offer_recommended" qtlid="287645">(Recommended)</translation>
+   <translation id="domain_configuration_web_hosting_offer_START_explain" qtlid="233352">The Start10M package is included with the solution, but it only comes with basic features.</translation>
+   <translation id="domain_configuration_web_hosting_dns_reset" qtlid="244703">Which change(s) do you wish to make to your DNS?</translation>
+   <translation id="domain_configuration_web_hosting_dns_reset_explain" qtlid="233378">Careful: any email redirections will be deleted.</translation>
+   <translation id="domain_configuration_web_hosting_dns_NO_CHANGE" qtlid="72461">No changes</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_NO_CHANGE" qtlid="435252">Regardless of where your new hosting package is set up, your domain name will continue to point to the current records. You will need to make the changes in your DNS zone when your new website is ready. This is an ideal choice if you do not want your current website to go down. </translation>
+   <translation id="domain_configuration_web_hosting_dns_RESET_ALL" qtlid="244716">DNS records A and MX of {0}</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ALL" qtlid="435265">This solution lets you automatically point your domain name to a new hosting package and your new email services. This solution is ideal if you do not have a live website linked to your domain name. </translation>
+   <translation id="domain_configuration_web_hosting_dns_RESET_ONLY_A" qtlid="244729">DNS record A of {0}</translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_A" qtlid="435278">If you have email addresses linked to your domain name but no website, you can choose to only edit the A record. This means that your domain name will point to your new web hosting package and your email addresses will continue to work on your current service. </translation>
+   <translation id="domain_configuration_web_hosting_dns_RESET_ONLY_MX" qtlid="290641">{0} MX records </translation>
+   <translation id="domain_configuration_web_hosting_dns_info_RESET_ONLY_MX" qtlid="435291">This option will let you use only the email addresses attached to your web hosting package without changing the addresses that your current website points to. Your domain name will still point to your current website, but the email addresses will now use OVH servers. </translation>
+   <translation id="domain_configuration_web_hosting_dns_info" qtlid="435304">If your domain name does not use OVH DNS servers, these modifications will not have any effect on your domain name. In this case, you can modify your domain's DNS servers so that they can use the address settings for the new service. </translation>
+
+   <translation id="domain_update_owner_title" qtlid="267123">Update owner</translation>
+   <translation id="domain_configuration_update_owner" qtlid="271478">Refresh owner information</translation>
+   <translation id="domain_configuration_update_owner_tooltip" qtlid="283851">Your owner information is being migrated </translation>
+
+   <translation id="domain_configuration_create_site" qtlid="288548">Create your website </translation>
+   <translation id="domain_update_owner_cancel" qtlid="37863">Cancel</translation>
+   <translation id="domain_update_owner_ok" qtlid="26047">Confirm</translation>
+   <translation id="domain_update_owner_edit" qtlid="37875">Modify</translation>
+
+
+   <translation id="domain_update_owner_legalform" qtlid="33526">Legal form</translation>
+   <translation id="domain_update_owner_legalform_association" qtlid="34138">Nonprofit</translation>
+   <translation id="domain_update_owner_legalform_corporation" qtlid="49022">Company</translation>
+   <translation id="domain_update_owner_legalform_individual" qtlid="163869">Individual</translation>
+   <translation id="domain_update_owner_legalform_other" qtlid="19963">Other</translation>
+
+   <translation id="domain_update_owner_email" qtlid="33598">Email</translation>
+   <translation id="domain_update_owner_lastname" qtlid="3818">Name</translation>
+   <translation id="domain_update_owner_firstname" qtlid="23323">First name</translation>
+   <translation id="domain_update_owner_title" qtlid="157642">My account</translation>
+   <translation id="domain_update_owner_edit" qtlid="269851">Change current owner details</translation>
+   <translation id="domain_update_owner_change_password" qtlid="200066">Change my password</translation>
+   <translation id="domain_update_owner_organisation" qtlid="32278">Organization</translation>
+   <translation id="domain_update_owner_tva" qtlid="165923">EU Tax ID</translation>
+   <translation id="domain_update_owner_address_1" qtlid="30430">Address</translation>
+   <translation id="domain_update_owner_address_2" qtlid="267149">Adress (next)</translation>
+   <translation id="domain_update_owner_address_3" qtlid="267162">Address (alternative)</translation>
+
+   <translation id="domain_update_owner_zip" qtlid="30346">Zip code</translation>
+<translation id="domain_update_owner_birthZip" qtlid="269864">Birth city post code</translation>
+   <translation id="domain_update_owner_city" qtlid="33310">City</translation>
+   <translation id="domain_update_owner_birthDay" qtlid="38289">Birth date</translation>
+   <translation id="domain_update_owner_birthCity" qtlid="163856">Place of birth</translation>
+   <translation id="domain_update_owner_province" qtlid="38577">Province</translation>
+   <translation id="domain_update_owner_country" qtlid="25171">Country</translation>
+   <translation id="domain_update_owner_birthCountry" qtlid="269877">Country of birth</translation>
+   <translation id="domain_update_owner_country_edit_expl" qtlid="29539">Contact support to modify country</translation>
+   <translation id="domain_update_owner_phone" qtlid="34174">Phone</translation>
+   <translation id="domain_update_owner_cellPhone" qtlid="269890">Mobile phone</translation>
+   <translation id="domain_update_owner_fax" qtlid="32926">Fax</translation>
+   <translation id="domain_update_owner_nationality" qtlid="38073">Nationality</translation>
+   <translation id="domain_update_owner_spareemail" qtlid="92153">Backup email</translation>
+   <translation id="domain_update_owner_cancel" qtlid="37863">Cancel</translation>
+   <translation id="domain_update_owner_OK" qtlid="26047">Confirm</translation>
+   <translation id="domain_update_owner_gender" qtlid="267175">Gender</translation>
+   <translation id="domain_update_owner_gender_female" qtlid="267188">Female</translation>
+   <translation id="domain_update_owner_gender_male" qtlid="267201">Male</translation>
+   <translation id="domain_update_owner_language" qtlid="145644">Language</translation>
+   <translation id="domain_update_owner_error" qtlid="267214">An error occurred when updating the owner</translation>
+   <translation id="domain_update_owner_success" qtlid="267227">Owner updated</translation>
+   <translation id="domain_update_owner_change_owner" qtlid="269903">Assign new owner to the service</translation>
+   <translation id="domain_update_owner_tooltip_will_pay" qtlid="269916">You will be charged for transferring the following extensions: be, de, eu, fr, re, uk, lu,ch, li, cn, tw, us, cz, lt, nu</translation>
+   <translation id="domain_update_owner_required" qtlid="237096">This field is mandatory</translation>
+   <translation id="domain_update_owner_to_long" qtlid="267266">This field is too long</translation>
+   <translation id="domain_update_owner_email_pattern" qtlid="41026">Invalid email</translation>
+   <translation id="domain_update_owner_error_get" qtlid="267279">An error occurred while retrieving contact information</translation>
+   <translation id="domain_update_owner_domains_error_get" qtlid="269929">Error when retrieving contact domains</translation>
+   <translation id="domain_update_owner_domains_linked" qtlid="269942">The following domains will be affected if no restriction blocks the process</translation>
+
+   <translation id="domain_tab_menu_hosting_modules" qtlid="287658">Order a hosting package with a module </translation>
+   <translation id="domain_tab_menu_hosting_install_button" qtlid="43558">Order</translation>
+   <translation id="domain_tab_menu_hosting_intro" qtlid="287671">Hosting package with a module {0} - 12 months</translation>
+   <translation id="domain_tab_menu_hosting_ht_label" qtlid="166183">{0}&#160;excl. taxes</translation>
+   <translation id="domain_tab_menu_hosting_ttc_label" qtlid="166196">{0}&#160;incl. taxes</translation>
+   <translation id="domain_tab_menu_hosting_error_order" qtlid="287684">There was an error when ordering a hosting package with a module </translation>
+
+   <translation id="domain_tab_menu_hosting" qtlid="270657">Manage associated hosting package</translation>
+   <translation id="domain_tab_menu_resiliate" qtlid="270670">Cancel the domain</translation>
+   <translation id="domain_tab_menu_emails" qtlid="270345">Manage emails and mailing lists</translation>
+   <translation id="domain_tab_menu_contacts" qtlid="270358">Administrative, technical and billing</translation>
+   <translation id="domain_tab_menu_resiliate_infos" qtlid="270384">Cancel the service on the expiration date.</translation>
+
+   <translation id="domain_dashboard_offer_alldom" qtlid="270683">AllDom solution </translation>
+   <translation id="domain_dashboard_type_alldom_french-international" qtlid="270696">FR + international pack</translation>
+   <translation id="domain_dashboard_type_alldom_french" qtlid="270709">FR pack</translation>
+   <translation id="domain_dashboard_type_alldom_international" qtlid="270722">International pack</translation>
+   <translation id="domain_attached_domain_select_title" qtlid="277624">My hosting services </translation>
+   <translation id="domain_attached_domain_select_intro" qtlid="435317">The {0} domain is attached to several hosting packages.</translation>
+   <translation id="domain_attached_domain_select_action" qtlid="277650">Please select the hosting service that you want to access:</translation>
+
+   <translation id="domain_tab_dns_management_step1_title" qtlid="367709">Details of your DNS servers </translation>
+   <translation id="domain_tab_dns_management_step1_hostedNameServersOk" qtlid="367722">You are currently using the recommended OVH DNS servers for your domain: </translation>
+   <translation id="domain_tab_dns_management_step1_externalNameServersOk" qtlid="369086">You are not currently using the DNS servers recommended by OVH: </translation>
+   <translation id="domain_tab_dns_management_step1_nameServersKo" qtlid="367748">Your domain does have DNS servers but they are not responding: </translation>
+   <translation id="domain_tab_dns_management_step1_nameServersKo_no_nameServer" qtlid="367761">Your domain does not currently have DNS servers. </translation>
+   <translation id="domain_tab_dns_management_step1_noZone_p1" qtlid="367774">This domain does not currently have an OVH DNS zone. </translation>
+   <translation id="domain_tab_dns_management_step1_noZone_p2" qtlid="367787">If you want to use the OVH DNS servers, you have to enable a DNS zone first. </translation>
+   <translation id="domain_tab_dns_management_step1_hasZone" qtlid="367800">If you wish to use the OVH DNS servers, please make sure that your OVH DNS zone is properly configured first. </translation>
+   <translation id="domain_dashboard_dns_refresh" qtlid="367813">Updating </translation>
+   <translation id="domain_dashboard_dns_reset_your_zone" qtlid="285668">Reset the DNS servers </translation>
+   <translation id="domain_dashboard_dns_activate_zone" qtlid="260429">Activating the DNS zone </translation>
+   <translation id="domain_tab_dns_management_step1_updating" qtlid="369099">The DNS zone is being updated...</translation>
+
+   <translation id="domain_dashboard_general_informations" qtlid="27115">General information</translation>
+   <translation id="domain_dashboard_general_security" qtlid="125420">Security</translation>
+</translations>

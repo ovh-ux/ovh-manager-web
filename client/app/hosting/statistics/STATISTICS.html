@@ -8,20 +8,20 @@
             <div class="d-md-flex align-items-md-center justify-content-md-between">
                 <div>
                     <label class="oui-label d-inline-block align-middle mr-2" for="hostingStatisticsType">
-                        <span data-i18n-static="hosting_tab_STATISTICS_type"></span>&nbsp;:
+                        <span data-translate="hosting_tab_STATISTICS_type"></span>&nbsp;:
                     </label>
                     <div class="oui-select mb-0 oui-select_inline align-middle">
                         <select class="oui-select__input" id="hostingStatisticsType" name="type"
                                 data-ng-change="getStatistics()"
                                 data-ng-model="selected.type"
-                                data-ng-options="tr('hosting_tab_STATISTICS_type_' + option) for option in model.constants.types track by option">
+                                data-ng-options="('hosting_tab_STATISTICS_type_' + option | translate) for option in model.constants.types track by option">
                         </select>
                         <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                     </div>
                 </div>
                 <div data-ng-if="selected.typeIsDb()">
                     <label class="oui-label d-inline-block align-middle mr-2" for="hostingStatisticsDb">
-                        <span data-i18n-static="hosting_tab_STATISTICS_db"></span>&nbsp;:
+                        <span data-translate="hosting_tab_STATISTICS_db"></span>&nbsp;:
                     </label>
                     <div class="oui-select mb-0 oui-select_inline align-middle">
                         <select class="oui-select__input" id="hostingStatisticsDb" name="db"
@@ -34,7 +34,7 @@
                 </div>
                 <div data-ng-if="!selected.typeIsDb()">
                     <label class="oui-label d-inline-block align-middle mr-2" for="hostingStatisticsResponseTime">
-                          <span data-i18n-static="hosting_tab_STATISTICS_type_IN_HTTP_MEAN_RESPONSE_TIME"></span>&nbsp;:
+                          <span data-translate="hosting_tab_STATISTICS_type_IN_HTTP_MEAN_RESPONSE_TIME"></span>&nbsp;:
                     </label>
                     <div class="oui-checkbox mb-0 oui-checkbox_inline align-middle">
                         <input type="checkbox" class="oui-checkbox__input" id="hostingStatisticsResponseTime"
@@ -54,13 +54,13 @@
                 </div>
                 <div>
                     <label class="oui-label d-inline-block align-middle mr-2" for="hostingStatisticsPeriod">
-                        <span data-i18n-static="hosting_tab_STATISTICS_period"></span>&nbsp;:
+                        <span data-translate="hosting_tab_STATISTICS_period"></span>&nbsp;:
                     </label>
                     <div class="oui-select mb-0 oui-select_inline align-middle">
                         <select class="oui-select__input" id="hostingStatisticsPeriod" name="period"
                                 data-ng-change="getStatistics()"
                                 data-ng-model="selected.period"
-                                data-ng-options="tr('hosting_tab_STATISTICS_period_' + option) for option in model.constants.periods track by option">
+                                data-ng-options="('hosting_tab_STATISTICS_period_' + option | translate) for option in model.constants.periods track by option">
                         </select>
                         <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                     </div>
@@ -70,7 +70,7 @@
 
         <div class="my-5 text-center" data-ng-if="selected.type === 'IN_HTTP_HITS'">
             <span class="oui-label d-inline-block mr-2"
-                  data-i18n-static="hosting_tab_STATISTICS_aggregate"></span>
+                  data-translate="hosting_tab_STATISTICS_aggregate"></span>
             <div class="oui-radio oui-radio_inline"
                  data-ng-repeat="option in model.constants.aggregateModes track by option">
                 <input type="radio" class="oui-radio__input" id="aggregateModes-{{$index}}" name="aggregationModel"
@@ -79,7 +79,7 @@
                        data-ng-value="option">
                 <label class="oui-radio__label-container" for="aggregateModes-{{$index}}">
                     <span class="oui-radio__label"
-                          data-ng-bind="tr('hosting_tab_STATISTICS_aggregate_' + option)"></span>
+                          data-ng-bind="'hosting_tab_STATISTICS_aggregate_' + option | translate"></span>
                 </label>
             </div>
         </div>
@@ -93,7 +93,7 @@
              data-chartjs="stats.chart"></div>
 
         <div class="alert alert-info my-5" role="alert"
-             data-i18n-static="hosting_tab_STATISTICS_none"
+             data-translate="hosting_tab_STATISTICS_none"
              data-ng-if="hosting.isCloudWeb || (model.datas && !selected.haveDataToDisplay)">
         </div>
     </div>

@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'HostingCronDeleteCtrl',
   class HostingCronDeleteCtrl {
-    constructor($scope, $stateParams, HostingCron, Alerter) {
+    constructor($scope, $stateParams, $translate, HostingCron, Alerter) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.HostingCron = HostingCron;
       this.Alerter = Alerter;
     }
@@ -20,7 +21,7 @@ angular.module('App').controller(
       )
         .then(() => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_CRON_configuration_delete_success'),
+            this.$translate.instant('hosting_tab_CRON_configuration_delete_success'),
             { idTask: 42, state: 'OK' },
             this.$scope.alerts.main,
           );
@@ -28,7 +29,7 @@ angular.module('App').controller(
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_CRON_configuration_delete_fail'),
+            this.$translate.instant('hosting_tab_CRON_configuration_delete_fail'),
             _.get(err, 'data', err),
             this.$scope.alerts.main,
           );

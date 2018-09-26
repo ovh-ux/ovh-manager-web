@@ -6,6 +6,7 @@ angular.module('App').controller(
       $rootScope,
       $location,
       $stateParams,
+      $translate,
       Alerter,
       HostingFreedom,
     ) {
@@ -13,6 +14,7 @@ angular.module('App').controller(
       this.$rootScope = $rootScope;
       this.$location = $location;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.HostingFreedom = HostingFreedom;
     }
@@ -33,7 +35,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_FREEDOM_error'),
+            this.$translate.instant('hosting_tab_FREEDOM_error'),
             err,
             this.$scope.alerts.main,
           );
@@ -65,7 +67,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_FREEDOM_error'),
+            this.$translate.instant('hosting_tab_FREEDOM_error'),
             err,
             this.$scope.alerts.main,
           );

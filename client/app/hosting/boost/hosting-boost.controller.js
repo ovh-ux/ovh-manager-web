@@ -2,7 +2,7 @@ angular
   .module('App')
   .controller(
     'HostingBoostTabCtrl',
-    ($scope, $q, $stateParams, HostingBoost, Hosting, Alerter) => {
+    ($scope, $q, $stateParams, $translate, HostingBoost, Hosting, Alerter) => {
       $scope.models = {
         product: null,
         boosts: null,
@@ -48,7 +48,7 @@ angular
           })
           .catch((err) => {
             Alerter.alertFromSWS(
-              $scope.tr('hosting_tab_BOOST_error'),
+              $translate.instant('hosting_tab_BOOST_error'),
               err,
               $scope.alerts.main,
             );
@@ -64,7 +64,7 @@ angular
       $scope.$on('hosting.boost.request.start', () => {
         $scope.isLoading = true;
         Alerter.success(
-          $scope.tr('hosting_tab_BOOST_request_activation'),
+          $translate.instant('hosting_tab_BOOST_request_activation'),
           $scope.alerts.main,
         );
       });
@@ -73,14 +73,14 @@ angular
         $scope.init();
         $scope.isLoading = false;
         Alerter.success(
-          $scope.tr('hosting_tab_BOOST_request_success'),
+          $translate.instant('hosting_tab_BOOST_request_success'),
           $scope.alerts.main,
         );
       });
 
       $scope.$on('hosting.boost.request.error', (err) => {
         Alerter.alertFromSWS(
-          $scope.tr('hosting_tab_BOOST_error'),
+          $translate.instant('hosting_tab_BOOST_error'),
           _.get(err, 'data', err),
           $scope.alerts.main,
         );
@@ -89,7 +89,7 @@ angular
       $scope.$on('hosting.boost.disable.start', () => {
         $scope.isLoading = true;
         Alerter.success(
-          $scope.tr('hosting_tab_BOOST_disable_started'),
+          $translate.instant('hosting_tab_BOOST_disable_started'),
           $scope.alerts.main,
         );
       });
@@ -98,14 +98,14 @@ angular
         $scope.init();
         $scope.isLoading = false;
         Alerter.success(
-          $scope.tr('hosting_tab_BOOST_disable_success'),
+          $translate.instant('hosting_tab_BOOST_disable_success'),
           $scope.alerts.main,
         );
       });
 
       $scope.$on('hosting.boost.disable.error', (err) => {
         Alerter.alertFromSWS(
-          $scope.tr('hosting_tab_BOOST_disable_error'),
+          $translate.instant('hosting_tab_BOOST_disable_error'),
           _.get(err, 'data', err),
           $scope.alerts.main,
         );
@@ -113,7 +113,7 @@ angular
 
       $scope.$on('hosting.boost.error', (err) => {
         Alerter.alertFromSWS(
-          $scope.tr('hosting_tab_BOOST_error'),
+          $translate.instant('hosting_tab_BOOST_error'),
           _.get(err, 'data', err),
           $scope.alerts.main,
         );
@@ -135,7 +135,7 @@ angular
           })
           .catch((err) => {
             Alerter.alertFromSWS(
-              $scope.tr('hosting_tab_BOOST_error'),
+              $translate.instant('hosting_tab_BOOST_error'),
               err,
               $scope.alerts.main,
             );

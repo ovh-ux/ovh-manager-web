@@ -4,7 +4,7 @@
 
     <div class="form-group">
         <label class="control-label col-md-5 required" for="v"
-               data-i18n-static="domain_configuration_dns_entry_add_version"></label>
+               data-translate="domain_configuration_dns_entry_add_version"></label>
         <div class="col-md-4">
             <input type="hidden" id="v" name="v" value="DMARC1"
                    data-ng-model="ctrl.model.target.v">
@@ -14,7 +14,7 @@
 
     <div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.p.$dirty && ctrl.zoneRecordForm.p.$invalid }">
         <label class="control-label col-md-5 required" for="p"
-               data-i18n-static="domain_configuration_dns_entry_add_dmarc_p"></label>
+               data-translate="domain_configuration_dns_entry_add_dmarc_p"></label>
         <div class="col-md-4">
             <div class="oui-select">
                 <select class="oui-select__input" id="p" name="p" required
@@ -22,7 +22,7 @@
                         data-ng-model="ctrl.model.target.p"
                         data-ng-options="option for option in ['none', 'quarantine', 'reject'] track by option">
                     <option value="" disabled
-                            data-i18n-static="select_placeholder"></option>
+                            data-translate="select_placeholder"></option>
                 </select>
                 <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
             </div>
@@ -31,7 +31,7 @@
 
     <div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.pct.$dirty && ctrl.zoneRecordForm.pct.$invalid }">
         <label class="control-label col-md-5" for="pct"
-               data-i18n-static="domain_configuration_dns_entry_add_dmarc_pct"></label>
+               data-translate="domain_configuration_dns_entry_add_dmarc_pct"></label>
         <div class="col-md-4">
             <input type="number" class="form-control" id="pct" name="pct"
                    data-ng-change="ctrl.setTargetValue('DMARC')"
@@ -43,7 +43,7 @@
 
     <div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.rua.$dirty && ctrl.zoneRecordForm.rua.$invalid }">
         <label class="control-label col-md-5" for="rua"
-               data-i18n-static="domain_configuration_dns_entry_add_dmarc_rua"></label>
+               data-translate="domain_configuration_dns_entry_add_dmarc_rua"></label>
         <div class="col-md-7">
             <input type="text" class="form-control" id="rua" name="rua"
                    data-ng-change="ctrl.setTargetValue('DMARC')"
@@ -53,7 +53,7 @@
 
     <div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.sp.$dirty && ctrl.zoneRecordForm.sp.$invalid }">
         <label class="control-label col-md-5" for="sp"
-               data-i18n-static="domain_configuration_dns_entry_add_dmarc_sp"></label>
+               data-translate="domain_configuration_dns_entry_add_dmarc_sp"></label>
         <div class="col-md-4">
             <div class="oui-select">
                 <select class="oui-select__input" id="sp" name="sp"
@@ -61,7 +61,7 @@
                         data-ng-model="ctrl.model.target.sp"
                         data-ng-options="option for option in ['none', 'quarantine', 'reject'] track by option">
                     <option value="" disabled
-                            data-i18n-static="select_placeholder"></option>
+                            data-translate="select_placeholder"></option>
                 </select>
                 <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
             </div>
@@ -70,7 +70,7 @@
 
     <div class="form-group">
         <label class="control-label col-md-5"
-               data-i18n-static="domain_configuration_dns_entry_add_dmarc_aspf"></label>
+               data-translate="domain_configuration_dns_entry_add_dmarc_aspf"></label>
         <div class="col-md-7">
             <div class="oui-radio">
                 <input type="radio" class="oui-radio__input" id="aspf-r" name="aspf" value="r"
@@ -78,7 +78,7 @@
                        data-ng-model="ctrl.model.target.aspf">
                 <label class="oui-radio__label-container" for="aspf-r">
                     <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_dmarc_aspf_r"></span>
+                          data-translate="domain_configuration_dns_entry_add_dmarc_aspf_r"></span>
                 </label>
             </div>
             <div class="oui-radio">
@@ -87,7 +87,7 @@
                        data-ng-model="ctrl.model.target.aspf">
                 <label class="oui-radio__label-container" for="aspf-s">
                     <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_dmarc_aspf_s"></span>
+                          data-translate="domain_configuration_dns_entry_add_dmarc_aspf_s"></span>
                 </label>
             </div>
         </div>

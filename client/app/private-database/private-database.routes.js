@@ -16,11 +16,8 @@ angular.module('App').config(($stateProvider) => {
           });
         },
       ],
-      translator: [
-        'translator',
-        translator => translator.load(['privateDatabase', 'hosting']).then(() => translator),
-      ],
     },
+    translations: ['private-database', 'hosting'],
   });
 
   $stateProvider.state('app.private-database-order', {
@@ -39,11 +36,8 @@ angular.module('App').config(($stateProvider) => {
           });
         },
       ],
-      translator: [
-        'translator',
-        translator => translator.load(['privateDatabase']).then(() => translator),
-      ],
     },
+    translations: ['private-database'],
   });
 
   $stateProvider.state('app.sql-order', {
@@ -66,10 +60,7 @@ angular.module('App').config(($stateProvider) => {
           });
         },
       ],
-      translator: [
-        'translator',
-        translator => translator.load(['privateDatabase']).then(() => translator),
-      ],
     },
+    translations: ['private-database'],
   });
 });

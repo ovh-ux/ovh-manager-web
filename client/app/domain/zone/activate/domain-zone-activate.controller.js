@@ -1,8 +1,9 @@
 angular.module('App').controller(
   'DomainZoneActivateCtrl',
   class DomainZoneActivateCtrl {
-    constructor($scope, Alerter, Domain) {
+    constructor($scope, $translate, Alerter, Domain) {
       this.$scope = $scope;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
     }
@@ -22,13 +23,13 @@ angular.module('App').controller(
         this.activationZone.minimized,
       )
         .then(() => this.Alerter.success(
-          this.$scope.tr('domain_tab_ZONE_no_zone_activate_success'),
+          this.$translate.instant('domain_tab_ZONE_no_zone_activate_success'),
           this.$scope.alerts.main,
         ))
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_tab_ZONE_no_zone_activate_error'),
+            this.$translate.instant('domain_tab_ZONE_no_zone_activate_error'),
             err,
             this.$scope.alerts.main,
           );

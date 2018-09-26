@@ -1,13 +1,13 @@
 angular.module('App').controller(
   'AppCtrl',
   class AppCtrl {
-    constructor($scope, $rootScope, $timeout, constants, incident, User, translator) {
+    constructor($scope, $rootScope, $timeout, $translate, constants, incident, User) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$timeout = $timeout;
+      this.$translate = $translate;
       this.constants = constants;
       this.incident = incident;
-      this.translator = translator;
       this.User = User;
     }
 
@@ -30,7 +30,7 @@ angular.module('App').controller(
 
       this.incident.getOvhTasks().then((informations) => {
         if (!_.isEmpty(informations)) {
-          this.incidentMessage = informations.alert[this.translator.getLanguage()]
+          this.incidentMessage = informations.alert[this.$translate.use()]
             || informations.alert.en_GB;
         }
       });

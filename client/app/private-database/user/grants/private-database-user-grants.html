@@ -4,20 +4,20 @@
     <button class="oui-button oui-button_link oui-button_icon-left" type="button"
             data-ng-click="goToList()">
         <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
-        <span data-i18n-static="common_back"></span>
+        <span data-translate="common_back"></span>
     </button>
 
-    <h2 data-ng-bind-html="tr('privateDatabase_tabs_user_grant_change') + ' ' + user.userName"></h2>
+    <h2 data-ng-bind-html="('privateDatabase_tabs_user_grant_change' | translate) + ' ' + user.userName"></h2>
 
     <div class="table-responsive">
         <table class="table table-hover">
             <thead>
                 <tr>
-                    <th scope="col" data-i18n-static="privateDatabase_database"></th>
+                    <th scope="col" data-translate="privateDatabase_database"></th>
                     <th class="text-center" scope="col" data-ng-repeat="grant in usersGrantsCtrls.grants track by $index">
-                        <span data-ng-bind-html="tr('privateDatabase_tabs_user_grant_' + grant)"></span>
+                        <span data-ng-bind-html="'privateDatabase_tabs_user_grant_' + grant | translate"></span>
                         <span class="fa fa-info-circle ml-1" aria-hidden="true"
-                              data-uib-tooltip="{{tr('privateDatabase_tabs_user_grant_' + grant + '_tooltip')}}"
+                              data-uib-tooltip="{{ 'privateDatabase_tabs_user_grant_' + grant + '_tooltip' | translate }}"
                               data-tooltip-append-to-body="true"></span>
                     </th>
                 </tr>
@@ -32,7 +32,7 @@
             <tbody data-ng-if="!usersGrantsCtrls.loaders.userGrants && !usersGrantsCtrls.nbGrants">
                 <tr>
                     <td class="text-center" colspan="5"
-                        data-i18n-static="privateDatabase_no_db">
+                        data-translate="privateDatabase_no_db">
                     </td>
                 </tr>
             </tbody>
@@ -43,7 +43,7 @@
                     <td class="text-center" colspan="4"
                         data-ng-if="usersGrantsCtrls.isDoingGrant[user.dataBase]">
                         <span class="label label-info"
-                              data-i18n-static="privateDatabase_tabs_user_grant_updating"></span>
+                              data-translate="privateDatabase_tabs_user_grant_updating"></span>
                     </td>
                     <td class="text-center"
                         data-ng-if="!usersGrantsCtrls.isDoingGrant[user.dataBase]"
@@ -69,8 +69,8 @@
              data-current-page="currentPage"
              data-nb-pages="nbPages"
              data-items-per-page="itemsPerPage"
-             data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-             data-item-per-page-placeholder="{{tr('pagination_display')}}">
+             data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPage, last: nbPages } }}"
+             data-item-per-page-placeholder="{{ 'pagination_display' | translate }}">
         </div>
     </div>
 </div>

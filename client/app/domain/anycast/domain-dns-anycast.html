@@ -1,10 +1,10 @@
 <div data-ng-controller="DomainDnsAnycastActivateCtrl as ctrl">
     <div data-wizard
          data-wizard-bread-crumb
-         data-wizard-confirm-button-text="i18n.wizard_pay"
+         data-wizard-confirm-button-text="'wizard_pay' | translate"
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="displayBC"
-         data-wizard-title="i18n.domain_configuration_dnsanycast_title">
+         data-wizard-title="'domain_configuration_dnsanycast_title' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading">
@@ -14,37 +14,36 @@
             </div>
 
             <div data-ng-if="!ctrl.loading">
-                <p data-ng-bind-html="i18n.domain_configuration_dnsanycast_step1_explanation"></p>
+                <p data-ng-bind-html="'domain_configuration_dnsanycast_step1_explanation' | translate"></p>
                 <p>
-                    <span data-ng-bind-html="tr('domain_configuration_dnsanycast_step1_explanation2', ['<strong>' + ctrl.optionDetails.withoutTax + '</strong>'])"></span>
-                    <span data-i18n-static="domain_configuration_dnsanycast_step1_explanation3"></span>
+                    <span data-ng-bind-html="'domain_configuration_dnsanycast_step1_explanation2' | translate: { t0: '<strong>' + ctrl.optionDetails.withoutTax + '</strong>' }"></span>
                 </p>
-                <p data-ng-bind="i18n.domain_configuration_dnsanycast_step1_question"></p>
+                <p data-translate="domain_configuration_dnsanycast_step1_question"></p>
             </div>
         </div>
 
         <div data-wizard-step
              data-wizard-step-valid="ctrl.contractsValidated">
 
-            <p data-ng-bind-html="tr('domain_configuration_dnsanycast_step2_question', [ctrl.domainName])"></p>
+            <p data-ng-bind-html="'domain_configuration_dnsanycast_step2_question' | translate: { t0: ctrl.domainName }"></p>
             <dl class="dl-horizontal dl-lg">
-                <dt data-i18n-static="domain_configuration_dnsanycast_step2_totalHT"></dt>
+                <dt data-translate="domain_configuration_dnsanycast_step2_totalHT"></dt>
                 <dd data-ng-bind="ctrl.optionDetails.withoutTax"></dd>
-                <dt data-i18n-static="domain_configuration_dnsanycast_step2_totalTTC"></dt>
+                <dt data-translate="domain_configuration_dnsanycast_step2_totalTTC"></dt>
                 <dd data-ng-bind="ctrl.optionDetails.withTax"></dd>
             </dl>
-            <p class="mb-3" data-i18n-static="domain_configuration_dnsanycast_step2_id"></p>
+            <p class="mb-3" data-translate="domain_configuration_dnsanycast_step2_id"></p>
             <div class="oui-checkbox">
                 <input type="checkbox" class="oui-checkbox__input" name="contractsValidated" id="contractsValidated"
                        data-ng-model="ctrl.contractsValidated">
                 <label class="oui-checkbox__label-container" for="contractsValidated">
                     <span class="oui-checkbox__label">
-                        <span data-i18n-static="domain_configuration_dnsanycast_step2_contracts"></span>
+                        <span data-translate="domain_configuration_dnsanycast_step2_contracts"></span>
                         <span data-ng-repeat="contract in ctrl.optionDetails.contracts track by $index">
-                            <span data-i18n-static="domain_configuration_dnsanycast_step2_contracts_and"
+                            <span data-translate="domain_configuration_dnsanycast_step2_contracts_and"
                                   data-ng-if="!$last"></span>
-                            <span data-i18n-static="domain_configuration_dnsanycast_step2_contracts_of"></span>
-                            <a data-ng-href="{{contract.url}}" target="_blank" title="{{contract.name}} ({{i18n.common_newtab}})"
+                            <span data-translate="domain_configuration_dnsanycast_step2_contracts_of"></span>
+                            <a data-ng-href="{{contract.url}}" target="_blank" title="{{contract.name}} ({{ 'common_newtab' | translate }})"
                                data-ng-bind="contract.name"></a><span data-ng-if="!$last">, </span><span data-ng-if="$last">.</span>
                         </span>
                         <span class="oui-checkbox__icon">
@@ -64,20 +63,20 @@
 
             <div class="text-center" data-ng-if="ctrl.loading">
                 <oui-spinner></oui-spinner>
-                <p data-i18n-static="domain_configuration_dnsanycast_step3_generation_bc"></p>
+                <p data-translate="domain_configuration_dnsanycast_step3_generation_bc"></p>
             </div>
 
             <div data-ng-if="!ctrl.loading && ctrl.url">
                 <p class="text-success"
-                   data-i18n-static="domain_configuration_dnsanycast_step3_bc"></p>
+                   data-translate="domain_configuration_dnsanycast_step3_bc"></p>
                 <p>
-                    <strong data-i18n-static="domain_configuration_dnsanycast_step3_continue"></strong>
-                    <span data-i18n-static="domain_configuration_dnsanycast_step3_explication1"></span>
+                    <strong data-translate="domain_configuration_dnsanycast_step3_continue"></strong>
+                    <span data-translate="domain_configuration_dnsanycast_step3_explication1"></span>
                 </p>
                 <div class="alert alert-info" role="alert">
                     <div>
-                        <span data-i18n-static="domain_configuration_dnsanycast_step3_explication2"></span>
-                        <span data-i18n-static="domain_configuration_dnsanycast_step3_explication3"></span>
+                        <span data-translate="domain_configuration_dnsanycast_step3_explication2"></span>
+                        <span data-translate="domain_configuration_dnsanycast_step3_explication3"></span>
                     </div>
                 </div>
             </div>

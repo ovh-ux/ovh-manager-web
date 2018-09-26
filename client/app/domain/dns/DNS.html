@@ -9,18 +9,18 @@
             <div data-ovh-alert="{{alerts.main}}"></div>
 
             <div class="alert alert-danger" role="alert"
-                 data-i18n-static="domain_tab_DNS_error"
+                 data-translate="domain_tab_DNS_error"
                  data-ng-if="ctrlDomainDns.dns.table.isPartial"></div>
 
             <div class="alert alert-warning" role="alert"
-                 data-i18n-static="domain_tab_DNS_warning_only_one_dns"
+                 data-translate="domain_tab_DNS_warning_only_one_dns"
                  data-ng-if="ctrlDomainDns.dns.activeDns === 1 && !ctrlDomainDns.dns.table.isPartial"></div>
 
             <div class="alert alert-info" role="alert"
                  data-ng-if="ctrlDomainDns.allowModification">
-                 <span data-ng-bind="tr('domain_tab_DNS_unlock_warning_manuel_check')"></span>
-                 <a data-ng-href="{{ctrlDomainDns.urls.zoneCheck}}" title="{{i18n.domain_tab_DNS_unlock_warning_manuel_check_tool + ' (' + i18n.core_new_window + ')'}}" target="_blank">
-                    <span data-ng-bind="tr('domain_tab_DNS_unlock_warning_manuel_check2')"></span>
+                 <span data-translate="domain_tab_DNS_unlock_warning_manuel_check"></span>
+                 <a data-ng-href="{{ctrlDomainDns.urls.zoneCheck}}" title="{{ ('domain_tab_DNS_unlock_warning_manuel_check_tool' | translate) + ' (' + ('core_new_window' | translate) + ')'}}" target="_blank">
+                    <span data-translate="domain_tab_DNS_unlock_warning_manuel_check2"></span>
                     <span class="fa fa-external-link" aria-hidden="true"></span>
                 </a>
             </div>
@@ -33,15 +33,15 @@
                                 <th scope="col">
                                     <span class="fa fa-info-circle"
                                           aria-hidden="true"
-                                          data-uib-tooltip="{{tr('domain_dashboard_tooltip_primary_dns')}}"
+                                          data-uib-tooltip="{{ 'domain_dashboard_tooltip_primary_dns' | translate }}"
                                           data-tooltip-append-to-body="true"
                                           data-tooltip-placement="right"></span>
-                                    <span id="dnsHostHeader" data-i18n-static="domain_tab_DNS_name"></span>
+                                    <span id="dnsHostHeader" data-translate="domain_tab_DNS_name"></span>
                                 </th>
-                                <th scope="col" id="dnsIpHeader" data-i18n-static="domain_tab_DNS_ip"></th>
-                                <th scope="col" class="text-center" data-i18n-static="domain_tab_DNS_state" data-ng-if="!ctrlDomainDns.editMode"></th>
+                                <th scope="col" id="dnsIpHeader" data-translate="domain_tab_DNS_ip"></th>
+                                <th scope="col" class="text-center" data-translate="domain_tab_DNS_state" data-ng-if="!ctrlDomainDns.editMode"></th>
                                 <th scope="col" class="min-width text-right">
-                                    <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
+                                    <button class="btn btn-icon" type="button" title="{{ 'refresh' | translate }}"
                                             data-ng-click="ctrlDomainDns.loadTable()">
                                         <span class="fa fa-refresh" aria-hidden="true"></span>
                                     </button>
@@ -62,7 +62,7 @@
                                          data-ng-if="ctrlDomainDns.editMode"
                                          data-name="editedDnsHostForm">
                                         <label class="sr-only" for="editedDnsHost-{{$index}}"
-                                               data-i18n-static="domain_tab_DNS_ip"></label>
+                                               data-translate="domain_tab_DNS_ip"></label>
                                         <input type="text" class="form-control input-sm" id="editedDnsHost-{{$index}}" name="editedDnsHost" aria-labelledby="dnsNameHeader"
                                                data-ng-change="ctrlDomainDns.hostCheck(editedDnsHostForm.editedDnsHost)"
                                                data-ng-model="dnsItem.editedHost"
@@ -77,7 +77,7 @@
                                          data-name="editedDnsIpForm">
                                         <label class="sr-only"
                                                for="editedDnsIp-{{$index}}"
-                                               data-i18n-static="domain_tab_DNS_name"></label>
+                                               data-translate="domain_tab_DNS_name"></label>
                                         <input type="text" class="form-control input-sm" id="editedDnsIp-{{$index}}" name="editedDnsIp"
                                                aria-labelledby="dnsIpHeader"
                                                data-ng-change="ctrlDomainDns.ipCheck(editedDnsIpForm.editedDnsIp)"
@@ -86,18 +86,18 @@
                                     </div>
                                 </td>
                                 <td class="text-center" data-ng-if="!ctrlDomainDns.editMode">
-                                    <span class="label label-success"
-                                          data-i18n-static="domain_tab_DNS_state_activated"
+                                    <span class="oui-status oui-status_success"
+                                          data-translate="domain_tab_DNS_state_activated"
                                           data-ng-if="dnsItem.isUsed && !dnsItem.toDelete"></span>
-                                    <span class="label label-info"
-                                          data-i18n-static="domain_tab_DNS_state_adding"
+                                    <span class="oui-status oui-status_info"
+                                          data-translate="domain_tab_DNS_state_adding"
                                           data-ng-if="!dnsItem.isUsed && !dnsItem.toDelete"></span>
-                                    <span class="label label-danger"
-                                          data-i18n-static="domain_tab_DNS_state_deleting"
+                                    <span class="oui-status oui-status_error"
+                                          data-translate="domain_tab_DNS_state_deleting"
                                           data-ng-if="dnsItem.toDelete"></span>
                                 </td>
                                 <td class="align-middle text-center">
-                                    <button class="btn btn-icon" type="button" title="{{i18n.table_add_entry}}"
+                                    <button class="btn btn-icon" type="button" title="{{ 'table_add_entry' | translate }}"
                                             data-ng-click="ctrlDomainDns.addNewLine()"
                                             data-ng-if="ctrlDomainDns.editMode && $last && ($index + 1) < 10">
                                         <span class="fa fa-plus" aria-hidden="true"></span>
@@ -109,47 +109,47 @@
                 </div>
             </form>
             <p class="text-center"
-               data-i18n-static="domain_tab_DNS_empty"
+               data-translate="domain_tab_DNS_empty"
                data-ng-if="!ctrlDomainDns.dns.table.dns.length"></p>
         </div>
 
         <div class="col-md-3 mt-5 mt-lg-0">
             <div class="mb-5">
                 <button class="btn btn-block btn-default" type="button"
-                        data-i18n-static="domain_configuration_dnsanycast_title_button"
                         data-ng-click="setAction('anycast/domain-dns-anycast')"
                         data-ng-if="ctrlDomainDns.domain.hasDnsAnycast === false && ctrlDomainDns.allowModification && !ctrlDomainDns.editMode"
                         data-track-on="click"
                         data-track-name="web::domain::server-dns::activation-dns-anycast"
                         data-track-click="action">
+                        {{ 'domain_configuration_dnsanycast_title_button' | translate }}
                 </button>
                 <button class="btn btn-block btn-default" type="button"
-                        data-i18n-static="domain_configuration_dns_config"
+                        data-translate="domain_configuration_dns_config"
                         data-ng-click="ctrlDomainDns.activeEditMode()"
                         data-ng-if="ctrlDomainDns.allowModification && !ctrlDomainDns.editMode">
                 </button>
                 <button class="btn btn-block btn-default" type="button"
-                        data-ng-attr-title="{{ctrlDomainDns.domain.managedByOvh && ctrlDomainDns.isDnssecEnable && tr('domain_tab_DNS_lock_button_title') || undefined }}"
-                        data-i18n-static="domain_tab_DNS_lock_button"
+                        data-ng-attr-title="{{ctrlDomainDns.domain.managedByOvh && ctrlDomainDns.isDnssecEnable && ('domain_tab_DNS_lock_button_title' | translate) || undefined }}"
+                        data-translate="domain_tab_DNS_lock_button"
                         data-ng-click="setAction('dns/lock/domain-dns-lock', false)"
                         data-ng-disabled="ctrlDomainDns.dnsStatus.isOk && ctrlDomainDns.dnsStatus.isHosted"
                         data-ng-if="ctrlDomainDns.allowModification && !ctrlDomainDns.editMode">
                 </button>
                 <button class="btn btn-block btn-primary" type="button"
-                        data-i18n-static="domain_tab_DNS_save"
+                        data-translate="domain_tab_DNS_save"
                         data-ng-click="ctrlDomainDns.saveDns()"
                         data-ng-disabled="!ctrlDomainDns.dnsServerNamesForm.$dirty || ctrlDomainDns.dnsServerNamesForm.$invalid || !ctrlDomainDns.atLeastOneDns"
                         data-ng-if="ctrlDomainDns.editMode">
                 </button>
                 <button class="btn btn-block btn-default" type="button"
-                        data-i18n-static="domain_tab_DNS_cancel"
+                        data-translate="domain_tab_DNS_cancel"
                         data-ng-click="ctrlDomainDns.cancelDns()"
                         data-ng-if="ctrlDomainDns.editMode">
                 </button>
             </div>
 
             <div data-guides
-                 data-guides-title="tr('guide_domain_subtitle')"
+                 data-guides-title="'guide_domain_subtitle' | translate"
                  data-guides-list="'dns'"
                  data-tr="tr"></div>
         </div>

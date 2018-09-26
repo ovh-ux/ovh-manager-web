@@ -1,37 +1,37 @@
 <dl class="dl-horizontal dl-lg mb-0" data-ng-show="mode.active === 'simple'">
     <!-- Hours -->
-    <dt data-i18n-static="hosting_tab_CRON_label_hours"></dt>
+    <dt data-translate="hosting_tab_CRON_label_hours"></dt>
     <dd data-ng-switch="mode.simple.h">
-        <span data-ng-switch-when="all" data-i18n-static="hosting_tab_CRON_hours_all"></span>
+        <span data-ng-switch-when="all" data-translate="hosting_tab_CRON_hours_all"></span>
         <span data-ng-switch-when="items" data-ng-bind="getSimpleModeItems('h').toString()"></span>
-        <span data-ng-switch-when="interval" data-ng-bind="tr('hosting_tab_CRON_hours_interval_value', [cron.simple.interval.h])"></span>
-        <span data-ng-switch-when="range" data-ng-bind="tr('hosting_tab_CRON_hours_range_from') + ' ' + cron.simple.range.h.from + ' ' + tr('hosting_tab_CRON_hours_range_to') + ' ' + cron.simple.range.h.to"></span>
+        <span data-ng-switch-when="interval" data-translate="hosting_tab_CRON_hours_interval_value" data-translate-values="{ t0: cron.simple.interval.h }"></span>
+        <span data-ng-switch-when="range" data-ng-bind="('hosting_tab_CRON_hours_range_from' | translate) + ' ' + cron.simple.range.h.from + ' ' + ('hosting_tab_CRON_hours_range_to' | translate) + ' ' + cron.simple.range.h.to"></span>
     </dd>
 
     <!-- DOM -->
-    <dt data-i18n-static="hosting_tab_CRON_label_days"></dt>
+    <dt data-translate="hosting_tab_CRON_label_days"></dt>
     <dd data-ng-switch="mode.simple.dom">
-        <span data-ng-switch-when="all" data-i18n-static="hosting_tab_CRON_dom_all"></span>
+        <span data-ng-switch-when="all" data-translate="hosting_tab_CRON_dom_all"></span>
         <span data-ng-switch-when="items" data-ng-bind="getSimpleModeItems('dom').toString()"></span>
-        <span data-ng-switch-when="interval" data-ng-bind="tr('hosting_tab_CRON_dom_interval_value', [cron.simple.interval.dom])"></span>
-        <span data-ng-switch-when="range" data-ng-bind="tr('hosting_tab_CRON_dom_range_from') + ' ' + cron.simple.range.dom.from + ' ' + tr('hosting_tab_CRON_dom_range_to') + ' ' + cron.simple.range.dom.to"></span>
+        <span data-ng-switch-when="interval" data-translate="hosting_tab_CRON_dom_interval_value" data-translate-values="{ t0: cron.simple.interval.dom }"></span>
+        <span data-ng-switch-when="range" data-ng-bind="('hosting_tab_CRON_dom_range_from' | translate) + ' ' + cron.simple.range.dom.from + ' ' + ('hosting_tab_CRON_dom_range_to' | translate) + ' ' + cron.simple.range.dom.to"></span>
     </dd>
 
     <!-- DOW -->
-    <dt data-i18n-static="hosting_tab_CRON_label_dow"></dt>
+    <dt data-translate="hosting_tab_CRON_label_dow"></dt>
     <dd data-ng-switch="mode.simple.dow">
-        <span data-ng-switch-when="all" data-i18n-static="hosting_tab_CRON_dow_all"></span>
+        <span data-ng-switch-when="all" data-translate="hosting_tab_CRON_dow_all"></span>
         <span data-ng-switch-when="items" data-ng-bind="getSimpleModeItems('dow').toString()"></span>
-        <span data-ng-switch-when="interval" data-ng-bind="tr('hosting_tab_CRON_dow_interval_value', [cron.simple.interval.dow])"></span>
-        <span data-ng-switch-when="range" data-ng-bind="tr('hosting_tab_CRON_dow_range_from') + ' ' + cron.simple.range.dow.from + ' ' + tr('hosting_tab_CRON_dow_range_to') + ' ' + cron.simple.range.dow.to"></span>
+        <span data-ng-switch-when="interval" data-translate="hosting_tab_CRON_dow_interval_value" data-translate-values="{ t0: cron.simple.interval.dow }"></span>
+        <span data-ng-switch-when="range" data-ng-bind="('hosting_tab_CRON_dow_range_from' | translate) + ' ' + cron.simple.range.dow.from + ' ' + ('hosting_tab_CRON_dow_range_to' | translate) + ' ' + cron.simple.range.dow.to"></span>
     </dd>
 
     <!-- MON -->
-    <dt data-i18n-static="hosting_tab_CRON_label_months"></dt>
+    <dt data-translate="hosting_tab_CRON_label_months"></dt>
     <dd data-ng-switch="mode.simple.mon">
-        <span data-ng-switch-when="all" data-i18n-static="hosting_tab_CRON_mon_all"></span>
+        <span data-ng-switch-when="all" data-translate="hosting_tab_CRON_mon_all"></span>
         <span data-ng-switch-when="items" data-ng-bind="getSimpleModeItems('mon').toString()"></span>
-        <span data-ng-switch-when="interval" data-ng-bind="tr('hosting_tab_CRON_mon_interval_value', [cron.simple.interval.mon])"></span>
-        <span data-ng-switch-when="range" data-ng-bind="tr('hosting_tab_CRON_mon_range_from') + ' ' + cron.simple.range.mon.from + ' ' + tr('hosting_tab_CRON_mon_range_to') + ' ' + cron.simple.range.mon.to"></span>
+        <span data-ng-switch-when="interval" data-translate="hosting_tab_CRON_mon_interval_value" data-translate-values="{ t0: cron.simple.interval.mon }"></span>
+        <span data-ng-switch-when="range" data-ng-bind="('hosting_tab_CRON_mon_range_from' | translate) + ' ' + cron.simple.range.mon.from + ' ' + ('hosting_tab_CRON_mon_range_to' | translate) + ' ' + cron.simple.range.mon.to"></span>
     </dd>
 </dl>

@@ -1,8 +1,9 @@
 angular.module('App').controller(
   'PrivateDatabaseRestoreArchiveBDDCtrl',
   class PrivateDatabaseRestoreArchiveBDDCtrl {
-    constructor($scope, $window, Alerter, $stateParams, PrivateDatabase) {
+    constructor($scope, $translate, $window, Alerter, $stateParams, PrivateDatabase) {
       this.$scope = $scope;
+      this.$translate = $translate;
       this.$window = $window;
       this.alerter = Alerter;
       this.$stateParams = $stateParams;
@@ -27,7 +28,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.alerter.alertFromSWS(
-            this.$scope.tr('privateDatabase_restore_bdd_error'),
+            this.$translate.instant('privateDatabase_restore_bdd_error'),
             err,
             this.$scope.alerts.main,
           );
@@ -43,11 +44,11 @@ angular.module('App').controller(
           this.$scope.dump.dumpId,
         )
         .then(() => this.alerter.success(
-          this.$scope.tr('privateDatabase_tabs_dumps_restore_in_progress'),
+          this.$translate.instant('privateDatabase_tabs_dumps_restore_in_progress'),
           this.$scope.alerts.main,
         ))
         .catch(err => this.alerter.alertFromSWS(
-          this.$scope.tr('privateDatabase_restore_bdd_fail'),
+          this.$translate.instant('privateDatabase_restore_bdd_fail'),
           err,
           this.$scope.alerts.main,
         ))
@@ -78,13 +79,13 @@ angular.module('App').controller(
       this.$scope.confirmBtnTitle = () => {
         switch (this.$scope.step) {
           case 1:
-            return this.$scope.tr('privateDatabase_restore_bdd_go_list');
+            return this.$translate.instant('privateDatabase_restore_bdd_go_list');
 
           case 2:
-            return this.$scope.tr('privateDatabase_restore_bdd_restore');
+            return this.$translate.instant('privateDatabase_restore_bdd_restore');
 
           default:
-            return this.$scope.tr('privateDatabase_restore_bdd_close');
+            return this.$translate.instant('privateDatabase_restore_bdd_close');
         }
       };
     }

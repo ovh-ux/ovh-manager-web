@@ -9,7 +9,7 @@
             <button type="button"
                     class="oui-tile__button oui-button oui-button_link oui-button_full-width d-flex text-wrap"
                     data-ng-click="toggleGuides($index)">
-                <span data-ng-bind="tr(guideSection.title)"></span>
+                <span data-ng-bind="guideSection.title | translate"></span>
                 <span class="fa fa-chevron-up my-auto ml-auto"
                       data-ng-show="showGuidesStatus[$index]">
                 </span>
@@ -20,16 +20,16 @@
             <div class="oui-tile__definition animated fadeIn mt-3"
                  data-ng-show="showGuidesStatus[$index]">
                 <p data-ng-if="!!guideSection.description"
-                   data-ng-bind="tr(guideSection.description)">
+                   data-ng-bind="guideSection.description | translate">
                 </p>
                 <ul class="list-unstyled">
                     <li data-ng-repeat="guideDocument in guideSection.list track by $index">
                         <a class="d-block mb-2"
                            target="_blank"
                            rel="noopener"
-                           title="{{tr(guideDocument.title)}} ({{tr('core_new_window')}})"
+                           title="{{ guideDocument.title | translate }} ({{ 'core_new_window' | translate }})"
                            data-ng-href="{{ guideDocument.url }}"
-                           data-ng-bind="tr(guideDocument.title)">
+                           data-ng-bind="guideDocument.title | translate">
                         </a>
                     </li>
                 </ul>
