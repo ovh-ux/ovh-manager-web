@@ -56,11 +56,11 @@
                                                             data-translate="privateDatabase_dashboard_ram"></strong>
                                                     <button class="btn btn-xs d-block" type="button" title="{{:: 'privateDatabase_modale_oom_title' | translate }}"
                                                             data-ng-bind="::stateCtrl.database.ram.value + ('unit_size_' + stateCtrl.database.ram.unit | translate)"
-                                                            data-ng-class="stateCtrl.database.oom.realList.length >= stateCtrl.database.oom.nbOomError ? 'btn-danger' : (stateCtrl.database.oom.realList.length > 0 ? 'btn-warning' : 'btn-success')"
+                                                            data-ng-class="stateCtrl.database.oom.realList.length > stateCtrl.database.oom.nbOomError ? 'btn-danger' : (stateCtrl.database.oom.realList.length > 0 ? 'btn-warning' : 'btn-success')"
                                                             data-ng-click="stateCtrl.goToOom()">
                                                     </button>
                                                     <button class="btn btn-icon btn-xs d-block text-wrap text-left" type="button" title="{{:: 'privateDatabase_modale_oom_title' | translate }}"
-                                                            data-ng-class="stateCtrl.database.oom.realList.length >= stateCtrl.database.oom.nbOomError ? 'text-danger' : (stateCtrl.database.oom.realList.length > 0 ? 'text-warning' : '')"
+                                                            data-ng-class="stateCtrl.database.oom.realList.length > stateCtrl.database.oom.nbOomError ? 'text-danger' : (stateCtrl.database.oom.realList.length > 0 ? 'text-warning' : '')"
                                                             data-ng-click="stateCtrl.goToOom()">
                                                         <span data-ng-if="stateCtrl.database.oom.realList.length > 0" class="fa fa-exclamation-triangle" aria-hidden="true"></span>
                                                         <span data-ng-if="stateCtrl.database.oom.realList.length === 0" class="fa fa-check-circle" aria-hidden="true"></span>
