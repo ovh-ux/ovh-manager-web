@@ -1,13 +1,14 @@
 angular.module('App').controller(
   'DomainTabsCtrl',
   class DomainTabsCtrl {
-    constructor($scope, $q, $location, $stateParams, Alerter, Domain, User) {
+    constructor($scope, $q, $location, $stateParams, Alerter, Domain, DOMAIN, User) {
       this.$scope = $scope;
       this.$q = $q;
       this.$location = $location;
       this.$stateParams = $stateParams;
       this.Alerter = Alerter;
       this.Domain = Domain;
+      this.DOMAIN = DOMAIN;
       this.User = User;
     }
 
@@ -136,10 +137,19 @@ angular.module('App').controller(
       const ownerUrlInfo = { target: '', error: '' };
       if (_.has(domain, 'name') && _.has(domain, 'whoisOwner.id')) {
         ownerUrlInfo.target = `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
+      } else if (!_.has(domain, 'name')) {
+        ownerUrlInfo.error = this.$scope.tr('domain_tab_REDIRECTION_add_step4_server_cname_error');
       } else {
-        ownerUrlInfo.error = this.$scope.tr('domain_dashboard_whois_error', [
-          (!_.has(domain, 'name')) ? this.$scope.tr('domain_tab_REDIRECTION_add_step4_server_cname_error') : domain.whoisOwner,
-        ]);
+        switch (domain.whoisOwner) {
+          case this.DOMAIN.whoIsStatus.PENDING:
+            ownerUrlInfo.error = this.$scope.tr('domain_dashboard_whois_pending');
+            break;
+          case this.DOMAIN.whoIsStatus.INVALID_CONTACT:
+            ownerUrlInfo.error = this.$scope.tr('domain_dashboard_whois_invalid_contact');
+            break;
+          default:
+            ownerUrlInfo.error = this.$scope.tr('domain_dashboard_whois_error');
+        }
       }
       return ownerUrlInfo;
     }
