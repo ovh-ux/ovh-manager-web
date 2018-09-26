@@ -152,8 +152,7 @@ angular.module('App').controller(
             ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_error');
         }
       }
-      console.log(this.DOMAIN.whoIsStatus, domain.whoisOwner);
-      return { target: '', error: '' };
+      return ownerUrlInfo;
     }
 
     handleOwnerUrlError(errMsg) {
