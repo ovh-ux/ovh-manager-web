@@ -1,3 +1,13 @@
+<a name="13.6.1"></a>
+## [13.6.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.6.0...v13.6.1) (2018-09-27)
+
+
+### Bug Fixes
+
+* **hosting.general.informations:** fixing translation ([8538778](https://github.com/ovh-ux/ovh-manager-web/commit/8538778))
+
+
+
 <a name="13.6.0"></a>
 # [13.6.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.5.0...v13.6.0) (2018-09-27)
 
