@@ -75,7 +75,7 @@ class SessionService {
       EXCHANGE_DEDICATEDCLUSTER: 'app.microsoft.exchange.dedicatedCluster',
     };
 
-      // Exchange products
+    // Exchange products
     const exchangeProducts = _.sortBy(
       products.exchanges,
       elt => angular.lowercase(elt.displayName || elt.name),
@@ -90,7 +90,7 @@ class SessionService {
       },
     }));
 
-      // Office products
+    // Office products
     const officeProducts = _.sortBy(
       products.licenseOffice,
       elt => angular.lowercase(elt.displayName || elt.name),
@@ -104,7 +104,7 @@ class SessionService {
       },
     }));
 
-      // SharePoint products
+    // SharePoint products
     const sharepointProducts = _.sortBy(
       products.sharepoints,
       elt => angular.lowercase(elt.displayName || elt.name),
@@ -119,7 +119,7 @@ class SessionService {
       },
     }));
 
-      // Build Microsoft menu
+    // Build Microsoft menu
     return [{
       name: 'microsoft.exchange',
       title: this.$translate.instant('navigation_left_exchange'),
