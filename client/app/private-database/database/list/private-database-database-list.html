@@ -39,7 +39,7 @@
                         <th scope="row" data-ng-bind-html="bdd.databaseName"></th>
                         <td class="text-center" colspan="{{listCtrl.isPostgreSql ? 5 : 4}}"
                             data-ng-if="bdd.waitDelete">
-                            <span class="label label-danger"
+                            <span class="oui-status oui-status_error"
                                   data-translate="privateDatabase_tabs_bdd_deleting"></span>
                         </td>
                         <td data-ng-bind="bdd.creationDate | date:'mediumDate'"
@@ -49,11 +49,10 @@
                             data-ng-if="!bdd.waitDelete"></td>
                         <td class="text-center"
                             data-ng-if="!bdd.waitDelete">
-                            <button class="btn btn-xs" type="button"
-                                    data-ng-bind-html="bdd.dumpsCount"
-                                    data-ng-class="{'btn-success': bdd.dumpsCount > 0, 'btn-danger': !(bdd.dumpsCount > 0)}"
-                                    data-ng-click="goToDumps(bdd)">
-                            </button>
+                            <div class="oui-status"
+                                 data-ng-bind="bdd.dumpsCount"
+                                 data-ng-class="{'oui-status_success': bdd.dumpsCount > 0, 'oui-status_error': !(bdd.dumpsCount > 0)}">
+                            </div>
                             <small class="d-block mt-2"
                                    data-translate="privateDatabase_dump_in_progress"
                                    data-ng-if="bdd.waitDump"></small>
@@ -69,15 +68,34 @@
                             </button>
                         </td>
                         <td class="text-center" data-ng-show="!bdd.waitDelete">
-                            <button class="btn btn-icon" type="button"
-                                    data-ng-if="!bdd.waitDelete && database.state === 'started' && !taskState.changeVersion"
-                                    data-linkedpopover="private-database/database/list/popover/list.html"
-                                    data-linkedpopover-placement="left"
-                                    data-linkedpopover-remote="true"
-                                    data-linkedpopover-single="true"
-                                    data-linkedpopover-title="{{ 'common_actions' | translate }}">
-                                <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                            </button>
+                            <oui-action-menu data-compact data-align="end"
+                                                         data-ng-if="!bdd.waitDelete && database.state === 'started' && !taskState.changeVersion">
+                                <oui-action-menu-item data-on-click="listCtrl.dumpBDD(bdd)"
+                                                      data-disabled="!database.capabilities.dump.create || bdd.waitDump || bdd.waitRestore"
+                                                      title="{{!database.capabilities.dump.create ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_action_dump_now}}">
+                                    <span data-translate="privateDatabase_action_dump_now"></span>
+                                </oui-action-menu-item>
+                                <oui-action-menu-item data-on-click="listCtrl.importFromFile(bdd)"
+                                                      data-disabled="bdd.waitDump || bdd.waitRestore">
+                                    <span data-translate="privateDatabase_action_import_from_file"></span>
+                                </oui-action-menu-item>
+                                <oui-action-menu-item data-on-click="goToUsersByDb(bdd)"
+                                                      data-disabled="bdd.waitDump || bdd.waitRestore">
+                                    <span data-translate="privateDatabase_action_users"></span>
+                                </oui-action-menu-item>
+                                <oui-action-menu-item data-on-click="setAction('database/delete/private-database-database-delete', bdd)"
+                                                      data-disabled="!database.capabilities.database.delete || bdd.waitDump || bdd.waitRestore"
+                                                      title="{{!database.capabilities.database.delete ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_action_deleteBDD}}">
+                                    <span data-translate="privateDatabase_action_deleteBDD"></span>
+                                </oui-action-menu-item>
+                                <oui-action-menu-item data-on-click="goToDumps(bdd)">
+                                    <span data-translate="privateDatabase_action_list_dumps"></span>
+                                </oui-action-menu-item>
+                                <oui-action-menu-item data-ng-if="database.infrastructure === 'legacy'"
+                                                      data-on-click="addCron({'databaseName': bdd.databaseName})">
+                                    <span data-translate="privateDatabase_action_scheduleDumpBDD"></span>
+                                </oui-action-menu-item>
+                            </oui-action-menu>
                         </td>
                     </tr>
 
@@ -85,7 +103,7 @@
                         <td data-ng-bind-html="bdd"></td>
 
                         <td colspan="5" class="text-center">
-                            <span class="label label-info"
+                            <span class="oui-status oui-status_info"
                                   data-translate="privateDatabase_tabs_bdd_adding"></span>
                         </td>
                     </tr>
