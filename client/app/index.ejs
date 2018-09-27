@@ -120,8 +120,8 @@
             <script type="text/javascript">
                 var CKEDITOR_BASEPATH = (window.location.pathname !== "/" ? window.location.pathname.split("/").splice(0, window.location.pathname.split("/").length - 1).join("/") : "") + '/bower_components/ckeditor/';
             </script>
-            <script type="text/javascript" src="<%= basepath %>js/app/bin/common.min.js"></script>
-            <script type="text/javascript" src="<%= basepath %>js/app/bin/app.min.js"></script>
+            <script type="text/javascript" src="<%= basepath %>js/app/bin/common.min.js?cache=1"></script>
+            <script type="text/javascript" src="<%= basepath %>js/app/bin/app.min.js?cache=1"></script>
         <% } else { %>
             <!-- common -->
             <% for (var i = 0, len = commonJsFiles.length ; i < len ; i++) { %>
