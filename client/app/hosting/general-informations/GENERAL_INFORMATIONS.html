@@ -123,7 +123,7 @@
                                                     <span data-ng-bind=":: convertBytesSize(hosting.totalQuota.value, hosting.totalQuota.unit, 2)"></span>
                                                 </li>
                                                 <li>
-                                                    <span data-ng-bind-html=":: 'hosting_dashboard_disk_available_total' | translate + '* :' "></span>
+                                                    <span data-ng-bind-html=":: ('hosting_dashboard_disk_available_total' | translate) + '* :' "></span>
                                                     <span data-ng-bind=":: convertBytesSize(hosting.quotaSize.value, hosting.quotaSize.unit, 2)"></span>
                                                 </li>
                                                 <li>
