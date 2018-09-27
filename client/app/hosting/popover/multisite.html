@@ -1,6 +1,6 @@
 <div class="popover-menu">
     <button class="btn btn-link" type="button"
-            data-i18n-static="hosting_tab_DOMAINS_table_popover_modify"
+            data-translate="hosting_tab_DOMAINS_table_popover_modify"
             data-ng-click="modifyDomain(domain)"
             data-ng-disabled="domain.isUpdating"
             data-ng-if="excludeAttachedDomains.indexOf(domain.displayName) === -1">
@@ -9,17 +9,17 @@
          data-ng-if="!!domain.ownLog">
         <span data-ng-if="domain.logsLoading">
             <span class="text-muted"
-                  data-i18n-static="hosting_tab_DOMAINS_multisite_logs_link"></span>
+                  data-translate="hosting_tab_DOMAINS_multisite_logs_link"></span>
             <oui-spinner data-size="s"></oui-spinner>
         </span>
-        <a class="btn btn-link" target="_blank" title="{{::i18n.hosting_common_target_new_window}}"
-           data-i18n-static="hosting_tab_DOMAINS_multisite_logs_link"
+        <a class="btn btn-link" target="_blank" title="{{:: 'hosting_common_target_new_window' | translate }}"
+           data-translate="hosting_tab_DOMAINS_multisite_logs_link"
            data-ng-href="{{domain.logUrl}}"
            data-ng-if="!domain.logsLoading && !!domain.logUrl">
         </a>
     </div>
     <button class="btn btn-link" type="button"
-            data-i18n-static="hosting_tab_DOMAINS_table_popover_delete"
+            data-translate="hosting_tab_DOMAINS_table_popover_delete"
             data-ng-click="detachDomain(domain)"
             data-ng-if="excludeAttachedDomains.indexOf(domain.displayName) === -1">
     </button>

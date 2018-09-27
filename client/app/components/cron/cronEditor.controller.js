@@ -7,7 +7,6 @@ angular.module('directives').controller('cronEditorCtrl', [
     // Hack for trads
     $scope.tr = $rootScope.tr;
     $scope.trpl = $rootScope.trpl;
-    $scope.i18n = $rootScope.i18n;
 
     $scope.cron = $scope.crontabObject.getCronValue();
     $scope.mode = $scope.crontabObject.getCronMode();

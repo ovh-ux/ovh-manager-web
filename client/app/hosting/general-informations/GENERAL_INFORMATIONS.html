@@ -9,29 +9,29 @@
             <div class="alert alert-dismissible alert-info" role="alert"
                  data-ng-if="hosting.offer === 'KIMSUFI_2015'">
                 <button class="close" type="button" data-dismiss="alert"></button>
-                <span data-i18n-static="hosting_dashboard_service_offer_KIMSUFI_2015_support"></span>
+                <span data-translate="hosting_dashboard_service_offer_KIMSUFI_2015_support"></span>
             </div>
 
             <div class="row d-md-flex" data-ng-if="!hosting.isExpired">
                 <div class="col-sm-6">
                     <div class="oui-tile mb-5 h-100">
-                        <h3 class="oui-header_4 oui-tile__title" data-i18n-static="hosting_dashboard_general_informations"></h3>
+                        <h3 class="oui-header_4 oui-tile__title" data-translate="hosting_dashboard_general_informations"></h3>
                         <div class="oui-tile__body">
                             <ul class="list-unstyled">
                                 <li class="oui-tile__item">
                                     <div class="oui-tile__definition">
                                         <strong class="oui-tile__term d-block"
-                                                data-i18n-static="hosting_dashboard_service_state"></strong>
+                                                data-translate="hosting_dashboard_service_state"></strong>
                                         <span class="oui-status" data-ng-class="getStateBadgeClass()"
-                                              data-ng-bind="tr('hosting_dashboard_service_state_' + hosting.serviceState)"></span>
+                                              data-ng-bind="'hosting_dashboard_service_state_' + hosting.serviceState | translate"></span>
                                         <span class="oui-status oui-status_error"
-                                              data-i18n-static="hosting_dashboard_service_state_DELETE"
+                                              data-translate="hosting_dashboard_service_state_DELETE"
                                               data-ng-if="hosting.serviceInfos.renew.deleteAtExpiration"></span>
                                         <div class="mt-2" data-ng-if="guideHostingState">
-                                            <a target="_blank" title="{{::i18n.hosting_state_info_title}}"
+                                            <a target="_blank" title="{{:: 'hosting_state_info_title' | translate}}"
                                                data-ng-href="{{guideHostingState}}">
                                                 <span class="fa fa-info-circle mr-2" aria-hidden="true"></span>
-                                                <span data-ng-bind="tr('hosting_state_info_' + hosting.serviceState)"></span>
+                                                <span data-ng-bind="'hosting_state_info_' + hosting.serviceState | translate"></span>
                                             </a>
                                         </div>
                                     </div>
@@ -41,19 +41,19 @@
                                         <div class="row">
                                             <div class="col-lg-6">
                                                 <strong class="oui-tile__term d-block"
-                                                        data-i18n-static="common_ipv4"></strong>
+                                                        data-translate="common_ipv4"></strong>
                                                 <span data-ng-bind="hosting.hostingIp"
                                                       data-ng-if="hosting.hostingIp"></span>
-                                                <span data-i18n-static="hosting_ipv4_coming_soon"
+                                                <span data-translate="hosting_ipv4_coming_soon"
                                                       data-ng-if="hosting.hostingIp == null"></span>
                                             </div>
                                             <div class="col-lg-6">
-                                                <strong class="oui-tile__term d-block" data-i18n-static="common_ipv6"></strong>
+                                                <strong class="oui-tile__term d-block" data-translate="common_ipv6"></strong>
                                                 <span class="word-break"
                                                       data-ng-bind="hosting.hostingIpv6"
                                                       data-ng-if="hosting.hostingIpv6"></span>
                                                 <span class="word-break"
-                                                      data-i18n-static="hosting_ipv4_coming_soon"
+                                                      data-translate="hosting_ipv4_coming_soon"
                                                       data-ng-if="hosting.hostingIpv6 == null"></span>
                                             </div>
                                         </div>
@@ -64,38 +64,38 @@
                                         <div class="d-flex w-100">
                                             <div>
                                                 <strong class="oui-tile__term d-block"
-                                                        data-i18n-static="hosting_dashboard_service_offer"></strong>
+                                                        data-translate="hosting_dashboard_service_offer"></strong>
                                                 <span class="text-capitalized mr-2"
-                                                      data-ng-bind="tr('hosting_dashboard_service_offer_'+ hosting.offer)"></span>
+                                                      data-ng-bind="'hosting_dashboard_service_offer_'+ hosting.offer | translate"></span>
                                                 <span class="fa fa-exclamation-triangle text-warning" aria-hidden="true"
                                                       data-ng-if="hostingProxy.recommendedOffer"
-                                                      data-uib-tooltip="{{::tr('hosting_dashboard_service_offer_recommanded', [hostingProxy.recommendedOffer])}}"></span>
+                                                      data-uib-tooltip="{{:: 'hosting_dashboard_service_offer_recommanded' | translate: { t0: hostingProxy.recommendedOffer } }}"></span>
                                             </div>
                                         </div>
                                     </div>
                                     <oui-action-menu data-compact data-align="end"
                                                      data-ng-if="!hosting.isCloudWeb">
                                         <button class="oui-dropdown-option ng-binding ng-scope" type="button"
-                                                data-i18n-static="hosting_dashboard_service_change_offer"
                                                 data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')"
                                                 data-track-on="click"
                                                 data-track-name="web::hostname::general-informations::change-offer"
                                                 data-track-click="action">
+												{{ 'hosting_dashboard_service_change_offer' | translate }}
                                         </button>
                                     </oui-action-menu>
                                 </li>
                                 <li class="oui-tile__item" data-ng-if="!hosting.isCloudWeb">
                                     <div class="oui-tile__definition">
                                         <strong class="oui-tile__term d-block"
-                                                data-i18n-static="hosting_dashboard_service_boost"></strong>
+                                                data-translate="hosting_dashboard_service_boost"></strong>
                                         <div data-ng-if="hostingProxy.boostOffer">
                                             <span class="fa fa-check text-success" aria-hidden="true"></span>
                                             <span data-ng-bind="'(' + hostingProxy.boostOffer + ')'"></span>
                                         </div>
                                         <div data-ng-if="!hostingProxy.boostOffer">
-                                            <span data-i18n-static="hosting_dashboard_service_boostOffer_disabled"
+                                            <span data-translate="hosting_dashboard_service_boostOffer_disabled"
                                                   data-ng-if="hosting.availableBoostOffer && hosting.availableBoostOffer.length > 0"></span>
-                                            <span data-i18n-static="hosting_dashboard_service_boostOffer_unavailable"
+                                            <span data-translate="hosting_dashboard_service_boostOffer_unavailable"
                                                   data-ng-if="!hosting.availableBoostOffer || hosting.availableBoostOffer.length === 0"></span>
                                         </div>
                                     </div>
@@ -103,9 +103,9 @@
                                 <li class="oui-tile__item">
                                     <div class="oui-tile__definition">
                                         <strong class="oui-tile__term d-block"
-                                                data-i18n-static="hosting_dashboard_service_datacenter"></strong>
+                                                data-translate="hosting_dashboard_service_datacenter"></strong>
                                         <span
-                                            data-ng-bind="tr('hosting_dashboard_service_datacenter_'+ hostingProxy.datacenter) || hostingProxy.datacenter"></span>
+                                            data-ng-bind="(('hosting_dashboard_service_datacenter_'+ hostingProxy.datacenter | translate) == 'hosting_dashboard_service_datacenter_'+ hostingProxy.datacenter)? hostingProxy.datacenter: ('hosting_dashboard_service_datacenter_'+ hostingProxy.datacenter | translate)"></span>
                                     </div>
                                 </li>
                                 <li class="oui-tile__item" data-ng-if="!hosting.isCloudWeb">
@@ -113,7 +113,7 @@
                                         <div class="d-flex w-100">
                                             <div>
                                                 <strong class="oui-tile__term d-block"
-                                                        data-i18n-static="hosting_dashboard_service_main_domain"></strong>
+                                                        data-translate="hosting_dashboard_service_main_domain"></strong>
                                                 <span class="word-break"
                                                       data-ng-bind="hosting.serviceName"></span>
                                             </div>
@@ -122,22 +122,24 @@
                                     <oui-action-menu data-compact data-align="end"
                                                      data-ng-if="['KIMSUFI_2015','__60_FREE','DEMO_1_G','START_1_M','START_10_M','_ASPFREE'].indexOf(hosting.offer) === -1">
                                         <button class="oui-dropdown-option ng-binding ng-scope" type="button"
-                                                data-i18n-static="hosting_dashboard_service_main_domain_change"
                                                 data-ng-click="setAction('change-main-domain/hosting-change-main-domain', hosting)"
                                                 data-track-on="click"
                                                 data-track-name="web::hostname::general-informations::change-main-domain"
                                                 data-track-click="action">
+                                                {{ 'hosting_dashboard_service_main_domain_change' | translate }}
                                         </button>
                                     </oui-action-menu>
                                 </li>
                                 <li class="oui-tile__item">
                                     <div class="oui-tile__definition">
                                         <strong class="oui-tile__term d-block"
-                                                data-i18n-static="hosting_dashboard_service_web"></strong>
+                                                data-translate="hosting_dashboard_service_web"></strong>
                                         <span data-ng-bind="hosting.attachedDomainsCount"></span>&nbsp;
-                                        <span
-                                            data-ng-bind="trpl('hosting_dashboard_service_web_info', hosting.attachedDomainsMaxRecommanded, [hosting.attachedDomainsMaxRecommanded])"
-                                            data-ng-if="hosting.attachedDomainsMaxRecommanded > 0 && hosting.attachedDomainsMaxRecommanded < cloudWebUnlimitedQuantity"></span>
+                                        <span data-ng-bind="(hosting.attachedDomainsMaxRecommanded > 1
+                                                                ? 'hosting_dashboard_service_web_info_other'
+                                                                : 'hosting_dashboard_service_web_info_1')
+                                                            | translate: { t0: hosting.attachedDomainsMaxRecommanded }"
+                                              data-ng-if="hosting.attachedDomainsMaxRecommanded > 0 && hosting.attachedDomainsMaxRecommanded < cloudWebUnlimitedQuantity"></span>
                                     </div>
                                 </li>
                             </ul>
@@ -146,7 +148,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="oui-tile mb-5 h-100">
-                        <h3 class="oui-header_4 oui-tile__title" data-i18n-static="hosting_dashboard_configuration"></h3>
+                        <h3 class="oui-header_4 oui-tile__title" data-translate="hosting_dashboard_configuration"></h3>
                         <div class="oui-tile__body">
                             <ul class="list-unstyled">
                                 <li class="oui-tile__item" data-ng-if="ovhConfig.isPhpEngine && !hosting.isCloudWeb">
@@ -154,7 +156,7 @@
                                         <div class="d-flex w-100">
                                             <div>
                                                 <strong class="oui-tile__term d-block"
-                                                        data-i18n-static="hosting_global_php_version"></strong>
+                                                        data-translate="hosting_global_php_version"></strong>
                                                 <span data-ng-bind="ovhConfig.engineVersion"></span>
                                                 <span class="fa fa-exclamation-triangle" aria-hidden="true"
                                                       data-ng-class="{
@@ -162,7 +164,7 @@
                                                         'text-danger': phpVersionSupport.support === 'END_OF_LIFE'
                                                       }"
                                                       data-ng-if="phpVersionSupport.support && phpVersionSupport.support !== 'SUPPORTED'"
-                                                      data-uib-tooltip="{{tr('hosting_dashboard_php_support_'+ phpVersionSupport.support)}}"
+                                                      data-uib-tooltip="{{ 'hosting_dashboard_php_support_'+ phpVersionSupport.support | translate }}"
                                                       data-tooltip-placement="bottom">
                                                 </span>
                                                 <div class="d-inline ml-2" data-ng-if="ovhConfig.taskPending">
@@ -179,7 +181,7 @@
                                     <oui-action-menu data-compact data-align="end">
                                         <button class="oui-dropdown-option ng-binding ng-scope"
                                                 type="button"
-                                                data-i18n-static="hosting_global_php_version_edit"
+                                                data-translate="hosting_global_php_version_edit"
                                                 data-ng-click="setAction('ovhconfig/hosting-ovhconfig', hosting)"
                                                 data-ng-disabled="ovhConfig.taskPending">
                                         </button>
@@ -189,26 +191,26 @@
                                     <div class="oui-tile__definition">
                                         <div class="d-flex w-100">
                                             <div>
-                                                <strong class="oui-tile__term d-block" data-i18n-static="hosting_dashboard_service_ssl"></strong>
+                                                <strong class="oui-tile__term d-block" data-translate="hosting_dashboard_service_ssl"></strong>
                                                 <span data-ng-if="!$ctrl.isRetrievingSSLCertificate" data-ng-bind="$ctrl.selectSSLCertificateStatusText()"></span>
                                             </div>
                                             <div class="ml-auto mb-auto"
                                                  data-ng-if="!$ctrl.isRetrievingSSLCertificate && ($ctrl.canOrderSSLCertificate() || $ctrl.canRegenerateSSLCertificate() || $ctrl.canDeleteSSLCertificate())">
                                                 <oui-action-menu data-compact data-align="end">
                                                     <oui-action-menu-item data-ng-if="$ctrl.canOrderSSLCertificate()"
-                                                        data-text="{{:: tr('hosting_dashboard_service_order_ssl') }}"
+                                                        data-text="{{:: 'hosting_dashboard_service_order_ssl' | translate }}"
                                                         data-on-click="setAction('ssl/order/hosting-order-ssl')"></oui-action-menu-item>
                                                     <oui-action-menu-item data-ng-if="$ctrl.canRegenerateSSLCertificate()"
-                                                        data-text="{{:: tr('hosting_ssl_regenerate_title_button') }}"
+                                                        data-text="{{:: 'hosting_ssl_regenerate_title_button' | translate }}"
                                                         data-on-click="setAction('ssl/regenerate/hosting-ssl-regenerate')"></oui-action-menu-item>
                                                     <oui-action-menu-item data-ng-if="$ctrl.canDeleteSSLCertificate()"
-                                                        data-text="{{:: tr('hosting_dashboard_service_order_ssl_delete') }}"
+                                                        data-text="{{:: 'hosting_dashboard_service_order_ssl_delete' | translate }}"
                                                         data-on-click="setAction('ssl/delete/hosting-ssl-delete', $ctrl.sslCertificate)"></oui-action-menu-item>
                                                 </oui-action-menu>
                                             </div>
                                             <button class="btn btn-default ml-auto mb-auto text-wrap"
                                                     type="button"
-                                                    data-i18n-static="hosting_dashboard_ssl_report_button"
+                                                    data-translate="hosting_dashboard_ssl_report_button"
                                                     data-ng-click="setAction('ssl/details/hosting-ssl-details', hosting)"
                                                     data-ng-if="$ctrl.hasSSLCertificateCreationReport()"></button>
                                         </div>
@@ -222,25 +224,25 @@
                                         <div class="d-flex w-100">
                                             <div>
                                                 <strong class="oui-tile__term d-block"
-                                                        data-i18n-static="hosting_dashboard_service_cdn"></strong>
+                                                        data-translate="hosting_dashboard_service_cdn"></strong>
                                                 <span class="mr-2"
-                                                      data-ng-bind="hosting.hasCdn ? i18n.common_yes : i18n.common_no"></span>
+                                                      data-ng-bind="hosting.hasCdn ? ('common_yes' | translate) : ('common_no' | translate)"></span>
                                                 <oui-spinner data-size="s" data-ng-if="flushCdnState === 'check'"></oui-spinner>
                                                 <span class="label label-info"
-                                                      data-i18n-static="hosting_dashboard_service_flush_cdn_doing"
+                                                      data-translate="hosting_dashboard_service_flush_cdn_doing"
                                                       data-ng-if="flushCdnState === 'doing'"></span>
                                             </div>
                                             <div class="ml-auto mb-auto"
                                                  data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M' || hosting.hasCdn && flushCdnState === 'ok' || hosting.hasCdn">
                                                 <oui-action-menu data-compact data-align="end">
                                                     <oui-action-menu-item data-ng-if="flushCdnState === 'ok' && !hosting.hasCdn && hosting.offer!== 'START_10_M'"
-                                                        data-text="{{:: tr('hosting_dashboard_service_order_cdn') }}"
+                                                        data-text="{{:: 'hosting_dashboard_service_order_cdn' | translate }}"
                                                         data-on-click="setAction('cdn/order/hosting-cdn-order', hostingProxy)"></oui-action-menu-item>
                                                     <oui-action-menu-item data-ng-if="hosting.hasCdn && flushCdnState === 'ok'"
-                                                        data-text="{{:: tr('hosting_dashboard_service_flush_cdn') }}"
+                                                        data-text="{{:: 'hosting_dashboard_service_flush_cdn' | translate }}"
                                                         data-on-click="setAction('cdn/flush/hosting-cdn-flush')"></oui-action-menu-item>
                                                     <oui-action-menu-item data-ng-if="hosting.hasCdn"
-                                                        data-text="{{:: tr('hosting_dashboard_service_terminate_cdn') }}"
+                                                        data-text="{{:: 'hosting_dashboard_service_terminate_cdn' | translate }}"
                                                         data-on-click="setAction('cdn/terminate/hosting-cdn-terminate')"></oui-action-menu-item>
                                                 </oui-action-menu>
                                             </div>
@@ -252,14 +254,14 @@
                                         <div class="d-flex w-100">
                                             <div>
                                                 <strong class="oui-tile__term d-block"
-                                                        data-i18n-static="hosting_dashboard_service_privatesql"></strong>
+                                                        data-translate="hosting_dashboard_service_privatesql"></strong>
                                                 <div data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0">
                                                     <div data-progress-bar-element-counter
                                                          data-pbec-nb-elements="hosting.sqlPriveInfo.nbDataBaseActive"
                                                          data-pbec-max-elements="hosting.sqlPriveInfo.nbDataBaseInclude"
                                                          data-pbec-upper-limit="cloudWebUnlimitedQuantity"></div>
                                                 </div>
-                                                <oui-action-menu data-text="{{:: tr('hosting_dashboard_service_privatesql_more') }}" data-ng-if="privateDatabasesLinked.length > 0">
+                                                <oui-action-menu data-text="{{:: 'hosting_dashboard_service_privatesql_more' | translate }}" data-ng-if="privateDatabasesLinked.length > 0">
                                                     <div data-ng-repeat="privateDb in privateDatabasesLinked track by privateDb.name">
                                                         <oui-action-menu-item data-text="{{::privateDb.name}}" data-ng-if="!privateDb.isAdmin" data-disabled></oui-action-menu-item>
                                                         <oui-action-menu-item data-ng-if="privateDb.isAdmin"
@@ -272,15 +274,15 @@
                                             <div class="mb-auto ml-auto">
                                                 <oui-action-menu data-compact data-align="end">
                                                     <oui-action-menu-item data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0 && hosting.sqlPriveInfo.nbDataBaseActive < hosting.sqlPriveInfo.nbDataBaseInclude && sqlPriveState !== 'doing'"
-                                                        data-text="{{:: tr('hosting_dashboard_service_privatesql_active') }}"
+                                                        data-text="{{:: 'hosting_dashboard_service_privatesql_active' | translate }}"
                                                         data-ng-disabled="sqlPriveState === 'check' || sqlPriveState === 'doing'"
                                                         data-on-click="setAction('database/private-activation/database-private-activation', hosting)"></oui-action-menu-item>
                                                     <oui-action-menu-item data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0 && hosting.sqlPriveInfo.nbDataBaseActive < hosting.sqlPriveInfo.nbDataBaseInclude && sqlPriveState === 'doing'"
-                                                        data-text="{{:: tr('hosting_dashboard_service_privatesql_active_doing') }}"
+                                                        data-text="{{:: 'hosting_dashboard_service_privatesql_active_doing' | translate }}"
                                                         data-ng-disabled="sqlPriveState === 'check' || sqlPriveState === 'doing'"
                                                         data-on-click="setAction('database/private-activation/database-private-activation', hosting)"></oui-action-menu-item>
                                                     <oui-action-menu-item
-                                                        data-text="{{:: tr('hosting_dashboard_service_privatesql_order') }}"
+                                                        data-text="{{:: 'hosting_dashboard_service_privatesql_order' | translate }}"
                                                         data-ui-sref="app.sql-order({orderType: 'private', currentHosting: hosting.serviceName})">
                                                     </oui-action-menu-item>
                                                 </oui-action-menu>
@@ -291,7 +293,7 @@
                                 <li class="oui-tile__item">
                                     <div class="oui-tile__definition">
                                         <strong class="oui-tile__term d-block"
-                                                data-i18n-static="hosting_dashboard_databases"></strong>
+                                                data-translate="hosting_dashboard_databases"></strong>
                                         <div data-progress-bar-element-counter
                                              data-pbec-nb-elements="hosting.databaseCount"
                                              data-pbec-max-elements="hosting.databaseMax"
@@ -303,47 +305,32 @@
                                     <div class="oui-tile__definition">
                                         <div class="d-flex w-100">
                                             <div>
-                                                <strong class="d-block"
-                                                        data-i18n-static="hosting_dashboard_local_seo"></strong>
+                                                <strong class="oui-tile__term d-block"
+                                                        data-translate="hosting_dashboard_local_seo"></strong>
                                                 <span data-ng-if="!$ctrl.loading.localSeo"
                                                       data-ng-bind-html="$ctrl.localSeo.quantity > 0 ?
                                                                            $ctrl.localSeo.isActive ?
-                                                                             tr('hosting_dashboard_local_seo_quantity', [$ctrl.localSeo.quantity])
-                                                                             : tr('hosting_dashboard_local_seo_activating')
-                                                                           : tr('hosting_dashboard_local_seo_inactive')"></span>
+                                                                             ('hosting_dashboard_local_seo_quantity'| translate: { t0: $ctrl.localSeo.quantity })
+                                                                             : ('hosting_dashboard_local_seo_activating' | translate)
+                                                                           : ('hosting_dashboard_local_seo_inactive' | translate)"></span>
                                                 <oui-spinner data-ng-if="$ctrl.loading.localSeo" data-size="s"></oui-spinner>
+
                                             </div>
-                                            <div class="mb-auto ml-auto" data-ng-if="!$ctrl.loading.localSeo">
-                                                <oui-button data-ng-if="$ctrl.localSeo.isActive && $ctrl.localSeo.quantity > 0"
-                                                            data-on-click="ctrlHostingTabs.setSelectedTab('LOCAL_SEO')">
-                                                    <span data-i18n-static="common_manage"></span>
-                                                </oui-button>
-                                                <button class="oui-button oui-button_dropdown mb-0"
-                                                        type="button"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false"
-                                                        data-toggle="dropdown"
-                                                        data-ng-if="$ctrl.localSeo.quantity === 0">
-                                                    <span data-i18n-static="common_actions"></span>
-                                                    <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-right m-0 p-0"
-                                                    data-ng-if="$ctrl.localSeo.quantity === 0">
-                                                    <li>
-                                                        <i class="ovh-font ovh-font-cart" aria-hidden="true"></i>
-                                                        <button class="btn btn-link" type="button" name="orderLocalSeo"
-                                                                data-i18n-static="hosting_dashboard_local_seo_order"
-                                                                data-ng-click="$ctrl.HostingLocalSeo.goToLocalSeoOrder(hosting.serviceName)">
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <i class="ovh-font ovh-font-search" aria-hidden="true"></i>
-                                                        <button class="btn btn-link" type="button" name="checkVisibility"
-                                                                data-i18n-static="hosting_dashboard_local_seo_visibility_check"
-                                                                data-ng-click="$ctrl.HostingLocalSeo.goToVisibilityChecker()">
-                                                        </button>
-                                                    </li>
-                                                </ul>
+                                            <div class="mb-auto ml-auto">
+                                                <oui-action-menu data-compact data-align="end" data-ng-if="!$ctrl.loading.localSeo">
+                                                    <oui-action-menu-item data-ng-if="$ctrl.localSeo.isActive && $ctrl.localSeo.quantity > 0"
+                                                                          data-on-click="ctrlHostingTabs.setSelectedTab('LOCAL_SEO')">
+                                                                          <span data-translate="common_manage"></span>
+                                                    </oui-action-menu-item>
+                                                    <oui-action-menu-item data-ng-if="$ctrl.localSeo.quantity === 0"
+                                                                          data-on-click="$ctrl.HostingLocalSeo.goToLocalSeoOrder(hosting.serviceName)">
+                                                                          <span data-translate="hosting_dashboard_local_seo_order"></span>
+                                                    </oui-action-menu-item>
+                                                    <oui-action-menu-item data-ng-if="$ctrl.localSeo.quantity === 0"
+                                                                          data-on-click="$ctrl.HostingLocalSeo.goToVisibilityChecker()">
+                                                                          <span data-translate="hosting_dashboard_local_seo_visibility_check"></span>
+                                                    </oui-action-menu-item>
+                                                </oui-action-menu>
                                             </div>
                                         </div>
                                     </div>
@@ -351,7 +338,7 @@
                                 <li class="oui-tile__item" data-ng-if="!hosting.isCloudWeb">
                                     <div class="oui-tile__definition">
                                         <strong class="oui-tile__term d-block"
-                                                data-i18n-static="hosting_dashboard_service_filer"></strong>
+                                                data-translate="hosting_dashboard_service_filer"></strong>
                                         <span data-ng-bind="hosting.filer"></span>
                                     </div>
                                 </li>
@@ -360,11 +347,11 @@
                                         <div class="d-flex w-100">
                                             <div>
                                                 <strong class="oui-tile__term d-block"
-                                                        data-i18n-static="hosting_dashboard_service_default_runtime"></strong>
+                                                        data-translate="hosting_dashboard_service_default_runtime"></strong>
                                                 <span data-ng-bind="$ctrl.defaultRuntime.name"
                                                       data-ng-if="$ctrl.defaultRuntime"></span>
                                                 <span class="oui-status oui-status_error"
-                                                      data-i18n-static="common_not_available"
+                                                      data-translate="common_not_available"
                                                       data-ng-if="!$ctrl.loading.defaultRuntime && !$ctrl.defaultRuntime"></span>
                                                 <div class="d-inline ml-2" data-ng-if="$ctrl.loading.defaultRuntime">
                                                     <oui-spinner data-size="s"></oui-spinner>
@@ -372,7 +359,7 @@
                                             </div>
                                             <div class="mb-auto ml-auto">
                                                 <oui-action-menu data-compact data-align="end">
-                                                    <oui-action-menu-item data-text="{{:: tr('common_configure') }}"
+                                                    <oui-action-menu-item data-text="{{:: 'common_configure' | translate }}"
                                                         data-on-click="ctrlHostingTabs.setSelectedTab('RUNTIMES')"></oui-action-menu-item>
                                                 </oui-action-menu>
                                             </div>
@@ -393,7 +380,7 @@
                      data-ng-class="{'mb-5': screenshot}"
                      data-ng-if="!hosting.isExpired">
                     <oui-spinner data-ng-if="loadingScreenshot"></oui-spinner>
-                    <a class="oui-box oui-box_light d-block p-0 text-truncate" target="_blank" title="{{hosting.serviceName}} ({{i18n.common_newtab}})"
+                    <a class="oui-box oui-box_light d-block p-0 text-truncate" target="_blank" title="{{hosting.serviceName}} ({{ 'common_newtab' | translate }})"
                        data-ng-href="http://{{hosting.serviceName}}"
                        data-ng-if="!loadingScreenshot && screenshot">
                         <img class="h-100 mw-100" data-ng-src="data:image/png;base64,{{screenshot}}" width="600"
@@ -405,7 +392,7 @@
                      data-ng-if="!hosting.isExpired"
                      data-ng-show="hosting.quotaPercent != null && hosting.quotaPercent >= 0">
 
-                    <strong class="oui-tile__term" data-ng-bind-html="i18n.hosting_dashboard_disk_usage"></strong>
+                    <strong class="oui-tile__term" data-ng-bind-html="'hosting_dashboard_disk_usage' | translate"></strong>
 
                     <div
                         class="oui-progress mt-2"
@@ -436,19 +423,19 @@
                     <ul class="list-unstyled"
                         data-ng-if="hosting.isCloudWeb">
                         <li>
-                            <span data-ng-bind=":: tr('hosting_dashboard_disk_total')"></span>
+                            <span data-translate="hosting_dashboard_disk_total"></span>
                             <span data-ng-bind=":: convertBytesSize(hosting.totalQuota.value, hosting.totalQuota.unit, 2)"></span>
                         </li>
                         <li>
-                            <span data-ng-bind-html=":: tr('hosting_dashboard_disk_available_total') + '* :' "></span>
+                            <span data-ng-bind-html=":: 'hosting_dashboard_disk_available_total' | translate + '* :' "></span>
                             <span data-ng-bind=":: convertBytesSize(hosting.quotaSize.value, hosting.quotaSize.unit, 2)"></span>
                         </li>
                         <li>
-                            <span data-ng-bind=":: tr('hosting_dashboard_disk_usage_total')"></span>
+                            <span data-translate="hosting_dashboard_disk_usage_total"></span>
                             <span data-ng-bind=":: convertBytesSize(hosting.quotaUsed.value, hosting.quotaUsed.unit, 2) + ' / ' + convertBytesSize(hosting.quotaSize.value, hosting.quotaSize.unit)"></span>
                         </li>
                         <li>
-                            <small data-ng-bind-html=":: '*' + tr('hosting_dashboard_disk_usage_configuration', [ convertBytesSize(hosting.configurationQuota.value, hosting.configurationQuota.unit, 2) ])"></small>
+                            <small data-ng-bind-html=":: '*' + ('hosting_dashboard_disk_usage_configuration' | translate: { t0: convertBytesSize(hosting.configurationQuota.value, hosting.configurationQuota.unit, 2) })"></small>
                         </li>
                     </ul>
                 </div>
@@ -456,7 +443,7 @@
                 <div class="mb-5"
                      data-ng-if="!hosting.isExpired"
                      data-ng-show="hosting.trafficQuotaPercent != null && hosting.trafficQuotaPercent >= 0">
-                    <strong data-ng-bind-html="i18n.hosting_dashboard_trafic_usage"></strong>
+                    <strong data-ng-bind-html="'hosting_dashboard_trafic_usage' | translate"></strong>
                     <div class="oui-progress mt-2"
                          data-ng-class="{
                             'oui-progress_success': hosting.trafficQuotaPercent <= 50,
@@ -471,26 +458,26 @@
                             }"
                              data-ng-style="{'width': hosting.trafficQuotaPercent + '%'}">
                             <span class="oui-progress__label"
-                                  data-ng-bind="(hosting.trafficQuotaUsed.value + ' ' + tr('unit_size_'+ hosting.trafficQuotaUsed.unit)) + ' / ' + (hosting.trafficQuotaSize.value + ' ' + tr('unit_size_'+ hosting.trafficQuotaSize.unit))"></span>
+                                  data-ng-bind="(hosting.trafficQuotaUsed.value + ' ' + ('unit_size_'+ hosting.trafficQuotaUsed.unit | translate)) + ' / ' + (hosting.trafficQuotaSize.value + ' ' + ('unit_size_'+ hosting.trafficQuotaSize.unit | translate))"></span>
                         </div>
                     </div>
 
                     <button class="btn btn-block btn-default" type="button"
-                            data-i18n-static="hosting_dashboard_service_order_bandwidth"
+                            data-translate="hosting_dashboard_service_order_bandwidth"
                             data-ng-click="setAction('bandwidth/order/hosting-bandwidth-order')">
                     </button>
                 </div>
 
                 <div class="oui-tile mb-5"
                      data-ng-if="!hosting.isExpired">
-                    <h3 class="oui-header_4 oui-tile__title" data-i18n-static="hosting_dashboard_access"></h3>
+                    <h3 class="oui-header_4 oui-tile__title" data-translate="hosting_dashboard_access"></h3>
                     <div class="oui-tile__body">
                         <ul class="list-unstyled">
                             <li class="oui-tile__item">
                                 <div class="oui-tile__definition">
                                     <strong class="oui-tile__term d-block"
-                                            data-i18n-static="hosting_dashboard_service_home_ftp"></strong>
-                                    <a class="d-block word-break" target="_blank" title="{{i18n.hosting_dashboard_service_home_ftp_newtab}}"
+                                            data-translate="hosting_dashboard_service_home_ftp"></strong>
+                                    <a class="d-block word-break" target="_blank" title="{{ 'hosting_dashboard_service_home_ftp_newtab' | translate }}"
                                        data-ng-href="{{ftpUrl}}">
                                         <span data-ng-bind="ftpUrl"></span>
                                         <span class="fa fa-external-link" aria-hidden="true"></span>
@@ -500,8 +487,8 @@
                             <li class="oui-tile__item">
                                 <div class="oui-tile__definition">
                                     <strong class="oui-tile__term d-block"
-                                            data-i18n-static="hosting_dashboard_service_home_http"></strong>
-                                    <a class="d-block word-break" target="_blank" title="{{i18n.hosting_dashboard_service_home_http_newtab}}"
+                                            data-translate="hosting_dashboard_service_home_http"></strong>
+                                    <a class="d-block word-break" target="_blank" title="{{ 'hosting_dashboard_service_home_http_newtab' | translate }}"
                                        data-ng-href="{{httpUrl}}">
                                         <span data-ng-bind="httpUrl"></span>
                                         <span class="fa fa-external-link" aria-hidden="true"></span>
@@ -511,12 +498,12 @@
                             <li class="oui-tile__item">
                                 <div class="oui-tile__definition">
                                     <strong class="oui-tile__term d-block"
-                                            data-i18n-static="hosting_tab_USER_LOGS_dashboard_stats"></strong>
-                                    <a class="d-block word-break" target="_blank" title="{{i18n.hosting_tab_USER_LOGS_dashboard_stats_newtab}}"
+                                            data-translate="hosting_tab_USER_LOGS_dashboard_stats"></strong>
+                                    <a class="d-block word-break" target="_blank" title="{{ 'hosting_tab_USER_LOGS_dashboard_stats_newtab' | translate }}"
                                        data-ng-href="{{ urchin }}"
                                        data-ng-bind="urchin"
                                        data-ng-if="!userLogsToken"></a>
-                                    <a class="d-block word-break" target="_blank" title="{{i18n.hosting_tab_USER_LOGS_dashboard_stats_newtab}}"
+                                    <a class="d-block word-break" target="_blank" title="{{ 'hosting_tab_USER_LOGS_dashboard_stats_newtab' | translate }}"
                                        data-ng-href="{{ urchin  + '?token=' +  userLogsToken}}"
                                        data-ng-bind="urchin"
                                        data-ng-if="userLogsToken"></a>
@@ -529,9 +516,9 @@
         </div>
     </div>
 
-    <div class="mt-5"
+    <div class="oui-tile mt-5"
          data-ng-if="!hosting.isCloudWeb">
-        <h2 data-i18n-static="hosting_dashboard_hosting_activities"></h2>
+        <h2 class="oui-header_4 oui-tile__title" data-translate="hosting_dashboard_hosting_activities"></h2>
         <div data-ng-include="'hosting/statistics/STATISTICS.html'"></div>
     </div>
 </div>

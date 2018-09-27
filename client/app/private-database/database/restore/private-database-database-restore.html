@@ -2,10 +2,10 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="restoreBDD"
-         data-wizard-title="i18n.privateDatabase_tabs_dumps_restore_dump">
+         data-wizard-title="'privateDatabase_tabs_dumps_restore_dump' | translate">
 
         <div data-wizard-step>
-            <p data-ng-bind-html="tr('privateDatabase_restore_bdd_confirm', [restoreBDDCtrl.dump.creationDate, restoreBDDCtrl.dump.databaseName])"></p>
+            <p data-ng-bind-html="'privateDatabase_restore_bdd_confirm' | translate: { t0: restoreBDDCtrl.dump.creationDate, t1: restoreBDDCtrl.dump.databaseName }"></p>
         </div>
     </div>
 </div>

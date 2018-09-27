@@ -4,13 +4,13 @@
 
     <div class="form-group">
         <label class="control-label col-md-3 required" for="algorithm"
-               data-i18n-static="domain_configuration_dns_entry_add_algorithm"></label>
+               data-translate="domain_configuration_dns_entry_add_algorithm"></label>
         <div class="col-md-6">
             <div class="oui-select mb-0">
                 <select class="oui-select__input" id="algorithm" name="algorithm" required
                         data-ng-change="ctrl.setTargetValue('SSHFP')"
                         data-ng-model="ctrl.model.target.algorithm">
-                    <option value="" disabled data-i18n-static="select_placeholder"></option>
+                    <option value="" disabled data-translate="select_placeholder"></option>
                     <option value="1">(1) RSA</option>
                     <option value="2">(2) DSA</option>
                     <option value="3">(3) ECDSA</option>
@@ -23,13 +23,13 @@
 
     <div class="form-group">
         <label class="control-label col-md-3 required" for="fptype"
-               data-i18n-static="domain_configuration_dns_entry_add_fptype"></label>
+               data-translate="domain_configuration_dns_entry_add_fptype"></label>
         <div class="col-md-6">
             <div class="oui-select mb-0">
                 <select class="oui-select__input" id="fptype" name="fptype" required
                         data-ng-change="ctrl.setTargetValue('SSHFP')"
                         data-ng-model="ctrl.model.target.fptype">
-                    <option value="" disabled data-i18n-static="select_placeholder"></option>
+                    <option value="" disabled data-translate="select_placeholder"></option>
                     <option value="1">(1) SHA-1</option>
                     <option value="2">(2) SHA-256</option>
                 </select>
@@ -40,7 +40,7 @@
 
     <div class="form-group" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.fp.$dirty && ctrl.zoneRecordForm.fp.$invalid }">
          <label class="control-label col-md-3 rrequired" for="fp"
-                data-i18n-static="domain_configuration_dns_entry_add_fp"></label>
+                data-translate="domain_configuration_dns_entry_add_fp"></label>
         <div class="col-md-9">
             <input type="text" class="form-control" id="fp" name="fp" required
                    data-ng-change="ctrl.setTargetValue('SSHFP')"

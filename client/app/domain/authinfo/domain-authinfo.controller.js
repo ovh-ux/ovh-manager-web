@@ -1,8 +1,9 @@
 angular.module('App').controller(
   'DomainAuthInfoCtrl',
   class DomainAuthInfoCtrl {
-    constructor($scope, Alerter, Domain) {
+    constructor($scope, $translate, Alerter, Domain) {
       this.$scope = $scope;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
     }
@@ -17,7 +18,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_dashboard_show_authinfo_error'),
+            this.$translate.instant('domain_dashboard_show_authinfo_error'),
             err,
             this.$scope.alerts.main,
           );

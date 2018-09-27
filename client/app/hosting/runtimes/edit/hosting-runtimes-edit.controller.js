@@ -1,13 +1,13 @@
 angular.module('App').controller(
   'controllers.Hosting.Runtimes.edit',
   class HostingRuntimesEditCtrl {
-    constructor($scope, $stateParams, Alerter, HostingRuntimes, translator) {
+    constructor($scope, $stateParams, $translate, Alerter, HostingRuntimes) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.HostingRuntimes = HostingRuntimes;
-      this.translator = translator;
     }
 
     $onInit() {
@@ -29,7 +29,7 @@ angular.module('App').controller(
         })
         .catch(() => {
           this.Alerter.error(
-            this.$scope.tr('hosting_tab_RUNTIMES_list_error'),
+            this.$translate.instant('hosting_tab_RUNTIMES_list_error'),
             this.$scope.alerts.main,
           );
 
@@ -66,13 +66,13 @@ angular.module('App').controller(
       )
         .then(() => {
           this.Alerter.success(
-            this.$scope.tr('hosting_tab_RUNTIMES_edit_success'),
+            this.$translate.instant('hosting_tab_RUNTIMES_edit_success'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.Alerter.error(
-            this.$scope.tr('hosting_tab_RUNTIMES_edit_error') + err.message,
+            this.$translate.instant('hosting_tab_RUNTIMES_edit_error') + err.message,
             this.$scope.alerts.main,
           );
         })

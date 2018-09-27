@@ -8,8 +8,9 @@ angular.module('App').controller(
      * @param newDnsZone
      * @param User
      */
-    constructor($scope, Alerter, newDnsZone, User) {
+    constructor($scope, $translate, Alerter, newDnsZone, User) {
       this.$scope = $scope;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.newDnsZone = newDnsZone;
       this.User = User;
@@ -49,7 +50,7 @@ angular.module('App').controller(
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domains_newdnszone_order_step3_fail'),
+            this.$translate.instant('domains_newdnszone_order_step3_fail'),
             err,
             this.alerts.main,
           );

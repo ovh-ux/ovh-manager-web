@@ -1,8 +1,9 @@
 angular.module('controllers').controller(
   'DomainZoneDefaultTTLCtrl',
   class DomainZoneDefaultTTLCtrl {
-    constructor($scope, Alerter, Domain) {
+    constructor($scope, $translate, Alerter, Domain) {
       this.$scope = $scope;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
     }
@@ -22,7 +23,7 @@ angular.module('controllers').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_tab_ZONE_default_ttl_error'),
+            this.$translate.instant('domain_tab_ZONE_default_ttl_error'),
             err,
             this.$scope.alerts.main,
           );
@@ -37,11 +38,11 @@ angular.module('controllers').controller(
       this.loading = true;
       return this.Domain.putZoneSOA(this.domain.name, this.zoneSOA)
         .then(() => this.Alerter.success(
-          this.$scope.tr('domain_tab_ZONE_default_ttl_success'),
+          this.$translate.instant('domain_tab_ZONE_default_ttl_success'),
           this.$scope.alerts.main,
         ))
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('domain_tab_ZONE_default_ttl_error'),
+          this.$translate.instant('domain_tab_ZONE_default_ttl_error'),
           err,
           this.$scope.alerts.main,
         ))

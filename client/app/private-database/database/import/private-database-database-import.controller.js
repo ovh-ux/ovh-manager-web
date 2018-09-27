@@ -5,6 +5,7 @@ angular.module('App').controller(
       $rootScope,
       $scope,
       $stateParams,
+      $translate,
       Alerter,
       PrivateDatabase,
       User,
@@ -12,6 +13,7 @@ angular.module('App').controller(
       this.$rootScope = $rootScope;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
       this.userService = User;
@@ -91,7 +93,7 @@ angular.module('App').controller(
           })
           .catch((err) => {
             this.alerter.alertFromSWS(
-              this.$scope.tr('hosting_tab_DATABASES_table_popover_import_step1_load_documents_error'),
+              this.$translate.instant('hosting_tab_DATABASES_table_popover_import_step1_load_documents_error'),
               _.get(err, 'data', err),
               this.$scope.alerts.main,
             );
@@ -115,13 +117,13 @@ angular.module('App').controller(
         )
         .then(() => {
           this.alerter.success(
-            this.$scope.tr('hosting_tab_DATABASES_table_popover_import_step3_succes'),
+            this.$translate.instant('hosting_tab_DATABASES_table_popover_import_step3_succes'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_DATABASES_table_popover_import_step3_fail'),
+            this.$translate.instant('hosting_tab_DATABASES_table_popover_import_step3_fail'),
             _.get(err, 'data', err),
             this.$scope.alerts.main,
           );

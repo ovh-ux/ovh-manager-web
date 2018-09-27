@@ -7,8 +7,9 @@ angular.module('App').controller(
      * @param DomainsOwo
      * @param Alerter
      */
-    constructor($scope, DomainsOwo, Alerter) {
+    constructor($scope, $translate, DomainsOwo, Alerter) {
       this.$scope = $scope;
+      this.$translate = $translate;
       this.DomainsOwo = DomainsOwo;
       this.Alerter = Alerter;
     }
@@ -17,9 +18,9 @@ angular.module('App').controller(
       this.activated = [];
       this.desactivated = [];
       this.domainsOwoMessages = {
-        OK: this.$scope.tr('domains_configuration_whois_success'),
-        PARTIAL: this.$scope.tr('domains_configuration_whois_partial'),
-        ERROR: this.$scope.tr('domains_configuration_whois_fail'),
+        OK: this.$translate.instant('domains_configuration_whois_success'),
+        PARTIAL: this.$translate.instant('domains_configuration_whois_partial'),
+        ERROR: this.$translate.instant('domains_configuration_whois_fail'),
       };
       this.fields = null;
       this.fieldsModel = {};
@@ -55,7 +56,7 @@ angular.module('App').controller(
           })
           .catch((err) => {
             this.Alerter.alertFromSWS(
-              this.$scope.tr('domains_configuration_whois_fail'),
+              this.$translate.instant('domains_configuration_whois_fail'),
               err,
               this.$scope.alerts.main,
             );
@@ -76,7 +77,7 @@ angular.module('App').controller(
             this.$scope.alerts.main,
           ))
           .catch(err => this.Alerter.alertFromSWS(
-            this.$scope.tr('domains_configuration_whois_fail'),
+            this.$translate.instant('domains_configuration_whois_fail'),
             err,
             this.$scope.alerts.main,
           ));

@@ -2,13 +2,14 @@ angular
   .module('App')
   .controller('EmailDomainEmailCtrl', class EmailDomainEmailCtrl {
     constructor(
-      $q, $scope, $stateParams, $timeout, $window,
+      $q, $scope, $stateParams, $timeout, $translate, $window,
       Alerter, constants, Emails, ovhUserPref, User,
     ) {
       this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
+      this.$translate = $translate;
       this.$window = $window;
 
       this.Alerter = Alerter;
@@ -206,7 +207,7 @@ angular
           }
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$scope.tr('email_tab_table_accounts_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(this.$translate.instant('email_tab_table_accounts_error'), err, this.$scope.alerts.main);
         })
         .finally(() => {
           if (_.isEmpty(this.emails)) {

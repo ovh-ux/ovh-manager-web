@@ -2,7 +2,7 @@ angular
   .module('App')
   .controller(
     'HostingTabCronsCtrl',
-    ($scope, Hosting, $timeout, $stateParams, HostingCron, Alerter, User) => {
+    ($scope, Hosting, $timeout, $stateParams, $translate, HostingCron, Alerter, User) => {
       $scope.crons = {
         details: [],
       };
@@ -40,7 +40,7 @@ angular
           })
           .catch((err) => {
             Alerter.alertFromSWS(
-              $scope.tr('hosting_tab_CRON_configuration_error'),
+              $translate.instant('hosting_tab_CRON_configuration_error'),
               _.get(err, 'data', err),
               $scope.alerts.main,
             );

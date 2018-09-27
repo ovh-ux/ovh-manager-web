@@ -4,42 +4,42 @@
             <div data-ovh-alert="{{alerts.main}}"></div>
 
             <div class="alert alert-warning" role="alert"
-                 data-i18n-static="privateDatabase_tabs_whitelist_list_no_whitelist_info"
+                 data-translate="privateDatabase_tabs_whitelist_list_no_whitelist_info"
                  data-ng-if="listCtrl.isWhitelistEmpty()">
             </div>
 
-            <h2 data-i18n-static="privateDatabase_add_authorized_ip_title"></h2>
+            <h2 data-translate="privateDatabase_add_authorized_ip_title"></h2>
 
             <oui-datagrid data-rows="listCtrl.whitelistIps"
                           data-row-loader="listCtrl.transformItem($row)">
-                <oui-column data-title="tr('privateDatabase_tabs_whitelist_list_ip_network')" data-property="ip" data-sortable></oui-column>
-                <oui-column data-title="tr('privateDatabase_tabs_whitelist_list_service')" data-property="service">
+                <oui-column data-title="'privateDatabase_tabs_whitelist_list_ip_network' | translate" data-property="ip" data-sortable></oui-column>
+                <oui-column data-title="'privateDatabase_tabs_whitelist_list_service' | translate" data-property="service">
                     <i class="oui-icon oui-icon-success"
                        data-ng-show="$row.service"
                        aria-hidden="true"></i>
                 </oui-column>
-                <oui-column data-title="tr('privateDatabase_tabs_whitelist_list_sftp')" data-property="sftp">
+                <oui-column data-title="'privateDatabase_tabs_whitelist_list_sftp' | translate" data-property="sftp">
                     <i class="oui-icon oui-icon-success"
                        data-ng-show="$row.sftp"
                        aria-hidden="true"></i>
                 </oui-column>
-                <oui-column data-title="tr('privateDatabase_tabs_whitelist_list_status')" data-property="name">
+                <oui-column data-title="'privateDatabase_tabs_whitelist_list_status' | translate" data-property="name">
                     <span class="label label-info"
                           data-ng-if="$row.creating"
-                          data-i18n-static="privateDatabase_tabs_whitelist_list_status_creating"></span>
+                          data-translate="privateDatabase_tabs_whitelist_list_status_creating"></span>
                     <span class="label label-info"
                           data-ng-if="$row.updating"
-                          data-i18n-static="privateDatabase_tabs_whitelist_list_status_updating"></span>
+                          data-translate="privateDatabase_tabs_whitelist_list_status_updating"></span>
                     <span class="label label-info"
                           data-ng-if="$row.deleting"
-                          data-i18n-static="privateDatabase_tabs_whitelist_list_status_deleting"></span>
+                          data-translate="privateDatabase_tabs_whitelist_list_status_deleting"></span>
                     {{ $row.name | sliceContent: 50 }}
                 </oui-column>
                 <oui-action-menu data-align="end" data-compact>
-                    <oui-action-menu-item data-text="{{::tr('privateDatabase_tabs_whitelist_list_popover_edit')}}"
+                    <oui-action-menu-item data-text="{{:: 'privateDatabase_tabs_whitelist_list_popover_edit' | translate }}"
                                           data-on-click="listCtrl.editWhitelist($row)">
                     </oui-action-menu-item>
-                    <oui-action-menu-item data-text="{{::tr('privateDatabase_tabs_whitelist_list_popover_delete')}}"
+                    <oui-action-menu-item data-text="{{:: 'privateDatabase_tabs_whitelist_list_popover_delete' | translate }}"
                                           data-on-click="listCtrl.deleteWhitelist($row)">
                     </oui-action-menu-item>
                 </oui-action-menu>
@@ -48,7 +48,7 @@
 
         <div class="col-md-3 mt-5 mt-lg-0">
             <button class="btn btn-block btn-default" type="button"
-                    data-i18n-static="privateDatabase_tabs_whitelist_list_add_whitelist"
+                    data-translate="privateDatabase_tabs_whitelist_list_add_whitelist"
                     data-ng-click="listCtrl.createWhitelist()">
             </button>
         </div>

@@ -1,13 +1,13 @@
 <div class="row" data-ng-if="worksDetails && worksDetails.length">
     <div class="col-md-8">
         <i class="fa fa-bolt" aria-hidden="true"></i>
-        <span data-ng-bind="tr('core_works_description')">
+        <span data-translate="core_works_description">
         </span>
         <button
             type="button"
             class="btn btn-link"
             data-ng-click="openListModal(worksDetails)"
-            data-ng-bind="tr('core_works_link')">
+            data-translate="core_works_link">
         </button>
     </div>
     <div id="{{modalId}}" class="modal fade currentAction" tabindex="-1"

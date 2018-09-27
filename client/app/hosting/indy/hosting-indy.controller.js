@@ -1,10 +1,11 @@
 angular.module('App').controller(
   'HostingIndyTabCtrl',
   class HostingIndyTabCtrl {
-    constructor($scope, $location, $stateParams, Alerter, HostingIndy) {
+    constructor($scope, $location, $stateParams, $translate, Alerter, HostingIndy) {
       this.$scope = $scope;
       this.$location = $location;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.HostingIndy = HostingIndy;
     }
@@ -48,7 +49,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_tab_INDY_error'),
+            this.$translate.instant('hosting_tab_INDY_error'),
             err,
             this.$scope.alerts.main,
           );

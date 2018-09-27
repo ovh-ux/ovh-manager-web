@@ -2,16 +2,16 @@
     <div data-wizard
          data-wizard-on-cancel="resetSwitchAndAction"
          data-wizard-on-finish="changeDnsSecState"
-         data-wizard-title="ctrl.domain.dnssecStatus === 'ENABLED' ? i18n.domain_configuration_dnssec_disable_modal_title : i18n.domain_configuration_dnssec_enable_modal_title">
+         data-wizard-title="(ctrl.domain.dnssecStatus === 'ENABLED' ? 'domain_configuration_dnssec_disable_modal_title' : 'domain_configuration_dnssec_enable_modal_title') | translate">
 
         <div data-wizard-step>
             <div data-ng-if="ctrl.domain.dnssecStatus === 'ENABLED'">
-                <p data-i18n="domain_configuration_dnssec_disable_modal_explain"></p>
-                <p data-i18n="domain_configuration_dnssec_disable_modal_confirm"></p>
+                <p data-translate="domain_configuration_dnssec_disable_modal_explain"></p>
+                <p data-translate="domain_configuration_dnssec_disable_modal_confirm"></p>
             </div>
             <div data-ng-if="ctrl.domain.dnssecStatus === 'DISABLED'">
-                <p data-i18n="domain_configuration_dnssec_enable_modal_explain"></p>
-                <p data-i18n="domain_configuration_dnssec_enable_modal_confirm"></p>
+                <p data-translate="domain_configuration_dnssec_enable_modal_explain"></p>
+                <p data-translate="domain_configuration_dnssec_enable_modal_confirm"></p>
             </div>
         </div>
     </div>

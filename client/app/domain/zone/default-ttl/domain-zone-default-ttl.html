@@ -6,19 +6,19 @@
         novalidate>
 
         <oui-modal
-            data-title="{{::tr('domain_tab_ZONE_default_ttl_button')}}"
-            data-primary-label="{{::tr('wizard_modify')}}"
+            data-title="{{:: 'domain_tab_ZONE_default_ttl_button' | translate }}"
+            data-primary-label="{{:: 'wizard_modify' | translate }}"
             data-secondary-action="resetAction()"
-            data-secondary-label="{{::tr('wizard_cancel')}}"
+            data-secondary-label="{{:: 'wizard_cancel' | translate }}"
             data-on-dismiss="resetAction()"
             data-loading="ctrl.loading" >
 
-            <p data-i18n-static="domain_tab_ZONE_default_ttl_info"></p>
-            <p data-ng-bind-html="::tr('domain_tab_ZONE_default_ttl_heading', '<strong>' + ctrl.domain.displayName + '</strong>')"></p>
+            <p data-translate="domain_tab_ZONE_default_ttl_info"></p>
+            <p data-ng-bind-html=":: 'domain_tab_ZONE_default_ttl_heading' | translate: { t0: '<strong>' + ctrl.domain.displayName + '</strong>' }"></p>
 
             <oui-field
-                data-label="{{::tr('domain_tab_ZONE_default_ttl_default_value')}}"
-                data-help-text="{{::tr('domain_tab_ZONE_default_ttl_help')}}"
+                data-label="{{:: 'domain_tab_ZONE_default_ttl_default_value' | translate }}"
+                data-help-text="{{:: 'domain_tab_ZONE_default_ttl_help' | translate }}"
                 data-size="s">
                 <input id="nb-ttl"
                     type="number"

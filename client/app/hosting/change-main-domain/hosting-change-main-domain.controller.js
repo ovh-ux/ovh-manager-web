@@ -1,6 +1,6 @@
 angular.module('App')
   .controller('HostingChangeMainDomainCtrl', (
-    $scope, $rootScope, $q, $stateParams,
+    $scope, $rootScope, $q, $stateParams, $translate,
     Alerter, atInternet, Hosting, hostingChangeDomain, Domain, Emails, User,
   ) => {
     $scope.model = {
@@ -126,7 +126,7 @@ angular.module('App')
               mxplan,
             })
               .then(data => _.assign({ duration }, data))
-              .catch(err => Alerter.alertFromSWS($scope.tr('hosting_order_upgrade_error'), err, $scope.alerts.main))
+              .catch(err => Alerter.alertFromSWS($translate.instant('hosting_order_upgrade_error'), err, $scope.alerts.main))
               .finally(() => {
                 $scope.loading.validation = false;
               }),
@@ -137,18 +137,18 @@ angular.module('App')
               $scope.durations = data;
               [$scope.model.duration] = $scope.durations;
             })
-            .catch(err => Alerter.alertFromSWS($scope.tr('hosting_order_upgrade_error'), err, $scope.alerts.main))
+            .catch(err => Alerter.alertFromSWS($translate.instant('hosting_order_upgrade_error'), err, $scope.alerts.main))
             .finally(() => { $scope.loading.durations = false; });
         })
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
-          Alerter.alertFromSWS($scope.tr('hosting_order_upgrade_error'), err, $scope.alerts.main);
+          Alerter.alertFromSWS($translate.instant('hosting_order_upgrade_error'), err, $scope.alerts.main);
           $scope.resetAction();
         });
     };
 
     $scope.getResumePrice = function getResumePrice(price) {
-      return price.value === 0 ? $scope.tr('price_free') : $scope.tr('price_ht_label', [price.text]);
+      return price.value === 0 ? $translate.instant('price_free') : $translate.instant('price_ht_label', { price: price.text });
     };
 
     $scope.orderUpgrade = function orderUpgrade() {
@@ -174,9 +174,9 @@ angular.module('App')
             priceTaxFree: order.prices.withoutTax.value,
             price: order.prices.withTax.value,
           });
-          Alerter.success($scope.tr('hosting_order_upgrade_success', [order.url, order.orderId]), $scope.alerts.main);
+          Alerter.success($translate.instant('hosting_order_upgrade_success', { t0: order.url, t1: order.orderId }), $scope.alerts.main);
         })
-        .catch(err => Alerter.alertFromSWS($scope.tr('hosting_order_upgrade_error'), err, $scope.alerts.main))
+        .catch(err => Alerter.alertFromSWS($translate.instant('hosting_order_upgrade_error'), err, $scope.alerts.main))
         .finally(() => {
           $scope.resetAction();
           $scope.loading.validation = false;

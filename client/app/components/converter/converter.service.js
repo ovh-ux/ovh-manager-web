@@ -1,8 +1,8 @@
 angular.module('services').service(
   'ConverterService',
   class ConverterService {
-    constructor(translator) {
-      this.translator = translator;
+    constructor($translate) {
+      this.$translate = $translate;
 
       this.base = 1000;
 
@@ -116,7 +116,7 @@ angular.module('services').service(
       const bestUnitIndex = Math.floor(Math.log(convertedNb) / Math.log(this.base));
 
       convertedNb = `${(convertedNb / this.def[bestUnitIndex].val).toFixed(decimalWanted)}`;
-      const bestUnit = this.translator.tr(`unit_size_${this.def[bestUnitIndex].unit}`);
+      const bestUnit = this.$translate.instant(`unit_size_${this.def[bestUnitIndex].unit}`);
 
       return {
         val: convertedNb,

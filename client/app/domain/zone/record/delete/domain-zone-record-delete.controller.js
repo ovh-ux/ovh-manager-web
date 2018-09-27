@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'DomainZoneRecordDeleteCtrl',
   class DomainZoneRecordDeleteCtrl {
-    constructor($scope, $stateParams, Alerter, Domain) {
+    constructor($scope, $stateParams, $translate, Alerter, Domain) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
     }
@@ -28,11 +29,11 @@ angular.module('App').controller(
           this.entryToDelete,
         )
           .then(() => this.Alerter.success(
-            this.$scope.tr('domain_configuration_dns_entry_delete_mass_success'),
+            this.$translate.instant('domain_configuration_dns_entry_delete_mass_success'),
             this.$scope.alerts.main,
           ))
           .catch(err => this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_configuration_dns_entry_delete_mass_fail'),
+            this.$translate.instant('domain_configuration_dns_entry_delete_mass_fail'),
             err,
             this.$scope.alerts.main,
           ))
@@ -43,13 +44,13 @@ angular.module('App').controller(
         this.entryToDelete.id,
       )
         .then(() => this.Alerter.success(
-          this.$scope.tr('domain_configuration_dns_entry_delete_success'),
+          this.$translate.instant('domain_configuration_dns_entry_delete_success'),
           this.$scope.alerts.main,
         ))
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('domain_configuration_dns_entry_delete_fail', [
-            `${this.entryToDelete.subDomain}.${this.entryToDelete.zone}`,
-          ]),
+          this.$translate.instant('domain_configuration_dns_entry_delete_fail', {
+            t0: `${this.entryToDelete.subDomain}.${this.entryToDelete.zone}`,
+          }),
           err,
           this.$scope.alerts.main,
         ))

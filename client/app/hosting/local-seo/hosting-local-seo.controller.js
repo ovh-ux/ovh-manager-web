@@ -51,7 +51,7 @@ angular.module('App').controller(
         .then(({ serviceInfo, user }) => serviceInfo.contactAdmin === user.nichandle)
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('common_serviceinfos_error', [this.productId]),
+            this.$translate.instant('common_serviceinfos_error', { t0: this.productId }),
             err,
             this.$scope.alerts.main,
           );

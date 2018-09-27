@@ -1,5 +1,5 @@
 {
-  function WebSiteSuccessController($stateParams, User, Hosting, Alerter) {
+  function WebSiteSuccessController($stateParams, $translate, User, Hosting, Alerter) {
     const self = this;
 
     self.type = $stateParams.type;
@@ -18,7 +18,7 @@
             self.hosting = hosting;
           })
           .catch(err => Alerter.alertFromSWS(
-            'website_success_text_classic_error',
+            $translate.instant('website_success_text_classic_error'),
             err,
             'website.success.alert',
           ))

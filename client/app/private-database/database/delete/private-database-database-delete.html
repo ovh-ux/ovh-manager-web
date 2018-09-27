@@ -2,10 +2,10 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="deleteBDD"
-         data-wizard-title="i18n.privateDatabase_delete_bdd_title">
+         data-wizard-title="'privateDatabase_delete_bdd_title' | translate">
 
         <div data-wizard-step>
-            <p data-ng-bind-html="tr('privateDatabase_delete_bdd_confirm', [deleteBddCtrl.bddToDelete.databaseName])"></p>
+            <p data-ng-bind-html="'privateDatabase_delete_bdd_confirm' | translate: { t0: deleteBddCtrl.bddToDelete.databaseName }"></p>
         </div>
     </div>
 </div>

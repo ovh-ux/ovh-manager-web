@@ -2,7 +2,7 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="deleteRedirection"
-         data-wizard-title="i18n.domain_tab_REDIRECTION_delete_title">
+         data-wizard-title="'domain_tab_REDIRECTION_delete_title' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading">
@@ -12,16 +12,16 @@
             </div>
 
             <div data-ng-if="!ctrl.loading">
-                <p data-ng-bind-html="tr('domain_tab_REDIRECTION_delete_confirm', [ctrl.entryToDeleteName, ctrl.entryToDelete.targetDisplayName])"
+                <p data-ng-bind-html="'domain_tab_REDIRECTION_delete_confirm' | translate: { t0: ctrl.entryToDeleteName, t1: ctrl.entryToDelete.targetDisplayName }"
                    data-ng-if="!ctrl.isSubDomain"></p>
-                <p data-ng-bind-html="tr('domain_tab_REDIRECTION_delete_sub_confirm', [ctrl.entryToDeleteName, ctrl.entryToDelete.targetDisplayName])"
+                <p data-ng-bind-html="'domain_tab_REDIRECTION_delete_sub_confirm' | translate: { t0: ctrl.entryToDeleteName, t1: ctrl.entryToDelete.targetDisplayName }"
                    data-ng-if="ctrl.isSubDomain"></p>
             </div>
 
             <oui-checkbox class="mt-4" id="removeWWW" name="removeWWW"
                 data-ng-if="ctrl.wwwDomainToDelete.data"
                 data-model="ctrl.wwwDomainToDelete.removeWWW"
-                data-text="{{tr('domain_tab_REDIRECTION_delete_www_confirm', [ctrl.constructor.getDomainName(ctrl.wwwDomainToDelete.data), ctrl.wwwDomainToDelete.data.targetDisplayName])}}">
+                data-text="{{ 'domain_tab_REDIRECTION_delete_www_confirm' | translate: { t0: ctrl.constructor.getDomainName(ctrl.wwwDomainToDelete.data), t1: ctrl.wwwDomainToDelete.data.targetDisplayName } }}">
             </oui-checkbox>
         </div>
     </div>

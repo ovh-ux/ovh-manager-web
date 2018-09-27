@@ -8,7 +8,6 @@ class SessionService {
     OtrsPopupService,
     Products,
     ssoAuthentication,
-    translator,
     User,
   ) {
     this.$q = $q;
@@ -19,7 +18,6 @@ class SessionService {
     this.otrsPopupService = OtrsPopupService;
     this.products = Products;
     this.ssoAuthentication = ssoAuthentication;
-    this.translator = translator;
     this.user = User;
   }
 
@@ -35,10 +33,10 @@ class SessionService {
 
   getDomainsMenu(domains) {
     const domainsMenu = [{
-      title: this.translator.tr('navigation_left_all_domains'),
+      title: this.$translate.instant('navigation_left_all_domains'),
       state: 'app.domain.all',
     }, {
-      title: this.translator.tr('navigation_left_all_domains_operations'),
+      title: this.$translate.instant('navigation_left_all_domains_operations'),
       state: 'app.domain.operation',
     }];
 
@@ -124,15 +122,15 @@ class SessionService {
       // Build Microsoft menu
     return [{
       name: 'microsoft.exchange',
-      title: this.translator.tr('navigation_left_exchange'),
+      title: this.$translate.instant('navigation_left_exchange'),
       subLinks: exchangeLinks,
     }, {
       name: 'microsoft.office',
-      title: this.translator.tr('navigation_left_office'),
+      title: this.$translate.instant('navigation_left_office'),
       subLinks: officeLinks,
     }, {
       name: 'microsoft.sharepoint',
-      title: this.translator.tr('navigation_left_sharepoint'),
+      title: this.$translate.instant('navigation_left_sharepoint'),
       subLinks: sharepointLinks,
     }];
   }
@@ -159,27 +157,27 @@ class SessionService {
 
     return [{
       name: 'domain',
-      title: this.translator.tr('navigation_left_domains'),
+      title: this.$translate.instant('navigation_left_domains'),
       subLinks: this.getDomainsMenu(domainProducts),
     }, {
       name: 'hosting',
-      title: this.translator.tr('navigation_left_hosting'),
+      title: this.$translate.instant('navigation_left_hosting'),
       subLinks: this.constructor.getProductsMenu('hosting', hostingProducts),
     }, {
       name: 'private-database',
-      title: this.translator.tr('navigation_left_database'),
+      title: this.$translate.instant('navigation_left_database'),
       subLinks: this.constructor.getProductsMenu('private-database', databaseProducts),
     }, {
       name: 'email-pro',
-      title: this.translator.tr('navigation_left_emailPro'),
+      title: this.$translate.instant('navigation_left_emailPro'),
       subLinks: this.constructor.getProductsMenu('email-pro', emailProProducts),
     }, {
       name: 'email',
-      title: this.translator.tr('navigation_left_email'),
+      title: this.$translate.instant('navigation_left_email'),
       subLinks: this.constructor.getProductsMenu('email.domain', emailProducts),
     }, {
       name: 'microsoft',
-      title: this.translator.tr('navigation_left_microsoft'),
+      title: this.$translate.instant('navigation_left_microsoft'),
       subLinks: this.getMicrosoftMenu(products),
     }];
   }
@@ -191,7 +189,7 @@ class SessionService {
     // Guides (External)
     if (_(currentSubsidiaryURLs).has('guides.home')) {
       assistanceMenu.push({
-        title: this.translator.tr('common_menu_support_all_guides'),
+        title: this.$translate.instant('common_menu_support_all_guides'),
         url: currentSubsidiaryURLs.guides.home,
         isExternal: true,
       });
@@ -199,7 +197,7 @@ class SessionService {
 
     // New ticket
     assistanceMenu.push({
-      title: this.translator.tr('common_menu_support_new_ticket'),
+      title: this.$translate.instant('common_menu_support_new_ticket'),
       click: (callback) => {
         if (!this.otrsPopupService.isLoaded()) {
           this.otrsPopupService.init();
@@ -215,14 +213,14 @@ class SessionService {
 
     // Tickets list
     assistanceMenu.push({
-      title: this.translator.tr('common_menu_support_list_ticket'),
+      title: this.$translate.instant('common_menu_support_list_ticket'),
       url: _.get(this.constants, 'REDIRECT_URLS.listTicket', ''),
     });
 
     // Telephony (External)
     if (_(currentSubsidiaryURLs).has('support_contact')) {
       assistanceMenu.push({
-        title: this.translator.tr('common_menu_support_telephony_contact'),
+        title: this.$translate.instant('common_menu_support_telephony_contact'),
         url: currentSubsidiaryURLs.support_contact,
         isExternal: true,
       });
@@ -230,21 +228,21 @@ class SessionService {
 
     return {
       name: 'assistance',
-      title: this.translator.tr('common_menu_support_assistance'),
+      title: this.$translate.instant('common_menu_support_assistance'),
       iconClass: 'icon-assistance',
       subLinks: assistanceMenu,
     };
   }
 
   getLanguageMenu() {
-    const currentLanguage = _(this.LANGUAGES).find({ value: this.translator.getLanguage() });
+    const currentLanguage = _(this.LANGUAGES).find({ value: this.$translate.use() });
 
     return {
       name: 'languages',
       label: _(currentLanguage).get('name'),
       class: 'oui-navbar-menu_language',
       title: _(currentLanguage).get('value').split('_')[0].toUpperCase(),
-      headerTitle: this.translator.tr('global_language'),
+      headerTitle: this.$translate.instant('global_language'),
       subLinks: _(this.LANGUAGES)
         .filter(language => _(language).has('name', 'value'))
         .map(language => ({
@@ -267,6 +265,10 @@ class SessionService {
     };
   }
 
+  getCurrentLocale() {
+    this.$translate.use().replace('_', '-').toLowerCase();
+  }
+
   getUserMenu(currentUser) {
     return {
       name: 'user',
@@ -278,27 +280,27 @@ class SessionService {
         // My Account
         {
           name: 'user.account',
-          title: this.translator.tr('global_account'),
+          title: this.$translate.instant('global_account'),
           url: '#/useraccount/infos',
           subLinks: [{
-            title: this.translator.tr('global_account_infos'),
+            title: this.$translate.instant('global_account_infos'),
             url: '#/useraccount/infos',
           }, {
-            title: this.translator.tr('global_account_security'),
+            title: this.$translate.instant('global_account_security'),
             url: '#/useraccount/security',
           },
           (this.constants.target === 'EU' || this.constants.target === 'CA') && {
-            title: this.translator.tr('global_account_emails'),
+            title: this.$translate.instant('global_account_emails'),
             url: '#/useraccount/emails',
           },
           (this.constants.target === 'EU') && {
-            title: this.translator.tr('global_account_subscriptions'),
+            title: this.$translate.instant('global_account_subscriptions'),
             url: '#/useraccount/subscriptions',
           }, {
-            title: this.translator.tr('global_account_ssh'),
+            title: this.$translate.instant('global_account_ssh'),
             url: '#/useraccount/ssh',
           }, {
-            title: this.translator.tr('global_account_advanced'),
+            title: this.$translate.instant('global_account_advanced'),
             url: '#/useraccount/advanced',
           }],
         },
@@ -306,13 +308,13 @@ class SessionService {
         // Billing
         !currentUser.isEnterprise && {
           name: 'user.billing',
-          title: this.translator.tr('global_billing'),
+          title: this.$translate.instant('global_billing'),
           url: '#/billing/history',
           subLinks: [{
-            title: this.translator.tr('global_billing_history'),
+            title: this.$translate.instant('global_billing_history'),
             url: '#/billing/history',
           }, {
-            title: this.translator.tr('global_billing_payments'),
+            title: this.$translate.instant('global_billing_payments'),
             url: '#/billing/payments',
           }],
         },
@@ -320,70 +322,70 @@ class SessionService {
         // Services
         (this.constants.target === 'EU' || this.constants.target === 'CA') && (!currentUser.isEnterprise ? {
           name: 'user.services',
-          title: this.translator.tr('global_renew'),
+          title: this.$translate.instant('global_renew'),
           url: '#/billing/autoRenew',
           subLinks: [{
-            title: this.translator.tr('global_renew_management'),
+            title: this.$translate.instant('global_renew_management'),
             url: '#/billing/autoRenew',
           }, {
-            title: this.translator.tr('global_renew_agreements'),
+            title: this.$translate.instant('global_renew_agreements'),
             url: '#/useraccount/agreements',
           }],
         } : {
-          title: this.translator.tr('global_renew_agreements'),
+          title: this.$translate.instant('global_renew_agreements'),
           url: '#/useraccount/agreements',
         }),
 
         // Payment
         !currentUser.isEnterprise && {
           name: 'user.payment',
-          title: this.translator.tr('global_means'),
+          title: this.$translate.instant('global_means'),
           url: '#/billing/mean',
           subLinks: [{
-            title: this.translator.tr('global_means_mean'),
+            title: this.$translate.instant('global_means_mean'),
             url: '#/billing/mean',
           },
           (this.constants.target === 'EU' || this.constants.target === 'CA') && {
-            title: this.translator.tr('global_means_ovhaccount'),
+            title: this.$translate.instant('global_means_ovhaccount'),
             url: '#/billing/ovhaccount',
           },
           (this.constants.target === 'EU' || this.constants.target === 'CA') && {
-            title: this.translator.tr('global_means_vouchers'),
+            title: this.$translate.instant('global_means_vouchers'),
             url: '#/billing/vouchers',
           }, {
-            title: this.translator.tr('global_means_refunds'),
+            title: this.$translate.instant('global_means_refunds'),
             url: '#/billing/refunds',
           },
           (this.constants.target === 'EU') && {
-            title: this.translator.tr('global_means_fidelity'),
+            title: this.$translate.instant('global_means_fidelity'),
             url: '#/billing/fidelity',
           }, {
-            title: this.translator.tr('global_means_credits'),
+            title: this.$translate.instant('global_means_credits'),
             url: '#/billing/credits',
           }],
         },
 
         // Orders
         (!currentUser.isEnterprise && this.constants.target === 'EU' && currentUser.ovhSubsidiary === 'FR') && {
-          title: this.translator.tr('global_orders'),
+          title: this.$translate.instant('global_orders'),
           url: '#/billing/orders',
         },
 
         // Contacts
         (this.constants.target === 'EU') && {
-          title: this.translator.tr('global_contacts'),
+          title: this.$translate.instant('global_contacts'),
           url: '#/useraccount/contacts?tab=SERVICES',
         },
 
         // Tickets
         {
-          title: this.translator.tr('global_list_ticket'),
+          title: this.$translate.instant('global_list_ticket'),
           url: '#/ticket',
         },
 
         // Logout
         {
-          title: this.translator.tr('global_logout'),
+          title: this.$translate.instant('global_logout'),
           class: 'logout',
           click: (callback) => {
             this.ssoAuthentication.logout();
@@ -413,7 +415,7 @@ class SessionService {
       const managerLink = {
         name: managerName,
         class: managerName,
-        title: this.translator.tr(`universe_univers-${managerName}_name`),
+        title: this.$translate.instant(`universe_univers-${managerName}_name`),
         url: managerUrls[managerName],
         isPrimary: ['partners', 'labs'].indexOf(managerName) === -1,
       };
@@ -442,7 +444,7 @@ class SessionService {
       const baseNavbar = {
         // Set OVH Logo
         brand: {
-          label: this.translator.tr('universe_univers-web_name'),
+          label: this.$translate.instant('universe_univers-web_name'),
           url: managerUrls.web,
           iconAlt: 'OVH',
           iconClass: 'navbar-logo',

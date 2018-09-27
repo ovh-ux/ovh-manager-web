@@ -10,18 +10,18 @@
 
         <oui-message data-type="info"
              data-ng-if="configurationsCtrl.database.type === 'postgresql'">
-            <span data-i18n-static="privateDatabase_configurations_general_postgresql_soon"></span>
+            <span data-translate="privateDatabase_configurations_general_postgresql_soon"></span>
         </oui-message>
         <oui-message data-type="info"
              data-ng-if="configurationsCtrl.database.type !== 'postgresql' && configurationsCtrl.configurations.length === 0">
-            <span data-i18n-static="privateDatabase_capability_disabled_explanation"></span>
+            <span data-translate="privateDatabase_capability_disabled_explanation"></span>
         </oui-message>
 
         <div data-ng-if="configurationsCtrl.configurations.length >= 1">
 
-            <h2 data-ng-bind-html="tr('privateDatabase_configurations_general_' + configurationsCtrl.database.type)"></h2>
+            <h2 data-ng-bind-html="'privateDatabase_configurations_general_' + configurationsCtrl.database.type | translate"></h2>
 
-            <p data-i18n-static="privateDatabase_configuration_alert"></p>
+            <p data-translate="privateDatabase_configuration_alert"></p>
 
             <form name="configurationsCtrl.dbConfigurationForm"
                   data-ng-submit="configurationsCtrl.dbConfigurationForm.$valid && configurationsCtrl.updateConfigurations()"
@@ -54,7 +54,7 @@
                         </oui-radio-toggle-group>
                     </oui-field>
                 </div>
-                <oui-form-actions data-submit-text="{{:: tr('privateDatabase_configuration_confirm_btn') }}"></oui-form-actions>
+                <oui-form-actions data-submit-text="{{:: 'privateDatabase_configuration_confirm_btn' | translate }}"></oui-form-actions>
             </form>
         </div>
     </div>

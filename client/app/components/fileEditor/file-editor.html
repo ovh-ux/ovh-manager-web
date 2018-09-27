@@ -7,23 +7,23 @@
                 <span class="fa fa-upload" aria-hidden="true"></span>
             </label>
         </div>
-        <button type="button" class="btn btn-icon" title="{{::tr('common_add')}}"
+        <button type="button" class="btn btn-icon" title="{{:: 'common_add' | translate }}"
                 data-ng-click="goToAddItem()"
                 data-ng-show="showButtonAdd">
             <span class="fa fa-plus" aria-hidden="true"></span>
         </button>
         <span data-ng-show="ngModel.length > 0">|</span>
-        <button type="button" class="btn btn-icon" title="{{::tr('common_delete_all')}}"
+        <button type="button" class="btn btn-icon" title="{{:: 'common_delete_all' | translate }}"
                 data-ng-click="removeAll()"
                 data-ng-show="ngModel.length > 0">
             <span class="fa fa-trash-o" aria-hidden="true"></span>
         </button>
         <span data-ng-show="fileEditorErrors.length > 0">|</span>
-        <button type="button" class="btn btn-icon text-danger" title="{{::tr('common_go_to_next_error')}}"
+        <button type="button" class="btn btn-icon text-danger" title="{{:: 'common_go_to_next_error' | translate }}"
                 data-ng-click="goToNextError()"
                 data-ng-show="fileEditorErrors.length > 0">
             <span class="fa fa-exclamation-triangle mr-2" aria-hidden="true"></span>
-            <span data-ng-bind-html="trpl('mailing_list_common_addr_errors', fileEditorErrors.length, [fileEditorErrors.length])"
+            <span data-ng-bind-html="(fileEditorErrors.length > 1 ? 'mailing_list_common_addr_errors_other' : 'mailing_list_common_addr_errors_1') | translate: { t0: fileEditorErrors.length }"
                   data-ng-show="fileEditorErrors.length > 0">
             </span>
         </button>

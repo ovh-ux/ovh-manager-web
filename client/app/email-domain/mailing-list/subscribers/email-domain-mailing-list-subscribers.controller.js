@@ -6,6 +6,7 @@ angular.module('App').controller(
      * @param $scope
      * @param $filter
      * @param $stateParams
+     * @param $translate
      * @param Alerter
      * @param MailingLists
      * @param exportCsv
@@ -14,6 +15,7 @@ angular.module('App').controller(
       $scope,
       $filter,
       $stateParams,
+      $translate,
       Alerter,
       MailingLists,
       exportCsv,
@@ -21,6 +23,7 @@ angular.module('App').controller(
       this.$scope = $scope;
       this.$filter = $filter;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.MailingLists = MailingLists;
       this.exportCsv = exportCsv;
@@ -71,7 +74,7 @@ angular.module('App').controller(
         'mailingLists.subscribers.sendListByEmail.poll.done',
         () => {
           this.Alerter.success(
-            this.$scope.tr('mailing_list_tab_modal_sendListByEmail_sent_success'),
+            this.$translate.instant('mailing_list_tab_modal_sendListByEmail_sent_success'),
             this.$scope.alerts.main,
           );
         },
@@ -161,7 +164,7 @@ angular.module('App').controller(
           this.subscribers.ids = this.$filter('orderBy')(data);
         })
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('mailing_list_tab_modal_get_lists_error'),
+          this.$translate.instant('mailing_list_tab_modal_get_lists_error'),
           err,
           this.$scope.alerts.main,
         ))
@@ -212,10 +215,10 @@ angular.module('App').controller(
       const data = this.exportCsv.exportData({
         separator: ';',
         fileName: `export_${this.mailingList.name}`,
-        datas: `${this.$scope.tr('mailing_list_tab_table_header_subscriber_email')}\n${this.subscribers.ids.join('\n')}`,
+        datas: `${this.$translate.instant('mailing_list_tab_table_header_subscriber_email')}\n${this.subscribers.ids.join('\n')}`,
       });
       this.Alerter.success(
-        this.$scope.tr('mailing_list_tab_export_csv_success', [data]),
+        this.$translate.instant('mailing_list_tab_export_csv_success', { t0: data }),
         this.$scope.alerts.main,
       );
     }

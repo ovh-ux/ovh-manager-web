@@ -1,12 +1,12 @@
 angular.module('controllers').controller(
   'Domain.controllers.DnsSec',
   class DomainDnsSecCtrl {
-    constructor($scope, $rootScope, Alerter, DomainsDnsSec, translator) {
+    constructor($scope, $rootScope, $translate, Alerter, DomainsDnsSec) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.DomainsDnsSec = DomainsDnsSec;
-      this.translator = translator;
     }
 
     $onInit() {
@@ -22,14 +22,14 @@ angular.module('controllers').controller(
         .then((data) => {
           if (data.state !== 'OK') {
             this.Alerter.alertFromSWS(
-              this.$scope.tr(`domain_configuration_dnssec_error_${newState}`),
+              this.$translate.instant(`domain_configuration_dnssec_error_${newState}`),
               data,
               this.$scope.alerts.main,
             );
           }
         })
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr(`domain_configuration_dnssec_error_${newState}`),
+          this.$translate.instant(`domain_configuration_dnssec_error_${newState}`),
           _.get(err, 'data', err),
           this.$scope.alerts.main,
         ))

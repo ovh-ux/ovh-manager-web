@@ -7,16 +7,16 @@
     <div class="alert alert-info" role="alert"
          data-ng-if="hosting && ctrlMailingLists.quotas.mailingList <= 0">
         <div>
-            <p class="mb-3" data-i18n-static="mailing_list_tab_table_no_quota"></p>
+            <p class="mb-3" data-translate="mailing_list_tab_table_no_quota"></p>
             <button class="btn btn-info" type="button"
-                    data-i18n-static="hosting_dashboard_service_change_offer"
+                    data-translate="hosting_dashboard_service_change_offer"
                     data-ng-click="setAction('hosting/offer/upgrade/hosting-offer-upgrade', hosting)">
             </button>
         </div>
     </div>
 
     <div class="alert alert-warning" role="alert"
-         data-i18n-static="mailing_list_tab_table_no_quota"
+         data-translate="mailing_list_tab_table_no_quota"
          data-ng-if="!hosting && ctrlMailingLists.quotas.mailingList <= 0">
     </div>
 
@@ -24,11 +24,16 @@
         <div class="col-md-9">
             <div data-ovh-alert="{{alerts.main}}"></div>
             <div class="alert alert-warning" role="alert"
-                 data-ng-bind="trpl('mailing_list_tab_table_quota_excedeed', ctrlMailingLists.quotas.mailingList, [ctrlMailingLists.mailingLists.length, ctrlMailingLists.quotas.mailingList])"
-                 data-ng-if="ctrlMailingLists.mailingLists.length >= ctrlMailingLists.quotas.mailingList">
+                 data-ng-if="ctrlMailingLists.mailingLists.length >= ctrlMailingLists.quotas.mailingList"
+                 data-ng-bind="(ctrlMailingLists.quotas.mailingList
+                                    ? (ctrlMailingLists.quotas.mailingList > 1
+                                        ? 'mailing_list_tab_table_quota_excedeed_other'
+                                        : 'mailing_list_tab_table_quota_excedeed_1')
+                                    : 'mailing_list_tab_table_quota_excedeed')
+                               | translate: { t0: ctrlMailingLists.mailingLists.length, t1: ctrlMailingLists.quotas.mailingList }">
             </div>
             <dl class="dl-horizontal dl-lg" data-ng-if="ctrlMailingLists.quotas.mailingList > 0">
-                <dt data-i18n-static="mailing_list_tab_quotas"></dt>
+                <dt data-translate="mailing_list_tab_quotas"></dt>
                 <dd class="text-nowrap">
                     <oui-spinner data-size="s"
                                 data-ng-if="ctrlMailingLists.loading.mailingLists"></oui-spinner>
@@ -42,13 +47,13 @@
                     <div class="form-group">
                         <label class="sr-only" for="searchMailingList"></label>
                         <div class="input-group">
-                            <input type="text" class="form-control" id="searchMailingList" name="searchMailingList" placeholder="{{::i18n.navigation_left_search}}"
+                            <input type="text" class="form-control" id="searchMailingList" name="searchMailingList" placeholder="{{:: 'navigation_left_search' | translate }}"
                                    data-ng-change="ctrlMailingLists.goSearch()"
                                    data-ng-disabled="ctrlMailingLists.loading.mailingLists"
                                    data-ng-model="ctrlMailingLists.search.mailingLists"
                                    data-ng-model-options='{ debounce: 800 }'>
                             <div class="input-group-btn" data-ng-if="ctrlMailingLists.search.mailingLists">
-                                <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
+                                <button class="btn btn-default" type="button" aria-label="{{ 'common_cancel' | translate }}"
                                         data-ng-click="ctrlMailingLists.emptySearch()"
                                         data-ng-disabled="ctrlMailingLists.loading.mailingLists">
                                     <span class="fa fa-times" aria-hidden="true"></span>
@@ -67,14 +72,14 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col" data-i18n-static="mailing_list_tab_table_header_list_name"></th>
-                            <th scope="col" data-i18n-static="mailing_list_tab_table_header_list_owner_email"></th>
-                            <th scope="col" data-i18n-static="mailing_list_tab_table_header_list_language"></th>
-                            <th scope="col" data-i18n-static="mailing_list_tab_table_header_list_reply_to"></th>
-                            <th class="min-width text-center" scope="col" data-i18n-static="mailing_list_tab_table_header_list_moderators"></th>
-                            <th class="min-width text-center" scope="col" data-i18n-static="mailing_list_tab_table_header_list_subscribers"></th>
+                            <th scope="col" data-translate="mailing_list_tab_table_header_list_name"></th>
+                            <th scope="col" data-translate="mailing_list_tab_table_header_list_owner_email"></th>
+                            <th scope="col" data-translate="mailing_list_tab_table_header_list_language"></th>
+                            <th scope="col" data-translate="mailing_list_tab_table_header_list_reply_to"></th>
+                            <th class="min-width text-center" scope="col" data-translate="mailing_list_tab_table_header_list_moderators"></th>
+                            <th class="min-width text-center" scope="col" data-translate="mailing_list_tab_table_header_list_subscribers"></th>
                             <th class="min-width text-right" scope="col">
-                                <button class="btn btn-icon" type="button" title="{{::i18n.mailing_list_tab_table_header_refresh}}"
+                                <button class="btn btn-icon" type="button" title="{{:: 'mailing_list_tab_table_header_refresh' | translate }}"
                                         data-ng-click="ctrlMailingLists.refreshTableMailingLists(true)">
                                     <span class="fa fa-refresh" aria-hidden="true"></span>
                                 </button>
@@ -92,7 +97,7 @@
                     <!-- no accounts -->
                     <tbody data-ng-if="!ctrlMailingLists.loading.mailingLists && !ctrlMailingLists.mailingLists.length">
                         <tr>
-                            <td class="text-center" colspan="7" data-i18n-static="mailing_list_tab_table_empty"></td>
+                            <td class="text-center" colspan="7" data-translate="mailing_list_tab_table_empty"></td>
                         </tr>
                     </tbody>
 
@@ -101,30 +106,30 @@
                         <tr data-ng-repeat="mailingList in ctrlMailingLists.mailingListsDetails track by $index">
                             <td data-ng-bind="mailingList.name"></td>
                             <td data-ng-bind="mailingList.ownerEmail"></td>
-                            <td data-ng-bind="tr('language_' + mailingList.language)"></td>
-                            <td data-ng-bind="tr('mailing_list_tab_table_header_list_reply_to_' + mailingList.replyTo)"
+                            <td data-ng-bind="'language_' + mailingList.language | translate"></td>
+                            <td data-ng-bind="'mailing_list_tab_table_header_list_reply_to_' + mailingList.replyTo | translate"
                                 data-ng-if="mailingList.replyTo === 'mailinglist' || mailingList.replyTo === 'lastuser'"></td>
                             <td data-ng-bind="mailingList.replyTo"
                                 data-ng-if="mailingList.replyTo !== 'mailinglist' && mailingList.replyTo !== 'lastuser'"></td>
                             <td class="text-center">
-                                <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_moderators_management_heading}}"
+                                <button class="btn btn-icon" type="button" title="{{:: 'email_tab_moderators_management_heading' | translate }}"
                                         data-ng-click="ctrlTabView.setCurrentView('moderatorsView', mailingList)">
                                     <span class="oui-icon oui-icon-user_line oui-icon_small" aria-hidden="true"></span>
                                 </button>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-icon" type="button" title="{{::i18n.email_tab_subscribers_management_heading}}"
+                                <button class="btn btn-icon" type="button" title="{{:: 'email_tab_subscribers_management_heading' | translate }}"
                                         data-ng-click="ctrlTabView.setCurrentView('subscribersView', mailingList)">
                                     <span class="oui-icon oui-icon-user_line oui-icon_small" aria-hidden="true"></span>
                                 </button>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-icon" type="button" aria-label="{{i18n.common_actions}}"
+                                <button class="btn btn-icon" type="button" aria-label="{{ 'common_actions' | translate }}"
                                         data-linkedpopover="email-domain/mailing-list/email-domain-mailing-list.popover.html"
                                         data-linkedpopover-placement="left"
                                         data-linkedpopover-remote="true"
                                         data-linkedpopover-single="true"
-                                        data-linkedpopover-title="{{i18n.common_actions}}">
+                                        data-linkedpopover-title="{{ 'common_actions' | translate }}">
                                     <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
                                 </button>
                             </td>
@@ -144,8 +149,8 @@
                      data-transform-item="ctrlMailingLists.transformItem(item)"
                      data-on-transform-item-done="ctrlMailingLists.onTransformItemDone()"
                      data-on-page-change="ctrlMailingLists.loading.pager = true"
-                     data-page-placeholder="{{tr('pagination_page', [currentPageMailingLists, nbPages])}}"
-                     data-item-per-page-placeholder="{{tr('pagination_display')}}"
+                     data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPageMailingLists, last: nbPages } }}"
+                     data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
                      data-ng-show="!ctrlMailingLists.loading.mailingLists && ctrlMailingLists.mailingListsDetails.length > 0">
                 </div>
             </div>
@@ -154,14 +159,14 @@
         <div class="col-md-3 mt-5 mt-lg-0">
             <div class="mb-5" data-ng-if="!ctrlMailingLists.loading.mailingLists && ctrlMailingLists.mailingLists.length < ctrlMailingLists.quotas.mailingList">
                 <button class="btn btn-block btn-default" type="button"
-                        data-i18n-static="mailing_list_tab_button_mailing_list_create_list"
+                        data-translate="mailing_list_tab_button_mailing_list_create_list"
                         data-ng-click="setAction('email-domain/mailing-list/create/email-domain-mailing-list-create', ctrlMailingLists.mailingLists)">
                 </button>
             </div>
 
             <div class="mb-5"
                  data-guides
-                 data-guides-title="tr('guide_subtitle')"
+                 data-guides-title="'guide_subtitle' | translate"
                  data-guides-list="'emailsMailingList'"
                  data-tr="tr">
             </div>

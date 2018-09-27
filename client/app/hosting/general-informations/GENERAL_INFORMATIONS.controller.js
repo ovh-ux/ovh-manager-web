@@ -4,18 +4,18 @@ angular.module('App').controller(
     constructor(
       $scope,
       $stateParams,
+      $translate,
       Alerter,
       hostingSSLCertificate,
-      translator,
       HostingLocalSeo,
       HostingRuntimes,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.hostingSSLCertificate = hostingSSLCertificate;
-      this.translator = translator;
       this.HostingLocalSeo = HostingLocalSeo;
       this.HostingRuntimes = HostingRuntimes;
     }
@@ -80,7 +80,7 @@ angular.module('App').controller(
           // 404 error means that the user has no SSL certificate
           if (error.status !== 404) {
             this.Alerter.alertFromSWS(
-              this.translator.tr('hosting_dashboard_ssl_details_error'),
+              this.$translate.instant('hosting_dashboard_ssl_details_error'),
               error,
               this.$scope.alerts.main,
             );
@@ -120,16 +120,16 @@ angular.module('App').controller(
 
     selectSSLCertificateStatusText() {
       if (!this.hasSSLCertificate()) {
-        return this.translator.tr('common_no');
+        return this.$translate.instant('common_no');
       }
 
       if (
         this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
       ) {
-        return this.translator.tr('common_yes');
+        return this.$translate.instant('common_yes');
       }
 
-      return this.translator.tr(`hosting_dashboard_service_ssl_${this.sslCertificate.status}`);
+      return this.$translate.instant(`hosting_dashboard_service_ssl_${this.sslCertificate.status}`);
     }
   },
 );

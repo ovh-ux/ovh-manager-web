@@ -2,9 +2,9 @@ angular
   .module('App')
   .controller(
     'SessionCtrl',
-    ($scope, $document, translator, SessionService) => {
-      $scope.$watch('i18n.global_app_title', () => {
-        translator.setTitle($scope.tr('global_app_title'));
+    ($scope, $document, $translate, SessionService) => {
+      $scope.$watch(() => $translate.instant('global_app_title'), () => {
+        document.title = $translate.instant('global_app_title');
       });
 
       // FIX for /me/alerts

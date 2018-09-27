@@ -6,13 +6,15 @@ angular.module('App').controller(
      * @param $scope
      * @param $location
      * @param $stateParams
+     * @param $translate
      * @param Emails
      * @param Alerter
      */
-    constructor($scope, $location, $stateParams, Emails, Alerter) {
+    constructor($scope, $location, $stateParams, $translate, Emails, Alerter) {
       this.$scope = $scope;
       this.$location = $location;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Emails = Emails;
       this.Alerter = Alerter;
     }
@@ -27,10 +29,10 @@ angular.module('App').controller(
 
       this.$scope.$on('emails.canTerminate', () => {
         this.tabMenu = {
-          title: this.$scope.tr('navigation_more'),
+          title: this.$translate.instant('navigation_more'),
           items: [
             {
-              label: this.$scope.tr('email_tab_menu_resiliate'),
+              label: this.$translate.instant('email_tab_menu_resiliate'),
               target: `#/billing/autoRenew?selectedType=EMAIL_DOMAIN&searchText=${
                 this.$stateParams.productId
               }`,

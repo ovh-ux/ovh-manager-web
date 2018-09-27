@@ -1,8 +1,9 @@
 angular.module('App').controller(
   'PrivateDatabaseTasksCtrl',
   class PrivateDatabaseTasksCtrl {
-    constructor($scope, $stateParams, Alerter, PrivateDatabase) {
+    constructor($scope, $stateParams, $translate, Alerter, PrivateDatabase) {
       this.$scope = $scope;
+      this.$translate = $translate;
       this.productId = $stateParams.productId;
       this.privateDatabaseService = PrivateDatabase;
       this.alerter = Alerter;
@@ -22,7 +23,7 @@ angular.module('App').controller(
         })
         .catch(() => {
           this.alerter.error(
-            this.$scope.tr('privateDatabase_configuration_error'),
+            this.$translate.instant('privateDatabase_configuration_error'),
             this.$scope.alerts.main,
           );
         });
@@ -33,7 +34,7 @@ angular.module('App').controller(
         .getTaskDetails(this.productId, item.id)
         .catch(() => {
           this.alerter.error(
-            this.$scope.tr('privateDatabase_configuration_error'),
+            this.$translate.instant('privateDatabase_configuration_error'),
             this.$scope.alerts.main,
           );
         });
