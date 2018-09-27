@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'HostingDatabaseChangePasswordCtrl',
   class HostingDatabaseChangePasswordCtrl {
-    constructor($scope, $stateParams, Alerter, Hosting, HostingDatabase) {
+    constructor($scope, $stateParams, $translate, Alerter, Hosting, HostingDatabase) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Hosting = Hosting;
       this.HostingDatabase = HostingDatabase;
@@ -45,16 +46,16 @@ angular.module('App').controller(
       )
         .then(() => {
           this.Alerter.success(
-            this.$scope.tr('hosting_tab_DATABASES_configuration_update_password_success'),
+            this.$translate.instant('hosting_tab_DATABASES_configuration_update_password_success'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.Alerter.alertFromSWS(
-            this.$scope.tr(
+            this.$translate.instant(
               'hosting_tab_DATABASES_configuration_update_password_fail',
-              [this.databaseName],
+              { t0: this.databaseName },
             ),
             _.get(err, 'data', err),
             this.$scope.alerts.main,

@@ -5,6 +5,7 @@ angular.module('App').controller(
       $scope,
       $q,
       $stateParams,
+      $translate,
       Alerter,
       Hosting,
       HostingOvhConfig,
@@ -13,6 +14,7 @@ angular.module('App').controller(
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.hostingService = Hosting;
       this.hostingOvhConfigService = HostingOvhConfig;
@@ -151,7 +153,7 @@ angular.module('App').controller(
           .changeConfiguration(this.$stateParams.productId, model)
           .then(() => {
             this.alerter.success(
-              this.$scope.tr('hosting_action_config_edit_success'),
+              this.$translate.instant('hosting_action_config_edit_success'),
               this.$scope.alerts.main,
             );
             this.$scope.$emit(this.hostingOvhConfigService.events.ovhConfigNeedRefresh);
@@ -169,7 +171,7 @@ angular.module('App').controller(
         )
         .then(() => {
           this.alerter.success(
-            this.$scope.tr('hosting_action_config_rollback_success'),
+            this.$translate.instant('hosting_action_config_rollback_success'),
             this.$scope.alerts.main,
           );
           this.$scope.$emit(this.hostingOvhConfigService.events.ovhConfigNeedRefresh);

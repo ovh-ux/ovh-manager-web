@@ -1,24 +1,24 @@
 <div class="container-fluid" id="main-container" data-ng-controller="UserCtrl">
     <div class="text-center mt-5 py-5">
         <h1 class="d-inline">
-            <span data-i18n-static="welcome_to_your_manager_1"></span>
-            <span data-i18n-static="welcome_to_your_manager_2"></span>
+            <span data-translate="welcome_to_your_manager_1"></span>
+            <span data-translate="welcome_to_your_manager_2"></span>
         </h1>
         <p class="lead"
-           data-ng-bind-html="tr('core_top_guides_header',[ConfigurationCtrl.allGuides])"></p>
+           data-ng-bind-html="'core_top_guides_header' | translate: { t0: ConfigurationCtrl.allGuides }"></p>
     </div>
 
     <div class="container-fluid">
         <div class="row d-md-flex" data-ng-if="!loaders.loading && user.ovhSubsidiary === 'FR'">
             <div class="col-md-10 col-lg-8 mx-md-auto">
                 <div class="oui-tile pb-5" data-ng-repeat="(key, value) in ConfigurationCtrl.guides track by $index">
-                    <h2 class="oui-tile__title">{{ tr('core_type_of_guide_' + key) }}</h2>
+                    <h2 class="oui-tile__title" data-ng-bind="'core_type_of_guide_' + key | translate"></h2>
                     <div class="oui-tile__body">
                         <ul class="list-unstyled">
                             <li class="oui-tile__item" data-ng-repeat="guide in value track by $index">
                                 <div class="oui-tile__definition">
                                     <a target="_blank"
-                                       data-ng-bind="i18n[guide.title]"
+                                       data-ng-bind="guide.title | translate"
                                        data-ng-href="{{guide.url}}">
                                     </a>
                                 </div>
@@ -26,8 +26,8 @@
                             <li class="oui-tile__item">
                                 <div class="oui-tile__definition">
                                     <a data-ng-href="{{ ConfigurationCtrl.allGuides }}" target="_blank">
-                                        <span data-i18n-static="core_all_guides"></span>
-                                        <span class="fa fa-external-link" aria-label="{{ tr('core_new_window') }}"></span>
+                                        <span data-translate="core_all_guides"></span>
+                                        <span class="fa fa-external-link" aria-label="{{ 'core_new_window' | translate }}"></span>
                                     </a>
                                 </div>
                             </li>

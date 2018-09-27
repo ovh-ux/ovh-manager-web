@@ -5,6 +5,7 @@ angular
     (
       $scope,
       $stateParams,
+      $translate,
       HostingDomain,
       Hosting,
       HostingRuntimes,
@@ -149,7 +150,7 @@ angular
                 })
                 .catch((err) => {
                   Alerter.alertFromSWS(
-                    $scope.tr('hosting_tab_DOMAINS_configuration_add_loading_error'),
+                    $translate.instant('hosting_tab_DOMAINS_configuration_add_loading_error'),
                     _.get(err, 'data', err),
                     $scope.alerts.main,
                   );
@@ -200,7 +201,7 @@ angular
           .catch((err) => {
             $scope.resetAction();
             Alerter.alertFromSWS(
-              $scope.tr('hosting_tab_DOMAINS_configuration_add_loading_error'),
+              $translate.instant('hosting_tab_DOMAINS_configuration_add_loading_error'),
               _.get(err, 'data', err),
               $scope.alerts.main,
             );
@@ -263,9 +264,9 @@ angular
       };
 
       const resultMessages = {
-        OK: $scope.tr('hosting_tab_DOMAINS_configuration_modify_success'),
-        PARTIAL: $scope.tr('hosting_tab_DOMAINS_configuration_modify_partial'),
-        ERROR: $scope.tr('hosting_tab_DOMAINS_configuration_modify_failure'),
+        OK: $translate.instant('hosting_tab_DOMAINS_configuration_modify_success'),
+        PARTIAL: $translate.instant('hosting_tab_DOMAINS_configuration_modify_partial'),
+        ERROR: $translate.instant('hosting_tab_DOMAINS_configuration_modify_failure'),
       };
 
       $scope.submit = () => {
@@ -296,7 +297,7 @@ angular
           .catch((err) => {
             _.set(err, 'type', err.type || 'ERROR');
             Alerter.alertFromSWS(
-              $scope.tr('hosting_tab_DOMAINS_configuration_modify_failure'),
+              $translate.instant('hosting_tab_DOMAINS_configuration_modify_failure'),
               _.get(err, 'data', err),
               $scope.alerts.main,
             );

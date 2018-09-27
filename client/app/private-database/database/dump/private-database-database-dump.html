@@ -4,28 +4,28 @@
     <button class="oui-button oui-button_link oui-button_icon-left" type="button"
             data-ng-click="goToList()">
         <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
-        <span data-i18n-static="common_back"></span>
+        <span data-translate="common_back"></span>
     </button>
 
-    <h2 data-ng-bind="i18n.privateDatabase_tabs_dumps_change + ' ' + dumpCtrl.database.databaseName"></h2>
+    <h2 data-ng-bind="('privateDatabase_tabs_dumps_change' | translate) + ' ' + dumpCtrl.database.databaseName"></h2>
 
     <oui-datagrid data-rows="dumpCtrl.dumps"
                   data-row-loader="dumpCtrl.transformItem($row)">
-        <oui-column data-title="tr('privateDatabase_tabs_dumps_creation_date')" data-property="creationDate">
+        <oui-column data-title="'privateDatabase_tabs_dumps_creation_date' | translate" data-property="creationDate">
             <span data-ng-bind="$row.creationDate | date:'medium'"></span>
         </oui-column>
-        <oui-column data-title="tr('privateDatabase_tabs_dumps_deletion_date')" data-property="deletionDate">
+        <oui-column data-title="'privateDatabase_tabs_dumps_deletion_date' | translate" data-property="deletionDate">
             <span data-ng-bind="$row.deletionDate | date:'medium'"></span>
         </oui-column>
         <oui-action-menu data-align="end" data-compact>
-            <oui-action-menu-item data-text="{{::tr('privateDatabase_tabs_dumps_download_dump')}}"
+            <oui-action-menu-item data-text="{{:: 'privateDatabase_tabs_dumps_download_dump' | translate }}"
                                   data-on-click="dumpCtrl.goTo($row.url, '_blank')">
             </oui-action-menu-item>
-            <oui-action-menu-item data-text="{{::tr('privateDatabase_tabs_dumps_restore_dump')}}"
+            <oui-action-menu-item data-text="{{:: 'privateDatabase_tabs_dumps_restore_dump' | translate }}"
                                   data-on-click="setAction('database/restore/private-database-database-restore', { bdd:dumpCtrl.database, dump:$row })"
                                   data-ng-if="!dumpCtrl.dumpIdRestoring">
             </oui-action-menu-item>
-            <oui-action-menu-item data-text="{{::tr('privateDatabase_tabs_dumps_delete')}}"
+            <oui-action-menu-item data-text="{{:: 'privateDatabase_tabs_dumps_delete' | translate }}"
                                   data-on-click="setAction('database/dump/delete/private-database-database-dump-delete', { bdd:dumpCtrl.database, dump:$row })">
             </oui-action-menu-item>
         </oui-action-menu>

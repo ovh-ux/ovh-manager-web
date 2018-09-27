@@ -1,17 +1,17 @@
 <form class="form-horizontal" name="ctrl.zoneRecordForm">
 
-    <p data-ng-bind="tr('domain_configuration_dns_entry_add_spf_ovh_title', ctrl.domain.displayName)"></p>
+    <p data-translate="domain_configuration_dns_entry_add_spf_ovh_title" data-translate-values="{ t0: ctrl.domain.displayName }"></p>
     <code data-ng-bind="ctrl.domain.displayName + '. IN TXT &quot;v=spf1 include:mx.ovh.com ~all&quot;'"></code>
     <div class="mt-3">
         <button class="btn btn-default" type="button"
-                data-i18n-static="domain_configuration_dns_entry_add_spf_ovh_btn"
+                data-translate="domain_configuration_dns_entry_add_spf_ovh_btn"
                 data-ng-click="ctrl.useSpfOvh()"></button>
     </div>
 
     <div class="mt-5" data-ng-include="'domain/zone/record/header.html'"></div>
 
     <fieldset class="mt-4">
-        <span data-ng-bind="tr('domain_configuration_dns_entry_add_spf_a_title', ctrl.domain.displayName)"></span>
+        <span data-translate="domain_configuration_dns_entry_add_spf_a_title" data-translate-values="{ t0: ctrl.domain.displayName }"></span>
         <div class="col-md-9 col-md-offset-3">
             <div class="oui-radio oui-radio_inline">
                 <input type="radio" class="oui-radio__input" id="aSender-yes" name="aSender"
@@ -20,7 +20,7 @@
                        data-ng-value="true">
                 <label class="oui-radio__label-container" for="aSender-yes">
                     <span class="oui-radio__label"
-                          data-i18n-static="common_yes"></span>
+                          data-translate="common_yes"></span>
                 </label>
             </div>
             <div class="oui-radio oui-radio_inline ml-4">
@@ -30,14 +30,14 @@
                        data-ng-value="false">
                 <label class="oui-radio__label-container" for="aSender-no">
                     <span class="oui-radio__label"
-                          data-i18n-static="common_no"></span>
+                          data-translate="common_no"></span>
                 </label>
             </div>
         </div>
     </fieldset>
 
     <fieldset class="mt-4">
-        <span data-ng-bind="tr('domain_configuration_dns_entry_add_spf_mx_title', ctrl.domain.displayName)"></span>
+        <span data-translate="domain_configuration_dns_entry_add_spf_mx_title" data-translate-values="{ t0: ctrl.domain.displayName }"></span>
         <div class="col-md-9 col-md-offset-3">
             <div class="oui-radio oui-radio_inline">
                 <input type="radio" class="oui-radio__input" id="mxSender-yes" name="mxSender"
@@ -46,7 +46,7 @@
                        data-ng-value="true">
                 <label class="oui-radio__label-container" for="mxSender-yes">
                     <span class="oui-radio__label"
-                          data-i18n-static="common_yes"></span>
+                          data-translate="common_yes"></span>
                 </label>
             </div>
             <div class="oui-radio oui-radio_inline ml-4">
@@ -56,14 +56,14 @@
                        data-ng-value="false">
                 <label class="oui-radio__label-container" for="mxSender-no">
                     <span class="oui-radio__label"
-                          data-i18n-static="common_no"></span>
+                          data-translate="common_no"></span>
                 </label>
             </div>
         </div>
     </fieldset>
 
     <fieldset class="mt-4">
-        <span data-ng-bind="tr('domain_configuration_dns_entry_add_spf_ptr_title', ctrl.domain.displayName)"></span>
+        <span data-translate="domain_configuration_dns_entry_add_spf_ptr_title" data-translate-values="{ t0: ctrl.domain.displayName }"></span>
         <div class="col-md-9 col-md-offset-3">
             <div class="oui-radio oui-radio_inline">
                 <input type="radio" class="oui-radio__input" id="ptrSender-yes" name="ptrSender"
@@ -72,7 +72,7 @@
                        data-ng-value="true">
                 <label class="oui-radio__label-container" for="ptrSender-yes">
                     <span class="oui-radio__label"
-                          data-i18n-static="common_yes"></span>
+                          data-translate="common_yes"></span>
                 </label>
             </div>
             <div class="oui-radio oui-radio_inline ml-4">
@@ -82,14 +82,14 @@
                        data-ng-value="false">
                 <label class="oui-radio__label-container" for="ptrSender-no">
                     <span class="oui-radio__label"
-                          data-i18n-static="common_no"></span>
+                          data-translate="common_no"></span>
                 </label>
             </div>
         </div>
     </fieldset>
 
     <fieldset class="mt-4">
-        <span data-ng-bind="tr('domain_configuration_dns_entry_add_spf_fields_title', ctrl.domain.displayName)"></span>
+        <span data-translate="domain_configuration_dns_entry_add_spf_fields_title" data-translate-values="{ t0: ctrl.domain.displayName }"></span>
         <div class="form-group mt-2" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.a.$dirty && ctrl.zoneRecordForm.a.$invalid }">
             <label class="control-label col-md-3" for="a">a:</label>
             <div class="col-md-8">
@@ -133,7 +133,7 @@
     </fieldset>
 
     <fieldset class="mt-4">
-        <span data-ng-bind="tr('domain_configuration_dns_entry_add_spf_others_title', ctrl.domain.displayName)"></span>
+        <span data-translate="domain_configuration_dns_entry_add_spf_others_title" data-translate-values="{ t0: ctrl.domain.displayName }"></span>
         <div class="form-group mt-2" data-ng-class="{ 'has-error': ctrl.zoneRecordForm.include.$dirty && ctrl.zoneRecordForm.include.$invalid }">
             <label class="control-label col-md-3" for="include">include:</label>
             <div class="col-md-8">
@@ -146,7 +146,7 @@
     </fieldset>
 
     <fieldset class="mt-4">
-        <span data-ng-bind="tr('domain_configuration_dns_entry_add_spf_all_title', ctrl.domain.displayName)"></span>
+        <span data-translate="domain_configuration_dns_entry_add_spf_all_title" data-translate-values="{ t0: ctrl.domain.displayName }"></span>
         <div class="col-md-9 col-md-offset-3">
             <div class="oui-radio">
                 <input type="radio" class="oui-radio__input" id="all-sure" name="all" value="-all"
@@ -154,7 +154,7 @@
                        data-ng-model="ctrl.model.target.all">
                 <label class="oui-radio__label-container" for="all-sure">
                     <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_spf_all_title_yes"></span>
+                          data-translate="domain_configuration_dns_entry_add_spf_all_title_yes"></span>
                 </label>
             </div>
             <div class="oui-radio">
@@ -163,7 +163,7 @@
                        data-ng-model="ctrl.model.target.all">
                 <label class="oui-radio__label-container" for="all-safe">
                     <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_spf_all_title_safe"></span>
+                          data-translate="domain_configuration_dns_entry_add_spf_all_title_safe"></span>
                 </label>
             </div>
             <div class="oui-radio">
@@ -172,7 +172,7 @@
                        data-ng-model="ctrl.model.target.all">
                 <label class="oui-radio__label-container" for="all-no">
                     <span class="oui-radio__label"
-                          data-i18n-static="domain_configuration_dns_entry_add_spf_all_title_no"></span>
+                          data-translate="domain_configuration_dns_entry_add_spf_all_title_no"></span>
                 </label>
             </div>
         </div>

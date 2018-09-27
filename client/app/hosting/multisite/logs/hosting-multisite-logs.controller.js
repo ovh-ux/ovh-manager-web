@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'HostingTabDomainsMultisiteLogs',
   class HostingTabDomainsMultisiteLogs {
-    constructor($scope, $stateParams, Alerter, Hosting, constants) {
+    constructor($scope, $stateParams, $translate, Alerter, Hosting, constants) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Hosting = Hosting;
       this.constants = constants;
@@ -42,7 +43,7 @@ angular.module('App').controller(
           })
           .catch(() => {
             this.Alerter.error(
-              this.$scope.tr('hosting_tab_DOMAINS_multisite_logs_generation_error'),
+              this.$translate.instant('hosting_tab_DOMAINS_multisite_logs_generation_error'),
               this.$scope.alerts.main,
             );
           })

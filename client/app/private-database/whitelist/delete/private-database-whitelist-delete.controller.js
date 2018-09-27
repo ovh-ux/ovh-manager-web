@@ -1,12 +1,13 @@
 angular.module('App').controller(
   'PrivateDatabaseDeleteWhitelistCtrl',
   class PrivateDatabaseDeleteWhitelistCtrl {
-    constructor(Alerter, WhitelistService, $rootScope, $scope, $stateParams) {
+    constructor(Alerter, WhitelistService, $rootScope, $scope, $stateParams, $translate) {
       this.alerter = Alerter;
       this.whitelistService = WhitelistService;
       this.$rootScope = $rootScope;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
     }
 
     $onInit() {
@@ -19,13 +20,13 @@ angular.module('App').controller(
           .deleteWhitelist(this.productId, this.whitelistToDelete.ip)
           .then(() => {
             this.alerter.success(
-              this.$scope.tr('privateDatabase_modale_whitelist_delete_success'),
+              this.$translate.instant('privateDatabase_modale_whitelist_delete_success'),
               this.$scope.alerts.main,
             );
           })
           .catch(() => {
             this.alerter.error(
-              this.$scope.tr('privateDatabase_modale_whitelist_delete_fail'),
+              this.$translate.instant('privateDatabase_modale_whitelist_delete_fail'),
               this.$scope.alerts.main,
             );
           })

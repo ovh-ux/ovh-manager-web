@@ -4,6 +4,7 @@ angular.module('App').controller(
     constructor(
       $scope,
       $stateParams,
+      $translate,
       $window,
       Alerter,
       Hosting,
@@ -12,6 +13,7 @@ angular.module('App').controller(
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.$window = $window;
       this.Alerter = Alerter;
       this.Hosting = Hosting;
@@ -30,7 +32,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_configuration_tab_modules_create_step1_loading_error'),
+            this.$translate.instant('hosting_configuration_tab_modules_create_step1_loading_error'),
             _.get(err, 'data', err),
             this.$scope.alerts.main,
           );
@@ -57,7 +59,7 @@ angular.module('App').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_configuration_tab_modules_create_step1_loading_error'),
+            this.$translate.instant('hosting_configuration_tab_modules_create_step1_loading_error'),
             err,
             this.$scope.alerts.main,
           );

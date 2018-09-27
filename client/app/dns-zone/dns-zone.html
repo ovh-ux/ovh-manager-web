@@ -6,7 +6,7 @@
 
 <div data-ng-if="!ctrlDomain.loading.domainsInfos && ctrlDomain.domain">
     <div class="page-header">
-        <h1 data-ng-bind="tr('domain_tab_ZONE_named', ctrlDomain.domain.displayName)"></h1>
+        <h1 data-translate="domain_tab_ZONE_named" data-translate-values="{ t0: ctrlDomain.domain.displayName }"></h1>
         <dl data-ng-if="ctrlDomain.domain.nameServers && ctrlDomain.domain.nameServers.length > 0">
             <dt>Name Servers</dt>
             <dd data-ng-repeat="serverName in ctrlDomain.domain.nameServers track by $index"

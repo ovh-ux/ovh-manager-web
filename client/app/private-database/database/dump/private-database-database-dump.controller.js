@@ -1,10 +1,11 @@
 angular.module('App').controller(
   'PrivateDatabaseBDDsDumpsCtrl',
   class PrivateDatabaseBDDsDumpsCtrl {
-    constructor($q, $scope, $stateParams, $window, Alerter, PrivateDatabase) {
+    constructor($q, $scope, $stateParams, $translate, $window, Alerter, PrivateDatabase) {
       this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.$window = $window;
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
@@ -54,7 +55,7 @@ angular.module('App').controller(
         })
         .catch(() => {
           this.alerter.error(
-            this.$scope.tr('privateDatabase_tabs_dumps_fail_retrieve_dumps'),
+            this.$translate.instant('privateDatabase_tabs_dumps_fail_retrieve_dumps'),
             this.$scope.alerts.main,
           );
         });
@@ -91,7 +92,7 @@ angular.module('App').controller(
         delete this.database.waitDump;
         this.getDumps();
         this.alerter.success(
-          this.$scope.tr('privateDatabase_dump_bdd_success'),
+          this.$translate.instant('privateDatabase_dump_bdd_success'),
           this.$scope.alerts.main,
         );
       }
@@ -101,7 +102,7 @@ angular.module('App').controller(
       if (this.database.databaseName === opts.databaseName) {
         delete this.database.waitDump;
         this.alerter.error(
-          this.$scope.tr('privateDatabase_dump_bdd_fail'),
+          this.$translate.instant('privateDatabase_dump_bdd_fail'),
           this.$scope.alerts.main,
         );
       }
@@ -110,7 +111,7 @@ angular.module('App').controller(
     onDataBaseDumpDeletestart(evt, opts) {
       if (this.database.databaseName === opts.databaseName) {
         this.alerter.success(
-          this.$scope.tr('privateDatabase_tabs_dumps_delete_start'),
+          this.$translate.instant('privateDatabase_tabs_dumps_delete_start'),
           this.$scope.alerts.main,
         );
       }
@@ -120,7 +121,7 @@ angular.module('App').controller(
       if (this.database.databaseName === opts.databaseName) {
         this.getDumps();
         this.alerter.success(
-          this.$scope.tr('privateDatabase_tabs_dumps_delete_done'),
+          this.$translate.instant('privateDatabase_tabs_dumps_delete_done'),
           this.$scope.alerts.main,
         );
       }
@@ -129,7 +130,7 @@ angular.module('App').controller(
     onDataBaseDumpDeleteerror(evt, opts) {
       if (this.database.databaseName === opts.databaseName) {
         this.alerter.error(
-          this.$scope.tr('privateDatabase_tabs_dumps_delete_error'),
+          this.$translate.instant('privateDatabase_tabs_dumps_delete_error'),
           this.$scope.alerts.main,
         );
       }
@@ -152,7 +153,7 @@ angular.module('App').controller(
         delete dump.waitRestore; // eslint-disable-line no-param-reassign
       });
       this.alerter.success(
-        this.$scope.tr('privateDatabase_tabs_dumps_restore_success'),
+        this.$translate.instant('privateDatabase_tabs_dumps_restore_success'),
         this.$scope.alerts.main,
       );
     }
@@ -164,7 +165,7 @@ angular.module('App').controller(
       this.dumps.filter(dump => dump.id === opts.id).forEach((dump) => {
         delete dump.waitRestore; // eslint-disable-line no-param-reassign
         this.alerter.error(
-          this.$scope.tr('privateDatabase_tabs_dumps_restore_fail'),
+          this.$translate.instant('privateDatabase_tabs_dumps_restore_fail'),
           this.$scope.alerts.main,
         );
       });

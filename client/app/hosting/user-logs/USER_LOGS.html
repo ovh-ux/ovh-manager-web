@@ -3,18 +3,18 @@
         <div class="col-md-9">
             <div data-ovh-alert="{{alerts.main}}"></div>
 
-            <h2 data-i18n-static="hosting_tab_USER_LOGS"></h2>
+            <h2 data-translate="hosting_tab_USER_LOGS"></h2>
             <p data-ng-if="ctrl.guide">
                 <span class="fa fa-life-ring" aria-hidden="true"></span>
-                <span data-i18n-static="hosting_tab_USER_LOGS_guide_help"></span>
-                <a data-ng-href="{{ctrl.guide}}" target="_blank" title="{{hosting_guide_help}} {{i18n.common_newtab}}">
-                    <span data-i18n-static="hosting_guide_help"></span>
+                <span data-translate="hosting_tab_USER_LOGS_guide_help"></span>
+                <a data-ng-href="{{ctrl.guide}}" target="_blank" title="{{hosting_guide_help}} {{ 'common_newtab' | translate }}">
+                    <span data-translate="hosting_guide_help"></span>
                     <span class="fa fa-external-link" aria-hidden="true"></span>
                 </a>
             </p>
-            <p data-i18n-static="hosting_tab_USER_LOGS_dashboard_information"></p>
+            <p data-translate="hosting_tab_USER_LOGS_dashboard_information"></p>
             <dl>
-                <dt data-i18n-static="hosting_tab_USER_LOGS_dashboard_stats"></dt>
+                <dt data-translate="hosting_tab_USER_LOGS_dashboard_stats"></dt>
                 <dd>
                     <a data-ng-href="{{ctrl.urlUrchin}}" target="_blank" title="{{hosting_tab_USER_LOGS_dashboard_stats_newtab}}"
                        data-ng-if="!ctrl.userLogsToken">
@@ -28,14 +28,14 @@
                     </a>
                 </dd>
 
-                <dt data-i18n-static="hosting_tab_USER_LOGS_dashboard_logs"></dt>
+                <dt data-translate="hosting_tab_USER_LOGS_dashboard_logs"></dt>
                 <dd>
-                    <a data-ng-href="{{ctrl.urlLogs}}" target="_blank" title="{{hosting_tab_USER_LOGS_dashboard_logs_link}} {{i18n.common_newtab}}"
+                    <a data-ng-href="{{ctrl.urlLogs}}" target="_blank" title="{{hosting_tab_USER_LOGS_dashboard_logs_link}} {{ 'common_newtab' | translate }}"
                        data-ng-if="!ctrl.userLogsToken">
                         <span data-ng-bind="ctrl.urlLogs"></span>
                         <span class="fa fa-external-link" aria-hidden="true"></span>
                     </a>
-                    <a data-ng-href="{{ ctrl.urlLogs + '?token=' +  ctrl.userLogsToken}}" target="_blank" title="{{hosting_tab_USER_LOGS_dashboard_logs_link}} {{i18n.common_newtab}}"
+                    <a data-ng-href="{{ ctrl.urlLogs + '?token=' +  ctrl.userLogsToken}}" target="_blank" title="{{hosting_tab_USER_LOGS_dashboard_logs_link}} {{ 'common_newtab' | translate }}"
                        data-ng-if="ctrl.userLogsToken">
                         <span data-ng-bind="ctrl.urlLogs"></span>
                         <span class="fa fa-external-link" aria-hidden="true"></span>
@@ -46,23 +46,23 @@
             <div class="mt-5">
                 <oui-datagrid data-rows="ctrl.userLogs"
                               data-row-loader="ctrl.transformItem($row)">
-                    <oui-column data-title="tr('hosting_tab_USER_LOGS_table_header_login')" data-property="login">
+                    <oui-column data-title="'hosting_tab_USER_LOGS_table_header_login' | translate" data-property="login">
                         {{ $row.login | sliceContent: 50 }}
                     </oui-column>
-                    <oui-column data-title="tr('hosting_tab_USER_LOGS_table_header_description')" data-property="description">
+                    <oui-column data-title="'hosting_tab_USER_LOGS_table_header_description' | translate" data-property="description">
                         {{ $row.description | sliceContent: 50 }}
                     </oui-column>
-                    <oui-column data-title="tr('hosting_tab_USER_LOGS_table_header_creationDate')" data-property="creationDate">
+                    <oui-column data-title="'hosting_tab_USER_LOGS_table_header_creationDate' | translate" data-property="creationDate">
                         <span data-ng-bind="$row.creationDate | date: 'medium'"></span>
                     </oui-column>
                     <oui-action-menu data-align="end" data-compact>
-                        <oui-action-menu-item data-text="{{::tr('hosting_tab_USER_LOGS_table_popover_modify')}}"
+                        <oui-action-menu-item data-text="{{:: 'hosting_tab_USER_LOGS_table_popover_modify' | translate }}"
                                               data-on-click="setAction('user-logs/update/hosting-user-logs-update', $row)">
                         </oui-action-menu-item>
-                        <oui-action-menu-item data-text="{{::tr('hosting_tab_USER_LOGS_table_popover_update_password')}}"
+                        <oui-action-menu-item data-text="{{:: 'hosting_tab_USER_LOGS_table_popover_update_password' | translate }}"
                                               data-on-click="setAction('user-logs/password-update/hosting-user-logs-update-password', $row.login)">
                         </oui-action-menu-item>
-                        <oui-action-menu-item data-text="{{::tr('hosting_tab_USER_LOGS_table_popover_delete')}}"
+                        <oui-action-menu-item data-text="{{:: 'hosting_tab_USER_LOGS_table_popover_delete' | translate }}"
                                               data-on-click="setAction('user-logs/delete/hosting-user-logs-delete', $row.login)">
                         </oui-action-menu-item>
                     </oui-action-menu>
@@ -72,7 +72,7 @@
 
         <div class="col-md-3 mt-5 mt-lg-0">
             <button class="btn btn-block btn-default" type="button"
-                    data-i18n-static="hosting_tab_USER_LOGS_configuration_user_create_title_button"
+                    data-translate="hosting_tab_USER_LOGS_configuration_user_create_title_button"
                     data-ng-click="setAction('user-logs/add/hosting-user-logs-add')">
             </button>
         </div>

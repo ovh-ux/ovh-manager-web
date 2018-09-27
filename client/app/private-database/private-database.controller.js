@@ -7,6 +7,7 @@ angular.module('App').controller(
       $scope,
       $stateParams,
       $timeout,
+      $translate,
       Alerter,
       Hosting,
       PrivateDatabase,
@@ -18,6 +19,7 @@ angular.module('App').controller(
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.hostingService = Hosting;
       this.privateDatabaseExtensionService = PrivateDatabaseExtension;
@@ -253,7 +255,7 @@ angular.module('App').controller(
         .catch((err) => {
           _.set(err, 'type', err.type || 'ERROR');
           this.alerter.alertFromSWS(
-            this.$scope.tr('privateDatabase_dashboard_loading_error'),
+            this.$translate.instant('privateDatabase_dashboard_loading_error'),
             err,
             this.$scope.alerts.page,
           );
@@ -291,7 +293,7 @@ angular.module('App').controller(
             opt,
           );
           this.alerter.success(
-            this.$scope.tr(`privateDatabase_global_actions_success_${task.function}`),
+            this.$translate.instant(`privateDatabase_global_actions_success_${task.function}`),
             this.$scope.alerts.main,
           );
         })
@@ -301,7 +303,7 @@ angular.module('App').controller(
             opt,
           );
           this.alerter.error(
-            this.$scope.tr(`privateDatabase_global_actions_fail_${task.function}`),
+            this.$translate.instant(`privateDatabase_global_actions_fail_${task.function}`),
             this.$scope.alerts.main,
           );
         });

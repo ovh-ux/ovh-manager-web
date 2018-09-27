@@ -4,25 +4,25 @@
 
         <oui-datagrid data-rows="usersListCtrl.users"
                       data-row-loader="usersListCtrl.transformItem($row)">
-            <oui-column data-title="tr('privateDatabase_tabs_user_name')" data-property="userName" data-sortable></oui-column>
-            <oui-column data-title="tr('privateDatabase_tabs_creation_date')" data-property="creationDate">
+            <oui-column data-title="'privateDatabase_tabs_user_name' | translate" data-property="userName" data-sortable></oui-column>
+            <oui-column data-title="'privateDatabase_tabs_creation_date' | translate" data-property="creationDate">
                 <span data-ng-bind="$row.creationDate | date:mediumDate"></span>
             </oui-column>
             <oui-action-menu data-align="end" data-compact>
-                <oui-action-menu-item data-text="{{::!database.capabilities.user.update ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_action_changepassword}}"
+                <oui-action-menu-item data-text="{{::!database.capabilities.user.update ? ('privateDatabase_capability_disabled_explanation' | translate): ('privateDatabase_action_changepassword' | translate) }}"
                                       data-ng-click="setAction('user/update/password/user/private-database-user-update-password-user', {user : $row, database: database})"
                                       data-ng-disabled="!database.capabilities.user.update || database.state !== 'started' || taskState.changeVersion || lockAction || $row.waitChangePassword"
-                                      data-title="{{!database.capabilities.user.update ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_action_changepassword}}">
+                                      data-title="{{!database.capabilities.user.update ? ('privateDatabase_capability_disabled_explanation' | translate): ('privateDatabase_action_changepassword' | translate) }}">
                 </oui-action-menu-item>
-                <oui-action-menu-item data-text="{{::tr('privateDatabase_action_grants')}}"
+                <oui-action-menu-item data-text="{{:: 'privateDatabase_action_grants' | translate }}"
                                       data-ng-click="goToGrants($row)"
                                       data-ng-disabled="!database.capabilities.grant.update || database.state !== 'started' || taskState.changeVersion || lockAction"
-                                      data-title="{{!database.capabilities.grant.update ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_action_grants}}">
+                                      data-title="{{!database.capabilities.grant.update ? ('privateDatabase_capability_disabled_explanation' | translate): ('privateDatabase_action_grants' | translate) }}">
                 </oui-action-menu-item>
-                <oui-action-menu-item data-text="{{::tr('privateDatabase_action_delete_user')}}"
+                <oui-action-menu-item data-text="{{:: 'privateDatabase_action_delete_user' | translate }}"
                                       data-ng-click="setAction('user/delete/private-database-user-delete', $row)"
                                       data-ng-disabled="!database.capabilities.user.delete || database.state !== 'started' || taskState.changeVersion || lockAction"
-                                      data-title="{{!database.capabilities.user.delete ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_action_delete_user}}">
+                                      data-title="{{!database.capabilities.user.delete ? ('privateDatabase_capability_disabled_explanation' | translate): ('privateDatabase_action_delete_user' | translate) }}">
                 </oui-action-menu-item>
             </oui-action-menu>
         </oui-datagrid>
@@ -31,9 +31,9 @@
 
     <div class="col-md-3 mt-5 mt-lg-0">
         <button class="btn btn-block btn-default" type="button"
-                data-i18n-static="privateDatabase_tabs_add_user"
+                data-translate="privateDatabase_tabs_add_user"
                 data-ng-click="setAction('user/add/private-database-user-add', {'user':usersListCtrl.usersIds})"
                 data-ng-disabled="!database.capabilities.user.create || database.state !== 'started' || taskState.changeVersion || usersListCtrl.lockAction"
-                title="{{!database.capabilities.user.create ? i18n.privateDatabase_capability_disabled_explanation: i18n.privateDatabase_tabs_add_user}}"></button>
+                title="{{!database.capabilities.user.create ? ('privateDatabase_capability_disabled_explanation' | translate): ('privateDatabase_tabs_add_user' | translate) }}"></button>
     </div>
 </div>

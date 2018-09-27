@@ -3,7 +3,7 @@
          data-wizard-cancel-valid-return-key="true"
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="createSubscriber"
-         data-wizard-title="i18n.mailing_list_tab_create_subscribers">
+         data-wizard-title="'mailing_list_tab_create_subscribers' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading && ctrl.selection.length > 0 && ctrl.errors.length === 0 && ctrl.subscribers.length <= ctrl.mailingList.limits.subscribers">
@@ -13,17 +13,17 @@
             </div>
 
             <div data-ng-show="!ctrl.loading">
-                <p data-ng-bind-html="tr('mailing_list_tab_create_subscribers_title', [ctrl.mailingList.name, ctrl.mailingList.limits.subscribers])"></p>
+                <p data-ng-bind-html="'mailing_list_tab_create_subscribers_title' | translate: { t0: ctrl.mailingList.name, t1: ctrl.mailingList.limits.subscribers }"></p>
 
                 <div class="form" name="createSubscriberForm" role="form">
                     <div class="form-group" data-ng-class="{ 'has-error': ctrl.errors.length > 0 }">
                         <label class="control-label required"
-                               data-i18n-static="mailing_list_tab_create_subscribers_list"></label>
+                               data-translate="mailing_list_tab_create_subscribers_list"></label>
                         <div data-file-editor
                              data-file-editor-errors="ctrl.errors"
                              data-file-editor-existing-items="ctrl.subscribers"
                              data-file-editor-item-validator="ctrl.constructor.addressValidator"
-                             data-file-editor-new-item="i18n.mailing_list_common_add_email_addr"
+                             data-file-editor-new-item="'mailing_list_common_add_email_addr' | translate"
                              data-tr="tr"
                              data-trpl="trpl"
                              data-ng-model="ctrl.selection">
@@ -33,10 +33,10 @@
 
                 <div class="alert alert-warning" role="alert"
                      data-ng-if="ctrl.subscribers.length > ctrl.mailingList.limits.subscribers">
-                    <div data-ng-bind-html="tr('mailing_list_tab_create_subscribers_quota_exceeded', [ctrl.mailingList.limits.subscribers])"></div>
+                    <div data-ng-bind-html="'mailing_list_tab_create_subscribers_quota_exceeded' | translate: { t0: ctrl.mailingList.limits.subscribers }"></div>
                 </div>
                 <div class="alert alert-info" role="alert"
-                    data-i18n-static="mailing_list_tab_create_subscribers_file">
+                    data-translate="mailing_list_tab_create_subscribers_file">
                 </div>
             </div>
         </div>

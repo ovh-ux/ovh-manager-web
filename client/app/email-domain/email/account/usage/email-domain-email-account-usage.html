@@ -2,7 +2,7 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="updateUsageAccount"
-         data-wizard-title="i18n.email_tab_modal_update_usage_title">
+         data-wizard-title="'email_tab_modal_update_usage_title' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="ctrl.isUsageRequestValid()">
@@ -12,12 +12,13 @@
             </div>
 
             <div data-ng-if="!ctrl.loading">
-                <p data-i18n-static="email_tab_modal_update_usage_info"></p>
+                <p data-translate="email_tab_modal_update_usage_info"></p>
                 <p class="font-italic"
-                   data-ng-bind="tr('email_tab_modal_update_usage_lastupdate', [(ctrl.lastUpdated.value|date:'medium')])"
+                   data-translate="email_tab_modal_update_usage_lastupdate"
+                   data-translate-values="{ t0: (ctrl.lastUpdated.value|date:'medium') }"
                    data-ng-if="ctrl.lastUpdated.value"></p>
                 <div class="alert alert-warning" role="alert"
-                     data-i18n-static="email_tab_modal_update_usage_alert_updating"
+                     data-translate="email_tab_modal_update_usage_alert_updating"
                      data-ng-if="!ctrl.isCheckAuthorized()">
                 </div>
             </div>

@@ -9,9 +9,9 @@
         <div class="row">
             <div class="col-md-9">
                 <strong data-ng-if="database.offer === 'classic'"
-                        data-i18n-static="privateDatabase_order_sql_type_premium_label"></strong>
+                        data-translate="privateDatabase_order_sql_type_premium_label"></strong>
                 <strong data-ng-if="database.offer === 'public'"
-                        data-i18n-static="privateDatabase_order_sql_type_dbaas_label"></strong>
+                        data-translate="privateDatabase_order_sql_type_dbaas_label"></strong>
                 <div class="mb-3" data-ng-show="!ctrl.editMode">
                     <div class="d-flex">
                         <h1 class="d-inline-block mb-0"
@@ -21,7 +21,7 @@
                                 data-ng-show="database"
                                 data-ng-if="!ctrl.isExpired">
                             <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
-                            <span class="sr-only" data-i18n-static="privateDatabase_configuration_edit_btn"></span>
+                            <span class="sr-only" data-translate="privateDatabase_configuration_edit_btn"></span>
                         </button>
                     </div>
                     <span class="font-italic"
@@ -41,13 +41,13 @@
                                 data-ng-disabled="formEditDisplayName.$invalid">
                             <span class="fa fa-check" aria-hidden="true"></span>
                             <span class="sr-only"
-                                  data-i18n-static="privateDatabase_dashboard_name_validate"></span>
+                                  data-translate="privateDatabase_dashboard_name_validate"></span>
                         </button>
                         <button class="oui-button" type="button"
                                 data-ng-click="ctrl.editMode = false">
                             <span class="fa fa-remove" aria-hidden="true"></span>
                             <span class="sr-only"
-                                  data-i18n-static="privateDatabase_dashboard_name_cancel"></span>
+                                  data-translate="privateDatabase_dashboard_name_cancel"></span>
                         </button>
                     </div>
                 </form>
@@ -55,7 +55,7 @@
                 <div class="alert alert-danger" role="alert"
                      data-ng-if="ctrl.editMode && formEditDisplayName.txtDisplayName.$dirty && formEditDisplayName.$invalid"
                      data-ng-messages="formEditDisplayName.txtDisplayName.$error">
-                    <div data-ng-message="maxlength" data-ng-bind="::i18n.privateDatabase_displayName_length"></div>
+                    <div data-ng-message="maxlength" data-ng-bind=":: 'privateDatabase_displayName_length' | translate"></div>
                 </div>
 
                 <div class="mt-4" data-ng-if="database.serviceName && database.serviceInfos">
@@ -71,14 +71,14 @@
                 <div class="btn-group ml-auto mt-4">
                     <button type="button" class="oui-button oui-button_dropdown mb-0" aria-expanded="false" aria-haspopup="true"
                             data-toggle="dropdown">
-                        <span data-i18n-static="common_actions"></span>
+                        <span data-translate="common_actions"></span>
                         <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <li data-ng-if="!ctrl.isExpired">
                             <i class="oui-icon oui-icon-power_line" aria-hidden="true"></i>
-                            <button class="btn btn-link" type="button" title="{{i18n.privateDatabase_restart}}"
-                                    data-i18n-static="privateDatabase_restart"
+                            <button class="btn btn-link" type="button" title="{{ 'privateDatabase_restart' | translate }}"
+                                    data-translate="privateDatabase_restart"
                                     data-ng-click="setAction('database/restart/private-database-database-restart')"
                                     data-ng-disabled="taskState.lockAction">
                             </button>
@@ -86,16 +86,16 @@
                         <li class="dropdown-divider"
                             data-ng-if="!ctrl.isExpired">
                             <i class="oui-icon oui-icon-user_line" aria-hidden="true"></i>
-                            <a class="btn btn-link" title="{{::i18n.core_change_owner}} ({{::i18n.core_new_window}})" target="_blank"
+                            <a class="btn btn-link" title="{{:: 'core_change_owner' | translate }} ({{:: 'core_new_window' | translate }})" target="_blank"
                                data-ng-href="{{::changeOwnerUrl}}"
-                               data-i18n-static="core_change_owner">
+                               data-translate="core_change_owner">
                             </a>
                         </li>
                         <li>
                             <i class="oui-icon oui-icon-gear_line" aria-hidden="true"></i>
                             <a class="btn btn-link"
                                data-ng-href="{{ '#/useraccount/contacts?tab=SERVICES&serviceName=' + database.serviceName }}"
-                               data-i18n-static="contacts_management"
+                               data-translate="contacts_management"
                                data-ng-hide="database.isExpired">
                             </a>
                         </li>
@@ -116,11 +116,11 @@
 
         <div data-ng-show="!(!taskState.changeVersion && database.state !== 'started') && !taskState.changeVersion">
             <p data-ng-if="!taskState.changeVersion && database && database.state !== 'started'"
-               data-i18n-static="privateDatabase_dashboard_information"></p>
+               data-translate="privateDatabase_dashboard_information"></p>
             <p class="text-danger" data-ng-if="taskState.changeVersion && database"
-               data-i18n-static="privateDatabase_dashboard_changeversion_information"></p>
+               data-translate="privateDatabase_dashboard_changeversion_information"></p>
             <p data-ng-if="!taskState.changeVersion && !database"
-               data-i18n-static="privateDatabase_dashboard_not_administrator_information"></p>
+               data-translate="privateDatabase_dashboard_not_administrator_information"></p>
         </div>
 
         <div data-ng-controller="PrivateDatabaseTabsCtrl">

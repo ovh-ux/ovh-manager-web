@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'PrivateDatabaseStopCtrl',
   class PrivateDatabaseStopCtrl {
-    constructor($scope, $stateParams, Alerter, PrivateDatabase) {
+    constructor($scope, $stateParams, $translate, Alerter, PrivateDatabase) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
     }
@@ -22,13 +23,13 @@ angular.module('App').controller(
         .then((task) => {
           this.$scope.pollAction(task);
           this.alerter.success(
-            this.$scope.tr('privateDatabase_stop_success'),
+            this.$translate.instant('privateDatabase_stop_success'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.alerter.alertFromSWS(
-            this.$scope.tr('privateDatabase_stop_fail'),
+            this.$translate.instant('privateDatabase_stop_fail'),
             _.get(err, 'data', err),
             this.$scope.alerts.main,
           );

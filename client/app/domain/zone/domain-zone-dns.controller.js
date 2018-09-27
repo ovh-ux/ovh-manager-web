@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'DomainTabZoneDnsCtrl',
   class DomainTabZoneDnsCtrl {
-    constructor($scope, $q, Alerter, Domain, User) {
+    constructor($scope, $q, $translate, Alerter, Domain, User) {
       this.$scope = $scope;
       this.$q = $q;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.User = User;
@@ -149,7 +150,7 @@ angular.module('App').controller(
           this.displayActivateZone = false;
           this.applySelection();
           return this.Domain.getZoneStatus(this.domain.name).catch(err => this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_dashboard_loading_error'),
+            this.$translate.instant('domain_dashboard_loading_error'),
             err,
             this.$scope.alerts.main,
           ));
@@ -174,7 +175,7 @@ angular.module('App').controller(
             this.displayActivateZone = true;
           } else {
             this.Alerter.alertFromSWS(
-              this.$scope.tr('domain_dashboard_loading_error'),
+              this.$translate.instant('domain_dashboard_loading_error'),
               _.get(err, 'data', err),
               this.$scope.alerts.main,
             );

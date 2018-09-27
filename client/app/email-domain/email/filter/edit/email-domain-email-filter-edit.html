@@ -2,11 +2,11 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="updateFilter"
-         data-wizard-title="i18n.email_tab_popover_filter_edit">
+         data-wizard-title="'email_tab_popover_filter_edit' | translate">
         <div data-wizard-step
              data-wizard-step-valid="!ctrl.loading && ctrl.editFilterForm.$valid && ctrl.filterRuleCheck()">
 
-            <p data-i18n-static="email_tab_modal_filter_edit_info"></p>
+            <p data-translate="email_tab_modal_filter_edit_info"></p>
 
             <oui-spinner data-ng-if="ctrl.loading"></oui-spinner>
 
@@ -14,26 +14,26 @@
 
                 <p>
                     <small class="text-danger">*</small>
-                    <small data-i18n-static="required_fields"></small>
+                    <small data-translate="required_fields"></small>
                 </p>
 
                 <form name="ctrl.editFilterForm">
                     <fieldset class="form-horizontal mt-4">
-                        <legend data-i18n-static="email_tab_modal_filter_create_info_heading"></legend>
+                        <legend data-translate="email_tab_modal_filter_create_info_heading"></legend>
                         <div class="form-group"
                              data-ng-class="{
                                 'has-error': ctrl.editFilterForm.filterPriority.$dirty && ctrl.editFilterForm.filterPriority.$invalid,
                                 'has-success': ctrl.editFilterForm.filterPriority.$dirty && ctrl.editFilterForm.filterPriority.$valid
                             }">
                             <label class="control-label col-md-4 required" for="txt-filter-priority"
-                                   data-i18n-static="email_tab_modal_filter_create_priority"></label>
+                                   data-translate="email_tab_modal_filter_create_priority"></label>
                             <div class="col-md-6">
                                 <input type="number" class="form-control" id="txt-filter-priority" name="filterPriority" required
                                        data-ng-change="ctrl.filterPriorityCheck()"
                                        data-ng-min="0" min="0"
                                        data-ng-model="ctrl.filter.priority">
                                 <small class="help-block"
-                                       data-i18n-static="email_tab_modal_create_filter_number_error"
+                                       data-translate="email_tab_modal_create_filter_number_error"
                                        data-ng-if="ctrl.editFilterForm.filterPriority.$dirty && ctrl.editFilterForm.filterPriority.$invalid"></small>
                             </div>
                         </div>
@@ -41,30 +41,30 @@
                         <div class="col-md-offset-4 pl-lg-3">
                             <oui-checkbox id="chk-filter-active" name="filterActive"
                                 data-model="ctrl.filter.active"
-                                data-text="{{::i18n.email_tab_modal_filter_create_active}}">
+                                data-text="{{:: 'email_tab_modal_filter_create_active' | translate }}">
                             </oui-checkbox>
                         </div>
                     </fieldset>
 
                     <fieldset class="form-inline mt-5">
-                        <legend class="required" data-i18n-static="email_tab_modal_filter_create_rules_heading"></legend>
+                        <legend class="required" data-translate="email_tab_modal_filter_create_rules_heading"></legend>
                         <div class="row mb-1" data-ng-repeat="rule in ctrl.filter.rules track by $index">
                             <div class="form-group col-md-4">
                                 <label class="sr-only"
                                        for="filter-edit-header-{{$index}}"
-                                       data-i18n-static="email_tab_modal_filter_create_header"></label>
+                                       data-translate="email_tab_modal_filter_create_header"></label>
                                 <div class="oui-select mb-0"
                                      data-ng-if="rule.headerSelect !== 'other'">
                                     <select class="oui-select__input" id="filter-edit-header-{{$index}}"
                                             data-ng-model="rule.headerSelect"
-                                            data-ng-options="header as tr('email_tab_modal_filter_create_header_' + header) for header in ctrl.headers track by header">
+                                            data-ng-options="header as ('email_tab_modal_filter_create_header_' + header | translate) for header in ctrl.headers track by header">
                                         <option value="" disabled
-                                                data-i18n-static="email_tab_modal_filter_create_header"></option>
+                                                data-translate="email_tab_modal_filter_create_header"></option>
                                     </select>
                                     <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                                 </div>
                                 <div class="input-group w-100" data-ng-if="rule.headerSelect === 'other'">
-                                    <input type="text" class="form-control" id="filter-edit-header-{{$index}}" maxlength="50" placeholder="{{::i18n.email_tab_modal_filter_create_header}}" required
+                                    <input type="text" class="form-control" id="filter-edit-header-{{$index}}" maxlength="50" placeholder="{{:: 'email_tab_modal_filter_create_header' | translate }}" required
                                            data-ng-model="rule.header">
                                     <div class="input-group-btn">
                                         <button class="btn btn-default" type="button"
@@ -77,13 +77,13 @@
 
                             <div class="form-group col-md-3">
                                 <label class="sr-only" for="filter-edit-operand-{{$index}}"
-                                       data-i18n-static="email_tab_modal_filter_create_rule"></label>
+                                       data-translate="email_tab_modal_filter_create_rule"></label>
                                 <div class="oui-select mb-0">
                                     <select class="oui-select__input" id="filter-edit-operand-{{$index}}"
                                             data-ng-model="rule.operand"
-                                            data-ng-options="operand as tr('email_tab_modal_filter_create_rule_' + operand) for operand in ctrl.operands track by operand">
+                                            data-ng-options="operand as ('email_tab_modal_filter_create_rule_' + operand | translate) for operand in ctrl.operands track by operand">
                                         <option value="" disabled
-                                                data-i18n-static="email_tab_modal_filter_create_rule"></option>
+                                                data-translate="email_tab_modal_filter_create_rule"></option>
                                     </select>
                                     <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                                 </div>
@@ -91,8 +91,8 @@
 
                             <div class="form-group col-md-4">
                                 <label class="sr-only" for="filter-edit-value-{{$index}}"
-                                       data-i18n-static="email_tab_modal_filter_create_value"></label>
-                                <input type="text" class="form-control w-100" id="filter-edit-value-{{$index}}" maxlength="50" placeholder="{{::i18n.email_tab_modal_filter_create_value}}"
+                                       data-translate="email_tab_modal_filter_create_value"></label>
+                                <input type="text" class="form-control w-100" id="filter-edit-value-{{$index}}" maxlength="50" placeholder="{{:: 'email_tab_modal_filter_create_value' | translate }}"
                                        data-ng-model="rule.value">
                             </div>
 
@@ -111,19 +111,19 @@
                     </fieldset>
 
                     <fieldset class="form-horizontal mt-5">
-                        <legend data-i18n-static="email_tab_modal_filter_create_action_heading"></legend>
+                        <legend data-translate="email_tab_modal_filter_create_action_heading"></legend>
                         <div class="form-group">
                             <label class="control-label col-md-4 required"
                                    for="select-filter-action"
-                                   data-i18n-static="email_tab_modal_filter_create_action"></label>
+                                   data-translate="email_tab_modal_filter_create_action"></label>
                             <div class="col-md-6">
                                 <div class="oui-select mb-0">
                                     <select class="oui-select__input" id="select-filter-action" name="filterAction" required
                                             data-ng-change="ctrl.filter.actionParam = ''"
                                             data-ng-model="ctrl.filter.action"
-                                            data-ng-options="action as tr('email_tab_modal_filter_create_action_' + action) for action in ctrl.actions track by action">
+                                            data-ng-options="action as ('email_tab_modal_filter_create_action_' + action | translate) for action in ctrl.actions track by action">
                                         <option value="" disabled
-                                                data-i18n-static="select_placeholder"></option>
+                                                data-translate="select_placeholder"></option>
                                     </select>
                                     <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                                 </div>
@@ -137,13 +137,13 @@
                                 'has-success': ctrl.editFilterForm.filterActionParam.$dirty && ctrl.editFilterForm.filterActionParam.$valid }"
                              data-ng-if="ctrl.filter.action === 'redirect'">
                             <label class="control-label col-md-4 required" for="txt-filter-actionParam-redirect"
-                                   data-i18n-static="email_tab_modal_filter_create_actionParam_redirect"></label>
+                                   data-translate="email_tab_modal_filter_create_actionParam_redirect"></label>
                             <div class="col-md-8">
                                 <input type="email" class="form-control" id="txt-filter-actionParam-redirect" name="filterActionParam" required
                                        data-ng-change="ctrl.filterActionRedirectCheck()"
                                        data-ng-model="ctrl.filter.actionParam">
                                 <small class="help-block"
-                                       data-i18n-static="email_tab_modal_redirection_create_email_error"
+                                       data-translate="email_tab_modal_redirection_create_email_error"
                                        data-ng-if="ctrl.editFilterForm.filterActionParam.$dirty && ctrl.editFilterForm.filterActionParam.$invalid"></small>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
                         <div class="form-group"
                              data-ng-if="ctrl.filter.action === 'account'">
                             <label class="control-label col-md-4 required" for="select-actionParam-account"
-                                   data-i18n-static="email_tab_modal_filter_create_actionParam_account"></label>
+                                   data-translate="email_tab_modal_filter_create_actionParam_account"></label>
                             <div class="col-md-8">
                                 <div class="oui-select mb-0">
                                     <select class="oui-select__input" id="select-actionParam-account" name="filterActionParam" required

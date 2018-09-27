@@ -1,9 +1,9 @@
 <div data-ng-controller="AddSubdomainHostingChoiceCtrl as ctrl">
     <div data-wizard
-         data-wizard-confirm-button-text="i18n.wizard_next"
+         data-wizard-confirm-button-text="'wizard_next' | translate"
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="redirect"
-         data-wizard-title="i18n.domain_configuration_add_subdomain">
+         data-wizard-title="'domain_configuration_add_subdomain' | translate">
 
         <div data-wizard-step
              data-wizard-step-on-previous="ctrl.goBack"
@@ -14,15 +14,15 @@
             </div>
 
             <div data-ng-if="!ctrl.loading && ctrl.hostings">
-                <p data-ng-bind-html="tr('domain_configuration_add_subdomain_hosting_choice', [currentActionData.subdomain, currentActionData.domain.displayName])"></p>
+                <p data-ng-bind-html="'domain_configuration_add_subdomain_hosting_choice' | translate: { t0: currentActionData.subdomain, t1: currentActionData.domain.displayName }"></p>
                 <form class="mt-4" name="searchHostingForm">
                     <div class="form-group w-50 mx-auto">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="{{i18n.domain_configuration_add_subdomain_hosting_search}}"
+                            <input type="text" class="form-control" placeholder="{{ 'domain_configuration_add_subdomain_hosting_search' | translate }}"
                                    data-ng-change="selected.hosting = null"
                                    data-ng-model="ctrl.selected.search">
                             <div class="input-group-btn" data-ng-if="ctrl.selected.search">
-                                <button class="btn btn-default" type="button" title={{i18n.common_cancel}}
+                                <button class="btn btn-default" type="button" title="{{ 'common_cancel' | translate }}"
                                         data-ng-click="ctrl.selected.search = ''">
                                     <span class="fa fa-times" aria-hidden="true"></span>
                                 </button>
@@ -41,7 +41,7 @@
                     </li>
                 </ul>
                 <div class="alert alert-info mt-5" role="alert"
-                     data-i18n-static="hosting_tab_DOMAINS_configuration_add_step1_ovh_search_no_result_found"
+                     data-translate="hosting_tab_DOMAINS_configuration_add_step1_ovh_search_no_result_found"
                      data-ng-show="(ctrl.hostings | filter:ctrl.selected.search).length === 0"></div>
             </div>
         </div>

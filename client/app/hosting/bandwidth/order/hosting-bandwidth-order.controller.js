@@ -2,7 +2,7 @@ angular
   .module('App')
   .controller(
     'HostingOrderBandwidthCtrl',
-    ($scope, $q, $window, $stateParams, HostingBandwidthOrder, Alerter) => {
+    ($scope, $q, $window, $stateParams, $translate, HostingBandwidthOrder, Alerter) => {
       $scope.loading = {
         init: true,
         duration: true,
@@ -33,7 +33,7 @@ angular
           })
           .catch((err) => {
             Alerter.alertFromSWS(
-              $scope.tr('hosting_dashboard_bandwidth_order_error'),
+              $translate.instant('hosting_dashboard_bandwidth_order_error'),
               err,
               $scope.alerts.main,
             );
@@ -73,7 +73,7 @@ angular
           })
           .catch((err) => {
             Alerter.alertFromSWS(
-              $scope.tr('hosting_dashboard_bandwidth_order_error'),
+              $translate.instant('hosting_dashboard_bandwidth_order_error'),
               err,
               $scope.alerts.main,
             );
@@ -112,14 +112,14 @@ angular
         })
           .then((order) => {
             Alerter.success(
-              $scope.tr('hosting_dashboard_cdn_order_success', [order.url]),
+              $translate.instant('hosting_dashboard_cdn_order_success', { t0: order.url }),
               $scope.alerts.main,
             );
             $window.open(order.url, '_blank');
           })
           .catch((err) => {
             Alerter.alertFromSWS(
-              $scope.tr('hosting_dashboard_bandwidth_order_error'),
+              $translate.instant('hosting_dashboard_bandwidth_order_error'),
               _.get(err, 'data', err),
               $scope.alerts.main,
             );

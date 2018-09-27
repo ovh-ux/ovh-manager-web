@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'PrivateDatabaseDeleteBDDCtrl',
   class PrivateDatabaseDeleteBDDCtrl {
-    constructor($scope, $stateParams, Alerter, PrivateDatabase) {
+    constructor($scope, $stateParams, $translate, Alerter, PrivateDatabase) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
     }
@@ -23,13 +24,13 @@ angular.module('App').controller(
         .deleteBDD(this.productId, this.bddToDelete.databaseName)
         .then(() => {
           this.alerter.success(
-            this.$scope.tr('privateDatabase_delete_bdd_success'),
+            this.$translate.instant('privateDatabase_delete_bdd_success'),
             this.$scope.alerts.main,
           );
         })
         .catch(() => {
           this.alerter.error(
-            this.$scope.tr('privateDatabase_delete_bdd_fail'),
+            this.$translate.instant('privateDatabase_delete_bdd_fail'),
             this.$scope.alerts.main,
           );
         });

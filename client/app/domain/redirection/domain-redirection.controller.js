@@ -1,8 +1,9 @@
 angular.module('controllers').controller(
   'controllers.Domain.Redirection',
   class DomainRedirectionCtrl {
-    constructor($scope, Alerter, Domain) {
+    constructor($scope, $translate, Alerter, Domain) {
       this.$scope = $scope;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
     }
@@ -75,7 +76,7 @@ angular.module('controllers').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_tab_REDIRECTION_load_fail'),
+            this.$translate.instant('domain_tab_REDIRECTION_load_fail'),
             err,
             this.$scope.alerts.main,
           );
@@ -156,9 +157,9 @@ angular.module('controllers').controller(
           const datasToReturn = [
             [
               '',
-              this.$scope.tr('domain_tab_REDIRECTION_table_headers_field'),
-              this.$scope.tr('domain_tab_REDIRECTION_table_headers_type'),
-              this.$scope.tr('domain_tab_REDIRECTION_table_headers_target'),
+              this.$translate.instant('domain_tab_REDIRECTION_table_headers_field'),
+              this.$translate.instant('domain_tab_REDIRECTION_table_headers_type'),
+              this.$translate.instant('domain_tab_REDIRECTION_table_headers_target'),
             ],
           ];
 
@@ -166,7 +167,7 @@ angular.module('controllers').controller(
             datasToReturn.push([
               redirection.fieldDisplayType,
               this.constructor.getDomain(redirection),
-              this.$scope.tr(`domain_tab_REDIRECTION_type_${redirection.fieldDisplayType}`),
+              this.$translate.instant(`domain_tab_REDIRECTION_type_${redirection.fieldDisplayType}`),
               redirection.targetDisplayName,
             ]);
           });
@@ -175,7 +176,7 @@ angular.module('controllers').controller(
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_tab_REDIRECTION_load_fail'),
+            this.$translate.instant('domain_tab_REDIRECTION_load_fail'),
             err,
             this.$scope.alerts.main,
           );

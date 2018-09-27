@@ -4,6 +4,7 @@ angular.module('App').controller(
     constructor(
       $scope,
       $rootScope,
+      $translate,
       Alerter,
       Domain,
       DomainValidator,
@@ -11,6 +12,7 @@ angular.module('App').controller(
     ) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.DomainValidator = DomainValidator;
@@ -662,13 +664,13 @@ angular.module('App').controller(
       })
         .then(() => {
           this.Alerter.success(
-            this.$scope.tr('domain_configuration_dns_entry_add_success'),
+            this.$translate.instant('domain_configuration_dns_entry_add_success'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_configuration_dns_entry_add_fail'),
+            this.$translate.instant('domain_configuration_dns_entry_add_fail'),
             err,
             this.$scope.alerts.main,
           );
@@ -689,14 +691,14 @@ angular.module('App').controller(
       })
         .then(() => {
           this.Alerter.success(
-            this.$scope.tr('domain_configuration_dns_entry_modify_success'),
+            this.$translate.instant('domain_configuration_dns_entry_modify_success'),
             this.$scope.alerts.main,
           );
           this.$rootScope.$broadcast('domain.tabs.zonedns.refresh');
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('domain_configuration_dns_entry_modify_fail'),
+            this.$translate.instant('domain_configuration_dns_entry_modify_fail'),
             err,
             this.$scope.alerts.main,
           );

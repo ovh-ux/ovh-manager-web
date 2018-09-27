@@ -1,13 +1,13 @@
 angular.module('App').controller(
   'controllers.Hosting.Envvars.delete',
   class HostingEnvvarsDeleteCtrl {
-    constructor($scope, $stateParams, Alerter, HostingEnvvars, translator) {
+    constructor($scope, $stateParams, $translate, Alerter, HostingEnvvars) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.HostingEnvvars = HostingEnvvars;
-      this.translator = translator;
     }
 
     $onInit() {
@@ -23,13 +23,13 @@ angular.module('App').controller(
       )
         .then(() => {
           this.Alerter.success(
-            this.translator.tr('hosting_tab_ENVVARS_delete_success'),
+            this.$translate.instant('hosting_tab_ENVVARS_delete_success'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.Alerter.error(
-            this.translator.tr('hosting_tab_ENVVARS_delete_error')
+            this.$translate.instant('hosting_tab_ENVVARS_delete_error')
               + err.message,
             this.$scope.alerts.main,
           );

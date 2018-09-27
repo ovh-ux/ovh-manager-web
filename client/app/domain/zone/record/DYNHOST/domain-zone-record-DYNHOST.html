@@ -5,13 +5,13 @@
     <div class="form-group"
          data-ng-class="{ 'has-error': ctrl.zoneRecordForm.target.$dirty && ctrl.zoneRecordForm.target.$invalid }">
         <label class="control-label col-md-3 required" for="target"
-               data-i18n-static="domain_configuration_dns_entry_add_target"></label>
+               data-translate="domain_configuration_dns_entry_add_target"></label>
         <div class="col-md-9">
             <input type="text" class="form-control" id="target" name="target" required
                    data-ng-change="ctrl.checkTarget(ctrl.zoneRecordForm.target, 'DYNHOST')"
                    data-ng-model="ctrl.model.target.value">
             <small class="help-block"
-                   data-i18n-static="domain_configuration_dns_entry_add_target_ipv4_valid"
+                   data-translate="domain_configuration_dns_entry_add_target_ipv4_valid"
                    data-ng-if="ctrl.zoneRecordForm.target.$dirty && ctrl.zoneRecordForm.target.$invalid"></small>
         </div>
     </div>
@@ -19,4 +19,4 @@
     <div data-ng-include="'domain/zone/record/bottom.html'"></div>
 </form>
 <p class="text-muted font-italic"
-   data-i18n-static="domain_configuration_dns_entry_add_dynhost_help"></p>
+   data-translate="domain_configuration_dns_entry_add_dynhost_help"></p>

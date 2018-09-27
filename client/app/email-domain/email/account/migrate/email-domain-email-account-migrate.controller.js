@@ -5,18 +5,18 @@ angular.module('App').controller(
      * Constructor
      * @param $scope
      * @param $q
+     * @param $translate
      * @param Alerter
      * @param Emails
-     * @param translator
      * @param constants
      */
-    constructor($scope, $q, Alerter, Emails, translator, constants) {
+    constructor($scope, $q, $translate, Alerter, Emails, User) {
       this.$scope = $scope;
       this.$q = $q;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Emails = Emails;
-      this.translator = translator;
-      this.urls = constants.urls;
+      this.User = User;
     }
 
     $onInit() {
@@ -47,9 +47,12 @@ angular.module('App').controller(
       this.$scope.alerts.migrate = 'domain_alert_migrate';
       this.$scope.migrateAccount = () => this.migrateAccount();
 
-      // URLs constants
-      this.allGuides = _.get(this.urls, 'FR.guides.all');
-      this.emailsOrder = _.get(this.urls, 'FR.emailsOrder');
+      this.User.getUrlOf('guides').then((guides) => {
+        this.allGuides = _.get(guides, 'all');
+      });
+      this.User.getUrlOf('emailsOrder').then((url) => {
+        this.emailsOrder = url;
+      });
 
       this.getServiceTypes();
     }
@@ -191,12 +194,12 @@ angular.module('App').controller(
             === this.destinationServiceType.emailPro
           ) {
             this.Alerter.success(
-              this.$scope.tr('email_tab_modal_migrate_success_emailpro'),
+              this.$translate.instant('email_tab_modal_migrate_success_emailpro'),
               this.$scope.alerts.main,
             );
           } else {
             this.Alerter.success(
-              this.$scope.tr('email_tab_modal_migrate_success_exchange'),
+              this.$translate.instant('email_tab_modal_migrate_success_exchange'),
               this.$scope.alerts.main,
             );
           }
@@ -212,7 +215,7 @@ angular.module('App').controller(
     // Handle services errors
     handleError(err) {
       this.Alerter.alertFromSWS(
-        this.$scope.tr('email_tab_modal_migrate_error'),
+        this.$translate.instant('email_tab_modal_migrate_error'),
         _.get(err, 'data', err),
         this.$scope.alerts.migrate,
       );
@@ -239,23 +242,23 @@ angular.module('App').controller(
 
       const checkMigrationErrors = [];
       _.forEach(checkMigrationErrorCodes, (code) => {
-        checkMigrationErrors.push(this.translator.tr(`email_tab_modal_migrate_errors_check_${code}`));
+        checkMigrationErrors.push(this.$translate.instant(`email_tab_modal_migrate_errors_check_${code}`));
       });
       this.checkMigrationErrors = _.uniq(checkMigrationErrors);
 
       let shouldRetryLabel = '';
       if (shouldRetry) {
-        shouldRetryLabel = this.translator.tr('email_tab_modal_migrate_error_check_should_retry');
+        shouldRetryLabel = this.$translate.instant('email_tab_modal_migrate_error_check_should_retry');
       }
 
-      this.checkMigrationErrorLabel = this.translator.tr(
+      this.checkMigrationErrorLabel = this.$translate.instant(
         'email_tab_modal_migrate_errors_check_label',
-        [shouldRetryLabel],
+        { t0: shouldRetryLabel },
       );
       if (this.checkMigrationErrors.length === 1) {
-        this.checkMigrationErrorLabel = this.translator.tr(
+        this.checkMigrationErrorLabel = this.$translate.instant(
           'email_tab_modal_migrate_error_check_label',
-          [shouldRetryLabel],
+          { t0: shouldRetryLabel },
         );
       }
 

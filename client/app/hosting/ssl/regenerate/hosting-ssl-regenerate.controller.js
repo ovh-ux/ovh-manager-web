@@ -5,17 +5,17 @@ angular.module('App').controller(
       $rootScope,
       $scope,
       $stateParams,
+      $translate,
       hostingSSLCertificate,
       Alerter,
-      translator,
     ) {
       this.$rootScope = $rootScope;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.hostingSSLCertificate = hostingSSLCertificate;
-      this.translator = translator;
     }
 
     $onInit() {
@@ -28,13 +28,13 @@ angular.module('App').controller(
         .then(() => {
           this.hostingSSLCertificate.reload();
           this.Alerter.success(
-            this.translator.tr('hosting_dashboard_service_regenerate_ssl_success'),
+            this.$translate.instant('hosting_dashboard_service_regenerate_ssl_success'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.translator.tr('hosting_dashboard_service_regenerate_ssl_error'),
+            this.$translate.instant('hosting_dashboard_service_regenerate_ssl_error'),
             err.data,
             this.$scope.alerts.main,
           );

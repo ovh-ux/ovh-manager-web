@@ -1,8 +1,9 @@
 angular.module('App').controller(
   'DomainZoneImportTextCtrl',
   class DomainZoneImportTextCtrl {
-    constructor($scope, Alerter, Domain) {
+    constructor($scope, $translate, Alerter, Domain) {
       this.$scope = $scope;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
     }
@@ -36,11 +37,11 @@ angular.module('App').controller(
         zoneFile: this.model.zoneDnsText,
       })
         .then(() => this.Alerter.success(
-          this.$scope.tr('domain_configuration_dns_importtext_success'),
+          this.$translate.instant('domain_configuration_dns_importtext_success'),
           this.$scope.alerts.main,
         ))
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('domain_configuration_dns_importtext_error'),
+          this.$translate.instant('domain_configuration_dns_importtext_error'),
           err,
           this.$scope.alerts.main,
         ))

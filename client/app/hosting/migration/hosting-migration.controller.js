@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'HostingMigrateMyOvhOrgCtrl',
   class HostingMigrateMyOvhOrgCtrl {
-    constructor($scope, $stateParams, Alerter, Hosting) {
+    constructor($scope, $stateParams, $translate, Alerter, Hosting) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Hosting = Hosting;
     }
@@ -44,13 +45,13 @@ angular.module('App').controller(
       )
         .then(() => {
           this.Alerter.success(
-            this.$scope.tr('hosting_migrate_my_ovh_org_success'),
+            this.$translate.instant('hosting_migrate_my_ovh_org_success'),
             this.$scope.alerts.tabs,
           );
         })
         .catch((err) => {
           this.Alerter.alertFromSWS(
-            this.$scope.tr('hosting_migrate_my_ovh_org_error'),
+            this.$translate.instant('hosting_migrate_my_ovh_org_error'),
             err,
             this.$scope.alerts.tabs,
           );

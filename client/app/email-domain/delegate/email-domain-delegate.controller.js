@@ -7,14 +7,16 @@ angular.module('App').controller(
      * @param $q
      * @param $stateParams
      * @param $timeout
+     * @param $translate
      * @param Alerter
      * @param Emails
      */
-    constructor($scope, $q, $stateParams, $timeout, Alerter, Emails) {
+    constructor($scope, $q, $stateParams, $timeout, $translate, Alerter, Emails) {
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Emails = Emails;
     }
@@ -102,7 +104,7 @@ angular.module('App').controller(
           this.emails = data.sort();
         })
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('email_tab_table_accounts_error'),
+          this.$translate.instant('email_tab_table_accounts_error'),
           err,
           this.$scope.alerts.main,
         ))
@@ -149,7 +151,7 @@ angular.module('App').controller(
           .getEmailDelegatedUsage(account.email)
           .then(() => this.constructor.setAccountPercentUse(account)))
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('email_tab_modal_update_usage_error'),
+          this.$translate.instant('email_tab_modal_update_usage_error'),
           err,
           this.$scope.alerts.main,
         ))

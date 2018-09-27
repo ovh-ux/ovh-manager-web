@@ -9,10 +9,11 @@ angular.module('App').controller(
          * @param Domain
          * @param exportCsv
          */
-    constructor($scope, $rootScope, $q, Domain, exportCsv) {
+    constructor($scope, $rootScope, $q, $translate, Domain, exportCsv) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$q = $q;
+      this.$translate = $translate;
       this.Domain = Domain;
       this.exportCsv = exportCsv;
     }
@@ -96,7 +97,7 @@ angular.module('App').controller(
          */
     exportAccountsToCsv() {
       const choices = _.filter(this.csvExportOptions, opt => opt.checked);
-      const header = _.map(choices, opt => this.$scope.tr(`domains_action_export_csv_form_${opt.label}_label`));
+      const header = _.map(choices, opt => this.$translate.instant(`domains_action_export_csv_form_${opt.label}_label`));
       const requestsNeeded = _.uniq(_.map(_.filter(choices, opt => opt.target), opt => opt.target));
 
       this.Domain
@@ -110,10 +111,10 @@ angular.module('App').controller(
               total: zones.length,
               datas: [header],
               translations: {
-                disabled: this.$scope.tr('common_desactivated'),
-                enabled: this.$scope.tr('common_activated'),
-                enableInProgress: this.$scope.tr('domains_dashboard_table_dnssec_status_ENABLE_IN_PROGRESS'),
-                disableInProgress: this.$scope.tr('domains_dashboard_table_dnssec_status_DISABLE_IN_PROGRESS'),
+                disabled: this.$translate.instant('common_desactivated'),
+                enabled: this.$translate.instant('common_activated'),
+                enableInProgress: this.$translate.instant('domains_dashboard_table_dnssec_status_ENABLE_IN_PROGRESS'),
+                disableInProgress: this.$translate.instant('domains_dashboard_table_dnssec_status_DISABLE_IN_PROGRESS'),
               },
               choices,
               requestsNeeded,

@@ -2,7 +2,6 @@
   class ServiceExpirationDateComponentCtrl {
     constructor($scope, $rootScope) {
       $scope.tr = $rootScope.tr;
-      $scope.i18n = $rootScope.i18n;
     }
 
     $onInit() {

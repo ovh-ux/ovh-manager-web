@@ -1,11 +1,12 @@
 angular.module('App').controller(
   'PrivateDatabaseUsersListCtrl',
   class PrivateDatabaseUsersListCtrl {
-    constructor(Alerter, PrivateDatabase, $scope, $stateParams) {
+    constructor(Alerter, PrivateDatabase, $scope, $stateParams, $translate) {
       this.alerter = Alerter;
       this.privateDatabaseService = PrivateDatabase;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
     }
 
     $onInit() {
@@ -117,7 +118,7 @@ angular.module('App').controller(
         this.currentUsers.add,
         userName => userName !== opts.userName,
       );
-      this.alerter.error(this.$scope.tr('privateDatabase_add_user_fail'), this.$scope.alerts.main);
+      this.alerter.error(this.$translate.instant('privateDatabase_add_user_fail'), this.$scope.alerts.main);
     }
 
     /** EndCreateUserJobs */
@@ -158,7 +159,7 @@ angular.module('App').controller(
         if (idx !== -1) {
           delete this.userDetails[idx].waiteDelete;
 
-          this.alerter.error(this.$scope.tr('privateDatabase_delete_user_fail'), this.$scope.alerts.main);
+          this.alerter.error(this.$translate.instant('privateDatabase_delete_user_fail'), this.$scope.alerts.main);
 
           if (unregister) {
             unregister();
@@ -204,7 +205,7 @@ angular.module('App').controller(
         if (idx !== -1) {
           delete this.userDetails[idx].waitChangePassword;
 
-          this.alerter.success(this.$scope.tr('privateDatabase_change_userPassword_done'), this.$scope.alerts.main);
+          this.alerter.success(this.$translate.instant('privateDatabase_change_userPassword_done'), this.$scope.alerts.main);
 
           if (unregister) {
             unregister();
@@ -227,7 +228,7 @@ angular.module('App').controller(
         if (idx !== -1) {
           delete this.userDetails[idx].waitChangePassword;
 
-          this.alerter.error(this.$scope.tr('privateDatabase_change_userPassword_fail'), this.$scope.alerts.main);
+          this.alerter.error(this.$translate.instant('privateDatabase_change_userPassword_fail'), this.$scope.alerts.main);
 
           if (unregister) {
             unregister();

@@ -9,10 +9,11 @@ angular.module('App').controller(
      * @param Domain
      * @param Emails
      */
-    constructor($scope, $location, $stateParams, Domain, Emails) {
+    constructor($scope, $location, $stateParams, $translate, Domain, Emails) {
       this.$scope = $scope;
       this.$location = $location;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
       this.Domain = Domain;
       this.Emails = Emails;
     }
@@ -21,21 +22,21 @@ angular.module('App').controller(
       this.defaultTab = 'ZONE';
       this.tabs = ['ZONE', 'REDIRECTION', 'DYNHOST', 'TASKS'];
       this.tabMenu = {
-        title: this.$scope.tr('navigation_more'),
+        title: this.$translate.instant('navigation_more'),
         items: [
           {
-            label: this.$scope.tr('domain_tab_menu_emails'),
+            label: this.$translate.instant('domain_tab_menu_emails'),
             target: `#/configuration/email-domain/${
               this.$stateParams.productId
             }?tab=MAILING_LIST`,
             type: 'LINK',
           },
           {
-            label: this.$scope.tr('contacts_management'),
+            label: this.$translate.instant('contacts_management'),
             target: `#/useraccount/contacts?tab=SERVICES&serviceName=${
               this.$stateParams.productId
             }`,
-            text: this.$scope.tr('domain_tab_menu_contacts'),
+            text: this.$translate.instant('domain_tab_menu_contacts'),
             type: 'LINK',
           },
         ],

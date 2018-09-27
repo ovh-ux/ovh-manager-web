@@ -1,7 +1,7 @@
 <div data-ng-controller="PrivateDatabaseLogsCtrl as listCtrl">
     <div data-ovh-alert="{{alerts.main}}"></div>
 
-    <h2 data-i18n-static="privateDatabase_tabs_logs_list_title"></h2>
+    <h2 data-translate="privateDatabase_tabs_logs_list_title"></h2>
 
     <ovh-tail-logs>
         <div class="row ml-0"
@@ -17,7 +17,7 @@
             <span class="col-md-9" data-ng-bind="log.message.message"></span>
         </div>
 
-        <div data-i18n-static="privateDatabase_tabs_logs_list_no_logs"
+        <div data-translate="privateDatabase_tabs_logs_list_no_logs"
              data-ng-if="listCtrl.logger.logs.length === 0"></div>
     </ovh-tail-logs>
 </div>

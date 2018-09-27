@@ -4,18 +4,18 @@
          data-wizard-hide-cancel-button="ctrl.loading"
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="addOrEditGlueRecord"
-         data-wizard-title="ctrl.editedGlueRecord ? i18n.domain_tab_GLUE_modify_title : i18n.domain_tab_GLUE_add_title">
+         data-wizard-title="(ctrl.editedGlueRecord ? 'domain_tab_GLUE_modify_title' : 'domain_tab_GLUE_add_title') | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="ctrl.glueAddOrEditForm.$valid">
 
-            <p data-i18n-static="domain_tab_GLUE_add_step1"></p>
+            <p data-translate="domain_tab_GLUE_add_step1"></p>
 
             <form name="ctrl.glueAddOrEditForm">
                 <div class="form-group"
                      data-ng-class="{'has-error': ctrl.glueAddOrEditForm.host.$dirty && ctrl.glueAddOrEditForm.host.$invalid}">
                     <label class="control-label required" for="host"
-                           data-i18n-static="domain_tab_GLUE_add_host"></label>
+                           data-translate="domain_tab_GLUE_add_host"></label>
                     <div class="input-group">
                         <input type="text" class="form-control" id="host" name="host" required
                                data-ng-change="ctrl.hostCheck(ctrl.glueAddOrEditForm.host)"
@@ -28,22 +28,22 @@
                 <div class="form-group"
                      data-ng-class="{'has-error': ctrl.glueAddOrEditForm.ips.$dirty && ctrl.glueAddOrEditForm.ips.$invalid}">
                     <label class="control-label required" for="ips"
-                           data-i18n-static="domain_tab_GLUE_add_ip"></label>
+                           data-translate="domain_tab_GLUE_add_ip"></label>
                     <input type="text" class="form-control" id="ips" name="ips" required
                            data-ng-change="ctrl.ipsCheck(ctrl.glueAddOrEditForm.ips)"
                            data-ng-model="ctrl.model.ips">
                     <div class="help-block mt-2">
                         <span class="d-block"
-                              data-i18n-static="domain_tab_GLUE_add_ips_ipv6_not_supported"
+                              data-translate="domain_tab_GLUE_add_ips_ipv6_not_supported"
                               data-ng-if="!ctrl.domain.glueRecordIpv6Supported"></span>
                         <span class="d-block"
-                              data-i18n-static="domain_tab_GLUE_add_ips_ipv6_supported"
+                              data-translate="domain_tab_GLUE_add_ips_ipv6_supported"
                               data-ng-if="ctrl.domain.glueRecordIpv6Supported"></span>
                         <span class="d-block"
-                              data-i18n-static="domain_tab_GLUE_add_ips_one_info"
+                              data-translate="domain_tab_GLUE_add_ips_one_info"
                               data-ng-if="!ctrl.domain.glueRecordMultiIpSupported"></span>
                         <span class="d-block"
-                              data-i18n-static="domain_tab_GLUE_add_ips_multi_info"
+                              data-translate="domain_tab_GLUE_add_ips_multi_info"
                               data-ng-if="ctrl.domain.glueRecordMultiIpSupported"></span>
                     </div>
                 </div>
@@ -54,7 +54,7 @@
              data-wizard-step-valid="!ctrl.loading">
 
             <div data-ng-if="!ctrl.loading">
-                <p data-ng-bind-html="tr(ctrl.editedGlueRecord ? 'domain_tab_GLUE_modify_ip_confirm' : 'domain_tab_GLUE_add_ip_confirm', [ctrl.getModelFormatted().host])"></p>
+                <p data-ng-bind-html="(ctrl.editedGlueRecord ? 'domain_tab_GLUE_modify_ip_confirm' : 'domain_tab_GLUE_add_ip_confirm') | translate: { t0: ctrl.getModelFormatted().host }"></p>
                 <ul>
                     <li data-ng-repeat="ip in ctrl.getModelFormatted().ips track by $index"
                         data-ng-bind="ip"></li>
@@ -62,7 +62,7 @@
             </div>
 
             <div class="alert alert-warning" role="alert"
-                 data-ng-bind-html="tr('domain_tab_GLUE_add_warning_done')">
+                 data-ng-bind-html="'domain_tab_GLUE_add_warning_done' | translate">
             </div>
 
             <oui-spinner data-ng-if="ctrl.loading"></oui-spinner>

@@ -95,7 +95,7 @@ angular.module('services').service('HostingCron', function hostingCron($q, OvhHt
       serviceName,
     },
     data: {
-      command: model.command,
+      command: model.command.startsWith('./') ? model.command.slice(2) : model.command,
       description: model.description || undefined,
       email: model.email || undefined,
       frequency: model.frequency,

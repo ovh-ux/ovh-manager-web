@@ -1,13 +1,13 @@
 angular.module('App').controller(
   'controllers.Hosting.Runtimes.setDefault',
   class HostingRuntimesSetDefaultCtrl {
-    constructor($scope, $stateParams, Alerter, HostingRuntimes, translator) {
+    constructor($scope, $stateParams, $translate, Alerter, HostingRuntimes) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
+      this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.HostingRuntimes = HostingRuntimes;
-      this.translator = translator;
     }
 
     $onInit() {
@@ -24,13 +24,13 @@ angular.module('App').controller(
       )
         .then(() => {
           this.Alerter.success(
-            this.translator.tr('hosting_tab_RUNTIMES_set_default_success'),
+            this.$translate.instant('hosting_tab_RUNTIMES_set_default_success'),
             this.$scope.alerts.main,
           );
         })
         .catch((err) => {
           this.Alerter.error(
-            this.translator.tr('hosting_tab_RUNTIMES_set_default_error')
+            this.$translate.instant('hosting_tab_RUNTIMES_set_default_error')
               + err.message,
             this.$scope.alerts.main,
           );

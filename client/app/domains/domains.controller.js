@@ -15,6 +15,7 @@ angular.module('App').controller(
       $scope,
       $rootScope,
       $timeout,
+      $translate,
       Domains,
       Navigator,
       Alerter,
@@ -23,6 +24,7 @@ angular.module('App').controller(
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$timeout = $timeout;
+      this.$translate = $translate;
       this.Domains = Domains;
       this.Navigator = Navigator;
       this.Alerter = Alerter;
@@ -74,7 +76,7 @@ angular.module('App').controller(
           .catch(() => {
             this.loading.domainsError = true;
             this.Alerter.error(
-              this.$scope.tr('domains_dashboard_loading_error'),
+              this.$translate.instant('domains_dashboard_loading_error'),
               this.$scope.alerts.page,
             );
           })

@@ -2,7 +2,7 @@
     <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="updateDnsFilter"
-         data-wizard-title="i18n.email_tab_domain_dns_filter">
+         data-wizard-title="'email_tab_domain_dns_filter' | translate">
 
         <div data-wizard-step
              data-wizard-step-valid="ctrl.customDnsForm.$valid || ctrl.selectedFilter !== 'CUSTOM'">
@@ -14,18 +14,18 @@
             <div data-ng-if="!ctrl.loading">
                 <form name="ctrl.customDnsForm">
                     <label class="oui-label" for="dnsFilter"
-                           data-i18n-static="email_tab_popover_dns_filter_edit_info"></label>
+                           data-translate="email_tab_popover_dns_filter_edit_info"></label>
                     <div class="oui-select">
                         <select class="oui-select__input" name="dnsFilter" id="dnsFilter"
                                 data-ng-model="ctrl.selectedFilter"
-                                data-ng-options="dnsFilter as tr('email_tab_domain_dns_filter_' + dnsFilter) for dnsFilter in ctrl.dnsFilterEnum track by dnsFilter">
+                                data-ng-options="dnsFilter as ('email_tab_domain_dns_filter_' + dnsFilter | translate) for dnsFilter in ctrl.dnsFilterEnum track by dnsFilter">
                         </select>
                         <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                     </div>
                 </form>
 
                 <div class="alert alert-warning mt-4" role="alert"
-                    data-i18n-static="email_tab_domain_dns_filter_warning">
+                    data-translate="email_tab_domain_dns_filter_warning">
                 </div>
             </div>
         </div>

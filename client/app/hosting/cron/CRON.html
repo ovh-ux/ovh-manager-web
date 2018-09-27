@@ -6,9 +6,9 @@
             <div class="alert alert-info" role="alert"
                  data-ng-if="!displayTabs.cron">
                 <div>
-                    <p class="mb-3" data-i18n-static="hosting_change_offer_for_service"></p>
+                    <p class="mb-3" data-translate="hosting_change_offer_for_service"></p>
                     <button class="btn btn-info" type="button"
-                            data-i18n-static="hosting_dashboard_service_change_offer"
+                            data-translate="hosting_dashboard_service_change_offer"
                             data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)"></button>
                 </div>
             </div>
@@ -16,22 +16,22 @@
             <div class="alert alert-info" role="alert"
                  data-ng-if="displayTabs.cron && hosting.offer === 'START_10_M'">
                 <div>
-                    <p class="mb-3" data-i18n-static="hosting_change_offer_for_service_start10m"></p>
+                    <p class="mb-3" data-translate="hosting_change_offer_for_service_start10m"></p>
                     <button class="btn btn-info" type="button"
-                            data-i18n-static="hosting_dashboard_service_change_offer"
+                            data-translate="hosting_dashboard_service_change_offer"
                             data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade')">
                     </button>
                 </div>
             </div>
 
             <div data-ng-if="displayTabs.cron && hosting.offer !== 'START_10_M'">
-                <h2 data-i18n-static="hosting_tab_menu_crons"></h2>
+                <h2 data-translate="hosting_tab_menu_crons"></h2>
 
                 <div class="mb-4" data-ng-if="guide">
                     <span class="fa fa-life-ring mr-2" aria-hidden="true"></span>
-                    <span data-i18n-static="hosting_tab_CRON_guide_help"></span>
-                    <a data-ng-href="{{guide}}" target="_blank" title="{{hosting_guide_help}} {{i18n.common_newtab}}">
-                        <span data-i18n-static="hosting_guide_help"></span>
+                    <span data-translate="hosting_tab_CRON_guide_help"></span>
+                    <a data-ng-href="{{guide}}" target="_blank" title="{{hosting_guide_help}} {{ 'common_newtab' | translate }}">
+                        <span data-translate="hosting_guide_help"></span>
                         <span class="fa fa-external-link" aria-hidden="true"></span>
                     </a>
                 </div>
@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="alert alert-info" role="alert"
-                     data-i18n-static="hosting_tab_CRON_table_empty"
+                     data-translate="hosting_tab_CRON_table_empty"
                      data-ng-if="!loading.init && !hasResult">
                 </div>
 
@@ -51,13 +51,13 @@
                         <form class="form-inline d-md-flex justify-content-md-end" name="searchCronForm">
                             <div class="form-group">
                                 <label class="sr-only" for="searchCron"
-                                       data-ng-i18n-static="common_search"></label>
+                                       data-translate="common_search"></label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="searchCron" name="searchCron" placeholder="{{::i18n.hosting_tab_DOMAINS_search_placeholder}}"
+                                    <input type="text" class="form-control" id="searchCron" name="searchCron" placeholder="{{:: 'hosting_tab_DOMAINS_search_placeholder' | translate }}"
                                            data-ng-model="search.text"
                                            data-ng-model-options='{ debounce: 800 }'>
                                     <div class="input-group-btn" data-ng-if="search.text">
-                                        <button class="btn btn-default" type="button" aria-label="{{i18n.common_cancel}}"
+                                        <button class="btn btn-default" type="button" aria-label="{{ 'common_cancel' | translate }}"
                                                 data-ng-click="search.text = ''">
                                             <span class="fa fa-times" aria-hidden="true"></span>
                                         </button>
@@ -75,14 +75,14 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_command"></th>
-                                    <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_description"></th>
-                                    <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_frequency"></th>
-                                    <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_language"></th>
-                                    <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_status"></th>
-                                    <th scope="col" data-i18n-static="hosting_tab_CRON_table_header_email"></th>
+                                    <th scope="col" data-translate="hosting_tab_CRON_table_header_command"></th>
+                                    <th scope="col" data-translate="hosting_tab_CRON_table_header_description"></th>
+                                    <th scope="col" data-translate="hosting_tab_CRON_table_header_frequency"></th>
+                                    <th scope="col" data-translate="hosting_tab_CRON_table_header_language"></th>
+                                    <th scope="col" data-translate="hosting_tab_CRON_table_header_status"></th>
+                                    <th scope="col" data-translate="hosting_tab_CRON_table_header_email"></th>
                                     <th class="min-width text-right" scope="col">
-                                        <button class="btn btn-icon" type="button" title="{{i18n.refresh}}"
+                                        <button class="btn btn-icon" type="button" title="{{ 'refresh' | translate }}"
                                                 data-ng-click="loadCrons()"
                                                 data-ng-disabled="loading.cron">
                                             <span class="fa fa-refresh" aria-hidden="true"></span>
@@ -99,7 +99,7 @@
 
                             <tbody data-ng-if="!loading.cron && !crons.ids.length">
                                 <tr>
-                                    <td class="text-center" colspan="7" data-i18n-static="hosting_tab_CRON_table_empty"></td>
+                                    <td class="text-center" colspan="7" data-translate="hosting_tab_CRON_table_empty"></td>
                                 </tr>
                             </tbody>
 
@@ -108,23 +108,23 @@
                                     <th class="word-break" scope="row" data-ng-bind="cron.command"></th>
                                     <td class="word-break" data-ng-bind="cron.description"></td>
                                     <td class="text-nowrap" data-ng-bind="cron.frequency"></td>
-                                    <td data-ng-bind="tr('hosting_tab_CRON_table_language_' + trEnum(cron.language))"></td>
+                                    <td data-ng-bind="'hosting_tab_CRON_table_language_' + trEnum(cron.language) | translate"></td>
                                     <td>
-                                        <span class="label"
-                                              data-ng-bind="tr('hosting_tab_CRON_table_status_' + trEnum(cron.status))"
+                                        <span class="oui-status"
+                                              data-ng-bind="'hosting_tab_CRON_table_status_' + trEnum(cron.status) | translate"
                                               data-ng-class="{
-                                                  'label-success': cron.status === 'enabled',
-                                                  'label-danger': cron.status === 'disabled',
-                                                  'label-warning': cron.status === 'suspended'
+                                                  'oui-status_success': cron.status === 'enabled',
+                                                  'oui-status_error': cron.status === 'disabled',
+                                                  'oui-status_warning': cron.status === 'suspended'
                                               }"></span>
                                     </td>
                                     <td class="text-nowrap" data-ng-bind="cron.email"></td>
                                     <td class="text-nowrap">
-                                        <button class="btn btn-icon" type="button" title="{{tr('hosting_tab_CRON_table_popover_modify') }}"
+                                        <button class="btn btn-icon" type="button" title="{{ 'hosting_tab_CRON_table_popover_modify' | translate }}"
                                                 data-ng-click="modifyCron(cron)">
                                             <span class="oui-icon oui-icon-pen_line oui-icon_small" aria-hidden="true"></span>
                                         </button>
-                                        <button class="btn btn-icon" type="button" title="{{tr('hosting_tab_CRON_table_popover_delete') }}"
+                                        <button class="btn btn-icon" type="button" title="{{ 'hosting_tab_CRON_table_popover_delete' | translate }}"
                                                 data-ng-click="deleteCron(cron)">
                                             <span class="oui-icon oui-icon-trash_line oui-icon_small" aria-hidden="true"></span>
                                         </button>
@@ -146,8 +146,8 @@
                          data-items-per-page="itemsPerPage"
                          data-transform-item="transformItem(item)"
                          data-on-transform-item-done="onTransformItemDone(items)"
-                         data-page-placeholder="{{tr('pagination_page', [currentPage, nbPages])}}"
-                         data-item-per-page-placeholder="{{tr('pagination_display')}}"
+                         data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPage, last: nbPages} }}"
+                         data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
                          data-on-page-change="loading.cron = true"
                          data-ng-show="!loading.init && hasResult">
                     </div>
@@ -157,7 +157,7 @@
 
         <div class="col-md-3 mt-5 mt-lg-0" data-ng-if="displayTabs.cron && hosting.offer !== 'START_10_M'">
             <button class="btn btn-block btn-default" type="button"
-                    data-i18n-static="hosting_tab_CRON_configuration_create_title_button"
+                    data-translate="hosting_tab_CRON_configuration_create_title_button"
                     data-ng-click="setAction('cron/add-or-edit/hosting-cron-add-or-edit',{})">
             </button>
         </div>

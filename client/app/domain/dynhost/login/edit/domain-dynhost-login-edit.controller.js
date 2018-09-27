@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'DomainDynHostLoginEditCtrl',
   class DomainDynHostLoginEditCtrl {
-    constructor($scope, $q, Alerter, Domain, Validator) {
+    constructor($scope, $q, $translate, Alerter, Domain, Validator) {
       this.$scope = $scope;
       this.$q = $q;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.Validator = Validator;
@@ -77,11 +78,11 @@ angular.module('App').controller(
       return this.$q
         .all(promises)
         .then(() => this.Domain.refreshZoneState(this.product.name).then(() => this.Alerter.success(
-          this.$scope.tr('domain_tab_DYNHOSTLOGIN_edit_success'),
+          this.$translate.instant('domain_tab_DYNHOSTLOGIN_edit_success'),
           this.$scope.alerts.main,
         )))
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('domain_tab_DYNHOST_error'),
+          this.$translate.instant('domain_tab_DYNHOST_error'),
           _.get(err, 'data', err),
           this.$scope.alerts.main,
         ))

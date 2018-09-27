@@ -1,8 +1,9 @@
 angular.module('App').controller(
   'DomainDynHostLoginDeleteCtrl',
   class DomainDynHostLoginDeleteCtrl {
-    constructor($scope, Alerter, Domain) {
+    constructor($scope, $translate, Alerter, Domain) {
       this.$scope = $scope;
+      this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
     }
@@ -20,11 +21,11 @@ angular.module('App').controller(
       this.loading = true;
       return this.Domain.deleteDynHostLogin(this.zoneName, this.login)
         .then(() => this.Domain.refreshZoneState(this.zoneName).then(() => this.Alerter.success(
-          this.$scope.tr('domain_tab_DYNHOSTLOGIN_delete_success'),
+          this.$translate.instant('domain_tab_DYNHOSTLOGIN_delete_success'),
           this.$scope.alerts.main,
         )))
         .catch(err => this.Alerter.alertFromSWS(
-          this.$scope.tr('domain_tab_DYNHOST_error'),
+          this.$translate.instant('domain_tab_DYNHOST_error'),
           err,
           this.$scope.alerts.main,
         ))
