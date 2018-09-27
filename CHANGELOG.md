@@ -1,3 +1,8 @@
+<a name="13.6.2"></a>
+## [13.6.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.6.1...v13.6.2) (2018-09-27)
+
+
+
 <a name="13.6.1"></a>
 ## [13.6.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.6.0...v13.6.1) (2018-09-27)
 
