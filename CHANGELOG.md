@@ -1,3 +1,15 @@
+<a name="13.6.0"></a>
+# [13.6.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.5.0...v13.6.0) (2018-09-27)
+
+
+### Bug Fixes
+
+* cron job edit ([e07bf15](https://github.com/ovh-ux/ovh-manager-web/commit/e07bf15))
+* **privateDatabase:** improve warnings on OomKill ([c5ac29f](https://github.com/ovh-ux/ovh-manager-web/commit/c5ac29f))
+* **privateDatabase:** oom kill error display ([831c6ad](https://github.com/ovh-ux/ovh-manager-web/commit/831c6ad))
+
+
+
 <a name="13.5.0"></a>
 # [13.5.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.4.24...v13.5.0) (2018-09-19)
 
