@@ -272,7 +272,7 @@ angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atIntern
       allowSearch: true,
     });
 
-      // Exchange
+    // Exchange
     const exchangesItem = SidebarMenu.addMenuItem({
       title: $translate.instant('navigation_left_exchange'),
       category: 'microsoft',

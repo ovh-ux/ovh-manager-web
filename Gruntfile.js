@@ -14,12 +14,10 @@ module.exports = function (grunt) {
   const filesJsModules = _.map(
       assets[target].modules,
       (module) => {
-          const assetsModule = require(`./client/bower_components/${
-              module
-              }/Assets.js`);
+          const assetsModule = require(`./node_modules/${module}/Assets.js`);
           return {
               expand: true,
-              cwd: `<%= bowerdir %>/${module}/src`,
+              cwd: `node_modules/${module}/src`,
               src: assetsModule.src.js.map((jsPath) => jsPath.replace("src/", "")),
               dest: "dist/app"
           };
@@ -36,13 +34,10 @@ module.exports = function (grunt) {
 
   function copyFromEachModules (properties, dest) {
       return _.map(assets[target].modules, (module) => {
-          const assetsModule = require(`./client/bower_components/${
-              module
-              }/Assets.js`);
-
+          const assetsModule = require(`./node_modules/${module}/Assets.js`);
           return {
               expand: true,
-              cwd: `<%= bowerdir %>/${module}/src`,
+              cwd: `node_modules/${module}/src`,
               src: _(properties)
                   .map((property) => _.get(assetsModule, property))
                   .flatten()
@@ -62,8 +57,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
       // Config
       pkg: grunt.file.readJSON("package.json"),
-      bower: grunt.file.readJSON("bower.json"),
-      bowerdir: "client/bower_components",
+      bowerdir: "node_modules/@bower_components",
       builddir: "tmp",
       publicdir: "client/app",
       distdir: isProd() ? "dist/client/" : "dist/",
@@ -116,9 +110,7 @@ module.exports = function (grunt) {
               const files = [];
               _.forEach(targetsAvailable, (tgt) => {
                   _.forEach(assets[tgt].modules, (module) => {
-                      const assetsModule = require(`./client/bower_components/${
-                          module
-                          }/Assets.js`);
+                      const assetsModule = require(`./node_modules/${module}/Assets.js`);
                       files.push(assetsModule.src.js);
                       files.push(assetsModule.src.css);
                       files.push(assetsModule.src.html);
@@ -248,49 +240,49 @@ module.exports = function (grunt) {
           component_translations: {
               files: {
                   "<%= distdir %>/components/translations/Messages_cs_CZ.json": [
-                      "<%= bowerdir %>/**/Messages_cs_CZ.json"
+                      "node_modules/ovh-*/**/Messages_cs_CZ.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_de_DE.json": [
-                      "<%= bowerdir %>/**/Messages_de_DE.json"
+                      "node_modules/ovh-*/**/Messages_de_DE.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_en_CA.json": [
-                      "<%= bowerdir %>/**/Messages_en_CA.json"
+                      "node_modules/ovh-*/**/Messages_en_CA.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_en_GB.json": [
-                      "<%= bowerdir %>/**/Messages_en_GB.json"
+                      "node_modules/ovh-*/**/Messages_en_GB.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_en_US.json": [
-                      "<%= bowerdir %>/**/Messages_en_US.json"
+                      "node_modules/ovh-*/**/Messages_en_US.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_es_ES.json": [
-                      "<%= bowerdir %>/**/Messages_es_ES.json"
+                      "node_modules/ovh-*/**/Messages_es_ES.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_es_US.json": [
-                      "<%= bowerdir %>/**/Messages_es_US.json"
+                      "node_modules/ovh-*/**/Messages_es_US.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_fi_FI.json": [
-                      "<%= bowerdir %>/**/Messages_fi_FI.json"
+                      "node_modules/ovh-*/**/Messages_fi_FI.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_fr_CA.json": [
-                      "<%= bowerdir %>/**/Messages_fr_CA.json"
+                      "node_modules/ovh-*/**/Messages_fr_CA.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_fr_FR.json": [
-                      "<%= bowerdir %>/**/Messages_fr_FR.json"
+                      "node_modules/ovh-*/**/Messages_fr_FR.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_it_IT.json": [
-                      "<%= bowerdir %>/**/Messages_it_IT.json"
+                      "node_modules/ovh-*/**/Messages_it_IT.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_lt_LT.json": [
-                      "<%= bowerdir %>/**/Messages_lt_LT.json"
+                      "node_modules/ovh-*/**/Messages_lt_LT.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_nl_NL.json": [
-                      "<%= bowerdir %>/**/Messages_nl_NL.json"
+                      "node_modules/ovh-*/**/Messages_nl_NL.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_pl_PL.json": [
-                      "<%= bowerdir %>/**/Messages_pl_PL.json"
+                      "node_modules/ovh-*/**/Messages_pl_PL.json"
                   ],
                   "<%= distdir %>/components/translations/Messages_pt_PT.json": [
-                      "<%= bowerdir %>/**/Messages_pt_PT.json"
+                      "node_modules/ovh-*/**/Messages_pt_PT.json"
                   ]
               }
           }
@@ -306,25 +298,25 @@ module.exports = function (grunt) {
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/angular-i18n/",
+                      cwd: "node_modules/angular-i18n/",
                       src: "*.js",
                       dest: "<%= publicdir %>/resources/angular/i18n/"
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/ovh-utils-angular/bin/template/",
+                      cwd: "node_modules/@ovh-ux/ovh-utils-angular/bin/template/",
                       src: ["**/**.html", "**/**.css"],
                       dest: "<%= componentsdir %>/ovh-utils-angular/"
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/ovh-ui-kit-bs/dist/fonts",
+                      cwd: "node_modules/ovh-ui-kit-bs/dist/fonts",
                       src: ["**/*"],
                       dest: "<%= publicdir %>/css/fonts"
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/ovh-ui-kit-bs/dist/icons",
+                      cwd: "node_modules/ovh-ui-kit-bs/dist/icons",
                       src: ["*"],
                       dest: "<%= publicdir %>/css/icons"
                   }
@@ -340,13 +332,13 @@ module.exports = function (grunt) {
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/ovh-ui-kit-bs/dist/fonts",
+                      cwd: "node_modules/ovh-ui-kit-bs/dist/fonts",
                       src: ["**/*"],
                       dest: "<%= distdir %>/css/fonts"
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/ovh-ui-kit-bs/dist/icons",
+                      cwd: "node_modules/ovh-ui-kit-bs/dist/icons",
                       src: ["*"],
                       dest: "<%= distdir %>/css/icons"
                   },
@@ -382,25 +374,25 @@ module.exports = function (grunt) {
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/font-awesome/fonts/",
+                      cwd: "node_modules/font-awesome/fonts/",
                       src: "*",
                       dest: "<%= distdir %>/fonts/"
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/angular-i18n/",
+                      cwd: "node_modules/angular-i18n/",
                       src: "*.js",
                       dest: "<%= distdir %>/resources/angular/i18n/"
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/ovh-utils-angular/bin/template/",
+                      cwd: "node_modules/@ovh-ux/ovh-utils-angular/bin/template/",
                       src: ["**/**.html", "**/**.css"],
                       dest: "<%= distdir %>/components/ovh-utils-angular/"
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>",
+                      cwd: "node_modules",
                       src: [
                           "es5-shim/es5-shim.min.js",
                           "json3/lib/json3.min.js"
@@ -409,33 +401,39 @@ module.exports = function (grunt) {
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/ovh-angular-actions-menu",
+                      cwd: "node_modules/ovh-angular-actions-menu/dist",
                       src: ["**"],
-                      dest: "<%= distdir %>/bower_components/ovh-angular-actions-menu"
+                      dest: "<%= distdir %>/node_modules/ovh-angular-actions-menu/dist"
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/ovh-angular-sidebar-menu",
+                      cwd: "node_modules/ovh-angular-sidebar-menu/dist",
                       src: ["**"],
-                      dest: "<%= distdir %>/bower_components/ovh-angular-sidebar-menu"
+                      dest: "<%= distdir %>/node_modules/ovh-angular-sidebar-menu/dist"
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/ovh-manager-webfont",
+                      cwd: "node_modules/ovh-manager-webfont/dist",
                       src: ["**"],
-                      dest: "<%= distdir %>/bower_components/ovh-manager-webfont"
+                      dest: "<%= distdir %>/node_modules/ovh-manager-webfont/dist"
                   },
                   {
                       expand: true,
-                      cwd: "<%= bowerdir %>/ovh-ui-kit",
+                      cwd: "node_modules/ovh-ui-kit/dist",
                       src: ["**"],
-                      dest: "<%= distdir %>/bower_components/ovh-ui-kit"
+                      dest: "<%= distdir %>/node_modules/ovh-ui-kit/dist"
+                  },
+                  {
+                      expand: true,
+                      cwd: "node_modules/ovh-ui-kit/packages",
+                      src: ["**"],
+                      dest: "<%= distdir %>/node_modules/ovh-ui-kit/packages"
                   },
                   {
                       expand: true,
                       cwd: "<%= bowerdir %>/ckeditor",
                       src: ["**"],
-                      dest: "<%= distdir %>/bower_components/ckeditor"
+                      dest: "<%= distdir %>/<%= bowerdir %>/ckeditor"
                   },
                   {
                       expand: true,
@@ -476,7 +474,6 @@ module.exports = function (grunt) {
                       prodMode: mode === "prod",
                       basepath,
                       commonModuleBasePath: "https://www.ovh.com/manager/dedicated",
-                      modules: assets.modules,
                       constants: grunt.file.expand([
                           `${grunt.config("builddir")}/js/constants-*.js`,
                           `!${
@@ -844,12 +841,10 @@ module.exports = function (grunt) {
               files: (function () {
                   const files = [];
                   _.forEach(assets[target].modules, (module) => {
-                      const assetsModule = require(`./client/bower_components/${
-                          module
-                          }/Assets.js`);
+                      const assetsModule = require(`./node_modules/${module}/Assets.js`);
                       _.forEach(assetsModule.resources.i18n, (val) => {
                           files.push(
-                              `./client/bower_components/${module}/${val}`,
+                              `./node_modules/${module}/${val}`,
                               `!${val}`
                           );
                       });
@@ -874,10 +869,10 @@ module.exports = function (grunt) {
               files: (function () {
                   const files = [];
                   _.forEach(assets[target].modules, (module) => {
-                      const assetsModule = require(`./client/bower_components/${module}/Assets.js`);
+                      const assetsModule = require(`./node_modules/${module}/Assets.js`);
                       _.forEach(assetsModule.src.html, (val) => {
                           files.push(
-                              `./client/bower_components/${module}/${val}`,
+                              `./node_modules/${module}/${val}`,
                               `!${val}`
                           );
                       });
@@ -914,15 +909,10 @@ module.exports = function (grunt) {
               files: (function () {
                   const files = [];
                   _.forEach(assets[target].modules, (module) => {
-                      const assetsModule = require(`./client/bower_components/${
-                          module
-                          }/Assets.js`);
+                      const assetsModule = require(`./node_modules/${module}/Assets.js`);
                       _.forEach(assetsModule.src.js, (val) => {
                           files.push(
-                              `./client/bower_components/${
-                                  module
-                                  }/${
-                                  val}`,
+                              `./node_modules/${module}/${val}`,
                               `!${val}`
                           );
                       });
@@ -939,15 +929,10 @@ module.exports = function (grunt) {
               files: (function () {
                   const files = [assets.src.css];
                   _.forEach(assets[target].modules, (module) => {
-                      const assetsModule = require(`./client/bower_components/${
-                          module
-                          }/Assets.js`);
+                      const assetsModule = require(`./node_modules/${module}/Assets.js`);
                       _.forEach(assetsModule.src.css, (val) => {
                           files.push(
-                              `./client/bower_components/${
-                                  module
-                                  }/${
-                                  val}`,
+                              `./node_modules/${module}/${val}`,
                               `!${val}`
                           );
                       });
@@ -1006,7 +991,7 @@ module.exports = function (grunt) {
           ]);
           break;
       case "jsmodules":
-          var rxCwd = /.+bower_components\/ovh-module-.*\/src\//;
+          var rxCwd = /.+\/ovh-module-.*\/src\//;
           var cwdMatch = filepath.match(rxCwd);
           updateEslint(filepath);
           grunt.config("babel.modules.files", [
@@ -1029,7 +1014,7 @@ module.exports = function (grunt) {
           ]);
           break;
       case "htmlmodules":
-          var rxCwd = /.+bower_components\/ovh-module-.*\/src\//;
+          var rxCwd = /.+\/ovh-module-.*\/src\//;
           var cwdMatch = filepath.match(rxCwd);
 
           grunt.config("copy.moduleshtml.files", [{

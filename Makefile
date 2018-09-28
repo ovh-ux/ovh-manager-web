@@ -1,8 +1,7 @@
 #### SYSTEM COMMAND ####
 NODE=node
-NPM=npm
+YARN=yarn
 GRUNT=grunt
-BOWER=bower
 GIT=git
 CD=cd
 ECHO=@echo
@@ -20,7 +19,6 @@ CERTIFICATE_CSR_FILE=server/certificate/server.csr
 CERTIFICATE_CRT_FILE=server/certificate/server.crt
 
 #### FOLDERS ####
-BOWER_DIR=client/bower_components
 NODE_DIR=node_modules
 GRUNT_DEP=$(NODE_DIR)/grunt
 DIST_DIR=dist
@@ -31,14 +29,10 @@ DIST_CA_DIR=dist-CA
 DIST_TAR=dist.tar.gz
 DIST_EU_TAR=dist-EU.tar.gz
 DIST_CA_TAR=dist-CA.tar.gz
+DEPENDENCIES_FILES_LIST=Assets.js
 
 #### MACRO ####
 NAME=`grep -Po '(?<="name": ")[^"]*' package.json`
-
-#### OTHER ####
-ifneq ($(strip $(bower_registry)),)
-BOWER_PARAM=--config.registry=$(bower_registry)
-endif
 
 
 help:
@@ -62,7 +56,6 @@ help:
 
 clean:
 	$(DEL) $(NODE_DIR)
-	$(DEL) $(BOWER_DIR)
 	$(DEL) $(DIST_DIR)
 	$(DEL) $(DIST_TAR)
 	$(DEL) $(DIST_EU_DIR)
@@ -80,8 +73,7 @@ gen-certificate:
 	rm $(CERTIFICATE_TMP_KEY)
 
 install:
-	$(NPM) install
-	$(BOWER) install $(BOWER_PARAM)
+	$(YARN) install
 
 dev: deps
 	$(GRUNT) serve
@@ -94,6 +86,8 @@ build: build-eu
 	$(TAR) $(DIST_TAR) $(DIST_EU_TAR)
 
 build-eu: deps
+	if [ -n "$(SMARTTAG_REPO_EU)" ]; then $(YARN) add "$(SMARTTAG_REPO_EU)" --no-lockfile; fi
+	if [ -n "$(SMARTTAG_REPO_EU)" ]; then sed -i -r 's/at\-internet\-smarttag\-manager(-eu|-ca|-us)?\/dist/at-internet-smarttag-manager-eu\/dist/' $(DEPENDENCIES_FILES_LIST); fi
 	$(GRUNT) build --mode=prod --zone=EU
 	$(MV) $(DIST_DIR) $(DIST_EU_DIR)
 	$(TAR) $(DIST_EU_TAR) $(DIST_EU_DIR)
@@ -104,7 +98,7 @@ build-ca: deps
 	$(TAR) $(DIST_CA_TAR) $(DIST_CA_DIR)
 
 release: deps
-	$(NPM) version $(type) -m "chore: release v%s"
+	$(YARN) version $(type) -m "chore: release v%s"
 
 
 ###############
@@ -120,7 +114,7 @@ coverage: deps
 	$(GRUNT) test:coverage:unit
 
 webdriver:
-	$(NPM) run update-webdriver
+	$(YARN) run update-webdriver
 
 test-e2e: deps webdriver
 	$(GRUNT) test:e2e --suite=$(suite) --browser=$(browser); \
@@ -142,10 +136,7 @@ tar-test-reports:
 #############
 
 # Dependencies of the project
-deps: $(GRUNT_DEP) $(BOWER_DIR)
-
-$(BOWER_DIR):
-	$(MAKE) install
+deps: $(GRUNT_DEP)
 
 $(NODE_DIR)/%:
 	$(MAKE) install
