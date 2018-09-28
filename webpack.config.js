@@ -1,0 +1,57 @@
+const merge = require('webpack-merge');
+const path = require('path');
+const fs = require('fs');
+const glob = require('glob');
+const _ = require('lodash');
+
+const folder = './client/app';
+const bundles = {};
+
+const webpackConfig = require('@ovh-ux/manager-webpack-config');
+
+fs.readdirSync(folder).forEach((file) => {
+  const stats = fs.lstatSync(`${folder}/${file}`);
+  if (stats.isDirectory()) {
+    const jsFiles = glob.sync(`${folder}/${file}/**/*.js`);
+    if (jsFiles.length > 0) {
+      bundles[file] = jsFiles;
+    }
+  }
+});
+
+module.exports = (env = {}) => {
+  /* eslint-disable import/no-unresolved, import/no-extraneous-dependencies */
+  const { config } = webpackConfig({
+    template: './client/app/index.html',
+    basePath: './client/app',
+    lessPath: [
+      './node_modules',
+    ],
+    root: path.resolve(__dirname, './client/app'),
+    assets: {
+      files: [
+        { from: path.resolve(__dirname, './client/assets'), to: 'assets' },
+        { from: path.resolve(__dirname, './node_modules/angular-i18n'), to: 'angular-i18n' },
+        { from: path.resolve(__dirname, './client/**/*.html'), context: 'client/app' },
+      ],
+    },
+  }, env);
+  /* eslint-enable */
+
+  return merge(config, {
+    entry: _.assign({
+      index: './client/app/index.js',
+      telecom: glob.sync('./client/app/telecom/*.js'),
+      components: glob.sync('./client/components/**/*.js'),
+    }, bundles),
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: '[name].[hash].bundle.js',
+    },
+    resolve: {
+      alias: {
+        jquery: path.resolve(__dirname, 'node_modules/jquery'),
+      },
+    },
+  });
+};
