@@ -33,6 +33,7 @@ module.exports = (env = {}) => {
       files: [
         { from: path.resolve(__dirname, './client/assets'), to: 'assets' },
         { from: path.resolve(__dirname, './node_modules/angular-i18n'), to: 'angular-i18n' },
+        { from: path.resolve(__dirname, './node_modules/@ovh-ux/ovh-utils-angular/src/**/*.html'), context: 'node_modules/@ovh-ux/ovh-utils-angular/src', to: 'components/ovh-utils-angular' },
         { from: path.resolve(__dirname, './client/**/*.html'), context: 'client/app' },
       ],
     },

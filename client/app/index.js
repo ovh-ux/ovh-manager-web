@@ -77,3 +77,4 @@ import "script-loader!clipboard/dist/clipboard.min.js"
 
 import './app.js';
 import './css/source.less';
+import './css/source.scss';

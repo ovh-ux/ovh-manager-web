@@ -22,7 +22,7 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['domain'],
+    translations: ['../domain'],
   });
 
   $stateProvider.state('app.dns-zone-new', {
@@ -43,6 +43,6 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['domains'],
+    translations: ['../domains'],
   });
 });

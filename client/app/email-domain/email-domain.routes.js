@@ -25,7 +25,7 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['email', 'hosting', 'mailing-list'],
+    translations: ['../email', '../hosting', '../mailing-list'],
   });
 
   $stateProvider.state('app.email.delegate', {
@@ -48,7 +48,7 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['email'],
+    translations: ['../email'],
   });
 
   $stateProvider.state('app.mx-plan', {
@@ -69,6 +69,6 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['mx-plan'],
+    translations: ['../mx-plan'],
   });
 });

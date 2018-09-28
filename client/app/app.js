@@ -1,3 +1,4 @@
+import asyncLoaderFactory from './async-loader.factory';
 const target = 'EU';
 
 import constants from '../../constants.config.js';
@@ -50,7 +51,7 @@ angular
         views: ["simple", "expert"],
         defaultViewMode: "simple"
     },
-    aapiRootPath: "<%= aapiPath %>",
+    aapiRootPath: "engine/2api/",
     target,
     renew: constants[target].RENEW_URL,
     loginUrl: constants[target].loginUrl,
@@ -61,7 +62,7 @@ angular
     UNIVERS: constants[target].UNIVERS,
     UNIVERSES: constants[target].UNIVERSES,
     TOP_GUIDES: constants[target].TOP_GUIDES,
-    swsProxyRootPath: "<%= swsProxyPath %>",
+    swsProxyRootPath: "apiv6/",
     urchin: constants[target].LOGS_URCHIN,
     urchin_gra: constants[target].LOGS_URCHIN_GRA,
     stats_logs: constants[target].STATS_LOGS,
@@ -83,6 +84,7 @@ angular
   })
   .constant('LANGUAGES', constants[target].LANGUAGES)
   .constant('website_url', constants[target].website_url)
+  .factory('asyncLoader', asyncLoaderFactory)
   .factory('serviceTypeInterceptor', () => ({
     request: (config) => {
       if (/^(\/?engine\/)?2api(-m)?\//.test(config.url)) {
@@ -495,12 +497,7 @@ angular
       localStorage['univers-selected-language'] = defaultLanguage;
     }
 
-    $translateProvider.useLoader('$translatePartialLoader', {
-      urlTemplate(part, lang) {
-        return constants.prodMode ? `${part}/translations/Messages_${lang}.json` : `app/${part}/translations/Messages_${lang}.json`;
-      },
-    });
-
+    $translateProvider.useLoader('asyncLoader');
     $translateProvider.useMissingTranslationHandler('translateMissingTranslationHandler');
     $translateProvider.useLoaderCache(true);
     $translateProvider.useSanitizeValueStrategy('sceParameters');

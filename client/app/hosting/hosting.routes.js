@@ -20,6 +20,6 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['hosting'],
+    translations: ['.'],
   });
 });

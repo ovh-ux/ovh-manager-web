@@ -17,7 +17,7 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['private-database', 'hosting'],
+    translations: ['../private-database', '../hosting'],
   });
 
   $stateProvider.state('app.private-database-order', {
@@ -37,7 +37,7 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['private-database'],
+    translations: ['../private-database'],
   });
 
   $stateProvider.state('app.sql-order', {
@@ -61,6 +61,6 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['private-database'],
+    translations: ['../private-database'],
   });
 });
