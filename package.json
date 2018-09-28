@@ -161,8 +161,8 @@
     "yarn": ">=1.0.0"
   },
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack --env.production",
+    "start": "webpack-dev-server --env.region=eu",
+    "build": "webpack --env.region=eu --env.production",
     "test": "eslint --quiet ./client",
     "lint": "run-p lint:js",
     "lint:css": "stylelint 'client/**/*.less' --fix",

@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
 const _ = require('lodash');
+const webpack = require('webpack');
 
 const folder = './client/app';
 const bundles = {};
@@ -39,6 +40,13 @@ module.exports = (env = {}) => {
     },
   }, env);
   /* eslint-enable */
+
+  config.plugins.push(new webpack.DefinePlugin({
+    WEBPACK_ENV: {
+      region: JSON.stringify(env.region),
+      production: JSON.stringify(env.production),
+    },
+  }));
 
   return merge(config, {
     entry: _.assign({

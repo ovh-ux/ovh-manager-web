@@ -1,7 +1,5 @@
 import asyncLoaderFactory from './async-loader.factory';
-const target = 'EU';
-
-import constants from '../../constants.config.js';
+import config from './config/config';
 
 /* eslint-disable no-param-reassign */
 angular
@@ -46,44 +44,42 @@ angular
     "oui"
   ])
   .constant("constants", {
-    prodMode: 'dev',
+    prodMode: config.prodMode,
     availableViewMode: {
         views: ["simple", "expert"],
         defaultViewMode: "simple"
     },
-    aapiRootPath: "engine/2api/",
-    target,
-    renew: constants[target].RENEW_URL,
-    loginUrl: constants[target].loginUrl,
-    urls: constants[target].URLS,
-    comodo: constants[target].COMODO,
-    CHATBOT_URL: constants[target].CHATBOT_URL,
-    BILLING_URL: constants[target].BILLING_URL,
-    UNIVERS: constants[target].UNIVERS,
-    UNIVERSES: constants[target].UNIVERSES,
-    TOP_GUIDES: constants[target].TOP_GUIDES,
+    aapiRootPath: config.aapiRootPath,
+    target: config.constants.target,
+    renew: config.constants.RENEW_URL,
+    loginUrl: config.constants.loginUrl,
+    urls: config.constants.URLS,
+    comodo: config.constants.COMODO,
+    CHATBOT_URL: config.constants.CHATBOT_URL,
+    BILLING_URL: config.constants.BILLING_URL,
+    UNIVERS: config.constants.UNIVERS,
+    UNIVERSES: config.constants.UNIVERSES,
+    TOP_GUIDES: config.constants.TOP_GUIDES,
     swsProxyRootPath: "apiv6/",
-    urchin: constants[target].LOGS_URCHIN,
-    urchin_gra: constants[target].LOGS_URCHIN_GRA,
-    stats_logs: constants[target].STATS_LOGS,
-    stats_logs_gra: constants[target].STATS_LOGS_GRA,
+    urchin: config.constants.LOGS_URCHIN,
+    urchin_gra: config.constants.LOGS_URCHIN_GRA,
+    stats_logs: config.constants.STATS_LOGS,
+    stats_logs_gra: config.constants.STATS_LOGS_GRA,
     aapiHeaderName: "X-Ovh-Session",
-    changelog_url: constants[target].changelog_url,
-    flags_options: constants[target].flags_options,
-    algorithm_options: constants[target].algorithm_options,
-    MANAGER_URLS: constants[target].MANAGER_URLS,
-    HOSTING: constants[target].HOSTING,
-    NO_AUTORENEW_COUNTRIES: constants[target]
-        .NO_AUTORENEW_COUNTRIES,
-    DOMAIN: constants[target].DOMAIN,
-    WEBSITE_URLS: constants[target].website_url,
-    new_bdd_user_grant_options: constants[target]
-        .new_bdd_user_grant_options,
-    OVHGuides: constants[target].OVHGuides,
-    REDIRECT_URLS: constants[target].REDIRECT_URLS
+    changelog_url: config.constants.changelog_url,
+    flags_options: config.constants.flags_options,
+    algorithm_options: config.constants.algorithm_options,
+    MANAGER_URLS: config.constants.MANAGER_URLS,
+    HOSTING: config.constants.HOSTING,
+    NO_AUTORENEW_COUNTRIES: config.constants.NO_AUTORENEW_COUNTRIES,
+    DOMAIN: config.constants.DOMAIN,
+    WEBSITE_URLS: config.constants.website_url,
+    new_bdd_user_grant_options: config.constants.new_bdd_user_grant_options,
+    OVHGuides: config.constants.OVHGuides,
+    REDIRECT_URLS: config.constants.REDIRECT_URLS
   })
-  .constant('LANGUAGES', constants[target].LANGUAGES)
-  .constant('website_url', constants[target].website_url)
+  .constant('LANGUAGES', config.constants.LANGUAGES)
+  .constant('website_url', config.constants.website_url)
   .factory('asyncLoader', asyncLoaderFactory)
   .factory('serviceTypeInterceptor', () => ({
     request: (config) => {
