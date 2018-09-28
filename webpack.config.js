@@ -11,8 +11,9 @@ const webpackConfig = require('@ovh-ux/manager-webpack-config');
 
 fs.readdirSync(folder).forEach((file) => {
   const stats = fs.lstatSync(`${folder}/${file}`);
+  if (file === 'components') return;
   if (stats.isDirectory()) {
-    const jsFiles = glob.sync(`${folder}/${file}/**/*.js`);
+    const jsFiles = glob.sync(`${folder}/${file}/**/!(*.module).js`);
     if (jsFiles.length > 0) {
       bundles[file] = jsFiles;
     }
@@ -41,8 +42,13 @@ module.exports = (env = {}) => {
   return merge(config, {
     entry: _.assign({
       index: './client/app/index.js',
-      telecom: glob.sync('./client/app/telecom/*.js'),
-      components: glob.sync('./client/components/**/*.js'),
+      app: [
+        './client/app/app.js',
+        './client/app/app.routes.js',
+        './client/app/app.controller.js',
+      ],
+      modules: glob.sync('./client/app/**/*.module.js'),
+      components: glob.sync('./client/app/components/**/!(*.module).js'),
     }, bundles),
     output: {
       path: path.resolve(__dirname, 'dist'),
