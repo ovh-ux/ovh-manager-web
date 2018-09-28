@@ -427,6 +427,12 @@ module.exports = function (grunt) {
                   },
                   {
                       expand: true,
+                      cwd: "<%= bowerdir %>/ovh-angular-otrs",
+                      src: ["**"],
+                      dest: "<%= distdir %>/bower_components/ovh-angular-otrs"
+                  },
+                  {
+                      expand: true,
                       cwd: "<%= bowerdir %>/ovh-ui-kit",
                       src: ["**"],
                       dest: "<%= distdir %>/bower_components/ovh-ui-kit"
