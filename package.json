@@ -163,7 +163,7 @@
   "scripts": {
     "start": "webpack-dev-server --env.region=eu",
     "build": "webpack --env.region=eu --env.production",
-    "test": "eslint --quiet ./client",
+    "test": "echo 'TODO'",
     "lint": "run-p lint:js",
     "lint:css": "stylelint 'client/**/*.less' --fix",
     "lint:js": "eslint --quiet --fix ./client",
