@@ -84,22 +84,22 @@
                                                     data-translate="privateDatabase_dashboard_disk_usage"></strong>
                                             <oui-progress>
                                                 <oui-progress-bar data-ng-if="stateCtrl.database.quotaPercent.value < 51"
-                                                                    data-type="success"
-                                                                    data-value="stateCtrl.database.quotaPercent.value">
+                                                                  data-type="success"
+                                                                  data-value="stateCtrl.database.quotaPercent.value">
                                                     <span class="oui-progress__label"
-                                                            data-ng-bind="::stateCtrl.convertBytesSize(stateCtrl.database.quotaUsed.value, stateCtrl.database.quotaUsed.unit, 2) + ' / ' + stateCtrl.convertBytesSize(stateCtrl.database.quotaSize.value, stateCtrl.database.quotaSize.unit)"></span>
+                                                          data-ng-bind="::stateCtrl.convertBytesSize(stateCtrl.database.quotaUsed.value, stateCtrl.database.quotaUsed.unit, 2) + ' / ' + stateCtrl.convertBytesSize(stateCtrl.database.quotaSize.value, stateCtrl.database.quotaSize.unit)"></span>
                                                 </oui-progress-bar>
                                                 <oui-progress-bar data-ng-if="stateCtrl.database.quotaPercent.value > 50 && stateCtrl.database.quotaPercent.value < 81"
-                                                                    data-type="warning"
-                                                                    data-value="stateCtrl.database.quotaPercent.value">
+                                                                  data-type="warning"
+                                                                  data-value="stateCtrl.database.quotaPercent.value">
                                                     <span class="oui-progress__label"
-                                                            data-ng-bind="::stateCtrl.convertBytesSize(stateCtrl.database.quotaUsed.value, stateCtrl.database.quotaUsed.unit, 2) + ' / ' + stateCtrl.convertBytesSize(stateCtrl.database.quotaSize.value, stateCtrl.database.quotaSize.unit)"></span>
+                                                          data-ng-bind="::stateCtrl.convertBytesSize(stateCtrl.database.quotaUsed.value, stateCtrl.database.quotaUsed.unit, 2) + ' / ' + stateCtrl.convertBytesSize(stateCtrl.database.quotaSize.value, stateCtrl.database.quotaSize.unit)"></span>
                                                 </oui-progress-bar>
                                                 <oui-progress-bar data-ng-if="stateCtrl.database.quotaPercent.value > 80"
-                                                                    data-type="error"
-                                                                    data-value="stateCtrl.database.quotaPercent.value">
+                                                                  data-type="error"
+                                                                  data-value="stateCtrl.database.quotaPercent.value">
                                                     <span class="oui-progress__label"
-                                                            data-ng-bind="::stateCtrl.convertBytesSize(stateCtrl.database.quotaUsed.value, stateCtrl.database.quotaUsed.unit, 2) + ' / ' + stateCtrl.convertBytesSize(stateCtrl.database.quotaSize.value, stateCtrl.database.quotaSize.unit)"></span>
+                                                          data-ng-bind="::stateCtrl.convertBytesSize(stateCtrl.database.quotaUsed.value, stateCtrl.database.quotaUsed.unit, 2) + ' / ' + stateCtrl.convertBytesSize(stateCtrl.database.quotaSize.value, stateCtrl.database.quotaSize.unit)"></span>
                                                 </oui-progress-bar>
                                             </oui-progress>
                                         </div>
