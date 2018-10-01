@@ -33,13 +33,38 @@ module.exports = (env = {}) => {
     assets: {
       files: [
         { from: path.resolve(__dirname, './client/assets'), to: 'assets' },
-        { from: path.resolve(__dirname, './node_modules/angular-i18n'), to: 'angular-i18n' },
+        { from: path.resolve(__dirname, './node_modules/angular-i18n'), to: 'resources/angular/i18n' },
         { from: path.resolve(__dirname, './node_modules/@ovh-ux/ovh-utils-angular/src/**/*.html'), context: 'node_modules/@ovh-ux/ovh-utils-angular/src', to: 'components/ovh-utils-angular' },
         { from: path.resolve(__dirname, './client/**/*.html'), context: 'client/app' },
+        { from: path.resolve(__dirname, './node_modules/ovh-module-exchange/src/exchange/**/*.html'), context: 'node_modules/ovh-module-exchange/src' },
+        { from: path.resolve(__dirname, './node_modules/ovh-module-office/src/microsoft/**/*.html'), context: 'node_modules/ovh-module-office/src' },
+        { from: path.resolve(__dirname, './node_modules/ovh-module-sharepoint/src/sharepoint/**/*.html'), context: 'node_modules/ovh-module-sharepoint/src' },
+        { from: path.resolve(__dirname, './node_modules/ovh-module-emailpro/src/emailpro/**/*.html'), context: 'node_modules/ovh-module-emailpro/src' },
       ],
     },
   }, env);
   /* eslint-enable */
+
+  // Module exchange
+  bundles.exchange = [].concat(
+    glob.sync('./node_modules/ovh-module-exchange/src/exchange/**/*.module.js'),
+    glob.sync('./node_modules/ovh-module-exchange/src/exchange/**/!(*.module).js'),
+  );
+
+  // Module office
+  bundles.office = glob.sync('./node_modules/ovh-module-office/src/microsoft/**/*.js');
+
+  // Module sharepoint
+  bundles.sharepoint = [].concat(
+    glob.sync('./node_modules/ovh-module-sharepoint/src/sharepoint/**/*.module.js'),
+    glob.sync('./node_modules/ovh-module-sharepoint/src/sharepoint/**/!(*.module).js'),
+  );
+
+  // Module emailpro
+  bundles.emailpro = [].concat(
+    glob.sync('./node_modules/ovh-module-emailpro/src/emailpro/**/*.module.js'),
+    glob.sync('./node_modules/ovh-module-emailpro/src/emailpro/**/!(*.module).js'),
+  );
 
   config.plugins.push(new webpack.DefinePlugin({
     WEBPACK_ENV: {
@@ -47,6 +72,9 @@ module.exports = (env = {}) => {
       production: JSON.stringify(env.production),
     },
   }));
+
+  // Extra config files
+  const extras = glob.sync('./.extras/**/*.js');
 
   return merge(config, {
     entry: _.assign({
@@ -58,7 +86,7 @@ module.exports = (env = {}) => {
       ],
       modules: glob.sync('./client/app/**/*.module.js'),
       components: glob.sync('./client/app/components/**/!(*.module).js'),
-    }, bundles),
+    }, bundles, extras.length > 0 ? { extras } : {}),
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].[hash].bundle.js',

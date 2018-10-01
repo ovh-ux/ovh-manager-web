@@ -41,7 +41,11 @@ angular
     "ovh-angular-toaster",
     "ngCkeditor",
     "moment-picker",
-    "oui"
+    "oui",
+    "Module.exchange",
+    "Module.microsoft",
+    "Module.sharepoint",
+    "Module.emailpro"
   ])
   .constant("constants", {
     prodMode: config.prodMode,
