@@ -25,8 +25,8 @@
   "scripts": {
     "start": "webpack-dev-server --env.region=eu",
     "build": "webpack --env.region=eu --env.production",
-    "test": "echo 'TODO'",
-    "lint": "run-p lint:js",
+    "test": "yarn run lint",
+    "lint": "run-p lint:css lint:js",
     "lint:css": "stylelint 'client/**/*.less' --fix",
     "lint:js": "eslint --quiet --fix ./client",
     "version": "npm-scripts-config version",
