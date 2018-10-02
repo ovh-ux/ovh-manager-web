@@ -1,3 +1,13 @@
+<a name="13.6.3"></a>
+## [13.6.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.6.2...v13.6.3) (2018-09-28)
+
+
+### Bug Fixes
+
+* **app:** restore OTRS translations ([1db4d67](https://github.com/ovh-ux/ovh-manager-web/commit/1db4d67))
+
+
+
 <a name="13.6.2"></a>
 ## [13.6.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.6.1...v13.6.2) (2018-09-27)
 
