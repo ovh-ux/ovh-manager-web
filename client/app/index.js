@@ -1,3 +1,5 @@
+/* eslint-disable import/no-webpack-loader-syntax, import/no-unresolved, import/extensions */
+
 import 'script-loader!moment/min/moment-with-locales.min.js';
 import 'script-loader!jquery/dist/jquery.min.js';
 import 'script-loader!@bower_components/jquery.ui/ui/core.js';
@@ -70,7 +72,6 @@ import 'script-loader!ovh-angular-otrs/dist/ovh-angular-otrs.min.js';
 import 'script-loader!ovh-api-services/dist/ovh-api-services.min.js';
 import 'script-loader!ovh-angular-toaster/dist/ovh-angular-toaster.min.js';
 import 'script-loader!@bower_components/messenger/build/js/messenger.min.js';
-import 'script-loader!ovh-angular-toaster/dist/ovh-angular-toaster.min.js';
 import 'script-loader!ovh-jquery-ui-draggable-ng/dist/ovh-jquery-ui-draggable-ng.min.js';
 // import "script-loader!@bower_components/ovh-common-style/dist/ovh-common-style.min.js";
 import 'script-loader!clipboard/dist/clipboard.min.js';
@@ -78,3 +79,5 @@ import 'script-loader!clipboard/dist/clipboard.min.js';
 import './app.js';
 import './css/source.less';
 import './css/source.scss';
+
+/* eslint-disable import/no-webpack-loader-syntax, import/no-unresolved, import/extensions */

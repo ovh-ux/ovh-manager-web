@@ -1,7 +1,6 @@
 import asyncLoaderFactory from './async-loader.factory';
 import config from './config/config';
 
-/* eslint-disable no-param-reassign */
 angular
   .module('App', [
     'ovh-angular-proxy-request',
@@ -86,20 +85,20 @@ angular
   .constant('website_url', config.constants.website_url)
   .factory('asyncLoader', asyncLoaderFactory)
   .factory('serviceTypeInterceptor', () => ({
-    request: (config) => {
+    request: (config) => { // eslint-disable-line
       if (/^(\/?engine\/)?2api(-m)?\//.test(config.url)) {
-        config.url = config.url.replace(/^(\/?engine\/)?2api(-m)?/, '');
-        config.serviceType = 'aapi';
+        _.set(config, 'url', config.url.replace(/^(\/?engine\/)?2api(-m)?/, ''));
+        _.set(config, 'serviceType', 'aapi');
       }
 
       if (/^apiv6\//.test(config.url)) {
-        config.url = config.url.replace(/^apiv6/, '');
-        config.serviceType = 'apiv6';
+        _.set(config, 'url', config.url.replace(/^apiv6/, ''));
+        _.set(config, 'serviceType', 'apiv6');
       }
 
       if (/^apiv7\//.test(config.url)) {
-        config.url = config.url.replace(/^apiv7/, '');
-        config.serviceType = 'apiv7';
+        _.set(config, 'url', config.url.replace(/^apiv7/, ''));
+        _.set(config, 'serviceType', 'apiv7');
       }
 
       return config;
@@ -112,11 +111,14 @@ angular
     ($q, Raven) => ({
       responseError: (response) => {
         if (response.status === 429 || response.status >= 500) {
-          Raven.captureMessage([response.status, response.config.url, JSON.stringify(response.data)].join(' - '), {
-            extra: {
-              'x-ovh-queryid': response.headers('x-ovh-queryid'),
+          Raven.captureMessage(
+            [response.status, response.config.url, JSON.stringify(response.data)].join(' - '),
+            {
+              extra: {
+                'x-ovh-queryid': response.headers('x-ovh-queryid'),
+              },
             },
-          });
+          );
         }
         return $q.reject(response);
       },
@@ -191,10 +193,10 @@ angular
     'OvhHttpProvider',
     'constants',
     (OvhHttpProvider, constants) => {
-      OvhHttpProvider.rootPath = constants.swsProxyPath;
-      OvhHttpProvider.clearCacheVerb = ['POST', 'PUT', 'DELETE'];
-      OvhHttpProvider.returnSuccessKey = 'data'; // By default, request return response.data
-      OvhHttpProvider.returnErrorKey = 'data'; // By default, request return error.data
+      _.set(OvhHttpProvider, 'rootPath', constants.swsProxyPath);
+      _.set(OvhHttpProvider, 'clearCacheVerb', ['POST', 'PUT', 'DELETE']);
+      _.set(OvhHttpProvider, 'returnSuccessKey', 'data'); // By default, request return response.data
+      _.set(OvhHttpProvider, 'returnErrorKey', 'data'); // By default, request return error.data
     },
   ])
   .config([
@@ -226,7 +228,7 @@ angular
     },
   })
   .run((atInternet, TRACKING, OvhApiMe) => {
-    const { config } = TRACKING;
+    const { config } = TRACKING; // eslint-disable-line
 
     OvhApiMe.v6().get().$promise
       .then((me) => {
@@ -248,9 +250,9 @@ angular
     '$urlRouterProvider',
     'URLS_REDIRECTED_TO_DEDICATED',
     ($stateProvider, $urlRouterProvider, URLS_REDIRECTED_TO_DEDICATED) => {
-      /*
-            * ALL DOM
-            */
+      /**
+       * ALL DOM
+       */
       $stateProvider.state('app.alldom', {
         url: '/configuration/all_dom/:allDom/:productId',
         templateUrl: 'domain/domain.html',
@@ -260,7 +262,7 @@ angular
             'Navigator',
             '$rootScope',
             (Navigator, $rootScope) => {
-              $rootScope.currentSectionInformation = 'all_dom';
+              _.set($rootScope, 'currentSectionInformation', 'all_dom');
               return Navigator.setNavigationInformation({
                 leftMenuVisible: true,
                 configurationSelected: true,
@@ -280,7 +282,7 @@ angular
             '$location',
             ($window, constants, $location) => {
               const lastPartOfUrl = $location.url().substring(1);
-              $window.location = `${constants.MANAGER_URLS.dedicated}${lastPartOfUrl}`;
+              _.set($window, 'location', `${constants.MANAGER_URLS.dedicated}${lastPartOfUrl}`);
             },
           ]);
         })
@@ -433,7 +435,7 @@ angular
     '$rootScope',
     ($rootScope) => {
       $rootScope.$on('$locationChangeStart', () => {
-        delete $rootScope.isLeftMenuVisible;
+        delete $rootScope.isLeftMenuVisible; // eslint-disable-line
       });
     },
   ])
@@ -469,12 +471,11 @@ angular
     },
   ])
   .run((editableOptions, editableThemes) => {
-    editableOptions.theme = 'default';
+    _.set(editableOptions, 'theme', 'default');
 
     // overwrite submit button template
-    editableThemes.default.submitTpl = ['<button style="background:none;border:none" type="submit">', '<i class="fa fa-check green"></i>', '</button>'].join('');
-
-    editableThemes.default.cancelTpl = ['<button style="background:none;border:none" ng-click="$form.$cancel()">', '<i class="fa fa-times red"></i>', '</button>'].join('');
+    _.set(editableThemes, 'default.submitTpl', ['<button style="background:none;border:none" type="submit">', '<i class="fa fa-check green"></i>', '</button>'].join(''));
+    _.set(editableThemes, 'default.cancelTpl', ['<button style="background:none;border:none" ng-click="$form.$cancel()">', '<i class="fa fa-times red"></i>', '</button>'].join(''));
   })
   .factory('translateInterceptor', ($q) => {
     const regexp = new RegExp(/Messages\w+\.json$/i);
@@ -488,7 +489,7 @@ angular
     };
   })
   .factory('translateMissingTranslationHandler', $sanitize => translationId => $sanitize(translationId))
-  .config((LANGUAGES, $translateProvider, constants) => {
+  .config((LANGUAGES, $translateProvider) => {
     let defaultLanguage = 'fr_FR';
 
     if (localStorage['univers-selected-language']) {
@@ -535,7 +536,7 @@ angular
     ouiStepperConfiguration,
   ) => {
     const removeHook = $transitions.onSuccess({}, () => {
-      ouiCriteriaAdderConfiguration.translations = {
+      _.set(ouiCriteriaAdderConfiguration, 'translations', {
         column_label: $translate.instant('common_criteria_adder_column_label'),
         operator_label: $translate.instant('common_criteria_adder_operator_label'),
 
@@ -565,13 +566,13 @@ angular
 
         value_label: $translate.instant('common_criteria_adder_value_label'),
         submit_label: $translate.instant('common_criteria_adder_submit_label'),
-      };
+      });
 
-      ouiDatagridConfiguration.translations = {
+      _.set(ouiDatagridConfiguration, 'translations', {
         emptyPlaceholder: $translate.instant('common_datagrid_nodata'),
-      };
+      });
 
-      ouiFieldConfiguration.translations = {
+      _.set(ouiFieldConfiguration, 'translations', {
         errors: {
           required: $translate.instant('common_field_error_required'),
           number: $translate.instant('common_field_error_number'),
@@ -582,9 +583,9 @@ angular
           maxlength: $translate.instant('common_field_error_maxlength', { maxlength: '{{maxlength}}' }),
           pattern: $translate.instant('common_field_error_pattern'),
         },
-      };
+      });
 
-      ouiNavbarConfiguration.translations = {
+      _.set(ouiNavbarConfiguration, 'translations', {
         notification: {
           errorInNotification: $translate.instant('common_navbar_notification_error_in_notification'),
           errorInNotificationDescription: $translate.instant('common_navbar_notification_error_in_notification_description'),
@@ -593,9 +594,9 @@ angular
           noNotification: $translate.instant('common_navbar_notification_none'),
           noNotificationDescription: $translate.instant('common_navbar_notification_none_description'),
         },
-      };
+      });
 
-      ouiPaginationConfiguration.translations = {
+      _.set(ouiPaginationConfiguration, 'translations', {
         resultsPerPage: $translate.instant('common_pagination_resultsperpage'),
         ofNResults: $translate.instant('common_pagination_ofnresults')
           .replace('TOTAL_ITEMS', '{{totalItems}}'),
@@ -604,17 +605,16 @@ angular
           .replace('PAGE_COUNT', '{{pageCount}}'),
         previousPage: $translate.instant('common_pagination_previous'),
         nextPage: $translate.instant('common_pagination_next'),
-      };
+      });
 
-      ouiStepperConfiguration.translations = {
+      _.set(ouiStepperConfiguration, 'translations', {
         optionalLabel: $translate.instant('common_stepper_optional_label'),
         modifyThisStep: $translate.instant('common_stepper_modify_this_step'),
         skipThisStep: $translate.instant('common_stepper_skip_this_step'),
         nextButtonLabel: $translate.instant('common_stepper_next_button_label'),
         submitButtonLabel: $translate.instant('common_stepper_submit_button_label'),
-      };
+      });
 
       removeHook();
     });
   });
-/* eslint-enable no-param-reassign */
