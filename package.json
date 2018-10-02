@@ -33,6 +33,22 @@
     "postversion": "git push && git push --tags",
     "preview-changelog": "npm-scripts-config preview-changelog"
   },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.less": [
+      "stylelint 'client/**/*.less' --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "dependencies": {
     "@bower_components/URIjs": "medialize/URI.js#^1.14.0",
     "@bower_components/angular-flash-alert": "sachinchoolur/angular-flash#1.1.x",
