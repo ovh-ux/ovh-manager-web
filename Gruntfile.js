@@ -392,15 +392,6 @@ module.exports = function (grunt) {
                   },
                   {
                       expand: true,
-                      cwd: "node_modules",
-                      src: [
-                          "es5-shim/es5-shim.min.js",
-                          "json3/lib/json3.min.js"
-                      ],
-                      dest: "<%= distdir %>/js/"
-                  },
-                  {
-                      expand: true,
                       cwd: "node_modules/ovh-angular-actions-menu/dist",
                       src: ["**"],
                       dest: "<%= distdir %>/node_modules/ovh-angular-actions-menu/dist"
