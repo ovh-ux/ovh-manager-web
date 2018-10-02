@@ -176,12 +176,21 @@ angular.module('services').service(
             field = field.replace(/^(ip4:)/, '');
             if (field.indexOf('/') !== -1) {
               // Format: "ip4:ipv4/cidr"
-              field = field.split('/');
+              const [ip, cidrAsString] = field.split('/');
+
+              const cidrIsValid = /^\d+$/.test(cidrAsString);
+
+              if (!cidrIsValid) {
+                return false;
+              }
+
+              const cidr = parseInt(cidrAsString.match(/^\d+$/)[0], 10);
+
               if (
-                !_.isFinite(field[1])
-                || field[1] < 1
-                || field[1] > 32
-                || !this.Validator.isValidIpv4(field[0])
+                !_.isFinite(cidr)
+                || cidr < 1
+                || cidr > 32
+                || !this.Validator.isValidIpv4(ip)
               ) {
                 isValid = false;
               }
@@ -203,12 +212,21 @@ angular.module('services').service(
             field = field.replace(/^(ip6:)/, '');
             if (field.indexOf('/') !== -1) {
               // Format: "ip6:ipv6/cidr"
-              field = field.split('/');
+              const [ip, cidrAsString] = field.split('/');
+
+              const cidrIsValid = /^\d+$/.test(cidrAsString);
+
+              if (!cidrIsValid) {
+                return false;
+              }
+
+              const cidr = parseInt(cidrAsString.match(/^\d+$/)[0], 10);
+
               if (
-                !_.isFinite(field[1])
-                || field[1] < 1
-                || field[1] > 128
-                || !this.Validator.isValidIpv6(field[0])
+                !_.isFinite(cidr)
+                || cidr < 1
+                || cidr > 128
+                || !this.Validator.isValidIpv6(ip)
               ) {
                 isValid = false;
               }
