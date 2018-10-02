@@ -2,7 +2,37 @@
   "name": "ovh-manager-web",
   "version": "13.6.2",
   "description": "OVH Control Panel Web UI",
-  "main": "server/app.js",
+  "author": "OVH SAS",
+  "license": "BSD-3-Clause",
+  "private": true,
+  "keywords": [
+    "ovh",
+    "control",
+    "panel",
+    "web",
+    "dns",
+    "domain",
+    "email",
+    "hosting",
+    "mx-plan",
+    "private-database",
+    "website"
+  ],
+  "engines": {
+    "node": ">=8",
+    "yarn": ">=1.0.0"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --env.region=eu",
+    "build": "webpack --env.region=eu --env.production",
+    "test": "echo 'TODO'",
+    "lint": "run-p lint:js",
+    "lint:css": "stylelint 'client/**/*.less' --fix",
+    "lint:js": "eslint --quiet --fix ./client",
+    "version": "npm-scripts-config version",
+    "postversion": "git push && git push --tags",
+    "preview-changelog": "npm-scripts-config preview-changelog"
+  },
   "dependencies": {
     "@bower_components/URIjs": "medialize/URI.js#^1.14.0",
     "@bower_components/angular-flash-alert": "sachinchoolur/angular-flash#1.1.x",
@@ -156,22 +186,6 @@
     "webpack-merge": "^4.1.4",
     "webpackbar": "^2.6.3"
   },
-  "engines": {
-    "node": ">=8",
-    "yarn": ">=1.0.0"
-  },
-  "scripts": {
-    "start": "webpack-dev-server --env.region=eu",
-    "build": "webpack --env.region=eu --env.production",
-    "test": "echo 'TODO'",
-    "lint": "run-p lint:js",
-    "lint:css": "stylelint 'client/**/*.less' --fix",
-    "lint:js": "eslint --quiet --fix ./client",
-    "version": "npm-scripts-config version",
-    "postversion": "git push && git push --tags",
-    "preview-changelog": "npm-scripts-config preview-changelog"
-  },
-  "private": true,
   "config": {
     "commitizen": {
       "path": "cz-conventional-changelog"
