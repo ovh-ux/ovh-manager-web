@@ -22,7 +22,6 @@ fs.readdirSync(folder).forEach((file) => {
 });
 
 module.exports = (env = {}) => {
-  /* eslint-disable import/no-unresolved, import/no-extraneous-dependencies */
   const { config } = webpackConfig({
     template: './client/app/index.html',
     basePath: './client/app',
@@ -43,7 +42,6 @@ module.exports = (env = {}) => {
       ],
     },
   }, env);
-  /* eslint-enable */
 
   // Module exchange
   bundles.exchange = [].concat(
