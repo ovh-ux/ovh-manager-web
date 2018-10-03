@@ -37,6 +37,14 @@ angular.module('App').controller(
 
     buildSummitData() {
       this.localeForSummitBanner = this.$translate.use().split('_')[0] === 'fr' ? 'fr' : 'en';
+
+      const subsidiariesWithSummitBanner = ['FR', 'GB', 'DE', 'ES'];
+      this.shouldDisplayBanner = false;
+      return this.User
+        .getUser()
+        .then(({ ovhSubsidiary }) => {
+          this.shouldDisplayBanner = _(subsidiariesWithSummitBanner).includes(ovhSubsidiary);
+        });
     }
 
     unSelectProduct() {
