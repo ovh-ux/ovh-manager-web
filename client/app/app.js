@@ -53,7 +53,7 @@ angular
       defaultViewMode: 'simple',
     },
     aapiRootPath: config.aapiRootPath,
-    target: config.constants.target,
+    target: config.target,
     renew: config.constants.RENEW_URL,
     loginUrl: config.constants.loginUrl,
     urls: config.constants.URLS,
