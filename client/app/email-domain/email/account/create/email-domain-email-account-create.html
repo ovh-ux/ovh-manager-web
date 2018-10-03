@@ -132,7 +132,7 @@
                     <form class="my-5">
                         <div class="mb-3" data-ng-repeat="device in ctrl.devices track by $index">
                             <label class="d-flex flex-row-reverse justify-content-between font-weight-normal text-info small-divider-info">
-                                <input type="radio" name="getGuides" id="getMacGuides" class="pull-right"
+                                <input type="radio" name="getGuides" class="pull-right"
                                        data-ng-value="device.deviceName" data-ng-model="ctrl.currentGuideName"
                                        data-ng-change="ctrl.setGuideByName(ctrl.currentGuideName)"/>
                                 <span data-ng-bind="'emails_configuration_guide_' + device.deviceName + '_name' | translate"></span>
