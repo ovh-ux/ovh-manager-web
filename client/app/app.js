@@ -454,8 +454,6 @@ angular
   .run([
     '$translate', '$translatePartialLoader',
     ($translate, $translatePartialLoader) => {
-      $translatePartialLoader.addPart('core');
-      $translatePartialLoader.addPart('double-authentication');
       const selectedLanguageValue = $translate.use();
 
       if (_(moment).isObject() && _(selectedLanguageValue).isString()) {
@@ -489,7 +487,7 @@ angular
     };
   })
   .factory('translateMissingTranslationHandler', $sanitize => translationId => $sanitize(translationId))
-  .config((LANGUAGES, $translateProvider) => {
+  .config(($translateProvider) => {
     let defaultLanguage = 'fr_FR';
 
     if (localStorage['univers-selected-language']) {
