@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width">
+        <title>OVH</title>
+        <link rel="shortcut icon" href="../../assets/images/favicon.ico">
+        <!--[if lte IE 8]>
+            <script type="text/javascript" src="../../bower_components/json3/lib/json3.min.js"></script>
+            <script type="text/javascript" src="../../bower_components/es5-shim/es5-shim.min.js"></script>
+        <![endif]-->
+    </head>
+    <body data-ng-app="App" data-ng-controller="SessionCtrl" data-ng-cloak class="ng-cloak">
+        <div class="col-container">
+
+            <!-- Skip to main content -->
+            <div class="skipnav">
+                <a class="oui-button oui-button_link" href=""
+                    data-ng-bind="::i18n.common_skip_to_main_content"
+                    data-ng-click="scrollTo('maincontent')">
+                </a>
+            </div>
+            <!-- /Skip to main content -->
+
+            <oui-navbar fixed
+                        data-active-link="web"
+                        data-brand="::navbar.brand"
+                        data-main-links="::navbar.managerLinks"
+                        data-aside-links="::navbar.internalLinks"
+                        data-toggler-links="::navbar.responsiveLinks">
+            </oui-navbar>
+
+            <button type="button" class="visible-xs visible-sm"
+                    data-ng-if="navbar.responsiveLinks.length <= 0"
+                    onclick="$('#sidebar-menu').toggleClass('displayFallbackMenu')"
+                    style="position: absolute; height: 44px; width: 50px; display: block; background-color: transparent; z-index: 9999; top: 0; left: 0; border: 0;">
+            </button>
+
+            <div class="container-fluid h-100 w-100" style="overflow: auto">
+                <div class="row">
+                    <div data-sidebar-menu class="col-md-3 col-lg-2"></div>
+                    <div class="col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2 px-0">
+                        <div class="mainContainer pb-5">
+
+                            <!-- Skip content target -->
+                            <div class="skiptarget">
+                                <a id="maincontent" href="">-</a>
+                            </div>
+                            <!-- /Skip content target -->
+
+                            <div data-ui-view></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="managerPreload" class="d-flex text-center"
+            data-ng-class="!!navbar && managerPreloadHide">
+            <div class="m-auto">
+                <p class="lead mb-3" data-translate="preload_welcome"></p>
+                <hr class="my-0" />
+                <h1 class="mt-3 mb-5" data-translate="preload_manager_ovh"></h1>
+                <div class="mt-5">
+                    <oui-spinner data-size="l"></oui-spinner>
+                </div>
+            </div>
+        </div>
+
+        <div data-ng-controller="DoubleAuthBackupCodeCtrl">
+            <div class="modal fade currentAction" id="currentActionDoubleAlert" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" id="modal-container"
+                         data-ng-include="stepPath">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-otrs-popup></div>
+    </body>
+</html>

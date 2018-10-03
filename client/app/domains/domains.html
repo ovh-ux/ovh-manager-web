@@ -94,43 +94,54 @@
                                     </td>
                                     <td data-ng-bind="domain.creation|date:'mediumDate'"></td>
                                     <td class="text-center">
-                                        <span class="label label-success"
+                                        <span class="oui-status oui-status_success"
                                               data-translate="common_activated"
                                               data-ng-if="domain.whoisFields.length > 0"></span>
-                                        <span class="label label-danger"
+                                        <span class="oui-status oui-status_error"
                                               data-translate="common_desactivated"
                                               data-ng-if="domain.whoisFields.length === 0"></span>
                                     </td>
                                     <td class="text-center">
-                                        <span class="label"
+                                        <span class="oui-status"
                                               data-ng-bind=":: 'domains_dashboard_table_dnssec_status_' + domain.dnssecStatus | translate"
-                                              data-ng-class="{'label-success': domain.dnssecStatus === 'ENABLED', 'label-danger': domain.dnssecStatus === 'DISABLED', 'label-info': domain.dnssecStatus !== 'ENABLED' && domain.dnssecStatus !== 'DISABLED'}"
+                                              data-ng-class="{'oui-status_success': domain.dnssecStatus === 'ENABLED', 'oui-status_error': domain.dnssecStatus === 'DISABLED', 'oui-status_info': domain.dnssecStatus !== 'ENABLED' && domain.dnssecStatus !== 'DISABLED'}"
                                               data-ng-if="domain.dnssecSupported && domain.dnssecStatus !== null"></span>
-                                        <span class="label label-warning"
+                                        <span class="oui-status oui-status_warning"
                                               data-translate="common_not_supported"
                                               data-ng-if="!domain.dnssecSupported"></span>
                                     </td>
                                     <td class="text-center">
-                                        <span class="label label-success"
+                                        <span class="oui-status oui-status_success"
                                               data-translate="common_activated"
                                               data-ng-if="domain.hasDnsAnycast"></span>
-                                        <span class="label label-danger"
+                                        <span class="oui-status oui-status_error"
                                               data-translate="common_desactivated"
                                               data-ng-if="domain.hasDnsAnycast === false"></span>
-                                        <span class="label label-warning"
+                                        <span class="oui-status oui-status_warning"
                                               data-translate="common_not_available"
                                               data-ng-if="domain.hasDnsAnycast == null"></span>
                                     </td>
                                     <td class="text-right">
-                                        <button class="btn btn-icon" type="button" title="{{ 'common_actions' | translate }}"
-                                                data-linkedpopover="domains/domains.popover.html"
-                                                data-linkedpopover-placement="left"
-                                                data-linkedpopover-remote="true"
-                                                data-linkedpopover-single="true"
-                                                data-linkedpopover-title="{{ 'common_actions' | translate }}"
-                                                data-ng-disabled="!domain.canOrder && !domain.whoisActivable && !domain.dnssecSupported">
-                                            <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                                        </button>
+                                        <oui-action-menu data-compact data-align="end">
+                                            <oui-action-menu-item data-on-click="setActionIfAuthorized(domain.canOrder, 'renew/domains-renew', domain)"
+                                                                  data-disabled="!domain.canOrder">
+                                                <span data-translate="domains_dashboard_tooltip_renew_single"></span>
+                                            </oui-action-menu-item>
+                                            <oui-action-menu-item data-on-click="setActionIfAuthorized(domain.whoisActivable, 'owo/domains-owo', domain)"
+                                                                  data-disabled="!domain.whoisActivable">
+                                                <span data-translate="domains_dashboard_tooltip_whois_single"></span>
+                                            </oui-action-menu-item>
+                                            <oui-action-menu-item data-ng-if="domain.dnssecSupported && domain.dnssecStatus === 'DISABLED'"
+                                                                  data-on-click="setActionIfAuthorized(domain.dnssecSupported && domain.dnssecStatus !== null, 'dnssec/simple/activate/domains-dnssec-simple-activate', domain)"
+                                                                  data-disabled="!domain.dnssecSupported">
+                                                <span data-translate="domains_dashboard_tooltip_dnssec_activate_single"></span>
+                                            </oui-action-menu-item>
+                                            <oui-action-menu-item data-ng-if="domain.dnssecSupported && domain.dnssecStatus === 'ENABLED'"
+                                                                  data-on-click="setActionIfAuthorized(domain.dnssecSupported && domain.dnssecStatus !== null, 'dnssec/simple/deactivate/domains-dnssec-simple-deactivate', domain)"
+                                                                  data-disabled="!domain.dnssecSupported">
+                                                <span data-translate="domains_dashboard_tooltip_dnssec_deactivate_single"></span>
+                                            </oui-action-menu-item>
+                                        </oui-action-menu>
                                     </td>
                                 </tr>
                             </tbody>

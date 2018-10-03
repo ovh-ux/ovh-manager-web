@@ -24,10 +24,17 @@ angular
       SessionService.getNavbar().then((navbar) => {
         $scope.navbar = navbar;
         $scope.managerPreloadHide += ' manager-preload-hide';
-
         // Then get the products links, to build the reponsive menu
         SessionService.getResponsiveLinks().then((responsiveLinks) => {
-          $scope.navbar.responsiveLinks = responsiveLinks;
+          const servicesCount = _.chain(responsiveLinks)
+            .find({ name: 'web' })
+            .get('subLinks')
+            .map('subLinks')
+            .flatten()
+            .size()
+            .value();
+
+          $scope.navbar.responsiveLinks = servicesCount < 500 ? responsiveLinks : [];
         });
       });
     },

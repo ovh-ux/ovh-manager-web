@@ -91,6 +91,7 @@ angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atIntern
       allowSubItems: true,
       loadOnState: 'app.domain',
       allowSearch: true,
+      infiniteScroll: true,
     });
 
     SidebarMenu.addMenuItems([{
@@ -159,6 +160,7 @@ angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atIntern
       allowSubItems: true,
       loadOnState: 'app.hosting',
       allowSearch: true,
+      infiniteScroll: true,
     });
 
     const hostings = _(products.hostings)
@@ -188,6 +190,7 @@ angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atIntern
       allowSubItems: true,
       loadOnState: 'app.private-database',
       allowSearch: true,
+      infiniteScroll: true,
     });
 
     const databases = _(products.hostings)
@@ -217,6 +220,7 @@ angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atIntern
       allowSubItems: true,
       loadOnState: 'app.email-pro',
       allowSearch: true,
+      infiniteScroll: true,
     });
 
     const emailProsItems = _.sortBy(products.emailPros, elt => angular.lowercase(elt.name));
@@ -242,6 +246,7 @@ angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atIntern
       allowSubItems: true,
       loadOnState: 'app.email',
       allowSearch: true,
+      infiniteScroll: true,
     });
 
     const emailItems = _.sortBy(
@@ -272,7 +277,7 @@ angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atIntern
       allowSearch: true,
     });
 
-      // Exchange
+    // Exchange
     const exchangesItem = SidebarMenu.addMenuItem({
       title: $translate.instant('navigation_left_exchange'),
       category: 'microsoft',
