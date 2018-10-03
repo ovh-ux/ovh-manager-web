@@ -20,7 +20,7 @@ angular.module('App').config(($stateProvider) => {
       ],
       currentSection: () => 'website',
     },
-    translations: ['domain', 'hosting', 'website'],
+    translations: ['../domain', '../hosting', '../website'],
   });
 
   $stateProvider.state('app.website-success', {
@@ -44,6 +44,6 @@ angular.module('App').config(($stateProvider) => {
       ],
       currentSection: () => 'website',
     },
-    translations: ['domain', 'hosting', 'website'],
+    translations: ['../domain', '../hosting', '../website'],
   });
 });

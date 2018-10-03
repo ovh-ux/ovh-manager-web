@@ -4,61 +4,55 @@
 
 > OVH Control Panel Web UI
 
+## Table of Contents
+
+* [Prerequisites](#prerequisites)
+* [Install](#install)
+* [Usage](#usage)
+* [Test](#test)
+* [Related](#related)
+* [Contributing](#contributing)
+* [License](#license)
+
+## Prerequisites
+
+* Node.js v8+
+* Yarn v1.9.0
+
 ## Install
 
-### Requirements
-
-* You must have `nodejs` with `npm` installed.
-* You must have `bower` installed (`npm install -g bower`)
-* You must have `grunt` installed (`npm install -g grunt-cli`)
-
-### Install dependencies
-
-```bash
-make install
+```sh
+yarn install
 ```
 
-## Run in development mode
+## Usage
 
-First you have to activate the developer mode in the [Manager V6](https://www.ovh.com/manager/dedicated/#/useraccount/advanced).
+In order to run the manager in the development mode, you first you have to activate the developer mode in the [Manager V6](https://www.ovh.com/manager/dedicated/#/useraccount/advanced).
 
-### Generate your certificates
+Once you have enabled the development mode just ran:
 
-To be able to run manager in dev mode using http2.
-
-```bash
-make gen-certificate
+```sh
+yarn start
 ```
 
-If you want, you can also generate a certificate by hand:
+And now open `https://localhost:9000`.
 
-```bash
-mkdir -p server/certificate
-openssl genrsa -des3 -out server/certificate/server.key 1024
-openssl req -new -key server/certificate/server.key -out server/certificate/server.csr
-cp server/certificate/server.key server/certificate/server.key.tmp
-openssl rsa -in server/certificate/server.key.tmp -out server/certificate/server.key
-openssl x509 -req -days 365 -in server/certificate/server.csr -signkey server/certificate/server.key -out server/certificate/server.crt
-rm server/certificate/server.key.tmp
+## Test
+
+```sh
+yarn test
 ```
 
-A full guide can be found for example [here](https://www.akadia.com/services/ssh_test_certificate.html).
+## Related
 
-### Launch the manager
+* [Dedicated Control Panel UI](https://github.com/ovh-ux/ovh-manager-dedicated).
+* [Cloud Control Panel UI](https://github.com/ovh-ux/ovh-manager-cloud).
+* [Telecom Control Panel UI](https://github.com/ovh-ux/ovh-manager-telecom).
 
-```bash
-make dev
-```
+## Contributing
 
-The manager is running on [https://localhost:9000](https://localhost:9000)
-
-And start developing.
-
-## Related links
-
- * Contribute: https://github.com/ovh-ux/ovh-ux-guidelines/blob/master/.github/CONTRIBUTING.md
- * Report bugs: https://github.com/ovh-ux/ovh-manager-web/issues
+Always feel free to help out! Whether it's [filing bugs and feature requests](https://github.com/ovh-ux/ovh-manager-web/issues/new) or working on some of the [open issues](https://github.com/ovh-ux/ovh-manager-web/issues), our [contributing guide](CONTRIBUTING.md) will help get you started.
 
 ## License
 
-See https://github.com/ovh-ux/ovh-manager-web/blob/master/LICENSE
+[BSD-3-Clause](LICENSE) © OVH SAS
