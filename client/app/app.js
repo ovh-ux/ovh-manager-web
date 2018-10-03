@@ -1,48 +1,137 @@
-/* eslint-disable no-param-reassign */
+import asyncLoaderFactory from './async-loader.factory';
+import config from './config/config';
+
 angular
-  .module('App')
+  .module('App', [
+    'ovh-angular-proxy-request',
+    'ovh-angular-pagination-front',
+    'ovh-utils-angular',
+    'ui.bootstrap',
+    'ngAria',
+    'ngRoute',
+    'ngResource',
+    'ngSanitize',
+    'controllers',
+    'services',
+    'filters',
+    'directives',
+    'ovh-angular-q-allSettled',
+    'ovh-angular-http',
+    'ngMessages',
+    'flash',
+    'ovh-angular-swimming-poll',
+    'vs-repeat',
+    'ovh-angular-export-csv',
+    'ng-at-internet',
+    'atInternetUiRouterPlugin',
+    'ovh-angular-user-pref',
+    'ngFileUpload',
+    'xeditable',
+    'ovh-angular-sso-auth',
+    'ovh-angular-sso-auth-modal-plugin',
+    'ui.router',
+    'ovh-angular-sidebar-menu',
+    'pascalprecht.translate',
+    'ovh-angular-responsive-tabs',
+    'ovh-angular-tail-logs',
+    'ovh-angular-doubleauth-backupcode',
+    'ovh-angular-otrs',
+    'ovh-api-services',
+    'ovh-angular-toaster',
+    'ngCkeditor',
+    'moment-picker',
+    'oui',
+    'Module.exchange',
+    'Module.microsoft',
+    'Module.sharepoint',
+    'Module.emailpro',
+  ])
+  .constant('constants', {
+    prodMode: config.prodMode,
+    availableViewMode: {
+      views: ['simple', 'expert'],
+      defaultViewMode: 'simple',
+    },
+    aapiRootPath: config.aapiRootPath,
+    target: config.target,
+    renew: config.constants.RENEW_URL,
+    loginUrl: config.constants.loginUrl,
+    urls: config.constants.URLS,
+    comodo: config.constants.COMODO,
+    CHATBOT_URL: config.constants.CHATBOT_URL,
+    BILLING_URL: config.constants.BILLING_URL,
+    UNIVERS: config.constants.UNIVERS,
+    UNIVERSES: config.constants.UNIVERSES,
+    TOP_GUIDES: config.constants.TOP_GUIDES,
+    swsProxyRootPath: 'apiv6/',
+    urchin: config.constants.LOGS_URCHIN,
+    urchin_gra: config.constants.LOGS_URCHIN_GRA,
+    stats_logs: config.constants.STATS_LOGS,
+    stats_logs_gra: config.constants.STATS_LOGS_GRA,
+    aapiHeaderName: 'X-Ovh-Session',
+    changelog_url: config.constants.changelog_url,
+    flags_options: config.constants.flags_options,
+    algorithm_options: config.constants.algorithm_options,
+    MANAGER_URLS: config.constants.MANAGER_URLS,
+    HOSTING: config.constants.HOSTING,
+    NO_AUTORENEW_COUNTRIES: config.constants.NO_AUTORENEW_COUNTRIES,
+    DOMAIN: config.constants.DOMAIN,
+    WEBSITE_URLS: config.constants.website_url,
+    new_bdd_user_grant_options: config.constants.new_bdd_user_grant_options,
+    OVHGuides: config.constants.OVHGuides,
+    REDIRECT_URLS: config.constants.REDIRECT_URLS,
+  })
+  .constant('LANGUAGES', config.constants.LANGUAGES)
+  .constant('website_url', config.constants.website_url)
+  .factory('asyncLoader', asyncLoaderFactory)
   .factory('serviceTypeInterceptor', () => ({
-    request: (config) => {
+    request: (config) => { // eslint-disable-line
       if (/^(\/?engine\/)?2api(-m)?\//.test(config.url)) {
-        config.url = config.url.replace(/^(\/?engine\/)?2api(-m)?/, '');
-        config.serviceType = 'aapi';
+        _.set(config, 'url', config.url.replace(/^(\/?engine\/)?2api(-m)?/, ''));
+        _.set(config, 'serviceType', 'aapi');
       }
 
       if (/^apiv6\//.test(config.url)) {
-        config.url = config.url.replace(/^apiv6/, '');
-        config.serviceType = 'apiv6';
+        _.set(config, 'url', config.url.replace(/^apiv6/, ''));
+        _.set(config, 'serviceType', 'apiv6');
       }
 
       if (/^apiv7\//.test(config.url)) {
-        config.url = config.url.replace(/^apiv7/, '');
-        config.serviceType = 'apiv7';
+        _.set(config, 'url', config.url.replace(/^apiv7/, ''));
+        _.set(config, 'serviceType', 'apiv7');
       }
 
       return config;
     },
   }))
+  /* @TODO
   .factory('ravenInterceptor', [
     '$q',
     'Raven',
     ($q, Raven) => ({
       responseError: (response) => {
         if (response.status === 429 || response.status >= 500) {
-          Raven.captureMessage([response.status, response.config.url, JSON.stringify(response.data)].join(' - '), {
-            extra: {
-              'x-ovh-queryid': response.headers('x-ovh-queryid'),
+          Raven.captureMessage(
+            [response.status, response.config.url, JSON.stringify(response.data)].join(' - '),
+            {
+              extra: {
+                'x-ovh-queryid': response.headers('x-ovh-queryid'),
+              },
             },
-          });
+          );
         }
         return $q.reject(response);
       },
     }),
   ])
+  */
   .config([
     '$qProvider',
     ($qProvider) => {
       $qProvider.errorOnUnhandledRejections(false);
     },
   ])
+  /* @TODO
   .config([
     '$httpProvider',
     'constants',
@@ -52,6 +141,7 @@ angular
       }
     },
   ])
+  */
   .config([
     'ovh-proxy-request.proxyProvider',
     (proxy) => {
@@ -103,10 +193,10 @@ angular
     'OvhHttpProvider',
     'constants',
     (OvhHttpProvider, constants) => {
-      OvhHttpProvider.rootPath = constants.swsProxyPath;
-      OvhHttpProvider.clearCacheVerb = ['POST', 'PUT', 'DELETE'];
-      OvhHttpProvider.returnSuccessKey = 'data'; // By default, request return response.data
-      OvhHttpProvider.returnErrorKey = 'data'; // By default, request return error.data
+      _.set(OvhHttpProvider, 'rootPath', constants.swsProxyPath);
+      _.set(OvhHttpProvider, 'clearCacheVerb', ['POST', 'PUT', 'DELETE']);
+      _.set(OvhHttpProvider, 'returnSuccessKey', 'data'); // By default, request return response.data
+      _.set(OvhHttpProvider, 'returnErrorKey', 'data'); // By default, request return error.data
     },
   ])
   .config([
@@ -138,7 +228,7 @@ angular
     },
   })
   .run((atInternet, TRACKING, OvhApiMe) => {
-    const { config } = TRACKING;
+    const { config } = TRACKING; // eslint-disable-line
 
     OvhApiMe.v6().get().$promise
       .then((me) => {
@@ -160,9 +250,9 @@ angular
     '$urlRouterProvider',
     'URLS_REDIRECTED_TO_DEDICATED',
     ($stateProvider, $urlRouterProvider, URLS_REDIRECTED_TO_DEDICATED) => {
-      /*
-            * ALL DOM
-            */
+      /**
+       * ALL DOM
+       */
       $stateProvider.state('app.alldom', {
         url: '/configuration/all_dom/:allDom/:productId',
         templateUrl: 'domain/domain.html',
@@ -172,7 +262,7 @@ angular
             'Navigator',
             '$rootScope',
             (Navigator, $rootScope) => {
-              $rootScope.currentSectionInformation = 'all_dom';
+              _.set($rootScope, 'currentSectionInformation', 'all_dom');
               return Navigator.setNavigationInformation({
                 leftMenuVisible: true,
                 configurationSelected: true,
@@ -192,7 +282,7 @@ angular
             '$location',
             ($window, constants, $location) => {
               const lastPartOfUrl = $location.url().substring(1);
-              $window.location = `${constants.MANAGER_URLS.dedicated}${lastPartOfUrl}`;
+              _.set($window, 'location', `${constants.MANAGER_URLS.dedicated}${lastPartOfUrl}`);
             },
           ]);
         })
@@ -345,7 +435,7 @@ angular
     '$rootScope',
     ($rootScope) => {
       $rootScope.$on('$locationChangeStart', () => {
-        delete $rootScope.isLeftMenuVisible;
+        delete $rootScope.isLeftMenuVisible; // eslint-disable-line
       });
     },
   ])
@@ -366,7 +456,6 @@ angular
     ($translate, $translatePartialLoader) => {
       $translatePartialLoader.addPart('core');
       $translatePartialLoader.addPart('double-authentication');
-      $translatePartialLoader.addPart('node_modules/ovh-angular-otrs/dist');
       const selectedLanguageValue = $translate.use();
 
       if (_(moment).isObject() && _(selectedLanguageValue).isString()) {
@@ -382,12 +471,11 @@ angular
     },
   ])
   .run((editableOptions, editableThemes) => {
-    editableOptions.theme = 'default';
+    _.set(editableOptions, 'theme', 'default');
 
     // overwrite submit button template
-    editableThemes.default.submitTpl = ['<button style="background:none;border:none" type="submit">', '<i class="fa fa-check green"></i>', '</button>'].join('');
-
-    editableThemes.default.cancelTpl = ['<button style="background:none;border:none" ng-click="$form.$cancel()">', '<i class="fa fa-times red"></i>', '</button>'].join('');
+    _.set(editableThemes, 'default.submitTpl', ['<button style="background:none;border:none" type="submit">', '<i class="fa fa-check green"></i>', '</button>'].join(''));
+    _.set(editableThemes, 'default.cancelTpl', ['<button style="background:none;border:none" ng-click="$form.$cancel()">', '<i class="fa fa-times red"></i>', '</button>'].join(''));
   })
   .factory('translateInterceptor', ($q) => {
     const regexp = new RegExp(/Messages\w+\.json$/i);
@@ -401,7 +489,7 @@ angular
     };
   })
   .factory('translateMissingTranslationHandler', $sanitize => translationId => $sanitize(translationId))
-  .config(($translateProvider, constants) => {
+  .config((LANGUAGES, $translateProvider) => {
     let defaultLanguage = 'fr_FR';
 
     if (localStorage['univers-selected-language']) {
@@ -410,12 +498,7 @@ angular
       localStorage['univers-selected-language'] = defaultLanguage;
     }
 
-    $translateProvider.useLoader('$translatePartialLoader', {
-      urlTemplate(part, lang) {
-        return constants.prodMode ? `${part}/translations/Messages_${lang}.json` : `app/${part}/translations/Messages_${lang}.json`;
-      },
-    });
-
+    $translateProvider.useLoader('asyncLoader');
     $translateProvider.useMissingTranslationHandler('translateMissingTranslationHandler');
     $translateProvider.useLoaderCache(true);
     $translateProvider.useSanitizeValueStrategy('sceParameters');
@@ -453,7 +536,7 @@ angular
     ouiStepperConfiguration,
   ) => {
     const removeHook = $transitions.onSuccess({}, () => {
-      ouiCriteriaAdderConfiguration.translations = {
+      _.set(ouiCriteriaAdderConfiguration, 'translations', {
         column_label: $translate.instant('common_criteria_adder_column_label'),
         operator_label: $translate.instant('common_criteria_adder_operator_label'),
 
@@ -483,13 +566,13 @@ angular
 
         value_label: $translate.instant('common_criteria_adder_value_label'),
         submit_label: $translate.instant('common_criteria_adder_submit_label'),
-      };
+      });
 
-      ouiDatagridConfiguration.translations = {
+      _.set(ouiDatagridConfiguration, 'translations', {
         emptyPlaceholder: $translate.instant('common_datagrid_nodata'),
-      };
+      });
 
-      ouiFieldConfiguration.translations = {
+      _.set(ouiFieldConfiguration, 'translations', {
         errors: {
           required: $translate.instant('common_field_error_required'),
           number: $translate.instant('common_field_error_number'),
@@ -500,9 +583,9 @@ angular
           maxlength: $translate.instant('common_field_error_maxlength', { maxlength: '{{maxlength}}' }),
           pattern: $translate.instant('common_field_error_pattern'),
         },
-      };
+      });
 
-      ouiNavbarConfiguration.translations = {
+      _.set(ouiNavbarConfiguration, 'translations', {
         notification: {
           errorInNotification: $translate.instant('common_navbar_notification_error_in_notification'),
           errorInNotificationDescription: $translate.instant('common_navbar_notification_error_in_notification_description'),
@@ -511,9 +594,9 @@ angular
           noNotification: $translate.instant('common_navbar_notification_none'),
           noNotificationDescription: $translate.instant('common_navbar_notification_none_description'),
         },
-      };
+      });
 
-      ouiPaginationConfiguration.translations = {
+      _.set(ouiPaginationConfiguration, 'translations', {
         resultsPerPage: $translate.instant('common_pagination_resultsperpage'),
         ofNResults: $translate.instant('common_pagination_ofnresults')
           .replace('TOTAL_ITEMS', '{{totalItems}}'),
@@ -522,17 +605,16 @@ angular
           .replace('PAGE_COUNT', '{{pageCount}}'),
         previousPage: $translate.instant('common_pagination_previous'),
         nextPage: $translate.instant('common_pagination_next'),
-      };
+      });
 
-      ouiStepperConfiguration.translations = {
+      _.set(ouiStepperConfiguration, 'translations', {
         optionalLabel: $translate.instant('common_stepper_optional_label'),
         modifyThisStep: $translate.instant('common_stepper_modify_this_step'),
         skipThisStep: $translate.instant('common_stepper_skip_this_step'),
         nextButtonLabel: $translate.instant('common_stepper_next_button_label'),
         submitButtonLabel: $translate.instant('common_stepper_submit_button_label'),
-      };
+      });
 
       removeHook();
     });
   });
-/* eslint-enable no-param-reassign */
