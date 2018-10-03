@@ -45,7 +45,7 @@ import 'script-loader!ovh-angular-q-allsettled/dist/ovh-angular-q-allsettled.min
 import 'script-loader!ovh-angular-http/dist/ovh-angular-http.js';
 import 'script-loader!df-tab-menu/build/df-tab-menu.min.js';
 import 'script-loader!ovh-angular-swimming-poll/dist/ovh-angular-swimming-poll.min.js';
-import 'script-loader!validator-js/src/validator.js';
+import 'script-loader!validator/validator.min.js';
 import 'script-loader!ovh-angular-export-csv/dist/ovh-angular-export-csv.js';
 import 'script-loader!@bower_components/angular-vs-repeat/src/angular-vs-repeat.min.js';
 import 'script-loader!ng-at-internet/dist/ng-at-internet.min.js';
