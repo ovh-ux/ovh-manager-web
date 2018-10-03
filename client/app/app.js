@@ -452,8 +452,8 @@ angular
     },
   ])
   .run([
-    '$translate', '$translatePartialLoader',
-    ($translate, $translatePartialLoader) => {
+    '$translate',
+    ($translate) => {
       const selectedLanguageValue = $translate.use();
 
       if (_(moment).isObject() && _(selectedLanguageValue).isString()) {
