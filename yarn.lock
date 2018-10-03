@@ -980,9 +980,9 @@
     webpackbar "^2.6.3"
 
 "@ovh-ux/ovh-utils-angular@^13.0.0":
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/ovh-utils-angular/-/ovh-utils-angular-13.0.0.tgz#8e825b3d8f81d80db7f48e026c66de2056e893dc"
-  integrity sha512-XUw374AfpI/Vw3VXY8hVrVz8hyZxdLbHWsPdbYrOiRkY+VOj0/lG3Ot5hc29PMb9DGB8/jpH7Whxq6jGJLcO6g==
+  version "13.0.2"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ovh-utils-angular/-/ovh-utils-angular-13.0.2.tgz#02fa3eb989537a0aeee7888d12443cca0ff552d6"
+  integrity sha512-+dHN29j7xwU/xx2hfQeZYQad003JIe43FhyZfUjZ6mw/oRPt1Sg1Gi6YSmSKLI6UkmJ0Af9d6NEglP2GLK+Rdg==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -7772,21 +7772,40 @@ ovh-manager-webfont@ovh-ux/ovh-manager-webfont#^1.0.1:
   version "1.0.2"
   resolved "https://codeload.github.com/ovh-ux/ovh-manager-webfont/tar.gz/1d759c46c8c3ead4bc5e887a2336abd124a17c58"
 
-ovh-module-emailpro@ovh-ux/ovh-module-emailpro#develop:
-  version "6.0.0"
-  resolved "https://codeload.github.com/ovh-ux/ovh-module-emailpro/tar.gz/81ed196368219390e7a6b357dd5eb1700ee1e9c8"
+ovh-module-emailpro@ovh-ux/ovh-module-emailpro#^7.0.0:
+  version "7.0.0"
+  resolved "https://codeload.github.com/ovh-ux/ovh-module-emailpro/tar.gz/1eb999cb63159f171b65278cc10b5807f7663ca8"
+  dependencies:
+    "@ckeditor/ckeditor5-build-classic" "^11.0.1"
+    angular "~1.6.10"
+    lodash "~3.9.3"
+    moment "^2.16.0"
+    punycode "^1.2.4"
 
-ovh-module-exchange@ovh-ux/ovh-module-exchange#develop:
-  version "8.0.8"
-  resolved "https://codeload.github.com/ovh-ux/ovh-module-exchange/tar.gz/8b60aa027eda32ba642a2ea61e397839773df7be"
+ovh-module-exchange@ovh-ux/ovh-module-exchange#^9.0.0:
+  version "9.0.0"
+  resolved "https://codeload.github.com/ovh-ux/ovh-module-exchange/tar.gz/0a5b0c3560f498d52caa5ca5384cfa62af213e8c"
+  dependencies:
+    "@ckeditor/ckeditor5-build-classic" "^11.0.1"
+    lodash "~3.9.3"
 
-ovh-module-office@ovh-ux/ovh-module-office#develop:
-  version "6.0.0"
-  resolved "https://codeload.github.com/ovh-ux/ovh-module-office/tar.gz/da423175c64bdf0de51933439992504e5101905e"
+ovh-module-office@ovh-ux/ovh-module-office#^7.0.0:
+  version "7.0.0"
+  resolved "https://codeload.github.com/ovh-ux/ovh-module-office/tar.gz/3bcb32c0aab5be0623bf8ef8c5ab38cb1792c467"
+  dependencies:
+    angular "~1.6.10"
+    jsurl "^0.1.4"
+    lodash "~3.9.3"
+    moment "^2.16.0"
 
-ovh-module-sharepoint@ovh-ux/ovh-module-sharepoint#develop:
-  version "6.0.0"
-  resolved "https://codeload.github.com/ovh-ux/ovh-module-sharepoint/tar.gz/10b2f576eb8f3983ab06fdbacda37eca74dbe919"
+ovh-module-sharepoint@ovh-ux/ovh-module-sharepoint#^7.0.0:
+  version "7.0.0"
+  resolved "https://codeload.github.com/ovh-ux/ovh-module-sharepoint/tar.gz/a1200a2d42755d7e63e9e91fcb7155abed787a25"
+  dependencies:
+    angular "~1.6.10"
+    filesize "^3.5.10"
+    jsurl "^0.1.4"
+    lodash "~2.4.1"
 
 ovh-ui-angular@ovh-ux/ovh-ui-angular#^2.7.x:
   version "2.21.0"

@@ -1,3 +1,13 @@
+<a name="13.6.4"></a>
+## [13.6.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.6.3...v13.6.4) (2018-10-02)
+
+
+### Features
+
+* **configuration:** display Summit banner ([dc9d427](https://github.com/ovh-ux/ovh-manager-web/commit/dc9d427))
+
+
+
 <a name="13.6.3"></a>
 ## [13.6.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.6.2...v13.6.3) (2018-09-28)
 
