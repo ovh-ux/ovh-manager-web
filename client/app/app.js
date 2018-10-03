@@ -456,6 +456,7 @@ angular
     ($translate, $translatePartialLoader) => {
       $translatePartialLoader.addPart('core');
       $translatePartialLoader.addPart('double-authentication');
+      $translatePartialLoader.addPart('bower_components/ovh-angular-otrs/dist');
       const selectedLanguageValue = $translate.use();
 
       if (_(moment).isObject() && _(selectedLanguageValue).isString()) {
@@ -489,7 +490,7 @@ angular
     };
   })
   .factory('translateMissingTranslationHandler', $sanitize => translationId => $sanitize(translationId))
-  .config((LANGUAGES, $translateProvider) => {
+  .config(($translateProvider) => {
     let defaultLanguage = 'fr_FR';
 
     if (localStorage['univers-selected-language']) {

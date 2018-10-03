@@ -1,16 +1,20 @@
 angular.module('App').controller(
   'ConfigurationCtrl',
   class ConfigurationCtrl {
-    constructor($scope, $route, Products, constants, User) {
-      this.$scope = $scope;
+    constructor($route, $scope, $translate, constants, Products, User) {
       this.$route = $route;
-      this.Products = Products;
+      this.$scope = $scope;
+      this.$translate = $translate;
+
       this.constants = constants;
+      this.Products = Products;
       this.User = User;
     }
 
     $onInit() {
       this.guides = this.constants.TOP_GUIDES;
+
+      this.buildSummitData();
 
       this.User.getUser()
         .then((user) => {
@@ -29,6 +33,10 @@ angular.module('App').controller(
 
       this.unSelectProduct();
       this.selectTypeOfGuide('domainHosting');
+    }
+
+    buildSummitData() {
+      this.localeForSummitBanner = this.$translate.use().split('_')[0] === 'fr' ? 'fr' : 'en';
     }
 
     unSelectProduct() {
