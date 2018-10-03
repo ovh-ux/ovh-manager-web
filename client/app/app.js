@@ -454,9 +454,6 @@ angular
   .run([
     '$translate', '$translatePartialLoader',
     ($translate, $translatePartialLoader) => {
-      $translatePartialLoader.addPart('core');
-      $translatePartialLoader.addPart('double-authentication');
-      $translatePartialLoader.addPart('bower_components/ovh-angular-otrs/dist');
       const selectedLanguageValue = $translate.use();
 
       if (_(moment).isObject() && _(selectedLanguageValue).isString()) {
