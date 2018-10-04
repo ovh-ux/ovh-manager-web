@@ -1,5 +1,6 @@
 <div id="main-container" data-ng-controller="UserCtrl">
     <a
+        data-ng-if="ConfigurationCtrl.shouldDisplayBanner"
         data-ng-href="https://summit.ovh.com/index.php/{{:: ConfigurationCtrl.localeForSummitBanner }}/subscription"
         target="_blank"
         rel="noopener"
