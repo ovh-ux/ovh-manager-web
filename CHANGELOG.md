@@ -1,3 +1,14 @@
+<a name="13.7.1"></a>
+## [13.7.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.0...v13.7.1) (2018-10-04)
+
+
+### Bug Fixes
+
+* **banner:** display only for some subsidiaries ([0845715](https://github.com/ovh-ux/ovh-manager-web/commit/0845715))
+* update gitignore file ([a65c3d5](https://github.com/ovh-ux/ovh-manager-web/commit/a65c3d5))
+
+
+
 <a name="13.7.0"></a>
 # [13.7.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.6.4...v13.7.0) (2018-10-03)
 
