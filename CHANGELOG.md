@@ -1,3 +1,13 @@
+<a name="13.7.2"></a>
+## [13.7.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.1...v13.7.2) (2018-10-05)
+
+
+### Bug Fixes
+
+* remove border top of the summit banner ([cf33b3a](https://github.com/ovh-ux/ovh-manager-web/commit/cf33b3a))
+
+
+
 <a name="13.7.1"></a>
 ## [13.7.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.0...v13.7.1) (2018-10-04)
 
