@@ -29,6 +29,7 @@
     "lint": "run-p lint:css lint:js",
     "lint:css": "stylelint 'client/**/*.less' --fix",
     "lint:js": "eslint --quiet --fix ./client",
+    "clean": "npx rimraf dist node_modules",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "postversion": "git push && git push --tags"
   },
