@@ -111,16 +111,18 @@
                               data-tooltip-enable="{{!operation.canCancel && !operation.canRelaunch && !operation.canAccelerate}}"
                               data-tooltip-append-to-body="true"
                               data-tooltip-placement="left">
-                            <button class="btn btn-icon" type="button"
-                                    data-linkedpopover="domain-operation/domain-operation.popover.html"
-                                    data-linkedpopover-placement="left"
-                                    data-linkedpopover-remote="true"
-                                    data-linkedpopover-single="true"
-                                    data-linkedpopover-title="{{ 'common_actions' | translate }}"
-                                    data-ng-disabled="!operation.canCancel && !operation.canRelaunch && !operation.canAccelerate && operation.function !== 'DomainIncomingTransfer'"
-                                    data-ng-attr-title="{{(operation.canCancel || operation.canRelaunch || operation.canAccelerate) && ('common_actions' | translate) || '' }}">
-                                <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                            </button>
+                            <oui-action-menu data-compact 
+                                             data-align="end"
+                                             data-disabled="!operation.canCancel && !operation.canRelaunch && !operation.canAccelerate && operation.function !== 'DomainIncomingTransfer'">
+                                <oui-action-menu-item data-on-click="setAction('domain-operation/update/domain-operation-update', operation)"
+                                                      data-disabled="!operation.canCancel && !operation.canRelaunch && !operation.canAccelerate">
+                                    <span data-translate="domains_operations_tab_popover_update"></span>
+                                </oui-action-menu-item>
+                                <oui-action-menu-item data-ng-href="#/configuration/domain_operation/progress/{{operation.id}}"
+                                                      data-ng-if="operation.function === 'DomainIncomingTransfer'">
+                                    <span data-translate="domains_operations_tab_popover_progress"></span>
+                                </oui-action-menu-item>
+                            </oui-action-menu>
                         </span>
                     </td>
                 </tr>
