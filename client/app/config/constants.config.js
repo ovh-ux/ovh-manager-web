@@ -1963,7 +1963,6 @@ module.exports = {
                 cs_CZ : "https://www.ovh.com/auth/signup/#/?ovhCompany=ovh&ovhSubsidiary=CZ"
             }
         },
-        changelog_url : "engine/2api/changelog",
         flags_options : [
             { value: 256, label: "256 - Zone Signing Key (ZSK)" },
             { value: 257, label: "257 - Key Signing Key (KSK)" }
@@ -2204,7 +2203,6 @@ module.exports = {
                 cs_CZ : "https://www.ovh.com/auth/signup/#/?ovhCompany=ovh&ovhSubsidiary=CZ"
             }
         },
-        changelog_url: "engine/2api/changelog/",
         flags_options: [
             { value: 256, label: "256 - Zone Signing Key (ZSK)" },
             { value: 257, label: "257 - Key Signing Key (KSK)" }
