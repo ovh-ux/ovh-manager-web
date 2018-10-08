@@ -260,16 +260,17 @@
                                                         data-on-click="setAction('ssl/delete/hosting-ssl-delete', $ctrl.sslCertificate)"></oui-action-menu-item>
                                                 </oui-action-menu>
                                             </div>
-                                            <button class="btn btn-default ml-auto mb-auto text-wrap"
-                                                    type="button"
-                                                    data-translate="hosting_dashboard_ssl_report_button"
-                                                    data-ng-click="setAction('ssl/details/hosting-ssl-details', hosting)"
-                                                    data-ng-if="$ctrl.hasSSLCertificateCreationReport()"></button>
                                         </div>
                                         <div class="text-center" data-ng-if="$ctrl.isRetrievingSSLCertificate">
                                             <oui-spinner></oui-spinner>
                                         </div>
                                     </div>
+                                    <oui-action-menu data-compact data-align="end"
+                                                     data-ng-if="$ctrl.hasSSLCertificateCreationReport()">
+                                        <oui-action-menu-item data-on-click="setAction('ssl/details/hosting-ssl-details', hosting)">
+                                            <span data-translate="hosting_dashboard_ssl_report_button"></span>
+                                        </oui-action-menu-item>
+                                    </oui-action-menu>
                                 </li>
                                 <li class="oui-tile__item">
                                     <div class="oui-tile__definition">

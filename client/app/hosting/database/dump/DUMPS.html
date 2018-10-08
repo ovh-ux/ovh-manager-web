@@ -1,12 +1,8 @@
 <div data-ng-controller="DatabaseDumpsCtrl as ctrlDumps">
     <div data-ovh-alert="{{alerts.main}}"></div>
-
-    <button class="oui-button oui-button_link oui-button_icon-left" type="button"
-            data-ng-click="goToList()">
-        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+    <oui-back-button data-on-click="goToList()">
         <span data-translate="common_back"></span>
-    </button>
-
+    </oui-back-button>
     <div>
         <span data-translate="database_tabs_dumps_change"></span>
         <strong data-ng-bind="bdd.name"></strong>
