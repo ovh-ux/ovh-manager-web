@@ -1,3 +1,15 @@
+<a name="13.7.3"></a>
+## [13.7.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.2...v13.7.3) (2018-10-08)
+
+
+### Bug Fixes
+
+* **domain.operation.update:** text not interpreted unnecessary ([d9d1586](https://github.com/ovh-ux/ovh-manager-web/commit/d9d1586))
+* **private.database.state:** dont display menu when expired ([ef40b14](https://github.com/ovh-ux/ovh-manager-web/commit/ef40b14))
+* set correct relative path to background images ([4e9f0e9](https://github.com/ovh-ux/ovh-manager-web/commit/4e9f0e9))
+
+
+
 <a name="13.7.2"></a>
 ## [13.7.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.1...v13.7.2) (2018-10-05)
 
