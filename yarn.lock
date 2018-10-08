@@ -948,9 +948,9 @@
   integrity sha512-yprFYuno9FtNsSHVlSWd+nRlmGoAbqbeCwOryP6sC/zoCjhpArcRMYp19EvpSUSizJAlsXEwJv+wcWS9XaXdMw==
 
 "@ovh-ux/manager-webpack-config@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-webpack-config/-/manager-webpack-config-2.3.1.tgz#7c83264a8729992da1c7211aa58ed1b6921ec759"
-  integrity sha512-BxoziyJaCeP9ELch1YN1nyJmCowALzuP5beHBLZiwgnFGKRjvn1JvXo5l6zXJ0KYJimfjELOYA2RHkziWRDhFw==
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-webpack-config/-/manager-webpack-config-2.3.2.tgz#44d4f714e1369a6643b4c548b1cfe88938a46ce2"
+  integrity sha512-nMF8pwCn+MhKGC9b8BeJtO+asguFelDCrzVduJRzsF6YpclagCDdkfR0+UKSc2Gq3YxFu3idMhB95Wil57pLiQ==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/generator" "^7.0.0"
@@ -984,6 +984,7 @@
     sass-loader "^7.1.0"
     script-loader "^0.7.2"
     style-loader "^0.23.0"
+    time-fix-plugin "^2.0.3"
     url-loader "^1.1.1"
     webpack "^4.5.0"
     webpack-bundle-analyzer "^2.13.1"
@@ -10125,6 +10126,11 @@ thunky@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/thunky/-/thunky-1.0.2.tgz#a862e018e3fb1ea2ec3fce5d55605cf57f247371"
   integrity sha1-qGLgGOP7HqLsP85dVWBc9X8kc3E=
+
+time-fix-plugin@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/time-fix-plugin/-/time-fix-plugin-2.0.3.tgz#b6b1ead519099bc621e28edb77dac7531918b7e1"
+  integrity sha512-5StGdiXCiBsq2+RdBQ0NrunFeKqVX0f2Myn8s1YqOxRS+kmuiHcdpPm27ucbM6FYawBKGTOOYxPnqxIBZyiqEg==
 
 timers-browserify@^2.0.4:
   version "2.0.10"
