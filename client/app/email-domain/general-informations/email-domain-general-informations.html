@@ -13,8 +13,8 @@
                                         <strong class="d-block"
                                                 data-translate="email_tab_domain_status"></strong>
                                         <oui-spinner data-size="s" data-ng-if="ctrlTabGeneralInformations.loading.domain"></oui-spinner>
-                                        <span class="label"
-                                              data-ng-class="{'label-success': ctrlTabGeneralInformations.domain.status === 'ok', 'label-error': ctrlTabGeneralInformations.domain.status !== 'ok'}"
+                                        <span class="oui-status"
+                                              data-ng-class="{'oui-status_success': ctrlTabGeneralInformations.domain.status === 'ok', 'oui-status_error': ctrlTabGeneralInformations.domain.status !== 'ok'}"
                                               data-ng-bind="'email_tab_domain_status_' + ctrlTabGeneralInformations.domain.status | translate"
                                               data-ng-if="!ctrlTabGeneralInformations.loading.domain && ctrlTabGeneralInformations.domain.status"></span>
                                         <span data-ng-if="!ctrlTabGeneralInformations.loading.domain && !ctrlTabGeneralInformations.domain.status">-</span>
