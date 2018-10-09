@@ -48,10 +48,6 @@ angular
   ])
   .constant('constants', {
     prodMode: config.prodMode,
-    availableViewMode: {
-      views: ['simple', 'expert'],
-      defaultViewMode: 'simple',
-    },
     aapiRootPath: config.aapiRootPath,
     target: config.target,
     renew: config.constants.RENEW_URL,
@@ -69,7 +65,6 @@ angular
     stats_logs: config.constants.STATS_LOGS,
     stats_logs_gra: config.constants.STATS_LOGS_GRA,
     aapiHeaderName: 'X-Ovh-Session',
-    changelog_url: config.constants.changelog_url,
     flags_options: config.constants.flags_options,
     algorithm_options: config.constants.algorithm_options,
     MANAGER_URLS: config.constants.MANAGER_URLS,
@@ -104,44 +99,12 @@ angular
       return config;
     },
   }))
-  /* @TODO
-  .factory('ravenInterceptor', [
-    '$q',
-    'Raven',
-    ($q, Raven) => ({
-      responseError: (response) => {
-        if (response.status === 429 || response.status >= 500) {
-          Raven.captureMessage(
-            [response.status, response.config.url, JSON.stringify(response.data)].join(' - '),
-            {
-              extra: {
-                'x-ovh-queryid': response.headers('x-ovh-queryid'),
-              },
-            },
-          );
-        }
-        return $q.reject(response);
-      },
-    }),
-  ])
-  */
   .config([
     '$qProvider',
     ($qProvider) => {
       $qProvider.errorOnUnhandledRejections(false);
     },
   ])
-  /* @TODO
-  .config([
-    '$httpProvider',
-    'constants',
-    ($httpProvider, constants) => {
-      if (constants.prodMode) {
-        $httpProvider.interceptors.push('ravenInterceptor');
-      }
-    },
-  ])
-  */
   .config([
     'ovh-proxy-request.proxyProvider',
     (proxy) => {
