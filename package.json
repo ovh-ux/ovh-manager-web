@@ -30,7 +30,7 @@
     "lint:css": "stylelint 'client/**/*.less' --fix",
     "lint:js": "eslint --quiet --fix ./client",
     "clean": "npx rimraf .cache-loader dist node_modules",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "version": "npx conventional-changelog-cli -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "postversion": "git push && git push --tags"
   },
   "lint-staged": {
@@ -162,7 +162,6 @@
     "@ovh-ux/manager-webpack-config": "^2.3.1",
     "babel-eslint": "^8.2.6",
     "babel-plugin-angularjs-annotate": "^0.9.0",
-    "conventional-changelog-cli": "^2.0.5",
     "eslint": "^5.1.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-angular": "^3.3.0",
