@@ -124,14 +124,18 @@
                                 </button>
                             </td>
                             <td class="text-center">
-                                <button class="btn btn-icon" type="button" aria-label="{{ 'common_actions' | translate }}"
-                                        data-linkedpopover="email-domain/mailing-list/email-domain-mailing-list.popover.html"
-                                        data-linkedpopover-placement="left"
-                                        data-linkedpopover-remote="true"
-                                        data-linkedpopover-single="true"
-                                        data-linkedpopover-title="{{ 'common_actions' | translate }}">
-                                    <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                                </button>
+                                <oui-action-menu data-compact 
+                                                 data-align="end">
+                                    <oui-action-menu-item data-on-click="setAction('email-domain/mailing-list/update/email-domain-mailing-list-update', mailingList)">
+                                        <span data-translate="mailing_list_tab_popover_update"></span>
+                                    </oui-action-menu-item>
+                                    <oui-action-menu-item data-on-click="setAction('email-domain/mailing-list/delete/email-domain-mailing-list-delete', mailingList)">
+                                        <span data-translate="mailing_list_tab_popover_delete"></span>
+                                    </oui-action-menu-item>
+                                    <oui-action-menu-item data-on-click="setAction('email-domain/mailing-list/send-list-by-email/email-domain-mailing-list-send-list-by-email', mailingList)">
+                                        <span data-translate="mailing_list_tab_subscribers_send_list"></span>
+                                    </oui-action-menu-item>
+                                </oui-action-menu>
                             </td>
                         </tr>
                     </tbody>
