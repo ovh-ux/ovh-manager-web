@@ -48,13 +48,15 @@
                                                 <span data-ng-bind="'email_tab_domain_dns_filter_' + (ctrlTabGeneralInformations.dnsFilter || 'NO_FILTERING') | translate"
                                                       data-ng-if="!ctrlTabGeneralInformations.loading.domain"></span>
                                             </div>
-                                            <button class="btn btn-default ml-auto my-auto text-wrap" type="button"
-                                                    data-translate="email_tab_domain_dns_filter_edit"
-                                                    data-ng-click="setAction('email-domain/email/filter/edit-dns/email-domain-email-filter-edit-dns', ctrlTabGeneralInformations.dnsFilter)"
-                                                    data-ng-if="!ctrlTabGeneralInformations.loading.domain">
-                                            </button>
                                         </div>
                                     </div>
+                                    <oui-action-menu data-compact 
+                                                     data-align="end"
+                                                     data-ng-if="!ctrlTabGeneralInformations.loading.domain">
+                                        <oui-action-menu-item data-on-click="setAction('email-domain/email/filter/edit-dns/email-domain-email-filter-edit-dns', ctrlTabGeneralInformations.dnsFilter)">
+                                            <span data-translate="email_tab_domain_dns_filter_edit"></span>
+                                        </oui-action-menu-item>
+                                    </oui-action-menu>
                                 </li>
                                 <li class="oui-tile__item">
                                     <div class="oui-tile__definition">
