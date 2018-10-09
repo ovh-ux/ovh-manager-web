@@ -1,3 +1,13 @@
+<a name="13.7.4"></a>
+## [13.7.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.3...v13.7.4) (2018-10-09)
+
+
+### Bug Fixes
+
+* **ie11:** app will now display correctly ([3bf01d7](https://github.com/ovh-ux/ovh-manager-web/commit/3bf01d7))
+
+
+
 <a name="13.7.3"></a>
 ## [13.7.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.2...v13.7.3) (2018-10-08)
 
