@@ -3,11 +3,9 @@
         <div class="col-md-9">
             <div data-ovh-alert="{{alerts.main}}"></div>
 
-            <button class="oui-button oui-button_link oui-button_icon-left" type="button"
-                    data-ng-click="ctrlTabView.setCurrentView('mailingListsView')">
-                <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+            <oui-back-button data-on-click="ctrlTabView.setCurrentView('mailingListsView')">
                 <span data-translate="common_back"></span>
-            </button>
+            </oui-back-button>
             <h2>
                 <span data-ng-bind-html="(ctrlModerators.loading.moderators
                       ? 'mailing_list_tab_moderators_management_title'
