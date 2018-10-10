@@ -13,15 +13,14 @@
             <span data-ng-bind="($row.date || $row.timestamp) | date:'medium'"></span>
         </oui-column>
         <oui-column data-title="'email_tab_TASK_table_state' | translate">
-            <span class="label"
+            <span class="oui-status"
                   data-ng-if="$row.status"
                   data-ng-class="{
-                    'label-info': $row.status !== 'ERROR' && $row.status !== 'CANCELLED' && $row.status !== 'DONE',
-                    'label-danger': $row.status === 'ERROR',
-                    'label-default': $row.status === 'CANCELLED',
-                    'label-success': $row.status === 'DONE' }"
+                    'oui-status_info': $row.status !== 'ERROR' && $row.status !== 'DONE',
+                    'oui-status_error': $row.status === 'ERROR',
+                    'oui-status_success': $row.status === 'DONE' }"
                   data-ng-bind="'email_tab_TASK_status_' + $row.status | translate"></span>
-            <span class="label label-info"
+            <span class="oui-status oui-status_info"
                   data-ng-if="!$row.status"
                   data-translate="email_tab_TASK_status_DOING"></span>
         </oui-column>

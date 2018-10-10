@@ -1,11 +1,9 @@
 <div data-ng-controller="PrivateDatabaseBDDsExtensionCtrl as extensionCtrl">
     <div data-ovh-alert="{{alerts.main}}"></div>
 
-    <button class="oui-button oui-button_link oui-button_icon-left" type="button"
-            data-ng-click="goToList()">
-        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+    <oui-back-button data-on-click="goToList()">
         <span data-translate="common_back"></span>
-    </button>
+    </oui-back-button>
 
     <h2 data-ng-bind-html="'privateDatabase_tabs_list_extensions_info' | translate: { t0: '<strong>' + extensionCtrl.bdd.databaseName + '</strong>' }"></h2>
 

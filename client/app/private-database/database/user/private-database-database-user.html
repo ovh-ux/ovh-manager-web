@@ -1,11 +1,9 @@
 <div data-ng-controller="PrivateDatabaseUserDatabaseCtrl as privateDatabaseUserDatabaseCtrl">
     <div data-ovh-alert="{{alerts.main}}"></div>
 
-    <button class="oui-button oui-button_link oui-button_icon-left" type="button"
-            data-ng-click="goToList()">
-        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+    <oui-back-button data-on-click="goToList()">
         <span data-translate="common_back"></span>
-    </button>
+    </oui-back-button>
     <h2>
         <span data-translate="privateDatabase_tabs_users_database_name"></span>
         <strong data-ng-bind="bdd.databaseName"></strong>

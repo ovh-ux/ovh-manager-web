@@ -2,11 +2,9 @@
     <div class="col-md-9">
         <div data-ovh-alert="{{alerts.main}}"></div>
 
-        <button class="oui-button oui-button_link oui-button_icon-left" type="button"
-                data-ng-click="ctrlEmailDelegate.resetInitialView()">
-            <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+        <oui-back-button data-on-click="ctrlEmailDelegate.resetInitialView()">
             <span data-translate="common_back"></span>
-        </button>
+        </oui-back-button>
         <h2 data-translate="email_tab_responders_management_heading"></h2>
 
         <div class="table-responsive">
@@ -52,21 +50,21 @@
                         <td class="text-center" colspan="2"
                             data-ng-if="!responder.to && !responder.from">permanent</td>
                         <td class="text-center">
-                            <span class="label" data-ng-class="{
-                                    'label-success': !ctrlEmailDelegateResponder.constructor.isExpired(responder),
-                                    'label-danger': ctrlEmailDelegateResponder.constructor.isExpired(responder)}"
+                            <span class="oui-status" data-ng-class="{
+                                    'oui-status_success': !ctrlEmailDelegateResponder.constructor.isExpired(responder),
+                                    'oui-status_error': ctrlEmailDelegateResponder.constructor.isExpired(responder)}"
                                   data-ng-bind="'email_tab_responders_status_expired_' + ctrlEmailDelegateResponder.constructor.isExpired(responder) | translate"></span>
                         </td>
                         <td data-ng-bind="::responder.copyTo"></td>
                         <td class="text-center">
-                            <button class="btn btn-icon" type="button"
-                                    data-linkedpopover="email-domain/delegate/responder/email-domain-delegate-responder.popover.html"
-                                    data-linkedpopover-placement="left"
-                                    data-linkedpopover-remote="true"
-                                    data-linkedpopover-single="true"
-                                    data-linkedpopover-title="{{ 'common_actions' | translate }}">
-                                <span class="oui-icon oui-icon-gear_line oui-icon_small" aria-hidden="true"></span>
-                            </button>
+                            <oui-action-menu data-compact data-align="end">
+                                <oui-action-menu-item data-on-click="setAction('email-domain/email/responder/update/email-domain-email-responder-update', { responder: responder, delegate: true })">
+                                    <span data-translate="email_tab_popover_responder_update"></span>
+                                </oui-action-menu-item>
+                                <oui-action-menu-item data-on-click="setAction('email-domain/email/responder/delete/email-domain-email-responder-delete', { responder: responder, delegate: true })">
+                                    <span data-translate="email_tab_popover_responder_delete"></span>
+                                </oui-action-menu-item>
+                            </oui-action-menu>
                         </td>
                     </tr>
                 </tbody>

@@ -2,11 +2,9 @@
     <div class="col-md-9">
         <div data-ovh-alert="{{alerts.main}}"></div>
 
-        <button class="oui-button oui-button_link oui-button_icon-left" type="button"
-                data-ng-click="ctrlEmailDomainEmail.resetInitialView()">
-            <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+        <oui-back-button data-on-click="ctrlEmailDomainEmail.resetInitialView()">
             <span data-translate="common_back"></span>
-        </button>
+        </oui-back-button>
         <h2>
             <span data-translate="email_tab_filters_management_heading"></span>
             <strong data-ng-bind="ctrlEmailDomainEmailFilter.currentAccount.accountName"></strong>
@@ -17,9 +15,9 @@
             <oui-column data-title="'email_tab_table_header_filter_name' | translate" data-property="name" data-sortable="asc"></oui-column>
             <oui-column data-title="'email_tab_table_header_filter_priority' | translate" data-property="priority" data-sortable></oui-column>
             <oui-column data-title="'emails_common_status' | translate">
-                <span class="label"
+                <span class="oui-status"
                       data-ng-show="$row.active"
-                      data-ng-class="{'label-success': $row.active, 'label-danger': !$row.active}"
+                      data-ng-class="{'oui-status_success': $row.active, 'oui-status_error': !$row.active}"
                       data-ng-bind="'email_tab_filters_status_' + $row.active | translate"></span>
             </oui-column>
             <oui-action-menu data-align="end" data-compact>

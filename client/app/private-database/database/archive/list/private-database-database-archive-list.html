@@ -1,22 +1,19 @@
 <div data-ng-controller="PrivateDatabaseArchiveListCtrl as archiveListCtrl">
     <div data-ovh-alert="{{alerts.main}}"></div>
 
-    <button class="oui-button oui-button_link oui-button_icon-left" type="button"
-            data-ng-click="goToList()">
-        <span class="oui-icon oui-icon-chevron-left" aria-hidden="true"></span>
+    <oui-back-button data-on-click="goToList()">
         <span data-translate="common_back"></span>
-    </button>
+    </oui-back-button>
 
     <h2 data-ng-bind-html="'privateDatabase_tabs_dumps_archive_change' | translate: { t0: nbDayToDelete }"></h2>
 
     <oui-datagrid data-rows="archiveListCtrl.deletedDbList">
         <oui-column data-title="'privateDatabase_bdd_name' | translate" data-property="databaseName" data-sortable></oui-column>
         <oui-column data-title="'privateDatabase_bdd_dumps_count' | translate" data-property="dumps.length" data-sortable>
-            <button class="btn btn-xs" type="button"
-                    data-ng-bind="$row.dumps.length"
-                    data-ng-class="{ 'btn-success': $row.dumps.length > 0, '$row-danger': !($row.dumps.length > 0) }"
-                    data-ng-click="goToArchivesDumps($row)">
-            </button>
+            <div class="oui-status"
+                 data-ng-bind="$row.dumps.length"
+                 data-ng-class="{ 'oui-status_success': $row.dumps.length > 0, 'oui-status_error': !($row.dumps.length > 0) }">
+            </div>
         </oui-column>
         <oui-action-menu data-align="end" data-compact>
             <oui-action-menu-item data-text="{{:: 'privateDatabase_action_list_dumps' | translate }}"

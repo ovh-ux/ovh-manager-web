@@ -16,9 +16,8 @@
             class="text-center">
             <span class="oui-status"
                   data-ng-class="{
-                    'oui-status_info': $row.status === 'TODO' || $row.status === 'DOING',
+                    'oui-status_info': $row.status === 'TODO' || $row.status === 'DOING' || $row.status === 'CANCELLED',
                     'oui-status_error': $row.status === 'ERROR',
-                    'oui-status_info': $row.status === 'CANCELLED',
                     'oui-status_success': $row.status === 'DONE'
                   }"
                   data-ng-bind="'domain_tab_TASKS_status_' +  $row.status | translate">
