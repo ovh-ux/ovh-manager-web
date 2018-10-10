@@ -18,8 +18,8 @@
             <oui-column data-title="'email_tab_table_header_filter_name' | translate" data-property="name" data-sortable="asc"></oui-column>
             <oui-column data-title="'email_tab_table_header_filter_priority' | translate" data-property="priority" data-sortable></oui-column>
             <oui-column data-title="'emails_common_status' | translate">
-                <span class="label"
-                      data-ng-class="{'label-success': $row.active, 'label-danger': !$row.active}"
+                <span class="oui-status"
+                      data-ng-class="{'oui-status_success': $row.active, 'oui-status_error': !$row.active}"
                       data-ng-bind="'email_tab_filters_status_' + $row.active | translate"></span>
             </oui-column>
             <oui-action-menu data-align="end" data-compact>
