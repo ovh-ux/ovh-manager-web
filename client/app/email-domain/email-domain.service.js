@@ -288,7 +288,7 @@ angular.module('services').service(
      */
     getFilter(serviceName, accountName, name) {
       return this.OvhHttp.get(
-        `/email/domain/${serviceName}/account/${accountName}/filter/${name}`,
+        `/email/domain/${serviceName}/account/${accountName}/filter/${window.encodeURIComponent(name)}`,
         {
           rootPath: 'apiv6',
         },
