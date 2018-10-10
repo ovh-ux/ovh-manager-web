@@ -1,3 +1,16 @@
+<a name="13.7.5"></a>
+## [13.7.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.4...v13.7.5) (2018-10-10)
+
+
+### Bug Fixes
+
+* **domain:** allow subnet in IPs ([38715ed](https://github.com/ovh-ux/ovh-manager-web/commit/38715ed))
+* **domain.dnssec:** use common_delete ([cb47ad3](https://github.com/ovh-ux/ovh-manager-web/commit/cb47ad3))
+* **domain.tasks:** display oui-status correctly ([d5c2720](https://github.com/ovh-ux/ovh-manager-web/commit/d5c2720))
+* **email.domain:** Filters list ([e76c1b7](https://github.com/ovh-ux/ovh-manager-web/commit/e76c1b7))
+
+
+
 <a name="13.7.4"></a>
 ## [13.7.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.3...v13.7.4) (2018-10-09)
 
