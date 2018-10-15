@@ -41,7 +41,6 @@ import 'script-loader!ovh-angular-pagination-front/dist/ovh-angular-pagination-f
 import 'script-loader!@bower_components/angular-scroll-glue/src/scrollglue.js';
 import 'script-loader!ovh-angular-tail-logs/dist/ovh-angular-tail-logs.min.js';
 import 'script-loader!ovh-angular-proxy-request/dist/ovh-angular-proxy-request.min.js';
-import 'script-loader!ovh-angular-doubleauth-backupcode/dist/ovh-angular-doubleauth-backupcode.min.js';
 import 'script-loader!ovh-angular-q-allsettled/dist/ovh-angular-q-allsettled.min.js';
 import 'script-loader!ovh-angular-http/dist/ovh-angular-http.js';
 import 'script-loader!df-tab-menu/build/df-tab-menu.min.js';

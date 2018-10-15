@@ -34,7 +34,6 @@ angular
     'pascalprecht.translate',
     'ovh-angular-responsive-tabs',
     'ovh-angular-tail-logs',
-    'ovh-angular-doubleauth-backupcode',
     'ovh-angular-otrs',
     'ovh-api-services',
     'ovh-angular-toaster',
