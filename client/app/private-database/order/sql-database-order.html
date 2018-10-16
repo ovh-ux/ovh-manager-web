@@ -139,13 +139,17 @@
                         </div>
                     </div>
 
-                    <div class="alert alert-warning" role="alert"
-                         data-ng-if="$ctrl.isPrivateDb() && $ctrl.selectedHosting && $ctrl.selectedHosting.stillHasFreeDbOffer">
+                    <oui-message type="warning"
+                                 data-ng-if="$ctrl.isPrivateDb() && $ctrl.selectedHosting && $ctrl.selectedHosting.stillHasFreeDbOffer">
                         <h3 class="h5" data-translate="privateDatabase_order_sql_included_title"></h3>
                         <span data-translate="privateDatabase_order_sql_included_info"
-                              data-translate-values="{ t0: $ctrl.selectedHosting.name, t1: $ctrl.makeHostingUrl($ctrl.selectedHosting.name) }">
+                              data-translate-values="{
+                                t0: '<strong>' + $ctrl.selectedHosting.name + '</strong>',
+                              }">
                         </span>
-                    </div>
+                        <a href="{{$ctrl.makeHostingUrl($ctrl.selectedHosting.name)}}"
+                           data-translate="privateDatabase_order_sql_included_link"></a>
+                    </oui-message>
 
                     <div class="loader mt-5 text-center" data-ng-if="$ctrl.loading.durations"></div>
 
