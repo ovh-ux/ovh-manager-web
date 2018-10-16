@@ -1,3 +1,17 @@
+<a name="13.7.6"></a>
+## [13.7.6](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.5...v13.7.6) (2018-10-16)
+
+
+### Bug Fixes
+
+* **email.domain.email.account:** fix indentation issue ([42d88f7](https://github.com/ovh-ux/ovh-manager-web/commit/42d88f7))
+* **hosting.cron:** fix indentation ([c85d593](https://github.com/ovh-ux/ovh-manager-web/commit/c85d593))
+* **i18n:** retrieve translations ([ea04374](https://github.com/ovh-ux/ovh-manager-web/commit/ea04374))
+* **i18n:** retrieve translations ([8f47c62](https://github.com/ovh-ux/ovh-manager-web/commit/8f47c62))
+* **i18n:** submit translations ([1c798ca](https://github.com/ovh-ux/ovh-manager-web/commit/1c798ca))
+
+
+
 <a name="13.7.5"></a>
 ## [13.7.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.4...v13.7.5) (2018-10-10)
 
