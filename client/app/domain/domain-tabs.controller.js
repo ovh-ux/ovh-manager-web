@@ -1,13 +1,15 @@
 angular.module('App').controller(
   'DomainTabsCtrl',
   class DomainTabsCtrl {
-    constructor($scope, $q, $location, $stateParams, $translate, Domain, User) {
+    constructor($scope, $q, $location, $stateParams, $translate, Alerter, Domain, DOMAIN, User) {
       this.$scope = $scope;
       this.$q = $q;
       this.$location = $location;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
+      this.Alerter = Alerter;
       this.Domain = Domain;
+      this.DOMAIN = DOMAIN;
       this.User = User;
     }
 
@@ -30,7 +32,7 @@ angular.module('App').controller(
         this.Domain.extensionsChangeOwnerByOrder,
         _.last(this.domain.name.split('.')),
       );
-      const updateOwnerUrl = this.constructor.getUpdateOwnerUrl(this.domain);
+      const updateOwnerUrl = this.getUpdateOwnerUrl(this.domain);
 
       this.tabMenu = {
         title: this.$translate.instant('navigation_more'),
@@ -60,9 +62,10 @@ angular.module('App').controller(
           },
           {
             label: this.$translate.instant('domain_configuration_update_owner'),
-            target: updateOwnerUrl,
-            type: 'LINK',
-            disabled: !updateOwnerUrl,
+            target: updateOwnerUrl.target,
+            fn: () => this.handleOwnerUrlError(updateOwnerUrl.error),
+            type: 'ACTION',
+            disabled: !updateOwnerUrl.target,
           },
           {
             type: 'SEPARATOR',
@@ -131,14 +134,31 @@ angular.module('App').controller(
       this.$location.search('tab', this.selectedTab);
     }
 
-    static getUpdateOwnerUrl(domain) {
-      if (
-        _.get(domain, 'whoisOwner', false)
-        && domain.whoisOwner !== 'pending'
-      ) {
-        return `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
+    getUpdateOwnerUrl(domain) {
+      const ownerUrlInfo = { target: '', error: '' };
+      if (_.has(domain, 'name') && _.has(domain, 'whoisOwner.id')) {
+        ownerUrlInfo.target = `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
+      } else if (!_.has(domain, 'name')) {
+        ownerUrlInfo.error = this.$translate.instant('domain_tab_REDIRECTION_add_step4_server_cname_error');
+      } else {
+        switch (domain.whoisOwner) {
+          case this.DOMAIN.whoIsStatus.PENDING:
+            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_pending');
+            break;
+          case this.DOMAIN.whoIsStatus.INVALID_CONTACT:
+            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_invalid_contact');
+            break;
+          default:
+            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_error');
+        }
       }
-      return '';
+      return ownerUrlInfo;
+    }
+
+    handleOwnerUrlError(errMsg) {
+      if (errMsg) {
+        this.Alerter.error(errMsg, this.$scope.alerts.tabs);
+      }
     }
 
     static toKebabCase(str) {
