@@ -76,6 +76,9 @@ import 'script-loader!ovh-jquery-ui-draggable-ng/dist/ovh-jquery-ui-draggable-ng
 // import "script-loader!@bower_components/ovh-common-style/dist/ovh-common-style.min.js";
 import 'script-loader!clipboard/dist/clipboard.min.js';
 
+// Ckeditor 4.x
+import 'script-loader!ng-ckeditor/dist/ng-ckeditor';
+
 import './app.js';
 import './css/source.less';
 import './css/source.scss';
