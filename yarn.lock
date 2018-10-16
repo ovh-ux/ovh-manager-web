@@ -766,11 +766,6 @@
     drange "^1.0.0"
     ret "^0.2.0"
 
-"@ckeditor/ckeditor5-build-classic@^11.0.1":
-  version "11.1.1"
-  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-build-classic/-/ckeditor5-build-classic-11.1.1.tgz#2eb3706bc83640bdc5f6d50e3a060aa70cf495aa"
-  integrity sha512-YfXokhH3Z82zdu4KCfYj2/7I0KyQav5QhNBDKnliXVGgNDuFa529xWr6x+tMx57vu+iiiih7Nmxd86A7tvsh/w==
-
 "@commitlint/cli@^7.1.2":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@commitlint/cli/-/cli-7.2.0.tgz#04fb5ba1d28bba100a7f71d51d35aa9a8fd5faba"
@@ -2736,6 +2731,11 @@ circular-json@^0.3.1:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/circular-json/-/circular-json-0.3.3.tgz#815c99ea84f6809529d2f45791bdf82711352d66"
   integrity sha512-UZK3NBx2Mca+b5LsG7bY183pHWt5Y1xts4P3Pz7ENTwGVnJOUWbRb3ocjvX7hx9tq/yTAdclXm9sZ38gNuem4A==
+
+ckeditor@*:
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/ckeditor/-/ckeditor-4.10.1.tgz#e0230b05a5470ef070be9ab9ba444fea418ebc78"
+  integrity sha512-T6y4BH9ml+0F1cuSqjOWSZJtNuunVm/IbZl0KWNgRUsWEiwQQxhzA0mvSVLzujjsQkTMn9oTGcDd31/eozCAWg==
 
 class-utils@^0.3.5:
   version "0.3.6"
@@ -5836,7 +5836,7 @@ jquery.cookie@^1.4.1:
   resolved "https://registry.yarnpkg.com/jquery.cookie/-/jquery.cookie-1.4.1.tgz#d63dce209eab691fe63316db08ca9e47e0f9385b"
   integrity sha1-1j3OIJ6raR/mMxbbCMqeR+D5OFs=
 
-jquery@>=1.4:
+"jquery@>= 1.9.1", jquery@>=1.4:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.3.1.tgz#958ce29e81c9790f31be7792df5d4d95fc57fbca"
   integrity sha512-Ubldcmxp5np52/ENotGxlLe6aGMvmF4R8S6tZjsP6Knsaxd/xp3Zrh50cG93lR6nPXyUFwzN3ZSOQI0wRJNdGg==
@@ -7012,6 +7012,14 @@ ng-at-internet@^3.0.0:
   resolved "https://registry.yarnpkg.com/ng-at-internet/-/ng-at-internet-3.1.1.tgz#3e65194faf5032cbde6290d78c4056b6a928a9cc"
   integrity sha1-PmUZT69QMsveYpDXjEBWtqkoqcw=
 
+ng-ckeditor@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/ng-ckeditor/-/ng-ckeditor-2.0.5.tgz#14ba19cb447b578305632f8ac4aa3811c80794b5"
+  integrity sha512-P0V8WWaCqpWHilj+FLF67+trjJXu58D79EGVd5x/NViw5UudSdVHyHfkPw1qcbxtb+AYSaryO6zmwtRDW3exPQ==
+  dependencies:
+    ckeditor "*"
+    jquery ">= 1.9.1"
+
 ng-file-upload@^12.0.4:
   version "12.2.13"
   resolved "https://registry.yarnpkg.com/ng-file-upload/-/ng-file-upload-12.2.13.tgz#01800f3872e526f95310f8477e99e4f12d0d8d14"
@@ -7561,20 +7569,18 @@ ovh-manager-webfont@ovh-ux/ovh-manager-webfont#^1.0.1:
   resolved "https://codeload.github.com/ovh-ux/ovh-manager-webfont/tar.gz/1d759c46c8c3ead4bc5e887a2336abd124a17c58"
 
 ovh-module-emailpro@ovh-ux/ovh-module-emailpro#^7.0.1:
-  version "7.0.3"
-  resolved "https://codeload.github.com/ovh-ux/ovh-module-emailpro/tar.gz/ab1f22d8e046904635c974fef89be8f9e25c11a9"
+  version "7.0.5"
+  resolved "https://codeload.github.com/ovh-ux/ovh-module-emailpro/tar.gz/7cbff19496e9b1164a1623e4e51a712799eca323"
   dependencies:
-    "@ckeditor/ckeditor5-build-classic" "^11.0.1"
     angular "~1.6.10"
     lodash "~3.9.3"
     moment "^2.16.0"
     punycode "^1.2.4"
 
 ovh-module-exchange@ovh-ux/ovh-module-exchange#^9.0.1:
-  version "9.0.3"
-  resolved "https://codeload.github.com/ovh-ux/ovh-module-exchange/tar.gz/c62aa11f08948229b26b3cd3ce5970746701ed89"
+  version "9.0.4"
+  resolved "https://codeload.github.com/ovh-ux/ovh-module-exchange/tar.gz/ebf6a39d9be82711b9f83bd7ab70eccca04d87b6"
   dependencies:
-    "@ckeditor/ckeditor5-build-classic" "^11.0.1"
     lodash "~3.9.3"
 
 ovh-module-office@ovh-ux/ovh-module-office#^7.0.0:

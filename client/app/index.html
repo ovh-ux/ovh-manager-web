@@ -6,10 +6,6 @@
         <meta name="viewport" content="width=device-width">
         <title>OVH</title>
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
-        <!--[if lte IE 8]>
-            <script type="text/javascript" src="../../bower_components/json3/lib/json3.min.js"></script>
-            <script type="text/javascript" src="../../bower_components/es5-shim/es5-shim.min.js"></script>
-        <![endif]-->
     </head>
     <body data-ng-app="App" data-ng-controller="SessionCtrl" data-ng-cloak class="ng-cloak">
         <div class="col-container">
@@ -79,5 +75,9 @@
         </div>
 
         <div data-otrs-popup></div>
+        <script>
+            var CKEDITOR_BASEPATH = (window.location.pathname !== "/" ? window.location.pathname.split("/").splice(0, window.location.pathname.split("/").length - 1).join("/") : "") + '/ckeditor/';
+        </script>
+        <script src="ckeditor/ckeditor.js"></script>
     </body>
 </html>
