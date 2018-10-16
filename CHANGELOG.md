@@ -1,3 +1,13 @@
+<a name="13.7.7"></a>
+## [13.7.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.6...v13.7.7) (2018-10-16)
+
+
+### Bug Fixes
+
+* **ckeditor:** rollback to ckeditor 4 ([7ae1ff7](https://github.com/ovh-ux/ovh-manager-web/commit/7ae1ff7))
+
+
+
 <a name="13.7.6"></a>
 ## [13.7.6](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.5...v13.7.6) (2018-10-16)
 
