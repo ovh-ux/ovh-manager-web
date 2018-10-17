@@ -1,3 +1,18 @@
+<a name="13.7.8"></a>
+## [13.7.8](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.7...v13.7.8) (2018-10-17)
+
+
+### Bug Fixes
+
+* **domain:** return update owner url if whoisOwner.id is defined ([f363bf9](https://github.com/ovh-ux/ovh-manager-web/commit/f363bf9))
+* **i18n:** retrieve translations ([0945514](https://github.com/ovh-ux/ovh-manager-web/commit/0945514))
+* **i18n:** retrieve translations ([fc7ce4c](https://github.com/ovh-ux/ovh-manager-web/commit/fc7ce4c))
+* **i18n:** retrieve translations ([148466a](https://github.com/ovh-ux/ovh-manager-web/commit/148466a))
+* **i18n:** submit translations ([29ec933](https://github.com/ovh-ux/ovh-manager-web/commit/29ec933))
+* **privatedb.order:** warn when a free offer is still available ([631ed82](https://github.com/ovh-ux/ovh-manager-web/commit/631ed82))
+
+
+
 <a name="13.7.7"></a>
 ## [13.7.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.6...v13.7.7) (2018-10-16)
 
