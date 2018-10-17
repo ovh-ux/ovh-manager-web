@@ -303,6 +303,7 @@ angular.module('controllers').controller(
       const subDomain = this.newRedirection.subdomain;
       const isValid = subDomain === null
         || subDomain === ''
+        || subDomain === '*'
         || this.DomainValidator.isValidTarget(
           `${subDomain}.${this.newRedirection.domain.displayName}`,
           'CNAME',
