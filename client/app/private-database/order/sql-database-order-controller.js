@@ -15,18 +15,19 @@ angular.module('App').controller(
 
       this.atInternet = atInternet;
       this.converterService = ConverterService;
-      this.hostingService = Hosting;
-      this.hostingDatabaseService = HostingDatabase;
-      this.hostingOptionOrderService = HostingOptionOrder;
-      this.privateDatabaseService = PrivateDatabase;
+      this.Hosting = Hosting;
+      this.HostingDatabase = HostingDatabase;
+      this.HostingOptionOrder = HostingOptionOrder;
+      this.PrivateDatabase = PrivateDatabase;
       this.User = User;
     }
 
     $onInit() {
+      this.hostingUrl = '#/configuration/hosting/';
       this.orderType = this.$stateParams.orderType;
       this.currentHosting = this.$stateParams.currentHosting;
 
-      this.selectectedHosting = null;
+      this.selectedHosting = null;
       this.includedOffer = false;
 
       this.$scope.alerts = {
@@ -54,7 +55,7 @@ angular.module('App').controller(
         contract: false,
       };
 
-      this.getAvailableOrderCapacities();
+      this.load();
 
       this.User.getUser().then((user) => {
         this.user = user;
@@ -68,7 +69,7 @@ angular.module('App').controller(
       return `${res.value} ${resUnit}`;
     }
 
-    getAvailableOrderCapacities() {
+    load() {
       const typeConverter = {
         dbaas: 'public',
         private: 'classic',
@@ -76,7 +77,7 @@ angular.module('App').controller(
 
       this.loading.init = true;
 
-      return this.privateDatabaseService
+      return this.PrivateDatabase
         .getOrderModels()
         .then((models) => {
           const dbaasName = _.get(models, 'hosting.PrivateDatabase.OfferEnum').enum[1];
@@ -86,88 +87,84 @@ angular.module('App').controller(
 
           return this.$q
             .all({
-              dbaasOrderCapacities:
-                this.privateDatabaseService.getAvailableOrderCapacities(dbaasName),
-              privateOrderCapacities:
-                this.privateDatabaseService.getAvailableOrderCapacities(sqlName),
-              hostings:
-                this.hostingService.getHostings(),
-              dbPack:
-                this.hostingOptionOrderService.getOrderEnums('hosting.web.database.SqlPersoOfferEnum'),
+              dbaasOrderCapacities: this.PrivateDatabase.getAvailableOrderCapacities(dbaasName),
+              privateOrderCapacities: this.PrivateDatabase.getAvailableOrderCapacities(sqlName),
+              domainNames: this.Hosting.getHostings(),
+              dbPack: this.HostingOptionOrder.getOrderEnums('hosting.web.database.SqlPersoOfferEnum'),
             })
-            .then((res) => {
-              this.data.push({
-                key: 'dbaas',
-                offer: dbaasName,
-                datacenters: res.dbaasOrderCapacities.datacenter,
-                versions: res.dbaasOrderCapacities.version.sort(),
-                rams: res.dbaasOrderCapacities.ram,
-                dbPack: null,
-                hostings: null,
-                durations: null,
-                nbTooltip: 6,
-                tooltips: {
-                  rams: {
-                    min: this.convertBytesSize(_.min(res.dbaasOrderCapacities.ram)),
-                    max: this.convertBytesSize(_.max(res.dbaasOrderCapacities.ram)),
+            .then((result) => {
+              this.data = [
+                {
+                  key: 'dbaas',
+                  offer: dbaasName,
+                  datacenters: result.dbaasOrderCapacities.datacenter,
+                  versions: result.dbaasOrderCapacities.version.sort(),
+                  rams: result.dbaasOrderCapacities.ram,
+                  dbPack: null,
+                  hostings: null,
+                  durations: null,
+                  tooltips: {
+                    rams: {
+                      min: this.convertBytesSize(_.min(result.dbaasOrderCapacities.ram)),
+                      max: this.convertBytesSize(_.max(result.dbaasOrderCapacities.ram)),
+                    },
                   },
                 },
-              });
-              this.data.push({
-                key: 'premium',
-                offer: sqlName,
-                datacenters: res.privateOrderCapacities.datacenter,
-                versions: res.privateOrderCapacities.version.sort(),
-                rams: res.privateOrderCapacities.ram,
-                dbPack: null,
-                hostings: [],
-                durations: null,
-                nbTooltip: 6,
-                tooltips: {
-                  rams: {
-                    min: this.convertBytesSize(_.min(res.privateOrderCapacities.ram)),
-                    max: this.convertBytesSize(_.max(res.privateOrderCapacities.ram)),
+                {
+                  key: 'premium',
+                  offer: sqlName,
+                  datacenters: result.privateOrderCapacities.datacenter,
+                  versions: result.privateOrderCapacities.version.sort(),
+                  rams: result.privateOrderCapacities.ram,
+                  dbPack: null,
+                  hostings: [],
+                  durations: null,
+                  tooltips: {
+                    rams: {
+                      min: this.convertBytesSize(_.min(result.privateOrderCapacities.ram)),
+                      max: this.convertBytesSize(_.max(result.privateOrderCapacities.ram)),
+                    },
                   },
                 },
-              });
-              this.data.push({
-                key: 'start',
-                offer: 'start',
-                datacenters: null,
-                versions: null,
-                rams: null,
-                dbPack: res.dbPack,
-                hostings: [],
-                durations: null,
-                nbTooltip: 4,
-              });
-              return res;
+                {
+                  key: 'start',
+                  offer: 'start',
+                  datacenters: null,
+                  versions: null,
+                  rams: null,
+                  dbPack: result.dbPack,
+                  hostings: [],
+                  durations: null,
+                },
+              ];
+              return result;
             });
         })
-        .then(res => this.$q
-          .all(_.map(res.hostings, domainName => this.hostingService.getHosting(domainName)))
-          .then((domains) => {
+        .then(({ domainNames }) => this.$q
+          .all(_.map(domainNames, domainName => this.Hosting.getHosting(domainName)))
+          .then(hostings => _.filter(hostings, 'state', 'active'))
+          .then((hostings) => {
             this.noHostValue = 'other';
 
-            const validDomains = _.filter(domains, 'state', 'active');
-
-            _.find(this.data, 'key', 'start').hostings = _.map(validDomains, validDomain => ({
-              name: validDomain.serviceName,
-              displayName: punycode.toUnicode(validDomain.serviceName),
-              datacenter: validDomain.datacenter,
+            _.find(this.data, 'key', 'start').hostings = _.map(hostings, hosting => ({
+              name: hosting.serviceName,
+              displayName: punycode.toUnicode(hosting.serviceName),
+              datacenter: hosting.datacenter,
+              stillHasFreeDbOffer: false,
             }));
             _.find(this.data, 'key', 'premium').hostings = angular.copy(_.find(this.data, 'key', 'start').hostings);
             _.find(this.data, 'key', 'premium').hostings.push({
               datacenter: null,
               displayName: this.$translate.instant('common_other'),
               name: this.noHostValue,
+              stillHasFreeDbOffer: false,
             });
 
             this.model.hosting = this.currentHosting || null;
 
             if (this.model.hosting) {
-              this.selectectedHosting = this.findHosting(this.model.hosting);
-              this.model.datacenter = this.selectectedHosting.datacenter || null;
+              this.selectedHosting = this.findHosting(this.model.hosting);
+              this.model.datacenter = this.selectedHosting.datacenter || null;
             }
           }))
         .catch(err => this.alerter.alertFromSWS(this.$translate.instant('privateDatabase_order_step1_error'), err, this.$scope.alerts.durations))
@@ -184,6 +181,21 @@ angular.module('App').controller(
       this.model.hosting = null;
       this.getDuration();
       this.resetOrder();
+    }
+
+    onHostingSelected() {
+      if (!this.selectedHosting) {
+        return;
+      }
+
+      this.setDatacenter();
+      this.getDuration();
+      if (this.selectedHosting.name !== this.noHostValue) {
+        this.HostingDatabase.getPrivateDatabaseCapabilities(this.selectedHosting.name)
+          .then((capabilities) => {
+            this.selectedHosting.stillHasFreeDbOffer = _.some(capabilities);
+          });
+      }
     }
 
     /*
@@ -204,7 +216,7 @@ angular.module('App').controller(
     getDurationspremium(data) {
       const { version, ram } = this.model;
 
-      return this.privateDatabaseService
+      return this.PrivateDatabase
         .orderDuration(version, ram)
         .then((durations) => {
           data.durations = _.map(durations, duration => ({ // eslint-disable-line no-param-reassign
@@ -229,7 +241,7 @@ angular.module('App').controller(
     getDurationsstart(data) {
       const { hosting, dbPack: startDbVersion } = this.model;
 
-      return this.hostingOptionOrderService
+      return this.HostingOptionOrder
         .getSqlPersoAllowedDurations(hosting, startDbVersion)
         .then((durations) => {
           data.durations = _.map(durations, duration => ({ // eslint-disable-line no-param-reassign
@@ -254,7 +266,7 @@ angular.module('App').controller(
       return this.$q
         .all(_.map(
           durations,
-          duration => this.privateDatabaseService
+          duration => this.PrivateDatabase
             .orderPrice(version, ram, duration)
             .then((details) => {
               _.find(data.durations, 'duration', duration).details = details;
@@ -278,7 +290,7 @@ angular.module('App').controller(
       const { hosting, dbPack: startDbVersion } = this.model;
 
       return this.$q
-        .all(_.map(durations, duration => this.hostingOptionOrderService
+        .all(_.map(durations, duration => this.HostingOptionOrder
           .getSqlPersoPrice(hosting, startDbVersion, duration)
           .then((details) => {
             _.find(data.durations, 'duration', duration).details = details;
@@ -307,7 +319,7 @@ angular.module('App').controller(
     generateBcpremium() {
       this.loading.bc = true;
 
-      return this.privateDatabaseService
+      return this.PrivateDatabase
         .orderPrivateDatabase(
           this.model.version,
           this.model.ram,
@@ -330,7 +342,7 @@ angular.module('App').controller(
     generateBcdbaas() {
       this.loading.bc = true;
 
-      return this.privateDatabaseService
+      return this.PrivateDatabase
         .orderDBaaS(this.model.version, this.model.ram, this.model.duration, this.model.datacenter)
         .then((details) => {
           this.order = details;
@@ -346,7 +358,7 @@ angular.module('App').controller(
     generateBcstart() {
       this.loading.bc = true;
 
-      return this.hostingOptionOrderService
+      return this.HostingOptionOrder
         .orderSqlPerso(this.model.hosting, this.model.dbPack, this.model.duration)
         .then((details) => {
           this.order = details;
@@ -406,11 +418,11 @@ angular.module('App').controller(
     }
 
     setDatacenter() {
-      if (_.isEmpty(this.selectectedHosting) || this.selectectedHosting === this.noHostValue) {
+      if (_.isEmpty(this.selectedHosting) || this.selectedHosting === this.noHostValue) {
         return;
       }
-      this.model.hosting = this.selectectedHosting.name;
-      this.model.datacenter = this.selectectedHosting.datacenter || null;
+      this.model.hosting = this.selectedHosting.name;
+      this.model.datacenter = this.selectedHosting.datacenter || null;
     }
 
     openBc() {
@@ -447,6 +459,10 @@ angular.module('App').controller(
 
     resetOrder() {
       this.order = null;
+    }
+
+    makeHostingUrl(serviceName) {
+      return this.hostingUrl + serviceName;
     }
   },
 );
