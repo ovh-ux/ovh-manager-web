@@ -1,3 +1,13 @@
+<a name="13.7.10"></a>
+## [13.7.10](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.9...v13.7.10) (2018-10-18)
+
+
+### Features
+
+* **home:** change subscription banner by updates banner ([bef23a6](https://github.com/ovh-ux/ovh-manager-web/commit/bef23a6))
+
+
+
 <a name="13.7.9"></a>
 ## [13.7.9](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.8...v13.7.9) (2018-10-18)
 
