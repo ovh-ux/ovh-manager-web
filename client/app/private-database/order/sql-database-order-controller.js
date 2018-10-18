@@ -164,6 +164,7 @@ angular.module('App').controller(
 
             if (this.model.hosting) {
               this.selectedHosting = this.findHosting(this.model.hosting);
+              this.checkFreeDbOffer();
               this.model.datacenter = this.selectedHosting.datacenter || null;
             }
           }))
@@ -190,6 +191,10 @@ angular.module('App').controller(
 
       this.setDatacenter();
       this.getDuration();
+      this.checkFreeDbOffer();
+    }
+
+    checkFreeDbOffer() {
       if (this.selectedHosting.name !== this.noHostValue) {
         this.HostingDatabase.getPrivateDatabaseCapabilities(this.selectedHosting.name)
           .then((capabilities) => {
