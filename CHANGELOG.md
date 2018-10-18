@@ -1,3 +1,19 @@
+<a name="13.7.9"></a>
+## [13.7.9](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.8...v13.7.9) (2018-10-18)
+
+
+### Bug Fixes
+
+* **domain.redirection:** allow * subdomain ([24cfc16](https://github.com/ovh-ux/ovh-manager-web/commit/24cfc16))
+* **privateDb.order:** display warning for preselected hosting ([61be8f2](https://github.com/ovh-ux/ovh-manager-web/commit/61be8f2))
+
+
+### Features
+
+* **home:** change subscription banner to live banner ([fe325cb](https://github.com/ovh-ux/ovh-manager-web/commit/fe325cb))
+
+
+
 <a name="13.7.8"></a>
 ## [13.7.8](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.7...v13.7.8) (2018-10-17)
 
