@@ -112,7 +112,7 @@ angular
               $scope.alerts.main,
             );
           })
-          .then(() => this.hostingSSLCertificate.retrievingCertificate(this.$stateParams.productId))
+          .then(() => hostingSSLCertificate.retrievingCertificate($stateParams.productId))
           .then((certificate) => {
             $scope.sslCertificate = certificate;
           })
