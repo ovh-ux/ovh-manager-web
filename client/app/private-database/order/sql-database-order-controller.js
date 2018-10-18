@@ -203,6 +203,12 @@ angular.module('App').controller(
       }
     }
 
+    shouldDisplayFreeDbWarning() {
+      return this.isPrivateDb()
+        && _.get(this.model, 'ram') === '512'
+        && _.get(this.selectedHosting, 'stillHasFreeDbOffer');
+    }
+
     /*
        * DURATION
        */

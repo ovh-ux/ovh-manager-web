@@ -139,8 +139,8 @@
                         </div>
                     </div>
 
-                    <oui-message type="warning"
-                                 data-ng-if="$ctrl.isPrivateDb() && $ctrl.selectedHosting && $ctrl.selectedHosting.stillHasFreeDbOffer">
+                    <oui-message data-type="warning"
+                                 data-ng-if="$ctrl.shouldDisplayFreeDbWarning()">
                         <h3 class="h5" data-translate="privateDatabase_order_sql_included_title"></h3>
                         <span data-translate="privateDatabase_order_sql_included_info"
                               data-translate-values="{
