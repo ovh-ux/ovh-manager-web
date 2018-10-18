@@ -1,3 +1,15 @@
+<a name="13.7.11"></a>
+## [13.7.11](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.10...v13.7.11) (2018-10-18)
+
+
+### Bug Fixes
+
+* **hosting.multisite:** remove bug in code ([34e9b30](https://github.com/ovh-ux/ovh-manager-web/commit/34e9b30))
+* **privatedb.order:** display warning for 512MB only ([edc9f8d](https://github.com/ovh-ux/ovh-manager-web/commit/edc9f8d))
+* **privatedb.order:** pr fixes ([171808d](https://github.com/ovh-ux/ovh-manager-web/commit/171808d))
+
+
+
 <a name="13.7.10"></a>
 ## [13.7.10](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.9...v13.7.10) (2018-10-18)
 
