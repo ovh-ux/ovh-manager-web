@@ -1,20 +1,16 @@
 angular.module('App').controller(
   'ConfigurationCtrl',
   class ConfigurationCtrl {
-    constructor($route, $scope, $translate, constants, Products, User) {
-      this.$route = $route;
+    constructor($scope, $route, Products, constants, User) {
       this.$scope = $scope;
-      this.$translate = $translate;
-
-      this.constants = constants;
+      this.$route = $route;
       this.Products = Products;
+      this.constants = constants;
       this.User = User;
     }
 
     $onInit() {
       this.guides = this.constants.TOP_GUIDES;
-
-      this.buildSummitData();
 
       this.User.getUser()
         .then((user) => {
@@ -33,18 +29,6 @@ angular.module('App').controller(
 
       this.unSelectProduct();
       this.selectTypeOfGuide('domainHosting');
-    }
-
-    buildSummitData() {
-      this.localeForSummitBanner = this.$translate.use().split('_')[0] === 'fr' ? 'fr' : 'en';
-
-      const subsidiariesWithSummitBanner = ['FR', 'GB', 'DE', 'ES'];
-      this.shouldDisplayBanner = false;
-      return this.User
-        .getUser()
-        .then(({ ovhSubsidiary }) => {
-          this.shouldDisplayBanner = _(subsidiariesWithSummitBanner).includes(ovhSubsidiary);
-        });
     }
 
     unSelectProduct() {
