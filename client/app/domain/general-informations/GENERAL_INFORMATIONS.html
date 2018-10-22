@@ -187,7 +187,7 @@
                                             <strong class="oui-tile__term d-inline-block mr-2"
                                                     data-translate="domain_dashboard_protection_transfert"></strong>
                                             <span data-uib-tooltip="{{:: 'domain_dashboard_tooltip_protection' | translate }}"
-                                                  data-uib-tooltip-append-to-body="true"
+                                                  data-tooltip-append-to-body="true"
                                                   data-uib-tooltip-placement="top">
                                               <span class="fa fa-info-circle" aria-hidden="true"></span>
                                           </span>
@@ -199,7 +199,7 @@
                                                     data-uib-tooltip="{{(ctrlTabGeneralInformations.domain.protection === 'unlocking' ||
                                                       ctrlTabGeneralInformations.domain.protection === 'locking' ||
                                                       ctrlTabGeneralInformations.domain.protection === 'unavailable') ? ('domain_dashboard_protection_' + ctrlTabGeneralInformations.domain.protection | translate) : ''}}"
-                                                    data-uib-tooltip-append-to-body="true"></span>
+                                                    data-tooltip-append-to-body="true"></span>
                                                 <button class="btn btn-link ml-3 p-0" type="button"
                                                         data-translate="domain_dashboard_show_authinfo"
                                                         data-ng-click="setAction('authinfo/domain-authinfo', ctrlTabGeneralInformations.domain)"
