@@ -30,6 +30,7 @@
     "lint:css": "stylelint 'client/**/*.less' --fix",
     "lint:js": "eslint --quiet --fix ./client",
     "clean": "npx rimraf .cache-loader dist node_modules",
+    "clean:dist": "npx rimraf dist",
     "version": "npx conventional-changelog-cli -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "postversion": "git push && git push --tags"
   },
