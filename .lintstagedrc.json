@@ -1,0 +1,10 @@
+{
+  "*.js": [
+    "eslint --fix",
+    "git add"
+  ],
+  "*.less": [
+    "stylelint 'client/**/*.less' --fix",
+    "git add"
+  ]
+}

@@ -303,22 +303,16 @@ angular.module('services').service(
      * @param rules
      */
     createFilter(serviceName, accountName, filter, rules) {
-      const defer = this.$q.defer();
-
-      this.OvhHttp.post(
-        `/email/domain/${serviceName}/account/${accountName}/filter`,
-        {
-          rootPath: 'apiv6',
-          data: filter,
-          broadcast: 'hosting.tabs.emails.filters.refresh',
-        },
-      )
-        .then(() => this.createRules(serviceName, accountName, filter.name, rules)
-          .then(data => defer.resolve(data))
-          .catch(err => defer.reject(err)))
-        .catch(err => defer.reject(err));
-
-      return defer.promise;
+      return this.OvhHttp
+        .post(
+          `/email/domain/${serviceName}/account/${accountName}/filter`,
+          {
+            rootPath: 'apiv6',
+            data: filter,
+            broadcast: 'hosting.tabs.emails.filters.refresh',
+          },
+        )
+        .then(() => this.createRules(serviceName, accountName, filter.name, rules));
     }
 
     /**
@@ -329,15 +323,8 @@ angular.module('services').service(
      * @param rules
      */
     updateFilter(serviceName, accountName, filter, rules) {
-      const defer = this.$q.defer();
-
-      this.deleteFilter(serviceName, accountName, filter.name)
-        .then(() => this.createFilter(serviceName, accountName, filter, rules)
-          .then(data => defer.resolve(data))
-          .catch(err => defer.reject(err)))
-        .catch(err => defer.reject(err));
-
-      return defer.promise;
+      return this.deleteFilter(serviceName, accountName, filter.name)
+        .then(() => this.createFilter(serviceName, accountName, filter, rules));
     }
 
     /**
@@ -348,7 +335,7 @@ angular.module('services').service(
      */
     deleteFilter(serviceName, accountName, filterName) {
       return this.OvhHttp.delete(
-        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}`,
+        `/email/domain/${serviceName}/account/${accountName}/filter/${encodeURI(filterName)}`,
         {
           rootPath: 'apiv6',
           broadcast: 'hosting.tabs.emails.filters.refresh',
@@ -365,7 +352,7 @@ angular.module('services').service(
      */
     changeFilterActivity(serviceName, accountName, filterName, data) {
       return this.OvhHttp.post(
-        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/changeActivity`,
+        `/email/domain/${serviceName}/account/${accountName}/filter/${encodeURI(filterName)}/changeActivity`,
         {
           rootPath: 'apiv6',
           data,
@@ -383,7 +370,7 @@ angular.module('services').service(
      */
     changeFilterPriority(serviceName, accountName, filterName, data) {
       return this.OvhHttp.post(
-        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/changePriority`,
+        `/email/domain/${serviceName}/account/${accountName}/filter/${encodeURI(filterName)}/changePriority`,
         {
           rootPath: 'apiv6',
           data,
@@ -401,7 +388,7 @@ angular.module('services').service(
      */
     createRule(serviceName, accountName, filterName, data) {
       return this.OvhHttp.post(
-        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/rule`,
+        `/email/domain/${serviceName}/account/${accountName}/filter/${encodeURI(filterName)}/rule`,
         {
           rootPath: 'apiv6',
           data,
@@ -417,14 +404,12 @@ angular.module('services').service(
      * @param rules
      */
     createRules(serviceName, accountName, filterName, rules) {
-      const promises = rules.map(rule => this.createRule(
+      return this.$q.all(rules.map(rule => this.createRule(
         serviceName,
         accountName,
         filterName,
         rule,
-      ));
-
-      return this.$q.all(promises);
+      )));
     }
 
     /**
@@ -435,31 +420,17 @@ angular.module('services').service(
      * @returns {Promise}
      */
     getRules(serviceName, accountName, filterName) {
-      const defer = this.$q.defer();
-      const promises = [];
-      const rules = [];
-
-      this.OvhHttp.get(
-        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/rule`,
-        {
-          rootPath: 'apiv6',
-        },
-      )
-        .then((rulesId) => {
-          rulesId.forEach((id) => {
-            promises.push(this.getRule(serviceName, accountName, filterName, id)
-              .then(rule => rules.push(rule)));
-          });
-
-          // Resolve when all promise are resolve
-          this.$q
-            .all(promises)
-            .then(() => defer.resolve(rules))
-            .catch(() => defer.resolve(rules));
-        })
-        .catch(() => defer.resolve([]));
-
-      return defer.promise;
+      return this.OvhHttp
+        .get(
+          `/email/domain/${serviceName}/account/${accountName}/filter/${encodeURI(filterName)}/rule`,
+          {
+            rootPath: 'apiv6',
+          },
+        )
+        .then(rulesId => this.$q.all(
+          rulesId.map(id => this.getRule(serviceName, accountName, filterName, id)),
+        ))
+        .catch(() => []);
     }
 
     /**
@@ -471,7 +442,7 @@ angular.module('services').service(
      */
     getRule(serviceName, accountName, filterName, id) {
       return this.OvhHttp.get(
-        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/rule/${id}`,
+        `/email/domain/${serviceName}/account/${accountName}/filter/${encodeURI(filterName)}/rule/${id}`,
         {
           rootPath: 'apiv6',
         },
@@ -487,20 +458,11 @@ angular.module('services').service(
      * @returns {Promise}
      */
     deleteRules(serviceName, accountName, filterName, rulesId) {
-      const defer = this.$q.defer();
-      const promises = [];
-
-      rulesId.forEach((id) => {
-        promises.push(this.deleteRule(serviceName, accountName, filterName, id));
-      });
-
-      // Resolve when all promise are resolve
-      this.$q
-        .all(promises)
-        .then(() => defer.resolve())
-        .catch(data => defer.resolve(data));
-
-      return defer.promise;
+      return this.$q
+        .all(
+          rulesId.map(id => this.deleteRule(serviceName, accountName, filterName, id)),
+        )
+        .catch(data => data);
     }
 
     /**
@@ -512,7 +474,7 @@ angular.module('services').service(
      */
     deleteRule(serviceName, accountName, filterName, id) {
       return this.OvhHttp.delete(
-        `/email/domain/${serviceName}/account/${accountName}/filter/${filterName}/rule/${id}`,
+        `/email/domain/${serviceName}/account/${accountName}/filter/${encodeURI(filterName)}/rule/${id}`,
         {
           rootPath: 'apiv6',
           broadcast: 'hosting.tabs.emails.filters.refresh',
@@ -971,7 +933,7 @@ angular.module('services').service(
      */
     getDelegatedFilter(accountName, filterName) {
       return this.OvhHttp.get(
-        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}`,
+        `/email/domain/delegatedAccount/${accountName}/filter/${encodeURI(filterName)}`,
         {
           rootPath: 'apiv6',
         },
@@ -986,22 +948,16 @@ angular.module('services').service(
      * @returns {Promise}
      */
     createDelegatedFilter(accountName, filter, rules) {
-      const defer = this.$q.defer();
-
-      this.OvhHttp.post(
-        `/email/domain/delegatedAccount/${accountName}/filter`,
-        {
-          rootPath: 'apiv6',
-          data: filter,
-          broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
-        },
-      )
-        .then(() => this.createDelegatedRules(accountName, filter.name, rules)
-          .then(data => defer.resolve(data))
-          .catch(err => defer.reject(err)))
-        .catch(err => defer.reject(err));
-
-      return defer.promise;
+      return this.OvhHttp
+        .post(
+          `/email/domain/delegatedAccount/${accountName}/filter`,
+          {
+            rootPath: 'apiv6',
+            data: filter,
+            broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
+          },
+        )
+        .then(() => this.createDelegatedRules(accountName, filter.name, rules));
     }
 
     /**
@@ -1012,15 +968,8 @@ angular.module('services').service(
      * @returns {Promise}
      */
     updateDelegatedFilter(accountName, filter, rules) {
-      const defer = this.$q.defer();
-
-      this.deleteDelegatedFilter(accountName, filter.name)
-        .then(() => this.createDelegatedFilter(accountName, filter, rules)
-          .then(data => defer.resolve(data))
-          .catch(err => defer.reject(err)))
-        .catch(err => defer.reject(err));
-
-      return defer.promise;
+      return this.deleteDelegatedFilter(accountName, filter.name)
+        .then(() => this.createDelegatedFilter(accountName, filter, rules));
     }
 
     /**
@@ -1030,7 +979,7 @@ angular.module('services').service(
      */
     deleteDelegatedFilter(accountName, filterName) {
       return this.OvhHttp.delete(
-        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}`,
+        `/email/domain/delegatedAccount/${accountName}/filter/${encodeURI(filterName)}`,
         {
           rootPath: 'apiv6',
           broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
@@ -1046,7 +995,7 @@ angular.module('services').service(
      */
     changeDelegatedFilterActivity(accountName, filterName, data) {
       return this.OvhHttp.post(
-        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/changeActivity`,
+        `/email/domain/delegatedAccount/${accountName}/filter/${encodeURI(filterName)}/changeActivity`,
         {
           rootPath: 'apiv6',
           data,
@@ -1063,7 +1012,7 @@ angular.module('services').service(
      */
     changeDelegatedFilterPriority(accountName, filterName, data) {
       return this.OvhHttp.post(
-        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/changePriority`,
+        `/email/domain/delegatedAccount/${accountName}/filter/${encodeURI(filterName)}/changePriority`,
         {
           rootPath: 'apiv6',
           data,
@@ -1080,7 +1029,7 @@ angular.module('services').service(
      */
     createDelegatedRule(accountName, filterName, data) {
       return this.OvhHttp.post(
-        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule`,
+        `/email/domain/delegatedAccount/${accountName}/filter/${encodeURI(filterName)}/rule`,
         {
           rootPath: 'apiv6',
           data,
@@ -1096,19 +1045,18 @@ angular.module('services').service(
      * @returns {Promise}
      */
     createDelegatedRules(accountName, filterName, rules) {
-      const promises = _.map(rules, rule => this.OvhHttp.post(
-        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule`,
-        {
-          rootPath: 'apiv6',
-          data: {
-            operand: rule.operand,
-            value: rule.value,
-            header: rule.header,
+      return this.$q.all(rules.map(rule => this.OvhHttp
+        .post(
+          `/email/domain/delegatedAccount/${accountName}/filter/${encodeURI(filterName)}/rule`,
+          {
+            rootPath: 'apiv6',
+            data: {
+              operand: rule.operand,
+              value: rule.value,
+              header: rule.header,
+            },
           },
-        },
-      ));
-
-      return this.$q.all(promises);
+        )));
     }
 
     /**
@@ -1118,32 +1066,17 @@ angular.module('services').service(
      * @returns {Promise}
      */
     getDelegatedRules(accountName, filterName) {
-      const defer = this.$q.defer();
-      const promises = [];
-      const rules = [];
-
-      this.OvhHttp.get(
-        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule`,
-        {
-          rootPath: 'apiv6',
-        },
-      )
-        .then((rulesId) => {
-          rulesId.forEach((id) => {
-            promises.push(this
-              .getDelegatedRule(accountName, filterName, id)
-              .then(rule => rules.push(rule)));
-          });
-
-          // Resolve when all promise are resolve
-          this.$q
-            .all(promises)
-            .then(() => defer.resolve(rules))
-            .catch(() => defer.resolve(rules));
-        })
-        .catch(() => defer.resolve([]));
-
-      return defer.promise;
+      return this.OvhHttp
+        .get(
+          `/email/domain/delegatedAccount/${accountName}/filter/${encodeURI(filterName)}/rule`,
+          {
+            rootPath: 'apiv6',
+          },
+        )
+        .then(rulesId => this.$q.all(
+          rulesId.map(id => this.getDelegatedRule(accountName, filterName, id)),
+        ))
+        .catch(() => []);
     }
 
     /**
@@ -1154,7 +1087,7 @@ angular.module('services').service(
      */
     getDelegatedRule(accountName, filterName, id) {
       return this.OvhHttp.get(
-        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule/${id}`,
+        `/email/domain/delegatedAccount/${accountName}/filter/${encodeURI(filterName)}/rule/${id}`,
         {
           rootPath: 'apiv6',
         },
@@ -1168,10 +1101,7 @@ angular.module('services').service(
      * @param {array} rulesId
      */
     deleteDelegatedRules(accountName, filterName, rulesId) {
-      return this.$q.all(_.map(
-        rulesId,
-        id => this.deleteDelegatedRule(accountName, filterName, id),
-      ));
+      return this.$q.all(rulesId.map(id => this.deleteDelegatedRule(accountName, filterName, id)));
     }
 
     /**
@@ -1182,7 +1112,7 @@ angular.module('services').service(
      */
     deleteDelegatedRule(accountName, filterName, id) {
       return this.OvhHttp.delete(
-        `/email/domain/delegatedAccount/${accountName}/filter/${filterName}/rule/${id}`,
+        `/email/domain/delegatedAccount/${accountName}/filter/${encodeURI(filterName)}/rule/${id}`,
         {
           rootPath: 'apiv6',
           broadcast: 'hosting.tabs.emails.delegatedFilters.refresh',
@@ -1308,27 +1238,21 @@ angular.module('services').service(
       destinationServiceName,
       destinationEmailAddress,
     ) {
-      const defer = this.$q.defer();
-
-      this.OvhHttp.get(
-        `/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress/${destinationEmailAddress}/checkMigrate`,
-        {
-          rootPath: 'apiv6',
-        },
-      )
+      return this.OvhHttp
+        .get(
+          `/email/domain/${domain}/account/${accountName}/migrate/${destinationServiceName}/destinationEmailAddress/${destinationEmailAddress}/checkMigrate`,
+          {
+            rootPath: 'apiv6',
+          },
+        )
         .then((data) => {
           // error codes are returned in success
-          if (_.isArray(data.error) && !_.isEmpty(data.error)) {
-            defer.reject(data.error);
-          } else {
-            defer.resolve(data);
+          if (_(data.error).isArray() && !_(data.error).isEmpty()) {
+            throw data.error;
           }
-        })
-        .catch((err) => {
-          defer.reject(err);
-        });
 
-      return defer.promise;
+          return data;
+        });
     }
 
     /**
