@@ -1,3 +1,14 @@
+<a name="13.7.13"></a>
+## [13.7.13](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.12...v13.7.13) (2018-10-24)
+
+
+### Bug Fixes
+
+* **domain.general.informations:** tooltip flashing ([6b0693d](https://github.com/ovh-ux/ovh-manager-web/commit/6b0693d))
+* **email.rules:** handle rules with special names ([136b031](https://github.com/ovh-ux/ovh-manager-web/commit/136b031))
+
+
+
 <a name="13.7.12"></a>
 ## [13.7.12](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.11...v13.7.12) (2018-10-22)
 
