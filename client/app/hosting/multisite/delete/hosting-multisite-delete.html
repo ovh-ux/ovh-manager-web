@@ -1,5 +1,5 @@
 <div data-ng-controller="HostingRemoveDomainCtrl as ctrl">
-	<div data-wizard
+    <div data-wizard
          data-wizard-on-cancel="resetAction"
          data-wizard-on-finish="deleteMultiSite"
          data-wizard-title="'hosting_tab_DOMAINS_configuration_remove_title' | translate">
@@ -14,12 +14,12 @@
             </div>
 
             <div data-ng-if="ctrl.model.domains">
-	            <dl class="dl-horizontal dl-lg">
-	                <dt data-translate="hosting_tab_DOMAINS_configuration_remove_step1_domain_name"></dt>
-	                <dd data-ng-bind="ctrl.selected.domain.displayName"></dd>
-	                <dt data-translate="hosting_tab_DOMAINS_configuration_remove_step1_home"></dt>
-	                <dd data-ng-bind="ctrl.selected.domain.path"></dd>
-	            </dl>
+                <dl class="dl-horizontal dl-lg">
+                    <dt data-translate="hosting_tab_DOMAINS_configuration_remove_step1_domain_name"></dt>
+                    <dd data-ng-bind="ctrl.selected.domain.displayName"></dd>
+                    <dt data-translate="hosting_tab_DOMAINS_configuration_remove_step1_home"></dt>
+                    <dd data-ng-bind="ctrl.selected.domain.path"></dd>
+                </dl>
 
                 <div class="oui-checkbox" data-ng-show="ctrl.domainsWwwExists()">
                     <input type="checkbox" class="oui-checkbox__input" id="wwwNeeded"
@@ -55,7 +55,7 @@
                         </span>
                     </label>
                 </div>
-		    </div>
+            </div>
         </div>
     </div>
 </div>

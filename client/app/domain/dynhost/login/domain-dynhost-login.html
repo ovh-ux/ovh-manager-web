@@ -33,7 +33,7 @@
                                        data-ng-change="ctrlDomainDynHostLogin.refreshTableDynHostsLogin()"
                                        data-ng-disabled="ctrlDomainDynHostLogin.loading.login"
                                        data-ng-model="ctrlDomainDynHostLogin.search.login"
-                                       data-ng-model-options='{ debounce: 800 }'>
+                                       data-ng-model-options="{ debounce: 800 }">
                                 <div class="input-group-btn" data-ng-if="ctrlDomainDynHostLogin.search.login">
                                     <button class="btn btn-default" type="button" aria-label="{{ 'common_cancel' | translate }}"
                                             data-ng-click="ctrlDomainDynHostLogin.emptySearch()"

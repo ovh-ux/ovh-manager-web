@@ -36,7 +36,7 @@
                                        data-ng-change="ctrlSubscribers.goSearch()"
                                        data-ng-disabled="ctrlSubscribers.loading.subscribers"
                                        data-ng-model="ctrlSubscribers.search.subscribers"
-                                       data-ng-model-options='{ debounce: 800 }'>
+                                       data-ng-model-options="{ debounce: 800 }">
                                 <div class="input-group-btn" data-ng-if="ctrlSubscribers.search.subscribers">
                                     <button class="btn btn-default" type="button" aria-label="{{ 'common_cancel' | translate }}"
                                             data-ng-click="ctrlSubscribers.emptySearch()"
