@@ -12,7 +12,7 @@
                     <input type="text" class="form-control" id="searchIndy" name="searchIndy" placeholder="{{:: 'hosting_tab_DOMAINS_search_placeholder' | translate }}"
                            data-ng-change="ctrlHostingIndyTab.goSearch()"
                            data-ng-model="ctrlHostingIndyTab.filter.login"
-                           data-ng-model-options='{ debounce: 800 }'>
+                           data-ng-model-options="{ debounce: 800 }">
                     <div class="input-group-btn" data-ng-if="ctrlHostingIndyTab.filter.login">
                         <button class="btn btn-default" type="button" aria-label="{{ 'common_cancel' | translate }}"
                                 data-ng-click="ctrlHostingIndyTab.resetSearch()">

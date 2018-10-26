@@ -35,7 +35,7 @@
                                        data-ng-change="ctrlModerators.goSearch()"
                                        data-ng-disabled="ctrlModerators.loading.moderators"
                                        data-ng-model="ctrlModerators.search.moderators"
-                                       data-ng-model-options='{ debounce: 800 }'>
+                                       data-ng-model-options="{ debounce: 800 }">
                                 <div class="input-group-btn" data-ng-if="ctrlModerators.search.moderators">
                                     <button class="btn btn-default" type="button" aria-label="{{ 'common_cancel' | translate }}"
                                             data-ng-click="ctrlModerators.emptySearch()"

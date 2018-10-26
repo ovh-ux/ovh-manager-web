@@ -11,7 +11,7 @@
                                data-ng-change="ctrlEmailDelegate.goSearch()"
                                data-ng-disabled="ctrlEmailDelegate.loading.accounts"
                                data-ng-model="ctrlEmailDelegate.search.accounts"
-                               data-ng-model-options='{ debounce: 800 }'>
+                               data-ng-model-options="{ debounce: 800 }">
                         <div class="input-group-btn" data-ng-if="ctrlEmailDelegate.search.accounts">
                             <button class="btn btn-default" type="button" aria-label="{{ 'common_cancel' | translate }}"
                                     data-ng-click="ctrlEmailDelegate.emptySearch()"

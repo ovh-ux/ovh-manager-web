@@ -239,7 +239,7 @@
                                     <input type="text" class="form-control" id="searchFtp" name="searchFtp" placeholder="{{:: 'hosting_tab_DOMAINS_search_placeholder' | translate }}"
                                            data-ng-change="ctrlHostingTabFTP.goSearch()"
                                            data-ng-model="ctrlHostingTabFTP.search.value"
-                                           data-ng-model-options='{ debounce: 800 }'>
+                                           data-ng-model-options="{ debounce: 800 }">
                                     <div class="input-group-btn" data-ng-if="ctrlHostingTabFTP.search.value">
                                         <button class="btn btn-default" type="button" aria-label="{{ 'common_cancel' | translate }}"
                                                 data-ng-click="ctrlHostingTabFTP.resetSearch()">
