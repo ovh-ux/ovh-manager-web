@@ -55,7 +55,7 @@
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="searchCron" name="searchCron" placeholder="{{:: 'hosting_tab_DOMAINS_search_placeholder' | translate }}"
                                            data-ng-model="search.text"
-                                           data-ng-model-options='{ debounce: 800 }'>
+                                           data-ng-model-options="{ debounce: 800 }">
                                     <div class="input-group-btn" data-ng-if="search.text">
                                         <button class="btn btn-default" type="button" aria-label="{{ 'common_cancel' | translate }}"
                                                 data-ng-click="search.text = ''">

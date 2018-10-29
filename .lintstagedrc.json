@@ -1,4 +1,7 @@
 {
+  "*.html": [
+    "htmlhint 'client/**/*.html'"
+  ],
   "*.js": [
     "eslint --fix",
     "git add"
