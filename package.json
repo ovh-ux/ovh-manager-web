@@ -1,36 +1,32 @@
 {
   "name": "ovh-manager-web",
   "version": "13.7.14",
-  "description": "OVH Control Panel Web UI",
-  "author": "OVH SAS",
-  "license": "BSD-3-Clause",
   "private": true,
+  "description": "OVH Control Panel Web UI",
   "keywords": [
-    "ovh",
     "control",
-    "panel",
-    "web",
     "dns",
     "domain",
     "email",
     "hosting",
     "mx-plan",
+    "ovh",
+    "panel",
     "private-database",
+    "web",
     "website"
   ],
-  "engines": {
-    "node": ">=8",
-    "yarn": ">=1.0.0"
-  },
+  "license": "BSD-3-Clause",
+  "author": "OVH SAS",
   "scripts": {
-    "start": "webpack-dev-server --env.region=eu",
     "build": "webpack --env.region=eu --env.production",
-    "test": "yarn run lint",
+    "clean": "npx rimraf .cache-loader dist node_modules",
+    "clean:dist": "npx rimraf dist",
     "lint": "run-p lint:css lint:js",
     "lint:css": "stylelint 'client/**/*.less' --fix",
     "lint:js": "eslint --quiet --fix ./client",
-    "clean": "npx rimraf .cache-loader dist node_modules",
-    "clean:dist": "npx rimraf dist",
+    "start": "webpack-dev-server --env.region=eu",
+    "test": "yarn run lint",
     "version": "npx conventional-changelog-cli -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
     "postversion": "git push && git push --tags"
   },
@@ -159,5 +155,9 @@
     "stylelint-config-standard": "^18.2.0",
     "webpack": "^4.5.0",
     "webpack-merge": "^4.1.4"
+  },
+  "engines": {
+    "node": ">=8",
+    "yarn": ">=1.0.0"
   }
 }
