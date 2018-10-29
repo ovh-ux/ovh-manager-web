@@ -449,10 +449,10 @@ angular
     };
   })
   .factory('translateMissingTranslationHandler', $sanitize => translationId => $sanitize(translationId))
-  .config(($translateProvider) => {
+  .config(($translateProvider, LANGUAGES) => {
     let defaultLanguage = 'fr_FR';
 
-    if (localStorage['univers-selected-language']) {
+    if (localStorage['univers-selected-language'] && _.find(LANGUAGES, { value: localStorage['univers-selected-language'] })) {
       defaultLanguage = localStorage['univers-selected-language'];
     } else {
       localStorage['univers-selected-language'] = defaultLanguage;
