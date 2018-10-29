@@ -1,3 +1,13 @@
+<a name="13.7.14"></a>
+## [13.7.14](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.13...v13.7.14) (2018-10-29)
+
+
+### Bug Fixes
+
+* remove sk_SK from language constants ([bded42e](https://github.com/ovh-ux/ovh-manager-web/commit/bded42e))
+
+
+
 <a name="13.7.13"></a>
 ## [13.7.13](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.12...v13.7.13) (2018-10-24)
 
