@@ -1,8 +1,6 @@
 import _ from 'lodash';
 import Chart from 'chart.js';
-
-// eslint-disable-next-line import/no-webpack-loader-syntax, import/no-unresolved, import/extensions
-import 'script-loader!chartjs-plugin-zoom/chartjs-plugin-zoom.min.js';
+import 'chartjs-plugin-zoom';
 
 import template from './chartjs.html';
 
