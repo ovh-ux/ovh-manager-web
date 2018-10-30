@@ -10,7 +10,7 @@ angular.module('App').controller(
       Alerter,
       $filter,
       User,
-      ChartjsFactory,
+      WucChartjsFactory,
       HOSTING_AUTOMATED_EMAILS,
     ) {
       this.$scope = $scope;
@@ -21,7 +21,7 @@ angular.module('App').controller(
       this.Alerter = Alerter;
       this.$filter = $filter;
       this.User = User;
-      this.ChartjsFactory = ChartjsFactory;
+      this.WucChartjsFactory = WucChartjsFactory;
       this.HOSTING_AUTOMATED_EMAILS = HOSTING_AUTOMATED_EMAILS;
     }
 
@@ -94,7 +94,7 @@ angular.module('App').controller(
 
       return this.HostingAutomatedEmails.retrievingVolumes(this.$stateParams.productId)
         .then((data) => {
-          this.stats.chart = new this.ChartjsFactory(angular.copy(this
+          this.stats.chart = new this.WucChartjsFactory(angular.copy(this
             .HOSTING_AUTOMATED_EMAILS.chart));
           this.stats.chart.setAxisOptions('yAxes', {
             type: 'linear',

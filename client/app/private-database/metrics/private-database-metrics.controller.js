@@ -3,14 +3,14 @@ angular
   .controller('PrivateDatabaseMetricsCtrl', class PrivateDatabaseMetricsCtrl {
     constructor(
       $scope, $translate,
-      Alerter, ChartjsFactory, PrivateDatabase,
+      Alerter, WucChartjsFactory, PrivateDatabase,
       PRIVATE_DATABASE_METRICS,
     ) {
       this.$scope = $scope;
       this.$translate = $translate;
 
       this.Alerter = Alerter;
-      this.ChartjsFactory = ChartjsFactory;
+      this.WucChartjsFactory = WucChartjsFactory;
       this.PrivateDatabase = PrivateDatabase;
 
       this.PRIVATE_DATABASE_METRICS = PRIVATE_DATABASE_METRICS;
@@ -56,7 +56,7 @@ angular
                 const settingsForCurrentChart = _(settingsForAllCharts)
                   .merge(currentChartSettings)
                   .value();
-                const chart = new this.ChartjsFactory(settingsForCurrentChart);
+                const chart = new this.WucChartjsFactory(settingsForCurrentChart);
                 const serieName = this.$translate.instant(`privateDatabase_metrics_${chartName}_graph_${currentChartData.metric.replace(/\./g, '_')}`);
                 const serieValue = this.constructor.getChartSeries(currentChartData);
 

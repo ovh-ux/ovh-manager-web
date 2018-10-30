@@ -9,7 +9,7 @@ angular
       HostingStatistics,
       HostingDatabase,
       $q,
-      ChartjsFactory,
+      WucChartjsFactory,
       HOSTING_STATISTICS,
     ) => {
       $scope.selected = {
@@ -58,7 +58,7 @@ angular
       $scope.stats = {};
 
       function refreshChart() {
-        $scope.stats.chart = new ChartjsFactory(angular.copy(HOSTING_STATISTICS.chart));
+        $scope.stats.chart = new WucChartjsFactory(angular.copy(HOSTING_STATISTICS.chart));
         $scope.stats.chart.setAxisOptions('yAxes', {
           type: 'linear',
         });

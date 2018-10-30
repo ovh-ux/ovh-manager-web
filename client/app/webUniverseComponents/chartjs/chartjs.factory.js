@@ -1,6 +1,9 @@
-angular.module('App').factory('ChartjsFactory', (CHARTJS) => {
-  const ChartjsFactory = function ChartjsFactory(data) {
-    _.extend(this, angular.copy(CHARTJS.squeleton), data);
+import angular from 'angular';
+import _ from 'lodash';
+
+export default /* @ngInject */ (WUC_CHARTJS) => {
+  const WucChartjsFactory = function WucChartjsFactory(data) {
+    _.extend(this, angular.copy(WUC_CHARTJS.squeleton), data);
   };
 
   /**
@@ -11,14 +14,14 @@ angular.module('App').factory('ChartjsFactory', (CHARTJS) => {
    *  - dataset => see chartjs (http://www.chartjs.org/docs/latest/charts/line.html#dataset-properties)
    * @return {Object} new added serie
    */
-  ChartjsFactory.prototype.addSerie = function addSerie(name, data, opts) {
+  WucChartjsFactory.prototype.addSerie = function addSerie(name, data, opts) {
     const options = opts || {};
     this.data.datasets.push(_.extend(
       {
         label: name,
         data,
       },
-      CHARTJS.colors[this.data.datasets.length % CHARTJS.colors.length],
+      WUC_CHARTJS.colors[this.data.datasets.length % WUC_CHARTJS.colors.length],
       options.dataset,
     ));
     return _.last(this.data.datasets);
@@ -29,7 +32,7 @@ angular.module('App').factory('ChartjsFactory', (CHARTJS) => {
    * @param   {String} name     Name of the callback
    * @param {Function} callback Callback
    */
-  ChartjsFactory.prototype.setTooltipCallback = function setTooltipCallback(name, callback) {
+  WucChartjsFactory.prototype.setTooltipCallback = function setTooltipCallback(name, callback) {
     if (!this.options.tooltips) {
       this.options.tooltips = {};
     }
@@ -45,7 +48,7 @@ angular.module('App').factory('ChartjsFactory', (CHARTJS) => {
    * @param           {object} options Options to merge
    * @param {Number|undefined} index Index of axis or all
    */
-  ChartjsFactory.prototype.setAxisOptions = function setAxisOptions(axis, options, index) {
+  WucChartjsFactory.prototype.setAxisOptions = function setAxisOptions(axis, options, index) {
     if (_.isUndefined(index)) {
       this.options.scales[axis].forEach((data) => {
         _.merge(data, options);
@@ -59,7 +62,7 @@ angular.module('App').factory('ChartjsFactory', (CHARTJS) => {
    * Set title on the Y Label
    * @param {String} label Label to set
    */
-  ChartjsFactory.prototype.setYLabel = function setYLabel(label) {
+  WucChartjsFactory.prototype.setYLabel = function setYLabel(label) {
     if (
       this.options.scales.yAxes.length
       && _.first(this.options.scales.yAxes)
@@ -69,5 +72,5 @@ angular.module('App').factory('ChartjsFactory', (CHARTJS) => {
     }
   };
 
-  return ChartjsFactory;
-});
+  return WucChartjsFactory;
+};

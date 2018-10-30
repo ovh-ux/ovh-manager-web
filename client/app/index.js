@@ -22,8 +22,6 @@ import 'script-loader!ovh-ui-angular/dist/oui-angular.min.js';
 import 'script-loader!@bower_components/jquery.scrollTo/jquery.scrollTo.min.js';
 import 'script-loader!angular-dynamic-locale/dist/tmhDynamicLocale.js';
 import 'script-loader!@bower_components/angular-flash-alert/dist/angular-flash.min.js';
-import 'script-loader!chart.js/dist/Chart.min.js';
-import 'script-loader!chartjs-plugin-zoom/chartjs-plugin-zoom.min.js';
 import 'script-loader!jquery.cookie/jquery.cookie.js';
 import 'script-loader!@bower_components/bootstrap/dist/js/bootstrap.min.js';
 import 'script-loader!angular-ui-bootstrap/dist/ui-bootstrap-tpls.js';
