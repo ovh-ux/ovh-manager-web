@@ -1367,7 +1367,21 @@ angular-sanitize@~1.6.9:
   resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.6.10.tgz#635a362afb2dd040179f17d3a5455962b2c1918f"
   integrity sha512-01i1Xoq9ykUrsoYQMSB6dWZmPp9Df5hfCqMAGGzJBWZ7L2WY0OtUphdI0YvR8ZF9lAsWtGNtsEFilObjq5nTgQ==
 
-angular-translate@^2.18.1:
+angular-translate-loader-partial@^2.18.1:
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/angular-translate-loader-partial/-/angular-translate-loader-partial-2.18.1.tgz#1f4ec31c32c3d7b4371e39682444f6a6b84f1f88"
+  integrity sha512-+bPzY3+F2I1tb+X5bscvZq0OGoVEVkHwPGZvaY4nhbktpshArYpvIEV+RQFUa/QNj8vQc3iQ/pruJDb8w3zIdw==
+  dependencies:
+    angular-translate "~2.18.1"
+
+angular-translate-loader-static-files@^2.18.1:
+  version "2.18.1"
+  resolved "https://registry.yarnpkg.com/angular-translate-loader-static-files/-/angular-translate-loader-static-files-2.18.1.tgz#ad0c3c883b18b089bdb8db02bbd366d903f857cc"
+  integrity sha512-5MuyzAROfc493kjLjKlLGLBzXiRmZIFbcWZGutDRxW5SRXSpwrH0u0hh0ENNnUyUQbe2vUspHNPIuZqlq8qIhw==
+  dependencies:
+    angular-translate "~2.18.1"
+
+angular-translate@^2.18.1, angular-translate@~2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/angular-translate/-/angular-translate-2.18.1.tgz#b29ed0d2f9bac44075e7aad3284166c59e150791"
   integrity sha512-Mw0kFBqsv5j8ItL9IhRZunIlVmIRW6iFsiTmRs9wGr2QTt8z4rehYlWyHos8qnXc/kyOYJiW50iH50CSNHGB9A==
