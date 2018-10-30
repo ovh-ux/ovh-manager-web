@@ -29,7 +29,6 @@ import 'script-loader!@bower_components/bootstrap/dist/js/bootstrap.min.js';
 import 'script-loader!angular-ui-bootstrap/dist/ui-bootstrap-tpls.js';
 import 'script-loader!@bower_components/moment-picker/dist/angular-moment-picker.min.js';
 import 'script-loader!raphael/raphael.min.js';
-import 'script-loader!justgage/justgage.js';
 import 'script-loader!@ovh-ux/ovh-utils-angular/bin/ovh-utils-angular.min.js';
 import 'script-loader!@ovh-ux/ovh-utils-angular/lib/core.js';
 import 'script-loader!punycode/punycode.js';
