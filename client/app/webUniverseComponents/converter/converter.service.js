@@ -88,41 +88,4 @@ export default class {
 
     return this.def[baseUnit].val * nb;
   }
-
-  /**
-   * Convert a number to its best unit => Now use (filesize)[https://github.com/avoidwork/filesize.js]
-   * @param  {number} nb                Number to convert
-   * @param  {string} unit              Unit of the number to convert
-   * @param  {number} [decimalWanted=0] Number of decimal wanted
-   * @return {Object}                   An object composed with the number converted and its unit
-   */
-  convertBytesSize(nb, unit, decimalWanted = 0) {
-    if (
-      !_.isNumber(Number(nb))
-      || !_.isString(unit)
-      || !_.isNumber(decimalWanted)
-      || nb <= 0
-      || decimalWanted < 0
-    ) {
-      throw new Error('Wrong parameter(s)');
-    }
-
-    let convertedNb;
-
-    try {
-      convertedNb = this.convertToOctet(nb, unit);
-    } catch (err) {
-      throw err;
-    }
-
-    const bestUnitIndex = Math.floor(Math.log(convertedNb) / Math.log(this.base));
-
-    convertedNb = `${(convertedNb / this.def[bestUnitIndex].val).toFixed(decimalWanted)}`;
-    const bestUnit = this.$translate.instant(`unit_size_${this.def[bestUnitIndex].unit}`);
-
-    return {
-      val: convertedNb,
-      unit: bestUnit,
-    };
-  }
 }
