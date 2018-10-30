@@ -1,5 +1,6 @@
 import asyncLoaderFactory from './async-loader.factory';
 import config from './config/config';
+import webUniverseComponents from './webUniverseComponents';
 
 angular
   .module('App', [
@@ -44,6 +45,7 @@ angular
     'Module.microsoft',
     'Module.sharepoint',
     'Module.emailpro',
+    webUniverseComponents,
   ])
   .constant('constants', {
     prodMode: config.prodMode,
