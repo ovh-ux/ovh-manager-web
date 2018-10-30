@@ -10,14 +10,14 @@
     .service('Hosting', class Hosting {
       constructor(
         $q, $http, $rootScope, $stateParams,
-        constants, ConverterService, HOSTING, OvhHttp, Poll, Products,
+        constants, WucConverterService, HOSTING, OvhHttp, Poll, Products,
       ) {
         this.$q = $q;
         this.$http = $http;
         this.$rootScope = $rootScope;
         this.$stateParams = $stateParams;
         this.constants = constants;
-        this.ConverterService = ConverterService;
+        this.WucConverterService = WucConverterService;
         this.HOSTING = HOSTING;
         this.OvhHttp = OvhHttp;
         this.Poll = Poll;
@@ -179,11 +179,11 @@
             hosting.configurationQuota = this.HOSTING.cloudWeb.configurationQuota;
             hosting.totalQuota = _.clone(this.HOSTING.cloudWeb.configurationQuota);
 
-            const configurationOctet = this.ConverterService.convertToOctet(
+            const configurationOctet = this.WucConverterService.convertToOctet(
               hosting.configurationQuota.value,
               hosting.configurationQuota.unit,
             );
-            const quotaSizeOctet = this.ConverterService.convertToOctet(
+            const quotaSizeOctet = this.WucConverterService.convertToOctet(
               hosting.quotaSize.value,
               hosting.quotaSize.unit,
             );

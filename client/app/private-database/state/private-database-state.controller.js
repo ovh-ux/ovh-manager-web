@@ -8,7 +8,7 @@ angular.module('App').controller(
       $stateParams,
       $translate,
       Alerter,
-      ConverterService,
+      WucConverterService,
       Hosting,
       Navigator,
       OomService,
@@ -21,7 +21,7 @@ angular.module('App').controller(
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.alerter = Alerter;
-      this.converterService = ConverterService;
+      this.converterService = WucConverterService;
       this.hostingService = Hosting;
       this.navigatorService = Navigator;
       this.oomService = OomService;

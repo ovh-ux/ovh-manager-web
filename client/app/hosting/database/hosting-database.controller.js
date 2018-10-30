@@ -8,7 +8,7 @@ angular.module('App').controller(
       $timeout,
       $translate,
       Alerter,
-      ConverterService,
+      WucConverterService,
       Hosting,
       HostingDatabase,
     ) {
@@ -18,7 +18,7 @@ angular.module('App').controller(
       this.$timeout = $timeout;
       this.$translate = $translate;
       this.alerter = Alerter;
-      this.converterService = ConverterService;
+      this.converterService = WucConverterService;
       this.hostingService = Hosting;
       this.hostingDatabaseService = HostingDatabase;
     }

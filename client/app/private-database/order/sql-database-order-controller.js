@@ -4,7 +4,7 @@ angular.module('App').controller(
     constructor(
       $q, $scope, $stateParams, $timeout, $translate, $window,
       atInternet,
-      ConverterService, Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, User,
+      WucConverterService, Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, User,
     ) {
       this.$q = $q;
       this.$scope = $scope;
@@ -14,7 +14,7 @@ angular.module('App').controller(
       this.$window = $window;
 
       this.atInternet = atInternet;
-      this.converterService = ConverterService;
+      this.converterService = WucConverterService;
       this.Hosting = Hosting;
       this.HostingDatabase = HostingDatabase;
       this.HostingOptionOrder = HostingOptionOrder;
