@@ -2,8 +2,8 @@ angular.module('directives').controller('cronEditorCtrl', [
   '$scope',
   '$rootScope',
   '$timeout',
-  'CronValidator',
-  ($scope, $rootScope, $timeout, CronValidator) => {
+  'WucCronValidator',
+  ($scope, $rootScope, $timeout, WucCronValidator) => {
     // Hack for trads
     $scope.tr = $rootScope.tr;
     $scope.trpl = $rootScope.trpl;
@@ -12,7 +12,7 @@ angular.module('directives').controller('cronEditorCtrl', [
     $scope.mode = $scope.crontabObject.getCronMode();
 
     $scope.switchToSimpleMode = () => {
-      const isSuccessful = CronValidator.switchToSimpleMode(
+      const isSuccessful = WucCronValidator.switchToSimpleMode(
         $scope.cron,
         $scope.mode,
       );
@@ -20,13 +20,13 @@ angular.module('directives').controller('cronEditorCtrl', [
     };
 
     $scope.switchToExpertMode = () => {
-      CronValidator.switchToExpertMode($scope.cron, $scope.mode);
+      WucCronValidator.switchToExpertMode($scope.cron, $scope.mode);
     };
 
-    $scope.cronSimpleValueIsValid = field => CronValidator
+    $scope.cronSimpleValueIsValid = field => WucCronValidator
       .cronSimpleValueIsValid(field, $scope.cron, $scope.mode);
 
-    $scope.cronExpertValueIsValid = field => CronValidator
+    $scope.cronExpertValueIsValid = field => WucCronValidator
       .cronExpertValueIsValid(field, $scope.cron);
 
     function getCaretPosition(elem) {
