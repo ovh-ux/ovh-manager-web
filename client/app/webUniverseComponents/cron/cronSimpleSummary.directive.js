@@ -1,4 +1,3 @@
-
 import template from './cronSimpleSummary.html';
 
 export default () => ({
