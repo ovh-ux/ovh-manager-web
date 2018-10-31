@@ -2,7 +2,6 @@ import angular from 'angular';
 
 import WucCronValidator from './cron-validator';
 
-
 const moduleName = 'wucCronValidator';
 
 angular
