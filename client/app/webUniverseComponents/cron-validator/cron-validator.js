@@ -1,4 +1,7 @@
-angular.module('services').service('CronValidator', function cronValidator() {
+import angular from 'angular';
+import _ from 'lodash';
+
+export default function cronValidator() {
   const self = this;
 
   let cronMinutes = '?';
@@ -58,17 +61,17 @@ angular.module('services').service('CronValidator', function cronValidator() {
   /**
    * @constructor
    */
-  this.CrontabObject = function crontabObject(CronValidator) {
-    const cron = new CronValidator.CronValue();
-    const mode = new CronValidator.CronMode();
+  this.CrontabObject = function crontabObject(WucCronValidator) {
+    const cron = new WucCronValidator.CronValue();
+    const mode = new WucCronValidator.CronMode();
 
-    this.isValid = () => CronValidator.isCronValid(cron, mode);
+    this.isValid = () => WucCronValidator.isCronValid(cron, mode);
 
     this.setCrontab = (crontab) => {
-      CronValidator.initializeFromCrontab(crontab, cron, mode);
+      WucCronValidator.initializeFromCrontab(crontab, cron, mode);
     };
 
-    this.getCrontab = () => CronValidator.toCrontab(cron, mode);
+    this.getCrontab = () => WucCronValidator.toCrontab(cron, mode);
 
     this.getCronValue = () => cron;
 
@@ -427,4 +430,4 @@ angular.module('services').service('CronValidator', function cronValidator() {
 
   this.cronExpertValueIsValid = (field, cronValue) => cronValue.expert[field]
     && validacron[field].test(cronValue.expert[field]);
-});
+}

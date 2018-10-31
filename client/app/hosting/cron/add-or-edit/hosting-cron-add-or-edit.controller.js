@@ -9,7 +9,7 @@ angular
       Alerter,
       Hosting,
       HostingCron,
-      CronValidator,
+      WucCronValidator,
     ) => {
       const actionData = angular.copy($scope.currentActionData); // For edition
 
@@ -24,7 +24,7 @@ angular
 
       // Object used to communicate with the cronEditor directive.
       // See definition in cronEditor.controller.js.
-      $scope.crontabObject = CronValidator.makeCrontabObject();
+      $scope.crontabObject = WucCronValidator.makeCrontabObject();
 
       $scope.isPathValid = () => Hosting.constructor.isPathValid($scope.selected.command);
 
