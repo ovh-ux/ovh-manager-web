@@ -4,7 +4,7 @@ angular.module('App').controller(
     constructor(
       $q, $scope, $stateParams, $timeout, $translate, $window,
       atInternet,
-      ConverterService, Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, User,
+      WucConverterService, Hosting, HostingDatabase, HostingOptionOrder, PrivateDatabase, User,
     ) {
       this.$q = $q;
       this.$scope = $scope;
@@ -14,7 +14,7 @@ angular.module('App').controller(
       this.$window = $window;
 
       this.atInternet = atInternet;
-      this.converterService = ConverterService;
+      this.WucConverterService = WucConverterService;
       this.Hosting = Hosting;
       this.HostingDatabase = HostingDatabase;
       this.HostingOptionOrder = HostingOptionOrder;
@@ -63,7 +63,7 @@ angular.module('App').controller(
     }
 
     convertBytesSize(nb, unit = 'MB') {
-      const res = filesize(this.converterService.convertToOctet(nb, unit), { output: 'object', round: 0, base: -1 });
+      const res = filesize(this.WucConverterService.convertToOctet(nb, unit), { output: 'object', round: 0, base: -1 });
       const resUnit = this.$translate.instant(`unit_size_${res.symbol}`);
 
       return `${res.value} ${resUnit}`;
