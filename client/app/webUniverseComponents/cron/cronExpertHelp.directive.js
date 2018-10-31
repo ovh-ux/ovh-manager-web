@@ -1,4 +1,3 @@
-
 import template from './cronExpertHelp.html';
 
 export default () => ({
