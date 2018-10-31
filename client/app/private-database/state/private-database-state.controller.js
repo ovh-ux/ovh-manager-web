@@ -8,7 +8,7 @@ angular.module('App').controller(
       $stateParams,
       $translate,
       Alerter,
-      ConverterService,
+      WucConverterService,
       Hosting,
       Navigator,
       OomService,
@@ -21,7 +21,7 @@ angular.module('App').controller(
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.alerter = Alerter;
-      this.converterService = ConverterService;
+      this.WucConverterService = WucConverterService;
       this.hostingService = Hosting;
       this.navigatorService = Navigator;
       this.oomService = OomService;
@@ -52,7 +52,7 @@ angular.module('App').controller(
     }
 
     convertBytesSize(nb, unit, decimalWanted = 0) {
-      const res = filesize(this.converterService.convertToOctet(nb, unit), {
+      const res = filesize(this.WucConverterService.convertToOctet(nb, unit), {
         output: 'object',
         round: decimalWanted,
         base: -1,

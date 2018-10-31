@@ -8,7 +8,7 @@ angular
       $q,
       $timeout,
       $translate,
-      ConverterService,
+      WucConverterService,
       Hosting,
       Screenshot,
       Alerter,
@@ -58,7 +58,7 @@ angular
       });
 
       $scope.convertBytesSize = (nb, unit, decimalWanted = 0) => {
-        const res = filesize(ConverterService.convertToOctet(nb, unit), {
+        const res = filesize(WucConverterService.convertToOctet(nb, unit), {
           output: 'object',
           round: decimalWanted,
           base: -1,
