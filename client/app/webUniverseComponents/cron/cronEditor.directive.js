@@ -1,4 +1,3 @@
-
 import template from './cronEdit.html';
 
 export default () => ({
