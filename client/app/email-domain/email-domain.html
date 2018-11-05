@@ -11,12 +11,12 @@
     </div>
 
     <div data-ng-controller="EmailDomainTabsCtrl as ctrlEmailDomainTabs">
-        <ovh-tabs tabs="ctrlEmailDomainTabs.tabs"
+        <wuc-ovh-tabs tabs="ctrlEmailDomainTabs.tabs"
                   selected-tab="ctrlEmailDomainTabs.selectedTab"
                   product="email"
                   change-tab="ctrlEmailDomainTabs.setSelectedTab"
                   tr="tr"
-                  menu="ctrlEmailDomainTabs.tabMenu"></ovh-tabs>
+                  menu="ctrlEmailDomainTabs.tabMenu"></wuc-ovh-tabs>
         <div class="tab-content">
             <div data-ovh-alert="{{alerts.tabs}}"></div>
             <div class="tab-pane active"

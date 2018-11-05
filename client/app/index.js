@@ -43,7 +43,6 @@ import 'script-loader!ovh-angular-tail-logs/dist/ovh-angular-tail-logs.min.js';
 import 'script-loader!ovh-angular-proxy-request/dist/ovh-angular-proxy-request.min.js';
 import 'script-loader!ovh-angular-q-allsettled/dist/ovh-angular-q-allsettled.min.js';
 import 'script-loader!ovh-angular-http/dist/ovh-angular-http.js';
-import 'script-loader!df-tab-menu/build/df-tab-menu.min.js';
 import 'script-loader!ovh-angular-swimming-poll/dist/ovh-angular-swimming-poll.min.js';
 import 'script-loader!validator/validator.min.js';
 import 'script-loader!ovh-angular-export-csv/dist/ovh-angular-export-csv.js';

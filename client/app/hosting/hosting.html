@@ -91,12 +91,12 @@
 
 <div data-ng-controller="HostingTabsCtrl as ctrlHostingTabs"
      data-ng-if="!loadingHostingInformations && !loadingHostingError && !hosting.isExpired">
-    <ovh-tabs tabs="ctrlHostingTabs.tabs"
+    <wuc-ovh-tabs tabs="ctrlHostingTabs.tabs"
               selected-tab="ctrlHostingTabs.selectedTab"
               change-tab="ctrlHostingTabs.setSelectedTab"
               product="hosting"
               menu="ctrlHostingTabs.tabMenu"
-              tr="tr"></ovh-tabs>
+              tr="tr"></wuc-ovh-tabs>
     <div class="tab-content">
         <div data-ovh-alert="{{alerts.tabs}}"></div>
 

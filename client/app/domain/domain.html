@@ -83,12 +83,12 @@
         </div>
 
         <div data-ng-controller="DomainTabsCtrl as ctrlDomainTabs" data-ng-if="!ctrlDomain.domain.isExpired">
-            <ovh-tabs tabs="ctrlDomainTabs.tabs"
+            <wuc-ovh-tabs tabs="ctrlDomainTabs.tabs"
                       selected-tab="ctrlDomainTabs.selectedTab"
                       change-tab="ctrlDomainTabs.setSelectedTab"
                       product="domain"
                       menu="ctrlDomainTabs.tabMenu"
-                      tr="tr"></ovh-tabs>
+                      tr="tr"></wuc-ovh-tabs>
             <div class="tab-content">
                 <div data-ovh-alert="{{alerts.tabs}}"></div>
 
