@@ -1,11 +1,11 @@
 angular.module('services').service(
   'HostingDatabase',
   class HostingDatabase {
-    constructor($q, $rootScope, Hosting, JavaEnum, OvhHttp, Poller) {
+    constructor($q, $rootScope, Hosting, WucJavaEnum, OvhHttp, Poller) {
       this.$q = $q;
       this.$rootScope = $rootScope;
       this.Hosting = Hosting;
-      this.JavaEnum = JavaEnum;
+      this.WucJavaEnum = WucJavaEnum;
       this.OvhHttp = OvhHttp;
       this.Poller = Poller;
     }
@@ -290,7 +290,7 @@ angular.module('services').service(
      */
     dumpDatabaseOptions() {
       return this.Hosting.getModels().then(models => ({
-        dumpDates: models.models['hosting.web.database.dump.DateEnum'].enum.map(model => this.JavaEnum.tr(model)),
+        dumpDates: models.models['hosting.web.database.dump.DateEnum'].enum.map(model => this.WucJavaEnum.tr(model)),
       }));
     }
 
@@ -312,7 +312,7 @@ angular.module('services').service(
         })
         .then(({ hosting, capabilities, models }) => ({
           availableDatabases: capabilities.map(capa => ({
-            type: this.JavaEnum.tr(capa.type),
+            type: this.WucJavaEnum.tr(capa.type),
             quota: capa.quota,
             extraSqlQuota:
               capa.type === 'extraSqlPerso' ? `_${capa.quota.value}` : null,
@@ -320,7 +320,7 @@ angular.module('services').service(
           })),
           databaseTypes: models.models[
             'hosting.web.database.DatabaseTypeEnum'
-          ].enum.map(m => this.JavaEnum.tr(m)),
+          ].enum.map(m => this.WucJavaEnum.tr(m)),
           primaryLogin: hosting.primaryLogin,
         }));
     }
