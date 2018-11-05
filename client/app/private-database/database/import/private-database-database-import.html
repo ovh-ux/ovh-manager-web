@@ -66,7 +66,7 @@
                         <label class="control-label" for="uploadFileFile"
                                data-translate="hosting_tab_DATABASES_table_popover_import_step1_upload_file_file"></label>
                         <input type="file" name="file" id="uploadFileFile" required
-                               data-file-change="importBddCtrl.onFileChange(importBddCtrl.formFileUpload.file)"
+                               data-wuc-file-change="importBddCtrl.onFileChange(importBddCtrl.formFileUpload.file)"
                                data-ng-model="importBddCtrl.file">
                         <small class="help-block"
                                data-ng-repeat="(type, isError) in importBddCtrl.formFileUpload.file.$error track by $index"
