@@ -83,4 +83,4 @@ import './app.js';
 import './css/source.less';
 import './css/source.scss';
 
-/* eslint-disable import/no-webpack-loader-syntax, import/no-unresolved, import/extensions */
+/* eslint-enable import/no-webpack-loader-syntax, import/no-unresolved, import/extensions */
