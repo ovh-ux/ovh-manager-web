@@ -13,7 +13,7 @@ angular.module('App').controller(
       DomainsOwo,
       Hosting,
       HostingDomain,
-      Screenshot,
+      OvhApiScreenshot,
       User,
       constants,
     ) {
@@ -28,7 +28,7 @@ angular.module('App').controller(
       this.DomainsOwo = DomainsOwo;
       this.Hosting = Hosting;
       this.HostingDomain = HostingDomain;
-      this.Screenshot = Screenshot;
+      this.OvhApiScreenshot = OvhApiScreenshot.Aapi();
       this.User = User;
       this.constants = constants;
     }
@@ -238,7 +238,8 @@ angular.module('App').controller(
 
     getScreenshoot(serviceName) {
       this.loading.screenshot = true;
-      return this.Screenshot.getScreenshot(serviceName)
+      return this.OvhApiScreenshot.get({ url: serviceName })
+        .$promise
         .then((screenshot) => {
           this.screenshot = screenshot;
         })
