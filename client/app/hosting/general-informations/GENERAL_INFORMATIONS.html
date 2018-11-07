@@ -309,10 +309,10 @@
                                                 <strong class="oui-tile__term d-block"
                                                         data-translate="hosting_dashboard_service_privatesql"></strong>
                                                 <div data-ng-if="hosting.sqlPriveInfo.nbDataBaseInclude > 0">
-                                                    <div data-progress-bar-element-counter
-                                                         data-pbec-nb-elements="hosting.sqlPriveInfo.nbDataBaseActive"
-                                                         data-pbec-max-elements="hosting.sqlPriveInfo.nbDataBaseInclude"
-                                                         data-pbec-upper-limit="cloudWebUnlimitedQuantity"></div>
+                                                    <div data-wuc-progress-bar-element-counter
+                                                         data-wuc-pbec-nb-elements="hosting.sqlPriveInfo.nbDataBaseActive"
+                                                         data-wuc-pbec-max-elements="hosting.sqlPriveInfo.nbDataBaseInclude"
+                                                         data-wuc-pbec-upper-limit="cloudWebUnlimitedQuantity"></div>
                                                 </div>
                                                 <oui-action-menu data-text="{{:: 'hosting_dashboard_service_privatesql_more' | translate }}" data-ng-if="privateDatabasesLinked.length > 0">
                                                     <div data-ng-repeat="privateDb in privateDatabasesLinked track by privateDb.name">
@@ -347,10 +347,10 @@
                                     <div class="oui-tile__definition">
                                         <strong class="oui-tile__term d-block"
                                                 data-translate="hosting_dashboard_databases"></strong>
-                                        <div data-progress-bar-element-counter
-                                             data-pbec-nb-elements="hosting.databaseCount"
-                                             data-pbec-max-elements="hosting.databaseMax"
-                                             data-pbec-upper-limit="cloudWebUnlimitedQuantity">
+                                        <div data-wuc-progress-bar-element-counter
+                                             data-wuc-pbec-nb-elements="hosting.databaseCount"
+                                             data-wuc-pbec-max-elements="hosting.databaseMax"
+                                             data-wuc-pbec-upper-limit="cloudWebUnlimitedQuantity">
                                         </div>
                                     </div>
                                 </li>
