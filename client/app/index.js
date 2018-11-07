@@ -53,7 +53,7 @@ import 'script-loader!at-internet-ui-router-plugin/dist/at-internet-ui-router-pl
 import 'script-loader!@bower_components/randexp/build/randexp.min.js';
 import 'script-loader!ovh-angular-user-pref/dist/ovh-angular-user-pref.min.js';
 import 'script-loader!ng-file-upload/dist/ng-file-upload.min.js';
-import 'script-loader!@bower_components/angular-xeditable/dist/js/xeditable.min.js';
+import 'angular-xeditable';
 import 'script-loader!jsurl/lib/jsurl.js';
 import 'script-loader!ovh-angular-sso-auth/dist/ovh-angular-sso-auth.js';
 import 'script-loader!ovh-angular-sso-auth-modal-plugin/dist/ovh-angular-sso-auth-modal-plugin.js';
@@ -83,4 +83,4 @@ import './app.js';
 import './css/source.less';
 import './css/source.scss';
 
-/* eslint-disable import/no-webpack-loader-syntax, import/no-unresolved, import/extensions */
+/* eslint-enable import/no-webpack-loader-syntax, import/no-unresolved, import/extensions */
