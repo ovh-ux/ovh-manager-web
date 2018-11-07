@@ -8,7 +8,7 @@ angular.module('App').controller(
       $scope,
       $stateParams,
       $translate,
-      Validator,
+      WucValidator,
     ) {
       this.alerter = Alerter;
       this.whitelistService = WhitelistService;
@@ -16,7 +16,7 @@ angular.module('App').controller(
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
-      this.validator = Validator;
+      this.validator = WucValidator;
     }
 
     $onInit() {

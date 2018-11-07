@@ -1,12 +1,12 @@
 angular.module('controllers').controller(
   'controllers.Domain.Glue.AddOrEdit',
   class DomainGlueAddOrEditCtrl {
-    constructor($scope, $translate, Alerter, Domain, Validator) {
+    constructor($scope, $translate, Alerter, Domain, WucValidator) {
       this.$scope = $scope;
       this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
-      this.Validator = Validator;
+      this.WucValidator = WucValidator;
     }
 
     $onInit() {
@@ -46,7 +46,7 @@ angular.module('controllers').controller(
     hostCheck(input) {
       input.$setValidity(
         'host',
-        this.Validator.isValidSubDomain(this.model.host),
+        this.WucValidator.isValidSubDomain(this.model.host),
       );
     }
 
@@ -60,9 +60,9 @@ angular.module('controllers').controller(
         valid = !_.isEmpty(model.ips)
           && _.every(
             model.ips,
-            ip => this.Validator.isValidIpv4(ip)
+            ip => this.WucValidator.isValidIpv4(ip)
               || (_.get(this.domain, 'glueRecordIpv6Supported', false)
-                && this.Validator.isValidIpv6(ip)),
+                && this.WucValidator.isValidIpv6(ip)),
           );
       }
 

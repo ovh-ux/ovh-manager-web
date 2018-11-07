@@ -12,7 +12,7 @@ angular
       HostingRuntimes,
       Alerter,
       $q,
-      Validator,
+      WucValidator,
       COMPOSED_TLD,
     ) => {
       $scope.model = {
@@ -34,7 +34,7 @@ angular
         runtimes: [],
       };
 
-      $scope.MAX_DOMAIN_LENGTH = Validator.MAX_DOMAIN_LENGTH;
+      $scope.MAX_DOMAIN_LENGTH = WucValidator.MAX_DOMAIN_LENGTH;
 
       $scope.isStep1Valid = () => {
         if (!$scope.model.options) {
@@ -389,7 +389,7 @@ angular
       $scope.domainIsNotValid = () => {
         if ($scope.selected.ssl) {
           return $scope.getSelectedDomain()
-            ? !Validator.isValidDomain($scope.getSelectedDomain(), {
+            ? !WucValidator.isValidDomain($scope.getSelectedDomain(), {
               canBeginWithWildcard: true,
             })
             : false;

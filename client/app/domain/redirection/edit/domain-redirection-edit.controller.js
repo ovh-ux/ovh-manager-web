@@ -7,15 +7,15 @@ angular.module('controllers').controller(
      * @param {Object} $rootScope
      * @param {Object} Alerter
      * @param {Object} DomainRedirection
-     * @param {Object} Validator
+     * @param {Object} WucValidator
      */
-    constructor($scope, $rootScope, $translate, Alerter, DomainRedirection, Validator) {
+    constructor($scope, $rootScope, $translate, Alerter, DomainRedirection, WucValidator) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$translate = $translate;
       this.alerter = Alerter;
       this.service = DomainRedirection;
-      this.validator = Validator;
+      this.validator = WucValidator;
     }
 
     $onInit() {

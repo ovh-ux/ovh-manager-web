@@ -10,7 +10,7 @@ angular.module('App').controller(
       PrivateDatabase,
       Hosting,
       WhitelistService,
-      Validator,
+      WucValidator,
     ) {
       this.$scope = $scope;
       this.$q = $q;
@@ -20,7 +20,7 @@ angular.module('App').controller(
       this.PrivateDatabase = PrivateDatabase;
       this.Hosting = Hosting;
       this.whitelistService = WhitelistService;
-      this.validator = Validator;
+      this.validator = WucValidator;
     }
 
     $onInit() {
