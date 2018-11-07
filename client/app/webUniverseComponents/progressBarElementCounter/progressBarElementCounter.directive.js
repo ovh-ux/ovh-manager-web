@@ -1,13 +1,16 @@
-angular.module('directives').directive('progressBarElementCounter', () => ({
+import _ from 'lodash';
+
+import template from './progressBarElementCounter.html';
+
+export default () => ({
   restrict: 'A',
   replace: true,
   scope: {
-    nbElements: '=pbecNbElements',
-    maxElements: '=pbecMaxElements',
-    upperLimit: '=pbecUpperLimit',
+    nbElements: '=wucPbecNbElements',
+    maxElements: '=wucPbecMaxElements',
+    upperLimit: '=wucPbecUpperLimit',
   },
-  templateUrl:
-    'components/progressBarElementCounter/progressBarElementCounter.html',
+  template,
   link($scope) {
     $scope.fakeElements = [];
     $scope.$watch('maxElements', (maxElements) => {
@@ -16,4 +19,4 @@ angular.module('directives').directive('progressBarElementCounter', () => ({
       }
     });
   },
-}));
+});
