@@ -937,29 +937,6 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.2.tgz#54c5a964462be3d4d78af631363c18d6fa91ac26"
   integrity sha512-yprFYuno9FtNsSHVlSWd+nRlmGoAbqbeCwOryP6sC/zoCjhpArcRMYp19EvpSUSizJAlsXEwJv+wcWS9XaXdMw==
 
-"@ovh-ux/component-rollup-config@^1.0.0":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/component-rollup-config/-/component-rollup-config-1.1.2.tgz#68ff9c5b203ec97cabc00a29849b8e1b68f9ef8a"
-  integrity sha512-BfHVEH+0rlrl9N5JWMaAPoDRP1hZTI0VJoD5Sn8INrHtfWMT+014V/5kR06SjhAN0Vv1zfqFNJsVZgCxeow0zA==
-  dependencies:
-    "@babel/core" "^7.1.2"
-    "@babel/plugin-syntax-dynamic-import" "^7.0.0"
-    "@ovh-ux/translations-build-tools" "^1.0.0"
-    babel-plugin-angularjs-annotate "^0.9.0"
-    glob "^7.1.3"
-    lodash "^4.17.11"
-    magic-string "^0.25.1"
-    mkdirp "^0.5.1"
-    require-package-name "^2.0.1"
-    rollup "^0.66.6"
-    rollup-plugin-babel "^4.0.3"
-    rollup-plugin-commonjs "^9.2.0"
-    rollup-plugin-html "^0.2.1"
-    rollup-plugin-less "^0.1.4"
-    rollup-plugin-node-resolve "^3.4.0"
-    rollup-plugin-postcss "^1.6.2"
-    rollup-pluginutils "^2.3.3"
-
 "@ovh-ux/component-rollup-config@^2.1.2":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@ovh-ux/component-rollup-config/-/component-rollup-config-2.1.5.tgz#768f3b75898ae0bb993137d0876f6ade768a6309"
@@ -982,10 +959,10 @@
     rollup-pluginutils "^2.3.3"
     slash "^2.0.0"
 
-"@ovh-ux/manager-webpack-config@^2.4.0":
-  version "2.4.5"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-webpack-config/-/manager-webpack-config-2.4.5.tgz#323e44fd039c93e1fcf6bb980c1ea0956e31fafa"
-  integrity sha512-W5Kgmc7/jLEPRdt/678LBUpNhwSQ1jMIhjzZ77zgMla2B7DrM8/x6EmteNV4rxwUFToUhXS7p0nsdIFszVDUQQ==
+"@ovh-ux/manager-webpack-config@^2.4.6":
+  version "2.4.6"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-webpack-config/-/manager-webpack-config-2.4.6.tgz#3b6e74dfe1899d53f81bd27e9bf790b706ab9d5a"
+  integrity sha512-WvWsKJSLV7aGFKx4Tq7NeQbDy2ussZfl5eqpZaxGSFtVFxZiRJh30x9bXZppaqLTZx9DtoMzeLcws2e3N56PKA==
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/generator" "^7.0.0"
@@ -1041,21 +1018,10 @@
   resolved "https://registry.yarnpkg.com/@ovh-ux/ovh-utils-angular/-/ovh-utils-angular-13.0.2.tgz#02fa3eb989537a0aeee7888d12443cca0ff552d6"
   integrity sha512-+dHN29j7xwU/xx2hfQeZYQad003JIe43FhyZfUjZ6mw/oRPt1Sg1Gi6YSmSKLI6UkmJ0Af9d6NEglP2GLK+Rdg==
 
-"@ovh-ux/translate-async-loader@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/translate-async-loader/-/translate-async-loader-1.0.4.tgz#f04e3cd71de46492701ff026bc605edcb75c2ee8"
-  integrity sha512-MvAjnZC4kmzJ83jOzKYV3P5J+UfImIcEJZHPxA0n5aaqjbr/8RlvaZRrONrEuWQKqWD9brBrwNnHQtqqp5CTWA==
-  dependencies:
-    "@ovh-ux/component-rollup-config" "^1.0.0"
-
-"@ovh-ux/translations-build-tools@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/translations-build-tools/-/translations-build-tools-1.0.0.tgz#318af155edbe4e758c67554582f3683b787cfb0f"
-  integrity sha512-lbmAHGh9x2o5i72fdWLXQoFs7QRQNSmbDKLXibALHR5f3YGXdHgQrPddcNugB8ElXe7xlX2Rf59IakLuj4R20g==
-  dependencies:
-    loader-utils "^1.1.0"
-    lodash "^4.17.11"
-    rollup-pluginutils "^2.3.3"
+"@ovh-ux/translate-async-loader@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/translate-async-loader/-/translate-async-loader-1.0.5.tgz#aeaf678c85a7fa24d7547fa5226e1a981a69a4f9"
+  integrity sha512-CzINPgQc5JrloYoJ5UtQ/OAtEUlEh+aDxDSEolvDmZVFHZce2rG7t3jdYlmeN9PsGPFsOj76VYgB8+GigaSyEg==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -10160,11 +10126,6 @@ require-main-filename@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/require-main-filename/-/require-main-filename-1.0.1.tgz#97f717b69d48784f5f526a6c5aa8ffdda055a4d1"
   integrity sha1-l/cXtp1IeE9fUmpsWqj/3aBVpNE=
-
-require-package-name@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/require-package-name/-/require-package-name-2.0.1.tgz#c11e97276b65b8e2923f75dabf5fb2ef0c3841b9"
-  integrity sha1-wR6XJ2tluOKSP3Xav1+y7ww4Qbk=
 
 require-uncached@^1.0.3:
   version "1.0.3"
