@@ -5,6 +5,7 @@ import wucCron from './cron';
 import wucCronValidator from './cron-validator';
 import wucExpiration from './expiration';
 import wucFileChange from './fileChange';
+import wucFileEditor from './fileEditor';
 import wucJavaEnum from './java-enum';
 import wucOvhFileReader from './ovhFileReader';
 import wucProgressBarElementCounter from './progressBarElementCounter';
@@ -18,6 +19,7 @@ angular
     wucCronValidator,
     wucExpiration,
     wucFileChange,
+    wucFileEditor,
     wucJavaEnum,
     wucOvhFileReader,
     wucProgressBarElementCounter,
