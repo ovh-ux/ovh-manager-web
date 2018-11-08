@@ -523,6 +523,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_remove_success_finish" qtlid="232453">Het domein is verwijderd van uw hosting pack.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_partial" qtlid="197518">Sommige domeinen worden van uw webhosting afgekoppeld, maar bij anderen zijn fouten opgetreden.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_failure" qtlid="197531">Er is een fout opgetreden bij het ​​loskoppelen van het domein van uw webhosting.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_failure_inprogress">La mise à jour de votre ou vos domaines a échoué car une autre opération est en cours. Veuillez réessayer ultérieurement.</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_modify_title" qtlid="211476">Een domein wijzigen</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_question" qtlid="197544">U gaat het volgende domein wijzigen:</translation>
@@ -1108,16 +1109,11 @@
 
    <translation id="hosting_tab_CRON_configuration_create_title_button" qtlid="201185">Een planning toevoegen</translation>
    <translation id="hosting_tab_CRON_configuration_edit_title_button" qtlid="199182">De taak bewerken</translation>
-   <translation id="hosting_tab_CRON_step2_title" qtlid="199195">Selecteer de frequentie voor deze taak:</translation>
-   <translation id="hosting_tab_CRON_step2_expert_help" qtlid="199208">Stel de periode vast in het "Crontab" format, en voeg de waarden toe voor het uur ("{0}"), de dag ("{1}"), de maand ("{2}"), en de weekdag ("{3}").</translation>
-   <translation id="hosting_tab_CRON_step2_expert_toocomplicated" qtlid="199221">De waarden zijn te complex om in de eenvoudige modus te gebruiken.</translation>
    <translation id="hosting_tab_CRON_step3_title" qtlid="199234">Overzicht van de taak</translation>
    <translation id="hosting_tab_CRON_save_success" qtlid="199247">De nieuwe taak zal binnen enkele ogenblikken (+- 2 minuten) hier beschikbaar worden.</translation>
    <translation id="hosting_tab_CRON_save_error" qtlid="199260">Bij het maken van een taak is een fout opgetreden.</translation>
    <translation id="hosting_tab_CRON_edit_success" qtlid="199273">De taak is gewijzigd.</translation>
    <translation id="hosting_tab_CRON_edit_error" qtlid="199286">Bij het bewerken van de taak {0} is een fout opgetreden.</translation>
-   <translation id="hosting_tab_CRON_simple_mode" qtlid="102849">Eenvoudige modus</translation>
-   <translation id="hosting_tab_CRON_expert_mode" qtlid="64616">Gevorderden modus</translation>
    <translation id="hosting_tab_CRON_label_description" qtlid="9238">Beschrijving</translation>
    <translation id="hosting_tab_CRON_label_status" qtlid="33790">Status</translation>
    <translation id="hosting_tab_CRON_label_activate" qtlid="74958">Activatie</translation>
@@ -1128,45 +1124,6 @@
    <translation id="hosting_tab_CRON_label_email" qtlid="199338">Logs per e-mail</translation>
    <translation id="hosting_tab_CRON_label_email_info" qtlid="296726">Alleen verzonden als er een fout is opgetreden</translation>
    <translation id="hosting_tab_CRON_label_crontab" qtlid="199351">Crontab</translation>
-   <translation id="hosting_tab_CRON_label_hours" qtlid="8842">Uren</translation>
-   <translation id="hosting_tab_CRON_label_hours_min" qtlid="44236">uren</translation>
-   <translation id="hosting_tab_CRON_label_days" qtlid="73505">Dagen</translation>
-   <translation id="hosting_tab_CRON_label_days_min" qtlid="44260">dagen</translation>
-   <translation id="hosting_tab_CRON_label_dow" qtlid="8854">Werkdagen</translation>
-   <translation id="hosting_tab_CRON_label_dow_min" qtlid="199364">weekdagen</translation>
-   <translation id="hosting_tab_CRON_label_months" qtlid="37803">Maand</translation>
-   <translation id="hosting_tab_CRON_label_months_min" qtlid="40222">maand</translation>
-   <translation id="hosting_tab_CRON_hours_all" qtlid="8782">Ieder uur</translation>
-   <translation id="hosting_tab_CRON_hours_items" qtlid="199377">Vaste tijden</translation>
-   <translation id="hosting_tab_CRON_hours_interval" qtlid="199390">Alle N uren</translation>
-   <translation id="hosting_tab_CRON_hours_interval_value" qtlid="199403">Alle {0} uren</translation>
-   <translation id="hosting_tab_CRON_hours_range" qtlid="199416">Tijd van - tot</translation>
-   <translation id="hosting_tab_CRON_dom_all" qtlid="154091">Elke dag</translation>
-   <translation id="hosting_tab_CRON_dom_items" qtlid="61908">vaste dagen</translation>
-   <translation id="hosting_tab_CRON_dom_interval" qtlid="199429">Alle N dagen</translation>
-   <translation id="hosting_tab_CRON_dom_interval_value" qtlid="199442">Alle {0} dagen</translation>
-   <translation id="hosting_tab_CRON_dom_range" qtlid="199455">Dag van - tot</translation>
-   <translation id="hosting_tab_CRON_dow_all" qtlid="199468">Alle weekdagen</translation>
-   <translation id="hosting_tab_CRON_dow_items" qtlid="199481">Vaste weekdagen</translation>
-   <translation id="hosting_tab_CRON_dow_interval" qtlid="199494">Alle N weekdagen</translation>
-   <translation id="hosting_tab_CRON_dow_interval_value" qtlid="199507">Alle {0} weekdagen</translation>
-   <translation id="hosting_tab_CRON_dow_range" qtlid="199520">Weekdag van - tot</translation>
-   <translation id="hosting_tab_CRON_mon_all" qtlid="199533">Iedere maand</translation>
-   <translation id="hosting_tab_CRON_mon_items" qtlid="199546">Vastgestelde maanden</translation>
-   <translation id="hosting_tab_CRON_mon_interval" qtlid="199559">Elke N maand(en)</translation>
-   <translation id="hosting_tab_CRON_mon_interval_value" qtlid="199572">Alle {0} maanden</translation>
-   <translation id="hosting_tab_CRON_mon_range" qtlid="199585">Van de ene maand tot de andere</translation>
-   <translation id="hosting_tab_CRON_interval_pre_m" qtlid="62304">alle</translation>
-   <translation id="hosting_tab_CRON_interval_pre_f" qtlid="199598">Alle</translation>
-   <translation id="hosting_tab_CRON_hours_range_from" qtlid="69077">Van</translation>
-   <translation id="hosting_tab_CRON_hours_range_to" qtlid="8890">Op</translation>
-   <translation id="hosting_tab_CRON_dom_range_from" qtlid="88725">Van</translation>
-   <translation id="hosting_tab_CRON_dom_range_to" qtlid="35904">op</translation>
-   <translation id="hosting_tab_CRON_dow_range_from" qtlid="88725">Van</translation>
-   <translation id="hosting_tab_CRON_dow_range_to" qtlid="35904">op</translation>
-   <translation id="hosting_tab_CRON_mon_range_from" qtlid="69077">Van</translation>
-   <translation id="hosting_tab_CRON_mon_range_to" qtlid="8890">Op</translation>
-   <translation id="hosting_tab_CRON_hours_value" qtlid="199611">{0} uur</translation>
    <translation id="hosting_tab_CRON_email_nic-admin" qtlid="199624">Admin NIC </translation>
    <translation id="hosting_tab_CRON_email_nic-tech" qtlid="199637">Tech NIC </translation>
    <translation id="hosting_tab_CRON_email_no" qtlid="34788">Nee</translation>
@@ -1175,23 +1132,9 @@
    <translation id="hosting_tab_CRON_edit_task" qtlid="37875">Wijzigen</translation>
    <translation id="hosting_tab_CRON_delete_task" qtlid="2414">Verwijderen</translation>
 
-
    <translation id="hosting_tab_CRON_table_status_enabled" qtlid="30250">Geactiveerd</translation>
    <translation id="hosting_tab_CRON_table_status_disabled" qtlid="24967">Gedeactiveerd</translation>
    <translation id="hosting_tab_CRON_table_status_suspended" qtlid="136100">Vervallen</translation>
-
-   <translation id="hosting_tab_CRON_step2_help_m" qtlid="199663">Minuten (0 tot 59)</translation>
-   <translation id="hosting_tab_CRON_step2_help_h" qtlid="199676">Uren (0 tot 23)</translation>
-   <translation id="hosting_tab_CRON_step2_help_dom" qtlid="199689">Dag van de maand (1 tot 31)</translation>
-   <translation id="hosting_tab_CRON_step2_help_mon" qtlid="199702">Maand (1 tot 12, of {0} tot {1})</translation>
-   <translation id="hosting_tab_CRON_step2_help_dow" qtlid="263038">Dag van de week (van 0 tot 7, of van {0} tot {1})</translation>
-   <translation id="hosting_tab_CRON_step2_help_subtitle1" qtlid="199728">Notatie voorbeelden:</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_1" qtlid="199741">alle units</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_2" qtlid="199754">alleen 2 en 4</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_3" qtlid="199767">units tussen 4 en 7 (4,5,6,7)</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_4" qtlid="199780">alle 3 units (0,3,6,..)</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_5" qtlid="199793">alle 3 units, maar alleen tussen 10 en 20 (10,13,16,19)</translation>
-   <translation id="hosting_tab_CRON_step2_help_subtitle2" qtlid="199806">De notulen worden genegeerd.</translation>
 
    <translation id="hosting_tab_STATISTICS_type" qtlid="2642">Type</translation>
    <translation id="hosting_tab_STATISTICS_none" qtlid="199819">Er zijn geen statistieken voorhanden</translation>

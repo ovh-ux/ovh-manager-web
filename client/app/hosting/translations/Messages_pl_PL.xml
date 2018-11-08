@@ -523,6 +523,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_remove_success_finish" qtlid="232453">Domena została odłączona od hostingu. </translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_partial" qtlid="197518">Niektóre domeny zostaną odłączone od hostingu, ale dla innych pojawiły się błędy.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_failure" qtlid="197531">Wystąpił błąd podczas odłączania domeny od hostingu.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_failure_inprogress">La mise à jour de votre ou vos domaines a échoué car une autre opération est en cours. Veuillez réessayer ultérieurement.</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_modify_title" qtlid="211476">Zmień domenę</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_question" qtlid="197544">Dokonasz zmian dla następującej domeny:</translation>
@@ -1108,16 +1109,11 @@
 
    <translation id="hosting_tab_CRON_configuration_create_title_button" qtlid="201185">Dodaj zadanie</translation>
    <translation id="hosting_tab_CRON_configuration_edit_title_button" qtlid="199182">Edytuj zadanie</translation>
-   <translation id="hosting_tab_CRON_step2_title" qtlid="199195">Wybierz częstotliwość wykonywania tego zadania:</translation>
-   <translation id="hosting_tab_CRON_step2_expert_help" qtlid="199208">Zdefiniuj okres w formacie "Crontab", wprowadzając wartości dla godziny ("{0}"), dnia ("{1}"), miesiąca ("{2}"), i dnia tygodnia ("{3}").</translation>
-   <translation id="hosting_tab_CRON_step2_expert_toocomplicated" qtlid="199221">Wartości są zbyt złożone, aby przejść do trybu prostego.</translation>
    <translation id="hosting_tab_CRON_step3_title" qtlid="199234">Podsumowanie zadania</translation>
    <translation id="hosting_tab_CRON_save_success" qtlid="199247">Nowe zadanie będzie dostępne za kilka minut (+- 2 minuty).</translation>
    <translation id="hosting_tab_CRON_save_error" qtlid="199260">Wystąpił błąd podczas dodawania zadania.</translation>
    <translation id="hosting_tab_CRON_edit_success" qtlid="199273">Zadania zostało zmodyfikowane.</translation>
    <translation id="hosting_tab_CRON_edit_error" qtlid="199286">Wystąpił błąd podczas edytowania zadania {0}.</translation>
-   <translation id="hosting_tab_CRON_simple_mode" qtlid="102849">Tryb prosty</translation>
-   <translation id="hosting_tab_CRON_expert_mode" qtlid="64616">Tryb expert</translation>
    <translation id="hosting_tab_CRON_label_description" qtlid="9238">Opis</translation>
    <translation id="hosting_tab_CRON_label_status" qtlid="33790">Status</translation>
    <translation id="hosting_tab_CRON_label_activate" qtlid="74958">Włącz</translation>
@@ -1128,45 +1124,6 @@
    <translation id="hosting_tab_CRON_label_email" qtlid="199338">Logi na e-mail</translation>
    <translation id="hosting_tab_CRON_label_email_info" qtlid="296726">Wysyłane tylko w przypadku błędu</translation>
    <translation id="hosting_tab_CRON_label_crontab" qtlid="199351">Crontab</translation>
-   <translation id="hosting_tab_CRON_label_hours" qtlid="8842">Godziny</translation>
-   <translation id="hosting_tab_CRON_label_hours_min" qtlid="44236">godzin(y)</translation>
-   <translation id="hosting_tab_CRON_label_days" qtlid="73505">Dni</translation>
-   <translation id="hosting_tab_CRON_label_days_min" qtlid="44260">dni</translation>
-   <translation id="hosting_tab_CRON_label_dow" qtlid="8854">Dni tygodnia</translation>
-   <translation id="hosting_tab_CRON_label_dow_min" qtlid="199364">dni tygodnia</translation>
-   <translation id="hosting_tab_CRON_label_months" qtlid="37803">Miesiąc</translation>
-   <translation id="hosting_tab_CRON_label_months_min" qtlid="40222">miesiąc</translation>
-   <translation id="hosting_tab_CRON_hours_all" qtlid="8782">Co godzinę</translation>
-   <translation id="hosting_tab_CRON_hours_items" qtlid="199377">Pełne godziny</translation>
-   <translation id="hosting_tab_CRON_hours_interval" qtlid="199390">Co N godzin(y)</translation>
-   <translation id="hosting_tab_CRON_hours_interval_value" qtlid="199403">Co {0} godzin(y)</translation>
-   <translation id="hosting_tab_CRON_hours_range" qtlid="199416">Od tej do tej godziny</translation>
-   <translation id="hosting_tab_CRON_dom_all" qtlid="154091">Codziennie</translation>
-   <translation id="hosting_tab_CRON_dom_items" qtlid="61908">Dni stałe</translation>
-   <translation id="hosting_tab_CRON_dom_interval" qtlid="199429">Co N dni</translation>
-   <translation id="hosting_tab_CRON_dom_interval_value" qtlid="199442">Co {0} dni</translation>
-   <translation id="hosting_tab_CRON_dom_range" qtlid="199455">Od tego do tego dnia</translation>
-   <translation id="hosting_tab_CRON_dow_all" qtlid="199468">Każdego dnia tygodnia</translation>
-   <translation id="hosting_tab_CRON_dow_items" qtlid="199481">Określone dni tygodnia</translation>
-   <translation id="hosting_tab_CRON_dow_interval" qtlid="199494">Co N dni tygodnia</translation>
-   <translation id="hosting_tab_CRON_dow_interval_value" qtlid="199507">Co {0} dni tygodnia</translation>
-   <translation id="hosting_tab_CRON_dow_range" qtlid="199520">Od tego dnia tygodnia do tego dnia tygodnia</translation>
-   <translation id="hosting_tab_CRON_mon_all" qtlid="199533">Co miesiąc</translation>
-   <translation id="hosting_tab_CRON_mon_items" qtlid="199546">Określone miesiące</translation>
-   <translation id="hosting_tab_CRON_mon_interval" qtlid="199559">Co N miesiące / miesięcy</translation>
-   <translation id="hosting_tab_CRON_mon_interval_value" qtlid="199572">Co {0} miesiące / miesięcy</translation>
-   <translation id="hosting_tab_CRON_mon_range" qtlid="199585">Od tego miesiąca do tego miesiąca</translation>
-   <translation id="hosting_tab_CRON_interval_pre_m" qtlid="62304">Każdego</translation>
-   <translation id="hosting_tab_CRON_interval_pre_f" qtlid="199598">Co</translation>
-   <translation id="hosting_tab_CRON_hours_range_from" qtlid="69077">Od</translation>
-   <translation id="hosting_tab_CRON_hours_range_to" qtlid="8890">à</translation>
-   <translation id="hosting_tab_CRON_dom_range_from" qtlid="88725">Od</translation>
-   <translation id="hosting_tab_CRON_dom_range_to" qtlid="35904">do</translation>
-   <translation id="hosting_tab_CRON_dow_range_from" qtlid="88725">Od</translation>
-   <translation id="hosting_tab_CRON_dow_range_to" qtlid="35904">do</translation>
-   <translation id="hosting_tab_CRON_mon_range_from" qtlid="69077">Od</translation>
-   <translation id="hosting_tab_CRON_mon_range_to" qtlid="8890">à</translation>
-   <translation id="hosting_tab_CRON_hours_value" qtlid="199611">{0} h</translation>
    <translation id="hosting_tab_CRON_email_nic-admin" qtlid="199624">NIC Admin</translation>
    <translation id="hosting_tab_CRON_email_nic-tech" qtlid="199637">NIC Tech</translation>
    <translation id="hosting_tab_CRON_email_no" qtlid="34788">Nie</translation>
@@ -1175,23 +1132,9 @@
    <translation id="hosting_tab_CRON_edit_task" qtlid="37875">Zmień</translation>
    <translation id="hosting_tab_CRON_delete_task" qtlid="2414">Usuń</translation>
 
-
    <translation id="hosting_tab_CRON_table_status_enabled" qtlid="30250">Aktywny</translation>
    <translation id="hosting_tab_CRON_table_status_disabled" qtlid="24967">Wyłączony</translation>
    <translation id="hosting_tab_CRON_table_status_suspended" qtlid="136100">Zawieszone</translation>
-
-   <translation id="hosting_tab_CRON_step2_help_m" qtlid="199663">Minuta (od 0 do 59)</translation>
-   <translation id="hosting_tab_CRON_step2_help_h" qtlid="199676">Godzina (od 0 do 23)</translation>
-   <translation id="hosting_tab_CRON_step2_help_dom" qtlid="199689">Dni miesiąca (od 1 do 31)</translation>
-   <translation id="hosting_tab_CRON_step2_help_mon" qtlid="199702">Miesiąc (od 1 do 12 lub od {0} do {1})</translation>
-   <translation id="hosting_tab_CRON_step2_help_dow" qtlid="263038">Dzień tygodnia (od 0 do 7 lub od {0} do {1})</translation>
-   <translation id="hosting_tab_CRON_step2_help_subtitle1" qtlid="199728">Przykłady zapisywania:</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_1" qtlid="199741">wszystkie jednostki</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_2" qtlid="199754">tylko 2 i 4</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_3" qtlid="199767">jednostki między 4 i 7 (4,5,6,7)</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_4" qtlid="199780">co 3 jednostki (0,3,6,..)</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_5" qtlid="199793">co 3 jednostki, ale tylko między 10 i 20 (10,13,16,19)</translation>
-   <translation id="hosting_tab_CRON_step2_help_subtitle2" qtlid="199806">Minuty są ignorowane.</translation>
 
    <translation id="hosting_tab_STATISTICS_type" qtlid="2642">Typ</translation>
    <translation id="hosting_tab_STATISTICS_none" qtlid="199819">Brak statystyk do wyświetlenia.</translation>
