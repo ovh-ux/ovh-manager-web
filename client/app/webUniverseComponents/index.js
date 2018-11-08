@@ -10,6 +10,7 @@ import wucFileEditor from './fileEditor';
 import wucJavaEnum from './java-enum';
 import wucOvhFileReader from './ovhFileReader';
 import wucProgressBarElementCounter from './progressBarElementCounter';
+import wucV6UiSwitch from './v6UiSwitch';
 
 const moduleName = 'webUniverseComponents';
 
@@ -25,6 +26,7 @@ angular
     wucJavaEnum,
     wucOvhFileReader,
     wucProgressBarElementCounter,
+    wucV6UiSwitch,
   ]);
 
 export default moduleName;
