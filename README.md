@@ -45,9 +45,13 @@ yarn test
 
 ## Related
 
-* [Dedicated Control Panel UI](https://github.com/ovh-ux/ovh-manager-dedicated).
-* [Cloud Control Panel UI](https://github.com/ovh-ux/ovh-manager-cloud).
-* [Telecom Control Panel UI](https://github.com/ovh-ux/ovh-manager-telecom).
+* [ovh-manager-dedicated](https://github.com/ovh-ux/ovh-manager-dedicated) - OVH Control Panel Dedicated UI
+* [ovh-manager-cloud](https://github.com/ovh-ux/ovh-manager-cloud) - OVH Control Panel Cloud UI
+* [ovh-manager-telecom](https://github.com/ovh-ux/ovh-manager-telecom) - OVH Control Panel Telecom UI
+* [ovh-module-emailpro](https://github.com/ovh-ux/ovh-module-emailpro) - Web Module Emailpro
+* [ovh-module-exchange](https://github.com/ovh-ux/ovh-module-exchange) - Web Module Exchange
+* [ovh-module-office](https://github.com/ovh-ux/ovh-module-office) - Web Module Office
+* [ovh-module-sharepoint](https://github.com/ovh-ux/ovh-module-sharepoint) - Web Module Sharepoint
 
 ## Contributing
 

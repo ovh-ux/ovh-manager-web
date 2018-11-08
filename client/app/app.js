@@ -1,5 +1,6 @@
-import asyncLoaderFactory from './async-loader.factory';
+import translateAsyncLoader from '@ovh-ux/translate-async-loader';
 import config from './config/config';
+import webUniverseComponents from './webUniverseComponents';
 
 angular
   .module('App', [
@@ -44,6 +45,8 @@ angular
     'Module.microsoft',
     'Module.sharepoint',
     'Module.emailpro',
+    translateAsyncLoader,
+    webUniverseComponents,
   ])
   .constant('constants', {
     prodMode: config.prodMode,
@@ -77,7 +80,6 @@ angular
   })
   .constant('LANGUAGES', config.constants.LANGUAGES)
   .constant('website_url', config.constants.website_url)
-  .factory('asyncLoader', asyncLoaderFactory)
   .factory('serviceTypeInterceptor', () => ({
     request: (config) => { // eslint-disable-line
       if (/^(\/?engine\/)?2api(-m)?\//.test(config.url)) {

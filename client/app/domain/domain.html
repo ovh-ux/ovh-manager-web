@@ -14,16 +14,16 @@
                       <h1 class="word-break mb-0"
                           data-ng-bind="ctrlDomain.domain.displayName"></h1>
                     </div>
-                    <service-expiration-date data-ng-if="!ctrlDomain.isAllDom && ctrlDomain.domain.name && ctrlDomain.domainInfos"
+                    <wuc-service-expiration-date data-ng-if="!ctrlDomain.isAllDom && ctrlDomain.domain.name && ctrlDomain.domainInfos"
                                              service-name="ctrlDomain.domain.name"
                                              service-type="DOMAIN"
                                              service-infos="ctrlDomain.domainInfos">
-                    </service-expiration-date>
-                    <service-expiration-date data-ng-if="ctrlDomain.isAllDom && ctrlDomain.allDom && ctrlDomain.allDomInfos"
+                    </wuc-service-expiration-date>
+                    <wuc-service-expiration-date data-ng-if="ctrlDomain.isAllDom && ctrlDomain.allDom && ctrlDomain.allDomInfos"
                                              service-name="ctrlDomain.allDom"
                                              service-type="ALL_DOM"
                                              service-infos="ctrlDomain.allDomInfos">
-                    </service-expiration-date>
+                    </wuc-service-expiration-date>
                 </div>
                 <div class="col-sm-3 d-flex">
                     <div class="btn-group ml-auto mt-4">

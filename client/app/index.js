@@ -10,7 +10,7 @@ import 'script-loader!@bower_components/jquery.ui/ui/draggable.js';
 import 'script-loader!@bower_components/jquery.ui/ui/droppable.js';
 import 'script-loader!@bower_components/jquery.ui/ui/resizable.js';
 import 'script-loader!@bower_components/lodash/lodash.min.js';
-import 'script-loader!angular/angular.min.js';
+import 'angular';
 import 'script-loader!angular-aria/angular-aria.min.js';
 import 'script-loader!@bower_components/angular-route/angular-route.min.js';
 import 'script-loader!@bower_components/angular-ui-router/release/angular-ui-router.min.js';
@@ -53,14 +53,14 @@ import 'script-loader!at-internet-ui-router-plugin/dist/at-internet-ui-router-pl
 import 'script-loader!@bower_components/randexp/build/randexp.min.js';
 import 'script-loader!ovh-angular-user-pref/dist/ovh-angular-user-pref.min.js';
 import 'script-loader!ng-file-upload/dist/ng-file-upload.min.js';
-import 'script-loader!@bower_components/angular-xeditable/dist/js/xeditable.min.js';
+import 'angular-xeditable';
 import 'script-loader!jsurl/lib/jsurl.js';
 import 'script-loader!ovh-angular-sso-auth/dist/ovh-angular-sso-auth.js';
 import 'script-loader!ovh-angular-sso-auth-modal-plugin/dist/ovh-angular-sso-auth-modal-plugin.js';
 import 'script-loader!ovh-angular-sidebar-menu/dist/ovh-angular-sidebar-menu.min.js';
-import 'script-loader!angular-translate/dist/angular-translate.min.js';
-import 'script-loader!angular-translate/dist/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js';
-import 'script-loader!angular-translate/dist/angular-translate-loader-partial/angular-translate-loader-partial.min.js';
+import 'angular-translate';
+import 'angular-translate-loader-partial';
+import 'angular-translate-loader-static-files';
 import 'script-loader!@bower_components/ng-slide-down/dist/ng-slide-down.min.js';
 import 'script-loader!ovh-angular-actions-menu/dist/ovh-angular-actions-menu.min.js';
 import 'script-loader!ovh-angular-responsive-popover/dist/ovh-angular-responsive-popover.min.js';
@@ -83,4 +83,4 @@ import './app.js';
 import './css/source.less';
 import './css/source.scss';
 
-/* eslint-disable import/no-webpack-loader-syntax, import/no-unresolved, import/extensions */
+/* eslint-enable import/no-webpack-loader-syntax, import/no-unresolved, import/extensions */

@@ -238,7 +238,7 @@
    <translation id="hosting_dashboard_database_active_title" qtlid="260299">Activación de la base de datos privada incluida</translation>
    <translation id="hosting_dashboard_database_active_info" qtlid="260312">Usted va a activar la base de datos privada incluida en su plan de alojamiento compartido.</translation>
    <translation id="hosting_dashboard_database_active_ram" qtlid="31354">RAM</translation>
-   <translation id="hosting_dashboard_database_active_version" qtlid="34210">Version</translation>
+   <translation id="hosting_dashboard_database_active_version" qtlid="34210">Versión</translation>
    <translation id="hosting_dashboard_database_active_success" qtlid="260325">La base de datos privada se está activando.</translation>
    <translation id="hosting_dashboard_database_active_success_done" qtlid="260338">La base de datos privada se ha activado correctamente.</translation>
    <translation id="hosting_dashboard_database_active_error" qtlid="260351">Se ha producido un error al solicitar la activación de la base de datos privada.</translation>
@@ -523,6 +523,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_remove_success_finish" qtlid="232453">El dominio se ha separado correctamente del alojamiento compartido.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_partial" qtlid="197518">Algunos dominios van a disociarse del alojamiento compartido, pero para otros se han producido errores.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_failure" qtlid="197531">Se ha producido un error al disociar el dominio del alojamiento compartido.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_failure_inprogress">La mise à jour de votre ou vos domaines a échoué car une autre opération est en cours. Veuillez réessayer ultérieurement.</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_modify_title" qtlid="211476">Editar un dominio.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_question" qtlid="197544">Va a editar el siguiente dominio:</translation>
@@ -910,13 +911,13 @@
    <translation id="hosting_configuration_tab_sql_data_base_size" qtlid="7726">Taille</translation>
    <translation id="hosting_configuration_tab_sql_data_base_state" qtlid="434200">Estado</translation>
    <translation id="hosting_configuration_tab_sql_data_base_server" qtlid="8290">Servidor</translation>
-   <translation id="hosting_configuration_tab_sql_data_base_version" qtlid="34210">Version</translation>
+   <translation id="hosting_configuration_tab_sql_data_base_version" qtlid="34210">Versión</translation>
    <translation id="hosting_tab_MODULES_guide_help" qtlid="271517">¿Necesita ayuda para instalar su módulo en solo un clic?</translation>
    <translation id="hosting_configuration_tab_modules_module_name" qtlid="60978">Module</translation>
    <translation id="hosting_configuration_tab_modules_module_path" qtlid="6838">Chemin</translation>
    <translation id="hosting_configuration_tab_modules_status_maintenance" qtlid="215104">Su alojamiento está en mantenimiento. Por favor, vuelva a intentarlo más tarde.</translation>
    <translation id="hosting_configuration_tab_modules_status_bloqued" qtlid="215117">Su alojamiento está bloqueado.</translation>
-   <translation id="hosting_configuration_tab_modules_module_version" qtlid="34210">Version</translation>
+   <translation id="hosting_configuration_tab_modules_module_version" qtlid="34210">Versión</translation>
    <translation id="hosting_configuration_tab_modules_module_login" qtlid="41062">Login</translation>
    <translation id="hosting_configuration_tab_modules_module_add" qtlid="198831">Añadir un módulo</translation>
    <translation id="hosting_configuration_tab_modules_module_config" qtlid="402763">: gestión del módulo</translation>
@@ -1108,16 +1109,11 @@
 
    <translation id="hosting_tab_CRON_configuration_create_title_button" qtlid="201185">Añadir una planificación</translation>
    <translation id="hosting_tab_CRON_configuration_edit_title_button" qtlid="199182">Editar la tarea</translation>
-   <translation id="hosting_tab_CRON_step2_title" qtlid="199195">Seleccione la periodicidad de la tarea:</translation>
-   <translation id="hosting_tab_CRON_step2_expert_help" qtlid="199208">Indique el periodo, en formato Crontab, introduciendo valores para la hora («{0}»), el día («{1}»), el mes («{2}») y el día de la semana («{3}»).</translation>
-   <translation id="hosting_tab_CRON_step2_expert_toocomplicated" qtlid="199221">Los valores son demasiado complejos para pasar a modo simple.</translation>
    <translation id="hosting_tab_CRON_step3_title" qtlid="199234">Resumen de la tarea</translation>
    <translation id="hosting_tab_CRON_save_success" qtlid="199247">La nueva tarea estará disponible enseguida (aprox. 2 minutos).</translation>
    <translation id="hosting_tab_CRON_save_error" qtlid="199260">Se ha producido un error al crear una tarea.</translation>
    <translation id="hosting_tab_CRON_edit_success" qtlid="199273">La tarea se ha editado correctamente.</translation>
    <translation id="hosting_tab_CRON_edit_error" qtlid="199286">Se ha producido un error al editar la tarea {0}.</translation>
-   <translation id="hosting_tab_CRON_simple_mode" qtlid="102849">Mode simple</translation>
-   <translation id="hosting_tab_CRON_expert_mode" qtlid="64616">Mode expert</translation>
    <translation id="hosting_tab_CRON_label_description" qtlid="9238">Descripción</translation>
    <translation id="hosting_tab_CRON_label_status" qtlid="33790">État</translation>
    <translation id="hosting_tab_CRON_label_activate" qtlid="74958">Activation</translation>
@@ -1128,45 +1124,6 @@
    <translation id="hosting_tab_CRON_label_email" qtlid="199338">Logs por email</translation>
    <translation id="hosting_tab_CRON_label_email_info" qtlid="296726">Enviado solo en caso de error</translation>
    <translation id="hosting_tab_CRON_label_crontab" qtlid="199351">Crontab</translation>
-   <translation id="hosting_tab_CRON_label_hours" qtlid="8842">Heures</translation>
-   <translation id="hosting_tab_CRON_label_hours_min" qtlid="44236">heures</translation>
-   <translation id="hosting_tab_CRON_label_days" qtlid="73505">Jours</translation>
-   <translation id="hosting_tab_CRON_label_days_min" qtlid="44260">jours</translation>
-   <translation id="hosting_tab_CRON_label_dow" qtlid="8854">Jours de la semaine</translation>
-   <translation id="hosting_tab_CRON_label_dow_min" qtlid="199364">Días de la semana</translation>
-   <translation id="hosting_tab_CRON_label_months" qtlid="37803">Mois</translation>
-   <translation id="hosting_tab_CRON_label_months_min" qtlid="40222">mois</translation>
-   <translation id="hosting_tab_CRON_hours_all" qtlid="8782">Toutes les heures</translation>
-   <translation id="hosting_tab_CRON_hours_items" qtlid="199377">Horas fijas</translation>
-   <translation id="hosting_tab_CRON_hours_interval" qtlid="199390">Cada N horas</translation>
-   <translation id="hosting_tab_CRON_hours_interval_value" qtlid="199403">Cada {0} horas</translation>
-   <translation id="hosting_tab_CRON_hours_range" qtlid="199416">De tal a tal hora</translation>
-   <translation id="hosting_tab_CRON_dom_all" qtlid="154091">Todos los días</translation>
-   <translation id="hosting_tab_CRON_dom_items" qtlid="61908">Jours fixes</translation>
-   <translation id="hosting_tab_CRON_dom_interval" qtlid="199429">Cada N días</translation>
-   <translation id="hosting_tab_CRON_dom_interval_value" qtlid="199442">Cada {0} días</translation>
-   <translation id="hosting_tab_CRON_dom_range" qtlid="199455">De tal a tal día</translation>
-   <translation id="hosting_tab_CRON_dow_all" qtlid="199468">Todos los días de la semana</translation>
-   <translation id="hosting_tab_CRON_dow_items" qtlid="199481">Días fijos</translation>
-   <translation id="hosting_tab_CRON_dow_interval" qtlid="199494">Cada {N} días</translation>
-   <translation id="hosting_tab_CRON_dow_interval_value" qtlid="199507">Cada {0} días</translation>
-   <translation id="hosting_tab_CRON_dow_range" qtlid="199520">De tal a tal día</translation>
-   <translation id="hosting_tab_CRON_mon_all" qtlid="199533">Todos los meses</translation>
-   <translation id="hosting_tab_CRON_mon_items" qtlid="199546">Meses fijos</translation>
-   <translation id="hosting_tab_CRON_mon_interval" qtlid="199559">Cada N meses</translation>
-   <translation id="hosting_tab_CRON_mon_interval_value" qtlid="199572">Cada {0} meses</translation>
-   <translation id="hosting_tab_CRON_mon_range" qtlid="199585">De tal a tal mes</translation>
-   <translation id="hosting_tab_CRON_interval_pre_m" qtlid="62304">Tous les</translation>
-   <translation id="hosting_tab_CRON_interval_pre_f" qtlid="199598">Cada</translation>
-   <translation id="hosting_tab_CRON_hours_range_from" qtlid="69077">De</translation>
-   <translation id="hosting_tab_CRON_hours_range_to" qtlid="8890">à</translation>
-   <translation id="hosting_tab_CRON_dom_range_from" qtlid="88725">Du</translation>
-   <translation id="hosting_tab_CRON_dom_range_to" qtlid="35904">au</translation>
-   <translation id="hosting_tab_CRON_dow_range_from" qtlid="88725">Du</translation>
-   <translation id="hosting_tab_CRON_dow_range_to" qtlid="35904">au</translation>
-   <translation id="hosting_tab_CRON_mon_range_from" qtlid="69077">De</translation>
-   <translation id="hosting_tab_CRON_mon_range_to" qtlid="8890">à</translation>
-   <translation id="hosting_tab_CRON_hours_value" qtlid="199611">{0} horas</translation>
    <translation id="hosting_tab_CRON_email_nic-admin" qtlid="199624">NIC Admin</translation>
    <translation id="hosting_tab_CRON_email_nic-tech" qtlid="199637">NIC Tech</translation>
    <translation id="hosting_tab_CRON_email_no" qtlid="34788">Non</translation>
@@ -1175,23 +1132,9 @@
    <translation id="hosting_tab_CRON_edit_task" qtlid="37875">Modificar</translation>
    <translation id="hosting_tab_CRON_delete_task" qtlid="2414">Eliminar</translation>
 
-
    <translation id="hosting_tab_CRON_table_status_enabled" qtlid="30250">Activé</translation>
    <translation id="hosting_tab_CRON_table_status_disabled" qtlid="24967">Desactivada</translation>
    <translation id="hosting_tab_CRON_table_status_suspended" qtlid="136100">Suspendido</translation>
-
-   <translation id="hosting_tab_CRON_step2_help_m" qtlid="199663">Minuto (de 0 a 59)</translation>
-   <translation id="hosting_tab_CRON_step2_help_h" qtlid="199676">Hora (de 0 a 23)</translation>
-   <translation id="hosting_tab_CRON_step2_help_dom" qtlid="199689">Día (de 1 a 31)</translation>
-   <translation id="hosting_tab_CRON_step2_help_mon" qtlid="199702">Mes (de 1 a 12, o de {0} a {1})</translation>
-   <translation id="hosting_tab_CRON_step2_help_dow" qtlid="263038">Día de la semana (de 0 a 7 o de {0} a {1})</translation>
-   <translation id="hosting_tab_CRON_step2_help_subtitle1" qtlid="199728">Ejemplos de notación:</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_1" qtlid="199741">todas las unidades</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_2" qtlid="199754">únicamente el 2 y el 4</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_3" qtlid="199767">las unidades entre 4 y 7 (4, 5, 6, 7)</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_4" qtlid="199780">cada 3 unidades (0, 3, 6..)</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_5" qtlid="199793">cada 3 unidades, pero únicamente entre el 10 y el 20 (10, 13, 16, 19)</translation>
-   <translation id="hosting_tab_CRON_step2_help_subtitle2" qtlid="199806">Los minutos se ignorarán.</translation>
 
    <translation id="hosting_tab_STATISTICS_type" qtlid="2642">Tipo</translation>
    <translation id="hosting_tab_STATISTICS_none" qtlid="199819">No hay estadísticas para mostrar</translation>
