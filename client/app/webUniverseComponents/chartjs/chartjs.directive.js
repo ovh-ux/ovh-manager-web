@@ -1,9 +1,7 @@
 import _ from 'lodash';
 
-/* eslint-disable import/no-webpack-loader-syntax, import/no-unresolved, import/extensions */
-import 'script-loader!chart.js/dist/Chart.min.js';
-import 'script-loader!chartjs-plugin-zoom/chartjs-plugin-zoom.min.js';
-/* eslint-enable import/no-webpack-loader-syntax, import/no-unresolved, import/extensions */
+import 'chart.js/dist/Chart.min';
+import 'chartjs-plugin-zoom/chartjs-plugin-zoom';
 
 import template from './chartjs.html';
 
