@@ -17,7 +17,7 @@
 ## Prerequisites
 
 * Node.js v8+
-* Yarn v1.9.0
+* Yarn v1.10.0
 
 ## Install
 
