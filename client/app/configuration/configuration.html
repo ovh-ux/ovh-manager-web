@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" id="main-container" data-ng-controller="UserCtrl">
     <div class="text-center mt-5 py-5">
         <h1 class="d-inline">
             <span data-translate="welcome_to_your_manager_1"></span>
@@ -35,7 +35,7 @@
                                        data-track-click="action"
                                        rel="noopener">
                                        <span data-translate="core_all_guides"></span>
-                                       <span class="fa fa-external-link" aria-label="{{ 'core_new_window' | translate }}"></span>
+                                       <span class="fa fa-external-link" aria-label="{{:: 'core_new_window' | translate }}"></span>
                                     </a>
                                 </div>
                             </li>
