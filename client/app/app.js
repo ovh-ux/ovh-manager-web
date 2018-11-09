@@ -19,7 +19,7 @@ angular
     'ovh-angular-q-allSettled',
     'ovh-angular-http',
     'ngMessages',
-    'flash',
+    'ngFlash',
     'ovh-angular-swimming-poll',
     'vs-repeat',
     'ovh-angular-export-csv',
