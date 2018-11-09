@@ -128,7 +128,7 @@ angular
       $scope.stats = {};
 
       function refreshChart() {
-        $scope.stats.chart = new WucChartjsFactory(HOSTING_STATISTICS);
+        $scope.stats.chart = new WucChartjsFactory(angular.copy(HOSTING_STATISTICS));
         $scope.stats.chart.setAxisOptions('yAxes', {
           type: 'linear',
         });

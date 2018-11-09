@@ -163,7 +163,9 @@ angular.module('App').controller(
 
       return this.HostingAutomatedEmails.retrievingVolumes(this.$stateParams.productId)
         .then((data) => {
-          this.stats.chart = new this.WucChartjsFactory(this.HOSTING_AUTOMATED_EMAILS);
+          this.stats.chart = new this.WucChartjsFactory(
+            angular.copy(this.HOSTING_AUTOMATED_EMAILS),
+          );
           this.stats.chart.setAxisOptions('yAxes', {
             type: 'linear',
           });
