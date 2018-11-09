@@ -73,7 +73,7 @@ angular
                 },
                 time: {
                   displayFormats: {
-                    hour: moment.localeData().longDateFormat('LT'),
+                    hour: 'LT',
                   },
                 },
               },

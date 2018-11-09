@@ -84,7 +84,7 @@ angular
                   },
                   time: {
                     displayFormats: {
-                      hour: moment.localeData().longDateFormat('LT'),
+                      hour: 'LT',
                     },
                   },
                 }],
@@ -132,7 +132,7 @@ angular
                   },
                   time: {
                     displayFormats: {
-                      hour: moment.localeData().longDateFormat('LT'),
+                      hour: 'LT',
                     },
                   },
                 }],
@@ -180,7 +180,7 @@ angular
                   },
                   time: {
                     displayFormats: {
-                      hour: moment.localeData().longDateFormat('LT'),
+                      hour: 'LT',
                     },
                   },
                 }],

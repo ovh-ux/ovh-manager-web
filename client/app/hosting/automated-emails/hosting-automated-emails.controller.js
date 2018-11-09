@@ -84,7 +84,7 @@ angular.module('App').controller(
                 },
                 time: {
                   displayFormats: {
-                    hour: moment.localeData().longDateFormat('LT'),
+                    hour: 'LT',
                   },
                 },
               },
