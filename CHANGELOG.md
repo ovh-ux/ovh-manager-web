@@ -1,3 +1,7 @@
+## [13.8.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.8.1...v13.8.2) (2018-11-09)
+
+
+
 ## [13.8.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.8.0...v13.8.1) (2018-11-09)
 
 
