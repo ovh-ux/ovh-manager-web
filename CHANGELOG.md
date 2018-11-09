@@ -1,3 +1,13 @@
+## [13.8.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.8.0...v13.8.1) (2018-11-09)
+
+
+### Bug Fixes
+
+* **exchange:** upgrade ovh-module-exchange to v9.0.6 ([d05e4e9](https://github.com/ovh-ux/ovh-manager-web/commit/d05e4e9))
+* **exchange:** upgrade ovh-module-exchange to v9.0.7 ([931f093](https://github.com/ovh-ux/ovh-manager-web/commit/931f093))
+
+
+
 # [13.8.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.14...v13.8.0) (2018-11-08)
 
 
