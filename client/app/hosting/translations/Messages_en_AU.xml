@@ -523,6 +523,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_remove_success_finish" qtlid="232453">The domain has been removed from your hosting package.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_partial" qtlid="197518">Some domains were detached from your hosting package, but errors occurred for others.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_failure" qtlid="197531">An error has occurred detaching the domain from your hosting plan.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_failure_inprogress">La mise à jour de votre ou vos domaines a échoué car une autre opération est en cours. Veuillez réessayer ultérieurement.</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_modify_title" qtlid="211476">Modify a domain</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_question" qtlid="197544">You are about to modify the following domain:</translation>
@@ -1108,16 +1109,11 @@
 
    <translation id="hosting_tab_CRON_configuration_create_title_button" qtlid="201185">Add a scheduling</translation>
    <translation id="hosting_tab_CRON_configuration_edit_title_button" qtlid="199182">Edit the task</translation>
-   <translation id="hosting_tab_CRON_step2_title" qtlid="199195">Select the frequency for this task:</translation>
-   <translation id="hosting_tab_CRON_step2_expert_help" qtlid="199208">Define the period in the Crontab format by inserting values for the hour ("{0}"), day ("{1}"), month ("{2}") and day of the week ("{3}").</translation>
-   <translation id="hosting_tab_CRON_step2_expert_toocomplicated" qtlid="199221">The values are to complex to switch to simple mode.</translation>
    <translation id="hosting_tab_CRON_step3_title" qtlid="199234">Task summary</translation>
    <translation id="hosting_tab_CRON_save_success" qtlid="199247">The new task will be available very shortly (+/- 2 minutes).</translation>
    <translation id="hosting_tab_CRON_save_error" qtlid="199260">An error has occurred creating a task.</translation>
    <translation id="hosting_tab_CRON_edit_success" qtlid="199273">The task was modified successfully.</translation>
    <translation id="hosting_tab_CRON_edit_error" qtlid="199286">An error has occurred editing the task {0}.</translation>
-   <translation id="hosting_tab_CRON_simple_mode" qtlid="102849">Basic mode </translation>
-   <translation id="hosting_tab_CRON_expert_mode" qtlid="64616">Advanced mode</translation>
    <translation id="hosting_tab_CRON_label_description" qtlid="9238">Description</translation>
    <translation id="hosting_tab_CRON_label_status" qtlid="33790">Status</translation>
    <translation id="hosting_tab_CRON_label_activate" qtlid="74958">Activation</translation>
@@ -1128,45 +1124,6 @@
    <translation id="hosting_tab_CRON_label_email" qtlid="199338">Logs by email</translation>
    <translation id="hosting_tab_CRON_label_email_info" qtlid="296726">Only sent if there is an error </translation>
    <translation id="hosting_tab_CRON_label_crontab" qtlid="199351">Crontab</translation>
-   <translation id="hosting_tab_CRON_label_hours" qtlid="8842">Hours</translation>
-   <translation id="hosting_tab_CRON_label_hours_min" qtlid="44236">hours</translation>
-   <translation id="hosting_tab_CRON_label_days" qtlid="73505">Days</translation>
-   <translation id="hosting_tab_CRON_label_days_min" qtlid="44260">days</translation>
-   <translation id="hosting_tab_CRON_label_dow" qtlid="8854">Days of the week</translation>
-   <translation id="hosting_tab_CRON_label_dow_min" qtlid="199364">days of the week</translation>
-   <translation id="hosting_tab_CRON_label_months" qtlid="37803">Month</translation>
-   <translation id="hosting_tab_CRON_label_months_min" qtlid="40222">month</translation>
-   <translation id="hosting_tab_CRON_hours_all" qtlid="8782">Hourly</translation>
-   <translation id="hosting_tab_CRON_hours_items" qtlid="199377">Fixed hours</translation>
-   <translation id="hosting_tab_CRON_hours_interval" qtlid="199390">All N hours</translation>
-   <translation id="hosting_tab_CRON_hours_interval_value" qtlid="199403">All {0} hours</translation>
-   <translation id="hosting_tab_CRON_hours_range" qtlid="199416">From such hour to such hour</translation>
-   <translation id="hosting_tab_CRON_dom_all" qtlid="154091">Every day</translation>
-   <translation id="hosting_tab_CRON_dom_items" qtlid="61908">Fixed days</translation>
-   <translation id="hosting_tab_CRON_dom_interval" qtlid="199429">All N days</translation>
-   <translation id="hosting_tab_CRON_dom_interval_value" qtlid="199442">All {0} days</translation>
-   <translation id="hosting_tab_CRON_dom_range" qtlid="199455">From such day to such day</translation>
-   <translation id="hosting_tab_CRON_dow_all" qtlid="199468">All days of the week</translation>
-   <translation id="hosting_tab_CRON_dow_items" qtlid="199481">Fixed days of the week</translation>
-   <translation id="hosting_tab_CRON_dow_interval" qtlid="199494">Every N days of the week</translation>
-   <translation id="hosting_tab_CRON_dow_interval_value" qtlid="199507">Every {0} days of the week</translation>
-   <translation id="hosting_tab_CRON_dow_range" qtlid="199520">From a certain day of the week to another</translation>
-   <translation id="hosting_tab_CRON_mon_all" qtlid="199533">Every month</translation>
-   <translation id="hosting_tab_CRON_mon_items" qtlid="199546">Fixed months</translation>
-   <translation id="hosting_tab_CRON_mon_interval" qtlid="199559">Every N months</translation>
-   <translation id="hosting_tab_CRON_mon_interval_value" qtlid="199572">All {0} months</translation>
-   <translation id="hosting_tab_CRON_mon_range" qtlid="199585">From a certain month to another</translation>
-   <translation id="hosting_tab_CRON_interval_pre_m" qtlid="62304">All the</translation>
-   <translation id="hosting_tab_CRON_interval_pre_f" qtlid="199598">Every</translation>
-   <translation id="hosting_tab_CRON_hours_range_from" qtlid="69077">From</translation>
-   <translation id="hosting_tab_CRON_hours_range_to" qtlid="8890">at</translation>
-   <translation id="hosting_tab_CRON_dom_range_from" qtlid="88725">From</translation>
-   <translation id="hosting_tab_CRON_dom_range_to" qtlid="35904">to</translation>
-   <translation id="hosting_tab_CRON_dow_range_from" qtlid="88725">From</translation>
-   <translation id="hosting_tab_CRON_dow_range_to" qtlid="35904">to</translation>
-   <translation id="hosting_tab_CRON_mon_range_from" qtlid="69077">From</translation>
-   <translation id="hosting_tab_CRON_mon_range_to" qtlid="8890">at</translation>
-   <translation id="hosting_tab_CRON_hours_value" qtlid="199611">{0} hours</translation>
    <translation id="hosting_tab_CRON_email_nic-admin" qtlid="199624">Admin NIC </translation>
    <translation id="hosting_tab_CRON_email_nic-tech" qtlid="199637">Tech NIC </translation>
    <translation id="hosting_tab_CRON_email_no" qtlid="34788">No</translation>
@@ -1175,23 +1132,9 @@
    <translation id="hosting_tab_CRON_edit_task" qtlid="37875">Edit</translation>
    <translation id="hosting_tab_CRON_delete_task" qtlid="2414">Delete</translation>
 
-
    <translation id="hosting_tab_CRON_table_status_enabled" qtlid="30250">Enabled</translation>
    <translation id="hosting_tab_CRON_table_status_disabled" qtlid="24967">Disabled</translation>
    <translation id="hosting_tab_CRON_table_status_suspended" qtlid="136100">Suspended</translation>
-
-   <translation id="hosting_tab_CRON_step2_help_m" qtlid="199663">Minute (0 to 59)</translation>
-   <translation id="hosting_tab_CRON_step2_help_h" qtlid="199676">Hour (0 to 23)</translation>
-   <translation id="hosting_tab_CRON_step2_help_dom" qtlid="199689">Day of the month (1 to 31)</translation>
-   <translation id="hosting_tab_CRON_step2_help_mon" qtlid="199702">Month (1 to 12, or {0} to {1})</translation>
-   <translation id="hosting_tab_CRON_step2_help_dow" qtlid="263038">Weekdays (from 0 to 7, or from {0} to {1})</translation>
-   <translation id="hosting_tab_CRON_step2_help_subtitle1" qtlid="199728">Notation examples:</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_1" qtlid="199741">all units</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_2" qtlid="199754">only 2 and 4</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_3" qtlid="199767">units between 4 and 7 (4, 5, 6, 7)</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_4" qtlid="199780">every 3 units (0, 3, 6...)</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_5" qtlid="199793">every 3 units, but only between 10 and 20 (10, 13, 16, 19)</translation>
-   <translation id="hosting_tab_CRON_step2_help_subtitle2" qtlid="199806">The minutes are ignored.</translation>
 
    <translation id="hosting_tab_STATISTICS_type" qtlid="2642">Type</translation>
    <translation id="hosting_tab_STATISTICS_none" qtlid="199819">There are no statistics to display.</translation>

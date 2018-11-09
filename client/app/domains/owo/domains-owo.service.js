@@ -4,11 +4,11 @@ angular.module('services').service(
     /**
      * Constructor
      * @param OvhHttp
-     * @param JavaEnum
+     * @param WucJavaEnum
      */
-    constructor(OvhHttp, JavaEnum) {
+    constructor(OvhHttp, WucJavaEnum) {
       this.OvhHttp = OvhHttp;
-      this.JavaEnum = JavaEnum;
+      this.WucJavaEnum = WucJavaEnum;
     }
 
     /**
@@ -20,7 +20,7 @@ angular.module('services').service(
         cache: 'models.domain',
       }).then((models) => {
         const owoEnum = models.models['domain.WhoisObfuscatorFieldsEnum'].enum;
-        return owoEnum.map(owo => this.JavaEnum.tr(owo));
+        return owoEnum.map(owo => this.WucJavaEnum.tr(owo));
       });
     }
 

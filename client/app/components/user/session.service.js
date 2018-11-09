@@ -4,6 +4,7 @@ class SessionService {
     $translate,
     constants,
     LANGUAGES,
+    atInternet,
     NavbarNotificationService,
     OtrsPopupService,
     Products,
@@ -14,6 +15,7 @@ class SessionService {
     this.$translate = $translate;
     this.constants = constants;
     this.LANGUAGES = LANGUAGES;
+    this.atInternet = atInternet;
     this.navbarNotificationService = NavbarNotificationService;
     this.otrsPopupService = OtrsPopupService;
     this.products = Products;
@@ -192,6 +194,10 @@ class SessionService {
         title: this.$translate.instant('common_menu_support_all_guides'),
         url: currentSubsidiaryURLs.guides.home,
         isExternal: true,
+        click: () => this.atInternet.trackClick({
+          name: 'assistance::all_guides',
+          type: 'action',
+        }),
       });
     }
 
@@ -205,6 +211,11 @@ class SessionService {
           this.otrsPopupService.toggle();
         }
 
+        this.atInternet.trackClick({
+          name: 'assistance::create_assistance_request',
+          type: 'action',
+        });
+
         if (_.isFunction(callback)) {
           callback();
         }
@@ -215,6 +226,10 @@ class SessionService {
     assistanceMenu.push({
       title: this.$translate.instant('common_menu_support_list_ticket'),
       url: _.get(this.constants, 'REDIRECT_URLS.listTicket', ''),
+      click: () => this.atInternet.trackClick({
+        name: 'assistance::assistance_requests_created',
+        type: 'action',
+      }),
     });
 
     // Telephony (External)
@@ -223,6 +238,10 @@ class SessionService {
         title: this.$translate.instant('common_menu_support_telephony_contact'),
         url: currentSubsidiaryURLs.support_contact,
         isExternal: true,
+        click: () => this.atInternet.trackClick({
+          name: 'assistance::helpline',
+          type: 'action',
+        }),
       });
     }
 
@@ -230,6 +249,10 @@ class SessionService {
       name: 'assistance',
       title: this.$translate.instant('common_menu_support_assistance'),
       iconClass: 'icon-assistance',
+      onClick: () => this.atInternet.trackClick({
+        name: 'assistance',
+        type: 'action',
+      }),
       subLinks: assistanceMenu,
     };
   }
