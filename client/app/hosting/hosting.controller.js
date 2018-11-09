@@ -10,7 +10,7 @@ angular
       $translate,
       WucConverterService,
       Hosting,
-      Screenshot,
+      OvhApiScreenshot,
       Alerter,
       Navigator,
       constants,
@@ -374,7 +374,7 @@ angular
                 checkFlushCdnState();
                 checkSqlPriveState();
                 $scope.getOfferPrivateSQLInfo();
-                return Screenshot.getScreenshot(hosting.serviceName);
+                return OvhApiScreenshot.Aapi().get({ url: hosting.serviceName }).$promise;
               }
               return null;
             },
