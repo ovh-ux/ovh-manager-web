@@ -5,9 +5,9 @@ angular.module('services').service('Products', [
   '$q',
   'constants',
   '$stateParams',
-  'AllDom',
+  'WucAllDom',
   'Emails',
-  function productServices($rootScope, $http, $q, constants, $stateParams, AllDom, Emails) {
+  function productServices($rootScope, $http, $q, constants, $stateParams, WucAllDom, Emails) {
     let products = null;
     let productsByType = null;
     let selectedProduct = {
@@ -47,7 +47,7 @@ angular.module('services').service('Products', [
                       worldPart: constants.target,
                     },
                   }),
-                  AllDom.getAllDoms(true),
+                  WucAllDom.getAllDoms(true),
                   Emails.getDelegatedEmails(),
                 ])
                 .then((data) => {
@@ -100,7 +100,7 @@ angular.module('services').service('Products', [
                     if (allDoms && allDoms.length > 0) {
                       productsByType.allDoms = [];
                       return $q
-                        .allSettled(allDoms.map(allDom => AllDom.getDomains(allDom).then(
+                        .allSettled(allDoms.map(allDom => WucAllDom.getDomains(allDom).then(
                           (domains) => {
                             productDomains = productDomains.filter(d => domains.indexOf(d) === -1);
 

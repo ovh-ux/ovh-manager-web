@@ -9,7 +9,7 @@ angular.module('App').controller(
       $timeout,
       $translate,
       Alerter,
-      AllDom,
+      WucAllDom,
       Domain,
       Hosting,
       User,
@@ -21,7 +21,7 @@ angular.module('App').controller(
       this.$timeout = $timeout;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.AllDom = AllDom;
+      this.WucAllDom = WucAllDom;
       this.Domain = Domain;
       this.Hosting = Hosting;
       this.User = User;
@@ -78,7 +78,7 @@ angular.module('App').controller(
           user: this.User.getUser(),
           domain: this.Domain.getServiceInfo(this.$stateParams.productId),
           allDom: this.isAllDom
-            ? this.AllDom.getServiceInfos(this.$stateParams.allDom)
+            ? this.WucAllDom.getServiceInfos(this.$stateParams.allDom)
             : null,
           alldomOrder: !this.isAllDom ? this.User.getUrlOf('alldomOrder') : null,
         })
