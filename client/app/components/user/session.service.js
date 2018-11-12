@@ -292,6 +292,15 @@ class SessionService {
     this.$translate.use().replace('_', '-').toLowerCase();
   }
 
+  trackUserMenuSection(name, chapter2) {
+    this.atInternet.trackClick({
+      name,
+      type: 'action',
+      chapter1: 'account',
+      chapter2,
+    });
+  }
+
   getUserMenu(currentUser) {
     return {
       name: 'user',
@@ -305,6 +314,7 @@ class SessionService {
           name: 'user.account',
           title: this.$translate.instant('global_account'),
           url: '#/useraccount/infos',
+          click: () => this.trackUserMenuSection('my_account', 'account'),
           subLinks: [{
             title: this.$translate.instant('global_account_infos'),
             url: '#/useraccount/infos',
@@ -333,6 +343,7 @@ class SessionService {
           name: 'user.billing',
           title: this.$translate.instant('global_billing'),
           url: '#/billing/history',
+          click: () => this.trackUserMenuSection('my_facturation', 'billing'),
           subLinks: [{
             title: this.$translate.instant('global_billing_history'),
             url: '#/billing/history',
@@ -347,6 +358,7 @@ class SessionService {
           name: 'user.services',
           title: this.$translate.instant('global_renew'),
           url: '#/billing/autoRenew',
+          click: () => this.trackUserMenuSection('my_services', 'services'),
           subLinks: [{
             title: this.$translate.instant('global_renew_management'),
             url: '#/billing/autoRenew',
@@ -364,6 +376,7 @@ class SessionService {
           name: 'user.payment',
           title: this.$translate.instant('global_means'),
           url: '#/billing/mean',
+          click: () => this.trackUserMenuSection('my_payment_types', 'payment_types'),
           subLinks: [{
             title: this.$translate.instant('global_means_mean'),
             url: '#/billing/mean',
@@ -392,18 +405,21 @@ class SessionService {
         (!currentUser.isEnterprise && this.constants.target === 'EU' && currentUser.ovhSubsidiary === 'FR') && {
           title: this.$translate.instant('global_orders'),
           url: '#/billing/orders',
+          click: () => this.trackUserMenuSection('my_orders', 'orders'),
         },
 
         // Contacts
         (this.constants.target === 'EU') && {
           title: this.$translate.instant('global_contacts'),
           url: '#/useraccount/contacts?tab=SERVICES',
+          click: () => this.trackUserMenuSection('my_contacts', 'contacts'),
         },
 
         // Tickets
         {
           title: this.$translate.instant('global_list_ticket'),
           url: '#/ticket',
+          click: () => this.trackUserMenuSection('my_otrs_tickets', 'otrs'),
         },
 
         // Logout
