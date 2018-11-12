@@ -1,91 +1,42 @@
 import _ from 'lodash';
 
 export default class {
-  constructor($translate) {
+  constructor($translate, WucConverterFactory) {
     'ngInject';
 
     this.$translate = $translate;
 
-    this.base = 1000;
-
-    this.def = [
-      {
-        val: 1,
-        unit: 'B',
-      },
-      {
-        val: this.base,
-        unit: 'KB',
-      },
-      {
-        val: this.base * this.base,
-        unit: 'MB',
-      },
-      {
-        val: this.base * this.base * this.base,
-        unit: 'GB',
-      },
-      {
-        val: this.base * this.base * this.base * this.base,
-        unit: 'TB',
-      },
-      {
-        val: this.base * this.base * this.base * this.base * this.base,
-        unit: 'PB',
-      },
-      {
-        val:
-          this.base
-          * this.base
-          * this.base
-          * this.base
-          * this.base
-          * this.base,
-        unit: 'EB',
-      },
-      {
-        val:
-          this.base
-          * this.base
-          * this.base
-          * this.base
-          * this.base
-          * this.base
-          * this.base,
-        unit: 'ZB',
-      },
-      {
-        val:
-          this.base
-          * this.base
-          * this.base
-          * this.base
-          * this.base
-          * this.base
-          * this.base
-          * this.base,
-        unit: 'YB',
-      },
-    ];
+    this.WucConverterFactory = WucConverterFactory;
   }
 
   /**
    * Convert a number into octet
    * @param  {number} nb   Number to convert
    * @param  {string} unit Unit of the number
+   * @param  {string} system System to use : 'international' or 'binary'
    * @return {number}      the number converted
    */
-  convertToOctet(nb, unit) {
+  convertToOctet(nb, unit, system = 'international') {
     if (!_.isNumber(Number(nb)) || !_.isString(unit)) {
       throw new Error('Wrong parameter(s)');
     }
 
-    const baseUnit = _.findIndex(this.def, { unit });
+    const baseUnit = _.findIndex(this.WucConverterFactory[system].units, { unit });
 
     if (baseUnit < 0) {
       throw new Error('Wrong unit given');
     }
 
-    return this.def[baseUnit].val * nb;
+    return this.WucConverterFactory[system].units[baseUnit].val * nb;
+  }
+
+  getUnitRange(minUnit, maxUnit, system = 'international') {
+    const minIndex = _.findIndex(this.WucConverterFactory[system].units, { unit: minUnit });
+    const maxIndex = _.findIndex(this.WucConverterFactory[system].units, { unit: maxUnit });
+    if (minIndex > maxIndex) {
+      throw new Error('Max unit is lower than min unit');
+    }
+
+    return this.WucConverterFactory[system].units.slice(minIndex, maxIndex + 1);
   }
 }
