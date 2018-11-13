@@ -1,14 +1,14 @@
 angular.module('App').controller(
   'DomainZoneResetCtrl',
   class DomainZoneResetCtrl {
-    constructor($scope, $q, $translate, Alerter, Domain, DomainValidator, Emails, Hosting) {
+    constructor($scope, $q, $translate, Alerter, Domain, DomainValidator, WucEmails, Hosting) {
       this.$scope = $scope;
       this.$q = $q;
       this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.DomainValidator = DomainValidator;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
       this.Hosting = Hosting;
     }
 
@@ -78,7 +78,7 @@ angular.module('App').controller(
       return this.$q
         .all({
           hostingList: this.Hosting.getHostings(),
-          email: this.Emails.getDomain(this.domain.name).catch(() => this.$q.resolve(null)),
+          email: this.WucEmails.getDomain(this.domain.name).catch(() => this.$q.resolve(null)),
         })
         .then((data) => {
           this.hostingList = data.hostingList;
@@ -122,7 +122,7 @@ angular.module('App').controller(
               : this.$q.when(null),
           email:
             this.mxOpts.type === 'EMAILS'
-              ? this.Emails.getRecommendedDNSRecords(this.domain.name)
+              ? this.WucEmails.getRecommendedDNSRecords(this.domain.name)
               : this.$q.when(null),
         })
         .then((data) => {

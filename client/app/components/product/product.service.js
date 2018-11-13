@@ -6,8 +6,8 @@ angular.module('services').service('Products', [
   'constants',
   '$stateParams',
   'WucAllDom',
-  'Emails',
-  function productServices($rootScope, $http, $q, constants, $stateParams, WucAllDom, Emails) {
+  'WucEmails',
+  function productServices($rootScope, $http, $q, constants, $stateParams, WucAllDom, WucEmails) {
     let products = null;
     let productsByType = null;
     let selectedProduct = {
@@ -48,7 +48,7 @@ angular.module('services').service('Products', [
                     },
                   }),
                   WucAllDom.getAllDoms(true),
-                  Emails.getDelegatedEmails(),
+                  WucEmails.getDelegatedEmails(),
                 ])
                 .then((data) => {
                   const result = data[0];

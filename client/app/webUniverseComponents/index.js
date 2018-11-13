@@ -5,6 +5,7 @@ import wucConverter from './converter';
 import wucCron from './cron';
 import wucCronValidator from './cron-validator';
 import wucDuration from './duration';
+import wucEmailDomain from './email-domain';
 import wucExpiration from './expiration';
 import wucFileChange from './fileChange';
 import wucFileEditor from './fileEditor';
@@ -22,6 +23,7 @@ angular
     wucCron,
     wucCronValidator,
     wucDuration,
+    wucEmailDomain,
     wucExpiration,
     wucFileChange,
     wucFileEditor,

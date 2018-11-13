@@ -7,16 +7,16 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($q, $scope, $stateParams, $timeout, $translate, Alerter, Emails) {
+    constructor($q, $scope, $stateParams, $timeout, $translate, Alerter, WucEmails) {
       this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -32,7 +32,7 @@ angular.module('App').controller(
         () => this.refreshTableResponders(),
       );
 
-      this.$scope.$on('$destroy', () => this.Emails.killPollResponderTasks());
+      this.$scope.$on('$destroy', () => this.WucEmails.killPollResponderTasks());
 
       this.refreshTableResponders();
     }
@@ -48,7 +48,7 @@ angular.module('App').controller(
       this.loading.responders = true;
       this.responders = null;
 
-      return this.Emails.getResponders(this.productId)
+      return this.WucEmails.getResponders(this.productId)
         .then((data) => {
           this.responders = _.chain(data).sort().map(account => ({ account })).value();
         })
@@ -61,10 +61,10 @@ angular.module('App').controller(
     }
 
     transformItem({ account }) {
-      return this.Emails.getResponder(this.productId, account)
+      return this.WucEmails.getResponder(this.productId, account)
         .then(responder => this.$q.all([
           responder,
-          this.Emails.getResponderTasks(this.productId, account),
+          this.WucEmails.getResponderTasks(this.productId, account),
         ]))
         .then(([responder, tasks]) => {
           const displayedResponder = _.clone(responder);
@@ -78,7 +78,7 @@ angular.module('App').controller(
     }
 
     pollResponder(responder) {
-      return this.Emails.pollResponderTasks(this.productId, responder.account)
+      return this.WucEmails.pollResponderTasks(this.productId, responder.account)
         .then(() => {
           const newResponder = _.clone(responder);
           const responderIndex = _.findIndex(

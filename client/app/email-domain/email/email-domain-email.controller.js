@@ -3,7 +3,7 @@ angular
   .controller('EmailDomainEmailCtrl', class EmailDomainEmailCtrl {
     constructor(
       $q, $scope, $stateParams, $timeout, $translate, $window,
-      Alerter, constants, Emails, ovhUserPref, User,
+      Alerter, constants, WucEmails, ovhUserPref, User,
     ) {
       this.$q = $q;
       this.$scope = $scope;
@@ -14,7 +14,7 @@ angular
 
       this.Alerter = Alerter;
       this.constants = constants;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
       this.ovhUserPref = ovhUserPref;
       this.User = User;
     }
@@ -63,10 +63,10 @@ angular
           webMailUrl: this.User.getUrlOf('domainWebmailUrl'),
           webOMMUrl: this.User.getUrlOf('domainOMMUrl'),
           user: this.User.getUser(),
-          serviceInfos: this.Emails.getServiceInfos(this.$stateParams.productId),
-          allDomains: this.Emails.getDomains(),
-          quotas: this.Emails.getQuotas(this.$stateParams.productId),
-          summary: this.Emails.getSummary(this.$stateParams.productId),
+          serviceInfos: this.WucEmails.getServiceInfos(this.$stateParams.productId),
+          allDomains: this.WucEmails.getDomains(),
+          quotas: this.WucEmails.getQuotas(this.$stateParams.productId),
+          summary: this.WucEmails.getSummary(this.$stateParams.productId),
         })
         .then(({
           webMailUrl, webOMMUrl, user, serviceInfos, allDomains, quotas, summary,
@@ -101,7 +101,7 @@ angular
       this.$q
         .all({
           accounts: this.refreshTableAccounts(force || false),
-          summary: this.Emails.getSummary(this.$stateParams.productId),
+          summary: this.WucEmails.getSummary(this.$stateParams.productId),
         })
         .then(({ summary }) => {
           this.summary = summary;
@@ -109,7 +109,7 @@ angular
     }
 
     refreshSummary() {
-      return this.Emails
+      return this.WucEmails
         .getSummary(this.$stateParams.productId)
         .then((summary) => {
           this.summary = summary;
@@ -173,7 +173,7 @@ angular
       this.loading.accounts = true;
       this.emails = null;
 
-      return this.Emails
+      return this.WucEmails
         .getEmails(this.$stateParams.productId, {
           accountName: `%${this.search.accounts || ''}%`,
           forceRefresh,
@@ -219,9 +219,9 @@ angular
     transformItem(item) {
       return this.$q
         .all({
-          account: this.Emails.getEmail(this.$stateParams.productId, item),
-          tasks: this.Emails.getEmailTasks(this.$stateParams.productId, item),
-          usage: this.Emails.getEmailUsage(this.$stateParams.productId, item),
+          account: this.WucEmails.getEmail(this.$stateParams.productId, item),
+          tasks: this.WucEmails.getEmailTasks(this.$stateParams.productId, item),
+          usage: this.WucEmails.getEmailUsage(this.$stateParams.productId, item),
         })
         .then(({ account, tasks, usage }) => {
           const clonedAccount = _(account).clone(true);

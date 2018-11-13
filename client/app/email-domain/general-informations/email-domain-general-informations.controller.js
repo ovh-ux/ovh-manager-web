@@ -8,15 +8,15 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $q, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $q, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -36,9 +36,9 @@ angular.module('App').controller(
 
       this.$q
         .all({
-          domain: this.Emails.getDomain(this.$stateParams.productId),
-          dnsFilter: this.Emails.getDnsFilter(this.$stateParams.productId).catch(() => null),
-          mxRecords: this.Emails.getMxRecords(this.$stateParams.productId).catch(() => null),
+          domain: this.WucEmails.getDomain(this.$stateParams.productId),
+          dnsFilter: this.WucEmails.getDnsFilter(this.$stateParams.productId).catch(() => null),
+          mxRecords: this.WucEmails.getMxRecords(this.$stateParams.productId).catch(() => null),
         })
         .then(({ domain, dnsFilter, mxRecords }) => {
           this.domain = domain;
@@ -61,8 +61,8 @@ angular.module('App').controller(
       this.loading.quotas = true;
       this.$q
         .all({
-          quotas: this.Emails.getQuotas(this.$stateParams.productId),
-          summary: this.Emails.getSummary(this.$stateParams.productId),
+          quotas: this.WucEmails.getQuotas(this.$stateParams.productId),
+          summary: this.WucEmails.getSummary(this.$stateParams.productId),
         })
         .then(({ quotas, summary }) => {
           this.quotas = quotas;
