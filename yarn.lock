@@ -687,12 +687,6 @@
   version "2.2.0"
   resolved "https://codeload.github.com/Luegg/angularjs-scroll-glue/tar.gz/5990d90cbf84efdf837edcbf26cefe9adb676f5b"
 
-"@bower_components/angular-ui-router@angular-ui/angular-ui-router-bower#^1.0.0":
-  version "1.0.20"
-  resolved "https://codeload.github.com/angular-ui/angular-ui-router-bower/tar.gz/9df2d5baa8e2ace23700d031cd5cd7b029f6ca35"
-  dependencies:
-    "@uirouter/core" "5.0.21"
-
 "@bower_components/angular-vs-repeat@kamilkp/angular-vs-repeat#v1.1.7":
   version "1.1.7"
   resolved "https://codeload.github.com/kamilkp/angular-vs-repeat/tar.gz/c40d8e9acfb4b220c1760450f6afe0cd556f3c7e"
@@ -1001,13 +995,6 @@
   resolved "https://registry.yarnpkg.com/@ovh-ux/translate-async-loader/-/translate-async-loader-1.0.7.tgz#148189dda8dc5dfe11b024d86c9739f5195d2148"
   integrity sha512-OXxUU/GGdZpMqo+FVfLQTH64326Lt3TW4PPhk/+VoU3MCOHun88J7RQwjSYSVvoJLJL4hnPThvsDC7Ig8/f/rg==
 
-"@ovh-ux/web-universe-components@ovh-ux/web-universe-components#develop":
-  version "1.0.0"
-  resolved "https://codeload.github.com/ovh-ux/web-universe-components/tar.gz/9eed758c5c4297351a1845ddb601d49f427e29b4"
-  dependencies:
-    bootstrap "^3.3.7"
-    ovh-ui-kit "^2.22.0"
-
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
@@ -1048,6 +1035,13 @@
     "@microsoft/load-themed-styles" "^1.7.2"
     prop-types "^15.5.10"
     tslib "^1.7.1"
+
+"@uirouter/angularjs@^1.0.0":
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.20.tgz#bd330544cb2f1c35987f610d8fc353071786c04e"
+  integrity sha512-fY6bsesTL/tg8gyFHXaIjD1r5b7Ac+SYupodO9OzT4/gKI0YC+uGzLpQESAiXlT3fsxdEPVBzdtAbzXDwCKdEA==
+  dependencies:
+    "@uirouter/core" "5.0.21"
 
 "@uirouter/core@5.0.21":
   version "5.0.21"
@@ -2400,7 +2394,7 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-bootstrap@^3.1.1, bootstrap@^3.3.7:
+bootstrap@^3.1.1, bootstrap@^3.3.6:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
   integrity sha1-WjiTlFSfIzMIdaOxUGVldPip63E=
@@ -8143,13 +8137,6 @@ ovh-ui-kit@^2.20.0:
   version "2.21.0"
   resolved "https://registry.yarnpkg.com/ovh-ui-kit/-/ovh-ui-kit-2.21.0.tgz#ec6b523ff82b1d8f3149d9bcf980651630d6120d"
   integrity sha512-xP+H2WZPM+fnOtDDNmrN+NKGp4lvkuIsArZfveRvJdlVOMenLgWdeQOGxvjfvHVnUr0DBz3hdHBdT4C/TqkdpQ==
-  dependencies:
-    less-plugin-remcalc "^0.1.0"
-
-ovh-ui-kit@^2.22.0:
-  version "2.22.1"
-  resolved "https://registry.yarnpkg.com/ovh-ui-kit/-/ovh-ui-kit-2.22.1.tgz#ee439bf2a281239336a5cd7b872d0a753335e19f"
-  integrity sha512-XwWqBtkXcVT7YxtA8OxNlld8r7cqGSIiypAqg6zj6oQvlmlOczNEPGj8KMAivHZELMRs/wZV13Iw0kj+iOZ6zw==
   dependencies:
     less-plugin-remcalc "^0.1.0"
 

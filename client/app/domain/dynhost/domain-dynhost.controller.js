@@ -1,14 +1,20 @@
 angular.module('App').controller(
   'DomainTabDynHostCtrl',
   class DomainTabDynHostCtrl {
-    constructor($scope, $q, $stateParams, $translate, Alerter, Domain, Products) {
+    constructor(
+      $scope,
+      $q,
+      $stateParams,
+      $translate,
+      Alerter,
+      Domain,
+    ) {
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
-      this.Products = Products;
     }
 
     $onInit() {

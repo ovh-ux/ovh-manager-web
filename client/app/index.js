@@ -13,7 +13,6 @@ import 'lodash';
 import 'angular';
 import 'angular-aria';
 import 'script-loader!@bower_components/angular-route/angular-route.min.js';
-import 'script-loader!@bower_components/angular-ui-router/release/angular-ui-router.min.js';
 import 'angular-sanitize';
 import 'angular-cookies';
 import 'angular-messages';

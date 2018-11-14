@@ -1,4 +1,12 @@
-angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atInternet, constants) => {
+angular.module('App').run((
+  $q,
+  $translate,
+  SidebarMenu,
+  WucProducts,
+  User,
+  atInternet,
+  constants,
+) => {
   const menuOptions = [];
 
   function buildMenuOptions() {
@@ -358,7 +366,7 @@ angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atIntern
     });
   }
 
-  const productsPromise = Products.getProductsByType()
+  const productsPromise = WucProducts.getProductsByType()
     .then(products => $q.all(
       addDomainItems(products),
       addHostingItems(products),
