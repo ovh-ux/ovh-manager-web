@@ -39,6 +39,7 @@ angular
     'ovh-angular-tail-logs',
     'ovh-angular-otrs',
     'ovh-api-services',
+    'ovh-angular-apiv7',
     'ovh-angular-toaster',
     'ngCkeditor',
     'moment-picker',
