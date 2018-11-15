@@ -9,7 +9,7 @@ import 'script-loader!@bower_components/jquery.ui/ui/mouse.js';
 import 'script-loader!@bower_components/jquery.ui/ui/draggable.js';
 import 'script-loader!@bower_components/jquery.ui/ui/droppable.js';
 import 'script-loader!@bower_components/jquery.ui/ui/resizable.js';
-import 'script-loader!@bower_components/lodash/lodash.min.js';
+import 'lodash';
 import 'angular';
 import 'angular-aria';
 import 'script-loader!@bower_components/angular-route/angular-route.min.js';
