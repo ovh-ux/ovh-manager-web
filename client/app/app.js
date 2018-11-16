@@ -77,7 +77,6 @@ angular
     DOMAIN: config.constants.DOMAIN,
     WEBSITE_URLS: config.constants.website_url,
     new_bdd_user_grant_options: config.constants.new_bdd_user_grant_options,
-    OVHGuides: config.constants.OVHGuides,
     REDIRECT_URLS: config.constants.REDIRECT_URLS,
   })
   .constant('LANGUAGES', config.constants.LANGUAGES)

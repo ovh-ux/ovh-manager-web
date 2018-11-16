@@ -7,6 +7,7 @@ import wucDuration from './duration';
 import wucExpiration from './expiration';
 import wucFileChange from './fileChange';
 import wucFileEditor from './fileEditor';
+import wucGuides from './guides';
 import wucJavaEnum from './java-enum';
 import wucOvhFileReader from './ovhFileReader';
 import wucProgressBarElementCounter from './progressBarElementCounter';
@@ -23,6 +24,7 @@ angular
     wucExpiration,
     wucFileChange,
     wucFileEditor,
+    wucGuides,
     wucJavaEnum,
     wucOvhFileReader,
     wucProgressBarElementCounter,
