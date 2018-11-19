@@ -32,7 +32,7 @@
             <oui-datagrid data-rows="$ctrl.responders" data-row-loader="$ctrl.transformItem($row)">
                 <oui-column data-title=":: 'email_tab_responders_name' | translate" data-property="account"></oui-column>
                 <oui-column data-title=":: 'emails_common_date_from' | translate" data-property="from">
-                    <span data-ng-bind="::'$row.from | date: 'medium'" data-ng-if="$row.from"></span>
+                    <span data-ng-bind="::$row.from | date: 'medium'" data-ng-if="$row.from"></span>
                 </oui-column>
                 <oui-column data-title=":: 'emails_common_date_to' | translate" data-property="to">
                     <span data-ng-bind="::$row.to | date: 'medium'" data-ng-if="$row.to"></span>
