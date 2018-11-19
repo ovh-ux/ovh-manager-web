@@ -1001,13 +1001,6 @@
   resolved "https://registry.yarnpkg.com/@ovh-ux/translate-async-loader/-/translate-async-loader-1.0.7.tgz#148189dda8dc5dfe11b024d86c9739f5195d2148"
   integrity sha512-OXxUU/GGdZpMqo+FVfLQTH64326Lt3TW4PPhk/+VoU3MCOHun88J7RQwjSYSVvoJLJL4hnPThvsDC7Ig8/f/rg==
 
-"@ovh-ux/web-universe-components@ovh-ux/web-universe-components#develop":
-  version "1.0.0"
-  resolved "https://codeload.github.com/ovh-ux/web-universe-components/tar.gz/9eed758c5c4297351a1845ddb601d49f427e29b4"
-  dependencies:
-    bootstrap "^3.3.7"
-    ovh-ui-kit "^2.22.0"
-
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"
@@ -2289,13 +2282,6 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-basic-auth@~2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/basic-auth/-/basic-auth-2.0.1.tgz#b998279bf47ce38344b4f3cf916d4679bbf51e3a"
-  integrity sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==
-  dependencies:
-    safe-buffer "5.1.2"
-
 batch@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"
@@ -2400,7 +2386,7 @@ boom@2.x.x:
   dependencies:
     hoek "2.x.x"
 
-bootstrap@^3.1.1, bootstrap@^3.3.7:
+bootstrap@^3.1.1, bootstrap@^3.3.6:
   version "3.3.7"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
   integrity sha1-WjiTlFSfIzMIdaOxUGVldPip63E=
@@ -7401,17 +7387,6 @@ moment@^2.10.2, moment@^2.16.0, moment@^2.5.0:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
   integrity sha1-PCV/mDn8DpP/UxSWMiOeuQeD/2Y=
 
-morgan@^1.6.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.9.1.tgz#0a8d16734a1d9afbc824b99df87e738e58e2da59"
-  integrity sha512-HQStPIV4y3afTiCYVxirakhlCfGkI161c76kKFca7Fk1JusM//Qeo1ej2XaMniiNeaZklMVrh3vTtIzpzwbpmA==
-  dependencies:
-    basic-auth "~2.0.0"
-    debug "2.6.9"
-    depd "~1.1.2"
-    on-finished "~2.3.0"
-    on-headers "~1.0.1"
-
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -8138,13 +8113,6 @@ ovh-ui-kit@^2.20.0:
   version "2.21.0"
   resolved "https://registry.yarnpkg.com/ovh-ui-kit/-/ovh-ui-kit-2.21.0.tgz#ec6b523ff82b1d8f3149d9bcf980651630d6120d"
   integrity sha512-xP+H2WZPM+fnOtDDNmrN+NKGp4lvkuIsArZfveRvJdlVOMenLgWdeQOGxvjfvHVnUr0DBz3hdHBdT4C/TqkdpQ==
-  dependencies:
-    less-plugin-remcalc "^0.1.0"
-
-ovh-ui-kit@^2.22.0:
-  version "2.22.1"
-  resolved "https://registry.yarnpkg.com/ovh-ui-kit/-/ovh-ui-kit-2.22.1.tgz#ee439bf2a281239336a5cd7b872d0a753335e19f"
-  integrity sha512-XwWqBtkXcVT7YxtA8OxNlld8r7cqGSIiypAqg6zj6oQvlmlOczNEPGj8KMAivHZELMRs/wZV13Iw0kj+iOZ6zw==
   dependencies:
     less-plugin-remcalc "^0.1.0"
 
