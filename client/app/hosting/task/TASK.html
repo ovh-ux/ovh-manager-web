@@ -18,6 +18,7 @@
                   ):
                   ('hosting_tab_TASKS_function_'+ $row.function | translate)">
             </span>
+            <div data-ng-if="$row.function.indexOf('restoreSnapshot') !== -1" class="oui-tile__term" data-translate="hosting_tab_TASKS_status_backup_FTP"></div>
         </oui-column>
         <oui-column data-title="'hosting_tab_TASKS_table_start_date' | translate" data-property="status">
             <span class="oui-status"
