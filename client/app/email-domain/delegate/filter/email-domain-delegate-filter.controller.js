@@ -6,13 +6,13 @@ angular.module('App').controller(
      * @param $scope
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $translate, Alerter, Emails) {
+    constructor($scope, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -27,7 +27,7 @@ angular.module('App').controller(
     refreshTableFilters() {
       this.filters = null;
 
-      return this.Emails.getDelegatedFilters(this.currentAccount.email)
+      return this.WucEmails.getDelegatedFilters(this.currentAccount.email)
         .then((data) => {
           this.filters = data.map(name => ({ name }));
         })
@@ -39,7 +39,7 @@ angular.module('App').controller(
     }
 
     transformItem({ name }) {
-      return this.Emails.getDelegatedFilter(this.currentAccount.email, name);
+      return this.WucEmails.getDelegatedFilter(this.currentAccount.email, name);
     }
   },
 );

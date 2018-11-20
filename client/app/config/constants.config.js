@@ -44,24 +44,31 @@ module.exports = {
             domainHosting: [
                 {
                     title: "core_top_guide_2_title",
+                    label: "TopGuide-Web-2",
                     url: "https://docs.ovh.com/fr/hosting/premiers-pas-avec-hebergement-web/"
                 }, {
                     title: "core_top_guide_3_title",
+                    label: "TopGuide-Web-3",
                     url: "https://docs.ovh.com/fr/emails/generalites-sur-les-emails-mutualises/"
                 }, {
                     title: "core_top_guide_5_title",
+                    label: "TopGuide-Web-5",
                     url: "https://docs.ovh.com/fr/hosting/modules-en-1-clic/"
                 }, {
                     title: "core_top_guide_6_title",
+                    label: "TopGuide-Web-6",
                     url: "https://docs.ovh.com/fr/domains/editer-ma-zone-dns/"
                 }, {
                     title: "core_top_guide_7_title",
+                    label: "TopGuide-Web-7",
                     url: "https://docs.ovh.com/fr/hosting/erreur-site-non-installe/"
                 }, {
                     title: "core_top_guide_database_title",
+                    label: "TopGuide-Web-8",
                     url: "https://docs.ovh.com/fr/hosting/creer-base-de-donnees/"
                 }, {
                     title: "core_top_guide_9_title",
+                    label: "TopGuide-Web-9",
                     url: "https://docs.ovh.com/fr/microsoft-collaborative-solutions/migration-adresse-e-mail-mutualisee-vers-exchange/"
                 }
             ]

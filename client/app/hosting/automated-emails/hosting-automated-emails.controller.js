@@ -10,8 +10,7 @@ angular.module('App').controller(
       Alerter,
       $filter,
       User,
-      ChartjsFactory,
-      HOSTING_AUTOMATED_EMAILS,
+      WucChartjsFactory,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -21,8 +20,78 @@ angular.module('App').controller(
       this.Alerter = Alerter;
       this.$filter = $filter;
       this.User = User;
-      this.ChartjsFactory = ChartjsFactory;
-      this.HOSTING_AUTOMATED_EMAILS = HOSTING_AUTOMATED_EMAILS;
+      this.WucChartjsFactory = WucChartjsFactory;
+
+      this.HOSTING_AUTOMATED_EMAILS = {
+        type: 'line',
+        data: {
+          datasets: [],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          legend: {
+            position: 'bottom',
+            display: true,
+          },
+          elements: {
+            point: {
+              radius: 0,
+            },
+          },
+          tooltips: {
+            mode: 'label',
+            intersect: false,
+            callbacks: {
+              title(data) {
+                return moment(_.get(_.first(data), 'xLabel')).fromNow();
+              },
+            },
+          },
+          pan: {
+            enabled: true,
+            mode: 'xy',
+          },
+          zoom: {
+            enabled: true,
+            mode: 'xy',
+            limits: {
+              max: 10,
+              min: 0.5,
+            },
+          },
+          scales: {
+            yAxes: [
+              {
+                display: true,
+                position: 'left',
+                scaleLabel: {
+                  display: true,
+                },
+                gridLines: {
+                  drawBorder: true,
+                  display: true,
+                },
+              },
+            ],
+            xAxes: [
+              {
+                type: 'time',
+                position: 'bottom',
+                gridLines: {
+                  drawBorder: true,
+                  display: false,
+                },
+                time: {
+                  displayFormats: {
+                    hour: 'LT',
+                  },
+                },
+              },
+            ],
+          },
+        },
+      };
     }
 
     $onInit() {
@@ -94,8 +163,9 @@ angular.module('App').controller(
 
       return this.HostingAutomatedEmails.retrievingVolumes(this.$stateParams.productId)
         .then((data) => {
-          this.stats.chart = new this.ChartjsFactory(angular.copy(this
-            .HOSTING_AUTOMATED_EMAILS.chart));
+          this.stats.chart = new this.WucChartjsFactory(
+            angular.copy(this.HOSTING_AUTOMATED_EMAILS),
+          );
           this.stats.chart.setAxisOptions('yAxes', {
             type: 'linear',
           });

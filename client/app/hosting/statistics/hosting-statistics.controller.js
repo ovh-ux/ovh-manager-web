@@ -9,9 +9,79 @@ angular
       HostingStatistics,
       HostingDatabase,
       $q,
-      ChartjsFactory,
-      HOSTING_STATISTICS,
+      WucChartjsFactory,
     ) => {
+      const HOSTING_STATISTICS = {
+        type: 'line',
+        data: {
+          datasets: [],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          legend: {
+            position: 'bottom',
+            display: true,
+          },
+          elements: {
+            point: {
+              radius: 0,
+            },
+          },
+          tooltips: {
+            mode: 'label',
+            intersect: false,
+            callbacks: {
+              title(data) {
+                return moment(_.get(_.first(data), 'xLabel')).fromNow();
+              },
+            },
+          },
+          pan: {
+            enabled: true,
+            mode: 'xy',
+          },
+          zoom: {
+            enabled: true,
+            mode: 'xy',
+            limits: {
+              max: 10,
+              min: 0.5,
+            },
+          },
+          scales: {
+            yAxes: [
+              {
+                display: true,
+                position: 'left',
+                scaleLabel: {
+                  display: true,
+                },
+                gridLines: {
+                  drawBorder: true,
+                  display: true,
+                },
+              },
+            ],
+            xAxes: [
+              {
+                type: 'time',
+                position: 'bottom',
+                gridLines: {
+                  drawBorder: true,
+                  display: false,
+                },
+                time: {
+                  displayFormats: {
+                    hour: 'LT',
+                  },
+                },
+              },
+            ],
+          },
+        },
+      };
+
       $scope.selected = {
         period: null,
         type: null,
@@ -58,7 +128,7 @@ angular
       $scope.stats = {};
 
       function refreshChart() {
-        $scope.stats.chart = new ChartjsFactory(angular.copy(HOSTING_STATISTICS.chart));
+        $scope.stats.chart = new WucChartjsFactory(angular.copy(HOSTING_STATISTICS));
         $scope.stats.chart.setAxisOptions('yAxes', {
           type: 'linear',
         });
@@ -83,8 +153,8 @@ angular
                       `hosting_tab_STATISTICS_series_${serie.serieName}`,
                     ),
                   _.map(serie.points, point => ({
-                    x: point.x,
-                    y: point.y,
+                    x: parseFloat(point.x.toFixed(2)),
+                    y: parseFloat(point.y.toFixed(2)),
                   })),
                   {
                     dataset: {

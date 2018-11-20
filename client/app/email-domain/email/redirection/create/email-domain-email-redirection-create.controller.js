@@ -7,14 +7,14 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -53,7 +53,7 @@ angular.module('App').controller(
     }
 
     createRedirection() {
-      return this.Emails.createRedirection(this.$stateParams.productId, {
+      return this.WucEmails.createRedirection(this.$stateParams.productId, {
         from: `${_.trim(this.model.redirectionFrom)}@${_.trim(this.model.redirectionSubdomainFrom)}${this.model.redirectionSubdomainFrom && '.'}${this.domain}`,
         localCopy: this.model.redirectionKeepCopy === 'local',
         to: this.model.redirectionTo,

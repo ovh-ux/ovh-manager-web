@@ -64,8 +64,8 @@
                                                    data-ng-required="true"
                                                    data-max-size="{{ctrl.constraints[arg.key].maximumSize}}"
                                                    data-ovh-disable-reader="true"
-                                                   data-ovh-filereader="ctrl.files[$index]"
-                                                   data-ovh-filereader-action="ctrl.upload(ctrl.filesModel[$index], arg)">
+                                                   data-wuc-ovh-filereader="ctrl.files[$index]"
+                                                   data-wuc-ovh-filereader-action="ctrl.upload(ctrl.filesModel[$index], arg)">
                                             <button class="btn btn-icon ml-1" type="button"
                                                     data-ng-click="ctrl.viewMode[arg.key] = true"
                                                     data-ng-if="ctrl.previousValue[arg.key] && !ctrl.viewMode[arg.key]">
