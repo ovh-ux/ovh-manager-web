@@ -9,7 +9,7 @@ angular.module('App').controller(
      * @param $timeout
      * @param Alerter
      * @param Domain
-     * @param Products
+     * @param WucProducts
      * @param currentSection
      */
     constructor(
@@ -20,7 +20,7 @@ angular.module('App').controller(
       $translate,
       Alerter,
       Domain,
-      Products,
+      WucProducts,
       currentSection,
     ) {
       this.$scope = $scope;
@@ -30,7 +30,7 @@ angular.module('App').controller(
       this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
-      this.Products = Products;
+      this.WucProducts = WucProducts;
       this.currentSection = currentSection;
     }
 
@@ -74,7 +74,7 @@ angular.module('App').controller(
 
       this.$q
         .all({
-          product: this.Products.getSelectedProduct(true),
+          product: this.WucProducts.getSelectedProduct(true),
           tabZone: this.Domain.getTabZoneDns(this.$stateParams.productId, 1),
         })
         .then(({ product, tabZone }) => {

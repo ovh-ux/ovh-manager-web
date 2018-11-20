@@ -7,14 +7,14 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -23,7 +23,7 @@ angular.module('App').controller(
     }
 
     deleteRedirection() {
-      return this.Emails.deleteRedirection(
+      return this.WucEmails.deleteRedirection(
         this.$stateParams.productId,
         this.redirection.id,
       )

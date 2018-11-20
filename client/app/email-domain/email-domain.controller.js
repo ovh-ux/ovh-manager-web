@@ -8,15 +8,15 @@ angular.module('App').controller(
      * @param $timeout
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $stateParams, $timeout, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $timeout, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -62,7 +62,7 @@ angular.module('App').controller(
     loadDomain() {
       this.loading.domainsInfos = true;
 
-      this.Emails.getDomain(this.$stateParams.productId)
+      this.WucEmails.getDomain(this.$stateParams.productId)
         .then((domain) => {
           this.$scope.domain = domain;
           if (domain.offer && domain.offer.indexOf('hosting') === -1) {

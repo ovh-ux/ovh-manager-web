@@ -7,14 +7,14 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -26,12 +26,12 @@ angular.module('App').controller(
     deleteFilter() {
       let filterPromise;
       if (_.get(this.$scope.currentActionData, 'delegate', false)) {
-        filterPromise = this.Emails.deleteDelegatedFilter(
+        filterPromise = this.WucEmails.deleteDelegatedFilter(
           this.account.email,
           this.filter.name,
         );
       } else {
-        filterPromise = this.Emails.deleteFilter(
+        filterPromise = this.WucEmails.deleteFilter(
           this.$stateParams.productId,
           this.account.accountName,
           this.filter.name,

@@ -1,13 +1,14 @@
 class NavbarNotificationService {
   constructor(
     $interval, $q, $translate,
-    Alerter, constants, OvhApiNotificationAapi,
+    Alerter, atInternet, constants, OvhApiNotificationAapi,
     UNIVERSE,
   ) {
     this.$interval = $interval;
     this.$q = $q;
     this.$translate = $translate;
     this.alerter = Alerter;
+    this.atInternet = atInternet;
     this.constants = constants;
     this.OvhApiNotificationAapi = OvhApiNotificationAapi;
     this.UNIVERSE = UNIVERSE;
@@ -76,6 +77,7 @@ class NavbarNotificationService {
             });
           });
       }
+      this.navbarContent.iconAnimated = false;
     }
   }
 
@@ -97,14 +99,25 @@ class NavbarNotificationService {
         name: 'notifications',
         title: this.$translate.instant('common_navbar_notification_title'),
         iconClass: 'icon-notifications',
+        iconAnimated: this.constructor.shouldAnimateIcon(sublinks),
         limitTo: 10,
-        onClick: () => this.acknowledgeAll(),
+        onClick: () => {
+          this.acknowledgeAll();
+          this.atInternet.trackClick({
+            name: 'notifications',
+            type: 'action',
+          });
+        },
         subLinks: sublinks,
         show: true,
       };
       this.navbarContent = navbarContent;
       return navbarContent;
     });
+  }
+
+  static shouldAnimateIcon(sublinks) {
+    return _.some(sublinks, sublink => _.includes(['incident', 'error', 'warning'], sublink.level) && sublink.isActive);
   }
 }
 

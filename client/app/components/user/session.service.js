@@ -4,9 +4,10 @@ class SessionService {
     $translate,
     constants,
     LANGUAGES,
+    atInternet,
     NavbarNotificationService,
     OtrsPopupService,
-    Products,
+    WucProducts,
     ssoAuthentication,
     User,
   ) {
@@ -14,9 +15,10 @@ class SessionService {
     this.$translate = $translate;
     this.constants = constants;
     this.LANGUAGES = LANGUAGES;
+    this.atInternet = atInternet;
     this.navbarNotificationService = NavbarNotificationService;
     this.otrsPopupService = OtrsPopupService;
-    this.products = Products;
+    this.products = WucProducts;
     this.ssoAuthentication = ssoAuthentication;
     this.user = User;
   }
@@ -143,7 +145,7 @@ class SessionService {
       elt => angular.lowercase(elt.displayName || elt.name),
     );
 
-    // Products filtered
+    // WucProducts filtered
     const hostingProducts = _(products.hostings)
       .filter(elt => elt.type === 'HOSTING')
       .sortBy(elt => angular.lowercase(elt.displayName || elt.name))
@@ -192,6 +194,10 @@ class SessionService {
         title: this.$translate.instant('common_menu_support_all_guides'),
         url: currentSubsidiaryURLs.guides.home,
         isExternal: true,
+        click: () => this.atInternet.trackClick({
+          name: 'assistance::all_guides',
+          type: 'action',
+        }),
       });
     }
 
@@ -205,6 +211,11 @@ class SessionService {
           this.otrsPopupService.toggle();
         }
 
+        this.atInternet.trackClick({
+          name: 'assistance::create_assistance_request',
+          type: 'action',
+        });
+
         if (_.isFunction(callback)) {
           callback();
         }
@@ -215,6 +226,10 @@ class SessionService {
     assistanceMenu.push({
       title: this.$translate.instant('common_menu_support_list_ticket'),
       url: _.get(this.constants, 'REDIRECT_URLS.listTicket', ''),
+      click: () => this.atInternet.trackClick({
+        name: 'assistance::assistance_requests_created',
+        type: 'action',
+      }),
     });
 
     // Telephony (External)
@@ -223,6 +238,10 @@ class SessionService {
         title: this.$translate.instant('common_menu_support_telephony_contact'),
         url: currentSubsidiaryURLs.support_contact,
         isExternal: true,
+        click: () => this.atInternet.trackClick({
+          name: 'assistance::helpline',
+          type: 'action',
+        }),
       });
     }
 
@@ -230,6 +249,10 @@ class SessionService {
       name: 'assistance',
       title: this.$translate.instant('common_menu_support_assistance'),
       iconClass: 'icon-assistance',
+      onClick: () => this.atInternet.trackClick({
+        name: 'assistance',
+        type: 'action',
+      }),
       subLinks: assistanceMenu,
     };
   }
@@ -269,6 +292,15 @@ class SessionService {
     this.$translate.use().replace('_', '-').toLowerCase();
   }
 
+  trackUserMenuSection(name, chapter2) {
+    this.atInternet.trackClick({
+      name,
+      type: 'action',
+      chapter1: 'account',
+      chapter2,
+    });
+  }
+
   getUserMenu(currentUser) {
     return {
       name: 'user',
@@ -282,6 +314,7 @@ class SessionService {
           name: 'user.account',
           title: this.$translate.instant('global_account'),
           url: '#/useraccount/infos',
+          click: () => this.trackUserMenuSection('my_account', 'account'),
           subLinks: [{
             title: this.$translate.instant('global_account_infos'),
             url: '#/useraccount/infos',
@@ -310,6 +343,7 @@ class SessionService {
           name: 'user.billing',
           title: this.$translate.instant('global_billing'),
           url: '#/billing/history',
+          click: () => this.trackUserMenuSection('my_facturation', 'billing'),
           subLinks: [{
             title: this.$translate.instant('global_billing_history'),
             url: '#/billing/history',
@@ -324,6 +358,7 @@ class SessionService {
           name: 'user.services',
           title: this.$translate.instant('global_renew'),
           url: '#/billing/autoRenew',
+          click: () => this.trackUserMenuSection('my_services', 'services'),
           subLinks: [{
             title: this.$translate.instant('global_renew_management'),
             url: '#/billing/autoRenew',
@@ -341,6 +376,7 @@ class SessionService {
           name: 'user.payment',
           title: this.$translate.instant('global_means'),
           url: '#/billing/mean',
+          click: () => this.trackUserMenuSection('my_payment_types', 'payment_types'),
           subLinks: [{
             title: this.$translate.instant('global_means_mean'),
             url: '#/billing/mean',
@@ -369,18 +405,21 @@ class SessionService {
         (!currentUser.isEnterprise && this.constants.target === 'EU' && currentUser.ovhSubsidiary === 'FR') && {
           title: this.$translate.instant('global_orders'),
           url: '#/billing/orders',
+          click: () => this.trackUserMenuSection('my_orders', 'orders'),
         },
 
         // Contacts
         (this.constants.target === 'EU') && {
           title: this.$translate.instant('global_contacts'),
           url: '#/useraccount/contacts?tab=SERVICES',
+          click: () => this.trackUserMenuSection('my_contacts', 'contacts'),
         },
 
         // Tickets
         {
           title: this.$translate.instant('global_list_ticket'),
           url: '#/ticket',
+          click: () => this.trackUserMenuSection('my_otrs_tickets', 'otrs'),
         },
 
         // Logout

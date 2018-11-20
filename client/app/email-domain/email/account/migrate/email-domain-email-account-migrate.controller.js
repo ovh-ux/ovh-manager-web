@@ -7,15 +7,15 @@ angular.module('App').controller(
      * @param $q
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      * @param constants
      */
-    constructor($scope, $q, $translate, Alerter, Emails, User) {
+    constructor($scope, $q, $translate, Alerter, WucEmails, User) {
       this.$scope = $scope;
       this.$q = $q;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
       this.User = User;
     }
 
@@ -64,7 +64,7 @@ angular.module('App').controller(
       this.migrate.destinationService = null;
 
       // First, get the models for the service types
-      this.Emails.getModels().then((data) => {
+      this.WucEmails.getModels().then((data) => {
         this.models = data.models;
         this.getDestinationServices(this.models['email.domain.MigrationServiceType'].enum);
       });
@@ -101,7 +101,7 @@ angular.module('App').controller(
 
     // Request services list from service type
     getDestinationServicesFromType(type) {
-      return this.Emails.getDestinationServices(
+      return this.WucEmails.getDestinationServices(
         this.email.domain,
         this.email.accountName,
         type,
@@ -126,7 +126,7 @@ angular.module('App').controller(
       this.isMigrationDataValid = false;
 
       // Get available email addresses for the migration
-      this.Emails.getDestinationEmailAddresses(
+      this.WucEmails.getDestinationEmailAddresses(
         this.email.domain,
         this.email.accountName,
         destinationService,
@@ -155,7 +155,7 @@ angular.module('App').controller(
       this.checkMigrationErrors = [];
       this.shouldDisplayCheckMigrationsErrors = false;
 
-      this.Emails.checkMigrate(
+      this.WucEmails.checkMigrate(
         this.email.domain,
         this.email.accountName,
         this.migrate.destinationService.name,
@@ -181,7 +181,7 @@ angular.module('App').controller(
     migrateAccount() {
       this.loaders.isWaitingForMigration = true;
 
-      this.Emails.migrateAccountToDestinationAccount(
+      this.WucEmails.migrateAccountToDestinationAccount(
         this.email.domain,
         this.email.accountName,
         this.migrate.destinationService.name,

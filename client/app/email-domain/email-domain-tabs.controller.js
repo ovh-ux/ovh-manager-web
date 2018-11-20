@@ -7,15 +7,15 @@ angular.module('App').controller(
      * @param $location
      * @param $stateParams
      * @param $translate
-     * @param Emails
+     * @param WucEmails
      * @param Alerter
      */
-    constructor($scope, $location, $stateParams, $translate, Emails, Alerter) {
+    constructor($scope, $location, $stateParams, $translate, WucEmails, Alerter) {
       this.$scope = $scope;
       this.$location = $location;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
       this.Alerter = Alerter;
     }
 

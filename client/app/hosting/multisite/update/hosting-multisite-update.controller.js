@@ -296,11 +296,20 @@ angular
           })
           .catch((err) => {
             _.set(err, 'type', err.type || 'ERROR');
-            Alerter.alertFromSWS(
-              $translate.instant('hosting_tab_DOMAINS_configuration_modify_failure'),
-              _.get(err, 'data', err),
-              $scope.alerts.main,
-            );
+            if (_.isEqual(err.status, 403) && _.includes(err.data, 'updating')) {
+              // show update in progress error
+              Alerter.alertFromSWS(
+                $translate.instant('hosting_tab_DOMAINS_configuration_modify_failure_inprogress'),
+                _.get(err, 'data', err),
+                $scope.alerts.main,
+              );
+            } else {
+              Alerter.alertFromSWS(
+                $translate.instant('hosting_tab_DOMAINS_configuration_modify_failure'),
+                _.get(err, 'data', err),
+                $scope.alerts.main,
+              );
+            }
           });
       };
     },

@@ -205,7 +205,7 @@ angular
       });
 
       $scope.$on('hostingDomain.modifyDomain.done', () => {
-        $scope.$broadcast('paginationServerSide.reload');
+        reloadCurrentPage();
         Alerter.success(
           $translate.instant('hosting_tab_DOMAINS_configuration_modify_success_finish'),
           $scope.alerts.main,
@@ -213,7 +213,7 @@ angular
       });
 
       $scope.$on('hostingDomain.modifyDomain.error', (err) => {
-        $scope.$broadcast('paginationServerSide.reload');
+        reloadCurrentPage();
         Alerter.alertFromSWS(
           $translate.instant('hosting_tab_DOMAINS_configuration_modify_failure'),
           _.get(err, 'data', err),

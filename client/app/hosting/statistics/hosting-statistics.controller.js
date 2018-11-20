@@ -83,8 +83,8 @@ angular
                       `hosting_tab_STATISTICS_series_${serie.serieName}`,
                     ),
                   _.map(serie.points, point => ({
-                    x: point.x,
-                    y: point.y,
+                    x: parseFloat(point.x.toFixed(2)),
+                    y: parseFloat(point.y.toFixed(2)),
                   })),
                   {
                     dataset: {
