@@ -10,6 +10,7 @@ import wucEmailDomain from './email-domain';
 import wucExpiration from './expiration';
 import wucFileChange from './fileChange';
 import wucFileEditor from './fileEditor';
+import wucIncrementNumber from './incrementNumber';
 import wucJavaEnum from './java-enum';
 import wucOvhFileReader from './ovhFileReader';
 import wucProduct from './product';
@@ -30,6 +31,7 @@ angular
     wucExpiration,
     wucFileChange,
     wucFileEditor,
+    wucIncrementNumber,
     wucJavaEnum,
     wucOvhFileReader,
     wucProduct,
