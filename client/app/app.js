@@ -1,6 +1,8 @@
 import translateAsyncLoader from '@ovh-ux/translate-async-loader';
 import config from './config/config';
 import webUniverseComponents from './webUniverseComponents';
+// TODO: web-universe-components is not yet published;
+// import webUniverseComponents from '@ovh-ux/web-universe-components'; // eslint-disable-line
 
 angular
   .module('App', [
@@ -19,7 +21,7 @@ angular
     'ovh-angular-q-allSettled',
     'ovh-angular-http',
     'ngMessages',
-    'flash',
+    'ngFlash',
     'ovh-angular-swimming-poll',
     'vs-repeat',
     'ovh-angular-export-csv',

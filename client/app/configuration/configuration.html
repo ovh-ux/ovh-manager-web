@@ -7,7 +7,6 @@
         <p class="lead"
            data-ng-bind-html="'core_top_guides_header' | translate: { t0: ConfigurationCtrl.allGuides }"></p>
     </div>
-
     <div class="container-fluid">
         <div class="row d-md-flex" data-ng-if="!loaders.loading && user.ovhSubsidiary === 'FR'">
             <div class="col-md-10 col-lg-8 mx-md-auto">
@@ -18,16 +17,25 @@
                             <li class="oui-tile__item" data-ng-repeat="guide in value track by $index">
                                 <div class="oui-tile__definition">
                                     <a target="_blank"
+                                       data-track-on="click"
+                                       data-track-name="web::{{::guide.label}}"
+                                       data-track-click="action"
                                        data-ng-bind="guide.title | translate"
-                                       data-ng-href="{{guide.url}}">
+                                       data-ng-href="{{guide.url}}"
+                                       rel="noopener">
                                     </a>
                                 </div>
                             </li>
                             <li class="oui-tile__item">
                                 <div class="oui-tile__definition">
-                                    <a data-ng-href="{{ ConfigurationCtrl.allGuides }}" target="_blank">
-                                        <span data-translate="core_all_guides"></span>
-                                        <span class="fa fa-external-link" aria-label="{{ 'core_new_window' | translate }}"></span>
+                                    <a data-ng-href="{{ ConfigurationCtrl.allGuides }}"
+                                       target="_blank"
+                                       data-track-on="click"
+                                       data-track-name="web::TopGuide-Web-10"
+                                       data-track-click="action"
+                                       rel="noopener">
+                                       <span data-translate="core_all_guides"></span>
+                                       <span class="fa fa-external-link" aria-label="{{:: 'core_new_window' | translate }}"></span>
                                     </a>
                                 </div>
                             </li>

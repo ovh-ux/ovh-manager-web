@@ -49,7 +49,7 @@
                                data-ng-value="duration">
                         <label class="oui-radio__label-container" for="duration-{{$index}}">
                             <span class="oui-radio__label">
-                                <span data-ng-bind="duration | duration:'longDate'"></span>&nbsp;:&nbsp;
+                                <span data-ng-bind="duration | wucDuration:'longDate'"></span>&nbsp;:&nbsp;
                                 <span data-ng-bind-html="details[duration].prices | price:user.ovhSubsidiary"></span>
                                 <oui-spinner data-size="s"
                                             data-ng-if="!details[duration]"></oui-spinner>

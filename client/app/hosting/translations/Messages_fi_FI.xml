@@ -524,6 +524,7 @@ Saat pian sähköpostiviestin, jossa on ohjeet sulkemisprosessiin.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_success_finish" qtlid="232453">Verkkotunnus on poistettu webhotellistasi.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_partial" qtlid="197518">Tietyt verkkotunnukset poistettiin webhotellistasi mutta joidenkin poistossa tapahtui virheitä.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_failure" qtlid="197531">Tapahtui virhe webhotellin verkkotunnuksen poiston aikana.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_failure_inprogress" qtlid="508923">La mise à jour de votre ou vos domaines a échoué car une autre opération est en cours. Veuillez réessayer ultérieurement.</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_modify_title" qtlid="211476">Verkkotunnuksen muokkaus</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_question" qtlid="197544">Olet muuttamassa seuraavaa verkkotunnusta:</translation>
@@ -1109,16 +1110,11 @@ Saat pian sähköpostiviestin, jossa on ohjeet sulkemisprosessiin.</translation>
 
    <translation id="hosting_tab_CRON_configuration_create_title_button" qtlid="201185">Lisää suunnitelma</translation>
    <translation id="hosting_tab_CRON_configuration_edit_title_button" qtlid="199182">Tehtävän muokkaus</translation>
-   <translation id="hosting_tab_CRON_step2_title" qtlid="199195">Valitse tehtävän ajoaika:</translation>
-   <translation id="hosting_tab_CRON_step2_expert_help" qtlid="199208">Määritä ajanjakso "Crontab"-muodossa syöttämällä tunneiksi ("{0}"), päiväksi ("{1}"), kuukaudeksi ("{2}") ja viikonpäiväksi ("{3}").</translation>
-   <translation id="hosting_tab_CRON_step2_expert_toocomplicated" qtlid="199221">Arvot ovat liian monimutkaisia mennäkseen yksinkertaiseen tilaan.</translation>
    <translation id="hosting_tab_CRON_step3_title" qtlid="199234">Tehtävän yhteenveto</translation>
    <translation id="hosting_tab_CRON_save_success" qtlid="199247">Uusi tehtävä on käytettävissä muutamassa minuutissa (</translation>
    <translation id="hosting_tab_CRON_save_error" qtlid="199260">Tapahtui virhe luotaessa tehtävää.</translation>
    <translation id="hosting_tab_CRON_edit_success" qtlid="199273">Tehtävä on muokattu onnistuneesti.</translation>
    <translation id="hosting_tab_CRON_edit_error" qtlid="199286">Tapahtui virhe muokattaessa tehtävää {0}.</translation>
-   <translation id="hosting_tab_CRON_simple_mode" qtlid="102849">Yksinkertainen tila</translation>
-   <translation id="hosting_tab_CRON_expert_mode" qtlid="64616">Edistynyt tila</translation>
    <translation id="hosting_tab_CRON_label_description" qtlid="9238">Kuvaus</translation>
    <translation id="hosting_tab_CRON_label_status" qtlid="33790">Tila</translation>
    <translation id="hosting_tab_CRON_label_activate" qtlid="74958">Aktivointi</translation>
@@ -1129,45 +1125,6 @@ Saat pian sähköpostiviestin, jossa on ohjeet sulkemisprosessiin.</translation>
    <translation id="hosting_tab_CRON_label_email" qtlid="199338">Lokit sähköpostia kohti</translation>
    <translation id="hosting_tab_CRON_label_email_info" qtlid="296726">Lähetetään vain virhetilanteessa</translation>
    <translation id="hosting_tab_CRON_label_crontab" qtlid="199351">Crontab</translation>
-   <translation id="hosting_tab_CRON_label_hours" qtlid="8842">Tunnit</translation>
-   <translation id="hosting_tab_CRON_label_hours_min" qtlid="44236">tuntia</translation>
-   <translation id="hosting_tab_CRON_label_days" qtlid="73505">Päivää</translation>
-   <translation id="hosting_tab_CRON_label_days_min" qtlid="44260">päivää</translation>
-   <translation id="hosting_tab_CRON_label_dow" qtlid="8854">Päivät viikossa</translation>
-   <translation id="hosting_tab_CRON_label_dow_min" qtlid="199364">viikonpäivä</translation>
-   <translation id="hosting_tab_CRON_label_months" qtlid="37803">Kuukausi</translation>
-   <translation id="hosting_tab_CRON_label_months_min" qtlid="40222">kuukausi</translation>
-   <translation id="hosting_tab_CRON_hours_all" qtlid="8782">Tunneittain</translation>
-   <translation id="hosting_tab_CRON_hours_items" qtlid="199377">Kiinteät tunnit</translation>
-   <translation id="hosting_tab_CRON_hours_interval" qtlid="199390">Joka N. tunti</translation>
-   <translation id="hosting_tab_CRON_hours_interval_value" qtlid="199403">Aina {0} tunnin välein</translation>
-   <translation id="hosting_tab_CRON_hours_range" qtlid="199416">Kello mistä – mihin</translation>
-   <translation id="hosting_tab_CRON_dom_all" qtlid="154091">Joka päivä</translation>
-   <translation id="hosting_tab_CRON_dom_items" qtlid="61908">Kiinteät päivät</translation>
-   <translation id="hosting_tab_CRON_dom_interval" qtlid="199429">Joka N. päivä</translation>
-   <translation id="hosting_tab_CRON_dom_interval_value" qtlid="199442">Kaikkina {0} päivänä</translation>
-   <translation id="hosting_tab_CRON_dom_range" qtlid="199455">Päivä mistä – mihin</translation>
-   <translation id="hosting_tab_CRON_dow_all" qtlid="199468">Joka päivä</translation>
-   <translation id="hosting_tab_CRON_dow_items" qtlid="199481">Kiinteät viikonpäivät</translation>
-   <translation id="hosting_tab_CRON_dow_interval" qtlid="199494">Joka N. viikonpäivä</translation>
-   <translation id="hosting_tab_CRON_dow_interval_value" qtlid="199507">Kaikkina {0} viikonpäivänä</translation>
-   <translation id="hosting_tab_CRON_dow_range" qtlid="199520">Viikonpäivä mistä – mihin</translation>
-   <translation id="hosting_tab_CRON_mon_all" qtlid="199533">Kuukausittain</translation>
-   <translation id="hosting_tab_CRON_mon_items" qtlid="199546">Kiinteät kuukaudet</translation>
-   <translation id="hosting_tab_CRON_mon_interval" qtlid="199559">Joka N. kuukausi</translation>
-   <translation id="hosting_tab_CRON_mon_interval_value" qtlid="199572">Joka {0}. kuukausi</translation>
-   <translation id="hosting_tab_CRON_mon_range" qtlid="199585">Kuukausi mistä –&#160;mihin</translation>
-   <translation id="hosting_tab_CRON_interval_pre_m" qtlid="62304">Joka </translation>
-   <translation id="hosting_tab_CRON_interval_pre_f" qtlid="199598">Joka</translation>
-   <translation id="hosting_tab_CRON_hours_range_from" qtlid="69077">Mistä</translation>
-   <translation id="hosting_tab_CRON_hours_range_to" qtlid="8890">—</translation>
-   <translation id="hosting_tab_CRON_dom_range_from" qtlid="88725">Mistä</translation>
-   <translation id="hosting_tab_CRON_dom_range_to" qtlid="35904">mihin</translation>
-   <translation id="hosting_tab_CRON_dow_range_from" qtlid="88725">Mistä</translation>
-   <translation id="hosting_tab_CRON_dow_range_to" qtlid="35904">mihin</translation>
-   <translation id="hosting_tab_CRON_mon_range_from" qtlid="69077">Mistä</translation>
-   <translation id="hosting_tab_CRON_mon_range_to" qtlid="8890">—</translation>
-   <translation id="hosting_tab_CRON_hours_value" qtlid="199611">{0}. tunti</translation>
    <translation id="hosting_tab_CRON_email_nic-admin" qtlid="199624">NIC Admin</translation>
    <translation id="hosting_tab_CRON_email_nic-tech" qtlid="199637">NIC Tech</translation>
    <translation id="hosting_tab_CRON_email_no" qtlid="34788">Ei</translation>
@@ -1176,23 +1133,9 @@ Saat pian sähköpostiviestin, jossa on ohjeet sulkemisprosessiin.</translation>
    <translation id="hosting_tab_CRON_edit_task" qtlid="37875">Muokkaa</translation>
    <translation id="hosting_tab_CRON_delete_task" qtlid="2414">Poista</translation>
 
-
    <translation id="hosting_tab_CRON_table_status_enabled" qtlid="30250">Aktivoitu</translation>
    <translation id="hosting_tab_CRON_table_status_disabled" qtlid="24967">Deaktivoitu</translation>
    <translation id="hosting_tab_CRON_table_status_suspended" qtlid="136100">Vanhentunut</translation>
-
-   <translation id="hosting_tab_CRON_step2_help_m" qtlid="199663">Minuuttia (0–59)</translation>
-   <translation id="hosting_tab_CRON_step2_help_h" qtlid="199676">Tuntia (0–23)</translation>
-   <translation id="hosting_tab_CRON_step2_help_dom" qtlid="199689">Kuukaudenpäivä (1–31)</translation>
-   <translation id="hosting_tab_CRON_step2_help_mon" qtlid="199702">Kuukausi (1–12, tai {0}–{1})</translation>
-   <translation id="hosting_tab_CRON_step2_help_dow" qtlid="263038">Viikonpäivä (0 - 7 tai {0} - {1})</translation>
-   <translation id="hosting_tab_CRON_step2_help_subtitle1" qtlid="199728">Merkintätapaesimerkki:</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_1" qtlid="199741">kaikki yksiköt</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_2" qtlid="199754">ainoastaan 2 ja 4</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_3" qtlid="199767">yksiköt 4 - 7 (4, 5, 6, 7)</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_4" qtlid="199780">joka kolmas yksikkö (0, 3, 6,..)</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_5" qtlid="199793">joka kolmas yksikkö 10 ja 20 väliltä (10, 13, 16, 19)</translation>
-   <translation id="hosting_tab_CRON_step2_help_subtitle2" qtlid="199806">Minuutteja ei huomioida.</translation>
 
    <translation id="hosting_tab_STATISTICS_type" qtlid="2642">Tyyppi</translation>
    <translation id="hosting_tab_STATISTICS_none" qtlid="199819">Ei tilastotietoja.</translation>

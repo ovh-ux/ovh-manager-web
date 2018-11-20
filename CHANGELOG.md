@@ -1,3 +1,45 @@
+## [13.8.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.8.1...v13.8.2) (2018-11-09)
+
+
+
+## [13.8.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.8.0...v13.8.1) (2018-11-09)
+
+
+### Bug Fixes
+
+* **exchange:** upgrade ovh-module-exchange to v9.0.6 ([d05e4e9](https://github.com/ovh-ux/ovh-manager-web/commit/d05e4e9))
+* **exchange:** upgrade ovh-module-exchange to v9.0.7 ([931f093](https://github.com/ovh-ux/ovh-manager-web/commit/931f093))
+
+
+
+# [13.8.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.14...v13.8.0) (2018-11-08)
+
+
+### Bug Fixes
+
+* **tooltip-hosting:** tooltip on hosting activity ([8822582](https://github.com/ovh-ux/ovh-manager-web/commit/8822582))
+* apply htmlhint rules ([f8141f2](https://github.com/ovh-ux/ovh-manager-web/commit/f8141f2))
+* multisite-modification returns error ([12f4bb0](https://github.com/ovh-ux/ovh-manager-web/commit/12f4bb0)), closes [#MBE-13](https://github.com/ovh-ux/ovh-manager-web/issues/MBE-13)
+* **deps:** import everything related to angular-translate ([225e919](https://github.com/ovh-ux/ovh-manager-web/commit/225e919))
+* **deps:** update manager-webpack-config to v2.4.6 ([2016a91](https://github.com/ovh-ux/ovh-manager-web/commit/2016a91))
+* **deps:** update translate-async-loader to v1.0.5 ([efc0359](https://github.com/ovh-ux/ovh-manager-web/commit/efc0359))
+* **deps:** upgrade manager-webpack-config to v2.4.5 ([10cc10a](https://github.com/ovh-ux/ovh-manager-web/commit/10cc10a))
+* **deps:** upgrade ovh-angular-otrs to v6.3.0 ([52d201f](https://github.com/ovh-ux/ovh-manager-web/commit/52d201f))
+* **deps:** upgrade ovh-module-emailpro to v7.0.6 ([63d10c5](https://github.com/ovh-ux/ovh-manager-web/commit/63d10c5))
+* **deps:** upgrade ovh-module-exchange to v9.0.5 ([e5521e8](https://github.com/ovh-ux/ovh-manager-web/commit/e5521e8))
+* **deps:** upgrade ovh-ui-kit to v2.22.0 ([83fc90e](https://github.com/ovh-ux/ovh-manager-web/commit/83fc90e))
+* **i18n:** retrieve translations ([fa44760](https://github.com/ovh-ux/ovh-manager-web/commit/fa44760))
+* **i18n:** retrieve translations ([455796c](https://github.com/ovh-ux/ovh-manager-web/commit/455796c))
+* prevent warning 'Tried to load AngularJS more than once' ([f0bfac1](https://github.com/ovh-ux/ovh-manager-web/commit/f0bfac1))
+* **i18n:** submit translations ([89031a3](https://github.com/ovh-ux/ovh-manager-web/commit/89031a3))
+
+
+### Features
+
+* **navbar:** add tracking for assistance and notifications ([5ba4f97](https://github.com/ovh-ux/ovh-manager-web/commit/5ba4f97))
+
+
+
 <a name="13.7.14"></a>
 ## [13.7.14](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.13...v13.7.14) (2018-10-29)
 
