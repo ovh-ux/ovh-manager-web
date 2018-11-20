@@ -1,3 +1,35 @@
+# [13.9.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.8.2...v13.9.0) (2018-11-20)
+
+
+### Bug Fixes
+
+* remove unused angular-flash-alert from script-loader ([0954f85](https://github.com/ovh-ux/ovh-manager-web/commit/0954f85))
+* **icons:** use different icon for domains and DNS ([66348da](https://github.com/ovh-ux/ovh-manager-web/commit/66348da))
+* update yarn.lock file ([43f6939](https://github.com/ovh-ux/ovh-manager-web/commit/43f6939))
+* **deps:** update manager-webpack-config to v2.4.7 ([a8b5d11](https://github.com/ovh-ux/ovh-manager-web/commit/a8b5d11))
+* **deps:** upgrade manager-webpack-config to v3.0.0 ([fbb409a](https://github.com/ovh-ux/ovh-manager-web/commit/fbb409a))
+* **deps:** upgrade ovh-api-services to v3.24.0 ([38e3437](https://github.com/ovh-ux/ovh-manager-web/commit/38e3437))
+* **deps:** upgrade ovh-module-emailpro to v7.0.7 ([bcda9f1](https://github.com/ovh-ux/ovh-manager-web/commit/bcda9f1))
+* **deps:** upgrade ovh-module-exchange to v9.1.0 ([8959bd0](https://github.com/ovh-ux/ovh-manager-web/commit/8959bd0))
+* **deps:** upgrade ovh-module-office to v7.0.3 ([7344d95](https://github.com/ovh-ux/ovh-manager-web/commit/7344d95))
+* **deps:** upgrade ovh-module-sharepoint to v7.0.3 ([e225a7e](https://github.com/ovh-ux/ovh-manager-web/commit/e225a7e))
+* **deps:** upgrade ovh-ui-angular to v2.22.1 ([3dcee35](https://github.com/ovh-ux/ovh-manager-web/commit/3dcee35))
+* **dnszone.deletion:** fix number of issues deleted ([fa17d35](https://github.com/ovh-ux/ovh-manager-web/commit/fa17d35))
+* **hosting:** expired service error message ([0989d4f](https://github.com/ovh-ux/ovh-manager-web/commit/0989d4f))
+* **htmlhint:** install htmlhint as a devDependency ([3ad764a](https://github.com/ovh-ux/ovh-manager-web/commit/3ad764a))
+* **i18n:** retrieve translations ([3342746](https://github.com/ovh-ux/ovh-manager-web/commit/3342746))
+* **i18n:** retrieve translations ([e3f8d52](https://github.com/ovh-ux/ovh-manager-web/commit/e3f8d52))
+* **i18n:** retrieve translations ([ffbb8bd](https://github.com/ovh-ux/ovh-manager-web/commit/ffbb8bd))
+
+
+### Features
+
+* **components.converter:** add units for binary system ([0094934](https://github.com/ovh-ux/ovh-manager-web/commit/0094934))
+* **guides-track:** track click events on guides ([ef7c851](https://github.com/ovh-ux/ovh-manager-web/commit/ef7c851))
+* **navbar.user:** add tracking on user menu ([578a501](https://github.com/ovh-ux/ovh-manager-web/commit/578a501))
+
+
+
 ## [13.8.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.8.1...v13.8.2) (2018-11-09)
 
 
