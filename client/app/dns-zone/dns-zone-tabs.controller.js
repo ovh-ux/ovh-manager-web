@@ -7,15 +7,15 @@ angular.module('App').controller(
      * @param $location
      * @param $stateParams
      * @param Domain
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $location, $stateParams, $translate, Domain, Emails) {
+    constructor($scope, $location, $stateParams, $translate, Domain, WucEmails) {
       this.$scope = $scope;
       this.$location = $location;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Domain = Domain;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -51,7 +51,7 @@ angular.module('App').controller(
         this.$location.search('tab', this.selectedTab);
       };
 
-      this.Emails.getDomains().then((emails) => {
+      this.WucEmails.getDomains().then((emails) => {
         if (_.indexOf(emails, this.$stateParams.productId) === -1) {
           this.tabMenu.items = _.drop(this.tabMenu.items);
         }

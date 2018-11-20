@@ -8,7 +8,6 @@ angular.module('controllers').controller(
       $translate,
       Alerter,
       Domain,
-      Products,
       constants,
     ) {
       this.$scope = $scope;
@@ -17,7 +16,6 @@ angular.module('controllers').controller(
       this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
-      this.Products = Products;
       this.constants = constants;
     }
 

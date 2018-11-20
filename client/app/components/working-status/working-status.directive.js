@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 angular.module('directives').directive('workingStatus', [
-  'Products',
-  Products => ({
+  'WucProducts',
+  WucProducts => ({
     restrict: 'A',
     scope: {
       modalId: '=',
@@ -20,7 +20,7 @@ angular.module('directives').directive('workingStatus', [
           statusDone = $scope.statusDone.map(status => status.toLowerCase());
         }
         if ($scope.productType) {
-          Products.getWorks($scope.productType).then((works) => {
+          WucProducts.getWorks($scope.productType).then((works) => {
             $scope.worksDetails = works.items
               .filter(work => statusDone.indexOf(work.details.status.toLowerCase()) === -1);
           });

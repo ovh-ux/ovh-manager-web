@@ -8,15 +8,15 @@ angular.module('App').controller(
      * @param $q
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $stateParams, $q, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $q, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$q = $q;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -44,7 +44,7 @@ angular.module('App').controller(
       return this.$q
         .all(_.map(
           this.redirections,
-          ({ id }) => this.Emails.getRedirection(this.$stateParams.productId, id),
+          ({ id }) => this.WucEmails.getRedirection(this.$stateParams.productId, id),
         ))
         .then(data => dataToExport.concat(_.map(data, d => [d.from, d.to])))
         .finally(() => {
@@ -56,7 +56,7 @@ angular.module('App').controller(
       this.loading.redirections = true;
       this.redirections = null;
 
-      return this.Emails.getRedirections(this.$stateParams.productId)
+      return this.WucEmails.getRedirections(this.$stateParams.productId)
         .then((data) => {
           this.redirections = data.map(id => ({ id }));
         })
@@ -71,7 +71,7 @@ angular.module('App').controller(
     }
 
     transformItem({ id }) {
-      return this.Emails.getRedirection(this.$stateParams.productId, id);
+      return this.WucEmails.getRedirection(this.$stateParams.productId, id);
     }
   },
 );

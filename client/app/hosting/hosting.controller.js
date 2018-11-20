@@ -360,7 +360,7 @@ angular
                 })
                 .catch(err => Alerter.error(err));
 
-              if (hosting.messages.length > 0) {
+              if (!hosting.isExpired && hosting.messages.length > 0) {
                 Alerter.error(
                   $translate.instant('hosting_dashboard_loading_error'),
                   $scope.alerts.page,

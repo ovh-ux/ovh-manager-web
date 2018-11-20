@@ -47,10 +47,10 @@
                 <oui-datagrid data-rows="ctrl.userLogs"
                               data-row-loader="ctrl.transformItem($row)">
                     <oui-column data-title="'hosting_tab_USER_LOGS_table_header_login' | translate" data-property="login">
-                        {{ $row.login | sliceContent: 50 }}
+                        {{ $row.login | wucSliceContent: 50 }}
                     </oui-column>
                     <oui-column data-title="'hosting_tab_USER_LOGS_table_header_description' | translate" data-property="description">
-                        {{ $row.description | sliceContent: 50 }}
+                        {{ $row.description | wucSliceContent: 50 }}
                     </oui-column>
                     <oui-column data-title="'hosting_tab_USER_LOGS_table_header_creationDate' | translate" data-property="creationDate">
                         <span data-ng-bind="$row.creationDate | date: 'medium'"></span>
