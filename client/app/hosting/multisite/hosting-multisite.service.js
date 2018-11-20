@@ -8,7 +8,6 @@ angular.module('services').service(
       Hosting,
       OvhHttp,
       Poll,
-      Products,
       constants,
     ) {
       this.$rootScope = $rootScope;
@@ -17,7 +16,6 @@ angular.module('services').service(
       this.Hosting = Hosting;
       this.OvhHttp = OvhHttp;
       this.Poll = Poll;
-      this.Products = Products;
       this.constants = constants;
 
       this.aapiHostingPath = `${constants.aapiRootPath}hosting/web`;

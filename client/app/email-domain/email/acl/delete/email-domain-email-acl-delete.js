@@ -7,14 +7,14 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -23,7 +23,7 @@ angular.module('App').controller(
     }
 
     deleteAcl() {
-      this.Emails.deleteAcl(this.$stateParams.productId, this.acl.accountId)
+      this.WucEmails.deleteAcl(this.$stateParams.productId, this.acl.accountId)
         .then(() => this.Alerter.success(
           this.$translate.instant('email_tab_modal_delete_acl_success'),
           this.$scope.alerts.main,

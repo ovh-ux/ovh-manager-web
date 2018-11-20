@@ -7,7 +7,9 @@
         <div data-wizard-step
              data-wizard-step-valid="ctrl.ukTransferForm.$valid">
 
-            <div class="loader text-center" data-ng-if="ctrl.loading"></div>
+            <div class="text-center" data-ng-if="ctrl.loading">
+                <oui-spinner></oui-spinner>
+            </div>
 
             <div data-ng-if="!ctrl.loading">
                 <p data-ng-bind-html="'domain_dashboard_add_uk_tags_title' | translate: { t0: ctrl.domain.name }"></p>

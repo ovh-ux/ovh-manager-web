@@ -33,7 +33,7 @@
                     <span class="label label-info"
                           data-ng-if="$row.deleting"
                           data-translate="privateDatabase_tabs_whitelist_list_status_deleting"></span>
-                    {{ $row.name | sliceContent: 50 }}
+                    {{ $row.name | wucSliceContent: 50 }}
                 </oui-column>
                 <oui-action-menu data-align="end" data-compact>
                     <oui-action-menu-item data-text="{{:: 'privateDatabase_tabs_whitelist_list_popover_edit' | translate }}"

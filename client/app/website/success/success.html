@@ -12,7 +12,9 @@
     <div class="row my-5">
         <div class="col-md-6">
             <p data-ng-bind-html="'website_success_text_' + webSiteSuccessCtrl.type | translate: { t0: webSiteSuccessCtrl.domain, t1: webSiteSuccessCtrl.hostingName }"></p>
-            <div class="loader text-center" data-ng-if="webSiteSuccessCtrl.loading"></div>
+            <div class="text-center" data-ng-if="webSiteSuccessCtrl.loading">
+                <oui-spinner></oui-spinner>
+            </div>
             <div class="ml-4" data-ng-if="!webSiteSuccessCtrl.loading">
                 <span data-ng-bind-html="'website_success_text_' + webSiteSuccessCtrl.type + '_explanation_1' | translate: { t0: 'ftp://' + webSiteSuccessCtrl.hosting.cluster + '.ovh.net', t1: webSiteSuccessCtrl.hosting.primaryLogin }"></span>
                 <a data-ng-href="{{webSiteSuccessCtrl.guides[webSiteSuccessCtrl.type === 'blog' ? 'wordpress' : 'prestashop']}}" target="_blank"

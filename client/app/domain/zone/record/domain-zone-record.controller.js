@@ -8,7 +8,7 @@ angular.module('App').controller(
       Alerter,
       Domain,
       DomainValidator,
-      Validator,
+      WucValidator,
     ) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
@@ -16,7 +16,7 @@ angular.module('App').controller(
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.DomainValidator = DomainValidator;
-      this.Validator = Validator;
+      this.WucValidator = WucValidator;
     }
 
     $onInit() {
@@ -152,10 +152,10 @@ angular.module('App').controller(
       let isValid;
 
       if (this.DomainValidator.regex.SRV_target.test(value)) {
-        isValid = this.Validator
+        isValid = this.WucValidator
           .isValidDomain(value.match(this.DomainValidator.regex.SRV_target)[1]);
       } else {
-        isValid = this.Validator.isValidSubDomain(value);
+        isValid = this.WucValidator.isValidSubDomain(value);
       }
       input.$setValidity('target', isValid);
     }
@@ -172,7 +172,7 @@ angular.module('App').controller(
         'subdomain',
         value === null
           || value === ''
-          || this.Validator.isValidSubDomain(value, {
+          || this.WucValidator.isValidSubDomain(value, {
             canBeginWithUnderscore: true,
             canBeginWithWildcard: true,
           }),

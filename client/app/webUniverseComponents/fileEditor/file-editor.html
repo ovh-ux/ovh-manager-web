@@ -30,7 +30,9 @@
     </div>
 
     <div class="editor">
-        <div class="loader text-center" data-ng-show="loader"></div>
+        <div class="text-center" data-ng-show="loader">
+            <oui-spinner></oui-spinner>
+        </div>
         <p data-ng-show="!loader">
             <a href="#" id="add-new-item"
                editable-text="newItem.value"

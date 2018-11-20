@@ -8,7 +8,7 @@ angular.module('App').controller(
       $stateParams,
       $translate,
       Alerter,
-      AllDom,
+      WucAllDom,
       Domain,
       DomainsOwo,
       Hosting,
@@ -23,7 +23,7 @@ angular.module('App').controller(
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.AllDom = AllDom;
+      this.WucAllDom = WucAllDom;
       this.Domain = Domain;
       this.DomainsOwo = DomainsOwo;
       this.Hosting = Hosting;
@@ -123,12 +123,12 @@ angular.module('App').controller(
 
     getAllDomInfos(serviceName) {
       this.loading.allDom = true;
-      this.AllDom.getAllDom(serviceName)
+      this.WucAllDom.getAllDom(serviceName)
         .then((allDom) => {
           this.allDom = allDom;
           this.$q
             .all({
-              allDomDomains: this.AllDom.getDomains(serviceName),
+              allDomDomains: this.WucAllDom.getDomains(serviceName),
               domains: this.Domain.getDomains(),
             })
             .then(({ allDomDomains, domains }) => {

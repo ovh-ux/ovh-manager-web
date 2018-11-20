@@ -9,7 +9,9 @@
              data-wizard-step-on-load="loadOrder"
              data-wizard-step-valid="isStepValid(1)">
 
-            <div class="loader text-center" data-ng-if="loading.init"></div>
+            <div class="text-center" data-ng-if="loading.init">
+                <oui-spinner></oui-spinner>
+            </div>
 
             <div data-ng-if="!loading.init">
                 <div class="alert alert-danger" role="alert"
@@ -37,7 +39,9 @@
              data-wizard-step-valid="isStepValid(2)"
              data-wizard-step-on-load="getDuration">
 
-            <div class="loader text-center" data-ng-if="loading.duration"></div>
+            <div class="text-center" data-ng-if="loading.duration">
+                <oui-spinner></oui-spinner>
+            </div>
 
             <div data-ng-if="!loading.duration">
                 <p data-translate="hosting_dashboard_cdn_order_choose_duration"></p>
@@ -72,7 +76,9 @@
         <div data-wizard-step
              data-wizard-step-valid="!loading.order">
 
-            <div class="loader text-center" data-ng-if="loading.order"></div>
+            <div class="text-center" data-ng-if="loading.order">
+                <oui-spinner></oui-spinner>
+            </div>
 
             <p data-translate="hosting_dashboard_cdn_order_validation"
                data-ng-if="!loading.order"></p>

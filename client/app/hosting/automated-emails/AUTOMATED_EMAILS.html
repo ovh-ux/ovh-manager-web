@@ -65,7 +65,7 @@
 
                     <div class="chart-container" style="height: 320px;"
                          data-ng-if="!ctrl.loading.loading"
-                         data-chartjs="ctrl.stats.chart">
+                         data-wuc-chartjs="ctrl.stats.chart">
                     </div>
                 </div>
             </div>
@@ -107,7 +107,9 @@
 
                         <tbody data-ng-if="ctrl.loaders.bounces">
                             <tr>
-                                <td class="loader text-center" colspan="3"></td>
+                                <td class="text-center" colspan="3">
+                                    <oui-spinner></oui-spinner>
+                                </td>
                             </tr>
                         </tbody>
 

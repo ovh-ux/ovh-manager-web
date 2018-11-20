@@ -3,10 +3,10 @@ angular.module('services').service(
   class DomainValidator {
     /**
      * Constructor
-     * @param Validator
+     * @param WucValidator
      */
-    constructor(Validator) {
-      this.Validator = Validator;
+    constructor(WucValidator) {
+      this.WucValidator = WucValidator;
 
       this.regex = {
         TTL: /^\d+$/,
@@ -84,14 +84,14 @@ angular.module('services').service(
                 !_.isFinite(field[1])
                 || field[1] < 1
                 || field[1] > 32
-                || !this.Validator.isValidDomain(field[0], {
+                || !this.WucValidator.isValidDomain(field[0], {
                   canBeginWithUnderscore: true,
                 })
               ) {
                 isValid = false;
               }
             } else if (
-              !this.Validator.isValidDomain(field, {
+              !this.WucValidator.isValidDomain(field, {
                 canBeginWithUnderscore: true,
               })
             ) {
@@ -125,14 +125,14 @@ angular.module('services').service(
                 !_.isFinite(field[1])
                 || field[1] < 1
                 || field[1] > 32
-                || !this.Validator.isValidDomain(field[0], {
+                || !this.WucValidator.isValidDomain(field[0], {
                   canBeginWithUnderscore: true,
                 })
               ) {
                 isValid = false;
               }
             } else if (
-              !this.Validator.isValidDomain(field, {
+              !this.WucValidator.isValidDomain(field, {
                 canBeginWithUnderscore: true,
               })
             ) {
@@ -155,7 +155,7 @@ angular.module('services').service(
           } if (/^ptr:.+/.test(field)) {
             field = field.replace(/^(ptr:)/, '');
             if (
-              !this.Validator.isValidDomain(field, {
+              !this.WucValidator.isValidDomain(field, {
                 canBeginWithUnderscore: true,
               })
             ) {
@@ -190,11 +190,11 @@ angular.module('services').service(
                 !_.isFinite(cidr)
                 || cidr < 1
                 || cidr > 32
-                || !this.Validator.isValidIpv4(ip)
+                || !this.WucValidator.isValidIpv4(ip)
               ) {
                 isValid = false;
               }
-            } else if (!this.Validator.isValidIpv4(field)) {
+            } else if (!this.WucValidator.isValidIpv4(field)) {
               // Format: "ip4:ipv4"
               isValid = false;
             }
@@ -226,11 +226,11 @@ angular.module('services').service(
                 !_.isFinite(cidr)
                 || cidr < 1
                 || cidr > 128
-                || !this.Validator.isValidIpv6(ip)
+                || !this.WucValidator.isValidIpv6(ip)
               ) {
                 isValid = false;
               }
-            } else if (!this.Validator.isValidIpv6(field)) {
+            } else if (!this.WucValidator.isValidIpv6(field)) {
               // Format: "ip6:ipv6"
               isValid = false;
             }
@@ -249,7 +249,7 @@ angular.module('services').service(
           if (new RegExp(`^${type}:.+`).test(field)) {
             field = field.replace(new RegExp(`^(${type}:)`), '');
             if (
-              !this.Validator.isValidDomain(field, {
+              !this.WucValidator.isValidDomain(field, {
                 canBeginWithUnderscore: true,
               })
             ) {
@@ -328,9 +328,9 @@ angular.module('services').service(
         // prevent spaces before dot
         return false;
       } if (/(.+)\.$/.test(value)) {
-        return this.Validator.isValidDomain(value.match(/(.+)\.$/)[1]);
+        return this.WucValidator.isValidDomain(value.match(/(.+)\.$/)[1]);
       }
-      return this.Validator.isValidSubDomain(value);
+      return this.WucValidator.isValidSubDomain(value);
     }
 
     /**
@@ -342,12 +342,12 @@ angular.module('services').service(
       if (value === '.') {
         return true;
       } if (this.regex.NAPTR_replace.test(value)) {
-        return this.Validator.isValidDomain(
+        return this.WucValidator.isValidDomain(
           value.match(this.regex.NAPTR_replace)[1],
           { canBeginWithUnderscore: true },
         );
       }
-      return this.Validator.isValidDomain(value);
+      return this.WucValidator.isValidDomain(value);
     }
 
     /**
@@ -363,20 +363,20 @@ angular.module('services').service(
       switch (fieldType) {
         case 'A':
         case 'DYNHOST':
-          return this.Validator.isValidIpv4(target);
+          return this.WucValidator.isValidIpv4(target);
         case 'AAAA':
-          return this.Validator.isValidIpv6(target);
+          return this.WucValidator.isValidIpv6(target);
         case 'NS':
         case 'CNAME':
           if (/\s+\.$/.test(target)) {
             // prevent spaces before dot
             return false;
           } if (/(.+)\.$/.test(target)) {
-            return this.Validator.isValidDomain(target.match(/(.+)\.$/)[1], {
+            return this.WucValidator.isValidDomain(target.match(/(.+)\.$/)[1], {
               canBeginWithUnderscore: true,
             });
           }
-          return this.Validator.isValidSubDomain(target, {
+          return this.WucValidator.isValidSubDomain(target, {
             canBeginWithUnderscore: true,
           });
         case 'TXT':
@@ -572,7 +572,7 @@ angular.module('services').service(
               // prevent spaces before dot
               isValid = false;
             } else if (/(.+)\.$/.test(splitted[4])) {
-              isValid = this.Validator.isValidDomain(splitted[4].match(/(.+)\.$/)[1]);
+              isValid = this.WucValidator.isValidDomain(splitted[4].match(/(.+)\.$/)[1]);
             } else {
               isValid = false;
             }

@@ -1,28 +1,37 @@
-angular.module('App').directive('chartjs', Chart => ({
+import _ from 'lodash';
+
+import 'chart.js/dist/Chart.min';
+import 'chartjs-plugin-zoom/chartjs-plugin-zoom';
+
+import template from './chartjs.html';
+
+export default () => ({
   restrict: 'A',
   scope: {
-    chartjs: '=?',
+    wucChartjs: '=?',
   },
   bindToController: true,
   controllerAs: '$ctrl',
-  templateUrl: 'components/chartjs/chartjs.html',
+  template,
   link(scope, element, attrs, controller) {
     const canvas = element.children().get(0);
-    canvas.id = _.uniqueId('chartjs');
+    canvas.id = _.uniqueId('wucChartjs');
     controller.ctx = canvas.getContext('2d'); // eslint-disable-line no-param-reassign
   },
-  controller: function directiveController($scope) {
+  controller($scope) {
+    'ngInject';
+
     const self = this;
 
     this.createChart = function createChart(data) {
       if (this.chartInstance) {
         this.chartInstance.destroy();
       }
-      this.chartInstance = new Chart(this.ctx, data || this.chartjs);
+      this.chartInstance = new Chart(this.ctx, data || this.wucChartjs);
     };
 
     this.$onInit = () => {
-      $scope.$watch('$ctrl.chartjs', (data) => {
+      $scope.$watch('$ctrl.wucChartjs', (data) => {
         if (data) {
           self.createChart(data);
         }
@@ -35,4 +44,4 @@ angular.module('App').directive('chartjs', Chart => ({
       });
     };
   },
-}));
+});

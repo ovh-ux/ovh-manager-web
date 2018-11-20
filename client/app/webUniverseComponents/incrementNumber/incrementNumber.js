@@ -1,20 +1,24 @@
+import angular from 'angular';
+
+import template from './incrementNumber.html';
+
 /* eslint-disable no-param-reassign */
-angular.module('directives').directive('incrementNumber', () => ({
+export default () => ({
   require: 'ngModel',
   restrict: 'AE',
   scope: {
-    id: '@?incrementNumberId',
-    init: '=?incrementNumberInit',
-    max: '=?incrementNumberMax',
-    min: '=?incrementNumberMin',
-    name: '@?incrementNumberName',
-    size: '=?incrementNumberSize',
+    id: '@?wucIncrementNumberId',
+    init: '=?wucIncrementNumberInit',
+    max: '=?wucIncrementNumberMax',
+    min: '=?wucIncrementNumberMin',
+    name: '@?wucIncrementNumberName',
+    size: '=?wucIncrementNumberSize',
     ngDisabled: '=?',
     ngRequired: '=?',
     ngModel: '=',
-    onChange: '&?incrementNumberOnChange',
+    onChange: '&?wucIncrementNumberOnChange',
   },
-  templateUrl: 'components/incrementNumber/incrementNumber.html',
+  template,
   link(scope, element, attrs, ngModelController) {
     const checkValidity = () => {
       ngModelController.$setValidity('min', !scope.isOverMin(true));
@@ -57,5 +61,5 @@ angular.module('directives').directive('incrementNumber', () => ({
       scope.ngModel = parseInt(scope.ngModel, 10) - 1;
     };
   },
-}));
+});
 /* eslint-enable no-param-reassign */

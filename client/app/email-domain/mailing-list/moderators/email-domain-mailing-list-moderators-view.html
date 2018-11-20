@@ -78,7 +78,9 @@
                     <!--loader-->
                     <tbody data-ng-if="ctrlModerators.loading.moderators || (ctrlModerators.loading.pager && ctrlModerators.moderators.ids.length)">
                         <tr>
-                            <td class="loader text-center" colspan="3"></td>
+                            <td class="text-center" colspan="3">
+                                <oui-spinner></oui-spinner>
+                            </td>
                         </tr>
                     </tbody>
 
@@ -86,7 +88,7 @@
                     <tbody data-ng-if="!ctrlModerators.loading.moderators && ctrlModerators.moderators.updating">
                         <tr>
                             <td colspan="3" class="text-center">
-                                <div class="loader"></div>
+                                <oui-spinner></oui-spinner>
                                 <span data-translate="mailing_list_tab_table_moderators_updating"></span>
                             </td>
                         </tr>

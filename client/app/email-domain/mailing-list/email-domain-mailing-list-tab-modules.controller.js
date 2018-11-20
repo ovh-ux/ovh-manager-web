@@ -8,16 +8,16 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      * @param MailingLists
      */
-    constructor($scope, $filter, $stateParams, $translate, Alerter, Emails, MailingLists) {
+    constructor($scope, $filter, $stateParams, $translate, Alerter, WucEmails, MailingLists) {
       this.$scope = $scope;
       this.$filter = $filter;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
       this.MailingLists = MailingLists;
     }
 
@@ -63,7 +63,7 @@ angular.module('App').controller(
 
     getQuotas() {
       this.loading.quotas = true;
-      return this.Emails.getQuotas(this.$stateParams.productId)
+      return this.WucEmails.getQuotas(this.$stateParams.productId)
         .then((quotas) => {
           this.quotas = quotas;
         })
