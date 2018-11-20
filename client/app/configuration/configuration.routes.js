@@ -17,5 +17,8 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
+    atInternet: {
+      rename: 'Header-Web',
+    },
   });
 });
