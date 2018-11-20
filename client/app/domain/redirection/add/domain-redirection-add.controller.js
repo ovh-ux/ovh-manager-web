@@ -8,7 +8,7 @@ angular.module('controllers').controller(
       Alerter,
       Domain,
       DomainValidator,
-      Validator,
+      WucValidator,
     ) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
@@ -16,7 +16,7 @@ angular.module('controllers').controller(
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.DomainValidator = DomainValidator;
-      this.Validator = Validator;
+      this.WucValidator = WucValidator;
     }
 
     $onInit() {
@@ -241,7 +241,7 @@ angular.module('controllers').controller(
         this.errors.domainCname = true;
       } else {
         const domainName = this.getCompleteTarget();
-        this.errors.redirectionTarget = !this.Validator.isValidDomain(domainName);
+        this.errors.redirectionTarget = !this.WucValidator.isValidDomain(domainName);
         this.errors.domainCname = this.errors.redirectionTarget;
 
         if (this.errors.redirectionTarget) {
@@ -280,9 +280,9 @@ angular.module('controllers').controller(
      * @param {string} ip
      */
     ipaddrValid(ip) {
-      if (this.Validator.isValidIpv4(ip)) {
+      if (this.WucValidator.isValidIpv4(ip)) {
         return this.typeRedirection.ipv4;
-      } if (this.Validator.isValidIpv6(ip)) {
+      } if (this.WucValidator.isValidIpv6(ip)) {
         return this.typeRedirection.ipv6;
       }
       return false;
@@ -327,7 +327,7 @@ angular.module('controllers').controller(
     webTargetCheck() {
       const { webTarget } = this.newRedirection;
       if (webTarget) {
-        this.errors.webTarget = !this.Validator.isValidURL(webTarget);
+        this.errors.webTarget = !this.WucValidator.isValidURL(webTarget);
         this.errors.webTargetLength = !this.errors.webTarget
           && webTarget
           && this.testInputSize(webTarget);
@@ -373,7 +373,7 @@ angular.module('controllers').controller(
             this.newRedirection.params.typeRedirection = this.typeRedirection.txt;
             this.newRedirection.params.targetRedirection = this.newRedirection.webTarget;
             this.newRedirection.params.visibilityType = 'VISIBLE_PERMANENT';
-            return this.Validator.isValidURL(this.newRedirection.params.targetRedirection);
+            return this.WucValidator.isValidURL(this.newRedirection.params.targetRedirection);
           }
 
           if (
@@ -384,7 +384,7 @@ angular.module('controllers').controller(
           ) {
             this.newRedirection.params.typeRedirection = this.typeRedirection.txt;
             this.newRedirection.params.targetRedirection = this.newRedirection.webTarget;
-            return this.Validator.isValidURL(this.newRedirection.params.targetRedirection);
+            return this.WucValidator.isValidURL(this.newRedirection.params.targetRedirection);
           }
         } else if (this.newRedirection.step3 === this.choice.invisible) {
           if (

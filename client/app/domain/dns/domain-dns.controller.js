@@ -10,7 +10,7 @@ angular.module('controllers').controller(
       Alerter,
       Domain,
       User,
-      Validator,
+      WucValidator,
       constants,
     ) {
       this.$scope = $scope;
@@ -21,7 +21,7 @@ angular.module('controllers').controller(
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.User = User;
-      this.Validator = Validator;
+      this.WucValidator = WucValidator;
       this.constants = constants;
     }
 
@@ -151,7 +151,7 @@ angular.module('controllers').controller(
       const value = input.$viewValue;
       input.$setValidity(
         'domain',
-        value === '' || this.Validator.isValidDomain(value),
+        value === '' || this.WucValidator.isValidDomain(value),
       );
     }
 
@@ -160,8 +160,8 @@ angular.module('controllers').controller(
       input.$setValidity(
         'ip',
         value === ''
-          || this.Validator.isValidIpv4(value)
-          || this.Validator.isValidIpv6(value),
+          || this.WucValidator.isValidIpv4(value)
+          || this.WucValidator.isValidIpv6(value),
       );
     }
 

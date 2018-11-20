@@ -18,6 +18,7 @@ import wucProduct from './product';
 import wucProgressBarElementCounter from './progressBarElementCounter';
 import wucString from './string';
 import wucV6UiSwitch from './v6UiSwitch';
+import wucValidator from './validator';
 
 const moduleName = 'webUniverseComponents';
 
@@ -41,6 +42,7 @@ angular
     wucProgressBarElementCounter,
     wucString,
     wucV6UiSwitch,
+    wucValidator,
   ]);
 
 export default moduleName;

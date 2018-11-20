@@ -1,12 +1,12 @@
 angular.module('App').controller(
   'DomainDynHostAddCtrl',
   class DomainDynHostAddCtrl {
-    constructor($scope, $translate, Alerter, Domain, Validator) {
+    constructor($scope, $translate, Alerter, Domain, WucValidator) {
       this.$scope = $scope;
       this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
-      this.Validator = Validator;
+      this.WucValidator = WucValidator;
     }
 
     $onInit() {
@@ -21,7 +21,7 @@ angular.module('App').controller(
     ipTargetCheck(input) {
       input.$setValidity(
         'iptarget',
-        this.Validator.isValidIpv4(this.dynHost.ipTarget),
+        this.WucValidator.isValidIpv4(this.dynHost.ipTarget),
       );
     }
 
@@ -30,7 +30,7 @@ angular.module('App').controller(
         'subdomain',
         this.dynHost.subDomain === null
           || this.dynHost.subDomain === ''
-          || this.Validator.isValidSubDomain(this.dynHost.subDomain),
+          || this.WucValidator.isValidSubDomain(this.dynHost.subDomain),
       );
     }
 

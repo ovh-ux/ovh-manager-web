@@ -1,12 +1,12 @@
 angular.module('App').controller(
   'DomainDynHostLoginAddCtrl',
   class DomainDynHostLoginAddCtrl {
-    constructor($scope, $translate, Alerter, Domain, Validator) {
+    constructor($scope, $translate, Alerter, Domain, WucValidator) {
       this.$scope = $scope;
       this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
-      this.Validator = Validator;
+      this.WucValidator = WucValidator;
     }
 
     $onInit() {
@@ -45,7 +45,7 @@ angular.module('App').controller(
       input.$setValidity(
         'subdomain',
         this.dynHostLogin.subDomain === '*'
-          || this.Validator.isValidSubDomain(this.dynHostLogin.subDomain),
+          || this.WucValidator.isValidSubDomain(this.dynHostLogin.subDomain),
       );
     }
 
