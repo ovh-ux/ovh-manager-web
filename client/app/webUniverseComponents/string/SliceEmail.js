@@ -3,7 +3,7 @@
  * If no X provided, a default value of 30 is used.
  * Example : azertyuiop@ovh.net  >  azer...@ovh.net if index=4
  */
-angular.module('filters').filter('sliceEmail', () => {
+export default () => {
   const slice = (content, _index) => {
     const index = _index && _index > 0 ? _index : 50;
     let result = content.slice(0, index);
@@ -25,4 +25,4 @@ angular.module('filters').filter('sliceEmail', () => {
     }
     return '';
   };
-});
+};
