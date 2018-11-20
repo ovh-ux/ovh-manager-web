@@ -126,7 +126,7 @@ angular.module('App').run((
         const allDomItem = SidebarMenu.addMenuItem({
           title: domain.displayName,
           category: 'domain',
-          icon: 'ovh-font ovh-font-domain',
+          icon: 'oui-icon oui-icon-domain-dns icon-white-background',
           allowSubItems: true,
           loadOnState: 'app.domain.alldom',
           loadOnStateParams: {

@@ -2283,13 +2283,6 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-basic-auth@~2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/basic-auth/-/basic-auth-2.0.1.tgz#b998279bf47ce38344b4f3cf916d4679bbf51e3a"
-  integrity sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==
-  dependencies:
-    safe-buffer "5.1.2"
-
 batch@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/batch/-/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"
@@ -7395,17 +7388,6 @@ moment@^2.10.2, moment@^2.16.0, moment@^2.5.0:
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
   integrity sha1-PCV/mDn8DpP/UxSWMiOeuQeD/2Y=
 
-morgan@^1.6.1:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/morgan/-/morgan-1.9.1.tgz#0a8d16734a1d9afbc824b99df87e738e58e2da59"
-  integrity sha512-HQStPIV4y3afTiCYVxirakhlCfGkI161c76kKFca7Fk1JusM//Qeo1ej2XaMniiNeaZklMVrh3vTtIzpzwbpmA==
-  dependencies:
-    basic-auth "~2.0.0"
-    debug "2.6.9"
-    depd "~1.1.2"
-    on-finished "~2.3.0"
-    on-headers "~1.0.1"
-
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -8114,10 +8096,10 @@ ovh-module-sharepoint@ovh-ux/ovh-module-sharepoint#^7.0.0:
     jsurl "^0.1.4"
     lodash "~2.4.1"
 
-ovh-ui-angular@^2.22.x:
-  version "2.22.0"
-  resolved "https://registry.yarnpkg.com/ovh-ui-angular/-/ovh-ui-angular-2.22.0.tgz#5f020ed4cc4481cb496362ba129d35a1a6b21c60"
-  integrity sha512-Dynr0CO/5Tz/vHPKeXk3AaSuUTRc6hO4YgfBKFZ0sMlw5tTtdDTtTyLADchX06SHyFmgjILefVpK5atw1Iscrg==
+ovh-ui-angular@^2.22.1:
+  version "2.22.1"
+  resolved "https://registry.yarnpkg.com/ovh-ui-angular/-/ovh-ui-angular-2.22.1.tgz#63d9ecb786bb872766b82a29c899dcb40b932eeb"
+  integrity sha512-zAGLqCvL/uuByVMGwQ8Odpf4hJ0Uhq92NT66ov249V+qh1YZGrgAaMEw4lBYXMZN9V6UQLsFdtIPXuyiNbwdYw==
   dependencies:
     angular ">=1.6.x"
     angular-aria ">=1.6.x"
@@ -8140,10 +8122,10 @@ ovh-ui-kit@^2.20.0:
   dependencies:
     less-plugin-remcalc "^0.1.0"
 
-ovh-ui-kit@^2.22.x:
-  version "2.22.0"
-  resolved "https://registry.yarnpkg.com/ovh-ui-kit/-/ovh-ui-kit-2.22.0.tgz#9a084e938bc7404f40d8e3cc6f218eb59733c592"
-  integrity sha512-/ZYob5gjzC7lv//N/MpHO84KBZWD5eR4c0/fDBOKNxs1fkf7ockzp+u9dCVIMHBKezwGN0wcxVqwx/SmRJuebg==
+ovh-ui-kit@^2.22.1:
+  version "2.22.1"
+  resolved "https://registry.yarnpkg.com/ovh-ui-kit/-/ovh-ui-kit-2.22.1.tgz#ee439bf2a281239336a5cd7b872d0a753335e19f"
+  integrity sha512-XwWqBtkXcVT7YxtA8OxNlld8r7cqGSIiypAqg6zj6oQvlmlOczNEPGj8KMAivHZELMRs/wZV13Iw0kj+iOZ6zw==
   dependencies:
     less-plugin-remcalc "^0.1.0"
 
