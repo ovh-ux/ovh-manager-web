@@ -4612,7 +4612,7 @@ filename-regex@^2.0.0:
   resolved "https://registry.yarnpkg.com/filename-regex/-/filename-regex-2.0.1.tgz#c1c4b9bee3e09725ddb106b75c1e301fe2f18b26"
   integrity sha1-wcS5vuPglyXdsQa3XB4wH+LxiyY=
 
-filesize@^3.5.10, filesize@^3.5.11:
+filesize@^3.5.10, filesize@^3.5.11, filesize@^3.6.1:
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/filesize/-/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
   integrity sha512-7KjR1vv6qnicaPMi1iiTcI85CyYwRO/PSFCu6SvqL8jN2Wjt/NIYQTFtFs7fSDCYOstUkEWIQGFUg5YZQfjlcg==
@@ -8063,35 +8063,38 @@ ovh-manager-webfont@ovh-ux/ovh-manager-webfont#^1.0.1:
   version "1.0.2"
   resolved "https://codeload.github.com/ovh-ux/ovh-manager-webfont/tar.gz/1d759c46c8c3ead4bc5e887a2336abd124a17c58"
 
-ovh-module-emailpro@^7.0.6:
-  version "7.0.6"
-  resolved "https://registry.yarnpkg.com/ovh-module-emailpro/-/ovh-module-emailpro-7.0.6.tgz#cd4d412f56b0f573597c460bcf66c3821c06dbfe"
-  integrity sha512-PS3kzvVsGPhUOOS/HHTl+urrd5RlgGvkd3q6d8FH03ZeMoHbllvBflZYuKtvTy61m5UzQrtAqBouUw17DtKqBg==
+ovh-module-emailpro@^7.0.7:
+  version "7.0.7"
+  resolved "https://registry.yarnpkg.com/ovh-module-emailpro/-/ovh-module-emailpro-7.0.7.tgz#1cf8f9a97613d55d29688acf4ee4d0df56c1faa7"
+  integrity sha512-1oYD8dkaxAN1V7sX0tplygju/0UEhDeAunRdkmJo/DE8QWARudpCs8eeTSYDjXqeA/IhHUgOtBTf/MLcs0x/6w==
   dependencies:
     angular "~1.6.10"
     lodash "~3.9.3"
     moment "^2.16.0"
     punycode "^1.2.4"
 
-ovh-module-exchange@^9.0.7:
-  version "9.0.7"
-  resolved "https://registry.yarnpkg.com/ovh-module-exchange/-/ovh-module-exchange-9.0.7.tgz#8dc1694c30262d9657acd550a6dbba2b733e4749"
-  integrity sha512-fJhoZZGIFeHusCdpdAKQ2KweeGzXhrPlvp5uAnBG6ZQ+z8xzKKYPSWoB/su95aT8phHOWjXg9tbkRQIsuanAXw==
+ovh-module-exchange@^9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/ovh-module-exchange/-/ovh-module-exchange-9.1.0.tgz#0c408e455b2f31dc84cbfd55d6962aca61f67d12"
+  integrity sha512-b3ug+khf8ocpDBRDpVytEACs+Psn0miR+g/hEopVSjoRcizsoqDLFd7QUV+MOUM3uWHXlJiMOz3VAXA/jD+uTg==
   dependencies:
+    filesize "^3.6.1"
     lodash "~3.9.3"
 
-ovh-module-office@ovh-ux/ovh-module-office#^7.0.0:
-  version "7.0.2"
-  resolved "https://codeload.github.com/ovh-ux/ovh-module-office/tar.gz/934797163212a5f5364efb22c01c879fa6459a6c"
+ovh-module-office@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/ovh-module-office/-/ovh-module-office-7.0.3.tgz#3bc9ed17c2200b24e719698f199eebe4299c8ed0"
+  integrity sha512-+p4SAA9e39/p7zFPyM+/ngzXqb055q1b6gu8lgPwdCi5nhf5cXO3dvdYW4JJ1nVMUGtsXqt/mGPqyYM6PFSU9Q==
   dependencies:
     angular "~1.6.10"
     jsurl "^0.1.4"
     lodash "~3.9.3"
     moment "^2.16.0"
 
-ovh-module-sharepoint@ovh-ux/ovh-module-sharepoint#^7.0.0:
-  version "7.0.2"
-  resolved "https://codeload.github.com/ovh-ux/ovh-module-sharepoint/tar.gz/c58527de76404fee54a84ce8e91eb24475165fad"
+ovh-module-sharepoint@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/ovh-module-sharepoint/-/ovh-module-sharepoint-7.0.3.tgz#6f34121baa4c4a3ead45b89be9646b0fd58d8b6e"
+  integrity sha512-VOwXbfkwkCp1qFIsGeLYhStdlLPijah7vKqKsbH9ZMbZv2o7WNlA7ano2C/Ch8acjzs1KFfkiMwKv1lJfAng/A==
   dependencies:
     angular "~1.6.10"
     filesize "^3.5.10"
