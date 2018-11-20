@@ -2,6 +2,7 @@ import angular from 'angular';
 
 import wucAllDom from './alldom';
 import wucApi from './api';
+import wucChartjs from './chartjs';
 import wucConverter from './converter';
 import wucCron from './cron';
 import wucCronValidator from './cron-validator';
@@ -24,6 +25,7 @@ angular
   .module(moduleName, [
     wucAllDom,
     wucApi,
+    wucChartjs,
     wucConverter,
     wucCron,
     wucCronValidator,
