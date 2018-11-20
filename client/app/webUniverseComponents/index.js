@@ -4,6 +4,7 @@ import wucAllDom from './alldom';
 import wucApi from './api';
 import wucChartjs from './chartjs';
 import wucConverter from './converter';
+import wucCharts from './charts';
 import wucCron from './cron';
 import wucCronValidator from './cron-validator';
 import wucDuration from './duration';
@@ -28,6 +29,7 @@ angular
     wucApi,
     wucChartjs,
     wucConverter,
+    wucCharts,
     wucCron,
     wucCronValidator,
     wucDuration,
