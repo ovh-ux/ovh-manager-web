@@ -20,7 +20,6 @@ import 'angular-resource';
 import 'ovh-ui-angular';
 import 'script-loader!@bower_components/jquery.scrollTo/jquery.scrollTo.min.js';
 import 'script-loader!angular-dynamic-locale/dist/tmhDynamicLocale.js';
-import 'script-loader!@bower_components/angular-flash-alert/dist/angular-flash.min.js';
 import 'angular-flash-alert';
 import 'script-loader!jquery.cookie/jquery.cookie.js';
 import 'bootstrap';
