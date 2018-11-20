@@ -1,5 +1,6 @@
 import angular from 'angular';
 
+import wucApi from './api';
 import wucConverter from './converter';
 import wucCron from './cron';
 import wucCronValidator from './cron-validator';
@@ -16,6 +17,7 @@ const moduleName = 'webUniverseComponents';
 
 angular
   .module(moduleName, [
+    wucApi,
     wucConverter,
     wucCron,
     wucCronValidator,
