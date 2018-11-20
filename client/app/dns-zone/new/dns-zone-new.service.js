@@ -5,12 +5,13 @@ angular.module('services').service(
      * Constructor
      * @param $http
      * @param $q
-     * @param Products
      */
-    constructor($http, $q, Products) {
+    constructor(
+      $http,
+      $q,
+    ) {
       this.$http = $http;
       this.$q = $q;
-      this.Products = Products;
 
       this.swsProxypassOrderPath = 'apiv6/order/domain/zone';
     }

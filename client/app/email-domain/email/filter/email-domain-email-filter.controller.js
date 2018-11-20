@@ -7,14 +7,14 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -28,7 +28,7 @@ angular.module('App').controller(
     refreshTableFilters() {
       this.filters = null;
 
-      return this.Emails.getFilters(
+      return this.WucEmails.getFilters(
         this.$stateParams.productId,
         this.currentAccount.accountName,
       )
@@ -43,7 +43,7 @@ angular.module('App').controller(
     }
 
     transformItem({ name }) {
-      return this.Emails.getFilter(
+      return this.WucEmails.getFilter(
         this.$stateParams.productId,
         this.currentAccount.accountName,
         name,

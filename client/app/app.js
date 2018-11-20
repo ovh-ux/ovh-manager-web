@@ -1,4 +1,6 @@
 import translateAsyncLoader from '@ovh-ux/translate-async-loader';
+import uiRouter from '@uirouter/angularjs';
+
 import config from './config/config';
 import webUniverseComponents from './webUniverseComponents';
 // TODO: web-universe-components is not yet published;
@@ -32,13 +34,14 @@ angular
     'xeditable',
     'ovh-angular-sso-auth',
     'ovh-angular-sso-auth-modal-plugin',
-    'ui.router',
+    uiRouter,
     'ovh-angular-sidebar-menu',
     'pascalprecht.translate',
     'ovh-angular-responsive-tabs',
     'ovh-angular-tail-logs',
     'ovh-angular-otrs',
     'ovh-api-services',
+    'ovh-angular-apiv7',
     'ovh-angular-toaster',
     'ngCkeditor',
     'moment-picker',

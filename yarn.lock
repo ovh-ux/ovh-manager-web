@@ -687,12 +687,6 @@
   version "2.2.0"
   resolved "https://codeload.github.com/Luegg/angularjs-scroll-glue/tar.gz/5990d90cbf84efdf837edcbf26cefe9adb676f5b"
 
-"@bower_components/angular-ui-router@angular-ui/angular-ui-router-bower#^1.0.0":
-  version "1.0.20"
-  resolved "https://codeload.github.com/angular-ui/angular-ui-router-bower/tar.gz/9df2d5baa8e2ace23700d031cd5cd7b029f6ca35"
-  dependencies:
-    "@uirouter/core" "5.0.21"
-
 "@bower_components/angular-vs-repeat@kamilkp/angular-vs-repeat#v1.1.7":
   version "1.1.7"
   resolved "https://codeload.github.com/kamilkp/angular-vs-repeat/tar.gz/c40d8e9acfb4b220c1760450f6afe0cd556f3c7e"
@@ -1041,6 +1035,13 @@
     "@microsoft/load-themed-styles" "^1.7.2"
     prop-types "^15.5.10"
     tslib "^1.7.1"
+
+"@uirouter/angularjs@^1.0.0":
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.20.tgz#bd330544cb2f1c35987f610d8fc353071786c04e"
+  integrity sha512-fY6bsesTL/tg8gyFHXaIjD1r5b7Ac+SYupodO9OzT4/gKI0YC+uGzLpQESAiXlT3fsxdEPVBzdtAbzXDwCKdEA==
+  dependencies:
+    "@uirouter/core" "5.0.21"
 
 "@uirouter/core@5.0.21":
   version "5.0.21"
@@ -7968,6 +7969,11 @@ ovh-angular-actions-menu@ovh-ux/ovh-angular-actions-menu#^3.0.0:
   version "3.2.0"
   resolved "https://codeload.github.com/ovh-ux/ovh-angular-actions-menu/tar.gz/b63ed0d2dbefc915b0bb18dc426ea7b83cc00c50"
 
+ovh-angular-apiv7@^1.2.8:
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/ovh-angular-apiv7/-/ovh-angular-apiv7-1.2.8.tgz#5ae631d70029b3313a3aa47fb1901b168693d5e9"
+  integrity sha1-WuYx1wApszE6OqR/sZAbFoaT1ek=
+
 ovh-angular-export-csv@ovh-ux/ovh-angular-export-csv#^0.3.2:
   version "0.3.2"
   resolved "https://codeload.github.com/ovh-ux/ovh-angular-export-csv/tar.gz/fc21b58b246a011afc2b8fbcdd35c9b63d604293"
@@ -8042,8 +8048,8 @@ ovh-angular-user-pref@ovh-ux/ovh-angular-user-pref#^0.3.1:
   resolved "https://codeload.github.com/ovh-ux/ovh-angular-user-pref/tar.gz/71d0b3c0606a2e2052505bda2a8e2ff06b0156e1"
 
 ovh-api-services@ovh-ux/ovh-api-services#^3.20.0:
-  version "3.21.1"
-  resolved "https://codeload.github.com/ovh-ux/ovh-api-services/tar.gz/dc27a45e18492c72f7eaf97829cef8affac938e5"
+  version "3.23.1"
+  resolved "https://codeload.github.com/ovh-ux/ovh-api-services/tar.gz/fe82ce755b35764fde711efed97289078f3f2664"
   dependencies:
     lodash "^3.10.1"
 

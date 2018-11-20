@@ -9,16 +9,21 @@ angular.module('services').service(
      * @param $q
      * @param OvhHttp
      * @param Poll
-     * @param Products
      */
-    constructor($rootScope, $cacheFactory, $http, $q, OvhHttp, Poll, Products) {
+    constructor(
+      $rootScope,
+      $cacheFactory,
+      $http,
+      $q,
+      OvhHttp,
+      Poll,
+    ) {
       this.$rootScope = $rootScope;
       this.cach = $cacheFactory;
       this.$http = $http;
       this.$q = $q;
       this.OvhHttp = OvhHttp;
       this.Poll = Poll;
-      this.Products = Products;
 
       this.cache = this.cach('UNIVERS_WEB_PRIVATE_DATABASE');
       this.requests = {
