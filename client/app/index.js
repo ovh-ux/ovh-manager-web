@@ -38,7 +38,6 @@ import 'ovh-angular-tail-logs';
 import 'ovh-angular-proxy-request';
 import 'ovh-angular-q-allsettled';
 import 'ovh-angular-http';
-import 'script-loader!df-tab-menu/build/df-tab-menu.min.js';
 import 'ovh-angular-swimming-poll';
 import 'script-loader!validator/validator.min.js';
 import 'ovh-angular-export-csv';

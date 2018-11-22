@@ -18,6 +18,7 @@ import wucOvhFileReader from './ovhFileReader';
 import wucProduct from './product';
 import wucProgressBarElementCounter from './progressBarElementCounter';
 import wucString from './string';
+import wucTabs from './tabs';
 import wucV6UiSwitch from './v6UiSwitch';
 import wucValidator from './validator';
 
@@ -43,6 +44,7 @@ angular
     wucProduct,
     wucProgressBarElementCounter,
     wucString,
+    wucTabs,
     wucV6UiSwitch,
     wucValidator,
   ]);
