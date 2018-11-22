@@ -1,12 +1,12 @@
 angular.module('App').controller(
   'EmailsCreateFilterCtrl',
   class EmailsCreateFilterCtrl {
-    constructor($scope, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -41,7 +41,7 @@ angular.module('App').controller(
 
     getModels() {
       this.loading = true;
-      this.Emails.getModels()
+      this.WucEmails.getModels()
         .then((models) => {
           this.actions = models.models['domain.DomainFilterActionEnum'].enum;
           this.operands = models.models['domain.DomainFilterOperandEnum'].enum;
@@ -135,13 +135,13 @@ angular.module('App').controller(
 
       let filterPromise;
       if (_.get(this.$scope.currentActionData, 'delegate', false)) {
-        filterPromise = this.Emails.createDelegatedFilter(
+        filterPromise = this.WucEmails.createDelegatedFilter(
           this.account.email,
           filter,
           rules,
         );
       } else {
-        filterPromise = this.Emails.createFilter(
+        filterPromise = this.WucEmails.createFilter(
           this.$stateParams.productId,
           this.account.accountName,
           filter,

@@ -1,4 +1,12 @@
-angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atInternet, constants) => {
+angular.module('App').run((
+  $q,
+  $translate,
+  SidebarMenu,
+  WucProducts,
+  User,
+  atInternet,
+  constants,
+) => {
   const menuOptions = [];
 
   function buildMenuOptions() {
@@ -118,7 +126,7 @@ angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atIntern
         const allDomItem = SidebarMenu.addMenuItem({
           title: domain.displayName,
           category: 'domain',
-          icon: 'ovh-font ovh-font-domain',
+          icon: 'oui-icon oui-icon-domain-dns icon-white-background',
           allowSubItems: true,
           loadOnState: 'app.domain.alldom',
           loadOnStateParams: {
@@ -358,7 +366,7 @@ angular.module('App').run(($q, $translate, SidebarMenu, Products, User, atIntern
     });
   }
 
-  const productsPromise = Products.getProductsByType()
+  const productsPromise = WucProducts.getProductsByType()
     .then(products => $q.all(
       addDomainItems(products),
       addHostingItems(products),

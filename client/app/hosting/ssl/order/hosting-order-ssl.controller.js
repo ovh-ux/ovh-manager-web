@@ -11,7 +11,7 @@ angular.module('App').controller(
       hostingSSLCertificate,
       hostingSSLCertificateType,
       User,
-      Validator,
+      WucValidator,
     ) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
@@ -22,7 +22,7 @@ angular.module('App').controller(
       this.hostingSSLCertificate = hostingSSLCertificate;
       this.hostingSSLCertificateType = hostingSSLCertificateType;
       this.User = User;
-      this.Validator = Validator;
+      this.WucValidator = WucValidator;
       this.$window = $window;
     }
 
@@ -45,7 +45,7 @@ angular.module('App').controller(
       };
 
       if (
-        !this.Validator.isValidLetsEncryptDomain(
+        !this.WucValidator.isValidLetsEncryptDomain(
           'www.',
           this.$stateParams.productId,
         )

@@ -151,7 +151,9 @@
                            data-translate="privateDatabase_order_sql_included_link"></a>
                     </oui-message>
 
-                    <div class="loader mt-5 text-center" data-ng-if="$ctrl.loading.durations"></div>
+                    <div class="mt-5 text-center" data-ng-if="$ctrl.loading.durations">
+                        <oui-spinner></oui-spinner>
+                    </div>
 
                     <div data-ng-if="!$ctrl.loading.durations && $ctrl.model.duration">
 

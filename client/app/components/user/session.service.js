@@ -7,7 +7,7 @@ class SessionService {
     atInternet,
     NavbarNotificationService,
     OtrsPopupService,
-    Products,
+    WucProducts,
     ssoAuthentication,
     User,
   ) {
@@ -18,7 +18,7 @@ class SessionService {
     this.atInternet = atInternet;
     this.navbarNotificationService = NavbarNotificationService;
     this.otrsPopupService = OtrsPopupService;
-    this.products = Products;
+    this.products = WucProducts;
     this.ssoAuthentication = ssoAuthentication;
     this.user = User;
   }
@@ -145,7 +145,7 @@ class SessionService {
       elt => angular.lowercase(elt.displayName || elt.name),
     );
 
-    // Products filtered
+    // WucProducts filtered
     const hostingProducts = _(products.hostings)
       .filter(elt => elt.type === 'HOSTING')
       .sortBy(elt => angular.lowercase(elt.displayName || elt.name))

@@ -7,15 +7,15 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      * @param constants
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails, constants) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails, constants) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
       this.constants = constants;
     }
 
@@ -36,7 +36,7 @@ angular.module('App').controller(
     initDelegate() {
       this.loading = true;
       this.addDelegateShown = false;
-      return this.Emails.getDelegationList(
+      return this.WucEmails.getDelegationList(
         this.$stateParams.productId,
         this.currentAccount,
       )
@@ -55,7 +55,7 @@ angular.module('App').controller(
 
     addDelegate() {
       this.loading = true;
-      return this.Emails.addDelegation(
+      return this.WucEmails.addDelegation(
         this.$stateParams.productId,
         this.currentAccount,
         this.model.value,
@@ -80,7 +80,7 @@ angular.module('App').controller(
 
     removeDelegate(delegationAccount) {
       this.loading = true;
-      return this.Emails.removeDelegation(
+      return this.WucEmails.removeDelegation(
         this.$stateParams.productId,
         this.currentAccount,
         delegationAccount,

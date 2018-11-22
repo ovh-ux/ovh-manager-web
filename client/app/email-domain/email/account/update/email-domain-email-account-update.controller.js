@@ -7,15 +7,15 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      * @param User
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails, User) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails, User) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
       this.User = User;
     }
 
@@ -65,9 +65,9 @@ angular.module('App').controller(
       let accountSizePromise;
 
       if (this.isDelegate) {
-        accountSizePromise = this.Emails.getDelegatedEmail(this.account.email);
+        accountSizePromise = this.WucEmails.getDelegatedEmail(this.account.email);
       } else {
-        accountSizePromise = this.Emails.getDomain(this.$stateParams.productId);
+        accountSizePromise = this.WucEmails.getDomain(this.$stateParams.productId);
       }
 
       return accountSizePromise
@@ -95,12 +95,12 @@ angular.module('App').controller(
 
       let accountPromise;
       if (this.isDelegate) {
-        accountPromise = this.Emails.updateDelegatedAccount(
+        accountPromise = this.WucEmails.updateDelegatedAccount(
           this.account.email,
           data,
         );
       } else {
-        accountPromise = this.Emails.updateAccount(
+        accountPromise = this.WucEmails.updateAccount(
           this.$stateParams.productId,
           this.account.accountName,
           data,

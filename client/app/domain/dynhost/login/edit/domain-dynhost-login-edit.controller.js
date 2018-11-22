@@ -1,13 +1,13 @@
 angular.module('App').controller(
   'DomainDynHostLoginEditCtrl',
   class DomainDynHostLoginEditCtrl {
-    constructor($scope, $q, $translate, Alerter, Domain, Validator) {
+    constructor($scope, $q, $translate, Alerter, Domain, WucValidator) {
       this.$scope = $scope;
       this.$q = $q;
       this.$translate = $translate;
       this.Alerter = Alerter;
       this.Domain = Domain;
-      this.Validator = Validator;
+      this.WucValidator = WucValidator;
     }
 
     $onInit() {
@@ -53,7 +53,7 @@ angular.module('App').controller(
         this.login.subDomain === null
           || this.login.subDomain === ''
           || this.login.subDomain === '*'
-          || this.Validator.isValidSubDomain(this.login.subDomain),
+          || this.WucValidator.isValidSubDomain(this.login.subDomain),
       );
     }
 

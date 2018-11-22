@@ -7,14 +7,14 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -39,7 +39,7 @@ angular.module('App').controller(
       this.emailsList = null;
       this.accounts = [];
 
-      return this.Emails.getDelegatedEmails(this.$stateParams.productId)
+      return this.WucEmails.getDelegatedEmails(this.$stateParams.productId)
         .then((data) => {
           this.accounts = _.map(data, email => email.split('@')[0]);
           this.emailsList = data.sort();
@@ -57,7 +57,7 @@ angular.module('App').controller(
     }
 
     transformItem(item) {
-      return this.Emails.getDelegatedResponder(item);
+      return this.WucEmails.getDelegatedResponder(item);
     }
 
     onTransformItemDone() {

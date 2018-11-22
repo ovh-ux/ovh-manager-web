@@ -9,16 +9,16 @@ angular.module('App').controller(
      * @param $timeout
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $q, $stateParams, $timeout, $translate, Alerter, Emails) {
+    constructor($scope, $q, $stateParams, $timeout, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$q = $q;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -96,7 +96,7 @@ angular.module('App').controller(
       this.loading.accounts = true;
       this.emails = null;
 
-      this.Emails.getDelegatedEmails(
+      this.WucEmails.getDelegatedEmails(
         this.$stateParams.productId,
         `%${this.search.accounts || ''}%`,
       )
@@ -119,8 +119,8 @@ angular.module('App').controller(
     transformItem(item) {
       return this.$q
         .all({
-          email: this.Emails.getDelegatedEmail(item),
-          usage: this.Emails.getEmailDelegatedUsage(item),
+          email: this.WucEmails.getDelegatedEmail(item),
+          usage: this.WucEmails.getEmailDelegatedUsage(item),
         })
         .then(({ email, usage }) => {
           const emailData = _(email).clone();
@@ -146,8 +146,8 @@ angular.module('App').controller(
      */
     updateUsage(account) {
       this.loading.usage = true;
-      this.Emails.updateDelegatedUsage(account.email)
-        .then(() => this.Emails
+      this.WucEmails.updateDelegatedUsage(account.email)
+        .then(() => this.WucEmails
           .getEmailDelegatedUsage(account.email)
           .then(() => this.constructor.setAccountPercentUse(account)))
         .catch(err => this.Alerter.alertFromSWS(

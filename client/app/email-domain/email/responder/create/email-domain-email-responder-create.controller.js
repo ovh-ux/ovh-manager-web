@@ -7,15 +7,15 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      * @param SessionService
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails, SessionService) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails, SessionService) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
       this.SessionService = SessionService;
     }
 
@@ -56,7 +56,7 @@ angular.module('App').controller(
     initResponders() {
       this.loading = true;
 
-      return this.Emails.getResponders(this.domain)
+      return this.WucEmails.getResponders(this.domain)
         .then((data) => {
           this.responders = data.sort();
           this.accountsNotUsed = _.filter(
@@ -166,13 +166,13 @@ angular.module('App').controller(
 
       let promise;
       if (this.isDelegated) {
-        promise = this.Emails.createDelegatedResponder(
+        promise = this.WucEmails.createDelegatedResponder(
           `${this.model.account}@${this.$stateParams.productId}`,
           data,
         );
       } else {
         data.account = this.model.account;
-        promise = this.Emails.createResponder(
+        promise = this.WucEmails.createResponder(
           this.$stateParams.productId,
           data,
         );

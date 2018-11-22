@@ -7,14 +7,14 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -31,7 +31,7 @@ angular.module('App').controller(
 
     getModels() {
       this.loading = true;
-      this.Emails.getModels()
+      this.WucEmails.getModels()
         .then((models) => {
           this.dnsFilterEnum = _.without(
             models.models['domain.DomainMXFilterEnum'].enum,
@@ -52,7 +52,7 @@ angular.module('App').controller(
 
     updateDnsFilter() {
       this.loading = true;
-      this.Emails.setDnsFilter(this.$stateParams.productId, {
+      this.WucEmails.setDnsFilter(this.$stateParams.productId, {
         mxFilter: this.selectedFilter,
         customTarget: this.customFilter.value,
       })

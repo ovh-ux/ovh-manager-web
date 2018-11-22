@@ -7,14 +7,14 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -38,9 +38,9 @@ angular.module('App').controller(
 
       let getUsagePromise;
       if (this.isDelegate) {
-        getUsagePromise = this.Emails.getEmailDelegatedUsage(this.account.email);
+        getUsagePromise = this.WucEmails.getEmailDelegatedUsage(this.account.email);
       } else {
-        getUsagePromise = this.Emails.getEmailUsage(
+        getUsagePromise = this.WucEmails.getEmailUsage(
           this.$stateParams.productId,
           this.account.accountName,
         );
@@ -74,9 +74,9 @@ angular.module('App').controller(
 
       let updateUsagePromise;
       if (this.isDelegate) {
-        updateUsagePromise = this.Emails.updateDelegatedUsage(this.account.email);
+        updateUsagePromise = this.WucEmails.updateDelegatedUsage(this.account.email);
       } else {
-        updateUsagePromise = this.Emails.updateUsage(
+        updateUsagePromise = this.WucEmails.updateUsage(
           this.$stateParams.productId,
           this.account.accountName,
         );

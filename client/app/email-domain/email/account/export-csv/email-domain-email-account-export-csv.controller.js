@@ -8,7 +8,7 @@ angular.module('App').controller(
       $stateParams,
       $translate,
       Alerter,
-      Emails,
+      WucEmails,
       exportCsv,
     ) {
       this.$scope = $scope;
@@ -17,7 +17,7 @@ angular.module('App').controller(
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
       this.exportCsv = exportCsv;
     }
 
@@ -48,9 +48,9 @@ angular.module('App').controller(
 
       let emailsPromise;
       if (delegated) {
-        emailsPromise = this.Emails.getDelegatedEmails(this.$stateParams.productId);
+        emailsPromise = this.WucEmails.getDelegatedEmails(this.$stateParams.productId);
       } else {
-        emailsPromise = this.Emails.getEmails(this.$stateParams.productId, {});
+        emailsPromise = this.WucEmails.getEmails(this.$stateParams.productId, {});
       }
 
       return emailsPromise.then((emails) => {
@@ -60,8 +60,8 @@ angular.module('App').controller(
         const requests = _.map(
           emails,
           id => (delegated
-            ? this.Emails.getDelegatedEmail(id)
-            : this.Emails.getEmail(this.$stateParams.productId, id)),
+            ? this.WucEmails.getDelegatedEmail(id)
+            : this.WucEmails.getEmail(this.$stateParams.productId, id)),
         );
 
         this.intervalPromise = this.$interval(() => {

@@ -124,11 +124,11 @@
         </div>
 
         <div data-ng-controller="PrivateDatabaseTabsCtrl">
-            <ovh-tabs tabs="tabs"
+            <wuc-ovh-tabs tabs="tabs"
                       selected-tab="selectedTab"
                       product="privateDatabase"
                       change-tab="setSelectedTab"
-                      tr="tr"></ovh-tabs>
+                      tr="tr"></wuc-ovh-tabs>
             <div class="tab-content">
                 <div class="tab-pane active"
                      data-ng-include="!server.isExpired && 'private-database/' + toKebabCase(selectedTab) + '/private-database-' + selectedTab.toLowerCase() + '.html' || ''"></div>

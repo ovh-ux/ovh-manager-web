@@ -7,15 +7,15 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      * @param SessionService
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails, SessionService) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails, SessionService) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
       this.SessionService = SessionService;
     }
 
@@ -89,12 +89,12 @@ angular.module('App').controller(
 
       let promise;
       if (_.get(this.$scope.currentActionData, 'delegate', false)) {
-        promise = this.Emails.updateDelegatedResponder(
+        promise = this.WucEmails.updateDelegatedResponder(
           `${this.responder.account}@${this.$stateParams.productId}`,
           data,
         );
       } else {
-        promise = this.Emails.updateResponder(
+        promise = this.WucEmails.updateResponder(
           this.$stateParams.productId,
           this.responder.account,
           data,

@@ -7,14 +7,14 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -25,12 +25,12 @@ angular.module('App').controller(
     deleteResponder() {
       let promise;
       if (_.get(this.$scope.currentActionData, 'delegate', false)) {
-        promise = this.Emails.deleteDelegatedResponder(
+        promise = this.WucEmails.deleteDelegatedResponder(
           `${this.responder.account}@${this.$stateParams.productId}`,
           this.responder.account,
         );
       } else {
-        promise = this.Emails.deleteResponder(
+        promise = this.WucEmails.deleteResponder(
           this.$stateParams.productId,
           this.responder.account,
         );

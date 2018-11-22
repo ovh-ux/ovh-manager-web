@@ -16,12 +16,12 @@
 
     <div data-ng-controller="ZonesTabsCtrl as ctrlZonesTabs"
          data-ng-if="!ctrlDomain.domain.isExpired">
-        <ovh-tabs tabs="ctrlZonesTabs.tabs"
+        <wuc-ovh-tabs tabs="ctrlZonesTabs.tabs"
                   selected-tab="ctrlZonesTabs.selectedTab"
                   product="domain"
                   change-tab="ctrlZonesTabs.setSelectedTab"
                   tr="tr"
-                  menu="ctrlZonesTabs.tabMenu"></ovh-tabs>
+                  menu="ctrlZonesTabs.tabMenu"></wuc-ovh-tabs>
         <div class="tab-content">
             <div class="tab-pane active domain"
                  data-ng-include="ctrlZonesTabs.selectedTab && 'domain/' + ctrlZonesTabs.constructor.toKebabCase(ctrlZonesTabs.selectedTab) + '/' + ctrlZonesTabs.selectedTab + '.html'"></div>

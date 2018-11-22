@@ -7,7 +7,7 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      * @param LANGUAGES
      * @param User
      * @param constants
@@ -17,7 +17,7 @@ angular.module('App').controller(
       $stateParams,
       $translate,
       Alerter,
-      Emails,
+      WucEmails,
       LANGUAGES,
       User,
       constants,
@@ -26,7 +26,7 @@ angular.module('App').controller(
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
       this.LANGUAGES = LANGUAGES;
       this.User = User;
       this.constants = constants;
@@ -64,7 +64,7 @@ angular.module('App').controller(
 
     addAcl() {
       this.loading.acls = true;
-      this.Emails.createAcl(this.$stateParams.productId, this.addAclItem.value)
+      this.WucEmails.createAcl(this.$stateParams.productId, this.addAclItem.value)
         .then(() => {
           this.Alerter.success(
             this.$translate.instant('email_tab_table_acls_add_success'),
@@ -90,7 +90,7 @@ angular.module('App').controller(
       this.loading.acls = true;
       this.acls = null;
 
-      return this.Emails.getAcls(this.$stateParams.productId, forceRefresh)
+      return this.WucEmails.getAcls(this.$stateParams.productId, forceRefresh)
         .then((acls) => {
           this.acls = acls;
         })
@@ -107,7 +107,7 @@ angular.module('App').controller(
     }
 
     transformItem(item) {
-      return this.Emails.getAcl(this.$stateParams.productId, item);
+      return this.WucEmails.getAcl(this.$stateParams.productId, item);
     }
 
     onTransformItemDone() {
