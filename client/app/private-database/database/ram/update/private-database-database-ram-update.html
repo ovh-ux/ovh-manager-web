@@ -38,7 +38,7 @@
             <p data-translate="privateDatabase_RAM_add_select_duration"></p>
 
             <div class="text-center" data-ng-if="ramCtrl.loading.durations">
-                <div class="loader" aria-hidden="true"></div>
+                <oui-spinner></oui-spinner>
                 <span data-translate="privateDatabase_RAM_loading_order"></span>
             </div>
 
@@ -50,7 +50,7 @@
                            data-ng-value="duration">
                     <label class="oui-radio__label-container" for="ramDuration-{{$index}}">
                         <span class="oui-radio__label">
-                            <span data-ng-bind="duration.duration | duration:'longDate'"></span>&nbsp;:
+                            <span data-ng-bind="duration.duration | wucDuration:'longDate'"></span>&nbsp;:
                             <span data-ng-bind-html="duration.prices | price: ramCtrl.data.ovhSubsidiary"></span>
                         </span>
                     </label>
@@ -78,7 +78,7 @@
             <p data-translate="privateDatabase_order_RAM_resume"></p>
 
             <div class="text-center" data-ng-if="ramCtrl.loading.validation">
-                <div class="loader" aria-hidden="true"></div>
+                <oui-spinner></oui-spinner>
                 <span data-translate="privateDatabase_RAM_loading_order"></span>
             </div>
 

@@ -7,14 +7,14 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      */
-    constructor($scope, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -23,7 +23,7 @@ angular.module('App').controller(
 
     refreshTasks() {
       this.taskIds = [];
-      return this.Emails.getAllTaskIds(this.$stateParams.productId)
+      return this.WucEmails.getAllTaskIds(this.$stateParams.productId)
         .then((ids) => {
           _.forEach(ids, (type) => {
             _.forEach(type.ids, (id) => {
@@ -42,7 +42,7 @@ angular.module('App').controller(
     }
 
     transformItem(item) {
-      return this.Emails.getTask(this.$stateParams.productId, item);
+      return this.WucEmails.getTask(this.$stateParams.productId, item);
     }
   },
 );

@@ -1,3 +1,86 @@
+## [13.9.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.9.0...v13.9.1) (2018-11-21)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-module-emailpro to v7.0.8 ([54dda86](https://github.com/ovh-ux/ovh-manager-web/commit/54dda86))
+
+
+
+# [13.9.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.8.2...v13.9.0) (2018-11-20)
+
+
+### Bug Fixes
+
+* remove unused angular-flash-alert from script-loader ([0954f85](https://github.com/ovh-ux/ovh-manager-web/commit/0954f85))
+* **icons:** use different icon for domains and DNS ([66348da](https://github.com/ovh-ux/ovh-manager-web/commit/66348da))
+* update yarn.lock file ([43f6939](https://github.com/ovh-ux/ovh-manager-web/commit/43f6939))
+* **deps:** update manager-webpack-config to v2.4.7 ([a8b5d11](https://github.com/ovh-ux/ovh-manager-web/commit/a8b5d11))
+* **deps:** upgrade manager-webpack-config to v3.0.0 ([fbb409a](https://github.com/ovh-ux/ovh-manager-web/commit/fbb409a))
+* **deps:** upgrade ovh-api-services to v3.24.0 ([38e3437](https://github.com/ovh-ux/ovh-manager-web/commit/38e3437))
+* **deps:** upgrade ovh-module-emailpro to v7.0.7 ([bcda9f1](https://github.com/ovh-ux/ovh-manager-web/commit/bcda9f1))
+* **deps:** upgrade ovh-module-exchange to v9.1.0 ([8959bd0](https://github.com/ovh-ux/ovh-manager-web/commit/8959bd0))
+* **deps:** upgrade ovh-module-office to v7.0.3 ([7344d95](https://github.com/ovh-ux/ovh-manager-web/commit/7344d95))
+* **deps:** upgrade ovh-module-sharepoint to v7.0.3 ([e225a7e](https://github.com/ovh-ux/ovh-manager-web/commit/e225a7e))
+* **deps:** upgrade ovh-ui-angular to v2.22.1 ([3dcee35](https://github.com/ovh-ux/ovh-manager-web/commit/3dcee35))
+* **dnszone.deletion:** fix number of issues deleted ([fa17d35](https://github.com/ovh-ux/ovh-manager-web/commit/fa17d35))
+* **hosting:** expired service error message ([0989d4f](https://github.com/ovh-ux/ovh-manager-web/commit/0989d4f))
+* **htmlhint:** install htmlhint as a devDependency ([3ad764a](https://github.com/ovh-ux/ovh-manager-web/commit/3ad764a))
+* **i18n:** retrieve translations ([3342746](https://github.com/ovh-ux/ovh-manager-web/commit/3342746))
+* **i18n:** retrieve translations ([e3f8d52](https://github.com/ovh-ux/ovh-manager-web/commit/e3f8d52))
+* **i18n:** retrieve translations ([ffbb8bd](https://github.com/ovh-ux/ovh-manager-web/commit/ffbb8bd))
+
+
+### Features
+
+* **components.converter:** add units for binary system ([0094934](https://github.com/ovh-ux/ovh-manager-web/commit/0094934))
+* **guides-track:** track click events on guides ([ef7c851](https://github.com/ovh-ux/ovh-manager-web/commit/ef7c851))
+* **navbar.user:** add tracking on user menu ([578a501](https://github.com/ovh-ux/ovh-manager-web/commit/578a501))
+
+
+
+## [13.8.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.8.1...v13.8.2) (2018-11-09)
+
+
+
+## [13.8.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.8.0...v13.8.1) (2018-11-09)
+
+
+### Bug Fixes
+
+* **exchange:** upgrade ovh-module-exchange to v9.0.6 ([d05e4e9](https://github.com/ovh-ux/ovh-manager-web/commit/d05e4e9))
+* **exchange:** upgrade ovh-module-exchange to v9.0.7 ([931f093](https://github.com/ovh-ux/ovh-manager-web/commit/931f093))
+
+
+
+# [13.8.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.14...v13.8.0) (2018-11-08)
+
+
+### Bug Fixes
+
+* **tooltip-hosting:** tooltip on hosting activity ([8822582](https://github.com/ovh-ux/ovh-manager-web/commit/8822582))
+* apply htmlhint rules ([f8141f2](https://github.com/ovh-ux/ovh-manager-web/commit/f8141f2))
+* multisite-modification returns error ([12f4bb0](https://github.com/ovh-ux/ovh-manager-web/commit/12f4bb0)), closes [#MBE-13](https://github.com/ovh-ux/ovh-manager-web/issues/MBE-13)
+* **deps:** import everything related to angular-translate ([225e919](https://github.com/ovh-ux/ovh-manager-web/commit/225e919))
+* **deps:** update manager-webpack-config to v2.4.6 ([2016a91](https://github.com/ovh-ux/ovh-manager-web/commit/2016a91))
+* **deps:** update translate-async-loader to v1.0.5 ([efc0359](https://github.com/ovh-ux/ovh-manager-web/commit/efc0359))
+* **deps:** upgrade manager-webpack-config to v2.4.5 ([10cc10a](https://github.com/ovh-ux/ovh-manager-web/commit/10cc10a))
+* **deps:** upgrade ovh-angular-otrs to v6.3.0 ([52d201f](https://github.com/ovh-ux/ovh-manager-web/commit/52d201f))
+* **deps:** upgrade ovh-module-emailpro to v7.0.6 ([63d10c5](https://github.com/ovh-ux/ovh-manager-web/commit/63d10c5))
+* **deps:** upgrade ovh-module-exchange to v9.0.5 ([e5521e8](https://github.com/ovh-ux/ovh-manager-web/commit/e5521e8))
+* **deps:** upgrade ovh-ui-kit to v2.22.0 ([83fc90e](https://github.com/ovh-ux/ovh-manager-web/commit/83fc90e))
+* **i18n:** retrieve translations ([fa44760](https://github.com/ovh-ux/ovh-manager-web/commit/fa44760))
+* **i18n:** retrieve translations ([455796c](https://github.com/ovh-ux/ovh-manager-web/commit/455796c))
+* prevent warning 'Tried to load AngularJS more than once' ([f0bfac1](https://github.com/ovh-ux/ovh-manager-web/commit/f0bfac1))
+* **i18n:** submit translations ([89031a3](https://github.com/ovh-ux/ovh-manager-web/commit/89031a3))
+
+
+### Features
+
+* **navbar:** add tracking for assistance and notifications ([5ba4f97](https://github.com/ovh-ux/ovh-manager-web/commit/5ba4f97))
+
+
+
 <a name="13.7.14"></a>
 ## [13.7.14](https://github.com/ovh-ux/ovh-manager-web/compare/v13.7.13...v13.7.14) (2018-10-29)
 

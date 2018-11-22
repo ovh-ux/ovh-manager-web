@@ -151,7 +151,9 @@
                            data-translate="privateDatabase_order_sql_included_link"></a>
                     </oui-message>
 
-                    <div class="loader mt-5 text-center" data-ng-if="$ctrl.loading.durations"></div>
+                    <div class="mt-5 text-center" data-ng-if="$ctrl.loading.durations">
+                        <oui-spinner></oui-spinner>
+                    </div>
 
                     <div data-ng-if="!$ctrl.loading.durations && $ctrl.model.duration">
 
@@ -175,7 +177,7 @@
                                        data-ng-value="duration.duration">
                                 <label class="oui-radio__label-container" for="durationRadio-{{$index}}">
                                     <span class="oui-radio__label">
-                                        <span data-ng-bind="duration.duration | duration:'longDate'"></span>&nbsp;:
+                                        <span data-ng-bind="duration.duration | wucDuration:'longDate'"></span>&nbsp;:
                                         <span data-ng-bind-html="duration.details.prices | price:$ctrl.user.ovhSubsidiary"></span>
                                         <oui-spinner data-size="s"
                                                     data-ng-if="!duration.details.prices"></oui-spinner>

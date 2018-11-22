@@ -9,8 +9,15 @@
     .module('services')
     .service('Hosting', class Hosting {
       constructor(
-        $q, $http, $rootScope, $stateParams,
-        constants, WucConverterService, HOSTING, OvhHttp, Poll, Products,
+        $q,
+        $http,
+        $rootScope,
+        $stateParams,
+        constants,
+        WucConverterService,
+        HOSTING,
+        OvhHttp,
+        Poll,
       ) {
         this.$q = $q;
         this.$http = $http;
@@ -21,7 +28,6 @@
         this.HOSTING = HOSTING;
         this.OvhHttp = OvhHttp;
         this.Poll = Poll;
-        this.Products = Products;
 
         this.cloudWebUnlimitedQuantity = 100000;
         this.events = {

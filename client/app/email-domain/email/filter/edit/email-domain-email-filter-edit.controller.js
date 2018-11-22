@@ -1,12 +1,12 @@
 angular.module('App').controller(
   'EmailsEditFilterCtrl',
   class EmailsEditFilterCtrl {
-    constructor($scope, $stateParams, $translate, Alerter, Emails) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {
@@ -26,18 +26,18 @@ angular.module('App').controller(
 
     getModels() {
       this.loading = true;
-      this.Emails.getModels()
+      this.WucEmails.getModels()
         .then((models) => {
           this.actions = models.models['domain.DomainFilterActionEnum'].enum;
           this.operands = models.models['domain.DomainFilterOperandEnum'].enum;
 
           if (_.get(this.$scope.currentActionData, 'delegate', false)) {
-            return this.Emails.getDelegatedRules(
+            return this.WucEmails.getDelegatedRules(
               this.account.email,
               this.filter.name,
             );
           }
-          return this.Emails.getRules(
+          return this.WucEmails.getRules(
             this.$stateParams.productId,
             this.account.accountName,
             this.filter.name,
@@ -137,13 +137,13 @@ angular.module('App').controller(
 
       let filterPromise;
       if (_.get(this.$scope.currentActionData, 'delegate', false)) {
-        filterPromise = this.Emails.updateDelegatedFilter(
+        filterPromise = this.WucEmails.updateDelegatedFilter(
           this.account.email,
           filter,
           rules,
         );
       } else {
-        filterPromise = this.Emails.updateFilter(
+        filterPromise = this.WucEmails.updateFilter(
           this.$stateParams.productId,
           this.account.accountName,
           filter,

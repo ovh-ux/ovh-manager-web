@@ -8,12 +8,12 @@ angular.module('App').controller(
       $stateParams,
       $translate,
       Alerter,
-      AllDom,
+      WucAllDom,
       Domain,
       DomainsOwo,
       Hosting,
       HostingDomain,
-      Screenshot,
+      OvhApiScreenshot,
       User,
       constants,
     ) {
@@ -23,12 +23,12 @@ angular.module('App').controller(
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.AllDom = AllDom;
+      this.WucAllDom = WucAllDom;
       this.Domain = Domain;
       this.DomainsOwo = DomainsOwo;
       this.Hosting = Hosting;
       this.HostingDomain = HostingDomain;
-      this.Screenshot = Screenshot;
+      this.OvhApiScreenshot = OvhApiScreenshot.Aapi();
       this.User = User;
       this.constants = constants;
     }
@@ -123,12 +123,12 @@ angular.module('App').controller(
 
     getAllDomInfos(serviceName) {
       this.loading.allDom = true;
-      this.AllDom.getAllDom(serviceName)
+      this.WucAllDom.getAllDom(serviceName)
         .then((allDom) => {
           this.allDom = allDom;
           this.$q
             .all({
-              allDomDomains: this.AllDom.getDomains(serviceName),
+              allDomDomains: this.WucAllDom.getDomains(serviceName),
               domains: this.Domain.getDomains(),
             })
             .then(({ allDomDomains, domains }) => {
@@ -238,7 +238,8 @@ angular.module('App').controller(
 
     getScreenshoot(serviceName) {
       this.loading.screenshot = true;
-      return this.Screenshot.getScreenshot(serviceName)
+      return this.OvhApiScreenshot.get({ url: serviceName })
+        .$promise
         .then((screenshot) => {
           this.screenshot = screenshot;
         })

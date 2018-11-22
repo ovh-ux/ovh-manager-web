@@ -8,16 +8,16 @@ angular.module('App').controller(
      * @param $stateParams
      * @param $translate
      * @param Alerter
-     * @param Emails
+     * @param WucEmails
      * @param User
      */
-    constructor($scope, $q, $stateParams, $translate, Alerter, Emails, User) {
+    constructor($scope, $q, $stateParams, $translate, Alerter, WucEmails, User) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$q = $q;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.Emails = Emails;
+      this.WucEmails = WucEmails;
       this.User = User;
     }
 
@@ -178,7 +178,7 @@ angular.module('App').controller(
     createAccount() {
       this.account.accountName = _.trim(this.account.accountName);
 
-      this.Emails.createAccount(this.$stateParams.productId, this.account)
+      this.WucEmails.createAccount(this.$stateParams.productId, this.account)
         .then(() => this.Alerter.success(
           this.$translate.instant('email_tab_modal_create_account_success'),
           this.$scope.alerts.main,
@@ -196,9 +196,9 @@ angular.module('App').controller(
 
       this.$q
         .all({
-          domain: this.Emails.getDomain(this.$stateParams.productId),
-          quotas: this.Emails.getQuotas(this.$stateParams.productId),
-          emails: this.Emails.getEmails(this.$stateParams.productId, {
+          domain: this.WucEmails.getDomain(this.$stateParams.productId),
+          quotas: this.WucEmails.getQuotas(this.$stateParams.productId),
+          emails: this.WucEmails.getEmails(this.$stateParams.productId, {
             accountName: '%',
           }),
         })

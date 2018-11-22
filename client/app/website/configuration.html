@@ -85,7 +85,9 @@
                  data-ng-if="webSiteConfigurationCtrl.site.config.domain && webSiteConfigurationCtrl.site.config.hosting && webSiteConfigurationCtrl.site.config.type && !webSiteConfigurationCtrl.error">
                 <h2 data-translate="website_creation_step4_title"></h2>
 
-                <div class="loader text-center" data-ng-if="webSiteConfigurationCtrl.loading.capabilities"></div>
+                <div class="text-center" data-ng-if="webSiteConfigurationCtrl.loading.capabilities">
+                    <oui-spinner></oui-spinner>
+                </div>
 
                 <div data-ng-if="!webSiteConfigurationCtrl.loading.capabilities && webSiteConfigurationCtrl.site.config.type !== 'classic' && webSiteConfigurationCtrl.canBeCreated">
 
@@ -169,7 +171,9 @@
                  data-ng-if="!webSiteConfigurationCtrl.loading.capabilities && webSiteConfigurationCtrl.checkConfiguration()">
                 <h2 data-translate="website_creation_step5_title"></h2>
 
-                <div class="loader text-center" data-ng-if="webSiteConfigurationCtrl.loading.capabilities"></div>
+                <div class="text-center" data-ng-if="webSiteConfigurationCtrl.loading.capabilities">
+                    <oui-spinner></oui-spinner>
+                </div>
 
                 <div data-ng-if="!webSiteConfigurationCtrl.loading.capabilities">
                     <div class="ml-5">

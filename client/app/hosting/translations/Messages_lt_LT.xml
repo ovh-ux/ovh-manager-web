@@ -523,6 +523,7 @@
    <translation id="hosting_tab_DOMAINS_configuration_remove_success_finish" qtlid="232453">Domenas sėkmingai atjungtas nuo talpinimo plano.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_partial" qtlid="197518">Kai kurių domenų susiejimas su talpinimo planu buvo panaikintas, šalinant kitus kilo klaidų.</translation>
    <translation id="hosting_tab_DOMAINS_configuration_remove_failure" qtlid="197531">Klaida naikinant domeno susiejimą su talpinimo planu.</translation>
+   <translation id="hosting_tab_DOMAINS_configuration_modify_failure_inprogress" qtlid="508923">La mise à jour de votre ou vos domaines a échoué car une autre opération est en cours. Veuillez réessayer ultérieurement.</translation>
 
    <translation id="hosting_tab_DOMAINS_configuration_modify_title" qtlid="211476">Keisti domeną</translation>
    <translation id="hosting_tab_DOMAINS_configuration_modify_step1_question" qtlid="197544">Keisite šį domeną:</translation>
@@ -1109,16 +1110,11 @@ Pabandykite vėliau.</translation>
 
    <translation id="hosting_tab_CRON_configuration_create_title_button" qtlid="201185">Pridėti užduočių planavimą</translation>
    <translation id="hosting_tab_CRON_configuration_edit_title_button" qtlid="199182">Redaguoti užduotį</translation>
-   <translation id="hosting_tab_CRON_step2_title" qtlid="199195">Pasirinkti periodiškumą šiai užduočiai:</translation>
-   <translation id="hosting_tab_CRON_step2_expert_help" qtlid="199208">Apibrėžkite laikotarpį, "Crontab" formatu, įkeldami atitinkamas vertes valandai ("{0}"), dienai ("{1}"), mėnesiui ("{2}"), ir savaitės dienai ("{3}").</translation>
-   <translation id="hosting_tab_CRON_step2_expert_toocomplicated" qtlid="199221">Vertės pernelyg sudėtingos, kad būtų perkeltos į paprastą režimą.</translation>
    <translation id="hosting_tab_CRON_step3_title" qtlid="199234">Užduoties santrauka</translation>
    <translation id="hosting_tab_CRON_save_success" qtlid="199247">Nauja užduotis bus prieinama po kelių minučių (+- 2 min.).</translation>
    <translation id="hosting_tab_CRON_save_error" qtlid="199260">Įvyko klaida kuriant užduotį.</translation>
    <translation id="hosting_tab_CRON_edit_success" qtlid="199273">Užduotis sėkmingai pakeista.</translation>
    <translation id="hosting_tab_CRON_edit_error" qtlid="199286">Įvyko klaida redaguojant užduotį {0}.</translation>
-   <translation id="hosting_tab_CRON_simple_mode" qtlid="102849">Paprastas režimas</translation>
-   <translation id="hosting_tab_CRON_expert_mode" qtlid="64616">Eksperto režimas</translation>
    <translation id="hosting_tab_CRON_label_description" qtlid="9238">Apibūdinimas</translation>
    <translation id="hosting_tab_CRON_label_status" qtlid="33790">Būsena</translation>
    <translation id="hosting_tab_CRON_label_activate" qtlid="74958">Įjungimas</translation>
@@ -1129,45 +1125,6 @@ Pabandykite vėliau.</translation>
    <translation id="hosting_tab_CRON_label_email" qtlid="199338">Įrašai / email</translation>
    <translation id="hosting_tab_CRON_label_email_info" qtlid="296726">Siunčiama tik klaidos atveju</translation>
    <translation id="hosting_tab_CRON_label_crontab" qtlid="199351">Crontab</translation>
-   <translation id="hosting_tab_CRON_label_hours" qtlid="8842">Valandos</translation>
-   <translation id="hosting_tab_CRON_label_hours_min" qtlid="44236">valandos</translation>
-   <translation id="hosting_tab_CRON_label_days" qtlid="73505">Dienos</translation>
-   <translation id="hosting_tab_CRON_label_days_min" qtlid="44260">dienos</translation>
-   <translation id="hosting_tab_CRON_label_dow" qtlid="8854">Savaitės dienos</translation>
-   <translation id="hosting_tab_CRON_label_dow_min" qtlid="199364">savaitės dienos</translation>
-   <translation id="hosting_tab_CRON_label_months" qtlid="37803">Mėnuo</translation>
-   <translation id="hosting_tab_CRON_label_months_min" qtlid="40222">mėnuo</translation>
-   <translation id="hosting_tab_CRON_hours_all" qtlid="8782">Kas valandą</translation>
-   <translation id="hosting_tab_CRON_hours_items" qtlid="199377">Tam tikromis valandomis</translation>
-   <translation id="hosting_tab_CRON_hours_interval" qtlid="199390">Kas N val.</translation>
-   <translation id="hosting_tab_CRON_hours_interval_value" qtlid="199403">Kas {0} val.</translation>
-   <translation id="hosting_tab_CRON_hours_range" qtlid="199416">Nuo valandos A iki valandos B</translation>
-   <translation id="hosting_tab_CRON_dom_all" qtlid="154091">Kasdien</translation>
-   <translation id="hosting_tab_CRON_dom_items" qtlid="61908">Fiksuotos dienos</translation>
-   <translation id="hosting_tab_CRON_dom_interval" qtlid="199429">Kas N d.d.</translation>
-   <translation id="hosting_tab_CRON_dom_interval_value" qtlid="199442">Kas {0} d.d.</translation>
-   <translation id="hosting_tab_CRON_dom_range" qtlid="199455">Nuo dienos A iki dienos B</translation>
-   <translation id="hosting_tab_CRON_dow_all" qtlid="199468">Kasdien</translation>
-   <translation id="hosting_tab_CRON_dow_items" qtlid="199481">Tam tikromis savaitės dienomis</translation>
-   <translation id="hosting_tab_CRON_dow_interval" qtlid="199494">Kas N dieną per savaitę</translation>
-   <translation id="hosting_tab_CRON_dow_interval_value" qtlid="199507">Kas {0} dieną per savaitę</translation>
-   <translation id="hosting_tab_CRON_dow_range" qtlid="199520">Nuo dienos A iki dienos B per savaitę</translation>
-   <translation id="hosting_tab_CRON_mon_all" qtlid="199533">Kas mėnesį</translation>
-   <translation id="hosting_tab_CRON_mon_items" qtlid="199546">Tam tikrais mėnesiais</translation>
-   <translation id="hosting_tab_CRON_mon_interval" qtlid="199559">Kas N mėn.</translation>
-   <translation id="hosting_tab_CRON_mon_interval_value" qtlid="199572">Kas {0} mėn.</translation>
-   <translation id="hosting_tab_CRON_mon_range" qtlid="199585">Nuo mėnesio A iki mėnesio B</translation>
-   <translation id="hosting_tab_CRON_interval_pre_m" qtlid="62304">Kiekvieną</translation>
-   <translation id="hosting_tab_CRON_interval_pre_f" qtlid="199598">Kas</translation>
-   <translation id="hosting_tab_CRON_hours_range_from" qtlid="69077">Nuo</translation>
-   <translation id="hosting_tab_CRON_hours_range_to" qtlid="8890">iki</translation>
-   <translation id="hosting_tab_CRON_dom_range_from" qtlid="88725">Nuo</translation>
-   <translation id="hosting_tab_CRON_dom_range_to" qtlid="35904">iki</translation>
-   <translation id="hosting_tab_CRON_dow_range_from" qtlid="88725">Nuo</translation>
-   <translation id="hosting_tab_CRON_dow_range_to" qtlid="35904">iki</translation>
-   <translation id="hosting_tab_CRON_mon_range_from" qtlid="69077">Nuo</translation>
-   <translation id="hosting_tab_CRON_mon_range_to" qtlid="8890">iki</translation>
-   <translation id="hosting_tab_CRON_hours_value" qtlid="199611">{0} val.</translation>
    <translation id="hosting_tab_CRON_email_nic-admin" qtlid="199624">Administracinis kontaktas</translation>
    <translation id="hosting_tab_CRON_email_nic-tech" qtlid="199637">Techninis kontaktas</translation>
    <translation id="hosting_tab_CRON_email_no" qtlid="34788">Ne</translation>
@@ -1176,23 +1133,9 @@ Pabandykite vėliau.</translation>
    <translation id="hosting_tab_CRON_edit_task" qtlid="37875">Keisti</translation>
    <translation id="hosting_tab_CRON_delete_task" qtlid="2414">Trinti</translation>
 
-
    <translation id="hosting_tab_CRON_table_status_enabled" qtlid="30250">Įjungta</translation>
    <translation id="hosting_tab_CRON_table_status_disabled" qtlid="24967">Išjungta</translation>
    <translation id="hosting_tab_CRON_table_status_suspended" qtlid="136100">Pristabdytas</translation>
-
-   <translation id="hosting_tab_CRON_step2_help_m" qtlid="199663">Minutę (nuo 0 iki 59)</translation>
-   <translation id="hosting_tab_CRON_step2_help_h" qtlid="199676">Valandą (nuo 0 iki 23)</translation>
-   <translation id="hosting_tab_CRON_step2_help_dom" qtlid="199689">Mėnesio dieną (nuo 1 iki 31)</translation>
-   <translation id="hosting_tab_CRON_step2_help_mon" qtlid="199702">Mėnesį (nuo 1 iki 12, arba nuo {0} iki {1})</translation>
-   <translation id="hosting_tab_CRON_step2_help_dow" qtlid="263038">Savaitės diena (nuo 0 iki 7, arba nuo {0} iki {1})</translation>
-   <translation id="hosting_tab_CRON_step2_help_subtitle1" qtlid="199728">Žymėjimo pavyzdžiai:</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_1" qtlid="199741">visi vienetai</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_2" qtlid="199754">tik 2 ir 4</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_3" qtlid="199767">vienetai tarp 4 ir 7 (4,5,6,7)</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_4" qtlid="199780">kas 3 vnt. (0,3,6,..)</translation>
-   <translation id="hosting_tab_CRON_step2_help_notation_5" qtlid="199793">kas 3 vnt., bet tik tarp 10 ir 20 (10,13,16,19)</translation>
-   <translation id="hosting_tab_CRON_step2_help_subtitle2" qtlid="199806">Minutės ignoruojamos.</translation>
 
    <translation id="hosting_tab_STATISTICS_type" qtlid="2642">Tipas</translation>
    <translation id="hosting_tab_STATISTICS_none" qtlid="199819">Jokios statistikos</translation>

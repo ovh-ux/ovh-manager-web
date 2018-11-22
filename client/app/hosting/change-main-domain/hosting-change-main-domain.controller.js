@@ -1,7 +1,7 @@
 angular.module('App')
   .controller('HostingChangeMainDomainCtrl', (
     $scope, $rootScope, $q, $stateParams, $translate,
-    Alerter, atInternet, Hosting, hostingChangeDomain, Domain, Emails, User,
+    Alerter, atInternet, Hosting, hostingChangeDomain, Domain, WucEmails, User,
   ) => {
     $scope.model = {
       domain: null,
@@ -42,7 +42,7 @@ angular.module('App')
           }
         });
 
-      Emails.getEmails($stateParams.productId, {})
+      WucEmails.getEmails($stateParams.productId, {})
         .then((data) => {
           $scope.emails.data = data;
 

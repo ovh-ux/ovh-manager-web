@@ -70,7 +70,7 @@
                            data-ng-value="duration">
                     <label class="oui-radio__label-container" for="upgradeDuration">
                         <span class="oui-radio__label">
-                            <span data-ng-bind="duration.duration | duration: 'longDate'"></span>&nbsp;:
+                            <span data-ng-bind="duration.duration | wucDuration: 'longDate'"></span>&nbsp;:
                             <span data-ng-bind-html="duration.prices | price: ctrl.ovhSubsidiary"></span>
                         </span>
                     </label>
