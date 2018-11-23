@@ -185,56 +185,60 @@ class SessionService {
   }
 
   getAssistanceMenu(currentUser) {
+    const mustDisplayNewMenu = ['FR'].includes(currentUser.ovhSubsidiary);
     const currentSubsidiaryURLs = this.constants.urls[currentUser.ovhSubsidiary];
-    const assistanceMenu = [];
 
-    // Guides (External)
-    if (_(currentSubsidiaryURLs).has('guides.home')) {
-      assistanceMenu.push({
-        title: this.$translate.instant('common_menu_support_all_guides'),
-        url: currentSubsidiaryURLs.guides.home,
+    const assistanceMenuItems = [
+      {
+        title: this.$translate.instant('common_menu_support_help_and_contact'),
+        url: currentSubsidiaryURLs.support,
         isExternal: true,
         click: () => this.atInternet.trackClick({
           name: 'assistance::all_guides',
           type: 'action',
         }),
-      });
-    }
-
-    // New ticket
-    assistanceMenu.push({
-      title: this.$translate.instant('common_menu_support_new_ticket'),
-      click: (callback) => {
-        if (!this.otrsPopupService.isLoaded()) {
-          this.otrsPopupService.init();
-        } else {
-          this.otrsPopupService.toggle();
-        }
-
-        this.atInternet.trackClick({
-          name: 'assistance::create_assistance_request',
-          type: 'action',
-        });
-
-        if (_.isFunction(callback)) {
-          callback();
-        }
+        mustBeKept: mustDisplayNewMenu && _(currentSubsidiaryURLs).has('support'),
       },
-    });
+      {
+        title: this.$translate.instant('common_menu_support_all_guides'),
+        url: _.get(currentSubsidiaryURLs, 'guides.home'),
+        isExternal: true,
+        click: () => this.atInternet.trackClick({
+          name: 'assistance::all_guides',
+          type: 'action',
+        }),
+        mustBeKept: !mustDisplayNewMenu && _(currentSubsidiaryURLs).has('guides.home'),
+      },
+      {
+        title: this.$translate.instant('common_menu_support_new_ticket'),
+        click: (callback) => {
+          if (!this.otrsPopupService.isLoaded()) {
+            this.otrsPopupService.init();
+          } else {
+            this.otrsPopupService.toggle();
+          }
 
-    // Tickets list
-    assistanceMenu.push({
-      title: this.$translate.instant('common_menu_support_list_ticket'),
-      url: _.get(this.constants, 'REDIRECT_URLS.listTicket', ''),
-      click: () => this.atInternet.trackClick({
-        name: 'assistance::assistance_requests_created',
-        type: 'action',
-      }),
-    });
+          this.atInternet.trackClick({
+            name: 'assistance::create_assistance_request',
+            type: 'action',
+          });
 
-    // Telephony (External)
-    if (_(currentSubsidiaryURLs).has('support_contact')) {
-      assistanceMenu.push({
+          if (_.isFunction(callback)) {
+            callback();
+          }
+        },
+        mustBeKept: !mustDisplayNewMenu,
+      },
+      {
+        title: this.$translate.instant('common_menu_support_list_ticket'),
+        url: _.get(this.constants, 'REDIRECT_URLS.listTicket'),
+        click: () => this.atInternet.trackClick({
+          name: 'assistance::assistance_requests_created',
+          type: 'action',
+        }),
+        mustBeKept: _.has(this.constants, 'REDIRECT_URLS.listTicket'),
+      },
+      {
         title: this.$translate.instant('common_menu_support_telephony_contact'),
         url: currentSubsidiaryURLs.support_contact,
         isExternal: true,
@@ -242,8 +246,9 @@ class SessionService {
           name: 'assistance::helpline',
           type: 'action',
         }),
-      });
-    }
+        mustBeKept: _.has(currentSubsidiaryURLs, 'support_contact'),
+      },
+    ];
 
     return {
       name: 'assistance',
@@ -253,7 +258,7 @@ class SessionService {
         name: 'assistance',
         type: 'action',
       }),
-      subLinks: assistanceMenu,
+      subLinks: assistanceMenuItems.filter(menuItem => menuItem.mustBeKept),
     };
   }
 
