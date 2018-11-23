@@ -92,8 +92,7 @@ angular.module('App').controller(
             this.allDom = this.$stateParams.allDom;
             this.allDomInfos = allDom;
           } else if (alldomOrder) {
-            this.alldomURL = alldomOrder
-              + new URI(`http://${domain.domain}`).tld('alldom').domain();
+            this.alldomURL = `${alldomOrder}${domain.domain}`;
           }
         })
         .catch(() => {
