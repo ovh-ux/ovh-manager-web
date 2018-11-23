@@ -85,7 +85,7 @@ angular.module('App').controller(
           this.domain = product;
 
           return this.Domain.getZoneByZoneName(this.domain.name).then((zoneInfos) => {
-            this.domain.displayName = this.domain.name;
+            this.domain.displayName = this.domain.displayName || this.domain.name;
             this.domain.nameServers = zoneInfos.nameServers;
             return this.domain;
           });
