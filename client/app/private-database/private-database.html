@@ -106,13 +106,6 @@
     </div>
 
     <div data-ng-if="!ctrl.loaders.details">
-        <div data-working-status
-             data-modal-id="'worksPrivateDatabase'"
-             data-product-type="'private_database'"
-             data-status-done="ctrl.statusWorksDone"
-             data-works-details="ctrl.works"
-             data-tr="tr">
-        </div>
 
         <div data-ng-show="!(!taskState.changeVersion && database.state !== 'started') && !taskState.changeVersion">
             <p data-ng-if="!taskState.changeVersion && database && database.state !== 'started'"
