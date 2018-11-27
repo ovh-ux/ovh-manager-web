@@ -1,3 +1,21 @@
+## [13.9.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.9.1...v13.9.2) (2018-11-27)
+
+
+### Bug Fixes
+
+* display names of email and domain ([467a9cb](https://github.com/ovh-ux/ovh-manager-web/commit/467a9cb))
+* **deps:** upgrade npm-run-all to v4.1.5 ([94a9212](https://github.com/ovh-ux/ovh-manager-web/commit/94a9212))
+* **deps:** upgrade ovh-module-emailpro to v7.0.10 ([26a68ac](https://github.com/ovh-ux/ovh-manager-web/commit/26a68ac))
+* **deps:** upgrade ovh-module-exchange to v9.1.2 ([35469c1](https://github.com/ovh-ux/ovh-manager-web/commit/35469c1))
+* **domain:** send correct tld to order alldom ([df961ba](https://github.com/ovh-ux/ovh-manager-web/commit/df961ba))
+* **email:** add missing status translation ([fcf2f94](https://github.com/ovh-ux/ovh-manager-web/commit/fcf2f94))
+* **email-domain.responder:** add status message to ftp backup ([1b625a7](https://github.com/ovh-ux/ovh-manager-web/commit/1b625a7))
+* **i18n:** retrieve translations ([b9dc515](https://github.com/ovh-ux/ovh-manager-web/commit/b9dc515))
+* **i18n:** retrieve translations ([8bcb7d1](https://github.com/ovh-ux/ovh-manager-web/commit/8bcb7d1))
+* **i18n:** submit translations ([204dad1](https://github.com/ovh-ux/ovh-manager-web/commit/204dad1))
+
+
+
 ## [13.9.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.9.0...v13.9.1) (2018-11-21)
 
 
