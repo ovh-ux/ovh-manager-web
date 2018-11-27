@@ -548,7 +548,12 @@
    <translation id="core_change_owner_order" qtlid="283981">Para modificar el propietario de su dominio, debe realizar un pedido directamente en nuestro sitio web. </translation>
    <translation id="core_change_owner_error" qtlid="270735">No se ha podido obtener la información necesaria para el cambio de propietario. </translation>
    <translation id="contacts_management" qtlid="32206">Contactos</translation>
-   <translation id="more_tabs" qtlid="270748">Más pestañas</translation>
+
+   <translation id="expired_date" qtlid="382076">Vencimiento el <strong>{0}</strong></translation>
+   <translation id="expiration_date" qtlid="440274">Debe renovarse manualmente el <strong>{0}</strong></translation>
+   <translation id="resiliation_date" qtlid="382089">Cancelación prevista el <strong>{0}</strong></translation>
+   <translation id="resiliation_cancel_label" qtlid="285350">Cancelar la baja del servicio </translation>
+   <translation id="renew_date" qtlid="440287">Renovación automática prevista en <strong>{0}</strong></translation>
    <translation id="core_email_voila_title" qtlid="271751">Dirección «@voila.fr»</translation>
    <translation id="core_email_voila_alert" qtlid="271764">Debido al cierre del servicio Voila Mail, el próximo 12 de enero de 2016 se desactivarán todas las direcciones «@voila.fr». Todos los clientes con esta dirección deberán contratar un nuevo webmail. </translation>
    <translation id="core_email_voila_alert2" qtlid="271777">Si desea seguir recibiendo información por correo electrónico, le aconsejamos que introduzca una nueva dirección de contacto en la sección «Mi cuenta». </translation>
@@ -580,75 +585,18 @@
    <translation id="core_vps_top_guide_9_title" qtlid="290850">Crear una instancia en el área de cliente de OVH</translation>
 
    <translation id="guide_add_subtitle" qtlid="285447">Trucos</translation>
-   <translation id="guide_add_subscope" qtlid="285460">Asociar un dominio a mi alojamiento</translation>
-   <translation id="guide_add_subcontext" qtlid="285473">Ahora puede compartir su alojamiento web y asociarle:</translation>
-   <translation id="guide_add_subclient" qtlid="285486">Un dominio registrado con OVH en su cuenta de cliente</translation>
-   <translation id="guide_add_subnon_client" qtlid="285499">Un dominio registrado con OVH pero que no está en su cuenta de cliente</translation>
-   <translation id="guide_add_subnon_registered" qtlid="285512">Un dominio que no está registrado con OVH</translation>
-   <translation id="guide_add_subcreate" qtlid="285525">Crear un subdominio</translation>
-   <translation id="guide_add_subnot_installed" qtlid="285538">¿Qué hacer en caso de error «Sitio no instalado»?</translation>
    <translation id="guide_add_hosting_private_database" qtlid="296924">Todo sobre el SQL Privado</translation>
    <translation id="guide_add_hosting_private_database_dbaas_beginner" qtlid="404408">Primeros pasos con CloudDB</translation>
    <translation id="guide_add_hosting_private_database_dbaas_db" qtlid="404421">Primeros pasos con MySQL y MariaDB</translation>
    <translation id="guide_add_hosting_private_database_dbaas_beginPostgre" qtlid="404434">Primeros pasos con PostgreSQL</translation>
 
-   <translation id="core_works" qtlid="285720">Ver las incidencias </translation>
-   <translation id="core_works_description" qtlid="317555">¿Un problema en sus productos?</translation>
-   <translation id="core_works_link" qtlid="286188">Consulte las intervenciones en curso. </translation>
    <translation id="guide_domain_subtitle" qtlid="300370">Guías</translation>
-   <translation id="guide_general_info_subscope" qtlid="27115">Información general</translation>
-   <translation id="guide_domain_owo_activation" qtlid="300383">WHOIS: activación de OWO</translation>
-   <translation id="guide_domain_transfert" qtlid="300396">Guías de transferencia de dominios</translation>
-   <translation id="guide_domain_owner_transfert" qtlid="300409">Guías de cambio de propietario de dominios</translation>
-   <translation id="guide_zone_subscope" qtlid="45976">Zona DNS</translation>
-   <translation id="guide_domain_edit_zone" qtlid="282497">¿Cómo editar mi zona DNS?</translation>
-   <translation id="guide_dns_subscope" qtlid="367826">Servidores DNS</translation>
-   <translation id="guide_domain_dns_getting_started" qtlid="300422">Consideraciones generales sobre los servidores DNS</translation>
-   <translation id="guide_domain_dns_zone_check" qtlid="300435">ZoneCheck de un dominio</translation>
-   <translation id="guide_redirection_subscope" qtlid="46000">Redirecciones</translation>
-   <translation id="guide_domain_redirection" qtlid="300448">Guía de redirección de un dominio</translation>
-   <translation id="guide_dyn_host_subscope" qtlid="226397">DynHost</translation>
-   <translation id="guide_domain_dyn_host" qtlid="300461">¿Qué es un DynHost?</translation>
-   <translation id="guide_glue_subscope" qtlid="262280">Glue</translation>
-   <translation id="guide_domain_glue_registry" qtlid="300474">Activar el Glue Record</translation>
-   <translation id="guide_ds_records_subscope" qtlid="264719">Registros DS</translation>
-   <translation id="guide_domain_ds_record" qtlid="300487">Securizar un dominio con DNSSEC</translation>
    <translation id="guide_tasks_subscope" qtlid="136217">Tareas recientes</translation>
-   <translation id="guide_add_zone_subscope" qtlid="263181">Añadir una zona DNS</translation>
-   <translation id="guide_domain_add_dns_zone" qtlid="300500">Crear una zona DNS para un dominio externo</translation>
 
    <translation id="guide_subtitle" qtlid="300370">Guías</translation>
    <translation id="guide_tips_subtitle" qtlid="285447">Trucos</translation>
-   <translation id="guide_emails_general_title" qtlid="304121">Consideraciones generales</translation>
-   <translation id="guide_emails_configuration_title" qtlid="4406">Configuración</translation>
-   <translation id="guide_emails_how_to_title" qtlid="304134">Cómo hacer...</translation>
    <translation id="guide_emails_filter_title" qtlid="55661">Filtro</translation>
-   <translation id="guide_emails_responder_title" qtlid="88956">Contestador</translation>
-   <translation id="guide_mailing_list_title" qtlid="304147">Listas de correo</translation>
-   <translation id="guide_emails_emails_creation" qtlid="304160">Creación de una dirección de correo electrónico</translation>
-   <translation id="guide_emails_emails_configuration" qtlid="304173">Consideraciones generales sobre el correo en alojamiento compartido de OVH</translation>
-   <translation id="guide_emails_emails_migrate_to_exchange" qtlid="282536">Migrar una dirección de correo en alojamiento compartido OVH a Exchange </translation>
-   <translation id="guide_emails_emails_configuration_outlook" qtlid="304186">Configuración en Outlook 2013</translation>
-   <translation id="guide_emails_emails_configuration_ios" qtlid="304199">Configuración en iPhone iOS 9.1</translation>
-   <translation id="guide_emails_emails_roundcube" qtlid="304212">Webmail: Uso de Roundcube</translation>
-   <translation id="guide_emails_emails_headers" qtlid="304225">Recuperación de las cabeceras de los emails</translation>
-   <translation id="guide_emails_emails_delegation" qtlid="304251">Cómo delegar la gestión del correo a otro identificador de OVH</translation>
-   <translation id="guide_emails_emails_filters" qtlid="304264">Configuración de los filtros de correo en el área de cliente</translation>
-   <translation id="guide_emails_emails_mx_servers" qtlid="304277">Consideraciones generales sobre los servidores MX</translation>
-   <translation id="guide_emails_emails_spf" qtlid="304290">El registro SPF</translation>
-   <translation id="guide_emails_emails_diagnosis" qtlid="304303">Diagnosticar una dirección de correo electrónico</translation>
-   <translation id="guide_emails_emails_advanced" qtlid="304329">Uso avanzado del correo de OVH</translation>
-   <translation id="guide_emails_emails_smtp_response_code" qtlid="304342">Códigos de respuesta de un servidor SMTP</translation>
-   <translation id="guide_emails_emails_configuration_mx_zone_dns" qtlid="304355">Configuración MX con zona DNS de OVH</translation>
-   <translation id="guide_emails_emails_configuration_mx_zone_dns_non_ovh" qtlid="304368">Configuración MX con zona DNS externa a OVH</translation>
-   <translation id="guide_emails_redirection_create" qtlid="99128">Redirecciones de correo</translation>
    <translation id="guide_emails_responder" qtlid="304381">Creación de un contestador</translation>
-   <translation id="guide_emails_mailing_list" qtlid="304394">Uso de las listas de correo</translation>
-
-   <translation id="modal_working_status_title" qtlid="66884">Incidencias</translation>
-   <translation id="modal_working_status_type" qtlid="105875">Tipo:</translation>
-   <translation id="modal_working_status_category" qtlid="285707">Categoría:</translation>
-   <translation id="modal_working_status_status" qtlid="317568">Estado:</translation>
 
    <translation id="sso_modal_title" qtlid="315956">OVH: Autenticación</translation>
    <translation id="sso_modal_loading" qtlid="8410">Cargando...</translation>
@@ -689,8 +637,8 @@
    <translation id="common_criteria_adder_operator_number_smaller" qtlid="479186">es inferior a</translation>
    <translation id="common_criteria_adder_operator_number_bigger" qtlid="479199">es superior a</translation>
    <translation id="common_criteria_adder_operator_date_is" qtlid="479121">es</translation>
-   <translation id="common_criteria_adder_operator_date_isBefore" qtlid="479212">es antes de</translation>
-   <translation id="common_criteria_adder_operator_date_isAfter" qtlid="479225">es después de</translation>
+   <translation id="common_criteria_adder_operator_date_isBefore" qtlid="479212">es anterior a</translation>
+   <translation id="common_criteria_adder_operator_date_isAfter" qtlid="479225">es posterior a</translation>
    <translation id="common_criteria_adder_operator_options_is" qtlid="479121">es</translation>
    <translation id="common_criteria_adder_operator_options_isNot" qtlid="479134">no es</translation>
    <translation id="common_criteria_adder_true_label" qtlid="34776">Sí</translation>

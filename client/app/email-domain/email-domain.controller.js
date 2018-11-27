@@ -10,13 +10,15 @@ angular.module('App').controller(
      * @param Alerter
      * @param WucEmails
      */
-    constructor($scope, $stateParams, $timeout, $translate, Alerter, WucEmails) {
+    constructor($q, $scope, $stateParams, $timeout, $translate, Alerter, WucEmails, WucProducts) {
+      this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
       this.$translate = $translate;
       this.Alerter = Alerter;
       this.WucEmails = WucEmails;
+      this.WucProducts = WucProducts;
     }
 
     $onInit() {
@@ -61,10 +63,14 @@ angular.module('App').controller(
 
     loadDomain() {
       this.loading.domainsInfos = true;
-
-      this.WucEmails.getDomain(this.$stateParams.productId)
-        .then((domain) => {
+      this.$q
+        .all({
+          product: this.WucProducts.getSelectedProduct(true),
+          domain: this.WucEmails.getDomain(this.$stateParams.productId),
+        })
+        .then(({ product, domain }) => {
           this.$scope.domain = domain;
+          this.$scope.domain.displayName = product.displayName || domain.domain;
           if (domain.offer && domain.offer.indexOf('hosting') === -1) {
             this.$scope.$broadcast('emails.canTerminate');
           }

@@ -1,6 +1,6 @@
-<ul df-tab-menu data-menu-control="{{navigationState}}" data-theme="bootstrap">
+<ul data-df-tab-menu data-menu-control="{{navigationState}}" data-theme="bootstrap">
     <li data-ng-repeat="tab in tabs track by $index" data-menu-item="productType + '_tab_' + tab | translate" data-ng-class="isActive(tab)"><a data-ng-click="navigationState = (productType + '_tab_' + tab | translate) && setSelectedTab(tab)"><span data-ng-bind="productType + '_tab_' + tab | translate"></span></a></li>
-    <li class="dropdown tab-menu" data-ng-if="menu" uib-dropdown>
+    <li class="dropdown tab-menu" data-ng-if="menu" data-uib-dropdown>
         <!-- TODO : remove this onclick event and replace this directive by ovh-angular-responsive-tabs -->
         <a href data-uib-dropdown-toggle onclick="$(this).offset().left < ($(document).width() / 2) ? $(this).next().addClass('dropdown-menu-left').removeClass('dropdown-menu-right') : $(this).next().addClass('dropdown-menu-right').removeClass('dropdown-menu-left')">
             <span data-ng-bind="::menu.title"></span>

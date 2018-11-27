@@ -36,9 +36,6 @@ angular.module('App').controller(
         main: 'privateDataBase.alerts.main',
       };
 
-      this.works = {};
-      this.statusWorksDone = ['closed', 'finished'];
-
       this.loaders = {
         details: true,
       };

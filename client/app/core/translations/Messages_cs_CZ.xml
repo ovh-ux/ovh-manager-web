@@ -549,7 +549,12 @@
    <translation id="core_change_owner_order" qtlid="283981">Pro změnu vlastníka domény proveďte objednávku přímo z našich stránek.</translation>
    <translation id="core_change_owner_error" qtlid="270735">Nezdařilo se získat informace potřebné ke změně vlastníka</translation>
    <translation id="contacts_management" qtlid="32206">Kontakty</translation>
-   <translation id="more_tabs" qtlid="270748">Další záložky</translation>
+
+   <translation id="expired_date" qtlid="382076">Expiruje <strong>{0}</strong></translation>
+   <translation id="expiration_date" qtlid="440274">Manuální obnovení služby k datu <strong>{0}</strong></translation>
+   <translation id="resiliation_date" qtlid="382089">Zrušení naplánováno na <strong>{0}</strong></translation>
+   <translation id="resiliation_cancel_label" qtlid="285350">Zrušit zrušení</translation>
+   <translation id="renew_date" qtlid="440287">Automatické obnovení služby naplánováno na <strong>{0}</strong></translation>
    <translation id="core_email_voila_title" qtlid="271751">Adresa @voila.fr</translation>
    <translation id="core_email_voila_alert" qtlid="271764">V souladu s oznámením o ukončení služby Voila Mail budou od 12. ledna všechny adresy @voila.fr deaktivovány. Pokud tuto službu používáte, budete muset přejít na jinou.</translation>
    <translation id="core_email_voila_alert2" qtlid="271777">Abychom Vás i nadále mohli informovat o dění v OVH, doporučujeme zadat v sekci "Můj účet" novou e-mailovou adresu.</translation>
@@ -581,75 +586,18 @@
    <translation id="core_vps_top_guide_9_title" qtlid="290850">Vytvoření instance v Zákaznickém prostoru OVH</translation>
 
    <translation id="guide_add_subtitle" qtlid="285447">Tipy</translation>
-   <translation id="guide_add_subscope" qtlid="285460">Připojení domény k mému webhostingu</translation>
-   <translation id="guide_add_subcontext" qtlid="285473">Webhosting lze sdílet. Toto k němu lze připojit:</translation>
-   <translation id="guide_add_subclient" qtlid="285486">Doména zaregistrovaná u OVH přes můj Zákaznický účet</translation>
-   <translation id="guide_add_subnon_client" qtlid="285499">Doména zaregistrovaná u OVH, ale není v mém Zákaznickém účtu</translation>
-   <translation id="guide_add_subnon_registered" qtlid="285512">Doména zaregistrovaná jinde, než u OVH</translation>
-   <translation id="guide_add_subcreate" qtlid="285525">Vytvoření subdomény</translation>
-   <translation id="guide_add_subnot_installed" qtlid="285538">Co dělat v případě chyby "Web není nainstalován"</translation>
    <translation id="guide_add_hosting_private_database" qtlid="296924">Vše o Privátním SQL</translation>
    <translation id="guide_add_hosting_private_database_dbaas_beginner" qtlid="404408">Začínáme s CloudDB</translation>
    <translation id="guide_add_hosting_private_database_dbaas_db" qtlid="404421">Začínáme s MySQL a MariaDB</translation>
    <translation id="guide_add_hosting_private_database_dbaas_beginPostgre" qtlid="404434">Začínáme s PostgreSQL</translation>
 
-   <translation id="core_works" qtlid="285720">Prohlédnout incidenty</translation>
-   <translation id="core_works_description" qtlid="317555">Máte nějaký problém?</translation>
-   <translation id="core_works_link" qtlid="286188">Prohlédněte si Úlohy OVH.</translation>
    <translation id="guide_domain_subtitle" qtlid="300370">Příručky</translation>
-   <translation id="guide_general_info_subscope" qtlid="27115">Základní informace</translation>
-   <translation id="guide_domain_owo_activation" qtlid="300383">Whois - aktivace OwO</translation>
-   <translation id="guide_domain_transfert" qtlid="300396">Příručky pro převod domén</translation>
-   <translation id="guide_domain_owner_transfert" qtlid="300409">Příručky pro změnu vlastníka domén</translation>
-   <translation id="guide_zone_subscope" qtlid="45976">DNS zóna</translation>
-   <translation id="guide_domain_edit_zone" qtlid="282497">Jak editovat zónu DNS?</translation>
-   <translation id="guide_dns_subscope" qtlid="367826">DNS servery</translation>
-   <translation id="guide_domain_dns_getting_started" qtlid="300422">Obecně o serverech DNS</translation>
-   <translation id="guide_domain_dns_zone_check" qtlid="300435">ZoneCheck Vaší domény</translation>
-   <translation id="guide_redirection_subscope" qtlid="46000">Přesměrování</translation>
-   <translation id="guide_domain_redirection" qtlid="300448">Příručka pro přesměrování domény</translation>
-   <translation id="guide_dyn_host_subscope" qtlid="226397">DynHost</translation>
-   <translation id="guide_domain_dyn_host" qtlid="300461">Co je dynhost?</translation>
-   <translation id="guide_glue_subscope" qtlid="262280">GLUE</translation>
-   <translation id="guide_domain_glue_registry" qtlid="300474">Aktivovat GLUE Registr</translation>
-   <translation id="guide_ds_records_subscope" qtlid="264719">DS záznamy</translation>
-   <translation id="guide_domain_ds_record" qtlid="300487">Zabezpečení domény pomocí DNSSEC</translation>
    <translation id="guide_tasks_subscope" qtlid="136217">Nedávné úkoly</translation>
-   <translation id="guide_add_zone_subscope" qtlid="263181">Přidat DNS zónu</translation>
-   <translation id="guide_domain_add_dns_zone" qtlid="300500">Vytvoření DNS zóny pro Vaši externí doménu</translation>
 
    <translation id="guide_subtitle" qtlid="300370">Příručky</translation>
    <translation id="guide_tips_subtitle" qtlid="285447">Tipy</translation>
-   <translation id="guide_emails_general_title" qtlid="304121">Obecné informace</translation>
-   <translation id="guide_emails_configuration_title" qtlid="4406">Konfigurace</translation>
-   <translation id="guide_emails_how_to_title" qtlid="304134">Jak udělat...</translation>
    <translation id="guide_emails_filter_title" qtlid="55661">Filtr</translation>
-   <translation id="guide_emails_responder_title" qtlid="88956">Záznamník</translation>
-   <translation id="guide_mailing_list_title" qtlid="304147">Mailing-List</translation>
-   <translation id="guide_emails_emails_creation" qtlid="304160">Vytvoření e-mailové adresy</translation>
-   <translation id="guide_emails_emails_configuration" qtlid="304173">Obecně o e-mailech od OVH</translation>
-   <translation id="guide_emails_emails_migrate_to_exchange" qtlid="282536">Převod e-mailové adresy webhostingu OVH na Exchange</translation>
-   <translation id="guide_emails_emails_configuration_outlook" qtlid="304186">Konfigurace Outlook 2013</translation>
-   <translation id="guide_emails_emails_configuration_ios" qtlid="304199">Konfigurace iPhone iOS 9.1</translation>
-   <translation id="guide_emails_emails_roundcube" qtlid="304212">Webmail - RoundCube</translation>
-   <translation id="guide_emails_emails_headers" qtlid="304225">Získání hlaviček e-mailu</translation>
-   <translation id="guide_emails_emails_delegation" qtlid="304251">Jak delegovat správu Vašich e-mailů na jiného uživatele OVH</translation>
-   <translation id="guide_emails_emails_filters" qtlid="304264">Konfigurace e-mailových filtrů ve Vašem Zákaznickém prostoru</translation>
-   <translation id="guide_emails_emails_mx_servers" qtlid="304277">Obecně o serverech MX</translation>
-   <translation id="guide_emails_emails_spf" qtlid="304290">Záznam SPF</translation>
-   <translation id="guide_emails_emails_diagnosis" qtlid="304303">Diagnostika mé e-mailové adresy</translation>
-   <translation id="guide_emails_emails_advanced" qtlid="304329">Pokročilé používání e-mailů od OVH</translation>
-   <translation id="guide_emails_emails_smtp_response_code" qtlid="304342">Kódy odpovědí serveru SMTP</translation>
-   <translation id="guide_emails_emails_configuration_mx_zone_dns" qtlid="304355">Konfigurace MX s DNS zónou v rámci OVH</translation>
-   <translation id="guide_emails_emails_configuration_mx_zone_dns_non_ovh" qtlid="304368">Konfigurace MX s DNS zónou mimo OVH</translation>
-   <translation id="guide_emails_redirection_create" qtlid="99128">E-mailové přesměrování</translation>
    <translation id="guide_emails_responder" qtlid="304381">Nastavení automatických odpovědí</translation>
-   <translation id="guide_emails_mailing_list" qtlid="304394">Používání Mailing-Listu</translation>
-
-   <translation id="modal_working_status_title" qtlid="66884">Incidenty</translation>
-   <translation id="modal_working_status_type" qtlid="105875">Typ:</translation>
-   <translation id="modal_working_status_category" qtlid="285707">Kategorie:</translation>
-   <translation id="modal_working_status_status" qtlid="317568">Stav:</translation>
 
    <translation id="sso_modal_title" qtlid="315956">OVH - Autentifikace</translation>
    <translation id="sso_modal_loading" qtlid="8410">Načítání...</translation>

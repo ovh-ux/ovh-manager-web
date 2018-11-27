@@ -548,7 +548,12 @@
    <translation id="core_change_owner_order" qtlid="283981">Um den Inhaber Ihrer Domain zu ändern, müssen Sie eine Bestellung auf unserer Webseite tätigen.</translation>
    <translation id="core_change_owner_error" qtlid="270735">Die für die Änderung des Inhabers notwendigen Informationen konnten nicht abgerufen werden</translation>
    <translation id="contacts_management" qtlid="32206">Kontakte</translation>
-   <translation id="more_tabs" qtlid="270748">Weitere Rubriken</translation>
+
+   <translation id="expired_date" qtlid="382076">Abgelaufen am <strong>{0}</strong></translation>
+   <translation id="expiration_date" qtlid="440274">Manuell zu verlängern am <strong>{0}</strong></translation>
+   <translation id="resiliation_date" qtlid="382089">Geplantes Ablaufdatum: <strong>{0}</strong></translation>
+   <translation id="resiliation_cancel_label" qtlid="285350">Die Kündigung zurücknehmen</translation>
+   <translation id="renew_date" qtlid="440287">Automatische Verlängerung geplant in <strong>{0}</strong></translation>
    <translation id="core_email_voila_title" qtlid="271751">@voila.fr Adresse</translation>
    <translation id="core_email_voila_alert" qtlid="271764">Nach der Ankündigung der Schließung des Voila Mail Dienstes werden sämtliche @voila.fr Adressen am 12. Januar 2016 deaktiviert. Nutzer von @voila.fr Adressen müssen sich also einen neuen Webmail-Anbieter suchen.</translation>
    <translation id="core_email_voila_alert2" qtlid="271777">Um weiterhin unsere E-Mails empfangen zu können empfehlen wir Ihnen, in Ihrem Kundencenter in der Rubrik "Mein Account" umgehend eine neue Kontaktadresse einzutragen.</translation>
@@ -580,75 +585,18 @@
    <translation id="core_vps_top_guide_9_title" qtlid="290850">Eine Instanz erstellen im OVH Kundencenter </translation>
 
    <translation id="guide_add_subtitle" qtlid="285447">Tricks</translation>
-   <translation id="guide_add_subscope" qtlid="285460">Eine Domain mit meinem Hosting assoziieren</translation>
-   <translation id="guide_add_subcontext" qtlid="285473">Sie können Ihr Webhosting teilen. Dann können Sie Ihrem Hosting hinzufügen:</translation>
-   <translation id="guide_add_subclient" qtlid="285486">Eine bei OVH registrierte Domain auf meiner Kundenkennung</translation>
-   <translation id="guide_add_subnon_client" qtlid="285499">Eine bei OVH registrierte Domain, die aber nicht auf meiner Kundenkennung liegt</translation>
-   <translation id="guide_add_subnon_registered" qtlid="285512">Eine nicht bei OVH registrierte Domain</translation>
-   <translation id="guide_add_subcreate" qtlid="285525">Eine Subdomain erstellen</translation>
-   <translation id="guide_add_subnot_installed" qtlid="285538">Was tun bei der Fehlermeldung "Webseite nicht installiert"?</translation>
    <translation id="guide_add_hosting_private_database" qtlid="296924">Alles Wissenswerte zum SQL Private</translation>
    <translation id="guide_add_hosting_private_database_dbaas_beginner" qtlid="404408">Erste Schritte mit CloudDB</translation>
    <translation id="guide_add_hosting_private_database_dbaas_db" qtlid="404421">Erste Schritte mit MySQL und MariaDB</translation>
    <translation id="guide_add_hosting_private_database_dbaas_beginPostgre" qtlid="404434">Erste Schritte mit PostgreSQL</translation>
 
-   <translation id="core_works" qtlid="285720">Vorfälle ansehen</translation>
-   <translation id="core_works_description" qtlid="317555">Es gibt ein Problem mit Ihren Produkten?</translation>
-   <translation id="core_works_link" qtlid="286188">Laufende Arbeiten ansehen.</translation>
    <translation id="guide_domain_subtitle" qtlid="300370">Anleitungen</translation>
-   <translation id="guide_general_info_subscope" qtlid="27115">Allgemeine Informationen</translation>
-   <translation id="guide_domain_owo_activation" qtlid="300383">Whois - Aktivierung von OwO</translation>
-   <translation id="guide_domain_transfert" qtlid="300396">Hilfen zum Domaintransfer</translation>
-   <translation id="guide_domain_owner_transfert" qtlid="300409">Hilfen zur Änderung des Domaininhabers</translation>
-   <translation id="guide_zone_subscope" qtlid="45976">DNS Zone</translation>
-   <translation id="guide_domain_edit_zone" qtlid="282497">Wie kann ich meine DNS Zone bearbeiten?</translation>
-   <translation id="guide_dns_subscope" qtlid="367826">DNS Server </translation>
-   <translation id="guide_domain_dns_getting_started" qtlid="300422">Allgemeine Informationen zu den DNS Servern</translation>
-   <translation id="guide_domain_dns_zone_check" qtlid="300435">ZoneCheck Ihrer Domain</translation>
-   <translation id="guide_redirection_subscope" qtlid="46000">Weiterleitung</translation>
-   <translation id="guide_domain_redirection" qtlid="300448">Hilfe zur Weiterleitung einer Domain</translation>
-   <translation id="guide_dyn_host_subscope" qtlid="226397">DynHost</translation>
-   <translation id="guide_domain_dyn_host" qtlid="300461">Was ist ein Dynhost?</translation>
-   <translation id="guide_glue_subscope" qtlid="262280">GLUE</translation>
-   <translation id="guide_domain_glue_registry" qtlid="300474">Aktivierung des GLUE Registry Eintrags</translation>
-   <translation id="guide_ds_records_subscope" qtlid="264719">DS Einträge</translation>
-   <translation id="guide_domain_ds_record" qtlid="300487">Absicherung Ihrer Domain mit DNSSEC</translation>
    <translation id="guide_tasks_subscope" qtlid="136217">Aktuelle Tasks</translation>
-   <translation id="guide_add_zone_subscope" qtlid="263181">Eine DNS Zone hinzufügen</translation>
-   <translation id="guide_domain_add_dns_zone" qtlid="300500">Erstellung einer DNS Zone für eine externe Domain</translation>
 
    <translation id="guide_subtitle" qtlid="300370">Anleitungen</translation>
    <translation id="guide_tips_subtitle" qtlid="285447">Tricks</translation>
-   <translation id="guide_emails_general_title" qtlid="304121">Allgemeines</translation>
-   <translation id="guide_emails_configuration_title" qtlid="4406">Konfiguration</translation>
-   <translation id="guide_emails_how_to_title" qtlid="304134">Wie kann ich...</translation>
    <translation id="guide_emails_filter_title" qtlid="55661">Filter</translation>
-   <translation id="guide_emails_responder_title" qtlid="88956">Anrufbeantworter</translation>
-   <translation id="guide_mailing_list_title" qtlid="304147">Mailingliste</translation>
-   <translation id="guide_emails_emails_creation" qtlid="304160">Erstellung einer E-Mail-Adresse</translation>
-   <translation id="guide_emails_emails_configuration" qtlid="304173">Allgemeine Informationen zu den OVH Webhosting-Mails</translation>
-   <translation id="guide_emails_emails_migrate_to_exchange" qtlid="282536">Umzug einer OVH Webhosting E-Mail-Adresse auf Exchange</translation>
-   <translation id="guide_emails_emails_configuration_outlook" qtlid="304186">Outlook 2013 Konfiguration</translation>
-   <translation id="guide_emails_emails_configuration_ios" qtlid="304199">Konfiguration auf einem iPhone mit iOS 9.1</translation>
-   <translation id="guide_emails_emails_roundcube" qtlid="304212">Webmail - Verwendung von RoundCube</translation>
-   <translation id="guide_emails_emails_headers" qtlid="304225">Abruf der E-Mail-Header</translation>
-   <translation id="guide_emails_emails_delegation" qtlid="304251">E-Mail-Administration für einen anderen OVH Nutzer freigeben</translation>
-   <translation id="guide_emails_emails_filters" qtlid="304264">Erstellung von E-Mail-Filtern im Kundencenter</translation>
-   <translation id="guide_emails_emails_mx_servers" qtlid="304277">Allgemeine Informationen zu den MX Servern</translation>
-   <translation id="guide_emails_emails_spf" qtlid="304290">SPF-Eintrag</translation>
-   <translation id="guide_emails_emails_diagnosis" qtlid="304303">Diagnose meiner E-Mail-Adresse</translation>
-   <translation id="guide_emails_emails_advanced" qtlid="304329">Erweiterte Funktionen von OVH E-Mails</translation>
-   <translation id="guide_emails_emails_smtp_response_code" qtlid="304342">Antwort-Codes eines SMTP Servers</translation>
-   <translation id="guide_emails_emails_configuration_mx_zone_dns" qtlid="304355">MX Konfiguration mit der OVH DNS Zone</translation>
-   <translation id="guide_emails_emails_configuration_mx_zone_dns_non_ovh" qtlid="304368">MX Konfiguration mit einer externen DNS Zone</translation>
-   <translation id="guide_emails_redirection_create" qtlid="99128">E-Mail Weiterleitungen</translation>
    <translation id="guide_emails_responder" qtlid="304381">Einrichtung eines Beantworters</translation>
-   <translation id="guide_emails_mailing_list" qtlid="304394">Verwendung von Mailinglisten</translation>
-
-   <translation id="modal_working_status_title" qtlid="66884">Störungen</translation>
-   <translation id="modal_working_status_type" qtlid="105875">Typ:</translation>
-   <translation id="modal_working_status_category" qtlid="285707">Kategorie:</translation>
-   <translation id="modal_working_status_status" qtlid="317568">Status:</translation>
 
    <translation id="sso_modal_title" qtlid="315956">OVH - Authentifizierung</translation>
    <translation id="sso_modal_loading" qtlid="8410">Wird geladen...</translation>

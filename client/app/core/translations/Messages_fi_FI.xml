@@ -548,7 +548,12 @@
    <translation id="core_change_owner_order" qtlid="283981">Verkkotunnuksen omistajan vaihtamiseksi on tehtävä tilaus suoraan verkkosivuillamme. </translation>
    <translation id="core_change_owner_error" qtlid="270735">Omistajan muutokseen tarvittavia tietoja ei pystytä hakemaan</translation>
    <translation id="contacts_management" qtlid="32206">Yhteystiedot</translation>
-   <translation id="more_tabs" qtlid="270748">Muut välilehdet</translation>
+
+   <translation id="expired_date" qtlid="382076">Vanhentunut <strong>{0}</strong></translation>
+   <translation id="expiration_date" qtlid="440274">Uusittava manuaalisesti <strong>{0}</strong></translation>
+   <translation id="resiliation_date" qtlid="382089">Suunniteltu irtisanominen <strong>{0}</strong></translation>
+   <translation id="resiliation_cancel_label" qtlid="285350">Peru irtisanominen</translation>
+   <translation id="renew_date" qtlid="440287">Uusitaan automaattisesti <strong>{0}</strong></translation>
    <translation id="core_email_voila_title" qtlid="271751">Sähköpostiosoite @voila.fr</translation>
    <translation id="core_email_voila_alert" qtlid="271764">Voila Mail -palvelun päättymisen ilmoituksen vuoksi kaikki @voila.fr-osoitteet poistetaan käytöstä 12.1.2016. Suosittelemme @voila.fr-osoitteen käyttäjiä hankkimaan uuden webmail-palveluntarjojan.</translation>
    <translation id="core_email_voila_alert2" qtlid="271777">Viestiemme saapumisen varmistamiseksi suosittelemme muuttamaan uuden sähköpostiosoitteen asiakastietoihin.</translation>
@@ -580,75 +585,18 @@
    <translation id="core_vps_top_guide_9_title" qtlid="290850">Luo instanssi hallintapaneelissa</translation>
 
    <translation id="guide_add_subtitle" qtlid="285447">Vinkit</translation>
-   <translation id="guide_add_subscope" qtlid="285460">Liitä verkkotunnus webhotelliini</translation>
-   <translation id="guide_add_subcontext" qtlid="285473">Webhotelli on mahdollista myös jakaa. Sen ansiosta webhotelliin voi liittää:</translation>
-   <translation id="guide_add_subclient" qtlid="285486">Omalle OVH:n asiakastilille rekisteröidyn verkkotunnuksen</translation>
-   <translation id="guide_add_subnon_client" qtlid="285499">Verkkotunnuksen, joka on rekisteröity OVH:lle mutta ei omalle asiakastilille</translation>
-   <translation id="guide_add_subnon_registered" qtlid="285512">Verkkotunnuksen, joka ei ole rekisteröity OVH:lle</translation>
-   <translation id="guide_add_subcreate" qtlid="285525">Luo aliverkkotunnus</translation>
-   <translation id="guide_add_subnot_installed" qtlid="285538">Mitä tehdä, jos saan virheilmoituksen "Sivua ei ole asennettu"?</translation>
    <translation id="guide_add_hosting_private_database" qtlid="296924">Kaikki Private SQL -tuotteesta</translation>
    <translation id="guide_add_hosting_private_database_dbaas_beginner" qtlid="404408">CloudDB-palvelun käytön aloitus</translation>
    <translation id="guide_add_hosting_private_database_dbaas_db" qtlid="404421">Käynnistäminen MySQL- ja MariaDB-tietokannoilla</translation>
    <translation id="guide_add_hosting_private_database_dbaas_beginPostgre" qtlid="404434">Käynnistäminen PostgreSQL-tietokannalla</translation>
 
-   <translation id="core_works" qtlid="285720">Katso häiriötiketit</translation>
-   <translation id="core_works_description" qtlid="317555">Ongelma tuotteessa?</translation>
-   <translation id="core_works_link" qtlid="286188">Tarkastele tekinisiä tiedotteita.</translation>
    <translation id="guide_domain_subtitle" qtlid="300370">Oppaat</translation>
-   <translation id="guide_general_info_subscope" qtlid="27115">Yleiset tiedot</translation>
-   <translation id="guide_domain_owo_activation" qtlid="300383">Whois - OwOn aktivointi</translation>
-   <translation id="guide_domain_transfert" qtlid="300396">Ohjeet verkkotunnusten siirtoon</translation>
-   <translation id="guide_domain_owner_transfert" qtlid="300409">Ohjeet verkkotunnusten omistajan muuttamiseen</translation>
-   <translation id="guide_zone_subscope" qtlid="45976">DNS-alue</translation>
-   <translation id="guide_domain_edit_zone" qtlid="282497">Miten muokkaan DNS-aluettani?</translation>
-   <translation id="guide_dns_subscope" qtlid="367826">Nimipalvelimet</translation>
-   <translation id="guide_domain_dns_getting_started" qtlid="300422">Yleistä nimipalvelimista</translation>
-   <translation id="guide_domain_dns_zone_check" qtlid="300435">Verkkotunnuksen ZoneCheck</translation>
-   <translation id="guide_redirection_subscope" qtlid="46000">Uudelleenohjaus</translation>
-   <translation id="guide_domain_redirection" qtlid="300448">Opas verkkotunnuksen uudelleenohjaukseen</translation>
-   <translation id="guide_dyn_host_subscope" qtlid="226397">DynHost</translation>
-   <translation id="guide_domain_dyn_host" qtlid="300461">Mikä on dynhost?</translation>
-   <translation id="guide_glue_subscope" qtlid="262280">GLUE</translation>
-   <translation id="guide_domain_glue_registry" qtlid="300474">Aktivoi GLUE Registry</translation>
-   <translation id="guide_ds_records_subscope" qtlid="264719">DS Records</translation>
-   <translation id="guide_domain_ds_record" qtlid="300487">Suojaa verkkotunnuksesi DNSSEC:llä</translation>
    <translation id="guide_tasks_subscope" qtlid="136217">Viimeaikaiset tehtävät</translation>
-   <translation id="guide_add_zone_subscope" qtlid="263181">Lisää DNS-alue</translation>
-   <translation id="guide_domain_add_dns_zone" qtlid="300500">Luo DNS-alue ulkopuoliselle verkkotunnukselle</translation>
 
    <translation id="guide_subtitle" qtlid="300370">Oppaat</translation>
    <translation id="guide_tips_subtitle" qtlid="285447">Vinkit</translation>
-   <translation id="guide_emails_general_title" qtlid="304121">Yleistä</translation>
-   <translation id="guide_emails_configuration_title" qtlid="4406">Konfiguraatio</translation>
-   <translation id="guide_emails_how_to_title" qtlid="304134">Kuinka tehdä...</translation>
    <translation id="guide_emails_filter_title" qtlid="55661">Viestisuodatin</translation>
-   <translation id="guide_emails_responder_title" qtlid="88956">Vastaaja</translation>
-   <translation id="guide_mailing_list_title" qtlid="304147">Postituslista</translation>
-   <translation id="guide_emails_emails_creation" qtlid="304160">Sähköpostiosoitteen luominen</translation>
-   <translation id="guide_emails_emails_configuration" qtlid="304173">Yleistä OVH:n jaetuista sähköposteista</translation>
-   <translation id="guide_emails_emails_migrate_to_exchange" qtlid="282536">Siirry OVH:n sähköpostiosoitteesta Echangeen</translation>
-   <translation id="guide_emails_emails_configuration_outlook" qtlid="304186">Outlook 2013 -konfigurointi</translation>
-   <translation id="guide_emails_emails_configuration_ios" qtlid="304199">iPhone IOS 9.1 -konfigurointi</translation>
-   <translation id="guide_emails_emails_roundcube" qtlid="304212">Webmail - RoundCuben käyttö</translation>
-   <translation id="guide_emails_emails_headers" qtlid="304225">Sähköpostien otsakkeiden hakeminen</translation>
-   <translation id="guide_emails_emails_delegation" qtlid="304251">Kuinka jakaa sähköpostiesi hallinta toiselle OVH:n asiakastunnukselle </translation>
-   <translation id="guide_emails_emails_filters" qtlid="304264">Sähköpostisuodattimien konfigurointi hallintapaneelissa</translation>
-   <translation id="guide_emails_emails_mx_servers" qtlid="304277">Yleistä MX-palvelimista</translation>
-   <translation id="guide_emails_emails_spf" qtlid="304290">SPF-kenttä</translation>
-   <translation id="guide_emails_emails_diagnosis" qtlid="304303">Sähköpostiosoitteen tarkastus</translation>
-   <translation id="guide_emails_emails_advanced" qtlid="304329">OVH:n sähköpostien edistynyt käyttö</translation>
-   <translation id="guide_emails_emails_smtp_response_code" qtlid="304342">SMTP-palvelimen vastauskoodit</translation>
-   <translation id="guide_emails_emails_configuration_mx_zone_dns" qtlid="304355">MX-konfigurointi OVH:n DNS-alueella </translation>
-   <translation id="guide_emails_emails_configuration_mx_zone_dns_non_ovh" qtlid="304368">MX-konfigurointi OVH:n ulkopuolisella DNS-alueella</translation>
-   <translation id="guide_emails_redirection_create" qtlid="99128">Sähköpostiuudelleenohjaukset</translation>
    <translation id="guide_emails_responder" qtlid="304381">Vastaajaan asettaminen</translation>
-   <translation id="guide_emails_mailing_list" qtlid="304394">Postituslistojen käyttö</translation>
-
-   <translation id="modal_working_status_title" qtlid="66884">Häiriötiketit.</translation>
-   <translation id="modal_working_status_type" qtlid="105875">Tyyppi:</translation>
-   <translation id="modal_working_status_category" qtlid="285707">Kategoria:</translation>
-   <translation id="modal_working_status_status" qtlid="317568">Tila:</translation>
 
    <translation id="sso_modal_title" qtlid="315956">OVH - Tunnistautuminen</translation>
    <translation id="sso_modal_loading" qtlid="8410">Ladataan…</translation>
