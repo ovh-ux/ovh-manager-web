@@ -265,16 +265,28 @@ angular.module('App').run((
     });
 
     const emailItems = _.sortBy(
-      products.emails,
+      products.emails.concat(products.emailsProMXPlan),
       elt => angular.lowercase(elt.displayName || elt.name),
     );
 
     _.forEach(emailItems, (elt) => {
+      let state = 'app.email.domain';
+      switch (elt.type) {
+        case 'EMAIL_DELEGATE':
+          state = 'app.email.delegate';
+          break;
+        case 'EMAIL_PRO_MXPLAN':
+          state = 'app.email.mxplan';
+          break;
+        default:
+          state = 'app.email.domain';
+      }
+
       SidebarMenu.addMenuItem({
         title: elt.displayName || elt.name,
         category: 'email',
         icon: 'ovh-font ovh-font-mail',
-        state: elt.type === 'EMAIL_DELEGATE' ? 'app.email.delegate' : 'app.email.domain',
+        state,
         stateParams: {
           productId: elt.name,
         },
