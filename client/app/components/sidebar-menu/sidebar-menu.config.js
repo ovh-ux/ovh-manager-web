@@ -265,7 +265,7 @@ angular.module('App').run((
     });
 
     const emailItems = _.sortBy(
-      products.emails.concat(products.emailsProMXPlan),
+      products.emails.concat(_.get(products, 'emailsProMXPlan', [])),
       elt => angular.lowercase(elt.displayName || elt.name),
     );
 
