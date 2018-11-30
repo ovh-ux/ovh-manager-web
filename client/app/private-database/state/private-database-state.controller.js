@@ -74,10 +74,14 @@ angular.module('App').controller(
     }
 
     getRealList() {
+      const exponent = {
+        KB: 1,
+        MB: 2,
+        GB: 3,
+      };
       this.database.oom.realList = _.filter(
         this.database.oom.list,
-        item => filesize(item.sizeReached, { output: 'object' }).value
-          > this.database.ram.value,
+        item => filesize(item.sizeReached, { output: 'object', exponent: _.get(exponent, this.database.ram.unit, -1) }).value > this.database.ram.value,
       );
       return this.database.oom.realList;
     }
