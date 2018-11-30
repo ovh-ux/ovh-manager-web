@@ -1,3 +1,12 @@
+## [13.9.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.9.2...v13.9.3) (2018-11-30)
+
+
+### Bug Fixes
+
+* **privatedatabase:** oomkill ([1cdbcda](https://github.com/ovh-ux/ovh-manager-web/commit/1cdbcda))
+
+
+
 ## [13.9.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.9.1...v13.9.2) (2018-11-27)
 
 
