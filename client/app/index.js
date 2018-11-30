@@ -71,7 +71,7 @@ import 'ovh-jquery-ui-draggable-ng';
 import 'script-loader!clipboard/dist/clipboard.min.js';
 
 // Ckeditor 4.x
-import 'script-loader!ng-ckeditor/dist/ng-ckeditor';
+// import 'script-loader!ng-ckeditor/dist/ng-ckeditor';
 
 import './app.js';
 import './css/source.less';
