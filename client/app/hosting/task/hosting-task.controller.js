@@ -53,6 +53,7 @@ angular.module('App').controller(
             _.get(err, 'data', err),
             this.$scope.alerts.main,
           );
+          return { meta: { totalCount: 0 } };
         });
     }
 
