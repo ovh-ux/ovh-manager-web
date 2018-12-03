@@ -37,13 +37,13 @@ angular.module('App').controller(
           offset - 1,
         ),
       })
-        .then((resp) => {
-          this.hosting = resp.hosting;
-          this.tasksList = resp.tasks;
+        .then(({ hosting, tasks }) => {
+          this.hosting = hosting;
+          this.tasksList = tasks;
           return {
-            data: resp.tasks.list.results,
+            data: tasks.list.results,
             meta: {
-              totalCount: resp.tasks.count,
+              totalCount: tasks.count,
             },
           };
         })
