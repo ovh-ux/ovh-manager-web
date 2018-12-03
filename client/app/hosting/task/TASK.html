@@ -14,7 +14,7 @@
                   (
                       (('hosting_tab_TASKS_function_'+ $row.function.replace('/','_') | translate) == 'hosting_tab_TASKS_function_'+ $row.function.replace('/','_'))?
                       $row.function.replace('_',' '):
-                      ('hosting_tab_TASKS_function_'+ $row.function.replace('/','_') | translate)
+                      (ctrl.hosting.resourceType === 'cloud' ? ('hosting_tab_TASKS_function_web_createSnapshot' | translate) : ('hosting_tab_TASKS_function_'+ $row.function.replace('/','_') | translate))
                   ):
                   ('hosting_tab_TASKS_function_'+ $row.function | translate)">
             </span>
