@@ -91,6 +91,13 @@ angular.module('App').run((
       });
   }
 
+  function getDomainIcons(domain) {
+    if (domain.type === 'ALL_DOM' || domain.type === 'DOMAIN') {
+      return 'ovh-font ovh-font-domain';
+    }
+    return 'oui-icon oui-icon-domain-dns icon-white-background';
+  }
+
   function addDomainItems(products) {
     const domainItem = SidebarMenu.addMenuItem({
       title: $translate.instant('navigation_left_domains'),
@@ -126,7 +133,7 @@ angular.module('App').run((
         const allDomItem = SidebarMenu.addMenuItem({
           title: domain.displayName,
           category: 'domain',
-          icon: 'oui-icon oui-icon-domain-dns icon-white-background',
+          icon: getDomainIcons(domain),
           allowSubItems: true,
           loadOnState: 'app.domain.alldom',
           loadOnStateParams: {
@@ -138,7 +145,7 @@ angular.module('App').run((
           SidebarMenu.addMenuItem({
             title: subDomain.displayName,
             category: 'domain',
-            icon: 'ovh-font ovh-font-domain',
+            icon: getDomainIcons(subDomain),
             state: 'app.domain.alldom',
             stateParams: {
               allDom: domain.displayName,
@@ -150,7 +157,7 @@ angular.module('App').run((
         SidebarMenu.addMenuItem({
           title: domain.displayName,
           category: 'domain',
-          icon: 'ovh-font ovh-font-domain',
+          icon: getDomainIcons(domain),
           state: domain.type === 'ZONE' ? 'app.domain.dns-zone' : 'app.domain.product',
           stateParams: {
             productId: domain.name,
