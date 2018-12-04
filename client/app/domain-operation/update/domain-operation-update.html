@@ -66,10 +66,10 @@
                                                    data-ovh-disable-reader="true"
                                                    data-wuc-ovh-filereader="ctrl.files[$index]"
                                                    data-wuc-ovh-filereader-action="ctrl.upload(ctrl.filesModel[$index], arg)">
-                                            <button class="btn btn-icon ml-1" type="button"
+                                            <button class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width ml-1" type="button"
                                                     data-ng-click="ctrl.viewMode[arg.key] = true"
                                                     data-ng-if="ctrl.previousValue[arg.key] && !ctrl.viewMode[arg.key]">
-                                                <span class="fa fa-times" aria-hidden="true"></span>
+                                                <span class="oui-icon oui-icon-close" aria-hidden="true"></span>
                                             </button>
                                             <span class="text-danger"
                                                   data-translate="domains_operations_update_document_file_invalid"
@@ -96,7 +96,7 @@
                                                 <span data-ng-if="ctrl.documents[arg.value].expirationDate">)</span>
                                                 <span class="fa fa-external-link" aria-hidden="true"></span>
                                             </a>
-                                            <button class="btn btn-icon" type="button"
+                                            <button class="oui-button oui-button_secondary oui-button_icon-only oui-button_small-width" type="button"
                                                     data-ng-click="ctrl.viewMode[arg.key] = false"
                                                     data-uib-tooltip="{{ 'domains_operations_update_document_edit' | translate }}">
                                                 <span class="oui-icon oui-icon-pen_line" aria-hidden="true"></span>
