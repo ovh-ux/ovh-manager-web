@@ -190,7 +190,7 @@
                                     data-ng-change="ctrl.updateSelectedConfig()"
                                     data-ng-disabled="ctrl.toggle.isRollbackProcess"
                                     data-ng-model="ctrl.model.httpFirewall"
-                                    data-ng-options="(hosting_action_config_edit_http_firewall_'  + name | translate) for name in ctrl.apiStruct.models['hosting.web.ovhConfig.HttpFirewallEnum'].enum track by name">
+                                    data-ng-options="('hosting_action_config_edit_http_firewall_'  + name | translate) for name in ctrl.apiStruct.models['hosting.web.ovhConfig.HttpFirewallEnum'].enum track by name">
                             </select>
                             <span class="oui-icon oui-icon-chevron-down" aria-hidden="true"></span>
                         </div>
