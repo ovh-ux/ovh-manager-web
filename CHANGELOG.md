@@ -1,3 +1,12 @@
+## [13.9.8](https://github.com/ovh-ux/ovh-manager-web/compare/v13.9.7...v13.9.8) (2018-12-04)
+
+
+### Bug Fixes
+
+* **domain:** operations document ([7d54926](https://github.com/ovh-ux/ovh-manager-web/commit/7d54926))
+
+
+
 ## [13.9.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.9.6...v13.9.7) (2018-11-30)
 
 
