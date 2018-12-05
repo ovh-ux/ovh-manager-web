@@ -8045,10 +8045,10 @@ ovh-module-emailpro@^7.0.10:
     moment "^2.16.0"
     punycode "^1.2.4"
 
-ovh-module-exchange@^9.1.2:
-  version "9.1.2"
-  resolved "https://registry.yarnpkg.com/ovh-module-exchange/-/ovh-module-exchange-9.1.2.tgz#f23fdb0cc3bbcc46cc6e5376af1b227c57cbf4b6"
-  integrity sha512-67jafdEmC4obu+r6F7EIyiXdmQFsNyuO6IewGlXVfjYVctuWKdeZESb5TLqqWxCXGnMHXGGf+In3nQQb1aeK7A==
+ovh-module-exchange@^9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/ovh-module-exchange/-/ovh-module-exchange-9.2.0.tgz#b586f088caa51444d63c55d5b7dc9719b79958f7"
+  integrity sha512-N20OtBYEVNR4Wjjbmz28KE7BL5MrOtpWyra3J0VB1o0+U4/Fk0ZVQUdFOO3w+6KKCbp7HIafQTs/ewaHOuRdpQ==
   dependencies:
     filesize "^3.6.1"
     lodash "~3.9.3"
@@ -8103,6 +8103,8 @@ ovh-ui-kit@^2.22.1:
   version "2.22.1"
   resolved "https://registry.yarnpkg.com/ovh-ui-kit/-/ovh-ui-kit-2.22.1.tgz#ee439bf2a281239336a5cd7b872d0a753335e19f"
   integrity sha512-XwWqBtkXcVT7YxtA8OxNlld8r7cqGSIiypAqg6zj6oQvlmlOczNEPGj8KMAivHZELMRs/wZV13Iw0kj+iOZ6zw==
+  dependencies:
+    less-plugin-remcalc "^0.1.0"
 
 p-defer@^1.0.0:
   version "1.0.0"
