@@ -1,3 +1,18 @@
+## [13.9.9](https://github.com/ovh-ux/ovh-manager-web/compare/v13.9.8...v13.9.9) (2018-12-05)
+
+
+### Bug Fixes
+
+* **deps:** ugrade ovh-angular-sidebar-menu to v7.2.2 ([bfa0407](https://github.com/ovh-ux/ovh-manager-web/commit/bfa0407))
+* **deps:** upgrade ovh-module-exchange to v9.2.0 ([097970b](https://github.com/ovh-ux/ovh-manager-web/commit/097970b))
+* **hosting.ovhconfig:** typo on selector ([d1a6127](https://github.com/ovh-ux/ovh-manager-web/commit/d1a6127))
+* **i18n:** retrieve translations ([03d5a5c](https://github.com/ovh-ux/ovh-manager-web/commit/03d5a5c))
+* **i18n:** retrieve translations ([b59b841](https://github.com/ovh-ux/ovh-manager-web/commit/b59b841))
+* **i18n:** submit translations ([2bd912b](https://github.com/ovh-ux/ovh-manager-web/commit/2bd912b))
+* **private-database:** add new DB version which is not translated ([ee60561](https://github.com/ovh-ux/ovh-manager-web/commit/ee60561))
+
+
+
 ## [13.9.8](https://github.com/ovh-ux/ovh-manager-web/compare/v13.9.7...v13.9.8) (2018-12-04)
 
 
