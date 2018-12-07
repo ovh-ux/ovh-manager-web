@@ -118,7 +118,7 @@
       data.moduleId = moduleIdEnum[self.site.config.type];
       delete data.adminPasswordConfirm;
 
-      return HostingModule.createModule(data, self.site.config.hosting);
+      return HostingModule.createModule(self.site.config.hosting, data);
     }
 
     self.createWebSite = () => {
@@ -138,6 +138,7 @@
           'none',
           false,
           false,
+          null,
           self.site.config.hosting,
         ),
       ];
