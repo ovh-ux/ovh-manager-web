@@ -26,7 +26,6 @@ angular.module('App').controller(
     $onInit() {
       this.hosting = this.$scope.hosting;
       this.hostingProxy = this.$scope.hostingProxy;
-
       this.bddTemplate = 'hosting/database/DATABASE_LIST.html';
       this.backupType = {
         DAILY: 'daily.1',
@@ -77,6 +76,7 @@ angular.module('App').controller(
       });
 
       this.loadDatabases();
+      this.getResourceType();
     }
 
     static formatVersion(version) {
@@ -185,6 +185,20 @@ angular.module('App').controller(
     restoreDump(database) {
       this.$scope.bdd = database;
       this.bddTemplate = 'hosting/database/dump/DUMPS.html';
+    }
+
+    getResourceType() {
+      return this.hostingService
+        .getHosting(this.$stateParams.productId)
+        .then((config) => {
+          this.resourceType = config.resourceType;
+        }).catch((err) => {
+          this.alerter.alertFromSWS(
+            this.$translate.instant('hosting_tab_databases_get_error'),
+            err,
+            this.$scope.alerts.main,
+          );
+        });
     }
 
     transformItem(id) {
