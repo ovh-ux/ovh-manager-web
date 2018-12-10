@@ -190,8 +190,8 @@ angular.module('App').controller(
     getResourceType() {
       return this.hostingService
         .getHosting(this.$stateParams.productId)
-        .then((config) => {
-          this.resourceType = config.resourceType;
+        .then(({ resourceType }) => {
+          this.resourceType = resourceType;
         }).catch((err) => {
           this.alerter.alertFromSWS(
             this.$translate.instant('hosting_tab_databases_get_error'),
