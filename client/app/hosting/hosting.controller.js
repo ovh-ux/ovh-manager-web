@@ -520,7 +520,13 @@ angular
           })
           .then(() => {
             if (moment().isAfter(moment($scope.hostingProxy.lastOvhConfigScan).add(12, 'hours'))) {
-              return HostingOvhConfig.ovhConfigRefresh($stateParams.productId);
+              return HostingOvhConfig.ovhConfigRefresh($stateParams.productId, { returnErrorKey: '' }).then(data => data).catch((err) => {
+                if (_.get(err, 'status') === 403) {
+                  return null;
+                }
+
+                return _.get(err, 'data');
+              });
             }
             return null;
           })
