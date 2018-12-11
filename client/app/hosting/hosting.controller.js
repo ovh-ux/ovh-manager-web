@@ -528,11 +528,7 @@ angular
           .then(() => startPolling())
           .catch((err) => {
             $scope.hosting.serviceInfos = {};
-            Alerter.alertFromSWS(
-              $translate.instant('hosting_dashboard_config_error'),
-              err,
-              $scope.alerts.page,
-            );
+            Alerter.error(err);
           })
           .finally(() => {
             $scope.loadingHostingInformations = false;

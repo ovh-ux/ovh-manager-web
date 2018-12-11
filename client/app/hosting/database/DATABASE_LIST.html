@@ -148,10 +148,7 @@
                             <th scope="row" data-ng-bind="element.user"></th>
                             <td data-ng-bind="element.user"></td>
                             <td class="word-break"
-                                data-ng-bind="element.name"
-                                data-uib-tooltip="{{element.server}}"
-                                data-tooltip-enable="!hosting.isCloudWeb"
-                                data-tooltip-append-to-body="true">
+                                data-ng-bind="element.name">
                             </td>
                             <td data-ng-if="!hosting.isCloudWeb">
                                 <div data-ng-if="element.server !== 'local' && !element.quotaCalculating">
