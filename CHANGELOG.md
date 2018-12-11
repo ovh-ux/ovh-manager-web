@@ -1,3 +1,24 @@
+# [13.10.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.9.9...v13.10.0) (2018-12-11)
+
+
+### Bug Fixes
+
+* **components.sidebar-menu:** show different icon for zone and domain ([5dc7603](https://github.com/ovh-ux/ovh-manager-web/commit/5dc7603))
+* **deps:** upgrade ovh-module-exchange to v9.2.1 ([b7670cf](https://github.com/ovh-ux/ovh-manager-web/commit/b7670cf))
+* **hosting:** avoid further api calls if hosting cannot be found ([7161fce](https://github.com/ovh-ux/ovh-manager-web/commit/7161fce))
+* **hosting:** update upgrade sentences ([2cc67c0](https://github.com/ovh-ux/ovh-manager-web/commit/2cc67c0))
+* **hosting.task:** shows correct status for cloud and non cloud offers ([9498ef4](https://github.com/ovh-ux/ovh-manager-web/commit/9498ef4))
+* **i18n:** retrieve translations ([30d0b9b](https://github.com/ovh-ux/ovh-manager-web/commit/30d0b9b))
+* **i18n:** submit translations ([acfae33](https://github.com/ovh-ux/ovh-manager-web/commit/acfae33))
+* **website:** add missing parameter and fix parameters order ([d022cef](https://github.com/ovh-ux/ovh-manager-web/commit/d022cef))
+
+
+### Features
+
+* **hosting.logs:** add support for GRA2 ([f1e369f](https://github.com/ovh-ux/ovh-manager-web/commit/f1e369f))
+
+
+
 ## [13.9.9](https://github.com/ovh-ux/ovh-manager-web/compare/v13.9.8...v13.9.9) (2018-12-05)
 
 
