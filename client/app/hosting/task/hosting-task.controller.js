@@ -1,12 +1,13 @@
 angular.module('App').controller(
   'HostingTabTasksCtrl',
   class HostingTabTasksCtrl {
-    constructor($scope, $stateParams, $translate, Alerter, Hosting) {
+    constructor($q, $scope, $stateParams, $translate, Alerter, Hosting) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
       this.Hosting = Hosting;
+      this.$q = $q;
     }
 
     $onInit() {
@@ -28,12 +29,16 @@ angular.module('App').controller(
     }
 
     loadPaginated({ pageSize, offset }) {
-      return this.Hosting.getTasksList(
-        this.$stateParams.productId,
-        pageSize,
-        offset - 1,
-      )
-        .then((tasks) => {
+      return this.$q.all({
+        hosting: this.Hosting.getHosting(this.$stateParams.productId),
+        tasks: this.Hosting.getTasksList(
+          this.$stateParams.productId,
+          pageSize,
+          offset - 1,
+        ),
+      })
+        .then(({ hosting, tasks }) => {
+          this.hosting = hosting;
           this.tasksList = tasks;
           return {
             data: tasks.list.results,
@@ -48,6 +53,7 @@ angular.module('App').controller(
             _.get(err, 'data', err),
             this.$scope.alerts.main,
           );
+          return { meta: { totalCount: 0 } };
         });
     }
 

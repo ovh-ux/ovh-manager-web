@@ -43,7 +43,7 @@ angular.module('App').controller(
       });
 
       if (
-        parseInt(this.$scope.hostingProxy.cluster.split('cluster')[1], 10) >= 20
+        ['gra1', 'gra2'].includes(this.$scope.hostingProxy.datacenter)
       ) {
         // FOR GRAVELINE
         this.urlUrchin = URI.expand(this.constants.urchin_gra, {

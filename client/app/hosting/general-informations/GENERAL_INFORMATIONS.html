@@ -430,15 +430,15 @@
         <div class="col-md-3 mt-md-5 mt-lg-0">
             <div class="d-flex flex-column-reverse flex-lg-column">
                 <div class="text-center"
-                     data-ng-class="{'mb-5': screenshot}"
+                     data-ng-class="{'mb-5': $ctrl.screenshot}"
                      data-ng-if="!hosting.isExpired">
-                    <oui-spinner data-ng-if="loadingScreenshot"></oui-spinner>
+                    <oui-spinner data-ng-if="$ctrl.loading.screenshot"></oui-spinner>
                     <a class="oui-box oui-box_light d-block p-0 text-truncate" target="_blank" title="{{hosting.serviceName}} ({{ 'common_newtab' | translate }})"
                        data-ng-href="http://{{hosting.serviceName}}"
-                       data-ng-if="!loadingScreenshot && screenshot">
-                        <img class="h-100 mw-100" data-ng-src="data:image/png;base64,{{screenshot}}" width="600"
+                       data-ng-if="!$ctrl.loading.screenshot && $ctrl.screenshot">
+                        <img class="h-100 mw-100" data-ng-src="data:image/png;base64,{{$ctrl.screenshot}}" width="600"
                              alt="{{hosting.serviceName}}"
-                             data-ng-if="screenshot"/>
+                             data-ng-if="$ctrl.screenshot"/>
                     </a>
                 </div>
                 <div class="mb-5"
@@ -503,11 +503,11 @@
                                     <a class="d-block word-break" target="_blank" title="{{ 'hosting_tab_USER_LOGS_dashboard_stats_newtab' | translate }}"
                                        data-ng-href="{{ urchin }}"
                                        data-ng-bind="urchin"
-                                       data-ng-if="!userLogsToken"></a>
+                                       data-ng-if="!$ctrl.userLogsToken"></a>
                                     <a class="d-block word-break" target="_blank" title="{{ 'hosting_tab_USER_LOGS_dashboard_stats_newtab' | translate }}"
-                                       data-ng-href="{{ urchin  + '?token=' +  userLogsToken}}"
+                                       data-ng-href="{{ urchin  + '?token=' +  $ctrl.userLogsToken}}"
                                        data-ng-bind="urchin"
-                                       data-ng-if="userLogsToken"></a>
+                                       data-ng-if="$ctrl.userLogsToken"></a>
                                 </div>
                             </li>
                         </ul>

@@ -2,22 +2,28 @@ angular.module('App').controller(
   'hostingGeneralInformationsCtrl',
   class HostingGeneralInformationsCtrl {
     constructor(
+      $q,
       $scope,
       $stateParams,
       $translate,
       Alerter,
-      hostingSSLCertificate,
+      Hosting,
       HostingLocalSeo,
       HostingRuntimes,
+      hostingSSLCertificate,
+      OvhApiScreenshot,
     ) {
+      this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
 
       this.Alerter = Alerter;
-      this.hostingSSLCertificate = hostingSSLCertificate;
+      this.Hosting = Hosting;
       this.HostingLocalSeo = HostingLocalSeo;
       this.HostingRuntimes = HostingRuntimes;
+      this.hostingSSLCertificate = hostingSSLCertificate;
+      this.OvhApiScreenshot = OvhApiScreenshot;
     }
 
     $onInit() {
@@ -27,6 +33,7 @@ angular.module('App').controller(
       this.loading = {
         defaultRuntime: true,
         localSeo: true,
+        screenshot: true,
       };
 
       this.localSeo = {
@@ -35,7 +42,8 @@ angular.module('App').controller(
       };
 
       this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
-      return this.retrievingSSLCertificate()
+      return this.$q.all([this.getUserLogsToken(), this.getScreenshot()])
+        .then(() => this.retrievingSSLCertificate())
         .then(() => this.HostingRuntimes.getDefault(this.serviceName))
         .then((runtime) => {
           this.defaultRuntime = runtime;
@@ -44,6 +52,30 @@ angular.module('App').controller(
         .finally(() => {
           this.loading.defaultRuntime = false;
           this.loading.localSeo = false;
+          this.loading.screenshot = false;
+        });
+    }
+
+    getScreenshot() {
+      if (!this.$scope.hosting.isExpired) {
+        return this.OvhApiScreenshot.Aapi().get({ url: this.serviceName }).$promise
+          .then((screenshot) => {
+            this.screenshot = screenshot;
+          });
+      }
+
+      return this.$q.when();
+    }
+
+    getUserLogsToken() {
+      return this.Hosting.getUserLogsToken(this.serviceName, {
+        params: {
+          remoteCheck: true,
+          ttl: 3600,
+        },
+      })
+        .then((userLogsToken) => {
+          this.userLogsToken = userLogsToken;
         });
     }
 

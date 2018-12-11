@@ -10,7 +10,6 @@ angular
       $translate,
       WucConverterService,
       Hosting,
-      OvhApiScreenshot,
       Alerter,
       Navigator,
       constants,
@@ -24,14 +23,12 @@ angular
     ) => {
       $scope.loadingHostingInformations = true;
       $scope.loadingHostingError = false;
-      $scope.loadingScreenshot = true;
       $scope.urls = {
         hosting: '',
       };
       $scope.edit = {
         active: false,
       };
-      $scope.screenshot = null;
 
       $scope.stepPath = '';
       $scope.currentAction = null;
@@ -53,10 +50,6 @@ angular
 
       $scope.ovhConfig = null;
 
-      $scope.$on(Hosting.events.dashboardRefresh, () => {
-        $scope.loadHosting();
-      });
-
       $scope.convertBytesSize = (nb, unit, decimalWanted = 0) => {
         const res = filesize(WucConverterService.convertToOctet(nb, unit), {
           output: 'object',
@@ -70,15 +63,6 @@ angular
 
       User.getUrlOf('changeOwner').then((link) => {
         $scope.changeOwnerUrl = link;
-      });
-
-      Hosting.getUserLogsToken($stateParams.productId, {
-        params: {
-          remoteCheck: true,
-          ttl: 3600,
-        },
-      }).then((token) => {
-        $scope.userLogsToken = token;
       });
 
       function loadOvhConfig() {
@@ -238,167 +222,32 @@ angular
         });
       }
 
-      $scope.loadHosting = () => {
-        Hosting.getSelected($stateParams.productId, true)
-          .then(
-            (hosting) => {
-              $scope.hosting = hosting;
-              $scope.hosting.displayName = hosting.displayName || hosting.serviceDisplayName;
+      function setUrchin() {
+        const [, cluster] = _.get($scope.hostingProxy, 'cluster', '').split('cluster');
+        if (cluster && parseInt(cluster, 10) >= 20) {
+          // FOR GRAVELINE
+          $scope.urchin = URI.expand(constants.urchin_gra, {
+            serviceName: $scope.hosting.serviceName,
+            cluster: $scope.hostingProxy.cluster,
+          }).toString();
+        } else {
+          $scope.urchin = URI.expand(constants.urchin, {
+            serviceName: $scope.hosting.serviceName,
+            cluster: $scope.hostingProxy.cluster,
+          }).toString();
+        }
+      }
 
-              $scope.isAdminPvtDb = false;
-
-              Hosting.getServiceInfos($stateParams.productId)
-                .then((serviceInfos) => {
-                  $scope.hosting.serviceInfos = serviceInfos;
-                })
-                .catch((err) => {
-                  $scope.hosting.serviceInfos = {};
-                  Alerter.error(err);
-                });
-
-              Hosting.getHosting($stateParams.productId)
-                .then((hostingProxy) => {
-                  $scope.hostingProxy = hostingProxy;
-
-                  $scope.ftp = hostingProxy.serviceManagementAccess.ftp;
-                  $scope.ftpUrl = `ftp://${
-                    hostingProxy.serviceManagementAccess.ftp.url
-                  }:${hostingProxy.serviceManagementAccess.ftp.port}/`;
-                  $scope.http = hostingProxy.serviceManagementAccess.http;
-                  $scope.httpUrl = `http://${
-                    hostingProxy.serviceManagementAccess.http.url
-                  }:${hostingProxy.serviceManagementAccess.http.port}/`;
-                  $scope.ssh = hostingProxy.serviceManagementAccess.ssh;
-                  $scope.sshUrl = `ssh://${
-                    hostingProxy.serviceManagementAccess.ssh.url
-                  }:${hostingProxy.serviceManagementAccess.ssh.port}/`;
-
-                  if (
-                    $scope.hostingProxy
-                    && $scope.hostingProxy.cluster
-                    && parseInt(
-                      $scope.hostingProxy.cluster.split('cluster')[1],
-                      10,
-                    ) >= 20
-                  ) {
-                    // FOR GRAVELINE
-                    $scope.urchin = URI.expand(constants.urchin_gra, {
-                      serviceName: hosting.serviceName,
-                      cluster: hostingProxy.cluster,
-                    }).toString();
-                  } else {
-                    $scope.urchin = URI.expand(constants.urchin, {
-                      serviceName: hosting.serviceName,
-                      cluster: hostingProxy.cluster,
-                    }).toString();
-                  }
-
-                  $scope.loadingHostingInformations = false;
-
-                  return User.getUrlOf('guides');
-                })
-                .then((guides) => {
-                  if (guides) {
-                    // GLOBAL ALERT TO UPGRADE APACHE
-                    if (_.indexOf(hosting.updates, 'APACHE24') >= 0) {
-                      $timeout(() => {
-                        Alerter.alertFromSWS(
-                          $translate.instant(
-                            'hosting_global_php_version_pending_update_apache',
-                            {
-                              t0: guides.works.apache,
-                              t1: 'http://travaux.ovh.net/?do=details&id=25601',
-                            },
-                          ),
-                          null,
-                          $scope.alerts.tabs,
-                        );
-                      }, 100);
-                    }
-
-                    switch ($scope.hosting.serviceState) {
-                      case 'BLOQUED':
-                        if (guides.hostingHackState) {
-                          $scope.guideHostingState = guides.hostingHackState;
-                        }
-                        break;
-                      case 'MAINTENANCE':
-                        if (guides.hostingDisabledState) {
-                          $scope.guideHostingState = guides.hostingDisabledState;
-                        }
-                        break;
-                      default:
-                        break;
-                    }
-                  }
-                })
-                .then(() => {
-                  if (moment().isAfter(moment($scope.hostingProxy.lastOvhConfigScan).add(12, 'hours'))) {
-                    return HostingOvhConfig.ovhConfigRefresh($stateParams.productId);
-                  }
-                  return null;
-                })
-                .finally(() => {
-                  $scope.loadingHostingInformations = false;
-                  loadOvhConfig();
-                });
-
-              User.getUrlOfEndsWithSubsidiary('hosting').then((url) => {
-                $scope.urls.hosting = url;
-              });
-
-              Hosting.getPrivateDatabasesLinked($stateParams.productId)
-                .then(databasesId => $q.all(_.map(
-                  databasesId,
-                  dbName => $scope.isAdminPrivateDb(dbName).then(isAdmin => ({
-                    name: dbName,
-                    isAdmin,
-                  })),
-                )))
-                .then((databases) => {
-                  $scope.privateDatabasesLinked = databases;
-                })
-                .catch(err => Alerter.error(err));
-
-              if (!hosting.isExpired && hosting.messages.length > 0) {
-                Alerter.error(
-                  $translate.instant('hosting_dashboard_loading_error'),
-                  $scope.alerts.page,
-                );
-                if (!hosting.name) {
-                  $scope.loadingHostingError = true;
-                }
-              }
-
-              if (!hosting.isExpired) {
-                checkFlushCdnState();
-                checkSqlPriveState();
-                $scope.getOfferPrivateSQLInfo();
-                return OvhApiScreenshot.Aapi().get({ url: hosting.serviceName }).$promise;
-              }
-              return null;
-            },
-            () => {
-              $scope.loadingHostingInformations = false;
-              $scope.loadingHostingError = true;
-            },
-          )
-          .then((screenshot) => {
-            $scope.screenshot = screenshot;
-          })
-          .finally(() => {
-            $scope.loadingScreenshot = false;
-          });
-
-        User.getUrlOf('domainOrder').then(
-          (link) => {
-            $scope.urlDomainOrder = link;
-          },
-          () => {
-            $scope.urlDomainOrder = null;
-          },
-        );
-      };
+      function getLinkedPrivateDatabases() {
+        return Hosting.getPrivateDatabasesLinked($stateParams.productId)
+          .then(databases => $q.all(
+            databases.map(databaseName => $scope.isAdminPrivateDb(databaseName)
+              .then(isAdmin => ({
+                name: databaseName,
+                isAdmin,
+              }))),
+          ));
+      }
 
       $scope.editDisplayName = () => {
         $scope.newDisplayName.value = $scope.hosting.displayName || $scope.hosting.serviceName;
@@ -509,8 +358,6 @@ angular
           });
       };
 
-      $scope.loadHosting();
-
       //---------------------------------------------
       // POLLING
       //---------------------------------------------
@@ -590,6 +437,109 @@ angular
         HostingDomain.killAllPolling();
       });
 
-      startPolling();
+      function loadHosting() {
+        return Hosting.getSelected($stateParams.productId, true)
+          .then(
+            (hosting) => {
+              $scope.hosting = hosting;
+              $scope.hosting.displayName = hosting.displayName || hosting.serviceDisplayName;
+              $scope.isAdminPvtDb = false;
+
+              if (!hosting.isExpired && hosting.messages.length > 0) {
+                Alerter.error(
+                  $translate.instant('hosting_dashboard_loading_error'),
+                  $scope.alerts.page,
+                );
+                if (!hosting.name) {
+                  return $q.reject();
+                }
+              }
+
+              if (!hosting.isExpired) {
+                checkFlushCdnState();
+                checkSqlPriveState();
+                $scope.getOfferPrivateSQLInfo();
+              }
+
+              return $q.all({
+                serviceInfos: Hosting.getServiceInfos($stateParams.productId),
+                hostingProxy: Hosting.getHosting($stateParams.productId),
+                hostingUrl: User.getUrlOfEndsWithSubsidiary('hosting'),
+                linkedDatabases: getLinkedPrivateDatabases,
+                domainOrderUrl: User.getUrlOf('domainOrder'),
+              });
+            },
+          )
+          .then(({
+            serviceInfos, hostingProxy, hostingUrl, databases, domainOrderUrl,
+          }) => {
+            $scope.hosting.serviceInfos = serviceInfos;
+            $scope.hostingProxy = hostingProxy;
+            $scope.ftp = hostingProxy.serviceManagementAccess.ftp;
+            $scope.ftpUrl = `ftp://${hostingProxy.serviceManagementAccess.ftp.url}:${hostingProxy.serviceManagementAccess.ftp.port}/`;
+            $scope.http = hostingProxy.serviceManagementAccess.http;
+            $scope.httpUrl = `http://${hostingProxy.serviceManagementAccess.http.url}:${hostingProxy.serviceManagementAccess.http.port}/`;
+            $scope.ssh = hostingProxy.serviceManagementAccess.ssh;
+            $scope.sshUrl = `ssh://${hostingProxy.serviceManagementAccess.ssh.url}:${hostingProxy.serviceManagementAccess.ssh.port}/`;
+            $scope.urls.hosting = hostingUrl;
+            $scope.privateDatabasesLinked = databases;
+            $scope.urlDomainOrder = domainOrderUrl;
+            setUrchin();
+
+            return User.getUrlOf('guides');
+          })
+          .then((guides) => {
+            if (guides) {
+            // GLOBAL ALERT TO UPGRADE APACHE
+              if (_.indexOf($scope.hosting.updates, 'APACHE24') >= 0) {
+                $timeout(() => {
+                  Alerter.alertFromSWS(
+                    $translate.instant('hosting_global_php_version_pending_update_apache', {
+                      t0: guides.works.apache,
+                      t1: 'http://travaux.ovh.net/?do=details&id=25601',
+                    }), null, $scope.alerts.tabs,
+                  );
+                }, 100);
+              }
+
+              switch ($scope.hosting.serviceState) {
+                case 'BLOQUED':
+                  if (guides.hostingHackState) {
+                    $scope.guideHostingState = guides.hostingHackState;
+                  }
+                  break;
+                case 'MAINTENANCE':
+                  if (guides.hostingDisabledState) {
+                    $scope.guideHostingState = guides.hostingDisabledState;
+                  }
+                  break;
+                default:
+                  break;
+              }
+            }
+          })
+          .then(() => {
+            if (moment().isAfter(moment($scope.hostingProxy.lastOvhConfigScan).add(12, 'hours'))) {
+              return HostingOvhConfig.ovhConfigRefresh($stateParams.productId);
+            }
+            return null;
+          })
+          .then(() => loadOvhConfig())
+          .then(() => startPolling())
+          .catch((err) => {
+            $scope.hosting.serviceInfos = {};
+            Alerter.error(err);
+            $scope.loadingHostingError = true;
+          })
+          .finally(() => {
+            $scope.loadingHostingInformations = false;
+          });
+      }
+
+      $scope.$on(Hosting.events.dashboardRefresh, () => {
+        loadHosting();
+      });
+
+      loadHosting();
     },
   );
