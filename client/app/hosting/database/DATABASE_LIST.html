@@ -150,7 +150,7 @@
                             <td class="word-break"
                                 data-ng-bind="element.name"
                                 data-uib-tooltip="{{element.server}}"
-                                data-tooltip-enable="ctrlTabDatabases.resourceType !== 'cloud'"
+                                data-tooltip-enable="!hosting.isCloudWeb"
                                 data-tooltip-append-to-body="true">
                             </td>
                             <td data-ng-if="!hosting.isCloudWeb">

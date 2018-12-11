@@ -76,7 +76,6 @@ angular.module('App').controller(
       });
 
       this.loadDatabases();
-      this.getResourceType();
     }
 
     static formatVersion(version) {
@@ -185,20 +184,6 @@ angular.module('App').controller(
     restoreDump(database) {
       this.$scope.bdd = database;
       this.bddTemplate = 'hosting/database/dump/DUMPS.html';
-    }
-
-    getResourceType() {
-      return this.hostingService
-        .getHosting(this.$stateParams.productId)
-        .then(({ resourceType }) => {
-          this.resourceType = resourceType;
-        }).catch((err) => {
-          this.alerter.alertFromSWS(
-            this.$translate.instant('hosting_tab_databases_get_error'),
-            err,
-            this.$scope.alerts.main,
-          );
-        });
     }
 
     transformItem(id) {
