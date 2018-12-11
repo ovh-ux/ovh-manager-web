@@ -91,7 +91,7 @@
                             <select class="oui-select__input" id="orderRam" name="orderRam" required
                                     data-ng-change="$ctrl.getDuration()"
                                     data-ng-model="$ctrl.model.ram"
-                                    data-ng-options="ramSize + ('unit_size_MB' | translate) for ramSize in $ctrl.getData($ctrl.model.type).rams track by ramSize">
+                                    data-ng-options="$ctrl.getNormalizedRAMSize(ramSize) for ramSize in $ctrl.getData($ctrl.model.type).rams track by ramSize">
                                 <option value="" disabled
                                         data-translate="select_option"></option>
                             </select>
