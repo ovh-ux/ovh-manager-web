@@ -475,5 +475,11 @@ angular.module('App').controller(
     makeHostingUrl(serviceName) {
       return this.hostingUrl + serviceName;
     }
+
+    getNormalizedRAMSize(ramSize) {
+      return ramSize < 1024
+        ? ramSize + this.$translate.instant('unit_size_MB')
+        : ramSize / 1024 + this.$translate.instant('unit_size_GB');
+    }
   },
 );
