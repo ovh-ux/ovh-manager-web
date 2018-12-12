@@ -26,7 +26,6 @@ angular.module('App').controller(
     $onInit() {
       this.hosting = this.$scope.hosting;
       this.hostingProxy = this.$scope.hostingProxy;
-
       this.bddTemplate = 'hosting/database/DATABASE_LIST.html';
       this.backupType = {
         DAILY: 'daily.1',

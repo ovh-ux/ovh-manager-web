@@ -529,7 +529,6 @@ angular
           .catch((err) => {
             $scope.hosting.serviceInfos = {};
             Alerter.error(err);
-            $scope.loadingHostingError = true;
           })
           .finally(() => {
             $scope.loadingHostingInformations = false;
