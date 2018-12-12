@@ -1,0 +1,22 @@
+.reset-down-arrow() {
+  font-size: rem-calc(10);
+  width: auto;
+  height: auto;
+  margin-right: 0;
+
+  .medium({
+    margin-left: rem-calc(5);
+  });
+}
+
+.oui-navbar-link {
+  &,
+  &_active,
+  &:hover,
+  &:focus,
+  &[aria-expanded="true"] {
+    & .navbar__down-arrow {
+      .reset-down-arrow();
+    }
+  }
+}
