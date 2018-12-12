@@ -1,3 +1,13 @@
+## [13.10.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.10.0...v13.10.1) (2018-12-12)
+
+
+### Bug Fixes
+
+* **hosting.database:** disable tooltip for webhosting ([b5f89e0](https://github.com/ovh-ux/ovh-manager-web/commit/b5f89e0))
+* **private-database.order:** update database order ram unit ([5a98dac](https://github.com/ovh-ux/ovh-manager-web/commit/5a98dac))
+
+
+
 # [13.10.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.9.9...v13.10.0) (2018-12-11)
 
 
