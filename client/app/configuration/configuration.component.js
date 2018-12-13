@@ -1,6 +1,5 @@
-angular.module('App').controller(
-  'ConfigurationCtrl',
-  class ConfigurationCtrl {
+{
+  class Configuration {
     constructor(
       $scope,
       $route,
@@ -25,6 +24,8 @@ angular.module('App').controller(
             `urls.${user.ovhSubsidiary}.guides.all`,
             this.constants.urls.FR.guides.all,
           );
+
+          this.helpAndContact = this.constants.urls.FR.support;
         })
         .catch(() => {
           this.allGuides = this.constants.urls.FR.guides.all;
@@ -47,5 +48,12 @@ angular.module('App').controller(
       this.currentGuides = this.guides[typeOfGuide];
       this.currentTypeOfGuide = typeOfGuide;
     }
-  },
-);
+  }
+
+  angular
+    .module('App')
+    .component('configuration', {
+      templateUrl: 'configuration/configuration.html',
+      controller: Configuration,
+    });
+}
