@@ -82,11 +82,11 @@ angular.module('services').service(
      * Sync the api with the host, in case of manual modification (ftp, ...)
      * @param {string} serviceName
      */
-    ovhConfigRefresh(serviceName) {
-      return this.OvhHttp.post(`/hosting/web/${serviceName}/ovhConfigRefresh`, {
+    ovhConfigRefresh(serviceName, config) {
+      return this.OvhHttp.post(`/hosting/web/${serviceName}/ovhConfigRefresh`, _.assign({
         rootPath: 'apiv6',
         clearAllCache: this.cache,
-      });
+      }, config || {}));
     }
 
     /**
