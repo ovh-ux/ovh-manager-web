@@ -122,9 +122,6 @@
                                                     <span data-translate="hosting_dashboard_disk_usage_total"></span>
                                                     <span data-ng-bind=":: convertBytesSize(hosting.quotaUsed.value, hosting.quotaUsed.unit, 2) + ' / ' + convertBytesSize(hosting.quotaSize.value, hosting.quotaSize.unit)"></span>
                                                 </li>
-                                                <li>
-                                                    <small data-ng-bind-html=":: '*' + ('hosting_dashboard_disk_usage_configuration' | translate: { t0: convertBytesSize(hosting.configurationQuota.value, hosting.configurationQuota.unit, 2) })"></small>
-                                                </li>
                                             </ul>
                                     </div>
                                 </li>
@@ -344,7 +341,7 @@
                                         <strong class="oui-tile__term d-block"
                                                 data-ng-if="hosting.isCloudWeb"
                                                 data-translate="hosting_tab_DATABASE"></strong>
-                                        
+
                                         <div data-wuc-progress-bar-element-counter
                                              data-wuc-pbec-nb-elements="hosting.databaseCount"
                                              data-wuc-pbec-max-elements="hosting.databaseMax"
