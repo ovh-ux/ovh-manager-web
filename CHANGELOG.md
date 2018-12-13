@@ -1,3 +1,16 @@
+## [13.10.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.10.1...v13.10.2) (2018-12-13)
+
+
+### Bug Fixes
+
+* **hosting:** cloud web ([17074d0](https://github.com/ovh-ux/ovh-manager-web/commit/17074d0))
+* **hosting:** remove unnecessary text ([fd848c5](https://github.com/ovh-ux/ovh-manager-web/commit/fd848c5))
+* **hosting.web:** blank page on ovhconfig error ([becf47a](https://github.com/ovh-ux/ovh-manager-web/commit/becf47a))
+* **i18n:** retrieve translations ([749ee8c](https://github.com/ovh-ux/ovh-manager-web/commit/749ee8c))
+* **i18n:** retrieve translations ([b845e1b](https://github.com/ovh-ux/ovh-manager-web/commit/b845e1b))
+
+
+
 ## [13.10.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.10.0...v13.10.1) (2018-12-12)
 
 
