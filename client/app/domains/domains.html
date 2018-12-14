@@ -15,8 +15,7 @@
                               data-empty-placeholder="{{:: 'domains_dashboard_table_noresult' | translate }}"
                               data-page-size="10"
                               data-selectable-rows
-                              data-on-row-select="ctrlDomains.toggleDomain($row, $rows)"
-                              data-ng-if="!ctrlDomains.loading.domainsError">
+                              data-on-row-select="ctrlDomains.toggleDomain($row, $rows)">
                     <oui-column data-title=":: 'domains_dashboard_table_titles_name' | translate"
                                 data-property="name"
                                 data-type="string"

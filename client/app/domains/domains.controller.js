@@ -52,7 +52,6 @@ angular.module('App').controller(
           this.urlBulkChangeOwner = null;
         });
 
-      this.$scope.domains = null;
       this.$scope.selectedDomains = [];
       this.$scope.alerts = {
         page: 'alerts.domains.page',
@@ -79,34 +78,16 @@ angular.module('App').controller(
       this.$scope.$on('domain.csv.export.error', () => {
         this.loading.domainsExportCsv = false;
       });
-      this.$scope.$on('domains.list.refresh', () => {
-        this.$scope.selectedDomains = [];
-        this.$scope.$broadcast('paginationServerSide.reload');
-      });
     }
 
     applySelection() {
-      _.forEach(_.get(this.$scope.domains, 'list.results'), (value) => {
+      _.forEach(_.get(this.domains, 'list.results'), (value) => {
         _.set(value, 'selected', _.indexOf(this.$scope.selectedDomains, value.name) !== -1);
       });
     }
 
-    emptySearch() {
-      this.search.value = '';
-      this.goSearch();
-    }
-
-    goSearch() {
-      if (!_.isEmpty(this.search.value)) {
-        this.loading.domainsSearch = true;
-      }
-      this.$scope.$broadcast('paginationServerSide.loadPage', 1);
-    }
-
     loadDomains({ pageSize, offset, criteria }) {
       const [search] = criteria;
-      this.loading.domainsInfos = true;
-      this.loading.domainsSearch = true;
 
       return this.Domains.getDomains(pageSize, offset - 1, _.get(search, 'value'))
         .then((domains) => {
@@ -126,40 +107,7 @@ angular.module('App').controller(
             this.$translate.instant('domains_dashboard_loading_error'),
             this.$scope.alerts.page,
           );
-        })
-        .finally(() => {
-          this.loading.init = false;
-          this.loading.domainsInfos = false;
-          this.loading.domainsSearch = false;
         });
-    }
-
-    /**
-     * Handle checkboxes with "deselect/select all" option
-     * @param {integer} state
-     */
-    globalCheckboxStateChange(state) {
-      if (_.get(this.$scope.domains, 'list.results')) {
-        switch (state) {
-          case 0:
-            this.$scope.selectedDomains = [];
-            this.atLeastOneSelected = false;
-            break;
-          case 1:
-            this.$scope.selectedDomains = _.map(
-              this.$scope.domains.list.results,
-              'name',
-            ).filter(result => !_.some(this.$scope.selectedDomains, result.name));
-            this.atLeastOneSelected = true;
-            break;
-          case 2:
-            this.$scope.selectedDomains = this.$scope.domains.fullDomainsList;
-            this.atLeastOneSelected = true;
-            break;
-          default:
-            break;
-        }
-      }
     }
 
     /**
