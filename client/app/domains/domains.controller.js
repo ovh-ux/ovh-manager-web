@@ -61,31 +61,6 @@ angular.module('App').controller(
       this.$scope.currentAction = null;
       this.$scope.currentActionData = null;
 
-      this.$scope.loadDomains = (count, offset) => {
-        this.loading.domainsInfos = true;
-        this.loading.domainsSearch = true;
-
-        this.Domains.getDomains(count, offset, this.search.value)
-          .then((domains) => {
-            this.$scope.domains = domains;
-            if (_.get(domains, 'list.results', []).length > 0) {
-              this.hasResult = true;
-            }
-            this.applySelection();
-          })
-          .catch(() => {
-            this.loading.domainsError = true;
-            this.Alerter.error(
-              this.$translate.instant('domains_dashboard_loading_error'),
-              this.$scope.alerts.page,
-            );
-          })
-          .finally(() => {
-            this.loading.init = false;
-            this.loading.domainsInfos = false;
-            this.loading.domainsSearch = false;
-          });
-      };
       this.$scope.setActionIfAuthorized = (authorized, action, data) => {
         if (authorized) {
           this.setAction(action, 'domains/', data);
@@ -133,6 +108,37 @@ angular.module('App').controller(
       this.$scope.$broadcast('paginationServerSide.loadPage', 1);
     }
 
+    loadDomains({ pageSize, offset, criteria }) {
+      const [search] = criteria;
+      this.loading.domainsInfos = true;
+      this.loading.domainsSearch = true;
+
+      return this.Domains.getDomains(pageSize, offset - 1, _.get(search, 'value'))
+        .then((domains) => {
+          this.domains = domains;
+          this.applySelection();
+
+          return {
+            data: _.get(this.domains, 'list.results', []),
+            meta: {
+              totalCount: domains.count,
+            },
+          };
+        })
+        .catch(() => {
+          this.loading.domainsError = true;
+          this.Alerter.error(
+            this.$translate.instant('domains_dashboard_loading_error'),
+            this.$scope.alerts.page,
+          );
+        })
+        .finally(() => {
+          this.loading.init = false;
+          this.loading.domainsInfos = false;
+          this.loading.domainsSearch = false;
+        });
+    }
+
     /**
      * Handle checkboxes with "deselect/select all" option
      * @param {integer} state
@@ -176,11 +182,9 @@ angular.module('App').controller(
      * Toggle the clicked domain checkbox
      * @param {string} domain name
      */
-    toggleDomain(domain) {
-      this.$scope.selectedDomains = _.xor(this.$scope.selectedDomains, [
-        domain,
-      ]);
-      this.atLeastOneSelected = this.$scope.selectedDomains.length > 0;
+    toggleDomain(domain, selectedDomains) {
+      this.$scope.selectedDomains = selectedDomains;
+      this.atLeastOneSelected = !_.isEmpty(selectedDomains);
     }
 
     /**
