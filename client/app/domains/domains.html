@@ -21,12 +21,12 @@
                                 data-type="string"
                                 data-searchable>
                         <a class="oui-link"
-                           data-ng-bind="$row.displayName"
+                           data-ng-bind=":: $row.displayName"
                            data-ui-sref="app.domain.product({ productId: $row.displayName })">
                         </a>
                     </oui-column>
                     <oui-column data-title=":: 'domains_dashboard_table_titles_expiration' | translate">
-                        <span data-ng-bind="$row.expiration | date:'mediumDate'"></span>
+                        <span data-ng-bind=":: $row.expiration | date:'mediumDate'"></span>
                     </oui-column>
                     <oui-column data-title=":: 'domains_dashboard_table_titles_whois' | translate">
                         <span class="oui-status oui-status_success"
