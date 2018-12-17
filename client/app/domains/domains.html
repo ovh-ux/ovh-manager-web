@@ -1,6 +1,6 @@
 <div data-ovh-alert="{{alerts.page}}"></div>
 
-<div data-ng-if="!ctrlDomains.loading.domainsError">
+<div data-ng-if="!$ctrl.loading.domainsError">
 
     <div class="page-header">
         <h1 data-translate="domains_dashboard_title"></h1>
@@ -11,11 +11,11 @@
             <div class="col-md-9">
                 <div data-ovh-alert="{{alerts.main}}"></div>
 
-                <oui-datagrid data-rows-loader="ctrlDomains.loadDomains($config)"
+                <oui-datagrid data-rows-loader="$ctrl.loadDomains($config)"
                               data-empty-placeholder="{{:: 'domains_dashboard_table_noresult' | translate }}"
                               data-page-size="10"
                               data-selectable-rows
-                              data-on-row-select="ctrlDomains.toggleDomain($row, $rows)">
+                              data-on-row-select="$ctrl.toggleDomain($row, $rows)">
                     <oui-column data-title=":: 'domains_dashboard_table_titles_name' | translate"
                                 data-property="name"
                                 data-type="string"
@@ -67,7 +67,7 @@
                         </span>
                     </oui-column>
                     <oui-action-menu data-compact data-align="end">
-                        <oui-action-menu-item data-on-click="ctrlDomains.setAction('domains/renew/domains-renew', $row)"
+                        <oui-action-menu-item data-on-click="$ctrl.setAction('domains/renew/domains-renew', $row)"
                                               data-disabled="!$row.canOrder">
                             <span data-translate="domains_dashboard_tooltip_renew_single"></span>
                         </oui-action-menu-item>
@@ -90,39 +90,39 @@
                 <button class="oui-button oui-button_secondary mw-100 w-100 mb-2" type="button"
                         data-translate="domains_dashboard_button_renew"
                         data-ng-click="setActionMultiple('renew/domains-renew')"
-                        data-ng-disabled="!ctrlDomains.atLeastOneSelected"
+                        data-ng-disabled="!$ctrl.atLeastOneSelected"
                         data-uib-tooltip="{{:: 'domains_dashboard_tooltip_renew_multiples' | translate }}"
                         data-tooltip-append-to-body="true">
                 </button>
                 <button class="oui-button oui-button_secondary mw-100 w-100 mb-2" type="button"
                         data-translate="domains_dashboard_button_whois"
                         data-ng-click="setActionMultiple('owo/domains-owo')"
-                        data-ng-disabled="!ctrlDomains.atLeastOneSelected"
+                        data-ng-disabled="!$ctrl.atLeastOneSelected"
                         data-uib-tooltip="{{:: 'domains_dashboard_tooltip_whois_multiples' | translate }}"
                         data-tooltip-append-to-body="true">
                 </button>
                 <button class="oui-button oui-button_secondary mw-100 w-100 mb-2" type="button"
                         data-translate="domains_dashboard_button_dnssec"
                         data-ng-click="setActionMultiple('dnssec/batch/domains-dnssec-batch')"
-                        data-ng-disabled="!ctrlDomains.atLeastOneSelected"
+                        data-ng-disabled="!$ctrl.atLeastOneSelected"
                         data-uib-tooltip="{{:: 'domains_dashboard_tooltip_dnssec_multiples' | translate }}"
                         data-tooltip-append-to-body="true">
                 </button>
                 <button class="oui-button oui-button_secondary mw-100 w-100 mb-2" type="button"
                         data-ng-click="setActionMultiple('export-csv/domains-export-to-csv')"
-                        data-ng-disabled="ctrlDomains.loading.domainsExportCsv"
-                        data-ng-if="ctrlDomains.domains && ctrlDomains.domains.count"
+                        data-ng-disabled="$ctrl.loading.domainsExportCsv"
+                        data-ng-if="$ctrl.domains && $ctrl.domains.count"
                         data-uib-tooltip="{{:: 'domains_dashboard_tooltip_export_csv' | translate }}"
                         data-tooltip-append-to-body="true">
                     <span data-translate="domains_dashboard_button_export"
-                          data-ng-if="!ctrlDomains.loading.domainsExportCsv"></span>
+                          data-ng-if="!$ctrl.loading.domainsExportCsv"></span>
                     <span data-translate="domains_dashboard_tooltip_export_csv_creation_doing"
-                          data-ng-if="ctrlDomains.loading.domainsExportCsv"></span>
+                          data-ng-if="$ctrl.loading.domainsExportCsv"></span>
                 </button>
                 <a class="oui-button oui-button_secondary mw-100 w-100" target="_blank"
                    data-translate="domains_change_owner"
-                   data-ng-href="{{ ctrlDomains.urlBulkChangeOwner }}"
-                   data-ng-if="ctrlDomains.domains && ctrlDomains.domains.count && ctrlDomains.urlBulkChangeOwner">
+                   data-ng-href="{{ $ctrl.urlBulkChangeOwner }}"
+                   data-ng-if="$ctrl.domains && $ctrl.domains.count && $ctrl.urlBulkChangeOwner">
                 </a>
             </div>
         </div>
@@ -131,7 +131,7 @@
 
 <div id="currentAction" class="modal fade currentAction" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <div id="modal-container" class="modal-content" data-ng-include="ctrlDomains.stepPath"></div>
+        <div id="modal-container" class="modal-content" data-ng-include="$ctrl.stepPath"></div>
         <div id="modal-help" class="help4wizards"></div>
     </div>
 </div>
