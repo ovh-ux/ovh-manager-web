@@ -6,8 +6,27 @@
         </h1>
         <p
             class="lead"
+            data-ng-if="$ctrl.subsidiary !== 'FR'"
             data-translate="core_top_guides_header"
             data-translate-values="{ t0: $ctrl.allGuides }"></p>
+
+        <div
+            class="row"
+            data-ng-if="$ctrl.subsidiary === 'FR'">
+            <p class="lead col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+                <span data-translate="core_top_guides_header_fr"></span>
+                <a
+                    class="oui-link_icon"
+                    data-ng-href="{{:: $ctrl.helpCenterURLs.FR }}"
+                    target="_blank"
+                    rel="noopener">
+                    <span data-translate="common_menu_support_help_center"></span>
+                    <span class="oui-icon oui-icon-external_link" aria-hidden="true"></span>
+                    <span class="sr-only" data-translate="core_new_window"></span>
+                </a>.
+            </p>
+        </div>
+
     </div>
     <div class="container-fluid">
         <div class="row d-md-flex" data-ng-if="!loaders.loading && user.ovhSubsidiary === 'FR'">
