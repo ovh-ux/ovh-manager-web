@@ -4,8 +4,10 @@
             <span data-translate="welcome_to_your_manager_1"></span>
             <span data-translate="welcome_to_your_manager_2"></span>
         </h1>
-        <p class="lead"
-           data-ng-bind-html="'core_top_guides_header' | translate: { t0: $ctrl.allGuides }"></p>
+        <p
+            class="lead"
+            data-translate="core_top_guides_header"
+            data-translate-values="{ t0: $ctrl.allGuides }"></p>
     </div>
     <div class="container-fluid">
         <div class="row d-md-flex" data-ng-if="!loaders.loading && user.ovhSubsidiary === 'FR'">
