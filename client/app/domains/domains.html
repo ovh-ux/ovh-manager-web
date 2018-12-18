@@ -68,20 +68,20 @@
                         </span>
                     </oui-column>
                     <oui-action-menu data-compact data-align="end">
-                        <oui-action-menu-item data-on-click="$ctrl.setAction('domains/renew/domains-renew', $row)"
+                        <oui-action-menu-item data-on-click="$ctrl.setAction('renew/domains-renew', 'domains/', $row)"
                                               data-disabled="!$row.canOrder">
                             <span data-translate="domains_dashboard_tooltip_renew_single"></span>
                         </oui-action-menu-item>
-                        <oui-action-menu-item data-on-click="setAction('domains/owo/domains-owo', $row)"
+                        <oui-action-menu-item data-on-click="$ctrl.setAction('owo/domains-owo', 'domains/', $row)"
                                               data-disabled="!$row.whoisActivable">
                             <span data-translate="domains_dashboard_tooltip_whois_single"></span>
                         </oui-action-menu-item>
                         <oui-action-menu-item data-ng-if="$row.dnssecSupported && $row.dnssecStatus === 'DISABLED'"
-                                              data-on-click="setAction('domains/dnssec/simple/activate/domains-dnssec-simple-activate', $row)">
+                                              data-on-click="$ctrl.setAction('dnssec/simple/activate/domains-dnssec-simple-activate', 'domains/', $row)">
                             <span data-translate="domains_dashboard_tooltip_dnssec_activate_single"></span>
                         </oui-action-menu-item>
                         <oui-action-menu-item data-ng-if="$row.dnssecSupported && $row.dnssecStatus === 'ENABLED'"
-                                              data-on-click="setAction('domains/dnssec/simple/deactivate/domains-dnssec-simple-deactivate', $row)">
+                                              data-on-click="$ctrl.setAction('dnssec/simple/deactivate/domains-dnssec-simple-deactivate', 'domains/', $row)">
                             <span data-translate="domains_dashboard_tooltip_dnssec_deactivate_single"></span>
                         </oui-action-menu-item>
                     </oui-action-menu>
