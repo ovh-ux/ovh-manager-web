@@ -64,7 +64,6 @@ angular.module('App').controller(
       this.$scope.resetAction = () => this.setAction(false);
       this.$scope.getSelectedDomains = () => this.$scope.selectedDomains;
 
-      this.$scope.$watch('selectedDomains', () => this.applySelection(), true);
       this.$scope.$on('$locationChangeStart', () => this.$scope.resetAction());
       this.$scope.$on('domain.csv.export.cancel', () => {
         this.loading.domainsExportCsv = false;
@@ -80,19 +79,12 @@ angular.module('App').controller(
       });
     }
 
-    applySelection() {
-      _.forEach(_.get(this.domains, 'list.results'), (value) => {
-        _.set(value, 'selected', _.indexOf(this.$scope.selectedDomains, value.name) !== -1);
-      });
-    }
-
     loadDomains({ pageSize, offset, criteria }) {
       const [search] = criteria;
 
       return this.Domains.getDomains(pageSize, offset - 1, _.get(search, 'value'))
         .then((domains) => {
           this.domains = domains;
-          this.applySelection();
 
           return {
             data: _.get(this.domains, 'list.results', []),
