@@ -62,7 +62,7 @@ angular.module('App').controller(
 
       this.$scope.setActionMultiple = (action, data) => this.setAction(action, 'domains/', data);
       this.$scope.resetAction = () => this.setAction(false);
-      this.$scope.getSelectedDomains = () => this.$scope.selectedDomains;
+      this.$scope.getSelectedDomains = () => this.selectedDomains;
 
       this.$scope.$on('$locationChangeStart', () => this.$scope.resetAction());
       this.$scope.$on('domain.csv.export.cancel', () => {
@@ -118,7 +118,7 @@ angular.module('App').controller(
      * @param {string} domain name
      */
     toggleDomain(domain, selectedDomains) {
-      this.$scope.selectedDomains = selectedDomains;
+      this.selectedDomains = selectedDomains.map(({ name }) => name);
       this.atLeastOneSelected = !_.isEmpty(selectedDomains);
     }
 
