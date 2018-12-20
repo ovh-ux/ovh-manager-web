@@ -1,6 +1,6 @@
 <div data-ovh-alert="{{alerts.page}}"></div>
 
-<div data-ng-if="!ctrlDomains.loading.domainsError">
+<div data-ng-if="!$ctrl.loading.domainsError">
 
     <div class="page-header">
         <h1 data-translate="domains_dashboard_title"></h1>
@@ -11,16 +11,16 @@
             <div class="col-md-9">
                 <div data-ovh-alert="{{alerts.main}}"></div>
 
-                <div class="text-center" data-ng-if="ctrlDomains.loading.init">
+                <div class="text-center" data-ng-if="$ctrl.loading.init">
                     <oui-spinner data-size="l"></oui-spinner>
                 </div>
 
                 <div class="alert alert-info" role="alert"
                      data-translate="domains_dashboard_table_noresult"
-                     data-ng-if="!ctrlDomains.loading.init && !ctrlDomains.hasResult">
+                     data-ng-if="!$ctrl.loading.init && !$ctrl.hasResult">
                 </div>
 
-                <div data-ng-if="!ctrlDomains.loading.init && ctrlDomains.hasResult">
+                <div data-ng-if="!$ctrl.loading.init && $ctrl.hasResult">
                     <div class="mb-3 text-right">
                         <form class="form-inline" name="searchDomainForm">
                             <div class="form-group">
@@ -28,19 +28,19 @@
                                        data-translate="domains_dashboard_search_label"></label>
                                 <div class="input-group">
                                     <input type="text" class="form-control" id="searchDomain" name="searchDomain" placeholder="{{:: 'domains_dashboard_search_placeholder' | translate }}"
-                                           data-ng-change="ctrlDomains.goSearch()"
-                                           data-ng-disabled="ctrlDomains.loading.domainsInfos"
-                                           data-ng-model="ctrlDomains.search.value"
+                                           data-ng-change="$ctrl.goSearch()"
+                                           data-ng-disabled="$ctrl.loading.domainsInfos"
+                                           data-ng-model="$ctrl.search.value"
                                            data-ng-model-options="{ debounce: 800 }">
-                                    <div class="input-group-btn" data-ng-if="ctrlDomains.search.value">
+                                    <div class="input-group-btn" data-ng-if="$ctrl.search.value">
                                         <button class="btn btn-default" type="button"
-                                                data-ng-click="ctrlDomains.emptySearch()"
-                                                data-ng-disabled="ctrlDomains.loading.domainsInfos">
+                                                data-ng-click="$ctrl.emptySearch()"
+                                                data-ng-disabled="$ctrl.loading.domainsInfos">
                                             <span class="fa fa-times" aria-hidden="true"></span>
                                         </button>
                                     </div>
                                     <span class="input-group-addon"
-                                          data-ng-if="!ctrlDomains.search.value">
+                                          data-ng-if="!$ctrl.search.value">
                                         <span class="fa fa-search" aria-hidden="true"></span>
                                     </span>
                                 </div>
@@ -59,7 +59,7 @@
                                                data-tri-state-checkbox
                                                data-tsc-ids-all="domains.fullDomainsList"
                                                data-tsc-ids-selected="selectedDomains"
-                                               data-tsc-on-click="ctrlDomains.globalCheckboxStateChange(state)" />
+                                               data-tsc-on-click="$ctrl.globalCheckboxStateChange(state)" />
                                     </th>
                                     <th scope="col" data-translate="domains_dashboard_table_titles_name"></th>
                                     <th scope="col" data-translate="domains_dashboard_table_titles_creation"></th>
@@ -69,25 +69,25 @@
                                     <th scope="col" class="min-width"></th>
                                 </tr>
                             </thead>
-                            <tbody data-ng-if="ctrlDomains.loading.domainsInfos || ctrlDomains.loading.domainsSearch">
+                            <tbody data-ng-if="$ctrl.loading.domainsInfos || $ctrl.loading.domainsSearch">
                                 <tr>
                                     <td class="text-center" colspan="6">
                                         <oui-spinner></oui-spinner>
                                     </td>
                                 </tr>
                             </tbody>
-                            <tbody data-ng-if="!ctrlDomains.loading.domainsInfos && !ctrlDomains.loading.domainsSearch && domains.count === 0">
+                            <tbody data-ng-if="!$ctrl.loading.domainsInfos && !$ctrl.loading.domainsSearch && domains.count === 0">
                                 <tr>
                                     <td class="text-center" colspan="6"
                                         data-translate="domains_dashboard_table_empty"></td>
                                 </tr>
                             </tbody>
-                            <tbody data-ng-if="!ctrlDomains.loading.domainsInfos && !ctrlDomains.loading.domainsSearch && domains.count > 0">
+                            <tbody data-ng-if="!$ctrl.loading.domainsInfos && !$ctrl.loading.domainsSearch && domains.count > 0">
                                 <tr data-ng-repeat="domain in domains.list.results track by $index"
                                     data-ng-class="{'info': selectedDomains.indexOf(domain.name) !== -1}">
                                     <td>
                                         <input type="checkbox" name="domainsListResults[]" id="selectDomain-{{$index}}"
-                                               data-ng-change="ctrlDomains.toggleDomain(domain.name)"
+                                               data-ng-change="$ctrl.toggleDomain(domain.name)"
                                                data-ng-model="domain.selected">
                                     </td>
                                     <td class="word-break">
@@ -152,50 +152,50 @@
                 </div>
 
                 <div class="clearfix"
-                     data-ng-show="!ctrlDomains.loading.init && ctrlDomains.hasResult"
+                     data-ng-show="!$ctrl.loading.init && $ctrl.hasResult"
                      data-pagination-server-side
                      data-pagination-server-side-function="loadDomains"
                      data-pagination-server-side-paginated-stuff="domains"
-                     data-pagination-server-side-table-loading="ctrlDomains.loading.domainsInfos">
+                     data-pagination-server-side-table-loading="$ctrl.loading.domainsInfos">
                 </div>
             </div>
             <div class="col-md-3 mt-5 mt-lg-0">
                 <button class="btn btn-block btn-default" type="button"
                         data-translate="domains_dashboard_button_renew"
                         data-ng-click="setActionMultiple('renew/domains-renew')"
-                        data-ng-disabled="!ctrlDomains.atLeastOneSelected"
+                        data-ng-disabled="!$ctrl.atLeastOneSelected"
                         data-uib-tooltip="{{:: 'domains_dashboard_tooltip_renew_multiples' | translate }}"
                         data-tooltip-append-to-body="true">
                 </button>
                 <button class="btn btn-block btn-default" type="button"
                         data-translate="domains_dashboard_button_whois"
                         data-ng-click="setActionMultiple('owo/domains-owo')"
-                        data-ng-disabled="!ctrlDomains.atLeastOneSelected"
+                        data-ng-disabled="!$ctrl.atLeastOneSelected"
                         data-uib-tooltip="{{:: 'domains_dashboard_tooltip_whois_multiples' | translate }}"
                         data-tooltip-append-to-body="true">
                 </button>
                 <button class="btn btn-block btn-default" type="button"
                         data-translate="domains_dashboard_button_dnssec"
                         data-ng-click="setActionMultiple('dnssec/batch/domains-dnssec-batch')"
-                        data-ng-disabled="!ctrlDomains.atLeastOneSelected"
+                        data-ng-disabled="!$ctrl.atLeastOneSelected"
                         data-uib-tooltip="{{:: 'domains_dashboard_tooltip_dnssec_multiples' | translate }}"
                         data-tooltip-append-to-body="true">
                 </button>
                 <button class="btn btn-block btn-default" type="button"
                         data-ng-click="setActionMultiple('export-csv/domains-export-to-csv')"
-                        data-ng-disabled="ctrlDomains.loading.domainsExportCsv"
+                        data-ng-disabled="$ctrl.loading.domainsExportCsv"
                         data-ng-if="domains && domains.count"
                         data-uib-tooltip="{{:: 'domains_dashboard_tooltip_export_csv' | translate }}"
                         data-tooltip-append-to-body="true">
                     <span data-translate="domains_dashboard_button_export"
-                          data-ng-if="!ctrlDomains.loading.domainsExportCsv"></span>
+                          data-ng-if="!$ctrl.loading.domainsExportCsv"></span>
                     <span data-translate="domains_dashboard_tooltip_export_csv_creation_doing"
-                          data-ng-if="ctrlDomains.loading.domainsExportCsv"></span>
+                          data-ng-if="$ctrl.loading.domainsExportCsv"></span>
                 </button>
                 <a class="btn btn-block btn-default" target="_blank"
                    data-translate="domains_change_owner"
                    data-ng-href="{{ ctrlDomains.urlBulkChangeOwner }}"
-                   data-ng-if="domains && domains.count && ctrlDomains.urlBulkChangeOwner">
+                   data-ng-if="domains && domains.count && $ctrl.urlBulkChangeOwner">
                 </a>
             </div>
         </div>
@@ -204,7 +204,7 @@
 
 <div id="currentAction" class="modal fade currentAction" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
-        <div id="modal-container" class="modal-content" data-ng-include="ctrlDomains.stepPath"></div>
+        <div id="modal-container" class="modal-content" data-ng-include="$ctrl.stepPath"></div>
         <div id="modal-help" class="help4wizards"></div>
     </div>
 </div>
