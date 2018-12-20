@@ -62,7 +62,7 @@
                                                data-tsc-on-click="$ctrl.globalCheckboxStateChange(state)" />
                                     </th>
                                     <th scope="col" data-translate="domains_dashboard_table_titles_name"></th>
-                                    <th scope="col" data-translate="domains_dashboard_table_titles_creation"></th>
+                                    <th scope="col" data-translate="domains_dashboard_table_titles_expiration"></th>
                                     <th scope="col" class="text-center" data-translate="domains_dashboard_table_titles_whois"></th>
                                     <th scope="col" class="text-center" data-translate="domains_dashboard_table_titles_dnssec"></th>
                                     <th scope="col" class="text-center" data-translate="domains_dashboard_table_titles_dnsanycast"></th>
@@ -94,7 +94,7 @@
                                         <a data-ng-bind="domain.displayName"
                                            data-ng-href="{{'#/configuration/domain/' + domain.name}}"></a>
                                     </td>
-                                    <td data-ng-bind="domain.creation|date:'mediumDate'"></td>
+                                    <td data-ng-bind="domain.expiration | date: 'mediumDate'"></td>
                                     <td class="text-center">
                                         <span class="oui-status oui-status_success"
                                               data-translate="common_activated"
