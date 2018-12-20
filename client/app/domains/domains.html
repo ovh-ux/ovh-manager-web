@@ -160,42 +160,38 @@
                 </div>
             </div>
             <div class="col-md-3 mt-5 mt-lg-0">
-                <button class="btn btn-block btn-default" type="button"
+                <button class="oui-button oui-button_secondary oui-button_full-width mb-2" type="button"
                         data-translate="domains_dashboard_button_renew"
                         data-ng-click="setActionMultiple('renew/domains-renew')"
-                        data-ng-disabled="!$ctrl.atLeastOneSelected"
-                        data-uib-tooltip="{{:: 'domains_dashboard_tooltip_renew_multiples' | translate }}"
-                        data-tooltip-append-to-body="true">
+                        data-ng-disabled="!$ctrl.atLeastOneSelected">
                 </button>
-                <button class="btn btn-block btn-default" type="button"
+                <button class="oui-button oui-button_secondary oui-button_full-width mb-2" type="button"
                         data-translate="domains_dashboard_button_whois"
                         data-ng-click="setActionMultiple('owo/domains-owo')"
-                        data-ng-disabled="!$ctrl.atLeastOneSelected"
-                        data-uib-tooltip="{{:: 'domains_dashboard_tooltip_whois_multiples' | translate }}"
-                        data-tooltip-append-to-body="true">
+                        data-ng-disabled="!$ctrl.atLeastOneSelected">
                 </button>
-                <button class="btn btn-block btn-default" type="button"
+                <button class="oui-button oui-button_secondary oui-button_full-width mb-2" type="button"
                         data-translate="domains_dashboard_button_dnssec"
                         data-ng-click="setActionMultiple('dnssec/batch/domains-dnssec-batch')"
-                        data-ng-disabled="!$ctrl.atLeastOneSelected"
-                        data-uib-tooltip="{{:: 'domains_dashboard_tooltip_dnssec_multiples' | translate }}"
-                        data-tooltip-append-to-body="true">
+                        data-ng-disabled="!$ctrl.atLeastOneSelected">
                 </button>
-                <button class="btn btn-block btn-default" type="button"
+                <button class="oui-button oui-button_secondary oui-button_full-width mb-2" type="button"
                         data-ng-click="setActionMultiple('export-csv/domains-export-to-csv')"
                         data-ng-disabled="$ctrl.loading.domainsExportCsv"
-                        data-ng-if="domains && domains.count"
-                        data-uib-tooltip="{{:: 'domains_dashboard_tooltip_export_csv' | translate }}"
-                        data-tooltip-append-to-body="true">
+                        data-ng-if="domains && domains.count">
                     <span data-translate="domains_dashboard_button_export"
                           data-ng-if="!$ctrl.loading.domainsExportCsv"></span>
                     <span data-translate="domains_dashboard_tooltip_export_csv_creation_doing"
                           data-ng-if="$ctrl.loading.domainsExportCsv"></span>
                 </button>
-                <a class="btn btn-block btn-default" target="_blank"
-                   data-translate="domains_change_owner"
-                   data-ng-href="{{ ctrlDomains.urlBulkChangeOwner }}"
+                <a class="oui-button oui-button_secondary oui-button_icon-right oui-button_full-width mb-2"
+                   target="_blank"
+                   rel="noopener"
+                   data-ng-href="{{$ctrl.urlBulkChangeOwner }}"
                    data-ng-if="domains && domains.count && $ctrl.urlBulkChangeOwner">
+                   <span data-translate="domains_change_owner"></span>
+                   <span class="oui-icon oui-icon-external_link" aria-hidden="true"></span>
+                   <span class="sr-only" data-translate="common_new_tab"></span>
                 </a>
             </div>
         </div>
