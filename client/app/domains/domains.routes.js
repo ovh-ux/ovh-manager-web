@@ -3,7 +3,7 @@ angular.module('App').config(($stateProvider) => {
     url: '/configuration/domains',
     templateUrl: 'domains/domains.html',
     controller: 'DomainsCtrl',
-    controllerAs: 'ctrlDomains',
+    controllerAs: '$ctrl',
     resolve: {
       navigationInformations: [
         'Navigator',
