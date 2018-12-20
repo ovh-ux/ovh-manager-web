@@ -125,22 +125,20 @@
                                     </td>
                                     <td class="text-right">
                                         <oui-action-menu data-compact data-align="end">
-                                            <oui-action-menu-item data-on-click="setActionIfAuthorized(domain.canOrder, 'renew/domains-renew', domain)"
+                                            <oui-action-menu-item data-on-click="$ctrl.setAction('renew/domains-renew', 'domains/', domain)"
                                                                   data-disabled="!domain.canOrder">
                                                 <span data-translate="domains_dashboard_tooltip_renew_single"></span>
                                             </oui-action-menu-item>
-                                            <oui-action-menu-item data-on-click="setActionIfAuthorized(domain.whoisActivable, 'owo/domains-owo', domain)"
+                                            <oui-action-menu-item data-on-click="$ctrl.setAction('owo/domains-owo', 'domains/', domain)"
                                                                   data-disabled="!domain.whoisActivable">
                                                 <span data-translate="domains_dashboard_tooltip_whois_single"></span>
                                             </oui-action-menu-item>
                                             <oui-action-menu-item data-ng-if="domain.dnssecSupported && domain.dnssecStatus === 'DISABLED'"
-                                                                  data-on-click="setActionIfAuthorized(domain.dnssecSupported && domain.dnssecStatus !== null, 'dnssec/simple/activate/domains-dnssec-simple-activate', domain)"
-                                                                  data-disabled="!domain.dnssecSupported">
+                                                                  data-on-click="$ctrl.setAction('dnssec/simple/activate/domains-dnssec-simple-activate', 'domains/', domain)">
                                                 <span data-translate="domains_dashboard_tooltip_dnssec_activate_single"></span>
                                             </oui-action-menu-item>
                                             <oui-action-menu-item data-ng-if="domain.dnssecSupported && domain.dnssecStatus === 'ENABLED'"
-                                                                  data-on-click="setActionIfAuthorized(domain.dnssecSupported && domain.dnssecStatus !== null, 'dnssec/simple/deactivate/domains-dnssec-simple-deactivate', domain)"
-                                                                  data-disabled="!domain.dnssecSupported">
+                                                                  data-on-click="$ctrl.setAction('dnssec/simple/deactivate/domains-dnssec-simple-deactivate', 'domains/', domain)">
                                                 <span data-translate="domains_dashboard_tooltip_dnssec_deactivate_single"></span>
                                             </oui-action-menu-item>
                                         </oui-action-menu>
