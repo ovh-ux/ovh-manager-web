@@ -1,0 +1,48 @@
+.reset-icon() {
+  font-size: inherit;
+  width: auto;
+  height: auto;
+  margin: 0 0 0 rem-calc(5);
+  align-self: center;
+
+  .medium({
+    font-size: rem-calc(10);
+  });
+}
+
+.transition() {
+  display: inline-block;
+  transition: all 0.2s ease-in;
+}
+
+.navbar__header-content {
+  max-width: rem-calc(150);
+  line-height: initial;
+}
+
+.oui-navbar-link {
+  &,
+  &_active,
+  &:hover,
+  &:focus {
+    & .navbar__arrow {
+      .reset-icon();
+
+      &::before {
+        content: @oui-icon-index-chevron-down;
+        .transition();
+      }
+    }
+  }
+
+  &[aria-expanded="true"] {
+    & .navbar__arrow {
+      .reset-icon();
+
+      &::before {
+        transform: rotate(-180deg);
+        .transition();
+      }
+    }
+  }
+}
