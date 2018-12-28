@@ -9,6 +9,7 @@ angular.module('App').controller(
       $timeout,
       $translate,
       Alerter,
+      constants,
       Domain,
       Hosting,
       User,
@@ -21,6 +22,7 @@ angular.module('App').controller(
       this.$timeout = $timeout;
       this.$translate = $translate;
       this.Alerter = Alerter;
+      this.constants = constants;
       this.Domain = Domain;
       this.Hosting = Hosting;
       this.User = User;
@@ -94,12 +96,18 @@ angular.module('App').controller(
           } else if (alldomOrder) {
             this.alldomURL = `${alldomOrder}${domain.domain}`;
           }
+          this.getGuides(user.ovhSubsidiary);
         })
         .catch(() => {
           this.isAdmin = false;
         });
 
       this.loadDomain();
+    }
+
+    getGuides(subsidiary) {
+      this.autorenewGuide = _.get(this.constants, `urls.${subsidiary}.guides.autoRenew`, this.constants.urls.FR.guides.autoRenew);
+      this.autorenewUrl = `${this.constants.AUTORENEW_URL}?selectedType=DOMAIN&searchText=${this.domainInfos.domain}`;
     }
 
     loadDomain() {
