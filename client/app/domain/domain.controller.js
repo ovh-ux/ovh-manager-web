@@ -2,29 +2,29 @@ angular.module('App').controller(
   'DomainCtrl',
   class DomainCtrl {
     constructor(
-      $scope,
-      $rootScope,
       $q,
+      $rootScope,
+      $scope,
       $stateParams,
       $timeout,
       $translate,
       Alerter,
-      WucAllDom,
       Domain,
       Hosting,
       User,
+      WucAllDom,
     ) {
-      this.$scope = $scope;
-      this.$rootScope = $rootScope;
       this.$q = $q;
+      this.$rootScope = $rootScope;
+      this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.WucAllDom = WucAllDom;
       this.Domain = Domain;
       this.Hosting = Hosting;
       this.User = User;
+      this.WucAllDom = WucAllDom;
     }
 
     $onInit() {
