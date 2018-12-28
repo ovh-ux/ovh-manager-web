@@ -75,7 +75,7 @@ angular.module('App').controller(
       });
       this.$scope.$on('$destroy', () => this.Domain.killDomainPolling());
 
-      this.$q
+      return this.$q
         .all({
           user: this.User.getUser(),
           domain: this.Domain.getServiceInfo(this.$stateParams.productId),
@@ -100,9 +100,8 @@ angular.module('App').controller(
         })
         .catch(() => {
           this.isAdmin = false;
-        });
-
-      this.loadDomain();
+        })
+        .finally(() => this.loadDomain());
     }
 
     getGuides(subsidiary) {
