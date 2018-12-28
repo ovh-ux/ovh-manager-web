@@ -981,10 +981,10 @@
     request "^2.88.0"
     webpack-dev-server "^3.1.9"
 
-"@ovh-ux/ovh-utils-angular@^13.0.0":
-  version "13.0.2"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/ovh-utils-angular/-/ovh-utils-angular-13.0.2.tgz#02fa3eb989537a0aeee7888d12443cca0ff552d6"
-  integrity sha512-+dHN29j7xwU/xx2hfQeZYQad003JIe43FhyZfUjZ6mw/oRPt1Sg1Gi6YSmSKLI6UkmJ0Af9d6NEglP2GLK+Rdg==
+"@ovh-ux/ovh-utils-angular@^13.0.4":
+  version "13.0.4"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ovh-utils-angular/-/ovh-utils-angular-13.0.4.tgz#3acf47e4723ab7292f06bc38bf5b4085e66e7916"
+  integrity sha512-om8qsxySKMlYAIMIX/fp665sVxDRLFFTNFtnp5xcuq9sPKYaF6aGFOmxoNd063DUXiWx2fnUGoUiVCRU+b+txw==
 
 "@ovh-ux/translate-async-loader@^1.0.7":
   version "1.0.7"
@@ -5205,6 +5205,9 @@ har-validator@~4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/har-validator/-/har-validator-4.2.1.tgz#33481d0f1bbff600dd203d75812a6a5fba002e2a"
   integrity sha1-M0gdDxu/9gDdID11gSpqX7oALio=
+  dependencies:
+    ajv "^4.9.1"
+    har-schema "^1.0.5"
 
 har-validator@~5.1.0:
   version "5.1.0"
