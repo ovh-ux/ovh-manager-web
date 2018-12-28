@@ -437,6 +437,13 @@ angular
         HostingDomain.killAllPolling();
       });
 
+      function getAutorenewUrl(guides) {
+        $scope.autorenew = {
+          guide: guides.autorenew,
+          url: `${constants.AUTORENEW_URL}?selectedType=HOSTING_WEB&searchText=${$scope.hosting.serviceInfos.domain}`,
+        };
+      }
+
       function loadHosting() {
         return Hosting.getSelected($stateParams.productId, true)
           .then(
@@ -516,6 +523,8 @@ angular
                 default:
                   break;
               }
+
+              getAutorenewUrl(guides);
             }
           })
           .then(() => {
