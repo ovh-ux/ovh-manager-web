@@ -6,6 +6,7 @@ module.exports = {
             FACEBOOK_MESSENGER: "https://m.me/975451932604879"
         },
         BILLING_URL: "https://www.ovh.com/manager/dedicated/#/billing/history",
+        AUTORENEW_URL: "https://www.ovh.com/manager/dedicated/#/billing/autoRenew",
         RENEW_URL    : "https://eu.ovh.com/fr/cgi-bin/order/renew.cgi?domainChooser={serviceName}",
         LOGS_URCHIN  : "https://logs.ovh.net/{serviceName}/urchin6/",
         LOGS_URCHIN_GRA  : "https://logs.{cluster}.hosting.ovh.net/{serviceName}/urchin6/",
@@ -254,6 +255,7 @@ module.exports = {
                 guides: {
                     home: "https://docs.ovh.com",
                     all: "https://docs.ovh.com/fr/web/",
+                    autoRenew: "https://www.ovh.com/fr/g1271.guide_dutilisation_du_renouvellement_automatique_ovh",
                     hostingCron: "https://www.ovh.com/fr/g1990.mutualise_taches_automatisees_cron",
                     hostingModule: "https://docs.ovh.com/fr/hosting/modules-en-1-clic/",
                     hostingScriptEmail: "https://www.ovh.com/fr/g1974.mutualise_suivi_des_emails_automatises",
@@ -901,6 +903,7 @@ module.exports = {
         }
     },
     CA: {
+        AUTORENEW_URL: "https://ca.ovh.com/manager/dedicated/#/billing/autoRenew",
         RENEW_URL: "https://ca.ovh.com/fr/cgi-bin/order/renew.cgi?domainChooser={serviceName}",
         LOGS_URCHIN: "https://logs.ovh.net/{serviceName}/urchin6/",
         STATS_LOGS: "https://logs.ovh.net/{serviceName}/",
