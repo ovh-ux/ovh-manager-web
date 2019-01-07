@@ -1,7 +1,8 @@
 angular.module('App').controller(
   'HostingTabFTPCtrl',
   class HostingTabFTPCtrl {
-    constructor($scope, $stateParams, $translate, Alerter, Hosting, HostingUser) {
+    constructor($q, $scope, $stateParams, $translate, Alerter, Hosting, HostingUser) {
+      this.$q = $q;
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
@@ -57,21 +58,32 @@ angular.module('App').controller(
 
       this.condition = this.Hosting.constructor.getPasswordConditions();
 
-      this.Hosting.getSelected(this.$stateParams.productId)
+      return this.Hosting.getSelected(this.$stateParams.productId)
         .then((hosting) => {
           // backup snapshots are made at least one day after service creation,
           // so hide backup option in the meantime
           if (moment(hosting.creation).isAfter(moment().subtract(1, 'days'))) {
             this.displayRestoreFtp = false;
           }
-          return this.Hosting.getOfferCapabilities(_.camelCase(hosting.offer).toLowerCase());
-        })
-        .then((capabilities) => {
-          this.displayFtpExplorer = _.get(capabilities, 'filesBrowser', false);
-        });
 
-      this.loadTab(10, 0, false);
-      this.startPolling();
+          if (_.isEmpty(hosting.offer)) {
+            return this.$q.when();
+          }
+
+          this.startPolling();
+          return this.$q.all({
+            tab: this.loadTab(10, 0, false),
+            capabilities:
+              this.Hosting.getOfferCapabilities(_.camelCase(hosting.offer).toLowerCase()),
+          });
+        })
+        .then(({ capabilities }) => {
+          this.displayFtpExplorer = _.get(capabilities, 'filesBrowser', false);
+        })
+        .finally(() => {
+          this.loading.init = false;
+          this.loading.ftp = false;
+        });
     }
 
     resetSearch() {
@@ -93,7 +105,7 @@ angular.module('App').controller(
     }
 
     loadTab(count, offset, needUsers) {
-      this.Hosting.getTabFTP(
+      return this.Hosting.getTabFTP(
         this.$stateParams.productId,
         count,
         offset,
@@ -144,10 +156,6 @@ angular.module('App').controller(
             ? ftpInformations.list.results[0].state === 'RW'
             : null;
           this.ftpInformations = ftpInformations;
-        })
-        .finally(() => {
-          this.loading.init = false;
-          this.loading.ftp = false;
         });
     }
 
