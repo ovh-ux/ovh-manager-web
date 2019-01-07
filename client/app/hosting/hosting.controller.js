@@ -51,6 +51,10 @@ angular
       $scope.ovhConfig = null;
 
       $scope.convertBytesSize = (nb, unit, decimalWanted = 0) => {
+        if (nb == null || unit == null) {
+          return '';
+        }
+
         const res = filesize(WucConverterService.convertToOctet(nb, unit), {
           output: 'object',
           round: decimalWanted,
