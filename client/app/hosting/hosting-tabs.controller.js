@@ -29,16 +29,21 @@ angular.module('App').controller(
         this.setSelectedTab(this.defaultTab);
       }
 
-      return this.$q
-        .all({
-          indys: this.HostingIndy.getIndys(this.$stateParams.productId),
-          freedoms: this.HostingFreedom.getFreedoms(
-            this.$stateParams.productId,
-            { forceRefresh: false },
-          ),
-          hosting: this.Hosting.getSelected(this.$stateParams.productId),
-          user: this.User.getUser(),
-        })
+      return this.$q.all({
+        hosting: this.Hosting.getSelected(this.$stateParams.productId),
+        user: this.User.getUser(),
+      })
+        .then(({ hosting, user }) => (_.isEmpty(hosting.offer)
+          ? this.$q.when({ hosting, user })
+          : this.$q.all({
+            indys: this.HostingIndy.getIndys(this.$stateParams.productId),
+            freedoms: this.HostingFreedom.getFreedoms(
+              this.$stateParams.productId,
+              { forceRefresh: false },
+            ),
+            hosting,
+            user,
+          })))
         .then(({
           indys, freedoms, hosting, user,
         }) => {
