@@ -1,3 +1,12 @@
+## [13.10.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.10.3...v13.10.4) (2019-01-08)
+
+
+### Bug Fixes
+
+* **hosting.web:** upgrade boost offer selection ([c26cedb](https://github.com/ovh-ux/ovh-manager-web/commit/c26cedb))
+
+
+
 ## [13.10.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.10.2...v13.10.3) (2018-12-20)
 
 
