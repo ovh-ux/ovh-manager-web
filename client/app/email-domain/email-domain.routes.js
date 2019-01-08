@@ -51,10 +51,13 @@ angular.module('App').config(($stateProvider) => {
   });
 
   $stateProvider.state('app.mx-plan', {
-    url: '/configuration/mx_plan',
+    url: '/configuration/mx_plan?domain',
     templateUrl: 'email-domain/order/email-domain-order.html',
     controller: 'MXPlanOrderCtrl',
     controllerAs: 'ctrlMXPlanOrder',
+    params: {
+      domain: null,
+    },
     resolve: {
       navigationInformations: [
         'Navigator',
