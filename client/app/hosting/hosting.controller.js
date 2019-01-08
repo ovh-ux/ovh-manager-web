@@ -538,6 +538,7 @@ angular
           .then(() => startPolling())
           .catch((err) => {
             $scope.hosting.serviceInfos = {};
+            $scope.loadingHostingError = true;
             Alerter.error(err);
           })
           .finally(() => {
