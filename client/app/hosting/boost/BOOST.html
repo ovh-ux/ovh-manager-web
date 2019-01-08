@@ -24,7 +24,7 @@
                 <oui-column data-title="'hosting_tab_BOOST_history_table_header_id' | translate" data-property="accountId"></oui-column>
                 <oui-column data-title="'hosting_tab_BOOST_history_table_header_offer' | translate" data-property="offer"></oui-column>
                 <oui-column data-title="'hosting_tab_BOOST_history_table_header_boost_offer' | translate" data-property="boostOffer">
-                    <span data-ng-class="{text-center: $row.boostOffer === null}">
+                    <span data-ng-class="{'text-center': $row.boostOffer === null}">
                         <span data-ng-bind="::$row.boostOffer"
                               data-ng-if="$row.boostOffer !== null"></span>
                         <span class="oui-status oui-status_error"
