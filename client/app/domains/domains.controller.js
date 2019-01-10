@@ -86,11 +86,7 @@ angular.module('App').controller(
             this.loading.domainsSearch = false;
           });
       };
-      this.$scope.setActionIfAuthorized = (authorized, action, data) => {
-        if (authorized) {
-          this.setAction(action, 'domains/', data);
-        }
-      };
+
       this.$scope.setActionMultiple = (action, data) => this.setAction(action, 'domains/', data);
       this.$scope.resetAction = () => this.setAction(false);
       this.$scope.getSelectedDomains = () => this.$scope.selectedDomains;

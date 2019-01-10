@@ -1,9 +1,7 @@
 angular.module('App').config(($stateProvider) => {
   $stateProvider.state('app.domain.all', {
     url: '/configuration/domains',
-    templateUrl: 'domains/domains.html',
-    controller: 'DomainsCtrl',
-    controllerAs: 'ctrlDomains',
+    component: 'domains',
     resolve: {
       navigationInformations: [
         'Navigator',

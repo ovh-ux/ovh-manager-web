@@ -1,12 +1,11 @@
 angular.module('App').config(($stateProvider) => {
   $stateProvider.state('app.email', {
-    url: '/configuration/email-',
     abstract: true,
     template: '<div ui-view></div>',
   });
 
   $stateProvider.state('app.email.domain', {
-    url: 'domain/:productId?tab',
+    url: '/configuration/email-domain/:productId?tab',
     templateUrl: 'email-domain/email-domain.html',
     controller: 'EmailDomainCtrl',
     controllerAs: 'ctrlEmailDomain',
@@ -29,7 +28,7 @@ angular.module('App').config(($stateProvider) => {
   });
 
   $stateProvider.state('app.email.delegate', {
-    url: 'delegate/:productId?tab',
+    url: '/configuration/email-delegate/:productId?tab',
     templateUrl: 'email-domain/delegate/email-domain-delegate.html',
     controller: 'EmailDelegateCtrl',
     controllerAs: 'ctrlEmailDelegate',
@@ -52,10 +51,13 @@ angular.module('App').config(($stateProvider) => {
   });
 
   $stateProvider.state('app.mx-plan', {
-    url: '/configuration/mx_plan',
+    url: '/configuration/mx_plan?domain',
     templateUrl: 'email-domain/order/email-domain-order.html',
     controller: 'MXPlanOrderCtrl',
     controllerAs: 'ctrlMXPlanOrder',
+    params: {
+      domain: null,
+    },
     resolve: {
       navigationInformations: [
         'Navigator',
