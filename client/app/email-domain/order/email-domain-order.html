@@ -85,10 +85,9 @@
                                data-ng-bind="contract.url"></a>
                         </li>
                     </ul>
-                    <label class="checkbox ml-2">
-                        <input type="checkbox" data-ng-model="ctrlMXPlanOrder.selectedOrder.contractsValidated">
+                    <oui-checkbox data-model="ctrlMXPlanOrder.selectedOrder.contractsValidated">
                         <span data-translate="mxPlan_order_step3_contracts_check"></span>
-                    </label>
+                    </oui-checkbox>
                 </div>
 
                 <div data-ng-if="ctrlMXPlanOrder.loading.bc">
