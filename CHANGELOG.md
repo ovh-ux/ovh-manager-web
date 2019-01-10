@@ -1,3 +1,28 @@
+# [13.11.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.10.4...v13.11.0) (2019-01-10)
+
+
+### Bug Fixes
+
+* **components.user.session:** handle subsidiaries without support ([358c5c6](https://github.com/ovh-ux/ovh-manager-web/commit/358c5c6))
+* add missing translation ([37a9f80](https://github.com/ovh-ux/ovh-manager-web/commit/37a9f80))
+* **hosting:** fix conversion function for undefined params ([7005c5b](https://github.com/ovh-ux/ovh-manager-web/commit/7005c5b))
+* **hosting:** fix error display ([71e5530](https://github.com/ovh-ux/ovh-manager-web/commit/71e5530))
+* **i18n:** retrieve translations ([90eac38](https://github.com/ovh-ux/ovh-manager-web/commit/90eac38))
+* **i18n:** submit translations ([a60a37d](https://github.com/ovh-ux/ovh-manager-web/commit/a60a37d))
+
+
+### Features
+
+* **domains:** display expiration date instead of creation ([51432b6](https://github.com/ovh-ux/ovh-manager-web/commit/51432b6))
+* **emailpro:** add emailpro-mxplan services ([179bf4a](https://github.com/ovh-ux/ovh-manager-web/commit/179bf4a))
+
+
+### Performance Improvements
+
+* **hosting.ftp:** avoid unecessary api calls ([75ff518](https://github.com/ovh-ux/ovh-manager-web/commit/75ff518))
+
+
+
 ## [13.10.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.10.3...v13.10.4) (2019-01-08)
 
 
