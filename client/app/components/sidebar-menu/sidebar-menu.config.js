@@ -254,7 +254,7 @@ angular.module('App').run((
   }
 
   function addEmailItems(products) {
-    const emailsItem = SidebarMenu.addMenuItem({
+    const emailMainMenuItem = SidebarMenu.addMenuItem({
       title: $translate.instant('navigation_left_email'),
       category: 'email',
       icon: 'ovh-font ovh-font-mail',
@@ -264,14 +264,23 @@ angular.module('App').run((
       infiniteScroll: true,
     });
 
-    const emailItems = _.sortBy(
-      products.emails.concat(_.get(products, 'emailsProMXPlan', [])),
-      elt => angular.lowercase(elt.displayName || elt.name),
+    const emailProMXPlanProducts = _.get(
+      products,
+      'emailsProMXPlan',
+      [],
     );
 
-    _.forEach(emailItems, (elt) => {
-      let state = 'app.email.domain';
-      switch (elt.type) {
+    const emailProducts = _.sortBy(
+      [
+        ...products.emails,
+        ...emailProMXPlanProducts,
+      ],
+      emailProduct => (emailProduct.displayName || emailProduct.name || '').toLowerCase(),
+    );
+
+    _.forEach(emailProducts, (emailProduct) => {
+      let state;
+      switch (emailProduct.type) {
         case 'EMAIL_DELEGATE':
           state = 'app.email.delegate';
           break;
@@ -282,15 +291,18 @@ angular.module('App').run((
           state = 'app.email.domain';
       }
 
-      SidebarMenu.addMenuItem({
-        title: elt.displayName || elt.name,
-        category: 'email',
-        icon: 'ovh-font ovh-font-mail',
-        state,
-        stateParams: {
-          productId: elt.name,
+      SidebarMenu.addMenuItem(
+        {
+          title: emailProduct.displayName || emailProduct.name,
+          category: 'email',
+          icon: 'ovh-font ovh-font-mail',
+          state,
+          stateParams: {
+            productId: emailProduct.name,
+          },
         },
-      }, emailsItem);
+        emailMainMenuItem,
+      );
     });
   }
 
