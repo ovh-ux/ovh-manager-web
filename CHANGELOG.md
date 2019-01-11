@@ -1,3 +1,13 @@
+## [13.11.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.11.0...v13.11.1) (2019-01-11)
+
+
+### Bug Fixes
+
+* **hosting.ftp:** improve ftp users loading ([#865](https://github.com/ovh-ux/ovh-manager-web/issues/865)) ([78f3c7d](https://github.com/ovh-ux/ovh-manager-web/commit/78f3c7d))
+* **i18n:** retrieve translations ([11f91e8](https://github.com/ovh-ux/ovh-manager-web/commit/11f91e8))
+
+
+
 # [13.11.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.10.4...v13.11.0) (2019-01-10)
 
 
