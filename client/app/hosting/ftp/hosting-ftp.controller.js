@@ -79,10 +79,6 @@ angular.module('App').controller(
         })
         .then(({ capabilities }) => {
           this.displayFtpExplorer = _.get(capabilities, 'filesBrowser', false);
-        })
-        .finally(() => {
-          this.loading.init = false;
-          this.loading.ftp = false;
         });
     }
 
@@ -156,6 +152,10 @@ angular.module('App').controller(
             ? ftpInformations.list.results[0].state === 'RW'
             : null;
           this.ftpInformations = ftpInformations;
+        })
+        .finally(() => {
+          this.loading.ftp = false;
+          this.loading.init = false;
         });
     }
 
