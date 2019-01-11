@@ -1,3 +1,13 @@
+## [13.11.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.11.1...v13.11.2) (2019-01-11)
+
+
+### Bug Fixes
+
+* **emailpro:** restore password update for emailpro ([dc32104](https://github.com/ovh-ux/ovh-manager-web/commit/dc32104))
+* **ie11:** bump [@ovh-ux](https://github.com/ovh-ux)/translate-async-loader ([6803837](https://github.com/ovh-ux/ovh-manager-web/commit/6803837))
+
+
+
 ## [13.11.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.11.0...v13.11.1) (2019-01-11)
 
 
