@@ -1,3 +1,4 @@
+import ngOvhHttp from '@ovh-ux/ng-ovh-http';
 import translateAsyncLoader from '@ovh-ux/translate-async-loader';
 import webUniverseComponents from '@ovh-ux/web-universe-components';
 import uiRouter from '@uirouter/angularjs';
@@ -11,6 +12,7 @@ angular
     'ovh-utils-angular',
     'ui.bootstrap',
     'ngAria',
+    ngOvhHttp,
     'ngRoute',
     'ngResource',
     'ngSanitize',
@@ -19,7 +21,6 @@ angular
     'filters',
     'directives',
     'ovh-angular-q-allSettled',
-    'ovh-angular-http',
     'ngMessages',
     'ngFlash',
     'ovh-angular-swimming-poll',

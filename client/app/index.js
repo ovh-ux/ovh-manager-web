@@ -37,7 +37,6 @@ import 'script-loader!@bower_components/angular-scroll-glue/src/scrollglue.js';
 import 'ovh-angular-tail-logs';
 import 'ovh-angular-proxy-request';
 import 'ovh-angular-q-allsettled';
-import 'ovh-angular-http';
 import 'ovh-angular-swimming-poll';
 import 'script-loader!validator/validator.min.js';
 import 'ovh-angular-export-csv';
