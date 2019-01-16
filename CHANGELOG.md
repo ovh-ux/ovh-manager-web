@@ -1,3 +1,24 @@
+# [13.12.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.11.2...v13.12.0) (2019-01-16)
+
+
+### Bug Fixes
+
+* **hosting:** rename delete subscription button label ([#877](https://github.com/ovh-ux/ovh-manager-web/issues/877)) ([ed81907](https://github.com/ovh-ux/ovh-manager-web/commit/ed81907))
+* **i18n:** retrieve translations ([bd00d8f](https://github.com/ovh-ux/ovh-manager-web/commit/bd00d8f))
+* **i18n:** submit translations ([034d609](https://github.com/ovh-ux/ovh-manager-web/commit/034d609))
+* **welcome:** change message for FR subsidiary ([#841](https://github.com/ovh-ux/ovh-manager-web/issues/841)) ([0f4e505](https://github.com/ovh-ux/ovh-manager-web/commit/0f4e505))
+
+
+### Features
+
+* add autorenew guide for FR and autorenew redirection ([c3dae72](https://github.com/ovh-ux/ovh-manager-web/commit/c3dae72))
+* **domain:** display autorenew invite when needed ([08b3158](https://github.com/ovh-ux/ovh-manager-web/commit/08b3158))
+* **domain:** do not display autorenew invite for all  doms ([2690418](https://github.com/ovh-ux/ovh-manager-web/commit/2690418))
+* **hosting:** display autorenew invite ([3b41116](https://github.com/ovh-ux/ovh-manager-web/commit/3b41116))
+* **package.json:** add ng-payment-method dependency ([f2b42e8](https://github.com/ovh-ux/ovh-manager-web/commit/f2b42e8))
+
+
+
 ## [13.11.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.11.1...v13.11.2) (2019-01-11)
 
 
