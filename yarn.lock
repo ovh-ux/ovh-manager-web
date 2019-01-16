@@ -981,6 +981,11 @@
     request "^2.88.0"
     webpack-dev-server "^3.1.9"
 
+"@ovh-ux/ng-ovh-payment-method@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-payment-method/-/ng-ovh-payment-method-1.0.0.tgz#78fcccf0e8c604cc00011cf98ad38c0156bf9ea5"
+  integrity sha512-Cn7/7KQhbLik9/9Iye/Z4P618TEkDt9sgriOkzSmNwEamgbcLINJDhgcdQe3wypPiT1K+IwnULos5DjB9U/LMQ==
+
 "@ovh-ux/ovh-utils-angular@^13.0.4":
   version "13.0.4"
   resolved "https://registry.yarnpkg.com/@ovh-ux/ovh-utils-angular/-/ovh-utils-angular-13.0.4.tgz#3acf47e4723ab7292f06bc38bf5b4085e66e7916"
@@ -991,10 +996,10 @@
   resolved "https://registry.yarnpkg.com/@ovh-ux/translate-async-loader/-/translate-async-loader-1.0.8.tgz#7cbdc3dfed1042f511206ff6bb9f14c33b8406ba"
   integrity sha512-8yEhPeRTSxtEO9ODXRYZw6pzRQiV5ULCTi8mIzt39m/b9N2TcIF4ILTPsaa8xpE4npHKa/iYgL9z0HJUFi2LGQ==
 
-"@ovh-ux/web-universe-components@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@ovh-ux/web-universe-components/-/web-universe-components-1.0.0.tgz#976d82c8f424248cefe11331a2aeb7f9ca1742c0"
-  integrity sha512-SBh3K7x4NpIroRh3hbfn8AIu9UTZjGZ9ADoFfxpwxHq8lCqEtvjmXh/zmlaSZnaVPr8O9RrGWWHA/KO8iMq2Xg==
+"@ovh-ux/web-universe-components@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/web-universe-components/-/web-universe-components-1.2.0.tgz#012d6b78ef37870fece5b80020b83a9655ecc230"
+  integrity sha512-2dFIJqm99HRzZY07UViNEMRfzyiRKCpq71vgY/HKoYfGCYP3UVngrmh0Z91an3kgKYA0oTumKoCCSP7vXojR8g==
   dependencies:
     bootstrap "^3.3.7"
     ovh-ui-kit "^2.22.0"
@@ -4813,6 +4818,9 @@ har-validator@~4.2.1:
   version "4.2.1"
   resolved "https://registry.yarnpkg.com/har-validator/-/har-validator-4.2.1.tgz#33481d0f1bbff600dd203d75812a6a5fba002e2a"
   integrity sha1-M0gdDxu/9gDdID11gSpqX7oALio=
+  dependencies:
+    ajv "^4.9.1"
+    har-schema "^1.0.5"
 
 har-validator@~5.1.0:
   version "5.1.0"
@@ -7639,10 +7647,10 @@ ovh-angular-user-pref@ovh-ux/ovh-angular-user-pref#^0.3.1:
   version "0.3.1"
   resolved "https://codeload.github.com/ovh-ux/ovh-angular-user-pref/tar.gz/71d0b3c0606a2e2052505bda2a8e2ff06b0156e1"
 
-ovh-api-services@^3.24.0:
-  version "3.24.0"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-3.24.0.tgz#a0ed96b70f23dcdc26b1bfaa26890cc3939d4270"
-  integrity sha512-jo2Jb73Vpy0rKz6Z/qq5b1GAbfu3ayVRKg7yVJmdRnahVYx7QQ5ne7SJQq4xersQh9CAC5TQNr79w0I1p1VLBw==
+ovh-api-services@^3.28.0:
+  version "3.28.0"
+  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-3.28.0.tgz#b2869540d6e99ba883e9916cf73ed3395a4c8293"
+  integrity sha512-30HT2bGWB3jh+cw+KYHLCvUnBLjQgZ8x6Wu+Q8J8U846/GUHSKeYSBk4TWEEcJC06HJkXVrZMYzwq/ITr+UIWA==
   dependencies:
     lodash "^3.10.1"
 
@@ -7665,18 +7673,18 @@ ovh-module-emailpro@^7.1.1:
     punycode "^1.2.4"
     validator "^4.0.0"
 
-ovh-module-exchange@^9.2.2:
-  version "9.2.2"
-  resolved "https://registry.yarnpkg.com/ovh-module-exchange/-/ovh-module-exchange-9.2.2.tgz#40a461ef9307163f2e021f187b3a208e36745162"
-  integrity sha512-8RosRDpqpCBAu6vKuSfVWFnX2EC8GCa7frZ/iTMhZ/LXwpGoxcEKs5r/VeZtEW4DvV522GbUfD9IE2ZkmoETyw==
+ovh-module-exchange@^9.2.3:
+  version "9.2.3"
+  resolved "https://registry.yarnpkg.com/ovh-module-exchange/-/ovh-module-exchange-9.2.3.tgz#c1481a0d52eb3642c544b94bde740be2548ba58a"
+  integrity sha512-vHcxg0JWtYdds+/q7xd6niWQyxciZlXvNmg+0gtH3a2nNfK77wpI19M+VaeBWNHSzS49+/dXvR8NHFeAQw+ZJQ==
   dependencies:
     filesize "^3.6.1"
     lodash "~3.9.3"
 
-ovh-module-office@^7.0.4:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/ovh-module-office/-/ovh-module-office-7.0.4.tgz#d591c818a0a1f68854681b23684ce6afaa0dbc92"
-  integrity sha512-b1zLI5j38rEfE6ajr8cwPCQK7VVKL/cEI7hZSRHejkrZrIg8KngS+XyMgzVfd89fWKY5EZ08HAX8q5Kwd3PmAQ==
+ovh-module-office@^7.0.5:
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/ovh-module-office/-/ovh-module-office-7.0.5.tgz#d0a6ab80aec598444ba6926be5df49f26accc927"
+  integrity sha512-+umi0h5FrVMszAOxk/wYIvURXDdKCZJMbj5Uin0Y8EjaHqFYRBaDz5nxbtq1TW/ocU5aXbVvz1yasGPMjaIWsA==
   dependencies:
     angular "~1.6.10"
     jsurl "^0.1.4"

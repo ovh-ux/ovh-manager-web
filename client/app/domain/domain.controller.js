@@ -2,29 +2,31 @@ angular.module('App').controller(
   'DomainCtrl',
   class DomainCtrl {
     constructor(
-      $scope,
-      $rootScope,
       $q,
+      $rootScope,
+      $scope,
       $stateParams,
       $timeout,
       $translate,
       Alerter,
-      WucAllDom,
+      constants,
       Domain,
       Hosting,
       User,
+      WucAllDom,
     ) {
-      this.$scope = $scope;
-      this.$rootScope = $rootScope;
       this.$q = $q;
+      this.$rootScope = $rootScope;
+      this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.WucAllDom = WucAllDom;
+      this.constants = constants;
       this.Domain = Domain;
       this.Hosting = Hosting;
       this.User = User;
+      this.WucAllDom = WucAllDom;
     }
 
     $onInit() {
@@ -73,7 +75,7 @@ angular.module('App').controller(
       });
       this.$scope.$on('$destroy', () => this.Domain.killDomainPolling());
 
-      this.$q
+      return this.$q
         .all({
           user: this.User.getUser(),
           domain: this.Domain.getServiceInfo(this.$stateParams.productId),
@@ -94,12 +96,17 @@ angular.module('App').controller(
           } else if (alldomOrder) {
             this.alldomURL = `${alldomOrder}${domain.domain}`;
           }
+          this.getGuides(user.ovhSubsidiary);
         })
         .catch(() => {
           this.isAdmin = false;
-        });
+        })
+        .finally(() => this.loadDomain());
+    }
 
-      this.loadDomain();
+    getGuides(subsidiary) {
+      this.autorenewGuide = _.get(this.constants, `urls.${subsidiary}.guides.autoRenew`, this.constants.urls.FR.guides.autoRenew);
+      this.autorenewUrl = `${this.constants.AUTORENEW_URL}?selectedType=DOMAIN&searchText=${this.domainInfos.domain}`;
     }
 
     loadDomain() {

@@ -60,6 +60,7 @@ angular
     urls: config.constants.URLS,
     comodo: config.constants.COMODO,
     CHATBOT_URL: config.constants.CHATBOT_URL,
+    AUTORENEW_URL: config.constants.AUTORENEW_URL,
     BILLING_URL: config.constants.BILLING_URL,
     UNIVERS: config.constants.UNIVERS,
     UNIVERSES: config.constants.UNIVERSES,
