@@ -1,5 +1,6 @@
 import translateAsyncLoader from '@ovh-ux/translate-async-loader';
 import webUniverseComponents from '@ovh-ux/web-universe-components';
+import ngOvhUtils from '@ovh-ux/ovh-utils-angular';
 import uiRouter from '@uirouter/angularjs';
 
 import config from './config/config';
@@ -8,9 +9,9 @@ angular
   .module('App', [
     'ovh-angular-proxy-request',
     'ovh-angular-pagination-front',
-    'ovh-utils-angular',
     'ui.bootstrap',
     'ngAria',
+    ngOvhUtils,
     'ngRoute',
     'ngResource',
     'ngSanitize',
@@ -148,12 +149,6 @@ angular
       ]);
       $httpProvider.interceptors.push('serviceTypeInterceptor');
       $httpProvider.interceptors.push('ssoAuthInterceptor');
-    },
-  ])
-  .config([
-    'tmhDynamicLocaleProvider',
-    (tmhDynamicLocaleProvider) => {
-      tmhDynamicLocaleProvider.localeLocationPattern('resources/angular/i18n/angular-locale_{{locale}}.js');
     },
   ])
   .config([
