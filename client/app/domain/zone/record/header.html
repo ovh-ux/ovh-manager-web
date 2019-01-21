@@ -4,8 +4,8 @@
 </p>
 
 <div class="form-group" data-ng-class="{
-    'has-error': ctrl.zoneRecordForm.subDomainToDisplay.$dirty && ctrl.zoneRecordForm.subDomainToDisplay.$invalid,
-    'has-warning': ctrl.existingSubDomain && ctrl.existingSubDomain.length > 0 }">
+    'has-error': ctrl.zoneRecordForm.subDomainToDisplay.$dirty && ctrl.zoneRecordForm.subDomainToDisplay.$invalid && !ctrl.loading.checkSubDomain,
+    'has-warning': ctrl.existingSubDomainsWarning }">
     <label class="control-label col-md-3" for="subDomainToDisplay"
            data-translate="domain_configuration_dns_entry_add_subdomain"
            data-ng-class="{ 'required': ctrl.model.fieldType === 'NS' }"></label>
@@ -21,7 +21,7 @@
         </div>
         <small class="help-block"
                data-translate="domain_configuration_dns_entry_add_subdomain_already_configured"
-               data-ng-if="ctrl.existingSubDomain && ctrl.existingSubDomain.length > 0"></small>
+               data-ng-if="ctrl.existingSubDomainsWarning || ctrl.existingSubDomainsError"></small>
     </div>
 </div>
 

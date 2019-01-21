@@ -167,53 +167,60 @@ angular.module('App').controller(
     }
 
     checkSubDomainToDisplay(input) {
+      if (this.loading.checkSubDomain) return;
       const value = angular.copy(this.model.subDomainToDisplay);
-      input.$setValidity(
-        'subdomain',
-        value === null
-          || value === ''
-          || this.WucValidator.isValidSubDomain(value, {
-            canBeginWithUnderscore: true,
-            canBeginWithWildcard: true,
-          }),
-      );
-
-      // Test already existing subDomain field
-      if (!this.loading.checkSubDomain) {
+      if (_.isString(this.model.subDomainToDisplay)) {
+        input.$setValidity('subdomain', false);
         this.loading.checkSubDomain = true;
         const checkExistingSubDomain = _.debounce(
-          () => this.checkExistingSubDomain(),
+          () => this.checkExistingSubDomain().then((subDomainError) => {
+            input.$setValidity(
+              'subdomain',
+              !subDomainError
+                && (value === null
+                  || value === ''
+                  || this.WucValidator.isValidSubDomain(value, {
+                    canBeginWithUnderscore: true,
+                    canBeginWithWildcard: true,
+                  })
+                ),
+            );
+          }),
           600,
         );
         checkExistingSubDomain();
+      } else {
+        input.$setValidity('subdomain', value === null);
       }
     }
 
     checkExistingSubDomain() {
-      if (
-        !!_.find(['A', 'AAAA'], entry => entry === this.model.fieldType)
-        && _.isString(this.model.subDomainToDisplay)
-      ) {
-        return this.Domain.getTabZoneDns(
-          this.domain.name,
-          100,
-          0,
-          this.model.subDomainToDisplay,
-        )
-          .then((results) => {
-            const subDomain = angular
-              .copy(this.model.subDomainToDisplay)
-              .toLowerCase();
-            this.existingSubDomain = _.filter(
-              results.paginatedZone.records.results,
-              zone => zone.subDomain.toLowerCase() === subDomain,
+      return this.Domain.getTabZoneDns(
+        this.domain.name,
+        100,
+        0,
+        this.model.subDomainToDisplay,
+      )
+        .then((results) => {
+          const subDomain = angular
+            .copy(this.model.subDomainToDisplay)
+            .toLowerCase();
+          const existingSubDomains = _.filter(
+            results.paginatedZone.records.results,
+            zone => zone.subDomain.toLowerCase() === subDomain,
+          );
+          this.existingSubDomainsError = existingSubDomains.length > 0
+            && (
+              this.model.fieldType === 'CNAME'
+              || (_.filter(existingSubDomains, zone => zone.fieldType === 'CNAME').length > 0)
             );
-          })
-          .finally(() => {
-            this.loading.checkSubDomain = false;
-          });
-      }
-      return false;
+          this.existingSubDomainsWarning = !!_.find(['A', 'AAAA'], entry => entry === this.model.fieldType)
+            && existingSubDomains.length > 0 && !this.existingSubDomainsError;
+          return this.existingSubDomainsError;
+        })
+        .finally(() => {
+          this.loading.checkSubDomain = false;
+        });
     }
 
     checkTarget(input, type) {
