@@ -1,12 +1,14 @@
 angular.module('App').controller(
   'DomainTabsCtrl',
   class DomainTabsCtrl {
-    constructor($scope, $q, $location, $stateParams, $translate, Alerter, Domain, DOMAIN, User) {
+    constructor($scope, $q, $location, $stateParams, $translate,
+      atInternet, Alerter, Domain, DOMAIN, User) {
       this.$scope = $scope;
       this.$q = $q;
       this.$location = $location;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
+      this.atInternet = atInternet;
       this.Alerter = Alerter;
       this.Domain = Domain;
       this.DOMAIN = DOMAIN;
@@ -131,6 +133,12 @@ angular.module('App').controller(
       } else {
         this.selectedTab = this.defaultTab;
       }
+
+      this.atInternet.trackClick({
+        name: `web::domain::product-${this.selectedTab}`,
+        type: 'action',
+      });
+
       this.$location.search('tab', this.selectedTab);
     }
 
