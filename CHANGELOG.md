@@ -1,3 +1,12 @@
+## [13.12.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.12.0...v13.12.1) (2019-01-23)
+
+
+### Bug Fixes
+
+* update yarn.lock file after running yarn install ([471c0d8](https://github.com/ovh-ux/ovh-manager-web/commit/471c0d8))
+
+
+
 # [13.12.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.11.2...v13.12.0) (2019-01-16)
 
 
