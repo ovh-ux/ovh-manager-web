@@ -9,11 +9,12 @@ angular.module('App').controller(
      * @param Domain
      * @param WucEmails
      */
-    constructor($scope, $location, $stateParams, $translate, Domain, WucEmails) {
+    constructor($scope, $location, $stateParams, $translate, atInternet, Domain, WucEmails) {
       this.$scope = $scope;
       this.$location = $location;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
+      this.atInternet = atInternet;
       this.Domain = Domain;
       this.WucEmails = WucEmails;
     }
@@ -48,6 +49,12 @@ angular.module('App').controller(
         } else {
           this.selectedTab = this.defaultTab;
         }
+
+        this.atInternet.trackClick({
+          name: `web::domain::product-${this.selectedTab}`,
+          type: 'action',
+        });
+
         this.$location.search('tab', this.selectedTab);
       };
 
