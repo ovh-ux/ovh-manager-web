@@ -578,6 +578,9 @@ angular.module('App').controller(
           this.model.target.value = punycode.toASCII(this.model.target.target || '');
           break;
         case 'dkim':
+          if (this.model.target.publicKey) {
+            this.formatPublicKey();
+          }
           this.model.target.value = this.DomainValidator.constructor
             .transformDKIMTarget(this.model.target);
           break;
@@ -620,6 +623,10 @@ angular.module('App').controller(
         default:
           this.model.target.value = this.model.target.target || '';
       }
+    }
+
+    formatPublicKey() {
+      this.model.target.publicKey = this.model.target.publicKey.replace(/\n/g, '');
     }
 
     setTtlConfiguration() {
