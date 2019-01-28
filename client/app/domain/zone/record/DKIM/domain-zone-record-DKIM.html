@@ -77,6 +77,7 @@
                       data-ng-maxlength="4096"
                       data-ng-minlength="32"
                       data-ng-model="ctrl.model.target.p"
+                      data-ng-model-options="{ 'allowInvalid': true }"
                       data-ng-pattern="ctrl.DomainValidator.regex.DKIM_p"
                       data-ng-required="!ctrl.model.target.pRevoke"
                       data-ng-trim="false"></textarea>
