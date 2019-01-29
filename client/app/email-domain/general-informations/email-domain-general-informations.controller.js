@@ -5,17 +5,27 @@ angular.module('App').controller(
      * Constructor
      * @param $scope
      * @param $q
+     * @param $state
      * @param $stateParams
      * @param $translate
      * @param Alerter
+     * @param constants
+     * @param EmailDomain
+     * @param User
      * @param WucEmails
      */
-    constructor($scope, $q, $stateParams, $translate, Alerter, WucEmails) {
-      this.$scope = $scope;
+    /* @ngInject */
+    constructor($q, $scope, $state, $stateParams, $translate,
+      Alerter, constants, EmailDomain, User, WucEmails) {
       this.$q = $q;
+      this.$scope = $scope;
+      this.$state = $state;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
+      this.constants = constants;
+      this.EmailDomain = EmailDomain;
+      this.User = User;
       this.WucEmails = WucEmails;
     }
 
@@ -23,18 +33,33 @@ angular.module('App').controller(
       this.loading = {
         domain: false,
         quotas: false,
+        serviceInfos: false,
+      };
+
+      this.urls = {
+        delete: '',
+        manageContacts: '',
+        changeOwner: '',
       };
 
       this.$scope.$on('domain.dashboard.refresh', () => this.loadDomain());
+      return this.$q
+        .all(
+          this.loadDomain(),
+          this.loadQuotas(),
+          this.loadServiceInfos(),
+          this.loadUrls(),
+        );
+    }
 
-      this.loadDomain();
-      this.loadQuotas();
+    gotoMxPlans() {
+      this.$state.go('app.mx-plan', { domain: this.$stateParams.productId });
     }
 
     loadDomain() {
       this.loading.domain = true;
 
-      this.$q
+      return this.$q
         .all({
           domain: this.WucEmails.getDomain(this.$stateParams.productId),
           dnsFilter: this.WucEmails.getDnsFilter(this.$stateParams.productId).catch(() => null),
@@ -57,9 +82,27 @@ angular.module('App').controller(
         });
     }
 
+    loadServiceInfos() {
+      this.loading.serviceInfos = true;
+      return this.EmailDomain.getServiceInfo(this.$stateParams.productId)
+        .then((serviceInfos) => {
+          this.serviceInfos = serviceInfos;
+        })
+        .catch((err) => {
+          this.Alerter.alertFromSWS(
+            this.$translate.instant('email_tab_table_accounts_error'),
+            err,
+            this.$scope.alerts.main,
+          );
+        })
+        .finally(() => {
+          this.loading.serviceInfos = false;
+        });
+    }
+
     loadQuotas() {
       this.loading.quotas = true;
-      this.$q
+      return this.$q
         .all({
           quotas: this.WucEmails.getQuotas(this.$stateParams.productId),
           summary: this.WucEmails.getSummary(this.$stateParams.productId),
@@ -79,6 +122,14 @@ angular.module('App').controller(
         .finally(() => {
           this.loading.quotas = false;
         });
+    }
+
+    loadUrls() {
+      this.urls.delete = `${this.constants.AUTORENEW_URL}?selectedType=EMAIL_DOMAIN&searchText=${this.$stateParams.productId}`;
+      this.urls.manageContacts = `#/useraccount/contacts?tab=SERVICES&serviceName=${this.$stateParams.productId}`;
+      return this.User.getUrlOf('changeOwner').then((link) => {
+        this.urls.changeOwner = link;
+      });
     }
   },
 );
