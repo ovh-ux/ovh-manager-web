@@ -1,3 +1,19 @@
+# [13.13.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.12.1...v13.13.0) (2019-01-29)
+
+
+### Bug Fixes
+
+* **domain.zone:** format public key on change ([#892](https://github.com/ovh-ux/ovh-manager-web/issues/892)) ([f6edea6](https://github.com/ovh-ux/ovh-manager-web/commit/f6edea6))
+* **domains:** improve validation for cname records ([#887](https://github.com/ovh-ux/ovh-manager-web/issues/887)) ([daac161](https://github.com/ovh-ux/ovh-manager-web/commit/daac161))
+* **i18n:** retrieve translations ([e89dbf2](https://github.com/ovh-ux/ovh-manager-web/commit/e89dbf2))
+
+
+### Features
+
+* **domain:** add tracking to header tabs of domain ([#886](https://github.com/ovh-ux/ovh-manager-web/issues/886)) ([1f88cdf](https://github.com/ovh-ux/ovh-manager-web/commit/1f88cdf))
+
+
+
 ## [13.12.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.12.0...v13.12.1) (2019-01-23)
 
 
