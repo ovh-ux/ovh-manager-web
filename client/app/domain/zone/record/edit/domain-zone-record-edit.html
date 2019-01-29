@@ -11,7 +11,7 @@
 
         <div data-wizard-step
              data-wizard-step-on-load="checkIfRecordCanBeAdd"
-             data-wizard-step-valid="!ctrl.loading.resume">
+             data-wizard-step-valid="!ctrl.loading.resume && ctrl.recordConflicts">
             <div data-ng-include="'domain/zone/record/resume.html'"></div>
         </div>
     </div>

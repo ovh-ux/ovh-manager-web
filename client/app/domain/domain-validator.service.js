@@ -685,7 +685,7 @@ angular.module('services').service(
       value += _.get(target, 'k.rsa', false) ? 'k=rsa;' : ''; // Keytype
       value += _.get(target, 'n', false) ? `n=${target.n};` : ''; // Notes
       value += _.get(target, 's', false) ? `s=${target.s};` : ''; // Service type
-      value += _.get(target, 'p', false) && !pRevoke ? `p=${target.p};` : '';
+      value += _.get(target, 'publicKey', false) && !pRevoke ? `p=${target.publicKey};` : '';
       value += pRevoke ? 'p=;' : '';
       value += !_.isEmpty(flags) ? `t=${flags.join(':')};` : ''; // Flags
 

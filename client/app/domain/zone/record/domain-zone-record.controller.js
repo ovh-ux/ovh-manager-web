@@ -86,23 +86,19 @@ angular.module('App').controller(
     }
 
     checkIfRecordCanBeAdd() {
-      if (['A', 'AAAA', 'CNAME', 'NS'].indexOf(this.model.fieldType) !== -1) {
-        this.loading.resume = true;
-        this.Domain.checkIfRecordCanBeAdd(this.domain.name, {
-          excludeId: this.edit ? this.edit.id : undefined,
-          fieldType: this.model.fieldType,
-          subDomain: punycode.toASCII(this.model.subDomainToDisplay || ''),
-          target: this.model.target.value,
+      this.loading.resume = true;
+      this.Domain.checkIfRecordCanBeAdd(this.domain.name, {
+        excludeId: this.edit ? this.edit.id : undefined,
+        fieldType: this.model.fieldType,
+        subDomain: punycode.toASCII(this.model.subDomainToDisplay || ''),
+        target: this.model.target.value,
+      })
+        .then((isOk) => {
+          this.recordConflicts = isOk;
         })
-          .then((isOk) => {
-            this.recordConflicts = isOk;
-          })
-          .finally(() => {
-            this.loading.resume = false;
-          });
-      } else {
-        this.recordConflicts = true;
-      }
+        .finally(() => {
+          this.loading.resume = false;
+        });
     }
 
     checkMxTarget(input) {
@@ -582,6 +578,9 @@ angular.module('App').controller(
           this.model.target.value = punycode.toASCII(this.model.target.target || '');
           break;
         case 'dkim':
+          if (this.model.target.publicKey) {
+            this.formatPublicKey();
+          }
           this.model.target.value = this.DomainValidator.constructor
             .transformDKIMTarget(this.model.target);
           break;
@@ -624,6 +623,10 @@ angular.module('App').controller(
         default:
           this.model.target.value = this.model.target.target || '';
       }
+    }
+
+    formatPublicKey() {
+      this.model.target.publicKey = this.model.target.publicKey.replace(/\n/g, '');
     }
 
     setTtlConfiguration() {

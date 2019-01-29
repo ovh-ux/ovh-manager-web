@@ -576,66 +576,27 @@ angular.module('services').service(
         // Special rule for CNAME:
         // Can not have other CNAME, A, AAAA for this subDomain
         case 'CNAME':
-          return this.checkIfRecordHaveNoBrothers(
+          return this.getTabZoneDns(
             serviceName,
-            'CNAME',
+            100,
+            0,
             subDomain,
-            entry.excludeId,
-          ).then((haveNoBrothers) => {
-            if (!haveNoBrothers) {
-              return false;
-            }
-            return this.checkIfRecordHaveNoBrothers(
-              serviceName,
-              'A',
-              subDomain,
-              entry.excludeId,
-            ).then((innerHaveNoBrothers) => {
-              if (!innerHaveNoBrothers) {
-                return false;
-              }
-              return this.checkIfRecordHaveNoBrothers(
-                serviceName,
-                'AAAA',
-                subDomain,
-                entry.excludeId,
-              ).then(innerInnerHaveNoBrothers => !!innerInnerHaveNoBrothers);
-            });
+          ).then((results) => {
+            const existingSubDomain = _.filter(
+              results.paginatedZone.records.results,
+              zone => zone.subDomain.toLowerCase() === subDomain.toLowerCase(),
+            );
+            return !existingSubDomain.length;
           });
-
-        // Special rule for A and AAAA:
-        // Can not have a CNAME of this subDomain,
-        // and can not have other A or AAAA for this subDomain with same target
-        case 'A':
-        case 'AAAA':
-          return this.checkIfRecordHaveNoBrothers(
-            serviceName,
-            'CNAME',
-            subDomain,
-            entry.excludeId,
-          ).then((haveNoBrothers) => {
-            if (!haveNoBrothers) {
-              return false;
-            }
-            return this.checkIfRecordIsUniq(
-              serviceName,
-              entry.fieldType,
-              subDomain,
-              entry.excludeId,
-              entry.target,
-            ).then(isUniq => isUniq);
-          });
-
-        // Other fields:
-        // Can not have other field of same type of same subDomain with same target
+        // Rule for Other Record types:
+        // Can not have a CNAME of this subDomain
         default:
-          return this.checkIfRecordIsUniq(
+          return this.checkIfRecordHaveNoBrothers(
             serviceName,
-            entry.fieldType,
+            'CNAME',
             subDomain,
             entry.excludeId,
-            entry.target,
-          ).then(isUniq => isUniq);
+          ).then(haveNoBrothers => haveNoBrothers);
       }
     }
 
