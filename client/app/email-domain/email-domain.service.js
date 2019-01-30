@@ -1,6 +1,7 @@
 angular.module('services').service(
   'EmailDomain',
   class EmailDomain {
+    /* @ngInject */
     constructor(
       OvhApiEmailDomain,
     ) {

@@ -14,6 +14,7 @@ angular.module('App').controller(
      * @param User
      * @param WucEmails
      */
+    /* @ngInject */
     constructor($q, $scope, $state, $stateParams, $translate,
       Alerter, constants, EmailDomain, User, WucEmails) {
       this.$q = $q;
@@ -42,11 +43,13 @@ angular.module('App').controller(
       };
 
       this.$scope.$on('domain.dashboard.refresh', () => this.loadDomain());
-
-      this.loadDomain();
-      this.loadQuotas();
-      this.loadServiceInfos();
-      this.loadUrls();
+      return this.$q
+        .all(
+          this.loadDomain(),
+          this.loadQuotas(),
+          this.loadServiceInfos(),
+          this.loadUrls(),
+        );
     }
 
     gotoMxPlans() {
@@ -56,7 +59,7 @@ angular.module('App').controller(
     loadDomain() {
       this.loading.domain = true;
 
-      this.$q
+      return this.$q
         .all({
           domain: this.WucEmails.getDomain(this.$stateParams.productId),
           dnsFilter: this.WucEmails.getDnsFilter(this.$stateParams.productId).catch(() => null),
@@ -99,7 +102,7 @@ angular.module('App').controller(
 
     loadQuotas() {
       this.loading.quotas = true;
-      this.$q
+      return this.$q
         .all({
           quotas: this.WucEmails.getQuotas(this.$stateParams.productId),
           summary: this.WucEmails.getSummary(this.$stateParams.productId),
