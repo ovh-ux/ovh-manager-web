@@ -30,7 +30,7 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['../domain', '../email', '../hosting', '../domain-operation'],
+    translations: ['../core', '../domain', '../email', '../hosting', '../domain-operation'],
   });
 
   $stateProvider.state('app.domain.alldom', {
