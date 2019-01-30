@@ -1,7 +1,7 @@
 <div class="container-fluid px-0" data-ng-controller="EmailTabGeneralInformationsCtrl as ctrlTabGeneralInformations">
     <div data-ovh-alert="{{alerts.main}}"></div>
-    <div class="row d-md-flex mb-5">
-        <div class="col-sm-4">
+    <div class="row d-md-flex">
+        <div class="col-sm-4 mb-5">
             <oui-tile data-heading="{{ ::'email_dashboard_general_informations' | translate }}"
                       data-loading="ctrlTabGeneralInformations.loading.domain"
                       class="h-100">
@@ -36,12 +36,12 @@
                 </oui-tile-definition>
             </oui-tile>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 mb-5">
             <oui-tile data-heading="{{ ::'email_dashboard_quotas' | translate }}"
                       data-loading="ctrlTabGeneralInformations.loading.quotas"
                       class="h-100">
                     <oui-tile-definition data-term="{{ ::'email_tab_accounts_quota' | translate }}"
-                                         data-term-popover="{{ ctrlTabGeneralInformations.domain.offer !== 'redirect'? (::'email_tab_accounts_quota_info' | translate): '' }}"
+                                         data-term-popover="{{ ctrlTabGeneralInformations.domain.offer !== 'redirect'? ('email_tab_accounts_quota_info' | translate): '' }}"
                                          data-description="{{ (ctrlTabGeneralInformations.summary.account || '0') + ' / ' + (ctrlTabGeneralInformations.quotas.account || '0') }}"></oui-tile-definition>
                     <oui-tile-definition data-term="{{ ::'email_tab_responders_quota' | translate }}"
                                          data-description="{{ (ctrlTabGeneralInformations.summary.responder || '0') + ' / ' + (ctrlTabGeneralInformations.quotas.responder || '0') }}"></oui-tile-definition>
@@ -49,15 +49,15 @@
                                          data-description="{{ (ctrlTabGeneralInformations.summary.redirection || '0') + ' / ' + ((ctrlTabGeneralInformations.quotas.redirection + ctrlTabGeneralInformations.quotas.alias) || '0') }}"></oui-tile-definition>
             </oui-tile>
         </div>
-        <div class="col-sm-4">
-            <oui-tile data-heading="{{ ::'email_dashboard_plan' | translate }}"
+        <div class="col-sm-4 mb-5">
+            <oui-tile data-heading="{{ ::'core_plan' | translate }}"
                       data-loading="ctrlTabGeneralInformations.loading.domain || ctrlTabGeneralInformations.loading.serviceInfos"
                       class="h-100">
                 <oui-tile-definition data-term="{{ ::'email_tab_domain_offer' | translate }}"
                                      data-description="{{ ctrlTabGeneralInformations.domain.offer || '-' }}">
                     <oui-action-menu data-compact align="end">
                         <oui-action-menu-item data-on-click="ctrlTabGeneralInformations.gotoMxPlans()">
-                            <span data-translate="emails_upgrade_account"></span>
+                            <span data-translate="core_upgrade_account"></span>
                         </oui-action-menu-item>
                     </oui-action-menu>
                 </oui-tile-definition>
@@ -68,12 +68,12 @@
                             <small data-translate="global_admin"></small>
                         </div>
                         <div>
-                            <span data-ng-bind="ctrlTabGeneralInformations.serviceInfos.contactBilling"></span>
-                            <small data-translate="global_billing"></small>
-                        </div>
-                        <div>
                             <span data-ng-bind="ctrlTabGeneralInformations.serviceInfos.contactTech"></span>
                             <small data-translate="global_technical"></small>
+                        </div>
+                        <div>
+                            <span data-ng-bind="ctrlTabGeneralInformations.serviceInfos.contactBilling"></span>
+                            <small data-translate="global_billing"></small>
                         </div>
                     </oui-tile-description>
                     <oui-action-menu data-compact align="end">
@@ -99,7 +99,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3 mt-md-5 mt-lg-0 pull-right">
+        <div class="col-md-4 col-md-offset-8 col-sm-12">
             <div data-wuc-guides
                  data-wuc-guides-title="'guide_subtitle' | translate"
                  data-wuc-guides-list="'emailsInfos'"

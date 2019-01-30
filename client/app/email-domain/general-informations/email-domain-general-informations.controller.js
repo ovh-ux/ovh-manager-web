@@ -81,7 +81,7 @@ angular.module('App').controller(
 
     loadServiceInfos() {
       this.loading.serviceInfos = true;
-      this.EmailDomain.getServiceInfo(this.$stateParams.productId)
+      return this.EmailDomain.getServiceInfo(this.$stateParams.productId)
         .then((serviceInfos) => {
           this.serviceInfos = serviceInfos;
         })
@@ -124,7 +124,7 @@ angular.module('App').controller(
     loadUrls() {
       this.urls.delete = `${this.constants.AUTORENEW_URL}?selectedType=EMAIL_DOMAIN&searchText=${this.$stateParams.productId}`;
       this.urls.manageContacts = `#/useraccount/contacts?tab=SERVICES&serviceName=${this.$stateParams.productId}`;
-      this.User.getUrlOf('changeOwner').then((link) => {
+      return this.User.getUrlOf('changeOwner').then((link) => {
         this.urls.changeOwner = link;
       });
     }
