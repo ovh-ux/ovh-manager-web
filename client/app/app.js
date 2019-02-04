@@ -1,3 +1,5 @@
+import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
+import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
 import translateAsyncLoader from '@ovh-ux/translate-async-loader';
 import webUniverseComponents from '@ovh-ux/web-universe-components';
 import uiRouter from '@uirouter/angularjs';
@@ -30,8 +32,8 @@ angular
     'ovh-angular-user-pref',
     'ngFileUpload',
     'xeditable',
-    'ovh-angular-sso-auth',
-    'ovh-angular-sso-auth-modal-plugin',
+    ngOvhSsoAuth,
+    ngOvhSsoAuthModalPlugin,
     uiRouter,
     'ovh-angular-sidebar-menu',
     'pascalprecht.translate',
@@ -147,7 +149,7 @@ angular
         },
       ]);
       $httpProvider.interceptors.push('serviceTypeInterceptor');
-      $httpProvider.interceptors.push('ssoAuthInterceptor');
+      $httpProvider.interceptors.push('OvhSsoAuthInterceptor');
     },
   ])
   .config([
