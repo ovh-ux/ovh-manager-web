@@ -584,7 +584,8 @@ angular.module('services').service(
           ).then((results) => {
             const existingSubDomain = _.filter(
               results.paginatedZone.records.results,
-              zone => zone.subDomain.toLowerCase() === subDomain.toLowerCase(),
+              zone => zone.subDomain.toLowerCase() === subDomain.toLowerCase()
+                  && zone.id !== entry.excludeId,
             );
             return !existingSubDomain.length;
           });
