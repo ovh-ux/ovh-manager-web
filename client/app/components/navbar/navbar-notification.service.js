@@ -1,7 +1,13 @@
 class NavbarNotificationService {
   constructor(
-    $interval, $q, $translate,
-    Alerter, atInternet, constants, OvhApiNotificationAapi,
+    $interval,
+    $q,
+    $translate,
+    Alerter,
+    atInternet,
+    constants,
+    Navbar,
+    OvhApiNotificationAapi,
     UNIVERSE,
   ) {
     this.$interval = $interval;
@@ -10,6 +16,7 @@ class NavbarNotificationService {
     this.alerter = Alerter;
     this.atInternet = atInternet;
     this.constants = constants;
+    this.Navbar = Navbar;
     this.OvhApiNotificationAapi = OvhApiNotificationAapi;
     this.UNIVERSE = UNIVERSE;
 
@@ -92,28 +99,37 @@ class NavbarNotificationService {
     }, this.NOTIFICATION_REFRESH_TIME);
   }
 
-  getNavbarContent() {
-    return this.getSubLinks().then((sublinks) => {
-      this.setRefreshTime(sublinks);
-      const navbarContent = {
-        name: 'notifications',
-        title: this.$translate.instant('common_navbar_notification_title'),
-        iconClass: 'icon-notifications',
-        iconAnimated: this.constructor.shouldAnimateIcon(sublinks),
-        limitTo: 10,
-        onClick: () => {
-          this.acknowledgeAll();
-          this.atInternet.trackClick({
-            name: 'notifications',
-            type: 'action',
-          });
-        },
-        subLinks: sublinks,
-        show: true,
-      };
-      this.navbarContent = navbarContent;
-      return navbarContent;
-    });
+  getNavbarContent({ ovhSubsidiary: subsidiary }) {
+    const useExpandedText = ['FR'].includes(subsidiary);
+
+    return this.$q.all({
+      title: useExpandedText
+        ? this.Navbar.buildMenuHeader(this.$translate.instant('common_navbar_notification_title_expanded'))
+        : this.$translate.instant('common_navbar_notification_title'),
+      sublinks: this.getSubLinks(),
+    })
+      .then(({ title, sublinks }) => {
+        this.setRefreshTime(sublinks);
+        const navbarContent = {
+          name: 'notifications',
+          title,
+          headerTitle: useExpandedText ? this.$translate.instant('common_navbar_notification_title_expanded') : title,
+          iconClass: 'icon-notifications',
+          iconAnimated: this.constructor.shouldAnimateIcon(sublinks),
+          limitTo: 10,
+          onClick: () => {
+            this.acknowledgeAll();
+            this.atInternet.trackClick({
+              name: 'notifications',
+              type: 'action',
+            });
+          },
+          subLinks: sublinks,
+          show: true,
+        };
+        this.navbarContent = navbarContent;
+        return navbarContent;
+      });
   }
 
   static shouldAnimateIcon(sublinks) {
