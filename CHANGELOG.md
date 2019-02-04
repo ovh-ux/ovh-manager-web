@@ -1,3 +1,15 @@
+## [13.13.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.13.1...v13.13.2) (2019-02-04)
+
+
+### Bug Fixes
+
+* **domain:** exclude cname record while checking for duplicates ([#906](https://github.com/ovh-ux/ovh-manager-web/issues/906)) ([323ea01](https://github.com/ovh-ux/ovh-manager-web/commit/323ea01))
+* **i18n:** retrieve translations ([ca28eb6](https://github.com/ovh-ux/ovh-manager-web/commit/ca28eb6))
+* **i18n:** submit translations ([a0383e2](https://github.com/ovh-ux/ovh-manager-web/commit/a0383e2))
+* **navbar:** revamp style and texts ([#872](https://github.com/ovh-ux/ovh-manager-web/issues/872)) ([86233ef](https://github.com/ovh-ux/ovh-manager-web/commit/86233ef))
+
+
+
 ## [13.13.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.13.0...v13.13.1) (2019-01-30)
 
 
