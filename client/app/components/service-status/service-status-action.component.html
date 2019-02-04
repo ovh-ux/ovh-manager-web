@@ -1,0 +1,50 @@
+<div class="oui-tile__item">
+    <dl class="oui-tile__definition">
+        <dt class="oui-tile__term">
+            <div data-ng-if="!$ctrl.isExpired() && $ctrl.isInAutoRenew() && $ctrl.shouldDeleteAtExpiration()">
+                <span data-translate="expiration_resiliation_date"></span>
+            </div>
+            <div data-ng-if="!$ctrl.isExpired() && $ctrl.isInAutoRenew() && !$ctrl.shouldDeleteAtExpiration()">
+                <span data-translate="expiration_renew_date"></span>
+            </div>
+            <div data-ng-if="$ctrl.isExpired() || !$ctrl.isInAutoRenew()">
+                <span data-translate="{{ ::$ctrl.isExpired() ? 'expiration_resiliation_date' : 'expiration_expiration_date' }}"></span>
+            </div>
+        </dt>
+        <dd class="oui-tile__description">
+            <div data-ng-if="!$ctrl.shouldDeleteAtExpiration()">
+                <span data-ng-bind=" ::$ctrl.getDate() | date:'MMM yyyy'"></span>
+            </div>
+            <div data-ng-if="$ctrl.shouldDeleteAtExpiration() || $ctrl.isExpired()">
+                <span data-ng-bind=" ::$ctrl.getDate() | date:'mediumDate'"></span>
+            </div>
+        </dd>
+    </dl>
+    <oui-action-menu data-align="end" data-compact>
+        <oui-action-menu-item
+            data-aria-label="{{ ::'expiration_expiration_delete_cancel_label' | translate }}"
+            data-href="{{ $ctrl.getAutoRenewUrl() }}">
+            <span data-translate="expiration_expiration_delete_cancel_label"></span>
+        </oui-action-menu-item>
+        <oui-action-menu-item
+            data-ng-if="$ctrl.isExpired() || !$ctrl.isInAutoRenew()"
+            data-aria-label="{{ ::'expiration_wizard_renew' | translate }}"
+            data-href="{{ $ctrl.orderUrl }}"
+            data-external>
+            <span data-translate="expiration_wizard_renew"></span>
+        </oui-action-menu-item>
+        <oui-action-menu-item
+            data-ng-if="!$ctrl.isExpired() && $ctrl.isInAutoRenew() && $ctrl.shouldDeleteAtExpiration()"
+            data-aria-label="{{ 'expiration_resiliation_cancel_label' | translate }}"
+            data-ng-href="{{ $ctrl.getAutoRenewUrl() }}">
+            <span data-translate="expiration_resiliation_cancel_label"></span>
+        </oui-action-menu-item>
+        <oui-action-menu-divider></oui-action-menu-divider>
+        <oui-action-menu-item
+            data-aria-label="{{ ::'common_manage' | translate }}"
+            data-href="{{ $ctrl.getAutoRenewUrl() }}"
+            data-external>
+            <span data-translate="common_manage"></span>
+        </oui-action-menu-item>
+    </oui-action-menu>
+</div>
