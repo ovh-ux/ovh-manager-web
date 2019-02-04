@@ -1,4 +1,4 @@
-<div class="oui-tile__item">
+<div class="oui-tile__item" data-ng-if="!$ctrl.loading">
     <dl class="oui-tile__definition">
         <dt class="oui-tile__term">
             <div data-ng-if="!$ctrl.isExpired() && $ctrl.isInAutoRenew() && $ctrl.shouldDeleteAtExpiration()">
