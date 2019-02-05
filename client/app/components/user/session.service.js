@@ -264,7 +264,7 @@ class SessionService {
     const useExpandedText = ['FR'].includes(subsidiary);
     return (useExpandedText
       ? this.Navbar.buildMenuHeader(this.$translate.instant('common_menu_support_assistance_expanded'))
-      : this.$translate.instant('common_menu_support_assistance')
+      : this.$q.when(this.$translate.instant('common_menu_support_assistance'))
     )
       .then(title => ({
         name: 'assistance',
@@ -332,7 +332,7 @@ class SessionService {
         <br>
         ${this.$translate.instant('common_menu_support_userAccount_2')}
       `)
-      : currentUser.firstName)
+      : this.$q.when(currentUser.firstName))
       .then(title => ({
         name: 'user',
         title,
