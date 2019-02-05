@@ -1,3 +1,12 @@
+## [13.13.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.13.2...v13.13.3) (2019-02-05)
+
+
+### Bug Fixes
+
+* **navbar:** display navbar for all subsidiary ([4a8a891](https://github.com/ovh-ux/ovh-manager-web/commit/4a8a891))
+
+
+
 ## [13.13.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.13.1...v13.13.2) (2019-02-04)
 
 
