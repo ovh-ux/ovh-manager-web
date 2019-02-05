@@ -93,8 +93,14 @@ angular.module('App').controller(
         subDomain: punycode.toASCII(this.model.subDomainToDisplay || ''),
         target: this.model.target.value,
       })
-        .then((isOk) => {
-          this.recordConflicts = isOk;
+        .then(({ recordCanBeAdded, conflictingRecords }) => {
+          this.recordConflicts = recordCanBeAdded;
+          this.conflictingRecords = conflictingRecords;
+          _.each(this.conflictingRecords, (record) => {
+            _.set(record, 'domainToDisplay', `${(record.subDomainToDisplay
+              ? `${record.subDomainToDisplay}.`
+              : '') + record.zoneToDisplay}.`);
+          });
         })
         .finally(() => {
           this.loading.resume = false;
