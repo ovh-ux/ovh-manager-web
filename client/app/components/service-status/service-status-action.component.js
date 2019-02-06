@@ -1,7 +1,7 @@
 import controller from './service-status-action.controller';
 import template from './service-status-action.html';
 
-angular.module('directives').component('serviceStatusAction', {
+angular.module('App').component('serviceStatusAction', {
   bindings: {
     serviceInfos: '<',
     serviceName: '<',
@@ -9,4 +9,5 @@ angular.module('directives').component('serviceStatusAction', {
   },
   controller,
   template,
-});
+})
+  .run(/* @ngTranslationsInject ./translations */);
