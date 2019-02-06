@@ -4,9 +4,8 @@ import {
 } from './service-status-action.constant';
 
 export default class {
+  /* @ngInject */
   constructor(constants, OvhApiMe) {
-    /* @ngInject */
-
     this.constants = constants;
     this.OvhApiMe = OvhApiMe;
   }
