@@ -1,11 +1,12 @@
-(() => {
-  angular.module('directives').component('serviceStatusAction', {
-    templateUrl: 'components/service-status/service-status-action.component.html',
-    bindings: {
-      serviceInfos: '<',
-      serviceType: '<',
-      serviceName: '<',
-    },
-    controller: 'serviceStatusActionComponentCtrl',
-  });
-})();
+import controller from './service-status-action.controller';
+import template from './service-status-action.html';
+
+angular.module('directives').component('serviceStatusAction', {
+  bindings: {
+    serviceInfos: '<',
+    serviceName: '<',
+    serviceType: '<',
+  },
+  controller,
+  template,
+});
