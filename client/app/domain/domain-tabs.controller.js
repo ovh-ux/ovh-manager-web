@@ -123,21 +123,31 @@ angular.module('App').controller(
               });
           }
 
-          this.setSelectedTab(angular.uppercase(this.$stateParams.tab));
+          this.setSelectedTab(angular.uppercase(this.$stateParams.tab), true);
         });
     }
 
-    setSelectedTab(tab) {
+    setSelectedTab(tab, trackPageOnly) {
       if (_.includes(this.tabs, tab)) {
         this.selectedTab = tab;
       } else {
         this.selectedTab = this.defaultTab;
       }
 
-      this.atInternet.trackClick({
-        name: `web::domain::product-${this.selectedTab}`,
-        type: 'action',
-      });
+      if (trackPageOnly) {
+        this.atInternet.trackPage({
+          name: `web::domain::product-${this.selectedTab}`,
+        });
+      } else {
+        this.atInternet.trackClick({
+          name: `web::domain::product-${this.selectedTab}`,
+          type: 'action',
+        });
+        this.atInternet.trackPage({
+          name: `web::domain::product-${this.selectedTab}`,
+          type: 'action',
+        });
+      }
 
       this.$location.search('tab', this.selectedTab);
     }
