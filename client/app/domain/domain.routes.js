@@ -13,6 +13,9 @@ angular.module('App').config(($stateProvider) => {
     params: {
       tab: null,
     },
+    atInternet: {
+      ignore: true, // this tell AtInternet to not track this state
+    },
     resolve: {
       currentSection: () => 'domain',
       navigationInformations: [

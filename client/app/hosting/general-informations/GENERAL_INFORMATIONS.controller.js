@@ -6,6 +6,7 @@ angular.module('App').controller(
       $scope,
       $stateParams,
       $translate,
+      atInternet,
       Alerter,
       Hosting,
       HostingLocalSeo,
@@ -18,6 +19,7 @@ angular.module('App').controller(
       this.$stateParams = $stateParams;
       this.$translate = $translate;
 
+      this.atInternet = atInternet;
       this.Alerter = Alerter;
       this.Hosting = Hosting;
       this.HostingLocalSeo = HostingLocalSeo;
@@ -162,6 +164,26 @@ angular.module('App').controller(
       }
 
       return this.$translate.instant(`hosting_dashboard_service_ssl_${this.sslCertificate.status}`);
+    }
+
+    changeOffer() {
+      this.atInternet.trackClick({
+        name: 'web::hostname::general-informations::change-offer',
+        type: 'action',
+      });
+      this.$scope.setAction('offer/upgrade/hosting-offer-upgrade');
+    }
+
+    changeMainDomain() {
+      this.atInternet.trackClick({
+        name: 'web::hostname::general-informations::change-main-domain',
+        type: 'action',
+      });
+      this.$scope.setAction('change-main-domain/hosting-change-main-domain', this.$scope.hosting);
+    }
+
+    isHostingOffer() {
+      return _.includes(['KIMSUFI_2015', '__60_FREE', 'DEMO_1_G', 'START_1_M', 'START_10_M', '_ASPFREE'], this.$scope.hosting.offer);
     }
   },
 );

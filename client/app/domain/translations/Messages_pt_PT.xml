@@ -480,7 +480,7 @@
    <translation id="domain_configuration_dns_entry_delete_step1_subdomain" qtlid="129183">Sub-domínio</translation>
    <translation id="domain_configuration_dns_entry_delete_step1_target" qtlid="47644">Destino</translation>
    <translation id="domain_configuration_dns_entry_mass_delete_step1_question_1" qtlid="192071">Deseja realmente eliminar esta entrada da zona DNS?</translation>
-   <translation id="domain_configuration_dns_entry_mass_delete_step1_question_other" qtlid="192084">Deseja realmente eliminar estas {} entradas da zona DNS?</translation>
+   <translation id="domain_configuration_dns_entry_mass_delete_step1_question_other" qtlid="192084">Tem a certeza de que quer eliminar estas {} entradas da zona DNS?</translation>
    <translation id="domain_configuration_dns_entry_delete_success" qtlid="129195">A entrada foi eliminada da zona DNS.</translation>
    <translation id="domain_configuration_dns_entry_delete_fail" qtlid="129207">Ocorreu um erro na eliminação da entrada {0} da zona DNS.</translation>
    <translation id="domain_configuration_dns_entry_delete_mass_success" qtlid="192097">As entradas foram eliminadas com sucesso da sua zona DNS.</translation>
@@ -519,10 +519,8 @@
    <translation id="domain_configuration_dns_entry_add_step3_alert" qtlid="195048">A modificação da zona DNS será imediata mas tenha em conta o tempo de propagação (máximo 24h).</translation>
 
    <translation id="domain_configuration_dns_entry_add_step3_check_warning1" qtlid="215065">Atenção, podem ocorrer um ou vários conflitos:</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning2" qtlid="195074">Só pode ter um registo do tipo CNAME para o mesmo subdomínio.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="195087">Não pode ter registos A e AAAA no mesmo subdomínio.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning4" qtlid="215078">Ou esta entrada já existe na sua zona DNS, ou um campo do tipo CNAME já está presente nesse subdomínio.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning5" qtlid="215091">Essa entrada já existe na sua zona DNS.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning2">Le sous-domaine utilise déjà un enregistrement DNS. Vous ne pouvez pas enregistrer de champ CNAME en raison d'une incompatibilité. Supprimez les enregistrements existants pour ce sous-domaine, afin de pouvoir en ajouter un, de type CNAME.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="519844">O subdomínio já está a ser utilizado por um registo CNAME. Um registo CNAME não pode coexistir com outros campos no mesmo subdomínio.</translation>
 
    <translation id="domain_configuration_dns_entry_add_success" qtlid="129243">A entrada foi adicionada à zona DNS.</translation>
    <translation id="domain_configuration_dns_entry_add_fail" qtlid="129255">Ocorreu um erro na adição da entrada à zona DNS.</translation>

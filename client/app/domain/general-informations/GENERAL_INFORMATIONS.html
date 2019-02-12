@@ -95,7 +95,7 @@
                                 data-compact data-align="end"
                                 data-ng-if="ctrlDomain.canOrderHosting && ctrlDomain.isAdmin && !$ctrl.hasStart10mOffer">
                                 <oui-action-menu-item
-                                    data-text="{{:: 'domain_configuration_action_enable' | translate }}"
+                                    data-text="{{ ::'domain_configuration_action_enable' | translate }}"
                                     data-on-click="$ctrl.showWebHostingOrderWithStartOffer()">
                                 </oui-action-menu-item>
                             </oui-action-menu>
@@ -147,7 +147,7 @@
                                         data-translate="domain_dashboard_show_authinfo"
                                         data-ng-click="setAction('authinfo/domain-authinfo', $ctrl.domain)"
                                         data-ng-if="!$ctrl.domain.isExpired && $ctrl.domain.protection === 'unlocked'"
-                                        data-uib-tooltip="{{:: 'domain_dashboard_show_authinfo_title' | translate }}">
+                                        data-uib-tooltip="{{ ::'domain_dashboard_show_authinfo_title' | translate }}">
                                 </button>
                                 <button class="btn btn-link ml-3 p-0" type="button"
                                         data-translate="domain_dashboard_add_uk_tags"
@@ -178,10 +178,10 @@
                         </oui-tile-definition>
                         <!-- OWO  -->
                         <oui-tile-definition
-                            data-term-popover="{{:: 'domain_dashboard_tooltip_whois' | translate}}"
+                            data-term-popover="{{ ::'domain_dashboard_tooltip_whois' | translate }}"
                             data-term="{{ ::'domain_dashboard_owo' | translate }}">
                             <oui-tile-description data-ng-if="!$ctrl.isOwoSupported()">
-                                <span>{{ ::'domain_dashboard_owo_not_supported' | translate }}</span>
+                                <span data-translate="domain_dashboard_owo_not_supported"></span>
                             </oui-tile-description>
                             <oui-tile-description data-ng-if="$ctrl.isOwoSupported()">
                                 <div class="d-block mt-2"
@@ -244,28 +244,18 @@
                             data-description="{{ ::$ctrl.domain.offer }}">
                         </oui-tile-definition>
                         <!-- RENEWAL -->
-                        <oui-tile-definition
-                            data-term="{{($ctrl.domainInfos.renew.forced || $ctrl.domainInfos.renew.automatic) ?
-                                'common_tile_subscription_autorenew' : 'common_tile_subscription_expiration_date' | translate}}">
-                            <oui-tile-description>
-                                <wuc-service-expiration-date
-                                    data-ng-if="!$ctrl.isAllDom && $ctrl.domain.name && $ctrl.domainInfos"
-                                    service-name="$ctrl.domain.name"
-                                    service-type="DOMAIN"
-                                    service-infos="$ctrl.domainInfos"></wuc-service-expiration-date>
-                                <wuc-service-expiration-date
-                                    data-ng-if="$ctrl.isAllDom && $ctrl.allDom && $ctrl.allDomInfos"
-                                    service-name="$ctrl.allDom"
-                                    service-type="ALL_DOM"
-                                    service-infos="$ctrl.allDomInfos"></wuc-service-expiration-date>
-                            </oui-tile-description>
-                            <oui-action-menu data-compact data-align="end">
-                                <oui-action-menu-item
-                                    data-text="{{ ::$ctrl.actions.manageAutorenew.text }}"
-                                    aria-label="{{ ::$ctrl.actions.manageAutorenew.text }}"
-                                    data-href="{{ ::$ctrl.actions.manageAutorenew.href }}"></oui-action-menu-item>
-                            </oui-action-menu>
-                        </oui-tile-definition>
+                        <service-status-action
+                            data-ng-if="!$ctrl.isAllDom && $ctrl.domain.name && $ctrl.domainInfos"
+                            data-service-name="$ctrl.domain.name"
+                            data-service-type="'DOMAIN'"
+                            data-service-infos="$ctrl.domainInfos">
+                        </service-status-action>
+                        <service-status-action
+                            data-ng-if="$ctrl.isAllDom && $ctrl.allDom && $ctrl.allDomInfos"
+                            data-service-name="$ctrl.domain.name"
+                            data-service-type="'ALL_DOM'"
+                            data-service-infos="$ctrl.domainInfos">
+                        </service-status-action>
                         <!-- CONTACTS -->
                         <oui-tile-definition data-term="{{ ::'contacts_management' | translate }}">
                             <oui-tile-description>
