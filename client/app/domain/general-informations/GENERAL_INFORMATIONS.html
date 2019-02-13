@@ -261,8 +261,8 @@
                 <service-status-action
                     data-ng-if="$ctrl.isAllDom && $ctrl.allDom && $ctrl.allDomInfos"
                     data-service-name="$ctrl.domain.name"
-                    data-service-type="'ALL_DOM'"
-                    data-service-infos="$ctrl.domainInfos">
+                    data-service-type="'DOMAIN'"
+                    data-service-infos="$ctrl.allDomInfos">
                 </service-status-action>
                 <!-- CONTACTS -->
                 <oui-tile-definition data-term="{{ ::'contacts_management' | translate }}">
@@ -294,6 +294,12 @@
                             aria-label="{{ ::$ctrl.actions.changeOwner.text }}"
                             data-href="{{ ::$ctrl.actions.changeOwner.href }}"
                             data-ng-if="$ctrl.actions.changeOwner.isAvailable && !$ctrl.loading.changeOwner" data-external>
+                        </oui-action-menu-item>
+                        <oui-action-menu-item
+                            aria-label="domain_configuration_update_owner"
+                            data-href="{{ ::$ctrl.updateOwnerUrl.target }}"
+                            data-ng-if="$ctrl.updateOwnerUrl.target">
+                            <span data-translate="domain_configuration_update_owner"></span>
                         </oui-action-menu-item>
                     </oui-action-menu>
                 </oui-tile-definition>

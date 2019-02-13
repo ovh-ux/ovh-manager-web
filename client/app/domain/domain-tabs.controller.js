@@ -28,9 +28,12 @@ angular.module('App').controller(
         'TASKS',
       ];
 
+      this.$scope.alerts = {
+        page: 'domain_alert_page',
+      };
+
       this.domain = this.$scope.ctrlDomain.domain;
 
-      const updateOwnerUrl = this.getUpdateOwnerUrl(this.domain);
 
       this.tabMenu = {
         title: this.$translate.instant('navigation_more'),
@@ -41,13 +44,6 @@ angular.module('App').controller(
               this.domain.name
             }?tab=MAILING_LIST`,
             type: 'LINK',
-          },
-          {
-            label: this.$translate.instant('domain_configuration_update_owner'),
-            target: updateOwnerUrl.target,
-            fn: () => this.handleOwnerUrlError(updateOwnerUrl.error),
-            type: 'ACTION',
-            disabled: !updateOwnerUrl.target,
           },
         ],
       };
@@ -84,11 +80,15 @@ angular.module('App').controller(
           }
 
           this.setSelectedTab(angular.uppercase(this.$stateParams.tab), true);
+        }).catch(() => {
+          this.Alerter.error(
+            this.$translate.instant('domain_dashboard_loading_error'),
+            this.$scope.alerts.page,
+          );
         });
     }
 
     setSelectedTab(tab, trackPageOnly) {
-      console.log(tab);
       if (_.includes(this.tabs, tab)) {
         this.selectedTab = tab;
       } else {
@@ -111,33 +111,6 @@ angular.module('App').controller(
       }
 
       this.$location.search('tab', this.selectedTab);
-    }
-
-    getUpdateOwnerUrl(domain) {
-      const ownerUrlInfo = { target: '', error: '' };
-      if (_.has(domain, 'name') && _.has(domain, 'whoisOwner.id')) {
-        ownerUrlInfo.target = `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
-      } else if (!_.has(domain, 'name')) {
-        ownerUrlInfo.error = this.$translate.instant('domain_tab_REDIRECTION_add_step4_server_cname_error');
-      } else {
-        switch (domain.whoisOwner) {
-          case this.DOMAIN.whoIsStatus.PENDING:
-            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_pending');
-            break;
-          case this.DOMAIN.whoIsStatus.INVALID_CONTACT:
-            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_invalid_contact');
-            break;
-          default:
-            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_error');
-        }
-      }
-      return ownerUrlInfo;
-    }
-
-    handleOwnerUrlError(errMsg) {
-      if (errMsg) {
-        this.Alerter.error(errMsg, this.$scope.alerts.tabs);
-      }
     }
 
     static toKebabCase(str) {

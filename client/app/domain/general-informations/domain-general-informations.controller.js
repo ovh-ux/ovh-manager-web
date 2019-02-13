@@ -120,6 +120,7 @@ angular.module('App').controller(
       this.getAllNameServer(this.domain.name);
       this.getHostingInfos(this.domain.name);
       this.getAssociatedHosting(this.domain.name);
+      this.updateOwnerUrl = this.getUpdateOwnerUrl(this.domain);
 
       if (this.isAllDom) {
         this.getAllDomInfos(this.$stateParams.allDom);
@@ -162,13 +163,19 @@ angular.module('App').controller(
                 this.domain.name,
               );
             }
-          })
-          .finally(() => { this.loading.changeOwner = false; });
+          }).catch(() => {
+            this.Alerter.error(
+              this.$translate.instant('domain_configuration_fetch_fail'),
+              this.$scope.alerts.main,
+            );
+          }).finally(() => { this.loading.changeOwner = false; });
       }
+
       const changeOwnerClassic = !_.includes(
         this.Domain.extensionsChangeOwnerByOrder,
         _.last(this.domain.name.split('.')),
       );
+
       return this.User.getUrlOf(changeOwnerClassic ? 'changeOwner' : 'domainOrderChange')
         .then((changeOwnerUrl) => {
           if (changeOwnerClassic) {
@@ -178,8 +185,12 @@ angular.module('App').controller(
               this.domain.name
             }`;
           }
-        })
-        .finally(() => { this.loading.changeOwner = false; });
+        }).catch(() => {
+          this.Alerter.error(
+            this.$translate.instant('domain_configuration_fetch_fail'),
+            this.$scope.alerts.main,
+          );
+        }).finally(() => { this.loading.changeOwner = false; });
     }
 
     getAllDomInfos(serviceName) {
@@ -435,6 +446,32 @@ angular.module('App').controller(
           this.vm.owo[fieldName].uiSwitch.disabled = true;
         }
       });
+    }
+
+    getUpdateOwnerUrl(domain) {
+      const ownerUrlInfo = { target: '', error: '' };
+      if (_.has(domain, 'name') && _.has(domain, 'whoisOwner.id')) {
+        ownerUrlInfo.target = `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
+      } else if (!_.has(domain, 'name')) {
+        ownerUrlInfo.error = this.$translate.instant('domain_tab_REDIRECTION_add_step4_server_cname_error');
+      } else {
+        switch (domain.whoisOwner) {
+          case this.DOMAIN.whoIsStatus.PENDING:
+            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_pending');
+            break;
+          case this.DOMAIN.whoIsStatus.INVALID_CONTACT:
+            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_invalid_contact');
+            break;
+          default:
+            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_error');
+        }
+      }
+
+      if (ownerUrlInfo.error) {
+        this.Alerter.error(ownerUrlInfo.error, this.$scope.alerts.page);
+      }
+
+      return ownerUrlInfo;
     }
 
     // Actions --------------------------------------------
