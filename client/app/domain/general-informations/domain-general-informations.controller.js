@@ -150,7 +150,7 @@ angular.module('App').controller(
       };
       this.loading.changeOwner = true;
       if (_.isObject(this.domain.whoisOwner)) {
-        this.$q
+        return this.$q
           .all({
             domainOrderTradeUrl: this.User.getUrlOf('domainOrderTrade'),
             orderServiceOption: this.Domain.getOrderServiceOption(this.domain.name),
@@ -164,23 +164,22 @@ angular.module('App').controller(
             }
           })
           .finally(() => { this.loading.changeOwner = false; });
-      } else {
-        const changeOwnerClassic = !_.includes(
-          this.Domain.extensionsChangeOwnerByOrder,
-          _.last(this.domain.name.split('.')),
-        );
-        this.User.getUrlOf(changeOwnerClassic ? 'changeOwner' : 'domainOrderChange')
-          .then((changeOwnerUrl) => {
-            if (changeOwnerClassic) {
-              this.actions.changeOwner.href = changeOwnerUrl;
-            } else {
-              this.actions.changeOwner.href = `${changeOwnerUrl}?domain=${
-                this.domain.name
-              }`;
-            }
-          })
-          .finally(() => { this.loading.changeOwner = false; });
       }
+      const changeOwnerClassic = !_.includes(
+        this.Domain.extensionsChangeOwnerByOrder,
+        _.last(this.domain.name.split('.')),
+      );
+      return this.User.getUrlOf(changeOwnerClassic ? 'changeOwner' : 'domainOrderChange')
+        .then((changeOwnerUrl) => {
+          if (changeOwnerClassic) {
+            this.actions.changeOwner.href = changeOwnerUrl;
+          } else {
+            this.actions.changeOwner.href = `${changeOwnerUrl}?domain=${
+              this.domain.name
+            }`;
+          }
+        })
+        .finally(() => { this.loading.changeOwner = false; });
     }
 
     getAllDomInfos(serviceName) {

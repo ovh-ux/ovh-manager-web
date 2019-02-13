@@ -30,10 +30,6 @@ angular.module('App').controller(
 
       this.domain = this.$scope.ctrlDomain.domain;
 
-      const changeOwnerClassic = !_.includes(
-        this.Domain.extensionsChangeOwnerByOrder,
-        _.last(this.domain.name.split('.')),
-      );
       const updateOwnerUrl = this.getUpdateOwnerUrl(this.domain);
 
       this.tabMenu = {
@@ -47,38 +43,11 @@ angular.module('App').controller(
             type: 'LINK',
           },
           {
-            label: this.$translate.instant('contacts_management'),
-            target: `#/useraccount/contacts?tab=SERVICES&serviceName=${
-              this.domain.name
-            }`,
-            text: this.$translate.instant('hosting_tab_menu_contacts'),
-            type: 'LINK',
-          },
-          {
-            label: this.$translate.instant('core_change_owner'),
-            target: '',
-            text: changeOwnerClassic
-              ? ''
-              : this.$translate.instant('core_change_owner_order'),
-            type: 'EXTERNAL_LINK',
-          },
-          {
             label: this.$translate.instant('domain_configuration_update_owner'),
             target: updateOwnerUrl.target,
             fn: () => this.handleOwnerUrlError(updateOwnerUrl.error),
             type: 'ACTION',
             disabled: !updateOwnerUrl.target,
-          },
-          {
-            type: 'SEPARATOR',
-          },
-          {
-            label: this.$translate.instant('domain_tab_menu_resiliate'),
-            target: `#/billing/autoRenew?selectedType=DOMAIN&searchText=${
-              this.domain.name
-            }`,
-            text: this.$translate.instant('hosting_tab_menu_resiliate_infos'),
-            type: 'LINK',
           },
         ],
       };
@@ -92,19 +61,10 @@ angular.module('App').controller(
       this.$q
         .all({
           domain: this.Domain.getSelected(this.$stateParams.productId),
-          changeOwnerUrl: this.User.getUrlOf(changeOwnerClassic ? 'changeOwner' : 'domainOrderChange'),
         })
-        .then(({ domain, changeOwnerUrl }) => {
+        .then(({ domain }) => {
           if (domain.managedByOvh) {
             this.tabs = _.filter(this.tabs, tab => tab !== 'DNSSEC');
-          }
-
-          if (changeOwnerClassic) {
-            this.tabMenu.items[2].target = changeOwnerUrl;
-          } else {
-            this.tabMenu.items[2].target = `${changeOwnerUrl}?domain=${
-              domain.name
-            }`;
           }
 
           if (_.isObject(domain.whoisOwner)) {
@@ -128,6 +88,7 @@ angular.module('App').controller(
     }
 
     setSelectedTab(tab, trackPageOnly) {
+      console.log(tab);
       if (_.includes(this.tabs, tab)) {
         this.selectedTab = tab;
       } else {
