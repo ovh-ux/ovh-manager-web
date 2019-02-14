@@ -481,7 +481,7 @@
    <translation id="domain_configuration_dns_entry_delete_step1_subdomain" qtlid="129183">Subdomena</translation>
    <translation id="domain_configuration_dns_entry_delete_step1_target" qtlid="47644">Adres docelowy</translation>
    <translation id="domain_configuration_dns_entry_mass_delete_step1_question_1" qtlid="192071">Czy na pewno chcesz usunąć ten wpis ze strefy DNS?</translation>
-   <translation id="domain_configuration_dns_entry_mass_delete_step1_question_other" qtlid="192084">Czy na pewno chcesz usunąć te {} wpisy ze strefy DNS?</translation>
+   <translation id="domain_configuration_dns_entry_mass_delete_step1_question_other" qtlid="192084">Czy na pewno chcesz usunąć te {} rekordy ze strefy DNS?</translation>
    <translation id="domain_configuration_dns_entry_delete_success" qtlid="129195">Wpis został usunięty ze strefy DNS.</translation>
    <translation id="domain_configuration_dns_entry_delete_fail" qtlid="129207">Wystąpił błąd podczas usuwania wpisu {0} ze strefy DNS.</translation>
    <translation id="domain_configuration_dns_entry_delete_mass_success" qtlid="192097">Wpisy zostały usunięte ze strefy DNS.</translation>
@@ -520,10 +520,8 @@
    <translation id="domain_configuration_dns_entry_add_step3_alert" qtlid="195048">Propagacja zmian w strefie DNS trwa około 24 godziny.</translation>
 
    <translation id="domain_configuration_dns_entry_add_step3_check_warning1" qtlid="215065">Uwaga, mogą wystąpić konflikty:</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning2" qtlid="195074">Dla jednej subdomeny można dodać jedno pole CNAME.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="195087">Nie można dodać pola A i AAAA dla tej samej subdomeny.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning4" qtlid="215078">Ten wpis istnieje już w Twojej strefie DNS lub pole typu CNAME istnieje dla tej subdomeny.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning5" qtlid="215091">Ten wpis już istnieje w Twojej strefie DNS.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning2" qtlid="519883">Le sous-domaine utilise déjà un enregistrement DNS. Vous ne pouvez pas enregistrer de champ CNAME en raison d'une incompatibilité. Supprimez les enregistrements existants pour ce sous-domaine, afin de pouvoir en ajouter un, de type CNAME.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="519844">Subdomena jest już używana przez rekord CNAME. URekordy CNAME nie mogą współistnieć z innymi rekordami w tej samej subdomenie.</translation>
 
    <translation id="domain_configuration_dns_entry_add_success" qtlid="129243">Wpis został dodany do strefy DNS.</translation>
    <translation id="domain_configuration_dns_entry_add_fail" qtlid="129255">Wystąpił błąd podczas dodawania wpisu do strefy DNS.</translation>

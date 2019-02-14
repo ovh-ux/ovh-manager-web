@@ -1,3 +1,47 @@
+## [13.13.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.13.4...v13.13.5) (2019-02-13)
+
+
+
+## [13.13.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.13.3...v13.13.4) (2019-02-12)
+
+
+### Bug Fixes
+
+* **deps:** upgrade emailpro, exchange and sharepoint modules ([9a503ee](https://github.com/ovh-ux/ovh-manager-web/commit/9a503ee))
+* **deps:** upgrade exchange module ([4009b8f](https://github.com/ovh-ux/ovh-manager-web/commit/4009b8f))
+* **deps:** upgrade ovh-module-sharepoint to v7.1.2 ([2441a5b](https://github.com/ovh-ux/ovh-manager-web/commit/2441a5b))
+* **domain:**  do not track pages which have tabs ([#916](https://github.com/ovh-ux/ovh-manager-web/issues/916)) ([f8cfcec](https://github.com/ovh-ux/ovh-manager-web/commit/f8cfcec))
+* **domain:** fix cname conflict text ([#910](https://github.com/ovh-ux/ovh-manager-web/issues/910)) ([a933198](https://github.com/ovh-ux/ovh-manager-web/commit/a933198))
+* **hosting.dasboard:** move tile to the latest oui-kit standards ([#897](https://github.com/ovh-ux/ovh-manager-web/issues/897)) ([8c6baf0](https://github.com/ovh-ux/ovh-manager-web/commit/8c6baf0))
+* **i18n:** extract translations ([2becbca](https://github.com/ovh-ux/ovh-manager-web/commit/2becbca))
+* **i18n:** retrieve translations ([cfc5eeb](https://github.com/ovh-ux/ovh-manager-web/commit/cfc5eeb))
+* **i18n:** retrieve translations ([dd42fdd](https://github.com/ovh-ux/ovh-manager-web/commit/dd42fdd))
+* **i18n:** submit translations ([8946e67](https://github.com/ovh-ux/ovh-manager-web/commit/8946e67))
+* **i18n:** submit translations ([d141ad8](https://github.com/ovh-ux/ovh-manager-web/commit/d141ad8))
+
+
+
+## [13.13.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.13.2...v13.13.3) (2019-02-05)
+
+
+### Bug Fixes
+
+* **navbar:** display navbar for all subsidiary ([4a8a891](https://github.com/ovh-ux/ovh-manager-web/commit/4a8a891))
+
+
+
+## [13.13.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.13.1...v13.13.2) (2019-02-04)
+
+
+### Bug Fixes
+
+* **domain:** exclude cname record while checking for duplicates ([#906](https://github.com/ovh-ux/ovh-manager-web/issues/906)) ([323ea01](https://github.com/ovh-ux/ovh-manager-web/commit/323ea01))
+* **i18n:** retrieve translations ([ca28eb6](https://github.com/ovh-ux/ovh-manager-web/commit/ca28eb6))
+* **i18n:** submit translations ([a0383e2](https://github.com/ovh-ux/ovh-manager-web/commit/a0383e2))
+* **navbar:** revamp style and texts ([#872](https://github.com/ovh-ux/ovh-manager-web/issues/872)) ([86233ef](https://github.com/ovh-ux/ovh-manager-web/commit/86233ef))
+
+
+
 ## [13.13.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.13.0...v13.13.1) (2019-01-30)
 
 

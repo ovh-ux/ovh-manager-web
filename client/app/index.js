@@ -49,8 +49,6 @@ import 'ovh-angular-user-pref';
 import 'script-loader!ng-file-upload/dist/ng-file-upload.min.js';
 import 'angular-xeditable';
 import 'script-loader!jsurl/lib/jsurl.js';
-import 'ovh-angular-sso-auth';
-import 'ovh-angular-sso-auth-modal-plugin';
 import 'ovh-angular-sidebar-menu/dist/ovh-angular-sidebar-menu.min';
 import 'angular-translate';
 import 'angular-translate-loader-partial';

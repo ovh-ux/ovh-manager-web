@@ -498,7 +498,7 @@ Questa operazione reinizializza la configurazione corrente e trasferisce tutto s
    <translation id="domain_configuration_dns_entry_delete_step1_subdomain" qtlid="129183">Sotto dominio</translation>
    <translation id="domain_configuration_dns_entry_delete_step1_target" qtlid="47644">Bersaglio</translation>
    <translation id="domain_configuration_dns_entry_mass_delete_step1_question_1" qtlid="192071">Vuoi davvero eliminare questo record dalla zona DNS?</translation>
-   <translation id="domain_configuration_dns_entry_mass_delete_step1_question_other" qtlid="192084">Vuoi davvero eliminare questi {} record dalla zona DNS?</translation>
+   <translation id="domain_configuration_dns_entry_mass_delete_step1_question_other" qtlid="192084">Vuoi davvero eliminare questi {0} record dalla zona DNS?</translation>
    <translation id="domain_configuration_dns_entry_delete_success" qtlid="129195">L'accesso alla zona DNS è stato eliminato.</translation>
    <translation id="domain_configuration_dns_entry_delete_fail" qtlid="129207">Si è verificato un errore durante l'eliminazione dell'accesso {0} alla zona DNS.</translation>
    <translation id="domain_configuration_dns_entry_delete_mass_success" qtlid="192097">I record sono stati eliminati dalla tua zona DNS.</translation>
@@ -537,10 +537,8 @@ Questa operazione reinizializza la configurazione corrente e trasferisce tutto s
    <translation id="domain_configuration_dns_entry_add_step3_alert" qtlid="195048">La modifica è immediata nella zona DNS, ma la propagazione può richiedere fino a 24 ore.</translation>
 
    <translation id="domain_configuration_dns_entry_add_step3_check_warning1" qtlid="215065">Attenzione, possono verificarsi alcuni conflitti:</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning2" qtlid="195074">È possibile avere un solo record di tipo CNAME per ogni sottodominio.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="195087">Non è possibile avere record A o AAAA sullo stesso sottodominio.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning4" qtlid="215078">Questo record esiste già nella tua zona DNS. Su questo sottodominio è già presente un record di tipo CNAME.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning5" qtlid="215091">Questo record esiste già nella tua zona DNS.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning2" qtlid="519883">Le sous-domaine utilise déjà un enregistrement DNS. Vous ne pouvez pas enregistrer de champ CNAME en raison d'une incompatibilité. Supprimez les enregistrements existants pour ce sous-domaine, afin de pouvoir en ajouter un, de type CNAME.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="519844">Questo sottodominio è già utilizzato da un CNAME. Questo tipo di record non può coesistere con altri record sullo stesso sottodominio.</translation>
 
    <translation id="domain_configuration_dns_entry_add_success" qtlid="129243">L'accesso è stato aggiunto alla zona DNS.</translation>
    <translation id="domain_configuration_dns_entry_add_fail" qtlid="129255">Si è verificato un errore durante l'aggiunta dell'accesso alla zona DNS.</translation>

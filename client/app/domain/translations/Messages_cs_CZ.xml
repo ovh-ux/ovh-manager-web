@@ -522,10 +522,8 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_dns_entry_add_step3_alert" qtlid="195048">Změna bude na DNS zóně provedena okamžitě, ale berte v potaz čas propagace (až 24 hodin).</translation>
 
    <translation id="domain_configuration_dns_entry_add_step3_check_warning1" qtlid="215065">Pozor, může dojít k jednomu či více konfliktům:</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning2" qtlid="195074">Na subdoméně můžou být pouze záznamy CNAME.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="195087">Na subdoméně můžou být pouze záznamy A a AAAA.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning4" qtlid="215078">Buďto tento záznam v DNS zóně již existuje, nebo je typ záznamu CNAME uveden na této subdoméně.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning5" qtlid="215091">Tento záznam již ve Vaší DNS zóně existuje.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning2" qtlid="519883">Le sous-domaine utilise déjà un enregistrement DNS. Vous ne pouvez pas enregistrer de champ CNAME en raison d'une incompatibilité. Supprimez les enregistrements existants pour ce sous-domaine, afin de pouvoir en ajouter un, de type CNAME.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="519844">Le sous-domaine est déjà utilisé par un enregistrement CNAME. Un enregistrement CNAME n'est pas autorisé à coexister avec d'autres champs sur le même sous-domaine.</translation>
 
    <translation id="domain_configuration_dns_entry_add_success" qtlid="129243">Došlo k přidání záznamu do DNS zóny.</translation>
    <translation id="domain_configuration_dns_entry_add_fail" qtlid="129255">Při přidávání záznamu do DNS zóny došlo k chybě.</translation>
