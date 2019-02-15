@@ -7,6 +7,8 @@ angular.module('App').controller(
       $translate,
       $window,
       Alerter,
+      Hosting,
+      HOSTING,
       HostingDomain,
       hostingSSLCertificate,
       hostingSSLCertificateType,
@@ -18,6 +20,8 @@ angular.module('App').controller(
       this.$translate = $translate;
 
       this.Alerter = Alerter;
+      this.Hosting = Hosting;
+      this.HOSTING = HOSTING;
       this.HostingDomain = HostingDomain;
       this.hostingSSLCertificate = hostingSSLCertificate;
       this.hostingSSLCertificateType = hostingSSLCertificateType;
@@ -35,6 +39,7 @@ angular.module('App').controller(
           isRetrievingInitialData: true,
         },
         canOrderLetEncryptCertificate: true,
+        sslCharLimitExceeded: false,
       };
 
       this.step2 = {
@@ -52,6 +57,7 @@ angular.module('App').controller(
       ) {
         this.selectedCertificateType = this.certificateTypes.IMPORTED.name;
         this.step1.canOrderLetEncryptCertificate = false;
+        this.step1.sslCharLimitExceeded = true;
       }
 
       this.$scope.onStep1Load = () => this.onStep1Load();
@@ -76,8 +82,9 @@ angular.module('App').controller(
             },
           )
           : null))
-        .then(() => {
-          this.step1.canOrderPaidCertificate = true;
+        .then(() => this.Hosting.getSelected(this.$stateParams.productId))
+        .then((hosting) => {
+          this.step1.canOrderPaidCertificate = hosting.offer !== this.HOSTING.offers.START_10_M;
         })
         .catch((err) => {
           this.step1.cannotOrderPaidCertificateErrorMessage = this.$translate.instant(
@@ -86,6 +93,14 @@ angular.module('App').controller(
           );
           this.step1.canOrderPaidCertificate = false;
         })
+        .then(() => this.hostingSSLCertificate.retrievingCertificate(
+          this.$stateParams.productId,
+        ).then((certificate) => {
+          if (certificate.provider === this.certificateTypes.LETS_ENCRYPT.providerName) {
+            this.selectedCertificateType = this.certificateTypes.IMPORTED.name;
+            this.step1.canOrderLetEncryptCertificate = false;
+          }
+        }))
         .finally(() => {
           this.step1.loading.isRetrievingInitialData = false;
         });
