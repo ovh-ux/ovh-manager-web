@@ -11,7 +11,6 @@ angular
       Hosting,
       HostingDomain,
       hostingSSLCertificate,
-      $timeout,
       Alerter,
     ) => {
       $scope.domains = null;
@@ -142,6 +141,41 @@ angular
         $scope.setAction('multisite/update/hosting-multisite-update', domain);
       };
 
+      $scope.restartDomain = domain => HostingDomain.restartAttachedDomain(
+        $stateParams.productId,
+        domain.name,
+      ).then((data) => {
+        if (data.status === 'todo') {
+          Alerter.success(
+            'restarting domain',
+            $scope.alerts.main,
+          );
+          HostingDomain.pollRestartDomain($stateParams.productId, domain.name);
+        }
+      }).catch((err) => {
+        Alerter.alertFromSWS(
+          $translate.instant('hosting_dashboard_ssl_details_error'),
+          err,
+          $scope.alerts.main,
+        );
+      });
+
+      $scope.$on('hostingDomain.restart.done', () => {
+        Alerter.success(
+          'done restarting domain',
+          $scope.alerts.main,
+        );
+      });
+
+      $scope.$on('hostingDomain.restart.error', (err) => {
+        Alerter.alertFromSWS(
+          'error restarting',
+          _.get(err, 'data', err),
+          $scope.alerts.main,
+        );
+      });
+
+
       $scope.$on(Hosting.events.tabDomainsRefresh, () => {
         $scope.hasResult = false;
         $scope.loading.init = true;
@@ -187,7 +221,7 @@ angular
         );
       });
 
-      $scope.$on('hostingDomain.attachDomain.error', (event, err) => {
+      $scope.$on('hostingDomain.attachDomain.error', (err) => {
         $scope.$broadcast('paginationServerSide.reload');
         Alerter.alertFromSWS(
           $translate.instant('hosting_tab_DOMAINS_configuration_add_failure'),
@@ -233,7 +267,7 @@ angular
         $scope.$broadcast('paginationServerSide.reload');
       });
 
-      $scope.$on('hostingDomain.detachDomain.error', (event, err) => {
+      $scope.$on('hostingDomain.detachDomain.error', (err) => {
         $scope.$broadcast('paginationServerSide.reload');
         Alerter.alertFromSWS(
           $translate.instant('hosting_tab_DOMAINS_configuration_remove_failure'),
@@ -256,12 +290,17 @@ angular
             { fn: 'web/detachDomain' },
             $stateParams.productId,
           ),
+          HostingDomain.getTaskIds(
+            { fn: 'attachedDomain/restart' },
+            $stateParams.productId,
+          ),
         ]).then((tasks) => {
-          const taskIds = _.union(tasks[0], tasks[1], tasks[2]);
+          const taskIds = _.union(tasks[0], tasks[1], tasks[2], tasks[3]);
           [
             'attachedDomain/create',
             'attachedDomain/update',
             'web/detachDomain',
+            'attachedDomain/restart',
           ].forEach((name, key) => {
             if (tasks[key].length > 0) {
               HostingDomain.pollRequest({

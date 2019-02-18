@@ -23,4 +23,9 @@
             data-ng-click="detachDomain(domain)"
             data-ng-if="excludeAttachedDomains.indexOf(domain.displayName) === -1">
     </button>
+    <button class="btn btn-link" type="button"
+            data-ng-if="hosting.isCloudWeb"
+            data-translate="hosting_tab_DOMAINS_table_popover_restart"
+            data-ng-click="restartDomain(domain)">
+    </button>
 </div>
