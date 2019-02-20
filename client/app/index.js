@@ -61,7 +61,6 @@ import 'ovh-angular-responsive-tabs';
 import 'script-loader!@bower_components/ckeditor/ckeditor.js';
 import 'script-loader!@bower_components/ng-ckeditor/ng-ckeditor.js';
 import 'ovh-angular-otrs';
-import 'ovh-angular-apiv7';
 import 'ovh-api-services';
 import 'ovh-angular-toaster';
 import 'script-loader!@bower_components/messenger/build/js/messenger.min.js';
