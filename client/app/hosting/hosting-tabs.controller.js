@@ -121,28 +121,6 @@ angular.module('App').controller(
               type: 'LINK',
             });
           }
-
-          this.tabMenu.items = this.tabMenu.items.concat([
-            {
-              label: this.$translate.instant('contacts_management'),
-              target: `#/useraccount/contacts?tab=SERVICES&serviceName=${this.$stateParams.productId}`,
-              type: 'LINK',
-            },
-            {
-              label: this.$translate.instant('core_change_owner'),
-              target: this.$scope.changeOwnerUrl,
-              type: 'EXTERNAL_LINK',
-            },
-            {
-              type: 'SEPARATOR',
-            },
-            {
-              label: this.$translate.instant('hosting_tab_menu_resiliate'),
-              target: `#/billing/autoRenew?selectedType=HOSTING_WEB&searchText=${this.$stateParams.productId}`,
-              type: 'LINK',
-              styles: 'text-warning',
-            },
-          ]);
         });
     }
 
