@@ -1,3 +1,20 @@
+# [13.14.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.13.5...v13.14.0) (2019-02-20)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-module-emailpro to v7.1.5 ([769f70f](https://github.com/ovh-ux/ovh-manager-web/commit/769f70f))
+* **i18n:** retrieve translations ([e098721](https://github.com/ovh-ux/ovh-manager-web/commit/e098721))
+* **i18n:** submit translations ([5d6c0fd](https://github.com/ovh-ux/ovh-manager-web/commit/5d6c0fd))
+
+
+### Features
+
+* **domain:** add new plan tile ([#918](https://github.com/ovh-ux/ovh-manager-web/issues/918)) ([49d434e](https://github.com/ovh-ux/ovh-manager-web/commit/49d434e))
+* **email-domain:** addition of plan tile ([#895](https://github.com/ovh-ux/ovh-manager-web/issues/895)) ([076381a](https://github.com/ovh-ux/ovh-manager-web/commit/076381a))
+
+
+
 ## [13.13.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.13.4...v13.13.5) (2019-02-13)
 
 
