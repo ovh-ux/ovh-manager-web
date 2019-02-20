@@ -45,6 +45,11 @@ angular
           .then((domains) => {
             $scope.domains = domains;
             $scope.hasResult = !_($scope.domains).isEmpty();
+            $scope.domains.list.results.forEach((domain) => {
+              if (domain.status === 'updating') {
+                HostingDomain.pollRestartDomain($stateParams.productId, domain.name);
+              }
+            });
           })
           .catch((error) => {
             Alerter.alertFromSWS(
@@ -144,32 +149,36 @@ angular
       $scope.restartDomain = domain => HostingDomain.restartAttachedDomain(
         $stateParams.productId,
         domain.name,
-      ).then((data) => {
-        if (data.status === 'todo') {
-          Alerter.success(
-            'restarting domain',
-            $scope.alerts.main,
-          );
-          HostingDomain.pollRestartDomain($stateParams.productId, domain.name);
-        }
+      ).then(() => {
+        Alerter.success(
+          $translate.instant('hosting_tab_DOMAINS_multisite_restart_start'),
+          $scope.alerts.main,
+        );
+        _.extend(_.findWhere($scope.domains.list.results, { name: domain.name }), { status: 'updating' });
+        return HostingDomain.pollRestartDomain($stateParams.productId, domain.name);
       }).catch((err) => {
         Alerter.alertFromSWS(
-          $translate.instant('hosting_dashboard_ssl_details_error'),
+          $translate.instant('hosting_tab_DOMAINS_multisite_restart_error'),
           err,
           $scope.alerts.main,
         );
       });
 
-      $scope.$on('hostingDomain.restart.done', () => {
+      $scope.$on('hostingDomain.restart.done', (response, data) => {
+        _.extend(
+          _.findWhere($scope.domains.list.results, { name: data.domain }),
+          { status: data.status },
+        );
         Alerter.success(
-          'done restarting domain',
+          $translate.instant('hosting_tab_DOMAINS_multisite_restart_done', { t0: data.domain }),
           $scope.alerts.main,
         );
       });
 
       $scope.$on('hostingDomain.restart.error', (err) => {
+        $scope.$broadcast('paginationServerSide.reload');
         Alerter.alertFromSWS(
-          'error restarting',
+          $translate.instant('hosting_tab_DOMAINS_multisite_restart_error'),
           _.get(err, 'data', err),
           $scope.alerts.main,
         );
@@ -290,17 +299,12 @@ angular
             { fn: 'web/detachDomain' },
             $stateParams.productId,
           ),
-          HostingDomain.getTaskIds(
-            { fn: 'attachedDomain/restart' },
-            $stateParams.productId,
-          ),
         ]).then((tasks) => {
           const taskIds = _.union(tasks[0], tasks[1], tasks[2], tasks[3]);
           [
             'attachedDomain/create',
             'attachedDomain/update',
             'web/detachDomain',
-            'attachedDomain/restart',
           ].forEach((name, key) => {
             if (tasks[key].length > 0) {
               HostingDomain.pollRequest({

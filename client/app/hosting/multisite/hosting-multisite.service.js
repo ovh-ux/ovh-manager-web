@@ -454,9 +454,8 @@ angular.module('services').service(
       return this.Poll.poll(`/hosting/web/${serviceName}/attachedDomain/${attachedDomain}`, null, {
         namespace: 'hostingDomain.request',
         successRule: { status: 'created' },
-      }).then((response) => {
-        this.$rootScope.$broadcast('hostingDomain.restart.done', response);
-        return response;
+      }).then((task) => {
+        this.$rootScope.$broadcast('hostingDomain.restart.done', task);
       }).catch((err) => {
         this.$rootScope.$broadcast(
           'hostingDomain.restart.error',

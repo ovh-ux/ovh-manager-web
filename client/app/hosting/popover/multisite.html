@@ -2,7 +2,7 @@
     <button class="btn btn-link" type="button"
             data-translate="hosting_tab_DOMAINS_table_popover_modify"
             data-ng-click="modifyDomain(domain)"
-            data-ng-disabled="domain.isUpdating"
+            data-ng-disabled="domain.status === 'updating'"
             data-ng-if="excludeAttachedDomains.indexOf(domain.displayName) === -1">
     </button>
     <div data-ng-controller="HostingTabDomainsMultisiteLogs"
@@ -21,10 +21,12 @@
     <button class="btn btn-link" type="button"
             data-translate="hosting_tab_DOMAINS_table_popover_delete"
             data-ng-click="detachDomain(domain)"
+            data-ng-disabled="domain.status === 'updating'"
             data-ng-if="excludeAttachedDomains.indexOf(domain.displayName) === -1">
     </button>
     <button class="btn btn-link" type="button"
             data-ng-if="hosting.isCloudWeb"
+            data-ng-disabled="domain.status === 'updating'"
             data-translate="hosting_tab_DOMAINS_table_popover_restart"
             data-ng-click="restartDomain(domain)">
     </button>
