@@ -1,3 +1,12 @@
+## [13.14.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.14.0...v13.14.1) (2019-02-21)
+
+
+### Bug Fixes
+
+* **hosting:** change main domain action availability ([1d87766](https://github.com/ovh-ux/ovh-manager-web/commit/1d87766))
+
+
+
 # [13.14.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.13.5...v13.14.0) (2019-02-20)
 
 
