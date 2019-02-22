@@ -157,6 +157,7 @@ angular
         _.extend(_.findWhere($scope.domains.list.results, { name: domain.name }), { status: 'updating' });
         return HostingDomain.pollRestartDomain($stateParams.productId, domain.name);
       }).catch((err) => {
+        $scope.$broadcast('paginationServerSide.reload');
         Alerter.alertFromSWS(
           $translate.instant('hosting_tab_DOMAINS_multisite_restart_error'),
           err,
@@ -175,7 +176,7 @@ angular
         );
       });
 
-      $scope.$on('hostingDomain.restart.error', (err) => {
+      $scope.$on('hostingDomain.restart.error', (event, err) => {
         $scope.$broadcast('paginationServerSide.reload');
         Alerter.alertFromSWS(
           $translate.instant('hosting_tab_DOMAINS_multisite_restart_error'),
@@ -230,7 +231,7 @@ angular
         );
       });
 
-      $scope.$on('hostingDomain.attachDomain.error', (err) => {
+      $scope.$on('hostingDomain.attachDomain.error', (event, err) => {
         $scope.$broadcast('paginationServerSide.reload');
         Alerter.alertFromSWS(
           $translate.instant('hosting_tab_DOMAINS_configuration_add_failure'),
@@ -276,7 +277,7 @@ angular
         $scope.$broadcast('paginationServerSide.reload');
       });
 
-      $scope.$on('hostingDomain.detachDomain.error', (err) => {
+      $scope.$on('hostingDomain.detachDomain.error', (event, err) => {
         $scope.$broadcast('paginationServerSide.reload');
         Alerter.alertFromSWS(
           $translate.instant('hosting_tab_DOMAINS_configuration_remove_failure'),
@@ -300,7 +301,7 @@ angular
             $stateParams.productId,
           ),
         ]).then((tasks) => {
-          const taskIds = _.union(tasks[0], tasks[1], tasks[2], tasks[3]);
+          const taskIds = _.union(tasks[0], tasks[1], tasks[2]);
           [
             'attachedDomain/create',
             'attachedDomain/update',

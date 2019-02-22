@@ -981,6 +981,13 @@
     request "^2.88.0"
     webpack-dev-server "^3.1.9"
 
+"@ovh-ux/ng-ovh-apiv7@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-apiv7/-/ng-ovh-apiv7-2.0.0.tgz#838e6c224bb37928de84b4a0eb8c0c8a6713f1d7"
+  integrity sha512-EnJEEmoNCTjnCv/501GDZjxYt17YgGbVBr6BfqF6kD4FSf+TQpsP2sOKEXDLIj0oJUYRhU4z5d97AjX9zFSrFg==
+  dependencies:
+    lodash "^4.17.11"
+
 "@ovh-ux/ng-ovh-payment-method@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-payment-method/-/ng-ovh-payment-method-1.0.0.tgz#78fcccf0e8c604cc00011cf98ad38c0156bf9ea5"
@@ -7581,11 +7588,6 @@ ovh-angular-actions-menu@ovh-ux/ovh-angular-actions-menu#^3.0.0:
   version "3.2.0"
   resolved "https://codeload.github.com/ovh-ux/ovh-angular-actions-menu/tar.gz/b63ed0d2dbefc915b0bb18dc426ea7b83cc00c50"
 
-ovh-angular-apiv7@^1.2.8:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/ovh-angular-apiv7/-/ovh-angular-apiv7-1.2.8.tgz#5ae631d70029b3313a3aa47fb1901b168693d5e9"
-  integrity sha1-WuYx1wApszE6OqR/sZAbFoaT1ek=
-
 ovh-angular-export-csv@ovh-ux/ovh-angular-export-csv#^0.3.2:
   version "0.3.2"
   resolved "https://codeload.github.com/ovh-ux/ovh-angular-export-csv/tar.gz/fc21b58b246a011afc2b8fbcdd35c9b63d604293"
@@ -7651,10 +7653,10 @@ ovh-angular-user-pref@ovh-ux/ovh-angular-user-pref#^0.3.1:
   version "0.3.1"
   resolved "https://codeload.github.com/ovh-ux/ovh-angular-user-pref/tar.gz/71d0b3c0606a2e2052505bda2a8e2ff06b0156e1"
 
-ovh-api-services@^3.31.0:
-  version "3.31.0"
-  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-3.31.0.tgz#b4b50dd8816b36b9266c6362c922b6c3fdda8996"
-  integrity sha512-ngb65X6BEBvR+dFYKdu8wgEKqKwFY1WFQGiJQoavQ1H0xEilAiURwkVXCpTUVufTA17fqdM1Ob4IY8WraQ6eAQ==
+ovh-api-services@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/ovh-api-services/-/ovh-api-services-4.0.0.tgz#0337fd28ed29337b1e60e8eafa6bcb6a9fea426e"
+  integrity sha512-GE2Z40rOXqAwM2Zvaxr4a+jaldQDgNN3sWpY0aQBzbvuYeZIf6K10XESB9YytYk/51qHkV6CmTFZf52vqVfcQQ==
   dependencies:
     lodash "^3.10.1"
 
@@ -7666,10 +7668,10 @@ ovh-manager-webfont@ovh-ux/ovh-manager-webfont#^1.0.1:
   version "1.0.2"
   resolved "https://codeload.github.com/ovh-ux/ovh-manager-webfont/tar.gz/1d759c46c8c3ead4bc5e887a2336abd124a17c58"
 
-ovh-module-emailpro@^7.1.3:
-  version "7.1.3"
-  resolved "https://registry.yarnpkg.com/ovh-module-emailpro/-/ovh-module-emailpro-7.1.3.tgz#55a2669e7cc1cdec2bc911b41c3131c9bc394452"
-  integrity sha512-KH/3DDlV80uLsQ3CSEFVK6vcAzvRs0LjbmGMt5pTjMv463NKiFrlrYvxy0BELa57pJqK6zPv+db/4uGnD4lLaQ==
+ovh-module-emailpro@^7.1.5:
+  version "7.1.5"
+  resolved "https://registry.yarnpkg.com/ovh-module-emailpro/-/ovh-module-emailpro-7.1.5.tgz#fdd35acea046dd3979fe22fc588e0f192086f08d"
+  integrity sha512-9GWv3zYbzQc8Vp42f/01ooSVZfsIRXfxY/04F/U9WBFtXZOpt+k3UGvQuuYgjbRz2ucO3D1Gx2fCw7G+7xPB8A==
   dependencies:
     angular "~1.6.10"
     lodash "~3.9.3"

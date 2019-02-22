@@ -78,7 +78,7 @@
                         <tbody data-ng-if="!loading.domains && domains.list.results.length > 0">
                             <tr data-ng-repeat="domain in domains.list.results track by $index">
                                 <td class="word-break">
-                                    <span data-ng-bind="domain.displayName"></span>
+                                    <span data-ng-bind="::domain.displayName"></span>
                                     <oui-spinner data-size="s" data-ng-if="hosting.isCloudWeb && domain.status === 'updating'"></oui-spinner>
                                 </td>
                                 <td data-ng-bind="domain.path"></td>

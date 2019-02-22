@@ -446,7 +446,6 @@ angular.module('services').service(
 
     /**
      * Poll for restart of attached domain
-     * must go away
      * @param {string} serviceName
      * @param {string} attachedDomain
      */

@@ -13,7 +13,7 @@
         </dt>
         <dd class="oui-tile__description">
             <div data-ng-if="!$ctrl.shouldDeleteAtExpiration() && $ctrl.isInAutoRenew()">
-                <span data-ng-bind=" ::$ctrl.getDate() | date:'MMM yyyy'"></span>
+                <span data-ng-bind=" ::$ctrl.serviceInfos.expiration | date:'MMM yyyy'"></span>
             </div>
             <div data-ng-if="$ctrl.shouldDeleteAtExpiration() || $ctrl.isExpired() || !$ctrl.isInAutoRenew()">
                 <span data-ng-bind=" ::$ctrl.getDate() | date:'mediumDate'"></span>
