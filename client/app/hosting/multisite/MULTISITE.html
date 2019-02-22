@@ -79,7 +79,7 @@
                             <tr data-ng-repeat="domain in domains.list.results track by $index">
                                 <td class="word-break">
                                     <span data-ng-bind="::domain.displayName"></span>
-                                    <oui-spinner data-size="s" data-ng-if="hosting.isCloudWeb && domain.status === 'updating'"></oui-spinner>
+                                    <oui-spinner data-size="s" data-ng-if="hosting.isCloudWeb && domain.status === status.UPDATING"></oui-spinner>
                                 </td>
                                 <td data-ng-bind="domain.path"></td>
                                 <td data-ng-if="hosting.isCloudWeb" data-ng-bind="domain.runtime.name"></td>

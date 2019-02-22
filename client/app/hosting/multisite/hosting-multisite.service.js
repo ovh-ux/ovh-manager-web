@@ -430,12 +430,7 @@ angular.module('services').service(
       );
     }
 
-    /**
-     * Restart the virtual host of the attached domain
-     * @param {string} serviceName
-     * @param {string} attachedDomain
-     */
-    restartAttachedDomain(serviceName, attachedDomain) {
+    restartVirtualHostOfAttachedDomain(serviceName, attachedDomain) {
       return this.OvhHttp.post(
         `/hosting/web/${serviceName}/attachedDomain/${attachedDomain}/restart`,
         {

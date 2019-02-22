@@ -24,6 +24,9 @@ angular
         domains: false,
         init: true,
       };
+      $scope.status = {
+        UPDATING: 'updating',
+      };
 
       $scope.loadDomains = function loadDomains(count, offset) {
         $scope.loading.domains = true;
@@ -46,7 +49,7 @@ angular
             $scope.domains = domains;
             $scope.hasResult = !_($scope.domains).isEmpty();
             $scope.domains.list.results.forEach((domain) => {
-              if (domain.status === 'updating') {
+              if (domain.status === $scope.status.UPDATING) {
                 HostingDomain.pollRestartDomain($stateParams.productId, domain.name);
               }
             });
@@ -146,7 +149,7 @@ angular
         $scope.setAction('multisite/update/hosting-multisite-update', domain);
       };
 
-      $scope.restartDomain = domain => HostingDomain.restartAttachedDomain(
+      $scope.restartDomain = domain => HostingDomain.restartVirtualHostOfAttachedDomain(
         $stateParams.productId,
         domain.name,
       ).then(() => {
@@ -154,7 +157,10 @@ angular
           $translate.instant('hosting_tab_DOMAINS_multisite_restart_start'),
           $scope.alerts.main,
         );
-        _.extend(_.findWhere($scope.domains.list.results, { name: domain.name }), { status: 'updating' });
+        _.assign(
+          _.find($scope.domains.list.results, { name: domain.name }),
+          { status: $scope.status.UPDATING },
+        );
         return HostingDomain.pollRestartDomain($stateParams.productId, domain.name);
       }).catch((err) => {
         $scope.$broadcast('paginationServerSide.reload');
@@ -166,8 +172,8 @@ angular
       });
 
       $scope.$on('hostingDomain.restart.done', (response, data) => {
-        _.extend(
-          _.findWhere($scope.domains.list.results, { name: data.domain }),
+        _.assign(
+          _.find($scope.domains.list.results, { name: data.domain }),
           { status: data.status },
         );
         Alerter.success(
