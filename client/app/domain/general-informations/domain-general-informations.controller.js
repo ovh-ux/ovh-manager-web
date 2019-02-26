@@ -2,20 +2,20 @@ angular.module('App').controller(
   'DomainTabGeneralInformationsCtrl',
   class DomainTabGeneralInformationsCtrl {
     constructor(
-      $scope,
-      $rootScope,
       $q,
+      $rootScope,
+      $scope,
       $stateParams,
       $translate,
       Alerter,
-      WucAllDom,
+      constants,
       Domain,
       DomainsOwo,
       Hosting,
       HostingDomain,
       OvhApiScreenshot,
       User,
-      constants,
+      WucAllDom,
     ) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
@@ -35,7 +35,9 @@ angular.module('App').controller(
 
     $onInit() {
       this.domain = this.$scope.ctrlDomain.domain;
-
+      this.domainInfos = this.$scope.ctrlDomain.domainInfos;
+      this.allDom = this.$scope.ctrlDomain.allDom;
+      this.allDomInfos = this.$scope.ctrlDomain.allDomInfos;
       this.displayAllOwoSwitch = false;
       this.displayFreeHosting = false;
       this.domainUnlockRegistry = this.constants.DOMAIN.domainUnlockRegistry[
@@ -52,7 +54,10 @@ angular.module('App').controller(
         dnsStatus: false,
         hosting: false,
         screenshot: false,
+        domainInfos: this.$scope.ctrlDomain.loading.domainInfos,
+        changeOwner: false,
       };
+      this.initActions();
       this.dnsStatus = {
         isOk: null,
         isHosted: null,
@@ -115,10 +120,77 @@ angular.module('App').controller(
       this.getAllNameServer(this.domain.name);
       this.getHostingInfos(this.domain.name);
       this.getAssociatedHosting(this.domain.name);
+      this.updateOwnerUrl = this.getUpdateOwnerUrl(this.domain);
 
       if (this.isAllDom) {
         this.getAllDomInfos(this.$stateParams.allDom);
       }
+    }
+
+    initActions() {
+      this.actions = {
+        manageContact: {
+          text: this.$translate.instant('common_manage_contacts'),
+          href: `#/useraccount/contacts?tab=SERVICES&serviceName=${
+            this.domain.name
+          }&category=DOMAIN`,
+          isAvailable: () => true,
+        },
+        changeOwner: {
+          text: this.$translate.instant('core_change_owner'),
+          href: '',
+          isAvailable: () => true,
+        },
+        manageAutorenew: {
+          text: this.$translate.instant('common_manage'),
+          href: `#/billing/autoRenew?searchText=${
+            this.domain.name
+          }&selectedType=DOMAIN`,
+          isAvailable: () => true,
+        },
+      };
+      this.loading.changeOwner = true;
+      if (_.isObject(this.domain.whoisOwner)) {
+        return this.$q
+          .all({
+            domainOrderTradeUrl: this.User.getUrlOf('domainOrderTrade'),
+            orderServiceOption: this.Domain.getOrderServiceOption(this.domain.name),
+          })
+          .then(({ domainOrderTradeUrl, orderServiceOption }) => {
+            if (_.find(orderServiceOption, opt => opt.family === 'trade')) {
+              this.actions.changeOwner.href = domainOrderTradeUrl.replace(
+                '{domain}',
+                this.domain.name,
+              );
+            }
+          }).catch(() => {
+            this.Alerter.error(
+              this.$translate.instant('domain_configuration_fetch_fail'),
+              this.$scope.alerts.main,
+            );
+          }).finally(() => { this.loading.changeOwner = false; });
+      }
+
+      const changeOwnerClassic = !_.includes(
+        this.Domain.extensionsChangeOwnerByOrder,
+        _.last(this.domain.name.split('.')),
+      );
+
+      return this.User.getUrlOf(changeOwnerClassic ? 'changeOwner' : 'domainOrderChange')
+        .then((changeOwnerUrl) => {
+          if (changeOwnerClassic) {
+            this.actions.changeOwner.href = changeOwnerUrl;
+          } else {
+            this.actions.changeOwner.href = `${changeOwnerUrl}?domain=${
+              this.domain.name
+            }`;
+          }
+        }).catch(() => {
+          this.Alerter.error(
+            this.$translate.instant('domain_configuration_fetch_fail'),
+            this.$scope.alerts.main,
+          );
+        }).finally(() => { this.loading.changeOwner = false; });
     }
 
     getAllDomInfos(serviceName) {
@@ -374,6 +446,32 @@ angular.module('App').controller(
           this.vm.owo[fieldName].uiSwitch.disabled = true;
         }
       });
+    }
+
+    getUpdateOwnerUrl(domain) {
+      const ownerUrlInfo = { target: '', error: '' };
+      if (_.has(domain, 'name') && _.has(domain, 'whoisOwner.id')) {
+        ownerUrlInfo.target = `#/useraccount/contact/${domain.name}/${domain.whoisOwner.id}`;
+      } else if (!_.has(domain, 'name')) {
+        ownerUrlInfo.error = this.$translate.instant('domain_tab_REDIRECTION_add_step4_server_cname_error');
+      } else {
+        switch (domain.whoisOwner) {
+          case this.DOMAIN.whoIsStatus.PENDING:
+            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_pending');
+            break;
+          case this.DOMAIN.whoIsStatus.INVALID_CONTACT:
+            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_invalid_contact');
+            break;
+          default:
+            ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_error');
+        }
+      }
+
+      if (ownerUrlInfo.error) {
+        this.Alerter.error(ownerUrlInfo.error, this.$scope.alerts.page);
+      }
+
+      return ownerUrlInfo;
     }
 
     // Actions --------------------------------------------

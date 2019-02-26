@@ -146,6 +146,10 @@ class SessionService {
       products.emails,
       elt => angular.lowercase(elt.displayName || elt.name),
     );
+    const emailProMXPlanProducts = _.sortBy(
+      products.emailsProMXPlan,
+      elt => angular.lowercase(elt.displayName || elt.name),
+    );
 
     // WucProducts filtered
     const hostingProducts = _(products.hostings)
@@ -178,7 +182,10 @@ class SessionService {
     }, {
       name: 'email',
       title: this.$translate.instant('navigation_left_email'),
-      subLinks: this.constructor.getProductsMenu('email.domain', emailProducts),
+      subLinks: _.merge(
+        this.constructor.getProductsMenu('email.domain', emailProducts),
+        this.constructor.getProductsMenu('email-pro', emailProMXPlanProducts),
+      ),
     }, {
       name: 'microsoft',
       title: this.$translate.instant('navigation_left_microsoft'),

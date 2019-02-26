@@ -13,6 +13,9 @@ angular.module('App').config(($stateProvider) => {
     params: {
       tab: null,
     },
+    atInternet: {
+      ignore: true, // this tell AtInternet to not track this state
+    },
     resolve: {
       currentSection: () => 'domain',
       navigationInformations: [
@@ -27,7 +30,7 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['../domain', '../email', '../hosting', '../domain-operation'],
+    translations: ['../core', '../domain', '../email', '../hosting', '../domain-operation'],
   });
 
   $stateProvider.state('app.domain.alldom', {

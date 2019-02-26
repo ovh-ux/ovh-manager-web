@@ -331,6 +331,7 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_whois_success" qtlid="128298">Váš požadavek na změny vztahující se k informacím ve WHOIS byl přijat.</translation>
    <translation id="domain_configuration_whois_fail" qtlid="128310">Při zasílání požadavku na změny vztahující se k informacím ve WHOIS skončil chybou.</translation>
    <translation id="domain_configuration_whois_contracts" qtlid="329044">Pro aktivaci informací WHOIS musíte odsouhlasit smlouvy. <a href="#/useraccount/agreements">Přístup ke smlouvám</a>.</translation>
+   <translation id="domain_configuration_fetch_fail">une erreur s'est produite lors de l'obtention d'informations</translation>
 
    <translation id="domain_exemple" qtlid="182475">Příklad:</translation>
    <translation id="domain_and" qtlid="329057">a <b>{0}</b></translation>
@@ -522,8 +523,8 @@ Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejn�
    <translation id="domain_configuration_dns_entry_add_step3_alert" qtlid="195048">Změna bude na DNS zóně provedena okamžitě, ale berte v potaz čas propagace (až 24 hodin).</translation>
 
    <translation id="domain_configuration_dns_entry_add_step3_check_warning1" qtlid="215065">Pozor, může dojít k jednomu či více konfliktům:</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning2">Le sous-domaine est déjà utilisé par un autre enregistrement. Un enregistrement CNAME n'est pas autorisé à coexister avec d'autres champs sur le même sous-domaine.</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning3">Le sous-domaine est déjà utilisé par un enregistrement CNAME. Un enregistrement CNAME n'est pas autorisé à coexister avec d'autres champs sur le même sous-domaine.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning2" qtlid="519883">Le sous-domaine utilise déjà un enregistrement DNS. Vous ne pouvez pas enregistrer de champ CNAME en raison d'une incompatibilité. Supprimez les enregistrements existants pour ce sous-domaine, afin de pouvoir en ajouter un, de type CNAME.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="519844">Le sous-domaine est déjà utilisé par un enregistrement CNAME. Un enregistrement CNAME n'est pas autorisé à coexister avec d'autres champs sur le même sous-domaine.</translation>
 
    <translation id="domain_configuration_dns_entry_add_success" qtlid="129243">Došlo k přidání záznamu do DNS zóny.</translation>
    <translation id="domain_configuration_dns_entry_add_fail" qtlid="129255">Při přidávání záznamu do DNS zóny došlo k chybě.</translation>

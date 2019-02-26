@@ -513,11 +513,11 @@ angular.module('services').service(
      * @param {string} subDomain
      * @param {string} excludeId
      */
-    checkIfRecordHaveNoBrothers(serviceName, fieldType, subDomain, excludeId) {
+    getExistingSubdomains(serviceName, fieldType, subDomain, excludeId) {
       return this.getRecordsIds(serviceName, {
         fieldType,
         subDomain: subDomain || '',
-      }).then(recordsIds => _.isEmpty(_.without(recordsIds, excludeId)));
+      }).then(recordsIds => _.without(recordsIds, excludeId));
     }
 
     /**
@@ -587,17 +587,20 @@ angular.module('services').service(
               zone => zone.subDomain.toLowerCase() === subDomain.toLowerCase()
                   && zone.id !== entry.excludeId,
             );
-            return !existingSubDomain.length;
+            return {
+              recordCanBeAdded: !existingSubDomain.length,
+              conflictingRecords: existingSubDomain,
+            };
           });
         // Rule for Other Record types:
         // Can not have a CNAME of this subDomain
         default:
-          return this.checkIfRecordHaveNoBrothers(
+          return this.getExistingSubdomains(
             serviceName,
             'CNAME',
             subDomain,
             entry.excludeId,
-          ).then(haveNoBrothers => haveNoBrothers);
+          ).then(recordIds => ({ recordCanBeAdded: _.isEmpty(recordIds) }));
       }
     }
 
