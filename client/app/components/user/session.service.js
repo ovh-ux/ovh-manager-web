@@ -182,10 +182,10 @@ class SessionService {
     }, {
       name: 'email',
       title: this.$translate.instant('navigation_left_email'),
-      subLinks: _.merge(
+      subLinks: _.sortBy(_.merge(
         this.constructor.getProductsMenu('email.domain', emailProducts),
         this.constructor.getProductsMenu('email-pro', emailProMXPlanProducts),
-      ),
+      ), elt => angular.lowercase(elt.title)),
     }, {
       name: 'microsoft',
       title: this.$translate.instant('navigation_left_microsoft'),
