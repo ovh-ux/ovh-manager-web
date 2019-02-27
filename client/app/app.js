@@ -1,3 +1,4 @@
+import ngOvhApiv7 from '@ovh-ux/ng-ovh-apiv7';
 import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
 import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
 import translateAsyncLoader from '@ovh-ux/translate-async-loader';
@@ -32,6 +33,7 @@ angular
     'ovh-angular-user-pref',
     'ngFileUpload',
     'xeditable',
+    ngOvhApiv7,
     ngOvhSsoAuth,
     ngOvhSsoAuthModalPlugin,
     uiRouter,
@@ -41,7 +43,6 @@ angular
     'ovh-angular-tail-logs',
     'ovh-angular-otrs',
     'ovh-api-services',
-    'ovh-angular-apiv7',
     'ovh-angular-toaster',
     'ngCkeditor',
     'moment-picker',

@@ -59,7 +59,7 @@
                 <div class="alert alert-info"
                      role="alert"
                      data-ng-bind-html="'hosting_ssl_limit_characters_info_warning' | translate: { t0: $ctrl.Validator.MAX_DOMAIN_LENGTH }"
-                     data-ng-if="!$ctrl.step1.canOrderLetEncryptCertificate"></div>
+                     data-ng-if="!$ctrl.step1.canOrderLetEncryptCertificate && $ctrl.step1.sslCharLimitExceeded"></div>
                 <div class="alert alert-warning"
                      role="alert"
                      data-ng-if="$ctrl.step1.cannotOrderPaidCertificateErrorMessage !== undefined"
