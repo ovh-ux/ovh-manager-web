@@ -26,7 +26,7 @@
     </oui-button>
     <oui-button data-variant="link" class="d-block"
                 data-ng-if="hosting.isCloudWeb"
-                data-disabled="domain.status === status.UPDATING"
+                data-disabled="domain.status === status.UPDATING || domain.runtime.type.indexOf(runtimeNode) < 0"
                 data-on-click="restartDomain(domain)">
                 <span data-translate="hosting_tab_DOMAINS_table_popover_restart"></span>
     </oui-button>

@@ -176,16 +176,25 @@
         </div>
         <aside class="col-md-3 mt-5 mt-lg-0">
             <div class="mb-5">
-                <button type="button" class="btn btn-block btn-default text-wrap" title="{{ 'hosting_tab_DOMAINS_configuration_attachDomain_title_button' | translate }}"
+                <button type="button" class="oui-button oui-button_full-width oui-button_secondary" title="{{ 'hosting_tab_DOMAINS_configuration_attachDomain_title_button' | translate }}"
                         data-translate="hosting_tab_DOMAINS_configuration_attachDomain_title_button"
                         data-ng-click="setAction('multisite/add/hosting-multisite-add', {domains: domains})">
                 </button>
                 <button
                     type="button"
-                    class="btn btn-block btn-default text-wrap"
-                    data-ng-bind="sslCertificate ? ('hosting_ssl_regenerate_title_button' | translate) : ('hosting_dashboard_service_order_ssl' | translate)"
-                    data-ng-click="setAction(sslCertificate ? 'ssl/regenerate/hosting-ssl-regenerate' : 'ssl/order/hosting-order-ssl')"
-                    data-ng-if="!hosting.hasHostedSsl && !(sslCertificate.status === 'deleting' || sslCertificate.status === 'regenerating' || sslCertificate.status === 'creating')">
+                    class="oui-button oui-button_full-width oui-button_secondary mt-2"
+                    data-translate="hosting_dashboard_service_order_ssl"
+                    data-ng-click="setAction('ssl/order/hosting-order-ssl')"
+                    data-ng-if="!sslCertificate || !isSSLCertificateOperationInProgress(sslCertificate)">
+                </button>
+                <button
+                    type="button"
+                    class="oui-button oui-button_full-width oui-button_secondary mt-2"
+                    data-translate="hosting_ssl_regenerate_title_button"
+                    data-ng-click="setAction('ssl/regenerate/hosting-ssl-regenerate')"
+                    data-ng-if="sslCertificate
+                        && isLetsEncryptCertificate(sslCertificate)
+                        && !isSSLCertificateOperationInProgress(sslCertificate)">
                 </button>
             </div>
         </aside>

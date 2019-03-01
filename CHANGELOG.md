@@ -1,3 +1,17 @@
+## [13.14.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.14.1...v13.14.2) (2019-02-27)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-ovh-apiv7 to v2.0.0 ([57813ae](https://github.com/ovh-ux/ovh-manager-web/commit/57813ae))
+* **deps:** upgrade ovh-module-emailpro to v7.1.6 ([1a57b4a](https://github.com/ovh-ux/ovh-manager-web/commit/1a57b4a))
+* **deps:** upgrade ovh-module-sharepoint to v7.1.3 ([#939](https://github.com/ovh-ux/ovh-manager-web/issues/939)) ([ff81658](https://github.com/ovh-ux/ovh-manager-web/commit/ff81658))
+* **domain.zone:** prevent multiple records getting added ([#937](https://github.com/ovh-ux/ovh-manager-web/issues/937)) ([ffc929e](https://github.com/ovh-ux/ovh-manager-web/commit/ffc929e))
+* **hosting:** order and regenerate buttons visibility ([#926](https://github.com/ovh-ux/ovh-manager-web/issues/926)) ([2cfbb79](https://github.com/ovh-ux/ovh-manager-web/commit/2cfbb79))
+* **i18n:** retrieve ([49b6071](https://github.com/ovh-ux/ovh-manager-web/commit/49b6071))
+
+
+
 ## [13.14.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.14.0...v13.14.1) (2019-02-21)
 
 

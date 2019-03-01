@@ -9,12 +9,15 @@ angular
       $location,
       $translate,
       Hosting,
+      HOSTING,
       HostingDomain,
       hostingSSLCertificate,
+      hostingSSLCertificateType,
       Alerter,
     ) => {
       $scope.domains = null;
       $scope.sslLinked = [];
+      $scope.HOSTING = HOSTING;
       $scope.showGuidesStatus = false;
       $scope.search = {
         text: null,
@@ -24,10 +27,12 @@ angular
         domains: false,
         init: true,
       };
+      $scope.runtimeNode = 'nodejs';
       $scope.status = {
         UPDATING: 'updating',
       };
 
+      $scope.certificateTypes = hostingSSLCertificateType.constructor.getCertificateTypes();
       $scope.loadDomains = function loadDomains(count, offset) {
         $scope.loading.domains = true;
 
@@ -144,6 +149,14 @@ angular
       $scope.detachDomain = (domain) => {
         $scope.setAction('multisite/delete/hosting-multisite-delete', domain);
       };
+
+      $scope.isLetsEncryptCertificate = sslCertificate => (
+        sslCertificate.provider === $scope.certificateTypes.LETS_ENCRYPT.providerName
+      );
+
+      $scope.isSSLCertificateOperationInProgress = sslCertificate => (sslCertificate.status === 'deleting'
+        || sslCertificate.status === 'regenerating'
+        || sslCertificate.status === 'creating');
 
       $scope.modifyDomain = (domain) => {
         $scope.setAction('multisite/update/hosting-multisite-update', domain);
@@ -290,6 +303,13 @@ angular
           _.get(err, 'data', err),
           $scope.alerts.main,
         );
+      });
+
+      $scope.$on('hosting.ssl.reload', () => {
+        hostingSSLCertificate.retrievingCertificate($stateParams.productId)
+          .then((certificate) => {
+            $scope.sslCertificate = certificate;
+          });
       });
 
       function startPolling() {

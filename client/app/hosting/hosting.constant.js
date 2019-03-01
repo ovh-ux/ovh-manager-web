@@ -5,4 +5,7 @@ angular.module('App').constant('HOSTING', {
       value: 15,
     },
   },
+  offers: {
+    START_10_M: 'START_10_M',
+  },
 });
