@@ -1,4 +1,4 @@
-import ngOvhApiv7 from '@ovh-ux/ng-ovh-apiv7';
+import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
 import ngOvhHttp from '@ovh-ux/ng-ovh-http';
 import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
 import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
@@ -33,7 +33,7 @@ angular
     'atInternetUiRouterPlugin',
     'ngFileUpload',
     'xeditable',
-    ngOvhApiv7,
+    ngOvhApiWrappers,
     ngOvhHttp,
     ngOvhSsoAuth,
     ngOvhSsoAuthModalPlugin,
