@@ -1,3 +1,21 @@
+# [13.15.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.14.2...v13.15.0) (2019-03-05)
+
+
+### Bug Fixes
+
+* **deps:** upgrade module emailpro and exchange ([#947](https://github.com/ovh-ux/ovh-manager-web/issues/947)) ([618a3c9](https://github.com/ovh-ux/ovh-manager-web/commit/618a3c9))
+* **deps:** upgrade module office and sharepoint ([4ea6f7a](https://github.com/ovh-ux/ovh-manager-web/commit/4ea6f7a))
+* **deps:** upgrade ovh-module-exchange to v9.3.3 ([54583a4](https://github.com/ovh-ux/ovh-manager-web/commit/54583a4))
+* **i18n:** retrieve translations ([1d1c4a9](https://github.com/ovh-ux/ovh-manager-web/commit/1d1c4a9))
+* **i18n:** submit translations ([216d04c](https://github.com/ovh-ux/ovh-manager-web/commit/216d04c))
+
+
+### Features
+
+* **hosting.multisite:** helps restart a multisite ([#936](https://github.com/ovh-ux/ovh-manager-web/issues/936)) ([13fc9fc](https://github.com/ovh-ux/ovh-manager-web/commit/13fc9fc))
+
+
+
 ## [13.14.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.14.1...v13.14.2) (2019-02-27)
 
 
