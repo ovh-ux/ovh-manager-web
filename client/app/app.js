@@ -1,3 +1,5 @@
+import ngAtInternet from '@ovh-ux/ng-at-internet';
+import ngAtInternetUiRouterPlugin from '@ovh-ux/ng-at-internet-ui-router-plugin';
 import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
 import ngOvhHttp from '@ovh-ux/ng-ovh-http';
 import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
@@ -29,10 +31,10 @@ angular
     'ngFlash',
     'vs-repeat',
     'ovh-angular-export-csv',
-    'ng-at-internet',
-    'atInternetUiRouterPlugin',
     'ngFileUpload',
     'xeditable',
+    ngAtInternet,
+    ngAtInternetUiRouterPlugin,
     ngOvhApiWrappers,
     ngOvhHttp,
     ngOvhSsoAuth,

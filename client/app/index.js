@@ -39,8 +39,6 @@ import 'ovh-angular-q-allsettled';
 import 'script-loader!validator/validator.min.js';
 import 'ovh-angular-export-csv';
 import 'script-loader!@bower_components/angular-vs-repeat/src/angular-vs-repeat.min.js';
-import 'ng-at-internet';
-import 'at-internet-ui-router-plugin';
 import 'script-loader!@bower_components/randexp/build/randexp.min.js';
 import 'script-loader!ng-file-upload/dist/ng-file-upload.min.js';
 import 'angular-xeditable';
