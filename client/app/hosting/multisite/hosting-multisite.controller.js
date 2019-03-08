@@ -9,13 +9,15 @@ angular
       $location,
       $translate,
       Hosting,
+      HOSTING,
       HostingDomain,
       hostingSSLCertificate,
-      $timeout,
+      hostingSSLCertificateType,
       Alerter,
     ) => {
       $scope.domains = null;
       $scope.sslLinked = [];
+      $scope.HOSTING = HOSTING;
       $scope.showGuidesStatus = false;
       $scope.search = {
         text: null,
@@ -25,7 +27,12 @@ angular
         domains: false,
         init: true,
       };
+      $scope.runtimeNode = 'nodejs';
+      $scope.status = {
+        UPDATING: 'updating',
+      };
 
+      $scope.certificateTypes = hostingSSLCertificateType.constructor.getCertificateTypes();
       $scope.loadDomains = function loadDomains(count, offset) {
         $scope.loading.domains = true;
 
@@ -46,13 +53,11 @@ angular
           .then((domains) => {
             $scope.domains = domains;
             $scope.hasResult = !_($scope.domains).isEmpty();
-          })
-          .catch((error) => {
-            Alerter.alertFromSWS(
-              $translate.instant('hosting_dashboard_ssl_details_error'),
-              error,
-              $scope.alerts.main,
-            );
+            $scope.domains.list.results.forEach((domain) => {
+              if (domain.status === $scope.status.UPDATING) {
+                HostingDomain.pollRestartDomain($stateParams.productId, domain.name);
+              }
+            });
           })
           .then(() => hostingSSLCertificate.retrievingLinkedDomains($stateParams.productId))
           .then((sslLinked) => {
@@ -72,13 +77,6 @@ angular
                 return newDomain;
               })
               .value();
-          })
-          .catch((error) => {
-            Alerter.alertFromSWS(
-              $translate.instant('hosting_dashboard_ssl_details_error'),
-              error,
-              $scope.alerts.main,
-            );
           })
           .then(() => Hosting.getSelected($stateParams.productId))
           .then((hosting) => {
@@ -104,13 +102,6 @@ angular
             }
 
             return null;
-          })
-          .catch((error) => {
-            Alerter.alertFromSWS(
-              $translate.instant('hosting_dashboard_ssl_details_error'),
-              error,
-              $scope.alerts.main,
-            );
           })
           .then(() => hostingSSLCertificate.retrievingCertificate($stateParams.productId))
           .then((certificate) => {
@@ -138,9 +129,60 @@ angular
         $scope.setAction('multisite/delete/hosting-multisite-delete', domain);
       };
 
+      $scope.isLetsEncryptCertificate = sslCertificate => (
+        sslCertificate.provider === $scope.certificateTypes.LETS_ENCRYPT.providerName
+      );
+
+      $scope.isSSLCertificateOperationInProgress = sslCertificate => (sslCertificate.status === 'deleting'
+        || sslCertificate.status === 'regenerating'
+        || sslCertificate.status === 'creating');
+
       $scope.modifyDomain = (domain) => {
         $scope.setAction('multisite/update/hosting-multisite-update', domain);
       };
+
+      $scope.restartDomain = domain => HostingDomain.restartVirtualHostOfAttachedDomain(
+        $stateParams.productId,
+        domain.name,
+      ).then(() => {
+        Alerter.success(
+          $translate.instant('hosting_tab_DOMAINS_multisite_restart_start'),
+          $scope.alerts.main,
+        );
+        _.assign(
+          _.find($scope.domains.list.results, { name: domain.name }),
+          { status: $scope.status.UPDATING },
+        );
+        return HostingDomain.pollRestartDomain($stateParams.productId, domain.name);
+      }).catch((err) => {
+        $scope.$broadcast('paginationServerSide.reload');
+        Alerter.alertFromSWS(
+          $translate.instant('hosting_tab_DOMAINS_multisite_restart_error'),
+          err,
+          $scope.alerts.main,
+        );
+      });
+
+      $scope.$on('hostingDomain.restart.done', (response, data) => {
+        _.assign(
+          _.find($scope.domains.list.results, { name: data.domain }),
+          { status: data.status },
+        );
+        Alerter.success(
+          $translate.instant('hosting_tab_DOMAINS_multisite_restart_done', { t0: data.domain }),
+          $scope.alerts.main,
+        );
+      });
+
+      $scope.$on('hostingDomain.restart.error', (event, err) => {
+        $scope.$broadcast('paginationServerSide.reload');
+        Alerter.alertFromSWS(
+          $translate.instant('hosting_tab_DOMAINS_multisite_restart_error'),
+          _.get(err, 'data', err),
+          $scope.alerts.main,
+        );
+      });
+
 
       $scope.$on(Hosting.events.tabDomainsRefresh, () => {
         $scope.hasResult = false;
@@ -240,6 +282,13 @@ angular
           _.get(err, 'data', err),
           $scope.alerts.main,
         );
+      });
+
+      $scope.$on('hosting.ssl.reload', () => {
+        hostingSSLCertificate.retrievingCertificate($stateParams.productId)
+          .then((certificate) => {
+            $scope.sslCertificate = certificate;
+          });
       });
 
       function startPolling() {

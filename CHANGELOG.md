@@ -1,3 +1,43 @@
+## [13.15.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.15.1...v13.15.2) (2019-03-06)
+
+
+
+## [13.15.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.15.0...v13.15.1) (2019-03-06)
+
+
+
+# [13.15.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.14.2...v13.15.0) (2019-03-05)
+
+
+### Bug Fixes
+
+* **deps:** upgrade module emailpro and exchange ([#947](https://github.com/ovh-ux/ovh-manager-web/issues/947)) ([618a3c9](https://github.com/ovh-ux/ovh-manager-web/commit/618a3c9))
+* **deps:** upgrade module office and sharepoint ([4ea6f7a](https://github.com/ovh-ux/ovh-manager-web/commit/4ea6f7a))
+* **deps:** upgrade ovh-module-exchange to v9.3.3 ([54583a4](https://github.com/ovh-ux/ovh-manager-web/commit/54583a4))
+* **i18n:** retrieve translations ([1d1c4a9](https://github.com/ovh-ux/ovh-manager-web/commit/1d1c4a9))
+* **i18n:** submit translations ([216d04c](https://github.com/ovh-ux/ovh-manager-web/commit/216d04c))
+
+
+### Features
+
+* **hosting.multisite:** helps restart a multisite ([#936](https://github.com/ovh-ux/ovh-manager-web/issues/936)) ([13fc9fc](https://github.com/ovh-ux/ovh-manager-web/commit/13fc9fc))
+
+
+
+## [13.14.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.14.1...v13.14.2) (2019-02-27)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-ovh-apiv7 to v2.0.0 ([57813ae](https://github.com/ovh-ux/ovh-manager-web/commit/57813ae))
+* **deps:** upgrade ovh-module-emailpro to v7.1.6 ([1a57b4a](https://github.com/ovh-ux/ovh-manager-web/commit/1a57b4a))
+* **deps:** upgrade ovh-module-sharepoint to v7.1.3 ([#939](https://github.com/ovh-ux/ovh-manager-web/issues/939)) ([ff81658](https://github.com/ovh-ux/ovh-manager-web/commit/ff81658))
+* **domain.zone:** prevent multiple records getting added ([#937](https://github.com/ovh-ux/ovh-manager-web/issues/937)) ([ffc929e](https://github.com/ovh-ux/ovh-manager-web/commit/ffc929e))
+* **hosting:** order and regenerate buttons visibility ([#926](https://github.com/ovh-ux/ovh-manager-web/issues/926)) ([2cfbb79](https://github.com/ovh-ux/ovh-manager-web/commit/2cfbb79))
+* **i18n:** retrieve ([49b6071](https://github.com/ovh-ux/ovh-manager-web/commit/49b6071))
+
+
+
 ## [13.14.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.14.0...v13.14.1) (2019-02-21)
 
 

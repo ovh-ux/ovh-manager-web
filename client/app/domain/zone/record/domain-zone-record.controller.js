@@ -665,6 +665,7 @@ angular.module('App').controller(
 
     // Add DNS ----------------------------------------------------------------
     addDnsEntry() {
+      this.loading.resume = true;
       return this.Domain.addDnsEntry(this.domain.name, {
         fieldType: this.model.fieldType,
         subDomainToDisplay: this.model.subDomainToDisplay,
@@ -691,6 +692,7 @@ angular.module('App').controller(
 
     // Update DNS -------------------------------------------------------------
     editDnsEntry() {
+      this.loading.resume = true;
       return this.Domain.modifyDnsEntry(this.domain.name, {
         id: this.edit.id,
         fieldType: this.model.fieldType,

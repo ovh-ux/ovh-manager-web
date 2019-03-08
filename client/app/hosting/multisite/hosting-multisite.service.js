@@ -430,6 +430,34 @@ angular.module('services').service(
       );
     }
 
+    restartVirtualHostOfAttachedDomain(serviceName, attachedDomain) {
+      return this.OvhHttp.post(
+        `/hosting/web/${serviceName}/attachedDomain/${attachedDomain}/restart`,
+        {
+          rootPath: 'apiv6',
+        },
+      );
+    }
+
+    /**
+     * Poll for restart of attached domain
+     * @param {string} serviceName
+     * @param {string} attachedDomain
+     */
+    pollRestartDomain(serviceName, attachedDomain) {
+      return this.Poll.poll(`/hosting/web/${serviceName}/attachedDomain/${attachedDomain}`, null, {
+        namespace: 'hostingDomain.request',
+        successRule: { status: 'created' },
+      }).then((task) => {
+        this.$rootScope.$broadcast('hostingDomain.restart.done', task);
+      }).catch((err) => {
+        this.$rootScope.$broadcast(
+          'hostingDomain.restart.error',
+          err,
+        );
+      });
+    }
+
     /**
      * Get runtime linked to an attached domain
      *
