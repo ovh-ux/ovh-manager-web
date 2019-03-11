@@ -1,15 +1,20 @@
-import ngOvhApiv7 from '@ovh-ux/ng-ovh-apiv7';
+import ngAtInternet from '@ovh-ux/ng-at-internet';
+import ngAtInternetUiRouterPlugin from '@ovh-ux/ng-at-internet-ui-router-plugin';
+import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
+import ngOvhHttp from '@ovh-ux/ng-ovh-http';
 import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
 import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
-import translateAsyncLoader from '@ovh-ux/translate-async-loader';
-import webUniverseComponents from '@ovh-ux/web-universe-components';
+import ngOvhSwimmingPoll from '@ovh-ux/ng-ovh-swimming-poll';
+import ngOvhProxyRequest from '@ovh-ux/ng-ovh-proxy-request';
+import ngOvhUserPref from '@ovh-ux/ng-ovh-user-pref';
+import ngOvhWebUniverseComponents from '@ovh-ux/ng-ovh-web-universe-components';
+import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
 import uiRouter from '@uirouter/angularjs';
 
 import config from './config/config';
 
 angular
   .module('App', [
-    'ovh-angular-proxy-request',
     'ovh-angular-pagination-front',
     'ovh-utils-angular',
     'ui.bootstrap',
@@ -22,20 +27,23 @@ angular
     'filters',
     'directives',
     'ovh-angular-q-allSettled',
-    'ovh-angular-http',
     'ngMessages',
     'ngFlash',
-    'ovh-angular-swimming-poll',
     'vs-repeat',
     'ovh-angular-export-csv',
-    'ng-at-internet',
-    'atInternetUiRouterPlugin',
-    'ovh-angular-user-pref',
     'ngFileUpload',
     'xeditable',
-    ngOvhApiv7,
+    ngAtInternet,
+    ngAtInternetUiRouterPlugin,
+    ngOvhApiWrappers,
+    ngOvhHttp,
     ngOvhSsoAuth,
     ngOvhSsoAuthModalPlugin,
+    ngOvhSwimmingPoll,
+    ngOvhProxyRequest,
+    ngOvhUserPref,
+    ngOvhWebUniverseComponents,
+    ngTranslateAsyncLoader,
     uiRouter,
     'ovh-angular-sidebar-menu',
     'pascalprecht.translate',
@@ -51,8 +59,6 @@ angular
     'Module.microsoft',
     'Module.sharepoint',
     'Module.emailpro',
-    translateAsyncLoader,
-    webUniverseComponents,
   ])
   .constant('constants', {
     prodMode: config.prodMode,
@@ -112,13 +118,10 @@ angular
       $qProvider.errorOnUnhandledRejections(false);
     },
   ])
-  .config([
-    'ovh-proxy-request.proxyProvider',
-    (proxy) => {
-      proxy.proxy('$http');
-      proxy.pathPrefix('apiv6');
-    },
-  ])
+  .config(/* @ngInject */(ovhProxyRequestProvider) => {
+    ovhProxyRequestProvider.proxy('$http');
+    ovhProxyRequestProvider.pathPrefix('apiv6');
+  })
   .config([
     'ssoAuthenticationProvider',
     '$httpProvider',

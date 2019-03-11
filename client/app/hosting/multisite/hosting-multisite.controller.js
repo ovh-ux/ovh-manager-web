@@ -59,13 +59,6 @@ angular
               }
             });
           })
-          .catch((error) => {
-            Alerter.alertFromSWS(
-              $translate.instant('hosting_dashboard_ssl_details_error'),
-              error,
-              $scope.alerts.main,
-            );
-          })
           .then(() => hostingSSLCertificate.retrievingLinkedDomains($stateParams.productId))
           .then((sslLinked) => {
             const linkedSSLs = _(sslLinked).isArray() ? sslLinked : [sslLinked];
@@ -84,13 +77,6 @@ angular
                 return newDomain;
               })
               .value();
-          })
-          .catch((error) => {
-            Alerter.alertFromSWS(
-              $translate.instant('hosting_dashboard_ssl_details_error'),
-              error,
-              $scope.alerts.main,
-            );
           })
           .then(() => Hosting.getSelected($stateParams.productId))
           .then((hosting) => {
@@ -116,13 +102,6 @@ angular
             }
 
             return null;
-          })
-          .catch((error) => {
-            Alerter.alertFromSWS(
-              $translate.instant('hosting_dashboard_ssl_details_error'),
-              error,
-              $scope.alerts.main,
-            );
           })
           .then(() => hostingSSLCertificate.retrievingCertificate($stateParams.productId))
           .then((certificate) => {
