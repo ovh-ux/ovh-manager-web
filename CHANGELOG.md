@@ -1,3 +1,19 @@
+# [13.16.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.15.2...v13.16.0) (2019-03-11)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-at-internet to v4.0.0 ([#955](https://github.com/ovh-ux/ovh-manager-web/issues/955)) ([c679a57](https://github.com/ovh-ux/ovh-manager-web/commit/c679a57))
+* **deps:** upgrade ng-ovh-api-wrappers to v3.0.0 ([#946](https://github.com/ovh-ux/ovh-manager-web/issues/946)) ([abdbe11](https://github.com/ovh-ux/ovh-manager-web/commit/abdbe11))
+* **hosting.multisite:** remove unnecessary catch blocks ([#952](https://github.com/ovh-ux/ovh-manager-web/issues/952)) ([74e4a9d](https://github.com/ovh-ux/ovh-manager-web/commit/74e4a9d))
+
+
+### Features
+
+* add new MX Plan products ([#956](https://github.com/ovh-ux/ovh-manager-web/issues/956)) ([89b6c86](https://github.com/ovh-ux/ovh-manager-web/commit/89b6c86)), closes [#958](https://github.com/ovh-ux/ovh-manager-web/issues/958)
+
+
+
 ## [13.15.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.15.1...v13.15.2) (2019-03-06)
 
 
