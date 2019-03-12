@@ -1,3 +1,12 @@
+## [13.16.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.16.0...v13.16.1) (2019-03-12)
+
+
+### Bug Fixes
+
+* **email:** redirect mxplan to new interface ([43eb964](https://github.com/ovh-ux/ovh-manager-web/commit/43eb964))
+
+
+
 # [13.16.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.15.2...v13.16.0) (2019-03-11)
 
 
