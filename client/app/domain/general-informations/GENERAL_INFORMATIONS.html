@@ -182,6 +182,16 @@
                             data-uib-tooltip-append-to-body="true"></span>
                     </oui-tile-description>
                 </oui-tile-definition>
+                <!-- WHOIS configuration  -->
+                <oui-tile-definition data-term="{{ ::'domain_dashboard_whois' | translate }}">
+                    <oui-tile-description>
+                        <oui-button data-ng-if="$ctrl.isWhoisOptinAllowed"
+                                    data-on-click="$ctrl.$state.go('^.optin', $ctrl.$stateParams)">
+                            <span data-translate="domain_dashboard_whois_button"></span>
+                        </oui-button>
+                        <span data-ng-if="!$ctrl.isWhoisOptinAllowed" class="oui-paragraph" data-translate="domain_dashboard_whois_not_allowed"></span>
+                    </oui-tile-description>
+                </oui-tile-definition>
                 <!-- Obfuscated Email regeneration -->
                 <oui-tile-definition data-term="{{ ::'domain_dashboard_obfuscated_email' | translate }}" data-ng-if="$ctrl.canObfuscateEmails">
                     <oui-tile-description>

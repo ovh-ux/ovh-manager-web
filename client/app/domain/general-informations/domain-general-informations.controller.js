@@ -344,10 +344,10 @@ export default class DomainTabGeneralInformationsCtrl {
       ownerUrlInfo.error = this.$translate.instant('domain_tab_REDIRECTION_add_step4_server_cname_error');
     } else {
       switch (domain.whoisOwner) {
-        case this.DOMAIN.whoIsStatus.PENDING:
+        case this.DOMAIN.WHOIS_STATUS.PENDING:
           ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_pending');
           break;
-        case this.DOMAIN.whoIsStatus.INVALID_CONTACT:
+        case this.DOMAIN.WHOIS_STATUS.INVALID_CONTACT:
           ownerUrlInfo.error = this.$translate.instant('domain_dashboard_whois_invalid_contact');
           break;
         default:
@@ -364,10 +364,16 @@ export default class DomainTabGeneralInformationsCtrl {
 
   getRules() {
     this.loading.whoIs = true;
-    return this.OvhApiDomainRules.EmailsObfuscation().v6().query({
-      serviceName: this.domain.name,
-    }).$promise
-      .then((obfuscationRules) => {
+    return this.$q.all({
+      obfuscationRules: this.OvhApiDomainRules.EmailsObfuscation().v6().query({
+        serviceName: this.domain.name,
+      }).$promise,
+      optinRules: this.OvhApiDomainRules.Optin().v6().query({
+        serviceName: this.domain.name,
+      }).$promise,
+    })
+      .then(({ obfuscationRules, optinRules }) => {
+        this.isWhoisOptinAllowed = !_.isEmpty(optinRules);
         this.canObfuscateEmails = !_.isEmpty(obfuscationRules);
       })
       .catch(() => this.Alerter.error(this.$translate.instant('domain_dashboard_whois_error')))
