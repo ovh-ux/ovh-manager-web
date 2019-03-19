@@ -38,7 +38,6 @@ export default class DomainTabGeneralInformationsCtrl {
       this.domainInfos = this.$scope.ctrlDomain.domainInfos;
       this.allDom = this.$scope.ctrlDomain.allDom;
       this.allDomInfos = this.$scope.ctrlDomain.allDomInfos;
-      this.displayAllOwoSwitch = false;
       this.displayFreeHosting = false;
       this.domainUnlockRegistry = this.constants.DOMAIN.domainUnlockRegistry[
         _.last(this.domain.displayName.split('.')).toUpperCase()
@@ -47,7 +46,6 @@ export default class DomainTabGeneralInformationsCtrl {
       this.hasStart10mOffer = false;
       this.isAllDom = this.$rootScope.currentSectionInformation === 'all_dom';
       this.isUK = _.last(this.domain.name.split('.')).toUpperCase() === 'UK';
-      this.lastOwoSupportedValue = false;
       this.loading = {
         allDom: false,
         associatedHosting: false,
@@ -63,16 +61,9 @@ export default class DomainTabGeneralInformationsCtrl {
         isHosted: null,
         refreshAlert: false,
       };
-      this.owoFields = ['address', 'email', 'phone'];
       this.vm = {
         protection: { uiSwitch: {} },
         dnssec: { uiSwitch: {} },
-        owo: {
-          general: { uiSwitch: {} },
-          address: { uiSwitch: {} },
-          email: { uiSwitch: {} },
-          phone: { uiSwitch: {} },
-        },
         hosting: {
           web: {
             sites: [],
@@ -325,101 +316,6 @@ export default class DomainTabGeneralInformationsCtrl {
         });
     }
 
-    isOwoSupported() {
-      if (!angular.isUndefined(this.domain.owoSupported)) {
-        // avoid flashing information
-        this.lastOwoSupportedValue = this.domain.owoSupported;
-      }
-      return this.lastOwoSupportedValue;
-    }
-
-    owoStateHaveChange(field) {
-      const activated = [];
-      const desactivated = [];
-
-      if (field === 'all') {
-        _.forEach(this.owoFields, (fieldName) => {
-          if (
-            this.vm.owo[fieldName].uiSwitch.checked
-            !== this.vm.owo.general.uiSwitch.checked
-          ) {
-            this.vm.owo[
-              fieldName
-            ].uiSwitch.checked = this.vm.owo.general.uiSwitch.checked;
-            if (this.vm.owo[fieldName].uiSwitch.checked) {
-              activated.push(fieldName.toUpperCase());
-            } else {
-              desactivated.push(fieldName.toUpperCase());
-            }
-          }
-        });
-      } else {
-        if (this.vm.owo[field].uiSwitch.checked) {
-          activated.push(field.toUpperCase());
-        } else {
-          desactivated.push(field.toUpperCase());
-        }
-
-        if (
-          this.vm.owo.address.uiSwitch.checked
-            === this.vm.owo.email.uiSwitch.checked
-          && this.vm.owo.address.uiSwitch.checked
-            === this.vm.owo.phone.uiSwitch.checked
-        ) {
-          this.vm.owo.general.uiSwitch.checked = this.vm.owo.address.uiSwitch.checked;
-        } else {
-          this.vm.owo.general.uiSwitch.partial = true;
-        }
-      }
-
-      this.DomainsOwo.updateOwoFields(activated, desactivated, [
-        this.domain.name,
-      ])
-        .then((data) => {
-          if (data.state !== 'OK') {
-            let message = '';
-            let hasHttpErr409 = false;
-            _.forEach(data.messages, (msg) => {
-              if (msg.type === 'ERROR') {
-                message += `${msg.message}`;
-              }
-              if (!hasHttpErr409) {
-                hasHttpErr409 = msg.code === 409;
-              }
-            });
-            if (hasHttpErr409) {
-              this.Alerter.error(
-                this.$translate.instant('domain_configuration_whois_contracts'),
-                this.$scope.alerts.main,
-              );
-            } else {
-              this.Alerter.alertFromSWS(
-                this.$translate.instant('domain_configuration_whois_fail'),
-                { message },
-                this.$scope.alerts.main,
-              );
-            }
-          }
-        })
-        .catch((err) => {
-          this.vm.owo[field].uiSwitch.checked = !this.vm.owo[field].uiSwitch
-            .checked;
-          if (err.data.code === 409) {
-            this.Alerter.error(
-              this.$translate.instant('domain_configuration_whois_contracts'),
-              this.$scope.alerts.main,
-            );
-          } else {
-            this.Alerter.alertFromSWS(
-              this.$translate.instant('domain_configuration_whois_fail'),
-              err,
-              this.$scope.alerts.main,
-            );
-          }
-        })
-        .finally(() => this.$scope.ctrlDomain.reloadDomain(true));
-    }
-
     setSwitchStates() {
       this.vm.protection.uiSwitch.checked = this.domain.protection === 'locked'
         || this.domain.protection === 'locking';
@@ -430,28 +326,7 @@ export default class DomainTabGeneralInformationsCtrl {
       this.vm.dnssec.uiSwitch.checked = /enable/i.test(this.domain.dnssecStatus);
       this.vm.dnssec.uiSwitch.pending = /progress/i.test(this.domain.dnssecStatus);
       this.vm.dnssec.uiSwitch.disabled = this.vm.dnssec.uiSwitch.pending;
-
-      if (this.domain.whoisFields.length === this.owoFields.length) {
-        this.vm.owo.general.uiSwitch.checked = true;
-      } else {
-        this.vm.owo.general.uiSwitch.checked = false;
-        this.vm.owo.general.uiSwitch.partial = !_.isEmpty(this.domain.whoisFields);
       }
-
-      if (!this.domain.whoisActivable) {
-        this.vm.owo.general.uiSwitch.disabled = true;
-      }
-
-      _.forEach(this.owoFields, (fieldName) => {
-        this.vm.owo[fieldName].uiSwitch.checked = _.includes(
-          this.domain.whoisFields,
-          fieldName.toUpperCase(),
-        );
-        if (!this.domain.whoisActivable) {
-          this.vm.owo[fieldName].uiSwitch.disabled = true;
-        }
-      });
-    }
 
     getUpdateOwnerUrl(domain) {
       const ownerUrlInfo = { target: '', error: '' };
