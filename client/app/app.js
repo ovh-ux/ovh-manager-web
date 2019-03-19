@@ -11,6 +11,7 @@ import ngOvhWebUniverseComponents from '@ovh-ux/ng-ovh-web-universe-components';
 import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
 import uiRouter from '@uirouter/angularjs';
 
+import domainEmailObfuscation from './domain/email-obfuscation/index';
 import config from './config/config';
 
 angular
@@ -59,6 +60,7 @@ angular
     'Module.microsoft',
     'Module.sharepoint',
     'Module.emailpro',
+    domainEmailObfuscation,
   ])
   .constant('constants', {
     prodMode: config.prodMode,

@@ -133,7 +133,8 @@
         <div class="col-xm-12 col-md-4 mb-5">
             <oui-tile
                 data-heading="{{ ::'domain_dashboard_security' | translate }}"
-                class="h-100">
+                class="h-100"
+                data-loading="$ctrl.loading.whoIs">
                 <!-- PROTECTION  -->
                 <oui-tile-definition
                     data-ng-class="{'alert alert-warning': $ctrl.domainUnlockRegistry}"
@@ -179,6 +180,14 @@
                             data-uib-tooltip="{{($ctrl.domain.dnssecStatus === 'ENABLE_IN_PROGRESS' ||
                               $ctrl.domain.dnssecStatus === 'DISABLE_IN_PROGRESS') ? ('domain_configuration_dnssec_' + $ctrl.domain.dnssecStatus | translate) : ''}}"
                             data-uib-tooltip-append-to-body="true"></span>
+                    </oui-tile-description>
+                </oui-tile-definition>
+                <!-- Obfuscated Email regeneration -->
+                <oui-tile-definition data-term="{{ ::'domain_dashboard_obfuscated_email' | translate }}" data-ng-if="$ctrl.canObfuscateEmails">
+                    <oui-tile-description>
+                        <oui-button data-on-click="$ctrl.$state.go('^.emailObfuscation', $ctrl.$stateParams)">
+                            <span data-translate="domain_dashboard_obfuscated_email_regenerate_button"></span>
+                        </oui-button>
                     </oui-tile-description>
                 </oui-tile-definition>
             </oui-tile>
