@@ -1,3 +1,18 @@
+# [13.17.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.16.2...v13.17.0) (2019-03-21)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-api-services to v6.1.2 ([#964](https://github.com/ovh-ux/ovh-manager-web/issues/964)) ([3d582b2](https://github.com/ovh-ux/ovh-manager-web/commit/3d582b2))
+* **deps:** upgrade ovh-module-emailpro to v7.2.1 ([4d3a938](https://github.com/ovh-ux/ovh-manager-web/commit/4d3a938))
+
+
+### Features
+
+* **domain:** replace wuc-ovh-tabs with oui-header-tabs ([db1676f](https://github.com/ovh-ux/ovh-manager-web/commit/db1676f))
+
+
+
 ## [13.16.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.16.1...v13.16.2) (2019-03-12)
 
 
