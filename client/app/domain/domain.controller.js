@@ -5,6 +5,7 @@ angular.module('App').controller(
       $q,
       $rootScope,
       $scope,
+      $state,
       $stateParams,
       $timeout,
       $translate,
@@ -18,6 +19,7 @@ angular.module('App').controller(
       this.$q = $q;
       this.$rootScope = $rootScope;
       this.$scope = $scope;
+      this.$state = $state;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
       this.$translate = $translate;
@@ -192,6 +194,10 @@ angular.module('App').controller(
         .finally(() => {
           this.loading.domainInfos = false;
           this.$scope.$broadcast('domain.refreshData.done');
+
+          if (!this.domain.isExpired) {
+            this.$state.go(`${this.getState()}.information`, this.$stateParams);
+          }
         });
     }
 
@@ -202,6 +208,10 @@ angular.module('App').controller(
       }
 
       return this.loadDomain();
+    }
+
+    getState() {
+      return this.isAllDom ? 'app.domain.alldom' : 'app.domain.product';
     }
   },
 );

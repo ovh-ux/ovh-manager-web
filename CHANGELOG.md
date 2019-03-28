@@ -1,3 +1,47 @@
+# [13.17.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.16.2...v13.17.0) (2019-03-21)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-api-services to v6.1.2 ([#964](https://github.com/ovh-ux/ovh-manager-web/issues/964)) ([3d582b2](https://github.com/ovh-ux/ovh-manager-web/commit/3d582b2))
+* **deps:** upgrade ovh-module-emailpro to v7.2.1 ([4d3a938](https://github.com/ovh-ux/ovh-manager-web/commit/4d3a938))
+
+
+### Features
+
+* **domain:** replace wuc-ovh-tabs with oui-header-tabs ([db1676f](https://github.com/ovh-ux/ovh-manager-web/commit/db1676f))
+
+
+
+## [13.16.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.16.1...v13.16.2) (2019-03-12)
+
+
+
+## [13.16.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.16.0...v13.16.1) (2019-03-12)
+
+
+### Bug Fixes
+
+* **email:** redirect mxplan to new interface ([43eb964](https://github.com/ovh-ux/ovh-manager-web/commit/43eb964))
+
+
+
+# [13.16.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.15.2...v13.16.0) (2019-03-11)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-at-internet to v4.0.0 ([#955](https://github.com/ovh-ux/ovh-manager-web/issues/955)) ([c679a57](https://github.com/ovh-ux/ovh-manager-web/commit/c679a57))
+* **deps:** upgrade ng-ovh-api-wrappers to v3.0.0 ([#946](https://github.com/ovh-ux/ovh-manager-web/issues/946)) ([abdbe11](https://github.com/ovh-ux/ovh-manager-web/commit/abdbe11))
+* **hosting.multisite:** remove unnecessary catch blocks ([#952](https://github.com/ovh-ux/ovh-manager-web/issues/952)) ([74e4a9d](https://github.com/ovh-ux/ovh-manager-web/commit/74e4a9d))
+
+
+### Features
+
+* add new MX Plan products ([#956](https://github.com/ovh-ux/ovh-manager-web/issues/956)) ([89b6c86](https://github.com/ovh-ux/ovh-manager-web/commit/89b6c86)), closes [#958](https://github.com/ovh-ux/ovh-manager-web/issues/958)
+
+
+
 ## [13.15.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.15.1...v13.15.2) (2019-03-06)
 
 
