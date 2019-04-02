@@ -21,6 +21,7 @@ angular.module('services').service(
     }
 
     retrievingCertificate(serviceName) {
+      this.OvhApiHostingWebSsl.v6().resetAllCache();
       return this.OvhApiHostingWebSsl.v6().get({ serviceName }).$promise;
     }
 

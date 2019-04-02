@@ -7,6 +7,7 @@ angular
       $q,
       $stateParams,
       $location,
+      $rootScope,
       $translate,
       Hosting,
       HOSTING,
@@ -29,7 +30,11 @@ angular
       };
       $scope.runtimeNode = 'nodejs';
       $scope.status = {
+        REGENERATING: 'regenerating',
         UPDATING: 'updating',
+        CREATING: 'creating',
+        DELETING: 'deleting',
+        regeneratingSsl: false,
       };
 
       $scope.certificateTypes = hostingSSLCertificateType.constructor.getCertificateTypes();
@@ -105,6 +110,9 @@ angular
           })
           .then(() => hostingSSLCertificate.retrievingCertificate($stateParams.productId))
           .then((certificate) => {
+            if (certificate.status === $scope.status.REGENERATING) {
+              HostingDomain.pollSslTask($scope.hosting.serviceName);
+            }
             $scope.sslCertificate = certificate;
           })
           .catch((error) => {
@@ -133,9 +141,10 @@ angular
         sslCertificate.provider === $scope.certificateTypes.LETS_ENCRYPT.providerName
       );
 
-      $scope.isSSLCertificateOperationInProgress = sslCertificate => (sslCertificate.status === 'deleting'
-        || sslCertificate.status === 'regenerating'
-        || sslCertificate.status === 'creating');
+      $scope.isSSLCertificateOperationInProgress = sslCertificate => (
+        sslCertificate.status === $scope.status.DELETING
+        || sslCertificate.status === $scope.status.REGENERATING
+        || sslCertificate.status === $scope.status.CREATING);
 
       $scope.modifyDomain = (domain) => {
         $scope.setAction('multisite/update/hosting-multisite-update', domain);
@@ -284,9 +293,40 @@ angular
         );
       });
 
+      // regenerate ssl
+      $scope.$on('hostingDomain.regenerateSsl.start', () => {
+        $scope.status.regeneratingSsl = true;
+        Alerter.success(
+          $translate.instant('hosting_tab_DOMAINS_multisite_generate_ssl_start'),
+          $scope.alerts.main,
+        );
+      });
+
+      $scope.$on('hostingDomain.regenerateSsl.done', () => {
+        $scope.status.regeneratingSsl = false;
+        $rootScope.$broadcast('hosting.ssl.reload');
+        Alerter.success(
+          $translate.instant('hosting_tab_DOMAINS_multisite_generate_ssl_done'),
+          $scope.alerts.main,
+        );
+      });
+
+      $scope.$on('hostingDomain.regenerateSsl.error', (event, err) => {
+        $scope.status.regeneratingSsl = false;
+        $rootScope.$broadcast('hosting.ssl.reload');
+        Alerter.alertFromSWS(
+          $translate.instant('hosting_tab_DOMAINS_multisite_generate_ssl_error'),
+          _.get(err, 'data', err),
+          $scope.alerts.main,
+        );
+      });
+
       $scope.$on('hosting.ssl.reload', () => {
         hostingSSLCertificate.retrievingCertificate($stateParams.productId)
           .then((certificate) => {
+            if (certificate.status === $scope.status.REGENERATING) {
+              HostingDomain.pollSslTask($scope.hosting.serviceName);
+            }
             $scope.sslCertificate = certificate;
           });
       });
