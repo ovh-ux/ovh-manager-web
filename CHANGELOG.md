@@ -1,3 +1,12 @@
+## [13.19.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.19.1...v13.19.2) (2019-04-03)
+
+
+### Bug Fixes
+
+* **domain.general-informations:** display dashboard if invalid contact ([#980](https://github.com/ovh-ux/ovh-manager-web/issues/980)) ([cc693ac](https://github.com/ovh-ux/ovh-manager-web/commit/cc693ac))
+
+
+
 ## [13.19.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.19.0...v13.19.1) (2019-04-03)
 
 
