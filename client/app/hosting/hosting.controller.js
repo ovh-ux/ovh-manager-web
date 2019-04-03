@@ -227,8 +227,9 @@ angular
       }
 
       function setUrchin() {
-        const [, cluster] = _.get($scope.hostingProxy, 'cluster', '').split('cluster');
-        if (cluster && parseInt(cluster, 10) >= 20) {
+        if (
+          ['gra1', 'gra2'].includes($scope.hostingProxy.datacenter)
+        ) {
           // FOR GRAVELINE
           $scope.urchin = URI.expand(constants.urchin_gra, {
             serviceName: $scope.hosting.serviceName,
