@@ -16,6 +16,7 @@ angular.module('App').controller(
       OvhApiScreenshot,
       User,
       WucAllDom,
+      DOMAIN,
     ) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
@@ -31,6 +32,7 @@ angular.module('App').controller(
       this.OvhApiScreenshot = OvhApiScreenshot.Aapi();
       this.User = User;
       this.constants = constants;
+      this.DOMAIN = DOMAIN;
     }
 
     $onInit() {
