@@ -9,7 +9,6 @@ export default class DomainTabGeneralInformationsCtrl {
     Alerter,
     constants,
     Domain,
-    DomainsOwo,
     Hosting,
     HostingDomain,
     OvhApiDomainRules,
@@ -27,7 +26,6 @@ export default class DomainTabGeneralInformationsCtrl {
     this.Alerter = Alerter;
     this.WucAllDom = WucAllDom;
     this.Domain = Domain;
-    this.DomainsOwo = DomainsOwo;
     this.Hosting = Hosting;
     this.HostingDomain = HostingDomain;
     this.OvhApiDomainRules = OvhApiDomainRules;

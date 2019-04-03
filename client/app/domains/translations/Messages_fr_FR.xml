@@ -7,7 +7,7 @@
    <translation id="domains_dashboard_selector_all_pages" qtlid="140625">Sélectionner toutes les pages</translation>
    <translation id="domains_dashboard_table_titles_name" qtlid="140638">Nom du domaine</translation>
    <translation id="domains_dashboard_table_titles_expiration" qtlid="33010">Date d'expiration</translation>
-   <translation id="domains_dashboard_table_titles_whois" qtlid="140651">Masquage WHOIS</translation>
+   <translation id="domains_dashboard_table_titles_whois" qtlid="140651">Configuration WHOIS</translation>
    <translation id="domains_dashboard_table_titles_dnssec" qtlid="184529">DNSSEC</translation>
    <translation id="domains_dashboard_table_titles_dnsanycast" qtlid="135671">DNS Anycast</translation>
    <translation id="domains_dashboard_table_empty" qtlid="140664">Aucun domaine correspondant à vos critères</translation>
@@ -33,9 +33,9 @@
    <translation id="domains_dashboard_tooltip_dnssec_activate_single" qtlid="184555">Activer DNSSEC sur ce domaine</translation>
    <translation id="domains_dashboard_tooltip_dnssec_deactivate_single" qtlid="184568">Désactiver DNSSEC sur ce domaine</translation>
    <translation id="domains_dashboard_button_renew" qtlid="118962">Renouveler</translation>
-   <translation id="domains_dashboard_button_whois" qtlid="299072">Service OWO</translation>
    <translation id="domains_dashboard_button_dnssec" qtlid="184581">Configurer DNSSEC</translation>
    <translation id="domains_dashboard_button_export" qtlid="231773">Exporter en CSV</translation>
+   <translation id="domains_dashboard_whois_configurable">Configurable</translation>
    <translation id="domains_change_owner" qtlid="267240">Changer de propriétaire</translation>
    <translation id="domains_dashboard_csv_file_created" qtlid="372230">Le fichier a été correctement créé. Si le téléchargement ne démarre pas, vous pouvez le <a target="_blank" href="{0}" download>télécharger manuellement</a>.</translation>
    <translation id="domains_configuration_renew_title" qtlid="140690">Renouveler mes Domaines</translation>
@@ -46,33 +46,6 @@
    <translation id="domains_configuration_renew_step1_confirmation" qtlid="140755">Cliquez sur le bouton "Commander" pour ouvrir une nouvelle fenêtre et renouveler vos noms de domaine.</translation>
    <translation id="domains_configuration_renew_step1_information" qtlid="168341">Un nouvel onglet s'ouvrira et vous serez automatiquement redirigé(e) vers l'interface de renouvellement OVH.</translation>
    <translation id="domains_configuration_renew_step1_alert" qtlid="140768">Veuillez noter qu'un délai d'environ 2 heures à compter de l'acceptation de votre paiement est nécessaire pour que les renouvellements soient pris en compte dans votre Espace Client Web.</translation>
-   <translation id="domains_configuration_whois_title" qtlid="124447">Configurer le WHOIS</translation>
-   <translation id="domains_configuration_whois_step1_no_selected_domains" qtlid="140781">Vous n'avez pas selectionné de domaines à configurer ou le WHOIS n'est pas modifiable sur les domaines selectionnés.</translation>
-   <translation id="domains_configuration_whois_step1_unable_to_configure" qtlid="140794">Le WHOIS n'est pas modifiable sur certains domaines selectionnés (<span class="italic">{0}</span>).</translation>
-   <translation id="domains_configuration_whois_step1_unable_ignored" qtlid="140807">Ces domaines seront ignorés lors des modifications.</translation>
-   <translation id="domains_configuration_whois_step1_question" qtlid="140820">Veuillez choisir si vos informations personnelles doivent être affichées ou masquées dans le registre WHOIS pour les domaines selectionnés</translation>
-   <translation id="domains_configuration_whois_step1_display" qtlid="69353">Afficher</translation>
-   <translation id="domains_configuration_whois_step1_hide" qtlid="97136">Masquer</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_desc" qtlid="329499">Lorsque vous enregistrez un Nom de Domaine, des informations personnelles vous sont demandées. Par défaut, celles-ci sont publiées dans la base de données du WHOIS qui est accessible publiquement. <br/>Cette fonction vous permet de masquer ces informations si vous le souhaitez.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis" qtlid="130099">Qu'est-ce que le WHOIS ?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">Le WHOIS est un service public de recherche d'informations relatives aux noms de domaines et adresses IP. Cette base de données comprend notamment des informations sur les titulaires.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">Quelles informations sont publiées sur le WHOIS ?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329512">Les informations publiées sont celles du propriétaire du nom de domaine. Elles dépendent de l'extension du domaine, mais on retrouve généralement :<ul><li>Son adresse</li><li>Ses numéros de téléphone et fax</li><li>Son e-mail</li></ul><br/>Le masquage/affichage peut être configuré indifféremment pour ces 3 types d'informations.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_how" qtlid="130135">Comment OVH vous permet de masquer ces informations ?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_how_desc" qtlid="329525">Si vous activez ce service, OVH remplace vos informations personnelles par des informations génériques. Toute communication qui serait adressée par une personne cherchant à vous contacter est toutefois transmise.<ul><li>Le champ adresse est remplacé par une boîte postale liée à OVH, et nous renvoyons les courriers reçus vers le destinataire réel.</li><li>Les champs téléphone et fax sont remplacés par un numéro OwO.</li><li>Le champ email est remplacé par une redirection qui pointe vers l'adresse email du propriétaire. Cette adresse est régénérée régulièrement et un filtrage anti-SPAM est effectué.</li></ul></translation>
-   <translation id="domains_configuration_whois_field_ADDRESS" qtlid="30430">Adresse</translation>
-   <translation id="domains_configuration_whois_field_EMAIL" qtlid="33598">Email</translation>
-   <translation id="domains_configuration_whois_field_PHONE" qtlid="128214">Téléphone / Fax</translation>
-   <translation id="domains_configuration_whois_step2_alert" qtlid="128226">Veuillez noter que la mise à jour des informations du WHOIS prend plusieurs heures.</translation>
-   <translation id="domains_configuration_whois_step2_new_configuration" qtlid="128250">Nouvelle configuration</translation>
-   <translation id="domains_configuration_whois_step2_question" qtlid="128262">Souhaitez-vous réellement appliquer les modifications suivantes à l'affichage de vos informations WHOIS ?</translation>
-   <translation id="domains_configuration_whois_step2_status_activated" qtlid="128274">Masqué</translation>
-   <translation id="domains_configuration_whois_step2_status_desactivated" qtlid="128286">Affiché</translation>
-   <translation id="domains_configuration_whois_step2_status_unchanged" qtlid="140833">Non modifié</translation>
-   <translation id="domains_configuration_whois_success" qtlid="128298">Votre demande de modification des informations WHOIS a bien été prise en compte.</translation>
-   <translation id="domains_configuration_whois_partial" qtlid="140846">Votre demande de modification des informations WHOIS a été prise en compte pour certains domaines, mais des erreurs sont survenues pour d'autres.</translation>
-   <translation id="domains_configuration_whois_fail" qtlid="128310">Une erreur est survenue lors de la demande de modification des informations WHOIS.</translation>
 
    <translation id="domains_configuration_dnssec_batch_title" qtlid="184581">Configurer DNSSEC</translation>
    <translation id="domains_configuration_dnssec_batch_step1_no_selected_domains" qtlid="184594">Vous n'avez pas selectionné de domaines à configurer ou DNSSEC n'est pas modifiable pour les domaines selectionnés.</translation>

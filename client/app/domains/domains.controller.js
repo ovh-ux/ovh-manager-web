@@ -13,6 +13,7 @@ angular.module('App').controller(
      */
     constructor(
       $scope,
+      $state,
       $rootScope,
       $timeout,
       $translate,
@@ -22,6 +23,7 @@ angular.module('App').controller(
       User,
     ) {
       this.$scope = $scope;
+      this.$state = $state;
       this.$rootScope = $rootScope;
       this.$timeout = $timeout;
       this.$translate = $translate;
