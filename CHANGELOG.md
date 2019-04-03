@@ -1,3 +1,12 @@
+## [13.19.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.19.0...v13.19.1) (2019-04-03)
+
+
+### Bug Fixes
+
+* **hosting.web:** logs url for GRA clusters ([#977](https://github.com/ovh-ux/ovh-manager-web/issues/977)) ([a240c7e](https://github.com/ovh-ux/ovh-manager-web/commit/a240c7e))
+
+
+
 # [13.19.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.18.0...v13.19.0) (2019-04-01)
 
 
