@@ -34,16 +34,15 @@
                                 <div class="col-lg-6">
                                     <strong class="oui-tile__term d-block"
                                             data-translate="common_ipv4"></strong>
-                                    <span data-ng-bind="::hosting.hostingIp"
-                                          data-ng-if="hosting.hostingIp"></span>
+                                    <oui-clipboard data-model="::hosting.hostingIp"
+                                                   data-ng-if="hosting.hostingIp"></oui-clipboard>
                                     <span data-translate="hosting_ipv4_coming_soon"
                                           data-ng-if="hosting.hostingIp === null"></span>
                                 </div>
                                 <div class="col-lg-6">
                                     <strong class="oui-tile__term d-block" data-translate="common_ipv6"></strong>
-                                    <span class="word-break"
-                                          data-ng-bind="::hosting.hostingIpv6"
-                                          data-ng-if="hosting.hostingIpv6"></span>
+                                    <oui-clipboard data-model="::hosting.hostingIpv6"
+                                                   data-ng-if="hosting.hostingIpv6"></oui-clipboard>
                                     <span class="word-break"
                                           data-translate="hosting_ipv4_coming_soon"
                                           data-ng-if="hosting.hostingIpv6 === null"></span>
