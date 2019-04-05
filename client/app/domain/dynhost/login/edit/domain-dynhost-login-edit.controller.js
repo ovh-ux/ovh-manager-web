@@ -16,7 +16,7 @@ angular.module('App').controller(
 
       this.const = {
         nbMinPassword: 8,
-        nbMaxPassword: 12,
+        nbMaxPassword: 31,
       };
       this.data = { password: '' };
       this.loading = false;

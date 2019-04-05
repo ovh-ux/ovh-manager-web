@@ -15,7 +15,7 @@ angular.module('App').controller(
       this.const = {
         nbMaxSuffix: 10,
         nbMinPassword: 8,
-        nbMaxPassword: 12,
+        nbMaxPassword: 31,
       };
       this.dynHostLogin = { loginSuffix: '', subDomain: '', password: '' };
       this.loading = false;
