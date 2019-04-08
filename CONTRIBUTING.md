@@ -22,7 +22,7 @@ If you edit a sentence, we have two cases:
 
 # Coding and documentation Style
 
-Refer to [https://github.com/ovh-ux/eslint-config-ovh](https://github.com/ovh-ux/eslint-config-ovh)
+Refer to [eslint-config-airbnb-base](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb-base)
 
 # Submitting Modifications
 
