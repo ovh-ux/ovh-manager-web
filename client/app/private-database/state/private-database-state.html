@@ -185,8 +185,6 @@
                                 <oui-tile-description>
                                     <span data-ng-if="stateCtrl.database.infrastructure === 'docker'"
                                           data-ng-bind="::stateCtrl.database.hostname"></span>
-                                    <span data-ng-if="stateCtrl.database.infrastructure === 'legacy'"
-                                          data-ng-bind="::stateCtrl.database.ip"></span>
                                 </oui-tile-description>
                             </oui-tile-definition>
                             <oui-tile-definition data-term="{{ ::'privateDatabase_dashboard_port' | translate}}">
@@ -218,8 +216,6 @@
                                 data-ng-bind="'privateDatabase_dashboard_ftp_informations_' + stateCtrl.database.infrastructure | translate"></h4>
                             <oui-tile-definition data-term="{{ ::'privateDatabase_dashboard_ftp_username' | translate}}">
                                 <oui-tile-description>
-                                    <span data-ng-if="stateCtrl.database.infrastructure === 'legacy'"
-                                          data-ng-bind="::stateCtrl.database.serviceName"></span>
                                     <span data-ng-if="stateCtrl.database.infrastructure === 'docker'">admin</span>
                                 </oui-tile-description>
                             </oui-tile-definition>
