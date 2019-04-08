@@ -150,6 +150,13 @@ angular.module('App').controller(
           }&selectedType=DOMAIN`,
           isAvailable: () => true,
         },
+        manageAlldom: {
+          text: this.$translate.instant('common_manage'),
+          href: `#/billing/autoRenew?searchText=${
+            this.allDom
+          }&selectedType=ALL_DOM`,
+          isAvailable: () => true,
+        },
       };
       this.loading.changeOwner = true;
       if (_.isObject(this.domain.whoisOwner)) {
