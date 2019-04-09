@@ -150,6 +150,11 @@ angular.module('App').controller(
           }&selectedType=DOMAIN`,
           isAvailable: () => true,
         },
+        manageAlldom: {
+          href: `#/billing/autoRenew?searchText=${
+            this.allDom
+          }&selectedType=ALL_DOM`,
+        },
       };
       this.loading.changeOwner = true;
       if (_.isObject(this.domain.whoisOwner)) {
