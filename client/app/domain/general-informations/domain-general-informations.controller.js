@@ -151,11 +151,9 @@ angular.module('App').controller(
           isAvailable: () => true,
         },
         manageAlldom: {
-          text: this.$translate.instant('common_manage'),
           href: `#/billing/autoRenew?searchText=${
             this.allDom
           }&selectedType=ALL_DOM`,
-          isAvailable: () => true,
         },
       };
       this.loading.changeOwner = true;
