@@ -458,6 +458,22 @@ angular.module('services').service(
       });
     }
 
+    pollSslTask(serviceName) {
+      this.$rootScope.$broadcast('hostingDomain.regenerateSsl.start');
+      return this.Poll.poll(`/hosting/web/${serviceName}/ssl/`, null, {
+        namespace: 'hostingDomain.request',
+        interval: 30000,
+        successRule: { status: 'created' },
+      }).then((task) => {
+        this.$rootScope.$broadcast('hostingDomain.regenerateSsl.done', task);
+      }).catch((err) => {
+        this.$rootScope.$broadcast(
+          'hostingDomain.regenerateSsl.error',
+          err,
+        );
+      });
+    }
+
     /**
      * Get runtime linked to an attached domain
      *
