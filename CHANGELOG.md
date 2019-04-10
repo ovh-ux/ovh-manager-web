@@ -1,3 +1,23 @@
+# [13.20.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.19.2...v13.20.0) (2019-04-10)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-module-sharepoint to v7.1.5 ([#983](https://github.com/ovh-ux/ovh-manager-web/issues/983)) ([567c8cf](https://github.com/ovh-ux/ovh-manager-web/commit/567c8cf))
+* **domain.dynhost.login:** increase password length from 12 to 31 ([#987](https://github.com/ovh-ux/ovh-manager-web/issues/987)) ([d197834](https://github.com/ovh-ux/ovh-manager-web/commit/d197834))
+* **domain.general-informations:** display domain offer for alldom pack ([#991](https://github.com/ovh-ux/ovh-manager-web/issues/991)) ([4a466e7](https://github.com/ovh-ux/ovh-manager-web/commit/4a466e7))
+* **i18n:** retrieve translations ([4883af9](https://github.com/ovh-ux/ovh-manager-web/commit/4883af9))
+* **i18n:** submit translations ([840e267](https://github.com/ovh-ux/ovh-manager-web/commit/840e267))
+
+
+### Features
+
+* **domain.general-informations:** add shortcut to manage alldom ([#990](https://github.com/ovh-ux/ovh-manager-web/issues/990)) ([856138c](https://github.com/ovh-ux/ovh-manager-web/commit/856138c))
+* **hosting:** add polling when a ssl certificate is generated ([#965](https://github.com/ovh-ux/ovh-manager-web/issues/965)) ([43c5fe8](https://github.com/ovh-ux/ovh-manager-web/commit/43c5fe8))
+* **hosting.general.informations:** use oui-clipboard ([#984](https://github.com/ovh-ux/ovh-manager-web/issues/984)) ([3463749](https://github.com/ovh-ux/ovh-manager-web/commit/3463749))
+
+
+
 ## [13.19.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.19.1...v13.19.2) (2019-04-03)
 
 
