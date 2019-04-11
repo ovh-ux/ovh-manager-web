@@ -1,6 +1,7 @@
 class SessionService {
   constructor(
     $q,
+    $rootScope,
     $translate,
     atInternet,
     constants,
@@ -13,6 +14,7 @@ class SessionService {
     LANGUAGES,
   ) {
     this.$q = $q;
+    this.$rootScope = $rootScope;
     this.$translate = $translate;
     this.constants = constants;
     this.atInternet = atInternet;
@@ -195,6 +197,7 @@ class SessionService {
 
   getAssistanceMenu({ ovhSubsidiary: subsidiary }) {
     const useNewMenu = ['FR'].includes(subsidiary);
+    const mustDisplayChatbot = ['FR'].includes(subsidiary);
     const currentSubsidiaryURLs = _.get(this.constants.urls, subsidiary, {});
 
     const assistanceMenuItems = [
@@ -265,6 +268,17 @@ class SessionService {
           type: 'action',
         }),
         isToKeep: _.has(currentSubsidiaryURLs, 'support_contact'),
+      },
+      {
+        title: `${this.$translate.instant('common_menu_support_chatbot')} <sup class="oui-color-california">OVH Chat</sup>`,
+        click: () => {
+          this.atInternet.trackClick({
+            name: 'assistance::chatbot',
+            type: 'action',
+          });
+          this.$rootScope.$broadcast('ovh-chatbot:open');
+        },
+        isToKeep: mustDisplayChatbot,
       },
     ];
 
