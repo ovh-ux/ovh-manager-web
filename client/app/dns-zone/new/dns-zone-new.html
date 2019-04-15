@@ -67,7 +67,7 @@
                         <dt data-translate="domains_newdnszone_order_step2_domain"></dt>
                         <dd data-ng-bind="data[ctrlNewDnsZone.zoneName].details[0].domain"></dd>
                         <dt data-translate="domains_newdnszone_order_step2_description"></dt>
-                        <dd data-ng-bind="data[ctrlNewDnsZone.zoneName].details[0].description"></dd>
+                        <dd data-translate="{{:: 'domains_newdnszone_order_step2_description_' + data[ctrlNewDnsZone.zoneName].details[0].detailType }}"></dd>
                         <dt data-translate="domains_newdnszone_order_step2_price"></dt>
                         <dd data-ng-bind-html="data[ctrlNewDnsZone.zoneName].prices | price:ovhSubsidiary"></dd>
                     </dl>
