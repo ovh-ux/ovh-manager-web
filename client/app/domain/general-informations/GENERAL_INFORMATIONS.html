@@ -258,18 +258,18 @@
                     data-description="{{ ::$ctrl.domain.offer }}">
                 </oui-tile-definition>
                 <!-- RENEWAL -->
-                <service-status-action
+                <wuc-service-status-action
                     data-ng-if="!$ctrl.isAllDom && $ctrl.domain.name && $ctrl.domainInfos"
                     data-service-name="$ctrl.domain.name"
                     data-service-type="'DOMAIN'"
                     data-service-infos="$ctrl.domainInfos">
-                </service-status-action>
-                <service-status-action
+                </wuc-service-status-action>
+                <wuc-service-status-action
                     data-ng-if="$ctrl.isAllDom && $ctrl.allDom && $ctrl.allDomInfos"
                     data-service-name="$ctrl.domain.name"
                     data-service-type="'DOMAIN'"
                     data-service-infos="$ctrl.allDomInfos">
-                </service-status-action>
+                </wuc-service-status-action>
                 <!-- CONTACTS -->
                 <oui-tile-definition data-term="{{ ::'contacts_management' | translate }}">
                     <oui-tile-description>
