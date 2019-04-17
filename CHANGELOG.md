@@ -1,3 +1,12 @@
+## [13.21.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.21.0...v13.21.1) (2019-04-17)
+
+
+### Bug Fixes
+
+* **deps:** upgrade @ovh-ux/ng-ovh-chatbot to v2.0.0 ([#1012](https://github.com/ovh-ux/ovh-manager-web/issues/1012)) ([844ee0a](https://github.com/ovh-ux/ovh-manager-web/commit/844ee0a))
+
+
+
 # [13.21.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.20.1...v13.21.0) (2019-04-17)
 
 
