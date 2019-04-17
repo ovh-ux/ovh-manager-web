@@ -1,3 +1,25 @@
+# [13.21.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.20.1...v13.21.0) (2019-04-17)
+
+
+### Bug Fixes
+
+* **dns.order:** use translation to show description ([#1000](https://github.com/ovh-ux/ovh-manager-web/issues/1000)) ([426f1cc](https://github.com/ovh-ux/ovh-manager-web/commit/426f1cc))
+* **i18n:** retrieve translations ([2e0579e](https://github.com/ovh-ux/ovh-manager-web/commit/2e0579e))
+* **i18n:** retrieve translations ([#1002](https://github.com/ovh-ux/ovh-manager-web/issues/1002)) ([dd09a92](https://github.com/ovh-ux/ovh-manager-web/commit/dd09a92))
+* replace service status component for both domain and hosting ([#996](https://github.com/ovh-ux/ovh-manager-web/issues/996)) ([f18e915](https://github.com/ovh-ux/ovh-manager-web/commit/f18e915))
+* **i18n:** retrieve translations ([#1008](https://github.com/ovh-ux/ovh-manager-web/issues/1008)) ([83c2ded](https://github.com/ovh-ux/ovh-manager-web/commit/83c2ded))
+* **i18n:** retrieve translations ([#1009](https://github.com/ovh-ux/ovh-manager-web/issues/1009)) ([517b444](https://github.com/ovh-ux/ovh-manager-web/commit/517b444))
+* **i18n:** submit translations ([ba86cc3](https://github.com/ovh-ux/ovh-manager-web/commit/ba86cc3))
+* **i18n.core:** add chatbot menu entry ([ed8dc20](https://github.com/ovh-ux/ovh-manager-web/commit/ed8dc20))
+* **i18n.private-database:** add missing translation for postgresql 11 ([#1003](https://github.com/ovh-ux/ovh-manager-web/issues/1003)) ([69096cf](https://github.com/ovh-ux/ovh-manager-web/commit/69096cf))
+
+
+### Features
+
+* add chatbot accessible from the assistance menu ([#997](https://github.com/ovh-ux/ovh-manager-web/issues/997)) ([edac13e](https://github.com/ovh-ux/ovh-manager-web/commit/edac13e))
+
+
+
 ## [13.20.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.20.0...v13.20.1) (2019-04-12)
 
 
