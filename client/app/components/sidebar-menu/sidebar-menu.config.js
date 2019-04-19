@@ -158,7 +158,7 @@ angular.module('App').run((
           title: domain.displayName,
           category: 'domain',
           icon: getDomainIcons(domain),
-          state: domain.type === 'ZONE' ? 'app.domain.dns-zone' : 'app.domain.product',
+          state: domain.type === 'ZONE' ? 'app.domain.dns-zone' : 'app.domain.product.information',
           stateParams: {
             productId: domain.name,
           },
