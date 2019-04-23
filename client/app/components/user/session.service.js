@@ -50,7 +50,7 @@ class SessionService {
       const domainItem = {
         name: domain.name,
         title: domain.displayName || domain.name,
-        state: domain.type === 'ZONE' ? 'app.domain.dns-zone' : 'app.domain.product',
+        state: domain.type === 'ZONE' ? 'app.domain.dns-zone' : 'app.domain.product.information',
         stateParams: {
           productId: domain.name,
         },
@@ -470,7 +470,7 @@ class SessionService {
           // Tickets
           {
             title: this.$translate.instant('global_list_ticket'),
-            url: '#/ticket',
+            url: _.get(this.constants, 'REDIRECT_URLS.listTicket'),
             click: () => this.trackUserMenuSection('my_otrs_tickets', 'otrs'),
           },
 
