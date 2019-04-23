@@ -50,7 +50,7 @@ class SessionService {
       const domainItem = {
         name: domain.name,
         title: domain.displayName || domain.name,
-        state: domain.type === 'ZONE' ? 'app.domain.dns-zone' : 'app.domain.product',
+        state: domain.type === 'ZONE' ? 'app.domain.dns-zone' : 'app.domain.product.information',
         stateParams: {
           productId: domain.name,
         },
