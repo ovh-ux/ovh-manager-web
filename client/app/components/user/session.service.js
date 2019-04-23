@@ -467,13 +467,6 @@ class SessionService {
             click: () => this.trackUserMenuSection('my_contacts', 'contacts'),
           },
 
-          // Tickets
-          {
-            title: this.$translate.instant('global_list_ticket'),
-            url: _.get(this.constants, 'REDIRECT_URLS.listTicket'),
-            click: () => this.trackUserMenuSection('my_otrs_tickets', 'otrs'),
-          },
-
           // Logout
           {
             title: this.$translate.instant('global_logout'),

@@ -1,3 +1,12 @@
+## [13.21.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.21.1...v13.21.2) (2019-04-23)
+
+
+### Bug Fixes
+
+* **navbar:** remove duplicate worng tickets link ([3641b37](https://github.com/ovh-ux/ovh-manager-web/commit/3641b37))
+
+
+
 ## [13.21.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.21.0...v13.21.1) (2019-04-17)
 
 
