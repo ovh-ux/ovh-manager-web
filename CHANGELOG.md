@@ -1,3 +1,13 @@
+## [13.21.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.21.2...v13.21.3) (2019-04-23)
+
+
+### Bug Fixes
+
+* set both right domain menu and ticket link ([#1015](https://github.com/ovh-ux/ovh-manager-web/issues/1015)) ([b77983b](https://github.com/ovh-ux/ovh-manager-web/commit/b77983b))
+* **i18n:** retrieve translations ([#1017](https://github.com/ovh-ux/ovh-manager-web/issues/1017)) ([3c35042](https://github.com/ovh-ux/ovh-manager-web/commit/3c35042))
+
+
+
 ## [13.21.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.21.1...v13.21.2) (2019-04-23)
 
 
