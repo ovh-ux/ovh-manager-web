@@ -7,7 +7,7 @@
    <translation id="domains_dashboard_selector_all_pages" qtlid="140625">Zvolit všechny stránky</translation>
    <translation id="domains_dashboard_table_titles_name" qtlid="140638">Doména</translation>
    <translation id="domains_dashboard_table_titles_expiration" qtlid="33010">Datum expirace</translation>
-   <translation id="domains_dashboard_table_titles_whois" qtlid="140651">Skrytí WHOIS</translation>
+   <translation id="domains_dashboard_table_titles_whois" qtlid="522539">Configuration WHOIS</translation>
    <translation id="domains_dashboard_table_titles_dnssec" qtlid="184529">DNSSEC</translation>
    <translation id="domains_dashboard_table_titles_dnsanycast" qtlid="135671">DNS Anycast</translation>
    <translation id="domains_dashboard_table_empty" qtlid="140664">Zadaným kritériím neodpovídá žádná doména</translation>
@@ -33,9 +33,9 @@
    <translation id="domains_dashboard_tooltip_dnssec_activate_single" qtlid="184555">Aktivovat DNSSEC na této doméně</translation>
    <translation id="domains_dashboard_tooltip_dnssec_deactivate_single" qtlid="184568">Deaktivovat DNSSEC na této doméně</translation>
    <translation id="domains_dashboard_button_renew" qtlid="118962">Obnovit</translation>
-   <translation id="domains_dashboard_button_whois" qtlid="299072">Služba OWO</translation>
    <translation id="domains_dashboard_button_dnssec" qtlid="184581">Nastavit DNSSEC</translation>
    <translation id="domains_dashboard_button_export" qtlid="231773">Export do CSV</translation>
+   <translation id="domains_dashboard_whois_configurable" qtlid="522552">Configurable</translation>
    <translation id="domains_change_owner" qtlid="267240">Change owner</translation>
    <translation id="domains_dashboard_csv_file_created" qtlid="372230">Soubor byl úspěšně vytvořen. Pokud nedojde k automatickému stažení, klikněte prosím <a target="_blank" href="{0}" download>zde</a>.</translation>
    <translation id="domains_configuration_renew_title" qtlid="140690">Obnovit mé domény</translation>
@@ -46,33 +46,6 @@
    <translation id="domains_configuration_renew_step1_confirmation" qtlid="140755">Pro otevření nového okna a obnovení domén klikněte na tlačítko "Objednat".</translation>
    <translation id="domains_configuration_renew_step1_information" qtlid="168341">Otevře se Vám nový panel a budete automaticky přesměrováni do rozhraní pro obnovení služeb OVH.</translation>
    <translation id="domains_configuration_renew_step1_alert" qtlid="140768">Berte prosím na vědomí, že po přijetí Vaší platby je potřeba vyčkat zhruba 2 hodiny, nežli se změny projeví v Zákaznickém prostoru Web.</translation>
-   <translation id="domains_configuration_whois_title" qtlid="124447">Nastavit WHOIS</translation>
-   <translation id="domains_configuration_whois_step1_no_selected_domains" qtlid="140781">Nezvolili jste žádnou doménu k nastavení, nebo u zvolených domén nelze WHOIS změnit.</translation>
-   <translation id="domains_configuration_whois_step1_unable_to_configure" qtlid="140794">U některých zvolených domén (<span class="italic">{0}</span>) nelze WHOIS změnit.</translation>
-   <translation id="domains_configuration_whois_step1_unable_ignored" qtlid="140807">Tyto domény budou v době změny ignorovány.</translation>
-   <translation id="domains_configuration_whois_step1_question" qtlid="140820">Zvolte si prosím, které osobní informace mají být v databázi WHOIS skryté, u Vámi zvolených domén.</translation>
-   <translation id="domains_configuration_whois_step1_display" qtlid="69353">Zobrazit</translation>
-   <translation id="domains_configuration_whois_step1_hide" qtlid="97136">Skrýt</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_desc" qtlid="329499">Během registrace domény jsou po Vás požadovány osobní údaje. Ve výchozím nastavení jsou zveřejněny v WHOIS databázi, která je veřejně přístupná.<br/>Tato funkce umožňuje tyto informace skrýt.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis" qtlid="130099">Co je to registr WHOIS?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">WHOIS je veřejně dostupná databáze informací o doménách a IP adresách. Tato databáze se většinou skládá z informací o vlastníkovi.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">Jaké informace jsou zveřejněny ve WHOIS?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329512">Zveřejněné informace jsou informacemi vlastníka domény. Záleží na koncovce domény, ale obecně zde lze nalézt následující údaje:<ul><li>Adresa</li><li>Telefonní číslo/FAX</li><li>E-mail</li></ul><br/>Pro tyto 3 typy informací lze individuálně volit jejich zobrazování nebo maskování.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_how" qtlid="130135">Jak OVH umožní skrýt tuto informaci?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_how_desc" qtlid="329525">Pokud aktivujete tuto službu, OVH nahradí Vaše osobní údaje údaji generickými. Veškerá komunikace, kdy se Vás někdo bude snažit zkontaktovat, bude předávána dál.<ul><li>Adresa bude nahrazena poštovní schránkou umístěnou v OVH a OVH zajistí přeposílání korespondence skutečnému příjemci.</li><li>Čísla telefonu a faxu jsou nahrazena čísly OwO.</li><li>E-mail obsahuje přesměrování na skutečného vlastníka. Tato adresa je pravidelně přegenerovávána a je vybavena anti-spam filtrem.</li></ul></translation>
-   <translation id="domains_configuration_whois_field_ADDRESS" qtlid="30430">Adresa</translation>
-   <translation id="domains_configuration_whois_field_EMAIL" qtlid="33598">E-mail</translation>
-   <translation id="domains_configuration_whois_field_PHONE" qtlid="128214">Telefon/Fax</translation>
-   <translation id="domains_configuration_whois_step2_alert" qtlid="128226">Berte v potaz, že aktualizace informace ve WHOIS zabere několik hodin.</translation>
-   <translation id="domains_configuration_whois_step2_new_configuration" qtlid="128250">Nové nastavení</translation>
-   <translation id="domains_configuration_whois_step2_question" qtlid="128262">Opravdu si přejete provést následující změny pro zobrazení informací ve WHOIS?</translation>
-   <translation id="domains_configuration_whois_step2_status_activated" qtlid="128274">Skryté</translation>
-   <translation id="domains_configuration_whois_step2_status_desactivated" qtlid="128286">Zobrazené</translation>
-   <translation id="domains_configuration_whois_step2_status_unchanged" qtlid="140833">Nebylo změněno</translation>
-   <translation id="domains_configuration_whois_success" qtlid="128298">Váš požadavek na změny vztahující se k informacím ve WHOIS byl přijat.</translation>
-   <translation id="domains_configuration_whois_partial" qtlid="140846">Váš požadavek na změnu informací uvedených ve WHOIS byl přijat u některých domén, ale u ostatních došlo k chybě.</translation>
-   <translation id="domains_configuration_whois_fail" qtlid="128310">Při zasílání požadavku na změny vztahující se k informacím ve WHOIS skončil chybou.</translation>
 
    <translation id="domains_configuration_dnssec_batch_title" qtlid="184581">Nastavit DNSSEC</translation>
    <translation id="domains_configuration_dnssec_batch_step1_no_selected_domains" qtlid="184594">Nezvolili jste žádné domény pro nastavení, nebo DNSSEC nemůže být u zvolených domén změněn.</translation>
