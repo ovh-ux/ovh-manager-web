@@ -133,7 +133,8 @@
         <div class="col-xm-12 col-md-4 mb-5">
             <oui-tile
                 data-heading="{{ ::'domain_dashboard_security' | translate }}"
-                class="h-100">
+                class="h-100"
+                data-loading="$ctrl.loading.whoIs">
                 <!-- PROTECTION  -->
                 <oui-tile-definition
                     data-ng-class="{'alert alert-warning': $ctrl.domainUnlockRegistry}"
@@ -181,58 +182,22 @@
                             data-uib-tooltip-append-to-body="true"></span>
                     </oui-tile-description>
                 </oui-tile-definition>
-                <!-- OWO  -->
-                <oui-tile-definition
-                    data-term-popover="{{ ::'domain_dashboard_tooltip_whois' | translate }}"
-                    data-term="{{ ::'domain_dashboard_owo' | translate }}">
-                    <oui-tile-description data-ng-if="!$ctrl.isOwoSupported()">
-                        <span data-translate="domain_dashboard_owo_not_supported"></span>
-                    </oui-tile-description>
-                    <oui-tile-description data-ng-if="$ctrl.isOwoSupported()">
-                        <div class="d-block mt-2"
-                             data-wuc-v6-ui-switch
-                             data-ng-change="$ctrl.owoStateHaveChange('all')"
-                             data-ng-if="$ctrl.isOwoSupported()"
-                             data-ng-model="$ctrl.vm.owo.general.uiSwitch"
-                             data-uib-tooltip="{{$ctrl.domain.whoisActivable ? '' : ('domain_dashboard_whois_not_activable' | translate) }}"
-                             data-uib-tooltip-append-to-body="true">
-                       </div>
+                <!-- WHOIS configuration  -->
+                <oui-tile-definition data-term="{{ ::'domain_dashboard_whois' | translate }}">
+                    <oui-tile-description>
+                        <oui-button data-ng-if="$ctrl.isWhoisOptinAllowed"
+                                    data-on-click="$ctrl.$state.go('^.optin', $ctrl.$stateParams)">
+                            <span data-translate="domain_dashboard_whois_button"></span>
+                        </oui-button>
+                        <span data-ng-if="!$ctrl.isWhoisOptinAllowed" class="oui-paragraph" data-translate="domain_dashboard_whois_not_allowed"></span>
                     </oui-tile-description>
                 </oui-tile-definition>
-                <!-- HIDE ADDRESS  -->
-                <oui-tile-definition
-                    data-ng-if="$ctrl.isOwoSupported()"
-                    data-term="{{ ::'domain_dashboard_owo_hide_address' | translate }}">
+                <!-- Obfuscated Email regeneration -->
+                <oui-tile-definition data-term="{{ ::'domain_dashboard_obfuscated_email' | translate }}" data-ng-if="$ctrl.canObfuscateEmails">
                     <oui-tile-description>
-                        <div class="d-block mt-2"
-                             data-wuc-v6-ui-switch
-                             data-ng-change="$ctrl.owoStateHaveChange('address')"
-                             data-ng-model="$ctrl.vm.owo.address.uiSwitch">
-                        </div>
-                    </oui-tile-description>
-                </oui-tile-definition>
-                <!-- HIDE EMAIL  -->
-                <oui-tile-definition
-                    data-ng-if="$ctrl.isOwoSupported()"
-                    data-term="{{ ::'domain_dashboard_owo_hide_email' | translate }}">
-                    <oui-tile-description>
-                        <div class="d-block mt-2"
-                             data-wuc-v6-ui-switch
-                             data-ng-change="$ctrl.owoStateHaveChange('email')"
-                             data-ng-model="$ctrl.vm.owo.email.uiSwitch">
-                        </div>
-                    </oui-tile-description>
-                </oui-tile-definition>
-                <!-- HIDE TELEPHONE NUMBER  -->
-                <oui-tile-definition
-                    data-ng-if="$ctrl.isOwoSupported()"
-                    data-term="{{ ::'domain_dashboard_owo_hide_phone' | translate }}">
-                    <oui-tile-description>
-                        <div class="d-block mt-2"
-                             data-wuc-v6-ui-switch
-                             data-ng-change="$ctrl.owoStateHaveChange('phone')"
-                             data-ng-model="$ctrl.vm.owo.phone.uiSwitch">
-                        </div>
+                        <oui-button data-on-click="$ctrl.$state.go('^.emailObfuscation', $ctrl.$stateParams)">
+                            <span data-translate="domain_dashboard_obfuscated_email_regenerate_button"></span>
+                        </oui-button>
                     </oui-tile-description>
                 </oui-tile-definition>
             </oui-tile>
