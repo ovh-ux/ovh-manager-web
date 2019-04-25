@@ -1,3 +1,12 @@
+## [13.22.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.0...v13.22.1) (2019-04-25)
+
+
+### Bug Fixes
+
+* **domain:** remove extra angular import statement ([#1029](https://github.com/ovh-ux/ovh-manager-web/issues/1029)) ([995f74c](https://github.com/ovh-ux/ovh-manager-web/commit/995f74c))
+
+
+
 # [13.22.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.21.4...v13.22.0) (2019-04-25)
 
 
