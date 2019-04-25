@@ -7,7 +7,7 @@
    <translation id="domains_dashboard_selector_all_pages" qtlid="140625">Pasirinkti visus puslapius</translation>
    <translation id="domains_dashboard_table_titles_name" qtlid="140638">Domenas</translation>
    <translation id="domains_dashboard_table_titles_expiration" qtlid="33010">Galioja iki</translation>
-   <translation id="domains_dashboard_table_titles_whois" qtlid="140651">WHOIS duomenų slėpimas</translation>
+   <translation id="domains_dashboard_table_titles_whois" qtlid="522539">Configuration WHOIS</translation>
    <translation id="domains_dashboard_table_titles_dnssec" qtlid="184529">DNSSEC</translation>
    <translation id="domains_dashboard_table_titles_dnsanycast" qtlid="135671">DNS Anycast</translation>
    <translation id="domains_dashboard_table_empty" qtlid="140664">Joks domenas neatitinka jūsų kriterijų </translation>
@@ -33,9 +33,9 @@
    <translation id="domains_dashboard_tooltip_dnssec_activate_single" qtlid="184555">Įjungti DNSSEC šiam domenui</translation>
    <translation id="domains_dashboard_tooltip_dnssec_deactivate_single" qtlid="184568">Išjungti DNSSEC šiam domenui</translation>
    <translation id="domains_dashboard_button_renew" qtlid="118962">Pratęsti nuomą</translation>
-   <translation id="domains_dashboard_button_whois" qtlid="299072">OWO paslauga</translation>
    <translation id="domains_dashboard_button_dnssec" qtlid="184581">Konfigūruoti DNSSEC</translation>
    <translation id="domains_dashboard_button_export" qtlid="231773">Eksportuoti CSV formatu</translation>
+   <translation id="domains_dashboard_whois_configurable" qtlid="522552">Configurable</translation>
    <translation id="domains_change_owner" qtlid="267240">Savininko keitimas</translation>
    <translation id="domains_dashboard_csv_file_created" qtlid="372230">Failas sukurtas teisingai. Jei atsisiuntimas nevyksta, jūs galite jį <a target="_blank" href="{0}">atsisiųsti rankiniu būdu</a>.</translation>
    <translation id="domains_configuration_renew_title" qtlid="140690">Atnaujinti mano domenus </translation>
@@ -46,33 +46,6 @@
    <translation id="domains_configuration_renew_step1_confirmation" qtlid="140755">Spragtelėkite "Užsakyti" norėdami atidaryti naują langą ir atnaujinti savo domenus.  </translation>
    <translation id="domains_configuration_renew_step1_information" qtlid="168341">Atsidarys naujas laiškas ir būsite automatiškai perkelti į OVH atnaujinimo sąsają.</translation>
    <translation id="domains_configuration_renew_step1_alert" qtlid="140768">Atkreipkite dėmesį, kad patvirtinus jūsų mokėjimą, atnaujinimai įsigalios jūsų web valdymo sąsajoje po 2 valandų.</translation>
-   <translation id="domains_configuration_whois_title" qtlid="124447">Konfigūruoti WHOIS</translation>
-   <translation id="domains_configuration_whois_step1_no_selected_domains" qtlid="140781">Jūs nepasirinkote domenų konfigūravimui arba WHOIS duomenų negalima keisti pasirinktiems domenams.</translation>
-   <translation id="domains_configuration_whois_step1_unable_to_configure" qtlid="140794">WHOIS duomenys negali būti pakeisti kai kuriems pasirinktiems domenams (<span class="italic">{0}</span>).</translation>
-   <translation id="domains_configuration_whois_step1_unable_ignored" qtlid="140807">Atliekant keitimus, šie domenai bus ignoruojami.</translation>
-   <translation id="domains_configuration_whois_step1_question" qtlid="140820">Pasirinkite, jei pageidaujate skelbti ar splėpti savo asmeninę informaciją WHOIS registre jūsų pasirinktiems domenams</translation>
-   <translation id="domains_configuration_whois_step1_display" qtlid="69353">Rodyti</translation>
-   <translation id="domains_configuration_whois_step1_hide" qtlid="97136">Slėpti</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_desc" qtlid="329499">Registruojant domeną būtina pateikti asmens duomenis. Pagal nutylėjimą, jūsų duomenys skelbiami viešai prieinamoje WHOIS duomenų bazėje. <br/>Ši funkcija leidžia paslėpti šiuos duomenis, jei to norite. </translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis" qtlid="130099">Kas yra WHOIS?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">WHOIS - tai vieša paslauga, skirta domenų ir IP adresų informacijos paieškai. Šioje duomenų bazėje taip pat saugoma savininkų informacija.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">Kokia informacija skelbiama WHOIS duomenų bazėje?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329512">Domeno savininko duomenų paskelbimas priklauso nuo domeno plėtinio, bet paprastai skelbiami šie duomenys:<ul><li>Savininko adresas</li><li>Savininko telefono ir fakso numeriai</li><li>Savininko el. paštas</li></ul><br/>Galite slėpti ar viešai tiekti kiekvieną iš minįtų duomenų.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_how" qtlid="130135">Kaip OVH jums leidžia paslėpti šiuos duomenis?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_how_desc" qtlid="329525">Jei įjungsite šią paslaugą, OVH pakeis jūsų asmens duomenis į bendro pobūdžio informaciją. OVH jus informuos apie pranešimus, gautus iš asmenų, ieškančių jūsų kontaktų.<ul><li>Adreso laukas bus pakeistas OVH pašto adresu, jums bus persiųsti visi gauti laiškai.</li><li>Telefono ir fakso numerių laukus pakeis OwO numeris.</li><li>El. pašto lauką pakeis nukreipimas į savininko el. pašto adresą. Šis adresas nuolat generuojamas, naudonat Anti-SPAM filtrus.</li></ul></translation>
-   <translation id="domains_configuration_whois_field_ADDRESS" qtlid="30430">Adresas</translation>
-   <translation id="domains_configuration_whois_field_EMAIL" qtlid="33598">El. paštas</translation>
-   <translation id="domains_configuration_whois_field_PHONE" qtlid="128214">Telefonas / Faksas</translation>
-   <translation id="domains_configuration_whois_step2_alert" qtlid="128226">Atkreipkite dėmesį, kad WHOIS duomenų atnaujinimas gali užtrukti keletą valandų.  </translation>
-   <translation id="domains_configuration_whois_step2_new_configuration" qtlid="128250">Nauja konfigūracija </translation>
-   <translation id="domains_configuration_whois_step2_question" qtlid="128262">Ar tikrai pageidaujate taikyti šiuos pakeitimus savo WHOIS duomenų paskelbimui?</translation>
-   <translation id="domains_configuration_whois_step2_status_activated" qtlid="128274">Paslėpta</translation>
-   <translation id="domains_configuration_whois_step2_status_desactivated" qtlid="128286">Paskelbta</translation>
-   <translation id="domains_configuration_whois_step2_status_unchanged" qtlid="140833">Nepakeista</translation>
-   <translation id="domains_configuration_whois_success" qtlid="128298">Jūsų prašymas pakeisti WHOIS duomenis buvo priimtas.</translation>
-   <translation id="domains_configuration_whois_partial" qtlid="140846">Jūsų prašymas pakeisti WHOIS duomenis buvo priimtas tik kai kuriems domenams, tačiau įvyko klaida keičiant kitų domenų WHOIS duomenis.  </translation>
-   <translation id="domains_configuration_whois_fail" qtlid="128310">Įvyko klaida teikiant prašymą pakeisti WHOIS duomenis.</translation>
 
    <translation id="domains_configuration_dnssec_batch_title" qtlid="184581">Konfigūruoti DNSSEC</translation>
    <translation id="domains_configuration_dnssec_batch_step1_no_selected_domains" qtlid="184594">Nepasirinkote domenų, kuriuos norite konfigūruoti, arba DNSSEC negali būti keičiamas pasirinktiems domenams.</translation>

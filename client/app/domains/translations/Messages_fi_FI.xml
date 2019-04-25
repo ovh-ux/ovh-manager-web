@@ -7,7 +7,7 @@
    <translation id="domains_dashboard_selector_all_pages" qtlid="140625">Valitse kaikki sivut</translation>
    <translation id="domains_dashboard_table_titles_name" qtlid="140638">Verkkotunnus</translation>
    <translation id="domains_dashboard_table_titles_expiration" qtlid="33010">Umpeutumispäivä</translation>
-   <translation id="domains_dashboard_table_titles_whois" qtlid="140651">WHOIS-salaus</translation>
+   <translation id="domains_dashboard_table_titles_whois" qtlid="522539">Configuration WHOIS</translation>
    <translation id="domains_dashboard_table_titles_dnssec" qtlid="184529">DNSSEC</translation>
    <translation id="domains_dashboard_table_titles_dnsanycast" qtlid="135671">Anycast-nimipalvelimet</translation>
    <translation id="domains_dashboard_table_empty" qtlid="140664">Kriteerit täyttäviä verkkotunnuksia ei löytynyt</translation>
@@ -33,9 +33,9 @@
    <translation id="domains_dashboard_tooltip_dnssec_activate_single" qtlid="184555">Aktivoi DNSSEC tälle verkkotunnukselle</translation>
    <translation id="domains_dashboard_tooltip_dnssec_deactivate_single" qtlid="184568">Poista DNSSEC käytöstä tältä verkkotunnukselta</translation>
    <translation id="domains_dashboard_button_renew" qtlid="118962">Uudista palvelu</translation>
-   <translation id="domains_dashboard_button_whois" qtlid="299072">OWO-palvelu</translation>
    <translation id="domains_dashboard_button_dnssec" qtlid="184581">Konfiguroi DNSSEC</translation>
    <translation id="domains_dashboard_button_export" qtlid="231773">CSV-vienti</translation>
+   <translation id="domains_dashboard_whois_configurable" qtlid="522552">Configurable</translation>
    <translation id="domains_change_owner" qtlid="267240">Vaihda omistaja</translation>
    <translation id="domains_dashboard_csv_file_created" qtlid="372230">Tiedoston luominen onnistui. Jos lataus ei käynnisty, voit <a target="_blank" href="{0}">tehdä latauksen käsin</a>.</translation>
    <translation id="domains_configuration_renew_title" qtlid="140690">Uudista verkkotunnukset</translation>
@@ -46,33 +46,6 @@
    <translation id="domains_configuration_renew_step1_confirmation" qtlid="140755">Klikkaa ”Tilaa”-nappia avataksesi uuden ikkunan ja uudistaaksesi verkkotunnuksesi.</translation>
    <translation id="domains_configuration_renew_step1_information" qtlid="168341">Uusi välilehti avataan ja sinut ohjataan OVH:n maksusivulle.</translation>
    <translation id="domains_configuration_renew_step1_alert" qtlid="140768">Ota huomioon että maksun hyväksymisestä uusintatilauksen rekisteröimiseen ja sen näkymiseen Web-hallintapaneelissasi kuluu keskimäärin noin kaksi tuntia.</translation>
-   <translation id="domains_configuration_whois_title" qtlid="124447">Määrittele WHOIS</translation>
-   <translation id="domains_configuration_whois_step1_no_selected_domains" qtlid="140781">Et ole valinnut yhtään määriteltäviä verkkotunnuksia tai valittujen verkkotunnuksien WHOIS-tietoja ei voida muokata.</translation>
-   <translation id="domains_configuration_whois_step1_unable_to_configure" qtlid="140794">WHOIS-tietoja ei voida muokata valitsemillesi verkkotunnuksille (<span class="italic">{0}</span>).</translation>
-   <translation id="domains_configuration_whois_step1_unable_ignored" qtlid="140807">Nämä verkkotunnukset jätetään huomioimatta muokkausaikana.</translation>
-   <translation id="domains_configuration_whois_step1_question" qtlid="140820">Valitse, haluatko henkilökohtaisten tietojesi olevan julkisesti esillä tai piilossa WHOIS-tietokannassa valitulla verkkotunnuksella.</translation>
-   <translation id="domains_configuration_whois_step1_display" qtlid="69353">Näytä</translation>
-   <translation id="domains_configuration_whois_step1_hide" qtlid="97136">Piilota</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_desc" qtlid="329499">Kun rekisteröit verkkotunnuksen, sinulta pyydetään henkilötietoja. Oletuksena nämä tiedot julkaistaan WHOIS-tietokannassa, joka on julkisesti kaikkien saatavilla. <br/>Tällä toiminnolla voit halutessasi häivyttää nämä tiedot.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis" qtlid="130099">Mikä on WHOIS?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">WHOIS on julkinen etsintätyökalu verkkotunnustiedoille ja IP-osoitteille. Tietokanta käsittää tiedot verkkotunnusten ja IP-osoitteiden omistajista.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">Mitkä tiedot julkaistaan WHOIS-tietokannassa?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329512">Verkkotunnuksen omistajan tiedot ovat julkaistavia tietoja. Ne riippuvat verkkotunnuksesta, mutta yleensä niistä löytyy omistajan:<ul><li>Osoite</li><li>Puhelinnumero ja faksi</li><li>Sähköpostiosoite</li></ul><br/>Näiden kolmen tyyppisten tietojen häivytys/näyttö voidaan konfiguroida samalla tavoin.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_how" qtlid="130135">Miten OVH auttaa WHOIS-tietojen piilotuksessa?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_how_desc" qtlid="329525">Jos aktivoit tämän palvelun, OVH korvaa henkilötietosi geneerisillä tiedoilla. Kaikki sinua koskevat yhteydenotot välitetään kuitenkin eteenpäin.<ul><li>Osoitekenttä korvataan OVH:n postilaatiokolla, ja lähetämme vastaanotetut viestit eteenpäin oikealle vastaanottajalle.</li><li>Puhelinnumero ja faksi korvataan OwO-numerolla. Sähköpostiosoite korvataan uudelleenohjauksella, joka osoittaa omistajan sähköpostiin. Tämä osoite uudelleengeneroidaan säännöllisesti ja sille tehdään ROSKAPOSTI-suodatus.</li></ul></translation>
-   <translation id="domains_configuration_whois_field_ADDRESS" qtlid="30430">Osoite</translation>
-   <translation id="domains_configuration_whois_field_EMAIL" qtlid="33598">Sähköposti</translation>
-   <translation id="domains_configuration_whois_field_PHONE" qtlid="128214">Puhelin/Faksi</translation>
-   <translation id="domains_configuration_whois_step2_alert" qtlid="128226">Huomaa, että WHOIS-tietojen päivitys kestää useita tunteja.</translation>
-   <translation id="domains_configuration_whois_step2_new_configuration" qtlid="128250">Uusi konfiguraatio</translation>
-   <translation id="domains_configuration_whois_step2_question" qtlid="128262">Oletko varma, että haluat ottaa seuraavat WHOIS-tietojen näyttömuutokset käyttöön?</translation>
-   <translation id="domains_configuration_whois_step2_status_activated" qtlid="128274">Piilotetaan</translation>
-   <translation id="domains_configuration_whois_step2_status_desactivated" qtlid="128286">Näytetään</translation>
-   <translation id="domains_configuration_whois_step2_status_unchanged" qtlid="140833">Ei muokattu</translation>
-   <translation id="domains_configuration_whois_success" qtlid="128298">WHOIS-tietojen muutospyyntö on rekisteröity.</translation>
-   <translation id="domains_configuration_whois_partial" qtlid="140846">WHOIS-tietojen muokkauspyyntö tapahtui tietyille verkkotunnuksille, mutta tietyillä verkkotunnuksilla tapahtui virheitä.</translation>
-   <translation id="domains_configuration_whois_fail" qtlid="128310">Tapahtui virhe WHOIS-tietojen muutospyynnössä.</translation>
 
    <translation id="domains_configuration_dnssec_batch_title" qtlid="184581">Konfiguroi DNSSEC</translation>
    <translation id="domains_configuration_dnssec_batch_step1_no_selected_domains" qtlid="184594">Et ole valinnut konfiguroitavia verkkotunnuksia tai DNSSEC ei ole muutettavissa valituille verkkotunnuksille.</translation>

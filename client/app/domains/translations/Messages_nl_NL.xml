@@ -7,7 +7,7 @@
    <translation id="domains_dashboard_selector_all_pages" qtlid="140625">Selecteer alle pagina's</translation>
    <translation id="domains_dashboard_table_titles_name" qtlid="140638">Domeinnaam</translation>
    <translation id="domains_dashboard_table_titles_expiration" qtlid="33010">Vervaldatum</translation>
-   <translation id="domains_dashboard_table_titles_whois" qtlid="140651">WHOIS Masking</translation>
+   <translation id="domains_dashboard_table_titles_whois" qtlid="522539">Configuration WHOIS</translation>
    <translation id="domains_dashboard_table_titles_dnssec" qtlid="184529">DNSSEC</translation>
    <translation id="domains_dashboard_table_titles_dnsanycast" qtlid="135671">Anycast DNS</translation>
    <translation id="domains_dashboard_table_empty" qtlid="140664">Geen enkel domein voldoet aan uw criteria</translation>
@@ -33,9 +33,9 @@
    <translation id="domains_dashboard_tooltip_dnssec_activate_single" qtlid="184555">DNSSEC voor dit domein activeren</translation>
    <translation id="domains_dashboard_tooltip_dnssec_deactivate_single" qtlid="184568">DNSSEC voor dit domein deactiveren</translation>
    <translation id="domains_dashboard_button_renew" qtlid="118962">Verlengen</translation>
-   <translation id="domains_dashboard_button_whois" qtlid="299072">OWO service</translation>
    <translation id="domains_dashboard_button_dnssec" qtlid="184581">DNSSEC configureren </translation>
    <translation id="domains_dashboard_button_export" qtlid="231773">Exporteren in CSV</translation>
+   <translation id="domains_dashboard_whois_configurable" qtlid="522552">Configurable</translation>
    <translation id="domains_change_owner" qtlid="267240">Eigenaar aanpassen</translation>
    <translation id="domains_dashboard_csv_file_created" qtlid="372230">Het bestand is correct aangemaakt. Als de download niet automatisch start dan kunt u <a target="_blank" href="{0}">het handmatig downloaden </a>.</translation>
    <translation id="domains_configuration_renew_title" qtlid="140690">Mijn domeinen verlengen</translation>
@@ -46,33 +46,6 @@
    <translation id="domains_configuration_renew_step1_confirmation" qtlid="140755">Klik op "Bestellen" om een ​​nieuw scherm te openen en uw domeinnamen te verlengen.</translation>
    <translation id="domains_configuration_renew_step1_information" qtlid="168341">Een nieuwe tab opent en u wordt automatisch geleid naar OVH's verlengingsinterface.</translation>
    <translation id="domains_configuration_renew_step1_alert" qtlid="140768">Hou er svp rekening mee, dat het na de aanvaarding van uw betaling ongeveer twee uur duurt, voordat de verlengingen zijn doorgevoerd in uw Web control panel.</translation>
-   <translation id="domains_configuration_whois_title" qtlid="124447">De WHOIS configureren</translation>
-   <translation id="domains_configuration_whois_step1_no_selected_domains" qtlid="140781">U heeft geen domeinen geselecteerd om te configureren of de WHOIS kan niet worden bewerkt op de geselecteerde domeinen.</translation>
-   <translation id="domains_configuration_whois_step1_unable_to_configure" qtlid="140794">De WHOIS kan niet worden bewerkt op sommige geselecteerde domeinen <span class="italic">{0}</span>).</translation>
-   <translation id="domains_configuration_whois_step1_unable_ignored" qtlid="140807">Deze domeinen zullen worden genegeerd bij wijzigingen.</translation>
-   <translation id="domains_configuration_whois_step1_question" qtlid="140820">Kies of uw persoonlijke informatie moet worden weergegeven of verborgen in het WHOIS-register voor geselecteerde domeinen</translation>
-   <translation id="domains_configuration_whois_step1_display" qtlid="69353">Weergeven</translation>
-   <translation id="domains_configuration_whois_step1_hide" qtlid="97136">Verbergen</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_desc" qtlid="329499">Wanneer u een domeinnaam registreert dan zullen er persoonlijke gegevens van u gevraagd worden. Deze worden standaard gepubliceerd in de automatische WHOIS-database. <br/>Met deze functie kunt u naar wens deze informatie verbergen.  </translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis" qtlid="130099">Wat is de WHOIS?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">De WHOIS is een publieke zoekdienst voor informatie over domeinnamen en IP-adressen. Deze database bevat voornamelijk gegevens over de eigenaar.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">Welke informatie wordt gepubliceerd op WHOIS?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329512">De gepubliceerde informatie behoort tot de domeinnaameigenaar. De informatie is afhankelijk van de domeinnaamextensie maar betreft over het algemeen: <ul><li>Hun telefoon- en faxnummers</li><li>Hun e-mail</li></ul><br/>U kunt deze 3 soorten details naar wens verbergen of weergeven. </translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_how" qtlid="130135">Hoe kan ik deze gegevens bij OVH verbergen?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_how_desc" qtlid="329525">Als u deze service inschakelt dan zal OVH uw persoonlijke informatie vervangen met algemene informatie. Alle klachten worden dan naar u doorgestuurd. <ul><li>Het adresveld wordt vervangen foor een adres dat leidt naar OVH, en we sturen de e-mails automatisch door naar de werkelijke ontvanger. </li><li>De telefoon- en faxinformatie worden vervangen door een OwO-nummer. </li><li>Het e-mailveld wordt vervangen door een doorsturing dat leidt naar het e-mailadres van de eigenaar. Dit adres wordt regelmatig vernieuwd en is voorzien van een anti-SPAM filter.</li></ul> </translation>
-   <translation id="domains_configuration_whois_field_ADDRESS" qtlid="30430">Adres</translation>
-   <translation id="domains_configuration_whois_field_EMAIL" qtlid="33598">E-mail</translation>
-   <translation id="domains_configuration_whois_field_PHONE" qtlid="128214">Telefoon/Fax</translation>
-   <translation id="domains_configuration_whois_step2_alert" qtlid="128226">Hou er rekening mee, dat het updaten van de WHOIS-gegevens enkele uren kan duren.</translation>
-   <translation id="domains_configuration_whois_step2_new_configuration" qtlid="128250">Nieuwe configuratie</translation>
-   <translation id="domains_configuration_whois_step2_question" qtlid="128262">Weet u zeker, dat u de volgende wijzigingen wilt aanbrengen in uw WHOIS-gegevens? </translation>
-   <translation id="domains_configuration_whois_step2_status_activated" qtlid="128274">Verborgen</translation>
-   <translation id="domains_configuration_whois_step2_status_desactivated" qtlid="128286">Weergeven</translation>
-   <translation id="domains_configuration_whois_step2_status_unchanged" qtlid="140833">Ongewijzigd</translation>
-   <translation id="domains_configuration_whois_success" qtlid="128298">Uw verzoek tot wijziging van de WHOIS-gegevens wordt overwogen.</translation>
-   <translation id="domains_configuration_whois_partial" qtlid="140846">Uw verzoek tot wijziging van de WHOIS-gegevens werd voor sommige domeinen doorgevoerd, maar er deden zich fouten voor bij andere domeinen.</translation>
-   <translation id="domains_configuration_whois_fail" qtlid="128310">Er is een fout opgetreden bij het aanvragen van de wijziging in de WHOIS-gegevens.</translation>
 
    <translation id="domains_configuration_dnssec_batch_title" qtlid="184581">DNSSEC configureren </translation>
    <translation id="domains_configuration_dnssec_batch_step1_no_selected_domains" qtlid="184594">U heeft geen domeinen geselecteerd om te configureren, of DNSSEC kan niet gewijzigd worden voor de geselecteerde domeinen.</translation>

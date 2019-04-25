@@ -7,7 +7,7 @@
    <translation id="domains_dashboard_selector_all_pages" qtlid="140625">Zaznacz wszystkie strony</translation>
    <translation id="domains_dashboard_table_titles_name" qtlid="140638">Nazwa domeny</translation>
    <translation id="domains_dashboard_table_titles_expiration" qtlid="33010">Data wygasania</translation>
-   <translation id="domains_dashboard_table_titles_whois" qtlid="140651">Maskowanie WHOIS</translation>
+   <translation id="domains_dashboard_table_titles_whois" qtlid="522539">Configuration WHOIS</translation>
    <translation id="domains_dashboard_table_titles_dnssec" qtlid="184529">DNSSEC</translation>
    <translation id="domains_dashboard_table_titles_dnsanycast" qtlid="135671">DNS Anycast</translation>
    <translation id="domains_dashboard_table_empty" qtlid="140664">Brak domen spełniających te kryteria</translation>
@@ -33,9 +33,9 @@
    <translation id="domains_dashboard_tooltip_dnssec_activate_single" qtlid="184555">Włącz DNSSEC dla tej domeny</translation>
    <translation id="domains_dashboard_tooltip_dnssec_deactivate_single" qtlid="184568">Wyłącz DNSSEC dla tej domeny</translation>
    <translation id="domains_dashboard_button_renew" qtlid="118962">Odnów</translation>
-   <translation id="domains_dashboard_button_whois" qtlid="299072">Usługa OWO</translation>
    <translation id="domains_dashboard_button_dnssec" qtlid="184581">Konfiguruj DNSSEC</translation>
    <translation id="domains_dashboard_button_export" qtlid="231773">Eksportuj w formacie CSV</translation>
+   <translation id="domains_dashboard_whois_configurable" qtlid="522552">Configurable</translation>
    <translation id="domains_change_owner" qtlid="267240">Zmień właściciela</translation>
    <translation id="domains_dashboard_csv_file_created" qtlid="372230">Plik został poprawnie utworzony. Jeśli pobieranie się nie rozpoczyna, możesz <a target="_blank" href="{0}">pobrać plik ręcznie</a>.</translation>
    <translation id="domains_configuration_renew_title" qtlid="140690">Odnów domeny</translation>
@@ -46,33 +46,6 @@
    <translation id="domains_configuration_renew_step1_confirmation" qtlid="140755">Kliknij na przycisk "Zamów". Otworzy się nowa strona, na której będziesz mógł odnowić domeny.</translation>
    <translation id="domains_configuration_renew_step1_information" qtlid="168341">Otworzy się nowa zakładka i zostaniesz automatycznie przekierowany do interfejsu odnowień OVH.</translation>
    <translation id="domains_configuration_renew_step1_alert" qtlid="140768">Odnowienie usługi może trwać około 2 godziny od momentu zaakceptowania płatności.</translation>
-   <translation id="domains_configuration_whois_title" qtlid="124447">Konfiguracja WHOIS</translation>
-   <translation id="domains_configuration_whois_step1_no_selected_domains" qtlid="140781">Nie wybrałeś domeny do skonfigurowania lub dla wybranych domen nie można zmienić bazy WHOIS.</translation>
-   <translation id="domains_configuration_whois_step1_unable_to_configure" qtlid="140794">Dla niektórych domen baza WHOIS nie może zostać zmodyfikowana (<span class="italic">{0}</span>).</translation>
-   <translation id="domains_configuration_whois_step1_unable_ignored" qtlid="140807">Te domeny nie będą brane pod uwagę podczas wprowadzania zmian. </translation>
-   <translation id="domains_configuration_whois_step1_question" qtlid="140820">Dokonaj wyboru, czy Twoje dane osobowe mają być widoczne czy zamaskowane w bazie WHOIS dla wybranych domen.</translation>
-   <translation id="domains_configuration_whois_step1_display" qtlid="69353">Wyświetl</translation>
-   <translation id="domains_configuration_whois_step1_hide" qtlid="97136">Ukryj</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_title" qtlid="130075">OWO</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_desc" qtlid="329499">Gdy rejestrujesz domenę, musisz podać dane osobowe. Są one domyślnie wyświetlane w bazie danych WHOIS, która jest publicznie dostępna. <br/>Funkcja ta pozwala na ukrycie tych danych.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis" qtlid="130099">Co to jest baza WHOIS?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatis_desc" qtlid="129775">WHOIS to publiczna baza zawierająca informacje związane z domenami i adresami IP. Baza ta zwiera również informacje na temat kontaktów. </translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo" qtlid="130111">Jakie informacje są widoczne w bazie WHOIS ?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_whatinfo_desc" qtlid="329512">Publikowane dane to dane właściciela domeny. Zależą one od rozszerzenia domeny. Generalnie są to: <ul><li>Adres</li><li>Numer telefonu i faksu</li><li>Adres e-mail</li></ul><br/>Maskowanie / wyświetlanie danych może być różnie skonfigurowane dla tych 3 typów danych.</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_how" qtlid="130135">W jaki sposób możesz ukryć te informacje?</translation>
-   <translation id="domains_configuration_whois_step1_helpwizard_how_desc" qtlid="329525">Jeśli uruchomisz tę usługę, OVH zastąpi Twoje dane danymi ogólnymi. Wszelka korespondencja adresowana do Ciebie będzie przekazywana.<ul><li>Pole z adresem zostanie zastąpione skrytką pocztową OVH. Korespondencja będzie przesyłana na rzeczywisty adres.</li><li>Numer telefonu i faksu zostaną zastąpione numerem OwO.</li><li>Pole email zostanie zastąpione przekierowaniem, które wskazuje na adres email właściciela. Adres ten jest regularnie zmieniany i filtrowany pod względem spamu.</li></ul></translation>
-   <translation id="domains_configuration_whois_field_ADDRESS" qtlid="30430">Adres</translation>
-   <translation id="domains_configuration_whois_field_EMAIL" qtlid="33598">E-mail</translation>
-   <translation id="domains_configuration_whois_field_PHONE" qtlid="128214">Telefon / Faks</translation>
-   <translation id="domains_configuration_whois_step2_alert" qtlid="128226">Aktualizacja danych w bazie WHOIS zajmuje kilka godzin.</translation>
-   <translation id="domains_configuration_whois_step2_new_configuration" qtlid="128250">Nowa konfiguracja</translation>
-   <translation id="domains_configuration_whois_step2_question" qtlid="128262">Czy chcesz zastosować następujące zmiany dotyczące wyświetlania informacji WHOIS?</translation>
-   <translation id="domains_configuration_whois_step2_status_activated" qtlid="128274">Ukryte</translation>
-   <translation id="domains_configuration_whois_step2_status_desactivated" qtlid="128286">Wyświetlane</translation>
-   <translation id="domains_configuration_whois_step2_status_unchanged" qtlid="140833">Nie zmodyfikowane</translation>
-   <translation id="domains_configuration_whois_success" qtlid="128298">Twoje zlecenie zmiany informacji WHOIS zostało przyjęte.</translation>
-   <translation id="domains_configuration_whois_partial" qtlid="140846">Twoje zlecenie zmiany danych w bazie WHOIS zostało zarejestrowane dla niektórych domen. Dla pozostałych domen wystąpiły błędy.</translation>
-   <translation id="domains_configuration_whois_fail" qtlid="128310">Wystąpił błąd podczas zlecania zmiany informacji WHOIS.</translation>
 
    <translation id="domains_configuration_dnssec_batch_title" qtlid="184581">Konfiguruj DNSSEC</translation>
    <translation id="domains_configuration_dnssec_batch_step1_no_selected_domains" qtlid="184594">Nie wybrałeś domeny do skonfigurowania lub nie można zmodyfikować usługi DNSSEC dla wybranych domen.</translation>

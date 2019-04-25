@@ -22,6 +22,7 @@ angular.module('App').config(($stateProvider) => {
     atInternet: {
       ignore: true, // this tell AtInternet to not track this state
     },
+    redirectTo: 'app.domain.product.information',
     resolve: {
       currentSection: () => 'domain',
       navigationInformations: [
@@ -45,6 +46,7 @@ angular.module('App').config(($stateProvider) => {
     controller: 'DomainCtrl',
     controllerAs: 'ctrlDomain',
     reloadOnSearch: false,
+    redirectTo: 'app.domain.alldom.information',
     resolve: {
       currentSection: () => 'domain',
       navigationInformations: [

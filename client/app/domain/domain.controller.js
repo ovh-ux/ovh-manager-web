@@ -194,10 +194,6 @@ angular.module('App').controller(
         .finally(() => {
           this.loading.domainInfos = false;
           this.$scope.$broadcast('domain.refreshData.done');
-
-          if (!this.domain.isExpired) {
-            this.$state.go(`${this.getState()}.information`, this.$stateParams);
-          }
         });
     }
 
