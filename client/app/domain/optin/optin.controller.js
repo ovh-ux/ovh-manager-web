@@ -41,7 +41,7 @@ export default class DomainOptinCtrl {
       .catch(() => {
         this.Alerter.error(
           this.$translate.instant('domain_optin_init_error'),
-          this.DOMAIN.ALERS.tabs,
+          this.DOMAIN.ALERTS.tabs,
         );
       })
       .finally(() => {
@@ -117,14 +117,14 @@ export default class DomainOptinCtrl {
       .then(() => {
         this.Alerter.success(
           this.$translate.instant('domain_optin_save_success'),
-          this.DOMAIN.ALERS.tabs,
+          this.DOMAIN.ALERTS.tabs,
         );
         return this.$state.go('^.information', this.$stateParams);
       })
       .catch(() => {
         this.Alerter.error(
           this.$translate.instant('domain_optin_save_error'),
-          this.DOMAIN.ALERS.tabs,
+          this.DOMAIN.ALERTS.tabs,
         );
       });
   }
