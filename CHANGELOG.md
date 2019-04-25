@@ -1,3 +1,23 @@
+# [13.22.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.21.4...v13.22.0) (2019-04-25)
+
+
+### Bug Fixes
+
+* **domain:** allow redirection to domain child states ([02b7783](https://github.com/ovh-ux/ovh-manager-web/commit/02b7783))
+* **email.domain.account.export-csv:** sort content based on header ([#1019](https://github.com/ovh-ux/ovh-manager-web/issues/1019)) ([e09f511](https://github.com/ovh-ux/ovh-manager-web/commit/e09f511))
+* **i18n:** retrieve translations ([6a35677](https://github.com/ovh-ux/ovh-manager-web/commit/6a35677))
+* **i18n:** submit translations ([666f9d1](https://github.com/ovh-ux/ovh-manager-web/commit/666f9d1))
+
+
+### Features
+
+* **domain:** remove owo section ([4c91e36](https://github.com/ovh-ux/ovh-manager-web/commit/4c91e36))
+* **domain.email-obfuscation:** add email obfuscation refresh ([0851ea9](https://github.com/ovh-ux/ovh-manager-web/commit/0851ea9))
+* **domain.optin:** add domain optin ([c6e33f5](https://github.com/ovh-ux/ovh-manager-web/commit/c6e33f5))
+* **domains:** remove owo bulk actions ([aaac409](https://github.com/ovh-ux/ovh-manager-web/commit/aaac409))
+
+
+
 ## [13.21.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.21.3...v13.21.4) (2019-04-24)
 
 
