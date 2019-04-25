@@ -1,5 +1,6 @@
 import _ from 'lodash';
 
+import { CONTACTS_TYPES } from '../optin/constants';
 import { EXCLUDED_CONTACTS } from './email-obfuscation.constant';
 
 export default class DomainEmailObfuscationCtrl {
@@ -31,8 +32,7 @@ export default class DomainEmailObfuscationCtrl {
 
     return this.getObfuscationRules()
       .then(() => this.getObfuscationConfiguration())
-      .catch((error) => {
-        console.log(error);
+      .catch(() => {
         this.Alerter.error('domain_email_obfuscation_error', this.DOMAIN.ALERTS.tabs);
       })
       .finally(() => {
@@ -46,7 +46,10 @@ export default class DomainEmailObfuscationCtrl {
         serviceName: this.domain,
       }).$promise
       .then((contactTypes) => {
-        this.contactTypes = contactTypes.filter(contact => !EXCLUDED_CONTACTS.includes(contact));
+        this.contactTypes = _.sortBy(
+          contactTypes.filter(contact => !EXCLUDED_CONTACTS.includes(contact)),
+          contact => _.indexOf(CONTACTS_TYPES, contact),
+        );
         return contactTypes;
       });
   }
