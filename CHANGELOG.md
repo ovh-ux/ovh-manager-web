@@ -1,3 +1,12 @@
+## [13.22.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.1...v13.22.2) (2019-04-25)
+
+
+### Bug Fixes
+
+* **domain.optin:** fix redirect on optin submission ([#1033](https://github.com/ovh-ux/ovh-manager-web/issues/1033)) ([25cd7ad](https://github.com/ovh-ux/ovh-manager-web/commit/25cd7ad))
+
+
+
 ## [13.22.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.0...v13.22.1) (2019-04-25)
 
 
