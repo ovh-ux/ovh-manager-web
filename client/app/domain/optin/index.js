@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 import component from './optin.component';
 import controller from './optin.controller';
 
