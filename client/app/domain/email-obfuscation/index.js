@@ -1,5 +1,3 @@
-import angular from 'angular';
-
 import component from './email-obfuscation.component';
 import controller from './email-obfuscation.controller';
 
