@@ -80,11 +80,12 @@ angular.module('App').controller(
           return this.$q
             .all(pull)
             .then((accounts) => {
+              const headerArray = _.keys(accounts[0]);
+              const header = `${_.keys(accounts[0]).join(';')};`;
               const content = _.map(
                 accounts,
-                account => `${_.values(account).join(';')};`,
+                account => `${_.at(account, headerArray).join(';')};`,
               ).join('\n');
-              const header = `${_.keys(accounts[0]).join(';')};`;
 
               if (content && (emails.length < requestsCount || quit)) {
                 const data = this.exportCsv.exportData({
