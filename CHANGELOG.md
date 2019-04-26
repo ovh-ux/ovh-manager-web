@@ -1,3 +1,15 @@
+## [13.22.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.2...v13.22.3) (2019-04-26)
+
+
+### Bug Fixes
+
+* **domain.email-obfuscation:** add missing word ([#1037](https://github.com/ovh-ux/ovh-manager-web/issues/1037)) ([44031d0](https://github.com/ovh-ux/ovh-manager-web/commit/44031d0))
+* **domain.email-obfusctation:** fix contact order ([#1036](https://github.com/ovh-ux/ovh-manager-web/issues/1036)) ([4b3d00b](https://github.com/ovh-ux/ovh-manager-web/commit/4b3d00b))
+* **i18n:** retrieve translations ([2323a0d](https://github.com/ovh-ux/ovh-manager-web/commit/2323a0d))
+* **i18n:** submit translations ([4755dc2](https://github.com/ovh-ux/ovh-manager-web/commit/4755dc2))
+
+
+
 ## [13.22.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.1...v13.22.2) (2019-04-25)
 
 
