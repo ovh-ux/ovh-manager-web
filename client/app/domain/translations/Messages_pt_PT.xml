@@ -38,12 +38,15 @@
    <translation id="domain_dashboard_add_uk_tags_pattern_error" qtlid="270462">A tag deve conter apenas letras, números e -</translation>
    <translation id="domain_dashboard_add_uk_tags_maxlength_error" qtlid="270475">A tag não deve exceder os 50 caracteres</translation>
 
-   <translation id="domain_dashboard_whois" qtlid="522682">Affichage du WHOIS</translation>
-   <translation id="domain_dashboard_whois_button" qtlid="522695">Configurer l'affichage du WHOIS</translation>
-   <translation id="domain_dashboard_whois_not_allowed" qtlid="522708">Le registre en charge de ce nom de domaine n'autorise pas l'affichage de vos données personnalisées</translation>
+   <translation id="domain_dashboard_whois" qtlid="522682">Visualização do WHOIS</translation>
+   <translation id="domain_dashboard_whois_button" qtlid="522695">Configurar a visualização do WHOIS</translation>
+   <translation id="domain_dashboard_whois_not_allowed" qtlid="522708">O registry responsável por este domínio não autoriza a visualização dos seus dados personalizados.</translation>
+   <translation id="domain_dashboard_whois_pending" qtlid="507237">Este serviço está a ser criado. Aguarde, por favor.</translation>
+   <translation id="domain_dashboard_whois_invalid_contact" qtlid="507250">Apenas o contacto administrador está autorizado a realizar esta ação.</translation>
+   <translation id="domain_dashboard_whois_error" qtlid="507263">Ocorreu um erro. Tente novamente mais tarde.</translation>
 
-   <translation id="domain_dashboard_obfuscated_email" qtlid="522721">Adresses e-mails de substitution</translation>
-   <translation id="domain_dashboard_obfuscated_email_regenerate_button" qtlid="522734">Gérer les e-mails de substitution</translation>
+   <translation id="domain_dashboard_obfuscated_email" qtlid="522721">Endereços de e-mail de substituição</translation>
+   <translation id="domain_dashboard_obfuscated_email_regenerate_button" qtlid="522734">Gerir os e-mails de substituição</translation>
 
    <translation id="domain_dashboard_offer" qtlid="38217">Oferta</translation>
    <translation id="domain_dashboard_dns_state" qtlid="33790">Estado</translation>
@@ -324,7 +327,7 @@
    <translation id="domain_configuration_whois_success" qtlid="128298">O pedido de alteração das informações WHOIS foi registado</translation>
    <translation id="domain_configuration_whois_fail" qtlid="128310">Erro ao processar a alteração das informações WHOIS.</translation>
    <translation id="domain_configuration_whois_contracts" qtlid="329044">Para ativar as informações WHOIS deve validar os contratos. <a href="#/useraccount/agreements">Aceder aos contratos</a>.</translation>
-   <translation id="domain_configuration_fetch_fail" qtlid="520728">une erreur s'est produite lors de l'obtention d'informations</translation>
+   <translation id="domain_configuration_fetch_fail" qtlid="520728">Ocorreu um erro ao obter as informações</translation>
 
    <translation id="domain_exemple" qtlid="182475">Ex:</translation>
    <translation id="domain_and" qtlid="329057">e <b>{0}</b></translation>
@@ -516,7 +519,7 @@
    <translation id="domain_configuration_dns_entry_add_step3_alert" qtlid="195048">A modificação da zona DNS será imediata mas tenha em conta o tempo de propagação (máximo 24h).</translation>
 
    <translation id="domain_configuration_dns_entry_add_step3_check_warning1" qtlid="215065">Atenção, podem ocorrer um ou vários conflitos:</translation>
-   <translation id="domain_configuration_dns_entry_add_step3_check_warning2" qtlid="519883">Le sous-domaine utilise déjà un enregistrement DNS. Vous ne pouvez pas enregistrer de champ CNAME en raison d'une incompatibilité. Supprimez les enregistrements existants pour ce sous-domaine, afin de pouvoir en ajouter un, de type CNAME.</translation>
+   <translation id="domain_configuration_dns_entry_add_step3_check_warning2" qtlid="519883">Este subdomínio já utiliza um registo DNS. Por motivos de incompatibilidade, não é possível registar um registo CNAME. Elimine os registos existentes deste subdomínio para poder adicionar um registo de tipo CNAME.</translation>
    <translation id="domain_configuration_dns_entry_add_step3_check_warning3" qtlid="519844">O subdomínio já está a ser utilizado por um registo CNAME. Um registo CNAME não pode coexistir com outros campos no mesmo subdomínio.</translation>
 
    <translation id="domain_configuration_dns_entry_add_success" qtlid="129243">A entrada foi adicionada à zona DNS.</translation>
