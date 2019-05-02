@@ -199,8 +199,7 @@
                         <oui-action-menu
                             data-compact data-align="end"
                             data-ng-if="!$ctrl.isRetrievingSSLCertificate && ($ctrl.canOrderSSLCertificate() || $ctrl.canRegenerateSSLCertificate() || $ctrl.canDeleteSSLCertificate())">
-                            <oui-action-menu-item data-ng-if="$ctrl.canOrderSSLCertificate()"
-                                data-text="{{ ::'hosting_dashboard_service_order_ssl' | translate }}"
+                            <oui-action-menu-item data-text="{{ ::'hosting_dashboard_service_order_ssl' | translate }}"
                                 data-on-click="setAction('ssl/order/hosting-order-ssl')"></oui-action-menu-item>
                             <oui-action-menu-item data-ng-if="$ctrl.canRegenerateSSLCertificate()"
                                 data-text="{{ ::'hosting_ssl_regenerate_title_button' | translate }}"
