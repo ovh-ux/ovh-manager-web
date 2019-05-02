@@ -1,3 +1,17 @@
+## [13.22.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.3...v13.22.4) (2019-05-02)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-module-exchange to v9.4.2 ([#1047](https://github.com/ovh-ux/ovh-manager-web/issues/1047)) ([641993f](https://github.com/ovh-ux/ovh-manager-web/commit/641993f))
+* **domain:** add missing translations ([#1043](https://github.com/ovh-ux/ovh-manager-web/issues/1043)) ([090c00c](https://github.com/ovh-ux/ovh-manager-web/commit/090c00c))
+* **hosting.dashboard:** add certificate info in configuration tile ([#1032](https://github.com/ovh-ux/ovh-manager-web/issues/1032)) ([c3f2296](https://github.com/ovh-ux/ovh-manager-web/commit/c3f2296))
+* **i18n:** retrieve translations ([33e692b](https://github.com/ovh-ux/ovh-manager-web/commit/33e692b))
+* **i18n:** retrieve translations ([#1048](https://github.com/ovh-ux/ovh-manager-web/issues/1048)) ([f9d6d3c](https://github.com/ovh-ux/ovh-manager-web/commit/f9d6d3c))
+* **i18n:** submit translations ([71ebca9](https://github.com/ovh-ux/ovh-manager-web/commit/71ebca9))
+
+
+
 ## [13.22.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.2...v13.22.3) (2019-04-26)
 
 
