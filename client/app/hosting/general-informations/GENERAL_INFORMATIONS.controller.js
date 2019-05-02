@@ -44,8 +44,11 @@ angular.module('App').controller(
       };
 
       this.$scope.$on('hosting.ssl.reload', () => this.retrievingSSLCertificate());
-      return this.$q.all([this.getUserLogsToken(), this.getScreenshot()])
-        .then(() => this.retrievingSSLCertificate())
+      return this.$q.all([
+        this.getUserLogsToken(),
+        this.getScreenshot(),
+        this.retrievingSSLCertificate(),
+      ])
         .then(() => this.HostingRuntimes.getDefault(this.serviceName))
         .then((runtime) => {
           this.defaultRuntime = runtime;
@@ -160,7 +163,7 @@ angular.module('App').controller(
       if (
         this.hostingSSLCertificate.constructor.testCanBeHandled(this.sslCertificate)
       ) {
-        return this.$translate.instant('common_yes');
+        return `${this.$translate.instant('common_yes')} - ${this.sslCertificate.provider} - ${this.sslCertificate.type}`;
       }
 
       return this.$translate.instant(`hosting_dashboard_service_ssl_${this.sslCertificate.status}`);
