@@ -1,3 +1,13 @@
+## [13.22.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.4...v13.22.5) (2019-05-06)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-module-exchange to v9.4.3 ([#1052](https://github.com/ovh-ux/ovh-manager-web/issues/1052)) ([f21013e](https://github.com/ovh-ux/ovh-manager-web/commit/f21013e))
+* **hosting.dashboard:** show ssl order button by default ([#1050](https://github.com/ovh-ux/ovh-manager-web/issues/1050)) ([75b186a](https://github.com/ovh-ux/ovh-manager-web/commit/75b186a))
+
+
+
 ## [13.22.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.3...v13.22.4) (2019-05-02)
 
 
