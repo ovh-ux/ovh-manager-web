@@ -44,9 +44,8 @@ angular.module('App').controller(
           this.$translate.instant('domain_tab_DYNHOST_edit_success'),
           this.$scope.alerts.main,
         )))
-        .catch(err => this.Alerter.alertFromSWS(
-          this.$translate.instant('domain_tab_DYNHOST_error'),
-          _.get(err, 'data', err),
+        .catch(err => this.Alerter.error(
+          `${this.$translate.instant('domain_tab_DYNHOST_error')} ${err.message}`,
           this.$scope.alerts.main,
         ))
         .finally(() => {
