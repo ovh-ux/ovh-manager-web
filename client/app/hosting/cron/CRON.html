@@ -110,7 +110,7 @@
                                     <th class="word-break" scope="row" data-ng-bind="cron.command"></th>
                                     <td class="word-break" data-ng-bind="cron.description"></td>
                                     <td class="text-nowrap" data-ng-bind="cron.frequency"></td>
-                                    <td data-ng-bind="'hosting_tab_CRON_table_language_' + trEnum(cron.language) | translate"></td>
+                                    <td data-ng-bind="(('hosting_tab_CRON_table_language_' + trEnum(cron.language) | translate) == 'hosting_tab_CRON_table_language_' + trEnum(cron.language))? cron.language: ('hosting_tab_CRON_table_language_' + trEnum(cron.language) | translate)"></td>
                                     <td>
                                         <span class="oui-status"
                                               data-ng-bind="'hosting_tab_CRON_table_status_' + trEnum(cron.status) | translate"
