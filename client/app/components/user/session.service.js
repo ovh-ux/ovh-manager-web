@@ -5,6 +5,7 @@ class SessionService {
     $translate,
     atInternet,
     constants,
+    coreConfig,
     Navbar,
     NavbarNotificationService,
     OtrsPopupService,
@@ -17,6 +18,7 @@ class SessionService {
     this.$rootScope = $rootScope;
     this.$translate = $translate;
     this.constants = constants;
+    this.coreConfig = coreConfig;
     this.atInternet = atInternet;
     this.Navbar = Navbar;
     this.navbarNotificationService = NavbarNotificationService;
@@ -374,11 +376,11 @@ class SessionService {
               title: this.$translate.instant('global_account_security'),
               url: '#/useraccount/security',
             },
-            (this.constants.target === 'EU' || this.constants.target === 'CA') && {
+            (this.coreConfig.getRegion() === 'EU' || this.coreConfig.getRegion() === 'CA') && {
               title: this.$translate.instant('global_account_emails'),
               url: '#/useraccount/emails',
             },
-            (this.constants.target === 'EU') && {
+            (this.coreConfig.getRegion() === 'EU') && {
               title: this.$translate.instant('global_account_subscriptions'),
               url: '#/useraccount/subscriptions',
             }, {
@@ -406,7 +408,7 @@ class SessionService {
           },
 
           // Services
-          (this.constants.target === 'EU' || this.constants.target === 'CA') && (!currentUser.isEnterprise ? {
+          (this.coreConfig.getRegion() === 'EU' || this.coreConfig.getRegion() === 'CA') && (!currentUser.isEnterprise ? {
             name: 'user.services',
             title: this.$translate.instant('global_renew'),
             url: '#/billing/autoRenew',
@@ -433,18 +435,18 @@ class SessionService {
               title: this.$translate.instant('global_means_mean'),
               url: '#/billing/mean',
             },
-            (this.constants.target === 'EU' || this.constants.target === 'CA') && {
+            (this.coreConfig.getRegion() === 'EU' || this.coreConfig.getRegion() === 'CA') && {
               title: this.$translate.instant('global_means_ovhaccount'),
               url: '#/billing/ovhaccount',
             },
-            (this.constants.target === 'EU' || this.constants.target === 'CA') && {
+            (this.coreConfig.getRegion() === 'EU' || this.coreConfig.getRegion() === 'CA') && {
               title: this.$translate.instant('global_means_vouchers'),
               url: '#/billing/vouchers',
             }, {
               title: this.$translate.instant('global_means_refunds'),
               url: '#/billing/refunds',
             },
-            (this.constants.target === 'EU') && {
+            (this.coreConfig.getRegion() === 'EU') && {
               title: this.$translate.instant('global_means_fidelity'),
               url: '#/billing/fidelity',
             }, {
@@ -454,14 +456,14 @@ class SessionService {
           },
 
           // Orders
-          (!currentUser.isEnterprise && this.constants.target === 'EU' && currentUser.ovhSubsidiary === 'FR') && {
+          (!currentUser.isEnterprise && this.coreConfig.getRegion() === 'EU' && currentUser.ovhSubsidiary === 'FR') && {
             title: this.$translate.instant('global_orders'),
             url: '#/billing/orders',
             click: () => this.trackUserMenuSection('my_orders', 'orders'),
           },
 
           // Contacts
-          (this.constants.target === 'EU') && {
+          (this.coreConfig.getRegion() === 'EU') && {
             title: this.$translate.instant('global_contacts'),
             url: '#/useraccount/contacts?tab=SERVICES',
             click: () => this.trackUserMenuSection('my_contacts', 'contacts'),

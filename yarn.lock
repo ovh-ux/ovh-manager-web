@@ -927,6 +927,19 @@
     rollup-pluginutils "^2.3.3"
     slash "^2.0.0"
 
+"@ovh-ux/manager-config@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-config/-/manager-config-0.2.0.tgz#0c2cce370c372993ed4ed25783191fe9112db839"
+  integrity sha512-FEGIRGEaNQcHlHienK0Egf+JEB9FUK9PyJgkMP575pPDVTy67JRRD7uZ5FXCUfRtVgYLD4VYjwOzeucr3WtvFg==
+
+"@ovh-ux/manager-core@^5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-core/-/manager-core-5.2.0.tgz#6fea07e44d15d8d190c59ece60a3035ffbc1aaca"
+  integrity sha512-3VQigfhw20UdI7IbJF5htiTM0Pl9QIc8slYR9NUj2UAaelMFs+FHcOLkz6AewhoKK15Q2TlMGbQTKSJXWCPEFA==
+  dependencies:
+    "@ovh-ux/ng-translate-async-loader" "^2.0.0"
+    lodash "^4.17.11"
+
 "@ovh-ux/manager-webpack-config@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@ovh-ux/manager-webpack-config/-/manager-webpack-config-3.0.0.tgz#1fb59cd0825721d5a268c61b03fcff6b35db1ca3"
@@ -995,6 +1008,13 @@
   dependencies:
     lodash "^4.17.11"
 
+"@ovh-ux/ng-ovh-actions-menu@^5.0.0-alpha.0":
+  version "5.0.0-alpha.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-actions-menu/-/ng-ovh-actions-menu-5.0.0-alpha.0.tgz#734b82586e15b8d3129bde5ab5625042db14d558"
+  integrity sha512-cl7GCchFc6apUUXuaASNXpEWd8znR2sQt8ntu9FHTfB/G1trdFaKpzVfm87eABW+LuXi0s8FSi1RrcyTEF8Vlw==
+  dependencies:
+    lodash "^4.17.11"
+
 "@ovh-ux/ng-ovh-api-wrappers@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-api-wrappers/-/ng-ovh-api-wrappers-3.0.0.tgz#25e09c019a7f9d4704d59ccb55732379fa50b4e1"
@@ -1017,6 +1037,14 @@
     lodash "~4.17.11"
     urijs "^1.19.1"
 
+"@ovh-ux/ng-ovh-otrs@^7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-otrs/-/ng-ovh-otrs-7.0.1.tgz#284ffabb65a4631c2748609d4d435808c6e482b1"
+  integrity sha512-e5p+Yfelnvfy1XdxBaAuF1USn9PuuZE8JcKEusbO30jOvx8PamQS1ha7b4tlG98jN3Hjr6lTxGMOR+0Rc2qzrg==
+  dependencies:
+    draggable "^4.2.0"
+    lodash "^4.17.11"
+
 "@ovh-ux/ng-ovh-payment-method@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-payment-method/-/ng-ovh-payment-method-2.0.0.tgz#32a5b53f2b3c4a45568a12e6c71350b68e294792"
@@ -1026,6 +1054,19 @@
   version "1.0.0-beta.0"
   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-proxy-request/-/ng-ovh-proxy-request-1.0.0-beta.0.tgz#45e2397515326f6c43f99221f746401509b7db1d"
   integrity sha512-JtCQLoxNfl7T1kz/draSsfH/dGjKQ7cwN2ArMsuYlZ9MVPaPlhf4PQz11WHSAQXxCcvZKsJ/AYmWUCKZlzI94w==
+
+"@ovh-ux/ng-ovh-responsive-popover@^5.0.0-beta.0":
+  version "5.0.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-responsive-popover/-/ng-ovh-responsive-popover-5.0.0-beta.0.tgz#d3420bf15096d791c8788fda616c8386d4ff0558"
+  integrity sha512-YriSOTaSDZco97Mk3DjEQu1TbZtNzXrsZPuTnDRQHCk63dg7hXwlq3B37pTE/qhLdjJPOGhIlqcpYi8InDPXVQ==
+  dependencies:
+    "@ovh-ux/translate-async-loader" "^1.0.0"
+    jquery "^2.1.3"
+
+"@ovh-ux/ng-ovh-sidebar-menu@^8.0.0-beta.1":
+  version "8.0.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-sidebar-menu/-/ng-ovh-sidebar-menu-8.0.0-beta.1.tgz#10cc3aee6f3d0f9b96eb8e3c94af366ddba6a2ec"
+  integrity sha512-6xX02CmY1Ua4/09vpeIVN7GzGY9GlNRowAYGpAQaIsBQmCcwi6MUn55Urc3J7xoXBGpEuHtOq13LzxS9PqhC/A==
 
 "@ovh-ux/ng-ovh-sso-auth-modal-plugin@^3.0.0":
   version "3.0.0"
@@ -1070,6 +1111,11 @@
   version "13.0.4"
   resolved "https://registry.yarnpkg.com/@ovh-ux/ovh-utils-angular/-/ovh-utils-angular-13.0.4.tgz#3acf47e4723ab7292f06bc38bf5b4085e66e7916"
   integrity sha512-om8qsxySKMlYAIMIX/fp665sVxDRLFFTNFtnp5xcuq9sPKYaF6aGFOmxoNd063DUXiWx2fnUGoUiVCRU+b+txw==
+
+"@ovh-ux/translate-async-loader@^1.0.0":
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/translate-async-loader/-/translate-async-loader-1.0.8.tgz#7cbdc3dfed1042f511206ff6bb9f14c33b8406ba"
+  integrity sha512-8yEhPeRTSxtEO9ODXRYZw6pzRQiV5ULCTi8mIzt39m/b9N2TcIF4ILTPsaa8xpE4npHKa/iYgL9z0HJUFi2LGQ==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -1466,6 +1512,11 @@ angular-translate-loader-partial@^2.18.1:
   dependencies:
     angular-translate "~2.18.1"
 
+angular-translate-loader-pluggable@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/angular-translate-loader-pluggable/-/angular-translate-loader-pluggable-1.3.1.tgz#6f85fe5554546c686d40170a2d0f775fb838dac5"
+  integrity sha1-b4X+VVRUbGhtQBcKLQ93X7g42sU=
+
 angular-translate-loader-static-files@^2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/angular-translate-loader-static-files/-/angular-translate-loader-static-files-2.18.1.tgz#ad0c3c883b18b089bdb8db02bbd366d903f857cc"
@@ -1484,6 +1535,11 @@ angular-ui-bootstrap@1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/angular-ui-bootstrap/-/angular-ui-bootstrap-1.3.3.tgz#4820f895d433c17abeb4ac7387f2f122cbf8c11c"
   integrity sha1-SCD4ldQzwXq+tKxzh/LxIsv4wRw=
+
+angular-vs-repeat@^2.0.13:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/angular-vs-repeat/-/angular-vs-repeat-2.0.13.tgz#f20c28e7357d3e70cc894398b301921717795e92"
+  integrity sha512-Jb0DOt4jU5/xZx7wjKvgZJtgAaMA4ZFLq5aeQHU8U2IZz8ixWP0ML6gFWQ1yefMapvg5LV+ZfA81ZeeN/NtJ7A==
 
 angular-xeditable@^0.1.10:
   version "0.1.12"
@@ -3497,6 +3553,11 @@ dot-prop@^4.1.0, dot-prop@^4.1.1:
   integrity sha512-tUMXrxlExSW6U2EXiiKGSBVdYgtV8qlHL+C10TsW4PURY/ic+eaysnSkwB4kA/mBlCyy/IKDJ+Lc3wbWeaXtuQ==
   dependencies:
     is-obj "^1.0.0"
+
+draggable@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/draggable/-/draggable-4.2.0.tgz#149c0ca176df6d8b512048c8e451f499fc047b9a"
+  integrity sha1-FJwMoXbfbYtRIEjI5FH0mfwEe5o=
 
 drange@^1.0.0:
   version "1.1.1"
@@ -7651,11 +7712,6 @@ ovh-angular-export-csv@ovh-ux/ovh-angular-export-csv#^0.3.2:
     angular-sanitize "~1.3.0"
     jquery "~2.1.4"
     lodash "~3.10.0"
-
-ovh-angular-otrs@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/ovh-angular-otrs/-/ovh-angular-otrs-6.3.0.tgz#3ad3c9626be1917b5f0f557375de3757ad9b08ba"
-  integrity sha512-sXxQUlsC0ucl9UVcnSB9ZQsqTnKmW/zQZM+VH0gNpnJo9v3Klk4lHN3n0Wnd62Ic8Ke3Vjgk74Jk2THjQOHfcg==
 
 ovh-angular-pagination-front@^7.0.0:
   version "7.0.0"
