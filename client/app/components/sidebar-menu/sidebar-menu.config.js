@@ -106,7 +106,7 @@ angular.module('App').run((
       allowSubItems: true,
       loadOnState: 'app.domain',
       allowSearch: true,
-      // infiniteScroll: true,
+      infiniteScroll: true,
     });
 
     SidebarMenu.addMenuItems([{
@@ -175,7 +175,7 @@ angular.module('App').run((
       allowSubItems: true,
       loadOnState: 'app.hosting',
       allowSearch: true,
-      // infiniteScroll: true,
+      infiniteScroll: true,
     });
 
     const hostings = _(products.hostings)
@@ -205,7 +205,7 @@ angular.module('App').run((
       allowSubItems: true,
       loadOnState: 'app.private-database',
       allowSearch: true,
-      // infiniteScroll: true,
+      infiniteScroll: true,
     });
 
     const databases = _(products.hostings)
@@ -235,7 +235,7 @@ angular.module('App').run((
       allowSubItems: true,
       loadOnState: 'app.email-pro',
       allowSearch: true,
-      // infiniteScroll: true,
+      infiniteScroll: true,
     });
 
     const emailProsItems = _.sortBy(products.emailPros, elt => angular.lowercase(elt.name));
@@ -261,7 +261,7 @@ angular.module('App').run((
       allowSubItems: true,
       loadOnState: 'app.email',
       allowSearch: true,
-      // infiniteScroll: true,
+      infiniteScroll: true,
     });
 
     const emailProMXPlanProducts = _.get(

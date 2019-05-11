@@ -13,7 +13,7 @@ import ngOvhUserPref from '@ovh-ux/ng-ovh-user-pref';
 import ngOvhWebUniverseComponents from '@ovh-ux/ng-ovh-web-universe-components';
 import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
 import uiRouter from '@uirouter/angularjs';
-import ngOvhSidebarMenu from '@ovh-ux/ng-ovh-sidebar-menu';
+// import ngOvhSidebarMenu from '@ovh-ux/ng-ovh-sidebar-menu';
 import ngOvhOtrs from '@ovh-ux/ng-ovh-otrs';
 import domainEmailObfuscation from './domain/email-obfuscation/index';
 import domainOptin from './domain/optin/index';
@@ -55,7 +55,8 @@ angular
     ngOvhWebUniverseComponents,
     ngTranslateAsyncLoader,
     uiRouter,
-    ngOvhSidebarMenu,
+    // ngOvhSidebarMenu,
+    'ovh-angular-sidebar-menu',
     'pascalprecht.translate',
     'ovh-angular-responsive-tabs',
     'ovh-angular-tail-logs',
