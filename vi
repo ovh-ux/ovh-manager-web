@@ -1,0 +1,546 @@
+[1mdiff --git a/.eslintrc.json b/.eslintrc.json[m
+[1mindex 88f7fc77..ce95df7c 100644[m
+[1m--- a/.eslintrc.json[m
+[1m+++ b/.eslintrc.json[m
+[36m@@ -20,6 +20,8 @@[m
+     "punycode": true,[m
+     "Raven": true,[m
+     "URI": true,[m
+[31m-    "validator": true[m
+[32m+[m[32m    "validator": true,[m
+[32m+[m[32m    "WEBPACK_ENV": true,[m
+[32m+[m[32m    "__WEBPACK_REGION__": true[m
+   }[m
+ }[m
+[1mdiff --git a/client/app/app.controller.js b/client/app/app.controller.js[m
+[1mindex 339b5196..9ff33ab7 100644[m
+[1m--- a/client/app/app.controller.js[m
+[1m+++ b/client/app/app.controller.js[m
+[36m@@ -1,18 +1,18 @@[m
+ angular.module('App').controller([m
+   'AppCtrl',[m
+   class AppCtrl {[m
+[31m-    constructor($scope, $rootScope, $timeout, $translate, constants, incident, User) {[m
+[32m+[m[32m    constructor($scope, $rootScope, $timeout, $translate, coreConfig, incident, User) {[m
+       this.$scope = $scope;[m
+       this.$rootScope = $rootScope;[m
+       this.$timeout = $timeout;[m
+       this.$translate = $translate;[m
+[31m-      this.constants = constants;[m
+[32m+[m[32m      this.coreConfig = coreConfig;[m
+       this.incident = incident;[m
+       this.User = User;[m
+     }[m
+ [m
+     $onInit() {[m
+[31m-      this.$scope.worldPart = this.constants.target;[m
+[32m+[m[32m      this.$scope.worldPart = this.coreConfig.getRegion();[m
+       this.$scope.stepPath = '';[m
+       this.$scope.currentAction = null;[m
+       this.$scope.currentActionData = null;[m
+[1mdiff --git a/client/app/app.js b/client/app/app.js[m
+[1mindex cdf34815..c5c953bc 100644[m
+[1m--- a/client/app/app.js[m
+[1m+++ b/client/app/app.js[m
+[36m@@ -1,3 +1,5 @@[m
+[32m+[m[32mimport { Environment } from '@ovh-ux/manager-config';[m
+[32m+[m[32mimport ovhManagerCore from '@ovh-ux/manager-core';[m
+ import ngAtInternet from '@ovh-ux/ng-at-internet';[m
+ import ngAtInternetUiRouterPlugin from '@ovh-ux/ng-at-internet-ui-router-plugin';[m
+ import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';[m
+[36m@@ -11,14 +13,16 @@[m [mimport ngOvhUserPref from '@ovh-ux/ng-ovh-user-pref';[m
+ import ngOvhWebUniverseComponents from '@ovh-ux/ng-ovh-web-universe-components';[m
+ import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';[m
+ import uiRouter from '@uirouter/angularjs';[m
+[31m-[m
+[32m+[m[32mimport ngOvhSidebarMenu from '@ovh-ux/ng-ovh-sidebar-menu';[m
+ import domainEmailObfuscation from './domain/email-obfuscation/index';[m
+ import domainOptin from './domain/optin/index';[m
+[31m-[m
+[32m+[m[32mimport ngOvhOtrs from '@ovh-ux/ng-ovh-otrs';[m
+ import config from './config/config';[m
+[32m+[m[32mEnvironment.setRegion(__WEBPACK_REGION__);[m
+ [m
+ angular[m
+   .module('App', [[m
+[32m+[m[32m    ovhManagerCore,[m
+     'ovh-angular-pagination-front',[m
+     'ovh-utils-angular',[m
+     'ui.bootstrap',[m
+[36m@@ -50,11 +54,11 @@[m [mangular[m
+     ngOvhWebUniverseComponents,[m
+     ngTranslateAsyncLoader,[m
+     uiRouter,[m
+[31m-    'ovh-angular-sidebar-menu',[m
+[32m+[m[32m    ngOvhSidebarMenu,[m
+     'pascalprecht.translate',[m
+     'ovh-angular-responsive-tabs',[m
+     'ovh-angular-tail-logs',[m
+[31m-    'ovh-angular-otrs',[m
+[32m+[m[32m    ngOvhOtrs,[m
+     'ovh-api-services',[m
+     'ovh-angular-toaster',[m
+     'ngCkeditor',[m
+[36m@@ -129,40 +133,6 @@[m [mangular[m
+     ovhProxyRequestProvider.proxy('$http');[m
+     ovhProxyRequestProvider.pathPrefix('apiv6');[m
+   })[m
+[31m-  .config([[m
+[31m-    'ssoAuthenticationProvider',[m
+[31m-    '$httpProvider',[m
+[31m-    'constants',[m
+[31m-    (authentication, $httpProvider, constants) => {[m
+[31m-      authentication.setLoginUrl(constants.loginUrl);[m
+[31m-      authentication.setLogoutUrl(`${constants.loginUrl}?action=disconnect`);[m
+[31m-[m
+[31m-      if (!constants.prodMode) {[m
+[31m-        authentication.setUserUrl('engine/apiv6/me');[m
+[31m-      }[m
+[31m-[m
+[31m-      authentication.setConfig([[m
+[31m-        {[m
+[31m-          serviceType: 'apiv6',[m
+[31m-          urlPrefix: constants.prodMode ? '/engine/apiv6' : 'engine/apiv6',[m
+[31m-        },[m
+[31m-        {[m
+[31m-          serviceType: 'aapi',[m
+[31m-          urlPrefix: constants.prodMode ? '/engine/2api' : 'engine/2api',[m
+[31m-        },[m
+[31m-        {[m
+[31m-          serviceType: 'apiv7',[m
+[31m-          urlPrefix: constants.prodMode ? '/engine/apiv7' : 'engine/apiv7',[m
+[31m-        },[m
+[31m-        {[m
+[31m-          serviceType: 'external',[m
+[31m-          urlPrefix: '',[m
+[31m-        },[m
+[31m-      ]);[m
+[31m-      $httpProvider.interceptors.push('serviceTypeInterceptor');[m
+[31m-      $httpProvider.interceptors.push('OvhSsoAuthInterceptor');[m
+[31m-    },[m
+[31m-  ])[m
+   .config([[m
+     'tmhDynamicLocaleProvider',[m
+     (tmhDynamicLocaleProvider) => {[m
+[36m@@ -455,39 +425,6 @@[m [mangular[m
+     _.set(editableThemes, 'default.submitTpl', ['<button style="background:none;border:none" type="submit">', '<i class="fa fa-check green"></i>', '</button>'].join(''));[m
+     _.set(editableThemes, 'default.cancelTpl', ['<button style="background:none;border:none" ng-click="$form.$cancel()">', '<i class="fa fa-times red"></i>', '</button>'].join(''));[m
+   })[m
+[31m-  .factory('translateInterceptor', ($q) => {[m
+[31m-    const regexp = new RegExp(/Messages\w+\.json$/i);[m
+[31m-    return {[m
+[31m-      responseError(rejection) {[m
+[31m-        if (regexp.test(rejection.config.url)) {[m
+[31m-          return {};[m
+[31m-        }[m
+[31m-        return $q.reject(rejection);[m
+[31m-      },[m
+[31m-    };[m
+[31m-  })[m
+[31m-  .factory('translateMissingTranslationHandler', $sanitize => translationId => $sanitize(translationId))[m
+[31m-  .config(($translateProvider, LANGUAGES) => {[m
+[31m-    let defaultLanguage = 'fr_FR';[m
+[31m-[m
+[31m-    if (localStorage['univers-selected-language'] && _.find(LANGUAGES, { value: localStorage['univers-selected-language'] })) {[m
+[31m-      defaultLanguage = localStorage['univers-selected-language'];[m
+[31m-    } else {[m
+[31m-      localStorage['univers-selected-language'] = defaultLanguage;[m
+[31m-    }[m
+[31m-[m
+[31m-    $translateProvider.useLoader('asyncLoader');[m
+[31m-    $translateProvider.useMissingTranslationHandler('translateMissingTranslationHandler');[m
+[31m-    $translateProvider.useLoaderCache(true);[m
+[31m-    $translateProvider.useSanitizeValueStrategy('sceParameters');[m
+[31m-[m
+[31m-    $translateProvider.preferredLanguage(defaultLanguage);[m
+[31m-    $translateProvider.use(defaultLanguage);[m
+[31m-    $translateProvider.fallbackLanguage('fr_FR');[m
+[31m-  })[m
+[31m-  .config(($transitionsProvider, $httpProvider) => {[m
+[31m-    $httpProvider.interceptors.push('translateInterceptor');[m
+[31m-  })[m
+   .config((OtrsPopupProvider, constants) => {[m
+     OtrsPopupProvider.setBaseUrlTickets(_.get(constants, 'REDIRECT_URLS.listTicket', null));[m
+   })[m
+[1mdiff --git a/client/app/components/components.module.js b/client/app/components/components.module.js[m
+[1mindex 9438b9f6..7ea8b1d3 100644[m
+[1m--- a/client/app/components/components.module.js[m
+[1m+++ b/client/app/components/components.module.js[m
+[36m@@ -1,4 +1,4 @@[m
+ angular.module('App').run(($translate, $translatePartialLoader) => {[m
+   $translatePartialLoader.addPart('common');[m
+[31m-  $translate.refresh();[m
+[32m+[m[32m  //$translate.refresh();[m
+ });[m
+[1mdiff --git a/client/app/components/ovh-angular-otrs/ovh-angular-otrs.js b/client/app/components/ovh-angular-otrs/ovh-angular-otrs.js[m
+[1mdeleted file mode 100644[m
+[1mindex 77b217dc..00000000[m
+[1m--- a/client/app/components/ovh-angular-otrs/ovh-angular-otrs.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,9 +0,0 @@[m
+[31m-angular.module('App').run(($translate, asyncLoader) => {[m
+[31m-  asyncLoader.addTranslations([m
+[31m-    import(`ovh-angular-otrs/src/translations/Messages_${$translate.use()}.xml`)[m
+[31m-      .catch(() => import(`ovh-angular-otrs/src/translations/Messages_${$translate.fallbackLanguage()}.xml`))[m
+[31m-      .then(x => x.default),[m
+[31m-  );[m
+[31m-[m
+[31m-  $translate.refresh();[m
+[31m-});[m
+[1mdiff --git a/client/app/components/sidebar-menu/sidebar-menu.config.js b/client/app/components/sidebar-menu/sidebar-menu.config.js[m
+[1mindex ac80a258..9b6efe92 100644[m
+[1m--- a/client/app/components/sidebar-menu/sidebar-menu.config.js[m
+[1m+++ b/client/app/components/sidebar-menu/sidebar-menu.config.js[m
+[36m@@ -106,7 +106,7 @@[m [mangular.module('App').run(([m
+       allowSubItems: true,[m
+       loadOnState: 'app.domain',[m
+       allowSearch: true,[m
+[31m-      infiniteScroll: true,[m
+[32m+[m[32m      //infiniteScroll: true,[m
+     });[m
+ [m
+     SidebarMenu.addMenuItems([{[m
+[36m@@ -175,7 +175,7 @@[m [mangular.module('App').run(([m
+       allowSubItems: true,[m
+       loadOnState: 'app.hosting',[m
+       allowSearch: true,[m
+[31m-      infiniteScroll: true,[m
+[32m+[m[32m      //infiniteScroll: true,[m
+     });[m
+ [m
+     const hostings = _(products.hostings)[m
+[36m@@ -205,7 +205,7 @@[m [mangular.module('App').run(([m
+       allowSubItems: true,[m
+       loadOnState: 'app.private-database',[m
+       allowSearch: true,[m
+[31m-      infiniteScroll: true,[m
+[32m+[m[32m      //infiniteScroll: true,[m
+     });[m
+ [m
+     const databases = _(products.hostings)[m
+[36m@@ -235,7 +235,7 @@[m [mangular.module('App').run(([m
+       allowSubItems: true,[m
+       loadOnState: 'app.email-pro',[m
+       allowSearch: true,[m
+[31m-      infiniteScroll: true,[m
+[32m+[m[32m      //infiniteScroll: true,[m
+     });[m
+ [m
+     const emailProsItems = _.sortBy(products.emailPros, elt => angular.lowercase(elt.name));[m
+[36m@@ -261,7 +261,7 @@[m [mangular.module('App').run(([m
+       allowSubItems: true,[m
+       loadOnState: 'app.email',[m
+       allowSearch: true,[m
+[31m-      infiniteScroll: true,[m
+[32m+[m[32m      //infiniteScroll: true,[m
+     });[m
+ [m
+     const emailProMXPlanProducts = _.get([m
+[1mdiff --git a/client/app/components/sidebar-menu/sidebar-menu.js b/client/app/components/sidebar-menu/sidebar-menu.js[m
+[1mdeleted file mode 100644[m
+[1mindex 1ce0c760..00000000[m
+[1m--- a/client/app/components/sidebar-menu/sidebar-menu.js[m
+[1m+++ /dev/null[m
+[36m@@ -1,4 +0,0 @@[m
+[31m-angular.module('App').run(($translate, asyncLoader) => {[m
+[31m-  asyncLoader.addTranslations(import(`ovh-angular-sidebar-menu/src/ovh-angular-sidebar-menu/translations/Messages_${$translate.use()}.xml`).then(x => x.default));[m
+[31m-  $translate.refresh();[m
+[31m-});[m
+[1mdiff --git a/client/app/components/user/session.service.js b/client/app/components/user/session.service.js[m
+[1mindex d5005930..97bb1240 100644[m
+[1m--- a/client/app/components/user/session.service.js[m
+[1m+++ b/client/app/components/user/session.service.js[m
+[36m@@ -5,6 +5,7 @@[m [mclass SessionService {[m
+     $translate,[m
+     atInternet,[m
+     constants,[m
+[32m+[m[32m    coreConfig,[m
+     Navbar,[m
+     NavbarNotificationService,[m
+     OtrsPopupService,[m
+[36m@@ -17,6 +18,7 @@[m [mclass SessionService {[m
+     this.$rootScope = $rootScope;[m
+     this.$translate = $translate;[m
+     this.constants = constants;[m
+[32m+[m[32m    this.coreConfig = coreConfig;[m
+     this.atInternet = atInternet;[m
+     this.Navbar = Navbar;[m
+     this.navbarNotificationService = NavbarNotificationService;[m
+[36m@@ -374,11 +376,11 @@[m [mclass SessionService {[m
+               title: this.$translate.instant('global_account_security'),[m
+               url: '#/useraccount/security',[m
+             },[m
+[31m-            (this.constants.target === 'EU' || this.constants.target === 'CA') && {[m
+[32m+[m[32m            (this.coreConfig.getRegion() === 'EU' || this.coreConfig.getRegion() === 'CA') && {[m
+               title: this.$translate.instant('global_account_emails'),[m
+               url: '#/useraccount/emails',[m
+             },[m
+[31m-            (this.constants.target === 'EU') && {[m
+[32m+[m[32m            (this.coreConfig.getRegion() === 'EU') && {[m
+               title: this.$translate.instant('global_account_subscriptions'),[m
+               url: '#/useraccount/subscriptions',[m
+             }, {[m
+[36m@@ -406,7 +408,7 @@[m [mclass SessionService {[m
+           },[m
+ [m
+           // Services[m
+[31m-          (this.constants.target === 'EU' || this.constants.target === 'CA') && (!currentUser.isEnterprise ? {[m
+[32m+[m[32m          (this.coreConfig.getRegion() === 'EU' || this.coreConfig.getRegion() === 'CA') && (!currentUser.isEnterprise ? {[m
+             name: 'user.services',[m
+             title: this.$translate.instant('global_renew'),[m
+             url: '#/billing/autoRenew',[m
+[36m@@ -433,18 +435,18 @@[m [mclass SessionService {[m
+               title: this.$translate.instant('global_means_mean'),[m
+               url: '#/billing/mean',[m
+             },[m
+[31m-            (this.constants.target === 'EU' || this.constants.target === 'CA') && {[m
+[32m+[m[32m            (this.coreConfig.getRegion() === 'EU' || this.coreConfig.getRegion() === 'CA') && {[m
+               title: this.$translate.instant('global_means_ovhaccount'),[m
+               url: '#/billing/ovhaccount',[m
+             },[m
+[31m-            (this.constants.target === 'EU' || this.constants.target === 'CA') && {[m
+[32m+[m[32m            (this.coreConfig.getRegion() === 'EU' || this.coreConfig.getRegion() === 'CA') && {[m
+               title: this.$translate.instant('global_means_vouchers'),[m
+               url: '#/billing/vouchers',[m
+             }, {[m
+               title: this.$translate.instant('global_means_refunds'),[m
+               url: '#/billing/refunds',[m
+             },[m
+[31m-            (this.constants.target === 'EU') && {[m
+[32m+[m[32m            (this.coreConfig.getRegion() === 'EU') && {[m
+               title: this.$translate.instant('global_means_fidelity'),[m
+               url: '#/billing/fidelity',[m
+             }, {[m
+[36m@@ -454,14 +456,14 @@[m [mclass SessionService {[m
+           },[m
+ [m
+           // Orders[m
+[31m-          (!currentUser.isEnterprise && this.constants.target === 'EU' && currentUser.ovhSubsidiary === 'FR') && {[m
+[32m+[m[32m          (!currentUser.isEnterprise && this.coreConfig.getRegion() === 'EU' && currentUser.ovhSubsidiary === 'FR') && {[m
+             title: this.$translate.instant('global_orders'),[m
+             url: '#/billing/orders',[m
+             click: () => this.trackUserMenuSection('my_orders', 'orders'),[m
+           },[m
+ [m
+           // Contacts[m
+[31m-          (this.constants.target === 'EU') && {[m
+[32m+[m[32m          (this.coreConfig.getRegion() === 'EU') && {[m
+             title: this.$translate.instant('global_contacts'),[m
+             url: '#/useraccount/contacts?tab=SERVICES',[m
+             click: () => this.trackUserMenuSection('my_contacts', 'contacts'),[m
+[1mdiff --git a/client/app/css/source.less b/client/app/css/source.less[m
+[1mindex 695f4b01..6c00bb51 100644[m
+[1m--- a/client/app/css/source.less[m
+[1m+++ b/client/app/css/source.less[m
+[36m@@ -7,7 +7,7 @@[m
+ @import "ovh-ui-kit/packages/oui/stylekit";[m
+ @import "ovh-ui-kit-bs/src/ovh-ui-kit-bs";[m
+ @import "../node_modules/ovh-angular-actions-menu/less/ovh-angular-actions-menu";[m
+[31m-@import "../node_modules/ovh-angular-otrs/dist/ovh-angular-otrs";[m
+[32m+[m[32m//@import "../node_modules/ovh-angular-otrs/dist/ovh-angular-otrs";[m
+ @import "../node_modules/ovh-manager-webfont/dist/less/ovh-font";[m
+ @import "less/utils/variables";[m
+ @import "less/utils/function";[m
+[1mdiff --git a/client/app/index.js b/client/app/index.js[m
+[1mindex 9cd8b2d4..9607235b 100644[m
+[1m--- a/client/app/index.js[m
+[1m+++ b/client/app/index.js[m
+[36m@@ -54,7 +54,6 @@[m [mimport 'script-loader!matchmedia-ng/matchmedia-ng.js';[m
+ import 'ovh-angular-responsive-tabs';[m
+ import 'script-loader!@bower_components/ckeditor/ckeditor.js';[m
+ import 'script-loader!@bower_components/ng-ckeditor/ng-ckeditor.js';[m
+[31m-import 'ovh-angular-otrs';[m
+ import 'ovh-api-services';[m
+ import 'ovh-angular-toaster';[m
+ import 'script-loader!@bower_components/messenger/build/js/messenger.min.js';[m
+[1mdiff --git a/package.json b/package.json[m
+[1mindex 0736aea4..7172ba2a 100644[m
+[1m--- a/package.json[m
+[1m+++ b/package.json[m
+[36m@@ -44,13 +44,19 @@[m
+     "@bower_components/ng-ckeditor": "esvit/ng-ckeditor#^0.2.1",[m
+     "@bower_components/ng-file-upload-shim": "danialfarid/angular-file-upload-shim-bower#^12.0.4",[m
+     "@bower_components/randexp": "fent/randexp.js#^0.4.0",[m
+[32m+[m[32m    "@ovh-ux/manager-config": "^0.2.0",[m
+[32m+[m[32m    "@ovh-ux/manager-core": "^5.2.0",[m
+     "@ovh-ux/ng-at-internet": "^4.0.0",[m
+     "@ovh-ux/ng-at-internet-ui-router-plugin": "^2.0.0",[m
+[32m+[m[32m    "@ovh-ux/ng-ovh-actions-menu": "^5.0.0-alpha.0",[m
+     "@ovh-ux/ng-ovh-api-wrappers": "^3.0.0",[m
+     "@ovh-ux/ng-ovh-chatbot": "^2.0.0",[m
+     "@ovh-ux/ng-ovh-http": "^4.0.1-beta.0",[m
+[32m+[m[32m    "@ovh-ux/ng-ovh-otrs": "^7.0.1",[m
+     "@ovh-ux/ng-ovh-payment-method": "^2.0.0",[m
+     "@ovh-ux/ng-ovh-proxy-request": "^1.0.0-beta.0",[m
+[32m+[m[32m    "@ovh-ux/ng-ovh-responsive-popover": "^5.0.0-beta.0",[m
+[32m+[m[32m    "@ovh-ux/ng-ovh-sidebar-menu": "^8.0.0-beta.1",[m
+     "@ovh-ux/ng-ovh-sso-auth": "^4.0.0",[m
+     "@ovh-ux/ng-ovh-sso-auth-modal-plugin": "^3.0.0",[m
+     "@ovh-ux/ng-ovh-swimming-poll": "^4.0.0",[m
+[36m@@ -71,8 +77,10 @@[m
+     "angular-sanitize": "~1.6.9",[m
+     "angular-translate": "^2.18.1",[m
+     "angular-translate-loader-partial": "^2.18.1",[m
+[32m+[m[32m    "angular-translate-loader-pluggable": "^1.3.1",[m
+     "angular-translate-loader-static-files": "^2.18.1",[m
+     "angular-ui-bootstrap": "1.3.3",[m
+[32m+[m[32m    "angular-vs-repeat": "^2.0.13",[m
+     "angular-xeditable": "^0.1.10",[m
+     "animate.css": "^3.5.0",[m
+     "babel-polyfill": "^6.26.0",[m
+[36m@@ -110,7 +118,6 @@[m
+     "office-ui-fabric-react": "^4.35.2",[m
+     "ovh-angular-actions-menu": "ovh-ux/ovh-angular-actions-menu#^3.0.0",[m
+     "ovh-angular-export-csv": "ovh-ux/ovh-angular-export-csv#^0.3.2",[m
+[31m-    "ovh-angular-otrs": "^6.3.0",[m
+     "ovh-angular-pagination-front": "^7.0.0",[m
+     "ovh-angular-q-allsettled": "ovh-ux/ovh-angular-q-allSettled#^0.3.1",[m
+     "ovh-angular-responsive-popover": "ovh-ux/ovh-angular-responsive-popover#^4.0.0",[m
+[1mdiff --git a/webpack.config.js b/webpack.config.js[m
+[1mindex 1051f3e6..d2c74e15 100644[m
+[1m--- a/webpack.config.js[m
+[1m+++ b/webpack.config.js[m
+[36m@@ -96,5 +96,10 @@[m [mmodule.exports = (env = {}) => {[m
+         jquery: path.resolve(__dirname, 'node_modules/jquery'),[m
+       },[m
+     },[m
+[32m+[m[32m    plugins: [[m
+[32m+[m[32m      new webpack.DefinePlugin({[m
+[32m+[m[32m        __WEBPACK_REGION__: `'${env.region.toUpperCase()}'`,[m
+[32m+[m[32m      }),[m
+[32m+[m[32m    ],[m[41m	 [m
+   });[m
+ };[m
+[1mdiff --git a/yarn.lock b/yarn.lock[m
+[1mindex 90d00a16..c93f6c80 100644[m
+[1m--- a/yarn.lock[m
+[1m+++ b/yarn.lock[m
+[36m@@ -927,6 +927,19 @@[m
+     rollup-pluginutils "^2.3.3"[m
+     slash "^2.0.0"[m
+ [m
+[32m+[m[32m"@ovh-ux/manager-config@^0.2.0":[m
+[32m+[m[32m  version "0.2.0"[m
+[32m+[m[32m  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-config/-/manager-config-0.2.0.tgz#0c2cce370c372993ed4ed25783191fe9112db839"[m
+[32m+[m[32m  integrity sha512-FEGIRGEaNQcHlHienK0Egf+JEB9FUK9PyJgkMP575pPDVTy67JRRD7uZ5FXCUfRtVgYLD4VYjwOzeucr3WtvFg==[m
+[32m+[m
+[32m+[m[32m"@ovh-ux/manager-core@^5.2.0":[m
+[32m+[m[32m  version "5.2.0"[m
+[32m+[m[32m  resolved "https://registry.yarnpkg.com/@ovh-ux/manager-core/-/manager-core-5.2.0.tgz#6fea07e44d15d8d190c59ece60a3035ffbc1aaca"[m
+[32m+[m[32m  integrity sha512-3VQigfhw20UdI7IbJF5htiTM0Pl9QIc8slYR9NUj2UAaelMFs+FHcOLkz6AewhoKK15Q2TlMGbQTKSJXWCPEFA==[m
+[32m+[m[32m  dependencies:[m
+[32m+[m[32m    "@ovh-ux/ng-translate-async-loader" "^2.0.0"[m
+[32m+[m[32m    lodash "^4.17.11"[m
+[32m+[m
+ "@ovh-ux/manager-webpack-config@^3.0.0":[m
+   version "3.0.0"[m
+   resolved "https://registry.yarnpkg.com/@ovh-ux/manager-webpack-config/-/manager-webpack-config-3.0.0.tgz#1fb59cd0825721d5a268c61b03fcff6b35db1ca3"[m
+[36m@@ -995,6 +1008,13 @@[m
+   dependencies:[m
+     lodash "^4.17.11"[m
+ [m
+[32m+[m[32m"@ovh-ux/ng-ovh-actions-menu@^5.0.0-alpha.0":[m
+[32m+[m[32m  version "5.0.0-alpha.0"[m
+[32m+[m[32m  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-actions-menu/-/ng-ovh-actions-menu-5.0.0-alpha.0.tgz#734b82586e15b8d3129bde5ab5625042db14d558"[m
+[32m+[m[32m  integrity sha512-cl7GCchFc6apUUXuaASNXpEWd8znR2sQt8ntu9FHTfB/G1trdFaKpzVfm87eABW+LuXi0s8FSi1RrcyTEF8Vlw==[m
+[32m+[m[32m  dependencies:[m
+[32m+[m[32m    lodash "^4.17.11"[m
+[32m+[m
+ "@ovh-ux/ng-ovh-api-wrappers@^3.0.0":[m
+   version "3.0.0"[m
+   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-api-wrappers/-/ng-ovh-api-wrappers-3.0.0.tgz#25e09c019a7f9d4704d59ccb55732379fa50b4e1"[m
+[36m@@ -1017,6 +1037,14 @@[m
+     lodash "~4.17.11"[m
+     urijs "^1.19.1"[m
+ [m
+[32m+[m[32m"@ovh-ux/ng-ovh-otrs@^7.0.1":[m
+[32m+[m[32m  version "7.0.1"[m
+[32m+[m[32m  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-otrs/-/ng-ovh-otrs-7.0.1.tgz#284ffabb65a4631c2748609d4d435808c6e482b1"[m
+[32m+[m[32m  integrity sha512-e5p+Yfelnvfy1XdxBaAuF1USn9PuuZE8JcKEusbO30jOvx8PamQS1ha7b4tlG98jN3Hjr6lTxGMOR+0Rc2qzrg==[m
+[32m+[m[32m  dependencies:[m
+[32m+[m[32m    draggable "^4.2.0"[m
+[32m+[m[32m    lodash "^4.17.11"[m
+[32m+[m
+ "@ovh-ux/ng-ovh-payment-method@^2.0.0":[m
+   version "2.0.0"[m
+   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-payment-method/-/ng-ovh-payment-method-2.0.0.tgz#32a5b53f2b3c4a45568a12e6c71350b68e294792"[m
+[36m@@ -1027,6 +1055,19 @@[m
+   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-proxy-request/-/ng-ovh-proxy-request-1.0.0-beta.0.tgz#45e2397515326f6c43f99221f746401509b7db1d"[m
+   integrity sha512-JtCQLoxNfl7T1kz/draSsfH/dGjKQ7cwN2ArMsuYlZ9MVPaPlhf4PQz11WHSAQXxCcvZKsJ/AYmWUCKZlzI94w==[m
+ [m
+[32m+[m[32m"@ovh-ux/ng-ovh-responsive-popover@^5.0.0-beta.0":[m
+[32m+[m[32m  version "5.0.0-beta.0"[m
+[32m+[m[32m  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-responsive-popover/-/ng-ovh-responsive-popover-5.0.0-beta.0.tgz#d3420bf15096d791c8788fda616c8386d4ff0558"[m
+[32m+[m[32m  integrity sha512-YriSOTaSDZco97Mk3DjEQu1TbZtNzXrsZPuTnDRQHCk63dg7hXwlq3B37pTE/qhLdjJPOGhIlqcpYi8InDPXVQ==[m
+[32m+[m[32m  dependencies:[m
+[32m+[m[32m    "@ovh-ux/translate-async-loader" "^1.0.0"[m
+[32m+[m[32m    jquery "^2.1.3"[m
+[32m+[m
+[32m+[m[32m"@ovh-ux/ng-ovh-sidebar-menu@^8.0.0-beta.1":[m
+[32m+[m[32m  version "8.0.0-beta.1"[m
+[32m+[m[32m  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-sidebar-menu/-/ng-ovh-sidebar-menu-8.0.0-beta.1.tgz#10cc3aee6f3d0f9b96eb8e3c94af366ddba6a2ec"[m
+[32m+[m[32m  integrity sha512-6xX02CmY1Ua4/09vpeIVN7GzGY9GlNRowAYGpAQaIsBQmCcwi6MUn55Urc3J7xoXBGpEuHtOq13LzxS9PqhC/A==[m
+[32m+[m
+ "@ovh-ux/ng-ovh-sso-auth-modal-plugin@^3.0.0":[m
+   version "3.0.0"[m
+   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ovh-sso-auth-modal-plugin/-/ng-ovh-sso-auth-modal-plugin-3.0.0.tgz#0e314b412769d65862d3900ca3a06374ef47fc86"[m
+[36m@@ -1071,6 +1112,11 @@[m
+   resolved "https://registry.yarnpkg.com/@ovh-ux/ovh-utils-angular/-/ovh-utils-angular-13.0.4.tgz#3acf47e4723ab7292f06bc38bf5b4085e66e7916"[m
+   integrity sha512-om8qsxySKMlYAIMIX/fp665sVxDRLFFTNFtnp5xcuq9sPKYaF6aGFOmxoNd063DUXiWx2fnUGoUiVCRU+b+txw==[m
+ [m
+[32m+[m[32m"@ovh-ux/translate-async-loader@^1.0.0":[m
+[32m+[m[32m  version "1.0.8"[m
+[32m+[m[32m  resolved "https://registry.yarnpkg.com/@ovh-ux/translate-async-loader/-/translate-async-loader-1.0.8.tgz#7cbdc3dfed1042f511206ff6bb9f14c33b8406ba"[m
+[32m+[m[32m  integrity sha512-8yEhPeRTSxtEO9ODXRYZw6pzRQiV5ULCTi8mIzt39m/b9N2TcIF4ILTPsaa8xpE4npHKa/iYgL9z0HJUFi2LGQ==[m
+[32m+[m
+ "@samverschueren/stream-to-observable@^0.3.0":[m
+   version "0.3.0"[m
+   resolved "https://registry.yarnpkg.com/@samverschueren/stream-to-observable/-/stream-to-observable-0.3.0.tgz#ecdf48d532c58ea477acfcab80348424f8d0662f"[m
+[36m@@ -1466,6 +1512,11 @@[m [mangular-translate-loader-partial@^2.18.1:[m
+   dependencies:[m
+     angular-translate "~2.18.1"[m
+ [m
+[32m+[m[32mangular-translate-loader-pluggable@^1.3.1:[m
+[32m+[m[32m  version "1.3.1"[m
+[32m+[m[32m  resolved "https://registry.yarnpkg.com/angular-translate-loader-pluggable/-/angular-translate-loader-pluggable-1.3.1.tgz#6f85fe5554546c686d40170a2d0f775fb838dac5"[m
+[32m+[m[32m  integrity sha1-b4X+VVRUbGhtQBcKLQ93X7g42sU=[m
+[32m+[m
+ angular-translate-loader-static-files@^2.18.1:[m
+   version "2.18.1"[m
+   resolved "https://registry.yarnpkg.com/angular-translate-loader-static-files/-/angular-translate-loader-static-files-2.18.1.tgz#ad0c3c883b18b089bdb8db02bbd366d903f857cc"[m
+[36m@@ -1485,6 +1536,11 @@[m [mangular-ui-bootstrap@1.3.3:[m
+   resolved "https://registry.yarnpkg.com/angular-ui-bootstrap/-/angular-ui-bootstrap-1.3.3.tgz#4820f895d433c17abeb4ac7387f2f122cbf8c11c"[m
+   integrity sha1-SCD4ldQzwXq+tKxzh/LxIsv4wRw=[m
+ [m
+[32m+[m[32mangular-vs-repeat@^2.0.13:[m
+[32m+[m[32m  version "2.0.13"[m
+[32m+[m[32m  resolved "https://registry.yarnpkg.com/angular-vs-repeat/-/angular-vs-repeat-2.0.13.tgz#f20c28e7357d3e70cc894398b301921717795e92"[m
+[32m+[m[32m  integrity sha512-Jb0DOt4jU5/xZx7wjKvgZJtgAaMA4ZFLq5aeQHU8U2IZz8ixWP0ML6gFWQ1yefMapvg5LV+ZfA81ZeeN/NtJ7A==[m
+[32m+[m
+ angular-xeditable@^0.1.10:[m
+   version "0.1.12"[m
+   resolved "https://registry.yarnpkg.com/angular-xeditable/-/angular-xeditable-0.1.12.tgz#482c377cce1db49876f8ae220cce4db8d79e63c5"[m
+[36m@@ -3498,6 +3554,11 @@[m [mdot-prop@^4.1.0, dot-prop@^4.1.1:[m
+   dependencies:[m
+     is-obj "^1.0.0"[m
+ [m
+[32m+[m[32mdraggable@^4.2.0:[m
+[32m+[m[32m  version "4.2.0"[m
+[32m+[m[32m  resolved "https://registry.yarnpkg.com/draggable/-/draggable-4.2.0.tgz#149c0ca176df6d8b512048c8e451f499fc047b9a"[m
+[32m+[m[32m  integrity sha1-FJwMoXbfbYtRIEjI5FH0mfwEe5o=[m
+[32m+[m
+ drange@^1.0.0:[m
+   version "1.1.1"[m
+   resolved "https://registry.yarnpkg.com/drange/-/drange-1.1.1.tgz#b2aecec2aab82fcef11dbbd7b9e32b83f8f6c0b8"[m
+[36m@@ -7652,11 +7713,6 @@[m [movh-angular-export-csv@ovh-ux/ovh-angular-export-csv#^0.3.2:[m
+     jquery "~2.1.4"[m
+     lodash "~3.10.0"[m
+ [m
+[31m-ovh-angular-otrs@^6.3.0:[m
+[31m-  version "6.3.0"[m
+[31m-  resolved "https://registry.yarnpkg.com/ovh-angular-otrs/-/ovh-angular-otrs-6.3.0.tgz#3ad3c9626be1917b5f0f557375de3757ad9b08ba"[m
+[31m-  integrity sha512-sXxQUlsC0ucl9UVcnSB9ZQsqTnKmW/zQZM+VH0gNpnJo9v3Klk4lHN3n0Wnd62Ic8Ke3Vjgk74Jk2THjQOHfcg==[m
+[31m-[m
+ ovh-angular-pagination-front@^7.0.0:[m
+   version "7.0.0"[m
+   resolved "https://registry.yarnpkg.com/ovh-angular-pagination-front/-/ovh-angular-pagination-front-7.0.0.tgz#484d333f357cdb2ea0abd3f76ae35491d2b8aae0"[m
