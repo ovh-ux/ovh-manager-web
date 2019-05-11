@@ -45,7 +45,7 @@ import 'angular-xeditable';
 import 'script-loader!jsurl/lib/jsurl.js';
 import 'ovh-angular-sidebar-menu/dist/ovh-angular-sidebar-menu.min';
 import 'angular-translate';
-import 'angular-translate-loader-partial';
+// import 'angular-translate-loader-partial';
 import 'angular-translate-loader-static-files';
 import 'ng-slide-down';
 import 'ovh-angular-actions-menu';
