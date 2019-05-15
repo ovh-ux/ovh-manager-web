@@ -1,3 +1,16 @@
+## [13.22.6](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.5...v13.22.6) (2019-05-15)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-module-* to the latest version ([#1058](https://github.com/ovh-ux/ovh-manager-web/issues/1058)) ([2d6a498](https://github.com/ovh-ux/ovh-manager-web/commit/2d6a498))
+* **domain.dynhost:** add error message when creation fails ([0b21574](https://github.com/ovh-ux/ovh-manager-web/commit/0b21574))
+* **i18n:** retrieve translations ([52c768d](https://github.com/ovh-ux/ovh-manager-web/commit/52c768d))
+* **i18n:** retrieve translations ([#1059](https://github.com/ovh-ux/ovh-manager-web/issues/1059)) ([f7e70c2](https://github.com/ovh-ux/ovh-manager-web/commit/f7e70c2))
+* **i18n:** submit translations ([9e98791](https://github.com/ovh-ux/ovh-manager-web/commit/9e98791))
+
+
+
 ## [13.22.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.4...v13.22.5) (2019-05-06)
 
 
