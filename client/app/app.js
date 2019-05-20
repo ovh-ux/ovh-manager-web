@@ -12,12 +12,14 @@ import ngOvhProxyRequest from '@ovh-ux/ng-ovh-proxy-request';
 import ngOvhUserPref from '@ovh-ux/ng-ovh-user-pref';
 import ngOvhWebUniverseComponents from '@ovh-ux/ng-ovh-web-universe-components';
 import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
+import ovhManagerNavbar from '@ovh-ux/manager-navbar';
 import uiRouter from '@uirouter/angularjs';
 // import ngOvhSidebarMenu from '@ovh-ux/ng-ovh-sidebar-menu';
 import ngOvhOtrs from '@ovh-ux/ng-ovh-otrs';
 import domainEmailObfuscation from './domain/email-obfuscation/index';
 import domainOptin from './domain/optin/index';
 import config from './config/config';
+import navbar from './components/navbar';
 
 Environment.setRegion(__WEBPACK_REGION__);
 
@@ -63,6 +65,7 @@ angular
     ngOvhOtrs,
     'ovh-api-services',
     'ovh-angular-toaster',
+    ovhManagerNavbar,
     'ngCkeditor',
     'moment-picker',
     'oui',
@@ -72,6 +75,7 @@ angular
     'Module.emailpro',
     domainEmailObfuscation,
     domainOptin,
+    navbar,
   ])
   .constant('constants', {
     prodMode: config.prodMode,

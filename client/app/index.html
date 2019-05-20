@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -7,9 +7,8 @@
         <title>OVH</title>
         <link rel="shortcut icon" href="../../assets/images/favicon.ico">
     </head>
-    <body data-ng-app="App" data-ng-controller="WebAppCtrl as $ctrl" data-ng-cloak class="ng-cloak">
-        <div class="col-container">
-
+    <body data-ng-app="App" data-ng-controller="WebAppCtrl as $ctrl" data-ng-cloak class="ng-cloak h-100" style="overflow: hidden;">
+        <div class="h-100 d-flex flex-column overflow-hidden">
             <!-- Skip to main content -->
             <div class="skipnav">
                 <a class="oui-button oui-button_link" href=""
@@ -18,21 +17,22 @@
                 </a>
             </div>
             <!-- /Skip to main content -->
-
-            <oui-navbar fixed
-                        data-active-link="web"
-                        data-brand="::navbar.brand"
-                        data-main-links="::navbar.managerLinks"
-                        data-aside-links="::navbar.internalLinks"
-                        data-toggler-links="::navbar.responsiveLinks">
-            </oui-navbar>
-
+            <div>
+                <ovh-manager-navbar
+                    data-navbar-options="{
+                        toggle: {
+                            event: 'sidebar:loaded'
+                        },
+                        universe: 'web',
+                    }"
+                    data-sidebar-links="$ctrl.responsiveLinks">
+                </ovh-manager-navbar>
+            </div>
             <button type="button" class="visible-xs visible-sm"
-                    data-ng-if="navbar.responsiveLinks.length <= 0"
+                    data-ng-if="$ctrl.responsiveLinks.length <= 0"
                     onclick="$('#sidebar-menu').toggleClass('displayFallbackMenu')"
                     style="position: absolute; height: 44px; width: 50px; display: block; background-color: transparent; z-index: 9999; top: 0; left: 0; border: 0;">
             </button>
-
             <div class="container-fluid h-100 w-100" style="overflow: auto">
                 <div class="row">
                     <div data-sidebar-menu class="col-md-3 col-lg-2"></div>
@@ -53,7 +53,9 @@
         </div>
 
         <div id="managerPreload" class="d-flex text-center"
-            data-ng-class="!!navbar && managerPreloadHide">
+            data-ng-class="{
+                ' manager-preload-hide': $ctrl.isNavbarLoaded
+            }">
             <div class="m-auto">
                 <p class="lead mb-3" data-translate="preload_welcome"></p>
                 <hr class="my-0" />

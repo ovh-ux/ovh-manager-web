@@ -5,13 +5,15 @@ export default class WebAppCtrl {
   constructor(
     $document,
     $scope,
+    $timeout,
     $translate,
-    SessionService,
+    webNavbar,
   ) {
     this.$document = $document;
     this.$scope = $scope;
+    this.$timeout = $timeout;
     this.$translate = $translate;
-    this.SessionService = SessionService;
+    this.webNavbar = webNavbar;
 
     this.$onInit();
   }
@@ -26,6 +28,10 @@ export default class WebAppCtrl {
       this.$scope.isLeftMenuVisible = data && data.leftMenuVisible;
     });
 
+    this.$scope.$on('navbar.loaded', () => {
+      this.isNavbarLoaded = true;
+    });
+
 
     // Scroll to anchor id
     this.$scope.scrollTo = (id) => {
@@ -35,23 +41,13 @@ export default class WebAppCtrl {
       }
     };
 
-    // Get first base structure of the navbar, to avoid heavy loading
-    this.SessionService.getNavbar().then((navbar) => {
-      this.$scope.navbar = navbar;
-      this.$scope.managerPreloadHide += ' manager-preload-hide';
-      // Then get the products links, to build the reponsive menu
-      this.SessionService.getResponsiveLinks().then((responsiveLinks) => {
-        const servicesCount = _.chain(responsiveLinks)
-          .find({ name: 'web' })
-          .get('subLinks')
-          .map('subLinks')
-          .flatten()
-          .size()
-          .value();
-
-        this.$scope.navbar.responsiveLinks = servicesCount < 500 ? responsiveLinks : [];
+    this.webNavbar.getResponsiveLinks()
+      .then((links) => {
+        this.responsiveLinks = links;
+      })
+      .finally(() => {
+        this.$timeout(() => this.$scope.$broadcast('sidebar:loaded'));
       });
-    });
   }
 }
 
