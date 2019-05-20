@@ -1,3 +1,12 @@
+## [13.22.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.6...v13.22.7) (2019-05-15)
+
+
+### Bug Fixes
+
+* **private.database.ram.update:** revert changes to display size in MB ([#1064](https://github.com/ovh-ux/ovh-manager-web/issues/1064)) ([fb639bb](https://github.com/ovh-ux/ovh-manager-web/commit/fb639bb))
+
+
+
 ## [13.22.6](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.5...v13.22.6) (2019-05-15)
 
 
