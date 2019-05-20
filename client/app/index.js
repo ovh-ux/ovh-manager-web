@@ -59,9 +59,12 @@ import 'ovh-angular-toaster';
 import 'script-loader!@bower_components/messenger/build/js/messenger.min.js';
 import 'ovh-jquery-ui-draggable-ng';
 import 'script-loader!clipboard/dist/clipboard.min.js';
+import 'script-loader!bootstrap-tour/build/js/bootstrap-tour-standalone.min.js';
 
 // Ckeditor 4.x
 import 'script-loader!ng-ckeditor/dist/ng-ckeditor';
+
+import 'bootstrap-tour/build/css/bootstrap-tour.min.css';
 
 import './app.js';
 import './css/source.less';
