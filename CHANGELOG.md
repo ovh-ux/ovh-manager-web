@@ -1,3 +1,18 @@
+## [13.22.8](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.7...v13.22.8) (2019-05-20)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([#1068](https://github.com/ovh-ux/ovh-manager-web/issues/1068)) ([1bf8707](https://github.com/ovh-ux/ovh-manager-web/commit/1bf8707))
+* import translations from sidebar ([cdaa769](https://github.com/ovh-ux/ovh-manager-web/commit/cdaa769))
+
+
+### Features
+
+* use @ovh-ux/manager-navbar ([c94abd1](https://github.com/ovh-ux/ovh-manager-web/commit/c94abd1))
+
+
+
 ## [13.22.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.6...v13.22.7) (2019-05-15)
 
 
