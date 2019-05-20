@@ -1,10 +1,4 @@
 .oui-navbar {
-  // Logo
-  &__brand {
-    .navbar-logo {
-      height: 3rem;
-    }
-  }
 
   // Universes
   &-list_main {
@@ -20,61 +14,6 @@
         &:focus,
         &_active {
           color: @universe-color;
-        }
-      }
-    }
-  }
-
-  // Languages menu
-  &-menu {
-    &_language &__item_active {
-      &,
-      &:hover,
-      &:active {
-        background-color: @oui-navbar-menu-background-color_hover;
-      }
-
-      .oui-navbar-link::after {
-        content: @oui-icon-index-check_line;
-        display: inline-block;
-        margin-left: rem-calc(20);
-        margin-top: -0.3rem; /* For a better centering */
-        vertical-align: middle;
-        font-family: 'Oui Icons', sans-serif;
-        font-size: @oui-navbar-external-size;
-        color: inherit;
-      }
-    }
-  }
-
-  // Icons
-  .navbar-icon(icon-assistance);
-  .navbar-icon(icon-notifications);
-  .navbar-icon(icon-user);
-
-  .navbar-icon(@icon-selector) {
-    .navbar-@{icon-selector} {
-      background:
-        url("../../../../assets/images/navbar/@{icon-selector}.svg")
-        no-repeat center center;
-      background-size: contain;
-
-      &.oui-icon_shake {
-        background:
-          url("../../../../assets/images/navbar/@{icon-selector}_on.svg")
-          no-repeat center center;
-      }
-    }
-
-    .oui-navbar-link {
-      &:hover,
-      &:focus,
-      &_active,
-      &[aria-expanded="true"] {
-        .navbar-@{icon-selector} {
-          background:
-            url("../../../../assets/images/navbar/@{icon-selector}_on.svg")
-            no-repeat center center;
         }
       }
     }

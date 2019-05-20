@@ -1,3 +1,5 @@
+import { Environment } from '@ovh-ux/manager-config';
+import ovhManagerCore from '@ovh-ux/manager-core';
 import ngAtInternet from '@ovh-ux/ng-at-internet';
 import ngAtInternetUiRouterPlugin from '@ovh-ux/ng-at-internet-ui-router-plugin';
 import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
@@ -10,15 +12,20 @@ import ngOvhProxyRequest from '@ovh-ux/ng-ovh-proxy-request';
 import ngOvhUserPref from '@ovh-ux/ng-ovh-user-pref';
 import ngOvhWebUniverseComponents from '@ovh-ux/ng-ovh-web-universe-components';
 import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
+import ovhManagerNavbar from '@ovh-ux/manager-navbar';
 import uiRouter from '@uirouter/angularjs';
-
+// import ngOvhSidebarMenu from '@ovh-ux/ng-ovh-sidebar-menu';
+import ngOvhOtrs from '@ovh-ux/ng-ovh-otrs';
 import domainEmailObfuscation from './domain/email-obfuscation/index';
 import domainOptin from './domain/optin/index';
-
 import config from './config/config';
+import navbar from './components/navbar';
+
+Environment.setRegion(__WEBPACK_REGION__);
 
 angular
   .module('App', [
+    ovhManagerCore,
     'ovh-angular-pagination-front',
     'ovh-utils-angular',
     'ui.bootstrap',
@@ -50,13 +57,15 @@ angular
     ngOvhWebUniverseComponents,
     ngTranslateAsyncLoader,
     uiRouter,
+    // ngOvhSidebarMenu,
     'ovh-angular-sidebar-menu',
     'pascalprecht.translate',
     'ovh-angular-responsive-tabs',
     'ovh-angular-tail-logs',
-    'ovh-angular-otrs',
+    ngOvhOtrs,
     'ovh-api-services',
     'ovh-angular-toaster',
+    ovhManagerNavbar,
     'ngCkeditor',
     'moment-picker',
     'oui',
@@ -66,6 +75,7 @@ angular
     'Module.emailpro',
     domainEmailObfuscation,
     domainOptin,
+    navbar,
   ])
   .constant('constants', {
     prodMode: config.prodMode,
@@ -129,40 +139,6 @@ angular
     ovhProxyRequestProvider.proxy('$http');
     ovhProxyRequestProvider.pathPrefix('apiv6');
   })
-  .config([
-    'ssoAuthenticationProvider',
-    '$httpProvider',
-    'constants',
-    (authentication, $httpProvider, constants) => {
-      authentication.setLoginUrl(constants.loginUrl);
-      authentication.setLogoutUrl(`${constants.loginUrl}?action=disconnect`);
-
-      if (!constants.prodMode) {
-        authentication.setUserUrl('engine/apiv6/me');
-      }
-
-      authentication.setConfig([
-        {
-          serviceType: 'apiv6',
-          urlPrefix: constants.prodMode ? '/engine/apiv6' : 'engine/apiv6',
-        },
-        {
-          serviceType: 'aapi',
-          urlPrefix: constants.prodMode ? '/engine/2api' : 'engine/2api',
-        },
-        {
-          serviceType: 'apiv7',
-          urlPrefix: constants.prodMode ? '/engine/apiv7' : 'engine/apiv7',
-        },
-        {
-          serviceType: 'external',
-          urlPrefix: '',
-        },
-      ]);
-      $httpProvider.interceptors.push('serviceTypeInterceptor');
-      $httpProvider.interceptors.push('OvhSsoAuthInterceptor');
-    },
-  ])
   .config([
     'tmhDynamicLocaleProvider',
     (tmhDynamicLocaleProvider) => {
@@ -454,39 +430,6 @@ angular
     // overwrite submit button template
     _.set(editableThemes, 'default.submitTpl', ['<button style="background:none;border:none" type="submit">', '<i class="fa fa-check green"></i>', '</button>'].join(''));
     _.set(editableThemes, 'default.cancelTpl', ['<button style="background:none;border:none" ng-click="$form.$cancel()">', '<i class="fa fa-times red"></i>', '</button>'].join(''));
-  })
-  .factory('translateInterceptor', ($q) => {
-    const regexp = new RegExp(/Messages\w+\.json$/i);
-    return {
-      responseError(rejection) {
-        if (regexp.test(rejection.config.url)) {
-          return {};
-        }
-        return $q.reject(rejection);
-      },
-    };
-  })
-  .factory('translateMissingTranslationHandler', $sanitize => translationId => $sanitize(translationId))
-  .config(($translateProvider, LANGUAGES) => {
-    let defaultLanguage = 'fr_FR';
-
-    if (localStorage['univers-selected-language'] && _.find(LANGUAGES, { value: localStorage['univers-selected-language'] })) {
-      defaultLanguage = localStorage['univers-selected-language'];
-    } else {
-      localStorage['univers-selected-language'] = defaultLanguage;
-    }
-
-    $translateProvider.useLoader('asyncLoader');
-    $translateProvider.useMissingTranslationHandler('translateMissingTranslationHandler');
-    $translateProvider.useLoaderCache(true);
-    $translateProvider.useSanitizeValueStrategy('sceParameters');
-
-    $translateProvider.preferredLanguage(defaultLanguage);
-    $translateProvider.use(defaultLanguage);
-    $translateProvider.fallbackLanguage('fr_FR');
-  })
-  .config(($transitionsProvider, $httpProvider) => {
-    $httpProvider.interceptors.push('translateInterceptor');
   })
   .config((OtrsPopupProvider, constants) => {
     OtrsPopupProvider.setBaseUrlTickets(_.get(constants, 'REDIRECT_URLS.listTicket', null));
