@@ -1,3 +1,12 @@
+## [13.22.9](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.8...v13.22.9) (2019-05-21)
+
+
+### Bug Fixes
+
+* **navbar:** responsive links infinite loader ([504b4f5](https://github.com/ovh-ux/ovh-manager-web/commit/504b4f5))
+
+
+
 ## [13.22.8](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.7...v13.22.8) (2019-05-20)
 
 
