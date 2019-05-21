@@ -15,24 +15,23 @@ angular.module('App').controller(
     }
 
     $onInit() {
-      this.hosting = this.$scope.currentActionData;
+      this.hosting = this.$scope.hosting;
 
       this.availableOffers = [];
-      this.downgradeAgree = false;
       this.durations = null;
       this.loading = {
-        availableOffer: true,
+        availableOffers: true,
         durations: false,
       };
       this.model = {
-        capacity: null,
+        offer: null,
+        startTime: '12:00',
         duration: null,
+        agree: false,
+        downgradeAgree: false,
       };
 
-      this.$scope.orderUpgrade = () => this.orderUpgrade();
-      this.$scope.getDurations = () => this.getDurations();
-      this.$scope.loadContracts = () => this.loadContracts();
-      this.$scope.backToContracts = () => this.backToContracts();
+      this.$scope.isEmpty = _.isEmpty;
 
       this.User.getUser()
         .then((user) => {
@@ -40,23 +39,20 @@ angular.module('App').controller(
         });
 
       this.Hosting.getAvailableOffer(_.get(this.hosting, 'serviceName', this.$stateParams.productId))
-        .then((availableOffer) => {
-          this.availableOffers = availableOffer;
-        })
-        .catch(() => {
+        .then((availableOffers) => {
+          this.availableOffers = availableOffers
+            .map(offer => ({
+              name: this.$translate.instant(`hosting_dashboard_service_offer_${offer}`),
+              value: offer,
+            }));
+        }).catch(() => {
           this.availableOffers = [];
         })
         .finally(() => {
-          this.loading.availableOffer = false;
+          this.loading.availableOffers = false;
         });
     }
 
-    /* Step 1 */
-    orderByOffer(offer) {
-      return this.$translate.instant(`hosting_dashboard_service_offer_${offer}`) || offer;
-    }
-
-    /* Step 2 */
     getDurations() {
       this.durations = {
         available: [],
@@ -64,65 +60,63 @@ angular.module('App').controller(
       };
       this.loading.durations = true;
 
-      return this.Hosting.getUpgradePrices(_.get(this.hosting, 'serviceName', this.$stateParams.productId), this.model.capacity)
+      return this.Hosting.getUpgradePrices(_.get(this.hosting, 'serviceName', this.$stateParams.productId), this.model.offer.value)
         .then((durations) => {
           this.durations.available = durations;
           if (durations.length === 1) {
             [this.model.duration] = this.durations.available;
           }
-        }, (err) => {
+        })
+        .catch((err) => {
           this.$scope.resetAction();
           this.Alerter.alertFromSWS(this.$translate.instant('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
-        }, (durations) => {
-          this.durations.available = durations;
         })
         .finally(() => {
           this.loading.durations = false;
         });
     }
 
-    /* Step 3 */
-    loadContracts() {
-      this.agree = false;
-      if (!this.model.duration.contracts || !this.model.duration.contracts.length) {
-        this.$rootScope.$broadcast('wizard-goToStep', 4);
-      }
+    formatTime(startTime) {
+      const time = moment(`T${startTime}`);
+      const now = moment(moment().format('TH:m'));
+      const isToday = time.diff(now) > 0;
+
+      return isToday
+        ? this.$translate.instant('hosting_order_upgrade_start_time_summary_today', { time: time.format('LT') })
+        : this.$translate.instant('hosting_order_upgrade_start_time_summary_tomorrow', { time: time.format('LT') });
     }
 
-    /* Step 4 */
-    backToContracts() {
-      if (!this.model.duration.contracts || !this.model.duration.contracts.length) {
-        this.$rootScope.$broadcast('wizard-goToStep', 3);
-      }
-    }
-
-    getResumePrice(price) {
+    formatPrice(price) {
       return price.value === 0 ? this.$translate.instant('price_free') : this.$translate.instant('price_ht_label', { price: price.text });
     }
 
     orderUpgrade() {
       this.loading.validation = true;
 
-      return this.Hosting.orderUpgrade(_.get(this.hosting, 'serviceName', this.$stateParams.productId), this.model.capacity, this.model.duration.duration)
-        .then((order) => {
-          this.Alerter.success(this.$translate.instant('hosting_order_upgrade_success', { t0: order.url, t1: order.orderId }), this.$scope.alerts.main);
-          this.atInternet.trackOrder({
-            name: `[hosting]::${this.model.capacity}[${this.model.capacity}]`,
-            page: 'web::payment-pending',
-            orderId: order.orderId,
-            priceTaxFree: order.prices.withoutTax.value,
-            price: order.prices.withTax.value,
-            status: 1,
-          });
-          this.$window.open(order.url, '_blank');
-        })
-        .catch((err) => {
-          this.Alerter.alertFromSWS(this.$translate.instant('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
-        })
-        .finally(() => {
-          this.loading.validation = false;
-          this.$scope.resetAction();
+      const startTime = moment(`T${this.model.startTime}`).utc().format('HH:mm:ss');
+
+      return this.Hosting.orderUpgrade(
+        _.get(this.hosting, 'serviceName', this.$stateParams.productId),
+        this.model.offer.value,
+        this.model.duration.duration,
+        (this.hosting.isCloudWeb ? startTime : null),
+      ).then((order) => {
+        this.Alerter.success(this.$translate.instant('hosting_order_upgrade_success', { t0: order.url, t1: order.orderId }), this.$scope.alerts.main);
+        this.atInternet.trackOrder({
+          name: `[hosting]::${this.model.offer.value}[${this.model.offer.value}]`,
+          page: 'web::payment-pending',
+          orderId: order.orderId,
+          priceTaxFree: order.prices.withoutTax.value,
+          price: order.prices.withTax.value,
+          status: 1,
         });
+        this.$window.open(order.url, '_blank');
+      }).catch((err) => {
+        this.Alerter.alertFromSWS(this.$translate.instant('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
+      }).finally(() => {
+        this.loading.validation = false;
+        this.$scope.resetAction();
+      });
     }
   },
 );

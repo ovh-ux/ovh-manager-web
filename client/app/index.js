@@ -17,6 +17,7 @@ import 'angular-sanitize';
 import 'angular-cookies';
 import 'angular-messages';
 import 'angular-resource';
+import 'script-loader!flatpickr/dist/flatpickr.min.js';
 import 'ovh-ui-angular';
 import 'script-loader!@bower_components/jquery.scrollTo/jquery.scrollTo.min.js';
 import 'script-loader!angular-dynamic-locale/dist/tmhDynamicLocale.js';

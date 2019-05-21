@@ -1181,9 +1181,11 @@
    <translation id="hostin_order_select_offer" qtlid="216963">Sélectionnez l'offre désirée.</translation>
    <translation id="hosting_order_upgrade_select_duration" qtlid="216820">Sélectionnez la durée désirée.</translation>
    <translation id="hosting_order_upgrade_select_noduration" qtlid="434226">Vous pouvez choisir n'importe quelle offre avec plus de capacité que votre offre actuelle, ou alors l'offre de capacité inférieure la plus proche de votre offre actuelle.</translation>
+   <translation id="hosting_order_upgrade_select_noduration_cloudweb">Vous pouvez uniquement choisir une offre avec plus de capacité que votre offre actuelle. Il ne sera pas possible de revenir à une offre avec moins de capacité après ce changement.</translation>
    <translation id="hosting_order_upgrade_loading_order" qtlid="181019">Chargement des durées en cours...</translation>
    <translation id="hosting_order_upgrade_resume" qtlid="177496">Résumé de votre commande</translation>
    <translation id="hosting_order_upgrade_do_order" qtlid="216833">La modification sera effective à l'issue du réglement.</translation>
+   <translation id="hosting_order_upgrade_do_order_cloudweb">La modification sera effective dans un délai de 2 heures après le début de l'opération et sous condition du règlement de votre bon de commande.</translation>
    <translation id="hosting_order_upgrade_do_order_2" qtlid="290511">Note : Si votre hébergement n'a pas encore expiré, il n'y aura pas de report du crédit restant sur votre nouvelle offre mais celui-ci sera prolongé d'un an à compter de ce jour.</translation>
    <translation id="hosting_order_upgrade_do_order_upgrade" qtlid="296739">Note dans le cadre du passage à une offre supérieure :</translation>
    <translation id="hosting_order_upgrade_do_order_upgrade_text" qtlid="296752">Si votre ancien hébergement n’est pas encore expiré au moment du basculement, l’intégralité du crédit restant sera reportée sur votre nouvelle offre.</translation>
@@ -1196,6 +1198,17 @@
    <translation id="hosting_order_upgrade_price_TTC" qtlid="146190">Prix total TTC :</translation>
    <translation id="hosting_order_upgrade_success" qtlid="181266">La commande numéro <a href='{0}' target='_blank'>{1}</a> a bien été prise en compte.</translation>
    <translation id="hosting_order_upgrade_error" qtlid="225153">Une erreur est survenue lors de la modification de votre offre d'hébergement mutualisé.</translation>
+   <translation id="hosting_order_upgrade_modal_header">Changer d'offre</translation>
+   <translation id="hosting_order_upgrade_step_header_offer">Offre</translation>
+   <translation id="hosting_order_upgrade_step_header_duration">Durée</translation>
+   <translation id="hosting_order_upgrade_step_header_start_time">Heure de la mise à jour</translation>
+   <translation id="hosting_order_upgrade_step_header_contracts">Contrats</translation>
+   <translation id="hosting_order_upgrade_start_time_label">Sélectionnez l'heure de la mise à jour</translation>
+   <translation id="hosting_order_upgrade_start_time_explain">L'heure que vous choisissez correspond à la prochaine fois que cette heure sera atteinte dans votre fuseau horaire. Si vous choisissez une heure qui est déjà passée, la mise à jour s'effectuera demain à cette heure.</translation>
+   <translation id="hosting_order_upgrade_start_time_info">Le changement d'offre Cloudweb entraine une coupure de service d'environ 15 minutes maximum après le début de l'opération. Vous pouvez donc choisir un horaire de nuit afin de limiter l'impact sur vos sites web.</translation>
+   <translation id="hosting_order_upgrade_start_time_summary_today">Mise à jour prévue à {{time}} aujourd'hui.</translation>
+   <translation id="hosting_order_upgrade_start_time_summary_tomorrow">Mise à jour prévue à {{time}} demain.</translation>
+
    <translation id="hosting_migrate_my_ovh_org_success" qtlid="372334">La migration de votre domaine ovh.org a bien été prise en compte. Vous recevrez un e-mail lorsqu'elle sera terminée.</translation>
    <translation id="hosting_migrate_my_ovh_org_error" qtlid="372347">Une erreur est survenue lors de la migration de votre domaine ovh.org.</translation>
 
