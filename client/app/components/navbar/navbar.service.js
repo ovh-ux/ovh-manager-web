@@ -4,16 +4,17 @@ import { MENU } from './navbar.constants';
 
 export default class Navbar {
   /* @ngInject */
-  constructor($translate, WucProducts) {
+  constructor($translate, $q, WucProducts) {
     this.$translate = $translate;
+    this.$q = $q;
     this.WucProducts = WucProducts;
   }
 
-  static sortProducts(products) {
-    return _.mapValues(products, product => _.sortBy(
+  sortProducts(products) {
+    return this.$q.when(_.mapValues(products, product => _.sortBy(
       product,
       item => _.get(item, 'displayName', item.name),
-    ));
+    )));
   }
 
   getResponsiveLinks() {
@@ -21,7 +22,7 @@ export default class Navbar {
       .then(products => _.omit(products, ['state', 'messages']))
       .then(products => (_.values(products).length > 500
         ? []
-        : (Navbar.sortProducts(products)
+        : (this.sortProducts(products)
           .then(sortedProducts => ({
             ...sortedProducts,
             hostings: _.filter(products.hostings, { type: 'HOSTING' }),
