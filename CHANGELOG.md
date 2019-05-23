@@ -1,3 +1,13 @@
+## [13.22.11](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.10...v13.22.11) (2019-05-23)
+
+
+### Bug Fixes
+
+* **hosting.module:** remove loading from cache ([#1063](https://github.com/ovh-ux/ovh-manager-web/issues/1063)) ([3ec86c6](https://github.com/ovh-ux/ovh-manager-web/commit/3ec86c6))
+* **i18n:** retrieve translations ([#1077](https://github.com/ovh-ux/ovh-manager-web/issues/1077)) ([8b7ccf8](https://github.com/ovh-ux/ovh-manager-web/commit/8b7ccf8))
+
+
+
 ## [13.22.10](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.9...v13.22.10) (2019-05-22)
 
 
