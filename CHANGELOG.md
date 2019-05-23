@@ -1,3 +1,12 @@
+## [13.22.12](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.11...v13.22.12) (2019-05-23)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-ovh-otrs to v7.0.2 ([#1082](https://github.com/ovh-ux/ovh-manager-web/issues/1082)) ([26bbe7c](https://github.com/ovh-ux/ovh-manager-web/commit/26bbe7c))
+
+
+
 ## [13.22.11](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.10...v13.22.11) (2019-05-23)
 
 
