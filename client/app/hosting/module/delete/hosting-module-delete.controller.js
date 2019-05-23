@@ -29,7 +29,7 @@ angular.module('App').controller(
         .catch((err) => {
           this.Alerter.alertFromSWS(
             this.$translate.instant('hosting_configuration_tab_modules_delete_fail', {
-              t0: this.moduleToDelete,
+              t0: this.moduleToDelete.template.name,
             }),
             err,
             this.$scope.alerts.main,
