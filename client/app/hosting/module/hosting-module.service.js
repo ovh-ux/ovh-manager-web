@@ -104,7 +104,6 @@
       getModules(serviceName, opts) {
         return this.OvhHttp.get(`/hosting/web/${serviceName}/module`, {
           rootPath: 'apiv6',
-          cache: cache.installedModules,
           clearCache: opts.forceRefresh,
         });
       }
