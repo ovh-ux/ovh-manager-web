@@ -595,7 +595,10 @@
       orderUpgrade(serviceName, offer, duration, startTime = null) {
         return this.OvhHttp.post(`/order/hosting/web/${serviceName}/upgrade/${duration}`, {
           rootPath: 'apiv6',
-          data: Object.assign({ offer }, startTime ? { startTime } : {}),
+          data: {
+            offer,
+            ...(startTime ? { startTime } : {}),
+          },
         });
       }
 

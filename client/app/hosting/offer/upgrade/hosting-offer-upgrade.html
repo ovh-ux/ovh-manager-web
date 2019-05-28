@@ -4,12 +4,12 @@
                data-loading="$ctrl.loading.availableOffers">
         <oui-message
           data-type="warning"
-          data-ng-if="isEmpty($ctrl.availableOffers)"
+          data-ng-if="$ctrl.availableOffers.length === 0"
           data-dismissable="false">
           <span data-translate="hosting_order_upgrade_no_offer"></span>
         </oui-message>
 
-        <oui-stepper data-ng-if="!isEmpty($ctrl.availableOffers)"
+        <oui-stepper data-ng-if="$ctrl.availableOffers.length > 0"
                      data-on-finish="$ctrl.orderUpgrade()">
             <oui-step-form data-header="{{:: 'hosting_order_upgrade_step_header_offer' | translate }}">
                 <oui-field data-label="{{::'hostin_order_select_offer' | translate}}"

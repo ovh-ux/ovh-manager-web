@@ -31,8 +31,6 @@ angular.module('App').controller(
         downgradeAgree: false,
       };
 
-      this.$scope.isEmpty = _.isEmpty;
-
       this.User.getUser()
         .then((user) => {
           this.ovhSubsidiary = user.ovhSubsidiary;
@@ -95,28 +93,29 @@ angular.module('App').controller(
 
       const startTime = moment(`T${this.model.startTime}`).utc().format('HH:mm:ss');
 
-      return this.Hosting.orderUpgrade(
-        _.get(this.hosting, 'serviceName', this.$stateParams.productId),
-        this.model.offer.value,
-        this.model.duration.duration,
-        (this.hosting.isCloudWeb ? startTime : null),
-      ).then((order) => {
-        this.Alerter.success(this.$translate.instant('hosting_order_upgrade_success', { t0: order.url, t1: order.orderId }), this.$scope.alerts.main);
-        this.atInternet.trackOrder({
-          name: `[hosting]::${this.model.offer.value}[${this.model.offer.value}]`,
-          page: 'web::payment-pending',
-          orderId: order.orderId,
-          priceTaxFree: order.prices.withoutTax.value,
-          price: order.prices.withTax.value,
-          status: 1,
+      return this.Hosting
+        .orderUpgrade(
+          _.get(this.hosting, 'serviceName', this.$stateParams.productId),
+          this.model.offer.value,
+          this.model.duration.duration,
+          (this.hosting.isCloudWeb ? startTime : null),
+        ).then((order) => {
+          this.Alerter.success(this.$translate.instant('hosting_order_upgrade_success', { t0: order.url, t1: order.orderId }), this.$scope.alerts.main);
+          this.atInternet.trackOrder({
+            name: `[hosting]::${this.model.offer.value}[${this.model.offer.value}]`,
+            page: 'web::payment-pending',
+            orderId: order.orderId,
+            priceTaxFree: order.prices.withoutTax.value,
+            price: order.prices.withTax.value,
+            status: 1,
+          });
+          this.$window.open(order.url, '_blank');
+        }).catch((err) => {
+          this.Alerter.alertFromSWS(this.$translate.instant('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
+        }).finally(() => {
+          this.loading.validation = false;
+          this.$scope.resetAction();
         });
-        this.$window.open(order.url, '_blank');
-      }).catch((err) => {
-        this.Alerter.alertFromSWS(this.$translate.instant('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
-      }).finally(() => {
-        this.loading.validation = false;
-        this.$scope.resetAction();
-      });
     }
   },
 );
