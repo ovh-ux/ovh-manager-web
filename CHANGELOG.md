@@ -1,3 +1,13 @@
+## [13.22.13](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.12...v13.22.13) (2019-05-29)
+
+
+### Bug Fixes
+
+* **deps:** bump manager-navbar to v0.5.0 ([#1086](https://github.com/ovh-ux/ovh-manager-web/issues/1086)) ([2676672](https://github.com/ovh-ux/ovh-manager-web/commit/2676672))
+* **i18n:** retrieve translations ([#1085](https://github.com/ovh-ux/ovh-manager-web/issues/1085)) ([8902fb2](https://github.com/ovh-ux/ovh-manager-web/commit/8902fb2))
+
+
+
 ## [13.22.12](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.11...v13.22.12) (2019-05-23)
 
 
