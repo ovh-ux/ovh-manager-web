@@ -1,3 +1,36 @@
+## [13.22.13](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.12...v13.22.13) (2019-05-29)
+
+
+### Bug Fixes
+
+* **deps:** bump manager-navbar to v0.5.0 ([#1086](https://github.com/ovh-ux/ovh-manager-web/issues/1086)) ([2676672](https://github.com/ovh-ux/ovh-manager-web/commit/2676672))
+* **i18n:** retrieve translations ([#1085](https://github.com/ovh-ux/ovh-manager-web/issues/1085)) ([8902fb2](https://github.com/ovh-ux/ovh-manager-web/commit/8902fb2))
+
+
+
+## [13.22.12](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.11...v13.22.12) (2019-05-23)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-ovh-otrs to v7.0.2 ([#1082](https://github.com/ovh-ux/ovh-manager-web/issues/1082)) ([26bbe7c](https://github.com/ovh-ux/ovh-manager-web/commit/26bbe7c))
+
+
+
+## [13.22.11](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.10...v13.22.11) (2019-05-23)
+
+
+### Bug Fixes
+
+* **hosting.module:** remove loading from cache ([#1063](https://github.com/ovh-ux/ovh-manager-web/issues/1063)) ([3ec86c6](https://github.com/ovh-ux/ovh-manager-web/commit/3ec86c6))
+* **i18n:** retrieve translations ([#1077](https://github.com/ovh-ux/ovh-manager-web/issues/1077)) ([8b7ccf8](https://github.com/ovh-ux/ovh-manager-web/commit/8b7ccf8))
+
+
+
+## [13.22.10](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.9...v13.22.10) (2019-05-22)
+
+
+
 ## [13.22.9](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.8...v13.22.9) (2019-05-21)
 
 
