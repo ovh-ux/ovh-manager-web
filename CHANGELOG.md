@@ -1,3 +1,12 @@
+## [13.22.14](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.13...v13.22.14) (2019-06-03)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-module-* dependencies ([#1091](https://github.com/ovh-ux/ovh-manager-web/issues/1091)) ([4fc60f5](https://github.com/ovh-ux/ovh-manager-web/commit/4fc60f5))
+
+
+
 ## [13.22.13](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.12...v13.22.13) (2019-05-29)
 
 
