@@ -1,3 +1,12 @@
+## [13.22.15](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.14...v13.22.15) (2019-06-06)
+
+
+### Bug Fixes
+
+* **components.navbar:** specify the right state for domain and hosting ([#1097](https://github.com/ovh-ux/ovh-manager-web/issues/1097)) ([dba2625](https://github.com/ovh-ux/ovh-manager-web/commit/dba2625))
+
+
+
 ## [13.22.14](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.13...v13.22.14) (2019-06-03)
 
 
