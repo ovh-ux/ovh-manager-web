@@ -36,7 +36,7 @@ export default class Navbar {
   }
 
   getSublinks(section, products) {
-    if (section.name === 'domain') {
+    if (section.name === 'domains') {
       return this.getDomainsMenu(products.domains);
     }
 
@@ -65,7 +65,6 @@ export default class Navbar {
     }));
   }
 
-
   getDomainsMenu(domains) {
     return [{
       title: this.$translate.instant('navigation_left_all_domains'),
@@ -81,15 +80,17 @@ export default class Navbar {
       stateParams: {
         productId: domain.name,
       },
-      subLinks: _.map(domain.subProducts, subDomain => ({
-        name: subDomain.name,
-        title: subDomain.displayName,
-        state: 'app.domain.alldom',
-        stateParams: {
-          allDom: domain.displayName,
-          productId: subDomain.name,
-        },
-      })),
+      subLinks: domain.subProducts
+        ? _.map(domain.subProducts, subDomain => ({
+          name: subDomain.name,
+          title: subDomain.displayName,
+          state: 'app.domain.alldom',
+          stateParams: {
+            allDom: domain.displayName,
+            productId: subDomain.name,
+          },
+        }))
+        : null,
     })),
     ];
   }

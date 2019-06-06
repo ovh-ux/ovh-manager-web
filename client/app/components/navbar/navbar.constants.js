@@ -2,7 +2,7 @@ export const MENU = [{
   name: 'domains',
   title: 'navigation_left_domains',
 }, {
-  id: 'hostings',
+  id: 'hosting',
   name: 'hostings',
   title: 'navigation_left_hosting',
 }, {
