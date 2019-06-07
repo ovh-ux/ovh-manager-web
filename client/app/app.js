@@ -227,7 +227,7 @@ angular
           ],
           currentSection: () => 'all_dom',
         },
-        translations: ['domain', 'hosting'],
+        translations: { value: ['domain', 'hosting'], format: 'json' },
       });
 
       _(URLS_REDIRECTED_TO_DEDICATED)

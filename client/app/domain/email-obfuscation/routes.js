@@ -5,7 +5,7 @@ angular.module('App').config(/* @ngInject */ ($stateProvider) => {
       views: {
         domainView: 'domainEmailObfuscation',
       },
-      translations: ['.'],
+      translations: { value: ['.'], format: 'json' },
     });
   });
 });

@@ -37,7 +37,7 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['../core', '../domain', '../email', '../hosting', '../domain-operation'],
+    translations: { value: ['../core', '../domain', '../email', '../hosting', '../domain-operation'], format: 'json' },
   });
 
   $stateProvider.state('app.domain.alldom', {
@@ -61,7 +61,7 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['../core', '../domain', '../email', '../hosting', '../domain-operation'],
+    translations: { value: ['../core', '../domain', '../email', '../hosting', '../domain-operation'], format: 'json' },
   });
 
   ['product', 'alldom'].forEach((stateType) => {
