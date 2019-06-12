@@ -33,6 +33,7 @@ angular.module('App').controller(
     $onInit() {
       this.serviceName = this.$stateParams.productId;
       this.defaultRuntime = null;
+      this.availableOffers = [];
 
       this.loading = {
         defaultRuntime: true,
@@ -50,6 +51,7 @@ angular.module('App').controller(
         this.getUserLogsToken(),
         this.getScreenshot(),
         this.retrievingSSLCertificate(),
+        this.retrievingAvailableOffers(this.serviceName),
       ])
         .then(() => this.HostingRuntimes.getDefault(this.serviceName))
         .then((runtime) => {
@@ -169,6 +171,13 @@ angular.module('App').controller(
       }
 
       return this.$translate.instant(`hosting_dashboard_service_ssl_${this.sslCertificate.status}`);
+    }
+
+    retrievingAvailableOffers(productId) {
+      return this.Hosting.getAvailableOffer(productId)
+        .then((offers) => {
+          this.availableOffers = offers;
+        });
     }
 
     changeOffer() {
