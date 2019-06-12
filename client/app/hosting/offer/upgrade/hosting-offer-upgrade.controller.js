@@ -1,10 +1,11 @@
 angular.module('App').controller(
   'HostingUpgradeOfferCtrl',
   class HostingUpgradeOfferCtrl {
-    constructor($scope, $rootScope, $stateParams, $translate, $window,
+    constructor($scope, $rootScope, $state, $stateParams, $translate, $window,
       Alerter, atInternet, Hosting, User) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
+      this.$state = $state;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.$window = $window;
@@ -15,13 +16,14 @@ angular.module('App').controller(
     }
 
     $onInit() {
-      this.hosting = this.$scope.hosting;
+      this.productId = this.$stateParams.productId;
 
       this.availableOffers = [];
       this.durations = null;
       this.loading = {
         availableOffers: true,
         durations: false,
+        validation: false,
       };
       this.model = {
         offer: null,
@@ -36,14 +38,19 @@ angular.module('App').controller(
           this.ovhSubsidiary = user.ovhSubsidiary;
         });
 
-      this.Hosting.getAvailableOffer(_.get(this.hosting, 'serviceName', this.$stateParams.productId))
+      this.Hosting.getSelected(this.productId)
+        .then((hosting) => {
+          this.hosting = hosting;
+          return this.Hosting.getAvailableOffer(this.productId);
+        })
         .then((availableOffers) => {
           this.availableOffers = availableOffers
             .map(offer => ({
               name: this.$translate.instant(`hosting_dashboard_service_offer_${offer}`),
               value: offer,
             }));
-        }).catch(() => {
+        })
+        .catch(() => {
           this.availableOffers = [];
         })
         .finally(() => {
@@ -66,7 +73,6 @@ angular.module('App').controller(
           }
         })
         .catch((err) => {
-          this.$scope.resetAction();
           this.Alerter.alertFromSWS(this.$translate.instant('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
         })
         .finally(() => {
@@ -91,6 +97,10 @@ angular.module('App').controller(
     orderUpgrade() {
       this.loading.validation = true;
 
+      const win = this.$window.open('', '_blank');
+      win.referrer = null;
+      win.opener = null;
+
       const startTime = moment(`T${this.model.startTime}`).utc().format('HH:mm:ss');
 
       return this.Hosting
@@ -109,12 +119,13 @@ angular.module('App').controller(
             price: order.prices.withTax.value,
             status: 1,
           });
-          this.$window.open(order.url, '_blank');
+          win.location = order.url;
         }).catch((err) => {
           this.Alerter.alertFromSWS(this.$translate.instant('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
+          win.close();
         }).finally(() => {
           this.loading.validation = false;
-          this.$scope.resetAction();
+          this.$state.go('^');
         });
     }
   },

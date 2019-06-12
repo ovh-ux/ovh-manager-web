@@ -11,9 +11,11 @@ angular.module('App').controller(
      * @param WucEmails
      * @param MailingLists
      */
-    constructor($scope, $filter, $stateParams, $translate, Alerter, WucEmails, MailingLists) {
+    constructor($scope, $filter, $state, $stateParams,
+      $translate, Alerter, WucEmails, MailingLists) {
       this.$scope = $scope;
       this.$filter = $filter;
+      this.$state = $state;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;

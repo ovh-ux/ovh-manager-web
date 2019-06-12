@@ -62,7 +62,7 @@
                     <li data-ng-if="isPerso()">
                         <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-translate="hosting_tab_DATABASES_configuration_create_upgrade_perso"
-                                data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)">
+                                data-ng-click="goToHostingUpgrade()">
                         </button>
                     </li>
 
@@ -70,7 +70,7 @@
                     <li data-ng-if="isPro()">
                         <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-translate="hosting_tab_DATABASES_configuration_create_upgrade_pro"
-                                data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)">
+                                data-ng-click="goToHostingUpgrade()">
                         </button>
                     </li>
 
@@ -102,7 +102,7 @@
                     <li data-ng-if="isStart()">
                         <button class="btn btn-link text-left text-wrap p-0" type="button"
                                 data-translate="hosting_tab_DATABASES_configuration_create_upgrade_start"
-                                data-ng-click="setAction('offer/upgrade/hosting-offer-upgrade', hosting)">
+                                data-ng-click="goToHostingUpgrade()">
                         </button>
                     </li>
                 </ul>

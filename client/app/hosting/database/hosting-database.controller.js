@@ -4,6 +4,7 @@ angular.module('App').controller(
     constructor(
       $scope,
       $q,
+      $state,
       $stateParams,
       $timeout,
       $translate,
@@ -14,6 +15,7 @@ angular.module('App').controller(
     ) {
       this.$scope = $scope;
       this.$q = $q;
+      this.$state = $state;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
       this.$translate = $translate;

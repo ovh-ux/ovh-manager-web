@@ -2,7 +2,7 @@ angular
   .module('App')
   .controller(
     'HostingTabCronsCtrl',
-    ($scope, Hosting, $timeout, $stateParams, $translate, HostingCron, Alerter, User) => {
+    ($scope, Hosting, $state, $stateParams, $translate, HostingCron, Alerter, User) => {
       $scope.crons = {
         details: [],
       };
@@ -97,6 +97,10 @@ angular
         },
         true,
       );
+
+      $scope.goToHostingUpgrade = () => {
+        $state.go('app.hosting.upgrade', { productId: $scope.hosting.serviceName });
+      };
 
       $scope.loadCrons();
     },

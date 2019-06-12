@@ -4,6 +4,7 @@ angular.module('App').controller(
     constructor(
       $q,
       $scope,
+      $state,
       $stateParams,
       $translate,
       atInternet,
@@ -16,6 +17,7 @@ angular.module('App').controller(
     ) {
       this.$q = $q;
       this.$scope = $scope;
+      this.$state = $state;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
 
@@ -174,7 +176,7 @@ angular.module('App').controller(
         name: 'web::hostname::general-informations::change-offer',
         type: 'action',
       });
-      this.$scope.setAction('offer/upgrade/hosting-offer-upgrade');
+      this.$state.go('app.hosting.upgrade', { productId: this.serviceName });
     }
 
     changeMainDomain() {

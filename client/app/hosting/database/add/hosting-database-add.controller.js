@@ -7,6 +7,7 @@ angular
       $location,
       $q,
       $timeout,
+      $state,
       $stateParams,
       $translate,
       Alerter,
@@ -182,6 +183,10 @@ angular
         $timeout(() => {
           $location.path('/configuration/private_database');
         }, 300);
+      };
+
+      $scope.goToHostingUpgrade = () => {
+        $state.go('app.hosting.upgrade', { productId: $scope.hosting.serviceName });
       };
     },
   );
