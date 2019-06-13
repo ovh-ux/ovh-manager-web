@@ -81,13 +81,13 @@ angular.module('App').controller(
     }
 
     formatTime(startTime) {
-      const time = moment(`T${startTime}`);
-      const now = moment(moment().format('TH:m'));
+      const time = moment(`2000-01-01T${startTime}`);
+      const now = moment(moment().format('2000-01-01TH:m'));
       const isToday = time.diff(now) > 0;
 
       return isToday
-        ? this.$translate.instant('hosting_order_upgrade_start_time_summary_today', { time: time.format('LT') })
-        : this.$translate.instant('hosting_order_upgrade_start_time_summary_tomorrow', { time: time.format('LT') });
+        ? this.$translate.instant('hosting_order_upgrade_start_time_summary_today', { time: time.format('LT (UTCZ)') })
+        : this.$translate.instant('hosting_order_upgrade_start_time_summary_tomorrow', { time: time.format('LT (UTCZ)') });
     }
 
     formatPrice(price) {
