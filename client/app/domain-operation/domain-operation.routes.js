@@ -17,7 +17,7 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['../domain', '../domain-operation'],
+    translations: { value: ['../domain', '../domain-operation'], format: 'json' },
   });
 
   $stateProvider.state('app.domain.operation-progress', {
@@ -38,6 +38,6 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['../domain', '../domain-operation'],
+    translations: { value: ['../domain', '../domain-operation'], format: 'json' },
   });
 });

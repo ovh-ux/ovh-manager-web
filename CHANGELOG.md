@@ -1,3 +1,109 @@
+## [13.22.16](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.15...v13.22.16) (2019-06-12)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-ovh-otrs to v7.1.3 ([#1102](https://github.com/ovh-ux/ovh-manager-web/issues/1102)) ([74383a2](https://github.com/ovh-ux/ovh-manager-web/commit/74383a2))
+
+
+
+## [13.22.15](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.14...v13.22.15) (2019-06-06)
+
+
+### Bug Fixes
+
+* **components.navbar:** specify the right state for domain and hosting ([#1097](https://github.com/ovh-ux/ovh-manager-web/issues/1097)) ([dba2625](https://github.com/ovh-ux/ovh-manager-web/commit/dba2625))
+
+
+
+## [13.22.14](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.13...v13.22.14) (2019-06-03)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-module-* dependencies ([#1091](https://github.com/ovh-ux/ovh-manager-web/issues/1091)) ([4fc60f5](https://github.com/ovh-ux/ovh-manager-web/commit/4fc60f5))
+
+
+
+## [13.22.13](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.12...v13.22.13) (2019-05-29)
+
+
+### Bug Fixes
+
+* **deps:** bump manager-navbar to v0.5.0 ([#1086](https://github.com/ovh-ux/ovh-manager-web/issues/1086)) ([2676672](https://github.com/ovh-ux/ovh-manager-web/commit/2676672))
+* **i18n:** retrieve translations ([#1085](https://github.com/ovh-ux/ovh-manager-web/issues/1085)) ([8902fb2](https://github.com/ovh-ux/ovh-manager-web/commit/8902fb2))
+
+
+
+## [13.22.12](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.11...v13.22.12) (2019-05-23)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-ovh-otrs to v7.0.2 ([#1082](https://github.com/ovh-ux/ovh-manager-web/issues/1082)) ([26bbe7c](https://github.com/ovh-ux/ovh-manager-web/commit/26bbe7c))
+
+
+
+## [13.22.11](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.10...v13.22.11) (2019-05-23)
+
+
+### Bug Fixes
+
+* **hosting.module:** remove loading from cache ([#1063](https://github.com/ovh-ux/ovh-manager-web/issues/1063)) ([3ec86c6](https://github.com/ovh-ux/ovh-manager-web/commit/3ec86c6))
+* **i18n:** retrieve translations ([#1077](https://github.com/ovh-ux/ovh-manager-web/issues/1077)) ([8b7ccf8](https://github.com/ovh-ux/ovh-manager-web/commit/8b7ccf8))
+
+
+
+## [13.22.10](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.9...v13.22.10) (2019-05-22)
+
+
+
+## [13.22.9](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.8...v13.22.9) (2019-05-21)
+
+
+### Bug Fixes
+
+* **navbar:** responsive links infinite loader ([504b4f5](https://github.com/ovh-ux/ovh-manager-web/commit/504b4f5))
+
+
+
+## [13.22.8](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.7...v13.22.8) (2019-05-20)
+
+
+### Bug Fixes
+
+* **i18n:** retrieve translations ([#1068](https://github.com/ovh-ux/ovh-manager-web/issues/1068)) ([1bf8707](https://github.com/ovh-ux/ovh-manager-web/commit/1bf8707))
+* import translations from sidebar ([cdaa769](https://github.com/ovh-ux/ovh-manager-web/commit/cdaa769))
+
+
+### Features
+
+* use @ovh-ux/manager-navbar ([c94abd1](https://github.com/ovh-ux/ovh-manager-web/commit/c94abd1))
+
+
+
+## [13.22.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.6...v13.22.7) (2019-05-15)
+
+
+### Bug Fixes
+
+* **private.database.ram.update:** revert changes to display size in MB ([#1064](https://github.com/ovh-ux/ovh-manager-web/issues/1064)) ([fb639bb](https://github.com/ovh-ux/ovh-manager-web/commit/fb639bb))
+
+
+
+## [13.22.6](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.5...v13.22.6) (2019-05-15)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-module-* to the latest version ([#1058](https://github.com/ovh-ux/ovh-manager-web/issues/1058)) ([2d6a498](https://github.com/ovh-ux/ovh-manager-web/commit/2d6a498))
+* **domain.dynhost:** add error message when creation fails ([0b21574](https://github.com/ovh-ux/ovh-manager-web/commit/0b21574))
+* **i18n:** retrieve translations ([52c768d](https://github.com/ovh-ux/ovh-manager-web/commit/52c768d))
+* **i18n:** retrieve translations ([#1059](https://github.com/ovh-ux/ovh-manager-web/issues/1059)) ([f7e70c2](https://github.com/ovh-ux/ovh-manager-web/commit/f7e70c2))
+* **i18n:** submit translations ([9e98791](https://github.com/ovh-ux/ovh-manager-web/commit/9e98791))
+
+
+
 ## [13.22.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.4...v13.22.5) (2019-05-06)
 
 

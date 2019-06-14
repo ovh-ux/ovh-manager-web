@@ -1,18 +1,18 @@
 angular.module('App').controller(
   'AppCtrl',
   class AppCtrl {
-    constructor($scope, $rootScope, $timeout, $translate, constants, incident, User) {
+    constructor($scope, $rootScope, $timeout, $translate, coreConfig, incident, User) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$timeout = $timeout;
       this.$translate = $translate;
-      this.constants = constants;
+      this.coreConfig = coreConfig;
       this.incident = incident;
       this.User = User;
     }
 
     $onInit() {
-      this.$scope.worldPart = this.constants.target;
+      this.$scope.worldPart = this.coreConfig.getRegion();
       this.$scope.stepPath = '';
       this.$scope.currentAction = null;
       this.$scope.currentActionData = null;

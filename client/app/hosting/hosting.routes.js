@@ -20,7 +20,7 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['.'],
+    translations: { value: ['.'], format: 'json' },
   });
 
   $stateProvider.state('app.hosting.upgrade', {

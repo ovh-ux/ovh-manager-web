@@ -15,6 +15,6 @@ angular.module('App').config(($stateProvider) => {
         },
       ],
     },
-    translations: ['../domain', '../domains'],
+    translations: { value: ['../domain', '../domains'], format: 'json' },
   });
 });
