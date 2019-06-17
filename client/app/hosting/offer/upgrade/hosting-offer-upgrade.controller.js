@@ -81,13 +81,17 @@ angular.module('App').controller(
     }
 
     formatTime(startTime) {
+      // trick ahead: we want to compare times only, so we use the same day
       const time = moment(`2000-01-01T${startTime}`);
       const now = moment(moment().format('2000-01-01THH:mm'));
       const isToday = time.diff(now) > 0;
 
-      return isToday
-        ? this.$translate.instant('hosting_order_upgrade_start_time_summary_today', { time: time.format('LT (UTCZ)') })
-        : this.$translate.instant('hosting_order_upgrade_start_time_summary_tomorrow', { time: time.format('LT (UTCZ)') });
+      return this.$translate.instant(
+        isToday
+          ? 'hosting_order_upgrade_start_time_summary_today'
+          : 'hosting_order_upgrade_start_time_summary_tomorrow',
+        { time: time.format('LT (UTCZ)') },
+      );
     }
 
     formatPrice(price) {
