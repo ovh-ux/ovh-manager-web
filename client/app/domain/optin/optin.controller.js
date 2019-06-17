@@ -108,7 +108,7 @@ export default class DomainOptinCtrl {
     const optin = _.map(this.configuration, (fields, type) => ({
       type: DomainOptinCtrl.formatContactType(type),
       fields: this.getContactTypeFields(type, fields),
-    }));
+    })).filter(data => data.fields.length > 0);
     return this.OvhApiDomainConfigurationsOptin.v6().put({
       serviceName: this.domain,
     }, {
