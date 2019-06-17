@@ -82,7 +82,7 @@ angular.module('App').controller(
 
     formatTime(startTime) {
       const time = moment(`2000-01-01T${startTime}`);
-      const now = moment(moment().format('2000-01-01TH:m'));
+      const now = moment(moment().format('2000-01-01THH:mm'));
       const isToday = time.diff(now) > 0;
 
       return isToday

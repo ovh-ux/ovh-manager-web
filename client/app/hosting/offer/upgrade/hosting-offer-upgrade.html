@@ -39,6 +39,12 @@
                         <span data-ng-bind="$item.name"></span>
                     </oui-select>
                 </oui-field>
+                <oui-message
+                  data-type="info"
+                  data-dismissable="false"
+                  data-ng-if="$ctrl.hosting.isCloudWeb">
+                    <span data-translate="hosting_order_upgrade_select_noduration_cloudweb_explanation"></span>
+                </oui-message>
                 <oui-field data-ng-if="$ctrl.model.offer && $ctrl.model.offer.value === 'KS'"
                            data-label="{{:: 'hosting_dashboard_service_offer_downgrade_KIMSUFI_2015' | translate }}">
                     <oui-checkbox
@@ -96,7 +102,7 @@
                             <th class="font-weight-normal" scope="row"
                                 data-ng-bind="detail.description"></th>
                             <td class="text-nowrap text-right">
-                                <strong data-ng-bind="$ctrl.formatPrice(detail.totalPrice)"></strong>
+                                <strong data-ng-bind-html="$ctrl.formatPrice(detail.totalPrice)"></strong>
                             </td>
                         </tr>
                     </tbody>
