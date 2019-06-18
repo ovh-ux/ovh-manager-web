@@ -1,3 +1,12 @@
+# [13.24.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.23.0...v13.24.0) (2019-06-18)
+
+
+### Features
+
+* add new server-sidebar component ([#1092](https://github.com/ovh-ux/ovh-manager-web/issues/1092)) ([ba6ef66](https://github.com/ovh-ux/ovh-manager-web/commit/ba6ef66))
+
+
+
 # [13.23.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.16...v13.23.0) (2019-06-17)
 
 
