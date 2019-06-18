@@ -1,4 +1,4 @@
-class SessionService {
+class UserSessionService {
   constructor(
     $translate,
   ) {
@@ -18,4 +18,4 @@ class SessionService {
 }
 
 angular.module('services')
-  .service('SessionService', SessionService);
+  .service('UserSessionService', UserSessionService);

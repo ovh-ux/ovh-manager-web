@@ -12,20 +12,20 @@
             <!-- Skip to main content -->
             <div class="skipnav">
                 <a class="oui-button oui-button_link" href=""
-                    data-ng-bind="::i18n.common_skip_to_main_content"
-                    data-ng-click="scrollTo('maincontent')">
+                   data-ng-bind="::i18n.common_skip_to_main_content"
+                   data-ng-click="scrollTo('maincontent')">
                 </a>
             </div>
             <!-- /Skip to main content -->
             <div>
                 <ovh-manager-navbar
                     data-navbar-options="{
-                        toggle: {
-                            event: 'sidebar:loaded'
-                        },
-                        universe: 'web',
+                      toggle: {
+                        event: 'sidebar:loaded'
+                      },
+                      universe: 'web',
                     }"
-                    data-sidebar-links="$ctrl.responsiveLinks">
+                    data-universe-click="$ctrl.openSidebar()">
                 </ovh-manager-navbar>
             </div>
             <button type="button" class="visible-xs visible-sm"
@@ -33,29 +33,35 @@
                     onclick="$('#sidebar-menu').toggleClass('displayFallbackMenu')"
                     style="position: absolute; height: 44px; width: 50px; display: block; background-color: transparent; z-index: 9999; top: 0; left: 0; border: 0;">
             </button>
-            <div class="container-fluid h-100 w-100" style="overflow: auto">
+            <div class="container-fluid h-100 w-100" style="overflow: auto" data-ui-view="app">
                 <div class="row">
-                    <div data-sidebar-menu class="col-md-3 col-lg-2"></div>
-                    <div class="col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2 px-0">
-                        <div class="mainContainer pb-5">
+                    <ovh-manager-server-sidebar
+                        universe="'WEB'"
+                        data-is-open="$ctrl.sidebarIsOpen"
+                        class="col-md-3 col-lg-2 px-0"
+                        data-on-click="$ctrl.closeSidebar()">
+                    </ovh-manager-server-sidebar>
 
-                            <!-- Skip content target -->
-                            <div class="skiptarget">
-                                <a id="maincontent" href="">-</a>
-                            </div>
-                            <!-- /Skip content target -->
-                            <ovh-chatbot></ovh-chatbot>
-                            <div data-ui-view></div>
+                    <div class="col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2 px-0">
+
+                        <!-- Skip content target -->
+                        <div class="skiptarget">
+                            <a id="maincontent" href="">-</a>
                         </div>
+
+                        <!-- /Skip content target -->
+                        <ovh-chatbot></ovh-chatbot>
+                        <div data-ui-view class="pb-5"></div>
+
                     </div>
                 </div>
             </div>
         </div>
 
         <div id="managerPreload" class="d-flex text-center"
-            data-ng-class="{
-                ' manager-preload-hide': $ctrl.isNavbarLoaded
-            }">
+             data-ng-class="{
+                 ' manager-preload-hide': $ctrl.isNavbarLoaded
+                 }">
             <div class="m-auto">
                 <p class="lead mb-3" data-translate="preload_welcome"></p>
                 <hr class="my-0" />
@@ -78,7 +84,7 @@
 
         <div data-otrs-popup></div>
         <script>
-            var CKEDITOR_BASEPATH = (window.location.pathname !== "/" ? window.location.pathname.split("/").splice(0, window.location.pathname.split("/").length - 1).join("/") : "") + '/ckeditor/';
+         var CKEDITOR_BASEPATH = (window.location.pathname !== "/" ? window.location.pathname.split("/").splice(0, window.location.pathname.split("/").length - 1).join("/") : "") + '/ckeditor/';
         </script>
         <script src="ckeditor/ckeditor.js"></script>
     </body>
