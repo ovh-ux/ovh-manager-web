@@ -8,15 +8,15 @@ angular.module('App').controller(
      * @param $translate
      * @param Alerter
      * @param WucEmails
-     * @param SessionService
+     * @param UserSessionService
      */
-    constructor($scope, $stateParams, $translate, Alerter, WucEmails, SessionService) {
+    constructor($scope, $stateParams, $translate, Alerter, WucEmails, UserSessionService) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
       this.WucEmails = WucEmails;
-      this.SessionService = SessionService;
+      this.SessionService = UserSessionService;
     }
 
     $onInit() {
