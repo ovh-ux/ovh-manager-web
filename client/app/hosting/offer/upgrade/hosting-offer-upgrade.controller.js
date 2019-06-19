@@ -2,7 +2,7 @@ angular.module('App').controller(
   'HostingUpgradeOfferCtrl',
   class HostingUpgradeOfferCtrl {
     constructor($scope, $rootScope, $state, $stateParams, $translate, $window,
-      Alerter, atInternet, Hosting, User) {
+      Alerter, APITranslator, atInternet, Hosting, User) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$state = $state;
@@ -10,6 +10,7 @@ angular.module('App').controller(
       this.$translate = $translate;
       this.$window = $window;
       this.Alerter = Alerter;
+      this.APITranslator = APITranslator;
       this.atInternet = atInternet;
       this.Hosting = Hosting;
       this.User = User;
@@ -73,7 +74,12 @@ angular.module('App').controller(
           }
         })
         .catch((err) => {
-          this.Alerter.alertFromSWS(this.$translate.instant('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(
+            this.$translate.instant('hosting_order_upgrade_error'),
+            this.APITranslator.translate(err),
+            this.$scope.alerts.page,
+          );
+          this.$state.go('^');
         })
         .finally(() => {
           this.loading.durations = false;
@@ -114,7 +120,7 @@ angular.module('App').controller(
           this.model.duration.duration,
           (this.hosting.isCloudWeb ? startTime : null),
         ).then((order) => {
-          this.Alerter.success(this.$translate.instant('hosting_order_upgrade_success', { t0: order.url, t1: order.orderId }), this.$scope.alerts.main);
+          this.Alerter.success(this.$translate.instant('hosting_order_upgrade_success', { t0: order.url, t1: order.orderId }), this.$scope.alerts.page);
           this.atInternet.trackOrder({
             name: `[hosting]::${this.model.offer.value}[${this.model.offer.value}]`,
             page: 'web::payment-pending',
@@ -125,7 +131,7 @@ angular.module('App').controller(
           });
           win.location = order.url;
         }).catch((err) => {
-          this.Alerter.alertFromSWS(this.$translate.instant('hosting_order_upgrade_error'), err, this.$scope.alerts.main);
+          this.Alerter.alertFromSWS(this.$translate.instant('hosting_order_upgrade_error'), err, this.$scope.alerts.page);
           win.close();
         }).finally(() => {
           this.loading.validation = false;

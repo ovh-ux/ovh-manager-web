@@ -445,6 +445,7 @@ angular
     partners: 'https://www.ovh.com/manager/partners/',
     labs: 'https://www.ovh.com/manager/sunrise/uxlabs/#!/',
   })
+  .run(/* @ngTranslationsInject:json ./common/translations */)
   .run((
     $rootScope,
     $transitions,
