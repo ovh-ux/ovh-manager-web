@@ -1,3 +1,12 @@
+## [13.24.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.24.1...v13.24.2) (2019-06-19)
+
+
+### Bug Fixes
+
+* **deps:** upgrade manager-server-sidebar to v0.2.2 ([#1123](https://github.com/ovh-ux/ovh-manager-web/issues/1123)) ([95e4c80](https://github.com/ovh-ux/ovh-manager-web/commit/95e4c80))
+
+
+
 ## [13.24.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.24.0...v13.24.1) (2019-06-19)
 
 
