@@ -1,3 +1,13 @@
+## [13.24.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.24.0...v13.24.1) (2019-06-19)
+
+
+### Bug Fixes
+
+* **deps:** upgrade manager-server-sidebar to v0.2.1 ([#1119](https://github.com/ovh-ux/ovh-manager-web/issues/1119)) ([a8cfcbb](https://github.com/ovh-ux/ovh-manager-web/commit/a8cfcbb))
+* **deps:** upgrade ovh-module-emailpro to v7.2.7 ([#1117](https://github.com/ovh-ux/ovh-manager-web/issues/1117)) ([0993e9b](https://github.com/ovh-ux/ovh-manager-web/commit/0993e9b))
+
+
+
 # [13.24.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.23.0...v13.24.0) (2019-06-18)
 
 
