@@ -47,7 +47,7 @@ angular.module('App').controller(
       if (
         this.entryToCreate
         && this.entryToCreate.type
-        && this.entryToCreate.type.indexOf('nodejs') !== -1
+        && this.entryToCreate.type.indexOf('phpfpm') === -1
       ) {
         return (
           this.entryToCreate

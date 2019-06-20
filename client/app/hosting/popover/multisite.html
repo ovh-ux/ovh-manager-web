@@ -1,7 +1,7 @@
 <div class="popover-menu">
     <oui-button data-variant="link" class="d-block"
             data-on-click="modifyDomain(domain)"
-            data-disabled="domain.status === status.UPDATING"
+            data-disabled="domain.status !== status.CREATED"
             data-ng-if="excludeAttachedDomains.indexOf(domain.displayName) === -1">
             <span data-translate="hosting_tab_DOMAINS_table_popover_modify"></span>
     </oui-button>
@@ -20,13 +20,13 @@
     </div>
     <oui-button data-variant="link" class="d-block"
             data-on-click="detachDomain(domain)"
-            data-disabled="domain.status === status.UPDATING"
+            data-disabled="domain.status !== status.CREATED"
             data-ng-if="excludeAttachedDomains.indexOf(domain.displayName) === -1">
             <span data-translate="hosting_tab_DOMAINS_table_popover_delete"></span>
     </oui-button>
     <oui-button data-variant="link" class="d-block"
                 data-ng-if="hosting.isCloudWeb"
-                data-disabled="domain.status === status.UPDATING || domain.runtime.type.indexOf(runtimeNode) < 0"
+                data-disabled="domain.status !== status.CREATED"
                 data-on-click="restartDomain(domain)">
                 <span data-translate="hosting_tab_DOMAINS_table_popover_restart"></span>
     </oui-button>

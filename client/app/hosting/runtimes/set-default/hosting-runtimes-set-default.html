@@ -14,7 +14,7 @@
                 <dt data-translate="hosting_tab_RUNTIMES_table_header_language"></dt>
                 <dd data-ng-bind="ctrl.entryToSetup.type"></dd>
 
-                <div data-ng-if="ctrl.entryToSetup.type.indexOf('nodejs') !== -1">
+                <div data-ng-if="ctrl.entryToSetup.type.indexOf('phpfpm') === -1">
                     <dt data-translate="hosting_tab_RUNTIMES_table_header_publicDir"></dt>
                     <dd data-ng-bind="ctrl.entryToSetup.publicDir"></dd>
 

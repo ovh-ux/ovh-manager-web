@@ -44,7 +44,7 @@ angular.module('App').controller(
       if (
         this.entryToEdit
         && this.entryToEdit.type
-        && this.entryToEdit.type.indexOf('nodejs') !== -1
+        && this.entryToEdit.type.indexOf('phpfpm') === -1
       ) {
         return (
           this.entryToEdit
