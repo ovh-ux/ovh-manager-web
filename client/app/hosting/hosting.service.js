@@ -122,6 +122,15 @@
       }
 
       /**
+             * Is hosting cloudweb offer
+             * @param {string} offer
+             * @returns {boolean}
+             */
+      static isCloudWebOffer(offer) {
+        return _(offer).includes('CLOUD');
+      }
+
+      /**
              * Is password valid
              * @param {string} password
              * @param {{min: number, max: number}|null} customConditions
