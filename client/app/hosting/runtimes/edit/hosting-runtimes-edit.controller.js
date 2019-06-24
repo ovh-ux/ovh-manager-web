@@ -1,13 +1,15 @@
 angular.module('App').controller(
   'controllers.Hosting.Runtimes.edit',
   class HostingRuntimesEditCtrl {
-    constructor($scope, $stateParams, $translate, Alerter, HostingRuntimes) {
+    constructor($scope, $stateParams, $translate, Alerter, HostingRuntimes, HOSTING_RUNTIME) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.HostingRuntimes = HostingRuntimes;
+
+      this.HOSTING_RUNTIME = HOSTING_RUNTIME;
     }
 
     $onInit() {
@@ -42,9 +44,8 @@ angular.module('App').controller(
 
     isValid() {
       if (
-        this.entryToEdit
-        && this.entryToEdit.type
-        && this.entryToEdit.type.indexOf('nodejs') !== -1
+        _.has(this, 'entryToEdit.type')
+        && !this.entryToEdit.type.includes(this.HOSTING_RUNTIME.PHP)
       ) {
         return (
           this.entryToEdit

@@ -14,7 +14,7 @@
                 <dt data-translate="hosting_tab_RUNTIMES_table_header_language"></dt>
                 <dd data-ng-bind="ctrl.entryToDelete.type"></dd>
 
-                <div data-ng-if="ctrl.entryToDelete.type.indexOf('nodejs') !== -1">
+                <div data-ng-if="!ctrl.entryToDelete.type.includes(ctrl.HOSTING_RUNTIME.PHP)">
                     <dt data-translate="hosting_tab_RUNTIMES_table_header_publicDir"></dt>
                     <dd data-ng-bind="ctrl.entryToDelete.publicDir"></dd>
 

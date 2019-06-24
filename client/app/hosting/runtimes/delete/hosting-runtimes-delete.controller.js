@@ -1,13 +1,15 @@
 angular.module('App').controller(
   'controllers.Hosting.Runtimes.delete',
   class HostingRuntimesDeleteCtrl {
-    constructor($scope, $stateParams, $translate, Alerter, HostingRuntimes) {
+    constructor($scope, $stateParams, $translate, Alerter, HostingRuntimes, HOSTING_RUNTIME) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.HostingRuntimes = HostingRuntimes;
+
+      this.HOSTING_RUNTIME = HOSTING_RUNTIME;
     }
 
     $onInit() {

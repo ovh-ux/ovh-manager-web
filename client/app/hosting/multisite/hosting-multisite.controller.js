@@ -11,6 +11,7 @@ angular
       $translate,
       Hosting,
       HOSTING,
+      HOSTING_STATUS,
       HostingDomain,
       hostingSSLCertificate,
       hostingSSLCertificateType,
@@ -19,6 +20,7 @@ angular
       $scope.domains = null;
       $scope.sslLinked = [];
       $scope.HOSTING = HOSTING;
+      $scope.HOSTING_STATUS = HOSTING_STATUS;
       $scope.showGuidesStatus = false;
       $scope.search = {
         text: null,
@@ -27,13 +29,6 @@ angular
       $scope.loading = {
         domains: false,
         init: true,
-      };
-      $scope.runtimeNode = 'nodejs';
-      $scope.status = {
-        REGENERATING: 'regenerating',
-        UPDATING: 'updating',
-        CREATING: 'creating',
-        DELETING: 'deleting',
         regeneratingSsl: false,
       };
 
@@ -59,7 +54,7 @@ angular
             $scope.domains = domains;
             $scope.hasResult = !_($scope.domains).isEmpty();
             $scope.domains.list.results.forEach((domain) => {
-              if (domain.status === $scope.status.UPDATING) {
+              if (domain.status === HOSTING_STATUS.UPDATING) {
                 HostingDomain.pollRestartDomain($stateParams.productId, domain.name);
               }
             });
@@ -110,7 +105,7 @@ angular
           })
           .then(() => hostingSSLCertificate.retrievingCertificate($stateParams.productId))
           .then((certificate) => {
-            if (certificate.status === $scope.status.REGENERATING) {
+            if (certificate.status === HOSTING_STATUS.REGENERATING) {
               HostingDomain.pollSslTask($scope.hosting.serviceName);
             }
             $scope.sslCertificate = certificate;
@@ -142,9 +137,9 @@ angular
       );
 
       $scope.isSSLCertificateOperationInProgress = sslCertificate => (
-        sslCertificate.status === $scope.status.DELETING
-        || sslCertificate.status === $scope.status.REGENERATING
-        || sslCertificate.status === $scope.status.CREATING);
+        sslCertificate.status === HOSTING_STATUS.DELETING
+        || sslCertificate.status === HOSTING_STATUS.REGENERATING
+        || sslCertificate.status === HOSTING_STATUS.CREATING);
 
       $scope.modifyDomain = (domain) => {
         $scope.setAction('multisite/update/hosting-multisite-update', domain);
@@ -160,7 +155,7 @@ angular
         );
         _.assign(
           _.find($scope.domains.list.results, { name: domain.name }),
-          { status: $scope.status.UPDATING },
+          { status: HOSTING_STATUS.UPDATING },
         );
         return HostingDomain.pollRestartDomain($stateParams.productId, domain.name);
       }).catch((err) => {
@@ -295,7 +290,7 @@ angular
 
       // regenerate ssl
       $scope.$on('hostingDomain.regenerateSsl.start', () => {
-        $scope.status.regeneratingSsl = true;
+        $scope.loading.regeneratingSsl = true;
         Alerter.success(
           $translate.instant('hosting_tab_DOMAINS_multisite_generate_ssl_start'),
           $scope.alerts.main,
@@ -303,7 +298,7 @@ angular
       });
 
       $scope.$on('hostingDomain.regenerateSsl.done', () => {
-        $scope.status.regeneratingSsl = false;
+        $scope.loading.regeneratingSsl = false;
         $rootScope.$broadcast('hosting.ssl.reload');
         Alerter.success(
           $translate.instant('hosting_tab_DOMAINS_multisite_generate_ssl_done'),
@@ -312,7 +307,7 @@ angular
       });
 
       $scope.$on('hostingDomain.regenerateSsl.error', (event, err) => {
-        $scope.status.regeneratingSsl = false;
+        $scope.loading.regeneratingSsl = false;
         $rootScope.$broadcast('hosting.ssl.reload');
         Alerter.alertFromSWS(
           $translate.instant('hosting_tab_DOMAINS_multisite_generate_ssl_error'),
@@ -324,7 +319,7 @@ angular
       $scope.$on('hosting.ssl.reload', () => {
         hostingSSLCertificate.retrievingCertificate($stateParams.productId)
           .then((certificate) => {
-            if (certificate.status === $scope.status.REGENERATING) {
+            if (certificate.status === HOSTING_STATUS.REGENERATING) {
               HostingDomain.pollSslTask($scope.hosting.serviceName);
             }
             $scope.sslCertificate = certificate;
