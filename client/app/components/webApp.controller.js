@@ -23,11 +23,6 @@ export default class WebAppCtrl {
       document.title = this.$translate.instant('global_app_title');
     });
 
-    // FIX for /me/alerts
-    this.$scope.$on('Navigator.navigationInformationsChange', (e, data) => {
-      this.$scope.isLeftMenuVisible = data && data.leftMenuVisible;
-    });
-
     this.$scope.$on('navbar.loaded', () => {
       this.isNavbarLoaded = true;
     });
@@ -40,14 +35,14 @@ export default class WebAppCtrl {
         this.$document[0].getElementById(id).focus();
       }
     };
+  }
 
-    this.webNavbar.getResponsiveLinks()
-      .then((links) => {
-        this.responsiveLinks = links;
-      })
-      .finally(() => {
-        this.$timeout(() => this.$scope.$broadcast('sidebar:loaded'));
-      });
+  openSidebar() {
+    this.sidebarIsOpen = true;
+  }
+
+  closeSidebar() {
+    this.sidebarIsOpen = false;
   }
 }
 

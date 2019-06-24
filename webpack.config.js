@@ -83,9 +83,8 @@ module.exports = (env = {}) => {
         './client/app/app.js',
         './client/app/app.routes.js',
         './client/app/app.controller.js',
-      ],
-      modules: glob.sync('./client/app/**/*.module.js'),
-      components: glob.sync('./client/app/components/**/!(*.module).js'),
+      ].concat(glob.sync('./client/app/**/*.module.js'))
+        .concat(glob.sync('./client/app/components/**/!(*.module).js')),
     }, bundles, extras.length > 0 ? { extras } : {}),
     output: {
       path: path.resolve(__dirname, 'dist'),

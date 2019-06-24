@@ -4,7 +4,6 @@ angular.module('App').controller(
     /**
      * Constructor
      * @param $scope
-     * @param $q
      * @param $stateParams
      * @param $timeout
      * @param Alerter
@@ -14,7 +13,6 @@ angular.module('App').controller(
      */
     constructor(
       $scope,
-      $q,
       $stateParams,
       $timeout,
       $translate,
@@ -24,7 +22,6 @@ angular.module('App').controller(
       currentSection,
     ) {
       this.$scope = $scope;
-      this.$q = $q;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
       this.$translate = $translate;
@@ -71,21 +68,18 @@ angular.module('App').controller(
 
     loadDomain() {
       this.loading.domainsInfos = true;
-
-      this.$q
-        .all({
-          product: this.WucProducts.getSelectedProduct(true),
-          tabZone: this.Domain.getTabZoneDns(this.$stateParams.productId, 1),
-        })
-        .then(({ product, tabZone }) => {
+      this.Domain.getTabZoneDns(this.$stateParams.productId, 1)
+        .then((tabZone) => {
           if (tabZone) {
             this.hasZoneDns = true;
           }
 
-          this.domain = product;
+          this.domain = {
+            name: this.$stateParams.productId,
+            displayName: this.$stateParams.productId,
+          };
 
           return this.Domain.getZoneByZoneName(this.domain.name).then((zoneInfos) => {
-            this.domain.displayName = this.domain.displayName || this.domain.name;
             this.domain.nameServers = zoneInfos.nameServers;
             return this.domain;
           });

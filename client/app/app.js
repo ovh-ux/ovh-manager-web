@@ -14,8 +14,8 @@ import ngOvhWebUniverseComponents from '@ovh-ux/ng-ovh-web-universe-components';
 import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
 import ovhManagerNavbar from '@ovh-ux/manager-navbar';
 import uiRouter from '@uirouter/angularjs';
-// import ngOvhSidebarMenu from '@ovh-ux/ng-ovh-sidebar-menu';
 import ngOvhOtrs from '@ovh-ux/ng-ovh-otrs';
+import ovhManagerServerSidebar from '@ovh-ux/manager-server-sidebar';
 import domainEmailObfuscation from './domain/email-obfuscation/index';
 import domainOptin from './domain/optin/index';
 import config from './config/config';
@@ -56,9 +56,8 @@ angular
     ngOvhUserPref,
     ngOvhWebUniverseComponents,
     ngTranslateAsyncLoader,
+    ovhManagerServerSidebar,
     uiRouter,
-    // ngOvhSidebarMenu,
-    'ovh-angular-sidebar-menu',
     'pascalprecht.translate',
     'ovh-angular-responsive-tabs',
     'ovh-angular-tail-logs',
@@ -450,6 +449,7 @@ angular
     $rootScope,
     $transitions,
     $translate,
+    ouiClipboardConfiguration,
     ouiCriteriaAdderConfiguration,
     ouiDatagridConfiguration,
     ouiFieldConfiguration,
@@ -458,6 +458,12 @@ angular
     ouiStepperConfiguration,
   ) => {
     const removeHook = $transitions.onSuccess({}, () => {
+      _.set(ouiClipboardConfiguration, 'translations', {
+        copyToClipboardLabel: $translate.instant('common_clipboard_copy_to_clipboard'),
+        copiedLabel: $translate.instant('common_clipboard_copied'),
+        notSupported: $translate.instant('common_clipboard_not_supported'),
+      });
+
       _.set(ouiCriteriaAdderConfiguration, 'translations', {
         column_label: $translate.instant('common_criteria_adder_column_label'),
         operator_label: $translate.instant('common_criteria_adder_operator_label'),

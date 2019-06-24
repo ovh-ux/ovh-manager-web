@@ -1,3 +1,44 @@
+## [13.24.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.24.1...v13.24.2) (2019-06-19)
+
+
+### Bug Fixes
+
+* **deps:** upgrade manager-server-sidebar to v0.2.2 ([#1123](https://github.com/ovh-ux/ovh-manager-web/issues/1123)) ([95e4c80](https://github.com/ovh-ux/ovh-manager-web/commit/95e4c80))
+
+
+
+## [13.24.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.24.0...v13.24.1) (2019-06-19)
+
+
+### Bug Fixes
+
+* **deps:** upgrade manager-server-sidebar to v0.2.1 ([#1119](https://github.com/ovh-ux/ovh-manager-web/issues/1119)) ([a8cfcbb](https://github.com/ovh-ux/ovh-manager-web/commit/a8cfcbb))
+* **deps:** upgrade ovh-module-emailpro to v7.2.7 ([#1117](https://github.com/ovh-ux/ovh-manager-web/issues/1117)) ([0993e9b](https://github.com/ovh-ux/ovh-manager-web/commit/0993e9b))
+
+
+
+# [13.24.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.23.0...v13.24.0) (2019-06-18)
+
+
+### Features
+
+* add new server-sidebar component ([#1092](https://github.com/ovh-ux/ovh-manager-web/issues/1092)) ([ba6ef66](https://github.com/ovh-ux/ovh-manager-web/commit/ba6ef66))
+
+
+
+# [13.23.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.16...v13.23.0) (2019-06-17)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-ovh-otrs to v7.1.4 ([#1106](https://github.com/ovh-ux/ovh-manager-web/issues/1106)) ([28f58b8](https://github.com/ovh-ux/ovh-manager-web/commit/28f58b8))
+* **deps:** upgrade ovh-module-emailpro to v7.2.6 ([#1110](https://github.com/ovh-ux/ovh-manager-web/issues/1110)) ([6715460](https://github.com/ovh-ux/ovh-manager-web/commit/6715460))
+* **domain.option:** send only modification in payload ([#1108](https://github.com/ovh-ux/ovh-manager-web/issues/1108)) ([aaf52ff](https://github.com/ovh-ux/ovh-manager-web/commit/aaf52ff))
+* **hosting:** add translations for cloudweb upgrade ([#1107](https://github.com/ovh-ux/ovh-manager-web/issues/1107)) ([3dd67e5](https://github.com/ovh-ux/ovh-manager-web/commit/3dd67e5))
+* **hosting:** update translation related to ssl certificate ([#1105](https://github.com/ovh-ux/ovh-manager-web/issues/1105)) ([ea6be58](https://github.com/ovh-ux/ovh-manager-web/commit/ea6be58))
+
+
+
 ## [13.22.16](https://github.com/ovh-ux/ovh-manager-web/compare/v13.22.15...v13.22.16) (2019-06-12)
 
 
