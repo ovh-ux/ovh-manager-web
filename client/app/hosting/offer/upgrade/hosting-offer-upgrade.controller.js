@@ -87,9 +87,8 @@ angular.module('App').controller(
     }
 
     formatTime(startTime) {
-      // trick ahead: we want to compare times only, so we use the same day
-      const time = moment(`2000-01-01T${startTime}`);
-      const now = moment(moment().format('2000-01-01THH:mm'));
+      const now = moment();
+      const time = moment(startTime, 'HH:mm:ss');
       const isToday = time.diff(now) > 0;
 
       return this.$translate.instant(
@@ -101,7 +100,9 @@ angular.module('App').controller(
     }
 
     formatPrice(price) {
-      return price.value === 0 ? this.$translate.instant('price_free') : this.$translate.instant('price_ht_label', { price: price.text });
+      return price.value === 0
+        ? this.$translate.instant('price_free')
+        : this.$translate.instant('price_ht_label', { price: price.text });
     }
 
     orderUpgrade() {
@@ -111,7 +112,7 @@ angular.module('App').controller(
       win.referrer = null;
       win.opener = null;
 
-      const startTime = moment(`T${this.model.startTime}`).utc().format('HH:mm:ss');
+      const startTime = moment(this.model.startTime, 'HH:mm:ss').utc().format('HH:mm:ss');
 
       return this.Hosting
         .orderUpgrade(
