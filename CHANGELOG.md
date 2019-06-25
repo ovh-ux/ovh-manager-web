@@ -1,3 +1,17 @@
+## [13.24.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.24.2...v13.24.3) (2019-06-25)
+
+
+### Bug Fixes
+
+* **core:** add missing clipboard component translations ([#1131](https://github.com/ovh-ux/ovh-manager-web/issues/1131)) ([27424e5](https://github.com/ovh-ux/ovh-manager-web/commit/27424e5))
+* **deps:** upgrade some dependencies ([#1132](https://github.com/ovh-ux/ovh-manager-web/issues/1132)) ([37273c8](https://github.com/ovh-ux/ovh-manager-web/commit/37273c8))
+* **deps:** upgrade some dependencies ([#1134](https://github.com/ovh-ux/ovh-manager-web/issues/1134)) ([4c83bc1](https://github.com/ovh-ux/ovh-manager-web/commit/4c83bc1))
+* **hosting:** add missing translations ([#1129](https://github.com/ovh-ux/ovh-manager-web/issues/1129)) ([615dd3c](https://github.com/ovh-ux/ovh-manager-web/commit/615dd3c))
+* **i18n:** add missing translations ([7bda781](https://github.com/ovh-ux/ovh-manager-web/commit/7bda781))
+* **i18n:** add missing translations ([a44321c](https://github.com/ovh-ux/ovh-manager-web/commit/a44321c))
+
+
+
 ## [13.24.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.24.1...v13.24.2) (2019-06-19)
 
 
