@@ -1,4 +1,4 @@
-<div class="container-fluid px-0" data-ng-controller="HostingTabCronsCtrl">
+<div class="container-fluid px-0" data-ng-controller="HostingCronsCtrl as $ctrl">
     <div class="row">
         <div class="col-md-9">
             <div data-ovh-alert="{{alerts.main}}"></div>
@@ -27,133 +27,67 @@
             <div data-ng-if="displayTabs.cron && hosting.offer !== 'START_10_M'">
                 <h2 data-translate="hosting_tab_menu_crons"></h2>
 
-                <div class="mb-4" data-ng-if="guide">
+                <div class="mb-4" data-ng-if="$ctrl.guide">
                     <span class="fa fa-life-ring mr-2" aria-hidden="true"></span>
                     <span data-translate="hosting_tab_CRON_guide_help"></span>
-                    <a data-ng-href="{{guide}}" target="_blank" title="{{hosting_guide_help}} {{ 'common_newtab' | translate }}">
+                    <a data-ng-href="{{:: $ctrl.guide}}" target="_blank" title="{{hosting_guide_help}} {{ 'common_newtab' | translate }}">
                         <span data-translate="hosting_guide_help"></span>
                         <span class="fa fa-external-link" aria-hidden="true"></span>
                     </a>
                 </div>
 
-                <div class="text-center"
-                     data-ng-if="loading.init">
-                    <oui-spinner></oui-spinner>
-                </div>
-
-                <div class="alert alert-info" role="alert"
-                     data-translate="hosting_tab_CRON_table_empty"
-                     data-ng-if="!loading.init && !hasResult">
-                </div>
-
-                <div data-ng-if="!loading.init && hasResult">
-                    <div class="mb-3">
-                        <form class="form-inline d-md-flex justify-content-md-end" name="searchCronForm">
-                            <div class="form-group">
-                                <label class="sr-only" for="searchCron"
-                                       data-translate="common_search"></label>
-                                <div class="input-group">
-                                    <input type="text" class="form-control" id="searchCron" name="searchCron" placeholder="{{:: 'hosting_tab_DOMAINS_search_placeholder' | translate }}"
-                                           data-ng-model="search.text"
-                                           data-ng-model-options="{ debounce: 800 }">
-                                    <div class="input-group-btn" data-ng-if="search.text">
-                                        <button class="btn btn-default" type="button" aria-label="{{ 'common_cancel' | translate }}"
-                                                data-ng-click="search.text = ''">
-                                            <span class="fa fa-times" aria-hidden="true"></span>
-                                        </button>
-                                    </div>
-                                    <span class="input-group-addon"
-                                          data-ng-if="!search.text">
-                                    <span class="fa fa-search" aria-hidden="true"></span>
-                                </span>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th scope="col" data-translate="hosting_tab_CRON_table_header_command"></th>
-                                    <th scope="col" data-translate="hosting_tab_CRON_table_header_description"></th>
-                                    <th scope="col" data-translate="hosting_tab_CRON_table_header_frequency"></th>
-                                    <th scope="col" data-translate="hosting_tab_CRON_table_header_language"></th>
-                                    <th scope="col" data-translate="hosting_tab_CRON_table_header_status"></th>
-                                    <th scope="col" data-translate="hosting_tab_CRON_table_header_email"></th>
-                                    <th class="min-width text-right" scope="col">
-                                        <button class="btn btn-icon" type="button" title="{{ 'refresh' | translate }}"
-                                                data-ng-click="loadCrons()"
-                                                data-ng-disabled="loading.cron">
-                                            <span class="fa fa-refresh" aria-hidden="true"></span>
-                                        </button>
-                                    </th>
-                                </tr>
-                            </thead>
-
-                            <tbody data-ng-if="loading.cron">
-                                <tr>
-                                    <td class="text-center" colspan="7">
-                                        <oui-spinner></oui-spinner>
-                                    </td>
-                                </tr>
-                            </tbody>
-
-                            <tbody data-ng-if="!loading.cron && !crons.ids.length">
-                                <tr>
-                                    <td class="text-center" colspan="7" data-translate="hosting_tab_CRON_table_empty"></td>
-                                </tr>
-                            </tbody>
-
-                            <tbody data-ng-if="!loading.cron && crons.ids.length > 0">
-                                <tr data-ng-repeat="cron in crons.details track by $index">
-                                    <th class="word-break" scope="row" data-ng-bind="cron.command"></th>
-                                    <td class="word-break" data-ng-bind="cron.description"></td>
-                                    <td class="text-nowrap" data-ng-bind="cron.frequency"></td>
-                                    <td data-ng-bind="'hosting_tab_CRON_table_language_' + trEnum(cron.language) | translate"></td>
-                                    <td>
-                                        <span class="oui-status"
-                                              data-ng-bind="'hosting_tab_CRON_table_status_' + trEnum(cron.status) | translate"
-                                              data-ng-class="{
-                                                  'oui-status_success': cron.status === 'enabled',
-                                                  'oui-status_error': cron.status === 'disabled',
-                                                  'oui-status_warning': cron.status === 'suspended'
-                                              }"></span>
-                                    </td>
-                                    <td class="text-nowrap" data-ng-bind="cron.email"></td>
-                                    <td class="text-nowrap">
-                                        <oui-action-menu data-compact data-align="end">
-                                            <oui-action-menu-item data-on-click="modifyCron(cron)">
-                                                <span data-translate="hosting_tab_CRON_edit_task"></span>
-                                            </oui-action-menu-item>
-                                            <oui-action-menu-item data-on-click="deleteCron(cron)">
-                                                <span data-translate="hosting_tab_CRON_delete_task"></span>
-                                            </oui-action-menu-item>
-                                        </oui-action-menu>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <div class="clearfix"
-                     data-ng-if="crons.ids">
-                    <div data-pagination-front
-                         data-items="crons.ids"
-                         data-paginated-items="crons.details"
-                         data-current-page="currentPage"
-                         data-nb-pages="nbPages"
-                         data-refresh="loadCrons"
-                         data-items-per-page="itemsPerPage"
-                         data-transform-item="transformItem(item)"
-                         data-on-transform-item-done="onTransformItemDone(items)"
-                         data-page-placeholder="{{ 'pagination_page' | translate: { current: currentPage, last: nbPages} }}"
-                         data-item-per-page-placeholder="{{ 'pagination_display' | translate }}"
-                         data-on-page-change="loading.cron = true"
-                         data-ng-show="!loading.init && hasResult">
-                    </div>
-                </div>
+                <oui-datagrid
+                    data-rows-loader="$ctrl.getCrons($config)"
+                    data-row-loader="$ctrl.getCron($row)"
+                    data-empty-placeholder="{{:: 'hosting_tab_CRON_table_empty' | translate }}">
+                    <oui-column
+                        data-title=":: 'hosting_tab_CRON_table_header_command' | translate"
+                        data-property="command"
+                        data-type="string"
+                        data-searchable>
+                    </oui-column>
+                    <oui-column
+                        data-title=":: 'hosting_tab_CRON_table_header_description' | translate"
+                        data-property="description"
+                        data-type="string"
+                        data-searchable>
+                    </oui-column>
+                    <oui-column
+                        data-title=":: 'hosting_tab_CRON_table_header_frequency' | translate"
+                        data-property="frequency">
+                    </oui-column>
+                    <oui-column
+                        data-title=":: 'hosting_tab_CRON_table_header_language' | translate"
+                        data-property="displayedLanguage">
+                    </oui-column>
+                    <oui-column
+                        data-title=":: 'hosting_tab_CRON_table_header_status' | translate"
+                        data-property="status">
+                        <span
+                            class="oui-status"
+                            data-ng-class="{
+                                'oui-status_success': $row.status === 'enabled',
+                                'oui-status_error': $row.status === 'disabled',
+                                'oui-status_warning': $row.status === 'suspended'
+                            }"
+                            data-ng-bind=":: 'hosting_tab_CRON_table_status_' + $row.status | translate">
+                        </span>
+                    </oui-column>
+                    <oui-column
+                        data-title=":: 'hosting_tab_CRON_table_header_email' | translate"
+                        data-property="email"
+                        data-type="string"
+                        data-searchable>
+                    </oui-column>
+                    <oui-action-menu data-compact data-align="end">
+                        <oui-action-menu-item data-on-click="$ctrl.modifyCron($row)">
+                            <span data-translate="hosting_tab_CRON_edit_task"></span>
+                        </oui-action-menu-item>
+                        <oui-action-menu-item data-on-click="$ctrl.deleteCron($row)">
+                            <span data-translate="hosting_tab_CRON_delete_task"></span>
+                        </oui-action-menu-item>
+                    </oui-action-menu>
+                </oui-datagrid>
             </div>
         </div>
 
