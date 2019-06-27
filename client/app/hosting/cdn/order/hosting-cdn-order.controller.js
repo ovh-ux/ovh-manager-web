@@ -30,7 +30,7 @@ angular
           }
           $scope.loading.model = true;
           HostingOptionOrder.getOrderEnums('hosting.web.CdnOfferEnum').then((models) => {
-            if (!$scope.isPerfOffer()) {
+            if (!$scope.isPerfOffer() && !$scope.hosting.isCloudWeb) {
               $scope.availableOffers = models.filter(offer => offer !== 'CDN_BUSINESS_FREE');
             } else {
               $scope.availableOffers = ['CDN_BUSINESS_FREE'];
