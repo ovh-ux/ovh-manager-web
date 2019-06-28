@@ -1,3 +1,7 @@
+## [13.24.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.24.4...v13.24.5) (2019-06-28)
+
+
+
 ## [13.24.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.24.3...v13.24.4) (2019-06-26)
 
 
