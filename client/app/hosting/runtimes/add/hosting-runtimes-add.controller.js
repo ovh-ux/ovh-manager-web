@@ -1,13 +1,15 @@
 angular.module('App').controller(
   'controllers.Hosting.Runtimes.create',
   class HostingRuntimesCreateCtrl {
-    constructor($scope, $stateParams, $translate, Alerter, HostingRuntimes) {
+    constructor($scope, $stateParams, $translate, Alerter, HostingRuntimes, HOSTING_RUNTIME) {
       this.$scope = $scope;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
 
       this.Alerter = Alerter;
       this.HostingRuntimes = HostingRuntimes;
+
+      this.HOSTING_RUNTIME = HOSTING_RUNTIME;
     }
 
     $onInit() {
@@ -45,9 +47,8 @@ angular.module('App').controller(
 
     isValid() {
       if (
-        this.entryToCreate
-        && this.entryToCreate.type
-        && this.entryToCreate.type.indexOf('nodejs') !== -1
+        _.has(this, 'entryToCreate.type')
+        && !this.entryToCreate.type.includes(this.HOSTING_RUNTIME.PHP)
       ) {
         return (
           this.entryToCreate

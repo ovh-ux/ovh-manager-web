@@ -79,7 +79,7 @@
                             <tr data-ng-repeat="domain in domains.list.results track by $index">
                                 <td class="word-break">
                                     <span data-ng-bind="::domain.displayName"></span>
-                                    <oui-spinner data-size="s" data-ng-if="hosting.isCloudWeb && domain.status === status.UPDATING"></oui-spinner>
+                                    <oui-spinner data-size="s" data-ng-if="hosting.isCloudWeb && domain.status === HOSTING_STATUS.UPDATING"></oui-spinner>
                                 </td>
                                 <td data-ng-bind="domain.path"></td>
                                 <td data-ng-if="hosting.isCloudWeb" data-ng-bind="domain.runtime.name"></td>
@@ -186,7 +186,7 @@
                     data-ng-click="setAction('ssl/order/hosting-order-ssl')"
                     data-ng-disabled="sslCertificate && isSSLCertificateOperationInProgress(sslCertificate)">
                     <span data-translate="hosting_dashboard_service_order_ssl"></span>
-                    <oui-spinner data-size="s" data-ng-if="status.regeneratingSsl"></oui-spinner>
+                    <oui-spinner data-size="s" data-ng-if="loading.regeneratingSsl"></oui-spinner>
                 </button>
                 <button
                     type="button"
@@ -196,7 +196,7 @@
                         && isLetsEncryptCertificate(sslCertificate)
                         && isSSLCertificateOperationInProgress(sslCertificate)">
                         <span data-translate="hosting_ssl_regenerate_title_button"></span>
-                        <oui-spinner data-size="s" data-ng-if="status.regeneratingSsl"></oui-spinner>
+                        <oui-spinner data-size="s" data-ng-if="loading.regeneratingSsl"></oui-spinner>
                 </button>
             </div>
         </aside>
