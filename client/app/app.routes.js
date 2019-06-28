@@ -5,7 +5,7 @@ angular.module('App').config(($stateProvider) => {
     controller: 'AppCtrl',
     controllerAs: 'AppCtrl',
     templateUrl: 'app.html',
-    translations: { value: ['./core'], format: 'json' },
+    translations: { value: ['./core', './common'], format: 'json' },
   });
 
   $stateProvider.state('app.microsoft', {

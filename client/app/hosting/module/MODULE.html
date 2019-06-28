@@ -20,7 +20,7 @@
                     <p data-translate="hosting_change_offer_for_service_start10m"></p>
                     <button class="btn btn-info" type="button"
                             data-translate="hosting_dashboard_service_change_offer"
-                            data-ng-click="ctrlHostingTabModules.$state.go('app.hosting.upgrade', { 'productId': hosting.serviceName })">
+                            data-ui-sref="app.hosting.upgrade({ productId: hosting.serviceName })">
                     </button>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                         <p data-translate="hosting_change_offer_for_service"></p>
                         <button class="btn btn-info" type="button"
                                 data-translate="hosting_dashboard_service_change_offer"
-                                data-ng-click="ctrlHostingTabModules.$state.go('app.hosting.upgrade', { 'productId': hosting.serviceName })">
+                                data-ui-sref="app.hosting.upgrade({ productId: hosting.serviceName })">
                         </button>
                     </div>
                 </div>

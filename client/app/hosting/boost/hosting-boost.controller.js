@@ -2,7 +2,16 @@ angular
   .module('App')
   .controller(
     'HostingBoostTabCtrl',
-    ($scope, $q, $state, $stateParams, $translate, HostingBoost, Hosting, Alerter) => {
+    (
+      $q,
+      $scope,
+      $state,
+      $stateParams,
+      $translate,
+      Alerter,
+      Hosting,
+      HostingBoost,
+    ) => {
       $scope.models = {
         product: null,
         boosts: null,
@@ -165,10 +174,5 @@ angular
       $scope.$on('hosting.tabs.boostHistory.refresh', () => {
         $scope.refreshTableBoostHistory();
       });
-
-
-      $scope.goToHostingUpgrade = () => {
-        $state.go('app.hosting.upgrade', { productId: $scope.hosting.serviceName });
-      };
     },
   );

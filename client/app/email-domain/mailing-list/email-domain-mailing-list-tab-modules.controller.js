@@ -1,26 +1,25 @@
 angular.module('App').controller(
   'MailingListsTabModulesCtrl',
   class MailingListsTabModulesCtrl {
-    /**
-     * Constructor
-     * @param $scope
-     * @param $filter
-     * @param $stateParams
-     * @param $translate
-     * @param Alerter
-     * @param WucEmails
-     * @param MailingLists
-     */
-    constructor($scope, $filter, $state, $stateParams,
-      $translate, Alerter, WucEmails, MailingLists) {
-      this.$scope = $scope;
+    /* @ngInject */
+    constructor(
+      $filter,
+      $scope,
+      $state,
+      $stateParams,
+      $translate,
+      Alerter,
+      MailingLists,
+      WucEmails,
+    ) {
       this.$filter = $filter;
+      this.$scope = $scope;
       this.$state = $state;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
-      this.WucEmails = WucEmails;
       this.MailingLists = MailingLists;
+      this.WucEmails = WucEmails;
     }
 
     $onInit() {

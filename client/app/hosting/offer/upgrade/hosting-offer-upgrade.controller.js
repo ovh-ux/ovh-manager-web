@@ -2,7 +2,7 @@ angular.module('App').controller(
   'HostingUpgradeOfferCtrl',
   class HostingUpgradeOfferCtrl {
     constructor($scope, $rootScope, $state, $stateParams, $translate, $window,
-      Alerter, APITranslator, atInternet, Hosting, User) {
+      Alerter, apiTranslator, atInternet, Hosting, User) {
       this.$scope = $scope;
       this.$rootScope = $rootScope;
       this.$state = $state;
@@ -10,7 +10,7 @@ angular.module('App').controller(
       this.$translate = $translate;
       this.$window = $window;
       this.Alerter = Alerter;
-      this.APITranslator = APITranslator;
+      this.apiTranslator = apiTranslator;
       this.atInternet = atInternet;
       this.Hosting = Hosting;
       this.User = User;
@@ -76,7 +76,7 @@ angular.module('App').controller(
         .catch((err) => {
           this.Alerter.alertFromSWS(
             this.$translate.instant('hosting_order_upgrade_error'),
-            this.APITranslator.translate(err),
+            this.apiTranslator.translate(err),
             this.$scope.alerts.page,
           );
           this.$state.go('^');

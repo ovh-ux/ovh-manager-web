@@ -3,12 +3,12 @@ angular
   .controller(
     'HostingDatabaseCreateCtrl',
     (
-      $scope,
       $location,
       $q,
-      $timeout,
+      $scope,
       $state,
       $stateParams,
+      $timeout,
       $translate,
       Alerter,
       Hosting,
@@ -183,10 +183,6 @@ angular
         $timeout(() => {
           $location.path('/configuration/private_database');
         }, 300);
-      };
-
-      $scope.goToHostingUpgrade = () => {
-        $state.go('app.hosting.upgrade', { productId: $scope.hosting.serviceName });
       };
     },
   );
