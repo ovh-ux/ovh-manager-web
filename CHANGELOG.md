@@ -1,3 +1,23 @@
+# [13.25.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.24.5...v13.25.0) (2019-07-01)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ng-ovh-otrs to v7.1.5 ([#1142](https://github.com/ovh-ux/ovh-manager-web/issues/1142)) ([168cf49](https://github.com/ovh-ux/ovh-manager-web/commit/168cf49))
+* **deps:** upgrade some dependencies ([#1143](https://github.com/ovh-ux/ovh-manager-web/issues/1143)) ([12554f7](https://github.com/ovh-ux/ovh-manager-web/commit/12554f7))
+* **hosting:** display fields for every language except php ([#1127](https://github.com/ovh-ux/ovh-manager-web/issues/1127)) ([07473eb](https://github.com/ovh-ux/ovh-manager-web/commit/07473eb))
+* **hosting.cdn.order:** use the right offer code for CloudWeb ([#1130](https://github.com/ovh-ux/ovh-manager-web/issues/1130)) ([83f319b](https://github.com/ovh-ux/ovh-manager-web/commit/83f319b))
+* **i18n:** add missing translations ([181b3ff](https://github.com/ovh-ux/ovh-manager-web/commit/181b3ff))
+* **i18n:** add missing translations ([4741adc](https://github.com/ovh-ux/ovh-manager-web/commit/4741adc))
+* **i18n:** add missing translations ([e53d3ba](https://github.com/ovh-ux/ovh-manager-web/commit/e53d3ba))
+
+
+### Features
+
+* allow cloudweb upgrading offer ([#1069](https://github.com/ovh-ux/ovh-manager-web/issues/1069)) ([c2e6d55](https://github.com/ovh-ux/ovh-manager-web/commit/c2e6d55))
+
+
+
 ## [13.24.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.24.4...v13.24.5) (2019-06-28)
 
 
