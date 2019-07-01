@@ -2,7 +2,16 @@ angular
   .module('App')
   .controller(
     'HostingBoostTabCtrl',
-    ($scope, $q, $stateParams, $translate, HostingBoost, Hosting, Alerter) => {
+    (
+      $q,
+      $scope,
+      $state,
+      $stateParams,
+      $translate,
+      Alerter,
+      Hosting,
+      HostingBoost,
+    ) => {
       $scope.models = {
         product: null,
         boosts: null,

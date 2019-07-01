@@ -89,33 +89,36 @@
     </div>
 </div>
 
-<div data-ng-controller="HostingTabsCtrl as ctrlHostingTabs"
-     data-ng-if="!loadingHostingInformations && !loadingHostingError && !hosting.isExpired">
-    <wuc-ovh-tabs tabs="ctrlHostingTabs.tabs"
-              selected-tab="ctrlHostingTabs.selectedTab"
-              change-tab="ctrlHostingTabs.setSelectedTab"
-              product="hosting"
-              menu="ctrlHostingTabs.tabMenu"
-              tr="tr"></wuc-ovh-tabs>
-    <div class="tab-content">
-        <wuc-autorenew-invite data-product-type="hosting"
-                              data-service-infos="hosting.serviceInfos"
-                              data-guide-url="{{:: autorenew.guide }}"
-                              data-autorenew-url="{{:: autorenew.url }}">
-        </wuc-autorenew-invite>
 
-        <div data-ovh-alert="{{alerts.tabs}}"></div>
+<div data-ui-view>
+    <div data-ng-controller="HostingTabsCtrl as ctrlHostingTabs"
+        data-ng-if="!loadingHostingInformations && !loadingHostingError && !hosting.isExpired">
+        <wuc-ovh-tabs tabs="ctrlHostingTabs.tabs"
+                selected-tab="ctrlHostingTabs.selectedTab"
+                change-tab="ctrlHostingTabs.setSelectedTab"
+                product="hosting"
+                menu="ctrlHostingTabs.tabMenu"
+                tr="tr"></wuc-ovh-tabs>
+        <div class="tab-content">
+            <wuc-autorenew-invite data-product-type="hosting"
+                                data-service-infos="hosting.serviceInfos"
+                                data-guide-url="{{:: autorenew.guide }}"
+                                data-autorenew-url="{{:: autorenew.url }}">
+            </wuc-autorenew-invite>
 
-        <div class="alert alert-dismissible alert-info" role="alert"
-             data-ng-if="hostingProxy.recommendedOffer">
-            <button class="close" type="button" data-dismiss="alert"></button>
-            <span data-ng-bind-html="'hosting_dashboard_service_offer_recommanded' | translate: { t0: hostingProxy.recommendedOffer }"></span>
-            <span data-ng-bind-html="'hosting_dashboard_service_offer_recommanded_actions' | translate: { t0: urls.hosting, t1: '_blank' }"
-                  data-ng-if="urls.hosting"></span>
+            <div data-ovh-alert="{{alerts.tabs}}"></div>
+
+            <div class="alert alert-dismissible alert-info" role="alert"
+                data-ng-if="hostingProxy.recommendedOffer">
+                <button class="close" type="button" data-dismiss="alert"></button>
+                <span data-ng-bind-html="'hosting_dashboard_service_offer_recommanded' | translate: { t0: hostingProxy.recommendedOffer }"></span>
+                <span data-ng-bind-html="'hosting_dashboard_service_offer_recommanded_actions' | translate: { t0: urls.hosting, t1: '_blank' }"
+                    data-ng-if="urls.hosting"></span>
+            </div>
+
+            <div class="tab-pane active hosting"
+                data-ng-include="ctrlHostingTabs.selectedTab && 'hosting/' + ctrlHostingTabs.constructor.toKebabCase(ctrlHostingTabs.selectedTab) + '/' + ctrlHostingTabs.selectedTab + '.html'"></div>
         </div>
-
-        <div class="tab-pane active hosting"
-             data-ng-include="ctrlHostingTabs.selectedTab && 'hosting/' + ctrlHostingTabs.constructor.toKebabCase(ctrlHostingTabs.selectedTab) + '/' + ctrlHostingTabs.selectedTab + '.html'"></div>
     </div>
 </div>
 

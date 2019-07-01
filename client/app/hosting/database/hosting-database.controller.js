@@ -2,25 +2,27 @@ angular.module('App').controller(
   'HostingTabDatabasesCtrl',
   class HostingTabDatabasesCtrl {
     constructor(
-      $scope,
       $q,
+      $scope,
+      $state,
       $stateParams,
       $timeout,
       $translate,
       Alerter,
-      WucConverterService,
       Hosting,
       HostingDatabase,
+      WucConverterService,
     ) {
-      this.$scope = $scope;
       this.$q = $q;
+      this.$scope = $scope;
+      this.$state = $state;
       this.$stateParams = $stateParams;
       this.$timeout = $timeout;
       this.$translate = $translate;
       this.alerter = Alerter;
-      this.WucConverterService = WucConverterService;
       this.hostingService = Hosting;
       this.hostingDatabaseService = HostingDatabase;
+      this.WucConverterService = WucConverterService;
     }
 
     $onInit() {

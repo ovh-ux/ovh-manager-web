@@ -3,6 +3,7 @@ angular.module('App').controller(
   class HostingTabModulesController {
     constructor(
       $scope,
+      $state,
       $stateParams,
       $translate,
       $window,
@@ -12,6 +13,7 @@ angular.module('App').controller(
       User,
     ) {
       this.$scope = $scope;
+      this.$state = $state;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.$window = $window;
