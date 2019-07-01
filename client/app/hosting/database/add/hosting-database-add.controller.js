@@ -3,11 +3,12 @@ angular
   .controller(
     'HostingDatabaseCreateCtrl',
     (
-      $scope,
       $location,
       $q,
-      $timeout,
+      $scope,
+      $state,
       $stateParams,
+      $timeout,
       $translate,
       Alerter,
       Hosting,

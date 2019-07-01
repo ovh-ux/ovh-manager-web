@@ -22,4 +22,12 @@ angular.module('App').config(($stateProvider) => {
     },
     translations: { value: ['.'], format: 'json' },
   });
+
+  $stateProvider.state('app.hosting.upgrade', {
+    url: '/change-offer',
+    templateUrl: 'hosting/offer/upgrade/hosting-offer-upgrade.html',
+    controller: 'HostingUpgradeOfferCtrl',
+    reloadOnSearch: false,
+    translations: ['.'],
+  });
 });

@@ -2,7 +2,16 @@ angular
   .module('App')
   .controller(
     'HostingTabCronsCtrl',
-    ($scope, Hosting, $timeout, $stateParams, $translate, HostingCron, Alerter, User) => {
+    (
+      $scope,
+      $state,
+      $stateParams,
+      $translate,
+      Alerter,
+      Hosting,
+      HostingCron,
+      User,
+    ) => {
       $scope.crons = {
         details: [],
       };

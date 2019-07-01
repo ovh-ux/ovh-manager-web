@@ -20,6 +20,7 @@ angular
       HostingDomain,
       PrivateDatabase,
       $stateParams,
+      HOSTING_STATUS,
     ) => {
       $scope.loadingHostingInformations = true;
       $scope.loadingHostingError = false;
@@ -29,6 +30,8 @@ angular
       $scope.edit = {
         active: false,
       };
+
+      $scope.HOSTING_STATUS = HOSTING_STATUS;
 
       $scope.stepPath = '';
       $scope.currentAction = null;

@@ -4,6 +4,7 @@ angular.module('App').controller(
     constructor(
       $q,
       $scope,
+      $state,
       $stateParams,
       $translate,
       atInternet,
@@ -16,6 +17,7 @@ angular.module('App').controller(
     ) {
       this.$q = $q;
       this.$scope = $scope;
+      this.$state = $state;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
 
@@ -31,6 +33,7 @@ angular.module('App').controller(
     $onInit() {
       this.serviceName = this.$stateParams.productId;
       this.defaultRuntime = null;
+      this.availableOffers = [];
 
       this.loading = {
         defaultRuntime: true,
@@ -48,6 +51,7 @@ angular.module('App').controller(
         this.getUserLogsToken(),
         this.getScreenshot(),
         this.retrievingSSLCertificate(),
+        this.retrievingAvailableOffers(this.serviceName),
       ])
         .then(() => this.HostingRuntimes.getDefault(this.serviceName))
         .then((runtime) => {
@@ -169,12 +173,19 @@ angular.module('App').controller(
       return this.$translate.instant(`hosting_dashboard_service_ssl_${this.sslCertificate.status}`);
     }
 
+    retrievingAvailableOffers(productId) {
+      return this.Hosting.getAvailableOffer(productId)
+        .then((offers) => {
+          this.availableOffers = offers;
+        });
+    }
+
     changeOffer() {
       this.atInternet.trackClick({
         name: 'web::hostname::general-informations::change-offer',
         type: 'action',
       });
-      this.$scope.setAction('offer/upgrade/hosting-offer-upgrade');
+      this.$state.go('app.hosting.upgrade', { productId: this.serviceName });
     }
 
     changeMainDomain() {

@@ -1,9 +1,10 @@
 angular.module('App').controller(
   'HostingTabFTPCtrl',
   class HostingTabFTPCtrl {
-    constructor($q, $scope, $stateParams, $translate, Alerter, Hosting, HostingUser) {
+    constructor($q, $scope, $state, $stateParams, $translate, Alerter, Hosting, HostingUser) {
       this.$q = $q;
       this.$scope = $scope;
+      this.$state = $state;
       this.$stateParams = $stateParams;
       this.$translate = $translate;
       this.Alerter = Alerter;
