@@ -1,3 +1,13 @@
+## [13.25.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.25.0...v13.25.1) (2019-07-04)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations ([42e0463](https://github.com/ovh-ux/ovh-manager-web/commit/42e0463))
+* **i18n:** add missing translations ([4cc4d8f](https://github.com/ovh-ux/ovh-manager-web/commit/4cc4d8f))
+
+
+
 # [13.25.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.24.5...v13.25.0) (2019-07-01)
 
 
