@@ -1076,7 +1076,8 @@
  "hostin_order_select_offer": "Seleziona l'offerta desiderata",
  "hosting_order_upgrade_select_duration": "Seleziona la durata ",
  "hosting_order_upgrade_select_noduration": "Scegli l’offerta che dispone della capacità superiore o inferiore più vicina alla tua soluzione corrente.",
- "hosting_order_upgrade_select_noduration_cloudweb": "È possibile scegliere esclusivamente una soluzione superiore a quella attualmente attiva. Ti ricordiamo che, una volta apportata la modifica, non sarà possibile effettuare un downgrade del servizio scelto.",
+ "hosting_order_upgrade_select_noduration_cloudweb": "È possibile scegliere esclusivamente un’offerta superiore a quella di cui disponi attualmente.",
+ "hosting_order_upgrade_select_noduration_cloudweb_explanation": "Ti informiamo che, una volta completata la migrazione al nuovo servizio, non sarà più possibile optare per una soluzione inferiore.",
  "hosting_order_upgrade_loading_order": "Caricamento delle offerte in corso...",
  "hosting_order_upgrade_resume": "Riepilogo del tuo ordine",
  "hosting_order_upgrade_do_order": "La modifica diventerà effettiva in seguito al pagamento.",
@@ -1161,9 +1162,9 @@
  "hosting_tab_BOOST_disable_title": "Stai per disattivare il Boost sulla tua offerta. ",
  "hosting_tab_BOOST_disable_description": "Vuoi tornare alla tua offerta di base (sottoscrizione annuale). Hai comunque la possibilità di modificare di nuovo il tuo piano. Il prossimo mese riceverai la fattura del BOOST del mese in corso (1 unica fattura extra al mese, comprensiva dell'offerta massima utilizzata).",
  "hosting_tab_BOOST_accept_cgv": "Hai letto e accetti le condizioni del servizio. Dopo la conferma saranno necessari alcuni minuti prima che il tuo hosting venga aggiornato.",
- "hosting_tab_BOOST_disable_started": "Disattivazione Boost in corso ",
+ "hosting_tab_BOOST_disable_started": "Disattivazione Boost in corso...",
  "hosting_tab_BOOST_disable_success": "Il Boost è stato rimosso dalla tua offerta",
- "hosting_tab_BOOST_disable_error": "Si è vericato un errore quando hai disattivato il Boost: ",
+ "hosting_tab_BOOST_disable_error": "Si è verificato un errore durante la disattivazione del Boost:",
  "hosting_tab_AUTOMATED_EMAILS": "Script email",
  "hosting_tab_AUTOMATED_EMAILS_guide_help": "Bisogno di aiuto per le tue email inviate da script?",
  "hosting_tab_AUTOMATED_EMAILS_desc": "Email inviate da script CGI/PERL/PHP",
@@ -1413,5 +1414,6 @@
  "hosting_change_main_domain_warning_delete_emails": "Attenzione: l'eliminazione del tuo servizio di posta comporta la cancellazione di tutti gli account email creati con il tuo dominio.",
  "hosting_dashboard_general_informations": "Informazioni generali",
  "hosting_dashboard_configuration": "Configurazione",
- "hosting_dashboard_access": "Accesso"
+ "hosting_dashboard_access": "Accesso",
+ "common_api_hostingWeb-1": "Non è possibile effettuare la migrazione verso questa offerta perché il servizio corrente dispone di un numero maggiore di email rispetto alla nuova soluzione scelta."
 }
