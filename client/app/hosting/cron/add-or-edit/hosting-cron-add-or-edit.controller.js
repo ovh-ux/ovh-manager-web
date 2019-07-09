@@ -22,6 +22,8 @@ angular
         status: 'disabled',
       };
 
+      $scope.formatLanguage = language => HostingCron.formatLanguage(language);
+
       // Object used to communicate with the cronEditor directive.
       // See definition in cronEditor.controller.js.
       $scope.crontabObject = WucCronValidator.makeCrontabObject();

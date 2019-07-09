@@ -311,7 +311,7 @@
  "hosting_tab_DOMAINS_table_ssl_state_false": "Disabled",
  "hosting_tab_DOMAINS_table_ssl_state_2": "Enabled",
  "hosting_tab_DOMAINS_table_ssl_state_0": "Disabled",
- "hosting_tab_DOMAINS_table_ssl_state_1": "To generate ",
+ "hosting_tab_DOMAINS_table_ssl_state_1": "To generate",
  "hosting_tab_DOMAINS_table_ssl_state_1_tooltip": "You must regenerate your certificate for the changes to be effective.",
  "hosting_tab_DOMAINS_table_firewall_state_ACTIVE": "Enabled",
  "hosting_tab_DOMAINS_table_firewall_state_NONE": "Disabled",
@@ -536,7 +536,7 @@
  "hosting_tab_DOMAINS_configuration_modify_partial": "Modifications on some of your shared hosting domains have been processed, but there are errors on other domains. ",
  "hosting_tab_DOMAINS_configuration_modify_failure": "An error has occurred when modifying the domain/s of your hosting plan.",
  "hosting_tab_DOMAINS_configuration_add_title": "Add a domain or sub-domain",
- "hosting_tab_DOMAINS_configuration_add_loading_error": "An error has occurred when loading the information.",
+ "hosting_tab_DOMAINS_configuration_add_loading_error": "An error has occurred loading the information.",
  "hosting_tab_DOMAINS_configuration_add_loading_error_configuration": "An error has occurred when loading information (you have a configuration error).",
  "hosting_tab_DOMAINS_configuration_add_step1_title": "You are about to add a domain to your <strong class=\"font-italic\">{{t0}}</strong> web hosting plan",
  "hosting_tab_DOMAINS_configuration_add_step1_no_db_left": "You cannot add more domains to your web hosting plan",
@@ -1076,7 +1076,8 @@
  "hostin_order_select_offer": "Select the plan you wish to upgrade to.",
  "hosting_order_upgrade_select_duration": "Select the duration.",
  "hosting_order_upgrade_select_noduration": "Select the a plan with a higher or lower capacity that is closest to your current web hosting plan.",
- "hosting_order_upgrade_select_noduration_cloudweb": "You can only choose a plan with a higher capacity than the one you currently have. Please note that once you have switched plans, you cannot switch to a plan with a lower capacity.",
+ "hosting_order_upgrade_select_noduration_cloudweb": "You can only choose a web hosting plan that is higher than the one you currently have.",
+ "hosting_order_upgrade_select_noduration_cloudweb_explanation": "Please note that you cannot switch to a lower web hosting plan once you have confirmed the change.",
  "hosting_order_upgrade_loading_order": "Loading durations...",
  "hosting_order_upgrade_resume": "Order summary",
  "hosting_order_upgrade_do_order": "The change will be effective after the payment has been made.",
@@ -1413,5 +1414,6 @@
  "hosting_change_main_domain_warning_delete_emails": "Warning: Deleting your existing email service will also delete all the email addresses that you have created with your domain name. ",
  "hosting_dashboard_general_informations": "General information",
  "hosting_dashboard_configuration": "Configuration",
- "hosting_dashboard_access": "Access"
+ "hosting_dashboard_access": "Access",
+ "common_api_hostingWeb-1": "You cannot migrate to this solution, because your current solution has more email capacity than the solution you have selected."
 }

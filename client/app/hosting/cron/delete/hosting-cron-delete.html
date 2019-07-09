@@ -12,7 +12,7 @@
                 <dd data-ng-bind="ctrl.entryToDelete.command"></dd>
 
                 <dt data-translate="hosting_tab_CRON_label_language"></dt>
-                <dd data-ng-bind="(('hosting_tab_CRON_table_language_' + ctrl.entryToDelete.language | translate) == 'hosting_tab_CRON_table_language_' + ctrl.entryToDelete.language)? ctrl.entryToDelete.language: ('hosting_tab_CRON_table_language_' + ctrl.entryToDelete.language | translate)"></dd>
+                <dd data-ng-bind="ctrl.entryToDelete.displayedLanguage"></dd>
 
                 <dt data-translate="hosting_tab_CRON_table_header_frequency"></dt>
                 <dd data-ng-bind="ctrl.entryToDelete.frequency"></dd>
@@ -21,7 +21,7 @@
                 <dd data-ng-bind="ctrl.entryToDelete.email"></dd>
 
                 <dt data-translate="hosting_tab_CRON_label_description"></dt>
-                <dd data-ng-bind="ctrl.entryToDelete.description || '/'"></dd>
+                <dd class="word-break" data-ng-bind="ctrl.entryToDelete.description || '/'"></dd>
             </dl>
         </div>
     </div>

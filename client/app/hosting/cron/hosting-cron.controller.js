@@ -1,112 +1,96 @@
-angular
-  .module('App')
-  .controller(
-    'HostingTabCronsCtrl',
-    (
-      $scope,
-      $state,
-      $stateParams,
-      $translate,
-      Alerter,
-      Hosting,
-      HostingCron,
-      User,
-    ) => {
-      $scope.crons = {
-        details: [],
-      };
-      $scope.guide = null;
-      $scope.search = {
-        text: null,
-      };
-      $scope.hasResult = false;
-      $scope.loading = {
-        cron: false,
-        init: true,
-      };
+import _ from 'lodash';
 
-      User.getUrlOf('guides').then((guides) => {
-        if (guides && guides.hostingCron) {
-          $scope.guide = guides.hostingCron;
-        }
-      });
+export default class HostingCronsCtrl {
+  /* @ngInject */
+  constructor(
+    $scope,
+    $stateParams,
+    $timeout,
+    $translate,
+    Alerter,
+    Hosting,
+    HostingCron,
+    User,
+  ) {
+    this.$scope = $scope;
+    this.$stateParams = $stateParams;
+    this.$timeout = $timeout;
+    this.$translate = $translate;
+    this.Alerter = Alerter;
+    this.Hosting = Hosting;
+    this.HostingCron = HostingCron;
+    this.User = User;
+  }
 
-      $scope.loadCrons = () => {
-        $scope.loading.cron = true;
-        $scope.crons.ids = null;
-        let filters = null;
+  $onInit() {
+    this.crons = {
+      details: [],
+    };
+    this.guide = null;
+    this.search = {
+      text: null,
+    };
+    this.hasResult = false;
+    this.loading = {
+      cron: false,
+      init: true,
+    };
 
-        if ($scope.search.text) {
-          filters = [
-            { command: ['%', $scope.search.text, '%'].join('') },
-            { description: ['%', $scope.search.text, '%'].join('') },
-            { email: ['%', $scope.search.text, '%'].join('') },
-          ];
-        }
-        HostingCron.getCrons($stateParams.productId, filters)
-          .then((ids) => {
-            $scope.crons.ids = ids;
-          })
-          .catch((err) => {
-            Alerter.alertFromSWS(
-              $translate.instant('hosting_tab_CRON_configuration_error'),
-              _.get(err, 'data', err),
-              $scope.alerts.main,
-            );
-          })
-          .finally(() => {
-            if (_.isEmpty($scope.crons.ids)) {
-              $scope.loading.init = false;
-              $scope.loading.cron = false;
-            } else {
-              $scope.hasResult = true;
-            }
-          });
-      };
+    return this.getGuides();
+  }
 
-      $scope.transformItem = id => HostingCron.getCron($stateParams.productId, id);
+  getGuides() {
+    return this.User.getUrlOf('guides').then((guides) => {
+      if (guides && guides.hostingCron) {
+        this.guide = guides.hostingCron;
+      }
+    });
+  }
 
-      $scope.onTransformItemDone = () => {
-        $scope.loading.cron = false;
-        $scope.loading.init = false;
-      };
-
-      $scope.trEnum = str => HostingCron.trEnum(str);
-
-      $scope.modifyCron = (cron) => {
-        $scope.setAction('cron/add-or-edit/hosting-cron-add-or-edit', { cron });
-      };
-
-      $scope.deleteCron = (cron) => {
-        $scope.setAction('cron/delete/hosting-cron-delete', cron);
-      };
-
-      $scope.$on(Hosting.events.tabCronsRefresh, () => {
-        $scope.loading.init = true;
-        $scope.hasResult = false;
-        $scope.loadCrons();
-      });
-
-      const reloadCurrentPage = () => {
-        if (!$scope.loading.cron) {
-          $scope.loadCrons();
-        }
-      };
-
-      $scope.$watch(
-        'search.text',
-        (newValue) => {
-          if ($scope.search.text !== null) {
-            if ($scope.search.text === '') {
-              reloadCurrentPage();
-            } else if ($scope.search.text === newValue) {
-              reloadCurrentPage();
-            }
-          }
+  getCrons({ criteria }) {
+    let filters = null;
+    if (!_.isEmpty(criteria)) {
+      const { value } = _.head(criteria);
+      filters = [
+        { command: value },
+        { description: value },
+        { email: value },
+      ];
+    }
+    return this.HostingCron.getCrons(
+      this.$stateParams.productId,
+      filters,
+    )
+      .then(crons => ({
+        data: _.map(crons, id => ({ id })),
+        meta: {
+          totalCount: crons.length,
         },
-        true,
-      );
+      }))
+      .catch((err) => {
+        this.Alerter.alertFromSWS(
+          this.$translate.instant('this.hosting_tab_CRON_configuration_error'),
+          _.get(err, 'data', err),
+          this.$scope.alerts.main,
+        );
+      });
+  }
 
-      $scope.loadCrons();
-    },
-  );
+  getCron({ id }) {
+    return this.HostingCron.getCron(this.$stateParams.productId, id)
+      .then(cron => ({
+        ...cron,
+        displayedLanguage: this.HostingCron.formatLanguage(cron.language),
+      }));
+  }
+
+  modifyCron(cron) {
+    return this.$scope.setAction('cron/add-or-edit/hosting-cron-add-or-edit', { cron });
+  }
+
+  deleteCron(cron) {
+    return this.$scope.setAction('cron/delete/hosting-cron-delete', cron);
+  }
+}
+
+angular.module('App').controller('HostingCronsCtrl', HostingCronsCtrl);
