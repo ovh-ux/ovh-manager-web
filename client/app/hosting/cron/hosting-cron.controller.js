@@ -54,7 +54,7 @@ export default class HostingCronsCtrl {
       filters = [
         { command: value },
         { description: value },
-        { emial: value },
+        { email: value },
       ];
     }
     return this.HostingCron.getCrons(
@@ -80,7 +80,7 @@ export default class HostingCronsCtrl {
     return this.HostingCron.getCron(this.$stateParams.productId, id)
       .then(cron => ({
         ...cron,
-        displayedLanguage: HostingCronsCtrl.formatLanguage(cron.language),
+        displayedLanguage: this.HostingCron.formatLanguage(cron.language),
       }));
   }
 
