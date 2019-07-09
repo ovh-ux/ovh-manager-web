@@ -1,9 +1,11 @@
 import _ from 'lodash';
+import { LANGUAGES, PATTERN, OTHER } from './hosting-cron.constants';
 
 export default class HostingCron {
   /* @ngInject */
-  constructor($q, Hosting, OvhHttp) {
+  constructor($q, $translate, Hosting, OvhHttp) {
     this.$q = $q;
+    this.$translate = $translate;
     this.Hosting = Hosting;
     this.OvhHttp = OvhHttp;
   }
@@ -110,6 +112,22 @@ export default class HostingCron {
         serviceName,
       },
     });
+  }
+
+  formatLanguage(language) {
+    if (language && language.toLowerCase() === OTHER) {
+      return this.$translate.instant('hosting_tab_CRON_table_language_OTHER');
+    }
+
+    if (language) {
+      const versionIndex = language.search(PATTERN);
+      const name = language.substring(0, versionIndex).replace('_', '');
+      const version = language.substring(versionIndex).replace('_', '.');
+
+      return `${_.get(LANGUAGES, name.toUpperCase(), _.capitalize(name))} ${version}`;
+    }
+
+    return language;
   }
 }
 
