@@ -1,3 +1,17 @@
+## [13.25.3](https://github.com/ovh-ux/ovh-manager-web/compare/v13.25.2...v13.25.3) (2019-07-09)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-module-emailpro to v7.2.8 ([#1155](https://github.com/ovh-ux/ovh-manager-web/issues/1155)) ([73e66ba](https://github.com/ovh-ux/ovh-manager-web/commit/73e66ba))
+* **hosting.cron:** prevent description from overflowing in modal ([b0a1fce](https://github.com/ovh-ux/ovh-manager-web/commit/b0a1fce))
+* **i18n:** add missing translations ([572b686](https://github.com/ovh-ux/ovh-manager-web/commit/572b686))
+* **i18n:** add missing translations ([187343f](https://github.com/ovh-ux/ovh-manager-web/commit/187343f))
+* **i18n:** add missing translations ([1fa78d3](https://github.com/ovh-ux/ovh-manager-web/commit/1fa78d3))
+* **i18n:** add missing translations ([195bcfb](https://github.com/ovh-ux/ovh-manager-web/commit/195bcfb))
+
+
+
 ## [13.25.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.25.1...v13.25.2) (2019-07-09)
 
 
