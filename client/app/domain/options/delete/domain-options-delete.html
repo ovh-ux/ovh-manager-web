@@ -1,0 +1,16 @@
+<div data-ng-controller="controllers.Domain.Options.Delete as ctrl">
+    <oui-modal
+      data-heading="{{ ('domain_tab_options_delete_'+ctrl.option.option+'_title') | translate }}"
+      data-primary-action="ctrl.deleteDomain()"
+      data-primary-disabled="ctrl.loading"
+      data-primary-label="{{ 'domain_tab_options_delete_confirm_button' | translate }}"
+      data-secondary-action="ctrl.closeModal()"
+      data-secondary-disabled="ctrl.loading"
+      data-secondary-label="{{ 'domain_tab_options_delete_cancel' | translate }}"
+      data-on-dismiss="ctrl.closeModal()">
+        <p data-ng-if="!ctrl.loading" data-translate="domain_tab_options_delete_confirm"></p>
+        <div class="text-center" data-ng-if="ctrl.loading">
+            <oui-spinner></oui-spinner>
+        </div>
+    </oui-modal>
+</div>

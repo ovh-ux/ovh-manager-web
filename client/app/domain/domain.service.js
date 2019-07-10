@@ -1177,6 +1177,40 @@ angular.module('services').service(
       });
     }
 
+    // --------------------- Options ----------------------------
+
+    /**
+     * Get all options
+     * @param {string} serviceName
+     */
+    getOptions(serviceName) {
+      return this.OvhHttp.get(`/domain/${serviceName}/option`, {
+        rootPath: 'apiv6',
+      });
+    }
+
+    /**
+     * Get the option details
+     * @param {string} serviceName
+     * @param {string} option
+     */
+    getOption(serviceName, option) {
+      return this.OvhHttp.get(`/domain/${serviceName}/option/${option}`, {
+        rootPath: 'apiv6',
+      });
+    }
+
+    /**
+     * Delete option
+     * @param {string} serviceName
+     * @param {string} option
+     */
+    deleteOption(serviceName, option) {
+      return this.OvhHttp.delete(`/domain/${serviceName}/option/${option}`, {
+        rootPath: 'apiv6',
+      });
+    }
+
     // --------------------- Glue registry ----------------------
 
     /**
