@@ -7,12 +7,14 @@ export default class WebAppCtrl {
     $scope,
     $timeout,
     $translate,
+    User,
     webNavbar,
   ) {
     this.$document = $document;
     this.$scope = $scope;
     this.$timeout = $timeout;
     this.$translate = $translate;
+    this.User = User;
     this.webNavbar = webNavbar;
 
     this.$onInit();
@@ -27,6 +29,11 @@ export default class WebAppCtrl {
       this.isNavbarLoaded = true;
     });
 
+    [this.currentLanguage] = this.$translate.use().split('_');
+
+    this.User.getUser().then((user) => {
+      this.user = user;
+    });
 
     // Scroll to anchor id
     this.$scope.scrollTo = (id) => {
