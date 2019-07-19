@@ -1,3 +1,12 @@
+## [13.25.5](https://github.com/ovh-ux/ovh-manager-web/compare/v13.25.4...v13.25.5) (2019-07-19)
+
+
+### Bug Fixes
+
+* **deps:** upgrade ovh-module-emailpro to ^7.2.10 ([#1169](https://github.com/ovh-ux/ovh-manager-web/issues/1169)) ([c62702f](https://github.com/ovh-ux/ovh-manager-web/commit/c62702f))
+
+
+
 ## [13.25.4](https://github.com/ovh-ux/ovh-manager-web/compare/v13.25.3...v13.25.4) (2019-07-16)
 
 
