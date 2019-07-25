@@ -78,5 +78,14 @@ angular.module('App').controller(
           this.loading = false;
         });
     }
+
+    getTranslatedContent(translationIdPrefix) {
+      const [, domainExtension] = this.domain.split('.');
+      const translationId = `${translationIdPrefix}_${domainExtension}`;
+      const translatedContent = this.$translate.instant(translationId);
+      return translatedContent === translationId
+        ? this.$translate.instant(translationIdPrefix)
+        : translatedContent;
+    }
   },
 );

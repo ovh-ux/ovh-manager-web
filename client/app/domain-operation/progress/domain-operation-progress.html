@@ -94,8 +94,8 @@
                         </ul>
                         <ul data-ng-if="ctrlDomainOperationProgress.currentStepIndex === 1">
                             <li data-translate="domains_operations_progress_instructions_3"></li>
-                            <li data-translate="domains_operations_progress_instructions_4"></li>
-                            <li data-translate="domains_operations_progress_instructions_5"></li>
+                            <li data-ng-bind="::ctrlDomainOperationProgress.getTranslatedContent('domains_operations_progress_instructions_4')"></li>
+                            <li data-ng-bind="::ctrlDomainOperationProgress.getTranslatedContent('domains_operations_progress_instructions_5')"></li>
                             <li data-translate="domains_operations_progress_instructions_6"></li>
                         </ul>
                         <p data-translate="domains_operations_progress_instructions_7"
