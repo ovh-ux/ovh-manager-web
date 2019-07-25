@@ -1,3 +1,12 @@
+## [13.25.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.25.6...v13.25.7) (2019-07-25)
+
+
+### Bug Fixes
+
+* **hosting.runtimes.add:** ensure form validation ([#1177](https://github.com/ovh-ux/ovh-manager-web/issues/1177)) ([fe0f93c](https://github.com/ovh-ux/ovh-manager-web/commit/fe0f93c))
+
+
+
 ## [13.25.6](https://github.com/ovh-ux/ovh-manager-web/compare/v13.25.5...v13.25.6) (2019-07-25)
 
 
