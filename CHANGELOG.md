@@ -1,3 +1,18 @@
+## [13.25.8](https://github.com/ovh-ux/ovh-manager-web/compare/v13.25.7...v13.25.8) (2019-08-05)
+
+
+### Bug Fixes
+
+* **domain.anycast:** display domain name instead of id ([#1182](https://github.com/ovh-ux/ovh-manager-web/issues/1182)) ([f4fe7db](https://github.com/ovh-ux/ovh-manager-web/commit/f4fe7db))
+* **i18n:** add missing translations ([85780d7](https://github.com/ovh-ux/ovh-manager-web/commit/85780d7))
+* **i18n:** add missing translations ([70ba80c](https://github.com/ovh-ux/ovh-manager-web/commit/70ba80c))
+* **i18n:** add missing translations ([ee44f3c](https://github.com/ovh-ux/ovh-manager-web/commit/ee44f3c))
+* **i18n:** add missing translations ([66860a8](https://github.com/ovh-ux/ovh-manager-web/commit/66860a8))
+* **i18n:** add missing translations ([fcbc9bc](https://github.com/ovh-ux/ovh-manager-web/commit/fcbc9bc))
+* **i18n:** add missing translations ([09c0d90](https://github.com/ovh-ux/ovh-manager-web/commit/09c0d90))
+
+
+
 ## [13.25.7](https://github.com/ovh-ux/ovh-manager-web/compare/v13.25.6...v13.25.7) (2019-07-25)
 
 
