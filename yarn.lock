@@ -1294,6 +1294,13 @@
   resolved "https://registry.yarnpkg.com/@ovh-ux/ng-translate-async-loader/-/ng-translate-async-loader-2.0.0.tgz#df0d155c6c2e38b53704ff4ca9b419f0695a88bf"
   integrity sha512-CmAT0/rTYN/Niwtuo1pcY+y46nqGCR2dO6+4twqGiRkqu/ksgklZ4weaqF9Xgl/KYLv+zcCmxZf0J1gfXs7kag==
 
+"@ovh-ux/ng-ui-router-line-progress@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@ovh-ux/ng-ui-router-line-progress/-/ng-ui-router-line-progress-1.0.0.tgz#8eea34525d5d6212a2bd8b9b98bf738080dd5fa5"
+  integrity sha512-JwR20zLrBmr4uT9naK+HUMXIUZqOonOHphsp/ykUctEtvkLjgqUfi1KncSjQUt/C+BRHGSopvqg+9Tj3GxDQFw==
+  dependencies:
+    nprogress "^0.2.0"
+
 "@ovh-ux/ovh-utils-angular@^13.0.4":
   version "13.0.4"
   resolved "https://registry.yarnpkg.com/@ovh-ux/ovh-utils-angular/-/ovh-utils-angular-13.0.4.tgz#3acf47e4723ab7292f06bc38bf5b4085e66e7916"
@@ -7924,6 +7931,11 @@ npm-which@^3.0.1:
     console-control-strings "~1.1.0"
     gauge "~2.7.3"
     set-blocking "~2.0.0"
+
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
 
 nth-check@~1.0.1:
   version "1.0.2"
