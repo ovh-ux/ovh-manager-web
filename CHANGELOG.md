@@ -1,3 +1,12 @@
+# [13.27.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.26.0...v13.27.0) (2019-08-13)
+
+
+### Features
+
+* add @ovh-ux/ng-ovh-request-tagger ([#1196](https://github.com/ovh-ux/ovh-manager-web/issues/1196)) ([354eccd](https://github.com/ovh-ux/ovh-manager-web/commit/354eccd))
+
+
+
 # [13.26.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.25.8...v13.26.0) (2019-08-12)
 
 
