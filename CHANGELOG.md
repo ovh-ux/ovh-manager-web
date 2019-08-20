@@ -1,3 +1,12 @@
+## [13.27.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.27.1...v13.27.2) (2019-08-20)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 20] ([0e4c85c](https://github.com/ovh-ux/ovh-manager-web/commit/0e4c85c))
+
+
+
 ## [13.27.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.27.0...v13.27.1) (2019-08-20)
 
 
