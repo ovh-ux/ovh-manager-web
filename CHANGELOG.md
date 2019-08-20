@@ -1,3 +1,12 @@
+## [13.27.1](https://github.com/ovh-ux/ovh-manager-web/compare/v13.27.0...v13.27.1) (2019-08-20)
+
+
+### Bug Fixes
+
+* **domain:** add options tile ([#1186](https://github.com/ovh-ux/ovh-manager-web/issues/1186)) ([ce2397d](https://github.com/ovh-ux/ovh-manager-web/commit/ce2397d))
+
+
+
 # [13.27.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.26.0...v13.27.0) (2019-08-13)
 
 
