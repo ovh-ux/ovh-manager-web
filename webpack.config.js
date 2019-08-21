@@ -73,9 +73,6 @@ module.exports = (env = {}) => {
     },
   }));
 
-  // Extra config files
-  const extras = glob.sync('./.extras/**/*.js');
-
   return merge(config, {
     entry: _.assign({
       app: [
@@ -83,9 +80,10 @@ module.exports = (env = {}) => {
         './client/app/app.js',
         './client/app/app.routes.js',
         './client/app/app.controller.js',
-      ].concat(glob.sync('./client/app/**/*.module.js'))
+      ].concat(glob.sync('./.extras/**/*.js'))
+        .concat(glob.sync('./client/app/**/*.module.js'))
         .concat(glob.sync('./client/app/components/**/!(*.module).js')),
-    }, bundles, extras.length > 0 ? { extras } : {}),
+    }, bundles),
     output: {
       path: path.resolve(__dirname, 'dist'),
       filename: '[name].[chunkhash].bundle.js',
@@ -98,6 +96,7 @@ module.exports = (env = {}) => {
     plugins: [
       new webpack.DefinePlugin({
         __WEBPACK_REGION__: `'${env.region.toUpperCase()}'`,
+        __NG_APP_INJECTIONS__: process.env.NG_APP_INJECTIONS ? `'${process.env.NG_APP_INJECTIONS}'` : 'null',
       }),
     ],
   });

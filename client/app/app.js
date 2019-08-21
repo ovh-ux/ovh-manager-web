@@ -3,7 +3,6 @@ import ovhManagerCore from '@ovh-ux/manager-core';
 import ngAtInternet from '@ovh-ux/ng-at-internet';
 import ngAtInternetUiRouterPlugin from '@ovh-ux/ng-at-internet-ui-router-plugin';
 import ngOvhApiWrappers from '@ovh-ux/ng-ovh-api-wrappers';
-import ngOvhChatbot from '@ovh-ux/ng-ovh-chatbot';
 import ngOvhHttp from '@ovh-ux/ng-ovh-http';
 import ngOvhSsoAuth from '@ovh-ux/ng-ovh-sso-auth';
 import ngOvhSsoAuthModalPlugin from '@ovh-ux/ng-ovh-sso-auth-modal-plugin';
@@ -25,6 +24,7 @@ Environment.setRegion(__WEBPACK_REGION__);
 
 angular
   .module('App', [
+    __NG_APP_INJECTIONS__,
     ovhManagerCore,
     'ovh-angular-pagination-front',
     'ovh-utils-angular',
@@ -47,7 +47,6 @@ angular
     ngAtInternet,
     ngAtInternetUiRouterPlugin,
     ngOvhApiWrappers,
-    ngOvhChatbot,
     ngOvhHttp,
     ngOvhSsoAuth,
     ngOvhSsoAuthModalPlugin,
@@ -75,7 +74,7 @@ angular
     domainEmailObfuscation,
     domainOptin,
     navbar,
-  ])
+  ].filter(value => value !== null)) // __NG_APP_INJECTIONS__ can be null
   .constant('constants', {
     prodMode: config.prodMode,
     aapiRootPath: config.aapiRootPath,

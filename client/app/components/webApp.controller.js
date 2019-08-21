@@ -4,15 +4,19 @@ export default class WebAppCtrl {
   /* @ngInject */
   constructor(
     $document,
+    $rootScope,
     $scope,
     $timeout,
     $translate,
+    User,
     webNavbar,
   ) {
     this.$document = $document;
+    this.$rootScope = $rootScope;
     this.$scope = $scope;
     this.$timeout = $timeout;
     this.$translate = $translate;
+    this.User = User;
     this.webNavbar = webNavbar;
 
     this.$onInit();
@@ -27,6 +31,14 @@ export default class WebAppCtrl {
       this.isNavbarLoaded = true;
     });
 
+    [this.currentLanguage] = this.$translate.use().split('_');
+
+    this.User.getUser().then((user) => {
+      this.user = user;
+      this.$timeout(() => {
+        this.$rootScope.$broadcast('ovh-chatbot:resume');
+      });
+    });
 
     // Scroll to anchor id
     this.$scope.scrollTo = (id) => {

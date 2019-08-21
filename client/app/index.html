@@ -50,7 +50,14 @@
                         </div>
 
                         <!-- /Skip content target -->
-                        <ovh-chatbot></ovh-chatbot>
+                        <ovh-chatbot
+                            data-can-switch-to-livechat="true"
+                            data-config="{
+                                universe: 'WEB',
+                                language: $ctrl.currentLanguage,
+                                country: $ctrl.user.ovhSubsidiary
+                            }">
+                        </ovh-chatbot>
                         <div data-ui-view class="pb-5"></div>
 
                     </div>
