@@ -1,3 +1,19 @@
+# [13.28.0](https://github.com/ovh-ux/ovh-manager-web/compare/v13.27.2...v13.28.0) (2019-08-26)
+
+
+### Bug Fixes
+
+* **i18n:** add missing translations [CDS 21] ([13d41b6](https://github.com/ovh-ux/ovh-manager-web/commit/13d41b6))
+* **i18n:** add missing translations [CDS 22] ([012fe9b](https://github.com/ovh-ux/ovh-manager-web/commit/012fe9b))
+* **i18n:** add missing translations [CDS 25] ([556cf4b](https://github.com/ovh-ux/ovh-manager-web/commit/556cf4b))
+
+
+### Features
+
+* add @ovh-ux/ng-ui-router-layout ([7a63922](https://github.com/ovh-ux/ovh-manager-web/commit/7a63922))
+
+
+
 ## [13.27.2](https://github.com/ovh-ux/ovh-manager-web/compare/v13.27.1...v13.27.2) (2019-08-20)
 
 
