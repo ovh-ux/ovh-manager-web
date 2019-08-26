@@ -12,7 +12,8 @@ import ngOvhProxyRequest from '@ovh-ux/ng-ovh-proxy-request';
 import ngOvhUserPref from '@ovh-ux/ng-ovh-user-pref';
 import ngOvhWebUniverseComponents from '@ovh-ux/ng-ovh-web-universe-components';
 import ngTranslateAsyncLoader from '@ovh-ux/ng-translate-async-loader';
-import ngOvhUiRouterLineProgress from '@ovh-ux/ng-ui-router-line-progress';
+import ngUiRouterLayout from '@ovh-ux/ng-ui-router-layout';
+import ngUiRouterLineProgress from '@ovh-ux/ng-ui-router-line-progress';
 import ovhManagerNavbar from '@ovh-ux/manager-navbar';
 import uiRouter from '@uirouter/angularjs';
 import ngOvhOtrs from '@ovh-ux/ng-ovh-otrs';
@@ -57,7 +58,8 @@ angular
     ngOvhUserPref,
     ngOvhWebUniverseComponents,
     ngTranslateAsyncLoader,
-    ngOvhUiRouterLineProgress,
+    ngUiRouterLayout,
+    ngUiRouterLineProgress,
     ovhManagerServerSidebar,
     uiRouter,
     'pascalprecht.translate',
