@@ -759,7 +759,6 @@ module.exports = {
                         TN: "https://www.ovh.com/tn/emails/hosted-exchange/faq/",
                         WE: ""
                     },
-                    TITLE: "otrs_popup_service_faq_exchange"
                 },
                 OFFICE_365: {
                     URL: {
@@ -784,7 +783,6 @@ module.exports = {
                         TN: "https://www.ovh.com/tn/office-365-business/faq/",
                         WE: ""
                     },
-                    TITLE: "otrs_popup_service_faq_office365"
                 },
                 WEB: {
                     URL: {
@@ -809,7 +807,6 @@ module.exports = {
                         TN: "https://www.ovh.com/tn/hebergement-web/faq/",
                         WE: ""
                     },
-                    TITLE: "otrs_popup_service_faq_web"
                 }
             },
             TOOLS : {
