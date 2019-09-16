@@ -17,7 +17,6 @@ import ngUiRouterLineProgress from '@ovh-ux/ng-ui-router-line-progress';
 import ovhManagerBanner from '@ovh-ux/manager-banner';
 import ovhManagerNavbar from '@ovh-ux/manager-navbar';
 import uiRouter from '@uirouter/angularjs';
-import ngOvhOtrs from '@ovh-ux/ng-ovh-otrs';
 import ovhManagerServerSidebar from '@ovh-ux/manager-server-sidebar';
 import domainEmailObfuscation from './domain/email-obfuscation/index';
 import domainOptin from './domain/optin/index';
@@ -66,7 +65,6 @@ angular
     'pascalprecht.translate',
     'ovh-angular-responsive-tabs',
     'ovh-angular-tail-logs',
-    ngOvhOtrs,
     'ovh-api-services',
     'ovh-angular-toaster',
     ovhManagerBanner,
@@ -110,7 +108,6 @@ angular
     DOMAIN: config.constants.DOMAIN,
     WEBSITE_URLS: config.constants.website_url,
     new_bdd_user_grant_options: config.constants.new_bdd_user_grant_options,
-    REDIRECT_URLS: config.constants.REDIRECT_URLS,
   })
   .constant('LANGUAGES', config.constants.LANGUAGES)
   .constant('website_url', config.constants.website_url)
@@ -435,9 +432,6 @@ angular
     // overwrite submit button template
     _.set(editableThemes, 'default.submitTpl', ['<button style="background:none;border:none" type="submit">', '<i class="fa fa-check green"></i>', '</button>'].join(''));
     _.set(editableThemes, 'default.cancelTpl', ['<button style="background:none;border:none" ng-click="$form.$cancel()">', '<i class="fa fa-times red"></i>', '</button>'].join(''));
-  })
-  .config((OtrsPopupProvider, constants) => {
-    OtrsPopupProvider.setBaseUrlTickets(_.get(constants, 'REDIRECT_URLS.listTicket', null));
   })
   .constant('UNIVERSE', 'WEB')
   .constant('MANAGER_URLS', {
