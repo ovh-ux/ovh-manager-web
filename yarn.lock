@@ -8244,10 +8244,9 @@ ovh-module-emailpro@^7.2.11:
     punycode "^1.2.4"
     validator "^4.0.0"
 
-ovh-module-exchange@^9.4.6:
-  version "9.4.6"
-  resolved "https://registry.yarnpkg.com/ovh-module-exchange/-/ovh-module-exchange-9.4.6.tgz#f2adccb82ee94dbbf769535bee11c81daad2453d"
-  integrity sha512-gIyQj9l/N4rnLXNk227X+89N2F0scaI6sLR4uzJLEyWF7d8OEQG83CJOSJwZHbGHNY3GsB/Y3vgal22nZ61uZA==
+"ovh-module-exchange@git+https://github.com/ovh-ux/ovh-module-exchange.git#refactor/security":
+  version "9.4.7"
+  resolved "git+https://github.com/ovh-ux/ovh-module-exchange.git#4f3489b248d97f5e5fcfb0d7b5f85875cd537d1a"
   dependencies:
     filesize "^3.6.1"
     lodash "~3.9.3"
